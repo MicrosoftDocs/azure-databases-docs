@@ -1,7 +1,7 @@
 ---
 title: Quickstart - Node.js
-titleSuffix: Azure Cosmos DB for MongoDB (RU)
-description: Deploy a .NET web application that uses the client library for Node.js to interact with Azure Cosmos DB for MongoDB (RU) data in this quickstart.
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Deploy a .NET web application that uses the client library for Node.js to interact with Azure Cosmos DB for MongoDB data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -12,11 +12,11 @@ ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-dotnet, devx-track-extended-azdevcli, sfi-image-nochange
 zone_pivot_groups: azure-devlang-nodejs
 appliesto:
-- ✅ MongoDB (RU)
-# CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
+- ✅ MongoDB
+# CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for MongoDB.
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (RU) with Node.js
+# Quickstart: Use Azure Cosmos DB for MongoDB with Node.js
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 

@@ -33,7 +33,7 @@ ms.custom: automatically generated
 | Description | Denotes if pgBouncer service is enabled. |
 | Data type | boolean |
 | Default value | `false` |
-| Allowed values | `true,false` |
+| Allowed values | `true, false` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.enabled](https://www.pgbouncer.org/config.html#enabled) |
 

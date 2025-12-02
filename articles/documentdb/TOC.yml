@@ -1,0 +1,295 @@
+- name: Azure DocumentDB (with MongoDB compatibility) documentation
+  href: index.yml
+- name: Overview
+  expanded: true
+  items:
+    - name: Overview of Azure DocumentDB
+      href: overview.md
+    - name: FAQ
+      href: faq.yml
+    - name: Compare to MongoDB Atlas
+      href: compare-mongodb-atlas.md
+- name: Get started
+  expanded: true
+  items:
+    - name: Create AI vector search app with Python
+      displayName: embeddings, AI, artificial intelligence
+      href: quickstart-python-vector-search.md
+    - name: Create AI vector search app with TypeScript
+      displayName: embeddings, AI, artificial intelligence
+      href: quickstart-nodejs-vector-search.md
+    - name: Create AI vector search app with .NET
+      href: quickstart-dotnet-vector-search.md
+    - name: Develop a Python console application
+      href: quickstart-python.md
+    - name: Develop a TypeScript console application
+      href: quickstart-nodejs.md?pivots=programming-language-ts
+    - name: Develop a JavaScript console application
+      href: quickstart-nodejs.md?pivots=programming-language-js
+    - name: Develop a C# console application
+      href: quickstart-dotnet.md
+    - name: Develop a Java console application
+      href: quickstart-java.md
+    - name: Develop a Go console application
+      href: quickstart-go.md
+    - name: Create a cluster using the Azure portal
+      href: quickstart-portal.md
+    - name: Deploy a cluster using Bicep templates
+      href: quickstart-bicep.md
+    - name: Deploy a cluster using Terraform
+      href: quickstart-terraform.md
+- name: Build AI applications
+  items:
+    - name: Tutorials
+      items:
+        - name: Build an AI Agent
+          href: tutorial-ai-agent.md
+        - name: Node.js web application
+          href: tutorial-nodejs-web-app.md
+        - name: Real-time AI-driven custom content generation
+          href: tutorial-ai-advertisement-generation.md
+    - name: Integrated vector database
+      items:
+        - name: Vector database
+          href: vector-search.md
+        - name: Data Retrieval
+          items:
+            - name: Full-text search
+              href: full-text-search.md
+            - name: Hybrid Search
+              href: hybrid-search.md
+            - name: Exact Nearest Neighbor (ENN) Vector Search
+              href: enn-vector-search.md
+            - name: RAG with Langchain & OpenAI
+              href: rag.md
+        - name: Vector Index Compression
+          items:
+            - name: Product Quantization
+              href: product-quantization.md
+            - name: Half-Precision Vector Indexing
+              href: half-precision.md
+    - name: Integrate with AI Tools
+      items:
+        - name: AI Frameworks
+          href: ai-frameworks.md
+    - name: Connect using Spark connector from Azure Databricks
+      href: how-to-connect-from-databricks.md
+- name: Architect secure solutions
+  items:
+    - name: Security overview
+      href: security.md
+    - name: Use role-based access control
+      displayName: Microsoft Entra ID
+      href: how-to-connect-role-based-access-control.md
+    - name: Network security
+      items:
+        - name: Configure firewall
+          href: how-to-configure-firewall.md
+        - name: Manage private access
+          href: how-to-private-link.md
+        - name: Manage public access
+          href: how-to-public-access.md
+    - name: Data encryption
+      items:
+        - name: Data encryption
+          href: database-encryption-at-rest.md
+        - name: Configure customer-managed key (CMK) encryption
+          href: how-to-data-encryption.md
+        - name: Troubleshoot CMK data encryption
+          href: how-to-database-encryption-troubleshoot.md
+    - name: Access control
+      items:
+        - name: Create secondary users
+          href: secondary-users.md
+- name: Design for global distribution
+  items:
+    - name: Regional availability
+      href: regional-availability.md
+    - name: High availability
+      href: high-availability.md
+    - name: Cross-region replication
+      href: cross-region-replication.md
+    - name: High availability and disaster recovery - Behind the scenes
+      href: availability-disaster-recovery-under-hood.md
+    - name: Best practices for high availability and disaster recovery
+      href: high-availability-replication-best-practices.md
+    - name: Reliability
+      href: /azure/reliability/reliability-cosmos-mongodb?context=/azure/documentdb/context/context
+    - name: Manage replication
+      href: how-to-cluster-replica.md
+    - name: Create cross-region replica using Azure portal
+      href: how-to-cross-region-replica-portal.md
+    - name: Troubleshoot cross-region replication
+      href: troubleshoot-replication.md
+- name: Optimize performance and cost
+  items:
+    - name: Tune query performance with Index Advisor
+      href: index-advisor.md
+    - name: High performance storage (Premium SSD v2)
+      href: high-performance-storage.md
+    - name: Scalability overview
+      href: scalability-overview.md
+    - name: Sharding
+      href: partitioning.md
+    - name: Compute and storage
+      href: compute-storage.md
+    - name: Autoscale
+      href: autoscale.md
+    - name: Burstable tier
+      href: compute-storage.md#what-is-burstable-compute
+    - name: Free tier
+      href: free-tier.md
+    - name: Scale cluster
+      href: how-to-scale-cluster.md
+    - name: Maximum document size
+      href: max-document-size.md
+- name: Develop modern applications
+  items:
+    - name: Connect to the cluster
+      items:
+        - name: Connect using Visual Studio Code
+          href: how-to-connect-visual-studio-code-extension.md
+        - name: Connect using Studio 3T
+          href: how-to-connect-studio-3t.md
+        - name: Connect using MongoDB Shell
+          href: how-to-connect-mongo-shell.md
+        - name: Connect using Azure Cloud Shell
+          href: how-to-connect-cloud-shell.md
+    - name: Managed service compatibility
+      href: managed-service-compatibility.md
+    - name: Support for Geospatial Queries
+      href: geospatial-support.md
+    - name: Indexing
+      href: indexing.md
+    - name: Change Stream
+      href: change-streams.md
+    - name: Data API
+      href: data-api.md
+    - name: Service limitations
+      href: limitations.md
+    - name: Build a console app
+      items:
+        - name: .NET
+          href: how-to-build-dotnet-console-app.md
+        - name: Python
+          href: how-to-build-python-console-app.md
+        - name: Node.js
+          href: how-to-build-nodejs-console-app.md
+        - name: Java
+          href: how-to-build-java-console-app.md
+        - name: Go
+          href: how-to-build-go-console-app.md
+        - name: Rust
+          href: how-to-build-rust-console-app.md
+    - name: Develop applications
+      items:
+        - name: Create transactions
+          href: how-to-transactions.md
+    - name: Work with indexes
+      items:
+        - name: Background indexing
+          href: background-indexing.md
+        - name: Indexing best practices
+          href: how-to-create-indexes.md
+        - name: Indexing scenarios
+          href: how-to-index.md
+        - name: Working with wildcard
+          href: how-to-create-wildcard-indexes.md
+        - name: Search and query text
+          href: how-to-create-text-index.md
+- name: Migrate data
+  items:
+    - name: Migration options
+      href: migration-options.md
+    - name: Premigration assessment
+      href: how-to-assess-plan-migration-readiness.md
+    - name: Online migration tools
+      href: migration-options.md#web-app-utility-online
+    - name: Migrate using Visual Studio Code extension
+      href: how-to-migrate-vs-code-extension.md
+    - name: Native tools
+      href: how-to-migrate-native-tools.md
+- name: Manage your account
+  items:
+    - name: Manage cluster
+      items:
+        - name: Upgrade cluster
+          href: how-to-upgrade-cluster.md
+        - name: Restore cluster
+          href: how-to-restore-cluster.md
+    - name: Monitor
+      items:
+        - name: Monitor metrics
+          href: monitor-metrics.md
+        - name: Create and manage alerts
+          href: how-to-manage-alerts.md
+        - name: Monitor diagnostics logs
+          href: how-to-monitor-diagnostics-logs.md
+- name: Reference
+  items:
+    - name: Samples
+      items:
+        - name: Build Your Own Copilot in C# with Semantic Kernel
+          href: https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot
+        - name: Recipe chatbot
+          href: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore
+        - name: C# RAG pattern - Integrate OpenAI Services
+          href: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore
+        - name: Python RAG pattern - Azure product chatbot
+          href: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore
+        - name: Solution accelerator
+          href: https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore
+        - name: Python notebooks
+          href: https://github.com/Microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore
+    - name: Azure CLI
+      href: /cli/azure/cosmosdb/mongocluster
+    - name: Java
+      href: /java/api/overview/azure/resourcemanager-mongocluster-readme
+    - name: .NET
+      href: /dotnet/api/azure.provisioning.cosmosdb.mongocluster.resourceversions
+    - name: Node.js
+      href: /javascript/api/overview/azure/mongo-cluster
+    - name: Python
+      href: /python/api/overview/azure/mongo-cluster
+    - name: Commands
+      href: commands/toc.yml
+    - name: Operators
+      href: operators/toc.yml
+    - name: MongoDB feature compatibility
+      href: compatibility-features.md
+    - name: MongoDB query language compatibility
+      href: compatibility-query-language.md
+    - name: Release notes
+      href: release-notes.md
+    - name: Troubleshoot common issues
+      href: troubleshoot-common-issues.md
+- name: Resources
+  items:
+    - name: Questions
+      href: /answers/questions/
+    - name: Pricing
+      href: https://azure.microsoft.com/pricing/details/document-db/
+    - name: Open source
+      href: https://github.com/documentdb/documentdb
+    - name: Industry solutions
+      items:
+        - name: Logistics, supply chain, retail, and e-commerce
+          href: solutions-retail.md
+        - name: Financial services and technology
+          href: solutions-finance.md
+        - name: Healthcare
+          href: solutions-healthcare.md
+        - name: Telecom and media
+          href: solutions-media.md
+        - name: Gaming
+          href: solutions-gaming.md
+        - name: IoT and manufacturing
+          href: solutions-iot.md
+    - name: DocumentDB
+      items:
+        - name: GitHub repository
+          href: https://github.com/documentdb/documentdb
+        - name: Core documentation
+          href: https://documentdb.io/docs
+        - name: Linux Foundation
+          href: https://www.linuxfoundation.org/projects

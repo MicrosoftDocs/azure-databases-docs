@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/cosmos-db-vs-mongodb-atlas.md",
+      "redirect_url": "/azure/documentdb/compare-mongodb-atlas",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/gen-ai/document-ingestion.md",
       "redirect_url": "/articles/cosmos-db/gen-ai/document-indexer.md",
       "redirect_document_id": false
@@ -158,6 +163,16 @@
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/powershell/mongodb/throughput.md",
       "redirect_url": "https://github.com/azure/azure-docs-powershell-samples/tree/master/cosmosdb/mongodb/ps-mongodb-ru-get.ps1",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/change-log.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/choose-model.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/",
       "redirect_document_id": false
     },
     {
@@ -693,12 +708,12 @@
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/aggregation/$count.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/accumulators/$count",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/operators/array-update/$sort.md",
       "redirect_url": "/azure/cosmos-db/mongodb/vcore/operators/aggregation/$sort",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/troubleshoot-dot-net-sdk-request-timeout.md",
@@ -4286,6 +4301,11 @@
       "redirect_document_id": true
     },
     {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/how-to-migrate-vcore.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/how-to-migrate-documentdb",
+      "redirect_document_id": true
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/troubleshoot-dot-net-sdk-request-header-too-large.md",
       "redirect_url": "/azure/cosmos-db/sql/troubleshoot-dot-net-sdk-request-header-too-large",
       "redirect_document_id": true
@@ -6583,6 +6603,11 @@
     {
       "source_path_from_root": "/articles/cosmos-db/scripts/cli/nosql/autoscale.md",
       "redirect_url": "https://github.com/azure-samples/azure-cli-samples/blob/master/cosmosdb/sql/autoscale.sh",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/mongodb/reimagined.md",
+      "redirect_url": "/azure/cosmos-db/mongodb/",
       "redirect_document_id": false
     },
     {

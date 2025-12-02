@@ -1,16 +1,16 @@
 ---
 title: Elastic Clusters
 description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure Database for PostgreSQL flexible server instance.
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
-ms.date: 07/06/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Elastic clusters in Azure Database for PostgreSQL (preview)
+# Elastic clusters in Azure Database for PostgreSQL
 
 Elastic clusters on the Azure Database for PostgreSQL service are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
@@ -108,4 +108,4 @@ WHERE shardid = 102027;
 
 - [Sharding models on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-sharding-models.md).
 - [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
+- [Frequently asked questions about elastic clusters of Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).

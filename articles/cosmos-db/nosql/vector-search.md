@@ -37,6 +37,13 @@ This feature enhances the core capabilities of Azure Cosmos DB, making it more v
 
 > [!VIDEO https://www.youtube.com/embed/I6uui4Xx_YA?si=KwV2TxVH4t3UqIJk]
 
+
+> [!Note]
+> **Interested in ultra-high throughput vector search capabilities?** 
+> Azure Cosmos DB is developing enhanced vector search features designed for large vector datasets paired with ultra-high throughput inserts and searches. It can accommodate millions of queries per second (QPS) with predictable, low latency and unmatched cost efficiency. Sign up to learn more about early access opportunities and get notified when these capabilities become available.
+> 
+> [*Sign up for the expanded Private Preview.*](https://aka.ms/cosmos-high-scale-vector-preview)
+
 ## What is a vector store?
 
 A vector store or [vector database](../vector-database.md) is a database designed to store and manage vector embeddings, which are mathematical representations of data in a high-dimensional space. In this space, each dimension corresponds to a feature of the data, and tens of thousands of dimensions might be used to represent sophisticated data. A vector's position in this space represents its characteristics. Words, phrases, or entire documents, and images, audio, and other types of data can all be vectorized.
@@ -78,7 +85,7 @@ The registration request is autoapproved, but it might take 15 minutes to take e
 Performing vector search with Azure Cosmos DB for NoSQL requires you to define a vector policy for the container. This provides essential information for the database engine to conduct efficient similarity search for vectors found in the container's documents. This also informs the vector indexing policy of necessary information, should you choose to specify one. The following information is included in the contained vector policy:
 
 - `path`: The property path that contains vectors (required).
-- `datatype`: The data type of the vector property. Supported types are `float32` (default), `int8`, and `uint8`.
+- `datatype`: The data type of the vector property. Supported types are `float32`, `float16`, `int8`, and `uint8`.
 - `dimensions`: The dimensionality or length of each vector in the path. All vectors in a path should have the same number of dimensions. The default is `1536`.
 - `distanceFunction`: The metric used to compute distance/similarity. Supported metrics are:
   - [cosine](https://en.wikipedia.org/wiki/Cosine_similarity) (default), which has values from -1 (least similar) to +1 (most similar).
@@ -87,6 +94,9 @@ Performing vector search with Azure Cosmos DB for NoSQL requires you to define a
 
 > [!NOTE]
 > Each unique path can have at most one policy. However, multiple policies can be specified if they all target a different path.
+
+> [!NOTE]
+> Many embedding models represent elements of a vector using `float32`. Using `float16` instead can reduce the storage footprint of vectors by 50%, however some reduction in accuracy may result. 
 
 The container vector policy can be described as JSON objects. Here are two examples of valid container vector policies:
 
@@ -118,7 +128,7 @@ The container vector policy can be described as JSON objects. Here are two examp
         },
         {
             "path":"/vector2",
-            "dataType":"int8",
+            "dataType":"float16",
             "distanceFunction":"dotproduct",
             "dimensions":100
         }
@@ -207,7 +217,7 @@ Here are examples of valid vector index policies:
 
 ## Perform vector search with queries using VectorDistance
 
-Once you created a container with the desired vector policy, and inserted vector data into the container, you can conduct a vector search using the [VectorDistance](query/vectordistance.md) system function in a query. The following example shows a NoSQL query that projects the similarity score as the alias `SimilarityScore`, and sorts in order of most-similar to least-similar:
+Once you created a container with the desired vector policy, and inserted vector data into the container, you can conduct a vector search using the [VectorDistance](/cosmos-db/query/vectordistance) system function in a query. The following example shows a NoSQL query that projects the similarity score as the alias `SimilarityScore`, and sorts in order of most-similar to least-similar:
 
 ```sql
 SELECT TOP 10 c.title, VectorDistance(c.contentVector, [1,2,3]) AS SimilarityScore   
@@ -224,11 +234,11 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 
 - `quantizedFlat` and `diskANN` indexes require at least 1,000 vectors to be indexed to ensure that the quantization is accurate. If fewer than 1,000 vectors are indexed, then a full-scan is used instead and RU charges might be higher. 
 - Vectors indexed with the `flat` index type can be at most 505 dimensions. Vectors indexed with the `quantizedFlat` or `DiskANN` index type can be at most 4,096 dimensions.
-- The rate of vector insertions should be limited. Very large ingestion (in excess of 5M vectors) might require more index build time. 
+- The rate of vector insertions should be limited. Very large ingestion (in excess of 5M vectors) in a short period of time might require more index build time. 
 - The vector search feature isn't currently supported on the existing containers. To use it, a new container must be created, and the container-level vector embedding policy must be specified.
 - Shared throughput databases are unsupported.
-- At this time, vector indexing and search isn't supported on accounts with Shared Throughput.
-- Once vector indexing and search is enabled on a container, it can't be disabled.
+- At this time, vector indexing and search aren't supported on accounts with Shared Throughput.
+- Once vector indexing and search are enabled on a container, it can't be disabled.
 
 ## Related content
 
@@ -236,7 +246,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - [.NET - How to index and query vector data](how-to-dotnet-vector-index-query.md)
 - [Python - How to index and query vector data](how-to-python-vector-index-query.md)
 - [Java - How to index and query vector data](how-to-java-vector-index-query.md)
-- [VectorDistance system function](query/vectordistance.md)
+- [VectorDistance system function](/cosmos-db/query/vectordistance)
 - [Vector index overview](../index-overview.md#vector-indexes)
 - [Vector index policies](../index-policy.md#vector-indexes)
 - [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples)

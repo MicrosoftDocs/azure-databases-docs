@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Background Writer |
-| Description | Specifies the delay between activity rounds for the background writer. In each round the writer issues writes for some number of dirty buffers. |
+| Description | Background writer sleep time between rounds. |
 | Data type | integer |
 | Default value | `20` |
 | Allowed values | `10-10000` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Background Writer |
-| Description | Number of pages after which previously performed writes by the background writer are flushed to disk. |
+| Description | Number of pages after which previously performed writes are flushed to disk. |
 | Data type | integer |
 | Default value | `64` |
 | Allowed values | `0-256` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Background Writer |
-| Description | In each round, no more than this many buffers will be written by the background writer. |
+| Description | Background writer maximum number of LRU pages to flush per round. |
 | Data type | integer |
 | Default value | `100` |
 | Allowed values | `0-1073741823` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Background Writer |
-| Description | The average recent need of buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number of buffers that will be needed during the next round. |
+| Description | Multiple of the average buffer usage to free per round. |
 | Data type | numeric |
 | Default value | `2` |
 | Allowed values | `0-10` |

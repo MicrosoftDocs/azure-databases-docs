@@ -31,7 +31,7 @@ This article covers the following tasks:
 
 You can run the queries using the [Azure Cosmos DB Explorer](../data-explorer.md) in the Azure portal. You can also run queries by using the [REST API](/rest/api/cosmos-db/) or [various SDKs](sdk-dotnet-v3.md).
 
-For more information about queries, see [Queries in Azure Cosmos DB for NoSQL](query/getting-started.md).
+For more information about queries, see [Queries in Azure Cosmos DB for NoSQL](/cosmos-db/query/overview).
 
 ## Sample document
 

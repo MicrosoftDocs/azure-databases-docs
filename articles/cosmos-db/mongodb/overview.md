@@ -61,12 +61,6 @@ The API for MongoDB is well-suited for applications that require flexible docume
 > [!IMPORTANT]
 > This introduction reviews various features of Azure Cosmos DB for MongoDB that provides wire protocol compatibility with MongoDB databases. Microsoft doesn't run MongoDB databases to provide this service. Azure Cosmos DB isn't affiliated with MongoDB, Inc.
 
-## Azure Cosmos DB for MongoDB vCore
-
-For some workloads, adapting to Azure Cosmos DB for MongoDB can be a challenge due to differences in behavior or configuration from the native platform. This constraint is especially applicable for lift-and-shift migrations. Azure Cosmos DB for MongoDB vCore is a first-party Azure service with dedicated instances for new and existing MongoDB apps. This architecture offers a familiar vCore architecture for MongoDB users, instantaneous scaling, and seamless native integration with various Azure services.
-
-For more information, see [Azure Cosmos DB for MongoDB vCore](vcore/introduction.md)
-
 ## Next step
 
 - [Start using Azure Cosmos DB for MongoDB](quickstart-nodejs.md)

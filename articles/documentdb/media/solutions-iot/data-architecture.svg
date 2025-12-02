@@ -1,0 +1,189 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">IoT Device Data Ingestion and Analysis Architecture</text>
+  
+  <!-- IoT Devices Section -->
+  <text x="18" y="117" class="size-lg weight-bold">IoT Devices and Sensors</text>
+  
+  <!-- Manufacturing Equipment -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">Manufacturing</text>
+  <text x="120" y="185" class="align-center">Equipment</text>
+  
+  <!-- Environmental Sensors -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">Environmental</text>
+  <text x="120" y="285" class="align-center">Sensors</text>
+  
+  <!-- Smart Meters -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Smart Meters</text>
+  <text x="120" y="385" class="align-center">and Gauges</text>
+  
+  <!-- Vehicle Telematics -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">Vehicle</text>
+  <text x="120" y="485" class="align-center">Telematics</text>
+  
+  <!-- Edge Computing Section -->
+  <text x="285" y="117" class="size-lg weight-bold">Edge Computing</text>
+  
+  <!-- IoT Edge -->
+  <rect x="280" y="200" width="140" height="120" rx="10"/>
+  <text x="350" y="230" class="weight-bold align-center">Azure IoT Edge</text>
+  <text x="350" y="260" class="align-center">• Data Filtering</text>
+  <text x="350" y="280" class="align-center">• Local Processing</text>
+  <text x="350" y="300" class="align-center">• Offline Capability</text>
+  
+  <!-- Cloud Ingestion Section -->
+  <text x="487" y="117" class="size-lg weight-bold">Cloud Data Ingestion</text>
+  
+  <!-- Azure IoT Hub -->
+  <rect x="510" y="140" width="140" height="100" rx="10"/>
+  <text x="580" y="170" class="weight-bold align-center">Azure IoT Hub</text>
+  <text x="580" y="190" class="align-center">• Massive Scale</text>
+  <text x="580" y="210" class="align-center">• Device Management</text>
+  
+  <!-- Stream Processing Section -->
+  <rect x="510" y="320" width="140" height="120" rx="10"/>
+  <text x="580" y="350" class="weight-bold align-center">Azure Stream</text>
+  <text x="580" y="370" class="weight-bold align-center">Analytics</text>
+  <text x="580" y="400" class="align-center">• Real-time Analysis</text>
+  <text x="580" y="420" class="align-center">• Anomaly Detection</text>
+  
+  <!--Data Storage Section-->
+  <text x="798" y="117" class="size-lg weight-bold">Data Storage</text>
+  <!--Azure DocumentDB-->
+  <rect x="750" y="140" width="200" height="120" rx="10" class="highlight"/>
+  <text x="850" y="170" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="850" y="200" class="align-center color-inverse">• Time-series Data</text>
+  <text x="850" y="220" class="align-center color-inverse">• Device Metadata</text>
+  <text x="850" y="240" class="align-center color-inverse">• Event History</text>
+  
+  <!--Visualization Section-->
+  <text x="990" y="117" class="size-lg weight-bold">Visualization</text>
+  <!--Power BI-->
+  <rect x="980" y="160" width="140" height="80" rx="10"/>
+  <text x="1050" y="185" class="weight-bold align-center">Power BI</text>
+  <text x="1050" y="205" class="align-center">Dashboards</text>
+  <path d="M 560 240 L 465 420"/>
+  
+  <!--Custom Applications-->
+  <rect x="980" y="260" width="140" height="80" rx="10"/>
+  <text x="1050" y="285" class="align-center">Custom</text>
+  <text x="1050" y="305" class="align-center">Applications</text>
+  
+  <!--Analytics Section-->
+  <text x="768" y="501" class="size-lg weight-bold">Advanced Analytics</text>
+  
+  <!--Machine Learning-->
+  <rect x="750" y="380" width="200" height="100" rx="10"/>
+  <text x="850" y="410" class="weight-bold align-center">Azure Machine Learning</text>
+  <text x="850" y="430" class="align-center">• Predictive Models</text>
+  <text x="850" y="450" class="align-center">• Pattern Recognition</text>
+  
+  <!--Alert System Section-->
+  <text x="454" y="649" class="size-lg weight-bold">Alert and Notification System</text>
+  
+  <!--Alert Processing-->
+  <rect x="450" y="540" width="130" height="80" rx="10"/>
+  <text x="515" y="565" class="align-center">Alert Processing</text>
+  <text x="515" y="585" class="align-center">Rules Engine</text>
+  
+  <!--Notification Hub-->
+  <rect x="600" y="540" width="130" height="80" rx="10"/>
+  <text x="665" y="565" class="align-center">Notification Hub</text>
+  <text x="665" y="585" class="align-center">Multi-channel</text>
+  
+  <!--Device Management Section-->
+  <text x="290" y="525" class="size-lg weight-bold">Device Management</text>
+  
+  <!--Device Provisioning-->
+  <rect x="250" y="420" width="130" height="80" rx="10"/>
+  <text x="315" y="445" class="align-center">Device</text>
+  <text x="315" y="465" class="align-center">Provisioning</text>
+  
+  <!--Device Twin-->
+  <rect x="400" y="420" width="130" height="80" rx="10"/>
+  <text x="465" y="445" class="align-center">Device Twin</text>
+  <text x="465" y="465" class="align-center">Management</text>
+  
+  <!--Arrows-->
+  <!--IoT Devices to Edge-->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 320 320"/>
+  <!--Edge to IoT Hub-->
+  <path d="M 420 230 L 510 190"/>
+  <!--IoT Hub to Stream Analytics-->
+  <path d="M 580 240 L 580 320"/>
+  <!--Stream Analytics to DocumentDB-->
+  <path d="M 650 380 L 750 210"/>
+  <!--DocumentDB to Visualization-->
+  <path d="M 950 180 L 980 200"/>
+  <path d="M 950 200 L 980 300"/>
+  <!--DocumentDB to ML-->
+  <path d="M 850 260 L 850 380"/>
+  <!--Stream Analytics to Alerts-->
+  <path d="M 580 440 L 515 540"/>
+  <!--Alerts to Notifications-->
+  <path d="M 580 580 L 600 580"/>
+  <!--IoT Hub to Device Management-->
+  <path d="M 540 240 L 315 420"/>
+  <!--Data flow labels-->
+  <text x="203" y="245">Sensor Data</text>
+  <text x="431" y="240">Filtered Data</text>
+  <text x="590" y="290">Raw Telemetry</text>
+  <text x="699" y="319">Processed Data</text>
+  <text x="860" y="340">Analytics</text>
+  <text x="558" y="501">Alerts</text>
+  <text x="376" y="392">Device Control</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>

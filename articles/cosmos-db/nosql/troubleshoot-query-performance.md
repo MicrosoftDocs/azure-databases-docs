@@ -120,7 +120,7 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-The **Retrieved Document Count** (60,951) is higher than the **Output Document Count** (7), implying that this query resulted in a document scan. In this case, the system function [UPPER()](query/upper.md) doesn't use an index.
+The **Retrieved Document Count** (60,951) is higher than the **Output Document Count** (7), implying that this query resulted in a document scan. In this case, the system function [UPPER()](/cosmos-db/query/upper) doesn't use an index.
 
 ### Include necessary paths in the indexing policy
 
@@ -286,7 +286,7 @@ Here are more examples of aggregate queries that will not fully use the index:
 
 #### Queries with system functions that don't use the index
 
-You should refer to the relevant [system function's page](query/system-functions.yml) to see if it uses the index.
+You should refer to the relevant [system function's page](/cosmos-db/query/functions) to see if it uses the index.
 
 ```sql
 SELECT MAX(c._ts)

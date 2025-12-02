@@ -188,11 +188,6 @@ Microsoft.DocumentDB/cassandraClusters
 - [CassandraAudit](/azure/azure-monitor/reference/tables/CassandraAudit#columns)
 - [CassandraLogs](/azure/azure-monitor/reference/tables/CassandraLogs#columns)
 
-### Azure Cosmos DB for MongoDB (vCore)
-Microsoft.DocumentDB/mongoClusters
-
-- [VCoreMongoRequests](/azure/azure-monitor/reference/tables/VCoreMongoRequests#columns)
-
 ### Azure Cosmos DB resource logs properties
 
 The following table lists properties of resource logs in Azure Cosmos DB. The resource logs are collected into Azure Monitor Logs or Azure Storage.

@@ -1,18 +1,18 @@
 ---
 title: "Quickstart: Create elastic clusters with ARM template"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance with elastic clusters by using an ARM template.
-author: jjfrost
-ms.author: jfrost
-ms.reviewer: maghan
-ms.date: 02/28/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ---
 
-# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL (preview)
+# Quickstart: Use an ARM template to create an elastic cluster with Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
+Azure Database for PostgreSQL with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
 
 [!INCLUDE [About Azure Resource Manager](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,7 +26,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 An Azure Database for PostgreSQL flexible server instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
 
-Create a _postgres-flexible-server-template.json_ file and copy the following JSON script into it.
+Create a _elastic-cluster-template.json_ file and copy the following JSON script into it.
 
 ```json
 {
@@ -41,9 +41,9 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus"
+      "defaultValue": "canadacentral"
     },
-    "serverName": {
+    "clusterName": {
       "type": "string"
     },
     "serverEdition": {
@@ -61,10 +61,6 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
     "availabilityZone": {
       "type": "string",
       "defaultValue": "1"
-    },
-    "standbyAvailabilityZone": {
-      "type": "string",
-      "defaultValue": ""
     },
     "backupRetentionDays": {
       "type": "int",
@@ -87,11 +83,6 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
       "defaultValue": {
         "rules": [
           {
-            "name": "ClientIP",
-            "startIPAddress": "131.107.1.255",
-            "endIPAddress": "131.107.1.255"
-          },
-          {
             "name": "AllowAll",
             "startIPAddress": "0.0.0.0",
             "endIPAddress": "255.255.255.255"
@@ -109,9 +100,9 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
   },
   "resources": [
     {
-      "apiVersion": "2024-05-01-privatepreview",
+      "apiVersion": "2025-08-01",
       "location": "[parameters('location')]",
-      "name": "[parameters('serverName')]",
+      "name": "[parameters('clusterName')]",
       "properties": {
         "createMode": "Default",
         "version": "16",
@@ -128,8 +119,7 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
           "geoRedundantBackup": "Disabled"
         },
         "highAvailability": {
-          "mode": "[parameters('haEnabled')]",
-          "standbyAvailabilityZone": "[parameters('standbyAvailabilityZone')]"
+          "mode": "[parameters('haEnabled')]"
         },
         "cluster": {
           "clusterSize": "[parameters('clusterSize')]"
@@ -152,7 +142,7 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
         "name": "firewallRulesIterator"
       },
       "dependsOn": [
-        "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('serverName'))]"
+        "[concat('Microsoft.DBforPostgreSQL/flexibleServers/', parameters('clusterName'))]"
       ],
       "properties": {
         "mode": "Incremental",
@@ -162,8 +152,8 @@ Create a _postgres-flexible-server-template.json_ file and copy the following JS
           "resources": [
             {
               "type": "Microsoft.DBforPostgreSQL/flexibleServers/firewallRules",
-              "name": "[concat(parameters('serverName'),'/',variables('firewallRules')[copyIndex()].name)]",
-              "apiVersion": "2024-05-01-privatepreview",
+              "name": "[concat(parameters('clusterName'),'/',variables('firewallRules')[copyIndex()].name)]",
+              "apiVersion": "2025-08-01",
               "properties": {
                 "StartIpAddress": "[variables('firewallRules')[copyIndex()].startIPAddress]",
                 "EndIpAddress": "[variables('firewallRules')[copyIndex()].endIPAddress]"
@@ -183,20 +173,17 @@ These resources are defined in the template:
 
 ## Deploy the template
 
-Select **Try it** from the following PowerShell code block to open Azure Cloud Shell. The clusterSize parameter defines how many nodes your elastic cluster has.
+Select **Try it** from the following PowerShell code block to open Azure Cloud Shell.
 
 ```azurepowershell-interactive
-$serverName = Read-Host -Prompt "Enter a name for the new Azure Database for PostgreSQL flexible server instance"
-$resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the server will exist"
-$location = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
-$adminUser = Read-Host -Prompt "Enter the Azure Database for PostgreSQL flexible server instance's administrator account name"
+$clusterName = Read-Host -Prompt "Enter a name for the new Azure Database for PostgreSQL flexible server elastic cluster instance"
+$resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the elastic cluster will exist"
+$adminUser = Read-Host -Prompt "Enter the Azure Database for PostgreSQL flexible server elastic cluster instance's administrator account name"
 $adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureString
-$clusterSize = Read-Host -Prompt "Enter the desired cluster size"
-
-New-AzResourceGroup -Name $resourceGroupName -Location $location # Use this command when you need to create a new resource group for your deployment
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -clusterSize $clusterSize`
-    -TemplateFile "postgres-flexible-server-template.json" `
-    -serverName $serverName `
+# New-AzResourceGroup -Name $resourceGroupName -Location <AZURE_LOCATION>  Use this command when you need to create a new resource group for your deployment
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+    -TemplateFile "elastic-cluster-template.json" `
+    -clusterName $clusterName `
     -administratorLogin $adminUser `
     -administratorLoginPassword $adminPassword
 
@@ -205,42 +192,44 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## Review deployed resources
 
-Follow these steps to verify if your server was created in Azure.
+Follow these steps to verify if your Azure Database for PostgreSQL flexible server elastic cluster was created.
 
 # [Azure portal](#tab/portal)
 
 1. In the [Azure portal](https://portal.azure.com), search for and select **Azure Database for PostgreSQL flexible servers**.
-1. In the database list, select your new server to view the **Overview** page to manage the server.
+1. In the database list, select your new server to view the **Overview** page to manage your elastic cluster.
 
 # [PowerShell](#tab/PowerShell)
 
-You have to enter the name of the new server to view the details of your Azure Database for PostgreSQL flexible server instance.
+You have to enter the name of the new cluster to view the details of your Azure Database for PostgreSQL flexible server elastic cluster.
 
 ```azurepowershell-interactive
-$serverName = Read-Host -Prompt "Enter the name of your Azure Database for PostgreSQL server"
-Get-AzResource -ResourceType "Microsoft.DBforPostgreSQL/flexibleServers" -Name $serverName | ft
+$clusterName = Read-Host -Prompt "Enter the name of your Azure Database for PostgreSQL elastic cluster"
+Get-AzResource -ResourceType "Microsoft.DBforPostgreSQL/flexibleServers" -Name $clusterName | ft
 Write-Host "Press [ENTER] to continue..."
 ```
 
 # [CLI](#tab/CLI)
 
-You have to enter the name and the resource group of the new server to view details about your Azure Database for PostgreSQL flexible server instance.
+You have to enter the name and the resource group of your new elastic cluster to view details about your Azure Database for PostgreSQL flexible server elastic cluster instance.
 
 ```azurecli-interactive
-echo "Enter your Azure Database for PostgreSQL flexible server instance name:" &&
-read serverName &&
-echo "Enter the resource group where the Azure Database for PostgreSQL flexible server instance exists:" &&
+echo "Enter your Azure Database for PostgreSQL flexible server elastic cluster name:" &&
+read clusterName &&
+echo "Enter the resource group where the Azure Database for PostgreSQL flexible server elastic cluster exists:" &&
 read resourcegroupName &&
-az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DBforPostgreSQL/flexibleServers"
+az resource show --resource-group $resourcegroupName --name $clusterName --resource-type "Microsoft.DBforPostgreSQL/flexibleServers"
 ```
 
 ---
 
-## Clean up resources
-
+## Next Steps
 Keep this resource group and the elastic cluster if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use elastic clusters with different application sharding models and designs.
 
-To delete the resource group:
+## Clean up resources
+When you are finished with your elastic cluster environment, you can delete your elastic cluster resource: 
+
+To delete the elastic cluster:
 
 # [Portal](#tab/azure-portal)
 
@@ -252,14 +241,14 @@ In the [portal](https://portal.azure.com), select the resource group you want to
 # [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$serverName = Read-Host -Prompt "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:"
-Remove-AzResourceGroup -Name $serverName
+$clusterName = Read-Host -Prompt "Enter the resource group where the Azure Database for PostgreSQL flexible server elastic cluster exists"
+Remove-AzResourceGroup -Name $clusterName
 ```
 
 # [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-echo "Enter the resource group where the Azure Database for PostgreSQL flexible server exists:" &&
+echo "Enter the resource group where the Azure Database for PostgreSQL flexible server elastic cluster exists:" &&
 read resourcegroupName &&
 az group delete --name $resourcegroupName
 ```

@@ -33,7 +33,7 @@ sections:
       - question: |
           How does Azure Cosmos DB support various data models such as key/value, columnar, document, and graph?
         answer: |
-          Key/value (table), columnar, document, and graph data models are all natively supported because of the ARS (atoms, records, and sequences) design that Azure Cosmos DB is built on. Atoms, records, and sequences can be easily mapped and projected to various data models. The APIs for a subset of models are available using the ARS design (MongoDB RU, NoSQL, Table, Apache Cassandra, and Apache Gremlin). Azure Cosmos DB also supports other APIs such as MongoDB vCore, Cassandra MI, or PostgreSQL.
+          Key/value (table), columnar, document, and graph data models are all natively supported because of the ARS (atoms, records, and sequences) design that Azure Cosmos DB is built on. Atoms, records, and sequences can be easily mapped and projected to various data models. The APIs for a subset of models are available using the ARS design (MongoDB, NoSQL, Table, Apache Cassandra, and Apache Gremlin). Azure Cosmos DB also supports other APIs.
       - question: |
           What is an Azure Cosmos DB container?
         answer: |
@@ -42,8 +42,7 @@ sections:
           | | Containers known as |
           | --- | --- |
           | **Azure Cosmos DB for NoSQL** | Container |
-          | **Azure Cosmos DB for MongoDB RU** | Collection |
-          | **Azure Cosmos DB for MongoDB vCore** | Collection |
+          | **Azure Cosmos DB for MongoDB** | Collection |
           | **Azure Cosmos DB for Apache Cassandra** | Table |
           | **Azure Cosmos DB for Apache Gremlin** | Graph |
           | **Azure Cosmos DB for Table** | Table |

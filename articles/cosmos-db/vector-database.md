@@ -14,7 +14,6 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-  - ✅ MongoDB vCore
   - ✅ PostgreSQL
 ---
 
@@ -66,6 +65,12 @@ Vector databases are especially popular for enabling [retrieval-augmented genera
 - Reduce the costs from frequent fine-tuning on updated data
 
 This process involves extracting pertinent information from a custom data source and integrating it into the model request through prompt engineering. Before sending a request to the LLM, the user input/query/request is also transformed into an embedding, and vector search techniques are employed to locate the most similar embeddings within the database. This technique enables the identification of the most relevant data records in the database. These retrieved records are then supplied as input to the LLM request using [prompt engineering](#prompts-and-prompt-engineering).
+
+> [!Note]
+> **Interested in ultra-high throughput vector search capabilities?** 
+> Azure Cosmos DB is developing enhanced vector search features designed for large vector datasets paired with ultra-high throughput inserts and searches. It can accommodate millions of queries per second (QPS) with predictable, low latency and unmatched cost efficiency. Sign up to learn more about early access opportunities and get notified when these capabilities become available.
+> 
+> [*Sign up for the expanded Private Preview.*](https://aka.ms/cosmos-high-scale-vector-preview)
 
 ## Vector database related concepts
 
@@ -128,23 +133,15 @@ DiskANN enables you to perform highly accurate, low-latency queriers at any scal
 
 - [What is the database behind ChatGPT? - Microsoft Mechanics](https://www.youtube.com/watch?v=6IIUtEFKJec)
 - [Vector indexing in Azure Cosmos DB for NoSQL](index-policy.md#vector-indexes)
-- [VectorDistance system function NoSQL queries](nosql/query/vectordistance.md)
+- [VectorDistance system function NoSQL queries](/cosmos-db/query/vectordistance)
 - [Vector Search in Azure Cosmos DB for NoSQL](nosql/vector-search.md)
 - [Python - Notebook tutorial](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples)
 - [C# - Build Your Own Copilot Complete Solution Accelerator with AKS and Semantic Kernel](https://aka.ms/cdbcopilot)
 - [C# - Build Your Own Copilot Sample App and Hands-on-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot)
 - [Python - Movie Chatbot](https://github.com/AzureCosmosDB/Fabric-Conf-2024-Build-AI-Apps/tree/main/AzureCosmosDBforNoSQL)
 
-### Azure Cosmos DB for MongoDB
-
-Use the natively [integrated vector database in Azure Cosmos DB for MongoDB](mongodb/vcore/vector-search.md) (vCore architecture), which offers an efficient way to store, index, and search high-dimensional vector data directly alongside other application data. This approach removes the necessity of migrating your data to costlier alternative vector databases and provides a seamless integration of your AI-driven applications.
-
 #### Code samples
 
-- [Build Your Own Copilot for Azure Cosmos DB for MongoDB in C# with Semantic Kernel](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot)
-- [.NET tutorial - recipe chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
-- [C# RAG pattern - Integrate OpenAI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
-- [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
 - [Python Notebook - Vector database integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
 - [Python Notebook - LLM Caching integration through LangChain tutorial](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
 - [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)

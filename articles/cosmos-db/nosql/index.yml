@@ -86,7 +86,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Getting started with SQL queries
-            url: query/getting-started.md
+            url: /cosmos-db/query/overview
           - text: Optimize request costs
             url: ../optimize-cost-reads-writes.md
       - linkListType: how-to-guide

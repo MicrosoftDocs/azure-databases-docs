@@ -1,0 +1,149 @@
+### YamlMime:FAQ
+metadata:
+  title: Frequently asked questions
+  description: Get answers to frequently asked questions about Azure DocumentDB (with MongoDB compatibility).
+  author: seesharprun
+  ms.author: sidandrews
+  ms.topic: faq
+  ms.date: 09/18/2025
+  ai-usage: ai-generated
+title: Frequently asked questions about Azure DocumentDB (with MongoDB compatibility)
+summary: |
+  Get answers to frequently asked questions about Azure DocumentDB (with MongoDB compatibility).
+sections:
+  - name: General
+    questions:
+      - question: |
+          What is Azure DocumentDB?
+        answer: |
+          Azure DocumentDB is a fully managed NoSQL database service designed to support modern application development with high compatibility for MongoDB clients and tools. It provides a flexible schema, automatic indexing, built-in vector search capabilities, global distribution, and multiple performance tiers that separate compute from storage. For an introduction, see [Overview of Azure DocumentDB](overview.md).
+      - question: |
+          What workloads is Azure DocumentDB best suited for?
+        answer: |
+          Azure DocumentDB is optimized for transactional and operational NoSQL workloads, real-time analytics, high-scale web and mobile back-ends, and generative-AI scenarios that benefit from vector search. It supports high throughput, horizontal scaling, and global distribution for low-latency access.
+      - question: |
+          How does pricing work for Azure DocumentDB?
+        answer: |
+          Pricing depends on the performance tier (provisioned, autoscale, or serverless options where available), storage, backup retention, and extra features such as virtual network or private endpoints. For details and examples, see the Azure pricing calculator and pricing documentation.
+      - question: |
+          How do I get started with Azure DocumentDB?
+        answer: |
+          You can create a cluster from the Azure portal, CLI, Bicep, or Terraform. Quickstarts and tutorials are available in the docs (for example, [quickstart-portal.md](quickstart-portal.md) and [quickstart-bicep.md](quickstart-bicep.md)).
+      - question: |
+          Does Azure DocumentDB offer a service level agreement (SLA)?
+        answer: |
+          Yes. Azure DocumentDB provides service-level agreements covering availability for the database, compute, storage, and networking components. SLA details vary by configuration and region.
+      - question: |
+          How does Azure DocumentDB relate to Azure Cosmos DB?
+        answer: |
+          Azure DocumentDB was previously known as Azure Cosmos DB for MongoDB (vCore). It [became it's own distinct offering](https://devblogs.microsoft.com/cosmosdb/azure-documentdb-is-now-generally-available) to align with the open source [DocumentDB project](https://documentdb.io) that powers it. 
+  - name: Security
+    questions:
+      - question: |
+          How is data protected at rest in Azure DocumentDB?
+        answer: |
+          All data in Azure DocumentDB is encrypted at rest by default. You can use service-managed keys (SMK) or configure customer-managed keys (CMK) in Azure Key Vault for extra control and compliance. See [Encryption at rest](database-encryption-at-rest.md) for configuration and considerations.
+      - question: |
+          What transport-level encryption does Azure DocumentDB use?
+        answer: |
+          Azure DocumentDB enforces transport layer security (TLS) for all client and service connections. TLS protects data in transit between clients and the service; ensure your clients use current TLS versions and trusted root certificates.
+      - question: |
+          How do I manage authentication and access control?
+        answer: |
+          Azure DocumentDB supports native (built-in) authentication and Microsoft Entra ID integration for centralized identity and access management. You can create fine-grained database users, roles, and use managed identities for secure service-to-service authentication. See [Microsoft Entra ID authentication](how-to-connect-role-based-access-control.md) and [security best practices](security.md).
+      - question: |
+          Can I run Azure DocumentDB behind a firewall and Private Link?
+        answer: |
+          Yes. You can restrict public access using firewall rules and enable Azure Private Link to expose your cluster through private endpoints inside your virtual network. This setup enables secure, private connectivity from virtual network resources and on-premises networks. See [Use Azure Private Link](how-to-private-link.md) and [Manage public access](how-to-public-access.md).
+      - question: |
+          How should I manage encryption keys when using CMK?
+        answer: |
+          When you use CMK, you're responsible for key lifecycle management in Azure Key Vault. 
+
+          Follow best practices such as: 
+
+          - Enable logging and alerts on the Key Vault
+
+          - Lock the Key Vault resource
+
+          - Plan key rotation and backup
+
+          - Ensure network access to Key Vault is configured so Azure DocumentDB can retrieve the key.
+
+          For more information, see [Configure CMK](how-to-data-encryption.md).
+      - question: |
+          What are recommended security monitoring and logging practices?
+        answer: |
+          Enable diagnostic logging and send logs to Azure Monitor, Log Analytics, or your Security Information and Event Management (SIEM) solution. Audit administrative actions, monitor network flows, and configure alerts for suspicious behavior. Integrate with Microsoft Sentinel or other SIEMs for centralized incident detection.
+  - name: Connectivity
+    questions:
+      - question: |
+          How do clients connect to an Azure DocumentDB cluster?
+        answer: |
+          Clients connect using standard MongoDB wire-protocol drivers pointing to the cluster connection endpoint and port. You can connect over the public endpoint or through Private Link for private access. Refer to the quickstarts for driver examples (for example, [quickstart-nodejs.md](quickstart-nodejs.md)).
+      - question: |
+          What options exist for restricting network access?
+        answer: |
+          Use cluster-level firewall rules to restrict source IPs, enable Private Link to create private endpoints in your VNets, and configure network security groups and virtual network peering for fine-grained access control. See [Manage public access](how-to-public-access.md) and [Use Azure Private Link](how-to-private-link.md).
+      - question: |
+          Can I connect from on-premises networks?
+        answer: |
+          Yes. On-premises resources connected via VPN or ExpressRoute to a peered virtual network can reach Azure DocumentDB Private Link endpoints. Alternatively, you can use public endpoints with firewall rules, but private connectivity is recommended for production workloads.
+      - question: |
+          How do I configure connection strings and driver settings?
+        answer: |
+          Use the standard MongoDB connection string format supported by your driver. Include options for TLS, replica set (if applicable), and authentication mechanisms (username/password or Microsoft Entra ID). See the language-specific quickstarts for examples.
+      - question: |
+          What latency and throughput considerations affect connectivity?
+        answer: |
+          Network latency between clients and the cluster affects read/write latency. For global deployments, use regionally deployed clusters and read replicas to minimize latency. See [high-availability and replication best practices](high-availability-replication-best-practices.md) for guidance.
+  - name: MongoDB compatibility
+    questions:
+      - question: |
+          Which MongoDB versions and features does Azure DocumentDB support?
+        answer: |
+          Azure DocumentDB provides broad compatibility with MongoDB wire protocol and many server features. For more information about supported MongoDB Query Language (MQL) features, see [MongoDB Query Languge (MQL) feature compatibility](compatibility-query-language.md). For more information about MongoDB feature set and specific versions, see [MongoDB feature compatibility](compatibility-features.md).
+      - question: |
+          Can I migrate my existing MongoDB database to Azure DocumentDB?
+        answer: |
+          Yes. You can migrate using standard tools such as mongodump/mongorestore, mongoexport/mongoimport, or replication-based approaches. Review [migration-options.md](migration-options.md) for recommended strategies and considerations.
+      - question: |
+          Are MongoDB drivers and tools compatible with Azure DocumentDB?
+        answer: |
+          Most community MongoDB drivers and common tools work with Azure DocumentDB over the MongoDB wire protocol. For driver-specific configuration or feature gaps, consult the compatibility docs. Some server-side MongoDB extensions and incompatible storage engines aren't supported.
+      - question: |
+          Are there any differences in behavior I should expect after migration?
+        answer: |
+          Small differences can occur in certain administrative commands, server-side extensions, and edge-case behaviors. Test application workloads against Azure DocumentDB in a staging environment and consult the compatibility guidance to identify unsupported commands or behaviors.
+      - question: |
+          How do I verify that my application is compatible before migrating?
+        answer: |
+          Start by running integration tests using the same drivers and workloads against an Azure DocumentDB test cluster. Use migration tools to stage data and perform functional tests, monitor logs for compatibility errors, and consult the feature support matrix in the docs.
+  - name: Performance and scaling
+    questions:
+      - question: |
+          How do I scale performance in Azure DocumentDB?
+        answer: |
+          Scale by selecting higher performance tiers, increasing provisioned throughput or enabling autoscale, and by partitioning your data to ensure even distribution. Decoupling compute from storage allows independent scaling of resources.
+      - question: |
+          How does partitioning work and when should I shard my data?
+        answer: |
+          Azure DocumentDB uses partition keys to distribute data across physical partitions. Choose a partition key with high cardinality and even distribution for scalable throughput. See [partitioning.md](partitioning.md) and [how-to-index.md](how-to-index.md) for guidance.
+      - question: |
+          What are best practices for indexing and query performance?
+        answer: |
+          Use targeted indexes, avoid unbounded scans, apply wildcard/text indexes where appropriate, and review query plans to identify bottlenecks. Use the indexing docs for best practices and background indexing guidance.
+      - question: |
+          How do I monitor and troubleshoot performance issues?
+        answer: |
+          Enable diagnostics and metrics, use Azure Monitor and Query Store (if available) to capture slow queries, and review throughput, RU consumption (if applicable), and storage metrics. See [monitor-metrics.md](monitor-metrics.md) and [troubleshoot-common-issues.md](troubleshoot-common-issues.md).
+      - question: |
+          Can Azure DocumentDB handle high write or read throughput workloads?
+        answer: |
+          Yes—Azure DocumentDB is engineered for high throughput workloads when properly configured. Use appropriate partitioning, scale compute as needed, and consider replica placement and regional distribution to meet latency and throughput SLAs.
+additionalContent: |
+  ## Related content
+
+  - [Overview of Azure DocumentDB](overview.md)
+  - [Security best practices](security.md)
+  - [Pricing and calculator](https://azure.microsoft.com/pricing/)

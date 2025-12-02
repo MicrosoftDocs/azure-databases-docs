@@ -229,7 +229,7 @@ ms.custom: automatically generated
 
 
 
-### log_lock_failure
+### log_lock_failures
 
 | Attribute | Value |
 | --- | --- |
@@ -239,7 +239,7 @@ ms.custom: automatically generated
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation | [log_lock_failure](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-LOCK-FAILURE) |
+| Documentation | [log_lock_failures](https://www.postgresql.org/docs/18/runtime-config-logging.html#GUC-LOG-LOCK-FAILURES) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

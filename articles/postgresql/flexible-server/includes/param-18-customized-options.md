@@ -577,7 +577,7 @@ ms.custom: automatically generated
 | Description | List of extensions, separated by comma, that are allowlisted. If an extension is not in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -1334,6 +1334,91 @@ ms.custom: automatically generated
 
 
 
+### duckdb.max_memory
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The maximum memory DuckDB can use (e.g., 1GB). |
+| Data type | integer |
+| Default value | `4096` |
+| Allowed values | `1024-688128` |
+| Parameter type | static |
+| Documentation | [duckdb.max_memory](https://github.com/duckdb/pg_duckdb) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### duckdb.max_workers_per_postgres_scan
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of PostgreSQL workers used for a single Postgres scan. |
+| Data type | integer |
+| Default value | `2` |
+| Allowed values | `0-1024` |
+| Parameter type | static |
+| Documentation | [duckdb.max_workers_per_postgres_scan](https://github.com/duckdb/pg_duckdb) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### duckdb.memory_limit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | The maximum memory DuckDB can use (e.g., 1GB), alias for duckdb.max_memory |
+| Data type | integer |
+| Default value | `4096` |
+| Allowed values | `1024-688128` |
+| Parameter type | static |
+| Documentation | [duckdb.memory_limit](https://github.com/duckdb/pg_duckdb) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### duckdb.threads
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of DuckDB threads per Postgres backend. |
+| Data type | integer |
+| Default value | `-1` |
+| Allowed values | `-1-96` |
+| Parameter type | static |
+| Documentation | [duckdb.threads](https://github.com/duckdb/pg_duckdb) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### duckdb.worker_threads
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of DuckDB threads per Postgres backend, alias for duckdb.threads. |
+| Data type | integer |
+| Default value | `-1` |
+| Allowed values | `-1-96` |
+| Parameter type | static |
+| Documentation | [duckdb.worker_threads](https://github.com/duckdb/pg_duckdb) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgaadauth.enable_group_sync
 
 | Attribute | Value |
@@ -1938,7 +2023,7 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `15` |
 | Allowed values | `1-30` |
-| Parameter type | static |
+| Parameter type | dynamic |
 | Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 

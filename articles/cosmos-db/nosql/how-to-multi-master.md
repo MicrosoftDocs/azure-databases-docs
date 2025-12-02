@@ -125,15 +125,11 @@ const client = new CosmosClient({
 
 ## <a id="python"></a>Python SDK
 
-To enable multi-region writes in your application, set `connection_policy.UseMultipleWriteLocations` to `true`. Also, set `connection_policy.PreferredLocations` to the regions the data is replicated into ordered by preference. Ideally, the regions with shortest distance or best latency are listed first:
+To enable multi-region writes in your application, set `multiple_write_locations` to `True` in your client initialization, and set the `preferred_locations` in your client to the regions the data is replicated into ordered by preference. Ideally, the regions with shortest distance or best latency are listed first:
 
 ```python
-connection_policy = documents.ConnectionPolicy()
-connection_policy.UseMultipleWriteLocations = True
-connection_policy.PreferredLocations = [region]
-
-client = cosmos_client.CosmosClient(self.account_endpoint, {
-                                    'masterKey': self.account_key}, connection_policy, documents.ConsistencyLevel.Session)
+client = cosmos_client.CosmosClient(self.account_endpoint, self.account_key,
+                                    multiple_write_locations=True, preferred_locations=[region])
 ```
 
 ## <a id="go"></a>Go SDK

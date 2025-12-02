@@ -1,0 +1,131 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Real-time Multiplayer Game State Management Architecture</text>
+  
+  <!-- Player Devices Section -->
+  <text x="51" y="114" class="size-lg weight-bold">Player Devices</text>
+  
+  <!-- Mobile Device -->
+  <rect x="50" y="140" width="120" height="80" rx="10"/>
+  <text x="110" y="165" class="align-center">Mobile</text>
+  <text x="110" y="185" class="align-center">Game Client</text>
+  
+  <!-- PC Game Client -->
+  <rect x="50" y="240" width="120" height="80" rx="10"/>
+  <text x="110" y="265" class="align-center">PC</text>
+  <text x="110" y="285" class="align-center">Game Client</text>
+  
+  <!-- Console Game Client -->
+  <rect x="50" y="340" width="120" height="80" rx="10"/>
+  <text x="110" y="365" class="align-center">Console</text>
+  <text x="110" y="385" class="align-center">Game Client</text>
+  
+  <!-- Real-time Communication Layer -->
+  <text x="236" y="114" class="size-lg weight-bold">Real-time Communication</text>
+  
+  <!-- Azure SignalR Service -->
+  <rect x="280" y="200" width="140" height="120" rx="10"/>
+  <text x="350" y="225" class="weight-bold align-center">Azure SignalR</text>
+  <text x="350" y="245" class="align-center">Service</text>
+  <text x="350" y="275" class="align-center">• WebSocket</text>
+  <text x="350" y="295" class="align-center">• Real-time Updates</text>
+  
+  <!-- Backend Processing Layer -->
+  <text x="538" y="114" class="size-lg weight-bold">Backend Processing</text>
+  
+  <!-- Azure Kubernetes Service -->
+  <rect x="520" y="140" width="200" height="120" rx="10"/>
+  <text x="620" y="165" class="weight-bold align-center">Azure Kubernetes Service</text>
+  <text x="620" y="185" class="align-center">Game Server Pods</text>
+  <text x="620" y="215" class="align-center">• Matchmaking Service</text>
+  <text x="620" y="235" class="align-center">• Game Logic Processor</text>
+  
+  <!-- Data Storage Layer -->
+  <text x="558" y="490" class="size-lg weight-bold">Data Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="520" y="340" width="200" height="120" rx="10" class="highlight"/>
+  <text x="620" y="365" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="620" y="395" class="align-center color-inverse">• Player Sessions</text>
+  <text x="620" y="415" class="align-center color-inverse">• Game State Data</text>
+  <text x="620" y="435" class="align-center color-inverse">• Match History</text>
+  
+  <!-- Analytics Section -->
+  <text x="852" y="114" class="size-lg weight-bold">Analytics and Monitoring</text>
+  
+  <!-- Azure Functions -->
+  <rect x="850" y="140" width="200" height="80" rx="10"/>
+  <text x="950" y="165" class="align-center weight-bold">Azure Functions</text>
+  <text x="950" y="185" class="align-center">Event Processing</text>
+  
+  <!-- Azure Monitor -->
+  <rect x="853" y="322" width="200" height="80" rx="10"/>
+  <text x="953" y="347" class="align-center weight-bold">Azure Monitor</text>
+  <text x="953" y="367" class="align-center">Performance Metrics</text>
+  
+  <!-- Arrows -->
+  <!-- Players to SignalR -->
+  <path d="M 170 180 L 280 230"/>
+  <path d="M 170 280 L 280 260"/>
+  <path d="M 170 380 L 280 290"/>
+  <!-- SignalR to AKS -->
+  <path d="M 420 260 L 520 200"/>
+  <!-- AKS to DocumentDB -->
+  <path d="M 620 260 L 620 340"/>
+  <!-- AKS to Functions -->
+  <path d="M 720 180 L 850 180"/>
+  <!-- Functions to Monitor -->
+  <path d="M 951 220 L 951 320.3"/>
+  <!-- Data flow labels -->
+  <text x="196" y="246">Game Events</text>
+  <text x="445" y="258">WebSocket</text>
+  <text x="650" y="310">State Updates</text>
+  <text x="780" y="170">Events</text>
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0,0 10,3.5 0,7" fill="black"/>
+    </marker>
+  </defs>
+</svg>

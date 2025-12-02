@@ -1,7 +1,7 @@
 ---
 title: Quickstart - .NET
-titleSuffix: Azure Cosmos DB for MongoDB (RU)
-description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB (RU) data in this quickstart.
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Deploy a .NET web application that uses the client library for .NET to interact with Azure Cosmos DB for MongoDB data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -11,11 +11,11 @@ ms.topic: quickstart-sdk
 ms.date: 04/08/2025
 ms.custom: devx-track-csharp, devx-track-dotnet, devx-track-extended-azdevcli, sfi-image-nochange
 appliesto:
-- ✅ MongoDB (RU)
-# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
+- ✅ MongoDB
+# CustomerIntent: As a developer, I want to learn the basics of the .NET library so that I can build applications with Azure Cosmos DB for MongoDB.
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (RU) with .NET
+# Quickstart: Use Azure Cosmos DB for MongoDB with .NET
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 

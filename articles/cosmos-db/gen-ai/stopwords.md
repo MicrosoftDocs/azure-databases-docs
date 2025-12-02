@@ -23,9 +23,9 @@ When a text path is configured in both a [full text container and indexing polic
 
 ## Related content
 
-- [``FullTextContains`` system function](../nosql/query/fulltextcontains.md)
-- [``FullTextContainsAll`` system function](../nosql/query/fulltextcontainsall.md)
-- [``FullTextContainsAny`` system function](../nosql/query/fulltextcontainsany.md)
-- [``FullTextScore`` system function](../nosql/query/fulltextscore.md)
-- [``RRF`` system function](../nosql/query/rrf.md)
-- [``ORDER BY RANK`` clause](../nosql/query/order-by-rank.md)
+- [``FullTextContains`` system function](/cosmos-db/query/fulltextcontains)
+- [``FullTextContainsAll`` system function](/cosmos-db/query/fulltextcontainsall)
+- [``FullTextContainsAny`` system function](/cosmos-db/query/fulltextcontainsany)
+- [``FullTextScore`` system function](/cosmos-db/query/fulltextscore)
+- [``RRF`` system function](/cosmos-db/query/rrf)
+- [``ORDER BY RANK`` clause](/cosmos-db/query/order-by-rank)

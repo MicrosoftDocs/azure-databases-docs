@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Archiving |
-| Description | Sets the shell command that will be called to archive a WAL file. |
+| Description | Sets the shell command that will be called to archive a WAL file. This is used only if \"archive_library\" is not set. |
 | Data type | string |
 | Default value | `BlobLogUpload.sh %f %p` |
 | Allowed values | `BlobLogUpload.sh %f %p` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Archiving |
-| Description | Sets the library that will be called to archive a WAL file. |
+| Description | Sets the library that will be called to archive a WAL file. An empty string indicates that \"archive_command\" should be used. |
 | Data type | string |
 | Default value | |
 | Allowed values | |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Archiving |
-| Description | Allows archiving of WAL files using archive_command. |
+| Description | Allows archiving of WAL files using \"archive_command\". |
 | Data type | enumeration |
 | Default value | `always` |
 | Allowed values | `always` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Archiving |
-| Description | Forces a switch to the next WAL file if a new file has not been started within N seconds. |
+| Description | Sets the amount of time to wait before forcing a switch to the next WAL file. |
 | Data type | integer |
 | Default value | `300` |
 | Allowed values | `300` |

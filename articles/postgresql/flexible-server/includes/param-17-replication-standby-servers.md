@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Standby Servers |
-| Description | Enables/disables the option whether hot standby needs to send feedback to the primary or upstream standby about queries currently executing on the standby. |
+| Description | Allows feedback from a hot standby to the primary that will avoid query conflicts. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Standby Servers |
-| Description | Sets the maximum delay before canceling queries that conflict when a hot standby server is processing archived WAL data. |
+| Description | Sets the maximum delay before canceling queries when a hot standby server is processing archived WAL data. |
 | Data type | integer |
 | Default value | `30000` |
 | Allowed values | `-1-2147483647` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Standby Servers |
-| Description | Sets the maximum delay before canceling queries that conflict when a hot standby server is processing streamed WAL data. |
+| Description | Sets the maximum delay before canceling queries when a hot standby server is processing streamed WAL data. |
 | Data type | integer |
 | Default value | `30000` |
 | Allowed values | `-1-2147483647` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Standby Servers |
-| Description | Enables physical standby to synchronize logical failover slots from the primary server. |
+| Description | Enables a physical standby to synchronize logical failover replication slots from the primary server. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Replication / Standby Servers |
-| Description | Sets the maximum interval between WAL receiver status reports to the primary. |
+| Description | Sets the maximum interval between WAL receiver status reports to the sending server. |
 | Data type | integer |
 | Default value | `10` |
 | Allowed values | `0-2147483` |

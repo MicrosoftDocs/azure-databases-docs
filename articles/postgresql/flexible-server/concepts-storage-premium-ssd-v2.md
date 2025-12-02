@@ -1,8 +1,8 @@
 ---
 title: Premium SSD v2
 description: This article describes about Premium ssd v2 storage option for an Azure Database for PostgreSQL flexible server instance.
-author: nachoalonsoportillo
-ms.author: ialonso
+author: kabharati  
+ms.author: kabharati
 ms.reviewer: maghan
 ms.custom: references_regions
 ms.date: 01/16/2025
@@ -40,34 +40,7 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 
 ## Premium SSD v2 - High availability
 
-High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. This capability is initially available in the following regions.
-
-*Central US, East Asia,  East US 2*
-
-
-#### Enable premium SSD v2 high availability preview
-
-High availability is an opt-in feature that can be enabled at the subscription level using the following steps. As this is a preview feature, it is recommended for use only with non-production workloads.
-
-1. In the **Search** bar, type **Preview features** and select it from the results.
-
- 
- :::image type="content" source="./media/concepts-storage/preview-feature.png" alt-text="Screenshot of the preview page." lightbox="./media/concepts-storage/preview-feature.png":::
-
-  
-2. Use the **Filter by name** field, search for **Premium SSD v2 High Availability** and Select the **Subscription** 
-
- 
-   :::image type="content" source="./media/concepts-storage/registration.png" alt-text="Screenshot of the SSD v2 registration page." lightbox="./media/concepts-storage/registration.png":::
-
-4.  Select the feature and click **Register**.
-
- 
-5. Validate that the **State** changed to **Registered**.
-
-
-   :::image type="content" source="./media/concepts-storage/registration-validation.png" alt-text="Screenshot of the  registration validation page." lightbox="./media/concepts-storage/registration-validation.png":::
-
+High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options using this storage tier. 
 
 
 #### Premium SSD v2 - Limitations during preview
@@ -78,15 +51,9 @@ High availability is an opt-in feature that can be enabled at the subscription l
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
 
-- Premium SSD v2 High availability can only be configured for servers created on or after July 1, 2025. Currently, SSD v2 High availability is supported in Central US,  East Asia, and East US 2 regions.
-  
--  Premium SSD v2 High availability can only be configured for servers created with PG version 16.
-  
 - Premium SSD V2 can only be enabled in the following regions:
    *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.  
 
-- Point-in-time restore (PITR) from Premium SSD v2 to Premium SSD (v1) is currently not supported when the AFEC flag is enabled for accessing the High Availability (HA) preview feature.
-  
 - Premium SSD v2 can be provisioned using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 is not supported.
   
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.

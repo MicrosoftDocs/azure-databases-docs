@@ -138,6 +138,7 @@
         ]
       },
       "feedback_product_url": {
+        "articles/documentdb/**/*": "https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858",
         "articles/cosmos-db/**/*.md": "https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858",
         "articles/managed-instance-apache-cassandra/**/*.md": "https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858?c=e6e5c7c4-0d25-ec11-b6e6-000d3a4f0858",
         "articles/dms/**/*.md": "https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0",
@@ -145,6 +146,7 @@
         "articles/postgresql/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
       },
       "feedback_help_link_url": {
+        "articles/documentdb/**/*": "/answers/tags/187/azure-cosmos-db/",
         "articles/cosmos-db/**/*": "/answers/tags/187/azure-cosmos-db/",
         "articles/dms/**/*": "/answers/tags/37/azure-database-migration/",
         "articles/managed-instance-apache-cassandra/**/*": "/answers/tags/187/azure-cosmos-db/",
@@ -161,22 +163,24 @@
         ]
       },
       "ms.service": {
+        "articles/documentdb/**/*": "azure-documentdb",
         "articles/cosmos-db/**/*": "azure-cosmos-db"
       },
       "ms.subservice": {
         "articles/cosmos-db/nosql/**/*": "nosql",
         "articles/cosmos-db/mongodb/**/*": "mongodb",
-        "articles/cosmos-db/mongodb/vcore/**/*": "mongodb-vcore",
         "articles/cosmos-db/postgresql/**/*": "postgresql",
         "articles/cosmos-db/cassandra/**/*": "apache-cassandra",
         "articles/cosmos-db/table/**/*": "table",
         "articles/cosmos-db/gremlin/**/*": "apache-gremlin"
       },
       "author": {
+        "articles/documentdb/**/includes/**/*.md": "seesharprun",
         "articles/cosmos-db/**/includes/**/*.md": "seesharprun",
         "articles/cosmos-db/gremlin/**/*": "seesharprun"
       },
       "ms.author": {
+        "articles/documentdb/**/includes/**/*.md": "sidandrews",
         "articles/cosmos-db/**/includes/**/*.md": "sidandrews",
         "articles/cosmos-db/gremlin/**/*": "sidandrews"
       },
@@ -184,6 +188,10 @@
         "articles/cosmos-db/gremlin/**/*": "mansha"
       },
       "searchScope": {
+        "articles/documentdb/**/*": [
+          "Azure",
+          "Azure DocumentDB"
+        ],
         "articles/cosmos-db/**/*": [
           "Azure",
           "Azure Cosmos DB"
@@ -222,6 +230,8 @@
         ]
       },
       "titleSuffix": {
+        "articles/documentdb/**/*.md": "Azure DocumentDB",
+        "articles/documentdb/**/*.yml": "Azure DocumentDB",
         "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL",
         "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL",
         "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL",
@@ -294,7 +304,8 @@
           "articles/postgresql/migrate/migration-service/*.*",
           "articles/postgresql/flexible-server/includes/param-13-customized-options.md",
           "articles/postgresql/flexible-server/includes/param-18-customized-options.md",
-          "articles/postgresql/flexible-server/includes/server-parameters-table.md"
+          "articles/postgresql/flexible-server/includes/server-parameters-table.md",
+          "articles/postgresql/flexible-server/**/*.md"
         ]
       }
     }

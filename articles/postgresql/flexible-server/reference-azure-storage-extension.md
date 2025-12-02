@@ -4,7 +4,7 @@ description: Learn everything about the functions provided by the Azure Storage 
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/26/2025
+ms.date: 08/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
@@ -363,11 +363,12 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
-| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
-| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
+| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.parquet`, it assumes `parquet`. If ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
 | `binary` | | Binary PostgreSQL COPY format. |
+| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
+| `parquet` | | Parquet format. |
 | `text` \| `xml` \| `json` | | A file containing a single text value. |
+| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
 
@@ -376,8 +377,12 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
 | `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
-| `gzip` | | Forces using gzip decoder to decompress the blob. |
-| `none` | | Forces to treat the blob as one which doesn't require decompression. |
+| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder.|
+| `gzip` | | Forces using gzip compression algorithm to compress the blob. |
+| `lz4` | | Forces using lz4 compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `none` | | Forces to not compress the blob. |
+| `snappy` | | Forces using snappy compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `zstd` | | Forces using zstd compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
 
 The extension doesn't support any other compression types.
 
@@ -457,10 +462,11 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
 | `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
-| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
-| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 | `binary` | | Binary PostgreSQL COPY format. |
+| `csv` | | Comma-separated values format used by PostgreSQL COPY. |
+| `parquet` | | Parquet format. |
 | `text` \| `xml` \| `json` | | A file containing a single text value. |
+| `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
 
@@ -469,8 +475,12 @@ The URI for a container is similar to:
 | **Format** | **Default** | **Description**                                                                                                                                                                      |
 | --- | --- | --- |
 | `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
-| `gzip` | | Forces using gzip decoder to decompress the blob. |
-| `none` | | Forces to treat the blob as one which doesn't require decompression. |
+| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder.|
+| `gzip` | | Forces using gzip compression algorithm to compress the blob. |
+| `lz4` | | Forces using lz4 compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `none` | | Forces to not compress the blob. |
+| `snappy` | | Forces using snappy compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `zstd` | | Forces using zstd compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
 
 The extension doesn't support any other compression types.
 
@@ -482,59 +492,9 @@ The extension doesn't support any other compression types.
 
 `VOID`
 
-### azure_storage.options_csv_get
-
-Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a csv file.
-
-```sql
-azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
-```
-
-#### Permissions
-
-Any user or role can invoke this function.
-
-#### Arguments
-
-##### delimiter
-
-`text` the character that separates columns within each row (line) of the file. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY delimiter must be a single one-byte character` error.
-
-##### null_string
-
-`text` the string that represents a null value. The default is \N (backslash-N) in text format, and an unquoted empty string in CSV format. You might prefer an empty string even in text format for cases where you don't want to distinguish nulls from empty strings.
-
-##### header
-
-`boolean` flag that indicates if  the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
-
-##### quote
-
-`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
-
-##### escape
-
-`text` the character that should appear before a data character that matches the QUOTE value. The default is the same as the QUOTE value (so that the quoting character is doubled if it appears in the data). It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY escape must be a single one-byte character` error.
-
-##### force_not_null
-
-`text[]` don't match the specified columns' values against the null string. In the default case where the null string is empty, it means that empty values are read as zero-length strings rather than nulls, even when they aren't quoted.
-
-##### force_null
-
-`text[]` match the specified columns' values against the null string, even if quoted, and if a match is found, set the value to NULL. In the default case where the null string is empty, it converts a quoted empty string into NULL.
-
-##### content_encoding
-
-`text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
-
-#### Return type
-
-`jsonb`
-
 ### azure_storage.options_copy
 
-Function that acts as a utility function, which can be called as a parameter within `blob_get`. It acts as a helper function for [options_csv_get](#azure_storageoptions_csv_get), [options_tsv](#azure_storageoptions_tsv), and [options_binary](#azure_storageoptions_binary).
+Function that acts as a utility function, which can be called as a parameter within `blob_get`. It acts as a helper function for [options_parquet](#azure_storageoptions_parquet), [options_csv_get](#azure_storageoptions_csv_get), [options_tsv](#azure_storageoptions_tsv), and [options_binary](#azure_storageoptions_binary).
 
 ```sql
 azure_storage.options_copy(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_quote text[] DEFAULT NULL::text[], force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
@@ -569,6 +529,74 @@ Any user or role can invoke this function.
 ##### force_quote
 
 `text[]` forces quoting to be used for all non-NULL values in each specified column. NULL output is never quoted. If * is specified, non-NULL values are quoted in all columns.
+
+##### force_not_null
+
+`text[]` don't match the specified columns' values against the null string. In the default case where the null string is empty, it means that empty values are read as zero-length strings rather than nulls, even when they aren't quoted.
+
+##### force_null
+
+`text[]` match the specified columns' values against the null string, even if quoted, and if a match is found, set the value to NULL. In the default case where the null string is empty, it converts a quoted empty string into NULL.
+
+##### content_encoding
+
+`text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
+
+#### Return type
+
+`jsonb`
+
+### azure_storage.options_parquet
+
+Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a parquet file.
+
+```sql
+azure_storage.options_parquet();
+```
+
+#### Permissions
+
+Any user or role can invoke this function.
+
+#### Arguments
+
+#### Return type
+
+`jsonb`
+
+### azure_storage.options_csv_get
+
+Function that acts as a utility function, which can be called as a parameter within `blob_get`, and is useful for decoding the content of a csv file.
+
+```sql
+azure_storage.options_csv_get(delimiter text DEFAULT NULL::text, null_string text DEFAULT NULL::text, header boolean DEFAULT NULL::boolean, quote text DEFAULT NULL::text, escape text DEFAULT NULL::text, force_not_null text[] DEFAULT NULL::text[], force_null text[] DEFAULT NULL::text[], content_encoding text DEFAULT NULL::text);
+```
+
+#### Permissions
+
+Any user or role can invoke this function.
+
+#### Arguments
+
+##### delimiter
+
+`text` the character that separates columns within each row (line) of the file. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY delimiter must be a single one-byte character` error.
+
+##### null_string
+
+`text` the string that represents a null value. The default is \N (backslash-N) in text format, and an unquoted empty string in CSV format. You might prefer an empty string even in text format for cases where you don't want to distinguish nulls from empty strings.
+
+##### header
+
+`boolean` flag that indicates if  the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
+
+##### quote
+
+`text` the quoting character to be used when a data value is quoted. The default is double-quote. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY quote must be a single one-byte character` error.
+
+##### escape
+
+`text` the character that should appear before a data character that matches the QUOTE value. The default is the same as the QUOTE value (so that the quoting character is doubled if it appears in the data). It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY escape must be a single one-byte character` error.
 
 ##### force_not_null
 

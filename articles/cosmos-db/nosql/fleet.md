@@ -15,9 +15,7 @@ ms.custom:
   - build-2025
 ---
 
-# Azure Cosmos DB fleets overview (preview)
-
-[!INCLUDE[Preview](includes/notice-preview.md)]
+# Azure Cosmos DB fleets overview
 
 Building multitenant applications often requires trade-offs between cost, performance, and security isolation. Customers who need strong performance and security isolation in B2B applications often isolate each tenant with a dedicated database account. However, as the application grows and more tenants onboard, capacity management and observability for these resources at scale becomes difficult.
 
@@ -42,22 +40,25 @@ There are a few key concepts to understand:
 
 - **[Pooling](fleet-pools.md)**: This setting is an optional setting that can be configured at the fleetspace level when using fleets. You can set pool RU/s which are the total RU/s available within a fleetspace that any resource in the fleets’ database accounts can use.  
 
-- **Fleetspace account\[s\]**: These accounts are database accounts within a fleetspace in a fleet. When pooling is configured for the fleetspace, these resources consume RU/s from the pool.
+- **Fleetspace account[s]**: These accounts are database accounts within a fleetspace in a fleet. When pooling is configured for the fleetspace, these resources consume RU/s from the pool.
 
 - **Fleet Analytics**: Offers cost, usage, and settings data for all accounts within a fleet aggregated at a one-hour grain for trend analysis and integrated with Fabric OneLake/ADLS storage accounts.
 
 :::image source="media/fleet/hierarchy.png" alt-text="Diagram of the resource hierarchy of a fleet, fleetspaces, and pools.":::
 
-## Current limitations
+## Default limits
 
 | | Limit |
 | --- | --- |
-| **Maximum number of database accounts per fleetspace** | `100` |
-| **Maximum pool request units per second (RU/s)** | `1,000,000 RU/s` |
+| **Maximum number of database accounts per fleetspace** | `1000`¹ |
+| **Maximum pool request units per second (RU/s)** | `1,000,000 RU/s`¹ |
+| **Maximum pool request units a partition can consume (RU/s)** | `5,000 RU/s`¹ |
 
-## Register for the preview
+¹To increase these limits, please file an Azure Support ticket.
 
-To get started with Azure Cosmos DB fleets, register for the **Azure Cosmos DB fleet** preview feature flag in the **Preview Features** section of your Azure subscription in the Azure portal. For more information, see [access Azure Cosmos DB preview features](../access-previews.md).
+## Getting started
+
+To get started with Azure Cosmos DB fleets, create a fleet [here](https://portal.azure.com/#view/Microsoft_Azure_DocumentDB/CreateFleet.ReactView).
 
 Creating fleets, fleetspaces, and adding database accounts can be done via the Azure portal or the Azure CLI.
 

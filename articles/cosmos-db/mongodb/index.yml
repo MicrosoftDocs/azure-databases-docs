@@ -11,7 +11,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.subservice: mongodb
   ms.topic: landing-page
-  ms.date: 06/11/2025
+  ms.date: 10/17/2025
 landingContent:
   - title: About API for MongoDB
     linkLists:
@@ -65,6 +65,10 @@ landingContent:
             url: connect-using-robomongo.md
   - title: Migrate existing MongoDB data
     linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Migrate to Azure DocumentDB
+            url: how-to-migrate-documentdb.md
       - linkListType: architecture
         links:
           - text: Premigration guide

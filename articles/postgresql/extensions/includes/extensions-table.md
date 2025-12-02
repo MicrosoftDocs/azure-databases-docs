@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 09/08/2025
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -75,16 +75,16 @@ ms.custom:
 
 ## anon
 
-[anon](https://postgresql-anonymizer.readthedocs.io/en/stable) (Preview) provides data anonymization tools.
+[anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 2.4.0 <sup>*</sup> |
-| 17 | 1.3.2 <sup>*</sup> |
-| 16 | 1.3.2 <sup>*</sup> |
-| 15 | 1.3.2 <sup>*</sup> |
-| 14 | 1.3.2 <sup>*</sup> |
-| 13 | 1.3.2 <sup>*</sup> |
+| 17 | 2.4.0 <sup>*</sup> |
+| 16 | 2.4.0 <sup>*</sup> |
+| 15 | 2.4.0 <sup>*</sup> |
+| 14 | 2.4.0 <sup>*</sup> |
+| 13 | 2.4.0 <sup>*</sup> |
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
@@ -127,12 +127,12 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.6 <sup>*</sup> |
-| 17 | 1.6 <sup>*</sup> |
-| 16 | 1.6 <sup>*</sup> |
-| 15 | 1.6 <sup>*</sup> |
-| 14 | 1.6 <sup>*</sup> |
-| 13 | 1.6 <sup>*</sup> |
+| 18 | 1.7 <sup>*</sup> |
+| 17 | 1.7 <sup>*</sup> |
+| 16 | 1.7 <sup>*</sup> |
+| 15 | 1.7 <sup>*</sup> |
+| 14 | 1.7 <sup>*</sup> |
+| 13 | 1.7 <sup>*</sup> |
 | 12 | 1.6 <sup>*</sup> |
 | 11 | Not supported |
 
@@ -201,6 +201,22 @@ ms.custom:
 | 11 | 1.5 |
 
 
+## credcheck
+
+[credcheck](https://github.com/HexaCluster/credcheck) provides few general credential checks, which will be evaluated during the user creation, during the password change and user renaming.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 3.0.0 <sup>*</sup> |
+| 17 | 3.0.0 <sup>*</sup> |
+| 16 | 3.0.0 <sup>*</sup> |
+| 15 | 3.0.0 <sup>*</sup> |
+| 14 | 3.0.0 <sup>*</sup> |
+| 13 | 3.0.0 <sup>*</sup> |
+| 12 | Not supported |
+| 11 | Not supported |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -375,6 +391,22 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.3 |
 | 12 | 1.2 |
 | 11 | 1.2 |
+
+
+## ip4r
+
+[ip4r](https://github.com/RhodiumToad/ip4r) provides a set of data types for IPv4 and IPv6 network addresses.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 2.4 |
+| 17 | 2.4 |
+| 16 | 2.4 |
+| 15 | 2.4 |
+| 14 | 2.4 |
+| 13 | 2.4 |
+| 12 | Not supported |
+| 11 | Not supported |
 
 
 ## isn
@@ -561,15 +593,31 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | Not supported |
-| 17 | 0.6.3 |
-| 16 | 0.6.3 |
-| 15 | 0.6.3 |
-| 14 | 0.6.3 |
+| 17 | 0.6.4 |
+| 16 | 0.6.4 |
+| 15 | 0.6.4 |
+| 14 | 0.6.4 |
 | 13 | Not supported |
 | 12 | Not supported |
 | 11 | Not supported |
 
 
+## pg_duckdb
+
+[pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 1.0.0 <sup>*</sup> |
+| 17 | 1.0.0 <sup>*</sup> |
+| 16 | 1.0.0 <sup>*</sup> |
+| 15 | 1.0.0 <sup>*</sup> |
+| 14 | 1.0.0 <sup>*</sup> |
+| 13 | Not supported |
+| 12 | Not supported |
+| 11 | Not supported |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -740,11 +788,11 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 1.9 <sup>*</sup> |
-| 17 | 1.7 <sup>*</sup> |
-| 16 | 1.6 <sup>*</sup> |
-| 15 | 1.6 <sup>*</sup> |
-| 14 | 1.5 <sup>*</sup> |
-| 13 | 1.5 <sup>*</sup> |
+| 17 | 1.9 <sup>*</sup> |
+| 16 | 1.9 <sup>*</sup> |
+| 15 | 1.9 <sup>*</sup> |
+| 14 | 1.9 <sup>*</sup> |
+| 13 | 1.9 <sup>*</sup> |
 | 12 | 1.5 <sup>*</sup> |
 | 11 | 1.5 <sup>*</sup> |
 
@@ -980,12 +1028,12 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.3 |
-| 17 | 3.3 |
-| 16 | 3.3 |
-| 15 | 3.3 |
-| 14 | 3.3 |
-| 13 | 3.3 |
+| 18 | 3.4 |
+| 17 | 3.4 |
+| 16 | 3.4 |
+| 15 | 3.4 |
+| 14 | 3.4 |
+| 13 | 3.4 |
 | 12 | 3.3 |
 | 11 | 3.3 |
 
@@ -1061,9 +1109,9 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | Not supported |
-| 17 | 2.17.2 <sup>*</sup> |
-| 16 | 2.15.3 <sup>*</sup> |
-| 15 | 2.15.3 <sup>*</sup> |
+| 17 | 2.22.0 <sup>*</sup> |
+| 16 | 2.22.0 <sup>*</sup> |
+| 15 | 2.22.0 <sup>*</sup> |
 | 14 | 2.15.3 <sup>*</sup> |
 | 13 | 2.15.3 <sup>*</sup> |
 | 12 | 2.10.0 <sup>*</sup> |
@@ -1156,7 +1204,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 0.8.0 |
+| 18 | 0.8.1 |
 | 17 | 0.8.0 |
 | 16 | 0.8.0 |
 | 15 | 0.8.0 |

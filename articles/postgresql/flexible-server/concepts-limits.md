@@ -4,7 +4,7 @@ description: This article describes limits in Azure Database for PostgreSQL, suc
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 09/26/2024
+ms.date: 11/13/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -93,6 +93,14 @@ The following sections list considerations for what is and isn't supported for y
 - We recommend setting alert rules for `storage used` or `storage percent` when they exceed certain thresholds so that you can proactively take action such as increasing the storage size. For example, you can set an alert if the storage percentage exceeds 80% usage.
 - If you're using logical replication, you must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the write-ahead logging (WAL) files accumulate in the primary and fill up the storage. If the storage exceeds a certain threshold and if the logical replication slot isn't in use (because of an unavailable subscriber), an Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. This action releases accumulated WAL files and prevents your server from becoming unavailable because the storage is filled.
 - We don't support the creation of tablespaces. If you're creating a database, don't provide a tablespace name. An Azure Database for PostgreSQL flexible server instance uses the default tablespace that the template database inherits. It's unsafe to provide a tablespace like the temporary one, because we can't ensure that such objects will remain persistent after events like server restarts and high-availability (HA) failovers.
+- Orphaned Data Files and Disk Usage Discrepancies: In rare cases, PostgreSQL may leave behind orphaned data files on disk—files that no longer have corresponding entries in the database's system catalog (which tracks all tables and data). This can happen if a table is created and populated within a transaction that fails to complete successfully (e.g., due to a server crash or interruption), resulting in a mismatch between the database-reported size and actual disk usage. This behavior is from the PostgreSQL community codebase and is not specific to Azure. The PostgreSQL community is aware of the issue and is exploring enhancements for automatic cleanup in future releases. For more details, see: [PostgreSQL: Orphaned Files in PostgreSQL](https://www.postgresql.org/message-id/CAE9k0Pno%3DMns7J5HA4%2BbbXzb%3DyCZnCtSF_wf1ZipCQxardKDjA%40mail.gmail.com). This may lead to unexpectedly high disk or storage consumption.
+  - **How to Detect**: Compare the database-reported size (using queries like `SELECT pg_database_size('your_database')`) with [Azure portal metrics](/azure/postgresql/flexible-server/concepts-monitoring) for actual disk usage. If there's a significant discrepancy, orphaned files might be the cause. If so:
+    - Run [VACUUM FULL](https://www.postgresql.org/docs/current/routine-vacuuming.html) on affected tables to reclaim space (note: this is resource-intensive, requires a table lock, and may require downtime).
+    - Alternatively, use tools like [pg_repack](/azure/postgresql/flexible-server/how-to-perform-fullvacuum-pg-repack) or [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) extensions for reorganization with no downtime, but test in a non-production environment first.
+    - Monitor via [Azure portal metrics](/azure/postgresql/flexible-server/concepts-monitoring) for disk usage thresholds. If the issue persists or you're unsure, contact Azure Support for assistance.
+  - **How to Prevent**: Ensure transactions are properly managed in your applications to minimize incomplete operations. Regularly monitor disk usage through the [Azure portal metrics](/azure/postgresql/flexible-server/concepts-monitoring). Upgrading to the latest supported PostgreSQL version may include community fixes for related issues.
+
+
 
 ### Networking
 

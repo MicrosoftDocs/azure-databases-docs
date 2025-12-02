@@ -11,7 +11,6 @@ ai-usage: ai-assisted
 applies-to:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin
@@ -56,7 +55,7 @@ Based on your workload, you must choose the API that fits your requirement. The 
 
 ## API for NoSQL
 
-The Azure Cosmos DB API for NoSQL stores data in document format. It offers the best end-to-end experience as we have full control over the interface, service, and the SDK client libraries. Any new feature that is rolled out to Azure Cosmos DB is first available on API for NoSQL accounts. NoSQL accounts provide support for querying items using the Structured Query Language (SQL) syntax, one of the most familiar and popular query languages to query JSON objects. To learn more, see the [Azure Cosmos DB API for NoSQL](/training/modules/intro-to-azure-cosmos-db-core-api/) training module and [getting started with SQL queries](nosql/query/getting-started.md) article.
+The Azure Cosmos DB API for NoSQL stores data in document format. It offers the best end-to-end experience as we have full control over the interface, service, and the SDK client libraries. Any new feature that is rolled out to Azure Cosmos DB is first available on API for NoSQL accounts. NoSQL accounts provide support for querying items using the Structured Query Language (SQL) syntax, one of the most familiar and popular query languages to query JSON objects. To learn more, see the [Azure Cosmos DB API for NoSQL](/training/modules/intro-to-azure-cosmos-db-core-api/) training module and [getting started with SQL queries](/cosmos-db/query/overview) article.
 
 If you're migrating from other databases such as Oracle, DynamoDB, HBase, etc. and if you want to use the modernized technologies to build your apps, API for NoSQL is the recommended option. API for NoSQL supports analytics and offers performance isolation between operational and analytical workloads.
 

@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Error Handling |
-| Description | Terminates session on any error. |
+| Description | Terminate session on any error. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

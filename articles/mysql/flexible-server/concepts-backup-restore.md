@@ -38,7 +38,7 @@ If a scheduled backup fails, our backup service tries every 20 minutes to take a
 
 To enhance the frequency of automated daily backups, you can increase the backup interval. This adjustment is particularly beneficial when anticipating large transactions, as it significantly reduces restore time by reducing the no. of binlogs that needs to be replayed during point-in-time restore operation. In a typical Point-in-Time Restore (PITR) process, the system first restores data from the nearest full snapshot (taken daily) and then replays binary logs (captured every 5 minutes) to reach the exact restore time. If the target restore time is far from the snapshot, a large number of binlogs need to be replayed, which can significantly increase the restore duration. This new feature optimizes the process by introducing more frequent snapshots, thereby reducing the number of binlogs that need to be replayed and minimizing overall restore time.
 
-The feature also comes with a a new snapshot backup trimming logic that helps manage backups more efficiently by keeping all snapshots from the last 24 hours and only one snapshot per day for older backups. This ensures maximum flexibility and coverage for recent Point-in-Time Restore (PITR) operations. At the same time, it helps optimize backup costs by ensuring that increasing the snapshot frequency does not significantly increase overall backup storage cost even if back interval is set to a value other than 24 hours.
+The feature also comes with a new snapshot backup trimming logic that helps manage backups more efficiently by keeping all snapshots from the last 24 hours and only one snapshot per day for older backups. This ensures maximum flexibility and coverage for recent Point-in-Time Restore (PITR) operations. At the same time, it helps optimize backup costs by ensuring that increasing the snapshot frequency does not significantly increase overall backup storage cost even if back interval is set to a value other than 24 hours.
 
 To modify the backup interval, navigate to the **Settings > Compute + Storage** section and set the **Backup Interval** field accordingly. While the default interval is set to 24 hours, it can be adjusted to either 12 or 6 hours. 
 
@@ -186,15 +186,6 @@ Azure Backup and Azure Database for MySQL Flexible Server services have built an
 - Support for LTR creation and management through Azure CLI is currently not supported.
 
 For more information about performing a long-term backup, visit the [how-to guide](/azure/backup/backup-azure-mysql-flexible-server)
-
-## On-demand backup and Export (preview)
-
-> [!NOTE]
-> The **"On-Demand Backup and Export"** feature in Azure Database for MySQL Flexible Server, currently in preview, has been temporarily paused. This decision was made to address certain technical blockers identified during the preview phase, which impact the restorability of exported backups. As a result, exporting backups to external storage accounts will not be available until further notice.
-
-Azure Database for MySQL Flexible server now offers the ability to trigger an on-demand at-moment physical backup of the server and export it to an Azure storage account (Azure blob storage). Once exported, these backups can be used for data recovery, migration, and redundancy. These exported physical backup files can be used to restore back to an on-prem MySQL server to help meet auditing/compliance/archival needs of an organization. The feature is currently in public preview and available only in public cloud regions.
-
-For more information regarding export backup, visit the [how-to guide](how-to-trigger-on-demand-backup.md)
 
 ## Frequently Asked Questions (FAQs)
 

@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the output format for values of type bytea. Valid values are hex (the default) and escape (the traditional PostgreSQL format). |
+| Description | Sets the output format for bytea. |
 | Data type | enumeration |
 | Default value | `hex` |
 | Allowed values | `escape,hex` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Checks function bodies during CREATE FUNCTION. |
+| Description | Check routine bodies during CREATE FUNCTION and CREATE PROCEDURE. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Controls the message levels that are sent to the client. |
+| Description | Sets the message levels that are sent to the client. Each level includes all the levels that follow it. The later the level, the fewer messages are sent. |
 | Data type | enumeration |
 | Default value | `notice` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,log,notice,warning,error` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the default tablespace to create tables and indexes in. |
+| Description | Sets the default tablespace to create tables and indexes in. An empty string selects the database's default tablespace. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z._]*` |
@@ -117,8 +117,8 @@ ms.custom: automatically generated
 | Category | Client Connection Defaults / Statement Behavior |
 | Description | Sets the default compression method for compressible values. |
 | Data type | enumeration |
-| Default value | `pglz` |
-| Allowed values | `pglz` |
+| Default value | `lz4` |
+| Allowed values | `lz4` |
 | Parameter type | read-only |
 | Documentation | [default_toast_compression](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TOAST-COMPRESSION) |
 
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | This parameter controls the default deferrable status of each new transaction. It has no effect on read-write transactions or those operating at isolation levels lower than serializable. |
+| Description | Sets the default deferrable status of new transactions. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | This parameter controls the default isolation level of each new transaction. The default is 'read committed'. |
+| Description | Sets the transaction isolation level of each new transaction. |
 | Data type | enumeration |
 | Default value | `read committed` |
 | Allowed values | `serializable,repeatable read,read committed,read uncommitted` |
@@ -166,7 +166,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the default read-only status of each new transaction. |
+| Description | Sets the default read-only status of new transactions. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Enable/Disable event triggers for debugging purpose. |
+| Description | Enables event triggers. When enabled, event triggers will fire for all applicable statements. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the maximum allowed duration of any idling transaction. |
+| Description | Sets the maximum allowed idle time between queries, when in a transaction. A value of 0 turns off the timeout. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -234,7 +234,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the maximum allowed idle time between queries, when not in a transaction. |
+| Description | Sets the maximum allowed idle time between queries, when not in a transaction. A value of 0 turns off the timeout. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -251,7 +251,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the maximum allowed duration (in milliseconds) of any wait for a lock. 0 turns this off. |
+| Description | Sets the maximum allowed duration of any wait for a lock. A value of 0 turns off the timeout. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -285,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Enables row security. |
+| Description | Enable row security. When enabled, row security will be applied to all users. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -319,7 +319,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Controls firing of replication-related triggers and rules for the current session. |
+| Description | Sets the session's behavior for triggers and rewrite rules. |
 | Data type | enumeration |
 | Default value | `origin` |
 | Allowed values | `origin,replica,local` |
@@ -336,7 +336,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the maximum allowed duration (in milliseconds) of any statement. 0 turns this off. |
+| Description | Sets the maximum allowed duration of any statement. A value of 0 turns off the timeout. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -353,7 +353,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the default tablespace(s) to use for temporary tables and sort files if not specified in the CREATE command. |
+| Description | Sets the tablespace(s) to use for temporary tables and sort files. |
 | Data type | string |
 | Default value | `temptblspace` |
 | Allowed values | `[A-Za-z._]*` |
@@ -421,7 +421,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the maximum allowed duration (in milliseconds) of any transcation in a session. 0 turns this off. |
+| Description | Sets the maximum allowed duration of any transaction within a session (not a prepared transaction). A value of 0 turns off the timeout. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
@@ -455,7 +455,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Specifies the cutoff age (in transactions) that VACUUM should use to decide whether to freeze row versions while scanning a table. |
+| Description | Minimum age at which VACUUM should freeze a table row. |
 | Data type | integer |
 | Default value | `50000000` |
 | Allowed values | `0-1000000000` |
@@ -506,7 +506,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Specifies the cutoff age (in multixacts) that VACUUM should use to decide whether to replace multixact IDs with a newer transaction ID or multixact ID while scanning a table. |
+| Description | Minimum age at which VACUUM should freeze a MultiXactId in a table row. |
 | Data type | integer |
 | Default value | `5000000` |
 | Allowed values | `0-1000000000` |
@@ -523,7 +523,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | VACUUM performs a full table scan to freeze rows if the table has reached the age specified by this setting. |
+| Description | Multixact age at which VACUUM should scan whole table to freeze tuples. |
 | Data type | integer |
 | Default value | `150000000` |
 | Allowed values | `0-2000000000` |

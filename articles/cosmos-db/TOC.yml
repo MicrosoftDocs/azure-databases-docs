@@ -3,23 +3,21 @@
 - name: Overview
   expanded: true
   items:
-  - name: Welcome to Azure Cosmos DB
-    href: introduction.md
-  - name: FAQ
-    href: faq.yml
-  - name: Choose an API
-    href: choose-api.md
+    - name: Welcome to Azure Cosmos DB
+      href: introduction.md
+    - name: FAQ
+      href: faq.yml
+    - name: Choose an API
+      href: choose-api.md
 - name: NoSQL
   href: nosql/index.yml
-- name: MongoDB (RU)
-  href: mongodb/toc.yml
-- name: MongoDB (vCore)
-  href: mongodb/vcore/index.yml
+- name: MongoDB
+  href: mongodb/index.yml
 - name: PostgreSQL
   href: postgresql/index.yml
 - name: Apache Cassandra
-  href: cassandra/toc.yml
+  href: cassandra/index.yml
 - name: Apache Gremlin
   href: gremlin/index.yml
 - name: Table
-  href: table/toc.yml
+  href: table/index.yml

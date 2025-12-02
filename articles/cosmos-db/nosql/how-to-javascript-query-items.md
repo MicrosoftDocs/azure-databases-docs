@@ -30,7 +30,7 @@ WHERE
     p.quantity > 500
 ```
 
-To learn more about the SQL syntax for Azure Cosmos DB for NoSQL, see [Getting started with SQL queries](query/getting-started.md).
+To learn more about the SQL syntax for Azure Cosmos DB for NoSQL, see [Getting started with SQL queries](/cosmos-db/query/overview).
 
 ## Query an item
 

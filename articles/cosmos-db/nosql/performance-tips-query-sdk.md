@@ -26,7 +26,7 @@ To execute a query, a query plan needs to be built. Network requests to the Azur
 
 ### Optimize single partition queries with Optimistic Direct Execution
 
-Azure Cosmos DB NoSQL has an optimization called Optimistic Direct Execution (ODE), which can improve the efficiency of certain NoSQL queries. Specifically, queries that don’t require distribution include those that can be executed on a single physical partition or that have responses that don't require [pagination](query/pagination.md). Queries that don’t require distribution can confidently skip some processes, such as client-side query plan generation and query rewrite, which reduces query latency and Request Units (RU) cost. If you specify the partition key in the request or query itself (or have only one physical partition), and the results of your query don’t require pagination, then ODE can improve your queries.
+Azure Cosmos DB NoSQL has an optimization called Optimistic Direct Execution (ODE), which can improve the efficiency of certain NoSQL queries. Specifically, queries that don’t require distribution include those that can be executed on a single physical partition or that have responses that don't require pagination. Queries that don’t require distribution can confidently skip some processes, such as client-side query plan generation and query rewrite, which reduces query latency and Request Units (RU) cost. If you specify the partition key in the request or query itself (or have only one physical partition), and the results of your query don’t require pagination, then ODE can improve your queries.
 
 >[!NOTE]
 > ODE, which offers improved performance for queries that don't require distribution, shouldn't be confused with [direct mode](sdk-connection-modes.md), which is a path for connecting your application to backend replicas.
@@ -317,7 +317,7 @@ To execute a query, a query plan needs to be built. Network requests to the Azur
 
 ### Use query plan caching
 
-The query plan, for a query scoped to a single partition, is cached on the client. This eliminates the need to make a call to the gateway to retrieve the query plan after the first call. The key for the cached query plan is the SQL query string. You need to *make sure the query is [parametrized](query/parameterized-queries.md)*. If not, the query plan cache lookup is often a cache miss as the query string is unlikely to be identical across calls. Query plan caching is *enabled by default for Java SDK version 4.20.0 and above* and *for Spring Data Azure Cosmos DB SDK version 3.13.0 and above*.
+The query plan, for a query scoped to a single partition, is cached on the client. This eliminates the need to make a call to the gateway to retrieve the query plan after the first call. The key for the cached query plan is the SQL query string. You need to *make sure the query is parametrized*. If not, the query plan cache lookup is often a cache miss as the query string is unlikely to be identical across calls. Query plan caching is *enabled by default for Java SDK version 4.20.0 and above* and *for Spring Data Azure Cosmos DB SDK version 3.13.0 and above*.
 
 ### Use parametrized single partition queries
 

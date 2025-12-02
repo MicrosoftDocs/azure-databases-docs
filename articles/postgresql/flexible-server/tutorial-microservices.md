@@ -1,51 +1,51 @@
 ---
-title: 'Tutorial: Design for microservices with elastic clusters'
+title: "Tutorial: Design for Microservices with Elastic Clusters"
 description: This tutorial shows how to design for microservices with elastic clusters on Azure Database for PostgreSQL.
-author: mulander
-ms.author: adamwolk
-ms.date: 02/28/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: tutorial
-#customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL  when deploying applications using the microservices architecture.
+# customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL when deploying applications using the microservices architecture.
 ---
 
-# Tutorial: Design for microservices with elastic clusters (preview)
+# Tutorial: Design for microservices with elastic clusters
 
-In this tutorial, you use Azure Database for PostgreSQL as the storage backend for multiple microservices, demonstrating a sample setup and basic operation of such a cluster. Learn how to:
+In this tutorial, you use Azure Database for PostgreSQL as the storage backend for multiple microservices. The tutorial demonstrates a sample setup and basic operation of such a cluster. Learn how to:
 
 > [!div class="checklist"]
-> * Prerequisites
-> * Create roles for your microservices
-> * Use psql utility to create roles and distributed schemas
-> * Create tables for the sample services
-> * Configure services
-> * Run services
-> * Explore the database
-
+> - Prerequisites
+> - Create roles for your microservices
+> - Use psql utility to create roles and distributed schemas
+> - Create tables for the sample services
+> - Configure services
+> - Run services
+> - Explore the database
 
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster with ARM template]()
-- [Create an elastic cluster using CLI]()
-- [Create an elastic cluster using the Portal]()
+- [Create an elastic cluster using the Portal](quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using Bicep](quickstart-create-elastic-cluster-bicep.md)
+- [Create an elastic cluster with ARM template](quickstart-create-elastic-cluster-arm-template.md)
 
 ## Create roles for your microservices
 
-Distributed schemas are relocatable within an elastic cluster. The system can rebalance them as a whole unit across the available nodes, allowing to efficiently share resources without manual allocation.
+You can dynamically place distributed schemas within an elastic cluster. The system can rebalance them as a whole unit across the available nodes, so you get improved efficiency across your cluster resources without manual allocation.
 
-By design, microservices own their storage layer, we don’t make any assumptions on the type of tables and data that they create and store. We provide a schema for every service and assume that they use a distinct ROLE to connect to the database. When a user connects, their role name is put at the beginning of the search_path, so if the role matches with the schema name you don’t need any application changes to set the correct search_path.
+When you apply schema sharding to a microservice design pattern, you create a database schema for each corresponding microservice. Also, use a distinct ROLE for each microservice when connecting to the database. When each user connects, their role name goes at the beginning of the search_path. If the role name matches the schema name, you don't need any additional application changes to set the correct search_path.
 
-We use three services in our example:
+In this example, use three microservices:
 
-* user
-* time
-* ping
+- user
+- time
+- ping
 
-You can now create the database roles for every service:
+Create the database roles for each service:
 
-```postgresql
+```sql
 CREATE USER user_service;
 CREATE USER time_service;
 CREATE USER ping_service;
@@ -53,64 +53,60 @@ CREATE USER ping_service;
 
 ## Use psql utility to create distributed schemas
 
-Once connected to the elastic cluster using psql, you can complete some basic tasks.
+After you connect to the elastic cluster by using psql, you can complete some basic tasks.
 
-There are two ways in which a schema can be distributed:
+You can distribute a schema in two ways:
 
-Manually by calling `citus_schema_distribute(schema_name)` function:
+- Manually by calling the `citus_schema_distribute(schema_name)` function:
 
-```postgresql
-CREATE SCHEMA AUTHORIZATION userservice;
-CREATE SCHEMA AUTHORIZATION timeservice;
-CREATE SCHEMA AUTHORIZATION pingservice;
+```sql
+CREATE SCHEMA AUTHORIZATION user_service;
+CREATE SCHEMA AUTHORIZATION time_service;
+CREATE SCHEMA AUTHORIZATION ping_service;
 
-SELECT citus_schema_distribute('userservice');
-SELECT citus_schema_distribute('timeservice');
-SELECT citus_schema_distribute('pingservice');
+SELECT citus_schema_distribute('user_service');
+SELECT citus_schema_distribute('time_service');
+SELECT citus_schema_distribute('ping_service');
 ```
 
 This method also allows you to convert existing regular schemas into distributed schemas.
 
 > [!NOTE]
->
 > You can only distribute schemas that don't contain distributed and reference tables.
 
-Alternative approach is to enable citus.enable_schema_based_sharding configuration variable:
+- By enabling the `citus.enable_schema_based_sharding` configuration variable. You can change the variable for the current session or permanently from the coordinator node parameters. When you set the parameter to ON, all created schemas are distributed by default.
 
-```postgresql
+```sql
 SET citus.enable_schema_based_sharding TO ON;
 
-CREATE SCHEMA AUTHORIZATION userservice;
-CREATE SCHEMA AUTHORIZATION timeservice;
-CREATE SCHEMA AUTHORIZATION pingservice;
+CREATE SCHEMA AUTHORIZATION user_service;
+CREATE SCHEMA AUTHORIZATION time_service;
+CREATE SCHEMA AUTHORIZATION ping_service;
+```
+Run the following command to list the currently distributed schemas:
+
+```sql
+SELECT * FROM citus_schemas;
 ```
 
-The variable can be changed for the current session or permanently in coordinator node parameters. With the parameter set to ON, all created schemas are distributed by default.
-
-You can list the currently distributed schemas by running:
-
-```postgresql
-select * from citus_schemas;
-```
-
-```plaintext
+```output
  schema_name | colocation_id | schema_size | schema_owner
 -------------+---------------+-------------+--------------
- userservice |             5 | 0 bytes     | userservice
- timeservice |             6 | 0 bytes     | timeservice
- pingservice |             7 | 0 bytes     | pingservice
+ user_service |             5 | 0 bytes     | user_service
+ time_service |             6 | 0 bytes     | time_service
+ ping_service |             7 | 0 bytes     | ping_service
 (3 rows)
 ```
 
 ## Create tables for the sample services
 
-You now need to connect to the elastic cluster for every microservice. You can use the \c command to swap the user within an existing psql instance.
+You can now connect to the elastic cluster for every microservice. In the following example, the elastic cluster database is named **Citus**. From the psql session, you can use the \c command to swap to another user.
 
-```plaintext
-\c citus userservice
+```psql
+\c citus user_service
 ```
 
-```postgresql
+```sql
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -118,11 +114,11 @@ CREATE TABLE users (
 );
 ```
 
-```plaintext
-\c citus timeservice
+```psql
+\c citus time_service
 ```
 
-```postgresql
+```sql
 CREATE TABLE query_details (
     id SERIAL PRIMARY KEY,
     ip_address INET NOT NULL,
@@ -130,11 +126,11 @@ CREATE TABLE query_details (
 );
 ```
 
-```plaintext
-\c citus pingservice
+```psql
+\c citus ping_service
 ```
 
-```postgresql
+```sql
 CREATE TABLE ping_results (
     id SERIAL PRIMARY KEY,
     host VARCHAR(255) NOT NULL,
@@ -150,7 +146,7 @@ In this tutorial, we use a simple set of services. You can obtain them by clonin
 git clone https://github.com/citusdata/citus-example-microservices.git
 ```
 
-```plaintext
+```psql
 $ tree
 .
 ├── LICENSE
@@ -177,7 +173,7 @@ db_config = {
     'host': 'EXAMPLE.postgres.database.azure.com',
     'database': 'postgres',
     'password': 'SECRET',
-    'user': 'pingservice',
+    'user': 'ping_service',
     'port': 5432
 }
 ```
@@ -188,7 +184,7 @@ After making the changes, save all modified files and move on to the next step o
 
 Change into every app directory and run them in their own python env.
 
-```postgresql
+```bash
 cd user
 pipenv install
 pipenv shell
@@ -236,47 +232,46 @@ curl -X POST -H "Content-Type: application/json" -d '{"host": "example.com"}' ht
 
 Now that you called some API functions, data is stored and you can check if `citus_schemas` reflects what is expected:
 
-```postgresql
-select * from citus_schemas;
+```sql
+SELECT * FROM citus_schemas;
 ```
 
-```plaintext
+```output
  schema_name | colocation_id | schema_size | schema_owner
 -------------+---------------+-------------+--------------
- userservice |             1 | 112 kB      | userservice
- timeservice |             2 | 32 kB       | timeservice
- pingservice |             3 | 32 kB       | pingservice
+ user_service |             1 | 112 kB      | user_service
+ time_service |             2 | 32 kB       | time_service
+ ping_service |             3 | 32 kB       | ping_service
 (3 rows)
 ```
 
-When you created the schemas, you didn’t indicate on which machines to create the schemas. It was done automatically. You can see where each schema resides with the following query:
+When you created the schemas, you didn't indicate on which machines to create the schemas. It was done automatically. You can see where each schema resides with the following query:
 
-```postgresql
-  select nodename,nodeport, table_name, pg_size_pretty(sum(shard_size))
-    from citus_shards
-group by nodename,nodeport, table_name;
+```sql
+  SELECT nodename,nodeport, table_name, pg_size_pretty(sum(shard_size))
+  FROM citus_shards
+  GROUP BY nodename,nodeport, table_name;
 ```
 
-```plaintext
+```output
 nodename  | nodeport |         table_name         | pg_size_pretty
 -----------+----------+---------------------------+----------------
- localhost |     7001 | timeservice.query_details | 32 kB
- localhost |     7002 | userservice.users         | 112 kB
- localhost |     7002 | pingservice.ping_results  | 32 kB
+ localhost |     7001 | time_service.query_details | 32 kB
+ localhost |     7002 | user_service.users         | 112 kB
+ localhost |     7002 | ping_service.ping_results  | 32 kB
 ```
 
 For brevity of the example output on this page, instead of using `nodename` as an IP address we replace it with localhost. Assume that `localhost:7001` is node one and `localhost:7002` is node two.
 
-
-You can see that the time service landed on node `localhost:7001` while the user and ping service share space on the second node `localhost:7002`. The example apps are simplistic, and the data sizes here are ignorable, but let’s assume that you're annoyed by the uneven storage space utilization between the nodes. It would make more sense to have the two smaller time and ping services reside on one machine while the large user service resides alone.
+You can see that the time service landed on node `localhost:7001` while the user and ping service share space on the second node `localhost:7002`. The example apps are simplistic, and the data sizes here are insignificant, but let's assume that you're affected by the uneven storage space utilization between the nodes. It would make more sense to have the two smaller time and ping services reside on one node while the large user service resides on its own node.
 
 You can easily rebalance the cluster by disk size:
 
-```postgresql
-select citus_rebalance_start();
+```sql
+SELECT citus_rebalance_start();
 ```
 
-```plaintext
+```output
 NOTICE:  Scheduled 1 moves as job 1
 DETAIL:  Rebalance scheduled as background job
 HINT:  To monitor progress, run: SELECT * FROM citus_rebalance_status();
@@ -288,27 +283,24 @@ HINT:  To monitor progress, run: SELECT * FROM citus_rebalance_status();
 
 When done, you can check how our new layout looks:
 
-```postgresql
-  select nodename,nodeport, table_name, pg_size_pretty(sum(shard_size))
-    from citus_shards
-group by nodename,nodeport, table_name;
+```sql
+  SELECT nodename,nodeport, table_name, pg_size_pretty(sum(shard_size))
+  FROM citus_shards
+  GROUP BY nodename,nodeport, table_name;
 ```
 
-```plaintext
+```output
  nodename  | nodeport |         table_name        | pg_size_pretty
 -----------+----------+---------------------------+----------------
- localhost |     7001 | timeservice.query_details | 32 kB
- localhost |     7001 | pingservice.ping_results  | 32 kB
- localhost |     7002 | userservice.users         | 112 kB
+ localhost |     7001 | time_service.query_details | 32 kB
+ localhost |     7001 | ping_service.ping_results  | 32 kB
+ localhost |     7002 | user_service.users         | 112 kB
 (3 rows)
 ```
 
-According to expectations, the schemas are moved and we have a more balanced cluster. This operation is transparent for the applications. You don’t even need to restart them, they continue serving queries.
-
+According to expectations, the schemas are moved and we have a more balanced cluster. This operation is transparent for the applications. You don't even need to restart them, they continue serving queries.
 
 ## Next step
-
-In this tutorial, you learned how to create distributed schemas, ran microservices using them as storage. You also learned how to explore and manage schema-based sharded elastic clusters on Azure Database for PostgreSQL.
 
 > [!div class="nextstepaction"]
 > [Learn more about elastic clusters](concepts-elastic-clusters.md)

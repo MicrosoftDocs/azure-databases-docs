@@ -22,7 +22,7 @@ PgBouncer runs on port 6432 on your database server. You can change your applica
 
 PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](concepts-azure-ad-authentication.md) (Azure AD).
 
-## Version of PgBouncer
+## PgBouncer with elastic clusters
 
 Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
 

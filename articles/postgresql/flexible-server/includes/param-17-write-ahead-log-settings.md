@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Sets the minimum concurrent open transactions before performing commit_delay. |
+| Description | Sets the minimum number of concurrent open transactions required before performing \"commit_delay\". |
 | Data type | integer |
 | Default value | `5` |
 | Allowed values | `0-1000` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Forces synchronization of updates to disk. |
+| Description | Forces synchronization of updates to disk. The server will use the fsync() system call in several places to make sure that updates are physically written to disk. This ensures that a database cluster will recover to a consistent state after an operating system or hardware crash. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Writes full pages to WAL when first modified after a checkpoint. |
+| Description | Writes full pages to WAL when first modified after a checkpoint. A page write in process during an operating system crash might be only partially written to disk. During recovery, the row changes stored in WAL are not enough to recover. This option writes pages when first modified after a checkpoint to WAL so full recovery is possible. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Sets the number of disk-page buffers in shared memory for WAL. Unit is 8kb. |
+| Description | Sets the number of disk-page buffers in shared memory for WAL. Specify -1 to have this value determined as a fraction of shared_buffers. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `-1-262143` |
@@ -115,10 +115,10 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Compresses full-page writes written in WAL file. |
-| Data type | boolean |
+| Description | Compresses full-page writes written in WAL file with specified method. |
+| Data type | enumeration |
 | Default value | `on` |
-| Allowed values | `on,off` |
+| Allowed values | `pglz,lz4,on,off` |
 | Parameter type | dynamic |
 | Documentation | [wal_compression](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-COMPRESSION) |
 
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | It determines how much information is written to the WAL. |
+| Description | Sets the level of information written to the WAL. |
 | Data type | enumeration |
 | Default value | `replica` |
 | Allowed values | `replica,logical` |
@@ -251,7 +251,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Time interval between WAL flushes performed by the WAL writer. |
+| Description | Time between WAL flushes performed in the WAL writer. |
 | Data type | integer |
 | Default value | `200` |
 | Allowed values | `1-10000` |

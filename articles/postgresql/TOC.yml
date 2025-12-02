@@ -23,6 +23,8 @@
       href: flexible-server/overview.md
     - name: Release notes
       href: flexible-server/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: flexible-server/release-notes-api.md
     - name: CLI release notes
@@ -46,11 +48,14 @@
               href: flexible-server/quickstart-create-server-bicep.md
         - name: Create an elastic cluster
           items:
-            - name: ARM template
-              displayName: Resource Manager
-              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
             - name: Azure portal
               href: flexible-server/quickstart-create-elastic-cluster-portal.md
+            - name: Bicep
+              href: flexible-server/quickstart-create-elastic-cluster-bicep.md
+            - name: ARM template
+              displayName: Azure Resource Manager
+              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
+            
         - name: Connect and query
           items:
             - name: Connect to a server in virtual network
@@ -93,7 +98,7 @@
               href: flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md
         - name: Scaling resources
           href: flexible-server/concepts-scaling-resources.md
-        - name: Elastic clusters (preview)
+        - name: Elastic clusters
           items:
             - name: Overview
               href: flexible-server/concepts-elastic-clusters.md
@@ -102,7 +107,7 @@
             - name: Table types
               href: flexible-server/concepts-elastic-clusters-table-types.md
             - name: Limitations
-              href: flexible-server/concepts-elastic-clusters-limitations.yml
+              href: flexible-server/concepts-elastic-clusters-limitations.md
         - name: Prepay for reserved capacity
           href: flexible-server/concepts-reserved-pricing.md
         - name: Networking
@@ -159,7 +164,7 @@
               items:
                 - name: Overview
                   href: flexible-server/azure-local-ai.md
-            - name: Azure Storage (pg_azure_storage)
+            - name: Azure Storage (azure_storage)
               items:
                 - name: Overview
                   href: flexible-server/concepts-storage-extension.md
@@ -414,6 +419,8 @@
           href: flexible-server/generative-ai-overview.md
         - name: AI Agents
           href: flexible-server/generative-ai-agents.md
+        - name: Microsoft Foundry Integration
+          href: flexible-server/generative-ai-foundry-integration.md
         - name: Vector Databases
           items:
             - name: Using vector databases in Postgres
@@ -438,7 +445,9 @@
           href: extensions\vs-code-extension\quickstart-connect.md
         - name: Quickstart for PostgreSQL GitHub Copilot
           href: extensions\vs-code-extension\quickstart-github-copilot.md
-    - name: Graph Database
+        - name: Oracle to Azure Database for PostgreSQL schema conversion
+          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+    - name: Graph database
       items:
         - name: Overview Apache AGE for PostgreSQL
           href: flexible-server/generative-ai-age-overview.md
@@ -621,6 +630,10 @@
                       href: flexible-server/how-to-enable-intelligent-performance-cli.md
         - name: Networking
           items:
+            - name: Elastic clusters
+              items:
+                - name: Configuring maximum connections
+                  href: flexible-server/how-to-network-elastic-clusters-default-maximum-connections.md
             - name: Public access (allowed IP addresses)
               items:
                 - name: Enable public access
@@ -651,6 +664,8 @@
                   href: flexible-server/how-to-update-client-certificates-java.md
         - name: Scaling
           items:
+            - name: Scale out
+              href: flexible-server/how-to-scale-out.md          
             - name: Scale compute
               href: flexible-server/how-to-scale-compute.md
             - name: Scale storage size
@@ -723,6 +738,8 @@
                   href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+                - name: From Google AlloyDB for PostgreSQL
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md                  
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -733,6 +750,8 @@
                   href: migrate/migration-service/tutorial-migration-service-aurora-online.md
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+                - name: From Google AlloyDB for PostgreSQL
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md                  
         - name: Concepts
           items:
             - name: Premigration validation
@@ -765,15 +784,29 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-        - name: Migration Concepts
+        - name: Migrating Oracle To Azure Database for PostgreSQL
           href: migrate/concepts-oracle-migration.md
-        - name: Migration Stages
-          href: migrate/concepts-oracle-migration-stages.md
-        - name: Best Practices
+        - name: Migration stages
+          href: migrate/concepts-oracle-migration-stages.md        
+        - name: Schema conversion
+          items:
+            - name: Schema conversion overview
+              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+            - name: Schema conversion tutorial
+              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+            - name: Schema conversion reports
+              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+            - name: Schema conversion best practices
+              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+            - name: Schema conversion limitations
+              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+            - name: Application Conversion Quickstart
+              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
+        - name: Best practices
           href: migrate/best-practices-oracle-to-postgresql.md
-        - name: Pre-migration Checklist
+        - name: Pre-migration checklist
           href: migrate/best-practices-oracle-to-postgresql-checklist.md
-        - name: Migrate using Ora2Pg
+        - name: Migrate with Ora2Pg
           href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Samples
   items:

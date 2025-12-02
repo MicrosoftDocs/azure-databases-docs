@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Cumulative Query and Index Statistics |
-| Description | Collects information about executing commands for each session. |
+| Description | Collects information about executing commands. Enables the collection of information on the currently executing command of each session, along with the time at which that command began execution. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Cumulative Query and Index Statistics |
-| Description | Sets the amount of memory reserved for pg_stat_activity.query, in bytes. |
+| Description | Sets the size reserved for pg_stat_activity.query, in bytes. |
 | Data type | integer |
 | Default value | `1024` |
 | Allowed values | `100-102400` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Cumulative Query and Index Statistics |
-| Description | Enables collection of statistics on database activity |
+| Description | Collects statistics on database activity. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Cumulative Query and Index Statistics |
-| Description | Enables tracking of function call counts and time used. |
+| Description | Collects function-level statistics on database activity. |
 | Data type | enumeration |
 | Default value | `none` |
 | Allowed values | `none,pl,all` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Statistics / Cumulative Query and Index Statistics |
-| Description | Enables timing of database I/O calls. |
+| Description | Collects timing statistics for database I/O activity. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

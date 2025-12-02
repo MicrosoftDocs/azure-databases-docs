@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables the planner's use of nested loop join plans. |
+| Description | Enables the planner's use of nested-loop join plans. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -268,7 +268,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables plan-time and execution-time partition pruning. |
+| Description | Enables plan-time and execution-time partition pruning. Allows the query planner and executor to compare partition bounds to conditions in the query to determine which partitions must be scanned. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
@@ -285,7 +285,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables or disables the query planner's use of partitionwise grouping or aggregation, which allows grouping or aggregation on partitioned tables performed separately for each partition. |
+| Description | Enables partitionwise aggregation and grouping. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -302,7 +302,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Tuning / Planner Method Configuration |
-| Description | Enables or disables the query planner's use of partitionwise join, which allows a join between partitioned tables to be performed by joining the matching partitions. |
+| Description | Enables partitionwise join. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |

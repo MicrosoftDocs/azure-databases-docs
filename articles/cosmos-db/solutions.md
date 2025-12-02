@@ -7,15 +7,13 @@ ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: best-practice
-ms.date: 09/04/2025
+ms.date: 10/17/2025
 ms.update-cycle: 180-days
-zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB vCore
   - ✅ Cassanda
   - ✅ Gremlin
   - ✅ Table
@@ -23,8 +21,6 @@ appliesto:
 ---
 
 # Best practices and solutions for using AI and Azure Cosmos DB
-
-::: zone pivot="api-nosql"
 
 Use Azure Cosmos DB for NoSQL as a database for your AI-powered applications so you can grow your database as your application grows. You can also rely on the speed of Azure Cosmos DB and built-in reliability to ensure that your solution is fast and available as your needs change over time.
 
@@ -68,31 +64,6 @@ Diagram Illustrating an external system ingesting claims using Azure Event Hubs.
 | --- | --- |
 | **Solution accelerator** | <https://github.com/Azure/Medical-Claims-Transaction-Processing-at-scale> |
 | **Hackathon** | <https://github.com/Azure/Medical-Claims-Processing-Hackathon> |
-
-## Automate AI solutions
-
-Automate the deployment of AI-powered solutions by using tools like the new Azure Developer CLI. Use this automation to create a modern developer and operations workflow.
-
-| Example | Link |
-| --- | --- |
-| **Chat application** | <https://github.com/Azure-Samples/cosmosdb-chatgpt> |
-
-::: zone-end
-
-::: zone pivot="api-mongodb"
-
-Use Azure Cosmos DB for MongoDB vCore as a database for your AI-powered applications so you can grow your database as your application grows. You can also rely on the speed of Azure Cosmos DB and built-in reliability to ensure that your solution is fast and available as your needs change over time.
-
-## Retrieval-augmented generation
-
-Implement the RAG pattern by using a combination of Azure Cosmos DB for MongoDB vCore, Azure OpenAI, Azure Functions, and Azure Web Apps.
-
-| Example | Link |
-| --- | --- |
-| **Solution accelerator** | <https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore> |
-| **Python notebook** | <https://github.com/Microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore> |
-
-::: zone-end
 
 ## Next step
 

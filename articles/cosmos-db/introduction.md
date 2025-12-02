@@ -14,7 +14,6 @@ ms.collection:
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ MongoDB (vCore)
   - ✅ PostgreSQL
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin
@@ -44,7 +43,7 @@ App development is faster and more productive thanks to:
 - Open source APIs
 - SDKs for popular languages
 - AI database functionalities like integrated vector database or seamless integration with Azure AI Services to support Retrieval Augmented Generation
-- Query Copilot for generating NoSQL queries based on your natural language prompts ([preview](nosql/query/how-to-enable-use-copilot.md))
+- Query Copilot for generating NoSQL queries based on your natural language prompts ([preview](/cosmos-db/query/advisor))
 
 As a fully managed service, Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
 
@@ -127,6 +126,8 @@ End-to-end database management, with serverless and automatic scaling matching y
 - Cost effective.
 - Analytics for locally available, globally distributed, multi-region writes.
 - Native integration with Azure Synapse Analytics.
+
+[!INCLUDE[Section - Compare to Azure DocumentDB](includes/section-compare-to-documentdb.md)]
 
 ## Related content
 

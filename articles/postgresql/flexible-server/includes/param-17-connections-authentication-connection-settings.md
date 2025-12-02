@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / Connection Settings |
-| Description | Sets the maximum number of concurrent connections to the database server. |
+| Description | Sets the maximum number of concurrent connections. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `25-5000` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / Connection Settings |
-| Description | Sets the number of connections slots reserved for replication users and super users. |
+| Description | Sets the number of connection slots reserved for roles with privileges of pg_use_reserved_connections. |
 | Data type | integer |
 | Default value | `5` |
 | Allowed values | `5` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / Connection Settings |
-| Description | Sets the owning group of the Unix-domain socket. |
+| Description | Sets the owning group of the Unix-domain socket. The owning user of the socket is always the user that starts the server. |
 | Data type | string |
 | Default value | |
 | Allowed values | |
@@ -166,7 +166,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / Connection Settings |
-| Description | Sets the access permissions of the Unix-domain socket. |
+| Description | Sets the access permissions of the Unix-domain socket. Unix-domain sockets use the usual Unix file system permission set. The parameter value is expected to be a numeric mode specification in the form accepted by the chmod and umask system calls. (To use the customary octal format the number must start with a 0 (zero).). |
 | Data type | integer |
 | Default value | `0777` |
 | Allowed values | `0777` |

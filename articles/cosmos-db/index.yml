@@ -9,7 +9,7 @@ metadata:
   ms.author: sidandrews
   ms.service: azure-cosmos-db
   ms.topic: hub-page
-  ms.date: 10/14/2025
+  ms.date: 10/17/2025
   ai-usage: ai-generated
 highlightedContent:
   items:
@@ -62,18 +62,6 @@ tools:
     - title: Rust (NoSQL)
       imageSrc: media/index/lang-rust.svg
       url: nosql/quickstart-rust.md
-    - title: Python - MongoDB (vCore)
-      imageSrc: media/index/lang-python.svg
-      url: mongodb/vcore/quickstart-python.md
-    - title: JavaScript - MongoDB (vCore)
-      imageSrc: media/index/lang-javascript.svg
-      url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-js
-    - title: TypeScript - MongoDB (vCore)
-      imageSrc: media/index/lang-typescript.svg
-      url: mongodb/vcore/quickstart-nodejs.md?pivots=programming-language-ts
-    - title: .NET - MongoDB (vCore)
-      imageSrc: media/index/lang-dotnet.svg
-      url: mongodb/vcore/quickstart-dotnet.md
 conceptualContent:
   sections:
     - title: APIs
@@ -84,7 +72,7 @@ conceptualContent:
           links:
             - text: SQL queries
               itemType: how-to-guide
-              url: nosql/query/getting-started.md
+              url: /cosmos-db/query/overview
             - text: Model document data
               itemType: concept
               url: nosql/modeling-data.md
@@ -178,9 +166,6 @@ conceptualContent:
             - text: Vector search in Azure Cosmos DB for NoSQL
               itemType: concept
               url: nosql/vector-search.md
-            - text: Vector search in Azure Cosmos DB for MongoDB
-              itemType: concept
-              url: mongodb/vcore/vector-search.md
         - title: Infrastructure as code (IaC)
           summary: Automate deployment and management of Azure Cosmos DB resources using modern Infrastructure as Code (IaC) tools like Bicep, ARM templates, and Terraform.
           links:

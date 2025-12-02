@@ -94,7 +94,7 @@ count: Long = 5
 
 Count against dataframes is currently not supported. The sample below shows how to execute a dataframe count after persisting the dataframe to memory as a workaround.
 
-Choose a [storage option](https://spark.apache.org/docs/3.5.2/hardware-provisioning.html#storage-systems) from the following available options, to avoid running into "out of memory" issues:
+Choose a [storage option](https://spark.apache.org/docs/latest/hardware-provisioning.html#storage-systems) from the following available options, to avoid running into "out of memory" issues:
 
 - MEMORY_ONLY: It's the default storage option. Stores RDD as deserialized Java objects in the JVM. If the RDD doesn't fit in memory, some partitions won't be cached, and they're recomputed on the fly each time they're needed.
 

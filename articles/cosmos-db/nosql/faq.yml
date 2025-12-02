@@ -82,7 +82,7 @@ sections:
       - question: |
           Does Azure Cosmos DB for NoSQL support the SQL query language?
         answer: |
-          Structured Query Language (SQL) is a language typically used to query relational data. The API for NoSQL has a custom **NoSQL** query language derived from SQL. The NoSQL query language includes a subset of the SQL query language typically associated with SQL Server along with various NoSQL-specific enhancements. The NoSQL query language provides rich hierarchical and relational operators and extensibility via JavaScript-based, user-defined functions (UDFs). JSON grammar allows for modeling JSON documents as trees with labeled nodes, which are used by both the Azure Cosmos DB automatic indexing techniques and the SQL query dialect of Azure Cosmos DB. For information about using this query language, see [NoSQL Query](query/index.yml).
+          Structured Query Language (SQL) is a language typically used to query relational data. The API for NoSQL has a custom **NoSQL** query language derived from SQL. The NoSQL query language includes a subset of the SQL query language typically associated with SQL Server along with various NoSQL-specific enhancements. The NoSQL query language provides rich hierarchical and relational operators and extensibility via JavaScript-based, user-defined functions (UDFs). JSON grammar allows for modeling JSON documents as trees with labeled nodes, which are used by both the Azure Cosmos DB automatic indexing techniques and the SQL query dialect of Azure Cosmos DB. For information about using this query language, see [NoSQL Query](/cosmos-db/query).
       - question: |
           Does Azure Cosmos DB for NoSQL support SQL aggregation functions?
         answer: |

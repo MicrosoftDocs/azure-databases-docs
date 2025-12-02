@@ -55,8 +55,8 @@ For simpler scenarios or when you need fine-grained control over individual docu
 
 The following examples show how to read from the change feed using the Spark Connector. For more comprehensive examples, see the complete sample notebooks:
 
-- [Python structured streaming sample](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples/Python/NYC-Taxi-Data/02_StructuredStreaming.ipynb) - NYC Taxi data processing with change feed
-- [Scala container migration sample](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples/DatabricksLiveContainerMigration/CosmosDBLiveSingleContainerMigration.scala) - Live container migration using change feed
+- [Python structured streaming sample](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/Samples/Python/NYC-Taxi-Data/02_StructuredStreaming.ipynb) - NYC Taxi data processing with change feed
+- [Scala container migration sample](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/Samples/DatabricksLiveContainerMigration/CosmosDBLiveSingleContainerMigration.scala) - Live container migration using change feed
 
 ### [Python](#tab/python)
 

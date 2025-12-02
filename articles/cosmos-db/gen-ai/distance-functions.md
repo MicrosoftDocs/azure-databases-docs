@@ -37,7 +37,7 @@ To learn more about vectors, see [vector search](vector-search-overview.md).
 
 ## Related content
 
-- [VectorDistance system function](../nosql/query/vectordistance.md) in Azure Cosmos DB NoSQL
+- [VectorDistance system function](/cosmos-db/query/vectordistance) in Azure Cosmos DB NoSQL
 - [What is a vector database?](../vector-database.md)
 - [Retrieval-augmented generation (RAG)](rag.md)
 - [Vector search in Azure Cosmos DB](vector-search-overview.md)

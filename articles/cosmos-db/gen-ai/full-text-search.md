@@ -21,7 +21,7 @@ Azure Cosmos DB for NoSQL now offers a powerful full-text search feature. This i
 
 ## What is full-text search?
 
-Full-text indexing and search includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full-text search also includes *full text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or *Best Matching 25*, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
+Full-text indexing and search includes advanced text processing techniques such as stemming, stop word removal, and tokenization, enabling efficient and effective text searches through a specialized text index. Full-text search also includes *full-text scoring* with a function that evaluates the relevance of documents to a given search query. BM25, or *Best Matching 25*, considers factors like term frequency, inverse document frequency, and document length to score and rank documents. This helps ensure that the most relevant documents appear at the top of the search results, improving the accuracy and usefulness of text searches.
 
 Full-text search is ideal for various scenarios, including:
 
@@ -88,14 +88,20 @@ Defining multiple text paths is easily done by adding another element to the `fu
 
 Multi-language support allows you to index and search text in languages beyond English. It applies language-specific tokenization, stemming, and stopword removal for more accurate search results. 
 
+> [!IMPORTANT]
+> Multi-language support is in early preview and may not be available in all Azure Regions.
+
 > [!NOTE]
-> Multi-language support is in early preview. Performance and quality of search might be different than full-text search in English. For example, stopword removal is only available for English (en-us) at this time. The functionality is subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the **Features** section of your Azure Cosmos DB resource in the Azure portal. 
+> Performance and quality of search might be different than full-text search in English. For example, stopword removal is only available for English (en-us) at this time. The functionality is subject to change through the evolution of the preview. To try it, you must enroll in the *New features for full-text search* feature via the **Features** section of your Azure Cosmos DB resource in the Azure portal. 
 
 Currently supported languages are:
 - `en-US` (English)
 - `de-DE` (German)
 - `es-ES` (Spanish)
 - `fr-FR` (French)
+- `it-IT` (Italian)
+- `pt-PT` (Portuguese)
+- `pt-BR` (Brazilian Portuguese)
 
 ### Full-text index
 
@@ -154,10 +160,10 @@ As with the full-text policies, full-text indexes can be defined on multiple pat
 
 Full-text search and scoring operations are performed using the following system functions in the Azure Cosmos DB for NoSQL query language:
 
-- [`FullTextContains`](../nosql/query/fulltextcontains.md): Returns `true` if a given string is contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure specific key words are included in the documents returned by your query.
-- [`FullTextContainsAll`](../nosql/query/fulltextcontainsall.md): Returns `true` if *all* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that multiple key words are included in the documents returned by your query.
-- [`FullTextContainsAny`](../nosql/query/fulltextcontainsany.md): Returns `true` if *any* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that at least one of the key words is included in the documents returned by your query.
-- [`FullTextScore`](../nosql/query/fulltextscore.md): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom.
+- [`FullTextContains`](/cosmos-db/query/fulltextcontains): Returns `true` if a given string is contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure specific key words are included in the documents returned by your query.
+- [`FullTextContainsAll`](/cosmos-db/query/fulltextcontainsall): Returns `true` if *all* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that multiple key words are included in the documents returned by your query.
+- [`FullTextContainsAny`](/cosmos-db/query/fulltextcontainsany): Returns `true` if *any* of the given strings are contained in the specified property of a document. This is useful in a `WHERE` clause when you want to ensure that at least one of the key words is included in the documents returned by your query.
+- [`FullTextScore`](/cosmos-db/query/fulltextscore): Returns a score. This can only be used in an `ORDER BY RANK` clause, where the returned documents are ordered by the rank of the full-text score, with most relevant (highest scoring) documents at the top, and least relevant (lowest scoring) documents at the bottom.
 
 Here are a few examples of each function in use.
 
@@ -204,12 +210,12 @@ ORDER BY RANK FullTextScore(c.text, "bicycle", "mountain")
 > [!IMPORTANT]
 > FullTextScore can only be used in the `ORDER BY RANK` clause and not projected in the `SELECT` statement or in a `WHERE` clause.
 
-#### Fuzzy search (preview)
+#### Fuzzy search
 
 Fuzzy search can improve resilience to typos and text variations. You can specify an allowable *distance* (number of edits) between the search term and document text, allowing near matches to be considered a hit. The maximum distance that can be specified is 2 (two edits).
 
 > [!NOTE]
-> Fuzzy search is in early preview. Performance, quality, and functionality are subject to change through the evolution of the preview. To try it, you must enroll in the *Preview Capabilities for Full Text Search* feature via the **Features** section of your Azure Cosmos DB resource in the Azure portal. 
+> Fuzzy search is in early preview. Performance, quality, and functionality are subject to change through the evolution of the preview. To try it, you must enroll in the *New features for full-text Search* feature via the **Features** section of your Azure Cosmos DB resource in the Azure portal. 
 
 The following example query retrieves documents where the text includes words similar to *red* (within one edit) and *bycycle* (within two edits):
 
@@ -221,9 +227,9 @@ WHERE FullTextContains(c.text, {"term": "red", "distance":1}) AND FullTextContai
 
 ## Related content
 
-- [`FullTextContains` system function](../nosql/query/fulltextcontains.md)
-- [`FullTextContainsAll` system function](../nosql/query/fulltextcontainsall.md)
-- [`FullTextContainsAny` system function](../nosql/query/fulltextcontainsany.md)
-- [`FullTextScore` system function](../nosql/query/fulltextscore.md)
-- [`RRF` system function](../nosql/query/rrf.md)
-- [`ORDER BY RANK` clause](../nosql/query/order-by-rank.md)
+- [`FullTextContains` system function](/cosmos-db/query/fulltextcontains)
+- [`FullTextContainsAll` system function](/cosmos-db/query/fulltextcontainsall)
+- [`FullTextContainsAny` system function](/cosmos-db/query/fulltextcontainsany)
+- [`FullTextScore` system function](/cosmos-db/query/fulltextscore)
+- [`RRF` system function](/cosmos-db/query/rrf)
+- [`ORDER BY RANK` clause](/cosmos-db/query/order-by-rank)

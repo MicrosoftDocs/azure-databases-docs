@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Checkpoints |
-| Description | Specifies the target of checkpoint completion, as a fraction of total time between checkpoints. |
+| Description | Time spent flushing dirty buffers during checkpoint, as fraction of checkpoint interval. |
 | Data type | numeric |
 | Default value | `0.9` |
 | Allowed values | `0-1` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Checkpoints |
-| Description | Maximum time between automatic WAL checkpoints, in seconds. The valid range is between 30 seconds and one day. |
+| Description | Sets the maximum time between automatic WAL checkpoints. |
 | Data type | integer |
 | Default value | `600` |
 | Allowed values | `30-86400` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Checkpoints |
-| Description | Writes a warning message if checkpoints caused by the filling of WAL segment more frequently than this. |
+| Description | Sets the maximum time before warning if checkpoints triggered by WAL volume happen too frequently. Write a message to the server log if checkpoints caused by the filling of WAL segment files happen more frequently than this amount of time. Zero turns off the warning. |
 | Data type | integer |
 | Default value | `30` |
 | Allowed values | `0-2147483647` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Checkpoints |
-| Description | Maximum size to let the WAL grow before triggering automatic checkpoint. |
+| Description | Sets the WAL size that triggers a checkpoint. |
 | Data type | integer |
 | Default value | Depends on resources (vCores, RAM, or disk space) allocated to the server. |
 | Allowed values | `32-65536` |

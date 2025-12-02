@@ -1,16 +1,16 @@
 ---
 title: Sharding models - elastic clusters
 description: What is sharding, and what sharding models are available with elastic clusters on Azure Database for PostgreSQL
-author: mulander
-ms.author: adamwolk
-ms.reviewer: maghan
-ms.date: 02/28/2025
+author: JaredMSFT
+ms.author: jaredmeade
+ms.reviewer: adamwolk, maghan
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 
-# Sharding models on elastic clusters in Azure Database for PostgreSQL  (preview)
+# Sharding models on elastic clusters in Azure Database for PostgreSQL
 
 Sharding is a technique used in database systems and distributed computing to horizontally partition data across multiple servers or nodes. It involves breaking up a large database or dataset into smaller, more manageable parts called Shards. A shard contains a subset of the data, and together, shards form the complete dataset.
 
@@ -68,4 +68,4 @@ Drawbacks:
 
 - [Overview of elastic clusters](concepts-elastic-clusters.md).
 - [Table types on elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about elastic clusters with Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.yml).
+- [Frequently asked questions about elastic clusters of Azure Database for PostgreSQL limitations](concepts-elastic-clusters-limitations.md).

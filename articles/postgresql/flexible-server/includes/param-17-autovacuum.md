@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Controls whether the server should run the autovacuum subprocess. |
+| Description | Starts the autovacuum subprocess. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. |
+| Description | Number of tuple inserts, updates, or deletes prior to analyze as a fraction of reltuples. |
 | Data type | numeric |
 | Default value | `0.1` |
 | Allowed values | `0-100` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Sets the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. |
+| Description | Minimum number of tuple inserts, updates, or deletes prior to analyze. |
 | Data type | integer |
 | Default value | `50` |
 | Allowed values | `0-2147483647` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Maximum age (in transactions) before triggering autovacuum on a table to prevent transaction ID wraparound. |
+| Description | Age at which to autovacuum a table to prevent transaction ID wraparound. |
 | Data type | integer |
 | Default value | `200000000` |
 | Allowed values | `100000-2000000000` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Maximum age (in multixact) before triggering autovacuum on a table to prevent multixact wraparound. |
+| Description | Multixact age at which to autovacuum a table to prevent multixact wraparound. |
 | Data type | integer |
 | Default value | `400000000` |
 | Allowed values | `10000-2000000000` |
@@ -115,7 +115,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Sets minimum delay between autovacuum runs on any given database. |
+| Description | Time to sleep between autovacuum runs. |
 | Data type | integer |
 | Default value | `60` |
 | Allowed values | `1-2147483` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Sets cost delay value (milliseconds) that will be used in automatic VACUUM operations. |
+| Description | Vacuum cost delay in milliseconds, for autovacuum. |
 | Data type | integer |
 | Default value | `2` |
 | Allowed values | `-1-100` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Sets cost limit value that will be used in automatic VACUUM operations. |
+| Description | Vacuum cost amount available before napping, for autovacuum. |
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-10000` |
@@ -166,7 +166,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Specifies a fraction of the table size to add to autovacuum_vacuum_insert_threshold when deciding whether to trigger a VACUUM. |
+| Description | Number of tuple inserts prior to vacuum as a fraction of reltuples. |
 | Data type | numeric |
 | Default value | `0.2` |
 | Allowed values | `0-100` |
@@ -183,7 +183,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Specifies the number of inserted tuples needed to trigger a VACUUM in any one table. |
+| Description | Minimum number of tuple inserts prior to vacuum, or -1 to disable insert vacuums. |
 | Data type | integer |
 | Default value | `1000` |
 | Allowed values | `-1-2147483647` |
@@ -200,7 +200,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. |
+| Description | Number of tuple updates or deletes prior to vacuum as a fraction of reltuples. |
 | Data type | numeric |
 | Default value | `0.2` |
 | Allowed values | `0-100` |
@@ -217,7 +217,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Autovacuum |
-| Description | Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. |
+| Description | Minimum number of tuple updates or deletes prior to vacuum. |
 | Data type | integer |
 | Default value | `50` |
 | Allowed values | `0-2147483647` |

@@ -162,7 +162,7 @@ Data plane access refers to the ability to read and write data within an Azure s
 - Execute stored procedures
 - Manage conflicts in the conflict feed
 
-First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL. In this guide, you prepare a built-in and custom role. Then, assign the newly defined role\[s\] to an identity so that your applications can access data in Azure Cosmos DB for NoSQL.
+First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL. In this guide, you prepare a custom role. Then, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for NoSQL.
 
 > [!IMPORTANT]
 > Obtaining an existing data plane role definition requires these control plane permissions:
@@ -194,40 +194,8 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
         --account-name "<name-of-existing-nosql-account>"
     ```
 
-1. Review the output and locate the role definition named **Cosmos DB Built-in Data Contributor**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
 
-    ```json
-    [
-      ...,
-      {
-        "assignableScopes": [
-          "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
-        ],
-        "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002",
-        "name": "00000000-0000-0000-0000-000000000002",
-        "permissions": [
-          {
-            "dataActions": [
-              "Microsoft.DocumentDB/databaseAccounts/readMetadata",
-              "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*",
-              "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*"
-            ],
-            "notDataActions": []
-          }
-        ],
-        "resourceGroup": "msdocs-identity-example",
-        "roleName": "Cosmos DB Built-in Data Contributor",
-        "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions",
-        "typePropertiesType": "BuiltInRole"
-      }
-      ...
-    ]
-    ```
-
-    > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/00000000-0000-0000-0000-000000000002`. This example uses fictitious data and your identifier would be distinct from this example.
-
-1. Create a new JSON file named *role-definition.json*. In this file, create a resource definition specifying the data actions listed here:
+1. Create a new JSON file named *role-definition.json*, which is used for the creation of the custom role. In this file, create a resource definition specifying the data actions listed here:
 
     | | Description |
     | --- | --- |
@@ -262,16 +230,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
         --account-name "<name-of-existing-nosql-account>" \
         --body "@role-definition.json"
     ```  
-
-1. Now, list all of the role definitions associated with your Azure Cosmos DB for NoSQL account using [`az cosmosdb sql role definition list`](/cli/azure/cosmosdb/sql/role/definition#az-cosmosdb-sql-role-definition-list).
-
-    ```azurecli-interactive
-    az cosmosdb sql role definition list \
-        --resource-group "<name-of-existing-resource-group>" \
-        --account-name "<name-of-existing-nosql-account>"
-    ```
-
-1. Review the output from the previous command. Locate the role definition you just created named **Azure Cosmos DB for NOSQL Data Plane Owner**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide.
+1. Review the output from the previous command. Locate the role definition you just created named **Azure Cosmos DB for NOSQL Data Plane Owner**. The output contains the unique identifier of the role definition in the `id` property. Record this value as it is required to use in the assignment step later in this guide as `--role-definition-id`
 
     ```json
     {
@@ -298,35 +257,20 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     ```
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql/sqlRoleDefinitions/bbbbbbbb-1111-2222-3333-cccccccccccc`. This example uses fictitious data and your identifier would be distinct from this example.
+    > In this example, the `--role-definition-id` value would be `bbbbbbbb-1111-2222-3333-cccccccccccc`. This example uses fictitious data and your identifier would be distinct from this example.
 
-1. Use [`az cosmosdb show`](/cli/azure/cosmosdb#az-cosmosdb-show) to get the unique identifier for your current account.
-
-    ```azurecli-interactive
-    az cosmosdb show \
-        --resource-group "<name-of-existing-resource-group>" \
-        --name "<name-of-existing-nosql-account>" \
-        --query "{id:id}"
-    ```
-
-1. Observe the output of the previous command. Record the value of the `id` property for this account as it is required to use in the next step.
-
-    ```json
-    {
-      "id": "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
-    }
-    ```
+1. Use the `id` obtained in the previous step and determine the `--scope` by removing everything after the account name.
 
     > [!NOTE]
-    > In this example, the `id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
+    > In this example, the `--scope` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
 
-1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). Use the previously recorded role definition identifiers to the `--role-definition-id` argument, and the unique identifier for your identity to the `--principal-id` argument. Finally, use your account's identifier for the `--scope` argument.
+1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). </br>Use the previously recorded role definition identifiers to the `--role-definition-id` argument, </br>unique identifier for your identity to the `--principal-id` argument, </br>and finally, use your account's identifier for the `--scope` argument.
 
     ```azurecli-interactive
     az cosmosdb sql role assignment create \
         --resource-group "<name-of-existing-resource-group>" \
         --account-name "<name-of-existing-nosql-account>" \
-        --role-definition-id "<id-of-new-role-definition>" \
+        --role-definition-id "<id-of-new-role-definition>" \ 
         --principal-id "<id-of-existing-identity>" \
         --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
     ```

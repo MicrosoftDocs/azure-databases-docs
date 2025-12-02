@@ -13,7 +13,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Locale and Formatting |
-| Description | Sets the client-side encoding (character set). The default is to use the database encoding. |
+| Description | Sets the client's character set encoding. |
 | Data type | enumeration |
 | Default value | `UTF8` |
 | Allowed values | `BIG5,EUC_CN,EUC_JP,EUC_JIS_2004,EUC_KR,EUC_TW,GB18030,GBK,ISO_8859_5,ISO_8859_6,ISO_8859_7,ISO_8859_8,JOHAB,KOI8R,KOI8U,LATIN1,LATIN2,LATIN3,LATIN4,LATIN5,LATIN6,LATIN7,LATIN8,LATIN9,LATIN10,MULE_INTERNAL,SJIS,SHIFT_JIS_2004,SQL_ASCII,UHC,UTF8,WIN866,WIN874,WIN1250,WIN1251,WIN1252,WIN1253,WIN1254,WIN1255,WIN1256,WIN1257,WIN1258` |
@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Locale and Formatting |
-| Description | Sets the display format for date and time values. |
+| Description | Sets the display format for date and time values. Also controls interpretation of ambiguous date inputs. |
 | Data type | string |
 | Default value | `ISO, MDY` |
 | Allowed values | `(ISO|POSTGRES|SQL|GERMAN)(, (DMY|MDY|YMD))?` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Locale and Formatting |
-| Description | Selects the text search configuration that is used by those variants of the text search functions that do not have an explicit argument specifying it. |
+| Description | Sets default text search configuration. |
 | Data type | string |
 | Default value | `pg_catalog.english` |
 | Allowed values | `[A-Za-z._]+` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Locale and Formatting |
-| Description | Sets the number of digits displayed for floating-point values. |
+| Description | Sets the number of digits displayed for floating-point values. This affects real, double precision, and geometric data types. A zero or negative parameter value is added to the standard number of digits (FLT_DIG or DBL_DIG as appropriate). Any value greater than zero selects precise output mode. |
 | Data type | integer |
 | Default value | `1` |
 | Allowed values | `-15-3` |

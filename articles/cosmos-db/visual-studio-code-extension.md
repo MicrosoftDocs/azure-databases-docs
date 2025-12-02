@@ -1,15 +1,17 @@
 ---
 title: Use Visual Studio Code to connect and manage Azure Cosmos DB resources
 titleSuffix: Azure Cosmos DB
-description: Learn how to connect to Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB (vCore) cluster by using Visual Studio Code.
+description: Learn how to connect to Azure Cosmos DB for NoSQL by using Visual Studio Code.
 author: khelanmodi
 ms.author: khelanmodi
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/03/2025
-ms.custom: sfi-image-nochange
+ms.date: 10/14/2025
 ai-usage: ai-assisted
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
+ms.custom:
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 applies-to:
   - ✅ NoSQL
   - ✅ MongoDB
@@ -17,7 +19,7 @@ applies-to:
 
 # Use Visual Studio Code to connect and query Azure Cosmos DB instances
 
-[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB (vCore) cluster using Visual Studio Code. It covers performing core database operations, including querying, inserting, updating, and deleting data.
+[Visual Studio Code](https://code.visualstudio.com/docs) is a versatile code editor for Linux, macOS, and Windows, supporting numerous extensions. This quickstart shows you how to connect to Azure Cosmos DB for NoSQL and Azure Cosmos DB for MongoDB using Visual Studio Code. It covers performing core database operations, including querying, inserting, updating, and deleting data.
 
 ::: zone pivot="api-nosql"
 
@@ -50,6 +52,7 @@ To connect and manage data in Azure Cosmos DB within Visual Studio, first instal
 1. Select an existing account or right-click to create a new resource.
 
 ## Query and display your data
+
 The following steps use the Query Editor to execute a query and view the results of the query:
 
 1. In the menu for your collection, right-click on the collection to open the Query Editor in Preview.
@@ -78,7 +81,6 @@ Within the query editor, view more query and index metrics to better help optimi
     :::image type="content" source="media/visual-studio-code-extension/view-query-stats.png" lightbox="media/visual-studio-code-extension/view-query-stats.png" alt-text="Screenshot of the query stats in Visual Studio Code.":::
 
 1. For more information on the metric definitions, see the [query metrics documentation](./nosql/query-metrics.md).
-
 
 ## Insert, Edit, and Delete documents
 
@@ -119,22 +121,9 @@ To connect and manage data in Azure Cosmos DB, you need to install the **Azure D
 1. In the search bar, type [DocumentDB for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and select the extension. Then, select **Install**.
 1. After installation, reload Visual Studio Code if prompted.
 
----
-
 ## Connecting to a MongoDB workload
 
-## [Connecting to Azure Cosmos DB for MongoDB (vCore) cluster](#tab/CBDMongovCore)
-
-1. In the **Azure Databases** extension, expand the **Azure Resources** section.
-1. Locate **Subscription** you have your MongoDB workload. Under the desired subscription, you notice **Azure Cosmos DB for MongoDB (vCore)** branch. Expand the branch to view your clusters and databases.
-1. Choose your Azure Cosmos DB for MongoDB (vCore) cluster from the expanded list.
-
-> [!NOTE]
-> In many corporate environments, developer machine IP addresses are hidden due to a VPN or other corporate network settings. In these cases, start by allowing access to all IP addresses by adding the `0.0.0.0` - `255.255.255.255` firewall rule for connection testing initially before refining the allowlist.
->
-> :::image type="content" source="media/visual-studio-code-extension/networking-settings-at-provisioning.png" alt-text="Screenshot of networking and firewall options for a cluster.":::
-
-## [Connecting to any MongoDB cluster](#tab/MongoDB)
+Now, connect to the MongoDB workload in Azure Cosmos DB for MongoDB.
 
 1. In the **Workspace** panel, expand the **MongoDB accounts** section.
 
@@ -142,8 +131,6 @@ To connect and manage data in Azure Cosmos DB, you need to install the **Azure D
 
     > [!NOTE]
     > All successfully connected MongoDB clusters will remain listed in the MongoDB accounts section, even after closing Visual Studio Code.
-
----
 
 ## Intuitive Data Management
 
@@ -179,7 +166,7 @@ Easily manage your databases within Visual Studio Code:
         - **Edit**: Edit the content of selected documents.
         - **Delete**: Remove selected documents with changes reflected immediately.
 
-:::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of an Azure Cosmos DB for MongoDB (vCore) cluster." lightbox="media/visual-studio-code-extension/vcore-vs-code-screenshot.png":::
+:::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-screenshot.png" alt-text="Screenshot of VS-code extension of an MongoDB instance." lightbox="media/visual-studio-code-extension/vcore-vs-code-screenshot.png":::
 
 ## Powerful Query Tools
 
@@ -200,11 +187,11 @@ Explore your data using multiple views for different perspectives:
 
 - **JSON View**: See the raw JSON data structure.
 
-  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of an Azure Cosmos DB for MongoDB (vCore) cluster in JSON view." lightbox="media/visual-studio-code-extension/vcore-vs-code-json-view.png":::
+  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-json-view.png" alt-text="Screenshot of VS-code extension of an MongoDB instance in JSON view." lightbox="media/visual-studio-code-extension/vcore-vs-code-json-view.png":::
 
 - **Tree View**: Navigate and explore nested data effortlessly.
 
-  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of an Azure Cosmos DB for MongoDB (vCore) cluster in Tree view." lightbox="media/visual-studio-code-extension/vcore-vs-code-tree-view.png":::
+  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-tree-view.png" alt-text="Screenshot of VS-code extension of an MongoDB instance in Tree view." lightbox="media/visual-studio-code-extension/vcore-vs-code-tree-view.png":::
 
 - **Table View**: Quickly scan data and drill down into nested documents.
 
@@ -212,7 +199,7 @@ Explore your data using multiple views for different perspectives:
 
     - **To go back**: Return to previous levels using the navigation breadcrumbs below the Table View.
 
-  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of an Azure Cosmos DB for MongoDB (vCore) cluster in Table view." lightbox="media/visual-studio-code-extension/vcore-vs-code-table-view.png":::
+  :::image type="content" source="media/visual-studio-code-extension/vcore-vs-code-table-view.png" alt-text="Screenshot of VS-code extension of an MongoDB instance in Table view." lightbox="media/visual-studio-code-extension/vcore-vs-code-table-view.png":::
 
 ## Mongo Shell Integration
 

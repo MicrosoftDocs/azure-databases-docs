@@ -12,7 +12,6 @@ ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-  - ✅ MongoDB vCore
   - ✅ PostgreSQL
 ---
 

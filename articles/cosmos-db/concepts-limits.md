@@ -279,7 +279,7 @@ See the [Autoscale](./provision-throughput-autoscale.md) article and [FAQ](./aut
 
 ## SQL query limits
 
-Azure Cosmos DB supports querying items using [SQL](nosql/query/getting-started.md). The following table describes restrictions in query statements, such as the number of clauses or query length.
+Azure Cosmos DB supports querying items using [SQL](/cosmos-db/query/overview). The following table describes restrictions in query statements, such as the number of clauses or query length.
 
 | Resource | Limit |
 | --- | --- |

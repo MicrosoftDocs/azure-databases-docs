@@ -21,7 +21,7 @@ Azure Database for MySQL - Flexible Server is a fully managed, production-ready 
 
 Azure Database for MySQL - Flexible Server delivers:
 
-- Zone-redundant and same-zone high availability (HA).
+- Zone-redundant and Local-redundant high availability (HA).
 - The ability to schedule maintenance windows.
 - Data protection by using automatic backups and point-in-time restore for up to 35 days.
 - Automated patching and maintenance for the underlying hardware, operating system, and database engine to help keep the service secure and up to date.
@@ -53,7 +53,7 @@ When you use a Flexible Server architecture, you can opt for high availability w
 
 - Ease of deployment, simplified scaling, and low database-management overhead for backups, high availability, security, and monitoring.
 - Application developments that require a community version of MySQL with better control and customizations.
-- Production workloads with same-zone or zone-redundant high availability, along with managed maintenance windows.
+- Production workloads with Local-redundant or zone-redundant high availability, along with managed maintenance windows.
 - A simplified development experience.
 
 :::image type="content" source="media/overview/1-flexible-server-conceptual-diagram.png" alt-text="Diagram of a Flexible Server architecture." lightbox="media/overview/1-flexible-server-conceptual-diagram.png":::
@@ -79,9 +79,9 @@ There are two high-availability architectural models:
 
   Zone-redundant HA is available in a [subset of Azure regions](#azure-regions) that support multiple availability zones and zone-redundant premium file shares.
 
-- **Same-zone high availability**: This option offers infrastructure redundancy with lower network latency because both primary and standby servers are in the same availability zone. It provides high availability without requiring you to configure application redundancy across zones.
+- **Local-redundant high availability**: This option offers infrastructure redundancy with lower network latency because both primary and standby servers are in the same availability zone. It provides high availability without requiring you to configure application redundancy across zones.
 
-  Same-zone HA is available in [all Azure regions](#azure-regions) where you can create Azure Database for MySQL - Flexible Server instances.
+  Local-redundant HA is available in [all Azure regions](#azure-regions) where you can create Azure Database for MySQL - Flexible Server instances.
 
 For more information, see [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
 
@@ -212,7 +212,7 @@ For more information, see [Select the right tools for migration to Azure Databas
 
 One advantage of running your workload in Azure is its global reach. Azure Database for MySQL - Flexible Server is currently available in the following Azure regions:
 
-| Region | Availability | Same-zone HA | Zone-redundant HA | Geo-redundant backup |
+| Region | Availability | Local-redundant HA | Zone-redundant HA | Geo-redundant backup |
 | --- | --- | --- | --- | --- |
 | Australia Central | Yes | Yes | No | No |
 | Australia East | Yes | Yes | Yes | Yes |

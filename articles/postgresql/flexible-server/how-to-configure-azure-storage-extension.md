@@ -4,12 +4,13 @@ description: Learn how to configure the Azure Storage extension in an Azure Data
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/26/2025
+ms.date: 11/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: reference
 ms.custom:
 - ignite-2024
+- ignite-2025
 - sfi-image-nochange
 ---
 
@@ -190,7 +191,7 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ## Create the extension
 
-Using the client of your preference (for example, [PostgreSQL for Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), psql, pgAdmin, etc.), in your Azure Database for PostgreSQL flexible server instance, connect to the database in which you want to use the Azure Storage extension.
+Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
 
  To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 
@@ -216,7 +217,6 @@ Check out the list of quickstart examples:
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
 - [Read content from file with custom options (headers, column delimiters, escape characters)](quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
 - [Use the decoder option](quickstart-azure-storage-extension.md#use-the-decoder-option)
-- [Use compression with decoder option](quickstart-azure-storage-extension.md#use-compression-with-decoder-option)
 - [Compute aggregations over the content of a blob](quickstart-azure-storage-extension.md#compute-aggregations-over-the-content-of-a-blob)
 - [Write content to a blob](quickstart-azure-storage-extension.md#write-content-to-a-blob)
 - [List all the references to Azure storage accounts](quickstart-azure-storage-extension.md#list-all-the-references-to-azure-storage-accounts)
@@ -244,7 +244,7 @@ In case you need to review all functions offered by the extension and all the de
 And, if you need to do some troubleshooting, review the [list of errors](troubleshoot-azure-storage-extension.md) that the extension can produce, and the context in which they can be raised.
 
 > [!IMPORTANT]
-> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `azure_storage` extension stores those keys in a table `azure_storage.accounts` that can be read by members of the `pg_read_all_data` role.
+> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `azure_storage` extension stores those keys in a table `azure_storage.accounts`, which is readable by members of the `pg_read_all_data` role.
 
 ## Related content
 

@@ -404,7 +404,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Accepted password authentication method. |
+| Description | Password authentication methods, separated by comma, that are accepted by the server. |
 | Data type | set |
 | Default value | `md5,scram-sha-256` |
 | Allowed values | `md5,scram-sha-256` |
@@ -523,7 +523,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Maximum size (in MB) of the initial snapshot buffer. Per table, up to this much data is buffered before sent to Fabric. Keep in mind that azure_cdc.snapshot_buffer_size*azure_cdc.max_snapshot_workers is the total memory buffer used during initial snapshot. |
+| Description | Buffer size, in megabytes, for snapshot data files. These buffers are used for writing snapshot data. While this indirectly influences the file size, the actual file size may be smaller due to compression and other factors. |
 | Data type | integer |
 | Default value | `1000` |
 | Allowed values | `10-4000` |
@@ -557,7 +557,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Create temp tablespace on ephemeral disk. |
+| Description | Stores temporary objects on local Solid State Disk. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -577,7 +577,7 @@ ms.custom: automatically generated
 | Description | List of extensions, separated by comma, that are allowlisted. If an extension is not in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -591,7 +591,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the flag indicating if mirroring is enabled on server. |
+| Description | Validates prerequisites for Fabric Mirroring to function properly. Validation only occurs at the very moment this setting is changed from 'off' to 'on'. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -608,7 +608,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | A unique identifier for a service principal in Azure, used to grant permissions and access to resources within a tenant. |
+| Description | Identifier of the service principal of the system assigned identity associated to the server. |
 | Data type | string |
 | Default value | |
 | Allowed values | |
@@ -625,7 +625,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | A unique identifier for the tenant in which a service principal is created, ensuring the necessary permissions and access to resources within that tenant. |
+| Description | Identifier of the tenant where the service principal of the system assigned identity associated to the server exists. |
 | Data type | string |
 | Default value | |
 | Allowed values | |
@@ -642,7 +642,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies if this is a server created for migrating from Azure Database for PostgreSQL Single Server to Flexible Server. |
+| Description | Indicates if server is configured for single server to flexible server migration. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
@@ -841,12 +841,573 @@ ms.custom: automatically generated
 
 
 
+### credcheck.auth_delay_ms
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Milliseconds to delay before reporting authentication failure. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.auth_delay_ms](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.auth_failure_cache_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum of entries in the auth failure cache. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `1-2097151` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.auth_failure_cache_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.encrypted_password_allowed
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Allow encrypted password to be used or throw an error. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.encrypted_password_allowed](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.history_max_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum of entries in the password history. |
+| Data type | integer |
+| Default value | `65535` |
+| Allowed values | `1-2097151` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.history_max_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.max_auth_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of authentication failures before the user login account is invalidated. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-64` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.max_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.no_password_logging
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Prevent exposing the password in error messages logged. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.no_password_logging](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password should contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_contain_username
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password contains username |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_contain_username](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_ignore_case
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Ignore case while password checking |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_digit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password digits |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_length
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password length |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_lower
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password lowercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_repeat
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password characters repeat |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_special
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum special characters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_min_upper
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum password uppercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_not_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Password should not contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_reuse_history
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum number of password changes before permitting reuse |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-100` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_reuse_history](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_reuse_interval
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum number of days elapsed before permitting reuse |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-730` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_reuse_interval](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_valid_max
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Force use of VALID UNTIL clause in CREATE ROLE statement with a maximum number of days |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_valid_max](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.password_valid_until
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Force use of VALID UNTIL clause in CREATE ROLE statement with a minimum number of days |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.password_valid_until](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.reset_superuser
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Restore superuser access when they have been banned. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [credcheck.reset_superuser](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username should contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_contain_password
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username contains password |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_contain_password](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_ignore_case
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Ignore case while username checking |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_digit
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username digits |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_length
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username length |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_lower
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username lowercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_repeat
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username characters repeat |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_special
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username special characters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_min_upper
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Minimum username uppercase letters |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483647` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.username_not_contain
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Username should not contain these characters |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.username_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.whitelist
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Comma separated list of usernames to exclude from password policy check. |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.whitelist](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### credcheck.whitelist_auth_failure
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Comma separated list of usernames to exclude from max authentication failure check. |
+| Data type | string |
+| Default value | |
+| Allowed values | `.*` |
+| Parameter type | dynamic |
+| Documentation | [credcheck.whitelist_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### cron.database_name
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the database in which pg_cron metadata is kept. |
+| Description | Database in which pg_cron metadata is kept. |
 | Data type | string |
 | Default value | `postgres` |
 | Allowed values | `[A-Za-z0-9_]+` |
@@ -965,7 +1526,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the maximum number of jobs that can run concurrently. This value is limited by max_connections. |
+| Description | Maximum number of jobs that can run concurrently. |
 | Data type | integer |
 | Default value | `32` |
 | Allowed values | `0-5000` |
@@ -1019,8 +1580,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB). |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024-688128` |
-| Parameter type | static |
+| Allowed values | `1024` |
+| Parameter type | read-only |
 | Documentation | [duckdb.max_memory](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -1053,8 +1614,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB), alias for duckdb.max_memory |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024-688128` |
-| Parameter type | static |
+| Allowed values | `1024` |
+| Parameter type | read-only |
 | Documentation | [duckdb.memory_limit](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -1101,7 +1662,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Enables synchronization of Entra ID group members. |
+| Description | Enables synchronization of Microsoft Entra ID group members. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1118,7 +1679,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies which classes of statements will be logged by session audit logging. |
+| Description | Specifies which classes of statements will be logged by session audit logging. Multiple classes can be provided using a comma-separated list and classes can be subtracted by prefacing the class with a - sign. |
 | Data type | set |
 | Default value | `none` |
 | Allowed values | `none,read,write,function,role,ddl,misc,all` |
@@ -1135,7 +1696,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. |
+| Description | Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Disabling this setting will reduce noise in the log from tools like psql and PgAdmin that query the catalog heavily. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -1152,7 +1713,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether audit messages should be visible to client. |
+| Description | Specifies whether audit messages should be visible to the client. This setting should generally be left disabled but may be useful for debugging or other purposes. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1169,7 +1730,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the log level that will be used for log entries. |
+| Description | Specifies the log level that will be used for log entries. This setting is used for regression testing and may also be useful to end users for testing or other purposes. It is not intended to be used in a production environment as it may leak which statements are being logged to the user. |
 | Data type | enumeration |
 | Default value | `log` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,log` |
@@ -1186,7 +1747,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies that audit logging should include the parameters that were passed with the statement. |
+| Description | Specifies that audit logging should include the parameters that were passed with the statement. When parameters are present they will be be included in CSV format after the statement text. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1220,7 +1781,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether session audit logging should create a separate log entry for each relation referenced in a SELECT or DML statement. |
+| Description | Specifies whether session audit logging should create a separate log entry for each relation referenced in a SELECT or DML statement. This is a useful shortcut for exhaustive logging without using object audit logging. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1240,8 +1801,8 @@ ms.custom: automatically generated
 | Description | Specifies whether logging will include the rows retrieved or affected by a statement. |
 | Data type | boolean |
 | Default value | `off` |
-| Allowed values | `off` |
-| Parameter type | read-only |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
 | Documentation | [pgaudit.log_rows](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
 
 
@@ -1271,7 +1832,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. |
+| Description | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Disabling this setting will result in less verbose logging but may make it more difficult to determine the statement that generated a log entry, though the statement/substatement pair along with the process id should suffice to identify the statement text logged with a previous entry. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1288,7 +1849,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the master role to use for object audit logging. |
+| Description | Specifies the master role to use for object audit logging. Multiple audit roles can be defined by granting them to the master role. This allows multiple groups to be in charge of different aspects of audit logging. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z\\._]*` |
@@ -1390,7 +1951,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Tells PGLogical to use batch insert mechanism if possible. |
+| Description | Batch inserts if possible. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -1407,7 +1968,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the log level for reporting detected conflicts when the pglogical.conflict_resolution is set to anything else than error. |
+| Description | Sets log level used for logging resolved conflicts. |
 | Data type | enumeration |
 | Default value | `log` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
@@ -1424,7 +1985,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Sets the resolution method for any detected conflicts between local data and incoming changes. |
+| Description | Sets method used for conflict resolution for resolvable conflicts. |
 | Data type | enumeration |
 | Default value | `apply_remote` |
 | Allowed values | `error,apply_remote,keep_local,last_update_wins,first_update_wins` |
@@ -1492,7 +2053,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Tells PGLogical to use SPI interface to form actual SQL (INSERT, UPDATE, DELETE) statements to apply incoming changes instead of using internal low level interface. |
+| Description | Use SPI instead of low-level API for applying changes. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1577,7 +2138,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Same purpose as the p_analyze argument to run_maintenance(). |
+| Description | Whether to run an analyze on a partition set whenever a new partition is created during run_maintenance(). Set to 'on' to send TRUE (default). Set to 'off' to send FALSE. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -1594,7 +2155,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Required. The database(s) that run_maintenance() will run on. If more than one, use a comma separated list. If not set, BGW will do nothing. |
+| Description | CSV list of specific databases in the cluster to run pg_partman BGW on. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z0-9_,-]*` |
@@ -1611,7 +2172,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Number of seconds between calls to run_maintenance(). |
+| Description | How often run_maintenance() is called (in seconds). |
 | Data type | integer |
 | Default value | `3600` |
 | Allowed values | `1-315360000` |
@@ -1628,7 +2189,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Same purpose as the p_jobmon argument to run_maintenance(). |
+| Description | Whether to log run_maintenance() calls to pg_jobmon if it is installed. Set to 'on' to send TRUE (default). Set to 'off' to send FALSE. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
@@ -1662,7 +2223,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed. |
+| Description | Role to be used by BGW. Must have execute permissions on run_maintenance(). |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z\\._]*` |
@@ -1917,7 +2478,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Controls which statements are counted by pg_stat_statements. |
+| Description | Selects which statements are tracked by pg_stat_statements. |
 | Data type | enumeration |
 | Default value | `none` |
 | Allowed values | `top,all,none` |

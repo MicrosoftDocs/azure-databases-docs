@@ -2,8 +2,8 @@
 title: Redistribute throughput across partitions
 titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to redistribute throughput across partitions in Azure Cosmos DB for NoSQL to optimize performance. To improve partition performance, follow these step-by-step instructions and best practices.
-author: tarabhatiamsft
-ms.author: tarabhatia
+author: richagaur
+ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to

@@ -15,10 +15,9 @@ ms.date: 04/20/2023
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your pre-migration steps. For migrations to Azure Cosmos DB for MongoDB vCore refer to  [vCore migration options](./vcore/migration-options.md)
->
+> Please read this entire guide before carrying out your pre-migration steps.
 
-This MongoDB pre-migration guide is part of series on MongoDB RU migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
+This MongoDB pre-migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
 
 ![Diagram of the migration steps from pre to post migration.](~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png)
 
@@ -143,7 +142,7 @@ The following Azure Cosmos DB configuration choices can't be modified or undone 
 * The following are key factors that affect the number of required RUs:
   * **Document size**: As the size of an item/document increase, the number of RUs consumed to read or write the item/document also increases.
 
-  * **Document property count**:The number of RUs consumed to create or update a document is related to the number, complexity and length of its properties. You can reduce the request unit consumption for write operations by [limiting the number of indexed properties](indexing.md).
+  * **Document property count**: The number of RUs consumed to create or update a document is related to the number, complexity and length of its properties. You can reduce the request unit consumption for write operations by [limiting the number of indexed properties](indexing.md).
 
   * **Query patterns**: The complexity of a query affects how many request units the query consumes.
 

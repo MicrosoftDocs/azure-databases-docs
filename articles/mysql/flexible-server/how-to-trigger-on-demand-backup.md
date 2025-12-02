@@ -40,58 +40,6 @@ Follow these steps to trigger backup on demand:
 1. Once completed, the on-demand and automated backups are listed.
 1. These on-demand backups can also be deleted if no longer needed. Select **Delete** to delete any on-demand backup.
 
-## Trigger an On-Demand Backup and Export (preview)
-
-> [!NOTE]
-> The **"On-Demand Backup and Export"** feature in Azure Database for MySQL Flexible Server, currently in preview, has been temporarily paused. This decision was made to address certain technical blockers identified during the preview phase, which impact the restorability of exported backups. As a result, exporting backups to external storage accounts will not be available until further notice.
-
-Follow these steps to trigger an on-demand backup and export:
-
-1. In the [Azure portal](https://portal.azure.com/), choose your Azure Database for MySQL Flexible Server instance to take a backup of and export.
-
-1. Under **Settings** select **Backup and restore** from the left panel.
-
-1. From the **Backup and restore** page, select **Export now**.
-
-    :::image type="content" source="media/how-to-trigger-on-demand-backup/export-backup.jpg" alt-text="Screenshot of the export now option is selected.":::
-
-1. When the **Export backup** page is shown, provide a custom name for the backup in the **Backup name** field or use the default populated name.
-
-    :::image type="content" source="media/how-to-trigger-on-demand-backup/select-backup-name.jpg" alt-text="Screenshot of providing a custom name for the backup in the backup name field.":::
-
-1. Select **Select storage**, then select the storage account, which is the target for the on-demand backup to be exported to.
-
-    :::image type="content" source="media/how-to-trigger-on-demand-backup/select-storage-account.jpg" alt-text="Screenshot of selecting the storage account.":::
-
-1. Select the container from the list displayed, then **Select**.
-
-    :::image type="content" source="media/how-to-trigger-on-demand-backup/click-select.jpg" alt-text="Screenshot of listing the containers to use.":::
-
-1. Then select **Export**.
-
-    :::image type="content" source="media/how-to-trigger-on-demand-backup/click-export.jpg" alt-text="Screenshot of the Export button to choose what to export.":::
-
-1. You should see the exported on-demand backup in the target storage account once exported.
-
-1. If you don't have a precreated storage account to select from, select "+Storage Account," and the portal initiates a storage account creation workflow to help you create a storage account to export the backup.
-
-## Restore from an exported on-demand full backup
-
-1. Download the backup file from the Azure storage account using Azure Storage Explorer.
-
-1. Install the MySQL community version from MySQL. Download MySQL Community Server. The downloaded version must be the same or compatible with the version of the exported
-backups.
-
-1. Open the command prompt and navigate to the bin directory of the downloaded MySQL community version folder.
-
-1. Now specify the data directory using `--datadir` by running the following command at the command prompt:
-
-    ```bash
-    mysqld --datadir=<path to the data folder of the files downloaded>
-    ```
-
-1. Connect to the database using any supported client.
-
 ## Related content
 
 - [Point-in-time restore in Azure Database for MySQL - Flexible Server with the Azure portal](how-to-restore-server-portal.md)

@@ -1,25 +1,25 @@
 ---
 title: "Quickstart: Guide for GitHub Copilot Feature for Visual Studio Code PostgreSQL Extension"
 description: Learn how to use the GitHub Copilot integration in the PostgreSQL extension for Visual Studio Code.
-author: akashraokm
-ms.author: akashrao
+author: swarathmika
+ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 05/19/2025
-ms.update-cycle: 180-days
+ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
   - ce-skilling-ai-copilot
-ai.usage: ai-assisted
+ai-usage: ai-assisted
+ms.update-cycle: 180-days
 ms.custom:
   - copilot
   - vs-code
-  - build-2025
+  - ignite-2025
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code preview
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code
 
-The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
+The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This access enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ These tools and resources help you follow along with this article and make the m
 
 ## Sign in to GitHub in Visual Studio Code
 
-1. Ensure you have a GitHub account and an active GitHub Copilot subscription:
+1. Make sure you have a GitHub account and an active GitHub Copilot subscription:
 
    - [Create GitHub account](https://www.github.com)
    - [Enable GitHub Copilot Subscription](https://github.com/settings/copilot)
@@ -57,9 +57,9 @@ Follow the steps to begin using GitHub Copilot with the PostgreSQL Visual Studio
 
 1. Right-click on a PostgreSQL database and select **Chat with this database**.
 
-2. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
+1. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
 
-3. When the Copilot chat interface opens, you can start asking questions using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
+1. When the Copilot chat interface opens, start asking questions by using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
 
 Try a prompt like:
 
@@ -67,16 +67,16 @@ Try a prompt like:
 @pgsql tell me about the tables in the HR schema
 ```
 
-  :::image type="content" source="media/quickstart-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+:::image type="content" source="media/quickstart-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
-4. Copilot responds with a detailed description of your schema's tables.
+1. Copilot responds with a detailed description of your schema's tables.
 
-## Using read/write capabilities
+## Using read and write capabilities
 
-The GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code enables seamless read and write capabilities, allowing developers to interact with their databases more efficiently. By leveraging AI-powered suggestions, you can perform tasks such as querying data, modifying schemas, and updating records directly from the editor. This feature simplifies complex operations, reduces manual effort, and enhances productivity while maintaining accuracy and context-awareness.
+The GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code enables seamless read and write capabilities. With this integration, you can interact with your databases more efficiently. By using AI-powered suggestions, you can perform tasks such as querying data, modifying schemas, and updating records directly from the editor. This feature simplifies complex operations, reduces manual effort, and enhances productivity while maintaining accuracy and context-awareness.
 
 > [!NOTE]  
-> The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. It's important to use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
+> The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. Use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first.
 
 Try a more advanced prompt.
 
@@ -108,7 +108,7 @@ There are many prompts and things you can do with GitHub Copilot for PostgreSQL 
 
 ### Query optimization
 
-Here are some prompts you can use to guide Copilot in addressing specific query optimization challenges, helping you achieve efficient and reliable database operations.
+Use these prompts to guide Copilot in addressing specific query optimization challenges. With Copilot's help, you can achieve efficient and reliable database operations.
 
 ```copilot-prompt
 I'm working on optimizing my database for high-concurrency workloads. The table is called transactions with millions of records, and I'm experiencing deadlocks under a heavy load. Help me optimize my table schema and queries.
@@ -120,7 +120,7 @@ I'm getting this error: 'ERROR: column `orders.total_price` must appear in the G
 
 ### Performance optimization
 
-Here are some prompts you can use to guide Copilot in addressing specific performance optimization challenges, helping you achieve faster and more efficient database operations.
+Use these prompts to guide Copilot in addressing specific performance optimization challenges. With Copilot's help, you can achieve faster and more efficient database operations.
 
 ```copilot-prompt
 Provide the Explain Plan for my most recent query, and please explain each step.
@@ -132,7 +132,7 @@ My orders table has 10 million records, and queries on customer_id and order_dat
 
 ### App development
 
-Here are some prompts you can use to guide Copilot in addressing app development challenges.
+Use these prompts to guide Copilot in addressing app development challenges.
 
 ```copilot-prompt
 Generate a FastAPI endpoint to fetch orders from the ecom.orders table with pagination.
@@ -144,24 +144,24 @@ Generate a FastAPI project with my database using SQLAlchemy.
 
 ## Clean up
 
-To ensure a smooth experience, clean up any temporary resources or configurations created during this quickstart. For example:
+To ensure a smooth experience, clean up any temporary resources or configurations you created during this quickstart. For example:
 
 - Disconnect from the PostgreSQL database in Visual Studio Code.
-- Remove any test databases or tables created during the session.
+- Remove any test databases or tables you created during the session.
 - Close any open connections to avoid unnecessary resource usage.
 
 ## Feedback and support
 
-For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this via the VS Code Help menu or the PGSQL command palette.
+For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this feedback via the Visual Studio Code Help menu or the PGSQL command palette.
 
 - Help menu
-    - Go to **Help > Report Issue**
+  - Go to **Help > Report Issue**
 
 - Command palette
-    - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
+  - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code preview?](overview.md)
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code preview](quickstart-connect.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](overview.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](quickstart-connect.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

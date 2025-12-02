@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / TCP Settings |
-| Description | Specifies the number of TCP keepalives that can be lost before the server's connection to the client is considered dead. |
+| Description | Maximum number of TCP keepalive retransmits. Number of consecutive keepalive retransmits that can be lost before a connection is considered dead. A value of 0 uses the system default. |
 | Data type | integer |
 | Default value | `9` |
 | Allowed values | `0-2147483647` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / TCP Settings |
-| Description | Specifies the number of seconds of inactivity after which TCP should send a keepalive message to the client. |
+| Description | Time between issuing TCP keepalives. A value of 0 uses the system default. |
 | Data type | integer |
 | Default value | `120` |
 | Allowed values | `0-2147483647` |
@@ -64,7 +64,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / TCP Settings |
-| Description | Specifies the number of seconds after which a TCP keepalive message that is not acknowledged by the client should be retransmitted. |
+| Description | Time between TCP keepalive retransmits. A value of 0 uses the system default. |
 | Data type | integer |
 | Default value | `30` |
 | Allowed values | `0-2147483647` |
@@ -81,7 +81,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Connections and Authentication / TCP Settings |
-| Description | Specifies the amount of time that transmitted data may remain unacknowledged before the TCP connection is forcibly closed. |
+| Description | TCP user timeout. A value of 0 uses the system default. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |

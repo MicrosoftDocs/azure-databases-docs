@@ -116,6 +116,9 @@ Next, check Last_IO_Errno, Last_IO_Error, Last_SQL_Errno, and Last_SQL_Error.  T
 
 The following sections address scenarios in which high replication latency is common.
 
+> [!NOTE]
+> If the source server uses [accelerated logs feature](.\flexible-server\concepts-accelerated-logs.md) and the replica server is in a region that does not support this feature, or if accelerated logs are disabled on the replica, replication lag is likely. To minimize lag, it is recommended to either enable the accelerated log feature on both the primary and replica servers or disable it on both.
+
 ### Network latency or high CPU consumption on the source server
 
 If you see the following values, then replication latency is likely caused by high network latency or high CPU consumption on the source server.

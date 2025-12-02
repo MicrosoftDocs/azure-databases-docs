@@ -9,6 +9,8 @@
       href: faq.yml
     - name: Understand distributed NoSQL
       href: ../distributed-nosql.md?context=/azure/cosmos-db/nosql/context/context
+    - name: Compare to Azure DocumentDB
+      href: ../../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/nosql/context/context
 - name: Get started
   items:
     - name: Develop
@@ -54,6 +56,8 @@
   items:
     - name: Why use for AI apps?
       href: ../gen-ai/why-cosmos-ai.md
+    - name: Semantic Reranker (Preview)
+      href: ../gen-ai/semantic-reranker.md
     - name: Use vector search
       items:
         - name: Vector indexing and search
@@ -82,6 +86,14 @@
       href: ../gen-ai/cosmos-ai-graph.md?context=/azure/cosmos-db/nosql/context/context
     - name: Author AI agents
       href: ../ai-agents.md?context=/azure/cosmos-db/nosql/context/context
+    - name: AI tools
+      items:
+        - name: Azure Site Reliability Engineering (SRE) Agent
+          displayName: sre, diagnostics, troubleshooting, monitoring
+          href: site-reliability-engineering-agent.md
+        - name: Model context protocol (MCP) toolkit
+          displayName: mcp, model context protocol, ai
+          href: ../gen-ai/model-context-protocol-toolkit.md
     - name: Learn core AI concepts
       items:
         - name: Vector databases
@@ -109,6 +121,9 @@
     - name: Use role-based access control
       displayName: rbac, key, ropc, connection string
       href: how-to-connect-role-based-access-control.md
+    - name: Dynamic data masking (DDM)
+      displayName: ddm, masking, sensitive data, personal data, pii, phi
+      href: dynamic-data-masking.md
     - name: Network security
       items:
         - name: Configure IP firewall
@@ -427,6 +442,9 @@
       href: tutorial-create-notebook-vscode.md
     - name: Use Visual Studio Code extension
       href: ../visual-studio-code-extension.md?pivots=api-nosql&context=/azure/cosmos-db/nosql/context/context
+    - name: Get started with Azure Cosmos DB best practices in GitHub Copilot
+      displayName: visual studio code, github copilot, ai pair programming, copilot
+      href: github-copilot-visual-studio-code-best-practices.md
     - name: Configure vector database capabilities
       items:
         - name: .NET
@@ -1105,6 +1123,8 @@
           href: ../resource-graph-samples.md?context=/azure/cosmos-db/nosql/context/context
 - name: Resources
   items:
+    - name: Customer solutions
+      href: ../customer-solutions.md
     - name: Build your skills with Microsoft Learn training
       href: /training/browse/?products=azure-cosmos-db
     - name: Whitepapers

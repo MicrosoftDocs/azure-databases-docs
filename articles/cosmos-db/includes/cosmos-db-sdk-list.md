@@ -21,7 +21,7 @@ ms.date: 08/23/2024
 > * [Go](../nosql/sdk-go.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST Resource Provider](/rest/api/cosmos-db-resource-provider/)
-> * [SQL](../nosql/query/getting-started.md)
+> * [SQL](/cosmos-db/query/overview)
 > * [Bulk executor - .NET  v2](../nosql/sdk-dotnet-bulk-executor-v2.md)
 > * [Bulk executor - Java](../nosql/sdk-java-bulk-executor-v2.md)
 >

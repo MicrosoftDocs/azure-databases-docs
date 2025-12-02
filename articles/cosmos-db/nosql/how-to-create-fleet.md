@@ -16,9 +16,7 @@ ms.custom:
   - build-2025
 ---
 
-# Create an Azure Cosmos DB fleet (preview)
-
-[!INCLUDE[Preview](includes/notice-preview.md)]
+# Create an Azure Cosmos DB fleet 
 
 This article provides step-by-step instructions for creating and managing fleets, fleetspaces, and fleetspace accounts. Follow the guidance here to set up and configure your Azure Cosmos DB fleet resources one-by-one. At the end of this guide, you have a fully configured fleet with a single fleetspace, throughput pooling, and a registered Azure Cosmos DB account as a fleetspace account.
 
@@ -27,10 +25,6 @@ For more information about fleets, see [fleets overview](fleet.md).
 ## Prerequisites
 
 [!INCLUDE[Prerequisites - Azure subscription](includes/prereq-azure-subscription.md)]
-
-- Registration in the **Azure Cosmos DB fleet** preview feature for your subscription.
-
-    - If you aren't registered, [register for the preview](fleet.md#register-for-the-preview).
 
 :::zone pivot="azure-cli,azure-resource-manager-bicep"
 
@@ -125,7 +119,7 @@ Set up your fleet by creating the fleet that eventually contains your fleetspace
 :::zone pivot="azure-resource-manager-bicep"
 
 ```bicep
-resource fleet 'Microsoft.DocumentDB/fleets@2025-05-01-preview' = {
+resource fleet 'Microsoft.DocumentDB/fleets@2025-10-25' = {
   name: '<fleet-name>'
   location: '<azure-region>'
   properties: {}
@@ -155,16 +149,16 @@ The pool minimum and maximum RU/s can be changed at any time. The service tier a
 
 1. Within the dialog, configure the following options, and then select **Ok**:
 
-    | | Value |
-    | --- | --- |
-    | **Fleetspace name** | *Provide a unique name within your fleet* |
-    | **Enable throughput pooling** | *Select the checkbox* |
-    | **Select regions for accounts in throughput pool** | Select and **Add** a list of regions for accounts in the throughput pool |
-    | **Select write-region type for accounts in throughput pool** | *Select either **Single-write region** (General purpose) or **Multi-write region** (Business critical)* |
-    | **Throughput pool minimum RU/s** | *A whole number, not less than 100,000, and must be a multiple of 1,000* |
-    | **Throughput pool maximum RU/s** | *A whole number, not less than 100,000, or less than* `throughputPoolConfiguration.minThroughput` *and must be a multiple of 1,000* |
-    
-    :::image source="media/how-to-create-fleet/new-fleetspace.png" alt-text="Screenshot of the fleetspace creation dialog in the Azure portal.":::
+   | | Value |
+   | --- | --- |
+   | **Fleetspace name** | *Provide a unique name within your fleet* |
+   | **Enable throughput pooling** | *Select the checkbox* |
+   | **Select regions for accounts in throughput pool** | Select and **Add** a list of regions for accounts in the throughput pool |
+   | **Select write-region type for accounts in throughput pool** | *Select either **Single-write region** (General purpose) or **Multi-write region** (Business critical)* |
+   | **Throughput pool minimum RU/s** | *A whole number, not less than 100,000, and must be a multiple of 1,000* |
+   | **Throughput pool maximum RU/s** | *A whole number, not less than 100,000, or less than* `throughputPoolConfiguration.minThroughput` *and must be a multiple of 1,000* |
+   
+   :::image source="media/how-to-create-fleet/new-fleetspace.png" alt-text="Screenshot of the fleetspace creation dialog in the Azure portal.":::
 
 :::zone-end
 
@@ -189,7 +183,7 @@ The pool minimum and maximum RU/s can be changed at any time. The service tier a
         --arg "tier" "GeneralPurpose" \
         --null-input \
         --compact-output \
-        '{fleetspaceAPIKind:$api,throughputPoolConfiguration:{minThroughput:$minRUs,maxThroughput:$maxRUs,serviceTier:$tier,dataRegions:[$locationName]}}' \
+        '{fleetspaceAPIKind:$api,serviceTier:$tier,dataRegions:[$locationName],throughputPoolConfiguration:{minThroughput:$minRUs,maxThroughput:$maxRUs}}' \
     )
     
     az resource create \
@@ -247,19 +241,19 @@ The pool minimum and maximum RU/s can be changed at any time. The service tier a
 | **`throughputPoolConfiguration.dataRegions`** | *List of regions for accounts in the throughput pool* |
 
 ```bicep
-resource fleetspace 'Microsoft.DocumentDB/fleets/fleetspaces@2025-05-01-preview' = {
+resource fleetspace 'Microsoft.DocumentDB/fleets/fleetspaces@2025-10-15' = {
   name: '<fleetspace-name>'
   parent: fleet
   location: '<azure-region>'
+  serviceTier: 'General Purpose''
+  dataRegions:  [
+        '<azure-region>'
+      ]
   properties: {
     fleetspaceAPIKind: 'NoSQL'
     throughputPoolConfiguration: {
       minThroughput: 100000
       maxThroughput: 100000
-      serviceTier: 'SingleRegionWrite'
-      dataRegions: [
-        '<azure-region>'
-      ]
     }
   }
 }
@@ -373,7 +367,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2024-12-01-preview' exis
   name: '<azure-cosmos-db-resource-name>'
 }
 
-resource fleetspaceAccount 'Microsoft.DocumentDB/fleets/fleetspaces/fleetspaceAccounts@2025-05-01-preview' = {
+resource fleetspaceAccount 'Microsoft.DocumentDB/fleets/fleetspaces/fleetspaceAccounts@2025-10-15' = {
   name: '<fleetspace-account-name>'
   parent: fleetspace
   location: '<azure-region>'

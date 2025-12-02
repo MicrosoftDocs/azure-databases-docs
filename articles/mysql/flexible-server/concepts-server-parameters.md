@@ -212,6 +212,12 @@ You can set this parameter at the session level by using `init_connect`. For mor
 
 You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
 
+### innodb_temp_data_file_size_max
+For Azure Database for MySQL Flexible Server (version 5.7 only), innodb_temp_data_file_size_max parameter defines the maximum size of InnoDB temporary tablespace data files in MB. Setting the value to 0 means no limit, allowing growth up to the full storage size. Any non-zero value below 64 MB is rounded up to 64 MB, while values above 64 MB are applied as specified. This is a static variable and requires a server restart for changes to take effect.
+
+> [!NOTE]  
+> - Note: In MySQL 8.0 and above, the [global temporary tablespace](https://dev.mysql.com/doc/refman/8.0/en/innodb-temporary-tablespace.html) (ibtmp1) only stores rollback segments for changes made to user-created temporary tables. Therefore, this parameter is no longer relevant.
+
 ### binlog_expire_logs_seconds
 
 In Azure Database for MySQL - Flexible Server, the `binlog_expire_logs_seconds` parameter specifies the number of seconds that the service waits before deleting the binary log file.

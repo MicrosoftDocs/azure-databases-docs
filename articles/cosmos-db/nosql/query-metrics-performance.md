@@ -217,13 +217,13 @@ FROM   c
 WHERE c.description = "BABYFOOD, DESSERT, FRUIT DESSERT, WITHOUT ASCORBIC ACID, JUNIOR"
 ```
 
-This query is now able to be served from the index. Alternatively, you can use [computed properties](query/computed-properties.md) to index the results of system functions or complex calculations that would otherwise result in a full scan.
+This query is now able to be served from the index. Alternatively, you can use computed properties to index the results of system functions or complex calculations that would otherwise result in a full scan.
 
 To learn more about tuning query performance, see the [Tune Query Performance](./query-metrics.md) article.
 
 ## <a id="References"></a>References
 
-- [Azure Cosmos DB SQL specification](query/getting-started.md)
+- [Azure Cosmos DB SQL specification](/cosmos-db/query/overview)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)
 - [JSON](https://json.org/)
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 

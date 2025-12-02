@@ -30,7 +30,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | Sets the number of concurrent disk I/O operations that PostgreSQL expects can be executed simultaneously. |
+| Description | Number of simultaneous requests that can be handled efficiently by the disk subsystem. |
 | Data type | integer |
 | Default value | `1` |
 | Allowed values | `0-1000` |
@@ -47,7 +47,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | A variant of effective_io_concurrency that is used for maintenance work. |
+| Description | A variant of \"effective_io_concurrency\" that is used for maintenance work. |
 | Data type | integer |
 | Default value | `10` |
 | Allowed values | `10` |
@@ -98,7 +98,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | Sets the maximum number of workers that can be supported for parallel operations. |
+| Description | Sets the maximum number of parallel workers that can be active at one time. |
 | Data type | integer |
 | Default value | `8` |
 | Allowed values | `0-1024` |
@@ -132,7 +132,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | Sets the maximum number of background processes that the system can support. |
+| Description | Maximum number of concurrent worker processes. |
 | Data type | integer |
 | Default value | `8` |
 | Allowed values | `0-262143` |
@@ -149,7 +149,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Resource Usage / Asynchronous Behavior |
-| Description | Controls whether Gather and Gather Merge also run subplans. |
+| Description | Controls whether Gather and Gather Merge also run subplans. Should gather nodes also run subplans or just gather tuples?. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
