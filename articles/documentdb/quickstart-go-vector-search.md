@@ -1,22 +1,18 @@
 ---
 title: Quickstart - Vector Search with Go
-titleSuffix: Azure Cosmos DB for MongoDB vCore
-description: Learn how to use vector search in Azure Cosmos DB for MongoDB vCore with Go. Store and query vector data efficiently in your applications. 
+description: Learn how to use vector search in Azure DocumentDB with Go. Store and query vector data efficiently in your applications. 
 author: PatAltimore
 ms.author: patricka
-ms.service: azure-cosmos-db
-ms.subservice: mongodb-vcore
+ms.reviewer: khelanmodi
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 11/05/2025
-ms.custom: devx-track-go, devx-track-go-ai
-appliesto:
-  - ✅ MongoDB (vCore)
-# CustomerIntent: As a developer, I want to learn how to use vector search in Go applications with Azure Cosmos DB for MongoDB (vCore).
+ms.date: 12/02/2025
+ms.custom: devx-track-go, devx-track-go-ai, devx-track-data-ai
+# CustomerIntent: As a developer, I want to learn how to use vector search in Go applications with Azure DocumentDB
 ---
-# Quickstart: Vector search with Go in Azure Cosmos DB for MongoDB (vCore)
+# Quickstart: Vector search with Go in Azure DocumentDB
 
-Use vector search in Azure Cosmos DB for MongoDB (vCore) with the Go client library. Store and query vector data efficiently.
+Use vector search in Azure DocumentDB with the Go client library. Store and query vector data efficiently.
 
 This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-ada-002` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
@@ -24,17 +20,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Azure subscription](includes/prereq-azure-subscription.md)]
-- [Visual Studio Code](https://code.visualstudio.com/download)
-    - [DocumentDB extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb)
-- [Azure CLI](/cli/azure/install-azure-cli)
+[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
+
 - [Go](https://golang.org/dl/) version 1.21 or later
-- [Azure OpenAI resource](/azure/ai-foundry/openai) with:
-    - [Role Based Access Control (RBAC) enabled](/azure/developer/ai/keyless-connections)
-    - `text-embedding-ada-002` model deployed
-- [CosmosDB for MongoDB (vCore) resource](quickstart-portal.md) with:
-    - [Role Based Access Control (RBAC) enabled](how-to-configure-entra-authentication.md)
-    - Firewall configured for your IP address
 
 ## Create a Go project
 
@@ -76,11 +64,11 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
     EMBEDDING_SIZE_BATCH=16
 
-    # MongoDB configuration
+    # Azure DocumentDB configuration
     MONGO_CLUSTER_NAME=
 
     # Data file
-    DATA_FILE_WITH_VECTORS=HotelsData_toCosmosDB_Vector.json
+    DATA_FILE_WITH_VECTORS=data/HotelsData_toCosmosDB_Vector.json
     EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=100
@@ -88,7 +76,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     Replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
-    - `MONGO_CLUSTER_NAME`: Your MongoDB vCore resource name
+    - `MONGO_CLUSTER_NAME`: Your Azure DocumentDB resource name
+
+    You should always prefer passwordless authentication, but it requires additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Go apps to Azure services by using the Azure Identity library](/azure/developer/go/sdk/authentication/authentication-overview).
 
 1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to your project root.
 
@@ -152,8 +142,8 @@ This main module provides these features:
 
 - Includes utility functions
 - Creates a configuration struct for environment variables
-- Creates clients for Azure OpenAI and Azure Cosmos DB for MongoDB vCore
-- Connects to MongoDB, creates a database and collection, inserts data, and creates standard indexes
+- Creates clients for Azure OpenAI and Azure DocumentDB
+- Connects to DocumentDB, creates a database and collection, inserts data, and creates standard indexes
 - Creates a vector index using IVF, HNSW, or DiskANN
 - Creates an embedding for a sample query text using the OpenAI client. You can change the query in the main function
 - Runs a vector search using the embedding and prints the results
@@ -169,7 +159,7 @@ This utility module provides these features:
 - `Config`: Configuration structure for environment variables
 - `SearchResult`: Structure for search result documents with scores
 - `HotelData`: Structure representing hotel documents
-- `GetClients`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB for MongoDB vCore using API keys
+- `GetClients`: Creates and returns clients for Azure OpenAI and Azure DocumentDB
 - `GetClientsPasswordless`: Creates and returns clients using passwordless authentication (OIDC). Enable RBAC on both resources and sign in to Azure CLI
 - `ReadFileReturnJSON`: Reads a JSON file and returns its contents as a slice of maps
 - `WriteFileJSON`: Writes data to a JSON file
@@ -331,16 +321,16 @@ HNSW demonstration completed successfully!
 
 ## View and manage data in Visual Studio Code
 
-1. Select the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
+1. Select the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure DocumentDB account.
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" lightbox="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" alt-text="Screenshot of DocumentDB extension showing the Cosmos DB Mongo (vCore) collection.":::
+    :::image type="content" source="./media/quickstart-go-vector-search/visual-studio-code-documentdb.png" lightbox="./media/quickstart-go-vector-search/visual-studio-code-documentdb.png" alt-text="Screenshot of DocumentDB extension showing the Azure DocumentDB collection.":::
 
 ## Clean up resources
 
-Delete the resource group, MongoDB vCore account, and Azure OpenAI resource when you don't need them to avoid extra costs.
+Delete the resource group, DocumentDB account, and Azure OpenAI resource when you don't need them to avoid extra costs.
 
 ## Related content
 
-- [Vector store in Azure Cosmos DB for MongoDB vCore](vector-search.md)
+- [Vector store in Azure DocumentDB](vector-search.md)
 - [Support for geospatial queries](geospatial-support.md)
