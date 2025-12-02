@@ -95,5 +95,5 @@ az postgres flexible-server delete \
 - [Start a server](how-to-start-server.md).
 - [Stop a server](how-to-stop-server.md).
 - [Restart a server](how-to-restart-server.md).
-- [Reset administrator password](how-to-reset-admin-password.md).
+- [Reset administrator password](../security/security-reset-admin-password.md).
 - [Configure storage autogrow](../scale/how-to-auto-grow-storage.md).

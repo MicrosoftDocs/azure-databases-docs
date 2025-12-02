@@ -43,7 +43,7 @@ Query store automatically captures the history of queries and runtime statistics
 
 Query store can correlate wait event information with query run time statistics. Use query store to identify queries that have high CPU consumption during the period of interest.
 
-For more information, see [query store](concepts-query-store.md).
+For more information, see [query store](../monitor/concepts-query-store.md).
 
 ### pg_stat_statements
 

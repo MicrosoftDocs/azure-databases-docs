@@ -140,7 +140,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for latest [minor versions](concepts-supported-versions.md) 16.3, 15.7, 14.12, 13.15, and 12.19. <sup>$</sup>
 - General availability of [IOPS scaling](concepts-storage-premium-ssd.md#iops-scaling) on Azure Database for PostgreSQL.
 - CMK support for LTR is in Public preview [long-term backup retention](../backup-restore/concepts-backup-restore.md).
-- Support for [built-in Azure Policy definitions](../security/security-overview.md#azure-policy-support)
+- Support for [built-in Azure Policy definitions](../security/security-overview.md)
 
 ## Release: May 2024
 
@@ -166,7 +166,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [real-time machine learning predictions](../azure-ai/generative-ai-azure-machine-learning.md) with azure_ai extension on Azure Database for PostgreSQL.
 - General availability of version 0.6.0 of [vector](../extension-module/how-to-use-pgvector.md) extension on Azure Database for PostgreSQL.
 - General availability of [Migration service](../../postgresql/migrate/migration-service/concepts-migration-service-postgresql.md) in Azure Database for PostgreSQL.
-- Support for PostgreSQL 16 changes with [BYPASSRLS](../security/security-overview.md#bypassing-row-level-security)
+- Support for PostgreSQL 16 changes with [BYPASSRLS](../security/security-overview.md)
 
 ## Release: February 2024
 
@@ -219,7 +219,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2023
 
 - General Availability of PostgreSQL 15 for Azure Database for PostgreSQL.
-- Public preview of [Automation Tasks](create-automation-tasks.md) for Azure Database for PostgreSQL.
+- Public preview of [Automation Tasks](../integration/create-automation-tasks.md) for Azure Database for PostgreSQL.
 
 ## Release: June 2023
 

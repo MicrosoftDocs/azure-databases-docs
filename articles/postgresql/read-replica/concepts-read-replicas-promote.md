@@ -51,7 +51,7 @@ For both promotion methods, there are more options to consider:
 > The **Forced** promotion option is designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios isn't allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, aren't met, as it could lead to issues such as broken replication.
  
 
-Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](../read-replica/how-to-create-read-replica#promote-replica-to-independent-server).
+Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](../read-replica/how-to-create-read-replica.md#promote-replica-to-independent-server).
 
 ## Configuration management
 
@@ -99,5 +99,5 @@ In both the Planned and Forced promotion scenarios, it's required that the lates
 - [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
 - [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
 - [Virtual endpoints for read replicas in Azure Database for PostgreSQL](concepts-read-replicas-virtual-endpoints.md).
-- [Create a read replica](../read-replica/how-to-create-read-replica).
+- [Create a read replica](../read-replica/how-to-create-read-replica.md).
 - [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).

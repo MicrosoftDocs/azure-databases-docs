@@ -41,7 +41,7 @@ CREATE EXTENSION vector;
 
 - [Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server](how-to-optimize-performance-pgvector.md).
 - [Integrate Azure Database for PostgreSQL flexible server with Azure Cognitive Services](../azure-ai/generative-ai-azure-cognitive.md).
-- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](../azure-ai/generative-ai-azure-local-ai.md).
+- [Generate vector embeddings in Azure Database for PostgreSQL flexible server with locally deployed LLM (Preview)](../azure-ai/generative-ai-overview.md).
 - [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](../azure-ai/generative-ai-azure-machine-learning.md).
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server](../azure-ai/generative-ai-azure-openai.md).
 - [Azure AI extension in Azure Database for PostgreSQL flexible server](../azure-ai/generative-ai-azure-overview.md).

@@ -45,5 +45,5 @@ This preview feature is also only available for newly deployed Azure Database fo
 
 ## Related content
 
-- [Enable and use azure_local_ai extension](../azure-ai/generative-ai-azure-local-ai.md).
+- [Enable and use azure_local_ai extension](../azure-ai/generative-ai-overview.md).
 - [Enable and use pgvector extension](how-to-use-pgvector.md).

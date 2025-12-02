@@ -54,7 +54,7 @@ An inappropriate configuration of the following server parameters could have an 
 
 - [work_mem](../server-parameter/param-resource-usage-memory.md#work_mem).
 - [maintenance_work_mem](../server-parameter/param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](../server-parameter/param-resource-usage-memory.md#shared_buffers).
-- [max_connections](../server-parameter/param-connections-authentication-connection-settings#max_connections).
+- [max_connections](../server-parameter/param-connections-authentication-connection-settings.md#max_connections).
 
 ### Use EXPLAIN ANALYZE
 

@@ -134,7 +134,7 @@ Azure Database for PostgreSQL service provides following metrics for monitoring 
 
 [!INCLUDE [Read-Replica Metrics](includes/read-replica-metrics-table.md)]
 
-To learn more, see [read replica how-to article](../read-replica/how-to-create-read-replica#monitor-a-replica).
+To learn more, see [read replica how-to article](../read-replica/how-to-create-read-replica.md#monitor-a-replica).
 
 The **Max Physical Replication Lag** metric shows the lag in bytes between the primary and the most-lagging replica. This metric is applicable and available on the primary server only, and will be available only if at least one of the read replicas is connected to the primary. The lag information is present also when the replica is in the process of catching up with the primary, during replica creation, or when replication becomes inactive.
 
@@ -162,7 +162,7 @@ Here are the possible values:
 | <b> Active | Healthy state, indicating that the read replica has been successfully connected to the primary. If the servers are stopped but were successfully connected prior, the status remains as active. | 4 | 4 |
 | <b> Broken | Unhealthy state, indicating the promote operation might have failed, or the replica is unable to connect to the primary for some reason. Please drop the replica and recreate the replica to resolve this." | N/A | N/A |
 
-Learn how to [monitor replication](../read-replica/how-to-create-read-replica#monitor-a-replica).
+Learn how to [monitor replication](../read-replica/how-to-create-read-replica.md#monitor-a-replica).
 
 
 ## Considerations

@@ -66,7 +66,7 @@ Here are some possible security services, features, and best practices for the a
 - **Follow Entra best practices**: Utilize MFA, [Conditional Access policies](/entra/identity/conditional-access/overview), just in time (JIT) access to protect your users and databases.
 
 - **Manage local database users, roles, and permissions**: Use PostgreSQL's built-in role
-  management to control access at the database level. Create custom roles with specific permissions to enforce the principle of least privilege. Regularly review and audit these roles to ensure compliance with security policies. For more information, visit [Create users in Azure Database for PostgreSQL](../security/security-manage-database-users).
+  management to control access at the database level. Create custom roles with specific permissions to enforce the principle of least privilege. Regularly review and audit these roles to ensure compliance with security policies. For more information, visit [Create users in Azure Database for PostgreSQL](security-manage-database-users.md).
 
 ## Data protection
 

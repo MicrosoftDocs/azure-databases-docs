@@ -75,7 +75,7 @@ This section explains how to use Virtual Endpoints in an Azure Database for Post
 
 ## Related content
 
-- [Create virtual endpoints for read replicas with Terraform](../read-replica/how-to-create-read-replica)
+- [Create virtual endpoints for read replicas with Terraform](../read-replica/how-to-create-read-replica.md)
 - [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
 - [Geo-replication in Azure Database for PostgreSQL](concepts-read-replicas-geo.md).
 - [Promote read replicas in Azure Database for PostgreSQL](concepts-read-replicas-promote.md).

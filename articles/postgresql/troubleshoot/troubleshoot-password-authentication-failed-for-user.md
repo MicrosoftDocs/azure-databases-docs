@@ -85,7 +85,7 @@ If you're encountering the "password authentication failed for user `<user-name>
     1. **Enable log capturing**
     If log capturing isn't already on, get it set up now. Log capturing key for keeping an eye on database activities and catching any odd access patterns. There are several ways to do this, including Azure Monitor Log Analytics and server logs, which help store and analyze database event logs.
        * **Log Analytics**, check out the setup instructions for Azure Monitor Log Analytics here: [Configure and access logs in Azure Database for PostgreSQL flexible server](../monitor/how-to-configure-and-access-logs.md).
-       * **Server logs**, for hands-on log management, see [Configure capture of PostgreSQL server logs and major version upgrade logs](../configure/how-to-configure-server-logs.md).
+       * **Server logs**, for hands-on log management, see [Configure capture of PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md).
 
     2. **Identify the attacker's IP address**
        * Review the logs to find the IP address from which the unauthorized access attempts are being made. If the attacker is using a `libpq`-based tool, you'll see the IP address in the log entry associated with the failed connection attempt:
