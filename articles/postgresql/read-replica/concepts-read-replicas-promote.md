@@ -51,7 +51,7 @@ For both promotion methods, there are more options to consider:
 > The **Forced** promotion option is designed to address regional outages and, in such cases, it skips all checks - including the server symmetry requirement - and proceeds with promotion. This is because it prioritizes immediate server availability to handle disaster scenarios. However, using the Forced option outside of region down scenarios isn't allowed if the requirements for read replicas specified in the documentation, especially server symmetry requirement, aren't met, as it could lead to issues such as broken replication.
  
 
-Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](../read-replica/how-to-create-read-replica.md#promote-replica-to-independent-server).
+Learn how to [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md) and [promote to independent server and remove from replication](../read-replica/how-to-promote-replica-to-standalone.md).
 
 ## Configuration management
 
