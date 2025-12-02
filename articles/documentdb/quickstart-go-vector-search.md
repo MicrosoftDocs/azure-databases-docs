@@ -80,9 +80,36 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     You should always prefer passwordless authentication, but it requires additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Go apps to Azure services by using the Azure Identity library](/azure/developer/go/sdk/authentication/authentication-overview).
 
-1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to your project root.
+1. Create a new subdirectory off the root named `data`.
+
+1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_with_vectors.json` file in the `data` subdirectory.
+
+1. The project structure should look like this:
+
+    ```plaintext
+    vector-search-quickstart
+    ├── .env
+    ├── data
+    │   └── HotelsData_with_vectors.json
+    └── venv (or your virtual environment folder)
+    ```
 
 ## Create Go source files for vector search
+
+Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
+
+```plaintext
+vector-search-quickstart
+├── .env
+├── data
+│   └── HotelsData_with_vectors.json
+├── src
+│   ├── diskann.go
+│   ├── ivf.go
+│   └── hnsw.go
+│   └── utils.go
+└── venv (or your virtual environment folder)
+```
 
 ### [DiskANN](#tab/tab-diskann)
 
@@ -143,7 +170,7 @@ This main module provides these features:
 - Includes utility functions
 - Creates a configuration struct for environment variables
 - Creates clients for Azure OpenAI and Azure DocumentDB
-- Connects to DocumentDB, creates a database and collection, inserts data, and creates standard indexes
+- Connects to MongoDB, creates a database and collection, inserts data, and creates standard indexes
 - Creates a vector index using IVF, HNSW, or DiskANN
 - Creates an embedding for a sample query text using the OpenAI client. You can change the query in the main function
 - Runs a vector search using the embedding and prints the results
@@ -244,7 +271,7 @@ HotelName: Roach Motel, Score: 0.8399
 HotelName: Royal Cottage Resort, Score: 0.8385
 HotelName: Economy Universe Motel, Score: 0.8360
 HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Country Comfort Inn, Score: 0.8346
+HotelName: Comfort Inn, Score: 0.8346
 
 DiskANN demonstration completed successfully!
 ```
@@ -278,7 +305,7 @@ HotelName: Roach Motel, Score: 0.8399
 HotelName: Royal Cottage Resort, Score: 0.8385
 HotelName: Economy Universe Motel, Score: 0.8360
 HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Country Comfort Inn, Score: 0.8346
+HotelName: Comfort Inn, Score: 0.8346
 
 IVF demonstration completed successfully!
 ```
@@ -312,7 +339,7 @@ HotelName: Roach Motel, Score: 0.8399
 HotelName: Royal Cottage Resort, Score: 0.8385
 HotelName: Economy Universe Motel, Score: 0.8360
 HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Country Comfort Inn, Score: 0.8346
+HotelName: Comfort Inn, Score: 0.8346
 
 HNSW demonstration completed successfully!
 ```
