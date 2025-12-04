@@ -27,9 +27,9 @@ In this tutorial, you use Azure Database for PostgreSQL as the storage backend f
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](quickstart-create-elastic-cluster-portal.md)
-- [Create an elastic cluster using Bicep](quickstart-create-elastic-cluster-bicep.md)
-- [Create an elastic cluster with ARM template](quickstart-create-elastic-cluster-arm-template.md)
+- [Create an elastic cluster using the Portal](../configure-maintain/quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using Bicep](../configure-maintain/quickstart-create-elastic-cluster-bicep.md)
+- [Create an elastic cluster with ARM template](../configure-maintain/quickstart-create-elastic-cluster-arm-template.md)
 
 ## Create roles for your microservices
 
@@ -303,4 +303,4 @@ According to expectations, the schemas are moved and we have a more balanced clu
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Learn more about elastic clusters](concepts-elastic-clusters.md)
+> [Learn more about elastic clusters](../configure-maintain/concepts-elastic-clusters.md)

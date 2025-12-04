@@ -13,7 +13,7 @@ ms.topic: faq
 
 The following section describes capacity and functional limits in elastic clusters of Azure Database for PostgreSQL.
 
-Current [limitations of Azure Database for PostgreSQL](concepts-limits.md) server also apply to elastic clusters. The rest of the document describes differences that apply only to elastic clusters.
+Current [limitations of Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md) server also apply to elastic clusters. The rest of the document describes differences that apply only to elastic clusters.
 
 ## General
 
@@ -102,4 +102,4 @@ A: Currently, a single read replica is supported.
 
 ## Related content
 
-- [What is an elastic cluster in Azure Database for PostgreSQL?](concepts-elastic-clusters.md)
+- [What is an elastic cluster in Azure Database for PostgreSQL?](../configure-maintain/concepts-elastic-clusters.md)

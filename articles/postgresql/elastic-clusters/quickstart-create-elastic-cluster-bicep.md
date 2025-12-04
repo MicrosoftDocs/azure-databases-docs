@@ -180,4 +180,4 @@ az resource delete --resource-type Microsoft.DBforPostgreSQL/flexibleServers `
 
 ## Related content
 
-- [Design multitenant database with elastic clusters](tutorial-multitenant-database.md).
+- [Design multitenant database with elastic clusters](../configure-maintain/tutorial-multitenant-database.md).

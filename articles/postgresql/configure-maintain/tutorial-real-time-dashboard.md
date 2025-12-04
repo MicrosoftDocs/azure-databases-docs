@@ -27,9 +27,9 @@ In this tutorial, you use elastic clusters on Azure Database for PostgreSQL elas
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](quickstart-create-elastic-cluster-portal.md)
-- [Create an elastic cluster using Bicep](quickstart-create-elastic-cluster-bicep.md)
-- [Create an elastic cluster with ARM template](quickstart-create-elastic-cluster-arm-template.md)
+- [Create an elastic cluster using the Portal](../configure-maintain/quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using Bicep](../configure-maintain/quickstart-create-elastic-cluster-bicep.md)
+- [Create an elastic cluster with ARM template](../configure-maintain/quickstart-create-elastic-cluster-arm-template.md)
 
 ## Use psql utility to create a schema
 
@@ -224,4 +224,4 @@ In production, you could wrap these queries in a function and call it every minu
 In this tutorial, you learned how to create an elastic cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data in the raw form, regularly aggregate that data, query the aggregated tables, and expire old data.
 
 > [!div class="nextstepaction"]
-> [Learn more about elastic clusters](concepts-elastic-clusters.md)
+> [Learn more about elastic clusters](../configure-maintain/concepts-elastic-clusters.md)

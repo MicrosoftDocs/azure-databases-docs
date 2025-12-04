@@ -67,4 +67,4 @@ In addition, consider the following points of contact as appropriate:
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
