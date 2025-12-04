@@ -36,4 +36,4 @@ Keep in mind that while increasing the max_client_connections allows you to over
 
 ## Related content
 
-- [Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL](../configure-maintain/quickstart-create-elastic-cluster-portal.md)
+- [Quickstart: Create an instance of elastic cluster in Azure Database for PostgreSQL](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)

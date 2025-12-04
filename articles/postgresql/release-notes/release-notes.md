@@ -94,7 +94,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: January 2025
 
-- Public preview of [Elastic Clusters](../configure-maintain/concepts-elastic-clusters.md) for Azure Database for PostgreSQL.
+- Public preview of [Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md) for Azure Database for PostgreSQL.
 
 ## Release: December 2024
 

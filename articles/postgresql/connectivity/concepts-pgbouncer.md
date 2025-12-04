@@ -26,7 +26,7 @@ PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authenticat
 
 PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After being enabled, port 6432 will route to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 will route to the PgBouncer instances running on the worker nodes in the cluster.
 
-Currently, the version of PgBouncer deployed on all supported major versions of the engine ([!INCLUDE [pgbouncer-table](includes/major-versions-ascending.md)]), in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
+Currently, the version of PgBouncer deployed on all supported major versions of the engine, in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
 
 ## Enable and configure PgBouncer
 

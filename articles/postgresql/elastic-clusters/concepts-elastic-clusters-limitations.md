@@ -102,4 +102,4 @@ A: Currently, a single read replica is supported.
 
 ## Related content
 
-- [What is an elastic cluster in Azure Database for PostgreSQL?](../configure-maintain/concepts-elastic-clusters.md)
+- [What is an elastic cluster in Azure Database for PostgreSQL?](../elastic-clusters/concepts-elastic-clusters.md)

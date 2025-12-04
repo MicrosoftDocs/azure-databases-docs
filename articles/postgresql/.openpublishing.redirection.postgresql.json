@@ -2802,17 +2802,17 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-arm-template.md",
-            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-arm-template",
+            "redirect_url": "/azure/postgresql/elastic-clusters/quickstart-create-elastic-cluster-arm-template",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-bicep.md",
-            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-bicep",
+            "redirect_url": "/azure/postgresql/elastic-clusters/quickstart-create-elastic-cluster-bicep",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-portal.md",
-            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-portal",
+            "redirect_url": "/azure/postgresql/elastic-clusters/quickstart-create-elastic-cluster-portal",
             "redirect_document_id": true
         },
         {
