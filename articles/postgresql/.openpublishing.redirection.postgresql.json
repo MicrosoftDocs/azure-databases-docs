@@ -2842,17 +2842,17 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/release-notes.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/release-notes",
+            "redirect_url": "/azure/postgresql/release-notes/release-notes",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/release-notes-api.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/release-notes-api",
+            "redirect_url": "/azure/postgresql/release-notes/release-notes-api",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/release-notes-cli.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/release-notes-cli",
+            "redirect_url": "/azure/postgresql/release-notes/release-notes-cli",
             "redirect_document_id": true
         },
         {
