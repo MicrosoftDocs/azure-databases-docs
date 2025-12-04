@@ -47,7 +47,7 @@ To create an Azure Database for PostgreSQL flexible server instance, take the fo
 
 1. You can now monitor the progress of your deployment. Once the deployment is done, you can select **Pin to dashboard**, which creates a tile for this server on your Azure portal dashboard as a shortcut to the server's **Overview** page. Selecting **Go to resource** opens the server's **Overview** page.
 
-   :::image type="content" source="../media/quickstart-create-server/7-notifications.png" alt-text="Screenshot of the Notifications pane." lightbox="../media/quickstart-create-server/7-notifications.png":::
+   :::image type="content" source="../../configure-maintain/media/quickstart-create-server/7-notifications.png" alt-text="Screenshot of the Notifications pane." lightbox="../../configure-maintain/media/quickstart-create-server/7-notifications.png":::
 
    By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
 
@@ -60,7 +60,7 @@ When you create your elastic cluster instance, a default database named **postgr
 
 Open your server's **Overview** page. Make a note of the **Server name** and the **Server admin login name**. Hover your cursor over each field, and the copy symbol appears to the right of the text. Select the copy symbol as needed to copy the values.
 
-:::image type="content" source="../media/quickstart-create-server/8-server-name.png" alt-text="Screenshot of the server Overview page." lightbox="../media/quickstart-create-server/8-server-name.png":::
+:::image type="content" source="../../configure-maintain/media/quickstart-create-server/8-server-name.png" alt-text="Screenshot of the server Overview page." lightbox="../../configure-maintain/media/quickstart-create-server/8-server-name.png":::
 
 <a name="connect-to-the-postgresql-database-using-psql"></a>
 
@@ -140,7 +140,7 @@ To delete only the newly created server:
 
 1. On the **Overview** page, select **Delete**.
 
-    :::image type="content" source="../media/quickstart-create-server/9-delete.png" alt-text="Screenshot of the Delete button." lightbox="../media/quickstart-create-server/9-delete.png":::
+    :::image type="content" source="../../configure-maintain/media/quickstart-create-server/9-delete.png" alt-text="Screenshot of the Delete button." lightbox="../../configure-maintain/media/quickstart-create-server/9-delete.png":::
 
 1. Confirm the name of the server you want to delete, and view the databases under it that are affected. Enter your server name in the text box, and select **Delete**.
 
