@@ -2632,22 +2632,22 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-elastic-clusters.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-elastic-clusters",
+            "redirect_url": "/azure/postgresql/elastic-clusters/concepts-elastic-clusters",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-elastic-clusters-limitations.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-elastic-clusters-limitations",
+            "redirect_url": "/azure/postgresql/elastic-clusters/concepts-elastic-clusters-limitations",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-elastic-clusters-sharding-models.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-elastic-clusters-sharding-models",
+            "redirect_url": "/azure/postgresql/elastic-clusters/concepts-elastic-clusters-sharding-models",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-elastic-clusters-table-types.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-elastic-clusters-table-types",
+            "redirect_url": "/azure/postgresql/elastic-clusters/concepts-elastic-clusters-table-types",
             "redirect_document_id": true
         },
         {
@@ -2802,17 +2802,17 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-arm-template.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-elastic-cluster-arm-template",
+            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-arm-template",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-bicep.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-elastic-cluster-bicep",
+            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-bicep",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-elastic-cluster-portal.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-elastic-cluster-portal",
+            "redirect_url": "/azure/postgresql/celastic-clusters/quickstart-create-elastic-cluster-portal",
             "redirect_document_id": true
         },
         {
@@ -3117,7 +3117,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-network-elastic-clusters-default-maximum-connections.md",
-            "redirect_url": "/azure/postgresql/network/how-to-network-elastic-clusters-default-maximum-connections",
+            "redirect_url": "/azure/postgresql/elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections",
             "redirect_document_id": true
         },
         {
@@ -3759,6 +3759,11 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/troubleshoot-password-authentication-failed-for-user.md",
             "redirect_url": "/azure/postgresql/troubleshoot/troubleshoot-password-authentication-failed-for-user",
             "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/hyperscale/moved.md",
+            "redirect_url": "articles/postgresql/elastic-clusters/concepts-elastic-clusters",
+            "redirect_document_id": false
         }
     ]
 }
