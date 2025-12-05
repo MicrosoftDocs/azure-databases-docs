@@ -32,4 +32,4 @@ Azure Database for PostgreSQL seamlessly integrates with leading large language 
 - [AI agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)
