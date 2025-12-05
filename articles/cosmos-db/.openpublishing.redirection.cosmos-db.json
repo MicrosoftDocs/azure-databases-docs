@@ -6305,6 +6305,66 @@
       "redirect_url": "/azure/cosmos-db/analytics-and-business-intelligence-use-cases",
       "redirect_document_id": true
     },
+        {
+      "source_path_from_root": "/articles/cosmos-db/analytical-store-change-data-capture.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/analytical-store-overview.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/analytical-store-private-endpoints.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/configure-custom-partitioning.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/configure-synapse-link.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/custom-partitioning-analytical-store.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/get-started-change-data-capture.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/integrated-power-bi-synapse-link.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/synapse-link-frequently-asked-questions.yml",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/synapse-link-power-bi.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/synapse-link-time-travel.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/synapse-link.md",
+      "redirect_url": "/fabric/mirroring/azure-cosmos-db",
+      "redirect_document_id": true
+    },
     {
       "source_path_from_root": "/articles/cosmos-db/notebooks-overview.md",
       "redirect_url": "/azure/cosmos-db/nosql/tutorial-create-notebook-vscode",

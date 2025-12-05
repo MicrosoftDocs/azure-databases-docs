@@ -227,19 +227,13 @@ additionalContent:
               url: concepts-limits.md
             - text: Distributed NoSQL databases
               url: distributed-nosql.md
-        - title: Analytics and BI
-          summary: Integrate Azure Cosmos DB with analytics platforms and business intelligence tools for real-time insights.
+        - title: Analytics and real-time insights
+          summary: Integrate Azure Cosmos DB with Microsoft Fabric for real-time insights.
           links:
-            - text: Analytics and BI overview
-              url: analytics-and-business-intelligence-overview.md
-            - text: Analytics and BI use cases
-              url: analytics-and-business-intelligence-use-cases.md
-            - text: Mirroring in Microsoft Fabric
+            - text: Azure Cosmos DB Mirroring
               url: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
-            - text: API for NoSQL mirroring tutorial in Microsoft Fabric
-              url: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
-            - text: Azure Synapse Link for Azure Cosmos DB
-              url: synapse-link.md
+            - text: Cosmos DB in Microsoft Fabric
+              url: /fabric/database/cosmos-db/overview?context=/azure/cosmos-db/context/context
     - title: Security and compliance
       summary: Protect your data and applications with comprehensive security features including encryption, access controls, and compliance certifications.
       items:

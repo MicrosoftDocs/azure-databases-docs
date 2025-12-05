@@ -59,7 +59,7 @@ landingContent:
             url: tutorial-deploy-app-bicep-aks.md
           - text: Connect using Apache Spark
             url: tutorial-spark-connector.md
-  - title: Analytics and BI
+  - title: Analytics and real-time insights
     linkLists:
       - linkListType: overview
         links:
@@ -67,20 +67,18 @@ landingContent:
             url: ../analytics-and-business-intelligence-overview.md
       - linkListType: concept
         links:
-          - text: Analytics and BI use cases
-            url: ../analytics-and-business-intelligence-use-cases.md
-          - text: Mirroring in Microsoft Fabric
+          - text: Azure Cosmos DB Mirroring
             url: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
-          - text: Azure Synapse Link
-            url: ../synapse-link.md
+          - text: Cosmos DB in Microsoft Fabric
+            url: /fabric/database/cosmos-db/overview?context=/azure/cosmos-db/context/context
       - linkListType: tutorial
         links:
           - text: Mirror database to Microsoft Fabric
             url: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
       - linkListType: how-to-guide
         links:
-          - text: Access data using Lighthouse and notebooks
-            url: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/context/context
+          - text: Create a Cosmos DB database in Microsoft Fabric
+            url: /fabric/database/cosmos-db/quickstart-portal?context=/azure/cosmos-db/context/context
   - title: Query items from a container
     linkLists:
       - linkListType: concept
