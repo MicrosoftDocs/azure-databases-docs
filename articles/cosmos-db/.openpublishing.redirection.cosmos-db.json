@@ -5551,11 +5551,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/sql/powerbi-visualize.md",
-      "redirect_url": "/azure/cosmos-db/nosql/powerbi-visualize",
-      "redirect_document_id": true
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/sql/powershell-samples.md",
       "redirect_url": "/azure/cosmos-db/nosql/powershell-samples",
       "redirect_document_id": true

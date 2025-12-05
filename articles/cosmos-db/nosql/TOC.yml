@@ -945,9 +945,9 @@
       items:
         - name: Overview
           href: /fabric/database/cosmos-db/overview?context=/azure/cosmos-db/context/context
-        - name: Quickstart: Create a Cosmos DB database
+        - name: Quickstart Create a Cosmos DB database
           href: /fabric/database/cosmos-db/quickstart-portal?context=/azure/cosmos-db/context/context
-        - name: Tutorial: Query mirrored data
+        - name: Tutorial Query mirrored data
           href: /fabric/database/cosmos-db/tutorial-mirroring?context=/azure/cosmos-db/context/context
         - name: Create Power BI reports
           href: /fabric/database/cosmos-db/how-to-create-reports?context=/azure/cosmos-db/context/context
