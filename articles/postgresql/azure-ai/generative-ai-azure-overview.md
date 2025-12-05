@@ -25,7 +25,7 @@ Azure Database for PostgreSQL extension for Azure AI enables you to use large la
 Before you can enable `azure_ai` on your Azure Database for PostgreSQL flexible server instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md) and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!TIP]
-> You might also want to enable the [`pgvector` extension](../extension-module/../extension-module/how-to-use-pgvector.md) as it is commonly used with `azure_ai`.
+> You might also want to enable the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md) as it is commonly used with `azure_ai`.
 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
@@ -160,4 +160,4 @@ ALTER EXTENSION azure_ai UPDATE;
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
 - [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).

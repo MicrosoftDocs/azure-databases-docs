@@ -63,8 +63,8 @@ The name of the blob passed through the `path` parameter of the `blob_get` funct
 
 ## Related content
 
-- [Reference](../extension-module/reference-azure-storage-extension.md).
-- [Azure Storage extension](../extension-module/concepts-storage-extension.md).
-- [Configure the Azure Storage extension](../extension-module/how-to-configure-azure-storage-extension.md).
-- [Quickstart examples](../extension-module/quickstart-azure-storage-extension.md).
+- [Reference](../extensions/reference-azure-storage-extension.md).
+- [Azure Storage extension](../extensions/concepts-storage-extension.md).
+- [Configure the Azure Storage extension](../extensions/how-to-configure-azure-storage-extension.md).
+- [Quickstart examples](../extensions/quickstart-azure-storage-extension.md).
 - [Extensions and modules](../extensions/concepts-extensions.md).

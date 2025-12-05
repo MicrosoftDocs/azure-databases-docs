@@ -409,4 +409,4 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/how-to-use-pgvector.md)

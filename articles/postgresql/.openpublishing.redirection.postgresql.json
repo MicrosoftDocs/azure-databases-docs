@@ -2942,47 +2942,47 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/azure-local-ai.md",
-            "redirect_url": "/azure/postgresql/extension-module/azure-local-ai",
+            "redirect_url": "/azure/postgresql/extensions/azure-local-ai",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage.md",
-            "redirect_url": "/azure/postgresql/extension-module/concepts-storage",
+            "redirect_url": "/azure/postgresql/extensions/concepts-storage",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-extension.md",
-            "redirect_url": "/azure/postgresql/extension-module/concepts-storage-extension",
+            "redirect_url": "/azure/postgresql/extensions/concepts-storage-extension",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-azure-storage-extension.md",
-            "redirect_url": "/azure/postgresql/extension-module/how-to-configure-azure-storage-extension",
+            "redirect_url": "/azure/postgresql/extensions/how-to-configure-azure-storage-extension",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-optimize-performance-pgvector.md",
-            "redirect_url": "/azure/postgresql/extension-module/how-to-optimize-performance-pgvector",
+            "redirect_url": "/azure/postgresql/extensions/how-to-optimize-performance-pgvector",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-pgdiskann.md",
-            "redirect_url": "/azure/postgresql/extension-module/how-to-use-pgdiskann",
+            "redirect_url": "/azure/postgresql/extensions/how-to-use-pgdiskann",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-use-pgvector.md",
-            "redirect_url": "/azure/postgresql/extension-module/how-to-use-pgvector",
+            "redirect_url": "/azure/postgresql/extensions/how-to-use-pgvector",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-azure-storage-extension.md",
-            "redirect_url": "/azure/postgresql/extension-module/quickstart-azure-storage-extension",
+            "redirect_url": "/azure/postgresql/extensions/quickstart-azure-storage-extension",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/reference-azure-storage-extension.md",
-            "redirect_url": "/azure/postgresql/extension-module/reference-azure-storage-extension",
+            "redirect_url": "/azure/postgresql/extensions/reference-azure-storage-extension",
             "redirect_document_id": true
         },
         {

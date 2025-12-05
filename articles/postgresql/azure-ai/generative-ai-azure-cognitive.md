@@ -601,4 +601,4 @@ select
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
 - [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).

@@ -42,7 +42,7 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Malaysia West region](../configure-maintain/overview.md#azure-regions)
     - [Chile Central region](../configure-maintain/overview.md#azure-regions)
 - Preview
-    - [High Availability with Premium SSDv2](../extension-module/concepts-storage.md)
+    - [High Availability with Premium SSDv2](../extensions/concepts-storage.md)
     - [Cascading read replica support in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
 
 ## Release: June 2025
@@ -58,7 +58,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General Availability
     - [On-demand backups](./../backup-restore/concepts-backup-restore.md#on-demand-backups).
     - [Long-term backups](./../backup-restore/concepts-backup-restore.md#long-term-retention)
-    - [DiskANN Vector Indexing extension](../extension-module/how-to-use-pgdiskann.md)
+    - [DiskANN Vector Indexing extension](../extensions/how-to-use-pgdiskann.md)
     - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
     - [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates)
     - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Database for PostgreSQL
@@ -90,7 +90,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](../troubleshoot/how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL.
 - Public preview of [enhanced connection and CPU monitoring metrics](../monitor/concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
-- Public preview of [DiskANN Vector Indexing](../extension-module/how-to-use-pgdiskann.md) is now available.
+- Public preview of [DiskANN Vector Indexing](../extensions/how-to-use-pgdiskann.md) is now available.
 
 ## Release: January 2025
 
@@ -145,7 +145,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: May 2024
 
 - General availability of Postgres [azure_ai](../azure-ai/generative-ai-azure-overview.md) extension.
-- Public preview of [azure_local_ai](../extension-module/azure-local-ai.md) extension.
+- Public preview of [azure_local_ai](../extensions/azure-local-ai.md) extension.
 - Public preview of [index tuning](../monitor/concepts-index-tuning.md) on Azure Database for PostgreSQL.
 - Public preview of [Updating PostgreSQL extensions](../extensions/how-to-update-extensions.md) on Azure Database for PostgreSQL.
 - Support for the following [extensions](../extensions/how-to-allow-extensions.md):
@@ -164,7 +164,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Major Version Upgrade Support for PostgreSQL 16](../configure-maintain/concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - Public preview of [real-time language translations](../azure-ai/generative-ai-azure-cognitive.md#language-translation) with azure_ai extension on Azure Database for PostgreSQL.
 - Public preview of [real-time machine learning predictions](../azure-ai/generative-ai-azure-machine-learning.md) with azure_ai extension on Azure Database for PostgreSQL.
-- General availability of version 0.6.0 of [vector](../extension-module/how-to-use-pgvector.md) extension on Azure Database for PostgreSQL.
+- General availability of version 0.6.0 of [vector](../extensions/how-to-use-pgvector.md) extension on Azure Database for PostgreSQL.
 - General availability of [Migration service](../../postgresql/migrate/migration-service/concepts-migration-service-postgresql.md) in Azure Database for PostgreSQL.
 - Support for PostgreSQL 16 changes with [BYPASSRLS](../security/security-overview.md)
 
@@ -193,8 +193,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of [near-zero downtime scaling](../scale/concepts-scaling-resources.md).
 - General availability of [Pgvector 0.5.1](../extensions/concepts-extensions-versions.md#vector) extension.
 - General availability of Italy North region.
-- Public preview of [premium SSD v2](../extension-module/concepts-storage.md).
-- Public preview of [decoupling storage and IOPS](../extension-module/concepts-storage.md).
+- Public preview of [premium SSD v2](../extensions/concepts-storage.md).
+- Public preview of [decoupling storage and IOPS](../extensions/concepts-storage.md).
 - Public preview of [private endpoints](../network/concepts-networking-private-link.md).
 - Public preview of [virtual endpoints and new promote to primary server](../read-replica/concepts-read-replicas.md) operation for read replica.
 - Public preview of Postgres [azure_ai](../azure-ai/generative-ai-azure-overview.md) extension.
@@ -208,7 +208,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: September 2023
 
-- General availability of [Storage autogrow](../extension-module/concepts-storage.md) for Azure Database for PostgreSQL.
+- General availability of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQL.
 - General availability of [Cross Subscription and Cross Resource Group Restore](../backup-restore/how-to-restore-latest-restore-point.md) for Azure Database for PostgreSQL.
 
 ## Release: August 2023
@@ -227,15 +227,15 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of [Query Performance Insight](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
 - General availability of [Major Version Upgrade](../configure-maintain/concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - General availability of [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md) for Azure Database for PostgreSQL.
-- Public preview of [Storage autogrow](../extension-module/concepts-storage.md) for Azure Database for PostgreSQLr.
+- Public preview of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQLr.
 
 ## Release: May 2023
 
 - Public preview of [Database availability metric](../monitor/concepts-monitoring.md#database-availability-metric) for Azure Database for PostgreSQL.
 - PostgreSQL 15 is now available in public preview for Azure Database for PostgreSQL in limited regions (West Europe, East US, West US2, South East Asia, UK South, North Europe, Japan East).
-- General availability: [Pgvector extension](../extension-module/how-to-use-pgvector.md) for Azure Database for PostgreSQL.
+- General availability: [Pgvector extension](../extensions/how-to-use-pgvector.md) for Azure Database for PostgreSQL.
 - General availability: [Azure Key Vault Managed HSM](../security/security-data-encryption.md) with Azure Database for PostgreSQL.
-- General availability [32 TB Storage](../extension-module/concepts-storage.md) with Azure Database for PostgreSQL.
+- General availability [32 TB Storage](../extensions/concepts-storage.md) with Azure Database for PostgreSQL.
 - Support for [Ddsv5 and Edsv5 SKUs](../configure-maintain/concepts-compute.md) with Azure Database for PostgreSQL.
 
 ## Release: April 2023
