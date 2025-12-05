@@ -196,6 +196,15 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Use **GitHub Copilot agents** or manually convert schemas to PostgreSQL.
 1. Review and compare the **previous** and **new converted** schema conversion statements.
 
+### Step 12: Validate converted objects before deployment
+
+1. Independently validate all converted objects in a nonproduction environment.
+1. Confirm dependencies, constraints, and representative workloads behave as expected.
+1. Review resolutions for all **Review tasks** and re-test after changes.
+
+> [!IMPORTANT]
+> Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Azure AI Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Azure AI Foundry](/azure/ai-foundry/concepts/content-filtering).
+
 For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
 
 ## Related content
