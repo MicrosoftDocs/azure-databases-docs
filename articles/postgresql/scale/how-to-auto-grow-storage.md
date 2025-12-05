@@ -150,5 +150,5 @@ A. No, it relies on online disk scaling.
 ## Related content
 
 - [Scale storage performance](how-to-scale-storage-performance.md)
-- [Storage options](../extension-module/concepts-storage.md)
+- [Storage options](../extensions/concepts-storage.md)
 - [Limits in Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md)

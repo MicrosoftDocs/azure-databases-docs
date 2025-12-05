@@ -23,7 +23,7 @@ Generative AI refers to a class of AI algorithms that can learn from existing mu
 
 Generative AI is used in image and music synthesis and in healthcare, along with common tasks such as text autocompletion, text summarization, and translation. Generative AI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, topic modeling, question answering, and anomaly detection.
 
-The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](../extension-module/../extension-module/how-to-use-pgvector.md), which can help you understand the concepts in this article.
+The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md), which can help you understand the concepts in this article.
 
 >[!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
 
@@ -87,7 +87,7 @@ Key characteristics of vector databases include:
 - **Geospatial data handling**: Some vector databases are designed for geospatial data, so they're well suited for applications like location-based services, geographic information systems (GISs), and map-related tasks.
 - **Support for diverse data types**: Vector databases can store and manage various types of data, such as vectors, images, and text.
 
-PostgreSQL can gain the capabilities of a vector database with the help of the [`pgvector` extension](../extension-module/../extension-module/how-to-use-pgvector.md).
+PostgreSQL can gain the capabilities of a vector database with the help of the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md).
 
 ## Embeddings
 
@@ -146,4 +146,4 @@ Generative AI has a wide range of applications across various domains and indust
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)

@@ -17,7 +17,7 @@ ms.custom:
 
 # Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL
 
-Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](../extension-module/how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
+Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](../extensions/how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
 
 ## Prerequisites
 
@@ -157,4 +157,4 @@ LIMIT 1;
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
 - [Recommendation System with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
 - [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md).
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).

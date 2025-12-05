@@ -17,7 +17,7 @@ ms.topic: concept-article
 
 Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 
-This article shows you how to use the integrated [vector database](../extension-module/../extension-module/how-to-use-pgvector.md) in Azure Database for PostgreSQL to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
+This article shows you how to use the integrated [vector database](../extensions/../extensions/how-to-use-pgvector.md) in Azure Database for PostgreSQL to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
 
 ## Vector support
 
@@ -48,7 +48,7 @@ Azure Database for PostgreSQL uses the open-source [LangChain Postgres support](
 
 ### Enable pgvector on Azure Database for PostgreSQL
 
-See [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md).
+See [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).
 
 ### Set up credentials
 
@@ -387,4 +387,4 @@ retriever.invoke("kitty")
 - [AI agents in Azure Database for PostgreSQL](generative-ai-agents.md)
 - [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extension-module/../extension-module/how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)
