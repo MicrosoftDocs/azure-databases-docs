@@ -933,7 +933,7 @@
           href: /fabric/database/mirrored-database/azure-cosmos-db-how-to-query-nested?context=/azure/cosmos-db/context/context
         - name: Access data using Lakehouse and notebooks
           href: /fabric/database/mirrored-database/azure-cosmos-db-lakehouse-notebooks?context=/azure/cosmos-db/context/context
-        - name: How to: Reverse extract, transform, & load (ETL)
+        - name: How to - Reverse extract, transform, & load (ETL)
           href: reverse-extract-transform-load.md
         - name: FAQ
           href: /fabric/database/mirrored-database/azure-cosmos-db-faq?context=/azure/cosmos-db/context/context

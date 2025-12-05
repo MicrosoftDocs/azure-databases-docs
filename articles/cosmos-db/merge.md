@@ -10,7 +10,7 @@ ms.custom:
 - devx-track-azurecli
 - build-2025
 - sfi-image-nochange
-ms.date: 05/08/2025
+ms.date: 12/05/2025
 ---
 
 # Merge partitions in Azure Cosmos DB (preview)
@@ -260,7 +260,7 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Your Azure Cosmos DB account doesn't use any of the following features:
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
-   - [Analytical store](analytical-store-introduction.md)
+   - Analytical store for Synapse Link *(deprecated)*
 - If you're using API for NoSQL, your application must use the Azure Cosmos DB .NET v3 SDK (version 3.27.0 or higher) or Java v4 SDK (version 4.42.0 or higher) OR JavaScript V4 SDK(version 4.3.0 or higher). When merge preview is enabled on your account, the account doesn't accept requests sent from non .NET/Java SDKs or older .NET/Java SDK versions.
   - There are no SDK or driver requirements to use the feature with API for MongoDB.
 - Your Azure Cosmos DB account doesn't use any currently unsupported connectors:
@@ -276,7 +276,7 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Accounts using merge functionality can't also use these features (if these features are added to a merge enabled account, the account can't merge resources):
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
-   - [Analytical store](analytical-store-introduction.md)
+   - Analytical store for Synapse Link *(deprecated)*
 - After a container has been merged, it isn't possible to read the change feed with start time. Support for this feature is planned for the future.
 
 ### SDK requirements (API for NoSQL only)

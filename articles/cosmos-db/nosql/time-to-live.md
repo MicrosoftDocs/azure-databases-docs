@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 07/15/2025
+ms.date: 12/05/2025
 ---
 
 # Time to live in Azure Cosmos DB
@@ -20,9 +20,6 @@ Expired items are deleted as a background task. An item no longer appears in que
 For provisioned throughput accounts, the deletion of expired items uses leftover RUs that haven't been consumed by user requests.
 
 For serverless accounts, the deletion of expired items is charged in RUs at the same rate as delete item operations.
-
-> [!NOTE]
-> This content is related to Azure Cosmos DB transactional store TTL. If you're looking for analytical store TTL, which enables NoETL HTAP scenarios through [Azure Synapse Link](../synapse-link.md), see [Analytical Time-to-Live (TTL)](../analytical-store-introduction.md#analytical-ttl).
 
 ## Time to live for containers and items
 
