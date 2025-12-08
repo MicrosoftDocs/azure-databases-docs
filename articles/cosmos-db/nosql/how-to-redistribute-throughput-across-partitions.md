@@ -116,17 +116,11 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | extend RU_Percentage = round(RU_Usage * 100.00 / TotalRU_PerHour, 2)
     | project Hour = TimeGenerated, PartitionKey, RU_Usage, TotalRU_PerHour, RU_Percentage
     | order by Hour asc, RU_Percentage desc
-   ```
-
+    ```
+    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image.png" alt-text="Data rows of partition keys with most RU/s per hour":::
+    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image1.png" alt-text="Chart of partition keys with most RU/s per hour":::
 
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
-
-
-:::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image.png" alt-text="Data rows of partition keys with most RU/s per hour":::
-:::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image1.png" alt-text="Chart of partition keys with most RU/s per hour":::
-
-
-
 
 ## Determine current throughput for each physical partition
 
@@ -554,5 +548,6 @@ While this feature is in preview, your Azure Cosmos DB account must meet all the
 - [Set provisioned throughput](../set-throughput.md)
 - [Review request units](../request-units.md)
 - [Monitor request units](../monitor-normalized-request-units.md#how-to-monitor-for-hot-partitions)
+
 - [Explore best practices for scaling provisioned throughput](../scaling-provisioned-throughput-best-practices.md)
 
