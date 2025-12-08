@@ -118,7 +118,15 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | order by Hour asc, RU_Percentage desc
    ```
 
+
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
+
+
+:::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image.png" alt-text="Data rows of partition keys with most RU/s per hour":::
+:::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image1.png" alt-text="Chart of partition keys with most RU/s per hour":::
+
+
+
 
 ## Determine current throughput for each physical partition
 
