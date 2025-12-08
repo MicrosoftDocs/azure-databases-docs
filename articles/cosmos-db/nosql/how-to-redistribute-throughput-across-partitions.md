@@ -96,29 +96,27 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | render timechart
     ```
 
-1. For a physical partition, find the top 10 logical partition keys that consume the most RU/s each hour using this query.
+1. For a physical partition, find the top logical partition keys that consume the most RU/s each hour using this query.
 
-      ```kusto
+       ```kusto
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hour)
     | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with database and collection name
     | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
     | where PartitionKeyRangeId == 0 // Replace with your PartitionKeyRangeId
-    | summarize sum(RequestCharge) by bin(TimeGenerated, 1hour), PartitionKey
-    | order by sum_RequestCharge desc | take 10
+    | summarize RU_Usage = sum(RequestCharge) by bin(TimeGenerated, 1h), PartitionKey
+    | join kind=inner (
+        CDBPartitionKeyRUConsumption
+        | where TimeGenerated >= ago(24hour)
+        | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replcae with database and collection name
+        | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
+        | where PartitionKeyRangeId == 0 // Replace with your PartitionKeyRangeId
+        | summarize TotalRU_PerHour = sum(RequestCharge) by bin(TimeGenerated, 1h)
+    ) on TimeGenerated
+    | extend RU_Percentage = round(RU_Usage * 100.00 / TotalRU_PerHour, 2)
+    | project Hour = TimeGenerated, PartitionKey, RU_Usage, TotalRU_PerHour, RU_Percentage
+    | order by Hour asc, RU_Percentage desc
    ```
-   
-1. If there is only one single partition key in the hot partition, then splitting the partition will not improve performance. Use query below to determine number of partition keys in the physical partition.
-
-   ```kusto
-   CDBPartitionKeyRUConsumption
-   | where TimeGenerated >= ago(24h)
-   | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with your DB and collection
-   | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
-   | where PartitionKeyRangeId == 0 // Replace with your target PartitionKeyRangeId
-   | summarize PartitionKeyCount = dcount(PartitionKey)
-   ```
-   
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
 
 ## Determine current throughput for each physical partition
