@@ -98,7 +98,7 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 
 1. For a physical partition, find the top logical partition keys that consume the most RU/s each hour using this query.
 
-       ```kusto
+    ```kusto
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hour)
     | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with database and collection name
@@ -117,6 +117,7 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | project Hour = TimeGenerated, PartitionKey, RU_Usage, TotalRU_PerHour, RU_Percentage
     | order by Hour asc, RU_Percentage desc
    ```
+
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
 
 ## Determine current throughput for each physical partition
