@@ -1,6 +1,6 @@
 - name: Azure Database for PostgreSQL documentation
   href: index.yml
-- name: configure-maintain
+- name: Configure and Maintain
   items:
     - name: Overview
       items:
@@ -94,7 +94,7 @@
       href: configure-maintain/concepts-reserved-pricing.md
     - name: Azure Advisor recommendations
       href: configure-maintain/concepts-azure-advisor-recommendations.md
-- name: Backup and Restore
+- name: Backup and restore
   items:
     - name: Overview
       href: backup-restore/concepts-business-continuity.md
@@ -465,7 +465,7 @@
       href: scale/how-to-scale-storage-performance.md
     - name: Configure storage autogrow
       href: scale/how-to-auto-grow-storage.md
-- name: Azure AI (azure_ai)
+- name: Azure AI
   items:
     - name: Overview
       href: azure-ai/generative-ai-azure-overview.md
