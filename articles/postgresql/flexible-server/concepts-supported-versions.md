@@ -4,12 +4,10 @@ description: Describes the supported major and minor versions of PostgreSQL in A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/30/2025
+ms.date: 12/8/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-ms.custom:
-  - ignite-2023
 ---
 
 # Supported versions of PostgreSQL in Azure Database for PostgreSQL 
@@ -41,17 +39,17 @@ The current minor release is **[!INCLUDE [minor-versions-15](includes/minor-vers
 
 The current minor release is **[!INCLUDE [minor-versions-14](includes/minor-version-14.md)]**. Refer to the [!INCLUDE [minor-versions-docs-14](includes/minor-version-docs-14.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
 
-## PostgreSQL version 13
+## PostgreSQL version 13 (Extended Support)
 
 The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-version-13.md)]**. Refer to the [!INCLUDE [minor-versions-docs-13](includes/minor-version-docs-13.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
-## PostgreSQL version 12 (retired)
+## PostgreSQL version 12 (Extended Support )
 
-The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-12-support) regarding the end-of-life.
+The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release.
 
-## PostgreSQL version 11 (extended support)
+## PostgreSQL version 11 (Extended Support )
 
-The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-11-support) regarding the extended support.
+The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release.
 
 ## PostgreSQL version 10 and older
 
