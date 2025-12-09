@@ -1356,11 +1356,6 @@
             "redirect_document_id": false
         },
         {
-            "source_path_from_root": "/articles/postgresql/overview.md",
-            "redirect_url": "/azure/postgresql/single-server/overview",
-            "redirect_document_id": false
-        },
-        {
             "source_path_from_root": "/articles/postgresql/overview-postgres-choose-server-options.md",
             "redirect_url": "/azure/postgresql/single-server/overview-postgres-choose-server-options",
             "redirect_document_id": false

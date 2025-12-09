@@ -1,127 +1,202 @@
 - name: Azure Database for PostgreSQL documentation
   href: index.yml
-- name: Configure and Maintain
+- name: Overview
   items:
-    - name: Overview
-      items:
-        - name: What is Azure Database for PostgreSQL?
-          href: configure-maintain/service-overview.md
-        - name: Self-hosted vs. managed service
-          href: configure-maintain/overview-postgres-choose-server-options.md
-        - name: Versioning policy
-          href: configure-maintain/concepts-version-policy.md
-          displayName: version, postgresql
-    - name: Prepay for reserved capacity
-      href: configure-maintain/concepts-reserved-pricing.md
-    - name: Request quota increase
-      href: configure-maintain/how-to-request-quota-increase.md
-    - name: Resolve capacity errors
-      href: configure-maintain/how-to-resolve-capacity-errors.md
-      displayName: issues, limitations, postgresql
-    - name: Major version upgrade
-      href: configure-maintain/concepts-major-version-upgrade.md
-    - name: Perform major version upgrade
-      href: configure-maintain/how-to-perform-major-version-upgrade.md
-    - name: Compliance
-      href: security/security-compliance.md
-    - name: Limits
-      href: configure-maintain/concepts-limits.md
-    - name: Identity
-      href: security/security-managed-identity-overview
-    - name: Data encryption
-      href: security/security-data-encryption
-    - name: Scheduled maintenance
-      href: configure-maintain/concepts-maintenance.md
-    - name: Connection pooling (PgBouncer)
-      href: troubleshoot/concepts-pgbouncer.md
-    - name: Create a server
-      items:
-        - name: Servers
-          href: configure-maintain/concepts-servers.md
-        - name: Supported versions
-          href: configure-maintain/concepts-supported-versions.md
-        - name: Compute
-          href: configure-maintain/concepts-compute.md
-        - name: Portal, CLI, ARM template
-          href: configure-maintain/quickstart-create-server.md
-        - name: Azure SDK for Python
-          href: configure-maintain/quickstart-create-server-python-sdk.md
-        - name: Azure SDK for .NET
-          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
-        - name: Azure SDK for Java
-          href: configure-maintain/quickstart-create-server-java-sdk.md
-        - name: Bicep
-          href: configure-maintain/quickstart-create-server-bicep.md
-    - name: Decommissioning and relocation
-      items:
-        - name: Delete a server
-          href: configure-maintain/how-to-delete-server.md
-        - name: Relocate a server
-          href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
-    - name: Database deployment
-      items:
-        - name: GitHub Actions
-          href: configure-maintain/how-to-deploy-github-action.md
-        - name: Azure Pipelines
-          href: configure-maintain/azure-pipelines-deploy-database-task.md
-    - name: Microsoft Fabric
-      items:
-        - name: Fabric mirroring
-          href: configure-maintain/concepts-fabric-mirroring.md
-        - name: Copy activity
-          href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
-        - name: Script activity
-          href: configure-maintain/how-to-data-factory-script-activity-fabric.md
-    - name: Build with AKS
-      items:
-        - name: Deploy Python App on Kubernetes
-          href: configure-maintain/tutorial-django-aks-database.md
-    - name: Build with App Services
-      items:
-        - name: Create a web app in a virtual network
-          href: configure-maintain/tutorial-webapp-server-vnet.md
-        - name: Deploy a Django app on App Service
-          href: /azure/app-service/tutorial-python-postgresql-app
-    - name: Power management
-      items:
-        - name: Start compute of a server
-          href: configure-maintain/how-to-start-server.md
-        - name: Stop compute of a server
-          href: configure-maintain/how-to-stop-server.md
-        - name: Restart PostgreSQL engine
-          href: configure-maintain/how-to-restart-server.md
-    - name: Prepay for reserved capacity
-      href: configure-maintain/concepts-reserved-pricing.md
-    - name: Azure Advisor recommendations
-      href: configure-maintain/concepts-azure-advisor-recommendations.md
-- name: Backup and restore
+    - name: What is Azure Database for PostgreSQL?
+      href: configure-maintain/service-overview.md
+    - name: Self-hosted vs. managed service
+      href: configure-maintain/overview-postgres-choose-server-options.md
+    - name: Versioning policy
+      href: configure-maintain/concepts-version-policy.md
+      displayName: version, postgresql
+- name: Business continuity
   items:
-    - name: Overview
-      href: backup-restore/concepts-business-continuity.md
+    - name: Configure and maintain
+      items:
+        - name: Prepay for reserved capacity
+          href: configure-maintain/concepts-reserved-pricing.md
+        - name: Request quota increase
+          href: configure-maintain/how-to-request-quota-increase.md
+        - name: Resolve capacity errors
+          href: troubleshoot/how-to-resolve-capacity-errors.md
+          displayName: issues, limitations, postgresql
+        - name: Major version upgrade
+          href: configure-maintain/concepts-major-version-upgrade.md
+        - name: Perform major version upgrade
+          href: configure-maintain/how-to-perform-major-version-upgrade.md
+        - name: Compliance
+          href: security/security-compliance.md
+        - name: Limits
+          href: configure-maintain/concepts-limits.md
+        - name: Identity
+          href: security/security-managed-identity-overview.md
+        - name: Data encryption
+          href: security/security-data-encryption.md
+        - name: Scheduled maintenance
+          href: configure-maintain/concepts-maintenance.md
+        - name: Connection pooling (PgBouncer)
+          href: connectivity/concepts-pgbouncer.md
+        - name: Create a server
+          items:
+            - name: Servers
+              href: configure-maintain/concepts-servers.md
+            - name: Supported versions
+              href: configure-maintain/concepts-supported-versions.md
+            - name: Compute
+              href: configure-maintain/concepts-compute.md
+            - name: Portal, CLI, ARM template
+              href: configure-maintain/quickstart-create-server.md
+            - name: Azure SDK for Python
+              href: configure-maintain/quickstart-create-server-python-sdk.md
+            - name: Azure SDK for .NET
+              href: configure-maintain/quickstart-create-server-dotnet-sdk.md
+            - name: Azure SDK for Java
+              href: configure-maintain/quickstart-create-server-java-sdk.md
+            - name: Bicep
+              href: configure-maintain/quickstart-create-server-bicep.md
+        - name: Decommissioning and relocation
+          items:
+            - name: Delete a server
+              href: configure-maintain/how-to-delete-server.md
+            - name: Relocate a server
+              href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+        - name: Database deployment
+          items:
+            - name: GitHub Actions
+              href: configure-maintain/how-to-deploy-github-action.md
+            - name: Azure Pipelines
+              href: configure-maintain/azure-pipelines-deploy-database-task.md
+        - name: Microsoft Fabric
+          items:
+            - name: Fabric mirroring
+              href: configure-maintain/concepts-fabric-mirroring.md
+            - name: Copy activity
+              href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
+            - name: Script activity
+              href: configure-maintain/how-to-data-factory-script-activity-fabric.md
+        - name: Build with AKS
+          items:
+            - name: Deploy Python App on Kubernetes
+              href: configure-maintain/tutorial-django-aks-database.md
+        - name: Build with App Services
+          items:
+            - name: Create a web app in a virtual network
+              href: configure-maintain/tutorial-webapp-server-vnet.md
+            - name: Deploy a Django app on App Service
+              href: /azure/app-service/tutorial-python-postgresql-app
+        - name: Power management
+          items:
+            - name: Start compute of a server
+              href: configure-maintain/how-to-start-server.md
+            - name: Stop compute of a server
+              href: configure-maintain/how-to-stop-server.md
+            - name: Restart PostgreSQL engine
+              href: configure-maintain/how-to-restart-server.md
+        - name: Prepay for reserved capacity
+          href: configure-maintain/concepts-reserved-pricing.md
+        - name: Azure Advisor recommendations
+          href: configure-maintain/concepts-azure-advisor-recommendations.md
     - name: Backup and restore
-      href: backup-restore/concepts-backup-restore.md
-    - name: Geo-disaster recovery
-      href: backup-restore/concepts-geo-disaster-recovery.md
-    - name: Backup
       items:
-        - name: Perform on-demand backups
-          href: backup-restore/how-to-perform-backups.md
-        - name: List all backups
-          href: backup-restore/how-to-list-all-backups.md
-        - name: Delete on-demand backups
-          href: backup-restore/how-to-delete-backups.md
-    - name: Restore
-      items:
-        - name: Restore to latest restore point
-          href: backup-restore/how-to-restore-latest-restore-point.md
-        - name: Restore to custom restore point
-          href: backup-restore/how-to-restore-custom-restore-point.md
-        - name: Restore to full backup (fast restore)
-          href: backup-restore/how-to-restore-full-backup.md
-        - name: Restore to paired region (geo-restore)
-          href: backup-restore/how-to-restore-paired-region.md
-        - name: Restore a dropped server
+        - name: Overview
+          href: backup-restore/concepts-business-continuity.md
+        - name: Backup and restore
+          href: backup-restore/concepts-backup-restore.md
+        - name: Geo-disaster recovery
+          href: backup-restore/concepts-geo-disaster-recovery.md
+        - name: Backup
+          items:
+            - name: Perform on-demand backups
+              href: backup-restore/how-to-perform-backups.md
+            - name: List all backups
+              href: backup-restore/how-to-list-all-backups.md
+            - name: Delete on-demand backups
+              href: backup-restore/how-to-delete-backups.md
+        - name: Restore
+          items:
+            - name: Restore to latest restore point
+              href: backup-restore/how-to-restore-latest-restore-point.md
+            - name: Restore to custom restore point
+              href: backup-restore/how-to-restore-custom-restore-point.md
+            - name: Restore to full backup (fast restore)
+              href: backup-restore/how-to-restore-full-backup.md
+            - name: Restore to paired region (geo-restore)
+              href: backup-restore/how-to-restore-paired-region.md
+            - name: Restore a dropped server
+              href: backup-restore/how-to-restore-dropped-server.md
+        - name: Backup and restore
+          href: backup-restore/concepts-backup-restore.md
+        - name: Geo-disaster recovery
+          href: backup-restore/concepts-geo-disaster-recovery.md
+        - name: High availability
+          href: high-availability/concepts-high-availability.md
+        - name: Point-in-time recovery
+          href: backup-restore/concepts-point-in-time-recovery.md
+        - name: Recovery from a dropped server
           href: backup-restore/how-to-restore-dropped-server.md
+        - name: Recovery from a deleted server
+          href: backup-restore/how-to-restore-deleted-server.md
+        - name: Recovery from a failed server
+          href: backup-restore/how-to-restore-failed-server.md
+        - name: Recovery from a server with a failed disk
+          href: backup-restore/how-to-restore-server-with-failed-disk.md
+        - name: Recovery from a server with a failed network interface
+          href: backup-restore/how-to-restore-server-with-failed-network-interface.md
+        - name: Recovery from a server with a failed storage account
+          href: backup-restore/how-to-restore-server-with-failed-storage-account.md
+        - name: Recovery from a server with a failed virtual network
+          href: backup-restore/how-to-restore-server-with-failed-virtual-network.md
+        - name: Recovery from a server with a failed subnet
+          href: backup-restore/how-to-restore-server-with-failed-subnet.md
+        - name: Recovery from a server with a failed public IP address
+          href: backup-restore/how-to-restore-server-with-failed-public-ip-address.md
+        - name: Recovery from a server with a failed private IP address
+          href: backup-restore/how-to-restore-server-with-failed-private-ip-address.md
+        - name: Recovery from a server with a failed load balancer
+          href: backup-restore/how-to-restore-server-with-failed-load-balancer.md
+        - name: Recovery from a server with a failed network security group
+          href: backup-restore/how-to-restore-server-with-failed-network-security-group.md
+        - name: Recovery from a server with a failed network security rule
+          href: backup-restore/how-to-restore-server-with-failed-network-security-rule.md
+    - name: Reliability
+      items:
+        - name: Configure high availability
+          href: high-availability/how-to-configure-high-availability.md
+        - name: Schedule maintenance
+          href: configure-maintain/how-to-configure-scheduled-maintenance.md
+        - name: Enable deletion protection
+          href: configure-maintain/how-to-enable-deletion-protection.md
+        - name: Monitor High-availability
+          href: high-availability/how-to-monitor-high-availability.md
+    - name: Read replicas
+      items:
+        - name: Overview
+          href: read-replica/concepts-read-replicas.md
+          displayName: replication, read replica
+        - name: Geo-Replication
+          href: read-replica/concepts-read-replicas-geo.md
+        - name: Promote read replicas
+          href: read-replica/concepts-read-replicas-promote.md
+        - name: Virtual endpoints
+          href: read-replica/concepts-read-replicas-virtual-endpoints.md
+        - name: Create a read replica
+          items:
+            - name: Create a read replica
+              href: read-replica/how-to-create-read-replica.md
+            - name: Create virtual endpoints
+              href: read-replica/how-to-create-virtual-endpoints.md
+            - name: Update virtual endpoints
+              href: read-replica/how-to-update-virtual-endpoints.md
+            - name: Show virtual endpoints
+              href: read-replica/how-to-show-virtual-endpoints.md
+            - name: Delete virtual endpoints
+              href: read-replica/how-to-delete-virtual-endpoints.md
+            - name: Switch over read replica to primary
+              href: read-replica/how-to-switch-over-replica-to-primary.md
+            - name: Promote read replica to standalone server
+              href: read-replica/how-to-promote-replica-to-standalone.md
+            - name: Delete a read replica
+              href: read-replica/how-to-delete-read-replica.md
 - name: Connect and query
   items:
     - name: Connect to a server in virtual network
@@ -153,7 +228,7 @@
   - name: Networking with Private Endpoint
     href: network/concepts-networking-private-link.md
   - name: Secure connectivity with SSL and TLS
-    href: network/concepts-networking-ssl-tls.md
+    href: security/security-tls.md
   - name: Public access (allowed IP addresses)
     items:
       - name: Enable public access
@@ -237,9 +312,9 @@
   - name: Encrypted connectivity
     items:
       - name: Encrypted connectivity using TLS/SSL
-        href: security/security-connect-tls
+        href: security/security-connect-tls.md
       - name: Update application client certificates
-        href: security/security-update-trusted-root-java
+        href: security/security-update-trusted-root-java.md
 - name: Migrate to Azure Database for PostgreSQL
   items:
     - name: Migration Service for Azure Database for PostgreSQL
@@ -345,7 +420,7 @@
           href: integration/how-to-data-factory-copy-activity-azure.md
         - name: Script activity
           href: integration/how-to-data-factory-script-activity-azure.md
-- name: Monitor and tune
+- name: Monitor
   items:
     - name: Monitor and tune overview
       href: monitor/concepts-monitoring.md
@@ -420,35 +495,6 @@
           href: configure-maintain/tutorial-real-time-dashboard.md
         - name: Design for microservices
           href: configure-maintain/tutorial-microservices.md
-- name: Read replicas
-  items:
-    - name: Overview
-      href: read-replica/concepts-read-replicas.md
-      displayName: replication, read replica
-    - name: Geo-Replication
-      href: read-replica/concepts-read-replicas-geo.md
-    - name: Promote read replicas
-      href: read-replica/concepts-read-replicas-promote.md
-    - name: Virtual endpoints
-      href: read-replica/concepts-read-replicas-virtual-endpoints.md
-    - name: Create a read replica
-      items:
-        - name: Create a read replica
-          href: read-replica/how-to-create-read-replica.md
-        - name: Create virtual endpoints
-          href: read-replica/how-to-create-virtual-endpoints.md
-        - name: Update virtual endpoints
-          href: read-replica/how-to-update-virtual-endpoints.md
-        - name: Show virtual endpoints
-          href: read-replica/how-to-show-virtual-endpoints.md
-        - name: Delete virtual endpoints
-          href: read-replica/how-to-delete-virtual-endpoints.md
-        - name: Switch over read replica to primary
-          href: read-replica/how-to-switch-over-replica-to-primary.md
-        - name: Promote read replica to standalone server
-          href: read-replica/how-to-promote-replica-to-standalone.md
-        - name: Delete a read replica
-          href: read-replica/how-to-delete-read-replica.md
 - name: Scaling
   items:
     - name: Scaling resources
@@ -503,17 +549,8 @@
           href: azure-ai/generative-ai-age-overview.md
         - name: Performance Best Practices for Apache AGE
           href: azure-ai/generative-ai-age-performance.md
-- name: Reliability
-  items:
-    - name: Configure high availability
-      href: high-availability/how-to-configure-high-availability.md
-    - name: Schedule maintenance
-      href: configure-maintain/how-to-configure-scheduled-maintenance.md
-    - name: Enable deletion protection
-      href: configure-maintain/how-to-enable-deletion-protection.md
-    - name: Monitor High-availability
-      href: high-availability/how-to-monitor-high-availability.md
-- name: Extensions and modules
+
+- name: Extensions
   items:
     - name: Overview
       href: extensions/concepts-extensions.md
