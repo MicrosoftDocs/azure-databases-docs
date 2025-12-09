@@ -16,7 +16,7 @@ Azure Database for PostgreSQL currently supports the following major versions.
 
 ## PostgreSQL version 18
 
-PostgreSQL 18 is now available on Azure Database for PostgreSQL flexible server. For a list of new features and improvements, refer to the [PostgreSQL 18 release notes](https://www.postgresql.org/docs/18/release-18.html).
+The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-version-18.md)]**. Refer to the [!INCLUDE [minor-versions-docs-18](includes/minor-version-docs-18.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
 
 ### Limitations
 
