@@ -17,7 +17,7 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
-## Release: December 2024
+## Release: December 2025
 
 - General availability
     - Support for latest [minor versions](concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20 and 13.23. <sup>$</sup>
