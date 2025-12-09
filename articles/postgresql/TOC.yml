@@ -23,17 +23,17 @@
     - name: Perform major version upgrade
       href: configure-maintain/how-to-perform-major-version-upgrade.md
     - name: Compliance
-      href: configure-maintain/concepts-compliance.md
+      href: security/security-compliance.md
     - name: Limits
       href: configure-maintain/concepts-limits.md
     - name: Identity
-      href: configure-maintain/concepts-Identity.md
+      href: security/security-managed-identity-overview
     - name: Data encryption
-      href: configure-maintain/concepts-data-encryption.md
+      href: security/security-data-encryption
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
     - name: Connection pooling (PgBouncer)
-      href: configure-maintain/concepts-pgbouncer.md
+      href: troubleshoot/concepts-pgbouncer.md
     - name: Create a server
       items:
         - name: Servers
@@ -141,19 +141,19 @@
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
     - name: Connection resilience
-      href: connectivity/concepts-connectivity.md
+      href: troubleshoot/concepts-connectivity.md
     - name: Connection pooling best practices
       href: connectivity/concepts-connection-pooling-best-practices.md
 - name: Networking
   items:
   - name: Networking with public access (allowed IP addresses)
-    href: configure-maintain/concepts-networking-public.md
+    href: network/concepts-networking-public.md
   - name: Networking with private access (virtual network Integration)
-    href: configure-maintain/concepts-networking-private.md
+    href: network/concepts-networking-private.md
   - name: Networking with Private Endpoint
-    href: configure-maintain/concepts-networking-private-link.md
+    href: network/concepts-networking-private-link.md
   - name: Secure connectivity with SSL and TLS
-    href: configure-maintain/concepts-networking-ssl-tls.md
+    href: network/concepts-networking-ssl-tls.md
   - name: Public access (allowed IP addresses)
     items:
       - name: Enable public access
@@ -227,7 +227,7 @@
       - name: Audit logs
         href: security/security-audit.md
       - name: Logs
-        href: security/concepts-logging.md
+        href: monitor/concepts-logging.md
       - name: Microsoft Defender for Cloud - OSS Databases
         href: security/security-defender-for-cloud.md
   - name: Compliance
@@ -355,8 +355,6 @@
     - name: Logs
       href: monitor/concepts-logging.md
       displayName: monitor, server logs
-    - name: Audit logs
-      href: monitor/concepts-audit.md
     - name: Intelligent performance
       items:
         - name: Query store overview
@@ -508,13 +506,13 @@
 - name: Reliability
   items:
     - name: Configure high availability
-      href: reliability/how-to-configure-high-availability.md
+      href: high-availability/how-to-configure-high-availability.md
     - name: Schedule maintenance
       href: configure-maintain/how-to-configure-scheduled-maintenance.md
     - name: Enable deletion protection
       href: configure-maintain/how-to-enable-deletion-protection.md
     - name: Monitor High-availability
-      href: monitor/how-to-monitor-high-availability.md
+      href: high-availability/how-to-monitor-high-availability.md
 - name: Extensions and modules
   items:
     - name: Overview
@@ -544,17 +542,17 @@
         - name: Overview
           href: extensions/concepts-storage.md
         - name: Premium SSD
-          href: extensions/concepts-storage-premium-ssd.md  
+          href: configure-maintain/concepts-storage-premium-ssd.md  
         - name: Premium SSD v2
-          href: extensions/concepts-storage-premium-ssd-v2.md  
+          href: configure-maintain/concepts-storage-premium-ssd-v2.md  
         - name: Migrate from Premium SSD to Premium SSD v2
-          href: extensions/concepts-storage-migrate-ssd-to-ssd-v2.md
+          href: configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2.md
         - name: Configure Azure Storage extension
           href: extensions/how-to-configure-azure-storage-extension.md
         - name: Quickstart examples
           href: extensions/quickstart-azure-storage-extension.md
         - name: Troubleshoot errors
-          href: extensions/troubleshoot-azure-storage-extension.md
+          href: troubleshoot/troubleshoot-azure-storage-extension.md
         - name: Reference
           href: extensions/reference-azure-storage-extension.md
     - name: In-database Embeddings (azure_local_ai)
@@ -576,7 +574,7 @@
         - name: Partitioning
           items:
             - name: Partitioning using pg_partman
-              href: extensions/how-to-use-pg-partman.md
+              href: configure-maintain/how-to-use-pg-partman.md
               displayName: pg_partman
     - name: Developer experience
       items:
@@ -591,125 +589,125 @@
 - name: Server parameters
   items:
     - name: Overview
-      href: server-parameter/concepts-server-parameters.md
+      href: server-parameters/concepts-server-parameters.md
     - name: Autovacuum
-      href: server-parameter/param-autovacuum.md?pivots=postgresql-17
+      href: server-parameters/param-autovacuum.md?pivots=postgresql-17
     - name: Client Connection Defaults / Locale and Formatting
-      href: server-parameter/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
+      href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
     - name: Client Connection Defaults / Other Defaults
-      href: server-parameter/param-client-connection-defaults-defaults.md?pivots=postgresql-17
+      href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
     - name: Client Connection Defaults / Shared Library Preloading
-      href: server-parameter/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
+      href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
     - name: Client Connection Defaults / Statement Behavior
-      href: server-parameter/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
+      href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
     - name: Connections and Authentication / Authentication
-      href: server-parameter/param-connections-authentication-authentication.md?pivots=postgresql-17
+      href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
     - name: Connections and Authentication / Connection Settings
-      href: server-parameter/param-connections-authentication-connection-settings.md?pivots=postgresql-17
+      href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
     - name: Connections and Authentication / SSL
-      href: server-parameter/param-connections-authentication-ssl.md?pivots=postgresql-17
+      href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
     - name: Connections and Authentication / TCP Settings
-      href: server-parameter/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
+      href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
     - name: Customized Options
-      href: server-parameter/param-customized-options.md?pivots=postgresql-17
+      href: server-parameters/param-customized-options.md?pivots=postgresql-17
     - name: Developer Options
-      href: server-parameter/param-developer-options.md?pivots=postgresql-17
+      href: server-parameters/param-developer-options.md?pivots=postgresql-17
     - name: Error Handling
-      href: server-parameter/param-error-handling.md?pivots=postgresql-17
+      href: server-parameters/param-error-handling.md?pivots=postgresql-17
     - name: File Locations
-      href: server-parameter/param-file-locations.md?pivots=postgresql-17
+      href: server-parameters/param-file-locations.md?pivots=postgresql-17
     - name: Intelligent tuning
-      href: server-parameter/param-intelligent-tuning.md?pivots=postgresql-17
+      href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
     - name: Lock Management
-      href: server-parameter/param-lock-management.md?pivots=postgresql-17
+      href: server-parameters/param-lock-management.md?pivots=postgresql-17
     - name: Metrics
-      href: server-parameter/param-metrics.md?pivots=postgresql-17
+      href: server-parameters/param-metrics.md?pivots=postgresql-17
     - name: Migration
-      href: server-parameter/param-migration.md?pivots=postgresql-17
+      href: server-parameters/param-migration.md?pivots=postgresql-17
     - name: PgBouncer
-      href: server-parameter/param-pgbouncer.md?pivots=postgresql-17
+      href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
     - name: Preset Options
-      href: server-parameter/param-preset-options.md?pivots=postgresql-17
+      href: server-parameters/param-preset-options.md?pivots=postgresql-17
     - name: Process Title
-      href: server-parameter/param-process-title.md?pivots=postgresql-17
+      href: server-parameters/param-process-title.md?pivots=postgresql-17
     - name: Query Tuning / Genetic Query Optimizer
-      href: server-parameter/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
+      href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
     - name: Query Tuning / Other Planner Options
-      href: server-parameter/param-query-tuning-planner-options.md?pivots=postgresql-17
+      href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
     - name: Query Tuning / Planner Cost Constants
-      href: server-parameter/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
+      href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
     - name: Query Tuning / Planner Method Configuration
-      href: server-parameter/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
+      href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
     - name: Replication / Master Server
-      href: server-parameter/param-replication-master-server.md?pivots=postgresql-17
+      href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
     - name: Replication / Primary Server
-      href: server-parameter/param-replication-primary-server.md?pivots=postgresql-17
+      href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
     - name: Replication / Sending Servers
-      href: server-parameter/param-replication-sending-servers.md?pivots=postgresql-17
+      href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
     - name: Replication / Standby Servers
-      href: server-parameter/param-replication-standby-servers.md?pivots=postgresql-17
+      href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
     - name: Replication / Subscribers
-      href: server-parameter/param-replication-subscribers.md?pivots=postgresql-17
+      href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
     - name: Reporting and Logging / What to Log
-      href: server-parameter/param-reporting-logging-what-log.md?pivots=postgresql-17
+      href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
     - name: Reporting and Logging / When to Log
-      href: server-parameter/param-reporting-logging-when-log.md?pivots=postgresql-17
+      href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
     - name: Reporting and Logging / Where to Log
-      href: server-parameter/param-reporting-logging-where-log.md?pivots=postgresql-17
+      href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
     - name: Resource Usage / Asynchronous Behavior
-      href: server-parameter/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
     - name: Resource Usage / Background Writer
-      href: server-parameter/param-resource-usage-background-writer.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
     - name: Resource Usage / Cost-Based Vacuum Delay
-      href: server-parameter/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
     - name: Resource Usage / Disk
-      href: server-parameter/param-resource-usage-disk.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
     - name: Resource Usage / Kernel Resources
-      href: server-parameter/param-resource-usage-kernel-resources.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
     - name: Resource Usage / Memory
-      href: server-parameter/param-resource-usage-memory.md?pivots=postgresql-17
+      href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
     - name: Statistics / Cumulative Query and Index Statistics
-      href: server-parameter/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
+      href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
     - name: Statistics / Monitoring
-      href: server-parameter/param-statistics-monitoring.md?pivots=postgresql-17
+      href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
     - name: Statistics / Query and Index Statistics Collector
-      href: server-parameter/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
+      href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
     - name: TLS
-      href: server-parameter/param-tls.md?pivots=postgresql-17
+      href: server-parameters/param-tls.md?pivots=postgresql-17
     - name: Version and Platform Compatibility / Other Platforms and Clients
-      href: server-parameter/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
+      href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
     - name: Version and Platform Compatibility / Previous PostgreSQL Versions
-      href: server-parameter/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
+      href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
     - name: Write-Ahead Log / Archive Recovery
-      href: server-parameter/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
     - name: Write-Ahead Log / Archiving
-      href: server-parameter/param-write-ahead-log-archiving.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
     - name: Write-Ahead Log / Checkpoints
-      href: server-parameter/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
     - name: Write-Ahead Log / Recovery Target
-      href: server-parameter/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
     - name: Write-Ahead Log / Recovery
-      href: server-parameter/param-write-ahead-log-recovery.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
     - name: Write-Ahead Log / Settings
-      href: server-parameter/param-write-ahead-log-settings.md?pivots=postgresql-17
+      href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
     - name: Use server parameters
       items:
         - name: List all server parameters
-          href: server-parameter/how-to-server-parameters-list-all.md
+          href: server-parameters/how-to-server-parameters-list-all.md
         - name: List server parameters with modified values
-          href: server-parameter/how-to-server-parameters-list-modified.md
+          href: server-parameters/how-to-server-parameters-list-modified.md
         - name: List read-write static server parameters
-          href: server-parameter/how-to-server-parameters-list-read-write-static.md
+          href: server-parameters/how-to-server-parameters-list-read-write-static.md
         - name: List read-write dynamic server parameters
-          href: server-parameter/how-to-server-parameters-list-read-write-dynamic.md
+          href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
         - name: List read-only server parameters
-          href: server-parameter/how-to-server-parameters-list-read-only.md
+          href: server-parameters/how-to-server-parameters-list-read-only.md
         - name: Set the value of one or more server parameters
-          href: server-parameter/how-to-server-parameters-set-value.md
+          href: server-parameters/how-to-server-parameters-set-value.md
         - name: Revert one server parameter to its default
-          href: server-parameter/how-to-server-parameters-revert-one-default.md
+          href: server-parameters/how-to-server-parameters-revert-one-default.md
         - name: Revert all server parameters to their default
-          href: server-parameter/how-to-server-parameters-revert-all-default.md
+          href: server-parameters/how-to-server-parameters-revert-all-default.md
 - name: Release notes
   items:
     - name: Release notes
@@ -721,7 +719,7 @@
     - name: CLI release notes
       href: release-notes/release-notes-cli.md
     - name: Try for free
-      href: release-notes/how-to-deploy-on-azure-free-account.md
+      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Samples
   items:
     - name: Azure CLI samples
@@ -729,17 +727,17 @@
         - name: Samples overview
           href: sample-scripts-azure-cli.md
         - name: Create a server and firewall rule
-          href: ./scripts/sample-create-server-and-firewall-rule.md
+          href: ./samples/sample-create-server-and-firewall-rule.md
         - name: Create server with virtual network rule
-          href: ./scripts/sample-create-server-with-vnet-rule.md
+          href: ./samples/sample-create-server-with-vnet-rule.md
         - name: Scale a server
-          href: ./scripts/sample-scale-server-up-or-down.md
+          href: ./samples/sample-scale-server-up-or-down.md
         - name: Change server configurations
-          href: ./scripts/sample-change-server-configuration.md
+          href: ./samples/sample-change-server-configuration.md
         - name: Restore a server
-          href: ./scripts/sample-point-in-time-restore.md
+          href: ./samples/sample-point-in-time-restore.md
         - name: Manipulate with server logs
-          href: ./scripts/sample-server-logs.md
+          href: ./samples/sample-server-logs.md
 - name: Troubleshooting
   items:
     - name: Troubleshooting guides
@@ -789,7 +787,7 @@
     - name: Troubleshooting guides
       href: troubleshoot/concepts-troubleshooting-guides.md
     - name: Logical replication and logical decoding
-      href: troubleshoot/concepts-logical.md
+      href: configure-maintain/concepts-logical.md
       displayName: logical decoding, logical replication
 - name: Reference
   items:

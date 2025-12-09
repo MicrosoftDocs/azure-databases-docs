@@ -152,7 +152,7 @@ Access method: heap
 
 ## Related content
 
-- [Azure Database for PostgreSQL documentation](../configure-maintain/overview.md)
+- [Azure Database for PostgreSQL documentation](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)

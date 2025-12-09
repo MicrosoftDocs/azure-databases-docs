@@ -12,7 +12,7 @@ ms.topic: troubleshooting-general
 
 # Troubleshoot high memory utilization in Azure Database for PostgreSQL 
 
-This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](../configure-maintain/overview.md).
+This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure Database for PostgreSQL](../overview.md).
 
 In this article, you can learn:
 
@@ -52,9 +52,9 @@ Consider the following reasons and remedial actions for resolving high memory ut
 
 An inappropriate configuration of the following server parameters could have an impact in the amount of memory consumed by your workload. Therefore, their values should be reviewed and adjusted according to your needs:
 
-- [work_mem](../server-parameter/param-resource-usage-memory.md#work_mem).
-- [maintenance_work_mem](../server-parameter/param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](../server-parameter/param-resource-usage-memory.md#shared_buffers).
-- [max_connections](../server-parameter/param-connections-authentication-connection-settings.md#max_connections).
+- [work_mem](../server-parameters/param-resource-usage-memory.md#work_mem).
+- [maintenance_work_mem](../server-parameters/param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](../server-parameters/param-resource-usage-memory.md#shared_buffers).
+- [max_connections](../server-parameters/param-connections-authentication-connection-settings.md#max_connections).
 
 ### Use EXPLAIN ANALYZE
 
@@ -67,5 +67,5 @@ For more information about the **EXPLAIN ANALYZE** command, review its [document
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

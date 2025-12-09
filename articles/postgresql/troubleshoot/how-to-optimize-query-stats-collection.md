@@ -24,7 +24,7 @@ If you want to start tracking the execution statistics of all SQL statements exe
 
 To set **pg_stat_statements.track** = `TOP`
 
-- In the Azure portal, go to the [Azure Database for PostgreSQL flexible server resource management page and select the server parameters blade](../server-parameter/concepts-server-parameters.md).
+- In the Azure portal, go to the [Azure Database for PostgreSQL flexible server resource management page and select the server parameters blade](../server-parameters/concepts-server-parameters.md).
 - Use the [Azure CLI](../connectivity/connect-azure-cli.md) az postgres server configuration set to `--name pg_stat_statements.track --resource-group myresourcegroup --server mydemoserver --value TOP`.
 
 ## Use the Query Store

@@ -17,7 +17,7 @@ ms.custom:
 The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> For the list of regions that support Zone redundant high availability, please review the supported regions [here](../configure-maintain/overview.md#azure-regions). 
+> For the list of regions that support Zone redundant high availability, please review the supported regions [here](../overview.md#azure-regions). 
 
 ## Exceeded quota 
 

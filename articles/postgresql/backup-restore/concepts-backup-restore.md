@@ -21,7 +21,7 @@ Azure Database for PostgreSQL automatically performs regular backups of your ser
 
 ## Backup overview
 
-Azure Database for PostgreSQL takes snapshot backups of data files and stores them securely in zone-redundant storage or locally redundant storage, depending on the [region](../configure-maintain/overview.md#azure-regions). The server also backs up transaction logs when the write-ahead log (WAL) file is ready to be archived. You can use these backups to restore a server to any point in time within your configured backup retention period. 
+Azure Database for PostgreSQL takes snapshot backups of data files and stores them securely in zone-redundant storage or locally redundant storage, depending on the [region](../overview.md#azure-regions). The server also backs up transaction logs when the write-ahead log (WAL) file is ready to be archived. You can use these backups to restore a server to any point in time within your configured backup retention period. 
 
 The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
 
@@ -126,7 +126,7 @@ To enable geo-redundant backup from the **Compute + storage** pane in the Azure 
 >[!IMPORTANT]
 > Geo-redundant backup can be configured only at the time of server creation. 
 
-After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/reliability/cross-region-replication-azure). For more information, see the [supported regions](../configure-maintain/overview.md#azure-regions) for geo-redundant backup.
+After you configure your server with geo-redundant backup, you can restore it to a [geo-paired region](/azure/reliability/cross-region-replication-azure). For more information, see the [supported regions](../overview.md#azure-regions) for geo-redundant backup.
 
 When the server is configured with geo-redundant backup, the backup data and transaction logs are copied to the paired region asynchronously through storage replication. After you create a server, wait at least one hour before initiating a geo-restore. That allows the first set of backup data to be replicated to the paired region. 
 
@@ -165,7 +165,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
-- The values of all [server parameters](../server-parameter/concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+- The values of all [server parameters](../server-parameters/concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
 
 - Ensure that appropriate server-level firewall rules, private endpoints, and virtual network rules are in place for user connections. These rules are not copied over from the original server.
   
@@ -175,7 +175,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - Configure alerts as appropriate.
   
-- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](../reliability/how-to-configure-high-availability.md).
+- If the source server from which you restored was configured with high availability, and you want to configure the restored server with high availability, you can then follow [these steps](../high-availability/how-to-configure-high-availability.md).
 
 - If the source server from which you restored was configured with read replicas, and you want to configure read replicas on the restored server, you can then follow the instructions in [Create a read replica](../read-replica/how-to-create-read-replica.md).
  

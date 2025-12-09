@@ -133,7 +133,7 @@ The backup and recovery section focuses on ensuring that data and configurations
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
 
-- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server instance to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability](../reliability/how-to-configure-high-availability.md).
+- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server instance to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability](../high-availability/how-to-configure-high-availability.md).
 
 - **Configure automated backups**: Azure Database for PostgreSQL automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure Database for PostgreSQL](../backup-restore/concepts-backup-restore.md).
 

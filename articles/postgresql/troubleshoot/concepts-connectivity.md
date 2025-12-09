@@ -42,4 +42,4 @@ Make sure to test your retry logic. For example, try to execute your code while 
 
 ## Related content
 
-[What is Azure Database for PostgreSQL?](../configure-maintain/overview.md)
+[What is Azure Database for PostgreSQL?](../overview.md)

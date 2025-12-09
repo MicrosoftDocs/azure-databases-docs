@@ -63,7 +63,7 @@ With the private endpoint deployed and approved, you can finally use your data f
 
     :::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-integration-runtime.png" alt-text="Screenshot that shows where to select integration runtime with managed virtual network." lightbox="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-integration-runtime.png":::
 
-1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](../server-parameter/param-tls.md?#require_secure_transport) is set to `off`, which isn't a recommended practice since it relaxes security.
+1. Select an **Encryption method**. If you select **No encryption**, the connection only succeeds if the server parameter [require_secure_transport](../server-parameters/param-tls.md?#require_secure_transport) is set to `off`, which isn't a recommended practice since it relaxes security.
 
     :::image type="content" source="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-encryption-method.png" alt-text="Screenshot that shows options available for the encryption method field." lightbox="./media/how-to-connect-data-factory-private-endpoint/linked-service-create-postgresql-encryption-method.png":::
 

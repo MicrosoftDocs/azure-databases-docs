@@ -78,4 +78,4 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 - [Stop compute of a server](how-to-stop-server.md).
 - [Restart PostgreSQL engine](how-to-restart-server.md).
-- [Configure high availability](../reliability/how-to-configure-high-availability.md).
+- [Configure high availability](../high-availability/how-to-configure-high-availability.md).

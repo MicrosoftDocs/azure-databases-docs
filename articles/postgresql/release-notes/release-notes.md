@@ -39,15 +39,15 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: July 2025
 - General availability
     - [PostgreSQL 17](../configure-maintain/concepts-supported-versions.md#postgresql-version-17) is now supported, including in-place major version upgrades.
-    - [Malaysia West region](../configure-maintain/overview.md#azure-regions)
-    - [Chile Central region](../configure-maintain/overview.md#azure-regions)
+    - [Malaysia West region](../overview.md#azure-regions)
+    - [Chile Central region](../overview.md#azure-regions)
 - Preview
     - [High Availability with Premium SSDv2](../extensions/concepts-storage.md)
     - [Cascading read replica support in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
 
 ## Release: June 2025
 - General availability
-    - [Indonesia Central](../configure-maintain/overview.md#azure-regions) region.
+    - [Indonesia Central](../overview.md#azure-regions) region.
     - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13. 
     - [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
@@ -75,7 +75,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL.
 - Public preview of [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL.
-- General availability of [New Zealand North](../configure-maintain/overview.md#azure-regions) region.
+- General availability of [New Zealand North](../overview.md#azure-regions) region.
 - Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with GA REST API version.
 
 
@@ -106,7 +106,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: November 2024
 
-- General availability of [High-Availability Health Status Monitoring](../reliability/how-to-monitor-high-availability.md) for Azure Database for PostgreSQL.
+- General availability of [High-Availability Health Status Monitoring](../high-availability/how-to-monitor-high-availability.md) for Azure Database for PostgreSQL.
 - [PostgreSQL 12](../configure-maintain/concepts-version-policy.md) retires on November 14, 2024. Upgrade to a supported version before retirement to ensure continued support and security.
 
 ## Release: October 2024
@@ -285,23 +285,23 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: September 2022
 
 - Support for [Fast Restore](../backup-restore/concepts-backup-restore.md) feature.
-- General availability of [Geo-Redundant Backups](../backup-restore/concepts-backup-restore.md). See the [regions](../configure-maintain/overview.md#azure-regions) where Geo-redundant backup is currently available.
+- General availability of [Geo-Redundant Backups](../backup-restore/concepts-backup-restore.md). See the [regions](../overview.md#azure-regions) where Geo-redundant backup is currently available.
 
 ## Release: August 2022
 
 - Support for latest [PostgreSQL minor version](../configure-maintain/concepts-supported-versions.md) 14.4. <sup>$</sup>
-- Support for [new regions](../configure-maintain/overview.md#azure-regions) Qatar Central, Switzerland West, France South.
+- Support for [new regions](../overview.md#azure-regions) Qatar Central, Switzerland West, France South.
 
 ## Release: July 2022
 
-- Support for [Geo-redundant backup](../backup-restore/concepts-backup-restore.md#geo-redundant-backup-and-restore) in [more regions](../configure-maintain/overview.md#azure-regions) - Australia East, Australia Southeast, Canada Central, Canada East, UK South, UK West, East US, West US, East Asia, Southeast Asia, North Central US, South Central US, and France Central.
+- Support for [Geo-redundant backup](../backup-restore/concepts-backup-restore.md#geo-redundant-backup-and-restore) in [more regions](../overview.md#azure-regions) - Australia East, Australia Southeast, Canada Central, Canada East, UK South, UK West, East US, West US, East Asia, Southeast Asia, North Central US, South Central US, and France Central.
 
 ## Release: June 2022
 
 - Support for [**PostgreSQL version 14**](../configure-maintain/concepts-supported-versions.md).
 - Support for [minor versions](../configure-maintain/concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
 - Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
-- Support for choosing [standby availability zone](../reliability/how-to-configure-high-availability.md) when deploying zone-redundant high availability.
+- Support for choosing [standby availability zone](../high-availability/how-to-configure-high-availability.md) when deploying zone-redundant high availability.
 - Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
 - Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>
 - Version updates for [PostGIS](../extensions/concepts-extensions-versions.md#postgis) extension.
@@ -309,7 +309,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: May 2022
 
-- Support for [new regions](../configure-maintain/overview.md#azure-regions) India West, Canada East.
+- Support for [new regions](../overview.md#azure-regions) India West, Canada East.
 
 ## Release: April 2022
 
@@ -319,13 +319,13 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: February 2022
 
 - Support for [latest PostgreSQL minors](../configure-maintain/concepts-supported-versions.md) 13.5, 12.9 and 11.14 with new server creates. <sup>$</sup>
-- Support for [US Gov regions](../configure-maintain/overview.md#azure-regions) - Arizona and Virginia.
+- Support for [US Gov regions](../overview.md#azure-regions) - Arizona and Virginia.
 - Support for the following [extensions](../extensions/how-to-allow-extensions.md) with new servers: <sup>$</sup>
     - [TimescaleDB](../extensions/concepts-extensions-versions.md#timescaledb).
     - [orafce](../extensions/concepts-extensions-versions.md#orafce).
     - [pg_repack](../extensions/concepts-extensions-versions.md#pg_repack).
 - Extensions need to be [allowlisted](../extensions/how-to-allow-extensions.md#allow-extensions) before they can be installed.
-- Support for zone redundant high availability for new server creates in [regions](../configure-maintain/overview.md#azure-regions) Central India, Korea Central, East Asia, and West US 3.
+- Support for zone redundant high availability for new server creates in [regions](../overview.md#azure-regions) Central India, Korea Central, East Asia, and West US 3.
 - Several bug fixes, stability, security, and performance improvements. <sup>$</sup>
 
 ## Release: November 2021
@@ -333,7 +333,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Azure Database for PostgreSQL is [**Generally Available**](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/azure-database-for-postgresql-flexible-server-is-now-ga/ba-p/2987030).
 - Support for [latest PostgreSQL minors](../configure-maintain/concepts-supported-versions.md) 13.4, 12.8 and 11.13 with new server creates. <sup>$</sup>
 - Support for [Geo-redundant backup and restore](../backup-restore/concepts-backup-restore.md) feature in preview in selected paired regions - East US 2, Central US, North Europe, West Europe, Japan East, and Japan West.
-- Support for [new regions](../configure-maintain/overview.md#azure-regions) North Central US, Sweden Central, and West US 3.
+- Support for [new regions](../overview.md#azure-regions) North Central US, Sweden Central, and West US 3.
 - Support for [Azure Stream Analytics (ASA) connector in Preview](https://techcommunity.microsoft.com/blog/analyticsonazure/stream-analytics-updates---ignite-fall-2021-new-outputs-new-security-options-and/2919170) to ingest high throughput streaming data to existing table.
 - Several bug fixes, stability, and performance improvements.
 
@@ -347,7 +347,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 ## Release: September 2021
 
 - Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_flexible_server).
-- Support for [new regions](../configure-maintain/overview.md#azure-regions) Central India and Japan West.
+- Support for [new regions](../overview.md#azure-regions) Central India and Japan West.
 - Support for a non-SSL mode of connectivity using a new `require_secure_transport` server parameter.
 - Support for the `log_line_prefix` server parameter, which adds the string at the beginning of each log line.
 - Support for [Azure Resource Health](/azure/service-health/resource-health-overview) for Azure Database for PostgreSQL health diagnosis and to get support.
@@ -355,7 +355,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 
 ## Release: July 2021
 
-- Support for [new regions](../configure-maintain/overview.md#azure-regions) East Asia, Germany West Central, Korea South, South Central US, UK West.
+- Support for [new regions](../overview.md#azure-regions) East Asia, Germany West Central, Korea South, South Central US, UK West.
 - Support for [pglogical](../configure-maintain/concepts-logical.md) extension (2.3.2) with PostgreSQL 11, 12 and 13. <sup>$</sup>
 - PgBouncer now includes `ignore_startup_parameters` to ignore certain client-side driver's parameters including `extra_float_digits`, and `pgbouncer.query_wait_timeout` parameters. <sup>$</sup>
 - Support for `pg_stat_reset_shared('bgwriter');` and `pg_stat_reset_shared('archiver');` to reset the counters shown in the `pg_stat_bgwriter` and `pg_stat_archiver` views. <sup>$</sup>
@@ -364,7 +364,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 ## Release: June 2021
 
 - Support for [latest PostgreSQL minors](../configure-maintain/concepts-supported-versions.md) 13.3, 12.7 and 11.12 with new server creates. <sup>$</sup>
-- Support for [new regions](../configure-maintain/overview.md#azure-regions), including Australia Southeast, Brazil South, Korea Central, Norway East, South Africa North, Switzerland North, UAE North, and West US.
+- Support for [new regions](../overview.md#azure-regions), including Australia Southeast, Brazil South, Korea Central, Norway East, South Africa North, Switzerland North, UAE North, and West US.
 - Support for [on-demand failover](/azure/reliability/reliability-postgresql-flexible-server#failover-support) capabilities including forced failover and planned failover for zone redundant high availability deployments.
 - Support for [SCRAM authentication](../security/security-connect-scram.md) for all major versions with new server creates. <sup>$</sup>
 - Support for [pg_prewarm](../extensions/concepts-extensions-versions.md#pg_prewarm) extension to be preloaded using `shared_preload_libraries` with new server creates.
@@ -385,7 +385,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 - Support for [latest PostgreSQL minors](../configure-maintain/concepts-supported-versions.md) 12.6 and 11.11 with new server creates.
 - Support for Virtual Network (virtual network) [private DNS zone](../network/concepts-networking-private.md#private-access-virtual-network-integration).
 - Support to choose the Availability zone during Point-in-time recovery operation.
-- Support for new [regions](../configure-maintain/overview.md#azure-regions), including Australia East, Canada Central, and France Central.
+- Support for new [regions](../overview.md#azure-regions), including Australia East, Canada Central, and France Central.
 - Support for [built-in PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md) connection pooler.
 <!--- * Support for [pglogical](https://github.com/2ndQuadrant/pglogical) extension version 2.3.2. -->
 - [Intelligent performance](../monitor/concepts-query-store.md) .
@@ -394,7 +394,7 @@ The server parameters page in the Azure portal shows a unit of measurement and t
 ## Release: October 2020 - March 2021
 
 - Improved experience connecting [connect](../connectivity/connect-azure-cli.md) to the Azure Database for PostgreSQL instance using Azure CLI with the `az postgres flexible- server connect` command.
-- Support for [new regions](../configure-maintain/overview.md#azure-regions).
+- Support for [new regions](../overview.md#azure-regions).
 - Several portal improvements, including the display of minor versions and summary of metrics on the overview page.
 - Several bug fixes, stability, and performance improvements.
 

@@ -27,7 +27,7 @@ In this article, you can learn:
 
 1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
-1. After the `auto_explain` extension is configured, change the following [server parameters](../server-parameter/concepts-server-parameters.md), which control the behavior of the extension:
+1. After the `auto_explain` extension is configured, change the following [server parameters](../server-parameters/concepts-server-parameters.md), which control the behavior of the extension:
 
    - `auto_explain.log_analyze` to `ON`.
    - `auto_explain.log_buffers` to `ON`.
@@ -215,5 +215,5 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

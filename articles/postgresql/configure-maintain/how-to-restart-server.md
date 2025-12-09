@@ -79,4 +79,4 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 - [Start compute of a server](how-to-start-server.md).
 - [Stop compute of a server](how-to-stop-server.md).
-- [Configure high availability](../reliability/how-to-configure-high-availability.md).
+- [Configure high availability](../high-availability/how-to-configure-high-availability.md).

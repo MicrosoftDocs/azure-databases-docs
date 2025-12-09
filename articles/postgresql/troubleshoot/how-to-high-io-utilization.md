@@ -14,7 +14,7 @@ ms.custom:
 
 # Troubleshoot high IOPS utilization in Azure Database for PostgreSQL 
 
-This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure Database for PostgreSQL](../configure-maintain/overview.md).
+This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure Database for PostgreSQL](../overview.md).
 
 In this article, you learn how to:
 
@@ -169,5 +169,5 @@ Increasing storage helps when you're adding more IOPS to the server. For more in
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameter/concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

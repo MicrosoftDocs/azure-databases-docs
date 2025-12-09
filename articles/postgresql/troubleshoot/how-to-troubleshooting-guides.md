@@ -23,7 +23,7 @@ All troubleshooting guides require logs to be sent to a Log Analytics workspace,
 
 Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL flexible server](../monitor/how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
-Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](../server-parameter/how-to-server-parameters-list-all.md) or [Azure CLI](../server-parameter/how-to-server-parameters-list-all.md).
+Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](../server-parameters/how-to-server-parameters-list-all.md) or [Azure CLI](../server-parameters/how-to-server-parameters-list-all.md).
 
 The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Server parameters prerequisites.
 
