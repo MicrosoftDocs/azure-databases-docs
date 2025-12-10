@@ -128,34 +128,8 @@
           href: backup-restore/concepts-backup-restore.md
         - name: Geo-disaster recovery
           href: backup-restore/concepts-geo-disaster-recovery.md
-        - name: Point-in-time recovery
-          href: backup-restore/concepts-point-in-time-recovery.md
         - name: Recovery from a dropped server
           href: backup-restore/how-to-restore-dropped-server.md
-        - name: Recovery from a deleted server
-          href: backup-restore/how-to-restore-deleted-server.md
-        - name: Recovery from a failed server
-          href: backup-restore/how-to-restore-failed-server.md
-        - name: Recovery from a server with a failed disk
-          href: backup-restore/how-to-restore-server-with-failed-disk.md
-        - name: Recovery from a server with a failed network interface
-          href: backup-restore/how-to-restore-server-with-failed-network-interface.md
-        - name: Recovery from a server with a failed storage account
-          href: backup-restore/how-to-restore-server-with-failed-storage-account.md
-        - name: Recovery from a server with a failed virtual network
-          href: backup-restore/how-to-restore-server-with-failed-virtual-network.md
-        - name: Recovery from a server with a failed subnet
-          href: backup-restore/how-to-restore-server-with-failed-subnet.md
-        - name: Recovery from a server with a failed public IP address
-          href: backup-restore/how-to-restore-server-with-failed-public-ip-address.md
-        - name: Recovery from a server with a failed private IP address
-          href: backup-restore/how-to-restore-server-with-failed-private-ip-address.md
-        - name: Recovery from a server with a failed load balancer
-          href: backup-restore/how-to-restore-server-with-failed-load-balancer.md
-        - name: Recovery from a server with a failed network security group
-          href: backup-restore/how-to-restore-server-with-failed-network-security-group.md
-        - name: Recovery from a server with a failed network security rule
-          href: backup-restore/how-to-restore-server-with-failed-network-security-rule.md
     - name: Reliability
       items:
         - name: Configure high availability
