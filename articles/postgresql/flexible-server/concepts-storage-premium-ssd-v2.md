@@ -1,6 +1,6 @@
 ---
 title: Premium SSD v2
-description: This article describes about Premium SSD v2 storage option for an Azure Database for PostgreSQL flexible server instance.
+description: This article describes the Premium SSD v2 storage option for an Azure Database for PostgreSQL flexible server instance.
 author: kabharati  
 ms.author: kabharati
 ms.reviewer: maghan
@@ -59,12 +59,12 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 ## Premium SSD v2 - Features
 
 In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Canada Central and East Asia regions.
-_High availability 
-Read Replica, 
-Geo Redundant Backups
-Geo DR (Disaster Recovery)
-Major Version Upgrade,
-Virtual endpoints_
+- _High availability_ 
+- _Read Replica_, 
+- _Geo Redundant Backups_
+- _Geo DR_
+- _Major Version Upgrade_,
+- _Virtual endpoints__
 
 
 #### Premium SSD v2 - Limitations
@@ -84,16 +84,14 @@ Virtual endpoints_
     _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
 -  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
-  
-  **Examples include**:  Compute scaling, enabling HA, and performing failover and failback within one hour.
-                         Major version upgrades, adding HA, failover, creating in-region replicas within one hour.        
+     **Examples include**:
+           - Compute scaling, enabling HA, and performing failover and failback within one hour.
+            - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.        
                          
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
        
-
-If you encounter this error, space out your operations so they occur over more than one hour
+If you encounter this error, space out your operations so they occur over more than one hour.
   
-
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
