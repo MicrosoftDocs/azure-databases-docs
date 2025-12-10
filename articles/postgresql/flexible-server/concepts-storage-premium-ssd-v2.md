@@ -36,7 +36,26 @@ Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
+The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
+The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which want you should use.
+
+| SSD v2 disk size | Maximum available IOPS | Maximum available throughput (MB/s) |
+| :--- | :--- | :--- |
+| 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
+
+Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
+To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
+
+> [!NOTE]  
+> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
+
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
+
+
+
+> [!IMPORTANT]  
+> The selected compute size determines the minimum and maximum IOPS.
 ## Premium SSD v2 - Features
 
 In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Canada Central and East Asia regions.
@@ -74,26 +93,7 @@ Virtual endpoints_
 
 If you encounter this error, space out your operations so they occur over more than one hour
   
-The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
-The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which want you should use.
-
-| SSD v2 disk size | Maximum available IOPS | Maximum available throughput (MB/s) |
-| :--- | :--- | :--- |
-| 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
-
-Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
-To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
-
-> [!NOTE]  
-> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
-
-You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](concepts-monitoring.md).
-
-
-
-> [!IMPORTANT]  
-> The selected compute size determines the minimum and maximum IOPS.
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
