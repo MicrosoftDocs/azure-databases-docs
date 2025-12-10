@@ -117,15 +117,15 @@ Each resource scales synchronously and immediately between the minimum RU/s and 
 
 ### Serverless
 
-[Serverless](serverless.md) lets you use your Azure Cosmos DB resources in a consumption-based fashion. The following table lists the limits for storage and throughput burstability per container/database. These limits can't be increased. Allocate extra serverless accounts for more storage needs.
+[Serverless](serverless.md) lets you use your Azure Cosmos DB resources in a consumption-based fashion.
 
 | Resource | Limit |
 | --- | --- |
-| Maximum RU/s per container | 20,000* |
-| Maximum storage across all items per (logical) partition | 20 GB |
-| Maximum storage per container | 1 TB  |
+| Maximum storage across all items per (logical) partition | 20 GB ¹|
+| Maximum number of distinct (logical) partition keys | Unlimited |
+| Maximum storage per container | Unlimited |
 
-*Maximum RU/sec availability is dependent on data stored in the container. See, [Serverless Performance](serverless-performance.md)
+¹ If your workload reaches the logical partition limit of 20 GB in production, rearchitecting your application with a different partition key is recommended as a long-term solution. To give you time to rearchitect your application, request a temporary increase in the logical partition key limit for your existing application. [File an Azure support ticket](create-support-request-quota-increase.md) and select quota type **Temporary increase in container's logical partition key size**. Requesting a temporary increase is intended as a temporary mitigation and not recommended as a long-term solution. To remove the configuration, file a support ticket and select quota type **Restore container’s logical partition key size to default (20 GB)**. You can file this support ticket after deleting data to fit the 20-GB logical partition limit or rearchitecting your application with a different partition key.
 
 ## Control plane
 
