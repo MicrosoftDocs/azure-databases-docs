@@ -3,723 +3,290 @@
 - name: Overview
   items:
     - name: What is Azure Database for PostgreSQL?
-      href: flexible-server/service-overview.md
+      href: configure-maintain/service-overview.md
     - name: Self-hosted vs. managed service
-      href: flexible-server/overview-postgres-choose-server-options.md
+      href: configure-maintain/overview-postgres-choose-server-options.md
     - name: Versioning policy
-      href: flexible-server/concepts-version-policy.md
+      href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
-    - name: Prepay for reserved capacity
-      href: flexible-server/concepts-reserved-pricing.md
-    - name: Request quota increase
-      href: flexible-server/how-to-request-quota-increase.md
-    - name: Resolve capacity errors
-      href: flexible-server/how-to-resolve-capacity-errors.md
-      displayName: issues, limitations, postgresql
-- name: Azure Database for PostgreSQL
-  expanded: true
+- name: Business continuity
   items:
-    - name: Overview
-      href: flexible-server/overview.md
-    - name: Release notes
-      href: flexible-server/release-notes.md
-    - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
-    - name: API release notes
-      href: flexible-server/release-notes-api.md
-    - name: CLI release notes
-      href: flexible-server/release-notes-cli.md
-    - name: Try for free
-      href: flexible-server/how-to-deploy-on-azure-free-account.md
-    - name: Quickstarts
-      expanded: true
+    - name: Configure and maintain
       items:
+        - name: Prepay for reserved capacity
+          href: configure-maintain/concepts-reserved-pricing.md
+        - name: Request quota increase
+          href: configure-maintain/how-to-request-quota-increase.md
+        - name: Resolve capacity errors
+          href: troubleshoot/how-to-resolve-capacity-errors.md
+          displayName: issues, limitations, postgresql
+        - name: Major version upgrade
+          href: configure-maintain/concepts-major-version-upgrade.md
+        - name: Perform major version upgrade
+          href: configure-maintain/how-to-perform-major-version-upgrade.md
+        - name: Compliance
+          href: security/security-compliance.md
+        - name: Limits
+          href: configure-maintain/concepts-limits.md
+        - name: Identity
+          href: security/security-managed-identity-overview.md
+        - name: Data encryption
+          href: security/security-data-encryption.md
+        - name: Scheduled maintenance
+          href: configure-maintain/concepts-maintenance.md
+        - name: Connection pooling (PgBouncer)
+          href: connectivity/concepts-pgbouncer.md
         - name: Create a server
           items:
+            - name: Servers
+              href: configure-maintain/concepts-servers.md
+            - name: Supported versions
+              href: configure-maintain/concepts-supported-versions.md
+            - name: Compute
+              href: configure-maintain/concepts-compute.md
             - name: Portal, CLI, ARM template
-              href: flexible-server/quickstart-create-server.md
+              href: configure-maintain/quickstart-create-server.md
             - name: Azure SDK for Python
-              href: flexible-server/quickstart-create-server-python-sdk.md
+              href: configure-maintain/quickstart-create-server-python-sdk.md
             - name: Azure SDK for .NET
-              href: flexible-server/quickstart-create-server-dotnet-sdk.md
+              href: configure-maintain/quickstart-create-server-dotnet-sdk.md
             - name: Azure SDK for Java
-              href: flexible-server/quickstart-create-server-java-sdk.md
+              href: configure-maintain/quickstart-create-server-java-sdk.md
             - name: Bicep
-              href: flexible-server/quickstart-create-server-bicep.md
-        - name: Create an elastic cluster
+              href: configure-maintain/quickstart-create-server-bicep.md
+        - name: Decommissioning and relocation
           items:
-            - name: Azure portal
-              href: flexible-server/quickstart-create-elastic-cluster-portal.md
-            - name: Bicep
-              href: flexible-server/quickstart-create-elastic-cluster-bicep.md
-            - name: ARM template
-              displayName: Azure Resource Manager
-              href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
-            
-        - name: Connect and query
-          items:
-            - name: Connect to a server in virtual network
-              href: flexible-server/quickstart-create-connect-server-vnet.md
-            - name: Azure CLI
-              href: flexible-server/connect-azure-cli.md
-            - name: Python
-              href: flexible-server/connect-python.md
-            - name: Java
-              href: flexible-server/connect-java.md
-            - name: .NET
-              href: flexible-server/connect-csharp.md
-            - name: Go
-              href: flexible-server/connect-go.md
-            - name: PHP
-              href: flexible-server/connect-php.md
+            - name: Delete a server
+              href: configure-maintain/how-to-delete-server.md
+            - name: Relocate a server
+              href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
         - name: Database deployment
           items:
             - name: GitHub Actions
-              href: flexible-server/how-to-deploy-github-action.md
+              href: configure-maintain/how-to-deploy-github-action.md
             - name: Azure Pipelines
-              href: flexible-server/azure-pipelines-deploy-database-task.md
-    - name: Concepts
-      items:
-        - name: Servers
-          href: flexible-server/concepts-servers.md
-        - name: Supported versions
-          href: flexible-server/concepts-supported-versions.md
-        - name: Compute
-          href: flexible-server/concepts-compute.md
-        - name: Storage
-          items:
-            - name: Overview
-              href: flexible-server/concepts-storage.md
-            - name: Premium SSD
-              href: flexible-server/concepts-storage-premium-ssd.md  
-            - name: Premium SSD v2
-              href: flexible-server/concepts-storage-premium-ssd-v2.md  
-            - name: Migrate from Premium SSD to Premium SSD v2
-              href: flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md
-        - name: Scaling resources
-          href: flexible-server/concepts-scaling-resources.md
-        - name: Elastic clusters
-          items:
-            - name: Overview
-              href: flexible-server/concepts-elastic-clusters.md
-            - name: Sharding models
-              href: flexible-server/concepts-elastic-clusters-sharding-models.md
-            - name: Table types
-              href: flexible-server/concepts-elastic-clusters-table-types.md
-            - name: Limitations
-              href: flexible-server/concepts-elastic-clusters-limitations.md
-        - name: Prepay for reserved capacity
-          href: flexible-server/concepts-reserved-pricing.md
-        - name: Networking
-          items:
-            - name: Networking with public access (allowed IP addresses)
-              href: flexible-server/concepts-networking-public.md
-            - name: Networking with private access (virtual network Integration)
-              href: flexible-server/concepts-networking-private.md
-            - name: Networking with Private Endpoint
-              href: flexible-server/concepts-networking-private-link.md
-            - name: Secure connectivity with SSL and TLS
-              href: flexible-server/concepts-networking-ssl-tls.md
-        - name: Major version upgrade
-          href: flexible-server/concepts-major-version-upgrade.md
-        - name: Compliance
-          href: flexible-server/concepts-compliance.md
-        - name: Limits
-          href: flexible-server/concepts-limits.md
-        - name: Identity
-          href: flexible-server/concepts-Identity.md
-        - name: Data encryption
-          href: flexible-server/concepts-data-encryption.md
-        - name: Scheduled maintenance
-          href: flexible-server/concepts-maintenance.md
-        - name: Connection pooling (PgBouncer)
-          href: flexible-server/concepts-pgbouncer.md
-        - name: Extensions and modules
-          items:
-            - name: Overview
-              href: extensions/concepts-extensions.md
-            - name: Special considerations
-              href: extensions/concepts-extensions-considerations.md
-            - name: List by name
-              href: extensions/concepts-extensions-versions.md
-            - name: List by version of PostgreSQL
-              href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
-            - name: Possible errors when managing extensions
-              href: extensions/errors-extensions.md
-            - name: Azure AI (azure_ai)
-              items:
-                - name: Overview
-                  href: flexible-server/generative-ai-azure-overview.md
-                - name: Azure OpenAI
-                  href: flexible-server/generative-ai-azure-openai.md
-                - name: Azure Cognitive Services
-                  href: flexible-server/generative-ai-azure-cognitive.md
-                - name: Azure Machine Learning Services
-                  href: flexible-server/generative-ai-azure-machine-learning.md
-                - name: Enable Managed Identity
-                  href: flexible-server/generative-ai-enable-managed-identity-azure-ai.md
-                - name: Introducing Semantic Operators
-                  href: flexible-server/generative-ai-azure-ai-semantic-operators.md
-            - name: In-database Embeddings (azure_local_ai)
-              items:
-                - name: Overview
-                  href: flexible-server/azure-local-ai.md
-            - name: Azure Storage (azure_storage)
-              items:
-                - name: Overview
-                  href: flexible-server/concepts-storage-extension.md
-            - name: Vector indexing (pg_diskann)
-              items:
-                - name: Overview
-                  href: flexible-server/how-to-use-pgdiskann.md
-            - name: Vector similarity search (pgvector)
-              items:
-                - name: Basics of pgvector
-                  href: flexible-server/how-to-use-pgvector.md
-                  displayName: vector databases
-                - name: Optimize performance when using pgvector
-                  href: flexible-server/how-to-optimize-performance-pgvector.md
-                  displayName: vector databases
-        - name: Partitioning
-          items:
-            - name: Partitioning using pg_partman
-              href: flexible-server/how-to-use-pg-partman.md
-              displayName: pg_partman
-        - name: Server parameters
-          items:
-            - name: Overview
-              href: flexible-server/concepts-server-parameters.md
-            - name: Autovacuum
-              href: flexible-server/param-autovacuum.md?pivots=postgresql-17
-            - name: Client Connection Defaults / Locale and Formatting
-              href: flexible-server/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
-            - name: Client Connection Defaults / Other Defaults
-              href: flexible-server/param-client-connection-defaults-defaults.md?pivots=postgresql-17
-            - name: Client Connection Defaults / Shared Library Preloading
-              href: flexible-server/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
-            - name: Client Connection Defaults / Statement Behavior
-              href: flexible-server/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
-            - name: Connections and Authentication / Authentication
-              href: flexible-server/param-connections-authentication-authentication.md?pivots=postgresql-17
-            - name: Connections and Authentication / Connection Settings
-              href: flexible-server/param-connections-authentication-connection-settings.md?pivots=postgresql-17
-            - name: Connections and Authentication / SSL
-              href: flexible-server/param-connections-authentication-ssl.md?pivots=postgresql-17
-            - name: Connections and Authentication / TCP Settings
-              href: flexible-server/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
-            - name: Customized Options
-              href: flexible-server/param-customized-options.md?pivots=postgresql-17
-            - name: Developer Options
-              href: flexible-server/param-developer-options.md?pivots=postgresql-17
-            - name: Error Handling
-              href: flexible-server/param-error-handling.md?pivots=postgresql-17
-            - name: File Locations
-              href: flexible-server/param-file-locations.md?pivots=postgresql-17
-            - name: Intelligent tuning
-              href: flexible-server/param-intelligent-tuning.md?pivots=postgresql-17
-            - name: Lock Management
-              href: flexible-server/param-lock-management.md?pivots=postgresql-17
-            - name: Metrics
-              href: flexible-server/param-metrics.md?pivots=postgresql-17
-            - name: Migration
-              href: flexible-server/param-migration.md?pivots=postgresql-17
-            - name: PgBouncer
-              href: flexible-server/param-pgbouncer.md?pivots=postgresql-17
-            - name: Preset Options
-              href: flexible-server/param-preset-options.md?pivots=postgresql-17
-            - name: Process Title
-              href: flexible-server/param-process-title.md?pivots=postgresql-17
-            - name: Query Tuning / Genetic Query Optimizer
-              href: flexible-server/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
-            - name: Query Tuning / Other Planner Options
-              href: flexible-server/param-query-tuning-planner-options.md?pivots=postgresql-17
-            - name: Query Tuning / Planner Cost Constants
-              href: flexible-server/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
-            - name: Query Tuning / Planner Method Configuration
-              href: flexible-server/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
-            - name: Replication / Master Server
-              href: flexible-server/param-replication-master-server.md?pivots=postgresql-17
-            - name: Replication / Primary Server
-              href: flexible-server/param-replication-primary-server.md?pivots=postgresql-17
-            - name: Replication / Sending Servers
-              href: flexible-server/param-replication-sending-servers.md?pivots=postgresql-17
-            - name: Replication / Standby Servers
-              href: flexible-server/param-replication-standby-servers.md?pivots=postgresql-17
-            - name: Replication / Subscribers
-              href: flexible-server/param-replication-subscribers.md?pivots=postgresql-17
-            - name: Reporting and Logging / What to Log
-              href: flexible-server/param-reporting-logging-what-log.md?pivots=postgresql-17
-            - name: Reporting and Logging / When to Log
-              href: flexible-server/param-reporting-logging-when-log.md?pivots=postgresql-17
-            - name: Reporting and Logging / Where to Log
-              href: flexible-server/param-reporting-logging-where-log.md?pivots=postgresql-17
-            - name: Resource Usage / Asynchronous Behavior
-              href: flexible-server/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
-            - name: Resource Usage / Background Writer
-              href: flexible-server/param-resource-usage-background-writer.md?pivots=postgresql-17
-            - name: Resource Usage / Cost-Based Vacuum Delay
-              href: flexible-server/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
-            - name: Resource Usage / Disk
-              href: flexible-server/param-resource-usage-disk.md?pivots=postgresql-17
-            - name: Resource Usage / Kernel Resources
-              href: flexible-server/param-resource-usage-kernel-resources.md?pivots=postgresql-17
-            - name: Resource Usage / Memory
-              href: flexible-server/param-resource-usage-memory.md?pivots=postgresql-17
-            - name: Statistics / Cumulative Query and Index Statistics
-              href: flexible-server/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
-            - name: Statistics / Monitoring
-              href: flexible-server/param-statistics-monitoring.md?pivots=postgresql-17
-            - name: Statistics / Query and Index Statistics Collector
-              href: flexible-server/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
-            - name: TLS
-              href: flexible-server/param-tls.md?pivots=postgresql-17
-            - name: Version and Platform Compatibility / Other Platforms and Clients
-              href: flexible-server/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
-            - name: Version and Platform Compatibility / Previous PostgreSQL Versions
-              href: flexible-server/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Archive Recovery
-              href: flexible-server/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Archiving
-              href: flexible-server/param-write-ahead-log-archiving.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Checkpoints
-              href: flexible-server/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Recovery Target
-              href: flexible-server/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Recovery
-              href: flexible-server/param-write-ahead-log-recovery.md?pivots=postgresql-17
-            - name: Write-Ahead Log / Settings
-              href: flexible-server/param-write-ahead-log-settings.md?pivots=postgresql-17
-        - name: Troubleshooting guides
-          href: flexible-server/concepts-troubleshooting-guides.md
-        - name: Logical replication and logical decoding
-          href: flexible-server/concepts-logical.md
-          displayName: logical decoding, logical replication
-        - name: Reliability
-          items:
-            - name: Overview
-              href: flexible-server/concepts-business-continuity.md
-            - name: Reliability and high availability
-              href: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
-            - name: Backup and restore
-              href: flexible-server/concepts-backup-restore.md
-            - name: Geo-disaster recovery
-              href: flexible-server/concepts-geo-disaster-recovery.md
-        - name: Monitor and tune
-          items:
-            - name: Monitor and tune overview
-              href: flexible-server/concepts-monitoring.md
-              displayName: monitor, metrics
-            - name: Workbooks
-              href: flexible-server/concepts-workbooks.md
-            - name: Monitor High-availability
-              href: flexible-server/how-to-monitor-high-availability.md
-            - name: Logs
-              href: flexible-server/concepts-logging.md
-              displayName: monitor, server logs
-            - name: Audit logs
-              href: flexible-server/concepts-audit.md
-            - name: Intelligent performance
-              items:
-                - name: Query store overview
-                  href: flexible-server/concepts-query-store.md
-                  displayName: performance, optimize, query store
-                - name: Query store usage scenarios
-                  href: flexible-server/concepts-query-store-scenarios.md
-                  displayName: query store, performance, optimize
-                - name: Query store best practices
-                  href: flexible-server/concepts-query-store-best-practices.md
-                - name: Query Performance Insight
-                  href: flexible-server/concepts-query-performance-insight.md
-                - name: Index tuning
-                  href: flexible-server/concepts-index-tuning.md
-                - name: Intelligent tuning
-                  href: flexible-server/concepts-intelligent-tuning.md
-        - name: Read replicas
-          items:
-            - name: Overview
-              href: flexible-server/concepts-read-replicas.md
-              displayName: replication, read replica
-            - name: Geo-Replication
-              href: flexible-server/concepts-read-replicas-geo.md
-            - name: Promote read replicas
-              href: flexible-server/concepts-read-replicas-promote.md
-            - name: Virtual endpoints
-              href: flexible-server/concepts-read-replicas-virtual-endpoints.md
-        - name: App development
-          items:
-            - name: Connection libraries
-              href: flexible-server/concepts-connection-libraries.md
-            - name: Connection resilience
-              href: flexible-server/concepts-connectivity.md
-            - name: Connection pooling best practices
-              href: flexible-server/concepts-connection-pooling-best-practices.md
-        - name: Azure Advisor recommendations
-          href: flexible-server/concepts-azure-advisor-recommendations.md
-    - name: Security
-      items:
-        - name: Secure your Azure Database for PostgreSQL
-          href: flexible-server/security-overview.md
-        - name: Authentication and access control
-          items:
-            - name: Microsoft Entra authentication
-              href: flexible-server/security-entra-concepts.md
-            - name: Configure Microsoft Entra integration
-              href: flexible-server/security-entra-configure.md
-            - name: Manage database users
-              href: flexible-server/security-manage-database-users.md
-            - name: Access control
-              href: flexible-server/security-access-control.md
-            - name: Connect applications with a managed identity
-              href: flexible-server/security-connect-with-managed-identity.md
-            - name: Connect local database users with SCRAM authentication
-              href: flexible-server/security-connect-scram.md
-            - name: Reset local administrator password
-              href: flexible-server/security-reset-admin-password.md
-        - name: Database server identity
-          items:
-            - name: Overview
-              href: flexible-server/security-managed-identity-overview.md
-            - name: Configure system assigned managed identity
-              href: flexible-server/security-configure-managed-identities-system-assigned.md
-            - name: Configure user assigned managed identities
-              href: flexible-server/security-configure-managed-identities-user-assigned.md
-        - name: Transport Layer Security (TLS)
-          items:
-            - name: Overview
-              href: flexible-server/security-tls.md
-            - name: Configure TLS
-              href: flexible-server/security-connect-tls.md
-            - name: Update trusted root certificate for Java
-              href: flexible-server/security-update-trusted-root-java.md
-        - name: Data protection
-          items:
-            - name: Data encryption overview
-              href: flexible-server/security-data-encryption.md
-            - name: Configure data encryption
-              href: flexible-server/security-configure-data-encryption.md
-            - name: Confidential computing
-              href: flexible-server/security-confidential-computing.md
-        - name: Firewall rules
-          href: flexible-server/security-firewall-rules.md
-        - name: Auditing, logging and Defender for cloud
-          items:
-            - name: Audit logs
-              href: flexible-server/security-audit.md
-            - name: Logs
-              href: flexible-server/concepts-logging.md
-            - name: Microsoft Defender for Cloud - OSS Databases
-              href: flexible-server/security-defender-for-cloud.md
-        - name: Compliance
-          href: flexible-server/security-compliance.md
-        - name: Azure Policy
-          href: flexible-server/security-azure-policy.md
-    - name: Generative AI
-      items:
-        - name: Overview
-          href: flexible-server/generative-ai-overview.md
-        - name: AI Agents
-          href: flexible-server/generative-ai-agents.md
-        - name: Microsoft Foundry Integration
-          href: flexible-server/generative-ai-foundry-integration.md
-        - name: Vector Databases
-          items:
-            - name: Using vector databases in Postgres
-              href: flexible-server/generative-ai-vector-databases.md
-        - name: AI Frameworks
-          items:
-            - name: Overview
-              href: flexible-server/generative-ai-frameworks.md
-            - name: Develop with LangChain
-              href: flexible-server/generative-ai-develop-with-langchain.md
-        - name: Semantic Search
-          href: flexible-server/generative-ai-semantic-search.md
-        - name: Recommendation System
-          href: flexible-server/generative-ai-recommendation-system.md
-        - name: Integrate Azure AI capabilities
-          href: flexible-server/how-to-integrate-azure-ai.md
-    - name: Developer experience
-      items:
-        - name: PostgreSQL extension for VS Code
-          href: extensions\vs-code-extension\overview.md
-        - name: Quickstart for PostgreSQL extension for VS Code
-          href: extensions\vs-code-extension\quickstart-connect.md
-        - name: Quickstart for PostgreSQL GitHub Copilot
-          href: extensions\vs-code-extension\quickstart-github-copilot.md
-        - name: Oracle to Azure Database for PostgreSQL schema conversion
-          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-    - name: Graph database
-      items:
-        - name: Overview Apache AGE for PostgreSQL
-          href: flexible-server/generative-ai-age-overview.md
-        - name: Performance Best Practices for Apache AGE
-          href: flexible-server/generative-ai-age-performance.md
-    - name: Integrations
-      items:
-        - name: Manage Azure resources with automation tasks
-          href: ./flexible-server/create-automation-tasks.md
-          displayName: Automation
-        - name: Power BI
-          href: flexible-server/connect-with-power-bi-desktop.md
-        - name: Azure Data Factory and Azure Synapse Analytics
-          items:
-            - name: Connect to Azure Data Factory and Azure Synapse Analytics
-              href: flexible-server/how-to-connect-data-factory.md
-            - name: Connect from Azure Data Factory via managed private endpoint
-              href: flexible-server/how-to-connect-data-factory-private-endpoint.md
-            - name: Copy activity
-              href: flexible-server/how-to-data-factory-copy-activity-azure.md
-            - name: Script activity
-              href: flexible-server/how-to-data-factory-script-activity-azure.md
+              href: configure-maintain/azure-pipelines-deploy-database-task.md
         - name: Microsoft Fabric
           items:
             - name: Fabric mirroring
-              href: flexible-server/concepts-fabric-mirroring.md
+              href: configure-maintain/concepts-fabric-mirroring.md
             - name: Copy activity
-              href: flexible-server/how-to-data-factory-copy-activity-fabric.md
+              href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
             - name: Script activity
-              href: flexible-server/how-to-data-factory-script-activity-fabric.md
-    - name: Troubleshooting
-      items:
-        - name: Troubleshooting guides
-          href: flexible-server/how-to-troubleshooting-guides.md
-        - name: Connection errors
-          items:
-            - name: Password authentication failed for user
-              href: flexible-server/troubleshoot-password-authentication-failed-for-user.md
-        - name: Functional troubleshooting
-          items:
-            - name: Troubleshoot CLI errors
-              href: flexible-server/how-to-troubleshoot-cli-errors.md
-            - name: Canceling statement due to conflict with recovery
-              href: flexible-server/troubleshoot-canceling-statement-due-to-conflict-with-recovery.md
-        - name: Performance troubleshooting
-          items:
-            - name: Troubleshoot high CPU utilization
-              href: flexible-server/how-to-high-cpu-utilization.md
-              displayName: High CPU Utilization
-            - name: Troubleshoot high memory utilization
-              href: flexible-server/how-to-high-memory-utilization.md
-              displayName: High Memory Utilization
-            - name: Troubleshoot high IO utilization
-              href: flexible-server/how-to-high-io-utilization.md
-              displayName: High IOPS Utilization
-            - name: Troubleshoot autovacuum
-              href: flexible-server/how-to-autovacuum-tuning.md
-              displayName: Autovacuum troubleshooting, tuning
-            - name: Full vacuum using pg_repack extension
-              href: flexible-server/how-to-perform-fullvacuum-pg-repack.md
-              displayName: Full vacuum using pg_repack extension
-            - name: Troubleshoot and identify slow running queries
-              href: flexible-server/how-to-identify-slow-queries.md
-              displayName: Troubleshoot and identify slow running queries
-            - name: Troubleshoot connections
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
-              displayName: Troubleshoot connections
-            - name: Optimize query statistics
-              href: flexible-server/how-to-optimize-query-stats-collection.md
-              displayName: Optimize query statistics
-            - name: Best practices for bulk data upload
-              href: flexible-server/how-to-bulk-load-data.md
-              displayName: Best practices for bulk data upload
-            - name: Best practices for pg_dump and restore
-              href: flexible-server/how-to-pgdump-restore.md
-              displayName: Best practices for pg_dump and restore
-    - name: Tutorials
-      items:
+              href: configure-maintain/how-to-data-factory-script-activity-fabric.md
         - name: Build with AKS
           items:
             - name: Deploy Python App on Kubernetes
-              href: flexible-server/tutorial-django-aks-database.md
+              href: configure-maintain/tutorial-django-aks-database.md
         - name: Build with App Services
           items:
             - name: Create a web app in a virtual network
-              href: flexible-server/tutorial-webapp-server-vnet.md
+              href: configure-maintain/tutorial-webapp-server-vnet.md
             - name: Deploy a Django app on App Service
               href: /azure/app-service/tutorial-python-postgresql-app
-        - name: Build with Elastic clusters
+        - name: Power management
           items:
-            - name: Design a multitenant database
-              href: flexible-server/tutorial-multitenant-database.md
-            - name: Design a real-time dashboard
-              href: flexible-server/tutorial-real-time-dashboard.md
-            - name: Design for microservices
-              href: flexible-server/tutorial-microservices.md
-    - name: How-to guides
+            - name: Start compute of a server
+              href: configure-maintain/how-to-start-server.md
+            - name: Stop compute of a server
+              href: configure-maintain/how-to-stop-server.md
+            - name: Restart PostgreSQL engine
+              href: configure-maintain/how-to-restart-server.md
+        - name: Prepay for reserved capacity
+          href: configure-maintain/concepts-reserved-pricing.md
+        - name: Azure Advisor recommendations
+          href: configure-maintain/concepts-azure-advisor-recommendations.md
+    - name: Backup and restore
       items:
-        - name: Configuration and Maintenance
-          items:
-            - name: Power management
-              items:
-                - name: Start compute of a server
-                  href: flexible-server/how-to-start-server.md
-                - name: Stop compute of a server
-                  href: flexible-server/how-to-stop-server.md
-                - name: Restart PostgreSQL engine
-                  href: flexible-server/how-to-restart-server.md
-            - name: Configure high availability
-              href: flexible-server/how-to-configure-high-availability.md
-            - name: Schedule maintenance
-              href: flexible-server/how-to-configure-scheduled-maintenance.md
-            - name: Enable deletion protection
-              href: flexible-server/how-to-enable-deletion-protection.md
-            - name: Server parameters
-              items:
-                - name: List all server parameters
-                  href: flexible-server/how-to-server-parameters-list-all.md
-                - name: List server parameters with modified values
-                  href: flexible-server/how-to-server-parameters-list-modified.md
-                - name: List read-write static server parameters
-                  href: flexible-server/how-to-server-parameters-list-read-write-static.md
-                - name: List read-write dynamic server parameters
-                  href: flexible-server/how-to-server-parameters-list-read-write-dynamic.md
-                - name: List read-only server parameters
-                  href: flexible-server/how-to-server-parameters-list-read-only.md
-                - name: Set the value of one or more server parameters
-                  href: flexible-server/how-to-server-parameters-set-value.md
-                - name: Revert one server parameter to its default
-                  href: flexible-server/how-to-server-parameters-revert-one-default.md
-                - name: Revert all server parameters to their default
-                  href: flexible-server/how-to-server-parameters-revert-all-default.md
-            - name: Major version upgrade
-              href: flexible-server/how-to-perform-major-version-upgrade.md
-        - name: Extensions and modules
-          items:
-            - name: Allow extensions
-              href: extensions/how-to-allow-extensions.md
-            - name: Load libraries
-              href: extensions/how-to-load-libraries.md
-            - name: Create extensions
-              href: extensions/how-to-create-extensions.md
-            - name: Drop extensions
-              href: extensions/how-to-drop-extensions.md
-            - name: Update extensions
-              href: extensions/how-to-update-extensions.md
-            - name: View installed extensions
-              href: extensions/how-to-view-installed-extensions.md
-            - name: Azure Storage (pg_azure_storage)
-              items:
-                - name: Configure Azure Storage extension
-                  href: flexible-server/how-to-configure-azure-storage-extension.md
-                - name: Quickstart examples
-                  href: flexible-server/quickstart-azure-storage-extension.md
-                - name: Troubleshoot errors
-                  href: flexible-server/troubleshoot-azure-storage-extension.md
-                - name: Reference
-                  href: flexible-server/reference-azure-storage-extension.md
-        - name: Monitoring
-          items:
-            - name: Download PostgreSQL and upgrade logs
-              href: flexible-server/how-to-configure-server-logs.md
-            - name: Create alerts on metrics using portal
-              href: flexible-server/how-to-alert-on-metrics.md
-            - name: Configure and access logs
-              href: flexible-server/how-to-configure-and-access-logs.md
-            - name: Intelligent performance
-              items:
-                - name: Index tuning
-                  items:
-                    - name: Configure index tuning
-                      href: flexible-server/how-to-configure-index-tuning.md
-                    - name: Use index recommendations
-                      href: flexible-server/how-to-get-and-apply-recommendations-from-index-tuning.md
-                - name: Intelligent tuning
-                  items:
-                    - name: Azure portal
-                      href: flexible-server/how-to-enable-intelligent-performance-portal.md
-                    - name: Azure CLI
-                      href: flexible-server/how-to-enable-intelligent-performance-cli.md
-        - name: Networking
-          items:
-            - name: Elastic clusters
-              items:
-                - name: Configuring maximum connections
-                  href: flexible-server/how-to-network-elastic-clusters-default-maximum-connections.md
-            - name: Public access (allowed IP addresses)
-              items:
-                - name: Enable public access
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-enable-public-access.md
-                - name: Disable public access
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-disable-public-access.md
-                - name: Add firewall rules
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
-                - name: Delete firewall rules
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
-                - name: Add private endpoint connections
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
-                - name: Delete private endpoint connections
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
-                - name: Approve private endpoint connections
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
-                - name: Reject private endpoint connections
-                  href: flexible-server/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-            - name: Private access (VNET Integration)
-              items:
-                - name: Change private DNS zone
-                  href: flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
-            - name: Encrypted connectivity
-              items:
-                - name: Encrypted connectivity using TLS/SSL
-                  href: flexible-server/how-to-connect-tls-ssl.md
-                - name: Update application client certificates
-                  href: flexible-server/how-to-update-client-certificates-java.md
-        - name: Scaling
-          items:
-            - name: Scale out
-              href: flexible-server/how-to-scale-out.md          
-            - name: Scale compute
-              href: flexible-server/how-to-scale-compute.md
-            - name: Scale storage size
-              href: flexible-server/how-to-scale-storage-size.md
-            - name: Scale storage performance
-              href: flexible-server/how-to-scale-storage-performance.md
-            - name: Configure storage autogrow
-              href: flexible-server/how-to-auto-grow-storage.md
-            - name: Read replicas
-              items:
-                - name: Create a read replica
-                  href: flexible-server/how-to-create-read-replica.md
-                - name: Create virtual endpoints
-                  href: flexible-server/how-to-create-virtual-endpoints.md
-                - name: Update virtual endpoints
-                  href: flexible-server/how-to-update-virtual-endpoints.md
-                - name: Show virtual endpoints
-                  href: flexible-server/how-to-show-virtual-endpoints.md
-                - name: Delete virtual endpoints
-                  href: flexible-server/how-to-delete-virtual-endpoints.md
-                - name: Switch over read replica to primary
-                  href: flexible-server/how-to-switch-over-replica-to-primary.md
-                - name: Promote read replica to standalone server
-                  href: flexible-server/how-to-promote-replica-to-standalone.md
-                - name: Delete a read replica
-                  href: flexible-server/how-to-delete-read-replica.md
+        - name: Overview
+          href: backup-restore/concepts-business-continuity.md
         - name: Backup and restore
+          href: backup-restore/concepts-backup-restore.md
+        - name: Geo-disaster recovery
+          href: backup-restore/concepts-geo-disaster-recovery.md
+        - name: Backup
           items:
-            - name: Backup
-              items:
-                - name: Perform on-demand backups
-                  href: flexible-server/how-to-perform-backups.md
-                - name: List all backups
-                  href: flexible-server/how-to-list-all-backups.md
-                - name: Delete on-demand backups
-                  href: flexible-server/how-to-delete-backups.md
-            - name: Restore
-              items:
-                - name: Restore to latest restore point
-                  href: flexible-server/how-to-restore-latest-restore-point.md
-                - name: Restore to custom restore point
-                  href: flexible-server/how-to-restore-custom-restore-point.md
-                - name: Restore to full backup (fast restore)
-                  href: flexible-server/how-to-restore-full-backup.md
-                - name: Restore to paired region (geo-restore)
-                  href: flexible-server/how-to-restore-paired-region.md
-                - name: Restore a dropped server
-                  href: flexible-server/how-to-restore-dropped-server.md
-        - name: Decommissioning and relocation
+            - name: Perform on-demand backups
+              href: backup-restore/how-to-perform-backups.md
+            - name: List all backups
+              href: backup-restore/how-to-list-all-backups.md
+            - name: Delete on-demand backups
+              href: backup-restore/how-to-delete-backups.md
+        - name: Restore
           items:
-          - name: Delete a server
-            href: flexible-server/how-to-delete-server.md
-          - name: Relocate a server
-            href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+            - name: Restore to latest restore point
+              href: backup-restore/how-to-restore-latest-restore-point.md
+            - name: Restore to custom restore point
+              href: backup-restore/how-to-restore-custom-restore-point.md
+            - name: Restore to full backup (fast restore)
+              href: backup-restore/how-to-restore-full-backup.md
+            - name: Restore to paired region (geo-restore)
+              href: backup-restore/how-to-restore-paired-region.md
+            - name: Restore a dropped server
+              href: backup-restore/how-to-restore-dropped-server.md
+        - name: Backup and restore
+          href: backup-restore/concepts-backup-restore.md
+        - name: Geo-disaster recovery
+          href: backup-restore/concepts-geo-disaster-recovery.md
+        - name: Recovery from a dropped server
+          href: backup-restore/how-to-restore-dropped-server.md
+    - name: Reliability
+      items:
+        - name: Configure high availability
+          href: high-availability/how-to-configure-high-availability.md
+        - name: Schedule maintenance
+          href: configure-maintain/how-to-configure-scheduled-maintenance.md
+        - name: Enable deletion protection
+          href: configure-maintain/how-to-enable-deletion-protection.md
+        - name: Monitor High-availability
+          href: high-availability/how-to-monitor-high-availability.md
+    - name: Read replicas
+      items:
+        - name: Overview
+          href: read-replica/concepts-read-replicas.md
+          displayName: replication, read replica
+        - name: Geo-Replication
+          href: read-replica/concepts-read-replicas-geo.md
+        - name: Promote read replicas
+          href: read-replica/concepts-read-replicas-promote.md
+        - name: Virtual endpoints
+          href: read-replica/concepts-read-replicas-virtual-endpoints.md
+        - name: Create a read replica
+          items:
+            - name: Create a read replica
+              href: read-replica/how-to-create-read-replica.md
+            - name: Create virtual endpoints
+              href: read-replica/how-to-create-virtual-endpoints.md
+            - name: Update virtual endpoints
+              href: read-replica/how-to-update-virtual-endpoints.md
+            - name: Show virtual endpoints
+              href: read-replica/how-to-show-virtual-endpoints.md
+            - name: Delete virtual endpoints
+              href: read-replica/how-to-delete-virtual-endpoints.md
+            - name: Switch over read replica to primary
+              href: read-replica/how-to-switch-over-replica-to-primary.md
+            - name: Promote read replica to standalone server
+              href: read-replica/how-to-promote-replica-to-standalone.md
+            - name: Delete a read replica
+              href: read-replica/how-to-delete-read-replica.md
+- name: Connect and query
+  items:
+    - name: Connect to a server in virtual network
+      href: connectivity/quickstart-create-connect-server-vnet.md
+    - name: Azure CLI
+      href: connectivity/connect-azure-cli.md
+    - name: Python
+      href: connectivity/connect-python.md
+    - name: Java
+      href: connectivity/connect-java.md
+    - name: .NET
+      href: connectivity/connect-csharp.md
+    - name: Go
+      href: connectivity/connect-go.md
+    - name: PHP
+      href: connectivity/connect-php.md
+    - name: Connection libraries
+      href: connectivity/concepts-connection-libraries.md
+    - name: Connection resilience
+      href: troubleshoot/concepts-connectivity.md
+    - name: Connection pooling best practices
+      href: connectivity/concepts-connection-pooling-best-practices.md
+- name: Networking
+  items:
+  - name: Networking with public access (allowed IP addresses)
+    href: network/concepts-networking-public.md
+  - name: Networking with private access (virtual network Integration)
+    href: network/concepts-networking-private.md
+  - name: Networking with Private Endpoint
+    href: network/concepts-networking-private-link.md
+  - name: Secure connectivity with SSL and TLS
+    href: security/security-tls.md
+  - name: Public access (allowed IP addresses)
+    items:
+      - name: Enable public access
+        href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+      - name: Disable public access
+        href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+      - name: Add firewall rules
+        href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+      - name: Delete firewall rules
+        href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+      - name: Add private endpoint connections
+        href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+      - name: Delete private endpoint connections
+        href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+      - name: Approve private endpoint connections
+        href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+      - name: Reject private endpoint connections
+        href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+  - name: Private access (VNET Integration)
+    items:
+      - name: Change private DNS zone
+        href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+- name: Security
+  items:
+  - name: Secure your Azure Database for PostgreSQL
+    href: security/security-overview.md
+  - name: Authentication and access control
+    items:
+      - name: Microsoft Entra authentication
+        href: security/security-entra-concepts.md
+      - name: Configure Microsoft Entra integration
+        href: security/security-entra-configure.md
+      - name: Manage database users
+        href: security/security-manage-database-users.md
+      - name: Access control
+        href: security/security-access-control.md
+      - name: Connect applications with a managed identity
+        href: security/security-connect-with-managed-identity.md
+      - name: Connect local database users with SCRAM authentication
+        href: security/security-connect-scram.md
+      - name: Reset local administrator password
+        href: security/security-reset-admin-password.md
+  - name: Database server identity
+    items:
+      - name: Overview
+        href: security/security-managed-identity-overview.md
+      - name: Configure system assigned managed identity
+        href: security/security-configure-managed-identities-system-assigned.md
+      - name: Configure user assigned managed identities
+        href: security/security-configure-managed-identities-user-assigned.md
+  - name: Transport Layer Security (TLS)
+    items:
+      - name: Overview
+        href: security/security-tls.md
+      - name: Configure TLS
+        href: security/security-connect-tls.md
+      - name: Update trusted root certificate for Java
+        href: security/security-update-trusted-root-java.md
+  - name: Data protection
+    items:
+      - name: Data encryption overview
+        href: security/security-data-encryption.md
+      - name: Configure data encryption
+        href: security/security-configure-data-encryption.md
+      - name: Confidential computing
+        href: security/security-confidential-computing.md
+  - name: Firewall rules
+    href: security/security-firewall-rules.md
+  - name: Auditing, logging and Defender for cloud
+    items:
+      - name: Audit logs
+        href: security/security-audit.md
+      - name: Logs
+        href: monitor/concepts-logging.md
+      - name: Microsoft Defender for Cloud - OSS Databases
+        href: security/security-defender-for-cloud.md
+  - name: Compliance
+    href: security/security-compliance.md
+  - name: Azure Policy
+    href: security/security-azure-policy.md
+  - name: Encrypted connectivity
+    items:
+      - name: Encrypted connectivity using TLS/SSL
+        href: security/security-connect-tls.md
+      - name: Update application client certificates
+        href: security/security-update-trusted-root-java.md
 - name: Migrate to Azure Database for PostgreSQL
   items:
     - name: Migration Service for Azure Database for PostgreSQL
@@ -808,6 +375,360 @@
           href: migrate/best-practices-oracle-to-postgresql-checklist.md
         - name: Migrate with Ora2Pg
           href: migrate/how-to-migrate-oracle-ora2pg.md
+- name: Integration
+  items:
+    - name: Manage Azure resources with automation tasks
+      href: ./flexible-server/create-automation-tasks.md
+      displayName: Automation
+    - name: Power BI
+      href: integration/connect-with-power-bi-desktop.md
+    - name: Azure Data Factory and Azure Synapse Analytics
+      items:
+        - name: Connect to Azure Data Factory and Azure Synapse Analytics
+          href: integration/how-to-connect-data-factory.md
+        - name: Connect from Azure Data Factory via managed private endpoint
+          href: integration/how-to-connect-data-factory-private-endpoint.md
+        - name: Copy activity
+          href: integration/how-to-data-factory-copy-activity-azure.md
+        - name: Script activity
+          href: integration/how-to-data-factory-script-activity-azure.md
+- name: Monitor
+  items:
+    - name: Monitor and tune overview
+      href: monitor/concepts-monitoring.md
+      displayName: monitor, metrics
+    - name: Workbooks
+      href: monitor/concepts-workbooks.md
+    - name: Logs
+      href: monitor/concepts-logging.md
+      displayName: monitor, server logs
+    - name: Intelligent performance
+      items:
+        - name: Query store overview
+          href: monitor/concepts-query-store.md
+          displayName: performance, optimize, query store
+        - name: Query store usage scenarios
+          href: monitor/concepts-query-store-scenarios.md
+          displayName: query store, performance, optimize
+        - name: Query store best practices
+          href: monitor/concepts-query-store-best-practices.md
+        - name: Query Performance Insight
+          href: monitor/concepts-query-performance-insight.md
+        - name: Index tuning
+          href: monitor/concepts-index-tuning.md
+        - name: Intelligent tuning
+          href: monitor/concepts-intelligent-tuning.md
+    - name: Download PostgreSQL and upgrade logs
+      href: monitor/how-to-configure-server-logs.md
+    - name: Create alerts on metrics using portal
+      href: monitor/how-to-alert-on-metrics.md
+    - name: Configure and access logs
+      href: monitor/how-to-configure-and-access-logs.md
+    - name: Intelligent performance
+      items:
+        - name: Index tuning
+          items:
+            - name: Configure index tuning
+              href: monitor/how-to-configure-index-tuning.md
+            - name: Use index recommendations
+              href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
+        - name: Intelligent tuning
+          items:
+            - name: Azure portal
+              href: monitor/how-to-enable-intelligent-performance-portal.md
+            - name: Azure CLI
+              href: monitor/how-to-enable-intelligent-performance-cli.md
+- name: Elastic clusters
+  items:
+    - name: Overview
+      href: elastic-clusters/concepts-elastic-clusters.md
+    - name: Sharding models
+      href: elastic-clusters/concepts-elastic-clusters-sharding-models.md
+    - name: Table types
+      href: elastic-clusters/concepts-elastic-clusters-table-types.md
+    - name: Limitations
+      href: elastic-clusters/concepts-elastic-clusters-limitations.md
+    - name: Configuring maximum connections
+      href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
+    - name: Create an elastic cluster
+      items:
+        - name: Azure portal
+          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
+        - name: Bicep
+          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
+        - name: ARM template
+          displayName: Azure Resource Manager
+          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
+    - name: Build with Elastic clusters
+      items:
+        - name: Design a multitenant database
+          href: configure-maintain/tutorial-multitenant-database.md
+        - name: Design a real-time dashboard
+          href: configure-maintain/tutorial-real-time-dashboard.md
+        - name: Design for microservices
+          href: configure-maintain/tutorial-microservices.md
+- name: Scaling
+  items:
+    - name: Scaling resources
+      href: scale/concepts-scaling-resources.md
+    - name: Scale out
+      href: scale/how-to-scale-out.md          
+    - name: Scale compute
+      href: scale/how-to-scale-compute.md
+    - name: Scale storage size
+      href: scale/how-to-scale-storage-size.md
+    - name: Scale storage performance
+      href: scale/how-to-scale-storage-performance.md
+    - name: Configure storage autogrow
+      href: scale/how-to-auto-grow-storage.md
+- name: Azure AI
+  items:
+    - name: Overview
+      href: azure-ai/generative-ai-azure-overview.md
+    - name: Azure OpenAI
+      href: azure-ai/generative-ai-azure-openai.md
+    - name: Azure Cognitive Services
+      href: azure-ai/generative-ai-azure-cognitive.md
+    - name: Azure Machine Learning Services
+      href: azure-ai/generative-ai-azure-machine-learning.md
+    - name: Enable Managed Identity
+      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+    - name: Introducing Semantic Operators
+      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+    - name: AI Agents
+      href: azure-ai/generative-ai-agents.md
+    - name: Microsoft Foundry Integration
+      href: azure-ai/generative-ai-foundry-integration.md
+    - name: Vector Databases
+      items:
+        - name: Using vector databases in Postgres
+          href: azure-ai/generative-ai-vector-databases.md
+        - name: AI Frameworks
+          items:
+            - name: Overview
+              href: azure-ai/generative-ai-frameworks.md
+            - name: Develop with LangChain
+              href: azure-ai/generative-ai-develop-with-langchain.md
+        - name: Semantic Search
+          href: azure-ai/generative-ai-semantic-search.md
+        - name: Recommendation System
+          href: azure-ai/generative-ai-recommendation-system.md
+        - name: Integrate Azure AI capabilities
+          href: integration/how-to-integrate-azure-ai.md
+    - name: Graph database
+      items:
+        - name: Overview Apache AGE for PostgreSQL
+          href: azure-ai/generative-ai-age-overview.md
+        - name: Performance Best Practices for Apache AGE
+          href: azure-ai/generative-ai-age-performance.md
+
+- name: Extensions
+  items:
+    - name: Overview
+      href: extensions/concepts-extensions.md
+    - name: Special considerations
+      href: extensions/concepts-extensions-considerations.md
+    - name: List by name
+      href: extensions/concepts-extensions-versions.md
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
+    - name: Possible errors when managing extensions
+      href: extensions/errors-extensions.md
+    - name: Allow extensions
+      href: extensions/how-to-allow-extensions.md
+    - name: Load libraries
+      href: extensions/how-to-load-libraries.md
+    - name: Create extensions
+      href: extensions/how-to-create-extensions.md
+    - name: Drop extensions
+      href: extensions/how-to-drop-extensions.md
+    - name: Update extensions
+      href: extensions/how-to-update-extensions.md
+    - name: View installed extensions
+      href: extensions/how-to-view-installed-extensions.md
+    - name: Azure Storage (pg_azure_storage)
+      items:
+        - name: Overview
+          href: extensions/concepts-storage.md
+        - name: Premium SSD
+          href: configure-maintain/concepts-storage-premium-ssd.md  
+        - name: Premium SSD v2
+          href: configure-maintain/concepts-storage-premium-ssd-v2.md  
+        - name: Migrate from Premium SSD to Premium SSD v2
+          href: configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2.md
+        - name: Configure Azure Storage extension
+          href: extensions/how-to-configure-azure-storage-extension.md
+        - name: Quickstart examples
+          href: extensions/quickstart-azure-storage-extension.md
+        - name: Troubleshoot errors
+          href: troubleshoot/troubleshoot-azure-storage-extension.md
+        - name: Reference
+          href: extensions/reference-azure-storage-extension.md
+    - name: In-database Embeddings (azure_local_ai)
+      items:
+        - name: Overview
+          href: extensions/azure-local-ai.md
+        - name: Vector indexing (pg_diskann)
+          items:
+            - name: Overview
+              href: extensions/how-to-use-pgdiskann.md
+            - name: Vector similarity search (pgvector)
+              items:
+                - name: Basics of pgvector
+                  href: extensions/how-to-use-pgvector.md
+                  displayName: vector databases
+                - name: Optimize performance when using pgvector
+                  href: extensions/how-to-optimize-performance-pgvector.md
+                  displayName: vector databases
+        - name: Partitioning
+          items:
+            - name: Partitioning using pg_partman
+              href: configure-maintain/how-to-use-pg-partman.md
+              displayName: pg_partman
+    - name: Developer experience
+      items:
+        - name: PostgreSQL extension for VS Code
+          href: extensions\vs-code-extension\overview.md
+        - name: Quickstart for PostgreSQL extension for VS Code
+          href: extensions\vs-code-extension\quickstart-connect.md
+        - name: Quickstart for PostgreSQL GitHub Copilot
+          href: extensions\vs-code-extension\quickstart-github-copilot.md
+        - name: Oracle to Azure Database for PostgreSQL schema conversion
+          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+- name: Server parameters
+  items:
+    - name: Overview
+      href: server-parameters/concepts-server-parameters.md
+    - name: Autovacuum
+      href: server-parameters/param-autovacuum.md?pivots=postgresql-17
+    - name: Client Connection Defaults / Locale and Formatting
+      href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
+    - name: Client Connection Defaults / Other Defaults
+      href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
+    - name: Client Connection Defaults / Shared Library Preloading
+      href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
+    - name: Client Connection Defaults / Statement Behavior
+      href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
+    - name: Connections and Authentication / Authentication
+      href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
+    - name: Connections and Authentication / Connection Settings
+      href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
+    - name: Connections and Authentication / SSL
+      href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
+    - name: Connections and Authentication / TCP Settings
+      href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
+    - name: Customized Options
+      href: server-parameters/param-customized-options.md?pivots=postgresql-17
+    - name: Developer Options
+      href: server-parameters/param-developer-options.md?pivots=postgresql-17
+    - name: Error Handling
+      href: server-parameters/param-error-handling.md?pivots=postgresql-17
+    - name: File Locations
+      href: server-parameters/param-file-locations.md?pivots=postgresql-17
+    - name: Intelligent tuning
+      href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
+    - name: Lock Management
+      href: server-parameters/param-lock-management.md?pivots=postgresql-17
+    - name: Metrics
+      href: server-parameters/param-metrics.md?pivots=postgresql-17
+    - name: Migration
+      href: server-parameters/param-migration.md?pivots=postgresql-17
+    - name: PgBouncer
+      href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
+    - name: Preset Options
+      href: server-parameters/param-preset-options.md?pivots=postgresql-17
+    - name: Process Title
+      href: server-parameters/param-process-title.md?pivots=postgresql-17
+    - name: Query Tuning / Genetic Query Optimizer
+      href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
+    - name: Query Tuning / Other Planner Options
+      href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
+    - name: Query Tuning / Planner Cost Constants
+      href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
+    - name: Query Tuning / Planner Method Configuration
+      href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
+    - name: Replication / Master Server
+      href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
+    - name: Replication / Primary Server
+      href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
+    - name: Replication / Sending Servers
+      href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
+    - name: Replication / Standby Servers
+      href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
+    - name: Replication / Subscribers
+      href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
+    - name: Reporting and Logging / What to Log
+      href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
+    - name: Reporting and Logging / When to Log
+      href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
+    - name: Reporting and Logging / Where to Log
+      href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
+    - name: Resource Usage / Asynchronous Behavior
+      href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
+    - name: Resource Usage / Background Writer
+      href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
+    - name: Resource Usage / Cost-Based Vacuum Delay
+      href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
+    - name: Resource Usage / Disk
+      href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
+    - name: Resource Usage / Kernel Resources
+      href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
+    - name: Resource Usage / Memory
+      href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
+    - name: Statistics / Cumulative Query and Index Statistics
+      href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
+    - name: Statistics / Monitoring
+      href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
+    - name: Statistics / Query and Index Statistics Collector
+      href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
+    - name: TLS
+      href: server-parameters/param-tls.md?pivots=postgresql-17
+    - name: Version and Platform Compatibility / Other Platforms and Clients
+      href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
+    - name: Version and Platform Compatibility / Previous PostgreSQL Versions
+      href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Archive Recovery
+      href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Archiving
+      href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Checkpoints
+      href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Recovery Target
+      href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Recovery
+      href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
+    - name: Write-Ahead Log / Settings
+      href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
+    - name: Use server parameters
+      items:
+        - name: List all server parameters
+          href: server-parameters/how-to-server-parameters-list-all.md
+        - name: List server parameters with modified values
+          href: server-parameters/how-to-server-parameters-list-modified.md
+        - name: List read-write static server parameters
+          href: server-parameters/how-to-server-parameters-list-read-write-static.md
+        - name: List read-write dynamic server parameters
+          href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
+        - name: List read-only server parameters
+          href: server-parameters/how-to-server-parameters-list-read-only.md
+        - name: Set the value of one or more server parameters
+          href: server-parameters/how-to-server-parameters-set-value.md
+        - name: Revert one server parameter to its default
+          href: server-parameters/how-to-server-parameters-revert-one-default.md
+        - name: Revert all server parameters to their default
+          href: server-parameters/how-to-server-parameters-revert-all-default.md
+- name: Release notes
+  items:
+    - name: Release notes
+      href: release-notes/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/2025-october.md
+    - name: API release notes
+      href: release-notes/release-notes-api.md
+    - name: CLI release notes
+      href: release-notes/release-notes-cli.md
+    - name: Try for free
+      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Samples
   items:
     - name: Azure CLI samples
@@ -815,17 +736,68 @@
         - name: Samples overview
           href: sample-scripts-azure-cli.md
         - name: Create a server and firewall rule
-          href: ./scripts/sample-create-server-and-firewall-rule.md
+          href: ./samples/sample-create-server-and-firewall-rule.md
         - name: Create server with virtual network rule
-          href: ./scripts/sample-create-server-with-vnet-rule.md
+          href: ./samples/sample-create-server-with-vnet-rule.md
         - name: Scale a server
-          href: ./scripts/sample-scale-server-up-or-down.md
+          href: ./samples/sample-scale-server-up-or-down.md
         - name: Change server configurations
-          href: ./scripts/sample-change-server-configuration.md
+          href: ./samples/sample-change-server-configuration.md
         - name: Restore a server
-          href: ./scripts/sample-point-in-time-restore.md
+          href: ./samples/sample-point-in-time-restore.md
         - name: Manipulate with server logs
-          href: ./scripts/sample-server-logs.md
+          href: ./samples/sample-server-logs.md
+- name: Troubleshooting
+  items:
+    - name: Troubleshooting guides
+      href: troubleshoot/how-to-troubleshooting-guides.md
+    - name: Connection errors
+      items:
+        - name: Password authentication failed for user
+          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
+    - name: Functional troubleshooting
+      items:
+        - name: Troubleshoot CLI errors
+          href: troubleshoot/how-to-troubleshoot-cli-errors.md
+        - name: Canceling statement due to conflict with recovery
+          href: troubleshoot/troubleshoot-canceling-statement-due-to-conflict-with-recovery.md
+    - name: Performance troubleshooting
+      items:
+        - name: Troubleshoot high CPU utilization
+          href: troubleshoot/how-to-high-cpu-utilization.md
+          displayName: High CPU Utilization
+        - name: Troubleshoot high memory utilization
+          href: troubleshoot/how-to-high-memory-utilization.md
+          displayName: High Memory Utilization
+        - name: Troubleshoot high IO utilization
+          href: troubleshoot/how-to-high-io-utilization.md
+          displayName: High IOPS Utilization
+        - name: Troubleshoot autovacuum
+          href: troubleshoot/how-to-autovacuum-tuning.md
+          displayName: Autovacuum troubleshooting, tuning
+        - name: Full vacuum using pg_repack extension
+          href: troubleshoot/how-to-perform-fullvacuum-pg-repack.md
+          displayName: Full vacuum using pg_repack extension
+        - name: Troubleshoot and identify slow running queries
+          href: troubleshoot/how-to-identify-slow-queries.md
+          displayName: Troubleshoot and identify slow running queries
+        - name: Troubleshoot connections
+          href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
+          displayName: Troubleshoot connections
+        - name: Optimize query statistics
+          href: troubleshoot/how-to-optimize-query-stats-collection.md
+          displayName: Optimize query statistics
+        - name: Best practices for bulk data upload
+          href: troubleshoot/how-to-bulk-load-data.md
+          displayName: Best practices for bulk data upload
+        - name: Best practices for pg_dump and restore
+          href: troubleshoot/how-to-pgdump-restore.md
+          displayName: Best practices for pg_dump and restore
+    - name: Troubleshooting guides
+      href: troubleshoot/concepts-troubleshooting-guides.md
+    - name: Logical replication and logical decoding
+      href: configure-maintain/concepts-logical.md
+      displayName: logical decoding, logical replication
 - name: Reference
   items:
     - name: Azure CLI

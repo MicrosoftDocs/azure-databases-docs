@@ -11,9 +11,6 @@ ms.topic: concept-article
 
 # Azure Database for PostgreSQL migration partners
 
-
-[!INCLUDE [azure-database-for-postgresql-single-server-deprecation](../includes/azure-database-for-postgresql-single-server-deprecation.md)]
-
 To broadly support your Azure Database for PostgreSQL solution, you can choose from a wide variety of industry-leading partners and tools. This article highlights Microsoft partners with migration solutions that support Azure Database for PostgreSQL.
 
 ## Migration partners
