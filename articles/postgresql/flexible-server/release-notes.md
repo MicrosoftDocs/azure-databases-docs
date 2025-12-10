@@ -305,7 +305,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - Support for [**PostgreSQL version 14**](concepts-supported-versions.md).
 - Support for [minor versions](concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
-- Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
+- Support for [Same-zone high availability](/azure/reliability/reliability-postgresql-flexible-server) deployment option.
 - Support for choosing [standby availability zone](how-to-manage-high-availability-portal.md) when deploying zone-redundant high availability.
 - Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
 - Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>
