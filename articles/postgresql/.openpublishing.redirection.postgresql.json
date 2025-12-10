@@ -3763,32 +3763,42 @@
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-point-in-time-restore.md",
             "redirect_url": "articles/postgresql/samples/sample-point-in-time-restore",
-            "redirect_document_id": false
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-scale-server-up-or-down.md",
             "redirect_url": "articles/postgresql/samples/sample-scale-server-up-or-down",
-            "redirect_document_id": false
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-server-logs.md",
             "redirect_url": "articles/postgresql/samples/sample-server-logs",
-            "redirect_document_id": false
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-change-server-configuration.md",
             "redirect_url": "articles/postgresql/samples/sample-change-server-configuration",
-            "redirect_document_id": false
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-create-server-and-firewall-rule.md",
             "redirect_url": "articles/postgresql/samples/sample-create-server-and-firewall-rule",
-            "redirect_document_id": false
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-create-server-with-vnet-rule.md",
             "redirect_url": "articles/postgresql/samples/sample-create-server-with-vnet-rule",
-            "redirect_document_id": false
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-parameters-list-all.md",
+            "redirect_url": "articles/postgresql/server-parameters/how-to-server-parameters-list-all",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/security-manage-entra-users.md",
+            "redirect_url": "articles/postgresql/security/security-manage-entra-users",
+            "redirect_document_id": true
         }
     ]
 }
