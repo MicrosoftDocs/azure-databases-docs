@@ -40,7 +40,7 @@ The service performs automated patching of the underlying hardware, OS, and data
 
 ## Automatic backups
 
-Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. All backups are encrypted by using AES 256-bit encryption. For more information, see [Backups](../backup-restore/concepts-backup-restore.md).
+Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. All backups are encrypted by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
 
 ## Adjust performance and scale within seconds
 
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL has built-in performance monitoring and alerting f
 
 ## Built-in PgBouncer
 
-An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
+An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
 
 ## Azure regions
 
@@ -74,7 +74,7 @@ $ New zone-redundant high availability deployments are temporarily blocked in th
 
 $ New server deployments are temporarily blocked in these regions. The service fully supports already provisioned servers.
 
-** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](../reliability/how-to-configure-high-availability.md#limitations-and-considerations).
+** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](reliability/how-to-configure-high-availability.md#limitations-and-considerations).
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
 
@@ -91,8 +91,8 @@ $ New server deployments are temporarily blocked in these regions. The service f
 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
 
-- **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](../migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](../howto-migrate-using-dump-and-restore.md) for details.
+- **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](migrate/migration-service/overview-migration-service-postgresql.md)
+- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md) for details.
 
 ## Feedback and support
 
@@ -104,4 +104,4 @@ If you have questions or suggestions about Azure Database for PostgreSQL, you ca
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL](quickstart-create-server.md)
+- [Create an Azure Database for PostgreSQL](configure-maintain/quickstart-create-server.md)

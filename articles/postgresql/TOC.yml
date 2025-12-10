@@ -128,8 +128,6 @@
           href: backup-restore/concepts-backup-restore.md
         - name: Geo-disaster recovery
           href: backup-restore/concepts-geo-disaster-recovery.md
-        - name: High availability
-          href: high-availability/concepts-high-availability.md
         - name: Point-in-time recovery
           href: backup-restore/concepts-point-in-time-recovery.md
         - name: Recovery from a dropped server
