@@ -16,7 +16,7 @@ Azure Database for PostgreSQL currently supports the following major versions.
 
 ## PostgreSQL version 18
 
-PostgreSQL 18 is now available on Azure Database for PostgreSQL flexible server. For a list of new features and improvements, refer to the [PostgreSQL 18 release notes](https://www.postgresql.org/docs/18/release-18.html).
+The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-version-18.md)]**. Refer to the [!INCLUDE [minor-versions-docs-18](includes/minor-version-docs-18.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
 
 ### Limitations
 
@@ -43,11 +43,11 @@ The current minor release is **[!INCLUDE [minor-versions-14](includes/minor-vers
 
 The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-version-13.md)]**. Refer to the [!INCLUDE [minor-versions-docs-13](includes/minor-version-docs-13.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
-## PostgreSQL version 12 (Extended Support )
+## PostgreSQL version 12 (Extended Support)
 
 The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release.
 
-## PostgreSQL version 11 (Extended Support )
+## PostgreSQL version 11 (Extended Support)
 
 The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release.
 
