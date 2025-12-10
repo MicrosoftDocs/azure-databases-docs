@@ -74,7 +74,7 @@ $ New zone-redundant high availability deployments are temporarily blocked in th
 
 $ New server deployments are temporarily blocked in these regions. The service fully supports already provisioned servers.
 
-** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](reliability/how-to-configure-high-availability.md#limitations-and-considerations).
+** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](high-availability/how-to-configure-high-availability.md#limitations-and-considerations).
 
 (*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
 
