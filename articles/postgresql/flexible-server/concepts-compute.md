@@ -64,36 +64,74 @@ The detailed specifications of the available server types are as follows:
 | **General Purpose** | | | | |
 | D2s_v3 / D2ds_v4 | 2 | 8 GiB | 3,200 | 48 MiB/sec |
 | D2ds_v5 / D2ads_v5 | 2 | 8 GiB | 3,750 | 85 MiB/sec |
+| D2ads_v6 | 2 | 8 GiB | 4000 | 90 MiB/sec |
+| D2ds_v6 | 2 | 8 GiB |4167 | 124 MiB/sec |
 | D4s_v3 / D4ds_v4 | 4 | 16 GiB | 6,400 | 96 MiB/sec |
 | D4ds_v5 / D4ads_v5 | 4 | 16 GiB | 6,400 | 145 MiB/sec |
+| D4ads_v6 | 4 | 16 GiB | 7600 | 180 MiB/sec |
+| D4ds_v6 | 4 | 16 GiB | 8333 | 248 MiB/sec |
 | D8s_v3 / D8ds_v4 | 8 | 32 GiB | 12,800 | 192 MiB/sec |
 | D8ds_v5 / D8ads_v5 | 8 | 32 GiB | 12,800 | 290 MiB/sec |
+| D8ads_v6 | 8 | 32 GiB | 15200 | 360 MiB/sec |
+| D8ds_v6 | 8 | 32 GiB | 16667 | 496 MiB/sec |
 | D16s_v3 / D16ds_v4 | 16 | 64 GiB | 25,600 | 384 MiB/sec |
 | D16ds_v5 / D16ds_v5 | 16 | 64 GiB | 25,600 | 600 MiB/sec |
+| D16ads_v6 | 16 | 64 GiB | 30400 | 720 MiB/sec |
+| D16ds_v6 | 16 | 64 GiB | 33333 | 992 MiB/sec |
 | D32s_v3 / D32ds_v4 | 32 | 128 GiB | 51,200 | 768 MiB/sec |
 | D32ds_v5 / D32ads_v5 | 32 | 128 GiB | 51,200 | 865 MiB/sec |
+| D32ads_v6 | 32 | 128 GiB | 57600 | 1200 MiB/sec |
+| D32ds_v6 | 32 | 128 GiB | 66667 | 1200 MiB/sec |
 | D48s_v3 / D48ds_v4 | 48 | 192 GiB | 76,800 | 1152 MiB/sec |
 | D48ds_v5 / D48ads_v5 | 48 | 192 GiB | 76,800 | 1200 MiB/sec |
+| D48ads_v6 | 48 | 192 GiB | 80000 | 1200 MiB/sec |
+| D48ds_v6 | 48 | 192 GiB | 80000 | 1200 MiB/sec |
 | D64s_v3 / D64ds_v4 / D64ds_v5/ D64ads_v5 | 64 | 256 GiB | 80,000 | 1200 MiB/sec |
+| D64ads_v6 | 64 | 256 GiB | 80000 | 1200 MiB/sec |
+| D64ds_v6 | 64 | 256 GiB | 80000 | 1200 MiB/sec |
 | D96ds_v5 / D96ads_v5 | 96 | 384 GiB | 80,000 | 1200 MiB/sec |
+| D96ads_v6 | 96 | 384 GiB | 80000 | 1200 MiB/sec |
+| D96ds_v6 | 64 | 384 GiB | 80000 | 1200 MiB/sec |
+| D128ds_v6 | 128 | 512 GiB | 80000 | 1200 MiB/sec |
+| D192ds_v6 | 192 | 768 GiB | 80000 | 1200 MiB/sec |
 | **Memory Optimized** | | | | |
 | E2s_v3 / E2ds_v4 | 2 | 16 GiB | 3,200 | 48 MiB/sec |
 | E2ds_v5 / E2ads_v5 | 2 | 16 GiB | 3,200 | 85 MiB/sec |
+| E2ads_v6 | 2 | 16 GiB | 4000 | 90 MiB/sec |
+| E2ds_v6 | 2 | 16 GiB |4167 | 124 MiB/sec |
 | E4s_v3 / E4ds_v4 | 4 | 32 GiB | 6,400 | 96 MiB/sec |
 | E4ds_v5 / E4ads_v5 | 4 | 32 GiB | 6,400 | 145 MiB/sec |
+| E4ads_v6 | 4 | 32 GiB | 7600 | 180 MiB/sec |
+| E4ds_v6 | 4 | 32 GiB | 8333 | 248 MiB/sec |
 | E8s_v3 / E8ds_v4 | 8 | 64 GiB | 12,800 | 192 MiB/sec |
 | E8ds_v5 / E8ads_v5 | 8 | 64 GiB | 12,800 | 290 MiB/sec |
+| E8ads_v6 | 8 | 64 GiB | 15200 | 360 MiB/sec |
+| E8ds_v6 | 8 | 64 GiB | 16667 | 496 MiB/sec |
 | E16s_v3 / E16ds_v4 | 16 | 128 GiB | 25,600 | 384 MiB/sec |
 | E16ds_v5 / E16ds_v5 | 16 | 128 GiB | 25,600 | 600 MiB/sec |
-| E20ds_v4 | 20 | 160 GiB | 32,000 | 480 MiB/sec |
+| E16ads_v6 | 16 | 128 GiB | 30400 | 720 MiB/sec |
+| E16ds_v6 | 16 | 128 GiB | 33333 | 992 MiB/sec |
+| E20ds_v4 | 20 | 160 GiB | 32000 | 480 MiB/sec |
 | E20ds_v5 / E20ads_v5 | 20 | 160 GiB | 32,000 | 750 MiB/sec |
+| E20ads_v6 | 20 | 160 GiB | 38000 | 900 MiB/sec |
+| E20ds_v6 | 20 | 160 GiB | 41667 | 1200 MiB/sec |
 | E32s_v3 / E32ds_v4 | 32 | 256 GiB | 51,200 | 768 MiB/sec |
 | E32ds_v5 / D32ads_v5 | 32 | 256 GiB | 51,200 | 865 MiB/sec |
+| E32ads_v6 | 32 | 256 GiB | 57600 | 1200 MiB/sec |
+| E32ds_v6 | 32 | 256 GiB | 66667 | 1200 MiB/sec |
 | E48s_v3 / E48ds_v4 / E48ds_v5 / E48ads_v5 | 48 | 384 GiB | 76,800 | 1152 MiB/sec |
 | E48ds_v5 / E48ads_v5 | 48 | 384 GiB | 76,800 | 1200 MiB/sec |
-| E64s_v3 / E64ds_v4 | 64 | 432 GiB | 80,000 | 1200 MiB/sec |
-| E64ds_v5 / E64ads_v4 | 64 | 512 GiB | 80,000 | 1200 MiB/sec |
-| E96ds_v5 /E96ads_v5 | 96 | 672 GiB | 80,000 | 1200 MiB/sec |
+| E48ads_v6 | 48 | 384 GiB | 80000 | 1200 MiB/sec |
+| E48ds_v6 | 48 | 384 GiB | 80000 | 1200 MiB/sec |
+| E64s_v3 / E64ds_v4 | 64 | 432 GiB | 80000 | 1200 MiB/sec |
+| E64ds_v5 / E64ads_v4 | 64 | 512 GiB | 80000 | 1200 MiB/sec |
+| E64ads_v6 | 64 | 512 GiB | 80000 | 1200 MiB/sec |
+| E64ds_v6 | 64 | 512 GiB | 80000 | 1200 MiB/sec |
+| E96ds_v5 /E96ads_v5 | 96 | 672 GiB | 80000 | 1200 MiB/sec |
+| E96ads_v6 | 96 | 672 GiB | 80000 | 1200 MiB/sec |
+| E96ds_v6 | 96 | 768 GiB | 80000 | 1200 MiB/sec |
+| E128ds_v6 | 128 | 1024 GiB | 80000 | 1200 MiB/sec |
+| E192ds_v6 | 192 | 1832 GiB | 80000 | 1200 MiB/sec |
 > [!IMPORTANT]  
 > Minimum and maximum IOPS are also determined by the storage tier so choose a storage tier and instance type that can scale as per your workload requirements.
 
