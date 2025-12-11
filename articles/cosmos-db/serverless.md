@@ -97,4 +97,4 @@ Azure Cosmos DB serverless extends high availability support with availability z
 - [Azure Cosmos DB serverless account performance](serverless-performance.md)
 - [How to choose between provisioned throughput and serverless](throughput-serverless.md)
 - [Pricing model in Azure Cosmos DB](how-pricing-works.md)
--  [Multi tenancy in Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/architecture/guide/multitenant/service/cosmos-db)
+- [Multi tenancy in Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
