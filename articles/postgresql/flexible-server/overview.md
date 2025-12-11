@@ -81,7 +81,7 @@ $ New server deployments are temporarily blocked in these regions. The service f
 > [!NOTE]  
 > If your application requires zone-redundant high availability and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
-## V6 SKU Family ( Public Preview)
+## V6 SKU Family (Preview)
 
 Azure Database for PostgreSQL now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These SKUs deliver massive scale for high-performance OLTP, analytics and complex queries, with improved price performance and higher memory ceilings. 
 
