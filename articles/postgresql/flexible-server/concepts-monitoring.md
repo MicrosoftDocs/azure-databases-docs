@@ -252,15 +252,24 @@ These logs are organized in categories and those categories are grouped into cat
 
 Following are the logs that, using **Diagnostic Settings** can be streamed to an external destination like a Log Analytics workspace, an storage account, an event hub, or a partner solution:
 
-**Description**: PostgreSQL server logs
-**Running frequency**: 10 seconds
-**Category name (Diagnostic Settings)**: PostgreSQLLogs
-**Display name (Diagnostic Settings)**: PostgreSQL Server Logs
-**Implicitly part of groups (Diagnostic Settings)**: audit or allLogs
-**Name of resource specific table**: PGSQLServerLogs
-**Value in Category when streamed to AzureDiagnostics table**: PostgreSQLLogs
-**Name of function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPostgresServerLogs
-**Additional requirements**: None
+**Description**: PostgreSQL server logs.
+
+**Running frequency**: 10 seconds.
+
+**Category name (Diagnostic Settings)**: PostgreSQLLogs.
+
+**Display name (Diagnostic Settings)**: PostgreSQL Server Logs.
+
+**Implicitly part of groups (Diagnostic Settings)**: audit or allLogs.
+
+**Name of resource specific table**: PGSQLServerLogs.
+
+**Value in Category when streamed to AzureDiagnostics table**: PostgreSQLLogs.
+
+**Name of function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPostgresServerLogs.
+
+**Additional requirements**: None.
+
 
 **Description**: Snapshot of active PostgreSQL sessions showing details current database connections and their activity, including session metadata, timing, and wait states
 **Running frequency**: 5 minutes
