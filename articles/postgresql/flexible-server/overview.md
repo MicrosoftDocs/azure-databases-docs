@@ -81,12 +81,15 @@ $ New server deployments are temporarily blocked in these regions. The service f
 > [!NOTE]  
 > If your application requires zone-redundant high availability and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
-## V6 SKU Family limitations
+## V6 SKU Family ( Public Preview)
 
-- Scaling from V6 SKU family to Burstable tier isn't supported.
-- Scaling from Burstable to V6 SKU family isn't supported.
-- Virtual Network integration isn't supported.
+Azure Database for PostgreSQL now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These SKUs deliver massive scale for high-performance OLTP, analytics and complex queries, with improved price performance and higher memory ceilings. 
 
+### Limitations:
+- Scaling from V6 SKU family to Burstable tier is not supported.
+- Scaling from Burstable tier to V6 SKU family is not supported.
+- Virtual Network integration is not supported.
+  
 ## Migration
 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
