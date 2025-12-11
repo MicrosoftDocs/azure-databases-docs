@@ -254,9 +254,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: PostgreSQL server logs.<br>
 **Running frequency**: 10 seconds.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLLogs.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL Server Logs.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLLogs.<br>
+**Display name**: PostgreSQL Server Logs.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLServerLogs.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLLogs.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPostgresServerLogs.<br>
@@ -264,9 +264,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: Snapshot of active PostgreSQL sessions showing details current database connections and their activity, including session metadata, timing, and wait states.<br>
 **Running frequency**: 5 minutes.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLFlexSessions.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL Sessions data.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLFlexSessions.<br>
+**Display name**: PostgreSQL Sessions data.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLPgStatActivitySessions.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexSessions.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPgStatActivitySessions.<br>
@@ -274,9 +274,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: Detailed query performance statistics from PostgreSQL query store.<br>
 **Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLFlexQueryStoreRuntime.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL Query Store Runtime.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLFlexQueryStoreRuntime.<br>
+**Display name**: PostgreSQL Query Store Runtime.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLQueryStoreRuntime.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexQueryStoreRuntime.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetQueryStoreRuntime.<br>
@@ -284,9 +284,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: What queries were waiting on what wait events and for how long.<br>
 **Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLFlexQueryStoreWaitStats.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL Query Store Wait Statistics.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLFlexQueryStoreWaitStats.<br>
+**Display name**: PostgreSQL Query Store Wait Statistics.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLQueryStoreWaits.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexQueryStoreWaitStats.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetQueryStoreWaits.<br>
@@ -294,9 +294,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: Schema-level aggregated statistics about all tables in the database, summarizing table activity and maintenance metrics.<br>
 **Running frequency**: 30 minutes.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLFlexTableStats.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL Autovacuum and schema statistics.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLFlexTableStats.<br>
+**Display name**: PostgreSQL Autovacuum and schema statistics.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLAutovacuumStats.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexTableStats.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetAutovacuumStats.<br>
@@ -304,9 +304,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: Database-level view of transaction ID (XID) and multixact ID age and wraparound risk, along with thresholds for autovacuum and emergency vacuum actions.<br>
 **Running frequency**: 30 minutes.<br>
-**Category name (Diagnostic Settings)**: PostgreSQLFlexDatabaseXacts.<br>
-**Display name (Diagnostic Settings)**: PostgreSQL remaining transactions.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: PostgreSQLFlexDatabaseXacts.<br>
+**Display name**: PostgreSQL remaining transactions.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLDbTransactionsStats.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexDatabaseXacts.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetDbTransactionsStats.<br>
@@ -314,9 +314,9 @@ Following are the logs that, using **Diagnostic Settings** can be streamed to an
 
 **Description**: Built-in PgBouncer logs.<br>
 **Running frequency**: 10 seconds.<br>
-**Category name (Diagnostic Settings)**: N/A.<br>
-**Display name (Diagnostic Settings)**: N/A.<br>
-**Included in category group (Diagnostic Settings)**: audit and allLogs.<br>
+**Category name**: N/A.<br>
+**Display name**: N/A.<br>
+**Included in category group**: audit and allLogs.<br>
 **Resource specific table**: PGSQLPgBouncer.<br>
 **Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexPGBouncer.<br>
 **Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPgBouncerLogs.<br>
