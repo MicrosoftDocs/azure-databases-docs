@@ -91,7 +91,7 @@ The detailed specifications of the available server types are as follows:
 | D64ds_v6 | 64 | 256 GiB | 80000 | 1200 MiB/sec |
 | D96ds_v5 / D96ads_v5 | 96 | 384 GiB | 80,000 | 1200 MiB/sec |
 | D96ads_v6 | 96 | 384 GiB | 80000 | 1200 MiB/sec |
-| D96ds_v6 | 64 | 384 GiB | 80000 | 1200 MiB/sec |
+| D96ds_v6 | 96 | 384 GiB | 80000 | 1200 MiB/sec |
 | D128ds_v6 | 128 | 512 GiB | 80000 | 1200 MiB/sec |
 | D192ds_v6 | 192 | 768 GiB | 80000 | 1200 MiB/sec |
 | **Memory Optimized** | | | | |
