@@ -59,11 +59,11 @@ landingContent:
             url: tutorial-deploy-app-bicep-aks.md
           - text: Connect using Apache Spark
             url: tutorial-spark-connector.md
-  - title: Analytics and real-time insights
+  - title: Analytics with Microsoft Fabric
     linkLists:
       - linkListType: overview
         links:
-          - text: Analytics and BI overview
+          - text: Analytics overview
             url: ../analytics-and-business-intelligence-overview.md
       - linkListType: concept
         links:
@@ -79,6 +79,8 @@ landingContent:
         links:
           - text: Create a Cosmos DB database in Microsoft Fabric
             url: /fabric/database/cosmos-db/quickstart-portal?context=/azure/cosmos-db/context/context
+          - text: Migrate from Synapse Link to Microsoft Fabric
+            url: ../migrate-synapse-link-to-microsoft-fabric.md
   - title: Query items from a container
     linkLists:
       - linkListType: concept

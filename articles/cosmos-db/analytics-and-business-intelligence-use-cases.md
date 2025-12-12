@@ -18,8 +18,7 @@ Azure Cosmos DB provides various analytics options for no-ETL, near real-time an
 
 To learn more about these options, see ["Analytics and BI on your Azure Cosmos DB data."](analytics-and-business-intelligence-overview.md)
 
-> [!IMPORTANT]
- > Azure Synapse Link is being deprecated and will be fully decommissioned by December 2028. Customers are encouraged to start with or migrate to Cosmos DB Mirroring with Microsoft Fabric. To learn more and get started see, [Mirroring Azure Cosmos DB](/fabric/database/mirrored-database/azure-cosmos-db).
+[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
 
 No-ETL, near real-time analytics can open up various possibilities for your businesses. Here are three sample scenarios: 
 

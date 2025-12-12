@@ -17,8 +17,7 @@ To get meaningful insights on your Azure Cosmos DB data, you may need to query w
 
 To isolate transactional workloads from the performance impact of complex analytical queries, as well as help to combine that data with other sources of data in your organization, Azure Cosmos DB and Microsoft Fabric address these challenges by providing zero ETL, cost-effective analytics offerings with Azure Cosmos DB Mirroring and Cosmos DB in Microsoft Fabric.
  
-> [!IMPORTANT]
- > Azure Synapse Link is being deprecated and will be fully decommissioned by December 2028. Customers are encouraged to start with or migrate to Cosmos DB Mirroring with Microsoft Fabric. To learn more and get started see, [Mirroring Azure Cosmos DB](/fabric/database/mirrored-database/azure-cosmos-db). 
+[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
 
 ## Option 1: Mirroring your Azure Cosmos DB data into Microsoft Fabric
 

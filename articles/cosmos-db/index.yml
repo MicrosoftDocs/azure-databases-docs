@@ -227,13 +227,15 @@ additionalContent:
               url: concepts-limits.md
             - text: Distributed NoSQL databases
               url: distributed-nosql.md
-        - title: Analytics and real-time insights
+        - title: Analytics with Microsoft Fabric
           summary: Integrate Azure Cosmos DB with Microsoft Fabric for real-time insights.
           links:
             - text: Azure Cosmos DB Mirroring
               url: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
             - text: Cosmos DB in Microsoft Fabric
               url: /fabric/database/cosmos-db/overview?context=/azure/cosmos-db/context/context
+            - text: Migrate from Synapse Link to Cosmos DB Mirroring
+              url: migrate-synapse-link-to-cosmos-db-mirroring.md
     - title: Security and compliance
       summary: Protect your data and applications with comprehensive security features including encryption, access controls, and compliance certifications.
       items:
