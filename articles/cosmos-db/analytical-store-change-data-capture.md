@@ -110,7 +110,7 @@ Change data capture capability enables an end-to-end analytical solution providi
 
 ## Change data capture on Azure Cosmos DB for MongoDB containers
 
-The linked service interface for the API for MongoDB isn't available within Azure Data Factory data flows yet. You can use your API for MongoDB's account endpoint with the **Azure Cosmos DB for NoSQL** linked service interface as a work around until the Mongo linked service is directly supported.
+The linked service interface for the API for MongoDB isn't available within Azure Data Factory data flows yet. You can use your API for MongoDB's account endpoint with the **Azure Cosmos DB for NoSQL** linked service interface as a work-around until the Mongo linked service is directly supported.
 
 In the interface for a new NoSQL linked service, select **Enter Manually** to provide the Azure Cosmos DB account information. Here, use the account's NoSQL document endpoint (Example: `https://<account-name>.documents.azure.com:443/`) instead of the MongoDB endpoint (Example: `mongodb://<account-name>.mongo.cosmos.azure.com:10255/`)
 
