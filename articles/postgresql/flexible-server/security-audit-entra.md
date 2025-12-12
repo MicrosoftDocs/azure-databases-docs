@@ -14,7 +14,7 @@ ms.custom:
 
 # Audit logging in Azure Database for PostgreSQL for Entra ID principals
 
-Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in Audit logging in [Azure Database for PostgreSQL - Flexible server](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-audit).
+Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in Audit logging in [Azure Database for PostgreSQL - Flexible server](./security-audit).
 
 One of the challenges is utilizing auditing feature alongside PostgreSQL Flexible Server Entra ID authentication when you are using Entra ID groups and want to audit the actions of indvidual groups members. This is because when group members sign in, they use their personal access tokens but use the group name as the username.
 
@@ -22,8 +22,8 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 ## Prerequisites
 
-1. Enable Audit logging - [Audit logging in Azure Database for PostgreSQL - Flexible server](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-audit)
-1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](https://learn.microsoft.com/azure/postgresql/flexible-server/howto-configure-and-access-logs#configure-diagnostic-settings)
+1. Enable Audit logging - [Audit logging in Azure Database for PostgreSQL - Flexible server](./security-audit)
+1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](./how-to-configure-and-access-logs#configure-diagnostic-settings)
 1. Adjust “log_line_prefix” server parameter:  
 * From the Server Parameters blade set the "log line prefix" to include the escapes "user=%u,db=%d,session=%c,sess_time=%s"  in the same sequence, in order to get the desired results  
   * Before:  log_line_prefix = "%t-%c-"  
@@ -72,4 +72,4 @@ AzureDiagnostics
 
 If the user is logging in as a group role, the columns `PrincipalName` and `role` will differ. The value in the `PrincipalName` will identify the user which logged in, and the value in the `role` will identify the role in PostgreSQL into which the user logged in.
 
-`PrincipalName` will be either the [User Principal Name (UPN) or AppId](https://learn.microsoft.com/azure/postgresql/flexible-server/security-entra-concepts#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
+`PrincipalName` will be either the [User Principal Name (UPN) or AppId](./security-entra-concepts#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
