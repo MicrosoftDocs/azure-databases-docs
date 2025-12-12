@@ -30,48 +30,52 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 ## Kusto query
 
+The following Kusto query, queries the `AzureDiagnostics` two times.
+The first sub-query finds all lines which contain the string `Microsoft Entra ID connection authorized` and extracts the `PrincipalName` from these log lines, alongside the `SessionId`.
+The second sub-query finds all audit logs.
+Finally, these two sub-queries are joined on the `SessionId`.
+
 ```kusto
-let lookbackTime = ago(88d);
+let lookbackTime = ago(3d);
 let opindex = 3;
 let startIndex = toscalar(range thirdIndex from opindex to opindex step 1
     | project thirdIndex);
 AzureDiagnostics
 | where ResourceProvider == 'MICROSOFT.DBFORPOSTGRESQL'
 | where TimeGenerated >= lookbackTime
-| where Message contains 'Microsoft Entra ID connection'
+| where Message contains 'Microsoft Entra ID connection authorized'
 | extend SessionId = tostring(split(tostring(split(Message, 'session=')[-1]), ',sess_time')[-2])
 | extend UPN = iff(Message contains 'UPN',tostring(split(tostring(split(Message, 'UPN=')[-1]), 'oid=')[-2]), '')
 | extend appId = iff(Message contains 'appid', tostring(split(tostring(split(Message, 'appid=')[-1]), 'oid=')[-2]), '') 
-| extend role = tostring(split(tostring(split(Message, 'user=')[-1]), ',db=')[-2])
 | extend PrincipalName = strcat(UPN, appId)
-| project Message, TimeGenerated, SessionId, UPN, role, appId, PrincipalName
+| project SessionId, PrincipalName
 | join kind=leftouter
     (
     AzureDiagnostics
     | where ResourceProvider == 'MICROSOFT.DBFORPOSTGRESQL'
     | where TimeGenerated >= lookbackTime
     | where Message contains 'AUDIT: SESSION'
-    | extend UserName = tostring(split(tostring(split(Message, 'user=')[-1]), ',db')[-2])
+    | extend RoleName = tostring(split(tostring(split(Message, 'user=')[-1]), ',db')[-2])
+    | where RoleName !in ('azuresu', '[unknown]', 'postgres', '')
     | extend SessionId = tostring(split(tostring(split(Message, 'session=')[-1]), ',sess_time')[-2])
-    | where UserName !in ('azuresu', '[unknown]', 'postgres', '')
     | extend SubMessage = tostring(split(Message, 'SESSION,')[-1])
     | extend splitArray = split(SubMessage, ',')
-    | extend operationType = tostring(splitArray[startIndex])
     | extend SqlQueryP1 = tostring(split(tostring(split(Message, ',,,')[-1]), ',<')[-2])
     | extend SqlQueryP2 = replace_string(tostring(split(SqlQueryP1, ',\"')[-1]), '"', '')
     | extend SqlQueryP3 = tostring(split(Message, ',,,')[1])
-    | extend SqlQuery = trim('"', case(operationType == 'EXECUTE', SqlQueryP2, SqlQueryP1 == '', SqlQueryP3, SqlQueryP1))
+    | extend OperationType = tostring(splitArray[startIndex])
+    | extend SqlQuery = trim('"', case(OperationType == 'EXECUTE', SqlQueryP2, SqlQueryP1 == '', SqlQueryP3, SqlQueryP1))
     )
     on $left.SessionId == $right.SessionId
-| project TimeGenerated, PrincipalName, role, SqlQuery, operationType, Message
+| project TimeGenerated, PrincipalName, RoleName, OperationType, SqlQuery 
 ```
 
 ## Example results
 The resulting table will look like this:
-| TimeGenerated | PrincipalName | role | SqlQuery | operationType | Message |
-| --- | --- | --- | --- | --- | --- |
-| 2025-12-12T16:25:05.104Z | user@example.com | ExampleGroupName | select * from pg_seclabels; | SELECT | ... |
-| 2025-12-12T16:25:04.000Z | user@example.com | user@example.com | select * from pg_seclabels; | SELECT | ... |
+| TimeGenerated | PrincipalName | RoleName | OperationType | SqlQuery |
+| --- | --- | --- | --- | --- |
+| 2025-12-12T16:25:05.104Z | user@example.com | ExampleGroupName | SELECT | select * from pg_seclabels; |
+| 2025-12-12T16:25:04.000Z | user@example.com | user@example.com | SELECT | select * from pg_seclabels; |
 
 If the user is logging in as a group role, the columns `PrincipalName` and `role` will differ (like in the first row of the example).  
 The value in the `PrincipalName` will identify the user which logged in, and the value in the `role` will identify the role in PostgreSQL into which the user logged in.
