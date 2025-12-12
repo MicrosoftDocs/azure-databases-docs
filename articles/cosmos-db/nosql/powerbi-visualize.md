@@ -128,7 +128,7 @@ Connecting to Azure Cosmos DB with the Power BI connector is currently supported
 
 1. Select and expand on the database where the data for the report comes from. Now, select a collection that contains the data to retrieve.
 
-    The Preview pane shows a list of Record items. A Document is represented as a Record type in Power BI. Similarly, a nested JSON block inside a document is also a Record. To view the properties documents as columns, select on the grey button with two arrows in opposite directions that symbolize the expansion of the record.
+    The Preview pane shows a list of Record items. A Document is represented as a Record type in Power BI. Similarly, a nested JSON block inside a document is also a Record. To view the properties documents as columns, select the grey button with two arrows in opposite directions that symbolize the expansion of the record.
 
 1. Power BI Desktop Report view is where you can start creating reports to visualize data. Create reports by dragging and dropping fields into the Report canvas.
 
