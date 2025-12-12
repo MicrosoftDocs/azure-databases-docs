@@ -31,9 +31,9 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 ## Kusto query
 
-The following Kusto query queries the `AzureDiagnostics` two times.
-The first subquery finds all lines, which contain the string `Microsoft Entra ID connection authorized` and extracts the `PrincipalName` from these log lines, alongside the `SessionId`.
-The second subquery finds all audit logs.
+The following Kusto query queries the `AzureDiagnostics` two times.  
+The first subquery finds all lines, which contain the string `Microsoft Entra ID connection authorized` and extracts the `PrincipalName` from these log lines, alongside the `SessionId`.  
+The second subquery finds all audit logs.  
 Finally, these two sub-queries are joined on the `SessionId`.
 
 ```kusto
