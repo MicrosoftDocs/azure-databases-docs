@@ -29,7 +29,7 @@ The time to live value is set in seconds, and is interpreted as a delta from the
 
   - If missing (or set to null), items aren't expired automatically.
 
-  - If present and the value is set to *"-1,"* it's equal to infinity, and items don’t expire by default.
+  - If present, and the value is set to *"-1,"* it's equal to infinity, and items don’t expire by default.
 
   - If present and the value is set to some *nonzero* number *"n,"* items will expire *"n"* seconds after their last modified time.
 
