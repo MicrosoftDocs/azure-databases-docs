@@ -941,8 +941,6 @@
           href: /fabric/database/mirrored-database/azure-cosmos-db-limitations?context=/azure/cosmos-db/context/context
         - name: Troubleshoot
           href: /fabric/database/mirrored-database/azure-cosmos-db-troubleshooting?context=/azure/cosmos-db/context/context
-        - name: Migrate from Synapse Link to Microsoft Fabric
-          href: ../migrate-synapse-link-to-microsoft-fabric.md
     - name: Cosmos DB in Microsoft Fabric
       items:
         - name: Overview
@@ -963,6 +961,8 @@
           href: /fabric/database/cosmos-db/faq?context=/azure/cosmos-db/context/context
         - name: Limitations
           href: /fabric/database/cosmos-db/limitations?context=/azure/cosmos-db/context/context
+    - name: Azure Synapse Link
+      href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
     - name: .NET SDKs

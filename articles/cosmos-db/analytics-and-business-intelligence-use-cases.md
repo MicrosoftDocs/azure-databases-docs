@@ -18,7 +18,7 @@ Azure Cosmos DB provides various analytics options for no-ETL, near real-time an
 
 To learn more about these options, see ["Analytics and BI on your Azure Cosmos DB data."](analytics-and-business-intelligence-overview.md)
 
-[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 No-ETL, near real-time analytics can open up various possibilities for your businesses. Here are three sample scenarios: 
 

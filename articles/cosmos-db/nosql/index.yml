@@ -79,8 +79,6 @@ landingContent:
         links:
           - text: Create a Cosmos DB database in Microsoft Fabric
             url: /fabric/database/cosmos-db/quickstart-portal?context=/azure/cosmos-db/context/context
-          - text: Migrate from Synapse Link to Microsoft Fabric
-            url: ../migrate-synapse-link-to-microsoft-fabric.md
   - title: Query items from a container
     linkLists:
       - linkListType: concept

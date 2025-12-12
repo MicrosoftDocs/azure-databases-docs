@@ -13,7 +13,7 @@ ms.custom: devx-track-azurecli
 
 [!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
-[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 Azure Cosmos DB analytical store is a fully isolated column store for enabling large-scale analytics against operational data in your Azure Cosmos DB, without any impact to your transactional workloads. 
 

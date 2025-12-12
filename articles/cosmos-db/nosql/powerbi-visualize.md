@@ -18,7 +18,7 @@ applies-to:
 
 Learn how to connect Azure Cosmos DB data to Power BI Desktop, and create insightful reports for actionable business insights.
 
-[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 ## Connecting
 

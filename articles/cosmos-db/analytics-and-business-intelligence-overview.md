@@ -17,7 +17,7 @@ To get meaningful insights on your Azure Cosmos DB data, you may need to query w
 
 To isolate transactional workloads from the performance impact of complex analytical queries, as well as help to combine that data with other sources of data in your organization, Azure Cosmos DB and Microsoft Fabric address these challenges by providing zero ETL, cost-effective analytics offerings with Azure Cosmos DB Mirroring and Cosmos DB in Microsoft Fabric.
  
-[!INCLUDE[SynapseLinkRetirement](includes/appliesto-synapse-link-retirement.md)]
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 ## Option 1: Mirroring your Azure Cosmos DB data into Microsoft Fabric
 
@@ -31,8 +31,8 @@ You can use built-in Power BI capabilities to access data in OneLake in DirectLa
 
 To get started with mirroring, visit ["Get started with mirroring tutorial"](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context).
 
-
 ## Option 2: Azure Cosmos DB in Fabric
+
 Cosmos DB in Microsoft Fabric is an AI-optimized NoSQL database with a simplified management experience. As a developer, you can use Cosmos DB in Fabric to build AI applications with less friction and without having to take on typical database management tasks. As an analytics user, Cosmos DB can be used as a low-latency serving layer, making reports faster and able to serve thousands of users simultaneously.
 
 Cosmos DB in Microsoft Fabric uses the same engine, same infrastructure as Azure Cosmos DB for NoSQL, but is tightly integrated into Fabric. Cosmos DB provides a schemaless data model ideal for semi-structured data or evolving data models; offering limitless, automatic, and instantaneous scaling, with low latency and built-in high availability.
@@ -42,6 +42,6 @@ To get started with Cosmos DB in Fabric, visit [Create a Cosmos DB database in M
 ## Related content
 
 * [Azure Cosmos DB Mirroring overview](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context)
-* [Azure Cosmos DB Mirroring tutorial"](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
+* [Azure Cosmos DB Mirroring tutorial](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
 * [Cosmos DB in Microsoft Fabric overview](/fabric/database/cosmos-db/overview)
 * [Create a Cosmos DB database in Microsoft Fabric](/fabric/database/cosmos-db/quickstart-portal)
