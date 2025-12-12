@@ -729,4 +729,4 @@ To learn more, see the following docs:
 
 * [Frequently asked questions about Synapse Link for Azure Cosmos DB](synapse-link-frequently-asked-questions.yml)
 
-* [Azure Synapse Link for Azure Cosmos DB Use cases](synapse-link-use-cases.md)
+* [Analytics Use cases](analytics-and-business-intelligence-use-cases.md)

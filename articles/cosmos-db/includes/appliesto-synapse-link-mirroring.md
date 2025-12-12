@@ -1,9 +1,7 @@
 ---
-author: markjbrown
-ms.author: mjbrown
-ms.date: 12/05/2025
 ms.service: azure-cosmos-db
 ms.topic: include
+ms.date: 12/05/2025
 ---
 
 > [!IMPORTANT]

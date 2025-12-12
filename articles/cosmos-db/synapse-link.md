@@ -106,7 +106,7 @@ Azure Synapse Link is recommended if you're an Azure Cosmos DB customer and you 
 
 In such cases, Azure Synapse Link provides a more integrated analytics experience without impacting your transactional store’s provisioned throughput.
 
-Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements might include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [Azure Cosmos DB: No-ETL analytics use cases](synapse-link-use-cases.md).
+Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements might include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [Analytics Use cases](analytics-and-business-intelligence-use-cases.md).
 
 ## Limitations
 
