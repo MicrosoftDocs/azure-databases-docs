@@ -1,3 +1,4 @@
+---
 title: Audit Logging in Azure Database for PostgreSQL for Entra ID principals
 description: Learn how to attribute actions to specific Entra ID users in PostgreSQL audit logs.
 author: ak800i
