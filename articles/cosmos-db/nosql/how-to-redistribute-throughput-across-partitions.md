@@ -314,7 +314,7 @@ The right approach depends on your workload requirements. General approaches inc
 
 ## Programatically change the throughput across partitions
 
-You can use the PowerShell command `Update-AzCosmosDBSqlContainerPerPartitionThroughput` to redistribute throughput. Let's look at an example with a container that has 6,000 RU/s total (either 6,000 manual RU/s or autoscale 6,000 RU/s) and two physical partitions. In this example, we want the following throughput distribution:
+Let's look at an example with a container that has 6,000 RU/s total (either 6,000 manual RU/s or autoscale 6,000 RU/s) and two physical partitions. In this example, we want the following throughput distribution:
 
 | Physical Partition | Current RU/s | Target RU/s |
 | --- | --- | --- |
