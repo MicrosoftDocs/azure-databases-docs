@@ -5,7 +5,7 @@ author: thakagi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/07/2021
+ms.date: 12/05/2025
 ms.author: hitakagi
 ---
 
@@ -873,7 +873,7 @@ In Azure Cosmos DB, you can add a Composite Index to sort your data in ascending
 
 #### Analytical processing is executed on HBase data with Hive or Spark. How can I modernize them in Azure Cosmos DB?
 
-You can use the Azure Cosmos DB analytical store to automatically synchronize operational data to another column store. The column store format is suitable for large analytic queries that are executed in an optimized way, which improves latency for such queries. Azure Synapse Link allows you to build an ETL-free HTAP solution by linking directly from Azure Synapse Analytics to the Azure Cosmos DB analytical store. This allows you to perform large-scale, near-real-time analysis of operational data. Synapse Analytics supports Apache Spark and serverless SQL pools in the Azure Cosmos DB analytics store. You can take advantage of this feature to migrate your analytical processing. See [Analytical store](../analytical-store-introduction.md) for more information.
+You can use the Azure Cosmos DB Mirroring to Microsoft Fabric to automatically synchronize operational data to another column store. Mirroring allows you to build an ETL-free HTAP solution to OneLake in Microsoft Fabric. This allows you to perform large-scale, near-real-time analysis of operational data. Microsoft Fabric supports Apache Spark and serverless SQL pools. You can take advantage of this feature to migrate your analytical processing. See [Azure Cosmos DB Mirroring](/fabric/mirroring/azure-cosmos-db) for more information.
 
 #### How can users be using timestamp query in HBase to Azure Cosmos DB?
 

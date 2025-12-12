@@ -7,7 +7,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 09/03/2025
+ms.date: 12/05/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
 applies-to:
@@ -430,17 +430,17 @@ Review documents:
 }
 ```
 
-## Data modeling for Azure Synapse Link and Azure Cosmos DB analytical store
+## Data modeling for Microsoft Fabric and Azure Cosmos DB Mirroring
 
-[Azure Synapse Link for Azure Cosmos DB](../synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a seamless integration between Azure Cosmos DB and Azure Synapse Analytics. 
+[Azure Cosmos DB Mirroring](/fabric/mirroring/azure-cosmos-db) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Fabric Mirroring creates a seamless integration between Azure Cosmos DB and OneLake in Microsoft Fabric. 
 
-This integration happens through [Azure Cosmos DB analytical store](../analytical-store-introduction.md), a columnar representation of your transactional data that enables large-scale analytics without any effect on your transactional workloads. The analytical store lets you run quick and affordable queries on large sets of data. You don't need to copy the data or worry about slowing down your main database. When you turn on analytical store for a container, every change you make to your data is copied to the analytical store almost right away. You don't need to set up Change Feed or run extract, transform, and load (ETL) jobs. The system keeps both stores in sync for you.
+This integration lets you run quick and affordable queries on large sets of data. You don't need to copy the data or worry about impacting your transactional workload. When you turn on Mirroring for a container, every change you make to your data is copied to OneLake almost right away. You don't need to set up Change Feed or run extract, transform, and load (ETL) jobs. The system keeps both stores in sync for you.
 
-With Azure Synapse Link, you can now directly connect to your Azure Cosmos DB containers from Azure Synapse Analytics and access the analytical store, at no Request Units (request units) costs. Azure Synapse Analytics currently supports Azure Synapse Link with Synapse Apache Spark and serverless SQL pools. If you have a globally distributed Azure Cosmos DB account, after you enable analytical store for a container, it will be available in all regions for that account. 
+With Azure Cosmos DB Mirroring, you can now directly connect to your Azure Cosmos DB containers from Microsoft Fabric and access your data at no Request Units (request units) costs using T-SQL queries via the SQL endpoint to your data or Spark directly from OneLake. 
 
-### Analytical store automatic schema inference
+### Automatic schema inference
 
-Azure Cosmos DB transactional store is row-oriented semi-structured data, while analytical store uses a columnar and structured format. This conversion is automatically made for customers, using [the schema inference rules for the analytical store](../analytical-store-introduction.md). There are limits in the conversion process: maximum number of nested levels, maximum number of properties, unsupported data types, and more. 
+Azure Cosmos DB transactional store is row-oriented semi-structured data, while OneLake in Microsoft Fabric uses a columnar and structured format. This conversion is automatically made for customers. There are limits in the conversion process: maximum number of nested levels, maximum number of properties, unsupported data types, and more. 
 
 > [!NOTE]
 > In the context of analytical store, we consider the following structures as property:
@@ -454,39 +454,36 @@ You can minimize the effect of the schema inference conversions, and maximize yo
 
 ### Normalization
 
-Normalization becomes less relevant because Azure Synapse Link lets you join containers using T-SQL or Spark SQL. The expected benefits of normalization are:
+Normalization becomes less relevant because Microsoft Fabric lets you join containers using T-SQL or Spark SQL. The expected benefits of normalization are:
 
-- Smaller data footprint in both transactional and analytical store.
+- Smaller data footprint.
 - Smaller transactions.
 - Fewer properties per document.
 - Data structures with fewer nested levels.
 
-Having fewer properties and fewer levels in your data makes analytical queries faster. It also helps make sure that all parts of your data are included in the analytical store. As described in the article on automatic schema inference rules, there are limits to the number of levels and properties that are represented in analytical store.
+Having fewer properties and fewer levels in your data makes analytical queries faster. It also helps make sure that all parts of your data are included in OneLake. There are limits to the number of levels and properties that are represented in OneLake.
 
-Another important factor for normalization is that SQL serverless pools in Azure Synapse support result sets with up to 1,000 columns, and exposing nested columns also counts towards that limit. In other words, both analytical store and Synapse SQL serverless pools have a limit of 1,000 properties.
+Another important factor for normalization is that OneLake supports result sets with up to 1,000 columns, and exposing nested columns also counts towards that limit. In other words, SQL endpoints in Fabric have a limit of 1,000 properties.
 
 But what to do since denormalization is an important data modeling technique for Azure Cosmos DB? The answer is that you must find the right balance for your transactional and analytical workloads.
 
 ### Partition Key
 
-The Azure Cosmos DB partition key (PK) isn't used in the analytical store. And now you can use [analytical store custom partitioning](https://devblogs.microsoft.com/cosmosdb/custom-partitioning-azure-synapse-link/) to copies of analytical store using any PK that you want. Because of this isolation, you can choose a PK for your transactional data with focus on data ingestion and point reads, while cross-partition queries can be done with Azure Synapse Link. Let's see an example:
+The Azure Cosmos DB partition key (PK) isn't used in Microsoft Fabric. Because of this isolation, you can choose a PK for your transactional data with focus on data ingestion and point reads, while cross-partition queries can be done Microsoft Fabric. Let's see an example:
 
-In a hypothetical global IoT scenario, `device id` serves as a good partition key because all devices generate a similar volume of data, which prevents hot partition issues. But if you want to analyze the data of more than one device, like "all data from yesterday" or "totals per city," you might have problems since those queries are cross-partition queries. Those queries can hurt your transactional performance since they use part of your throughput in request units to run. But with Azure Synapse Link, you can run these analytical queries at no request units costs. Analytical store columnar format is optimized for analytical queries and Azure Synapse Link supports great performance with Azure Synapse Analytics runtimes.
+In a hypothetical global IoT scenario, `device id` serves as a good partition key because all devices generate a similar volume of data, which prevents hot partition issues. But if you want to analyze the data of more than one device, like "all data from yesterday" or "totals per city," you might have problems since those queries are cross-partition queries. Those queries can hurt your transactional performance since they use part of your throughput in request units to run. But with Microsoft Fabric, you can run these analytical queries at no request units costs. The delta format in OneLake is optimized for analytical queries.
 
 ### Data types and properties names
 
-The automatic schema inference rules article lists what are the supported data types. While Azure Synapse runtimes might process supported datatypes differently, unsupported data types block the representation in analytical store. One example is: When using DateTime strings that follow the ISO 8601 UTC standard, Spark pools in Azure Synapse represents these columns as `string` and SQL serverless pools in Azure Synapse represents these columns as `varchar(8000)`.
-
-Another challenge is that Azure Synapse Spark doesn't accept all characters. While white spaces are accepted, characters like colon, grave accent, and comma aren't. Let's say that your item has a property named **"First Name, Last Name"**. This property is represented in analytical store and Synapse SQL serverless pool can read it without a problem. But since it is in analytical store, Azure Synapse Spark can't read any data from analytical store, including all other properties. At the end of the day, you can't use Azure Synapse Spark when you have one property using the unsupported characters in their names.
+The automatic schema inference rules article lists what are the supported data types. While Microsoft Fabric runtimes might process supported datatypes differently, unsupported data types block the representation in analytical store. One example is: When using DateTime strings that follow the ISO 8601 UTC standard, Spark pools in Microsoft Fabric represents these columns as `string` and SQL serverless represents these columns as `varchar(8000)`.
 
 ### Data flattening
 
-Every property at the top level of your Azure Cosmos DB data becomes a column in the analytical store. Properties inside nested objects or arrays are stored as JSON in the analytical store, keeping their structure. Nested structures demand extra processing from Azure Synapse runtimes to flatten the data in structured format, what might be a challenge in big data scenarios.
+Every property at the top level of your Azure Cosmos DB data becomes a column in the analytical store. Properties inside nested objects or arrays are stored as JSON in OneLake. Nested structures demand extra processing from Spark or SQL runtimes to flatten the data. This can add compute cost and latency when dealing with very large quantities of data. Where it is simple to do so, use a flat data model for your data. At a minimum, avoid excessive nesting of data in your data models.
 
-The item has only two columns in analytical store, `id` and `contactDetails`. All other data, `email`, and `phone`, requires extra processing through SQL functions to be individually read.
+The item has only two columns in OneLake, `id` and `contactDetails`. All other data, `email`, and `phone`, requires extra processing through SQL or Spark functions to be read.
 
 ```json
-
 {
     "id": "1",
     "contactDetails": [
@@ -496,10 +493,9 @@ The item has only two columns in analytical store, `id` and `contactDetails`. Al
 }
 ```
 
-The item has three columns in analytical store, `id`, `email`, and `phone`. All data is directly accessible as columns.
+Flattening eliminates this need. Here below, `id`, `email`, and `phone` are all directly accessible as columns with no additional processing
 
 ```json
-
 {
     "id": "1",
     "email": "thomas@andersen.com",
@@ -509,29 +505,28 @@ The item has three columns in analytical store, `id`, `email`, and `phone`. All 
 
 ### Data tiering
 
-Azure Synapse Link allows you to reduce costs from the following perspectives:
+Microsoft Fabric allows you to reduce costs from the following perspectives:
 
 - Fewer queries running in your transactional database.
 - A PK optimized for data ingestion and point reads, reducing data footprint, hot partition scenarios, and partitions splits.
-- Data tiering since [analytical time-to-live (attl)](../analytical-store-introduction.md#analytical-ttl) is independent from transactional time-to-live (tttl). You can keep your transactional data in transactional store for a few days, weeks, months, and keep the data in analytical store for years or for ever. Analytical store columnar format brings a natural data compression, from 50% up to 90%. And its cost per GB is ~10% of transactional store actual price. For more information about the current backup limitations, see [analytical store overview](../analytical-store-introduction.md).
 - No ETL jobs running in your environment, meaning that you don't need to allocate request units for them.
+
 
 ### Controlled redundancy
 
-This technique is a great alternative for situations when a data model already exists and can't be changed. The current data model doesn't work well with analytical store. This advantage exists because analytical store has rules that limit how many levels you can nest data and how many properties you can have in each document. If your data is too complex or has too many fields, some important information might not be included in analytical store. If this scenario is your case, you can use [Azure Cosmos DB Change Feed](../change-feed.md) to replicate your data into another container, applying the required transformations for an Azure Synapse Link friendly data model. Let's see an example:
+This technique is a great alternative for situations when a data model already exists and can't be changed. Or if your data is too complex with too many nested levels or too many properties. If this scenario is your case, you can use [Azure Cosmos DB Change Feed](../change-feed.md) to replicate your data into another container, applying the required transformations, then configure Mirroring for that container to Microsoft Fabric for analytics. Let's see an example:
 
 #### Scenario
 
-Container `CustomersOrdersAndItems` is used to store on-line orders including customer and items details: billing address, delivery address, delivery method, delivery status, items price, etc. Only the first 1,000 properties are represented and key information isn't included in analytical store, blocking Azure Synapse Link usage. The container has petabytes of records it's not possible to change the application and remodel the data. 
+Container `CustomersOrdersAndItems` is used to store on-line orders including customer and items details: billing address, delivery address, delivery method, delivery status, items price, etc. Only the first 1,000 properties are represented and key information isn't included, making analytics in Fabric impossible. The container has petabytes of data so it's not possible to change the application and remodel the data. 
 
-Another aspect of the problem is the large data volume. Billions of rows are constantly used by the Analytics Department, what prevents them to use tttl for old data deletion. Maintaining the entire data history in the transactional database because of analytical needs forces them to constantly increase request units provisioning, impacting costs. Transactional and analytical workloads compete for the same resources at the same time. 
+Another aspect of the problem is the large data volume. Billions of rows are constantly used by the Analytics Department, what prevents them to use tttl for old data deletion. Maintaining the entire data history in the transactional database because of analytical needs forces them to constantly increase RU/s, impacting costs. Transactional and analytical workloads compete for the same resources at the same time. 
 
 What can you do?
  
 #### Solution with Change Feed
 
-- The engineering team decided to use Change Feed to populate three new containers: `Customers`, `Orders`, and `Items`. With Change Feed, they're normalizing and flattening the data. Unnecessary information is removed from the data model and each container has close to 100 properties, avoiding data loss due to automatic schema inference limits. 
-- These new containers have analytical store enabled, and the Analytics Department uses Synapse Analytics to read the data. This reduces request unit usage because analytical queries run in Synapse Apache Spark and serverless SQL pools.
+- The solution is use Change Feed to populate three new containers: `Customers`, `Orders`, and `Items`. With Change Feed, you can normalize and flatten the data and remove unnecessary information from the data model. 
 - Container `CustomersOrdersAndItems` now has time-to-live (TTL) set to keep data for six months only, which allows for another request units usage reduction, since there's a minimum of one request unit per GB in Azure Cosmos DB. Less data, fewer request units.
 
 ## Takeaways
