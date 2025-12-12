@@ -48,6 +48,10 @@ Watch the following video to learn more about using the .NET SDK from an Azure C
 |  <input type="checkbox"/>    | DefaultTraceListener   | The `DefaultTraceListener` poses performance issues on production environments causing high CPU and I/O bottlenecks. Make sure you're using the latest SDK versions or remove the [DefaultTraceListener from your application](performance-tips-dotnet-sdk-v3.md#logging-and-tracing).  |
 |  <input type="checkbox"/>    | Avoid using any special characters in identifiers   | Some characters are restricted and can't be used in some identifiers: `/`, `\`, `?`, `#`. The general recommendation is to not use any special characters in identifiers like database name, collection name, item ID, or partition key to avoid any unexpected behavior. |
 
+## Managing Newtonsoft.Json Dependencies
+
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
+
 ## Capture diagnostics
 
 [!INCLUDE[cosmos-db-dotnet-sdk-diagnostics](../includes/dotnet-sdk-diagnostics.md)]
