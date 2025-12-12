@@ -109,10 +109,10 @@ The following table shows the **minimum recommended secure versions** of Newtons
 
 ### Best Practices
 
-1. **Always add as a direct dependency** - The SDK does not automatically manage this dependency for you
-2. **Use version 13.0.3 or higher** - Never use 10.x despite technical compatibility, due to known security vulnerabilities
-3. **Required even with System.Text.Json** - You must include Newtonsoft.Json even when using `UseSystemTextJsonSerializerWithOptions`, as the SDK uses it internally for system types
-4. **Pin the version explicitly** - Don't rely on transitive dependency resolution
-5. **Monitor warnings** - Treat NuGet package downgrade warnings (NU1109) as errors in CI/CD pipelines
+- **Always add as a direct dependency** - The SDK does not automatically manage this dependency for you
+- **Use version 13.0.3 or higher** - Never use 10.x despite technical compatibility, due to known security vulnerabilities
+- **Required even with System.Text.Json** - You must include Newtonsoft.Json even when using `UseSystemTextJsonSerializerWithOptions`, as the SDK uses it internally for system types
+- **Pin the version explicitly** - Don't rely on transitive dependency resolution
+- **Monitor warnings** - Treat NuGet package downgrade warnings (NU1109) as errors in CI/CD pipelines
 
 ---
