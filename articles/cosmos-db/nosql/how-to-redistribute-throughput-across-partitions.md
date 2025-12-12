@@ -88,9 +88,11 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 1. Find the physical partition (`PartitionKeyRangeId`) that consumes the most RU/s over time using this query.
 
     ```kusto
+    let databaseName = "MyDB" // Replace with database name
+    let collectionName = "MyCollection" // Replace with collection name
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hr)
-    | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with your database and collection name
+    | where DatabaseName == databaseName and CollectionName == collectionName
     | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
     | summarize sum(RequestCharge) by bin(TimeGenerated, 1s), PartitionKeyRangeId
     | render timechart
@@ -99,18 +101,21 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
 1. For a physical partition, find the top logical partition keys that consume the most RU/s each hour using this query.
 
     ```kusto
+    let databaseName = "MyDB"; // Replace with database name
+    let collectionName = "MyCollection"; // Replace with collection name
+    let partitionKeyRangeId = 0; // Replace with your PartitionKeyRangeId
     CDBPartitionKeyRUConsumption 
     | where TimeGenerated >= ago(24hour)
-    | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replace with database and collection name
+    | where DatabaseName == databaseName and CollectionName == collectionName
     | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
-    | where PartitionKeyRangeId == 0 // Replace with your PartitionKeyRangeId
+    | where PartitionKeyRangeId == partitionKeyRangeId
     | summarize RU_Usage = sum(RequestCharge) by bin(TimeGenerated, 1h), PartitionKey
     | join kind=inner (
         CDBPartitionKeyRUConsumption
         | where TimeGenerated >= ago(24hour)
-        | where DatabaseName == "MyDB" and CollectionName == "MyCollection" // Replcae with database and collection name
+        | where DatabaseName == databaseName and CollectionName == collectionName
         | where isnotempty(PartitionKey) and isnotempty(PartitionKeyRangeId)
-        | where PartitionKeyRangeId == 0 // Replace with your PartitionKeyRangeId
+        | where PartitionKeyRangeId == partitionKeyRangeId
         | summarize TotalRU_PerHour = sum(RequestCharge) by bin(TimeGenerated, 1h)
     ) on TimeGenerated
     | extend RU_Percentage = round(RU_Usage * 100.00 / TotalRU_PerHour, 2)
