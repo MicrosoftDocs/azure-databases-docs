@@ -329,7 +329,6 @@ WHERE c.tenantId = "tenant-001"
 
 ## Related content
 
-- [Python example of one turn per item memories](https://github.com/azurecosmosdb/agentMemories/)
 - [Learn about vector indexing and search](vector-search-overview.md)
 - [Learn about full text search](full-text-search-faq.yml)
 - [Learn about hybrid search](hybrid-search.md)
