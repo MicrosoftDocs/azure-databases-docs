@@ -119,6 +119,7 @@ sections:
           API for NoSQL, API for Table, Gremlin API, and API for MongoDB accounts that use shared, provisioned, or autoscale provisioned throughput support migration to continuous backup.
 
           Accounts with Azure Synapse Link enabled, or that had Azure Synapse Link disabled for one or more collections, can't migrate to continuous backup.
+          [!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
       - question: |
           Does the migration take time? What is the typical time?
         answer: |

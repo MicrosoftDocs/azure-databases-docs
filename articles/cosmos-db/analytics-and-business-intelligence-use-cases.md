@@ -1,31 +1,33 @@
 ---
 title: Near real-time analytics use cases for Azure Cosmos DB
 description: Learn how real-time analytics is used in Supply chain analytics, forecasting, reporting, real-time personalization, and IOT predictive maintenance.
-author: jilmal
-ms.author: jmaldonado
+author: markjbrown
+ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 06/25/2024
+ms.date: 12/04/2025
 ms.custom: cosmos-db-noetl-realtime-analytics
 ---
 
 # Azure Cosmos DB: No-ETL analytics use cases
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides various analytics options for no-ETL, near real-time analytics over operational data. You can enable analytics on your Azure Cosmos DB data using following options:
-* Mirroring Azure Cosmos DB in Microsoft Fabric
-* Azure Synapse Link for Azure Cosmos DB
 
-To learn more about these options, see ["Analytics and BI on your Azure Cosmos DB data."](analytics-and-business-intelligence-overview.md)
+* Azure Cosmos DB Mirroring for Microsoft Fabric
+* Cosmos DB in Microsoft Fabric
 
-> [!IMPORTANT]
-> Mirroring Azure Cosmos DB in Microsoft Fabric is now available in preview for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in OneLake with Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization. To get started with mirroring, click [here](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context). 
+To learn more about these options, see [Analytics and BI on your Azure Cosmos DB data.](analytics-and-business-intelligence-overview.md)
+
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 No-ETL, near real-time analytics can open up various possibilities for your businesses. Here are three sample scenarios: 
 
 * Supply chain analytics, forecasting & reporting
 * Real-time personalization
 * Predictive maintenance, anomaly detection in IOT scenarios
+
+Additionally, as a NoSQL database with latency SLA, Cosmos is an amazing serving layer and can serve data extremely fast and with high concurrency. To learn more about how to implement this pattern using Cosmos DB see, [Reverse ETL with Cosmos DB](nosql/reverse-extract-transform-load.md)
 
 ## Supply chain analytics, forecasting & reporting
 
@@ -41,21 +43,21 @@ Based on previous architecture, you can achieve the following use cases:
 
 * **Prepare & train predictive pipeline:** Generate insights over the operational data across the supply chain using machine learning translates. This way you can lower inventory, operations costs, and reduce the order-to-delivery times for customers.
 
- Mirroring and Synapse Link allow you to analyze the changing operational data in Azure Cosmos DB without any manual ETL processes. These offerings save you from additional cost, latency, and operational complexity. They enable data engineers and data scientists to build robust predictive pipelines:
+ Mirroring allows you to analyze the changing operational data in Azure Cosmos DB without any manual ETL processes. These offerings save you from additional cost, latency, and operational complexity. They enable data engineers and data scientists to build robust predictive pipelines:
 
-  * Query operational data from Azure Cosmos DB by using native integration with Apache Spark pools in  Microsoft Fabric or Azure Synapse Analytics. You can query the data  in an interactive notebook or scheduled remote jobs without complex data engineering.
+  * Query operational data from Azure Cosmos DB by using native integration with Apache Spark in Microsoft Fabric. You can query the data in an interactive notebook or scheduled remote jobs without complex data engineering.
 
-  * Build  Machine Learning (ML) models with Spark ML algorithms and Azure Machine Learning (AML) integration in Microsoft Fabric or Azure Synapse Analytics.
+  * Build  Machine Learning (ML) models with Spark ML in Microsoft Fabric.
 
-  * Write back the results after model inference into Azure Cosmos DB for operational near-real-time scoring.
+  * Write back the results after model inference using Reverse-ETL with Cosmos DB's Python SDK or Spark SDK into Azure Cosmos DB for operational near-real-time scoring.
 
 * **Operational reporting:** Supply chain teams need flexible and custom reports over real-time, accurate operational data. These reports are required to obtain a snapshot view of supply chain effectiveness, profitability, and productivity. It allows data analysts and other key stakeholders to constantly reevaluate the business and identify areas to tweak to reduce operational costs. 
 
- Mirroring and Synapse Link for Azure Cosmos DB enable rich business intelligence (BI)/reporting scenarios:
+ Mirroring for Azure Cosmos DB enables rich business intelligence (BI)/reporting scenarios:
 
-  * Query operational data from Azure Cosmos DB  by using native integration with full expressiveness of T-SQL language.
+  * Query operational data from Azure Cosmos DB by using native integration with full expressiveness of T-SQL language.
 
-  * Model and publish auto refreshing BI dashboards over Azure Cosmos DB through Power BI integrated in Microsoft Fabric or Azure Synapse Analytics. 
+  * Model and publish auto refreshing BI dashboards over Azure Cosmos DB through Power BI integrated in Microsoft Fabric. 
 
 The following is some guidance for data integration for batch & streaming data into Azure Cosmos DB:
 
@@ -73,8 +75,8 @@ Retailers today must build secure and scalable e-commerce solutions that meet th
 
 :::image type="content" source="./media/synapse-link-use-cases/real-time-personalization.png" alt-text="Diagram of Azure Cosmos DB in real-time personalization." border="false":::
 
-* **Prepare & train predictive pipeline:** You can generate insights over the operational data across your business units or customer segments using Fabric or Synapse Spark and machine learning models. This translates to personalized delivery to target customer segments, predictive end-user experiences, and targeted marketing to fit your end-user requirements.
-)
+* **Prepare & train predictive pipeline:** You can generate insights over the operational data across your business units or customer segments using Fabric  machine learning models. This translates to personalized delivery to target customer segments, predictive end-user experiences, and targeted marketing to fit your end-user requirements.
+
 ## IOT predictive maintenance
 
 Industrial IOT innovations have drastically reduced downtimes of machinery and increased overall efficiency across all fields of industry. One of such innovations is predictive maintenance analytics for machinery at the edge of the cloud.
@@ -89,12 +91,7 @@ The following is an architecture using the cloud native HTAP capabilities in IoT
 
 ## Related content
 
-
-* [Mirroring Azure Cosmos DB overview](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context)
-
-* [Getting started with mirroring](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
-  
-* [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) 
-
-* [Working with Azure Synapse Link for Azure Cosmos DB](configure-synapse-link.md)
-
+* [Azure Cosmos DB Mirroring overview](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context)
+* [Azure Cosmos DB Mirroring tutorial"](/fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context)
+* [Cosmos DB in Microsoft Fabric overview](/fabric/database/cosmos-db/overview)
+* [Create a Cosmos DB database in Microsoft Fabric](/fabric/database/cosmos-db/quickstart-portal)
