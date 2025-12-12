@@ -1,4 +1,3 @@
----
 title: Audit Logging in in Azure Database for PostgreSQL for Entra ID principals
 description: Learn how to attribute actions to specific Entra ID users in PostgreSQL audit logs.
 author: ajanko
@@ -68,8 +67,13 @@ AzureDiagnostics
 ```
 
 ## Example results
-:::image type="content" source="media/security-audit/security-audit-entra-example-result.png" alt-text="Screenshot showing the result of the KQL query" lightbox="media/security-audit/security-audit-entra-example-result.png":::
+The resulting table will look like this:
+| TimeGenerated | PrincipalName | role | SqlQuery | operationType | Message |
+| --- | --- | --- | --- | --- | --- |
+| 2025-12-12T16:25:05.104Z | user@example.com | ExampleGroupName | select * from pg_seclabels; | SELECT | ... |
+| 2025-12-12T16:25:04.000Z | user@example.com | user@example.com | select * from pg_seclabels; | SELECT | ... |
 
-If the user is logging in as a group role, the columns `PrincipalName` and `role` will differ. The value in the `PrincipalName` will identify the user which logged in, and the value in the `role` will identify the role in PostgreSQL into which the user logged in.
+If the user is logging in as a group role, the columns `PrincipalName` and `role` will differ (like in the first row of the example).  
+The value in the `PrincipalName` will identify the user which logged in, and the value in the `role` will identify the role in PostgreSQL into which the user logged in.
 
 `PrincipalName` will be either the [User Principal Name (UPN) or AppId](./security-entra-concepts#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
