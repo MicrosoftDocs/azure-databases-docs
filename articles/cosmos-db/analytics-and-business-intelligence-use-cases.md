@@ -13,10 +13,11 @@ ms.custom: cosmos-db-noetl-realtime-analytics
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides various analytics options for no-ETL, near real-time analytics over operational data. You can enable analytics on your Azure Cosmos DB data using following options:
+
 * Azure Cosmos DB Mirroring for Microsoft Fabric
 * Cosmos DB in Microsoft Fabric
 
-To learn more about these options, see ["Analytics and BI on your Azure Cosmos DB data."](analytics-and-business-intelligence-overview.md)
+To learn more about these options, see [Analytics and BI on your Azure Cosmos DB data.](analytics-and-business-intelligence-overview.md)
 
 [!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 

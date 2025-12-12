@@ -962,7 +962,21 @@
         - name: Limitations
           href: /fabric/database/cosmos-db/limitations?context=/azure/cosmos-db/context/context
     - name: Azure Synapse Link
-      href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+      items:
+        - name: Overview
+          href: ../synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Configure Synapse Link
+          href: ../configure-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Analytical Store Introduction
+          href: ../analytical-store-introduction.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Change Data Capture with Analytical Store
+          href: ../analytical-store-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Change Data Capture Getting Started
+          href: ../get-started-change-data-capture.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Power BI with Synapse Link
+          href: ../integrated-power-bi-synapse-link.md?context=/azure/cosmos-db/nosql/context/context
+        - name: Configure Private Endpoints
+          href: ../analytical-store-private-endpoints.md?context=/azure/cosmos-db/nosql/context/context
 - name: Reference
   items:
     - name: .NET SDKs
