@@ -21,7 +21,7 @@ For example, if you partition data by `StoreId` in a retail application, some st
 
 <a id="single-hot-partition-key-note"></a>
 > [!NOTE]
-> Please note that splitting a hot partition that has a single partition key will not improve performance. See query below to determine if there is only one partition key in the physical partition.
+> Note that splitting a hot partition that has a single hot partition key will not improve performance. Even after a split, all data with that same partition key will be on the same physical partition. As a result, the maximum RU/s that you can configure for it is still 10,000 RU/s. See query below to determine if there is a single hot partition key in the physical partition.
 
 > [!NOTE]
 > Currently, by default, throughput policies are set to "Equal." After redistributing throughput or assigning custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level will be blocked. This is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
@@ -294,18 +294,20 @@ Keep in mind the following points before setting throughput on your target parti
     
 - If you set a partition's RU/s above 10,000, it first receives 10,000 RU/s. Then, Azure Cosmos DB automatically splits the partition and evenly distributes the specified throughput across the new partitions.
 
-  - If a physical partition is using 5,000 RU/s and you set its throughput to 15,000 RU/s, Azure Cosmos DB first assigns 10,000 RU/s to the original partition. Then, it automatically splits the partition into two, each with up to 7,500 RU/s.
-
+  - If a physical partition is using 5,000 RU/s and you set its throughput to 15,000 RU/s, Azure Cosmos DB first assigns 10,000 RU/s to the original partition. Then, it automatically splits the partition into two, each with 7,500 RU/s.
+    
 - If the final sum of throughput across all partitions isn't equal to the current sum of throughput across all partitions, then this operation updates the total throughput settings accordingly.
 
+  - For example, suppose your container has 10,000 RU/s and 2 physical partitions P1 and P2, each with 5000 RU/s. If you assign 20,000 RU/s to P1, the new total throughput of the container will be 25,000 RU/s.
+    
 The right approach depends on your workload requirements. General approaches include:
 
 - Increase the RU/s by a percentage, measure the rate of 429 responses, and repeat until you reach the desired throughput.
 
   - If you aren't sure about the right percentage, start with 10% to be conservative.
   
-  - If you know this physical partition needs most of the throughput, start by adjusting the RU/s. Double the RU/s or increase them to the maximum of 10,000 RU/s, whichever is lower.
-
+  - If you know this physical partition needs most of the throughput, start by adjusting the RU/s. Double the RU/s or increase them to the maximum of 10,000 RU/s, whichever is lower. If 10,000 RU/s is not sufficient, and you don't have only one hot key in the partition, you can split the partition by setting up to 20,000 RU/s.
+    
 - Increase the RU/s to `Total consumed RU/s of the physical partition + (Number of 429 responses per second * Average RU charge per request to the partition)`.
 
   - This approach estimates what the "real" RU/s consumption would be if the requests weren't rate limited.
