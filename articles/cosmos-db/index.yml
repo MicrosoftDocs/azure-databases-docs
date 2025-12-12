@@ -228,7 +228,7 @@ additionalContent:
             - text: Distributed NoSQL databases
               url: distributed-nosql.md
         - title: Analytics with Microsoft Fabric
-          summary: Integrate Azure Cosmos DB with Microsoft Fabric for real-time insights.
+          summary: Integrate Azure Cosmos DB with Microsoft Fabric for analytics.
           links:
             - text: Azure Cosmos DB Mirroring
               url: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context

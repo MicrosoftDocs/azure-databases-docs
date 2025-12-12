@@ -915,7 +915,7 @@
       href: ../optimize-costs.yml?context=/azure/cosmos-db/nosql/context/context
     - name: Network bandwidth
       href: ../network-bandwidth.md?context=/azure/cosmos-db/nosql/context/context
-- name: Analytics and real-time insights
+- name: Analytics with Microsoft Fabric
   items:
     - name: Overview
       href: ../analytics-and-business-intelligence-overview.md?context=/azure/cosmos-db/nosql/context/context
