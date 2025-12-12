@@ -6033,7 +6033,7 @@
     {
       "source_path_from_root": "/articles/cosmos-db/configure-custom-partitioning.md",
       "redirect_url": "/azure/cosmos-db/analytics-and-business-intelligence-overview",
-      "redirect_document_id": true
+      "redirect_document_id": false
     },
     {
       "source_path_from_root": "/articles/cosmos-db/custom-partitioning-analytical-store.md",
