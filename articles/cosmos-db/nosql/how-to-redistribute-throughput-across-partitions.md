@@ -314,15 +314,20 @@ The right approach depends on your workload requirements. General approaches inc
 
 ## Programatically change the throughput across partitions
 
-You can use the PowerShell command `Update-AzCosmosDBSqlContainerPerPartitionThroughput` to redistribute throughput. Let's look at an example with a container that has 6,000 RU/s total (either 6,000 manual RU/s or autoscale 6,000 RU/s) and three physical partitions. In this example, we want the following throughput distribution:
+You can use the PowerShell command `Update-AzCosmosDBSqlContainerPerPartitionThroughput` to redistribute throughput. Let's look at an example with a container that has 6,000 RU/s total (either 6,000 manual RU/s or autoscale 6,000 RU/s) and two physical partitions. In this example, we want the following throughput distribution:
 
-| Physical Partition | RU/s Assigned |
-| --- | --- |
-| 0 | 2,000 |
-| 1 | 4,000 |
-| 2 | 1,000 |
+| Physical Partition | Current RU/s | Target RU/s |
+| --- | --- | --- |
+| 0 | 3,000 | 5,000 |
+| 1 | 3,000 | 20,000  |
 
-After the redistribution, the total throughput across all partitions will be updated from 6,000 RU/s to 7,000 RU/s.
+After the redistribution, the total throughput across all partitions will be updated from 6,000 RU/s to 25,000 RU/s with throughput distribution:
+| Physical Partition | Current RU/s |
+| -- | -- |
+| 0 | 5,000 |
+| 2 | 10,000 |
+| 3 | 10,000 |
+
 
 ::: zone pivot="azure-cli"
 
@@ -336,7 +341,7 @@ az cosmosdb sql container redistribute-partition-throughput \
     --account-name "<cosmos-account-name>" \
     --database-name "<cosmos-database-name>" \
     --name "<cosmos-container-name>" \
-    --target-partition-info "<PartitionId3=Throughput PartitionId4=Throughput...>"
+    --target-partition-info "<0=5000 1=20000...>"
 ```
 
 ### [API for MongoDB](#tab/mongodb)
@@ -349,7 +354,7 @@ az cosmosdb mongodb collection redistribute-partition-throughput \
     --account-name "<cosmos-account-name>" \
     --database-name "<cosmos-database-name>" \
     --name "<cosmos-collection-name>" \
-    --target-partition-info "<PartitionId3=Throughput PartitionId4=Throughput...>"
+    --target-partition-info "<0=5000 1=20000...>"
 ```
 
 ---
@@ -365,9 +370,8 @@ Use the `Update-AzCosmosDBSqlContainerPerPartitionThroughput` for containers wit
 ```azurepowershell-interactive
 $SourcePhysicalPartitionObjects =  @()
 $TargetPhysicalPartitionObjects =  @()
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 2000
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 4000
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 5000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 20000
 
 # Container with dedicated RU/s
 $containerParams = @{
@@ -398,9 +402,8 @@ Use the `Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput` for collectio
 ```azurepowershell-interactive
 $SourcePhysicalPartitionObjects =  @()
 $TargetPhysicalPartitionObjects =  @()
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 2000
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 4000
-$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "2" -Throughput 1000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 5000
+$TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 20000
 
 # Collection with dedicated RU/s
 $collectionParams = @{
