@@ -53,7 +53,7 @@ Based on previous architecture, you can achieve the following use cases:
 
 * **Operational reporting:** Supply chain teams need flexible and custom reports over real-time, accurate operational data. These reports are required to obtain a snapshot view of supply chain effectiveness, profitability, and productivity. It allows data analysts and other key stakeholders to constantly reevaluate the business and identify areas to tweak to reduce operational costs. 
 
- Mirroring for Azure Cosmos DB enable rich business intelligence (BI)/reporting scenarios:
+ Mirroring for Azure Cosmos DB enables rich business intelligence (BI)/reporting scenarios:
 
   * Query operational data from Azure Cosmos DB by using native integration with full expressiveness of T-SQL language.
 
