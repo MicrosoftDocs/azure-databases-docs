@@ -1,4 +1,4 @@
-title: Audit Logging in in Azure Database for PostgreSQL for Entra ID principals
+title: Audit Logging in Azure Database for PostgreSQL for Entra ID principals
 description: Learn how to attribute actions to specific Entra ID users in PostgreSQL audit logs.
 author: ajanko
 ms.author: ajanko
@@ -15,9 +15,9 @@ ms.custom:
 
 Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in Audit logging in [Azure Database for PostgreSQL - Flexible server](./security-audit).
 
-One of the challenges is utilizing auditing feature alongside PostgreSQL Flexible Server Entra ID authentication when you are using Entra ID groups and want to audit the actions of indvidual groups members. This is because when group members sign in, they use their personal access tokens but use the group name as the username.
+One of the challenges is utilizing auditing feature alongside PostgreSQL Flexible Server Entra ID authentication when you're using Entra ID groups and want to audit the actions of individual groups members. This is because when group members sign in, they use their personal access tokens but use the group name as the username.
 
-Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query language that enables querying Azure Service Logs. KQL supports querying Azure logs to quickly analyze a high volume of data. For this article, we will use the KQL to query Azure Postgres Logs and extract Entra ID user information from audit logs.
+Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query language that enables querying Azure Service Logs. KQL supports querying Azure logs to quickly analyze a high volume of data. For this article, we'll use the KQL to query Azure Postgres Logs and extract Entra ID user information from audit logs.
 
 ## Prerequisites
 
@@ -30,9 +30,9 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 ## Kusto query
 
-The following Kusto query, queries the `AzureDiagnostics` two times.
-The first sub-query finds all lines which contain the string `Microsoft Entra ID connection authorized` and extracts the `PrincipalName` from these log lines, alongside the `SessionId`.
-The second sub-query finds all audit logs.
+The following Kusto query queries the `AzureDiagnostics` two times.
+The first subquery finds all lines, which contain the string `Microsoft Entra ID connection authorized` and extracts the `PrincipalName` from these log lines, alongside the `SessionId`.
+The second subquery finds all audit logs.
 Finally, these two sub-queries are joined on the `SessionId`.
 
 ```kusto
@@ -71,13 +71,13 @@ AzureDiagnostics
 ```
 
 ## Example results
-The resulting table will look like this:
+The resulting table looks like this:
 | TimeGenerated | PrincipalName | RoleName | OperationType | SqlQuery |
 | --- | --- | --- | --- | --- |
 | 2025-12-12T16:25:05.104Z | user@example.com | ExampleGroupName | SELECT | select * from pg_seclabels; |
 | 2025-12-12T16:25:04.000Z | user@example.com | user@example.com | SELECT | select * from pg_seclabels; |
 
-If the user is logging in as a group role, the columns `PrincipalName` and `role` will differ (like in the first row of the example).  
-The value in the `PrincipalName` will identify the user which logged in, and the value in the `role` will identify the role in PostgreSQL into which the user logged in.
+If the user is logging in as a group role, the columns `PrincipalName` and `role` differ (like in the first row of the example).  
+The value in the `PrincipalName` identifies the user which logged in, and the value in the `role` identifies the role in PostgreSQL into which the user logged in.
 
 `PrincipalName` will be either the [User Principal Name (UPN) or AppId](./security-entra-concepts#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
