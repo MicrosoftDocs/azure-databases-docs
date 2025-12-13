@@ -6,7 +6,7 @@ ms.author: patricka
 ms.reviewer: khelanmodi
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 12/02/2025
+ms.date: 12/12/2025
 ms.custom: devx-track-go, devx-track-go-ai, devx-track-data-ai
 # CustomerIntent: As a developer, I want to learn how to use vector search in Go applications with Azure DocumentDB
 ---
@@ -61,15 +61,15 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
     AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
-    AZURE_OPENAI_EMBEDDING_ENDPOINT=
+    AZURE_OPENAI_EMBEDDING_ENDPOINT=<AZURE_OPENAI_ENDPOINT>
     EMBEDDING_SIZE_BATCH=16
 
     # Azure DocumentDB configuration
-    MONGO_CLUSTER_NAME=
+    MONGO_CLUSTER_NAME=<DOCUMENTDB_NAME>
 
     # Data file
     DATA_FILE_WITH_VECTORS=data/HotelsData_toCosmosDB_Vector.json
-    EMBEDDED_FIELD=DescriptionVector
+    EMBEDDED_FIELD=text_embedding_ada_002
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=100
     ```
@@ -82,7 +82,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. Create a new subdirectory off the root named `data`.
 
-1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_with_vectors.json` file in the `data` subdirectory.
+1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_toCosmosDB_Vector.json` file in the `data` subdirectory.
 
 1. The project structure should look like this:
 
@@ -90,7 +90,7 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     vector-search-quickstart
     ├── .env
     ├── data
-    │   └── HotelsData_with_vectors.json
+    │   └── HotelsData_toCosmosDB_Vector.json
     └── venv (or your virtual environment folder)
     ```
 
@@ -102,7 +102,7 @@ Continue the project by creating code files for vector search. When you are done
 vector-search-quickstart
 ├── .env
 ├── data
-│   └── HotelsData_with_vectors.json
+│   └── HotelsData_toCosmosDB_Vector.json
 ├── src
 │   ├── diskann.go
 │   ├── ivf.go
