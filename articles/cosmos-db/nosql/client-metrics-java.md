@@ -46,7 +46,7 @@ Ensure you pass `clientTelemetryConfig` when creating your `CosmosClient`:
 
 :::code language="java" source="~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/prometheus/async/CosmosClientMetricsQuickStartAsync.java" id="CosmosClient":::
 
-When adding the endpoint for your application client to `prometheus.yml`, add the domain name and port to "targets". For example, if prometheus is running on the same server as your app client, you can add `localhost:8080` to `targets` as below:
+When adding the endpoint for your application client to `prometheus.yml`, add the domain name and port to "targets". For example, if prometheus is running on the same server as your app client, you can add `localhost:8080` to `targets`:
 
 ```yml
 scrape_configs:
