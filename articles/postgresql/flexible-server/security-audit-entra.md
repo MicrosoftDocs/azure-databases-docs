@@ -1,6 +1,6 @@
 ---
-title: Audit Logging in Azure Database for PostgreSQL for Entra ID principals
-description: Learn how to attribute actions to specific Entra ID users in PostgreSQL audit logs.
+title: Audit Logging in Azure Database for PostgreSQL for Microsoft Entra ID principals
+description: Learn how to attribute actions to specific Microsoft Entra ID users in PostgreSQL audit logs.
 author: ak800i
 ms.author: ajanko
 ms.reviewer: ajanko
@@ -12,13 +12,13 @@ ms.custom:
   - horz-security
 ---
 
-# Audit logging in Azure Database for PostgreSQL for Entra ID principals
+# Audit logging in Azure Database for PostgreSQL for Microsoft Entra ID principals
 
-Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in Audit logging in [Azure Database for PostgreSQL - Flexible server](./security-audit.md).
+Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in [Audit logging in Azure Database for PostgreSQL - Flexible server](./security-audit.md).
 
-One of the challenges is utilizing auditing feature alongside PostgreSQL Flexible Server Entra ID authentication when you're using Entra ID groups and want to audit the actions of individual groups members. This is because when group members sign in, they use their personal access tokens but use the group name as the username.
+One of the challenges is utilizing auditing feature alongside Microsoft Entra ID authentication when you're using Microsoft Entra ID groups and want to audit the actions of individual groups members. This is because when group members sign in, they use their personal access tokens but use the group name as the username.
 
-Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query language that enables querying Azure Service Logs. KQL supports querying Azure logs to quickly analyze a high volume of data. For this article, we'll use the KQL to query Azure Postgres Logs and extract Entra ID user information from audit logs.
+Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query language that enables querying Azure Service Logs. KQL supports querying Azure logs to quickly analyze a high volume of data. For this article, we'll use the KQL to query Azure Postgres Logs and extract Microsoft Entra ID user information from audit logs.
 
 ## Prerequisites
 
@@ -26,8 +26,8 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](./how-to-configure-and-access-logs.md#configure-diagnostic-settings)
 1. Adjust the `log_line_prefix` server parameter:  
   From the Server Parameters blade set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s`  in the same sequence, in order to get the desired results.  
-  Before:  `log_line_prefix` = `%t-%c-`  
-  After: `log_line_prefix` = `%t-%c-user=%u,db=%d,session=%c,sess_time=%s`
+    * Before:  `log_line_prefix` = `%t-%c-`  
+    * After: `log_line_prefix` = `%t-%c-user=%u,db=%d,session=%c,sess_time=%s`
 
 ## Kusto query
 
