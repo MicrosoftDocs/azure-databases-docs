@@ -84,14 +84,14 @@ In preview, the following features are now supported for Azure Database for Post
     _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
 -  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
+
+    _Error message**: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
+  
      **Examples include**:
            - Compute scaling, enabling HA, and performing failover and failback within one hour.
             - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.        
                          
-            _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
-       
-             If you encounter this error, space out your operations so they occur over more than one hour.
-          
+              
 
 Learn how to [scale up or down IOPS](how-to-scale-compute-storage-portal.md).
 
