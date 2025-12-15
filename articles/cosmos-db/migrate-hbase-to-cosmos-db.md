@@ -369,7 +369,7 @@ Here is an example to migrate your data to Azure Cosmos DB. It assumes that HBas
 
 Apache Spark – Apache HBase Connector repository can be found at [Apache Spark - Apache HBase Connector](https://github.com/hortonworks-spark/shc)
 
-For Azure Cosmos DB Spark connector, refer to the [Quick Start Guide](quickstart-spark.md) and download the appropriate library for your Spark version.
+For Azure Cosmos DB Spark connector, refer to the [Quick Start Guide](tutorial-spark-connector.md) and download the appropriate library for your Spark version.
 
 1. Copy hbase-site.xml to your Spark configuration directory.
 

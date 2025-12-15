@@ -32,7 +32,7 @@ If you are using a different API, see [API for MongoDB](mongodb/how-to-provision
    * Enter a **Partition key**
    * Select **OK**.
 
-    :::image type="content" source="../media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Screenshot of New Database dialog box":::
+    :::image type="content" source="media/how-to-provision-database-throughput/provision-database-throughput-portal-sql-api.png" alt-text="Screenshot of New Database dialog box":::
 
 ## Provision throughput using Azure CLI or PowerShell
 

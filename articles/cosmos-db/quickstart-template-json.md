@@ -58,7 +58,7 @@ More Azure Cosmos DB template samples can be found in the [quickstart template g
 
 2. Select or enter the following values.
 
-   :::image type="content" source="../media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM template, Azure Cosmos DB integration, deploy portal":::
+   :::image type="content" source="media/quick-create-template/create-cosmosdb-using-template-portal.png" alt-text="ARM template, Azure Cosmos DB integration, deploy portal":::
 
     Unless it is specified, use the default values to create the Azure Cosmos DB resources.
 
@@ -79,7 +79,7 @@ More Azure Cosmos DB template samples can be found in the [quickstart template g
 
 3. Select **Purchase**. After the Azure Cosmos DB account has been deployed successfully, you get a notification:
 
-   :::image type="content" source="../media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM template, Azure Cosmos DB integration, deploy portal notification":::
+   :::image type="content" source="media/quick-create-template/resource-manager-template-portal-deployment-notification.png" alt-text="ARM template, Azure Cosmos DB integration, deploy portal notification":::
 
 The Azure portal is used to deploy the template. In addition to the Azure portal, you can also use the Azure PowerShell, Azure CLI, and REST API. To learn other deployment methods, see [Deploy templates](/azure/azure-resource-manager/templates/deploy-powershell).
 

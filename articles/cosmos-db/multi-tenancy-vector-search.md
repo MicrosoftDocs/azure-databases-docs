@@ -64,7 +64,7 @@ For a higher density of tenants and lower isolation, the partition key-per-tenan
 **Example:**
 ResearchHub can stratify data within each tenant’s partition by organizing it at various levels such as *DepartmentId* and *ResearcherId*, facilitating efficient management and queries.
 
-:::image type="content" source="../media/gen-ai/multi-tenant/hpk.png" alt-text="Diagram showing AI data stratification.":::
+:::image type="content" source="media/gen-ai/multi-tenant/hpk.png" alt-text="Diagram showing AI data stratification.":::
 
 ### Account-per-tenant
 
@@ -91,7 +91,7 @@ Azure Cosmos DB enables [customer-managed keys](how-to-setup-customer-managed-ke
 
 Using customer-managed keys ensures each tenant's data is encrypted uniquely, providing robust security and compliance.
 
-:::image type="content" source="../media/gen-ai/multi-tenant/account.png" alt-text="Diagram showing an example AI account-per-tenant.":::
+:::image type="content" source="media/gen-ai/multi-tenant/account.png" alt-text="Diagram showing an example AI account-per-tenant.":::
 
 ## Other isolation models
 

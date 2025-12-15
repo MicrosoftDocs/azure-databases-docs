@@ -45,7 +45,7 @@ All hosts tried for query failed (tried :10350: BusyPoolException 'All connectio
 Instead of tuning `max requests per connection`, make sure that `connections per host` is set to a minimum of 10. See the [code sample section](#code-sample).
 
 ### TooManyRequest(429)
-OverloadException is thrown when the request rate is too great, which might happen when insufficient throughput is provisioned for the table and the RU budget is exceeded. For more information, see [large request](../sql/troubleshoot-request-rate-too-large.md#request-rate-is-large) and [server-side retry](prevent-rate-limiting-errors.md).
+OverloadException is thrown when the request rate is too great, which might happen when insufficient throughput is provisioned for the table and the RU budget is exceeded. For more information, see [large request](troubleshoot-request-rate-too-large.md#request-rate-is-large) and [server-side retry](prevent-rate-limiting-errors.md).
 #### Recommendation
 Apply one of the following options:
 - If throttling is persistent, increase the provisioned RU.

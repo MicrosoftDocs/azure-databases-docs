@@ -46,7 +46,7 @@ Once enabled, there are four levels of log events that will be emitted:
 
 * Warning:
   * When your Function user code had an unhandled exception - There's a gap in your Function code and the Function isn't [resilient to errors](/azure/azure-functions/performance-reliability#write-defensive-functions) or a serialization error (for C# Functions, the raw json can't be deserialized to the selected C# type).
-  * When there are transient connectivity issues preventing the trigger from interacting with the Azure Cosmos DB account. The trigger will retry these [transient connectivity errors](troubleshoot-dotnet-sdk-request-timeout.md) but if they extend for a long period of time, there could be a network problem. You can enable Debug level traces to obtain the Diagnostics from the underlying Azure Cosmos DB SDK.
+  * When there are transient connectivity issues preventing the trigger from interacting with the Azure Cosmos DB account. The trigger will retry these [transient connectivity errors](troubleshoot-dotnet-sdk-request-time-out.md) but if they extend for a long period of time, there could be a network problem. You can enable Debug level traces to obtain the Diagnostics from the underlying Azure Cosmos DB SDK.
 
 * Information:
   * When a lease is taken to another instance - During initialization and when the Function scales, the leases can be rebalanced to another instance. If you customized the acquire or expiration intervals, it can also indicate that the values might be inappropriate (the expiration interval is lower than renewal).

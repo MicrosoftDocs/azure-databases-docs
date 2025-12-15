@@ -234,6 +234,6 @@ relatedContent:
   - text: Manage Azure Cosmos DB for NoSQL resources using PowerShell
     url: manage-with-powershell.md
   - text: Manage Azure Cosmos DB for NoSQL resources using Azure CLI
-    url: sql/manage-with-cli.md
+    url: manage-with-cli.md
   - text: Manage Azure Cosmos DB for NoSQL resources with Azure Resource Manager templates
     url: ./manage-with-templates.md

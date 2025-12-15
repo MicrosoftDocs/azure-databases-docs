@@ -272,7 +272,7 @@ sections:
 
           Seeing code 429 errors when you use autoscale  doesn't necessarily indicate an issue with your database or container. Generally for a production workload, if between 1 percent and 5 percent of requests have code 429 errors and your end-to-end latency is acceptable, the errors are a healthy sign that the RU/s is being fully utilized. No action is required.
           
-          Learn how to [interpret and debug code 429 rate limiting errors](nosql/troubleshoot-request-rate-too-large.md).
+          Learn how to [interpret and debug code 429 rate limiting errors](troubleshoot-request-rate-too-large.md).
 
 additionalContent: |
 

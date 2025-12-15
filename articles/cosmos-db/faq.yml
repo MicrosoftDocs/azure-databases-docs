@@ -178,7 +178,7 @@ sections:
       - question: |
           Is a local instance of Azure Cosmos DB for NoSQL available?
         answer: |
-          Yes. The [Azure Cosmos DB emulator](../emulator.md) provides a high-fidelity emulation of the Azure Cosmos DB service. It supports functionality that's identical to Azure Cosmos DB across various APIs. This functionality includes support for creating items, querying items, provisioning containers, and scaling containers. You can develop and test applications by using the emulator's endpoints. You can then deploy the applications to Azure at a global scale by changing the connection string from the emulator to the live service.
+          Yes. The [Azure Cosmos DB emulator](emulator.md) provides a high-fidelity emulation of the Azure Cosmos DB service. It supports functionality that's identical to Azure Cosmos DB across various APIs. This functionality includes support for creating items, querying items, provisioning containers, and scaling containers. You can develop and test applications by using the emulator's endpoints. You can then deploy the applications to Azure at a global scale by changing the connection string from the emulator to the live service.
       - question: |
           Why are long floating-point values in an Azure Cosmos DB for NoSQL item rounded when using the Data Explorer in the portal?
         answer: |
@@ -188,11 +188,11 @@ sections:
       - question: |
           What is role-based access control (RBAC)?
         answer: |
-          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see the [security glossary](security/glossary.md).
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see the [security glossary](how-to-connect-role-based-access-control.md).
       - question: |
           How do I enable data-plane role-based access control for Azure Cosmos DB for NoSQL?
         answer: |
-          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](security/how-to-grant-data-plane-role-based-access.md).
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](how-to-connect-role-based-access-control.md).
       - question: |
           Which Azure Cosmos DB APIs support data-plane role-based access control?
         answer: |

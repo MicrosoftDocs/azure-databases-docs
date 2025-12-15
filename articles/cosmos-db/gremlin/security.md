@@ -23,7 +23,7 @@ This article provides guidance on how to best secure your Azure Cosmos DB for Ap
 
 ## Identity management
 
-- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](../how-to-grant-control-plane-access.md).
+- **Use Azure control plane role-based access control to manage account databases and containers**: Apply Azure role-based access control to define fine-grained permissions for managing Azure Cosmos DB accounts, databases, and containers. This control ensures that only authorized users or services can perform administrative operations. For more information, see [Grant control plane access](../how-to-connect-role-based-access-control.md#grant-control-plane-role-based-access).
 
 ## Transport security
 

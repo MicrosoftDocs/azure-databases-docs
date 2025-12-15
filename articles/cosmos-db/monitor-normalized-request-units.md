@@ -37,7 +37,7 @@ In general, for a production workload, if you see between 1-5% of requests with 
 
 To determine what percent of your requests to your database or container resulted in 429s, from your Azure Cosmos DB account, navigate to **Insights** > **Requests** > **Total Requests by Status Code**. Filter to a specific database and container. For API for Gremlin, use the **Gremlin Requests** metric.
 
-:::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/insights-429-requests.png" alt-text="Screenshot of the Total Requests by Status Code chart that shows number of 429 and 2xx requests." lightbox="nosql/media/troubleshoot-request-rate-too-large/insights-429-requests.png":::
+:::image type="content" source="media/troubleshoot-request-rate-too-large/insights-429-requests.png" alt-text="Screenshot of the Total Requests by Status Code chart that shows number of 429 and 2xx requests." lightbox="media/troubleshoot-request-rate-too-large/insights-429-requests.png":::
 
 If the normalized RU consumption metric is consistently 100% across multiple partition key ranges and the rate of 429s is greater than 5%, it's recommended to increase the throughput. You can find out which operations are heavy and what their peak usage is by using the [Azure monitor metrics and Azure monitor diagnostic logs](troubleshoot-request-rate-too-large.md#step-3-determine-what-requests-are-returning-429-responses). To learn about best practices, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md).
 

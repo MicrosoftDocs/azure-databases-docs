@@ -45,7 +45,7 @@ When you provision a dedicated gateway, an integrated cache is automatically cre
 
 ### Authenticate with role-based access control
 
-The dedicated gateway uses the same permissions, role definitions and role assignments as Azure Cosmos DB. If you already have role-based access control (RBAC) configured for data plane operations in your Azure Cosmos DB account, you can also use it for authenticating to the dedicated gateway. Learn about [RBAC for Azure Cosmos DB data plane](security/how-to-grant-data-plane-role-based-access.md) operations.
+The dedicated gateway uses the same permissions, role definitions and role assignments as Azure Cosmos DB. If you already have role-based access control (RBAC) configured for data plane operations in your Azure Cosmos DB account, you can also use it for authenticating to the dedicated gateway. Learn about [RBAC for Azure Cosmos DB data plane](how-to-connect-role-based-access-control.md#grant-data-plane-role-based-access) operations.
 
 Configure your `CosmosClient` by setting the dedicated gateway endpoint, credential, and configuring [gateway connectivity mode](sdk-connection-modes.md#available-connectivity-modes). All dedicated gateway endpoints follow the same pattern. Remove `documents.azure.com` from your original endpoint and replace it with `sqlx.cosmos.azure.com`. A dedicated gateway will always have the same endpoint, even if you remove and reprovision it.
 

@@ -58,4 +58,4 @@ The [query](/javascript/api/@azure/cosmos/items#@azure-cosmos-items-query) metho
 Now that you've queried multiple items, try one of our end-to-end tutorials with the API for NoSQL.
 
 > [!div class="nextstepaction"]
-> [Build a Node.js web app by using the JavaScript SDK to manage an API for NoSQL account in Azure Cosmos DB](tutorial-nodejs-web-app.md)
+> [Build a Node.js web app by using the JavaScript SDK to manage an API for NoSQL account in Azure Cosmos DB](quickstart-nodejs.md)

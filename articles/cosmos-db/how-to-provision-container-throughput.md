@@ -31,7 +31,7 @@ If you are using a different API, see [API for MongoDB](mongodb/how-to-provision
    * Select **Autoscale** or **Manual** throughput and enter the required **Container throughput** (for example, 1000 RU/s). Enter a throughput that you want to provision (for example, 1000 RUs).
    * Select **OK**.
 
-    :::image type="content" source="../media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot of Data Explorer, with New Collection highlighted":::
+    :::image type="content" source="media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot of Data Explorer, with New Collection highlighted":::
 
 ## Azure CLI or PowerShell
 

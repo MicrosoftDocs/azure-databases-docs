@@ -40,7 +40,7 @@ To get a quick estimate for your workload using the basic mode, open the [capaci
 
 After you fill in the required details, select **Calculate**. The **Cost Estimate** table shows the total cost for storage and provisioned throughput. You can expand the **Show Details** link to get the breakdown of the throughput required for different CRUD and query requests. Each time you change the value of any field, select **Calculate** to recalculate the estimated cost.
 
-:::image type="content" source="../media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Screenshot of capacity planner basic mode." border="true" lightbox="../media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png":::
+:::image type="content" source="media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png" alt-text="Screenshot of capacity planner basic mode." border="true" lightbox="media/estimate-ru-with-capacity-planner/basic-mode-sql-api.png":::
 
 ## <a id="advanced-mode"></a>Estimate provisioned throughput and cost using advanced mode
 
@@ -68,7 +68,7 @@ After you sign in, you can see more fields compared to the fields in basic mode.
 |Queries/second |Number of queries expected per second per region. For an accurate estimate, either use the average cost of queries or enter the RU/s your queries use from query stats in Azure portal. |
 | Average RU/s charge per query | By default, the average cost of queries/second per region is estimated at 10 RU/s. You can increase or decrease it based on the RU/s charges based on your estimated query charge. |
 
-:::image type="content" source="../media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png" alt-text="Screenshot of capacity planner advanced mode." border="true" lightbox="../media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png":::
+:::image type="content" source="media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png" alt-text="Screenshot of capacity planner advanced mode." border="true" lightbox="media/estimate-ru-with-capacity-planner/advanced-mode-sql-api.png":::
 
 The prices shown in the Azure Cosmos DB capacity planner are estimates based on the public pricing rates for throughput and storage. All prices are shown in US dollars. To see all rates by region, see [Azure Cosmos DB pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/).
 

@@ -35,7 +35,7 @@ This article explains the different ways to create a container in Azure Cosmos D
    * Select **Autoscale** or **Manual** throughput and enter the required **Container throughput** (for example, 1000 RU/s). Enter a throughput that you want to provision (for example, 1000 RUs).
    * Select **OK**.
 
-    :::image type="content" source="../media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot of Data Explorer, with New Collection highlighted":::
+    :::image type="content" source="media/how-to-provision-container-throughput/provision-container-throughput-portal-sql-api.png" alt-text="Screenshot of Data Explorer, with New Collection highlighted":::
 
 ## <a id="cli-sql"></a>Create a container using Azure CLI
 

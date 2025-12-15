@@ -37,7 +37,7 @@ Currently, you can measure consumption only by using the Azure portal or by insp
 
 1. Select **Query Stats** to display the actual request charge for the request you executed.
 
-   :::image type="content" source="../media/find-request-unit-charge/portal-sql-query.png" alt-text="Screenshot of a SQL query request charge in the Azure portal.":::
+   :::image type="content" source="media/find-request-unit-charge/portal-sql-query.png" alt-text="Screenshot of a SQL query request charge in the Azure portal.":::
 
 ## Use the .NET SDK
 

@@ -306,7 +306,7 @@ az cosmosdb sql database throughput update \
 
 ### Prevent a database from being deleted
 
-Put an Azure resource delete lock on a database to prevent it from being deleted. This feature requires locking the Azure Cosmos DB account from being changed by data plane SDKs. To learn more, see [preventing changes from SDKs](security/index.md). Azure resource locks can also prevent a resource from being changed by specifying a `ReadOnly` lock type. For an Azure Cosmos DB database, it can be used to prevent throughput from being changed.
+Put an Azure resource delete lock on a database to prevent it from being deleted. This feature requires locking the Azure Cosmos DB account from being changed by data plane SDKs. To learn more, see [preventing changes from SDKs](security.md). Azure resource locks can also prevent a resource from being changed by specifying a `ReadOnly` lock type. For an Azure Cosmos DB database, it can be used to prevent throughput from being changed.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
