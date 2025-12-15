@@ -34,9 +34,9 @@ In certain conditions, the HTTP 503 "Service Unavailable" error includes a subst
 | Substatus code | Description |
 |----------|-------------|
 | 20001 | The service unavailable error happened because there are client side [connectivity issues](#client-side-transient-connectivity-issues) (failures attempting to connect). The client attempted to recover by [retrying](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503) but all retries failed. |
-| 20002 | The service unavailable error happened because there are client side [timeouts](troubleshoot-dotnet-sdk-request-timeout.md#troubleshooting-steps). The client attempted to recover by [retrying](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503) but all retries failed. |
+| 20002 | The service unavailable error happened because there are client side [timeouts](troubleshoot-dotnet-sdk-request-time-out.md#troubleshooting-steps). The client attempted to recover by [retrying](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503) but all retries failed. |
 | 20003 | The service unavailable error happened because there are underlying I/O errors related to the operating system. See the exception details for the related I/O error. |
-| 20004 | The service unavailable error happened because [client machine's CPU is overloaded](troubleshoot-dotnet-sdk-request-timeout.md#high-cpu-utilization). |
+| 20004 | The service unavailable error happened because [client machine's CPU is overloaded](troubleshoot-dotnet-sdk-request-time-out.md#high-cpu-utilization). |
 | 20005 | The service unavailable error happened because client machine's thread pool is starved. Verify any potential [blocking async calls in your code](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#avoid-using-taskresult-and-taskwait). |
 | 20006 | The connection between the service and client was interrupted or terminated in an unexpected manner. |
 | >= 21001 | This service unavailable error happened due to a transient service condition. Verify the conditions in the previous section, and confirm if you have retry policies in place. If the volume of these errors is high compared with successes, reach out to Azure Support. |
@@ -49,7 +49,7 @@ Verify that all the [required ports](sdk-connection-modes.md#service-port-ranges
 
 Service unavailable exceptions can surface when there are transient connectivity problems that are causing timeouts and can be safely retried following the [design recommendations](conceptual-resilient-sdk-applications.md#timeouts-and-connectivity-related-failures-http-408503).
 
-To resolve them, follow the [request timeout troubleshooting steps](troubleshoot-dotnet-sdk-request-timeout.md#troubleshooting-steps).
+To resolve them, follow the [request timeout troubleshooting steps](troubleshoot-dotnet-sdk-request-time-out.md#troubleshooting-steps).
 
 ### Service outage
 

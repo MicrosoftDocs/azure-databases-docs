@@ -3,7 +3,7 @@ title: $last
 description: The $last operator returns the last document from the result sorted by one or more fields 
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/04/2025
 ---
 

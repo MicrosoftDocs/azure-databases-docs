@@ -3,7 +3,7 @@ title: $covarianceSamp
 description: The $covarianceSamp operator returns the covariance of a sample of two numerical expressions
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/20/2025
 ---
 
