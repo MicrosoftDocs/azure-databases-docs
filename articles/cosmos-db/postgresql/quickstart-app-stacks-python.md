@@ -1,8 +1,8 @@
 ---
 title: Use Python to connect and run SQL on Azure Cosmos DB for PostgreSQL
 description: See how to use Python to connect and run SQL statements on Azure Cosmos DB for PostgreSQL.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: devx-track-python, sfi-ropc-blocked
