@@ -121,7 +121,7 @@ The RAG pattern, with prompt engineering, serves the purpose of enhancing respon
 
 ## How to implement integrated vector database functionalities
 
-You can implement integrated vector database functionalities for the following [Azure Cosmos DB APIs](choose-api.md):
+You can implement integrated vector database functionalities for Azure Cosmos DB and its various compatibility APIs.
 
 ### NoSQL API
 

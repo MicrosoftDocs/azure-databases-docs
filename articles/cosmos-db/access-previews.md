@@ -26,11 +26,6 @@ Azure Cosmos DB offers several preview features that you can request access to. 
 > [!TIP]
 > If your request is stuck in the **Pending** state for an abnormal amount of time, [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-## Next steps
+## Related content
 
-- Learn [how to choose an API](choose-api.md) in Azure Cosmos DB
 - [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)
-- [Get started with Azure Cosmos DB for MongoDB](mongodb/create-mongodb-nodejs.md)
-- [Get started with Azure Cosmos DB for Cassandra](cassandra/manage-data-dotnet.md)
-- [Get started with Azure Cosmos DB for Gremlin](gremlin/quickstart-dotnet.md)
-- [Get started with Azure Cosmos DB for Table](table/quickstart-dotnet.md)
