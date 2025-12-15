@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/choose-api.md",
+      "redirect_url": "/azure/cosmos-db",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/mongodb/cosmos-db-vs-mongodb-atlas.md",
       "redirect_url": "/azure/documentdb/compare-mongodb-atlas",
       "redirect_document_id": true
