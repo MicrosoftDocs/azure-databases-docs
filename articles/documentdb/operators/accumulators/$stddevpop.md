@@ -3,7 +3,7 @@ title: $stddevpop
 description: The $stddevpop operator calculates the standard deviation of the specified values
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2025
 ---
 

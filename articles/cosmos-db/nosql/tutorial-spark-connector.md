@@ -621,10 +621,10 @@ When you work with API for NoSQL data in Spark, you can perform partial updates 
 ## Related content
 
 - [Apache Spark](https://spark.apache.org/)
-- [Azure Cosmos DB Catalog API](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/catalog-api.md)
-- [Configuration parameter reference](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/configuration-reference.md)
-- [Azure Cosmos DB Spark connector samples](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples)
-- [Migrate from Spark 2.4 to Spark 3.*](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3_2-12/docs/migration.md)
+- [Azure Cosmos DB Catalog API](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/catalog-api.md)
+- [Configuration parameter reference](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/configuration-reference.md)
+- [Azure Cosmos DB Spark connector samples](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3/Samples)
+- [Migrate from Spark 2.4 to Spark 3.*](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3/docs/migration.md)
 - Deprecated versions:
   - The Azure Cosmos DB Spark Connector for Spark 3.1 and 3.2 is deprecated, because there are no supported Spark 3.1 or 3.2 runtimes in Azure Databricks, Azure Synapse or Azure HDInsight available anymore.
   - [Migration Guide to update from Spark 3.1](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-spark_3-1_2-12/migration-guide.md)

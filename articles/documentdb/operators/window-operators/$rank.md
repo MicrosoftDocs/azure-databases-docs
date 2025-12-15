@@ -1,8 +1,8 @@
 ---
 title: $rank
 description: The $rank operator ranks documents within a partition based on a specified sort order.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: reference
 ms.date: 06/28/2025
 ---

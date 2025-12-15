@@ -183,22 +183,6 @@
       items:
       - name: Distribute throughput across partitions
         href: distribute-throughput-across-partitions.md
-  - name: Analytics with Azure Synapse Link
-    items:
-    - name: Azure Synapse Link for Azure Cosmos DB
-      href: ../synapse-link.md
-    - name: Azure Synapse Link supported features
-      href: /azure/synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Azure Synapse Link use cases
-      href: ../synapse-link-use-cases.md
-    - name: Azure Synapse Link FAQ
-      href: ../synapse-link-frequently-asked-questions.yml
-    - name: Analytical store - Overview
-      href: ../analytical-store-introduction.md
-    - name: Change data capture (CDC)
-      href: ../analytical-store-change-data-capture.md
-    - name: Time travel (preview)
-      href: ../synapse-link-time-travel.md
   - name: Back up and restore
     items:
     - name: Back up and restore introduction
@@ -386,7 +370,7 @@
     - name: Integrate with Azure services
       href: integrations-overview.md
     - name: RAG with Azure OpenAI
-      href: ../vector-search.md#retrieval-augmented-generation
+      href: ../vector-database.md#retrieval-augmented-generation
     - name: Vercel
       href: ../vercel-integration.md
   - name: Migrate data to Azure Cosmos DB
@@ -441,28 +425,6 @@
       href: prevent-rate-limiting-errors.md
     - name: Optimize query and storage costs when upgrading
       href: compression-cost-savings.md
-  - name: Analytics and BI with Azure Synapse Link
-    items:
-    - name: Configure Azure Synapse Link
-      href: ../configure-synapse-link.md
-    - name: Connect to Azure Synapse Link
-      href: /azure/synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Azure Synapse Link and integrated Power BI
-      href: ../integrated-power-bi-synapse-link.md
-    - name: Analytical store and private endpoints
-      href: ../analytical-store-private-endpoints.md
-    - name: Query with Azure Synapse Spark 3
-      href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Query with Azure Synapse Spark 2
-      href: /azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Query with serverless SQL pool
-      href: /azure/synapse-analytics/sql/query-cosmos-db-analytical-store?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-    - name: Use Power BI with Azure Synapse Link
-      href: ../synapse-link-power-bi.md
-    - name: Configure custom partitioning
-      href: ../configure-custom-partitioning.md
-    - name: Get started with change data capture
-      href: ../get-started-change-data-capture.md
   - name: Back up and restore
     items:
     - name: Continuous backup

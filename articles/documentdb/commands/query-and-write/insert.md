@@ -352,6 +352,6 @@ The ordered insert command returns a response confirming the order in which docu
 
 ## Related content
 
-- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-documentdb)
 - [update with Azure DocumentDB](update.md)
 - [find with Azure DocumentDB](find.md)

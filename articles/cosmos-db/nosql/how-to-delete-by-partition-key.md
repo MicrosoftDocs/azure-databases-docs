@@ -6,7 +6,7 @@ ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 07/09/2025
+ms.date: 12/05/2025
 ---
 
 # Delete items by partition key value - API for NoSQL (preview)
@@ -133,7 +133,7 @@ For example, suppose you've provisioned 1000 RU/s on a container. There's an ong
 In some scenarios, a delete by partition key operation might not immediately guarantee its effects, and partial visibility might occur during the operation. 
 
 - Aggregate queries that use the index - for example, COUNT queries - that are issued during an ongoing delete by partition key operation might contain the results of the documents to be deleted. This could occur until the delete operation is fully complete.
-- Queries issued against the [analytical store](../analytical-store-introduction.md) during an ongoing delete by partition key operation might contain the results of the documents to be deleted. This could occur until the delete operation is fully complete.
+- Queries issued against the analytical store for Synapse Link *(deprecated)* during an ongoing delete by partition key operation might contain the results of the documents to be deleted. This could occur until the delete operation is fully complete.
 - [Continuous backup (point-in-time restore)](../continuous-backup-restore-introduction.md) is triggered during an ongoing delete by partition key operation might contain the results of the documents to be deleted in the restored collection. It isn't recommended to use this preview feature if you have a scenario that requires continuous backup.
 
 ### Limitations

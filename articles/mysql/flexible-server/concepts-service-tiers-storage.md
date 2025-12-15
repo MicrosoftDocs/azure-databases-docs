@@ -37,7 +37,7 @@ To choose a compute tier, use the following table as a starting point.
 
 | Compute tier | Target workloads |
 | :--- | :--- |
-| Burstable | Best for workloads that continuously don't need the full CPU. |
+| Burstable | Designed for workloads that do not require sustained full CPU performance. Utilizes a CPU credit system: credits accumulate when usage is below the baseline and are consumed when usage exceeds it. Once credits are depleted, the VM is limited to baseline CPU capacity, which under prolonged load can lead to significant performance degradation, connection timeouts, and delays or transient failures in management operations until credits are restored. Best suited for development environments, small databases, and proof-of-concept scenarios. **Not recommended for production workloads.** |
 | General Purpose | Most business workloads require balanced computing and memory with scalable I/O throughput. Examples include servers for hosting web and mobile apps and other enterprise applications. |
 | Business Critical | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
@@ -62,7 +62,9 @@ The detailed specifications of the available server types are as follows for the
 | Standard_B16ms | 16 | 64 | 70.4 | 4300 | 10923 | 0 |
 | Standard_B20ms | 20 | 80 | 88 | 5000 | 13653 | 0 |
 
-Note: The burstable compute tier is designed for nonproduction workloads like development, staging, or testing environments and hence does not qualify for 24/7 support or root cause analysis (RCA) .
+> [!NOTE] 
+> - Burstable compute is for workloads that stay idle or below baseline most of the time. If CPU runs near or above baseline for long periods, credits deplete and the server might become unreachable. 
+> - The burstable compute tier is designed for nonproduction workloads like development, staging, or testing environments and hence does not qualify for 24/7 support or root cause analysis (RCA) .
 
 #### General Purpose
 

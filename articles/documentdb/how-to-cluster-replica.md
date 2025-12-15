@@ -1,8 +1,8 @@
 ---
 title: Enable and work with cross-region and same region replication
 description: Enable and disable replication and promote replica cluster for disaster recovery (DR) in Azure DocumentDB.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.custom:
   - build-2024
   - ignite-2024

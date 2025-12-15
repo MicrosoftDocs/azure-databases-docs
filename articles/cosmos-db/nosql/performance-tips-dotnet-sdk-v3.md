@@ -398,6 +398,10 @@ Azure Cosmos DB requests are made over HTTPS/REST when you use Gateway mode. The
 
 See [Increase the number of threads/tasks](#increase-threads) in the Networking section of this article.
 
+## Managing Newtonsoft.Json Dependencies
+
+[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
+
 ## Query operations
 
 For query operations, see the [performance tips for queries](performance-tips-query-sdk.md?tabs=v3&pivots=programming-language-csharp).

@@ -84,7 +84,7 @@ groups:
   prompt: Choose a PostgreSQL version
   pivots:
   - id: postgresql-18
-    title: PostgreSQL 18 (preview)
+    title: PostgreSQL 18
   - id: postgresql-17
     title: PostgreSQL 17
   - id: postgresql-16
@@ -134,6 +134,17 @@ groups:
     title: Azure portal
   - id: azure-powershell
     title: Azure PowerShell
+# Owner: sidandrews
+- id: azure-interface-portal-rest-bicep
+  title: Azure interface
+  prompt: Choose an Azure interface
+  pivots:
+  - id: rest-api
+    title: Azure REST API
+  - id: azure-portal
+    title: Azure portal
+  - id: azure-resource-manager-bicep
+    title: Bicep
 # Owner: sidandrews
 - id: azure-interface-portal-rest-bicep-terraform
   title: Azure interface

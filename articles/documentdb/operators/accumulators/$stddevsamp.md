@@ -3,7 +3,7 @@ title: $stddevsamp
 description: The $stddevsamp operator calculates the standard deviation of a specified sample of values and not the entire population
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 09/05/2025
 ---
 

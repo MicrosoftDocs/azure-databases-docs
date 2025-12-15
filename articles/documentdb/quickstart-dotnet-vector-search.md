@@ -11,6 +11,7 @@ ms.date: 10/23/2025
 ms.custom:
   - devx-track-dotnet
   - devx-track-dotnet-ai
+  - devx-track-data-ai
 # CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure DocumentDB.
 ---
 

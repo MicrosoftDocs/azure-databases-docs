@@ -4,7 +4,7 @@ description: This article describes the index tuning feature available in an Azu
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/07/2025
+ms.date: 11/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -218,6 +218,7 @@ If you have [high availability](/azure/reliability/reliability-postgresql-flexib
 Following is a list of query types for which index tuning won't generate CREATE INDEX recommendations. Those which:
 
 - Encounter an error when index tuning engine tries to obtain its EXPLAIN output during the analysis phase.
+- Reference tables that don't have statistics about their contents in the pg_statistic system catalog. Run [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) on those tables so that the tuning engine can tae into consideration these queries in the future.
 - Have the query text truncated in query store. That's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
 - Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
 - Access temporary tables or indexes on temporary tables.

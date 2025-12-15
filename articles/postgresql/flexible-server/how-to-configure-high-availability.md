@@ -33,7 +33,7 @@ The **Zonal Resiliency** option controls whether your server is protected across
 - Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
 - Disabled – High availability isn't configured.
 
-If you enable zonal resiliency but your region doesn't have enough capacity for a zone-redundant setup, you see a checkbox under the Enabled option. Selecting this checkbox allows you to create the standby server in the same zone as the primary. This option ensures you still get node-level protection even when zone capacity is limited. Later, when zonal capacity becomes available, Azure automatically migrates your standby server to a different zone during a maintenance window to minimize downtime.
+If zonal resiliency is enabled but your region lacks capacity for a zone-redundant setup, an additional checkbox appears under the Enabled option. Selecting this allows the standby to be created in the same zone as the primary. When zonal capacity becomes available, Azure will notify you. At that point, you can use either PITR or read replicas to migrate workloads to a zone-redundant HA configuration for maximum resiliency. Go to [Limitations and Considerations](#limitations-and-considerations) section to know more.
 
 1. If Zonal Resiliency isn't enabled, select the **Enabled** option.
 
@@ -162,9 +162,18 @@ az postgres flexible-server update \
 
 1. In the [Azure portal](https://portal.azure.com/), during provisioning of a new Azure Database for PostgreSQL flexible server instance, go to the **Business Critical (High availability)** section. Select the **Enabled** radio button in the Zonal Resiliency section.
    - By default, the server attempts to create the standby server in a different availability zone with **Zone-Redundant** HA mode for maximum zonal resiliency.
-   - If zonal capacity isn't available, you can select the **Allow standby in same zone if zonal resiliency fails** checkbox as a fallback. This option ensures HA is still enabled, and Azure automatically migrates to zone-redundant HA when capacity becomes available.
 
-     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png" alt-text="Screenshot that shows high-availability options during provisioning of a new flexible server instance." lightbox="./media/how-to-configure-high-availability/high-availability-enable-server-provisioning.png":::
+   :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png" alt-text="Screenshot that shows enabling HA with zone-redundant option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png":::
+
+   - If zonal capacity isn't available, you can select the **Allow standby in same zone if zonal resiliency fails** checkbox as a fallback. Without selecting this option, you cannot proceed to the next step in the create workflow. This ensures high availability remains enabled. When zonal capacity becomes available, Azure will notify you, and you can then use PITR or read replicas to migrate workloads to a zone-redundant HA configuration for maximum resiliency.
+
+     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-same-zone-error.png" alt-text="Screenshot that shows validation error message for same-zone HA option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-same-zone-error.png":::
+
+   - Once you select on the checkbox,  you can proceed to go to the Authentication section on the create workflow.
+
+     :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-same-zone.png" alt-text="Screenshot that shows high-availability with same-zone HA option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-same-zone.png":::
+
+
 
 1. Select a specific zone for the primary server by setting **Availability zone** to any value other than **No preference**.
 
@@ -337,11 +346,11 @@ This failover operation provides the least downtime, because it performs a grace
 
 1. A notification appears and mentions that failover is in progress.
 
-   :::image type="content" source="./media/how-to-configure-high-availability/notification-forced-failover-initiating.png" alt-text="Screenshot that shows a notification about a failover in progress after the initiation of a planned failover." lightbox="./media/how-to-configure-high-availability/notification-planned-failover-initiating.png":::
+   :::image type="content" source="./media/how-to-configure-high-availability/notification-planned-failover-initiating.png" alt-text="Screenshot that shows a notification about a failover in progress after the initiation of a planned failover." lightbox="./media/how-to-configure-high-availability/notification-planned-failover-initiating.png":::
 
 1. After the failover to the standby server is complete, a notification informs you of the completion.
 
-   :::image type="content" source="./media/how-to-configure-high-availability/notification-forced-failover-completed.png" alt-text="Screenshot that shows the notification displayed when a planned failover finishes." lightbox="./media/how-to-configure-high-availability/notification-planned-failover-completed.png":::
+   :::image type="content" source="./media/how-to-configure-high-availability/notification-planned-failover-completed.png" alt-text="Screenshot that shows the notification displayed when a planned failover finishes." lightbox="./media/how-to-configure-high-availability/notification-planned-failover-completed.png":::
 
 1. If the high-availability mode is configured as **Zone redundant**, confirm that the values of **Primary availability zone** and **Standby availability zone** are now reversed.
 

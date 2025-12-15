@@ -1,8 +1,8 @@
 ---
 title: Troubleshoot encryption at rest with customer-managed key (CMK) in Azure DocumentDB
 description: Learn about troubleshooting steps and techniques for CMK on Azure DocumentDB clusters.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 09/04/2025
 ---

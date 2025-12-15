@@ -113,6 +113,19 @@ ALTER TABLE table1, table2...etc OWNER TO migration_user;
 
 Ownership of **all** tables of the Database to be migrated has to be changed to migration_user. Changing table ownership and reverting back may affect application permissions.
 
+### Table configuration for Change Data Capture
+
+The following table lists the scenarios where Change data capture (CDC) operations are supported:
+
+| Table type | Insert | Update | Delete | Truncate |
+| --- | --- | --- | --- | --- |
+| With Primary Key | Supported | Supported | Supported | Supported |
+| Replica Identity = INDEX | Supported | Supported | Supported | Supported |
+| Replica Identity = FULL | Supported | Supported | Supported | Supported |
+| No Primary Key, Replica Identity = DEFAULT  | Supported | Not Supported | Not Supported | Supported |
+
+The migration will fail if any unsupported actions are performed.
+
 ## Related content
 
 - [Migration service](concepts-migration-service-postgresql.md)

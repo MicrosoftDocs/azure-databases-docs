@@ -99,7 +99,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Set your cluster name variable.
 
     ```python
-    clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>"
+    clusterName = "<azure-documentdb-cluster-name>"
     ```
 
 1. Create an instance of DefaultAzureCredential and set up the authentication properties.
