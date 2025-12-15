@@ -64,7 +64,7 @@ Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize ric
 | Global distribution | Turnkey multi-region with automatic failover | Regional deployment with optional geo-replicas |
 | Cost model | Variable RU-based or serverless | Predictable compute + storage |
 
-For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](../../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/context/context).
+For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/context/context).
 
 ## Related content
 
