@@ -16,9 +16,6 @@ highlightedContent:
     - title: Introduction to Azure Cosmos DB
       itemType: overview
       url: introduction.md
-    - title: Choose an API in Azure Cosmos DB
-      itemType: concept
-      url: choose-api.md
     - title: Vector Database in Azure Cosmos DB
       itemType: architecture
       url: vector-database.md
