@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/31/2025
+ms.date: 12/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -16,6 +16,11 @@ ms.custom:
 # Release notes - Azure Database for PostgreSQL
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: December 2025
+
+- General availability
+    - Support for latest [minor versions](concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20 and 13.23. <sup>$</sup>
 
 ## Release: November 2025
 
@@ -300,7 +305,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - Support for [**PostgreSQL version 14**](concepts-supported-versions.md).
 - Support for [minor versions](concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
-- Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
+- Support for [Same-zone high availability](/azure/reliability/reliability-postgresql-flexible-server) deployment option.
 - Support for choosing [standby availability zone](how-to-manage-high-availability-portal.md) when deploying zone-redundant high availability.
 - Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
 - Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>

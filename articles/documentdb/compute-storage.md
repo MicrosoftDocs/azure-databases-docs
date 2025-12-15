@@ -1,8 +1,8 @@
 ---
 title: Compute and Storage Configurations
 description: Supported compute and storage configurations for Azure DocumentDB clusters
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: limits-and-quotas
 ms.date: 11/07/2025
 ---

@@ -7,7 +7,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 03/16/2023
+ms.date: 12/05/2025
 ms.custom: kr2b-contr-experiment, sfi-image-nochange, sfi-ropc-nochange
 ---
 
@@ -24,16 +24,12 @@ The ODBC driver normalizes Azure Cosmos DB data into tables and views that fit y
 You can do SQL operations against the normalized tables and views, including group by queries, inserts, updates, and deletes. The driver is ODBC 3.8 compliant and supports ANSI SQL-92 syntax.
 
 > [!IMPORTANT]
-> Consider using [Azure Synapse Link for Azure Cosmos DB](../synapse-link.md) to create tables and views for your data. Synapse Link has distinct performance benefits for large datasets over the ODBC driver. You can also connect the normalized Azure Cosmos DB data to other software solutions, such as SQL Server Integration Services (SSIS), QlikSense, Tableau and other analytics software, BI, and data integration tools. You can use those solutions to analyze, move, transform, and create visualizations with your Azure Cosmos DB data.
+> Consider using [Azure Cosmos DB Mirroring for Microsoft Fabric](/fabric/mirroring/azure-cosmos-db) to create tables and views for your data. Microsoft Fabric has distinct performance benefits for large datasets over the ODBC driver. You can also connect and query any data that is also in Microsoft Fabric in OneLake using SQL or Spark and can create visualizations with your Azure Cosmos DB data using Power BI.
 
 > [!IMPORTANT]
 >
-> - Connecting to Azure Cosmos DB with the ODBC driver is currently supported for Azure Cosmos DB for NoSQL only.
-> - The current ODBC driver doesn't support aggregate pushdowns, and has known issues with some analytics tools. Until a new version is released, you can use one of the following alternatives:
->   - [Azure Synapse Link](../synapse-link.md) is the preferred analytics solution for Azure Cosmos DB. With Azure Synapse Link and Azure Synapse SQL serverless pools, you can use any BI tool to extract near real-time insights from Azure Cosmos DB SQL or API for MongoDB data.
->   - For Power BI, you can use the [Azure Cosmos DB connector for Power BI](powerbi-visualize.md).
->   - For Qlik Sense, see [Connect Qlik Sense to Azure Cosmos DB](../visualize-qlik-sense.md).
->
+> - The ODBC driver is supported for Azure Cosmos DB for NoSQL only.
+> - The ODBC driver doesn't support aggregate pushdowns, and has known issues with some analytics tools. As an alternative, use [Azure Cosmos DB Mirroring for Microsoft Fabric](/fabric/mirroring/azure-cosmos-db)
 
 ## Install the ODBC driver and connect to your database
 

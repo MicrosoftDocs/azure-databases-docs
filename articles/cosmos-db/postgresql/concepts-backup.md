@@ -1,8 +1,8 @@
 ---
 title: Backup and restore – Azure Cosmos DB for PostgreSQL
 description: Protecting data from accidental corruption or deletion
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: references_regions

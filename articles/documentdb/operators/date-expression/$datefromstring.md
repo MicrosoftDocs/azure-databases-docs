@@ -1,8 +1,8 @@
 ---
 title: $dateFromString
 description: The $dateDiff operator converts a date/time string to a date object.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: language-reference
 ms.date: 09/04/2025
 ---

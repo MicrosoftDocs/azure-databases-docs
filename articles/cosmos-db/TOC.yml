@@ -7,8 +7,6 @@
       href: introduction.md
     - name: FAQ
       href: faq.yml
-    - name: Choose an API
-      href: choose-api.md
 - name: NoSQL
   href: nosql/index.yml
 - name: MongoDB

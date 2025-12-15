@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/03/2025
+ms.date: 12/05/2025
 ai-usage: ai-assisted
 applies-to:
   - ✅ NoSQL
@@ -117,7 +117,7 @@ An Azure Cosmos DB container has a set of system-defined properties. Depending o
 |`TimeToLive` | User configurable | Automatic deletion of an item from a container after a set time period. For details, see [Time to live](time-to-live.md). | Yes | No | No | No | Yes |
 |`changeFeedPolicy` | User configurable | Policy for reading changes made to items in a container. For details, see [Change feed](change-feed.md). | Yes | No | No | No | Yes |
 |`uniqueKeyPolicy` | User configurable | Policy for ensuring the uniqueness of one or more values in a logical partition. For more information, see [Unique key constraints](unique-keys.md). | Yes | No | No | No | Yes |
-|`AnalyticalTimeToLive` | User configurable | Automatic deletion of an item from a container after a set time period, in the context of an analytical store. For details, see [Analytical store](analytical-store-introduction.md). | Yes | No | Yes | No | No |
+|`AnalyticalTimeToLive` | User configurable | Automatic deletion of an item from a container after a set time period, in the context of an analytical store. *This feature is being deprecated*. | Yes | No | Yes | No | No |
 
 ## Azure Cosmos DB items
 

@@ -120,7 +120,7 @@ If you need [multi-item ACID transactions](database-transactions-optimistic-conc
 
 For most containers, these criteria are all you need to consider when choosing a partition key. For large read-heavy containers, however, you might want to choose a partition key that appears frequently as a filter in your queries. Including the partition key in the filter predicate lets queries be [efficiently routed to only the relevant physical partitions](how-to-query-container.md#in-partition-query).
 
-This property is a good partition key choice if most of your workload's requests are queries and most of your queries use an equality filter on the same property. For example, if you frequently run a query that filters on `UserID`, then selecting `UserID` as the partition key would reduce the number of [cross-partition queries](how-to-query-container.md#avoiding-cross-partition-queries).
+This property is a good partition key choice if most of your workload's requests are queries and most of your queries use an equality filter on the same property. For example, if you frequently run a query that filters on `UserID`, then selecting `UserID` as the partition key would reduce the number of [cross-partition queries](how-to-query-container.md#avoid-cross-partition-queries).
 
 If your container is small, you likely don't have enough physical partitions to worry about the performance of cross-partition queries. Most small containers in Azure Cosmos DB only require one or two physical partitions.
 

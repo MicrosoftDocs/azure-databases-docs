@@ -1,8 +1,8 @@
 ---
 title: High availability (HA) and cross-region replication best practices
 description: Learn about best practices for high availability (HA) and cross-region replication in Azure DocumentDB.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 09/09/2025
 #Customer Intent: As a database adminstrator, I want to understand what is the optimal use of high availability and cross-region replication in Azure DocumentDB in differenct cases.

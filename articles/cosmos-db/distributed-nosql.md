@@ -35,16 +35,7 @@ With a distributed database that's also a NoSQL database, high transactional wor
 
 Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB automatically and dynamically distributes your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Understanding distributed relational databases](distributed-relational.md)
-
-Want to get started with Azure Cosmos DB?
-
-- [Choose an API in Azure Cosmos DB](choose-api.md)
-- [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
-- [Get started with the API for MongoDB](mongodb/quickstart-nodejs.md)
-- [Get started with the API for Apache Cassandra](cassandra/manage-data-java-v4-sdk.md)
-- [Get started with the API for Apache Gremlin](gremlin/quickstart-python.md)
-- [Get started with the API for Table](table/quickstart-dotnet.md)
