@@ -13,22 +13,22 @@ ms.custom: devx-track-csharp, devx-track-dotnet
 
 # Use the bulk executor .NET library to perform bulk operations in Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!NOTE]
 > The bulk executor library described in this article is maintained for applications that use the .NET SDK 2.x version. For new applications, you can use the **bulk support** that's directly available with the [.NET SDK version 3.x](tutorial-dotnet-bulk-import.md), and it doesn't require any external library.
 >
 > If you currently use the bulk executor library and plan to migrate to bulk support on the newer SDK, use the steps in the [Migration guide](how-to-migrate-from-bulk-executor-library.md) to migrate your application.
 
-This tutorial provides instructions on how to use the bulk executor .NET library to import and update documents to an Azure Cosmos DB container. To learn about the bulk executor library and how it helps you use massive throughput and storage, see the [Azure Cosmos DB bulk executor library overview](../bulk-executor-overview.md). In this tutorial, you see a sample .NET application where bulk imports randomly generated documents into an Azure Cosmos DB container. After you import the data, the library shows you how you can bulk update the imported data by specifying patches as operations to perform on specific document fields.
+This tutorial provides instructions on how to use the bulk executor .NET library to import and update documents to an Azure Cosmos DB container. To learn about the bulk executor library and how it helps you use massive throughput and storage, see the [Azure Cosmos DB bulk executor library overview](bulk-executor-overview.md). In this tutorial, you see a sample .NET application where bulk imports randomly generated documents into an Azure Cosmos DB container. After you import the data, the library shows you how you can bulk update the imported data by specifying patches as operations to perform on specific document fields.
 
-Currently, bulk executor library is supported by the Azure Cosmos DB for NoSQL and API for Gremlin accounts only. This article describes how to use the bulk executor .NET library with API for NoSQL accounts. To learn how to use the bulk executor .NET library with API for Gremlin accounts, see [Ingest data in bulk in the Azure Cosmos DB for Gremlin by using a bulk executor library](../gremlin/bulk-executor-dotnet.md).
+Currently, bulk executor library is supported by the Azure Cosmos DB for NoSQL and API for Gremlin accounts only. This article describes how to use the bulk executor .NET library with API for NoSQL accounts. To learn how to use the bulk executor .NET library with API for Gremlin accounts, see [Ingest data in bulk in the Azure Cosmos DB for Gremlin by using a bulk executor library](gremlin/bulk-executor-dotnet.md).
 
 ## Prerequisites
 
-* Latest [!INCLUDE [cosmos-db-visual-studio](../includes/cosmos-db-visual-studio.md)]
+* Latest [!INCLUDE [cosmos-db-visual-studio](includes/cosmos-db-visual-studio.md)]
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin. You can also [Install and use the Azure Cosmos DB Emulator for local development and testing](../emulator.md) with the `https://localhost:8081` endpoint. The Primary Key is provided in [Authenticating requests](../emulator.md).
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin. You can also [Install and use the Azure Cosmos DB Emulator for local development and testing](emulator.md) with the `https://localhost:8081` endpoint. The Primary Key is provided in [Authenticating requests](emulator.md).
 
 * Create an Azure Cosmos DB for NoSQL account by using the steps described in the [Create an Azure Cosmos DB account](how-to-create-account.md) section of [Quickstart: Azure Cosmos DB for NoSQL client library for .NET](quickstart-dotnet.md).
 

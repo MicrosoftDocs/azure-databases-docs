@@ -11,7 +11,7 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell
 ---
 
 # Configure time to live in Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In Azure Cosmos DB, you can choose to configure time to live (TTL) at the container level, or you can override it at an item level after setting TTL for the container. You can configure TTL for a container by using the Azure portal or the language-specific SDKs. Item-level TTL overrides can be configured by using the SDKs.
 

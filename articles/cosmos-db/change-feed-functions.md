@@ -11,9 +11,9 @@ ms.date: 07/02/2025
 ---
 
 # Serverless event-based architectures with Azure Cosmos DB and Azure Functions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-Azure Functions provides the simplest way to connect to the [change feed](../change-feed.md). You can create small, reactive Azure Functions that are automatically triggered on each new event in your Azure Cosmos DB container's change feed.
+Azure Functions provides the simplest way to connect to the [change feed](change-feed.md). You can create small, reactive Azure Functions that are automatically triggered on each new event in your Azure Cosmos DB container's change feed.
 
 :::image type="content" source="./media/change-feed-functions/functions.png" alt-text="Diagram of serverless event-based functions working with the Azure Functions trigger for Azure Cosmos DB.":::
 
@@ -39,13 +39,13 @@ Creating your Azure Function with an Azure Functions trigger for Azure Cosmos DB
 
 ## Run your trigger locally
 
-You can run your [Azure Function locally](/azure/azure-functions/functions-develop-local) with the [Azure Cosmos DB emulator](../emulator.md) to create and develop your serverless event-based flows without an Azure Subscription or incurring any costs.
+You can run your [Azure Function locally](/azure/azure-functions/functions-develop-local) with the [Azure Cosmos DB emulator](emulator.md) to create and develop your serverless event-based flows without an Azure Subscription or incurring any costs.
 
 ## Next steps
 
 You can now continue to learn more about change feed in the following articles:
 
-* [Overview of change feed](../change-feed.md)
+* [Overview of change feed](change-feed.md)
 * [Reading Azure Cosmos DB change feed](read-change-feed.md)
 * [Change feed processor in Azure Cosmos DB](change-feed-processor.md)
 * [Serverless database computing using Azure Cosmos DB and Azure Functions](serverless-computing-database.md)

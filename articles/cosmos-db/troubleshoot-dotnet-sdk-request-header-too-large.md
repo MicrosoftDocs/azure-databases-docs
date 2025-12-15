@@ -13,7 +13,7 @@ ms.custom: devx-track-dotnet
 
 # Troubleshoot "request header too large" or "bad request" messages in Azure Cosmos DB SDK for .NET
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The "Request header too large" message is thrown with an HTTP error code 400. This error occurs if the size of the request header grows so large that it exceeds the maximum-allowed size.
 

@@ -12,7 +12,7 @@ ms.custom: devx-track-dotnet
 ---
 
 # Performance tips for Azure Cosmos DB and .NET
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3.md)
@@ -400,7 +400,7 @@ See [Increase the number of threads/tasks](#increase-threads) in the Networking 
 
 ## Managing Newtonsoft.Json Dependencies
 
-[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](includes/dotnet-json-dependency.md)]
 
 ## Query operations
 
@@ -421,7 +421,7 @@ containerProperties.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "
 Container container = await this.cosmosDatabase.CreateContainerAsync(containerProperties);
 ```
 
-For more information, see [Azure Cosmos DB indexing policies](../index-policy.md).
+For more information, see [Azure Cosmos DB indexing policies](index-policy.md).
 
 ## Throughput
 <a id="measure-rus"></a>
@@ -432,7 +432,7 @@ Azure Cosmos DB offers a rich set of database operations. These operations inclu
 
 The costs associated with each of these operations vary depending on the CPU, IO, and memory that are required to complete the operation. Instead of thinking about and managing hardware resources, you can think of a Request Unit as a single measure for the resources that are required to perform various database operations and service an application request.
 
-Throughput is provisioned based on the number of [Request Units](../request-units.md) set for each container. RU consumption is evaluated as a units-per-second rate. Applications that exceed the provisioned RU rate for their container are limited until the rate drops below the provisioned level for the container. If your application requires a higher level of throughput, you can increase your throughput by provisioning more RUs.
+Throughput is provisioned based on the number of [Request Units](request-units.md) set for each container. RU consumption is evaluated as a units-per-second rate. Applications that exceed the provisioned RU rate for their container are limited until the rate drops below the provisioned level for the container. If your application requires a higher level of throughput, you can increase your throughput by provisioning more RUs.
 
 The complexity of a query affects how many RUs are consumed for an operation. The number of predicates, the nature of the predicates, the number of UDF files, and the size of the source dataset all influence the cost of query operations.
 
@@ -451,7 +451,7 @@ while (queryable.HasMoreResults)
     }
 ```
 
-The request charge that's returned in this header is a fraction of your provisioned throughput (that is, 2,000 RU/s). For example, if the preceding query returns 1,000 1-KB documents, the cost of the operation is 1,000. So, within one second, the server honors only two such requests before it rate-limits later requests. For more information, see [Request Units](../request-units.md) and the [Request Unit calculator](https://cosmos.azure.com/capacitycalculator).
+The request charge that's returned in this header is a fraction of your provisioned throughput (that is, 2,000 RU/s). For example, if the preceding query returns 1,000 1-KB documents, the cost of the operation is 1,000. So, within one second, the server honors only two such requests before it rate-limits later requests. For more information, see [Request Units](request-units.md) and the [Request Unit calculator](https://cosmos.azure.com/capacitycalculator).
 <a id="429"></a>
 
 **Handle rate limiting/request rate too large**
@@ -472,7 +472,7 @@ You can change the default retry count by setting the `RetryOptions` on the `Cos
 
 The automated retry behavior helps improve resiliency and usability for most applications. But it might not be the best behavior when you're doing performance benchmarks, especially when you're measuring latency. The client-observed latency will spike if the experiment hits the server throttle and causes the client SDK to silently retry. To avoid latency spikes during performance experiments, measure the charge that's returned by each operation, and ensure that requests are operating below the reserved request rate. 
 
-For more information, see [Request Units](../request-units.md).
+For more information, see [Request Units](request-units.md).
 
 **For higher throughput, design for smaller documents**
 
@@ -481,4 +481,4 @@ The request charge (that is, the request-processing cost) of a specified operati
 ## Next steps
 
 - [Measure Azure Cosmos DB for NoSQL performance with a benchmarking framework](benchmarking-framework.md)
-- [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)

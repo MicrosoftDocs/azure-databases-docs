@@ -13,7 +13,7 @@ ms.custom: query-reference, devx-track-dotnet
 
 # Index and query GeoJSON location data in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Geospatial data in Azure Cosmos DB for NoSQL allows you to store location information and perform common queries, including but not limited to:
 

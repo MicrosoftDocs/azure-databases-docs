@@ -14,11 +14,11 @@ ms.author: mansha
 ---
 
 # Migrate your application from Amazon DynamoDB to Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a scalable, globally distributed, fully managed database. It provides guaranteed low-latency access to your data.
 
-This article describes how to migrate your .NET application from Amazon DynamoDB to Azure Cosmos DB with minimal code changes. To learn more about Azure Cosmos DB, see the [overview](../introduction.md) article.
+This article describes how to migrate your .NET application from Amazon DynamoDB to Azure Cosmos DB with minimal code changes. To learn more about Azure Cosmos DB, see the [overview](introduction.md) article.
 
 ## Conceptual differences
 
@@ -107,7 +107,7 @@ git clone https://github.com/Azure-Samples/DynamoDB-to-CosmosDB
 ### Prerequisites
 
 - .NET Framework 4.7.2.
-- Latest version of [!INCLUDE [cosmos-db-visual-studio](../includes/cosmos-db-visual-studio.md)]
+- Latest version of [!INCLUDE [cosmos-db-visual-studio](includes/cosmos-db-visual-studio.md)]
 - Access to an Azure Cosmos DB for NoSQL account.
 - Local installation of Amazon DynamoDB.
 - Java 8.
@@ -154,9 +154,9 @@ With Azure Cosmos DB, you can use the following options to optimize your connect
 
 - `ConnectionMode`: Use direct connection mode to connect to the data nodes in the Azure Cosmos DB service. Use gateway mode only to initialize and cache the logical addresses and refresh on updates. For more information, see [Azure Cosmos DB SQL SDK connectivity modes](sdk-connection-modes.md).
 
-- `ApplicationRegion`: Use this option to set the preferred geo-replicated region for interacting with Azure Cosmos DB. For more information, see [Distribute your data globally with Azure Cosmos DB](../distribute-data-globally.md).
+- `ApplicationRegion`: Use this option to set the preferred geo-replicated region for interacting with Azure Cosmos DB. For more information, see [Distribute your data globally with Azure Cosmos DB](distribute-data-globally.md).
 
-- `ConsistencyLevel`: Use this option to override the default consistency level. For more information, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md).
+- `ConsistencyLevel`: Use this option to override the default consistency level. For more information, see [Consistency levels in Azure Cosmos DB](consistency-levels.md).
 
 - `BulkExecutionMode`: Use this option to execute bulk operations by setting the `AllowBulkExecution` property to `true`. For more information, see [Bulk import data to an Azure Cosmos DB for NoSQL account by using the .NET SDK](tutorial-dotnet-bulk-import.md).
 
@@ -231,7 +231,7 @@ request = new CreateTableRequest
 
 #### Azure Cosmos DB
 
-In Amazon DynamoDB, you need to provision the read compute units and the write compute units. In Azure Cosmos DB, you specify the throughput as [request units per second (RU/s)](../request-units.md). You can use RU/s for any operations dynamically. The data is organized as database, container, and then item. You can specify the throughput at the database level, at the collection level, or both.
+In Amazon DynamoDB, you need to provision the read compute units and the write compute units. In Azure Cosmos DB, you specify the throughput as [request units per second (RU/s)](request-units.md). You can use RU/s for any operations dynamically. The data is organized as database, container, and then item. You can specify the throughput at the database level, at the collection level, or both.
 
 To create a database:
 
@@ -543,5 +543,5 @@ As the preceding examples show, Azure Cosmos DB supports natural queries (SQL), 
 ### Related content
 
 - Learn about [performance optimization](performance-tips.md).
-- Learn how to [optimize reads and writes](../key-value-store-cost.md).
-- Learn about [monitoring in Azure Cosmos DB](../monitor.md).
+- Learn how to [optimize reads and writes](key-value-store-cost.md).
+- Learn about [monitoring in Azure Cosmos DB](monitor.md).

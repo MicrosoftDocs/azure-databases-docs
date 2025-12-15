@@ -11,7 +11,7 @@ ms.custom: devx-track-csharp
 ---
 
 # Migrate nonpartitioned containers to partitioned containers
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB supports creating containers without a partition key. Currently you can create nonpartitioned containers by using Azure CLI and Azure Cosmos DB SDKs (.NET, Java, NodeJs) that have a version less than or equal to 2.x. You can't create nonpartitioned containers using the Azure portal. However, such nonpartitioned containers aren’t elastic and have fixed storage capacity of 20 GB and throughput limit of 10K RU/s.
 
@@ -38,7 +38,7 @@ To support the migration, Azure Cosmos DB provides a system defined partition ke
 
 After the container is migrated, you can create documents by populating the `_partitionKey` property along with the other properties of the document. The `_partitionKey` property represents the partition key of your documents.
 
-Choosing the right partition key is important to utilize the provisioned throughput optimally. For more information, see [how to choose a partition key](../partitioning-overview.md) article.
+Choosing the right partition key is important to utilize the provisioned throughput optimally. For more information, see [how to choose a partition key](partitioning-overview.md) article.
 
 > [!NOTE]
 > You can take advantage of system defined partition key only if you are using the latest/V3 version of SDKs in all the languages.
@@ -178,12 +178,12 @@ If new items are inserted with different values for the partition key, querying 
 
 ## Next steps
 
-* [Partitioning in Azure Cosmos DB](../partitioning-overview.md)
-* [Request Units in Azure Cosmos DB](../request-units.md)
-* [Provision throughput on containers and databases](../set-throughput.md)
-* [Work with Azure Cosmos DB account](../resource-model.md)
+* [Partitioning in Azure Cosmos DB](partitioning-overview.md)
+* [Request Units in Azure Cosmos DB](request-units.md)
+* [Provision throughput on containers and databases](set-throughput.md)
+* [Work with Azure Cosmos DB account](resource-model.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md)
+    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md)
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
 
 [1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

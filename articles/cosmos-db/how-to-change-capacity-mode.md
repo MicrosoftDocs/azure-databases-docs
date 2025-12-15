@@ -15,7 +15,7 @@ ms.custom:
  
 # Change from serverless to provisioned capacity mode in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
+[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
 Azure Cosmos DB for NoSQL accounts in serverless capacity mode can be changed to provisioned capacity mode. Changing from serverless to provisioned capacity mode converts all containers within the account to manual provisioned throughput containers in-place. The containers' throughput is determined according to the following formula: 
             `Throughput(RU/s) = number of partitions * 5000`.
@@ -55,6 +55,6 @@ Follow these steps to change the capacity mode using Azure portal.
 
 ## Related content
 
-- [Chose between autoscale and manual throughput](../how-to-choose-offer.md).
-- [Choose between serverless and provisioned throughput](../throughput-serverless.md).
+- [Chose between autoscale and manual throughput](how-to-choose-offer.md).
+- [Choose between serverless and provisioned throughput](throughput-serverless.md).
 

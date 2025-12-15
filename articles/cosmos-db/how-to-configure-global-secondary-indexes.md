@@ -14,7 +14,7 @@ ms.custom:
 
 # How to configure Azure Cosmos DB for NoSQL global secondary indexes (preview)
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -29,7 +29,7 @@ Global secondary indexes provide a powerful way to optimize query performance an
 
 ## Enable global secondary indexes
 
-Enable the global secondary index feature for your Azure Cosmos DB account. [Continuous backups](../continuous-backup-restore-introduction.md) must be turned on for the account before enabling global secondary indexes.
+Enable the global secondary index feature for your Azure Cosmos DB account. [Continuous backups](continuous-backup-restore-introduction.md) must be turned on for the account before enabling global secondary indexes.
 
 ### [Azure portal](#tab/azure-portal)
 

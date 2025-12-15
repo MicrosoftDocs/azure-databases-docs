@@ -77,17 +77,17 @@ There are two options for CDC sync into Azure Cosmos DB for NoSQL:
 - Optimize ingestion throughput by switching to standard provisioned throughput if the initial load is expected to consume a large amount of RU/s relative to your allocated throughput. Specifically, use standard provisioned throughput if the maximum request units per second (RU/s) is utilized consistently for most the duration of the initial load process. Don't use autoscale throughput for the initial load step in this scenario.
 
     > [!TIP]
-    > If the [normalized RU consumption metric](../monitor-normalized-request-units.md) is consistently 100%, then the metric indicates that the initial load consistently consumes the maximum autoscale request units (RUs). This threshold is a clear indicator that this scenario applies to your workload and you should use standard provisioned throughput.
+    > If the [normalized RU consumption metric](monitor-normalized-request-units.md) is consistently 100%, then the metric indicates that the initial load consistently consumes the maximum autoscale request units (RUs). This threshold is a clear indicator that this scenario applies to your workload and you should use standard provisioned throughput.
 
-- Choose an effective partition key that maximizes parallelism. For more information, see [partitioning and partition key recommendations](../partitioning-overview.md).
+- Choose an effective partition key that maximizes parallelism. For more information, see [partitioning and partition key recommendations](partitioning-overview.md).
 
-- Plan for the total number of partitions and total RU/s across all partitions for large data ingestions. For more information and guidance, see [recommendations for partitioning and throughput](../scaling-provisioned-throughput-best-practices.md#how-to-optimize-rus-for-large-data-ingestion).
+- Plan for the total number of partitions and total RU/s across all partitions for large data ingestions. For more information and guidance, see [recommendations for partitioning and throughput](scaling-provisioned-throughput-best-practices.md#how-to-optimize-rus-for-large-data-ingestion).
 
 - Use [Apache Spark throughput control](throughput-control-spark.md) to limit the request unit (RU) consumption of jobs. Throughput control helps prevent overloading the target operational container.
 
-- Use autoscale throughput when possible in Azure Cosmos DB for NoSQL for CDC sync as autoscale scales up/down RU/s dynamically based on usage. Autoscale throughput is ideal for periodic and spiky workloads like scheduled CDC sync jobs. For more information, see [throughput recommendations](../how-to-choose-offer.md#overview-of-provisioned-throughput-types).
+- Use autoscale throughput when possible in Azure Cosmos DB for NoSQL for CDC sync as autoscale scales up/down RU/s dynamically based on usage. Autoscale throughput is ideal for periodic and spiky workloads like scheduled CDC sync jobs. For more information, see [throughput recommendations](how-to-choose-offer.md#overview-of-provisioned-throughput-types).
 
-- Estimate the initial ingestion duration for your initial data load step. For more information and a sample, see [throughput estimation](../scaling-provisioned-throughput-best-practices.md#example-1).
+- Estimate the initial ingestion duration for your initial data load step. For more information and a sample, see [throughput estimation](scaling-provisioned-throughput-best-practices.md#example-1).
 
 ## Next step
 

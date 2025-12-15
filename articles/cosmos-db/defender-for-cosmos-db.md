@@ -10,7 +10,7 @@ author: markjbrown
 ---
 
 # Microsoft Defender for Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Microsoft Defender for Azure Cosmos DB provides an extra layer of security intelligence that detects unusual and potentially harmful attempts to access or exploit Azure Cosmos DB accounts. This layer of protection allows you to address threats, even without being a security expert, and integrate them with central security monitoring systems.
 
@@ -21,7 +21,7 @@ Security alerts are triggered when anomalies in activity occur. These security a
 > * Microsoft Defender for Azure Cosmos DB is currently available only for the API for NoSQL.
 > * Microsoft Defender for Azure Cosmos DB is not currently available in Azure government and sovereign cloud regions.
 
-For a full investigation experience of the security alerts, we recommended enabling [diagnostic logging in Azure Cosmos DB](../monitor.md), which logs operations on the database itself, including CRUD operations on all documents, containers, and databases.
+For a full investigation experience of the security alerts, we recommended enabling [diagnostic logging in Azure Cosmos DB](monitor.md), which logs operations on the database itself, including CRUD operations on all documents, containers, and databases.
 
 ## Threat types
 
@@ -50,4 +50,4 @@ When Azure Cosmos DB activity anomalies occur, a security alert is triggered wit
 ## Next steps
 
 * Learn more about [Microsoft Defender for Azure Cosmos DB](/azure/defender-for-cloud/concept-defender-for-cosmos)
-* Learn more about [Diagnostic logging in Azure Cosmos DB](../monitor-resource-logs.md)
+* Learn more about [Diagnostic logging in Azure Cosmos DB](monitor-resource-logs.md)

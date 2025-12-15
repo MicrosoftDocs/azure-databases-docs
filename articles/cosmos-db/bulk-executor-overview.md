@@ -48,11 +48,11 @@ The following diagram illustrates how bulk executor batches data into different 
 
 The bulk executor library makes sure to maximally utilize the throughput allocated to a collection. It uses an [AIMD-style congestion control mechanism](https://tools.ietf.org/html/rfc5681) for each Azure Cosmos DB partition key range to efficiently handle rate limiting and timeouts.
 
-For more information about sample applications that consume the bulk executor library, see [Use the bulk executor .NET library to perform bulk operations in Azure Cosmos DB](nosql/bulk-executor-dotnet.md) and [Perform bulk operations on Azure Cosmos DB data](bulk-executor-java.md).
+For more information about sample applications that consume the bulk executor library, see [Use the bulk executor .NET library to perform bulk operations in Azure Cosmos DB](bulk-executor-dotnet.md) and [Perform bulk operations on Azure Cosmos DB data](bulk-executor-java.md).
 
-For reference information, see [.NET bulk executor library](nosql/sdk-dotnet-bulk-executor-v2.md) and [Java bulk executor library](nosql/sdk-java-bulk-executor-v2.md).
+For reference information, see [.NET bulk executor library](sdk-dotnet-bulk-executor-v2.md) and [Java bulk executor library](sdk-java-bulk-executor-v2.md).
 
 ## Next steps
   
-* [Tutorial: Connect to Azure Cosmos DB for NoSQL by using Spark](./nosql/tutorial-spark-connector.md)
+* [Tutorial: Connect to Azure Cosmos DB for NoSQL by using Spark](tutorial-spark-connector.md)
 * [Copy and transform data in Azure Cosmos DB for NoSQL](/azure/data-factory/connector-azure-cosmos-db)

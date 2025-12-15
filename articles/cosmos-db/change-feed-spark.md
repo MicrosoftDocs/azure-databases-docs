@@ -11,7 +11,7 @@ ms.date: 08/15/2025
 
 # Change feed with Apache Spark
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The [Azure Cosmos DB Spark Connector](sdk-java-spark-v3.md) provides a powerful way to process the change feed at scale using Apache Spark. The connector uses the Java SDK underneath and implements a [pull model](change-feed-pull-model.md) that distributes processing transparently across Spark executors, making it ideal for large-scale data processing scenarios.
 

@@ -11,14 +11,14 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotne
 ---
 
 # Configure multi-region writes in applications that use Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In multiple-region write scenarios, you can get a performance benefit by writing only to the region close to your application instance. Azure Cosmos DB handles the replication for you behind the scenes.
 
 After you enable your account for multiple write-regions, you must make two changes in your application to the `ConnectionPolicy`. Within the `ConnectionPolicy`, set `UseMultipleWriteLocations` to `true` and pass the name of the region where the application is deployed to `ApplicationRegion`. This action populates the `PreferredLocations` property based on the geo-proximity from location passed in. If a new region is later added to the account, the application doesn't have to be updated or redeployed. It automatically detects the closer region and autohomes on to it should a regional event occur.
 
 > [!NOTE]
-> Azure Cosmos DB accounts initially configured with single write-region can be configured to multiple write-regions with zero down time. To learn more, see [Configure multiple write-regions](../how-to-manage-database-account.yml#configure-multiple-write-regions).
+> Azure Cosmos DB accounts initially configured with single write-region can be configured to multiple write-regions with zero down time. To learn more, see [Configure multiple write-regions](how-to-manage-database-account.yml#configure-multiple-write-regions).
 
 ## <a id="portal"></a> Azure portal
 
@@ -146,4 +146,4 @@ client, err := azcosmos.NewClient(endpoint, token, &azcosmos.ClientOptions{
 ## Next steps
 
 - [Use session tokens to manage consistency in Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
-- [Conflict types and resolution policies when using multiple write regions](../conflict-resolution-policies.md)
+- [Conflict types and resolution policies when using multiple write regions](conflict-resolution-policies.md)

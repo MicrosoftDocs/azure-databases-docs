@@ -11,11 +11,11 @@ ms.custom: devx-track-azurecli, devx-track-csharp, devx-track-dotnet
 ---
 
 # Provision standard (manual) throughput on a database in Azure Cosmos DB - API for NoSQL
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-This article explains how to provision standard (manual) throughput on a database in Azure Cosmos DB for NoSQL. You can provision throughput for a single [container](how-to-provision-container-throughput.md), or for a database and share the throughput among the containers within it. To learn when to use container level and database level throughput, see the [Use cases for provisioning throughput on containers and databases](../set-throughput.md) article. You can provision database level throughput by using the Azure portal or Azure Cosmos DB SDKs.
+This article explains how to provision standard (manual) throughput on a database in Azure Cosmos DB for NoSQL. You can provision throughput for a single [container](how-to-provision-container-throughput.md), or for a database and share the throughput among the containers within it. To learn when to use container level and database level throughput, see the [Use cases for provisioning throughput on containers and databases](set-throughput.md) article. You can provision database level throughput by using the Azure portal or Azure Cosmos DB SDKs.
 
-If you are using a different API, see [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Cassandra](../cassandra/how-to-provision-throughput.md), [API for Gremlin](../gremlin/how-to-provision-throughput.md) articles to provision the throughput.
+If you are using a different API, see [API for MongoDB](mongodb/how-to-provision-throughput.md), [API for Cassandra](cassandra/how-to-provision-throughput.md), [API for Gremlin](gremlin/how-to-provision-throughput.md) articles to provision the throughput.
 
 ## Provision throughput using Azure portal
 
@@ -71,8 +71,8 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 See the following articles to learn about provisioned throughput in Azure Cosmos DB:
 
-* [Globally scale provisioned throughput](../request-units.md)
-* [Provision throughput on containers and databases](../set-throughput.md)
+* [Globally scale provisioned throughput](request-units.md)
+* [Provision throughput on containers and databases](set-throughput.md)
 * [How to provision standard (manual) throughput for a container](how-to-provision-container-throughput.md)
 * [How to provision autoscale throughput for a container](how-to-provision-autoscale-throughput.md)
-* [Request units and throughput in Azure Cosmos DB](../request-units.md)
+* [Request units and throughput in Azure Cosmos DB](request-units.md)

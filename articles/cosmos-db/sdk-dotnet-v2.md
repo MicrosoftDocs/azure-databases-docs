@@ -11,9 +11,9 @@ ms.author: mjbrown
 ms.custom: devx-track-dotnet
 ---
 # Azure Cosmos DB .NET SDK v2 for API for NoSQL: Download and release notes (Legacy)
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 | | Links |
 |---|---|
@@ -43,7 +43,7 @@ Different sub versions of .NET SDKs are available under the 2.x.x version. Versi
 
 ## FAQ
 
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## See also
 

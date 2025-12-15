@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 ---
 
 # Diagnose and troubleshoot "Request rate too large" (429) exceptions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 A "Request rate too large" exception, also known as error code 429, indicates that your requests against Azure Cosmos DB are being rate limited.
 
-This article contains known causes and solutions for various 429 status code errors for the API for NoSQL. If you're using the API for MongoDB, see the [Troubleshoot common issues in API for MongoDB](../mongodb/error-codes-solutions.md).
+This article contains known causes and solutions for various 429 status code errors for the API for NoSQL. If you're using the API for MongoDB, see the [Troubleshoot common issues in API for MongoDB](mongodb/error-codes-solutions.md).
 
-When you use provisioned throughput, you set the throughput measured in request units per second (RU/s) required for your workload. Database operations against the service such as reads, writes, and queries consume some number of request units (RUs). Learn more about [request units](../request-units.md).
+When you use provisioned throughput, you set the throughput measured in request units per second (RU/s) required for your workload. Database operations against the service such as reads, writes, and queries consume some number of request units (RUs). Learn more about [request units](request-units.md).
 
 In a given second, if the operations consume more than the provisioned request units, Azure Cosmos DB returns a 429 exception. Each second, the number of request units available to use is reset.
 
@@ -38,7 +38,7 @@ This is the most common scenario. It occurs when the RUs consumed by operations 
 > [!TIP]
 > All operations are charged based on the number of resources they consume. These charges are measured in request units. These charges include requests that don't complete successfully due to application errors such as *400*, *412*, and *449*. While looking at throttling or usage, it's a good idea to investigate if some usage pattern changed that would result in an increase of these operations. Specifically, check for tags *412* or *449* (actual conflict).
 >
-> For more information about provisioned throughput, see [Introduction to provisioned throughput in Azure Cosmos DB](../set-throughput.md).
+> For more information about provisioned throughput, see [Introduction to provisioned throughput in Azure Cosmos DB](set-throughput.md).
 
 ### Step 1: Check the metrics to determine the percentage of requests with 429 error
 
@@ -81,11 +81,11 @@ Here are some examples of partitioning strategies that lead to hot partitions:
 
 To verify if there's a hot partition, navigate to **Insights** > **Throughput** > **Normalized RU Consumption (%) By PartitionKeyRangeID**. Filter to a specific database and container. 
 
-Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has much higher **Normalized RU consumption** than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition. To learn more about the Normalized RU Consumption metric, see [How to monitor normalized RU/s for an Azure Cosmos DB container or an account](../monitor-normalized-request-units.md).
+Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has much higher **Normalized RU consumption** than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition. To learn more about the Normalized RU Consumption metric, see [How to monitor normalized RU/s for an Azure Cosmos DB container or an account](monitor-normalized-request-units.md).
 
 :::image type="content" source="media/troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Screenshot that shows the Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
 
-To see which logical partition keys consume the most RU/s, use [Azure Diagnostic Logs](../monitor-resource-logs.md). This sample query sums up the total request units consumed per second on each logical partition key.
+To see which logical partition keys consume the most RU/s, use [Azure Diagnostic Logs](monitor-resource-logs.md). This sample query sums up the total request units consumed per second on each logical partition key.
 
 > [!IMPORTANT]
 > Enabling diagnostic logs incurs a separate charge for the Log Analytics service, which is billed based on the volume of data ingested. It's recommended you turn on diagnostic logs for a limited amount of time for debugging, and turn off when no longer required. To learn more, see[Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
@@ -126,10 +126,10 @@ This sample output shows that in a particular minute, the logical partition key 
 
 #### Recommended solution
 
-Review the guidance on [how to chose a good partition key](../partitioning-overview.md#choose-a-partition-key).
+Review the guidance on [how to chose a good partition key](partitioning-overview.md#choose-a-partition-key).
 
 If there's high percent of rate limited requests and no hot partition:
-- You can [increase the RU/s](../set-throughput.md) on the database or container using the client SDKs, Azure portal, PowerShell, CLI, or ARM template. Follow [best practices for scaling provisioned throughput (RU/s)](../scaling-provisioned-throughput-best-practices.md) to determine the right RU/s to set.
+- You can [increase the RU/s](set-throughput.md) on the database or container using the client SDKs, Azure portal, PowerShell, CLI, or ARM template. Follow [best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md) to determine the right RU/s to set.
 
 If there's high percent of rate limited requests and there's an underlying hot partition:
 - Long term, for best cost and performance, consider *changing the partition key*. The partition key can't be updated in place, so this requires migrating the data to a new container with a different partition key. Azure Cosmos DB supports a [live data migration tool](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/) for this purpose.
@@ -137,13 +137,13 @@ If there's high percent of rate limited requests and there's an underlying hot p
 - Short term, you can [redistribute throughput across partitions (preview)](distribute-throughput-across-partitions.md) to assign more RU/s to the physical partition that is hot. This is recommended only when the hot physical partition is predictable and consistent.
 
 > [!TIP]
-> When you increase the throughput, the scale-up operation either completes instantaneously or requires up to 5-6 hours to complete, depending on the number of RU/s you want to scale up to. If you want to know the highest number of RU/s you can set without triggering the asynchronous scale-up operation (which requires Azure Cosmos DB to provision more physical partitions), multiply the number of distinct PartitionKeyRangeIds by 10,0000 RU/s. For example, if you have 30,000 RU/s provisioned and five physical partitions (6000 RU/s allocated per physical partition), you can increase to 50,000 RU/s (10,000 RU/s per physical partition) in an instantaneous scale-up operation. Increasing to >50,000 RU/s would require an asynchronous scale-up operation. To learn more, see [Best practices for scaling provisioned throughput (RU/s)](../scaling-provisioned-throughput-best-practices.md).
+> When you increase the throughput, the scale-up operation either completes instantaneously or requires up to 5-6 hours to complete, depending on the number of RU/s you want to scale up to. If you want to know the highest number of RU/s you can set without triggering the asynchronous scale-up operation (which requires Azure Cosmos DB to provision more physical partitions), multiply the number of distinct PartitionKeyRangeIds by 10,0000 RU/s. For example, if you have 30,000 RU/s provisioned and five physical partitions (6000 RU/s allocated per physical partition), you can increase to 50,000 RU/s (10,000 RU/s per physical partition) in an instantaneous scale-up operation. Increasing to >50,000 RU/s would require an asynchronous scale-up operation. To learn more, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md).
 
 ### Step 3: Determine what requests are returning 429 responses
 
 #### How to investigate requests with 429 responses
 
-Use [Azure Diagnostic Logs](../monitor-resource-logs.md) to identify which requests are returning 429 responses and how many RUs they consumed. This sample query aggregates at the minute level.
+Use [Azure Diagnostic Logs](monitor-resource-logs.md) to identify which requests are returning 429 responses and how many RUs they consumed. This sample query aggregates at the minute level.
 
 > [!IMPORTANT]
 > Enabling diagnostic logs incurs a separate charge for the Log Analytics service, which is billed based on volume of data ingested. It's recommended you turn on diagnostic logs for a limited amount of time for debugging, and turn off when no longer required. To learn more, see[Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
@@ -185,7 +185,7 @@ You can use the [Azure Cosmos DB capacity planner](estimate-ru-with-capacity-pla
 
 ##### 429 responses on create, replace, or upsert document requests
 
-By default, in the API for NoSQL, all properties are indexed by default. Tune the [indexing policy](../index-policy.md) to only index the properties needed. This lowers the RUs required per create document operation, which reduces the likelihood of seeing 429 responses or allow you to achieve higher operations per second for the same amount of provisioned RU/s.
+By default, in the API for NoSQL, all properties are indexed by default. Tune the [indexing policy](index-policy.md) to only index the properties needed. This lowers the RUs required per create document operation, which reduces the likelihood of seeing 429 responses or allow you to achieve higher operations per second for the same amount of provisioned RU/s.
 
 ##### 429 responses on query document requests
 
@@ -213,7 +213,7 @@ Follow the guidance in [Step 1](#step-1-check-the-metrics-to-determine-the-perce
 
 Another common question that arises is, **Why is normalized RU consumption 100%, but autoscale didn't scale to the max RU/s?**
 
-This typically occurs for workloads that have temporary or intermittent spikes of usage. When you use autoscale, Azure Cosmos DB only scales the RU/s to the maximum throughput when the normalized RU consumption is 100% for a sustained, continuous period of time in a 5-second interval. This is done to ensure the scaling logic is cost friendly to the user, as it ensures that single, momentary spikes to not lead to unnecessary scaling and higher cost. When there are momentary spikes, the system typically scales up to a value higher than the previously scaled to RU/s, but lower than the max RU/s. To learn more, see [Normalized RU consumption and autoscale](../monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
+This typically occurs for workloads that have temporary or intermittent spikes of usage. When you use autoscale, Azure Cosmos DB only scales the RU/s to the maximum throughput when the normalized RU consumption is 100% for a sustained, continuous period of time in a 5-second interval. This is done to ensure the scaling logic is cost friendly to the user, as it ensures that single, momentary spikes to not lead to unnecessary scaling and higher cost. When there are momentary spikes, the system typically scales up to a value higher than the previously scaled to RU/s, but lower than the max RU/s. To learn more, see [Normalized RU consumption and autoscale](monitor-normalized-request-units.md#normalized-ru-consumption-and-autoscale).
 
 ## Rate limiting on metadata requests
 
@@ -223,7 +223,7 @@ Metadata rate limiting can occur when you're performing a high volume of metadat
 - List databases or containers in an Azure Cosmos DB account
 - Query for offers to see the current provisioned throughput
 
-There's a system-reserved RU limit for these operations, so increasing the provisioned RU/s of the database or container has no effect and isn't recommended. See [Control Plane Service Limits](../concepts-limits.md#control-plane).
+There's a system-reserved RU limit for these operations, so increasing the provisioned RU/s of the database or container has no effect and isn't recommended. See [Control Plane Service Limits](concepts-limits.md#control-plane).
 
 #### How to investigate
 
@@ -249,7 +249,7 @@ Retry the request. If the error persists for several minutes, file a support tic
 
 ## Next steps
 
-* [Monitor normalized RU/s for an Azure Cosmos DB container or an account](../monitor-normalized-request-units.md)
+* [Monitor normalized RU/s for an Azure Cosmos DB container or an account](monitor-normalized-request-units.md)
 * [Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK](troubleshoot-dotnet-sdk.md)
 * Learn about performance guidelines for [.NET v3](performance-tips-dotnet-sdk-v3.md) and [.NET v2](performance-tips.md)
 * [Troubleshoot issues when you use Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](troubleshoot-java-sdk-v4.md)

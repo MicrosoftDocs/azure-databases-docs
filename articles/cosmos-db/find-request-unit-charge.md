@@ -13,13 +13,13 @@ ms.custom: devx-track-js, kr2b-contr-experiment, devx-track-dotnet, devx-track-e
 ---
 
 # Find the request unit charge for operations in Azure Cosmos DB for NoSQL
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB supports many APIs, such as SQL, MongoDB, Cassandra, Gremlin, and Table. Each API has its own set of database operations. These operations range from simple point reads and writes to complex queries. Each database operation consumes system resources based on the complexity of the operation.
 
-The cost of all database operations is normalized by Azure Cosmos DB and is expressed by *request units* (RU). *Request charge* is the request units consumed by all your database operations. You can think of RUs as a performance currency abstracting the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB. No matter which API you use to interact with your container, costs are always measured in RUs. Whether the database operation is a write, point read, or query, costs are always measured in RUs. To learn more, see [Request Units in Azure Cosmos DB](../request-units.md).
+The cost of all database operations is normalized by Azure Cosmos DB and is expressed by *request units* (RU). *Request charge* is the request units consumed by all your database operations. You can think of RUs as a performance currency abstracting the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB. No matter which API you use to interact with your container, costs are always measured in RUs. Whether the database operation is a write, point read, or query, costs are always measured in RUs. To learn more, see [Request Units in Azure Cosmos DB](request-units.md).
 
-This article presents the different ways that you can find the request unit consumption for any operation run against a container in Azure Cosmos DB for NoSQL. If you're using a different API, see [API for MongoDB](../mongodb/find-request-unit-charge.md), [API for Cassandra](../cassandra/find-request-unit-charge.md), [API for Gremlin](../gremlin/find-request-unit-charge.md), and [API for Table](../table/find-request-unit-charge.md).
+This article presents the different ways that you can find the request unit consumption for any operation run against a container in Azure Cosmos DB for NoSQL. If you're using a different API, see [API for MongoDB](mongodb/find-request-unit-charge.md), [API for Cassandra](cassandra/find-request-unit-charge.md), [API for Gremlin](gremlin/find-request-unit-charge.md), and [API for Table](table/find-request-unit-charge.md).
 
 Currently, you can measure consumption only by using the Azure portal or by inspecting the response sent from Azure Cosmos DB through one of the SDKs. If you're using the API for NoSQL, you have multiple options for finding the request charge for an operation.
 
@@ -211,10 +211,10 @@ if pager.More() {
 
 To learn about optimizing your RU consumption, see these articles:
 
-* [Request Units in Azure Cosmos DB](../request-units.md)
-* [Optimize provisioned throughput cost in Azure Cosmos DB](../optimize-cost-throughput.md)
-* [Optimize query cost in Azure Cosmos DB](../optimize-cost-reads-writes.md)
-* [Globally scale provisioned throughput](../request-units.md)
-* [Introduction to provisioned throughput in Azure Cosmos DB](../set-throughput.md)
+* [Request Units in Azure Cosmos DB](request-units.md)
+* [Optimize provisioned throughput cost in Azure Cosmos DB](optimize-cost-throughput.md)
+* [Optimize query cost in Azure Cosmos DB](optimize-cost-reads-writes.md)
+* [Globally scale provisioned throughput](request-units.md)
+* [Introduction to provisioned throughput in Azure Cosmos DB](set-throughput.md)
 * [Provision throughput for a container](how-to-provision-container-throughput.md)
-* [Monitor and debug with insights in Azure Cosmos DB](../use-metrics.md)
+* [Monitor and debug with insights in Azure Cosmos DB](use-metrics.md)

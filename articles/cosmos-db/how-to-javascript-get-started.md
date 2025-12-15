@@ -13,7 +13,7 @@ ms.custom: cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-js, dev
 
 # Get started with Azure Cosmos DB for NoSQL using JavaScript
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article shows you how to connect to Azure Cosmos DB for NoSQL using the JavaScript SDK. Once connected, you can perform operations on databases, containers, and items.
 

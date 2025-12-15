@@ -699,7 +699,7 @@ By default, adding a private endpoint to an existing account results in a short 
 1. Remove the firewall rules set in step 1.
 
 > [!NOTE]
-> If you have running applications using the Azure Cosmos DB SDKs, there might be transient timeouts during the configuration update. Make sure your application is designed to be [resilient to transient connectivity failures](./nosql/conceptual-resilient-sdk-applications.md) and have retry logic in place in case it's needed.
+> If you have running applications using the Azure Cosmos DB SDKs, there might be transient timeouts during the configuration update. Make sure your application is designed to be [resilient to transient connectivity failures](conceptual-resilient-sdk-applications.md) and have retry logic in place in case it's needed.
 
 ## Port range when using direct mode
 

@@ -12,7 +12,7 @@ ms.custom: devx-track-csharp, devx-track-dotnet
 ---
 
 # Convert session token formats in .NET SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to convert between different session token formats to ensure compatibility between SDK versions.
 
@@ -110,6 +110,6 @@ else
 Read the following articles:
 
 * [Use session tokens to manage consistency in Azure Cosmos DB](how-to-manage-consistency.md#utilize-session-tokens)
-* [Choose the right consistency level in Azure Cosmos DB](../consistency-levels.md)
-* [Consistency, availability, and performance tradeoffs in Azure Cosmos DB](../consistency-levels.md)
-* [Availability and performance tradeoffs for various consistency levels](../consistency-levels.md)
+* [Choose the right consistency level in Azure Cosmos DB](consistency-levels.md)
+* [Consistency, availability, and performance tradeoffs in Azure Cosmos DB](consistency-levels.md)
+* [Availability and performance tradeoffs for various consistency levels](consistency-levels.md)

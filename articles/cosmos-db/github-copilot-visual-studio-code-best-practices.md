@@ -243,6 +243,6 @@ Use the extension's built-in features alongside Copilot for a complete developme
 
 ## Related content
 
-- [Azure Cosmos DB Visual Studio Code extension](../visual-studio-code-extension.md)
-- [Azure Cosmos DB scaling provisioned throughput best practices](../scaling-provisioned-throughput-best-practices.md)
+- [Azure Cosmos DB Visual Studio Code extension](visual-studio-code-extension.md)
+- [Azure Cosmos DB scaling provisioned throughput best practices](scaling-provisioned-throughput-best-practices.md)
 - [Contributing to the Azure Cosmos DB Visual Studio Code extension](https://github.com/microsoft/vscode-cosmosdb)

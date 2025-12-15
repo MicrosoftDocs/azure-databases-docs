@@ -163,7 +163,7 @@ Follow the [performance tips](performance-tips-dotnet-sdk-v3.md#sdk-usage), and 
 
 ### Hot partition key
 
-Azure Cosmos DB for NoSQL distributes the overall provisioned throughput evenly across physical partitions. When there's a hot partition, one or more logical partition keys on a physical partition are consuming all the physical partition's Request Units per second (RU/s). At the same time, the RU/s on other physical partitions are going unused. As a symptom, the total RU/s consumed are less than the overall provisioned RU/s at the database or container, but throttling (429 errors) on the requests against the hot logical partition key occurs. Use the [`Normalized RU Consumption` metric](../monitor-normalized-request-units.md) to see if the workload is encountering a hot partition. 
+Azure Cosmos DB for NoSQL distributes the overall provisioned throughput evenly across physical partitions. When there's a hot partition, one or more logical partition keys on a physical partition are consuming all the physical partition's Request Units per second (RU/s). At the same time, the RU/s on other physical partitions are going unused. As a symptom, the total RU/s consumed are less than the overall provisioned RU/s at the database or container, but throttling (429 errors) on the requests against the hot logical partition key occurs. Use the [`Normalized RU Consumption` metric](monitor-normalized-request-units.md) to see if the workload is encountering a hot partition. 
 
 #### Solution
 

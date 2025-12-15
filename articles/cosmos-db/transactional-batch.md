@@ -11,7 +11,7 @@ ms.date: 07/16/2025
 ---
 
 # Transactional batch operations in Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Transactional batch describes a group of point operations that need to either succeed or fail together with the same partition key in a container. Operations are defined, added to the batch, and the batch is executed. If all operations succeed in the order they're described within the transactional batch operation, the transaction is committed. However, if any operation fails, the entire transaction is rolled back.
 
@@ -24,7 +24,7 @@ A transaction in a typical database can be defined as a sequence of operations p
 * **Isolation** guarantees that no two transactions interfere with each other. Many commercial systems provide multiple isolation levels that can be used based on the application needs.
 * **Durability** ensures that any change that's committed in a database is always present.
 
-Azure Cosmos DB supports full [ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](../partitioning-overview.md).
+Azure Cosmos DB supports full [ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](partitioning-overview.md).
 
 ## Transactional batch operations and stored procedures
 

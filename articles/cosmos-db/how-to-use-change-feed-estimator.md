@@ -12,13 +12,13 @@ ms.custom: devx-track-csharp
 ---
 
 # Use the change feed estimator
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes how you can monitor the progress of your [change feed processor](./change-feed-processor.md) instances as they read the change feed.
 
 ## Why is monitoring progress important?
 
-The change feed processor acts as a pointer that moves forward across your [change feed](../change-feed.md) and delivers the changes to a delegate implementation.
+The change feed processor acts as a pointer that moves forward across your [change feed](change-feed.md) and delivers the changes to a delegate implementation.
 
 Your change feed processor deployment can process changes at a particular rate based on its available resources like CPU, memory, network, and so on.
 
@@ -77,7 +77,7 @@ Each `ChangeFeedProcessorState` contains the lease and lag information, and also
 
 The change feed estimator doesn't need to be deployed as part of your change feed processor, nor be part of the same project. We recommend deploying the estimator on an independent instance from your processors. A single estimator instance can track the progress for the all the leases and instances in your change feed processor deployment.
 
-Each estimation consumes [request units](../request-units.md) from your [monitored and lease containers](change-feed-processor.md#components-of-the-change-feed-processor). A frequency of 1 minute in-between is a good starting point, the lower the frequency, the higher the request units consumed.
+Each estimation consumes [request units](request-units.md) from your [monitored and lease containers](change-feed-processor.md#components-of-the-change-feed-processor). A frequency of 1 minute in-between is a good starting point, the lower the frequency, the higher the request units consumed.
 
 ### [Java](#tab/java)
 

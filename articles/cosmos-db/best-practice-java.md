@@ -11,7 +11,7 @@ ms.author: kuthapar
 ---
 
 # Best practices for Azure Cosmos DB Java SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article walks through the best practices for using the Azure Cosmos DB Java SDK. Following these practices, will help improve your latency, availability, and boost overall performance. 
 
@@ -20,7 +20,7 @@ This article walks through the best practices for using the Azure Cosmos DB Java
 |---------|---------|---------|
 |<input type="checkbox"/> |    SDK Version    |   Always using the [latest version](sdk-java-v4.md) of the Azure Cosmos DB SDK available for optimal performance.     |
 | <input type="checkbox"/>   |    Singleton Client     |       Use a [single instance](/java/api/com.azure.cosmos.cosmosasyncclient?view=azure-java-stable&preserve-view=true) of `CosmosClient` for the lifetime of your application for [better performance](performance-tips-java-sdk-v4.md#sdk-usage).     |
-| <input type="checkbox"/>  |     Regions     |   Make sure to run your application in the same [Azure region](../distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](../distribute-data-globally.md). For production workloads, enable [service-managed failover](../how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account will experience loss of write availability for all the duration of the write region outage, as manual failover won't succeed due to lack of region connectivity. To learn how to add multiple regions using the Java SDK [visit here](tutorial-global-distribution.md)   |
+| <input type="checkbox"/>  |     Regions     |   Make sure to run your application in the same [Azure region](distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](distribute-data-globally.md). For production workloads, enable [service-managed failover](how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account will experience loss of write availability for all the duration of the write region outage, as manual failover won't succeed due to lack of region connectivity. To learn how to add multiple regions using the Java SDK [visit here](tutorial-global-distribution.md)   |
 | <input type="checkbox"/>   |   Availability and Failovers     |  Set the [preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions?view=azure-java-stable#com-azure-cosmos-cosmosclientbuilder-preferredregions(java-util-list(java-lang-string))&preserve-view=true) in the v4 SDK. During failovers, write operations are sent to the current write region and all reads are sent to the first region within your preferred regions list. For more information about regional failover mechanics, see the [availability troubleshooting guide](troubleshoot-sdk-availability.md). |
 |  <input type="checkbox"/> |    CPU     |  You may run into connectivity/availability issues due to lack of resources on your client machine. Monitor your CPU utilization on nodes running the Azure Cosmos DB client, and scale up/out if usage is very high.      |
 | <input type="checkbox"/>   |    Hosting      |   For most common cases of production workloads, we highly recommend using at least 4-cores and 8-GB memory VMs whenever possible.       |
@@ -49,8 +49,8 @@ For workloads that have heavy create payloads, set the `CosmosClientBuilder#cont
 ## Next steps
 To learn more about performance tips for Java SDK, see [Performance tips for Azure Cosmos DB Java SDK v4](performance-tips-java-sdk-v4.md).
 
-To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](../partitioning-overview.md).
+To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

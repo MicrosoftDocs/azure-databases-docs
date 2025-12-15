@@ -254,7 +254,7 @@ Use the Visual Studio Code extension for Azure Cosmos DB to explore your NoSQL d
 - Importing bulk data from other sources
 - Managing databases and containers
 
-For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](../visual-studio-code-extension.md?pivots=api-nosql).
+For more information, see [How-to use Visual Studio Code extension to explore Azure Cosmos DB for NoSQL data](visual-studio-code-extension.md?pivots=api-nosql).
 
 ## Clean up resources
 

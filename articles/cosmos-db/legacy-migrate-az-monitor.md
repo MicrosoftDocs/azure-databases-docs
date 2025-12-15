@@ -11,7 +11,7 @@ ms.date: 03/18/2025
 
 # Migrate legacy monitoring metrics to Azure Monitor
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The goal of this article is to make it easier for users of the legacy metrics to migrate to Azure Monitor. This article describes the differences between the two APIs, provides a mapping between the two and provides examples of usages to aide in migration.
 
@@ -357,4 +357,4 @@ Retrieve the Max RU/s for a collection
 
 ## Next steps
 
-For more information on how to use Azure Monitor for Azure Cosmos DB, see [Monitor and debug with insights in Azure Cosmos DB](../use-metrics.md).
+For more information on how to use Azure Monitor for Azure Cosmos DB, see [Monitor and debug with insights in Azure Cosmos DB](use-metrics.md).

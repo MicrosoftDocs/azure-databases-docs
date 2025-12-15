@@ -13,13 +13,13 @@ ms.date: 09/11/2023
 
 # Best practices for JavaScript SDK in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This guide includes best practices for solutions built using the latest version of the JavaScript SDK for Azure Cosmos DB for NoSQL. The best practices included here helps improve latency, improve availability, and boost overall performance for your solutions.
 
 ## Account configuration
 
-- Make sure to run your application in the same [Azure region](../distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](../distribute-data-globally.md). For production workloads, enable [service-managed failover](../how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover can't succeed due to lack of region connectivity. For more information on how to add multiple regions using the JavaScript SDK, see the [global distribution tutorial](tutorial-global-distribution.md).
+- Make sure to run your application in the same [Azure region](distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](distribute-data-globally.md). For production workloads, enable [service-managed failover](how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover can't succeed due to lack of region connectivity. For more information on how to add multiple regions using the JavaScript SDK, see the [global distribution tutorial](tutorial-global-distribution.md).
 
 ## SDK usage
 
@@ -45,4 +45,4 @@ This guide includes best practices for solutions built using the latest version 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Partitioning and scaling in Azure Cosmos DB](../partitioning-overview.md).
+> [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).

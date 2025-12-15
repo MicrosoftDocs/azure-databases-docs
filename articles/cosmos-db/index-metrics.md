@@ -9,9 +9,9 @@ ms.date: 10/25/2021
 ms.author: mjbrown
 ---
 # Indexing metrics in Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-Azure Cosmos DB provides indexing metrics to show both utilized indexed paths and recommended indexed paths. You can use the indexing metrics to optimize query performance, especially in cases where you aren't sure how to modify the [indexing policy](../index-policy.md)).
+Azure Cosmos DB provides indexing metrics to show both utilized indexed paths and recommended indexed paths. You can use the indexing metrics to optimize query performance, especially in cases where you aren't sure how to modify the [indexing policy](index-policy.md)).
 
 ## Supported SDK versions
 Indexing metrics are supported in the following SDK versions:
@@ -250,5 +250,5 @@ These index metrics show that the query used the indexed paths `/name/?`, `/age/
 
 Read more about indexing in the following articles:
 
-- [Indexing overview](../index-overview.md)
+- [Indexing overview](index-overview.md)
 - [How to manage indexing policy](how-to-manage-indexing-policy.md)

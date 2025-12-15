@@ -43,7 +43,7 @@ Your database could be configured to offer high consistency with tradeoffs to sp
 Want to get started with Azure Cosmos DB?
 
 - [Choose an API in Azure Cosmos DB](choose-api.md)
-- [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with the API for NoSQL](quickstart-dotnet.md)
 - [Get started with the API for MongoDB](mongodb/quickstart-nodejs.md)
 - [Get started with the API for Apache Cassandra](cassandra/manage-data-java-v4-sdk.md)
 - [Get started with the API for Apache Gremlin](gremlin/quickstart-python.md)

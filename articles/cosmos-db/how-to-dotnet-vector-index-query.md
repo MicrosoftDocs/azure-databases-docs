@@ -178,5 +178,5 @@ This query retrieves the book titles along with similarity scores with respect t
 ## Related content
 
 - [VectorDistance system function](/cosmos-db/query/vectordistance)
-- [Vector indexing](../index-policy.md)
-- [Set up Azure Cosmos DB for NoSQL for vector search](../vector-search.md)
+- [Vector indexing](index-policy.md)
+- [Set up Azure Cosmos DB for NoSQL for vector search](vector-search.md)

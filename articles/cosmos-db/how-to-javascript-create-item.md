@@ -13,7 +13,7 @@ ms.custom: devx-track-js, cosmos-db-dev-journey
 
 # Create an item in Azure Cosmos DB for NoSQL using JavaScript
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Items in Azure Cosmos DB represent a specific entity stored within a container. In the API for NoSQL, an item consists of JSON-formatted data with a unique identifier.
 
@@ -54,7 +54,7 @@ Once created, the URI for an item is in this format:
 
 ``https://<cosmos-account-name>.documents.azure.com/dbs/<database-name>/docs/<item-resource-identifier>``
 
-When referencing the item using a URI, use the system-generated *resource identifier* instead of the ``id`` field. For more information about system-generated item properties in Azure Cosmos DB for NoSQL, see [properties of an item](../resource-model.md#properties-of-an-item)
+When referencing the item using a URI, use the system-generated *resource identifier* instead of the ``id`` field. For more information about system-generated item properties in Azure Cosmos DB for NoSQL, see [properties of an item](resource-model.md#properties-of-an-item)
 
 ## Create an item
 

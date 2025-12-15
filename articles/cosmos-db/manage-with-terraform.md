@@ -12,7 +12,7 @@ ms.author: mjbrown
 
 # Manage Azure Cosmos DB for NoSQL resources with Terraform
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this article, you learn how to use Terraform to deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 

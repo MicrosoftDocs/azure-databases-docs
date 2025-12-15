@@ -12,9 +12,9 @@ ms.author: mjbrown
 ---
 
 # .NET bulk executor library: Download information (Legacy)
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 | | Link/notes |
 |---|---|

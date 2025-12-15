@@ -12,7 +12,7 @@ ms.date: 08/28/2025
 
 # Diagnose and troubleshoot Azure Cosmos DB forbidden exceptions
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 403 represents the request is forbidden to complete.
 
@@ -35,12 +35,12 @@ When a data plane request is blocked with 403 Forbidden, the error message speci
 Understand via which path is the request **expected** to come to Azure Cosmos DB.
 
 - If the error message shows that the request didn't come to Azure Cosmos DB via the expected path, the issue is likely to be with client-side setup. Double check your client-side setup following documentations.
-  - Public internet: [Configure IP firewall in Azure Cosmos DB](../how-to-configure-firewall.md).
-  - Service endpoint: [Configure access to Azure Cosmos DB from virtual networks](../how-to-configure-vnet-service-endpoint.md). Consider if you expected to use service endpoint but the request came to Azure Cosmos DB from the public internet. This situation could indicate that the subnet that the client was running in didn't enable service endpoint to Azure Cosmos DB.
-  - Private endpoint: [Configure Azure Private Link for an Azure Cosmos DB account](../how-to-configure-private-endpoints.md). Also consider if you expected to use private endpoint but the request came to Azure Cosmos DB from the public internet. This situation could indicate that the domain name server (DNS) on the virtual machine wasn't configured to resolve account endpoint to the private instead of the public IP address.
+  - Public internet: [Configure IP firewall in Azure Cosmos DB](how-to-configure-firewall.md).
+  - Service endpoint: [Configure access to Azure Cosmos DB from virtual networks](how-to-configure-vnet-service-endpoint.md). Consider if you expected to use service endpoint but the request came to Azure Cosmos DB from the public internet. This situation could indicate that the subnet that the client was running in didn't enable service endpoint to Azure Cosmos DB.
+  - Private endpoint: [Configure Azure Private Link for an Azure Cosmos DB account](how-to-configure-private-endpoints.md). Also consider if you expected to use private endpoint but the request came to Azure Cosmos DB from the public internet. This situation could indicate that the domain name server (DNS) on the virtual machine wasn't configured to resolve account endpoint to the private instead of the public IP address.
 - If the request came to Azure Cosmos DB via the expected path, request was blocked because the source network identity wasn't configured for the account. Check account's settings depending on the path the request came to Azure Cosmos DB.
-  - Public internet: check account's [public network access](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) and IP range filter configurations.
-  - Service endpoint: check account's [public network access](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) and virtual network filter configurations.
+  - Public internet: check account's [public network access](how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) and IP range filter configurations.
+  - Service endpoint: check account's [public network access](how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) and virtual network filter configurations.
   - Private endpoint: check account's private endpoint configuration and client's private DNS configuration. This issue could be due to accessing account from a private endpoint that is set up for a different account.
 
 If you recently updated account's firewall configurations, keep in mind that changes can take **up to 15 minutes to apply**.
@@ -59,7 +59,7 @@ Partition key reached maximum size of {...} GB
 
 ### Solution
 
-This error means that your current [partitioning design](../partitioning-overview.md#logical-partitions) and workload is trying to store more than the allowed amount of data for a given partition key value. There's no limit to the number of logical partitions in your container but the size of data each logical partition can store is limited. You can reach to support for clarification.
+This error means that your current [partitioning design](partitioning-overview.md#logical-partitions) and workload is trying to store more than the allowed amount of data for a given partition key value. There's no limit to the number of logical partitions in your container but the size of data each logical partition can store is limited. You can reach to support for clarification.
 
 ## Nondata operations aren't allowed
 
@@ -80,6 +80,6 @@ If you're using the [Azure Functions Azure Cosmos DB Trigger](/azure/azure-funct
 
 ## Related content
 
-- [IP Firewall](../how-to-configure-firewall.md).
-- [Virtual networks](../how-to-configure-vnet-service-endpoint.md).
-- [Private endpoints](../how-to-configure-private-endpoints.md).
+- [IP Firewall](how-to-configure-firewall.md).
+- [Virtual networks](how-to-configure-vnet-service-endpoint.md).
+- [Private endpoints](how-to-configure-private-endpoints.md).

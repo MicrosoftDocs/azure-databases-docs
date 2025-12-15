@@ -11,7 +11,7 @@ ms.custom: devx-track-dotnet
 ---
 
 # Migrate your application to use the Azure Cosmos DB .NET SDK v2
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
 > It is important to note that the v3 of the .NET SDK is currently available and a migration plan from v2 to v3 is available [here](migrate-dotnet-v3.md). To learn about the Azure Cosmos DB .NET SDK v2, see the [Release notes](sdk-dotnet-v2.md), the [.NET GitHub repository](https://github.com/Azure/azure-cosmos-dotnet-v2), .NET SDK v2 [Performance Tips](performance-tips.md), and the [Troubleshooting guide](troubleshoot-dotnet-sdk.md).
@@ -74,11 +74,11 @@ For more information, see the change feed processor library [release notes](sdk-
 
 The v2 bulk executor library currently has a dependency on the Azure Cosmos DB .NET SDK 2.5.1 or later.
 
-For more information, see the [Azure Cosmos DB bulk executor library overview](../bulk-executor-overview.md) and the .NET bulk executor library [release notes](sdk-dotnet-bulk-executor-v2.md).
+For more information, see the [Azure Cosmos DB bulk executor library overview](bulk-executor-overview.md) and the .NET bulk executor library [release notes](sdk-dotnet-bulk-executor-v2.md).
 
 ## Next steps
 
 * Read about [additional performance tips](quickstart-dotnet.md) using Azure Cosmos DB for API for NoSQL v2 for optimization your application to achieve max performance
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

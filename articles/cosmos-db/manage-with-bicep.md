@@ -12,11 +12,11 @@ ms.author: mjbrown
 
 # Manage Azure Cosmos DB for NoSQL resources with Bicep
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this article, you learn how to use Bicep to deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 
-This article shows Bicep samples for API for NoSQL accounts. You can also find Bicep samples for [Cassandra](../cassandra/manage-with-bicep.md), [Gremlin](../graph/manage-with-bicep.md), [MongoDB](../mongodb/manage-with-bicep.md), and [Table](../table/manage-with-bicep.md) APIs.
+This article shows Bicep samples for API for NoSQL accounts. You can also find Bicep samples for [Cassandra](cassandra/manage-with-bicep.md), [Gremlin](graph/manage-with-bicep.md), [MongoDB](mongodb/manage-with-bicep.md), and [Table](table/manage-with-bicep.md) APIs.
 
 > [!IMPORTANT]
 >

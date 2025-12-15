@@ -27,7 +27,7 @@ At the end, we create a simple user interface to allow users to type in question
 
 - Azure Cosmos DB for NoSQL account
 
-  - [Enabled `EnableNoSQLVectorSearch` capability](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature)
+  - [Enabled `EnableNoSQLVectorSearch` capability](../vector-search.md#enable-the-vector-indexing-and-search-feature)
 
 - Azure OpenAI account
 

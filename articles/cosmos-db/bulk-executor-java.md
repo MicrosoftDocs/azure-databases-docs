@@ -12,16 +12,16 @@ ms.custom: devx-track-java, devx-track-extended-java
 ---
 
 # Perform bulk operations on Azure Cosmos DB data
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This tutorial provides instructions on performing bulk operations in the [Azure Cosmos DB Java V4 SDK](sdk-java-v4.md). This version of the SDK comes with the bulk executor library built-in. If you're using an older version of Java SDK, it's recommended to [migrate to the latest version](migrate-java-v4-sdk.md). Azure Cosmos DB Java V4 SDK is the current recommended solution for Java bulk support. 
 
-Currently, the bulk executor library is supported only by Azure Cosmos DB for NoSQL and API for Gremlin accounts. To learn about using bulk executor .NET library with API for Gremlin, see [perform bulk operations in Azure Cosmos DB for Gremlin](../gremlin/bulk-executor-dotnet.md).
+Currently, the bulk executor library is supported only by Azure Cosmos DB for NoSQL and API for Gremlin accounts. To learn about using bulk executor .NET library with API for Gremlin, see [perform bulk operations in Azure Cosmos DB for Gremlin](gremlin/bulk-executor-dotnet.md).
 
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin. Or, you can use the [Azure Cosmos DB Emulator](../emulator.md) with  the `https://localhost:8081` endpoint. The Primary Key is provided in [Authenticating requests](../emulator.md).  
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin. Or, you can use the [Azure Cosmos DB Emulator](emulator.md) with  the `https://localhost:8081` endpoint. The Primary Key is provided in [Authenticating requests](emulator.md).  
 
 * [Java Development Kit (JDK) 1.8+](/java/azure/jdk/)  
   - On Ubuntu, run `apt-get install default-jdk` to install the JDK.  
@@ -98,4 +98,4 @@ Consider the following points for better performance when using bulk executor li
 
     
 ## Next steps
-* For an overview of bulk executor functionality, see [bulk executor overview](../bulk-executor-overview.md).
+* For an overview of bulk executor functionality, see [bulk executor overview](bulk-executor-overview.md).

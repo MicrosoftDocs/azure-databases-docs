@@ -18,7 +18,7 @@ applies-to:
 
 Learn how to connect Azure Cosmos DB data to Power BI Desktop, and create insightful reports for actionable business insights.
 
-[!INCLUDE[](../includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
 
 ## Connecting
 
@@ -26,7 +26,7 @@ Connect to Azure Cosmos DB from Power BI Desktop by using one of these options:
 
 - Use [Mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context) to replicate Azure Cosmos DB data into Fabric OneLake. When you make changes to your database, the updates are sent to Fabric OneLake quickly. This process doesn't slow down your main database or use extra resources. Power BI reports access data directly from OneLake using DirectLake mode. With the enhanced Copilot features in Power BI within Fabric, tap into generative AI to gain key business insights.
 
-- Use [Azure Synapse Link](../synapse-link.md) to build Power BI reports with no performance or cost effect on your transactional workloads, and no extract-transform-load (ETL) pipelines. You can either use [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) or [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) mode. With [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode), you can build dashboards/reports    using live data from your Azure Cosmos DB accounts, without importing or copying the data into Power BI.
+- Use [Azure Synapse Link](synapse-link.md) to build Power BI reports with no performance or cost effect on your transactional workloads, and no extract-transform-load (ETL) pipelines. You can either use [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode) or [import](/power-bi/connect-data/service-dataset-modes-understand#import-mode) mode. With [DirectQuery](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode), you can build dashboards/reports    using live data from your Azure Cosmos DB accounts, without importing or copying the data into Power BI.
 
 - Connect Power BI Desktop to Azure Cosmos DB account with the Azure Cosmos DB connector for Power BI. This option is only available in import mode and consumes request units (RUs) allocated for your transactional workloads.
 
@@ -59,12 +59,12 @@ To build a Power BI report/dashboard:
 1. From the Integrations section, open the Power BI pane and select Get started.
 
    > [!NOTE]
-   > This option is currently available only for API for NoSQL accounts. You can create T-SQL views directly in Synapse serverless SQL pools and build BI dashboards for Azure Cosmos DB for MongoDB. For more information, see [Use Power BI and serverless Synapse SQL pool to analyze Azure Cosmos DB data with Synapse](../synapse-link-power-bi.md).
+   > This option is currently available only for API for NoSQL accounts. You can create T-SQL views directly in Synapse serverless SQL pools and build BI dashboards for Azure Cosmos DB for MongoDB. For more information, see [Use Power BI and serverless Synapse SQL pool to analyze Azure Cosmos DB data with Synapse](synapse-link-power-bi.md).
 
 1. From the Enable Azure Synapse Link tab, you can enable Azure Synapse Link on your account from Enable Azure Synapse Link for this account section. If Azure Synapse Link is already enabled for your account, you can't see this tab. This step is a prerequisite to start enabling Azure Synapse Link on your containers.
 
    > [!NOTE]
-   > Enabling Azure Synapse Link has cost implications. For more information, see [Azure Synapse Link pricing](../synapse-link.md#pricing).
+   > Enabling Azure Synapse Link has cost implications. For more information, see [Azure Synapse Link pricing](synapse-link.md#pricing).
 
 1. Next from the Enable Azure Synapse Link for your containers section, choose the required containers to enable Azure Synapse Link.
 
@@ -74,7 +74,7 @@ To build a Power BI report/dashboard:
 
    :::image type="content" source="media/powerbi-visualize/synapse-link-progress-existing-containers.png" alt-text="Screenshot that shows progress of Azure Synapse Link enabled on existing containers." border="true" lightbox="media/powerbi-visualize/synapse-link-progress-existing-containers.png":::
 
-1. Depending on the amount of data in your containers, it might take a while to enable Azure Synapse Link. To learn more, see [enable Azure Synapse Link on existing containers](../configure-synapse-link.md#update-analytical-ttl) article.
+1. Depending on the amount of data in your containers, it might take a while to enable Azure Synapse Link. To learn more, see [enable Azure Synapse Link on existing containers](configure-synapse-link.md#update-analytical-ttl) article.
 
    You can check the progress in the portal as shown in the following screen. Containers are enabled with Azure Synapse Link when the progress reaches 100%.
 
@@ -173,4 +173,4 @@ Connecting to Azure Cosmos DB with the Power BI connector is currently supported
 ## Related content
 
 - Learn more about Power BI in [Get started with Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/).
-- Learn more about Azure Cosmos DB on the [Azure Cosmos DB documentation landing page](../index.yml).
+- Learn more about Azure Cosmos DB on the [Azure Cosmos DB documentation landing page](index.yml).

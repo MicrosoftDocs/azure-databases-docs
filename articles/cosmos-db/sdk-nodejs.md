@@ -11,9 +11,9 @@ ms.author: mjbrown
 ms.custom: devx-track-js
 ---
 # Azure Cosmos DB Node.js SDK for API for NoSQL: Release notes and resources
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 |Resource  |Link  |
 |---------|---------|
@@ -196,7 +196,7 @@ Microsoft provides notification at least **12 months** in advance of retiring an
 | v1 | April 08, 2015 | August 30, 2020 |
 
 ## FAQ
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## See also
 To learn more about Azure Cosmos DB, see [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service page.

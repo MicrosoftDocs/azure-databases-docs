@@ -12,7 +12,7 @@ metadata:
 title: Frequently asked questions on throughput buckets in Azure Cosmos DB
 
 summary: |
-  [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+  [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
   Throughput buckets in Azure Cosmos DB allow users to control the throughput available for different workloads within a container. By configuring buckets and setting a maximum throughput allocation, users can ensure workload isolation. If a bucket exceeds its assigned throughput limit, subsequent requests are throttled to prevent impact on other workloads.
 

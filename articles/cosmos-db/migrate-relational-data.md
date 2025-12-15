@@ -15,7 +15,7 @@ ms.custom: sfi-image-nochange, sfi-ropc-blocked
 
 # Migrate one-to-few relational data into an Azure Cosmos DB for NoSQL account
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In order to migrate from a relational database to Azure Cosmos DB for NoSQL, it can be necessary to make changes to the data model for optimization.
 

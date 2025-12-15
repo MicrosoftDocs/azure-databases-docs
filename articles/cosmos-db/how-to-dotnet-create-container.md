@@ -13,7 +13,7 @@ ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track
 
 # Create a container in Azure Cosmos DB for NoSQL using .NET
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Containers in Azure Cosmos DB store sets of items. Before you can create, query, or manage items, you must first create a container.
 
@@ -31,7 +31,7 @@ Once created, the URI for a container is in this format:
 ``https://<cosmos-account-name>.documents.azure.com/dbs/<database-name>/colls/<container-name>``
 
 > [!TIP]
-> For more information on container name limits, see [service quotas and limits](../concepts-limits.md)
+> For more information on container name limits, see [service quotas and limits](concepts-limits.md)
 
 ## Create a container
 

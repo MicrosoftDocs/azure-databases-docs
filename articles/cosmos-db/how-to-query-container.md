@@ -11,13 +11,13 @@ ms.author: mjbrown
 
 # Query an Azure Cosmos DB container
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to query data (such as a collection, graph, or table) within a container in Azure Cosmos DB. In particular, it covers how in-partition and cross-partition queries work in Azure Cosmos DB.
 
 ## In-partition query
 
-When you query data from containers, if the query has a partition key filter specified, Azure Cosmos DB automatically optimizes the query. It routes the query to the [physical partitions](../partitioning-overview.md#physical-partitions) corresponding to the partition key values specified in the filter.
+When you query data from containers, if the query has a partition key filter specified, Azure Cosmos DB automatically optimizes the query. It routes the query to the [physical partitions](partitioning-overview.md#physical-partitions) corresponding to the partition key values specified in the filter.
 
 For example, consider the following query with an equality filter on `DeviceId`. If we run this query on a container partitioned on `DeviceId`, this query filters to a single physical partition.
 
@@ -69,7 +69,7 @@ You can manage parallel query execution by tuning the following parameters:
 
 - `MaxBufferedItemCount`: Trades query latency versus client-side memory utilization. If this option is omitted or to set to *-1*, the SDK manages the number of items buffered during parallel query execution.
 
-Because of the Azure Cosmos DB's ability to parallelize cross-partition queries, query latency generally scales well as the system adds [physical partitions](../partitioning-overview.md#physical-partitions). However, the Request Units (RUs) charge increases significantly as the total number of physical partitions increases.
+Because of the Azure Cosmos DB's ability to parallelize cross-partition queries, query latency generally scales well as the system adds [physical partitions](partitioning-overview.md#physical-partitions). However, the Request Units (RUs) charge increases significantly as the total number of physical partitions increases.
 
 When you run a cross-partition query, you're essentially doing a separate query per individual physical partition. While cross-partition queries use the index, if available, they still aren't nearly as efficient as in-partition queries.
 
@@ -97,7 +97,7 @@ If the delivery driver knows that all package recipients live within a certain f
 
 For most containers, having some cross-partition queries is inevitable, which is okay! Nearly all query operations are supported across partitions, both for logical partition keys and physical partitions. Azure Cosmos DB also has many optimizations in the query engine and client SDKs to parallelize query execution across physical partitions.
 
-For most read-heavy scenarios, we recommend selecting the most common property in your query filters. You should also make sure your partition key adheres to other [partition key selection best practices](../partitioning-overview.md#choose-a-partition-key).
+For most read-heavy scenarios, we recommend selecting the most common property in your query filters. You should also make sure your partition key adheres to other [partition key selection best practices](partitioning-overview.md#choose-a-partition-key).
 
 Avoiding cross-partition queries typically only matters with large containers. You're charged for a minimum of about 2.5 RUs each time you check a physical partition's index for results even if no items in the physical partition match the query's filter. As such, if you have only one (or just a few) physical partitions, cross-partition queries don't consume significantly more RUs than in-partition queries.
 
@@ -112,6 +112,6 @@ Consider using [global secondary indexes (preview)](global-secondary-indexes.md)
 
 ## Next steps
 
-- [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
 - [Create a synthetic partition key](synthetic-partition-keys.md)
 - [Global secondary indexes in Azure Cosmos DB](global-secondary-indexes.md)

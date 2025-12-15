@@ -9,7 +9,7 @@ ms.subservice: nosql
 ms.topic: best-practice
 ---
 # Design resilient applications with Azure Cosmos DB SDKs
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 When authoring client applications that interact with Azure Cosmos DB through any of the SDKs, it's important to understand a few key fundamentals. This article is a design guide to help you understand these fundamentals and design resilient applications.
 
@@ -22,7 +22,7 @@ For a video overview of the concepts discussed in this article, see:
 
 Azure Cosmos DB SDKs can connect to the service in two [connectivity modes](sdk-connection-modes.md). The .NET and Java SDKs can connect to the service in either *Gateway* or *Direct* mode, while the others can only connect in Gateway mode. Gateway mode uses the HTTP protocol, and Direct mode typically uses the TCP protocol.
 
-Gateway mode is always used to fetch metadata such as the account, container, and routing information regardless of which mode SDK is configured for use. This information is cached in memory and is used to connect to the [service replicas](../partitioning-overview.md#replica-sets).
+Gateway mode is always used to fetch metadata such as the account, container, and routing information regardless of which mode SDK is configured for use. This information is cached in memory and is used to connect to the [service replicas](partitioning-overview.md#replica-sets).
 
 In summary, for SDKs in Gateway mode, you can expect HTTP traffic, while for SDKs in Direct mode, you can expect a combination of HTTP and TCP traffic under different circumstances, such as initialization, fetching metadata, or routing information.
 
@@ -55,10 +55,10 @@ The short answer is *yes*, but not all errors make sense to retry on. Some of th
 | 403 | Optional | No | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | No | No | [Resource not found](troubleshoot-not-found.md) |
 | 408 | Yes | Yes | [Request timed out](troubleshoot-dotnet-sdk-request-timeout.md) |
-| 409 | No | No | Conflict failure is when the ID and partition key provided for a resource on a write operation is taken by an existing resource or when a [unique key constraint](../unique-keys.md) is violated. |
+| 409 | No | No | Conflict failure is when the ID and partition key provided for a resource on a write operation is taken by an existing resource or when a [unique key constraint](unique-keys.md) is violated. |
 | 410 | Yes | Yes | Gone exceptions (transient failure that shouldn't violate SLA) |
 | 412 | No | No | Precondition failure is where the operation specified an eTag that's different from the version available at the server. It's an [optimistic concurrency](database-transactions-optimistic-concurrency.md#optimistic-concurrency-control) error. Retry the request after reading the latest version of the resource and updating the eTag on the request.
-| 413 | No | No | [Request entity too large](../concepts-limits.md#per-item-limits) |
+| 413 | No | No | [Request entity too large](concepts-limits.md#per-item-limits) |
 | 429 | Yes | Yes | It's safe to retry on a 429. Review the [guide to troubleshoot HTTP 429](troubleshoot-request-rate-too-large.md).|
 | 449 | Yes | Yes | Transient error that only occurs on write operations, and is safe to retry. This can point to a design issue where too many concurrent operations are trying to update the same object in Azure Cosmos DB. |
 | 500 | No | No | The operation failed due to an unexpected service error. Contact support by filing an [Azure support issue](https://aka.ms/azure-support). |
@@ -91,7 +91,7 @@ Network timeouts and connectivity failures are among the most common errors. The
 
 If the account has multiple regions available, the SDKs also attempt a [cross-region retry](troubleshoot-sdk-availability.md#transient-connectivity-issues-on-tcp-protocol).
 
-Because of the nature of timeouts and connectivity failures, these might not appear in your [account metrics](../monitor.md), as they only cover failures happening on the service side.
+Because of the nature of timeouts and connectivity failures, these might not appear in your [account metrics](monitor.md), as they only cover failures happening on the service side.
 
 It's recommended for applications to have their own retry policy for these scenarios and take into consideration how to resolve write timeouts. For example, retrying on a *Create* timeout can yield an HTTP 409 (Conflict) if the previous request did reach the service, but it would succeed if it didn't.
 

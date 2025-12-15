@@ -18,7 +18,7 @@ Azure Cosmos DB automatically takes a full backup of your data for every 4 hours
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Before you start
@@ -163,7 +163,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
 Use these steps to change the default backup options for a new Azure Cosmos DB account.
 
 > [!NOTE]
-> For illustrative purposes, these examples assume that you are creating an [Azure Cosmos DB for NoSQL](nosql/index.yml) account. The steps are very similar for accounts using other APIs.
+> For illustrative purposes, these examples assume that you are creating an [Azure Cosmos DB for NoSQL](index.yml) account. The steps are very similar for accounts using other APIs.
 
 ### [Azure portal](#tab/azure-portal)
 

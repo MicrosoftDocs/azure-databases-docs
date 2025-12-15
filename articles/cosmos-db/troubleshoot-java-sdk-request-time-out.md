@@ -23,7 +23,7 @@ The following list contains known causes and solutions for request time out exce
 
 ### End-to-end time out policy
 
-There are scenarios where 408 network time out errors occurs even when all preemptive solutions here are implemented. A general best practice for reducing tail latency, and improving availability in these scenarios, is to implement end-to-end time out policy. Tail latency is reduced by failing faster, and [request units](../request-units.md) and client-side compute costs are reduced by stopping retries after the time out. The time out duration can be set on `CosmosItemRequestOptions`. The options can then be passed to any request sent to Azure Cosmos DB for NoSQL:
+There are scenarios where 408 network time out errors occurs even when all preemptive solutions here are implemented. A general best practice for reducing tail latency, and improving availability in these scenarios, is to implement end-to-end time out policy. Tail latency is reduced by failing faster, and [request units](request-units.md) and client-side compute costs are reduced by stopping retries after the time out. The time out duration can be set on `CosmosItemRequestOptions`. The options can then be passed to any request sent to Azure Cosmos DB for NoSQL:
 
 ```java
 CosmosEndToEndOperationLatencyPolicyConfig endToEndOperationLatencyPolicyConfig = new CosmosEndToEndOperationLatencyPolicyConfigBuilder(Duration.ofSeconds(1)).build();
@@ -98,7 +98,7 @@ When you have multiple instances of the client interacting with multiple account
 
 ### Hot partition key
 
-Azure Cosmos DB for NoSQL distributes the overall provisioned throughput evenly across physical partitions. When there's a hot partition, one or more logical partition keys on a physical partition are consuming all the physical partition's Request Units per second (RU/s). At the same time, the RU/s on other physical partitions are going unused. As a symptom, the total RU/s consumed are less than the overall provisioned RU/s at the database or container, but you still see throttling (429 errors) on the requests against the hot logical partition key. Use the [Normalized RU Consumption metric](../monitor-normalized-request-units.md) to see if the workload is encountering a hot partition. 
+Azure Cosmos DB for NoSQL distributes the overall provisioned throughput evenly across physical partitions. When there's a hot partition, one or more logical partition keys on a physical partition are consuming all the physical partition's Request Units per second (RU/s). At the same time, the RU/s on other physical partitions are going unused. As a symptom, the total RU/s consumed are less than the overall provisioned RU/s at the database or container, but you still see throttling (429 errors) on the requests against the hot logical partition key. Use the [Normalized RU Consumption metric](monitor-normalized-request-units.md) to see if the workload is encountering a hot partition. 
 
 #### Solution
 

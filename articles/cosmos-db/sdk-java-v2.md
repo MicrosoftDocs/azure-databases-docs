@@ -14,9 +14,9 @@ ms.date: 02/12/2024
 
 # Azure Cosmos DB for NoSQL Java SDK (legacy): Release notes and resources
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 This article covers the Azure Cosmos DB Sync Java SDK v2 for the API for NoSQL. This API only supports synchronous operations.
 
@@ -287,7 +287,7 @@ Here's the release notes for each version of the SDK.
 
 ### 1.6.0
 
-- Implemented [partitioned collections](../partitioning-overview.md) and [user-defined performance levels](../performance-levels.md).
+- Implemented [partitioned collections](partitioning-overview.md) and [user-defined performance levels](performance-levels.md).
 
 ### 1.5.1
 
@@ -391,4 +391,4 @@ Microsoft provides notification at least **12 months** in advance of retiring an
 
 ## Frequently asked Questions
 
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]

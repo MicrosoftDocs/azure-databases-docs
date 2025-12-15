@@ -10,7 +10,7 @@ ms.author: maquaran
 ---
 
 # Azure Cosmos DB SQL SDK connectivity modes
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 How a client connects to Azure Cosmos DB has important performance implications, especially for observed client-side latency. Azure Cosmos DB offers a simple, open RESTful programming model over HTTPS called *gateway* mode. Additionally, it offers an efficient TCP protocol, which is also RESTful in its communication model and uses TLS for initial authentication and encrypting traffic, called *direct* mode.
 
@@ -34,7 +34,7 @@ These connectivity modes essentially condition the route that data plane request
 
 ## Service port ranges
 
-When you use direct mode, you need to ensure that your client can access ports ranging between 10000 and 20000 because Azure Cosmos DB uses dynamic TCP ports. This is in addition to the gateway ports. When using direct mode on [private endpoints](../how-to-configure-private-endpoints.md), Azure Cosmos DB can use the full range of TCP ports from 0 to 65535. If these ports aren't open on your client and you try to use the TCP protocol, you might receive a "503 Service Unavailable" error.
+When you use direct mode, you need to ensure that your client can access ports ranging between 10000 and 20000 because Azure Cosmos DB uses dynamic TCP ports. This is in addition to the gateway ports. When using direct mode on [private endpoints](how-to-configure-private-endpoints.md), Azure Cosmos DB can use the full range of TCP ports from 0 to 65535. If these ports aren't open on your client and you try to use the TCP protocol, you might receive a "503 Service Unavailable" error.
 
 The following table shows a summary of the connectivity modes available for various APIs and the service ports used for each API:
 
@@ -45,11 +45,11 @@ The following table shows a summary of the connectivity modes available for vari
 
 ## <a id="direct-mode"></a> Direct mode connection architecture
 
-As detailed in the [introduction](#available-connectivity-modes), direct mode clients connect directly to the backend nodes through TCP protocol. Each backend node represents a replica in a [replica set](../partitioning-overview.md#replica-sets) belonging to a [physical partition](../partitioning-overview.md#physical-partitions).
+As detailed in the [introduction](#available-connectivity-modes), direct mode clients connect directly to the backend nodes through TCP protocol. Each backend node represents a replica in a [replica set](partitioning-overview.md#replica-sets) belonging to a [physical partition](partitioning-overview.md#physical-partitions).
 
 ### Routing
 
-When an Azure Cosmos DB SDK on direct mode performs an operation, it needs to resolve which backend replica to connect to. The first step is knowing which physical partition should the operation go to, and for that, the SDK obtains the container information that includes the [partition key definition](../partitioning-overview.md#choose-a-partition-key) from a gateway node. It also needs the routing information that contains the replicas' TCP addresses. The routing information is available also from gateway nodes and both are considered [control plane metadata](../concepts-limits.md#control-plane). Once the SDK obtains the routing information, it can proceed to open the TCP connections to the replicas belonging to the target physical partition and execute the operations.
+When an Azure Cosmos DB SDK on direct mode performs an operation, it needs to resolve which backend replica to connect to. The first step is knowing which physical partition should the operation go to, and for that, the SDK obtains the container information that includes the [partition key definition](partitioning-overview.md#choose-a-partition-key) from a gateway node. It also needs the routing information that contains the replicas' TCP addresses. The routing information is available also from gateway nodes and both are considered [control plane metadata](concepts-limits.md#control-plane). Once the SDK obtains the routing information, it can proceed to open the TCP connections to the replicas belonging to the target physical partition and execute the operations.
 
 Each replica set contains one primary replica and three secondaries. Write operations are always routed to primary replica nodes while read operations can be served from primary or secondary nodes.
 
@@ -91,5 +91,5 @@ For specific SDK platform performance optimizations:
 * [Java V4 SDK performance tips](performance-tips-java-sdk-v4.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md).
+* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md).

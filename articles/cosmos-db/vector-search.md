@@ -27,7 +27,7 @@ Azure Cosmos DB for NoSQL offers flexibility by letting you choose the vector in
 - A quantized flat index that compresses vectors using DiskANN-based quantization methods for better efficiency in the kNN search.
 - DiskANN, a suite of state-of-the-art vector indexing algorithms developed by Microsoft Research to power efficient, high accuracy multi-modal vector search at any scale.
 
-To learn more about vector indexing, see [Vector indexes](../index-policy.md#vector-indexes).
+To learn more about vector indexing, see [Vector indexes](index-policy.md#vector-indexes).
 
 Vector search in Azure Cosmos DB can be combined with all other supported Azure Cosmos DB NoSQL query filters and indexes by using `WHERE` clauses. This enables your vector searches to provide the most relevant data for your applications.
 
@@ -46,7 +46,7 @@ This feature enhances the core capabilities of Azure Cosmos DB, making it more v
 
 ## What is a vector store?
 
-A vector store or [vector database](../vector-database.md) is a database designed to store and manage vector embeddings, which are mathematical representations of data in a high-dimensional space. In this space, each dimension corresponds to a feature of the data, and tens of thousands of dimensions might be used to represent sophisticated data. A vector's position in this space represents its characteristics. Words, phrases, or entire documents, and images, audio, and other types of data can all be vectorized.
+A vector store or [vector database](vector-database.md) is a database designed to store and manage vector embeddings, which are mathematical representations of data in a high-dimensional space. In this space, each dimension corresponds to a feature of the data, and tens of thousands of dimensions might be used to represent sophisticated data. A vector's position in this space represents its characteristics. Words, phrases, or entire documents, and images, audio, and other types of data can all be vectorized.
 
 ## How does a vector store work?
 
@@ -247,8 +247,8 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - [Python - How to index and query vector data](how-to-python-vector-index-query.md)
 - [Java - How to index and query vector data](how-to-java-vector-index-query.md)
 - [VectorDistance system function](/cosmos-db/query/vectordistance)
-- [Vector index overview](../index-overview.md#vector-indexes)
-- [Vector index policies](../index-policy.md#vector-indexes)
+- [Vector index overview](index-overview.md#vector-indexes)
+- [Vector index policies](index-policy.md#vector-indexes)
 - [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples)
 - Integrations:
   - [LangChain, Python](https://python.langchain.com/v0.2/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
@@ -258,4 +258,4 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Use the Azure Cosmos DB lifetime free tier](../free-tier.md)
+> [Use the Azure Cosmos DB lifetime free tier](free-tier.md)

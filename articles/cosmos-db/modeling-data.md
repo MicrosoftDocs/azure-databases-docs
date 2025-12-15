@@ -404,7 +404,7 @@ The ability to have a model with precalculated fields is made possible because A
 
 ## Distinguish between different item types
 
-In some scenarios, you might want to mix different item types in the same collection; this design choice is usually the case when you want multiple, related documents to sit in the same [partition](../partitioning-overview.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such a situation, you usually want to add a field to your documents that identifies their type to differentiate them.
+In some scenarios, you might want to mix different item types in the same collection; this design choice is usually the case when you want multiple, related documents to sit in the same [partition](partitioning-overview.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such a situation, you usually want to add a field to your documents that identifies their type to differentiate them.
 
 ```json
 Book documents:
@@ -514,7 +514,7 @@ Microsoft Fabric allows you to reduce costs from the following perspectives:
 
 ### Controlled redundancy
 
-This technique is a great alternative for situations when a data model already exists and can't be changed. Or if your data is too complex with too many nested levels or too many properties. If this scenario is your case, you can use [Azure Cosmos DB Change Feed](../change-feed.md) to replicate your data into another container, applying the required transformations, then configure Mirroring for that container to Microsoft Fabric for analytics. Let's see an example:
+This technique is a great alternative for situations when a data model already exists and can't be changed. Or if your data is too complex with too many nested levels or too many properties. If this scenario is your case, you can use [Azure Cosmos DB Change Feed](change-feed.md) to replicate your data into another container, applying the required transformations, then configure Mirroring for that container to Microsoft Fabric for analytics. Let's see an example:
 
 #### Scenario
 
@@ -537,6 +537,6 @@ Just as there's no single way to represent a piece of data on a screen, there's 
 
 ## Related content
 
-- [Partitioning data in Azure Cosmos DB](../partitioning-overview.md)
+- [Partitioning data in Azure Cosmos DB](partitioning-overview.md)
 - [Data modeling and partitioning - a real-world example](model-partition-example.md)
 - [Model and partition your data in Azure Cosmos DB](/training/modules/model-partition-data-azure-cosmos-db/)

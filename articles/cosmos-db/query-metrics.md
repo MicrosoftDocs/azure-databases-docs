@@ -11,7 +11,7 @@ ms.devlang: csharp
 ms.custom: devx-track-csharp
 ---
 # Tuning query performance with Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides a [API for NoSQL for querying data](/cosmos-db/query/overview), without requiring schema or secondary indexes. This article provides the following information for developers:
 
@@ -21,7 +21,7 @@ Azure Cosmos DB provides a [API for NoSQL for querying data](/cosmos-db/query/ov
 
 ## About SQL query execution
 
-In Azure Cosmos DB data is stored in containers, which can grow to any [storage size or request throughput](../partitioning-overview.md). Azure Cosmos DB seamlessly scales data across physical partitions under the covers to handle data growth or increases in provisioned throughput. You can issue SQL queries to any container using the REST API or one of the supported [SQL SDKs](sdk-dotnet-v3.md).
+In Azure Cosmos DB data is stored in containers, which can grow to any [storage size or request throughput](partitioning-overview.md). Azure Cosmos DB seamlessly scales data across physical partitions under the covers to handle data growth or increases in provisioned throughput. You can issue SQL queries to any container using the REST API or one of the supported [SQL SDKs](sdk-dotnet-v3.md).
 
 A brief overview of partitioning: you define a partition key like "city", which determines how data is split across physical partitions. Data belonging to a single partition key (for example, "city" == "Seattle") is stored within a physical partition, and a single physical partition can store data from multiple partition keys. When a partition reaches its storage limit, the service seamlessly splits the partition into two new partitions. Data is distributed evenly across the new partitions, keeping all data for a single partition key together. Since partitions are transient, the APIs use an abstraction of a partition key range, which denotes the ranges of partition key hashes. 
 
@@ -29,7 +29,7 @@ When you issue a query to Azure Cosmos DB, the SDK performs these logical steps:
 
 * Parse the SQL query to determine the query execution plan. 
 * If the query includes a filter against the partition key, like `SELECT * FROM c WHERE c.city = "Seattle"`, it's routed to a single partition. If the query doesn't have a filter on the partition key, then it's executed in all partitions and results from each partition are merged client side.
-* The query is executed within each partition in series or parallel, based on client configuration. Within each partition, the query might make one or more round trips depending on the query complexity, configured page size, and provisioned throughput of the collection. Each execution returns the number of [request units](../request-units.md) consumed by query execution and query execution statistics. 
+* The query is executed within each partition in series or parallel, based on client configuration. Within each partition, the query might make one or more round trips depending on the query complexity, configured page size, and provisioned throughput of the collection. Each execution returns the number of [request units](request-units.md) consumed by query execution and query execution statistics. 
 * The SDK performs a summarization of the query results across partitions. For example, if the query involves an ORDER BY across partitions, then results from individual partitions are merge-sorted to return results in globally sorted order. If the query is an aggregation like `COUNT`, the counts from individual partitions are summed to produce the overall count.
 
 The SDKs provide various options for query execution. For example, in .NET these options are available in the [`QueryRequestOptions`](/dotnet/api/microsoft.azure.cosmos.queryrequestoptions) class. The following table describes these options and how they affect query execution time. 
@@ -80,7 +80,7 @@ In Azure Cosmos DB, you create containers of data, each with reserved throughput
 
 If you submit more than 200 queries/sec (or some other operations that saturate all provisioned RUs), the service starts rate-limiting incoming requests. The SDKs automatically handle rate-limiting by performing a backoff/retry, therefore you might notice higher latency for these queries. Increasing the provisioned throughput to the required value improves your query latency and throughput. 
 
-To learn more about request units, see [Request units](../request-units.md).
+To learn more about request units, see [Request units](request-units.md).
 
 ### Partitioning and partition keys
 
@@ -93,7 +93,7 @@ With Azure Cosmos DB, the following scenarios for reading data are ordered from 
 
 Queries that need to be executed on all partitions have higher latency, and can consume higher RUs. Since each partition has automatic indexing against all properties, the query can be served efficiently from the index in this case. You can make queries that span partitions faster by using the parallelism options.
 
-To learn more about partitioning and partition keys, see [Partitioning in Azure Cosmos DB](../partitioning-overview.md).
+To learn more about partitioning and partition keys, see [Partitioning in Azure Cosmos DB](partitioning-overview.md).
 
 ### SDK and query options
 
@@ -107,7 +107,7 @@ You can use [query execution metrics](#query-execution-metrics) to retrieve the 
 
 ### Indexing policy
 
-See [configuring indexing policy](../index-policy.md) for indexing paths, kinds, and modes, and how they impact query execution. By default, Azure Cosmos DB applies automatic indexing to all data and uses range indexes for strings and numbers, which is effective for equality queries. For high performance insert scenarios, consider excluding paths to reduce the RU cost for each insert operation. 
+See [configuring indexing policy](index-policy.md) for indexing paths, kinds, and modes, and how they impact query execution. By default, Azure Cosmos DB applies automatic indexing to all data and uses range indexes for strings and numbers, which is effective for equality queries. For high performance insert scenarios, consider excluding paths to reduce the RU cost for each insert operation. 
 
 You can use the [index metrics](./index-metrics.md) to identify which indexes are used for each query and if there are any missing indexes that would improve query performance.
 
@@ -149,5 +149,5 @@ Here are some sample queries, and how to interpret some of the metrics returned 
 
 ## Next steps
 * To learn about the supported SQL query operators and keywords, see [SQL query](/cosmos-db/query/overview). 
-* To learn about request units, see [request units](../request-units.md).
-* To learn about indexing policy, see [indexing policy](../index-policy.md)
+* To learn about request units, see [request units](request-units.md).
+* To learn about indexing policy, see [indexing policy](index-policy.md)

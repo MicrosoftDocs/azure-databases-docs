@@ -12,15 +12,15 @@ ms.author: mjbrown
 ---
 
 # .NET Change Feed Processor SDK: Download and release notes (Legacy)
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 |   | Links  |
 |---|---|
 |**SDK download**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API documentation**|[Change Feed Processor library API reference documentation](/dotnet/api/microsoft.azure.documents.changefeedprocessor)|
-|**Get started**|[Get started with the Change Feed Processor .NET SDK](../change-feed.md)|
+|**Get started**|[Get started with the Change Feed Processor .NET SDK](change-feed.md)|
 |**Current supported framework**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://dotnet.microsoft.com/download) |
 
 > [!NOTE]
@@ -206,7 +206,7 @@ Microsoft will provide notification at least **12 months** in advance of retirin
 
 ## FAQ
 
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## See also
 

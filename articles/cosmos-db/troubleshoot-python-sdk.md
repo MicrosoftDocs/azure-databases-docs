@@ -12,7 +12,7 @@ ms.custom: devx-track-python, devx-track-extended-python
 ---
 
 # Troubleshoot issues when you use Azure Cosmos DB Python SDK with API for NoSQL accounts
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Python SDK](troubleshoot-python-sdk.md)
@@ -111,7 +111,7 @@ For best performance:
 
 ### Check the portal metrics
 
-Checking the [portal metrics](../monitor.md) will help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
+Checking the [portal metrics](monitor.md) will help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
 
 ### Connection throttling
 Connection throttling can happen because of either a [connection limit on a host machine] or [Azure SNAT (PAT) port exhaustion].
@@ -141,7 +141,7 @@ If your app is deployed on Azure Virtual Machines without a public IP address, b
 
 ### Failure connecting to Azure Cosmos DB emulator
 
-The Azure Cosmos DB Emulator HTTPS certificate is self-signed. For the Python SDK to work with the emulator, import the emulator certificate. For more information, see [Export Azure Cosmos DB Emulator certificates](../emulator.md).
+The Azure Cosmos DB Emulator HTTPS certificate is self-signed. For the Python SDK to work with the emulator, import the emulator certificate. For more information, see [Export Azure Cosmos DB Emulator certificates](emulator.md).
 
 #### HTTP proxy
 

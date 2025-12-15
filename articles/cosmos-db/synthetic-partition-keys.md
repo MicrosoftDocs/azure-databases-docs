@@ -11,7 +11,7 @@ ms.author: mjbrown
 ---
 
 # Create a synthetic partition key
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 As a best practice, you should use a partition key that has many distinct values, such as hundreds or thousands. The goal is to distribute your data and workload evenly across the items associated with these partition key values. If such a property doesn’t exist in your data, you can construct a *synthetic partition key*.
 
@@ -58,10 +58,10 @@ With this strategy, the writes are evenly spread across the partition key values
 
 You can learn more about the partitioning concept in the following articles:
 
-* [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
-* [Introduction to provisioned throughput in Azure Cosmos DB](../set-throughput.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Introduction to provisioned throughput in Azure Cosmos DB](set-throughput.md)
 * [Provision standard (manual) throughput on a database in Azure Cosmos DB](how-to-provision-container-throughput.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md).
+* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md).

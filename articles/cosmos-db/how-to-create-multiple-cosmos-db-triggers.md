@@ -12,7 +12,7 @@ ms.custom: devx-track-csharp
 ---
 
 # Create multiple Azure Functions triggers for Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes how you can configure multiple Azure Functions triggers for Azure Cosmos DB to work in parallel and independently react to changes.
 
@@ -22,7 +22,7 @@ This article describes how you can configure multiple Azure Functions triggers f
 
 When building serverless architectures with [Azure Functions](/azure/azure-functions/functions-overview), it's [recommended](/azure/azure-functions/performance-reliability#avoid-long-running-functions) to create small function sets that work together instead of large long running functions.
 
-As you build event-based serverless flows using the [Azure Functions trigger for Azure Cosmos DB](./change-feed-functions.md), you'll  run into the scenario where you want to do multiple things whenever there is a new event in a particular [Azure Cosmos DB container](../resource-model.md#azure-cosmos-db-containers). If actions you want to trigger, are independent from one another, the ideal solution would be to **create one Azure Functions triggers for Azure Cosmos DB per action** you want to do, all listening for changes on the same Azure Cosmos DB container.
+As you build event-based serverless flows using the [Azure Functions trigger for Azure Cosmos DB](./change-feed-functions.md), you'll  run into the scenario where you want to do multiple things whenever there is a new event in a particular [Azure Cosmos DB container](resource-model.md#azure-cosmos-db-containers). If actions you want to trigger, are independent from one another, the ideal solution would be to **create one Azure Functions triggers for Azure Cosmos DB per action** you want to do, all listening for changes on the same Azure Cosmos DB container.
 
 ## Optimizing containers for multiple Triggers
 
@@ -30,7 +30,7 @@ Given the *requirements* of the Azure Functions trigger for Azure Cosmos DB, we 
 
 Here, you have two options:
 
-* Create **one leases container per Function**: This approach can translate into additional costs, unless you're using a [shared throughput database](../set-throughput.md#set-throughput-on-a-database). Remember, that the minimum throughput at the container level is 400 [Request Units](../request-units.md), and in the case of the leases container, it is only being used to checkpoint the progress and maintain state.
+* Create **one leases container per Function**: This approach can translate into additional costs, unless you're using a [shared throughput database](set-throughput.md#set-throughput-on-a-database). Remember, that the minimum throughput at the container level is 400 [Request Units](request-units.md), and in the case of the leases container, it is only being used to checkpoint the progress and maintain state.
 * Have **one lease container and share it** for all your Functions: This second option makes better use of the provisioned Request Units on the container, as it enables multiple Azure Functions to share and use the same provisioned throughput.
 
 The goal of this article is to guide you to accomplish the second option.

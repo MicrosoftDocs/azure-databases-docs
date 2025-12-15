@@ -36,7 +36,7 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 #### Prerequisites
 
 1. Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
-1. Enable [All version and delete change feed mode (preview)](nosql/change-feed-modes.md?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
+1. Enable [All version and delete change feed mode (preview)](change-feed-modes.md?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
 
 #### Enable Online copy
 
@@ -82,7 +82,7 @@ $capabilities = (($cosmosdb | ConvertFrom-Json).capabilities)
 
 1. The platform allocates server-side compute instances for the destination Azure Cosmos DB account to run the container copy jobs.
 1. A single job is executed across all instances at any time.
-1. The online copy jobs utilize [all version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
+1. The online copy jobs utilize [all version and delete change feed mode](change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
 1. Once the job is completed, the platform deallocates these instances after 15 minutes of inactivity.
 
 ### [Offline copy](#tab/offline-copy)
@@ -107,7 +107,7 @@ Start using offline copy by following [how to create, monitor, and manage copy j
 1. The container copy jobs run on these instances.
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the container copy jobs that are running within the same account.
-1. The offline copy jobs utilize [Latest version change feed mode](nosql/change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
+1. The offline copy jobs utilize [Latest version change feed mode](change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
 1. The platform might deallocate the instances if they're idle for longer than 15 minutes.
 
 ::: zone-end

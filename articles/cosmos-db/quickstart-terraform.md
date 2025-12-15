@@ -13,7 +13,7 @@ ms.date: 06/11/2025
 
 # Quickstart - Create an Azure Cosmos DB database and container using Terraform
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is Microsoft’s fast NoSQL database with open APIs for any scale. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases. Without a credit card or an Azure subscription, you can set up a free [Try Azure Cosmos DB account](https://aka.ms/trycosmosdb). This quickstart focuses on the process of deployments via Terraform to create an Azure Cosmos database and a container within that database. You can later store data in this container.
 
@@ -99,10 +99,10 @@ Remove-AzResourceGroup -Name "your resource group name"
 
 In this quickstart, you created an Azure Cosmos account, a database and a container via terraform and validated the deployment. To learn more about Azure Cosmos DB and Terraform, continue on to the articles below.
 
-- Read an [Overview of Azure Cosmos DB](../introduction.md).
+- Read an [Overview of Azure Cosmos DB](introduction.md).
 - Learn more about [Terraform](https://www.terraform.io/intro).
 - Learn more about [Azure Terraform Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs).
 - [Manage Cosmos DB with Terraform](manage-with-terraform.md)
 - Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md).
+  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).
   - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md).

@@ -66,7 +66,7 @@ The query used to define a global secondary index must adhere to the following c
 
 ## Syncing global secondary indexes
 
-Global secondary index containers are automatically kept in sync with changes to data in source containers using [change feed](../change-feed.md). When a global secondary index is defined for a source container, a change feed job is created and managed for you. Changes are asynchronously reflected to data in index containers and don't affect writes to the source container. Index containers are eventually consistent with the source container regardless of the [consistency level](../consistency-levels.md) set for the account.
+Global secondary index containers are automatically kept in sync with changes to data in source containers using [change feed](change-feed.md). When a global secondary index is defined for a source container, a change feed job is created and managed for you. Changes are asynchronously reflected to data in index containers and don't affect writes to the source container. Index containers are eventually consistent with the source container regardless of the [consistency level](consistency-levels.md) set for the account.
 
 Change feed reads consume RUs from the source container, and writes to the global secondary index consume RUs from the index container. RUs provisioned on both containers determine how quickly indexes are hydrated and synced.
 
@@ -82,7 +82,7 @@ Because global secondary indexes can have a different partition key than source 
 
 ## Monitoring
 
-You can monitor the lag in building global secondary indexes through the **Global Secondary Index Catchup Gap In Minutes** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](../monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+You can monitor the lag in building global secondary indexes through the **Global Secondary Index Catchup Gap In Minutes** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
 :::image type="content" source="./media/global-secondary-indexes/global-secondary-index-catchup-gap.png" alt-text="Screenshot of the Global Secondary Index Catchup Gap In Minutes Metric in the Metrics page of the Azure portal." :::
 

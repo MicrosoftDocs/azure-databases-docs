@@ -175,7 +175,7 @@ Use CosmosLoadBalancingPolicy in [Java driver 3](https://github.com/Azure/azure-
 
 ## Next steps
 * To understand the various error codes and their meaning, see [Server-side diagnostics](error-codes-solution.md).
-* See [Diagnose and troubleshoot issues with the Azure Cosmos DB .NET SDK](../nosql/troubleshoot-dotnet-sdk.md).
-* Learn about performance guidelines for [.NET v3](../nosql/performance-tips-dotnet-sdk-v3.md) and [.NET v2](../nosql/performance-tips.md).
-* See [Troubleshoot issues with the Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](../nosql/troubleshoot-java-sdk-v4.md).
-* See [Performance tips for the Azure Cosmos DB Java SDK v4](../nosql/performance-tips-java-sdk-v4.md).
+* See [Diagnose and troubleshoot issues with the Azure Cosmos DB .NET SDK](../troubleshoot-dotnet-sdk.md).
+* Learn about performance guidelines for [.NET v3](../performance-tips-dotnet-sdk-v3.md) and [.NET v2](../performance-tips.md).
+* See [Troubleshoot issues with the Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](../troubleshoot-java-sdk-v4.md).
+* See [Performance tips for the Azure Cosmos DB Java SDK v4](../performance-tips-java-sdk-v4.md).

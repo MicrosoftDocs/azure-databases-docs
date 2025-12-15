@@ -53,7 +53,7 @@ You can create a free tier account from the Azure portal, PowerShell, CLI, or Az
 
 ### Azure portal
 
-When creating the account using the Azure portal, set the **Apply Free Tier Discount** option to **Apply**. See [create a new account with free tier](nosql/quickstart-portal.md) article for step-by-step guidance.
+When creating the account using the Azure portal, set the **Apply Free Tier Discount** option to **Apply**. See [create a new account with free tier](quickstart-portal.md) article for step-by-step guidance.
 
 ### ARM template
 
@@ -96,5 +96,5 @@ After you create a free tier account, you can start building apps with Azure Cos
 
 * [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET](create-sql-api-dotnet-v4.md)
 * [Quickstart: Use Azure Cosmos DB for MongoDB with Node.js](mongodb/quickstart-nodejs.md)
-* [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](nosql/tutorial-create-notebook-vscode.md)
+* [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](tutorial-create-notebook-vscode.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)

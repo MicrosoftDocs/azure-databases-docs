@@ -12,11 +12,11 @@ ms.date: 09/26/2024
 
 # Tutorial: Deploy an ASP.NET web application by using Azure Cosmos DB for NoSQL, managed identity, and AKS via Bicep
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this tutorial, you deploy a reference ASP.NET web application on an Azure Kubernetes Service (AKS) cluster that connects to Azure Cosmos DB for NoSQL.
 
-[Azure Cosmos DB](../introduction.md) is a fully managed distributed database platform for modern application development with NoSQL or relational databases.
+[Azure Cosmos DB](introduction.md) is a fully managed distributed database platform for modern application development with NoSQL or relational databases.
 
 [AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that helps you quickly deploy and manage clusters.
 
@@ -46,18 +46,18 @@ The Bicep modules deploy the following Azure resources within the targeted subsc
 - A [container registry](/azure/container-registry/container-registry-intro) for storing container images
 - An [AKS](/azure/aks/intro-kubernetes) cluster
 - A [virtual network](/azure/virtual-network/network-overview) for configuring AKS
-- An [Azure Cosmos DB for NoSQL account](../introduction.md), along with a database, a container, and the [SQL role](/cli/azure/cosmosdb/sql/role)
+- An [Azure Cosmos DB for NoSQL account](introduction.md), along with a database, a container, and the [SQL role](/cli/azure/cosmosdb/sql/role)
 - A [key vault](/azure/key-vault/general/overview) to store secure keys
 - (Optional) A [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-overview)
 
 This tutorial uses the following best practices for Azure Cosmos DB security:
 
 - Implement access control by using [role-based access control (RBAC)](/azure/role-based-access-control/overview) and a [managed identity](/azure/active-directory/managed-identities-azure-resources/overview). These features eliminate the need for developers to manage secrets, credentials, certificates, and keys for secure communication between services.
-- Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](../how-to-configure-vnet-service-endpoint.md).
+- Limit Azure Cosmos DB access to the AKS subnet by [configuring a virtual network service endpoint](how-to-configure-vnet-service-endpoint.md).
 - Set `disableLocalAuth = true` in the `databaseAccount` resource to [enforce RBAC as the only authentication method](how-to-connect-role-based-access-control.md#disable-key-based-authentication).
 
 > [!TIP]
-> The steps in this tutorial use [Azure Cosmos DB for NoSQL](./quickstart-dotnet.md). However, you can apply the same concepts to [Azure Cosmos DB for MongoDB](../mongodb/introduction.md).
+> The steps in this tutorial use [Azure Cosmos DB for NoSQL](./quickstart-dotnet.md). However, you can apply the same concepts to [Azure Cosmos DB for MongoDB](mongodb/introduction.md).
 
 ## Download the Bicep modules
 

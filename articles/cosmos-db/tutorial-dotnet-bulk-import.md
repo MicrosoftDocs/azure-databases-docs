@@ -12,7 +12,7 @@ ms.custom: devx-track-csharp, cosmos-db-video, devx-track-dotnet
 ---
 
 # Bulk import data to Azure Cosmos DB for NoSQL account by using the .NET SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This tutorial shows how to build a .NET console application that optimizes provisioned throughput (RU/s) required to import data to Azure Cosmos DB.
 
@@ -35,7 +35,7 @@ Before following the instructions in this article, make sure that you have the f
 
 * An active Azure account. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
-  [!INCLUDE [cosmos-db-emulator-docdb-api](../includes/cosmos-db-emulator-docdb-api.md)]
+  [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 * [NET Core 3 SDK](https://dotnet.microsoft.com/download/dotnet-core). You can verify which version is available in your environment by running `dotnet --version`.
 
@@ -43,7 +43,7 @@ This tutorial uses [Version 3.0+](https://www.nuget.org/packages/Microsoft.Azure
 
 ## Step 1: Create an Azure Cosmos DB account
 
-Create an [Azure Cosmos DB for NoSQL account](quickstart-portal.md) from the Azure portal, or create the account by using the [Azure Cosmos DB Emulator](../emulator.md).
+Create an [Azure Cosmos DB for NoSQL account](quickstart-portal.md) from the Azure portal, or create the account by using the [Azure Cosmos DB Emulator](emulator.md).
 
 ## Step 2: Set up your .NET project
 
@@ -89,7 +89,7 @@ The sample application needs to authenticate to your Azure Cosmos DB account. To
 1. Navigate to your Azure Cosmos DB account.
 1. Open the **Keys** pane and copy the **URI** and **PRIMARY KEY** of your account.
 
-If you're using the Azure Cosmos DB Emulator, obtain the [emulator credentials](../emulator.md).
+If you're using the Azure Cosmos DB Emulator, obtain the [emulator credentials](emulator.md).
 
 ## Step 5: Initialize the CosmosClient object with bulk execution support
 
@@ -190,5 +190,5 @@ dotnet run
 >[Query Azure Cosmos DB by using the API for NoSQL](tutorial-query.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md)
+* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md)
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

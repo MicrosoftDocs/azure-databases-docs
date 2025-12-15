@@ -292,7 +292,7 @@ In the Azure portal, go to your Azure Cosmos DB account, select **Container**, t
 Dynamic Data Masking (DDM) helps protect sensitive data by applying masking rules at query time. While the feature is transparent to applications, there are specific considerations for compute usage:
 
 - **Queries with Masked Data:**
-Applying masking rules requires extra processing to mask sensitive fields before returning the result, which slightly increases the [Request Units (RU)](../request-units.md) consumed compared to queries without masking.
+Applying masking rules requires extra processing to mask sensitive fields before returning the result, which slightly increases the [Request Units (RU)](request-units.md) consumed compared to queries without masking.
 
 - **Other Scenarios:**
 For queries that don't involve masked columns, Dynamic Data Masking has no effect on compute usage.
@@ -313,5 +313,5 @@ For queries that don't involve masked columns, Dynamic Data Masking has no effec
 ## Related content
 
 - [Role-based access control with Microsoft Entra ID in Azure Cosmos DB for NoSQL](how-to-connect-role-based-access-control.md)
-- [Configure managed identities with Microsoft Entra ID](../how-to-setup-managed-identity.md)
+- [Configure managed identities with Microsoft Entra ID](how-to-setup-managed-identity.md)
 - [Azure Cosmos DB data plane security reference](reference-data-plane-security.md)

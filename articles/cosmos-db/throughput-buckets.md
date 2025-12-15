@@ -11,7 +11,7 @@ ms.date: 03/31/2025
 
 # Throughput buckets in Azure Cosmos DB (preview)
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 When multiple workloads share the same Azure Cosmos DB container, resource contention can lead to throttling, increased latency, and potential business impact. To address this, Cosmos DB allows you to allocate throughput buckets, ensuring better isolation and governance of resource usage for multiple workloads.
 

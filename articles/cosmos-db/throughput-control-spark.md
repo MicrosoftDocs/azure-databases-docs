@@ -11,18 +11,18 @@ ms.author: thvankra
 ---
 
 # Azure Cosmos DB Spark connector: Throughput control
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The [Spark connector](quickstart-spark.md) allows you to communicate with Azure Cosmos DB by using [Apache Spark](https://spark.apache.org/). This article describes how the throughput control feature works. Check out our [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3/Samples) to get started using throughput control.
 
 This article documents the use of global throughput control groups in the Azure Cosmos DB Spark connector, but the functionality is also available in the [Java SDK](./sdk-java-v4.md). In the SDK, you can use global and local throughput control groups to limit the request unit (RU) consumption in the context of a single client connection instance. For example, you can apply this approach to different operations within a single microservice, or maybe to a single data loading program. For more information, see how to [use throughput control](quickstart-java.md) in the Java SDK.
 
 > [!WARNING]
-> Throughput control isn't supported for gateway mode. Currently, for [serverless Azure Cosmos DB accounts](../serverless.md), attempting to use `targetThroughputThreshold` to define a percentage results in failure. You can only provide an absolute value for target throughput/RU by using `spark.cosmos.throughputControl.targetThroughput`.
+> Throughput control isn't supported for gateway mode. Currently, for [serverless Azure Cosmos DB accounts](serverless.md), attempting to use `targetThroughputThreshold` to define a percentage results in failure. You can only provide an absolute value for target throughput/RU by using `spark.cosmos.throughputControl.targetThroughput`.
 
 ## Why is throughput control important?
 
- Throughput control helps to isolate the performance needs of applications that run against a container. Throughput control limits the amount of [RUs](../request-units.md) that a specific Spark client can consume.
+ Throughput control helps to isolate the performance needs of applications that run against a container. Throughput control limits the amount of [RUs](request-units.md) that a specific Spark client can consume.
 
 Several advanced scenarios benefit from client-side throughput control:
 
@@ -44,7 +44,7 @@ To configure throughput control for the Spark connector, you first create a cont
     TBLPROPERTIES(partitionKeyPath = '/groupId', autoScaleMaxThroughput = '4000', indexingPolicy = 'AllProperties', defaultTtlInSeconds = '-1');
 ```
 
-The preceding example creates a container with [autoscale](../provision-throughput-autoscale.md). If you prefer standard provisioning, you can replace `autoScaleMaxThroughput` with `manualThroughput`.
+The preceding example creates a container with [autoscale](provision-throughput-autoscale.md). If you prefer standard provisioning, you can replace `autoScaleMaxThroughput` with `manualThroughput`.
 
 > [!IMPORTANT]
 > The partition key must be defined as `/groupId` and `ttl` must be enabled for the throughput control feature to work.

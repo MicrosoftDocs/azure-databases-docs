@@ -9,7 +9,7 @@ ms.author: maquaran
 ---
 
 # How to configure logging and connectivity with the Azure Functions trigger for Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes advanced configuration options you can set when using the Azure Functions trigger for Azure Cosmos DB.
 
@@ -100,7 +100,7 @@ If your Azure Functions project is working with Azure Functions V1 runtime, the 
 
 ## Customizing the user agent
 
-The Azure Functions trigger for Azure Cosmos DB performs requests to the service that will be reflected on your [monitoring](../monitor.md). You can customize the user agent used for the requests from an Azure Function by changing the `userAgentSuffix` in the `host.json` [extra settings](/azure/azure-functions/functions-bindings-cosmosdb-v2?tabs=extensionv4#hostjson-settings):
+The Azure Functions trigger for Azure Cosmos DB performs requests to the service that will be reflected on your [monitoring](monitor.md). You can customize the user agent used for the requests from an Azure Function by changing the `userAgentSuffix` in the `host.json` [extra settings](/azure/azure-functions/functions-bindings-cosmosdb-v2?tabs=extensionv4#hostjson-settings):
 
 ```js
 {

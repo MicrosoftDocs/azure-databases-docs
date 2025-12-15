@@ -13,7 +13,7 @@ ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track
 
 # Create a database in Azure Cosmos DB for NoSQL using .NET
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Databases in Azure Cosmos DB are units of management for one or more containers. Before you can create or manage containers, you must first create a database.
 
@@ -31,7 +31,7 @@ Once created, the URI for a database is in this format:
 ``https://<cosmos-account-name>.documents.azure.com/dbs/<database-name>``
 
 > [!TIP]
-> For more information on database name limits, see [service quotas and limits](../concepts-limits.md)
+> For more information on database name limits, see [service quotas and limits](concepts-limits.md)
 
 ## Create a database
 

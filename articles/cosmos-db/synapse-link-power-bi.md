@@ -27,7 +27,7 @@ In this scenario, you will use dummy data about Surface product sales in a partn
 
 Make sure to create the following resources before you start:
 
-* [Create an Azure Cosmos DB account for API for NoSQL or MongoDB.](nosql/quickstart-portal.md)
+* [Create an Azure Cosmos DB account for API for NoSQL or MongoDB.](quickstart-portal.md)
 
 * Enable Azure Synapse Link for your [Azure Cosmos DB account](configure-synapse-link.md#enable-synapse-link)
 

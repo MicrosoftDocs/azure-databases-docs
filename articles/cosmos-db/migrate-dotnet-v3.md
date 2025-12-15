@@ -12,7 +12,7 @@ ms.custom: devx-track-dotnet
 ---
 
 # Migrate your application to use the Azure Cosmos DB .NET SDK v3
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
 > To learn about the Azure Cosmos DB .NET SDK v3, see the [Release notes](sdk-dotnet-v3.md), the [.NET GitHub repository](https://github.com/Azure/azure-cosmos-dotnet-v3), .NET SDK v3 [Performance Tips](performance-tips-dotnet-sdk-v3.md), and the [Troubleshooting guide](troubleshoot-dotnet-sdk.md).
@@ -240,7 +240,7 @@ Where the v2 SDK exposed the session token of a response as `ResourceResponse.Se
 
 ### Timestamp
 
-Where the v2 SDK exposed the timestamp of a document through the `Timestamp` property, because `Document` is no longer available, users can map the `_ts` [system property](../resource-model.md#properties-of-an-item) to a property in their model.
+Where the v2 SDK exposed the timestamp of a document through the `Timestamp` property, because `Document` is no longer available, users can map the `_ts` [system property](resource-model.md#properties-of-an-item) to a property in their model.
 
 ### OpenAsync
 
@@ -850,5 +850,5 @@ private static async Task QueryChangeFeedAsync(DocumentClient client, string par
 
 * [Build a Console app](quickstart-dotnet.md) to manage Azure Cosmos DB for NoSQL data using the v3 SDK
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

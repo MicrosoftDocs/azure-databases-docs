@@ -11,7 +11,7 @@ ms.topic: troubleshooting
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB Java v4 SDK service unavailable exceptions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 The Java v4 SDK wasn't able to connect to Azure Cosmos DB.
 
 ## Troubleshooting steps

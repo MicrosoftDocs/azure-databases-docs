@@ -13,7 +13,7 @@ ms.custom: subject-armqs, mode-arm, devx-track-arm-template
 ---
 
 # Quickstart: Create an Azure Cosmos DB and a container by using an ARM template
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is Microsoft’s fast NoSQL database with open APIs for any scale. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases. Without a credit card or an Azure subscription, you can set up a free [Try Azure Cosmos DB account](https://aka.ms/trycosmosdb). This quickstart focuses on the process of deploying an Azure Resource Manager template (ARM template) to create an Azure Cosmos DB database and a container within that database. You can later store data in this container.
 
@@ -29,7 +29,7 @@ An Azure subscription or free Azure Cosmos DB trial account
 
 - [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
-- [!INCLUDE [cosmos-db-emulator-docdb-api](../includes/cosmos-db-emulator-docdb-api.md)]
+- [!INCLUDE [cosmos-db-emulator-docdb-api](includes/cosmos-db-emulator-docdb-api.md)]
 
 ## Review the template
 
@@ -135,9 +135,9 @@ Write-Host "Press [ENTER] to continue..."
 
 In this quickstart, you created an Azure Cosmos DB account, a database and a container by using an ARM template and validated the deployment. To learn more about Azure Cosmos DB and Azure Resource Manager, continue on to the articles below.
 
-- Read an [Overview of Azure Cosmos DB](../introduction.md)
+- Read an [Overview of Azure Cosmos DB](introduction.md)
 - Learn more about [Azure Resource Manager](/azure/azure-resource-manager/management/overview)
 - Get other [Azure Cosmos DB Resource Manager templates](./samples-resource-manager-templates.md)
 - Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    - If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    - If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

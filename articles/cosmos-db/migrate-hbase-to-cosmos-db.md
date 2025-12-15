@@ -10,9 +10,9 @@ ms.author: hitakagi
 ---
 
 # Migrate data from Apache HBase to Azure Cosmos DB for NoSQL account
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-Azure Cosmos DB is a scalable, globally distributed, fully managed database. It provides guaranteed low latency access to your data. To learn more about Azure Cosmos DB, see the [overview](../introduction.md) article. This article guides how to migrate your data from HBase to Azure Cosmos DB for NoSQL account.
+Azure Cosmos DB is a scalable, globally distributed, fully managed database. It provides guaranteed low latency access to your data. To learn more about Azure Cosmos DB, see the [overview](introduction.md) article. This article guides how to migrate your data from HBase to Azure Cosmos DB for NoSQL account.
 
 ## Differences between Azure Cosmos DB and HBase
 
@@ -52,7 +52,7 @@ The key differences between the data structure of Azure Cosmos DB and HBase are 
 
 * In HBase, data is stored by [RowKey](https://hbase.apache.org/book.html#rowkey.design) and horizontally partitioned into regions by the range of RowKey specified during the table creation.
 
-* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](../partitioning-overview.md).
+* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](partitioning-overview.md).
 
 **Column family**
 
@@ -64,7 +64,7 @@ The key differences between the data structure of Azure Cosmos DB and HBase are 
 
 * HBase uses timestamp to version multiple instances of a given cell. You can query different versions of a cell using timestamp.
 
-* Azure Cosmos DB ships with the [Change feed feature](../change-feed.md) which tracks persistent record of changes to a container in the order they occur. It then outputs the sorted list of documents that were changed in the order in which they were modified.
+* Azure Cosmos DB ships with the [Change feed feature](change-feed.md) which tracks persistent record of changes to a container in the order they occur. It then outputs the sorted list of documents that were changed in the order in which they were modified.
 
 **Data format**
 
@@ -97,7 +97,7 @@ The key differences between the data structure of Azure Cosmos DB and HBase are 
 
 HBase offers strictly consistent reads and writes.
 
-Azure Cosmos DB offers [five well-defined consistency levels](../consistency-levels.md). Each level provides availability and performance trade-offs. From strongest to weakest, the consistency levels supported are:
+Azure Cosmos DB offers [five well-defined consistency levels](consistency-levels.md). Each level provides availability and performance trade-offs. From strongest to weakest, the consistency levels supported are:
 
 * Strong
 * Bounded staleness
@@ -113,13 +113,13 @@ For an enterprise-scale deployment of HBase, Master; Region servers; and ZooKeep
 
 **Azure Cosmos DB**
 
-Azure Cosmos DB is a PaaS offering from Microsoft and underlying infrastructure deployment details are abstracted from the end users. When an Azure Cosmos DB container is provisioned, Azure platform automatically provisions underlying infrastructure (compute, storage, memory, networking stack) to support the performance requirements of a given workload. The cost of all database operations is normalized by Azure Cosmos DB and is expressed by [Request Units (or RUs, for short).](../request-units.md)
+Azure Cosmos DB is a PaaS offering from Microsoft and underlying infrastructure deployment details are abstracted from the end users. When an Azure Cosmos DB container is provisioned, Azure platform automatically provisions underlying infrastructure (compute, storage, memory, networking stack) to support the performance requirements of a given workload. The cost of all database operations is normalized by Azure Cosmos DB and is expressed by [Request Units (or RUs, for short).](request-units.md)
 
-To estimate RUs consumed by your workload, consider the following [factors](../request-units.md#request-unit-considerations):
+To estimate RUs consumed by your workload, consider the following [factors](request-units.md#request-unit-considerations):
 
 There's a [capacity calculator](estimate-ru-with-capacity-planner.md) available to assist with sizing exercise for RUs.
 
-You can also use [autoscaling provisioning throughput](../provision-throughput-autoscale.md) in Azure Cosmos DB to automatically and instantly scale your database or container throughput (RU/sec). Throughput is scaled based on usage without impacting workload availability, latency, throughput, or performance.
+You can also use [autoscaling provisioning throughput](provision-throughput-autoscale.md) in Azure Cosmos DB to automatically and instantly scale your database or container throughput (RU/sec). Throughput is scaled based on usage without impacting workload availability, latency, throughput, or performance.
 
 ### Data distribution
 
@@ -127,11 +127,11 @@ You can also use [autoscaling provisioning throughput](../provision-throughput-a
 HBase sorts data according to RowKey. The data is then partitioned into regions and stored in RegionServers. The automatic partitioning divides regions horizontally according to the partitioning policy. This is controlled by the value assigned to HBase parameter `hbase.hregion.max.filesize` (default value is 10 GB). A row in HBase with a given RowKey always belongs to one region. In addition, the data is separated on disk for each column family. This enables filtering at the time of reading and isolation of I/O on HFile.
 
 **Azure Cosmos DB**
-Azure Cosmos DB uses [partitioning](../partitioning-overview.md) to scale individual containers in the database. Partitioning divides the items in a container into specific subsets called "logical partitions". Logical partitions are formed based on the value of the "partition key" associated with each item in the container. All items in a logical partition have the same partition key value. Each logical partition can hold up to 20 GB of data.
+Azure Cosmos DB uses [partitioning](partitioning-overview.md) to scale individual containers in the database. Partitioning divides the items in a container into specific subsets called "logical partitions". Logical partitions are formed based on the value of the "partition key" associated with each item in the container. All items in a logical partition have the same partition key value. Each logical partition can hold up to 20 GB of data.
 
 Physical partitions each contain a replica of your data and an instance of the Azure Cosmos DB database engine. This structure makes your data durable and highly available and throughput is divided equally amongst the local physical partitions. Physical partitions are automatically created and configured, and it's not possible to control their size, location, or which logical partitions they contain. Logical partitions aren't split between physical partitions.
 
-As with HBase RowKey, partition key design is important for Azure Cosmos DB. HBase's Row Key works by sorting data and storing continuous data, and Azure Cosmos DB's Partition Key is a different mechanism because it hash-distributes data. Assuming your application using HBase is optimized for data access patterns to HBase, using the same RowKey for the partition Key won't give good performance results. Given that it's sorted data on HBase, the [Azure Cosmos DB composite index](../index-policy.md#composite-indexes) may be useful. It's required if you want to use the ORDER BY clause in more than one field. You can also improve the performance of many equal and range queries by defining a composite index.
+As with HBase RowKey, partition key design is important for Azure Cosmos DB. HBase's Row Key works by sorting data and storing continuous data, and Azure Cosmos DB's Partition Key is a different mechanism because it hash-distributes data. Assuming your application using HBase is optimized for data access patterns to HBase, using the same RowKey for the partition Key won't give good performance results. Given that it's sorted data on HBase, the [Azure Cosmos DB composite index](index-policy.md#composite-indexes) may be useful. It's required if you want to use the ORDER BY clause in more than one field. You can also improve the performance of many equal and range queries by defining a composite index.
 
 ### Availability
 
@@ -182,7 +182,7 @@ Questions to ask:
 * How/what applications are used to load data into HBase?
 * How/what applications are used to read data from HBase?
 
-When executing queries that request sorted data, HBase will return the result quickly because the data is sorted by RowKey. However, Azure Cosmos DB doesn't have such a concept. In order to optimize the performance, you can use [composite indexes](../index-policy.md#composite-indexes) as needed.
+When executing queries that request sorted data, HBase will return the result quickly because the data is sorted by RowKey. However, Azure Cosmos DB doesn't have such a concept. In order to optimize the performance, you can use [composite indexes](index-policy.md#composite-indexes) as needed.
 
 ### Deployment considerations
 
@@ -194,9 +194,9 @@ Azure Cosmos DB has three main network options. The first is a configuration tha
 
 See the following documents for more information on the three network options:
 
-* [Public IP with Firewall](../how-to-configure-firewall.md)
-* [Public IP with Service Endpoint](../how-to-configure-vnet-service-endpoint.md)
-* [Private Endpoint](../how-to-configure-private-endpoints.md)
+* [Public IP with Firewall](how-to-configure-firewall.md)
+* [Public IP with Service Endpoint](how-to-configure-vnet-service-endpoint.md)
+* [Private Endpoint](how-to-configure-private-endpoints.md)
 
 ## Assess your existing data
 
@@ -793,7 +793,7 @@ HBase offers several server-side programming features. If you're using these fea
 
   * Azure Cosmos DB allows you to define User-Defined Functions (UDFs). UDFs can also be written in JavaScript.
 
-Stored procedures and triggers consume RUs based on the complexity of the operations performed. When developing server-side processing, check the required usage to get a better understanding of the amount of RU consumed by each operation. See [Request Units in Azure Cosmos DB](../request-units.md) and [Optimize request cost in Azure Cosmos DB](../optimize-cost-reads-writes.md) for details.
+Stored procedures and triggers consume RUs based on the complexity of the operations performed. When developing server-side processing, check the required usage to get a better understanding of the amount of RU consumed by each operation. See [Request Units in Azure Cosmos DB](request-units.md) and [Optimize request cost in Azure Cosmos DB](optimize-cost-reads-writes.md) for details.
 
 Server-side programming mappings
 
@@ -819,21 +819,21 @@ Data security is a shared responsibility of the customer and the database provid
 | Local data  replication within a data center                 | The HDFS  mechanism allows you to have multiple replicas across nodes within a single  file system. | Azure Cosmos DB  automatically replicates data to maintain high availability, even within a  single data center. You can choose the consistency level yourself. |
 | Automatic data  backups                                      | There's no automatic  backup function. You need to implement data backup yourself. | Azure Cosmos DB is  backed up regularly and stored in the geo redundant storage. |
 | Protect and  isolate sensitive data                          | For example, if  you're using Apache Ranger, you can use Ranger policy to apply the policy to  the table. | You can separate  personal and other sensitive data into specific containers and read / write,  or limit read-only access to specific users. |
-| Monitoring for  attacks                                      | It needs to be  implemented using third party products.        | By using [audit logging and activity logs](../monitor.md), you can monitor your account  for normal and abnormal activity. |
+| Monitoring for  attacks                                      | It needs to be  implemented using third party products.        | By using [audit logging and activity logs](monitor.md), you can monitor your account  for normal and abnormal activity. |
 | Responding to  attacks                                       | It needs to be  implemented using third party products.        | When you contact  Azure support and report a potential attack, a five-step incident response  process begins. |
 | Ability to  geo-fence data to adhere to data governance restrictions | You need to check  the restrictions of each country/region and implement it yourself. | Guarantees data  governance for sovereign regions (Germany, China, US Gov, etc.). |
 | Physical  protection of servers in protected data centers    | It depends on the  data center where the system is located.  | For a list of the latest certifications,  see the global [Azure compliance site](/compliance/regulatory/offering-home?view=o365-worldwide&preserve-view=true). |
-| Certifications     | Depends on the Hadoop  distribution.      | See [Azure compliance documentation](../compliance.md) |
+| Certifications     | Depends on the Hadoop  distribution.      | See [Azure compliance documentation](compliance.md) |
 
 ## Monitoring
 
-HBase typically monitors the cluster using the cluster metric web UI or with Ambari, Cloudera Manager, or other monitoring tools. Azure Cosmos DB allows you to use the monitoring mechanism built into the Azure platform. For more information on Azure Cosmos DB monitoring, see [Monitor Azure Cosmos DB](../monitor.md).
+HBase typically monitors the cluster using the cluster metric web UI or with Ambari, Cloudera Manager, or other monitoring tools. Azure Cosmos DB allows you to use the monitoring mechanism built into the Azure platform. For more information on Azure Cosmos DB monitoring, see [Monitor Azure Cosmos DB](monitor.md).
 
 If your environment implements HBase system monitoring to send alerts, such as by email, you may be able to replace it with Azure Monitor alerts. You can receive alerts based on metrics or activity log events for your Azure Cosmos DB account.
 
-For more information on alerts in Azure Monitor, please refer to [Create alerts for Azure Cosmos DB using Azure Monitor](../create-alerts.md)
+For more information on alerts in Azure Monitor, please refer to [Create alerts for Azure Cosmos DB using Azure Monitor](create-alerts.md)
 
-Also, see [Azure Cosmos DB metrics and log types](../monitor-reference.md) that can be collected by Azure Monitor.
+Also, see [Azure Cosmos DB metrics and log types](monitor-reference.md) that can be collected by Azure Monitor.
 
 ## Backup & disaster recovery
 
@@ -843,9 +843,9 @@ There are several ways to get a backup of HBase. For example, Snapshot, Export, 
 
 Azure Cosmos DB automatically backs up data at periodic intervals, which doesn't affect the performance or availability of database operations. Backups are stored in Azure storage and can be used to recover data if needed. There are two types of Azure Cosmos DB backups:
 
-* [Periodic backup](../periodic-backup-restore-introduction.md)
+* [Periodic backup](periodic-backup-restore-introduction.md)
 
-* [Continuous backup](../continuous-backup-restore-introduction.md)
+* [Continuous backup](continuous-backup-restore-introduction.md)
 
 ### Disaster recovery
 
@@ -855,7 +855,7 @@ Azure Cosmos DB is a globally distributed database with built-in disaster recove
 
 Azure Cosmos DB account that uses only a single region may lose availability in the event of a region failure. We recommend that you configure at least two regions to ensure high availability always. You can also ensure high availability for both writes and reads by configuring your Azure Cosmos DB account to span at least two regions with multiple write regions to ensure high availability for writes and reads. For multi-region accounts that consist of multiple write regions, failover between regions is detected and handled by the Azure Cosmos DB client. These are momentary and do not require any changes from the application. In this way, you can achieve an availability configuration that includes Disaster Recovery for Azure Cosmos DB. As mentioned earlier, HBase replication can be set up with three models, but Azure Cosmos DB can be set up with SLA-based availability by configuring single-write and multi-write regions.
 
-For more information on High Availability, please refer to [How does Azure Cosmos DB provide high availability](../high-availability.md)
+For more information on High Availability, please refer to [How does Azure Cosmos DB provide high availability](high-availability.md)
 
 ## Frequently asked questions
 
@@ -869,7 +869,7 @@ It may not be optimized as it is. In HBase, the data is sorted by the specified 
 
 #### Data is sorted by RowKey in HBase, but partitioning by key in Azure Cosmos DB. How can Azure Cosmos DB achieve sorting and collocation?
 
-In Azure Cosmos DB, you can add a Composite Index to sort your data in ascending or descending order to improve the performance of equality and range queries. See the [Distribution](#data-distribution) section and the [Composite Index](../index-policy.md#composite-indexes) in product documentation.
+In Azure Cosmos DB, you can add a Composite Index to sort your data in ascending or descending order to improve the performance of equality and range queries. See the [Distribution](#data-distribution) section and the [Composite Index](index-policy.md#composite-indexes) in product documentation.
 
 #### Analytical processing is executed on HBase data with Hive or Spark. How can I modernize them in Azure Cosmos DB?
 
@@ -877,7 +877,7 @@ You can use the Azure Cosmos DB Mirroring to Microsoft Fabric to automatically s
 
 #### How can users be using timestamp query in HBase to Azure Cosmos DB?
 
-Azure Cosmos DB doesn't have exactly the same timestamp versioning feature as HBase. But Azure Cosmos DB provides the ability to access the [change feed](../change-feed.md) and you can utilize it for versioning.
+Azure Cosmos DB doesn't have exactly the same timestamp versioning feature as HBase. But Azure Cosmos DB provides the ability to access the [change feed](change-feed.md) and you can utilize it for versioning.
 
 * Store every version/change as a separate item.
 

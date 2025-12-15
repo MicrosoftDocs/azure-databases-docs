@@ -14,9 +14,9 @@ ms.date: 07/21/2025
 
 # Tutorial: Query data in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[Azure Cosmos DB for NoSQL](../introduction.md) supports querying documents using the built-in query syntax. This article provides a sample document and two sample queries and results.
+[Azure Cosmos DB for NoSQL](introduction.md) supports querying documents using the built-in query syntax. This article provides a sample document and two sample queries and results.
 
 This article covers the following tasks:
 
@@ -29,7 +29,7 @@ This article covers the following tasks:
 
 - An Azure Cosmos DB account, database, and container. If you don't have these resources, see [Create an Azure Cosmos DB account, database, container, and items from the Azure portal](quickstart-portal.md).
 
-You can run the queries using the [Azure Cosmos DB Explorer](../data-explorer.md) in the Azure portal. You can also run queries by using the [REST API](/rest/api/cosmos-db/) or [various SDKs](sdk-dotnet-v3.md).
+You can run the queries using the [Azure Cosmos DB Explorer](data-explorer.md) in the Azure portal. You can also run queries by using the [REST API](/rest/api/cosmos-db/) or [various SDKs](sdk-dotnet-v3.md).
 
 For more information about queries, see [Queries in Azure Cosmos DB for NoSQL](/cosmos-db/query/overview).
 

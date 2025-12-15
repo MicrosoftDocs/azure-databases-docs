@@ -13,7 +13,7 @@ ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli, devx-track-azu
 ---
 
 # Manage consistency levels in Azure Cosmos DB
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to manage consistency levels in Azure Cosmos DB. You learn how to configure the default consistency level, override the default consistency, manually manage session tokens, and understand the Probabilistically Bounded Staleness (PBS) metric.
 
@@ -23,7 +23,7 @@ As you change your account level consistency, ensure you redeploy your applicati
 
 ## Configure the default consistency level
 
-To learn more about the default consistency level, see [Consistency levels in Azure Cosmos DB](../consistency-levels.md).
+To learn more about the default consistency level, see [Consistency levels in Azure Cosmos DB](consistency-levels.md).
 
 # [Azure portal](#tab/portal)
 
@@ -75,7 +75,7 @@ The service sets the default consistency level, but clients can override it. The
 > Consistency can only be **relaxed** at the SDK instance or request level. To move from weaker to stronger consistency, update the default consistency for the Azure Cosmos DB account.
 
 > [!TIP]
-> Overriding the default consistency level only applies to reads within the SDK client. An account configured for strong consistency by default still writes and replicates data synchronously to every region in the account. When the SDK client instance or request overrides this level with Session or weaker consistency, reads are performed using a single replica. For more information, see [Consistency levels and throughput](../consistency-levels.md#consistency-levels-and-throughput).
+> Overriding the default consistency level only applies to reads within the SDK client. An account configured for strong consistency by default still writes and replicates data synchronously to every region in the account. When the SDK client instance or request overrides this level with Session or weaker consistency, reads are performed using a single replica. For more information, see [Consistency levels and throughput](consistency-levels.md#consistency-levels-and-throughput).
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -341,8 +341,8 @@ To view the PBS metric:
 
 Learn more about how to manage data conflicts, or move on to the next key concept in Azure Cosmos DB.
 
-* [Consistency Levels in Azure Cosmos DB](../consistency-levels.md)
-* [Partitioning and horizontal scaling](../partitioning-overview.md)
+* [Consistency Levels in Azure Cosmos DB](consistency-levels.md)
+* [Partitioning and horizontal scaling](partitioning-overview.md)
 * [Manage conflict resolution policies](how-to-manage-conflicts.md)
 * [Consistency tradeoffs in modern distributed database systems design](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [High availability (Reliability) in Azure Cosmos DB for NoSQL](/azure/reliability/reliability-cosmos-db-nosql)

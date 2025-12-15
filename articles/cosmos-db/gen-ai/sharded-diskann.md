@@ -70,4 +70,4 @@ WHERE c.tenantID = "tenant1"
 
 - [What is a vector database?](../vector-database.md)
 - [Retrieval Augmented Generation (RAG)](rag.md)
-- [Vector database in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
+- [Vector database in Azure Cosmos DB NoSQL](../vector-search.md)

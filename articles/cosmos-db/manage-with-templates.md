@@ -12,11 +12,11 @@ ms.author: mjbrown
 
 # Manage Azure Cosmos DB for NoSQL resources with Azure Resource Manager templates
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this article, you learn how to use Azure Resource Manager templates to help deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 
-This article only shows Azure Resource Manager template examples for API for NoSQL accounts. You can also find template examples for [Cassandra](../cassandra/templates-samples.md), [Gremlin](../graph/resource-manager-template-samples.md), [MongoDB](../mongodb/resource-manager-template-samples.md), and [Table](../table/resource-manager-templates.md) APIs.
+This article only shows Azure Resource Manager template examples for API for NoSQL accounts. You can also find template examples for [Cassandra](cassandra/templates-samples.md), [Gremlin](graph/resource-manager-template-samples.md), [MongoDB](mongodb/resource-manager-template-samples.md), and [Table](table/resource-manager-templates.md) APIs.
 
 > [!IMPORTANT]
 >

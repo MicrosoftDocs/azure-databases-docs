@@ -12,9 +12,9 @@ ms.custom: devx-track-go
 ---
 # Azure Cosmos DB Go SDK for API for NoSQL: Download and release notes
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 | | Links |
 |---|---|
@@ -31,7 +31,7 @@ Release history is maintained in the Azure Cosmos DB Go SDK source repo. For a d
 
 ## FAQ
 
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## See also
 

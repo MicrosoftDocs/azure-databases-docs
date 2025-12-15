@@ -12,9 +12,9 @@ ms.custom: devx-track-dotnet
 ---
 
 # Migrate from the change feed processor library to the Azure Cosmos DB .NET V3 SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-This article describes the required steps to migrate an existing application's code that uses the [change feed processor library](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) to the [change feed](../change-feed.md) feature in the latest version of the .NET SDK (also referred as .NET V3 SDK).
+This article describes the required steps to migrate an existing application's code that uses the [change feed processor library](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) to the [change feed](change-feed.md) feature in the latest version of the .NET SDK (also referred as .NET V3 SDK).
 
 ## Required code changes
 
@@ -72,5 +72,5 @@ You can now proceed to learn more about change feed processor in the following a
 * [Using the change feed estimator](how-to-use-change-feed-estimator.md)
 * [Change feed processor start time](./change-feed-processor.md#starting-time)
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

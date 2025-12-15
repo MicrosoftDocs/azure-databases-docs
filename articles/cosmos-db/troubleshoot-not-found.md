@@ -11,7 +11,7 @@ ms.topic: troubleshooting
 
 # Diagnose and troubleshoot Azure Cosmos DB not found exceptions
 
-[!INCLUDE [NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE [NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 404 indicates that the resource no longer exists.
 
@@ -36,7 +36,7 @@ There are multiple SDK client instances and the read happened before the write.
 #### Solution
 
 1. The default account consistency for Azure Cosmos DB is session consistency. When an item is created or updated, the response returns a session token that can be passed between SDK instances to guarantee that the read request is reading from a replica with that change.
-1. Change the [consistency level](../consistency-levels.md) to a [stronger level](../consistency-levels.md).
+1. Change the [consistency level](consistency-levels.md) to a [stronger level](consistency-levels.md).
 
 ### Reading throughput for a container or database resource
 
@@ -109,7 +109,7 @@ Change the TTL property to prevent the item from being purged.
 
 ### Lazy indexing
 
-The [lazy indexing](../index-policy.md#indexing-mode) hasn't caught up.
+The [lazy indexing](index-policy.md#indexing-mode) hasn't caught up.
 
 #### Solution
 
@@ -121,7 +121,7 @@ The database or container that the item exists in was deleted.
 
 #### Solution
 
-1. [Restore from a backup](../periodic-backup-restore-introduction.md) the parent resource, or re-create the resources.
+1. [Restore from a backup](periodic-backup-restore-introduction.md) the parent resource, or re-create the resources.
 1. Create a new resource to replace the deleted resource.
 
 ### Container/Collection names are case-sensitive

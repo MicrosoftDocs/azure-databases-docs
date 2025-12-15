@@ -17,7 +17,7 @@ applies-to:
 
 This article explains how to enable autoscale throughput on a database or container (collection, graph, or table) in Azure Cosmos DB for NoSQL. You can enable autoscale on a single container, or provision autoscale throughput on a database and share it among all the containers in the database.
 
-If you're using a different API, see [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Cassandra](../cassandra/how-to-provision-throughput.md), or [API for Gremlin](../gremlin/how-to-provision-throughput.md).
+If you're using a different API, see [API for MongoDB](mongodb/how-to-provision-throughput.md), [API for Cassandra](cassandra/how-to-provision-throughput.md), or [API for Gremlin](gremlin/how-to-provision-throughput.md).
 
 ## Azure portal
 
@@ -29,7 +29,7 @@ If you're using a different API, see [API for MongoDB](../mongodb/how-to-provisi
 
 1. Select **New Container.** Enter a name for your database, container, and a partition key.
 
-1. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](../provision-throughput-autoscale.md) that you want the database or container to scale to.
+1. Under database or container throughput, select the **Autoscale** option, and set the [maximum throughput (RU/s)](provision-throughput-autoscale.md) that you want the database or container to scale to.
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Screenshot that shows the settings to create a container and configure autoscale provisioned throughput." lightbox="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png":::
 
@@ -53,7 +53,7 @@ To provision autoscale on shared throughput database, select the **Provision dat
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Screenshot of settings to enable autoscale on an existing container.":::
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ## SDKs
 
@@ -72,7 +72,7 @@ Use [version 3.9 or higher](https://www.nuget.org/packages/Microsoft.Azure.Cosmo
 > You can use the .NET SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ```csharp
 // Create instance of CosmosClient
@@ -93,7 +93,7 @@ You can use [version 4.0 or higher](https://mvnrepository.com/artifact/com.azure
 > You can use the Java SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 **Async**
 
@@ -135,7 +135,7 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 > You can use the Python SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 **Sync**
 
@@ -175,7 +175,7 @@ You can use [ThroughputProperties](https://pkg.go.dev/github.com/Azure/azure-sdk
 > You can use the Go SDK to create new autoscale resources. The SDK doesn't support migrating between autoscale and standard (manual) throughput. The migration scenario is currently supported in only the [Azure portal](#enable-autoscale-on-existing-database-or-container), [CLI](#azure-cli), and [PowerShell](#azure-powershell).
 
 > [!NOTE]
-> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](../autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
+> When you enable autoscale on an existing database or container, the starting value for max RU/s is determined by the system, based on your current manual provisioned throughput settings and storage. After the operation completes, you can change the max RU/s if needed. To learn more, see [Frequently asked questions about autoscale provisioned throughput](autoscale-faq.yml#how-does-the-migration-between-autoscale-and-standard--manual--provisioned-throughput-work-).
 
 ```go
 // autoscale throughput properties  
@@ -465,6 +465,6 @@ Azure PowerShell can be used to provision autoscale throughput on a new database
 
 ## Next steps
 
-* [Benefits of provisioned throughput with autoscale](../provision-throughput-autoscale.md#benefits-of-autoscale)
-* [How to choose between standard (manual) and autoscale provisioned throughput](../how-to-choose-offer.md)
-* [Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB](../autoscale-faq.yml)
+* [Benefits of provisioned throughput with autoscale](provision-throughput-autoscale.md#benefits-of-autoscale)
+* [How to choose between standard (manual) and autoscale provisioned throughput](how-to-choose-offer.md)
+* [Frequently asked questions about autoscale provisioned throughput in Azure Cosmos DB](autoscale-faq.yml)

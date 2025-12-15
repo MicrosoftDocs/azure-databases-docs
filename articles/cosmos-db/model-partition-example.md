@@ -14,9 +14,9 @@ ms.custom: sfi-image-nochange
 
 # How to model and partition data using a real-world example
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-This article builds on several Azure Cosmos DB concepts like [data modeling](../modeling-data.md), [partitioning](../partitioning-overview.md), and [provisioned throughput](../request-units.md) to demonstrate how to tackle a real-world data design exercise.
+This article builds on several Azure Cosmos DB concepts like [data modeling](modeling-data.md), [partitioning](partitioning-overview.md), and [provisioned throughput](request-units.md) to demonstrate how to tackle a real-world data design exercise.
 
 If you usually work with relational databases, you've probably developed habits for designing data models. Because of the specific constraints, but also the unique strengths of Azure Cosmos DB, most of these best practices don't translate well and might drag you into suboptimal solutions. The goal of this article is to guide you through the complete process of modeling a real-world use case on Azure Cosmos DB, from item modeling to entity colocation and container partitioning.
 
@@ -340,7 +340,7 @@ We obviously call a similar stored procedure when adding new likes to increment 
 
 ### Denormalize usernames
 
-Usernames require a different approach as users not only sit in different partitions, but in a different container. When we have to denormalize data across partitions and containers, we can use the source container's [change feed](../change-feed.md).
+Usernames require a different approach as users not only sit in different partitions, but in a different container. When we have to denormalize data across partitions and containers, we can use the source container's [change feed](change-feed.md).
 
 In our example, we use the change feed of the `users` container to react whenever users update their usernames. When that happens, we propagate the change by calling another stored procedure on the `posts` container:
 
@@ -587,7 +587,7 @@ If we look at the most extreme optimization we've done, **[Q6]** went from 2000+
 
 ### Denormalization can be applied incrementally
 
-The scalability improvements we've explored in this article involve denormalization and duplication of data across the data set. It should be noted that these optimizations don't have to be put in place on day one. Queries that filter on partition keys perform better at scale, but cross-partition queries can be acceptable if they're called rarely or against a limited data set. If you're just building a prototype, or launching a product with a small and controlled user base, you can probably spare those improvements for later. What's important then is to [monitor your model's performance](../use-metrics.md) so you can decide if and when it's time to bring them in.
+The scalability improvements we've explored in this article involve denormalization and duplication of data across the data set. It should be noted that these optimizations don't have to be put in place on day one. Queries that filter on partition keys perform better at scale, but cross-partition queries can be acceptable if they're called rarely or against a limited data set. If you're just building a prototype, or launching a product with a small and controlled user base, you can probably spare those improvements for later. What's important then is to [monitor your model's performance](use-metrics.md) so you can decide if and when it's time to bring them in.
 
 The change feed that we use to distribute updates to other containers store all those updates persistently. This persistence makes it possible to request all updates since the creation of the container and bootstrap denormalized views as a one-time catch-up operation even if your system already has many data.
 
@@ -595,6 +595,6 @@ The change feed that we use to distribute updates to other containers store all 
 
 After this introduction to practical data modeling and partitioning, you might want to check the following articles to review the concepts:
 
-- [Databases, containers, and items in Azure Cosmos DB](../resource-model.md)
-- [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
-- [Change feed in Azure Cosmos DB](../change-feed.md)
+- [Databases, containers, and items in Azure Cosmos DB](resource-model.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+- [Change feed in Azure Cosmos DB](change-feed.md)

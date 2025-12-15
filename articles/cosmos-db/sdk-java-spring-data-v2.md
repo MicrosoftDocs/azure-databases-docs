@@ -12,9 +12,9 @@ ms.custom: devx-track-java, devx-track-extended-java
 ---
 
 # Spring Data Azure Cosmos DB v2 for API for NoSQL (legacy): Release notes and resources
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
  Spring Data Azure Cosmos DB version 2 for NoSQL allows developers to use Azure Cosmos DB in Spring applications. Spring Data Azure Cosmos DB exposes the Spring Data interface for manipulating databases and collections, working with documents, and issuing queries. Both Sync and Async (Reactive) APIs are supported in the same Maven artifact. 
 
@@ -182,7 +182,7 @@ You can use Spring Data Azure Cosmos DB in your applications hosted in [Azure Sp
 * Bug fix and defect mitigation.
 
 ## FAQ
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## Next steps
 Learn more about [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).

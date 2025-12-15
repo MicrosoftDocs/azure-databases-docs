@@ -11,7 +11,7 @@ ms.date: 07/14/2025
 ---
 
 # Read the Azure Cosmos DB change feed
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 You can work with the Azure Cosmos DB change feed by using either a push model or a pull model. With a *push* model, the change feed processor pushes work to a client that has business logic for processing this work. However, the complexity in checking for work and storing state for the last processed work is handled within the change feed processor.
 
@@ -36,7 +36,7 @@ Using a push model is the easiest way to read from the change feed. There are tw
 
 ### Azure Functions
 
-Azure Functions is the simplest option if you're just getting started using the change feed. Due to its simplicity, it's also the recommended option for most change feed use cases. When you create an Azure Functions trigger for Azure Cosmos DB, you select the container to connect, and the Azure Function gets triggered whenever there's a change in the container. Because Azure Functions uses the change feed processor behind the scenes, it automatically parallelizes change processing across your container's [partitions](../partitioning-overview.md).
+Azure Functions is the simplest option if you're just getting started using the change feed. Due to its simplicity, it's also the recommended option for most change feed use cases. When you create an Azure Functions trigger for Azure Cosmos DB, you select the container to connect, and the Azure Function gets triggered whenever there's a change in the container. Because Azure Functions uses the change feed processor behind the scenes, it automatically parallelizes change processing across your container's [partitions](partitioning-overview.md).
 
 Developing with Azure Functions is an easy experience and can be faster than deploying the change feed processor on your own. Triggers can be created by using the Azure Functions portal or programmatically using SDKs. Visual Studio and VS Code provide support to write Azure Functions, and you can even use the Azure Functions CLI for cross-platform development. You can write and debug the code on your desktop, and then deploy the function with one button. To learn more, see [Serverless database computing using Azure Functions](serverless-computing-database.md) and [Using change feed with Azure Functions](change-feed-functions.md).
 
@@ -72,12 +72,12 @@ There's no built-in *at-least-once* delivery guarantee with the pull model. The 
 
 ## Change feed in APIs for Cassandra and MongoDB
 
-Change feed functionality is surfaced as change streams in API for MongoDB, and query with predicate in API for Cassandra. To learn more about the implementation details for API for MongoDB, see [Change streams in Azure Cosmos DB’s API for MongoDB](../mongodb/change-streams.md).
+Change feed functionality is surfaced as change streams in API for MongoDB, and query with predicate in API for Cassandra. To learn more about the implementation details for API for MongoDB, see [Change streams in Azure Cosmos DB’s API for MongoDB](mongodb/change-streams.md).
 
-Native Apache Cassandra provides change data capture (CDC), a mechanism to flag specific tables for archival and rejecting writes to those tables once a configurable size-on-disk for the CDC log is reached. The change feed feature in Azure Cosmos DB for Apache Cassandra enhances the ability to query the changes with predicate via CQL. To learn more about the implementation details, see [Change feed in the Azure Cosmos DB for Apache Cassandra](../cassandra/change-feed.md).
+Native Apache Cassandra provides change data capture (CDC), a mechanism to flag specific tables for archival and rejecting writes to those tables once a configurable size-on-disk for the CDC log is reached. The change feed feature in Azure Cosmos DB for Apache Cassandra enhances the ability to query the changes with predicate via CQL. To learn more about the implementation details, see [Change feed in the Azure Cosmos DB for Apache Cassandra](cassandra/change-feed.md).
 
 ## Next steps
 
-* [Overview of change feed](../change-feed.md)
+* [Overview of change feed](change-feed.md)
 * [Serverless event-based architectures with Azure Cosmos DB and Azure Functions](change-feed-functions.md)
 * [Using change feed processor library](change-feed-processor.md)

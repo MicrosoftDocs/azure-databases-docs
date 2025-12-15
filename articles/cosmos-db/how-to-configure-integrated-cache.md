@@ -19,7 +19,7 @@ This article describes how to provision a dedicated gateway, configure the integ
 
 - If you don't have an [Azure subscription](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An existing application that uses Azure Cosmos DB. If you don't have one, [here are some examples](https://github.com/AzureCosmosDB/labs).
-- An existing [Azure Cosmos DB API for NoSQL account](nosql/quickstart-portal.md).
+- An existing [Azure Cosmos DB API for NoSQL account](quickstart-portal.md).
 
 ## Provision the dedicated gateway
 
@@ -45,9 +45,9 @@ When you provision a dedicated gateway, an integrated cache is automatically cre
 
 ### Authenticate with role-based access control
 
-The dedicated gateway uses the same permissions, role definitions and role assignments as Azure Cosmos DB. If you already have role-based access control (RBAC) configured for data plane operations in your Azure Cosmos DB account, you can also use it for authenticating to the dedicated gateway. Learn about [RBAC for Azure Cosmos DB data plane](./nosql/security/how-to-grant-data-plane-role-based-access.md) operations.
+The dedicated gateway uses the same permissions, role definitions and role assignments as Azure Cosmos DB. If you already have role-based access control (RBAC) configured for data plane operations in your Azure Cosmos DB account, you can also use it for authenticating to the dedicated gateway. Learn about [RBAC for Azure Cosmos DB data plane](security/how-to-grant-data-plane-role-based-access.md) operations.
 
-Configure your `CosmosClient` by setting the dedicated gateway endpoint, credential, and configuring [gateway connectivity mode](nosql/sdk-connection-modes.md#available-connectivity-modes). All dedicated gateway endpoints follow the same pattern. Remove `documents.azure.com` from your original endpoint and replace it with `sqlx.cosmos.azure.com`. A dedicated gateway will always have the same endpoint, even if you remove and reprovision it.
+Configure your `CosmosClient` by setting the dedicated gateway endpoint, credential, and configuring [gateway connectivity mode](sdk-connection-modes.md#available-connectivity-modes). All dedicated gateway endpoints follow the same pattern. Remove `documents.azure.com` from your original endpoint and replace it with `sqlx.cosmos.azure.com`. A dedicated gateway will always have the same endpoint, even if you remove and reprovision it.
 
 ### [.NET](#tab/dotnet)
 
@@ -136,7 +136,7 @@ client, _ := azcosmos.NewClient(endpoint, creds, nil)
 
       All dedicated gateway connection strings follow the same pattern. Remove `documents.azure.com` from your original connection string and replace it with `sqlx.cosmos.azure.com`. A dedicated gateway will always have the same connection string, even if you remove and reprovision it.
 
-2. If you're using the .NET or Java SDK, set the connection mode to [gateway mode](nosql/sdk-connection-modes.md#available-connectivity-modes). This step isn't necessary for the Python and Node.js SDKs since they don't have additional options of connecting besides gateway mode.
+2. If you're using the .NET or Java SDK, set the connection mode to [gateway mode](sdk-connection-modes.md#available-connectivity-modes). This step isn't necessary for the Python and Node.js SDKs since they don't have additional options of connecting besides gateway mode.
 
 > [!IMPORTANT]
 > If you are using the latest .NET or Java SDK version, the default connection mode is direct mode. In order to use the integrated cache, you must override this default.

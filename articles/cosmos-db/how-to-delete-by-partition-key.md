@@ -10,7 +10,7 @@ ms.date: 12/05/2025
 ---
 
 # Delete items by partition key value - API for NoSQL (preview)
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to use the Azure Cosmos DB SDKs to delete all items by logical partition key value. 
 
@@ -134,11 +134,11 @@ In some scenarios, a delete by partition key operation might not immediately gua
 
 - Aggregate queries that use the index - for example, COUNT queries - that are issued during an ongoing delete by partition key operation might contain the results of the documents to be deleted. This could occur until the delete operation is fully complete.
 - Queries issued against the analytical store for Synapse Link *(deprecated)* during an ongoing delete by partition key operation might contain the results of the documents to be deleted. This could occur until the delete operation is fully complete.
-- [Continuous backup (point-in-time restore)](../continuous-backup-restore-introduction.md) is triggered during an ongoing delete by partition key operation might contain the results of the documents to be deleted in the restored collection. It isn't recommended to use this preview feature if you have a scenario that requires continuous backup.
+- [Continuous backup (point-in-time restore)](continuous-backup-restore-introduction.md) is triggered during an ongoing delete by partition key operation might contain the results of the documents to be deleted in the restored collection. It isn't recommended to use this preview feature if you have a scenario that requires continuous backup.
 
 ### Limitations
 
-[Hierarchical partition keys](../hierarchical-partition-keys.md) deletion isn't supported. This feature permits the deletion of items solely based on the last level of partition keys. For example, consider a scenario where a partition key consists of three hierarchical levels: country/region, state, and city. In this context, the delete by partition keys functionality can be employed effectively by specifying the complete partition key, encompassing all levels, namely country/region, state, and city. Attempting to delete using intermediate partition keys, such as country/region or state, or solely country/region, results in an error.
+[Hierarchical partition keys](hierarchical-partition-keys.md) deletion isn't supported. This feature permits the deletion of items solely based on the last level of partition keys. For example, consider a scenario where a partition key consists of three hierarchical levels: country/region, state, and city. In this context, the delete by partition keys functionality can be employed effectively by specifying the complete partition key, encompassing all levels, namely country/region, state, and city. Attempting to delete using intermediate partition keys, such as country/region or state, or solely country/region, results in an error.
 
 ## How to give feedback or report an issue/bug
 

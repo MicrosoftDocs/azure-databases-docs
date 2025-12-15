@@ -210,7 +210,7 @@ sections:
 additionalContent: |
   ## Related content
 
-  - Frequently asked questions about [Azure Cosmos DB for NoSQL](nosql/faq.yml)
+  - Frequently asked questions about [Azure Cosmos DB for NoSQL](faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for MongoDB](mongodb/faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for Apache Gremlin](gremlin/faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for Apache Cassandra](cassandra/faq.yml)

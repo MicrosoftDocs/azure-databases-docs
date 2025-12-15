@@ -28,7 +28,7 @@ Multitenancy introduces complexity. Your system must scale efficiently to mainta
 
 Imagine a fictional AI-assisted research platform called ResearchHub. Serving thousands of companies and individual researchers, ResearchHub manages varying user bases, data scales, and SLAs. Ensuring low query latency and high performance is vital for sustaining an excellent user experience.
 
-Azure Cosmos DB, with its [DiskANN vector index](../index-policy.md#vector-indexes) capability, simplifies multitenant design, providing efficient data storage and access mechanisms for high-performance applications.
+Azure Cosmos DB, with its [DiskANN vector index](index-policy.md#vector-indexes) capability, simplifies multitenant design, providing efficient data storage and access mechanisms for high-performance applications.
 
 ## Multi-tenancy models in Azure Cosmos DB
 
@@ -51,7 +51,7 @@ For a higher density of tenants and lower isolation, the partition key-per-tenan
 
 #### Hierarchical partitioning: enhanced data organization
 
-[Hierarchical partitioning](../hierarchical-partition-keys.md) builds on the partition key-per-tenant model, adding deeper levels of data organization. This method involves creating multiple levels of partition keys for more granular data management. The lowest level of  hierarchical partitioning should have high cardinality. Typically, it's recommended to use an ID/guid for this level to ensure continuous scalability beyond 20GB per tenant.
+[Hierarchical partitioning](hierarchical-partition-keys.md) builds on the partition key-per-tenant model, adding deeper levels of data organization. This method involves creating multiple levels of partition keys for more granular data management. The lowest level of  hierarchical partitioning should have high cardinality. Typically, it's recommended to use an ID/guid for this level to ensure continuous scalability beyond 20GB per tenant.
 
 **Advantages:**
 - **Optimized queries:** More precise targeting of subpartitions at the parent partition level reduces query latency.
@@ -82,7 +82,7 @@ For maximum isolation, the account-per-tenant model is preferable. Each tenant g
 
 ## Security isolation with customer-managed keys
 
-Azure Cosmos DB enables [customer-managed keys](../how-to-setup-customer-managed-keys.md) for data encryption, adding an extra layer of security for multitenant environments.
+Azure Cosmos DB enables [customer-managed keys](how-to-setup-customer-managed-keys.md) for data encryption, adding an extra layer of security for multitenant environments.
 
 **Steps to implement:**
 - **Set up Azure Key Vault:** Securely store your encryption keys.
@@ -196,4 +196,4 @@ Azure Cosmos DB provides the tools necessary to build a robust, secure, and scal
 ## Related content
 
 - [Multitenancy and Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
-- [Use the Azure Cosmos DB lifetime free tier](../free-tier.md)
+- [Use the Azure Cosmos DB lifetime free tier](free-tier.md)

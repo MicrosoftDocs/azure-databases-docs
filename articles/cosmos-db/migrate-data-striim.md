@@ -11,7 +11,7 @@ ms.custom: sfi-image-nochange
 ---
 
 # Migrate data to Azure Cosmos DB for NoSQL account using Striim
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
  
 The Striim image in the Azure marketplace offers continuous real-time data movement from data warehouses and databases to Azure. While moving the data, you can perform in-line denormalization, data transformation, enable real-time analytics, and data reporting scenarios. It’s easy to get started with Striim to continuously move enterprise data to Azure Cosmos DB for NoSQL. Azure provides a marketplace offering that makes it easy to deploy Striim and migrate data to Azure Cosmos DB. 
 
@@ -170,9 +170,9 @@ By using the Striim solution in Azure, you can continuously migrate data to Azur
 ## Next steps
 
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
 
-* If you are migrating data to Azure Cosmos DB for NoSQL, see [how to migrate data to API for Cassandra account using Striim](../cassandra/migrate-data-striim.md)
+* If you are migrating data to Azure Cosmos DB for NoSQL, see [how to migrate data to API for Cassandra account using Striim](cassandra/migrate-data-striim.md)
 
-* [Monitor and debug your data with Azure Cosmos DB metrics](../use-metrics.md)
+* [Monitor and debug your data with Azure Cosmos DB metrics](use-metrics.md)

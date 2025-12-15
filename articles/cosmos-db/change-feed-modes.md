@@ -10,7 +10,7 @@ ms.date: 4/8/2025
 ---
 # Change feed modes in Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB offers two change feed modes. Each mode offers the same core functionality. Differences include the operations that are captured in the feed, the metadata that's available for each change, and the retention period of changes. You can consume the change feed in different modes across multiple applications for the same Azure Cosmos DB container to fit the requirements of each workload. Each individual change feed application can only be configured to read change feed in one mode. Consuming the change feed in one mode doesn't prohibit you from consuming the change feed in another mode in a different application.
 
@@ -23,7 +23,7 @@ Latest version mode is a persistent record of changes made to items from creates
 
 ## All versions and deletes change feed mode (preview)
 
-All versions and deletes mode (preview) is a persistent record of all changes to items from create, update, and delete operations. You get a record of each change to items in the order that it occurred, including intermediate changes to an item between change feed reads. For example, if an item is created and then updated before you read the change feed, both the create and the update versions of the item appear in the change feed. To read from the change feed in all versions and deletes mode, you must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Turning on continuous backups creates the all versions and deletes change feed. You can only read changes that occurred within the continuous backup period when using this change feed mode. This mode is only compatible with Azure Cosmos DB for NoSQL accounts. Learn more about how to [sign up for the preview](?tabs=all-versions-and-deletes#get-started).
+All versions and deletes mode (preview) is a persistent record of all changes to items from create, update, and delete operations. You get a record of each change to items in the order that it occurred, including intermediate changes to an item between change feed reads. For example, if an item is created and then updated before you read the change feed, both the create and the update versions of the item appear in the change feed. To read from the change feed in all versions and deletes mode, you must have [continuous backups](continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account. Turning on continuous backups creates the all versions and deletes change feed. You can only read changes that occurred within the continuous backup period when using this change feed mode. This mode is only compatible with Azure Cosmos DB for NoSQL accounts. Learn more about how to [sign up for the preview](?tabs=all-versions-and-deletes#get-started).
 
 ## Change feed use cases
 
@@ -59,7 +59,7 @@ A few common scenarios this mode enables and enhances are:
 
 ## Features of each mode
 
-In addition to the [common features across all change feed modes](../change-feed.md#features-of-change-feed), each change feed mode has the following characteristics:
+In addition to the [common features across all change feed modes](change-feed.md#features-of-change-feed), each change feed mode has the following characteristics:
 
 ### [Latest version mode](#tab/latest-version)
 
@@ -128,7 +128,7 @@ During the preview, the following methods to read the change feed are available 
 
 ### Get started
 
-To get started using all versions and deletes change feed mode, navigate to the **Features** page in your Azure Cosmos DB account. Select and enable the **All versions and deletes change feed mode (preview)** feature. You must have [continuous backups](../continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account before enabling the feature. The enablement process can take up to 30 minutes to be complete and no other changes can be made to the account during this time. 
+To get started using all versions and deletes change feed mode, navigate to the **Features** page in your Azure Cosmos DB account. Select and enable the **All versions and deletes change feed mode (preview)** feature. You must have [continuous backups](continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account before enabling the feature. The enablement process can take up to 30 minutes to be complete and no other changes can be made to the account during this time. 
 
 :::image type="content" source="media/change-feed-modes/enroll-in-preview.png" alt-text="Screenshot of All versions and deletes change feed mode feature in Features page in the Azure portal.":::
 
@@ -188,13 +188,13 @@ The response object is an array of items that represent each change. Different p
 
 * Supported for Azure Cosmos DB for NoSQL accounts. Other Azure Cosmos DB account types aren't supported.
 
-* Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](../continuous-backup-restore-introduction.md#current-limitations).
+* Continuous backups are required to use this change feed mode. Refer to the [limitations of using continuous backups](continuous-backup-restore-introduction.md#current-limitations).
 
 * The ability to start reading the change feed from the beginning or to select a start time based on a past time stamp isn't currently supported. You can either start from "now" or from a previous [lease](change-feed-processor.md#components-of-the-change-feed-processor) or [continuation token](change-feed-pull-model.md#save-continuation-tokens).
 
 * Receiving the previous version of items that were deleted or updated isn't currently available.
 
-* Accounts that enabled [merging partitions](../merge.md) aren't supported.
+* Accounts that enabled [merging partitions](merge.md) aren't supported.
 
 ---
 
@@ -202,6 +202,6 @@ The response object is an array of items that represent each change. Different p
 
 Learn more about change feed in the following articles:
 
-* [Change feed overview](../change-feed.md)
+* [Change feed overview](change-feed.md)
 * [Change feed design patterns](./change-feed-design-patterns.md)
 * [Options to read change feed](read-change-feed.md)

@@ -13,7 +13,7 @@ ms.custom: devx-track-js, cosmos-db-dev-journey
 
 # Create a container in Azure Cosmos DB for NoSQL using JavaScript
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Containers in Azure Cosmos DB store sets of items. Before you can create, query, or manage items, you must first create a container.
 

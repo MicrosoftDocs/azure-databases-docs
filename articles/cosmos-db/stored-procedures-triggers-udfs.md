@@ -11,7 +11,7 @@ ms.author: mjbrown
 ---
 
 # Stored procedures, triggers, and user-defined functions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides language-integrated, transactional execution of JavaScript. When using the API for NoSQL in Azure Cosmos DB, you can write **stored procedures**, **triggers**, and **user-defined functions (UDFs)** in the JavaScript language. You can write your logic in JavaScript which is executed inside the database engine. You can create and execute triggers, stored procedures, and UDFs by using [Azure portal](https://portal.azure.com/), the [JavaScript language integrated query API in Azure Cosmos DB](javascript-query-api.md) or the [Azure Cosmos DB for NoSQL client SDKs](how-to-use-stored-procedures-triggers-udfs.md).
 
@@ -60,7 +60,7 @@ In Azure Cosmos DB, JavaScript runtime is hosted inside the database engine. Hen
 
 ### Scope of a transaction
 
-Stored procedures are associated with an Azure Cosmos DB container and stored procedure execution is scoped to a logical partition key. Stored procedures must include a logical partition key value during execution that defines the logical partition for the scope of the transaction. For more information, see [Azure Cosmos DB partitioning](../partitioning-overview.md) article.
+Stored procedures are associated with an Azure Cosmos DB container and stored procedure execution is scoped to a logical partition key. Stored procedures must include a logical partition key value during execution that defines the logical partition for the scope of the transaction. For more information, see [Azure Cosmos DB partitioning](partitioning-overview.md) article.
 
 ### Commit and rollback
 
@@ -68,7 +68,7 @@ Transactions are natively integrated into the Azure Cosmos DB JavaScript program
 
 ### Data consistency
 
-Stored procedures and triggers are always executed on the primary replica of an Azure Cosmos DB container. This feature ensures that reads from stored procedures offer [strong consistency](../consistency-levels.md). Queries using user-defined functions can be executed on the primary or any secondary replica. Stored procedures and triggers are intended to support transactional writes. Meanwhile, read-only logic is best implemented as application-side logic and queries using the [Azure Cosmos DB for NoSQL SDKs](/dotnet/api/microsoft.azure.cosmos), which will help you saturate the database throughput. 
+Stored procedures and triggers are always executed on the primary replica of an Azure Cosmos DB container. This feature ensures that reads from stored procedures offer [strong consistency](consistency-levels.md). Queries using user-defined functions can be executed on the primary or any secondary replica. Stored procedures and triggers are intended to support transactional writes. Meanwhile, read-only logic is best implemented as application-side logic and queries using the [Azure Cosmos DB for NoSQL SDKs](/dotnet/api/microsoft.azure.cosmos), which will help you saturate the database throughput. 
 
 > [!TIP]
 > The queries executed within a stored procedure or trigger may not see changes to items made by the same script transaction. This statement applies both to SQL queries, such as `getContent().getCollection().queryDocuments()`, as well as integrated language queries, such as `getContext().getCollection().filter()`.
@@ -79,7 +79,7 @@ All Azure Cosmos DB operations must finish within the specified timeout duration
 
 You can either ensure that your JavaScript functions finish within the time limit or implement a continuation-based model to batch/resume execution. In order to simplify the development of stored procedures and triggers to handle time limits, all functions under the Azure Cosmos DB container (for example, create, read, update, and delete items) return a boolean value that represents whether that operation will complete. If this value is false, it's an indication that the procedure must wrap up execution because the script is consuming more time or provisioned throughput than the configured value. Operations queued prior to the first unaccepted store operation are guaranteed to finish if the stored procedure completes in time and doesn't queue any more requests. Thus, operations should be queued one at a time by using JavaScript's callback convention to manage the script's control flow. Because scripts are executed in a server-side environment, they're strictly governed. Scripts that repeatedly violate execution boundaries may be marked inactive and can't be executed, and they should be recreated to honor the execution boundaries.
 
-JavaScript functions are also subject to [provisioned throughput capacity](../request-units.md). JavaScript functions could potentially end up using a large number of request units within a short time and may be rate-limited if the provisioned throughput capacity limit is reached. It's important to note that scripts consume additional throughput in addition to the throughput spent executing database operations, although these database operations are slightly less expensive than the same operations executed from the client.
+JavaScript functions are also subject to [provisioned throughput capacity](request-units.md). JavaScript functions could potentially end up using a large number of request units within a short time and may be rate-limited if the provisioned throughput capacity limit is reached. It's important to note that scripts consume additional throughput in addition to the throughput spent executing database operations, although these database operations are slightly less expensive than the same operations executed from the client.
 
 ## Triggers
 
@@ -115,5 +115,5 @@ Learn how to write and use stored procedures, triggers, and user-defined functio
 * [Working with JavaScript language integrated query API](javascript-query-api.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

@@ -187,7 +187,7 @@ To learn how to configure composite indexes, see [Manage indexing policies in Az
 ### Vector indexes
 
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vector searches have significantly lower latency, higher throughput, and less RU consumption when using a vector index. Azure Cosmos DB for NoSQL supports any vector embeddings (text, image, multimodal, etc.) under 4,096 dimensions in size.
-To learn how to configure vector indexes, see [Vector indexing policy examples](nosql/how-to-manage-indexing-policy.md#vector-indexing-policy-examples).
+To learn how to configure vector indexes, see [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples).
 
 - `ORDER BY` vector search queries:
 

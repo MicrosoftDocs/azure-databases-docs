@@ -13,7 +13,7 @@ ms.custom: devx-track-java, build-2023
 
 # Change feed pull model in Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 You can use the change feed pull model to consume the Azure Cosmos DB change feed at your own pace. Similar to the [change feed processor](change-feed-processor.md), you can use the change feed pull model to parallelize the processing of changes across multiple change feed consumers.
 
@@ -149,7 +149,7 @@ Here's an example that shows how to get a list of ranges for your container:
 IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 ```
 
-When you get a list of `FeedRange` values for your container, you get one `FeedRange` per [physical partition](../partitioning-overview.md#physical-partitions).
+When you get a list of `FeedRange` values for your container, you get one `FeedRange` per [physical partition](partitioning-overview.md#physical-partitions).
 
 By using a `FeedRange`, you can create a `FeedIterator` to parallelize the processing of the change feed across multiple machines or threads. Unlike the previous example that showed how to obtain a `FeedIterator` for the entire container or a single partition key, you can use FeedRanges to obtain multiple FeedIterators, which can process the change feed in parallel.
 
@@ -280,7 +280,7 @@ Here's an example that uses latest version mode showing how to obtain a list of 
 
 [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeedpull/SampleChangeFeedPullModel.java?name=GetFeedRanges)]
 
-When you obtain of list of FeedRanges for your container, you get one `FeedRange` per [physical partition](../partitioning-overview.md#physical-partitions).
+When you obtain of list of FeedRanges for your container, you get one `FeedRange` per [physical partition](partitioning-overview.md#physical-partitions).
 
 By using a `FeedRange`, you can parallelize the processing the change feed across multiple machines or threads. Unlike the previous example that showed how to process changes for the entire container or a single partition key, you can use FeedRanges to process the change feed in parallel.
 
@@ -367,7 +367,7 @@ rangesIterator = container.read_feed_ranges(force_refresh=False)
 ranges = list(rangesIterator)
 ```
 
-When you get a list of `feed_range` values for your container, you get one `feed_range` per [physical partition](../partitioning-overview.md#physical-partitions).
+When you get a list of `feed_range` values for your container, you get one `feed_range` per [physical partition](partitioning-overview.md#physical-partitions).
 
 By using a `feed_range`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads.
 Unlike the previous example that showed how to obtain a `responseIterator` for the entire container or a single partition key, you can use `feed_range` to obtain multiple iterators, which can process the change feed in parallel.
@@ -506,7 +506,7 @@ Here's an example that shows how to get a list of ranges for your container:
 const ranges = await container.getFeedRanges();
 ```
 
-When you get a list of `FeedRange` values for your container, you get one `FeedRange` per [physical partition](../partitioning-overview.md#physical-partitions).
+When you get a list of `FeedRange` values for your container, you get one `FeedRange` per [physical partition](partitioning-overview.md#physical-partitions).
 
 By using a `FeedRange`, you can create iterator to parallelize the processing of the change feed across multiple machines or threads. Unlike the previous example that showed how to obtain a change feed iterator for the entire container or a single partition key, you can use FeedRanges to obtain multiple iterators, which can process the change feed in parallel.
 
@@ -629,6 +629,6 @@ for await(const result of container.items.getChangeFeedIterator(options).getAsyn
 
 ## Next steps
 
-- [Overview of change feed](../change-feed.md)
+- [Overview of change feed](change-feed.md)
 - [Change feed processor in Azure Cosmos DB](change-feed-processor.md)
 - [Serverless event-based architectures with Azure Cosmos DB and Azure Functions](change-feed-functions.md)

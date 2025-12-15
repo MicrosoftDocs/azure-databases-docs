@@ -11,9 +11,9 @@ ms.date: 01/25/2022
 ms.custom: devx-track-python
 ---
 # Azure Cosmos DB Python SDK for API for NoSQL: Release notes and resources
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 | Page| Link |
 |---|---|
@@ -79,7 +79,7 @@ Microsoft provides notification at least **12 months** in advance of retiring an
 
 ## FAQ
 
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## Next steps
 

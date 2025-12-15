@@ -13,7 +13,7 @@ ms.custom: build-2023
 
 # Diagnose and troubleshoot issues with the Azure Functions trigger for Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article covers common issues, workarounds, and diagnostic steps when you're using the [Azure Functions trigger for Azure Cosmos DB for NoSQL](change-feed-functions.md).
 
@@ -56,11 +56,11 @@ To resolve this issue:
 
     - Optionally, you can set the `CreateLeaseContainerIfNotExists` attribute in your trigger to `true` to automatically create it.
 
-1. To ensure that your Azure Cosmos DB account isn't blocking the Azure function, verify your [Azure Cosmos DB account's firewall configuration](../how-to-configure-firewall.md).
+1. To ensure that your Azure Cosmos DB account isn't blocking the Azure function, verify your [Azure Cosmos DB account's firewall configuration](how-to-configure-firewall.md).
 
 ### Your Azure function fails to start, with error message "`Shared throughput collection should have a partition key`"
 
-Previous versions of the Azure Cosmos DB extension didn't support using a leases container that was created within a [shared throughput database](../set-throughput.md#set-throughput-on-a-database).
+Previous versions of the Azure Cosmos DB extension didn't support using a leases container that was created within a [shared throughput database](set-throughput.md#set-throughput-on-a-database).
 
 To resolve this issue:
 
@@ -104,7 +104,7 @@ This scenario can have multiple causes. Consider trying any or all of the follow
 
   - If they're sporadic, there could be some delay between the changes being stored and the Azure function that's picking them up. This behavior occurs when the trigger checks internally for changes in your Azure Cosmos DB container and finds no changes waiting to be read. The trigger then sleeps for a configurable amount of time (5 seconds, by default) before it checks for new changes. The trigger utilizes this behavior to avoid high request unit (RU) consumption. You can configure the sleep time through the `FeedPollDelay/feedPollDelay` setting in the [configuration](/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger#configuration) of your trigger. The value is expected to be in milliseconds.
 
-- Your Azure Cosmos DB container might be [rate-limited](../request-units.md).
+- Your Azure Cosmos DB container might be [rate-limited](request-units.md).
 
 - You can use the `PreferredLocations` attribute in your trigger to specify a comma-separated list of Azure regions to define a custom preferred connection order.
 

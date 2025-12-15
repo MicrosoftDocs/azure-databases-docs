@@ -10,7 +10,7 @@ ms.author: girobins
 ms.custom: devx-track-csharp, devx-track-dotnet
 ---
 # Get SQL query execution metrics and analyze query performance using .NET SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article presents how to profile SQL query performance on Azure Cosmos DB using [ServerSideCumulativeMetrics](/dotnet/api/microsoft.azure.cosmos.serversidecumulativemetrics) retrieved from the .NET SDK. `ServerSideCumulativeMetrics` is a strongly typed object with information about the backend query execution. It contains cumulative metrics that are aggregated across all physical partitions for the request, a list of metrics for each physical partition, and the total request charge. These metrics are documented in more detail in the [Tune Query Performance](./query-metrics.md#query-execution-metrics) article.
 
@@ -231,5 +231,5 @@ To learn more about tuning query performance, see the [Tune Query Performance](.
 ## Next steps
 
 - [Tune query performance](query-metrics.md)
-- [Indexing overview](../index-overview.md)
+- [Indexing overview](index-overview.md)
 - [Azure Cosmos DB .NET samples](https://github.com/Azure/azure-cosmos-dotnet-v3)

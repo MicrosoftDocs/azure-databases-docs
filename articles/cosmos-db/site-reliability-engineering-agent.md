@@ -90,6 +90,6 @@ Here are limitations and considerations when using Azure SRE Agent:
 ## Related content
 
 - [Azure SRE Agent overview](/azure/sre-agent)
-- [Azure Cosmos DB monitoring best practices](../monitor-resource-logs.md)
-- [Azure Cosmos DB performance troubleshooting guide](../nosql/troubleshoot-dotnet-sdk.md)
-- [Azure Cosmos DB SDK configuration](../nosql/quickstart-dotnet.md)
+- [Azure Cosmos DB monitoring best practices](monitor-resource-logs.md)
+- [Azure Cosmos DB performance troubleshooting guide](troubleshoot-dotnet-sdk.md)
+- [Azure Cosmos DB SDK configuration](quickstart-dotnet.md)

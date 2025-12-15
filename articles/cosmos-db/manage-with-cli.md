@@ -11,7 +11,7 @@ ms.author: mjbrown
 ---
 # Manage Azure Cosmos DB for NoSQL resources using Azure CLI
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases, and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb).
 
@@ -19,7 +19,7 @@ The following guide describes common commands to automate management of your Azu
 
 - This article requires version 2.22.1 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
 
-For Azure CLI samples for other APIs see [CLI Samples for Cassandra](../cassandra/cli-samples.md), [CLI Samples for API for MongoDB](../mongodb/cli-samples.md), [CLI Samples for Gremlin](../graph/cli-samples.md), [CLI Samples for Table](../table/cli-samples.md)
+For Azure CLI samples for other APIs see [CLI Samples for Cassandra](cassandra/cli-samples.md), [CLI Samples for API for MongoDB](mongodb/cli-samples.md), [CLI Samples for Gremlin](graph/cli-samples.md), [CLI Samples for Table](table/cli-samples.md)
 
 > [!IMPORTANT]
 > Azure Cosmos DB resources can't be renamed as this violates how Azure Resource Manager works with resource URIs.
@@ -67,7 +67,7 @@ Create an Azure Cosmos DB account with two regions, add a region, and remove a r
 > [!NOTE]
 > This command allows you to add and remove regions but does not allow you to modify failover priorities or trigger a manual failover. See [Set failover priority](#set-failover-priority) and [Trigger manual failover](#trigger-manual-failover).
 > [!TIP]
-> When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes will depend upon how much data is stored within the account. If an [asynchronous throughput scaling operation](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused and will resume automatically when the add/remove region operation is complete.
+> When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes will depend upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused and will resume automatically when the add/remove region operation is complete.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -141,7 +141,7 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 > Changing region with priority = 0 will trigger a manual failover for an Azure Cosmos DB account. Any other priority change will not trigger a failover.
 
 > [!NOTE]
-> If you perform a manual failover operation while an [asynchronous throughput scaling operation](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused. It will resume automatically when the failover operation is complete.
+> If you perform a manual failover operation while an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused. It will resume automatically when the failover operation is complete.
 
 ```azurecli-interactive
 # Assume region order is initially 'West US=0' 'East US=1' 'South Central US=2' for account

@@ -11,9 +11,9 @@ ms.author: mjbrown
 ms.custom: devx-track-dotnet
 ---
 # Azure Cosmos DB .NET SDK v3 for API for NoSQL: Download and release notes
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[SDK selector](../includes/cosmos-db-sdk-list.md)]
+[!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
 | | Links |
 |---|---|
@@ -39,10 +39,10 @@ Different sub versions of .NET SDKs are available under the 3.x.x version. **The
 For a list of known issues with the recommended minimum version of the SDK, see [known issues section](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md#-known-issues).
 
 ## Managing Newtonsoft.Json Dependencies
-[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](includes/dotnet-json-dependency.md)]
 
 ## FAQ
-[!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
+[!INCLUDE [cosmos-db-sdk-faq](includes/cosmos-db-sdk-faq.md)]
 
 ## See also
 To learn more about Azure Cosmos DB, see [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) service page.

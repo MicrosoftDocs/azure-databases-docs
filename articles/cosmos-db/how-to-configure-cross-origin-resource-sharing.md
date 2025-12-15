@@ -12,7 +12,7 @@ ms.custom: devx-track-arm-template, devx-track-js
 ---
 
 # Configure Cross-Origin Resource Sharing (CORS)
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Cross-Origin Resource Sharing (CORS) is an HTTP feature that enables a web application running under one domain to access resources in another domain. Web browsers implement a security restriction known as same-origin policy that prevents a web page from calling APIs in a different domain. However, CORS provides a secure way to allow the origin domain to call APIs in another domain. The API for NoSQL in Azure Cosmos DB now supports Cross-Origin Resource Sharing (CORS) by using the “allowedOrigins” header. After you enable the CORS support for your Azure Cosmos DB account, only authenticated requests are evaluated to determine whether they're allowed according to the rules you've specified.
 
@@ -85,6 +85,6 @@ Here's a [code sample](https://github.com/christopheranderson/cosmos-browser-sam
 
 To learn about other ways to secure your Azure Cosmos DB account, see the following articles:
 
-* [Configure a firewall for Azure Cosmos DB](../how-to-configure-firewall.md) article.
+* [Configure a firewall for Azure Cosmos DB](how-to-configure-firewall.md) article.
 
-* [Configure virtual network and subnet-based access for your Azure Cosmos DB account](../how-to-configure-vnet-service-endpoint.md)
+* [Configure virtual network and subnet-based access for your Azure Cosmos DB account](how-to-configure-vnet-service-endpoint.md)

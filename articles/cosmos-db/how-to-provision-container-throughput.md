@@ -11,11 +11,11 @@ ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp, devx-track-dot
 ---
 
 # Provision standard (manual) throughput on an Azure Cosmos DB container - API for NoSQL
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to provision standard (manual) throughput on a container in Azure Cosmos DB for NoSQL. You can provision throughput on a single container, or [provision throughput on a database](how-to-provision-database-throughput.md) and share it among the containers within the database. You can provision throughput on a container using Azure portal, Azure CLI, or Azure Cosmos DB SDKs.
 
-If you are using a different API, see [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Cassandra](../cassandra/how-to-provision-throughput.md), [API for Gremlin](../gremlin/how-to-provision-throughput.md) articles to provision the throughput.
+If you are using a different API, see [API for MongoDB](mongodb/how-to-provision-throughput.md), [API for Cassandra](cassandra/how-to-provision-throughput.md), [API for Gremlin](gremlin/how-to-provision-throughput.md) articles to provision the throughput.
 
 ## Azure portal
 
@@ -100,4 +100,4 @@ See the following articles to learn about throughput provisioning in Azure Cosmo
 
 * [How to provision standard (manual) throughput on a database](how-to-provision-database-throughput.md)
 * [How to provision autoscale throughput on a database](how-to-provision-autoscale-throughput.md)
-* [Request units and throughput in Azure Cosmos DB](../request-units.md)
+* [Request units and throughput in Azure Cosmos DB](request-units.md)

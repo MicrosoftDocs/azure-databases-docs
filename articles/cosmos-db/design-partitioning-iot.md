@@ -12,7 +12,7 @@ ms.date: 03/24/2025
 
 # Choose a partition key for IoT workloads
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this guide, we walk through a real-world scenario demonstrating how to select a partition key for an IoT application using Azure Cosmos DB. Through this use case, we see how partition key choices affect data distribution, query performance, and overall application efficiency. We explore how to evaluate different partitioning strategies based on the unique requirements of an IoT system and apply best practices for optimizing Azure Cosmos DB performance.
 
@@ -52,7 +52,7 @@ Imagine an IoT application that collects environmental data from thousands of Io
 **Access Pattern:**
 In this scenario, we're' logging data every second, making it a write-heavy application. We'd like to optimize our partitioning strategy for ingesting data at high throughput. 
 
-For real-time analytics (for example, aggregating device data across districts), we can explore [Azure Synapse Link](../synapse-link.md).
+For real-time analytics (for example, aggregating device data across districts), we can explore [Azure Synapse Link](synapse-link.md).
 
 ## Recommended partitioning strategy
 
@@ -60,7 +60,7 @@ For real-time analytics (for example, aggregating device data across districts),
 
 It's important to note that Azure Cosmos DB limits the data per logical partition to 20-GB. In our scenario, each device is logging data per second. On average, our document size is around 1 KB, so we're guaranteed to hit the 20-GB data limit per device ID during the year by partitioning by device ID alone. 
 
-To ensure that we never run into the 20-GB data limit for any of our device IDs, we can use [hierarchical partition keys](../hierarchical-partition-keys.md). We can set the following two levels:
+To ensure that we never run into the 20-GB data limit for any of our device IDs, we can use [hierarchical partition keys](hierarchical-partition-keys.md). We can set the following two levels:
 
 - **First Level**: DeviceId (*for example "s67890"*)
 - **Second Level**: Timestamp (*for example "2024-01-01T08:30"*)
@@ -129,4 +129,4 @@ By using DeviceId +Time-based-key (Date + Hour + Minute) as a hierarchical parti
 > - We recommend  adding ID as the last level of your hierarchical partition key to ensure you never reach the 20-GB limit for a logical partition key.
 -   Optimize our most common query patterns that frequently filter by DeviceId and Date/Hour/Minute, minimizing cross-partition queries and reducing RU costs.
 
-For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](../partitioning-overview.md).
+For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](partitioning-overview.md).

@@ -13,7 +13,7 @@ ms.author: mjbrown
 
 # Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account using Visual Studio Code Jupyter notebooks
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This tutorial walks through how to use the Visual Studio Code Jupyter notebooks to interact with your Azure Cosmos DB for NoSQL account. You'll see how to connect to your account, import data, and run queries.
 

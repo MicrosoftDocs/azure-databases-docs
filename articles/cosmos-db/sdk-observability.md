@@ -11,7 +11,7 @@ ms.author: jucocchi
 ---
 
 # Azure Cosmos DB SDK observability
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB .NET and Java SDKs support distributed tracing to help you monitor your applications. Tracing the flow of requests is helpful in debugging, analyzing latency and performance, and gathering diagnostics. Instrument tracing for your applications using [OpenTelemetry](https://opentelemetry.io/), which is vendor-neutral and has a set of semantic conventions to ensure a standardized data format regardless of your chosen exporter, or use the [Application Insights SDK or Azure Monitor OpenTelemetry Distro](/azure/azure-monitor/app/app-insights-overview#how-do-i-use-application-insights).
 
@@ -138,4 +138,4 @@ Once trace data is ingested into Application Insights, you can visualize it in t
 
 - [Get started with the .NET SDK](./quickstart-dotnet.md)
 - [Get started with the Java SDK](./quickstart-java.md)
-- [Monitor Azure Cosmos DB](../monitor.md)
+- [Monitor Azure Cosmos DB](monitor.md)

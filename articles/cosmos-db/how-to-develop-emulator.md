@@ -548,7 +548,7 @@ Each SDK includes a client class typically used to connect the SDK to your Azure
 
 ### [C#](#tab/csharp)
 
-Use the [Azure Cosmos DB API for NoSQL .NET SDK](nosql/quickstart-dotnet.md) to connect to the emulator from a .NET application.
+Use the [Azure Cosmos DB API for NoSQL .NET SDK](quickstart-dotnet.md) to connect to the emulator from a .NET application.
 
 1. Start in an empty folder.
 
@@ -612,11 +612,11 @@ Use the [Azure Cosmos DB API for NoSQL .NET SDK](nosql/quickstart-dotnet.md) to 
     >
 
 > [!TIP]
-> Refer to the [.NET developer guide](nosql/how-to-dotnet-get-started.md) for more operations you can perform using the .NET SDK.
+> Refer to the [.NET developer guide](how-to-dotnet-get-started.md) for more operations you can perform using the .NET SDK.
 
 ### [Python](#tab/python)
 
-Use the [Azure Cosmos DB API for NoSQL Python SDK](nosql/quickstart-python.md) to connect to the emulator from a Python application.
+Use the [Azure Cosmos DB API for NoSQL Python SDK](quickstart-python.md) to connect to the emulator from a Python application.
 
 1. Start in an empty folder.
 
@@ -700,7 +700,7 @@ Use the [Azure Cosmos DB API for NoSQL Python SDK](nosql/quickstart-python.md) t
 
 ### [JavaScript / Node.js](#tab/javascript+nodejs)
 
-Use the [Azure Cosmos DB API for NoSQL Node.js SDK](nosql/quickstart-nodejs.md) to connect to the emulator from a Node.js/JavaScript application.
+Use the [Azure Cosmos DB API for NoSQL Node.js SDK](quickstart-nodejs.md) to connect to the emulator from a Node.js/JavaScript application.
 
 1. Start in an empty folder.
 

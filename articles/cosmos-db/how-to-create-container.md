@@ -12,11 +12,11 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track
 ---
 
 # Create a container in Azure Cosmos DB for NoSQL
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. It shows how to create a container using the Azure portal, Azure CLI, PowerShell, or supported software development kits (SDKs). This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
-This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. If you're using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for Table](../table/how-to-create-container.md) articles to create the container.
+This article explains the different ways to create a container in Azure Cosmos DB for NoSQL. If you're using a different API, see [API for MongoDB](mongodb/how-to-create-container.md), [API for Cassandra](cassandra/how-to-create-container.md), [API for Gremlin](gremlin/how-to-create-container.md), and [API for Table](table/how-to-create-container.md) articles to create the container.
 
 > [!NOTE]
 > When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
@@ -74,7 +74,7 @@ Container container = await database.CreateContainerIfNotExistsAsync(containerPr
 
 ## Next steps
 
-* [Partitioning in Azure Cosmos DB](../partitioning-overview.md)
-* [Request Units in Azure Cosmos DB](../request-units.md)
-* [Provision throughput on containers and databases](../set-throughput.md)
-* [Work with Azure Cosmos DB account](../resource-model.md)
+* [Partitioning in Azure Cosmos DB](partitioning-overview.md)
+* [Request Units in Azure Cosmos DB](request-units.md)
+* [Provision throughput on containers and databases](set-throughput.md)
+* [Work with Azure Cosmos DB account](resource-model.md)

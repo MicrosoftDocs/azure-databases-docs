@@ -44,19 +44,19 @@ While Azure Cosmos DB for NoSQL is highly versatile, it's optimized for JSON-bas
 
 If your application requires support for other database models, such as MongoDB, Cassandra, PostgreSQL, or Gremlin, consider one of the following services:
 
-- [Azure DocumentDB](../../documentdb/overview.md)
-- [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md)
+- [Azure DocumentDB](../documentdb/overview.md)
+- [Azure Managed Instance for Apache Cassandra](../managed-instance-apache-cassandra/introduction.md)
 - [Graph in Microsoft Fabric](/fabric/graph/overview)
-- [Azure Database for PostgreSQL](../../postgresql/index.yml)
+- [Azure Database for PostgreSQL](../postgresql/index.yml)
  
 Additionally, the service's cost model is based on provisioned throughput (RU/s), so careful planning is required to optimize costs for your workload.
 
-[!INCLUDE[Section - Compare to Azure DocumentDB](../includes/section-compare-to-documentdb.md)]
+[!INCLUDE[Section - Compare to Azure DocumentDB](includes/section-compare-to-documentdb.md)]
 
 ## Related content
 
 - [Get started developing solutions](quickstart-python.md)
-- [Learn about global distribution](../distribute-data-globally.md?context=/azure/cosmos-db/context/context)
-- [Explore the JSON resource model](../resource-model.md?context=/azure/cosmos-db/context/context)
+- [Learn about global distribution](distribute-data-globally.md?context=/azure/cosmos-db/context/context)
+- [Explore the JSON resource model](resource-model.md?context=/azure/cosmos-db/context/context)
 - [Design for high availability](/azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/context/context)
 - [Review the NoSQL query language](/cosmos-db/query)

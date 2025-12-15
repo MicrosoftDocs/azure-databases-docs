@@ -56,7 +56,7 @@ In addition to reading from an Azure Cosmos DB container's change feed, run SQL 
 
 ### High availability
 
-Azure Cosmos DB provides up to 99.999% read and write availability. Unlike many message queues, Azure Cosmos DB data can be globally distributed and configured with an [recovery time objective (RTO)](../consistency-levels.md#consistency-levels-and-data-durability) of zero.
+Azure Cosmos DB provides up to 99.999% read and write availability. Unlike many message queues, Azure Cosmos DB data can be globally distributed and configured with an [recovery time objective (RTO)](consistency-levels.md#consistency-levels-and-data-durability) of zero.
 
 After processing items in the change feed, build a materialized view and persist aggregated values back in Azure Cosmos DB. For example, use Azure Cosmos DB's change feed to implement real-time leaderboards based on scores from completed games.
 
@@ -143,6 +143,6 @@ Here are real-world change feed code examples for the latest version mode that g
 
 ## Related content
 
-- [Change feed overview](../change-feed.md)
+- [Change feed overview](change-feed.md)
 - [Change feed modes](change-feed-modes.md)
 - [Options to read your change feed](read-change-feed.md)

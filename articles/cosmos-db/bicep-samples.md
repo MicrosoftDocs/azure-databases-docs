@@ -12,9 +12,9 @@ ms.author: mjbrown
 
 # Bicep for Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-This article shows Bicep samples for API for NoSQL accounts. You can also find Bicep samples for [Cassandra](../cassandra/manage-with-bicep.md), [Gremlin](../graph/manage-with-bicep.md), [MongoDB](../mongodb/manage-with-bicep.md), and [Table](../table/manage-with-bicep.md) APIs.
+This article shows Bicep samples for API for NoSQL accounts. You can also find Bicep samples for [Cassandra](cassandra/manage-with-bicep.md), [Gremlin](graph/manage-with-bicep.md), [MongoDB](mongodb/manage-with-bicep.md), and [Table](table/manage-with-bicep.md) APIs.
 
 ## API for NoSQL
 
@@ -31,5 +31,5 @@ This article shows Bicep samples for API for NoSQL accounts. You can also find B
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 
-* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md)
+* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md)
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

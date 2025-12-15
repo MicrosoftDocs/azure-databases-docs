@@ -11,7 +11,7 @@ ms.custom: cosmos-db-video
 ---
 
 # Serverless database computing using Azure Cosmos DB and Azure Functions
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Serverless computing is all about the ability to focus on individual pieces of logic that are repeatable and stateless. These pieces require no infrastructure management and they consume resources only for the seconds, or milliseconds, they run for. At the core of the serverless computing movement are functions, which are made available in the Azure ecosystem by [Azure Functions](https://azure.microsoft.com/services/functions). To learn about other serverless execution environments in Azure see [serverless in Azure](https://azure.microsoft.com/solutions/serverless/) page. 
 
@@ -23,7 +23,7 @@ Azure Functions can create isolated database connections per invocation if the d
 
 Azure Cosmos DB and Azure Functions enable you to integrate your databases and serverless apps in the following ways:
 
-* Create an event-driven **Azure Functions trigger for Azure Cosmos DB**. This trigger relies on [change feed](../change-feed.md) streams to monitor your Azure Cosmos DB container for changes. When any changes are made to a container, the change feed stream is sent to the trigger, which invokes the Azure Function.
+* Create an event-driven **Azure Functions trigger for Azure Cosmos DB**. This trigger relies on [change feed](change-feed.md) streams to monitor your Azure Cosmos DB container for changes. When any changes are made to a container, the change feed stream is sent to the trigger, which invokes the Azure Function.
 * Alternatively, bind an Azure Function to an Azure Cosmos DB container using an **input binding**. Input bindings read data from a container when a function executes.
 * Bind a function to an Azure Cosmos DB container using an **output binding**. Output bindings write data to a container when a function completes.
 
@@ -81,11 +81,11 @@ The following images show the code in the Azure portal for this scenario.
 
 ### Gaming use case - Azure Functions trigger and output binding for Azure Cosmos DB 
 
-In gaming, when a new user is created you can search for other users who might know them by using the [Azure Cosmos DB for Gremlin](../introduction.md). You can then write the results to an Azure Cosmos DB or SQL database for easy retrieval.
+In gaming, when a new user is created you can search for other users who might know them by using the [Azure Cosmos DB for Gremlin](introduction.md). You can then write the results to an Azure Cosmos DB or SQL database for easy retrieval.
 
 **Implementation:** Use an Azure Functions trigger and output binding for Azure Cosmos DB
 
-1. Using an Azure Cosmos DB [graph database](../introduction.md) to store all users, you can create a new function with an Azure Functions trigger for Azure Cosmos DB. 
+1. Using an Azure Cosmos DB [graph database](introduction.md) to store all users, you can create a new function with an Azure Functions trigger for Azure Cosmos DB. 
 2. Whenever a new user is inserted, the function is invoked, and then the result is stored using an **output binding**.
 3. The function queries the graph database to search for all the users that are directly related to the new user and returns that dataset to the function.
 4. This data is then stored in Azure Cosmos DB, which can then be easily retrieved by any front-end application that shows the new user their connected friends.
@@ -122,13 +122,13 @@ Azure Functions provides the ability to create scalable units of work, or concis
 
 Azure Cosmos DB is the recommended database for your serverless computing architecture for the following reasons:
 
-* **Instant access to all your data**: You have granular access to every value stored because Azure Cosmos DB [automatically indexes](../index-policy.md) all data by default, and makes those indexes immediately available. This means you're able to constantly query, update, and add new items to your database and have instant access via Azure Functions.
+* **Instant access to all your data**: You have granular access to every value stored because Azure Cosmos DB [automatically indexes](index-policy.md) all data by default, and makes those indexes immediately available. This means you're able to constantly query, update, and add new items to your database and have instant access via Azure Functions.
 
 * **Schemaless**. Azure Cosmos DB is schemaless - so it's uniquely able to handle any data output from an Azure Function. This "handle anything" approach makes it straightforward to create various Functions that all output to Azure Cosmos DB.
 
-* **Scalable throughput**. Throughput can be scaled up and down instantly in Azure Cosmos DB. If you have hundreds or thousands of Functions querying and writing to the same container, you can scale up your [RU/s](../request-units.md) to handle the load. All functions can work in parallel using your allocated RU/s and your data is guaranteed to be [consistent](../consistency-levels.md).
+* **Scalable throughput**. Throughput can be scaled up and down instantly in Azure Cosmos DB. If you have hundreds or thousands of Functions querying and writing to the same container, you can scale up your [RU/s](request-units.md) to handle the load. All functions can work in parallel using your allocated RU/s and your data is guaranteed to be [consistent](consistency-levels.md).
 
-* **Global replication**. You can replicate Azure Cosmos DB data [around the globe](../distribute-data-globally.md) to reduce latency, geo-locating your data closest to where your users are. As with all Azure Cosmos DB queries, data from event-driven triggers is read data from the Azure Cosmos DB closest to the user.
+* **Global replication**. You can replicate Azure Cosmos DB data [around the globe](distribute-data-globally.md) to reduce latency, geo-locating your data closest to where your users are. As with all Azure Cosmos DB queries, data from event-driven triggers is read data from the Azure Cosmos DB closest to the user.
 
 If you're looking to integrate with Azure Functions to store data and don't need deep indexing or if you need to store attachments and media files, the [Azure Blob Storage trigger](/azure/azure-functions/functions-bindings-storage-blob) may be a better option.
 

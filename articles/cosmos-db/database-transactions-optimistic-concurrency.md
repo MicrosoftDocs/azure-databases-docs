@@ -10,13 +10,13 @@ ms.date: 07/07/2025
 ---
 
 # Transactions and optimistic concurrency control
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Database transactions provide a safe and predictable programming model to deal with concurrent changes to the data. Traditional relational databases, like SQL Server, allow you to write the business logic using stored procedures and triggers, and then send it to the server for execution directly within the database engine.
 
 With traditional relational databases, you're required to deal with two different programming languages: a nontransactional application programming language, such as JavaScript, Python, C#, or Java; and a transactional programming language, such as T-SQL, that's natively executed by the database.
 
-The database engine in Azure Cosmos DB supports full ACID (atomicity, consistency, isolation, durability) compliant transactions with snapshot isolation. All the database operations within the scope of a container's [logical partition](../partitioning-overview.md) are transactionally executed within the database engine that's hosted by the replica of the partition. These operations include both write (updating one or more items within the logical partition) and read operations.
+The database engine in Azure Cosmos DB supports full ACID (atomicity, consistency, isolation, durability) compliant transactions with snapshot isolation. All the database operations within the scope of a container's [logical partition](partitioning-overview.md) are transactionally executed within the database engine that's hosted by the replica of the partition. These operations include both write (updating one or more items within the logical partition) and read operations.
 
 The following table lists different operations and transaction types:
 
@@ -69,8 +69,8 @@ In an Azure Cosmos DB account configured with *multi-region writes*, data can be
 
 Learn more about database transactions and optimistic concurrency control:
 
-- [Databases, containers, and items in Azure Cosmos DB](../resource-model.md)
-- [Consistency levels in Azure Cosmos DB](../consistency-levels.md)
-- [Conflict types and resolution policies](../conflict-resolution-policies.md)
+- [Databases, containers, and items in Azure Cosmos DB](resource-model.md)
+- [Consistency levels in Azure Cosmos DB](consistency-levels.md)
+- [Conflict types and resolution policies](conflict-resolution-policies.md)
 - [Transactional batch operations in Azure Cosmos DB](transactional-batch.md)
 - [Stored procedures, triggers, and user-defined functions](stored-procedures-triggers-udfs.md)

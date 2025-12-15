@@ -118,6 +118,6 @@ Trying to do capacity planning for a migration to Azure Cosmos DB for NoSQL or M
 
 ## Related content
 
-- [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)
 - [Get started with Azure Cosmos DB for MongoDB](mongodb/create-mongodb-nodejs.md)
 - [Get started with Azure Cosmos DB for PostgreSQL](postgresql/quickstart-create-portal.md)

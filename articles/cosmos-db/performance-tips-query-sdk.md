@@ -14,7 +14,7 @@ zone_pivot_groups: programming-languages-set-cosmos
 ---
 
 # Query performance tips for Azure Cosmos DB SDKs
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a fast, flexible distributed database that scales seamlessly with guaranteed latency and throughput levels. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call. To learn more, see [provision container throughput](how-to-provision-container-throughput.md) or [provision database throughput](how-to-provision-database-throughput.md).
 
@@ -50,7 +50,7 @@ Here are a few examples of simple single partition queries that can benefit from
 - SELECT * FROM r WHERE r.id > 5 OFFSET 5 LIMIT 3 
 ```
 
-There can be cases where single partition queries might still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](../partitioning-overview.md#physical-partitions). Examples of queries where this could occur include:
+There can be cases where single partition queries might still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](partitioning-overview.md#physical-partitions). Examples of queries where this could occur include:
 
 ```
 - SELECT Count(r.id) AS count_a FROM r
@@ -142,7 +142,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ---
 
 > [!NOTE]
-> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](../partitioning-overview.md#physical-partitions) the container has, the slower they can potentially be.
+> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning-overview.md#physical-partitions) the container has, the slower they can potentially be.
 
 ### Avoid recreating the iterator unnecessarily
 
@@ -343,7 +343,7 @@ CosmosPagedFlux<MyItem> filteredItems =
 ```
 
 > [!NOTE]
-> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](../partitioning-overview.md#physical-partitions) the container has, the slowed they can potentially be.
+> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning-overview.md#physical-partitions) the container has, the slowed they can potentially be.
 
 ## Tune the degree of parallelism
 

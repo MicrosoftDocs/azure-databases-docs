@@ -191,5 +191,5 @@ ArrayList<SqlParameter> paramList = new ArrayList<SqlParameter>();
 ## Related content
 
 - [VectorDistance system function](/cosmos-db/query/vectordistance)
-- [Indexing policies in Azure Cosmos DB](../index-policy.md)
-- [Vector database](../vector-database.md)
+- [Indexing policies in Azure Cosmos DB](index-policy.md)
+- [Vector database](vector-database.md)

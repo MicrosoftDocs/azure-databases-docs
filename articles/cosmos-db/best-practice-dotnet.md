@@ -11,7 +11,7 @@ ms.custom: cosmos-db-video, devx-track-dotnet
 ---
 
 # Best practices for Azure Cosmos DB .NET SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article walks through the best practices for using the Azure Cosmos DB .NET SDK. By following these practices, you can help improve your latency, availability, and boost overall performance.
 
@@ -26,7 +26,7 @@ Watch the following video to learn more about using the .NET SDK from an Azure C
 |---------|---------|---------|
 |<input type="checkbox"/> |    SDK version    |   Always use the [latest version](sdk-dotnet-v3.md) of the Azure Cosmos DB SDK available for optimal performance.     |
 | <input type="checkbox"/>   |    Singleton client     |       Use a [single instance](/dotnet/api/microsoft.azure.cosmos.cosmosclient?view=azure-dotnet&preserve-view=true) of `CosmosClient` for the lifetime of your application for [better performance](performance-tips-dotnet-sdk-v3.md#sdk-usage).     |
-| <input type="checkbox"/>  |     Regions     |   Make sure to run your application in the same [Azure region](../distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible, to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](../distribute-data-globally.md). For production workloads, enable [service-managed failover](../how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover doesn't succeed due to lack of region connectivity. To learn how to add multiple regions using the .NET SDK, see [this tutorial](tutorial-global-distribution.md).   |
+| <input type="checkbox"/>  |     Regions     |   Make sure to run your application in the same [Azure region](distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible, to reduce latency. Enable 2-4 regions and replicate your accounts in multiple regions for [best availability](distribute-data-globally.md). For production workloads, enable [service-managed failover](how-to-manage-database-account.yml#configure-multiple-write-regions). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover doesn't succeed due to lack of region connectivity. To learn how to add multiple regions using the .NET SDK, see [this tutorial](tutorial-global-distribution.md).   |
 | <input type="checkbox"/>   |   Availability and failovers     |  Set the [ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions?view=azure-dotnet&preserve-view=true) or [ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion?view=azure-dotnet&preserve-view=true) in the v3 SDK, and the [PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet&preserve-view=true) in the v2 SDK using the  [preferred regions list](./tutorial-global-distribution.md?tabs=dotnetv3%2capi-async#preferred-locations). During failovers, write operations are sent to the current write region and all reads are sent to the first region within your preferred regions list. For more information about regional failover mechanics, see the [availability troubleshooting guide](troubleshoot-sdk-availability.md). |
 |  <input type="checkbox"/> |    CPU     |  You might run into connectivity/availability issues due to lack of resources on your client machine. Monitor your CPU utilization on nodes running the Azure Cosmos DB client, and scale up/out if usage is high.      |
 | <input type="checkbox"/>   |    Hosting      |   Use [Windows 64-bit host](performance-tips-query-sdk.md#use-local-query-plan-generation) processing for best performance, whenever possible. For Direct mode latency-sensitive production workloads, we highly recommend using at least 4-cores and 8-GB memory VMs whenever possible.
@@ -50,11 +50,11 @@ Watch the following video to learn more about using the .NET SDK from an Azure C
 
 ## Managing Newtonsoft.Json Dependencies
 
-[!INCLUDE [dotnet-json-dependency](../nosql/includes/dotnet-json-dependency.md)]
+[!INCLUDE [dotnet-json-dependency](includes/dotnet-json-dependency.md)]
 
 ## Capture diagnostics
 
-[!INCLUDE[cosmos-db-dotnet-sdk-diagnostics](../includes/dotnet-sdk-diagnostics.md)]
+[!INCLUDE[cosmos-db-dotnet-sdk-diagnostics](includes/dotnet-sdk-diagnostics.md)]
 
 ## Best practices for HTTP connections
 
@@ -134,7 +134,7 @@ It's recommended in these cases to:
 ## Next steps
 
 * [Measure Azure Cosmos DB for NoSQL performance with a benchmarking framework](benchmarking-framework.md)
-* [Partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

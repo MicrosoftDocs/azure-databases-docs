@@ -13,7 +13,7 @@ ms.custom: devx-track-csharp, build-2023
 
 # Change feed processor in Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The change feed processor is part of the Azure Cosmos DB [.NET V3](https://github.com/Azure/azure-cosmos-dotnet-v3) and [Java V4](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos) SDKs, which simplify the process of reading the change feed and distribute the event processing across multiple consumers effectively.
 
@@ -37,7 +37,7 @@ The change feed processor has four main components:
 
 * **The delegate**: The delegate is the code that defines what you, the developer, want to do with each batch of changes that the change feed processor reads.
 
-To further understand how these four elements of the change feed processor work together, let's look at an example in the following diagram. The monitored container stores items and uses 'City' as the partition key. The partition key values are distributed in ranges (each range represents a [physical partition](../partitioning-overview.md#physical-partitions)) that contain items.
+To further understand how these four elements of the change feed processor work together, let's look at an example in the following diagram. The monitored container stores items and uses 'City' as the partition key. The partition key values are distributed in ranges (each range represents a [physical partition](partitioning-overview.md#physical-partitions)) that contain items.
 
 The diagram shows two compute instances, and the change feed processor assigns different ranges to each instance to maximize compute distribution. Each instance has a different, unique name.
 
@@ -207,7 +207,7 @@ The change feed processor is initialized, and it starts reading changes from the
 > [!NOTE]
 > These customization options work only to set up the starting point in time of the change feed processor. After the lease container is initialized for the first time, changing these options has no effect.
 >
-> Customizing the starting point is only available for latest version change feed mode. When using all versions and deletes mode you must start reading from the time the processor is started, or resume from a prior lease state that's within the [continuous backup](../continuous-backup-restore-introduction.md) retention period of your account.
+> Customizing the starting point is only available for latest version change feed mode. When using all versions and deletes mode you must start reading from the time the processor is started, or resume from a prior lease state that's within the [continuous backup](continuous-backup-restore-introduction.md) retention period of your account.
 
 ### [Java](#tab/java)
 
@@ -343,9 +343,9 @@ In the sample, `setStartFromBeginning` is set to `false`, which is the same as t
 
 ## Change feed and provisioned throughput
 
-Change feed read operations on the monitored container consume [request units](../request-units.md). Make sure that your monitored container isn't experiencing [throttling](troubleshoot-request-rate-too-large.md). Throttling adds delays in receiving change feed events on your processors.
+Change feed read operations on the monitored container consume [request units](request-units.md). Make sure that your monitored container isn't experiencing [throttling](troubleshoot-request-rate-too-large.md). Throttling adds delays in receiving change feed events on your processors.
 
-Operations on the lease container (updating and maintaining state) consume [request units](../request-units.md). The higher the number of instances that use the same lease container, the higher the potential consumption of request units. Make sure that your lease container isn't experiencing [throttling](troubleshoot-request-rate-too-large.md). Throttling adds delays in receiving change feed events. Throttling can even completely end processing.
+Operations on the lease container (updating and maintaining state) consume [request units](request-units.md). The higher the number of instances that use the same lease container, the higher the potential consumption of request units. Make sure that your lease container isn't experiencing [throttling](troubleshoot-request-rate-too-large.md). Throttling adds delays in receiving change feed events. Throttling can even completely end processing.
 
 ## Share the lease container
 
@@ -395,7 +395,7 @@ When using Microsoft Entra ID as authentication mechanism, make sure the identit
 
 Learn more about the change feed processor in the following articles:
 
-* [Overview of change feed](../change-feed.md)
+* [Overview of change feed](change-feed.md)
 * [Change feed pull model](change-feed-pull-model.md)
 * [How to migrate from the change feed processor library](how-to-migrate-from-change-feed-library.md)
 * [Use the change feed estimator](how-to-use-change-feed-estimator.md)

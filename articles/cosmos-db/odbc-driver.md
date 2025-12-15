@@ -13,7 +13,7 @@ ms.custom: kr2b-contr-experiment, sfi-image-nochange, sfi-ropc-nochange
 
 # Use the Azure Cosmos DB ODBC driver to connect to BI and data analytics tools
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article walks you through installing and using the Azure Cosmos DB ODBC driver to create normalized tables and views for your Azure Cosmos DB data. You can query the normalized data with SQL queries, or import the data into Power BI or other BI and analytics software to create reports and visualizations.
 
@@ -76,9 +76,9 @@ You can do SQL operations against the normalized tables and views, including gro
 
     - **REST API Version**: Select the [REST API version](/rest/api/cosmos-db) for your operations. The default is **2015-12-16**.
 
-        If you have containers with [large partition keys](../large-partition-keys.md) that need REST API version `2018-12-31`, type `2018-12-31`, and then [follow the steps at the end of this procedure](#edit-the-windows-registry-to-support-rest-api-version-2018-12-31).
+        If you have containers with [large partition keys](large-partition-keys.md) that need REST API version `2018-12-31`, type `2018-12-31`, and then [follow the steps at the end of this procedure](#edit-the-windows-registry-to-support-rest-api-version-2018-12-31).
 
-    - **Query Consistency**: Select the [consistency level](../consistency-levels.md) for your operations. The default is **Session**.
+    - **Query Consistency**: Select the [consistency level](consistency-levels.md) for your operations. The default is **Session**.
 
     - **Number of Retries**: Enter the number of times to retry an operation if the initial request doesn't complete due to service rate limiting.
 
@@ -94,7 +94,7 @@ After you select **OK** to complete and close the **DocumentDB ODBC Driver DSN S
 
 ### Edit the Windows registry to support REST API version 2018-12-31
 
-If you have containers with [large partition keys](../large-partition-keys.md) that need REST API version 2018-12-31, follow these steps to update the Windows registry to support this version.
+If you have containers with [large partition keys](large-partition-keys.md) that need REST API version 2018-12-31, follow these steps to update the Windows registry to support this version.
 
 1. In the Windows **Start** menu, type *regedit* to find and open the **Registry Editor**.
 
@@ -272,5 +272,5 @@ You can use your DSN to connect to Azure Cosmos DB with any ODBC-compliant tools
 
 ## Next steps
 
-- To learn more about Azure Cosmos DB, see [Welcome to Azure Cosmos DB](../introduction.md).
+- To learn more about Azure Cosmos DB, see [Welcome to Azure Cosmos DB](introduction.md).
 - For more information about creating visualizations in Power BI Desktop, see [Visualization types in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).

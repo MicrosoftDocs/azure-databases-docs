@@ -9,7 +9,7 @@ ms.topic: language-reference
 ms.date: 05/28/2019
 ---
 # Azure Cosmos DB query cheat sheets
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The **Azure Cosmos DB query cheat sheets** help you quickly write queries for your data by displaying common database queries, operations, functions, and operators in easy-to-print PDF reference sheets. The cheat sheets include reference information for the SQL, MongoDB, Table, and Gremlin APIs. 
 
@@ -29,6 +29,6 @@ Download the [Azure Cosmos DB A3-sized query cheat sheets](https://go.microsoft.
 ## Next steps
 For more help writing queries, see the following articles:
 * For API for NoSQL queries, see [Query using the API for NoSQL](tutorial-query.md), [SQL queries for Azure Cosmos DB](/cosmos-db/query/overview), and [SQL syntax reference](/cosmos-db/query)
-* For MongoDB queries, see [Query using Azure Cosmos DB's API for MongoDB](../mongodb/tutorial-query.md) and [Azure Cosmos DB's API for MongoDB feature support and syntax](../mongodb/feature-support-32.md)
-* For API for Gremlin queries, see [Azure Cosmos DB for Gremlin graph support](../gremlin/support.md)
-* For API for Table queries, see [Query using the API for Table](../table/tutorial-query.md)
+* For MongoDB queries, see [Query using Azure Cosmos DB's API for MongoDB](mongodb/tutorial-query.md) and [Azure Cosmos DB's API for MongoDB feature support and syntax](mongodb/feature-support-32.md)
+* For API for Gremlin queries, see [Azure Cosmos DB for Gremlin graph support](gremlin/support.md)
+* For API for Table queries, see [Query using the API for Table](table/tutorial-query.md)

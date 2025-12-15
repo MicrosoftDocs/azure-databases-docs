@@ -132,7 +132,7 @@ End-to-end database management, with serverless and automatic scaling matching y
 ## Related content
 
 - Learn [how to choose an API](choose-api.md) in Azure Cosmos DB
-  - [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+  - [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)
   - [Get started with Azure Cosmos DB for MongoDB](mongodb/create-mongodb-nodejs.md)
   - [Get started with Azure Cosmos DB for Apache Cassandra](cassandra/manage-data-dotnet.md)
   - [Get started with Azure Cosmos DB for Apache Gremlin](gremlin/quickstart-dotnet.md)

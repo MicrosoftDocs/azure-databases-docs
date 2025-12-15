@@ -12,7 +12,7 @@ ms.custom: devx-track-java, devx-track-extended-java
 ---
 
 # How to create a Java application that uses Azure Cosmos DB for NoSQL and change feed processor
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a fully managed NoSQL database service provided by Microsoft. It allows you to build globally distributed and highly scalable applications with ease. This how-to guide walks you through the process of creating a Java application that uses the Azure Cosmos DB for NoSQL database and implements the Change Feed Processor for real-time data processing. The Java application communicates with the Azure Cosmos DB for NoSQL using Azure Cosmos DB Java SDK v4.
 
@@ -22,7 +22,7 @@ Azure Cosmos DB is a fully managed NoSQL database service provided by Microsoft.
 
 ## Prerequisites
 
-* Azure Cosmos DB Account: you can create it from the [Azure portal](https://portal.azure.com/) or you can use [Azure Cosmos DB Emulator](../emulator.md) as well.
+* Azure Cosmos DB Account: you can create it from the [Azure portal](https://portal.azure.com/) or you can use [Azure Cosmos DB Emulator](emulator.md) as well.
 
 * Java Development Environment: Ensure you have Java Development Kit (JDK) installed on your machine with at least 8 version.
 

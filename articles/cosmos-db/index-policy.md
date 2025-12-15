@@ -126,7 +126,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 ## Full-text indexes
 > [!NOTE]
->  You must enable the [Full Text & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
+>  You must enable the [Full Text & Hybrid Search for NoSQL API](vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
 
 **Full-text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
 
@@ -159,7 +159,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 ## Vector indexes
 
 > [!NOTE]
->  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
+>  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
 
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
@@ -209,7 +209,7 @@ Here's an example of an indexing policy with a vector index:
 ```
 
 > [!IMPORTANT]
-> A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
+> A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).
 
 ## Spatial indexes
 

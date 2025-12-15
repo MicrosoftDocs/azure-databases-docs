@@ -15,7 +15,7 @@ ms.custom: devx-track-csharp
 
 # How to register and use stored procedures, triggers, and user-defined functions in Azure Cosmos DB
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The API for NoSQL in Azure Cosmos DB supports registering and invoking stored procedures, triggers, and user-defined functions (UDFs) written in JavaScript. After you define one or more stored procedures, triggers, or UDFs, you can load and view them in the [Azure portal](https://portal.azure.com/) by using Data Explorer.
 

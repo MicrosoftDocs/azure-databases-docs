@@ -254,7 +254,7 @@ $allPartitionsSharedThroughputDatabase = Get-AzCosmosDBMongoDBDatabasePerPartiti
 ---
 
 > [!NOTE]
-> For more information on finding the number of partitions, see [best practices for scaling provisioned throughput (RU/s)](../scaling-provisioned-throughput-best-practices.md#step-1-find-the-current-number-of-physical-partitions).
+> For more information on finding the number of partitions, see [best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#step-1-find-the-current-number-of-physical-partitions).
 
 ::: zone-end
 
@@ -490,7 +490,7 @@ After you finish redistributing throughput, verify and monitor your RU/s consump
 1. Review the **Normalized RU consumption** for each partition. 
 
     > [!NOTE]
-    > Higher normalized RU consumption is expected after redistribution, as RU/s are allocated closer to each partition's needs. For more information, see [normalized RU consumption](../monitor-normalized-request-units.md).
+    > Higher normalized RU consumption is expected after redistribution, as RU/s are allocated closer to each partition's needs. For more information, see [normalized RU consumption](monitor-normalized-request-units.md).
 
 1. Confirm that the overall rate of 429 exceptions is decreased. Hot partitions should now have more RU/s, reducing rate limiting and improving performance.
 
@@ -506,7 +506,7 @@ While this feature is in previe, your Azure Cosmos DB account must meet all the 
 
 ## Related content
 
-- [Set provisioned throughput](../set-throughput.md)
-- [Review request units](../request-units.md)
-- [Monitor request units](../monitor-normalized-request-units.md#how-to-monitor-for-hot-partitions)
-- [Explore best practices for scaling provisioned throughput](../scaling-provisioned-throughput-best-practices.md)
+- [Set provisioned throughput](set-throughput.md)
+- [Review request units](request-units.md)
+- [Monitor request units](monitor-normalized-request-units.md#how-to-monitor-for-hot-partitions)
+- [Explore best practices for scaling provisioned throughput](scaling-provisioned-throughput-best-practices.md)

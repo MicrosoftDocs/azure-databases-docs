@@ -14,7 +14,7 @@ ms.custom: sfi-image-nochange
 
 # Quickstart: Create an Azure Cosmos DB for NoSQL account using the Azure portal
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Interface Quickstart selector](includes/quickstart/interface-selector.md)]
 
@@ -201,6 +201,6 @@ After you create and query your data, use the **Overview** section to try differ
 
 ## Related content
 
-- [Data Explorer](../data-explorer.md)
+- [Data Explorer](data-explorer.md)
 - [NoSQL query syntax](/cosmos-db/query)
-- [Resource model](../resource-model.md)
+- [Resource model](resource-model.md)

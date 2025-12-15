@@ -88,7 +88,7 @@ A partition key has two components: **partition key path** and the **partition k
 
 Learn about the limits on throughput, storage, and partition key length in the [Azure Cosmos DB service quotas](concepts-limits.md) article.
 
-Selecting your partition key is a simple but important design choice in Azure Cosmos DB. Once you select your partition key, you can't change it in place. If you need to change your partition key, move your data to a new container with your desired partition key. [Container copy jobs](container-copy.md) help with this process. Alternately, you can add [global secondary indexes (preview)](nosql/global-secondary-indexes.md) to create a copies of your data with different partition keys optimized for specific query patterns.
+Selecting your partition key is a simple but important design choice in Azure Cosmos DB. Once you select your partition key, you can't change it in place. If you need to change your partition key, move your data to a new container with your desired partition key. [Container copy jobs](container-copy.md) help with this process. Alternately, you can add [global secondary indexes (preview)](global-secondary-indexes.md) to create a copies of your data with different partition keys optimized for specific query patterns.
 
 For **all** containers, the partition key should:
 
@@ -132,7 +132,7 @@ If your container could grow to more than a few physical partitions, then you sh
 
 ## Global secondary indexes for cross-partition queries
 
-If your application needs to query data using multiple different properties efficiently, [global secondary indexes (preview)](nosql/global-secondary-indexes.md) provide an alternative to using one partition key strategy for the dataset. Global secondary indexes are additional containers with different partition keys, automatically synchronized with data from your source container.
+If your application needs to query data using multiple different properties efficiently, [global secondary indexes (preview)](global-secondary-indexes.md) provide an alternative to using one partition key strategy for the dataset. Global secondary indexes are additional containers with different partition keys, automatically synchronized with data from your source container.
 
 Consider global secondary indexes when:
 

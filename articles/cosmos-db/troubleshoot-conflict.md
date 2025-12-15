@@ -12,7 +12,7 @@ ms.date: 02/18/2025
 
 # Diagnose and troubleshoot Azure Cosmos DB conflict exceptions
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 409 represents the request had a conflict while processing.
 
@@ -24,10 +24,10 @@ Large partition keys are supported by enabling an enhanced version of the hash f
 
 ### Solution
 
-Use [large partition key](../large-partition-keys.md). Enabling large partition keys can only be done at time of container creation. If you have an existing container that doesn't use large partition keys, you will have to create a new container and [migrate your data](../container-copy.md) to it.
+Use [large partition key](large-partition-keys.md). Enabling large partition keys can only be done at time of container creation. If you have an existing container that doesn't use large partition keys, you will have to create a new container and [migrate your data](container-copy.md) to it.
 
 ## Related content
 
-- [Large partition keys](../large-partition-keys.md)
-- [Partitioning overview](../partitioning-overview.md)
-- [Resource model](../resource-model.md)
+- [Large partition keys](large-partition-keys.md)
+- [Partitioning overview](partitioning-overview.md)
+- [Resource model](resource-model.md)

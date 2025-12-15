@@ -60,7 +60,7 @@ For more information, see [role-based access control](/azure/role-based-access-c
 
 ## Disable key-based authentication
 
-[!INCLUDE[Disable key-based authentication](../includes/disable-key-based-authentication.md)]
+[!INCLUDE[Disable key-based authentication](includes/disable-key-based-authentication.md)]
 
 ## Validate that key-based authentication is disabled
 
@@ -145,11 +145,11 @@ fn main() {
 
 ## Grant control plane role-based access
 
-[!INCLUDE[Grant control plane role-based access](../includes/grant-control-plane-role-based-access.md)]
+[!INCLUDE[Grant control plane role-based access](includes/grant-control-plane-role-based-access.md)]
 
 ## Validate control plane role-based access in code
 
-[!INCLUDE[Validate control plane role-based access](../includes/validate-control-plane-role-based-access.md)]
+[!INCLUDE[Validate control plane role-based access](includes/validate-control-plane-role-based-access.md)]
 
 ## Grant data plane role-based access
 

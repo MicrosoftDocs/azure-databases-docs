@@ -10,7 +10,7 @@ ms.topic: troubleshooting
 ms.custom: devx-track-dotnet
 ---
 # Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4.md)
@@ -29,7 +29,7 @@ Consider the following checklist before you move your application to production.
 * Use the latest [SDK](sdk-dotnet-v3.md). Preview SDKs shouldn't be used for production. This will prevent hitting known issues that are already fixed.
 * Review the [performance tips](performance-tips-dotnet-sdk-v3.md), and follow the suggested practices. This will help prevent scaling, latency, and other performance issues.
 * Enable the SDK logging to help you troubleshoot an issue. Enabling the logging may affect performance so it's best to enable it only when troubleshooting issues. You can enable the following logs:
-  * [Log metrics](../monitor.md) by using the Azure portal. Portal metrics show the Azure Cosmos DB telemetry, which is helpful to determine if the issue corresponds to Azure Cosmos DB or if it's from the client side.
+  * [Log metrics](monitor.md) by using the Azure portal. Portal metrics show the Azure Cosmos DB telemetry, which is helpful to determine if the issue corresponds to Azure Cosmos DB or if it's from the client side.
   * Log the [diagnostics string](#capture-diagnostics) from the operations and/or exceptions.
 
 Take a look at the [Common issues and workarounds](#common-issues-and-workarounds) section in this article.
@@ -38,7 +38,7 @@ Check the [GitHub issues section](https://github.com/Azure/azure-cosmos-dotnet-v
 
 ## Capture diagnostics
 
-[!INCLUDE[cosmos-db-dotnet-sdk-diagnostics](../includes/dotnet-sdk-diagnostics.md)]
+[!INCLUDE[cosmos-db-dotnet-sdk-diagnostics](includes/dotnet-sdk-diagnostics.md)]
 
 ## Common issues and workarounds
 
@@ -50,7 +50,7 @@ Check the [GitHub issues section](https://github.com/Azure/azure-cosmos-dotnet-v
 
 ### Check the portal metrics
 
-Checking the [portal metrics](../monitor.md) will help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
+Checking the [portal metrics](monitor.md) will help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
 
 ### Retry design
 

@@ -13,13 +13,13 @@ ms.date: 04/08/2024
 
 # Best practices for Python SDK in Azure Cosmos DB for NoSQL
 
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This guide includes best practices for solutions built using the latest version of the Python SDK for Azure Cosmos DB for NoSQL. The best practices included here helps improve latency, improve availability, and boost overall performance for your solutions.
 
 ## Account configuration
 
-- Make sure to run your application in the same [Azure region](../distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable replication in 2+ regions in your accounts for [best availability](../distribute-data-globally.md). For production workloads, enable [service-managed failover](../how-to-manage-database-account.yml). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover can't succeed due to lack of region connectivity. For more information on how to add multiple regions using the Python SDK, see the [global distribution tutorial](tutorial-global-distribution.md).
+- Make sure to run your application in the same [Azure region](distribute-data-globally.md) as your Azure Cosmos DB account, whenever possible to reduce latency. Enable replication in 2+ regions in your accounts for [best availability](distribute-data-globally.md). For production workloads, enable [service-managed failover](how-to-manage-database-account.yml). In the absence of this configuration, the account experiences loss of write availability for all the duration of the write region outage, as manual failover can't succeed due to lack of region connectivity. For more information on how to add multiple regions using the Python SDK, see the [global distribution tutorial](tutorial-global-distribution.md).
 
 ## SDK usage
 
@@ -45,8 +45,8 @@ This guide includes best practices for solutions built using the latest version 
 ## Next steps
 To learn more about performance tips for Python SDK, see [Performance tips for Azure Cosmos DB Python SDK](performance-tips-python-sdk.md).
 
-To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](../partitioning-overview.md).
+To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
+* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

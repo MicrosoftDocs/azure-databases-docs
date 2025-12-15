@@ -11,9 +11,9 @@ ms.custom: devx-track-azurepowershell
 ---
 
 # Manage Azure Cosmos DB for NoSQL resources using PowerShell
-[!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-The following guide describes how to use PowerShell to script and automate management of Azure Cosmos DB for NoSQL resources, including the Azure Cosmos DB account, database, container, and throughput. For PowerShell cmdlets for other APIs see [PowerShell Samples for Cassandra](../cassandra/powershell-samples.md), [PowerShell Samples for API for MongoDB](../mongodb/powershell-samples.md), [PowerShell Samples for Gremlin](../graph/powershell-samples.md), [PowerShell Samples for Table](../table/powershell-samples.md)
+The following guide describes how to use PowerShell to script and automate management of Azure Cosmos DB for NoSQL resources, including the Azure Cosmos DB account, database, container, and throughput. For PowerShell cmdlets for other APIs see [PowerShell Samples for Cassandra](cassandra/powershell-samples.md), [PowerShell Samples for API for MongoDB](mongodb/powershell-samples.md), [PowerShell Samples for Gremlin](graph/powershell-samples.md), [PowerShell Samples for Table](table/powershell-samples.md)
 
 > [!NOTE]
 > Samples in this article use [Az.CosmosDB](/powershell/module/az.cosmosdb) management cmdlets. See the [Az.CosmosDB](/powershell/module/az.cosmosdb) API reference page for the latest changes.
@@ -45,7 +45,7 @@ The following sections demonstrate how to manage the Azure Cosmos DB account, in
 
 ### <a id="create-account"></a> Create an Azure Cosmos DB account
 
-This command creates an Azure Cosmos DB database account with [multiple regions][distribute-data-globally], [service-managed failover](../how-to-manage-database-account.yml#enable-service-managed-failover-for-your-azure-cosmos-db-account) and bounded-staleness [consistency policy](../consistency-levels.md).
+This command creates an Azure Cosmos DB database account with [multiple regions][distribute-data-globally], [service-managed failover](how-to-manage-database-account.yml#enable-service-managed-failover-for-your-azure-cosmos-db-account) and bounded-staleness [consistency policy](consistency-levels.md).
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -72,10 +72,10 @@ New-AzCosmosDBAccount `
 * `$resourceGroupName` The Azure resource group into which to deploy the Azure Cosmos DB account. It must already exist.
 * `$locations` The regions for the database account, the region with `FailoverPriority 0` is the write region.
 * `$accountName` The name for the Azure Cosmos DB account. Must be unique, lowercase, include only alphanumeric and '-' characters, and between 3 and 31 characters in length.
-* `$apiKind` The type of Azure Cosmos DB account to create. For more information, see [APIs in Azure Cosmos DB](../introduction.md#simplified-application-development).
-* `$consistencyPolicy`, `$maxStalenessInterval`, and `$maxStalenessPrefix` The default consistency level and settings of the Azure Cosmos DB account. For more information, see [Consistency Levels in Azure Cosmos DB](../consistency-levels.md).
+* `$apiKind` The type of Azure Cosmos DB account to create. For more information, see [APIs in Azure Cosmos DB](introduction.md#simplified-application-development).
+* `$consistencyPolicy`, `$maxStalenessInterval`, and `$maxStalenessPrefix` The default consistency level and settings of the Azure Cosmos DB account. For more information, see [Consistency Levels in Azure Cosmos DB](consistency-levels.md).
 
-Azure Cosmos DB accounts can be configured with IP Firewall, Virtual Network service endpoints, and private endpoints. For information on how to configure the IP Firewall for Azure Cosmos DB, see [Configure IP Firewall](../how-to-configure-firewall.md). For information on how to enable service endpoints for Azure Cosmos DB, see [Configure access from virtual networks](../how-to-configure-vnet-service-endpoint.md). For information on how to enable private endpoints for Azure Cosmos DB, see [Configure access from private endpoints](../how-to-configure-private-endpoints.md).
+Azure Cosmos DB accounts can be configured with IP Firewall, Virtual Network service endpoints, and private endpoints. For information on how to configure the IP Firewall for Azure Cosmos DB, see [Configure IP Firewall](how-to-configure-firewall.md). For information on how to enable service endpoints for Azure Cosmos DB, see [Configure access from virtual networks](how-to-configure-vnet-service-endpoint.md). For information on how to enable private endpoints for Azure Cosmos DB, see [Configure access from private endpoints](how-to-configure-private-endpoints.md).
 
 ### <a id="list-accounts"></a> List all Azure Cosmos DB accounts in a Resource Group
 
@@ -113,7 +113,7 @@ This command allows you to update your Azure Cosmos DB database account properti
 > [!NOTE]
 > This command allows you to add and remove regions but does not allow you to modify failover priorities or trigger a manual failover. See [Modify failover priority](#modify-failover-priority) and [Trigger manual failover](#trigger-manual-failover).
 > [!TIP]
-> When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes will depend upon how much data is stored within the account. If an [asynchronous throughput scaling operation](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused and will resume automatically when the add/remove region operation is complete. 
+> When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes will depend upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused and will resume automatically when the add/remove region operation is complete. 
 
 ```azurepowershell-interactive
 # Create account with two regions
@@ -271,7 +271,7 @@ For the example below, assume the account has a current failover priority of `We
 > Changing `locationName` for `failoverPriority=0` will trigger a manual failover for an Azure Cosmos DB account. Any other priority change will not trigger a failover.
 
 > [!NOTE]
-> If you perform a manual failover operation while an [asynchronous throughput scaling operation](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused. It will resume automatically when the failover operation is complete.
+> If you perform a manual failover operation while an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation will be paused. It will resume automatically when the failover operation is complete.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -776,7 +776,7 @@ Remove-AzResourceLock `
 
 ## Next steps
 
-* [How to manage Azure Cosmos DB account](../how-to-manage-database-account.yml)
+* [How to manage Azure Cosmos DB account](how-to-manage-database-account.yml)
 * [Create an Azure Cosmos DB container](how-to-create-container.md)
 * [Configure time-to-live in Azure Cosmos DB](how-to-time-to-live.md)
 
