@@ -3,8 +3,8 @@ title: Troubleshoot common issues in Azure DocumentDB replication
 description: This guide discusses the ways to troubleshoot common issues encountered in Azure DocumentDB replication.
 ms.topic: troubleshooting
 ms.date: 09/09/2025
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ---
 
 # Troubleshooting guide: Cross-region and same region replication in Azure DocumentDB

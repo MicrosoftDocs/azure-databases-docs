@@ -197,6 +197,6 @@ db.stores.updateOne({"_id": "NonExistentDocId"}, {"$set": {"name": "Lakeshore Re
 
 ## Related content
 
-- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-documentdb)
 - [insert with Azure DocumentDB](insert.md)
 - [delete with Azure DocumentDB](delete.md)

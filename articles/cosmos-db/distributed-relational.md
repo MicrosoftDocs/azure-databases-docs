@@ -43,8 +43,3 @@ Citus is a PostgreSQL extension that adds support to Postgres for distribution o
 
 > [!div class="nextstepaction"]
 > [Understanding distributed NoSQL databases](distributed-nosql.md)
-
-Want to get started with Azure Cosmos DB?
-
-- [Learn about the various APIs](choose-api.md)
-- [Get started with the API for PostgreSQL](postgresql/quickstart-app-stacks-python.md)

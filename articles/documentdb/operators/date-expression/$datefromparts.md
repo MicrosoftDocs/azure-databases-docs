@@ -1,8 +1,8 @@
 ---
 title: $dateFromParts
 description: The $dateFromParts operator constructs a date from individual components.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: language-reference
 ms.date: 09/05/2025
 ---

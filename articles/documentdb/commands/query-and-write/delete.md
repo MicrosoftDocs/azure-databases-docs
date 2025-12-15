@@ -172,6 +172,6 @@ db.stores.deleteMany({"promotionEvents.discounts.discountPercentage": 21}, {"lim
 
 ## Related content
 
-- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-cosmosdb-for-mongodb-vcore)
+- [Migrate to Azure DocumentDB](https://aka.ms/migrate-to-azure-documentdb)
 - [insert with Azure DocumentDB](insert.md)
 - [update with Azure DocumentDB](update.md)

@@ -1,8 +1,8 @@
 ---
 title: Encryption at rest in Azure DocumentDB
 description: Learn about encryption of data in Azure DocumentDB databases using service-managed and customer-managed encryption keys.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 09/01/2025
 ---

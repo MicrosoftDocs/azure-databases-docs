@@ -145,7 +145,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Create a string variable with the name of your existing cluster. Then, use that variable to create a new instance of type `MongoUrl` using `MongoUrl.Create`
 
     ```csharp
-    string clusterName = "<azure-cosmos-db-mongodb-vcore-cluster-name>";
+    string clusterName = "<azure-documentdb-cluster-name>";
     
     MongoUrl url = MongoUrl.Create($"mongodb+srv://{clusterName}.global.mongocluster.cosmos.azure.com/");
     ```

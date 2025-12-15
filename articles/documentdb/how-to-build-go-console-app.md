@@ -117,7 +117,7 @@ Now, use the `Azure.Identity` library to get a `TokenCredential` to use to conne
 1. Set your cluster name and construct the connection URI.
 
     ```go
-	clusterName := "<azure-cosmos-db-mongodb-vcore-cluster-name>"
+	clusterName := "<azure-documentdb-cluster-name>"
 	uri := fmt.Sprintf("mongodb+srv://%s.global.mongocluster.cosmos.azure.com/", clusterName)
     ```
 

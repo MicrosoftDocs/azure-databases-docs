@@ -13,7 +13,7 @@ ms.author: thvankra
 # Azure Cosmos DB Spark connector: Throughput control
 [!INCLUDE[NoSQL](../includes/appliesto-nosql.md)]
 
-The [Spark connector](quickstart-spark.md) allows you to communicate with Azure Cosmos DB by using [Apache Spark](https://spark.apache.org/). This article describes how the throughput control feature works. Check out our [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples) to get started using throughput control.
+The [Spark connector](tutorial-spark-connector.md) allows you to communicate with Azure Cosmos DB by using [Apache Spark](https://spark.apache.org/). This article describes how the throughput control feature works. Check out our [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3/Samples) to get started using throughput control.
 
 This article documents the use of global throughput control groups in the Azure Cosmos DB Spark connector, but the functionality is also available in the [Java SDK](./sdk-java-v4.md). In the SDK, you can use global and local throughput control groups to limit the request unit (RU) consumption in the context of a single client connection instance. For example, you can apply this approach to different operations within a single microservice, or maybe to a single data loading program. For more information, see how to [use throughput control](quickstart-java.md) in the Java SDK.
 
@@ -108,6 +108,6 @@ In each client record, the `loadFactor` attribute represents the load on the spe
 
 ## Related content
 
-* See [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3_2-12/Samples).
-* Learn how to [manage data with Azure Cosmos DB Spark 3 OLTP connector for API for NoSQL](quickstart-spark.md).
+* See [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3/Samples).
+* Learn how to [manage data with Azure Cosmos DB Spark 3 OLTP connector for API for NoSQL](tutorial-spark-connector.md).
 * Learn more about [Apache Spark](https://spark.apache.org/).

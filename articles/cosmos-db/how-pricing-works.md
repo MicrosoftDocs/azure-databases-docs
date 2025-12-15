@@ -55,7 +55,7 @@ You can learn more about optimizing the costs for your Azure Cosmos DB resources
 
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
   * If all you know is the number of vCores and servers in your existing database cluster, see [Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s](convert-vcore-to-request-unit.md)
-  * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](./sql/estimate-ru-with-capacity-planner.md)
+  * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
 * [Optimize development and testing cost in Azure Cosmos DB](optimize-dev-test.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)
 * [Optimize provisioned throughput cost in Azure Cosmos DB](optimize-cost-throughput.md)

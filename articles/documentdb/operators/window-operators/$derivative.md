@@ -3,7 +3,7 @@ title: $derivative
 description: The $derivative operator calculates the average rate of change of the value of a field within a specified window. 
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/20/2025
 ---
 

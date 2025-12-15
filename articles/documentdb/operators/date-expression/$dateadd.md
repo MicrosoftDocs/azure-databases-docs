@@ -1,8 +1,8 @@
 ---
 title: $dateAdd
 description: The $dateAdd operator adds a specified number of time units (day, hour, month etc) to a date.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: language-reference
 ms.date: 09/04/2025
 ---

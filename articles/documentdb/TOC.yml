@@ -12,14 +12,18 @@
 - name: Get started
   expanded: true
   items:
-    - name: Create AI vector search app with Python
-      displayName: embeddings, AI, artificial intelligence
-      href: quickstart-python-vector-search.md
-    - name: Create AI vector search app with TypeScript
-      displayName: embeddings, AI, artificial intelligence
-      href: quickstart-nodejs-vector-search.md
-    - name: Create AI vector search app with .NET
-      href: quickstart-dotnet-vector-search.md
+    - name: AI vector search
+      items:
+      - name: Create AI vector search app with Python
+        displayName: embeddings, AI, artificial intelligence
+        href: quickstart-python-vector-search.md
+      - name: Create AI vector search app with TypeScript
+        displayName: embeddings, AI, artificial intelligence
+        href: quickstart-nodejs-vector-search.md
+      - name: Create AI vector search app with .NET
+        href: quickstart-dotnet-vector-search.md
+      - name: Create AI vector search app with Go
+        href: quickstart-go-vector-search.md
     - name: Develop a Python console application
       href: quickstart-python.md
     - name: Develop a TypeScript console application

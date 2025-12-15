@@ -3,7 +3,7 @@ title: $denseRank
 description: The $denseRank operator assigns and returns a positional ranking for each document within a partition based on a specified sort order 
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/20/2025
 ---
 

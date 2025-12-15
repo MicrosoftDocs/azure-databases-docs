@@ -1,8 +1,8 @@
 ---
 title: Enable and manage alerts on metrics in Azure DocumentDB
 description: Enable and manage metric alerts on Azure DocumentDB clusters.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: how-to
 ms.date: 01/10/2025
 #Customer Intent: As a database adminstrator, I want to get notifications when certain operational metrics on my Azure DocumentDB cluster reach pre-defined thresholds.

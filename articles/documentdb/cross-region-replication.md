@@ -1,8 +1,8 @@
 ---
 title: Cross-Region Replication Best Practices - Disaster Recovery
 description: Learn how to configure Azure DocumentDB cross-region replication for disaster recovery and read scalability. Includes best practices for replica cluster promotion and connection strings.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: best-practice
 ms.date: 11/05/2025
 ms.custom:
