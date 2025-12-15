@@ -1,8 +1,8 @@
 ---
 title: Scale or configure a cluster
 description: Scale an Azure DocumentDB cluster by changing the compute tier and storage size or change the configuration by enabling in-region high availability.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: how-to
 ms.date: 10/13/2025
 ms.custom:
