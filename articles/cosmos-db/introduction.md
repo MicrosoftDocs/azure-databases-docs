@@ -30,7 +30,7 @@ Today's applications are required to be highly responsive and always online. The
 
 The surge of AI-powered applications created another layer of complexity, because many of these applications integrate a multitude of data stores. For example, some organizations built applications that simultaneously connect to MongoDB, Postgres, Redis, and Gremlin. These databases differ in implementation workflow and operational performances, posing extra complexity for scaling applications.
 
-Azure Cosmos DB simplifies and expedites your application development by being the single database for your operational data needs, from [geo-replicated distributed caching](https://medium.com/@marcodesanctis2/using-azure-cosmos-db-as-your-persistent-geo-replicated-distributed-cache-b381ad80f8a0) to backup to [vector indexing and search](vector-database.md). It provides the data infrastructure for modern applications like [AI agent](ai-agents.md), digital commerce, Internet of Things, and booking management. It can accommodate all your operational data models, including relational, document, vector, key-value, graph, and table.
+Azure Cosmos DB simplifies and expedites your application development by being the single database for your operational data needs, from [geo-replicated distributed caching](https://medium.com/@marcodesanctis2/using-azure-cosmos-db-as-your-persistent-geo-replicated-distributed-cache-b381ad80f8a0) to back up to [vector indexing and search](vector-database.md). It provides the data infrastructure for modern applications like [AI agent](ai-agents.md), digital commerce, Internet of Things, and booking management. It can accommodate all your operational data models, including relational, document, vector, key-value, graph, and table.
 
 ## An AI database providing industry-leading capabilities...
 
@@ -41,13 +41,13 @@ Azure Cosmos DB is a fully managed NoSQL, relational, and vector database. It of
 App development is faster and more productive thanks to:
 
 - Turnkey global distribution & multi-region writes (99.999% SLA) with automatic failover
-- Integrated vector + hybrid similarity search (DiskANN) storing embeddings with operational data for RAG, AI agents, and LLM caching
-- Hierarchical partition keys (subpartitioning) to scale multi-tenant & high-cardinality workloads beyond single logical partition limits
+- Integrated vector + hybrid similarity search (DiskANN) storing embeddings with operational data for RAG, AI agents, and large language model (LLM) caching
+- Hierarchical partition keys (subpartitioning) to scale multitenant & high-cardinality workloads beyond single logical partition limits
 - Change feed (latest & all versions + deletes modes) for event-driven architectures (Azure Functions, Spark) & streaming pipelines
-- No‑ETL HTAP via Synapse Link or Fabric mirroring: isolated analytical store for near real-time insights
+- No‑ETL HTAP via Azure Synapse Link or Fabric mirroring: isolated analytical store for near real-time insights
 - Continuous backup & point‑in‑time restore (recover accidental deletes/corruption across regions)
 - Autoscale & serverless throughput models plus RU-based cost governance
-- Rich SDKs (.NET, Java, JavaScript/Node.js, Python) & automatic indexing (no manual index maintenance for most workloads)
+- Rich software development kits (SDKs) (.NET, Java, JavaScript/Node.js, Python) & automatic indexing (no manual index maintenance for most workloads)
 
 
 As a fully managed service, Azure Cosmos DB takes database administration off your hands with automatic management, updates, and patching. It also handles capacity management with cost-effective serverless and automatic scaling options that respond to application needs to match capacity with demand.
@@ -65,17 +65,17 @@ When you decide that Azure Cosmos DB is right for you, you can receive up to 63%
 
 ## ...for more than just AI apps
 
-Besides AI, Azure Cosmos DB should also be your goto database for a variety of use cases, including [retail and marketing](use-cases.md#retail-and-marketing), [IoT and telematics](use-cases.md#iot-and-telematics), [gaming](use-cases.md#gaming), [social](social-media-apps.md), and [personalization](use-cases.md#personalization), among others. Azure Cosmos DB is well positioned for solutions that handle massive amounts of data, reads, and writes at a global scale with near-real response times. Azure Cosmos DB's guaranteed high availability, high throughput, low latency, and tunable consistency are huge advantages when building these types of applications.
+Besides AI, Azure Cosmos DB should also be your goto database for various use cases. These use cases include [retail and marketing](use-cases.md#retail-and-marketing), [IoT and telematics](use-cases.md#iot-and-telematics), [gaming](use-cases.md#gaming), [social](social-media-apps.md), and [personalization](use-cases.md#personalization), among others. Azure Cosmos DB is well positioned for solutions that handle massive amounts of data, reads, and writes at a global scale with near-real response times. Azure Cosmos DB's guaranteed high availability, high throughput, low latency, and tunable consistency are huge advantages when building these types of applications.
 
-##### For what kinds of apps is Azure Cosmos DB a good fit?
+##### For what kinds of apps are Azure Cosmos DB a good fit?
 
 - **Flexible Schema for Iterative Development.** For example, apps wanting to adopt flexible modern DevOps practices and accelerate feature deployment timelines.
 - **Latency sensitive workloads.** For example, real-time Personalization.
 - **Highly elastic workloads.** For example, concert booking platform.
-- **High throughput workloads.** For example, IoT device state/telemetry.
+- **High throughput workloads.** For example, IoT device state/logs.
 - **Highly available mission critical workloads.** For example, customer-facing Web Apps.
 
-##### For what kinds of apps is Azure Cosmos DB a poor fit?
+##### For what kinds of apps are Azure Cosmos DB a poor fit?
 
 - **Analytical workloads (OLAP).** For example, interactive, streaming, and batch analytics to enable Data Scientist / Data Analyst scenarios. Consider Microsoft Fabric instead.
 - **Highly relational apps.** For example, white-label CRM applications. Consider Azure SQL, Azure Database for MySQL, or Azure Database for PostgreSQL instead.
@@ -105,7 +105,7 @@ Build fast with open-source APIs, multiple SDKs, schemaless data, and no-ETL ana
 Guarantee business continuity, 99.999% availability, and enterprise-level security for every application.
 
 - Azure Cosmos DB offers a comprehensive suite of [SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db) including industry-leading availability worldwide.
-- Easily distribute data to any Azure region with automatic data replication. Enjoy zero downtime with multi-region writes or RPO 0 when using Strong consistency.
+- Easily distribute data to any Azure region with automatic data replication. Enjoy zero downtime with multi-region writes or recovery point objective (RPO) 0 when using Strong consistency.
 - Enjoy enterprise-grade encryption-at-rest with self-managed keys.
 - Azure role-based access control keeps your data safe and offers fine-tuned control.
 
@@ -122,7 +122,7 @@ End-to-end database management, with serverless and automatic scaling matching y
 
 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables analytics at near real-time over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
 
-- Reduced analytics complexity with No ETL jobs to manage.
+- Reduced analytics complexity with No extract, transform, and load (ETL) jobs to manage.
 - Near real-time insights into your operational data.
 - No effect on operational workloads.
 - Optimized for large-scale analytics workloads.
@@ -136,7 +136,7 @@ Azure Cosmos DB and Azure DocumentDB are both powerful NoSQL database services d
 
 Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize rich query capabilities and familiar development experiences. Azure DocumentDB is powered by the open-source DocumentDB engine built on the PostgreSQL engine with full MongoDB wire protocol compatibility. Azure DocumentDB excels at complex aggregation pipelines, analytical queries, and advanced document database features. It's ideal for content management systems, analytics platforms, MongoDB migrations, and applications requiring sophisticated query operations with predictable vCore-based pricing.
 
-Azure DocumentDB is also a good fit for multi-cloud portability scenarios where sustaining existing MongoDB-compatible tooling, drivers, or operational patterns across multiple cloud environments is a priority and refactoring to the Cosmos DB native API isn't immediately feasible.
+Azure DocumentDB is also a good fit for multicloud portability scenarios. It's ideal when you need to sustain existing MongoDB-compatible tooling, drivers, or operational patterns across multiple cloud environments. This compatibility is especially valuable when refactoring to the Cosmos DB native API isn't immediately feasible.
 
 | Characteristic | Azure Cosmos DB (RU/serverless) | Azure DocumentDB (vCore) |
 |----------------|---------------------------------|---------------------------|
@@ -149,7 +149,7 @@ Azure DocumentDB is also a good fit for multi-cloud portability scenarios where 
 For more detailed decision guidance, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](https://learn.microsoft.com/azure/documentdb/compare-cosmos-db?context=/azure/cosmos-db/nosql/context/context).
 
 > [!TIP]
-> In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, (2) PostgreSQL ecosystem alignment, or (3) multi-cloud portability using MongoDB-compatible drivers and tooling without refactoring.
+> In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, (2) PostgreSQL ecosystem alignment, or (3) multicloud portability using MongoDB-compatible drivers and tooling without refactoring.
 
 ## Related content
 

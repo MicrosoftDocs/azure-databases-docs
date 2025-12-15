@@ -14,7 +14,7 @@ ai-usage: ai-generated
 
 # What is Azure Cosmos DB for NoSQL?
 
-Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With SLA-backed speed, availability, and instant dynamic scalability, it is ideal for real-time workloads that demand high performance and distributed processing over massive volumes of JSON and vector data.
+Azure Cosmos DB for NoSQL is a fully managed and serverless NoSQL and vector database for modern app development, including AI applications and agents. With SLA-backed speed, availability, and instant dynamic scalability, it's ideal for real-time workloads that demand high performance and distributed processing over massive volumes of JSON and vector data.
 
 This service is part of the Azure Cosmos DB portfolio but is tailored for NoSQL workloads. It supports querying JSON data with a SQL-like query language, which makes it approachable for developers who know SQL while still benefiting from the flexibility of a schema-agnostic data store.
 
@@ -43,7 +43,7 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 Azure Cosmos DB for NoSQL is optimized for JSON-based, scale-out workloads. When your scenario aligns with a different data model, follow the [Choose an API](https://learn.microsoft.com/azure/cosmos-db/choose-api) migration guide to land on the right service:
 
 - [Azure DocumentDB](https://learn.microsoft.com/azure/documentdb/overview) when you need MongoDB aggregation pipelines, multi-document transactions, or multicloud portability without refactoring drivers.
-- [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/introduction) when you require unchanged CQL workloads with full Cassandra node-level control.
+- [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/introduction) when you require unchanged Cassandra Query Language (CQL) workloads with full Cassandra node-level control.
 - [Cosmos AIGraph (OmniRAG)](https://github.com/AzureCosmosDB/CosmosAIGraph) when your graph workload centers on Retrieval Augmented Generation (RAG) or AI-driven traversals that combine knowledge graphs with vector/hybrid search.
 - [Graph in Microsoft Fabric](https://learn.microsoft.com/fabric/graph/overview) when you need analytical graph processing, BI integrations, or GQL-compliant workloads operating inside OneLake.
 - [Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/) when you require a relational engine with SQL joins, stored procedures, or scale-up transactional semantics.
@@ -54,11 +54,11 @@ Because the API for NoSQL uses a request unit (RU/s) cost model, estimate and mo
 
 Azure Cosmos DB and Azure DocumentDB are both NoSQL database services built to store JSON data with high reliability. Azure Cosmos DB is optimized for scale-out scenarios that demand global distribution, massive scale, and instantaneous scaling with automatic failover across regions.
 
-Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize rich query capabilities and familiar development experiences. It runs on the open-source DocumentDB engine built on PostgreSQL with full MongoDB wire protocol compatibility, making it ideal for complex aggregation pipelines, analytics, and advanced document database features.
+Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize rich query capabilities and familiar development experiences. It runs on the open-source DocumentDB engine built on PostgreSQL with full MongoDB wire protocol compatibility. This compatibility makes it ideal for complex aggregation pipelines, analytics, and advanced document database features.
 
 | Characteristic | Azure Cosmos DB (RU/serverless) | Azure DocumentDB (vCore) |
 | --- | --- | --- |
-| Availability SLA | 99.999% (multi-region) | 99.995% |
+| Availability service level agreement (SLA) | 99.999% (multi-region) | 99.995% |
 | Scaling model | Horizontal (RU-based + serverless) | Vertical (vCore-based) |
 | Query focus | Optimized for point reads and distributed queries | Advanced aggregation pipelines and complex joins |
 | Global distribution | Turnkey multi-region with automatic failover | Regional deployment with optional geo-replicas |
