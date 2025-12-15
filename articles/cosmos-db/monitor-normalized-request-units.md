@@ -55,7 +55,7 @@ To verify if there's a hot partition, navigate to **Insights** > **Throughput** 
 
 Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has higher normalized RU consumption than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition.
 
-:::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Screenshot of Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
+:::image type="content" source="troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Screenshot of Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
 
 To identify the logical partitions that consume the most RU/s, see [How to identify the hot partition](troubleshoot-request-rate-too-large.md#how-to-identify-the-hot-partition).
 
