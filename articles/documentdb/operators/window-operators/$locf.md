@@ -1,8 +1,8 @@
 ---
 title: $locf
 description: The $locf operator propagates the last observed non-null value forward within a partition in a windowed query.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: reference
 ms.date: 06/28/2025
 ---
