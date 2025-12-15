@@ -40,13 +40,13 @@ To use Azure Cosmos DB for NoSQL, you need an Azure subscription. The service in
 
 ## Limitations and Considerations
 
-Azure Cosmos DB for NoSQL is optimized for JSON-based, scale-out workloads. When your scenario aligns with a different data model, follow the [Choose an API](https://learn.microsoft.com/azure/cosmos-db/choose-api) migration guide to land on the right service:
+Azure Cosmos DB for NoSQL is optimized for JSON-based, scale-out workloads. When your scenario aligns with a different data model, consider this guidance to land on the right service:
 
-- [Azure DocumentDB](https://learn.microsoft.com/azure/documentdb/overview) when you need MongoDB aggregation pipelines, multi-document transactions, or multicloud portability without refactoring drivers.
-- [Azure Managed Instance for Apache Cassandra](https://learn.microsoft.com/azure/managed-instance-apache-cassandra/introduction) when you require unchanged Cassandra Query Language (CQL) workloads with full Cassandra node-level control.
+- [Azure DocumentDB](../../documentdb/overview.md) when you need MongoDB aggregation pipelines, multi-document transactions, or multicloud portability without refactoring drivers.
+- [Azure Managed Instance for Apache Cassandra](../../managed-instance-apache-cassandra/introduction.md) when you require unchanged Cassandra Query Language (CQL) workloads with full Cassandra node-level control.
 - [Cosmos AIGraph (OmniRAG)](https://github.com/AzureCosmosDB/CosmosAIGraph) when your graph workload centers on Retrieval Augmented Generation (RAG) or AI-driven traversals that combine knowledge graphs with vector/hybrid search.
-- [Graph in Microsoft Fabric](https://learn.microsoft.com/fabric/graph/overview) when you need analytical graph processing, BI integrations, or GQL-compliant workloads operating inside OneLake.
-- [Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/) when you require a relational engine with SQL joins, stored procedures, or scale-up transactional semantics.
+- [Graph in Microsoft Fabric](/fabric/graph/overview) when you need analytical graph processing, BI integrations, or GQL-compliant workloads operating inside OneLake.
+- [Azure Database for PostgreSQL](../../postgresql/index.yml) when you require a relational engine with SQL joins, stored procedures, or scale-up transactional semantics.
 
 Because the API for NoSQL uses a request unit (RU/s) cost model, estimate and monitor throughput to optimize spending for your workload.
 
@@ -64,12 +64,12 @@ Azure DocumentDB (vCore) is optimized for scale-up scenarios that prioritize ric
 | Global distribution | Turnkey multi-region with automatic failover | Regional deployment with optional geo-replicas |
 | Cost model | Variable RU-based or serverless | Predictable compute + storage |
 
-For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](https://learn.microsoft.com/azure/documentdb/compare-cosmos-db?context=/azure/cosmos-db/nosql/context/context).
+For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](../../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/nosql/context/context).
 
 ## Related content
 
-- [Get started developing solutions](https://learn.microsoft.com/azure/cosmos-db/nosql/quickstart-python)
-- [Learn about global distribution](https://learn.microsoft.com/azure/cosmos-db/distribute-data-globally?context=/azure/cosmos-db/nosql/context/context)
-- [Explore the JSON resource model](https://learn.microsoft.com/azure/cosmos-db/resource-model?context=/azure/cosmos-db/nosql/context/context)
-- [Design for high availability](https://learn.microsoft.com/azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context)
-- [Review the NoSQL query language](https://learn.microsoft.com/azure/cosmos-db/query)
+- [Get started developing solutions](quickstart-python.md)
+- [Learn about global distribution](../distribute-data-globally.md)
+- [Explore the JSON resource model](../resource-model.md)
+- [Design for high availability](/azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context)
+- [Review the NoSQL query language](/cosmos-db/query?context=/azure/cosmos-db/context/context)

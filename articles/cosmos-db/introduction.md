@@ -146,7 +146,7 @@ Azure DocumentDB is also a good fit for multicloud portability scenarios. It's i
 | Query focus | Optimized for point reads & distributed queries | Advanced aggregation pipelines & complex joins |
 | Cost model | Variable RU-based or serverless consumption | Predictable compute + storage |
 
-For more detailed decision guidance, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](https://learn.microsoft.com/azure/documentdb/compare-cosmos-db?context=/azure/cosmos-db/nosql/context/context).
+For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](../../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/nosql/context/context).
 
 > [!TIP]
 > In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, (2) PostgreSQL ecosystem alignment, or (3) multicloud portability using MongoDB-compatible drivers and tooling without refactoring.
@@ -154,5 +154,5 @@ For more detailed decision guidance, see [Azure DocumentDB vs. Azure Cosmos DB d
 ## Related content
 
 - [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
-- [Get started with Azure DocumentDB](https://learn.microsoft.com/azure/documentdb/overview)
+- [Get started with Azure DocumentDB](../documentdb/overview.md)
  
