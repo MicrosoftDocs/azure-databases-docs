@@ -295,7 +295,7 @@
               displayName: request units, RUs, RU, collection levels
               items:
                 - name: Distribute throughput across partitions overview
-                  href: distribute-throughput-across-partitions.md
+                  href: how-to-redistribute-throughput-across-partitions.md
                 - name: Distribute throughput across partitions FAQ
                   href: distribute-throughput-across-partitions-faq.yml
             - name: Estimate RU/s with capacity planner
@@ -325,7 +325,7 @@
           displayName: request units, RUs, RU, collection levels
           items:
             - name: Distribute throughput across partitions overview
-              href: distribute-throughput-across-partitions.md
+              href: how-to-redistribute-throughput-across-partitions.md
             - name: Distribute throughput across partitions FAQ
               href: distribute-throughput-across-partitions-faq.yml
         - name: Priority-based execution (preview)
@@ -556,7 +556,7 @@
         - name: Spark Connector
           items:
             - name: Spark 3.x online transaction processing (OLTP) connector
-              href: sdk-java-spark-v3.md
+              href: tutorial-spark-connector.md
             - name: Use a service principal with the OLTP Spark 3 connector
               href: how-to-spark-service-principal.md
             - name: Throughput control
@@ -771,9 +771,6 @@
       href: how-to-change-capacity-mode.md
     - name: Containers and items
       items:
-        - name: Getting started with SQL query
-          displayName: sql query, query basics
-          href: query/getting-started.md
         - name: Indexing overview
           displayName: range, spatial
           href: index-overview.md?context=/azure/cosmos-db/context/context
