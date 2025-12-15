@@ -1,8 +1,8 @@
 ---
 title: Enable and manage public access in Azure DocumentDB
 description: Enable public access and manage public access settings for an Azure DocumentDB cluster.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: how-to
 ms.date: 01/06/2025
 #Customer Intent: As a database adminstrator, I want to configure public access, so that I can connect to Azure DocumentDB cluster using public IP address.

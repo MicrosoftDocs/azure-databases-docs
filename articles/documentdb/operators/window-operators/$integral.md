@@ -3,7 +3,7 @@ title: $integral
 description: The $integral operator calculates the area under a curve with the specified range of documents forming the adjacent documents for the calculation.
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2025
 ---
 

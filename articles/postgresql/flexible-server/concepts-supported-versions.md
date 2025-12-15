@@ -4,12 +4,10 @@ description: Describes the supported major and minor versions of PostgreSQL in A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 12/8/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
-ms.custom:
-  - ignite-2023
 ---
 
 # Supported versions of PostgreSQL in Azure Database for PostgreSQL 
@@ -18,14 +16,11 @@ Azure Database for PostgreSQL currently supports the following major versions.
 
 ## PostgreSQL version 18
 
-PostgreSQL 18 is now available on Azure Database for PostgreSQL flexible server. For a list of new features and improvements, refer to the [PostgreSQL 18 release notes](https://www.postgresql.org/docs/18/release-18.html).
+The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-version-18.md)]**. Refer to the [!INCLUDE [minor-versions-docs-18](includes/minor-version-docs-18.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
 
-### PostgreSQL 18 limitations
+### Limitations
 
-- Microsoft Entra ID authentication is not supported in this release.  
-- Extension availability is limited. Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](./concepts-extensions.md) for details.  
-- Query store and index tuning aren’t supported in this release.
-- Regional availability is currently restricted to East Asia.
+- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](./concepts-extensions.md) for details.
 - Can't configure server to use new Async I/O `io_method = io_uring`.
 
 ## PostgreSQL version 17
@@ -44,17 +39,17 @@ The current minor release is **[!INCLUDE [minor-versions-15](includes/minor-vers
 
 The current minor release is **[!INCLUDE [minor-versions-14](includes/minor-version-14.md)]**. Refer to the [!INCLUDE [minor-versions-docs-14](includes/minor-version-docs-14.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
 
-## PostgreSQL version 13
+## PostgreSQL version 13 (Extended Support)
 
 The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-version-13.md)]**. Refer to the [!INCLUDE [minor-versions-docs-13](includes/minor-version-docs-13.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
-## PostgreSQL version 12 (retired)
+## PostgreSQL version 12 (Extended Support)
 
-The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-12-support) regarding the end-of-life.
+The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release.
 
-## PostgreSQL version 11 (extended support)
+## PostgreSQL version 11 (Extended Support)
 
-The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release. Refer to the [versioning policy](./concepts-version-policy.md#postgresql-11-support) regarding the extended support.
+The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release.
 
 ## PostgreSQL version 10 and older
 

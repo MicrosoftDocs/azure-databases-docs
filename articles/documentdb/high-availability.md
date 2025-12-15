@@ -1,8 +1,8 @@
 ---
 title: High availability in Azure DocumentDB 
 description: Learn about availability (HA) of Azure DocumentDB clusters.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 08/20/2024
 ---

@@ -78,13 +78,16 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 
 ## Security and networking
 
-When using the schema conversion feature, ensure that your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance used as the scratch database.
+When you use the schema conversion feature, make sure your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance that you use as the scratch database.
+
+Microsoft recommends connecting to an Azure OpenAI resource by using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-foundry/openai/how-to/network).
 
 For more information on securing your Azure OpenAI connections, visit [Data, privacy, and security for Azure Direct Models in Azure AI Foundry](/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal).
 
-You can also connect to an Azure OpenAI resource using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-foundry/openai/how-to/network).
-
 :::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint.":::
+
+> [!IMPORTANT]
+> Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Azure AI Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Azure AI Foundry](/azure/ai-foundry/concepts/content-filtering).
 
 ## Why use the schema conversion feature?
 

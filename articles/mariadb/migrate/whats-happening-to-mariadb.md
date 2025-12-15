@@ -4,7 +4,7 @@ description: The Azure Database for MariaDB service is being deprecated.
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 1/24/2024
+ms.date: 12/08/2025
 ms.service: azure-database-mariadb
 ms.topic: overview
 ms.custom: deprecation announcement

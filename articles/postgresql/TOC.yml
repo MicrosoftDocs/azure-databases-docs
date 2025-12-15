@@ -405,6 +405,8 @@
           items:
             - name: Audit logs
               href: flexible-server/security-audit.md
+            - name: Audit logs with Microsoft Entra ID
+              href: flexible-server/security-audit-entra.md
             - name: Logs
               href: flexible-server/concepts-logging.md
             - name: Microsoft Defender for Cloud - OSS Databases
@@ -419,7 +421,7 @@
           href: flexible-server/generative-ai-overview.md
         - name: AI Agents
           href: flexible-server/generative-ai-agents.md
-        - name: AI Foundry Integration
+        - name: Microsoft Foundry Integration
           href: flexible-server/generative-ai-foundry-integration.md
         - name: Vector Databases
           items:

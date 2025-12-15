@@ -1,8 +1,8 @@
 ---
 title: $median
 description: The $median operator calculates the median value of a numeric field in a group of documents.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: reference
 ms.date: 09/05/2025
 ---

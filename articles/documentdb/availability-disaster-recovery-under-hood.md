@@ -1,8 +1,8 @@
 ---
 title: Availability and disaster recovery (DR) under the hood
 description: Learn about Azure DocumentDB availability and disaster recovery internals.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 09/09/2025
 #Customer Intent: As a database adminstrator, I want to configure availability and cross-region replication, so that I can have appropirtiate in-region and cross-region disaster recovery plans in the event of outages on different levels.
