@@ -38,11 +38,36 @@ The Azure Cosmos DB serverless option best fits scenarios in which you expect *i
 
 For more information, see [How to choose between provisioned throughput and serverless](throughput-serverless.md).
 
+### Best practices for multi-tenant applications
+
+When designing multi-tenant applications on Azure Cosmos DB, two isolation models are recommended:
+
+#### Partition key per tenant
+In this model, each tenant is represented as a logical partition key within a container. This approach:
+- Scales efficiently as the number of tenants increases
+- Reduces per-tenant cost by sharing throughput and storage
+- Works well for business-to-consumer (B2C) applications with many smaller tenants
+
+For more information, see the [partition-key-per-tenant](https://aka.ms/CosmosMultitenancy#partition-key-per-tenant-model) model.
+
+#### Database account per tenant
+In this model, each tenant has a dedicated Azure Cosmos DB account. This approach:
+- Provides strong isolation boundaries
+- Allows per-tenant settings such as regional configuration, customer-managed keys, and point-in-time restore
+- Works well for business-to-business (B2B) applications that require differentiated configurations
+
+For more information, see the [database-account-per-tenant](https://aka.ms/CosmosMultitenancy#database-account-per-tenant-model) model.
+
+> [!Note]
+Avoid designing multi-tenant applications with a container-per-tenant or database-per-tenant approach. These patterns can introduce [scalability challenges](concepts-limits.md#serverless-1) as your customer base grows. Instead, use one of the recommended models above to ensure predictable performance and cost efficiency.
+
+For a detailed walkthrough, see [Multi tenancy in Azure Cosmos DB](https://aka.ms/CosmosMultitenancy).
+
 ## Use serverless resources
 
 Azure Cosmos DB serverless is a new account type in Azure Cosmos DB. When you create an Azure Cosmos DB account, you choose between *provisioned throughput* and *serverless* options.
 
-To get started with using the serverless model, you must create a new serverless account. Migrating an existing account to or from the serverless model currently isn't supported.
+To get started with using the serverless model, you must create a new serverless account.
 
 Any container that's created in a serverless account is a serverless container. Serverless containers have the same capabilities as containers that are created in a provisioned throughput account type. You read, write, and query your data exactly the same way. But a serverless account and a serverless container also have other specific characteristics:
 
@@ -72,3 +97,4 @@ Azure Cosmos DB serverless extends high availability support with availability z
 - [Azure Cosmos DB serverless account performance](serverless-performance.md)
 - [How to choose between provisioned throughput and serverless](throughput-serverless.md)
 - [Pricing model in Azure Cosmos DB](how-pricing-works.md)
+- [Multi tenancy in Azure Cosmos DB](https://aka.ms/CosmosMultitenancy)
