@@ -6,7 +6,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 04/03/2024
+ms.date: 12/15/2025
 adobe-target: true
 ms.collection:
   - ce-skilling-ai-copilot
