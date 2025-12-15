@@ -1,8 +1,8 @@
 ---
 title: $percentile
 description: The $percentile operator calculates the percentile of numerical values that match a filtering criteria
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: reference
 ms.date: 09/05/2025
 ---

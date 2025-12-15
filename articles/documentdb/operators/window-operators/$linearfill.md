@@ -1,8 +1,8 @@
 ---
 title: $linearFill
 description: The $linearFill operator interpolates missing values in a sequence of documents using linear interpolation.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: reference
 ms.date: 06/28/2025
 ---

@@ -1,8 +1,8 @@
 --- 
 title: $dateDiff
 description: The $dateDiff operator calculates the difference between two dates in various units such as years, months, days, etc.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: language-reference
 ms.date: 09/05/2025
 ---
