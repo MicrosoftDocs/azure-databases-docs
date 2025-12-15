@@ -7956,11 +7956,6 @@
       "redirect_document_id": true
     },
     {
-      "source_path_from_root": "/articles/cosmos-db/vector-search.md",
-      "redirect_url": "/azure/cosmos-db/vector-database",
-      "redirect_document_id": false
-    },
-    {
       "source_path_from_root": "/articles/cosmos-db/vnet-service-endpoint.md",
       "redirect_url": "/azure/cosmos-db/how-to-configure-vnet-service-endpoint",
       "redirect_document_id": false
