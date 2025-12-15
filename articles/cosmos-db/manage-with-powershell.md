@@ -782,7 +782,7 @@ Remove-AzResourceLock `
 
 [powershell-install-configure]: /powershell/azure/
 [scaling-globally]: distribute-data-globally.md
-[distribute-data-globally]: .distribute-data-globally.md
+[distribute-data-globally]: distribute-data-globally.md
 [azure-resource-groups]: ../../azure-resource-manager/management/overview.md#resource-groups
 [azure-resource-tags]: /azure/azure-resource-manager/management/tag-resources
 [rp-rest-api]: /rest/api/cosmos-db-resource-provider/
