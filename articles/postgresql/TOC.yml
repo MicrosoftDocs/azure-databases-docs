@@ -405,6 +405,8 @@
           items:
             - name: Audit logs
               href: flexible-server/security-audit.md
+            - name: Audit logs with Microsoft Entra ID
+              href: flexible-server/security-audit-entra.md
             - name: Logs
               href: flexible-server/concepts-logging.md
             - name: Microsoft Defender for Cloud - OSS Databases

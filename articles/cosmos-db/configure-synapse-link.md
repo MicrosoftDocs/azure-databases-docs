@@ -89,7 +89,7 @@ Use `EnableAnalyticalStorage true` for both **create** or **update** operations.
 
 #### Azure Resource Manager template
 
-This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
+This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-db-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
 
 ## <a id="update-analytical-ttl"></a> Enable Azure Synapse Link for your containers
 

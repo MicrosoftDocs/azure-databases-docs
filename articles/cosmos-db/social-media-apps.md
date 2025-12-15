@@ -135,7 +135,7 @@ To solve this problem, you can use a mixed approach. As part of the User Statist
 }
 ```
 
-You can store the actual graph of followers using Azure Cosmos DB [API for Gremlin](../cosmos-db/introduction.md) to create [vertexes](http://mathworld.wolfram.com/GraphVertex.html) for each user and [edges](http://mathworld.wolfram.com/GraphEdge.html) that maintain the "A-follows-B" relationships. With the API for Gremlin, you can get the followers of a certain user and create more complex queries to suggest people in common. If you add to the graph the Content Categories that people like or enjoy, you can start weaving experiences that include smart content discovery, suggesting content that those people you follow like, or finding people that you might have much in common with.
+You can store the actual graph of followers using Azure Cosmos DB [API for Gremlin](gremlin/overview.md) to create [vertexes](http://mathworld.wolfram.com/GraphVertex.html) for each user and [edges](http://mathworld.wolfram.com/GraphEdge.html) that maintain the "A-follows-B" relationships. With the API for Gremlin, you can get the followers of a certain user and create more complex queries to suggest people in common. If you add to the graph the Content Categories that people like or enjoy, you can start weaving experiences that include smart content discovery, suggesting content that those people you follow like, or finding people that you might have much in common with.
 
 The User Statistics document can still be used to create cards in the UI or quick profile previews.
 

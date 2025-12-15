@@ -1,8 +1,8 @@
 ---
 title: DNS names and connection strings - Azure Cosmos DB for PostgreSQL
 description: Connection strings and DNS names for the nodes.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article

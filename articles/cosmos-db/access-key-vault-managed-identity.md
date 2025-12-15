@@ -25,7 +25,7 @@ Azure Cosmos DB may need to read secret/key data from Azure Key Vault. For examp
 
 ## Prerequisite check
 
-1. In a terminal or command window, store the names of your Azure Key Vault resource, Azure Cosmos DB account and resource group as shell variables named ``keyVaultName``, ``cosmosName``, and ``resourceGroupName``.
+1. In a terminal or command window, store the names of your Azure Key Vault resource, Azure Cosmos DB account, and resource group as shell variables named ``keyVaultName``, ``cosmosName``, and ``resourceGroupName``.
 
     ```azurecli-interactive
     # Variable for function app name
@@ -39,7 +39,7 @@ Azure Cosmos DB may need to read secret/key data from Azure Key Vault. For examp
     ```
 
     > [!NOTE]
-    > These variables will be re-used in later steps. This example assumes your Azure Cosmos DB account name is ``msdocs-cosmos-app``, your key vault name is ``msdocs-keyvault`` and your resource group name is ``msdocs-cosmos-keyvault-identity``.
+    > These variables will be reused in later steps. This example assumes your Azure Cosmos DB account name is ``msdocs-cosmos-app``, your key vault name is ``msdocs-keyvault`` and your resource group name is ``msdocs-cosmos-keyvault-identity``.
 
 
 ## Create a system-assigned managed identity in Azure Cosmos DB
@@ -72,7 +72,7 @@ First, create a system-assigned managed identity for the existing Azure Cosmos D
     ```
 
     > [!NOTE]
-    > This variable will be re-used in a later step.
+    > This variable will be reused in a later step.
 
 ## Create an Azure Key Vault access policy
 

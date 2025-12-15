@@ -3,7 +3,7 @@ title: $expMovingAvg
 description: The $expMovingAvg operator calculates the moving average of a field based on the specified number of documents to hold the highest weight
 author: abinav2307
 ms.author: abramees
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 05/19/2025
 ---
 

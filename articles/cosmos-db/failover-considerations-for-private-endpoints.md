@@ -3,7 +3,7 @@ title: Failover considerations for private endpoints
 description: Learn about failover considerations when using private endpoints with Azure Cosmos DB.
 author: sushantrane
 ms.service: azure-cosmos-db
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 06/04/2025
 ms.author: srane
 ---
