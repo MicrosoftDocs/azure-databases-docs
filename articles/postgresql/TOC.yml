@@ -69,7 +69,7 @@
         - name: Microsoft Fabric
           items:
             - name: Fabric mirroring
-              href: configure-maintain/concepts-fabric-mirroring.md
+              href: integration/concepts-fabric-mirroring.md
             - name: Copy activity
               href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
             - name: Script activity

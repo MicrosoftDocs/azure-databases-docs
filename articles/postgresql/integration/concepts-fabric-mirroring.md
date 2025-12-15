@@ -20,7 +20,7 @@ ms.topic: concept-article
 
 ## Architecture
 
-Fabric mirroring in Azure Database for PostgreSQL is built on concepts like [logical replication](concepts-logical.md) and Change Data Capture (CDC) design pattern.
+Fabric mirroring in Azure Database for PostgreSQL is built on concepts like [logical replication](../configure-maintain/concepts-logical.md) and Change Data Capture (CDC) design pattern.
 
 Once you establish Fabric mirroring for a database in an Azure Database for PostgreSQL flexible server instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored. It ships the snapshot to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
 
