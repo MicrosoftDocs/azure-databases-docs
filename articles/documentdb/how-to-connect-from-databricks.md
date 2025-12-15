@@ -1,8 +1,8 @@
 ---
 title: Connect from Azure Databricks
 description: Learn how to connect to Azure DocumentDB from Azure Databricks using Python and Spark. Perform read, write, filter, and aggregation operations. Start building today.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: how-to
 ms.date: 11/05/2025
 ms.custom:

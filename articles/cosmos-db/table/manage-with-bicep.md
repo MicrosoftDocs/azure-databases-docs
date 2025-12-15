@@ -27,7 +27,7 @@ This article has examples for API for Table accounts only. You can also find Bic
 To create any of the Azure Cosmos DB resources below, copy the following example into a new bicep file. You can optionally create a parameters file to use when deploying multiple instances of the same resource with different names and values. There are many ways to deploy Azure Resource Manager templates including, [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli), [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell) and [Cloud Shell](/azure/azure-resource-manager/bicep/deploy-cloud-shell).
 
 > [!TIP]
-> Enabling account-level throughput cannot be done using ARM templates or Bicep. To enable shared throughput when using API for Table, use [Azure CLI](/cli/azure/cosmosdb/table/throughput?view=azure-cli-latest#az-cosmosdb-table-throughput-migrate) or [PowerShell](/powershell/module/az.cosmosdb/invoke-azcosmosdbtablethroughputmigration).
+> Enabling account-level throughput cannot be done using ARM templates or Bicep. To enable shared throughput when using API for Table, use [Azure CLI](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) or [PowerShell](/powershell/module/az.cosmosdb/invoke-azcosmosdbtablethroughputmigration).
 
 <a id="create-autoscale"></a>
 

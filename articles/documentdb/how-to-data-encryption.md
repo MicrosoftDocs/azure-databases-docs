@@ -1,8 +1,8 @@
 ---
 title: Configure encryption at rest with customer-managed key in Azure DocumentDB
 description: Learn how to configure encryption of data in Azure DocumentDB databases using service-managed and customer-managed encryption keys.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: how-to
 ms.date: 10/13/2025
 ---
