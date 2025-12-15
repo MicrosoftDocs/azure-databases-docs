@@ -7,8 +7,6 @@
       href: introduction.md
     - name: FAQ
       href: faq.yml
-    - name: Choose an API
-      href: choose-api.md
     - name: Overview
       href: overview.md
     - name: Understand distributed NoSQL
