@@ -372,7 +372,7 @@ Although the change feed processor can run in short-lived environments because t
 
 ## Role-based access requirements
 
-When using Microsoft Entra ID as authentication mechanism, make sure the identity has the proper [permissions](security/reference-data-plane-actions.md):
+When using Microsoft Entra ID as authentication mechanism, make sure the identity has the proper [permissions](reference-data-plane-security.md#built-in-actions):
 
 * On the monitored container:
   * `Microsoft.DocumentDB/databaseAccounts/readMetadata`
