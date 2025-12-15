@@ -165,7 +165,7 @@ If it's still slow, different patterns point to different problems. The followin
 For multiple store results for a single request, be aware of the following:
 
 * Strong consistency and bounded staleness consistency always have at least two store results.
-* Check the status code of each `StoreResult`. The SDK retries automatically on multiple different [transient failures](troubleshoot-dotnet-sdk-request-timeout.md). The SDK is constantly improved to cover more scenarios. 
+* Check the status code of each `StoreResult`. The SDK retries automatically on multiple different [transient failures](troubleshoot-dotnet-sdk-request-time-out.md). The SDK is constantly improved to cover more scenarios. 
 
 ### RequestTimeline
 
