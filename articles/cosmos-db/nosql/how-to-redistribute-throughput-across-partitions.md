@@ -1,7 +1,7 @@
 ---
-title: Redistribute throughput across partitions
-titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn how to redistribute throughput across partitions in Azure Cosmos DB for NoSQL to optimize performance. To improve partition performance, follow these step-by-step instructions and best practices.
+title: Redistribute Throughput Across Partitions (Preview)
+titleSuffix: Azure Cosmos DB
+description: Learn how to redistribute throughput across partitions in Azure Cosmos DB to optimize performance. To improve partition performance, follow these step-by-step instructions and best practices.
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
@@ -11,20 +11,20 @@ ms.date: 09/09/2025
 zone_pivot_groups: azure-scripting-languages
 applies-to:
   - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
-# Redistribute throughput across partitions in Azure Cosmos DB for NoSQL
+# Redistribute throughput across partitions in Azure Cosmos DB (preview)
 
-By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. You can also increase RU/s on a partition to max of **10,000 RU/s**. In scenarios where the hot partition has reached its max RU/s limit you can also split the partition. This feature is available for databases and containers using provisioned throughput (manual or autoscale) and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
+By default, Azure Cosmos DB spreads provisioned throughput evenly across all physical partitions. However, if your workload is skewed—such as when certain partitions consistently need more throughput due to hot keys or uneven traffic—you can redistribute throughput to optimize performance. You can also increase RU/s on a partition to max of **10,000 RU/s**. In scenarios where the hot partition reaches its max RU/s limit you can also split the partition. This feature is available for databases and containers using provisioned throughput (manual or autoscale) and can be managed using Azure Cosmos DB PowerShell or Azure CLI commands.
 
-For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance. You can perform this with or without increasing overall throughput.
-
-<a id="single-hot-partition-key-note"></a>
-> [!NOTE]
-> Note that splitting a hot partition that has a single hot partition key will not improve performance. Even after a split, all data with that same partition key will be on the same physical partition. As a result, the maximum RU/s that you can configure for it is still 10,000 RU/s. See query below to determine if there is a single hot partition key in the physical partition.
+For example, if you partition data by `StoreId` in a retail application, some stores could have higher activity than others. If you notice frequent rate limiting (429 errors) for those busy stores, redistributing throughput allows you to allocate more resources to the hot partitions, improving performance. You can perform this operation with or without increasing overall throughput.
 
 > [!NOTE]
-> Currently, by default, throughput policies are set to "Equal." After redistributing throughput or assigning custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level will be blocked. This is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
+> Splitting a hot partition that has a single hot partition key doesn't improve performance. Even after a split, all data with that same partition key will be on the same physical partition. As a result, the maximum RU/s that you can configure for it's still 10,000 RU/s. See this query to determine if there's a single hot partition key in the physical partition.
+
+> [!NOTE]
+> Currently, by default, throughput policies are set to "Equal." After you redistribute throughput or assign custom throughput to a physical partition using this feature, the policy will now be set to "Custom." This means you can only change your throughput (RU/s) settings using this API. Changing throughput at the container or shared throughput database level is blocked. This limitation is by design, to ensure that custom RU/s per partitions are preserved. To re-enable to ability to change container or shared throughput database level, change the throughput policy back to "Equal."
 
 ## Prerequisites
 
@@ -81,7 +81,7 @@ To identify hot partitions in Azure Cosmos DB using Azure Monitor metrics, exami
 
 ## Identify hot partitions using diagnostic logs
 
-Use the information from **CDBPartitionKeyRUConsumption** in the account's diagnostic logs to learn which logical partition keys and physical partitions consume the most RU/s at a second-level granularity. To use this please ensure Diagnostic Logs are enabled for PartitionKeyRUConsumption.
+Learn which logical partition keys and physical partitions consume the most RU/s at a second-level granularity using the information from **`CDBPartitionKeyRUConsumption`** in the account's diagnostic logs. To use this feature, ensure **Diagnostic Logs** are enabled for `PartitionKeyRUConsumption`.
 
 1. Navigate to the **Diagnostic Logs** section for the Azure Cosmos DB account.
 
@@ -122,8 +122,10 @@ Use the information from **CDBPartitionKeyRUConsumption** in the account's diagn
     | project Hour = TimeGenerated, PartitionKey, RU_Usage, TotalRU_PerHour, RU_Percentage
     | order by Hour asc, RU_Percentage desc
     ```
-    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image.png" alt-text="Data rows of partition keys with most RU/s per hour":::
-    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/image1.png" alt-text="Chart of partition keys with most RU/s per hour":::
+    
+    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/request-unit-usage-table.png" lightbox="media/how-to-redistribute-throughput-across-partitions/request-unit-usage-table.png" alt-text="Screenshot of data rows of partition keys with most RU/s per hour.":::
+    
+    :::image type="content" source="media/how-to-redistribute-throughput-across-partitions/request-unit-percentage-chart.png" lightbox="media/how-to-redistribute-throughput-across-partitions/request-unit-percentage-chart.png" alt-text="Screenshot of chart of partition keys with most RU/s per hour.":::
 
 > These sample queries use 24 hours for illustration, but it's best to use at least seven days of history to see usage patterns.
 
@@ -135,7 +137,7 @@ To check the current RU/s for each physical partition, use the Azure Monitor met
 
 ### [API for NoSQL](#tab/nosql)
 
-Read the current RU/s on each physical partition by using [`az cosmosdb sql container retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-retrieve-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
+Read the current RU/s on each physical partition by using [`az cosmosdb sql container retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-retrieve-partition-throughput). There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 // Container with dedicated RU/s - some partitions
@@ -157,7 +159,7 @@ az cosmosdb sql container retrieve-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Read the current RU/s on each physical partition by using [`az cosmosdb mongodb collection retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-mongodb-collection-retrieve-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
+Read the current RU/s on each physical partition by using [`az cosmosdb mongodb collection retrieve-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-mongodb-collection-retrieve-partition-throughput). There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 // Collection with dedicated RU/s - some partitions
@@ -298,7 +300,7 @@ Keep in mind the following points before setting throughput on your target parti
     
 - If the final sum of throughput across all partitions isn't equal to the current sum of throughput across all partitions, then this operation updates the total throughput settings accordingly.
 
-  - For example, suppose your container has 10,000 RU/s and 2 physical partitions P1 and P2, each with 5000 RU/s. If you assign 20,000 RU/s to P1, the new total throughput of the container will be 25,000 RU/s.
+  - For example, suppose your container has 10,000 RU/s and two physical partitions P1 and P2, each with 5000 RU/s. If you assign 20,000 RU/s to P1, the new total throughput of the container is 25,000 RU/s.
     
 The right approach depends on your workload requirements. General approaches include:
 
@@ -306,7 +308,7 @@ The right approach depends on your workload requirements. General approaches inc
 
   - If you aren't sure about the right percentage, start with 10% to be conservative.
   
-  - If you know this physical partition needs most of the throughput, start by adjusting the RU/s. Double the RU/s or increase them to the maximum of 10,000 RU/s, whichever is lower. If 10,000 RU/s is not sufficient, and you don't have only one hot key in the partition, you can split the partition by setting up to 20,000 RU/s.
+  - If you know this physical partition needs most of the throughput, start by adjusting the RU/s. Double the RU/s or increase them to the maximum of 10,000 RU/s, whichever is lower. If 10,000 RU/s isn't sufficient, and you don't have only one hot key in the partition, you can split the partition by setting up to 20,000 RU/s.
     
 - Increase the RU/s to `Total consumed RU/s of the physical partition + (Number of 429 responses per second * Average RU charge per request to the partition)`.
 
@@ -322,8 +324,9 @@ Let's look at an example with a container that has 6,000 RU/s total (either 6,00
 | 1 | 3,000 | 20,000  |
 
 After the redistribution, the total throughput across all partitions will be updated from 6,000 RU/s to 25,000 RU/s with throughput distribution:
+
 | Physical Partition | Current RU/s |
-| -- | -- |
+| --- | --- |
 | 0 | 5,000 |
 | 2 | 10,000 |
 | 3 | 10,000 |
@@ -333,7 +336,7 @@ After the redistribution, the total throughput across all partitions will be upd
 
 ### [API for NoSQL](#tab/nosql)
 
-Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
+Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput). There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb sql container redistribute-partition-throughput \
@@ -346,7 +349,7 @@ az cosmosdb sql container redistribute-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput). There is currently no shared throughput equivalent for this CLI command.
+Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput). There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb mongodb collection redistribute-partition-throughput \
@@ -436,13 +439,13 @@ Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput @dbParams
 After you finish redistributing throughput, check the **PhysicalPartitionThroughput** metric in Azure Monitor. Split by the **PhysicalPartitionId** dimension to see how many RU/s each physical partition has. If needed, reset the RU/s per physical partition to evenly distribute throughput across all physical partitions.
 
 > [!IMPORTANT]
-> After throughput has been redistributed, throughput settings can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the command below.
+> After throughput is redistributed, throughput settings can only be changed with the same redistribute command. To evenly distribute throughput across all partitions, use the `az cosmosdb sql container redistribute-partition-throughput` command.
 
 ::: zone pivot="azure-cli"
 
 ### [API for NoSQL](#tab/nosql)
 
-Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There is currently no shared throughput equivalent for this CLI command.
+Update the RU/s on each physical partition by using [`az cosmosdb sql container redistribute-partition-throughput`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb sql container redistribute-partition-throughput \
@@ -455,7 +458,7 @@ az cosmosdb sql container redistribute-partition-throughput \
 
 ### [API for MongoDB](#tab/mongodb)
 
-Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There is currently no shared throughput equivalent for this CLI command.
+Update the RU/s on each physical partition by using [`az cosmosdb mongodb collection redistribute-partition-throughput`](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-redistribute-partition-throughput) with the parameter `--evenly-distribute`. There's no shared throughput equivalent for this CLI command.
 
 ```azurecli-interactive
 az cosmosdb mongodb collection redistribute-partition-throughput \
@@ -545,9 +548,9 @@ After you finish redistributing throughput, verify and monitor your RU/s consump
 
 ## Limitations
 
-While this feature is in preview, your Azure Cosmos DB account must meet all the following criteria:
+To use this preview feature, your Azure Cosmos DB account must meet all the following criteria:
 
-- You have an Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB account.
+- You must have an Azure Cosmos DB for NoSQL or Azure Cosmos DB for MongoDB account.
 
 - If you're using API for MongoDB, the version must be greater than or equal to 3.6.
     
