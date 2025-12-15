@@ -159,4 +159,4 @@ To learn about best practices for managing workloads that have partition keys re
 * How to [create alerts for Azure Cosmos DB using Azure Monitor](create-alerts.md).
 * How to [monitor normalized RU/s metric](monitor-normalized-request-units.md) in Azure Cosmos DB container.
 * How to [monitor throughput or request unit usage](monitor-request-unit-usage.md) of an operation in Azure Cosmos DB.
-* How to [interpret and debut 429 exceptions](sql/troubleshoot-request-rate-too-large.md) in Azure Cosmos DB container.
+* How to [interpret and debut 429 exceptions](troubleshoot-request-rate-too-large.md) in Azure Cosmos DB container.

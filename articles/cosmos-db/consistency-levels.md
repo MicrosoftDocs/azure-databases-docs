@@ -155,7 +155,7 @@ In practice, you might often get stronger consistency guarantees. Consistency gu
 
 If there are no write operations on the database, a read operation with **eventual**, **session**, or **consistent prefix** consistency levels might yield the same results as a read operation with the strong consistency level.
 
-If your account is configured with a consistency level other than the strong consistency, you can find out the probability that your clients might get strong and consistent reads for your workloads. Figure out this probability by looking at the *Probabilistically Bounded Staleness (PBS)* metric. This metric is exposed in the Azure portal. For more information, see [Monitor Probabilistically Bounded Staleness (PBS) metric](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-pbs-metric).
+If your account is configured with a consistency level other than the strong consistency, you can find out the probability that your clients might get strong and consistent reads for your workloads. Figure out this probability by looking at the *Probabilistically Bounded Staleness (PBS)* metric. This metric is exposed in the Azure portal. For more information, see [Monitor Probabilistically Bounded Staleness (PBS) metric](how-to-manage-consistency.md#monitor-probabilistically-bounded-staleness-metric).
 
 Probabilistically bounded staleness shows how eventual your eventual consistency is. This metric provides insight into how often you get stronger consistency than the consistency level currently configured on your Azure Cosmos DB account. In other words, you can see the probability (measured in milliseconds) of getting consistent reads for a combination of write and read regions.
 

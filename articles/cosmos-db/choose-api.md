@@ -114,7 +114,7 @@ Applications written for Azure Table storage can migrate to the API for Table wi
 Trying to do capacity planning for a migration to Azure Cosmos DB for NoSQL or MongoDB from an existing database cluster? You can use information about your existing database cluster for capacity planning.
 
 - For more information about estimating request units if all you know is the number of vCores and servers in your existing sharded and replicated database cluster, see [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).
-- For more information about estimating request units if you know typical request rates for your current database workload, see  [capacity planner for API for NoSQL](./sql/estimate-ru-with-capacity-planner.md) and [API for MongoDB](./mongodb/estimate-ru-capacity-planner.md)
+- For more information about estimating request units if you know typical request rates for your current database workload, see  [capacity planner for API for NoSQL](estimate-ru-with-capacity-planner.md) and [API for MongoDB](./mongodb/estimate-ru-capacity-planner.md)
 
 ## Related content
 
