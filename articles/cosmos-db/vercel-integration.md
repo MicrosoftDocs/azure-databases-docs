@@ -36,7 +36,7 @@ Use this guide if you already know which Vercel projects to integrate or want to
 
 - Vercel Account with Vercel Project – [Learn how to create a new Vercel Project](https://vercel.com/docs/concepts/projects/overview#creating-a-project)
 
-- Azure Cosmos DB - [Quickstart: Create an Azure Cosmos DB account](cosmos-db/nosql/quickstart-portal.md) or Create a free [Try Cosmos DB Account](https://aka.ms/trycosmosdbvercel)
+- Azure Cosmos DB - [Quickstart: Create an Azure Cosmos DB account](quickstart-portal.md) or Create a free [Try Cosmos DB Account](https://aka.ms/trycosmosdbvercel)
 
 - Some basic knowledge on Next.js, React, and TypeScript
 
@@ -124,5 +124,5 @@ We have an [Azure Cosmos DB Next.js Starter](https://aka.ms/azurecosmosdb-vercel
 
 ## Next steps
 
-- To learn more about Azure Cosmos DB, see [Welcome to Azure Cosmos DB](cosmos-db/introduction.md).
+- To learn more about Azure Cosmos DB, see [Welcome to Azure Cosmos DB](introduction.md).
 - Create a new [Vercel project](https://vercel.com/dashboard).

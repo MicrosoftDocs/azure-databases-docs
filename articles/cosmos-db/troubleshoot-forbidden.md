@@ -63,7 +63,7 @@ This error means that your current [partitioning design](partitioning-overview.m
 
 ## Nondata operations aren't allowed
 
-This scenario happens when [attempting to perform nondata operations](security/reference-data-plane-actions.md) using Microsoft Entra identities. On this scenario, it's common to see errors like the ones here:
+This scenario happens when [attempting to perform nondata operations](reference-data-plane-security.md#built-in-actions) using Microsoft Entra identities. On this scenario, it's common to see errors like the ones here:
 
 ```output
 Operation 'POST' on resource 'calls' is not allowed through Azure Cosmos DB endpoint

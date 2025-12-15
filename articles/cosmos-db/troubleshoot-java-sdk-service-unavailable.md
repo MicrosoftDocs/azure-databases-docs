@@ -43,7 +43,7 @@ Service unavailable exceptions can surface when there are transient connectivity
 Exception in thread "main" ServiceUnavailableException{userAgent=azsdk-java-cosmos/4.6.0 Linux/4.15.0-1096-azure JRE/11.0.8, error=null, resourceAddress='null', requestUri='null', statusCode=503, message=Service is currently unavailable, please retry after a while. If this problem persists please contact support.: Message: "" {"diagnostics"}
 ```
 
-Follow the [request timeout troubleshooting steps](troubleshoot-java-sdk-request-timeout.md#troubleshooting-steps) to resolve it.
+Follow the [request timeout troubleshooting steps](troubleshoot-java-sdk-request-time-out.md#troubleshooting-steps) to resolve it.
 
 #### UnknownHostException
 UnknownHostException means that the Java framework can't resolve the DNS entry for the Azure Cosmos DB endpoint in the affected machine. You should verify that the machine can resolve the DNS entry or if you have any custom DNS resolution software (such as VPN or Proxy, or a custom solution), make sure it contains the right configuration for the DNS endpoint that the error is claiming can't be resolved. If the error is constant, you can verify the machine's DNS resolution through a `curl` command to the endpoint described in the error.
