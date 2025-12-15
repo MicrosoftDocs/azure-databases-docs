@@ -922,7 +922,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/documentdb-sql-query-cheat-sheet.md",
-      "redirect_url": "/azure/cosmos-db/query-cheat-sheet",
+      "redirect_url": "/azure/cosmos-db/nosql/query-cheat-sheet",
       "redirect_document_id": false
     },
     {
@@ -1497,7 +1497,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/how-to-custom-synchronization.md",
-      "redirect_url": "/azure/cosmos-db/how-to-multi-master",
+      "redirect_url": "/azure/cosmos-db/nosql/how-to-multi-master",
       "redirect_document_id": true
     },
     {
@@ -1632,7 +1632,7 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/manage-account-with-powershell.md",
-      "redirect_url": "/azure/cosmos-db/manage-with-powershell",
+      "redirect_url": "/azure/cosmos-db/nosql/manage-with-powershell",
       "redirect_document_id": true
     },
     {
@@ -8187,17 +8187,17 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/migrate-dotnet-v2.md",
-      "redirect_url": "articles/cosmos-db/nosql/migrate-dotnet-v2.md",
+      "redirect_url": "/azure/cosmos-db/migrate-dotnet-v2",
       "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/migrate-dotnet-v3.md",
-      "redirect_url": "articles/cosmos-db/nosql/migrate-dotnet-v3.md",
+      "redirect_url": "/azure/cosmos-db/migrate-dotnet-v3",
       "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/nosql/migrate-java-v4-sdk.md",
-      "redirect_url": "articles/cosmos-db/nosql/migrate-java-v4-sdk.md",
+      "redirect_url": "/azure/cosmos-db/migrate-java-v4-sdk",
       "redirect_document_id": true
     },
     {
