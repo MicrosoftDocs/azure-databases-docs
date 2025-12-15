@@ -644,7 +644,7 @@ Analytical store partitioning is completely independent of partitioning in�
 * **Authentication with the analytical store** - Supported authentication methods vary based upon whether networking features are enabled.
 
   - *Key-based authentication*: This scenario is supported for all accounts in all scenarios, including those without Private Endpoints or VNet enabled. 
-  - *Service Principal or Managed-Identity*: Using Entra Id or managed-identity authentication is only supported for accounts which do **not** use Private Endpoints or enable Vnet access. To use this type of authentication, users must apply [data plane RBAC](./nosql/how-to-grant-data-plane-access.md) and create a new read only role with these data actions below.
+  - *Service Principal or Managed-Identity*: Using Entra Id or managed-identity authentication is only supported for accounts which do **not** use Private Endpoints or enable Vnet access. To use this type of authentication, users must apply [data plane RBAC](./nosql/how-to-connect-role-based-access-control.md#grant-data-plane-role-based-access) and create a new read only role with these data actions below.
 
     1. Add a custom *MyAnalyticsReadOnlyRole* using PowerShell and map "readMetadata" and "readAnalytics" RBAC actions to the Role.
 

@@ -234,7 +234,7 @@ An Azure Cosmos DB item can represent a document in a collection, a row in a tab
 | Maximum TTL value |2147483647 |
 | Maximum precision/range for numbers in [JSON (to ensure safe interoperability)](https://www.rfc-editor.org/rfc/rfc8259#section-6) | [Institute of Electrical and Electronics Engineers (IEEE) 754 binary64](https://www.rfc-editor.org/rfc/rfc8259#ref-IEEE754) |
 
-¹ Large document sizes up to 16 MB are supported with Azure Cosmos DB for MongoDB only. For more information, see [MongoDB 4.2 feature documentation](../cosmos-db/mongodb/feature-support-42.md#data-types).
+¹ Large document sizes up to 16 MB are supported with Azure Cosmos DB for MongoDB only. For more information, see [MongoDB 4.2 feature documentation](mongodb/feature-support-42.md#data-types).
 
 There are no restrictions on the item payloads (like number of properties and nesting depth), except for the length restrictions on partition key and ID values, and the overall size restriction of 2 MB. You might need to configure the indexing policy for containers with large or complex item structures to reduce RU consumption. See [Modeling items in Azure Cosmos DB](nosql/model-partition-example.md) for a real-world example, and patterns to manage large items.
 
@@ -310,7 +310,7 @@ The following table lists the limits specific to MongoDB feature support. Other 
 | Idle connection timeout for server side connection closure ² | 30 minutes |
 | Time limit for MongoDB shell in the Azure portal | 120 minutes in a 24 hour period |
 
-¹ Large document sizes up to 16 MB require feature enablement in the Azure portal. Learn more in the [feature documentation](../cosmos-db/mongodb/feature-support-42.md#data-types).
+¹ Large document sizes up to 16 MB require feature enablement in the Azure portal. Learn more in the [feature documentation](mongodb/feature-support-42.md#data-types).
 
 ² Set the idle connection timeout in the driver settings to 2-3 minutes because the [default timeout for Azure LoadBalancer is 4 minutes](/azure/load-balancer/load-balancer-tcp-idle-timeout). This timeout ensures that an intermediate load balancer idle doesn't close connections between the client machine and Azure Cosmos DB.
 
