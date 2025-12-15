@@ -2647,7 +2647,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-fabric-mirroring.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-fabric-mirroring",
+            "redirect_url": "/azure/postgresql/integration/concepts-fabric-mirroring",
             "redirect_document_id": true
         },
         {
