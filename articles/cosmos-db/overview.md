@@ -56,7 +56,7 @@ Additionally, the service's cost model is based on provisioned throughput (RU/s)
 ## Related content
 
 - [Get started developing solutions](quickstart-python.md)
-- [Learn about global distribution](../distribute-data-globally.md?context=/azure/cosmos-db/nosql/context/context)
-- [Explore the JSON resource model](../resource-model.md?context=/azure/cosmos-db/nosql/context/context)
-- [Design for high availability](/azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/nosql/context/context)
+- [Learn about global distribution](../distribute-data-globally.md?context=/azure/cosmos-db/context/context)
+- [Explore the JSON resource model](../resource-model.md?context=/azure/cosmos-db/context/context)
+- [Design for high availability](/azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/context/context)
 - [Review the NoSQL query language](/cosmos-db/query)
