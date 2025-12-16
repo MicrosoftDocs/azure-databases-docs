@@ -14,8 +14,6 @@ ms.custom:
   -
 
 ---
-# fix content to keep this link working: https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/security-tls#certificate-pinning-issues
-
 
 # Transport Layer Security (TLS) in Azure Database for PostgreSQL
 
@@ -127,7 +125,7 @@ Azure PostgreSQL does not announce changes about intermediate CA changes or indi
 Never use certificate pinning in your applications since it breaks certificate rotation such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it is unlikely that you are using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning), perform the following steps:
 
 1. Produce your list of certificates that are in your trusted root store. Examples can be found in these articles:
-    1. [Combine and update root CA certificates for Java applications](security-tls-how-to-connect#combine-and-update-root-ca-certificates-for-java-applications).
+    1. [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
     1. Open the trusted root store on your client machine export the list of certificates.
 1. You are using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
 1. To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
