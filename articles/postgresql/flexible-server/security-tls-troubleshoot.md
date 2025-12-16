@@ -71,10 +71,10 @@ To work around these issues, add all the necessary certificates to the client ce
 > Therefore, you don't need to follow the steps in this section.
 
 1. Produce your list of certificates that are in your trusted root store
-    1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-tls-how-to-connect#get-a-list-of-trusted-certificates-in-java-key-store-programmatically).
-    1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-tls-how-to-connect#combine-and-update-root-ca-certificates-for-java-applications).
+    1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-tls-how-to-connect.md#get-a-list-of-trusted-certificates-in-java-key-store-programmatically).
+    1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
 1. You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates. This is an unsupported configuration.
-1. To remove certificate pinning, remove all the certificates from your trusted root store and [add only root CA certificates](security-tls-how-to-connect#download-and-convert-root-ca-certificates).
+1. To remove certificate pinning, remove all the certificates from your trusted root store and [add only root CA certificates](security-tls-how-to-connect.md#download-and-convert-root-ca-certificates).
 
 If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title *ICA Rotation 2026*.
 
