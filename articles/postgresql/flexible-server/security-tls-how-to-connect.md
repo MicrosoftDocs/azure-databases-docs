@@ -76,7 +76,7 @@ openssl x509 -inform DER -in certificate-filename.crt -out certificate-filename.
 
 For some clients, you will concatenate all PEM files into a single file using any text editor or command line tool.
 
-```output
+```
 -----BEGIN CERTIFICATE-----
 (Root CA1 content: DigiCertGlobalRootG2.crt.pem)
 -----END CERTIFICATE-----
@@ -87,7 +87,7 @@ For some clients, you will concatenate all PEM files into a single file using an
 
 For China regions and for customers with rotation extensions:
 
-```output
+```
 -----BEGIN CERTIFICATE-----
 (Root CA0 content: DigiCertGlobalRootCA.crt.pem)
 -----END CERTIFICATE-----
@@ -135,11 +135,11 @@ For Azure App services, connecting to an Azure Database for PostgreSQL flexible 
 
 ### Update Root CA certificates when using clients in Azure Kubernetes Service (AKS)
 
-If you're trying to connect to the Azure Database for PostgreSQL using applications hosted in Azure Kubernetes Services (AKS), it's similar to access from a dedicated customer's host environment. Refer to the steps [here](/azure/aks/ingress-tls).
+If you're trying to connect to the Azure Database for PostgreSQL using applications hosted in Azure Kubernetes Services (AKS), it's similar to access from a dedicated customer's host environment. See detailed [instruction in AKS documentation](/azure/aks/ingress-tls).
 
 ### Update Root CA certificates for .NET (Npgsql) users on Windows
 
-For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the stanadrd Azure root CA list. If any certificates listed in our [recommended configuration](security-tls#best-configuration) isn't included, import the missing certificates.
+For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the stanadrd Azure root CA list. If any certificates listed in our [recommended configuration](security-tls.md#best-configuration) isn't included, import the missing certificates.
 
 ## How to use TLS with certificate validation
 
