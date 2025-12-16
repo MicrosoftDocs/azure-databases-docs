@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 07/02/2025
 ms.custom: devx-track-csharp, build-2023
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Change feed processor in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The change feed processor is part of the Azure Cosmos DB [.NET V3](https://github.com/Azure/azure-cosmos-dotnet-v3) and [Java V4](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos) SDKs, which simplify the process of reading the change feed and distribute the event processing across multiple consumers effectively.
 

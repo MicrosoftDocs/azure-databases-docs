@@ -9,10 +9,11 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 03/24/2022
 ms.custom: devx-track-java, cosmos-db-video, sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Use Azure Cosmos DB change feed to visualize real-time data analytics
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB change feed is a mechanism to get a continuous and incremental feed of records from an Azure Cosmos DB container as those records are being created or modified. Change feed support works by listening to container for any changes. It then outputs the sorted list of documents that were changed in the order in which they were modified. To learn more about change feed, see [working with change feed](change-feed.md) article. 
 
