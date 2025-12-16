@@ -7,11 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/15/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Change feed with Apache Spark
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The [Azure Cosmos DB Spark Connector](tutorial-spark-connector.md) provides a powerful way to process the change feed at scale using Apache Spark. The connector uses the Java SDK underneath and implements a [pull model](change-feed-pull-model.md) that distributes processing transparently across Spark executors, making it ideal for large-scale data processing scenarios.
 
@@ -62,6 +62,7 @@ The following examples show how to read from the change feed using the Spark Con
 
 ```python
 # Configure change feed reading
+
 changeFeedConfig = {
     "spark.cosmos.accountEndpoint": "https://<account-name>.documents.azure.com:443/",
     "spark.cosmos.accountKey": "<account-key>",

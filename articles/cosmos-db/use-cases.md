@@ -9,11 +9,15 @@ ms.service: azure-cosmos-db
 ms.topic: solution-overview
 ms.custom:
   - cosmos-db-video
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Common Azure Cosmos DB use cases
-
-[!INCLUDE [NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article provides an overview of several common use cases for Azure Cosmos DB. The recommendations in this article serve as a starting point as you develop your application with Azure Cosmos DB.
 

@@ -6,11 +6,15 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/13/2022
 ms.author: gahllevy
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Access Azure Cosmos DB Preview Features
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 ## Steps to register for a preview feature from the portal
 

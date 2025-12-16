@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 07/21/2025
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
 #CustomerIntent: As a data scientist, I want to connect to Azure Cosmos DB for NoSQL by using Spark so that I can perform analytics on my data in Azure Cosmos DB.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Tutorial: Connect to Azure Cosmos DB for NoSQL by using Spark
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this tutorial, you use the Azure Cosmos DB Spark connector to read or write data from an Azure Cosmos DB for NoSQL account. This tutorial uses Azure Databricks and a Jupyter notebook to illustrate how to integrate with the API for NoSQL from Spark. This tutorial focuses on Python and Scala, although you can use any language or interface supported by Spark.
 

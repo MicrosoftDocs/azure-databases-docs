@@ -8,11 +8,11 @@ ms.custom: devx-track-terraform
 ms.topic: sample
 ms.date: 09/16/2022
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Terraform samples for Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article shows Terraform samples for NoSQL accounts.
 

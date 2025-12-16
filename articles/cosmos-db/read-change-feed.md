@@ -8,10 +8,11 @@ ms.subservice: nosql
 ms.custom: build-2023
 ms.topic: how-to
 ms.date: 07/14/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Read the Azure Cosmos DB change feed
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 You can work with the Azure Cosmos DB change feed by using either a push model or a pull model. With a *push* model, the change feed processor pushes work to a client that has business logic for processing this work. However, the complexity in checking for work and storing state for the last processed work is handled within the change feed processor.
 
