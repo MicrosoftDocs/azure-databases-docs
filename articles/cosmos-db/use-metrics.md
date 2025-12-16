@@ -8,11 +8,15 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 04/14/2023
 ms.custom: devx-track-csharp, sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Monitor and debug with insights in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB provides insights for throughput, storage, consistency, availability, and latency. The Azure portal provides an aggregated view of these metrics. You can also view Azure Cosmos DB metrics from Azure Monitor API. The dimension values for the metrics such as container name are case-insensitive. Therefore, you need to use case-insensitive comparison when doing string comparisons on these dimension values. To learn how to view metrics from Azure monitor, see [Monitor Azure Cosmos DB](./monitor.md).
 
