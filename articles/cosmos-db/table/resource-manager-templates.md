@@ -11,7 +11,6 @@ ms.author: sasinnat
 ---
 
 # Manage Azure Cosmos DB for Table resources using Azure Resource Manager templates
-[!INCLUDE[Table](../includes/appliesto-table.md)]
 
 In this article, you learn how to use Azure Resource Manager templates to help deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 
