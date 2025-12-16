@@ -1,10 +1,10 @@
 ---
 title: Certificate Rotation
-executing escription: Certificate rotation for Azure Database for PostgreSQL
+description: Certificate rotation for Azure Database for PostgreSQL
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 12/02/2025
+ms.date: 12/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: include
