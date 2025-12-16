@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/11/2025
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-dotnet, devx-track-azurecli
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Get started with Azure Cosmos DB for NoSQL using .NET
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article shows you how to connect to Azure Cosmos DB for NoSQL using the .NET SDK. Once connected, you can perform operations on databases, containers, and items.
 

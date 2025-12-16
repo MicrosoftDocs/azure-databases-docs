@@ -9,11 +9,11 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 05/17/2023
 ms.custom: devx-track-js, cosmos-db-dev-journey
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create a database in Azure Cosmos DB for NoSQL using JavaScript
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Databases in Azure Cosmos DB are units of management for one or more containers. Before you can create or manage containers, you must first create a database.
 

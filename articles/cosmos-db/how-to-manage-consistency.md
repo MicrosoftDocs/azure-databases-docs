@@ -9,11 +9,13 @@ ms.date: 07/09/2025
 ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript
+
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli, devx-track-azurepowershell, devx-track-dotnet, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage consistency levels in Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to manage consistency levels in Azure Cosmos DB. You learn how to configure the default consistency level, override the default consistency, manually manage session tokens, and understand the Probabilistically Bounded Staleness (PBS) metric.
 
