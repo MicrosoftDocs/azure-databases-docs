@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Linux-based emulator - vNext (preview)

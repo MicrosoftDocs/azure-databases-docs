@@ -6,11 +6,11 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/08/2022
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Diagnostic queries selector](includes/diagnostic-queries-selector.md)]
 

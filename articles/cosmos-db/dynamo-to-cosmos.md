@@ -11,10 +11,11 @@ ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 05/02/2020
 ms.author: mansha
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate your application from Amazon DynamoDB to Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a scalable, globally distributed, fully managed database. It provides guaranteed low-latency access to your data.
 
