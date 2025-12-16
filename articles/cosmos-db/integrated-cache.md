@@ -7,10 +7,11 @@ ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 6/30/2025
 ms.author: jucocchi
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB integrated cache - Overview
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB integrated cache is an in-memory cache that helps you ensure manageable costs and low latency as your request volume grows. The integrated cache is easy to set up and you don’t need to spend time writing custom code for cache invalidation or managing backend infrastructure.
 

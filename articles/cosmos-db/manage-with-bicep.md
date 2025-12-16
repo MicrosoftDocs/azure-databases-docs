@@ -8,11 +8,11 @@ ms.custom: devx-track-bicep
 ms.topic: how-to
 ms.date: 02/18/2022
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage Azure Cosmos DB for NoSQL resources with Bicep
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this article, you learn how to use Bicep to deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 
