@@ -228,7 +228,6 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
     }
 
     resource "azapi_resource" "cluster" {
-      schema_validation_enabled = false
       type = "Microsoft.DocumentDB/mongoClusters@2025-08-01-preview"
       name = "<cluster-name>"
       parent_id = data.azurerm_resource_group.existing.id
