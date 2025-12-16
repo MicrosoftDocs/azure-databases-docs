@@ -12,8 +12,6 @@ ms.topic: quickstart-sdk
 ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
-appliesto:
-  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
