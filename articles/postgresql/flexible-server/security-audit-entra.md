@@ -79,7 +79,7 @@ The resulting table looks like this:
 | 2025-12-12T16:25:05.104Z | user@example.com | ExampleGroupName | SELECT | select * from pg_seclabels; |
 | 2025-12-12T16:25:04.000Z | user@example.com | user@example.com | SELECT | select * from pg_seclabels; |
 
-If the user is logging in as a group role, the columns `PrincipalName` and `role` differ (like in the first row of the example).  
-The value in the `PrincipalName` identifies the user which logged in, and the value in the `role` identifies the role in PostgreSQL into which the user logged in.
+If the user is logging in as a group role, the columns `PrincipalName` and `RoleName` differ (like in the first row of the example).  
+The value in the `PrincipalName` identifies the user which logged in, and the value in the `RoleName` identifies the role in PostgreSQL into which the user logged in.
 
 `PrincipalName` will be either the [User Principal Name (UPN) or AppId](./security-entra-concepts.md#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
