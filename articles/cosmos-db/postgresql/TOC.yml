@@ -3,10 +3,10 @@
 - name: Overview
   expanded: true
   items:
-  - name: What is Azure Cosmos DB for PostgreSQL?
-    href: introduction.md
-  - name: Product updates
-    href: product-updates.md
+    - name: What is Azure Cosmos DB for PostgreSQL?
+      href: introduction.md
+    - name: Product updates
+      href: product-updates.md
 - name: Quickstart
   items:
     - name: Create cluster
