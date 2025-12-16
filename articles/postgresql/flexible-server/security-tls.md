@@ -85,7 +85,7 @@ Utilizing recommended TLS configurations helps reduce the risk of connection fai
 
 - Set the `ssl_min_protocol_version` server parameter to `TLSv1.3` to enforce the latest, most secure TLS version.
 - Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or VNET integration, `verify-all` might not be possible; therefore you may use `verify-ca` instead.
-- Always maintain the [complete set of Azure root certificates in your trusted root store](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
+- Always maintain the [complete set of Azure root certificates in your trusted root store](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
 
 ### Good configuration
 
