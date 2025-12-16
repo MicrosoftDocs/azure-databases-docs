@@ -12,14 +12,11 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-gremlin-table
 applies-to:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ Apache Cassandra
   - ✅ Apache Gremlin
   - ✅ Table
 ---
 
 # Restore a deleted container or database to the same Azure Cosmos DB account
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 The Azure Cosmos DB point-in-time same-account restore feature helps you recover from an accidental deletion of a container or database. This feature restores the deleted  database or container to the same, existing account in any region in which backups exist. Continuous backup mode allows you to restore to any point of time within the last 30 days.
 
