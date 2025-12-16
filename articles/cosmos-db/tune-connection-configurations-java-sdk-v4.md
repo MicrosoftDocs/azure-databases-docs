@@ -23,9 +23,9 @@ ms.custom: devx-track-java, devx-track-extended-java
 > 
 
 > [!IMPORTANT]  
-> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. Please view the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you are currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help upgrading to v4.
+> The performance tips in this article are for Azure Cosmos DB Java SDK v4 only. View the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md) for more information. If you're currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
 
-Azure Cosmos DB is a fast and flexible distributed database that scales seamlessly with guaranteed latency and throughput. You do not have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call or SDK method call. However, because Azure Cosmos DB is accessed via network calls there are connection configurations you can tune to achieve peak performance when using Azure Cosmos DB Java SDK v4.
+Azure Cosmos DB is a fast and flexible distributed database that scales seamlessly with guaranteed latency and throughput. You don't have to make major architecture changes or write complex code to scale your database with Azure Cosmos DB. Scaling up and down is as easy as making a single API call or SDK method call. However, because Azure Cosmos DB is accessed via network calls there are connection configurations you can tune to achieve peak performance when using Azure Cosmos DB Java SDK v4.
 
 ## Connection configuration
 
@@ -56,11 +56,11 @@ Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
 #### Customizing direct connection mode
 
-If non-default Direct mode behavior is desired, create a *DirectConnectionConfig* instance and customize its properties, then pass the customized property instance to the *directMode()* method in the Azure Cosmos DB client builder.
+If nondefault Direct mode behavior is desired, create a *DirectConnectionConfig* instance and customize its properties, then pass the customized property instance to the *directMode()* method in the Azure Cosmos DB client builder.
 
 These configuration settings control the behavior of the underlying Direct mode architecture discussed above.
 
-As a first step, use the following recommended configuration settings below. These *DirectConnectionConfig* options are advanced configuration settings which can affect SDK performance in unexpected ways; we recommend users avoid modifying them unless they feel very comfortable in understanding the tradeoffs and it is absolutely necessary. Please contact the [Azure Cosmos DB team](mailto:CosmosDBPerformanceSupport@service.microsoft.com) if you run into issues on this particular topic.
+As a first step, use the following recommended configuration settings below. These *DirectConnectionConfig* options are advanced configuration settings, which can affect SDK performance in unexpected ways; we recommend users avoid modifying them unless they feel comfortable in understanding the tradeoffs and it is necessary. Contact the [Azure Cosmos DB team](mailto:CosmosDBPerformanceSupport@service.microsoft.com) if you run into issues on this particular topic.
 
 | Configuration option       | Default          | Recommended   | Details |
 | :------------------:       | :-----:          | :---------:   | :-----: |
@@ -92,9 +92,9 @@ Java SDK V4 (Maven com.azure::azure-cosmos) Sync API
 
 #### Customizing gateway connection mode
 
-If non-default Gateway mode behavior is desired, create a *GatewayConnectionConfig* instance and customize its properties, then pass the customized property instance to the above *directMode()* override method or *gatewayMode()* method in the Azure Cosmos DB client builder.
+If nondefault Gateway mode behavior is desired, create a *GatewayConnectionConfig* instance and customize its properties, then pass the customized property instance to the above *directMode()* override method or *gatewayMode()* method in the Azure Cosmos DB client builder.
 
-As a first step, use the following recommended configuration settings below. These *GatewayConnectionConfig* options are advanced configuration settings which can affect SDK performance in unexpected ways; we recommend users avoid modifying them unless they feel very comfortable in understanding the tradeoffs and it is absolutely necessary. Please contact the [Azure Cosmos DB team](mailto:CosmosDBPerformanceSupport@service.microsoft.com) if you run into issues on this particular topic.
+As a first step, use the following recommended configuration settings below. These *GatewayConnectionConfig* options are advanced configuration settings, which can affect SDK performance in unexpected ways; we recommend users avoid modifying them unless they feel comfortable in understanding the tradeoffs and it is necessary. Contact the [Azure Cosmos DB team](mailto:CosmosDBPerformanceSupport@service.microsoft.com) if you run into issues on this particular topic.
 
 | Configuration option       | Default | Recommended | Details |
 | :------------------:       | :-----: | :---------: | :-----: |
@@ -109,5 +109,5 @@ To learn more about performance tips for Java SDK, see [Performance tips for Azu
 To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-* If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+* If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
