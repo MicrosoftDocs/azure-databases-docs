@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.custom: devx-track-extended-java
 ms.topic: how-to
 ms.date: 12/14/2023
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Micrometer metrics for Java
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Java SDK for Azure Cosmos DB implements client metrics using [Micrometer](https://micrometer.io/) for instrumentation in popular observability systems like [Prometheus](https://prometheus.io/). This article includes instructions and code snippets for scraping metrics into Prometheus, taken from [this sample](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/prometheus/async/CosmosClientMetricsQuickStartAsync.java). The full list of metrics provided by the SDK is documented [here](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/docs/Metrics.md#what-metrics-are-emitted). If your clients are deployed on Azure Kubernetes Service (AKS), you can also use the Azure Monitor managed service for Prometheus with custom scraping, see documentation [here](/azure/azure-monitor/containers/prometheus-metrics-scrape-configuration-minimal).
 

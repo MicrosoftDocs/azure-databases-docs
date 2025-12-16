@@ -8,11 +8,14 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/23/2025
 ms.custom: build-2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
 ---
 
 # Change feed in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
 The change feed in Azure Cosmos DB is a persistent record of changes to a container in the order the changes occur. Change feed support in Azure Cosmos DB works by listening to an Azure Cosmos DB container for any changes. It then outputs the sorted list of documents that were changed in the order in which they were modified. The persisted changes can be processed asynchronously and incrementally, and the output can be distributed across one or more consumers for parallel processing.
 
