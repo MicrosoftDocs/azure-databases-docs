@@ -329,4 +329,4 @@ In this tutorial, you've done the following tasks:
 You can now proceed to the next tutorial to learn how to distribute your data globally.
 
 > [!div class="nextstepaction"]
-> [Distribute your data globally](../nosql/tutorial-global-distribution.md)
+> [Distribute your data globally](../tutorial-global-distribution.md)

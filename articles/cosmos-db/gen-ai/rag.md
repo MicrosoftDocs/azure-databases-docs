@@ -26,7 +26,7 @@ Azure Cosmos DB, an operational database that supports vector search, stands out
 
 ### Unified data storage and retrieval
 
-Azure Cosmos DB enables seamless integration of [vector search](../nosql/vector-search.md) capabilities within a unified database system. This means that your operational data and vectorized data coexist, eliminating the need for separate indexing systems. 
+Azure Cosmos DB enables seamless integration of [vector search](../vector-search.md) capabilities within a unified database system. This means that your operational data and vectorized data coexist, eliminating the need for separate indexing systems. 
 
 ### Real-time data ingestion and querying
 
@@ -42,7 +42,7 @@ Azure Cosmos DB offers comprehensive SLAs for throughput, latency, and [availabi
 
 ### Multitenancy with hierarchical partition keys
 
-Azure Cosmos DB supports [multitenancy](../nosql/multi-tenancy-vector-search.md) through various performance and security isolation models, making it easier to manage data for different clients or user groups within the same database. This feature is particularly useful for SaaS applications where separation of tenant data is crucial for security and compliance.
+Azure Cosmos DB supports [multitenancy](../multi-tenancy-vector-search.md) through various performance and security isolation models, making it easier to manage data for different clients or user groups within the same database. This feature is particularly useful for SaaS applications where separation of tenant data is crucial for security and compliance.
 
 ### Comprehensive security features
 
@@ -63,10 +63,10 @@ Here's a streamlined process for building a RAG application with Azure Cosmos DB
 ## Related content
 
 - [What is a vector database?](../vector-database.md)
-- [Vector database in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
+- [Vector database in Azure Cosmos DB NoSQL](../vector-search.md)
 - [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [What are tokens?](tokens.md)
 - [Vector embeddings](vector-embeddings.md)
 - [What are distance functions?](distance-functions.md)
 - [kNN vs ANN vector search algorithms](knn-vs-ann.md)
-- [Multitenancy for vector search](../nosql/multi-tenancy-vector-search.md)
+- [Multitenancy for vector search](../multi-tenancy-vector-search.md)

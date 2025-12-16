@@ -25,7 +25,7 @@ To learn more about diagnostic settings, see [Diagnostic settings in Azure Monit
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An existing Azure Monitor Log Analytics workspace.
 
@@ -376,6 +376,6 @@ Use the Azure CLI to enable full-text query for your Azure Cosmos DB account.
 
 ## Related content
 
-- [Diagnostic queries in API for NoSQL](nosql/diagnostic-queries.md)
+- [Diagnostic queries in API for NoSQL](diagnostic-queries.md)
 - [Diagnostic queries in API for MongoDB](mongodb/diagnostic-queries.md)
 - [Diagnostic queries in API for Apache Cassandra](cassandra/diagnostic-queries.md)

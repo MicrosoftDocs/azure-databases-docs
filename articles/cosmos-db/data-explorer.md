@@ -167,7 +167,7 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
 ## Use with Microsoft Entra authentication
 
-You can use Microsoft Entra-based authentication within the explorer by enabling it via configuration. For more information about role-based access control, see the [security guide](security.yml).
+You can use Microsoft Entra-based authentication within the explorer by enabling it via configuration. For more information about role-based access control, see the [security guide](security.md).
 
 1. Start in the explorer for the target Azure Cosmos DB account.
 

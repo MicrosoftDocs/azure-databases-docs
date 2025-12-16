@@ -27,14 +27,14 @@ This article links to code samples for the following scenarios:
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Use partial document update
 
 ## [.NET](#tab/dotnet)
 
-Support for partial document update (Patch API) in the [Azure Cosmos DB .NET v3 SDK](nosql/sdk-dotnet-v3.md) is available in version *3.23.0* and later. You can download the package from the [NuGet gallery](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.23.0).
+Support for partial document update (Patch API) in the [Azure Cosmos DB .NET v3 SDK](sdk-dotnet-v3.md) is available in version *3.23.0* and later. You can download the package from the [NuGet gallery](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.23.0).
 
 > [!NOTE]
 > Find a complete partial document update sample in the [.NET v3 samples repository](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs) on GitHub.
@@ -126,7 +126,7 @@ Support for partial document update (Patch API) in the [Azure Cosmos DB .NET v3 
 
 ## [Java](#tab/java)
 
-Support for partial document update (Patch API) in the [Azure Cosmos DB Java v4 SDK](nosql/sdk-java-v4.md) is available in version *4.21.0* and later. You can either add it to the list of dependencies in your `pom.xml` or download it directly from [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos).
+Support for partial document update (Patch API) in the [Azure Cosmos DB Java v4 SDK](sdk-java-v4.md) is available in version *4.21.0* and later. You can either add it to the list of dependencies in your `pom.xml` or download it directly from [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos).
 
 ```xml
 <dependency>
@@ -221,7 +221,7 @@ Support for partial document update (Patch API) in the [Azure Cosmos DB Java v4 
 
 ## [Node.js](#tab/nodejs)
 
-Support for partial document update (Patch API) in the [Azure Cosmos DB JavaScript SDK](nosql/sdk-nodejs.md) is available in version *3.15.0* and later. You can download it from the [npm Registry](https://www.npmjs.com/package/@azure/cosmos).
+Support for partial document update (Patch API) in the [Azure Cosmos DB JavaScript SDK](sdk-nodejs.md) is available in version *3.15.0* and later. You can download it from the [npm Registry](https://www.npmjs.com/package/@azure/cosmos).
 
 > [!NOTE]
 > Find a complete partial document update sample in the [.js v3 samples repository](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/cosmosdb/cosmos/samples/v3/typescript/src/ItemManagement.ts#L167) on GitHub. In the sample, as the container is created without a partition key specified, the JavaScript SDK resolves the partition key values from the items through the container's partition key definition.
@@ -261,7 +261,7 @@ Support for partial document update (Patch API) in the [Azure Cosmos DB JavaScri
 
 ## [Python (Preview)](#tab/python)
 
-Support for partial document update (Patch API) in the [Azure Cosmos DB Python SDK](nosql/sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
+Support for partial document update (Patch API) in the [Azure Cosmos DB Python SDK](sdk-python.md) is available from version *4.4.0b2*. You can download it from the [pip registry](https://pypi.org/project/azure-cosmos/4.4.0b2/).
 
 > [!NOTE]
 > Find a complete partial document update sample in the [python samples repository](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/samples/document_management.py#L105C8-L122) on GitHub. 

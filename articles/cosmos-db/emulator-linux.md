@@ -15,7 +15,7 @@ ms.date: 11/07/2024
 The next generation of the Azure Cosmos DB emulator is entirely Linux-based and is available as a Docker container. It supports running on a wide variety of processors and operating systems.
 
 > [!IMPORTANT]
-> This version of the emulator only supports the API for NoSQL in [gateway mode](nosql/sdk-connection-modes.md#available-connectivity-modes), with a select subset of features. For more information, see [feature support](#feature-support).
+> This version of the emulator only supports the API for NoSQL in [gateway mode](sdk-connection-modes.md#available-connectivity-modes), with a select subset of features. For more information, see [feature support](#feature-support).
 
 ## Prerequisites
 
@@ -149,7 +149,7 @@ In addition to features not yet supported or not planned, the following list inc
 
 ## Installing certificates for Java SDK
 
-When using the [Java SDK for Azure Cosmos DB](./nosql/sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
+When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
 
 ### Get certificate
 

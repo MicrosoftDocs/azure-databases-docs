@@ -35,15 +35,15 @@ You can work with the change feed by using the following options:
 
 * [Use change feed with Azure Functions](change-feed-functions.md)
 * [Use change feed with change feed processor](change-feed-processor.md) 
-* [Use change feed with the pull model](nosql/change-feed-pull-model.md)
-* [Use change feed with Apache Spark](nosql/change-feed-spark.md) 
+* [Use change feed with the pull model](change-feed-pull-model.md)
+* [Use change feed with Apache Spark](change-feed-spark.md) 
 
 Change feed is available for partition key ranges of an Azure Cosmos DB container. This allows it to be distributed across one or more consumers for parallel processing as shown in the following image.  
 
 :::image type="content" source="./media/change-feed/change-feed-visual.png" alt-text="Diagram showing distributed processing of Azure Cosmos DB change feed." lightbox="./media/change-feed/change-feed-visual.png":::
 
 > [!NOTE]
-> Partition key ranges map to physical partitions when using the [change feed processor](nosql/change-feed-processor.md) and `FeedRanges` when using the [pull model](nosql/change-feed-pull-model.md).
+> Partition key ranges map to physical partitions when using the [change feed processor](change-feed-processor.md) and `FeedRanges` when using the [pull model](change-feed-pull-model.md).
 
 ## Features of change feed
 
@@ -55,7 +55,7 @@ Change feed is available for partition key ranges of an Azure Cosmos DB containe
 
 * The change feed includes insert and update operations made to items within the container. If you're using [all versions and deletes mode (preview)](#all-versions-and-deletes-mode-preview), you also get changes from delete operations and TTL expirations.
 
-* Each change appears exactly once in the change feed, and the clients must manage the checkpointing logic. If you want to avoid the complexity of managing checkpoints, the change feed processor provides automatic checkpointing and "at least once" semantics. For more information, see [Change feed processor in Azure Cosmos DB](nosql/change-feed-processor.md).
+* Each change appears exactly once in the change feed, and the clients must manage the checkpointing logic. If you want to avoid the complexity of managing checkpoints, the change feed processor provides automatic checkpointing and "at least once" semantics. For more information, see [Change feed processor in Azure Cosmos DB](change-feed-processor.md).
 
 * Changes are available in parallel for partition key ranges of an Azure Cosmos DB container. This capability allows multiple consumers to process changes from large containers in parallel. 
 
@@ -80,15 +80,15 @@ In a multi-region Azure Cosmos DB account, changes in one region are available i
 
 ## Change feed modes
 
-There are two [change feed modes](./nosql/change-feed-modes.md) available: *latest version* mode and *all versions and deletes* mode. The mode that change feed is read in determines which operations changes are captured from and the metadata available for each change. It's possible to consume the change feed in different modes across multiple applications for the same Azure Cosmos DB container.
+There are two [change feed modes](change-feed-modes.md) available: *latest version* mode and *all versions and deletes* mode. The mode that change feed is read in determines which operations changes are captured from and the metadata available for each change. It's possible to consume the change feed in different modes across multiple applications for the same Azure Cosmos DB container.
 
 ### Latest version mode
 
-In latest version change feed mode, you see the latest change from an insert or update for all items in the feed, and the feed is available for the life of the container. There's no indication whether a given change is from an insert or an update operation, and deletes aren't captured. Changes can be read from any point in time as far back as the origin of your container. However, if an item is deleted, it's removed from the change feed. To learn more, see the [latest version change feed mode](nosql/change-feed-modes.md#latest-version-change-feed-mode).
+In latest version change feed mode, you see the latest change from an insert or update for all items in the feed, and the feed is available for the life of the container. There's no indication whether a given change is from an insert or an update operation, and deletes aren't captured. Changes can be read from any point in time as far back as the origin of your container. However, if an item is deleted, it's removed from the change feed. To learn more, see the [latest version change feed mode](change-feed-modes.md#latest-version-change-feed-mode).
 
 ### All versions and deletes mode (preview)
 
-All versions and deletes mode allows you to see all changes to items from creates, updates, and deletes. You get a record of each change to items in the order that it occurred, including intermediate changes to an item between change feed reads. To read from the change feed in all versions and deletes mode, you must have [continuous backups](continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account, which creates Azure Cosmos DBs all versions and deletes change feed. In this mode, you can only read changes that occurred within the continuous backup period configured for the account. See the [all versions and deletes change feed mode](nosql/change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) article to learn more, including how to enroll in the preview.
+All versions and deletes mode allows you to see all changes to items from creates, updates, and deletes. You get a record of each change to items in the order that it occurred, including intermediate changes to an item between change feed reads. To read from the change feed in all versions and deletes mode, you must have [continuous backups](continuous-backup-restore-introduction.md) configured for your Azure Cosmos DB account, which creates Azure Cosmos DBs all versions and deletes change feed. In this mode, you can only read changes that occurred within the continuous backup period configured for the account. See the [all versions and deletes change feed mode](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) article to learn more, including how to enroll in the preview.
 
 ## Change feed in APIs for Cassandra and MongoDB
 

@@ -176,8 +176,6 @@
           href: ../global-dist-under-the-hood.md
     - name: Security
       items:
-        - name: Security overview
-          href: ../security.yml
         - name: Considerations and guidance
           href: ../security-considerations.md
         - name: Well Architected Framework security guidance

@@ -56,7 +56,7 @@ Item cache is used for point reads (key/value look ups based on the Item ID and 
 - New writes, updates, and deletes are automatically populated in the item cache of the node that the request is routed through.
 - Items from point read requests where the item isn’t already in the cache (cache miss) of the node the request is routed through are added to the item cache.
 - Read requests for multiple items, such as `ReadMany`, populate the query cache as a set instead of the item cache as individual items.
-- Requests that are part of a [transactional batch](./nosql/transactional-batch.md) or in [bulk mode](./nosql/how-to-migrate-from-bulk-executor-library.md#enable-bulk-support) don't populate the item cache.
+- Requests that are part of a [transactional batch](transactional-batch.md) or in [bulk mode](how-to-migrate-from-bulk-executor-library.md#enable-bulk-support) don't populate the item cache.
 
 ### Item cache invalidation and eviction
 
@@ -162,7 +162,7 @@ Check the `DedicatedGatewayRequests`. This metric includes all requests that use
 
 ### I can’t tell if my requests are hitting the integrated cache
 
-Check the `IntegratedCacheItemHitRate` and `IntegratedCacheQueryHitRate`. If both of these values are zero, then requests aren't hitting the integrated cache. Check that you're using the dedicated gateway connection string, [connecting with gateway mode](nosql/sdk-connection-modes.md), and [are using session or eventual consistency](consistency-levels.md#configure-the-default-consistency-level).
+Check the `IntegratedCacheItemHitRate` and `IntegratedCacheQueryHitRate`. If both of these values are zero, then requests aren't hitting the integrated cache. Check that you're using the dedicated gateway connection string, [connecting with gateway mode](sdk-connection-modes.md), and [are using session or eventual consistency](consistency-levels.md#configure-the-default-consistency-level).
 
 ### I want to understand if my dedicated gateway is too small
 

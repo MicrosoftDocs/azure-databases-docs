@@ -89,7 +89,7 @@ For enabling CMK on existing account that has continuous backup and point in tim
 - Enabling CMK is available only at a Cosmos DB account level and not at collections.
 - Ensure account must not have documents with large IDs greater than 990 bytes before enabling CMK. If not, you'll get an error due to max supported limit of 1,024 bytes after encryption.
 - During encryption of existing data, [control plane](./audit-control-plane-logs.md) actions such as "add region" is blocked. These actions are unblocked and can be used right after the encryption is complete.
-- Enabling CMK on existing Azure Cosmos DB accounts that have [Vector Search enabled](nosql/vector-search.md) is not supported.
+- Enabling CMK on existing Azure Cosmos DB accounts that have [Vector Search enabled](vector-search.md) is not supported.
 
 ## Monitor the progress of the resulting encryption
 

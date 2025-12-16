@@ -43,8 +43,8 @@ These issues are some of the known issues with TLS 1.3 enablement, potential eff
 
 -  **Recommendations for mitigation**:
 
-    - Option 1: **(Required)** Upgrade Azure Cosmos DB Java SDK at least to [minimum recommended version](./nosql/sdk-java-v4.md#recommended-version).
-    - Option 2: We recognize that upgrading to the latest SDK version might not always be feasible. While transitioning your application to the newest SDK, you can address this issue by switching the connection to [Gateway Mode](./nosql/tune-connection-configurations-net-sdk-v3.md#customizing-gateway-connection-mode). Make sure to thoroughly test the application before deploying it in the production environment.
+    - Option 1: **(Required)** Upgrade Azure Cosmos DB Java SDK at least to [minimum recommended version](sdk-java-v4.md#recommended-version).
+    - Option 2: We recognize that upgrading to the latest SDK version might not always be feasible. While transitioning your application to the newest SDK, you can address this issue by switching the connection to [Gateway Mode](tune-connection-configurations-net-sdk-v3.md#customizing-gateway-connection-mode). Make sure to thoroughly test the application before deploying it in the production environment.
 
 > [!NOTE]
 > Enabling client to use TLS 1.3 requires Java runtime to support TLS 1.3

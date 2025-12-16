@@ -21,7 +21,7 @@ title: |
 introduction: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-  This article describes how to manage various tasks on an Azure Cosmos DB account by using the Azure portal. Azure Cosmos DB can also be managed with other Azure management clients, including [Azure PowerShell](manage-with-powershell.md), [Azure CLI](nosql/manage-with-cli.md), [Azure Resource Manager templates](./manage-with-templates.md), [Bicep](nosql/manage-with-bicep.md), and [Terraform](nosql/samples-terraform.md).
+  This article describes how to manage various tasks on an Azure Cosmos DB account by using the Azure portal. Azure Cosmos DB can also be managed with other Azure management clients, including [Azure PowerShell](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), [Azure Resource Manager templates](./manage-with-templates.md), [Bicep](manage-with-bicep.md), and [Terraform](samples-terraform.md).
 
   > [!TIP]
   > The management API for Azure Cosmos DB or *control plane* isn't designed for high-request volumes like the rest of the service. To learn more, see [Control Plane Service Limits](concepts-limits.md#control-plane)
@@ -234,6 +234,6 @@ relatedContent:
   - text: Manage Azure Cosmos DB for NoSQL resources using PowerShell
     url: manage-with-powershell.md
   - text: Manage Azure Cosmos DB for NoSQL resources using Azure CLI
-    url: sql/manage-with-cli.md
+    url: manage-with-cli.md
   - text: Manage Azure Cosmos DB for NoSQL resources with Azure Resource Manager templates
     url: ./manage-with-templates.md

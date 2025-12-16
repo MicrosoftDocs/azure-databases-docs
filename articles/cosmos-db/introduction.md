@@ -153,6 +153,6 @@ For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decisio
 
 ## Related content
 
-- [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)
 - [Get started with Azure DocumentDB](../documentdb/overview.md)
  

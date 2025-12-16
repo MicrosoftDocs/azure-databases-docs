@@ -55,7 +55,7 @@ You can see more examples in this [interactive visualization](https://openai.com
 
 - [What is a vector database?](../vector-database.md)
 - [Retrieval-augmented generation (RAG)](rag.md)
-- [Vector search in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
+- [Vector search in Azure Cosmos DB NoSQL](../vector-search.md)
 - [Vector store in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [Vector search in Azure Cosmos DB](vector-search-overview.md)
 - [What are tokens?](tokens.md)

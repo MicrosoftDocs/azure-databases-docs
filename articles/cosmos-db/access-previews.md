@@ -28,4 +28,4 @@ Azure Cosmos DB offers several preview features that you can request access to. 
 
 ## Related content
 
-- [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)

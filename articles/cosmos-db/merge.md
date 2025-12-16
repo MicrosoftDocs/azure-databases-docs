@@ -295,8 +295,8 @@ Support for other SDKs is planned for the future.
 > [!TIP]
 > You should ensure that your application has been updated to use a compatible SDK version prior to enrolling in the preview. If you're using a legacy SDK, follow the appropriate migration guide:
 >
-> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](nosql/migrate-dotnet-v3.md)
-> - Legacy Java v3 SDK: [Java SDK v4 migration guide](nosql/migrate-java-v4-sdk.md)
+> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](migrate-dotnet-v3.md)
+> - Legacy Java v3 SDK: [Java SDK v4 migration guide](migrate-java-v4-sdk.md)
 >
 
 ### Unsupported connectors

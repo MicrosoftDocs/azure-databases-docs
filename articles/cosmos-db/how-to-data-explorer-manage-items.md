@@ -19,7 +19,7 @@ Use the Data Explorer for Azure Cosmos DB to select and delete multiple items di
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new API for NoSQL account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new API for NoSQL account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Delete multiple items
@@ -69,5 +69,5 @@ Use the **Feedback** icon in the command bar of the Data Explorer to give the pr
 
 ## Related content
 
-- [Delete items by partition key value in Azure Cosmos DB for NoSQL](nosql/how-to-delete-by-partition-key.md)
+- [Delete items by partition key value in Azure Cosmos DB for NoSQL](how-to-delete-by-partition-key.md)
 - [Move data between containers in Azure Cosmos DB](container-copy.md)

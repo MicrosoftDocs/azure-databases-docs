@@ -27,7 +27,7 @@ No-ETL, near real-time analytics can open up various possibilities for your busi
 * Real-time personalization
 * Predictive maintenance, anomaly detection in IOT scenarios
 
-Additionally, as a NoSQL database with latency SLA, Cosmos is an amazing serving layer and can serve data extremely fast and with high concurrency. To learn more about how to implement this pattern using Cosmos DB see, [Reverse ETL with Cosmos DB](nosql/reverse-extract-transform-load.md)
+Additionally, as a NoSQL database with latency SLA, Cosmos is an amazing serving layer and can serve data extremely fast and with high concurrency. To learn more about how to implement this pattern using Cosmos DB see, [Reverse ETL with Cosmos DB](reverse-extract-transform-load.md)
 
 ## Supply chain analytics, forecasting & reporting
 
