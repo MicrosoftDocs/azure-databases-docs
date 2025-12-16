@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 4/21/2025
+ms.date: 12/11/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -242,11 +242,85 @@ There are several options to visualize Azure Monitor metrics.
 |Overview page|Most Azure services have an **Overview** page in the Azure portal that includes a **Monitor** section with charts that show recent critical metrics. This information is intended for owners of individual services to quickly assess the performance of the resource. |This page is based on platform metrics that are collected automatically. No configuration is required.         |
 |[Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started)|You can use Metrics Explorer to interactively work with metric data and create metric alerts. You need minimal training to use Metrics Explorer, but you must be familiar with the metrics you want to analyze. |- Once data collection is configured, no other configuration is required.<br>- Platform metrics for Azure resources are automatically available.<br>- Guest metrics for virtual machines are available after an Azure Monitor agent is deployed to the virtual machine.<br>- Application metrics are available after Application Insights is configured.         |
 | [Grafana](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](/azure/azure-monitor/visualize/grafana-plugin) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure PostgreSQL Monitoring](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
+## Azure Database for PostgreSQL resource logs
 
+These are logs generated and collected from operations that occur at the data plane level.
 
-## Logs
+They aren't automatically collected by default. Their collection to a supported external location requires configuration and has associated costs of ingestion, retention and subsequent querying.
 
-In addition to the metrics, you can use Azure Database for PostgreSQL to configure and access Azure Database for PostgreSQL standard logs. For more information, see [Logging concepts](concepts-logging.md).
+These logs are organized in categories and those categories are grouped into category groups.
+
+Following are the logs that, using **Diagnostic Settings** can be streamed to an external destination like a Log Analytics workspace, an storage account, an event hub, or a partner solution:
+
+**Description**: PostgreSQL server logs.<br>
+**Running frequency**: 10 seconds.<br>
+**Category name**: PostgreSQLLogs.<br>
+**Display name**: PostgreSQL Server Logs.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLServerLogs.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLLogs.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPostgresServerLogs.<br>
+**Additional requirements**: None.<br>
+
+**Description**: Snapshot of active PostgreSQL sessions showing details current database connections and their activity, including session metadata, timing, and wait states.<br>
+**Running frequency**: 5 minutes.<br>
+**Category name**: PostgreSQLFlexSessions.<br>
+**Display name**: PostgreSQL Sessions data.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLPgStatActivitySessions.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexSessions.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPgStatActivitySessions.<br>
+**Additional requirements**: None.<br>
+
+**Description**: Detailed query performance statistics from PostgreSQL query store.<br>
+**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br>
+**Category name**: PostgreSQLFlexQueryStoreRuntime.<br>
+**Display name**: PostgreSQL Query Store Runtime.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLQueryStoreRuntime.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexQueryStoreRuntime.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetQueryStoreRuntime.<br>
+**Additional requirements**: `pg_qs.query_capture_mode` must be set to either `top` or `all`.<br>
+
+**Description**: What queries were waiting on what wait events and for how long.<br>
+**Running frequency**: 5 minutes when `pg_qs.interval_length_minutes` is between 1 and 5. Number of minutes specified in `pg_qs.interval_length_minutes`, when `pg_qs.interval_length_minutes` is higher than 5 minutes.<br>
+**Category name**: PostgreSQLFlexQueryStoreWaitStats.<br>
+**Display name**: PostgreSQL Query Store Wait Statistics.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLQueryStoreWaits.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexQueryStoreWaitStats.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetQueryStoreWaits.<br>
+**Additional requirements**: `pg_qs.query_capture_mode` must be set to either `top` or `all`, and `pgms_wait_sampling.query_capture_mode` must be set to `on`.<br>
+
+**Description**: Schema-level aggregated statistics about all tables in the database, summarizing table activity and maintenance metrics.<br>
+**Running frequency**: 30 minutes.<br>
+**Category name**: PostgreSQLFlexTableStats.<br>
+**Display name**: PostgreSQL Autovacuum and schema statistics.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLAutovacuumStats.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexTableStats.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetAutovacuumStats.<br>
+**Additional requirements**: None.<br>
+
+**Description**: Database-level view of transaction ID (XID) and multixact ID age and wraparound risk, along with thresholds for autovacuum and emergency vacuum actions.<br>
+**Running frequency**: 30 minutes.<br>
+**Category name**: PostgreSQLFlexDatabaseXacts.<br>
+**Display name**: PostgreSQL remaining transactions.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLDbTransactionsStats.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexDatabaseXacts.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetDbTransactionsStats.<br>
+**Additional requirements**: None.<br>
+
+**Description**: Built-in PgBouncer logs.<br>
+**Running frequency**: 10 seconds.<br>
+**Category name**: N/A.<br>
+**Display name**: N/A.<br>
+**Included in category group**: audit and allLogs.<br>
+**Resource specific table**: PGSQLPgBouncer.<br>
+**Value of Category column when streamed to AzureDiagnostics**: PostgreSQLFlexPGBouncer.<br>
+**Function to concatenate events from AzureDiagnostics and resource specific table**: _PGSQL_GetPgBouncerLogs.<br>
+**Additional requirements**: Built-in PgBouncer must be enabled on the server via setting `pgbouncer.enabled` to `on`.<br>
 
 ### Logs visualization
 

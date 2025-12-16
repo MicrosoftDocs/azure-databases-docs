@@ -54,7 +54,7 @@ The short answer is *yes*, but not all errors make sense to retry on. Some of th
 | 401 | No | No | [Not authorized](troubleshoot-unauthorized.md) |
 | 403 | Optional | No | [Forbidden](troubleshoot-forbidden.md) |
 | 404 | No | No | [Resource not found](troubleshoot-not-found.md) |
-| 408 | Yes | Yes | [Request timed out](troubleshoot-dotnet-sdk-request-timeout.md) |
+| 408 | Yes | Yes | [Request timed out](troubleshoot-dotnet-sdk-request-time-out.md) |
 | 409 | No | No | Conflict failure is when the ID and partition key provided for a resource on a write operation is taken by an existing resource or when a [unique key constraint](../unique-keys.md) is violated. |
 | 410 | Yes | Yes | Gone exceptions (transient failure that shouldn't violate SLA) |
 | 412 | No | No | Precondition failure is where the operation specified an eTag that's different from the version available at the server. It's an [optimistic concurrency](database-transactions-optimistic-concurrency.md#optimistic-concurrency-control) error. Retry the request after reading the latest version of the resource and updating the eTag on the request.

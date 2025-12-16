@@ -10,8 +10,6 @@ ms.subservice: table
 ms.topic: overview
 ms.date: 07/22/2025
 ai-usage: ai-generated
-appliesto:
-  - ✅ Table
 ---
 
 # What is Azure Cosmos DB for Table?

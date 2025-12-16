@@ -378,7 +378,7 @@
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks
-      href: ./flexible-server/create-automation-tasks.md
+      href: integration/create-automation-tasks.md
       displayName: Automation
     - name: Power BI
       href: integration/connect-with-power-bi-desktop.md

@@ -12,7 +12,7 @@ ms.custom: references_regions, synapse-cosmos-db
 # Configure and use Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
 
@@ -89,7 +89,7 @@ Use `EnableAnalyticalStorage true` for both **create** or **update** operations.
 
 #### Azure Resource Manager template
 
-This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
+This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-db-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
 
 ## <a id="update-analytical-ttl"></a> Enable Azure Synapse Link for your containers
 
