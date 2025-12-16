@@ -9,11 +9,11 @@ ms.devlang: python
 ms.topic: how-to
 ms.date: 12/06/2022
 ms.custom: devx-track-python, devguide-python, cosmos-db-dev-journey
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create a database in Azure Cosmos DB for NoSQL using Python
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Databases in Azure Cosmos DB are units of management for one or more containers. Before you can create or manage containers, you must first create a database.
 

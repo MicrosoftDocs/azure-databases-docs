@@ -9,10 +9,11 @@ ms.date: 07/25/2024
 ms.author: maquaran
 ms.devlang: csharp
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Use the change feed estimator
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes how you can monitor the progress of your [change feed processor](./change-feed-processor.md) instances as they read the change feed.
 

@@ -9,10 +9,11 @@ ms.date: 11/28/2023
 ms.author: maquaran
 ms.devlang: csharp
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate from the change feed processor library to the Azure Cosmos DB .NET V3 SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes the required steps to migrate an existing application's code that uses the [change feed processor library](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) to the [change feed](change-feed.md) feature in the latest version of the .NET SDK (also referred as .NET V3 SDK).
 

@@ -7,11 +7,11 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 07/09/2025
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Query an Azure Cosmos DB container
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to query data (such as a collection, graph, or table) within a container in Azure Cosmos DB. In particular, it covers how in-partition and cross-partition queries work in Azure Cosmos DB.
 
