@@ -6,10 +6,11 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/21/2022
 ms.author: maquaran
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to configure logging and connectivity with the Azure Functions trigger for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes advanced configuration options you can set when using the Azure Functions trigger for Azure Cosmos DB.
 

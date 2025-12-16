@@ -8,11 +8,12 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/03/2024
 #Customer Intent: As a database developer, I want to manage multiple items using the Data Explorer, so that I can delete items in bulk.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # View and delete multiple items in Azure Cosmos DB Data Explorer
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 Use the Data Explorer for Azure Cosmos DB to select and delete multiple items directly in the Azure portal. This feature makes it easier to batch manage multiple items without executing a query.
 
