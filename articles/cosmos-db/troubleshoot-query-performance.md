@@ -7,9 +7,11 @@ ms.topic: troubleshooting
 ms.date: 04/04/2022
 ms.author: mjbrown
 ms.subservice: nosql
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Troubleshoot query issues when using Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article walks through a general recommended approach for troubleshooting queries in Azure Cosmos DB. Although you shouldn't consider the steps outlined in this article a complete defense against potential query issues, we've included the most common performance tips here. You should use this article as a starting place for troubleshooting slow or expensive queries in the Azure Cosmos DB for NoSQL. You can also use [diagnostics logs](monitor-resource-logs.md) to identify queries that are slow or that consume significant amounts of throughput. If you are using Azure Cosmos DB's API for MongoDB, you should use [Azure Cosmos DB's API for MongoDB query troubleshooting guide](mongodb/troubleshoot-query-performance.md)
 

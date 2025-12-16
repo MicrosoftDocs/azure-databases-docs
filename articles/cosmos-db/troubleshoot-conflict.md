@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.date: 02/18/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB conflict exceptions
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 409 represents the request had a conflict while processing.
 

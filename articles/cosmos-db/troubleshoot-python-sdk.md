@@ -9,10 +9,11 @@ ms.devlang: python
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.custom: devx-track-python, devx-track-extended-python
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Troubleshoot issues when you use Azure Cosmos DB Python SDK with API for NoSQL accounts
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Python SDK](troubleshoot-python-sdk.md)

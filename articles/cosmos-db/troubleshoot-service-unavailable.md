@@ -7,11 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.date: 07/18/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB service unavailable exceptions
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to troubleshoot when the SDK can't connect to Azure Cosmos DB. This scenario can be transient or permanent depending on the network conditions.
 

@@ -8,9 +8,11 @@ ms.author: mjbrown
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](troubleshoot-java-sdk-v4.md)

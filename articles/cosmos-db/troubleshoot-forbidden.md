@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
 ms.date: 08/28/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB forbidden exceptions
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 403 represents the request is forbidden to complete.
 

@@ -7,11 +7,11 @@ ms.date: 07/17/2025
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot Azure Cosmos DB not found exceptions
-
-[!INCLUDE [NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 404 indicates that the resource no longer exists.
 
