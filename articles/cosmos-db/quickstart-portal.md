@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 11/03/2025
 ms.custom: sfi-image-nochange
 # CustomerIntent: As a cloud user, I want to create a new Azure Cosmos DB account, so that I can manage resources and data.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Quickstart: Create an Azure Cosmos DB for NoSQL account using the Azure portal
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Interface Quickstart selector](includes/quickstart/interface-selector.md)]
 

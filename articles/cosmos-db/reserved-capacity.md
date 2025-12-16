@@ -6,10 +6,15 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 07/02/2025
 ms.author: andrl
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB Reserved Capacity allows you to benefit from discounted prices on the throughput provisioned for your Azure Cosmos DB resources. You can enjoy up to 63% savings by committing to a reservation for Azure Cosmos DB resources for either one year or three years. Examples of resources are databases and containers (tables, collections, and graphs). It doesn’t cover networking or storage.
 
