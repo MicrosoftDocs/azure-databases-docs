@@ -16,7 +16,7 @@ ms.topic: how-to
 
 ## Validate client configuration
 
-To validate your client configuration prior to any planned rotation, ensure that you implement [Recommended configurations for TLS](security-tls#recommended-configurations-for-tls).
+To validate your client configuration prior to any planned rotation, ensure that you implement [Recommended configurations for TLS](security-tls.md#recommended-configurations-for-tls).
 
 ### Checking your root certificate store
 
