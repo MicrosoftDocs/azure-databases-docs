@@ -9,11 +9,11 @@ ms.subservice: nosql
 ms.topic: troubleshooting
 ms.date: 04/11/2023
 ms.custom: build-2023
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot issues with the Azure Functions trigger for Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article covers common issues, workarounds, and diagnostic steps when you're using the [Azure Functions trigger for Azure Cosmos DB for NoSQL](change-feed-functions.md).
 

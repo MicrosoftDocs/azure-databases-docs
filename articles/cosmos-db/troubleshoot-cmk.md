@@ -7,11 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/25/2022
 ms.devlang: azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Cross Tenant Customer-Managed Key (CMK) Troubleshooting Guide
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 ## This article helps troubleshoot Cross Tenant CMK errors
 

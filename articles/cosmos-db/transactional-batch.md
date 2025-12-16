@@ -8,10 +8,11 @@ ms.subservice: nosql
 ms.custom: devx-track-dotnet, devx-track-extended-java, devx-track-python
 ms.topic: how-to
 ms.date: 07/16/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Transactional batch operations in Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Transactional batch describes a group of point operations that need to either succeed or fail together with the same partition key in a container. Operations are defined, added to the batch, and the batch is executed. If all operations succeed in the order they're described within the transactional batch operation, the transaction is committed. However, if any operation fails, the entire transaction is rolled back.
 

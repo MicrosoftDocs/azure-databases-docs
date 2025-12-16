@@ -7,10 +7,11 @@ ms.subservice: nosql
 ms.date: 07/17/2025
 ms.author: maquaran
 ms.topic: troubleshooting
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Diagnose and troubleshoot bad request exceptions in Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The HTTP status code 400 indicates that the request contains invalid data or is missing required parameters.
 
