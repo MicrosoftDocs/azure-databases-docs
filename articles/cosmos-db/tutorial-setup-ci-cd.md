@@ -7,9 +7,15 @@ ms.date: 11/22/2022
 ms.author: esarroyo
 author: StefArroyo
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Set up a CI/CD pipeline with the Azure Cosmos DB Emulator build task in Azure DevOps
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!NOTE]
 > Due to the full removal of Windows 2016 hosted runners on April 1st, 2022, this method of using the Azure Cosmos DB emulator with build task in Azure DevOps is no longer supported. We are actively working on alternative solutions. Meanwhile, you can follow the below instructions to leverage the Azure Cosmos DB emulator which comes pre-installed when using the "windows-2019" agent type.

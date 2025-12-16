@@ -9,9 +9,11 @@ ms.topic: how-to
 ms.date: 1/5/2023
 ms.devlang: csharp
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Tuning query performance with Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides a [API for NoSQL for querying data](/cosmos-db/query/overview), without requiring schema or secondary indexes. This article provides the following information for developers:
 

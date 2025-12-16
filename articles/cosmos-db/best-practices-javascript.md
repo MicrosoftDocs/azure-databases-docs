@@ -9,11 +9,11 @@ ms.subservice: nosql
 ms.custom: devx-track-js
 ms.topic: best-practice
 ms.date: 09/11/2023
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Best practices for JavaScript SDK in Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This guide includes best practices for solutions built using the latest version of the JavaScript SDK for Azure Cosmos DB for NoSQL. The best practices included here helps improve latency, improve availability, and boost overall performance for your solutions.
 

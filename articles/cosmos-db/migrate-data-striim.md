@@ -39,17 +39,17 @@ This article shows how to use Striim to migrate data from an **Oracle database**
 
    |Setting	| Value | Description |
    | ---| ---| ---|
-   |Striim deployment type |Standalone | Striim can run in a **Standalone** or **Cluster** deployment types. Standalone mode will deploy the Striim server on a single virtual machine and you can select the size of the VMs depending on your data volume. Cluster mode will deploy the Striim server on two or more VMs with the selected size. Cluster environments with more than 2 nodes offer automatic high availability and failover.</br></br> In this tutorial, you can select Standalone option. Use the default “Standard_F4s” size VM.  | 
+   |Striim deployment type |Standalone | Striim can run in a **Standalone** or **Cluster** deployment types. Standalone mode deploys the Striim server on a single virtual machine and you can select the size of the VMs depending on your data volume. Cluster mode deploys the Striim server on two or more VMs with the selected size. Cluster environments with more than two nodes offer automatic high availability and failover.</br></br> In this tutorial, you can select Standalone option. Use the default “Standard_F4s” size VM.  | 
    | Name of the Striim cluster|	<Striim_cluster_Name>|	Name of the Striim cluster.|
    | Striim cluster password|	<Striim_cluster_password>|	Password for the cluster.|
 
    After you fill the form, select **OK** to continue.
 
-1. In the **Striim access settings** pane, configure the **Public IP address** (choose the default values), **Domain name for Striim**, **Admin password** that you’d like to use to login to the Striim UI. Configure a VNET and Subnet (choose the default values). After filling in the details, select **OK** to continue.
+1. In the **Striim access settings** pane, configure the **Public IP address** (choose the default values), **Domain name for Striim**, **Admin password** that you’d like to use to sign in to the Striim UI. Configure a virtual network and Subnet (choose the default values). After filling in the details, select **OK** to continue.
 
    :::image type="content" source="media/migrate-data-striim/striim-access-settings.png" alt-text="Striim access settings":::
 
-1. Azure will validate the deployment and make sure everything looks good; validation takes few minutes to complete. After the validation is completed, select **OK**.
+1. Azure validates the deployment and make sure everything looks good; validation takes few minutes to complete. After the validation is completed, select **OK**.
   
 1. Finally, review the terms of use and select **Create** to create your Striim instance. 
 
@@ -59,11 +59,11 @@ In this section, you configure the Oracle database as the source for data moveme
 
 ## Configure the target database
 
-In this section, you will configure the Azure Cosmos DB for NoSQL account as the target for data movement.
+In this section, you'll configure the Azure Cosmos DB for NoSQL account as the target for data movement.
 
 1. Create an [Azure Cosmos DB for NoSQL account](quickstart-portal.md) using the Azure portal.
 
-1. Navigate to the **Data Explorer** pane in your Azure Cosmos DB account. Select **New Container** to create a new container. Assume that you are migrating *products* and *orders* data from Oracle database to Azure Cosmos DB. Create a new database named **StriimDemo** with a container named **Orders**. Provision the container with **1000 RUs** (this example uses 1000 RUs, but you should use the throughput estimated for your workload), and **/ORDER_ID** as the partition key. These values will differ depending on your source data. 
+1. Navigate to the **Data Explorer** pane in your Azure Cosmos DB account. Select **New Container** to create a new container. Assume that you are migrating *products* and *orders* data from Oracle database to Azure Cosmos DB. Create a new database named **StriimDemo** with a container named **Orders**. Provision the container with **1000 RUs** (this example uses 1000 RUs, but you should use the throughput estimated for your workload), and **/ORDER_ID** as the partition key. These values differ depending on your source data. 
 
    :::image type="content" source="media/migrate-data-striim/create-sql-api-account.png" alt-text="Create a API for NoSQL account":::
 
@@ -73,7 +73,7 @@ In this section, you will configure the Azure Cosmos DB for NoSQL account as the
 
    :::image type="content" source="media/migrate-data-striim/get-ssh-url.png" alt-text="Get the SSH URL":::
 
-1. Open a new terminal window and run the SSH command you copied from the Azure portal. This article uses terminal in a MacOS, you can follow the similar instructions using an SSH client on a Windows machine. When prompted, type **yes** to continue and enter the **password** you have set for the virtual machine in the previous step.
+1. Open a new terminal window and run the SSH command you copied from the Azure portal. This article uses terminal in a macOS, you can follow the similar instructions using an SSH client on a Windows machine. When prompted, type **yes** to continue and enter the **password** you have set for the virtual machine in the previous step.
 
    :::image type="content" source="media/migrate-data-striim/striim-vm-connect.png" alt-text="Connect to Striim VM":::
 
@@ -102,7 +102,7 @@ In this section, you will configure the Azure Cosmos DB for NoSQL account as the
 
 1. Now you’ll arrive at Striim’s home page. There are three different panes – **Dashboards**, **Apps**, and **SourcePreview**. The Dashboards pane allows you to move data in real time and visualize it. The Apps pane contains your streaming data pipelines, or data flows. On the right hand of the page is SourcePreview where you can preview your data before moving it.
 
-1. Select the **Apps** pane, we’ll focus on this pane for now. There are a variety of sample apps that you can use to learn about Striim, however in this article you will create our own. Select the **Add App** button in the top right-hand corner.
+1. Select the **Apps** pane, we’ll focus on this pane for now. There are a variety of sample apps that you can use to learn about Striim, however in this article you'll create our own. Select the **Add App** button in the top right-hand corner.
 
    :::image type="content" source="media/migrate-data-striim/add-striim-app.png" alt-text="Add the Striim app":::
 
@@ -128,7 +128,7 @@ In this section, you will configure the Azure Cosmos DB for NoSQL account as the
 
    :::image type="content" source="media/migrate-data-striim/select-source-tables.png" alt-text="Select source tables":::
 
-1. After selecting the source table, you can do more complicated operations such as mapping and filtering. In this case, you will just create a replica of your source table in Azure Cosmos DB. So, select **Next** to configure the target
+1. After selecting the source table, you can do more complicated operations such as mapping and filtering. In this case, you'll just create a replica of your source table in Azure Cosmos DB. So, select **Next** to configure the target
 
 1. Now, let’s configure the target:
 
@@ -170,7 +170,7 @@ By using the Striim solution in Azure, you can continuously migrate data to Azur
 ## Next steps
 
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
 
 * If you are migrating data to Azure Cosmos DB for NoSQL, see [how to migrate data to API for Cassandra account using Striim](cassandra/migrate-data-striim.md)

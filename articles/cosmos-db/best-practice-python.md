@@ -9,11 +9,11 @@ ms.subservice: nosql
 ms.custom: devx-track-python
 ms.topic: best-practice
 ms.date: 04/08/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Best practices for Python SDK in Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This guide includes best practices for solutions built using the latest version of the Python SDK for Azure Cosmos DB for NoSQL. The best practices included here helps improve latency, improve availability, and boost overall performance for your solutions.
 

@@ -10,10 +10,11 @@ ms.author: jucocchi
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript, python
 ms.custom: devx-track-js, kr2b-contr-experiment, devx-track-dotnet, devx-track-extended-java, devx-track-python
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Find the request unit charge for operations in Azure Cosmos DB for NoSQL
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB supports many APIs, such as SQL, MongoDB, Cassandra, Gremlin, and Table. Each API has its own set of database operations. These operations range from simple point reads and writes to complex queries. Each database operation consumes system resources based on the complexity of the operation.
 

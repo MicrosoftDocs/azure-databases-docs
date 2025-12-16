@@ -18,7 +18,7 @@ This article describes the required steps to migrate an existing application's c
 
 ## Enable bulk support
 
-To use bulk support in the Java SDK, include the import below:
+To use bulk support in the Java SDK, include the import here:
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=CosmosBulkOperationsImport)]
 
@@ -53,11 +53,11 @@ for (int i = 1; i <= 5; i++){
 Flux<SampleDoc> docs = Flux.fromIterable(docList);
 ```
 
-If you want to do bulk create or upsert items (similar to using [DocumentBulkExecutor.importAll](/java/api/com.microsoft.azure.documentdb.bulkexecutor.documentbulkexecutor.importall)), you need to pass the reactive stream to a method like the following:
+If you want to do bulk create or upsert items (similar to using [DocumentBulkExecutor.importAll](/java/api/com.microsoft.azure.documentdb.bulkexecutor.documentbulkexecutor.importall)), you need to pass the reactive stream to a method like the following example:
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=BulkUpsertItems)]
 
-You can also use a method like the below, but this is only used for creating items:
+You can also use a method like here, but this technique is only used for creating items:
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=BulkCreateItems)]
 
@@ -66,12 +66,12 @@ The [DocumentBulkExecutor.importAll](/java/api/com.microsoft.azure.documentdb.bu
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=PatchOperations)]
 
-Then you can pass the operations, along with the reactive stream of documents, to a method like the below. In this example, we apply both `add` and `set` patch operation types. The full set of patch operation types supported can be found [here](partial-document-update.md#supported-operations) in our overview of [partial document update in Azure Cosmos DB](partial-document-update.md).
+Then you can pass the operations, along with the reactive stream of documents, to a method like here. In this example, we apply both `add` and `set` patch operation types. The full set of patch operation types supported can be found [here](partial-document-update.md#supported-operations) in our overview of [partial document update in Azure Cosmos DB](partial-document-update.md).
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=BulkPatchItems)]
 
 > [!NOTE]
-> In the above example, we apply `add` and `set` to patch elements whose root parent exists. However, you cannot do this where the root parent does **not** exist. This is because Azure Cosmos DB partial document update is [inspired by JSON Patch RFC 6902](partial-document-update-faq.yml#is-this-an-implementation-of-json-patch-rfc-6902-). If patching where root parent does not exist, first read back the full documents, then use a method like the below to replace the documents:
+> In the previous example, we apply `add` and `set` to patch elements whose root parent exists. However, you can't do this operation here as the root parent does **not** exist. This is because Azure Cosmos DB partial document update is [inspired by JSON Patch RFC 6902](partial-document-update-faq.yml#is-this-an-implementation-of-json-patch-rfc-6902-). If patching where root parent doesn't exist, first read back the full documents, then use a method like the here to replace the documents:
 > [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/bulk/async/SampleBulkQuickStartAsync.java?name=BulkReplaceItems)]               
 
 
@@ -89,5 +89,5 @@ The bulk support in Java V4 SDK doesn't handle retries and timeouts natively. Yo
 
 * [Bulk samples on GitHub](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/tree/main/src/main/java/com/azure/cosmos/examples/bulk/async)
 * Trying to do capacity planning for a migration to Azure Cosmos DB?
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

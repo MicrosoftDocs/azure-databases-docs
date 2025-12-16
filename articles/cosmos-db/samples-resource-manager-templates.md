@@ -8,10 +8,11 @@ ms.custom: devx-track-arm-template
 ms.topic: sample
 ms.date: 08/26/2021
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Resource Manager templates for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article only shows Azure Resource Manager template examples for API for NoSQL accounts. You can also find template examples for [Cassandra](cassandra/templates-samples.md), [Gremlin](graph/resource-manager-template-samples.md), [MongoDB](mongodb/resource-manager-template-samples.md), and [Table](table/resource-manager-templates.md) APIs.
 

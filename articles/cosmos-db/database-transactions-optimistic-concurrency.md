@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 07/07/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Transactions and optimistic concurrency control
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Database transactions provide a safe and predictable programming model to deal with concurrent changes to the data. Traditional relational databases, like SQL Server, allow you to write the business logic using stored procedures and triggers, and then send it to the server for execution directly within the database engine.
 

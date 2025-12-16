@@ -7,9 +7,15 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.custom: subject-policy-reference
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Azure Policy built-in definitions for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This page is an index of [Azure Policy](/azure/governance/policy/overview) built-in policy
 definitions for Azure Cosmos DB. For additional Azure Policy built-ins for other services, see

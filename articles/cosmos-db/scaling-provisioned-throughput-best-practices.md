@@ -8,10 +8,15 @@ ms.date: 07/23/2025
 ms.author: dech
 ms.topic: troubleshooting
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Best practices for scaling provisioned throughput
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes best practices and strategies for scaling the throughput of your database or container (collection, table, or graph). The concepts apply when you increase either the provisioned manual request units per second (RU/s) or the autoscale maximum RU/s of any resource for any of the Azure Cosmos DB APIs.
 

@@ -7,11 +7,15 @@ ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 03/10/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Command-line and PowerShell reference for Windows (local) emulator
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 The Azure Cosmos DB emulator provides a local environment that emulates the Azure Cosmos DB service for local development purposes. After installing the emulator, you can control the emulator with command line and PowerShell commands. This article describes how to use the command-line and PowerShell commands to start and stop the emulator, configure options, and perform other operations. You have to run the commands from the installation location.
 

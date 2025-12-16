@@ -7,11 +7,11 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 11/21/2021
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Understanding distributed relational databases
-
-[!INCLUDE[PostgreSQL](includes/appliesto-postgresql.md)]
 
 Azure Cosmos DB is a globally distributed database platform for both NoSQL and relational databases of any scale. This article explores distributed relational databases in the context of Azure Cosmos DB’s relational API option.
 

@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.custom: ignite-2023, sfi-image-nochange, ignite-2025
 ms.topic: how-to
 ms.date: 11/15/2023
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Priority-based execution in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Priority based execution allows users to specify priority of requests sent to Azure Cosmos DB. In cases where the number of requests exceeds the capacity that can be processed within the configured Request Units per second (RU/s), then Azure Cosmos DB throttles low priority requests to prioritize the execution of high priority requests.
 

@@ -10,11 +10,15 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/03/2025
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Tutorial: Store and use Azure Cosmos DB credentials with Azure Key Vault
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!IMPORTANT]
 > We recommend that you access Azure Cosmos DB by using a system-assigned managed identity. If both the managed identity solution and cert based solution do not meet your needs, please use the Azure Key vault solution in this article.

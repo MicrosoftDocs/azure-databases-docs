@@ -7,11 +7,12 @@ ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Change Data Capture in Azure Cosmos DB analytical store
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
