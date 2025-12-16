@@ -17,7 +17,7 @@ To get meaningful insights on your Azure Cosmos DB data, you may need to query w
 
 To isolate transactional workloads from the performance impact of complex analytical queries, as well as help to combine that data with other sources of data in your organization, Azure Cosmos DB and Microsoft Fabric address these challenges by providing zero ETL, cost-effective analytics offerings with Azure Cosmos DB Mirroring and Cosmos DB in Microsoft Fabric.
  
-[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 ## Option 1: Mirroring your Azure Cosmos DB data into Microsoft Fabric
 

@@ -12,7 +12,7 @@ ms.custom: sfi-image-nochange
 # Configure Azure Private Link for Azure Cosmos DB analytical store
 [!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
-[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 In this article, you will learn how to set up managed private endpoints for Azure Cosmos DB analytical store. If you are using the transactional store, see [Private endpoints for the transactional store](how-to-configure-private-endpoints.md) article. Using [managed private endpoints](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints), you can restrict network access of your Azure Cosmos DB analytical store, to a Managed Virtual Network associated with your Azure Synapse workspace. Managed private endpoints establish a private link to your analytical store.
 
