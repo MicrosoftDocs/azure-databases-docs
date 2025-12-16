@@ -7,10 +7,11 @@ ms.topic: how-to
 ms.date: 12/05/2025
 ms.author: mjbrown
 ms.custom: synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Integrated Power BI experience in Azure Cosmos DB portal for Synapse Link enabled accounts
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 

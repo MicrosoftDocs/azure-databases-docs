@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 03/24/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Choose a partition key for IoT workloads
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this guide, we walk through a real-world scenario demonstrating how to select a partition key for an IoT application using Azure Cosmos DB. Through this use case, we see how partition key choices affect data distribution, query performance, and overall application efficiency. We explore how to evaluate different partitioning strategies based on the unique requirements of an IoT system and apply best practices for optimizing Azure Cosmos DB performance.
 

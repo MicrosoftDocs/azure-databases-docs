@@ -9,11 +9,11 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.custom: devx-track-dotnet, devx-track-extended-java
 ms.date: 07/22/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Get started with Azure Cosmos DB partial document update
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article provides examples that illustrate how to use *partial document update* with .NET, Java, and Node SDKs. It also describes common errors that you might encounter.
 

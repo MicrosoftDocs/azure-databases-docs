@@ -6,10 +6,15 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Use Azure Policy to implement governance and controls for Azure Cosmos DB resources
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 [Azure Policy](/azure/governance/policy/overview) helps to enforce organizational governance standards, assess resource compliance, and implement automatic remediation. Common use cases include security, cost management, and configuration consistency.
 
@@ -48,6 +53,7 @@ To identify Azure Cosmos DB specific property aliases, use the namespace `Micros
 # Login first with az login if not using Cloud Shell
 
 # Get Azure Policy aliases for namespace Microsoft.DocumentDB
+
 az provider show --namespace Microsoft.DocumentDB --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 

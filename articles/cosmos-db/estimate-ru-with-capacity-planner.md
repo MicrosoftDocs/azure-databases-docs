@@ -7,11 +7,11 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 07/08/2025
 ms.author: dech
-
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Estimate RU/s using the Azure Cosmos DB capacity planner - Azure Cosmos DB for NoSQL
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!NOTE]
 > If you're planning a data migration to Azure Cosmos DB and all that you know is the number of vCores and servers in your existing sharded and replicated database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).

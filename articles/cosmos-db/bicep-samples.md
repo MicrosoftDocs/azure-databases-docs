@@ -8,11 +8,11 @@ ms.custom: devx-track-bicep
 ms.topic: sample
 ms.date: 09/13/2021
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Bicep for Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article shows Bicep samples for API for NoSQL accounts. You can also find Bicep samples for [Cassandra](cassandra/manage-with-bicep.md), [Gremlin](graph/manage-with-bicep.md), [MongoDB](mongodb/manage-with-bicep.md), and [Table](table/manage-with-bicep.md) APIs.
 

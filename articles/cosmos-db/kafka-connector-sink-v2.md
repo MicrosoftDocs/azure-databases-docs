@@ -7,10 +7,11 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 11/03/2024
 ms.author: xinlian
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Kafka Connect for Azure Cosmos DB - sink connector v2
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Kafka Connect for Azure Cosmos DB is a connector to read from and write data to Azure Cosmos DB. The Azure Cosmos DB sink connector allows you to export data from Apache Kafka topics to an Azure Cosmos DB database. The connector polls data from Kafka to write to containers in the database based on the topics subscription.
 

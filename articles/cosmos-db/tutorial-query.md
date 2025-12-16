@@ -10,11 +10,11 @@ ms.subservice: nosql
 ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 07/21/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Tutorial: Query data in Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [Azure Cosmos DB for NoSQL](introduction.md) supports querying documents using the built-in query syntax. This article provides a sample document and two sample queries and results.
 

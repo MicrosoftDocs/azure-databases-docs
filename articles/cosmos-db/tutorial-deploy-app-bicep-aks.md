@@ -8,11 +8,11 @@ author: sandnair
 ms.author: sandnair
 ms.topic: tutorial
 ms.date: 09/26/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Tutorial: Deploy an ASP.NET web application by using Azure Cosmos DB for NoSQL, managed identity, and AKS via Bicep
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this tutorial, you deploy a reference ASP.NET web application on an Azure Kubernetes Service (AKS) cluster that connects to Azure Cosmos DB for NoSQL.
 

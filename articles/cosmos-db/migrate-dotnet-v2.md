@@ -15,10 +15,10 @@ appliesto:
 # Migrate your application to use the Azure Cosmos DB .NET SDK v2
 
 > [!IMPORTANT]
-> It is important to note that the v3 of the .NET SDK is currently available and a migration plan from v2 to v3 is available [here](migrate-dotnet-v3.md). To learn about the Azure Cosmos DB .NET SDK v2, see the [Release notes](sdk-dotnet-v2.md), the [.NET GitHub repository](https://github.com/Azure/azure-cosmos-dotnet-v2), .NET SDK v2 [Performance Tips](performance-tips.md), and the [Troubleshooting guide](troubleshoot-dotnet-sdk.md).
+> It's important to note that the v3 of the .NET SDK is currently available and a migration plan from v2 to v3 is available [here](migrate-dotnet-v3.md). To learn about the Azure Cosmos DB .NET SDK v2, see the [Release notes](sdk-dotnet-v2.md), the [.NET GitHub repository](https://github.com/Azure/azure-cosmos-dotnet-v2), .NET SDK v2 [Performance Tips](performance-tips.md), and the [Troubleshooting guide](troubleshoot-dotnet-sdk.md).
 >
 
-This article highlights some of the considerations to upgrade your existing v1 .NET application to Azure Cosmos DB .NET SDK v2 for API for NoSQL. Azure Cosmos DB .NET SDK v2 corresponds to the `Microsoft.Azure.DocumentDB` namespace. You can use the information provided in this document if you are migrating your application from any of the following Azure Cosmos DB .NET Platforms to use the v2 SDK `Microsoft.Azure.Cosmos`:
+This article highlights some of the considerations to upgrade your existing v1 .NET application to Azure Cosmos DB .NET SDK v2 for API for NoSQL. Azure Cosmos DB .NET SDK v2 corresponds to the `Microsoft.Azure.DocumentDB` namespace. You can use the information provided in this document if you're migrating your application from any of the following Azure Cosmos DB .NET Platforms to use the v2 SDK `Microsoft.Azure.Cosmos`:
 
 * Azure Cosmos DB .NET Framework v1 SDK for API for NoSQL
 * Azure Cosmos DB .NET Core SDK v1 for API for NoSQL

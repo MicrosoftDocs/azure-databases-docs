@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 07/15/2025
 author: markjbrown
 ms.author: mjbrown
-
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create a synthetic partition key
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 As a best practice, you should use a partition key that has many distinct values, such as hundreds or thousands. The goal is to distribute your data and workload evenly across the items associated with these partition key values. If such a property doesn’t exist in your data, you can construct a *synthetic partition key*.
 

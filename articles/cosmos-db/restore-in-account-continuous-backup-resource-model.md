@@ -8,12 +8,14 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023, devx-track-arm-template
 ms.topic: concept-article
 ms.date: 03/21/2024
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Resource model for restore in same account for Azure Cosmos DB  
- 
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 This article explains the resource model for the Azure Cosmos DB point-in-time same account restore feature. It explains the parameters that support the continuous backup and resources that can be restored. This feature is supported in Azure Cosmos DB API for NoSQL, API for Gremlin, API for Table, and API for MongoDB.  
 

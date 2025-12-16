@@ -7,11 +7,11 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/18/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate legacy monitoring metrics to Azure Monitor
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The goal of this article is to make it easier for users of the legacy metrics to migrate to Azure Monitor. This article describes the differences between the two APIs, provides a mapping between the two and provides examples of usages to aide in migration.
 

@@ -8,10 +8,10 @@ ms.custom: devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/18/2022
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 # Manage Azure Cosmos DB for NoSQL resources using Azure CLI
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The following guide describes common commands to automate management of your Azure Cosmos DB accounts, databases, and containers using Azure CLI. Reference pages for all Azure Cosmos DB CLI commands are available in the [Azure CLI Reference](/cli/azure/cosmosdb).
 

@@ -9,10 +9,11 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: kuthapar
 ms.custom: devx-track-java, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB Java SDK v4 for API for NoSQL: release notes and resources
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

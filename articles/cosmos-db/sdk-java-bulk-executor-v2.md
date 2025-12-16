@@ -9,10 +9,11 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: mjbrown
 ms.custom: devx-track-java, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Java bulk executor library: Download information
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

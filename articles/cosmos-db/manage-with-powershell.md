@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 02/18/2022
 ms.author: mjbrown
 ms.custom: devx-track-azurepowershell
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage Azure Cosmos DB for NoSQL resources using PowerShell
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The following guide describes how to use PowerShell to script and automate management of Azure Cosmos DB for NoSQL resources, including the Azure Cosmos DB account, database, container, and throughput. For PowerShell cmdlets for other APIs see [PowerShell Samples for Cassandra](cassandra/powershell-samples.md), [PowerShell Samples for API for MongoDB](mongodb/powershell-samples.md), [PowerShell Samples for Gremlin](graph/powershell-samples.md), [PowerShell Samples for Table](table/powershell-samples.md)
 

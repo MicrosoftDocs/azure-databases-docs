@@ -10,11 +10,15 @@ ms.topic: how-to
 ms.devlang: azurecli
 ms.date: 03/23/2023
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Protect Azure Cosmos DB resources with locks
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 As an administrator, you may need to lock an Azure Cosmos DB account, database or container. Locks prevent other users in your organization from accidentally deleting or modifying critical resources. You can set the lock level to `CanNotDelete` or `ReadOnly`.
 

@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 07/01/2025
 ms.author: esarroyo
 ms.custom: cosmos-db-video, devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Best practices for Azure Cosmos DB .NET SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article walks through the best practices for using the Azure Cosmos DB .NET SDK. By following these practices, you can help improve your latency, availability, and boost overall performance.
 
