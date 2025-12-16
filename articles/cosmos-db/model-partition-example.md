@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 07/11/2025
 ms.devlang: javascript
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to model and partition data using a real-world example
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article builds on several Azure Cosmos DB concepts like [data modeling](modeling-data.md), [partitioning](partitioning-overview.md), and [provisioned throughput](request-units.md) to demonstrate how to tackle a real-world data design exercise.
 

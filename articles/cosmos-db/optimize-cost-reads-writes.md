@@ -6,10 +6,15 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 07/21/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize request cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes how read-and-write requests translate into [Request Units (RU)](request-units.md), and how to optimize the cost of these requests. Read operations include point reads and queries. Write operations include insert, replace, delete, and upsert of items.
 

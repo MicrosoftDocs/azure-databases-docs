@@ -11,11 +11,11 @@ ms.devlang: python
 ms.date: 02/27/2023
 ms.custom: sfi-image-nochange, sfi-ropc-blocked
 # ms.devlang: python, scala
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate one-to-few relational data into an Azure Cosmos DB for NoSQL account
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In order to migrate from a relational database to Azure Cosmos DB for NoSQL, it can be necessary to make changes to the data model for optimization.
 
