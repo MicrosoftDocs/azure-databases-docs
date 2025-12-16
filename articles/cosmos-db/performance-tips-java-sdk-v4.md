@@ -9,10 +9,11 @@ ms.topic: how-to
 ms.date: 04/22/2022
 ms.author: mjbrown
 ms.custom: devx-track-java, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Performance tips for Azure Cosmos DB Java SDK v4
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Java SDK v4](performance-tips-java-sdk-v4.md)
