@@ -22,8 +22,6 @@ dev_langs:
   - python
   - go
   - java
-appliesto:
-  - ✅ Table
 #Customer Intent: As a developer, I want to connect to Azure Cosmos DB for Table using role-based access control, so that I can securely manage access to my database resources.
 ---
 

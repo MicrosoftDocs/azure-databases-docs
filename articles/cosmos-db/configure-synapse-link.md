@@ -12,7 +12,7 @@ ms.custom: references_regions, synapse-cosmos-db
 # Configure and use Azure Synapse Link for Azure Cosmos DB
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
 

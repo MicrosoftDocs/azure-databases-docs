@@ -10,8 +10,8 @@ ms.author: sasinnat
 ms.devlang: csharp
 ms.custom: devx-track-dotnet, devx-track-extended-java, devx-track-python
 ---
+
 # Find the request unit charge for operations executed in Azure Cosmos DB for Table
-[!INCLUDE[Table](../includes/appliesto-table.md)]
 
 Azure Cosmos DB supports many APIs, such as SQL, MongoDB, Cassandra, Gremlin, and Table. Each API has its own set of database operations. These operations range from simple point reads and writes to complex queries. Each database operation consumes system resources based on the complexity of the operation.
 
