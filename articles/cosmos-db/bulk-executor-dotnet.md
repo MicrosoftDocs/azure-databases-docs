@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 03/15/2023
 ms.custom: devx-track-csharp, devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Use the bulk executor .NET library to perform bulk operations in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!NOTE]
 > The bulk executor library described in this article is maintained for applications that use the .NET SDK 2.x version. For new applications, you can use the **bulk support** that's directly available with the [.NET SDK version 3.x](tutorial-dotnet-bulk-import.md), and it doesn't require any external library.

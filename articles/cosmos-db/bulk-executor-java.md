@@ -9,10 +9,11 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 03/07/2022
 ms.custom: devx-track-java, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Perform bulk operations on Azure Cosmos DB data
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This tutorial provides instructions on performing bulk operations in the [Azure Cosmos DB Java V4 SDK](sdk-java-v4.md). This version of the SDK comes with the bulk executor library built-in. If you're using an older version of Java SDK, it's recommended to [migrate to the latest version](migrate-java-v4-sdk.md). Azure Cosmos DB Java V4 SDK is the current recommended solution for Java bulk support. 
 
