@@ -23,8 +23,10 @@ jobs:
               AccessToken: ${{ secrets.GITHUB_TOKEN }}
               # For testing set to a little used folder as the only target
               MonitoredFolders: '[
+                    "dms/",
+                    "mariadb/",
                     "mysql/",
-                    "mariadb/"
+                    "postgresql/"                    
                 ]'
   
             run: |
