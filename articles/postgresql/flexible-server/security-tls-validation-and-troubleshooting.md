@@ -4,7 +4,7 @@ description: This article helps you validate your client configuration and troub
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 12/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
