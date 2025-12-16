@@ -9,10 +9,11 @@ ms.topic: how-to
 ms.date: 04/08/2024
 ms.author: kuthapar
 ms.custom: devx-track-python, devx-track-extended-python
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Performance tips for Azure Cosmos DB Python SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [Python SDK](performance-tips-python-sdk.md)
@@ -111,6 +112,7 @@ from azure.cosmos import CosmosClient
 from azure.cosmos.partition_key import PartitionKey
 
 # Configure preferred locations and excluded locations at client level
+
 preferred_locations = ['West US 3', 'West US', 'East US 2']
 excluded_locations_on_client = ['West US 3', 'West US']
 

@@ -6,10 +6,15 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/04/2025
 ms.author: srane
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Failover considerations for Azure Cosmos DB accounts with private endpoints
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB operates differently from many other Azure services when it comes to high availability configurations. Instead of relying on a secondary instance deployed by the customer for resiliency, Azure Cosmos DB accounts are configured with a multi-region setup that actively replicate data across selected regions. During a regional outage, failover (offline region) can be initiated to another region to maintain availability.
 

@@ -7,11 +7,15 @@ ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 03/21/2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Periodic backup storage redundancy in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 By default, Azure Cosmos DB stores periodic mode backup data in geo-redundant [Azure Blob Storage](/azure/storage/common/storage-redundancy). The blob storage is then, by default, replicated to a [paired region](/azure/reliability/cross-region-replication-azure). You can update this default value using Azure PowerShell or Azure CLI and define an Azure policy to enforce a specific storage redundancy option. For more information, see [update backup storage redundancy](periodic-backup-update-storage-redundancy.md).
 

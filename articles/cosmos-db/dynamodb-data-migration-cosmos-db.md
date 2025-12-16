@@ -11,11 +11,11 @@ ms.collection:
  - aws-to-azure
 ms.topic: how-to
 ms.date: 02/21/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate data from DynamoDB to Azure Cosmos DB for NoSQL
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article focuses on *data migration* from Amazon DynamoDB to Azure Cosmos DB for NoSQL. Before you begin, it's important to understand the difference between data migration and application migration:
 

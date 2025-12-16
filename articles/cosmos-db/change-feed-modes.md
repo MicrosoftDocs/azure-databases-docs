@@ -7,10 +7,10 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: concept-article
 ms.date: 4/8/2025
+appliesto:
+  - ✅ NoSQL
 ---
 # Change feed modes in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB offers two change feed modes. Each mode offers the same core functionality. Differences include the operations that are captured in the feed, the metadata that's available for each change, and the retention period of changes. You can consume the change feed in different modes across multiple applications for the same Azure Cosmos DB container to fit the requirements of each workload. Each individual change feed application can only be configured to read change feed in one mode. Consuming the change feed in one mode doesn't prohibit you from consuming the change feed in another mode in a different application.
 

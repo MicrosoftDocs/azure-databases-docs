@@ -6,11 +6,15 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: legal
 ms.date: 09/11/2021
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Compliance in Azure Cosmos DB 
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is available in all Azure regions. Microsoft makes the following Azure cloud environments available to customers:
 

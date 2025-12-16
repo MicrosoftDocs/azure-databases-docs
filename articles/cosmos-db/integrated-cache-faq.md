@@ -7,10 +7,11 @@ ms.subservice: nosql
 ms.topic: faq
 ms.date: 08/29/2022
 ms.author: jucocchi
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB integrated cache frequently asked questions
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB integrated cache is an in-memory cache that is built in to Azure Cosmos DB. This article answers commonly asked questions about the Azure Cosmos DB integrated cache.
 

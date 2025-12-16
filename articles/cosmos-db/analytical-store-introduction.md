@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/05/2025
 ms.custom: devx-track-azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Cosmos DB analytical store?
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
@@ -172,6 +174,7 @@ The following constraints are applicable on the operational data in Azure Cosmos
 
 ```Python
 # Removing one column:
+
 df = spark.read\
      .format("cosmos.olap")\
      .option("spark.synapse.linkedService","<your-linked-service-name>")\

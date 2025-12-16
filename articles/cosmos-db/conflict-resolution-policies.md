@@ -7,10 +7,15 @@ ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 04/20/2020
 ms.author: dech
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Conflict types and resolution policies when using multiple write regions
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Conflicts and conflict resolution policies are applicable if your Azure Cosmos DB account is configured with multiple write regions.
 

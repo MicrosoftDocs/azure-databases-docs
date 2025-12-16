@@ -9,10 +9,11 @@ ms.topic: reference
 ms.date: 04/24/2024
 ms.author: maquaran
 ms.custom: devx-track-go
+appliesto:
+  - ✅ NoSQL
 ---
-# Azure Cosmos DB Go SDK for API for NoSQL: Download and release notes
 
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+# Azure Cosmos DB Go SDK for API for NoSQL: Download and release notes
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

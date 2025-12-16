@@ -6,10 +6,11 @@ ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 06/23/2025
 ms.author: abramees
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB bulk executor library overview
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a fast, flexible, and globally distributed database service that elastically scales out to support:
 

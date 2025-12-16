@@ -9,10 +9,11 @@ ms.topic: reference
 ms.date: 07/24/2023
 ms.author: kuthapar
 ms.custom: devx-track-java, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Spring Data Azure Cosmos DB v5 for API for NoSQL: Release notes and resources
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

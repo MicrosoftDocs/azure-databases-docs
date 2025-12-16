@@ -9,9 +9,11 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 01/25/2022
 ms.custom: devx-track-python
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Azure Cosmos DB Python SDK for API for NoSQL: Release notes and resources
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

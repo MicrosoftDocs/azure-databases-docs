@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 06/11/2025
 ms.custom: subject-armqs, mode-arm, devx-track-bicep
 #Customer intent: As a database admin who is new to Azure, I want to use Azure Cosmos DB to store and manage my data.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Quickstart: Create an Azure Cosmos DB and a container using Bicep
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is Microsoft’s fast NoSQL database with open APIs for any scale. You can use Azure Cosmos DB to quickly create and query key/value databases, document databases, and graph databases. Without a credit card or an Azure subscription, you can set up a free [Try Azure Cosmos DB account](https://aka.ms/trycosmosdb). This quickstart focuses on the process of deploying a Bicep file to create an Azure Cosmos DB database and a container within that database. You can later store data in this container.
 

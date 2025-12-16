@@ -8,10 +8,14 @@ ms.subservice: nosql
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.date: 03/31/2023
 ms.topic: how-to
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Get the latest restorable timestamp for continuous backup accounts
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 This article describes how to get the [latest restorable timestamp](latest-restore-timestamp-continuous-backup.md) for accounts with continuous backup mode. It explains how to get the latest restorable time using Azure PowerShell and Azure CLI, and provides the request and response format for the PowerShell and CLI commands. 
 
