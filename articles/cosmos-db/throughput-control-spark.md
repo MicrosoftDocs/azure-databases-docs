@@ -7,11 +7,11 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 06/22/2022
 ms.author: thvankra
-
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB Spark connector: Throughput control
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The [Spark connector](tutorial-spark-connector.md) allows you to communicate with Azure Cosmos DB by using [Apache Spark](https://spark.apache.org/). This article describes how the throughput control feature works. Check out our [Spark samples in GitHub](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/cosmos/azure-cosmos-spark_3/Samples) to get started using throughput control.
 
