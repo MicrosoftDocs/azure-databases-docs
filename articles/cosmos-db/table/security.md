@@ -11,8 +11,6 @@ ms.topic: best-practice
 ms.date: 09/11/2025
 ms.custom: security-horizontal-2025
 ai-usage: ai-generated
-appliesto:
-  - ✅ Table
 ---
 
 # Secure your Azure Cosmos DB for Table account

@@ -9,8 +9,6 @@ ms.service: azure-cosmos-db
 ms.subservice: table
 ms.topic: reference
 ms.date: 09/10/2025
-appliesto:
-  - ✅ Table
 ---
 
 # Azure Cosmos DB for Table data plane security reference
