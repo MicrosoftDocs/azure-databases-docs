@@ -10,11 +10,11 @@ ms.topic: reference
 ms.devlang: java
 ms.custom: devx-track-extended-java
 ms.date: 02/12/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB for NoSQL Java SDK (legacy): Release notes and resources
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
