@@ -21,6 +21,9 @@ This article explains the different ways to create a container in Azure Cosmos D
 > [!NOTE]
 > When creating containers, make sure you don’t create two containers with the same name but different casing. That’s because some parts of the Azure platform aren't case-sensitive, and this can result in confusion/collision of telemetry and actions on containers with such names.
 
+> [!NOTE]
+> When naming Azure Cosmos DB containers, avoid including sensitive information such as access keys, secrets, customer data, or internal identifiers. Apply Microsoft Entra ID based access controls and least‑privilege permissions for actual security enforcement, keeping container names neutral and non‑revealing.
+
 ## <a id="portal-sql"></a>Create a container using Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
