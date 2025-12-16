@@ -8,11 +8,6 @@ ms.date: 12/02/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - sfi-image-nochange
-  - horz-security
-  -
-
 ---
 
 # Transport Layer Security (TLS) in Azure Database for PostgreSQL
@@ -165,5 +160,5 @@ At this time, Azure Database for PostgreSQL doesn't implement the following TLS 
 
 ## Related content
 
-- [Configure TLS client settings to connect to Azure Database for PostgreSQL](security-connect-tls.md)
-- [Validating client configuration and troubleshooting connection failures](security-tls-validation-and-troubleshooting.md)
+- [Configure TLS client settings to connect to Azure Database for PostgreSQL](security-tls-how-to-connect.md)
+- [Validating client configuration and troubleshooting connection failures](security-tls-troubleshoot.md)
