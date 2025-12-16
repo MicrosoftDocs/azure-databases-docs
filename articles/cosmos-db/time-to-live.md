@@ -7,11 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Time to live in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 By using *time to live (TTL)*, Azure Cosmos DB deletes items automatically from a container after a certain time period. By default, you can set time to live at the container level and override the value on a per-item basis. After you set the TTL at a container or at an item level, Azure Cosmos DB automatically removes these items after the time period, since the time they were last modified. The TTL value is configured in seconds. When you configure TTL, the system automatically deletes the expired items based on the TTL value, without needing a delete operation explicitly issued by the client application. The maximum value for TTL is 2,147,483,647 seconds, the approximate equivalent of 24,855 days or 68 years.
 

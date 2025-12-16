@@ -7,9 +7,15 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.custom: subject-policy-compliancecontrols
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Azure Policy Regulatory Compliance controls for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 [Regulatory Compliance in Azure Policy](/azure/governance/policy/concepts/regulatory-compliance)
 provides Microsoft created and managed initiative definitions, known as _built-ins_, for the

@@ -8,11 +8,13 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/05/2025
 ms.custom: synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Synapse Link for Azure Cosmos DB?
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
