@@ -8,11 +8,11 @@ ms.custom: devx-track-arm-template
 ms.topic: how-to
 ms.date: 02/18/2022
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage Azure Cosmos DB for NoSQL resources with Azure Resource Manager templates
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In this article, you learn how to use Azure Resource Manager templates to help deploy and manage your Azure Cosmos DB accounts, databases, and containers.
 
