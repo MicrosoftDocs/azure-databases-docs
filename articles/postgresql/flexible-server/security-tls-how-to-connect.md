@@ -199,5 +199,5 @@ public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() {
 
 ## Related content
 
-- [Validate client configuration and troubleshoot connection failures](security-tls-validation-and-troubleshooting.md)
+- [Validate client configuration and troubleshoot connection failures](security-tls-troubleshoot.md)
 - [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES).
