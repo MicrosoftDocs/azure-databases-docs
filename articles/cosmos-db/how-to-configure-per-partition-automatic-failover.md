@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 05/14/2025
 ms.custom:
   - build-2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to onboard and adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to configure Per Partition Automatic Failover on your Azure Cosmos DB account.
 

@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/24/2025
 ms.custom: build-2023, sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Hierarchical partition keys in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB distributes your data across logical and physical partitions based on your partition keys to support horizontal scaling. By using hierarchical partition keys (also called *subpartitoning*), you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling.
 
@@ -344,6 +344,7 @@ const { resource: document } = await = container.items.create(item);
 
 ```python
 # specify values for all fields on partition key path
+
 item_definition = {'id': 'f7da01b0-090b-41d2-8416-dacae09fbb4a',
                         'tenantId': 'Microsoft',
                         'userId': '00aa00aa-bb11-cc22-dd33-44ee44ee44ee',

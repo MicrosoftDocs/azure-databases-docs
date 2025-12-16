@@ -7,11 +7,15 @@ ms.topic: how-to
 ms.date: 06/26/2025
 ms.author: jawelton
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure access to Azure Cosmos DB from virtual networks
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!NOTE]
 > The Azure Cosmos DB account and the virtual network must be within the same Microsoft Entra ID tenant.
@@ -176,6 +180,7 @@ In this example, the virtual network and subnet are created with service endpoin
 # Create an Azure Cosmos DB Account with a service endpoint connected to a backend subnet
 
 # Resource group and Azure Cosmos DB account variables
+
 resourceGroupName='MyResourceGroup'
 location='West US 2'
 accountName='mycosmosaccount'

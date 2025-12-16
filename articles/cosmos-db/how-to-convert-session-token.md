@@ -9,10 +9,11 @@ ms.date: 04/30/2020
 ms.author: vitrinh
 ms.devlang: csharp
 ms.custom: devx-track-csharp, devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Convert session token formats in .NET SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to convert between different session token formats to ensure compatibility between SDK versions.
 

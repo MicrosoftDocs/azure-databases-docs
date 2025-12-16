@@ -9,10 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/08/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create an Azure Cosmos DB for NoSQL account
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 An Azure Cosmos DB for NoSQL account contains all of your Azure Cosmos DB resources: databases, containers, and items. The account provides a unique endpoint for various tools and SDKs to connect to Azure Cosmos DB and perform everyday operations. For more information about the resources in Azure Cosmos DB, see [Azure Cosmos DB resource model](resource-model.md).
 

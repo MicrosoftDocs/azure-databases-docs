@@ -9,10 +9,11 @@ ms.date: 04/07/2023
 ms.author: maquaran
 ms.devlang: csharp
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create multiple Azure Functions triggers for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes how you can configure multiple Azure Functions triggers for Azure Cosmos DB to work in parallel and independently react to changes.
 

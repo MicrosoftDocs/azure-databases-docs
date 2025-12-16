@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 10/08/2024
 ms.author: jucocchi
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to configure the Azure Cosmos DB integrated cache
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article describes how to provision a dedicated gateway, configure the integrated cache, and connect your application. 
 

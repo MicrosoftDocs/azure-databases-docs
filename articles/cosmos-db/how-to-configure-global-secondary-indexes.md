@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 4/29/2025
 ms.custom:
   - build-2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to configure Azure Cosmos DB for NoSQL global secondary indexes (preview)
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
 > Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
