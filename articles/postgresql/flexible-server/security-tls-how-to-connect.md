@@ -8,8 +8,6 @@ ms.date: 12/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Connect clients with TLS security to your database
