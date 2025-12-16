@@ -44,4 +44,4 @@ Once the shard failover is completed, the cluster is fully operational. The last
 ## Related content
 
 - [See how to enable high availability in Azure DocumentDB](./how-to-scale-cluster.md#enable-or-disable-high-availability)
-- [Learn about reliability fundamentals in Azure DocumentDB](/azure/reliability/reliability-cosmos-mongodb)
+- [Learn about reliability fundamentals in Azure DocumentDB](/azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context)
