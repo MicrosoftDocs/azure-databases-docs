@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/11/2025
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create a container in Azure Cosmos DB for NoSQL using .NET
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Containers in Azure Cosmos DB store sets of items. Before you can create, query, or manage items, you must first create a container.
 

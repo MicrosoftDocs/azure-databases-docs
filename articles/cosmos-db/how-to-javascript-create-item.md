@@ -9,11 +9,11 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 05/17/2023
 ms.custom: devx-track-js, cosmos-db-dev-journey
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create an item in Azure Cosmos DB for NoSQL using JavaScript
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Items in Azure Cosmos DB represent a specific entity stored within a container. In the API for NoSQL, an item consists of JSON-formatted data with a unique identifier.
 

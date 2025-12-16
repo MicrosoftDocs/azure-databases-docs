@@ -10,11 +10,13 @@ ms.topic: how-to
 ms.date: 06/26/2025
 ms.custom: sfi-ropc-blocked
 # CustomerIntent: As a database owner, I want to use a tool to perform migration to Azure Cosmos DB so that I can streamline large and complex migrations.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Table
 ---
 
 # Migrate data using the desktop data migration tool
-
-[!INCLUDE[NoSQL, MongoDB, Table](includes/appliesto-nosql-mongodb-table.md)]
 
 The [Azure Cosmos DB desktop data migration tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool can migrate data to and from many sources and sinks including, but not limited to:
 

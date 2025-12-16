@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Delete items by partition key value - API for NoSQL (preview)
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to use the Azure Cosmos DB SDKs to delete all items by logical partition key value. 
 

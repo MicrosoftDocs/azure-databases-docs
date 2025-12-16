@@ -9,11 +9,13 @@ ms.date: 06/11/2020
 ms.author: mjbrown
 ms.devlang: csharp
 # ms.devlang: csharp, java, javascript
+
 ms.custom: devx-track-js, devx-track-csharp
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Manage conflict resolution policies in Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 With multi-region writes, when multiple clients write to the same item, conflicts might occur. When a conflict occurs, you can resolve the conflict by using different conflict resolution policies. This article describes how to manage conflict resolution policies.
 

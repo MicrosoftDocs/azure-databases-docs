@@ -9,10 +9,11 @@ ms.devlang: javascript
 ms.topic: how-to
 ms.date: 05/17/2023
 ms.custom: devx-track-js, cosmos-db-dev-journey
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Query items in Azure Cosmos DB for NoSQL using JavaScript
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Items in Azure Cosmos DB represent entities stored within a container. In the API for NoSQL, an item consists of JSON-formatted data with a unique identifier. When you issue queries using the API for NoSQL, results are returned as a JSON array of JSON documents.
 

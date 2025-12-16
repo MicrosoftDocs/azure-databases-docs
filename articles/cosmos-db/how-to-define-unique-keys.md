@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: dech
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, devx-track-dotnet, devx-track-extended-java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Define unique keys for an Azure Cosmos DB container
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article presents the different ways to define [unique keys](unique-keys.md) when creating an Azure Cosmos DB container. It's currently possible to perform this operation either by using the Azure portal or through one of the SDKs.
 

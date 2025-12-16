@@ -9,11 +9,11 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/11/2025
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Read an item in Azure Cosmos DB for NoSQL using .NET
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Items in Azure Cosmos DB represent a specific entity stored within a container. In the API for NoSQL, an item consists of JSON-formatted data with a unique identifier.
 
