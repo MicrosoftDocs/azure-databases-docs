@@ -6,11 +6,15 @@ ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB lifetime free tier
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!NOTE]
 > Free tier is currently not available for serverless accounts.
@@ -65,6 +69,7 @@ To create an account with free tier using the Azure CLI, set the `--enable-free-
 
 ```azurecli-interactive
 # Create a free tier account for API for NoSQL
+
 az cosmosdb create \
     -n "Myaccount" \
     -g "MyResourcegroup" \

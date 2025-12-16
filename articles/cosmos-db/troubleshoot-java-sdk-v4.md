@@ -23,7 +23,7 @@ appliesto:
 >
 
 > [!IMPORTANT]
-> This article covers troubleshooting for Azure Cosmos DB Java SDK v4 only. Please see the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and [performance tips](performance-tips-java-sdk-v4.md) for more information. If you're currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help upgrading to v4.
+> This article covers troubleshooting for Azure Cosmos DB Java SDK v4 only. See the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), and [performance tips](performance-tips-java-sdk-v4.md) for more information. If you're currently using an older version than v4, see the [Migrate to Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) guide for help with upgrading to v4.
 >
 
 This article covers common issues, workarounds, diagnostic steps, and tools when you use Azure Cosmos DB Java SDK v4 with Azure Cosmos DB for NoSQL accounts.
@@ -200,13 +200,13 @@ itemResponseMono.onErrorResume(throwable -> {
 ---
 
 ## Logging the diagnostics
-Java V4 SDK versions v4.43.0 and above support automatic logging of Cosmos Diagnostics for all requests or errors if they meet certain criteria. Application developers can define thresholds for latency (for point (create, read, replace, upsert, patch) or non-point operations (query, change feed, bulk and batch)), request charge and payload size. If the requests exceed these defined thresholds, the cosmos diagnostics for those requests will be emitted automatically.
+Java V4 SDK versions v4.43.0 and above support automatic logging of Cosmos Diagnostics for all requests or errors if they meet certain criteria. Application developers can define thresholds for latency (for point (create, read, replace, upsert, patch) or non-point operations (query, change feed, bulk, and batch)), request charge and payload size. If the requests exceed these defined thresholds, the cosmos diagnostics for those requests will be emitted automatically.
 
 By default, the Java v4 SDK logs these diagnostics automatically in a specific format. However, this can be changed by implementing `CosmosDiagnosticsHandler` interface and providing your own custom Diagnostics Handler.
 
 These `CosmosDiagnosticsThresholds` and `CosmosDiagnosticsHandler` can then be used in `CosmosClientTelemetryConfig` object, which should be passed into `CosmosClientBuilder` while creating sync or async client.
 
-NOTE: These diagnostics thresholds are applied across different types of diagnostics including logging, tracing and client telemetry.
+NOTE: These diagnostics thresholds are applied across different types of diagnostics including logging, tracing, and client telemetry.
 
 The following code samples show how to define diagnostics thresholds, custom diagnostics logger and use them through client telemetry config:
 
@@ -306,7 +306,7 @@ See our guide to [designing resilient applications with Azure Cosmos DB SDKs](co
 
 ### Check the portal metrics
 
-Checking the [portal metrics](monitor.md) will help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
+Checking the [portal metrics](monitor.md) help determine if it's a client-side issue or if there's an issue with the service. For example, if the metrics contain a high rate of rate-limited requests (HTTP status code 429) which means the request is getting throttled then check the [Request rate too large](troubleshoot-request-rate-too-large.md) section.
 
 ### Network issues, Netty read timeout failure, low throughput, high latency
 
@@ -360,9 +360,9 @@ Otherwise, you face connection issues.
 
 #### Invalid coding pattern: Blocking Netty IO thread
 
-The SDK uses the [Netty](https://netty.io/) IO library to communicate with Azure Cosmos DB. The SDK has an Async API and uses non-blocking IO APIs of Netty. The SDK's IO work is performed on IO Netty threads. The number of IO Netty threads is configured to be the same as the number of CPU cores of the app machine. 
+The SDK uses the [Netty](https://netty.io/) IO library to communicate with Azure Cosmos DB. The SDK has an Async API and uses nonblocking IO APIs of Netty. The SDK's IO work is performed on IO Netty threads. The number of IO Netty threads is configured to be the same as the number of CPU cores of the app machine. 
 
-The Netty IO threads are meant to be used only for non-blocking Netty IO work. The SDK returns the API invocation result on one of the Netty IO threads to the app's code. If the app performs a long-lasting operation after it receives results on the Netty thread, the SDK might not have enough IO threads to perform its internal IO work. Such app coding might result in low throughput, high latency, and `io.netty.handler.timeout.ReadTimeoutException` failures. The workaround is to switch the thread when you know the operation takes time.
+The Netty IO threads are meant to be used only for nonblocking Netty IO work. The SDK returns the API invocation result on one of the Netty IO threads to the app's code. If the app performs a long-lasting operation after it receives results on the Netty thread, the SDK might not have enough IO threads to perform its internal IO work. Such app coding might result in low throughput, high latency, and `io.netty.handler.timeout.ReadTimeoutException` failures. The workaround is to switch the thread when you know the operation takes time.
 
 For example, take a look at the following code snippet, which adds items to a container (look [here](quickstart-java.md) for guidance on setting up the database and container.) You might perform long-lasting work that takes more than a few milliseconds on the Netty thread. If so, you eventually can get into a state where no Netty IO thread is present to process IO work. As a result, you get a ReadTimeoutException failure.
 
@@ -397,7 +397,7 @@ Error handling from Azure Cosmos DB Java SDK is important when it comes to clien
 
 > [!IMPORTANT]
 > We do not recommend using [`onErrorContinue()`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) operator, as it is not supported in all scenarios.
-> Note that `onErrorContinue()` is a specialist operator that can make the behaviour of your reactive chain unclear. It operates on upstream, not downstream operators, it requires specific operator support to work, and the scope can easily propagate upstream into library code that didn't anticipate it (resulting in unintended behaviour.). Please refer to [documentation](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) of `onErrorContinue()` for more details on this special operator.
+> Note that `onErrorContinue()` is a specialist operator that can make the behavior of your reactive chain unclear. It operates on upstream, not downstream operators, it requires specific operator support to work, and the scope can easily propagate upstream into library code that didn't anticipate it (resulting in unintended behavior.). Please refer to [documentation](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) of `onErrorContinue()` for more details on this special operator.
 
 ### Failure connecting to Azure Cosmos DB Emulator
 
@@ -494,7 +494,7 @@ Many connections to the Azure Cosmos DB endpoint might be in the `CLOSE_WAIT` st
 
 ### Common query issues
 
-The [query metrics](query-metrics.md) will help determine where the query is spending most of the time. From the query metrics, you can see how much of it's being spent on the back-end vs the client. Learn more on the [query performance guide](performance-tips-query-sdk.md?pivots=programming-language-java).
+The [query metrics](query-metrics.md) help determine where the query is spending most of the time. From the query metrics, you can see how much of it's being spent on the back-end vs the client. Learn more on the [query performance guide](performance-tips-query-sdk.md?pivots=programming-language-java).
 
 ## Next steps
 

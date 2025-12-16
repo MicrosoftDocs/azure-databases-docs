@@ -21,8 +21,6 @@ appliesto:
 
 # Azure Cosmos DB - Database for the AI Era
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table, PostgreSQL](includes/appliesto-nosql-mongodb-cassandra-gremlin-table-postgresql.md)]
-
 > "OpenAI relies on Cosmos DB to dynamically scale their ChatGPT service – one of the fastest-growing consumer apps ever – enabling high reliability and low maintenance."
 > – Satya Nadella, Microsoft chairman and chief executive officer
 

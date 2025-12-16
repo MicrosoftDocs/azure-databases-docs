@@ -10,10 +10,11 @@ author: manishmsfte
 ms.custom: devx-track-java, devx-track-extended-java
 ms.collection: 
  - migration
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate from CouchBase to Azure Cosmos DB for NoSQL
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB is a scalable, globally distributed, fully managed database. It provides guaranteed low latency access to your data. To learn more about Azure Cosmos DB, see the [overview](introduction.md) article. This article provides instructions to migrate Java applications that are connected to Couchbase to an API for NoSQL account in Azure Cosmos DB.
 

@@ -8,11 +8,11 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/05/2025
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Get started with change data capture in the analytical store for Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 

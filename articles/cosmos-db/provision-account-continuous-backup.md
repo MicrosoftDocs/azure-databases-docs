@@ -8,11 +8,12 @@ ms.date: 05/02/2023
 ms.author: govindk
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, build-2023
 ms.devlang: azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Provision an Azure Cosmos DB account with continuous backup and point in time restore
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 Azure Cosmos DB's point-in-time restore feature helps you to recover from an accidental change within a container, restore a deleted resource, or restore into any region where backups existed. The continuous backup mode allows you to restore to any point of time within the last 30 or 7 days. How far back you can go in time depends on the tier of the continuous mode for the account.
 

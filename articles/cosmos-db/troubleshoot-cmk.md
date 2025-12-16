@@ -30,15 +30,15 @@ appliesto:
   - if YES, recover the key vault from recycle bin.
 - Is the Key Vault Key Disabled?
   - if YES, re-enable the key.
-- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allowlists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
-- Check if Key Vault missing any of the Wrap/Unwrap/Get permission in the access policy following [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md#add-an-access-policy)
+- Check Key Vault -\> Networking -\> Firewalls and virtual networks are set to either "Allow public access from all networks" or "Allow public access from specific virtual networks and IP addresses". If later is selected, check if Firewall allow lists are configured correctly, and "Allow trusted Microsoft services to bypass this firewall" is selected.
+- Check if Key Vault missing any of the Wrap/Unwrap/Get permissions in the access policy following [Cosmos DB Customer Managed Key Documentation:](./how-to-setup-customer-managed-keys.md#add-an-access-policy)
   - If YES, regrant the access
 - In case the multitenant App used in the default identity has been mistakenly deleted
   - If YES, follow [restore application documentation](/azure/active-directory/manage-apps/restore-application) to restore the Application.
 - In case UserAssigned identity used in the default identity has been mistakenly deleted
-  - If YES, since UserAssigned identity isn't recoverable once deleted. The customer needs to create new UserAssigned Identity to the db account, and then follow the exact same configuration steps during provision like set FedereatedCrdential with Multi-Tenant App. Finally, customer need to update the db account's default identity with the new UserAssigned identity.
+  - If YES, since UserAssigned identity isn't recoverable once deleted. The customer needs to create new UserAssigned Identity to the db account, and then follow the exact same configuration steps during provision like set FedereatedCrdential with multitenant App. Finally, customer need to update the db account's default identity with the new UserAssigned identity.
     - Example:`` _az cosmosdb update --resource-group \<rg\> --name \<dbname\> --default-identity "UserAssignedIdentity=\<New\_UA\_Resource\_ID1\>&FederatedClientId=00000000-0000-0000-0000-000000000000"_.``
-    - Customer also needs to clean the old UserAssigned identity from the Cosmos DB account which has been deleted in Azure. Sample command: ``az cosmosdb identity remove --resource-group \<rg\> --name \<dbname\> --identities \<OLD\_UA\_Resource\_ID\>``
+    - Customer also needs to clean the old UserAssigned identity from the Cosmos DB account, which has been deleted in Azure. Sample command: ``az cosmosdb identity remove --resource-group \<rg\> --name \<dbname\> --identities \<OLD\_UA\_Resource\_ID\>``
   - Wait 1 hour to let the account recovery from Revoke State
   - Try to access the Cosmos DB data plane by making a SDK/REST API request or using Azure portal's Data Explorer to view a document.
 
@@ -80,7 +80,7 @@ For example: *``az cosmosdb create -n mydb -g myresourcegroup --key-uri "https:/
 
 The "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" is missing in the default identity. 
 
-3. Customer tries creating a Cross Tenant CMK account with db account and key vault in different tenant with "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" in the default identity. However, the multi-tenant app doesn't exist or has been deleted. 
+3. Customer tries creating a Cross Tenant CMK account with db account and key vault in different tenant with "&FederatedClientId=\<00000000-0000-0000-0000-000000000000\>" in the default identity. However, the multitenant app doesn't exist or has been deleted. 
 
 
 **Error Message**
@@ -103,11 +103,11 @@ In Scenario 3: Expected as the Multi-tenant App isn't there or deleted.
 
 **Mitigation**
 
-For Scenario 1: customer needs to follow Configure your azure key vault instance section on [setup customer managed keys documentation](./how-to-setup-customer-managed-keys.md) to retrieve the Key Vault Key Uri
+For Scenario 1: customer needs to follow Configure your Azure Key Vault instance section on [setup customer managed keys documentation](./how-to-setup-customer-managed-keys.md) to retrieve the Key Vault Key Uri
 
 For Scenario 2: customer need to add the missing “&FederatedClientId=<00000000-0000-0000-0000-000000000000>” into the default identity.
 
-For Scenario 3: customer need to use the correct FederatedClientId or restore the multi-tenant app using [restore application documentation](/azure/active-directory/manage-apps/restore-application)
+For Scenario 3: customer need to use the correct FederatedClientId or restore the multitenant app using [restore application documentation](/azure/active-directory/manage-apps/restore-application)
 
 
 ___________________________________
@@ -480,7 +480,7 @@ ___________________________________
 
 **Scenario**
 
-Customer tries enabling CMK on existing non-cmk account with Continuous backup / Synapse link / Full fidelity change feed / Materialized view already enabled. 
+Customer tries enabling CMK on existing non-cmk account with Continuous backup / Azure Synapse Link / Full fidelity change feed / Materialized view already enabled. 
 
 **Error Message**
 

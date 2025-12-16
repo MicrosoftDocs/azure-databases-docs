@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/04/2025
 ms.custom: cosmos-db-noetl-realtime-analytics
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB: No-ETL analytics use cases
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides various analytics options for no-ETL, near real-time analytics over operational data. You can enable analytics on your Azure Cosmos DB data using following options:
 

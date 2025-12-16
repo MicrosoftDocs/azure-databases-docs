@@ -9,10 +9,11 @@ ms.custom: devx-track-dotnet
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
 
 # .NET bulk executor library: Download information (Legacy)
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 

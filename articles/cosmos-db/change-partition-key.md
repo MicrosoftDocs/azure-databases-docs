@@ -7,11 +7,11 @@ ms.author: richagaur
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/03/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Changing the partition key in Azure Cosmos DB (preview)
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 In the realm of database management, it isn't uncommon for the initially chosen partition key for a container to become inadequate as applications evolve. It can result in suboptimal performance and increased costs for the container. Several factors contributing to this situation include:
 

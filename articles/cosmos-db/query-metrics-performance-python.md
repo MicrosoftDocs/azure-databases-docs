@@ -8,9 +8,11 @@ ms.topic: how-to
 ms.date: 05/15/2023
 ms.author: abtripathi
 ms.custom: devx-track-python, devx-track-python-sdk
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Get SQL query execution metrics and analyze query performance using Azure Cosmos DB Python SDK
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article presents how to profile SQL query performance on Azure Cosmos DB using Query Execution Metrics. It contains cumulative metrics that are aggregated across all physical partitions for the request, a list of metrics for each physical partition, and the total request charge. These metrics are documented in more detail in the [Tune Query Performance](./query-metrics.md#query-execution-metrics) article.
 

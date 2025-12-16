@@ -8,9 +8,11 @@ ms.custom: devx-track-arm-template, sfi-image-nochange
 ms.topic: how-to
 ms.date: 06/19/2020
 ms.author: mjbrown
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Deploy Azure Cosmos DB and Azure App Service with a web app from GitHub using an Azure Resource Manager Template
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This tutorial shows you how to do a "no touch" deployment of a web application that connects to Azure Cosmos DB on first run without having to cut and paste any connection information from Azure Cosmos DB to `appsettings.json` or to the Azure App Services application settings in the Azure portal. All these actions are accomplished using an Azure Resource Manager template in a single operation. In the example here we will deploy the [Azure Cosmos DB ToDo sample](https://github.com/Azure-Samples/cosmos-dotnet-core-todo-app).
 

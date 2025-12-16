@@ -8,11 +8,15 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: best-practice
 ms.date: 12/01/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB serverless account performance
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB serverless resources have performance characteristics that are different than the characteristics of provisioned throughput resources. Serverless containers don't offer any guarantees of predictable throughput or latency. The maximum capacity of a serverless container is determined by the data that stored within it. The capacity varies with data size.
 

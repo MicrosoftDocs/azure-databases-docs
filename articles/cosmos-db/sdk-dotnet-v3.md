@@ -9,9 +9,11 @@ ms.topic: reference
 ms.date: 11/03/2023
 ms.author: mjbrown
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
+
 # Azure Cosmos DB .NET SDK v3 for API for NoSQL: Download and release notes
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[SDK selector](includes/cosmos-db-sdk-list.md)]
 
