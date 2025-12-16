@@ -28,11 +28,11 @@ The Azure Cosmos DB for Table SDK automatically picks the best endpoint to commu
 
 * **Read requests:** All read requests are sent to the configured `CurrentRegion`. Based on the proximity, the SDK automatically selects a fallback geo-replicated region for high availability.
 
-* **Write requests:** The SDK automatically sends all write requests to the current write region. In an account with multi-region writes, current region will serve the writes requests as well. Based on the proximity, the SDK automatically selects a fallback geo-replicated region for high availability.
+* **Write requests:** The SDK automatically sends all write requests to the current write region. In an account with multi-region writes, current region serves the writes requests as well. Based on the proximity, the SDK automatically selects a fallback geo-replicated region for high availability.
 
 If you don't specify the `CurrentRegion` property, the SDK uses the current write region for all operations.
 
-For example, if an Azure Cosmos DB account is in "West US" and "East US" regions. If "West US" is the write region and the application is present in "East US". If the CurrentRegion property is not configured, all the read and write requests are always directed to the "West US" region. If the CurrentRegion property is configured, all the read requests are served from "East US" region.
+For example, if an Azure Cosmos DB account is in "West US" and "East US" regions. If "West US" is the write region, and the application is present in "East US". If the CurrentRegion property isn't configured, all the read and write requests are always directed to the "West US" region. If the CurrentRegion property is configured, all the read requests are served from "East US" region.
 
 ## Next steps
 
