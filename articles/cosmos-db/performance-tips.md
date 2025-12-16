@@ -9,10 +9,11 @@ ms.topic: how-to
 ms.date: 02/18/2022
 ms.devlang: csharp
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Performance tips for Azure Cosmos DB and .NET SDK v2
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3.md)
