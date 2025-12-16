@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.devlang: csharp
 ms.custom: devx-track-dotnet
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate your application to use the Azure Cosmos DB .NET SDK v2
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]
 > It is important to note that the v3 of the .NET SDK is currently available and a migration plan from v2 to v3 is available [here](migrate-dotnet-v3.md). To learn about the Azure Cosmos DB .NET SDK v2, see the [Release notes](sdk-dotnet-v2.md), the [.NET GitHub repository](https://github.com/Azure/azure-cosmos-dotnet-v2), .NET SDK v2 [Performance Tips](performance-tips.md), and the [Troubleshooting guide](troubleshoot-dotnet-sdk.md).

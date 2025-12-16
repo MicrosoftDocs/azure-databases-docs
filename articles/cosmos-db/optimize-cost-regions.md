@@ -6,11 +6,15 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 02/22/2024
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize multi-region cost in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 You can add and remove regions to your Azure Cosmos DB account at any time. The throughput that you configure for various Azure Cosmos DB databases and containers is reserved in each region associated with your account. If the throughput provisioned per hour that is the sum of request units per second (RU/s) configured across all the databases and containers for your Azure Cosmos DB account is `T` and the number of Azure regions associated with your database account is `N`, then the total provisioned throughput for your Azure Cosmos DB account, for a given hour is equal to `T x N` RU/s.
 

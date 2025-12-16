@@ -9,11 +9,15 @@ ms.topic: how-to
 ms.date: 07/01/2025
 ms.custom: devx-track-azurecli
 #Customer Intent: As an operations user, I want to monitor metrics using Azure Monitor, so that I can use a Log Analytics workspace to perform complex analysis.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Monitor Azure Cosmos DB data using Azure Monitor Log Analytics diagnostic settings
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 You can collect resource logs in Azure by using diagnostic settings. Resources emit Azure resource logs and provide rich, frequent data about the operation of that resource. These logs are captured per request and they're also referred to as *data plane logs*. Some examples of the data plane operations include delete, insert, and readFeed. The content of these logs varies by resource type.
 

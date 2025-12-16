@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: mjbrown
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate nonpartitioned containers to partitioned containers
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB supports creating containers without a partition key. Currently you can create nonpartitioned containers by using Azure CLI and Azure Cosmos DB SDKs (.NET, Java, NodeJs) that have a version less than or equal to 2.x. You can't create nonpartitioned containers using the Azure portal. However, such nonpartitioned containers aren’t elastic and have fixed storage capacity of 20 GB and throughput limit of 10K RU/s.
 

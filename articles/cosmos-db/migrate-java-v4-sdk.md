@@ -9,10 +9,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 08/26/2021
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migrate your application to use the Azure Cosmos DB Java SDK v4
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 > [!IMPORTANT]  
 > For more information about this SDK, please view the Azure Cosmos DB Java SDK v4 [Release notes](sdk-java-v4.md), [Maven repository](https://mvnrepository.com/artifact/com.azure/azure-cosmos), Azure Cosmos DB Java SDK v4 [performance tips](performance-tips-java-sdk-v4.md), and Azure Cosmos DB Java SDK v4 [troubleshooting guide](troubleshoot-java-sdk-v4.md).
