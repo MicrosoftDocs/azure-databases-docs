@@ -55,7 +55,7 @@
             - name: ARM template
               displayName: Azure Resource Manager
               href: flexible-server/quickstart-create-elastic-cluster-arm-template.md
-            
+
         - name: Connect and query
           items:
             - name: Connect to a server in virtual network
@@ -91,9 +91,9 @@
             - name: Overview
               href: flexible-server/concepts-storage.md
             - name: Premium SSD
-              href: flexible-server/concepts-storage-premium-ssd.md  
+              href: flexible-server/concepts-storage-premium-ssd.md
             - name: Premium SSD v2
-              href: flexible-server/concepts-storage-premium-ssd-v2.md  
+              href: flexible-server/concepts-storage-premium-ssd-v2.md
             - name: Migrate from Premium SSD to Premium SSD v2
               href: flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md
         - name: Scaling resources
@@ -118,8 +118,6 @@
               href: flexible-server/concepts-networking-private.md
             - name: Networking with Private Endpoint
               href: flexible-server/concepts-networking-private-link.md
-            - name: Secure connectivity with SSL and TLS
-              href: flexible-server/concepts-networking-ssl-tls.md
         - name: Major version upgrade
           href: flexible-server/concepts-major-version-upgrade.md
         - name: Compliance
@@ -388,7 +386,7 @@
             - name: Overview
               href: flexible-server/security-tls.md
             - name: Configure TLS
-              href: flexible-server/security-connect-tls.md
+              href: flexible-server/security-tls-how-to-connect.md
             - name: Update trusted root certificate for Java
               href: flexible-server/security-update-trusted-root-java.md
         - name: Data protection
@@ -665,7 +663,7 @@
         - name: Scaling
           items:
             - name: Scale out
-              href: flexible-server/how-to-scale-out.md          
+              href: flexible-server/how-to-scale-out.md
             - name: Scale compute
               href: flexible-server/how-to-scale-compute.md
             - name: Scale storage size
@@ -716,10 +714,10 @@
                   href: flexible-server/how-to-restore-dropped-server.md
         - name: Decommissioning and relocation
           items:
-          - name: Delete a server
-            href: flexible-server/how-to-delete-server.md
-          - name: Relocate a server
-            href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+            - name: Delete a server
+              href: flexible-server/how-to-delete-server.md
+            - name: Relocate a server
+              href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
 - name: Migrate to Azure Database for PostgreSQL
   items:
     - name: Migration Service for Azure Database for PostgreSQL
@@ -739,7 +737,7 @@
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
                 - name: From Google AlloyDB for PostgreSQL
-                  href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md                  
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -751,7 +749,7 @@
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
                 - name: From Google AlloyDB for PostgreSQL
-                  href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md                  
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
         - name: Concepts
           items:
             - name: Premigration validation
@@ -787,7 +785,7 @@
         - name: Migrating Oracle To Azure Database for PostgreSQL
           href: migrate/concepts-oracle-migration.md
         - name: Migration stages
-          href: migrate/concepts-oracle-migration-stages.md        
+          href: migrate/concepts-oracle-migration-stages.md
         - name: Schema conversion
           items:
             - name: Schema conversion overview
