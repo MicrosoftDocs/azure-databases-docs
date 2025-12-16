@@ -14,7 +14,7 @@ ms.custom: sfi-image-nochange
 
 [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
-[!INCLUDE[](includes/appliesto-synapse-link-mirroring.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to [Azure Data Factory](/azure/data-factory/) or [Azure Synapse Analytics](/azure/synapse-analytics/) to capture specific changes to your data.
 
