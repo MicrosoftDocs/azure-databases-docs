@@ -209,14 +209,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
           source  = "hashicorp/azurerm"
           version = "~> 4.0"
         }
-        azapi = {
-          source = "azure/azapi"
-          version = "~> 2.0"
-        }
       }
-    }
-    
-    provider "azapi" {
     }
     
     provider "azurerm" {
@@ -224,36 +217,21 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
     }
     
     data "azurerm_resource_group" "existing" {
-        name = "<resource-group>"
+      name = "<resource-group>"
     }
-
-    resource "azapi_resource" "cluster" {
-      type = "Microsoft.DocumentDB/mongoClusters@2025-08-01-preview"
-      name = "<cluster-name>"
-      parent_id = data.azurerm_resource_group.existing.id
-      location = "<location>"  
-      body = {
-        properties = {
-          administrator = {
-            userName = var.admin_username
-            password = var.admin_password
-          }
-          serverVersion = "8.0"
-          storage = {
-            sizeGb = 32
-            type = "PremiumSSDv2"
-          }
-          compute = {
-            tier = "M30"
-          }
-          sharding = {
-            shardCount = 1
-          }
-          highAvailability = {
-            targetMode = "Disabled"
-          }
-        }
-      }
+    
+    resource "azurerm_mongo_cluster" "cluster" {
+      name                   = "<cluster-name>"
+      resource_group_name    = data.azurerm_resource_group.existing.name
+      location               = "<location>"
+      administrator_username = var.admin_username
+      administrator_password = var.admin_password
+      shard_count            = "1"
+      compute_tier           = "M30"
+      high_availability_mode = "Disabled"
+      storage_size_in_gb     = "32"
+      storage_type           = "PremiumSSDv2"
+      version                = "8.0"
     }
     ```
 
