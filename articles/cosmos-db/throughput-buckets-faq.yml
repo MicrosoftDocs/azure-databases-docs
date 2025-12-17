@@ -38,15 +38,15 @@ sections:
           What if I assign a bucket ID lower than 1 or higher than 5 to a request?
         answer: |
           Requests with an invalid bucket ID (less than 1 or greater than 5) results in an error, as only bucket IDs 1 to 5 are valid.
-      - question: | 
+      - question: |
           Is there any minimum throughput limit for a throughput buckets?
-        answer: | 
-          There's no minimum limit for throughput buckets. Throughput isn't reserved for any bucket, and the total throughput of the container is shared among all buckets. 
-      - question: | 
+        answer: |
+          There's no minimum limit for throughput buckets. Throughput isn't reserved for any bucket, and the total throughput of the container is shared among all buckets.
+      - question: |
           How often can throughput buckets be modified?
         answer: |
           Throughput bucket configurations can be changed once every 10 minutes, otherwise the request is throttled with an HTTP 429 status code and substatus code 3213.
-     
+
 additionalContent: |
 
   ## Next steps
