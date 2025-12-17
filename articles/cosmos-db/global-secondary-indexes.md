@@ -12,7 +12,7 @@ ms.custom:
 ms.topic: concept-article
 ms.date: 05/08/2025
 appliesto:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB for NoSQL global secondary indexes (preview)

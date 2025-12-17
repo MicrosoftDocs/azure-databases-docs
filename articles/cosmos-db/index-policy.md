@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 appliesto:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Indexing policies in Azure Cosmos DB
