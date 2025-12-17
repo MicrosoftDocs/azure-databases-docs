@@ -12,6 +12,7 @@ ms.custom: devx-track-dotnet
 appliesto:
   - ✅ NoSQL
 ---
+
 # Tune connection configurations for Azure Cosmos DB .NET SDK v3
 
 > [!IMPORTANT]  
