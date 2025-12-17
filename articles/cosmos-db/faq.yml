@@ -8,7 +8,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 12/15/2025
-  applies-to:
+  appliesto:
     - ✅ NoSQL
     - ✅ MongoDB
     - ✅ Apache Cassandra
