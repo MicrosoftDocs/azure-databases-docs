@@ -9,7 +9,7 @@ ms.topic: concept-article
 ms.date: 12/05/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
 ---
 

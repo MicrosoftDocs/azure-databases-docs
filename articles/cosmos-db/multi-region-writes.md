@@ -11,7 +11,7 @@ ms.custom:
   - ai-gen-title
   - ai-seo-date:08/15/2025
   - ai-gen-description
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

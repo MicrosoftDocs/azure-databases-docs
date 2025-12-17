@@ -6,7 +6,7 @@ ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
 ms.date: 09/03/2025
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

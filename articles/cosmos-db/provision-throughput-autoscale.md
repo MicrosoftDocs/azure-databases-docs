@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/03/2025
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

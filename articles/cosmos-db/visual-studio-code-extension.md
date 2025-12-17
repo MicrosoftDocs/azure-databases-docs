@@ -11,7 +11,7 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
 ---
