@@ -9,8 +9,14 @@ metadata:
   ms.author: sidandrews
   ms.service: azure-cosmos-db
   ms.topic: hub-page
-  ms.date: 12/15/2025
+  ms.date: 12/17/2025
   ai-usage: ai-generated
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB
