@@ -1,5 +1,5 @@
 ---
-title: Validate client configuration and troubleshoot connection failures
+title: Validate the client configuration and troubleshoot connection failures
 description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure Database for PostgreSQL flexible server instances.
 author: techlake
 ms.author: hganten
@@ -39,7 +39,7 @@ SELECT datname as "Database name", usename as "User name", ssl, client_addr, app
 
 ### Test TLS connection with OpenSSL
 
-For testing, you can use the `openssl` command-line tool to connect to your Azure Database for PostgreSQL flexible server instance and display the TLS certificates.:
+For testing, you can use the `openssl` command to connect to your Azure Database for PostgreSQL and display the TLS certificates.
 
 ```bash
 openssl s_client -starttls postgres -showcerts -connect <your-postgresql-server-name>:5432
@@ -53,7 +53,10 @@ With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com
 
 ## Troubleshoot
 
-Use the guidance in this Troubleshoot section to quickly identify and resolve common TLS issues. Start by reproducing the problem and collecting diagnostic data (client-side error messages, psql output, OpenSSL s_client output, and server logs), then verify server parameters (require_secure_transport, ssl_min_protocol_version, ssl_max_protocol_version), the certificate chain, and client sslmode/sslrootcert settings to pinpoint mismatches in protocol versions, cipher suites, or missing/rotated certificates.
+1. Start by reproducing the problem
+1. Collecting diagnostic data (client-side error messages, psql output, OpenSSL s_client output, and server logs).
+1. Verify server parameters (require_secure_transport, ssl_min_protocol_version, ssl_max_protocol_version)
+1. Verify the certificate chain, and client sslmode/sslrootcert settings to pinpoint mismatches in protocol versions, cipher suites, or missing/rotated certificates.
 
 ### TLS connectivity errors
 
@@ -67,35 +70,46 @@ To work around these issues, add all the necessary certificates to the client ce
 ### Certificate Authority issues
 
 > [!NOTE]
-> If you are **not** using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string, then certificate rotations don't affect you.
+> If you're **not** using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string, then certificate rotations don't affect you.
 > Therefore, you don't need to follow the steps in this section.
 
 1. Produce your list of certificates that are in your trusted root store
     1. For example, you can [get a list of trusted certificates in Java Key Store programmatically](security-tls-how-to-connect.md#get-a-list-of-trusted-certificates-in-java-key-store-programmatically).
     1. For example, you can [check cacerts java keystore to see if it already contains required certificates](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
-1. You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates. This is an unsupported configuration.
+1. You're using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates. This is an unsupported configuration.
 1. To remove certificate pinning, remove all the certificates from your trusted root store and [add only root CA certificates](security-tls-how-to-connect.md#download-and-convert-root-ca-certificates).
 
-If you are experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title *ICA Rotation 2026*.
+If you're experiencing issues even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title *ICA Rotation 2026*.
 
 ### Certificate pinning issues
 
- Note
+If you aren't using `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string, then certificate rotations don't affect you. Therefore, you don't need to follow the steps in this section.
 
-If you are not using sslmode=verify-full or sslmode=verify-ca settings in your client application connection string, then certificate rotations don't affect you. Therefore, you don't need to follow the steps in this section.
+1. Verify if you're using certificate pinning in your application.
+1. Produce your list of certificates that are in your trusted root store. For example:
+    1. Get a list of trusted certificates in Java Key Store programmatically.
+    1. Check cacerts java keystore to see if it already contains required certificates.
+1. You're using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates.
+1. To remove certificate pinning, remove all the certificates from your trusted root store and add the new certificates.
+1. You can download the updated certificates from Microsoft's official repository: Azure Certificate Authority details.
 
-Verify if you are using certificate pinning in your application.
-Produce your list of certificates that are in your trusted root store
-For example, you can get a list of trusted certificates in Java Key Store programmatically.
-For example, you can check cacerts java keystore to see if it already contains required certificates.
-You are using certificate pinning, if you have individual intermediate certificates or individual PostgreSQL server certificates.
-To remove certificate pinning, remove all the certificates from your trusted root store and add the new certificates.
-You can download the updated certificates from Microsoft's official repository: Azure Certificate Authority details.
-Current chain:
-DigiCert Global Root G2
-Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08
-New chain:
-DigiCert Global Root G2
-Microsoft TLS RSA Root G2
-Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16
-If you are experiencing issues even after following these steps, contact Microsoft support. Include in the title ICA Rotation 2026.
+If you're experiencing issues even after following these steps, contact Microsoft support. Include in the title ICA Rotation 2026.
+
+### Verify certificate chain
+
+#### Old chain
+
+- DigiCert Global Root G2
+    - Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08
+    - Server certificate
+
+#### New chain
+- DigiCert Global Root G2
+    - Microsoft TLS RSA Root G2
+    - Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16
+    - Server certificate
+
+## Related content
+
+- [TLS in Azure Database for PostgreSQL](security-tls.md)
+- [How to connect to Azure Database for PostgreSQLusing TLS](security-tls-how-to-connect.md)

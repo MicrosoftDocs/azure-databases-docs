@@ -17,6 +17,6 @@ ms.topic: include
 >
 > **Certificate rotation schedule**
 >
-> - Azure regions West Central US, East Asia and UK South started their TLS certificate rotation on November 11, 2025.
+> - Azure regions West Central US, East Asia, and UK South started their TLS certificate rotation on November 11, 2025.
 > - Beginning January 19, 2026, this certificate rotation is planned to extend to the remaining (except China) regions including Azure Government.
 > - After the Spring Festival (Chinese New Year) 2026, China regions will also undergo a certificate rotation that includes a **change to one of the root CAs**.

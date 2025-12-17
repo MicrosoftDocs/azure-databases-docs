@@ -19,7 +19,7 @@ Connections between your client applications and the database server are always 
 > [!NOTE]
 > The open source PostgreSQL uses the legacy name SSL in its commands, variables, and documentation to avoid breaking existing implementations. This document uses the acronym TLS while using SSL in command names and variables.
 
-Azure Database for PostgreSQL supports encrypted connections using TLS 1.2 and 1.3. All incoming connections which try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
+Azure Database for PostgreSQL supports encrypted connections using TLS 1.2 and 1.3. All incoming connections that try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
 
 By default, secured connectivity between the client and the server are enforced. If you want to disable the enforcement of TLS, allowing both encrypted and unencrypted client communications, you can change the server parameter `require_secure_transport` to `OFF`. You can also set TLS version by setting the `ssl_max_protocol_version` server parameter. We **strongly advise against disabling** TLS.
 
@@ -31,7 +31,7 @@ By default, PostgreSQL doesn't perform any verification of the server certificat
 
 There are many connection parameters for configuring the client for TLS. A few important ones are:
 
-- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies a TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing an TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
+- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies a TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing a TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
 - `sslmode`: If you require encryption and want the connection to fail if it can't be encrypted, set `sslmode=require`. This setting ensures that the server is configured to accept TLS connections for this host/IP address and that the server recognizes the client certificate. If the server doesn't accept TLS connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
 
   | `sslmode` | Explanation |
@@ -54,9 +54,9 @@ The default `sslmode` mode used is different between `libpq`-based clients (such
 
 ### Download and convert root CA certificates
 
-For Windows clients using the system certificate store for trusted root certificates no action is required since Windows deploys new root CA certificates through Windows Update.
+For Windows clients that use the system certificate store for trusted root certificates no action is required since Windows deploys new root CA certificates through Windows Update.
 
-For Java clients, VS Code extension, clients (e.g., `PSQL`, Perl, ...) not using the system store and clients on Linux: you need to download and combine the root CA certificates into a PEM file. At a minimum, this includes the following root CA certificates:
+For Java clients, the VS Code extension, and other clients (for example, `PSQL`, Perl, ...) not using the system store, and clients on Linux: you need to download and combine the root CA certificates into a PEM file. At a minimum, includes the following root CA certificates:
 
 - [Microsoft RSA Root CA 2017 (crt file)](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 - [DigiCert Global Root G2 (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
@@ -64,7 +64,7 @@ For Java clients, VS Code extension, clients (e.g., `PSQL`, Perl, ...) not using
 > [!NOTE]
 > For China regions and for customers with rotation extensions: [Digicert Global Root CA (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) is still valid; include it in the combined PEM file.
 
-We do strongly recommend to include all Azure root CA certificates. This might reduce the need for future updates to the combined file in case of changes to the root CA used by Azure Database for PostgreSQL. The list of Azure root CA certificates can be found at [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).
+We do strongly recommend including all Azure root CA certificates. This might reduce the need for future updates to the combined file if there are changes to the root CAs used by Azure Database for PostgreSQL. The list of Azure root CA certificates can be found at [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).
 
 To import certificates to client certificate stores, you may need to convert any CRT-format certificates to PEM format and concatenate the PEM files into a single file. You can use the [OpenSSL X509 utility](https://docs.openssl.org/master/man1/openssl-x509/) to convert the CRT files to PEM.
 
@@ -74,7 +74,7 @@ openssl x509 -inform DER -in certificate-filename.crt -out certificate-filename.
 
 ### Combine root CA certificates into a single PEM file
 
-For some clients, you will concatenate all PEM files into a single file using any text editor or command line tool.
+For some clients, you concatenate all PEM files into a single file using any text editor or command line tool.
 
 ```
 -----BEGIN CERTIFICATE-----
@@ -101,7 +101,7 @@ For China regions and for customers with rotation extensions:
 
 ### Combine and update root CA certificates for Java applications
 
-Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also often known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
+Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
 You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL:
 
 1. Check `cacerts` java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using following command:
@@ -143,7 +143,7 @@ For .NET (`Npgsql`) users on Windows, connecting to Azure Database for PostgreSQ
 
 ## How to use TLS with certificate validation
 
-Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
+Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail. Consult your application's documentation to learn how to enable TLS connections.
 
 ### Connect using `PSQL`
 
@@ -155,7 +155,7 @@ The following example shows how to connect to your server using the `PSQL` comma
 
 ### Test TLS connectivity
 
-Before you try to access your TLS-enabled server from a client application, make sure you can get to it via `PSQL`. If you established an TLS connection, you should see output similar to the following example:
+Before you try to access your TLS-enabled server from a client application, make sure you can get to it via `PSQL`. If you established a TLS connection, you should see output similar to the following example:
 
 ```
 psql (14.5)
