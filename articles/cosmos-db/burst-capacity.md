@@ -1,6 +1,5 @@
 ---
 title: Burst capacity
-titleSuffix: Azure Cosmos DB
 description: Use your database or container's idle throughput capacity to handle spikes of traffic with burst capacity in Azure Cosmos DB.
 author: deborahc
 ms.author: dech

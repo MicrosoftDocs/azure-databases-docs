@@ -1,6 +1,5 @@
 ---
 title: Priority-based execution
-titleSuffix: Azure Cosmos DB
 description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
 ms.author: richagaur

@@ -1,6 +1,5 @@
 ---
 title: Java SDK (legacy) - Release notes and resources
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the Java API and SDK including release dates, retirement dates, and changes made between each version of this SDK for Azure Cosmos DB for NoSQL.
 author: markjbrown
 ms.author: mjbrown

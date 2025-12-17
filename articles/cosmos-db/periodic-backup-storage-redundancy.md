@@ -1,6 +1,5 @@
 ---
 title: Periodic backup storage redundancy
-titleSuffix: Azure Cosmos DB
 description: Learn how to configure Azure Storage-based data redundancy for periodic backup in Azure Cosmos DB accounts.
 author: kanshiG
 ms.author: govindk

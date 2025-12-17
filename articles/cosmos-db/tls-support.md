@@ -1,6 +1,5 @@
 ---
 title: Prepare for upcoming Transport Layer Security (TLS) 1.3 support
-titleSuffix: Azure Cosmos DB
 description: Learn how to enable TLS 1.3 for your Azure Cosmos DB account to improve your security posture.
 author: iriaosara
 ms.author: iriaosara

@@ -1,6 +1,5 @@
 ---
 title: Monitor Data Using Aggregated Diagnostics Logs (Preview)
-titleSuffix: Azure Cosmos DB
 description: Learn how to use aggregated diagnostics logs to monitor the performance and availability of data stored in Azure Cosmos DB for NoSQL.
 author: stefarroyo
 ms.author: esarroyo

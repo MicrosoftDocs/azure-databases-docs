@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for Node.js
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Node.js Express web application that uses the Azure SDK for Node.js to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

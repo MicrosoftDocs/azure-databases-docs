@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for Python
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Python Flask web application that uses the Azure SDK for Python to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

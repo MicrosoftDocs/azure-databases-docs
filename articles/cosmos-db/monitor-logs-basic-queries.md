@@ -1,6 +1,5 @@
 ---
 title: Troubleshoot issues with diagnostics queries
-titleSuffix: Azure Cosmos DB
 description: Query diagnostics logs using the Kusto query language (KQL) to troubleshoot queries and operations in Azure Cosmos DB.
 author: StefArroyo
 ms.author: esarroyo

@@ -1,6 +1,5 @@
 ---
 title: Get started with change data capture in analytical store
-titleSuffix: Azure Cosmos DB
 description: Enable change data capture in Azure Cosmos DB analytical store for an existing account to consume a continuous and incremental feed of changed data.
 author: jilmal
 ms.author: jmaldonado

@@ -1,6 +1,5 @@
 ---
 title: Visualize Data using Power BI
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to visualize Azure Cosmos DB data using Power BI. Import JSON, create insightful reports, and gain actionable insights.
 author: jilmal
 ms.author: jmaldonado

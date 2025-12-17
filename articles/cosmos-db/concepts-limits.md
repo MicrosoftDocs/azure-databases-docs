@@ -1,6 +1,5 @@
 ---
 title: Service Quotas and Default Limits
-titleSuffix: Azure Cosmos DB
 description: Learn about Azure Cosmos DB service quotas and default limits for operations, storage, and throughput. Optimize your database performance today.
 author: markjbrown
 ms.author: mjbrown

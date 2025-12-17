@@ -1,6 +1,5 @@
 ---
 title: Hierarchical Partition Keys
-titleSuffix: Azure Cosmos DB
 description: Learn about subpartitioning in Azure Cosmos DB, how to use the feature, and how to manage logical partitions.
 author: deborahc
 ms.author: dech

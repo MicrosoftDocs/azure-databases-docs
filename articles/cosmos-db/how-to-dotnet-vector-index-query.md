@@ -1,6 +1,5 @@
 ---
 title: Index and Query Vector Data in .NET
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data in Azure Cosmos DB for NoSQL and then query the data efficiently in your .NET application.
 author: jcodella
 ms.author: jacodel

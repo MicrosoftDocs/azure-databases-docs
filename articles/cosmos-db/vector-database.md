@@ -1,6 +1,5 @@
 ---
 title: Integrated Vector Database
-titleSuffix: Azure Cosmos DB
 description: Review how to use Azure Cosmos DB as a vector database in numerous domains and situations across analytical and generative AI.
 author: markjbrown
 ms.author: mjbrown

@@ -1,6 +1,5 @@
 ---
 title: 'Tutorial: Reverse extract, transform, & load (ETL)'
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Set up an extract, transform, and load (ETL) solution that moves data from a data lake layer back into operational system (database) layer for real-time analytics. 
 author: rakhithejraj
 ms.author: rakhithejraj

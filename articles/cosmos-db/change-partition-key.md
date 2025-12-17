@@ -1,6 +1,5 @@
 ---
 title: Change partition key
-titleSuffix: Azure Cosmos DB
 description: Change partition key in Azure Cosmos DB for NOSQL API.
 author: richagaur
 ms.author: richagaur

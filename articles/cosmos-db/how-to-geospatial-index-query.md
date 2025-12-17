@@ -1,6 +1,5 @@
 ---
 title: Index and query GeoJSON location data
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Add geospatial location data to Azure Cosmos DB for NoSQL and then query the data efficiently in your application.
 author: jcodella
 ms.author: jacodel

@@ -1,6 +1,5 @@
 ---
 title: Update periodic backup storage redundancy
-titleSuffix: Azure Cosmos DB
 description: Update the backup storage redundancy using Azure CLI or Azure PowerShell and enforce a minimum storage redundancy using Azure Policy.
 author: kanshiG
 ms.author: govindk

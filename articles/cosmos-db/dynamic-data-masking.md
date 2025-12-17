@@ -1,6 +1,5 @@
 ---
 title: Dynamic Data Masking (DDM) (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to configure Dynamic Data Masking (DDM) in Azure Cosmos DB to protect sensitive data like personal data and protected health information with policy-based security features.
 author: skhera
 ms.author: skhera

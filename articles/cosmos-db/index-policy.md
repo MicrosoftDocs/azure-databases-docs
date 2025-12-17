@@ -1,6 +1,5 @@
 ---
 title: Indexing policies
-titleSuffix: Azure Cosmos DB
 description:  Learn how to configure and change the default indexing policy for automatic indexing and greater performance in Azure Cosmos DB.
 author: deborahc
 ms.author: dech

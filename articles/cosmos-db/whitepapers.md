@@ -1,6 +1,5 @@
 ---
 title: Conceptual whitepapers
-titleSuffix: Azure Cosmos DB
 description: This list of conceptual whitepapers describes various Azure Cosmos DB service, development, and data concepts in depth.
 author: markjbrown
 ms.author: mjbrown

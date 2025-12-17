@@ -1,6 +1,5 @@
 ---
 title: Connect using role-based access control and Microsoft Entra ID
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to set up role-based access control for Azure Cosmos DB for NoSQL accounts and data. Enhance security for your applications with step-by-step guidance.
 author: seesharprun
 ms.author: sidandrews

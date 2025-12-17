@@ -1,6 +1,5 @@
 ---
 title: Change data capture in analytical store
-titleSuffix: Azure Cosmos DB
 description: Change data capture (CDC) in Azure Cosmos DB analytical store allows you to efficiently consume a continuous and incremental feed of changed data.
 author: jilmal
 ms.author: jmaldonado

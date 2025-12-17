@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for Go
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Go web application that uses the Azure SDK for Go to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

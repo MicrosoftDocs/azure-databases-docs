@@ -1,6 +1,5 @@
 ---
 title: Performance for the serverless account type
-titleSuffix: Azure Cosmos DB
 description: Learn more about performance for the Azure Cosmos DB serverless account type.
 author: richagaur
 ms.author: richagaur

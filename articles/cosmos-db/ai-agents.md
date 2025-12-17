@@ -1,6 +1,5 @@
 ---
 title: AI Agents and Solutions
-titleSuffix: Azure Cosmos DB
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam

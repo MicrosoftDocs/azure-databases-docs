@@ -1,6 +1,5 @@
 ---
 title: 'Tutorial: Connect by Using Spark'
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Connect to Azure Cosmos DB for NoSQL by using the Spark 3 OLTP connector. Use the connector to query data in your API for a NoSQL account.
 author: markjbrown
 ms.author: mjbrown

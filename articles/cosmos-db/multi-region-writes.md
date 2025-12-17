@@ -1,6 +1,5 @@
 ---
 title: Multi-region writes
-titleSuffix: Azure Cosmos DB
 description: Multi-region writes in Azure Cosmos DB let you achieve near-zero downtime and high availability. Learn how to set up and manage multi-region write accounts.
 author: TheovanKraay
 ms.author: thvankra

@@ -1,6 +1,5 @@
 ---
 title: Perform Bulk Operations Using the Azure SDK for JavaScript
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to perform bulk operations like import and update using the Azure SDK for JavaScript and Azure Cosmos DB for NoSQL.
 author: sajeetharan
 ms.author: sasinnat

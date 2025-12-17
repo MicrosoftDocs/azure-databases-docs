@@ -1,6 +1,5 @@
 ---
 title: Monitor Normalized Request Units
-titleSuffix: Azure Cosmos DB
 description: Learn how to monitor the normalized request unit usage of an operation in Azure Cosmos DB. Owners of an Azure Cosmos DB account can understand which operations are consuming more request units.
 ms.service: azure-cosmos-db
 ms.topic: how-to

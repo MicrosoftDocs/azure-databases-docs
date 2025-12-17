@@ -1,6 +1,5 @@
 ---
 title: Get Started with Partial Document Update
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to use the partial document update feature in Azure Cosmos DB for NoSQL.
 author: AbhinavTrips
 ms.author: abtripathi

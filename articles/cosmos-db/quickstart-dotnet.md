@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for .NET
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a .NET web application that uses the Azure SDK for .NET to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for Rust
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Rust web application that uses the Azure SDK for Rust to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

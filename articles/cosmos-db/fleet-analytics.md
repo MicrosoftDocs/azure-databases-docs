@@ -1,6 +1,5 @@
 ---
 title: Fleet Analytics (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Fleet Analytics for Azure Cosmos DB is a centralized solution that helps organizations monitor and manage their usage and costs effectively.
 author: deborahc
 ms.author: dech

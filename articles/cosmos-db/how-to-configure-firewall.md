@@ -1,6 +1,5 @@
 ---
 title: Configure IP Firewall
-titleSuffix: Azure Cosmos DB
 description: Learn to configure IP firewall policies for Azure Cosmos DB accounts to enhance security.
 author: iriaosara
 ms.author: iriaosara

@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure portal
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy an Azure Cosmos DB account, database, and container using the Azure portal and Data Explorer.
 author: seesharprun
 ms.author: sidandrews

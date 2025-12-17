@@ -1,6 +1,5 @@
 ---
 title: Data Modeling
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Discover how to model data in Azure Cosmos DB, compare relational and document databases, and optimize for performance and scalability.
 author: markjbrown
 ms.author: mjbrown

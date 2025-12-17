@@ -1,6 +1,5 @@
 ---
 title: Integrated Vector Store
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Enhance AI-based applications using the integrated vector store functionality in Azure Cosmos DB for NoSQL
 author: jcodella
 ms.author: jacodel

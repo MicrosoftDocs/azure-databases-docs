@@ -1,6 +1,5 @@
 ---
 title: Redistribute Throughput Across Partitions (Preview)
-titleSuffix: Azure Cosmos DB
 description: Learn how to redistribute throughput across partitions in Azure Cosmos DB to optimize performance. To improve partition performance, follow these step-by-step instructions and best practices.
 author: richagaur
 ms.author: richagaur
