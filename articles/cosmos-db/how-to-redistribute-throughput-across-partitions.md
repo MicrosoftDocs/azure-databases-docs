@@ -8,7 +8,7 @@ ms.subservice: nosql
 ms.topic: how-to
 ms.date: 09/09/2025
 zone_pivot_groups: azure-scripting-languages
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
 ---

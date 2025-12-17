@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: feature-guide
 ms.date: 11/05/2025
-applies-to:
+appliesto:
   - ✅ NoSQL
 ---
 

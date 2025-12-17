@@ -11,7 +11,7 @@ ms.custom: sfi-image-nochange
 ms.collection:
   - ce-skilling-ai-copilot
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
 ---
 

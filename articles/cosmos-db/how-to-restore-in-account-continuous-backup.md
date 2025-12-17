@@ -8,7 +8,7 @@ ms.custom: build-2023, devx-track-azurecli, devx-track-azurepowershell, devx-tra
 ms.topic: how-to
 ms.date: 09/03/2025
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-gremlin-table
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Gremlin
