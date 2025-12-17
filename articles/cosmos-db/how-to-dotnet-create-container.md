@@ -1,5 +1,5 @@
 ---
-title: Create a Container in Using .NET
+title: Create a Container Using .NET
 description: Learn how to create a container in your Azure Cosmos DB for NoSQL database using the .NET SDK.
 author: seesharprun
 ms.author: sidandrews

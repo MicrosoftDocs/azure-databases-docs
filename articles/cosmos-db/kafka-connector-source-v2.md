@@ -1,5 +1,5 @@
 ---
-title: Kafka Connect for - Source Connector V2
+title: Kafka Connect Source Connector V2
 description: Azure Cosmos DB source connector v2 provides the capability to read data from the Azure Cosmos DB Change Feed and publish this data to a Kafka topic. Kafka Connect for Azure Cosmos DB is a connector to read from and write data to Azure Cosmos DB. 
 author: xinlian
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Create a Database in Using .NET
+title: Create a Database Using .NET
 description: Learn how to create a database in your Azure Cosmos DB for NoSQL account using the .NET SDK.
 author: seesharprun
 ms.author: sidandrews

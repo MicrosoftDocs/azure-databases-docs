@@ -1,5 +1,5 @@
 ---
-title: Query Items in Using .NET
+title: Query Items Using .NET
 description: Learn how to query items in your Azure Cosmos DB for NoSQL container using the .NET SDK.
 author: seesharprun
 ms.author: sidandrews

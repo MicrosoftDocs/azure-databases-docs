@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Create an and a Container by Using Azure Resource Manager Template
+title: Quickstart - Create a Database and Container Using Azure Resource Manager Template
 description: Quickstart showing how to an Azure Cosmos DB database and a container by using Azure Resource Manager template
 author: seesharprun
 ms.author: sidandrews

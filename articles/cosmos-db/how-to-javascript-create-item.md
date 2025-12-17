@@ -1,5 +1,5 @@
 ---
-title: Create an Item in Using Javascript
+title: Create an Item Using JavaScript
 description: Learn how to create an item in your Azure Cosmos DB for NoSQL account using the JavaScript SDK.
 author: seesharprun
 ms.author: sidandrews

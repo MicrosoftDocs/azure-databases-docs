@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Create an and a Container Using Bicep
+title: Quickstart - Create a Database and Container Using Bicep
 description: Quickstart showing how to an Azure Cosmos DB database and a container using Bicep
 author: seesharprun
 ms.author: sidandrews

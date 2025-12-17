@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Create an Database and Container Using Terraform
+title: Quickstart - Create a Database and Container Using Terraform
 description: Quickstart showing how to an Azure Cosmos DB database and a container using Terraform
 author: ginsiucheng
 ms.author: mjbrown

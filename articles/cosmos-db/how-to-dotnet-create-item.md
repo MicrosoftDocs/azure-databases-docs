@@ -1,5 +1,5 @@
 ---
-title: Create an Item in Using .NET
+title: Create an Item Using .NET
 description: Learn how to create, upsert, or replace an item in your Azure Cosmos DB for NoSQL container using the .NET SDK.
 author: seesharprun
 ms.author: sidandrews

@@ -1,5 +1,5 @@
 ---
-title: Get Started With Using Javascript
+title: Get Started Using JavaScript
 description: Get started developing a JavaScript application that works with Azure Cosmos DB for NoSQL. This article helps you learn how to set up a project and configure access to an Azure Cosmos DB for NoSQL endpoint.
 author: seesharprun
 ms.author: sidandrews

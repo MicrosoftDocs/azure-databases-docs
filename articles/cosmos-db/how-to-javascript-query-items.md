@@ -1,5 +1,5 @@
 ---
-title: Query Items in Using Javascript
+title: Query Items Using JavaScript
 description: Learn how to query items in your Azure Cosmos DB for NoSQL account using the JavaScript SDK.
 author: seesharprun
 ms.author: sidandrews

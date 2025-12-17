@@ -1,5 +1,5 @@
 ---
-title: Get Started With Using .NET
+title: Get Started Using .NET
 description: Get started developing a .NET application that works with Azure Cosmos DB for NoSQL. This article helps you learn how to set up a project and configure access to an Azure Cosmos DB for NoSQL endpoint.
 author: seesharprun
 ms.author: sidandrews
