@@ -13,7 +13,7 @@ metadata:
   appliesto:
     - ✅ NoSQL
   ms.custom: build-2025
-title: Frequently Asked Questions About Fleets
+title: Frequently asked questions about Azure Cosmos DB fleets
 sections:
   - name: General
     questions:

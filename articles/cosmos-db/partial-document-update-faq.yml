@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 09/16/2021
-title: Frequently Asked Questions About Partial Document Update
+title: Frequently asked questions about partial document update in Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 

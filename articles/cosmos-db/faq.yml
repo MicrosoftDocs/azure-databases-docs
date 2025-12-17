@@ -14,7 +14,7 @@ metadata:
     - ✅ Apache Cassandra
     - ✅ Apache Gremlin
     - ✅ Table
-title: Frequently Asked Questions About
+title: Frequently asked questions about Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 sections:
