@@ -1,9 +1,9 @@
 ---
 title: Create a Copy Activity in Microsoft Fabric Data Factory
 description: Learn how to create a copy activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
-author: KazimMir
-ms.author: v-kmir
-ms.reviewer: danyal.bukhari
+author: danyal-bukhari
+ms.author: dabukhari
+ms.reviewer: maghan
 ms.date: 04/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
