@@ -31,7 +31,7 @@ By default, PostgreSQL doesn't perform any verification of the server certificat
 
 There are many connection parameters for configuring the client for TLS. A few important ones are:
 
-- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies an TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing an TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
+- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies a TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing an TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
 - `sslmode`: If you require encryption and want the connection to fail if it can't be encrypted, set `sslmode=require`. This setting ensures that the server is configured to accept TLS connections for this host/IP address and that the server recognizes the client certificate. If the server doesn't accept TLS connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
 
   | `sslmode` | Explanation |

@@ -49,7 +49,7 @@ This command prints low-level protocol information, like the TLS version and cip
 
 ## Read replicas
 
-With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm), it's feasible for newly created replicas to be on a newer root CA certificate than the primary server that was created earlier. For clients that use `sslmode=verify-ca` and `sslmode=verify-full` configuration settings, it's imperative for to accept the new and previous root CA certificates until the rotation is completed on new and existing servers
+With root CA migration to [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/docs/repository.htm), it's feasible for newly created replicas to be on a newer root CA certificate than the primary server that was created earlier. For clients that use `sslmode=verify-ca` and `sslmode=verify-full` configuration settings, it's imperative to accept the new and previous root CA certificates until the rotation is completed on new and existing servers.
 
 ## Troubleshoot
 
