@@ -1,9 +1,9 @@
 ### YamlMime:Hub
-title: Documentation
+title: Azure Cosmos DB documentation
 summary: Fully managed, distributed NoSQL, relational, and vector database for modern app development. High performance, high availability, and support for open-source PostgreSQL, MongoDB, and Apache Cassandra. Build cloud-native apps effortlessly.
 brand: azure
 metadata:
-  title: Documentation
+  title: Azure Cosmos DB documentation
   description: Fully managed, distributed NoSQL and vector database for cloud-scale and AI apps. High performance, availability, and low latency from Serverless to massive scale in one database. Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and AI Samples.
   author: seesharprun
   ms.author: sidandrews
