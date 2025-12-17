@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Validate client configuration and troubleshoot connection failures
+# Troubleshoot TLS connection failures
 
 [!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
 

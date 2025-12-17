@@ -387,8 +387,8 @@
               href: flexible-server/security-tls.md
             - name: Configure TLS
               href: flexible-server/security-tls-how-to-connect.md
-            - name: Update trusted root certificate for Java
-              href: flexible-server/security-update-trusted-root-java.md
+            - name: Troubleshoot TLS connection failures
+              href: flexible-server/security-tls-troubleshoot.md
         - name: Data protection
           items:
             - name: Data encryption overview
