@@ -11,6 +11,8 @@ metadata:
   ms.topic: hub-page
   ms.date: 12/15/2025
   ai-usage: ai-generated
+  appliesto:
+    - ✅ NoSQL
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB

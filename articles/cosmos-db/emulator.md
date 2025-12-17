@@ -8,6 +8,8 @@ ms.custom:
   - ignite-2024
 ms.topic: concept-article
 ms.date: 11/07/2024
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 
