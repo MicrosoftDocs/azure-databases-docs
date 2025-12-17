@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on hierarchical partition keys in Azure Cosmos DB
+  title: Frequently Asked Questions on Hierarchical Partition Keys
   description: Frequently asked questions about subpartitioning in Azure Cosmos DB
   author: deborahc
   ms.author: dech

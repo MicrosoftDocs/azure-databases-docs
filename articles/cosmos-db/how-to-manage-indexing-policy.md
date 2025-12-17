@@ -1,5 +1,5 @@
 ---
-title: Manage Indexing Policies in Azure Cosmos DB
+title: Manage Indexing Policies
 description: Learn how to manage indexing policies, include or exclude a property from indexing, how to define indexing using different Azure Cosmos DB SDKs.
 author: markjbrown
 ms.service: azure-cosmos-db

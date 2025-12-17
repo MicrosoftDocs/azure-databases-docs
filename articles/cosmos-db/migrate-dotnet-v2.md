@@ -1,5 +1,5 @@
 ---
-title: Migrate your application to use the Azure Cosmos DB .NET SDK 2.0 (Microsoft.Azure.Cosmos)
+title: Migrate Your Application to Use the .NET SDK 2.0 (Microsoft.Azure.Cosmos)
 description: Learn how to upgrade your existing .NET application from the v1 SDK to .NET SDK v2 for API for NoSQL.
 author: stefArroyo
 ms.author: esarroyo

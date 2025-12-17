@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Bulk executor .NET API, SDK & resources'
+title: Bulk Executor .NET API, SDK and Resources
 description: Learn all about the bulk executor .NET API and SDK including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB bulk executor .NET SDK.
 author: markjbrown
 ms.service: azure-cosmos-db

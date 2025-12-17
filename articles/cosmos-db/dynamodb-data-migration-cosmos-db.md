@@ -1,5 +1,5 @@
 ---
-title: Migrate Data from DynamoDB to Azure Cosmos DB for NoSQL
+title: Migrate Data From DynamoDB
 description: Learn about data migration options from DynamoDB to Azure Cosmos DB, and walk through an offline migration process by using Azure services.
 author: abhirockzz
 ms.author: guabhishek

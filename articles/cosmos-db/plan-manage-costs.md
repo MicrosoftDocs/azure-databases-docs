@@ -1,5 +1,5 @@
 ---
-title: Plan and manage costs for Azure Cosmos DB
+title: Plan and Manage Costs
 description: Learn how to plan for and manage costs for Azure Cosmos DB by using cost analysis in Azure portal.
 author: markjbrown
 ms.author: mjbrown

@@ -1,5 +1,5 @@
 ---
-title: 'Microsoft Defender for Azure Cosmos DB'
+title: Microsoft Defender
 description: Learn how Microsoft Defender provides advanced threat protection on Azure Cosmos DB.
 ms.service: azure-cosmos-db
 ms.subservice: nosql

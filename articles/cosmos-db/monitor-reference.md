@@ -1,5 +1,5 @@
 ---
-title: Monitoring data reference for Azure Cosmos DB
+title: Monitoring Data Reference
 description: This article contains important reference material you need when you monitor Azure Cosmos DB.
 ms.date: 03/02/2024
 ms.custom: horz-monitor

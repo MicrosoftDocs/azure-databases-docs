@@ -1,5 +1,5 @@
 ---
-title: Change feed modes in Azure Cosmos DB 
+title: Change Feed Modes
 description: Get an overview of Azure Cosmos DB change feed modes.
 author: jcocchi
 ms.author: jucocchi

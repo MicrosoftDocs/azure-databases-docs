@@ -1,5 +1,5 @@
 ---
-title:  Delete Items by Partition Key Value
+title: Delete Items by Partition Key Value
 description: Learn how to delete items by partition key value using the Azure Cosmos DB SDKs.
 author: richagaur
 ms.author: richagaur

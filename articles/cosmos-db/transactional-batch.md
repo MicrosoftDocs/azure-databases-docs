@@ -1,5 +1,5 @@
 ---
-title: Transactional Batch Operations in Azure Cosmos DB 
+title: Transactional Batch Operations
 description: Learn how to use Transactional Batch in the Azure Cosmos DB .NET, Java, Python, or Go SDKs to perform a group of point operations that either succeed or fail. 
 author: stefArroyo
 ms.author: esarroyo

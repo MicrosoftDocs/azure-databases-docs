@@ -1,5 +1,5 @@
 ---
-title: Multitenancy in Azure Cosmos DB
+title: Multitenancy
 description: Review critical concepts required to build multitenant generative AI applications in Azure Cosmos DB.
 author: TheovanKraay
 ms.service: azure-cosmos-db

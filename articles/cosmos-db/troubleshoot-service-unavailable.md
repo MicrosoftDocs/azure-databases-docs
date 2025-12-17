@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Cosmos DB Service Unavailable Exceptions
+title: Troubleshoot Service Unavailable Exceptions
 description: Learn how to diagnose and fix Azure Cosmos DB service unavailable exceptions.
 author: markjbrown
 ms.author: mjbrown

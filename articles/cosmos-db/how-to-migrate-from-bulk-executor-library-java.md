@@ -1,5 +1,5 @@
 ---
-title: Migrate from the bulk executor library to the bulk support in Azure Cosmos DB Java V4 SDK
+title: Migrate From the Bulk Executor Library to the Bulk Support in Java V4 SDK
 description: Learn how to migrate your application from using the bulk executor library to the bulk support in Azure Cosmos DB Java V4 SDK
 author: TheovanKraay
 ms.service: azure-cosmos-db

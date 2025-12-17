@@ -1,5 +1,5 @@
 ---
-title: Create a database in Azure Cosmos DB for NoSQL using JavaScript
+title: Create a Database Using JavaScript
 description: Learn how to create a database in your Azure Cosmos DB for NoSQL account using the JavaScript SDK.
 author: seesharprun
 ms.author: sidandrews

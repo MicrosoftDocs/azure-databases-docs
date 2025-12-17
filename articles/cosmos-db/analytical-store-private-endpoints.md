@@ -1,5 +1,5 @@
 ---
-title: Configure private endpoints for Azure Cosmos DB analytical store.
+title: Configure Private Endpoints for Analytical Store.
 description: Learn how to set up managed private endpoints for Azure Cosmos DB analytical store to restrict network access.
 author: markjbrown
 ms.service: azure-cosmos-db

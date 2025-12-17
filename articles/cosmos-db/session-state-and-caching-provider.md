@@ -1,5 +1,5 @@
 ---
-title: Use Azure Cosmos DB as an ASP.NET session state and caching provider
+title: Use as an ASP.NET Session State and Caching Provider
 description: Learn how to use Azure Cosmos DB as an ASP.NET session state and caching provider
 author: StefArroyo
 ms.author: esarroyo

@@ -1,5 +1,5 @@
 ---
-title: Set up CI/CD pipeline with Azure Cosmos DB Emulator build task
+title: Set up CI/CD Pipeline With Emulator Build Task
 description: Tutorial on how to set up build and release workflow in Azure DevOps using the Azure Cosmos DB emulator build task
 ms.service: azure-cosmos-db
 ms.topic: how-to

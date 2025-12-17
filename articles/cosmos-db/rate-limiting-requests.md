@@ -1,5 +1,5 @@
 ---
-title: Optimize your Azure Cosmos DB application using rate limiting
+title: Optimize Your Application Using Rate Limiting
 description: This article provides developers with a methodology to rate limit requests to Azure Cosmos DB. Implementing this pattern can reduce errors and improve overall performance for workloads that exceed the provisioned throughput of the target database or container.
 author: plasne
 ms.author: pelasne

@@ -1,5 +1,5 @@
 ---
-title: Configure customer-managed keys for your Azure Cosmos DB account with Azure Managed HSM Key Vault
+title: Configure Customer-Managed Keys for Your Account With Azure Managed HSM Key Vault
 description: Learn how to configure customer-managed keys for your Azure Cosmos DB account with Azure Managed HSM Key Vault
 author: sudhanshukhera
 ms.author: skhera

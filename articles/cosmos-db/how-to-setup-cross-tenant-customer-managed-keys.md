@@ -1,5 +1,5 @@
 ---
-title: Configure cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault (preview)
+title: Configure Cross-Tenant Customer-Managed Keys for Your Account With Azure Key Vault (Preview)
 description: Learn how to configure encryption with customer-managed keys for Azure Cosmos DB using an Azure Key Vault that resides in a different tenant.
 author: iriaosara
 ms.author: iriaosara

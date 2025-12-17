@@ -1,5 +1,5 @@
 ---
-title: Use Visual Studio Code to connect and manage Azure Cosmos DB resources
+title: Use Visual Studio Code to Connect and Manage Resources
 description: Learn how to connect to Azure Cosmos DB for NoSQL by using Visual Studio Code.
 author: khelanmodi
 ms.author: khelanmodi

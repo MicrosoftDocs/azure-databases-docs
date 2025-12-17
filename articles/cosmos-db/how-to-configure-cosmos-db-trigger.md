@@ -1,5 +1,5 @@
 ---
-title: Azure Functions trigger for Azure Cosmos DB advanced configuration
+title: Azure Functions Trigger for Advanced Configuration
 description: Learn how to configure logging and connection policy used by Azure Functions trigger for Azure Cosmos DB
 author: ealsur
 ms.service: azure-cosmos-db

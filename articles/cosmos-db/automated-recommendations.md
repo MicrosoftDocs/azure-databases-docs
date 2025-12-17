@@ -1,5 +1,5 @@
 ---
-title: Automated performance, cost, security recommendations for Azure Cosmos DB
+title: Automated Performance, Cost, Security Recommendations
 description: Learn how to view customized performance, cost, security, and other recommendations for Azure Cosmos DB based on your workload patterns.
 author: markjbrown
 ms.author: mjbrown

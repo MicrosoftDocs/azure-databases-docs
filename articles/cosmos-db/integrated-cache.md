@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Integrated Cache
+title: Integrated Cache
 description: Learn how the Azure Cosmos DB integrated cache helps you ensure manageable costs and low latency as your request volume grows.
 author: jcocchi
 ms.service: azure-cosmos-db

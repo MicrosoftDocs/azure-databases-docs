@@ -1,5 +1,5 @@
 ---
-title: Common Use Cases and Scenarios for Azure Cosmos DB
+title: Common Use Cases and Scenarios
 description: "Learn about the top five use cases for Azure Cosmos DB: user generated content, event logging, catalog data, user preferences data, and  Internet of Things (IoT)."
 author: markjbrown
 ms.author: mjbrown

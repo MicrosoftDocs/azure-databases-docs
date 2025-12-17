@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Throughput buckets (preview)'
+title: Throughput Buckets (Preview)
 description: Learn how you can control throughput usage for different workloads by creating buckets in Azure Cosmos DB.
 author: richagaur
 ms.service: azure-cosmos-db

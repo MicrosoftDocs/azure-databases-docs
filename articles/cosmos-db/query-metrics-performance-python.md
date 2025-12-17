@@ -1,5 +1,5 @@
 ---
-title: Get NoSQL query performance and execution metrics in Azure Cosmos DB using Python SDK
+title: Get Query Performance and Execution Metrics Using Python SDK
 description: Learn how to retrieve NoSQL query execution metrics and profile NoSQL query performance of Azure Cosmos DB requests.
 author: abhinavtrips
 ms.service: azure-cosmos-db

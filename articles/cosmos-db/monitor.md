@@ -1,5 +1,5 @@
 ---
-title: Monitor Azure Cosmos DB
+title: Monitor
 description: Start here to learn how to monitor Azure Cosmos DB.
 ms.date: 07/01/2025
 ms.custom: horz-monitor

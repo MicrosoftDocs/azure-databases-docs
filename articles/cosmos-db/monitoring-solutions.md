@@ -1,5 +1,5 @@
 ---
-title: Monitoring Azure Cosmos DB using third-party monitoring tools
+title: Monitoring Using Third-Party Monitoring Tools
 description: This article describes monitoring third-party tools helps monitoring Azure Cosmos DB.
 author: manishmsfte
 ms.author: mansha

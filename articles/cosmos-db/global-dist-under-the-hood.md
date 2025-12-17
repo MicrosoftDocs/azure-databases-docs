@@ -1,5 +1,5 @@
 ---
-title: Global distribution with Azure Cosmos DB- under the hood
+title: Global Distribution With - Under the Hood
 description: This article provides technical details relating to global distribution of Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown

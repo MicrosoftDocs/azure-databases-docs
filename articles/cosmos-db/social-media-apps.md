@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB design pattern: Social media apps'
+title: Design Pattern - Social Media Apps
 description: Learn about a design pattern for Social Networks by using the storage flexibility of Azure Cosmos DB and other Azure services.
 author: ealsur
 ms.service: azure-cosmos-db

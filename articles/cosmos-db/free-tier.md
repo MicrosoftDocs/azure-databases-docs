@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Lifetime Free Tier
+title: Lifetime Free Tier
 description: Use the Azure Cosmos DB lifetime free tier to get started, develop, test your applications. With free tier, you get the first 1000 RU/s and 25 GB of storage in the account for free.
 author: meredithmooreux
 ms.author: merae

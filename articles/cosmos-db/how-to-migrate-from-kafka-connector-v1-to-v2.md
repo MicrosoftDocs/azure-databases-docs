@@ -1,5 +1,5 @@
 ---
-title: Migrate from Azure Cosmos DB Kafka Connector V1 to V2
+title: Migrate From Kafka Connector V1 to V2
 description: Learn how to migrate your application from using Azure Cosmos DB Kafka Connector V1 to V2
 author: TheovanKraay
 ms.service: azure-cosmos-db

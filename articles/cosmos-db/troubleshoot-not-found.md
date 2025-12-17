@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Cosmos DB Not Found Exceptions
+title: Troubleshoot Not Found Exceptions
 description: Learn how to diagnose and fix not found exceptions.
 author: markjbrown
 ms.author: mjbrown

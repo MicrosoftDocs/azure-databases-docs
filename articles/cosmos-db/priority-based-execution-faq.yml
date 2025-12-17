@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on Priority-based execution in Azure Cosmos DB
+  title: Frequently Asked Questions on Priority-Based Execution
   titleSuffix: Azure Cosmos DB
   description: Frequently asked questions on Priority-based execution in Azure Cosmos DB
   author: richagaur
@@ -11,7 +11,6 @@ metadata:
   ms.date: 11/15/2023
 
 title: Frequently asked questions on Priority-based execution in Azure Cosmos DB
-
 summary: |
   [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
