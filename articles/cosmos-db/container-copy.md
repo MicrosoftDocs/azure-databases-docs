@@ -1,6 +1,5 @@
 ---
 title: Container Copy Jobs
-titleSuffix: Azure Cosmos DB
 description: Learn how to copy data from one container to another in Azure Cosmos DB (preview).
 author: richagaur
 ms.author: richagaur

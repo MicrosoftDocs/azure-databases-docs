@@ -1,6 +1,5 @@
 ---
 title: Enable Fleet Analytics (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Monitor and manage your usage and costs effectively by enabling fleet analytics for Azure Cosmos DB.
 author: deborahc
 ms.author: dech

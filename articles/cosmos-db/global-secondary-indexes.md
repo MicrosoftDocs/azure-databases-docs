@@ -1,6 +1,5 @@
 ---
 title: Global Secondary Indexes (preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Global secondary indexes can be used to avoid cross-partition queries on a source container in Azure Cosmos DB.
 author: jcocchi
 ms.author: jucocchi

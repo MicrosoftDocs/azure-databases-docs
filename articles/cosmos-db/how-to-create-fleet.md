@@ -1,6 +1,5 @@
 ---
 title: Create a Fleet (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Create an Azure Cosmos DB fleet along with the corresponding fleetspace and fleetspace account resources.
 author: deborahc
 ms.author: dech

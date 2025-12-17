@@ -1,6 +1,5 @@
 ---
 title: Analytics and BI
-titleSuffix: Azure Cosmos DB
 description: Review Azure Cosmos DB options to enable large-scale analytics and BI reporting on your operational data.
 author: markjbrown
 ms.author: mjbrown

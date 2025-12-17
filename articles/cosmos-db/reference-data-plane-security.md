@@ -1,6 +1,5 @@
 ---
 title: Data plane security reference
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn about data plane actions and built-in roles for role-based access control in Azure Cosmos DB for NoSQL. See which permissions are available and how to use them.
 author: seesharprun
 ms.author: sidandrews

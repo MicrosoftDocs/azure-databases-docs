@@ -1,6 +1,5 @@
 ---
 title: Measure performance with a benchmarking framework
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Use YCSB to benchmark Azure Cosmos DB for NoSQL with recipes to measure read, write, scan, and update performance.
 author: ravitella
 ms.author: ratella

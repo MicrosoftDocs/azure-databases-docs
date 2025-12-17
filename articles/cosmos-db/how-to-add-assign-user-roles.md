@@ -1,6 +1,5 @@
 ---
 title: Add and assign user roles
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to add and assign user roles for Azure Cosmos DB for NoSQL accounts. Follow step-by-step instructions to configure role-based access control and secure your database resources.
 author: seesharprun
 ms.author: sidandrews

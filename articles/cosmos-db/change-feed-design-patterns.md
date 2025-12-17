@@ -1,6 +1,5 @@
 ---
 title: Change Feed Design Patterns
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn common change feed design patterns in Azure Cosmos DB for NoSQL, including event sourcing, real-time processing, and data movement.
 author: markjbrown
 ms.author: mjbrown

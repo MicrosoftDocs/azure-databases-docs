@@ -1,6 +1,5 @@
 ---
 title: Troubleshoot conflict exceptions
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Diagnose and fix various causes for 409 conflict exceptions that can occur when working with Azure Cosmos DB for NoSQL.
 author: gauravsaini-ms
 ms.author: gauravsaini

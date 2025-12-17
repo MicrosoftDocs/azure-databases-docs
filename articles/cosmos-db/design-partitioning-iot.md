@@ -1,6 +1,5 @@
 ---
 title: Choose a partition key for a real-world IoT application
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to choose a partition key for a real-world IoT application.
 author: richagaur
 ms.author: richagaur

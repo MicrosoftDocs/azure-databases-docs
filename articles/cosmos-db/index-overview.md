@@ -1,6 +1,5 @@
 ---
 title: Overview of Indexing
-titleSuffix: Azure Cosmos DB
 description: Understand how indexing works in Azure Cosmos DB. Also explore how different types of indexes such as range, spatial, and composite are supported.
 author: deborahc
 ms.author: dech

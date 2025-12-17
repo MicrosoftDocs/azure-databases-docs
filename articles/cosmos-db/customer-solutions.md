@@ -1,6 +1,5 @@
 ---
 title: What Are Customers Building?
-titleSuffix: Azure Cosmos DB
 description: Explore customer use cases and solutions built on Azure Cosmos DB, including benefits, architecture patterns, and real-world examples. Learn more.
 author: seesharprun
 ms.author: sidandrews

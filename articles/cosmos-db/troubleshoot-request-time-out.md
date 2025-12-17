@@ -1,6 +1,5 @@
 ---
 title: Troubleshoot service request time out exceptions
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to diagnose and fix Azure Cosmos DB for NoSQL service request time out exceptions.
 author: markjbrown
 ms.author: mjbrown

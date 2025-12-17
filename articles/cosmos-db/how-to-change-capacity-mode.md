@@ -1,6 +1,5 @@
 ---
 title: Change from serverless to provisioned throughput
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the steps on how to change the capacity mode of a serverless Azure Cosmos DB for NoSQL account to a provisioned capacity account.
 author: richagaur
 ms.author: richagaur

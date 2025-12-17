@@ -1,6 +1,5 @@
 ---
 title: Use the emulator for development and CI
-titleSuffix: Azure Cosmos DB
 description: Use the Azure Cosmos DB emulator to develop your applications locally and test then with a working database.
 author: sajeetharan
 ms.author: sasinnat

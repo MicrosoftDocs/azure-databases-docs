@@ -1,6 +1,5 @@
 ---
 title: Introduction/overview
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn about Azure Cosmos DB for NoSQL, what it is, and how it can be used to build solutions for unstructured data.
 author: seesharprun
 ms.author: sidandrews

@@ -1,6 +1,5 @@
 ---
 title: Troubleshoot issues with the Azure Functions trigger
-titleSuffix: Azure Cosmos DB for NoSQL
 description: This article discusses common issues, workarounds, and diagnostic steps when you're using the Azure Functions trigger for Azure Cosmos DB for NoSQL
 author: ealsur
 ms.author: maquaran

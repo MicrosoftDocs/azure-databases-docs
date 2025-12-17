@@ -1,6 +1,5 @@
 ---
 title: Spring Boot Application with Azure Kubernetes Service
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to deploy a Spring Boot application to Azure Kubernetes Service and perform CRUD operations on data in Azure Cosmos DB for NoSQL.
 author: markjbrown
 ms.service: azure-cosmos-db

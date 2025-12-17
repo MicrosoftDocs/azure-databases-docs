@@ -1,6 +1,5 @@
 ---
 title: Quickstart - Azure SDK for Java
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Deploy a Java Spring Web application that uses the Azure SDK for Java to interact with Azure Cosmos DB for NoSQL data in this quickstart.
 author: seesharprun
 ms.author: sidandrews

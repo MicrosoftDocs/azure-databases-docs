@@ -1,6 +1,5 @@
 ---
 title: Index and Query Vector Data in JavaScript
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Add vector data in Azure Cosmos DB for NoSQL and then query the data efficiently in your JavaScript application.
 author: jcodella
 ms.author: jacodel

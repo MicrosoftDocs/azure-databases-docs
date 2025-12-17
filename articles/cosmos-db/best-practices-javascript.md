@@ -1,6 +1,5 @@
 ---
 title: Best practices for JavaScript SDK
-titleSuffix: Azure Cosmos DB
 description: Review a list of best practices for using the Azure Cosmos DB JavaScript SDK in a performant manner.
 author: sajeetharan
 ms.author: sasinnat

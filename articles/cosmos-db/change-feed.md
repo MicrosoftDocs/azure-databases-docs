@@ -1,6 +1,5 @@
 ---
 title: Work with the Change Feed
-titleSuffix: Azure Cosmos DB
 description: Use Azure Cosmos DB change feed to track changes, process events, and keep other systems up-to-date.
 author: jcocchi
 ms.author: jucocchi

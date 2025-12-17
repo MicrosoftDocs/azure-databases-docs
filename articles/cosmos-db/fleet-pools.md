@@ -1,6 +1,5 @@
 ---
 title: Fleets Pools (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Pools manage throughput in Azure Cosmos DB fleets aimed at optimizing resource allocation for multitenant applications.
 author: deborahc
 ms.author: dech

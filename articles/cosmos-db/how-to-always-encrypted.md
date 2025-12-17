@@ -1,6 +1,5 @@
 ---
 title: Use client-side encryption with Always Encrypted
-titleSuffix: Azure Cosmos DB
 description: Learn how to use client-side encryption with Always Encrypted for Azure Cosmos DB
 ms.service: azure-cosmos-db
 ms.topic: how-to

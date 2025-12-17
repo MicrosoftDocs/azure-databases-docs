@@ -1,6 +1,5 @@
 ---
 title: Rotate keys
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to rotate primary and secondary keys for Azure Cosmos DB for NoSQL accounts to maintain database security. Step-by-step guide included.
 author: seesharprun
 ms.author: sidandrews

@@ -1,6 +1,5 @@
 ---
 title: Fleet Analytics Schema Reference (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Get answers to frequently asked questions about Azure Cosmos DB fleets, fleetspaces, and fleetspace accounts.
 author: deborahc
 ms.author: dech

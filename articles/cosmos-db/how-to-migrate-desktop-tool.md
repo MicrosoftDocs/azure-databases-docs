@@ -1,6 +1,5 @@
 ---
 title: Migrate Data Using the Desktop Data Migration Tool
-titleSuffix: Azure Cosmos DB
 description: Use the desktop data migration tool to migrate data from JSON, MongoDB, SQL Server, or Azure Table storage to Azure Cosmos DB.
 author: sandeepsnairms
 ms.author: sandnair

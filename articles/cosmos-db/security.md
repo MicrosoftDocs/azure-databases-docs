@@ -1,6 +1,5 @@
 ---
 title: Secure your account
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Review the fundamentals of securing Azure Cosmos DB for NoSQL from the perspective of data and networking security.
 author: seesharprun
 ms.author: sidandrews

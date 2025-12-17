@@ -1,6 +1,5 @@
 ---
 title: Same-account (in-account) restore for continuous backup  
-titleSuffix: Azure Cosmos DB
 description: An introduction to restoring a deleted container or database to a specific point in time in the same Azure Cosmos DB account.
 author: kanshiG
 ms.author: govindk

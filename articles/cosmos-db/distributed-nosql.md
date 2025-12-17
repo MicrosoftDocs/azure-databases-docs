@@ -1,6 +1,5 @@
 ---
 title: Understand Distributed NoSQL Databases
-titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
 ms.author: mjbrown

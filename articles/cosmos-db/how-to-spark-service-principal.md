@@ -1,6 +1,5 @@
 ---
 title: Use a service principal with Spark
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to use a Microsoft Entra service principal to authenticate to Azure Cosmos DB for NoSQL from Spark.
 author: markjbrown
 ms.author: mjbrown

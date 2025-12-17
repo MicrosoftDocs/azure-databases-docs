@@ -1,6 +1,5 @@
 ---
 title: Videos
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Discover Azure Cosmos DB for NoSQL video tutorials and learning resources organized by subject. Access playlists covering AI integration, development, and real-world examples.
 author: seesharprun
 ms.author: sidandrews

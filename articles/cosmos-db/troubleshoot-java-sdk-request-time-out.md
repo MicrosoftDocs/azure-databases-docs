@@ -1,6 +1,5 @@
 ---
 title: Troubleshoot HTTP 408 or request time out issues with the Java v4 SDK
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to diagnose and fix Java SDK request time out exceptions with the Java v4 SDK.
 author: kushagrathapar
 ms.author: kuthapar

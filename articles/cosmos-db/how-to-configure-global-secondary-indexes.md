@@ -1,6 +1,5 @@
 ---
 title: How to configure global secondary indexes (preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to configure global secondary indexes and use them to avoid expensive cross-partition queries.
 author: jcocchi
 ms.author: jucocchi

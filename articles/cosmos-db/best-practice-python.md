@@ -1,6 +1,5 @@
 ---
 title: Best practices for Python SDK
-titleSuffix: Azure Cosmos DB
 description: Review a list of best practices for using the Azure Cosmos DB Python SDK in a performant manner.
 author: kushagraThapar
 ms.author: kuthapar

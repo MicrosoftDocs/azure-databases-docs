@@ -1,6 +1,5 @@
 ---
 title: Modify periodic backup interval and retention period
-titleSuffix: Azure Cosmos DB
 description: Learn how to modify the interval and retention period for periodic backup in Azure Cosmos DB accounts.
 author: kanshiG
 ms.author: govindk

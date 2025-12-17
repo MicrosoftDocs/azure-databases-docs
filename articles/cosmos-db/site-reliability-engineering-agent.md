@@ -1,6 +1,5 @@
 ---
 title: Use Azure SRE Agent (Preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to use Azure site reliability engineering (SRE) agent with Azure Cosmos DB for NoSQL. Get automated diagnostics, AI-driven recommendations, and better application reliability.
 author: iriaosara
 ms.author: iriaosara

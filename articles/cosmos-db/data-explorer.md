@@ -1,6 +1,5 @@
 ---
 title: Use the Data Explorer to manage your data
-titleSuffix: Azure Cosmos DB
 description: Learn about the Azure Cosmos DB Data Explorer, a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 author: meredithmooreux
 ms.author: merae

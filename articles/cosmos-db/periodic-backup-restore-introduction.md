@@ -1,6 +1,5 @@
 ---
 title: Periodic Backup and Restore Introduction
-titleSuffix: Azure Cosmos DB
 description: Learn about Azure Cosmos DB accounts with periodic backup retention and restoration capabilities at a specified interval.
 author: kanshiG
 ms.author: govindk

@@ -1,6 +1,5 @@
 ---
 title: Convert vCores to Request Units
-titleSuffix: Azure Cosmos DB
 description: 'Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s'
 author: markjbrown
 ms.author: mjbrown

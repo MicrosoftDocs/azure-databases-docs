@@ -1,6 +1,5 @@
 ---
 title: Restore Deleted Container or Database to Same Account
-titleSuffix: Azure Cosmos DB
 description: Restore deleted containers or databases to the same Azure Cosmos DB account using Azure portal, CLI, PowerShell, or ARM templates in continuous backup mode.
 author: kanshiG
 ms.author: govindk
