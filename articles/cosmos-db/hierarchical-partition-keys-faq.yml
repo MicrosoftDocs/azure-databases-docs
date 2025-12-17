@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on hierarchical partition keys in Azure Cosmos DB
+  title: Frequently Asked Questions on Hierarchical Partition Keys
   description: Frequently asked questions about subpartitioning in Azure Cosmos DB
   author: deborahc
   ms.author: dech
@@ -8,7 +8,7 @@ metadata:
   ms.topic: faq
   ms.date: 05/05/2023
   ms.custom: build-2023
-title: Frequently asked questions on hierarchical partition keys in Azure Cosmos DB
+title: Frequently Asked Questions on Hierarchical Partition Keys
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 

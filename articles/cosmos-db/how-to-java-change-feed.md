@@ -1,5 +1,5 @@
 ---
-title: Create an end-to-end Azure Cosmos DB Java SDK v4 application sample by using Change Feed
+title: Create an End-to-End Java SDK V4 Application Sample by Using Change Feed
 description: This guide walks you through a simple Java API for NoSQL application, which inserts documents into an Azure Cosmos DB container, while maintaining a materialized view of the container using Change Feed.
 author: seesharprun
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB Spark connector: Throughput control'
+title: Spark Connector - Throughput Control
 description: Learn how you can control throughput for bulk data movements in the Azure Cosmos DB Spark connector.
 author: TheovanKraay
 ms.service: azure-cosmos-db

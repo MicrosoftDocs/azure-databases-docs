@@ -1,5 +1,5 @@
 ---
-title: Optimize storage cost in Azure Cosmos DB
+title: Optimize Storage Cost
 description: This article explains how to manage storage costs for the data stored in Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown

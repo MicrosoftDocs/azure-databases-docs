@@ -1,5 +1,5 @@
 ---
-title: Request access to Azure Cosmos DB previews
+title: Request Access to Previews
 description: Learn how to request access to Azure Cosmos DB previews
 author: gahl-levy
 ms.service: azure-cosmos-db

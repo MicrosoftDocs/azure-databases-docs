@@ -1,5 +1,5 @@
 ---
-title: Create a database in Azure Cosmos DB for NoSQL using Python
+title: Create a Database in Using Python
 description: Learn how to create a database in your Azure Cosmos DB for NoSQL account using the Python SDK.
 author: markjbrown
 ms.author: mjbrown

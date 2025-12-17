@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on Throughput buckets in Azure Cosmos DB
+  title: Frequently Asked Questions on Throughput Buckets
   titleSuffix: Azure Cosmos DB
   description: Frequently asked questions on Throughput buckets in Azure Cosmos DB
   author: richagaur
@@ -9,8 +9,7 @@ metadata:
   ms.topic: faq
   ms.date: 03/31/2025
 
-title: Frequently asked questions on throughput buckets in Azure Cosmos DB
-
+title: Frequently Asked Questions on Throughput Buckets
 summary: |
   [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 

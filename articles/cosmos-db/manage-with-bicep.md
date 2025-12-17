@@ -1,5 +1,5 @@
 ---
-title: Create and manage Azure Cosmos DB with Bicep
+title: Create and Manage With Bicep
 description: Use Bicep to create and configure Azure Cosmos DB for API for NoSQL
 author: markjbrown
 ms.service: azure-cosmos-db

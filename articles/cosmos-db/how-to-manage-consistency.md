@@ -1,5 +1,5 @@
 ---
-title: Manage Consistency in Azure Cosmos DB
+title: Manage Consistency
 description: "Learn how to configure and manage consistency levels in Azure Cosmos DB using Azure portal, .NET SDK, Java SDK, and various other SDKs."
 author: markjbrown
 ms.service: azure-cosmos-db

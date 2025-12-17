@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions about continuous backup point-in-time restore in same account  
+  title: Frequently asked questions about continuous backup point-in-time restore in same account
   titleSuffix: Azure Cosmos DB
   description: This article lists frequently asked questions about the same account restore feature for continuous backup in Azure Cosmos DB.
   author: kanshiG
@@ -9,7 +9,7 @@ metadata:
   ms.custom: build-2023
   ms.topic: faq
   ms.date: 04/24/2024
-title: Frequently asked questions about continuous backup point-in-time restore in same account 
+title: Frequently asked questions about continuous backup point-in-time restore in same account
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Understanding your Azure Cosmos DB bill
+title: Understanding Your Bill
 description: This article explains how to understand your Azure Cosmos DB bill with some examples.
 author: markjbrown
 ms.author: mjbrown

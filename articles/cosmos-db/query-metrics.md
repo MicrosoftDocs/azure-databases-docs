@@ -1,5 +1,5 @@
 ---
-title: SQL query metrics for Azure Cosmos DB for NoSQL
+title: SQL Query Metrics
 description: Learn about how to instrument and debug the SQL query performance of Azure Cosmos DB requests.
 author: markjbrown
 ms.author: mjbrown

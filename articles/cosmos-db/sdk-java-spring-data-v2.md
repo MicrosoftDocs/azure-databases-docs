@@ -1,5 +1,5 @@
 ---
-title: 'Spring Data Azure Cosmos DB v2 for API for NoSQL release notes and resources'
+title: Spring Data V2 for API for Nosql Release Notes and Resources
 description: Learn about the Spring Data Azure Cosmos DB v2 for API for NoSQL, including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB SQL Async Java SDK.
 author: kushagrathapar
 ms.service: azure-cosmos-db

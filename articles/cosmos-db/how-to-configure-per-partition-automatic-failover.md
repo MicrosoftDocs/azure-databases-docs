@@ -1,5 +1,5 @@
 ---
-title: Configure and use Per Partition Automatic Failover for Azure Cosmos DB
+title: Configure and Use Per Partition Automatic Failover
 description: Learn how to enable and use Per Partition Automatic Failover for Azure Cosmos DB
 author: sushantrane
 ms.author: srane

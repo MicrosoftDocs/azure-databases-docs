@@ -1,5 +1,5 @@
 ---
-title: Use bulk executor Java library in Azure Cosmos DB to perform bulk import and update operations
+title: Use Bulk Executor Java Library in to Perform Bulk Import and Update Operations
 description: Bulk import and update Azure Cosmos DB documents using bulk executor Java library
 author: TheovanKraay
 ms.author: thvankra

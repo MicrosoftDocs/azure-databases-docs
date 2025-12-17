@@ -1,5 +1,5 @@
 ---
-title: Provision database throughput in Azure Cosmos DB for NoSQL
+title: Provision Database Throughput
 description: Learn how to provision throughput at the database level in Azure Cosmos DB for NoSQL using Azure portal, CLI, PowerShell and various other SDKs.
 author: markjbrown
 ms.service: azure-cosmos-db

@@ -14,7 +14,7 @@ metadata:
     - Apache Cassandra
     - Apache Gremlin
     - Table
-title: Frequently asked questions about autoscale throughput in Azure Cosmos DB
+title: Frequently Asked Questions About Autoscale Throughput
 summary: |  
   Azure Cosmos DB uses autoscale provisioned throughput to automatically manage and scale the request units per second (RU/s) of your database or container based on usage. This article answers commonly asked questions about autoscale in Azure Cosmos DB.
 sections:

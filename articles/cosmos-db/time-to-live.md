@@ -1,5 +1,5 @@
 ---
-title: Expire Data in Azure Cosmos DB with Time to Live
+title: Expire Data in With Time to Live
 description: Learn how to use time to live in Azure Cosmos DB to automatically purge documents from the system after a period of time.
 author: markjbrown
 ms.author: mjbrown

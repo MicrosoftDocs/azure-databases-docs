@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager templates for Azure Cosmos DB for NoSQL
+title: Azure Resource Manager Templates
 description: Use Azure Resource Manager templates to create and configure Azure Cosmos DB.
 author: markjbrown
 ms.service: azure-cosmos-db

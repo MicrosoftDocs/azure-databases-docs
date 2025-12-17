@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Cosmos DB Request Rate Too Large Exceptions
+title: Troubleshoot Request Rate Too Large Exceptions
 description: Learn how to diagnose and fix request rate too large exceptions.
 author: markjbrown
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Create Azure Cosmos DB containers with large partition key
+title: Create Containers With Large Partition Key
 description: Learn how to create a container in Azure Cosmos DB with large partition key using Azure portal and different SDKs.
 author: deborahc
 ms.service: azure-cosmos-db

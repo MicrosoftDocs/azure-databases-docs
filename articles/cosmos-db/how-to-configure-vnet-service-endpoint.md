@@ -1,5 +1,5 @@
 ---
-title: Virtual Network Access for Azure Cosmos DB Account
+title: Virtual Network Access for Account
 description: Learn how to set up a virtual network service endpoint for Azure Cosmos DB.
 author: jawelton74
 ms.service: azure-cosmos-db

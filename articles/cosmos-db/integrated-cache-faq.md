@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB integrated cache frequently asked questions
+title: Integrated Cache Frequently Asked Questions
 description: Frequently asked questions about the Azure Cosmos DB integrated cache.
 author: jcocchi
 ms.service: azure-cosmos-db

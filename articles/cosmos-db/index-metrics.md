@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB indexing metrics
+title: Indexing Metrics
 description:  Learn how to obtain and interpret the indexing metrics in Azure Cosmos DB
 author: markjbrown
 ms.service: azure-cosmos-db

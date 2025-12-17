@@ -1,5 +1,5 @@
 ---
-title: Performance tips for Azure Cosmos DB Java SDK v4
+title: Performance Tips for Java SDK V4
 description: Learn client configuration options to improve Azure Cosmos DB database performance for Java SDK v4
 author: markjbrown
 ms.service: azure-cosmos-db

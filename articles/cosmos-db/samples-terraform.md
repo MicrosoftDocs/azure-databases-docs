@@ -1,5 +1,5 @@
 ---
-title: Terraform samples for Azure Cosmos DB for NoSQL
+title: Terraform Samples
 description: Use Terraform to create and configure Azure Cosmos DB for NoSQL.
 author: ginsiucheng
 ms.service: azure-cosmos-db

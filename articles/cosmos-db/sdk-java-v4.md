@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB Java SDK v4 for API for NoSQL release notes and resources'
+title: Java SDK V4 for API for Nosql Release Notes and Resources
 description: Learn all about the Azure Cosmos DB Java SDK v4 for API for NoSQL and SDK including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB SQL Async Java SDK.
 author: markjbrown
 ms.service: azure-cosmos-db

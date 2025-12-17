@@ -1,5 +1,5 @@
 ---
-title: How to convert session token formats in .NET SDK - Azure Cosmos DB
+title: How to Convert Session Token Formats in .NET SDK -
 description: Learn how to convert session token formats to ensure compatibilities between different .NET SDK versions
 author: vinhms
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Read Azure Cosmos DB Change Feed
+title: Read Change Feed
 description: Learn how to work with the change feed in Azure Cosmos DB by using either a push model or a pull model.
 author: markjbrown
 ms.author: mjbrown

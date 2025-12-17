@@ -1,7 +1,7 @@
 ### YamlMime:HowTo
 
 metadata:
-  title: Manage Azure Cosmos DB by Using the Azure Portal
+  title: Manage by Using the Azure Portal
   description: Learn how to manage Azure Cosmos DB resources by using the Azure portal, PowerShell, CLI, and Azure Resource Manager templates.
   author: markjbrown
   ms.author: mjbrown

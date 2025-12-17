@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL .NET Standard API, SDK & resources'
+title: SQL .NET Standard API, SDK and Resources
 description: Learn all about the API for NoSQL and .NET SDK including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB .NET SDK.
 author: markjbrown
 ms.service: azure-cosmos-db

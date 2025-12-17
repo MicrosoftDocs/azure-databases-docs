@@ -1,13 +1,13 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on partial document update in Azure Cosmos DB
+  title: Frequently Asked Questions on Partial Document Update
   description: Frequently asked questions about partial document update for Azure Cosmos DB
   author: abhirockzz
   ms.author: abhishgu
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 09/16/2021
-title: Frequently asked questions about partial document update in Azure Cosmos DB
+title: Frequently Asked Questions About Partial Document Update
 summary: |
   [!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 

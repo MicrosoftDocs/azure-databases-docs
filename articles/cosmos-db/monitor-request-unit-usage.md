@@ -1,5 +1,5 @@
 ---
-title: Monitor the throughput usage of an operation in Azure Cosmos DB
+title: Monitor the Throughput Usage of an Operation
 description: Learn how to monitor the throughput or request unit usage of an operation in Azure Cosmos DB. Owners of an Azure Cosmos DB account can understand which operations are taking more request units.
 ms.service: azure-cosmos-db
 ms.topic: how-to

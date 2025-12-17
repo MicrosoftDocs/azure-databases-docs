@@ -1,5 +1,5 @@
 ---
-title: Configure Azure Cosmos DB global distribution
+title: Configure Global Distribution
 description: Learn how to set up Azure Cosmos DB global distribution using the API for NoSQL with .NET, Java, Python, and various other SDKs
 author: markjbrown
 ms.author: mjbrown

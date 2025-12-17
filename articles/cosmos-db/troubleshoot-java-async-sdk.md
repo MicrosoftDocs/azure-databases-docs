@@ -1,5 +1,5 @@
 ---
-title: Diagnose and troubleshoot Azure Cosmos DB Async Java SDK v2
+title: Diagnose and Troubleshoot Async Java SDK V2
 description: Use features like client-side logging and other third-party tools to identify, diagnose, and troubleshoot Azure Cosmos DB issues in Async Java SDK v2.
 author: markjbrown
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Migrate data from Apache HBase to Azure Cosmos DB for NoSQL account
+title: Migrate Data From Apache Hbase to Account
 description: Learn how to migrate your data from HBase to Azure Cosmos DB for NoSQL account.
 author: thakagi
 ms.service: azure-cosmos-db

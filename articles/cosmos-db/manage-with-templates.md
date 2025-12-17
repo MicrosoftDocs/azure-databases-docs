@@ -1,5 +1,5 @@
 ---
-title: Create and manage Azure Cosmos DB with Resource Manager templates
+title: Create and Manage With Resource Manager Templates
 description: Use Azure Resource Manager templates to create and configure Azure Cosmos DB for API for NoSQL
 author: markjbrown
 ms.service: azure-cosmos-db

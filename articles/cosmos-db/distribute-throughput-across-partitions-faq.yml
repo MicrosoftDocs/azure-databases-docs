@@ -1,13 +1,13 @@
 ### YamlMime:FAQ
 metadata:
-  title: Frequently asked questions on distributing throughput across partitions in Azure Cosmos DB (preview)
+  title: Frequently Asked Questions on Distributing Throughput Across Partitions in (Preview)
   description: Frequently asked questions about distributing throughput across partitions in Azure Cosmos DB
   author: markjbrown
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 12/18/2023
-title: Frequently asked questions on distributing throughput across partitions in Azure Cosmos DB (preview)
+title: Frequently Asked Questions on Distributing Throughput Across Partitions in (Preview)
 summary: |
   [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
   

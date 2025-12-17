@@ -1,5 +1,5 @@
 ---
-title: Query Performance Tips for Azure Cosmos DB SDKs
+title: Query Performance Tips for Sdks
 description: Learn query configuration options to help improve performance using the Azure Cosmos DB SDK.
 author: markjbrown
 ms.service: azure-cosmos-db

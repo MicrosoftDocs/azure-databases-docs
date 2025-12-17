@@ -1,5 +1,5 @@
 ---
-title: Migrate Your Application from Amazon DynamoDB to Azure Cosmos DB
+title: Migrate Your Application From Amazon Dynamodb
 description: Learn how to migrate your .NET application from Amazon DynamoDB to Azure Cosmos DB.
 author: manishmsfte
 ms.service: azure-cosmos-db

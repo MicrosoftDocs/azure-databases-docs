@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot slow requests in Azure Cosmos DB .NET SDK
+title: Troubleshoot Slow Requests in .NET SDK
 description: Learn how to diagnose and fix slow requests when you use Azure Cosmos DB .NET SDK.
 author: ealsur
 ms.service: azure-cosmos-db

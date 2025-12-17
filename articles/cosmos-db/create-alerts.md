@@ -1,5 +1,5 @@
 ---
-title: Create alerts for Azure Cosmos DB using Azure Monitor
+title: Create Alerts for Using Azure Monitor
 description: Learn how to set up alerts for Azure Cosmos DB using Azure Monitor.
 author: StefArroyo
 ms.author: esarroyo

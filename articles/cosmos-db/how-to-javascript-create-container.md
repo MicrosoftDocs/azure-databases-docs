@@ -1,5 +1,5 @@
 ---
-title: Create a container in Azure Cosmos DB for NoSQL using JavaScript
+title: Create a Container in Using Javascript
 description: Learn how to create a container in your Azure Cosmos DB for NoSQL account using the JavaScript SDK.
 author: seesharprun
 ms.author: sidandrews

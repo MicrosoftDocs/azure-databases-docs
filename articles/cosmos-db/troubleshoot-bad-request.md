@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Cosmos DB Bad Request Exceptions
+title: Troubleshoot Bad Request Exceptions
 description: Learn how to diagnose and fix bad request exceptions such as input content or partition key is invalid, partition key doesn't match in Azure Cosmos DB.
 author: ealsur
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Optimizing for development and testing in Azure Cosmos DB
+title: Optimizing for Development and Testing
 description: This article explains how Azure Cosmos DB offers multiple options for development and testing of the service for free.
 author: markjbrown
 ms.author: mjbrown

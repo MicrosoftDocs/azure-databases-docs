@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Performance Tips for .NET SDK v3
+title: Performance Tips for .NET SDK V3
 description: Learn client configuration options to help improve Azure Cosmos DB .NET v3 SDK performance.
 author: markjbrown
 ms.service: azure-cosmos-db

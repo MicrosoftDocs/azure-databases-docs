@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: SQL Go, SDK & resources'
+title: SQL Go, SDK and Resources
 description: Learn all about the API for NoSQL and Go SDK including release dates, retirement dates, and changes made between each version of the Azure Cosmos DB Go SDK.
 author: ealsur
 ms.service: azure-cosmos-db

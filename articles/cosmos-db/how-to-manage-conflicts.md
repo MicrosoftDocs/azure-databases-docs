@@ -1,5 +1,5 @@
 ---
-title: Manage conflicts between regions in Azure Cosmos DB
+title: Manage Conflicts Between Regions
 description: Learn how to manage conflicts in Azure Cosmos DB by creating the last-writer-wins or a custom conflict resolution policy
 author: markjbrown
 ms.service: azure-cosmos-db

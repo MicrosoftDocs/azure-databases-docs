@@ -1,5 +1,5 @@
 ---
-title: Use the change feed estimator - Azure Cosmos DB
+title: Use the Change Feed Estimator -
 description: Learn how to use the change feed estimator to analyze the progress of your change feed processor
 author: ealsur
 ms.service: azure-cosmos-db

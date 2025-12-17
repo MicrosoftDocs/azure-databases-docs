@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Deploy an ASP.NET web application using Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service via Bicep'
+title: Tutorial - Deploy an ASP.NET Web Application Using , Managed Identity, and Azure Kubernetes Service via Bicep
 description: Learn how to deploy an ASP.NET web application with Azure Cosmos DB for NoSQL, managed identity, and Azure Kubernetes Service by using Bicep.
 ms.service: azure-cosmos-db
 ms.subservice: nosql

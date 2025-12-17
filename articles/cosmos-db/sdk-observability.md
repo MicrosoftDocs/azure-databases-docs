@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB SDK observability'
+title: SDK Observability
 description: Learn how to monitor requests made using the Azure Cosmos DB SDKs with OpenTelemetry and Application Insights.
 author: jcocchi
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Manage Azure Cosmos DB for NoSQL resources using Azure CLI
+title: Manage Resources Using Azure CLI
 description: Manage Azure Cosmos DB for NoSQL resources using Azure CLI. 
 author: markjbrown
 ms.service: azure-cosmos-db

@@ -1,5 +1,5 @@
 ---
-title: Connect Qlik Sense to Azure Cosmos DB and visualize your data
+title: Connect Qlik Sense to and Visualize Your Data
 description: This article describes the steps required to connect Azure Cosmos DB to Qlik Sense and visualize your data.
 ms.service: azure-cosmos-db
 ms.subservice: nosql
