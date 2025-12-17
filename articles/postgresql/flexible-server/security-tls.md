@@ -85,7 +85,7 @@ Utilizing recommended TLS configurations helps reduce the risk of connection fai
 
 - Set the `ssl_min_protocol_version` server parameter to `TLSv1.3` to enforce the latest, most secure TLS version.
 - Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or VNET integration, `verify-all` might not be possible; therefore you may use `verify-ca` instead.
-- Always maintain the [complete set of Azure root certificates in your trusted root store](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
+- Always maintain the [complete set of Azure root certificates in your trusted root store](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
 
 ### Good configuration
 
@@ -125,7 +125,7 @@ Never use certificate pinning in your applications since it breaks certificate r
 1. You are using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
 1. To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
 
-If you are experiencing issues due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure-portal/supportability/how-to-create-azure-support-request). Include in the title ICA Rotation 2026.
+If you are experiencing issues due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title ICA Rotation 2026.
 
 ## Other considerations for TLS
 
