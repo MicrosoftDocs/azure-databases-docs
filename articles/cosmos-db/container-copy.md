@@ -8,6 +8,8 @@ ms.topic: how-to
 ms.date: 06/23/2025
 ms.custom: references_regions, build-2023, ignite-2023, ignite-2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Copy jobs in Azure Cosmos DB (preview)

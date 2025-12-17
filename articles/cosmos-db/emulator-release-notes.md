@@ -6,6 +6,8 @@ ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: release-notes
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Release notes for the Azure Cosmos DB Windows (local) emulator

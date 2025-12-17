@@ -7,6 +7,8 @@ ms.topic: reference
 ms.author: esarroyo
 author: StefArroyo
 ms.service: azure-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB monitoring data reference

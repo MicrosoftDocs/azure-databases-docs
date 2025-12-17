@@ -6,6 +6,8 @@ ms.author: garyhope
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 01/19/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB network bandwidth

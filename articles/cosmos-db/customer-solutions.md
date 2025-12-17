@@ -7,6 +7,8 @@ ms.service: azure-cosmos-db
 ms.topic: solution-overview
 ms.date: 11/07/2025
 ai-usage: ai-generated
+appliesto:
+  - ✅ NoSQL
 ---
 
 # What are customers building with Azure Cosmos DB?

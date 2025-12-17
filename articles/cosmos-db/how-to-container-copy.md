@@ -8,6 +8,8 @@ ms.topic: how-to
 ms.date: 06/26/2025
 ms.author: richagaur
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Create and manage container copy jobs in Azure Cosmos DB (Preview)

@@ -9,6 +9,8 @@ ms.subservice: nosql
 ms.topic: overview
 ms.date: 12/15/2025
 ai-usage: ai-generated
+appliesto:
+  - ✅ NoSQL
 ---
 
 # What is Azure Cosmos DB for NoSQL?

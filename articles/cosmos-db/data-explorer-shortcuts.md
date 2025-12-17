@@ -6,6 +6,8 @@ ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 05/02/2024
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB Data Explorer shortcuts

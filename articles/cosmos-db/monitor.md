@@ -7,6 +7,8 @@ ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
 ms.service: azure-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Monitor Azure Cosmos DB

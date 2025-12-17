@@ -6,6 +6,8 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/04/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Analytics and Business Intelligence (BI) on your Azure Cosmos DB data

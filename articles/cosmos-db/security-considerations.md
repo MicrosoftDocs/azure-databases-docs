@@ -6,6 +6,8 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 10/02/2024
+appliesto:
+  - ✅ NoSQL
 #Customer Intent: As a security architect, I want to review best practices and considerations, so that I can ensure my Azure Cosmos DB account is following the latest guidance for security.
 ---
 

@@ -9,6 +9,8 @@ ms.custom: devx-track-python
 ms.topic: how-to
 ms.date: 04/01/2024
 zone_pivot_groups: programming-languages-spark-all-minus-sql-r-csharp
+appliesto:
+  - ✅ NoSQL
 #CustomerIntent: As a data scientist, I want to connect to Azure Cosmos DB for NoSQL by using Spark and a service principal so that I can avoid using connection strings.
 ---
 

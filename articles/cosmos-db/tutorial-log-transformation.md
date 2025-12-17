@@ -8,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.topic: tutorial
 ms.date: 03/22/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Tutorial: Add a transformation for Azure Cosmos DB workspace data by using the Azure portal

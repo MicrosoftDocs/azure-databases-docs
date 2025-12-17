@@ -8,6 +8,8 @@ ms.topic: how-to
 ms.date: 04/16/2025
 ms.author: thvankra
 ms.devlang: java
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Migration Guide: Azure Cosmos DB Kafka Connector V1 → V2
