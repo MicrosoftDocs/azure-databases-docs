@@ -12,20 +12,20 @@ metadata:
   ms.custom:
     - devx-track-arm-template
     - ge-structured-content-pilot
-
-   #customer intent: As a <role>, I want <what> so that <why>.
-
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 title: |
   Manage an Azure Cosmos DB account by using the Azure portal
 
 introduction: |
-  [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
-
   This article describes how to manage various tasks on an Azure Cosmos DB account by using the Azure portal. Azure Cosmos DB can also be managed with other Azure management clients, including [Azure PowerShell](manage-with-powershell.md), [Azure CLI](manage-with-cli.md), [Azure Resource Manager templates](./manage-with-templates.md), [Bicep](manage-with-bicep.md), and [Terraform](samples-terraform.md).
 
   > [!TIP]
   > The management API for Azure Cosmos DB or *control plane* isn't designed for high-request volumes like the rest of the service. To learn more, see [Control Plane Service Limits](concepts-limits.md#control-plane)
-
 procedureSection:
   - title: |
       Create an account
@@ -52,7 +52,7 @@ procedureSection:
 
       - |
         In the **Create Azure Cosmos DB Account** page, enter the basic settings for the new Azure Cosmos DB account.
-      
+
         |Setting|Value|Description |
         |---|---|---|
         |Subscription|Subscription name|Select the Azure subscription that you want to use for this Azure Cosmos DB account. |
@@ -81,7 +81,7 @@ procedureSection:
         |Geo-redundancy|Disable|Enable or disable global distribution on your account by pairing your region with a pair region. You can add more regions to your account later.|
         |Multi-region writes|Disable|Multi-region writes capability allows you to take advantage of the provisioned throughput for your databases and containers across the globe.|
         |Availability zones|Disable|Availability zones help you further improve availability and resiliency of your application.|
-    
+
         > [!NOTE]
         > The following options aren't available if you select **Serverless** as the **Capacity mode** in the previous **Basics** page:
         >
@@ -157,7 +157,7 @@ procedureSection:
   - title: |
       Perform forced failover for your Azure Cosmos DB Account
     summary: |
-      A forced failover (region offline) enables users to promptly address degraded performance, partial outages, or regional disruptions in a Cosmos DB account. A service-managed failover depends on the service's confirmation and which might take time to activate based on the progression of the outage. A forced failover allows administrators to quickly restore availability for the affected region without waiting for the service-managed failover. 
+      A forced failover (region offline) enables users to promptly address degraded performance, partial outages, or regional disruptions in a Cosmos DB account. A service-managed failover depends on the service's confirmation and which might take time to activate based on the progression of the outage. A forced failover allows administrators to quickly restore availability for the affected region without waiting for the service-managed failover.
     steps:
       - |
         From your Azure Cosmos DB account, open the **Replicate data globally** pane.
@@ -213,7 +213,7 @@ procedureSection:
       > If you perform a manual change-write region operation while an asynchronous throughput scaling operation is in progress, the throughput scale-up operation is paused. It resumes automatically when the failover operation is complete. For more information, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus)
 
       > [!WARNING]
-      > In the event of a write region outage, don't use change-write region. For outage scenarios, refer to forced failover section. 
+      > In the event of a write region outage, don't use change-write region. For outage scenarios, refer to forced failover section.
     steps:
       - |
         Go to your Azure Cosmos DB account and open the **Replicate data globally** menu.

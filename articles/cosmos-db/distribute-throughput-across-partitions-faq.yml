@@ -7,12 +7,12 @@ metadata:
   ms.service: azure-cosmos-db
   ms.topic: faq
   ms.date: 12/18/2023
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
 title: Frequently asked questions on distributing throughput across partitions in Azure Cosmos DB (preview)
 summary: |
-  [!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
-  
   The throughput redistribution feature of Azure Cosmos DB gives you the ability to redistribute your provisioned throughput across physical partitions. This article answers commonly asked questions about Azure Cosmos DB throughput redistribution across partitions.
-
 sections:
   - name: General
     questions:
@@ -37,7 +37,7 @@ sections:
       - question: |
           Is there a limit on how frequently I can make a call to redistribute throughput across partitions?
         answer: |
-          You can make a maximum of five requests per minute to redistribute throughput across partitions. 
+          You can make a maximum of five requests per minute to redistribute throughput across partitions.
       - question: |
           What happens to my RU/s distribution when I change the overall RU/s?
         answer: |
