@@ -8,19 +8,22 @@ metadata:
   ms.custom: build-2023
   ms.topic: faq
   ms.date: 05/23/2023
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 title: Frequently asked questions on burst capacity in Azure Cosmos DB
 summary: |
-  [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
-  
   Azure Cosmos DB burst capacity allows you to take advantage of your database or container's idle throughput capacity to handle spikes of traffic. This article answers commonly asked questions about Azure Cosmos DB burst capacity.
-
 sections:
   - name: General
     questions:
       - question: |
           How much does it cost to use burst capacity?
         answer: |
-          There's no charge to use burst capacity.         
+          There's no charge to use burst capacity.
       - question: |
           How does burst capacity work with autoscale?
         answer: |
@@ -46,7 +49,7 @@ sections:
       - question: |
           Does burst capacity consume Azure Cosmos DB reserved capacity?
         answer: |
-          No.          
+          No.
       - question: |
           How can I enable burst capacity on an account programatically?
         answer: |
@@ -67,7 +70,7 @@ sections:
           }
           Update-AzCosmosDBAccount @parameters
           ```
-          
+
           #### [Azure CLI](#tab/azure-cli)
 
           ```azurecli

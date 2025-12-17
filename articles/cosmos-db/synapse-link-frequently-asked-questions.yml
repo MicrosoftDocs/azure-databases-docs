@@ -8,14 +8,15 @@ metadata:
   ms.topic: faq
   ms.date: 12/05/2025
   ms.custom: synapse-cosmos-db
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Gremlin
 title: Frequently Asked Questions About Azure Synapse Link
 summary: |
-  [!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
-
   [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
   Azure Synapse Link for Azure Cosmos DB creates a tight integration between Azure Cosmos DB and Azure Synapse Analytics. It enables customers to run near real-time analytics over their operational data with full performance isolation from their transactional workloads and without an ETL pipeline. This article answers commonly asked questions about Synapse Link for Azure Cosmos DB.
-
 sections:
   - name: General FAQ
     questions:
