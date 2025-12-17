@@ -85,7 +85,7 @@ In preview, the following features are now supported for Azure Database for Post
 
 -  Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation may fail. Wait an hour or stagger operations to avoid this error.
 
-    _Error message**: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
+    _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
   
      **Examples include**:
            - Compute scaling, enabling HA, and performing failover and failback within one hour.
