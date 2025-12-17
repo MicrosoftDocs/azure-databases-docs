@@ -14,7 +14,7 @@ ms.topic: how-to
 
 ## Overview
 
-Connections between your client applications and are always encrypted using industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
+Connections between your client applications and the database server are always encrypted using industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
 > [!NOTE]
 > The open source PostgreSQL uses the legacy name SSL in its commands, variables, and documentation to avoid breaking existing implementations. This document uses the acronym TLS while using SSL in command names and variables.

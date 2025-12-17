@@ -385,7 +385,7 @@
           items:
             - name: Overview
               href: flexible-server/security-tls.md
-            - name: Configure TLS
+            - name: Connect clients with TLS
               href: flexible-server/security-tls-how-to-connect.md
             - name: Troubleshoot TLS connection failures
               href: flexible-server/security-tls-troubleshoot.md
