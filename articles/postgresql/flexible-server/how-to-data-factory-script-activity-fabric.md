@@ -2,7 +2,7 @@
 title: Create a Script Activity in Microsoft Fabric Data Factory
 description: Learn how to create a script activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
 author: danyal-bukhari
-ms.author: v-dabukhari
+ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 04/25/2025
 ms.service: azure-database-postgresql
