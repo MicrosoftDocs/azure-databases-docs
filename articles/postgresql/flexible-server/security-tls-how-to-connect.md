@@ -43,7 +43,7 @@ There are many connection parameters for configuring the client for TLS. A few i
   | `verify-ca` | Encryption is used. Verify the server certificate against the trusted root certificates stored on the client. |
   | `verify-full` | Encryption is used. Verify the server certificate against the certificate stored on the client. It also validates that the server certificates uses the same host name as the connection. we recommend this setting unless private DNS resolvers use a different name to reference the Azure Database for PostgreSQL server. |
 
-The default `sslmode` mode used is different between libpq-based clients (such as psql) and JDBC. The libpq-based clients default to `prefer`. JDBC clients default to `verify-full`.
+The default `sslmode` mode used is different between `libpq`-based clients (such as `PSQL` and `JDBC`). The libpq-based clients default to `prefer`. `JDBC` clients default to `verify-full`.
 
 - `sslcert`, `sslkey`, and `sslrootcert`: These parameters can override the default location of the client certificate, the PKCS-8 client key, and the root certificate. They default to `/defaultdir/postgresql.crt`, `/defaultdir/postgresql.pk8`, and `/defaultdir/root.crt`, respectively, where `defaultdir` is `${user.home}/.postgresql/` in Linux systems and `%appdata%/postgresql/` on Windows.
 
@@ -56,7 +56,7 @@ The default `sslmode` mode used is different between libpq-based clients (such a
 
 For Windows clients using the system certificate store for trusted root certificates no action is required since Windows deploys new root CA certificates through Windows Update.
 
-For Java clients, VS Code extension, clients (e.g., psql, Perl, ...) not using the system store and clients on Linux: you need to download and combine the root CA certificates into a PEM file. At a minimum, this includes the following root CA certificates:
+For Java clients, VS Code extension, clients (e.g., `PSQL`, Perl, ...) not using the system store and clients on Linux: you need to download and combine the root CA certificates into a PEM file. At a minimum, this includes the following root CA certificates:
 
 - [Microsoft RSA Root CA 2017 (crt file)](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 - [DigiCert Global Root G2 (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
@@ -116,7 +116,7 @@ You can use following directions to update client root CA certificates for clien
 
 1. Follow instructions [above to download the certificate files](#download-and-convert-root-ca-certificates), and save them locally where you can reference them.
 
-1. Generate a combined CA certificate store with all needed Root CA certificates are included. Example below shows using DefaultJavaSSLFactory for PostgreSQL JDBC users.
+1. Generate a combined CA certificate store with all needed Root CA certificates are included. Example below shows using DefaultJavaSSLFactory for PostgreSQL Java users.
 
     ```bash
     keytool -importcert -alias PostgreSQLServerCACert  -file "DigiCertGlobalRootG2.crt.pem" -keystore truststore -storepass password -noprompt
@@ -137,17 +137,17 @@ For Azure App services, connecting to an Azure Database for PostgreSQL flexible 
 
 If you're trying to connect to the Azure Database for PostgreSQL using applications hosted in Azure Kubernetes Services (AKS), it's similar to access from a dedicated customer's host environment. See detailed [instruction in AKS documentation](/azure/aks/ingress-tls).
 
-### Update Root CA certificates for .NET (Npgsql) users on Windows
+### Update Root CA certificates for .NET (`Npgsql`) users on Windows
 
-For .NET (Npgsql) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the stanadrd Azure root CA list. If any certificates listed in our [recommended configuration](security-tls.md#best-configuration) isn't included, import the missing certificates.
+For .NET (`Npgsql`) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the standard Azure root CA list. If any certificates listed in our [recommended configuration](security-tls.md#best-configuration) isn't included, import the missing certificates.
 
 ## How to use TLS with certificate validation
 
 Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail to connect to your database server. Consult your application's documentation to learn how to enable TLS connections.
 
-### Connect using psql
+### Connect using `PSQL`
 
-The following example shows how to connect to your server using the psql command-line interface. Use the `sslmode=verify-full` or `sslmode=verify-ca` connection string setting to enforce TLS certificate verification. Pass the local certificate file path to the `sslrootcert` parameter.
+The following example shows how to connect to your server using the `PSQL` command-line interface. Use the `sslmode=verify-full` or `sslmode=verify-ca` connection string setting to enforce TLS certificate verification. Pass the local certificate file path to the `sslrootcert` parameter.
 
 ```bash
  psql "sslmode=verify-full sslrootcert=<path-of-pem-file> host=mydemoserver.postgres.database.azure.com dbname=postgres user=myadmin"
@@ -155,11 +155,13 @@ The following example shows how to connect to your server using the psql command
 
 ### Test TLS connectivity
 
-Before you try to access your TLS-enabled server from a client application, make sure you can get to it via psql. If you established an TLS connection, you should see output similar to the following example:
+Before you try to access your TLS-enabled server from a client application, make sure you can get to it via `PSQL`. If you established an TLS connection, you should see output similar to the following example:
 
-*psql (14.5)*
-*SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)*
-*Type "help" for help.*
+```
+psql (14.5)
+SSL connection (protocol: TLSv1.2, cipher: ECDHE-RSA-AES256-GCM-SHA384, bits: 256, compression: off)
+Type "help" for help.
+```
 
 You can also load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if TLS is being used. The function returns `t` if the connection is using TLS. Otherwise, it returns `f`.
 
