@@ -6,7 +6,7 @@ ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: upgrade-and-migration-article
 ms.date: 09/03/2025
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

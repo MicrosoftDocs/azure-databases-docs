@@ -11,7 +11,7 @@ ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
 ai-usage: ai-generated
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra
