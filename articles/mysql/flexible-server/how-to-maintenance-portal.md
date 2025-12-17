@@ -4,7 +4,7 @@ description: Learn how to configure scheduled maintenance settings for Azure Dat
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: sunaray, maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -44,7 +44,7 @@ Burstable SKU servers are enrolled in the Virtual Canary policy by default.
 
 ### System Managed Maintenance Window (SMW)
 
-This maintenance policy is the default option for servers on **General Purpose** and **Business Critical** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior—updates occur no more than once every 30 days and are announced at least seven days in advance.
+This maintenance policy is the default option for servers on **General Purpose** and **Memory-Optimized** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior—updates occur no more than once every 30 days and are announced at least seven days in advance.
 
 ### Custom Managed Maintenance Window (CMW)
 
@@ -75,7 +75,7 @@ If maintenance hasn't started yet, you can select a new date and time by choosin
 
 :::image type="content" source="media/how-to-maintenance-portal/maintenance-reschedule.png" alt-text="Screenshot that showcases maintenance reschedule.":::
 
-The rescheduled feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
+The rescheduled feature is only available for servers on **General Purpose** and **Memory-Optimized** compute tiers. It’s not supported for **Burstable SKU** servers.
 
 #### Reschedule to now
 
