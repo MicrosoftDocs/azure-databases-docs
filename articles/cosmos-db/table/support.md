@@ -10,8 +10,6 @@ ms.subservice: table
 ms.topic: how-to
 ms.devlang: csharp
 ms.date: 08/20/2025
-appliesto:
-  - ✅ Table
 ai-usage: ai-assisted
 ---
 

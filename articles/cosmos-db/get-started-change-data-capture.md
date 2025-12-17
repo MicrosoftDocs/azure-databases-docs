@@ -6,19 +6,17 @@ author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 12/05/2025
 ms.custom: sfi-image-nochange
 ---
 
 # Get started with change data capture in the analytical store for Azure Cosmos DB
 
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
+[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to [Azure Data Factory](/azure/data-factory/) or [Azure Synapse Analytics](/azure/synapse-analytics/) to capture specific changes to your data.
-
-
-> [!NOTE]
-> Please note that the linked service interface for Azure Cosmos DB for MongoDB API isn't available on Dataflow yet. However, you would be able to use your account’s document endpoint with the “Azure Cosmos DB for NoSQL” linked service interface as a work-around until the Mongo linked service is supported. On a NoSQL linked service, choose “Enter Manually” to provide the Cosmos DB account info and use account’s document endpoint (eg: `https://[your-database-account-uri].documents.azure.com:443/`) instead of the MongoDB endpoint (eg: `mongodb://[your-database-account-uri].mongo.cosmos.azure.com:10255/`)  
 
 ## Prerequisites
 

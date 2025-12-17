@@ -1,8 +1,8 @@
 ---
 title: Product updates for Azure Cosmos DB for PostgreSQL
 description: Release notes, new features, and features in preview
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.custom: mvc, references_regions
 ms.service: azure-cosmos-db
 ms.subservice: postgresql

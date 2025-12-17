@@ -118,7 +118,7 @@
     - name: Best practices for high availability and disaster recovery
       href: high-availability-replication-best-practices.md
     - name: Reliability
-      href: /azure/reliability/reliability-cosmos-mongodb?context=/azure/documentdb/context/context
+      href: /azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context
     - name: Manage replication
       href: how-to-cluster-replica.md
     - name: Create cross-region replica using Azure portal

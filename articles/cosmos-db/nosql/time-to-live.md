@@ -6,7 +6,7 @@ ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 07/15/2025
+ms.date: 12/05/2025
 ---
 
 # Time to live in Azure Cosmos DB
@@ -21,9 +21,6 @@ For provisioned throughput accounts, the deletion of expired items uses leftover
 
 For serverless accounts, the deletion of expired items is charged in RUs at the same rate as delete item operations.
 
-> [!NOTE]
-> This content is related to Azure Cosmos DB transactional store TTL. If you're looking for analytical store TTL, which enables NoETL HTAP scenarios through [Azure Synapse Link](../synapse-link.md), see [Analytical Time-to-Live (TTL)](../analytical-store-introduction.md#analytical-ttl).
-
 ## Time to live for containers and items
 
 The time to live value is set in seconds, and is interpreted as a delta from the time that an item was last modified. You can set time to live on a container or an item within the container:
@@ -32,7 +29,7 @@ The time to live value is set in seconds, and is interpreted as a delta from the
 
   - If missing (or set to null), items aren't expired automatically.
 
-  - If present and the value is set to *"-1,"* it's equal to infinity, and items don’t expire by default.
+  - If present, and the value is set to *"-1,"* it's equal to infinity, and items don’t expire by default.
 
   - If present and the value is set to some *nonzero* number *"n,"* items will expire *"n"* seconds after their last modified time.
 

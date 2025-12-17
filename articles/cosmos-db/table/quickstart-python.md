@@ -11,8 +11,6 @@ ms.devlang: python
 ms.topic: quickstart-sdk
 ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli, sfi-image-nochange
-appliesto:
-- ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for Table.
 ---
 

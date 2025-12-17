@@ -1,8 +1,8 @@
 ---
 title: Enable and work with cross-region and same region replication
 description: Enable and disable replication and promote replica cluster for disaster recovery (DR) in Azure DocumentDB.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.custom:
   - build-2024
   - ignite-2024
@@ -104,4 +104,4 @@ Self connection strings are preserved after [the cluster replica promotion](./cr
 - [Learn more about cross-region and same region replication in Azure DocumentDB](./cross-region-replication.md)
 - [See replication limits and limitations](./limitations.md#cross-region-and-same-region-replication)
 - To resolve an issue with replication, see [this troubleshooting guide](./troubleshoot-replication.md).
-- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-cosmos-mongodb)
+- [Learn about reliability in Azure DocumentDB](/azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context)

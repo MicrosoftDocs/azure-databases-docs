@@ -6,18 +6,15 @@ metadata:
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 06/11/2025
+  ms.date: 12/05/2025
   ms.custom: synapse-cosmos-db
 title: Frequently asked questions about Azure Synapse Link for Azure Cosmos DB
 summary: |
   [!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
-  
+
+  [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
+
   Azure Synapse Link for Azure Cosmos DB creates a tight integration between Azure Cosmos DB and Azure Synapse Analytics. It enables customers to run near real-time analytics over their operational data with full performance isolation from their transactional workloads and without an ETL pipeline. This article answers commonly asked questions about Synapse Link for Azure Cosmos DB.
-
-  > [!IMPORTANT]
-  > Mirroring in Microsoft Fabric is now available in preview for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in OneLake with Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization. To get started with mirroring, click [here](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context). 
-
-
 
 sections:
   - name: General FAQ

@@ -1,8 +1,8 @@
 ---
 title: High availability in Azure DocumentDB 
 description: Learn about availability (HA) of Azure DocumentDB clusters.
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.topic: concept-article
 ms.date: 08/20/2024
 ---
@@ -44,4 +44,4 @@ Once the shard failover is completed, the cluster is fully operational. The last
 ## Related content
 
 - [See how to enable high availability in Azure DocumentDB](./how-to-scale-cluster.md#enable-or-disable-high-availability)
-- [Learn about reliability fundamentals in Azure DocumentDB](/azure/reliability/reliability-cosmos-mongodb)
+- [Learn about reliability fundamentals in Azure DocumentDB](/azure/reliability/reliability-documentdb?context=/azure/documentdb/context/context)

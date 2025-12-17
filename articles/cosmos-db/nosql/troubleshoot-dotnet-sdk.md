@@ -58,7 +58,7 @@ See our guide to [designing resilient applications with Azure Cosmos DB SDKs](co
 
 ### SNAT
 
-If your app is deployed on [Azure Virtual Machines without a public IP address](/azure/load-balancer/load-balancer-outbound-connections), by default [Azure SNAT ports](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) establish connections to any endpoint outside of your VM. The number of connections allowed from the VM to the Azure Cosmos DB endpoint is limited by the [Azure SNAT configuration](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports). This situation can lead to connection throttling, connection closure, or the above mentioned [Request timeouts](troubleshoot-dotnet-sdk-request-timeout.md).
+If your app is deployed on [Azure Virtual Machines without a public IP address](/azure/load-balancer/load-balancer-outbound-connections), by default [Azure SNAT ports](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) establish connections to any endpoint outside of your VM. The number of connections allowed from the VM to the Azure Cosmos DB endpoint is limited by the [Azure SNAT configuration](/azure/load-balancer/load-balancer-outbound-connections#preallocatedports). This situation can lead to connection throttling, connection closure, or the above mentioned [Request timeouts](troubleshoot-dotnet-sdk-request-time-out.md).
 
  Azure SNAT ports are used only when your VM has a private IP address is connecting to a public IP address. There are two workarounds to avoid Azure SNAT limitation (provided you already are using a single client instance across the entire application):
 
