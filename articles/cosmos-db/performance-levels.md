@@ -14,6 +14,7 @@ appliesto:
   - ✅ Apache Gremlin
   - ✅ Table
 ---
+
 # Retiring the S1, S2, and S3 performance levels
 
 > [!IMPORTANT] 

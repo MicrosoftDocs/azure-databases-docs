@@ -10,6 +10,7 @@ ms.date: 05/07/2024
 ms.author: maquaran
 ms.custom: devx-track-dotnet
 ---
+
 # Tune connection configurations for Azure Cosmos DB .NET SDK v3
 
 > [!IMPORTANT]  
