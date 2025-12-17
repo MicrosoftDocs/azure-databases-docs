@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.date: 09/03/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

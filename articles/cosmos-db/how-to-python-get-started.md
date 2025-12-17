@@ -10,7 +10,7 @@ ms.topic: how-to
 ms.date: 09/02/2025
 ms.custom: devx-track-python, devguide-python, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-azurecli
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
 ---
 
