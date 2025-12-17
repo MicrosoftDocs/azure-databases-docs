@@ -18,31 +18,31 @@ sections:
   - name: Ignored
     questions:
       - question: |
-          Can I read or update other resources while a restore is in progress? 
+          Can I read or update other resources while a restore is in progress?
         answer: |
-          Yes, you can read or update other databases or containers while a restore operation is in progress on previously deleted resources. Deleted containers and databases aren't available for those same operations in that same time period. 
+          Yes, you can read or update other databases or containers while a restore operation is in progress on previously deleted resources. Deleted containers and databases aren't available for those same operations in that same time period.
       - question: |
-          How many same account restore actions can be done on an account? 
+          How many same account restore actions can be done on an account?
         answer: |
           More than three resources in an account can not be restored in parallel.
       - question: |
-          What is the granularity of resources which I'm able to restore into the same account? 
+          What is the granularity of resources which I'm able to restore into the same account?
         answer: |
           You can restore deleted containers, databases into the same account. The only exception is that shared-throughput containers can't be restored individually. An entire shared-throughput database must be restored entirely.
       - question: |
-          Can I restore a particular container or database to a different restore timestamp multiple times? 
+          Can I restore a particular container or database to a different restore timestamp multiple times?
         answer: |
-          Yes. You can trigger a restore operation multiple times into the same account as long as they don't have a database or container with the same name. 
+          Yes. You can trigger a restore operation multiple times into the same account as long as they don't have a database or container with the same name.
       - question: |
-          Can I figure out the delete operations or timestamp on a particular container to figure out the correct timestamp to restore? 
+          Can I figure out the delete operations or timestamp on a particular container to figure out the correct timestamp to restore?
         answer: |
           Yes, APIs to list the event feed of databases or containers. Based on this feed, you can find the event timestamp and operation type you need to configure your restore operation. You can then determine the correct restore timestamp to use for your scenario.
       - question: |
-          How am I billed for restore? 
+          How am I billed for restore?
         answer: |
-          You're only billed for the amount of data restored. Once restore is complete, a billing event is triggered for restored containers or databases. 
+          You're only billed for the amount of data restored. Once restore is complete, a billing event is triggered for restored containers or databases.
       - question: |
-          What is the expected time for restore to finish? 
+          What is the expected time for restore to finish?
         answer: |
           Restore time is a function of the data size, the amount of log backup that needs to be replayed, and the number of partitions that need to be restored. Restoring 1 TB of data typically takes 30-90 minutes. For an account with multiple regions, the timing to restore into the same account could vary and more than usual restore into new account capability. 
       - question: |
