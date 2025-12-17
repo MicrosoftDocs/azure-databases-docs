@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-javascript
   - build-2025
 appliesto:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Perform bulk operations in Azure Cosmos DB for NoSQL using the Azure SDK for JavaScript
