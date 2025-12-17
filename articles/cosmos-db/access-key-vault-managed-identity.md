@@ -19,7 +19,6 @@ appliesto:
 
 Azure Cosmos DB may need to read secret/key data from Azure Key Vault. For example, your Azure Cosmos DB may require a customer-managed key stored in Azure Key Vault. To do this, Azure Cosmos DB should be configured with a managed identity, and then an Azure Key Vault access policy should grant the managed identity access.
 
-
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
