@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 11/18/2025
+ms.date: 12/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -588,7 +588,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 ## pg_diskann
 
-[pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+[pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
