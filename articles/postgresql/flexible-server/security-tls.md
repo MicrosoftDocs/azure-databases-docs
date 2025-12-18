@@ -38,7 +38,7 @@ China regions currently use the following CAs:
 - [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 - After Spring Festival (Chinese New Year) 2026: [Digicert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt). We recommend that you prepare for this change in advance by adding the new root CA to your trusted root store.
 
-### About Intermediate CAs and server certificate rotations
+### About Intermediate CAs
 
 Azure Database for PostgreSQL uses intermediate CAs (ICAs) to issue server certificates. Microsoft periodically rotates these ICAs and the server certificates they issue to maintain security. These rotations are routine and not announced in advance.
 
@@ -63,7 +63,7 @@ This information is provided for reference only. Don't use intermediate CAs or s
 
 ### Read replicas
 
-With root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) not completed in all regions, it's possible for newly created read replicas to be on a newer root CA certificate than the primary server. Therefore, you should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
+Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to be on a newer root CA certificate than the primary server. Therefore, you should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
 
 ### Certificate chains
 
@@ -100,7 +100,7 @@ Utilizing recommended TLS configurations helps reduce the risk of connection fai
 We strongly advise against the following configurations:
 
 - Disable TLS completely by setting `require_secure_transport` to `OFF` and setting the client-side to `sslmode=disable`.
-- Prevent man-in-the-middle attacks by avoiding client-side `sslmode` settings `disable`, `allow`, `prefer` or `require`.
+- Prevent man-in-the-middle attacks by avoiding client-side `sslmode` settings `disable`, `allow`, `prefer`, or `require`.
 
 ### Unsupported configurations; do **not** use
 
@@ -110,22 +110,22 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 - You use certificate pinning, such as, using individual server certificates in your trusted store.
 
 > [!CAUTION]
-> Your applications will fail to connect to the database servers without warning whenever Microsoft changes the certificate chain’s intermediate CAs or rotates the server certificate.
+> Your applications fail to connect to the database servers without warning whenever Microsoft changes the certificate chain’s intermediate CAs or rotates the server certificate.
 
 ### Certificate pinning issues
 
 > [!NOTE]
 > If you aren't using sslmode=verify-full or sslmode=verify-ca settings in your client application connection string, then certificate rotations don't affect you. Therefore, you don't need to follow the steps in this section.
 
-Never use certificate pinning in your applications since it breaks certificate rotation such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you are using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
+Never use certificate pinning in your applications since it breaks certificate rotation such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
 
 - Produce your list of certificates that are in your trusted root store.
     - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
     - Open the trusted root store on your client machine export the list of certificates.
-- You are using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
+- You're using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
 - To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
 
-If you are experiencing issues due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title ICA Rotation 2026.
+If you're experiencing issues due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title ICA Rotation 2026.
 
 ## Other considerations for TLS
 
