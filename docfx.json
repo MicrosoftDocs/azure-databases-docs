@@ -163,11 +163,11 @@
         ]
       },
       "ms.service": {
-        "articles/documentdb/**/*": "azure-documentdb",
-        "articles/cosmos-db/**/*": "azure-cosmos-db"
+        "articles/cosmos-db/**/*": "azure-cosmos-db",
+        "articles/documentdb/**/*": "azure-documentdb"
       },
       "ms.subservice": {
-        "articles/cosmos-db/nosql/**/*": "nosql",
+        "articles/cosmos-db/**/*": "nosql",
         "articles/cosmos-db/mongodb/**/*": "mongodb",
         "articles/cosmos-db/postgresql/**/*": "postgresql",
         "articles/cosmos-db/cassandra/**/*": "apache-cassandra",
@@ -175,26 +175,86 @@
         "articles/cosmos-db/gremlin/**/*": "apache-gremlin"
       },
       "author": {
-        "articles/documentdb/**/includes/**/*.md": "seesharprun",
+        "articles/cosmos-db/**/*": "seesharprun",
         "articles/cosmos-db/**/includes/**/*.md": "seesharprun",
-        "articles/cosmos-db/gremlin/**/*": "seesharprun"
+        "articles/cosmos-db/mongodb/**/*": "seesharprun",
+        "articles/cosmos-db/postgresql/**/*": "seesharprun",
+        "articles/cosmos-db/cassandra/**/*": "seesharprun",
+        "articles/cosmos-db/gremlin/**/*": "seesharprun",
+        "articles/cosmos-db/table/**/*": "seesharprun",
+        "articles/documentdb/**/*.md": "seesharprun",
+        "articles/documentdb/**/includes/**/*.md": "seesharprun"
       },
       "ms.author": {
-        "articles/documentdb/**/includes/**/*.md": "sidandrews",
+        "articles/cosmos-db/**/*": "sidandrews",
         "articles/cosmos-db/**/includes/**/*.md": "sidandrews",
-        "articles/cosmos-db/gremlin/**/*": "sidandrews"
+        "articles/cosmos-db/mongodb/**/*": "sidandrews",
+        "articles/cosmos-db/postgresql/**/*": "sidandrews",
+        "articles/cosmos-db/cassandra/**/*": "sidandrews",
+        "articles/cosmos-db/gremlin/**/*": "sidandrews",
+        "articles/cosmos-db/table/**/*": "sidandrews",
+        "articles/documentdb/**/*.md": "sidandrews",
+        "articles/documentdb/**/includes/**/*.md": "sidandrews"
       },
       "ms.reviewer": {
-        "articles/cosmos-db/gremlin/**/*": "mansha"
+        "articles/cosmos-db/**/*": "mjbrown",
+        "articles/cosmos-db/mongodb/**/*": "gahllevy",
+        "articles/cosmos-db/postgresql/**/*": "gahllevy",
+        "articles/cosmos-db/cassandra/**/*": "thvankra",
+        "articles/cosmos-db/gremlin/**/*": "mansha",
+        "articles/cosmos-db/table/**/*": "skhera",
+        "articles/documentdb/**/*.md": "abramees"
       },
       "searchScope": {
+        "articles/cosmos-db/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for NoSQL",
+          "NoSQL",
+          "SQL"
+        ],
+        "articles/cosmos-db/mongodb/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for MongoDB",
+          "Mongo",
+          "MongoDB",
+          "MongoDB Query Language",
+          "MQL"
+        ],
+        "articles/cosmos-db/postgresql/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for PostgreSQL",
+          "PostgreSQL"
+        ],
+        "articles/cosmos-db/cassandra/**/*": [
+          "Apache",
+          "Apache Cassandra",
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Apache Cassandra",
+          "Cassandra",
+          "Cassandra Query Language",
+          "CQL"
+        ],
+        "articles/cosmos-db/gremlin/**/*": [
+          "Apache",
+          "Apache Gremlin",
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Apache Gremlin",
+          "Gremlin"
+        ],
+        "articles/cosmos-db/table/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Table",
+          "Table"
+        ],
         "articles/documentdb/**/*": [
           "Azure",
           "Azure DocumentDB"
-        ],
-        "articles/cosmos-db/**/*": [
-          "Azure",
-          "Azure Cosmos DB"
         ],
         "articles/managed-instance-apache-cassandra/**/*.md": [
           "Azure",
@@ -230,8 +290,6 @@
         ]
       },
       "titleSuffix": {
-        "articles/documentdb/**/*.md": "Azure DocumentDB",
-        "articles/documentdb/**/*.yml": "Azure DocumentDB",
         "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL",
         "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL",
         "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL",
@@ -240,15 +298,40 @@
         "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL",
         "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL",
         "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL",
-        "articles/cosmos-db/gremlin/**/*": "Azure Cosmos DB for Apache Gremlin"
-      },      
+        "articles/cosmos-db/**/*": "Azure Cosmos DB",
+        "articles/cosmos-db/mongodb/**/*": "Azure Cosmos DB for MongoDB",
+        "articles/cosmos-db/postgresql/**/*": "Azure Cosmos DB for PostgreSQL",
+        "articles/cosmos-db/cassandra/**/*": "Azure Cosmos DB for Apache Cassandra",
+        "articles/cosmos-db/gremlin/**/*": "Azure Cosmos DB for Apache Gremlin",
+        "articles/cosmos-db/table/**/*": "Azure Cosmos DB for Table",
+        "articles/documentdb/**/*": "Azure DocumentDB"
+      },
       "appliesto": {
+        "articles/cosmos-db/**/*": [
+          "✅ NoSQL"
+        ],
+        "articles/cosmos-db/mongodb/**/*": [
+          "✅ MongoDB"
+        ],
+        "articles/cosmos-db/postgresql/**/*": [
+          "✅ PostgreSQL"
+        ],
+        "articles/cosmos-db/cassandra/**/*": [
+          "✅ Apache Cassandra"
+        ],
         "articles/cosmos-db/gremlin/**/*": [
           "✅ Apache Gremlin"
+        ],
+        "articles/cosmos-db/table/**/*": [
+          "✅ Table"
         ]
       },
       "ms.update-cycle": {
-        "articles/cosmos-db/gremlin/**/*": "1825-days"
+        "articles/cosmos-db/mongodb/**/*": "1825-days",
+        "articles/cosmos-db/postgresql/**/*": "1825-days",
+        "articles/cosmos-db/cassandra/**/*": "1825-days",
+        "articles/cosmos-db/gremlin/**/*": "1825-days",
+        "articles/cosmos-db/table/**/*": "1825-days"
       }
     },
     "overwrite": [],
