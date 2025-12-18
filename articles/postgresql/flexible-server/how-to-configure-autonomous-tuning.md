@@ -52,7 +52,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-enable)
 
-You can enable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can enable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-update) command.
 
 To enable autonomous tuning, use this command:
 
@@ -99,7 +99,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-disable)
 
-You can disable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can disable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-update) command.
 
 To disable autonomous tuning, use this command:
 
@@ -146,7 +146,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-show-state)
 
-You can show the state of autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can show the state of autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning show](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-show) command.
 
 To show the state of autonomous tuning, use this command:
 
@@ -188,7 +188,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-list-all-settings)
 
-You can show the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning show-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can show the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning show-settings](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-show-settings) command.
 
 For example, to show the value of the autonomous tuning setting called `analyze_interval`, use this command:
 
@@ -222,7 +222,7 @@ The command returns all information about the server parameter corresponding to 
 }
 ```
 
-Also, you can show the list of all autonomous tuning settings in an existing server via the [az postgres flexible-server autonomous-tuning list-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+Also, you can show the list of all autonomous tuning settings in an existing server via the [az postgres flexible-server autonomous-tuning list-settings](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-list-settings) command.
 
 To list all autonomous tuning settings, use this command:
 
@@ -484,7 +484,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-modify-settings)
 
-You can modify the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning set-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can modify the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning set-settings](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-set-settings) command.
 
 For example, to set the value of the autonomous tuning setting called `analyze_interval` to `1440`, use this command:
 
@@ -523,6 +523,6 @@ The command returns all information about the server parameter corresponding to 
 
 ## Related content
 
-- [Autonomous tuning](concepts-index-tuning.md)
+- [Autonomous tuning](concepts-autonomous-tuning.md)
 - [Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md)
 - [Query store](concepts-query-store.md)

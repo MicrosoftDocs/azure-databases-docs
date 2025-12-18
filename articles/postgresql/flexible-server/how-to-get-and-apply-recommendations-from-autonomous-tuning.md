@@ -66,7 +66,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-list-recommendations)
 
-You can list index recommendations produced by autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning list-index-recommendations](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can list index recommendations produced by autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning list-index-recommendations](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-list-index-recommendations) command.
 
 To list all CREATE INDEX recommendations, use this command:
 
@@ -394,7 +394,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/CLI-apply-recommendations)
 
-You can list index recommendations produced by autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning list-index-recommendations](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can list index recommendations produced by autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning list-index-recommendations](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-list-index-recommendations) command.
 
 To list all index recommendations, use this command:
 
