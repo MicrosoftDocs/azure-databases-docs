@@ -72,7 +72,7 @@ Likewise, all index recommendations are checked to ensure that they don't introd
 > [!NOTE]
 > `index_tuning.min_improvement_factor` and `index_tuning.max_regression_factor` both refer to cost of query plans, not to their duration or the resources they consume during execution.
 
-All the parameters mentioned in the previous paragraphs, their default values and valid ranges are described in [configuration options](#configuring-index-tuning).
+All the parameters mentioned in the previous paragraphs, their default values and valid ranges are described in [configuration options](#configuring-autonomous-tuning).
 
 The script produced along with the recommendation to create an index, follows this pattern:
 
@@ -225,7 +225,7 @@ Following is a list of query types for which autonomous tuning won't generate CR
 - Access views or materialized views.
 - Access partitioned tables.
 - Are identified as utility statements. Utility statements or utility commands are, basically, any statement not considered SELECT, INSERT, UPDATE, DELETE, or MERGE, and certain commands containing one of these.
-- Are not among the top [index_tuning.max_queries_per_database](concepts-index-tuning.md#configuring-index-tuning) slowest, for the database and period analyzed.
+- Are not among the top [index_tuning.max_queries_per_database](concepts-autonomous-tuning.md#configuring-autonomous-tuning) slowest, for the database and period analyzed.
 - Were run in the context of one specific database, when none of those queries were identified as the top slowest at the server level.
 
 ## Related content
