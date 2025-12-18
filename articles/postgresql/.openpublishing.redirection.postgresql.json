@@ -2486,11 +2486,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/index-tuning.md",
-            "redirect_url": "/azure/postgresql/flexible-server/autonomous-tuning",
-            "redirect_document_id": true
-        },
-        {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-index-tuning.md",
             "redirect_url": "/azure/postgresql/flexible-server/concepts-autonomous-tuning",
             "redirect_document_id": true

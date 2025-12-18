@@ -15,17 +15,17 @@ ms.custom:
 # customer intent: As a user, I want to learn about the autonomous tuning feature available in an Azure Database for PostgreSQL, how does it work and what benefits it provides.
 ---
 
-# Index tuning
+# Autonomous tuning
 
-Index tuning is a feature in your Azure Database for PostgreSQL flexible server instance that automatically improves the performance of your workload by analyzing the tracked queries and providing index recommendations.
+Autonomous tuning is a feature in your Azure Database for PostgreSQL flexible server instance that automatically improves the performance of your workload by analyzing the tracked queries and providing index or table recommendations.
 
-It's a built-in offering in your Azure Database for PostgreSQL flexible server instance, which builds on top of [Monitor performance with query store](concepts-query-store.md) functionality. Index tuning analyzes the workload tracked by query store, and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes.
+It's a built-in offering in your Azure Database for PostgreSQL flexible server instance, which builds on top of [Monitor performance with query store](concepts-query-store.md) functionality. Autonomous tuning analyzes the workload tracked by query store, and produces index or table recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes.
 
-- [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an index tuning session.
+- [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an autonomous tuning session.
 - [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes) to reduce the performance impact their existence and maintenance have on the system's overall performance.
 - [Identify indexes not used in a configurable period](#drop-unused-indexes) that could be candidates to eliminate.
 
-## General description of the index tuning algorithm
+## General description of the autonomous tuning algorithm
 
 When the `index_tuning.mode` server parameter is configured to `report`, tuning sessions are automatically started with the frequency configured in server parameter `index_tuning.analysis_interval`, expressed in minutes.
 
@@ -80,7 +80,7 @@ The script produced along with the recommendation to create an index, follows th
 
 It includes the clause `concurrently`. For further information about the effects of this clause, visit PostgreSQL official documentation for [CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY).
 
-Index tuning automatically generates the names of the recommended indexes, which typically consist of the names of the different key columns separated by "_" (underscores) and with a constant "_idx" suffix. If the total length of the name exceeds PostgreSQL limits or if it clashes with any existing relations, the name is slightly different. It could be truncated, and a number could be appended to the end of the name.
+Autonomous tuning automatically generates the names of the recommended indexes, which typically consist of the names of the different key columns separated by "_" (underscores) and with a constant "_idx" suffix. If the total length of the name exceeds PostgreSQL limits or if it clashes with any existing relations, the name is slightly different. It could be truncated, and a number could be appended to the end of the name.
 
 #### Compute the impact of a CREATE INDEX recommendation
 
@@ -92,7 +92,7 @@ QueryCostImprovement consists of an array of values, where each element represen
 
 ### DROP INDEX and REINDEX recommendations
 
-For each database for which index tuning functionality is determined, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
+For each database for which autonomous tuning functionality is determined, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
 - Drop if it's considered duplicate of others.
 - Drop if it isn't used for a configurable amount of time.
 - Reindex indexes which are marked as invalid.
@@ -132,15 +132,15 @@ The benefit is a single value that can be ignored for now.
 
 IndexSize is a single value that represents the estimated size of the index, considering the current cardinality of the table and the size of the columns referenced by the recommended index.
 
-## Configuring index tuning
+## Configuring autonomous tuning
 
-Index tuning can be enabled, disabled, and configured through a set of parameters that control its behavior.
+Autonomous tuning can be enabled, disabled, and configured through a set of parameters that control its behavior.
 
-When index tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
+When autonomous tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
 
-Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable index tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM won't affect that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
+Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM won't affect that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
 
-The following options are available for configuring index tuning parameters:
+The following options are available for configuring autonomous tuning parameters:
 
 | **Parameter** | **Description** | **Default** | **Range** | **Units** |
 | --- | --- | --- | --- | --- |
@@ -157,67 +157,67 @@ The following options are available for configuring index tuning parameters:
 | `index_tuning.unused_min_period` | Minimum number of days the index hasn't been used, based on system statistics, so it's considered for dropping. | `35` | `30 - 70` | |
 | `index_tuning.unused_reads_per_table` | Minimum number of daily average read operations affecting the table so that their unused indexes are considered for dropping. | `1000` | `0 - 9999999` | |
 
-If you use the CLI commands `az postgres flexible-server index-tuning show-settings` and `az postgres flexible-server index-tuning set-settings` to display or modify any of the index tuning settings, the values accepted as arguments for the `--name` parameter are the ones shown in the **Parameter** column of the previous table, but without including the prefix `index_tuning.`.
+If you use the CLI commands `az postgres flexible-server autonomous-tuning show-settings` and `az postgres flexible-server index-tuning set-settings` to display or modify any of the autonomous tuning settings, the values accepted as arguments for the `--name` parameter are the ones shown in the **Parameter** column of the previous table, but without including the prefix `index_tuning.`.
 
-## Information produced by index tuning
+## Information produced by autonomous tuning
 
-[How to read, interpret and use recommendations produced by index tuning](how-to-get-and-apply-recommendations-from-index-tuning.md) describes in full detail how to obtain and use the recommendations produced by index tuning.
+[Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md) describes in full detail how to obtain and use the recommendations produced by autonomous tuning.
 
 ## Limitations and supportability
 
-Following is the list of limitations and supportability scope for index tuning.
+Following is the list of limitations and supportability scope for autonomous tuning.
 
 ### Automatic deletion of recommendations
 
-Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, index tuning must be enabled.
+Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, autonomous tuning must be enabled.
 
 ### Dependency on hypopg extension
 
-For index tuning to produce CREATE INDEX recommendations, it uses the [hypopg](https://github.com/HypoPG/hypopg/) extension.
+For autonomous tuning to produce CREATE INDEX recommendations, it uses the [hypopg](https://github.com/HypoPG/hypopg/) extension.
 
-If the extension already exists when a tuning session begins, it is used on the schema in which it was created. And when the tuning session finishes, the extension is not dropped. An exception to this is if the extension was created in the `pg_catalog` schema. If that's the case, index tuning drops the extension.
+If the extension already exists when a tuning session begins, it is used on the schema in which it was created. And when the tuning session finishes, the extension is not dropped. An exception to this is if the extension was created in the `pg_catalog` schema. If that's the case, autonomous tuning drops the extension.
 
-If the extension didn't exist in the first place or we dropped it because it was created in `pg_catalog` schema, index tuning will create it under a schema called `ms_temp_recommendations709253` and, when the tuning session finishes successfully, it drops the extension and removes the schema.
+If the extension didn't exist in the first place or we dropped it because it was created in `pg_catalog` schema, autonomous tuning will create it under a schema called `ms_temp_recommendations709253` and, when the tuning session finishes successfully, it drops the extension and removes the schema.
 
-Users who are members of the `azure_pg_admin` role can drop the hypopg extension at any point in time, even when it was created by the index tuning feature. However, dropping it while an index tuning session is running might cause that session to fail and don't produce any recommendations.
+Users who are members of the `azure_pg_admin` role can drop the hypopg extension at any point in time, even when it was created by the autonomous tuning feature. However, dropping it while an autonomous tuning session is running might cause that session to fail and don't produce any recommendations.
 
 ### Supported compute tiers and SKUs
 
-Index tuning is supported on all [currently available tiers](concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](concepts-compute.md) with at least 4 vCores.
+Autonomous tuning is supported on all [currently available tiers](concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](concepts-compute.md) with at least 4 vCores.
 
 ### Supported versions of PostgreSQL
 
-Index tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
+Autonomous tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
 
 ### Use of search_path
 
-Index tuning consumes the value persisted in column `search_path` of [query_store.qs_view](concepts-query-store.md#query_storeqs_view), so that when each query is analyzed, the same value of `search_path` that was set when the query executed originally is the one to which it's set to analyze possible recommendations.
+Autonomous tuning consumes the value persisted in column `search_path` of [query_store.qs_view](concepts-query-store.md#query_storeqs_view), so that when each query is analyzed, the same value of `search_path` that was set when the query executed originally is the one to which it's set to analyze possible recommendations.
 
 ### Parameterized queries
 
 Parameterized queries created with [PREPARE](https://www.postgresql.org/docs/current/sql-prepare.html) or using the [extended query protocol](https://www.postgresql.org/docs/current/protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY) are parsed and analyzed to produce index recommendations on them.
 
-For the analysis of parameterized queries, index tuning requires that [pg_qs.parameters_capture_mode](concepts-query-store.md#configuration-options) is set to `capture_first_sample` when query store captures the execution of the query. It also requires that the parameters are correctly captured by query store when the query is executed. In other words, for the query being analyzed, [query_store.qs_view](concepts-query-store.md#query_storeqs_view) must have its column `parameters_capture_status` set to `succeeded`.
+For the analysis of parameterized queries, autonomous tuning requires that [pg_qs.parameters_capture_mode](concepts-query-store.md#configuration-options) is set to `capture_first_sample` when query store captures the execution of the query. It also requires that the parameters are correctly captured by query store when the query is executed. In other words, for the query being analyzed, [query_store.qs_view](concepts-query-store.md#query_storeqs_view) must have its column `parameters_capture_status` set to `succeeded`.
 
 ### Read-only mode and read replicas
 
-Because index tuning relies on [query store](concepts-query-store.md), which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances which are in read-only mode.
+Because autonomous tuning relies on [query store](concepts-query-store.md), which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances which are in read-only mode.
 
 Any recommendations seen on a read replica were produced on the primary replica after analyzing exclusively the workload that executed on the primary replica.
 
 ### Scale down of compute
 
-If index tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` server parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute which didn't meet the requirements.
+If autonomous tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` server parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute which didn't meet the requirements.
 
 ### High availability and read replicas
 
 If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
 
-### Reasons why index tuning might not produce create index recommendations for certain queries
+### Reasons why autonomous tuning might not produce create index recommendations for certain queries
 
-Following is a list of query types for which index tuning won't generate CREATE INDEX recommendations. Those which:
+Following is a list of query types for which autonomous tuning won't generate CREATE INDEX recommendations. Those which:
 
-- Encounter an error when index tuning engine tries to obtain its EXPLAIN output during the analysis phase.
+- Encounter an error when autonomous tuning engine tries to obtain its EXPLAIN output during the analysis phase.
 - Reference tables that don't have statistics about their contents in the pg_statistic system catalog. Run [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) on those tables so that the tuning engine can tae into consideration these queries in the future.
 - Have the query text truncated in query store. That's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
 - Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
@@ -231,5 +231,5 @@ Following is a list of query types for which index tuning won't generate CREATE 
 ## Related content
 
 - [Query store](concepts-query-store.md).
-- [Configure index tuning](how-to-configure-index-tuning.md).
-- [Use index recommendations](how-to-get-and-apply-recommendations-from-index-tuning.md).
+- [Configure autonomous tuning](how-to-configure-autonomous-tuning.md).
+- [Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md).

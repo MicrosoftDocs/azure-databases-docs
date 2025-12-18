@@ -524,5 +524,5 @@ The command returns all information about the server parameter corresponding to 
 ## Related content
 
 - [Autonomous tuning](concepts-index-tuning.md)
-- [Using autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md)
+- [Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md)
 - [Query store](concepts-query-store.md)

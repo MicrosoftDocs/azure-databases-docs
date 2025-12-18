@@ -386,7 +386,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     - Select the ellipsis to the right of the recommendation name, for which you want to obtain the SQL statement, and select **Copy SQL script**. 
 
-       :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-index-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
+       :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
     - Or select the name of the recommendation to show its **Recommendation details**, and select the copy to clipboard icon in the **SQL script** text box to copy the SQL statement.
 
