@@ -4,18 +4,19 @@ description: Certificate rotation for Azure Database for PostgreSQL
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 11/02/2025
+ms.date: 12/16/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: include
 ---
 
 > [!IMPORTANT]
-> Starting November 11, 2025, the Azure regions in the following list are planned for a TLS/SSL certificate rotation that uses new intermediate CA certificates.
-> - West Central US
-> - East Asia
-> - UK South
-> 
-> Beginning January 19, 2026, this rotation is planned to extend to all remaining Azure regions, including Azure Government and all other regions.
+> **We have started a TLS certificate rotation for Azure Database for PostgreSQL** to update new intermediate CA certificates and the resulting certificate chain. The root CAs remain the same.
 >
-> For information about troubleshooting, see [Certificate pinning issues](../security-tls.md#certificate-pinning-issues).
+> No action is required if your client configuration implements the [***Recommended configurations for TLS***](../security-tls.md#recommended-configurations-for-tls).
+>
+> **Certificate rotation schedule**
+>
+> - Azure regions West Central US, East Asia, and UK South started their TLS certificate rotation on November 11, 2025.
+> - Beginning January 19, 2026, this certificate rotation is planned to extend to the remaining (except China) regions including Azure Government.
+> - After the Spring Festival (Chinese New Year) 2026, China regions will also undergo a certificate rotation that includes a **change to one of the root CAs**.
