@@ -46,7 +46,7 @@ In Azure Cosmos DB, the total consumed storage is the combination of both the Da
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
 
 > [!IMPORTANT]
-> >  - The partition key (unless it is also "/id") is not indexed and should be included in the index. Partition keys do not require indexing to function, but if you do not include them in your indexing policy, any queries filtering on partition key hierarchy will force full scans that become cross-partition queries, resulting in higher RU consumption. In the case of hierarchical partition keys, you want to include the individual levels of the partition key hierarchy in your indexing policy to ensure efficient query performance.
+> >  - The partition key (unless it is also "/id") is not indexed and should be included in the index. Partition keys do not require indexing to function, but if you do not include them in your indexing policy, any queries filtering on partition key hierarchy will force full scans, resulting in higher RU consumption. In the case of hierarchical partition keys, you want to include the individual levels of the partition key hierarchy in your indexing policy to ensure efficient query performance.
 - The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
 - The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
 
