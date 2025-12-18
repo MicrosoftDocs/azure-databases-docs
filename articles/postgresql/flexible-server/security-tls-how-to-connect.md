@@ -12,16 +12,20 @@ ms.topic: how-to
 
 # Connect clients with TLS security to your database
 
+This article explains how to configure Transport Layer Security (TLS) for secure connections between your client applications and Azure Database for PostgreSQL. You learn how to download and install the necessary root certificates, configure client connection settings, and verify that your connections use TLS encryption.
+
+[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+
 ## Overview
 
-Connections between your client applications and the database server are always encrypted using industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
+Connections between your client applications and the database server always use encryption with industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
 > [!NOTE]
 > The open source PostgreSQL uses the legacy name SSL in its commands, variables, and documentation to avoid breaking existing implementations. This document uses the acronym TLS while using SSL in command names and variables.
 
-Azure Database for PostgreSQL supports encrypted connections using TLS 1.2 and 1.3. All incoming connections that try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
+Azure Database for PostgreSQL supports encrypted connections that use TLS 1.2 and 1.3. The service denies all incoming connections that try to encrypt the traffic by using TLS 1.0 or TLS 1.1.
 
-By default, secured connectivity between the client and the server is enforced. If you want to disable the enforcement of TLS, allowing both encrypted and unencrypted client communications, you can change the server parameter `require_secure_transport` to `OFF`. You can also set TLS version by setting the `ssl_max_protocol_version` server parameter. We **strongly advise against disabling** TLS.
+By default, the service enforces secured connectivity between the client and the server. If you want to disable this enforcement and allow both encrypted and unencrypted client communications, change the server parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` server parameter. We **strongly advise against disabling** TLS.
 
 [!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
 
