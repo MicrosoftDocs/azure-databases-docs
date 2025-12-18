@@ -618,12 +618,12 @@
               href: flexible-server/how-to-configure-and-access-logs.md
             - name: Intelligent performance
               items:
-                - name: Index tuning
+                - name: Autonomous tuning
                   items:
-                    - name: Configure index tuning
-                      href: flexible-server/how-to-configure-index-tuning.md
-                    - name: Use index recommendations
-                      href: flexible-server/how-to-get-and-apply-recommendations-from-index-tuning.md
+                    - name: Configure autonomous tuning
+                      href: flexible-server/how-to-configure-autonomous-tuning.md
+                    - name: Use autonomous tuning recommendations
+                      href: flexible-server/how-to-get-and-apply-recommendations-from-autonomous-tuning.md
                 - name: Intelligent tuning
                   items:
                     - name: Azure portal

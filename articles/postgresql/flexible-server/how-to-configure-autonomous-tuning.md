@@ -1,10 +1,10 @@
 ---
-title: Configure index tuning
-description: This article describes how to configure the index tuning feature in your Azure Database for PostgreSQL flexible server instance.
+title: Configure Autonomous Tuning
+description: This article describes how to configure the autonomous tuning feature in your Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 09/29/2025
+ms.date: 12/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -12,20 +12,20 @@ ms.custom:
 - ignite-2024
 - sfi-image-nochange
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to enable, disable and configure the index tuning feature in an Azure Database for PostgreSQL flexible server instance.
+# customer intent: As a user, I want to learn about how to enable, disable and configure the autonomous tuning feature in an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# Configure index tuning
+# Configure autonomous tuning
 
-Index tuning can be enabled, disabled, and configured through a [set of parameters](concepts-index-tuning.md#configuring-index-tuning) that control its behavior, such as how often a tuning session can run.
+Autonomous tuning can be enabled, disabled, and configured through a [set of parameters](concepts-autonomous-tuning.md#configuring-autonomous-tuning) that control its behavior, such as how often a tuning session should run.
 
-Index tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, index tuning isn't recommended for servers using compute from the Burstable tier.
+Autonomous tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, autonomous tuning isn't recommended for servers using compute from the Burstable tier.
 
-Index tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
+Autonomous tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 
-### Steps to enable index tuning
+### Steps to enable autonomous tuning
 
-[!INCLUDE [index-tuning](includes/index-tuning.md)]
+[!INCLUDE [autonomous-tuning](includes/autonomous-tuning.md)]
 
 ### [Portal](#tab/portal-enable)
 
@@ -33,31 +33,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Intelligent Performance section, to enable index tuning." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png":::
 
-3. If either `pg_qs.query_capture_mode` is set to `NONE` or `index_tuning.mode` is set to `OFF`, the **Index tuning** page gives you the option to enable index tuning. Select on either of the two **Enable index tuning** buttons, to enable index tuning feature and its required query store dependency, if query store is disabled.
+3. If either `pg_qs.query_capture_mode` is set to `NONE` or `index_tuning.mode` is set to `OFF`, the **Autonomous tuning** page gives you the option to enable autonomous tuning. Select on either of the two **Enable tuning** buttons, to enable index tuning feature and its required query store dependency, if query store is disabled.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/enable-index-tuning-via-page-enable-index-tuning.png" alt-text="Screenshot that shows how to enable index tuning through the Index tuning page." lightbox="media/how-to-configure-index-tuning/enable-index-tuning-via-page-enable-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png" alt-text="Screenshot that shows how to enable autonomous tuning through the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png":::
 
 4. Wait for the deployment to complete successfully before considering that the feature is enabled.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to enable index tuning." lightbox="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
-5. After enabling index tuning, allow 12 hours for the index tuning engine to analyze the workload collected by query store during that time, and eventually produce create or drop index recommendations.
+5. After enabling autonomous tuning, allow 12 hours for the autonomous tuning engine to analyze the workload collected by query store during that time, and eventually produce recommendations.
 
 > [!IMPORTANT]  
-> When index tuning is enabled through the **Enable index tuning** button, if `pg_qs.query_capture_mode` is set to `NONE`, it's changed to `ALL`. If it was already set to either `TOP` or `ALL`, it's left in its current state.
+> When autonomous tuning is enabled through the **Enable tuning** button, if `pg_qs.query_capture_mode` is set to `NONE`, it's changed to `ALL`. If it was already set to either `TOP` or `ALL`, it's left in its current state.
 
 ### [CLI](#tab/cli-enable)
 
-You can enable index tuning in an existing server via the [az postgres flexible-server index-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can enable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-To enable index tuning, use this command:
+To enable autonomous tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning update \
+az postgres flexible-server autonomous-tuning update \
   --resource-group <resource_group> \
   --server-name <server> \
   --enabled true
@@ -66,13 +66,13 @@ az postgres flexible-server index-tuning update \
 If the previous command executes successfully, you should see the following output:
 
 ```output
-WARNING: Enabling index tuning for the server.
-WARNING: Index tuning is enabled for the server.
+WARNING: Enabling autonomous tuning for the server.
+WARNING: Autonomous tuning is enabled for the server.
 ```
 
 ---
 
-### Steps to disable index tuning
+### Steps to disable autonomous tuning
 
 ### [Portal](#tab/portal-disable)
 
@@ -80,31 +80,31 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png" alt-text="Screenshot that shows the Index tuning menu option under the Intelligent Performance section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-autonomous-tuning.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-autonomous-tuning.png":::
 
-3. Select **Disable index tuning** to disable the feature.
+3. Select **Disable tuning** to disable the feature.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/disable-index-tuning-via-page-disable-index-tuning.png" alt-text="Screenshot that shows how to disable index tuning through the Index tuning page." lightbox="media/how-to-configure-index-tuning/disable-index-tuning-via-page-disable-index-tuning.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-disable-autonomous-tuning.png" alt-text="Screenshot that shows how to disable autonomous tuning through the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-disable-autonomous-tuning.png":::
 
 4. Wait for the deployment to complete successfully before considering that the feature is disabled.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to disable index tuning." lightbox="media/how-to-configure-index-tuning/wait-for-index-tuning-deployment.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
 5. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
 
 > [!IMPORTANT]  
-> When index tuning is disabled through the **Disable index tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
 
 ### [CLI](#tab/CLI-disable)
 
-You can disable index tuning in an existing server via the [az postgres flexible-server index-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can disable autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-To disable index tuning, use this command:
+To disable autonomous tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning update \
+az postgres flexible-server autonomous-tuning update \
   --resource-group <resource_group> \
   --server-name <server> \
   --enabled false
@@ -113,18 +113,18 @@ az postgres flexible-server index-tuning update \
 If the previous command executes successfully, you should see the following output:
 
 ```output
-WARNING: Disabling index tuning for the server.
-WARNING: Index tuning is disabled for the server.
+WARNING: Disabling autonomous tuning for the server.
+WARNING: Autonomous tuning is disabled for the server.
 ```
 
 Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
 
 > [!IMPORTANT]  
-> When index tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
 
 ---
 
-### Steps to show the state of index tuning
+### Steps to show the state of autonomous tuning
 
 ### [Portal](#tab/portal-show-state)
 
@@ -132,45 +132,45 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Intelligent Performance section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. If index tuning is enabled, the page displays the **Disable index tuning** button.
+3. If autonomous tuning is enabled, the page displays the **Disable tuning** button.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-enabled-disable-button.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is enabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-enabled-disable-button.png":::
 
-4. If index tuning is disabled, the page displays the **Enable index tuning** button.
+4. If autonomous tuning is disabled, the page displays the **Enable tuning** button.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is disabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-enable-button.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-enable-button.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is disabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-enable-button.png":::
 
 ### [CLI](#tab/CLI-show-state)
 
-You can show the state of index tuning in an existing server via the [az postgres flexible-server index-tuning show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can show the state of autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning show](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-To disable index tuning, use this command:
+To show the state of autonomous tuning, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning show \
+az postgres flexible-server autonomous-tuning show \
   --resource-group <resource_group> \
   --server-name <server>
 ```
 
-If index tuning is enabled, you should see the following output:
+If autonomous tuning is enabled, you should see the following output:
 
 ```output
-WARNING: Index tuning is enabled for the server.
+WARNING: Autonomous tuning is enabled for the server.
 ```
 
-If index tuning is disabled, you should see the following output:
+If autonomous tuning is disabled, you should see the following output:
 
 ```output
-WARNING: Index tuning is disabled for the server.
+WARNING: Autonomous tuning is disabled for the server.
 ```
 
 ---
 
-### Steps to list index tuning settings
+### Steps to list autonomous tuning settings
 
 ### [Portal](#tab/portal-list-all-settings)
 
@@ -178,28 +178,28 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Intelligent Performance section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
 3. Select **Tuning settings**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Index tuning page." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png":::
 
 ### [CLI](#tab/CLI-list-all-settings)
 
-You can show the value of a single index tuning setting in an existing server via the [az postgres flexible-server index-tuning show-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can show the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning show-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-For example, to show the value of the index tuning setting called `analyze_interval`, use this command:
+For example, to show the value of the autonomous tuning setting called `analyze_interval`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning show-settings \
+az postgres flexible-server autonomous-tuning show-settings \
   --resource-group <resource_group> \
   --server-name <server> \
   --name analyze_interval
 ```
 
-The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:
+The command returns all information about the server parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
 
 ```output
 {
@@ -222,17 +222,17 @@ The command returns all information about the server parameter corresponding to 
 }
 ```
 
-Also, you can show the list of all index tuning settings in an existing server via the [az postgres flexible-server index-tuning list-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+Also, you can show the list of all autonomous tuning settings in an existing server via the [az postgres flexible-server autonomous-tuning list-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-To list all index tuning settings, use this command:
+To list all autonomous tuning settings, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning list-settings \
+az postgres flexible-server autonomous-tuning list-settings \
   --resource-group <resource_group> \
   --server-name <server>
 ```
 
-The command returns all server parameters that control the different settings of index tuning, and the output is similar to the following:
+The command returns all server parameters that control the different settings of autonomous tuning, and the output is similar to the following:
 
 ```output
 [
@@ -457,7 +457,7 @@ The command returns all server parameters that control the different settings of
 
 ---
 
-### Steps to modify index tuning settings
+### Steps to modify autonomous tuning settings
 
 ### [Portal](#tab/portal-modify-settings)
 
@@ -465,38 +465,38 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled.png" alt-text="Screenshot that shows the Index tuning menu option under the Intelligent Performance section, to disable index tuning." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
 3. Select **Tuning settings**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Index tuning page." lightbox="media/how-to-configure-index-tuning/index-tuning-page-disabled-tune-settings.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png":::
 
 4. Modify the values of as many settings as you want to change, and select **Save**.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Index tuning page when the feature is enabled." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-save.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is enabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-save.png":::
 
 5. Wait for the deployment to complete successfully before considering that the value of the settings is changed.
 
-   :::image type="content" source="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a successfully completed deployment to modify one or more index tuning settings." lightbox="media/how-to-configure-index-tuning/index-tuning-page-tuning-settings-deployment.png":::
+   :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a successfully completed deployment to modify one or more autonomous tuning settings." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-deployment.png":::
 
 
 ### [CLI](#tab/CLI-modify-settings)
 
-You can modify the value of a single index tuning setting in an existing server via the [az postgres flexible-server index-tuning set-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can modify the value of a single autonomous tuning setting in an existing server via the [az postgres flexible-server autonomous-tuning set-settings](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
-For example, to set the value of the index tuning setting called `analyze_interval` to `1440`, use this command:
+For example, to set the value of the autonomous tuning setting called `analyze_interval` to `1440`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server index-tuning set-settings \
+az postgres flexible-server autonomous-tuning set-settings \
   --resource-group <resource_group> \
   --server-name <server> \
   --name analyze_interval \
   --value 1440
 ```
 
-The command returns all information about the server parameter corresponding to that setting of index tuning, and the output is similar to the following:
+The command returns all information about the server parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
 
 ```output
 {
@@ -523,6 +523,6 @@ The command returns all information about the server parameter corresponding to 
 
 ## Related content
 
-- [Index tuning](concepts-index-tuning.md)
-- [Using index recommendations](how-to-get-and-apply-recommendations-from-index-tuning.md)
+- [Autonomous tuning](concepts-index-tuning.md)
+- [Using autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md)
 - [Query store](concepts-query-store.md)

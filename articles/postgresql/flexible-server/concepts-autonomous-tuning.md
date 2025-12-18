@@ -1,10 +1,10 @@
 ---
-title: Index tuning
-description: This article describes the index tuning feature available in an Azure Database for PostgreSQL flexible server instance.
+title: Autonomous Tuning
+description: This article describes the autonomous tuning feature available in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/25/2025
+ms.date: 12/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - references_regions
   - build-2024
   - ignite-2024
-# customer intent: As a user, I want to learn about the index tuning feature available in an Azure Database for PostgreSQL, how does it work and what benefits it provides.
+# customer intent: As a user, I want to learn about the autonomous tuning feature available in an Azure Database for PostgreSQL, how does it work and what benefits it provides.
 ---
 
 # Index tuning
