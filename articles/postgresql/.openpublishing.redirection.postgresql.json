@@ -2172,7 +2172,12 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-tls-ssl.md",
-            "redirect_url": "/azure/postgresql/flexible-server/security-connect-tls",
+            "redirect_url": "/azure/postgresql/flexible-server/security-tls-how-to-connect",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/security-connect-tls.md",
+            "redirect_url": "/azure/postgresql/flexible-server/security-tls-how-to-connect",
             "redirect_document_id": true
         },
         {
@@ -2479,6 +2484,6 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-tls.md",
             "redirect_url": "/azure/postgresql/flexible-server/param-tls",
             "redirect_document_id": true
-       }
+        }
     ]
 }
