@@ -117,13 +117,13 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 > [!NOTE]
 > If you aren't using sslmode=verify-full or sslmode=verify-ca settings in your client application connection string, then certificate rotations don't affect you. Therefore, you don't need to follow the steps in this section.
 
-Never use certificate pinning in your applications since it breaks certificate rotation such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you are using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning), perform the following steps:
+Never use certificate pinning in your applications since it breaks certificate rotation such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you are using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
 
-1. Produce your list of certificates that are in your trusted root store. Examples can be found in these articles:
-    1. [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
-    1. Open the trusted root store on your client machine export the list of certificates.
-1. You are using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
-1. To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
+- Produce your list of certificates that are in your trusted root store.
+    - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
+    - Open the trusted root store on your client machine export the list of certificates.
+- You are using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
+- To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
 
 If you are experiencing issues due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include in the title ICA Rotation 2026.
 

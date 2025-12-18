@@ -21,7 +21,7 @@ Connections between your client applications and the database server are always 
 
 Azure Database for PostgreSQL supports encrypted connections using TLS 1.2 and 1.3. All incoming connections that try to encrypt the traffic using TLS 1.0 and TLS 1.1 are denied.
 
-By default, secured connectivity between the client and the server are enforced. If you want to disable the enforcement of TLS, allowing both encrypted and unencrypted client communications, you can change the server parameter `require_secure_transport` to `OFF`. You can also set TLS version by setting the `ssl_max_protocol_version` server parameter. We **strongly advise against disabling** TLS.
+By default, secured connectivity between the client and the server is enforced. If you want to disable the enforcement of TLS, allowing both encrypted and unencrypted client communications, you can change the server parameter `require_secure_transport` to `OFF`. You can also set TLS version by setting the `ssl_max_protocol_version` server parameter. We **strongly advise against disabling** TLS.
 
 [!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
 
@@ -31,7 +31,7 @@ By default, PostgreSQL doesn't perform any verification of the server certificat
 
 There are many connection parameters for configuring the client for TLS. A few important ones are:
 
-- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies a TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing a TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks. It checks that the server certificate is signed by a trusted authority and that the host you're connecting to is the same as the host name in the certificate.
+- `ssl`: Connect using TLS. This property doesn't need a value associated with it. The mere presence of it specifies a TLS connection. For compatibility with future versions, the value `true` is preferred. In this mode, when you're establishing a TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks.
 - `sslmode`: If you require encryption and want the connection to fail if it can't be encrypted, set `sslmode=require`. This setting ensures that the server is configured to accept TLS connections for this host/IP address and that the server recognizes the client certificate. If the server doesn't accept TLS connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
 
   | `sslmode` | Explanation |
@@ -41,7 +41,7 @@ There are many connection parameters for configuring the client for TLS. A few i
   | `prefer` | Encryption is used if server settings allow for it. Azure Database for PostgreSQL requires TLS connections. |
   | `require` | Encryption is used. It ensures that the server is configured to accept TLS connections. |
   | `verify-ca` | Encryption is used. Verify the server certificate against the trusted root certificates stored on the client. |
-  | `verify-full` | Encryption is used. Verify the server certificate against the certificate stored on the client. It also validates that the server certificates uses the same host name as the connection. we recommend this setting unless private DNS resolvers use a different name to reference the Azure Database for PostgreSQL server. |
+  | `verify-full` | Encryption is used. Verify the server certificate against the certificate stored on the client. It also validates that the server certificates use the same host name as the connection. We recommend this setting unless private DNS resolvers use a different name to reference the Azure Database for PostgreSQL server. |
 
 The default `sslmode` mode used is different between `libpq`-based clients (such as `PSQL` and `JDBC`). The libpq-based clients default to `prefer`. `JDBC` clients default to `verify-full`.
 
@@ -64,7 +64,7 @@ For Java clients, the VS Code extension, and other clients (for example, `PSQL`,
 > [!NOTE]
 > For China regions and for customers with rotation extensions: [Digicert Global Root CA (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) is still valid; include it in the combined PEM file.
 
-We do strongly recommend including all Azure root CA certificates. This might reduce the need for future updates to the combined file if there are changes to the root CAs used by Azure Database for PostgreSQL. The list of Azure root CA certificates can be found at [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).
+We do strongly recommend including all Azure root CA certificates to reduce the need for future updates to the combined file if there are changes to the root CAs used by Azure Database for PostgreSQL. The list of Azure root CA certificates can be found at [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).
 
 To import certificates to client certificate stores, you may need to convert any CRT-format certificates to PEM format and concatenate the PEM files into a single file. You can use the [OpenSSL X509 utility](https://docs.openssl.org/master/man1/openssl-x509/) to convert the CRT files to PEM.
 
@@ -101,7 +101,7 @@ For China regions and for customers with rotation extensions:
 
 ### Combine and update root CA certificates for Java applications
 
-Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
+Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
 You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL:
 
 1. Check `cacerts` java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using following command:
@@ -114,7 +114,7 @@ You can use following directions to update client root CA certificates for clien
 
 1. Make a backup copy of your custom keystore.
 
-1. Follow instructions [above to download the certificate files](#download-and-convert-root-ca-certificates), and save them locally where you can reference them.
+1. [Download the certificate files](#download-and-convert-root-ca-certificates), and save them locally where you can reference them.
 
 1. Generate a combined CA certificate store with all needed Root CA certificates are included. Example below shows using DefaultJavaSSLFactory for PostgreSQL Java users.
 
@@ -139,7 +139,7 @@ If you're trying to connect to the Azure Database for PostgreSQL using applicati
 
 ### Update Root CA certificates for .NET (`Npgsql`) users on Windows
 
-For .NET (`Npgsql`) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the standard Azure root CA list. If any certificates listed in our [recommended configuration](security-tls.md#best-configuration) isn't included, import the missing certificates.
+For .NET (`Npgsql`) users on Windows, connecting to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in Windows Certificate Store, Trusted Root Certification Authorities. Windows Update maintains the standard Azure root CA list. If any certificates listed in our [recommended configuration](security-tls.md#best-configuration) aren't included, import the missing certificates.
 
 ## How to use TLS with certificate validation
 
