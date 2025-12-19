@@ -1,5 +1,5 @@
 ---
-title: Auditing the point in time restore action for continuous backup mode in Azure Cosmos DB
+title: Auditing the Point in Time Restore Action for Continuous Backup Mode
 description: This article provides details available to audit Azure Cosmos DB's point in time restore feature in continuous backup mode.
 author: kanshiG
 ms.service: azure-cosmos-db
@@ -7,10 +7,14 @@ ms.topic: how-to
 ms.date: 04/18/2022
 ms.author: govindk
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Audit the point-in-time restore action for continuous backup mode in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Azure Cosmos DB provides you with a list of all point-in-time restores for continuous mode that were performed on an Azure Cosmos DB account using [activity logs](monitor.md#activity-log). Activity logs can be viewed for any Azure Cosmos DB account from the **Activity Logs** page in the Azure portal. The activity log shows all the operations that were triggered on the specific account. When a point-in-time restore is triggered, it shows up as `Restore Database Account` operation on the source account as well as the target account. The activity log for the source account can be used to audit restore events, and the activity logs on the target account can be used to get the updates about the progress of the restore.
 

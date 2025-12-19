@@ -1,5 +1,5 @@
 ---
-title: Configure permissions to restore an Azure Cosmos DB account.
+title: Configure Permissions to Restore an Account.
 description: Learn how to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. It shows how to assign a built-in role using Azure portal, CLI, or define a custom role.
 author: kanshiG
 ms.service: azure-cosmos-db
@@ -7,10 +7,14 @@ ms.topic: how-to
 ms.date: 03/31/2023
 ms.author: govindk
 ms.custom: subject-rbac-steps, devx-track-azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Manage permissions to restore an Azure Cosmos DB account
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Azure Cosmos DB allows you to isolate and restrict the restore permissions for continuous backup account to a specific role or a principal. These permissions can be applied at the subscription scope or more granularly at the source account scope as shown in the following image:
 

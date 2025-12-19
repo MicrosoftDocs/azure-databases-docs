@@ -1,17 +1,20 @@
 ---
 title: Troubleshoot issues with diagnostics queries
-titleSuffix: Azure Cosmos DB
 description: Query diagnostics logs using the Kusto query language (KQL) to troubleshoot queries and operations in Azure Cosmos DB.
 author: StefArroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: reference
 ms.date: 08/22/2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Troubleshoot issues with diagnostics queries
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 In this article, we cover how to write simple queries to help troubleshoot issues with your Azure Cosmos DB account using diagnostics logs sent to **AzureDiagnostics (legacy)** and **Resource-specific (preview)** tables.
 
@@ -65,6 +68,7 @@ CDBDataPlaneRequests
 ```
 
 ---
+
 ### Query for long-running operations
 
 Find operations that ran for a long time by binning their runtime into five-second intervals.

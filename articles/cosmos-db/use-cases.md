@@ -1,5 +1,5 @@
 ---
-title: Common Use Cases and Scenarios for Azure Cosmos DB
+title: Common Use Cases and Scenarios
 description: "Learn about the top five use cases for Azure Cosmos DB: user generated content, event logging, catalog data, user preferences data, and  Internet of Things (IoT)."
 author: markjbrown
 ms.author: mjbrown
@@ -9,11 +9,15 @@ ms.service: azure-cosmos-db
 ms.topic: solution-overview
 ms.custom:
   - cosmos-db-video
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Common Azure Cosmos DB use cases
-
-[!INCLUDE [NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article provides an overview of several common use cases for Azure Cosmos DB. The recommendations in this article serve as a starting point as you develop your application with Azure Cosmos DB.
 
@@ -31,7 +35,7 @@ After reading this article, you'll be able to answer the following questions:
 
 [Azure Cosmos DB](introduction.md) is the Azure solution for a fast NoSQL database, with open APIs for any scale. The service is designed to allow customers to elastically (and independently) scale throughput and storage across any number of geographical regions. Azure Cosmos DB is the first globally distributed database service in the market today to offer comprehensive [service level agreements](https://azure.microsoft.com/support/legal/sla/cosmos-db/) encompassing throughput, latency, availability, and consistency.
 
-Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It's a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/overview.md), [API for NoSQL](nosql/overview.md), [API for Gremlin](gremlin/overview.md), and [API for Table](table/overview.md) natively, and in an extensible manner.
+Azure Cosmos DB is a global distributed, multi-model database that is used in a wide range of applications and use cases. It's a good choice for any [serverless](https://azure.com/serverless) application that needs low order-of-millisecond response times, and needs to scale rapidly and globally. It supports multiple data models (key-value, documents, graphs and columnar) and many Azure Cosmos DB APIs for data access including [API for MongoDB](mongodb/overview.md), [API for NoSQL](overview.md), [API for Gremlin](gremlin/overview.md), and [API for Table](table/overview.md) natively, and in an extensible manner.
 
 The following are some attributes of Azure Cosmos DB that make it well-suited for high-performance applications with global ambition.
 
@@ -70,7 +74,7 @@ Azure Cosmos DB is often used for event sourcing to power event driven architect
 
 
 
-In addition, data stored in Azure Cosmos DB can be integrated with HDInsight for big data analytics via Apache Spark jobs. For details on the Spark Connector for Azure Cosmos DB, see [Run a Spark job with Azure Cosmos DB and HDInsight](nosql/tutorial-spark-connector.md).
+In addition, data stored in Azure Cosmos DB can be integrated with HDInsight for big data analytics via Apache Spark jobs. For details on the Spark Connector for Azure Cosmos DB, see [Run a Spark job with Azure Cosmos DB and HDInsight](tutorial-spark-connector.md).
 
 ## Gaming
 

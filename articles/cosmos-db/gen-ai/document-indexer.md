@@ -100,6 +100,6 @@ Select "Create" and test your workflow by adding document files to your sourced 
 
 - [About Azure Logic Apps](/azure/logic-apps/logic-apps-overview)
 - [Azure Logic Apps workflows from templates](/azure/logic-apps/create-single-tenant-workflows-templates)
-- [Vector search](../nosql/vector-search.md)
+- [Vector search](../vector-search.md)
 - [Full-text search](full-text-search.md)
 - [Hybrid Search](hybrid-search.md)

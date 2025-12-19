@@ -1,6 +1,5 @@
 ---
 title: Migrate Data Using the Desktop Data Migration Tool
-titleSuffix: Azure Cosmos DB
 description: Use the desktop data migration tool to migrate data from JSON, MongoDB, SQL Server, or Azure Table storage to Azure Cosmos DB.
 author: sandeepsnairms
 ms.author: sandnair
@@ -10,11 +9,13 @@ ms.topic: how-to
 ms.date: 06/26/2025
 ms.custom: sfi-ropc-blocked
 # CustomerIntent: As a database owner, I want to use a tool to perform migration to Azure Cosmos DB so that I can streamline large and complex migrations.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Table
 ---
 
 # Migrate data using the desktop data migration tool
-
-[!INCLUDE[NoSQL, MongoDB, Table](includes/appliesto-nosql-mongodb-table.md)]
 
 The [Azure Cosmos DB desktop data migration tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool can migrate data to and from many sources and sinks including, but not limited to:
 
@@ -32,7 +33,7 @@ The [Azure Cosmos DB desktop data migration tool](https://github.com/azurecosmos
 ## Prerequisites
 
 - An existing Azure Cosmos DB for NoSQL account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - Latest version of [Azure CLI](/cli/azure/install-azure-cli).
 - [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later.

@@ -1,6 +1,5 @@
 ---
 title: Restore Deleted Container or Database to Same Account
-titleSuffix: Azure Cosmos DB
 description: Restore deleted containers or databases to the same Azure Cosmos DB account using Azure portal, CLI, PowerShell, or ARM templates in continuous backup mode.
 author: kanshiG
 ms.author: govindk
@@ -9,17 +8,14 @@ ms.custom: build-2023, devx-track-azurecli, devx-track-azurepowershell, devx-tra
 ms.topic: how-to
 ms.date: 09/03/2025
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-gremlin-table
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ Apache Cassandra
   - ✅ Apache Gremlin
   - ✅ Table
 ---
 
 # Restore a deleted container or database to the same Azure Cosmos DB account
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 The Azure Cosmos DB point-in-time same-account restore feature helps you recover from an accidental deletion of a container or database. This feature restores the deleted  database or container to the same, existing account in any region in which backups exist. Continuous backup mode allows you to restore to any point of time within the last 30 days.
 
@@ -28,7 +24,7 @@ The Azure Cosmos DB point-in-time same-account restore feature helps you recover
 - An Azure subscription. If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An Azure Cosmos DB account. You can choose one of the following options for an Azure Cosmos DB account:
   - Use an existing Azure Cosmos DB account.
-  - Create a [new Azure Cosmos DB account](nosql/how-to-create-account.md?tabs=azure-portal) in your Azure subscription.
+  - Create a [new Azure Cosmos DB account](how-to-create-account.md?tabs=azure-portal) in your Azure subscription.
 
 ## Restore a deleted container or database
 

@@ -1,6 +1,5 @@
 ---
 title: Use the Data Explorer to manage your data
-titleSuffix: Azure Cosmos DB
 description: Learn about the Azure Cosmos DB Data Explorer, a standalone web-based interface that allows you to view and manage the data stored in Azure Cosmos DB.
 author: meredithmooreux
 ms.author: merae
@@ -8,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/03/2025
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra
@@ -167,7 +166,7 @@ In the Data Explorer, you can configure a limit to the request units per second 
 
 ## Use with Microsoft Entra authentication
 
-You can use Microsoft Entra-based authentication within the explorer by enabling it via configuration. For more information about role-based access control, see the [security guide](security.yml).
+You can use Microsoft Entra-based authentication within the explorer by enabling it via configuration. For more information about role-based access control, see the [security guide](security.md).
 
 1. Start in the explorer for the target Azure Cosmos DB account.
 

@@ -1,6 +1,5 @@
 ---
-title: Same-account (in-account) restore for continuous backup  
-titleSuffix: Azure Cosmos DB
+title: Same-account (in-account) restore for continuous backup
 description: An introduction to restoring a deleted container or database to a specific point in time in the same Azure Cosmos DB account.
 author: kanshiG
 ms.author: govindk
@@ -8,11 +7,14 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: concept-article
 ms.date: 04/15/2024
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Restore a deleted database or container in the same account by using continuous backup 
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 The same-account restore capability of continuous backup in Azure Cosmos DB allows you to restore a deleted database or container in the same existing account. You can perform this restore operation by using the [Azure portal](how-to-restore-in-account-continuous-backup.md?tabs=azure-portal&pivots=api-nosql), the [Azure CLI](how-to-restore-in-account-continuous-backup.md?tabs=azure-cli&pivots=api-nosql), or [Azure PowerShell](how-to-restore-in-account-continuous-backup.md?tabs=azure-powershell&pivots=api-nosql). This feature helps you recover data from accidental deletions of databases or containers.
 
