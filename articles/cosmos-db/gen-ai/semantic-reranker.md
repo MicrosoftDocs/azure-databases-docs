@@ -19,7 +19,7 @@ appliesto:
 
 # Semantic Reranker in Azure Cosmos DB for NoSQL (Preview)
 
- The Semantic Reranker uses an AI model to score and reorder the results from a query (vector search, hybrid search, or other type of query) based on *relevancy* to the provided user search phrase or context. By integrating the reranker directly with Azure Cosmos DB, developers can apply reranking on any query results retrieved from any container (for example, using [vector](../nosql/vector-search.md), [full-text](full-text-search.md), or [hybrid](hybrid-search.md) search), while using the latest Azure Cosmos DB SDKs (Python & .NET) with minimal code changes.
+ The Semantic Reranker uses an AI model to score and reorder the results from a query (vector search, hybrid search, or other type of query) based on *relevancy* to the provided user search phrase or context. By integrating the reranker directly with Azure Cosmos DB, developers can apply reranking on any query results retrieved from any container (for example, using [vector](../vector-search.md), [full-text](full-text-search.md), or [hybrid](hybrid-search.md) search), while using the latest Azure Cosmos DB SDKs (Python & .NET) with minimal code changes.
 
 The Semantic Reranker service uses the Microsoft AI Semantic Ranker model, developed internally by Microsoft and available today in [Azure AI Search's Semantic Ranker](/azure/search/semantic-search-overview).
 
@@ -54,6 +54,6 @@ The Semantic Reranker is currently available in gated preview. To get access to 
 
 ## Related content
 
-- [Vector Search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
+- [Vector Search in Azure Cosmos DB for NoSQL](../vector-search.md)
 - [Full-text search in Azure Cosmos DB for NoSQL](full-text-search.md)
 - [Hybrid search in Azure Cosmos DB for NoSQL](hybrid-search.md)

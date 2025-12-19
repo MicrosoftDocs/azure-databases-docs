@@ -1,15 +1,20 @@
 ---
-title: Understanding your Azure Cosmos DB bill
+title: Understanding Your Bill
 description: This article explains how to understand your Azure Cosmos DB bill with some examples.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 03/31/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Understand your Azure Cosmos DB bill
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 As a fully managed cloud-native database service, Azure Cosmos DB simplifies billing by charging only for your database operations and consumed storage. There are no additional license fees, hardware, utility costs, or facility costs compared to on-premises or IaaS-hosted alternatives. When you consider the multi region capabilities of Azure Cosmos DB, the database service provides a substantial reduction in costs compared to existing on-premises or IaaS solutions.
 

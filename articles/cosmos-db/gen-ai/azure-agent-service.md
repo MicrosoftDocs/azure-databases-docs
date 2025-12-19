@@ -38,6 +38,6 @@ Agentic threads and conversational histories play a critical role in improving t
 
 - [Azure AI Foundry Connections](/azure/ai-foundry/concepts/connections)
 - [What is Azure AI Agent Service?](/azure/ai-services/agents/overview)
-- [Vector search](../nosql/vector-search.md)
+- [Vector search](../vector-search.md)
 - [Full-text search](full-text-search.md)
 - [Hybrid Search](hybrid-search.md)

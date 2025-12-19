@@ -7,11 +7,15 @@ ms.custom: build-2023
 ms.topic: how-to
 ms.date: 07/21/2025
 ms.author: govindk
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Online backup and on-demand data restore in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB automatically takes backups of your data at regular intervals. The automatic backups are taken without affecting the performance or availability of the database operations. All the backups are stored separately in a storage service. The automatic backups are helpful in scenarios when you accidentally delete or update your Azure Cosmos DB account, database, or container and later require the data recovery. Azure Cosmos DB backups are encrypted with Microsoft-managed service keys. These backups are transferred over a secure non-public network, which means that backup data remains encrypted while transferred over the wire and at rest. Backups of an account in a given region are uploaded to storage accounts in the same region.
 

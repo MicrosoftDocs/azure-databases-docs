@@ -1,15 +1,20 @@
 ---
-title: How to choose between manual and autoscale on Azure Cosmos DB
+title: How to Choose Between Manual and Autoscale
 description: Learn how to choose between standard (manual) provisioned throughput and autoscale provisioned throughput for your workload.
 author: deborahc
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 07/26/2024
 ms.author: dech
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # How to choose between standard (manual) and autoscale provisioned throughput 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB supports two types or offers of provisioned throughput: standard (manual) and autoscale. Both throughput types are suitable for mission-critical workloads that require high performance and scale, and are backed by the same Azure Cosmos DB SLAs on throughput, availability, latency, and consistency.
 

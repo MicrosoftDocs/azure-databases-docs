@@ -1,5 +1,5 @@
 ---
-title: Configure Azure Private Link for Azure Cosmos DB
+title: Configure Azure Private Link
 description: Learn how to set up Azure Private Link to access an Azure Cosmos DB account by using a private IP address in a virtual network.
 author: jawelton74
 ms.author: jawelton
@@ -7,11 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure Azure Private Link for an Azure Cosmos DB account
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 By using Azure Private Link, you can connect to an Azure Cosmos DB account through a private endpoint. The private endpoint is a set of private IP addresses in a subnet within your virtual network. You can then limit access to an Azure Cosmos DB account over private IP addresses. When Private Link is combined with restrictive network security group (NSG) policies, it helps reduce the risk of data exfiltration. To learn more about private endpoints, see [What is Azure Private Link?](/azure/private-link/private-link-overview)
 
@@ -199,6 +203,7 @@ Run the following Azure CLI script to create a private endpoint named *myPrivate
 
 ```azurecli-interactive
 # Resource group where the Azure Cosmos DB account and virtual network resources are located
+
 ResourceGroupName="myResourceGroup"
 
 # Subscription ID where the Azure Cosmos DB account and virtual network resources are located
@@ -699,7 +704,7 @@ By default, adding a private endpoint to an existing account results in a short 
 1. Remove the firewall rules set in step 1.
 
 > [!NOTE]
-> If you have running applications using the Azure Cosmos DB SDKs, there might be transient timeouts during the configuration update. Make sure your application is designed to be [resilient to transient connectivity failures](./nosql/conceptual-resilient-sdk-applications.md) and have retry logic in place in case it's needed.
+> If you have running applications using the Azure Cosmos DB SDKs, there might be transient timeouts during the configuration update. Make sure your application is designed to be [resilient to transient connectivity failures](conceptual-resilient-sdk-applications.md) and have retry logic in place in case it's needed.
 
 ## Port range when using direct mode
 

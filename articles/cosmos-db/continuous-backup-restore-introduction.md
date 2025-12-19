@@ -7,11 +7,14 @@ ms.topic: concept-article
 ms.date: 12/04/2025
 ms.author: govindk
 ms.custom: references_regions, cosmos-db-video, build-2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Continuous backup with point-in-time restore in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Azure Cosmos DB's point-in-time restore feature helps in multiple scenarios including:
 

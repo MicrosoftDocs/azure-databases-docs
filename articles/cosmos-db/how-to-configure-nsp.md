@@ -1,15 +1,16 @@
 ---
-title: Configure Network Security Perimeter for an Azure Cosmos DB account
+title: Configure Network Security Perimeter for an Account
 description: Learn how to secure your Cosmos DB account using Network Service Perimeter.
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/20/2024
 ms.author: iriaosara
 author: iriaosara
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Configure Network Security Perimeter for an Azure Cosmos DB account
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to configure Network Security Perimeter on your Azure Cosmos DB account. 
 

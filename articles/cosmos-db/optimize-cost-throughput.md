@@ -1,5 +1,5 @@
 ---
-title: Optimizing throughput cost in Azure Cosmos DB
+title: Optimizing Throughput Cost
 description: This article explains how to optimize throughput costs for the data stored in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
@@ -8,10 +8,15 @@ ms.topic: best-practice
 ms.date: 08/26/2021
 ms.devlang: csharp
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize provisioned throughput cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 By offering provisioned throughput model, Azure Cosmos DB offers predictable performance at any scale. Reserving or provisioning throughput ahead of time eliminates the “noisy neighbor effect” on your performance. You specify the exact amount of throughput you need and Azure Cosmos DB guarantees the configured throughput, backed by SLA.
 

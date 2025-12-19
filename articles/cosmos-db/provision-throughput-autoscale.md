@@ -1,6 +1,5 @@
 ---
 title: Create Containers and Databases with Autoscale Throughput
-titleSuffix: Azure Cosmos DB
 description: Learn how to create Azure Cosmos DB databases and containers with autoscale and dynamic scaling. Discover benefits, use cases, and cost-saving tips.
 author: kirillg
 ms.author: kirillg
@@ -8,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 09/03/2025
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

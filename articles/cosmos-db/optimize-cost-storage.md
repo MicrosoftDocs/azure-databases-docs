@@ -1,5 +1,5 @@
 ---
-title: Optimize storage cost in Azure Cosmos DB
+title: Optimize Storage Cost
 description: This article explains how to manage storage costs for the data stored in Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 08/26/2021
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize storage cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB offers unlimited storage and throughput. Unlike throughput, which you have to provision/configure on your Azure Cosmos DB containers or databases, the storage is billed based on a consumption basis. You are billed only for the logical storage you consume and you don’t have to reserve any storage in advance. Storage automatically scales up and down based on the data that you add or remove to an Azure Cosmos DB container.
 

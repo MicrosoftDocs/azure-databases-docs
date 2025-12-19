@@ -1,17 +1,20 @@
 ---
 title: Self-Serve Minimum TLS Version Enforcement
-titleSuffix: Azure Cosmos DB
 description: Learn how to use self-serve minimum TLS version enforcement for your Azure Cosmos DB account to improve your security posture.
 author: sudhanshukhera
 ms.author: skhera
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 07/23/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Self-serve minimum TLS version enforcement in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article discusses how to enforce a minimum version of the Transport Layer Security (TLS) protocol for your Cosmos DB account, using a self-service API.
 

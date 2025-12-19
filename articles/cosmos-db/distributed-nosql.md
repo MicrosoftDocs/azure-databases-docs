@@ -1,17 +1,20 @@
 ---
 title: Understand Distributed NoSQL Databases
-titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Understand distributed NoSQL databases
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is a globally distributed database platform for both NoSQL and relational databases of any scale. This article explores distributed NoSQL databases in the context of Azure Cosmos DB’s various NoSQL API options.
 

@@ -45,7 +45,7 @@ All hosts tried for query failed (tried :10350: BusyPoolException 'All connectio
 Instead of tuning `max requests per connection`, make sure that `connections per host` is set to a minimum of 10. See the [code sample section](#code-sample).
 
 ### TooManyRequest(429)
-OverloadException is thrown when the request rate is too great, which might happen when insufficient throughput is provisioned for the table and the RU budget is exceeded. For more information, see [large request](../sql/troubleshoot-request-rate-too-large.md#request-rate-is-large) and [server-side retry](prevent-rate-limiting-errors.md).
+OverloadException is thrown when the request rate is too great, which might happen when insufficient throughput is provisioned for the table and the RU budget is exceeded. For more information, see [large request](../troubleshoot-request-rate-too-large.md#request-rate-is-large) and [server-side retry](prevent-rate-limiting-errors.md).
 #### Recommendation
 Apply one of the following options:
 - If throttling is persistent, increase the provisioned RU.
@@ -175,7 +175,7 @@ Use CosmosLoadBalancingPolicy in [Java driver 3](https://github.com/Azure/azure-
 
 ## Next steps
 * To understand the various error codes and their meaning, see [Server-side diagnostics](error-codes-solution.md).
-* See [Diagnose and troubleshoot issues with the Azure Cosmos DB .NET SDK](../nosql/troubleshoot-dotnet-sdk.md).
-* Learn about performance guidelines for [.NET v3](../nosql/performance-tips-dotnet-sdk-v3.md) and [.NET v2](../nosql/performance-tips.md).
-* See [Troubleshoot issues with the Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](../nosql/troubleshoot-java-sdk-v4.md).
-* See [Performance tips for the Azure Cosmos DB Java SDK v4](../nosql/performance-tips-java-sdk-v4.md).
+* See [Diagnose and troubleshoot issues with the Azure Cosmos DB .NET SDK](../troubleshoot-dotnet-sdk.md).
+* Learn about performance guidelines for [.NET v3](../performance-tips-dotnet-sdk-v3.md) and [.NET v2](../performance-tips.md).
+* See [Troubleshoot issues with the Azure Cosmos DB Java SDK v4 with API for NoSQL accounts](../troubleshoot-java-sdk-v4.md).
+* See [Performance tips for the Azure Cosmos DB Java SDK v4](../performance-tips-java-sdk-v4.md).

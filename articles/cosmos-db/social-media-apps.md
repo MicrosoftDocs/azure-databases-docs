@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB design pattern: Social media apps'
+title: Design Pattern - Social Media Apps
 description: Learn about a design pattern for Social Networks by using the storage flexibility of Azure Cosmos DB and other Azure services.
 author: ealsur
 ms.service: azure-cosmos-db
@@ -7,9 +7,15 @@ ms.topic: solution-overview
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Going social with Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Living in a massively interconnected society means that, at some point in life, you become part of a **social network**. You use social networks to keep in touch with friends, colleagues, family, or sometimes to share your passion with people with common interests.
 
@@ -250,7 +256,7 @@ What happens if things keep getting better? Suppose users from another country/r
 
 But wait! You soon realize their experience with your platform isn't optimal. They're so far away from your operational region that the latency is terrible. You obviously don't want them to quit. If only there was an easy way of **extending your global reach**? There is!
 
-Azure Cosmos DB lets you [replicate your data globally](nosql/tutorial-global-distribution.md) and transparently with a couple of select and automatically select among the available regions from your [client code](nosql/tutorial-global-distribution.md). This process also means that you can have [multiple failover regions](high-availability.md).
+Azure Cosmos DB lets you [replicate your data globally](tutorial-global-distribution.md) and transparently with a couple of select and automatically select among the available regions from your [client code](tutorial-global-distribution.md). This process also means that you can have [multiple failover regions](high-availability.md).
 
 When you replicate your data globally, you need to make sure that your clients can take advantage of it. If you're using a web frontend or accessing APIs from mobile clients, you can deploy [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) and clone your Azure App Service on all the desired regions, using a performance configuration to support your extended global coverage. When your clients access your frontend or APIs, they are routed to the closest App Service, which in turn, will connect to the local Azure Cosmos DB replica.
 

@@ -1,5 +1,5 @@
 ---
-title: Configure and use Azure Synapse Link for Azure Cosmos DB
+title: Configure and Use Azure Synapse Link
 description: Learn how to enable Synapse Link for Azure Cosmos DB accounts, create a container with analytical store enabled, connect the Azure Cosmos DB database to Synapse workspace, and run queries.
 author: jilmal
 ms.author: jmaldonado
@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/05/2025
 ms.custom: references_regions, synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Configure and use Azure Synapse Link for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
@@ -208,6 +209,7 @@ The following Python code creates a Synapse Link enabled container by setting th
 
 ```python
 # Client
+
 client = cosmos_client.CosmosClient(HOST,  KEY )
 
 # Database client
