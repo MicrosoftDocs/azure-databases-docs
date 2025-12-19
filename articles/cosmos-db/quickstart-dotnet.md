@@ -136,7 +136,7 @@ DefaultAzureCredential credential = new();
 
 CosmosClient client = new(
     accountEndpoint: "<azure-cosmos-db-nosql-account-endpoint>",
-    tokenCredential: new DefaultAzureCredential()
+    tokenCredential: credential
 );
 ```
 
@@ -209,13 +209,13 @@ SELECT * FROM products p WHERE p.category = @category
 ```
 
 ```csharp
-string query = "SELECT * FROM products p WHERE p.category = @category"
+string query = "SELECT * FROM products p WHERE p.category = @category";
 
-var query = new QueryDefinition(query)
+var queryDefinition = new QueryDefinition(query)
   .WithParameter("@category", "gear-surf-surfboards");
 
 using FeedIterator<Product> feed = container.GetItemQueryIterator<Product>(
-    queryDefinition: query
+    queryDefinition
 );
 ```
 
