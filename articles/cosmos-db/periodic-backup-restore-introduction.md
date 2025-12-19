@@ -1,17 +1,20 @@
 ---
 title: Periodic Backup and Restore Introduction
-titleSuffix: Azure Cosmos DB
 description: Learn about Azure Cosmos DB accounts with periodic backup retention and restoration capabilities at a specified interval.
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 07/22/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Periodic backup and restore in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB automatically takes backups of your data at regular intervals. The automatic backups are taken without affecting the performance or availability of the database operations. All the backups are stored separately in a storage service, and those backups are globally replicated for resiliency against regional disasters. With Azure Cosmos DB, not only your data, but also the backups of your data are highly redundant and resilient to regional disasters.
 

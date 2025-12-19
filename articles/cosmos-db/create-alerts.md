@@ -1,15 +1,20 @@
 ---
-title: Create alerts for Azure Cosmos DB using Azure Monitor
+title: Create Alerts for Using Azure Monitor
 description: Learn how to set up alerts for Azure Cosmos DB using Azure Monitor.
 author: StefArroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Create alerts for Azure Cosmos DB using Azure Monitor
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Alerts are used to set up recurring tests to monitor the availability and responsiveness of your Azure Cosmos DB resources. Alerts can send you a notification in the form of an  email, or execute an Azure Function when one of your metrics reaches the threshold or if a specific event is logged in the activity log.
 

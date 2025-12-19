@@ -1,5 +1,5 @@
 ---
-title: Distribute Data Globally with Azure Cosmos DB
+title: Distribute Data Globally
 description: Learn about planet-scale geo-replication, multi-region writes, failover, and data recovery using global databases from Azure Cosmos DB, a globally distributed, multi-model database service.
 author: markjbrown
 ms.author: mjbrown
@@ -7,9 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/24/2025
 adobe-target: true
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Distribute your data globally with Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Today's applications are required to be highly responsive and always online. To achieve low latency and high availability, instances of these applications need to be deployed in datacenters that are close to their users. These applications are typically deployed in multiple datacenters and are called globally distributed. Globally distributed applications need a globally distributed database that can transparently replicate the data anywhere in the world to enable the applications to operate on a copy of the data that's close to its users. 
 

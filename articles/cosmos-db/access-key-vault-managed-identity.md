@@ -1,5 +1,5 @@
 ---
-title: Use a managed identity to access Azure Key Vault from Azure Cosmos DB
+title: Use a Managed Identity to Access Azure Key Vault
 description: Use managed identity in Azure Cosmos DB to access Azure Key Vault.
 author: iriaosara
 ms.author: iriaosara
@@ -7,19 +7,22 @@ ms.service: azure-cosmos-db
 ms.devlang: csharp
 ms.topic: how-to
 ms.date: 06/01/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
-
 # Access Azure Key Vault from Azure Cosmos DB using a managed identity
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB may need to read secret/key data from Azure Key Vault. For example, your Azure Cosmos DB may require a customer-managed key stored in Azure Key Vault. To do this, Azure Cosmos DB should be configured with a managed identity, and then an Azure Key Vault access policy should grant the managed identity access.
-
 
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An existing Azure Cosmos DB API for NoSQL account. [Create an Azure Cosmos DB API for NoSQL account](nosql/quickstart-portal.md)
+- An existing Azure Cosmos DB API for NoSQL account. [Create an Azure Cosmos DB API for NoSQL account](quickstart-portal.md)
 - An existing Azure Key Vault resource. [Create a key vault using the Azure CLI](/azure/key-vault/general/quick-create-cli)
 - To perform the steps in this article, install the [Azure CLI](/cli/azure/install-azure-cli) and [sign in to Azure](/cli/azure/authenticate-azure-cli).
 

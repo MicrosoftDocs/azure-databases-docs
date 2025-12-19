@@ -1,15 +1,20 @@
 ---
-title: Global distribution with Azure Cosmos DB- under the hood
+title: Global Distribution With - Under the Hood
 description: This article provides technical details relating to global distribution of Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 07/02/2020
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Global data distribution with Azure Cosmos DB - under the hood
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is a foundational service in Azure, so it's deployed across all Azure regions worldwide including the public, sovereign, Department of Defense (DoD) and government clouds.
 

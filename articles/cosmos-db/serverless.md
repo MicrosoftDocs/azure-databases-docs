@@ -1,6 +1,5 @@
 ---
 title: Serverless Consumption-Based Account Type
-titleSuffix: Azure Cosmos DB
 description: Learn how to use Azure Cosmos DB based on consumption by choosing the serverless account type. Learn how the serverless model compares to the provisioned throughput model.
 author: markjbrown
 ms.author: mjbrown
@@ -8,11 +7,15 @@ ms.service: azure-cosmos-db
 ms.custom: build-2023
 ms.topic: concept-article
 ms.date: 07/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB serverless account type
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 For an Azure Cosmos DB pricing option that's based on only the resources that you use, choose the Azure Cosmos DB serverless account type. With the serverless option, you're charged only for the [request units (RUs)](request-units.md) that your database operations consume and for the storage that your data consumes. Serverless containers can serve thousands of requests per second with no minimum charge and no capacity planning required.
 

@@ -1,6 +1,5 @@
 ---
 title: Get started with change data capture in analytical store
-titleSuffix: Azure Cosmos DB
 description: Enable change data capture in Azure Cosmos DB analytical store for an existing account to consume a continuous and incremental feed of changed data.
 author: jilmal
 ms.author: jmaldonado
@@ -8,11 +7,11 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 12/05/2025
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Get started with change data capture in the analytical store for Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
@@ -21,7 +20,7 @@ Use Change data capture (CDC) in Azure Cosmos DB analytical store as a source to
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Enable analytical store

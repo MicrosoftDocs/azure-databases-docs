@@ -1,6 +1,5 @@
 ---
-title: Monitor Azure Cosmos DB with Azure Monitor
-titleSuffix: Azure Cosmos DB
+title: Monitor With Azure Monitor
 description: This article describes the Azure Cosmos DB insights feature of Azure Monitor that provides Azure Cosmos DB owners with a quick understanding of performance and utilization issues with their Azure Cosmos DB accounts.
 author: stefarroyo
 ms.author: esarroyo
