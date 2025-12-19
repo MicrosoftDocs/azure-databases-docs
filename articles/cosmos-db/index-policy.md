@@ -32,9 +32,7 @@ Azure Cosmos DB supports two indexing modes:
 - **None**: Indexing is disabled on the container. This mode is commonly used when a container is used as a pure key-value store without the need for secondary indexes. It can also be used to improve the performance of bulk operations. After the bulk operations are complete, the index mode can be set to Consistent and then monitored using the [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk) until complete.
 
 > [!NOTE]
-> Azure Cosmos DB also supports a Lazy indexing mode. Lazy indexing performs updates to the index at a much lower priority level when the engine is not doing any other work. This can result in **inconsistent or incomplete** query results. If you plan to query an Azure Cosmos DB container, you should not select lazy indexing. New containers cannot select lazy indexing. You can request an exemption by contacting cosmosdbindexing@microsoft.com (except if you are using an Azure Cosmos DB account in [serverless](serverless.md) mode which doesn't support lazy indexing).
-
-
+> Azure Cosmos DB also supports a Lazy indexing mode. Lazy indexing performs updates to the index at a lower priority level when the engine is not doing any other work. This can result in **inconsistent or incomplete** query results. If you plan to query an Azure Cosmos DB container, you should not select lazy indexing. New containers cannot select lazy indexing. You can request an exemption by contacting cosmosdbindexing@microsoft.com (except if you are using an Azure Cosmos DB account in [serverless](serverless.md) mode, which doesn't support lazy indexing).
 
 ## Index size
 
@@ -154,7 +152,6 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 > [!IMPORTANT]
 > A full text indexing policy must be on the path defined in the container's full text policy. [Learn more about container vector policies](gen-ai/full-text-search.md).
 
-
 ## Vector indexes
 
 > [!NOTE]
@@ -230,7 +227,7 @@ Tuple Indexes are useful when performing filtering on multiple fields within an 
 > [!NOTE]
 > Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
 
-Array tuple paths will be defined in the includedPaths section and will be using the following notation.
+Array tuple paths are defined in the includedPaths section and will be using the following notation.
 
 `<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?`
 
@@ -435,7 +432,6 @@ The following considerations apply when creating composite indexes to optimize a
 * If the query filters on multiple properties, you can have a maximum of one range filter or system function utilized per composite index. The property used in the range filter or system function should be defined last in the composite index.
 * All considerations for creating composite indexes for `ORDER BY` queries with multiple properties and queries with filters on multiple properties still apply.
 
-
 | **Composite Index**                      | **Sample `ORDER BY` Query**                                  | **Supported by Composite Index?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
@@ -506,9 +502,9 @@ A container's indexing policy can be updated at any time [by using the Azure por
 > [!NOTE]
 > You can track the progress of index transformation in the [Azure portal](how-to-manage-indexing-policy.md#use-the-azure-portal) or by [using one of the SDKs](how-to-manage-indexing-policy.md#use-the-net-sdk).
 
-There's no impact to write availability during any index transformations. The index transformation uses your provisioned RUs but at a lower priority than your CRUD operations or queries.
+There's no effect to write availability during any index transformations. The index transformation uses your provisioned RUs but at a lower priority than your CRUD operations or queries.
 
-There's no impact to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path has the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
+There's no effect to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path has the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
 
 When removing indexed paths, you should group all your changes into one indexing policy transformation. If you remove multiple indexes and do so in one single indexing policy change, the query engine provides consistent and complete results throughout the index transformation. However, if you remove indexes through multiple indexing policy changes, the query engine won't provide consistent or complete results until all index transformations complete. Most developers don't drop indexes and then immediately try to run queries that utilize these indexes so, in practice, this situation is unlikely.
 
