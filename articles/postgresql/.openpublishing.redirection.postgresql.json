@@ -1002,7 +1002,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/concepts-servers.md",
-            "redirect_url": "/azure/postgresql/single-server/concepts-servers",
+            "redirect_url": "azure/postgresql/configure-maintain/concepts-servers.md",
             "redirect_document_id": false
         },
         {
@@ -2167,7 +2167,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-connect-tls-ssl.md",
-            "redirect_url": "/azure/postgresql/flexible-server/security-connect-tls",
+            "redirect_url": "/azure/postgresql/flexible-server/security-tls-how-to-connect",
             "redirect_document_id": false
         },
         {
@@ -2676,11 +2676,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-servers.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/concepts-servers",
-            "redirect_document_id": true
-        },
-        {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2",
             "redirect_document_id": true
@@ -2788,7 +2783,7 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/overview.md",
             "redirect_url": "/azure/postgresql/overview",
-            "redirect_document_id": true
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/overview-postgres-choose-server-options.md",
@@ -2852,7 +2847,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/service-overview.md",
-            "redirect_url": "/azure/postgresql/configure-maintain/service-overview",
+            "redirect_url": "/azure/postgresql/overview",
             "redirect_document_id": true
         },
         {
@@ -3312,7 +3307,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/security-connect-tls.md",
-            "redirect_url": "/azure/postgresql/security/security-connect-tls",
+            "redirect_url": "/azure/postgresql/security/security-tls-how-to-connect",
             "redirect_document_id": true
         },
         {
@@ -3756,7 +3751,7 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/hyperscale/moved.md",
+            "source_path_from_root": "/article/postgresql/hyperscale/moved.md",
             "redirect_url": "articles/postgresql/elastic-clusters/concepts-elastic-clusters",
             "redirect_document_id": false
         },

@@ -3,7 +3,7 @@
 - name: Overview
   items:
     - name: What is Azure Database for PostgreSQL?
-      href: configure-maintain/service-overview.md
+      href: overview.md
     - name: Self-hosted vs. managed service
       href: configure-maintain/overview-postgres-choose-server-options.md
     - name: Versioning policy
@@ -255,8 +255,8 @@
     items:
       - name: Overview
         href: security/security-tls.md
-      - name: Configure TLS
-        href: security/security-connect-tls.md
+      - name: Connect clients with TLS
+        href: security/security-tls-how-to-connect.md
       - name: Update trusted root certificate for Java
         href: security/security-update-trusted-root-java.md
   - name: Data protection
@@ -283,10 +283,14 @@
     href: security/security-azure-policy.md
   - name: Encrypted connectivity
     items:
-      - name: Encrypted connectivity using TLS/SSL
-        href: security/security-connect-tls.md
+      - name: Encrypted connectivity with TLS
+        href: security/security-tls-how-to-connect.md
       - name: Update application client certificates
         href: security/security-update-trusted-root-java.md
+  - name: Troubleshoot
+    items:
+    - name: Troubleshoot TLS connection failures
+      href: security/security-tls-troubleshoot.md
 - name: Migrate to Azure Database for PostgreSQL
   items:
     - name: Migration Service for Azure Database for PostgreSQL
@@ -306,7 +310,7 @@
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
                 - name: From Google AlloyDB for PostgreSQL
-                  href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md                  
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -318,7 +322,7 @@
                 - name: From Google Cloud SQL for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
                 - name: From Google AlloyDB for PostgreSQL
-                  href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md                  
+                  href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
         - name: Concepts
           items:
             - name: Premigration validation
@@ -354,7 +358,7 @@
         - name: Migrating Oracle To Azure Database for PostgreSQL
           href: migrate/concepts-oracle-migration.md
         - name: Migration stages
-          href: migrate/concepts-oracle-migration-stages.md        
+          href: migrate/concepts-oracle-migration-stages.md
         - name: Schema conversion
           items:
             - name: Schema conversion overview

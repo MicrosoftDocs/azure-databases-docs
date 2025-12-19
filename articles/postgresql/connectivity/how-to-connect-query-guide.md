@@ -25,7 +25,7 @@ The following document includes links to examples showing how to connect and que
 
 ## TLS considerations for database connectivity
 
-Transport Layer Security (TLS) is used by all drivers that Microsoft supplies or supports for connecting to databases in your Azure Database for PostgreSQL flexible server instances. No special configuration is necessary but do enforce TLS 1.2 for newly created servers. We recommend if you are using TLS 1.0 and 1.1, then you update the TLS version for your servers. See [How to configure TLS](../security/security-connect-tls.md).
+Transport Layer Security (TLS) is used by all drivers that Microsoft supplies or supports for connecting to databases in your Azure Database for PostgreSQL flexible server instances. No special configuration is necessary but do enforce TLS 1.2 for newly created servers. We recommend if you are using TLS 1.0 and 1.1, then you update the TLS version for your servers. See [How to configure TLS](../security/security-tls-how-to-connect.md).
 
 ## PostgreSQL extensions
 

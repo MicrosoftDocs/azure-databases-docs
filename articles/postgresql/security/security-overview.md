@@ -78,9 +78,9 @@ Here are some possible security services, features, and best practices for the d
 
 - **Verify TLS connections**: Azure PostgreSQL always uses SSL or TLS to encrypt data in transit between your application and the database. You should configure your application to verify the certificate used, such as the root CA, expired certificates, host name mismatch, and certificate revocation. This practice helps protect sensitive information from eavesdropping and man-in-the-middle attacks. For more information, visit [Secure connectivity with TLS and SSL in Azure Database for PostgreSQL](../security/security-tls.md).
 
-- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. This practice helps prevent connection failures and ensures that your application can establish secure connections with the PostgreSQL server. For more information, visit [Download root CA certificates and update application clients](../security/security-tls.md#download-root-ca-certificates-and-update-application-clients-in-certificate-pinning-scenarios).
+- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. This practice helps prevent connection failures and ensures that your application can establish secure connections with the PostgreSQL server. For more information, visit [Download root CA certificates and update application clients](../security/security-tls.md).
 
-- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. This configuration ensures that only the latest and most secure version of the protocol is used, providing better security and performance. For more information, visit [TLS versions](../security/security-tls.md#tls-versions).
+- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. This configuration ensures that only the latest and most secure version of the protocol is used, providing better security and performance. For more information, visit [TLS versions](../security/security-tls.md).
 
 ### Encryption at rest
 

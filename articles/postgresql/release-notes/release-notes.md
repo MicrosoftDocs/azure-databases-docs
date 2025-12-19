@@ -184,7 +184,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: December 2023
 
 - Public preview of [Server logs](../monitor/how-to-configure-server-logs.md).
-- General availability of [TLS Version 1.3 support](../security/security-tls.md#tls-versions).
+- General availability of [TLS Version 1.3 support](../security/security-tls.md)
 - General availability of [Microsoft Defender support](../security/security-overview.md)
 
 ## Release: November 2023
