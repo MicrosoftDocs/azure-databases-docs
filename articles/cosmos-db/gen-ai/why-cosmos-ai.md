@@ -47,6 +47,6 @@ Azure Cosmos DB provides a flexible and scalable foundation for building multite
 
 ## Related content
 
-- [Vector Search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
+- [Vector Search in Azure Cosmos DB for NoSQL](../vector-search.md)
 - [Full-text search in Azure Cosmos DB for NoSQL](full-text-search.md)
 - [Hybrid search in Azure Cosmos DB for NoSQL](hybrid-search.md)

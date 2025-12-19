@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Create alerts to monitor if storage for a logical partition key is approaching 20 GB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB enforces a maximum logical partition key size of 20 GB. For example, if you have a container/collection partitioned by **UserId**, the data within the "Alice" logical partition can store up to 20 GB of data. 
 

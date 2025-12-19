@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB integrated cache frequently asked questions
+title: Integrated Cache Frequently Asked Questions
 description: Frequently asked questions about the Azure Cosmos DB integrated cache.
 author: jcocchi
 ms.service: azure-cosmos-db
@@ -7,10 +7,11 @@ ms.subservice: nosql
 ms.topic: faq
 ms.date: 08/29/2022
 ms.author: jucocchi
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB integrated cache frequently asked questions
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB integrated cache is an in-memory cache that is built in to Azure Cosmos DB. This article answers commonly asked questions about the Azure Cosmos DB integrated cache.
 
@@ -22,7 +23,7 @@ If you’ve connected to Azure Cosmos DB using gateway mode, you’ve used the s
 
 ### What is a dedicated gateway?
 
-A [dedicated gateway](dedicated-gateway.md) is server-side compute that is a front-end to data in an Azure Cosmos DB account. When you connect to your dedicated gateway endpoint [using gateway mode](nosql/sdk-connection-modes.md), your application sends a request to the dedicated gateway, which then routes the request to different backend partitions. Using direct mode with the dedicated gateway is supported, but these requests will not use the integrated cache.
+A [dedicated gateway](dedicated-gateway.md) is server-side compute that is a front-end to data in an Azure Cosmos DB account. When you connect to your dedicated gateway endpoint [using gateway mode](sdk-connection-modes.md), your application sends a request to the dedicated gateway, which then routes the request to different backend partitions. Using direct mode with the dedicated gateway is supported, but these requests will not use the integrated cache.
 
 ### Does using the dedicated gateway offer any other performance benefits over using the standard gateway?
 

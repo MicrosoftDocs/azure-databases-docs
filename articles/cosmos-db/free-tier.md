@@ -1,16 +1,20 @@
 ---
-title: Azure Cosmos DB Lifetime Free Tier
+title: Lifetime Free Tier
 description: Use the Azure Cosmos DB lifetime free tier to get started, develop, test your applications. With free tier, you get the first 1000 RU/s and 25 GB of storage in the account for free.
 author: meredithmooreux
 ms.author: merae
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB lifetime free tier
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!NOTE]
 > Free tier is currently not available for serverless accounts.
@@ -53,7 +57,7 @@ You can create a free tier account from the Azure portal, PowerShell, CLI, or Az
 
 ### Azure portal
 
-When creating the account using the Azure portal, set the **Apply Free Tier Discount** option to **Apply**. See [create a new account with free tier](nosql/quickstart-portal.md) article for step-by-step guidance.
+When creating the account using the Azure portal, set the **Apply Free Tier Discount** option to **Apply**. See [create a new account with free tier](quickstart-portal.md) article for step-by-step guidance.
 
 ### ARM template
 
@@ -65,6 +69,7 @@ To create an account with free tier using the Azure CLI, set the `--enable-free-
 
 ```azurecli-interactive
 # Create a free tier account for API for NoSQL
+
 az cosmosdb create \
     -n "Myaccount" \
     -g "MyResourcegroup" \
@@ -96,5 +101,5 @@ After you create a free tier account, you can start building apps with Azure Cos
 
 * [Quickstart: Use Azure Cosmos DB for NoSQL with Azure SDK for .NET](create-sql-api-dotnet-v4.md)
 * [Quickstart: Use Azure Cosmos DB for MongoDB with Node.js](mongodb/quickstart-nodejs.md)
-* [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](nosql/tutorial-create-notebook-vscode.md)
+* [Tutorial: Create a Jupyter Notebook to analyze data in your Azure Cosmos DB for NoSQL account](tutorial-create-notebook-vscode.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)

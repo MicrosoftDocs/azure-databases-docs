@@ -1,6 +1,5 @@
 ---
 title: AI Agents and Solutions
-titleSuffix: Azure Cosmos DB
 description: Learn about key concepts for agents and step through the implementation of an AI agent memory system.
 author: wmwxwa
 ms.author: wangwilliam
@@ -175,7 +174,7 @@ In place of all the standalone databases, Azure Cosmos DB can serve as a unified
 
 Azure Cosmos DB provides single-digit millisecond latency. This capability makes it suitable for processes that require rapid data access and management. These processes include caching (both traditional and semantic caching), transactions, and operational workloads.
 
-Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
+Low latency is crucial for AI agents that need to perform complex reasoning, make real-time decisions, and provide immediate responses. In addition, the service's [use of the DiskANN algorithm](vector-search.md#enable-the-vector-indexing-and-search-feature) provides accurate and fast vector search with minimal memory consumption.
 
 ### Scale
 
@@ -202,7 +201,7 @@ Additionally, the built-in support for multi-master writes enables high availabi
 The five available [consistency levels](consistency-levels.md) (from strong to eventual) can also cater to various distributed workloads, depending on the scenario requirements.
 
 > [!TIP]
-> Use Azure Cosmos DB for NoSQL to build your AI agent memory system. The API for NoSQL offers 99.999% availability guarantee and provides [three vector search algorithms](nosql/vector-search.md):
+> Use Azure Cosmos DB for NoSQL to build your AI agent memory system. The API for NoSQL offers 99.999% availability guarantee and provides [three vector search algorithms](vector-search.md):
 >
 > - IVF
 > - HNSW

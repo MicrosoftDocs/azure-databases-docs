@@ -1,16 +1,20 @@
 ---
-title: Request access to Azure Cosmos DB previews
+title: Request Access to Previews
 description: Learn how to request access to Azure Cosmos DB previews
 author: gahl-levy
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 04/13/2022
 ms.author: gahllevy
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Access Azure Cosmos DB Preview Features
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 ## Steps to register for a preview feature from the portal
 
@@ -28,4 +32,4 @@ Azure Cosmos DB offers several preview features that you can request access to. 
 
 ## Related content
 
-- [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)

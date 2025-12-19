@@ -1,6 +1,5 @@
 ---
 title: Configure customer-managed keys on existing accounts
-titleSuffix: Azure Cosmos DB
 description: Store customer-managed keys in Azure Key Vault to use for encryption in your existing Azure Cosmos DB account with access control.
 author: sudhanshukhera
 ms.service: azure-cosmos-db
@@ -8,11 +7,14 @@ ms.topic: how-to
 ms.date: 08/17/2023
 ms.author: skhera
 ms.devlang: azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure customer-managed keys for your existing Azure Cosmos DB account with Azure Key Vault
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Enabling a second layer of encryption for data at rest using [Customer Managed Keys](./how-to-setup-customer-managed-keys.md) while creating a new Azure Cosmos DB account has been Generally available for some time now. As a natural next step, we now have the capability to enable CMK on existing Azure Cosmos DB accounts.
 
@@ -89,7 +91,7 @@ For enabling CMK on existing account that has continuous backup and point in tim
 - Enabling CMK is available only at a Cosmos DB account level and not at collections.
 - Ensure account must not have documents with large IDs greater than 990 bytes before enabling CMK. If not, you'll get an error due to max supported limit of 1,024 bytes after encryption.
 - During encryption of existing data, [control plane](./audit-control-plane-logs.md) actions such as "add region" is blocked. These actions are unblocked and can be used right after the encryption is complete.
-- Enabling CMK on existing Azure Cosmos DB accounts that have [Vector Search enabled](nosql/vector-search.md) is not supported.
+- Enabling CMK on existing Azure Cosmos DB accounts that have [Vector Search enabled](vector-search.md) is not supported.
 
 ## Monitor the progress of the resulting encryption
 

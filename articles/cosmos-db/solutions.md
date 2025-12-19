@@ -1,6 +1,5 @@
 ---
 title: Best Practices and Solutions using AI
-titleSuffix: Azure Cosmos DB
 description: Review solution accelerators using both Azure Cosmos DB and Azure OpenAI. The solutions integrate AI with vector search capabilities.
 author: wmwxwa
 ms.author: wangwilliam

@@ -85,10 +85,10 @@ There are multiple samples you can use to understand how to build your own seman
 ## Related content
 
 - [What is a vector database?](../vector-database.md)
-- [Vector search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
+- [Vector search in Azure Cosmos DB for NoSQL](../vector-search.md)
 - [Vector store in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [LLM tokens](tokens.md)
 - [Vector embeddings in Azure Cosmos DB](vector-embeddings.md)
 - [What are distance functions?](distance-functions.md)
 - [kNN vs ANN vector search algorithms](knn-vs-ann.md)
-- [Multitenancy for vector search](../nosql/multi-tenancy-vector-search.md)
+- [Multitenancy for vector search](../multi-tenancy-vector-search.md)

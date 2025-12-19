@@ -1,5 +1,5 @@
 ---
-title: Near real-time analytics use cases for Azure Cosmos DB
+title: Near Real-Time Analytics Use Cases
 description: Learn how real-time analytics is used in Supply chain analytics, forecasting, reporting, real-time personalization, and IOT predictive maintenance.
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,11 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/04/2025
 ms.custom: cosmos-db-noetl-realtime-analytics
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB: No-ETL analytics use cases
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 Azure Cosmos DB provides various analytics options for no-ETL, near real-time analytics over operational data. You can enable analytics on your Azure Cosmos DB data using following options:
 
@@ -27,7 +28,7 @@ No-ETL, near real-time analytics can open up various possibilities for your busi
 * Real-time personalization
 * Predictive maintenance, anomaly detection in IOT scenarios
 
-Additionally, as a NoSQL database with latency SLA, Cosmos is an amazing serving layer and can serve data extremely fast and with high concurrency. To learn more about how to implement this pattern using Cosmos DB see, [Reverse ETL with Cosmos DB](nosql/reverse-extract-transform-load.md)
+Additionally, as a NoSQL database with latency SLA, Cosmos is an amazing serving layer and can serve data extremely fast and with high concurrency. To learn more about how to implement this pattern using Cosmos DB see, [Reverse ETL with Cosmos DB](reverse-extract-transform-load.md)
 
 ## Supply chain analytics, forecasting & reporting
 

@@ -38,7 +38,7 @@ A graph database solution can be optimally used if the entities and relationship
 
 If the above criteria are satisfied, a graph database approach likely provides advantages for *query complexity*, *data model scalability*, and *query performance*.
 
-The next step is to determine if the graph is going to be used for analytic or transactional purposes. If the graph is intended to be used for heavy computation and data processing workloads, it's worth exploring the [Cosmos DB Spark connector](../nosql/quickstart-spark.md) and the [GraphX library](https://spark.apache.org/graphx/). 
+The next step is to determine if the graph is going to be used for analytic or transactional purposes. If the graph is intended to be used for heavy computation and data processing workloads, it's worth exploring the [Cosmos DB Spark connector](../tutorial-spark-connector.md) and the [GraphX library](https://spark.apache.org/graphx/). 
 
 ## How to use graph objects
 
