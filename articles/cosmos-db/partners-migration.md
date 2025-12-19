@@ -1,16 +1,20 @@
 ---
-title: Migration and application development partners for Azure Cosmos DB
+title: Migration and Application Development Partners
 description: Lists Microsoft partners with migration solutions that support Azure Cosmos DB.
 author: wmwxwa
 ms.author: wangwilliam
 ms.date: 07/20/2023
 ms.service: azure-cosmos-db
 ms.topic: partner-tools
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB NoSQL migration and application development partners
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 From NoSQL migration to application development, you can choose from a variety of experienced systems integrator partners and tools to support your Azure Cosmos DB solutions. This article lists the partners who have solutions or services that use Azure Cosmos DB. This list changes over time, Microsoft is not responsible to any changes or updates made to the solutions of these partners.
 

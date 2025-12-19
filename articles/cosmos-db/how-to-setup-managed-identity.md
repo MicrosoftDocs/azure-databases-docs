@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli
 ms.topic: how-to
 ms.date: 06/30/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure managed identities with Microsoft Entra ID for your Azure Cosmos DB account
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Managed identities for Azure resources provide Azure services with an automatically managed identity in Microsoft Entra ID. This article shows how to create a managed identity for Azure Cosmos DB accounts.
 

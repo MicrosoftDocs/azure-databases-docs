@@ -1,6 +1,5 @@
 ---
 title: Merge partitions (preview)
-titleSuffix: Azure Cosmos DB
 description: Reduce the number of physical partitions used for your container with the merge capability in Azure Cosmos DB.
 ms.topic: concept-article
 author: deborahc
@@ -11,11 +10,12 @@ ms.custom:
 - build-2025
 - sfi-image-nochange
 ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Merge partitions in Azure Cosmos DB (preview)
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 Merging partitions in Azure Cosmos DB (preview) allows you to reduce the number of physical partitions used for your container in place. With merge, containers that are fragmented in throughput (have low RU/s per partition) or storage (have low storage per partition) can have their physical partitions reworked. If a container's throughput has been scaled up and needs to be scaled back down, merge can help resolve throughput fragmentation issues. For the same amount of provisioned RU/s, having fewer physical partitions means each physical partition gets more of the overall RU/s. Minimizing partitions reduces the chance of rate limiting if a large quantity of data is removed from a container and RU/s per partition is low. Merge can help clear out unused or empty partitions, effectively resolving storage fragmentation problems.
 
@@ -295,8 +295,8 @@ Support for other SDKs is planned for the future.
 > [!TIP]
 > You should ensure that your application has been updated to use a compatible SDK version prior to enrolling in the preview. If you're using a legacy SDK, follow the appropriate migration guide:
 >
-> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](nosql/migrate-dotnet-v3.md)
-> - Legacy Java v3 SDK: [Java SDK v4 migration guide](nosql/migrate-java-v4-sdk.md)
+> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](migrate-dotnet-v3.md)
+> - Legacy Java v3 SDK: [Java SDK v4 migration guide](migrate-java-v4-sdk.md)
 >
 
 ### Unsupported connectors

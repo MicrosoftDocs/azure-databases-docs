@@ -1,6 +1,5 @@
 ---
 title: Unified AI Database
-titleSuffix: Azure Cosmos DB
 description: Database for AI Era - Azure Cosmos DB is a NoSQL, relational, and vector database that provides unmatched reliability and flexibility for your operational data needs.
 author: markjbrown
 ms.author: mjbrown
@@ -20,8 +19,6 @@ appliesto:
 ---
 
 # Azure Cosmos DB - Database for the AI Era
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table, PostgreSQL](includes/appliesto-nosql-mongodb-cassandra-gremlin-table-postgresql.md)]
 
 > "OpenAI relies on Cosmos DB to dynamically scale their ChatGPT service – one of the fastest-growing consumer apps ever – enabling high reliability and low maintenance."
 > – Satya Nadella, Microsoft chairman and chief executive officer
@@ -153,6 +150,6 @@ For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decisio
 
 ## Related content
 
-- [Get started with Azure Cosmos DB for NoSQL](nosql/quickstart-dotnet.md)
+- [Get started with Azure Cosmos DB for NoSQL](quickstart-dotnet.md)
 - [Get started with Azure DocumentDB](../documentdb/overview.md)
  

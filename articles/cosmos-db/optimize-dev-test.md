@@ -1,15 +1,20 @@
 ---
-title: Optimizing for development and testing in Azure Cosmos DB
+title: Optimizing for Development and Testing
 description: This article explains how Azure Cosmos DB offers multiple options for development and testing of the service for free.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 08/26/2021
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize development and testing cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes the different options to use Azure Cosmos DB for development and testing for free of cost, as well as techniques to optimize cost in development or test accounts.
 

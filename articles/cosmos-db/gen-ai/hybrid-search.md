@@ -37,7 +37,7 @@ The results from vector search and full text search are then combined using the 
 
 ## How to use hybrid search
 
-1. Enable the [vector indexing and search feature](../nosql/vector-search.md#enable-the-vector-indexing-and-search-feature).
+1. Enable the [vector indexing and search feature](../vector-search.md#enable-the-vector-indexing-and-search-feature).
 1. Create a container with a vector policy, full text policy, vector index, and full text index.
 1. Insert your data with text and vector properties.
 1. Run hybrid queries against the data.
@@ -139,7 +139,7 @@ ORDER BY RANK RRF(VectorDistance(c.vector, [1,2,3]), FullTextScore(c.text, "sear
 
 ## Related content
 
-- [Vector search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
+- [Vector search in Azure Cosmos DB for NoSQL](../vector-search.md)
 - [`VectorDistance` system function](/cosmos-db/query/vectordistance)
 - [`FullTextScore` system function](/cosmos-db/query/fulltextscore)
 - [`RRF` system function](/cosmos-db/query/rrf)

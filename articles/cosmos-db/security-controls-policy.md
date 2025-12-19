@@ -1,5 +1,5 @@
 ---
-title: Azure Policy Regulatory Compliance controls for Azure Cosmos DB
+title: Azure Policy Regulatory Compliance Controls
 description: Lists Azure Policy Regulatory Compliance controls available for Azure Cosmos DB. These built-in policy definitions provide common approaches to managing the compliance of your Azure resources.
 ms.date: 02/06/2024
 ms.topic: sample
@@ -7,9 +7,15 @@ author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.custom: subject-policy-compliancecontrols
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Azure Policy Regulatory Compliance controls for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 [Regulatory Compliance in Azure Policy](/azure/governance/policy/concepts/regulatory-compliance)
 provides Microsoft created and managed initiative definitions, known as _built-ins_, for the

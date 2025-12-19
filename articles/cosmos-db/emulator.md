@@ -1,6 +1,5 @@
 ---
 title: Emulator (Docker/local)
-titleSuffix: Azure Cosmos DB
 description: Use the Azure Cosmos DB local or docker-based emulator to test your applications against multiple API endpoints.
 author: sajeetharan
 ms.author: sasinnat
@@ -9,6 +8,8 @@ ms.custom:
   - ignite-2024
 ms.topic: concept-article
 ms.date: 11/07/2024
+appliesto:
+  - ✅ NoSQL
 # CustomerIntent: As a developer, I want to use the Azure Cosmos DB emulator so that I can develop my application against a database during development.
 ---
 

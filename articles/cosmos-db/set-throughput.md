@@ -6,10 +6,15 @@ ms.author: dech
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 07/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Introduction to provisioned throughput in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB allows you to set provisioned throughput on your databases and containers. There are two types of provisioned throughput: standard (manual) and autoscale. This article gives an overview of how provisioned throughput works. 
 
