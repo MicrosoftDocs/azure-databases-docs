@@ -79,8 +79,6 @@ Taking the same example again:
 
 For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
 
- 
-
 ## Include/exclude strategy
 
 Any indexing policy has to include the root path `/*` as either an included or an excluded path.
