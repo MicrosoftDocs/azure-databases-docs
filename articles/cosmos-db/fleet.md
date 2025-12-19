@@ -1,5 +1,5 @@
 ---
-title: Fleets Overview (Preview)
+title: Fleets Overview
 description: Fleets, in Azure Cosmos DB, provide a solution for independent software vendor (ISV) customers to manage multitenant applications effectively, balancing cost, performance, and security.
 author: deborahc
 ms.author: dech
