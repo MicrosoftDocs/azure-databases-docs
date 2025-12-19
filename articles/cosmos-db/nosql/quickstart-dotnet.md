@@ -137,7 +137,7 @@ DefaultAzureCredential credential = new();
 
 CosmosClient client = new(
     accountEndpoint: "<azure-cosmos-db-nosql-account-endpoint>",
-    tokenCredential: new DefaultAzureCredential()
+    tokenCredential: credential
 );
 ```
 
