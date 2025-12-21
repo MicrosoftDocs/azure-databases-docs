@@ -1,5 +1,5 @@
 ---
-title: Configure customer-managed keys for your Azure Cosmos DB account with Azure Managed HSM Key Vault
+title: Configure Customer-Managed Keys for Your Account With Azure Managed HSM Key Vault
 description: Learn how to configure customer-managed keys for your Azure Cosmos DB account with Azure Managed HSM Key Vault
 author: sudhanshukhera
 ms.author: skhera
@@ -8,11 +8,15 @@ ms.topic: how-to
 ms.date: 12/25/2022
 ms.custom: devx-track-azurecli
 ms.devlang: azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure customer-managed keys for your Azure Cosmos DB account with Azure Managed HSM Key Vault
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Please refer to link [Configure customer-managed keys with Azure Key Vault](./how-to-setup-customer-managed-keys.md)
 

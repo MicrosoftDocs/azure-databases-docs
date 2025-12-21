@@ -1,5 +1,5 @@
 ---
-title: Automated performance, cost, security recommendations for Azure Cosmos DB
+title: Automated Performance, Cost, Security Recommendations
 description: Learn how to view customized performance, cost, security, and other recommendations for Azure Cosmos DB based on your workload patterns.
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 08/26/2021
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Automated recommendations for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 All the cloud services including Azure Cosmos DB get frequent updates with new features, capabilities, and improvements. It’s important for your application to keep up with the latest performance and security updates. The Azure portal offers customized recommendations that enable you to maximize the performance of your application. The Azure Cosmos DB's advisory engine continuously analyzes the usage history of your Azure Cosmos DB resources and provides recommendations based on your workload patterns. These recommendations correspond to areas like partitioning, indexing, network, security etc. These customized recommendations help you to improve the performance of your application.
 
@@ -81,7 +86,7 @@ In this category, the advisor detects the query execution and identifies that th
 
 ## Next steps
 
-* [Tuning query performance in Azure Cosmos DB](nosql/query-metrics.md)
+* [Tuning query performance in Azure Cosmos DB](query-metrics.md)
 * [Troubleshoot query issues](troubleshoot-query-performance.md) when using Azure Cosmos DB
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
     * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 

@@ -1,17 +1,20 @@
 ---
 title: Request data restoration from a backup
-titleSuffix: Azure Cosmos DB
 description: Request the restoration of your Azure Cosmos DB data from a backup if you've lost or accidentally deleted a database or container.
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Request data restoration from an Azure Cosmos DB backup
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 If you accidentally delete your database or a container, you can [file a support ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) or [call the Azure support](https://azure.microsoft.com/support/options/) to restore the data from automatic online backups. Azure support is available for selected plans only such as **Standard**, **Developer**, and plans higher than those tiers. Azure support isn't available with **Basic** plan. To learn about different support plans, see the [Azure support plans](https://azure.microsoft.com/support/plans/) page.
 

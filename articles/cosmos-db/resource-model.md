@@ -1,6 +1,5 @@
 ---
 title: Databases, containers, and items
-titleSuffix: Azure Cosmos DB
 description: Learn about the hierarchy of resources that composes an Azure Cosmos DB account in the service's hierarchical resource model.
 author: markjbrown
 ms.author: mjbrown
@@ -8,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/05/2025
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra

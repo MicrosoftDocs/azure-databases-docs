@@ -1,5 +1,5 @@
 ---
-title: Plan and manage costs for Azure Cosmos DB
+title: Plan and Manage Costs
 description: Learn how to plan for and manage costs for Azure Cosmos DB by using cost analysis in Azure portal.
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,15 @@ ms.custom: subject-cost-optimization
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 10/08/2021
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Plan and manage costs for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes how you can plan and manage costs for Azure Cosmos DB. First, you use the Azure Cosmos DB capacity calculator to estimate your workload cost before you create any resources. Later you can review the estimated cost and start creating your resources.
 

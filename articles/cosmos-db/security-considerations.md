@@ -1,12 +1,13 @@
 ---
 title: Security considerations
-titleSuffix: Azure Cosmos DB
 description: Review considerations and best practices for securing your Azure Cosmos DB account including features that Microsoft implements for your account's security.
 author: iriaosara
 ms.author: iriaosara
 ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 10/02/2024
+appliesto:
+  - ✅ NoSQL
 #Customer Intent: As a security architect, I want to review best practices and considerations, so that I can ensure my Azure Cosmos DB account is following the latest guidance for security.
 ---
 
