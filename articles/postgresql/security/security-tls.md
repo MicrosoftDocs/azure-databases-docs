@@ -68,7 +68,7 @@ A certificate chain is a hierarchical sequence of certificates issued by trusted
 
 ### Reducing connection failures
 
-Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
+Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
 > [!IMPORTANT]  
 > Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
@@ -114,7 +114,7 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 > [!NOTE]  
 > Certificate rotations don't affect you if you don't use the `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string. Therefore, you don't need to follow the steps in this section.
 
-Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
+Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of Intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
 
 - Produce your list of certificates that are in your trusted root store.
   - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
