@@ -18,3 +18,30 @@ configuration:
               reply: >-
                 @${issueAuthor} - You tried to add an index file to this repository; this is not permitted so your pull request will be closed automatically.
           - closePullRequest
+      - description: Close PRs to the "articles/cosmos-db" folder where the author isn't a specific person.
+        if:
+          - payloadType: Pull_Request
+          - isAction:
+              action: Opened
+          - filesMatchPattern:
+              matchAny: true
+              pattern: articles/cosmos-db/*
+          - not:
+              or:
+                - isActivitySender:
+                    user: seesharprun
+                - isActivitySender:
+                    user: learn-build-service-prod[bot]
+        then:
+          - addReply:
+              reply: >-
+                ${issueAuthor} - This content folder is not currently accepting contributions due to an ongoing refactor. The content folder will begin accepting contributions again once the refactor is complete later in December 2025. Please reach out directly to the mentionees if you have any questions.
+          - mentionUsers:
+              mentionees:
+                - seesharprun
+              replyTemplate: >-
+                ${mentionees} - Please review this PR and determine if it should be accepted manually.
+              assignMentionees: True
+          - addLabel:
+              label: content-freeze
+          - closePullRequest
