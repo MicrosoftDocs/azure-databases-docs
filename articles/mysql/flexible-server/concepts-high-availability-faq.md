@@ -51,7 +51,7 @@ If there's a database crash or node failure, the Flexible Server VM is restarted
 
 ## Is there a performance impact when I use HA?
 
-For zone-redundant HA, there is generally no significant performance impact on read workloads across availability zones. However, you may notice a slight increase in write-query latency typically a few milliseconds due to synchronous replication to the ZRS storage account across zones. In contrast, with local-redundant HA, the primary and standby replicas reside in the same zone, and storage is local (LRS), resulting in slightly lower write latency. For most scenarios, the difference is minimal.
+For zone-redundant HA, there's generally no significant performance impact on read workloads across availability zones. However, you may notice a slight increase in write-query latency typically a few milliseconds due to synchronous replication to the ZRS storage account across zones. In contrast, with local-redundant HA, the primary and standby replicas reside in the same zone, and storage is local (LRS), resulting in slightly lower write latency. For most scenarios, the difference is minimal.
 
 ## How does maintenance of my HA server happen?
 
