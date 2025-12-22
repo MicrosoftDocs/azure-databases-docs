@@ -15,8 +15,6 @@ ms.collection:
 
 # Migrate your PostgreSQL database by using dump and restore
 
-[!INCLUDE [applies-to-postgresql-flexible-server](../includes/applies-to-postgresql-flexible-server.md)]
-
 You can use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) to extract a PostgreSQL database into a dump file. The method to restore the database depends on the format of the dump you choose. If your dump is taken with the plain format (which is the default `-Fp`, so no specific option needs to be specified), then the only option to restore it is by using [psql](https://www.postgresql.org/docs/current/app-psql.html), as it outputs a plain text file. For the other three dump methods: custom, directory, and tar, [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) should be used.
 
 > [!IMPORTANT]  
