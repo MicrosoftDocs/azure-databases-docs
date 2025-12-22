@@ -1002,8 +1002,13 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/concepts-servers.md",
-            "redirect_url": "azure/postgresql/configure-maintain/concepts-servers.md",
+            "redirect_url": "/azure/postgresql/flexible-server/concepts-servers",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-servers.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/concepts-servers",
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/concepts-ssl-connection-security.md",
@@ -3308,6 +3313,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/security-connect-tls.md",
             "redirect_url": "/azure/postgresql/security/security-tls-how-to-connect",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/security-tls-how-to-connect.md",
+            "redirect_url": "/azure/postgresql/security/security-tls-how-to-connect",
             "redirect_document_id": true
         },
         {
@@ -3363,6 +3373,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/security-tls.md",
             "redirect_url": "/azure/postgresql/security/security-tls",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/security-tls-troubleshoot.md",
+            "redirect_url": "/azure/postgresql/security/security-tls-troubleshoot",
             "redirect_document_id": true
         },
         {
@@ -3751,48 +3766,48 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/article/postgresql/hyperscale/moved.md",
-            "redirect_url": "articles/postgresql/elastic-clusters/concepts-elastic-clusters",
+            "source_path_from_root": "/articles/postgresql/hyperscale/moved.md",
+            "redirect_url": "/azure/postgresql/elastic-clusters/concepts-elastic-clusters",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-point-in-time-restore.md",
-            "redirect_url": "articles/postgresql/samples/sample-point-in-time-restore",
+            "redirect_url": "/azure/postgresql/samples/sample-point-in-time-restore",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-scale-server-up-or-down.md",
-            "redirect_url": "articles/postgresql/samples/sample-scale-server-up-or-down",
+            "redirect_url": "/azure/postgresql/samples/sample-scale-server-up-or-down",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-server-logs.md",
-            "redirect_url": "articles/postgresql/samples/sample-server-logs",
+            "redirect_url": "/azure/postgresql/samples/sample-server-logs",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-change-server-configuration.md",
-            "redirect_url": "articles/postgresql/samples/sample-change-server-configuration",
+            "redirect_url": "/azure/postgresql/samples/sample-change-server-configuration",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-create-server-and-firewall-rule.md",
-            "redirect_url": "articles/postgresql/samples/sample-create-server-and-firewall-rule",
+            "redirect_url": "/azure/postgresql/samples/sample-create-server-and-firewall-rule",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/scripts/sample-create-server-with-vnet-rule.md",
-            "redirect_url": "articles/postgresql/samples/sample-create-server-with-vnet-rule",
+            "redirect_url": "/azure/postgresql/samples/sample-create-server-with-vnet-rule",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-server-parameters-list-all.md",
-            "redirect_url": "articles/postgresql/server-parameters/how-to-server-parameters-list-all",
+            "redirect_url": "/azure/postgresql/server-parameters/how-to-server-parameters-list-all",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/security-manage-entra-users.md",
-            "redirect_url": "articles/postgresql/security/security-manage-entra-users",
+            "redirect_url": "/azure/postgresql/security/security-manage-entra-users",
             "redirect_document_id": false
         }
     ]
