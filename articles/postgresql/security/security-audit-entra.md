@@ -13,11 +13,7 @@ ms.custom:
 
 # Audit logging in Azure Database for PostgreSQL for Microsoft Entra ID principals
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-audit-entra.md
-Database audits are one of the important components that need to be set up based on your organization’s compliance requirements, where you can monitor the targeted activities to achieve your security baseline. In Azure database for PostgreSQL flexible server, you can achieve that by using pgaudit PG extension as described in [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).
-=======
 Database audits are an important component of your organization's compliance requirements. By monitoring targeted activities, you can achieve your security baseline. In Azure Database for PostgreSQL flexible server, you can set up audits by using the pgaudit PG extension, as described in [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-audit-entra.md
 
 One challenge is using the auditing feature alongside Microsoft Entra ID authentication when you're using Microsoft Entra ID groups and want to audit the actions of individual group members. This challenge exists because group members sign in by using their personal access tokens but use the group name as the username.
 
@@ -25,21 +21,12 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 ## Prerequisites
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-audit-entra.md
-1. Enable Audit logging - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
-1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
-1. Adjust the `log_line_prefix` server parameter:  
-  From the Server Parameters blade set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s`  in the same sequence, in order to get the desired results.  
-    * Before:  `log_line_prefix` = `%t-%c-`  
-    * After: `log_line_prefix` = `%t-%c-user=%u,db=%d,session=%c,sess_time=%s`
-=======
 1. Enable audit logging - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
 1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
 1. Adjust the `log_line_prefix` server parameter:
    From the Server Parameters blade, set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s` in the same sequence to get the desired results.
    - Before: `log_line_prefix` = `%t-%c-`
    - After: `log_line_prefix` = `%t-%c-user=%u,db=%d,session=%c,sess_time=%s`
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-audit-entra.md
 
 ## Kusto query
 
@@ -95,13 +82,9 @@ The resulting table looks like this:
 If the user signs in as a group role, the `PrincipalName` and `RoleName` columns show different values, like in the first row of the example.  
 The `PrincipalName` value identifies the user who signed in. The `RoleName` value identifies the role in PostgreSQL that the user accesses after signing in.
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-audit-entra.md
-`PrincipalName` will be either the [User Principal Name (UPN) or AppId](../security/security-entra-concepts.md#frequently-asked-questions) depending on whether the user principal or service principal was logged in.
-=======
 `PrincipalName` is either the [User Principal Name (UPN) or AppId](../security/security-entra-concepts.md#frequently-asked-questions) depending on whether the user principal or service principal signs in.
 
 ## Related content
 
 - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
 - [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-audit-entra.md

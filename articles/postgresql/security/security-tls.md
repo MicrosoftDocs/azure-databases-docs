@@ -35,11 +35,7 @@ China regions currently use the following CAs:
 - [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 - After Spring Festival (Chinese New Year) 2026: [Digicert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt). Prepare for this change in advance by adding the new root CA to your trusted root store.
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-### About intermediate CAs
-=======
 ### Intermediate CAs
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 Azure Database for PostgreSQL uses intermediate CAs (ICAs) to issue server certificates. To maintain security, Microsoft periodically rotates these ICAs and the server certificates they issue. These rotations are routine and aren't announced in advance.
 
@@ -64,11 +60,7 @@ Don't use intermediate CAs or server certificates in your trusted root store.
 
 ### Read replicas
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root CA certificate than the primary server. Add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
-=======
 Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root CA certificate than the primary server. You should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 ### Certificate chains
 
@@ -76,21 +68,12 @@ A certificate chain is a hierarchical sequence of certificates issued by trusted
 
 ### Reducing connection failures
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-Using the recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, don't trust intermediate CAs or individual server certificates. These practices can lead to unexpected connection issues when Microsoft updates the certificate chain.
-
-> [!IMPORTANT]
-> Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
-
-> [!CAUTION]
-=======
-Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
+Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
 > [!IMPORTANT]  
 > Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
 
 > [!CAUTION]  
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 > Using ***[unsupported (client) configurations](#trusted-root-certs-and-cert-rotations)*** causes unexpected connection failures.
 
 ## Recommended configurations for TLS
@@ -98,11 +81,7 @@ Using recommended TLS configurations helps reduce the risk of connection failure
 ### Best configuration
 
 - Enforce the latest, most secure TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`.
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-- Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or VNET integration, `verify-all` might not be possible. Therefore, you can use `verify-ca` instead.
-=======
 - Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or virtual network integration, `verify-all` might not be possible. Therefore, you can use `verify-ca` instead.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 - Always maintain the [complete set of Azure root certificates in your trusted root store](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
 
 ### Good configuration
@@ -115,17 +94,10 @@ Using recommended TLS configurations helps reduce the risk of connection failure
 
 ### Supported, but not recommended
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-Avoid the following configurations:
-
-- Disable TLS by setting `require_secure_transport` to `OFF` and setting the client-side to `sslmode=disable`.
-- Use client-side `sslmode` settings `disable`, `allow`, `prefer`, or `require` that make your app vulnerable to man-in-the-middle attacks.
-=======
 Don't use the following configurations:
 
 - Disable TLS by setting `require_secure_transport` to `OFF` and setting the client-side to `sslmode=disable`.
 - Use client-side `sslmode` settings `disable`, `allow`, `prefer`, or `require` that can make your app vulnerable to man-in-the-middle attacks.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 ### Unsupported configurations; don't use
 
@@ -139,25 +111,14 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 
 ### Certificate pinning problems
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-> [!NOTE]
-> Certificate rotations don't affect your application if you don't use the `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string. Therefore, you don't need to follow the steps in this section.
-
-Never use certificate pinning in your applications. Certificate pinning breaks certificate rotation, such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
-
-- Produce your list of certificates that are in your trusted root store.
-    - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
-    - Open the trusted root store on your client machine and export the list of certificates.
-=======
 > [!NOTE]  
 > Certificate rotations don't affect you if you don't use the `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string. Therefore, you don't need to follow the steps in this section.
 
-Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
+Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of Intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
 
 - Produce your list of certificates that are in your trusted root store.
   - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
   - Open the trusted root store on your client machine and export the list of certificates.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 - You're using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
 - To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
 
@@ -172,32 +133,19 @@ Beyond the core TLS configuration and certificate management, several other fact
 Several government entities worldwide maintain guidelines for TLS regarding network security. In the United States, these organizations include the Department of Health and Human Services and the National Institute of Standards and Technology. The level of security that TLS provides is most affected by the TLS protocol version and the supported cipher suites.
 
 Azure Database for PostgreSQL supports TLS versions 1.2 and 1.3. In RFC 8996, the Internet Engineering Task Force (IETF) explicitly states that TLS 1.0 and TLS 1.1 must not be used. Both protocols were deprecated by the end of 2019.
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-By default, the service denies all incoming connections that use earlier insecure versions of the TLS protocol, such as TLS 1.0 and TLS 1.1.
-=======
 All incoming connections that use earlier insecure versions of the TLS protocol, such as TLS 1.0 and TLS 1.1, are denied by default.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is the recommended version since it's faster and more secure than TLS 1.2.
 
 Although we don't recommend it, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` server parameter to `OFF`.
 
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-> [!IMPORTANT]
-> Use the latest version of TLS 1.3 to encrypt your database connections. Specify the minimal TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` server parameter.
-=======
 > [!IMPORTANT]  
 > Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` server parameter.
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 ### Cipher suites
 
 A [cipher suite](https://en.wikipedia.org/wiki/Cipher_suite) is a set of algorithms that include a cipher, a key-exchange algorithm, and a hashing algorithm. Use them together with the TLS certificate and the TLS version to establish a secure TLS connection. Most TLS clients and servers support multiple cipher suites and sometimes multiple TLS versions.
-<<<<<<< HEAD:articles/postgresql/flexible-server/security-tls.md
-During the establishment of the connection, the client and server [negotiate the TLS version and cipher suite to use through a handshake](https://en.wikipedia.org/wiki/Cipher_suite#Full_handshake:_coordinating_cipher_suites). During this handshake, the following occurs:
-=======
 During the establishment of the connection, the client and server [negotiate the TLS version and cipher suite to use through a handshake](https://en.wikipedia.org/wiki/Cipher_suite#Full_handshake:_coordinating_cipher_suites). During this handshake, the following steps occur:
->>>>>>> fba135d9143d541d638e617bf44517e5997f94f9:articles/postgresql/security/security-tls.md
 
 - Client sends a list of acceptable cipher suites.
 - Server selects the best cipher suite from the list and informs the client of the choice.
