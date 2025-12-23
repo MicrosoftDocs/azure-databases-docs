@@ -4,7 +4,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 12/18/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: include
 ms.custom:
   - automatically generated

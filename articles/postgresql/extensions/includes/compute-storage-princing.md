@@ -4,7 +4,7 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 12/16/2024
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: include
 ---
 ## Price
