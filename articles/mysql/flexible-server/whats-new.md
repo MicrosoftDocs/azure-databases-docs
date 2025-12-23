@@ -26,7 +26,7 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ### Azure MySQL Import CLI adds support for MySQL 8.4
 We’re thrilled to announce a major enhancement to our migration capabilities! Azure Database for MySQL – Import CLI now supports importing MySQL 8.4 workloads from on-premises environments or virtual machines directly into Azure Database for MySQL.
-This update ensures that customers running the latest MySQL versions can seamlessly migrate their data to Azure with minimal effort, leveraging the simplicity and automation provided by the Import CLI tool. Whether you’re modernizing your infrastructure or scaling to the cloud, this feature helps accelerate your migration journey while maintaining compatibility and performance. [Learn more](migrate/migrate-external-mysql-import-cli.md)
+This update ensures that customers running the latest MySQL versions can seamlessly migrate their data to Azure with minimal effort, leveraging the simplicity and automation provided by the Import CLI tool. Whether you’re modernizing your infrastructure or scaling to the cloud, this feature helps accelerate your migration journey while maintaining compatibility and performance. [Learn more](../migrate/migrate-external-mysql-import-cli.md)
 
 ## November 2025
 
