@@ -6,7 +6,7 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 08/29/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: reference
 ms.custom:
 - ignite-2024

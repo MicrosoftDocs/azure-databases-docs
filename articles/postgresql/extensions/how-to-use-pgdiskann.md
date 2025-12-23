@@ -6,7 +6,7 @@ ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 01/25/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: how-to
 ms.custom:
   - build-2025
