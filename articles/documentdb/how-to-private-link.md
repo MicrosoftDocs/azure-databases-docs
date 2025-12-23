@@ -289,7 +289,7 @@ If you encounter connectivity issues, check the following:
 
 **Connection timeouts or failures**
 
-- Verify that Network Security Group (NSG) rules on the subnet allow outbound connectivity on port 27017 (MongoDB default port).
+- Verify that Network Security Group (NSG) rules on the subnet allow inbound connectivity on port 10260 (DocumentDB default port).
 - Confirm that the private endpoint's network interface has the correct private IP address assigned.
 - Check that the application or client is using the correct connection string format (`mongodb+srv`).
 - Ensure that firewall rules on the Azure DocumentDB cluster allow connections from the private endpoint.
