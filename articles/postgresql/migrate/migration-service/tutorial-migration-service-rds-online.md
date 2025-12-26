@@ -185,7 +185,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 - In the above steps, there are no migrations performed so we start with the new migration by running the following command.
 
     ```azurecli-interactive
-    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-mode offline --migration-option ValidateAndMigrate --properties "c:/migration-cli/migration_body.json"
+    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-mode online --migration-option ValidateAndMigrate --properties "c:/migration-cli/migration_body.json"
     ```
 
 - Run the following command to see the status of the migration initiated in the previous step. You can check the status of the migration by providing the migration name.
