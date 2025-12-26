@@ -57,6 +57,9 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 
 - With **private access** (VNet Integration), ensure that the source server name can be resolved and is accessible from the VNet where the Azure Database for MySQL Flexible Server instance is running. (For more details, visit [Name resolution for resources in Azure virtual networks](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)).
 
+> [!NOTE]  
+> If the target server is configured with a private endpoint, data-in replication is currently not supported because private endpoints do not allow outbound network traffic. We are actively working on enhancements to enable outbound connectivity for Azure Database for MySQL servers using private endpoints, which will remove this limitation. For more information about this upcoming capability, please email [Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+
 ### Generated Invisible Primary Key
 
 For MySQL version 8.0 and above, [Generated Invisible Primary Keys (GIPK)](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html) is enabled by default for all the Azure Database for MySQL Flexible Server instances. MySQL 8.0+ servers adds the invisible column *my_row_id* to the tables and a primary key on that column, where the InnoDB table is created without an explicit primary key. This feature, when enabled might affect some of the data-in replication use cases, as described below:
