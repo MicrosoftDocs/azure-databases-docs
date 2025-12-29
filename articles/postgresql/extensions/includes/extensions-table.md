@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 12/18/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -49,7 +49,7 @@ ms.custom:
 | --- | --- |
 | 18 | Not supported |
 | 17 | Not supported |
-| 16 | 1.5.0 <sup>*</sup> |
+| 16 | 1.6.0 <sup>*</sup> |
 | 15 | 1.5.0 <sup>*</sup> |
 | 14 | 1.5.0 <sup>*</sup> |
 | 13 | 1.5.0 <sup>*</sup> |
@@ -502,7 +502,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 14 | 3.18 |
 | 13 | 3.18 |
 | 12 | 3.18 |
-| 11 | 3.7 |
+| 11 | 3.18 |
 
 
 ## pageinspect

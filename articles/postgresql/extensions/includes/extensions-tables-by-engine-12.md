@@ -2,9 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/18/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom:
   - automatically generated

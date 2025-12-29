@@ -2,9 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/18/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom:
   - automatically generated
@@ -41,7 +41,7 @@ ms.custom:
 | [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time. | 1.4 | |
 | [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures. | 1.1 | |
 | [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases. | Not supported | |
-| [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 3.7 | |
+| [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 3.18 | |
 | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level. | 1.7 | |
 | [pgaudit](https://www.pgaudit.org/) provides auditing functionality. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server. |
