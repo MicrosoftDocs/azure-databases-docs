@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -219,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `17.6` |
-| Allowed values | `17.6` |
+| Default value | `17.7` |
+| Allowed values | `17.7` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -236,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `170006` |
-| Allowed values | `170006` |
+| Default value | `170007` |
+| Allowed values | `170007` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/17/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 

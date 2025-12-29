@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: include
@@ -800,7 +800,7 @@ ms.custom: automatically generated
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation | |
+| Documentation | [pgaadauth.enable_group_sync](https://go.microsoft.com/fwlink/?linkid=2338467) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1359,7 +1359,7 @@ ms.custom: automatically generated
 | Description | Required. The database(s) that run_maintenance() will run on. If more than one, use a comma separated list. If not set, BGW will do nothing. |
 | Data type | string |
 | Default value | |
-| Allowed values | `[A-Za-z0-9_,-]*` |
+| Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.dbname](https://github.com/pgpartman/pg_partman) |
 
@@ -1410,7 +1410,7 @@ ms.custom: automatically generated
 | Description | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed. |
 | Data type | string |
 | Default value | |
-| Allowed values | `[A-Za-z\\._]*` |
+| Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
 

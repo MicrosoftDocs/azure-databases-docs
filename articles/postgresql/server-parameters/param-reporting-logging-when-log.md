@@ -4,7 +4,7 @@ description: Reporting and Logging / When to Log server parameters for Azure Dat
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
