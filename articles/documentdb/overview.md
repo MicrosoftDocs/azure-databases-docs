@@ -14,7 +14,7 @@ Azure DocumentDB is a fully managed, open-source, [99.03% MongoDB-compatible](ht
 
 ## Open-source and community-driven
 
-[DocumentDB](https://github.com/documentdb/documentdb) is an open-source, MongoDB-compatible, Linux Foundation–governed document database released under the permissive MIT license .
+[DocumentDB](https://github.com/documentdb/documentdb) is an open-source, MongoDB-compatible, Linux Foundation–governed document database released under the permissive MIT license.
 Azure DocumentDB is built on DocumentDB, it does not run the MongoDB database server or its codebase. [MongoDB’s SSPL licensing](https://en.wikipedia.org/wiki/Server_Side_Public_License) does not apply to DocumentDB or Azure DocumentDB.
 
 DocumentDB delivers 99.03% MongoDB compatibility via the wire protocol and BSON support, plus capabilities such as indexing and vector search, while keeping the implementation transparent and community-driven.
