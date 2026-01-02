@@ -4,7 +4,7 @@ description: Configure Microsoft Entra ID–based role-based access control (rol
 author: seesharprun
 ms.author: sidandrews
 ms.topic: how-to
-ms.date: 11/05/2025
+ms.date: 01/02/2026
 ms.devlang: python
 defaultDevLang: python
 dev_langs:
@@ -24,10 +24,10 @@ Role-based access control provides a centralized mechanism to assign and enforce
 - **Azure role-based access** for managing the cluster as an Azure resource (such as reading metadata, managing firewall rules, and configuring private endpoints)
 - **DocumentDB** access for reading and writing data within databases and collections on the cluster.
 
-Enable Microsoft Entra ID to allow Microsoft Entra principals (users, service principals, or managed identities) to authenticate to the cluster. Microsoft Entra ID authentication is implemented using OpenID Connect (OIDC). Clients present an Entra-issued OIDC access token to the MongoDB driver. A cluster must have native authentication enabled; the supported configurations are native-only or native and Microsoft Entra ID authentication. Microsoft Entra ID can't be the sole authentication method.
+Enable Microsoft Entra ID to allow Microsoft Entra principals (users, service principals, or managed identities) to authenticate to the cluster. Microsoft Entra ID authentication is implemented using OpenID Connect (OIDC). Clients present an Entra-issued OIDC access token to the MongoDB driver. A cluster must have native authentication enabled; the supported configurations are native-only or Microsoft Entra ID authentication only or native and Microsoft Entra ID authentication.
 
 > [!NOTE]
-> You can enable or change authentication methods on a cluster at any time after provisioning. Changing authentication methods does **not** require a cluster restart and is nondisruptive. When a cluster is created, native DocumentDB authentication must be enabled. You can disable native authentication after the cluster is finished provisioning.
+> You can enable or change authentication methods on a cluster at any time after provisioning. Changing authentication methods does **not** require a cluster restart and is non-disruptive. When a cluster is created, native DocumentDB authentication must be enabled. You can disable native authentication after the cluster is finished provisioning.
 
 Benefits of using Microsoft Entra ID for authentication include:
 
@@ -1267,7 +1267,7 @@ Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity dir
 1. Enter the following connection string into the **URI** input box.
 
      ```
-     mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000
+     mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000&authMechanismProperties=ENVIRONMENT:azure,TOKEN_RESOURCE:https://ossrdbms-aad.database.windows.net
      ```
 
 1. Now, open the **Advanced Connection Options** dialog.
