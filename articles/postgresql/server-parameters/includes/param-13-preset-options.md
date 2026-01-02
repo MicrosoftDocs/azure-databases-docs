@@ -219,8 +219,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version. |
 | Data type | string |
-| Default value | `13.22` |
-| Allowed values | `13.22` |
+| Default value | `13.23` |
+| Allowed values | `13.23` |
 | Parameter type | read-only |
 | Documentation | [server_version](https://www.postgresql.org/docs/13/runtime-config-preset.html#GUC-SERVER-VERSION) |
 
@@ -236,8 +236,8 @@ ms.custom: automatically generated
 | Category | Preset Options |
 | Description | Shows the server version as an integer. |
 | Data type | integer |
-| Default value | `130022` |
-| Allowed values | `130022` |
+| Default value | `130023` |
+| Allowed values | `130023` |
 | Parameter type | read-only |
 | Documentation | [server_version_num](https://www.postgresql.org/docs/13/runtime-config-preset.html#GUC-SERVER-VERSION-NUM) |
 
