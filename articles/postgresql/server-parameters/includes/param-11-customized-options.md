@@ -730,7 +730,7 @@ ms.custom: automatically generated
 | Description | Required. The database(s) that run_maintenance() will run on. If more than one, use a comma separated list. If not set, BGW will do nothing. |
 | Data type | string |
 | Default value | |
-| Allowed values | `[A-Za-z0-9_,-]*` |
+| Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.dbname](https://github.com/pgpartman/pg_partman) |
 
@@ -781,7 +781,7 @@ ms.custom: automatically generated
 | Description | The role that run_maintenance() will run as. Default is postgres. Only a single role name is allowed. |
 | Data type | string |
 | Default value | |
-| Allowed values | `[A-Za-z\\._]*` |
+| Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
 
