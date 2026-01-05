@@ -53,7 +53,7 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 - Binary log files on the source server shouldn't be purged before the replica applies those changes. If the source is Azure Database for MySQL Flexible Server, refer to how to configure binlog_expire_logs_seconds for [Flexible Server](./concepts-server-parameters.md#binlog_expire_logs_seconds) or [Single server](../concepts-server-parameters.md#binlog_expire_logs_seconds)
 - If the source server has SSL enabled, ensure the SSL CA certificate provided for the domain has been included in the `mysql.az_replication_change_master` stored procedure. Refer to the following [examples](./how-to-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) and the `master_ssl_ca` parameter.
 - Ensure that the machine hosting the source server allows both inbound and outbound traffic on port 3306.
-- With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). If you have a private endpoint and have disabled public access, data-in replication is not supported
+- With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). 
 
 - With **private endpoint**, ensure that public access is enabled on both the source and target servers. If public access is disabled for a server using a private endpoint, the server will lose outbound network capability, preventing the replica server from establishing a connection to the source server.
   
