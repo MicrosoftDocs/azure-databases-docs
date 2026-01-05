@@ -56,7 +56,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Central US, East Asia East US, East US2, South Central US, and West US2 regions.
+In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Central US, East Asia, East US, East US 2, South Central US, and West US 2 regions.
 
 ### Supported features limitations
 
