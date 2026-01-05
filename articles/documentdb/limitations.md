@@ -95,7 +95,7 @@ Azure DocumentDB enforces various indexing limits to ensure optimal performance 
 
 ### Vector search limitations
 
-- Indexing vectors up to 2,000 dimensions in size.
+- Indexing vectors up to 16,000 dimensions in size (with [Product Quantization](./product-quantization.md))
 
 - Indexing applies to only one vector per path.
 
