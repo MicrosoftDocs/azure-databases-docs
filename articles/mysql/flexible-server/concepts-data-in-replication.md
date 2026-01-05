@@ -55,10 +55,10 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 - Ensure that the machine hosting the source server allows both inbound and outbound traffic on port 3306.
 - With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). If you have a private endpoint and have disabled public access, data-in replication is not supported
 
+- With **private endpoint**, ensure that public access is enabled on both the source and target servers. If public access is disabled for a server using a private endpoint, the server will lose outbound network capability, preventing the replica server from establishing a connection to the source server.
+  
 - With **private access** (VNet Integration), ensure that the source server name can be resolved and is accessible from the VNet where the Azure Database for MySQL Flexible Server instance is running. (For more details, visit [Name resolution for resources in Azure virtual networks](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)).
 
-> [!NOTE]  
-> If the target server is configured with a private endpoint, data-in replication is currently not supported because private endpoints do not allow outbound network traffic. We are actively working on enhancements to enable outbound connectivity for Azure Database for MySQL servers using private endpoints, which will remove this limitation. For more information about this upcoming capability, please email [Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
 
 ### Generated Invisible Primary Key
 
