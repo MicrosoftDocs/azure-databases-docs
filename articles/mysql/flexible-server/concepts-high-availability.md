@@ -151,6 +151,11 @@ Keep the following considerations in mind when you use high-availability:
 > [!NOTE]  
 > Storage autogrow is enabled by default for a high-availability configured server and can't be disabled.
 
+## Known Issues
+
+Azure Database for MySQL Flexible Server uses native MySQL replication at the backend. A known issue has been identified in the MySQL Community Edition 8.0 and greater that can break replication when performing a multi‑table DELETE operation that relies on foreign key constraints with ON DELETE CASCADE. This issue is tracked as [MySQL Bug 102586](https://bugs.mysql.com/bug.php?id=102586). As a result, when High Availability is enabled on Azure Database for MySQL Flexible Server, we recommend that applications avoid using cascaded deletes with foreign keys, as this can lead to replication failures and may impact the availability of the server.
+
+
 ## Health checks
 
 When you configure high-availability (HA) for Azure Database for MySQL, health checks play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any issues promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, health checks help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured health checks are essential for achieving the desired level of availability and resilience in your database setup.

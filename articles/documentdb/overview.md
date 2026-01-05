@@ -4,13 +4,22 @@ description: Learn about Azure DocumentDB (with MongoDB compatibility), what it 
 author: seesharprun
 ms.author: sidandrews
 ms.topic: overview
-ms.date: 11/12/2025
+ms.date: 12/31/2025
 ai-usage: ai-generated
 ---
 
 # What is Azure DocumentDB (with MongoDB compatibility)?
 
-Azure DocumentDB is a fully managed MongoDB-compatible database service for building modern applications. It combines native Azure integrations, low total cost of ownership, and a familiar architecture—ideal for migrating existing applications or building new ones.
+Azure DocumentDB is a fully managed, open-source, [99.03% MongoDB-compatible](https://learn.microsoft.com/azure/documentdb/compatibility-query-language#compatibility-philosophy) database. Built-in AI, Azure integrations, and multi-cloud flexibility included for mission-critical applications.
+
+## Open-source and community-driven
+
+[DocumentDB](https://github.com/documentdb/documentdb) is an open-source, MongoDB-compatible, Linux Foundation–governed document database released under the permissive MIT license.
+Azure DocumentDB is built on DocumentDB, it does not run the MongoDB database server or its codebase. [MongoDB’s SSPL licensing](https://en.wikipedia.org/wiki/Server_Side_Public_License) does not apply to DocumentDB or Azure DocumentDB.
+
+DocumentDB delivers 99.03% MongoDB compatibility via the wire protocol and BSON support, plus capabilities such as indexing and vector search, while keeping the implementation transparent and community-driven.
+
+Azure DocumentDB pairs that open-source foundation with a fully managed Azure service, adding fully-managed enterprise security, scalability, and reliability.
 
 ## Flexible and scalable data management
 
@@ -18,30 +27,25 @@ Azure DocumentDB allows you to store and manage unstructured data with ease. Its
 
 The service supports high-capacity vertical and horizontal scaling with no shard key required until the database surpasses terabytes. You can automatically shard existing databases with no downtime, and scale clusters up or down—both vertically and horizontally—all while keeping your applications running.
 
-## High performance and low latency
-
-Performance is a critical factor for modern applications, and Azure DocumentDB is optimized to deliver low-latency responses. With features like automatic indexing and partitioning, the service ensures that your queries are executed efficiently, even as your dataset grows.
-
-Additionally, Azure DocumentDB supports various consistency levels, allowing you to balance performance and data accuracy based on your application's requirements. This flexibility ensures that you can optimize for speed without compromising on reliability.
-
-## Seamless MongoDB compatibility
+## 99.03% MongoDB compatibility
 
 Azure DocumentDB is designed to work seamlessly with MongoDB tools and drivers, making it easy for developers to migrate existing applications or build new ones. By supporting MongoDB APIs, the service allows you to apply your existing knowledge and resources without the need for extensive rework.
 
-This compatibility also means you can integrate Azure DocumentDB into your existing development workflows, using popular tools like MongoDB Compass or the MongoDB shell. The result is a smooth and efficient development experience that accelerates your time to market.
+This compatibility also means you can integrate Azure DocumentDB into your existing development workflows, using popular tools like MongoDB Compass or the MongoDB shell. The result is a smooth development experience that accelerates your time to market.
+
+## Multi-cloud and hybrid-cloud
+
+DocumentDB enables true multi-cloud and hybrid architectures with zero data loss. The open-source database can run on-premises or in any cloud, and Azure DocumentDB extends the same capability as a fully managed Azure service. Together, they allow applications to use the same MongoDB-compatible interface and drivers across environments, while supporting cross-cloud replication and failover without data loss or application changes.
+
+To get started, deploy DocumentDB using the [Kubernetes operator](https://github.com/documentdb/documentdb-kubernetes-operator).
+
+See the [multi-cloud replication demo](https://www.youtube.com/watch?v=uRBGvXWfBis) on YouTube.
 
 ## AI-driven applications with integrated vector database
 
-Azure DocumentDB empowers generative AI applications with an integrated vector database, enabling efficient indexing and querying of high-dimensional data for advanced AI use cases. Unlike other platforms, Azure DocumentDB keeps all original data and vector data within the database, ensuring simplicity and security without external integrations. Even the free tier includes vector database capabilities, making sophisticated AI features accessible at no extra cost.
+Azure DocumentDB empowers generative AI applications with an integrated vector database at no additional cost, enabling indexing and querying of high-dimensional data for advanced AI use cases. Unlike other platforms, Azure DocumentDB keeps all original data and vector data within the database, ensuring simplicity and security without external integrations. Even the free tier includes vector database capabilities, making sophisticated AI features accessible.
 
 ## Native Azure integration
 
 Azure DocumentDB provides seamless integration with the Azure ecosystem, enabling developers to manage resources using familiar Azure tools like Azure Monitor and Azure CLI. This deep integration ensures efficient resource management and unified support across all your Azure services, eliminating the need to juggle multiple support teams.
 
-## Open-source and community-driven
-
-The underlying DocumentDB technology is open-sourced ([`microsoft/documentdb`](https://github.com/documentdb/documentdb)), providing developers with complete transparency and flexibility. DocumentDB is built as an extension on the robust PostgreSQL engine, it offers a permissive MIT license, ensuring there are minimal restrictions on usage, distribution, or integration into your own solutions. By using PostgreSQL's extensibility, DocumentDB introduces powerful features to PostgreSQL like binary JSON (BSON) types, automatic indexing, and vector search. DocumentDb is a versatile choice for modern applications.
-
-This open-source approach also aligns with Microsoft's broader mission to establish a standard for NoSQL databases, enhancing interoperability and simplifying the developer experience. Whether you're building on-premises solutions or cloud-based applications, DocumentDB empowers you with the tools and freedom to innovate. 
-
-Azure DocumentDB combines the flexible and open-source DocumentDB platform with the best-in-class security, scalability, and reliability of Azure.

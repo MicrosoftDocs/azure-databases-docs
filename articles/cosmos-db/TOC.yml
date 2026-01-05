@@ -118,7 +118,7 @@
           href: nosql/multi-tenancy-vector-search.md?context=/azure/cosmos-db/context/context
 - name: Create secure solutions
   items:
-    - name: Security
+    - name: Security overview
       href: security.md
     - name: Use role-based access control
       displayName: rbac, key, ropc, connection string
@@ -139,6 +139,8 @@
           href: how-to-configure-nsp.md?context=/azure/cosmos-db/context/context
     - name: Data encryption
       items:
+        - name: Data encryption overview
+          href: database-encryption-at-rest.md?context=/azure/cosmos-db/context/context
         - name: Use Always Encrypted
           href: how-to-always-encrypted.md?context=/azure/cosmos-db/context/context
         - name: Self-serve minimum transport-layer security (TLS) version enforcement
@@ -165,8 +167,6 @@
       href: store-credentials-key-vault.md?context=/azure/cosmos-db/context/context
     - name: Considerations and guidance
       href: security-considerations.md?context=/azure/cosmos-db/context/context
-    - name: Data encryption
-      href: database-encryption-at-rest.md?context=/azure/cosmos-db/context/context
     - name: Azure Policy support
       href: policy.md?context=/azure/cosmos-db/context/context
     - name: Security controls by Azure Policy
@@ -206,119 +206,72 @@
           href: reference-videos.md
 - name: Model data for partitioning
   items:
-    - name: Overview of resource model
-      displayName: collection, document
-      href: resource-model.md?context=/azure/cosmos-db/context/context
     - name: Model document data
       displayName: document
       href: modeling-data.md
-    - name: Modeling and partitioning - a real-world example
-      displayName: model, partition, example
-      href: model-partition-example.md
-    - name: Synthetic partition keys
-      href: synthetic-partition-keys.md
+    - name: Partitioning and horizontal scaling
+      items:
+        - name: Partitioning overview
+          href: partitioning-overview.md?context=/azure/cosmos-db/context/context
+        - name: Designing multitenant applications
+          href: /azure/architecture/guide/multitenant/service/cosmos-db?context=/azure/cosmos-db/context/context
+        - name: Hierarchical partition keys
+          items:
+            - name: Hierarchical partition keys overview
+              href: hierarchical-partition-keys.md?context=/azure/cosmos-db/context/context
+            - name: Hierarchical partition keys FAQ
+              href: hierarchical-partition-keys-faq.yml?context=/azure/cosmos-db/context/context
+        - name: Change partition key
+          href: change-partition-key.md
+        - name: Synthetic partition keys
+          href: synthetic-partition-keys.md
     - name: Real-world examples
       items:
-        - name: Choose a partition key for IoT
+        - name: Blogging workload
+          displayName: model, partition, example
+          href: model-partition-example.md
+        - name: IoT workload
           href: design-partitioning-iot.md
-    - name: Global distribution
+
+- name: Throughput (Request units)
+  items:
+    - name: Request units
+      displayName: RUs, RU
+      href: request-units.md?context=/azure/cosmos-db/context/context
+    - name: Free tier
+      displayName: free tier
+      href: free-tier.md?context=/azure/cosmos-db/context/context
+    - name: Limit total account throughput
+      displayName: cost, RUs, RU
+      href: limit-total-account-throughput.md?context=/azure/cosmos-db/context/context
+    - name: Convert vCores to request units
+      href: convert-vcore-to-request-unit.md?context=/azure/cosmos-db/context/context
+    - name: Provisioned throughput
+      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
+      href: set-throughput.md?context=/azure/cosmos-db/context/context
+    - name: Autoscale throughput
       items:
-        - name: High availability
-          items:
-            - name: High availability and reliability
-              href: /azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/context/context
-            - name: Proactive resiliency
-              href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?context=/azure/cosmos-db/context/context
-            - name: Multi-region writes
-              items:
-                - name: Understanding multi-region writes
-                  href: multi-region-writes.md?context=/azure/cosmos-db/context/context
-                - name: Conflict resolution
-                  displayName: last write wins, custom, multi-region writes, multi-master
-                  href: conflict-resolution-policies.md?context=/azure/cosmos-db/context/context
-            - name: Global distribution - under the hood
-              href: global-dist-under-the-hood.md?context=/azure/cosmos-db/context/context
-            - name: Global distribution
-              displayName: replication, replicate, geo distribution
-          href: distribute-data-globally.md?context=/azure/cosmos-db/context/context
-    - name: Consistency levels
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: consistency-levels.md?context=/azure/cosmos-db/context/context
-    - name: Designing resilient applications
-      href: conceptual-resilient-sdk-applications.md
-    - name: Designing multitenant applications
-      href: /azure/architecture/guide/multitenant/service/cosmos-db?context=/azure/cosmos-db/context/context
-    - name: Change partition key
-      href: change-partition-key.md
-    - name: Throughput (Request units)
+        - name: Autoscale introduction
+          href: provision-throughput-autoscale.md?context=/azure/cosmos-db/context/context
+        - name: Autoscale FAQ
+          href: autoscale-faq.yml?context=/azure/cosmos-db/context/context
+    - name: Serverless
       items:
-        - name: Request units
-          displayName: RUs, RU
-          href: request-units.md?context=/azure/cosmos-db/context/context
-        - name: Free tier
-          displayName: free tier
-          href: free-tier.md?context=/azure/cosmos-db/context/context
-        - name: Limit total account throughput
-          displayName: cost, RUs, RU
-          href: limit-total-account-throughput.md?context=/azure/cosmos-db/context/context
-        - name: Convert vCores to request units
-          href: convert-vcore-to-request-unit.md?context=/azure/cosmos-db/context/context
-        - name: Provisioned throughput
-          displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
-          href: set-throughput.md?context=/azure/cosmos-db/context/context
-        - name: Autoscale throughput
-          items:
-            - name: Autoscale introduction
-              href: provision-throughput-autoscale.md?context=/azure/cosmos-db/context/context
-            - name: Autoscale FAQ
-              href: autoscale-faq.yml?context=/azure/cosmos-db/context/context
-        - name: Serverless
-          items:
-            - name: Serverless overview
-              href: serverless.md?context=/azure/cosmos-db/context/context
-            - name: Serverless Performance
-              href: serverless-performance.md?context=/azure/cosmos-db/context/context
-        - name: Provisioned throughput
-          items:
-            - name: Use standard (manual) throughput - container
-              displayName: request units, RUs, RU, collection level
-              href: how-to-provision-container-throughput.md
-            - name: Use standard (manual) throughput - database
-              displayName: request units, RUs, RU, shared throughput, database level
-              href: how-to-provision-database-throughput.md
-            - name: Use autoscale throughput - database or container
-              displayName: request units, RUs, RU, shared throughput, database level, collection level, autoscale
-              href: how-to-provision-autoscale-throughput.md
-            - name: Distribute throughput across partitions (preview) - container
-              displayName: request units, RUs, RU, collection levels
-              items:
-                - name: Distribute throughput across partitions overview
-                  href: how-to-redistribute-throughput-across-partitions.md
-                - name: Distribute throughput across partitions FAQ
-                  href: distribute-throughput-across-partitions-faq.yml
-            - name: Estimate RU/s with capacity planner
-              displayName: request units, RUs, RU, capacity
-              href: estimate-ru-with-capacity-planner.md
-            - name: Scale using Azure Functions timer
-              displayName: request units, RUs, RU, timer
-              href: scale-on-schedule.md
-        - name: Find request unit charge
-          displayName: request units, RUs, RU, charge, consumption
-          href: find-request-unit-charge.md
-        - name: Choose between autoscale and standard (manual) throughput
-          href: how-to-choose-offer.md?context=/azure/cosmos-db/context/context
-        - name: Choose between provisioned throughput and serverless
-          href: throughput-serverless.md?context=/azure/cosmos-db/context/context
-        - name: Best practices for scaling provisioned throughput
-          href: scaling-provisioned-throughput-best-practices.md?context=/azure/cosmos-db/context/context
-        - name: Burst capacity
-          items:
-            - name: Burst capacity overview
-              href: burst-capacity.md?context=/azure/cosmos-db/context/context
-            - name: Burst capacity FAQ
-              href: burst-capacity-faq.yml?context=/azure/cosmos-db/context/context
-        - name: Merge (preview)
-          href: merge.md?context=/azure/cosmos-db/context/context
+        - name: Serverless overview
+          href: serverless.md?context=/azure/cosmos-db/context/context
+        - name: Serverless Performance
+          href: serverless-performance.md?context=/azure/cosmos-db/context/context
+    - name: Provisioned throughput
+      items:
+        - name: Use standard (manual) throughput - container
+          displayName: request units, RUs, RU, collection level
+          href: how-to-provision-container-throughput.md
+        - name: Use standard (manual) throughput - database
+          displayName: request units, RUs, RU, shared throughput, database level
+          href: how-to-provision-database-throughput.md
+        - name: Use autoscale throughput - database or container
+          displayName: request units, RUs, RU, shared throughput, database level, collection level, autoscale
+          href: how-to-provision-autoscale-throughput.md
         - name: Distribute throughput across partitions (preview) - container
           displayName: request units, RUs, RU, collection levels
           items:
@@ -326,62 +279,49 @@
               href: how-to-redistribute-throughput-across-partitions.md
             - name: Distribute throughput across partitions FAQ
               href: distribute-throughput-across-partitions-faq.yml
-        - name: Priority-based execution (preview)
-          items:
-            - name: Priority-based execution overview
-              href: priority-based-execution.md?context=/azure/cosmos-db/context/context
-            - name: Priority-based execution FAQ
-              href: priority-based-execution-faq.yml?context=/azure/cosmos-db/context/context
-        - name: Throughput buckets (preview)
-          items:
-            - name: Throughput buckets overview
-              href: throughput-buckets.md
-            - name: Throughput buckets FAQ
-              href: throughput-buckets-faq.yml
-    - name: Global distribution
+        - name: Estimate RU/s with capacity planner
+          displayName: request units, RUs, RU, capacity
+          href: estimate-ru-with-capacity-planner.md
+        - name: Scale using Azure Functions timer
+          displayName: request units, RUs, RU, timer
+          href: scale-on-schedule.md
+    - name: Find request unit charge
+      displayName: request units, RUs, RU, charge, consumption
+      href: find-request-unit-charge.md
+    - name: Choose between autoscale and standard (manual) throughput
+      href: how-to-choose-offer.md?context=/azure/cosmos-db/context/context
+    - name: Choose between provisioned throughput and serverless
+      href: throughput-serverless.md?context=/azure/cosmos-db/context/context
+    - name: Best practices for scaling provisioned throughput
+      href: scaling-provisioned-throughput-best-practices.md?context=/azure/cosmos-db/context/context
+    - name: Burst capacity
       items:
-        - name: Global distribution overview
-          displayName: replication, replicate, geo distribution
-          href: distribute-data-globally.md?context=/azure/cosmos-db/context/context
-        - name: Consistency levels
-          displayName: session, consistency prefix, strong, eventual, bounded staleness
-          href: consistency-levels.md?context=/azure/cosmos-db/context/context
-        - name: High availability
-          items:
-            - name: High availability and reliability
-              href: /azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/context/context
-            - name: Proactive resiliency
-              href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?context=/azure/cosmos-db/context/context
-            - name: Multi-region writes
-              items:
-                - name: Understanding multi-region writes
-                  href: multi-region-writes.md?context=/azure/cosmos-db/context/context
-                - name: Conflict resolution
-                  displayName: last write wins, custom, multi-region writes, multi-master
-                  href: conflict-resolution-policies.md?context=/azure/cosmos-db/context/context
-        - name: Global distribution - under the hood
-          href: global-dist-under-the-hood.md?context=/azure/cosmos-db/context/context
-        - name: Distribute data globally tutorial
-          href: tutorial-global-distribution.md
-        - name: Configure multi-region writes
-          href: how-to-multi-master.md
-        - name: Manage consistency levels
-          displayName: session, consistency prefix, strong, eventual, bounded staleness
-          href: how-to-manage-consistency.md
-        - name: Configure conflict resolution policies
-          href: how-to-manage-conflicts.md
-        - name: Convert session token format
-          href: how-to-convert-session-token.md
-    - name: Partitioning and horizontal scaling
+        - name: Burst capacity overview
+          href: burst-capacity.md?context=/azure/cosmos-db/context/context
+        - name: Burst capacity FAQ
+          href: burst-capacity-faq.yml?context=/azure/cosmos-db/context/context
+    - name: Merge (preview)
+      href: merge.md?context=/azure/cosmos-db/context/context
+    - name: Distribute throughput across partitions (preview) - container
+      displayName: request units, RUs, RU, collection levels
       items:
-        - name: Partitioning overview
-          href: partitioning-overview.md?context=/azure/cosmos-db/context/context
-        - name: Hierarchical partition keys
-          items:
-            - name: Hierarchical partition keys overview
-              href: hierarchical-partition-keys.md?context=/azure/cosmos-db/context/context
-            - name: Hierarchical partition keys FAQ
-              href: hierarchical-partition-keys-faq.yml?context=/azure/cosmos-db/context/context
+        - name: Distribute throughput across partitions overview
+          href: how-to-redistribute-throughput-across-partitions.md
+        - name: Distribute throughput across partitions FAQ
+          href: distribute-throughput-across-partitions-faq.yml
+    - name: Priority-based execution (preview)
+      items:
+        - name: Priority-based execution overview
+          href: priority-based-execution.md?context=/azure/cosmos-db/context/context
+        - name: Priority-based execution FAQ
+          href: priority-based-execution-faq.yml?context=/azure/cosmos-db/context/context
+    - name: Throughput buckets (preview)
+      items:
+        - name: Throughput buckets overview
+          href: throughput-buckets.md
+        - name: Throughput buckets FAQ
+          href: throughput-buckets-faq.yml
+
 - name: Develop modern applications
   items:
     - name: Developer guide
@@ -761,8 +701,53 @@
       href: dynamodb-data-migration-cosmos-db.md
     - name: Migrate - HBase to API for NoSQL
       href: migrate-hbase-to-cosmos-db.md
+
+- name: High availability
+  items:
+    - name: High availability and reliability
+      href: /azure/reliability/reliability-cosmos-db-nosql?context=/azure/cosmos-db/context/context
+    - name: Global distribution
+      items:
+        - name: Global distribution overview
+          displayName: replication, replicate, geo distribution
+          href: distribute-data-globally.md?context=/azure/cosmos-db/context/context
+        - name: Global distribution - under the hood
+          href: global-dist-under-the-hood.md?context=/azure/cosmos-db/context/context
+        - name: Distribute data globally tutorial
+          href: tutorial-global-distribution.md
+    - name: Consistency
+      items:
+        - name: Consistency levels
+          displayName: session, consistency prefix, strong, eventual, bounded staleness
+          href: consistency-levels.md?context=/azure/cosmos-db/context/context
+        - name: Manage consistency levels
+          displayName: session, consistency prefix, strong, eventual, bounded staleness
+          href: how-to-manage-consistency.md
+    - name: Resiliency
+      items:
+        - name: Proactive resiliency
+          href: /azure/reliability/resiliency-recommendations/recommend-cosmos-db-nosql?context=/azure/cosmos-db/context/context
+        - name: Designing resilient applications
+          href: conceptual-resilient-sdk-applications.md
+    - name: Multi-region writes
+      items:
+        - name: Understanding multi-region writes
+          href: multi-region-writes.md?context=/azure/cosmos-db/context/context
+        - name: Configure multi-region writes
+          href: how-to-multi-master.md
+          items:
+            - name: Conflict resolution policies
+              displayName: last write wins, custom, multi-region writes, multi-master
+              href: conflict-resolution-policies.md?context=/azure/cosmos-db/context/context
+            - name: Configure conflict resolution policies
+              href: how-to-manage-conflicts.md
+        - name: Convert session token format
+          href: how-to-convert-session-token.md
 - name: Manage your account
   items:
+    - name: Overview of resource model
+      displayName: collection, document
+      href: resource-model.md?context=/azure/cosmos-db/context/context
     - name: Access preview features
       href: access-previews.md?context=/azure/cosmos-db/context/context
     - name: Change capacity mode

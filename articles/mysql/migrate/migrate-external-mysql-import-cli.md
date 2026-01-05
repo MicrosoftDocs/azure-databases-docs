@@ -131,9 +131,12 @@ az mysql flexible-server import create --data-source-type
                                 [--vnet]
                                 [--zone]
 
+```
+
 The following example takes in the data source information for your source MySQL server's backup file and target Flexible Server information, creates a target Flexible Server named `test-flexible-server` in the `westus` location and performs an import from backup file to target.
 
-azurecli-interactive
+```
+az interactive
 az mysql flexible-server import create --data-source-type "azure_blob" --data-source "https://onprembackup.blob.core.windows.net/onprembackup" --data-source-backup-dir "mysql_backup_percona" –-data-source-token "{sas-token}" --resource-group "test-rg"  --name "test-flexible-server" –-sku-name Standard_D2ds_v4  --tier GeneralPurpose –-version 5.7 -–location "westus"
 ```
 
