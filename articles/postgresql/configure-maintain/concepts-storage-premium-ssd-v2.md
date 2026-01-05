@@ -51,33 +51,12 @@ Your virtual machine type also has IOPS limits. Although you can select any stor
 To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
 
 > [!NOTE]  
-> Regardless of the type of storage you assign to your instance, you can only scale up s
+> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
-## High availability
-
-High availability is now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2. You can configure both zone-redundant and same-zone high availability options by using this storage tier.
-
-### High availability limitations
-
-- [Geographically redundant backups](../backup-restore/concepts-geo-disaster-recovery.md), [data encryption with customer managed keys](../security/security-data-encryption.md), [Major Version Upgrade](concepts-major-version-upgrade.md), [Long Term Retention](../backup-restore/concepts-backup-restore.md) and storage auto grow features aren't supported for Premium SSD v2.
-
-- Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
-
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with a different storage type.
-
-- Premium SSD v2 is available only in the following regions:
-  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
-
-- You can provision Premium SSD v2 with General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
-
-You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
-
-> [!IMPORTANT]  
-> The selected compute size determines the minimum and maximum IOPS.
 
 ## Supported features
 
-In preview, Azure Database for PostgreSQL flexible server instances that use Premium SSD v2 in Canada Central and East Asia regions support high availability, read replicas, geo-redundant backups, geo disaster recovery, major version upgrades, and virtual endpoints.
+In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Central US, East Asia East US, East US2, South Central US, and West US2 regions.
 
 ### Supported features limitations
 
@@ -102,6 +81,18 @@ In preview, Azure Database for PostgreSQL flexible server instances that use Pre
   **Examples include**:
         - Compute scaling, enabling HA, and performing failover and failback within one hour.
          - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
+
+- Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
+
+- Premium SSD v2 is available only in the following regions:
+  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
+
+
+
+You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
+
+> [!IMPORTANT]  
+> The selected compute size determines the minimum and maximum IOPS.
 
 ## Related content
 
