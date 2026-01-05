@@ -24,7 +24,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: November 2025
 
 - General availability
-    - Version 18
+    - [PostgreSQL 18](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: October 2025
 
