@@ -2688,6 +2688,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain//concepts-storage-migrate-ssd-to-ssd-v2.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-migrate-ssd-to-ssd-v2",
             "redirect_document_id": true
         },
         {
