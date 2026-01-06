@@ -12,23 +12,17 @@
 - name: Compute and Storage
   items: 
     - name: Compute
-      href: configure-maintain/concepts-compute.md
-    - name: Compute tiers
-      href: compute-storage/concepts-compute-tiers.md
-    - name: Storage types
-      href: compute-storage/concepts-storage-types.md
-    - name: IOPS and throughput
-      href: compute-storage/concepts-iops-throughput.md
+      href: compute-storage/concepts-compute.md
     - name: Azure Storage (pg_azure_storage) 
       items:
       - name: Overview
-        href: configure-maintain/concepts-storage.md
+        href: compute-storage/concepts-storage.md
       - name: Premium SSD
-        href: configure-maintain/concepts-storage-premium-ssd.md  
+        href: compute-storage/concepts-storage-premium-ssd.md  
       - name: Premium SSD v2
-        href: configure-maintain/concepts-storage-premium-ssd-v2.md  
+        href: compute-storage/concepts-storage-premium-ssd-v2.md  
       - name: Migrate from Premium SSD to Premium SSD v2
-        href: configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2.md
+        href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
       - name: Configure Azure Storage extension
         href: extensions/how-to-configure-azure-storage-extension.md
       - name: Quickstart examples
