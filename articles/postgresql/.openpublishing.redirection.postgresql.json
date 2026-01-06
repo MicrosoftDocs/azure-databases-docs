@@ -2943,6 +2943,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage.md",
             "redirect_url": "/azure/postgresql/extensions/concepts-storage",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/extensions/concepts-storage.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage",
             "redirect_document_id": true
         },
         {
