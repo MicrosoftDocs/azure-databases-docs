@@ -104,9 +104,9 @@
     - name: Azure Advisor recommendations
       href: configure-maintain/concepts-azure-advisor-recommendations.md
 - name: Business continuity
+  items:
     - name: Overview
       href: backup-restore/concepts-business-continuity.md
-  items:
     - name: Backup and restore
       items:
         - name: Backup and restore
