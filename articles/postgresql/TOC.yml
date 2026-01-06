@@ -549,7 +549,7 @@
       href: extensions/how-to-update-extensions.md
     - name: View installed extensions
       href: extensions/how-to-view-installed-extensions.md
-- name: Azure Storage (pg_azure_storage)
+- name: Azure Storage (pg_azure_storage) 
   items:
     - name: Overview
       href: extensions/concepts-storage.md
