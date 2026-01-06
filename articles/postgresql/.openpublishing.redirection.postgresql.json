@@ -2628,6 +2628,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-compute.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-compute",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-compute.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-compute",
             "redirect_document_id": true
         },
         {
@@ -2688,11 +2693,21 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-premium-ssd.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-premium-ssd",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage-premium-ssd.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-premium-ssd",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-premium-ssd-v2.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-premium-ssd-v2",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage-premium-ssd-v2.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-premium-ssd-v2",
             "redirect_document_id": true
         },
         {
@@ -2948,6 +2963,11 @@
         {
             "source_path_from_root": "/articles/postgresql/extensions/concepts-storage.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage",
             "redirect_document_id": true
         },
         {
