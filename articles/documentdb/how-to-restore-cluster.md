@@ -6,7 +6,7 @@ ms.author: gahllevy
 ms.custom:
   - ignite-2023
 ms.topic: how-to
-ms.date: 08/11/2025
+ms.date: 01/02/2026
 ---
 
 # Restore a cluster in Azure DocumentDB
@@ -42,7 +42,7 @@ The restore process creates a new cluster with the same configuration in the sam
 1. Select **Submit** to initiate cluster restore.
 
 > [!NOTE]
-> Cluster backups are stored for 35 days. If your cluster was created 35 days or more ago and you don't see the desired date in the restore date field, you might need to open a support request to restore the cluster to that point.
+> Cluster backups are retained for 35 days. If your cluster was created 35 days or more ago and a restore point within the last 35 days is not available in the restore date list, you may need to open a support request to restore the cluster to the desired point in time.
 
 To create an Azure support request, follow these steps:
 
