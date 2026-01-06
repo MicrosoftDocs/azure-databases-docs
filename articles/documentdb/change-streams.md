@@ -4,7 +4,7 @@
   author: avijitgupta
   ms.author: avijitgupta
   ms.topic: concept-article
-  ms.date: 05/20/2025
+  ms.date: 01/02/2026
 ---
 
 # Change Stream on Azure DocumentDB
@@ -15,8 +15,8 @@ Change streams are a real-time stream of database changes that flows from your d
 > Azure DocumentDB currently supports Change Stream in single-shard clusters. We are actively working on
 > providing Change Stream support for multi-shard clusters in the near future.
 >
-> Azure DocumentDB imposes a 400 MB limit on change streams. Please submit a support request for increasing 
-> this limit.
+> Azure DocumentDB enforces a 400 MB system-managed log limit for Change Streams. Customers should process Change Streams continuously to avoid missing historical change events.
+> Change Streams use system-managed logs with a 400 MB size limit. If a resume token refers to a change event that has rolled out of the log, the Change Stream cannot be resumed from that point and must be restarted. We plan a preview for extended support in near future.
 
 ## Enable change streams
 

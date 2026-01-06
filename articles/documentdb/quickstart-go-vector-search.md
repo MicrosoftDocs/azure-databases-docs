@@ -16,7 +16,7 @@ Use vector search in Azure DocumentDB with the Go client library. Store and quer
 
 This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-ada-002` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/patricka-go/mongo-vcore-vector-search-go) on GitHub.
+Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-go) on GitHub.
 
 ## Prerequisites
 
