@@ -53,12 +53,12 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 - Binary log files on the source server shouldn't be purged before the replica applies those changes. If the source is Azure Database for MySQL Flexible Server, refer to how to configure binlog_expire_logs_seconds for [Flexible Server](./concepts-server-parameters.md#binlog_expire_logs_seconds) or [Single server](../concepts-server-parameters.md#binlog_expire_logs_seconds)
 - If the source server has SSL enabled, ensure the SSL CA certificate provided for the domain has been included in the `mysql.az_replication_change_master` stored procedure. Refer to the following [examples](./how-to-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) and the `master_ssl_ca` parameter.
 - Ensure that the machine hosting the source server allows both inbound and outbound traffic on port 3306.
-- With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). If you have a private endpoint and have disabled public access, data-in replication is not supported
+- With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). 
 
+- With **private endpoint**, ensure that public access is enabled on the data-in replica server. If public access is disabled for a server using a private endpoint, the server will lose outbound network capability, preventing the replica server from establishing a connection to the source server.
+  
 - With **private access** (VNet Integration), ensure that the source server name can be resolved and is accessible from the VNet where the Azure Database for MySQL Flexible Server instance is running. (For more details, visit [Name resolution for resources in Azure virtual networks](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)).
 
-> [!NOTE]  
-> If the target server is configured with a private endpoint, data-in replication is currently not supported because private endpoints do not allow outbound network traffic. We are actively working on enhancements to enable outbound connectivity for Azure Database for MySQL servers using private endpoints, which will remove this limitation. For more information about this upcoming capability, please email [Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
 
 ### Generated Invisible Primary Key
 
