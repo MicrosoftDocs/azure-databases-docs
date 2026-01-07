@@ -89,7 +89,7 @@
   items: 
     - name: Compute
       href: compute-storage/concepts-compute.md
-    - name: Azure Storage (pg_azure_storage) 
+    - name: Storage
       items:
       - name: Overview
         href: compute-storage/concepts-storage.md
