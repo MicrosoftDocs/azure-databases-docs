@@ -80,9 +80,8 @@ ORDER BY NAME;
 Repeat the query periodically until the target undo tablespace shows as empty.
 A sample output might look like this:
 
-|----|----------|-----|
-|NAME|SPACE_TYPE|STATE|
-|----|----------|-----|
+| NAME | SPACE_TYPE | STATE |
+| :--- | :--- | :--- |
 |innodb_undo_001|Undo|empty|
 |innodb_undo_002|Undo|active|
 |x_undo_003  |Undo|active|
