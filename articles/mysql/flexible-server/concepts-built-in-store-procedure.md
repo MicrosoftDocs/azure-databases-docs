@@ -79,6 +79,8 @@ ORDER BY NAME;
 ```
 Repeat the query periodically until the target undo tablespace shows as empty.
 A sample output might look like this:
+
+|----|----------|-----|
 |NAME|SPACE_TYPE|STATE|
 |----|----------|-----|
 |innodb_undo_001|Undo|empty|
@@ -87,6 +89,8 @@ A sample output might look like this:
 
 > [!NOTE]
 > The time required for an undo log to become empty depends on its file size. Larger undo log files will take longer to clear.
+
+
 
 ### Drop problematic table 
 
