@@ -4,7 +4,7 @@ description: Learn about Azure DocumentDB (with MongoDB compatibility), what it 
 author: seesharprun
 ms.author: sidandrews
 ms.topic: overview
-ms.date: 12/31/2025
+ms.date: 01/07/2026
 ai-usage: ai-generated
 ---
 

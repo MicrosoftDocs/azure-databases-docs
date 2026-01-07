@@ -4,7 +4,7 @@ description: Provides an overview of Azure Database for PostgreSQL.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 10/30/2025
+ms.date: 01/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
