@@ -69,14 +69,7 @@ In some cases your undo log might grow large, and you might want to clean it up.
 1. Execute ```call az_deactivate_undo_tablespace(3);``` to deactivate the newly created table space. Wait for the state to be empty. Then execute ```Call az_drop_undo_tablespace(3);``` to drop the newly created table space. 
    You can't drop the default ones (innodb_undo_001, innodb_undo_002). You can only drop the one you created, in this example it's x_undo_003.Before dropping, first deactivate x_undo_003 to empty state.
 #### Verifying and Checking Undo Tablespaces
-Before emptying an undo tablespace, ensure there are no active transactions:
-```sql
-SELECT COUNT(1) FROM information_schema.innodb_trx;
-```
-- If the result is 0, there are no active transactions.
-- The undo tablespace can only be emptied when this count is zero.
-
-After confirming that transactions have reached zero, check the status of the undo tablespaces:
+Check the status of the undo tablespaces:
 
 ```sql
 SELECT NAME, FILE_SIZE, STATE
@@ -84,6 +77,16 @@ FROM information_schema.innodb_tablespaces
 WHERE SPACE_TYPE = 'Undo'
 ORDER BY NAME;
 ```
+Repeat the query periodically until the target undo tablespace shows as empty.
+A sample output might look like this:
+|NAME|SPACE_TYPE|STATE|
+|----|----------|-----|
+|innodb_undo_001|Undo|empty|
+|innodb_undo_002|Undo|active|
+|x_undo_003  |Undo|active|
+
+> [!NOTE]
+> The time required for an undo log to become empty depends on its file size. Larger undo log files will take longer to clear.
 
 ### Drop problematic table 
 
