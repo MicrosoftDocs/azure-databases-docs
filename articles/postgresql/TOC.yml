@@ -540,22 +540,22 @@
           href: azure-ai/generative-ai-age-overview.md
         - name: Performance Best Practices for Apache AGE
           href: azure-ai/generative-ai-age-performance.md
-    - name: In-database Embeddings (azure_local_ai)
+  - name: In-database Embeddings (azure_local_ai)
+    items:
+    - name: Overview
+      href: extensions/azure-local-ai.md
+    - name: Vector indexing (pg_diskann)
       items:
-      - name: Overview
-        href: extensions/azure-local-ai.md
-      - name: Vector indexing (pg_diskann)
-        items:
-          - name: Overview
-            href: extensions/how-to-use-pgdiskann.md
-          - name: Vector similarity search (pgvector)
-            items:
-              - name: Basics of pgvector
-                href: extensions/how-to-use-pgvector.md
-                displayName: vector databases
-              - name: Optimize performance when using pgvector
-                href: extensions/how-to-optimize-performance-pgvector.md
-                displayName: vector databases
+        - name: Overview
+          href: extensions/how-to-use-pgdiskann.md
+        - name: Vector similarity search (pgvector)
+          items:
+            - name: Basics of pgvector
+              href: extensions/how-to-use-pgvector.md
+              displayName: vector databases
+            - name: Optimize performance when using pgvector
+              href: extensions/how-to-optimize-performance-pgvector.md
+              displayName: vector databases
 - name: Extensions
   items:
     - name: Overview
