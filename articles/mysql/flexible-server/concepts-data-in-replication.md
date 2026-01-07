@@ -55,7 +55,7 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 - Ensure that the machine hosting the source server allows both inbound and outbound traffic on port 3306.
 - With **public access only**, ensure that the primary server FQDN resolves successfully to a public IP address via Azure DNS, or explicitly use the public IP address when configuring replication on the replica server. 
 
-- With **public acces and private endpoint**, the replica server still connects to the source server over the public access route. Therefore, all prerequisites for public access–only scenarios must also be met.
+- With **public acces and private endpoint**, the replica server still connects to the primary server over the public access route. Therefore, all prerequisites for public access–only scenarios must also be met.
 
 - With **private endpoint only (public access disabled), Data- in replication is not supported**. In this configuration, the replica server loses outbound network connectivity, preventing it from establishing a connection to the primary server.  The private endpoint is only for incoming connections.
   
