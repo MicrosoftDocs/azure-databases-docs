@@ -53,11 +53,13 @@ The parameter `replicate_wild_ignore_table` creates a replication filter for tab
 - Binary log files on the source server shouldn't be purged before the replica applies those changes. If the source is Azure Database for MySQL Flexible Server, refer to how to configure binlog_expire_logs_seconds for [Flexible Server](./concepts-server-parameters.md#binlog_expire_logs_seconds) or [Single server](../concepts-server-parameters.md#binlog_expire_logs_seconds)
 - If the source server has SSL enabled, ensure the SSL CA certificate provided for the domain has been included in the `mysql.az_replication_change_master` stored procedure. Refer to the following [examples](./how-to-data-in-replication.md#link-source-and-replica-servers-to-start-data-in-replication) and the `master_ssl_ca` parameter.
 - Ensure that the machine hosting the source server allows both inbound and outbound traffic on port 3306.
-- With **public access**, ensure that the source server has a public IP address, that DNS is publicly accessible, or that the source server has a fully qualified domain name (FQDN). 
+- With **public access only**, ensure that the primary server FQDN resolves successfully to a public IP address via Azure DNS, or explicitly use the public IP address when configuring replication on the replica server. 
 
-- With **private endpoint**, ensure that public access is enabled on the data-in replica server. If public access is disabled for a server using a private endpoint, the server will lose outbound network capability, preventing the replica server from establishing a connection to the source server.
+- With **public acces and private endpoint**, the replica server still connects to the source server over the public access route. Therefore, all prerequisites for public access–only scenarios must also be met.
+
+- With **private endpoint only (public access disabled), Data- in replication is not supported**. In this configuration, the replica server loses outbound network connectivity, preventing it from establishing a connection to the primary server.  The private endpoint is only for incoming connections.
   
-- With **private access** (VNet Integration), ensure that the source server name can be resolved and is accessible from the VNet where the Azure Database for MySQL Flexible Server instance is running. (For more details, visit [Name resolution for resources in Azure virtual networks](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)).
+- With **private access** (VNet Integration), ensure that the primary server name can be resolved and is accessible from the VNet where the Azure Database for MySQL Flexible Server instance is running. (For more details, visit [Name resolution for resources in Azure virtual networks](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)).
 
 
 ### Generated Invisible Primary Key
