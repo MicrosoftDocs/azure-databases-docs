@@ -8,7 +8,7 @@
       href: configure-maintain/overview-postgres-choose-server-options.md
     - name: Versioning policy
       href: configure-maintain/concepts-version-policy.md
-      displayName: version, postgresql
+- name: Release notes
 - name: Compute and Storage
   items: 
     - name: Compute
