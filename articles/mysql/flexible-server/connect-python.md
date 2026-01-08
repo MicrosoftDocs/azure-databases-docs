@@ -3,8 +3,8 @@ title: "Quickstart: Connect Using Python"
 description: This quickstart provides several Python code samples you can use to connect and query data from Azure Database for MySQL - Flexible Server.
 author: VandhanaMehta
 ms.author: vamehta
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -33,8 +33,8 @@ This article assumes that you're familiar with developing using Python, but you'
 
 ## Prepare your client workstation
 
-- If you created your flexible server with *Private access (VNet Integration)*, you will need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
-- If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md).
+- If you created your flexible server with *Private access (virtual network integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
+- If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](security-how-to-manage-firewall-cli.md).
 
 ## Install Python and the MySQL connector
 
@@ -85,7 +85,7 @@ For each code example in this article:
 1. To run the code, open a command prompt or `bash` shell and change directory into your project folder, for example `cd pythonmysql`. Type the `python` command followed by the file name, for example `python createtable.py`, and press Enter.
 
    > [!NOTE]  
-   > On Windows, if *python.exe* is not found, you might need to add the Python path into your PATH environment variable, or provide the full path to *python.exe*, for example `C:\python27\python.exe createtable.py`.
+   > On Windows, if *python.exe* isn't found, you might need to add the Python path into your PATH environment variable, or provide the full path to *python.exe*, for example `C:\python27\python.exe createtable.py`.
 
 ### Create a table and insert data
 
@@ -93,7 +93,7 @@ Use the following code to connect to the server and database, create a table, an
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```cmd
+```console
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -152,7 +152,7 @@ The code imports the mysql.connector library, and uses the [connect()](https://d
 
 The code reads the data rows using the [fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) method, keeps the result set in a collection row, and uses a `for` iterator to loop over the rows.
 
-```cmd
+```console
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -202,7 +202,7 @@ Use the following code to connect and update the data by using an **UPDATE** SQL
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```cmd
+```console
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -247,7 +247,7 @@ Use the following code to connect and remove data by using a **DELETE** SQL stat
 
 The code imports the mysql.connector library, and uses the [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) function to connect to flexible server using the [arguments](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html) in the config collection. The code uses a cursor on the connection, and the [cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) method executes the SQL query against the MySQL database.
 
-```cmd
+```console
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -288,7 +288,7 @@ else:
 
 ## Related content
 
-- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md)
 - [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
-- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](security-how-to-manage-firewall-portal.md)
 - [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)
