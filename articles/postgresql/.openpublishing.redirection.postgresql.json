@@ -3872,7 +3872,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/overview.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/overview",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-overview",
             "redirect_document_id": true
         },
         {
@@ -3882,7 +3882,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/quickstart-github-copilot",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
             "redirect_document_id": true
         },
     ]

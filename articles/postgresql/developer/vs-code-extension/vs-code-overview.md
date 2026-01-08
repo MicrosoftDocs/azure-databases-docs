@@ -90,6 +90,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](quickstart-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](quickstart-github-copilot.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

@@ -348,4 +348,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL](quickstart-create-server.md)
+- [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md)

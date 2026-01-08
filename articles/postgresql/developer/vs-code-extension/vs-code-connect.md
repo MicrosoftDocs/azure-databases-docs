@@ -120,7 +120,7 @@ Write prompts like the following example to receive detailed insights and sugges
 @pgsql tell me about the tables in the HR schema
 ```
 
-For more information, see [Configure GitHub Copilot](quickstart-github-copilot.md).
+For more information, see [Configure GitHub Copilot](vs-code-github-copilot.md).
 
 ## Connect to Azure Database for PostgreSQL with Visual Studio Code
 
@@ -196,6 +196,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code?](overview.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](quickstart-github-copilot.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

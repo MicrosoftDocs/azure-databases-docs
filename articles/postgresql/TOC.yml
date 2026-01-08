@@ -26,7 +26,7 @@
     - name: Create a server
       items:
         - name: Portal, CLI, ARM template
-          href: configure-maintain/create-server.md
+          href: configure-maintain/quickstart-create-server.md
     - name: Connect and query
       items:
         - name: Connect in virtual network

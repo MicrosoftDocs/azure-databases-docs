@@ -162,6 +162,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code?](overview.md)
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](quickstart-connect.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
