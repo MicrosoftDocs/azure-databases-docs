@@ -236,7 +236,7 @@
         href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
       - name: Reject private endpoint connections
         href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-  - name: Private access (VNET Integration)
+  - name: Private access (virtual network Integration)
     items:
       - name: Change private DNS zone
         href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
@@ -344,7 +344,7 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships and permissions
+            - name: Migration of roles, ownerships, and permissions
               href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
@@ -392,7 +392,7 @@
               href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
         - name: Best practices
           href: migrate/best-practices-oracle-to-postgresql.md
-        - name: Pre-migration checklist
+        - name: Premigration checklist
           href: migrate/best-practices-oracle-to-postgresql-checklist.md
         - name: Migrate with Ora2Pg
           href: migrate/how-to-migrate-oracle-ora2pg.md
@@ -510,12 +510,40 @@
       href: scale/how-to-scale-storage-performance.md
     - name: Configure storage autogrow
       href: scale/how-to-auto-grow-storage.md
-- name: Artifical intelligence
+- name: Artificial intelligence
   items:
-  - name: Azure AI
+- name: Generative AI
+  items:
+  - name: Semantic search
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Vector indexing (pg_diskann)
+      href: extensions/how-to-use-pgdiskann.md
+    - name: Vector indexing (pgvector)
+      href: extensions/how-to-use-pgvector.md
+    - name: Optimize performance when using pgvector
+      href: extensions/how-to-optimize-performance-pgvector.md
+  - name: Semantic Operators in SQL
+    href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+  - name: Build with AI Frameworks
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-frameworks.md
+    - name: Build with LangChain
+      href: azure-ai/generative-ai-develop-with-langchain.md
+  - name: Graph database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: azure-ai/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: azure-ai/generative-ai-age-performance.md
+  - name: Integrations
     items:
     - name: Overview
       href: azure-ai/generative-ai-azure-overview.md
+    - name: Microsoft Foundry
+      href: azure-ai/generative-ai-foundry-integration.md
     - name: Azure OpenAI
       href: azure-ai/generative-ai-azure-openai.md
     - name: Azure Cognitive Services
@@ -524,50 +552,12 @@
       href: azure-ai/generative-ai-azure-machine-learning.md
     - name: Enable Managed Identity
       href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-    - name: Introducing Semantic Operators
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-    - name: AI Agents
-      href: azure-ai/generative-ai-agents.md
-    - name: Microsoft Foundry Integration
-      href: azure-ai/generative-ai-foundry-integration.md
-    - name: Vector Databases
-      items:
-        - name: Using vector databases in Postgres
-          href: azure-ai/generative-ai-vector-databases.md
-        - name: AI Frameworks
-          items:
-            - name: Overview
-              href: azure-ai/generative-ai-frameworks.md
-            - name: Develop with LangChain
-              href: azure-ai/generative-ai-develop-with-langchain.md
-        - name: Semantic Search
-          href: azure-ai/generative-ai-semantic-search.md
-        - name: Recommendation System
-          href: azure-ai/generative-ai-recommendation-system.md
-        - name: Integrate Azure AI capabilities
-          href: integration/how-to-integrate-azure-ai.md
-    - name: Graph database
-      items:
-        - name: Overview Apache AGE for PostgreSQL
-          href: azure-ai/generative-ai-age-overview.md
-        - name: Performance Best Practices for Apache AGE
-          href: azure-ai/generative-ai-age-performance.md
-  - name: In-database Embeddings (azure_local_ai)
-    items:
-    - name: Overview
-      href: extensions/azure-local-ai.md
-    - name: Vector indexing (pg_diskann)
-      items:
-        - name: Overview
-          href: extensions/how-to-use-pgdiskann.md
-        - name: Vector similarity search (pgvector)
-          items:
-            - name: Basics of pgvector
-              href: extensions/how-to-use-pgvector.md
-              displayName: vector databases
-            - name: Optimize performance when using pgvector
-              href: extensions/how-to-optimize-performance-pgvector.md
-              displayName: vector databases
+  - name: AI Agents
+    href: azure-ai/generative-ai-agents.md
+  - name: Recommendation System
+    href: azure-ai/generative-ai-recommendation-system.md
+  - name: In-database Embeddings
+    href: extensions/azure-local-ai.md
 - name: Extensions
   items:
     - name: Overview
