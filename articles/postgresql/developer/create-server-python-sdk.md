@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create With Azure Libraries (SDK) for Python"
+title: "Quickstart: Create with Azure Libraries (SDK) for Python"
 description: In this Quickstart, learn how to create an Azure Database for PostgreSQL flexible server instance using Azure libraries (SDK) for Python.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/29/2025
+ms.date: 01/08/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.custom:
@@ -12,28 +12,30 @@ ms.custom:
   - references_regions
 ---
 
-# Quickstart: Use Azure libraries (SDK) for Python to manage an Azure Database for PostgreSQL
+# Manage Azure Database for PostgreSQL with Azure SDK for Python
 
-In this quickstart, you'll learn how to use the Azure Python SDK to interact with an Azure Database for PostgreSQL flexible server instance.
+In this quickstart, you learn how to use the Azure Python SDK to interact with an Azure Database for PostgreSQL flexible server instance.
 
-Azure Database for PostgreSQL is a managed service for running, managing, and scaling highly available PostgreSQL databases in the cloud. You can use Python SDK to provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
+Azure Database for PostgreSQL is a managed service for running, managing, and scaling highly available PostgreSQL databases in the cloud. You can use the Python SDK to provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
 
 You can perform the following operations with this library:
 
-1. Creating a PostgreSQL flexible server instance
-2. Managing Databases
-3. Configuring Firewall Rules
-4. Scaling Operations
-5. Back up and Restore
+- Create a PostgreSQL flexible server instance
+- Manage databases
+- Configure firewall rules
+- Perform scaling operations
+- Back up and restore
 
 This guide helps you explore the basic functionalities of this SDK, including creating a flexible server instance, reviewing the created server, creating a database, and deleting the instance.
 
 ## Prerequisites
 
 ### Account with active subscription
-An Azure account with an active subscription [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+
+An Azure account with an active subscription. [Create one for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Install the libraries
+
 Install the following Azure Python libraries.
 
 ```bash
@@ -103,12 +105,12 @@ Replace the following parameters with your data:
 - **admin-username**: The primary administrator username for the server. After the server has been created, you can create additional users.
 - **password**: A password for the primary administrator for the server. It must contain between 8 and 128 characters. Your password must contain characters from three categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
-You can also add values for other parameters like vnet-name, subnet-name, private-DNS-zone, and customize other parameters like storage size, engine version, etc. 
+You can also add values for other parameters like vnet-name, subnet-name, private-DNS-zone, and customize other parameters like storage size, engine version, etc.
 
 > [!NOTE]  
 > The DefaultAzureCredential class tries to authenticate using various methods, such as environment variables, managed identities, or the Azure CLI.  
 > Make sure you have one of these methods set up. You can find more information on authentication in the [Azure SDK documentation](/python/api/overview/azure/identity-readme?view=azure-python#defaultazurecredential&preserve-view=true).
->  
+>
 > Running this code initiates the instance creation process, which might take a few minutes to complete.
 
 ## Review deployed resources
@@ -190,17 +192,18 @@ If you no longer need the Azure Database for PostgreSQL flexible server instance
 Create a 'delete_server.py' file to delete the Azure Databases for PostgreSQL Server instance that was created.
 
 ### [Python](#tab/Python)
+
 ```python
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.postgresqlflexibleservers import PostgreSQLManagementClient
 
 def main():
     client = PostgreSQLManagementClient(
-          credential=DefaultAzureCredential(),
-          subscription_id=<subscription-id>,)
+          credential=DefaultAzureCredential(),
+          subscription_id=<subscription-id>,)
     client.servers.begin_delete(
-          resource_group_name=<rg-name>,
-          server_name=<server-name>,
+          resource_group_name=<rg-name>,
+          server_name=<server-name>,
     ).result()
 if __name__ == "__main__":
     main()
@@ -218,4 +221,4 @@ az postgres flexible-server delete \
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL](quickstart-create-server.md)

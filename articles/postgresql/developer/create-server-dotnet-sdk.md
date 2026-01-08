@@ -1,22 +1,22 @@
 ---
-title: "Quickstart: Create With Azure Libraries (SDK) For.NET"
+title: "Quickstart: Create with Azure Libraries (SDK) For.NET"
 description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure PostgreSQL flexible server instance.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 01/08/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ---
 
-# Quickstart: Use Azure (SDK) libraries in .NET to create, update, and delete an Azure Database for PostgreSQL
+# Create an Azure Database for PostgreSQL instance using .NET SDK
 
 In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure PostgreSQL flexible server instance. Azure Database for PostgreSQL is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
 
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
@@ -25,25 +25,25 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing PostgreSQL flexible server instances in Azure. With this library, you can perform various operations related to PostgreSQL flexible server instances, including but not limited to:
 
 1. **Creating Azure PostgreSQL flexible server instances**:\
-You can create new flexible server instances with specified configurations such as location, SKU, storage, and version.
+   You can create new flexible server instances with specified configurations such as location, SKU, storage, and version.
 
-2. **Updating Azure PostgreSQL flexible server instances**:\
-You can update existing PostgreSQL flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
+1. **Updating Azure PostgreSQL flexible server instances**:\
+   You can update existing PostgreSQL flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
 
-3. **Deleting Azure PostgreSQL flexible server instances**:\
-You can delete existing Azure PostgreSQL flexible server instances.
+1. **Deleting Azure PostgreSQL flexible server instances**:\
+   You can delete existing Azure PostgreSQL flexible server instances.
 
-4. **Retrieving Azure PostgreSQL Information**:\
-You can retrieve details about existing PostgreSQL flexible server instances, including their configurations, status, and other metadata.
+1. **Retrieving Azure PostgreSQL Information**:\
+   You can retrieve details about existing PostgreSQL flexible server instances, including their configurations, status, and other metadata.
 
-5. **Managing Databases**:\
-You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+1. **Managing Databases**:\
+   You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
 
-6. **Managing Firewall Rules**:\
-You can create, update, delete, and retrieve firewall rules for an instance to control access.
+1. **Managing Firewall Rules**:\
+   You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
-7. **Managing Configuration Settings**:\
-You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+1. **Managing Configuration Settings**:\
+   You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
 
 ## Log in to Azure
 
@@ -94,26 +94,26 @@ using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 
 namespace CreatePostgreSqlFlexibleServer
 {
-    class Program
+    class Program
  {
-        static async Task Main(string[] args)
+        static async Task Main(string[] args)
    {
 
-            TokenCredential credential = new DefaultAzureCredential();
-            ArmClient armClient = new ArmClient(credential);
+            TokenCredential credential = new DefaultAzureCredential();
+            ArmClient armClient = new ArmClient(credential);
             // Replace with your subscription ID
-            string subscriptionId = "subscription-id";
+            string subscriptionId = "subscription-id";
             // Replace with your resource group name
-            string resourceGroupName = "resource-group-name";
+            string resourceGroupName = "resource-group-name";
            // Replace with a unique server name
-            string serverName = "server-name";
+            string serverName = "server-name";
            // Replace with your desired region
-            string location = "region-name";
+            string location = "region-name";
           // Create the resource identifier for the resource group
-            ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-            ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
+            ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+            ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
             // Prepare server data
-            var serverData = new PostgreSqlFlexibleServerData(location)
+            var serverData = new PostgreSqlFlexibleServerData(location)
             {
               AdministratorLogin = "admin-username",
               AdministratorLoginPassword = "admin-password",
@@ -121,13 +121,13 @@ namespace CreatePostgreSqlFlexibleServer
               Storage = new PostgreSqlFlexibleServerStorage() { StorageSizeInGB = 128 },
               Sku = new PostgreSqlFlexibleServerSku("Standard_B1ms", PostgreSqlFlexibleServerSkuTier.Burstable),
            };
-            try
+            try
             {
                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
               PostgreSqlFlexibleServerResource serverResource = operation.Value;
               Console.WriteLine($"PostgreSQL flexible server '{serverResource.Data.Name}' created successfully.");
            }
-            catch (Exception ex)
+            catch (Exception ex)
             {
                Console.WriteLine($"An error occurred: {ex.Message}");
             }
@@ -194,36 +194,36 @@ using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 
 namespace UpdateServerData
 {
-    class Program
+    class Program
  {
-        static async Task Main(string[] args)
+        static async Task Main(string[] args)
    {
 
-            TokenCredential credential = new DefaultAzureCredential();
-            ArmClient armClient = new ArmClient(credential);
+            TokenCredential credential = new DefaultAzureCredential();
+            ArmClient armClient = new ArmClient(credential);
             // Replace with your subscription ID
-            string subscriptionId = "subscription-id";
+            string subscriptionId = "subscription-id";
             // Replace with your resource group name
-            string resourceGroupName = "resource-group-name";
+            string resourceGroupName = "resource-group-name";
             // Replace with a unique server name
-            string serverName = "server-name";
+            string serverName = "server-name";
             // Replace with your desired region
-            string location = "region-name";
-            ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
-            ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
+            string location = "region-name";
+            ResourceIdentifier resourceGroupId = ResourceGroupResource.CreateResourceIdentifier(subscriptionId, resourceGroupName);
+            ResourceGroupResource resourceGroup = await armClient.GetResourceGroupResource(resourceGroupId).GetAsync();
             // Prepare server data
-            var serverData = new PostgreSqlFlexibleServerData(location)
+            var serverData = new PostgreSqlFlexibleServerData(location)
            {
               // Updating version from a lower version to a higher version
-              Version = "16", 
+              Version = "16",
            };
             try
              {
                ArmOperation<PostgreSqlFlexibleServerResource> operation = await resourceGroup.GetPostgreSqlFlexibleServers().CreateOrUpdateAsync(Azure.WaitUntil.Completed, serverName, serverData);
-               PostgreSqlFlexibleServerResource serverResource = operation.Value;
+               PostgreSqlFlexibleServerResource serverResource = operation.Value;
                Console.WriteLine($"PostgreSQL flexible server '{serverResource.Data.Name}' updated successfully.");
             }
-            catch (Exception ex)
+            catch (Exception ex)
             {
               Console.WriteLine($"An error occurred: {ex.Message}");
             }
@@ -252,29 +252,29 @@ using Azure.ResourceManager.PostgreSql.FlexibleServers.Models;
 
 namespace DeleteServer
 {
-    class Program
+    class Program
   {
-        static async Task Main(string[] args)
+        static async Task Main(string[] args)
    {
 
             // Replace with your subscription ID
-            string subscriptionId = "subscription-id";
+            string subscriptionId = "subscription-id";
             // Replace with your resource group name
-            string resourceGroupName = "resource-group-name";
+            string resourceGroupName = "resource-group-name";
             // Replace with a unique server name
-            string serverName = "server-name";
-            var credential = new DefaultAzureCredential();
-            var armClient = new ArmClient(credential);
-            try
+            string serverName = "server-name";
+            var credential = new DefaultAzureCredential();
+            var armClient = new ArmClient(credential);
+            try
             {
                 // Get the PostgreSQL flexible server resource
-                var postgresServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
-                var postgresServer = armClient.GetPostgreSqlFlexibleServerResource(postgresServerResourceId);
+                var postgresServerResourceId = PostgreSqlFlexibleServerResource.CreateResourceIdentifier(subscriptionId, resourceGroupName, serverName);
+                var postgresServer = armClient.GetPostgreSqlFlexibleServerResource(postgresServerResourceId);
                 // Delete the server
-                await postgresServer.DeleteAsync(Azure.WaitUntil.Completed);
+                await postgresServer.DeleteAsync(Azure.WaitUntil.Completed);
                 Console.WriteLine($"PostgreSQL flexible server '{serverName}' deleted successfully.");
             }
-            catch (Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
@@ -300,4 +300,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure Database for PostgreSQL](quickstart-create-server.md)
+- [Quickstart: Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md)
