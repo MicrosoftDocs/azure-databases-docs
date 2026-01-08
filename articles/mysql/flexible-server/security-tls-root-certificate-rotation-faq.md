@@ -3,12 +3,13 @@ title: Frequently Asked Questions (FAQ) for Certificate Rotation for Azure Datab
 description: Common asked questions about the root certificate rotation that affects Azure Database for MySQL.
 author: shih-che
 ms.author: shihche
-ms.reviewer: talawren, maghan
-ms.date: 08/07/2025
+ms.reviewer: talawren, maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: concept-article
 ms.custom:
+  - horz-security
   - sfi-image-nochange
 ---
 
@@ -76,7 +77,7 @@ If you're using a client that abstracts the connection string away, review the c
 
 ## Can I use a server-side query to verify if I'm using SSL?
 
-To verify if you're using an SSL connection to connect to the server, see [Verify the TLS/SSL connection](/azure/mysql/flexible-server/how-to-connect-tls-ssl#verify-the-tlsssl-connection).
+To verify if you're using an SSL connection to connect to the server, see [Verify the TLS/SSL connection](security-tls-how-to-connect.md#verify-the-tls-connection).
 
 ## What if I have more questions?
 
@@ -84,4 +85,6 @@ If you still have questions, you can get answers from community experts in [Micr
 
 ## Related content
 
-- [Connect to Azure Database for MySQL with encrypted connections](how-to-connect-tls-ssl.md)
+- [Transport Layer Security (TLS) in Azure Database for MySQL](security-tls.md)
+- [Root certificate rotation for Azure Database for MySQL](security-tls-root-certificate-rotation.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md)

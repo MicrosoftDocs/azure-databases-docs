@@ -79,11 +79,11 @@ In this article, you'll use the Azure portal to create an Azure Database for MyS
      Azure Database for MySQL Flexible Server provides two ways to connect:
 
     - Public access (allowed IP addresses)
-    - Private access (VNet Integration)
+    - Private access (virtual network integration)
 
     With public access, access to your server is limited to allowed IP addresses that you include in a firewall rule. This method prevents external applications and tools from connecting to the server and any databases on the server, unless you create a rule to open the firewall for a specific IP address or range.
 
-    With private access (VNet Integration), access to your server is limited to your virtual network. For more information about connectivity methods, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
+    With private access (virtual network integration), access to your server is limited to your virtual network. For more information about connectivity methods, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
 
     For the purposes of this tutorial, enable public access to connect to the server.
 
@@ -93,14 +93,14 @@ In this article, you'll use the Azure portal to create an Azure Database for MyS
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/networking.png" alt-text="Screenshot that shows the networking options to be chosen, and highlights the add current client IP address button." lightbox="media/how-to-deploy-on-azure-free-account/networking.png":::
 
     > [!NOTE]  
-    > You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** during server creation, you can't change to **Private access (VNet Integration)** after the server is created. We highly recommend that you create your server with private access to help secure access to your server via VNet Integration. For more information about private access, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
+    > You can't change the connectivity method after you create the server. For example, if you select **Public access (allowed IP addresses)** during server creation, you can't change to **Private access (virtual network integration)** after the server is created. We highly recommend that you create your server with private access to help secure access to your server via virtual network integration. For more information about private access, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
 
-1. To review your an Azure Database for MySQL Flexible Server configuration, select **Review + create**.
+1. To review your Azure Database for MySQL Flexible Server configuration, select **Review + create**.
 
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-and-create.png" alt-text="Screenshot that shows the Review + create blade." lightbox="media/how-to-deploy-on-azure-free-account/review-and-create.png":::
 
     > [!IMPORTANT]  
-    > While creating the an Azure Database for MySQL Flexible Server instance from your Azure free account, you still see an **Estimated cost per month** in the **Compute + Storage : Cost Summary** blade and **Review + Create** tab. But, as long as you're using your Azure free account, and your free service usage is within monthly limits, you won't be charged for the service. To view usage information, see the following [Monitor and track free services usage](#monitor-and-track-free-services-usage) section. We're currently working to improve the **Cost Summary** experience for free services.
+    > While creating an Azure Database for MySQL Flexible Server instance from your Azure free account, you still see an **Estimated cost per month** in the **Compute + Storage : Cost Summary** blade and **Review + Create** tab. But, as long as you're using your Azure free account, and your free service usage is within monthly limits, you won't be charged for the service. To view usage information, see the following [Monitor and track free services usage](#monitor-and-track-free-services-usage) section. We're currently working to improve the **Cost Summary** experience for free services.
 
 1. Select **Create** to provision the server.
 
@@ -118,7 +118,7 @@ Now that you've now created an Azure Database for MySQL Flexible Server instance
 
 - [mysql.exe](quickstart-create-server-portal.md)
 - [Use MySQL Workbench with Azure Database for MySQL - Flexible Server](connect-workbench.md)
-- [Quickstart: Connect with Azure Database for MySQL - Flexible Server by using Azure CLI](connect-azure-cli.md)
+- [Quickstart: Connect to Azure Database for MySQL - Flexible Server by using Azure CLI](connect-azure-cli.md)
 - [Use PHP with Azure Database for MySQL - Flexible Server](connect-php.md)
 - [Use Java and JDBC with Azure Database for MySQL - Flexible Server](connect-java.md)
 - [Quickstart: Use Python to connect and query data in Azure Database for MySQL - Flexible Server](connect-python.md)
@@ -136,7 +136,7 @@ You're not charged for Azure Database for MySQL Flexible Server services include
 
 1. Locate the meters related to **Azure Database for MySQL - Flexible Server** to track usage.
 
-    :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-tracking.png" alt-text="Screenshot that shows the View and track usage information blade on Azure Portal for all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-tracking.png":::
+    :::image type="content" source="media/how-to-deploy-on-azure-free-account/free-services-tracking.png" alt-text="Screenshot that shows the View and track usage information blade on Azure portal for all free services." lightbox="media/how-to-deploy-on-azure-free-account/free-services-tracking.png":::
 
     | Meter | Description | Monthly Limit |
     | --- | --- | --- |

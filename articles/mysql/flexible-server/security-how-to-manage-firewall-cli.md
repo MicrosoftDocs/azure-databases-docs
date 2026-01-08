@@ -3,13 +3,14 @@ title: Manage Firewall Rules - Azure CLI
 description: Create and manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI command line.
 author: SudheeshGH
 ms.author: sunaray
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/07/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
+  - horz-security
 ms.devlang: azurecli
 ---
 
@@ -20,7 +21,7 @@ Azure Database for MySQL flexible server supports two mutually exclusive network
 - Public access (allowed IP addresses)
 - Private access (VNet Integration)
 
-In this article, we focus on the creation of an Azure Database for MySQL flexible server instance with **Public access (allowed IP addresses)** using Azure CLI. This article provides an overview of Azure CLI commands you can use to create, update, delete, list, and show firewall rules after creating a server. With *Public access (allowed IP addresses)*, the connections to the Azure Database for MySQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in the firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](./concepts-networking-public.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
+In this article, we focus on the creation of an Azure Database for MySQL flexible server instance with **Public access (allowed IP addresses)** using Azure CLI. This article provides an overview of Azure CLI commands you can use to create, update, delete, list, and show firewall rules after creating a server. With *Public access (allowed IP addresses)*, the connections to the Azure Database for MySQL flexible server instance are restricted to allowed IP addresses only. The client IP addresses need to be allowed in the firewall rules. To learn more about it, refer to [Public access (allowed IP addresses)](concepts-networking-public.md#public-access-allowed-ip-addresses). The firewall rules can be defined at the time of server creation (recommended) but can be added later as well.
 
 ## Launch Azure Cloud Shell
 
@@ -28,7 +29,7 @@ The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell
 
 To open the Cloud Shell, just select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
-If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Find the version with `az --version`. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 ## Prerequisites
 
@@ -52,42 +53,42 @@ Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-serve
 
 - Create an Azure Database for MySQL flexible server instance with public access and add the client IP address to have access to the server.
 
-    ```azurecli-interactive
-    az mysql flexible-server create --public-access <my_client_ip>
-    ```
+  ```azurecli-interactive
+  az mysql flexible-server create --public-access <my_client_ip>
+  ```
 
 - Create an Azure Database for MySQL flexible server instance with public access and add the range of IP address to have access to this server.
 
-    ```azurecli-interactive
-    az mysql flexible-server create --public-access <start_ip_address-end_ip_address>
-    ```
+  ```azurecli-interactive
+  az mysql flexible-server create --public-access <start_ip_address-end_ip_address>
+  ```
 
 - Create an Azure Database for MySQL flexible server instance with public access and allow applications from Azure IP addresses to connect to your server.
 
-    ```azurecli-interactive
-    az mysql flexible-server create --public-access 0.0.0.0
-    ```
+  ```azurecli-interactive
+  az mysql flexible-server create --public-access 0.0.0.0
+  ```
 
-    > [!IMPORTANT]  
-    > This option configures the firewall to allow public access from Azure services and resources within Azure to this server, including connections from the subscriptions of other customers. When selecting this option, ensure your login and user permissions limit access to only authorized users.
+  > [!IMPORTANT]  
+  > This option configures the firewall to allow public access from Azure services and resources within Azure to this server, including connections from the subscriptions of other customers. When selecting this option, ensure your login and user permissions limit access to only authorized users.
 
 - Create an Azure Database for MySQL flexible server instance with public access and allow all IP address.
 
-    ```azurecli-interactive
-    az mysql flexible-server create --public-access all
-    ```
+  ```azurecli-interactive
+  az mysql flexible-server create --public-access all
+  ```
 
-    > [!NOTE]  
-    > The above command creates a firewall rule with start IP address=0.0.0.0, end IP address=255.255.255.255 and no IP addresses are blocked. Any host on the Internet can access this server. It is strongly recommended to use this rule only temporarily and only on test servers that do not contain sensitive data.
+  > [!WARNING]  
+  > This command creates a firewall rule with start IP address=0.0.0.0, end IP address=255.255.255.255 and no IP addresses are blocked. Any host on the Internet can access this server. We recommend using this rule only temporarily and only on test servers that don't contain sensitive data.
 
 - Create an Azure Database for MySQL flexible server instance with public access and with no IP address.
 
-    ```azurecli-interactive
-    az mysql flexible-server create --public-access none
-    ```
+  ```azurecli-interactive
+  az mysql flexible-server create --public-access none
+  ```
 
-    > [!NOTE]  
-    > We don't recommend creating a server without any firewall rules. If you don't add any firewall rules, no client can connect to the server.
+  > [!NOTE]  
+  > We don't recommend creating a server without any firewall rules. If you don't add any firewall rules, no client can connect to the server.
 
 ## Create and manage firewall rule after server creation
 
@@ -127,7 +128,7 @@ az mysql flexible-server firewall-rule create --resource-group testGroup --name 
 > [!IMPORTANT]  
 > This option configures the firewall to allow public access from Azure services and resources within Azure to this server, including connections from the subscriptions of other customers. When selecting this option, make sure your login and user permissions limit access to only authorized users.
 
-Upon success, each create command output lists the details of the firewall rule you've created in JSON format (by default). If there's a failure, the result shows an error message text instead.
+Upon success, each create command output lists the details of the firewall rule created in JSON format (by default). If there's a failure, the result shows an error message text instead.
 
 ### List firewall rules
 
@@ -151,7 +152,7 @@ Use the `az mysql flexible-server firewall-rule update` command to update an exi
 az mysql flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
 
-Upon success, the command output lists the details of the firewall rule you've updated in JSON format (by default). If there's a failure, the output shows an error message text instead.
+Upon success, the command output lists the details of the firewall rule updated in JSON format (by default). If there's a failure, the output shows an error message text instead.
 
 > [!NOTE]  
 > If the firewall rule doesn't exist, the update command creates the rule.
@@ -164,7 +165,7 @@ Use the `az mysql flexible-server firewall-rule show` command to show the existi
 az mysql flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1
 ```
 
-Upon success, the command output lists the details of the firewall rule you've specified in JSON format (by default). If there's a failure, the output shows an error message text instead.
+Upon success, the command output lists the details of the firewall rule specified in JSON format (by default). If there's a failure, the output shows an error message text instead.
 
 ### Delete a firewall rule
 
@@ -179,5 +180,5 @@ Upon success, there's no output. Upon failure, an error message text is displaye
 ## Related content
 
 - [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
-- [Azure Database for MySQL flexible server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
-- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)
+- [Azure Database for MySQL flexible server firewall rules](concepts-networking-public.md#public-access-allowed-ip-addresses)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](security-how-to-manage-firewall-portal.md)
