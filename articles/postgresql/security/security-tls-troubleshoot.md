@@ -3,14 +3,16 @@ title: Validate the Client Configuration and Troubleshoot Connection Failures
 description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure Database for PostgreSQL flexible server instances.
 author: techlake
 ms.author: hganten
-ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: troubleshooting
 ---
 
 # Troubleshoot TLS connection failures
+
+TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure Database for PostgreSQL. This article guides you through validating your client configuration and troubleshooting potential connectivity issues.
 
 [!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
 
@@ -30,11 +32,16 @@ Make sure your client's root certificate store contains either the minimum requi
 To determine your current TLS connection status, load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if TLS is being used. The function returns `t` if the connection uses TLS. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server instance's TLS usage by process, client, and application by using the following query:
 
 ```sql
-SELECT datname as "Database name", usename as "User name", ssl, client_addr, application_name, backend_type
-   FROM pg_stat_ssl
-   JOIN pg_stat_activity
-   ON pg_stat_ssl.pid = pg_stat_activity.pid
-   ORDER BY ssl;
+SELECT datname AS "Database name",
+       usename AS "User name",
+       ssl,
+       client_addr,
+       application_name,
+       backend_type
+FROM pg_stat_ssl
+     INNER JOIN pg_stat_activity
+         ON pg_stat_ssl.pid = pg_stat_activity.pid
+ORDER BY ssl;
 ```
 
 ### Test TLS connection by using OpenSSL
@@ -112,5 +119,5 @@ If you experience issues even after following these steps, contact Microsoft sup
 
 ## Related content
 
-- [TLS in Azure Database for PostgreSQL](security-tls.md)
-- [How to connect to Azure Database for PostgreSQLusing TLS](security-tls-how-to-connect.md)
+- [Transport Layer Security (TLS) in Azure Database for PostgreSQL](security-tls.md)
+- [Connect clients with TLS security to your database](security-tls-how-to-connect.md)
