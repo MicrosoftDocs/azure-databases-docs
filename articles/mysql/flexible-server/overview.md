@@ -3,8 +3,8 @@ title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
 author: deepthiprasad
 ms.author: deprasa
-ms.reviewer: maghan
-ms.date: 02/20/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -36,7 +36,7 @@ These capabilities require no extra cost and almost no administration. They allo
 
 Azure Database for MySQL - Flexible Server also supports reserved instances. If your production workloads have predictable compute capacity requirements, using reserved instances can help you save costs.
 
-For the latest updates on Azure Database for MySQL - Flexible Server, refer to [What's new in Azure Database for MySQL](whats-new.md).
+For the latest updates on Azure Database for MySQL - Flexible Server, refer to [What's new in Azure Database for MySQL?](whats-new.md)
 
 :::image type="content" source="media/overview/1-azure-db-for-mysql-conceptual-diagram.png" alt-text="Diagram that shows the relationship between Azure database services and MySQL.":::
 
@@ -77,13 +77,13 @@ There are two high-availability architectural models:
 
 - **Zone-redundant high availability**: This option offers complete isolation and requires you to configure infrastructure redundancy across multiple availability zones. It provides the highest level of availability against any infrastructure failure in an availability zone and where latency across availability zones is acceptable.
 
-  Zone-redundant HA is available in a [subset of Azure regions](#azure-regions) that support multiple availability zones and zone-redundant premium file shares.
+  Zone-redundant HA is available in a [subset of Azure regions](#azure-regions) that support multiple availability zones and zone-redundant premium file shares.
 
 - **Local-redundant high availability**: This option offers infrastructure redundancy with lower network latency because both primary and standby servers are in the same availability zone. It provides high availability without requiring you to configure application redundancy across zones.
 
-  Local-redundant HA is available in [all Azure regions](#azure-regions) where you can create Azure Database for MySQL - Flexible Server instances.
+  Local-redundant HA is available in [all Azure regions](#azure-regions) where you can create Azure Database for MySQL - Flexible Server instances.
 
-For more information, see [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+For more information, see [High-availability in Azure Database for MySQL](concepts-high-availability.md).
 
 ## Automated patching with a managed maintenance window
 
@@ -91,7 +91,7 @@ The service performs automated patching of the underlying hardware, operating sy
 
 You can configure the patching schedule to be system managed or define your own custom schedule. During the maintenance schedule, the patch is applied, and the server might require a restart. With a custom schedule, you can make your patching cycle predictable and choose a maintenance window that has a minimum impact on the business. The service follows a monthly release schedule for continuous integration and release.
 
-For more information, see [Scheduled maintenance in Azure Database for MySQL - Flexible Server](concepts-maintenance.md).
+For more information, see [Scheduled maintenance in Azure Database for MySQL](concepts-maintenance.md).
 
 ## Automatic backups
 
@@ -99,7 +99,7 @@ The Azure Database for MySQL - Flexible Server service automatically creates ser
 
 You can configure a retention period of 1 to 35 days. The default is seven days. All backups are encrypted through AES 256-bit encryption.
 
-For more information, see [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
+For more information, see [Backup and restore in Azure Database for MySQL](concepts-backup-restore.md).
 
 ## Network isolation
 
@@ -131,8 +131,8 @@ MySQL is a popular database engine for running internet-scale web and mobile app
 
 The application is typically developed in Java or PHP and is either:
 
-- Migrated to run on [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) or [Azure App Service](/azure/app-service/overview)
-- Containerized to run on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
+- Migrated to run on [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) or [Azure App Service](/azure/app-service/overview)
+- Containerized to run on [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)
 
 Using a virtual machine scale set with App Service or AKS as the underlying infrastructure simplifies application scaling by instantaneously provisioning new virtual machines and replicating the stateless components of applications to cater to the requests. But often, the database ends up being a bottleneck as a centralized stateful component.
 
@@ -140,7 +140,7 @@ The *read replica* feature allows you to replicate data from an Azure Database f
 
 Replicas are updated asynchronously via the MySQL engine's native [binary log (binlog) file position-based replication technology](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). You can use a load-balancer proxy solution like [ProxySQL](https://techcommunity.microsoft.com/blog/adformysql/load-balance-read-replicas-using-proxysql-in-azure-database-for-mysql/880042) to seamlessly scale out your application workload to read replicas without any application refactoring cost.
 
-For more information, see [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
+For more information, see [Read replicas in Azure Database for MySQL](concepts-read-replicas.md).
 
 ## Hybrid or multicloud data synchronization with data-in replication
 
@@ -164,9 +164,9 @@ For more information, see [Server concepts in Azure Database for MySQL - Flexibl
 
 Azure Database for MySQL - Flexible Server uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. Data (including backups) and temporary files created while you run queries are encrypted.
 
-The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system managed (default). You can also use customer-managed keys stored in an Azure key vault or a managed hardware security module for data encryption at rest. For more information, see [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md).
+The service uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system managed (default). You can also use customer-managed keys stored in an Azure key vault or a managed hardware security module for data encryption at rest. For more information, see [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md).
 
-Azure Database for MySQL - Flexible Server encrypts data in motion with Transport Layer Security (TLS) enforced by default. Azure Database for MySQL - Flexible Server supports encrypted connections that use TLS 1.2. All incoming connections that use TLS 1.0 and TLS 1.1 are denied. You can turn off TLS enforcement by setting the `require_secure_transport` server parameter and then setting the minimum `tls_version` value for your server. For more information, see [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md).
+Azure Database for MySQL - Flexible Server encrypts data in motion with Transport Layer Security (TLS) enforced by default. Azure Database for MySQL - Flexible Server supports encrypted connections that use TLS 1.2. All incoming connections that use TLS 1.0 and TLS 1.1 are denied. You can turn off TLS enforcement by setting the `require_secure_transport` server parameter and then setting the minimum `tls_version` value for your server. For more information, see [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md).
 
 Azure Database for MySQL - Flexible Server allows full private access to the servers through [virtual network](/azure/virtual-network/virtual-networks-overview) integration. Servers in a virtual network can be reached and connected only through private IP addresses. With virtual network integration, public access is denied and servers can't be reached through public endpoints. For more information, see [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md).
 
@@ -178,7 +178,7 @@ Azure Database for MySQL - Flexible Server has built-in performance monitoring a
 
 You can configure alerts on the metrics. Azure Database for MySQL - Flexible Server exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
 
-In Azure Database for MySQL - Flexible Server, you can visualize slow query and audit log data by using Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Azure Database for MySQL - Flexible Server provides three workbook templates: Server Overview, [Tutorial: Configure audit logs by using Azure Database for MySQL - Flexible Server](tutorial-configure-audit.md), and [Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server](tutorial-query-performance-insights.md).
+In Azure Database for MySQL - Flexible Server, you can visualize slow query and audit log data by using Azure Monitor workbooks. With workbooks, you get a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Azure Database for MySQL - Flexible Server provides three workbook templates: Server Overview, [Tutorial: Configure audit logs by using Azure Database for MySQL - Flexible Server](tutorial-configure-audit.md), and [Tutorial: Query Performance Insight for Azure Database for MySQL](tutorial-query-performance-insights.md).
 
 The Query Performance Insight workbook helps you spend less time troubleshooting database performance by providing such information as:
 
@@ -266,7 +266,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | UAE North | Yes | Yes | Yes | Yes |
 | UK South | Yes | Yes | Yes | Yes |
 | UK West | Yes | Yes | No | Yes |
-| USGov Virginia | Yes | Yes |Yes| No |
+| USGov Virginia | Yes | Yes | Yes | No |
 | USGov Arizona | Yes | Yes | No | Yes |
 | USGov Texas | Yes | Yes | No | Yes |
 | West Central US | Yes | Yes | No | Yes |
@@ -286,6 +286,6 @@ For any questions or suggestions that you might have about working with Azure Da
 
 - [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md)
 - [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
-- [Manage Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for MySQL using the Azure portal](how-to-manage-server-portal.md)
 - [Quickstart: Use Python to connect and query data in Azure Database for MySQL - Flexible Server](connect-python.md)
 - [Use PHP with Azure Database for MySQL - Flexible Server](connect-php.md)

@@ -3,18 +3,18 @@ title: "Quickstart: Connect Using C#"
 description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from Azure Database for MySQL - Flexible Server."
 author: VandhanaMehta
 ms.author: vamehta
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-- mvc
-- devx-track-csharp
-- mode-other
-- devx-track-dotnet
-- sfi-image-nochange
-- sfi-ropc-nochange
+  - mvc
+  - devx-track-csharp
+  - mode-other
+  - devx-track-dotnet
+  - sfi-image-nochange
+  - sfi-ropc-nochange
 ms.devlang: csharp
 ---
 
@@ -30,10 +30,12 @@ For this quickstart you need:
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
-- Create an Azure Database for MySQL Flexible Server instance by using the [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) <br/> or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md) if you do not have one.
-- Based on whether you are using public or private access, complete **ONE** of the actions below to enable connectivity.
-- [Create a database and non-admin user](../single-server/how-to-create-users.md)
-- Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
+- Create an Azure Database for MySQL Flexible Server instance by using:
+  - [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md), or
+  - [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
+- Based on whether you're using public or private access, complete *one* of the following actions to enable connectivity.
+  - [Create users in Azure Database for MySQL](security-how-to-create-users.md)
+  - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
 
 [Having issues? Let us know](https://github.com/MicrosoftDocs/azure-docs/issues)
 
@@ -53,10 +55,14 @@ dotnet add package MySqlConnector
 Get the connection information needed to connect to the Azure Database for MySQL Flexible Server instance. You need the fully qualified server name and login credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
+
 1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
+
 1. Select the server name.
+
 1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
-:::image type="content" source="media/connect-csharp/server-overview-name-login.png" alt-text="Screenshot of Azure Database for MySQL Flexible Server instance name." lightbox="media/connect-csharp/server-overview-name-login.png":::
+
+   :::image type="content" source="media/connect-csharp/server-overview-name-login.png" alt-text="Screenshot of Azure Database for MySQL Flexible Server instance name." lightbox="media/connect-csharp/server-overview-name-login.png":::
 
 ## Step 1: Connect and insert data
 
@@ -317,5 +323,5 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-server-portal.md)
+- [Manage Azure Database for MySQL using the Azure portal](how-to-manage-server-portal.md)
 - [Manage Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-server-cli.md)
