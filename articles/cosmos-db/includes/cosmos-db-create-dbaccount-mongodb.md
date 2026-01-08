@@ -1,5 +1,6 @@
 ---
 ms.custom: sfi-image-nochange
+ms.topic: include
 ---
 
 1. In a new browser window, sign in to the [Azure portal](https://portal.azure.com/).
