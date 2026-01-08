@@ -6,7 +6,7 @@
       href: overview.md
     - name: Self-hosted vs. managed service
       href: configure-maintain/overview-postgres-choose-server-options.md
-    - name: Versioning policy
+    - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
 - name: Release notes
