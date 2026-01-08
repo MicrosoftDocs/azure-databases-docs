@@ -155,4 +155,4 @@ az group delete -n demoresourcegroup
 
 ## Related content
 
-- [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-article-custom-domain)
+- [Map an existing custom DNS name to Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain)
