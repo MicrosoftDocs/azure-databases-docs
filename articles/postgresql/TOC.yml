@@ -26,15 +26,7 @@
     - name: Create a server
       items:
         - name: Portal, CLI, ARM template
-          href: configure-maintain/quickstart-create-server.md
-        - name: Azure SDK for Python
-          href: configure-maintain/quickstart-create-server-python-sdk.md
-        - name: Azure SDK for .NET
-          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
-        - name: Azure SDK for Java
-          href: configure-maintain/quickstart-create-server-java-sdk.md
-        - name: Bicep
-          href: configure-maintain/quickstart-create-server-bicep.md
+          href: configure-maintain/create-server.md
     - name: Connect and query
       items:
         - name: Connect in virtual network
@@ -53,24 +45,32 @@
           href: connectivity/connect-php.md
 - name: Developer experience
   items:
-    - name: PostgreSQL extension for Visual Studio Code
-      items:
-        - name: Overview
-          href: extensions/vs-code-extension/overview.md
-        - name: QuickStart
-          href: extensions/vs-code-extension/quickstart-connect.md
-        - name: Configure GitHub Copilot
-          href: extensions/vs-code-extension/quickstart-github-copilot.md
-    - name: Oracle to PostgreSQL schema conversion
-      href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-    - name: Application development
-      items:
-        - name: Deploy Django app on AKS
-          href: configure-maintain/tutorial-django-aks-database.md
-        - name: Create web app in virtual network
-          href: configure-maintain/tutorial-webapp-server-vnet.md
-        - name: Deploy Django app on App Service
-          href: /azure/app-service/tutorial-python-postgresql-app
+  - name: Create a server
+    items:
+    - name: Azure SDK for Python
+      href: developer/create-server-python-sdk.md
+    - name: Azure SDK for .NET
+      href: developer/create-server-dotnet-sdk.md
+    - name: Azure SDK for Java
+      href: developer/create-server-java-sdk.md
+    - name: Bicep
+      href: developer/create-server-bicep.md
+  - name: PostgreSQL extension for Visual Studio Code
+    items:
+      - name: Overview
+        href: extensions/vs-code-extension/overview.md
+      - name: QuickStart
+        href: extensions/vs-code-extension/quickstart-connect.md
+      - name: Configure GitHub Copilot
+        href: extensions/vs-code-extension/quickstart-github-copilot.md
+  - name: Application development
+    items:
+      - name: Deploy Django app on AKS
+        href: developer/django-aks-database.md
+      - name: Create web app in virtual network
+        href: developer/webapp-server-vnet.md
+      - name: Deploy Django app on App Service
+        href: /azure/app-service/tutorial-python-postgresql-app
 - name: Generative AI
   items:
   - name: Overview
@@ -543,6 +543,8 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
+      - name: Oracle to PostgreSQL schema conversion
+        href: migrate/oracle-schema-conversions/schema-conversions-overview.md
       - name: Migrating Oracle To Azure Database for PostgreSQL
         href: migrate/concepts-oracle-migration.md
       - name: Migration stages

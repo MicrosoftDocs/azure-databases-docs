@@ -4,17 +4,17 @@ description: Learn how to use the GitHub Copilot integration in the PostgreSQL e
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:
   - ce-skilling-ai-copilot
-ai-usage: ai-assisted
 ms.update-cycle: 180-days
 ms.custom:
   - copilot
   - vs-code
   - ignite-2025
+ai-usage: ai-assisted
 ---
 
 # Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code
@@ -67,7 +67,7 @@ Try a prompt like:
 @pgsql tell me about the tables in the HR schema
 ```
 
-:::image type="content" source="media/quickstart-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
+:::image type="content" source="media/vs-code-github-copilot/pgsql-hr-schema-response.png" alt-text="Screenshot of Copilot Chat response showing a detailed breakdown of tables and columns in the HR schema of a PostgreSQL database.":::
 
 1. Copilot responds with a detailed description of your schema's tables.
 

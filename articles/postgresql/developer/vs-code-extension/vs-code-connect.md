@@ -4,7 +4,7 @@ description: Quickstart guide for the PostgreSQL extension for Visual Studio Cod
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 01/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: quickstart
@@ -66,7 +66,7 @@ The extension supports two authentication methods:
 - **Username/Password**: Enter your database credentials directly into the connection fields.
 - **Microsoft Entra ID Authentication**: Add your Microsoft Entra ID account for Azure-hosted databases.
 
-:::image type="content" source="media/quickstart-connect/connect-server-1.png" alt-text="Screenshot of PostgreSQL extension for Visual Studio Code connection dialog.":::
+:::image type="content" source="media/vs-code-connect/connect-server-1.png" alt-text="Screenshot of PostgreSQL extension for Visual Studio Code connection dialog.":::
 
 ## Test and save the connection
 
@@ -136,7 +136,7 @@ The "Connect with Visual Studio Code" option in the Azure portal simplifies conn
 - Select the prominent **Connect with Visual Studio Code** button on the **Overview** page.
 - A side pane appears that lists the requirements to connect by using Visual Studio Code.
 
-:::image type="content" source="media/quickstart-connect/portal-connect-1.png" alt-text="Screenshot of Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code button.":::
+:::image type="content" source="media/vs-code-connect/portal-connect-1.png" alt-text="Screenshot of Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code button.":::
 
 ### Confirm requirements
 
@@ -144,7 +144,7 @@ The "Connect with Visual Studio Code" option in the Azure portal simplifies conn
 - If needed, download Visual Studio Code and the extension by using the links in the side pane.
 - Optionally, fill out connection parameters such as the default database name, authentication method, and connection pooling.
 
-  :::image type="content" source="media/quickstart-connect/portal-connect-2.png" alt-text="Screenshot of Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code panel. The open in Visual Studio Code button is highlighted.":::
+  :::image type="content" source="media/vs-code-connect/portal-connect-2.png" alt-text="Screenshot of Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code panel. The open in Visual Studio Code button is highlighted.":::
 
 ### Open in Visual Studio Code
 
@@ -160,7 +160,7 @@ The "Connect with Visual Studio Code" option in the Azure portal simplifies conn
 
 The connection dialog box in the PostgreSQL extension opens, and the **Server Name** field automatically fills in your server endpoint.
 
-:::image type="content" source="media/quickstart-connect/portal-connect-3.png" alt-text="Screenshot of the PostgreSQL extension for Visual Studio Code Connection Dialog with the server name details prepopulated." lightbox="media/quickstart-connect/portal-connect-3.png":::
+:::image type="content" source="media/vs-code-connect/portal-connect-3.png" alt-text="Screenshot of the PostgreSQL extension for Visual Studio Code Connection Dialog with the server name details prepopulated." lightbox="media/vs-code-connect/portal-connect-3.png":::
 
 ### Provide authentication details
 
