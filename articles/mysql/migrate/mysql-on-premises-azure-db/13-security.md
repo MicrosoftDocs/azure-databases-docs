@@ -1,10 +1,10 @@
 ---
 title: "Migrate MySQL On-Premises to Azure Database for MySQL: Security"
-description: "Moving to a cloud-based service doesn’t mean the entire internet has access to it always."
+description: "Moving to a cloud-based service doesn't mean the entire internet has access to it always."
 author: saikondapalli11
 ms.author: skondapalli
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: migration-guide
 ms.topic: how-to
@@ -24,7 +24,7 @@ Moving to a cloud-based service doesn't mean the entire internet has access to i
 
 ## Authentication
 
-Azure Database for MySQL supports the basic authentication mechanisms for MySQL user connectivity, but also supports [integration with Microsoft Entra ID](../../concepts-azure-ad-authentication.md). This security integration works by issuing tokens that act like passwords during the MySQL login process. [Configuring Active Directory integration](../../howto-configure-sign-in-azure-ad-authentication.md) is incredibly simple to do and supports not only users, but Microsoft Entra groups as well.
+Azure Database for MySQL supports the basic authentication mechanisms for MySQL user connectivity, but also supports [integration with Microsoft Entra ID](../../flexible-server/security-entra-authentication.md). This security integration works by issuing tokens that act like passwords during the MySQL login process. [Configuring Active Directory integration](../../howto-configure-sign-in-azure-ad-authentication.md) is incredibly simple to do and supports not only users, but Microsoft Entra groups as well.
 
 This tight integration allows administrators and applications to take advantage of the enhanced security features of [Azure Identity Protection](/azure/active-directory/identity-protection/overview-identity-protection) to surface any identity issues.
 
@@ -66,30 +66,30 @@ Once users are set up and the data is encrypted at rest, the migration team shou
 
 The frontline of defense for protecting the MySQL instance is to implement [firewall rules](../../concepts-firewall-rules.md). IP addresses can be limited to only valid locations when accessing the instance via internal or external IPs. If the MySQL instance is destined to only serve internal applications, then [restrict public access](../../howto-deny-public-network-access.md).
 
-When moving an application to Azure along with the MySQL workload, it's likely there are been multiple virtual networks setup in a hub and spoke pattern that requires [Virtual Network Peering](/azure/virtual-network/virtual-network-peering-overview) to be configured.
+When moving an application to Azure along with the MySQL workload, it's likely there are multiple virtual networks configured in a hub and spoke pattern that requires [Virtual Network Peering](/azure/virtual-network/virtual-network-peering-overview) to be configured.
 
 ## Private link
 
 To limit access to the Azure Database for MySQL to internal Azure resources, enable [Private Link](../../concepts-data-access-security-private-link.md). Private Link ensures that the MySQL instance is assigned a private IP rather than a public IP address.
 
 > [!NOTE]  
-> There are many other [basic Azure Networking considerations](../../concepts-data-access-and-security-vnet.md) that must be taken into account that are not the focus of this guide.
+> There are many other [basic Azure Networking considerations](../../concepts-data-access-and-security-vnet.md) that must be taken into account that aren't the focus of this guide.
 
 Review a set of potential [security baseline](/azure/mysql/security-baseline) tasks that can be implemented across all Azure resources. Not all of the items described on the reference link apply to the specific data workloads or Azure resources.
 
 ## Security checklist
 
-  - Use Microsoft Entra authentication where possible.
+- Use Microsoft Entra authentication where possible.
 
-  - Enable Advanced Thread Protection.
+- Enable Advanced Thread Protection.
 
-  - Enable all auditing features.
+- Enable all auditing features.
 
-  - Consider a Bring-Your-Own-Key (BYOK) strategy.
+- Consider a Bring-Your-Own-Key (BYOK) strategy.
 
-  - Implement firewall rules.
+- Implement firewall rules.
 
-  - Utilize private endpoints for workloads that don't travel over the Internet.
+- Utilize private endpoints for workloads that don't travel over the Internet.
 
 ## Next step
 

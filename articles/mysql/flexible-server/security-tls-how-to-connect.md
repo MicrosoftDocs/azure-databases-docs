@@ -3,12 +3,13 @@ title: Encrypted Connectivity Using TLS/SSL
 description: Instructions and information on how to connect using TLS/SSL in Azure Database for MySQL - Flexible Server.
 author: aditivgupta
 ms.author: adig
-ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
-ms.subservice: flexible-server
+ms.subservice: security
 ms.topic: how-to
 ms.custom:
+  - horz-security
   - sfi-image-nochange
 ms.devlang: csharp
 ---
@@ -16,29 +17,6 @@ ms.devlang: csharp
 # Connect to Azure Database for MySQL - Flexible Server with encrypted connections
 
 [!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-Azure Database for MySQL Flexible Server supports connecting your client applications to the Azure Database for MySQL Flexible Server instance using Secure Sockets Layer (SSL) with Transport layer security(TLS) encryption. TLS is an industry standard protocol that ensures encrypted network connections between your database server and client applications, allowing you to adhere to compliance requirements.
-
-Azure Database for MySQL Flexible Server supports encrypted connections using Transport Layer Security (TLS 1.2) by default and all incoming connections with TLS 1.0 and TLS 1.1 are denied by default. The encrypted connection enforcement or TLS version configuration on your Flexible Server can be changed as discussed in this article.
-
-Following are the different configurations of SSL and TLS settings you can have for your Azure Database for MySQL Flexible Server instance:
-
-> [!IMPORTANT]  
-> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), we previously planned to fully deprecate TLS 1.0 and 1.1 by September 2024. However, due to dependencies identified by some customers, we have decided to extend the timeline.
-> - Starting on August 31, 2025, we will begin the forced upgrade for all servers still using TLS 1.0 or 1.1. After this date, any connections relying on TLS 1.0 or 1.1 may stop working at any time. To avoid potential service disruptions, we strongly recommend that customers complete their migration to TLS 1.2 before August 31, 2025.
-> - Beginning in September 2024, new servers will no longer be permitted to use TLS 1.0 or 1.1, and existing servers will not be allowed to downgrade to these versions.
-> 
-> We strongly recommend that customers update their applications to support TLS 1.2 as soon as possible to avoid service disruptions.
-
-| Scenario | Server parameter settings | Description |
-| --- | --- | --- |
-| Disable SSL enforcement | require_secure_transport = OFF | If your legacy application doesn't support encrypted connections to Azure Database for MySQL Flexible Server, you can disable enforcement of encrypted connections to your Azure Database for MySQL Flexible Server instance by setting require_secure_transport=OFF. |
-| Enforce SSL with TLS version < 1.2 (Will be deprecated in September 2024)| require_secure_transport = ON and tls_version = TLS 1.0 or TLS 1.1 | If your legacy application supports encrypted connections but requires TLS version < 1.2, you can enable encrypted connections, but configure your Azure Database for MySQL Flexible Server instance to allow connections with the TLS version (1.0 or 1.1) supported by your application. Supported only with Azure Database for MySQL Flexible Server version v5.7 |
-| Enforce SSL with TLS version = 1.2(Default configuration) | require_secure_transport = ON and tls_version = TLS 1.2 | This is the recommended and default configuration for Azure Database for MySQL Flexible Server. |
-| Enforce SSL with TLS version = 1.3 | require_secure_transport = ON and tls_version = TLS 1.3 | This is useful and recommended for new applications development. Supported only with Azure Database for MySQL Flexible Server version v8.0 |
-
-> [!NOTE]  
-> Changes to SSL Cipher on Azure Database for MySQL Flexible Server is not supported. FIPS cipher suites is enforced by default when tls_version is set to TLS version 1.2 . For TLS versions other than version 1.2, SSL Cipher is set to default settings which comes with MySQL community installation.
 
 In this article, you learn how to:
 
@@ -51,24 +29,47 @@ In this article, you learn how to:
 - Verify encryption status for your connection
 - Connect to your Azure Database for MySQL Flexible Server instance with encrypted connections using various application frameworks
 
-## Disable SSL enforcement on your Azure Database for MySQL Flexible Server instance
+## Overview of TLS/SSL support in Azure Database for MySQL Flexible Server
+
+Azure Database for MySQL Flexible Server supports connecting your client applications to the Azure Database for MySQL Flexible Server instance using Secure Sockets Layer (SSL) with Transport layer security(TLS) encryption. TLS is an industry standard protocol that ensures encrypted network connections between your database server and client applications, allowing you to adhere to compliance requirements.
+
+Azure Database for MySQL Flexible Server supports encrypted connections using Transport Layer Security (TLS 1.2) by default and all incoming connections with TLS 1.0 and TLS 1.1 are denied by default. The encrypted connection enforcement or TLS version configuration on your Flexible Server can be changed as discussed in this article.
+
+Following are the different configurations of SSL and TLS settings you can have for your Azure Database for MySQL Flexible Server instance:
+
+> [!IMPORTANT]  
+> According to [Removal of Support for the TLS 1.0 and TLS 1.1 Protocols](https://dev.mysql.com/doc/refman/8.0/en/encrypted-connection-protocols-ciphers.html#encrypted-connection-deprecated-protocols), we previously planned to fully deprecate TLS 1.0 and 1.1 by September 2024. However, due to dependencies identified by some customers, we have decided to extend the timeline.
+>
+> Starting on August 31, 2025, we began the forced upgrade for all servers still using TLS 1.0 or 1.1. After this date, any connections relying on TLS 1.0 or 1.1 might stop working at any time. To avoid potential service disruptions, we strongly recommend that customers complete their migration to TLS 1.2 before August 31, 2025.
+
+| Scenario | Server parameter settings | Description |
+| --- | --- | --- |
+| Disable TLS enforcement | `require_secure_transport = OFF` | If your legacy application doesn't support encrypted connections, you can disable enforcement of encrypted connections. |
+| Enforce TLS with TLS version < 1.2 (deprecated in September 2024) | `require_secure_transport = ON` and `tls_version = TLS 1.0` or `TLS 1.1` | No longer available! |
+| Enforce TLS with TLS version = 1.2(Default configuration) | `require_secure_transport = ON` and `tls_version = TLS 1.2` | Default configuration. |
+| Enforce TLS with TLS version = 1.3 | `require_secure_transport = ON` and `tls_version = TLS 1.3` | Recommended configuration; supported only with Azure Database for MySQL Flexible Server version v8.0 and later. |
+
+> [!NOTE]  
+> Changes to TLS Cipher aren't supported. FIPS compliant cipher suites are enforced by default when the `tls_version` is set to `TLS 1.2` or `TLS 1.3`.
+
+## Disable TLS enforcement on your Azure Database for MySQL Flexible Server instance
 
 If your client application doesn't support encrypted connections, you need to disable encrypted connections enforcement on your Azure Database for MySQL Flexible Server instance. To disable encrypted connections enforcement, you need to set require_secure_transport server parameter to OFF as shown in the screenshot, and save the server parameter configuration for it to take effect. require_secure_transport is a **dynamic server parameter** which takes effect immediately and doesn't require server restart to take effect.
 
 > :::image type="content" source="media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="Screenshot showing how to disable SSL with Azure Database for MySQL Flexible Server." lightbox="media/how-to-connect-tls-ssl/disable-ssl.png":::
 
-### Connect using mysql command-line client with SSL disabled
+### Connect using mysql command-line client with TLS disabled
 
 The following example shows how to connect to your server using the mysql command-line interface. Use the `--ssl-mode=DISABLED` connection string setting to disable TLS/SSL connection from mysql client. Replace values with your actual server name and password.
 
-```bash
+```console
  mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED
 ```
 
 > [!IMPORTANT]  
-> Setting the require_secure_transport to OFF doesn't mean encrypted connections aren't supported on the server side. If you set require_secure_transport to OFF on the Azure Database for MySQL Flexible Server instance, but if the client connects with the encrypted connection, it still is accepted. The following connection using mysql client to an Azure Database for MySQL Flexible Server instance configured with require_secure_transport=OFF also works as shown below.
+> If you set `require_secure_transport` to `OFF` on the Azure Database for MySQL Flexible Server instance, but if the client connects with the encrypted connection, it still is accepted.
 
-```bash
+```console
  mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=REQUIRED
 ```
 
@@ -94,29 +95,26 @@ mysql> show global variables like '%require_secure_transport%';
 | 1 row in set (0.02 sec) |
 ```
 
-In summary, require_secure_transport=OFF setting relaxes the enforcement of encrypted connections on Azure Database for MySQL Flexible Server and allows unencrypted connections to the server from client in addition to the encrypted connections.
+In summary, `require_secure_transport=OFF` setting relaxes the enforcement of encrypted connections; therefore, the server accepts unencrypted connections in addition to encrypted connections.
 
-## Enforce SSL with TLS version
+## Enforce the TLS version
 
-To set TLS versions on your Azure Database for MySQL Flexible Server instance, you need to set *tls_version- server parameter. The default setting for TLS protocol is TLS 1.2. If your application supports connections to MySQL server with SSL, but require any protocol other than TLS 1.2, you require to set the TLS versions in [server parameter](how-to-configure-server-parameters-portal.md). *tls_version- is a **static server parameter** which requires a server restart for the parameter to take effect. Following are the Supported protocols for the available versions of Azure Database for MySQL Flexible Server.
+To set TLS versions on your Azure Database for MySQL Flexible Server instance, you need to set `tls_version` server parameter. The default setting for TLS protocol is TLS 1.2. If your application supports connections to MySQL server with TLS, but require any protocol other than TLS 1.2, set the TLS versions in [server parameter](how-to-configure-server-parameters-portal.md).
 
-| Azure Database for MySQL Flexible Server version | Supported Values of tls_version | Default Setting |
-| --- | --- | --- |
-| MySQL 5.7 | TLS 1.0, TLS 1.1(Will be deprecated in September 2024) TLS 1.2 | TLS 1.2 |
-| MySQL 8.0 | TLS 1.2, TLS 1.3 | TLS 1.2 |
+`tls_version` is a **static server parameter** which requires a server restart for the parameter to take effect.
 
 ## Connect using mysql command-line client with TLS/SSL
 
 ### Download the public SSL certificate
 
-To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](./concepts-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
+To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](security-tls-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
 
 > [!NOTE]  
 > You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
-> 
+>
 > You must download [DigiCert Global Root certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for your servers in Azure Mooncake.
 
-Save the certificate file to your preferred location. For example, this tutorial uses `c:\ssl` or `\var\www\html\bin` on your local environment or the client environment where your application is hosted. This allows applications to connect securely to the database over SSL.
+Save the certificate file to your preferred location. For example, this tutorial uses `c:\ssl` or `\var\www\html\bin` on your local environment or the client environment where your application is hosted.
 
 If you created your Azure Database for MySQL Flexible Server instance with *Private access (VNet Integration)*, you need to connect to your server from a resource within the same VNet as your server. You can create a virtual machine and add it to the VNet created with your Azure Database for MySQL Flexible Server instance.
 
@@ -134,19 +132,19 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl-mode=REQUI
 
 > [!NOTE]  
 > Confirm that the value passed to `--ssl-ca` matches the file path for the certificate you saved.
-> If you are connecting to the Azure Database for MySQL- Flexible with SSL and are using an option to perform full verification (sslmode=VERTIFY_IDENTITY) with certificate subject name, use \<servername\>.mysql.database.azure.com in your connection string.
+> If you're connecting with full verification (`sslmode=VERTIFY_IDENTITY`), use `\<servername\>.mysql.database.azure.com` in your connection string.
 
-If you try to connect to your server with unencrypted connections, you'll see error stating connections using insecure transport are prohibited similar to one below:
+If you try to connect to your server with unencrypted connections, you see error stating connections using insecure transport are prohibited:
 
 ```output
 ERROR 3159 (HY000): Connections using insecure transport are prohibited while --require_secure_transport=ON.
 ```
 
-## Verify the TLS/SSL connection
+## Verify the TLS connection
 
-Execute the mysql **status** command to verify that you've connected to your MySQL server using TLS/SSL:
+Execute the mysql `status` command to verify that you're connected using TLS:
 
-```dos
+```console
 mysql> status
 ```
 
@@ -162,7 +160,7 @@ mysql> SHOW GLOBAL VARIABLES LIKE 'tls_version';
 
 **How to find which TLS protocol are being used by my clients to connect to the server?**
 
-You can run the below command and look at tls_version for the session to identify which TLS version is used to connect.
+To verify the TLS version used in this connection, execute the SQL query:
 
 ```sql
 SELECT sbt.variable_value AS tls_version,  t2.variable_value AS cipher,
@@ -175,7 +173,7 @@ WHERE sbt.variable_name = 'Ssl_version' and t2.variable_name = 'Ssl_cipher' ORDE
 
 ## Connect to your Azure Database for MySQL Flexible Server instance with encrypted connections using various application frameworks
 
-Connection strings that are pre-defined in the "Connection Strings" page available for your server in the Azure portal include the required parameters for common languages to connect to your database server using TLS/SSL. The TLS/SSL parameter varies based on the connector. For example, "useSSL=true", "sslmode=required", or "ssl_verify_cert=true" and other variations.
+Connection strings that are predefined in the "Connection Strings" page available for your server in the Azure portal include the required parameters for common languages to connect to your database server using TLS/SSL. The TLS/SSL parameter varies based on the connector. For example, "useSSL=true", "sslmode=required", or "ssl_verify_cert=true" and other variations.
 
 To establish an encrypted connection to your Azure Database for MySQL Flexible Server instance over TLS/SSL from your application, refer to the following code samples:
 
@@ -385,5 +383,4 @@ conn.connect(function(err) {
 - [Use PHP with Azure Database for MySQL - Flexible Server](connect-php.md)
 - [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md)
 - [networking in Azure Database for MySQL - Flexible Server](concepts-networking.md)
-- [Azure Database for MySQL - Flexible Server firewall rules](./concepts-networking-public.md#public-access-allowed-ip-addresses)
-
+- [Azure Database for MySQL - Flexible Server firewall rules](concepts-networking-public.md#public-access-allowed-ip-addresses)

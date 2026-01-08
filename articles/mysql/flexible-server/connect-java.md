@@ -3,18 +3,18 @@ title: "Quickstart: Use Java and JDBC"
 description: Learn how to use Java and JDBC with an Azure Database for MySQL - Flexible Server database.
 author: SudheeshGH
 ms.author: sunaray
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-- mvc
-- devcenter
-- devx-track-azurecli
-- mode-api
-- devx-track-extended-java
-- sfi-ropc-nochange
+  - mvc
+  - devcenter
+  - devx-track-azurecli
+  - mode-api
+  - devx-track-extended-java
+  - sfi-ropc-nochange
 ms.devlang: java
 ---
 
@@ -24,19 +24,22 @@ This article demonstrates creating a sample application that uses Java and [JDBC
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
-In this article, we'll include two authentication methods: Microsoft Entra authentication and MySQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the MySQL authentication.
+In this article, we include two authentication methods: Microsoft Entra authentication and MySQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the MySQL authentication.
 
 Microsoft Entra authentication is a mechanism for connecting to Azure Database for MySQL Flexible Server using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
 
-MySQL authentication uses accounts stored in MySQL. If you choose to use passwords as credentials for the accounts, these credentials will be stored in the `user` table. Because these passwords are stored in MySQL, you'll need to manage the rotation of the passwords by yourself.
+MySQL authentication uses accounts stored in MySQL. If you choose to use passwords as credentials for the accounts, these credentials are stored in the `user` table. Because these passwords are stored in MySQL, you need to manage the rotation of the passwords by yourself.
 
 ## Prerequisites
 
 - An Azure account with an active subscription.
-[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). We recommend Azure Cloud Shell so you'll be logged in automatically and have access to all the tools you'll need.
+  [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). We recommend Azure Cloud Shell so you're logged in automatically and have access to all the tools you need.
+
 - A supported [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), version 8 (included in Azure Cloud Shell).
+
 - The [Apache Maven](https://maven.apache.org/) build tool.
 
 ## Prepare the working environment
@@ -58,7 +61,7 @@ export CURRENT_USER_OBJECTID=$(az ad signed-in-user show --query id -o tsv)
 Replace the placeholders with the following values, which are used throughout this article:
 
 - `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL Flexible Server instance, which should be unique across Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region you'll use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
+- `<YOUR_AZURE_REGION>`: The Azure region you use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
 - `<YOUR_USER_ASSIGNED_MANAGED_IDENTITY_NAME>`: The name of your user assigned managed identity server, which should be unique across Azure.
 
 ### [Password](#tab/password)
@@ -76,7 +79,7 @@ export AZ_MYSQL_NON_ADMIN_PASSWORD=<YOUR_MYSQL_NON_ADMIN_PASSWORD>
 Replace the placeholders with the following values, which are used throughout this article:
 
 - `<YOUR_DATABASE_NAME>`: The name of your Azure Database for MySQL Flexible Server instance, which should be unique across Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region you'll use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
+- `<YOUR_AZURE_REGION>`: The Azure region you use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
 - `<YOUR_MYSQL_ADMIN_PASSWORD>` and `<YOUR_MYSQL_NON_ADMIN_PASSWORD>`: The password of your MySQL database server. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
 
 ---
@@ -127,7 +130,7 @@ az identity create \
 ```
 
 > [!IMPORTANT]  
-> After creating the user-assigned identity, ask a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role to grant the following permissions for this user-assigned managed identity: `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.ALL`. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role. For more information, see the [Permissions](./concepts-azure-ad-authentication.md#permissions) section of [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md).
+> After creating the user-assigned identity, ask a user with at least the [Privileged Role Administrator](/azure/active-directory/roles/permissions-reference#privileged-role-administrator) role to grant the following permissions for this user-assigned managed identity: `User.Read.All`, `GroupMember.Read.All`, and `Application.Read.ALL`. Alternatively, give the user-assigned managed identity the [Directory Readers](/azure/active-directory/roles/permissions-reference#directory-readers) role. For more information, see the [Permissions](security-entra-authentication.md#permissions) section of [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md).
 
 Run the following command to assign the identity to Azure Database for MySQL Flexible Server for creating Microsoft Entra admin:
 
@@ -150,7 +153,7 @@ az mysql flexible-server ad-admin create \
 ```
 
 > [!IMPORTANT]  
-> When setting the administrator, a new user is added to the Azure Database for MySQL Flexible Server instance with full administrator permissions. Only one Microsoft Entra admin can be created per Azure Database for MySQL Flexible Server instance and selection of another one will overwrite the existing Microsoft Entra admin configured for the server.
+> When setting the administrator, a new user is added to the Azure Database for MySQL Flexible Server instance with full administrator permissions. Only one Microsoft Entra admin per server instance is available. The selection of another one overwrites the existing Microsoft Entra admin.
 
 This command creates a small Azure Database for MySQL Flexible Server instance and sets the Active Directory admin to the signed-in user.
 
@@ -177,17 +180,17 @@ The Azure Database for MySQL Flexible Server instance that you created has an em
 
 ### Configure a firewall rule for your Azure Database for MySQL Flexible Server instance
 
-Azure Database for MySQL Flexible Server instances are secured by default. They have a firewall that doesn't allow any incoming connection.
+The secure-by-default firewall is configured to deny any incoming connection.
 
 You can skip this step if you're using Bash because the `flexible-server create` command already detected your local IP address and set it on MySQL server.
 
-If you're connecting to your Azure Database for MySQL Flexible Server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall. Obtain the IP address of your host machine by running the following command in WSL:
+If you're connecting to your server instance from Windows Subsystem for Linux (WSL) on a Windows computer then you need to add the WSL host ID to your firewall. Obtain the IP address of your host machine by running this command in WSL:
 
 ```bash
 sudo cat /etc/resolv.conf
 ```
 
-Copy the IP address following the term `nameserver`, then use the following command to set an environment variable for the WSL IP Address:
+Copy the IP address following the term `nameserver`, then use this command to set an environment variable for the WSL IP Address:
 
 ```bash
 AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
@@ -207,7 +210,7 @@ az mysql flexible-server firewall-rule create \
 
 ### Configure a MySQL database
 
-Create a new database called `demo` by using the following command:
+Create a new database called `demo` by using this command:
 
 ```azurecli-interactive
 az mysql flexible-server db create \
@@ -222,7 +225,7 @@ az mysql flexible-server db create \
 Next, create a non-admin user and grant all permissions on the `demo` database to it.
 
 > [!NOTE]  
-> You can read more detailed information about creating MySQL users in [Create users in Azure Database for MySQL](../single-server/how-to-create-users.md).
+> You can read more detailed information about creating MySQL users in [Create users in Azure Database for MySQL](security-how-to-create-users.md).
 
 #### [Passwordless connection (Recommended)](#tab/passwordless)
 
@@ -359,7 +362,7 @@ This file is an [Apache Maven](https://maven.apache.org/) file that configures y
 
 ### Prepare a configuration file to connect to Azure Database for MySQL
 
-Run the following script in the project root directory to create a *src/main/resources/database.properties* file and add configuration details:
+Create a *src/main/resources/database.properties* file with these scripts in the project root directory:
 
 #### [Passwordless connection (Recommended)](#tab/passwordless)
 
@@ -373,7 +376,7 @@ EOF
 ```
 
 > [!NOTE]  
-> If you are using MysqlConnectionPoolDataSource class as the datasource in your application, please remove "defaultAuthenticationPlugin=com.azure.identity.extensions.jdbc.mysql.AzureMysqlAuthenticationPlugin" in the url.
+> If you're using MysqlConnectionPoolDataSource class as the datasource in your application remove "defaultAuthenticationPlugin=com.azure.identity.extensions.jdbc.mysql.AzureMysqlAuthenticationPlugin" in the url.
 
 ```powershell
 mkdir -p src/main/resources && touch src/main/resources/database.properties
@@ -399,26 +402,32 @@ EOF
 ---
 
 > [!NOTE]  
-> The configuration property `url` has `?serverTimezone=UTC` appended to tell the JDBC driver to use the UTC date format (or Coordinated Universal Time) when connecting to the database. Otherwise, your Java server would not use the same date format as the database, which would result in an error.
+> The configuration property `url` has `?serverTimezone=UTC` appended to tell the JDBC driver to use the UTC date format (or Coordinated Universal Time) when connecting to the database. Otherwise, your Java server wouldn't use the same date format as the database, which would result in an error.
 
 ### Create a SQL file to generate the database schema
 
-You'll use a *src/main/resources/schema.sql* file in order to create a database schema. Create that file, with the following content:
+Create a database schema using a *src/main/resources/schema.sql* file.
 
 ```sql
 DROP TABLE IF EXISTS todo;
-CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
+CREATE TABLE todo
+(
+    id SERIAL PRIMARY KEY,
+    description VARCHAR (255),
+    details VARCHAR (4096),
+    done BOOLEAN
+);
 ```
 
 ## Code the application
 
 ### Connect to the database
 
-Next, add the Java code that will use JDBC to store and retrieve data from your MySQL server.
+Next, add the Java code that uses JDBC to store and retrieve data from your MySQL server.
 
 Create a *src/main/java/DemoApplication.java* file and add the following contents:
 
-```cmd
+```console
 package com.example.demo;
 
 import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
@@ -470,9 +479,9 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code will use the *database.properties* and the *schema.sql* files that you created earlier, in order to connect to the Azure Database for MySQL Flexible Server instance and create a schema that will store your data.
+This Java code uses the *database.properties* and the *schema.sql* files that you created earlier to connect to the database, and create a schema.
 
-In this file, you can see that we commented methods to insert, read, update and delete data: you'll code those methods in the rest of this article, and you'll be able to uncomment them one after each other.
+In this file, you can see that we commented methods to insert, read, update, and delete data: you code those methods in the rest of this article, and you can uncomment them one after each other.
 
 > [!NOTE]  
 > The database credentials are stored in the *user* and *password* properties of the *database.properties* file. Those credentials are used when executing `DriverManager.getConnection(properties.getProperty("url"), properties);`, as the properties file is passed as an argument.
@@ -570,7 +579,7 @@ This class is a domain model mapped on the `todo` table that you created when ex
 
 In the *src/main/java/DemoApplication.java* file, after the main method, add the following method to insert data into the database:
 
-```cmd
+```console
 private static void insertData(Todo todo, Connection connection) throws SQLException {
     log.info("Insert data");
     PreparedStatement insertStatement = connection
@@ -610,7 +619,7 @@ Next, read the data previously inserted to validate that your code works correct
 
 In the *src/main/java/DemoApplication.java* file, after the `insertData` method, add the following method to read data from the database:
 
-```cmd
+```console
 private static Todo readData(Connection connection) throws SQLException {
     log.info("Read data");
     PreparedStatement readStatement = connection.prepareStatement("SELECT * FROM todo;");
@@ -658,7 +667,7 @@ Next, update the data you previously inserted.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `readData` method, add the following method to update data inside the database:
 
-```cmd
+```console
 private static void updateData(Todo todo, Connection connection) throws SQLException {
     log.info("Update data");
     PreparedStatement updateStatement = connection
@@ -704,7 +713,7 @@ Finally, delete the data you previously inserted.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `updateData` method, add the following method to delete data inside the database:
 
-```cmd
+```console
 private static void deleteData(Todo todo, Connection connection) throws SQLException {
     log.info("Delete data");
     PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM todo WHERE id = ?;");
