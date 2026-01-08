@@ -636,128 +636,6 @@
           href: monitor/how-to-enable-intelligent-performance-portal.md
         - name: Azure CLI
           href: monitor/how-to-enable-intelligent-performance-cli.md
-- name: Server parameters
-  items:
-    - name: Overview
-      href: server-parameters/concepts-server-parameters.md
-    - name: Autovacuum
-      href: server-parameters/param-autovacuum.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Locale and Formatting
-      href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Other Defaults
-      href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Shared Library Preloading
-      href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Statement Behavior
-      href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
-    - name: Connections and Authentication / Authentication
-      href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
-    - name: Connections and Authentication / Connection Settings
-      href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
-    - name: Connections and Authentication / SSL
-      href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
-    - name: Connections and Authentication / TCP Settings
-      href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
-    - name: Customized Options
-      href: server-parameters/param-customized-options.md?pivots=postgresql-17
-    - name: Developer Options
-      href: server-parameters/param-developer-options.md?pivots=postgresql-17
-    - name: Error Handling
-      href: server-parameters/param-error-handling.md?pivots=postgresql-17
-    - name: File Locations
-      href: server-parameters/param-file-locations.md?pivots=postgresql-17
-    - name: Intelligent tuning
-      href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
-    - name: Lock Management
-      href: server-parameters/param-lock-management.md?pivots=postgresql-17
-    - name: Metrics
-      href: server-parameters/param-metrics.md?pivots=postgresql-17
-    - name: Migration
-      href: server-parameters/param-migration.md?pivots=postgresql-17
-    - name: PgBouncer
-      href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
-    - name: Preset Options
-      href: server-parameters/param-preset-options.md?pivots=postgresql-17
-    - name: Process Title
-      href: server-parameters/param-process-title.md?pivots=postgresql-17
-    - name: Query Tuning / Genetic Query Optimizer
-      href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
-    - name: Query Tuning / Other Planner Options
-      href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
-    - name: Query Tuning / Planner Cost Constants
-      href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
-    - name: Query Tuning / Planner Method Configuration
-      href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
-    - name: Replication / Master Server
-      href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
-    - name: Replication / Primary Server
-      href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
-    - name: Replication / Sending Servers
-      href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
-    - name: Replication / Standby Servers
-      href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
-    - name: Replication / Subscribers
-      href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
-    - name: Reporting and Logging / What to Log
-      href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
-    - name: Reporting and Logging / When to Log
-      href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
-    - name: Reporting and Logging / Where to Log
-      href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
-    - name: Resource Usage / Asynchronous Behavior
-      href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
-    - name: Resource Usage / Background Writer
-      href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
-    - name: Resource Usage / Cost-Based Vacuum Delay
-      href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
-    - name: Resource Usage / Disk
-      href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
-    - name: Resource Usage / Kernel Resources
-      href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
-    - name: Resource Usage / Memory
-      href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
-    - name: Statistics / Cumulative Query and Index Statistics
-      href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
-    - name: Statistics / Monitoring
-      href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
-    - name: Statistics / Query and Index Statistics Collector
-      href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
-    - name: TLS
-      href: server-parameters/param-tls.md?pivots=postgresql-17
-    - name: Version and Platform Compatibility / Other Platforms and Clients
-      href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
-    - name: Version and Platform Compatibility / Previous PostgreSQL Versions
-      href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Archive Recovery
-      href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Archiving
-      href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Checkpoints
-      href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Recovery Target
-      href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Recovery
-      href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Settings
-      href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
-    - name: Use server parameters
-      items:
-        - name: List all server parameters
-          href: server-parameters/how-to-server-parameters-list-all.md
-        - name: List server parameters with modified values
-          href: server-parameters/how-to-server-parameters-list-modified.md
-        - name: List read-write static server parameters
-          href: server-parameters/how-to-server-parameters-list-read-write-static.md
-        - name: List read-write dynamic server parameters
-          href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
-        - name: List read-only server parameters
-          href: server-parameters/how-to-server-parameters-list-read-only.md
-        - name: Set the value of one or more server parameters
-          href: server-parameters/how-to-server-parameters-set-value.md
-        - name: Revert one server parameter to its default
-          href: server-parameters/how-to-server-parameters-revert-one-default.md
-        - name: Revert all server parameters to their default
-          href: server-parameters/how-to-server-parameters-revert-all-default.md
 - name: Samples
   items:
     - name: Azure CLI samples
@@ -836,8 +714,129 @@
     - name: Resource Manager template
       href: /azure/templates/microsoft.dbforpostgresql/allversions
     - name: Azure Policy built-ins
-      displayName: samples, policies, definitions
       href: ./policy-reference.md
+    - name: Server parameters
+      items:
+        - name: Overview
+          href: server-parameters/concepts-server-parameters.md
+        - name: Autovacuum
+          href: server-parameters/param-autovacuum.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Locale and Formatting
+          href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Other Defaults
+          href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Shared Library Preloading
+          href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Statement Behavior
+          href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
+        - name: Connections and Authentication / Authentication
+          href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
+        - name: Connections and Authentication / Connection Settings
+          href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
+        - name: Connections and Authentication / SSL
+          href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
+        - name: Connections and Authentication / TCP Settings
+          href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
+        - name: Customized Options
+          href: server-parameters/param-customized-options.md?pivots=postgresql-17
+        - name: Developer Options
+          href: server-parameters/param-developer-options.md?pivots=postgresql-17
+        - name: Error Handling
+          href: server-parameters/param-error-handling.md?pivots=postgresql-17
+        - name: File Locations
+          href: server-parameters/param-file-locations.md?pivots=postgresql-17
+        - name: Intelligent tuning
+          href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
+        - name: Lock Management
+          href: server-parameters/param-lock-management.md?pivots=postgresql-17
+        - name: Metrics
+          href: server-parameters/param-metrics.md?pivots=postgresql-17
+        - name: Migration
+          href: server-parameters/param-migration.md?pivots=postgresql-17
+        - name: PgBouncer
+          href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
+        - name: Preset Options
+          href: server-parameters/param-preset-options.md?pivots=postgresql-17
+        - name: Process Title
+          href: server-parameters/param-process-title.md?pivots=postgresql-17
+        - name: Query Tuning / Genetic Query Optimizer
+          href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
+        - name: Query Tuning / Other Planner Options
+          href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
+        - name: Query Tuning / Planner Cost Constants
+          href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
+        - name: Query Tuning / Planner Method Configuration
+          href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
+        - name: Replication / Master Server
+          href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
+        - name: Replication / Primary Server
+          href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
+        - name: Replication / Sending Servers
+          href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
+        - name: Replication / Standby Servers
+          href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
+        - name: Replication / Subscribers
+          href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
+        - name: Reporting and Logging / What to Log
+          href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
+        - name: Reporting and Logging / When to Log
+          href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
+        - name: Reporting and Logging / Where to Log
+          href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
+        - name: Resource Usage / Asynchronous Behavior
+          href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
+        - name: Resource Usage / Background Writer
+          href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
+        - name: Resource Usage / Cost-Based Vacuum Delay
+          href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
+        - name: Resource Usage / Disk
+          href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
+        - name: Resource Usage / Kernel Resources
+          href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
+        - name: Resource Usage / Memory
+          href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
+        - name: Statistics / Cumulative Query and Index Statistics
+          href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
+        - name: Statistics / Monitoring
+          href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
+        - name: Statistics / Query and Index Statistics Collector
+          href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
+        - name: TLS
+          href: server-parameters/param-tls.md?pivots=postgresql-17
+        - name: Version and Platform Compatibility / Other Platforms and Clients
+          href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
+        - name: Version and Platform Compatibility / Previous PostgreSQL Versions
+          href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Archive Recovery
+          href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Archiving
+          href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Checkpoints
+          href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Recovery Target
+          href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Recovery
+          href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Settings
+          href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
+        - name: Use server parameters
+          items:
+            - name: List all server parameters
+              href: server-parameters/how-to-server-parameters-list-all.md
+            - name: List server parameters with modified values
+              href: server-parameters/how-to-server-parameters-list-modified.md
+            - name: List read-write static server parameters
+              href: server-parameters/how-to-server-parameters-list-read-write-static.md
+            - name: List read-write dynamic server parameters
+              href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
+            - name: List read-only server parameters
+              href: server-parameters/how-to-server-parameters-list-read-only.md
+            - name: Set the value of one or more server parameters
+              href: server-parameters/how-to-server-parameters-set-value.md
+            - name: Revert one server parameter to its default
+              href: server-parameters/how-to-server-parameters-revert-one-default.md
+            - name: Revert all server parameters to their default
+              href: server-parameters/how-to-server-parameters-revert-all-default.md
 - name: Resources
   items:
     - name: Build your skills with Microsoft Learn training
