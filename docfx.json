@@ -206,63 +206,42 @@
         "articles/documentdb/**/*.md": "abramees"
       },
       "searchScope": {
-        "articles/cosmos-db/**/*": [
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for NoSQL",
-          "NoSQL",
-          "SQL"
-        ],
-        "articles/cosmos-db/mongodb/**/*": [
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for MongoDB",
-          "Mongo",
-          "MongoDB",
-          "MongoDB Query Language",
-          "MQL"
-        ],
-        "articles/cosmos-db/postgresql/**/*": [
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for PostgreSQL",
-          "PostgreSQL"
-        ],
-        "articles/cosmos-db/cassandra/**/*": [
-          "Apache",
-          "Apache Cassandra",
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for Apache Cassandra",
-          "Cassandra",
-          "Cassandra Query Language",
-          "CQL"
-        ],
-        "articles/cosmos-db/gremlin/**/*": [
-          "Apache",
-          "Apache Gremlin",
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for Apache Gremlin",
-          "Gremlin"
-        ],
-        "articles/cosmos-db/table/**/*": [
-          "Azure",
-          "Azure Cosmos DB",
-          "Azure Cosmos DB for Table",
-          "Table"
-        ],
         "articles/documentdb/**/*": [
           "Azure",
           "Azure DocumentDB"
         ],
-        "articles/managed-instance-apache-cassandra/**/*.md": [
+        "articles/cosmos-db/**/*": [
           "Azure",
-          "Azure Managed instance for Apache Cassandra"
+          "Azure Cosmos DB"
         ],
-        "articles/managed-instance-apache-cassandra/**/*.yml": [
+        "articles/cosmos-db/mongodb/**/*": [
           "Azure",
-          "Azure Managed instance for Apache Cassandra"
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for MongoDB"
+        ],
+        "articles/cosmos-db/postgresql/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for PostgreSQL"
+        ],
+        "articles/cosmos-db/cassandra/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Apache Cassandra"
+        ],
+        "articles/cosmos-db/gremlin/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Apache Gremlin"
+        ],
+        "articles/cosmos-db/table/**/*": [
+          "Azure",
+          "Azure Cosmos DB",
+          "Azure Cosmos DB for Table"
+        ],
+        "articles/managed-instance-apache-cassandra/**/*": [
+          "Azure",
+          "Azure Managed Instance for Apache Cassandra"
         ],
         "articles/mariadb/**/*.md": [
           "Azure",
