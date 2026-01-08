@@ -538,7 +538,7 @@
         href: azure-ai/generative-ai-age-overview.md
       - name: Performance Best Practices for Apache AGE
         href: azure-ai/generative-ai-age-performance.md
-    - name: Integrations
+    - name: Integration with Azure AI services
       items:
       - name: Overview
         href: azure-ai/generative-ai-azure-overview.md
