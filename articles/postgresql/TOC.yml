@@ -9,6 +9,8 @@
     - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
+    - name: Try for free
+      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
@@ -19,8 +21,174 @@
       href: release-notes/release-notes-api.md
     - name: CLI release notes
       href: release-notes/release-notes-cli.md
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
+- name: Quickstarts
+  items:
+    - name: Create a server
+      items:
+        - name: Portal, CLI, ARM template
+          href: configure-maintain/quickstart-create-server.md
+        - name: Azure SDK for Python
+          href: configure-maintain/quickstart-create-server-python-sdk.md
+        - name: Azure SDK for .NET
+          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
+        - name: Azure SDK for Java
+          href: configure-maintain/quickstart-create-server-java-sdk.md
+        - name: Bicep
+          href: configure-maintain/quickstart-create-server-bicep.md
+    - name: Connect and query
+      items:
+        - name: Connect in virtual network
+          href: connectivity/quickstart-create-connect-server-vnet.md
+        - name: Azure CLI
+          href: connectivity/connect-azure-cli.md
+        - name: Python
+          href: connectivity/connect-python.md
+        - name: Java
+          href: connectivity/connect-java.md
+        - name: .NET
+          href: connectivity/connect-csharp.md
+        - name: Go
+          href: connectivity/connect-go.md
+        - name: PHP
+          href: connectivity/connect-php.md
+- name: Developer experience
+  items:
+    - name: PostgreSQL extension for Visual Studio Code
+      items:
+        - name: Overview
+          href: extensions/vs-code-extension/overview.md
+        - name: QuickStart
+          href: extensions/vs-code-extension/quickstart-connect.md
+        - name: Configure GitHub Copilot
+          href: extensions/vs-code-extension/quickstart-github-copilot.md
+    - name: Oracle to PostgreSQL schema conversion
+      href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+    - name: Application development
+      items:
+        - name: Deploy Django app on AKS
+          href: configure-maintain/tutorial-django-aks-database.md
+        - name: Create web app in virtual network
+          href: configure-maintain/tutorial-webapp-server-vnet.md
+        - name: Deploy Django app on App Service
+          href: /azure/app-service/tutorial-python-postgresql-app
+- name: Generative AI
+  items:
+  - name: Overview
+    href: azure-ai/generative-ai-azure-overview.md
+  - name: Semantic search
+    items:
+    - name: PostgreSQL as a vector store
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Vector search using pgvector
+      href: extensions/how-to-use-pgvector.md
+    - name: Optimize performance when using pgvector
+      href: extensions/how-to-optimize-performance-pgvector.md
+    - name: Scalable vector indexing using pg_diskann
+      href: extensions/how-to-use-pgdiskann.md
+    - name: Semantic reranking of vector search results
+      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+  - name: Semantic operators in SQL
+    items:
+    - name: Introduction to the azure_ai extension
+      href: azure-ai/generative-ai-azure-overview.md
+    - name: Create vector embeddings using Azure OpenAI
+      href: azure-ai/generative-ai-azure-openai.md
+    - name: Use generate(), is_true() and extract() operators
+      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+    - name: Invoke Azure Language capabilities
+      href: azure-ai/generative-ai-azure-cognitive.md
+    - name: Invoke Azure Machine Learning models
+      href: azure-ai/generative-ai-azure-machine-learning.md
+    - name: Enable managed identity in azure_ai
+      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+  - name: In-database embeddings with azure_local_ai
+    href: extensions/azure-local-ai.md
+  - name: Build AI apps
+    items:
+    - name: Tutorial - Build a semantic search application
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Tutorial - Build a recommendation system
+      href: azure-ai/generative-ai-recommendation-system.md
+    - name: Integrate with AI Frameworks
+      href: azure-ai/generative-ai-frameworks.md
+    - name: Tutorial - Develop with LangChain
+      href: azure-ai/generative-ai-develop-with-langchain.md
+  - name: AI Agents
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-agents.md
+    - name: Build an agent with Microsoft Foundry
+      href: azure-ai/generative-ai-foundry-integration.md
+  - name: Graph database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: azure-ai/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: azure-ai/generative-ai-age-performance.md
+- name: Extensions
+  items:
+    - name: Overview
+      href: extensions/concepts-extensions.md
+    - name: Special considerations
+      href: extensions/concepts-extensions-considerations.md
+    - name: List by name
+      href: extensions/concepts-extensions-versions.md
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
+    - name: Possible errors when managing extensions
+      href: extensions/errors-extensions.md
+    - name: Allow extensions
+      href: extensions/how-to-allow-extensions.md
+    - name: Load libraries
+      href: extensions/how-to-load-libraries.md
+    - name: Create extensions
+      href: extensions/how-to-create-extensions.md
+    - name: Drop extensions
+      href: extensions/how-to-drop-extensions.md
+    - name: Update extensions
+      href: extensions/how-to-update-extensions.md
+    - name: View installed extensions
+      href: extensions/how-to-view-installed-extensions.md
+    - name: Azure AI
+      items:
+        - name: Overview
+          href: azure-ai/generative-ai-azure-overview.md
+        - name: create_embeddings() using Azure OpenAI
+          href: azure-ai/generative-ai-azure-openai.md
+        - name: generate(), is_true(), extract() and rank() operators
+          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Invoke Azure Cognitive Services
+          href: azure-ai/generative-ai-azure-cognitive.md
+        - name: Invoke Azure Machine Learning models
+          href: azure-ai/generative-ai-azure-machine-learning.md
+        - name: Enable managed identity
+          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+    - name: Vector similarity search (pgvector)
+      items:
+        - name: Basics of pgvector
+          href: extensions/how-to-use-pgvector.md
+        - name: Optimize performance when using pgvector
+          href: extensions/how-to-optimize-performance-pgvector.md
+    - name: Vector indexing (pg_diskann)
+      items:
+        - name: Overview
+          href: extensions/how-to-use-pgdiskann.md
+    - name: In-database embeddings
+      items:
+        - name: Overview
+          href: extensions/azure-local-ai.md
+    - name: Azure Storage (pg_azure_storage)
+      items:
+        - name: Configure extension
+          href: extensions/how-to-configure-azure-storage-extension.md
+        - name: Quickstart examples
+          href: extensions/quickstart-azure-storage-extension.md
+        - name: Troubleshoot errors
+          href: troubleshoot/troubleshoot-azure-storage-extension.md
+        - name: Reference
+          href: extensions/reference-azure-storage-extension.md
+    - name: Partitioning (pg_partman)
+      href: configure-maintain/how-to-use-pg-partman.md
 - name: Configure and maintain
   items:
     - name: Prepay for reserved capacity
@@ -43,24 +211,12 @@
       href: security/security-data-encryption.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
-    - name: Connection pooling (PgBouncer)
-      href: connectivity/concepts-pgbouncer.md
     - name: Create a server
       items:
-        - name: Servers
+        - name: Servers concepts
           href: configure-maintain/concepts-servers.md
         - name: Supported versions
           href: configure-maintain/concepts-supported-versions.md
-        - name: Portal, CLI, ARM template
-          href: configure-maintain/quickstart-create-server.md
-        - name: Azure SDK for Python
-          href: configure-maintain/quickstart-create-server-python-sdk.md
-        - name: Azure SDK for .NET
-          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
-        - name: Azure SDK for Java
-          href: configure-maintain/quickstart-create-server-java-sdk.md
-        - name: Bicep
-          href: configure-maintain/quickstart-create-server-bicep.md
     - name: Decommissioning and relocation
       items:
         - name: Delete a server
@@ -81,8 +237,6 @@
           href: configure-maintain/how-to-stop-server.md
         - name: Restart PostgreSQL engine
           href: configure-maintain/how-to-restart-server.md
-    - name: Prepay for reserved capacity
-      href: configure-maintain/concepts-reserved-pricing.md
     - name: Azure Advisor recommendations
       href: configure-maintain/concepts-azure-advisor-recommendations.md
 - name: Compute and Storage
@@ -99,14 +253,49 @@
         href: compute-storage/concepts-storage-premium-ssd-v2.md  
       - name: Migrate from Premium SSD to Premium SSD v2
         href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
-      - name: Configure Azure Storage extension
-        href: extensions/how-to-configure-azure-storage-extension.md
-      - name: Quickstart examples
-        href: extensions/quickstart-azure-storage-extension.md
-      - name: Troubleshoot errors
-        href: troubleshoot/troubleshoot-azure-storage-extension.md
-      - name: Reference
-        href: extensions/reference-azure-storage-extension.md
+- name: Scaling
+  items:
+    - name: Scaling resources
+      href: scale/concepts-scaling-resources.md
+    - name: Scale out
+      href: scale/how-to-scale-out.md          
+    - name: Scale compute
+      href: scale/how-to-scale-compute.md
+    - name: Scale storage size
+      href: scale/how-to-scale-storage-size.md
+    - name: Scale storage performance
+      href: scale/how-to-scale-storage-performance.md
+    - name: Configure storage autogrow
+      href: scale/how-to-auto-grow-storage.md
+- name: Elastic clusters
+  items:
+    - name: Overview
+      href: elastic-clusters/concepts-elastic-clusters.md
+    - name: Sharding models
+      href: elastic-clusters/concepts-elastic-clusters-sharding-models.md
+    - name: Table types
+      href: elastic-clusters/concepts-elastic-clusters-table-types.md
+    - name: Limitations
+      href: elastic-clusters/concepts-elastic-clusters-limitations.md
+    - name: Configuring maximum connections
+      href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
+    - name: Create an elastic cluster
+      items:
+        - name: Azure portal
+          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
+        - name: Bicep
+          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
+        - name: ARM template
+          displayName: Azure Resource Manager
+          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
+    - name: Build with Elastic clusters
+      items:
+        - name: Design a multitenant database
+          href: configure-maintain/tutorial-multitenant-database.md
+        - name: Design a real-time dashboard
+          href: configure-maintain/tutorial-real-time-dashboard.md
+        - name: Design for microservices
+          href: configure-maintain/tutorial-microservices.md
 - name: Business continuity
   items:
     - name: Overview
@@ -137,12 +326,6 @@
               href: backup-restore/how-to-restore-paired-region.md
             - name: Restore a dropped server
               href: backup-restore/how-to-restore-dropped-server.md
-        - name: Backup and restore
-          href: backup-restore/concepts-backup-restore.md
-        - name: Geo-disaster recovery
-          href: backup-restore/concepts-geo-disaster-recovery.md
-        - name: Recovery from a dropped server
-          href: backup-restore/how-to-restore-dropped-server.md
     - name: Reliability
       items:
         - name: Configure high availability
@@ -188,24 +371,12 @@
               href: configure-maintain/how-to-use-pg-partman.md
 - name: Connect and query
   items:
-    - name: Connect to a server in virtual network
-      href: connectivity/quickstart-create-connect-server-vnet.md
-    - name: Azure CLI
-      href: connectivity/connect-azure-cli.md
-    - name: Python
-      href: connectivity/connect-python.md
-    - name: Java
-      href: connectivity/connect-java.md
-    - name: .NET
-      href: connectivity/connect-csharp.md
-    - name: Go
-      href: connectivity/connect-go.md
-    - name: PHP
-      href: connectivity/connect-php.md
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
     - name: Connection resilience
       href: troubleshoot/concepts-connectivity.md
+    - name: Connection pooling (PgBouncer)
+      href: connectivity/concepts-pgbouncer.md
     - name: Connection pooling best practices
       href: connectivity/concepts-connection-pooling-best-practices.md
 - name: Networking
@@ -453,187 +624,18 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Intelligent performance
+    - name: Index tuning
       items:
-        - name: Index tuning
-          items:
-            - name: Configure index tuning
-              href: monitor/how-to-configure-index-tuning.md
-            - name: Use index recommendations
-              href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
-        - name: Intelligent tuning
-          items:
-            - name: Azure portal
-              href: monitor/how-to-enable-intelligent-performance-portal.md
-            - name: Azure CLI
-              href: monitor/how-to-enable-intelligent-performance-cli.md
-- name: Elastic clusters
-  items:
-    - name: Overview
-      href: elastic-clusters/concepts-elastic-clusters.md
-    - name: Sharding models
-      href: elastic-clusters/concepts-elastic-clusters-sharding-models.md
-    - name: Table types
-      href: elastic-clusters/concepts-elastic-clusters-table-types.md
-    - name: Limitations
-      href: elastic-clusters/concepts-elastic-clusters-limitations.md
-    - name: Configuring maximum connections
-      href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
-    - name: Create an elastic cluster
+        - name: Configure index tuning
+          href: monitor/how-to-configure-index-tuning.md
+        - name: Use index recommendations
+          href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
+    - name: Intelligent tuning
       items:
         - name: Azure portal
-          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
-        - name: Bicep
-          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
-        - name: ARM template
-          displayName: Azure Resource Manager
-          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
-    - name: Build with Elastic clusters
-      items:
-        - name: Design a multitenant database
-          href: configure-maintain/tutorial-multitenant-database.md
-        - name: Design a real-time dashboard
-          href: configure-maintain/tutorial-real-time-dashboard.md
-        - name: Design for microservices
-          href: configure-maintain/tutorial-microservices.md
-- name: Scaling
-  items:
-    - name: Scaling resources
-      href: scale/concepts-scaling-resources.md
-    - name: Scale out
-      href: scale/how-to-scale-out.md          
-    - name: Scale compute
-      href: scale/how-to-scale-compute.md
-    - name: Scale storage size
-      href: scale/how-to-scale-storage-size.md
-    - name: Scale storage performance
-      href: scale/how-to-scale-storage-performance.md
-    - name: Configure storage autogrow
-      href: scale/how-to-auto-grow-storage.md
-- name: Generative AI
-  items:
-  - name: Overview
-    href: azure-ai/generative-ai-azure-overview.md
-  - name: Semantic search
-    items:
-    - name: PostgreSQL as a vector store
-      href: azure-ai/generative-ai-semantic-search.md
-    - name: Vector search using pgvector
-      href: extensions/how-to-use-pgvector.md
-    - name: Optimize performance when using pgvector
-      href: extensions/how-to-optimize-performance-pgvector.md
-    - name: Scalable vector indexing using pg_diskann
-      href: extensions/how-to-use-pgdiskann.md
-    - name: Semantic reranking of vector search results
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-  - name: Semantic operators in SQL
-    items:
-    - name: Introduction to the azure_ai extension
-      href: azure-ai/generative-ai-azure-overview.md
-    - name: Create vector embeddings using Azure OpenAI
-      href: azure-ai/generative-ai-azure-openai.md
-    - name: Use generate(), is_true() and extract() operators
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-    - name: Invoke Azure Language capabilities
-      href: azure-ai/generative-ai-azure-cognitive.md
-    - name: Invoke Azure Machine Learning models
-      href: azure-ai/generative-ai-azure-machine-learning.md
-    - name: Enable managed identity in azure_ai
-      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-  - name: In-database embeddings with azure_local_ai
-    href: extensions/azure-local-ai.md
-  - name: Build AI apps
-    items:
-    - name: Tutorial - Build a semantic search application
-      href: azure-ai/generative-ai-semantic-search.md
-    - name: Tutorial - Build a recommendation system
-      href: azure-ai/generative-ai-recommendation-system.md
-    - name: Integrate with AI Frameworks
-      href: azure-ai/generative-ai-frameworks.md
-    - name: Tutorial - Develop with LangChain
-      href: azure-ai/generative-ai-develop-with-langchain.md
-  - name: AI Agents
-    items:
-    - name: Overview
-      href: azure-ai/generative-ai-agents.md
-    - name: Build an agent with Microsoft Foundry
-      href: azure-ai/generative-ai-foundry-integration.md
-  - name: Graph database
-    items:
-    - name: Overview Apache AGE for PostgreSQL
-      href: azure-ai/generative-ai-age-overview.md
-    - name: Performance Best Practices for Apache AGE
-      href: azure-ai/generative-ai-age-performance.md
-- name: Extensions
-  items:
-    - name: Overview
-      href: extensions/concepts-extensions.md
-    - name: Special considerations
-      href: extensions/concepts-extensions-considerations.md
-    - name: List by name
-      href: extensions/concepts-extensions-versions.md
-    - name: List by version of PostgreSQL
-      href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
-    - name: Possible errors when managing extensions
-      href: extensions/errors-extensions.md
-    - name: Allow extensions
-      href: extensions/how-to-allow-extensions.md
-    - name: Load libraries
-      href: extensions/how-to-load-libraries.md
-    - name: Create extensions
-      href: extensions/how-to-create-extensions.md
-    - name: Drop extensions
-      href: extensions/how-to-drop-extensions.md
-    - name: Update extensions
-      href: extensions/how-to-update-extensions.md
-    - name: View installed extensions
-      href: extensions/how-to-view-installed-extensions.md
-    - name: Azure AI
-      items:
-        - name: Overview
-          href: azure-ai/generative-ai-azure-overview.md
-        - name: create_embeddings() using Azure OpenAI
-          href: azure-ai/generative-ai-azure-openai.md
-        - name: generate(), is_true(), extract() and rank() operators
-          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-        - name: Invoke Azure Cognitive Services
-          href: azure-ai/generative-ai-azure-cognitive.md
-        - name: Invoke Azure Machine Learning models
-          href: azure-ai/generative-ai-azure-machine-learning.md
-        - name: Enable managed identity
-          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-    - name: Vector similarity search (pgvector)
-      items:
-        - name: Basics of pgvector
-          href: extensions/how-to-use-pgvector.md
-        - name: Optimize performance when using pgvector
-          href: extensions/how-to-optimize-performance-pgvector.md
-    - name: Vector indexing (pg_diskann)
-      items:
-        - name: Overview
-          href: extensions/how-to-use-pgdiskann.md
-    - name: In-database embeddings
-      items:
-        - name: Overview
-          href: extensions/azure-local-ai.md
-- name: Developer experience
-  items:
-    - name: PostgreSQL extension for Visual Studio Code
-      items:
-        - name: Overview
-          href: extensions/vs-code-extension/overview.md
-        - name: QuickStart
-          href: extensions/vs-code-extension/quickstart-connect.md
-        - name: Configure GitHub Copilot
-          href: extensions/vs-code-extension/quickstart-github-copilot.md
-        - name: Oracle to Azure Database for PostgreSQL schema conversion
-          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-    - name: Application Development
-      items:
-        - name: Deploy Python App on Kubernetes
-          href: configure-maintain/tutorial-django-aks-database.md
-        - name: Create a web app in a virtual network
-          href: configure-maintain/tutorial-webapp-server-vnet.md
+          href: monitor/how-to-enable-intelligent-performance-portal.md
+        - name: Azure CLI
+          href: monitor/how-to-enable-intelligent-performance-cli.md
 - name: Server parameters
   items:
     - name: Overview
