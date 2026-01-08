@@ -369,7 +369,7 @@
           items:
             - name: Partitioning (pg_partman)
               href: configure-maintain/how-to-use-pg-partman.md
-- name: Connect and query
+- name: Connection and pooling
   items:
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
@@ -479,7 +479,7 @@
     items:
     - name: Troubleshoot TLS connection failures
       href: security/security-tls-troubleshoot.md
-- name: Migrate to Azure Database for PostgreSQL
+- name: Migrate
   items:
     - name: Migration Service for Azure Database for PostgreSQL
       items:
