@@ -9,97 +9,110 @@
     - name: Versioning policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
+- name: Release notes
+  items:
+    - name: Release notes
+      href: release-notes/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/2025-october.md
+    - name: API release notes
+      href: release-notes/release-notes-api.md
+    - name: CLI release notes
+      href: release-notes/release-notes-cli.md
+    - name: Try for free
+      href: configure-maintain/how-to-deploy-on-azure-free-account.md
+- name: Configure and maintain
+  items:
+    - name: Prepay for reserved capacity
+      href: configure-maintain/concepts-reserved-pricing.md
+    - name: Request quota increase
+      href: configure-maintain/how-to-request-quota-increase.md
+    - name: Resolve capacity errors
+      href: troubleshoot/how-to-resolve-capacity-errors.md
+    - name: Major version upgrade
+      href: configure-maintain/concepts-major-version-upgrade.md
+    - name: Perform major version upgrade
+      href: configure-maintain/how-to-perform-major-version-upgrade.md
+    - name: Compliance
+      href: security/security-compliance.md
+    - name: Limits
+      href: configure-maintain/concepts-limits.md
+    - name: Identity
+      href: security/security-managed-identity-overview.md
+    - name: Data encryption
+      href: security/security-data-encryption.md
+    - name: Scheduled maintenance
+      href: configure-maintain/concepts-maintenance.md
+    - name: Connection pooling (PgBouncer)
+      href: connectivity/concepts-pgbouncer.md
+    - name: Create a server
+      items:
+        - name: Servers
+          href: configure-maintain/concepts-servers.md
+        - name: Supported versions
+          href: configure-maintain/concepts-supported-versions.md
+        - name: Portal, CLI, ARM template
+          href: configure-maintain/quickstart-create-server.md
+        - name: Azure SDK for Python
+          href: configure-maintain/quickstart-create-server-python-sdk.md
+        - name: Azure SDK for .NET
+          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
+        - name: Azure SDK for Java
+          href: configure-maintain/quickstart-create-server-java-sdk.md
+        - name: Bicep
+          href: configure-maintain/quickstart-create-server-bicep.md
+    - name: Decommissioning and relocation
+      items:
+        - name: Delete a server
+          href: configure-maintain/how-to-delete-server.md
+        - name: Relocate a server
+          href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
+    - name: Database deployment
+      items:
+        - name: GitHub Actions
+          href: configure-maintain/how-to-deploy-github-action.md
+        - name: Azure Pipelines
+          href: configure-maintain/azure-pipelines-deploy-database-task.md
+    - name: Power management
+      items:
+        - name: Start compute of a server
+          href: configure-maintain/how-to-start-server.md
+        - name: Stop compute of a server
+          href: configure-maintain/how-to-stop-server.md
+        - name: Restart PostgreSQL engine
+          href: configure-maintain/how-to-restart-server.md
+    - name: Prepay for reserved capacity
+      href: configure-maintain/concepts-reserved-pricing.md
+    - name: Azure Advisor recommendations
+      href: configure-maintain/concepts-azure-advisor-recommendations.md
+- name: Compute and Storage
+  items: 
+    - name: Compute
+      href: compute-storage/concepts-compute.md
+    - name: Storage
+      items:
+      - name: Overview
+        href: compute-storage/concepts-storage.md
+      - name: Premium SSD
+        href: compute-storage/concepts-storage-premium-ssd.md  
+      - name: Premium SSD v2
+        href: compute-storage/concepts-storage-premium-ssd-v2.md  
+      - name: Migrate from Premium SSD to Premium SSD v2
+        href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
+      - name: Configure Azure Storage extension
+        href: extensions/how-to-configure-azure-storage-extension.md
+      - name: Quickstart examples
+        href: extensions/quickstart-azure-storage-extension.md
+      - name: Troubleshoot errors
+        href: troubleshoot/troubleshoot-azure-storage-extension.md
+      - name: Reference
+        href: extensions/reference-azure-storage-extension.md
 - name: Business continuity
   items:
-    - name: Configure and maintain
-      items:
-        - name: Prepay for reserved capacity
-          href: configure-maintain/concepts-reserved-pricing.md
-        - name: Request quota increase
-          href: configure-maintain/how-to-request-quota-increase.md
-        - name: Resolve capacity errors
-          href: troubleshoot/how-to-resolve-capacity-errors.md
-          displayName: issues, limitations, postgresql
-        - name: Major version upgrade
-          href: configure-maintain/concepts-major-version-upgrade.md
-        - name: Perform major version upgrade
-          href: configure-maintain/how-to-perform-major-version-upgrade.md
-        - name: Compliance
-          href: security/security-compliance.md
-        - name: Limits
-          href: configure-maintain/concepts-limits.md
-        - name: Identity
-          href: security/security-managed-identity-overview.md
-        - name: Data encryption
-          href: security/security-data-encryption.md
-        - name: Scheduled maintenance
-          href: configure-maintain/concepts-maintenance.md
-        - name: Connection pooling (PgBouncer)
-          href: connectivity/concepts-pgbouncer.md
-        - name: Create a server
-          items:
-            - name: Servers
-              href: configure-maintain/concepts-servers.md
-            - name: Supported versions
-              href: configure-maintain/concepts-supported-versions.md
-            - name: Compute
-              href: configure-maintain/concepts-compute.md
-            - name: Portal, CLI, ARM template
-              href: configure-maintain/quickstart-create-server.md
-            - name: Azure SDK for Python
-              href: configure-maintain/quickstart-create-server-python-sdk.md
-            - name: Azure SDK for .NET
-              href: configure-maintain/quickstart-create-server-dotnet-sdk.md
-            - name: Azure SDK for Java
-              href: configure-maintain/quickstart-create-server-java-sdk.md
-            - name: Bicep
-              href: configure-maintain/quickstart-create-server-bicep.md
-        - name: Decommissioning and relocation
-          items:
-            - name: Delete a server
-              href: configure-maintain/how-to-delete-server.md
-            - name: Relocate a server
-              href: /azure/operational-excellence/relocation-postgresql-flexible-server?toc=/azure/postgresql/toc.json
-        - name: Database deployment
-          items:
-            - name: GitHub Actions
-              href: configure-maintain/how-to-deploy-github-action.md
-            - name: Azure Pipelines
-              href: configure-maintain/azure-pipelines-deploy-database-task.md
-        - name: Microsoft Fabric
-          items:
-            - name: Fabric mirroring
-              href: integration/concepts-fabric-mirroring.md
-            - name: Copy activity
-              href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
-            - name: Script activity
-              href: configure-maintain/how-to-data-factory-script-activity-fabric.md
-        - name: Build with AKS
-          items:
-            - name: Deploy Python App on Kubernetes
-              href: configure-maintain/tutorial-django-aks-database.md
-        - name: Build with App Services
-          items:
-            - name: Create a web app in a virtual network
-              href: configure-maintain/tutorial-webapp-server-vnet.md
-            - name: Deploy a Django app on App Service
-              href: /azure/app-service/tutorial-python-postgresql-app
-        - name: Power management
-          items:
-            - name: Start compute of a server
-              href: configure-maintain/how-to-start-server.md
-            - name: Stop compute of a server
-              href: configure-maintain/how-to-stop-server.md
-            - name: Restart PostgreSQL engine
-              href: configure-maintain/how-to-restart-server.md
-        - name: Prepay for reserved capacity
-          href: configure-maintain/concepts-reserved-pricing.md
-        - name: Azure Advisor recommendations
-          href: configure-maintain/concepts-azure-advisor-recommendations.md
+    - name: Overview
+      href: backup-restore/concepts-business-continuity.md
     - name: Backup and restore
       items:
-        - name: Overview
-          href: backup-restore/concepts-business-continuity.md
         - name: Backup and restore
           href: backup-restore/concepts-backup-restore.md
         - name: Geo-disaster recovery
@@ -169,6 +182,10 @@
               href: read-replica/how-to-promote-replica-to-standalone.md
             - name: Delete a read replica
               href: read-replica/how-to-delete-read-replica.md
+        - name: Partitioning
+          items:
+            - name: Partitioning (pg_partman)
+              href: configure-maintain/how-to-use-pg-partman.md
 - name: Connect and query
   items:
     - name: Connect to a server in virtual network
@@ -396,6 +413,14 @@
           href: integration/how-to-data-factory-copy-activity-azure.md
         - name: Script activity
           href: integration/how-to-data-factory-script-activity-azure.md
+    - name: Microsoft Fabric
+      items:
+        - name: Fabric mirroring
+          href: integration/concepts-fabric-mirroring.md
+        - name: Copy activity
+          href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
+        - name: Script activity
+          href: configure-maintain/how-to-data-factory-script-activity-fabric.md
 - name: Monitor
   items:
     - name: Monitor and tune overview
@@ -485,8 +510,10 @@
       href: scale/how-to-scale-storage-performance.md
     - name: Configure storage autogrow
       href: scale/how-to-auto-grow-storage.md
-- name: Azure AI
+- name: Artifical intelligence
   items:
+  - name: Azure AI
+    items:
     - name: Overview
       href: azure-ai/generative-ai-azure-overview.md
     - name: Azure OpenAI
@@ -525,7 +552,22 @@
           href: azure-ai/generative-ai-age-overview.md
         - name: Performance Best Practices for Apache AGE
           href: azure-ai/generative-ai-age-performance.md
-
+  - name: In-database Embeddings (azure_local_ai)
+    items:
+    - name: Overview
+      href: extensions/azure-local-ai.md
+    - name: Vector indexing (pg_diskann)
+      items:
+        - name: Overview
+          href: extensions/how-to-use-pgdiskann.md
+        - name: Vector similarity search (pgvector)
+          items:
+            - name: Basics of pgvector
+              href: extensions/how-to-use-pgvector.md
+              displayName: vector databases
+            - name: Optimize performance when using pgvector
+              href: extensions/how-to-optimize-performance-pgvector.md
+              displayName: vector databases
 - name: Extensions
   items:
     - name: Overview
@@ -550,55 +592,26 @@
       href: extensions/how-to-update-extensions.md
     - name: View installed extensions
       href: extensions/how-to-view-installed-extensions.md
-    - name: Azure Storage (pg_azure_storage)
+- name: Developer experience
+  items:
+    - name: PostgreSQL extension for VS Code
+      href: extensions\vs-code-extension\overview.md
+    - name: Quickstart for PostgreSQL extension for VS Code
+      href: extensions\vs-code-extension\quickstart-connect.md
+    - name: Quickstart for PostgreSQL GitHub Copilot
+      href: extensions\vs-code-extension\quickstart-github-copilot.md
+    - name: Oracle to Azure Database for PostgreSQL schema conversion
+      href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+    - name: Build with AKS
       items:
-        - name: Overview
-          href: extensions/concepts-storage.md
-        - name: Premium SSD
-          href: configure-maintain/concepts-storage-premium-ssd.md  
-        - name: Premium SSD v2
-          href: configure-maintain/concepts-storage-premium-ssd-v2.md  
-        - name: Migrate from Premium SSD to Premium SSD v2
-          href: configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2.md
-        - name: Configure Azure Storage extension
-          href: extensions/how-to-configure-azure-storage-extension.md
-        - name: Quickstart examples
-          href: extensions/quickstart-azure-storage-extension.md
-        - name: Troubleshoot errors
-          href: troubleshoot/troubleshoot-azure-storage-extension.md
-        - name: Reference
-          href: extensions/reference-azure-storage-extension.md
-    - name: In-database Embeddings (azure_local_ai)
+        - name: Deploy Python App on Kubernetes
+          href: configure-maintain/tutorial-django-aks-database.md
+    - name: Build with App Services
       items:
-        - name: Overview
-          href: extensions/azure-local-ai.md
-        - name: Vector indexing (pg_diskann)
-          items:
-            - name: Overview
-              href: extensions/how-to-use-pgdiskann.md
-            - name: Vector similarity search (pgvector)
-              items:
-                - name: Basics of pgvector
-                  href: extensions/how-to-use-pgvector.md
-                  displayName: vector databases
-                - name: Optimize performance when using pgvector
-                  href: extensions/how-to-optimize-performance-pgvector.md
-                  displayName: vector databases
-        - name: Partitioning
-          items:
-            - name: Partitioning using pg_partman
-              href: configure-maintain/how-to-use-pg-partman.md
-              displayName: pg_partman
-    - name: Developer experience
-      items:
-        - name: PostgreSQL extension for VS Code
-          href: extensions\vs-code-extension\overview.md
-        - name: Quickstart for PostgreSQL extension for VS Code
-          href: extensions\vs-code-extension\quickstart-connect.md
-        - name: Quickstart for PostgreSQL GitHub Copilot
-          href: extensions\vs-code-extension\quickstart-github-copilot.md
-        - name: Oracle to Azure Database for PostgreSQL schema conversion
-          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+        - name: Create a web app in a virtual network
+          href: configure-maintain/tutorial-webapp-server-vnet.md
+        - name: Deploy a Django app on App Service
+          href: /azure/app-service/tutorial-python-postgresql-app
 - name: Server parameters
   items:
     - name: Overview
@@ -721,18 +734,6 @@
           href: server-parameters/how-to-server-parameters-revert-one-default.md
         - name: Revert all server parameters to their default
           href: server-parameters/how-to-server-parameters-revert-all-default.md
-- name: Release notes
-  items:
-    - name: Release notes
-      href: release-notes/release-notes.md
-    - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
-    - name: API release notes
-      href: release-notes/release-notes-api.md
-    - name: CLI release notes
-      href: release-notes/release-notes-cli.md
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Samples
   items:
     - name: Azure CLI samples

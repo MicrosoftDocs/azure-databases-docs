@@ -90,7 +90,7 @@ When your disk becomes full, the server starts returning errors and prevents any
 We recommend that you actively monitor the disk space that's in use by using storage_percentage or storage_used metrics and increase the disk size before you run out of available space in your storage. You can set up an alert to notify you when your server storage is approaching an out-of-disk state. For more information, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](../monitor/how-to-alert-on-metrics.md).
 
 
-[!INCLUDE [pricing](includes/compute-storage-princing.md)]
+[!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
 ## Related content
 
