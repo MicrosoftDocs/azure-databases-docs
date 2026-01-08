@@ -510,54 +510,52 @@
       href: scale/how-to-scale-storage-performance.md
     - name: Configure storage autogrow
       href: scale/how-to-auto-grow-storage.md
-- name: Artificial intelligence
+- name: Generative AI
   items:
-  - name: Generative AI
+  - name: Semantic search
     items:
-    - name: Semantic search
-      items:
-      - name: Overview
-        href: azure-ai/generative-ai-semantic-search.md
-      - name: Vector indexing (pg_diskann)
-        href: extensions/how-to-use-pgdiskann.md
-      - name: Vector indexing (pgvector)
-        href: extensions/how-to-use-pgvector.md
-      - name: Optimize performance when using pgvector
-        href: extensions/how-to-optimize-performance-pgvector.md
-    - name: Semantic Operators in SQL
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-    - name: Build with AI Frameworks
-      items:
-      - name: Overview
-        href: azure-ai/generative-ai-frameworks.md
-      - name: Build with LangChain
-        href: azure-ai/generative-ai-develop-with-langchain.md
-    - name: Graph database
-      items:
-      - name: Overview Apache AGE for PostgreSQL
-        href: azure-ai/generative-ai-age-overview.md
-      - name: Performance Best Practices for Apache AGE
-        href: azure-ai/generative-ai-age-performance.md
-    - name: Integration with Azure AI services
-      items:
-      - name: Overview
-        href: azure-ai/generative-ai-azure-overview.md
-      - name: Microsoft Foundry
-        href: azure-ai/generative-ai-foundry-integration.md
-      - name: Azure OpenAI
-        href: azure-ai/generative-ai-azure-openai.md
-      - name: Azure Cognitive Services
-        href: azure-ai/generative-ai-azure-cognitive.md
-      - name: Azure Machine Learning Services
-        href: azure-ai/generative-ai-azure-machine-learning.md
-      - name: Enable Managed Identity
-        href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-    - name: AI Agents
-      href: azure-ai/generative-ai-agents.md
-    - name: Recommendation System
-      href: azure-ai/generative-ai-recommendation-system.md
-    - name: In-database Embeddings
-      href: extensions/azure-local-ai.md
+    - name: Overview
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Vector indexing (pg_diskann)
+      href: extensions/how-to-use-pgdiskann.md
+    - name: Vector indexing (pgvector)
+      href: extensions/how-to-use-pgvector.md
+    - name: Optimize performance when using pgvector
+      href: extensions/how-to-optimize-performance-pgvector.md
+  - name: Semantic Operators in SQL
+    href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+  - name: Build with AI Frameworks
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-frameworks.md
+    - name: Build with LangChain
+      href: azure-ai/generative-ai-develop-with-langchain.md
+  - name: Graph database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: azure-ai/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: azure-ai/generative-ai-age-performance.md
+  - name: Integration with Azure AI services
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-azure-overview.md
+    - name: Microsoft Foundry
+      href: azure-ai/generative-ai-foundry-integration.md
+    - name: Azure OpenAI
+      href: azure-ai/generative-ai-azure-openai.md
+    - name: Azure Cognitive Services
+      href: azure-ai/generative-ai-azure-cognitive.md
+    - name: Azure Machine Learning Services
+      href: azure-ai/generative-ai-azure-machine-learning.md
+    - name: Enable Managed Identity
+      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+  - name: AI Agents
+    href: azure-ai/generative-ai-agents.md
+  - name: Recommendation System
+    href: azure-ai/generative-ai-recommendation-system.md
+  - name: In-database Embeddings
+    href: extensions/azure-local-ai.md
 - name: Extensions
   items:
     - name: Overview
