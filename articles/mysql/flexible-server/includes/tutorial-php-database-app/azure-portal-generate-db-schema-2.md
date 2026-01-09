@@ -1,3 +1,7 @@
+---
+ms.topic: include
+---
+
 In the SSH terminal:
 1. CD to the root of your application code:
 
