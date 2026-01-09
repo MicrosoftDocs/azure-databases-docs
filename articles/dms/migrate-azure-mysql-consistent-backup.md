@@ -6,7 +6,7 @@ ms.author: skondapalli
 ms.reviewer: randolphwest
 ms.date: 10/16/2025
 ms.service: azure-database-migration-service
-ms.topic: article
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ms.custom:
