@@ -76,7 +76,7 @@
 - name: Generative AI
   items:
   - name: Overview
-    href: azure-ai/generative-ai-azure-overview.md
+    href: azure-ai/generative-ai-overview.md
   - name: Semantic search
     items:
     - name: PostgreSQL as a vector store
@@ -88,7 +88,7 @@
     - name: Scalable vector indexing using pg_diskann
       href: extensions/how-to-use-pgdiskann.md
     - name: Semantic reranking of vector search results
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+      href: azure-ai/generative-ai-semantic-operators.md
   - name: Semantic operators in SQL
     items:
     - name: Introduction to the azure_ai extension
@@ -105,7 +105,7 @@
       href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
   - name: In-database embeddings with azure_local_ai
     href: extensions/azure-local-ai.md
-  - name: Build AI apps
+  - name: AI Frameworks
     items:
     - name: Tutorial - Build a semantic search application
       href: azure-ai/generative-ai-semantic-search.md
@@ -175,10 +175,6 @@
       items:
         - name: Overview
           href: extensions/how-to-use-pgdiskann.md
-    - name: In-database embeddings
-      items:
-        - name: Overview
-          href: extensions/azure-local-ai.md
     - name: Azure Storage (pg_azure_storage)
       items:
         - name: Configure extension
