@@ -26,7 +26,7 @@ If you configure zone redundant high availability, the service provisions and ma
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
-See [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
+For more information, visit [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
 
 ## Automated patching with a managed maintenance window
 
@@ -90,7 +90,7 @@ Azure Database for PostgreSQL now supports General Purpose and Memory Optimized 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
 
 - **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** – For offline migrations where you can afford some downtime, dump and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
+- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
 
 ## Feedback and support
 
