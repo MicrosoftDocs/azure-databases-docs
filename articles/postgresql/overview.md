@@ -4,7 +4,7 @@ description: Provides an overview of Azure Database for PostgreSQL.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 01/08/2026
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -14,33 +14,27 @@ ms.topic: overview
 
 This article provides an overview of Azure Database for PostgreSQL, helping you get acquainted with its key features and core concepts.
 
-Azure Database for PostgreSQL is a fully managed database service designed to give you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md). The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
+Azure Database for PostgreSQL is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure Database for PostgreSQL flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md). The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
 
 :::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure Database for PostgreSQL - Overview." lightbox="./media/overview/overview-flexible-server.png":::
 
-Azure Database for PostgreSQL is best suited for:
-
-- Application developments requiring control and customizations.
-- Zone redundant high availability.
-- Managed maintenance windows.
-
 ## Architecture and high availability
 
-The Azure Database for PostgreSQL deployment model is designed to support high availability within a single availability zone and across multiple availability zones. The architecture separates compute and storage. The database engine runs on a container inside a Linux virtual machine, while data files reside on Azure storage. The storage maintains three locally redundant synchronous copies of the database files, ensuring data durability.
+The Azure Database for PostgreSQL deployment model supports high availability within a single availability zone and across multiple availability zones. The architecture separates compute and storage. The database engine runs on a container inside a Linux virtual machine, while data files reside on Azure storage. The storage maintains three locally redundant synchronous copies of the database files, ensuring data durability.
 
 If you configure zone redundant high availability, the service provisions and maintains a warm standby server across the availability zone within the same Azure region. The data changes on the source server are synchronously replicated to the standby server to ensure zero data loss. With zone redundant high availability, once the planned or unplanned failover event is triggered, the standby server comes online immediately and is available to process incoming transactions. This feature allows the service resiliency from availability zone failure within an Azure region that supports multiple availability zones, as shown in the following picture.
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
-See [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
+For more information, visit [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
 
 ## Automated patching with a managed maintenance window
 
-The service performs automated patching of the underlying hardware, OS, and database engine. The patching includes security and software updates. The planned maintenance release includes minor version upgrades for the PostgreSQL engine. You can configure the patching schedule to be system-managed or define your custom schedule. During the maintenance schedule, the patch is applied, and the server might need to be restarted as part of the patching process to complete the update. With the custom schedule, you can make your patching cycle predictable and choose a maintenance window with minimum impact on your business. Generally, the service follows a monthly release schedule as part of the continuous integration and release.
+The service performs automated patching of the underlying hardware, OS, and database engine. The patching includes security and software updates. The planned maintenance release includes minor version upgrades for the PostgreSQL engine. You can configure the patching schedule to be system-managed or define your custom schedule. During the maintenance schedule, the patch is applied, and the server might need to restart as part of the patching process to complete the update. By using the custom schedule, you can make your patching cycle predictable and choose a maintenance window with minimum impact on your business. Generally, the service follows a monthly release schedule as part of the continuous integration and release.
 
 ## Automatic backups
 
-Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. All backups are encrypted by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
+Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
 
 ## Adjust performance and scale within seconds
 
@@ -54,11 +48,11 @@ Azure Database for PostgreSQL allows you to stop and start the server on demand 
 
 Azure Database for PostgreSQL uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure Database for PostgreSQL encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
 
-Azure Database for PostgreSQL flexible server instance allows full private access to the servers by using Azure virtual network. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
+By using Azure virtual network, Azure Database for PostgreSQL flexible server instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
 
 ## Monitor and alerting
 
-Azure Database for PostgreSQL has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. Using these tools, you can quickly optimize your workloads and configure your server for the best performance.
+Azure Database for PostgreSQL has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
 
 ## Built-in PgBouncer
 
@@ -81,21 +75,22 @@ $ New server deployments are temporarily blocked in these regions. The service f
 > [!NOTE]  
 > If your application requires zone-redundant high availability and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
 
-## V6 SKU Family (Preview)
+## V6 SKU family (Preview)
 
-Azure Database for PostgreSQL now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These SKUs deliver massive scale for high-performance OLTP, analytics and complex queries, with improved price performance and higher memory ceilings. 
+Azure Database for PostgreSQL now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These versions deliver massive scale for high-performance OLTP, analytics, and complex queries, with improved price performance and higher memory ceilings.
 
-### Limitations:
-- Scaling from V6 SKU family to Burstable tier is not supported.
-- Scaling from Burstable tier to V6 SKU family is not supported.
-- Virtual Network integration is not supported.
-  
+### Limitations
+
+- Scaling from V6 SKU family to Burstable tier isn't supported.
+- Scaling from Burstable tier to V6 SKU family isn't supported.
+- Virtual Network integration isn't supported.
+
 ## Migration
 
 Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
 
 - **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore using community tools like pg_dump and pg_restore provides the fastest way to migrate. See [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md) for details.
+- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
 
 ## Feedback and support
 

@@ -2628,6 +2628,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-compute.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-compute",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-compute.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-compute",
             "redirect_document_id": true
         },
         {
@@ -2683,16 +2688,31 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-migrate-ssd-to-ssd-v2.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-migrate-ssd-to-ssd-v2",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain//concepts-storage-migrate-ssd-to-ssd-v2.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-migrate-ssd-to-ssd-v2",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-premium-ssd.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-premium-ssd",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage-premium-ssd.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-premium-ssd",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage-premium-ssd-v2.md",
             "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage-premium-ssd-v2",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage-premium-ssd-v2.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage-premium-ssd-v2",
             "redirect_document_id": true
         },
         {
@@ -2818,21 +2838,41 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-bicep.md",
             "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server-bicep",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/quickstart-create-server-bicep.md",
+            "redirect_url": "/azure/postgresql/developer/create-server-bicep",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-dotnet-sdk.md",
             "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server-dotnet-sdk",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/quickstart-create-server-dotnet-sdk.md",
+            "redirect_url": "/azure/postgresql/developer/create-server-dotnet-sdk",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-java-sdk.md",
             "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server-java-sdk",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/quickstart-create-server-java-sdk.md",
+            "redirect_url": "/azure/postgresql/developer/create-server-java-sdk",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/quickstart-create-server-python-sdk.md",
             "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server-python-sdk",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/quickstart-create-server-python-sdk.md",
+            "redirect_url": "/azure/postgresql/developer/create-server-python-sdk",
             "redirect_document_id": true
         },
         {
@@ -2858,6 +2898,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/tutorial-django-aks-database.md",
             "redirect_url": "/azure/postgresql/configure-maintain/tutorial-django-aks-database",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/tutorial-django-aks-database.md",
+            "redirect_url": "/azure/postgresql/developer/django-aks-database",
             "redirect_document_id": true
         },
         {
@@ -2878,6 +2923,11 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/tutorial-webapp-server-vnet.md",
             "redirect_url": "/azure/postgresql/configure-maintain/tutorial-webapp-server-vnet",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/tutorial-webapp-server-vnet.md",
+            "redirect_url": "/azure/postgresql/developer/webapp-server-vnet",
             "redirect_document_id": true
         },
         {
@@ -2943,6 +2993,16 @@
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-storage.md",
             "redirect_url": "/azure/postgresql/extensions/concepts-storage",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/extensions/concepts-storage.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/concepts-storage",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-storage.md",
+            "redirect_url": "/azure/postgresql/compute-storage/concepts-storage",
             "redirect_document_id": true
         },
         {
@@ -3809,6 +3869,21 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/security-manage-entra-users.md",
             "redirect_url": "/azure/postgresql/security/security-manage-entra-users",
             "redirect_document_id": false
-        }
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/overview.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-connect.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-connect",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
+            "redirect_document_id": true
+        },
     ]
 }
