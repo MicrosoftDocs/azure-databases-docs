@@ -88,7 +88,7 @@
     - name: Scalable vector indexing using pg_diskann
       href: extensions/how-to-use-pgdiskann.md
     - name: Semantic reranking of vector search results
-      href: generative-ai-semantic-search.md
+      href: azure-ai/generative-ai-semantic-search.md
   - name: Semantic operators in SQL
     items:
     - name: Introduction to the azure_ai extension
