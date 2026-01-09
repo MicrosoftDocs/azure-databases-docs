@@ -33,16 +33,6 @@
           href: connectivity/quickstart-create-connect-server-vnet.md
         - name: Azure CLI
           href: connectivity/connect-azure-cli.md
-        - name: Python
-          href: connectivity/connect-python.md
-        - name: Java
-          href: connectivity/connect-java.md
-        - name: .NET
-          href: connectivity/connect-csharp.md
-        - name: Go
-          href: connectivity/connect-go.md
-        - name: PHP
-          href: connectivity/connect-php.md
 - name: Developer experience
   items:
   - name: Create a server
@@ -55,6 +45,18 @@
       href: developer/create-server-java-sdk.md
     - name: Bicep
       href: developer/create-server-bicep.md
+    - name: Connect and query
+      items:
+        - name: Python
+          href: connectivity/connect-python.md
+        - name: Java
+          href: connectivity/connect-java.md
+        - name: .NET
+          href: connectivity/connect-csharp.md
+        - name: Go
+          href: connectivity/connect-go.md
+        - name: PHP
+          href: connectivity/connect-php.md
   - name: PostgreSQL extension for Visual Studio Code
     items:
       - name: Overview
