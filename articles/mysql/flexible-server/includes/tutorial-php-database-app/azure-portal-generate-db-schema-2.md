@@ -1,5 +1,5 @@
 ---
-ms.topic: how-to
+ms.topic: include
 ---
 
 In the SSH terminal:
