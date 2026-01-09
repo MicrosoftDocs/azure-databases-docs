@@ -24,7 +24,6 @@ db.createCollection("collectionName", {
       properties: {
         field1: {
           bsonType: "string",
-          description: "Description of field1 requirements"
         },
         field2: {
           bsonType: "int",
