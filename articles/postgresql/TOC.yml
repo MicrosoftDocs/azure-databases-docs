@@ -6,9 +6,11 @@
       href: overview.md
     - name: Self-hosted vs. managed service
       href: configure-maintain/overview-postgres-choose-server-options.md
-    - name: Versioning policy
+    - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
+    - name: Try for free
+      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
@@ -19,8 +21,176 @@
       href: release-notes/release-notes-api.md
     - name: CLI release notes
       href: release-notes/release-notes-cli.md
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
+- name: Quickstarts
+  items:
+    - name: Create a server
+      items:
+        - name: Portal, CLI, ARM template
+          href: configure-maintain/quickstart-create-server.md
+    - name: Connect and query
+      items:
+        - name: Connect in virtual network
+          href: connectivity/quickstart-create-connect-server-vnet.md
+        - name: Azure CLI
+          href: connectivity/connect-azure-cli.md
+- name: Developer experience
+  items:
+  - name: Create a server
+    items:
+    - name: Azure SDK for Python
+      href: developer/create-server-python-sdk.md
+    - name: Azure SDK for .NET
+      href: developer/create-server-dotnet-sdk.md
+    - name: Azure SDK for Java
+      href: developer/create-server-java-sdk.md
+    - name: Bicep
+      href: developer/create-server-bicep.md
+    - name: Connect and query
+      items:
+        - name: Python
+          href: connectivity/connect-python.md
+        - name: Java
+          href: connectivity/connect-java.md
+        - name: .NET
+          href: connectivity/connect-csharp.md
+        - name: Go
+          href: connectivity/connect-go.md
+        - name: PHP
+          href: connectivity/connect-php.md
+  - name: PostgreSQL extension for Visual Studio Code
+    items:
+      - name: Overview
+        href: extensions/vs-code-extension/overview.md
+      - name: QuickStart
+        href: extensions/vs-code-extension/quickstart-connect.md
+      - name: Configure GitHub Copilot
+        href: extensions/vs-code-extension/quickstart-github-copilot.md
+  - name: Application development
+    items:
+      - name: Deploy Django app on AKS
+        href: developer/django-aks-database.md
+      - name: Create web app in virtual network
+        href: developer/webapp-server-vnet.md
+      - name: Deploy Django app on App Service
+        href: /azure/app-service/tutorial-python-postgresql-app
+- name: Generative AI
+  items:
+  - name: Overview
+    href: azure-ai/generative-ai-azure-overview.md
+  - name: Semantic search
+    items:
+    - name: PostgreSQL as a vector store
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Vector search using pgvector
+      href: extensions/how-to-use-pgvector.md
+    - name: Optimize performance when using pgvector
+      href: extensions/how-to-optimize-performance-pgvector.md
+    - name: Scalable vector indexing using pg_diskann
+      href: extensions/how-to-use-pgdiskann.md
+    - name: Semantic reranking of vector search results
+      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+  - name: Semantic operators in SQL
+    items:
+    - name: Introduction to the azure_ai extension
+      href: azure-ai/generative-ai-azure-overview.md
+    - name: Create vector embeddings using Azure OpenAI
+      href: azure-ai/generative-ai-azure-openai.md
+    - name: Use generate(), is_true() and extract() operators
+      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+    - name: Invoke Azure Language capabilities
+      href: azure-ai/generative-ai-azure-cognitive.md
+    - name: Invoke Azure Machine Learning models
+      href: azure-ai/generative-ai-azure-machine-learning.md
+    - name: Enable managed identity in azure_ai
+      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+  - name: In-database embeddings with azure_local_ai
+    href: extensions/azure-local-ai.md
+  - name: Build AI apps
+    items:
+    - name: Tutorial - Build a semantic search application
+      href: azure-ai/generative-ai-semantic-search.md
+    - name: Tutorial - Build a recommendation system
+      href: azure-ai/generative-ai-recommendation-system.md
+    - name: Integrate with AI Frameworks
+      href: azure-ai/generative-ai-frameworks.md
+    - name: Tutorial - Develop with LangChain
+      href: azure-ai/generative-ai-develop-with-langchain.md
+  - name: AI Agents
+    items:
+    - name: Overview
+      href: azure-ai/generative-ai-agents.md
+    - name: Build an agent with Microsoft Foundry
+      href: azure-ai/generative-ai-foundry-integration.md
+  - name: Graph database
+    items:
+    - name: Overview Apache AGE for PostgreSQL
+      href: azure-ai/generative-ai-age-overview.md
+    - name: Performance Best Practices for Apache AGE
+      href: azure-ai/generative-ai-age-performance.md
+- name: Extensions
+  items:
+    - name: Overview
+      href: extensions/concepts-extensions.md
+    - name: Special considerations
+      href: extensions/concepts-extensions-considerations.md
+    - name: List by name
+      href: extensions/concepts-extensions-versions.md
+    - name: List by version of PostgreSQL
+      href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
+    - name: Possible errors when managing extensions
+      href: extensions/errors-extensions.md
+    - name: Allow extensions
+      href: extensions/how-to-allow-extensions.md
+    - name: Load libraries
+      href: extensions/how-to-load-libraries.md
+    - name: Create extensions
+      href: extensions/how-to-create-extensions.md
+    - name: Drop extensions
+      href: extensions/how-to-drop-extensions.md
+    - name: Update extensions
+      href: extensions/how-to-update-extensions.md
+    - name: View installed extensions
+      href: extensions/how-to-view-installed-extensions.md
+    - name: Azure AI
+      items:
+        - name: Overview
+          href: azure-ai/generative-ai-azure-overview.md
+        - name: create_embeddings() using Azure OpenAI
+          href: azure-ai/generative-ai-azure-openai.md
+        - name: generate(), is_true(), extract() and rank() operators
+          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Invoke Azure Cognitive Services
+          href: azure-ai/generative-ai-azure-cognitive.md
+        - name: Invoke Azure Machine Learning models
+          href: azure-ai/generative-ai-azure-machine-learning.md
+        - name: Enable managed identity
+          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+    - name: Vector similarity search (pgvector)
+      items:
+        - name: Basics of pgvector
+          href: extensions/how-to-use-pgvector.md
+        - name: Optimize performance when using pgvector
+          href: extensions/how-to-optimize-performance-pgvector.md
+    - name: Vector indexing (pg_diskann)
+      items:
+        - name: Overview
+          href: extensions/how-to-use-pgdiskann.md
+    - name: In-database embeddings
+      items:
+        - name: Overview
+          href: extensions/azure-local-ai.md
+    - name: Azure Storage (pg_azure_storage)
+      items:
+        - name: Configure extension
+          href: extensions/how-to-configure-azure-storage-extension.md
+        - name: Quickstart examples
+          href: extensions/quickstart-azure-storage-extension.md
+        - name: Troubleshoot errors
+          href: troubleshoot/troubleshoot-azure-storage-extension.md
+        - name: Reference
+          href: extensions/reference-azure-storage-extension.md
+    - name: Partitioning (pg_partman)
+      href: configure-maintain/how-to-use-pg-partman.md
 - name: Configure and maintain
   items:
     - name: Prepay for reserved capacity
@@ -43,24 +213,12 @@
       href: security/security-data-encryption.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
-    - name: Connection pooling (PgBouncer)
-      href: connectivity/concepts-pgbouncer.md
     - name: Create a server
       items:
-        - name: Servers
+        - name: Servers concepts
           href: configure-maintain/concepts-servers.md
         - name: Supported versions
           href: configure-maintain/concepts-supported-versions.md
-        - name: Portal, CLI, ARM template
-          href: configure-maintain/quickstart-create-server.md
-        - name: Azure SDK for Python
-          href: configure-maintain/quickstart-create-server-python-sdk.md
-        - name: Azure SDK for .NET
-          href: configure-maintain/quickstart-create-server-dotnet-sdk.md
-        - name: Azure SDK for Java
-          href: configure-maintain/quickstart-create-server-java-sdk.md
-        - name: Bicep
-          href: configure-maintain/quickstart-create-server-bicep.md
     - name: Decommissioning and relocation
       items:
         - name: Delete a server
@@ -81,8 +239,6 @@
           href: configure-maintain/how-to-stop-server.md
         - name: Restart PostgreSQL engine
           href: configure-maintain/how-to-restart-server.md
-    - name: Prepay for reserved capacity
-      href: configure-maintain/concepts-reserved-pricing.md
     - name: Azure Advisor recommendations
       href: configure-maintain/concepts-azure-advisor-recommendations.md
 - name: Compute and Storage
@@ -99,14 +255,49 @@
         href: compute-storage/concepts-storage-premium-ssd-v2.md  
       - name: Migrate from Premium SSD to Premium SSD v2
         href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
-      - name: Configure Azure Storage extension
-        href: extensions/how-to-configure-azure-storage-extension.md
-      - name: Quickstart examples
-        href: extensions/quickstart-azure-storage-extension.md
-      - name: Troubleshoot errors
-        href: troubleshoot/troubleshoot-azure-storage-extension.md
-      - name: Reference
-        href: extensions/reference-azure-storage-extension.md
+- name: Scaling
+  items:
+    - name: Scaling resources
+      href: scale/concepts-scaling-resources.md
+    - name: Scale out
+      href: scale/how-to-scale-out.md          
+    - name: Scale compute
+      href: scale/how-to-scale-compute.md
+    - name: Scale storage size
+      href: scale/how-to-scale-storage-size.md
+    - name: Scale storage performance
+      href: scale/how-to-scale-storage-performance.md
+    - name: Configure storage autogrow
+      href: scale/how-to-auto-grow-storage.md
+- name: Elastic clusters
+  items:
+    - name: Overview
+      href: elastic-clusters/concepts-elastic-clusters.md
+    - name: Sharding models
+      href: elastic-clusters/concepts-elastic-clusters-sharding-models.md
+    - name: Table types
+      href: elastic-clusters/concepts-elastic-clusters-table-types.md
+    - name: Limitations
+      href: elastic-clusters/concepts-elastic-clusters-limitations.md
+    - name: Configuring maximum connections
+      href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
+    - name: Create an elastic cluster
+      items:
+        - name: Azure portal
+          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
+        - name: Bicep
+          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
+        - name: ARM template
+          displayName: Azure Resource Manager
+          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
+    - name: Build with Elastic clusters
+      items:
+        - name: Design a multitenant database
+          href: configure-maintain/tutorial-multitenant-database.md
+        - name: Design a real-time dashboard
+          href: configure-maintain/tutorial-real-time-dashboard.md
+        - name: Design for microservices
+          href: configure-maintain/tutorial-microservices.md
 - name: Business continuity
   items:
     - name: Overview
@@ -137,12 +328,6 @@
               href: backup-restore/how-to-restore-paired-region.md
             - name: Restore a dropped server
               href: backup-restore/how-to-restore-dropped-server.md
-        - name: Backup and restore
-          href: backup-restore/concepts-backup-restore.md
-        - name: Geo-disaster recovery
-          href: backup-restore/concepts-geo-disaster-recovery.md
-        - name: Recovery from a dropped server
-          href: backup-restore/how-to-restore-dropped-server.md
     - name: Reliability
       items:
         - name: Configure high availability
@@ -186,26 +371,14 @@
           items:
             - name: Partitioning (pg_partman)
               href: configure-maintain/how-to-use-pg-partman.md
-- name: Connect and query
+- name: Connection and pooling
   items:
-    - name: Connect to a server in virtual network
-      href: connectivity/quickstart-create-connect-server-vnet.md
-    - name: Azure CLI
-      href: connectivity/connect-azure-cli.md
-    - name: Python
-      href: connectivity/connect-python.md
-    - name: Java
-      href: connectivity/connect-java.md
-    - name: .NET
-      href: connectivity/connect-csharp.md
-    - name: Go
-      href: connectivity/connect-go.md
-    - name: PHP
-      href: connectivity/connect-php.md
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
     - name: Connection resilience
       href: troubleshoot/concepts-connectivity.md
+    - name: Connection pooling (PgBouncer)
+      href: connectivity/concepts-pgbouncer.md
     - name: Connection pooling best practices
       href: connectivity/concepts-connection-pooling-best-practices.md
 - name: Networking
@@ -236,7 +409,7 @@
         href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
       - name: Reject private endpoint connections
         href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-  - name: Private access (VNET Integration)
+  - name: Private access (virtual network Integration)
     items:
       - name: Change private DNS zone
         href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
@@ -308,7 +481,7 @@
     items:
     - name: Troubleshoot TLS connection failures
       href: security/security-tls-troubleshoot.md
-- name: Migrate to Azure Database for PostgreSQL
+- name: Migrate
   items:
     - name: Migration Service for Azure Database for PostgreSQL
       items:
@@ -344,7 +517,7 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships and permissions
+            - name: Migration of roles, ownerships, and permissions
               href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
@@ -372,30 +545,32 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-        - name: Migrating Oracle To Azure Database for PostgreSQL
-          href: migrate/concepts-oracle-migration.md
-        - name: Migration stages
-          href: migrate/concepts-oracle-migration-stages.md
-        - name: Schema conversion
-          items:
-            - name: Schema conversion overview
-              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-            - name: Schema conversion tutorial
-              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
-            - name: Schema conversion reports
-              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
-            - name: Schema conversion best practices
-              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
-            - name: Schema conversion limitations
-              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
-            - name: Application Conversion Quickstart
-              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
-        - name: Best practices
-          href: migrate/best-practices-oracle-to-postgresql.md
-        - name: Pre-migration checklist
-          href: migrate/best-practices-oracle-to-postgresql-checklist.md
-        - name: Migrate with Ora2Pg
-          href: migrate/how-to-migrate-oracle-ora2pg.md
+      - name: Oracle to PostgreSQL schema conversion
+        href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+      - name: Migrating Oracle To Azure Database for PostgreSQL
+        href: migrate/concepts-oracle-migration.md
+      - name: Migration stages
+        href: migrate/concepts-oracle-migration-stages.md
+      - name: Schema conversion
+        items:
+          - name: Schema conversion overview
+            href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+          - name: Schema conversion tutorial
+            href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+          - name: Schema conversion reports
+            href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+          - name: Schema conversion best practices
+            href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+          - name: Schema conversion limitations
+            href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+          - name: Application Conversion Quickstart
+            href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
+          - name: Best practices
+            href: migrate/best-practices-oracle-to-postgresql.md
+          - name: Premigration checklist
+            href: migrate/best-practices-oracle-to-postgresql-checklist.md
+          - name: Migrate with Ora2Pg
+            href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks
@@ -453,287 +628,18 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Intelligent performance
+    - name: Index tuning
       items:
-        - name: Index tuning
-          items:
-            - name: Configure index tuning
-              href: monitor/how-to-configure-index-tuning.md
-            - name: Use index recommendations
-              href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
-        - name: Intelligent tuning
-          items:
-            - name: Azure portal
-              href: monitor/how-to-enable-intelligent-performance-portal.md
-            - name: Azure CLI
-              href: monitor/how-to-enable-intelligent-performance-cli.md
-- name: Elastic clusters
-  items:
-    - name: Overview
-      href: elastic-clusters/concepts-elastic-clusters.md
-    - name: Sharding models
-      href: elastic-clusters/concepts-elastic-clusters-sharding-models.md
-    - name: Table types
-      href: elastic-clusters/concepts-elastic-clusters-table-types.md
-    - name: Limitations
-      href: elastic-clusters/concepts-elastic-clusters-limitations.md
-    - name: Configuring maximum connections
-      href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
-    - name: Create an elastic cluster
+        - name: Configure index tuning
+          href: monitor/how-to-configure-index-tuning.md
+        - name: Use index recommendations
+          href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
+    - name: Intelligent tuning
       items:
         - name: Azure portal
-          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
-        - name: Bicep
-          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
-        - name: ARM template
-          displayName: Azure Resource Manager
-          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
-    - name: Build with Elastic clusters
-      items:
-        - name: Design a multitenant database
-          href: configure-maintain/tutorial-multitenant-database.md
-        - name: Design a real-time dashboard
-          href: configure-maintain/tutorial-real-time-dashboard.md
-        - name: Design for microservices
-          href: configure-maintain/tutorial-microservices.md
-- name: Scaling
-  items:
-    - name: Scaling resources
-      href: scale/concepts-scaling-resources.md
-    - name: Scale out
-      href: scale/how-to-scale-out.md          
-    - name: Scale compute
-      href: scale/how-to-scale-compute.md
-    - name: Scale storage size
-      href: scale/how-to-scale-storage-size.md
-    - name: Scale storage performance
-      href: scale/how-to-scale-storage-performance.md
-    - name: Configure storage autogrow
-      href: scale/how-to-auto-grow-storage.md
-- name: Artifical intelligence
-  items:
-  - name: Azure AI
-    items:
-    - name: Overview
-      href: azure-ai/generative-ai-azure-overview.md
-    - name: Azure OpenAI
-      href: azure-ai/generative-ai-azure-openai.md
-    - name: Azure Cognitive Services
-      href: azure-ai/generative-ai-azure-cognitive.md
-    - name: Azure Machine Learning Services
-      href: azure-ai/generative-ai-azure-machine-learning.md
-    - name: Enable Managed Identity
-      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-    - name: Introducing Semantic Operators
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-    - name: AI Agents
-      href: azure-ai/generative-ai-agents.md
-    - name: Microsoft Foundry Integration
-      href: azure-ai/generative-ai-foundry-integration.md
-    - name: Vector Databases
-      items:
-        - name: Using vector databases in Postgres
-          href: azure-ai/generative-ai-vector-databases.md
-        - name: AI Frameworks
-          items:
-            - name: Overview
-              href: azure-ai/generative-ai-frameworks.md
-            - name: Develop with LangChain
-              href: azure-ai/generative-ai-develop-with-langchain.md
-        - name: Semantic Search
-          href: azure-ai/generative-ai-semantic-search.md
-        - name: Recommendation System
-          href: azure-ai/generative-ai-recommendation-system.md
-        - name: Integrate Azure AI capabilities
-          href: integration/how-to-integrate-azure-ai.md
-    - name: Graph database
-      items:
-        - name: Overview Apache AGE for PostgreSQL
-          href: azure-ai/generative-ai-age-overview.md
-        - name: Performance Best Practices for Apache AGE
-          href: azure-ai/generative-ai-age-performance.md
-  - name: In-database Embeddings (azure_local_ai)
-    items:
-    - name: Overview
-      href: extensions/azure-local-ai.md
-    - name: Vector indexing (pg_diskann)
-      items:
-        - name: Overview
-          href: extensions/how-to-use-pgdiskann.md
-        - name: Vector similarity search (pgvector)
-          items:
-            - name: Basics of pgvector
-              href: extensions/how-to-use-pgvector.md
-              displayName: vector databases
-            - name: Optimize performance when using pgvector
-              href: extensions/how-to-optimize-performance-pgvector.md
-              displayName: vector databases
-- name: Extensions
-  items:
-    - name: Overview
-      href: extensions/concepts-extensions.md
-    - name: Special considerations
-      href: extensions/concepts-extensions-considerations.md
-    - name: List by name
-      href: extensions/concepts-extensions-versions.md
-    - name: List by version of PostgreSQL
-      href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
-    - name: Possible errors when managing extensions
-      href: extensions/errors-extensions.md
-    - name: Allow extensions
-      href: extensions/how-to-allow-extensions.md
-    - name: Load libraries
-      href: extensions/how-to-load-libraries.md
-    - name: Create extensions
-      href: extensions/how-to-create-extensions.md
-    - name: Drop extensions
-      href: extensions/how-to-drop-extensions.md
-    - name: Update extensions
-      href: extensions/how-to-update-extensions.md
-    - name: View installed extensions
-      href: extensions/how-to-view-installed-extensions.md
-- name: Developer experience
-  items:
-    - name: PostgreSQL extension for VS Code
-      href: extensions\vs-code-extension\overview.md
-    - name: Quickstart for PostgreSQL extension for VS Code
-      href: extensions\vs-code-extension\quickstart-connect.md
-    - name: Quickstart for PostgreSQL GitHub Copilot
-      href: extensions\vs-code-extension\quickstart-github-copilot.md
-    - name: Oracle to Azure Database for PostgreSQL schema conversion
-      href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-    - name: Build with AKS
-      items:
-        - name: Deploy Python App on Kubernetes
-          href: configure-maintain/tutorial-django-aks-database.md
-    - name: Build with App Services
-      items:
-        - name: Create a web app in a virtual network
-          href: configure-maintain/tutorial-webapp-server-vnet.md
-        - name: Deploy a Django app on App Service
-          href: /azure/app-service/tutorial-python-postgresql-app
-- name: Server parameters
-  items:
-    - name: Overview
-      href: server-parameters/concepts-server-parameters.md
-    - name: Autovacuum
-      href: server-parameters/param-autovacuum.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Locale and Formatting
-      href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Other Defaults
-      href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Shared Library Preloading
-      href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
-    - name: Client Connection Defaults / Statement Behavior
-      href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
-    - name: Connections and Authentication / Authentication
-      href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
-    - name: Connections and Authentication / Connection Settings
-      href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
-    - name: Connections and Authentication / SSL
-      href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
-    - name: Connections and Authentication / TCP Settings
-      href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
-    - name: Customized Options
-      href: server-parameters/param-customized-options.md?pivots=postgresql-17
-    - name: Developer Options
-      href: server-parameters/param-developer-options.md?pivots=postgresql-17
-    - name: Error Handling
-      href: server-parameters/param-error-handling.md?pivots=postgresql-17
-    - name: File Locations
-      href: server-parameters/param-file-locations.md?pivots=postgresql-17
-    - name: Intelligent tuning
-      href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
-    - name: Lock Management
-      href: server-parameters/param-lock-management.md?pivots=postgresql-17
-    - name: Metrics
-      href: server-parameters/param-metrics.md?pivots=postgresql-17
-    - name: Migration
-      href: server-parameters/param-migration.md?pivots=postgresql-17
-    - name: PgBouncer
-      href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
-    - name: Preset Options
-      href: server-parameters/param-preset-options.md?pivots=postgresql-17
-    - name: Process Title
-      href: server-parameters/param-process-title.md?pivots=postgresql-17
-    - name: Query Tuning / Genetic Query Optimizer
-      href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
-    - name: Query Tuning / Other Planner Options
-      href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
-    - name: Query Tuning / Planner Cost Constants
-      href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
-    - name: Query Tuning / Planner Method Configuration
-      href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
-    - name: Replication / Master Server
-      href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
-    - name: Replication / Primary Server
-      href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
-    - name: Replication / Sending Servers
-      href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
-    - name: Replication / Standby Servers
-      href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
-    - name: Replication / Subscribers
-      href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
-    - name: Reporting and Logging / What to Log
-      href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
-    - name: Reporting and Logging / When to Log
-      href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
-    - name: Reporting and Logging / Where to Log
-      href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
-    - name: Resource Usage / Asynchronous Behavior
-      href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
-    - name: Resource Usage / Background Writer
-      href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
-    - name: Resource Usage / Cost-Based Vacuum Delay
-      href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
-    - name: Resource Usage / Disk
-      href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
-    - name: Resource Usage / Kernel Resources
-      href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
-    - name: Resource Usage / Memory
-      href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
-    - name: Statistics / Cumulative Query and Index Statistics
-      href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
-    - name: Statistics / Monitoring
-      href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
-    - name: Statistics / Query and Index Statistics Collector
-      href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
-    - name: TLS
-      href: server-parameters/param-tls.md?pivots=postgresql-17
-    - name: Version and Platform Compatibility / Other Platforms and Clients
-      href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
-    - name: Version and Platform Compatibility / Previous PostgreSQL Versions
-      href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Archive Recovery
-      href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Archiving
-      href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Checkpoints
-      href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Recovery Target
-      href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Recovery
-      href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
-    - name: Write-Ahead Log / Settings
-      href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
-    - name: Use server parameters
-      items:
-        - name: List all server parameters
-          href: server-parameters/how-to-server-parameters-list-all.md
-        - name: List server parameters with modified values
-          href: server-parameters/how-to-server-parameters-list-modified.md
-        - name: List read-write static server parameters
-          href: server-parameters/how-to-server-parameters-list-read-write-static.md
-        - name: List read-write dynamic server parameters
-          href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
-        - name: List read-only server parameters
-          href: server-parameters/how-to-server-parameters-list-read-only.md
-        - name: Set the value of one or more server parameters
-          href: server-parameters/how-to-server-parameters-set-value.md
-        - name: Revert one server parameter to its default
-          href: server-parameters/how-to-server-parameters-revert-one-default.md
-        - name: Revert all server parameters to their default
-          href: server-parameters/how-to-server-parameters-revert-all-default.md
+          href: monitor/how-to-enable-intelligent-performance-portal.md
+        - name: Azure CLI
+          href: monitor/how-to-enable-intelligent-performance-cli.md
 - name: Samples
   items:
     - name: Azure CLI samples
@@ -812,8 +718,129 @@
     - name: Resource Manager template
       href: /azure/templates/microsoft.dbforpostgresql/allversions
     - name: Azure Policy built-ins
-      displayName: samples, policies, definitions
       href: ./policy-reference.md
+    - name: Server parameters
+      items:
+        - name: Overview
+          href: server-parameters/concepts-server-parameters.md
+        - name: Autovacuum
+          href: server-parameters/param-autovacuum.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Locale and Formatting
+          href: server-parameters/param-client-connection-defaults-locale-formatting.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Other Defaults
+          href: server-parameters/param-client-connection-defaults-defaults.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Shared Library Preloading
+          href: server-parameters/param-client-connection-defaults-shared-library-preloading.md?pivots=postgresql-17
+        - name: Client Connection Defaults / Statement Behavior
+          href: server-parameters/param-client-connection-defaults-statement-behavior.md?pivots=postgresql-17
+        - name: Connections and Authentication / Authentication
+          href: server-parameters/param-connections-authentication-authentication.md?pivots=postgresql-17
+        - name: Connections and Authentication / Connection Settings
+          href: server-parameters/param-connections-authentication-connection-settings.md?pivots=postgresql-17
+        - name: Connections and Authentication / SSL
+          href: server-parameters/param-connections-authentication-ssl.md?pivots=postgresql-17
+        - name: Connections and Authentication / TCP Settings
+          href: server-parameters/param-connections-authentication-tcp-settings.md?pivots=postgresql-17
+        - name: Customized Options
+          href: server-parameters/param-customized-options.md?pivots=postgresql-17
+        - name: Developer Options
+          href: server-parameters/param-developer-options.md?pivots=postgresql-17
+        - name: Error Handling
+          href: server-parameters/param-error-handling.md?pivots=postgresql-17
+        - name: File Locations
+          href: server-parameters/param-file-locations.md?pivots=postgresql-17
+        - name: Intelligent tuning
+          href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
+        - name: Lock Management
+          href: server-parameters/param-lock-management.md?pivots=postgresql-17
+        - name: Metrics
+          href: server-parameters/param-metrics.md?pivots=postgresql-17
+        - name: Migration
+          href: server-parameters/param-migration.md?pivots=postgresql-17
+        - name: PgBouncer
+          href: server-parameters/param-pgbouncer.md?pivots=postgresql-17
+        - name: Preset Options
+          href: server-parameters/param-preset-options.md?pivots=postgresql-17
+        - name: Process Title
+          href: server-parameters/param-process-title.md?pivots=postgresql-17
+        - name: Query Tuning / Genetic Query Optimizer
+          href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
+        - name: Query Tuning / Other Planner Options
+          href: server-parameters/param-query-tuning-planner-options.md?pivots=postgresql-17
+        - name: Query Tuning / Planner Cost Constants
+          href: server-parameters/param-query-tuning-planner-cost-constants.md?pivots=postgresql-17
+        - name: Query Tuning / Planner Method Configuration
+          href: server-parameters/param-query-tuning-planner-method-configuration.md?pivots=postgresql-17
+        - name: Replication / Master Server
+          href: server-parameters/param-replication-master-server.md?pivots=postgresql-17
+        - name: Replication / Primary Server
+          href: server-parameters/param-replication-primary-server.md?pivots=postgresql-17
+        - name: Replication / Sending Servers
+          href: server-parameters/param-replication-sending-servers.md?pivots=postgresql-17
+        - name: Replication / Standby Servers
+          href: server-parameters/param-replication-standby-servers.md?pivots=postgresql-17
+        - name: Replication / Subscribers
+          href: server-parameters/param-replication-subscribers.md?pivots=postgresql-17
+        - name: Reporting and Logging / What to Log
+          href: server-parameters/param-reporting-logging-what-log.md?pivots=postgresql-17
+        - name: Reporting and Logging / When to Log
+          href: server-parameters/param-reporting-logging-when-log.md?pivots=postgresql-17
+        - name: Reporting and Logging / Where to Log
+          href: server-parameters/param-reporting-logging-where-log.md?pivots=postgresql-17
+        - name: Resource Usage / Asynchronous Behavior
+          href: server-parameters/param-resource-usage-asynchronous-behavior.md?pivots=postgresql-17
+        - name: Resource Usage / Background Writer
+          href: server-parameters/param-resource-usage-background-writer.md?pivots=postgresql-17
+        - name: Resource Usage / Cost-Based Vacuum Delay
+          href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md?pivots=postgresql-17
+        - name: Resource Usage / Disk
+          href: server-parameters/param-resource-usage-disk.md?pivots=postgresql-17
+        - name: Resource Usage / Kernel Resources
+          href: server-parameters/param-resource-usage-kernel-resources.md?pivots=postgresql-17
+        - name: Resource Usage / Memory
+          href: server-parameters/param-resource-usage-memory.md?pivots=postgresql-17
+        - name: Statistics / Cumulative Query and Index Statistics
+          href: server-parameters/param-statistics-cumulative-query-index-statistics.md?pivots=postgresql-17
+        - name: Statistics / Monitoring
+          href: server-parameters/param-statistics-monitoring.md?pivots=postgresql-17
+        - name: Statistics / Query and Index Statistics Collector
+          href: server-parameters/param-statistics-query-index-statistics-collector.md?pivots=postgresql-17
+        - name: TLS
+          href: server-parameters/param-tls.md?pivots=postgresql-17
+        - name: Version and Platform Compatibility / Other Platforms and Clients
+          href: server-parameters/param-version-platform-compatibility-platforms-clients.md?pivots=postgresql-17
+        - name: Version and Platform Compatibility / Previous PostgreSQL Versions
+          href: server-parameters/param-version-platform-compatibility-postgresql-versions.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Archive Recovery
+          href: server-parameters/param-write-ahead-log-archive-recovery.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Archiving
+          href: server-parameters/param-write-ahead-log-archiving.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Checkpoints
+          href: server-parameters/param-write-ahead-log-checkpoints.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Recovery Target
+          href: server-parameters/param-write-ahead-log-recovery-target.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Recovery
+          href: server-parameters/param-write-ahead-log-recovery.md?pivots=postgresql-17
+        - name: Write-Ahead Log / Settings
+          href: server-parameters/param-write-ahead-log-settings.md?pivots=postgresql-17
+        - name: Use server parameters
+          items:
+            - name: List all server parameters
+              href: server-parameters/how-to-server-parameters-list-all.md
+            - name: List server parameters with modified values
+              href: server-parameters/how-to-server-parameters-list-modified.md
+            - name: List read-write static server parameters
+              href: server-parameters/how-to-server-parameters-list-read-write-static.md
+            - name: List read-write dynamic server parameters
+              href: server-parameters/how-to-server-parameters-list-read-write-dynamic.md
+            - name: List read-only server parameters
+              href: server-parameters/how-to-server-parameters-list-read-only.md
+            - name: Set the value of one or more server parameters
+              href: server-parameters/how-to-server-parameters-set-value.md
+            - name: Revert one server parameter to its default
+              href: server-parameters/how-to-server-parameters-revert-one-default.md
+            - name: Revert all server parameters to their default
+              href: server-parameters/how-to-server-parameters-revert-all-default.md
 - name: Resources
   items:
     - name: Build your skills with Microsoft Learn training

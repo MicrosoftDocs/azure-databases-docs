@@ -4,7 +4,7 @@ description: Overview of the PostgreSQL extension for Visual Studio Code.
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
@@ -83,13 +83,13 @@ The extension supports various Linux distributions, including Ubuntu, Fedora, an
 For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this feedback through the Visual Studio Code Help menu or the PGSQL command palette.
 
 - Help menu
-    - Go to **Help > Report Issue**
+  - Go to **Help > Report Issue**
 
 - Command palette
-    - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
+  - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](quickstart-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](quickstart-github-copilot.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
