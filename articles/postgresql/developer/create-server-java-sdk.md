@@ -4,7 +4,7 @@ description: This document is a QuickStart guide for Azure SDK library for Java 
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/08/2026
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ---

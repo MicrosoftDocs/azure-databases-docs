@@ -4,7 +4,7 @@ description: Quickstart guide to create an Azure Database for PostgreSQL flexibl
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
-ms.date: 01/08/2026
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.topic: article
 ms.custom:
@@ -28,7 +28,7 @@ In this article, you learn how to:
 ## Prerequisites
 
 - If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
-- [Install Azure CLI](/cli/azure/install-azure-cli) version 2.0 or later locally (or use [Azure Cloud Shell](https://azure.microsoft.com/get-started/azure-portal/cloud-shell/) which has CLI preinstalled). To see the version installed, run the `az --version` command.
+- [Install Azure CLI](/cli/azure/install-azure-cli) version 2.0 or later locally (or use [Azure Cloud Shell,](https://azure.microsoft.com/get-started/azure-portal/cloud-shell/) which has CLI preinstalled). To see the version installed, run the `az --version` command.
 - Sign in to your account by using the [az login](/cli/azure/authenticate-azure-cli) command. Note the **id** property from the command output for the corresponding subscription name.
 
   ```azurecli-interactive
@@ -42,20 +42,18 @@ In this article, you learn how to:
 
 ## Create a flexible server instance
 
-in a new virtual network
-
-Create a private Azure Database for PostgreSQL flexible server instance inside a virtual network (VNET) using the following command:
+Create a private Azure Database for a PostgreSQL flexible server instance inside a virtual network by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server create --resource-group demoresourcegroup --name demoserverpostgres --vnet demoappvnet --location westus2
 ```
 This command performs the following actions, which might take a few minutes:
 
-- Create the resource group if it doesn't already exist.
-- Generates a server name if it's not provided.
+- Creates the resource group if it doesn't already exist.
+- Generates a server name if you don't provide one.
 - Creates a virtual network and subnet for the Azure Database for PostgreSQL flexible server instance.
-- Creates admin username and password for your server if not provided.
-- Creates an empty database called **postgres**.
+- Creates admin username and password for your server if you don't provide them.
+- Creates an empty database named **postgres**.
 
 Here's the sample output.
 
@@ -85,7 +83,7 @@ Try using 'az postgres flexible-server connect' command to test out connection.
 
 ## Create a web app
 
-In this section, you create an app host in an App Service app, connect this app to the Azure Database for PostgreSQL flexible server database, and then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. The Basic Plan doesn't support VNET integration. Use Standard or Premium.
+In this section, you create an app host in an App Service app, connect this app to the Azure Database for PostgreSQL flexible server database, and then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. The Basic Plan doesn't support virtual network integration. Use Standard or Premium.
 
 Create an App Service app (the host process) by using the `az webapp up` command.
 
@@ -94,8 +92,8 @@ az webapp up --resource-group demoresourcegroup --location westus2 --plan testap
 ```
 
 > [!NOTE]  
-> - For the _--location_ argument, use the same location as you did for the database in the previous section.
-> - Replace \<app-name\> with a unique name across all Azure. Allowed characters for \<app-name\> are A-Z, 0-9, and -. A good pattern is to use a combination of your company name and an app identifier.
+> - For the `_--location_ argument`, use the same location as you did for the database in the previous section.
+> - Replace `<app-name>` with a unique name across all Azure. Allowed characters for `<app-name>` are A-Z, 0-9, and -. A good pattern is to use a combination of your company name and an app identifier.
 
 This command performs the following actions, which might take a few minutes:
 
@@ -106,7 +104,7 @@ This command performs the following actions, which might take a few minutes:
 
 ### Create subnet for web app
 
-Before enabling VNET integration, you need a subnet that's delegated to App Service Web App. Before creating the subnet, view the database subnet address to avoid using the same address prefix for the web app subnet.
+Before enabling virtual network integration, you need a subnet that's delegated to App Service Web App. Before creating the subnet, view the database subnet address to avoid using the same address prefix for the web app subnet.
 
 ```azurecli-interactive
 az network vnet show --resource-group demoresourcegroup -n demoappvnet

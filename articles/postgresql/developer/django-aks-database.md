@@ -4,7 +4,7 @@ description: Learn how to quickly build and deploy Django  on AKS with Azure Dat
 author: agapovm
 ms.author: maximagapov
 ms.reviewer: maghan
-ms.date: 01/08/2026
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.topic: tutorial
 ms.custom:
