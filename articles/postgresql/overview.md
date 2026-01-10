@@ -6,7 +6,6 @@ ms.author: guybo
 ms.reviewer: maghan
 ms.date: 01/09/2026
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: overview
 ---
 
