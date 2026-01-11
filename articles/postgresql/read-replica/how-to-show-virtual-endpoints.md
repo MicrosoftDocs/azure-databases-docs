@@ -6,7 +6,6 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/13/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 ---
 

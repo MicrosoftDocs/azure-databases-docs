@@ -6,7 +6,6 @@ ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 

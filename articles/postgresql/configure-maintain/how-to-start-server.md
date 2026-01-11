@@ -6,7 +6,6 @@ ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 04/22/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to start the compute of an Azure Database for PostgreSQL.
 ---

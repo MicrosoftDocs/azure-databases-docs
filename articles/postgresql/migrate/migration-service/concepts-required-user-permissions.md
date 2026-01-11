@@ -6,7 +6,6 @@ ms.author: shriramm
 ms.reviewer: maghan
 ms.date: 07/21/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ---
 

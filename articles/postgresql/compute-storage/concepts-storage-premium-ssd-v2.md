@@ -6,7 +6,6 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 12/18/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ms.custom:
   - references_regions

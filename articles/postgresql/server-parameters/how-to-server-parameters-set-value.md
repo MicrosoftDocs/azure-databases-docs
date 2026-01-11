@@ -6,7 +6,6 @@ ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to set the value of one or more server parameters of an Azure Database for PostgreSQL.
 ---

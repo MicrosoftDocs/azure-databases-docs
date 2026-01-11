@@ -6,7 +6,6 @@ ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 # customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL.
 ---

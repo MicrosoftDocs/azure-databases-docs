@@ -6,7 +6,6 @@ ms.author: andreatapia
 ms.reviewer: maghan
 ms.date: 10/17/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
