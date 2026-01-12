@@ -4,10 +4,11 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/8/2025
+ms.date: 1/12/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.topic: concept-article
+ms.custom: references_regions
 ---
 
 # Major version upgrades in Azure Database for PostgreSQL 
@@ -24,7 +25,7 @@ In-place upgrades retain the server name and other settings of the current serve
 > Azure Database for PostgreSQL supports in-place major version upgrades only to currently supported PostgreSQL versions. For example, you can upgrade the current version given the target version is officially supported by Azure at the time of the upgrade. Unsupported versions can't be selected as upgrade targets, and attempting to upgrade to a deprecated version may result in failure or service disruption. Always consult the [Azure PostgreSQL versioning policy](/azure/postgresql/flexible-server/concepts-version-policy) and [upgrade documentation](/azure/postgresql/flexible-server/concepts-major-version-upgrade) before initiating a major version upgrade. 
 
 > [!NOTE]
-> Major version upgrades to PostgreSQL 18 are being enabled in phases. At this time, MVU to PostgreSQL 18 is available in the AustraliaSoutheast, CanadaCentral, CentralIndia, CentralUS, EastAsia, EastUS, EastUS2, NorthCentralUS, SouthAfricaNorth, SouthCentralUS, SwedenCentral, WestCentralUS, WestUS2, and WestUS3 regions.
+> Major version upgrades to PostgreSQL 18 are being enabled in phases. At this time, MVU to PostgreSQL 18 is available in the AustraliaSoutheast, CanadaCentral, CentralIndia, CentralUS, EastAsia, EastUS2, NorthCentralUS, SouthAfricaNorth, SouthCentralUS, SwedenCentral, WestCentralUS, WestUS2, and WestUS3 regions.
 
 ## Upgrade Process
 
@@ -62,7 +63,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 ### Extension Limitations
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
-- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `dblink`, `orafce`, `postgres_fdw`.
+- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `orafce`, `postgres_fdw`.
 - The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
 - When upgrading to PostgreSQL 17, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
 

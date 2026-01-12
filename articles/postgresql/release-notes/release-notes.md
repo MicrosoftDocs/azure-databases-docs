@@ -22,12 +22,10 @@ This article highlights the latest updates and enhancements for Azure Database f
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23. <sup>$</sup>
 
 ## Release: November 2025
-
 - General availability
     - [PostgreSQL 18](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: October 2025
-
 - General availability
     - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
 - Preview
@@ -58,7 +56,6 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for [Ansible collection](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) with GA REST API version.
 
 ## Release: May 2025
-
 - General Availability
     - [On-demand backups](./../backup-restore/concepts-backup-restore.md#on-demand-backups).
     - [Long-term backups](./../backup-restore/concepts-backup-restore.md#long-term-retention)
@@ -75,7 +72,6 @@ This article highlights the latest updates and enhancements for Azure Database f
     - [Major Version Upgrade Support for PostgreSQL 17](../configure-maintain/concepts-major-version-upgrade.md)
 
 ## Release: April 2025
-
 - Public preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/announcing-mirroring-for-azure-database-for-postgresql-in-microsoft-fabric-for-p/4396750) for Azure Database for PostgreSQL.
 - Public preview of [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL.
@@ -84,24 +80,20 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 
 ## Release: March 2025
-
 - General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
 - General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
 
 ## Release: February 2025
-
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.2, 16.6, 15.10, 14.15, 13.18, and 12.22. <sup>$</sup>
 - Support for [pg_signal_autovacuum_worker](../troubleshoot/how-to-autovacuum-tuning.md#troubleshooting-guides) role in PostgreSQL versions 15 and higher for Azure Database for PostgreSQL.
 - Public preview of [enhanced connection and CPU monitoring metrics](../monitor/concepts-monitoring.md#enhanced-metrics) (`TCP_connection_backlog`, `postmaster_process_cpu_usage`) is now available.
 - Public preview of [DiskANN Vector Indexing](../extensions/how-to-use-pgdiskann.md) is now available.
 
 ## Release: January 2025
-
 - Public preview of [Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md) for Azure Database for PostgreSQL.
 
 ## Release: December 2024
-
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
 - General Availability of [index tuning](../monitor/concepts-index-tuning.md) on Azure Database for PostgreSQL.
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL.
