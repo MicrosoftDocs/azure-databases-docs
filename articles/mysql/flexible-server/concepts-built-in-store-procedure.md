@@ -95,7 +95,7 @@ To reduce the time to truncate the target undo log set below parameters and rest
 |innodb_purge_rseg_truncate_frequency|8|
 |innodb_purge_threads|16|
 
-
+Keep [Verifying and Checking Undo Tablespaces](./concepts-built-in-store-procedure.md#verifying-and-checking-undo-tablespaces) until its empty.
 
 ### Drop problematic table 
 
