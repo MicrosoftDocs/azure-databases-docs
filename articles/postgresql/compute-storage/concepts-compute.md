@@ -139,5 +139,5 @@ The detailed specifications of the available server types are as follows:
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL](../configure-maintain/how-to-manage-server-portal.md)
+- [Limits in Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md)

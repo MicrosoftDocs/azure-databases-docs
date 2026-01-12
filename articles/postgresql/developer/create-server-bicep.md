@@ -4,15 +4,14 @@ description: In this Quickstart, learn how to create an Azure Database for Postg
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 02/28/2025
+ms.date: 01/09/2026
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
   - devx-track-bicep
 ---
 
-# Quickstart: Use a Bicep file to create an Azure Database for PostgreSQL
+# Create an Azure Database for PostgreSQL instance using Bicep
 
 In this quickstart, you learn how to use a Bicep file to create an Azure Database for PostgreSQL flexible server instance.
 
@@ -147,4 +146,4 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- [Connect and query overview for Azure Database for PostgreSQL](../connectivity/how-to-connect-query-guide.md).
+- [Connect and query overview for Azure Database for PostgreSQL](../connectivity/how-to-connect-query-guide.md)

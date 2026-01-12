@@ -96,5 +96,5 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md)
-- [Limits in Azure Database for PostgreSQL](concepts-limits.md)
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md).

@@ -71,5 +71,5 @@ Learn how to [scale up or down IOPS](../scale/how-to-scale-compute.md).
 
 ## Related content
 
-- [Manage Azure Database for PostgreSQL using the Azure portal](how-to-manage-server-portal.md).
-- [Limits in Azure Database for PostgreSQL](concepts-limits.md).
+- [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
+- [Limits in Azure Database for PostgreSQL](../configure-maintain/concepts-limits.md).
