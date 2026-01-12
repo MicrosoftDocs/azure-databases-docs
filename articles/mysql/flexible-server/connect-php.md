@@ -4,7 +4,7 @@ description: This quickstart provides several PHP code samples you can use to co
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan, randolphwest
-ms.date: 06/18/2025
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -28,13 +28,12 @@ This quickstart uses the resources created in either of these guides as a starti
 
 ## Prepare your client workstation
 
-1. If you created your flexible server with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
-
-1. If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md).
+- If you created your flexible server with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your flexible server. Refer to [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure CLI](how-to-manage-virtual-network-cli.md).
+- If you created your flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](security-how-to-manage-firewall-cli.md).
 
 ### Install PHP
 
-Install PHP on your own server, or create an Azure [web app](/azure/app-service/overview) that includes PHP. For more information, see [create and manage firewall rules](how-to-manage-firewall-portal.md).
+Install PHP on your own server, or create an Azure [web app](/azure/app-service/overview) that includes PHP. For more information, see [create and manage firewall rules](security-how-to-manage-firewall-portal.md).
 
 #### [macOS](#tab/macos)
 
@@ -59,7 +58,7 @@ Get the connection information needed to connect to the Azure Database for MySQL
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (in the following examples, replace `<server>` with a valid value).
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you created (in the following examples, replace `<server>` with a valid value).
 
 1. Select the server name.
 
@@ -103,9 +102,9 @@ if (mysqli_connect_errno($conn)) {
 
 Use the following code to connect and create a table by using `CREATE TABLE` SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code calls methods [mysqli_init](https://www.php.net/manual/en/mysqli.init.php) and [mysqli_real_connect](https://www.php.net/manual/en/mysqli.real-connect.php) to connect to MySQL. Then it calls method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) to run the query. Then it calls method [mysqli_close](https://www.php.net/manual/en/mysqli.close.php) to close the connection.
+The code uses the **MySQL Improved extension** (`mysqli`) class included in PHP. The code calls methods [mysqli_init](https://www.php.net/manual/en/mysqli.init.php) and [mysqli_real_connect](https://www.php.net/manual/en/mysqli.real-connect.php) to connect to MySQL. Then it calls method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) to run the query. Then it calls method [mysqli_close](https://www.php.net/manual/en/mysqli.close.php) to close the connection.
 
-You can also connect to Azure Database for MySQL using the object-oriented interface provided by the **mysqli** extension.
+You can also connect to Azure Database for MySQL using the object-oriented interface provided by the `mysqli` extension.
 
 #### [Procedural](#tab/procedural-create-table)
 
@@ -193,9 +192,9 @@ $conn->close();
 
 Use the following code to connect and insert data by using an `INSERT` SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared insert statement, then binds the parameters for each inserted column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (`mysqli`) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared insert statement, then binds the parameters for each inserted column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
-You can also connect to Azure Database for MySQL using the object-oriented interface provided by the **mysqli** extension.
+You can also connect to Azure Database for MySQL using the object-oriented interface provided by the `mysqli` extension.
 
 #### [Procedural](#tab/procedural-insert)
 
@@ -289,9 +288,9 @@ $conn->close();
 
 ## Read data
 
-Use the following code to connect and read the data by using a `SELECT` SQL statement. The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) perform the sql query and method [mysqli_fetch_assoc](https://www.php.net/manual/en/mysqli-result.fetch-assoc.php) to fetch the resulting rows.
+Use the following code to connect and read the data by using a `SELECT` SQL statement. The code uses the **MySQL Improved extension** (`mysqli`) class included in PHP. The code uses method [mysqli_query](https://www.php.net/manual/en/mysqli.query.php) perform the sql query and method [mysqli_fetch_assoc](https://www.php.net/manual/en/mysqli-result.fetch-assoc.php) to fetch the resulting rows.
 
-You can also connect to Azure Database for MySQL using the object-oriented interface provided by the **mysqli** extension.
+You can also connect to Azure Database for MySQL using the object-oriented interface provided by the `mysqli` extension.
 
 #### [Procedural](#tab/procedural-read)
 
@@ -374,9 +373,9 @@ $conn->close();
 
 Use the following code to connect and update the data by using an `UPDATE` SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared update statement, then binds the parameters for each updated column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (`mysqli`) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared update statement, then binds the parameters for each updated column value using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
-You can also connect to Azure Database for MySQL using the object-oriented interface provided by the **mysqli** extension.
+You can also connect to Azure Database for MySQL using the object-oriented interface provided by the `mysqli` extension.
 
 #### [Procedural](#tab/procedural-update)
 
@@ -462,9 +461,9 @@ $conn->close();
 
 Use the following code to connect and read the data by using a `DELETE` SQL statement.
 
-The code uses the **MySQL Improved extension** (mysqli) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared delete statement, then binds the parameters for the where clause in the statement using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
+The code uses the **MySQL Improved extension** (`mysqli`) class included in PHP. The code uses method [mysqli_prepare](https://www.php.net/manual/en/mysqli.prepare.php) to create a prepared delete statement, then binds the parameters for the where clause in the statement using method [mysqli_stmt_bind_param](https://www.php.net/manual/en/mysqli-stmt.bind-param.php). The code runs the statement by using method [mysqli_stmt_execute](https://www.php.net/manual/en/mysqli-stmt.execute.php) and afterwards closes the statement by using method [mysqli_stmt_close](https://www.php.net/manual/en/mysqli-stmt.close.php).
 
-You can also connect to Azure Database for MySQL using the object-oriented interface provided by the **mysqli** extension.
+You can also connect to Azure Database for MySQL using the object-oriented interface provided by the `mysqli` extension.
 
 #### [Procedural](#tab/procedural-delete)
 
@@ -542,7 +541,7 @@ $conn->close();
 
 ## Related content
 
-- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md)
+- [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md)
 - [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
-- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md)
+- [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](security-how-to-manage-firewall-portal.md)
 - [Create and manage virtual networks for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-virtual-network-portal.md)

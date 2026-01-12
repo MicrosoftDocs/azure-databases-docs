@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Manage Azure Database for PostgreSQL  by using the Azure CLI
+# Manage Azure Database for PostgreSQL by using the Azure CLI
 
 This article shows you how to manage your Azure Database for PostgreSQL flexible server instance deployed in Azure. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
 

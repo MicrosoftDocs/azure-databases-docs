@@ -14,7 +14,7 @@ ms.topic: how-to
 
 You can specify maintenance options for each Azure Database for MySQL flexible server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
 > [!NOTE]
-> These new maintenance features are being rolled out progressively across Azure regions. If you do not see them immediately in the Azure Portal, please allow some time for full deployment. Availability may vary depending on your subscription and region.
+> These new maintenance features are being rolled out progressively across Azure regions. If you do not see them immediately in the Azure portal, please allow some time for full deployment. Availability may vary depending on your subscription and region.
 
 ## Prerequisites
 

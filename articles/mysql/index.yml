@@ -8,12 +8,12 @@ metadata:
   author: deepthiprasad
   ms.author: deprasa
   ms.reviewer: maghan
-  ms.date: 07/21/2025
+  ms.date: 01/05/2026
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | whats-new
 
 landingContent:
-# Card 1
+  # Card 1
   - title: About Azure Database for MySQL
     linkLists:
       - linkListType: overview
@@ -27,7 +27,7 @@ landingContent:
           - text: Check out our blog
             url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MySQL/bg-p/ADforMySQL
 
-# Card 2
+  # Card 2
   - title: Azure Database for MySQL deployment model
     linkLists:
       - linkListType: overview
@@ -53,13 +53,13 @@ landingContent:
           - text: Create a server using Azure CLI
             url: flexible-server/quickstart-create-server-cli.md
 
-# Card 3
+  # Card 3
   - title: Connect and query
     linkLists:
       - linkListType: how-to-guide
         links:
-        - text: Connect and query reference guide
-          url:  flexible-server/how-to-connect-tls-ssl.md
+          - text: Connect and query reference guide
+            url: flexible-server/security-tls-how-to-connect.md
       - linkListType: quickstart
         links:
           - text: Connect using MySQL Workbench
@@ -71,25 +71,25 @@ landingContent:
           - text: Connect using Python
             url: flexible-server/connect-python.md
 
-# Card 4
+  # Card 4
   - title: Migrations
     linkLists:
       - linkListType: how-to-guide
         links:
-        - text: Azure Database for MySQL migration guide
-          url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
-        - text: Dump and restore
-          url: flexible-server/concepts-migrate-dump-restore.md
-        - text: Import and export
-          url: flexible-server/concepts-migrate-import-export.md
-        - text: Migrate Amazon RDS for MySQL using data-in replication
-          url: flexible-server/how-to-migrate-rds-mysql-data-in-replication.md
-        - text: Minimal-downtime migration
-          url: flexible-server/how-to-migrate-online.md
-        - text: Common errors during or post migration
-          url: flexible-server/how-to-troubleshoot-common-errors.md
+          - text: Azure Database for MySQL migration guide
+            url: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
+          - text: Dump and restore
+            url: flexible-server/concepts-migrate-dump-restore.md
+          - text: Import and export
+            url: flexible-server/concepts-migrate-import-export.md
+          - text: Migrate Amazon RDS for MySQL using data-in replication
+            url: flexible-server/how-to-migrate-rds-mysql-data-in-replication.md
+          - text: Minimal-downtime migration
+            url: flexible-server/how-to-migrate-online.md
+          - text: Common errors during or post migration
+            url: flexible-server/how-to-troubleshoot-common-errors.md
 
-# Card 5
+  # Card 5
   - title: Manage and migrate data
     linkLists:
       - linkListType: concept
@@ -109,21 +109,21 @@ landingContent:
           - text: Troubleshoot migration errors
             url: flexible-server/how-to-troubleshoot-common-errors.md
 
-# Card 6
+  # Card 6
   - title: Application Development
     linkLists:
       - linkListType: tutorial
         links:
           - text: Build a PHP (Laravel) web app with Azure Database for MySQL
             url: flexible-server/tutorial-php-database-app.md
-          - text: Create a Web App with Azure Database for MySQL in VNET
+          - text: Create a Web App with Azure Database for MySQL in virtual network
             url: flexible-server/tutorial-webapp-server-vnet.md
           - text: Deploy Java Spring Boot app on AKS with Azure Database for MySQL
             url: flexible-server/tutorial-deploy-springboot-on-aks-vnet.md
           - text: Deploy WordPress on App Service with Azure Database for MySQL
             url: /azure/app-service/quickstart-wordpress
 
-# Card 7
+  # Card 7
   - title: Troubleshoot
     linkLists:
       - linkListType: how-to-guide
@@ -147,7 +147,7 @@ landingContent:
           - text: Troubleshooting best practices
             url: flexible-server/concepts-troubleshooting-best-practices.md
 
-# Card 8
+  # Card 8
   - title: Reference
     linkLists:
       - linkListType: download

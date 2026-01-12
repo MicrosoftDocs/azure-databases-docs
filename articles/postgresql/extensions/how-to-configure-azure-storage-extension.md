@@ -50,7 +50,7 @@ To meet the prerequisites needed in each case, follow the instructions in the co
 
 # [Azure portal](#tab/portal-03)
 
-:::image type="content" source="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-use-pg-azure-storage/enable-system-assigned-managed-identity-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png":::
 
 # [CLI](#tab/cli-03)
 
@@ -78,7 +78,7 @@ Your Azure Storage account must have **Allow storage account key access** enable
 
 ##### [Azure portal](#tab/portal-04)
 
-:::image type="content" source="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-use-pg-azure-storage/AllowSharedKeyAccess-enabled-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/allow-shared-key-access-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-configure-azure-storage-extension/allow-shared-key-access-enabled-portal.png":::
 
 ##### [CLI](#tab/cli-04)
 
@@ -101,7 +101,7 @@ To pass it to the [azure_storage.account_add](./reference-azure-storage-extensio
 
 ##### [Azure portal](#tab/portal-05)
 
-:::image type="content" source="media/how-to-use-pg-azure-storage/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-use-pg-azure-storage/copy-access-key-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-configure-azure-storage-extension/copy-access-key-portal.png":::
 
 ##### [CLI](#tab/cli-05)
 
@@ -125,9 +125,9 @@ Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-k
 
 ### [Azure portal](#tab/portal-01)
 
-:::image type="content" source="media/how-to-use-pg-azure-storage/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in server parameters." lightbox="media/how-to-use-pg-azure-storage/shared-preload-libraries-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in server parameters." lightbox="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png":::
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
-:::image type="content" source="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-use-pg-azure-storage/save-and-restart-shared-preload-libraries-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png":::
 
 ### [CLI](#tab/cli-01)
 
@@ -165,7 +165,7 @@ You must allowlist the extension so that users can run CREATE EXTENSION, DROP EX
 
 ### [Azure portal](#tab/portal-02)
 
-:::image type="content" source="media/how-to-use-pg-azure-storage/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-use-pg-azure-storage/azure-extensions-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png":::
 
 ### [CLI](#tab/cli-02)
 
