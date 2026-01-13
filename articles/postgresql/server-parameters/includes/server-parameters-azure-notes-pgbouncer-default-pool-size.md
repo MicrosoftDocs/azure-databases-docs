@@ -2,7 +2,6 @@
 title: pgbouncer.default_pool_size server parameter
 description: pgbouncer.default_pool_size server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: include
 ms.date: 09/13/2024
 author: nachoalonsoportillo

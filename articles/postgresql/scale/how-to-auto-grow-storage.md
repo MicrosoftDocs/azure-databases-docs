@@ -6,7 +6,6 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 07/03/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange

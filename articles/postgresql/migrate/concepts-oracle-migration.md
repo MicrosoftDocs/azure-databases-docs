@@ -7,7 +7,6 @@ ms.reviewer: maghan
 ms.contributor: datasqlninja
 ms.date: 01/24/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ms.collection:
   - migration
