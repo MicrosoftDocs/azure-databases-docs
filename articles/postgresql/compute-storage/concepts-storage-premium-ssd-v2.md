@@ -57,6 +57,13 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Central US, East Asia, East US, East US 2, South Central US, and West US 2 regions.
 
+- *High Availability
+Geo Replicas
+Geo Redundant Backups
+Major Version Upgrade
+Virtual Endpoints 
+Geo DR*
+
 ### Supported features limitations
 
 - Customer Managed Keys, On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
