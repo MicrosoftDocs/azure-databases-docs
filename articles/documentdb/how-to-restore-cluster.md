@@ -22,7 +22,7 @@ Azure DocumentDB provides automatic backups that enable point-in-time recovery (
 
 ## Backups
 
-Backups are **performed automatically** in the background. Backups are retained for 35 days for active clusters and 7 days for deleted clusters. All backups are encrypted using AES 256-bit encryption.
+Backups are **performed automatically** in the background. Backups are retained for 35 days for active clusters, 7 days for active [burstable tier](./compute-storage.md#what-is-burstable-compute) (M10, M20, M25) clusters, and 7 days for deleted clusters. All backups are encrypted using AES 256-bit encryption.
 
 > [!NOTE]
 > Backup files can't be exported. They may only be used for restore operations in Azure DocumentDB.
