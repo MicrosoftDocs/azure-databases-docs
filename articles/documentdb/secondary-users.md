@@ -11,7 +11,7 @@ ms.custom:
 
 # Read and read/write privileges with secondary native users on Azure DocumentDB
 
-Azure DocumentDB supports secondary native DocumentDB users with specialized read-write and read-only roles, enabling secure delegation of data access. The built-in administrative account, created during cluster provisioning, has full privileges, including user management. Secondary users are automatically replicated to cluster replicas, but user management must be performed on the primary cluster.
+Azure DocumentDB supports secondary native [DocumentDB](oss.md) users with specialized read-write and read-only roles, enabling secure delegation of data access. The built-in administrative account, created during cluster provisioning, has full privileges, including user management. Secondary users are automatically replicated to cluster replicas, but user management must be performed on the primary cluster.
 
 ## Prerequisites
 

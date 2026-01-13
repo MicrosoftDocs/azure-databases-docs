@@ -213,9 +213,9 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
 ## October 2022
 
-- **AMD compute SKUs for General Purpose and Business Critical tiers in Azure Database for MySQL Flexible Server**
+- **AMD compute SKUs for General Purpose and Memory-Optimized tiers in Azure Database for MySQL Flexible Server**
 
-  You can now choose between Intel and AMD hardware for Azure Database for MySQL Flexible Server instances based on the General Purpose (Dadsv5-series) and Business Critical (Eadsv5-series) tiers. AMD SKU offers competitive price-performance options to all Azure Database for MySQL Flexible Server users. To ensure transparency in the portal, you can select the compute hardware vendor for both primary and secondary server. After determining the best compute processor for your workload, deploy Flexible Servers in more available regions and zones. [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md).
+  You can now choose between Intel and AMD hardware for Azure Database for MySQL Flexible Server instances based on the General Purpose (Dadsv5-series) and Memory-Optimized (Eadsv5-series) tiers. AMD SKU offers competitive price-performance options to all Azure Database for MySQL Flexible Server users. To ensure transparency in the portal, you can select the compute hardware vendor for both primary and secondary server. After determining the best compute processor for your workload, deploy Flexible Servers in more available regions and zones. [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md).
 
 - **Autoscale IOPS in Azure Database for MySQL Flexible Server (Preview)**
 
@@ -284,7 +284,7 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
   The On-Demand backup feature allows customers to trigger On-Demand backups of their production workload, in addition to the automated backups taken by Azure Database for MySQL Flexible Server, and store them in alignment with the server's backup retention policy. These backups can be used as the fastest restore point to perform a point-in-time restore for faster and more predictable restore times. [Learn more](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup).
 
-- **Business Critical tier now supports Ev5 compute series**
+- **Memory-Optimized tier now supports Ev5 compute series**
 
   Business Critical tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
 Learn more about [Boost Azure MySQL Business Critical Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
@@ -315,13 +315,13 @@ Learn more about [Boost Azure MySQL Business Critical Flexible Server performanc
 ## May 2022
 
 - **Announcing Azure Database for MySQL Flexible Server for business-critical workloads**
-  Azure Database for MySQL Flexible Server Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
+  Azure Database for MySQL Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
 
 - **Announcing the addition of new Burstable compute instances for Azure Database for MySQL Flexible Server**
   We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
 
 - **Known issues**
-  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Business Critical service tier after restructuring from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
+  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Memory-Optimized service tier after restructuring from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
   - Private DNS integration details aren't displayed on a few Azure Database for MySQL Database Flexible Server instances that have enabled HA. This issue doesn't impact the server's availability or name resolution. We're working on a permanent fix to resolve the issue, and it will be available in the next deployment. Meanwhile, suppose you want to view the Private DNS Zone details. In that case, you can either search under [Quickstart: Create an Azure private DNS zone using the Azure portal](/azure/dns/private-dns-getstarted-portal) in the Azure portal or you can perform a [manual failover](concepts-high-availability.md#planned-forced-failover) of the HA enabled Azure Database for MySQL Flexible Server instance and refresh the Azure portal.
 
 ## April 2022
