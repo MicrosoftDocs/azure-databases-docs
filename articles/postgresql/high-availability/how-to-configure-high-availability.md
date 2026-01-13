@@ -4,7 +4,7 @@ description: This article describes how to configure and operate high availabili
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 11/04/2025
+ms.date: 01/13/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server instance.
@@ -113,6 +113,23 @@ If you enable high availability in one mode, and then try to enable it again by 
 Code: InvalidParameterValue
 Message: Invalid value given for parameter Cannot switch Properties.HighAvailability.Mode directly from SameZone to ZoneRedundant. Please disable HA and then enable HA.. Specify a valid parameter value.
 ```
+> [!NOTE]  
+> Using the --high-availability parameter will trigger a deprecation warning: "Argument '--high-availability' has been deprecated and will be removed in next breaking change release(2.86.0) scheduled for May 2026. Use '--zonal-resiliency' instead." We recommend updating your scripts and commands to use --zonal-resiliency to ensure compatibility with future Azure CLI releases.
+
+The **--zonal-resiliency** parameter helps you create a stanby server in a different availability zone than primary and protects against zone‑level failures. It accepts two values: 
+
+- Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
+- Disabled – High availability isn't configured.
+
+To ensure your server is configured for high availability, enable the --allow-same-zone parameter. In regions without multiple availability zones, this option allows the standby server to be created in the same zone as the primary. When zonal capacity becomes available, Azure will notify you. At that point, you can use PITR or read replicas to migrate to a zone‑redundant HA configuration for maximum resiliency.  Refer to the [Limitations and Considerations](#limitations-and-considerations) section to know more.
+
+```azurecli-interactive
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --zonal-resiliency enabled
+  --allow-same-zone
+```
 
 ---
 
@@ -151,6 +168,15 @@ az postgres flexible-server update \
   --resource-group <resource_group> \
   --name <server> \
   --high-availability Disabled
+```
+
+To disable high availability, you can run the same command with --zonal-resiliency set to disabled.  The previous --high-availability parameter is deprecated and now triggers this warning: "Argument '--high-availability' has been deprecated and will be removed in next breaking change release(2.86.0) scheduled for May 2026. Use '--zonal-resiliency' instead."
+
+```azurecli-interactive
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --zonal-resiliency Disabled
 ```
 
 ---
@@ -251,6 +277,25 @@ If the high-availability mode that you selected is zone redundant, and the regio
 
 ```output
 This region is single availability zone. Zone redundant high availability is not supported in a single availability zone region.
+```
+> [!NOTE]  
+> Using the --high-availability parameter will trigger a deprecation warning: "Argument '--high-availability' has been deprecated and will be removed in next breaking change release(2.86.0) scheduled for May 2026. Use '--zonal-resiliency' instead." We recommend updating your scripts and commands to use --zonal-resiliency to ensure compatibility with future Azure CLI releases.
+
+Use the **--zonal-resiliency** parameter when creating an Azure Database for PostgreSQL Flexible Server instance. This enables Azure to provision the standby server in a different availability zone than the primary.
+If the region does not currently support multiple availability zones, add the **--allow-same-zone** parameter. This acts as a fallback: if Azure cannot create the standby in another zone, it will create the standby in the same zone as the primary so that high availability is still enabled in your chosen region.
+When zonal capacity later becomes available, Azure will notify you. You can then use PITR or a read replica to move your workloads to a zone‑redundant HA configuration for improved resiliency.
+
+The --zonal-resiliency parameter accepts these values:
+
+- Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
+- Disabled – High availability isn't configured.
+
+```azurecli-interactive
+az postgres flexible-server create \
+  --resource-group <resource_group> \
+  --name <server> \
+  --zonal-resiliency enabled \
+  --allow-same-zone
 ```
 
 ---
