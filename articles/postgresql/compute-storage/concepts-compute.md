@@ -1,25 +1,25 @@
 ---
-title: Compute options
+title: Compute Options
 description: This article describes the compute options in an Azure Database for PostgreSQL flexible server instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 05/01/2024
+ms.date: 01/13/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ms.custom:
   - ignite-2023
 ---
 
-# Compute options in Azure Database for PostgreSQL 
+# Compute options in Azure Database for PostgreSQL
 
 You can create an Azure Database for PostgreSQL flexible server instance in one of three pricing tiers: Burstable, General Purpose, and Memory Optimized. The pricing tier is calculated based on the compute, memory, and storage you provision. A server can have one or many databases.
 
 | Resource/Tier | Burstable | General Purpose | Memory Optimized |
-| :--- | :--- | :--- | :--- |
-| VM-series | B-series | Ddsv5-series,<br />Dadsv5-series,<br />Ddsv4-series,<br />Dsv3-series | Edsv5-series,<br />Eadsv5-series,<br />Edsv4-series,<br />Esv3-series |
-| vCores | 1, 2, 4, 8, 12, 16, 20 | 2, 4, 8, 16, 32, 48, 64, 96 | 2, 4, 8, 16, 20 (v4/v5), 32, 48, 64, 96 |
-| Memory per vCore | Variable | 4 GiB | 6.75 GiB to 8 GiB |
+| --- | --- | --- | --- |
+| VM-series | B-series | Ddsv6-series,<br />Dadsv6-series,<br />Ddsv5-series,<br />Dadsv5-series,<br />Ddsv4-series,<br />Dsv3-series | Edsv6-series,<br />Eadsv6-series,<br />Edsv5-series,<br />Eadsv5-series,<br />Edsv4-series,<br />Esv3-series |
+| vCores | 1, 2, 4, 8, 12, 16, 20 | 2, 4, 8, 16, 32, 48, 64, 96, 128 (v6), 192 (v6) | 2, 4, 8, 16, 20 (v4/v5/v6), 32, 48, 64, 96 , 128 (v6), 192 (v6) |
+| Memory per vCore | Variable | 4 GiB | 6.75 GiB to 9.5 GiB |
 | Storage size | 32 GiB to 64 TiB | 32 GiB to 64 TiB | 32 GiB to 64 TiB |
 | Automated Database backup retention period | 7 to 35 days | 7 to 35 days | 7 to 35 days |
 | Long term Database backup retention period | up to 10 years | up to 10 years | up to 10 years |
@@ -27,21 +27,19 @@ You can create an Azure Database for PostgreSQL flexible server instance in one 
 To choose a pricing tier, use the following table as a starting point:
 
 | Pricing tier | Target workloads |
-| :--- | :--- |
-| **Burstable**     | Designed for workloads that do not require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
+| --- | --- |
+| **Burstable** | Designed for workloads that do not require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
 | **General Purpose** | Provides a balance between CPU and memory with scalable I/O throughput, making it suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
 | **Memory Optimized** | Suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
-
-
 After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL](../scale/concepts-scaling-resources.md) page.
 
 ## Compute tiers, vCores, and server types
 
 You can select compute resources based on the tier, vCores, and memory size. vCores represent the logical CPU of the underlying hardware.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Burstable compute is for workloads that stay idle or below baseline most of the time. If CPU runs near or above baseline for long periods, credits deplete and the server might become unreachable.  
->  
+>
 > For these workloads, it's recommended to:  
 > - Monitor **CPU Credits Remaining** in Azure Monitor and set alerts for low credits.  
 > - Avoid restarts or scaling when credits are near zero; allow time to rebuild.  
@@ -64,7 +62,7 @@ The detailed specifications of the available server types are as follows:
 | D2s_v3 / D2ds_v4 | 2 | 8 GiB | 3,200 | 48 MiB/sec |
 | D2ds_v5 / D2ads_v5 | 2 | 8 GiB | 3,750 | 85 MiB/sec |
 | D2ads_v6 | 2 | 8 GiB | 4000 | 90 MiB/sec |
-| D2ds_v6 | 2 | 8 GiB |4167 | 124 MiB/sec |
+| D2ds_v6 | 2 | 8 GiB | 4167 | 124 MiB/sec |
 | D4s_v3 / D4ds_v4 | 4 | 16 GiB | 6,400 | 96 MiB/sec |
 | D4ds_v5 / D4ads_v5 | 4 | 16 GiB | 6,400 | 145 MiB/sec |
 | D4ads_v6 | 4 | 16 GiB | 7600 | 180 MiB/sec |
@@ -97,7 +95,7 @@ The detailed specifications of the available server types are as follows:
 | E2s_v3 / E2ds_v4 | 2 | 16 GiB | 3,200 | 48 MiB/sec |
 | E2ds_v5 / E2ads_v5 | 2 | 16 GiB | 3,200 | 85 MiB/sec |
 | E2ads_v6 | 2 | 16 GiB | 4000 | 90 MiB/sec |
-| E2ds_v6 | 2 | 16 GiB |4167 | 124 MiB/sec |
+| E2ds_v6 | 2 | 16 GiB | 4167 | 124 MiB/sec |
 | E4s_v3 / E4ds_v4 | 4 | 32 GiB | 6,400 | 96 MiB/sec |
 | E4ds_v5 / E4ads_v5 | 4 | 32 GiB | 6,400 | 145 MiB/sec |
 | E4ads_v6 | 4 | 32 GiB | 7600 | 180 MiB/sec |
@@ -131,7 +129,7 @@ The detailed specifications of the available server types are as follows:
 | E96ds_v6 | 96 | 768 GiB | 80000 | 1200 MiB/sec |
 | E128ds_v6 | 128 | 1024 GiB | 80000 | 1200 MiB/sec |
 | E192ds_v6 | 192 | 1832 GiB | 80000 | 1200 MiB/sec |
-> [!IMPORTANT]  
+| > [!IMPORTANT] |
 > Minimum and maximum IOPS are also determined by the storage tier so choose a storage tier and instance type that can scale as per your workload requirements.
 
 [!INCLUDE [pricing](includes/compute-storage-pricing.md)]

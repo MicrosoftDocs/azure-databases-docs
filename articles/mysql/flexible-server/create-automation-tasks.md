@@ -4,7 +4,7 @@ description: Set up automated tasks that help you manage Azure Database for MySQ
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: tutorial
@@ -95,7 +95,7 @@ You can scale a server up or down based on a recurring time schedule. You need t
 | Scale Time | Time when to start the operation. |
 | Location | Region of your Azure Database for MySQL Flexible Server instance. |
 | Sku Name | Choose a Service tier name in this format Standard_B1ms. See [the full list of skus available.](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types) |
-| Sku Tier | Choose from Burstable, General purpose and Memory Optimized (same as Business critical Sku tier in MySQL Flexible Server). |
+| Sku Tier | Choose from Burstable, General purpose and Memory Optimized (same as Memory-Optimized Sku tier in MySQL Flexible Server). |
 | Interval | How frequently to run this task. Enter a numeric value. If you enter 1, the task will run 1 time based on the frequency. |
 | Frequency | You can run this task once a month/week/day/hour/minute/second. |
 | Notify Me | Turn on or off to receive notifications. |

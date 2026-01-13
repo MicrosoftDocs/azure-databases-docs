@@ -168,7 +168,7 @@ You now benefit from the highest level of availability against infrastructure fa
 > [!NOTE]  
 > Based on customer feedback requesting the ability to choose their preferred deployment type, we've decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Business Critical and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and can't be modified later.
 
-### Accelerated Logs enabled for all new Business Critical servers
+### Accelerated Logs enabled for all new Memory-Optimized servers
 
 Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL flexible server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no extra cost. Existing Business Critical servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
 

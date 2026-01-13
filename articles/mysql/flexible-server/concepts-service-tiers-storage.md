@@ -4,7 +4,7 @@ description: This article describes the compute and storage options in Azure Dat
 author: VandhanaMehta  
 ms.author: vamehta  
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -17,9 +17,9 @@ ms.custom:
 
 [!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-You can create an Azure Database for MySQL Flexible Server instance in one of three service tiers: Burstable, General Purpose, and Business Critical. The underlying VM SKU differentiates the service tiers used B-series, D-series, and E-series. The compute tier and size choice determines the memory and vCores available on the server. The exact storage technology is used across all service tiers. All resources are provisioned at the Azure Database for MySQL Flexible Server instance level. A server can have one or many databases.
+You can create an Azure Database for MySQL Flexible Server instance in one of three service tiers: Burstable, General Purpose, and Memory-Optimized. The underlying VM SKU differentiates the service tiers used B-series, D-series, and E-series. The compute tier and size choice determines the memory and vCores available on the server. The exact storage technology is used across all service tiers. All resources are provisioned at the Azure Database for MySQL Flexible Server instance level. A server can have one or many databases.
 
-| Resource / Tier | **Burstable** | **General Purpose** | **Business Critical** |
+| Resource / Tier | **Burstable** | **General Purpose** | **Memory-Optimized** |
 | :--- | :--- | :--- | :--- |
 | VM series | [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable) | [Dadsv5-series](/azure/virtual-machines/dasv5-dadsv5-series#dadsv5-series)[Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series#ddsv4-series) | [Edsv4](/azure/virtual-machines/edv4-edsv4-series#edsv4-series)/[Edsv5-series](/azure/virtual-machines/edv5-edsv5-series#edsv5-series)*/[Eadsv5-series](/azure/virtual-machines/easv5-eadsv5-series#eadsv5-series) |
 | vCores | 1, 2, 4, 8, 12, 16, 20 | 2, 4, 8, 16, 32, 48, 64 | 2, 4, 8, 16, 32, 48, 64, 80, 96 |
@@ -39,7 +39,7 @@ To choose a compute tier, use the following table as a starting point.
 | :--- | :--- |
 | Burstable | Designed for workloads that do not require sustained full CPU performance. Utilizes a CPU credit system: credits accumulate when usage is below the baseline and are consumed when usage exceeds it. Once credits are depleted, the VM is limited to baseline CPU capacity, which under prolonged load can lead to significant performance degradation, connection timeouts, and delays or transient failures in management operations until credits are restored. Best suited for development environments, small databases, and proof-of-concept scenarios. **Not recommended for production workloads.** |
 | General Purpose | Most business workloads require balanced computing and memory with scalable I/O throughput. Examples include servers for hosting web and mobile apps and other enterprise applications. |
-| Business Critical | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+| Memory-Optimized | High-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
 After you create a server, you can change the compute tier, compute size, and storage size. Compute scaling requires a restart and takes 60-120 seconds, while storage scaling doesn't. You can also independently adjust the backup retention period up or down. See the [Scale resources](#scale-resources) section for more information.
 
@@ -88,9 +88,9 @@ The detailed specifications of the available server types are as follows for the
 | Standard_D64ds_v4 | 64 | 256 | 352 | 48000 | 43691 | 1720 |
 | Standard_D96ads_v5 | 96 | 384 | 528 | 48000 | 65536 | 2580 |
 
-#### Business Critical
+#### Memory-Optimized
 
-The detailed specifications of the available server types are as follows for the Business Critical service tier.
+The detailed specifications of the available server types are as follows for the Memory-Optimized service tier.
 
 | Compute size | vCores | Physical Memory Size (GiB) | Total Memory Size (GiB) | Max Supported IOPS | Max Connections | Temp Storage (SSD) GiB |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -139,7 +139,7 @@ As MySQL's default storage engine, [InnoDB](https://dev.mysql.com/doc/refman/8.0
 
 Client connections are managed through dedicated threads handled by the connection manager. These threads handle authentication, query execution, and result retrieval for client interactions. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/connection-management.html).
 
-To get more details about the compute series available, refer to Azure VM documentation for [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable), General Purpose [Dadsv5-series](/azure/virtual-machines/dasv5-dadsv5-series#dadsv5-series)[Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series#ddsv4-series), and Business Critical [Edsv4](/azure/virtual-machines/edv4-edsv4-series#edsv4-series)/[Edsv5-series](/azure/virtual-machines/edv5-edsv5-series#edsv5-series)/[Eadsv5-series.](/azure/virtual-machines/easv5-eadsv5-series#eadsv5-series)
+To get more details about the compute series available, refer to Azure VM documentation for [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable), General Purpose [Dadsv5-series](/azure/virtual-machines/dasv5-dadsv5-series#dadsv5-series)[Ddsv4-series](/azure/virtual-machines/ddv4-ddsv4-series#ddsv4-series), and Memory-Optimized [Edsv4](/azure/virtual-machines/edv4-edsv4-series#edsv4-series)/[Edsv5-series](/azure/virtual-machines/edv5-edsv5-series#edsv5-series)/[Eadsv5-series.](/azure/virtual-machines/easv5-eadsv5-series#eadsv5-series)
 
 ## Performance limitations of burstable series instances
 
@@ -154,9 +154,9 @@ However, it's important to note that once a burstable instance exhausts its CPU 
 > [!NOTE]  
 > For servers in [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable), such as Standard_B1s/Standard_B1ms/Standard_B2s, their relatively smaller host memory size, might lead to crashes (out of memory) under continuous workload, even if the [memory_percent](./concepts-monitoring.md#list-of-metrics) metric has not reached 100%.
 
-Due to this throttling, the server might encounter **connectivity issues** and system operations might be affected. In such situations, the recommended course of action is to **pause the workload on the server** to accumulate credits according to the [B-series credit banking model](/azure/virtual-machines/b-series-cpu-credit-model/b-series-cpu-credit-model#b-series-cpu-credit-model), or to consider scaling the server to higher tiers such as **General Purpose** or **Business Critical** tiers.
+Due to this throttling, the server might encounter **connectivity issues** and system operations might be affected. In such situations, the recommended course of action is to **pause the workload on the server** to accumulate credits according to the [B-series credit banking model](/azure/virtual-machines/b-series-cpu-credit-model/b-series-cpu-credit-model#b-series-cpu-credit-model), or to consider scaling the server to higher tiers such as **General Purpose** or **Memory-Optimized** tiers.
 
-Therefore, while the Burstable compute tier offers significant cost and flexibility advantages for certain types of workloads, **it is not recommended for production workloads** that require consistent CPU performance. The Burstable tier doesn't support the functionality of creating the [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md) and [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md) feature. Other compute tiers, such as the General Purpose or Business Critical,, are more appropriate for such workloads and features.
+Therefore, while the Burstable compute tier offers significant cost and flexibility advantages for certain types of workloads, **it is not recommended for production workloads** that require consistent CPU performance. The Burstable tier doesn't support the functionality of creating the [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md) and [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md) feature. Other compute tiers, such as the General Purpose or Memory-Optimized,, are more appropriate for such workloads and features.
 
 For more information on the Azure's B-series CPU credit model, see the [B-series burstable virtual machine sizes](/azure/virtual-machines/sizes-b-series-burstable) and [B-series CPU credit model](/azure/virtual-machines/b-series-cpu-credit-model/b-series-cpu-credit-model#b-series-cpu-credit-model).
 
@@ -172,7 +172,7 @@ For more information on [how to set up alerts on metrics, refer to this guide](h
 
 ## Storage
 
-The storage you provision is the storage capacity available to your Flexible Server. Storage is used for the database files, temporary files, transaction logs, and the MySQL server logs. For Burstable and General Purpose service tiers, the storage range spans from a minimum of 20 GiB to a maximum of 16 TiB. Conversely, storage support extends up to 32 TiB for Business Critical service tier. In all service tiers, storage is scaled in 1-GiB increments and can be scaled up after the server is created.
+The storage you provision is the storage capacity available to your Flexible Server. Storage is used for the database files, temporary files, transaction logs, and the MySQL server logs. For Burstable and General Purpose service tiers, the storage range spans from a minimum of 20 GiB to a maximum of 16 TiB. Conversely, storage support extends up to 32 TiB for Memory-Optimized service tier. In all service tiers, storage is scaled in 1-GiB increments and can be scaled up after the server is created.
 
 > [!NOTE]  
 > Storage can only be scaled up, not down.
@@ -252,7 +252,7 @@ For the most up-to-date pricing information, see the service [pricing page](http
 If you would like to optimize server cost, you can consider the following tips:
 
 - Scale down your compute tier or compute size (vCores) if compute is underutilized.
-- Consider switching to the Burstable compute tier if your workload doesn't need the full compute capacity continuously from the General Purpose and Business Critical tiers.
+- Consider switching to the Burstable compute tier if your workload doesn't need the full compute capacity continuously from the General Purpose and Memory-Optimized tiers.
 - Stop the server when not in use.
 - Reduce the backup retention period if a longer retention of backup isn't required.
 

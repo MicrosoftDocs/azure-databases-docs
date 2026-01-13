@@ -45,7 +45,7 @@ For the latest updates on Azure Database for MySQL - Flexible Server, refer to [
 The Flexible Server deployment option offers three compute tiers have different compute and memory capacities to support your database workloads:
 
 - The *Burstable* tier is best suited for low-cost development workloads and low-concurrency workloads that don't need full compute capacity continuously.
-- The *General Purpose* and *Business Critical* tiers are better suited for production workloads that require high concurrency, scale, and predictable performance.
+- The *General Purpose* and *Memory-Optimized* tiers are better suited for production workloads that require high concurrency, scale, and predictable performance.
 
 You can build your first app on a Burstable tier at a low cost and then adjust the scale to meet the needs of your solution. For details, see [Azure Database for MySQL - Flexible Server service tiers](concepts-compute-storage.md).
 
