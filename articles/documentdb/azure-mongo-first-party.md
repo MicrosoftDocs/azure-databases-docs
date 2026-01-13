@@ -11,7 +11,6 @@ ms.date: 06/03/2025
 
 # Why mission-critical MongoDB workloads run on Azure first-party services
 
-## Summary
 
 For regulated industries, large enterprises, and mission-critical workloads, choosing the right cloud service matters. Azure developed, services—operated, secured, and supported by Microsoft—offer a fundamentally different level of control, compliance, and integration than third-party vendor-managed offerings and ISV integrations. This distinction is essential when evaluating managed MongoDB services on Azure. All first-party Azure services can be found on in the [Azure products page](https://azure.microsoft.com/products). 
 
