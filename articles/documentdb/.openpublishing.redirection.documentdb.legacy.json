@@ -22,8 +22,8 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/azure-mongo-first-party.md",
-      "redirect_url": "/azure/documentdb/",
-      "redirect_document_id": false
+      "redirect_url": "/azure/documentdb/azure-mongo-first-party",
+      "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/background-indexing.md",
@@ -307,13 +307,13 @@
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/multi-cloud.md",
-      "redirect_url": "/azure/documentdb/",
-      "redirect_document_id": false
+      "redirect_url": "/azure/documentdb/multi-cloud",
+      "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/oss.md",
-      "redirect_url": "https://github.com/documentdb/documentdb",
-      "redirect_document_id": false
+      "redirect_url": "/azure/documentdb/oss",
+      "redirect_document_id": true
     },
     {
       "source_path_from_root": "/articles/cosmos-db/mongodb/vcore/partitioning.md",
