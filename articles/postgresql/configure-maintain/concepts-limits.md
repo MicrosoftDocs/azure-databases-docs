@@ -6,7 +6,6 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 11/13/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: concept-article
 ms.custom:
   - ai-assistant-test

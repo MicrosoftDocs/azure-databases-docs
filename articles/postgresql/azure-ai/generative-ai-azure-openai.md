@@ -7,7 +7,6 @@ ms.reviewer: maghan
 ms.date: 05/20/2024
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 ms.custom:

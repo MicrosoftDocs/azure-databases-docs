@@ -6,7 +6,6 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 02/26/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.custom:
   - ignite-2024
 ms.topic: concept-article
