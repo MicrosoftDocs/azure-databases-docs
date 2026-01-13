@@ -5,7 +5,6 @@ author: markingmyname
 ms.author: maghan
 ms.date: 02/07/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli

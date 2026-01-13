@@ -2,7 +2,6 @@
 title: max_replication_slots server parameter
 description: max_replication_slots server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: include
 ms.date: 10/14/2024
 author: nachoalonsoportillo

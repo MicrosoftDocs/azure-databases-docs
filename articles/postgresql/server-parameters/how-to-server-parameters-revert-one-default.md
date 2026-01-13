@@ -6,7 +6,6 @@ ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to revert one server parameter to its default of an Azure Database for PostgreSQL.
 ---

@@ -7,7 +7,6 @@ ms.reviewer: sbalijepalli, maghan
 ms.date: 05/17/2024
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.collection: ce-skilling-ai-copilot
 ms.topic: how-to
 #customer intent: As a developer, I want to learn how to enable and use pg_partman on Azure Database for PostgreSQL  so that I can optimize my database performance.

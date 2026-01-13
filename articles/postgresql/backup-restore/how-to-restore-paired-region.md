@@ -6,7 +6,6 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 11/06/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to restore to paired region (geo-restore) of an Azure Database for PostgreSQL.
 ---

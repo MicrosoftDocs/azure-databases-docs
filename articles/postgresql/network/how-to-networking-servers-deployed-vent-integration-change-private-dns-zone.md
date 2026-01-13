@@ -6,7 +6,6 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 01/29/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to change the private DNS zone of an Azure Database for PostgreSQL.
 ---

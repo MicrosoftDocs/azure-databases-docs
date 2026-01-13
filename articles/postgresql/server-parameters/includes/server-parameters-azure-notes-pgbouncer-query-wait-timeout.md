@@ -2,7 +2,6 @@
 title: pgbouncer.query_wait_timeout server parameter
 description: pgbouncer.query_wait_timeout server parameter for Azure Database for PostgreSQL flexible server.
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: include
 ms.date: 09/13/2024
 author: nachoalonsoportillo
