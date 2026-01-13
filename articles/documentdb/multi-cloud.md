@@ -11,7 +11,6 @@ ms.date: 02/12/2024
 
 # Azure DocumentDB Multi-Cloud Solution
 
-# Azure DocumentDB: Your Multi-Cloud Solution
 Azure DocumentDB represents a groundbreaking approach to database management, offering unparalleled flexibility and a multi-cloud capability that stands out in the modern cloud ecosystem. This document dives into the core aspects of Azure DocumentDB that make it an exceptional choice for organizations seeking a vendor-neutral and multi-cloud database service.
 
 ### MongoDB Wire Protocol Compatibility
