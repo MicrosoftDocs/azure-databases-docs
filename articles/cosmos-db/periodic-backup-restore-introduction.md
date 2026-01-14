@@ -53,7 +53,7 @@ The following configurations aren't restored after the point-in-time recovery:
 - Regions. The restored account is only a single-region account, which is the write region of the source account. 
 - Stored procedures, triggers, user-defined functions (UDF). 
 - Role-based access control assignments. These need to be reassigned. 
-- Documents that were deleted because of expired TTL. 
+- Documents that were deleted because of expired TTL are not restored by default, however the behavior can be enforced explicitly. 
 - Analytical data when synapse link is enabled. 
 - Materialized views.
 
