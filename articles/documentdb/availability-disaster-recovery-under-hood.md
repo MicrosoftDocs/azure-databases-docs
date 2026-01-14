@@ -4,7 +4,7 @@ description: Learn about Azure DocumentDB availability and disaster recovery int
 author: abinav2307
 ms.author: abramees
 ms.topic: concept-article
-ms.date: 09/09/2025
+ms.date: 01/02/2026
 #Customer Intent: As a database adminstrator, I want to configure availability and cross-region replication, so that I can have appropirtiate in-region and cross-region disaster recovery plans in the event of outages on different levels.
 ---
 
@@ -13,9 +13,10 @@ ms.date: 09/09/2025
 This article delves into the internals of [high availability (HA)](./high-availability.md) and [cross-region disaster recovery (DR)](./cross-region-replication.md) for Azure DocumentDB, outlining the design and capabilities of these features. It provides insights for effective in-region and cross-region strategy planning to ensure reliability and business continuity.
 
 ## Azure DocumentDB cluster anatomy
-An **Azure DocumentDB** cluster consists of one or more physical shards (nodes). Each physical shard includes a dedicated compute node and remote premium SSD storage. The [compute and storage resources](./compute-storage.md) of a physical shard are exclusive to a single database and not shared across clusters or databases.
 
-In clusters with multiple shards, every shard has an identical compute and storage configuration. Regardless of the number of shards, all cluster resources are hosted within the same Azure region.
+An **Azure DocumentDB** cluster is composed of one or more horizontally scaled physical shards (nodes). Each physical shard includes dedicated compute resources and remote premium SSD storage. The [compute and storage resources](./compute-storage.md) of a physical shard are exclusive to a single database and not shared across clusters or databases.
+
+In clusters with multiple horizontally scaled shards, every shard has an identical compute and storage configuration. Regardless of the number of shards, all cluster resources are hosted within the same Azure region.
 
 Azure DocumentDB uses *locally redundant storage* (LRS), ensuring all data is synchronously replicated three times within the cluster's physical location. Azure Storage transparently manages these replicas, verifies data integrity using cyclic redundancy checks (CRCs), and repairs any detected corruption using redundant data. Additionally, checksums are applied to network traffic to prevent data corruption during storage and retrieval.
 

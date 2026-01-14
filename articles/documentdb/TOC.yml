@@ -273,8 +273,12 @@
       href: /answers/questions/
     - name: Pricing
       href: https://azure.microsoft.com/pricing/details/document-db/
+    - name: Multicloud solution
+      href: multi-cloud.md
     - name: Open source
-      href: https://github.com/documentdb/documentdb
+      href: oss.md
+    - name: First-party MongoDB service
+      href: azure-mongo-first-party.md
     - name: Industry solutions
       items:
         - name: Logistics, supply chain, retail, and e-commerce

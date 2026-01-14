@@ -1,0 +1,47 @@
+### YamlMime:Landing
+
+title: Azure Powershell Samples
+summary: Review several Azure PowerShell code samples available for interacting with Azure Cosmos DB for NoSQL.
+
+metadata:
+  title: Azure PowerShell samples
+  titleSuffix: Azure Cosmos DB for NoSQL
+  description: Review several Azure PowerShell code samples available for interacting with Azure Cosmos DB for NoSQL.
+  author: markjbrown
+  ms.author: mjbrown
+  ms.service: azure-cosmos-db
+  ms.subservice: nosql
+  ms.topic: sample
+  ms.date: 04/08/2025
+  ms.custom: devx-track-azurepowershell
+  appliesto:
+    - ✅ NoSQL
+landingContent:
+  - title: Common account administration tasks
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Configure account firewall
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/common/ps-account-firewall-create.ps1
+          - text: Update account regions
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/common/ps-account-update-region.ps1
+          - text: Change failover priority or trigger failover
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/common/ps-account-failover-priority-update.ps1
+  - title: API for NoSQL-specific administration
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Create account
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-sql-create.ps1
+          - text: Manage throughput
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-sql-ru-get.ps1
+          - text: Create locks
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-sql-lock.ps1
+          - text: Get all accounts
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-sql-list-get.ps1
+          - text: Configure autoscale
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-sql-autoscale.ps1
+          - text: Create container with large partition key
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-container-large-partition-key.ps1
+          - text: Create container without an indexing policy
+            url: https://github.com/azure/azure-docs-powershell-samples/blob/master/cosmosdb/sql/ps-container-create-index-none.ps1

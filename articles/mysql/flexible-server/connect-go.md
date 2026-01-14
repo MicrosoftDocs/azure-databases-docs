@@ -3,23 +3,23 @@ title: "Quickstart: Connect Using Go"
 description: This quickstart provides several Go code samples you can use to connect and query data from Azure Database for MySQL.
 author: VandhanaMehta
 ms.author: vamehta
-ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
 ms.custom:
-- mvc,
-- mode-api
-- devx-track-go
-- linux-related-content
-- sfi-ropc-nochange
+  - mvc,
+  - mode-api
+  - devx-track-go
+  - linux-related-content
+  - sfi-ropc-nochange
 ms.devlang: golang
 ---
 
 # Quickstart: Use Go language to connect and query data in Azure Database for MySQL
 
-This quickstart demonstrates how to connect to an Azure Database for MySQL from Windows, Ubuntu Linux, and Apple macOS platforms by using code written in the [Go](https://go.dev/) language. It shows how to use SQL statements to query, insert, update, and delete data in the database. This topic assumes that you are familiar with development using Go and that you are new to working with Azure Database for MySQL.
+This quickstart demonstrates how to connect to an Azure Database for MySQL from Windows, Ubuntu Linux, and Apple macOS platforms using the [Go](https://go.dev/) language. It shows how to use SQL statements to query, insert, update, and delete data in the database. This topic assumes that you're familiar with development using Go and that you're new to working with Azure Database for MySQL.
 
 ## Prerequisites
 
@@ -29,9 +29,9 @@ This quickstart uses the resources created in either of these guides as a starti
 - [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md)
 
 > [!IMPORTANT]  
-> We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
->  
-> Ensure the IP address you're connecting from has been added the server's firewall rules using the [Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal](how-to-manage-firewall-portal.md) or [Manage firewall rules for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-manage-firewall-cli.md)
+> We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (virtual network integration)** enabled to complete this quickstart might involve extra steps that aren't covered.
+>
+> Ensure the IP addresses you're connecting from are added the server's firewall rules using [Azure portal](security-how-to-manage-firewall-portal.md) or [Azure CLI](security-how-to-manage-firewall-cli.md).
 
 ## Install Go and MySQL connector
 
@@ -45,8 +45,8 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Change directory into the project folder, such as `cd %USERPROFILE%\go\src\mysqlgo`.
 1. Set the environment variable for GOPATH to point to the source code directory: `set GOPATH=%USERPROFILE%\go`.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
-    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
+   - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+   - For test command-line apps the `<module_path>` might not refer to an actual location.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, install Go, then run these commands in the command prompt:
@@ -65,10 +65,10 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Install Go by running `sudo apt-get install golang-go`.
 1. Make a folder for your project in your home directory, such as `mkdir -p ~/go/src/mysqlgo/`.
 1. Change directory into the folder, such as `cd ~/go/src/mysqlgo/`.
-1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the Bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
+1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the Bash shell, run `export GOPATH=~/go` to add the `Go` directory as the GOPATH for the current shell session.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
-    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
+   - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+   - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, run these bash commands:
@@ -90,8 +90,8 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 1. Change directory into the folder, such as `cd ~/go/src/mysqlgo/`.
 1. Set the GOPATH environment variable to point to a valid source directory, such as your current home directory's go folder. At the Bash shell, run `export GOPATH=~/go` to add the go directory as the GOPATH for the current shell session.
 1. Run [go mod init](https://go.dev/ref/mod#go-mod-init) to create a module in the current directory. For example: `go mod init mysqlgo`.
-    - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
-    - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
+   - The `<module_path>` parameter is generally a location in a GitHub repo - such as `github.com/<your_github_account_name>/<directory>`.
+   - When you're creating a command-line app as a test and won't publish the app, the `<module_path>` doesn't need to refer to an actual location. For example, `mysqlgo`.
 1. Install the [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) by running the `go get github.com/go-sql-driver/mysql` command.
 
    In summary, install Go, then run these bash commands:
@@ -111,17 +111,17 @@ Install [Go](https://go.dev/doc/install) and the [go-sql-driver for MySQL](https
 Get the connection information needed to connect to the Azure Database for MySQL. You need the fully qualified server name and login credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
-1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created (such as **mydemoserver**).
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you created (such as **mydemoserver**).
 1. Select the server name.
 1. From the server's **Overview** panel, make a note of the **Server name** and **Server admin login name**. If you forget your password, you can also reset the password from this panel.
 
 ## Build and run Go code
 
-1. To write Golang code, you can use a simple text editor, such as Notepad in Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/jammy/man1/nvi.1.html) or [Nano](https://www.nano-editor.org/) in Ubuntu, or TextEdit in macOS. If you prefer a richer Interactive Development Environment (IDE), try [Gogland](https://www.jetbrains.com/go/) by Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) by Microsoft, or [Atom](https://github.blog/news-insights/product-news/sunsetting-atom).
-1. Paste the Go code from the sections below into text files, and then save them into your project folder with file extension \*.go (such as Windows path `%USERPROFILE%\go\src\mysqlgo\createtable.go` or Linux path `~/go/src/mysqlgo/createtable.go`).
-1. Locate the `host`, `database`, `user`, and `password` constants in the code, and then replace the example values with your own values. A database named *flexibleserverdb* is created when you create your Azure Database for MySQL server instance. You can use that database or another one that you've created.
+1. To write Golang code, you can use a simple text editor, such as Notepad in Microsoft Windows, [`vi`](https://manpages.ubuntu.com/manpages/jammy/man1/nvi.1.html) or [Nano](https://www.nano-editor.org/) in Ubuntu, or TextEdit in macOS. If you prefer a richer Interactive Development Environment (IDE), try [`GoLand`](https://www.jetbrains.com/go/) by `JetBrains`, [Visual Studio Code](https://code.visualstudio.com/) by Microsoft, or [Atom](https://github.blog/news-insights/product-news/sunsetting-atom).
+1. Paste the Go code into text files, and then save them into your project folder with file extension \*.go (such as Windows path `%USERPROFILE%\go\src\mysqlgo\createtable.go` or Linux path `~/go/src/mysqlgo/createtable.go`).
+1. Locate the `host`, `database`, `user`, and `password` constants in the code, and then replace the example values with your own values. A database named *flexibleserverdb* is created when you create your Azure Database for MySQL server instance. You can use that database or another one.
 1. Launch the command prompt or Bash shell. Change directory into your project folder. For example, on Windows `cd %USERPROFILE%\go\src\mysqlgo\`. On Linux `cd ~/go/src/mysqlgo/`. Some of the IDE editors mentioned offer debug and runtime capabilities without requiring shell commands.
-1. Run the code by typing the command `go run createtable.go` to compile the application and run it.
+1. Compile the application and run it with the command `go run createtable.go`.
 1. Alternatively, to build the code into a native application, `go build createtable.go`, then launch `createtable.exe` to run the application.
 
 ## Connect, create table, and insert data
@@ -130,11 +130,11 @@ Use the following code to connect to the server, create a table, and load the da
 
 The code imports three packages: the [sql package](https://pkg.go.dev/database/sql), the [go sql driver for mysql](https://github.com/go-sql-driver/mysql#installation) as a driver to communicate with the Azure Database for MySQL, and the [fmt package](https://pkg.go.dev/fmt) for printed input and output on the command line.
 
-The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to connect to Azure Database for MySQL, and it checks the connection by using method [db.Ping()](https://pkg.go.dev/database/sql#DB.Ping). A [database handle](https://pkg.go.dev/database/sql#DB) is used throughout, holding the connection pool for the database server. The code calls the [Exec()](https://pkg.go.dev/database/sql#DB.Exec) method several times to run several DDL commands. The code also uses [Prepare()](http://go-database-sql.org/prepared.html) and Exec() to run prepared statements with different parameters to insert three rows. Each time, a custom checkError() method is used to check if an error occurred and panic to exit.
+The code calls method [`sql.Open()`](http://go-database-sql.org/accessing.html) to connect to Azure Database for MySQL, and it checks the connection by using method [`db.Ping()`](https://pkg.go.dev/database/sql#DB.Ping). A [database handle](https://pkg.go.dev/database/sql#DB) is used throughout, holding the connection pool for the database server. The code calls the [`Exec()`](https://pkg.go.dev/database/sql#DB.Exec) method several times to run several DDL commands. The code also uses [`Prepare()`](http://go-database-sql.org/prepared.html) and Exec() to run prepared statements with different parameters to insert three rows. Each time, a custom checkError() method is used to check if an error occurred and panic to exit.
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```cmd
+```go
 package main
 
 import (
@@ -211,7 +211,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```sql
+```go
 package main
 
 import (
@@ -281,7 +281,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```cmd
+```go
 package main
 
 import (
@@ -337,7 +337,7 @@ The code calls method [sql.Open()](http://go-database-sql.org/accessing.html) to
 
 Replace the `host`, `database`, `user`, and `password` constants with your own values.
 
-```cmd
+```go
 package main
 
 import (

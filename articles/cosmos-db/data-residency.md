@@ -1,15 +1,20 @@
 ---
-title: How to meet data residency requirements in Azure Cosmos DB
+title: How to Meet Data Residency Requirements
 description: Learn how to meet data residency requirements in Azure Cosmos DB for your data and backups to remain in a single region.
 author: kanshiG
 ms.service: azure-cosmos-db
 ms.topic: legal
 ms.date: 12/05/2025
 ms.author: govindk
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # How to meet data residency requirements in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 In Azure Cosmos DB, you can configure your data and backups to remain in a single region to meet the [residency requirements](https://azure.microsoft.com/global-infrastructure/data-residency/).
 

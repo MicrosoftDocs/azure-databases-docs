@@ -1,6 +1,5 @@
 ---
 title: Monitor Data Using Aggregated Diagnostics Logs (Preview)
-titleSuffix: Azure Cosmos DB
 description: Learn how to use aggregated diagnostics logs to monitor the performance and availability of data stored in Azure Cosmos DB for NoSQL.
 author: stefarroyo
 ms.author: esarroyo
@@ -32,7 +31,7 @@ The **aggregated diagnostics logs** feature is designed to deliver significant *
 
 - An existing Azure Cosmos DB for NoSQL account
 
-    - If you don't have an account, create a [new account](nosql/quickstart-portal.md).
+    - If you don't have an account, create a [new account](quickstart-portal.md).
 
 - An existing Azure Monitor - Log Analytics workspace
 
@@ -123,6 +122,6 @@ CDBDataPlaneRequests5M
 
 ## Related content
 
-- [Diagnostic queries in API for NoSQL](nosql/diagnostic-queries.md)
+- [Diagnostic queries in API for NoSQL](diagnostic-queries.md)
 - [Diagnostic queries in API for MongoDB](mongodb/diagnostic-queries.md)
 - [Diagnostic queries in API for Apache Cassandra](cassandra/diagnostic-queries.md)

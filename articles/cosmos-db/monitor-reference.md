@@ -1,5 +1,5 @@
 ---
-title: Monitoring data reference for Azure Cosmos DB
+title: Monitoring Data Reference
 description: This article contains important reference material you need when you monitor Azure Cosmos DB.
 ms.date: 03/02/2024
 ms.custom: horz-monitor
@@ -7,6 +7,8 @@ ms.topic: reference
 ms.author: esarroyo
 author: StefArroyo
 ms.service: azure-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Azure Cosmos DB monitoring data reference
@@ -86,21 +88,21 @@ The following table lists error codes for your API for Cassandra account. For sa
 | 400 |	8192 | The submitted query has a syntax error. Review your query. |
 | 400 |	8960 | The query is invalid because of some configuration issue. |
 | 401 |8448 | The logged user does not have the right permissions to perform the query. |
-| 403 |	8448 | Forbidden response as the user may not have the necessary permissions to carry out the request. |
-| 404 | 5376 | A non-timeout exception during a write request as a result of response not found. |
+| 403 |	8448 | Forbidden response as the user might not have the necessary permissions to carry out the request. |
+| 404 | 5376 | A nontimeout exception during a write request as a result of response not found. |
 | 405 |	0 | Server-side Cassandra error. The error rarely occurs, open a support ticket. |
 | 408 | 4608 | Timeout during a read request. |
 | 408 |	4352 | Timeout exception during a write serviceRequest. |
 | 409 |	9216 | Attempting to create a keyspace or table that already exist. |
-| 412 | 5376 | Precondition failure. To ensure data integrity, we ensure that the write request based on the read response is true. A non-timeout write request exception is returned. |
-| 413 | 5376 | This non-timeout exception during a write request is because of payload maybe too large. Currently, there is a limit of 2MB per row. |
+| 412 | 5376 | Precondition failure. To ensure data integrity, we ensure that the write request based on the read response is true. A nontimeout write request exception is returned. |
+| 413 | 5376 | This nontimeout exception during a write request is because of payload mightbe too large. Currently, there is a limit of 2MB per row. |
 | 417 | 9472 | The exception is thrown when a prepared statement is not cached on the server node. It should be transient/non-blocking. |
 | 423 | 5376 | There is a lock because a write request that is currently processing. |
 | 429 | 4097| Overload exception is as a result of RU shortage or high request rate. Probably need more RU to handle the higher volume request. In, native Cassandra this can be interpreted as one of the VMs not having enough CPU. We advise reviewing current data model to ensure that you do not have excessive skews that might be causing hot partitions. |
 | 449 |	5376 | Concurrent execution exception. This occurs to ensure only one write update at a time for a given row. |
 | 500 |	0 |	Server cassandraError: something unexpected happened. This indicates a server-side bug. |
 | 503 |	4096 | Service unavailable. |
-| 	| 256 | This may be because of invalid connection credentials. Please check your connection credentials. |
+| 	| 256 | This might be because of invalid connection credentials. Please check your connection credentials. |
 | 	| 10 | A client message triggered protocol violation. An example is query message sent before a startup one has been sent. |
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
@@ -203,7 +205,7 @@ The following table lists properties of resource logs in Azure Cosmos DB. The re
 | **userAgent** | **userAgent_s** | A string that specifies the client user agent from which, the request was sent. The format of user agent is `{user agent name}/{version}`.|
 | **requestResourceType** | **requestResourceType_s** | The type of the resource accessed. This value can be database, container, document, attachment, user, permission, stored procedure, trigger, user-defined function, or  an offer. |
 | **statusCode** | **statusCode_s** | The response status of the operation. |
-| **requestResourceId** | **ResourceId** | The resourceId that pertains to the request. Depending on the operation performed, this value may point to `databaseRid`, `collectionRid`, or `documentRid`.|
+| **requestResourceId** | **ResourceId** | The resourceId that pertains to the request. Depending on the operation performed, this value might point to `databaseRid`, `collectionRid`, or `documentRid`.|
 | **clientIpAddress** | **clientIpAddress_s** | The client's IP address. |
 | **requestCharge** | **requestCharge_s** | The number of RUs that are used by the operation |
 | **collectionRid** | **collectionId_s** | The unique ID for the collection.|

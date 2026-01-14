@@ -3,8 +3,8 @@ title: Private Link Using Azure CLI
 description: Learn how to configure private link for Azure Database for MySQL - Flexible Server by using the Azure CLI.
 author: aditivgupta
 ms.author: adig
-ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.custom:
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI
 
-In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL Flexible Server from a VM in a VNet.
+In this article, you learn how to use Azure CLI to create a private endpoint for accessing Azure Database for MySQL Flexible Server from a VM in a virtual network.
 
 ### Launch Azure Cloud Shell
 
@@ -22,7 +22,7 @@ The [Azure Cloud Shell](/azure/cloud-shell/overview) is a free interactive shell
 
 To open the Cloud Shell, select **Try it** from the upper right corner of a code block. You can also open Cloud Shell in a separate browser tab by going to [https://shell.azure.com/bash](https://portal.azure.com/#cloudshell). Select **Copy** to copy the blocks of code, paste it into the Cloud Shell, and select **Enter** to run it.
 
-If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Run `az --version` to find the version. See [Install Azure CLI](/cli/azure/install-azure-cli) if you need to install or upgrade.
+If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0 or later. Find the Azure CLI version installed by running `az --version`. See [Install Azure CLI](/cli/azure/install-azure-cli) if you need to install or upgrade.
 
 ### Prerequisites
 
@@ -81,7 +81,7 @@ az vm create \
 ```
 
 > [!NOTE]  
-> Record the VM's public IP address as it's needed to connect from the internet in the next step.
+> Record the VM's public IP address to use in the next step.
 
 ### Create the Azure Database for MySQL Flexible Server instance with public access in the resource group
 
@@ -98,9 +98,9 @@ az mysql flexible-server create \
 ```
 
 > [!NOTE]  
-> In some cases, the Azure Database for MySQL Flexible Server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
->  
-> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, refer to [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
+> In some cases, the Azure Database for MySQL Flexible Server instance and the virtual network subnet are in different subscriptions. In these cases, you must ensure the following configurations:
+>
+> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, see [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ### Create the Private Endpoint
 
@@ -143,7 +143,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE]  
-> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown[here](/azure/dns/dns-operations-recordsets-portal).
+> The FQDN in the customer's DNS setting doesn't resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown[here](/azure/dns/dns-operations-recordsets-portal).
 
 ### Connect to a VM from the internet
 
@@ -155,13 +155,12 @@ Connect to the VM *myVm* from the internet as follows:
 
 1. Select **Download RDP File**. Azure creates a Remote Desktop Protocol (*.rdp*) file and downloads it to your computer.
 
-1. Open the *downloaded.rdp* file.
+1. Open the *downloaded.rdp* file. If prompted, select **Connect**.
 
-    1. If prompted, select **Connect**.
+1. Enter the username and password you specified when creating the VM.
 
-. Enter the username and password you specified when creating the VM.
-        > [!NOTE]  
-        > You might need to select **More choices** **Use a different account**, to specify the credentials you entered when you created the VM.
+   You might need to select **More choices** **Use a different account**, to specify the credentials you entered when you created the VM.
+
 1. Select **OK**.
 
 1. You might receive a certificate warning during the sign-in process. Select **Yes** or **Continue** if you receive a certificate warning.
@@ -174,26 +173,24 @@ Connect to the VM *myVm* from the internet as follows:
 
 1. Enter `nslookup mydemomysqlserver.privatelink.mysql.database.azure.com`.
 
-    You'll receive a message similar to this:
-
-    ```azurepowershell
-    Server:  UnKnown
-    Address:  168.63.129.16
-    Non-authoritative answer:
-    Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
-    Address:  10.1.3.4
-    ```
+   ```output
+   Server:  UnKnown
+   Address:  168.63.129.16
+   Non-authoritative answer:
+   Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
+   Address:  10.1.3.4
+   ```
 
 1. Test the private link connection for the Azure Database for MySQL Flexible Server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 1. In **New connection**, enter or select this information:
 
-    | Setting | Value |
-    | --- | --- |
-    | Connection Name | Select the connection name of your choice. |
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* provided during the Azure Database for MySQL Flexible Server instance creation. |
-    | Password | Enter a password provided during the Azure Database for MySQL Flexible Server instance creation. |
+   | Setting | Value |
+   | --- | --- |
+   | Connection Name | Select the connection name of your choice. |
+   | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
+   | Username | Enter username as *username@servername* provided during the Azure Database for MySQL Flexible Server instance creation. |
+   | Password | Enter a password provided during the Azure Database for MySQL Flexible Server instance creation. |
 
 1. Select Connect.
 
@@ -205,18 +202,18 @@ Connect to the VM *myVm* from the internet as follows:
 
 ### Clean up resources
 
-When no longer needed, you can use `az group delete` to remove the resource group and all the resources it has:
+To remove all resources when no longer needed:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 
-## Additional Private Link CLI commands
+## Private Link CLI commands
 
-List private linkable sub-resources (groupIds)
+List private linkable subresources (groupIds)
 
 ```azurecli-interactive
-az network private-link-resource list --id {PrivateLinkResourceID}  // or -g MyResourceGroup -n MySA --type Microsoft.Storage/storageAccounts
+az network private-link-resource list --id {PrivateLinkResourceID}  // or -g MyResourceGroup -n MySA --type Microsoft.Storage/storageAccounts
 ```
 
 List private endpoint connections on a given resource
@@ -228,13 +225,13 @@ az network private-endpoint-connection list --id {PrivateLinkResourceID}
 Approve private endpoint connections on a given resource
 
 ```azurecli-interactive
-az network private-endpoint-connection approve --id {PrivateEndpointConnectionID}  --description "Approved!"
+az network private-endpoint-connection approve --id {PrivateEndpointConnectionID}  --description "Approved!"
 ```
 
 Reject private endpoint connections on a given resource
 
 ```azurecli-interactive
-az network private-endpoint-connection reject --id {PrivateEndpointConnectionID}  --description "Rejected!"
+az network private-endpoint-connection reject --id {PrivateEndpointConnectionID}  --description "Rejected!"
 ```
 
 Delete private endpoint connections on a given resource
@@ -247,5 +244,5 @@ az network private-endpoint-connection delete --id {PrivateEndpointConnectionID}
 
 - [Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal](how-to-networking-private-link-portal.md)
 - [manage connectivity](concepts-networking.md)
-- [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md)
-- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md)
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md)

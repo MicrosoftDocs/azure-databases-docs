@@ -1,6 +1,5 @@
 ---
 title: Indexing policies
-titleSuffix: Azure Cosmos DB
 description:  Learn how to configure and change the default indexing policy for automatic indexing and greater performance in Azure Cosmos DB.
 author: deborahc
 ms.author: dech
@@ -13,7 +12,7 @@ ms.custom:
   - ignite-2024
   - build-2025
 appliesto:
-  - NoSQL
+  - ✅ NoSQL
 ---
 
 # Indexing policies in Azure Cosmos DB
@@ -30,12 +29,10 @@ In some situations, you might want to override this automatic behavior to better
 Azure Cosmos DB supports two indexing modes:
 
 - **Consistent**: The index is updated synchronously as you create, update, or delete items. This means that the consistency of your read queries will be the [consistency configured for the account](consistency-levels.md).
-- **None**: Indexing is disabled on the container. This mode is commonly used when a container is used as a pure key-value store without the need for secondary indexes. It can also be used to improve the performance of bulk operations. After the bulk operations are complete, the index mode can be set to Consistent and then monitored using the [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) until complete.
+- **None**: Indexing is disabled on the container. This mode is commonly used when a container is used as a pure key-value store without the need for secondary indexes. It can also be used to improve the performance of bulk operations. After the bulk operations are complete, the index mode can be set to Consistent and then monitored using the [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk) until complete.
 
 > [!NOTE]
-> Azure Cosmos DB also supports a Lazy indexing mode. Lazy indexing performs updates to the index at a much lower priority level when the engine is not doing any other work. This can result in **inconsistent or incomplete** query results. If you plan to query an Azure Cosmos DB container, you should not select lazy indexing. New containers cannot select lazy indexing. You can request an exemption by contacting cosmosdbindexing@microsoft.com (except if you are using an Azure Cosmos DB account in [serverless](serverless.md) mode which doesn't support lazy indexing).
-
-
+> Azure Cosmos DB also supports a Lazy indexing mode. Lazy indexing performs updates to the index at a lower priority level when the engine is not doing any other work. This can result in **inconsistent or incomplete** query results. If you plan to query an Azure Cosmos DB container, you should not select lazy indexing. New containers cannot select lazy indexing. You can request an exemption by contacting cosmosdbindexing@microsoft.com (except if you are using an Azure Cosmos DB account in [serverless](serverless.md) mode, which doesn't support lazy indexing).
 
 ## Index size
 
@@ -46,7 +43,8 @@ In Azure Cosmos DB, the total consumed storage is the combination of both the Da
 * The Index size can temporarily grow when physical partitions split. The index space is released after the partition split is completed.
 
 > [!IMPORTANT]
->  - The partition key (unless it is also "/id") is not indexed and should be included in the index. Partition keys do not require indexing to function, but if you do not include them in your indexing policy, any queries filtering on partition key hierarchy will force full scans that become cross-partition queries, resulting in higher RU consumption. In the case of hierarchical partition keys, you want to include the individual levels of the partition key hierarchy in your indexing policy to ensure efficient query performance.
+> The partition key (unless it is also "/id") is not indexed and should be included in the index. Partition keys do not require indexing to function, but if you do not include them in your indexing policy, any queries filtering on partition key hierarchy will force full scans, resulting in higher RU consumption. In the case of hierarchical partition keys, you want to include the individual levels of the partition key hierarchy in your indexing policy to ensure efficient query performance.
+
 - The system properties id and _ts will always be indexed when the cosmos account indexing mode is Consistent
 - The system properties id and _ts are not included in the container policy’s indexed paths description. This is by design because these system properties are indexed by default and this behavior cannot be disabled.
 
@@ -81,8 +79,6 @@ Taking the same example again:
 - the path to anything under `headquarters` is `/headquarters/*`
 
 For example, we could include the `/headquarters/employees/?` path. This path would ensure that we index the `employees` property but wouldn't index extra nested JSON within this property.
-
- 
 
 ## Include/exclude strategy
 
@@ -126,7 +122,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 
 ## Full-text indexes
 > [!NOTE]
->  You must enable the [Full Text & Hybrid Search for NoSQL API](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
+>  You must enable the [Full Text & Hybrid Search for NoSQL API](vector-search.md#enable-the-vector-indexing-and-search-feature) feature to specify a full text index.
 
 **Full-text** indexes enable full text search and scoring efficiently using the index. Defining a full text path in an indexing policy can easily be done by including a `fullTextIndexes` section of the indexing policy that contains all of the text paths to be indexed. For example:
 
@@ -155,11 +151,10 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 > [!IMPORTANT]
 > A full text indexing policy must be on the path defined in the container's full text policy. [Learn more about container vector policies](gen-ai/full-text-search.md).
 
-
 ## Vector indexes
 
 > [!NOTE]
->  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](nosql/vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
+>  You must enable the [Azure Cosmos DB NoSQL Vector Search feature](vector-search.md#enable-the-vector-indexing-and-search-feature) to specify a vector index.
 
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
@@ -209,7 +204,7 @@ Here's an example of an indexing policy with a vector index:
 ```
 
 > [!IMPORTANT]
-> A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](nosql/vector-search.md#container-vector-policies).
+> A vector indexing policy must be on the path defined in the container's vector policy. [Learn more about container vector policies](vector-search.md#container-vector-policies).
 
 ## Spatial indexes
 
@@ -231,7 +226,7 @@ Tuple Indexes are useful when performing filtering on multiple fields within an 
 > [!NOTE]
 > Unlike with included or excluded paths, you can't create a path with the /* wildcard. Every tuple path needs to end with “/?”. If a tuple in a tuple path doesn't exist in an item, a value will be added to the index to indicate that the tuple is undefined.
 
-Array tuple paths will be defined in the includedPaths section and will be using the following notation.
+Array tuple paths are defined in the includedPaths section and will be using the following notation.
 
 `<path prefix>/[]/{<tuple 1>, <tuple 2> … <tuple n>}/?`
 
@@ -281,7 +276,7 @@ These are a few examples of *invalid* array tuple paths
 
 ## Composite indexes
 
-Queries that have an `ORDER BY` clause with two or more properties require a composite index. You can also define a composite index to improve the performance of many equality and range queries. By default, no composite indexes are defined so you should [add composite indexes](how-to-manage-indexing-policy.md#composite-index) as needed.
+Queries that have an `ORDER BY` clause with two or more properties require a composite index. You can also define a composite index to improve the performance of many equality and range queries. By default, no composite indexes are defined so you should [add composite indexes](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) as needed.
 
 Unlike with included or excluded paths, you can't create a path with the `/*` wildcard. Every composite path has an implicit `/?` at the end of the path that you don't need to specify. Composite paths lead to a scalar value that is the only value included in the composite index. If a path in a composite index doesn't exist in an item or leads to a nonscalar value, a value is added to the index to indicate that the path is undefined.
 
@@ -436,7 +431,6 @@ The following considerations apply when creating composite indexes to optimize a
 * If the query filters on multiple properties, you can have a maximum of one range filter or system function utilized per composite index. The property used in the range filter or system function should be defined last in the composite index.
 * All considerations for creating composite indexes for `ORDER BY` queries with multiple properties and queries with filters on multiple properties still apply.
 
-
 | **Composite Index**                      | **Sample `ORDER BY` Query**                                  | **Supported by Composite Index?** |
 | ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
@@ -505,11 +499,11 @@ A container's indexing policy can be updated at any time [by using the Azure por
 > Index transformation is an operation that consumes [request units](request-units.md).
 
 > [!NOTE]
-> You can track the progress of index transformation in the [Azure portal](how-to-manage-indexing-policy.md#use-the-azure-portal) or by [using one of the SDKs](how-to-manage-indexing-policy.md#dotnet-sdk).
+> You can track the progress of index transformation in the [Azure portal](how-to-manage-indexing-policy.md#use-the-azure-portal) or by [using one of the SDKs](how-to-manage-indexing-policy.md#use-the-net-sdk).
 
-There's no impact to write availability during any index transformations. The index transformation uses your provisioned RUs but at a lower priority than your CRUD operations or queries.
+There's no effect to write availability during any index transformations. The index transformation uses your provisioned RUs but at a lower priority than your CRUD operations or queries.
 
-There's no impact to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path has the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
+There's no effect to read availability when adding new indexed paths. Queries will only utilize new indexed paths once an index transformation is complete. In other words, when adding a new indexed path, queries that benefit from that indexed path has the same performance before and during the index transformation. After the index transformation is complete, the query engine will begin to use the new indexed paths.
 
 When removing indexed paths, you should group all your changes into one indexing policy transformation. If you remove multiple indexes and do so in one single indexing policy change, the query engine provides consistent and complete results throughout the index transformation. However, if you remove indexes through multiple indexing policy changes, the query engine won't provide consistent or complete results until all index transformations complete. Most developers don't drop indexes and then immediately try to run queries that utilize these indexes so, in practice, this situation is unlikely.
 
