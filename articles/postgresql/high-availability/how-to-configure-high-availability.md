@@ -116,7 +116,7 @@ Message: Invalid value given for parameter Cannot switch Properties.HighAvailabi
 > [!NOTE]  
 > Using the --high-availability parameter in the cli command will trigger a deprecation warning: "Argument '--high-availability' has been deprecated and will be removed in next breaking change release(2.86.0) scheduled for May 2026. Use '--zonal-resiliency' instead." We recommend updating your scripts and commands to use --zonal-resiliency to ensure compatibility with future Azure CLI releases.
 
-The **--zonal-resiliency** parameter helps you create a stanby server in a different availability zone than primary and protects against zone‑level failures. It accepts two values: 
+The **--zonal-resiliency** parameter helps you create a standby server in a different availability zone than primary and protects against zone‑level failures. It accepts two values: 
 
 - Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
 - Disabled – High availability isn't configured.
