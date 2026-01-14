@@ -54,7 +54,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Central US, East Asia, East US, East US 2, South Central US, and West US 2 regions.
+In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Canada East, Central US, East Asia, East US, East US 2, South Central US, West Central US, and West US 2 regions.
 
 - *High Availability
 Geo Replicas
@@ -90,7 +90,7 @@ Geo DR*
 - Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
 - Premium SSD v2 is available only in the following regions:
-  *Australia East, Brazil South, Canada Central, Central India, Central US, East Asia, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
+  *Australia East, Brazil South, Canada Central, Canada East,Central India, Central US, East Asia, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
