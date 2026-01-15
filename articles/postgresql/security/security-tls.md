@@ -39,7 +39,7 @@ China regions currently use the following CAs:
 
 Azure Database for PostgreSQL uses intermediate CAs (ICAs) to issue server certificates. To maintain security, Microsoft periodically rotates these ICAs and the server certificates they issue. These rotations are routine and aren't announced in advance.
 
-The current rotation of intermediate CAs for `DigiCert Global Root CA` (see [Certificate rotation](#trusted-root-certs-and-cert-rotations)) started in November 2023 and is scheduled to be completed in the first quarter of 2024. If you followed the [recommended practices](#recommended-configurations-for-tls), then this change requires no changes in your environment.
+The current rotation of intermediate CAs for `DigiCert Global Root CA` (see [Certificate rotation](#trusted-root-certs-and-cert-rotations)) started in November 2025 and is scheduled to be completed in the first quarter of 2026. If you followed the [recommended practices](#recommended-configurations-for-tls), then this change requires no changes in your environment.
 
 #### Old CA chain
 
@@ -70,10 +70,10 @@ A certificate chain is a hierarchical sequence of certificates issued by trusted
 
 Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
 
-> [!CAUTION]  
+> [!CAUTION]
 > Using ***[unsupported (client) configurations](#trusted-root-certs-and-cert-rotations)*** causes unexpected connection failures.
 
 ## Recommended configurations for TLS
@@ -106,12 +106,12 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 - Using intermediate CA certificates in your trusted store.
 - Using certificate pinning, such as, using individual server certificates in your trusted store.
 
-> [!CAUTION]  
+> [!CAUTION]
 > Your applications fail to connect to the database servers without warning whenever Microsoft changes the certificate chain's intermediate CAs or rotates the server certificate.
 
 ### Certificate pinning problems
 
-> [!NOTE]  
+> [!NOTE]
 > Certificate rotations don't affect you if you don't use the `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string. Therefore, you don't need to follow the steps in this section.
 
 Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of Intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
@@ -139,7 +139,7 @@ The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 
 
 Although we don't recommend it, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` server parameter to `OFF`.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` server parameter.
 
 ### Cipher suites
