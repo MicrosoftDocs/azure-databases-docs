@@ -19,6 +19,7 @@ This guide includes best practices for solutions built using the latest version 
 ## Account configuration
 
 **Account configuration parameters**  
+
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | Region colocation | Same as app region | Reduce latency |
@@ -37,6 +38,7 @@ For more information on how to add multiple regions using the Python SDK, see th
 ## SDK usage
 
 **SDK usage parameters**  
+
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | SDK version | Latest available | Always for optimal performance |
@@ -60,6 +62,7 @@ Use SDK logging to [capture diagnostic information](troubleshoot-python-sdk.md#l
 ## Data design
 
 **Data design parameters**  
+
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | Document size | N/A | Keep small to reduce RU cost |
@@ -82,6 +85,7 @@ For more information, see [creating indexes using the SDK sample](performance-ti
 ## Host characteristics
 
 **Host characteristics parameters**  
+
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | CPU utilization | <70% recommended | Scale up or out if high |
