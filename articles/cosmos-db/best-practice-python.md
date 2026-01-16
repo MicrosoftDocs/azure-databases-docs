@@ -25,16 +25,12 @@ This guide includes best practices for solutions built using the latest version 
 | Multi-region replication | Disabled by default | Enable 2+ regions for availability |
 | Service-managed failover | Optional | Enable for production workloads |
 
-<!-- Converted prose guidance into a concise parameter table per agent feedback. -->
-
 ```python
 from azure.cosmos import CosmosClient
 client = CosmosClient(url, credential)
 print(client.client_connection._global_endpoint_manager.write_endpoint)
 # Expected: write endpoint resolves to configured write region
 ```
-
-<!-- Added a short Python verification snippet adjacent to account configuration. -->
 
 For more information on how to add multiple regions using the Python SDK, see the [global distribution tutorial](tutorial-global-distribution.md).
 
@@ -47,8 +43,6 @@ For more information on how to add multiple regions using the Python SDK, see th
 | CosmosClient instance | One per app | Reuse for lifetime of app |
 | preferred_locations | None | Optimize reads and failover |
 
-<!-- Converted SDK usage bullets into a structured parameter table per agent feedback. -->
-
 ```python
 client = CosmosClient(
     url,
@@ -58,8 +52,6 @@ client = CosmosClient(
 print(client.client_connection._preferred_locations)
 # Expected: ['East US', 'West US']
 ```
-
-<!-- Added a short Python snippet demonstrating preferred_locations usage. -->
 
 A transient error is an error that has an underlying cause that soon resolves itself. Applications that connect to your database should be built to expect these transient errors. To handle them, implement retry logic in your code instead of surfacing them to users as application errors. The SDK has built-in logic to handle these transient failures on retryable requests like read or query operations. The SDK can't retry on writes for transient failures as writes aren't idempotent. The SDK does allow users to configure retry logic for throttles. For details on which errors to retry on, see [resilient application guidance](conceptual-resilient-sdk-applications.md#should-my-application-retry-on-errors).
 
@@ -74,8 +66,6 @@ Use SDK logging to [capture diagnostic information](troubleshoot-python-sdk.md#l
 | Identifier characters | No special chars | Avoid unexpected behavior |
 | Indexing paths | All paths indexed | Exclude unused paths for faster writes |
 
-<!-- Converted data design prose into a parameter/value table per agent feedback. -->
-
 ```python
 container_properties = {
     "id": "items",
@@ -86,8 +76,6 @@ container_properties = {
 print(container_properties["indexingPolicy"])
 # Expected: excludedPaths configured
 ```
-
-<!-- Added a short Python snippet demonstrating indexing policy usage. -->
 
 For more information, see [creating indexes using the SDK sample](performance-tips-python-sdk.md#indexing-policy).
 
@@ -100,8 +88,6 @@ For more information, see [creating indexes using the SDK sample](performance-ti
 | Accelerated Networking | Disabled | Enable on VMs for high traffic |
 | Query page size | 100 items / 4 MB | Increase to reduce round trips |
 
-<!-- Converted host characteristics bullets into a concise parameter table per agent feedback. -->
-
 ```python
 items = container.query_items(
     query="SELECT * FROM c",
@@ -111,8 +97,6 @@ print("Page size set to 500")
 # Expected: fewer round trips
 ```
 
-<!-- Added a short Python snippet for query page size tuning. -->
-
 ## Next steps
 To learn more about performance tips for Python SDK, see [Performance tips for Azure Cosmos DB Python SDK](performance-tips-python-sdk.md).
 
@@ -121,16 +105,3 @@ To learn more about designing your application for scale and high performance, s
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
-
----
-
-**Agent feedback applied**
-
-- Converted prose guidance in **Account configuration** into a concise parameter list.
-- Added a short Python verification snippet adjacent to **Account configuration**.
-- Converted prose bullets in **SDK usage** into a structured parameter list.
-- Added short Python snippets for key **SDK usage** settings.
-- Converted **Data design** prose into a parameter/value list.
-- Added a short Python snippet demonstrating indexing policy usage.
-- Converted **Host characteristics** bullets into a concise parameter list.
-- Added a short Python snippet for query page size tuning.

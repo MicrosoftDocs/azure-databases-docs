@@ -42,7 +42,6 @@ Three Azure resources are defined in the Bicep file:
 
 The following table highlights the key parameters and outputs you will most commonly review or customize in this Bicep file.
 
-<!-- Explanation: Added a concise parameter/value table as requested to summarize high-signal Bicep settings. -->
 | Parameter or output | Default or example value | Scope and notes |
 |--------------------|--------------------------|-----------------|
 | `accountName` | Generated unique name | Global Azure Cosmos DB account name. |
@@ -86,7 +85,6 @@ The following table highlights the key parameters and outputs you will most comm
 
 The following snippets show example parameter values and how to verify the deployment.
 
-<!-- Explanation: Added copy-paste-friendly examples and an explicit verification command with expected output. -->
 ```azurecli
 az deployment group create \
   --resource-group exampleRG \
@@ -146,11 +144,3 @@ In this quickstart, you created an Azure Cosmos DB account, a database and a con
 - Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
     - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md).
     - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md).
-
----
-
-### Agent feedback applied
-
-- Convert the Bicep parameters and high-signal outputs into a short parameter/value list or table inside the **Review the Bicep file** section.
-- Place small, copy-paste-friendly snippets showing example parameter values and a verification command with expected output immediately after the deploy commands.
-- Add explicit scope tokens, including region format, throughput units (RU/s), default TTL units (seconds), and the relevant API version.

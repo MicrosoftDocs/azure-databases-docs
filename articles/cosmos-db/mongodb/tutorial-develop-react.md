@@ -12,7 +12,6 @@ ms.custom: devx-track-js
 ---
 # Create a MongoDB app with React and Azure Cosmos DB  
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
-<!-- Added concise alt text to clarify that this content applies to Azure Cosmos DB API for MongoDB. -->
 
 This multi-part video tutorial demonstrates how to create a hero tracking app with a React front-end. The app used Node and Express for the server, connects to Azure Cosmos DB database configured with the [Azure Cosmos DB's API for MongoDB](introduction.md), and then connects the React front-end to the server portion of the app. The tutorial also demonstrates how to do point-and-click scaling of Azure Cosmos DB in the Azure portal and how to deploy the app to the internet so everyone can track their favorite heroes. 
 
@@ -32,9 +31,7 @@ Want to do build this same app with Angular? See the [Angular tutorial video ser
 
 ## Prerequisites
 * **Node.js**: v14.x or later (LTS recommended). Verify with `node --version`.
-<!-- Converted prerequisite into a concise parameter-style entry with version and verification command. -->
 * **HTTP testing tool**: Insomnia, `curl`, Visual Studio, or PowerShell `Invoke-RestMethod`. Verify availability by running the tool once (for example, `curl --version`).
-<!-- Condensed and added a one-line verification command. -->
 
 ### Finished Project
 Get the completed application [from GitHub](https://github.com/Azure-Samples/react-cosmosdb).
@@ -43,7 +40,6 @@ Get the completed application [from GitHub](https://github.com/Azure-Samples/rea
 
 In this video, Burke Holland gives an introduction to Azure Cosmos DB and walks you through the app that is created in this video series.  
 **Success check**: You understand the overall app architecture (React UI, Node/Express API, Azure Cosmos DB for MongoDB).
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!VIDEO https://www.youtube.com/embed/58IflnJbYJc]
 
@@ -51,7 +47,6 @@ In this video, Burke Holland gives an introduction to Azure Cosmos DB and walks 
 
 This video shows how set up the Express and React in the same project. Burke then provides a walkthrough of the code in the project.  
 **Success check**: The project runs locally without errors using `npm start` (or the equivalent start script).
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!VIDEO https://www.youtube.com/embed/ytFUPStJJds]
 
@@ -59,7 +54,6 @@ This video shows how set up the Express and React in the same project. Burke the
 
 This video shows how to create the application's user interface (UI) with React.  
 **Success check**: The React UI renders in the browser and displays the hero list layout.
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!NOTE]
 > The CSS referenced in this video can be found in the [react-cosmosdb GitHub repo](https://github.com/Azure-Samples/react-cosmosdb/blob/master/src/index.css).
@@ -83,10 +77,8 @@ mongoose.connection.on("connected", () => {
   console.log("Connected to Azure Cosmos DB for MongoDB");
 });
 ```
-<!-- Added a short copy-paste connection example as requested. -->
 
 **Verification**: Start the app and confirm that the console logs `Connected to Azure Cosmos DB for MongoDB`.
-<!-- Added a one-line verification example with an explicit success check. -->
 
 > [!VIDEO https://www.youtube.com/embed/0U2jV1thfvs]
 
@@ -94,7 +86,6 @@ mongoose.connection.on("connected", () => {
 
 This video shows how to read heroes and create heroes in the Azure Cosmos DB database, as well as how to test those methods using a HTTP testing utility and the React UI.  
 **Success check**: Creating a hero returns HTTP 201 (or 200) and the new hero appears in the UI list.
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
@@ -102,7 +93,6 @@ This video shows how to read heroes and create heroes in the Azure Cosmos DB dat
 
 This video shows how to delete and update heroes from the app and display the updates in the UI.  
 **Success check**: Updates and deletions are immediately reflected in the UI and persisted in the database.
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!VIDEO https://www.youtube.com/embed/YmaGT7ztTQM] 
 
@@ -110,7 +100,6 @@ This video shows how to delete and update heroes from the app and display the up
 
 This video shows how to complete the app and finish hooking the UI up to the backend API.  
 **Success check**: The full create, read, update, and delete workflow works end to end.
-<!-- Added a one-line textual success criterion for the video section. -->
 
 > [!VIDEO https://www.youtube.com/embed/TcSm2ISfTu8]
 
@@ -140,10 +129,3 @@ You can proceed to the next tutorial and learn how to import MongoDB data into A
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
 * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-capacity-planner.md)
-
----
-
-**Agent feedback applied**
-- Convert the Prerequisites section into a concise parameter list that includes supported Node.js version(s) and one-line verification commands.
-- In the 'Connect to Azure Cosmos DB' section add one short copy-paste connection example and a one-line verification example with an explicit success check.
-- Add concise alt text to the APPLIES TO image and add a one-line textual success criterion where a video replaces a textual procedure.
