@@ -1,6 +1,7 @@
 ---
 title: Release Notes for Azure Database for MySQL Flexible Server - January 2026
 description: Learn about the release notes for Azure Database for MySQL Flexible Server January 2026.
+ai-usage: ai-assisted
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: maghan
@@ -26,12 +27,11 @@ No new features are being introduced in this version.
 
 ## Improvement
 
-- Improved the error message when customer failed to enable HA on instance on VNET with Accelerated logs enabled
-- Add auto linking support when reader endpoint enabled server are creating new read replica server.
+- Improved the error message shown when customers attempt to enable HA on a VNET-based instance that still has Accelerated Logs enabled
 
 ## Known issues fixes
 
-- Fixed the issue that after opening geo backup, the GTID reset would fail
-- Fixed the issue that for some HA servers on dedicate SLB, enable private endpoint would fail
+- Fixed an issue where enabling geo backup caused subsequent GTID reset operations to fail
+- Fixed an issue where certain HA servers behind a dedicated SLB could not enable a private endpoint
 
 
