@@ -18,7 +18,7 @@ This guide includes best practices for solutions built using the latest version 
 
 ## Account configuration
 
-**Account configuration parameters**  
+### Account configuration parameters 
 
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ For more information on how to add multiple regions using the Python SDK, see th
 
 ## SDK usage
 
-**SDK usage parameters**  
+### SDK usage parameters
 
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Use SDK logging to [capture diagnostic information](troubleshoot-python-sdk.md#l
 
 ## Data design
 
-**Data design parameters**  
+### Data design parameters
 
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
@@ -84,7 +84,7 @@ For more information, see [creating indexes using the SDK sample](performance-ti
 
 ## Host characteristics
 
-**Host characteristics parameters**  
+### Host characteristics parameters 
 
 | Parameter | Default or constraint | When to use |
 | --- | --- | --- |
