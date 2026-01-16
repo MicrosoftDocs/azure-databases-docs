@@ -19,7 +19,7 @@ This guide includes best practices for solutions built using the latest version 
 ## Account configuration
 
 **Account configuration parameters**  
-| Parameter | Default / constraint | When to use |
+| Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | Region colocation | Same as app region | Reduce latency |
 | Multi-region replication | Disabled by default | Enable 2+ regions for availability |
@@ -37,7 +37,7 @@ For more information on how to add multiple regions using the Python SDK, see th
 ## SDK usage
 
 **SDK usage parameters**  
-| Parameter | Default / constraint | When to use |
+| Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | SDK version | Latest available | Always for optimal performance |
 | CosmosClient instance | One per app | Reuse for lifetime of app |
@@ -60,7 +60,7 @@ Use SDK logging to [capture diagnostic information](troubleshoot-python-sdk.md#l
 ## Data design
 
 **Data design parameters**  
-| Parameter | Default / constraint | When to use |
+| Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | Document size | N/A | Keep small to reduce RU cost |
 | Identifier characters | No special chars | Avoid unexpected behavior |
@@ -82,7 +82,7 @@ For more information, see [creating indexes using the SDK sample](performance-ti
 ## Host characteristics
 
 **Host characteristics parameters**  
-| Parameter | Default / constraint | When to use |
+| Parameter | Default or constraint | When to use |
 | --- | --- | --- |
 | CPU utilization | <70% recommended | Scale up or out if high |
 | Accelerated Networking | Disabled | Enable on VMs for high traffic |
