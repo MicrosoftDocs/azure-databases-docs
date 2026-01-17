@@ -47,6 +47,9 @@ For example, let's suppose that you're running one general purpose, Gen5 – 32 
 1. Select **Add** and then in the Purchase reservations pane, select **Azure Database for MySQL** to purchase a new reservation for your Azure Database for MySQL Flexible Server databases.
 1. Fill in the required fields. Existing or new databases that match the attributes you select qualify to get the reserved capacity discount. The actual number of your Azure Database for MySQL Flexible Server instances that get the discount depend on the scope and quantity selected.
 
+>[!NOTE]
+>When you purchase reserved capacity, select the Ddsv4/Edsv4 hardware generation even if you plan to run Azure Database for MySQL Flexible Server instances on v5 hardware. Reservations bought on Ddsv4/Edsv4 meters automatically apply to qualifying v5 instances in the same region and performance tier.
+
 :::image type="content" source="media/concept-reserved-pricing/mysql-reserved-price.png" alt-text="Screenshot of Overview of reserved pricing." lightbox="media/concept-reserved-pricing/mysql-reserved-price.png":::
 
 The following table describes required fields.
