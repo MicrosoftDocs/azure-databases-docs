@@ -81,7 +81,7 @@ Extended Support is ideal for customers who...
 - Automatic Enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
 - Opt-Out Option: You can opt out at any time by upgrading to a supported version.
 - Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
-- Pricing: Details will be published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
+- Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
 
 ### Frequently asked questions (FAQs)
 
@@ -99,7 +99,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A. PostgreSQL major version upgrades can introduce changes that might affect your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+A. PostgreSQL major version upgrades can introduce changes that might affect your application—such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a nonproduction environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
 
 [!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
 
@@ -119,7 +119,7 @@ A: No. While Azure upgrades the database engine, noncore extensions (for example
 
 A: To minimize downtime:
 - Plan upgrades during low-traffic hours.
-- Identify and fix any upgrade blockers (e.g. extensions, roles, replication slots) ahead of the upgrade.
+- Identify and fix any upgrade blockers (for example, extensions, roles, replication slots) ahead of the upgrade.
 - Pause background jobs and long-running sessions.
 - Temporarily scale up compute to speed up pg_upgrade.
 - Clean up bloat with VACUUM or REINDEX if needed.
@@ -131,7 +131,7 @@ A: Azure provides visibility through the portal.
 
 **Q: What support options are available during the Extended Support phase?**
 
-A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions will not be backported.
+A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions won't be backported.
 
 **Q: How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025?**
 
@@ -157,7 +157,7 @@ You can continue to use the retired version in Azure Database for PostgreSQL fle
 
 ## PostgreSQL version syntax
 
-Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a major version upgrade to be an increase in the first or second number. For example, 9.5 to 9.6 was considered a major version upgrade. As of version 10, only a change in the first number is considered a major version upgrade. For example, 10.0 to 10.1 is a minor release upgrade. Version 10 to 11 is a major version upgrade.
+Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.postgresql.org/support/versioning/) considered a major version upgrade to be an increase in the first or second number. For example, 9.5 to 9.6 was considered as a major version upgrade. As of version 10, only a change in the first number is considered as a major version upgrade. For example, 10.0 to 10.1 is a minor release upgrade. Version 10 to 11 is a major version upgrade.
 
 ## Related content
 
