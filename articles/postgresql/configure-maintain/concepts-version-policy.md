@@ -4,11 +4,9 @@ description: Describes the policy around Postgres major and minor versions for A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 12/8/2025
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
-ai.usage: ai.assisted
 ---
 
 # Azure Database for PostgreSQL version policy
@@ -26,8 +24,8 @@ The following table provides the retirement details for PostgreSQL major version
 | PostgreSQL Version | What's New | Azure Standard Support Start Date | Azure Standard Support End Date |
 | --- | --- | --- | --- |
 | [PostgreSQL 18](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 (Preview) | 14-Nov-2030 |
-| [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029  |
-| [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028  |
+| [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029 |
+| [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028 |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |
 | [PostgreSQL 14](https://www.postgresql.org/about/news/postgresql-14-released-2318/) | [Release notes](https://www.postgresql.org/docs/14/release-14.html) | 29-Jun-2022 | 12-Nov-2026 |
 | [PostgreSQL 13](https://www.postgresql.org/about/news/postgresql-13-released-2077/) | [Release notes](https://www.postgresql.org/docs/13/release-13.html) | 25-May-2021 | 31-Mar-2026 |
@@ -73,9 +71,9 @@ Extended Support is ideal for customers who...
 
 | PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
-| 11 | July 24, 2019 |  November 9, 2023 |  March 31, 2026 |  April 1, 2026 | November 8, 2026|
-| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 |  April 1, 2026 | November 13, 2027 |
-| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 |  April 1, 2026 | November 12, 2028 |
+| 11 | July 24, 2019 | November 9, 2023 | March 31, 2026 | April 1, 2026 | November 8, 2026 |
+| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 | April 1, 2026 | November 13, 2027 |
+| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 | April 1, 2026 | November 12, 2028 |
 | 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | November 11, 2029 |
 
 ### Enrollment and price
@@ -101,7 +99,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A. PostgreSQL major version upgrades can introduce changes that may impact your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+A. PostgreSQL major version upgrades can introduce changes that might affect your application — such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a non-production environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
 
 [!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
 
@@ -133,7 +131,7 @@ A: Azure provides visibility through the portal.
 
 **Q: What support options are available during the Extended Support phase?**
 
-A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions will not be backported. 
+A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions will not be backported.
 
 **Q: How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025?**
 
