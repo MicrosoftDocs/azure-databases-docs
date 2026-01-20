@@ -95,7 +95,7 @@ Be aware of the following points about the feature:
 
 There is no limitation on how many times a maintenance event can be rescheduled. As long as a maintenance event hasn't entered the **In preparation** state, you can always reschedule it to another time.
 
-### Maintenance rollout progress view (Public Preview)
+### Maintenance rollout progress view
 
 Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet—no need to check each server individually or rely solely on email notifications.
 
