@@ -4,12 +4,12 @@ description: Enable system assigned managed identity for Azure AI Services with 
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/19/2025
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure Database for PostgreSQL flexible server instance.
@@ -25,14 +25,14 @@ The Azure AI extension for Azure Database for PostgreSQL supports System Assigne
 - **Improved Security** – No risk of exposing API keys in logs or code repositories.
 - **Simpler Maintenance** – Azure handles authentication behind the scenes, reducing operational overhead.
 
-## Create a system-assigned managed identity 
+## Create a system-assigned managed identity
 
 1. Navigate to the Azure portal.
 1. Select your Azure Database for PostgreSQL flexible server instance within the Portal.
 1. Enable Managed Identity:
- - From the left navigation menu of the server overview page, expand **Security** and select **Identity**.
- - Select the **On** radio button for **System assigned managed identity**.
- - Select **Save** to enable the managed identity.
+- From the left navigation menu of the server overview page, expand **Security** and select **Identity**.
+- Select the **On** radio button for **System assigned managed identity**.
+- Select **Save** to enable the managed identity.
 
 To learn more about it, visit [Managed Identities](/azure/active-directory/managed-identities-azure-resources/overview)
 
@@ -45,9 +45,9 @@ To learn more about it, visit [Managed Identities](/azure/active-directory/manag
 1. In the **Members** section, select **Managed identity**.
 1. Choose the subscription and the managed identity of your PostgreSQL server.
 1. Select **Save** to assign the role.
-1. Return to the server's Overview page and click the Restart button to reboot the server.
+1. Return to the server's Overview page and select the Restart button to reboot the server.
 
-To learn more, visit  ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
+To learn more, visit ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ### Access Control (IAM) for Azure OpenAI
 
@@ -80,48 +80,48 @@ You need to update the database authorization settings to configure the Azure AI
 
 - For OpenAI, by executing the following SQL command:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_openai.auth_type', 'managed-identity');
+```sql
+  SELECT azure_ai.set_setting('azure_openai.auth_type', 'managed-identity');
  ```
 - For Cognitive Services, by executing the following SQL command:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_cognitive.auth_type', 'managed-identity');
+```sql
+  SELECT azure_ai.set_setting('azure_cognitive.auth_type', 'managed-identity');
  ```
 - If you use translate services, you need to set the resource ID of the translator resource by executing the following SQL command:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_cognitive.translator_resource_id', '<Your_translator_resource_id>');
+```sql
+  SELECT azure_ai.set_setting('azure_cognitive.translator_resource_id', '<Your_translator_resource_id>');
  ```
 - For Machine Learning Services, by executing the following SQL command:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_ml.auth_type', 'managed-identity');
+```sql
+  SELECT azure_ai.set_setting('azure_ml.auth_type', 'managed-identity');
  ```
 
 ### Set Endpoint
 
 - For Azure OpenAI, execute the following SQL command to set the endpoint:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<Your_openai_account>.openai.azure.com'); 
+```sql
+  SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<Your_openai_account>.openai.azure.com');
  ```
 
 ### Verify settings
 
 After configuring the Azure AI extension for PostgreSQL, it's important to confirm that the settings have been applied correctly. Verifying the settings ensures the integration is properly configured and ready to interact with Azure AI Services, Azure OpenAI, or Azure Machine Learning. Use the following SQL commands to check the current configuration and validate that the correct authorization type and endpoints are in place.
 
- ```sql
-  SELECT azure_ai.get_setting('azure_openai.auth_type');
-  SELECT azure_ai.get_setting('azure_openai.endpoint');
+```sql
+  SELECT azure_ai.get_setting('azure_openai.auth_type');
+  SELECT azure_ai.get_setting('azure_openai.endpoint');
  ```
 
 ## Test the configuration
 
 After setting up the managed identity and configuring the Azure AI extension for PostgreSQL, verifying that the integration works as expected is essential. Testing ensures the database can authenticate successfully with Azure AI Services, Azure OpenAI, and Azure Machine Learning. The following examples demonstrate how to execute sample function calls to validate the configuration and confirm that the services function without authorization errors.
 
- ```sql
-  SELECT azure_cognitive.analyze_sentiment('Your text here');
+```sql
+  SELECT azure_cognitive.analyze_sentiment('Your text here');
  ```
 
 Ensure that the function executes successfully without any authorization errors.
@@ -130,8 +130,8 @@ Ensure that the function executes successfully without any authorization errors.
 
 Testing OpenAI services ensures that the integration between the Azure AI extension for PostgreSQL and Azure OpenAI is functioning correctly. By executing sample function calls, you can validate that the managed identity or subscription key authentication is configured correctly and that the database can successfully interact with OpenAI models. Follow the example below to test the embedding creation functionality and confirm that the service works without authorization errors.
 
- ```sql
-  SELECT azure_openai.create_embeddings('Your model deployment name', 'Your text here');
+```sql
+  SELECT azure_openai.create_embeddings('Your model deployment name', 'Your text here');
  ```
 
 Ensure that the function executes successfully without any authorization errors.
@@ -140,14 +140,14 @@ Ensure that the function executes successfully without any authorization errors.
 
 Testing machine learning services ensures that the integration between the Azure AI extension for PostgreSQL and Azure Machine Learning is functioning as expected. You can validate that the managed identity or subscription key authentication is correctly configured by executing sample function calls. This step confirms that the database can successfully interact with deployed machine learning models, enabling seamless execution of predictions or other model operations. Use the example below to test the model invocation functionality and verify that the service works without authorization errors.
 
- ```sql
-  SELECT azure_ml.invoke('Your model input', 'Your model deployment name');
+```sql
+  SELECT azure_ml.invoke('Your model input', 'Your model deployment name');
  ```
 
 Ensure that the function executes successfully without any authorization errors.
 
- ```sql
-  SELECT azure_ml.invoke('Your model input', 'Your model deployment name');
+```sql
+  SELECT azure_ml.invoke('Your model input', 'Your model deployment name');
  ```
 
 Ensure that the function executes successfully without any authorization errors.
@@ -160,28 +160,28 @@ If you need to revert to using subscription key authentication, follow the steps
 
 Use your preferred PostgreSQL client to connect to your database.
 
-### Set subscription key authorization types 
+### Set subscription key authorization types
 
 - For OpenAI, by executing the following SQL commands:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_openai.auth_type', 'subscription-key');
-  SELECT azure_ai.set_setting('azure_openai.endpoint','https://<Your_OpenAI_Endpoint>');
-  SELECT azure_ai.set_setting('azure_openai.subscription_key', '<Key>');
+```sql
+  SELECT azure_ai.set_setting('azure_openai.auth_type', 'subscription-key');
+  SELECT azure_ai.set_setting('azure_openai.endpoint','https://<Your_OpenAI_Endpoint>');
+  SELECT azure_ai.set_setting('azure_openai.subscription_key', '<Key>');
  ```
 - For Cognitive Services, by executing the following SQL commands:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_cognitive.auth_type', 'subscription-key');
-  SELECT azure_ai.set_setting('azure_cognitive.endpoint','https://<endpoint>.cognitiveservices.azure.com');
-  SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '<Key>');
+```sql
+  SELECT azure_ai.set_setting('azure_cognitive.auth_type', 'subscription-key');
+  SELECT azure_ai.set_setting('azure_cognitive.endpoint','https://<endpoint>.cognitiveservices.azure.com');
+  SELECT azure_ai.set_setting('azure_cognitive.subscription_key', '<Key>');
  ```
 - For Machine Learning Services, by executing the following SQL commands:
 
- ```sql
-  SELECT azure_ai.set_setting('azure_ml.auth_type', 'subscription-key');
-  SELECT azure_ai.set_setting('azure_ml.scoring_endpoint','<URI>');
-  SELECT azure_ai.set_setting('azure_ml.endpoint_key', '<Key>');
+```sql
+  SELECT azure_ai.set_setting('azure_ml.auth_type', 'subscription-key');
+  SELECT azure_ai.set_setting('azure_ml.scoring_endpoint','<URI>');
+  SELECT azure_ai.set_setting('azure_ml.endpoint_key', '<Key>');
  ```
 
 ## Related content

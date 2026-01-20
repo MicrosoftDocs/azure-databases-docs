@@ -4,12 +4,12 @@ description: Learn how to build a semantic search application by using Azure Dat
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 11/19/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - ignite-2023
 ---
@@ -23,20 +23,19 @@ Semantic search does searches based on semantics. Standard lexical search does s
 In this tutorial, you:
 
 > [!div class="checklist"]
->
 > - Identify the search scenarios and the data fields that will be involved in a search.
 > - For every data field involved in a search, create a corresponding vector field to store the embeddings of the value stored in the data field.
 > - Generate embeddings for the data in the selected data fields and store the embeddings in their corresponding vector fields.
 > - Generate the embedding for any input search query.
 > - Search for the vector data field and list the nearest neighbors.
 > - Run the results through appropriate relevance, ranking, and personalization models to produce the final ranking. In the absence of such models, rank the results in decreasing dot-product order.
-> - Monitor the model, results quality, and business metrics, such as click-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
+> - Monitor the model, results quality, and business metrics, such as select-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
 
 ## Prerequisites
 
 1. Create an OpenAI account and [request access to Azure OpenAI](https://aka.ms/oai/access).
 1. Grant access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
+1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
 1. [Create and deploy an Azure OpenAI resource and a model](/azure/ai-services/openai/how-to/create-resource). Deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name, because you need it to create embeddings.
 
 ## Enable the azure_ai and pgvector extensions
@@ -102,7 +101,7 @@ Set PGCLIENTENCODING=utf-8;
 export PGCLIENTENCODING=utf-8
 ```
 
-Import the data into the table that you created. Note that this dataset contains a header row.
+Import the data into the table that you created. This dataset contains a header row.
 
 ```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"

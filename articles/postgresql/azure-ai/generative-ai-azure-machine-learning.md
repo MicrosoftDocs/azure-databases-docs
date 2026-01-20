@@ -1,16 +1,17 @@
 ---
-title: Invoke Azure Machine Learning models from Azure Database for PostgreSQL
+title: Invoke Azure Machine Learning Models from Azure Database for PostgreSQL
 description: Real-time scoring with online inference endpoints on Azure Machine Learning from Azure Database for PostgreSQL.
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan
-ms.date: 05/28/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
+ms.topic: how-to
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2024
-ms.topic: how-to
 # customer intent: As a developer, I want to learn how to invoke Azure Machine Learning models from Azure Database for PostgreSQL, so that I can perform real-time scoring with online inference endpoints.
 ---
 
@@ -71,7 +72,6 @@ azure_ml.invoke(input_data jsonb, timeout_ms integer DEFAULT NULL, throw_on_erro
 
 `integer DEFAULT 1000` amount of time (milliseconds) that the extension waits, before calling the Azure Machine Learning endpoint, when it fails with any retryable error.
 
-
 #### Return type
 
 `jsonb` scoring output for the model that was invoked in JSONB.
@@ -107,10 +107,10 @@ FROM azure_ml.invoke('
 
 ## Related content
 
-- [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
-- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).
+- [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md)
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)

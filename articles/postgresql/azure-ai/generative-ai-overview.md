@@ -4,11 +4,12 @@ description: Learn about using generative AI with Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 04/27/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - ignite-2023
 ---
@@ -24,7 +25,7 @@ Generative AI is used in image and music synthesis and in healthcare, along with
 
 The following video demonstrates the use of generative AI with Azure Database for PostgreSQL and the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md), which can help you understand the concepts in this article.
 
->[!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
+> [!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
 
 ## OpenAI
 
@@ -68,7 +69,7 @@ Key attributes and operations of vectors include:
 
 - **Magnitude**: The length or size of a vector, often denoted as its norm, represents the magnitude of the data. It's a non-negative real number.
 - **Direction**: The direction indicates the orientation or angle of the quantity that it represents, in relation to a reference point or coordinate system.
-- **Components**: A vector can be decomposed into its components along different axes or dimensions. In a 2D Cartesian coordinate system, a vector can be represented as (*x*, *y*), where *x* and *y* are its components along the x-axis and y-axis, respectively. A vector in *n* dimensions is an *n*-tuple (`{x1, x2… xn}`).
+- **Components**: A vector can be decomposed into its components along different axes or dimensions. In a 2D Cartesian coordinate system, a vector can be represented as (*x*, *y*), where *x* and *y* are its components along the x-axis and y-axis, respectively. A vector in *n* dimensions is an *n*-tuple (`{x1, x2... xn}`).
 - **Addition and scalar multiplication**: Vectors can be added together to form new vectors, and they can be multiplied by scalars (real numbers).
 - **Dot products and cross-products**: Vectors can be combined via dot products (scalar products) and cross-products (vector products).
 

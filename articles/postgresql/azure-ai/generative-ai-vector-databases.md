@@ -3,13 +3,15 @@ title: Vector Stores in Azure Database for PostgreSQL
 description: Enhance AI-based applications by using the integrated vector store functionality in Azure Database for PostgreSQL.
 author: abeomor
 ms.author: abeomorogbe
-ms.date: 03/17/2025
-ms.update-cycle: 180-days
+ms.reviewer: maghan
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
+ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
-ms.topic: concept-article
 ---
 
 # Vector stores in Azure Database for PostgreSQL
