@@ -8,6 +8,7 @@ ms.date: 08/12/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: overview
+ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - horz-security
 ---
