@@ -40,6 +40,18 @@ Three Azure resources are defined in the Bicep file:
 
 - [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Create an Azure Cosmos DB container.
 
+The following table highlights the key parameters and outputs you will most commonly review or customize in this Bicep file.
+
+| Parameter or output | Default or example value | Scope and notes |
+|--------------------|--------------------------|-----------------|
+| `accountName` | Generated unique name | Global Azure Cosmos DB account name. |
+| `databaseName` | `myDatabase` | SQL API database name. |
+| `containerName` | `myContainer` | SQL API container name. |
+| `throughput` | `400` | Provisioned throughput in RU/s (request units per second). |
+| `partitionKeyPath` | `/myPartitionKey` | Logical partition key path. |
+| `defaultTtl` | `-1` | Time to live in seconds; `-1` means items never expire. |
+| API version | `2023-11-15` | SQL API version used; behavior may change with newer versions. |
+
 > [!IMPORTANT]
 > The Azure Resource Manager provider, `Microsoft.DocumentDB/databaseAccounts`, has maintained the same name for many years. This ensures that templates written years ago are still compatible with the same provider even as the name of the service and sub-services have evolved.
 
@@ -65,9 +77,26 @@ Three Azure resources are defined in the Bicep file:
     ---
 
    > [!NOTE]
-   > Replace **\<primary-region\>** with the primary replica region for the Azure Cosmos DB account, such as **WestUS**. Replace **\<secondary-region\>** with the secondary replica region for the Azure Cosmos DB account, such as **EastUS**.
+   > Replace **\<primary-region\>** with the primary replica region for the Azure Cosmos DB account, such as **westus**. Replace **\<secondary-region\>** with the secondary replica region for the Azure Cosmos DB account, such as **eastus**.
+   >
+   > Region values use Azure region name format (for example, `eastus`, `westus2`).
 
     When the deployment finishes, you should see a message indicating the deployment succeeded.
+
+The following snippets show example parameter values and how to verify the deployment.
+
+```azurecli
+az deployment group create \
+  --resource-group exampleRG \
+  --template-file main.bicep \
+  --parameters primaryRegion=eastus secondaryRegion=westus
+```
+
+```azurecli
+az cosmosdb sql database list --account-name <account-name> --resource-group exampleRG
+```
+
+Expected output includes the database name you specified, such as `"name": "myDatabase"`.
 
 ## Validate the deployment
 
