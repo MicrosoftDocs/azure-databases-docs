@@ -7,6 +7,7 @@ ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.topic: overview
+ms.collection: ce-skilling-ai-copilot
 ---
 
 # What is Oracle to Azure Database for PostgreSQL schema conversion Preview?
