@@ -44,7 +44,7 @@ If you enable zonal resiliency but your region lacks capacity for a zone-redunda
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable.png" alt-text="Screenshot that shows the checkbox selected to enable high availability." lightbox="./media/how-to-configure-high-availability/high-availability-enable.png":::
 
-1. If the region doesn't have zonal capacity, to make sure that high availability (HA) gets enabled in your preferred region, select the checkbox under the enabled option to allow creating HA with Same-Zone mode of the region. It automatically migrates your workloads to Zone-Redundant HA once zonal capacity becomes available:
+1. If the region doesn't have zonal capacity, to make sure that high availability (HA) gets enabled in your preferred region, select the checkbox under the enabled option to allow creating HA with Same-Zone mode of the region:
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-same-zone.png" alt-text="Screenshot that shows selection of the same-zone option for high availability." lightbox="./media/how-to-configure-high-availability/high-availability-same-zone.png":::
 
@@ -186,7 +186,7 @@ az postgres flexible-server update \
 
 ---
 
-## Enable high availability during server provisioning
+## Enable Business Critical (High Availability) during server provisioning
 
 You can configure high availability when you first create your Azure Database for PostgreSQL flexible server instance. By enabling high availability during provisioning, you deploy a standby replica alongside your primary server, so you get immediate protection against zone or server failures.
 
