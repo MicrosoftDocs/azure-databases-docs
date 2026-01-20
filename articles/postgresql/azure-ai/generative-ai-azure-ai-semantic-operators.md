@@ -16,7 +16,7 @@ ms.custom:
 
 # Semantic operators in the Azure AI extension (Preview)
 
-The Azure AI extension introduces **Semantic Operators**, a groundbreaking feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. These operators, which are powered by models like chat completion and other [Azure AI deployments](https://azure.microsoft.com/products/ai-model-catalog), allow developers to build GenAI-driven applications directly within their databases. This unlocks new capabilities for understanding text, reasoning, and generating structured outputs.
+The Azure AI extension introduces **Semantic Operators**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these operators, which models like chat completion and other [Azure AI deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for understanding text, reasoning, and generating structured outputs.
 
 ## Key features
 
@@ -27,26 +27,26 @@ The Semantic Operators provide users with four core SQL functions that use gener
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
 
-Each function operates via AI Foundry endpoints registered using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
+Each function operates through AI Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
 ## Understanding semantic operators
 
-Semantic Operators in the Azure AI extension are designed to simplify complex AI-driven tasks directly within your PostgreSQL database. These operators allow users to seamlessly integrate generative AI capabilities into their SQL workflows, enabling advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, allowing developers to build intelligent applications with minimal effort.
+Semantic Operators in the Azure AI extension simplify complex AI-driven tasks directly within your PostgreSQL database. By using these operators, you can seamlessly integrate generative AI capabilities into your SQL workflows. You can perform advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
 ### `azure_ai.generate()`
 
-This operator uses LLMs to generate text or structured output.
+Use this operator to generate text or structured output by using LLMs.
 
 It supports the following input parameters:
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `prompt` | `text` | User prompt to be sent to the LLM. |
-| `json_schema` (optional) | `JsonB` `DEFAULT ''` | JSON schema of the structured output you want the LLM response to adhere to. Must follow the [Open AI notation for structured output](https://platform.openai.com/docs/guides/structured-outputs?api-mode=responses). |
+| `prompt` | `text` | User prompt to send to the LLM. |
+| `json_schema` (optional) | `JsonB` `DEFAULT ''` | JSON schema of the structured output you want the LLM response to follow. Must follow the [OpenAI notation for structured output](https://platform.openai.com/docs/guides/structured-outputs?api-mode=responses). |
 | `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
-| `system_prompt` (optional) | `text` `DEFAULT "You are a helpful assistant."` | System prompt to be sent to the LLM. |
+| `system_prompt` (optional) | `text` `DEFAULT "You are a helpful assistant."` | System prompt to send to the LLM. |
 
-By default, the operator returns a `text` value containing the generated response. If the `json_schema` argument is provided, the output is returned as a structured `JsonB` object that conforms to the specified schema.
+By default, the operator returns a `text` value containing the generated response. If you provide the `json_schema` argument, the operator returns the output as a structured `JsonB` object that conforms to the specified schema.
 
 **Example usage:**
 
@@ -80,13 +80,13 @@ FROM
 
 ### `azure_ai.is_true()`
 
-This operator evaluates the likelihood that a given statement is true, returning a `boolean` value or `NULL` if the result is inconclusive.
+This operator evaluates the likelihood that a given statement is true. It returns a `boolean` value or `NULL` if the result is inconclusive.
 
 It supports the following input parameters:
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `statement` | `text` | Statement to be evaluated as true or false. |
+| `statement` | `text` | Statement to evaluate as true or false. |
 | `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
 
 **Example usage:**
@@ -103,14 +103,14 @@ FROM product_reviews;
 
 ### `azure_ai.extract()`
 
-This operator extracts structured features or entities from text based on user-defined labels.
+Use this operator to extract structured features or entities from text based on user-defined labels.
 
 It supports the following input parameters:
 
 | Argument | Type | Description |
 | --- | --- | --- |
 | `document` | `text` | A document containing the entities and features. |
-| `data` | `array[text]` | An array of labels or feature names, where each entry represents a distinct entity type to be extracted from the input text. |
+| `data` | `array[text]` | An array of labels or feature names, where each entry represents a distinct entity type to extract from the input text. |
 | `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
 
 The operator returns a `JsonB` object containing the extracted entities mapped to their corresponding labels.
@@ -139,7 +139,7 @@ SELECT azure_ai.extract(
 
 ### `azure_ai.rank()`
 
-This operator reranks documents based on their relevance to a given query. It supports cross-encoder and GPT models.
+Use this operator to rerank documents based on their relevance to a given query. It supports cross-encoder and GPT models.
 
 It supports the following input parameters:
 
@@ -190,14 +190,14 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
 1. Note the Azure OpenAI **endpoint URL** and **API key**.
 1. **Configure access**:
 
-   To enable the `azure_ai` extension to invoke this model using subscription key authentication, run the following SQL commands:
+   To enable the `azure_ai` extension to invoke this model by using subscription key authentication, run the following SQL commands:
 
    ```sql
    SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com/');
    SELECT azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
    ```
 
-   If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
+   If you want to use managed identities instead, refer to [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
    - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server instance and restart the server.
    - Assign the "Cognitive Services OpenAI User" role to the managed identity to interact with the Azure OpenAI resource.
    - Set the `azure_openai.auth_type` to 'managed-identity'.
@@ -225,29 +225,29 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
 
 ### Setup for `.rank()` operator
 
-The `.rank()` operator supports both cross encoder and chat completion models, and defaults to the cross encoder [`Cohere-rerank-v3.5`](/azure/ai-foundry/concepts/models-inference-examples#cohere-rerank).
+The `.rank()` operator supports both cross encoder and chat completion models. It defaults to the cross encoder [`Cohere-rerank-v3.5`](/azure/ai-foundry/concepts/models-inference-examples#cohere-rerank).
 
 Using `Cohere-rerank-v3.5` cross-encoder:
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL instance.
-1. Navigate to Azure AI Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** using the Serverless API purchase option.
-1. Note the model's **endpoint key and the Reranker API route** which should look something like this: `https://<deployment name>.<region>.models.ai.azure.com/<v1 or v2>/rerank`.
+1. Go to Azure AI Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** by using the Serverless API purchase option.
+1. Note the model's **endpoint key and the Reranker API route**. It should look something like this: `https://<deployment name>.<region>.models.ai.azure.com/<v1 or v2>/rerank`.
 1. **Configure access**:
 
-   To enable the `azure_ai` extension to invoke this model using subscription key authentication, run the following SQL commands:
+   To enable the `azure_ai` extension to invoke this model by using subscription key authentication, run the following SQL commands:
 
    ```sql
    SELECT azure_ai.set_setting('azure_ml.serverless_ranking_endpoint', '<Cohere reranker API>');
    SELECT azure_ai.set_setting('azure_ml.serverless_ranking_endpoint_key', '<API Key>');
    ```
 
-   If you wish to use managed identities instead, refer [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
+   If you want to use managed identities instead, refer to [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
    - Enable system-assigned managed identity for your Azure Database for PostgreSQL flexible server instance and restart the server.
    - Assign the "Azure Machine Learning Data Scientist" role to the managed identity to interact with the Cohere model.
    - Set the `azure_ml.auth_type` to 'managed-identity'.
    - Set the `azure_ml.serverless_ranking_endpoint` with the Cohere reranker API.
 
-1. You're now all set to invoke the `.rank()` operator using Cohere reranker model.
+1. You're now all set to invoke the `.rank()` operator by using Cohere reranker model.
 
    ```sql
    SELECT azure_ai.rank(

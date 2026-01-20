@@ -29,7 +29,7 @@ There are various ways to model recommendation systems. This tutorial explores t
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
 Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
@@ -53,7 +53,7 @@ Download the data from [Kaggle](https://www.kaggle.com/datasets/thedevastator/be
 
 ## Create the table
 
-Connect to your server and create a `test` database. In that database, use the following command to create a table in which you'll import data:
+Connect to your server and create a `test` database. In that database, use the following command to create a table where you import data:
 
 ```sql
 CREATE TABLE public.recipes(
@@ -130,7 +130,7 @@ WHERE
 Repeat the command until there are no more rows to process.
 
 > [!TIP]  
-> Play around with the `LIMIT` value. With a high value, the statement might fail halfway through due to throttling that Azure OpenAI imposes. If the statement fails, wait for at least one minute and run the command again.
+> Experiment with the `LIMIT` value. With a high value, Azure OpenAI might throttle the statement and cause it to fail halfway through. If the statement fails, wait for at least one minute and run the command again.
 
 ## Search
 
