@@ -8,6 +8,7 @@ ms.date: 01/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
+ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - ignite-2025
 ai-usage: ai-assisted

@@ -7,6 +7,7 @@ ms.reviewer: maghan
 ms.date: 02/07/2025
 ms.service: azure-database-postgresql
 ms.topic: overview
+ms.collection: ce-skilling-ai-copilot
 ---
 
 # What is the migration service in Azure Database for PostgreSQL?

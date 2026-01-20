@@ -7,6 +7,7 @@ ms.reviewer: maghan
 ms.date: 11/13/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
+ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - ai-assistant-test
 ---

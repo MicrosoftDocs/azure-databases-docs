@@ -7,6 +7,7 @@ ms.reviewer: maghan
 ms.date: 12/8/2025
 ms.service: azure-database-postgresql
 ms.topic: concept-article
+ms.collection: ce-skilling-ai-copilot
 ai.usage: ai.assisted
 ---
 

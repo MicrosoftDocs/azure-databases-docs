@@ -7,6 +7,7 @@ ms.reviewer: maghan
 ms.date: 1/5/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
+ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2025
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL.

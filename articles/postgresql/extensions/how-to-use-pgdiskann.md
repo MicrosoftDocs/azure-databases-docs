@@ -8,6 +8,7 @@ ms.date: 01/25/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
+ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL.
