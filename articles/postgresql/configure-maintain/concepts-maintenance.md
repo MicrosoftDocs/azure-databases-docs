@@ -4,12 +4,11 @@ description: This article describes the scheduled maintenance feature in your Az
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 08/18/2025
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
-ms.custom:
-    - ai-assistant-test
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Scheduled maintenance
@@ -35,7 +34,7 @@ You can receive notifications about upcoming scheduled maintenance through:
 
 When you're specifying preferences for the maintenance schedule, you can choose between a custom schedule and a system managed schedule. If you opt for a custom schedule, you can specify a day of the week and a time window. But if you select a system managed schedule, the system chooses a day for you. And within that day, it chooses a one hour time window, between 11:00 PM and 7:00 AM in your server region's time. You can configure different maintenance schedules for each of your Azure Database for PostgreSQL flexible server instance.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Normally, the interval between successful scheduled maintenance events for a server is, at least, 30 days. But for a critical emergency update, such as a severe vulnerability, the notification window could be shorter than five days or even be omitted. The critical update might be applied to your server, even if the system performed scheduled maintenance in the last 30 days.
 
 You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure Database for PostgreSQL flexible server instance and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings become effective upon successful completion of the next scheduled maintenance.
@@ -64,12 +63,13 @@ Some considerations when considering during monthly maintenance:
 - Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
 
 ## Applying Maintenance on Stopped/Disabled Instances
-If a PostgreSQL server is stopped during scheduled maintenance, the maintenance will not be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day auto-restart](./concepts-limits.md#stopstart-operations) feature. A notification will be sent to the customer indicating that maintenance couldn't be applied because the server is stopped and will be applied when the server is restarted.
+
+If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day autorestart](./concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
 
 ## Related content
 
-- [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md).
-- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications).
-- [Set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide).
+- [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md)
+- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [Set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)
