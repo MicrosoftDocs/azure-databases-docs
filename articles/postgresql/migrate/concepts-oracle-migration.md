@@ -10,6 +10,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ms.collection:
   - migration
+  - ce-skilling-ai-copilot
   - onprem-to-azure
 ---
 
