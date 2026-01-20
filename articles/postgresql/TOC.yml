@@ -103,14 +103,12 @@
       href: azure-ai/generative-ai-azure-machine-learning.md
     - name: Enable managed identity in azure_ai
       href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-  - name: In-database embeddings with azure_local_ai
-    href: extensions/azure-local-ai.md
-  - name: AI Frameworks
-    items:
     - name: Tutorial - Build a semantic search application
       href: azure-ai/generative-ai-semantic-search.md
     - name: Tutorial - Build a recommendation system
       href: azure-ai/generative-ai-recommendation-system.md
+  - name: AI Frameworks
+    items:
     - name: Integrate with AI Frameworks
       href: azure-ai/generative-ai-frameworks.md
     - name: Tutorial - Develop with LangChain
@@ -187,6 +185,8 @@
           href: extensions/reference-azure-storage-extension.md
     - name: Partitioning (pg_partman)
       href: configure-maintain/how-to-use-pg-partman.md
+    - name: In-database embeddings with azure_local_ai
+      href: extensions/azure-local-ai.md
 - name: Configure and maintain
   items:
     - name: Prepay for reserved capacity
