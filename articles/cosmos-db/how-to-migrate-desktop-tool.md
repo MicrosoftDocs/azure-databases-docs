@@ -50,9 +50,9 @@ The easiest way to use the container is to pull the prebuilt image from Microsof
 
 1. Pull the latest version of the container from the registry.
 
-```shell
-docker pull mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest
-```
+   ```shell
+   docker pull mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest
+   ```
 
 1. Configure the migration settings. See [Configure migration settings](#configure-migration-settings)
 
