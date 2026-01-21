@@ -6,6 +6,7 @@ ms.author: guybo
 ms.reviewer: maghan
 ms.date: 01/24/2025
 ms.service: azure-database-postgresql
+ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
 ---
 
