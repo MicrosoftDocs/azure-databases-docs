@@ -4,7 +4,7 @@ description: Describes logging configuration, storage, and analysis in Azure Dat
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/14/2025
+ms.date: 1/20/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
 ---

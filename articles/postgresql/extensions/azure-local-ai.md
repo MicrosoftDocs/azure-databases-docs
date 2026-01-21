@@ -6,6 +6,7 @@ ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 12/08/2024
 ms.service: azure-database-postgresql
+ms.collection: ce-skilling-ai-copilot
 ms.subservice: extensions
 ms.topic: overview
 ms.custom:
