@@ -4,12 +4,12 @@ description: Overview of Apache AGE and its capabilities in Azure Database for P
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/19/2025
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure Database for PostgreSQL flexible server instances.
@@ -54,7 +54,7 @@ Adjust the following settings:
 
 Select Save to apply these changes. The server restarts automatically to activate the AGE extension.
 
-> [!NOTE]
+> [!NOTE]  
 > Failure to enable the `shared_preload_libraries` results in the following error when you attempt to use the AGE schema in a query: "ERROR: unhandled cipher(cstring) function call error on first cipher query"
 
 ### Enable AGE in PostgreSQL
@@ -106,18 +106,18 @@ The ag_graph table within the ag_catalog schema of Apache AGE serves as a reposi
 ```
 
 ```output
-                                          Table "ag_catalog.ag_graph"
- Column   |     Type | Collation | Nullable | Default | Storage | Compression | Stats target | Description
+                                          Table "ag_catalog.ag_graph"
+ Column   |     Type | Collation | Nullable | Default | Storage | Compression | Stats target | Description
 -----------+--------------+-----------+----------+---------+---------+-------------+--------------+-------------
- graphid   | oid |           | not null |         | plain   |             |              |
- name | name |           | not null |         | plain   |             |              |
- namespace | regnamespace |           | not null |         | plain   |             |              |
+ graphid   | oid |           | not null |         | plain   |             |              |
+ name | name |           | not null |         | plain   |             |              |
+ namespace | regnamespace |           | not null |         | plain   |             |              |
 Indexes:
-    "ag_graph_graphid_index" UNIQUE, btree (graphid)
-    "ag_graph_name_index" UNIQUE, btree (name)
-    "ag_graph_namespace_index" UNIQUE, btree (namespace)
+    "ag_graph_graphid_index" UNIQUE, btree (graphid)
+    "ag_graph_name_index" UNIQUE, btree (name)
+    "ag_graph_namespace_index" UNIQUE, btree (namespace)
 Referenced by:
-    TABLE "ag_label" CONSTRAINT "fk_graph_oid" FOREIGN KEY (graph) REFERENCES ag_graph(graphid)
+    TABLE "ag_label" CONSTRAINT "fk_graph_oid" FOREIGN KEY (graph) REFERENCES ag_graph(graphid)
 Access method: heap
 ```
 
@@ -130,15 +130,15 @@ The ag_label table stores metadata about labels used in AGE graphs. It keeps tra
 ```
 
 ```output
-                                   Table "ag_catalog.ag_label"
- Column  |    Type | Collation | Nullable | Default | Storage | Compression | Stats target | Description
+                                   Table "ag_catalog.ag_label"
+ Column  |    Type | Collation | Nullable | Default | Storage | Compression | Stats target | Description
 ----------+------------+-----------+----------+---------+---------+-------------+--------------+-------------
- name | name |           | not null |         | plain   |             |              |
- graph    | oid |           | not null |         | plain   |             |              |
- id       | label_id   |           |          |         | plain   |             |              |
- kind     | label_kind |           |          |         | plain   |             |              |
- relation | regclass   |           | not null |         | plain   |             |              |
- seq_name | name |           | not null |         | plain   |             |              |
+ name | name |           | not null |         | plain   |             |              |
+ graph    | oid |           | not null |         | plain   |             |              |
+ id       | label_id   |           |          |         | plain   |             |              |
+ kind     | label_kind |           |          |         | plain   |             |              |
+ relation | regclass   |           | not null |         | plain   |             |              |
+ seq_name | name |           | not null |         | plain   |             |              |
 Indexes:
 "ag_label_graph_oid_index" UNIQUE, btree (graph, id)
 "ag_label_name_graph_index" UNIQUE, btree (name, graph)
