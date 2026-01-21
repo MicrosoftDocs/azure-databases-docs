@@ -15,18 +15,18 @@ appliesto:
   - ✅ Table
 ---
 
-# Migrate data using the data migration tool
+# Migrate data using the Data Migration Tool
 
-The [Azure Cosmos DB data migration tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool can migrate data to and from many sources and sinks including, but not limited to:
+The [Azure Cosmos DB Data Migration Tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool is built on an extension model for source and sink objects to migrate data.
 
-## Supported Extensions
+## Supported extensions
 
 - [Azure Cosmos DB for NoSQL](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Cosmos/README.md)
 - [JSON](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Json/README.md)
 - [MongoDB](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Mongo/README.md)
 - [SQL Server](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/SqlServer/README.md)
 - [PostgreSQL](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/PostgreSQL/README.md)
-- [Azure Blog Storage](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AzureBlob/README.md)
+- [Azure Blob Storage](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AzureBlob/README.md)
 - [Parquet](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Parquet/README.md)
 - [CSV](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Csv/README.md)
 - [AWS S3](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AwsS3/README.md)
@@ -41,12 +41,12 @@ The [Azure Cosmos DB data migration tool](https://github.com/azurecosmosdb/data-
 - [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) or later on your local machine.
 - Optional [Docker Desktop](https://docs.docker.com/get-started/get-docker/)
 
-## Using the Pre-Built Docker Image
+## Using the prebuilt Docker image
 
-The easiest way to use the container is to pull the pre-built image from Microsoft Container Registry. This requires [Docker Desktop](https://docs.docker.com/get-started/get-docker/) to be installed and running locally.
+The easiest way to use the container is to pull the prebuilt image from Microsoft Container Registry. [Docker Desktop](https://docs.docker.com/get-started/get-docker/) is required.
 
 > [!NOTE]
-> This can also be configured to run in any containerized environment or as part of a GitHub Action. See [Run in a Docker Container](https://github.com/AzureCosmosDB/data-migration-desktop-tool?tab=readme-ov-file#docker-container) for more details.
+> The Data Migration Tool can also be configured to run in any containerized environment or as part of a GitHub Action. See [Run in a Docker Container](https://github.com/AzureCosmosDB/data-migration-desktop-tool?tab=readme-ov-file#docker-container) for more details.
 
 1. Pull the latest version of the container from the registry.
 
@@ -54,7 +54,7 @@ The easiest way to use the container is to pull the pre-built image from Microso
 docker pull mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest
 ```
 
-1. Configure the migration settings. See [Configure Migration Settings](#configure-migration-settings)
+1. Configure the migration settings. See [Configure migration settings](#configure-migration-settings)
 
 ```shell
 docker run -v $(pwd)/config:/config -v $(pwd)/data:/data mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest run --settings /config/migrationsettings.json
@@ -70,7 +70,7 @@ docker run -v $(pwd)/config:/config -v $(pwd)/data:/data mcr.microsoft.com/azure
 
 1. (Optional) Add the Data Migration Tool to the `PATH` environment variable of your local machine.
 
-1. Configure the migration settings. See [Configure Migration Settings](#configure-migration-settings)
+1. Configure the migration settings. See [Configure migration settings](#configure-migration-settings)
 
 1. Run the Data Migration Tool using the `dmt` command from a terminal.
 
@@ -81,18 +81,18 @@ docker run -v $(pwd)/config:/config -v $(pwd)/data:/data mcr.microsoft.com/azure
     > [!NOTE]
     > If you didn't add the installation path to your `PATH` environment variable, you might need to specify the full path to the `dmt` executable.
 
-1. The tool now outputs the sources and sinks used by the migration.
+1. The tool outputs the sources and sinks used by the migration.
 
     ```output
     Using JSON Source
     Using Cosmos-nosql Sink
     ```
 
-## Configure Migration Settings
+## Configure migration settings
 
-The Data Migration Tool uses a migrationsettings.json to define the source and sink settings for the data to be copied. The migration settings for each [Supported Extension](#supported-extensions) can be found above.
+The Data Migration Tool uses a migrationsettings.json to define the source and sink settings for the data to be copied. See [Supported Extension](#supported-extensions) for details on each extensions migration settings.
 
-Here is a simple example for migrating a [sample JSON file](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/data/sample-data.json) to the Cosmos DB emulator.
+Here's an example for migrating a [sample JSON file](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/data/sample-data.json) to the Cosmos DB emulator.
 
 ```json
 {
@@ -114,9 +114,9 @@ Here is a simple example for migrating a [sample JSON file](https://github.com/A
 
 ### Migrate multiple sources
 
-The migrationsettings.json can also be configured to execute multiple data transfer operations with a single run command. To do this, include an Operations property consisting of an array of objects that include SourceSettings and SinkSettings properties using the same format as those shown above for single operations. 
+The migrationsettings.json can also be configured to execute multiple data transfer operations with a single run command with an *Operations* property consisting of an array of objects that include SourceSettings and SinkSettings for the extensions referenced in the *Source* and *Sink* properties.
 
-Here is an example:
+Here's an example:
 
 ```json
 {
@@ -158,14 +158,13 @@ Here is an example:
     }
   ]
 }
-
 ```
 
 ### Query support
 
 Some extensions have support for queries as well on the source settings. See the documentation for each extension for details.
 
-Here is an example:
+Here's an example:
 
 ```json
 {
@@ -182,4 +181,5 @@ Here is an example:
     "Database": "orders",
     "PartitionKeyPath": "/customerId"
   }
+}
 ```
