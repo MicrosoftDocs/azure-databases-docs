@@ -3,13 +3,15 @@ title: AI Agents in Azure Database for PostgreSQL
 description: Learn how to integrate Azure Database for PostgreSQL to create intelligent AI agents capable of advanced data retrieval and analysis.
 author: abeomor
 ms.author: abeomorogbe
-ms.date: 03/17/2025
-ms.update-cycle: 180-days
+ms.reviewer: maghan
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
+ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
-ms.topic: concept-article
 ---
 # AI agents in Azure Database for PostgreSQL
 
@@ -65,8 +67,8 @@ The following sections walk you through building an AI agent that helps legal te
 1. Install [Python 3.11.x](https://www.python.org/downloads/).
 1. Install the [Azure CLI](/cli/azure/install-azure-cli-windows?tabs=powershell) (latest version).
 
-    > [!NOTE]
-    > You need the key and endpoint from the deployed models that you created for the agent.
+   > [!NOTE]  
+   > You need the key and endpoint from the deployed models that you created for the agent.
 
 ### Getting started
 
@@ -81,24 +83,24 @@ First, prepare your database to store and search legal case data by using vector
 If you're using macOS and Bash, run these commands:
 
 ```bash
-python -m venv .pg-azure-ai 
-source .pg-azure-ai/bin/activate 
+python -m venv .pg-azure-ai
+source .pg-azure-ai/bin/activate
 pip install -r requirements.txt
 ```
 
 If you're using Windows and PowerShell, run these commands:
 
 ```bash
-python -m venv .pg-azure-ai 
-.pg-azure-ai \Scripts\Activate.ps1 
+python -m venv .pg-azure-ai
+.pg-azure-ai \Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
 If you're using Windows and `cmd.exe`, run these commands:
 
 ```bash
-python -m venv .pg-azure-ai 
-.pg-azure-ai \Scripts\activate.bat 
+python -m venv .pg-azure-ai
+.pg-azure-ai \Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
@@ -107,9 +109,9 @@ pip install -r requirements.txt
 Create an `.env` file with your credentials:
 
 ```bash
-AZURE_OPENAI_API_KEY="" 
-AZURE_OPENAI_ENDPOINT="" 
-EMBEDDING_MODEL_NAME="" 
+AZURE_OPENAI_API_KEY=""
+AZURE_OPENAI_ENDPOINT=""
+EMBEDDING_MODEL_NAME=""
 AZURE_PG_CONNECTION=""
 ```
 
@@ -132,11 +134,11 @@ python main.py
 Here's the output of `main.py`:
 
 ```output
-Extensions created successfully 
-OpenAI connection established successfully 
-The case table was created successfully 
-Temp cases table created successfully 
-Data loaded into temp_cases_data table successfully 
+Extensions created successfully
+OpenAI connection established successfully
+The case table was created successfully
+Temp cases table created successfully
+Data loaded into temp_cases_data table successfully
 Data loaded into cases table successfully.
 Adding Embeddings will take a while, around 3-5 mins.
 Embeddings added successfully All Data loaded successfully!
@@ -152,7 +154,7 @@ Start with defining a function for your agent to call by describing its structur
 
 ```python
 def vector_search_cases(vector_search_query: str, start_date: datetime ="1911-01-01", end_date: datetime ="2025-12-31", limit: int = 10) -> str:
-    """
+    """
  Fetches the case information in Washington State for the specified query.
 
  :param query(str): The query to fetch cases specifically in Washington.
@@ -167,11 +169,11 @@ def vector_search_cases(vector_search_query: str, start_date: datetime ="1911-01
  :return: Cases information as a JSON string.
  :rtype: str
  """
-        
+
  db = create_engine(CONN_STR)
-    
+
  query = """
- SELECT id, name, opinion, 
+ SELECT id, name, opinion,
  opinions_vector <=> azure_openai.create_embeddings(
  'text-embedding-3-small', %s)::vector as similarity
  FROM cases
@@ -179,12 +181,12 @@ def vector_search_cases(vector_search_query: str, start_date: datetime ="1911-01
  ORDER BY similarity
  LIMIT %s;
  """
-    
-    # Fetch case information from the database
+
+    # Fetch case information from the database
  df = pd.read_sql(query, db, params=(vector_search_query,datetime.strptime(start_date, "%Y-%m-%d"), datetime.strptime(end_date, "%Y-%m-%d"),limit))
 
  cases_json = json.dumps(df.to_json(orient="records"))
-    return cases_json
+    return cases_json
  ```
 
 ### Step 3: Create and configure the AI agent with Postgres
@@ -210,8 +212,8 @@ In your Azure AI Foundry project, you find your project connection string from t
 Add these variables to your `.env` file in the root directory:
 
 ```shell
-PROJECT_CONNECTION_STRING=" " 
-MODEL_DEPLOYMENT_NAME="gpt-4o-mini" 
+PROJECT_CONNECTION_STRING=" "
+MODEL_DEPLOYMENT_NAME="gpt-4o-mini"
 AZURE_TRACING_GEN_AI_CONTENT_RECORDING_ENABLED="true"
 ```
 
@@ -221,8 +223,8 @@ We created the agent in the Azure AI Foundry project and added the Postgres tool
 
 # Create an Azure AI Foundry client
 project_client = AIProjectClient.from_connection_string(
-    credential=DefaultAzureCredential(),
-    conn_str=os.environ["PROJECT_CONNECTION_STRING"],
+    credential=DefaultAzureCredential(),
+    conn_str=os.environ["PROJECT_CONNECTION_STRING"],
 )
 
 # Initialize the agent toolset with user functions
@@ -231,10 +233,10 @@ toolset = ToolSet()
 toolset.add(functions)
 
 agent = project_client.agents.create_agent(
-    model= os.environ["MODEL_DEPLOYMENT_NAME"], 
-    name="legal-cases-agent",
-    instructions= "You are a helpful legal assistant who can retrieve information about legal cases.", 
-    toolset=toolset
+    model= os.environ["MODEL_DEPLOYMENT_NAME"],
+    name="legal-cases-agent",
+    instructions= "You are a helpful legal assistant who can retrieve information about legal cases.",
+    toolset=toolset
 )
 ```
 
@@ -248,9 +250,9 @@ thread = project_client.agents.create_thread()
 
 # Create a message to thread
 message = project_client.agents.create_message(
-    thread_id=thread.id,
-    role="user",
-    content="Water leaking into the apartment from the floor above. What are the prominent legal precedents in Washington regarding this problem in the last 10 years?"
+    thread_id=thread.id,
+    role="user",
+    content="Water leaking into the apartment from the floor above. What are the prominent legal precedents in Washington regarding this problem in the last 10 years?"
 )
 ```
 
@@ -265,7 +267,7 @@ from pprint import pprint
 
 # Create and process an agent run in the thread with tools
 run = project_client.agents.create_and_process_run(
-thread_id=thread.id, 
+thread_id=thread.id,
 agent_id=agent.id
 )
 
@@ -287,12 +289,12 @@ The agent produces a similar result by using the Azure Database for PostgreSQL t
 Here's a snippet of output from the agent:
 
 ```
-1.     Pham v. Corbett
+1.     Pham v. Corbett
 
 Citation: Pham v. Corbett, No. 4237124
 Summary: This case involved tenants who counterclaimed against their landlord for relocation assistance and breached the implied warranty of habitability due to severe maintenance issues, including water and sewage leaks. The trial court held that the landlord had breached the implied warranty and awarded damages to the tenants.
 
-2.     Hoover v. Warner
+2.     Hoover v. Warner
 
 Citation: Hoover v. Warner, No. 6779281
 Summary: The Warners appealed a ruling finding them liable for negligence and nuisance after their road grading project caused water drainage issues affecting Hoover's property. The trial court found substantial evidence supporting the claim that the Warners' actions impeded the natural water flow and damaged Hoover's property.
