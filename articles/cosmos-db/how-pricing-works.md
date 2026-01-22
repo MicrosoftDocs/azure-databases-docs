@@ -1,5 +1,5 @@
 ---
-title: Pricing Model for Azure Cosmos DB
+title: Pricing Model
 description: Learn about the pricing model for Azure Cosmos DB and how it simplifies your cost management and cost planning.
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/25/2025
 ms.custom: cosmos-db-video
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Pricing model for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 The pricing model for Azure Cosmos DB simplifies cost management and planning. With Azure Cosmos DB, you pay for the operations you perform against the database and for the storage consumed by your data.
 

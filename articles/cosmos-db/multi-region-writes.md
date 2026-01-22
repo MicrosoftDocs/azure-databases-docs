@@ -1,6 +1,5 @@
 ---
 title: Multi-region writes
-titleSuffix: Azure Cosmos DB
 description: Multi-region writes in Azure Cosmos DB let you achieve near-zero downtime and high availability. Learn how to set up and manage multi-region write accounts.
 author: TheovanKraay
 ms.author: thvankra
@@ -12,7 +11,7 @@ ms.custom:
   - ai-gen-title
   - ai-seo-date:08/15/2025
   - ai-gen-description
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra
@@ -42,8 +41,8 @@ A multi-region-write account uses two server timestamp values for each entity. T
 ## Related content
 
 - [Conflict types and resolution policies when using multiple write regions](conflict-resolution-policies.md)
-- [Multi-region writes in your applications that use Azure Cosmos DB](nosql/how-to-multi-master.md)
+- [Multi-region writes in your applications that use Azure Cosmos DB](how-to-multi-master.md)
 - [Consistency levels in Azure Cosmos DB](consistency-levels.md)
 - [Request Units in Azure Cosmos DB](request-units.md)
 - [Global data distribution with Azure Cosmos DB - under the hood](global-dist-under-the-hood.md)
-- [Availability of Azure Cosmos DB software development kits (SDKs) in multiregional environments](nosql/troubleshoot-sdk-availability.md)
+- [Availability of Azure Cosmos DB software development kits (SDKs) in multiregional environments](troubleshoot-sdk-availability.md)

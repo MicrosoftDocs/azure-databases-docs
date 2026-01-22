@@ -1,6 +1,5 @@
 ---
 title: Manage multiple items in Data Explorer
-titleSuffix: Azure Cosmos DB
 description: Use the multiple selection feature of the Data Explorer for Azure Cosmos DB to batch delete items directly in the Azure portal.
 author: meredithmooreux
 ms.author: merae
@@ -8,18 +7,19 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 06/03/2024
 #Customer Intent: As a database developer, I want to manage multiple items using the Data Explorer, so that I can delete items in bulk.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # View and delete multiple items in Azure Cosmos DB Data Explorer
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 Use the Data Explorer for Azure Cosmos DB to select and delete multiple items directly in the Azure portal. This feature makes it easier to batch manage multiple items without executing a query.
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new API for NoSQL account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new API for NoSQL account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Delete multiple items
@@ -69,5 +69,5 @@ Use the **Feedback** icon in the command bar of the Data Explorer to give the pr
 
 ## Related content
 
-- [Delete items by partition key value in Azure Cosmos DB for NoSQL](nosql/how-to-delete-by-partition-key.md)
+- [Delete items by partition key value in Azure Cosmos DB for NoSQL](how-to-delete-by-partition-key.md)
 - [Move data between containers in Azure Cosmos DB](container-copy.md)

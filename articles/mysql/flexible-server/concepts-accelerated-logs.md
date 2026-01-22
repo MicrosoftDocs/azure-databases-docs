@@ -4,7 +4,7 @@ description: This article describes the accelerated logs feature in Azure Databa
 author: VandhanaMehta  
 ms.author: vamehta  
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -25,7 +25,7 @@ The following compute tiers support accelerated logs:
 
 | Service Tier       | Availability | Cost               |
 |:-------------------|:-------------|:-------------------|
-| Business Critical  | Available    | No additional cost |
+| Memory-Optimized  | Available    | No additional cost |
 | General Purpose    | Available    | Additional cost applies. [See pricing details](https://azure.microsoft.com/pricing/details/mysql/)    |
 
 > [!NOTE]
@@ -43,7 +43,7 @@ Benefits of accelerated logs include:
 
 - **Enhanced throughput**: Query throughput can increase up to twofold in high-concurrency scenarios, resulting in faster query execution. This improvement also reduces latency by up to 50%.
 - **Cost efficiency**: Accelerated logs offer a cost-effective solution for mission-critical workloads by providing enhanced performance at no extra expense.
-- **Enhanced scalability**: Accelerated logs can accommodate growing workloads for applications that need to scale easily while maintaining high performance. Applications and services on the Business Critical service tier benefit from more responsive interactions and reduced query wait times.
+- **Enhanced scalability**: Accelerated logs can accommodate growing workloads for applications that need to scale easily while maintaining high performance. Applications and services on the Memory-Optimized service tier benefit from more responsive interactions and reduced query wait times.
 
 > [!NOTE]
 >  - If you enable [zone-redundant high availability](concepts-high-availability.md) for your server, expect additional latency due to the cross-zonal copy of data. We recommend that you conduct your own benchmark tests for an accurate performance assessment.
@@ -105,7 +105,7 @@ You can enable the feature during creation of a flexible server or on an existin
 
 1. Select the **Configure server** option to change the default compute and storage settings.
 
-1. In the **Storage** section, select the **Accelerated logs** checkbox to enable the feature. The checkbox is available for **Business Critical** and **General Purpose** compute tier.
+1. In the **Storage** section, select the **Accelerated logs** checkbox to enable the feature. The checkbox is available for **Memory-Optimized** and **General Purpose** compute tier.
 
     :::image type="content" source="media/concepts-accelerated-logs/accelerated-logs-mysql-portal-create.png" alt-text="Screenshot that shows the checkbox for enabling accelerated logs during server creation." lightbox="media/concepts-accelerated-logs/accelerated-logs-mysql-portal-create.png":::
 

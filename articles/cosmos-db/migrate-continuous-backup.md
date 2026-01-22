@@ -1,6 +1,5 @@
 ---
 title: Migrate From Periodic to Continuous Backup Mode
-titleSuffix: Azure Cosmos DB
 description: Migrate your Azure Cosmos DB account from periodic to continuous backup mode. Learn about the benefits, limitations, and steps for migration. Start your migration today.
 author: kanshiG
 ms.author: govindk

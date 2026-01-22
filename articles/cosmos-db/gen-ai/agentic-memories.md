@@ -21,7 +21,7 @@ ai-usage: ai-assisted
 
 ### Short-Term Memory
 
-Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These values are all useful to the agent for the current task or thread. It can get deleted after some time (for example, using [time-to-live (TTL)](../nosql/time-to-live.md)), aggregated or summarized by thread, and classified as long-term memory. 
+Short-term memory holds recent context. For example, recent conversation turns, state information, results from tool or function calls. These values are all useful to the agent for the current task or thread. It can get deleted after some time (for example, using [time-to-live (TTL)](../time-to-live.md)), aggregated or summarized by thread, and classified as long-term memory. 
 
 For example:
 - In a conversational agent, the last 5–10 user or agent dialogue turns, including prompts, large language model (LLM) responses, tool call results, etc. 
@@ -69,7 +69,7 @@ Azure Cosmos DB supports both vector indexing for semantic similarity search and
 
 When you enable vector search in Azure Cosmos DB, you choose not only whether to shard but also which index type to use. Cosmos supports multiple vector-index algorithms, including `quantizedFlat` and `DiskANN`. The `quantizedFlat` index type is suited for smaller workloads or when you expect the number of vectors to remain modest (for example, tens of thousands of vectors total). It compresses (quantizes) each vector and performs an exact search over the compressed space, trading a slight accuracy loss for lower RU cost and faster scans. 
 
-When your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets. Learn more about [vector indexes in Azure Cosmos DB](../nosql/vector-search.md#vector-indexing-policies).
+When your vector data scales up (for example, hundreds of thousands to billions of embeddings), `DiskANN` is the better choice. DiskANN implements approximate nearest-neighbor indexing and is optimized for high throughput, low latency, and cost efficiency at scale. It supports dynamic updates and achieves excellent recall across large datasets. Learn more about [vector indexes in Azure Cosmos DB](../vector-search.md#vector-indexing-policies).
 
 If you're using DiskANN, you can decide whether to shard the vector index via the [vectorIndexShardKey](sharded-diskann.md). This decision lets you partition the DiskANN index based on an item property (for example, session, user, tenant), reducing the candidate search space and making semantic queries more efficient and focused. For example, you can shard by a tenant, userid, or both. In multitenant systems, isolating the vector index per tenant ensures that search on a particular tenant or user data is fast and efficient. Using the multitenant example from the section on [partitioning](#choose-a-partition-key), you can set the vectorIndexShardKey and the partition key to be the same, or just the first level of your hierarchical partition key. 
 

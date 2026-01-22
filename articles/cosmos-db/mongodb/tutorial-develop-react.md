@@ -30,28 +30,30 @@ This multi-part tutorial covers the following tasks:
 Want to do build this same app with Angular? See the [Angular tutorial video series](tutorial-develop-nodejs-part-1.md).
 
 ## Prerequisites
-* [Node.js](https://www.nodejs.org)
-* An HTTP testing tool
-  * We recommend Insomnia, `curl`, Visual Studio, or `Invoke-RestMethod`
+* **Node.js**: v14.x or later (LTS recommended). Verify with `node --version`.
+* **HTTP testing tool**: Insomnia, `curl`, Visual Studio, or PowerShell `Invoke-RestMethod`. Verify availability by running the tool once (for example, `curl --version`).
 
 ### Finished Project
 Get the completed application [from GitHub](https://github.com/Azure-Samples/react-cosmosdb).
 
 ## Introduction 
 
-In this video, Burke Holland gives an introduction to Azure Cosmos DB and walks you through the app that is created in this video series. 
+In this video, Burke Holland gives an introduction to Azure Cosmos DB and walks you through the app that is created in this video series.  
+**Success check**: You understand the overall app architecture (React UI, Node/Express API, Azure Cosmos DB for MongoDB).
 
 > [!VIDEO https://www.youtube.com/embed/58IflnJbYJc]
 
 ## Project setup
 
-This video shows how set up the Express and React in the same project. Burke then provides a walkthrough of the code in the project.
+This video shows how set up the Express and React in the same project. Burke then provides a walkthrough of the code in the project.  
+**Success check**: The project runs locally without errors using `npm start` (or the equivalent start script).
 
 > [!VIDEO https://www.youtube.com/embed/ytFUPStJJds]
 
 ## Build the UI
 
-This video shows how to create the application's user interface (UI) with React. 
+This video shows how to create the application's user interface (UI) with React.  
+**Success check**: The React UI renders in the browser and displays the hero list layout.
 
 > [!NOTE]
 > The CSS referenced in this video can be found in the [react-cosmosdb GitHub repo](https://github.com/Azure-Samples/react-cosmosdb/blob/master/src/index.css).
@@ -60,25 +62,44 @@ This video shows how to create the application's user interface (UI) with React.
 
 ## Connect to Azure Cosmos DB
 
-This video shows how to create an Azure Cosmos DB account in the Azure portal, install the MongoDB and Mongoose packages, and then connect the app to the newly created account using the Azure Cosmos DB connection string. 
+This video shows how to create an Azure Cosmos DB account in the Azure portal, install the MongoDB and Mongoose packages, and then connect the app to the newly created account using the Azure Cosmos DB connection string.  
+
+**Example: connect with Mongoose**
+```javascript
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Connected to Azure Cosmos DB for MongoDB");
+});
+```
+
+**Verification**: Start the app and confirm that the console logs `Connected to Azure Cosmos DB for MongoDB`.
 
 > [!VIDEO https://www.youtube.com/embed/0U2jV1thfvs]
 
 ## Read and create heroes in the app
 
-This video shows how to read heroes and create heroes in the Azure Cosmos DB database, as well as how to test those methods using a HTTP testing utility and the React UI. 
+This video shows how to read heroes and create heroes in the Azure Cosmos DB database, as well as how to test those methods using a HTTP testing utility and the React UI.  
+**Success check**: Creating a hero returns HTTP 201 (or 200) and the new hero appears in the UI list.
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
 ## Delete and update heroes in the app
 
-This video shows how to delete and update heroes from the app and display the updates in the UI. 
+This video shows how to delete and update heroes from the app and display the updates in the UI.  
+**Success check**: Updates and deletions are immediately reflected in the UI and persisted in the database.
 
 > [!VIDEO https://www.youtube.com/embed/YmaGT7ztTQM] 
 
 ## Complete the app
 
-This video shows how to complete the app and finish hooking the UI up to the backend API. 
+This video shows how to complete the app and finish hooking the UI up to the backend API.  
+**Success check**: The full create, read, update, and delete workflow works end to end.
 
 > [!VIDEO https://www.youtube.com/embed/TcSm2ISfTu8]
 

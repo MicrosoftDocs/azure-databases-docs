@@ -197,6 +197,123 @@ az network private-link-resource list \
   --type Microsoft.DocumentDB/mongoClusters 
 ```
 
+## Verify and troubleshoot private endpoint connectivity
+
+After you create a private endpoint for your Azure DocumentDB cluster, it's important to verify that DNS resolution is working correctly and that your applications can connect through the private endpoint.
+
+### Verify private endpoint status
+
+First, confirm that the private endpoint is properly provisioned and connected:
+
+1. In the Azure portal, navigate to your Azure DocumentDB cluster.
+1. On the cluster sidebar, under **Settings**, select **Networking**.
+1. Verify that the private endpoint appears in the list with a status of **Approved**.
+1. Select the private endpoint name to view its details, including the private IP address assigned.
+
+You can also use Azure CLI to check the private endpoint status:
+
+```azurecli-interactive
+az network private-endpoint show \
+  --resource-group $ResourceGroupName \
+  --name $PrivateEndpointName
+```
+
+### Test DNS resolution
+
+Azure DocumentDB uses SRV records for service discovery when using the `mongodb+srv` connection string format. To verify that DNS resolution is working correctly, test the DNS resolution from a virtual machine or resource within the same virtual network or a peered network.
+
+#### Windows DNS testing
+
+From a Windows machine connected to the virtual network, use the following commands:
+
+1. Test the SRV record resolution:
+
+   ```powershell
+   Resolve-DnsName -Name _mongodb._tcp.<your-cluster-name>.mongocluster.cosmos.azure.com -Type SRV
+   ```
+
+   The output should show SRV records pointing to your cluster nodes within the private DNS zone.
+
+1. Resolve the individual node hostnames to verify they resolve to private IP addresses:
+
+   ```powershell
+   Resolve-DnsName -Name <your-node-hostname>.mongocluster.cosmos.azure.com
+   ```
+
+   The output should display private IP addresses (for example, 10.x.x.x) instead of public IP addresses.
+
+1. Use `nslookup` as an alternative:
+
+   ```powershell
+   nslookup -type=SRV _mongodb._tcp.<your-cluster-name>.mongocluster.cosmos.azure.com
+   nslookup <your-node-hostname>.mongocluster.cosmos.azure.com
+   ```
+
+#### Linux and macOS DNS testing
+
+From a Linux or macOS machine connected to the virtual network, use the following commands:
+
+1. Test the SRV record resolution:
+
+   ```bash
+   dig _mongodb._tcp.<your-cluster-name>.mongocluster.cosmos.azure.com SRV
+   ```
+
+   The output should show SRV records with targets pointing to your cluster nodes.
+
+1. Resolve the individual node hostnames:
+
+   ```bash
+   dig <your-node-hostname>.mongocluster.cosmos.azure.com
+   ```
+
+   The A records should resolve to private IP addresses in your virtual network's address space.
+
+1. Use `nslookup` as an alternative:
+
+   ```bash
+   nslookup -type=SRV _mongodb._tcp.<your-cluster-name>.mongocluster.cosmos.azure.com
+   nslookup <your-node-hostname>.mongocluster.cosmos.azure.com
+   ```
+
+### Common troubleshooting scenarios
+
+If you encounter connectivity issues, check the following:
+
+**DNS resolution fails or returns public IP addresses**
+
+- Verify that the private DNS zone is correctly linked to your virtual network.
+- Confirm that the DNS zone group is properly configured on the private endpoint.
+- Check that your virtual network's DNS settings are set to use Azure-provided DNS (168.63.129.16) or a custom DNS server that forwards queries to Azure DNS.
+- Ensure you're testing from a resource within the virtual network or a properly peered network.
+
+**Connection timeouts or failures**
+
+- Verify that Network Security Group (NSG) rules on the subnet allow outbound connectivity on port 27017 (MongoDB default port).
+- Confirm that the private endpoint's network interface has the correct private IP address assigned.
+- Check that the application or client is using the correct connection string format (`mongodb+srv`).
+- Ensure that firewall rules on the Azure DocumentDB cluster allow connections from the private endpoint.
+
+**Private DNS zone not resolving**
+
+- Verify that the private DNS zone name matches the expected format: `privatelink.mongocluster.cosmos.azure.com`.
+- Check that A records exist in the private DNS zone for your cluster nodes.
+- Confirm that the virtual network link is active and properly configured in the private DNS zone.
+
+### View private endpoint details
+
+To view detailed information about your private endpoint configuration, use the following Azure CLI command:
+
+```azurecli-interactive
+az network private-endpoint show \
+  --resource-group $ResourceGroupName \
+  --name $PrivateEndpointName \
+  --query '{Name:name, PrivateIpAddress:customDnsConfigs[0].ipAddresses[0], FQDN:customDnsConfigs[0].fqdn, ProvisioningState:provisioningState}' \
+  --output table
+```
+
+This command displays key information including the private IP address, fully qualified domain name (FQDN), and provisioning state.
+
 ## Related content
 - [Learn more about database security in Azure DocumentDB](./security.md)
 - [See guidance on how to enable public access](./how-to-public-access.md)

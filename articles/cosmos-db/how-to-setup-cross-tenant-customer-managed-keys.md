@@ -1,5 +1,5 @@
 ---
-title: Configure cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault (preview)
+title: Configure Cross-Tenant Customer-Managed Keys for Your Account With Azure Key Vault (Preview)
 description: Learn how to configure encryption with customer-managed keys for Azure Cosmos DB using an Azure Key Vault that resides in a different tenant.
 author: iriaosara
 ms.author: iriaosara
@@ -7,11 +7,15 @@ ms.service: azure-cosmos-db
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, devx-track-arm-template
 ms.topic: how-to
 ms.date: 09/27/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Configure cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Data stored in your Azure Cosmos DB account is automatically and seamlessly encrypted with service-managed keys managed by Microsoft. However, you can choose to add a second layer of encryption with keys you manage. These keys are known as customer-managed keys (or CMK). Customer-managed keys are stored in an Azure Key Vault instance.
 
@@ -42,7 +46,7 @@ Deploy an ARM template with the following specific parameters:
 | --- | --- | --- |
 | `keyVaultKeyUri` | Identifier of the customer-managed key residing in the service provider's key vault. | `https://my-vault.vault.azure.com/keys/my-key` |
 | `identity` | Object specifying that the managed identity should be assigned to the Azure Cosmos DB account. | `"identity":{"type":"UserAssigned","userAssignedIdentities":{"/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity":{}}}` |
-| `defaultIdentity` | Combination of the resource ID of the managed identity and the application ID of the multitenant Microsoft Entra application. | `UserAssignedIdentity=/subscriptions/ffffffff-eeee-dddd-cccc-bbbbbbbbbbb0/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity&FederatedClientId=aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e` |
+| `defaultIdentity` | Combination of the resource ID of the managed identity and the application ID of the multitenant Microsoft Entra application. | `UserAssignedIdentity=/subscriptions/00001111-aaaa-2222-bbbb-3333cccc4444/resourcegroups/my-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/my-identity&FederatedClientId=aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e` |
 
 Here's an example of a template segment with the three parameters configured:
 

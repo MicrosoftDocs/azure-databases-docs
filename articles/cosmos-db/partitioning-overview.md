@@ -1,6 +1,5 @@
 ---
 title: Partitioning and horizontal scaling
-titleSuffix: Azure Cosmos DB
 description: Learn about partitioning, logical, physical partitions in Azure Cosmos DB, best practices when choosing a partition key, and how to manage logical partitions.
 author: markjbrown
 ms.author: mjbrown
@@ -9,7 +8,7 @@ ms.topic: concept-article
 ms.date: 09/03/2025
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra
@@ -24,6 +23,12 @@ Azure Cosmos DB uses partitioning to scale containers in a database to meet your
 For example, a container holds items. Each item has a unique value for the `UserID` property. If `UserID` serves as the partition key for the items in the container and there are 1,000 unique `UserID` values, 1,000 logical partitions are created for the container.
 
 Each item in a container has a *partition key* that determines its logical partition and an *item ID* unique within that partition. Combining the partition key and the *item ID* creates the item's *index*, which uniquely identifies the item. [Choosing a partition key](#choose-a-partition-key) is an important decision that affects your application's performance.
+
+> [!NOTE]
+>
+> In some distributed database systems and learning materials, the term *shard key* is used to describe the property that determines how data is distributed across shards. In Azure Cosmos DB, this same concept is called the **partition key**.  
+>  
+> Both terms refer to the value used to distribute and locate data, but **partition key** is the official and correct term used throughout Azure Cosmos DB documentation and APIs.
 
 > [!VIDEO https://learn-video.azurefd.net/vod/player?id=3dfedc45-9a96-48c0-ab15-54ffc7fb7d32]
 
@@ -88,7 +93,7 @@ A partition key has two components: **partition key path** and the **partition k
 
 Learn about the limits on throughput, storage, and partition key length in the [Azure Cosmos DB service quotas](concepts-limits.md) article.
 
-Selecting your partition key is a simple but important design choice in Azure Cosmos DB. Once you select your partition key, you can't change it in place. If you need to change your partition key, move your data to a new container with your desired partition key. [Container copy jobs](container-copy.md) help with this process. Alternately, you can add [global secondary indexes (preview)](nosql/global-secondary-indexes.md) to create a copies of your data with different partition keys optimized for specific query patterns.
+Selecting your partition key is a simple but important design choice in Azure Cosmos DB. Once you select your partition key, you can't change it in place. If you need to change your partition key, move your data to a new container with your desired partition key. [Container copy jobs](container-copy.md) help with this process. Alternately, you can add [global secondary indexes (preview)](global-secondary-indexes.md) to create a copies of your data with different partition keys optimized for specific query patterns.
 
 For **all** containers, the partition key should:
 
@@ -132,7 +137,7 @@ If your container could grow to more than a few physical partitions, then you sh
 
 ## Global secondary indexes for cross-partition queries
 
-If your application needs to query data using multiple different properties efficiently, [global secondary indexes (preview)](nosql/global-secondary-indexes.md) provide an alternative to using one partition key strategy for the dataset. Global secondary indexes are additional containers with different partition keys, automatically synchronized with data from your source container.
+If your application needs to query data using multiple different properties efficiently, [global secondary indexes (preview)](global-secondary-indexes.md) provide an alternative to using one partition key strategy for the dataset. Global secondary indexes are additional containers with different partition keys, automatically synchronized with data from your source container.
 
 Consider global secondary indexes when:
 

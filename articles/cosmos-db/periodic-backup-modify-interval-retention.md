@@ -1,24 +1,27 @@
 ---
 title: Modify periodic backup interval and retention period
-titleSuffix: Azure Cosmos DB
 description: Learn how to modify the interval and retention period for periodic backup in Azure Cosmos DB accounts.
 author: kanshiG
 ms.author: govindk
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 03/21/2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Modify periodic backup interval and retention period in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB automatically takes a full backup of your data for every 4 hours and at any point of time, the latest two backups are stored. This configuration is the default option and it’s offered without any extra cost. You can change the default backup interval and retention period during the Azure Cosmos DB account creation or after the account is created. The backup configuration is set at the Azure Cosmos DB account level and you need to configure it on each account. After you configure the backup options for an account, it’s applied to all the containers within that account. You can modify these settings using the Azure portal, Azure PowerShell, or the Azure CLI.
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Before you start
@@ -163,7 +166,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' = {
 Use these steps to change the default backup options for a new Azure Cosmos DB account.
 
 > [!NOTE]
-> For illustrative purposes, these examples assume that you are creating an [Azure Cosmos DB for NoSQL](nosql/index.yml) account. The steps are very similar for accounts using other APIs.
+> For illustrative purposes, these examples assume that you are creating an [Azure Cosmos DB for NoSQL](index.yml) account. The steps are very similar for accounts using other APIs.
 
 ### [Azure portal](#tab/azure-portal)
 

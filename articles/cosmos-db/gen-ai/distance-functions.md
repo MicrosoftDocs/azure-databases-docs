@@ -41,7 +41,7 @@ To learn more about vectors, see [vector search](vector-search-overview.md).
 - [What is a vector database?](../vector-database.md)
 - [Retrieval-augmented generation (RAG)](rag.md)
 - [Vector search in Azure Cosmos DB](vector-search-overview.md)
-- [Vector search in Azure Cosmos DB for NoSQL](../nosql/vector-search.md)
+- [Vector search in Azure Cosmos DB for NoSQL](../vector-search.md)
 - [Vector store in Azure Cosmos DB for MongoDB vCore](../mongodb/vcore/vector-search.md)
 - [Large language model tokens](tokens.md)
 - [Vector embeddings in Azure Cosmos DB](vector-embeddings.md)

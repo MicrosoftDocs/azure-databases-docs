@@ -1,6 +1,5 @@
 ---
-title: Use Visual Studio Code to connect and manage Azure Cosmos DB resources
-titleSuffix: Azure Cosmos DB
+title: Use Visual Studio Code to Connect and Manage Resources
 description: Learn how to connect to Azure Cosmos DB for NoSQL by using Visual Studio Code.
 author: khelanmodi
 ms.author: khelanmodi
@@ -12,7 +11,7 @@ zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb
 ms.custom:
   - sfi-image-nochange
   - sfi-ropc-nochange
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
 ---
@@ -26,8 +25,8 @@ applies-to:
 ## Prerequisites
 
 - An Azure Cosmos DB for NoSQL account configured with a database and container. Use any of these quickstarts here to set up a resource:
-    - [Portal](./nosql/quickstart-portal.md)
-    - [Azure CLI](./nosql/quickstart-template-bicep.md)
+    - [Portal](quickstart-portal.md)
+    - [Azure CLI](quickstart-template-bicep.md)
 
 ## Install extension
 
@@ -80,7 +79,7 @@ Within the query editor, view more query and index metrics to better help optimi
 1. Select the **Stats** tab next to the query **Results**.
     :::image type="content" source="media/visual-studio-code-extension/view-query-stats.png" lightbox="media/visual-studio-code-extension/view-query-stats.png" alt-text="Screenshot of the query stats in Visual Studio Code.":::
 
-1. For more information on the metric definitions, see the [query metrics documentation](./nosql/query-metrics.md).
+1. For more information on the metric definitions, see the [query metrics documentation](query-metrics.md).
 
 ## Insert, Edit, and Delete documents
 
@@ -97,11 +96,11 @@ Within the query editor, view more query and index metrics to better help optimi
 
 ## Related content
 
-- [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
-- [Node.js Quickstart](nosql/quickstart-nodejs.md)
-- [Python Quickstart](nosql/quickstart-python.md)
-- [Java Quickstart](nosql/quickstart-java.md)
-- [Go Quickstart](nosql/quickstart-go.md)
+- [Get started with the API for NoSQL](quickstart-dotnet.md)
+- [Node.js Quickstart](quickstart-nodejs.md)
+- [Python Quickstart](quickstart-python.md)
+- [Java Quickstart](quickstart-java.md)
+- [Go Quickstart](quickstart-go.md)
 
 ::: zone-end
 

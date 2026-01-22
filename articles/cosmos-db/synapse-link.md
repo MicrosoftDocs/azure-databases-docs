@@ -1,6 +1,5 @@
 ---
 title: Analytics with Azure Synapse Link
-titleSuffix: Azure Cosmos DB
 description: Learn how Azure Synapse Link for Azure Cosmos DB lets you run near real-time analytics (HTAP) using Azure Synapse Analytics over operational data in Azure Cosmos DB.
 author: jilmal
 ms.author: jmaldonado
@@ -8,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 12/05/2025
 ms.custom: synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Synapse Link for Azure Cosmos DB?
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
 
 [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 

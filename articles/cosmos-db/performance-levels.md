@@ -1,5 +1,5 @@
 ---
-title: Retired Azure Cosmos DB performance levels
+title: Retired Performance Levels
 description: Learn about the S1, S2, and S3 performance levels previously available in Azure Cosmos DB.
 author: deborahc
 ms.author: dech
@@ -7,9 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: retired
 ms.date: 06/04/2018
 ms.custom: devx-track-csharp
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Retiring the S1, S2, and S3 performance levels
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 > [!IMPORTANT] 
 > The S1, S2, and S3 performance levels discussed in this article are being retired and are no longer available for new Azure Cosmos DB accounts.
@@ -89,7 +95,7 @@ You can migrate from the S1, S2, and S3 performance levels to single partition c
 
 ### Migrate to single partition collections by using the .NET SDK
 
-This section only covers changing a collection's performance level using the [SQL .NET API](nosql/sdk-dotnet-v3.md), but the process is similar for our other SDKs.
+This section only covers changing a collection's performance level using the [SQL .NET API](sdk-dotnet-v3.md), but the process is similar for our other SDKs.
 
 Here is a code snippet for changing the collection throughput to 5,000 request units per second:
     

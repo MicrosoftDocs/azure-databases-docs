@@ -1,6 +1,5 @@
 ---
 title: Configure IP Firewall
-titleSuffix: Azure Cosmos DB
 description: Learn to configure IP firewall policies for Azure Cosmos DB accounts to enhance security.
 author: iriaosara
 ms.author: iriaosara
@@ -9,7 +8,7 @@ ms.topic: how-to
 ms.date: 09/03/2025
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ai-usage: ai-assisted
-applies-to:
+appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
   - ✅ Apache Cassandra
@@ -173,7 +172,7 @@ To automate the list, see [Use the Service Tag Discovery API](/azure/virtual-net
 
 ## Configure an IP firewall by using a Resource Manager template
 
-To set up access control for your Azure Cosmos DB account, ensure that the Resource Manager template specifies the **ipRules** property with an array of allowed IP ranges. If setting up IP Firewall for an already deployed Azure Cosmos DB account, ensure the `locations` array matches the current deployment. You can't modify the `locations` array and other properties at the same time. For more information and samples of Azure Resource Manager templates for Azure Cosmos DB, see [Azure Resource Manager templates for Azure Cosmos DB](./nosql/samples-resource-manager-templates.md).
+To set up access control for your Azure Cosmos DB account, ensure that the Resource Manager template specifies the **ipRules** property with an array of allowed IP ranges. If setting up IP Firewall for an already deployed Azure Cosmos DB account, ensure the `locations` array matches the current deployment. You can't modify the `locations` array and other properties at the same time. For more information and samples of Azure Resource Manager templates for Azure Cosmos DB, see [Azure Resource Manager templates for Azure Cosmos DB](samples-resource-manager-templates.md).
 
 > [!IMPORTANT]
 > The **ipRules** property is introduced with API version `2020-04-01`. Earlier versions use an **ipRangeFilter** property instead, which is a list of comma-separated IP addresses.

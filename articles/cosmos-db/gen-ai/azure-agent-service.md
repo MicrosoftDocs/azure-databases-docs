@@ -28,7 +28,7 @@ With BYO Thread Storage, user-agent conversations, model transactions are stored
 - system-thread-message-store: Manages internal system messages.
 - agent-entity-store: Captures and stores model inputs and outputs.
 
-This helps ensure that AI agents maintain contextual awareness and securely track thread information in your own Azure Cosmos DB account. It’s also easy to set up using the official Bicep template provided [here](https://github.com/azure-ai-foundry/foundry-samples/tree/main/samples/microsoft/infrastructure-setup/41-standard-agent-setup).
+This helps ensure that AI agents maintain contextual awareness and securely track thread information in your own Azure Cosmos DB account. It’s also easy to set up using the official Bicep template provided [here](https://github.com/azure-ai-foundry/foundry-samples/tree/main/infrastructure/infrastructure-setup-bicep/41-standard-agent-setup).
 
 Agentic threads and conversational histories play a critical role in improving the performance and reliability of agentic applications. By maintaining structured interaction records, developers can gain valuable insights into user behavior, agent decision-making, and overall system performance. These histories enhance an agent’s contextual understanding, enabling more coherent and relevant responses. In addition, analyzing this data can help identify patterns in user queries, making it easier to troubleshoot agent behaviors and optimize outcomes.
 
@@ -38,6 +38,6 @@ Agentic threads and conversational histories play a critical role in improving t
 
 - [Azure AI Foundry Connections](/azure/ai-foundry/concepts/connections)
 - [What is Azure AI Agent Service?](/azure/ai-services/agents/overview)
-- [Vector search](../nosql/vector-search.md)
+- [Vector search](../vector-search.md)
 - [Full-text search](full-text-search.md)
 - [Hybrid Search](hybrid-search.md)

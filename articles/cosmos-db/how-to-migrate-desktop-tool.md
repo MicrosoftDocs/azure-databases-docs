@@ -1,246 +1,78 @@
 ---
-title: Migrate Data Using the Desktop Data Migration Tool
-titleSuffix: Azure Cosmos DB
-description: Use the desktop data migration tool to migrate data from JSON, MongoDB, SQL Server, or Azure Table storage to Azure Cosmos DB.
+title: Migrate Data Using the Data Migration Tool
+description: Use the Azure Cosmos DB Data Migration Tool to migrate data from JSON, MongoDB, SQL Server, and many other databases and file formats to Azure Cosmos DB.
 author: sandeepsnairms
 ms.author: sandnair
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 06/26/2025
+ms.date: 01/20/2026
 ms.custom: sfi-ropc-blocked
 # CustomerIntent: As a database owner, I want to use a tool to perform migration to Azure Cosmos DB so that I can streamline large and complex migrations.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Table
 ---
 
-# Migrate data using the desktop data migration tool
+# Migrate data using the Data Migration Tool
 
-[!INCLUDE[NoSQL, MongoDB, Table](includes/appliesto-nosql-mongodb-table.md)]
+The [Azure Cosmos DB Data Migration Tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool is built on an extension model for source and sink objects to migrate data.
 
-The [Azure Cosmos DB desktop data migration tool](https://github.com/azurecosmosdb/data-migration-desktop-tool) is an open-source command-line application to import or export data from Azure Cosmos DB. The tool can migrate data to and from many sources and sinks including, but not limited to:
+## Supported extensions
 
-- Azure Cosmos DB for NoSQL
-- Azure Cosmos DB for MongoDB
-- Azure Cosmos DB for Table
-- Azure Table storage
-- JSON
-- MongoDB
-- SQL Server
-
-> [!IMPORTANT]
-> For this guide, you perform a data migration from JSON to Azure Cosmos DB for NoSQL.
+- [Azure Cosmos DB for NoSQL](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Cosmos/README.md)
+- [JSON](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Json/README.md)
+- [MongoDB](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Mongo/README.md)
+- [SQL Server](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/SqlServer/README.md)
+- [PostgreSQL](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/PostgreSQL/README.md)
+- [Azure Blob Storage](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AzureBlob/README.md)
+- [Parquet](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Parquet/README.md)
+- [CSV](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/Csv/README.md)
+- [AWS S3](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AwsS3/README.md)
+- [Azure AI Search (Cognitive Search)](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/CognitiveSearch/README.md)
+- [Azure Cosmos DB for Table](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/Extensions/AzureTableAPI/README.md)
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB for NoSQL account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
-- Latest version of [Azure CLI](/cli/azure/install-azure-cli).
-- [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later.
+- [.NET 8.0](https://dotnet.microsoft.com/download/dotnet/8.0) or later on your local machine.
+- Optional [Docker Desktop](https://docs.docker.com/get-started/get-docker/)
 
-## Install the desktop data migration tool
+## Using the prebuilt Docker image
 
-First, install the latest version of the desktop data migration tool from the GitHub repository.
+The easiest way to use the container is to pull the prebuilt image from Microsoft Container Registry. [Docker Desktop](https://docs.docker.com/get-started/get-docker/) is required.
 
 > [!NOTE]
-> The desktop data migration tool requires [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) or later on your local machine.
+> The Data Migration Tool can also be configured to run in any containerized environment or as part of a GitHub Action. See [Run in a Docker Container](https://github.com/AzureCosmosDB/data-migration-desktop-tool?tab=readme-ov-file#docker-container) for more details.
+
+1. Pull the latest version of the container from the registry.
+
+   ```shell
+   docker pull mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest
+   ```
+
+1. Configure the migration settings. See [Configure migration settings](#configure-migration-settings)
+
+```shell
+docker run -v $(pwd)/config:/config -v $(pwd)/data:/data mcr.microsoft.com/azurecosmosdb/linux/azure-cosmos-dmt:latest run --settings /config/migrationsettings.json
+```
+
+## Using from command line
 
 1. In your browser, navigate to the [**Releases** section of the repository](https://github.com/azurecosmosdb/data-migration-desktop-tool/releases).
 
-1. Download the latest compressed folder for your platform. There are compressed folders for the **win-x64**, **mac-x64**, and **linux-x64** platforms.
+1. Download the latest compressed folder for your platform. There are compressed folders for win-x64, win-arm64, mac-x64, mac-arm64, linux-x64, and linux-arm64 platforms.
 
 1. Extract the files to an install location on your local machine.
 
-1. (Optional) Add the desktop data migration tool to the `PATH` environment variable of your local machine.
+1. (Optional) Add the Data Migration Tool to the `PATH` environment variable of your local machine.
 
-## Prepare your migration target
+1. Configure the migration settings. See [Configure migration settings](#configure-migration-settings)
 
-Next, create a target database and container on the Azure Cosmos DB for NoSQL account.
-
-### [Azure CLI](#tab/azure-cli)
-
-1. Open a new terminal. If you haven't already, [sign in to the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Create new shell variables for the Azure Cosmos DB account's name and resource group.
-
-    ```azurecli-interactive
-    # Variable for Azure Cosmos DB account name
-    accountName="<name-of-existing-account>"
-    
-    # Variable for resource group name
-    resourceGroupName="<name-of-existing-resource-group>"
-    ```
-
-1. Create a new database using [`az cosmosdb sql database create`](/cli/azure/cosmosdb/sql/database#az-cosmosdb-sql-database-create). Name the new database `cosmicworks` and configure the database with 400 RU/s of shared throughput.
-
-    ```azurecli-interactive
-    az cosmosdb sql database create \
-        --resource-group $resourceGroupName \
-        --account-name $accountName \
-        --name cosmicworks \
-        --throughput 400
-    ```
-
-1. Use [`az cosmosdb sql container create`](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) to create a new container named `products` within the `cosmicworks` database. Set the partition key path of the new container to `/category`.
-
-    ```azurecli-interactive
-    az cosmosdb sql container create \
-        --resource-group $resourceGroupName \
-        --account-name $accountName \
-        --database-name cosmicworks \
-        --name products \
-        --partition-key-path "/category"
-    ```
-
-1. Find the *primary connection string* from the list of keys for the account with [`az cosmosdb keys list`](/cli/azure/cosmosdb/keys#az-cosmosdb-keys-list).
-
-    ```azurecli-interactive
-    az cosmosdb keys list \
-        --resource-group $resourceGroupName \
-        --name $accountName \
-        --type connection-strings
-    ```
-
-1. Record the *primary connection string* value. You use this credential later when migrating data with the tool.
-
-### [Azure PowerShell](#tab/azure-powershell)
-
-1. Open a new terminal. If you haven't already, [sign in to the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-1. Create new variables for the Azure Cosmos DB account's name and resource group.
-
-    ```azurepowershell-interactive
-    # Variable for Azure Cosmos DB account name
-    $ACCOUNT_NAME = "<name-of-existing-account>"
-    
-    # Variable for resource group name
-    $RESOURCE_GROUP_NAME = "<name-of-existing-resource-group>"
-    ```
-
-1. Create a new database using [`New-AzCosmosDBSqlDatabase`](/powershell/module/az.cosmosdb/new-azcosmosdbsqldatabase). Name the new database `cosmicworks` and configure the database with 400 RU/s of shared throughput.
-
-    ```azurepowershell-interactive
-    $parameters = @{
-        ResourceGroupName = $RESOURCE_GROUP_NAME
-        AccountName = $ACCOUNT_NAME
-        Name = "cosmicworks"
-        Throughput = 400
-    }
-    New-AzCosmosDBSqlDatabase @parameters
-    ```
-
-1. Use [`New-AzCosmosDBSqlContainer`](/powershell/module/az.cosmosdb/new-azcosmosdbsqlcontainer) to create a new container named `products` within the `cosmicworks` database. Set the partition key path of the new container to `/category`.
-
-    ```azurepowershell-interactive
-    $parameters = @{
-        ResourceGroupName = $RESOURCE_GROUP_NAME
-        AccountName = $ACCOUNT_NAME
-        DatabaseName = "cosmicworks"
-        Name = "products"
-        PartitionKeyPath = "/category"
-        PartitionKeyKind = "Hash"
-    }
-    New-AzCosmosDBSqlContainer @parameters
-    ```
-
-1. Find the *primary connection string* from the list of keys for the account with [`Get-AzCosmosDBAccountKey`](/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey).
-
-    ```azurepowershell-interactive
-    $parameters = @{
-        ResourceGroupName = $RESOURCE_GROUP_NAME
-        Name = $ACCOUNT_NAME
-        Type = "ConnectionStrings"
-    }
-    Get-AzCosmosDBAccountKey @parameters
-    ```
-
-1. Record the *primary connection string* value. You use this credential later when migrating data with the tool.
-
----
-
-## Perform a migration operation
-
-Now, migrate data from a JSON array to the newly created Azure Cosmos DB for NoSQL container.
-
-1. Navigate to an empty directory on your local machine. Within that directory, create a new file named *migrationsettings.json*.
-
-1. Within the JSON file, create a new empty JSON object:
-
-    ```json
-    {}
-    ```
-
-1. Create a new property named `Source` with the value `json`. Create another new property named `SourceSettings` with an empty object as the value.
-
-    ```json
-    {
-      "Source": "json",
-      "SourceSettings": {}
-    }
-    ```
-
-1. Within the `SourceSettings` object, create a new property named `FilePath` with the value set to this URI: [https://raw.githubusercontent.com/azure-samples/cosmos-db-migration-sample-data/main/nosql-data.json](https://github.com/azure-samples/cosmos-db-migration-sample-data/blob/main/nosql-data.json).
-
-    ```json
-    {
-      "Source": "json",
-      "SourceSettings": {
-        "FilePath": "https://raw.githubusercontent.com/azure-samples/cosmos-db-migration-sample-data/main/nosql-data.json"
-      }
-    }
-    ```
-
-1. Create another new property named `Sink` with the value `cosmos-nosql`. Also, create a property named `SinkSettings` with an empty object.
-
-    ```json
-    {
-      "Source": "json",
-      "SourceSettings": {
-        "FilePath": "https://raw.githubusercontent.com/azure-samples/cosmos-db-migration-sample-data/main/nosql-data.json"
-      },
-      "Sink": "cosmos-nosql",
-      "SinkSettings": {
-      }
-    }
-    ```
-
-1. Within `SinkSettings`, create a property named `ConnectionString` with the *primary connection string* you recorded earlier in this guide as its value.
-
-    ```json
-    {
-      "Source": "json",
-      "SourceSettings": {
-        "FilePath": "https://raw.githubusercontent.com/azure-samples/cosmos-db-migration-sample-data/main/nosql-data.json"
-      },
-      "Sink": "cosmos-nosql",
-      "SinkSettings": {
-        "ConnectionString": "<connection-string-for-existing-account>"
-      }
-    }
-    ```
-
-1. Add `Database`, `Container`, and `PartitionKeyPath` properties with `cosmicworks`, `products`, and `/category` as their values respectively.
-
-    ```json
-    {
-      "Source": "json",
-      "SourceSettings": {
-        "FilePath": "https://raw.githubusercontent.com/azure-samples/cosmos-db-migration-sample-data/main/nosql-data.json"
-      },
-      "Sink": "cosmos-nosql",
-      "SinkSettings": {
-        "ConnectionString": "<connection-string-for-existing-account>",
-        "Database": "cosmicworks",
-        "Container": "products",
-        "PartitionKeyPath": "/category"
-      }
-    }
-    ```
-
-1. **Save** the *migrationsettings.json* file.
-
-1. Open a new terminal and navigate to the directory containing your *migrationsettings.json* file.
-
-1. Run the desktop data migration tool using the `dmt` command.
+1. Run the Data Migration Tool using the `dmt` command from a terminal.
 
     ```terminal
     dmt
@@ -249,9 +81,105 @@ Now, migrate data from a JSON array to the newly created Azure Cosmos DB for NoS
     > [!NOTE]
     > If you didn't add the installation path to your `PATH` environment variable, you might need to specify the full path to the `dmt` executable.
 
-1. The tool now outputs the sources and sinks used by the migration.
+1. The tool outputs the sources and sinks used by the migration.
 
     ```output
     Using JSON Source
     Using Cosmos-nosql Sink
     ```
+
+## Configure migration settings
+
+The Data Migration Tool uses a migrationsettings.json to define the source and sink settings for the data to be copied. See [Supported Extension](#supported-extensions) for details on each extensions migration settings.
+
+Here's an example for migrating a [sample JSON file](https://github.com/AzureCosmosDB/data-migration-desktop-tool/blob/main/data/sample-data.json) to the Cosmos DB emulator.
+
+```json
+{
+    "Source": "JSON",
+    "Sink": "Cosmos-nosql",
+    "SourceSettings": {
+        "FilePath": "C:\\dmt\\data\\simple_json.json"
+    },
+    "SinkSettings": {
+        "ConnectionString": "AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDj...",
+        "Database": "datamigration",
+        "Container": "sample",
+        "PartitionKeyPath": "/id",
+        "RecreateContainer": false,
+        "IncludeMetadataFields": false
+    }
+}
+```
+
+### Migrate multiple sources
+
+The migrationsettings.json can also be configured to execute multiple data transfer operations with a single run command with an *Operations* property consisting of an array of objects that include SourceSettings and SinkSettings for the extensions referenced in the *Source* and *Sink* properties.
+
+Here's an example:
+
+```json
+{
+  "Source": "json",
+  "Sink": "cosmos-nosql",
+  "SinkSettings": {
+    "ConnectionString": "AccountEndpoint=https://localhost:8081/;AccountKey=C2y6yDj..."
+  },
+  "Operations": [
+    {
+      "SourceSettings": {
+        "FilePath": "products.json"
+      },
+      "SinkSettings": {
+        "Database": "ShoppingCartDB",
+        "Container": "products",
+        "PartitionKeyPath": "/categoryId"
+      }
+    },
+    {
+      "SourceSettings": {
+        "FilePath": "customers.json"
+      },
+      "SinkSettings": {
+        "Database": "ShoppingCartDB",
+        "Container": "customers",
+        "PartitionKeyPath": "/customerId"
+      }
+    },
+    {
+      "SourceSettings": {
+        "FilePath": "orders.json"
+      },
+      "SinkSettings": {
+        "Database": "ShoppingCartDB",
+        "Container": "customers",
+        "PartitionKeyPath": "/customerId"
+      }
+    }
+  ]
+}
+```
+
+### Query support
+
+Some extensions have support for queries as well on the source settings. See the documentation for each extension for details.
+
+Here's an example:
+
+```json
+{
+  "Source": "cosmos-nosql",
+  "Sink": "cosmos-nosql",
+  "SourceSettings": {
+    "ConnectionString": "AccountEndpoint=https://...",
+    "Database": "ShoppingCartDB",
+    "Container": "customers",
+    "Query": "SELECT * FROM c WHERE c.type='order'"
+  },
+  "SinkSettings": {
+    "ConnectionString": "AccountEndpoint=https://...",
+    "Database": "orders",
+    "PartitionKeyPath": "/customerId"
+  }
+}
+```
