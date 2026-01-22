@@ -56,13 +56,13 @@ By using the built-in PgBouncer feature with your Azure Database for PostgreSQL 
 
 To learn more, see [PgBouncer metrics](../monitor/concepts-monitoring.md#pgbouncer-metrics).
 
-## PgBouncer Logs
+### PgBouncer Logs
 
 PgBouncer logs are available in Azure Database for PostgreSQL Flexible Server to help audit connection pooling activity and troubleshoot issues such as connection drops, authentication failures, or pool exhaustion. PgBouncer logs include details such as authentication failures, connection lifecycle events, errors, and server state changes — all useful for identifying connection bottlenecks and behavioral anomalies.
 
-### Enabling Logs
+#### Enabling Logs
 
-PgBouncer logs are emitted when Diagnostic Settings are enabled. Two schema types are supported in Log Analytics **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
+PgBouncer logs are automatically emitted when Logs Diagnostic Settings are enabled. Two schema types are supported in Log Analytics **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
 
 - **Azure diagnostics Schema**  
      - Logs appear in the `AzureDiagnostics` table  
@@ -72,7 +72,7 @@ PgBouncer logs are emitted when Diagnostic Settings are enabled. Two schema type
      - Logs appear in the `PGSQLPgBouncer` table  
      - Easier to query, structured format
 
-### Sample KQL Queries
+#### Sample KQL Queries
 
 **Azure diagnostics Schema:**
 ```kusto
@@ -91,7 +91,7 @@ PGSQLPgBouncer
 > [!NOTE]  
 > The field names and schema format may vary slightly depending on the schema used (Consolidated vs Resource-Specific).
 
-### Admin console
+### PgBouncer Admin console
 
 PgBouncer also provides an *internal* database called `pgbouncer`. When you connect to that database, you can run `SHOW` commands that provide information on the current state of PgBouncer.
 
