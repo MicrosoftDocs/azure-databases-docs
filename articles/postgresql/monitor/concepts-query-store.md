@@ -73,7 +73,7 @@ Here are some examples of how you can gain more insights into your workload usin
 | **Observation** | **Action** |
 | --- | --- |
 | High lock waits | Check the query texts for the affected queries and identify the target entities. Look in query store for other queries which are executed frequently and/or have high duration and are modifying the same entity. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
-| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider enabling the [automated index tuning](concepts-index-tuning.md) feature to see if it can recommend creating some indexes which might decrease the number of physical reads for those queries. |
+| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider enabling the [autonomous tuning](concepts-autonomous-tuning.md) feature to see if it can recommend creating some indexes which might decrease the number of physical reads for those queries. |
 | High memory waits | Find the top memory consuming queries in query store. These queries are probably delaying further progress of the affected queries. |
 
 ## Configuration options

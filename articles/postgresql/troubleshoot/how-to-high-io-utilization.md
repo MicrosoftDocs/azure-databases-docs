@@ -161,7 +161,7 @@ For more information about monitoring and tuning in scenarios where autovacuum i
 
 ### Increase storage
 
-Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](../configure-maintain/concepts-compute.md).
+Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](../compute-storage/concepts-compute.md).
 
 ## Related content
 

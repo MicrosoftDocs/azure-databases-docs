@@ -464,7 +464,7 @@ By default, a database called **postgres** is created in your instance. The [pos
 
 A second database that is created on every instance is **azure_maintenance**. Although you can connect to this database, you have minimum permissions granted so you can barely do anything in it.
 
-Finally, there's database **azure_sys**, which is used to host some objects used by features like [query store](../monitor/concepts-query-store.md) and [index tuning](../monitor/concepts-index-tuning.md).
+Finally, there's database **azure_sys**, which is used to host some objects used by features like [query store](../monitor/concepts-query-store.md) and [autonomous tuning](../monitor/concepts-autonomous-tuning.md).
 
 > [!NOTE]
 > Connections to your Azure Database for PostgreSQL flexible server instance typically communicate over port 5432. An exception to this is when you're connecting via a connection pooler like the built-in [PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md), which is integrated with Azure Database for PostgreSQL. Built-in PgBouncer listens on port 6432.

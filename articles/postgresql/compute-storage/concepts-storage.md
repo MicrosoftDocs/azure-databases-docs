@@ -72,7 +72,7 @@ The following table provides an overview of premium SSD v2 disk capacities and p
 | 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
 
 Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
-To learn more, see [Compute options in Azure Database for PostgreSQL](../configure-maintain/concepts-compute.md).
+To learn more, see [Compute options in Azure Database for PostgreSQL](../compute-storage/concepts-compute.md).
 
 > [!NOTE]  
 > Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.

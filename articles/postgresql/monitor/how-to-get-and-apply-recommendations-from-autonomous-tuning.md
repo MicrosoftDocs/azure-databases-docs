@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 12/18/2025
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.custom:
 - build-2024
 - ignite-2024
@@ -37,7 +38,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Index tuning**.
+2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    - If the feature is enabled but no recommendations are produced yet, the screen looks like this:
 
@@ -51,7 +52,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
 
-3. If there are recommendations available, select on the **View index recommendations** summarization to access to the full list:
+3. If there are recommendations available, select on the **View recommendations** summarization to access to the full list:
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 

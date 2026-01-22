@@ -2631,7 +2631,7 @@
             "redirect_document_id": false
         },
         {
-            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-compute.md",
+            "source_path_from_root": "/articles/postgresql/compute-storage/concepts-compute.md",
             "redirect_url": "/azure/postgresql/compute-storage/concepts-compute",
             "redirect_document_id": true
         },
@@ -3132,7 +3132,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-index-tuning.md",
-            "redirect_url": "/azure/postgresql/monitor/how-to-configure-autonomou-tuning",
+            "redirect_url": "/azure/postgresql/monitor/how-to-configure-autonomous-tuning",
             "redirect_document_id": true
         },
         {
@@ -3886,18 +3886,18 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-index-tuning.md",
-            "redirect_url": "/azure/postgresql/flexible-server/monitor/concepts-autonomous-tuning",
+            "source_path_from_root": "/articles/postgresql/monitor/concepts-index-tuning.md",
+            "redirect_url": "/azure/postgresql/monitor/concepts-autonomous-tuning",
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-index-tuning.md",
-            "redirect_url": "/azure/postgresql/flexible-server/monitor/how-to-configure-autonomous-tuning",
+            "source_path_from_root": "/articles/postgresql/monitor/how-to-configure-index-tuning.md",
+            "redirect_url": "/azure/postgresql/monitor/how-to-configure-autonomous-tuning",
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-get-and-apply-recommendations-from-index-tuning.md",
-            "redirect_url": "/azure/postgresql/flexible-server/monitor/how-to-get-and-apply-recommendations-from-autonomous-tuning",
+            "source_path_from_root": "/articles/postgresql/monitor/how-to-get-and-apply-recommendations-from-index-tuning.md",
+            "redirect_url": "/azure/postgresql/monitor/how-to-get-and-apply-recommendations-from-autonomous-tuning",
             "redirect_document_id": true
        }
     ]

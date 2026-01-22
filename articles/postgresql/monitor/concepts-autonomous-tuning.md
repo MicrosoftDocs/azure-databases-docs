@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 12/18/2025
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: concept-article
 ms.custom:
   - references_regions
@@ -156,7 +157,7 @@ The following options are available for configuring autonomous tuning parameters
 | `index_tuning.unused_min_period` | Minimum number of days the index hasn't been used, based on system statistics, so it's considered for dropping. | `35` | `30 - 70` | |
 | `index_tuning.unused_reads_per_table` | Minimum number of daily average read operations affecting the table so that their unused indexes are considered for dropping. | `1000` | `0 - 9999999` | |
 
-If you use the CLI commands `az postgres flexible-server autonomous-tuning show-settings` and `az postgres flexible-server index-tuning set-settings` to display or modify any of the autonomous tuning settings, the values accepted as arguments for the `--name` parameter are the ones shown in the **Parameter** column of the previous table, but without including the prefix `index_tuning.`.
+If you use the CLI commands `az postgres flexible-server autonomous-tuning show-settings` and `az postgres flexible-server autonomous-tuning set-settings` to display or modify any of the autonomous tuning settings, the values accepted as arguments for the `--name` parameter are the ones shown in the **Parameter** column of the previous table, but without including the prefix `index_tuning.`.
 
 ## Information produced by autonomous tuning
 
@@ -182,19 +183,11 @@ Users who are members of the `azure_pg_admin` role can drop the hypopg extension
 
 ### Supported compute tiers and SKUs
 
-<<<<<<<< HEAD:articles/postgresql/server-parameters/concepts-autonomous-tuning.md
 Autonomous tuning is supported on all [currently available tiers](concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](concepts-compute.md) with at least 4 vCores.
 
 ### Supported versions of PostgreSQL
 
 Autonomous tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
-========
-Index tuning is supported on all [currently available tiers](../configure-maintain/concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](../configure-maintain/concepts-compute.md) with at least 4 vCores.
-
-### Supported versions of PostgreSQL
-
-Index tuning is supported on [major versions](../configure-maintain/concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
->>>>>>>> main:articles/postgresql/monitor/concepts-index-tuning.md
 
 ### Use of search_path
 
@@ -218,7 +211,7 @@ If autonomous tuning is enabled on a server, and you scale down that server's co
 
 ### High availability and read replicas
 
-If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](../read-replica/concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
+If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
 
 ### Reasons why autonomous tuning might not produce create index recommendations for certain queries
 
