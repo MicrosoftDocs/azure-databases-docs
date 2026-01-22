@@ -10,7 +10,7 @@ ai-usage: ai-generated
 
 # What is Azure DocumentDB (with MongoDB compatibility)?
 
-Azure DocumentDB is a fully managed, open-source, [99.03% MongoDB-compatible](https://learn.microsoft.com/azure/documentdb/compatibility-query-language#compatibility-philosophy) database. Built-in AI, Azure integrations, and multi-cloud flexibility included for mission-critical applications.
+Azure DocumentDB is a fully managed, open-source, [99.03% MongoDB-compatible](compatibility-query-language.md#compatibility-philosophy) database. Built-in AI, Azure integrations, and multi-cloud flexibility included for mission-critical applications.
 
 ## Open-source and community-driven
 
