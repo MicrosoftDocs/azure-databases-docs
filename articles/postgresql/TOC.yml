@@ -624,12 +624,12 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Index tuning
+    - name: Autonomous tuning
       items:
-        - name: Configure index tuning
-          href: monitor/how-to-configure-index-tuning.md
-        - name: Use index recommendations
-          href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
+        - name: Configure autonomous tuning
+          href: monitor/how-to-configure-autonomous-tuning.md
+        - name: Use recommendations
+          href: monitor/how-to-get-and-apply-recommendations-from-autonomous-tuning.md
     - name: Intelligent tuning
       items:
         - name: Azure portal
