@@ -1,10 +1,10 @@
 ---
 title: Connection pooling best practices
-description: This article describes the best practices for connection pooling in an Azure Database for PostgreSQL flexible server instance.
-author: rkniyer999
-ms.author: ramyerrabotu
+description: This article describes the best practices for connection pooling in an Azure Database for PostgreSQL.
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 1/22/2026
 ms.service: azure-database-postgresql
 ms.topic: best-practice
 ---
