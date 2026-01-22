@@ -89,7 +89,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
     :::code language="json" source="~/documentdb-samples/ai/vector-search-typescript/tsconfig.json" :::
 
-1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/data/Hotels_Vector.json) to your project root.
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your project root.
 
 ## Create npm scripts
 
