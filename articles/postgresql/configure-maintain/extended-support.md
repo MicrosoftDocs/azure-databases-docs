@@ -10,11 +10,11 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-## Extended Support
+## Extended support
 
 To help you maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure Database for PostgreSQL.
 
-Extended Support gives you continued access to critical security updates and technical assistance. With Extended Support, you have time to plan and implement your upgrade strategy with confidence.
+Extended support gives you continued access to critical security updates and technical assistance. By using Extended Support, you have time to plan and implement your upgrade strategy with confidence.
 
 Extended support provides:
 
@@ -50,9 +50,9 @@ Extended Support is ideal for customers who...
 
 ### Enrollment and price
 
-- Automatic Enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
-- Opt-Out Option: You can opt out at any time by upgrading to a supported version.
-- Grace Period: A one-month grace period applies. Billing begins on April 1, 2026.
+- Automatic enrollment: PostgreSQL servers running unsupported versions are automatically enrolled in Extended Support on March 1, 2026.
+- Opt-out option: You can opt out at any time by upgrading to a supported version.
+- Grace period: A one-month grace period applies. Billing begins on April 1, 2026.
 - Pricing: Details are published on this [page](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/?cdn=disable) before billing begins.
 
 ### Frequently asked questions (FAQs)
@@ -71,7 +71,7 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Can my applications break during a major version upgrade?**
 
-A. PostgreSQL major version upgrades can introduce changes that might affect your application—such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. We recommend validating upgrades in a nonproduction environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+A: PostgreSQL major version upgrades can introduce changes that might affect your application - such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. Validate upgrades in a nonproduction environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
 
 [!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
 
@@ -81,7 +81,7 @@ A: The Azure portal and CLI clearly indicate if a server is enrolled in Extended
 
 **Q: Do I need to update Server Parameters post major version upgrades?**
 
-A: No manual change is required. The upgrade workflow will automatically update the parameters for the new PostgreSQL Version.
+A: No manual change is required. The upgrade workflow automatically updates the parameters for the new PostgreSQL Version.
 
 **Q: Are PostgreSQL extensions automatically upgraded during a major version upgrade?**
 
@@ -103,8 +103,8 @@ A: Azure provides visibility through the portal.
 
 **Q: What support options are available during the Extended Support phase?**
 
-A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions won't be backported.
+A: Servers in Extended Support can raise support cases for security-related issues only. Feature requests, performance tuning, and general bug fixes aren't supported for end of support versions. Improvements to existing features for end of support versions aren't backported.
 
 **Q: How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025?**
 
-A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Free Extended support from Azure will be provided through March 31, 2026. Customers are charged for Extended Support starting April 1. To ensure continued support and access to new features, upgrade to newer versions.
+A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Free Extended support from Azure is provided through March 31, 2026. Customers are charged for Extended Support starting April 1. To ensure continued support and access to new features, upgrade to newer versions.
