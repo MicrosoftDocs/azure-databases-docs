@@ -183,11 +183,11 @@ Users who are members of the `azure_pg_admin` role can drop the hypopg extension
 
 ### Supported compute tiers and SKUs
 
-Autonomous tuning is supported on all [currently available tiers](concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](concepts-compute.md) with at least 4 vCores.
+Autonomous tuning is supported on all [currently available tiers](../compute-storage/concepts-compute.md): Burstable, General Purpose, and Memory Optimized, and on any [currently supported compute SKU](../compute-storage/concepts-compute.md) with at least 4 vCores.
 
 ### Supported versions of PostgreSQL
 
-Autonomous tuning is supported on [major versions](concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
+Autonomous tuning is supported on [major versions](../configure-maintain/concepts-supported-versions.md) **12 or greater** of Azure Database for PostgreSQL flexible server instances.
 
 ### Use of search_path
 

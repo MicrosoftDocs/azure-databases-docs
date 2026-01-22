@@ -3132,7 +3132,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-configure-index-tuning.md",
-            "redirect_url": "/azure/postgresql/monitor/how-to-configure-autonomous-tuning",
+            "redirect_url": "/azure/postgresql/monitor/how-to-configure-index-tuning",
             "redirect_document_id": true
         },
         {
