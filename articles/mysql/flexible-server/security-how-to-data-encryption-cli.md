@@ -78,9 +78,19 @@ The key must have the following attributes to use as a customer-managed key:
 
 You can verify the above attributes of the key by using the following command:
 
+- For Azure Key Vault:
+  
 ```azurecli-interactive
 az keyvault key show --vault-name \<key\_vault\_name\> -n \<key\_name\>
 ```
+
+- For Azure Key Vault Managed HSM
+
+```azurecli-interactive
+az keyvault key show --hsm-name \<key\_vault\_name\> -n \<key\_name\>
+```
+
+
 
 ## Update an existing Azure Database for MySQL Flexible Server instance with data encryption
 
