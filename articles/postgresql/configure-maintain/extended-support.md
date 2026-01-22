@@ -1,16 +1,16 @@
 ---
-title: Extended support
-description: Describes the extneded support offering for Postgres major versions for Azure Database for PostgreSQL flexible server instances.
+title: Extended Support
+description: Describes the extended support offering for Postgres major versions for Azure Database for PostgreSQL flexible server instances.
 author: andtapia
-ms.author: andtapia
+ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 01/21/2026
+ms.date: 01/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-## Extended support
+# Azure Database for PostgreSQL extended support
 
 To help you maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure Database for PostgreSQL.
 
