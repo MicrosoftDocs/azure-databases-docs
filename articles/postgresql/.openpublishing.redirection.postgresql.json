@@ -3885,7 +3885,6 @@
             "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
             "redirect_document_id": true
         },
-        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-index-tuning.md",
             "redirect_url": "/azure/postgresql/flexible-server/concepts-autonomous-tuning",

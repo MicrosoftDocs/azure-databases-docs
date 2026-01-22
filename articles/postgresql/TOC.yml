@@ -614,8 +614,8 @@
           href: monitor/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: monitor/concepts-query-performance-insight.md
-        - name: Index tuning
-          href: monitor/concepts-index-tuning.md
+        - name: Autonomous tuning
+          href: monitor/concepts-autonomous-tuning.md
         - name: Intelligent tuning
           href: monitor/concepts-intelligent-tuning.md
     - name: Download PostgreSQL and upgrade logs
