@@ -211,7 +211,7 @@ If autonomous tuning is enabled on a server, and you scale down that server's co
 
 ### High availability and read replicas
 
-If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
+If you have [high availability](/azure/reliability/reliability-postgresql-flexible-server) or [read replicas](../read-replica/concepts-read-replicas.md) configured on your server, be aware of the implications associated with producing write-intensive workloads on the primary server when implementing the recommended indexes. Be especially careful when creating indexes whose size is estimated to be large.
 
 ### Reasons why autonomous tuning might not produce create index recommendations for certain queries
 
