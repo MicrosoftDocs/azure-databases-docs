@@ -2631,7 +2631,7 @@
             "redirect_document_id": false
         },
         {
-            "source_path_from_root": "/articles/postgresql/compute-storage/concepts-compute.md",
+            "source_path_from_root": "/articles/postgresql/configure-maintain/concepts-compute.md",
             "redirect_url": "/azure/postgresql/compute-storage/concepts-compute",
             "redirect_document_id": true
         },
