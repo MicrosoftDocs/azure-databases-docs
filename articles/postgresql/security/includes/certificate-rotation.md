@@ -14,9 +14,8 @@ ms.topic: include
 > **Microsoft started a TLS certificate rotation for Azure Database for PostgreSQL** to update intermediate CA certificates and the resulting certificate chain. The root CAs stay the same.
 >
 > If your client configuration uses the [***Recommended configurations for TLS***](../security-tls.md#recommended-configurations-for-tls), you don't need to take any action.
->
-
-> **Intermediate certificate rotation schedule**
+> 
+> **Intermediate certificate rotation schedule:**
 >
 > - Updates for Azure regions West Central US and East Asia are complete.
 > - Updates for UK South and US Government regions start on January 21, 2026.
