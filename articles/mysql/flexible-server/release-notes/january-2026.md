@@ -28,6 +28,7 @@ No new features are being introduced in this version.
 ## Improvement
 
 - Improved the error message shown when customers attempt to enable HA on a VNET-based instance that still has Accelerated Logs enabled
+- TLS 1.3 support for Azure MySQL 5.7 version
 
 ## Known issues fixes
 
