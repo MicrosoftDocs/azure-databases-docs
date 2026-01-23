@@ -11,6 +11,9 @@ ms.topic: how-to
 ---
 
 # Enable public access
+
+> [!NOTE]
+> **Prerequisites:** This article applies only to servers that were originally deployed with public access networking mode. If your server is currently configured with Private Access (VNet Integration), you cannot directly enable public access. To switch from private to public access, you would need to restore the server to a new instance with public access enabled, or create a new server. See [Networking overview](concepts-networking.md) for more information about networking modes.
  
 If you enable public access, connectivity to the server is also possible via private endpoints.
 

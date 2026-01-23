@@ -18,6 +18,9 @@ Azure Database for PostgreSQL is a managed service that allows you to run, manag
 
 This article shows you how to create an Azure Database for PostgreSQL using different mechanisms.
 
+> [!TIP]
+> If you're having trouble reading the content with the table of contents visible on both sides, you can maximize your browser window, use browser zoom (Ctrl/Cmd + or -), or hide your browser's bookmarks bar for better readability.
+
 ## Create an Azure Database for PostgreSQL 
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.

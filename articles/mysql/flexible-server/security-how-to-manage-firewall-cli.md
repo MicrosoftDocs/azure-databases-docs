@@ -51,6 +51,9 @@ You can use the `az mysql flexible-server --public access` command to create the
 
 Refer to the Azure CLI [reference documentation](/cli/azure/mysql/flexible-server) for the complete list of configurable CLI parameters. For example, you can optionally specify the resource group in the following commands.
 
+> [!TIP]  
+> The following examples demonstrate different ways to configure firewall rules during server creation. Each example shows how to specify IP addresses using the `--public-access` parameter with different formats (single IP, IP range, Azure services, or all IPs).
+
 - Create an Azure Database for MySQL flexible server instance with public access and add the client IP address to have access to the server.
 
   ```azurecli-interactive

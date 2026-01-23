@@ -23,6 +23,17 @@ SCRAM authentication imposes extra computational load on your application server
 
 ## Configure SCRAM authentication
 
+### Navigate to Server Parameters
+
+To configure SCRAM authentication, you need to access the Server Parameters page in the Azure portal:
+
+1. Sign in to the [Azure portal](https://portal.azure.com)
+2. Navigate to your Azure Database for PostgreSQL flexible server instance
+3. In the left-hand menu under **Settings**, select **Server parameters**
+4. Use the search box to find the parameters mentioned in the steps below
+
+### Configuration Steps
+
 1. Change password_encryption to SCRAM-SHA-256. Currently Azure Database for PostgreSQL only supports SCRAM using SHA-256.
 
     :::image type="content" source="media/security-connect-scram/1-password-encryption.png" alt-text="Screenshot of encryption page for SCRAM.":::
