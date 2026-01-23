@@ -1,103 +1,125 @@
 ---
-title: Enable Public Access
-description: This article describes how to enable public access in an Azure Database for PostgreSQL flexible server.
+title: Enable public access
+description: Learn how to enable public access in an Azure Database for PostgreSQL flexible server deployed with public access networking mode.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 01/23/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to enable public network access in an Azure Database for PostgreSQL.
+ai-usage: ai-assisted
+# customer intent: As a user, I want to learn how to enable public network access in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Enable public access
 
-This article explains how to enable public network access on an Azure Database for PostgreSQL flexible server that you originally deployed with public access networking mode. Public access allows connections from the internet by using a public IP address, which you can secure by using firewall rules and private endpoints.
+This article explains how to enable public network access on an Azure Database for PostgreSQL flexible server. Public access allows connections from the internet using a public IP address, which you can secure with firewall rules and private endpoints.
 
 ## Prerequisites
 
-This article applies only to servers that you originally deployed with public access networking mode. If your server is currently configured with private access (virtual network Integration), you can't directly enable public access. To switch from private to public access, you need to restore the server to a new instance with public access enabled, or create a new server. For more information about networking modes, see [Networking overview](concepts-networking.md).
+Before you begin, verify that your server meets the following requirements:
 
-## How to enable public access
+- **Server deployed with public access networking mode**: You can only enable or disable public access on servers that you originally deployed with the **Public access (allowed IP addresses)** networking option.
 
-If you enable public access, you can also connect to the server through private endpoints.
+- **Server status is Ready**: The server must be in a `Ready` state before you can modify networking settings.
 
-When you enable public access, you can configure firewall rules to allow connections from specific IP addresses or from any Azure service.
+> [!IMPORTANT]
+> **This article doesn't apply to servers configured with private access (VNet Integration).** The networking mode is a permanent setting chosen during server creation. If your server's **Networking** page shows **Private access (VNet Integration)** as the connectivity method, you can't enable public access on that server.
+>
+> To switch from private access to public access, you must either:
+> - **Create a new server** with the **Public access (allowed IP addresses)** networking option selected during deployment.
+> - **Restore the server** to a new instance with public access enabled.
+>
+> For more information about the differences between networking modes, see [Private access (VNet Integration)](concepts-networking-private.md) and [Public access (allowed IP addresses)](concepts-networking-public.md).
 
-When you enable public access, the server enforces any existing firewall rules from the last time you configured the server with public access.
+## Determine your server's networking mode
 
-## [Portal](#tab/portal-enable-public-access)
+To check which networking mode your server uses:
 
-Using the [Azure portal](https://portal.azure.com/):
+### [Portal](#tab/portal-check-mode)
 
-1. Select your Azure Database for PostgreSQL flexible server.
-
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Database for PostgreSQL flexible server.
 1. In the resource menu, select **Networking**.
+1. Check the **Connectivity method** section at the top of the page:
+   - **Public access (allowed IP addresses)**: This article applies to your server. Continue with the steps in this article.
+   - **Private access (VNet Integration)**: This article doesn't apply. See the [Prerequisites](#prerequisites) section for your options.
 
-   :::image type="content" source="./media/how-to-networking/public-access-networking-disabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-disabled.png":::
+### [CLI](#tab/cli-check-mode)
 
-1. Select the **Allow public access to this resource through the internet using a public IP address** checkbox.
-
-   :::image type="content" source="./media/how-to-networking/public-access-enable-public-access.png" alt-text="Screenshot showing how to enable public access." lightbox="./media/how-to-networking/public-access-enable-public-access.png":::
-
-1. Select **Save**.
-
-   :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/public-access-enable-public-access-save.png":::
-
-1. A notification informs you that the changes are being applied.
-
-   :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/public-access-enable-public-access-progressing-notification.png":::
-
-1. The status of the server changes to **Updating**.
-
-   :::image type="content" source="./media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/public-access-updating.png":::
-
-1. When the process completes, a notification informs you that the changes were applied.
-
-   :::image type="content" source="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/public-access-enable-public-access-succeeded-notification.png":::
-
-1. The status of the server changes to **Ready**.
-
-   :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="./media/how-to-networking/public-access-available.png":::
-
-## [CLI](#tab/cli-enable-public-access)
-
-To enable public access on a server, use the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
-
-```azurecli-interactive
-az postgres flexible-server update \
-  --resource-group <resource_group> \
-  --name <server> \
-  --public-access enabled
-```
-
-If you try to enable public access on a server that isn't in the `Ready` state, you get an error like the following example.
-
-```output
-Code:
-Message: Server <server> is busy with other operations. Please try later
-```
-
-If you try to enable public access on a server that you didn't deploy with networking mode public access (allowed IP addresses), you don't get an error. The request to change that configuration is ignored.
-
-To check if a server has public access enabled or disabled, run the following command:
+Run the following command to check your server's networking configuration:
 
 ```azurecli-interactive
 az postgres flexible-server show \
   --resource-group <resource_group> \
   --name <server> \
-  --query '{"publicAccess":network.publicNetworkAccess}'
+  --query '{delegatedSubnetId:network.delegatedSubnetResourceId, publicAccess:network.publicNetworkAccess}'
 ```
+
+Interpret the results:
+
+- If `delegatedSubnetId` returns a subnet resource ID, your server uses **private access (VNet Integration)**. This article doesn't apply.
+- If `delegatedSubnetId` is `null`, your server uses **public access** mode. Continue with this article.
+
+---
+
+## Enable public access
+
+When you enable public access:
+
+- The server accepts connections from IP addresses allowed by your firewall rules.
+- You can also connect through private endpoints.
+- Any previously configured firewall rules are automatically enforced.
+
+### [Portal](#tab/portal-enable-public-access)
+
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Database for PostgreSQL flexible server.
+1. In the resource menu, select **Networking**.
+1. Under **Public access**, select the **Allow public access to this resource through the internet using a public IP address** checkbox.
+1. Select **Save**.
+1. Wait for the server status to change from **Updating** to **Ready**. A notification confirms when the changes are applied.
+
+### [CLI](#tab/cli-enable-public-access)
+
+Run the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command:
+
+```azurecli-interactive
+az postgres flexible-server update \
+  --resource-group <resource_group> \
+  --name <server> \
+  --public-access Enabled
+```
+
+**Common errors:**
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `Server <server> is busy with other operations. Please try later` | Server isn't in `Ready` state | Wait for the current operation to complete, then retry |
+| Command succeeds but setting doesn't change | Server was deployed with private access | You can't enable public access on VNet-integrated servers. Create a new server with public access instead |
+
+**Verify the change:**
+
+```azurecli-interactive
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query '{publicAccess:network.publicNetworkAccess}'
+```
+
+The output should show `"publicAccess": "Enabled"`.
 
 ---
 
 ## Related content
 
-- [Networking](how-to-networking.md)
-- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md)
+After you enable public access, configure firewall rules to control which IP addresses can connect to your server:
+
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md)
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)
+
+## Related content
+
+- [Networking overview](how-to-networking.md)
+- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md)
 - [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md)
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md)
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md)
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md)
+- [Private access (VNet Integration)](concepts-networking-private.md)
+- [Public access (allowed IP addresses)](concepts-networking-public.md)
