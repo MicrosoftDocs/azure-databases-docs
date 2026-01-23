@@ -12,9 +12,14 @@ ms.topic: how-to
 
 # Enable public access
 
-> [!NOTE]
-> **Prerequisites:** This article applies only to servers that were originally deployed with public access networking mode. If your server is currently configured with Private Access (VNet Integration), you cannot directly enable public access. To switch from private to public access, you would need to restore the server to a new instance with public access enabled, or create a new server. See [Networking overview](concepts-networking.md) for more information about networking modes.
- 
+This article explains how to enable public network access on an Azure Database for PostgreSQL flexible server that was originally deployed with public access networking mode. Public access allows connections from the internet using a public IP address, which you can secure using firewall rules and private endpoints.
+
+## Prerequisites 
+
+This article applies only to servers that were originally deployed with public access networking mode. If your server is currently configured with Private Access (VNet Integration), you cannot directly enable public access. To switch from private to public access, you would need to restore the server to a new instance with public access enabled, or create a new server. See [Networking overview](concepts-networking.md) for more information about networking modes.
+
+## How to enable public access
+
 If you enable public access, connectivity to the server is also possible via private endpoints.
 
 With public access enabled, you can also configure firewall rules to allow connections originating from specific IP addresses, or from any Azure service.

@@ -3885,5 +3885,10 @@
             "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
             "redirect_document_id": true
         },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/how-to-deploy-on-azure-free-account.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server",
+            "redirect_document_id": false
+        }
     ]
 }

@@ -12,26 +12,26 @@ ai-usage: ai-assisted
 
 # Quickstart: Create an Azure Database for PostgreSQL flexible server
 
-Azure Database for PostgreSQL is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud.
+Azure Database for PostgreSQL is a managed service that you can use to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
-This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
+This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
 
 ## Prerequisites
 
-Before you begin, you need:
+Before you begin, make sure you have:
 
-- An Azure subscription. If you don't have one, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
-- Appropriate permissions to create resources in your subscription
+- An Azure subscription. If you don't have one, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
+- Appropriate permissions to create resources in your subscription.
 
 ## Understand what you're creating
 
 An Azure Database for PostgreSQL flexible server instance includes:
 
-- A configured set of [compute and storage resources](concepts-compute.md)
-- Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview)
-- A `postgres` database created by default
-- An `azure_maintenance` database for managed service processes
-- An `azure_sys` database for query store and index tuning features
+- A configured set of [compute and storage resources](concepts-compute.md).
+- Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+- A `postgres` database created by default.
+- An `azure_maintenance` database for managed service processes.
+- An `azure_sys` database for query store and index tuning features.
 
 > [!NOTE]
 > Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler.
@@ -40,11 +40,11 @@ An Azure Database for PostgreSQL flexible server instance includes:
 
 ### Navigate to the creation wizard
 
-1. Sign in to the [Azure portal](https://portal.azure.com/)
-2. Select **Create a resource** in the upper-left corner
-3. Under **Categories**, select **Databases**
-4. Find and select **Azure Database for PostgreSQL flexible server**
-5. Select **Create**
+1. Sign in to the [Azure portal](https://portal.azure.com/).
+1. Select **Create a resource** in the upper-left corner.
+1. Under **Categories**, select **Databases**.
+1. Find and select **Azure Database for PostgreSQL flexible server**.
+1. Select **Create**.
 
 ### Configure basic settings
 
@@ -62,7 +62,7 @@ An Azure Database for PostgreSQL flexible server instance includes:
 | **Server name** | mydemoserver-pgsql | Must be globally unique. Domain `.postgres.database.azure.com` is added automatically |
 | **Region** | Region closest to you | Consider compliance, data residency, pricing, and proximity to users |
 | **PostgreSQL version** | Latest available | Currently supported: **[!INCLUDE [major-versions-ascending](../includes/major-versions-ascending.md)]** |
-| **Workload type** | Development | Development uses Burstable SKU, Production uses General Purpose or Memory Optimized |
+| **Workload type** | Development | Development uses Burstable SKUs. Production uses General Purpose or Memory Optimized. |
 | **Availability zone** | No preference | Useful to colocate with your application |
 
 #### High availability
@@ -98,9 +98,9 @@ Select **Configure server** to customize:
 | Setting | Can change later | Description |
 |---------|-----------------|-------------|
 | **Storage type** | ❌ No | Premium SSD or Premium SSD v2 |
-| **Storage size** | ✅ Yes (increase only) | Cannot be shrunk after creation |
+| **Storage size** | ✅ Yes (increase only) | Can't shrink after creation |
 | **Performance tier** | ✅ Yes | Controls IOPS and throughput |
-| **Storage autogrow** | ✅ Yes | Auto-expand when approaching limits |
+| **Storage autogrow** | ✅ Yes | Autoexpand when approaching limits |
 
 #### Backup settings
 
@@ -116,19 +116,19 @@ Choose your connectivity method (can't be changed after creation):
 
 #### Public access (allowed IP addresses)
 
-Connect via public endpoint with firewall rules.
+Connect through a public endpoint by using firewall rules.
 
 **Settings:**
 
 | Setting | Description |
 |---------|-------------|
-| **Allow public access** | Enable to configure firewall rules |
+| **Allow public access** | Enable public access to configure firewall rules |
 | **Allow Azure services** | Permit connections from all Azure services |
-| **Add current client IP** | Add your IP address to allowlist |
+| **Add current client IP** | Add your IP address to allow list |
 
-#### Private access (VNet Integration)
+#### Private access (virtual network Integration)
 
-Connect via private endpoint within virtual network. For more information, see [Network with private access for Azure Database for PostgreSQL](../network/concepts-networking-private.md).
+Connect through a private endpoint within a virtual network. For more information, see [Network with private access for Azure Database for PostgreSQL](../network/concepts-networking-private.md).
 
 ### Configure security
 
@@ -148,9 +148,9 @@ Organize resources with name-value pairs:
 
 ### Review and create
 
-1. Select **Review + create**
-2. Review all configurations
-3. Select **Create** to deploy
+1. Select **Review + create**.
+1. Review all configurations.
+1. Select **Create** to deploy.
 
 Deployment typically takes 5-10 minutes. When complete, select **Go to resource** to access your server.
 
@@ -158,9 +158,9 @@ Deployment typically takes 5-10 minutes. When complete, select **Go to resource*
 
 ### Prerequisites for CLI
 
-[!INCLUDE [cli-run-local-sign-in.md](../../includes/cli-run-local-sign-in.md)]
+[!INCLUDE [cli-run-local-sign-in](../../../includes/cli-run-local-sign-in.md)]
 
-If using Azure Cloud Shell, you're already signed in.
+If you use Azure Cloud Shell, you're already signed in.
 
 ### Create server with CLI
 
@@ -223,11 +223,11 @@ az postgres flexible-server create \
 
 ### ARM template overview
 
-Azure Resource Manager (ARM) templates allow you to define infrastructure as code. Use templates for repeatable deployments.
+Azure Resource Manager (ARM) templates let you define infrastructure as code. Use templates for repeatable deployments.
 
 ### Minimal ARM template
 
-Save this as `postgres-server-template.json`:
+Save this file as `postgres-server-template.json`:
 
 ```json
 {
@@ -324,9 +324,9 @@ After creating your server, retrieve connection details:
 
 ### Using Azure portal
 
-1. Navigate to your server in the Azure portal
-2. Open the **Overview** page
-3. Copy these values:
+1. Go to your server in the Azure portal.
+1. Open the **Overview** page.
+1. Copy these values:
    - **Server name** (Endpoint): `mydemoserver-pgsql.postgres.database.azure.com`
    - **Administrator login**: `myadmin`
 
@@ -344,7 +344,7 @@ az postgres flexible-server show \
 
 ### Install psql
 
-If PostgreSQL client tools aren't installed, [download PostgreSQL](https://www.postgresql.org/download) for your platform.
+If you don't have PostgreSQL client tools, [download PostgreSQL](https://www.postgresql.org/download) for your platform.
 
 ### Connect to your server
 
@@ -409,7 +409,7 @@ Ensure your connection string includes `sslmode=require`.
 
 ## Clean up resources
 
-When you're done with the quickstart, delete the resources to avoid charges.
+When you finish the quickstart, delete the resources to avoid charges.
 
 ### Delete the entire resource group
 
@@ -428,8 +428,6 @@ az postgres flexible-server delete \
 
 ## Related content
 
-- [Connectivity architecture](../connectivity/concepts-connectivity-architecture.md)
 - [Server parameters](../server-parameters/concepts-server-parameters.md)
 - [High availability](../high-availability/concepts-high-availability.md)
-- [Backup and restore](../backup-restore/concepts-backup-restore.md)
 - [Monitor and tune](../monitor/how-to-configure-server-logs.md)
