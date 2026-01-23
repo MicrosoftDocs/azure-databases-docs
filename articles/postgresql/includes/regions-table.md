@@ -71,3 +71,9 @@ ms.topic: include
 | West US | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :x: | :white_check_mark: | :white_check_mark: |
 | West US 2 | :white_check_mark: (v3/v4) | :x: | :x: | :white_check_mark: $ | :white_check_mark: | :white_check_mark: |
 | West US 3 | :white_check_mark: (v3/v4/v5) | :white_check_mark: (v5) | :x: | :white_check_mark: ** | :white_check_mark: | :x: |
+
+> [!NOTE]
+> **Symbol legend:**
+> - `*` indicates access-restricted regions available only upon request
+> - `$` indicates new zone-redundant HA deployments are temporarily blocked
+> - `**` indicates zone-redundant HA deployment considerations for existing servers (see [special considerations](../high-availability/how-to-configure-high-availability.md#limitations-and-considerations))

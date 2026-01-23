@@ -1624,6 +1624,11 @@
       "source_path_from_root": "/articles/mysql/flexible-server/concepts-root-certificate-rotation-faq.md",
       "redirect_url": "/azure/mysql/flexible-server/security-tls-root-certificate-rotation-faq",
       "redirect_document_id": true
-    }
+    },
+        {
+          "source_path_from_root": "/articles/mysql/flexible-server/how-to-deploy-on-azure-free-account.md",
+          "redirect_url": "/azure/mysql/flexible-server/quickstart-create-server-portal",
+          "redirect_document_id": false
+        }
   ]
 }
