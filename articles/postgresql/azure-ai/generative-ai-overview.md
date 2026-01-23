@@ -6,6 +6,7 @@ ms.author: adamwolk
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-generative
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
