@@ -515,8 +515,6 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships, and permissions
-              href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
             - name: Required user permissions

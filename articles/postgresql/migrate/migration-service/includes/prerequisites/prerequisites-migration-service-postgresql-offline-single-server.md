@@ -45,9 +45,6 @@ These parameters aren't automatically migrated to the target environment and mus
 
 - Save the parameter changes and, if necessary, restart the Azure Database for PostgreSQL flexible server to apply the new configuration.
 
-> [!IMPORTANT]  
-> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server.
-
 ### Disable high availability (reliability) and read replicas in the target
 
 - Disabling [high availability (reliability)](../../../../flexible-server/concepts-high-availability.md) and [read replicas](../../../../flexible-server/concepts-read-replicas.md) in the target environment is essential. These features should be enabled only after the migration has been completed.
