@@ -6,6 +6,7 @@ ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/30/2025
 ms.service: azure-database-postgresql
+ms.subservice: networking
 ms.topic: concept-article
 ---
 

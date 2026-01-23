@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 01/13/2026
 ms.service: azure-database-postgresql
+ms.subservice: high-availability
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server instance.
 ---

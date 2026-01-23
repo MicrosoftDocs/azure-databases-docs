@@ -6,6 +6,7 @@ ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
+ms.subservice: scale-out
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale out an Azure Database for PostgreSQL elastic cluster.
 ---

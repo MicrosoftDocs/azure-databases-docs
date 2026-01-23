@@ -6,6 +6,7 @@ ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 10/22/2025
 ms.service: azure-database-postgresql
+ms.subservice: connectivity
 ms.topic: concept-article
 ---
 

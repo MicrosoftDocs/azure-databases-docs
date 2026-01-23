@@ -6,8 +6,7 @@ ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/27/2024
 ms.service: azure-database-postgresql
-ms.subservice: 
-ms.topic: concept-article
+ms.subservice: networking
 ---
 
 # Network with private access (virtual network integration) for Azure Database for PostgreSQL  

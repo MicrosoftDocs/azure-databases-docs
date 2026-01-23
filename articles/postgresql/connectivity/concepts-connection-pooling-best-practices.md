@@ -6,6 +6,7 @@ ms.author: ramyerrabotu
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
+ms.subservice: connectivity
 ms.topic: best-practice
 ---
 
