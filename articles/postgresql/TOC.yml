@@ -209,6 +209,8 @@
       href: security/security-data-encryption.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
+    - name: Extended support
+      href: configure-maintain/extended-support.md
     - name: Create a server
       items:
         - name: Servers concepts
