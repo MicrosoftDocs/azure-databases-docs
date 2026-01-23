@@ -7,9 +7,6 @@ ms.reviewer: maghan
 ms.date: 01/23/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
-ms.custom:
-  - mvc
-  - mode-ui
 ai-usage: ai-assisted
 ---
 
