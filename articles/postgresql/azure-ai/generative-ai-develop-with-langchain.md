@@ -53,7 +53,7 @@ See [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../
 
 ### Set up credentials
 
-You need to get your Azure Database for PostgreSQL [connection details](../configure-maintain/quickstart-create-server.md#get-the-connection-information) and add them as environment variables.
+You need to get your Azure Database for PostgreSQL [connection details](../configure-maintain/quickstart-create-server.md) and add them as environment variables.
 
 Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If you're using Microsoft Entra authentication, you need to supply the only host and database names. If you're using password authentication, you also need to set the username and password.
 
