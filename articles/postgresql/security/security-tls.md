@@ -128,6 +128,9 @@ If you experience problems due to the intermediate certificate even after follow
 
 Beyond the core TLS configuration and certificate management, several other factors influence the security and behavior of encrypted connections to Azure Database for PostgreSQL. Understanding these considerations helps you make informed decisions about TLS implementation in your environment.
 
+> [!IMPORTANT]
+> Azure Database for PostgreSQL doesn't support TLS client certificate authentication (mutual TLS). Don't include client certificate parameters (`sslcert`, `sslkey`) in your connection strings as they're not supported and may cause connection issues.
+
 ### Insecure and secure TLS versions
 
 Several government entities worldwide maintain guidelines for TLS regarding network security. In the United States, these organizations include the Department of Health and Human Services and the National Institute of Standards and Technology. The level of security that TLS provides is most affected by the TLS protocol version and the supported cipher suites.
