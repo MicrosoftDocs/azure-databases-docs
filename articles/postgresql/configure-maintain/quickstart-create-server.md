@@ -428,6 +428,5 @@ az postgres flexible-server delete \
 
 ## Related content
 
-- [Server parameters](../server-parameters/concepts-server-parameters.md)
-- [High availability](../high-availability/concepts-high-availability.md)
-- [Monitor and tune](../monitor/how-to-configure-server-logs.md)
+- [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md)
+- [Connect and query overview for Azure Database for PostgreSQL](../connectivity/how-to-connect-query-guide.md)

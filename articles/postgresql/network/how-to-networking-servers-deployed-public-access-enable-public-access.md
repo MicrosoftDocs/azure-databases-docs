@@ -109,7 +109,7 @@ The output should show `"publicAccess": "Enabled"`.
 
 ---
 
-## Related content
+## Next steps
 
 After you enable public access, configure firewall rules to control which IP addresses can connect to your server:
 
