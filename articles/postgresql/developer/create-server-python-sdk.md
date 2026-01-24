@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 01/09/2026
 ms.service: azure-database-postgresql
+ms.subservice: development
 ms.topic: quickstart
 ms.custom:
   - devx-track-python-sdk

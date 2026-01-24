@@ -6,6 +6,7 @@ ms.author: jaredmeade
 ms.reviewer: maghan
 ms.date: 01/24/2025
 ms.service: azure-database-postgresql
+ms.subservice: migration
 ms.topic: best-practice
 ms.collection:
   - migration

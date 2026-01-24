@@ -6,6 +6,7 @@ ms.author: andreatapia
 ms.reviewer: maghan
 ms.date: 10/17/2025
 ms.service: azure-database-postgresql
+ms.subservice: backup-restore
 ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
