@@ -6,6 +6,7 @@ ms.author: guybo
 ms.reviewer: maghan
 ms.date: 01/23/2026
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: quickstart
 ai-usage: ai-assisted
 ---

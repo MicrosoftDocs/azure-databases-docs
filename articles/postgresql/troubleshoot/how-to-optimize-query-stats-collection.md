@@ -5,6 +5,7 @@ author: mulander
 ms.author: adamwolk
 ms.date: 06/21/2024
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: how-to
 ---
 

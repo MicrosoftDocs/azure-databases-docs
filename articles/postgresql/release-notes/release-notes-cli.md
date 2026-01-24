@@ -6,6 +6,7 @@ ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 5/1/2024
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: overview
 ms.custom:
   - references_regions
