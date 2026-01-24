@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 6/10/2024
 ms.service: azure-database-postgresql
+ms.subservice: replication
 ms.topic: concept-article
 ---
 
