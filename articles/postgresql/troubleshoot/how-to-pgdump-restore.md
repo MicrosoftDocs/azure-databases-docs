@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 08/22/2025
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: best-practice
 ms.custom:
   - template-how-to

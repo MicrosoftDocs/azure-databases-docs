@@ -6,6 +6,7 @@ ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL and upgrade logs.
 ---
