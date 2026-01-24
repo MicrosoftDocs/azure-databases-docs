@@ -6,6 +6,7 @@ ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: tutorial
 #Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 ---
