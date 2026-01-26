@@ -10,8 +10,6 @@ ms.date: 03/10/2025
 ---
 # Built-in stored procedures in Azure Database for MySQL
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL provides several built-in stored procedures that simplify and automate advanced database management tasks. These stored procedures help you efficiently configure features such as data-in replication, Undo log cleanup, and plugin management.  
 
 This article introduces the built-in stored procedures available in Azure Database for MySQL, their functionalities, and how to use them.  
