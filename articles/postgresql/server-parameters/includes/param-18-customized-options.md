@@ -2,8 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 01/26/2026
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
@@ -48,8 +49,8 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Define multiple masking policies (NOT IMPLEMENTED YET). |
 | Data type | string |
-| Default value | `anon` |
-| Allowed values | `anon` |
+| Default value | |
+| Allowed values | |
 | Parameter type | read-only |
 | Documentation | [anon.masking_policies](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
 
@@ -388,7 +389,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Fraction of queries to process. |
 | Data type | numeric |
-| Default value | `1.0` |
+| Default value | `1` |
 | Allowed values | `0.0-1.0` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.sample_rate](https://www.postgresql.org/docs/18/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-SAMPLE-RATE) |
@@ -1867,7 +1868,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Selects types of wait events are tracked by this extension. Need to reload the config to make change take effect. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `all` |
 | Allowed values | `all,none` |
 | Parameter type | dynamic |
 | Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
@@ -1969,7 +1970,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Role to be used by BGW. Must have execute permissions on run_maintenance(). |
 | Data type | string |
-| Default value | |
+| Default value | `postgres` |
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
@@ -2105,7 +2106,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Selects which statements are tracked by pg_qs. Need to reload the config to make change take effect. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `top` |
 | Allowed values | `top,all,none` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |

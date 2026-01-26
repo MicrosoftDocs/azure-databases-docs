@@ -2,8 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 01/26/2026
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
@@ -48,8 +49,8 @@ ms.custom: automatically generated
 | Category | Resource Usage / Asynchronous Behavior |
 | Description | Selects the file copy method. |
 | Data type | enumeration |
-| Default value | `COPY` |
-| Allowed values | `COPY` |
+| Default value | `copy` |
+| Allowed values | `copy` |
 | Parameter type | read-only |
 | Documentation | [file_copy_method](https://www.postgresql.org/docs/18/runtime-config-resource.html#GUC_FILE_COPY_METHOD) |
 
