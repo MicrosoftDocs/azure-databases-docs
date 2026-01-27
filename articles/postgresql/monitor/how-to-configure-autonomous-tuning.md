@@ -4,7 +4,7 @@ description: This article describes how to configure the autonomous tuning featu
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/18/2025
+ms.date: 01/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -19,13 +19,11 @@ ms.topic: how-to
 
 Autonomous tuning can be enabled, disabled, and configured through a [set of parameters](concepts-autonomous-tuning.md#configuring-autonomous-tuning) that control its behavior, such as how often a tuning session should run.
 
-Autonomous tuning depends on [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, autonomous tuning isn't recommended for servers using compute from the Burstable tier.
+Autonomous tuning depends on the data persisted locally to the `azure_sys` database by [query store](concepts-query-store.md). We don't recommend enabling query store on the Burstable pricing tier, due to the performance implications it might have. For the same reason, autonomous tuning isn't recommended for servers using compute from the Burstable tier.
 
 Autonomous tuning is an opt-in feature that isn't enabled by default on a server. It can be enabled or disabled globally for all databases on a given server and can't be turned on or off per database.
 
 ### Steps to enable autonomous tuning
-
-[!INCLUDE [autonomous-tuning](includes/autonomous-tuning.md)]
 
 ### [Portal](#tab/portal-enable)
 
@@ -37,7 +35,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png":::
 
-3. If either `pg_qs.query_capture_mode` is set to `NONE` or `index_tuning.mode` is set to `OFF`, the **Autonomous tuning** page gives you the option to enable autonomous tuning. Select on either of the two **Enable tuning** buttons, to enable autonomous tuning feature and its required query store dependency, if query store is disabled.
+3. If either `pg_qs.query_capture_mode` is set to `none` or `index_tuning.mode` is set to `off`, the **Autonomous tuning** page gives you the option to enable autonomous tuning. Select on either of the two **Enable tuning** buttons, to enable autonomous tuning feature and its required query store dependency, if query store is disabled.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png" alt-text="Screenshot that shows how to enable autonomous tuning through the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png":::
 
@@ -45,10 +43,10 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
-5. After enabling autonomous tuning, allow 12 hours for the autonomous tuning engine to analyze the workload collected by query store during that time, and eventually produce recommendations.
+5. After enabling autonomous tuning, allow up to 12 hours for the autonomous tuning engine to analyze the workload collected by query store during that time, and eventually produce recommendations.
 
 > [!IMPORTANT]  
-> When autonomous tuning is enabled through the **Enable tuning** button, if `pg_qs.query_capture_mode` is set to `NONE`, it's changed to `ALL`. If it was already set to either `TOP` or `ALL`, it's left in its current state.
+> When autonomous tuning is enabled through the **Enable tuning** button, if `pg_qs.query_capture_mode` is set to `none`, it's changed to `all`. If it was already set to either `top` or `all`, it's left in its current state.
 
 ### [CLI](#tab/cli-enable)
 
@@ -92,10 +90,10 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
-5. Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
+5. Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, do so by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
 
 ### [CLI](#tab/CLI-disable)
 
@@ -117,10 +115,10 @@ WARNING: Disabling autonomous tuning for the server.
 WARNING: Autonomous tuning is disabled for the server.
 ```
 
-Assess whether you want to continue using [Monitor performance with query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `NONE`.
+Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `NONE`, but left as it is configured.
+> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
 
 ---
 

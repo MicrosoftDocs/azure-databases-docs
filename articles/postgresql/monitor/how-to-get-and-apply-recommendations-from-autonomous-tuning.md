@@ -4,7 +4,7 @@ description: This article describes how to query, interpret, and apply the recom
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/18/2025
+ms.date: 01/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
 ms.custom:
@@ -52,11 +52,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
 
-3. If there are recommendations available, select on the **View recommendations** summarization to access to the full list:
+3. If there are recommendations available of any of the five existing types, select on the **View recommendations** summarization to access the full list of that specific type you're interested in:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
+     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
-4. The list shows all available recommendations with some details for each of them. By default, the list is sorted by **Last recommended** in descending order, showing the most recent recommendations at the top. However, you can sort by any other column, and can use the filtering box to reduce the list of items shown. Filtered items are those whose database, schema, or table names contain the text provided:
+4. The list shows all available recommendations of that type, with some details for each of them. By default, the list is sorted by **Last recommended** in descending order, showing the most recent recommendations at the top. However, you can sort by any other column, and can use the filtering box to reduce the list of items shown. Filtered items are those whose database, schema, or table names contain the text provided:
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png" alt-text="Screenshot that shows the aspect of 'Recommendations' page with several recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
@@ -261,6 +261,130 @@ The command returns all information about the REINDEX recommendations produced b
 ]
 ```
 
+To list all ANALYZE recommendations, use this command:
+
+```azurecli-interactive
+az postgres flexible-server autonomous-tuning list-table-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --recommendation-type analyze
+```
+
+The command returns all information about the ANALYZE recommendations produced by autonomous tuning, showing something similar to the following output:
+
+```output
+[
+  {
+    "analyzedWorkload": {
+      "endTime": "2025-12-18T19:02:47.522193+00:00",
+      "queryCount": 0,
+      "startTime": "2025-12-18T19:02:47.522193+00:00"
+    },
+    "details": {
+      "databaseName": "<database>",
+      "includedColumns": "",
+      "indexColumns": "<column>",
+      "indexName": "<index>",
+      "indexType": "BTREE",
+      "schema": "<schema>",
+      "table": "<table>"
+    },
+    "estimatedImpact": [
+      {
+        "absoluteValue": 35.0,
+        "dimensionName": "Benefit",
+        "queryId": null,
+        "unit": "Percentage"
+      },
+      {
+        "absoluteValue": 31.28125,
+        "dimensionName": "IndexSize",
+        "queryId": null,
+        "unit": "MB"
+      }
+    ],
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "implementationDetails": {
+      "method": "SQL",
+      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+    },
+    "improvedQueryIds": null,
+    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "kind": "",
+    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "name": "DropIndex_<database>_<sechema>_<index>",
+    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
+    "recommendationType": "DropIndex",
+    "resourceGroup": "<resource_group>",
+    "systemData": null,
+    "timesRecommended": 1,
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+  }
+]
+```
+
+To list all VACUUM recommendations, use this command:
+
+```azurecli-interactive
+az postgres flexible-server autonomous-tuning list-table-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --recommendation-type vacuum
+```
+
+The command returns all information about the VACUUM recommendations produced by autonomous tuning, showing something similar to the following output:
+
+```output
+[
+  {
+    "analyzedWorkload": {
+      "endTime": "2025-12-18T19:02:47.522193+00:00",
+      "queryCount": 0,
+      "startTime": "2025-12-18T19:02:47.522193+00:00"
+    },
+    "details": {
+      "databaseName": "<database>",
+      "includedColumns": "",
+      "indexColumns": "<column>",
+      "indexName": "<index>",
+      "indexType": "BTREE",
+      "schema": "<schema>",
+      "table": "<table>"
+    },
+    "estimatedImpact": [
+      {
+        "absoluteValue": 35.0,
+        "dimensionName": "Benefit",
+        "queryId": null,
+        "unit": "Percentage"
+      },
+      {
+        "absoluteValue": 31.28125,
+        "dimensionName": "IndexSize",
+        "queryId": null,
+        "unit": "MB"
+      }
+    ],
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "implementationDetails": {
+      "method": "SQL",
+      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+    },
+    "improvedQueryIds": null,
+    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "kind": "",
+    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "name": "DropIndex_<database>_<sechema>_<index>",
+    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
+    "recommendationType": "DropIndex",
+    "resourceGroup": "<resource_group>",
+    "systemData": null,
+    "timesRecommended": 1,
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+  }
+]
+```
+
 ### [azure_sys](#tab/azure-sys)
 
 Using any PostgreSQL client tool of your preference:
@@ -273,7 +397,7 @@ Using any PostgreSQL client tool of your preference:
 
 #### Views
 
-Views in the `azure_sys` database provide a convenient way to access and retrieve recommendations generated by autonomous tuning. Specifically, the `createindexrecommendations` and `dropindexrecommendations` views contain detailed information about CREATE INDEX and DROP INDEX recommendations, respectively. These views expose data such as the session ID, database name, advisor type, start and stop times of the tuning session, recommendation ID, recommendation type, reason for the recommendation, and other relevant details. Users can query these views, to easily access and analyze the index recommendations produced by index tuning.
+Views in the `azure_sys` database provide a convenient way to access and retrieve recommendations generated by autonomous tuning. Specifically, the `intelligentperformance.recommendations` view contains detailed information about CREATE INDEX, DROP INDEX, REINDEX, ANALYZE, and VACUUM recommendations. These view exposes data such as the session identifier, database name, session type, start and stop times of the tuning session, recommendation identifier, recommendation type, reason why the recommendation was produced, and other relevant details. Users can query this view, to easily access and analyze the recommendations produced by autonomous tuning.
 
 ##### intelligentperformance.sessions
 
@@ -283,7 +407,7 @@ The `sessions` view exposes all the details for all index tuning sessions.
 | --- | --- | --- |
 | session_id | uuid | Universally unique identifier assigned to every new tuning session that is initiated. |
 | database_name | varchar(64) | Name of the database in whose context the index tuning session was executed. |
-| session_type | intelligentperformance.recommendation_type | Indicates the types of recommendations this index tuning session could produce. Possible values are: `CreateIndex`, `DropIndex`. Sessions of `CreateIndex` type can produce recommendations of `CreateIndex` type. Sessions of `DropIndex` type can produce recommendations of `DropIndex` or `ReIndex` types. |
+| session_type | intelligentperformance.recommendation_type | Indicates the types of recommendations this index tuning session could produce. Possible values are: `CreateIndex`, `DropIndex`, `Table`. Sessions of `CreateIndex` type can produce recommendations of `CreateIndex` type. Sessions of `DropIndex` type can produce recommendations of `DropIndex` or `ReIndex` types. Sessions of `Table` type can produce recommendations of `Analyze` or `Vacuum` types. |
 | run_type | intelligentperformance.recommendation_run_type | Indicates the way in which this session was initiated. Possible values are: `Scheduled`. Sessions automatically executed as per the value of `index_tuning.analysis_interval`, are assigned a run type of `Scheduled`. |
 | state | intelligentperformance.recommendation_state | Indicates the current state of the session. Possible values are: `Error`, `Success`, `InProgress`. Sessions whose execution failed are set as `Error`. Sessions that completed their execution correctly, whether or not they generated recommendations, are set as `Success`. Sessions which are still executing are set as `InProgress`. |
 | start_time | timestamp without timezone | Timestamp at which the tuning session that produced this recommendation was started. |
@@ -297,7 +421,9 @@ The `recommendations` view exposes all the details for all recommendations gener
 | column name | data type | Description |
 | --- | --- | --- |
 | recommendation_id | integer | Number that uniquely identifies a recommendation in the whole server. |
+| current_state | XXXXX | XXXXX. |
 | last_known_session_id | uuid | Every index tuning session is assigned a Globally Unique Identifier. The value in this column represents that of the session which most recently produced this recommendation. |
+| last_known_session_type | XXXXX | XXXXX. |
 | database_name | varchar(64) | Name of the database in whose context was produced the recommendation. |
 | recommendation_type | intelligentperformance.recommendation_type | Indicates the type of the recommendation produced. Possible values are: `CreateIndex`, `DropIndex`, `ReIndex`, `AnalyzeTable`, `VacuumTable`. |
 | initial_recommended_time | timestamp without timezone | Timestamp at which the tuning session that produced this recommendation was started. |
@@ -306,7 +432,7 @@ The `recommendations` view exposes all the details for all recommendations gener
 | reason | text | Reason justifying why this recommendation was produced. |
 | recommendation_context | json | Contains the list of query identifiers for the queries affected by the recommendation, the type of index being recommended, the name of the schema and the name of the table on which the index is being recommended, the index columns, the index name, and the estimated size in bytes of the recommended index. |
 
-###### Reasons for create index recommendations
+###### Reasons for CREATE INDEX recommendations
 
 When autonomous tuning recommends the creation of an index, it does add at least one of the following reasons:
 
@@ -318,7 +444,7 @@ When autonomous tuning recommends the creation of an index, it does add at least
 | `Column <column> appear in Group By clause(s) in query <queryId>` |
 | `Column <column> appear in Order By clause(s) in query <queryId>` |
 
-###### Reasons for reindex recommendations
+###### Reasons for REINDEX recommendations
 
 When autonomous tuning identifies any indexes which are marked as invalid, it proposes to reindex them with the following reason:
 
@@ -326,7 +452,7 @@ When autonomous tuning identifies any indexes which are marked as invalid, it pr
 
  To learn more about why and when indexes are marked as invalid, refer to the [REINDEX](https://www.postgresql.org/docs/current/sql-reindex.html#DESCRIPTION) in PostgreSQL official documentation.
 
-###### Reasons for drop index recommendations
+###### Reasons for DROP INDEX recommendations
 
 When autonomous tuning detects an index which is unused for, at least, the number of days set in `index_tuning.unused_min_period`, it proposes to drop it with the following reason:
 
@@ -357,6 +483,30 @@ Followed by another text which explains the reason why each of the duplicates ha
 If the index not only is removable due to duplication, but also is unused for, at least, the number of days set in `index_tuning.unused_min_period`, the following text is appended to the reason:
 
 `Also, the index is unused in the past <days_unused> days.`
+
+###### Reasons for ANALYZE recommendations
+
+When autonomous tuning detects a table referenced in one of the queries studied, and determines that the table has never been analyzed, it proposes to run ANALYZE on the table with the following reason:
+
+`Table "<schema>"."<table>" has not been analyzed but is being used by queries: "<queryId-1>, ..., <queryId-n>"`
+
+When autonomous tuning detects a table referenced in one of the queries studied, and determines that the table was ever analyzed but it currently has no statistics (this is the case when server crashes before statistics are persisted), it proposes to run ANALYZE on the table with the following reason:
+
+`Table "<schema>"."<table>" lacks statistics, has more than <liveRows> rows, and is used by queries: "<queryId-1>, ..., <queryId-n>"`
+
+###### Reasons for VACUUM recommendations
+
+When autonomous tuning detects a table referenced in one of the queries studied, and determines that the table is significantly bloated, and `autovacuum_enabled` isn't set to `off` at server level, it proposes to run VACUUM on the table with the following base reason:
+
+`Table "<schema>"."<table>" should be vacuumed. It has an estimated size of <estimatedSize>GB and a bloat percentage of <bloatPercentage>% (bloat size represents <bloatSize>GB).`
+
+If it's detected that autovacuum is enabled at server and table level, the following text is appended to the base reason:
+
+`Autovacuum is enabled at both the server and table level, but appears to be falling behind.`
+
+If it's detected that autovacuum is disabled at table level, the following text is appended to the base reason:
+
+`Autovacuum is disabled at the table level.`
 
 ---
 
@@ -405,7 +555,7 @@ az postgres flexible-server autonomous-tuning list-index-recommendations \
   --query [].implementationDetails.script
 ```
 
-The command returns all the statements that must be run to implement all produced recommendations, showing something similar to the following output:
+The command returns all the statements that must be run to implement all produced index recommendations, showing something similar to the following output:
 
 ```output
 [
@@ -413,6 +563,27 @@ The command returns all the statements that must be run to implement all produce
   "drop index concurrently \"<schema>\".\"<index>\";"
 ]
 ```
+
+You can list table recommendations produced by autonomous tuning in an existing server via the [az postgres flexible-server autonomous-tuning list-table-recommendations](/cli/azure/postgres/flexible-server/autonomous-tuning#az-postgres-flexible-server-autonomous-tuning-list-table-recommendations) command.
+
+To list all table recommendations, use this command:
+
+```azurecli-interactive
+az postgres flexible-server autonomous-tuning list-table-recommendations \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --query [].implementationDetails.script
+```
+
+The command returns all the statements that must be run to implement all produced table recommendations, showing something similar to the following output:
+
+```output
+[
+  "analyze <schema>.<table>;",
+  "vacuum \"<schema>\".\"<index>\";"
+]
+```
+
 
 ---
 
