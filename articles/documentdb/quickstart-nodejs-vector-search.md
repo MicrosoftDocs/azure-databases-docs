@@ -7,7 +7,7 @@ ms.author: diberry
 ms.reviewer: khelanmodi
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 01/22/2026
+ms.date: 01/26/2026
 ms.custom:
   - devx-track-ts
   - devx-track-ts-ai
@@ -21,11 +21,11 @@ Use vector search in Azure DocumentDB with the Node.js client library. Store and
 
 This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-3-small` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/mongo-vcore-vector-search-typescript) on GitHub.
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/mongo-vcore-vector-search-typescript) on GitHub. 
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
+[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search-model.md)]
 
 - [Node.js LTS](https://nodejs.org/download/)
 
@@ -35,6 +35,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     npm install -g typescript
     ```
 
+
 ## Create a Node.js project
 
 1. Create a new directory for your project and open it in Visual Studio Code:
@@ -42,6 +43,12 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     ```bash
     mkdir vector-search-quickstart
     code vector-search-quickstart
+    ```
+
+1. Create a new data directory for the hotels data file:
+
+    ```bash
+    mkdir data
     ```
 
 1. In the terminal, initialize a Node.js project:
@@ -75,7 +82,8 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     MONGO_CLUSTER_NAME=
 
     # Data file
-    DATA_FILE_WITH_VECTORS=Hotels_Vector.json
+    DATA_FILE_WITH_VECTORS=../data/Hotels_Vector.json
+    FIELD_TO_EMBED=Description
     EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=100
@@ -89,7 +97,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
     :::code language="json" source="~/documentdb-samples/ai/vector-search-typescript/tsconfig.json" :::
 
-1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your project root.
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
 
 ## Create npm scripts
 
@@ -257,16 +265,18 @@ The app logging and output show:
 ### [DiskANN](#tab/tab-diskann)
 
 ```output
-Created collection: hotels_diskann
-Reading JSON file from C:\Users\<username>\repos\samples\documentdb-samples\data\Hotels_Vector.json
-Processing in batches of 100...
+Using Azure OpenAI Embedding API Version: 2023-05-15
+Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
+Created collection: hotels_ivf
+Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
+Processing in batches of 50...
 Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_diskann
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
+Created vector index: vectorIndex_ivf
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 Closing database connection...
 Database connection closed
 ```
@@ -274,16 +284,18 @@ Database connection closed
 #### [IVF](#tab/tab-ivf)
 
 ```output
-Created collection: hotels_ivf
-Reading JSON file from C:\Users\<username>\repos\samples\documentdb-samples\data\Hotels_Vector.json
-Processing in batches of 100...
+Using Azure OpenAI Embedding API Version: 2023-05-15
+Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
+Created collection: hotels_hnsw
+Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
+Processing in batches of 50...
 Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_ivf
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
+Created vector index: vectorIndex_hnsw
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 Closing database connection...
 Database connection closed
 ```
@@ -291,16 +303,18 @@ Database connection closed
 #### [HNSW](#tab/tab-hnsw)
 
 ```output
-Created collection: hotels_hnsw
-Reading JSON file from C:\Users\<username>\repos\samples\documentdb-samples\data\Hotels_Vector.json
-Processing in batches of 100...
+Using Azure OpenAI Embedding API Version: 2023-05-15
+Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
+Created collection: hotels_diskann
+Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
+Processing in batches of 50...
 Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_hnsw
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
+Created vector index: vectorIndex_diskann
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 Closing database connection...
 Database connection closed
 ```
