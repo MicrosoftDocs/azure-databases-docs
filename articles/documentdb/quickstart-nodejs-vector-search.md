@@ -35,6 +35,16 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     npm install -g typescript
     ```
 
+## Create data file with vectors
+
+1. Create a new data directory for the hotels data file:
+
+    ```bash
+    mkdir data
+    ```
+
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
+
 
 ## Create a Node.js project
 
@@ -43,12 +53,6 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     ```bash
     mkdir vector-search-quickstart
     code vector-search-quickstart
-    ```
-
-1. Create a new data directory for the hotels data file:
-
-    ```bash
-    mkdir data
     ```
 
 1. In the terminal, initialize a Node.js project:
@@ -97,7 +101,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
     :::code language="json" source="~/documentdb-samples/ai/vector-search-typescript/tsconfig.json" :::
 
-1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
+
 
 ## Create npm scripts
 
