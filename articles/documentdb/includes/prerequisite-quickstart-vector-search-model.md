@@ -9,11 +9,14 @@ ms.date: 10/13/2025
   
   - [Firewall configured to allow access to your client IP address](../how-to-configure-firewall.md#grant-access-from-your-ip-address)
 
-- [Azure OpenAI resource](/azure/ai-foundry/openai)
+- [Azure OpenAI resource](/azure/ai-foundry/openai/how-to/create-resource?view=foundry-classic&pivots=cli#create-a-resource)
+
+    - Custom domain configured
 
     - [Role Based Access Control (RBAC) enabled](/azure/developer/ai/keyless-connections)
   
     - `text-embedding-3-small` model deployed
+
     
 - [Visual Studio Code](https://code.visualstudio.com/download)
 
