@@ -264,60 +264,15 @@ The app logging and output show:
 
 ### [DiskANN](#tab/tab-diskann)
 
-```output
-Using Azure OpenAI Embedding API Version: 2023-05-15
-Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
-Created collection: hotels_ivf
-Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
-Processing in batches of 50...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_ivf
-1. HotelName: Royal Cottage Resort, Score: 0.4991
-2. HotelName: Country Comfort Inn, Score: 0.4785
-3. HotelName: Nordick's Valley Motel, Score: 0.4635
-4. HotelName: Economy Universe Motel, Score: 0.4461
-5. HotelName: Roach Motel, Score: 0.4388
-Closing database connection...
-Database connection closed
-```
+:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/diskann.txt" :::
 
 #### [IVF](#tab/tab-ivf)
 
-```output
-Using Azure OpenAI Embedding API Version: 2023-05-15
-Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
-Created collection: hotels_hnsw
-Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
-Processing in batches of 50...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_hnsw
-1. HotelName: Royal Cottage Resort, Score: 0.4991
-2. HotelName: Country Comfort Inn, Score: 0.4785
-3. HotelName: Nordick's Valley Motel, Score: 0.4635
-4. HotelName: Economy Universe Motel, Score: 0.4461
-5. HotelName: Roach Motel, Score: 0.4388
-Closing database connection...
-Database connection closed
-```
+:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
-```output
-Using Azure OpenAI Embedding API Version: 2023-05-15
-Using Azure OpenAI Embedding Deployment/Model: text-embedding-3-small-2
-Created collection: hotels_diskann
-Reading JSON file from \documentdb-samples\ai\data\Hotels_Vector.json
-Processing in batches of 50...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_diskann
-1. HotelName: Royal Cottage Resort, Score: 0.4991
-2. HotelName: Country Comfort Inn, Score: 0.4785
-3. HotelName: Nordick's Valley Motel, Score: 0.4635
-4. HotelName: Economy Universe Motel, Score: 0.4461
-5. HotelName: Roach Motel, Score: 0.4388
-Closing database connection...
-Database connection closed
-```
+:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/hnsw.txt" :::
 
 ----
 
