@@ -5,9 +5,9 @@ ms.date: 10/13/2025
 
 [!INCLUDE[Prerequisite - Existing cluster](prerequisite-existing-cluster.md)]
 
-    - [Role Based Access Control (RBAC) enabled](../how-to-connect-role-based-access-control.md#enable-microsoft-entra-id-authentication)
-    
-    - [Firewall configured to allow access to your client IP address](../how-to-configure-firewall.md#grant-access-from-your-ip-address)
+  - [Role Based Access Control (RBAC) enabled](../how-to-connect-role-based-access-control.md#enable-microsoft-entra-id-authentication)
+  
+  - [Firewall configured to allow access to your client IP address](../how-to-configure-firewall.md#grant-access-from-your-ip-address)
 
 - [Azure OpenAI resource](/azure/ai-foundry/openai)
 
