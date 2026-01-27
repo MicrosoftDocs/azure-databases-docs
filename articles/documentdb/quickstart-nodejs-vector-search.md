@@ -272,7 +272,7 @@ The app logging and output show:
 
 #### [IVF](#tab/tab-ivf)
 
-:::code language="" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
+:::code language="text" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
