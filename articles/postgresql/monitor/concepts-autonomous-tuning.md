@@ -41,7 +41,7 @@ The algorithm iterates over the target databases, searching for possible indexes
 
 ### CREATE INDEX recommendations
 
-For each database identified as a candidate to analyze for producing index recommendations, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
+For each database identified as a candidate to analyze for producing recommendations, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
 
 The resulting set of queries is ranked based on their aggregated total execution time, and the top `index_tuning.max_queries_per_database` is analyzed for possible index recommendations.
 
@@ -92,7 +92,7 @@ QueryCostImprovement consists of an array of values, where each element represen
 
 ### DROP INDEX and REINDEX recommendations
 
-For each database for which autonomous tuning functionality is determined, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
+For each database identified as a candidate to analyze for producing recommendations, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
 - Drop if it's considered duplicate of others.
 - Drop if it isn't used for a configurable amount of time.
 - Reindex indexes which are marked as invalid.
@@ -131,6 +131,21 @@ The impact of a drop index recommendation is measured on two dimensions: Benefit
 The benefit is a single value that can be ignored for now.
 
 IndexSize is a single value that represents the estimated size of the index, considering the current cardinality of the table and the size of the columns referenced by the recommended index.
+
+### Table recommendations
+
+For each database identified as a candidate to analyze, it initiates a session that aims to produce table level recommendations. Those recommendations invite you to run ANALYZE or VACUUM on the tables that were accessed by the queries inspected, for which the tuning engine considers running those commands could improve the performance of your workload.
+
+### ANALYZE table recommendations
+
+Recommendations for analyzing a table identify those tables which:
+- Were referenced in a query, and have some column of that table used in one of its predicates (WHERE, JOIN, ORDER BY, GROUP BY), and also meet either of the two following conditions:
+  - Have never been analyzed.
+  - Were analyzed at some point, but are now lacking statistics (typically because the server crashed before the statistics were persisted to disk).
+
+### VACUUM table recommendations
+
+Recommendations for vacuuming a table identify those tables which are significantly bloated. What's considered significant varies with the estimated size of the table. Also, these recommendations are produced when `autovacuum_enabled` isn't set to `off` at server level when the workload is analyzed.
 
 ## Configuring autonomous tuning
 
@@ -201,7 +216,7 @@ For the analysis of parameterized queries, autonomous tuning requires that [pg_q
 
 ### Read-only mode and read replicas
 
-Because autonomous tuning relies on [query store](concepts-query-store.md), which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances which are in read-only mode.
+Because autonomous tuning relies on the data that [query store](concepts-query-store.md) persists locally to the `azure_sys` database, which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances which are in read-only mode.
 
 Any recommendations seen on a read replica were produced on the primary replica after analyzing exclusively the workload that executed on the primary replica.
 
