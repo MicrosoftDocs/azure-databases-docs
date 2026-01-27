@@ -268,15 +268,15 @@ The app logging and output show:
 
 ### [DiskANN](#tab/tab-diskann)
 
-:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/diskann.txt" :::
+:::code language="" source="~/documentdb-samples/ai/vector-search-typescript/output/diskann.txt" :::
 
 #### [IVF](#tab/tab-ivf)
 
-:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
+:::code language="" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
-:::code language="javascript" source="~/documentdb-samples/ai/vector-search-typescript/output/hnsw.txt" :::
+:::code language="" source="~/documentdb-samples/ai/vector-search-typescript/output/hnsw.txt" :::
 
 ----
 
