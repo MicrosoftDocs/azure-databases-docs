@@ -28,8 +28,6 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 > [!NOTE]
 > Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, autonomous tuning must be enabled.
 
-[!INCLUDE [autonomous-tuning](includes/autonomous-tuning.md)]
-
 ## Steps to list autonomous tuning recommendations
 
 ### [Portal](#tab/portal-list-recommendations)
