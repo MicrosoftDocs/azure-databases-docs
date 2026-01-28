@@ -1,11 +1,11 @@
 ---
-title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL online via the Azure CLI"
+title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL Online via the Azure CLI"
 titleSuffix: Azure Database Migration Service
 description: Learn to perform an online migration from PostgreSQL on-premises to Azure Database for PostgreSQL by using Azure Database Migration Service via the CLI.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
@@ -21,6 +21,7 @@ ms.custom:
 You can use Azure Database Migration Service (DMS) to migrate the databases from an on-premises PostgreSQL instance to [Azure Database for PostgreSQL](../postgresql/index.yml) with minimal downtime. In other words, migration can be achieved with minimal downtime to the application. In this tutorial, you migrate the `DVD Rental` sample database from an on-premises instance of PostgreSQL 9.6 to Azure Database for PostgreSQL by using the online migration activity in Azure Database Migration Service.
 
 In this tutorial, you learn how to:
+
 > [!div class="checklist"]
 > - Migrate the sample schema using pg_dump utility.
 > - Create an instance of the Azure Database Migration Service.
@@ -78,24 +79,22 @@ To complete this tutorial, you need to:
 - Enable logical replication on the source server, by editing the `postgresql.config` file and setting the following parameters:
 
   - `wal_level` = `logical`
-
-  - `max_replication_slots` = [number of slots]. Recommended setting is `5`.
-
-  - `max_wal_senders` = [number of concurrent tasks]. The `max_wal_senders` parameter sets the number of concurrent tasks that can run. Recommended setting is `10`.
+  - `max_replication_slots` = [number of slots]. Recommended setting is `5` slots.
+  - `max_wal_senders` = [number of concurrent tasks]. The `max_wal_senders` parameter sets the number of concurrent tasks that can run. Recommended setting is `10` tasks.
 
 ## Migrate the sample schema
 
 To complete all the database objects like table schemas, indexes, and stored procedures, we need to extract schema from the source database and apply to the database.
 
-1. Use pg_dump -s command to create a schema dump file for a database.
+1. Use `pg_dump -s` command to create a schema dump file for a database.
 
-   ```bash
+   ```console
    pg_dump -O -h hostname -U db_username -d db_name -s > your_schema.sql
    ```
 
    For example, to dump a schema file dvdrental database:
 
-   ```bash
+   ```console
    pg_dump -O -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
    ```
 
@@ -105,18 +104,18 @@ To complete all the database objects like table schemas, indexes, and stored pro
 
 1. Import the schema into the target database you created by restoring the schema dump file.
 
-   ```bash
+   ```console
    psql -h hostname -U db_username -d db_name < your_schema.sql
    ```
 
    For example:
 
-   ```bash
+   ```console
    psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
    ```
 
    > [!NOTE]  
-   > The migration service internally handles the enable/disable of foreign keys and triggers to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
+   > The migration service internally handles enabling and disabling of foreign keys and triggers, to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
 
 ## Provision an instance of DMS using the Azure CLI
 
@@ -151,7 +150,7 @@ To complete all the database objects like table schemas, indexes, and stored pro
        ```
 
      > [!IMPORTANT]  
-     > `dms-preview` extension might still be needed for other migration paths supported by Azure DMS. Please check the documentation of specific migration path to determine if the extension is needed. This documentation covers the requirement of extension, specific to PostgreSQL to Azure Database for PostgreSQL online.
+     > `dms-preview` extension might still be needed for other migration paths supported by Azure DMS. Check the documentation of specific migration path to determine if the extension is needed. This documentation covers the requirement of extension, specific to PostgreSQL to Azure Database for PostgreSQL online.
 
    - At any time, view all commands supported in DMS by running:
 
@@ -314,7 +313,7 @@ To complete all the database objects like table schemas, indexes, and stored pro
      - Create the database options JSON file, with one entry for each database with the source and target database names, and the list of selected tables to be migrated. You can use the output of the previous SQL query to populate the `selectedTables` array.
 
        > [!NOTE]  
-       > If the selected tables list is empty, then the service will include all the tables for migration which have matching schema and table names.
+       > If the selected tables list is empty, then the service includes all the tables for migration that have matching schema and table names.
 
        ```json
        [

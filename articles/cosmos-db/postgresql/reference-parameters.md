@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
 ms.date: 12/17/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL server parameters
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 There are various server parameters that affect the behavior of Azure Cosmos DB for PostgreSQL,
 both from standard PostgreSQL, and specific to Azure Cosmos DB for PostgreSQL.
@@ -667,14 +669,14 @@ The following [managed PgBouncer](./concepts-connection-pool.md) parameters can 
 * [TimeZone](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-TIMEZONE) - Sets the time zone for displaying and interpreting time stamps
 * [application_name](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-APPLICATION-NAME) - Sets the application name to be reported in statistics and logs
 * [array_nulls](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-ARRAY-NULLS) - Enables input of NULL elements in arrays
-* [autovacuum](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM) - Starts the autovacuum subprocess
-* [autovacuum_analyze_scale_factor](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-ANALYZE-SCALE-FACTOR) - Number of tuple inserts, updates, or deletes prior to analyze as a fraction of reltuples
-* [autovacuum_analyze_threshold](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-ANALYZE-THRESHOLD) - Minimum number of tuple inserts, updates, or deletes prior to analyze
-* [autovacuum_naptime](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-NAPTIME) - Time to sleep between autovacuum runs
-* [autovacuum_vacuum_cost_delay](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-VACUUM-COST-DELAY) - Vacuum cost delay in milliseconds, for autovacuum
-* [autovacuum_vacuum_cost_limit](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-VACUUM-COST-LIMIT) - Vacuum cost amount available before napping, for autovacuum
-* [autovacuum_vacuum_scale_factor](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-VACUUM-SCALE-FACTOR) - Number of tuple updates or deletes prior to vacuum as a fraction of reltuples
-* [autovacuum_vacuum_threshold](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#GUC-AUTOVACUUM-VACUUM-THRESHOLD) - Minimum number of tuple updates or deletes prior to vacuum
+* [autovacuum](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM) - Starts the autovacuum subprocess
+* [autovacuum_analyze_scale_factor](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-SCALE-FACTOR) - Number of tuple inserts, updates, or deletes prior to analyze as a fraction of reltuples
+* [autovacuum_analyze_threshold](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-ANALYZE-THRESHOLD) - Minimum number of tuple inserts, updates, or deletes prior to analyze
+* [autovacuum_naptime](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-NAPTIME) - Time to sleep between autovacuum runs
+* [autovacuum_vacuum_cost_delay](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-COST-DELAY) - Vacuum cost delay in milliseconds, for autovacuum
+* [autovacuum_vacuum_cost_limit](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-COST-LIMIT) - Vacuum cost amount available before napping, for autovacuum
+* [autovacuum_vacuum_scale_factor](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-SCALE-FACTOR) - Number of tuple updates or deletes prior to vacuum as a fraction of reltuples
+* [autovacuum_vacuum_threshold](https://www.postgresql.org/docs/current/runtime-config-vacuum.html#GUC-AUTOVACUUM-VACUUM-THRESHOLD) - Minimum number of tuple updates or deletes prior to vacuum
 * [autovacuum_work_mem](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-AUTOVACUUM-WORK-MEM) - Sets the maximum memory to be used by each autovacuum worker process
 * [backend_flush_after](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-BACKEND-FLUSH-AFTER) - Number of pages after which previously performed writes are flushed to disk
 * [backslash_quote](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-BACKSLASH-QUOTE) - Sets whether "\'" is allowed in string literals
@@ -741,7 +743,7 @@ The following [managed PgBouncer](./concepts-connection-pool.md) parameters can 
 * [lc_numeric](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-LC-NUMERIC) - Sets the locale for formatting numbers
 * [lo_compat_privileges](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-LO-COMPAT-PRIVILEGES) - Enables backward compatibility mode for privilege checks on large objects
 * [lock_timeout](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-LOCK-TIMEOUT) - Sets the maximum allowed duration (in milliseconds) of any wait for a lock. 0 turns this off
-* [log_autovacuum_min_duration](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html#) - Sets the minimum execution time above which autovacuum actions are logged
+* [log_autovacuum_min_duration](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-AUTOVACUUM-MIN-DURATION) - Sets the minimum execution time above which autovacuum actions are logged
 * [log_connections](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-CONNECTIONS) - Logs each successful connection
 * [log_destination](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-DESTINATION) - Sets the destination for server log output
 * [log_disconnections](https://www.postgresql.org/docs/current/runtime-config-logging.html#GUC-LOG-DISCONNECTIONS) - Logs end of a session, including duration

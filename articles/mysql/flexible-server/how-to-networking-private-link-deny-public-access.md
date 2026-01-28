@@ -3,8 +3,8 @@ title: Deny Public Network by Using the Azure Portal
 description: Learn how to configure public network access for Azure Database for MySQL - Flexible Server by using the Azure portal.
 author: aditivgupta
 ms.author: adig
-ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,22 +14,25 @@ ms.custom:
 
 # Deny Public Network Access in Azure Database for MySQL - Flexible Server by using the Azure portal
 
-This article describes how you can configure an Azure Database for MySQL Flexible Server instance to deny all public configurations and allow only connections through private endpoints to enhance network security further.
+This tutorial describes how to configure an Azure Database for MySQL Flexible Server instance to:
+
+- Deny all public network access and
+- Allow only connections through private endpoints.
 
 ## Deny public access during the creation of MySQL flexible server
 
-1. When creating an [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) in the Networking tab, choose *Public access (allowed IP addresses) and Private endpoint* as the connectivity method.
+1. During [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md): In the Networking tab, choose `Public access (allowed IP addresses)` and `Private endpoint` as the connectivity method.
 
-1. To disable public access on the Azure Database for MySQL Flexible Server instance you are creating, uncheck Allow public access to this resource through the internet using a public IP address under *Public access*.
+1. To disable public access on the Azure Database for MySQL Flexible Server instance you're creating, uncheck Allow public access to this resource through the internet using a public IP address under `Public access`.
 
    :::image type="content" source="media/how-to-networking-private-link-deny-public-access/deny-public-access-networking-page-mysql.png" alt-text="Screenshot of denying public access from the portal." lightbox="media/how-to-networking-private-link-deny-public-access/deny-public-access-networking-page-mysql.png":::
 
-1. After entering the remaining information in the other tabs, select *Review + Create* to deploy the Azure Database for MySQL Flexible Server instance without public access.
+1. After entering the remaining information in the other tabs, select `Review + Create` to deploy the Azure Database for MySQL Flexible Server instance without public access.
 
 ## Deny public access to an existing MySQL flexible server
 
 > [!NOTE]  
-> The Azure Database for MySQL Flexible Server instance must have been deployed with **Public access (allowed IP addresses) and Private endpoint** as the connectivity method to implement this.
+> Requirement: the server is deployed with connectivity **Public access (allowed IP addresses) and Private endpoint**.
 
 1. On the Azure Database for MySQL Flexible Server page, under **Settings**, select **Networking**.
 
@@ -39,11 +42,9 @@ This article describes how you can configure an Azure Database for MySQL Flexibl
 
 1. Select **Save** to save the changes.
 
-1. A notification will confirm that the connection security setting was successfully enabled.
-
 ## Related content
 
-- [configure private link for Azure Database for MySQL Flexible Server from the Azure portal](how-to-networking-private-link-portal.md)
-- [manage connectivity](concepts-networking.md)
-- [add another layer of encryption to your Azure Database for MySQL Flexible Server instance using Customer Managed Keys](concepts-customer-managed-key.md)
-- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal](how-to-networking-private-link-portal.md)
+- [Connectivity and networking concepts for Azure Database for MySQL - Flexible Server](concepts-networking.md)
+- [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md)
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md)

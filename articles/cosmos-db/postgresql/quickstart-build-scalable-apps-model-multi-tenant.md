@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: quickstart
 recommendations: false
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Model multi-tenant SaaS apps in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Tenant ID as the shard key
 

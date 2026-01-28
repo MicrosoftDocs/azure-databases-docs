@@ -1,10 +1,10 @@
 ---
-title: "Common issues - Azure Database Migration Service"
+title: Common Issues - Azure Database Migration Service
 description: Learn about how to troubleshoot common known issues/errors associated with using Azure Database Migration Service(classic).
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -29,7 +29,7 @@ This article describes some common issues and errors that Azure Database Migrati
 
 The following error occurs when creating an activity for a database migration project for moving to Azure SQL Database or an Azure SQL Managed Instance:
 
-**Error**: Migration settings validation error", "errorDetail":"More than max number '4' objects of 'Databases' has been selected for migration."
+**Error**: "Migration settings validation error", "errorDetail":"More than max number '4' objects of 'Databases' has been selected for migration."
 
 **Cause:** This error displays when you've selected more than four databases for a single migration activity. Currently, each migration activity is limited to four databases.
 
@@ -47,10 +47,12 @@ You receive following error when stopping the Azure Database Migration Service i
 
 The following steps illustrate how to remove projects to clean up the migration service instance by deleting all running tasks:
 
-1. `Install-Module -Name AzureRM.DataMigration`
-1. `Login-AzureRmAccount`
-1. `Select-AzureRmSubscription -SubscriptionName <subName>`
-1. `Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask`
+```powershell
+Install-Module -Name AzureRM.DataMigration
+Login-AzureRmAccount
+Select-AzureRmSubscription -SubscriptionName <subName>
+Remove-AzureRmDataMigrationProject -Name <projectName> -ResourceGroupName <rgName> -ServiceName <serviceName> -DeleteRunningTask
+```
 
 ## Error when attempting to start Azure Database Migration Service
 
@@ -61,21 +63,7 @@ You receive following error when starting the Azure Database Migration Service i
 **Cause:** This error displays when the previous instance failed internally. This error occurs rarely, and the engineering team is aware of it.
 
 **Resolution:** Delete the instance of the service that you can't start, and then provision new one to replace it.
-<!--//REMOVING IT AS DMS(CLASSIC) FOR SQL IS ON DEPRICATION PATH//
-## Error restoring database while migrating SQL to Azure SQL DB managed instance
 
-When you perform an online migration from SQL Server to Azure SQL Managed Instance, the cutover fails with following error:
-
-**Error**: Restore Operation failed for operation Id 'operationId'. Code 'AuthorizationFailed', Message 'The client 'clientId' with object id 'objectId' does not have authorization to perform action 'Microsoft.Sql/locations/managedDatabaseRestoreAzureAsyncOperation/read' over scope '/subscriptions/subscriptionId'.
-
-**Cause:** This error indicates the application principal being used for online migration from SQL Server to SQL Managed Instance doesn't have contribute permission on the subscription. Certain API calls with SQL Managed Instance currently require this permission on subscription for the restore operation.
-
-**Resolution:** Use the `Get-AzureADServicePrincipal` PowerShell cmdlet with `-ObjectId` available from the error message to list the display name of the application ID being used.
-
-Validate the permissions to this application and ensure it has the [contributor role](/azure/role-based-access-control/built-in-roles#contributor) at the subscription level.
-
-The Azure Database Migration Service Engineering Team is working to restrict the required access from current contribute role on subscription. If you have a business requirement that doesn't allow use of contribute role, contact Azure support.
--->
 ## Error when deleting NIC associated with Azure Database Migration Service
 
 When you try to delete a Network Interface Card associated with Azure Database Migration Service, the deletion attempt fails with this error:
@@ -123,7 +111,7 @@ When you try to connect Azure Database Migration Service to SQL Server source th
 
 **Resolution:** Verify that Azure Database Migration Service can connect to the source SQL Server Browser service on UDP port 1434 and the SQL Server instance through the dynamically assigned TCP port as applicable.
 
-## Additional known issues
+## Further reading
 
 - [Known issues/migration limitations with online migrations to Azure SQL Database](index.yml)
 - [Known issues and limitations with online migrations from PostgreSQL to Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md)

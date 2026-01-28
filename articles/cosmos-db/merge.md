@@ -1,6 +1,5 @@
 ---
 title: Merge partitions (preview)
-titleSuffix: Azure Cosmos DB
 description: Reduce the number of physical partitions used for your container with the merge capability in Azure Cosmos DB.
 ms.topic: concept-article
 author: deborahc
@@ -10,12 +9,13 @@ ms.custom:
 - devx-track-azurecli
 - build-2025
 - sfi-image-nochange
-ms.date: 05/08/2025
+ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Merge partitions in Azure Cosmos DB (preview)
-
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
 
 Merging partitions in Azure Cosmos DB (preview) allows you to reduce the number of physical partitions used for your container in place. With merge, containers that are fragmented in throughput (have low RU/s per partition) or storage (have low storage per partition) can have their physical partitions reworked. If a container's throughput has been scaled up and needs to be scaled back down, merge can help resolve throughput fragmentation issues. For the same amount of provisioned RU/s, having fewer physical partitions means each physical partition gets more of the overall RU/s. Minimizing partitions reduces the chance of rate limiting if a large quantity of data is removed from a container and RU/s per partition is low. Merge can help clear out unused or empty partitions, effectively resolving storage fragmentation problems.
 
@@ -260,7 +260,7 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Your Azure Cosmos DB account doesn't use any of the following features:
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
-   - [Analytical store](analytical-store-introduction.md)
+   - Analytical store for Synapse Link *(deprecated)*
 - If you're using API for NoSQL, your application must use the Azure Cosmos DB .NET v3 SDK (version 3.27.0 or higher) or Java v4 SDK (version 4.42.0 or higher) OR JavaScript V4 SDK(version 4.3.0 or higher). When merge preview is enabled on your account, the account doesn't accept requests sent from non .NET/Java SDKs or older .NET/Java SDK versions.
   - There are no SDK or driver requirements to use the feature with API for MongoDB.
 - Your Azure Cosmos DB account doesn't use any currently unsupported connectors:
@@ -276,7 +276,7 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Accounts using merge functionality can't also use these features (if these features are added to a merge enabled account, the account can't merge resources):
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
-   - [Analytical store](analytical-store-introduction.md)
+   - Analytical store for Synapse Link *(deprecated)*
 - After a container has been merged, it isn't possible to read the change feed with start time. Support for this feature is planned for the future.
 
 ### SDK requirements (API for NoSQL only)
@@ -295,8 +295,8 @@ Support for other SDKs is planned for the future.
 > [!TIP]
 > You should ensure that your application has been updated to use a compatible SDK version prior to enrolling in the preview. If you're using a legacy SDK, follow the appropriate migration guide:
 >
-> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](nosql/migrate-dotnet-v3.md)
-> - Legacy Java v3 SDK: [Java SDK v4 migration guide](nosql/migrate-java-v4-sdk.md)
+> - Legacy .NET v2 SDK: [.NET SDK v3 migration guide](migrate-dotnet-v3.md)
+> - Legacy Java v3 SDK: [Java SDK v4 migration guide](migrate-java-v4-sdk.md)
 >
 
 ### Unsupported connectors

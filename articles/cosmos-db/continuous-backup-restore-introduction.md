@@ -4,14 +4,17 @@ description: Learn how Azure Cosmos DB's point-in-time restore feature helps to 
 author: kanshiG
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 06/24/2025
+ms.date: 12/04/2025
 ms.author: govindk
 ms.custom: references_regions, cosmos-db-video, build-2023
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Continuous backup with point-in-time restore in Azure Cosmos DB
-
-[!INCLUDE[NoSQL, MongoDB, Gremlin, Table](includes/appliesto-nosql-mongodb-gremlin-table.md)]
 
 Azure Cosmos DB's point-in-time restore feature helps in multiple scenarios including:
 
@@ -161,7 +164,7 @@ Currently the point-in-time restore functionality has the following limitations:
 
 * Azure Cosmos DB APIs for SQL, MongoDB, Gremlin, and Table supported for continuous backup. API for Cassandra isn't supported now.
 
-* Azure Synapse Link for database accounts using continuous backup mode is generally available. The opposite situation, continuous backup mode for Synapse Link-enabled accounts, is in public preview. Currently, customers that disabled Synapse Link from containers can't migrate to continuous backup. And analytical store isn't included in backups. To learn more, see [analytical store backup](analytical-store-introduction.md#backup).
+* Currently, customers that disabled Synapse Link *(deprecated)* from containers can't migrate to continuous backup. And analytical store isn't included in backups. 
 
 * The restored account is created in the same region where your source account exists. You can't restore an account into a region where the source account didn't exist.
 
@@ -171,7 +174,7 @@ Currently the point-in-time restore functionality has the following limitations:
 
 * While a restore is in progress, don't modify or delete the Identity and Access Management (IAM) policies. These policies grant the permissions for the account to change any virtual network, firewall configuration.
 
-* Azure Cosmos DB for MongoDB accounts with continuous backup don't support creating a unique index for an existing collection. For such an account, unique indexes must be created along with their collection. It can be done using the create collection [extension commands](mongodb/custom-commands.md).
+* Azure Cosmos DB for MongoDB accounts with continuous backup don't support creating a [unique index](./mongodb/indexing.md#unique-indexes) for an existing collection. For such an account, unique indexes must be created along with their collection creation, which must and can only be done using the create collection [extension commands](./mongodb/custom-commands.md#create-collection).
 
 * After restoring, it's possible that for certain collections the consistent index might be rebuilding. You can check the status of the rebuild operation via the [IndexTransformationProgress](how-to-manage-indexing-policy.md) property.
 

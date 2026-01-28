@@ -59,7 +59,7 @@ If you encounter timeout exception when creating a collection, do a read operati
 
 ## Create a collection using Azure Resource Manager templates
 
-[Create a collection for Azure Cosmos DB for API for MongoDB with Resource Manager template](../manage-with-templates.md#azure-cosmos-account-with-standard-provisioned-throughput).
+[Create a collection for Azure Cosmos DB for API for MongoDB with Resource Manager template](../manage-with-templates.md#create-manual).
 
 ## Next steps
 

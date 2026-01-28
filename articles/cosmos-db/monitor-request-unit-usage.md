@@ -1,15 +1,20 @@
 ---
-title: Monitor the throughput usage of an operation in Azure Cosmos DB
+title: Monitor the Throughput Usage of an Operation
 description: Learn how to monitor the throughput or request unit usage of an operation in Azure Cosmos DB. Owners of an Azure Cosmos DB account can understand which operations are taking more request units.
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
 ms.date: 09/16/2021
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # How to monitor throughput or request unit usage of an operation in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default, this feature does not require you to enable or configure anything explicitly. The **Total Request Units** metric is used to get the request units usage for different types of operations. Later you can analyze which operations used most of the throughput. By default, the throughput data is aggregated at one-minute interval. However, you can change the aggregation unit by changing the time granularity option.
 
@@ -25,7 +30,7 @@ If you notice certain queries are taking more request units, you can take action
 * Modify the query to use index with filter clause.
 * Perform less expensive UDF function calls.
 * Define partition keys to minimize the fan out of query into different partitions.
-* You can also use the query metrics returned in the call response, the diagnostic log details and refer to [query performance tuning](nosql/query-metrics.md) article to learn more about the query execution.
+* You can also use the query metrics returned in the call response, the diagnostic log details and refer to [query performance tuning](query-metrics.md) article to learn more about the query execution.
 * You can start from sum and then look at avg utilization using the right dimension.
 
 ## View the total request unit usage metric

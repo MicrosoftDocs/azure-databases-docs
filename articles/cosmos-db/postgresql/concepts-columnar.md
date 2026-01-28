@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 01/30/2023
 ms.custom: kr2b-contr-experiment
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Compress data with columnar tables in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL supports append-only
 columnar table storage for analytic and data warehousing workloads. When

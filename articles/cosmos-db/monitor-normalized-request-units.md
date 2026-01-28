@@ -5,11 +5,16 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 07/01/2025
+ms.date: 09/03/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
-# How to monitor normalized RU/s for an Azure Cosmos DB container or an account
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
+# Monitor normalized request units in Azure Cosmos DB
 
 Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your account and create dashboards. The Azure Cosmos DB metrics are collected by default. This feature doesn't require you to enable or configure anything explicitly.
 
@@ -17,7 +22,7 @@ Azure Monitor for Azure Cosmos DB provides a metrics view to monitor your accoun
 
 **Normalized RU Consumption** is a metric between 0% to 100% that's used to help measure the utilization of provisioned throughput on a database or container. The metric is emitted at 1-minute intervals and is defined as the maximum Request Units per second (RU/s) utilization across all partition key ranges in the time interval. Each partition key range maps to one physical partition and is assigned to hold data for a range of possible hash values. In general, the higher the normalized RU percentage, the more you've utilized your provisioned throughput. The metric can also be used to view the utilization of individual partition key ranges on a database or container.
 
-For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md#how-autoscale-provisioned-throughput-works) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* can each scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6,000 RUs and *P2* consumed 8,000 RUs. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
+For example, suppose you have a container where you set [autoscale max throughput](provision-throughput-autoscale.md) of 20,000 RU/s (scales between 2000 - 20,000 RU/s) and you have two partition key ranges (physical partitions) *P1* and *P2*. Because Azure Cosmos DB distributes the provisioned throughput equally across all the partition key ranges, *P1* and *P2* can each scale between 1000 - 10,000 RU/s. Suppose in a 1-minute interval, in a given second, *P1* consumed 6,000 RUs and *P2* consumed 8,000 RUs. The normalized RU consumption of P1 is 60% and 80% for *P2*. The overall normalized RU consumption of the entire container is MAX(60%, 80%) = 80%.
 
 If you're interested in seeing the request unit consumption at a per-second interval, along with operation type, you can use the opt-in [diagnostic logs](monitor-resource-logs.md) and query the **PartitionKeyRUConsumption** table. To get a high-level overview of the operations and status code that your application is performing on the Azure Cosmos DB resource, you can use the built-in Azure Monitor **Total Requests** (API for NoSQL), **Mongo Requests**, **Gremlin Requests**, or **Cassandra Requests** metric. Later, you can filter on these requests by the 429 status code and split them by **Operation Type**.
 
@@ -31,13 +36,13 @@ In general, for a production workload, if you see between 1-5% of requests with 
 
 To determine what percent of your requests to your database or container resulted in 429s, from your Azure Cosmos DB account, navigate to **Insights** > **Requests** > **Total Requests by Status Code**. Filter to a specific database and container. For API for Gremlin, use the **Gremlin Requests** metric.
 
-:::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/insights-429-requests.png" alt-text="Screenshot of the Total Requests by Status Code chart that shows number of 429 and 2xx requests." lightbox="nosql/media/troubleshoot-request-rate-too-large/insights-429-requests.png":::
+:::image type="content" source="media/troubleshoot-request-rate-too-large/insights-429-requests.png" alt-text="Screenshot of the Total Requests by Status Code chart that shows number of 429 and 2xx requests." lightbox="media/troubleshoot-request-rate-too-large/insights-429-requests.png":::
 
-If the normalized RU consumption metric is consistently 100% across multiple partition key ranges and the rate of 429s is greater than 5%, it's recommended to increase the throughput. You can find out which operations are heavy and what their peak usage is by using the [Azure monitor metrics and Azure monitor diagnostic logs](nosql/troubleshoot-request-rate-too-large.md#step-3-determine-what-requests-are-returning-429-responses). To learn about best practices, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md).
+If the normalized RU consumption metric is consistently 100% across multiple partition key ranges and the rate of 429s is greater than 5%, it's recommended to increase the throughput. You can find out which operations are heavy and what their peak usage is by using the [Azure monitor metrics and Azure monitor diagnostic logs](troubleshoot-request-rate-too-large.md#step-3-determine-what-requests-are-returning-429-responses). To learn about best practices, see [Best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md).
 
 It isn't always the case that you see a 429 rate-limiting error just because the normalized RU reached 100%. That's because the normalized RU is a single value that represents the maximum usage over all partition key ranges. One partition key range might be busy but the other partition key ranges can serve requests without issues. For example, a single operation such as a stored procedure that consumes all the RU/s on a partition key range leads to a short spike in the normalized RU consumption metric. In such cases, there aren't any immediate rate-limiting errors if the overall request rate is low or requests are made to other partitions on different partition key ranges.
 
-To learn more, see [Diagnose and troubleshoot 429 exceptions](nosql/troubleshoot-request-rate-too-large.md).
+To learn more, see [Diagnose and troubleshoot 429 exceptions](troubleshoot-request-rate-too-large.md).
 
 ## How to monitor for hot partitions
 
@@ -49,9 +54,9 @@ To verify if there's a hot partition, navigate to **Insights** > **Throughput** 
 
 Each PartitionKeyRangeId maps to one physical partition. If there's one PartitionKeyRangeId that has higher normalized RU consumption than others (for example, one is consistently at 100%, but others are at 30% or less), this can be a sign of a hot partition.
 
-:::image type="content" source="nosql/media/troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Screenshot of Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
+:::image type="content" source="media/troubleshoot-request-rate-too-large/split-norm-utilization-by-pkrange-hot-partition.png" alt-text="Screenshot of Normalized RU Consumption by PartitionKeyRangeId chart with a hot partition.":::
 
-To identify the logical partitions that consume the most RU/s, see [How to identify the hot partition](nosql/troubleshoot-request-rate-too-large.md#how-to-identify-the-hot-partition).
+To identify the logical partitions that consume the most RU/s, see [How to identify the hot partition](troubleshoot-request-rate-too-large.md#how-to-identify-the-hot-partition).
 
 ## Normalized RU consumption and autoscale
 
@@ -123,4 +128,4 @@ The normalized request unit consumption metric for each container is displayed a
 
 * [Monitor Azure Cosmos DB data using Azure Monitor Log Analytics diagnostic settings](monitor-resource-logs.md)
 * [How to audit Azure Cosmos DB control plane operations](audit-control-plane-logs.md)
-* [Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions](nosql/troubleshoot-request-rate-too-large.md)
+* [Diagnose and troubleshoot Azure Cosmos DB request rate too large (429) exceptions](troubleshoot-request-rate-too-large.md)

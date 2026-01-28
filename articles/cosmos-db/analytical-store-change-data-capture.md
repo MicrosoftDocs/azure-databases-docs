@@ -1,17 +1,19 @@
 ---
 title: Change data capture in analytical store
-titleSuffix: Azure Cosmos DB
 description: Change data capture (CDC) in Azure Cosmos DB analytical store allows you to efficiently consume a continuous and incremental feed of changed data.
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 11/28/2023
+ms.date: 12/05/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
 ---
 
 # Change Data Capture in Azure Cosmos DB analytical store
 
-[!INCLUDE[NoSQL, MongoDB](includes/appliesto-nosql-mongodb.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 Change data capture (CDC) in [Azure Cosmos DB analytical store](analytical-store-introduction.md) allows you to efficiently consume a continuous and incremental feed of changed (inserted, updated, and deleted) data from analytical store. Seamlessly integrated with Azure Synapse and Azure Data Factory, it provides you with a scalable no-code experience for high data volume. As the change data capture feature is based on analytical store, it [doesn't consume provisioned RUs, doesn't affect your transactional workloads](analytical-store-introduction.md#decoupled-performance-for-analytical-workloads), provides lower latency, and has lower TCO.
 
@@ -108,7 +110,7 @@ Change data capture capability enables an end-to-end analytical solution providi
 
 ## Change data capture on Azure Cosmos DB for MongoDB containers
 
-The linked service interface for the API for MongoDB isn't available within Azure Data Factory data flows yet. You can use your API for MongoDB's account endpoint with the **Azure Cosmos DB for NoSQL** linked service interface as a work around until the Mongo linked service is directly supported.
+The linked service interface for the API for MongoDB isn't available within Azure Data Factory data flows yet. You can use your API for MongoDB's account endpoint with the **Azure Cosmos DB for NoSQL** linked service interface as a work-around until the Mongo linked service is directly supported.
 
 In the interface for a new NoSQL linked service, select **Enter Manually** to provide the Azure Cosmos DB account information. Here, use the account's NoSQL document endpoint (Example: `https://<account-name>.documents.azure.com:443/`) instead of the MongoDB endpoint (Example: `mongodb://<account-name>.mongo.cosmos.azure.com:10255/`)
 

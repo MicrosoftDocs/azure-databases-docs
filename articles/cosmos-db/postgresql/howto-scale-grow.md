@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 06/05/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Scale a cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL provides self-service
 scaling to deal with increased load. The Azure portal makes it easy to add new
@@ -67,7 +69,11 @@ nodes before needing to add more worker nodes.
 To change the storage amount for all worker nodes, on the **Scale** screen, select a new value under **Storage per node**. To adjust the coordinator node's storage, expand **Coordinator** and select a new value under **Coordinator storage**.
 
 > [!NOTE]
-> Once you increase storage and save, you can't decrease the amount of storage.
+> Once you increase storage and save, you can't decrease the amount of storage. 
+> Storage can only be increased in predefined increments displayed in the portal.  
+> In many cases, the next available tier may appear as a doubled storage value (for example, from 512 GiB to 1 TiB).
+> Custom or small percentage increases (such as +10% or +20%) are not supported.
+
 
 ## Choose preferred availability zone
 

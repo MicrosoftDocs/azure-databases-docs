@@ -1,15 +1,16 @@
 ---
-title: Configure Network Security Perimeter for an Azure Cosmos DB account
+title: Configure Network Security Perimeter for an Account
 description: Learn how to secure your Cosmos DB account using Network Service Perimeter.
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/20/2024
 ms.author: iriaosara
 author: iriaosara
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Configure Network Security Perimeter for an Azure Cosmos DB account
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to configure Network Security Perimeter on your Azure Cosmos DB account. 
 
@@ -47,6 +48,10 @@ In cases where you have existing Azure Cosmos DB account and looking to add secu
 * Select **Networking** from the **Settings** 
 
 * Then select **Associate NSP** to associate this resource with your network security perimeter to enable communication with other Azure resources in the same perimeter while restricting public access to only allow the connections you specify.
+
+> [!NOTE]
+> If you are making requests to your account using the REST API, ensure that the x-ms-date header is present and in [the correct RFC 1123 date format](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers).
+> Requests can start being blocked if the header is incorrect when an account is associated to a Network Security Perimeter.
 
 ## Next steps
 

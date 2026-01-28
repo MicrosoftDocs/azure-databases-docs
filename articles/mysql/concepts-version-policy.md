@@ -19,16 +19,16 @@ Azure Database for MySQL provides a fully managed database service powered by th
 
 ## Supported MySQL versions
 
-Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions, namely MySQL 5.7 and 8.0. MySQL uses the X.Y.Z. naming scheme where X is the major version, Y is the minor version, and Z is the bug fix release. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/5.7/en/which-version.html).
+Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions, namely MySQL 5.7 and 8.0. MySQL uses the X.Y.Z. naming scheme where X.Y is the major version, Z is the minor version.Z is incremented for each new LTS release, but is likely always 0 for innovation releases. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/8.4/en/which-version.html).
 
 Azure Database for MySQL currently supports the following major and minor versions of MySQL:
 
 | Version | Current minor version | Release status |
 | :--- | :--- | :--- |
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) | GA |
-| MySQL Version 8.0 | [8.0.41](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-41.html) | GA |
-| MySQL Version 8.4 | [8.4.4](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-4.html) | Public Preview |
-| MySQL Version 9.2 | [9.2.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-2-0.html) | Public Preview |
+| MySQL Version 8.0 | [8.0.42](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-42.html) | GA |
+| MySQL Version 8.4 | [8.4.5](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-5.html) | GA |
+| MySQL Version 9.3 | [9.3.0](https://dev.mysql.com/doc/relnotes/mysql/9.1/en/news-9-3-0.html) | Public Preview |
 
 Read the version support policy for retired versions in [version support policy documentation.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
 
@@ -43,7 +43,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 | Version | What's New | Azure Support Start Date | Community Retirement Date | Azure Standard Support End Date | Azure Extended Support Start Date | Azure Extended Support End Date |
 | --- | --- | --- | --- | --- | --- | --- |
 | [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | March 20, 2018 | October 31, 2023 | March 31, 2026 | April 1, 2026 | March 31, 2029 |
-| [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | May 31, 2029 |
+| [MySQL 8.0](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html) | December 11, 2019 | April 30, 2026 | May 31, 2026 | June 1, 2026 | May 31, 2029 |
 
 ### What happens after standard support ends?
 
@@ -71,7 +71,7 @@ Azure Database for MySQL automatically performs minor version upgrades to the Az
 
 ## Retired MySQL engine versions not supported in Azure Database for MySQL
 
-The following restrictions apply only after the extended pport period has ended, and your server is still running a retired MySQL version:
+The following restrictions apply only after the extended support period has ended, and your server is still running a retired MySQL version:
 
 - No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues are no longer be available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
 - You can't create new database servers for the retired version. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
@@ -91,7 +91,7 @@ A: Azure Database for MySQL enables you to carry out in-place major version upgr
 
 __Q: Are there any expected downtime or performance impacts during a major version upgrade?__
 
-A: Yes, there's some downtime during the major version upgrade process. The specific duration varies depending on factors such as the size and complexity of the database. We recommend conducting a test upgrade in a nonproduction environment to assess the expected downtime and evaluate potential performance. To minimize downtime for your applications during the upgrade, you can explore the option of [performing a minimal downtime major version upgrade using read replica](flexible-server/how-to-upgrade.md#perform-minimal-downtime-major-version-upgrade-from-mysql-57-to-mysql-80-using-read-replicas).
+A: Yes, there's some downtime during the major version upgrade process. The specific duration varies depending on factors such as the size and complexity of the database. We recommend conducting a test upgrade in a nonproduction environment to assess the expected downtime and evaluate potential performance. To minimize downtime for your applications during the upgrade, you can explore the option of [performing a minimal downtime major version upgrade using read replica](flexible-server/how-to-upgrade.md#perform-minimal-downtime-major-version-upgrade-using-read-replicas).
 
 __Q: Can I roll back to a previous major version after upgrading?__
 
@@ -117,11 +117,11 @@ A: While your data remains unaffected during the upgrade process, it's highly ad
 
 __Q: What is Azure Database for MySQL – Extended Support?__
 
-A: Extended Support is a feature offering that allows customers to continue running MySQL versions that have reached community end-of-life (EOL), with continued access to SLA-backed availability, security updates, and technical support.
+A: Extended Support is a feature offering that allows customers to continue running MySQL versions that have reached community end-of-life (end of support), with continued access to SLA-backed availability, security updates, and technical support.
 
 __Q: Is Extended Support a separate support plan like Azure Standard or Professional Direct Support?__
 
-A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community EOL. It is independent of your Azure Support Plan.
+A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community end of support. It is independent of your Azure Support Plan.
 
 __Q: Do I need to take any action to enable Extended Support?__
 
@@ -129,11 +129,11 @@ A: No action is required. If your server is running a MySQL version that has ent
 
 __Q: When does billing for Extended Support begin?__
 
-A: Billing starts one month after the community EOL date of the MySQL version. This one-month grace period gives customers time to plan their upgrade or evaluate options.
+A: Billing starts one month after the community end of support date of the MySQL version. This one-month grace period gives customers time to plan their upgrade or evaluate options.
 
 __Q: How is Extended Support priced?__
 
-A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in September 2025 and will be available in the https://azure.microsoft.com/pricing/calculator/.
+A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in November 2025 and will be available in the https://azure.microsoft.com/pricing/calculator/.
 
 __Q: How do I exit Extended Support?__
 

@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 06/05/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Read replicas in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The read replica feature allows you to replicate data from a
 cluster to a read-only cluster. Replicas are updated

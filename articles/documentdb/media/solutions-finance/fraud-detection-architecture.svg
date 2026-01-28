@@ -1,0 +1,157 @@
+<svg viewBox="0 0 1280 720" width="1280" height="720" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path {
+      stroke: #000000;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    rect {
+      fill: #FFFFFF;
+      stroke: #000000;
+      stroke-width: 2;
+    }
+    rect.background {
+      fill: #FFFFFF;
+      stroke: none;
+    }
+    rect.highlight {
+      fill: #2A446F;
+    }
+    text {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      fill: #000000;
+    }
+    text.size-lg {
+      font-size: 19px;
+    }
+    text.weight-bold {
+      font-weight: 600;
+    }
+    text.align-center {
+      text-anchor: middle;
+    }
+    text.color-inverse {
+      fill: #FFFFFF;
+    }
+  </style>
+  <!-- Background -->
+  <rect width="1280" height="720" class="background"/>
+  
+  <!-- Title -->
+  <text x="640" y="40" class="size-lg weight-bold align-center">Real-time Fraud Detection System Architecture</text>
+  
+  <!-- Data Sources Section -->
+  <text x="64" y="111" class="size-lg weight-bold">Data Sources</text>
+  
+  <!-- Transaction Systems -->
+  <rect x="50" y="140" width="140" height="80" rx="10"/>
+  <text x="120" y="165" class="align-center">Transaction</text>
+  <text x="120" y="185" class="align-center">Systems</text>
+  
+  <!-- ATM Networks -->
+  <rect x="50" y="240" width="140" height="80" rx="10"/>
+  <text x="120" y="265" class="align-center">ATM Networks</text>
+  
+  <!-- Online Banking -->
+  <rect x="50" y="340" width="140" height="80" rx="10"/>
+  <text x="120" y="365" class="align-center">Online Banking</text>
+  <text x="120" y="385" class="align-center">Platforms</text>
+  
+  <!-- Mobile Apps -->
+  <rect x="50" y="440" width="140" height="80" rx="10"/>
+  <text x="120" y="465" class="align-center">Mobile Banking</text>
+  <text x="120" y="485" class="align-center">Apps</text>
+  
+  <!-- Data Ingestion Section -->
+  <text x="282" y="111" class="size-lg weight-bold">Data Ingestion</text>
+  
+  <!-- Azure Event Hubs -->
+  <rect x="280" y="200" width="140" height="120" rx="10"/>
+  <text x="350" y="230" class="weight-bold align-center">Azure Event Hubs</text>
+  <text x="350" y="260" class="align-center">• High Throughput</text>
+  <text x="350" y="280" class="align-center">• Real-time Streaming</text>
+  <text x="350" y="300" class="align-center">• Event Buffering</text>
+  
+  <!-- Real-time Processing Section -->
+  <text x="493" y="111" class="size-lg weight-bold">Real-time Processing</text>
+  
+  <!-- Azure Functions -->
+  <rect x="510" y="140" width="140" height="100" rx="10"/>
+  <text x="580" y="170" class="weight-bold align-center">Azure Functions</text>
+  <text x="580" y="190" class="align-center">• Event Processing</text>
+  <text x="580" y="210" class="align-center">• Data Enrichment</text>
+  
+  <!-- Machine Learning Section -->
+  <text x="740" y="111" class="size-lg weight-bold">Machine Learning</text>
+  
+  <!-- Azure Machine Learning -->
+  <rect x="750" y="140" width="140" height="120" rx="10"/>
+  <text x="820" y="170" class="weight-bold align-center">Azure Machine</text>
+  <text x="820" y="190" class="weight-bold align-center">Learning</text>
+  <text x="820" y="220" class="align-center">• Fraud Detection ML</text>
+  <text x="820" y="240" class="align-center">• Risk Scoring</text>
+  
+  <!-- Data Storage Section -->
+  <text x="596" y="292" class="size-lg weight-bold">Data Storage</text>
+  
+  <!-- Azure DocumentDB -->
+  <rect x="510" y="340" width="140" height="120" rx="10" class="highlight"/>
+  <text x="580" y="370" class="weight-bold align-center color-inverse">Azure DocumentDB</text>
+  <text x="580" y="400" class="align-center color-inverse">• Transaction Data</text>
+  <text x="580" y="420" class="align-center color-inverse">• Customer Profiles</text>
+  <text x="580" y="440" class="align-center color-inverse">• Fraud Alerts</text>
+  
+  <!-- Alert System Section -->
+  <text x="993" y="111" class="size-lg weight-bold">Alert System</text>
+  
+  <!-- Notification Service -->
+  <rect x="980" y="160" width="140" height="80" rx="10"/>
+  <text x="1050" y="185" class="align-center">Notification</text>
+  <text x="1050" y="205" class="align-center">Service</text>
+  
+  <!-- Security Operations -->
+  <rect x="980" y="260" width="140" height="80" rx="10"/>
+  <text x="1050" y="285" class="align-center">Security Operations</text>
+  <text x="1050" y="305" class="align-center">Center</text>
+  
+  <!-- Customer Service -->
+  <rect x="980" y="360" width="140" height="80" rx="10"/>
+  <text x="1050" y="385" class="align-center">Customer Service</text>
+  <text x="1050" y="405" class="align-center">Portal</text>
+  
+  <!-- Monitoring Section -->
+  <rect x="750" y="340" width="140" height="80" rx="10"/>
+  <text x="820" y="365" class="weight-bold align-center">Azure Monitor</text>
+  <text x="820" y="385" class="align-center">• Analytics</text>
+  
+  <!-- Arrows -->
+  <!-- Data Sources to Event Hubs -->
+  <path d="M 190 180 L 280 230"/>
+  <path d="M 190 280 L 280 260"/>
+  <path d="M 190 380 L 280 290"/>
+  <path d="M 190 480 L 280 310"/>
+  <!-- Event Hubs to Functions -->
+  <path d="M 420 260 L 510 190"/>
+  <!-- Functions to ML -->
+  <path d="M 650 190 L 750 200"/>
+  <!-- Functions to DocumentDB -->
+  <path d="M 580 240 L 580 340"/>
+  <!-- ML to Alerts -->
+  <path d="M 890 200 L 980 200"/>
+  <path d="M 890 220 L 980 300"/>
+  <path d="M 890 240 L 980 400"/>
+  <!-- DocumentDB to Monitor -->
+  <path d="M 650 400 L 750 380"/>
+  <!-- Data flow labels -->
+  <text x="450" y="253">Stream</text>
+  <text x="659" y="176">ML Processing</text>
+  <!--Arrow marker definition-->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+        <polygon fill="black" points="0,0 10,3.5 0,7"/>
+    </marker>
+  </defs>
+</svg>

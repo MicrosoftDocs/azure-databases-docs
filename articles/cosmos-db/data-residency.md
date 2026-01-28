@@ -1,15 +1,20 @@
 ---
-title: How to meet data residency requirements in Azure Cosmos DB
+title: How to Meet Data Residency Requirements
 description: Learn how to meet data residency requirements in Azure Cosmos DB for your data and backups to remain in a single region.
 author: kanshiG
 ms.service: azure-cosmos-db
 ms.topic: legal
-ms.date: 04/05/2021
+ms.date: 12/05/2025
 ms.author: govindk
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # How to meet data residency requirements in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 In Azure Cosmos DB, you can configure your data and backups to remain in a single region to meet the [residency requirements](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
@@ -23,13 +28,9 @@ In Azure Cosmos DB, you must explicitly configure the cross-region data replicat
 
 **Periodic mode Backups**: By default, periodic mode account backups will be stored in geo-redundant storage. For periodic backup modes, you can configure data redundancy at the account level. There are three redundancy options for the backup storage. They are local redundancy, zone redundancy, or geo redundancy. For more information, see [periodic backup/restore](periodic-backup-restore-introduction.md).
 
-## Residency requirements for analytical store
-
-Analytical store is resident by default as it is stored in either locally redundant or zone redundant storage. To learn more, see the [analytical store](analytical-store-introduction.md) article.
-
 ## Residency requirements for Azure Cloud Shell
 
-Azure Cloud Shell service is a non-regional service. It doesn't store any customer data, but when used through the Azure Portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal. To learn more, see the [Azure Cloud Shell](https://aka.ms/cloudshell) article.
+Azure Cloud Shell service is a non-regional service. It doesn't store any customer data, but when used through the Azure portal may process shell commands and responses outside of the Geo for the sole purpose of providing the Shell experience inside the Portal. To learn more, see the [Azure Cloud Shell](https://aka.ms/cloudshell) article.
 
 ## Use Azure Policy to enforce the residency requirements
 

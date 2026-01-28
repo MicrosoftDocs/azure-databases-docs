@@ -1,5 +1,5 @@
 ---
-title: Conflict resolution types and resolution policies in Azure Cosmos DB
+title: Conflict Resolution Types and Resolution Policies
 description: This article describes the conflict categories and conflict resolution policies in Azure Cosmos DB.
 author: deborahc
 ms.service: azure-cosmos-db
@@ -7,10 +7,15 @@ ms.subservice: nosql
 ms.topic: concept-article
 ms.date: 04/20/2020
 ms.author: dech
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Conflict types and resolution policies when using multiple write regions
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Conflicts and conflict resolution policies are applicable if your Azure Cosmos DB account is configured with multiple write regions.
 

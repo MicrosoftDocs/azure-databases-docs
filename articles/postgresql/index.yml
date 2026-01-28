@@ -18,7 +18,7 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is Azure Database for PostgreSQL flexible server?
+          - text: What is Azure Database for PostgreSQL?
             url: flexible-server/service-overview.md
       - linkListType: whats-new
         links:
@@ -28,15 +28,17 @@ landingContent:
             url: flexible-server/release-notes.md
       - linkListType: get-started
         links:
-          - text: Try Azure Database for PostgreSQL flexible server for free
+          - text: Try Azure Database for PostgreSQL for free
             url: flexible-server/how-to-deploy-on-azure-free-account.md
       - linkListType: quickstart
         links:
-          - text: Create an Azure Database for PostgreSQL flexible server
+          - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
+          - text: Create an elastic cluster 
+            url: flexible-server/quickstart-create-elastic-cluster-portal.md
       - linkListType: how-to-guide
         links:
-          - text: Manage server
+          - text: Manage your server
             url: flexible-server/how-to-manage-server-portal.md
           - text: Connect and query using Visual Studio Code
             url: extensions/vs-code-extension/overview.md
@@ -58,14 +60,18 @@ landingContent:
             url: flexible-server/concepts-storage.md
           - text: Read replicas 
             url: flexible-server/concepts-read-replicas.md
+          - text: Horizontal scale out
+            url: flexible-server/concepts-elastic-clusters.md        
           - text: Security concepts
             url: flexible-server/concepts-security.md
       - linkListType: how-to-guide
         links:
           - text: Manage high availability
             url: flexible-server/how-to-configure-high-availability.md
-          - text: Guide on scale compute
+          - text: Guide on scalable compute
             url: flexible-server/how-to-scale-compute.md
+          - text: Scale out with elastic clusters
+            url: flexible-server/how-to-scale-out.md            
           - text: Restore to paired region (geo-restore)
             url: flexible-server/how-to-restore-paired-region.md
           - text: Entra-id authentication guide
@@ -108,8 +114,6 @@ landingContent:
     linkLists:      
       - linkListType: concept
         links:
-          - text: Elastic Clusters 
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
           - text: Server parameters
             url: flexible-server/concepts-server-parameters.md
           - text: Compute and storage
@@ -130,7 +134,7 @@ landingContent:
             url: https://learn.microsoft.com/rest/api/postgresql/
             
 # Card 5
-  - title: Migrate to Azure Database for PostgreSQL
+  - title: Migrate to Azure Database for PostgreSQL (offline)
     linkLists:
       - linkListType: overview
         links:
@@ -138,30 +142,44 @@ landingContent:
             url: migrate/migration-service/overview-migration-service-postgresql.md
           - text: Pre-Migration Validation
             url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: how-to-guide
+      - linkListType: tutorial
         links:
- 
+          - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
+            url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+          - text: Migrate (Offline) from Amazon RDS
+            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
+          - text: Migrate (Offline) from Amazon Aurora
+            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+          - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+
+# Card 6
+  - title: Migrate to Azure Database for PostgreSQL (online)
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Migration Service overview
+            url: migrate/migration-service/overview-migration-service-postgresql.md
+          - text: Pre-Migration Validation
+            url: migrate/migration-service/concepts-premigration-migration-service.md
+      - linkListType: tutorial
+        links:
           - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
             url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
           - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
-            url: migrate/migration-service/tutorial-migration-service-iaas-online.md            
-          - text: Migrate (Offline) from Amazon RDS
-            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
+            url: migrate/migration-service/tutorial-migration-service-iaas-online.md
           - text: Migrate (Online) from Amazon RDS
-            url: migrate/migration-service/tutorial-migration-service-aws-online.md            
-          - text: Migrate (Offline) from Amazon Aurora
-            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+            url: migrate/migration-service/tutorial-migration-service-aws-online.md
           - text: Migrate (Online) from Amazon Aurora
-            url: migrate/migration-service/tutorial-migration-service-aurora-online.md            
-          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+            url: migrate/migration-service/tutorial-migration-service-aurora-online.md
           - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md            
-          - text: Migrate from Oracle
-            url: migrate/concepts-oracle-migration.md
+            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+          - text: Migrate (Online) from Google AlloyDB for PostgreSQL
+            url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
 
-      
-#Card 6
+#Card 7
   - title: Additional Resources
     linkLists:
       - linkListType: concept

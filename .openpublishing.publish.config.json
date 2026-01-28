@@ -148,6 +148,12 @@
       "branch_mapping": {}
     },
     {
+      "path_to_root": "cosmos-db-vector-samples",
+      "url": "https://github.com/Azure-Samples/cosmos-db-vector-samples",
+      "branch": "main",
+      "branch_mapping": {}
+    },
+    {
       "path_to_root": "azure-cosmos-mongodb-dotnet",
       "url": "https://github.com/Azure-Samples/cosmos-db-mongodb-api-dotnet-samples",
       "branch": "main",

@@ -2,9 +2,8 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/04/2025
+ms.date: 12/29/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
 ms.topic: include
 ms.custom:
   - automatically generated
@@ -15,7 +14,7 @@ ms.custom:
 | [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example. | 3.2.3 | |
 | [age](https://age.apache.org/) (Preview) provides graph database capabilities. | Not supported | |
 | [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity. | 1.1 | |
-| [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) (Preview) provides data anonymization tools. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand. | Without version <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL. | Not supported | |
 | [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL. | Not supported | |
@@ -23,6 +22,7 @@ ms.custom:
 | [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN. | 1.3 | |
 | [btree_gist](https://www.postgresql.org/docs/current/btree-gist.html) provides support for indexing common datatypes in GiST. | 1.5 | |
 | [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings. | 1.5 | |
+| [credcheck](https://github.com/HexaCluster/credcheck) provides few general credential checks, which will be evaluated during the user creation, during the password change and user renaming. | Not supported | |
 | [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes. | 1.4 | |
 | [dblink](https://www.postgresql.org/docs/current/dblink.html) to connect to other PostgreSQL databases from within a database. | 1.2 | Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server. |
 | [dict_int](https://www.postgresql.org/docs/current/dict-int.html) provides a text search dictionary template for integers. | 1.0 | |
@@ -34,18 +34,20 @@ ms.custom:
 | [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL. | 1.4.0 | |
 | [intagg](https://www.postgresql.org/docs/current/intagg.html) is an obsolete extension that provides an integer aggregator and enumerator. | 1.1 | |
 | [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers. | 1.2 | |
+| [ip4r](https://github.com/RhodiumToad/ip4r) provides a set of data types for IPv4 and IPv6 network addresses. | Not supported | |
 | [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards. | 1.2 | |
 | [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage. | 1.1 | |
 | [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time. | 1.4 | |
 | [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures. | 1.1 | |
 | [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases. | Not supported | |
-| [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 3.7 | |
+| [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 3.18 | |
 | [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level. | 1.7 | |
 | [pgaudit](https://www.pgaudit.org/) provides auditing functionality. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server. |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.4-1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server. |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
-| [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) (Preview) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | Not supported | |
+| [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | Not supported | |
+| [pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications. | Not supported | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server. |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.3.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server. |

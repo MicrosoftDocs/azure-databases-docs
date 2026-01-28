@@ -15,7 +15,7 @@ ai-usage: ai-assisted
 
 High availability is a key feature of Azure Database for MySQL, designed to minimize downtime and ensure your applications remain accessible even during planned maintenance or unexpected outages. This article addresses common questions about high availability (HA) options, billing, failover processes, performance impacts, and best practices to help you make informed decisions for your MySQL workloads on Azure.
 
-## What are the SLAs for same-zone vs zone-redundant HA enabled flexible servers?
+## What are the SLAs for Local-redundant vs zone-redundant HA enabled flexible servers?
 
 SLA information for Azure Database for MySQL Flexible Server can be found at [SLA for Azure Database for MySQL](https://azure.microsoft.com/support/legal/sla/mysql/v1_2/).
 
@@ -51,9 +51,7 @@ If there's a database crash or node failure, the Flexible Server VM is restarted
 
 ## Is there a performance impact when I use HA?
 
-For zone-redundant HA, while there's no major performance impact for read workloads across availability zones, there might be up to 40 percent drop in write-query latency. The increase in write-latency is due to synchronous replication across Availability zone. The write latency impact is twice in zone redundant HA compared to the same zone HA. For same-zone HA, because the primary and the standby replica is in the same zone, the replication latency and so the synchronous write latency is lower.
-
-In summary, if write-latency is more critical for you compared to availability, you might want to choose same-zone HA but if availability and resiliency of your data is more critical for you at the expense of write-latency drop, you must choose zone-redundant HA. To measure the accurate impact of the latency drop in HA setup, we recommend you to perform performance testing for your workload to take an informed decision.
+For zone-redundant HA, there's generally no significant performance impact on read workloads across availability zones. However, you may notice a slight increase in write-query latency typically a few milliseconds due to synchronous replication to the ZRS storage account across zones. In contrast, with local-redundant HA, the primary and standby replicas reside in the same zone, and storage is local (LRS), resulting in slightly lower write latency. For most scenarios, the difference is minimal.
 
 ## How does maintenance of my HA server happen?
 
@@ -61,11 +59,11 @@ Planned events like scaling of compute and minor version upgrades happen on the 
 
 ## Can I do a point-in-time restore (PITR) of my HA server?
 
-You can do a [PITR](./concepts-backup-restore.md#point-in-time-restore) for an HA-enabled Azure Database for MySQL Flexible Server instance to a new Azure Database for MySQL Flexible Server instance that has HA disabled. If the source server was created with zone-redundant HA, you can enable zone-redundant HA or same-zone HA on the restored server later. If the source server was created with same-zone HA, you can enable only same-zone HA on the restored server.
+You can do a [PITR](./concepts-backup-restore.md#point-in-time-restore) for an HA-enabled Azure Database for MySQL Flexible Server instance to a new Azure Database for MySQL Flexible Server instance that has HA disabled. If the source server was created with zone-redundant HA, you can enable zone-redundant HA or Local-redundant HA on the restored server later. If the source server was created with Local-redundant HA, you can enable only Local-redundant HA on the restored server.
 
 ## Can I enable HA on a server after I create the server?
 
-Zone-redundant HA must be enabled during server creation. You can enable same-zone HA after server creation, but ensure that the server parameters **enforce_gtid_consistency** and **gtid_mode** are set to `ON` before proceeding.
+Zone-redundant HA must be enabled during server creation. You can enable Local-redundant HA after server creation, but ensure that the server parameters **enforce_gtid_consistency** and **gtid_mode** are set to `ON` before proceeding.
 
 ## Can I disable HA for a server after I create it?
 
@@ -91,11 +89,11 @@ Currently, Azure Database for MySQL Flexible Server has utilized Planned Failove
 
 When such operations started, it would operate on the original standby instance first, followed by triggering a planned failover operation, and then operate on the original primary instance.
 
-## Can we change the availability mode (Zone-redundant HA/same-zone) of server**
+## Can we change the availability mode (Zone-redundant HA/Local-redundant) of server**
 
-If you create the server with Zone-redundant HA mode enabled, then you can change from Zone-redundant HA to same-zone and vice versa.
+If you create the server with Zone-redundant HA mode enabled, then you can change from Zone-redundant HA to Local-redundant and vice versa.
 
-To change the availability mode, you can set **High Availability** to **Disabled** on the **High Availability** pane, and then set it back to **Zone Redundant or same-zone** and choose **High Availability Mode**.
+To change the availability mode, you can set **High Availability** to **Disabled** on the **High Availability** pane, and then set it back to **Zone Redundant or Local-redundant** and choose **High Availability Mode**.
 
 ## Related content
 

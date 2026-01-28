@@ -8,10 +8,13 @@ ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 06/05/2023
 ms.custom: sfi-ropc-blocked
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # Configure TLS in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 The coordinator node requires client applications to connect with Transport Layer Security (TLS). Enforcing TLS between the database server and client applications helps keep data confidential in transit. Extra verification settings described below also protect against "man-in-the-middle" attacks.
 
 ## Enforcing TLS connections

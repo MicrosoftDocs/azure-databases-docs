@@ -14,7 +14,7 @@ ms.date: 09/27/2023
 
 # Quickstart: Traverse vertices and edges with the Gremlin console and Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 [!INCLUDE[Gremlin devlang](includes/quickstart-devlang.md)]
 
@@ -25,8 +25,7 @@ In this quickstart, you use the Gremlin console to connect to a newly created Az
 ## Prerequisites
 
 - An Azure account with an active subscription.
-  - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/free/).
-  - Don't want an Azure subscription? You can [try Azure Cosmos DB free](../try-free.md) with no subscription required.
+  - No Azure subscription? [Sign up for a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Docker host](https://www.docker.com/)
   - Don't have Docker installed? Try this quickstart in [GitHub Codespaces](https://codespaces.new/github/codespaces-blank?quickstart=1).
 - [Azure Command-Line Interface (CLI)](/cli/azure/)
@@ -104,7 +103,7 @@ Now that the console is connected to the account, use the standard Gremlin synta
     ```
 
     > [!IMPORTANT]
-    > Don't foget the `:>` prefix. THis prefix is required to run the command remotely.
+    > Don't forget the `:>` prefix. THis prefix is required to run the command remotely.
 
 1. Add another **product** vertex with these properties:
 
@@ -155,8 +154,3 @@ When you no longer need the API for Gremlin account, delete the corresponding re
 Azure Cosmos DB for Apache Gremlin solved our problem by offering Gremlin as a service. With this offering, you aren't required to stand up your own Gremlin server instances or manage your own infrastructure. Even more, you can scale your solution as your needs grow over time.
 
 To connect to the API for Gremlin account, you used the `tinkerpop/gremlin-console` container image to run the gremlin console in a manner that didn't require a local installation. Then, you used the configuration stored in the **remote-secure.yaml** file to connect from the running container the API for Gremlin account. From there, you ran multiple common Gremlin commands.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Create and query data using Azure Cosmos DB for Apache Gremlin](tutorial-query.md)

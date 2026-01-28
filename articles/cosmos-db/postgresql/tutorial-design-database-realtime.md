@@ -9,11 +9,13 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/29/2022
 #Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Tutorial: Design a real-time analytics dashboard by using Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this tutorial, you use Azure Cosmos DB for PostgreSQL to learn how to:
 

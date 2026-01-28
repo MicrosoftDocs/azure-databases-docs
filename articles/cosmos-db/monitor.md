@@ -1,5 +1,5 @@
 ---
-title: Monitor Azure Cosmos DB
+title: Monitor
 description: Start here to learn how to monitor Azure Cosmos DB.
 ms.date: 07/01/2025
 ms.custom: horz-monitor
@@ -7,6 +7,8 @@ ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
 ms.service: azure-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Monitor Azure Cosmos DB
@@ -42,7 +44,7 @@ For a list of available metrics for Azure Cosmos DB, see [Azure Cosmos DB monito
 [!INCLUDE [horz-monitor-custom-metrics](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-non-monitor-metrics.md)]
 
 - For information about partner solutions and tools that can help monitor Azure Cosmos DB, see [Monitor Azure Cosmos DB using third-party solutions](monitoring-solutions.md).
-- To implement Micrometer metrics in the Java SDK for Azure Cosmos DB by consuming Prometheus metrics, see [Use Micrometer client metrics for Java](nosql/client-metrics-java.md).
+- To implement Micrometer metrics in the Java SDK for Azure Cosmos DB by consuming Prometheus metrics, see [Use Micrometer client metrics for Java](client-metrics-java.md).
 
 [!INCLUDE [horz-monitor-resource-logs](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-logs.md)]
 
@@ -118,7 +120,7 @@ For more information about working with Azure Monitor Logs for Azure Cosmos DB, 
 Before using Log Analytics to issue Kusto queries, you must [enable diagnostic logs for control plane operations](audit-control-plane-logs.md#enable-diagnostic-logs-for-control-plane-operations). When you enable diagnostic logs, you select between storing your data in [resource-specific tables](/azure/azure-monitor/essentials/resource-logs#resource-specific) or the single [AzureDiagnostics table (legacy)](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode). The exact text of Kusto queries depends on the [collection mode](/azure/azure-monitor/essentials/resource-logs#select-the-collection-mode) you select.
 
 - See [Troubleshoot issues with diagnostics queries](monitor-logs-basic-queries.md) for simple queries to help troubleshoot issues with your Azure Cosmos DB.
-- See [Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for NoSQL](nosql/diagnostic-queries.md) for more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to Azure Diagnostics (legacy) and resource-specific (preview) tables.
+- See [Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for NoSQL](diagnostic-queries.md) for more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to Azure Diagnostics (legacy) and resource-specific (preview) tables.
 
 Here are some queries that you can enter into the **Log search** search bar to help you monitor your Azure Cosmos DB resources. 
 
@@ -212,7 +214,7 @@ AzureDiagnostics
 For Kusto queries you can use to troubleshoot issues with Azure Cosmos DB, see the following articles:
 
 - [Troubleshoot issues by using basic queries](monitor-logs-basic-queries.md)
-- [Troubleshoot issues by using advanced diagnostic queries](nosql/diagnostic-queries.md)
+- [Troubleshoot issues by using advanced diagnostic queries](diagnostic-queries.md)
 
 These examples are just a small sampling of the rich queries you can run in Azure Monitor by using the Kusto Query Language (KQL). For more examples, see [samples for Kusto queries](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor).
 

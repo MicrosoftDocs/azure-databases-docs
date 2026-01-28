@@ -1,0 +1,97 @@
+### YamlMime:FAQ
+metadata:
+  title: Full Text Search FAQ
+  titleSuffix: Azure Cosmos DB
+  description: Commonly asked questions for full text indexing and search in Azure Cosmos DB
+  author: jcodella
+  ms.author: jacodel
+  ms.service: azure-cosmos-db
+  ms.topic: how-to
+  ms.date: 10/20/2025
+  ms.collection:
+    - ce-skilling-ai-copilot
+  appliesto:
+    - ✅ NoSQL
+title: Azure Cosmos DB Full text search frequently asked questions
+summary: |
+  Full Text Search (sometimes called lexical search) is a feature in Azure Cosmos DB for NoSQL that enables efficient querying of textual data. It uses a specialized index and scoring system to deliver relevant results. The feature includes a text-relevancy method that orders search results using the BM25 (Best Matching 25) algorithm. This ranking system considers three key factors: term frequency, inverse document frequency, and document length. This approach helps applications search for and retrieves the most relevant text documents from your Azure Cosmos DB data without requiring external search services like Lucene or Elasticsearch.
+sections:
+  - name: General
+    questions:
+      - question: |
+          What are the processing steps involved in full text search in Azure Cosmos DB?
+        answer: |
+          Full text search in Azure Cosmos DB applies several text processing techniques that improve search relevance and efficiency. The system uses stemming, which reduces words to their root forms. It also performs [stopword removal](./stopwords.md) that eliminates common words like "the" and "and" since these don't add value to search results. Additionally, it uses tokenization to break text into searchable units. These processing steps help ensure that queries return the most meaningful and relevant documents.
+      - question: |
+          Does the full text index in Azure Cosmos DB support wildcard paths?
+        answer: |
+          No, wildcard characters such as * and [] aren't currently supported in full text container policies or indexes. Instead, the full text path should be defined explicitly.
+      - question: |
+          Why does my Azure Cosmos DB full text queries have high latency and/or RU charge?
+        answer: |
+          Several factors can contribute to high latency or RU consumption:
+
+          - Query selectivity
+          - Number of indexed terms (words)
+          - Number of documents in the container
+          - Number of physical partitions of your Cosmos DB container
+
+          It's good practice to ensure your full text container and indexing policies are set correctly for your query paths. For example if using `FullTextScore(c.text, ...)`, you should have full text container and indexing policies set on the `c.text` path. [Learn more about full text policies here](./full-text-search.md#full-text-policy).
+      - question: |
+          Why is my ORDER BY RANK with FullTextScore have high latency or RU charge in Azure Cosmos DB?
+        answer: |
+          Using ORDER BY RANK FullTextScore(...) can be costly if the query includes long phrases. We recommend splitting phrases into individual keywords to improve performance. For example, instead of:
+
+          ```nosql
+          ORDER BY RANK FullTextScore(c.text, "mountain bicycle with performance shocks")
+          ```
+
+          You should alternatively use:
+
+          ```nosql
+          ORDER BY RANK FullTextScore(c.text, "mountain bicycle", "with", "performance shocks")
+          ```
+      - question: |
+          Can I see the score returned by FullTextscore?
+        answer: |
+          As of today, you can't project the FullTextScore in the `SELECT` clause of a query.
+      - question: |
+          Why are my search results different than I expect?
+        answer: |
+          If you're comparing Full Text Search results in Azure Cosmos DB to results from a search engine that indexes your Cosmos DB data, the results can be slightly different. This difference is usually because of one of the following reasons:
+
+          - **Stopword filtering**: Cosmos DB automatically removes common words like "the" and "and," which your search engine might include.
+          - **Stemming differences**: Cosmos DB reduces words to their root forms using language-specific rules, which might differ from your search engine's approach.
+          - **Scoring algorithm**: Cosmos DB uses standard BM25 scoring, which might be tuned differently than your engine's ranking logic.
+          - **Tokenization rules**: The way Cosmos DB breaks text into searchable units might differ from your engine's tokenizer.
+          - **Language support**: Cosmos DB's multi-language support is in preview and might behave differently than engines with mature analyzers for nonenglish languages.
+          - **Fuzzy search behavior**: Cosmos DB's fuzzy search is limited to a maximum of 2 edits and 10 suggestions and its implementation is still in preview, so the results from a fuzzy search might differ compared to other search engines.
+  - name: Best practices
+    questions:
+      - question: |
+          What are some best practices for using full text search in Azure Cosmos DB?
+        answer: |
+          Here are some best practices to consider when using full text search in Azure Cosmos DB:
+
+          - Always define both a full text policy and full text index for optimal performance.
+          - Use `FullTextContainsAll` or `FullTextContainsAny` 
+          - Use `FullTextScore` only in `ORDER BY RANK` clauses.
+  - name: Limitations
+    questions:
+      - question: |
+          What are the known limitations of full text search in Azure Cosmos DB?
+        answer: |
+          Here are some known limitations of full text search in Azure Cosmos DB:
+
+          - Wildcard paths (*, []) for arrays aren't supported in full text policies or indexes.
+          - Using `FullTextScore` on phrases (strings with multiple words with spaces) can be slower than searching on each word separately.
+          - Multi-language support is in preview and might have inconsistent performance. Stopword removal is currently only available for English (en-US).
+          - Fuzzy search is also in preview and limited to a maximum edit distance of 2 and 10 suggestions.
+          - Queries using `FullTextScore` within a `JOIN` aren't currently supported
+      - question: |
+          Are there any known issues with full text search in Azure Cosmos DB?
+        answer: |
+          Here are some known issues with full text search in Azure Cosmos DB:
+
+          - Providing the incorrect syntax for `FullTextScore` might result in a 500 error instead of the expected 400 error. 
+          - When executing queries using `ORDER BY RANK` and `FullTextScore`, the results might differ slightly on macOS or Linux clients from Windows clients.

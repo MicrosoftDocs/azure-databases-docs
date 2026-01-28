@@ -13,8 +13,6 @@ ms.custom: sfi-image-nochange
 
 # Network scenarios for the migration service in Azure Database for PostgreSQL
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article outlines various scenarios for connecting a source database to an Azure Database for PostgreSQL flexible server by using the migration service in Azure Database for PostgreSQL. Each scenario has different networking requirements and configurations to successfully establish a connection for migration. Specific details vary based on the actual network setup and requirements of the source environment and the target environment.
 
 The following table summarizes the migration scenarios. The table indicates whether each scenario is supported based on the configurations of the source and target environments.

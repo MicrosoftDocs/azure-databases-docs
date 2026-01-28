@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.custom: build-2023
 ms.topic: how-to
 ms.date: 05/10/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to optimize performance when using pgvector on Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The `pgvector` extension adds an open-source vector similarity search to PostgreSQL.
 

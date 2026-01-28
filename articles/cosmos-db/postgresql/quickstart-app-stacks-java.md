@@ -1,21 +1,23 @@
 ---
 title: Java app to connect and run SQL commands on Azure Cosmos DB for PostgreSQL
 description: See how to create a Java app that connects and runs SQL statements on Azure Cosmos DB for PostgreSQL.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: devx-track-extended-java, sfi-ropc-blocked
 ms.topic: quickstart
 recommendations: false
 ms.date: 06/05/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Java app to connect and run SQL commands on Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
-
 [!INCLUDE [App stack selector](includes/quickstart-selector.md)]
+
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This quickstart shows you how to use Java code to connect to a cluster, and use SQL statements to create a table. You'll then insert, query, update, and delete data in the database.  The steps in this article assume that you're familiar with Java development and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity), and are new to working with Azure Cosmos DB for PostgreSQL.
 

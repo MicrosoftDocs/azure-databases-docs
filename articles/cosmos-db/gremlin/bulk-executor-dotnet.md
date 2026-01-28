@@ -9,12 +9,11 @@ author: manishmsfte
 ms.author: mansha
 ms.devlang: csharp
 ms.custom: devx-track-dotnet, devx-track-extended-java, sfi-ropc-blocked
-# ms.devlang: csharp, java
 ---
 
 # Ingest data in bulk in the Azure Cosmos DB for Gremlin by using a bulk executor library
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 Graph databases often need to ingest data in bulk to refresh an entire graph or update a portion of it. Azure Cosmos DB, a distributed database and the backbone of the Azure Cosmos DB for Gremlin, is meant to perform best when the loads are well distributed. Bulk executor libraries in Azure Cosmos DB are designed to exploit this unique capability of Azure Cosmos DB and provide optimal performance. For more information, see [Introducing bulk support in the .NET SDK](https://devblogs.microsoft.com/cosmosdb/introducing-bulk-support-in-the-net-sdk).
 
@@ -33,9 +32,7 @@ Before you begin, make sure that you have the following:
 
 * Visual Studio 2019 with the Azure development workload. You can get started with the [Visual Studio 2019 Community Edition](https://visualstudio.microsoft.com/downloads/) for free.
 
-* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cosmos-db). 
-
-   Alternatively, you can [create a free Azure Cosmos DB account](https://azure.microsoft.com/try/cosmosdb/) without an Azure subscription.
+* An Azure subscription. If you don't already have a subscription, you can [create a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). 
 
 * An Azure Cosmos DB for Gremlin database with an *unlimited collection*. To get started, go to [Azure Cosmos DB for Gremlin in .NET](./quickstart-dotnet.md).
 
@@ -217,8 +214,3 @@ Each state contains the following values:
 | `endTime` |  The `System.nanoTime()` value when the state finished. |
 | `durationInNanoSeconds` |  The difference between the `endTime` and `startTime` values. |
 | `durationInMinutes` |  The `durationInNanoSeconds` value, converted into minutes. The `durationInMinutes` value is represented as a float number, not a time value. For example, a value of 2.5 represents 2 minutes and 30 seconds. |
-
-## Next steps
-
-* For more information about the classes and methods that are defined in this namespace, review the [BulkExecutor Java open source documentation](https://github.com/Azure-Samples/azure-cosmos-graph-bulk-executor/tree/main/java/src/main/java/com/azure/graph/bulk/impl).
-* See [Bulk import data to the Azure Cosmos DB SQL API account by using the .NET SDK](../nosql/tutorial-dotnet-bulk-import.md) article. This bulk mode documentation is part of the .NET V3 SDK.

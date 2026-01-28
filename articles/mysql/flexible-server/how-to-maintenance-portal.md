@@ -4,7 +4,7 @@ description: Learn how to configure scheduled maintenance settings for Azure Dat
 author: xboxeer
 ms.author: yuzheng1
 ms.reviewer: sunaray, maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.topic: how-to
 
 You can specify maintenance options for each Azure Database for MySQL flexible server instance in your Azure subscription. Options include the maintenance schedule and notification settings for upcoming and finished maintenance events.
 > [!NOTE]
-> These new maintenance features are being rolled out progressively across Azure regions. If you do not see them immediately in the Azure Portal, please allow some time for full deployment. Availability may vary depending on your subscription and region.
+> These new maintenance features are being rolled out progressively across Azure regions. If you do not see them immediately in the Azure portal, please allow some time for full deployment. Availability may vary depending on your subscription and region.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ Burstable SKU servers are enrolled in the Virtual Canary policy by default.
 
 ### System Managed Maintenance Window (SMW)
 
-This maintenance policy is the default option for servers on **General Purpose** and **Business Critical** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior—updates occur no more than once every 30 days and are announced at least seven days in advance.
+This maintenance policy is the default option for servers on **General Purpose** and **Memory-Optimized** compute tiers. Maintenance is automatically scheduled on a random day and time, typically between **11:00 PM and 7:00 AM server local time**. This policy follows the standard maintenance behavior—updates occur no more than once every 30 days and are announced at least seven days in advance.
 
 ### Custom Managed Maintenance Window (CMW)
 
@@ -75,7 +75,7 @@ If maintenance hasn't started yet, you can select a new date and time by choosin
 
 :::image type="content" source="media/how-to-maintenance-portal/maintenance-reschedule.png" alt-text="Screenshot that showcases maintenance reschedule.":::
 
-The rescheduled feature is only available for servers on **General Purpose** and **Business Critical** compute tiers. It’s not supported for **Burstable SKU** servers.
+The rescheduled feature is only available for servers on **General Purpose** and **Memory-Optimized** compute tiers. It’s not supported for **Burstable SKU** servers.
 
 #### Reschedule to now
 
@@ -95,7 +95,7 @@ Be aware of the following points about the feature:
 
 There is no limitation on how many times a maintenance event can be rescheduled. As long as a maintenance event hasn't entered the **In preparation** state, you can always reschedule it to another time.
 
-### Maintenance rollout progress view (Public Preview)
+### Maintenance rollout progress view
 
 Each maintenance event includes a **Tracking ID**. Clicking this ID opens a detailed view of all servers in your subscription that are part of the same maintenance rollout. This gives you a consolidated overview across your fleet—no need to check each server individually or rely solely on email notifications.
 
@@ -104,6 +104,25 @@ Each maintenance event includes a **Tracking ID**. Clicking this ID opens a deta
 :::image type="content" source="media/how-to-maintenance-portal/maintenance-impacted-resource.png" alt-text="Screenshot that showcases impacted resource page.":::
 
 You can access the tracking ID view at any time, whether the maintenance is pending or already completed.
+
+### Using Azure Resource Graph to Audit Maintenance History
+
+Customers who manage multiple Azure Database for MySQL flexible servers can use Azure Resource Graph to perform bulk queries across subscriptions and resource groups. This is especially useful for auditing maintenance history, identifying impacted resources, and tracking maintenance events over time.
+For example, the following Kusto query retrieves the maintenance status, start and end times, and tracking ID for all MySQL flexible servers under the customer's subscription. This allows customers to monitor maintenance activities over the past three months in a scalable and automated way:
+
+```sql
+
+ServiceHealthResources
+| where type == "microsoft.resourcehealth/events/impactedresources"
+| extend TrackingId = split(split(id, "/events/", 1)[0], "/impactedResources", 0)[0]
+| extend p = parse_json(properties)
+| project subscriptionId, TrackingId, resourceName= p.resourceName, resourceGroup=p.resourceGroup, resourceType=p.targetResourceType, status= p.status, maintenanceStartTime=todatetime(p.maintenanceStartTime),  maintenanceEndTime=todatetime( p.maintenanceEndTime), details = p, id
+| where resourceType == "Microsoft.DBforMySQL/flexibleServers" 
+| order by maintenanceEndTime
+
+```
+
+This query can be executed in Azure Resource Graph Explorer or via Azure CLI/PowerShell using the az graph query command. It helps teams proactively track and report on maintenance events across their MySQL fleet.
 
 ---
 

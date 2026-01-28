@@ -1,10 +1,10 @@
 ---
-title: Known issues with migrations to Azure MySQL Database
+title: Known Issues with Migrations to Azure MySQL Database
 description: Learn about known migration issues associated with migrations to Azure MySQL Database
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: sanjaymi, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -97,7 +97,7 @@ One or more incompatible SQL modes can cause many different errors. Following is
 
 - **Error**: Enum column has a null value in one or more rows and the target SQL mode is set to strict.
 
-  **Potential error message**: A batch couldn't be written to the table '{table}' due to a data truncation error. Please ensure that the data isn't too large for the data type of the MySQL table column. If the column type is an enum, make sure SQL Mode isn't set as TRADITIONAL, STRICT_TRANS_TABLES, or STRICT_ALL_TABLES and is the same on source and target.
+  **Potential error message**: A batch couldn't be written to the table '{table}' due to a data truncation error. Ensure that the data isn't too large for the data type of the MySQL table column. If the column type is an enum, make sure SQL Mode isn't set as TRADITIONAL, STRICT_TRANS_TABLES, or STRICT_ALL_TABLES and is the same on source and target.
 
   **Limitation**: The error occurs when historical data was written to the source server when they had certain setting, but when it's changed, data can't move.
 
@@ -149,6 +149,6 @@ One or more incompatible SQL modes can cause many different errors. Following is
 
 ## Related content
 
-- [Tutorial: Migrate MySQL to Azure Database for MySQL online using DMS](tutorial-mysql-azure-external-to-flex-online-portal.md)
+- [Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal](tutorial-mysql-azure-external-to-flex-online-portal.md)
 - [Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS](tutorial-mysql-azure-mysql-offline-portal.md)
-- [Tutorial: Migrate MySQL to Azure Database for MySQL online by copying physical files](tutorial-mysql-azure-external-online-portal-physical.md)
+- [Tutorial: Migrate from MySQL to Azure Database for MySQL using DMS physical migration with the Azure portal (Preview)](tutorial-mysql-azure-external-online-portal-physical.md)

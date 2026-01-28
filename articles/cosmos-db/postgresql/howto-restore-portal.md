@@ -1,18 +1,20 @@
 ---
 title: Restore - Azure Cosmos DB for PostgreSQL - Azure portal
 description: See how to perform restore operations in the same or another region in Azure Cosmos DB for PostgreSQL through the Azure portal.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: references_regions
 ms.topic: how-to
 ms.date: 01/28/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Backup and point-in-time restore of a cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This article provides step-by-step procedures to select backup type, to check type of backup enabled on a cluster, and to perform [point-in-time
 recoveries](concepts-backup.md#restore) for a

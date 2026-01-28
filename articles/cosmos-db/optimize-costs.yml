@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 
-title: Optimize your Azure Cosmos DB costs
+title: Optimize Your Costs
 summary: |
   Optimize your costs for applications in development or production using Azure Cosmos DB.
 metadata:
@@ -14,6 +14,8 @@ metadata:
   author: markjbrown
   ms.author: mjbrown
   ms.date: 12/03/2024
+  appliesto:
+    - ✅ NoSQL
 landingContent:
   - title: Understand our pricing model
     linkLists:

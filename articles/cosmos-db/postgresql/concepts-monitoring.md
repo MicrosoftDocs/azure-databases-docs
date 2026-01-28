@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 01/18/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Monitor and tune Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Monitoring data about your servers helps you troubleshoot and optimize for your
 workload. Azure Cosmos DB for PostgreSQL provides various monitoring options to provide

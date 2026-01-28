@@ -1,22 +1,21 @@
 ---
-title: Priority-based execution (preview)
-titleSuffix: Azure Cosmos DB
+title: Priority-based execution
 description: Learn how to use Priority-based execution in Azure Cosmos DB.
 author: richagaur
 ms.author: richagaur
 ms.service: azure-cosmos-db
-ms.custom: ignite-2023, sfi-image-nochange
+ms.custom: ignite-2023, sfi-image-nochange, ignite-2025
 ms.topic: how-to
 ms.date: 11/15/2023
+appliesto:
+  - ✅ NoSQL
 ---
 
-# Priority-based execution in Azure Cosmos DB (preview)
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
+# Priority-based execution in Azure Cosmos DB
 
 Priority based execution allows users to specify priority of requests sent to Azure Cosmos DB. In cases where the number of requests exceeds the capacity that can be processed within the configured Request Units per second (RU/s), then Azure Cosmos DB throttles low priority requests to prioritize the execution of high priority requests.
 
-This feature enables users to execute critical tasks while delaying less important tasks when the total consumption of container exceeds the configured RU/s in high load scenarios by implementing throttling measures for low priority requests first. Any client application using SDK retries low priority requests in accordance with the [retry policy](../../articles/cosmos-db/nosql/conceptual-resilient-sdk-applications.md) configured.
+This feature enables users to execute critical tasks while delaying less important tasks when the total consumption of container exceeds the configured RU/s in high load scenarios by implementing throttling measures for low priority requests first. Any client application using SDK retries low priority requests in accordance with the [retry policy](conceptual-resilient-sdk-applications.md) configured.
 
 
 > [!NOTE]
@@ -33,13 +32,13 @@ You can use priority-based execution when your application has different priorit
 
 ## Getting started
 
-To get started using priority-based execution, navigate to the **Features** page in you're in Azure Cosmos DB account. Select and enable the **Priority-based execution (preview)** feature.
+To get started using priority-based execution, navigate to the **Features** page in you're in Azure Cosmos DB account. Select and enable the **Priority-based execution** feature.
 
 :::image type="content" source="media/priority-based-execution/priority-based-execution-enable-feature.png" alt-text="Screenshot of Priority-based execution feature in the Features page in an Azure Cosmos DB account.":::
 
 ## SDK requirements 
 
-- .NET v3: [v3.33.0-preview](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.33.0-preview) or later
+- .NET v3: [v3.38.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.38.0) or later
 - Java v4: [v4.45.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.45.0) or later
 - Spark 3.2: [v4.19.0](https://central.sonatype.com/artifact/com.azure.cosmos.spark/azure-cosmos-spark_3-2_2-12/4.19.0) or later
 - JavaScript v4: [v4.0.0](https://www.npmjs.com/package/@azure/cosmos) or later
@@ -116,7 +115,6 @@ query = list(container.query_items("Select * from c", partition_key="pk1", prior
 
 ---
 
-
 ## Monitor priority-based execution
 
 You can monitor the behavior of requests with low and high priority using Azure Monitor metrics in the Azure portal.
@@ -156,9 +154,6 @@ When Priority-based execution is enabled for a Cosmos DB account, all requests i
 - Priority-based execution is currently not supported for 
 **serverless** database accounts.
 - The behavior of priority-based execution feature is non-deterministic for shared throughput database containers.
-
-## Known issues
-
 - For strong and bounded staleness consistency levels, read request prioritization may not work effectively allowing low priority write requests to execute irrespective of high priority read traffic.
 
 ## Next steps

@@ -3,15 +3,13 @@ metadata:
   title: Frequently asked questions
   titleSuffix: Azure Cosmos DB for Apache Gremlin
   description: Get answers to frequently asked questions about Azure Cosmos DB for Apache Gremlin.
-  author: manishmsfte
-  ms.author: mansha
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: faq
-  ms.date: 06/11/2025
+  ms.date: 08/18/2025
 title: Frequently asked questions about Azure Cosmos DB for Apache Gremlin
 summary: |
-  [!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+  [!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 sections:
   - name: Gremlin queries
     questions:
@@ -20,77 +18,86 @@ sections:
         answer: |
           The **executionProfile()** preview step can be used to provide an analysis of the query execution plan. This step needs to be added to the end of any Gremlin query. For example, you can add the step to the end of a `g.V('example').out('relationship')` query resulting in `g.V('example').out('relationship').executionProfile()`.
 
-          The output of the above profile shows how much time is spent obtaining the vertex objects, the edge objects, and the size of the working data set. This is related to the standard cost measurements for Azure Cosmos DB queries.
-
+          The output of the profile shows how much time is spent obtaining the vertex objects, the edge objects, and the size of the working data set. This output is related to the standard cost measurements for Azure Cosmos DB queries.
   - name: Other frequently asked questions
     questions:
       - question: |
           How are RU/s charged when running queries on a graph database?
         answer: |
-          All graph objects, vertices, and edges, are shown as JSON documents in the backend. Since one Gremlin query can modify one or many graph objects at a time, the cost associated with it's directly related to the objects, edges that are processed by the query. This is the same process that Azure Cosmos DB uses for all other APIs. For more information, see [Request Units in Azure Cosmos DB](../request-units.md).
+          All graph objects, vertices, and edges appear as JSON documents in the backend. A Gremlin query can modify one or many graph objects at a time, and the cost depends directly on the objects and edges processed by the query. This process works the same way as it does for all other Azure Cosmos DB APIs.
 
-          The RU charge is based on the working data set of the traversal, and not the result set. For example, if a query aims to obtain a single vertex as a result but needs to traverse more than one other object on the way, then the cost is based on all the graph objects that it takes to compute the one result vertex.
-
+          The RU charge depends on the working data set of the traversal, not the result set. Consider an example where a query obtains a single vertex as a result but needs to traverse several other objects along the way. In this example, the cost is based on all the graph objects involved in computing the result vertex.
       - question: |
-          What's the maximum scale that a graph database can have in Azure Cosmos DB for Gremlin?
+          What's the maximum scale that a graph database can have in Azure Cosmos DB for Apache Gremlin?
         answer: |
-          Azure Cosmos DB makes use of [horizontal partitioning](../partitioning-overview.md) to automatically address increase in storage and throughput requirements. The maximum throughput and storage capacity of a workload is determined by the number of partitions that are associated with a given container. However, an API for Gremlin container has a specific set of guidelines to ensure a proper performance experience at scale. For more information about partitioning, and best practices, see [partitioning in Azure Cosmos DB](../partitioning-overview.md) article.
-
+          Azure Cosmos DB uses horizontal partitioning to automatically scale storage and throughput as needed. The number of partitions in a container determines its maximum throughput and storage capacity. For optimal performance at scale, follow the specific guidelines for API for Gremlin containers. To learn more about partitioning and best practices, see the [partitioning in Azure Cosmos DB article.
       - question: |
           For C#/.NET development, should I use the Microsoft.Azure.Graphs package or Gremlin.NET?
         answer: |
-          Azure Cosmos DB for Gremlin uses the open-source drivers as the main connectors for the service. So the recommended option is to use [drivers supported by Apache](https://tinkerpop.apache.org/).
-
+          Azure Cosmos DB for Apache Gremlin uses the open-source drivers as the main connectors for the service. So the recommended option is to use [drivers supported by Apache](https://tinkerpop.apache.org/).
       - question: |
           How can I protect against injection attacks using Gremlin drivers?
         answer: |
-          Most native Apache Tinkerpop Gremlin drivers allow the option to provide a dictionary of parameters for query execution. This is an example of how to do it in [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) and in [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js).
-
+          Most native Apache Gremlin drivers allow the option to provide a dictionary of parameters for query execution. This functionality is supported in both [`Gremlin.Net`](https://www.nuget.org/packages/Gremlin.Net) and [`gremlin` (Node.js)](https://www.npmjs.com/package/gremlin) libraries.
       - question: |
           Why am I getting the "Gremlin Query Compilation Error: Unable to find any method" error?
         answer: |
-          Azure Cosmos DB for Gremlin implements a subset of the functionality defined in the Gremlin surface area. For supported steps and more information, see [Gremlin support](support.md) article.
+          Azure Cosmos DB for Apache Gremlin supports a subset of the Gremlin surface area. For details on supported steps, see the [Gremlin support](support.md) article.
 
-          The best workaround is to rewrite the required Gremlin steps with the supported functionality, since all essential Gremlin steps are supported by Azure Cosmos DB.
-
+          To resolve this error, rewrite your Gremlin queries using the supported steps, as Azure Cosmos DB provides all essential Gremlin functionality.
       - question: |
           Why am I getting the "WebSocketException: The server returned status code '200' when status code '101' was expected" error?
         answer: |
-          This error is likely thrown when the wrong endpoint is being used. The endpoint that generates this error has the following pattern: `https://<account-name>.documents.azure.com:443/`
-
-          This is the documents endpoint for your graph database.  The correct endpoint to use is the Gremlin Endpoint, which has the following format:
-
-          `https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
-
+          This error is likely thrown when the wrong endpoint is being used. 
+          
+          The endpoint that generates this error has the following pattern: `https://<account-name>.documents.azure.com:443/`. This endpoint is actually the documents endpoint for your graph database.  
+          
+          The correct endpoint to use is the **Gremlin** endpoint, which has the following format: `https://<account-name>.gremlin.cosmosdb.azure.com:443/`.
       - question: |
           Why am I getting the "RequestRateIsTooLarge" error?
         answer: |
           This error means that the allocated Request Units per second aren't enough to serve the query. This error is seen when you run a query that obtains all vertices:
 
-          ```
-          // Query example:
+          ```gremlin
           g.V()
           ```
 
-          This query attempts to retrieve all vertices from the graph. So, the cost of this query will be equal to at least the number of vertices in terms of RUs. The RU/s setting should be adjusted to address this query.
-
+          This query attempts to retrieve all vertices from the graph. So, the cost of this query is equal to at least the number of vertices in terms of request units (RUs). The request units per second (RU/s) setting should be adjusted to address this query.
       - question: |
           Why do my Gremlin driver connections get dropped eventually?
         answer: |
-          A Gremlin connection is made through a WebSocket connection. Although WebSocket connections don't have a specific time to live, Azure Cosmos DB for Gremlin will terminate idle connections after 30 minutes of inactivity.
-
+          A Gremlin connection is made through a WebSocket connection. Although WebSocket connections don't have a specific time to live, Azure Cosmos DB for Apache Gremlin will terminate idle connections after 30 minutes of inactivity.
       - question: |
           Why can't I use fluent API calls in the native Gremlin drivers?
         answer: |
-          Fluent API calls aren't yet supported by the Azure Cosmos DB for Gremlin. Fluent API calls require an internal formatting feature known as bytecode support that currently isn't supported by Azure Cosmos DB for Gremlin. Due to the same reason, the latest Gremlin-JavaScript driver is also currently not supported.
+          Azure Cosmos DB for Apache Gremlin doesn't support fluent API calls yet. Fluent API calls rely on an internal formatting feature called bytecode support, which Azure Cosmos DB for Apache Gremlin currently doesn't provide. For this reason, the latest Gremlin-JavaScript driver also isn't supported.
+      - question: |
+          How do I find the request unit charge for a query?
+        answer: |
+          You can find the request unit (RU) charge for an Azure Cosmos DB for Apache Gremlin query using one of a few methods:
 
-additionalContent: |
-  ## Related content
+          - Use the Azure portal
 
-  - [Azure Cosmos DB for Gremlin wire protocol support](support.md)
-  - Create, query, and traverse an Azure Cosmos DB graph database using the [Gremlin console](quickstart-console.md)
+            1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-  ## Next step
+            1. [Create a new Azure Cosmos DB for Apache Gremlin account](quickstart-console.md) and seed it with data, or select an existing account that already contains data.
 
-  > [!div class="nextstepaction"]
-  > [Frequently asked questions about Azure Cosmos DB](../faq.yml)
+            1. Go to the **Data Explorer** pane, and then select the container you want to work on.
+
+            1. Enter a valid query, and then select **Execute Gremlin Query**.
+
+            1. Select **Query Stats** to display the actual request charge for the request you executed.
+
+          - Use the .NET software development kit (SDK)
+
+            1. Run a query to get the result as an object of type `ResultSet<>`: `ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;`
+
+            1. Get the request charge from the results using the `StatusAttributes` array and the `x-ms-request-charge` indexer: `double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];`                
+
+          - Use the Java SDK
+
+            1. Run a query to get the result as an object of type `ResultSet`: `ResultSet results = client.submit("g.V().count()");`
+
+            1. Get the request charge from the results using the `statusAttributes` method and the `x-ms-request-charge` key: `Map<String, Object> attributes = results.statusAttributes(); Double requestCharge = (Double) attributes.get("x-ms-request-charge");`
+            
+          The request charge is available under the `x-ms-request-charge` key in the response headers returned by the API for Gremlin.

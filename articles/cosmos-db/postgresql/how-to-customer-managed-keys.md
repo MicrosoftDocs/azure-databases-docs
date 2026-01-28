@@ -8,17 +8,19 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 01/03/2024
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
+
 # Enable data encryption with customer-managed keys in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Prerequisites
 
 - An existing Azure Cosmos DB for PostgreSQL account.
-  - If you have an Azure subscription, [create a new account](../nosql/how-to-create-account.md?tabs=azure-portal).
-  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](../try-free.md) before you commit.
+  - If you have an Azure subscription, [create a new account](../how-to-create-account.md?tabs=azure-portal).
+  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Enable data encryption with customer-managed keys
 

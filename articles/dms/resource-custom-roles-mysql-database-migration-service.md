@@ -1,13 +1,13 @@
 ---
-title: "Custom roles for MySQL to Azure Database for MySQL migrations using Database Migration Service"
+title: Custom Roles for MySQL to Azure Database for MySQL Migrations Using Database Migration Service
 titleSuffix: Azure Database Migration Service
 description: Learn to use the custom roles for MySQL to Azure Database for MySQL migrations.
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
-ms.topic: article
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ---

@@ -1,17 +1,19 @@
 ---
 title: Limits and limitations – Azure Cosmos DB for PostgreSQL
 description: Current limits for clusters
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 07/07/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Azure Cosmos DB for PostgreSQL limits and limitations
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The following section describes capacity and functional limits in the Azure Cosmos DB for PostgreSQL service.
 

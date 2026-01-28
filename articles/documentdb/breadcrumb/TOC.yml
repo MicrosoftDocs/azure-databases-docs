@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: DocumentDB
+      tocHref: /azure/documentdb/
+      topicHref: /azure/documentdb/index

@@ -1,5 +1,5 @@
 ---
-title: Configure and use Per Partition Automatic Failover for Azure Cosmos DB
+title: Configure and Use Per Partition Automatic Failover
 description: Learn how to enable and use Per Partition Automatic Failover for Azure Cosmos DB
 author: sushantrane
 ms.author: srane
@@ -8,10 +8,11 @@ ms.topic: how-to
 ms.date: 05/14/2025
 ms.custom:
   - build-2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # How to onboard and adopt Per-Partition Automatic Failover (PPAF) for Azure Cosmos DB
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 This article explains how to configure Per Partition Automatic Failover on your Azure Cosmos DB account.
 
@@ -33,9 +34,9 @@ Before enabling PPAF, ensure your environment meets the following **prerequisite
 - **API Type:** The account must use the **Core (SQL) API** (NoSQL API).
 - **Azure Region:** The account should be in **Azure public cloud regions** (Global Azure). Accounts in sovereign clouds aren't eligible during preview.
 - **SDK Version:** Your application must use a **latest supported Azure Cosmos DB SDK** that implements PPAF logic. Currently, the preview supports:
-  - **.NET SDK v3** : v 3.51.0 or later
-  - **Java SDK**: v 4.70.0 or later
-
+  - **.NET SDK v3** : v 3.54.0 or later
+  - **Java SDK**: v 4.75.0 or later
+- **In Account Restore**: In Account Restore is not supported for accounts with PPAF enabled.
 
 ## Register for Preview
 

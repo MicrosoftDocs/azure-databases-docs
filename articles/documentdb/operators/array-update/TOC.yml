@@ -1,0 +1,24 @@
+- name: $addToSet
+  href: $addtoset.md
+- name: $each
+  href: $each.md
+- name: $pop
+  href: $pop.md
+- name: $position
+  href: $positional.md
+- name: $ (update)
+  href: $.md
+- name: $[]
+  href: $positional-all.md
+- name: $[<identifier>]
+  href: $positional-filtered.md
+- name: $pull
+  href: $pull.md
+- name: $pullAll
+  href: $pullall.md
+- name: $push
+  href: $push.md
+- name: $slice
+  href: ../array-expression/$slice.md
+- name: $sort
+  href: ../aggregation/$sort.md

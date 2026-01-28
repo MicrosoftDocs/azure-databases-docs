@@ -3,8 +3,8 @@ title: "Azure Database for MySQL: A Look Back at Recent Features"
 description: Archive list of features released for Azure Database for MySQL.
 author: deepthiprasad
 ms.author: deprasa
-ms.reviewer: maghan
-ms.date: 05/02/2024
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -20,7 +20,7 @@ ms.custom:
 
 This article summarizes past releases and features in the Azure Database for MySQL service.
 
-For the latest features, visit [What's new in Azure Database for MySQL](whats-new.md).
+For the latest features, visit [What's new in Azure Database for MySQL?](whats-new.md)
 
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
@@ -29,11 +29,11 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Near Zero Downtime Maintenance for Azure Database for MySQL Flexible Server (Preview)**
 
-  This feature significantly reduces maintenance-related downtime, typically maintaining operations under 60 seconds in most cases. Using planned failover in HA enabled servers, it updates the standby server first, followed by a failover to make it the primary, and concludes with updating the former primary server, ensuring minimal service disruption.[Learn more](./concepts-maintenance.md#near-zero-downtime-maintenance-public-preview)
+  This feature significantly reduces maintenance-related downtime, typically maintaining operations under 60 seconds in most cases. Using planned failover in HA enabled servers, it updates the standby server first, followed by a failover to make it the primary, and concludes with updating the former primary server, ensuring minimal service disruption. [Learn more](concepts-maintenance.md#near-zero-downtime-maintenance-public-preview)
 
 - **Error logs under server logs for Azure Database for MySQL Flexible Server (Preview)**
 
-  This new feature enables direct access to [MySQL Server error logs](https://dev.mysql.com/doc/refman/8.0/en/error-log.html), significantly improving the ability to troubleshoot issues and enhancing transparency and independence with Azure Database for MySQL Flexible Server.[Error logs in Azure Database for MySQL - Flexible Server (Preview)](concepts-error-logs.md)
+  This new feature enables direct access to [MySQL Server error logs](https://dev.mysql.com/doc/refman/8.0/en/error-log.html), significantly improving the ability to troubleshoot issues and enhancing transparency and independence with Azure Database for MySQL Flexible Server.[Error logs in Azure Database for MySQL - Flexible Server (Preview)](concepts-error-logs.md)
 
 ## November 2023
 
@@ -43,21 +43,21 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Modify multiple server parameters using Azure CLI**
 
-  You can now conveniently update multiple server parameters for your Azure Database for MySQL Flexible Server instance using Azure CLI. [Learn more](./how-to-configure-server-parameters-cli.md#modify-a-server-parameter-value).
+  You can now conveniently update multiple server parameters for your Azure Database for MySQL Flexible Server instance using Azure CLI. [Learn more](how-to-configure-server-parameters-cli.md#modify-a-server-parameter-value).
 
 - **Accelerated logs in Azure Database for MySQL Flexible Server (Preview)**
 
-  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Business Critical service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency.[Accelerated logs feature in Azure Database for MySQL - Flexible Server](concepts-accelerated-logs.md).
+  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Memory Optimized service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
 
 - **Universal Geo Restore in Azure Database for MySQL Flexible Server (General Availability)**
 
-  The Universal Geo Restore feature allows you to restore a source server instance to an alternate region from the Azure supported regions where the Azure Database for MySQL Flexible Server is [available](./overview.md#azure-regions). If a large-scale incident in a region results in the unavailability of a database application, then you can use this feature as a disaster recovery option to restore the server to an Azure-supported target region that's different from the source server region. [Learn more](concepts-backup-restore.md#restore).
+  The Universal Geo Restore feature allows you to restore a source server instance to an alternate region from the Azure supported regions where the Azure Database for MySQL Flexible Server is [available](overview.md#azure-regions). If a large-scale incident in a region results in the unavailability of a database application, then you can use this feature as a disaster recovery option to restore the server to an Azure-supported target region that's different from the source server region. [Learn more](concepts-backup-restore.md#restore).
 
 ## October 2023
 
 - **Addition of New vCore Options in Azure Database for MySQL Flexible Server**
 
-  We're excited to inform you that we have introduced 20 new vCores options under the Business Critical Service tier for Azure Database for MySQL Flexible Server. Find more information under [Compute Option for Azure Database for MySQL Flexible Server](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
+  We're excited to inform you that we have introduced 20 new vCores options under the Memory Optimized Service tier for Azure Database for MySQL Flexible Server. Find more information under [Compute Option for Azure Database for MySQL Flexible Server](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
 
 - **Known Issues**
 
@@ -68,11 +68,11 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Flexible Maintenance for Azure Database for MySQL Flexible Server (Public Preview)**
 
-  Flexible Maintenance for Azure Database for MySQL Flexible Server enables a tailored maintenance schedule to suit your operational rhythm. This feature allows you to reschedule maintenance tasks within a maximum 14-day window and initiate on-demand maintenance, granting you unprecedented control over server upkeep timing. Stay tuned for more customizable experiences in the future. [Scheduled maintenance in Azure Database for MySQL - Flexible Server](concepts-maintenance.md).
+  Flexible Maintenance for Azure Database for MySQL Flexible Server enables a tailored maintenance schedule to suit your operational rhythm. This feature allows you to reschedule maintenance tasks within a maximum 14-day window and initiate on-demand maintenance, granting you unprecedented control over server upkeep timing. Stay tuned for more customizable experiences in the future. [Scheduled maintenance in Azure Database for MySQL](concepts-maintenance.md).
 
 - **Universal Cross Region Read Replica on Azure Database for MySQL Flexible Server (General Availability)**
 
-  Azure Database for MySQL Flexible Server now supports Universal Read Replicas in Public regions. This feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in the Universal region, which could be any region from the list of Azure supported regions where Azure Database for MySQL Flexible Server is available. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
+  Azure Database for MySQL Flexible Server now supports Universal Read Replicas in Public regions. This feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in the Universal region, which could be any region from the list of Azure supported regions where Azure Database for MySQL Flexible Server is available. [Read replicas in Azure Database for MySQL](concepts-read-replicas.md).
 
 - **Private Link for Azure Database for MySQL Flexible Server (General Availability)**
 
@@ -90,17 +90,17 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Universal Geo Restore in Azure Database for MySQL Flexible Server (Public Preview)**
 
-  The Universal Geo Restore feature allows you to restore a source server instance to an alternate region from the Azure supported regions where the Azure Database for MySQL Flexible Server is [available](./overview.md#azure-regions). If a large-scale incident in a region results in the unavailability of database applications, you can use this feature as a disaster recovery option to restore the server to an Azure-supported target region that's different from the source server region. [Learn more](concepts-backup-restore.md#restore).
+  The Universal Geo Restore feature allows you to restore a source server instance to an alternate region from the Azure supported regions where the Azure Database for MySQL Flexible Server is [available](overview.md#azure-regions). If a large-scale incident in a region results in the unavailability of database applications, you can use this feature as a disaster recovery option to restore the server to an Azure-supported target region that's different from the source server region. [Learn more](concepts-backup-restore.md#restore).
 
 - **Generated Invisible Primary Key in Azure Database for MySQL Flexible Server**
 
-  Azure Database for MySQL Flexible Server now supports [generated invisible primary key (GIPK)](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html) for MySQL version 8.0. With this change, by default, the value of the server system variable "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" is ON for all Azure Database for MySQL Flexible Server instances on MySQL 8.0. With GIPK mode ON, MySQL generates an invisible primary key to any InnoDB table, which is newly created without an explicit primary key. Learn more about the GIPK mode: [Generated Invisible Primary Keys](./concepts-limitations.md#generated-invisible-primary-keys) and [Invisible Column Metadata](https://dev.mysql.com/doc/refman/8.0/en/invisible-columns.html#invisible-column-metadata).
+  Azure Database for MySQL Flexible Server now supports [generated invisible primary key (GIPK)](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html) for MySQL version 8.0. With this change, by default, the value of the server system variable "[sql_generate_invisible_primary_key](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_sql_generate_invisible_primary_key)" is ON for all Azure Database for MySQL Flexible Server instances on MySQL 8.0. With GIPK mode ON, MySQL generates an invisible primary key to any InnoDB table, which is newly created without an explicit primary key. Learn more about the GIPK mode: [Generated Invisible Primary Keys](concepts-limitations.md#generated-invisible-primary-keys) and [Invisible Column Metadata](https://dev.mysql.com/doc/refman/8.0/en/invisible-columns.html#invisible-column-metadata).
 
 ## July 2023
 
 - **Autoscale IOPS in Azure Database for MySQL Flexible Server (General Availability)**
 
-  You can now scale IOPS on demand without having to pre-provision a certain amount of IOPS. With this feature, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. With this feature, you pay only for the IO you use and no longer need to provision and pay for resources you aren't fully using, saving time and money. The autoscale IOPS feature eliminates the administration required to provide the best performance for Azure Database for MySQL Flexible Server customers at the lowest cost. [Learn more](./concepts-storage-iops.md#autoscale-iops).
+  You can now scale IOPS on demand without having to pre-provision a certain amount of IOPS. With this feature, you can now enjoy worry-free IO management in Azure Database for MySQL Flexible Server because the server scales IOPs up or down automatically depending on workload needs. With this feature, you pay only for the IO you use and no longer need to provision and pay for resources you aren't fully using, saving time and money. The autoscale IOPS feature eliminates the administration required to provide the best performance for Azure Database for MySQL Flexible Server customers at the lowest cost. [Learn more](concepts-storage-iops.md#autoscale-iops).
 
 ## June 2023
 
@@ -110,25 +110,25 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Enhanced Data Encryption with Customer Managed Keys for Azure Database for MySQL Flexible Server**
 
-  Azure Database for MySQL Flexible Server now supports allowing access to Azure Key Vault from selected Vnets to enable data encryption using Customer-Managed Keys. [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md).
+  Azure Database for MySQL Flexible Server now supports allowing access to Azure Key Vault from selected Vnets to enable data encryption using Customer-Managed Keys. [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md).
 
 - **Server Parameters support for Azure Database for MySQL- Flexible Server**
 
-   contact our [support team](https://azure.microsoft.com/support/create-ticket) if you need assistance with the server parameters below.
+  Contact our [support team](https://azure.microsoft.com/support/create-ticket) if you need assistance with the following server parameters.
 
-  [lower_case_table_names] (https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_lower_case_table_names ): MySQL version 5.7 supports a value change to 2. Changing the value from two back to 1 isn't allowed. contact our support team for assistance.
+  [lower_case_table_names](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_lower_case_table_names): MySQL version 5.7 supports a value change to 2. Changing the value from two back to 1 isn't allowed. Contact our support team for assistance.
 
   [innodb_flush_log_at_trx_commit](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_flush_log_at_trx_commit): This parameter determines the level of strictness for commit operations to ensure ACID compliance. Changing the value from its default setting might result in data loss.
 
 - **Max IOPS support for Azure Database for MySQL- Flexible Server**
 
-  Business Critical SKU now supports 80 K IOPS, enabling enhanced performance with increased IO operations per second. [Learn more](./concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
+  Memory Optimized SKU now supports 80 K IOPS, enabling enhanced performance with increased IO operations per second. [Learn more](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
 
 ## May 2023
 
 - **Read-Replica in Geo-Paired Region on Azure Database for MySQL- Flexible Server (General Availability)**
 
-  Azure Database for MySQL now supports cross-region read-replica in a geo-paired region. The feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in a geo-paired region. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md)
+  Azure Database for MySQL now supports cross-region read-replica in a geo-paired region. The feature allows you to replicate your data from an instance of Azure Database for MySQL Flexible Server to a read-only server in a geo-paired region. [Read replicas in Azure Database for MySQL](concepts-read-replicas.md)
 
 - **Support for data-in replication using GTID**
 
@@ -136,19 +136,19 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Major version upgrades from 5.7 to 8.0 for Azure Database for MySQL Flexible Server (General Availability)**
 
-  The major version upgrade feature allows you to perform in-place upgrades of existing instances of Azure Database for MySQL Flexible Server from MySQL 5.7 to MySQL 8.0 with the select of a button, without any data movement or the need to make any application connection string changes. With the ability to upgrade your Azure Database for MySQL Flexible Server major version from 5.7 to 8.0, you'll gain access to performance enhancements, security improvements, and new features, such as Data Dictionary, JSON enhancements, and Windows functions. [Major version upgrade in Azure Database for MySQL - Flexible Server](how-to-upgrade.md)
+  The major version upgrade feature allows you to perform in-place upgrades of existing instances of Azure Database for MySQL Flexible Server from MySQL 5.7 to MySQL 8.0 with the select of a button, without any data movement or the need to make any application connection string changes. With the ability to upgrade your Azure Database for MySQL Flexible Server major version from 5.7 to 8.0, you'll gain access to performance enhancements, security improvements, and new features, such as Data Dictionary, JSON enhancements, and Windows functions. [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md)
 
 ## April 2023
 
 - **Known issues**
 
-  When the [storage autogrow feature](./concepts-service-tiers-storage.md#storage-autogrow) is enabled and pre-provisioned [IOPS](./concepts-service-tiers-storage.md#iops) is increased, it might result in unexpected increase in the storage size of the instance. We're actively working to resolve this issue and will provide updates as soon as they're available.
+  When the [storage autogrow feature](concepts-service-tiers-storage.md#storage-autogrow) is enabled and pre-provisioned [IOPS](concepts-service-tiers-storage.md#iops) is increased, it might result in unexpected increase in the storage size of the instance. We're actively working to resolve this issue and will provide updates as soon as they're available.
 
 ## March 2023
 
 - **Azure Resource Health**
 
-  Use Azure Resource Health to monitor the health and availability of the HA-enabled server if there's a planned or unplanned failover. [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md)
+  Use Azure Resource Health to monitor the health and availability of the HA-enabled server if there's a planned or unplanned failover. [High-availability in Azure Database for MySQL](concepts-high-availability.md)
 
 - **Enhanced restore experience**
 
@@ -167,7 +167,7 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Redo logs management in MySQL version 8.0**
 
-  Starting from [MySQL version 8.0.30 and above](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-30.html), there has been a change in the way the redo log is configured. Instead of using the [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) variable, the redo log can now be easily adjusted from the available values using the [innodb_redo_log_capacity](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_redo_log_capacity) variable. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html).
+  Starting from [MySQL version 8.0.30 and above](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-30.html), there's been a change in the way the redo log is configured. Instead of using the [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) variable, the redo log can now be easily adjusted from the available values using the [innodb_redo_log_capacity](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_redo_log_capacity) variable. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/innodb-redo-log.html).
 
 - **Unsupported Server Parameters**
 
@@ -193,19 +193,19 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 ## November 2022
 
-- **Microsoft Entra IDauthentication for Azure Database for MySQL – Flexible Server (General Availability)**
+- **Microsoft Entra IDauthentication for Azure Database for MySQL - Flexible Server (General Availability)**
 
-  Using identities, you can now authenticate to Azure Database for MySQL using Microsoft Entra ID. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
+  Using identities, you can now authenticate to Azure Database for MySQL using Microsoft Entra ID. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md)
 
-- **Customer managed keys data encryption – Azure Database for MySQL – Flexible Server (General Availability)**
+- **Customer managed keys data encryption - Azure Database for MySQL - Flexible Server (General Availability)**
 
-    With data encryption with customer-managed keys (CMKs) for Azure Database for MySQL Flexible Server Preview, you can bring your key (BYOK) for data protection at rest and implement separation of duties managing keys and data. Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the data encryption key (DEK) used by the service. With customer managed keys (CMKs), the customer is responsible for the full control of the key lifecycle management (key creation, upload, rotation, deletion), key usage permissions, and auditing operations on keys. [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md)
+  With data encryption with customer-managed keys (CMKs) for Azure Database for MySQL Flexible Server Preview, you can bring your key (BYOK) for data protection at rest and implement separation of duties managing keys and data. Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the data encryption key (DEK) used by the service. With customer managed keys (CMKs), the customer is responsible for the full control of the key lifecycle management (key creation, upload, rotation, deletion), key usage permissions, and auditing operations on keys. [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md)
 
 - **General availability in Azure US Government regions**
-    Azure Database for MySQL Flexible Server is now available in the following Azure regions:
-    - USGov Virginia
-    - USGov Arizona
-    - USGov Texas
+  Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+  - USGov Virginia
+  - USGov Arizona
+  - USGov Texas
 
 - **Known issues**
 
@@ -213,9 +213,9 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 ## October 2022
 
-- **AMD compute SKUs for General Purpose and Business Critical tiers in Azure Database for MySQL Flexible Server**
+- **AMD compute SKUs for General Purpose and Memory-Optimized tiers in Azure Database for MySQL Flexible Server**
 
-  You can now choose between Intel and AMD hardware for Azure Database for MySQL Flexible Server instances based on the General Purpose (Dadsv5-series) and Business Critical (Eadsv5-series) tiers. AMD SKU offers competitive price-performance options to all Azure Database for MySQL Flexible Server users. To ensure transparency in the portal, you can select the compute hardware vendor for both primary and secondary server. After determining the best compute processor for your workload, deploy Flexible Servers in more available regions and zones. [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md).
+  You can now choose between Intel and AMD hardware for Azure Database for MySQL Flexible Server instances based on the General Purpose (Dadsv5-series) and Memory-Optimized (Eadsv5-series) tiers. AMD SKU offers competitive price-performance options to all Azure Database for MySQL Flexible Server users. To ensure transparency in the portal, you can select the compute hardware vendor for both primary and secondary server. After determining the best compute processor for your workload, deploy Flexible Servers in more available regions and zones. [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md).
 
 - **Autoscale IOPS in Azure Database for MySQL Flexible Server (Preview)**
 
@@ -223,7 +223,7 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Perform Major version upgrade with minimal efforts for Azure Database for MySQL Flexible Server (Preview)**
 
-  The major version upgrade feature allows you to perform in-place upgrades of existing instances of Azure Database for MySQL Flexible Server from MySQL 5.7 to MySQL 8.0 with the select of a button, without any data movement or the need to make any application connection string changes. Take advantage of this functionality to efficiently perform major version upgrades on your instances of Azure Database for MySQL Flexible Server and use the latest MySQL 8.0 offers. [Major version upgrade in Azure Database for MySQL - Flexible Server](how-to-upgrade.md).
+  The major version upgrade feature allows you to perform in-place upgrades of existing instances of Azure Database for MySQL Flexible Server from MySQL 5.7 to MySQL 8.0 with the select of a button, without any data movement or the need to make any application connection string changes. Take advantage of this functionality to efficiently perform major version upgrades on your instances of Azure Database for MySQL Flexible Server and use the latest MySQL 8.0 offers. [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md).
 
 - **MySQL extension for Azure Data Studio (Preview)**
 
@@ -242,17 +242,17 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Known issues**
 
-  - Change of compute size isn't currently permitted after the [Major version upgrade in Azure Database for MySQL - Flexible Server](how-to-upgrade.md) of your Azure Database for MySQL Flexible Server instance. Changing the compute size of your Azure Database for MySQL Flexible Server instance is recommended before the major version upgrade from version 5.7 to version 8.0.
+  - Change of compute size isn't currently permitted after the [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md) of your Azure Database for MySQL Flexible Server instance. Changing the compute size of your Azure Database for MySQL Flexible Server instance is recommended before the major version upgrade from version 5.7 to version 8.0.
 
 ## September 2022
 
 - **Read replica for HA enabled Azure Database for MySQL Flexible Server (General Availability)**
 
-  The read replica feature allows you to replicate data from an Azure Database for MySQL Flexible Server instance to a read-only server. You can replicate the source server to up to 10 replicas. This functionality is now extended to support HA enabled servers within same region. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
+  The read replica feature allows you to replicate data from an Azure Database for MySQL Flexible Server instance to a read-only server. You can replicate the source server to up to 10 replicas. This functionality is now extended to support HA enabled servers within same region. [Read replicas in Azure Database for MySQL](concepts-read-replicas.md).
 
 - **Microsoft Entra IDauthentication for Azure Database for MySQL Flexible Server (Public Preview)**
 
-  You can now authenticate to Azure Database for MySQL Flexible Server using Microsoft Entra ID using identities. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md).
+  You can now authenticate to Azure Database for MySQL Flexible Server using Microsoft Entra ID using identities. With authentication, you can manage database user identities and other Microsoft services in a central location, simplifying permission management. [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md).
 
 - **Known issues**
 
@@ -260,13 +260,13 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
   - The newly restored server will also have the server parameter aad_auth_only set to ON if it was ON on the source server during failover. You must manually disable this server parameter to use MySQL authentication on the restored server. Otherwise, an Admin must be configured.
 
-- **Customer managed keys data encryption – Azure Database for MySQL Flexible Server (Preview)**
+- **Customer managed keys data encryption - Azure Database for MySQL Flexible Server (Preview)**
 
-    With data encryption with customer-managed keys (CMKs) for Azure Database for MySQL Flexible Server Preview, you can bring your key (BYOK) for data protection at rest and implement separation of duties for managing keys and data. Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the data encryption key (DEK) used by the service. With customer managed keys (CMKs), the customer is responsible for the full control of the key lifecycle management (key creation, upload, rotation, deletion), key usage permissions, and auditing operations on keys. [Data encryption with customer managed keys for Azure Database for MySQL - Flexible Server](concepts-customer-managed-key.md).
+  With data encryption with customer-managed keys (CMKs) for Azure Database for MySQL Flexible Server Preview, you can bring your key (BYOK) for data protection at rest and implement separation of duties for managing keys and data. Data encryption with CMKs is set at the server level. For a given server, a CMK, called the key encryption key (KEK), is used to encrypt the data encryption key (DEK) used by the service. With customer managed keys (CMKs), the customer is responsible for the full control of the key lifecycle management (key creation, upload, rotation, deletion), key usage permissions, and auditing operations on keys. [Data encryption with customer managed keys for Azure Database for MySQL](security-customer-managed-key.md).
 
 - **Change Timezone of your Azure Database for MySQL Flexible Server instance in a single step**
 
-   Previously to change time_zone of your Azure Database for MySQL Flexible Server instance required two steps to take effect. Now you no longer need to call the procedure mysql.az_load_timezone() to populate the mysql.time_zone_name table. Azure Database for MySQL Flexible Server timezone can be changed directly by just changing the server parameter time_zone from [portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or [CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
+  Previously to change time_zone of your Azure Database for MySQL Flexible Server instance required two steps to take effect. Now you no longer need to call the procedure mysql.az_load_timezone() to populate the mysql.time_zone_name table. Azure Database for MySQL Flexible Server timezone can be changed directly by just changing the server parameter time_zone from [portal](how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or [CLI](how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter).
 
 - **Known issues**
 
@@ -278,27 +278,27 @@ For the latest features, visit [What's new in Azure Database for MySQL](whats-ne
 
 - **Server logs for Azure Database for MySQL Flexible Server**
 
-    Server Logs help customers to emit the server logs to server storage space in file format, which you can later download. Slow query logs are supported with server logs, which can help customers in performance troubleshooting and query tuning. Customers can store logs for up to a week or up to 7 GB. You can configure or download them from [Enable and download server logs for Azure Database for MySQL - Flexible Server](how-to-server-logs-portal.md) or [List and download Azure Database for MySQL - Flexible Server logs by using the Azure CLI](how-to-server-logs-cli.md).[Learn more](./concepts-monitoring.md#server-logs).
+  Server Logs help customers to emit the server logs to server storage space in file format, which you can later download. Slow query logs are supported with server logs, which can help customers in performance troubleshooting and query tuning. Customers can store logs for up to a week or up to 7 GB. You can configure or download them from [Enable and download server logs for Azure Database for MySQL - Flexible Server](how-to-server-logs-portal.md) or [List and download Azure Database for MySQL - Flexible Server logs by using the Azure CLI](how-to-server-logs-cli.md).[Learn more](./concepts-monitoring.md#server-logs).
 
 - **On-Demand Backup for Azure Database for MySQL Flexible Server**
 
-    The On-Demand backup feature allows customers to trigger On-Demand backups of their production workload, in addition to the automated backups taken by Azure Database for MySQL Flexible Server, and store them in alignment with the server's backup retention policy. These backups can be used as the fastest restore point to perform a point-in-time restore for faster and more predictable restore times. [Learn more](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup).
+  The On-Demand backup feature allows customers to trigger On-Demand backups of their production workload, in addition to the automated backups taken by Azure Database for MySQL Flexible Server, and store them in alignment with the server's backup retention policy. These backups can be used as the fastest restore point to perform a point-in-time restore for faster and more predictable restore times. [Learn more](how-to-trigger-on-demand-backup.md#trigger-on-demand-backup).
 
-- **Business Critical tier now supports Ev5 compute series**
+- **Memory-Optimized tier now supports Ev5 compute series**
 
-    Business Critical tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
-Learn more about [Boost Azure MySQL Business Critical Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
+  Memory Optimized tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
+Learn more about [Boost Azure MySQL Memory Optimized Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
 
 - **Server parameters that are now configurable**
 
-    List of dynamic server parameters that are now configurable:
-    - [lc_time_names](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_lc_time_names)
-    - [replicate_wild_ignore_table](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)
-    - [slave_pending_jobs_size_max](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_slave_pending_jobs_size_max)
-    - [slave_parallel_workers](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_slave_parallel_workers)
-    - [log_output](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output)
-    - [performance_schema_max_digest_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_digest_length)
-    - [performance_schema_max_sql_text_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_sql_text_length)
+  List of dynamic server parameters that are now configurable:
+  - [lc_time_names](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_lc_time_names)
+  - [replicate_wild_ignore_table](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)
+  - [slave_pending_jobs_size_max](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_slave_pending_jobs_size_max)
+  - [slave_parallel_workers](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#sysvar_slave_parallel_workers)
+  - [log_output](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html#sysvar_log_output)
+  - [performance_schema_max_digest_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_digest_length)
+  - [performance_schema_max_sql_text_length](https://dev.mysql.com/doc/refman/8.0/en/performance-schema-system-variables.html#sysvar_performance_schema_max_sql_text_length)
 
 - **Known Issues**
 
@@ -310,64 +310,64 @@ Learn more about [Boost Azure MySQL Business Critical Flexible Server performanc
 
 - **Known Issues**
 
-  You might no longer see logs uploaded to data sinks configured under diagnostics settings on a few servers where audit or slow logs are enabled. Verify whether your logs have the latest updated timestamp for the events based on the [data sink](./tutorial-query-performance-insights.md#set-up-diagnostics) you've configured. If your server is affected by this issue, open a [support ticket](https://azure.microsoft.com/support/create-ticket/) so that we can apply a quick fix on the server to resolve the issue.
+  You might no longer see logs uploaded to data sinks configured under diagnostics settings on a few servers where audit or slow logs are enabled. Verify whether your logs have the latest updated timestamp for the events based on the [data sink](tutorial-query-performance-insights.md#set-up-diagnostics) you've configured. If your server is affected by this issue, open a [support ticket](https://azure.microsoft.com/support/create-ticket/) so that we can apply a quick fix on the server to resolve the issue.
 
 ## May 2022
 
 - **Announcing Azure Database for MySQL Flexible Server for business-critical workloads**
-    Azure Database for MySQL Flexible Server Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
+  Azure Database for MySQL Memory Optimized service tier is generally available. The Memory Optimized service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Memory Optimized service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
 
 - **Announcing the addition of new Burstable compute instances for Azure Database for MySQL Flexible Server**
-    We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
+  We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
 
 - **Known issues**
-  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Business Critical service tier after restructuring from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
+  - The Reserved instances (RI) feature in Azure Database for MySQL Flexible Server isn't working properly for the Memory-Optimized service tier after restructuring from the Memory Optimized service tier. Specifically, instance reservation has stopped working, and we're working to fix the issue.
   - Private DNS integration details aren't displayed on a few Azure Database for MySQL Database Flexible Server instances that have enabled HA. This issue doesn't impact the server's availability or name resolution. We're working on a permanent fix to resolve the issue, and it will be available in the next deployment. Meanwhile, suppose you want to view the Private DNS Zone details. In that case, you can either search under [Quickstart: Create an Azure private DNS zone using the Azure portal](/azure/dns/private-dns-getstarted-portal) in the Azure portal or you can perform a [manual failover](concepts-high-availability.md#planned-forced-failover) of the HA enabled Azure Database for MySQL Flexible Server instance and refresh the Azure portal.
 
 ## April 2022
 
 - **Minor version upgrade for Azure Database for MySQL Flexible Server to 8.0.28**
-    Azure Database for MySQL Flexible Server 8.0 now is running on minor version 8.0.28. To learn more about changes coming in this minor version, see [Changes in MySQL 8.0.28 (General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-28.html).
+  Azure Database for MySQL Flexible Server 8.0 now is running on minor version 8.0.28. To learn more about changes coming in this minor version, see [Changes in MySQL 8.0.28 (General Availability)](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-28.html).
 
 - **Minor version upgrade for Azure Database for MySQL Flexible Server to 5.7.37**
-    Azure Database for MySQL Flexible Server 5.7 is now running on minor version 5.7.37. To learn more about changes coming in this minor version, see [Changes in MySQL 5.7.37 (General Availability](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-37.html).
+  Azure Database for MySQL Flexible Server 5.7 is now running on minor version 5.7.37. To learn more about changes coming in this minor version, see [Changes in MySQL 5.7.37 (General Availability](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-37.html).
 
-    > [!NOTE]  
-    > Some regions are still running older minor versions of Azure Database for MySQL Flexible Server and will be patched by end of April 2022.
+  > [!NOTE]  
+  > Some regions are still running older minor versions of Azure Database for MySQL Flexible Server and will be patched by end of April 2022.
 - **Deprecation of TLSv1 or TLSv1.1 protocols with Azure Database for MySQL Flexible Server (8.0.28)**
 
-    Starting version 8.0.28, the MySQL community edition supports TLS protocol TLSv1.2 or TLSv1.3 only. Azure Database for MySQL Flexible Server will also stop supporting TLSv1 and TLSv1.1 protocols to align with modern security standards. You can no longer configure TLSv1 or TLSv1.1 from the server parameter pane for newly created and previously created resources. The default is TLSv1.2. Resources created before the upgrade still support communication through TLS protocol TLSv1 or TLS v1.1 through May 1, 2022.
+  Starting version 8.0.28, the MySQL community edition supports TLS protocol TLSv1.2 or TLSv1.3 only. Azure Database for MySQL Flexible Server will also stop supporting TLSv1 and TLSv1.1 protocols to align with modern security standards. You can no longer configure TLSv1 or TLSv1.1 from the server parameter pane for newly created and previously created resources. The default is TLSv1.2. Resources created before the upgrade still support communication through TLS protocol TLSv1 or TLS v1.1 through May 1, 2022.
 
 ## March 2022
 
 This release of Azure Database for MySQL Flexible Server includes the following updates.
 
 - **Migrate from locally redundant backup storage to geo-redundant backup storage for existing Flexible Server**
-    Azure Database for MySQL Flexible Server provides the added flexibility to migrate to geo-redundant backup storage from locally redundant backup storage post server-create to provide higher data resiliency. Enabling geo-redundancy via the server's Compute + Storage page empowers customers to recover their existing Azure Database for MySQL Flexible Server instances from a geographic disaster or regional failure when they can't access the server in the primary region. With this feature enabled for their existing servers, customers can perform geo-restore and deploy a new server to the geo-paired Azure region using the original server's latest geo-redundant backup. [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
+  Azure Database for MySQL Flexible Server provides the added flexibility to migrate to geo-redundant backup storage from locally redundant backup storage post server-create to provide higher data resiliency. Enabling geo-redundancy via the server's Compute + Storage page empowers customers to recover their existing Azure Database for MySQL Flexible Server instances from a geographic disaster or regional failure when they can't access the server in the primary region. With this feature enabled for their existing servers, customers can perform geo-restore and deploy a new server to the geo-paired Azure region using the original server's latest geo-redundant backup. [Backup and restore in Azure Database for MySQL](concepts-backup-restore.md).
 
 - **Simulate disaster recovery drills for your stopped servers**
-    Azure Database for MySQL Flexible Server now provides the ability to perform geo-restore on stopped servers helping users simulate disaster recovery drills for their workloads to estimate impact and recovery time. This helps users plan better to meet their disaster recovery and business continuity objectives by using geo-redundancy feature offered by Azure Database for MySQL Flexible Server. [Point-in-time restore in Azure Database for MySQL - Flexible Server with Azure CLI](how-to-restore-server-cli.md).
+  Azure Database for MySQL Flexible Server now provides the ability to perform geo-restore on stopped servers helping users simulate disaster recovery drills for their workloads to estimate impact and recovery time. This helps users plan better to meet their disaster recovery and business continuity objectives by using geo-redundancy feature offered by Azure Database for MySQL Flexible Server. [Point-in-time restore in Azure Database for MySQL - Flexible Server with Azure CLI](how-to-restore-server-cli.md).
 
 ## January 2022
 
 This release of Azure Database for MySQL Flexible Server includes the following updates.
 
 - **All Operations are disabled on Stopped Azure Database for MySQL Flexible Server instances**
-    Operations on servers in a [Stop](concept-servers.md#stop-and-start-a-server) state are disabled and show as inactive in the Azure portal. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or IOPS, backup retention day, server tag, the server password, server parameters, storage autogrow, GEO backup, HA, and user identity.
+  Operations on servers in a [Stop](concept-servers.md#stop-and-start-a-server) state are disabled and show as inactive in the Azure portal. Operations that aren't supported on stopped servers include changing the pricing tier, number of vCores, storage size or IOPS, backup retention day, server tag, the server password, server parameters, storage autogrow, GEO backup, HA, and user identity.
 
 - **Availability in three additional Azure regions**
 
-   The public preview of Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+  The public preview of Azure Database for MySQL Flexible Server is now available in the following Azure regions:
   - China East 2
   - China North 2
 
 - **Reserving 36 IOPs for Azure Database for MySQL Flexible Server instances that have HA enabled**
 
-    We're adding 36 IOPs and reserving them to support standby failover operation on servers that have enabled High Availability. This IOPs is in addition to the configured IOPs on your servers, so more monthly charges would apply based on your Azure region. The extra IOPS help us ensure our commitment to providing smooth failover experience from primary to standby replica. The added charge can be estimated by navigating to the [Azure Database for MySQL Flexible Server pricing page](https://azure.microsoft.com/pricing/details/mysql/flexible-server), choosing the Azure region for your server, and multiplying IOPs/month cost by 36 IOPs. For example, if your server is hosted in East US, the extra IO costs you can expect are $0.05*36 = USD 1.8 per month.
+  We're adding 36 IOPs and reserving them to support standby failover operation on servers that have enabled High Availability. This IOPs is in addition to the configured IOPs on your servers, so more monthly charges would apply based on your Azure region. The extra IOPS help us ensure our commitment to providing smooth failover experience from primary to standby replica. The added charge can be estimated by navigating to the [Azure Database for MySQL Flexible Server pricing page](https://azure.microsoft.com/pricing/details/mysql/flexible-server), choosing the Azure region for your server, and multiplying IOPs/month cost by 36 IOPs. For example, if your server is hosted in East US, the extra IO costs you can expect are $0.05*36 = USD 1.8 per month.
 
 - **Bug fixes**
 
-    Restart workflow struck issue with servers with HA, and Geo-redundant backup option enabled is fixed.
+  Restart workflow struck issue with servers with HA, and Geo-redundant backup option enabled is fixed.
 
 - **Known issues**
 
@@ -384,8 +384,8 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 - **View available full backups in Azure portal**
 
   A dedicated Backup and Restore option is now available in the Azure portal. This page lists the backups available within the server's retention period, effectively providing a single pane view for managing a server's backups and consequent restores. You can use this option to:
-     1) View the completion timestamps for all available full backups within the server's retention period
-     2) Perform restore operations using these full backups
+  1. View the completion timestamps for all available full backups within the server's retention period
+  1. Perform restore operations using these full backups
 
 - **Fastest restore points**
 
@@ -401,41 +401,41 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Known issues**
 
-    On servers with HA and Geo-redundant backup option enabled, we found a rare issue encountered by a race condition, which blocks the restart of the standby server to finish. As a result of this issue, when you fail over the HA enabled Azure Database for MySQL Flexible Server instance might get stuck in restarting state for a long time. The fix will be deployed to the production in the next deployment cycle.
+  On servers with HA and Geo-redundant backup option enabled, we found a rare issue encountered by a race condition, which blocks the restart of the standby server to finish. As a result of this issue, when you fail over the HA enabled Azure Database for MySQL Flexible Server instance might get stuck in restarting state for a long time. The fix will be deployed to the production in the next deployment cycle.
 
 ## October 2021
 
 - **Thread pools are now available for Azure Database for MySQL Flexible Server**
 
-    Thread pools enhance the scalability of Azure Database for MySQL Flexible Server. Using a thread pool, users can optimize performance, achieve better throughput, and lower latency for high concurrent workloads. [Learn more](https://techcommunity.microsoft.com/category/azuredatabases/blog/adformysql).
+  Thread pools enhance the scalability of Azure Database for MySQL Flexible Server. Using a thread pool, users can optimize performance, achieve better throughput, and lower latency for high concurrent workloads. [Learn more](https://techcommunity.microsoft.com/category/azuredatabases/blog/adformysql).
 
 - **Geo-redundant backup restore to geo-paired region for DR scenarios**
 
-    The service now provides the flexibility to choose geo-redundant backup storage for higher data resiliency. Enabling geo-redundancy empowers customers to recover from a geographic disaster or regional failure when they can't access the server in the primary region. With this feature enabled, customers can perform geo-restore and deploy a new server to the geo-paired geographic region using the original server's latest geo-redundant backup. [Backup and restore in Azure Database for MySQL - Flexible Server](concepts-backup-restore.md).
+  The service now provides the flexibility to choose geo-redundant backup storage for higher data resiliency. Enabling geo-redundancy empowers customers to recover from a geographic disaster or regional failure when they can't access the server in the primary region. With this feature enabled, customers can perform geo-restore and deploy a new server to the geo-paired geographic region using the original server's latest geo-redundant backup. [Backup and restore in Azure Database for MySQL](concepts-backup-restore.md).
 
 - **Availability Zones Selection when creating Read replicas**
 
-    When creating Read replica, you can select the Availability Zones location of your choice. An Availability Zone is a high availability offering that protects your applications and data from datacenter failures. Availability Zones are unique physical locations within an Azure region. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
+  When creating Read replica, you can select the Availability Zones location of your choice. An Availability Zone is a high availability offering that protects your applications and data from datacenter failures. Availability Zones are unique physical locations within an Azure region. [Read replicas in Azure Database for MySQL](concepts-read-replicas.md).
 
 - **Read replicas in Azure Database for MySQL Flexible Server will no longer be available on Burstable SKUs**
 
-    If you have an existing Azure Database for MySQL Flexible Server instance with read replica enabled, you have to scale up your server to either General Purpose or Business Critical pricing tiers or delete the read replica within 60 days. After the 60 days, while you can continue to use the primary server for your read-write operations, replication to read replica servers will be stopped. For newly created servers, read replica option is available only for the General Purpose and Business Critical pricing tiers.
+  If you have an existing Azure Database for MySQL Flexible Server instance with read replica enabled, you have to scale up your server to either General Purpose or Memory Optimized pricing tiers or delete the read replica within 60 days. After the 60 days, while you can continue to use the primary server for your read-write operations, replication to read replica servers will be stopped. For newly created servers, read replica option is available only for the General Purpose and Memory Optimized pricing tiers.
 
 - **Monitoring Azure Database for MySQL Flexible Server with Azure Monitor Workbooks**
 
-     Azure Database for MySQL Flexible Server is now integrated with Azure Monitor Workbooks. Workbooks provide a flexible canvas for data analysis and creating rich visual reports within the Azure portal. With this integration, the server has link to workbooks and few sample templates, which help to monitor the service at scale. These templates can be edited, customized to customer requirements and pinned to dashboard to create a focused and organized view of Azure resources. [Tutorial: Query Performance Insight for Azure Database for MySQL - Flexible Server](tutorial-query-performance-insights.md), [Tutorial: Configure audit logs by using Azure Database for MySQL - Flexible Server](tutorial-configure-audit.md), and Instance Overview templates are currently available. [Monitor Azure Database for MySQL - Flexible Server by using Azure Monitor workbooks](concepts-workbooks.md).
+  Azure Database for MySQL Flexible Server is now integrated with Azure Monitor Workbooks. Workbooks provide a flexible canvas for data analysis and creating rich visual reports within the Azure portal. With this integration, the server has link to workbooks and few sample templates, which help to monitor the service at scale. These templates can be edited, customized to customer requirements and pinned to dashboard to create a focused and organized view of Azure resources. [Tutorial: Query Performance Insight for Azure Database for MySQL](tutorial-query-performance-insights.md), [Tutorial: Configure audit logs by using Azure Database for MySQL - Flexible Server](tutorial-configure-audit.md), and Instance Overview templates are currently available. [Monitor Azure Database for MySQL - Flexible Server by using Azure Monitor workbooks](concepts-workbooks.md).
 
 - **Prepay for Azure Database for MySQL Flexible Server compute resources with reserved instances**
 
-    Azure Database for MySQL Flexible Server now helps you save money by prepaying for compute resources compared to pay-as-you-go prices. With Azure Database for MySQL Flexible Server reserved instances, you make an upfront commitment on Azure Database for MySQL Flexible Server for one or three years to get a significant discount on the compute costs. You can exchange a reservation from Azure Database for MySQL single server with Azure Database for MySQL Flexible Server. [Learn more](../concept-reserved-pricing.md).
+  Azure Database for MySQL Flexible Server now helps you save money by prepaying for compute resources compared to pay-as-you-go prices. With Azure Database for MySQL Flexible Server reserved instances, you make an upfront commitment on Azure Database for MySQL Flexible Server for one or three years to get a significant discount on the compute costs. You can exchange a reservation from Azure Database for MySQL single server with Azure Database for MySQL Flexible Server. [Learn more](../concept-reserved-pricing.md).
 
 - **Stopping the server for up to 30 days while the server is not in use**
 
-    Azure Database for MySQL Flexible Server now allows you to Stop the server for up to 30 days when not in use and Start the server when you're ready to resume your development. This enables you to develop at your own pace and save development costs on the database servers by paying for the resources only when used. This is important for dev-test workloads and when you only use the server for part of the day. When you stop the server, all active connections are dropped. When the server is in the Stopped state, the server's compute isn't billed. However, storage continues to be billed as the server's storage remains to ensure that data files are available when the server is started again. [Learn more](concept-servers.md#stop-and-start-a-server).
+  Azure Database for MySQL Flexible Server now allows you to Stop the server for up to 30 days when not in use and Start the server when you're ready to resume your development. This enables you to develop at your own pace and save development costs on the database servers by paying for the resources only when used. This is important for dev-test workloads and when you only use the server for part of the day. When you stop the server, all active connections are dropped. When the server is in the Stopped state, the server's compute isn't billed. However, storage continues to be billed as the server's storage remains to ensure that data files are available when the server is started again. [Learn more](concept-servers.md#stop-and-start-a-server).
 
 - **Terraform Support for Azure Database for MySQL Flexible Server**
 
-    Terraform support for Azure Database for MySQL Flexible Server is now released with the [latest v2.81.0 release of azurerm](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md). The detailed reference document for provisioning and managing an Azure Database for MySQL Flexible Server instance using Terraform can be found [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server). Any bugs or known issues can be found or reported [here](https://github.com/hashicorp/terraform-provider-azurerm/issues).
+  Terraform support for Azure Database for MySQL Flexible Server is now released with the [latest v2.81.0 release of azurerm](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md). The detailed reference document for provisioning and managing an Azure Database for MySQL Flexible Server instance using Terraform can be found [here](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server). Any bugs or known issues can be found or reported [here](https://github.com/hashicorp/terraform-provider-azurerm/issues).
 
 - **Static Parameter innodb_log_file_size is now Configurable**
 
@@ -443,7 +443,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Availability in two additional Azure regions**
 
-   Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+  Azure Database for MySQL Flexible Server is now available in the following Azure regions:
 
   - US West 3
   - North Central US
@@ -459,7 +459,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Availability in three additional Azure regions**
 
-   The public preview of Azure Database for MySQL Flexible Server is now available in the following Azure regions:
+  The public preview of Azure Database for MySQL Flexible Server is now available in the following Azure regions:
 
   - UK West
   - Canada East
@@ -481,11 +481,11 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **High availability within a single zone using Same-Zone High Availability**
 
-  The service now allows customers to choose the preferred availability zone for their standby server when they enable high availability. With this feature, customers can place a standby server in the same zone as the primary server, which reduces the replication lag between primary and standby. This also provides lower latencies between the application server and database server if placed within the same Azure zone. [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+  The service now allows customers to choose the preferred availability zone for their standby server when they enable high availability. With this feature, customers can place a standby server in the same zone as the primary server, which reduces the replication lag between primary and standby. This also provides lower latencies between the application server and database server if placed within the same Azure zone. [High-availability in Azure Database for MySQL](concepts-high-availability.md).
 
 - **Standby zone selection using Zone-Redundant High Availability**
 
-  The service now allows customers to choose the standby server zone location. Using this feature, customers can place their standby server in the zone of their choice. Colocating the standby database servers and applications in the same zone reduces latencies and allows customers to better prepare for disaster recovery situations and "zone down" scenarios. [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+  The service now allows customers to choose the standby server zone location. Using this feature, customers can place their standby server in the zone of their choice. Colocating the standby database servers and applications in the same zone reduces latencies and allows customers to better prepare for disaster recovery situations and "zone down" scenarios. [High-availability in Azure Database for MySQL](concepts-high-availability.md).
 
 - **Private DNS zone integration**
 
@@ -493,11 +493,11 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Point-In-Time Restore for a server in a specified virtual network**
 
-  The Point-In-Time Restore experience for the service now enables customers to configure networking settings, allowing users to switch between private and public networking options when performing a restore operation. This feature allows customers to inject a server being restored into a specified virtual network securing their connection endpoints. [Point-in-time restore in Azure Database for MySQL - Flexible Server with the Azure portal](how-to-restore-server-portal.md).
+  The Point-In-Time Restore experience for the service now enables customers to configure networking settings, allowing users to switch between private and public networking options when performing a restore operation. This feature allows customers to inject a server being restored into a specified virtual network securing their connection endpoints. [Point-in-time restore in Azure Database for MySQL with the Azure portal](how-to-restore-server-portal.md).
 
 - **Point-In-Time Restore for a server in an availability zone**
 
-  The Point-In-Time Restore experience for the service now enables customers to configure availability zone. Colocating the database servers and standby applications in the same zone reduces latencies and allows customers to better prepare for disaster recovery situations and "zone down" scenarios. [High availability concepts in Azure Database for MySQL - Flexible Server](concepts-high-availability.md).
+  The Point-In-Time Restore experience for the service now enables customers to configure availability zone. Colocating the database servers and standby applications in the same zone reduces latencies and allows customers to better prepare for disaster recovery situations and "zone down" scenarios. [High-availability in Azure Database for MySQL](concepts-high-availability.md).
 
 - **validate_password and caching_sha2_password plugin available in private preview**
 
@@ -512,7 +512,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
   - East Asia (Hong Kong Special Administrative Region)
   - Central India
 
-   [Learn more](overview.md#azure-regions).
+  [Learn more](overview.md#azure-regions).
 
 - **Known issues**
 
@@ -539,23 +539,23 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Improved performance on smaller storage servers**
 
-    Beginning June 21, 2021, the minimum allowed provisioned storage size for all newly created server increases from 5 GB to 20 GB. In addition, the available free IOPS increases from 100 to 300. These changes are summarized in the following table:
+  Beginning June 21, 2021, the minimum allowed provisioned storage size for all newly created server increases from 5 GB to 20 GB. In addition, the available free IOPS increases from 100 to 300. These changes are summarized in the following table:
 
-    | **Current**                                               | **As of June 21, 2021**                                 |
-    |:----------------------------------------------------------|:--------------------------------------------------------|
-    | Minimum allowed storage size: 5 GB                        | Minimum allowed storage size: 20 GB                     |
-    | IOPS available: Max(100, 3 * [Storage provisioned in GB]) | IOPS available: (300 + 3 * [Storage provisioned in GB]) |
+  | **Current** | **As of June 21, 2021** |
+  | --- | --- |
+  | Minimum allowed storage size: 5 GB | Minimum allowed storage size: 20 GB |
+  | IOPS available: Max(100, 3 * [Storage provisioned in GB]) | IOPS available: (300 + 3 * [Storage provisioned in GB]) |
 
 - **Free 12-month offer**
 
-  As of June 15, 2021, the [Azure free account](https://azure.microsoft.com/free/) provides customers up to 12 months of free access to Azure Database for MySQL Flexible Server with 750 hours of usage and 32 GB of storage per month. Customers can use this offer to develop and deploy applications that use Azure Database for MySQL Flexible Server. [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
+  As of June 15, 2021, the [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) provides customers up to 12 months of free access to Azure Database for MySQL Flexible Server with 750 hours of usage and 32 GB of storage per month. Customers can use this offer to develop and deploy applications that use Azure Database for MySQL Flexible Server. [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).
 
 - **Storage auto-grow**
 
   Storage auto grow prevents a server from running out of storage and becoming read-only. If storage auto grow is enabled, the storage automatically grows without affecting the workload. Beginning June 21, 2021, all newly created servers have storage auto grow enabled by default.
 - **Data-in Replication**
 
-    Azure Database for MySQL Flexible Server now supports [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md). Use this feature to synchronize and migrate data from a MySQL server running on-premises, in virtual machines, on Azure Database for MySQL single server, or database services outside Azure to Azure Database for MySQL Flexible Server. Learn more about [How to configure Azure Database for MySQL - Flexible Server data-in replication](how-to-data-in-replication.md).
+  Azure Database for MySQL Flexible Server now supports [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md). Use this feature to synchronize and migrate data from a MySQL server running on-premises, in virtual machines, on Azure Database for MySQL single server, or database services outside Azure to Azure Database for MySQL Flexible Server. Learn more about [How to configure Azure Database for MySQL - Flexible Server data-in replication](how-to-data-in-replication.md).
 
 - **GitHub Actions support with Azure CLI**
 
@@ -575,15 +575,15 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Extended regional availability (France Central, Brazil South, and Switzerland North)**
 
-    The public preview of Azure Database for MySQL Flexible Server is now available in the France Central, Brazil South, and Switzerland North regions. [Learn more](overview.md#azure-regions).
+  The public preview of Azure Database for MySQL Flexible Server is now available in the France Central, Brazil South, and Switzerland North regions. [Learn more](overview.md#azure-regions).
 
 - **SSL/TLS 1.2 enforcement can be disabled**
 
-   This release provides the enhanced flexibility to customize SSL and minimum TLS version enforcement. To learn more, see [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](how-to-connect-tls-ssl.md).
+  This release provides the enhanced flexibility to customize SSL and minimum TLS version enforcement. To learn more, see [Connect to Azure Database for MySQL - Flexible Server with encrypted connections](security-tls-how-to-connect.md).
 
 - **Zone redundant HA available in UK South and Japan East region**
 
-   Azure Database for MySQL Flexible Server now offers zone-redundant high availability in two more regions: UK South and Japan East. [Learn more](overview.md#azure-regions).
+  Azure Database for MySQL Flexible Server now offers zone-redundant high availability in two more regions: UK South and Japan East. [Learn more](overview.md#azure-regions).
 
 - **Known issues**
 
@@ -650,7 +650,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Up to 10 read replicas for Azure Database for MySQL Flexible Server**
 
-  Azure Database for MySQL Flexible Server now supports asynchronous data replication from one Azure Database for MySQL Flexible Server instance (the 'source') to up to 10 Azure Database for MySQL Flexible Server instances (the 'replicas') in the same region. This functionality enables read-heavy workloads to scale out and be balanced across replica servers according to a user's preferences. [Read replicas in Azure Database for MySQL - Flexible Server](concepts-read-replicas.md).
+  Azure Database for MySQL Flexible Server now supports asynchronous data replication from one Azure Database for MySQL Flexible Server instance (the 'source') to up to 10 Azure Database for MySQL Flexible Server instances (the 'replicas') in the same region. This functionality enables read-heavy workloads to scale out and be balanced across replica servers according to a user's preferences. [Read replicas in Azure Database for MySQL](concepts-read-replicas.md).
 
 ## Feedback and support
 
@@ -664,4 +664,4 @@ If you have questions about or suggestions for working with Azure Database for M
 - [Azure Database for MySQL pricing](https://azure.microsoft.com/pricing/details/mysql/server/)
 - [What's new in Azure Database for MySQL?](whats-new.md)
 - [Azure Database for MySQL documentation](../index.yml)
-- [Troubleshoot errors](how-to-troubleshoot-common-errors.md)
+- [Troubleshoot errors commonly encountered during or post migration to Azure Database for MySQL - Flexible Server](how-to-troubleshoot-common-errors.md)

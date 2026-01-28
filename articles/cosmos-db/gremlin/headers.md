@@ -10,7 +10,8 @@ ms.author: mansha
 ---
 
 # Azure Cosmos DB for Gremlin server response headers
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 This article covers headers that Azure Cosmos DB for Gremlin server returns to the caller upon request execution. These headers are useful for troubleshooting request performance, building application that integrates natively with Azure Cosmos DB service and simplifying customer support.
 
@@ -102,8 +103,3 @@ try {
 }
 
 ```
-
-## Next steps
-* [HTTP status codes for Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Common Azure Cosmos DB REST response headers](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
-* [TinkerPop Graph Driver Provider Requirements]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

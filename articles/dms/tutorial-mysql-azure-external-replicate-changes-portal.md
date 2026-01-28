@@ -1,22 +1,20 @@
 ---
-title: "Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server using DMS Replicate Changes via the Azure portal"
-titleSuffix: "Azure Database Migration Service"
-description: "Learn to perform an online migration from MySQL to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service Replicate Changes Scenario"
-author: adig
-ms.author: adig
+title: "Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server Using DMS Replicate Changes via the Azure Portal"
+titleSuffix: Azure Database Migration Service
+description: Learn to perform an online migration from MySQL to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service Replicate Changes Scenario
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: maghan, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS Replicate Changes scenario
-
-> [!NOTE]  
-> This article contains references to the term *slave*, a term that Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
 You can migrate your on-premises or other cloud services MySQL Server to Azure Database for MySQL – Flexible Server by using Azure Database Migration Service (DMS), a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms. In this tutorial, we perform an online migration of a sample database from an on-premises MySQL server to an Azure Database for MySQL - Flexible Server (both running version 5.7) using a DMS Replicate Changes migration activity.
 
@@ -36,11 +34,11 @@ To complete this tutorial, you need to:
 
 - Use the MySQL command line tool of your choice to determine whether **log_bin** is enabled on the source server. The Binlog isn't always turned on by default, so verify that it's enabled before starting the migration. To determine whether log_bin is enabled on the source server, run the command: **SHOW VARIABLES LIKE 'log_bin'**.
 
-- Ensure that the user has **"REPLICATION_APPLIER"** or **"BINLOG_ADMIN"** permission on target server for applying the bin log.
+- Ensure that the user has `REPLICATION_APPLIER` or `BINLOG_ADMIN` permission on target server for applying the bin log.
 
-- Ensure that the user has **"REPLICATION SLAVE"** permission on the target server.
+- Ensure that the user has `REPLICATION REPLICA` permission on the target server.
 
-- Ensure that the user has **"REPLICATION CLIENT"** and **"REPLICATION SLAVE"** permission on the source server for reading and applying the bin log.
+- Ensure that the user has `REPLICATION CLIENT` and `REPLICATION REPLICA` permission on the source server for reading and applying the bin log.
 
 - Run an offline migration scenario with "**Enable Transactional Consistency"** to get the bin log file and position.
 
@@ -82,20 +80,21 @@ To configure your DMS migration project, perform the following steps.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/02-replicate-changes-select-source.png" alt-text="Screenshot of an Add source details screen." lightbox="media/tutorial-mysql-to-azure-replicate-changes/02-replicate-changes-select-source.png":::
 
-1. Select **Next : Select target>>**, and then, on the **Select target** screen, locate the target server based on the subscription, location, and resource group. The user name is auto populated, then provide the password for the target flexible server.
+1. Select **Next: Select target >>**, and then, on the **Select target** screen, locate the target server based on the subscription, location, and resource group. The user name is auto populated, then provide the password for the target flexible server.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/03-replicate-changes-select-target.png" alt-text="Screenshot of a Select target." lightbox="media/tutorial-mysql-to-azure-replicate-changes/03-replicate-changes-select-target.png":::
 
-1. Select **Next : Select binlog>>**, and then, on the **Select binlog** screen, input the binlog file name and binlog position as captured in the earlier run of offline migration scenario.
+1. Select **Next: Select binlog >>**, and then, on the **Select binlog** screen, input the binlog file name and binlog position as captured in the earlier run of offline migration scenario.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/04-replicate-changes-select-binlog.png" alt-text="Screenshot of a Select binlog." lightbox="media/tutorial-mysql-to-azure-replicate-changes/04-replicate-changes-select-binlog.png":::
 
-1. Select **Next : Select databases>>**, and then, on the **Select databases** tab, select the server database objects that you want to migrate.
+1. Select **Next: Select databases >>**, and then, on the **Select databases** tab, select the server database objects that you want to migrate.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/05-replicate-changes-select-db.png" alt-text="Screenshot of a Select database." lightbox="media/tutorial-mysql-to-azure-replicate-changes/05-replicate-changes-select-db.png":::
 
-1. Select **Next : Select tables>>** to navigate to the **Select tables** tab. Select all tables to be migrated.
-    :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png" alt-text="Screenshot of a Select table." lightbox="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png":::
+1. Select **Next: Select tables >>** to navigate to the **Select tables** tab. Select all tables to be migrated.
+
+   :::image type="content" source="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png" alt-text="Screenshot of a Select table." lightbox="media/tutorial-mysql-to-azure-replicate-changes/06-replicate-changes-select-table.png":::
 
 1. After configuring for schema migration, select **Review and start migration**.
 

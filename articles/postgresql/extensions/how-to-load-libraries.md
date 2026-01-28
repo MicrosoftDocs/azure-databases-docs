@@ -1,21 +1,20 @@
 ---
 title: Load libraries
-description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server.
+description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 02/17/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to load libraries in an Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to load libraries in an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Load libraries
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-`shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when Azure Database for PostgreSQL flexible server starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
+`shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when an Azure Database for PostgreSQL flexible server instance starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
 ## Steps to load libraries
 
@@ -23,7 +22,7 @@ ms.topic: how-to
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 2. From the resource menu, under **Settings** section, select **Server parameters**.
 
@@ -53,7 +52,7 @@ az postgres flexible-server parameter set \
   --value <extension_name>,<extension_name>
 ```
 
-And can restart the server using the CLI [parameter set](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
+And can restart the server using the CLI [restart](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restart) command.
 
 ```azurecli-interactive
 az postgres flexible-server restart \

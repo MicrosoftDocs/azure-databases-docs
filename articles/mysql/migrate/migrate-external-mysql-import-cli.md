@@ -4,7 +4,7 @@ description: This tutorial describes how to use the Azure Database for MySQL Imp
 author: saikondapalli11
 ms.author: skondapalli
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: quickstart
@@ -89,7 +89,7 @@ The following are the steps for using Percona XtraBackup to take a full backup:
 
 - Consider keeping the Azure Blob storage account and the target Flexible Server to be deployed in the same region for better import performance.
 - Recommended SKU configuration for target Azure Database for MySQL Flexible Server –
-  - Setting a Burstable SKU for the target isn't recommended to optimize migration time when running the Azure Database for MySQL Import operation. We recommend scaling to General Purpose/ Business Critical for the course of the import operation, post, which you can scale down to Burstable SKU.
+  - Setting a Burstable SKU for the target isn't recommended to optimize migration time when running the Azure Database for MySQL Import operation. We recommend scaling to General Purpose/ Memory-Optimized for the course of the import operation, post, which you can scale down to Burstable SKU.
 
 ## Trigger an Azure Database for MySQL Import operation to migrate from Azure Database for MySQL -Flexible Server
 
@@ -131,9 +131,12 @@ az mysql flexible-server import create --data-source-type
                                 [--vnet]
                                 [--zone]
 
+```
+
 The following example takes in the data source information for your source MySQL server's backup file and target Flexible Server information, creates a target Flexible Server named `test-flexible-server` in the `westus` location and performs an import from backup file to target.
 
-azurecli-interactive
+```
+az interactive
 az mysql flexible-server import create --data-source-type "azure_blob" --data-source "https://onprembackup.blob.core.windows.net/onprembackup" --data-source-backup-dir "mysql_backup_percona" –-data-source-token "{sas-token}" --resource-group "test-rg"  --name "test-flexible-server" –-sku-name Standard_D2ds_v4  --tier GeneralPurpose –-version 5.7 -–location "westus"
 ```
 

@@ -1,24 +1,23 @@
 ---
 title: Analytics with Azure Synapse Link
-titleSuffix: Azure Cosmos DB
 description: Learn how Azure Synapse Link for Azure Cosmos DB lets you run near real-time analytics (HTAP) using Azure Synapse Analytics over operational data in Azure Cosmos DB.
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 07/25/2025
+ms.date: 12/05/2025
 ms.custom: synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Synapse Link for Azure Cosmos DB?
 
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 Azure Synapse Link for Azure Cosmos DB is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables near real-time analytics over operational data in Azure Cosmos DB. Azure Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
-
-> [!IMPORTANT]
-> Mirroring Azure Cosmos DB in Microsoft Fabric is now available for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake, and open access to your data in Delta Parquet format. If you're considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization.
-> Get started with [mirroring in Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context).
 
 [Azure Cosmos DB analytical store](analytical-store-introduction.md), a fully isolated column store, can be used with Azure Synapse Link to enable extract-transform-load (ETL) analytics in [Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) against your operational data at scale. Business analysts, data engineers, and data scientists can now use Synapse Spark or Synapse SQL interchangeably to run near real-time business intelligence, analytics, and machine learning pipelines. You can analyze real-time data without affecting the performance of your transactional workloads on Azure Cosmos DB.
 
@@ -108,7 +107,7 @@ Azure Synapse Link is recommended if you're an Azure Cosmos DB customer and you 
 
 In such cases, Azure Synapse Link provides a more integrated analytics experience without impacting your transactional store’s provisioned throughput.
 
-Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements might include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [Azure Cosmos DB: No-ETL analytics use cases](synapse-link-use-cases.md).
+Azure Synapse Link isn't recommended if you're looking for traditional data warehouse requirements. These requirements might include high concurrency, workload management, and persistence of aggregates across multiple data sources. For more information, see [Analytics Use cases](analytics-and-business-intelligence-use-cases.md).
 
 ## Limitations
 

@@ -15,10 +15,9 @@ ms.date: 04/20/2023
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
 > [!IMPORTANT]  
-> Please read this entire guide before carrying out your pre-migration steps. For migrations to Azure Cosmos DB for MongoDB vCore refer to  [vCore migration options](./vcore/migration-options.md)
->
+> Please read this entire guide before carrying out your pre-migration steps.
 
-This MongoDB pre-migration guide is part of series on MongoDB RU migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
+This MongoDB pre-migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are pre-migration, migration, and [post-migration](post-migration-optimization.md), as shown in this guide.
 
 ![Diagram of the migration steps from pre to post migration.](~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png)
 
@@ -80,13 +79,6 @@ Here are some tools you can use for discovering resources:
 
 Go through the spreadsheet and verify each collection against the [supported features and syntax](./feature-support-42.md), and [Azure Cosmos DB limits and quotas](../concepts-limits.md#per-account-limits) in detail.
 
-### Database Migration Assistant utility (legacy) 
-
-> [!NOTE]
-> Database Migration Assistant is a legacy utility meant to assist you with the pre-migration steps. We recommend you to use the [Azure Cosmos DB Migration extension](#azure-cosmos-db-migration-extension) for all pre-migration steps.
-
-You may use the [Database Migration Assistant (DMA)](programmatic-database-migration-assistant-legacy.md) utility to assist you with pre-migration steps.
-
 ## Pre-migration mapping
 
 With the discovery and assessment steps complete, you're done with the MongoDB side of the equation. Now it's time to plan the Azure Cosmos DB side of the equation. How are you planning to set up and configure your production Azure Cosmos DB resources? Do your planning at a *per-resource* level – that means you should add the following columns to your planning spreadsheet:
@@ -135,7 +127,7 @@ The following Azure Cosmos DB configuration choices can't be modified or undone 
   * In a similar way, the partitioning capability automatically adds capacity and rebalances the data accordingly. For more information on choosing the right partition key for your data, see [choosing a partition key](../partitioning-overview.md).
 * Follow the guide for [Data modeling in Azure Cosmos DB](../modeling-data.md) to choose a data model.
 * Follow [Optimize provisioned throughput cost in Azure Cosmos DB](../optimize-cost-throughput.md#optimize-by-provisioning-throughput-at-different-levels) to choose between dedicated and shared throughput for each resource that you migrate
-* [How to model and partition data on Azure Cosmos DB using a real-world example](../nosql/model-partition-example.md) is a real-world example of sharding and data modeling to aid you in your decision-making process
+* [How to model and partition data on Azure Cosmos DB using a real-world example](../model-partition-example.md) is a real-world example of sharding and data modeling to aid you in your decision-making process
 
 ### Cost of ownership
 
@@ -150,7 +142,7 @@ The following Azure Cosmos DB configuration choices can't be modified or undone 
 * The following are key factors that affect the number of required RUs:
   * **Document size**: As the size of an item/document increase, the number of RUs consumed to read or write the item/document also increases.
 
-  * **Document property count**:The number of RUs consumed to create or update a document is related to the number, complexity and length of its properties. You can reduce the request unit consumption for write operations by [limiting the number of indexed properties](indexing.md).
+  * **Document property count**: The number of RUs consumed to create or update a document is related to the number, complexity and length of its properties. You can reduce the request unit consumption for write operations by [limiting the number of indexed properties](indexing.md).
 
   * **Query patterns**: The complexity of a query affects how many request units the query consumes.
 

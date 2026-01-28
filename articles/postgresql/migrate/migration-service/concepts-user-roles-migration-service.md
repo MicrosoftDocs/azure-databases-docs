@@ -11,8 +11,6 @@ ms.topic: concept-article
 
 # Permissions in migration scenarios for the migration service
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 The migration service in Azure Database for PostgreSQL provides the following built-in capabilities for Azure Database for PostgreSQL - Single Server as the source and data migration:
 
 - Migrates user roles from your source server to the target server.

@@ -12,8 +12,6 @@ ms.topic: quickstart-sdk
 ms.date: 04/08/2025
 ms.custom: devx-track-js, devx-track-ts, devx-track-extended-azdevcli
 zone_pivot_groups: azure-devlang-nodejs
-appliesto:
-  - ✅ Table
 # CustomerIntent: As a developer, I want to learn the basics of the Node.js library so that I can build applications with Azure Cosmos DB for Table.
 ---
 
@@ -31,7 +29,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for Table application usi
 - Docker Desktop
 - Node.js 22 or newer
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 

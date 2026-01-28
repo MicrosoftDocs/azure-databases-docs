@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 10/01/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Cluster upgrades in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The Azure Cosmos DB for PostgreSQL managed service can handle upgrades of both the
 PostgreSQL server, and the Citus extension. All clusters are created with [the latest Citus version](./reference-extensions.md#citus-extension) available for the major PostgreSQL version you select during cluster provisioning. When you select a PostgreSQL version such as PostgreSQL 15 for in-place cluster upgrade, the latest Citus version supported for selected PostgreSQL version is going to be installed. 

@@ -1,0 +1,6 @@
+- name: $and
+  href: ../logical-query/$and.md
+- name: $not
+  href: ../logical-query/$not.md
+- name: $or
+  href: ../logical-query/$or.md

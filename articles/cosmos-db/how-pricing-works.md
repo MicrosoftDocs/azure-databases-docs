@@ -1,5 +1,5 @@
 ---
-title: Pricing Model for Azure Cosmos DB
+title: Pricing Model
 description: Learn about the pricing model for Azure Cosmos DB and how it simplifies your cost management and cost planning.
 author: markjbrown
 ms.author: mjbrown
@@ -7,10 +7,15 @@ ms.service: azure-cosmos-db
 ms.topic: concept-article
 ms.date: 06/25/2025
 ms.custom: cosmos-db-video
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Pricing model for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 The pricing model for Azure Cosmos DB simplifies cost management and planning. With Azure Cosmos DB, you pay for the operations you perform against the database and for the storage consumed by your data.
 
@@ -39,9 +44,7 @@ Azure Cosmos DB offers many options for developers to it for free. These options
 
 * **Azure Cosmos DB free tier**: Azure Cosmos DB free tier makes it easy to get started, develop and test your applications, or even run small production workloads for free. When free tier is enabled on an account, you get the first 1000 RU/s and 25 GB of storage in the account free, for the lifetime of the account. You can have up to one free tier account per Azure subscription and must opt in when creating the account. To learn more, see [Azure Cosmos DB lifetime free tier](free-tier.md).
 
-* **Azure free account**: Azure offers a [free account](https://azure.microsoft.com/free/) that gives you $200 in Azure credits for the first 30 days and a limited quantity of free services for 12 months. For more information, see [Azure free account](/azure/cost-management-billing/manage/avoid-charges-free-account). Azure Cosmos DB is a part of Azure free account. Specifically for Azure Cosmos DB, this free account offers 25-GB storage and 400 RU/s of provisioned throughput for the entire year.
-
-* **Try Azure Cosmos DB for free**: Azure Cosmos DB offers a time-limited experience by using try Azure Cosmos DB for free accounts. You can create an Azure Cosmos DB account, create database and collections, and run a sample application by using the Quickstarts and tutorials. You can run the sample application without subscribing to an Azure account or using your credit card. [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) offers Azure Cosmos DB for one month, with the ability to renew your account any number of times.
+* **Azure free account**: Azure offers a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) that gives you $200 in Azure credits for the first 30 days and a limited quantity of free services for 12 months. For more information, see [Azure free account](/azure/cost-management-billing/manage/avoid-charges-free-account). Azure Cosmos DB is a part of Azure free account. Specifically for Azure Cosmos DB, this free account offers 25-GB storage and 400 RU/s of provisioned throughput for the entire year.
 
 * **Azure Cosmos DB emulator**: Azure Cosmos DB emulator provides a local environment that emulates the Azure Cosmos DB service for development purposes. Emulator is offered at no cost and with high fidelity to the cloud service. Using Azure Cosmos DB emulator, you can develop and test your applications locally, without creating an Azure subscription or incurring any costs. You can develop your applications by using the emulator locally before going into production. After you're satisfied with the functionality of the application against the emulator, you can switch to using the Azure Cosmos DB account in the cloud and significantly save on cost. For more information about dev/test, see [using Azure Cosmos DB for development and testing](emulator.md).
 
@@ -57,7 +60,7 @@ You can learn more about optimizing the costs for your Azure Cosmos DB resources
 
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
   * If all you know is the number of vCores and servers in your existing database cluster, see [Convert the number of vCores or vCPUs in your nonrelational database to Azure Cosmos DB RU/s](convert-vcore-to-request-unit.md)
-  * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](./sql/estimate-ru-with-capacity-planner.md)
+  * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)
 * [Optimize development and testing cost in Azure Cosmos DB](optimize-dev-test.md)
 * [Understand your Azure Cosmos DB bill](understand-your-bill.md)
 * [Optimize provisioned throughput cost in Azure Cosmos DB](optimize-cost-throughput.md)

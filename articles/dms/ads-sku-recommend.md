@@ -1,10 +1,10 @@
 ---
-title: Get Azure recommendations for your SQL Server migration
+title: Get Azure Recommendations for Your SQL Server Migration
 description: Discover how to utilize the Azure SQL Migration extension in Azure Data Studio for obtaining Azure recommendations while migrating SQL Server databases to Azure SQL Managed Instance, SQL Server on Azure Virtual Machines, or Azure SQL Database.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: upgrade-and-migration-article
 ms.collection:
@@ -93,7 +93,7 @@ This performance data is collected once per SQL Server instance:
 
 A minimum of 10 minutes of data collection is required before a recommendation can be generated, but to accurately assess your workload, it's recommended that you run the data collection for a duration sufficiently long to capture both on-peak and off-peak usage.
 
-To initiate the data collection process, begin by connecting to your source SQL instance in Azure Data Studio, then launch the SQL Migration wizard. On step 2, select "Get Azure recommendation". Select "Collect performance data now" and select a folder on your machine where the collected data will be saved.
+To initiate the data collection process, begin by connecting to your source SQL instance in Azure Data Studio, then launch the SQL Migration wizard. On step 2, select **Get Azure recommendation**. Select **Collect performance data now** and select a folder on your machine where the collected data will be saved.
 
 :::image type="content" source="media/ads-sku-recommend/collect-performance-data.png" alt-text="Screenshot that shows the wizard pane to collect performance data for SKU recommendations.":::
 
@@ -119,9 +119,9 @@ If you have already collected performance data from a previous session, or using
 
 :::image type="content" source="media/ads-sku-recommend/import-sku-data.png" alt-text="Screenshot that shows the pane to import performance data for a SKU recommendation.":::
 
-Step one of the SQL Migration wizard asks you to select a set of databases to assess, and these are the only databases which will be taken into consideration during the recommendation process.  
+Step one of the SQL Migration wizard asks you to select a set of databases to assess, and these are the only databases which will be taken into consideration during the recommendation process.
 
-However, the performance data collection process collects performance counters for **all databases** from the source SQL Server instance, not just the ones that were selected.  
+However, the performance data collection process collects performance counters for **all databases** from the source SQL Server instance, not just the ones that were selected.
 
 This means that previously collected performance data can be used to repeatedly regenerate recommendations for a different subset of databases by specifying a different list on step one.
 
@@ -253,11 +253,17 @@ GRANT SELECT ON [msdb].[dbo].[sysmail_account] TO [assessment];
 ## Troubleshoot
 
 - No recommendations generated
+
   - If no recommendations were generated, this situation could mean that no configurations were identified which can fully satisfy the performance requirements of your source instance. In order to see reasons why a particular size, service tier, or hardware family was disqualified:
+
     - Access the logs from Azure Data Studio by going to Help > Show All Commands > Open Extension Logs Folder
-    - Navigate to Microsoft.mssql > SqlAssessmentLogs > open SkuRecommendationEvent.log
+
+    - Navigate to Microsoft.mssql > SqlAssessmentLogs > open `SkuRecommendationEvent.log`
+
     - The log contains a trace of every potential configuration that was assessed and the reason why it was/was not considered being an eligible configuration:
-    :::image type="content" source="media/ads-sku-recommend/recommendation-log.png" alt-text="Screenshot that shows SKU recommendations log." lightbox="media/ads-sku-recommend/recommendation-log.png":::
+
+      :::image type="content" source="media/ads-sku-recommend/recommendation-log.png" alt-text="Screenshot that shows SKU recommendations log." lightbox="media/ads-sku-recommend/recommendation-log.png":::
+
   - Try regenerating the recommendation with [elastic recommendation](#recommendation-parameters) enabled. This option uses an alternate recommendation model, which utilizes personalized price-performance profiling against existing on-cloud customers.
 
 ## Related content

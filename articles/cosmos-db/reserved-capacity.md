@@ -1,15 +1,20 @@
 ---
-title: Azure Cosmos DB pricing & discounts with Reserved Capacity
+title: Pricing & Discounts With Reserved Capacity
 description: Azure Cosmos DB pricing allows for various forms of optimization. You may receive discounts of up to 63% savings with Reserved Capacity.
 author: aliuy
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 07/02/2025
+ms.date: 12/16/2025
 ms.author: andrl
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Azure Cosmos DB pricing & discounts with Reserved Capacity
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB Reserved Capacity allows you to benefit from discounted prices on the throughput provisioned for your Azure Cosmos DB resources. You can enjoy up to 63% savings by committing to a reservation for Azure Cosmos DB resources for either one year or three years. Examples of resources are databases and containers (tables, collections, and graphs). It doesn’t cover networking or storage.
 
@@ -101,26 +106,20 @@ This option, using multiples of our bigger reservation sizes, allows you to rese
 | 2,000,000 Multi-master RU/s | 33.5% | 47.3% |
 | 3,000,000 RU/s | 29.0% | 43.2% |
 | 3,000,000 Multi-master RU/s | 34.0% | 48.2% |
-| 4,000,000 RU/s | 33.0% | 47.4% |
-| 4,000,000 Multi-master RU/s | 38.0% | 52.4% |
 | 5,000,000 RU/s | 35.4% | 49.9% |
 | 5,000,000 Multi-master RU/s |  40.4% | 54.9% |
 | 10,000,000 RU/s | 40.2% | 55.0% | 
 | 10,000,000 Multi-master RU/s | 45.2% | 60.0% |
-| 12,500,000 RU/s | 41.2% | 56.0% |
-| 12,500,000 Multi-master RU/s | 46.2% | 61.0% |
-| 15,000,000 RU/s | 41.8% | 56.6% |
-| 15,000,000 Multi-master RU/s | 46.8% | 61.6% |
 | 20,000,000 RU/s | 42.6% | 57.5% |
 | 20,000,000 Multi-master RU/s | 47.6% | 62.5% |
-| 25,000,000 RU/s | 43.1% | 58.0% |
-| 25,000,000 Multi-master RU/s | 48.1% | 63.0% |
 | 30,000,000 RU/s | 43.4% | 58.3% |
 | 30,000,000 Multi-master RU/s | 48.4% | 63.3% |
 
-You can maximize savings with the biggest reservation for your scenario. Example: You need 2 million RU/s, one year term. If you purchase two units of the 1,000,000 RU/s reservation, your discount is 27.0%. If you purchase one unit of the 2,000,000 RU/s reservation, you have exactly the same Reserved Capacity, but a 28.5% discount.
+You can maximize savings with the biggest reservation for your scenario. Example: You need 2,000,000 RU/s, one year term. If you purchase two units of the 1,000,000 RU/s reservation, your discount is 27.0%. If you purchase one unit of the 2,000,000 RU/s reservation, you have exactly the same Reserved Capacity, but a 28.5% discount.
 
-Reservations larger than 1 million RU/sec are hidden by default. You can access large reservations in the Azure Portal through this [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
+You can combine multiple reservations to fit quantities that don't have a dedidcated SKU. For example, you can reserve 6,000,000 RU/s by adding 5,000,000 RU/s + 1,000,000 RU/s reservation.
+
+Reservations larger than or equal to 1,000,000 RU/sec are hidden by default. You can access large reservations in the Azure Portal through this [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
 
 ## Azure Pricing Calculator
 
@@ -285,7 +284,6 @@ When you reserve capacity for your Azure Cosmos DB resources, you are reserving 
 
 ## Limitations
 
- * Currently we don't support reservations for vCore-based services.
  * Currently we don't support reservations for Serverless accounts.
  * Currently we don't support reservations for storage or network.
 

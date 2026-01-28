@@ -20,7 +20,7 @@ If your search requirements are significant, we recommend that you deploy a dedi
 
 ## Prerequisites
 
-- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - Deploy an Azure Managed Instance for Apache Cassandra cluster. You can do this step via the [Azure portal](create-cluster-portal.md). Lucene indexes are enabled by default when clusters are deployed from the portal. If you want to add Lucene indexes to an existing cluster, select **Update** on the portal **Overview** pane. Select **Cassandra Lucene Index**, and then select **Update** to deploy.
 
    :::image type="content" source="./media/search-lucene-index/update-cluster.png" alt-text="Screenshot that shows Update Cassandra cluster properties." lightbox="./media/search-lucene-index/update-cluster.png" border="true":::

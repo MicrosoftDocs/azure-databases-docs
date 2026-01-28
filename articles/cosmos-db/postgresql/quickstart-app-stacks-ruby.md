@@ -1,21 +1,23 @@
 ---
 title: Use Ruby to connect and query Azure Cosmos DB for PostgreSQL
 description: See how to use Ruby to connect and run SQL statements on Azure Cosmos DB for PostgreSQL.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: quickstart
 recommendations: false
 ms.date: 06/05/2023
 ms.custom: sfi-ropc-blocked
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Use Ruby to connect and run SQL commands on Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
-
 [!INCLUDE [App stack selector](includes/quickstart-selector.md)]
+
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This quickstart shows you how to use Ruby code to connect to a cluster, and use SQL statements to create a table. You'll then insert, query, update, and delete data in the database. The steps in this article assume that you're familiar with Ruby development, and are new to working with Azure Cosmos DB for PostgreSQL.
 

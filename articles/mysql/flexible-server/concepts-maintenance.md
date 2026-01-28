@@ -4,7 +4,7 @@ description: This article describes the scheduled maintenance feature in Azure D
 author: SudheeshGH 
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -88,7 +88,7 @@ You can define a system-managed schedule or a custom schedule for each flexible 
 >
 > Existing Burstable-tier instances with custom maintenance windows are unaffected. However, users can no longer modify these settings for custom maintenance windows.
 >
-> For customers who need custom maintenance windows, we recommend upgrading to the General Purpose or Business Critical tier.
+> For customers who need custom maintenance windows, we recommend upgrading to the General Purpose or Memory-Optimized tier.
 
 In rare cases, a maintenance event can be canceled by the system or might fail to finish successfully. If a maintenance event fails, the update is reverted, and the previous version of the binaries is restored. In scenarios of failed updates, you might still experience a restart of the server during the maintenance window.
 
@@ -96,19 +96,35 @@ If a maintenance event is canceled or fails, the system sends you a notification
 
 <a id="near-zero-downtime-maintenance-public-preview"></a>
 
-## Near-zero-downtime maintenance (preview)
+## Maintenance status
+
+For individual servers, you can view the maintenance status in Azure MySQL maintenance blade in the Azure portal. The maintenance status indicates whether maintenance is scheduled, in progress, completed, or canceled.
+
+For customers managing multiple Azure Database for MySQL flexible servers, you can use Azure Resource Graph to perform bulk queries across subscriptions and resource groups. This is especially useful for auditing maintenance history, identifying impacted resources, and tracking maintenance events over time. Below is the Kusto query that retrieves the maintenance status, start and end times, and tracking ID for all MySQL flexible servers under the customer's subscription. This allows customers to monitor maintenance activities over the past three months in a scalable and automated way:
+
+```sql
+
+ServiceHealthResources
+| where type == "microsoft.resourcehealth/events/impactedresources"
+| extend TrackingId = split(split(id, "/events/", 1)[0], "/impactedResources", 0)[0]
+| extend p = parse_json(properties)
+| project subscriptionId, TrackingId, resourceName= p.resourceName, resourceGroup=p.resourceGroup, resourceType=p.targetResourceType, status= p.status, maintenanceStartTime=todatetime(p.maintenanceStartTime),  maintenanceEndTime=todatetime( p.maintenanceEndTime), details = p, id
+| where resourceType == "Microsoft.DBforMySQL/flexibleServers" 
+| order by maintenanceEndTime
+
+```
+
+You can also go to Azure Service Health's Impacted Resources tab to view the maintenance status for all your Azure resources, including Azure Database for MySQL flexible servers. Please note that the maintenance status that appears in Azure Service Health represents the overall status of the maintenance event at region level and might not reflect the status of individual servers.
+
+## Near-zero-downtime maintenance
 
 The Azure Database for MySQL *near-zero-downtime maintenance* feature is a groundbreaking development for high-availability servers. This feature is designed to substantially reduce maintenance downtime. This capability is pivotal for businesses that demand high availability and minimal interruption in their database operations.
-
-### Precise downtime expectations
-
-- **Downtime duration**: In most cases, the downtime during maintenance ranges from 10 to 30 seconds.
-- **Additional considerations**: After a failover event, there's an inherent DNS time-to-live (TTL) period of approximately 30 seconds. This period isn't directly controlled by the maintenance process but is a standard part of DNS behavior. So, from a customer's perspective, the total downtime experienced during maintenance could be 40 to 60 seconds.
 
 ### Conditions and limitations
 
 To achieve the optimal performance that this feature offers, note these conditions and limitations:
 
+- **Downtime duration**: In most cases, the downtime during maintenance ranges from 10 to 30 seconds.
 - **Primary keys in all tables**: Ensuring that every table has a primary key is critical. A lack of primary keys can significantly increase replication lag and affect the downtime.
 - **Low workload during maintenance times**: Maintenance periods should coincide with times of low workload on the server to minimize downtime. We encourage you to use the [custom maintenance window](how-to-maintenance-portal.md#custom-managed-maintenance-window-cmw) to schedule maintenance during off-peak hours.
 - **Downtime guarantees**: Although we strive to keep the maintenance downtime as low as possible, we don't guarantee that it will be less than 60 seconds in all circumstances. Various factors, such as high workload or specific server configurations, can increase downtime. In the worst-case scenario, downtime might be similar to that of a standalone server.

@@ -1,12 +1,12 @@
 ---
 title: MySQL to Azure Database for MySQL Data Migration - MySQL Schema Migration
 description: Learn how to use the Azure Database for MySQL Data Migration - MySQL Schema Migration
-author: adig
-ms.author: adig
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
-ms.topic: article
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ms.custom:
@@ -23,7 +23,7 @@ In the current implementation, users can select the **server objects (views, tri
 
 :::image type="content" source="media/tutorial-mysql-to-azure-mysql-online/16-select-db.png" alt-text="Screenshot of a Select database.":::
 
-To migrate the schema for table objects, navigate to the **Select tables** tab. Before the tab populates, DMS fetches the tables from the selected database(s) on the source and target, and then determines whether the table exists and contains data. If you select a table in the source database that doesn't exist on the target database, the box under **Migrate schema** is selected by default. For tables that do exist in the target database, a note indicates that the selected table already contains and will be truncated. In addition, if the schema of a table on the target server doesn't match the schema on the source, the table will be dropped before the migration continues.
+To migrate the schema for table objects, navigate to the **Select tables** tab. Before the tab populates, DMS fetches the tables from the selected databases on the source and target, and then determines whether the table exists and contains data. If you select a table in the source database that doesn't exist on the target database, the box under **Migrate schema** is selected by default. For tables that do exist in the target database, a note indicates that the selected table already contains and will be truncated. In addition, if the schema of a table on the target server doesn't match the schema on the source, the table will be dropped before the migration continues.
 
 :::image type="content" source="media/tutorial-mysql-to-azure-mysql-online/17-select-tables.png" alt-text="Screenshot of a Select Tables.":::
 
@@ -33,7 +33,7 @@ After you begin the migration and as the migration progresses, each table is cre
 
 ### How Schema Migration works
 
-Schema migration is supported by MySQL's **"SHOW CREATE"** syntax to gather schema information for objects from the source. When migrating the schema for the objects from the source to the target, DMS processes the input and individually migrates the objects. DMS also wraps the collation, character set, and other relevant information that is provided by the "SHOW CREATE" query to the create query that is then processed on to the target.
+Schema migration is supported by MySQL's `SHOW CREATE` syntax to gather schema information for objects from the source. When migrating the schema for the objects from the source to the target, DMS processes the input and individually migrates the objects. DMS also wraps the collation, character set, and other relevant information that is provided by the `SHOW CREATE` query to the create query that is then processed on to the target.
 
 **Routines** and **Events** are migrated before any data is migrated. The schema for each individual **table** is migrated immediately prior to data movement starting for the table. **Triggers** are migrated after the data migration portion. For **views**, since MySQL validates the contents of views and they can depend on other tables, DMS first creates tables for views before the start of database data movement and then drops the temporary table and creates the view.
 
@@ -45,21 +45,21 @@ Since a temporary table is created for views, if there's a failure migrating a v
 
 To complete a schema migration successfully, ensure that the following prerequisites are in place.
 
-- "READ" privilege on the source database.
+- `READ` privilege on the source database.
 
-- "SELECT" privilege for the ability to select objects from the database
+- `SELECT` privilege for the ability to select objects from the database
 
-- If migrating views, the user must have the "SHOW VIEW" privilege.
+- If migrating views, the user must have the `SHOW VIEW` privilege.
 
-- If migrating triggers, the user must have the "TRIGGER" privilege.
+- If migrating triggers, the user must have the `TRIGGER` privilege.
 
 - If migrating routines (procedures and/or functions), the user must be named in the definer clause of the routine. Alternatively, based on version, the user must have the following privilege:
 
-  - For 5.7, have "SELECT" access to the "mysql.proc" table.
+  - For 5.7, have `SELECT` access to the `mysql.proc` table.
 
-  - For 8.0, have "SHOW_ROUTINE" privilege or have the "CREATE ROUTINE," "ALTER ROUTINE," or "EXECUTE" privilege granted at a scope that includes the routine.
+  - For 8.0, have `SHOW_ROUTINE` privilege or have the `CREATE ROUTINE`, `ALTER ROUTINE`, or `EXECUTE` privilege granted at a scope that includes the routine.
 
-- If migrating events, the user must have the "EVENT" privilege for the database from which the events are to be shown.
+- If migrating events, the user must have the `EVENT` privilege for the database from which the events are to be shown.
 
 ## Limitations
 

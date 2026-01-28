@@ -1,17 +1,17 @@
 ---
-title: Migrate databases by using the Azure SQL Migration extension for Azure Data Studio
+title: Migrate Databases by Using the Azure SQL Migration Extension for Azure Data Studio
 description: Learn how to use the Azure SQL Migration extension in Azure Data Studio to migrate databases with Azure Database Migration Service.
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: upgrade-and-migration-article
 ms.collection:
-- sql-migration-content
+  - sql-migration-content
 ms.custom:
-- references_regions
-- sfi-image-nochange
+  - references_regions
+  - sfi-image-nochange
 ---
 
 # Migrate databases by using the Azure SQL Migration extension for Azure Data Studio
@@ -35,7 +35,7 @@ The Azure SQL Migration extension for Azure Data Studio offers these key benefit
 
 - You can configure a self-hosted integration runtime to use your own compute resources to access the source SQL Server instance backup files in your on-premises environment.
 
-- Provides a secure and improved user experience for migrating TDE databases and SQL/Windows logins to Azure SQL.
+- Provides a secure and improved user experience for migrating databases with transparent data encryption (TDE) enabled, and SQL/Windows logins, to Azure SQL.
 
 For information about specific migration scenarios and Azure SQL targets, see the list of tutorials in the following table:
 
@@ -46,7 +46,7 @@ For information about specific migration scenarios and Azure SQL targets, see th
 | SQL Server to Azure SQL Database | [Offline](/data-migration/sql-server/database/database-migration-service) |
 
 > [!IMPORTANT]  
-> If your target is Azure SQL Database, you can migrate database Schema and data both using Database Migration Service via Azure Portal. Also, you can use tools like the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) for Azure Data Studio to deploy the database schema before you begin the data migration.
+> If your target is Azure SQL Database, you can migrate database Schema and data both using Database Migration Service via Azure portal. Also, you can use tools like the [SQL Server dacpac extension](/azure-data-studio/extensions/sql-server-dacpac-extension) or the [SQL Database Projects extension](/azure-data-studio/extensions/sql-database-project-extension) for Azure Data Studio to deploy the database schema before you begin the data migration.
 
 The following video explains recent updates and features added to the Azure SQL Migration extension for Azure Data Studio:
 
@@ -83,7 +83,7 @@ The following list describes each step in the workflow:
 1. **Restore backups on target Azure SQL**: Database Migration Service restores backup files from your Azure storage account to the supported target Azure SQL instance.
 
 > [!NOTE]  
-> If your migration target is Azure SQL Database, you don't need backups for this migration. Database migration to Azure SQL Database is considered a logical migration that involves the database's pre-creation and data movement (performed by Database Migration Service).
+> If your migration target is Azure SQL Database, you don't need backups for this migration. Database migration to Azure SQL Database is considered a logical migration that involves the database's precreation and data movement (performed by Database Migration Service).
 
 The Azure SQL Migration extension for Azure Data Studio doesn't take database backups, or neither initiate any database backups on your behalf. Instead, the service uses existing database backup files for the migration.
 
@@ -97,15 +97,15 @@ The following sections walk through the prerequisites for each supported Azure S
 
 ### [Azure SQL Managed Instance](#tab/azure-sql-mi)
 
-[!INCLUDE [dms-ads-sqlmi-prereq](./includes/dms-ads-sqlmi-prereq.md)]
+[!INCLUDE [dms-ads-sqlmi-prereq](includes/dms-ads-sqlmi-prereq.md)]
 
 ### [SQL Server on Azure Virtual Machine](#tab/azure-sql-vm)
 
-[!INCLUDE [dms-ads-sqlvm-prereq](./includes/dms-ads-sqlvm-prereq.md)]
+[!INCLUDE [dms-ads-sqlvm-prereq](includes/dms-ads-sqlvm-prereq.md)]
 
 ### [Azure SQL Database](#tab/azure-sql-db)
 
-[!INCLUDE [dms-ads-sqldb-prereq](./includes/dms-ads-sqldb-prereq.md)]
+[!INCLUDE [dms-ads-sqldb-prereq](includes/dms-ads-sqldb-prereq.md)]
 
 ---
 
@@ -164,7 +164,7 @@ To monitor database migrations in the Azure portal:
 
 ## Pricing
 
-- Azure Database Migration Service is free to use with the Azure SQL Migration extension for Azure Data Studio. You can migrate multiple SQL Server databases by using Database Migration Service at no charge.
+- Azure Database Migration Service is free to use. You can migrate multiple SQL Server databases by using Database Migration Service at no charge.
 
 - No data movement or data ingress costs are assessed when you migrate your databases from an on-premises environment to Azure. If the source database is moved from another region or from an Azure virtual machine, you might incur [bandwidth charges](https://azure.microsoft.com/pricing/details/bandwidth/) depending on your bandwidth provider and routing scenario.
 

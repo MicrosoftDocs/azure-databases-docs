@@ -1,22 +1,21 @@
 ---
-title: What is Azure Cosmos DB analytical store?
+title: What Is Analytical Store?
 description: Learn about Azure Cosmos DB transactional (row-based) and analytical(column-based) store. Benefits of analytical store, performance impact for large-scale workloads, and auto sync of data from transactional store to analytical store.
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 06/11/2025
+ms.date: 12/05/2025
 ms.custom: devx-track-azurecli
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Gremlin
 ---
 
 # What is Azure Cosmos DB analytical store?
 
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
-
- > [!IMPORTANT]
- >  Mirroring Azure Cosmos DB in Microsoft Fabric is now available for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization. [Get started wtih mirroring in Microsoft Fabric.](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context)
-> 
-To get started with Azure Synapse Link, please visit [“Getting started with Azure Synapse Link”](synapse-link.md)
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 Azure Cosmos DB analytical store is a fully isolated column store for enabling large-scale analytics against operational data in your Azure Cosmos DB, without any impact to your transactional workloads. 
 
@@ -175,6 +174,7 @@ The following constraints are applicable on the operational data in Azure Cosmos
 
 ```Python
 # Removing one column:
+
 df = spark.read\
      .format("cosmos.olap")\
      .option("spark.synapse.linkedService","<your-linked-service-name>")\
@@ -553,7 +553,7 @@ Some points to consider:
 *    You can achieve longer retention of your operational data in the analytical store by setting ATTL >= TTTL at the container level.
 *    The analytical store can be made to mirror the transactional store by setting ATTL = TTTL.
 *    If you have ATTL bigger than TTTL, at some point in time you'll have data that only exists in analytical store. This data is read only.
-*    Currently we don't delete any data from analytical store. If you set your ATTL to any positive integer, the data won't be included in your queries and you won't be billed for it. But if you change ATTL back to `-1`, all the data will show up again, you will start to be billed for all the data volume.
+*    Currently we don't delete any data from analytical store. If you set your ATTL to any positive integer, the data won't be included in your queries and you won't be billed for it. But if you change ATTL back to `-1`, all the data will show up again, you will start to be billed for the whole data volume.
 
 How to enable analytical store on a container:
 
@@ -647,7 +647,7 @@ Analytical store partitioning is completely independent of partitioning in�
 * **Authentication with the analytical store** - Supported authentication methods vary based upon whether networking features are enabled.
 
   - *Key-based authentication*: This scenario is supported for all accounts in all scenarios, including those without Private Endpoints or VNet enabled. 
-  - *Service Principal or Managed-Identity*: Using Entra Id or managed-identity authentication is only supported for accounts which do **not** use Private Endpoints or enable Vnet access. To use this type of authentication, users must apply [data plane RBAC](./nosql/how-to-grant-data-plane-access.md) and create a new read only role with these data actions below.
+  - *Service Principal or Managed-Identity*: Using Entra Id or managed-identity authentication is only supported for accounts which do **not** use Private Endpoints or enable Vnet access. To use this type of authentication, users must apply [data plane RBAC](how-to-connect-role-based-access-control.md#grant-data-plane-role-based-access) and create a new read only role with these data actions below.
 
     1. Add a custom *MyAnalyticsReadOnlyRole* using PowerShell and map "readMetadata" and "readAnalytics" RBAC actions to the Role.
 
@@ -670,7 +670,7 @@ Analytical store partitioning is completely independent of partitioning in�
     $roleDefinitionId = Get-AzCosmosDBSqlRoleDefinition -AccountName $accountName `
     -ResourceGroupName $resourceGroupName
     ```
-    3. Create the role assignment by assiging the new role to the *Synapse MSI Principal*.
+    3. Create the role assignment by assigning the new role to the *Synapse MSI Principal*.
     
     ```powershell
     $synapsePrincipalId = "<Synapse MSI Principal>"
@@ -732,4 +732,4 @@ To learn more, see the following docs:
 
 * [Frequently asked questions about Synapse Link for Azure Cosmos DB](synapse-link-frequently-asked-questions.yml)
 
-* [Azure Synapse Link for Azure Cosmos DB Use cases](synapse-link-use-cases.md)
+* [Analytics Use cases](analytics-and-business-intelligence-use-cases.md)

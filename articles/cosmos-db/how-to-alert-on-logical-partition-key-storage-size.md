@@ -7,20 +7,25 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Create alerts to monitor if storage for a logical partition key is approaching 20 GB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB enforces a maximum logical partition key size of 20 GB. For example, if you have a container/collection partitioned by **UserId**, the data within the "Alice" logical partition can store up to 20 GB of data. 
 
-You can use alerts to monitor if you have any logical partition keys that are approaching the 20 GB logical partition limit. Alerts can send you a notification in the form of an email or execute an action, such as an Azure Function or Logic App, when the condition is triggered.
+You can use alerts to monitor if you have any logical partition keys that are approaching the 20-GB logical partition limit. Alerts can send you a notification in the form of an email or execute an action, such as an Azure Function or Logic App, when the condition is triggered.
 
-In this article, we’ll create an alert that will trigger if the storage for a logical partition key exceeds 70% of the 20 GB limit (has more than 14 GB of storage). You can set up alerts from the **Alerts** pane in a specific Azure Cosmos DB account or the **Azure Monitor** service in the Azure portal. Both the interfaces offer the same options. This article shows you how to set up the alert from Azure Monitor. 
+In this article, we create an alert that triggers if the storage for a logical partition key exceeds 70% of the 20-GB limit (has more than 14 GB of storage). You can set up alerts from the **Alerts** pane in a specific Azure Cosmos DB account or the **Azure Monitor** service in the Azure portal. Both the interfaces offer the same options. This article shows you how to set up the alert from Azure Monitor. 
 
-## Pre-requisites 
+## Prerequisites 
 
-We’ll be using data from the **PartitionKeyStatistics** log category in Diagnostic Logs to create our alert. Diagnostic Logs is an opt-in feature, so you’ll need to enable it before proceeding. In our example, we’ll use the recommended Resource Specific Logs option. 
+We're using data from the **PartitionKeyStatistics** log category in Diagnostic Logs to create our alert. Diagnostic Logs is an opt-in feature, so you need to enable it before proceeding. In our example, we use the recommended Resource Specific Logs option. 
 
 Follow the instructions in [Monitor Azure Cosmos DB data by using diagnostic settings in Azure](monitor-resource-logs.md) to ensure:
 - Diagnostic Logs is enabled on the Azure Cosmos DB account(s) you want to monitor
@@ -58,9 +63,9 @@ Follow the instructions in [Monitor Azure Cosmos DB data by using diagnostic set
 
    * Select **Custom log search** for the **Signal name**.
 
-   * In the query editor, add the below query. You can run the query to preview the result. 
+   * In the query editor, add this query. You can run the query to preview the result. 
     > [!NOTE]
-    > It's perfectly ok if the query currently returns no results. The **PartitionKeyStatistics** logs only show data if there are logical partition keys with significant storage size, so if there are no results returned, it means that there are no such keys. If and when such keys do appear in the future, the alert will be triggered then.
+    > It's perfectly ok if the query currently returns no results. The **PartitionKeyStatistics** logs only show data if there are logical partition keys with significant storage size, so if there are no results returned, it means that there are no such keys. If and when such keys do appear in the future, the alert is triggered then.
 
     ```kusto
     CDBPartitionKeyStatistics
@@ -77,28 +82,28 @@ Follow the instructions in [Monitor Azure Cosmos DB data by using diagnostic set
 
         * Select **Maximum** for **Aggregation type**.
 
-        * Select your desired **Aggregation granularity** based on your requirements. In our example, we’ll select **1 hour**. This means that the alert will calculate the storage size of the logical partition using the highest storage value in the hour. 
+        * Select your desired **Aggregation granularity** based on your requirements. In our example, we select **1 hour**. This means that the alert calculates the storage size of the logical partition using the highest storage value in the hour. 
 
    * In the Split by dimensions section:
 
-        * Add the following six dimensions: **AccountName**, **DatabaseName**, **CollectionName**, **_ResourceId**, **PartitionKey**, **SizeKb**. This ensures that when the alert is triggered, you’ll be able to identify the specific Azure Cosmos DB account, database, collection, and partition key that triggered the alert.
+        * Add the following six dimensions: **AccountName**, **DatabaseName**, **CollectionName**, **_ResourceId**, **PartitionKey**, **SizeKb**. This ensures that when the alert is triggered, you are able to identify the specific Azure Cosmos DB account, database, collection, and partition key that triggered the alert.
 
         * For the **SizeKb** dimension, select **Select all current and future values** as the **Dimension values**. 
 
         * For all other dimensions:
             * If you want to monitor only a specific Azure Cosmos DB account, database, collection, or partition key, select the specific value or **Add custom value** if the value doesn’t currently appear in the dropdown.  
 
-            * Otherwise, select **Select all current and future values**. For example, if your Azure Cosmos DB account currently has two databases and five collections, selecting all current and feature values for the Database and CollectionName dimension will ensure that the alert will apply to all existing databases and collections, as well as any you may create in the future. 
+            * Otherwise, select **Select all current and future values**. For example, if your Azure Cosmos DB account currently has two databases and five collections, selecting all current and feature values for the Database and CollectionName dimension will ensure that the alert will apply to all existing databases and collections, as well as any you could create in the future. 
 
    * In the Alert logic section:
 
         * Select **Greater than** for **Operator**.
 
-        * Select your desired threshold value. Based on how we’ve written the query, a valid threshold will be a number between 0 and 1 (inclusive). In our example, we want to trigger the alert if a logical partition key reaches 70% of the allowed storage, so we enter **0.7**. You can tune this number based on your requirements.
+        * Select your desired threshold value. Based on how we’ve written the query, a valid threshold is a number between 0 and 1 (inclusive). In our example, we want to trigger the alert if a logical partition key reaches 70% of the allowed storage, so we enter **0.7**. You can tune this number based on your requirements.
 
-        * Select your desired **Frequency of evaluation** based on your requirements. In our example, we’ll select **1 hour**. Note this value must be less than or equal to the alert evaluation period.
+        * Select your desired **Frequency of evaluation** based on your requirements. In our example, we select **1 hour**. Note this value must be less than or equal to the alert evaluation period.
 
-        After completing Step 5, the **Condition** section will look like the example below. 
+        After completing Step 5, the **Condition** section will look like this example. 
     
         :::image type="content" source="media/how-to-alert-on-logical-partition-key-storage-size/alert-signal-logic.png" alt-text="Screenshot of an example configuration for signal logic":::
 
@@ -136,22 +141,22 @@ To see your alerts in the Azure portal:
 
 1. Select **Monitor** from the left-hand navigation bar and select **Alerts**.
 
-When the alert is fired, it will include:
+When the alert is fired, it includes:
 - Database account name
 - Database name
 - Collection name
 - Logical partition key
 - Storage in KB of the logical partition key
-- Utilization of the 20 GB limit
+- Utilization of the 20-GB limit
 
-For example, in the alert that was fired below, we see the logical partition of "ContosoTenant" has reached 0.78 of the 20GB logical partition storage limit, with 16GB of data in a particular database and collection. 
+For example, in the alert that was fired, we see the logical partition of "ContosoTenant" has reached 0.78 of the 20-GB logical partition storage limit, with 16GB of data in a particular database and collection. 
 
 :::image type="content" source="media/how-to-alert-on-logical-partition-key-storage-size/alert-when-logical-partition-key-exceeds-threshold.png" alt-text="Screenshot of an alert fired when logical partition key size exceeds threshold":::
 
 ## Remediation steps
-When the 20 GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. As a result, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
+When the 20-GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. As a result, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
 
-To help give time for this, you can request a temporary increase in the logical partition key limit for your existing application.  [File an Azure support ticket](create-support-request-quota-increase.md) and select quota type **Temporary increase in container's logical partition key size.** Note this is intended as a temporary mitigation and not recommended as a long-term solution, as SLA guarantees are not honored when the limit is increased. To remove the configuration, file a support ticket and select quota type **Restore container’s logical partition key size to default (20 GB)**. This can be done after you have either deleted data to fit the 20 GB logical partition limit or have rearchitected your application with a different partition key.
+To help give time for this, you can request a temporary increase in the logical partition key limit for your existing application.  [File an Azure support ticket](create-support-request-quota-increase.md) and select quota type **Temporary increase in container's logical partition key size.** Note this is intended as a temporary mitigation and not recommended as a long-term solution, as service level agreement (SLA) guarantees aren't honored when the limit is increased. To remove the configuration, file a support ticket and select quota type **Restore container’s logical partition key size to default (20 GB)**. This can be done after you have either deleted data to fit the 20-GB logical partition limit or have rearchitected your application with a different partition key.
 
 To learn about best practices for managing workloads that have partition keys requiring higher limits for storage or throughput, see [Create a synthetic partition key](synthetic-partition-keys.md).
 
@@ -159,4 +164,4 @@ To learn about best practices for managing workloads that have partition keys re
 * How to [create alerts for Azure Cosmos DB using Azure Monitor](create-alerts.md).
 * How to [monitor normalized RU/s metric](monitor-normalized-request-units.md) in Azure Cosmos DB container.
 * How to [monitor throughput or request unit usage](monitor-request-unit-usage.md) of an operation in Azure Cosmos DB.
-* How to [interpret and debut 429 exceptions](sql/troubleshoot-request-rate-too-large.md) in Azure Cosmos DB container.
+* How to [interpret and debut 429 exceptions](troubleshoot-request-rate-too-large.md) in Azure Cosmos DB container.

@@ -7,9 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 09/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Microservices
+
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this tutorial, you use Azure Cosmos DB for PostgreSQL as the storage backend for multiple microservices, demonstrating a sample setup and basic operation of such a cluster. Learn how to:
 
@@ -22,7 +26,6 @@ In this tutorial, you use Azure Cosmos DB for PostgreSQL as the storage backend 
 > * Run services
 > * Explore the database
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
 
 ## Prerequisites
 

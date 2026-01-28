@@ -9,11 +9,13 @@ ms.subservice: postgresql
 ms.custom: mvc, mode-ui, sfi-ropc-blocked
 ms.topic: quickstart
 ms.date: 10/02/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Connect to a cluster with psql - Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 This quickstart shows you how to use the [psql](https://www.postgresql.org/docs/current/app-psql.html) connection string in [Azure Cloud Shell](/azure/cloud-shell/overview) to connect to an Azure Cosmos DB for PostgreSQL cluster.
 

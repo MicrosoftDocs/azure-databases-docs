@@ -1,17 +1,22 @@
 ---
-title: Limit the total throughput provisioned on your Azure Cosmos DB account
+title: Limit the Total Throughput Provisioned on Your Account
 description: Learn how to limit the total throughput provisioned on your Azure Cosmos DB account
 author: deborahc
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 03/31/2022
+ms.date: 10/15/2025
 ms.author: dech
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Limit the total throughput provisioned on your Azure Cosmos DB account
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
-When using an Azure Cosmos DB account in [provisioned throughput](./set-throughput.md) mode, most of your costs usually come from the amount of throughput that you have provisioned across your account. In particular, these costs are directly influenced by:
+When using an Azure Cosmos DB account in [provisioned throughput](./set-throughput.md) mode, most of your costs come from the amount of throughput that you have provisioned across your account. In particular, these costs are directly influenced by:
 
 - The number of databases that have shared throughput.
 - The number of containers that have dedicated throughput.
@@ -21,7 +26,7 @@ When using an Azure Cosmos DB account in [provisioned throughput](./set-throughp
 It can be challenging to keep track of the total amount of throughput that you have provisioned across your account, especially when you're getting started with Azure Cosmos DB. This can lead to unexpected charges when this amount ends up going over a certain budget that you didn't expect to exceed. To help you better control your costs, Azure Cosmos DB lets you limit the total throughput provisioned on your account.
 
 > [!NOTE]
-> This feature is not available on [serverless](./serverless.md) accounts.
+> This feature isn't available on [serverless](./serverless.md) accounts.
 
 After you've set a limit to your account's total throughput, any of the following operations that results in exceeding this limit is blocked and will explicitly fail:
 
@@ -32,10 +37,10 @@ After you've set a limit to your account's total throughput, any of the followin
 - Adding a new region to your account.
 
 > [!NOTE]
-> For resources configured in autoscale mode, it is the maximum throughput configured on the resource that counts towards your account's total throughput.
+> For resources configured in autoscale mode, it's the maximum throughput configured on the resource that counts towards your account's total throughput.
 
 > [!IMPORTANT]
-> Once a total throughput limit is enabled on your account, you must pass an explicit throughput value when creating new containers. You will currently get an error if you try to create a container with no explicit throughput.
+> Once a total throughput limit is enabled on your account, you must pass an explicit throughput value when creating new containers. You currently get an error if you try to create a container with no explicit throughput.
 
 ## Set the total throughput limit from the Azure portal
 
@@ -49,7 +54,7 @@ Checking this option will limit your account's total throughput to 1,000 RU/s fo
 
 ### Existing account
 
-From the Azure portal, navigate to your Azure Cosmos DB account and select **Cost management** from the left menu.
+From the Azure portal, navigate to your Azure Cosmos DB account and select **Account Throughput**, formerly Cost Management, from settings within the left menu.
 
 :::image type="content" source="./media/limit-total-account-throughput/existing-account.png" alt-text="Screenshot of the Azure portal showing how to update total account throughput on an existing account" border="true":::
 

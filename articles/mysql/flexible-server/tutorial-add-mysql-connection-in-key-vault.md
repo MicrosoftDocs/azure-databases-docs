@@ -16,7 +16,7 @@ You can store the Azure Database for MySQL Flexible Server connection string in 
 
 ## Prerequisites
 
-- You need an Azure subscription. If you don't already have a subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- You need an Azure subscription. If you don't already have a subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - All access to secrets takes place through Azure Key Vault. For this quickstart, create a key vault using [Azure portal](/azure/key-vault/general/quick-create-portal), [Azure CLI](/azure/key-vault/general/quick-create-cli), or [Azure PowerShell](/azure/key-vault/general/quick-create-powershell). Make sure you have the necessary permissions to manage and access the Key Vault.
 - Install .NET or Java or PHP or Python based on the framework you are using for your application.
 

@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.custom: build-2023
 ms.topic: how-to
 ms.date: 05/10/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to enable and use `pgvector` on Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 

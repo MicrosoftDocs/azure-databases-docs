@@ -7,9 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
 ms.date: 06/16/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # COPY command on Azure Cosmos DB for PostgreSQL
+
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 The [COPY](https://www.postgresql.org/docs/current/sql-copy.html) command is used to move data between files and database tables. `COPY` is a server-based command that requires access to the disk, usually limited to server administrators. However, Azure Cosmos DB for PostgreSQL operates as a Platform-as-a-Service (PaaS) solution, which means that users aren't granted superuser privileges. `COPY` command is thus not fully supported on the platform.
 

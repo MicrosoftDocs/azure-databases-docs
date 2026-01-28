@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 12/13/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to ingest data by using Azure Data Factory in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 [Azure Data Factory](/azure/data-factory/introduction) is a cloud-based
 [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) and data integration service. It allows you to create data-driven workflows to move and transform data at scale.

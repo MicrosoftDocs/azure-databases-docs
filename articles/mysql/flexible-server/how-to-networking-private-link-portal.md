@@ -3,8 +3,8 @@ title: Configure Private Link by Using the Azure Portal
 description: Learn how to use the Azure portal to configure Private Link for Azure Database for MySQL - Flexible Server.
 author: aditivgupta
 ms.author: adig
-ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 01/05/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -14,9 +14,7 @@ ms.custom:
 
 # Create and manage Private Link for Azure Database for MySQL - Flexible Server using the portal
 
-This tutorial provides step-by-step instructions on configuring a connection to an Azure Database for MySQL Flexible Server instance through a private endpoint and establishing a connection from a VM located within a VNet.
-
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+This tutorial describes how to configure an Azure Database for MySQL Flexible Server instance to use Private Link for secure connectivity.
 
 ### Sign in to Azure
 
@@ -29,16 +27,16 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 1. On the upper-left side of the screen, select **Create a resource** > **Networking** > **Virtual network**.
 1. In **Create virtual network**, then select this information:
 
-    | Setting | Value |
-    | --- | --- |
-    | Name | Enter *MyVirtualNetwork*. |
-    | Address space | Enter *10.1.0.0/16*. |
-    | Subscription | Select your subscription. |
-    | Resource group | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
-    | Location | Select **West Europe**. |
-    | Subnet - Name | Enter *mySubnet*. |
-    | Subnet - Address range | Enter *10.1.0.0/24*. |
-    | | |
+   | Setting | Value |
+   | --- | --- |
+   | Name | Enter *MyVirtualNetwork*. |
+   | Address space | Enter *10.1.0.0/16*. |
+   | Subscription | Select your subscription. |
+   | Resource group | Select **Create new**, enter *myResourceGroup*, then select **OK**. |
+   | Location | Select **West Europe**. |
+   | Subnet - Name | Enter *mySubnet*. |
+   | Subnet - Address range | Enter *10.1.0.0/24*. |
+
 | 1. Leave the rest as default and select **Create**. |
 
 ### Create a Virtual Machine
@@ -47,25 +45,25 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 
 1. In **Create a virtual machine - Basics**, then select this information:
 
-    | Setting | Value |
-    | --- | --- |
-    | **PROJECT DETAILS** | |
-    | Subscription | Select your subscription. |
-    | Resource group | Select **myResourceGroup**. You created this in the previous section. |
-    | **INSTANCE DETAILS** | |
-    | Virtual machine name | Enter *myVm*. |
-    | Region | Select **West Europe**. |
-    | Availability options | Leave the default **No infrastructure redundancy required**. |
-    | Image | Select **Windows Server 2019 Datacenter**. |
-    | Size | Leave the default **Standard DS1 v2**. |
-    | **ADMINISTRATOR ACCOUNT** | |
-    | Username | Enter a username of your choosing. |
-    | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](/azure/virtual-machines/windows/faq?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-). |
-    | Confirm Password | Reenter password. |
-    | **INBOUND PORT RULES** | |
-    | Public inbound ports | Leave the default **None**. |
-    | **SAVE MONEY** | |
-    | Already have a Windows license? | Leave the default **No**. |
+   | Setting | Value |
+   | --- | --- |
+   | **PROJECT DETAILS** | |
+   | Subscription | Select your subscription. |
+   | Resource group | Select the created resource group `myResourceGroup`. |
+   | **INSTANCE DETAILS** | |
+   | Virtual machine name | Enter *myVm*. |
+   | Region | Select **West Europe**. |
+   | Availability options | Leave the default **No infrastructure redundancy required**. |
+   | Image | Select **Windows Server 2019 Datacenter**. |
+   | Size | Leave the default **Standard DS1 v2**. |
+   | **ADMINISTRATOR ACCOUNT** | |
+   | Username | Enter a username of your choosing. |
+   | Password | Enter a password of your choosing. The password must be at least 12 characters long and meet the [defined complexity requirements](/azure/virtual-machines/windows/faq?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm-). |
+   | Confirm Password | Reenter password. |
+   | **INBOUND PORT RULES** | |
+   | Public inbound ports | Leave the default **None**. |
+   | **SAVE MONEY** | |
+   | Already have a Windows license? | Leave the default **No**. |
 
 1. Select **Next: Disks**.
 
@@ -73,14 +71,14 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 
 1. In **Create a virtual machine - Networking**, select this information:
 
-    | Setting | Value |
-    | --- | --- |
-    | Virtual network | Leave the default **MyVirtualNetwork**. |
-    | Address space | Leave the default **10.1.0.0/24**. |
-    | Subnet | Leave the default **mySubnet (10.1.0.0/24)**. |
-    | Public IP | Leave the default **(new) myVm-ip**. |
-    | Public inbound ports | Select **Allow selected ports**. |
-    | Select inbound ports | Select **HTTP** and **RDP**. |
+   | Setting | Value |
+   | --- | --- |
+   | Virtual network | Leave the default **MyVirtualNetwork**. |
+   | Address space | Leave the default **10.1.0.0/24**. |
+   | Subnet | Leave the default **mySubnet (10.1.0.0/24)**. |
+   | Public IP | Leave the default **(new) myVm-ip**. |
+   | Public inbound ports | Select **Allow selected ports**. |
+   | Select inbound ports | Select **HTTP** and **RDP**. |
 
 1. Select **Review + create**. You're taken to the **Review + create** page, where Azure validates your configuration.
 
@@ -92,28 +90,28 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 
 - Select **Add Private endpoint** to create private endpoint:
 
-    | Setting | Value |
-    | --- | --- |
-    | **Project details** | |
-    | Subscription | Select your subscription. |
-    | Resource group | Select **myResourceGroup**. You created this in the previous section. |
-    | **Instance Details** | |
-    | Name | Enter *myPrivateEndpoint*. If this name is taken, create a unique name. |
-    | Location | Select **West Europe**. |
-    | Virtual network | Select *MyVirtualNetwork*. |
-    | Subnet | Select *mySubnet*. |
-    | **PRIVATE DNS INTEGRATION** | |
-    | Integrate with private DNS zone | Select **Yes**. |
-    | Private DNS Zone | Select *(New)privatelink.mysql.database.Azure.com* |
+  | Setting | Value |
+  | --- | --- |
+  | **Project details** | |
+  | Subscription | Select your subscription. |
+  | Resource group | Select **myResourceGroup**. You created this in the previous section. |
+  | **Instance Details** | |
+  | Name | Enter *myPrivateEndpoint*. If this name is taken, create a unique name. |
+  | Location | Select **West Europe**. |
+  | Virtual network | Select *MyVirtualNetwork*. |
+  | Subnet | Select *mySubnet*. |
+  | **PRIVATE DNS INTEGRATION** | |
+  | Integrate with private DNS zone | Select **Yes**. |
+  | Private DNS Zone | Select *(New)privatelink.mysql.database.Azure.com* |
 
 - Select **OK** to save the Private endpoint configuration.
 
 - After entering the remaining information in the other tabs, select **Review + create** to deploy the Azure Database for MySQL Flexible Server instance.
 
 > [!NOTE]  
-> In some cases, the Azure Database for MySQL Flexible Server instance and the VNet-subnet are in different subscriptions. In these cases, you must ensure the following configurations:
->  
-> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information refer [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
+> In some cases, the Azure Database for MySQL Flexible Server instance and the virtual network subnet are in different subscriptions. In these cases, you must ensure the following configurations:
+>
+> - Make sure that both subscriptions have the **Microsoft.DBforMySQL/flexibleServer** resource provider registered. For more information, see [resource-manager-registration](/azure/azure-resource-manager/management/resource-providers-and-types).
 
 ## Manage private endpoints on Azure Database for MySQL Flexible Server via the Networking tab
 
@@ -123,11 +121,11 @@ In this section, you create a Virtual Network and the subnet to host the VM used
 
 1. In the **Private endpoint** section, you can manage your private endpoints (Add, Approve, Reject, or Delete).
 
-    :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png" alt-text="Screenshot of networking private link portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png":::
+   :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png" alt-text="Screenshot of networking private link portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-portal-mysql.png":::
 
 ### Connect to a VM using Remote Desktop (RDP)
 
-After you've created **myVm**, connect to it from the internet as follows:
+Connect to the created VM from the internet:
 
 1. In the portal's search bar, enter *myVm*.
 
@@ -137,12 +135,12 @@ After you've created **myVm**, connect to it from the internet as follows:
 
 1. Open the *downloaded.rdp* file.
 
-    1. If prompted, select **Connect**.
+   1. If prompted, select **Connect**.
 
-    1. Enter the username and password you specified when creating the VM.
+   1. Enter the username and password you specified when creating the VM.
 
-      > [!NOTE]  
-      > You might need to select **More choices** > **Use a different account** to specify the credentials you entered when you created the VM.
+   > [!NOTE]  
+   > You might need to select **More choices** > **Use a different account** to specify the credentials you entered when you created the VM.
 
 1. Select **OK**.
 
@@ -156,37 +154,23 @@ After you've created **myVm**, connect to it from the internet as follows:
 
 1. Enter `nslookup myServer.privatelink.mysql.database.azure.com`.
 
-    You receive a message similar to this:
+   ```output
+   Server: UnKnown
+   Address: 168.63.129.16
+   Non-authoritative answer:
+   Name: myServer.privatelink.mysql.database.azure.com
+   Address: 10.x.x.x
+   ```
 
-    ```azurepowershell
-    Server: UnKnown
-    Address: 168.63.129.16
-    Non-authoritative answer:
-    Name: myServer.privatelink.mysql.database.azure.com
-    Address: 10.x.x.x
-    ```
-
-    > [!NOTE]  
-    > Regardless of the firewall settings or public access being disabled, the ping and telnet tests will successfully verify network connectivity.
+   > [!NOTE]  
+   > Regardless of the firewall settings or public access being disabled, the ping and telnet tests verify network connectivity.
 
 1. Test the private link connection for the Azure Database for MySQL Flexible Server instance using any available client. The following example uses [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
 
 1. In **New connection**, then select this information:
-
-    | Setting | Value |
-    | --- | --- |
-    | Server type | Select **MySQL**. |
-    | Server name | Select *myServer.privatelink.mysql.database.Azure.com* |
-    | User name | Enter username as username@servername, provided during the Azure Database for MySQL Flexible Server instance creation. |
-    | Password | Enter a password provided during the Azure Database for MySQL Flexible Server instance creation. |
-    | SSL | Select **Required**. |
-
 1. Select Connect.
-
 1. Browse databases from the left menu.
-
 1. (Optionally) Create or query information from the Azure Database for MySQL Flexible Server instance.
-
 1. Close the remote desktop connection to *myVm*.
 
 ### Clean up resources
@@ -194,68 +178,31 @@ After you've created **myVm**, connect to it from the internet as follows:
 When you're done using the private endpoint, Azure Database for MySQL Flexible Server instance, and the VM, delete the resource group and all of the resources it contains:
 
 1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-
 1. Select **Delete resource group**.
-
 1. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
 
 ## Create a private endpoint via Private Link Center
 
-In this section, you learn how to add a private endpoint to the Azure Database for MySQL Flexible Server instance that you have already created.
+In this section, you learn how to add a private endpoint to the Azure Database for MySQL Flexible Server instance.
 
 1. In the Azure portal, select **Create a resource** > **Networking** > **Private Link**.
+1. In **Private Link Center - Overview**, select the option to **Create private endpoint**.
 
-1. In **Private Link Center - Overview**, select the option to **Create private endpoint**.
-
-    :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png" alt-text="Screenshot of private link center portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png":::
+   :::image type="content" source="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png" alt-text="Screenshot of private link center portal page." lightbox="media/how-to-networking-private-link-portal/networking-private-link-center portal-mysql.png":::
 
 1. In **Create a private endpoint - Basics**, then select the **Project details** information:
-
-    | Setting | Value |
-    | --- | --- |
-    | Subscription | Select your subscription. |
-    | Resource group | Select **myResourceGroup**. You created this in the previous section. |
-    | **Instance Details** | |
-    | Name | Enter *myPrivateEndpoint*. If this name is taken, create a unique name. |
-    | Location | Select **West Europe**. |
-
 1. Select **Next: Resource**, then select this information:
-
-    | Setting | Value |
-    | --- | --- |
-    | Connection method | Select connect to an Azure resource in my directory. |
-    | Subscription | Select your subscription. |
-    | Resource type | Select **Microsoft.DBforMySQL/flexibleServers**. |
-    | Resource | Select *myServer* |
-    | Target subresource | Select *mysqlServer* |
-
 1. Select **Next: Virtual Network**, then select the **Networking** information:
-
-    | Setting | Value |
-    | --- | --- |
-    | Virtual network | Select *MyVirtualNetwork*. |
-    | Subnet | Select *mySubnet*. |
-
 1. Select **Next: DNS**, then select the **PRIVATE DNS INTEGRATION** information:
-
-    | Setting | Value |
-    | --- | --- |
-    | Integrate with private DNS zone | Select **Yes**. |
-    | Private DNS Zone | Select *(New)privatelink.mysql.database.Azure.com* |
-
-  > [!NOTE]  
-  > Use your service's predefined private DNS zone or provide your preferred DNS zone name. For details, refer to the [[Azure services DNS zone configuration](/azure/private-link/private-endpoint-dns).
-
 1. Select **Review + create**. You're taken to the **Review + create** page, where Azure validates your configuration.
-
 1. When you see the **Validation passed** message, select **Create**.
 
 > [!NOTE]  
-> The FQDN in the customer's DNS setting does not resolve the private IP configured. You must set up a DNS zone for the configured FQDN as shown [here](/azure/dns/dns-operations-recordsets-portal).
+> The FQDN in the customer's DNS setting doesn't resolve the private IP configured. You must set up a DNS zone for the [configured FQDN](/azure/dns/dns-operations-recordsets-portal).
 
 ## Related content
 
 - [Create and manage Private Link for Azure Database for MySQL - Flexible Server using Azure CLI](how-to-networking-private-link-azure-cli.md)
 - [manage connectivity](concepts-networking.md)
-- [add another layer of encryption to Azure Database for MySQL Flexible Server using Customer Managed Keys](concepts-customer-managed-key.md)
-- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](concepts-azure-ad-authentication.md)
+- [add another layer of encryption to Azure Database for MySQL Flexible Server using Customer Managed Keys](security-customer-managed-key.md)
+- [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md)

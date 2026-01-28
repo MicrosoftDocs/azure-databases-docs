@@ -21,7 +21,7 @@ Azure Managed Instance for Apache Cassandra provides automated deployment and sc
 
 ## Prerequisites
 
-- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An Azure Managed Instance for Apache Cassandra cluster. For more information, see [Create an Azure Managed Instance for Apache Cassandra cluster from the Azure portal](create-cluster-portal.md).
 
 ## Deploy an LDAP server in Azure

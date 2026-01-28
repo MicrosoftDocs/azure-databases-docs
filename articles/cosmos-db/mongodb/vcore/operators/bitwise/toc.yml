@@ -1,8 +1,0 @@
-- name: $bitand
-  href: $bitand.md
-- name: $bitnot
-  href: $bitnot.md
-- name: $bitor
-  href: $bitor.md
-- name: $bitxor
-  href: $bitxor.md

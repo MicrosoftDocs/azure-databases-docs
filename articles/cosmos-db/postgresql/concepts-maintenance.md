@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 02/14/2022
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Scheduled maintenance in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL does periodic maintenance to
 keep your managed database secure, stable, and up-to-date.  During maintenance,

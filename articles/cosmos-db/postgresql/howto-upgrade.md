@@ -1,17 +1,19 @@
 ---
 title: Upgrade cluster - Azure Cosmos DB for PostgreSQL
 description: See how you can upgrade PostgreSQL and Citus in Azure Cosmos DB for PostgreSQL.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 07/04/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Upgrade cluster in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 These instructions describe how to upgrade to a new major version of PostgreSQL
 on all cluster nodes.

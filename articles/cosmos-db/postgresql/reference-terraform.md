@@ -1,18 +1,20 @@
 ---
 title: Terraform support – Azure Cosmos DB for PostgreSQL
 description: Terraform supports all management operations in Azure Cosmos DB for PostgreSQL
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: devx-track-terraform
 ms.topic: concept-article
 ms.date: 01/02/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Terraform support for Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 [Terraform](https://www.terraform.io/) enables the definition, preview, and deployment of cloud infrastructure. Using Terraform, you create configuration files using [HCL syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration). The HCL syntax allows you to specify the cloud provider - such as Azure - and the elements that make up your cloud infrastructure. After you create your configuration files, you create an execution plan that allows you to preview your infrastructure changes before they're deployed. Once you verify the changes, you apply the execution plan to deploy the infrastructure.
 

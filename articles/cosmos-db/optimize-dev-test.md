@@ -1,25 +1,26 @@
 ---
-title: Optimizing for development and testing in Azure Cosmos DB
+title: Optimizing for Development and Testing
 description: This article explains how Azure Cosmos DB offers multiple options for development and testing of the service for free.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 08/26/2021
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize development and testing cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes the different options to use Azure Cosmos DB for development and testing for free of cost, as well as techniques to optimize cost in development or test accounts.
 
 ## Azure Cosmos DB emulator (locally downloadable version)
 
 [Azure Cosmos DB emulator](emulator.md) is a local downloadable version that mimics the Azure Cosmos DB cloud service. You can write and test code that uses the Azure Cosmos DB APIs even if you have no network connection and without incurring any costs. Azure Cosmos DB emulator provides a local environment for development purposes with high fidelity to the cloud service. You can develop and test your application locally, without creating an Azure subscription. When you're ready to deploy your application to the cloud, update the connection string to connect to the Azure Cosmos DB endpoint in the cloud, no other modifications are needed. You can also [set up a CI/CD pipeline with the Azure Cosmos DB emulator](tutorial-setup-ci-cd.md) build task in Azure DevOps to run tests. You can get started by visiting the [Azure Cosmos DB emulator](emulator.md) article.
-
-## Try Azure Cosmos DB for free
-
-[Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) is a free of charge experience that allows you to experiment with Azure Cosmos DB in the cloud without signing up for an Azure account or using your credit card. The Try Azure Cosmos DB accounts are available for a limited time, currently 30 days. You can renew them at any time. Try Azure Cosmos DB accounts makes it easy to evaluate Azure Cosmos DB, build and test an application or use the Quickstarts or tutorials. You can also create a demo, perform unit testing, or even create a multi-region account and run an app on it without incurring any costs. In a Try Azure Cosmos DB account, you can have one shared throughput database with a maximum of 25 containers and 20,000 RU/s of throughput, or one container with up to 5000 RU/s. To get started, see [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) page.
 
 ## Azure Cosmos DB free tier
 
@@ -53,5 +54,5 @@ You can get started with using the emulator or the free Azure Cosmos DB accounts
 * Learn more about [Optimizing the cost of queries](./optimize-cost-reads-writes.md)
 * Learn more about [Optimizing the cost of multi-region Azure Cosmos DB accounts](optimize-cost-regions.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
-    * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
+    * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 
     * If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

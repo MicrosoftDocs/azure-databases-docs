@@ -1,95 +1,94 @@
 ---
-title: Semantic cache for large language models
+title: Semantic Cache for Large Language Models
 titleSuffix: Azure Cosmos DB
-description: Learn how semantic cache, in Azure Cosmos DB, provides a way for you to re-use past prompts and completions to address similar prompts using vector similarity.
+description: Learn how semantic cache, in Azure Cosmos DB, provides a way for you to reuse past prompts and completions to address similar prompts using vector similarity.
 author: markjbrown
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 12/03/2024
+ms.date: 09/11/2025
 ms.update-cycle: 180-days
 ms.author: mjbrown
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-  - ✅ MongoDB vCore
   - ✅ PostgreSQL
 ---
 
 # Introduction to semantic cache
 
-Large language models (LLM) are amazing with their ability to generate completions, or text responses, based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in [tokens](tokens.md).
+Large language models (LLM) have an amazing ability to generate completions, or text responses, based upon user prompts. As with any service, they have a compute cost to them. For an LLM, this is typically expressed in [tokens](tokens.md).
 
-A semantic cache provides a way for you to use prior user prompts and LLM completions to address similar user prompts using vector similarity search. A semantic cache can reduce latency and save costs in your GenAI applications as making calls to LLMs is often the most costly and highest latency service in such applications.
+A semantic cache provides a way for you to use prior user prompts and LLM completions to address similar user prompts by using vector similarity search. A semantic cache can reduce latency and save costs in your generative AI applications since making calls to LLMs is often the most costly and highest-latency service in such applications.
 
-In a scenario where an LLM processes a simple prompt, this computational cost is low. However, LLMs don't retain any context between prompts and completions. It's necessary to send some portion of the chat history to the LLM when sending the latest prompt to be processed to give it context. This mechanism is often referred to as a *context window* and is a sliding window of prompts and completions, between a user and an LLM. This extra text increases the compute cost, or tokens, required to process the request. Additionally, as the amount of text increases, so too does the latency for the generating the completion.
+In a scenario where an LLM processes a simple prompt, this computational cost is low. However, LLMs don't retain any context between prompts and completions. It's necessary to send some portion of the chat history to the LLM when sending the latest prompt to be processed to give it context. This mechanism is often referred to as a *context window*, and is a sliding window of prompts and completions between a user and an LLM. This extra text increases the compute cost, or tokens, required to process the request. Additionally, as the amount of text increases, so too does the latency for generating the completion.
 
-In pattern called Retrieval Augmented Generation or [RAG Pattern](rag.md) for short, data from an external source such as a database, is sent with the user prompt and context window to *augment* or ground the LLM. The data from external sources provides extra information to generate a completion. The size of the payloads for RAG Pattern to an LLM can often get rather large. It's not uncommon to consume thousands of tokens and wait for many seconds to generate a completion. In a world where milliseconds counts, waiting for many seconds is often an unacceptable user experience. The cost can also get expensive at high volumes.
+In the [retrieval-augmented generation (RAG)](rag.md) pattern, data from an external source such as a database is sent with the user prompt and context window to *augment* or ground the LLM. The data from external sources provides extra information to generate a completion. The size of the payloads for the RAG pattern to an LLM can often get rather large. It's not uncommon to consume thousands of tokens and wait for many seconds to generate a completion. In a world where milliseconds counts, waiting for many seconds is often an unacceptable user experience. The cost can also get expensive at high volumes.
 
 The solution typically used to deal with requests with high computational costs and latency is to employ a cache. This scenario isn't different, however, there are differences in how a semantic cache works, and how it's implemented.
 
 ## How a semantic cache works
 
-A traditional cache that uses a string equality match for perform a cache lookup on the cache keys A semantic cache uses a *vector query* on the cache keys, which are stored as vectors. To perform a vector search query for the cache lookup, text is converted into a vector embedding and then used to find vectors that are most *similar* in the cache's keys.
+A traditional cache uses a string equality match to perform a cache lookup on the cache keys. A semantic cache uses a *vector query* on the cache keys, which are stored as vectors. To perform a vector search query for the cache lookup, text is converted into a vector embedding and then used to find vectors that are most *similar* in the cache's keys.
 
-The use of a vector query versus key value look up has some advantages. A traditional cache typically returns just a single result for a cache hit. Because a semantic cache uses a query, it can optionally return multiple results to the user. Providing more items to choose from can help reduce compute costs further. It can potentially keep the cache size smaller by reducing the number of items, which need to get generated by the LLM due to cache misses.
+The use of a vector query versus key value look up has some advantages. A traditional cache typically returns just a single result for a cache hit. Because a semantic cache uses a query, it can optionally return multiple results to the user. Providing more items to choose from can help reduce compute costs further. It can potentially keep the cache size smaller by reducing the number of items that need to get generated by the LLM due to cache misses.
 
 ## Similarity score
 
-All vector queries return what is referred to as a *similarity score* that represents how close the vectors are to each other in high dimensional space. Values range from 0 (no similarity) to 1 (exact match).
+All vector queries return what is referred to as a *similarity score* that represents how close the vectors are to each other in high-dimensional space. Values range from 0 (no similarity) to 1 (exact match).
 
-In a vector query, the similarity score for the returned results represents how similar the words or users intent are to what was passed in the WHERE clause. Because a query can return multiple results, the results can be sorted from the most likely to least likely cache results for a user to choose from.
+In a vector query, the similarity score for the returned results represents how similar the words or user's intent are to what was passed in the WHERE clause. Because a query can return multiple results, the results can be sorted from the most likely to least likely cache results for a user to choose from.
 
-The similarity score is used as a filter for a vector query to limit the results returned to those items most likely to match the users' intent. In practice, setting the similarity score value for a vector query may require some trial and error. Too high, and the cache quickly fills up with multiple responses for similar questions because of repeated cache misses. Too low, and the cache returns too many irrelevant responses that don't match the user's intent.
+The similarity score is used as a filter for a vector query to limit the results returned to those items most likely to match user intent. In practice, setting the similarity score value for a vector query might require some trial and error. Too high, and the cache quickly fills up with multiple responses for similar questions because of repeated cache misses. Too low, and the cache returns too many irrelevant responses that don't match the user's intent.
 
 ## Context window
 
-Large language models don't maintain context between requests. To have a *conversation* with an LLM, you have to maintain a context window, or chat history and pass that to the LLM for each request so it can provide a contextually relevant response. 
+LLMs don't maintain context between requests. To have a *conversation* with an LLM, you have to maintain a context window, or chat history and pass that to the LLM for each request so it can provide a contextually relevant response. 
 
-For a semantic cache to be effective, it needs to have that context as well. In other words, a semantic cache shouldn't just use the text from individual prompts as keys, it should use some portion of the prompts in the chat history as well. Doing so ensures that what gets returned from the cache is also contextually correct, just as it would be if it were generated by an LLM. If a cache didn't have the context from the chat history, users would get unexpected, and likely unacceptable responses.
+For a semantic cache to be effective, it needs to have that context as well. In other words, a semantic cache shouldn't just use the text from individual prompts as keys, it should use some portion of the prompts in the chat history as well. Doing so ensures that what gets returned from the cache is also contextually correct, just as it would be if it were generated by an LLM. If a cache didn't have the context from the chat history, users would get unexpected, and likely unacceptable, responses.
 
-Here's a simple mental exercise to explain why this is. If you first ask an LLM, "What is the largest lake in North America?", it responds with "Lake Superior" with some facts and figures, then cache the vectorized user prompt and text from the completion.
+Here's a simple mental exercise to explain why this is. If you first ask an LLM, "What is the largest lake in North America?", it responds with "Lake Superior" with some facts and figures, then caches the vectorized user prompt and text from the completion.
 
-If you then ask, "What is the second largest?", the LLM is passed the context window of the previous prompt and completion with the follow-up question and correctly responds, "Lake Huron". Then cache the second prompt, "What is the second largest?" and the generated completion, "Lake Huron".
+If you then ask, "What is the second largest?", the LLM is passed the context window of the previous prompt and completion with the follow-up question, and correctly responds, "Lake Huron." Then the second prompt and completion are cached.
 
-Later, another user in a different session asks, "What is the largest stadium in North America?", the LLM responds with, "Michigan Stadium" with some facts and figures. If that user then asks, "What is the second largest?", the cache finds an exact match for that prompt and return, "Lake Huron", which is incorrect.
+Later, another user in a different session asks, "What is the largest stadium in North America?" The LLM responds with "Michigan Stadium" with some facts and figures. If that user then asks, "What is the second largest?", the cache finds an exact match for that prompt and returns "Lake Huron," which is incorrect.
 
-For this reason, a semantic cache should operate within a context window. The context window already provides the information necessary for an LLM to generate relevant completions. This makes it a logical choice for how the cache should work as well. 
+For this reason, a semantic cache should operate within a context window. The context window already provides the information necessary for an LLM to generate relevant completions. This makes it a logical choice for how the cache should work as well.
 
-Implementing this requires first vectorizing the array of prompts from the context window and the last prompt. The vectors are first then used in the WHERE clause in the vector query on the cache key. What is returned is the completion from the same sequence of questions asked previously by another user. As the context window continuously slides forward in the conversation, any sequence of prompts that have high similarity are returned by the cache versus being regenerated by the LLM.
+Implementing this requires first vectorizing the array of prompts from the context window and the last prompt. The vectors are then used in the WHERE clause in the vector query on the cache key. What is returned is the completion from the same sequence of questions asked previously by another user. As the context window continuously slides forward in the conversation, any sequence of prompts that have high similarity are returned by the cache versus being regenerated by the LLM.
 
 ## Maintenance
 
-As with any cache there's the potential for it to grow to enormous size. Keeping a semantic cache requires the same kind of maintenance. There are multiple ways to maintain its size including using a time-to-live (TTL) for cached items, limit the maximum size, or limit the number of items in the cache.
+As with any cache, there's the potential for it to grow to enormous size. Keeping a semantic cache requires the same kind of maintenance. There are multiple ways to maintain its size, including using a time-to-live (TTL) for cached items, limiting the maximum size, or limiting the number of items in the cache.
 
 The use of a similarity score also provides a mechanism for keeping the cache lean. The lower the similarity score in the WHERE clause for the vector query on a cache can increase the number of cache hits, reducing the need to generate and cache completions for similar user prompts. However this comes at a cost of potentially returning less relevant results.
 
-Other possible techniques that use a TTL but also preserve frequent cache hits could include keeping a cache hit score on items and implement a mechanism to prune the cache that are based upon cache hit score. This could be implemented using a patch operation to increment a hit-count property on a cache item. Then override the TTL on that item to preserve it in the cache if it reaches some pre-determined threshold of cache hits.
+Other possible techniques that use a TTL but also preserve frequent cache hits could include keeping a cache hit score on items and implementing a pruning mechanism based upon cache hit score. This could be implemented using a patch operation to increment a hit-count property on a cache item. Then override the TTL on that item to preserve it in the cache if it reaches some predetermined threshold of cache hits.
 
-There may also be other considerations in how to maintain a cache beyond just efficiency. It's widely understood users' chat history can allow developers to tune applications that use an LLM to generate completions. Chat history also provides valuable data on users' interactions with these types of applications and can yield significant insights on their sentiment and behaviors. The same is true for cache usage as well.
+There could also be other considerations in how to maintain a cache beyond just efficiency. It's widely understood that users' chat history can allow developers to tune applications that use an LLM to generate completions. Chat history also provides valuable data on users' interactions with these types of applications and can yield significant insights on their sentiment and behaviors. The same is true for cache usage as well.
 
-It may be desirable to keep the entire contents of a cache and use it for further analysis, yet ensure that users only see the most recent cached entries. In scenarios like this, a possible technique may use an extra filter in the WHERE clause for the vector query on the cache that filters for the most recent cached items or sorts them based upon freshness. For example, `WHERE c.lastUpdated > @someDate ORDER BY c.lastUpdated DESC`
+It might be desirable to keep the entire contents of a cache and use it for further analysis, but ensure that users only see the most recent cached entries. In scenarios like this, a possible technique might use an extra filter in the WHERE clause for the vector query on the cache that filters for the most recent cached items or sorts them based upon freshness. For example, `WHERE c.lastUpdated > @someDate ORDER BY c.lastUpdated DESC`
 
-## Implementing a semantic cache with Azure Cosmos DB
+## Implement a semantic cache with Azure Cosmos DB
 
 There are multiple samples you can use to understand how to build your own semantic cache using Azure Cosmos DB.
 
 - [Build a Copilot app using Azure Cosmos DB for NoSQL](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot)
 
-This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for NoSQL. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-using-azure-cosmos-db-for-nosql-azure-openai-service-azure-app-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/blob/start/lab/lab-guide.md#exercise--implement-a-semantic-cache).
+    This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for NoSQL. This sample also comes with a lab guide [to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-nosql-copilot/blob/start/lab/lab-guide.md#exercise-implement-a-semantic-cache).
 
 - [Build a Copilot app using Azure Cosmos DB for MongoDB](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot)
 
-This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for MongoDB. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-with-azure-cosmos-db-for-mongodb-azure-openai-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/blob/start/docs/LABGuide.md#exercise--implement-a-semantic-cache).
+    This C# sample demonstrates many of the concepts necessary to build your own Copilot applications in Azure using Azure Cosmos DB for MongoDB. This sample also comes with a [Hands-On-Lab](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/tree/start?tab=readme-ov-file#hands-on-lab-to-build-a-copilot-app-with-azure-cosmos-db-for-mongodb-azure-openai-service-and-semantic-kernel) that walks users step-by-step through these concepts, including [how to implement a semantic cache](https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot/blob/start/docs/LABGuide.md#exercise--implement-a-semantic-cache).
 
 ## Related content
 
 - [What is a vector database?](../vector-database.md)
-- [Vector database in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
-- [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
-- LLM [tokens](tokens.md)
-- Vector [embeddings](vector-embeddings.md)
-- [Distance functions](distance-functions.md)
+- [Vector search in Azure Cosmos DB for NoSQL](../vector-search.md)
+- [Vector store in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
+- [LLM tokens](tokens.md)
+- [Vector embeddings in Azure Cosmos DB](vector-embeddings.md)
+- [What are distance functions?](distance-functions.md)
 - [kNN vs ANN vector search algorithms](knn-vs-ann.md)
-- [Multitenancy for Vector Search](../nosql/multi-tenancy-vector-search.md)
+- [Multitenancy for vector search](../multi-tenancy-vector-search.md)

@@ -1,17 +1,16 @@
 ---
 title: Understanding distributed relational databases
-titleSuffix: Azure Cosmos DB
 description: Learn about distributed relational databases and how you can use them together with your global-scale applications and your existing RDBMS development skills.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 11/21/2021
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Understanding distributed relational databases
-
-[!INCLUDE[PostgreSQL](includes/appliesto-postgresql.md)]
 
 Azure Cosmos DB is a globally distributed database platform for both NoSQL and relational databases of any scale. This article explores distributed relational databases in the context of Azure Cosmos DB’s relational API option.
 
@@ -43,8 +42,3 @@ Citus is a PostgreSQL extension that adds support to Postgres for distribution o
 
 > [!div class="nextstepaction"]
 > [Understanding distributed NoSQL databases](distributed-nosql.md)
-
-Want to get started with Azure Cosmos DB?
-
-- [Learn about the various APIs](choose-api.md)
-- [Get started with the API for PostgreSQL](postgresql/quickstart-app-stacks-python.md)

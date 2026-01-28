@@ -1,26 +1,23 @@
 ---
-title: "Tutorial: Migrate MongoDB offline to Azure Cosmos DB for MongoDB RU"
+title: "Tutorial: Migrate MongoDB Offline to Azure Cosmos DB for MongoDB"
 titleSuffix: Azure Database Migration Service
-description: Migrate from MongoDB on-premises to Azure Cosmos DB for MongoDB RU offline via Azure Database Migration Service.
-author: abhims14
-ms.author: abhishekum
-ms.reviewer: randolphwest
-ms.date: 09/18/2024
+description: Migrate from MongoDB on-premises to Azure Cosmos DB for MongoDB offline via Azure Database Migration Service.
+author: sandeepsnairms
+ms.author: sandnair
+ms.reviewer: sidandrews, randolphwest
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
+  - sql-migration-content
 ms.custom:
-- ignite-2023
-- sfi-image-nochange
+  - ignite-2023
+  - sfi-image-nochange
 ---
 
-# Tutorial: Migrate MongoDB to Azure Cosmos DB for MongoDB RU offline using Azure Database Migration Service
+# Tutorial: Migrate MongoDB to Azure Cosmos DB for MongoDB offline using Azure Database Migration Service
 
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
-
-> [!IMPORTANT]  
->  You can migrate to Azure Cosmos DB for MongoDB vCore using [various available methods](../cosmos-db/mongodb/vcore/migration-options.md). Note that migrations to Azure Cosmos DB for MongoDB vCore cannot be done using the Database Migration Service on the Azure portal.
 
 This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md), as shown below.
 
@@ -148,7 +145,7 @@ After you create the service, locate it within the Azure portal, and open it. Th
      https://blobnameurl/container?SASKEY
      ```
 
-     You can find this blob container SAS connection string in Azure Storage explorer. Creating the SAS for the concerned container provides you the URL in the requested format.
+     You can find this blob container SAS connection string in Azure Storage explorer. Creating the SAS for the concerned container provides you with the URL in the requested format.
 
      Also, based on the type dump information in Azure Storage, keep the following in mind:
 
@@ -208,7 +205,7 @@ After you create the service, locate it within the Azure portal, and open it. Th
 
 1. On the **Migration summary** screen, in the **Activity name** text box, specify a name for the migration activity.
 
-   :::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png" alt-text="Screenshot that shows the nigration summary." lightbox="media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png":::
+   :::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png" alt-text="Screenshot that shows the migration summary." lightbox="media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png":::
 
 ## Run the migration
 

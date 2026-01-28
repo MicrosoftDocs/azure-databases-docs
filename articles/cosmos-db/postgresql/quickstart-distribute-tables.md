@@ -9,11 +9,13 @@ ms.subservice: postgresql
 ms.custom: mvc, mode-ui
 ms.topic: quickstart
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Create and distribute tables in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this example, we'll use Azure Cosmos DB for PostgreSQL distributed tables to store and
 query events recorded from GitHub open source contributors.

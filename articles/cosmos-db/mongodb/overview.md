@@ -16,6 +16,8 @@ appliesto:
 
 # What is Azure Cosmos DB for MongoDB?
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
 Azure Cosmos DB for MongoDB is a fully managed NoSQL database service that enables you to run MongoDB workloads in the cloud with minimal changes to your application code. This API supports the MongoDB wire protocol, so you can use your existing MongoDB drivers, software development kits (SDKs), and tools. You can connect to the API for MongoDB to interact with your data just as you would with a native MongoDB database.
@@ -58,12 +60,6 @@ The API for MongoDB is well-suited for applications that require flexible docume
 
 > [!IMPORTANT]
 > This introduction reviews various features of Azure Cosmos DB for MongoDB that provides wire protocol compatibility with MongoDB databases. Microsoft doesn't run MongoDB databases to provide this service. Azure Cosmos DB isn't affiliated with MongoDB, Inc.
-
-## Azure Cosmos DB for MongoDB vCore
-
-For some workloads, adapting to Azure Cosmos DB for MongoDB can be a challenge due to differences in behavior or configuration from the native platform. This constraint is especially applicable for lift-and-shift migrations. Azure Cosmos DB for MongoDB vCore is a first-party Azure service with dedicated instances for new and existing MongoDB apps. This architecture offers a familiar vCore architecture for MongoDB users, instantaneous scaling, and seamless native integration with various Azure services.
-
-For more information, see [Azure Cosmos DB for MongoDB vCore](vcore/introduction.md)
 
 ## Next step
 

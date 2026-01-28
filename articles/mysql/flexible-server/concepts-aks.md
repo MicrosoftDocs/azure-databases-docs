@@ -12,16 +12,11 @@ ms.topic: best-practice
 
 # Best practices for Azure Kubernetes Service and Azure Database for MySQL - Flexible Server
 
-Azure Kubernetes Service (AKS) provides a managed Kubernetes cluster you can use in Azure. Consider the following options when using AKS and Azure Database for MySQL Flexible Server together to create an application.
+Azure Kubernetes Service (AKS) provides a managed Kubernetes cluster you can use in Azure. Consider the following options when using AKS and Azure Database for MySQL together to create an application.
 
 ## Create the database before creating the AKS cluster
 
-Azure Database for MySQL has two deployment options:
-
-- Single Server
-- Flexible Server
-
-Single Server supports a single availability zone and Flexible Server supports multiple availability zones. AKS on the other hand also supports enabling single or multiple availability zones. Creating the database server first to see the availability zone the server is in and creating the AKS clusters in the same availability zone can improve application performance by reducing networking latency.
+Creating the database server first to see the availability zone the server is in and creating the AKS clusters in the same availability zone can improve application performance by reducing networking latency.
 
 ## Use Accelerated networking
 

@@ -11,11 +11,12 @@ ms.author: mansha
 ---
 
 # Manage Azure Cosmos DB for Gremlin resources using Azure Resource Manager templates
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 In this article, you learn how to use Azure Resource Manager templates to help deploy and manage your Azure Cosmos DB accounts, databases, and graphs.
 
-This article has examples for API for Gremlin accounts only, to find examples for other API type accounts see: use Azure Resource Manager templates with Azure Cosmos DB's API for [Cassandra](../cassandra/templates-samples.md), [NoSQL](../nosql/samples-resource-manager-templates.md), [MongoDB](../mongodb/resource-manager-template-samples.md), [Table](../table/resource-manager-templates.md) articles.
+This article has examples for API for Gremlin accounts only, to find examples for other API type accounts see: use Azure Resource Manager templates with Azure Cosmos DB's API for [Cassandra](../cassandra/templates-samples.md), [NoSQL](../samples-resource-manager-templates.md), [MongoDB](../mongodb/resource-manager-template-samples.md), [Table](../table/resource-manager-templates.md) articles.
 
 > [!IMPORTANT]
 >
@@ -34,12 +35,3 @@ This template will create an Azure Cosmos DB account for API for Gremlin with a 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/template-deployments/deploy-to-azure-button.svg" alt-text="Button to deploy the Resource Manager template to Azure." border="false" link="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.documentdb%2Fcosmosdb-gremlin-autoscale%2Fazuredeploy.json":::
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.documentdb/cosmosdb-gremlin-autoscale/azuredeploy.json":::
-
-## Next steps
-
-Here are some additional resources:
-
-* [Azure Resource Manager documentation](/azure/azure-resource-manager/)
-* [Azure Cosmos DB resource provider schema](/azure/templates/microsoft.documentdb/allversions)
-* [Azure Cosmos DB Quickstart templates](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-* [Troubleshoot common Azure Resource Manager deployment errors](/azure/azure-resource-manager/templates/common-deployment-errors)

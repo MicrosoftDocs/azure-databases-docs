@@ -1,6 +1,5 @@
 ---
 title: Partial Document Update
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Learn how to conditionally modify a document using the partial document update feature in Azure Cosmos DB for NoSQL.
 author: abhinavtrips
 ms.author: abtripathi
@@ -8,11 +7,11 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
 ms.date: 07/21/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Partial document update in Azure Cosmos DB
-
-[!INCLUDE[NoSQL](includes/appliesto-nosql.md)]
 
 The Azure Cosmos DB partial document update feature, also known as Patch API, provides a convenient way to modify a document in a container. Currently, to update a document, the client needs to read it, execute Optimistic Concurrency Control checks (if necessary), update the document locally, and then send it over the wire as a whole document Replace API call.
 

@@ -1,18 +1,20 @@
 ---
 title: Backup and restore – Azure Cosmos DB for PostgreSQL
 description: Protecting data from accidental corruption or deletion
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.custom: references_regions
 ms.topic: concept-article
 ms.date: 01/21/2024
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Backup and restore in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for PostgreSQL automatically creates
 backups of each node in a cluster. Backups can

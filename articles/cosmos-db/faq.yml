@@ -7,10 +7,14 @@ metadata:
   ms.author: mjbrown
   ms.service: azure-cosmos-db
   ms.topic: faq
-  ms.date: 06/11/2025
+  ms.date: 12/15/2025
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 title: Frequently asked questions about Azure Cosmos DB
-summary: |
-  [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 sections:
   - name: General
     questions:
@@ -27,7 +31,7 @@ sections:
       - question: |
           How does Azure Cosmos DB support various data models such as key/value, columnar, document, and graph?
         answer: |
-          Key/value (table), columnar, document, and graph data models are all natively supported because of the ARS (atoms, records, and sequences) design that Azure Cosmos DB is built on. Atoms, records, and sequences can be easily mapped and projected to various data models. The APIs for a subset of models are available using the ARS design (MongoDB RU, NoSQL, Table, Apache Cassandra, and Apache Gremlin). Azure Cosmos DB also supports other APIs such as MongoDB vCore, Cassandra MI, or PostgreSQL. 
+          Key/value (table), columnar, document, and graph data models are all natively supported because of the ARS (atoms, records, and sequences) design that Azure Cosmos DB is built on. Atoms, records, and sequences can be easily mapped and projected to various data models. The APIs for a subset of models are available using the ARS design (MongoDB, NoSQL, Table, Apache Cassandra, and Apache Gremlin). Azure Cosmos DB also supports other APIs.
       - question: |
           What is an Azure Cosmos DB container?
         answer: |
@@ -36,12 +40,11 @@ sections:
           | | Containers known as |
           | --- | --- |
           | **Azure Cosmos DB for NoSQL** | Container |
-          | **Azure Cosmos DB for MongoDB RU** | Collection |
-          | **Azure Cosmos DB for MongoDB vCore** | Collection |
+          | **Azure Cosmos DB for MongoDB** | Collection |
           | **Azure Cosmos DB for Apache Cassandra** | Table |
           | **Azure Cosmos DB for Apache Gremlin** | Graph |
           | **Azure Cosmos DB for Table** | Table |
-          
+
           A container is a billable entity, where the throughput and used storage determines the cost. Each container is billed hourly, based on the provisioned throughput and used storage space. For more information, see [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
       - question: |
           Can I use multiple APIs to access my data?
@@ -50,7 +53,7 @@ sections:
       - question: |
           Can I integrate Azure Cosmos DB directly with other services?
         answer: |
-          Yes. Azure Cosmos DB APIs allow direct integration. For example, the Azure Cosmos DB REST APIs can be integrated with Azure API Management for CRUD operations, eliminating the need for intermediate services like Azure Functions.        
+          Yes. Azure Cosmos DB APIs allow direct integration. For example, the Azure Cosmos DB REST APIs can be integrated with Azure API Management for CRUD operations, eliminating the need for intermediate services like Azure Functions.
       - question: |
           Is Azure Cosmos DB HIPAA compliant?
         answer: |
@@ -77,56 +80,226 @@ sections:
           To ask a technical question, you can post to one of these two question and answer forums:
 
           - [Microsoft Question & Answers (Q&A)](/answers/topics/azure-cosmos-db.html)
-          - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is best for programming questions. Make sure your question is [on-topic](https://stackoverflow.com/help/on-topic) and [provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask).
+          - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). Stack Overflow is best for programming questions. [Provide as many details as possible, making the question clear and answerable](https://stackoverflow.com/help/how-to-ask).
 
           To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
+  - name: API for NoSQL
+    questions:
+      - question: |
+          How do I start developing against Azure Cosmos DB for NoSQL?
+        answer: |
+          First you must sign up for an Azure subscription. Once you sign up for an Azure subscription, you can add an API for NoSQL container to your Azure subscription.
+
+          [Software development kits (SDKs)](sdk-dotnet-v2.md) are available for .NET, Python, Node.js, JavaScript, Go, and Java. Developers can also use the [REST API](/rest/api/cosmos-db/) to interact with Azure Cosmos DB resources from more platforms and languages.
+      - question: |
+          Is there Azure Cosmos DB for NoSQL samples to get started?
+        answer: |
+          Check out these QuickStart code samples and templates for the API for NoSQL:
+
+          - [.NET](quickstart-dotnet.md)
+          - [Python](quickstart-python.md)
+          - [Node.js/JavaScript](quickstart-nodejs.md)
+          - [Java/Spring](quickstart-java.md)
+          - [Go](quickstart-go.md)
+      - question: |
+          Does Azure Cosmos DB for NoSQL support schema-free data?
+        answer: |
+          Yes, the API for NoSQL allows applications to store arbitrary JSON documents as items without schema definitions or hints. The data is immediately available for query with the Azure Cosmos DB for NoSQL query language.
+      - question: |
+          Does Azure Cosmos DB for NoSQL support ACID (atomicity, consistency, isolation, durability) transactions?
+        answer: |
+          Yes, the API for NoSQL supports cross-document transactions expressed using either batches in the SDKs or as JavaScript-stored procedures and triggers. Transactions are scoped to a single partition within each container and executed with ACID semantics as "all or nothing," isolated from other concurrently executing code and user requests. If exceptions occur, the entire transaction is rolled back.
+      - question: |
+          How do I create an Azure Cosmos DB for NoSQL database?
+        answer: |
+          You can create databases by using one of these tools:
+
+          - [Azure portal](quickstart-portal.md#)
+          - API for NoSQL client (data-plane) SDKs
+            - [.NET](quickstart-dotnet.md)
+            - [Python](quickstart-python.md)
+            - [JavaScript](quickstart-nodejs.md)
+            - [Java](quickstart-java.md)
+            - [Go](quickstart-go.md)
+          - API for NoSQL management (control-plane) SDKs
+            - [.NET](/dotnet/api/overview/azure/resourcemanager.cosmosdb-readme)
+            - [Python](/python/api/overview/azure/mgmt-cosmosdb-readme)
+            - [JavaScript](/javascript/api/overview/azure/arm-cosmosdb-readme)
+            - [Java](/java/api/overview/azure/resourcemanager-cosmos-readme)
+            - [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/cosmos/armcosmos)
+          - Azure Resource Manager
+            - [JSON template](/azure/templates/microsoft.documentdb/databaseaccounts?pivots=deployment-language-bicep)
+            - [Bicep](/azure/templates/microsoft.documentdb/databaseaccounts?pivots=deployment-language-arm-template)
+            - [Terraform](/azure/templates/microsoft.documentdb/databaseaccounts?pivots=deployment-language-terraform)
+          - [REST API](/rest/api/cosmos-db/)
+      - question: |
+          Can I authenticate to Azure Cosmos DB for NoSQL using my existing Microsoft Entra ID accounts?
+        answer:
+          Yes! Azure Cosmos DB supports Microsoft Entra authentication to manage the service and its resources (control-plane) and to execute data, operations, and queries (data-plane).
+
+          Control-plane authentication is performed using the [role-based access control]() feature of Azure. You can use a preconfigured built-in role](../../role-based-access-control/built-in-roles.md) or you can [create a custom role](/azure/role-based-access-control/custom-roles). With Azure role-based access control, you can manage accounts, databases, containers, and metadata. The control-plane includes operations including, but not limited to these examples.
+
+          - Creating, replacing, or deleting databases
+          - Creating, replacing, or deleting containers
+          - Reading or replacing database throughput
+          - Reading or replacing container throughput
+
+          Data-plane authentication uses a custom API for NoSQL-native role-based access control implementation. With this native implementation, you can also use preconfigured or custom roles. With native role-based access control, you can execute queries, manage items, or perform other common operations. The data-plane includes operations including, but not limited to these examples.
+
+          - Creating, replacing, updating, or deleting items
+          - Patching items
+          - Executing queries
+      - question: |
+          Does Azure Cosmos DB for NoSQL support the SQL query language?
+        answer: |
+          Structured Query Language (SQL) is a language typically used to query relational data. The API for NoSQL has a custom **NoSQL** query language derived from SQL. The NoSQL query language includes a subset of the SQL query language typically associated with SQL Server along with various NoSQL-specific enhancements. The NoSQL query language provides rich hierarchical and relational operators and extensibility via JavaScript-based, user-defined functions (UDFs). JSON grammar allows for modeling JSON documents as trees with labeled nodes, which are used by both the Azure Cosmos DB automatic indexing techniques and the SQL query dialect of Azure Cosmos DB. For information about using this query language, see [NoSQL Query](/cosmos-db/query).
+      - question: |
+          Does Azure Cosmos DB for NoSQL support SQL aggregation functions?
+        answer: |
+          The API for NoSQL supports aggregation via aggregate functions such as: `COUNT`, `MAX`, `AVG`, and `SUM` via the NoSQL query language.
+      - question: |
+          How does Azure Cosmos DB for NoSQL provide concurrency?
+        answer: |
+          The API for NoSQL supports optimistic concurrency control (OCC) through HTTP entity tags, or **ETags**. Every API for NoSQL resource has an ETag, and the ETag is set on the server every time a document is updated. The ETag header and the current value are included in all response messages. ETags can be used with the `If-Match` header to allow the server to decide whether a resource should be updated. The If-Match value is the ETag value to be checked against. If the ETag value matches the server ETag value, the resource is updated. If the ETag is no longer current, the server rejects the operation with an "HTTP 412 Precondition failure" response code. The client then refetches the resource to acquire the current ETag value for the resource. In addition, ETags can be used with the `If-None-Match` header to determine whether its needed to refetch a resource.
+
+          Most of the API for NoSQL SDKs includes classes to manage optimistic concurrency control.
+      - question: |
+          How can I bulk-insert documents into Azure Cosmos DB for NoSQL?
+        answer: |
+          Use the bulk import feature in the [.NET SDK](tutorial-dotnet-bulk-import.md) or the [Java SDK](bulk-executor-java.md) for the API for NoSQL to import large sets of data. This feature optimizes provisioned throughput to import large sets of data.
+
+          Alternatively, use [Apache Spark](tutorial-spark-connector.md) to import data at scale using Python or Scala.
+      - question: |
+          Does Azure Cosmos DB for NoSQL support resource link caching?
+        answer: |
+          Yes, because Azure Cosmos DB for NoSQL is a RESTful service, resource links are immutable and can be cached. API for NoSQL clients can specify an "If-None-Match" header for reads against any resource-like document or container and then update their local copies after the server version changes.
+      - question: |
+          Is a local instance of Azure Cosmos DB for NoSQL available?
+        answer: |
+          Yes. The [Azure Cosmos DB emulator](emulator.md) provides a high-fidelity emulation of the Azure Cosmos DB service. It supports functionality that's identical to Azure Cosmos DB across various APIs. This functionality includes support for creating items, querying items, provisioning containers, and scaling containers. You can develop and test applications by using the emulator's endpoints. You can then deploy the applications to Azure at a global scale by changing the connection string from the emulator to the live service.
+      - question: |
+          Why are long floating-point values in an Azure Cosmos DB for NoSQL item rounded when using the Data Explorer in the portal?
+        answer: |
+          This Data Explorer limitation is a limitation of JavaScript. JavaScript uses double-precision floating-point format numbers as specified in Institute of Electrical and Electronics Engineers (IEEE) 754. This data type can safely hold numbers between -(2<sup>53</sup> - 1) and 2<sup>53</sup>-1 (that is, 9007199254740991) only.
+  - name: Security
+    questions:
+      - question: |
+          What is role-based access control (RBAC)?
+        answer: |
+          Role-based access control (RBAC) is a method of regulating access to computer or network resources based on the roles of individual users within an enterprise. In Azure Cosmos DB, RBAC is used to grant data-plane access to users and applications. For more information about various terms in role-based access control, see the [security glossary](how-to-connect-role-based-access-control.md).
+      - question: |
+          How do I enable data-plane role-based access control for Azure Cosmos DB for NoSQL?
+        answer: |
+          Use the Azure Cosmos DB native role-based access control (RBAC) feature to grant data-plane access to users and applications. For more information, see [Grant data-plane role-based access](how-to-connect-role-based-access-control.md).
+      - question: |
+          Which Azure Cosmos DB APIs support data-plane role-based access control?
+        answer: |
+          As of now, only the NoSQL API is supported.
+      - question: |
+          Is it possible to manage role definitions and role assignments from the Azure portal?
+        answer: |
+          Azure portal support for role management isn't available yet.
+      - question: |
+          Which SDKs in Azure Cosmos DB API for NoSQL support role-based access control?
+        answer: |
+          The .NET V3, Java V4, JavaScript V3, and Python V4.3+ SDKs are currently supported.
+      - question: |
+          Is the Microsoft Entra token automatically refreshed by the Azure Cosmos DB SDKs when it expires?
+        answer: |
+          Yes.
+      - question: |
+          Is it possible to disable the usage of the account primary/secondary keys when using role-based access control?
+        answer: |
+          Yes. For more information, see [disable key-based authentication](how-to-connect-role-based-access-control.md#disable-key-based-authentication).
   - name: Migrating Azure Cosmos DB Accounts across different resource groups, subscriptions, and tenants
     questions:
-    - question: |
-        How do I migrate an Azure Cosmos DB account to a different resource group or to a different subscription?
-      answer: |
-        The general guideline to migrate a Cosmos DB account to a different resource group or subscription is described in the [moving Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
+      - question: |
+          How do I migrate an Azure Cosmos DB account to a different resource group or to a different subscription?
+        answer: |
+          The general guideline to migrate a Cosmos DB account to a different resource group or subscription is described in the [moving Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription) article.
 
-        After successfully moving the Azure Cosmos DB account per the general guideline, any identities (System-Assigned or User-Assigned) associated with the account must be [reassigned](/azure/cosmos-db/how-to-setup-managed-identity). This is required in order to ensure that these identities continue to have the necessary permissions to access the Key Vault key.
-        > [!WARNING]
-        > If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account to a different resource group or subscription if it's in an Active state. Accounts in a Revoked state can't be migrated.
-    - question: |
-        How do I migrate an Azure Cosmos DB account to a different tenant?
-      answer: |
-        If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account if it is a cross-tenant customer-managed key account. For more information, see the guide on [configuring cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](/azure/cosmos-db/how-to-setup-cross-tenant-customer-managed-keys?tabs=azure-portal).
-        > [!WARNING]
-        > After migrating, it's crucial to keep the Azure Cosmos DB account and the Azure Key Vault in separate tenants to preserve the original cross-tenant relationship. Ensure the Key Vault key remains in place until the Cosmos DB account migration is complete.
+          After you successfully move the Azure Cosmos DB account per the general guideline, any identities (System-Assigned or User-Assigned) associated with the account must be [reassigned](/azure/cosmos-db/how-to-setup-managed-identity). This reassignment is required in order to ensure that these identities continue to have the necessary permissions to access the Key Vault key.
+          > [!WARNING]
+          > If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account to a different resource group or subscription if it's in an Active state. Accounts in a Revoked state can't be migrated.
+      - question: |
+          How do I migrate an Azure Cosmos DB account to a different tenant?
+        answer: |
+          If your Cosmos DB account has Customer Managed Keys enabled, you can only migrate the account if it's a cross-tenant customer-managed key account. For more information, see the guide on [configuring cross-tenant customer-managed keys for your Azure Cosmos DB account with Azure Key Vault](/azure/cosmos-db/how-to-setup-cross-tenant-customer-managed-keys?tabs=azure-portal).
+          > [!WARNING]
+          > After migrating, it's crucial to keep the Azure Cosmos DB account and the Azure Key Vault in separate tenants to preserve the original cross-tenant relationship. Ensure the Key Vault key remains in place until the Cosmos DB account migration is complete.
+  - name: Migrating to continuous backup mode
+    questions:
+      - question: |
+          What should I expect during and after migration?
+        answer: |
+          When migrating from periodic mode to continuous mode, you can't run any control plane operations that performs account level updates or deletes. For example, operations such as adding or removing regions, account failover, updating backup policy etc. can't be run while the migration is in progress. The time for migration depends on the size of data and the number of regions in your account. Restore action on the migrated accounts only succeeds from the time when migration successfully completes.
+
+          You can restore your account after the migration completes. If the migration completes at 1:00 PM PST, you can do point in time restore starting from 1:00 PM PST.
+      - question: |
+          Does the migration only happen at the account level?
+        answer: |
+          Yes.
+      - question: |
+          Which accounts can be targeted for backup migration for continuous backup?
+        answer: |
+          API for NoSQL, API for Table, Gremlin API, and API for MongoDB accounts that use shared, provisioned, or autoscale provisioned throughput support migration to continuous backup.
+
+          Accounts with Azure Synapse Link enabled, or that had Azure Synapse Link disabled for one or more collections, can't migrate to continuous backup.
+
+          [!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
+      - question: |
+          Does the migration take time? What is the typical time?
+        answer: |
+          Migration takes a varying amount of time that largely depends on the size of data and the number of regions in your account. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
+      - question: |
+          Does the migration for multi region write(mrw) account with periodic backup to multi region write with continuous backup take time?
+        answer: |
+          Yes, this migration takes time that largely depends on need to wait for all old tentative writes to get drained during continuous backup migration. You can get the migration status using Azure CLI or PowerShell commands. For large accounts with tens of terabytes of data, the migration can take up to few days to complete.
+      - question: |
+          Does the migration cause any availability downtime?
+        answer: |
+          No, the migration operation takes place in the background. So, client requests aren't affected. However, we need to perform some backend operations during the migration, and it could take extra time if the account is under heavy load.
+      - question: |
+          What happens if the migration fails? Do I still get periodic backups or continuous backups?
+        answer: |
+          Once the migration process is started, the account is enabled in continuous mode. If the migration fails, you must initiate migration again until it succeeds.
+      - question: |
+          How do I perform a restore to a timestamp before/during/after the migration?
+        answer: |
+          Assume that you started migration at ``t1`` and finished at ``t5``, you can't use a restore timestamp between ``t1`` and ``t5``.
+          Also assume that your account is now in continuous mode. To restore to a time after ``t5``, perform the restore using Azure portal, CLI, or PowerShell like normally with a continuous account. This self-service restore request can only be done after the migration is complete.
+          To restore to a time before ``t1``, you can open a support ticket like you normally would with a periodic backup account. After the migration, you have up to 30 days to perform the periodic restore. During these 30 days, you can restore based on the backup retention/interval of your account before the migration. For example, if the backup was configured to retain 24 copies at 1 hour intervals, then you can restore anytime between `(t1 – 24 hours)` and `t1`.
+      - question: |
+          Which account level control plane operations are blocked during migration?
+        answer: |
+          Operations such as add/remove region, failover, changing backup policy, and any throughput changes resulting in data movement are blocked during migration.
+      - question: |
+          If the migration fails for some underlying issue, does it block the control plane operation until you retry and complete migration successfully?
+        answer: |
+          Failed migration doesn't block any control plane operations. If migration fails, retry until it succeeds before performing other control plane operations.
+      - question: |
+          Is it possible to cancel the migration?
+        answer: |
+          It isn't possible to cancel the migration because migrations aren't a reversible operation. Via support call team can cancel temporarily and let the offline operations continue. But one can't move back to periodic backup state.
+      - question: |
+          Is there a tool that can help estimate migration time based on the data usage and number of regions?
+        answer: |
+          There isn't a tool to estimate time. Our testing and scale runs indicate that an account with 1 TB of data takes roughly 90 minutes.
+          For multi-region accounts, calculate the total data size as ``Number_of_regions * Data_in_single_region``.
+      - question: |
+          Since the continuous backup mode is now GA, do you still recommend restoring a copy of your account? Would you recommend trying migration on the copy before deciding to migrate the production account?
+        answer: |
+          Test the continuous backup mode feature to verify it works as expected before migrating production accounts. Migration is a one-way operation and can't be reversed.
   - name: Try Azure Cosmos DB free
     questions:
       - question: |
           Is a free account available?
         answer: |
-          Yes, you can sign up for a time-limited account at no charge, with no commitment. To sign up, visit [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/).
+          Yes, you can sign up for a [free database account](free-tier.md) with 1,000 RU/sec and 25GB for free.
 
-          If you're new to Azure, you can sign up for an [Azure free account](https://azure.microsoft.com/free/), which gives you 30 days and a credit to try all the Azure services. If you have a Visual Studio subscription, you're also eligible for [free Azure credits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) to use on any Azure service.
+          If you're new to Azure, you can sign up for an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn), which gives you 30 days and a credit to try all the Azure services. If you have a Visual Studio subscription, you're also eligible for [free Azure credits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) to use on any Azure service.
 
           You can also use the [Azure Cosmos DB Emulator](emulator.md) to develop and test your application locally for free, without creating an Azure subscription. When you're satisfied with how your application is working in the Azure Cosmos DB Emulator, you can switch to using an Azure Cosmos DB account in the cloud.
-      - question: |
-          How do I try Azure Cosmos DB entirely free?
-        answer: |
-          You can access a time-limited Azure Cosmos DB experience without a subscription, free of charge, and commitments. To sign up for a Try Azure Cosmos DB subscription, go to [Try Azure Cosmos DB for free](https://azure.microsoft.com/try/cosmosdb/) and use any personal Microsoft account (MSA).
-
-          This subscription is distinct from the [Azure Free Trial](https://azure.microsoft.com/free/), and can be used along with an Azure Free Trial or an Azure paid subscription.
-
-          Try Azure Cosmos DB subscriptions appear in the Azure portal with other subscriptions associated with your user ID.
-
-          The following conditions apply to Try Azure Cosmos DB subscriptions:
-
-          - Account access can be granted to personal Microsoft accounts (MSA). Avoid using Microsoft Entra accounts or accounts belonging to corporate Microsoft Entra tenants, they might have limitations in place that could block access granting.
-          - One [throughput provisioned container](./set-throughput.md#set-throughput-on-a-container) per subscription for API for NoSQL, Gremlin, and Table accounts.
-          - Up to three [throughput provisioned collections](./set-throughput.md#set-throughput-on-a-container) per subscription for MongoDB accounts.
-          - One [throughput provisioned database](./set-throughput.md#set-throughput-on-a-database) per subscription. Throughput provisioned databases can contain any number of containers inside.
-          - 10-GB storage capacity.
-          - Global replication is available in the following [Azure regions](https://azure.microsoft.com/regions/): Central US, North Europe, and Southeast Asia
-          - Maximum throughput of 5 K RU/s when provisioned at the container level.
-          - Maximum throughput of 20 K RU/s when provisioned at the database level.
-          - Subscriptions expire after 30 days, and can be extended to a maximum of 31 days total. After expiration, the information contained is deleted.
-          - Azure support tickets can't be created for Try Azure Cosmos DB accounts; however, support is provided for subscribers with existing support plans.
   - name: Get started with Azure Cosmos DB
     questions:
       - question: |
@@ -136,9 +309,7 @@ sections:
       - question: |
           How do I authenticate to Azure Cosmos DB?
         answer: |
-          A primary key is a security token to access all resources for an account. Individuals with the key have read and write access to all resources in the database account. Multiple keys are available on the **Keys** section of the [Azure portal](https://portal.azure.com).
-
-          Use caution when you distribute primary keys.
+          Use Microsoft Entra ID to authenticate to Azure Cosmos DB for all APIs that support this method of authentication. For APIs that don't support Microsoft Entra ID authentication, use the keys with caution. Ensure that keys for production accounts are stored securely, such as in Azure Key Vault.
       - question: |
           Where is Azure Cosmos DB available?
         answer: |
@@ -154,7 +325,7 @@ sections:
       - question: |
           Is it possible to switch between container-level and database-level throughput provisioning?
         answer: |
-          Container and database-level throughput provisioning are separate offerings and switching between either of these require migrating data from source to destination. You need to create a new database or container and then migrate data using [bulk executor library](bulk-executor-overview.md) or [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db).
+          Container and database-level throughput provisioning are separate offerings and switching between either of these offerings require migrating data from source to destination. You need to create a new database or container and then migrate data using [bulk executor library](bulk-executor-overview.md) or [Azure Data Factory](/azure/data-factory/connector-azure-cosmos-db).
       - question: |
           Does Azure Cosmos DB support time series analysis?
         answer: |
@@ -166,7 +337,7 @@ sections:
 additionalContent: |
   ## Related content
 
-  - Frequently asked questions about [Azure Cosmos DB for NoSQL](nosql/faq.yml)
+  - Frequently asked questions about [Azure Cosmos DB for NoSQL](faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for MongoDB](mongodb/faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for Apache Gremlin](gremlin/faq.yml)
   - Frequently asked questions about [Azure Cosmos DB for Apache Cassandra](cassandra/faq.yml)

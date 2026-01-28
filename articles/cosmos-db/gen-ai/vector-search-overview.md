@@ -1,18 +1,17 @@
 ---
-title: Vector similarity search
+title: Vector Similarity Search
 titleSuffix: Azure Cosmos DB
-description: Overview of the vector similarity search functionality in Azure Cosmos DB's various vector search features.
+description: Learn about vector similarity search functionality in Azure Cosmos DB's various vector search features.
 author: wmwxwa
 ms.author: wangwilliam
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 12/03/2024
+ms.date: 09/12/2025
 ms.update-cycle: 180-days
 ms.collection:
   - ce-skilling-ai-copilot
 appliesto:
   - ✅ NoSQL
-  - ✅ MongoDB vCore
   - ✅ PostgreSQL
 ---
 
@@ -22,7 +21,7 @@ Vector search is a method that helps you find similar items based on their data 
 
 ## Examples
 
-This [interactive visualization](https://openai.com/index/introducing-text-and-code-embeddings/#_1Vr7cWWEATucFxVXbW465e) shows some examples of closeness and distance between vectors.
+This [interactive visualization](https://openai.com/index/introducing-text-and-code-embeddings/#text-similarity-models) shows some examples of closeness and distance between vectors.
 
 ## Algorithms
 
@@ -33,11 +32,11 @@ Using an integrated vector search feature in a fully featured database ([as oppo
 ## Related content
 
 - [What is a vector database?](../vector-database.md)
-- [Retrieval Augmented Generation (RAG)](rag.md)
-- [Vector database in Azure Cosmos DB NoSQL](../nosql/vector-search.md)
-- [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
-- LLM [tokens](tokens.md)
-- Vector [embeddings](vector-embeddings.md)
-- [Distance functions](distance-functions.md)
+- [Retrieval-augmented generation (RAG)](rag.md)
+- [Vector search in Azure Cosmos DB NoSQL](../vector-search.md)
+- [Vector store in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
+- [What are tokens?](tokens.md)
+- [Vector embeddings](vector-embeddings.md)
+- [What are distance functions?](distance-functions.md)
 - [kNN vs ANN vector search algorithms](knn-vs-ann.md)
-- [Multi-tenancy for Vector Search](../nosql/multi-tenancy-vector-search.md)
+- [Multitenancy for vector search](../multi-tenancy-vector-search.md)

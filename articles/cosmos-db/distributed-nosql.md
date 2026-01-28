@@ -1,17 +1,20 @@
 ---
 title: Understand Distributed NoSQL Databases
-titleSuffix: Azure Cosmos DB
 description: Learn about distributed NoSQL databases and how you can use them together with your cloud-native global-scale applications at with flexible data schemas.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Understand distributed NoSQL databases
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB is a globally distributed database platform for both NoSQL and relational databases of any scale. This article explores distributed NoSQL databases in the context of Azure Cosmos DB’s various NoSQL API options.
 
@@ -35,16 +38,7 @@ With a distributed database that's also a NoSQL database, high transactional wor
 
 Your database could be configured to offer high consistency with tradeoffs to speed and availability. Similarly, your database could be configured to offer the best performance with predictable tradeoffs to consistency and latency of your replicated data. Azure Cosmos DB automatically and dynamically distributes your data across local instances or globally. Azure Cosmos DB can also provide ACID guarantees and scale throughput to map to your application’s requirements.
 
-## Next steps
+## Next step
 
 > [!div class="nextstepaction"]
 > [Understanding distributed relational databases](distributed-relational.md)
-
-Want to get started with Azure Cosmos DB?
-
-- [Choose an API in Azure Cosmos DB](choose-api.md)
-- [Get started with the API for NoSQL](nosql/quickstart-dotnet.md)
-- [Get started with the API for MongoDB](mongodb/quickstart-nodejs.md)
-- [Get started with the API for Apache Cassandra](cassandra/manage-data-java-v4-sdk.md)
-- [Get started with the API for Apache Gremlin](gremlin/quickstart-python.md)
-- [Get started with the API for Table](table/quickstart-dotnet.md)

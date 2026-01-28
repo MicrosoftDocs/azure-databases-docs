@@ -8,11 +8,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 05/24/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Troubleshoot read-only access to Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 PostgreSQL can't run on a machine without some free disk space. To maintain
 access to PostgreSQL servers, it's necessary to prevent the disk space from

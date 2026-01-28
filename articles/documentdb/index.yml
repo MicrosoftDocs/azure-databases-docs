@@ -1,0 +1,187 @@
+### YamlMime:Hub
+title: Azure DocumentDB (with MongoDB compatibility) documentation
+summary: Azure DocumentDB (with MongoDB compatibility) is a fully managed NoSQL database service for modern app development with full MongoDB compatibility. Learn how to build scalable solutions—get started today.
+brand: azure
+metadata:
+  title: Documentation
+  description: Azure DocumentDB (with MongoDB compatibility) is a fully managed NoSQL database service designed to support modern application development with high-compatibility with MongoDB APIs.
+  author: seesharprun
+  ms.author: sidandrews
+  ms.topic: hub-page
+  ms.date: 09/30/2025
+  ai-usage: ai-generated
+highlightedContent:
+  items:
+    - title: Overview of Azure DocumentDB
+      itemType: overview
+      url: overview.md
+    - title: FAQ
+      itemType: concept
+      url: faq.yml
+    - title: Vector store
+      itemType: architecture
+      url: vector-search.md
+    - title: Pricing
+      itemType: reference
+      url: https://azure.microsoft.com/pricing/
+tools:
+  title: Build your first application
+  summary: Create a console application using Azure DocumentDB and your preferred development language.
+  items:
+    - title: TypeScript
+      imageSrc: media/index/lang-typescript.svg
+      url: quickstart-nodejs.md?pivots=programming-language-ts
+    - title: JavaScript
+      imageSrc: media/index/lang-javascript.svg
+      url: quickstart-nodejs.md?pivots=programming-language-js
+    - title: Python
+      imageSrc: media/index/lang-python.svg
+      url: quickstart-python.md
+    - title: C#
+      imageSrc: media/index/lang-dotnet.svg
+      url: quickstart-dotnet.md
+    - title: Java
+      imageSrc: media/index/lang-java.svg
+      url: quickstart-java.md
+    - title: Go
+      imageSrc: media/index/lang-go.svg
+      url: quickstart-go.md
+productDirectory:
+  title: Industry solutions
+  summary: Explore how Azure DocumentDB enables AI-driven innovation across industries like retail, finance, healthcare, media, gaming, and IoT/manufacturing.
+  items:
+    - title: Logistics, supply chain, retail, and e-commerce
+      summary: Build reliable and scalable solutions for e-commerce and supply chain solutions for industries like logistics and retail.
+      imageSrc: media/index/industry-retail.png
+      url: solutions-retail.md
+    - title: Financial services and technology
+      summary: Build secure and modern solutions using NoSQL for the financial industry, including banking, insurance, and fintech.
+      imageSrc: media/index/industry-finance.png
+      url: solutions-finance.md
+    - title: Healthcare
+      summary: Ship innovations faster with a fully managed NoSQL database service that scales to meet your needs.
+      imageSrc: media/index/industry-healthcare.png
+      url: solutions-healthcare.md
+    - title: Telecom and media
+      summary: Build next-generation telecom and media solutions using a fast and flexible NoSQL database service.
+      imageSrc: media/index/industry-media.png
+      url: solutions-media.md
+    - title: Gaming
+      summary: Build an infinitely scalable gaming platform using a globally distributed NoSQL database service.
+      imageSrc: media/index/industry-gaming.png
+      url: solutions-gaming.md
+    - title: Internet of Things (IoT) and manufacturing
+      summary: Build a flexible Internet of Things (IoT) and manufacturing data platform using NoSQL.
+      imageSrc: media/index/industry-iot.png
+      url: solutions-iot.md
+additionalContent:
+  sections:
+    - title: Secure your solution
+      summary: Protect your data and applications with robust security features, including encryption, firewall rules, and advanced access controls for Azure DocumentDB.
+      items:
+        - title: Security guide
+          url: security.md
+        - title: Configure customer-managed key (CMK) encryption
+          url: how-to-data-encryption.md
+        - title: Configure firewall rules
+          url: how-to-configure-firewall.md
+        - title: Create secondary users
+          url: secondary-users.md
+        - title: Data encryption overview
+          url: database-encryption-at-rest.md
+        - title: Troubleshoot CMK data encryption
+          url: how-to-database-encryption-troubleshoot.md
+        - title: Use Microsoft Entra ID and role-based access control
+          url: how-to-connect-role-based-access-control.md
+    - title: High availability and global distribution
+      summary: Ensure your applications are always available and globally distributed with Azure DocumentDB's advanced replication and reliability features.
+      items:
+        - title: High availability overview
+          url: high-availability.md
+        - title: Cross-region replication
+          url: cross-region-replication.md
+        - title: Best practices for high availability (HA) and Disaster Recovery (DR)
+          url: high-availability-replication-best-practices.md
+    - title: DocumentDB
+      summary: Accelerate your NoSQL journey by discovering the open-source DocumentDB project, its documentation, and community resources.
+      items:
+        - title: GitHub repository
+          url: https://github.com/documentdb/documentdb
+        - title: Documentation
+          url: https://documentdb.io/docs
+        - title: Announcement blog post
+          url: https://opensource.microsoft.com/blog/2025/01/23/documentdb-open-source-announcement/
+        - title: Linux Foundation membership blog post
+          url: https://opensource.microsoft.com/blog/2025/08/25/documentdb-joins-the-linux-foundation/
+    - title: Samples
+      summary: Explore various code samples and projects that demonstrate how to build applications using Azure DocumentDB.
+      items:
+        - title: Build an AI Agent
+          url: tutorial-ai-agent.md
+        - title: Build Your Own Copilot in C# with Semantic Kernel
+          url: https://github.com/AzureCosmosDB/cosmosdb-mongo-copilot
+        - title: Recipe chatbot
+          url: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore
+        - title: C# RAG pattern - Integrate OpenAI Services
+          url: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore
+        - title: Python RAG pattern - Azure product chatbot
+          url: https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore
+        - title: Solution accelerator
+          url: https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore
+        - title: Python notebooks
+          url: https://github.com/Microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore
+  footer: |
+    Azure DocumentDB (with MongoDB compatibility) is based on the open-source [DocumentDB](https://github.com/documentdb/documentdb) project.
+
+    DocumentDB is an open-source powerful, scalable, and MongoDB compatible open-source document database built for modern applications.
+
+    DocumentDB is built on the principles of transparency, developer freedom, and standardization, our mission is to build a MongoDB compatible open source document database based on PostgreSQL.
+
+    To participate in the community, file issues, and contribute to the project, please visit [https://github.com/documentdb](https://github.com/documentdb/documentdb).
+conceptualContent:
+  sections:
+    - title: Developer and DevOps guides
+      summary: Advance your development and DevOps workflows with practical guides, tools, and best practices for building scalable applications on Azure DocumentDB.
+      items:
+        - title: Vector search and embeddings
+          summary: Unlock new capabilities in your applications with Azure DocumentDB by implementing powerful vector search and AI-driven embeddings features.
+          links:
+            - text: Python
+              itemType: quickstart
+              url: quickstart-python-vector-search.md
+            - text: Node.js (TypeScript)
+              itemType: quickstart
+              url: quickstart-nodejs-vector-search.md
+            - text: .NET (C#)
+              itemType: quickstart
+              url: quickstart-dotnet-vector-search.md
+        - title: Infrastructure as code (IaC)
+          summary: Automate deployment and management of Azure DocumentDB resources using modern Infrastructure as Code (IaC) tools like Bicep and Terraform.
+          links:
+            - text: Bicep
+              itemType: quickstart
+              url: quickstart-bicep.md
+            - text: Terraform
+              itemType: quickstart
+              url: quickstart-terraform.md
+        - title: Connect to your cluster
+          summary: Learn how to connect to your Azure DocumentDB cluster using various tools and drivers, including MongoDB Compass and popular programming languages.
+          links:
+            - text: Connect using Azure Cloud Shell
+              itemType: how-to-guide
+              url: how-to-connect-cloud-shell.md
+            - text: Connect using MongoDB Shell
+              itemType: how-to-guide
+              url: how-to-connect-mongo-shell.md
+            - text: Connect using Studio 3T
+              itemType: how-to-guide
+              url: how-to-connect-studio-3t.md
+        - title: Optimize Vector Search Performance
+          summary: Discover techniques to improve the speed, efficiency, and scalability of AI-powered vector search in Azure DocumentDB, including Product Quantization and Half-Precision Indexing.
+          links:
+            - text: Product Quantization
+              itemType: concept
+              url: product-quantization.md
+            - text: Half-Precision Vector Indexing
+              itemType: concept
+              url: half-precision.md

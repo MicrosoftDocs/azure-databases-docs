@@ -1,21 +1,21 @@
 ---
-title: Configure and use Azure Synapse Link for Azure Cosmos DB
+title: Configure and Use Azure Synapse Link
 description: Learn how to enable Synapse Link for Azure Cosmos DB accounts, create a container with analytical store enabled, connect the Azure Cosmos DB database to Synapse workspace, and run queries.
 author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 09/26/2022
+ms.date: 12/05/2025
 ms.custom: references_regions, synapse-cosmos-db
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Configure and use Azure Synapse Link for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Gremlin](includes/appliesto-nosql-mongodb-gremlin.md)]
+
+[!INCLUDE[Note - Synapse Link mirroring support](includes/note-synapse-link-mirroring-support.md)]
 
 [Azure Synapse Link for Azure Cosmos DB](synapse-link.md) is a cloud-native hybrid transactional and analytical processing (HTAP) capability that enables you to run near real-time analytics over operational data in Azure Cosmos DB. Synapse Link creates a tight seamless integration between Azure Cosmos DB and Azure Synapse Analytics.
-
- > [!IMPORTANT]
- > Mirroring in Microsoft Fabric is now available in preview for NoSql API. This feature provides all the capabilities of Azure Synapse Link with better analytical performance, ability to unify your data estate with Fabric OneLake and open access to your data in OneLake with Delta Parquet format. If you are considering Azure Synapse Link, we recommend that you try mirroring to assess overall fit for your organization. To get started with mirroring, click [here](/fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context). 
 
 Azure Synapse Link is available for Azure Cosmos DB SQL API or for Azure Cosmos DB API for Mongo DB accounts. And it is in preview for Gremlin API, with activation via CLI commands. Use the following steps to run analytical queries with the Azure Synapse Link for Azure Cosmos DB:
 
@@ -90,7 +90,7 @@ Use `EnableAnalyticalStorage true` for both **create** or **update** operations.
 
 #### Azure Resource Manager template
 
-This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
+This [Azure Resource Manager template](./manage-with-templates.md#azure-cosmos-db-account-with-analytical-store) creates a Synapse Link enabled Azure Cosmos DB account for SQL API. This template creates a Core (SQL) API account in one region with a container configured with analytical TTL enabled, and an option to use manual or autoscale throughput. To deploy this template, click on **Deploy to Azure** on the readme page.
 
 ## <a id="update-analytical-ttl"></a> Enable Azure Synapse Link for your containers
 
@@ -209,6 +209,7 @@ The following Python code creates a Synapse Link enabled container by setting th
 
 ```python
 # Client
+
 client = cosmos_client.CosmosClient(HOST,  KEY )
 
 # Database client

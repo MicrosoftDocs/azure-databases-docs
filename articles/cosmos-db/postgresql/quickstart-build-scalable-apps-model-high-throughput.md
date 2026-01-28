@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: quickstart
 recommendations: false
 ms.date: 01/30/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Model high-throughput transactional apps in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 ## Common filter as shard key
 

@@ -1,12 +1,12 @@
 ---
-title: Considerations with the use of extensions and modules in an Azure Database for PostgreSQL flexible server
-description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server.
+title: Considerations with the Use of Extensions and Modules
+description: Learn about the extension considerations specific to an Azure Database for PostgreSQL flexible server instance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 03/26/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: extensions
 ms.topic: concept-article
 ms.custom:
   - build-2025
@@ -14,11 +14,11 @@ ms.custom:
 
 # Considerations with the use of extensions and modules
 
-This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server.
+This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure Database for PostgreSQL flexible server instance.
 
 ## Generic considerations with extensions
 
-To use an extension in your Azure Database for PostgreSQL flexible server, you have to:
+To use an extension in your Azure Database for PostgreSQL flexible server instance, you have to:
 
 - [Allow extension](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
 - If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the server starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
@@ -27,17 +27,17 @@ To use an extension in your Azure Database for PostgreSQL flexible server, you h
 - [Update extensions](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
 - [View installed extensions](how-to-view-installed-extensions.md) and their corresponding versions.
 
-If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure Database for PostgreSQL flexible server, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
+If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure Database for PostgreSQL flexible server instance, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
 
 ## Generic considerations with modules
 
-To use a module in your Azure Database for PostgreSQL flexible server, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
+To use a module in your Azure Database for PostgreSQL flexible server instance, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
 
 Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
 
 ## Extensions with specific considerations
 
-The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
+The following list enumerates all the supported extensions that require specific considerations when used in an Azure Database for PostgreSQL flexible server instance:
 
 - `AGE`
 - `dblink`
@@ -52,14 +52,14 @@ The following list enumerates all the supported extensions that require specific
  
 ### AGE
 
-The Apache AGE extension is a graph extension for PostgreSQL supported by Azure Database for PostgreSQL flexible server. It provides graph database functionalities, open cypher query support, and the ability to execute complex queries on graph data stored in PostgreSQL. ['Apache AGE'](https://age.apache.org/) is an open-source project released under the Apache License 2.0. 
+The Apache AGE extension is a graph extension for PostgreSQL supported by Azure Database for PostgreSQL. It provides graph database functionalities, open cypher query support, and the ability to execute complex queries on graph data stored in PostgreSQL. ['Apache AGE'](https://age.apache.org/) is an open-source project released under the Apache License 2.0. 
 
 #### Install AGE
 To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to-allow-extensions) the extension, ['load its library'](/azure/postgresql/extensions/how-to-load-libraries), and ['install the extension'](/azure/postgresql/extensions/how-to-create-extensions) in the database on which you plan to use its functionality. 
 
 ### dblink
 
-The [`dblink`](https://www.postgresql.org/docs/current/contrib-dblink-function.html) extension allows you to connect from one Azure Database for PostgreSQL flexible server instance to another or another database in the same server. Azure Database for PostgreSQL flexible server supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
+The [`dblink`](https://www.postgresql.org/docs/current/contrib-dblink-function.html) extension allows you to connect from one Azure Database for PostgreSQL flexible server instance to another or another database in the same server. Azure Database for PostgreSQL supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
 If you plan to use this extension, we recommend deploying your servers with [virtual network integration](../flexible-server/concepts-networking-private.md). By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
@@ -119,7 +119,7 @@ To use `pg_cron`, make sure you [load its shared library upon server start](how-
 
 Starting with `pg_cron` version 1.4, you can use the `cron.schedule_in_database` and `cron.alter_job` functions to schedule your job in a specific database and update an existing schedule, respectively.
 
-The `cron_schedule_in_database` function allows for the user name as an optional parameter. Setting the username to a non-null value requires PostgreSQL superuser privilege and isn't supported in Azure Database for PostgreSQL flexible server. Preceding examples show running this function with an optional user name parameter omitted or set to null, which runs the job in the context of the user scheduling the job, which should have `azure_pg_admin` role privileges.
+The `cron_schedule_in_database` function allows for the user name as an optional parameter. Setting the username to a non-null value requires PostgreSQL superuser privilege and isn't supported for an Azure Database for PostgreSQL flexible server instance. Preceding examples show running this function with an optional user name parameter omitted or set to null, which runs the job in the context of the user scheduling the job, which should have `azure_pg_admin` role privileges.
 
 1. To delete old data on Saturday at 3:30 am (GMT) on database DBName.
 
@@ -162,7 +162,7 @@ To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-ext
 
 ### pg_prewarm
 
-The `pg_prewarm` extension loads relational data into the cache. Prewarming your caches means your queries have better response times on their first run after a restart. The autoprewarm functionality for the PostgreSQL flexible server isn't currently available in the Azure Database.
+The `pg_prewarm` extension loads relational data into the cache. Prewarming your caches means your queries have better response times on their first run after a restart. The autoprewarm functionality for the PostgreSQL isn't currently available in the Azure Database.
 
 ### pg_repack
 
@@ -200,7 +200,7 @@ There's a tradeoff between the query execution information the `pg_stat_statemen
 
 ### postgres_fdw
 
-The [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) extension allows you to connect from one Azure Database for PostgreSQL flexible server instance to another or another database in the same server. Azure Database for PostgreSQL flexible server supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
+The [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) extension allows you to connect from one Azure Database for PostgreSQL flexible server instance to another or another database in the same server. Azure Database for PostgreSQL supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
 If you plan to use this extension, we recommend deploying your servers with [virtual network integration](../flexible-server/concepts-networking-private.md). By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
@@ -210,7 +210,7 @@ When using the `pgstattuple` extension to try to obtain tuple statistics from ob
 
 #### Permission denied for schema pg_toast
 
-Customers using PostgreSQL versions 11 through 13 on Azure Database for flexible server| can't use the `pgstattuple` extension on objects within the `pg_toast` schema.
+Customers using PostgreSQL versions 11 through 13 on Azure Database for PostgreSQL flexible server instance can't use the `pgstattuple` extension on objects within the `pg_toast` schema.
 
 In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, allowing `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role doesn't exist.
 
@@ -219,7 +219,7 @@ Customers can't directly grant the necessary permissions. If you need to be able
 ### timescaleDB
 
 The `timescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales Postgres for time-series workloads.
-[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
+[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
 
 #### Install TimescaleDB
 
@@ -249,19 +249,19 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-Azure Database for PostgreSQL flexible server offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL flexible server upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
+Azure Database for PostgreSQL offers an [in-place major version upgrade feature](../flexible-server/concepts-major-version-upgrade.md) that performs an in-place upgrade of the Azure Database for PostgreSQL flexible server instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure Database for PostgreSQL upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
-The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server versions when using in-place major version update feature.
+The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure Database for PostgreSQL flexible server instance versions when using in-place major version update feature.
 
 ## Modules with specific considerations
 
-The following list enumerates all the supported modules that require specific considerations when used in an Azure Database for PostgreSQL flexible server:
+The following list enumerates all the supported modules that require specific considerations when used in an Azure Database for PostgreSQL flexible server instance:
 
 - `pg_failover_slots`
 
 ### pg_failover_slots
 
-The `pg_failover_slots` module enhances Azure Database for PostgreSQL flexible server when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
+The `pg_failover_slots` module enhances Azure Database for PostgreSQL when operating with both logical replication and high availability enabled servers. It effectively addresses the challenge within the standard PostgreSQL engine that doesn't preserve logical replication slots after a failover. Maintaining these slots is critical to prevent replication pauses or data mismatches during primary server role changes, ensuring operational continuity and data integrity.
 
 The extension streamlines the failover process by managing the necessary transfer, cleanup, and synchronization of replication slots, thus providing a seamless transition during server role changes.
 

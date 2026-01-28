@@ -1,12 +1,12 @@
 ---
 title: MySQL to Azure Database for MySQL Data Migration - MySQL Consistent Backup
 description: Learn how to use the Azure Database for MySQL Data Migration - MySQL Consistent Backup for transaction consistency even without making the Source server read-only.
-author: karlaescobar
-ms.author: karlaescobar
+author: saikondapalli11
+ms.author: skondapalli
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/16/2025
 ms.service: azure-database-migration-service
-ms.topic: article
+ms.topic: how-to
 ms.collection:
   - sql-migration-content
 ms.custom:
@@ -66,10 +66,14 @@ To complete the migration successfully with Consistent Snapshot with read lock e
 
 ## Known issues and limitations for Enable Consistent Snapshot with read lock
 
-The known issues and limitations associated with Consistent Backup fall broadly into two categories: locks and retries.
+The known issues and limitations associated with Consistent Backup fall broadly into three categories: workload, locks, and retries.
 
 > [!NOTE]  
 > The migration service runs the **START TRANSACTION WITH CONSISTENT SNAPSHOT** query for all the worker threads to get the server snapshot. But this is supported only by InnoDB. More info [here](https://dev.mysql.com/doc/refman/8.0/en/commit.html).
+
+### Workload
+
+- No DDL changes should occur during initial load.
 
 ### Locks
 

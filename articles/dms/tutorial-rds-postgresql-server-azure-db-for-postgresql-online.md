@@ -1,16 +1,17 @@
 ---
-title: "Tutorial: Migrate RDS PostgreSQL online to Azure Database for PostgreSQL"
+title: "Tutorial: Migrate RDS PostgreSQL Online to Azure Database for PostgreSQL"
 titleSuffix: Azure Database Migration Service
 description: Learn to perform an online migration from RDS PostgreSQL to Azure Database for PostgreSQL by using the Azure Database Migration Service.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: randolphwest
-ms.date: 09/13/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 # Tutorial: Migrate RDS PostgreSQL to Azure Database for PostgreSQL online using DMS
 
@@ -19,6 +20,7 @@ ms.custom: sfi-image-nochange
 You can use Azure Database Migration Service to migrate databases from an RDS PostgreSQL instance to [Azure Database for PostgreSQL](../postgresql/index.yml) while the source database remains online during migration. In other words, migration can be achieved with minimal downtime to the application. In this tutorial, you migrate the `DVD Rental` sample database from an instance of RDS PostgreSQL 9.6 to Azure Database for PostgreSQL by using the online migration activity in Azure Database Migration Service.
 
 In this tutorial, you learn how to:
+
 > [!div class="checklist"]
 > - Migrate the sample schema by using the pg_dump utility.
 > - Create an instance of Azure Database Migration Service.
@@ -62,7 +64,7 @@ To complete this tutorial, you need to:
 
 1. To create a new parameter group, follow the instructions provided by AWS in the article [Working with DB Parameter Groups](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html).
 
-1. Use the master user name to connect to the source from Azure Database Migration Service. If you use an account other than the master user account, the account must have the rds_superuser role and the rds_replication role. The rds_replication role grants permissions to manage logical slots and to stream data using logical slots.
+1. Use the `master` user name to connect to the source from Azure Database Migration Service. If you use an account other than the `master` user account, the account must have the `rds_superuser` role and the `rds_replication` role. The `rds_replication` role grants permissions to manage logical slots and to stream data using logical slots.
 
 1. Create a new parameter group with the following configuration:
 
@@ -76,23 +78,23 @@ To complete this tutorial, you need to:
 
 ## Migrate the schema
 
-1. Extract the schema from the source database and apply to the target database to complete migration of all database objects such as table schemas, indexes, and stored procedures.
+1. To complete migration of all database objects such as table schemas, indexes, and stored procedures, extract the schema from the source database and apply to the target database.
 
-   The easiest way to migrate only the schema is to use pg_dump with the -s option. For more information, see the [examples](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) in the Postgres pg_dump tutorial.
+   The easiest way to migrate only the schema is to use `pg_dump` with the `-s` option. For more information, see the [examples](https://www.postgresql.org/docs/9.6/app-pgdump.html#PG-DUMP-EXAMPLES) in the Postgres `pg_dump` tutorial.
 
    ```bash
    pg_dump -O -h hostname -U db_username -d db_name -s > your_schema.sql
    ```
 
-   For example, to dump a schema file for the **dvdrental** database, use the following command:
+   For example, to dump a schema file for the `dvdrental` database, use the following command:
 
    ```bash
    pg_dump -O -h localhost -U postgres -d dvdrental -s  > dvdrentalSchema.sql
    ```
 
-1. Create an empty database in the target service, which is Azure Database for PostgreSQL- Flexible server.
+1. Create an empty database in the target service, which is **Azure Database for PostgreSQL - Flexible server**.
 
-1. Import the schema to target service, which is Azure Database for PostgreSQL. To restore the schema dump file, run the following command:
+1. Import the schema to target service, which is **Azure Database for PostgreSQL**. To restore the schema dump file, run the following command:
 
    ```bash
    psql -h hostname -U db_username -d db_name < your_schema.sql
@@ -105,9 +107,9 @@ To complete this tutorial, you need to:
    ```
 
    > [!NOTE]  
-   > The migration service internally handles the enable/disable of foreign keys and triggers to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
+   > The migration service internally handles enabling and disabling of foreign keys and triggers, to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
 
-[!INCLUDE [resource-provider-register](./includes/database-migration-service-resource-provider-register.md)]
+[!INCLUDE [database-migration-service-resource-provider-register](includes/database-migration-service-resource-provider-register.md)]
 
 ## Create an instance of Azure Database Migration Service
 
@@ -127,9 +129,9 @@ To complete this tutorial, you need to:
 
    The virtual network provides Azure Database Migration Service with access to the source PostgreSQL instance and the target Azure Database for PostgreSQL instance.
 
-   For more information about how to create a virtual network in the Azure portal, see the article [Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
+   For more information about how to create a virtual network in the Azure portal, see [Create a virtual network using the Azure portal](/azure/virtual-network/quick-create-portal).
 
-1. Select a pricing tier. For this online migration, select the Premium: 4vCores pricing tier.
+1. Select a pricing tier. For this online migration, select the **Premium: 4 vCores** pricing tier.
 
    :::image type="content" source="media/tutorial-rds-postgresql-server-azure-db-for-postgresql-online/dms-settings5.png" alt-text="Screenshot of Configure Azure Database Migration Service instance settings.":::
 

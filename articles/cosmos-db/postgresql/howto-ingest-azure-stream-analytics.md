@@ -8,11 +8,13 @@ ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 01/30/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # How to ingest data by using Azure Stream Analytics in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/#features)
 is a real-time analytics and event-processing engine that is designed to

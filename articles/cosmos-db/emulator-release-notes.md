@@ -1,12 +1,13 @@
 ---
 title: Release Notes for the Windows (Local) Emulator
-titleSuffix: Azure Cosmos DB
 description: View the release notes for the latest version and previous versions of the Azure Cosmos DB Windows (local) emulator.
 author: sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: release-notes
 ms.date: 06/24/2025
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Release notes for the Azure Cosmos DB Windows (local) emulator

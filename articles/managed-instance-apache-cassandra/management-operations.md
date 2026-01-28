@@ -38,7 +38,7 @@ This article defines the management operations and features provided by the serv
 
 ## Maintenance
 
-- The service runs [nodetool repair](https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/tools/toolsRepair.html) using [reaper](http://cassandra-reaper.io/). This tool is run once every week. If you use your own service for a [hybrid deployment](configure-hybrid-cluster.md), you might want to disable reaper.
+- The service runs [nodetool repair](https://cassandra.apache.org/doc/latest/cassandra/managing/operating/repair.html) using [reaper](http://cassandra-reaper.io/). This tool is run once every week. If you use your own service for a [hybrid deployment](configure-hybrid-cluster.md), you might want to disable reaper.
 
 - Node health monitoring consists of:
 

@@ -1,16 +1,17 @@
 ---
-title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL online via the Azure portal"
+title: "Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL Online via the Azure Portal"
 titleSuffix: Azure Database Migration Service
 description: Learn to perform an online migration from PostgreSQL on-premises to Azure Database for PostgreSQL by using Azure Database Migration Service via the Azure portal.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate PostgreSQL to Azure Database for PostgreSQL online using DMS (classic) via the Azure portal
@@ -22,6 +23,7 @@ For more information about Azure Database Migration Service, see the article [Wh
 You can use Azure Database Migration Service to migrate the databases from an on-premises PostgreSQL instance to [Azure Database for PostgreSQL](../postgresql/index.yml) with minimal downtime to the application. In this tutorial, you migrate the **listdb** sample database from an on-premises instance of PostgreSQL 13.10 to Azure Database for PostgreSQL by using the online migration activity in Azure Database Migration Service.
 
 In this tutorial, you learn how to:
+
 > [!div class="checklist"]
 > - Migrate the sample schema using the pg_dump utility.
 > - Create an instance of Azure Database Migration Service.
@@ -39,7 +41,7 @@ Using Azure Database Migration Service to perform an online migration requires c
 
 To complete this tutorial, you need to:
 
-- Download and install [PostgreSQL community edition](https://www.postgresql.org/download/). The source PostgreSQL Server version must be >= 9.4. For more information, see [Supported PostgreSQL versions in Azure Database for PostgreSQL flexible server](../postgresql/flexible-server/concepts-supported-versions.md).
+- Download and install [PostgreSQL community edition](https://www.postgresql.org/download/). The source PostgreSQL Server version must be >= 9.4. For more information, see [Supported versions of PostgreSQL in Azure Database for PostgreSQL](../postgresql/flexible-server/concepts-supported-versions.md).
 
   Also note that the target Azure Database for PostgreSQL version must be equal to or later than the on-premises PostgreSQL version. For example, PostgreSQL 12 can migrate to Azure Database for PostgreSQL >= 12 version but not to Azure Database for PostgreSQL 11.
 
@@ -55,40 +57,40 @@ To complete this tutorial, you need to:
 
   This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
-- Ensure that the Network Security Group (NSG) rules for your virtual network don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Ensure that the Network Security Group (NSG) rules for your virtual network don't block the outbound port 443 of ServiceTag for ServiceBus, Storage, and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
-- Configure your [Windows Firewall for database engine access](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+- Configure [Windows Firewall for database engine access](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 
-- Open your Windows firewall to allow Azure Database Migration Service to access the source PostgreSQL Server, which by default is TCP port 5432.
+- Open Windows Firewall to allow Azure Database Migration Service to access the source PostgreSQL Server, which by default is TCP port 5432.
 
-- When using a firewall appliance in front of your source database(s), you might need to add firewall rules to allow the Azure Database Migration Service to access the source database(s) for migration.
+- When using a firewall appliance in front of your source databases, you might need to add firewall rules to allow the Azure Database Migration Service to access the source databases for migration.
 
 - Create a server-level [firewall rule](../postgresql/concepts-firewall-rules.md) for Azure Database for PostgreSQL to allow Azure Database Migration Service to access to the target databases. Provide the subnet range of the virtual network used for Azure Database Migration Service.
 
-- Enable logical replication in the postgresql.config file, and set the following parameters:
+- Enable logical replication in the `postgresql.config` file, and set the following parameters:
 
-  - wal_level = **logical**
-  - max_replication_slots = [number of slots], recommend setting to **five slots**
-  - max_wal_senders =[number of concurrent tasks] - The max_wal_senders parameter sets the number of concurrent tasks that can run, recommend setting to **10 tasks**
+  - `wal_level` = `logical`.
+  - `max_replication_slots` = [number of slots], recommend setting to `5` slots.
+  - `max_wal_senders` = [number of concurrent tasks]. The `max_wal_senders` parameter sets the number of concurrent tasks that can run, recommend setting to `10` tasks.
 
-- The user must have the REPLICATION role on the server hosting the source database.
+- The user must have the `REPLICATION` role on the server hosting the source database.
 
 > [!IMPORTANT]  
 > All tables in your existing database need a primary key to ensure that changes can be synced to the target database.
 
 ## Migrate the sample schema
 
-To complete all the database objects like table schemas, indexes and stored procedures, we need to extract schema from the source database and apply to the database.
+To complete all the database objects like table schemas, indexes, and stored procedures, we need to extract schema from the source database and apply to the database.
 
-1. Use pg_dump -s command to create a schema dump file for a database.
+1. Use `pg_dump -s` command to create a schema dump file for a database.
 
-   ```cmd
+   ```console
    pg_dump -O -h hostname -U db_username -d db_name -s > your_schema.sql
    ```
 
    For example, to create a schema dump file for the **listdb** database:
 
-   ```cmd
+   ```console
    pg_dump -O -h localhost -U postgres -d listdb -s -x > listdbSchema.sql
    ```
 
@@ -100,22 +102,22 @@ To complete all the database objects like table schemas, indexes and stored proc
 
 1. Import the schema into the target database you created by restoring the schema dump file.
 
-   ```cmd
+   ```console
    psql -h hostname -U db_username -d db_name < your_schema.sql
    ```
 
    For example:
 
-   ```cmd
+   ```console
    psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d migratedb < listdbSchema.sql
    ```
 
    > [!NOTE]  
-   > The migration service internally handles the enable/disable of foreign keys and triggers to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
+   > The migration service internally handles enabling and disabling of foreign keys and triggers, to ensure a reliable and robust data migration. As a result, you don't have to worry about making any modifications to the target database schema.
 
-[!INCLUDE [resource-provider-register](./includes/database-migration-service-resource-provider-register.md)]
+[!INCLUDE [database-migration-service-resource-provider-register](includes/database-migration-service-resource-provider-register.md)]
 
-[!INCLUDE [instance-create](./includes/database-migration-service-instance-create.md)]
+[!INCLUDE [database-migration-service-instance-create](includes/database-migration-service-instance-create.md)]
 
 ## Create a migration project
 
@@ -147,7 +149,7 @@ After the service is created, locate it within the Azure portal, open it, and th
 
 ## Specify target details
 
-1. On the **Target details** screen, specify the connection details for the target Azure Database for PostgreSQL - Flexible server, which is the preprovisioned instance to which the schema was deployed by using pg_dump.
+1. On the **Target details** screen, specify the connection details for the target Azure Database for PostgreSQL - Flexible server, which is the pre-provisioned instance to which the schema was deployed by using pg_dump.
 
    :::image type="content" source="media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-target-details-classic.png" alt-text="Screenshot of an Add target details screen." lightbox="media/tutorial-postgresql-to-azure-postgresql-online-portal/dms-add-target-details-classic.png":::
 

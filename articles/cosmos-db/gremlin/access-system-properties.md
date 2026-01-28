@@ -12,7 +12,7 @@ ms.date: 02/08/2024
 
 # Access system document properties using Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB for Gremlin has [system properties](/rest/api/cosmos-db/databases) such as `_ts`, `_self`, `_attachments`, `_rid`, and `_etag` on every item. Additionally, Gremlin engine adds `inVPartition` and `outVPartition` properties on edges. By default, these properties are available for traversal. However, it's possible to include specific properties, or all of them, in Gremlin traversal.
 
@@ -58,8 +58,3 @@ If a graph has document expiration enabled and documents have `ttl` property set
 
 > [!NOTE]
 > You can set time to Live (TTL) on the container to `-1` or to **On (no default)** from the Azure portal. Then, the TTL is infinite for any item unless the item has a TTL value explicitly set.
-
-## Next step
-
-> [!div class="nextstepaction"]
-> [Time to Live (TTL) in Azure Cosmos DB](../time-to-live.md)

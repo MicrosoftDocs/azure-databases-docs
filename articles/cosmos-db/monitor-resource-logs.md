@@ -1,6 +1,5 @@
 ---
 title: Monitor Data using Diagnostic Settings
-titleSuffix: Azure Cosmos DB
 description: Learn how to use Azure diagnostic settings to monitor the performance and availability of data stored in Azure Cosmos DB
 author: stefarroyo
 ms.author: esarroyo
@@ -9,11 +8,15 @@ ms.topic: how-to
 ms.date: 07/01/2025
 ms.custom: devx-track-azurecli
 #Customer Intent: As an operations user, I want to monitor metrics using Azure Monitor, so that I can use a Log Analytics workspace to perform complex analysis.
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Monitor Azure Cosmos DB data using Azure Monitor Log Analytics diagnostic settings
-
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 You can collect resource logs in Azure by using diagnostic settings. Resources emit Azure resource logs and provide rich, frequent data about the operation of that resource. These logs are captured per request and they're also referred to as *data plane logs*. Some examples of the data plane operations include delete, insert, and readFeed. The content of these logs varies by resource type.
 
@@ -25,9 +28,8 @@ To learn more about diagnostic settings, see [Diagnostic settings in Azure Monit
 ## Prerequisites
 
 - An existing Azure Cosmos DB account.
-  - If you have an Azure subscription, [create a new account](nosql/how-to-create-account.md?tabs=azure-portal).
-  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-  - Alternatively, you can [try Azure Cosmos DB free](try-free.md) before you commit.
+  - If you have an Azure subscription, [create a new account](how-to-create-account.md?tabs=azure-portal).
+  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - An existing Azure Monitor Log Analytics workspace.
 
 > [!WARNING]
@@ -377,6 +379,6 @@ Use the Azure CLI to enable full-text query for your Azure Cosmos DB account.
 
 ## Related content
 
-- [Diagnostic queries in API for NoSQL](nosql/diagnostic-queries.md)
+- [Diagnostic queries in API for NoSQL](diagnostic-queries.md)
 - [Diagnostic queries in API for MongoDB](mongodb/diagnostic-queries.md)
 - [Diagnostic queries in API for Apache Cassandra](cassandra/diagnostic-queries.md)

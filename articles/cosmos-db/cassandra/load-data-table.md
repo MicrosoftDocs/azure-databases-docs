@@ -25,7 +25,7 @@ This tutorial covers the following tasks:
 
 ## Prerequisites
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 * This article belongs to a multipart tutorial. Before you start with this article, make sure to [create the API for Cassandra account, keyspace, and table](create-account-java.md).
 
 ## Load data into the table

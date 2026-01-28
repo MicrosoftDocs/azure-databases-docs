@@ -6,7 +6,7 @@ ms.date: 08/23/2024
 ms.custom: sfi-image-nochange
 ---
 
-If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/free/) account before you begin.
+If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 
 ## Create a cluster
 

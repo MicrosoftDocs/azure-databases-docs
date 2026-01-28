@@ -1,11 +1,11 @@
 ---
-title: "Known issues, limitations, and troubleshooting"
+title: Known Issues, Limitations, and Troubleshooting
 titleSuffix: Azure Database Migration Service
 description: Known issues, limitations, and troubleshooting guide for Azure SQL Migration extension for Azure Data Studio
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: maghan, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -19,7 +19,7 @@ ms.custom:
 This article provides a list of known issues and troubleshooting steps associated with the Azure SQL Migration extension for Azure Data Studio.
 
 > [!IMPORTANT]  
-> The latest version of Integration Runtime (5.28.8488) prevents access to a network file share on a local host. This security measure will lead to failures when performing migrations to Azure SQL using DMS. Please ensure you run Integration Runtime on a different machine than the network share hosting.
+> The latest version of Integration Runtime (5.28.8488) blocks access to a network file share on a local host. This security measure leads to failures when performing migrations to Azure SQL using DMS. Make sure you run the integration runtime on a different machine than the network share host.
 
 ## Error code: 2007 - CutoverFailedOrCancelled
 
@@ -27,41 +27,41 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: The error can occur due to the backups being placed incorrectly in the Azure Storage container. If the backups are placed in the network file share, this error could also occur due to network connectivity issues.
 
-- **Recommendation**: Ensure the database backups in your Azure Storage container are correct. If you're using network file share, there can be network-related issues and lags that are causing this error. Wait for the process to be completed.
+- **Recommendation**: Ensure the database backups in your Azure Storage container are correct. If you're using a network file share, network issues or latency can cause this error. Wait for the process to complete.
 
 - **Message**: `Cutover failed or cancelled for database '{databaseName}'. Error details: 'errorCode: Ext_RestoreSettingsError, message: RestoreId: {RestoreId}, OperationId: {operationId}, Detail: Failed to complete restore., RestoreJobState: Restoring, CompleteRestoreErrorMessage: The database contains incompatible physical layout. Too many full text catalog files.`
 
-- **Cause**: SQL VM restore currently doesn't support restoring databases with full text catalog files as Azure SQL Vm doesn't support them at the moment.
+- **Cause**: SQL Server on Azure VM currently doesn't support restoring databases with full-text catalog files.
 
-- **Recommendation**: Remove full text catalog files from database when creating the restore
+- **Recommendation**: Remove full-text catalog files from database when creating the restore.
 
 - **Message**: `Cutover failed or cancelled for database '{databaseName}'. Error details: 'Migration cannot be completed because provided backup file name '{providedFileName}' should be the last restore backup file '{lastRestoredFileName}'.'`
 
-- **Cause**: This error occurs due to a known limitation in SqlMi. It means the '{providedFileName}' is different from '{lastRestoredFileName}'. SqlMi will automatically restore all valid backup files in the container based on the LSN sequence. A typical failure case could be: the '{providedFileName}' is "log1", but the files in container has other files, like "log2", which have largest LSN number than "log1". In this case, SqlMi will automatically restore all files in the container. In the end of completing the migration, SqlMi will report this error message.
+- **Cause**: This error occurs due to a known limitation in Azure SQL Managed Instance. It means the `{providedFileName}` is different from `{lastRestoredFileName}`. SQL Managed Instance automatically restores all valid backup files in the container based on the LSN sequence. A typical failure case could be: the `{providedFileName}` is `log1`, but the files in the container have other files, like `log2`, which have largest LSN number than `log1`. In this case, SQL Managed Instance automatically restores all files in the container. In the end of completing the migration, SQL Managed Instance reports this error message.
 
-- **Recommendation**: For offline migration mode, please provide the "lastBackupName" with the largest LSN. For online migration scenario this warning/error can be ignored if the migration status is succeeded.
+- **Recommendation**: For offline migration mode, provide the "lastBackupName" with the largest LSN. For an online migration scenario, this warning/error can be ignored if the migration status succeeds.
 
 ## Error code: 2009 - MigrationRestoreFailed
 
 - **Message**: `Migration for Database 'DatabaseName' failed with error cannot find server certificate with thumbprint.`
 
-- **Cause**: Before migrating data, you need to migrate the certificate of the source SQL Server instance from a database that is protected by Transparent Data Encryption (TDE) to the target Azure SQL Managed Instance or SQL Server on Azure Virtual Machine.
+- **Cause**: Before migrating data, you need to migrate the certificate of the source SQL Server instance from a database that is protected by transparent data encryption (TDE) to the target Azure SQL Managed Instance or SQL Server on Azure Virtual Machine.
 
 - **Recommendation**: Migrate the TDE certificate to the target instance and retry the process. For more information about migrating TDE-enabled databases, see [Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio](tutorial-transparent-data-encryption-migration-ads.md).
 
-- **Message**: `Migration for Database <DatabaseName> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3169 The database was backed up on a server running version %ls. That version is incompatible with this server, which is running version %ls. Either restore the database on a server that supports the backup, or use a backup that is compatible with this server.`
+- **Message**: `Migration for Database <DatabaseName> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3169'. The database was backed up on a server running version %ls. That version is incompatible with this server, which is running version %ls. Either restore the database on a server that supports the backup, or use a backup that is compatible with this server.`
 
 - **Cause**: Unable to restore a SQL Server backup to an earlier version of SQL Server than the version at which the backup was created.
 
 - **Recommendation**: See [Issues that affect database restoration between different SQL Server versions](/support/sql/admin/backup-restore-operations) for troubleshooting steps.
 
-- **Message**: `Migration for Database <DatabaseName> failed with error 'The managed instance has reached its storage limit. The storage usage for the managed instance can't exceed 32768 MBs.`
+- **Message**: `Migration for Database <DatabaseName> failed with error 'The managed instance has reached its storage limit. The storage usage for the managed instance can't exceed 32768 MBs.'`
 
 - **Cause**: The Azure SQL Managed Instance has reached its resource limits.
 
 - **Recommendation**: For more information about storage limits, see [Overview of Azure SQL Managed Instance resource limits](/azure/azure-sql/managed-instance/resource-limits).
 
-- **Message**: `Migration for Database <DatabaseName> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3634 The operating system returned the error '1450(Insufficient system resources exist to complete the requested service.)`
+- **Message**: `Migration for Database <DatabaseName> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3634' The operating system returned the error '1450(Insufficient system resources exist to complete the requested service.)'`
 
 - **Cause**: One of the symptoms listed in [OS errors 1450 and 665 are reported for database files during DBCC CHECKDB or Database Snapshot Creation](/support/sql/admin/1450-and-665-errors-running-dbcc-checkdb#symptoms) can be the cause.
 
@@ -71,11 +71,11 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Cause**: The error can occur due to the backups being placed incorrectly in the Azure Storage container. If the backups are placed in the network file share, this error could also occur due to network connectivity issues.
 
-- **Recommendation**: Ensure the database backups in your Azure Storage container are correct. If you're using network file share, there can be network related issues and lags that are causing this error. Wait for the process to complete.
+- **Recommendation**: Make sure the database backups in your Azure Storage container are correct. If you're using a network file share, network issues or latency can cause this error. Wait for the process to complete.
 
-- **Message**: `Migration for Database <Database Name> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3234 Logical file <Name> isn't part of database <Database GUID>. Use RESTORE FILELISTONLY to list the logical file names. RESTORE DATABASE is terminating abnormally.'.`
+- **Message**: `Migration for Database <Database Name> failed with error 'Non retriable error occurred while restoring backup with index 1 - 3234' Logical file <Name> isn't part of database <Database GUID>. Use RESTORE FILELISTONLY to list the logical file names. RESTORE DATABASE is terminating abnormally.`
 
-- **Cause**: You've specified a logical file name that isn't in the database backup. Another potential cause of this error is an incorrect storage account container name.
+- **Cause**: You specified a logical file name that isn't in the database backup. Another potential cause of this error is an incorrect storage account container name.
 
 - **Recommendation**: Run RESTORE FILELISTONLY to check the logical file names in your backup. For more information about RESTORE FILELISTONLY, see [RESTORE Statements - FILELISTONLY (Transact-SQL)](/sql/t-sql/statements/restore-statements-filelistonly-transact-sql).
 
@@ -85,13 +85,13 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Recommendation**: For more information about Azure Storage firewall setup, see [Configure Azure Storage firewalls and virtual networks](/azure/storage/common/storage-network-security).
 
-- **Message**: `Migration for Database <Database Name> failed with error 'There are backups from multiple databases in the container folder. Please make sure the container folder has backups from a single database.`
+- **Message**: `Migration for Database <Database Name> failed with error 'There are backups from multiple databases in the container folder'. Please make sure the container folder has backups from a single database.`
 
 - **Cause**: Backups of multiple databases are in the same container folder.
 
 - **Recommendation**: If migrating multiple databases to **Azure SQL Managed Instance** using the same Azure Blob Storage container, you must place backup files for different databases in separate folders inside the container. For more information about LRS, see [Migrate databases from SQL Server to SQL Managed Instance by using Log Replay Service (Preview)](/azure/azure-sql/managed-instance/log-replay-service-migrate#limitations).
 
-- **Message**: `Migration for Database <Database Name> failed with error 'Non retriable error occurred while restoring backup with index 1 - 12824 The sp_configure value 'contained database authentication' must be set to 1 in order to restore a contained database.  You may need to use RECONFIGURE to set the value_in_use. RESTORE DATABASE is terminating abnormally.`
+- **Message**: `Migration for Database <Database Name> failed with error 'Non retriable error occurred while restoring backup with index 1 - 12824' The sp_configure value 'contained database authentication' must be set to 1 in order to restore a contained database. You may need to use RECONFIGURE to set the value_in_use. RESTORE DATABASE is terminating abnormally.`
 
 - **Cause**: The source database is a contained database. A specific configuration is needed to enable restoring a contained database. For more information about contained databases, see [Contained Database Users](/sql/relational-databases/security/contained-database-users-making-your-database-portable).
 
@@ -104,13 +104,12 @@ This article provides a list of known issues and troubleshooting steps associate
   RECONFIGURE;
   ```
 
-- **Message**: `Migration for Database <Database Name> failed with error 'Managed identity is not set up properly. Please verify and try again.'`
+- **Message**: `Migration for Database <Database Name> failed with error 'Managed identity is not set up properly'. Please verify and try again.'`
 
-- **Cause**: The managed identity associated with the target SQL Managed Instance does not have the required permissions/role to access the Azure Blob storage containing the backup files needed for migration.
+- **Cause**: The managed identity associated with the target SQL Managed Instance doesn't have the required permissions/role to access the Azure Blob storage containing the backup files needed for migration.
 
 - **Recommendation**: Assign the '**Storage Blob Data Reader**' role on the Azure Blob Storage account to the managed identity associated with the target SQL Managed Instance. For more information, refer [blog](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
 
-  
   > [!NOTE]  
   > For more information on general troubleshooting steps for Azure SQL Managed Instance errors, see [Known issues with Azure SQL Managed Instance](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues).
 
@@ -118,43 +117,43 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `Failed to test connections using provided Integration Runtime. Error details: 'Remote name could not be resolved.'`
 
-- **Cause**: Your network settings in the firewall are causing the Self-Hosted Integration Runtime to be unable to connect to the service back end.
+- **Cause**: Your network settings in the firewall are causing the self-hosted integration runtime to be unable to connect to the service back end.
 
-- **Recommendation**: There's a Domain Name System (DNS) issue. Contact your network team to fix the issue. For more information, see [Troubleshoot Self-Hosted Integration Runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide).
+- **Recommendation**: There's a Domain Name System (DNS) issue. Contact your network team to fix the issue. For more information, see [Troubleshoot self-hosted integration runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide).
 
 - **Message**: `Failed to test connections using provided Integration Runtime. 'Cannot connect to <File share>. Detail Message: The system could not find the environment option that was entered`
 
-- **Cause**: The Self-Hosted Integration Runtime can't connect to the network file share where the database backups are placed.
+- **Cause**: The self-hosted integration runtime can't connect to the network file share where the database backups are placed.
 
 - **Recommendation**: Make sure your network file share name is entered correctly.
 
 - **Message**: `Failed to test connections using provided Integration Runtime. The file name does not conform to the naming rules by the data store. Illegal characters in path.`
 
-- **Cause**: The Self-Hosted Integration Runtime can't connect to the network file share where the database backups are placed.
+- **Cause**: The self-hosted integration runtime can't connect to the network file share where the database backups are placed.
 
 - **Recommendation**: Make sure your network file share name is entered correctly.
 
 - **Message**: `Failed to test connections using provided Integration Runtime.`
 
-- **Cause**: Connection to the Self-Hosted Integration Runtime has failed.
+- **Cause**: Connection to the self-hosted integration runtime has failed.
 
-- **Recommendation**: See [Troubleshoot Self-Hosted Integration Runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
+- **Recommendation**: See [Troubleshoot self-hosted integration runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
 
 ## Error code: 2014 - IntegrationRuntimeIsNotOnline
 
 - **Message**: `Integration Runtime <IR Name> in resource group <Resource Group Name> Subscription <SubscriptionID> isn't online.`
 
-- **Cause**: The Self-Hosted Integration Runtime isn't online.
+- **Cause**: The self-hosted integration runtime isn't online.
 
-- **Recommendation**: Make sure the Self-hosted Integration Runtime is registered and online. To perform the registration, you can use scripts from [Automating self-hosted integration runtime installation using local PowerShell scripts](/azure/data-factory/self-hosted-integration-runtime-automation-scripts). Also, see [Troubleshoot self-hosted integration runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
+- **Recommendation**: Make sure the self-hosted integration runtime is registered and online. To perform the registration, you can use scripts from [Automating self-hosted integration runtime installation using local PowerShell scripts](/azure/data-factory/self-hosted-integration-runtime-automation-scripts). Also, see [Troubleshoot self-hosted integration runtime](/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide) for general troubleshooting steps for Integration Runtime connectivity errors.
 
 ## Error code: 2030 - AzureSQLManagedInstanceNotReady
 
 - **Message**: `Azure SQL Managed Instance <Instance Name> isn't ready.`
 
-- **Cause**: Azure SQL Managed Instance not in ready state.
+- **Cause**: The Azure SQL Managed Instance isn't in a ready state.
 
-- **Recommendation**: Wait until the Azure SQL Managed Instance has finished deploying and is ready, then retry the process.
+- **Recommendation**: Wait until the Azure SQL Managed Instance is deployed and ready, then retry the process.
 
 ## Error code: 2033 - SqlDataCopyFailed
 
@@ -192,7 +191,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `Data copy finished successfully before canceling completed. Target schema is in bad state. Target server: <Target Server>, Target database: <Target Database>.`
 
-- **Cause**: Cancel request was received, and the data copy was completed successfully, but the target database schema hasn't been returned to its original state.
+- **Cause**: A cancelation request was received, and the data copy was completed successfully, but the target database schema wasn't returned to its original state.
 
 - **Recommendation**: If desired, the target database can be returned to its original state by running the first query and all of the returned queries, then running the second query and doing the same.
 
@@ -211,7 +210,7 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `Pre Copy steps finished successfully before canceling completed. Target database Foreign keys and temporal tables have been altered. Schema migration may be required again for future migrations. Target server: <Target Server>, Target database: <Target Database>.`
 
-- **Cause**: Cancel request was received and the steps to prepare the target database for copy were completed successfully. The target database schema hasn't been returned to its original state.
+- **Cause**: Cancel request was received and the steps to prepare the target database for copy were completed successfully. The target database schema hasn't returned to its original state.
 
 - **Recommendation**: If desired, target database can be returned to its original state by running the following query and all of the returned queries.
 
@@ -233,9 +232,9 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `The value of the property '' is invalid: 'Access to <share path> is denied, resolved IP address is <IP address>, network type is OnPremise'.`
 
-- **Cause**: The network share where the database backups are stored is in the same machine as the self-hosted Integration Runtime (SHIR).
+- **Cause**: The network share where the database backups are stored is in the same machine as the self-hosted integration runtime (SHIR).
 
-- **Recommendation**: The latest version of Integration Runtime (**5.28.8488**) prevents access to a network file share on a local host. Ensure you run Integration Runtime on a different machine than the network share hosting. If hosting the self-hosted Integration Runtime and the network share on different machines isn't possible with your current migration setup, you can use the option to opt out using `DisableLocalFolderPathValidation`.
+- **Recommendation**: The latest version of Integration Runtime (**5.28.8488**) prevents access to a network file share on a local host. Ensure you run Integration Runtime on a different machine than the network share hosting. If hosting the self-hosted integration runtime and the network share on different machines isn't possible with your current migration setup, you can use the option to opt out using `DisableLocalFolderPathValidation`.
 
   > [!NOTE]  
   > For more information, see [Set up an existing self-hosted IR via local PowerShell](/azure/data-factory/create-self-hosted-integration-runtime#set-up-an-existing-self-hosted-ir-via-local-powershell). Use the disabling option with discretion as this is less secure.
@@ -244,13 +243,18 @@ This article provides a list of known issues and troubleshooting steps associate
 
 - **Message**: `A database operation failed with the following error: 'VIEW SERVER PERFORMANCE STATE permission was denied on object 'server', database 'master'. The user does not have permission to perform this action.`
 
-- **Cause**: The login used for target server(Azure SQL DB) doesn't has ##MS_ServerStateReader## server role.
+- **Cause**: The login used for target server (Azure SQL Database) doesn't have the `##MS_ServerStateReader##` server role.
 
-- **Recommendation**: Provide ##MS_ServerStateReader## role to the login for Azure SQL Target.
-Query:
-ALTER SERVER ROLE ##MS_ServerStateReader## ADD MEMBER login.
+- **Recommendation**: Grant the `##MS_ServerStateReader##` role to the login for Azure SQL target.
 
-Note: This query should be run in context of master DB
+  Query:
+
+  ```sql
+  ALTER SERVER ROLE ##MS_ServerStateReader## ADD MEMBER <login>.
+  ```
+
+> [!NOTE]  
+> This query should be run in context of the `master` database.
 
 ## Error code: 2056 - SqlInfoValidationFailed
 
@@ -258,7 +262,7 @@ Note: This query should be run in context of master DB
 
 - **Cause**: The source database collation isn't the same as the target database's collation.
 
-- **Recommendation**: Make sure to change the target Azure SQL Database collation to the same as the source SQL Server database. Azure SQL Database uses `SQL_Latin1_General_CP1_CI_AS` collation by default, in case your source SQL Server database uses a different collation you might need to re-create or select a different target database whose collation matches. For more information, see [Collation and Unicode support](/sql/relational-databases/collations/collation-and-unicode-support)
+- **Recommendation**: Change the target Azure SQL Database collation to the same as the source SQL Server database. Azure SQL Database uses `SQL_Latin1_General_CP1_CI_AS` collation by default, in case your source SQL Server database uses a different collation you might need to re-create or select a different target database whose collation matches. For more information, see [Collation and Unicode support](/sql/relational-databases/collations/collation-and-unicode-support)
 
 - **Message**: `TableColumnCollationMismatch: Table <Tablename> with column <columnname> has collation <collationoptionsource> on source but has collation <collationoptiontarget> on target table.`
 
@@ -266,7 +270,7 @@ Note: This query should be run in context of master DB
 
 - **Recommendation**:
 
-  1. Make sure to migrate the Schema to target Azure SQL Database using Database Migration Service. Refer [blog](https://techcommunity.microsoft.com/t5/microsoft-data-migration-blog/public-preview-schema-migration-for-target-azure-sql-db/ba-p/3990463).
+  1. Migrate the Schema to target Azure SQL Database using Database Migration Service. Refer [blog](https://techcommunity.microsoft.com/blog/microsoftdatamigration/public-preview-schema-migration-for-target-azure-sql-db/3990463).
 
   1. Follow this [article](/sql/relational-databases/collations/set-or-change-the-column-collation) to manually change collation.
 
@@ -310,13 +314,13 @@ Note: This query should be run in context of master DB
 
 - **Recommendation**: There are two ways to mitigate the issue:
 
-  1. Add 'sysadmin' role to the account, which grants the admin permission.
+  1. Add the **sysadmin** role to the account, which grants the admin permission.
 
-  1. If customers can't use sysadmin account or can't grant sysadmin permission to the account, then minimum permission on source SQL Server required is "db_owner" and on target Azure SQL DB create a user in master and grant **##MS_DatabaseManager##**,**##MS_DatabaseConnector##**, **##MS_DefinitionReader##** and **##MS_LoginManager##** fixed server roles to the user. For example,
+  1. If customers can't use the **sysadmin** account or can't grant **sysadmin** permission to the account, the minimum permission on the source SQL Server required is **db_owner**. On the target Azure SQL database, create a user in `master`, and grant `##MS_DatabaseManager##`,`##MS_DatabaseConnector##`, `##MS_DefinitionReader##`, and `##MS_LoginManager##` fixed server roles to the user. For example:
 
      ```sql
      -- Run the script in the master database
-     CREATE LOGIN testuser WITH PASSWORD = '*********';
+     CREATE LOGIN testuser WITH PASSWORD = '<password>';
 
      ALTER SERVER ROLE ##MS_DefinitionReader## ADD MEMBER [testuser];
      GO
@@ -408,16 +412,16 @@ Note: This query should be run in context of master DB
 
 - **Cause**: While migrating logins using PowerShell command [New-AzDataMigrationLoginsMigration](/powershell/module/az.datamigration/new-azdatamigrationloginsmigration), it fails with the previous message.
 
-- **Recommendation**: To resolve this issue, upgrade the Microsoft Azure PowerShell - Database Migration Service cmdlets - Az.DataMigration above minimum 0.14.5 version.
+- **Recommendation**: To resolve this issue, upgrade `Az.DataMigration` to a later version than 0.14.5.
 
-  Latest version of Az.Datamigration can be downloaded from [the PowerShell gallery](https://www.powershellgallery.com/packages/Az.DataMigration/0.14.7) or the following command can be used to upgrade.
+  The latest version of `Az.DataMigration` can be downloaded from [the PowerShell gallery](https://www.powershellgallery.com/packages/Az.DataMigration/0.14.7) or the following command can be used to upgrade.
 
 ```powershell
  Update-Module -Name Az.DataMigration
 ```
 - **Message**: `urlopen error [Errno 11001] getaddrinfo failed`
 
-- **Cause**: While migrating logins using Azure CLI [Az dataMigration login-migration](/cli/azure/datamigration), it fails with the previous message.
+- **Cause**: While migrating logins using Azure CLI [az dataMigration login-migration](/cli/azure/datamigration), it fails with the previous message.
 
 - **Recommendation**: To resolve this issue, upgrade the Microsoft Azure CLI - Database Migration Service extension - az dataMigration to 1.0.0b1 or a later version. Run the following command to upgrade.
 
@@ -425,9 +429,17 @@ Note: This query should be run in context of master DB
  az extension update -n datamigration
 ```
 
-## Azure Database Migration Service Naming Rules
+## Error code: Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.
 
-If your DMS service failed with "Error: Service name 'x_y_z' is not valid", then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned in the [naming rules](/azure/data-factory/naming-rules).
+- **Message**: `Blob container selection error: Error listing the contents of the container: This request is not authorized to perform this operation using this permission.`
+
+- **Cause**: While migrating to SQL Managed Instance via **Azure portal** using **Managed Identity**, if the signed in user doesn't have **Storage Blob Data Reader** access on the storage account, it fails with the previous message.
+
+- **Recommendation**: To resolve this issue, make sure the signed in user has **Storage Blob Data Reader** access on the storage account. This permission is needed to list folders and files in the blob container during migration setup via Azure portal. For more information, see [DMS - Support for Managed Identity for Azure SQL Managed Instance migration](https://techcommunity.microsoft.com/blog/microsoftdatamigration/dms---support-for-managed-identity-for-azure-sql-managed-instance-migration/4411274).
+
+## Azure Database Migration Service naming rules
+
+If your DMS service failed with `Error: Service name 'x_y_z' is not valid`, then you need to follow the Azure Database Migration Service Naming Rules. As Azure Database Migration Service uses Azure Data factory for its compute, it follows the exact same naming rules as mentioned in the [naming rules](/azure/data-factory/naming-rules).
 
 ## Azure SQL Database limitations
 

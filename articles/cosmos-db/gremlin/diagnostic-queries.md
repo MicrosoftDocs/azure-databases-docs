@@ -10,9 +10,7 @@ ms.date: 11/08/2022
 
 # Troubleshoot issues with advanced diagnostics queries with Azure Cosmos DB for Apache Gremlin
 
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
-
-[!INCLUDE[Diagnostic queries selector](../includes/diagnostic-queries-selector.md)]
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 In this article, we'll cover how to write more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to **Azure Diagnostics (legacy)** and **resource-specific (preview)** tables.
 
@@ -159,8 +157,3 @@ Common queries are shown in the resource-specific and Azure Diagnostics tables.
    ```
 
 ---
-
-## Next steps
-
-- For more information on how to create diagnostic settings for Azure Cosmos DB, see [Create diagnostic settings](../monitor-resource-logs.md).
-- For detailed information about how to create a diagnostic setting by using the Azure portal, the Azure CLI, or PowerShell, see [Create diagnostic settings to collect platform logs and metrics in Azure](/azure/azure-monitor/essentials/diagnostic-settings).

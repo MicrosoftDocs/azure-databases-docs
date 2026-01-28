@@ -1,17 +1,13 @@
 ### YamlMime:Landing
-
-title: Azure Cosmos DB for Gremlin documentation
-summary: Azure Cosmos DB for Gremlin provides a graph database service via the API for Gremlin on a fully managed database service designed for any scale.
-
+title: Azure Cosmos DB for Apache Gremlin documentation
+summary: Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language. This API is built on the open-source Apache TinkerPop framework and is designed for applications that need to model and analyze complex relationships between data points. This API is designed for solutions such as social networks, recommendation engines, and connected devices.
 metadata:
   title: Azure Cosmos DB for Gremlin documentation
-  description: Azure Cosmos DB for Gremlin provides a graph database service via the API for Gremlin on a fully managed database service designed for any scale.
-  author: manishmsfte
-  ms.author: mansha
+  description: Azure Cosmos DB for Apache Gremlin is a fully managed graph database service that enables you to store, query, and traverse large-scale graph data using the Gremlin query language.
   ms.service: azure-cosmos-db
   ms.subservice: apache-gremlin
   ms.topic: landing-page
-  ms.date: 06/11/2025
+  ms.date: 07/23/2025
 landingContent:
   - title: About API for Gremlin
     linkLists:
@@ -19,53 +15,45 @@ landingContent:
         links:
           - text: What is Azure Cosmos DB for Gremlin?
             url: overview.md
-          - text: Wire protocol compatibility with TinkerPop
-            url: support.md
-          - text: FAQ
-            url: faq.yml
       - linkListType: concept
         links:
-          - text: Wire protocol compatibility
+          - text: Protocol compatibility
             url: support.md
-          - text: API for Gremlin service limits
+          - text: Frequently asked questions (FAQ)
+            url: faq.yml
+          - text: Security guide
+            url: security.md
+          - text: Service limits
             url: limits.md
-  - title: Get started
+  - title: Connect from applications
     linkLists:
       - linkListType: quickstart
         links:
-          - text: Manage your data using Gremlin Console
-            url: quickstart-console.md
-          - text: Manage your data using a .NET app
-            url: quickstart-dotnet.md
-          - text: Manage your data using a Python app
+          - text: Python
             url: quickstart-python.md
-      - linkListType: tutorial
-        links:
-          - text: Query using Gremlin
-            url: tutorial-query.md
+          - text: TypeScript
+            url: quickstart-nodejs.md?pivots=programming-language-ts
+          - text: JavaScript
+            url: quickstart-nodejs.md?pivots=programming-language-js
+          - text: .NET
+            url: quickstart-dotnet.md
       - linkListType: how-to-guide
         links:
-          - text: Graph data modeling
-            url: modeling.md
-          - text: Graph data partitioning best practices
-            url: partitioning.md
-          - text: Optimize Gremlin queries
-            url: execution-profile.md
-  - title: Migrate data
+          - text: Write queries
+            url: how-to-write-queries.md
+  - title: Explore samples
     linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Import data using a bulk executor library
-            url: bulk-executor-dotnet.md
-  - title: Integrate with other solutions
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Non-Microsoft data visualization tools
-            url: visualization-partners.md
-          - text: Non-Microsoft data modeling tools
-            url: modeling-tools.md
       - linkListType: sample
         links:
-          - text: Solution for supply chain traceability
-            url: supply-chain-traceability-solution.md
+          - text: Supply chain traceability solution
+            url: solution-supply-chain-traceability.md
+  - title: Resources
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: Pricing
+            url: https://azure.microsoft.com/pricing/details/cosmos-db
+      - linkListType: download
+        links:
+          - text: Partners
+            url: partner-tools-services.md

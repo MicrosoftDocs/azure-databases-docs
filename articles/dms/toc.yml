@@ -64,6 +64,8 @@
       href: tutorial-login-migration-ads.md
     - name: TDE-enabled databases to Azure SQL
       href: tutorial-transparent-data-encryption-migration-ads.md
+    - name: Dashboards in Azure Database Migration Service
+      href: database-migration-service-dashboard.md
     - name: Known issues and troubleshooting
       href: known-issues-azure-sql-migration-azure-data-studio.md
   - name: Migrate MySQL
@@ -92,16 +94,12 @@
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
   - name: Migrate MongoDB
     items:
-    - name: RU
-      items: 
-      - name: to Azure Cosmos DB for MongoDB RU (offline)
-        href: tutorial-mongodb-cosmos-db.md
-      - name: to Azure Cosmos DB for MongoDB RU (online)
-        href: tutorial-mongodb-cosmos-db-online.md  
-    - name: vCore
-      items:
-      - name: to Azure Cosmos DB for MongoDB vCore
-        href: ../cosmos-db/mongodb/vcore/migration-options.md#web-app-utility-online
+    - name: to Azure Cosmos DB for MongoDB (offline)
+      href: tutorial-mongodb-cosmos-db.md
+    - name: to Azure Cosmos DB for MongoDB (online)
+      href: tutorial-mongodb-cosmos-db-online.md
+    - name: to Azure DocumentDB
+      href: ../documentdb/migration-options.md#web-app-utility-online
 - name: How-to guides
   items:
   - name: DMS (classic)

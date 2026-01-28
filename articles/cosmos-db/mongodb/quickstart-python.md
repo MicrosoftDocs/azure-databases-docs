@@ -1,7 +1,7 @@
 ---
 title: Quickstart - Python
-titleSuffix: Azure Cosmos DB for MongoDB (RU)
-description: Deploy a .NET web application that uses the client library for Python to interact with Azure Cosmos DB for MongoDB (RU) data in this quickstart.
+titleSuffix: Azure Cosmos DB for MongoDB
+description: Deploy a .NET web application that uses the client library for Python to interact with Azure Cosmos DB for MongoDB data in this quickstart.
 author: seesharprun
 ms.author: sidandrews
 ms.service: azure-cosmos-db
@@ -11,11 +11,11 @@ ms.topic: quickstart-sdk
 ms.date: 04/08/2025
 ms.custom: devx-track-python, devx-track-extended-azdevcli, sfi-image-nochange
 appliesto:
-- ✅ MongoDB (RU)
-# CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for MongoDB (RU).
+- ✅ MongoDB
+# CustomerIntent: As a developer, I want to learn the basics of the Python library so that I can build applications with Azure Cosmos DB for MongoDB.
 ---
 
-# Quickstart: Use Azure Cosmos DB for MongoDB (RU) with Python
+# Quickstart: Use Azure Cosmos DB for MongoDB with Python
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart-dev-selector.md)]
 
@@ -29,7 +29,7 @@ In this quickstart, you deploy a basic Azure Cosmos DB for MongoDB application u
 - Docker Desktop
 - Python 3.12
 
-If you don't have an Azure account, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Initialize the project
 

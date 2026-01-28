@@ -1,21 +1,22 @@
 ---
-title: "Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS"
-titleSuffix: "Azure Database Migration Service"
-description: "Learn to perform an offline migration from MySQL on-premises to Azure Database for MySQL by using Azure Database Migration Service."
+title: "Tutorial: Migrate MySQL to Azure Database for MySQL Offline Using DMS"
+titleSuffix: Azure Database Migration Service
+description: Learn to perform an offline migration from MySQL on-premises to Azure Database for MySQL by using Azure Database Migration Service.
 author: saikondapalli11
 ms.author: skondapalli
 ms.reviewer: arthiaga, randolphwest
-ms.date: 09/18/2024
+ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.topic: tutorial
 ms.collection:
-- sql-migration-content
-ms.custom: sfi-image-nochange
+  - sql-migration-content
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Tutorial: Migrate MySQL to Azure Database for MySQL offline using DMS
 
-You can use Azure Database Migration Service to perform a seamless migration from your external MySQL instance to [Azure Database for MySQL](../mysql/index.yml) with high speed data migration capability. In this tutorial, we will migrate a sample database from an on-premises instance of MySQL 5.7 to Azure Database for MySQL (v5.7) by using an offline migration activity in Azure Database Migration Service. Although the articles assume the source to be a MySQL database instance and target to be Azure Database for MySQL, it can be used to migrate from one Azure Database for MySQL to another just by changing the source server name and credentials. Also, migration from lower version MySQL servers (v5.6 and above) to higher versions is also supported.
+You can use Azure Database Migration Service to perform a seamless migration from your external MySQL instance to [Azure Database for MySQL](../mysql/index.yml) with high speed data migration capability. In this tutorial, we migrate a sample database from an on-premises instance of MySQL 5.7 to Azure Database for MySQL (v5.7) by using an offline migration activity in Azure Database Migration Service. Although the articles assume the source to be a MySQL database instance and target to be Azure Database for MySQL, it can be used to migrate from one Azure Database for MySQL to another just by changing the source server name and credentials. Also, migration from lower version MySQL servers (v5.6 and later versions) to higher versions is also supported.
 
 > [!NOTE]  
 > For a PowerShell-based scriptable version of this migration experience, see [scriptable offline migration to Azure Database for MySQL](migrate-mysql-to-azure-mysql-powershell.md).
@@ -49,13 +50,13 @@ To complete this tutorial, you need to:
 
   This configuration is necessary because Azure Database Migration Service lacks internet connectivity.
 
-- Ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Ensure that your virtual network Network Security Group rules don't block the outbound port 443 of ServiceTag for ServiceBus, Storage, and AzureMonitor. For more detail on virtual network NSG traffic filtering, see the article [Filter network traffic with network security groups](/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
-- Open your Windows firewall to allow connections from Virtual Network for Azure Database Migration Service to access the source MySQL Server, which by default is TCP port 3306.
+- Open Windows Firewall to allow connections from Virtual Network for Azure Database Migration Service to access the source MySQL Server, which by default is TCP port 3306.
 
-- When using a firewall appliance in front of your source database(s), you might need to add firewall rules to allow connections from Virtual Network for Azure Database Migration Service to access the source database(s) for migration.
+- When using a firewall appliance in front of your source databases, you might need to add firewall rules to allow connections from Virtual Network for Azure Database Migration Service to access the source databases for migration.
 
-- Create a server-level [firewall rule](/azure/azure-sql/database/firewall-configure) or [configure VNET service endpoints](../mysql/howto-manage-vnet-using-portal.md) for target Azure Database for MySQL to allow Virtual Network for Azure Database Migration Service access to the target databases.
+- Create a server-level [firewall rule](/azure/azure-sql/database/firewall-configure) or [configure virtual network service endpoints](../mysql/howto-manage-vnet-using-portal.md) for target Azure Database for MySQL to allow Virtual Network for Azure Database Migration Service access to the target databases.
 
 - The source MySQL must be on supported MySQL community edition. To determine the version of MySQL instance, in the MySQL utility or MySQL Workbench, run the following command:
 
@@ -66,19 +67,19 @@ To complete this tutorial, you need to:
 - Azure Database for MySQL supports only InnoDB tables. To convert MyISAM tables to InnoDB, see the article [Converting Tables from MyISAM to InnoDB](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)
 - The user must have the privileges to read data on the source database.
 - To complete a schema migration successfully, on the source server, the user performing the migration requires the following privileges:
-  - ["SELECT"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_select) privilege at the server level on the source.
-  - If migrating views, user must have the ["SHOW VIEW"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_show-view) privilege on the source server and the ["CREATE VIEW"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-view) privilege on the target server.
-  - If migrating triggers, user must have the ["TRIGGER"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_trigger) privilege on the source and target server.
-  - If migrating routines (procedures and/or functions), the user must have the ["CREATE ROUTINE"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-routine) and ["ALTER ROUTINE"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_alter-routine) privileges granted at the server level on the target.
-  - If migrating events, the user must have the ["EVENT"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_event) privilege on the source and target server.
-  - If migrating users/logins, the user must have the ["CREATE USER"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-user) privilege on the target server.
-  - ["DROP"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_drop) privilege at the server level on the target, in order to drop tables that might already exist. For example, when retrying a migration.
-  - ["REFERENCES"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_references) privilege at the server level on the target, in order to create tables with foreign keys.
-  - If migrating to MySQL 8.0, the user must have the ["SESSION_VARIABLES_ADMIN"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_session-variables-admin) privilege on the target server.
-  - ["CREATE"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create) privilege at the server level on the target.
-  - ["INSERT"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_insert) privilege at the server level on the target.
-  - ["UPDATE"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_update) privilege at the server level on the target.
-  - ["DELETE"](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_delete) privilege at the server level on the target.
+  - [SELECT](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_select) privilege at the server level on the source.
+  - If migrating views, user must have the [SHOW VIEW](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_show-view) privilege on the source server and the [CREATE VIEW](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-view) privilege on the target server.
+  - If migrating triggers, user must have the [TRIGGER](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_trigger) privilege on the source and target server.
+  - If migrating routines (procedures and/or functions), the user must have the [CREATE ROUTINE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-routine) and [ALTER ROUTINE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_alter-routine) privileges granted at the server level on the target.
+  - If migrating events, the user must have the [EVENT](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_event) privilege on the source and target server.
+  - If migrating users/logins, the user must have the [CREATE USER](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create-user) privilege on the target server.
+  - [DROP](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_drop) privilege at the server level on the target, in order to drop tables that might already exist. For example, when retrying a migration.
+  - [REFERENCES](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_references) privilege at the server level on the target, in order to create tables with foreign keys.
+  - If migrating to MySQL 8.0, the user must have the [SESSION_VARIABLES_ADMIN](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_session-variables-admin) privilege on the target server.
+  - [CREATE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_create) privilege at the server level on the target.
+  - [INSERT](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_insert) privilege at the server level on the target.
+  - [UPDATE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_update) privilege at the server level on the target.
+  - [DELETE](https://dev.mysql.com/doc/refman/8.0/en/privileges-provided.html#priv_delete) privilege at the server level on the target.
 
 <a id="sizing-the-target-azure-database-for-mysql-instance"></a>
 
@@ -86,17 +87,17 @@ To complete this tutorial, you need to:
 
 To prepare the target Azure Database for MySQL server for faster data loads using the Azure Database Migration Service, the following server parameters and configuration changes are recommended.
 
-- max_allowed_packet – set to 1073741824 (i.e. 1GB) to prevent any connection issues due to large rows.
+- `max_allowed_packet` – set to 1073741824 (that is, 1 GB) to prevent any connection issues due to large rows.
 
-- slow_query_log – set to OFF to turn off the slow query log. This will eliminate the overhead caused by slow query logging during data loads.
+- `slow_query_log` – set to `OFF` to turn off the slow query log. This eliminates the overhead caused by slow query logging during data loads.
 
-- query_store_capture_mode – set to NONE to turn off the Query Store. This will eliminate the overhead caused by sampling activities by Query Store.
+- `query_store_capture_mode` – set to `NONE` to turn off the Query Store. This eliminates the overhead caused by sampling activities by Query Store.
 
-- innodb_buffer_pool_size – Innodb_buffer_pool_size can only be increased by scaling up compute for Azure Database for MySQL server. Scale up the server to 64 vCore General Purpose SKU from the Pricing tier of the portal during migration to increase the innodb_buffer_pool_size.
+- `innodb_buffer_pool_size` – Innodb_buffer_pool_size can only be increased by scaling up compute for Azure Database for MySQL server. Scale up the server to 64 vCore General Purpose SKU from the Pricing tier of the portal during migration to increase the `innodb_buffer_pool_size`.
 
-- innodb_io_capacity & innodb_io_capacity_max - Change to 9000 from the Server parameters in Azure portal to improve the IO utilization to optimize for migration speed.
+- `innodb_io_capacity` and `innodb_io_capacity_max` - Change to `9000` from the Server parameters in Azure portal to improve the IO utilization to optimize for migration speed.
 
-- innodb_write_io_threads & innodb_write_io_threads - Change to 4 from the Server parameters in Azure portal to improve the speed of migration.
+- `innodb_write_io_threads` and `innodb_write_io_threads` - Change to `4` from the Server parameters in Azure portal to improve the speed of migration.
 
 - Scale up Storage tier – The IOPs for Azure Database for MySQL server increases progressively with the increase in storage tier.
   - In the Flexible Server deployment option, we recommend you can scale (increase or decrease) IOPS irrespective of the storage size.
@@ -104,7 +105,7 @@ To prepare the target Azure Database for MySQL server for faster data loads usin
 
 - Select the compute size and compute tier for the target flexible server based on the source MySQL server's configuration.
 
-  <sup>1</sup> For the migration, as a best practice select General Purpose 16 vCores compute or higher for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete.
+  <sup>1</sup> For the migration, as a best practice, select General Purpose 16 vCores compute or higher for the target flexible server for faster migrations. Scale back to the desired compute size for the target server after migration is complete.
 
 Once the migration is complete, you can revert back the server parameters and configuration to values required by your workload.
 
@@ -116,7 +117,7 @@ With your target flexible server deployed and configured, you next need to set u
 
 To register the Microsoft.DataMigration resource provider, perform the following steps.
 
-1. Before creating your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
+1. Before you create your first DMS instance, sign in to the Azure portal, and then search for and select **Subscriptions**.
 
    :::image type="content" source="media/tutorial-azure-mysql-single-to-flex-online/1-subscriptions.png" alt-text="Screenshot of a Select subscriptions from Azure Marketplace." lightbox="media/tutorial-azure-mysql-single-to-flex-online/1-subscriptions.png":::
 
@@ -178,21 +179,21 @@ After the service is created, locate it within the Azure portal, open it, and th
 
 ## Configure migration project
 
-1. On the **Select source** screen, specify the connection details for the source MySQL instance, and select **Next : Select target>>**
+1. On the **Select source** screen, specify the connection details for the source MySQL instance, and select **Next: Select target >>**
 
    :::image type="content" source="media/tutorial-mysql-to-azure-mysql-offline-portal/10-dms-portal-project-mysql-source.png" alt-text="Screenshot of Add source details screen." lightbox="media/tutorial-mysql-to-azure-mysql-offline-portal/10-dms-portal-project-mysql-source.png":::
 
-1. On the **Select target** screen, specify the connection details for the target Azure Database for MySQL instance, and select **Next : Select databases>>**
+1. On the **Select target** screen, specify the connection details for the target Azure Database for MySQL instance, and select **Next: Select databases >>**
 
    :::image type="content" source="media/tutorial-mysql-to-azure-mysql-offline-portal/11-dms-portal-project-mysql-target.png" alt-text="Screenshot of Add target details screen." lightbox="media/tutorial-mysql-to-azure-mysql-offline-portal/11-dms-portal-project-mysql-target.png":::
 
-1. On the **Select databases** screen, map the source and the target database for migration, and select **Next : Configure migration settings>>**. You can select the **Make Source Server Read Only** option to make the source as read-only, but be cautious that this is a server level setting. If selected, it sets the entire server to read-only, not just the selected databases.
+1. On the **Select databases** screen, map the source and the target database for migration, and select **Next: Configure migration settings >>**. You can select the **Make Source Server Read Only** option to make the source as read-only, but be cautious that this is a server level setting. If selected, it sets the entire server to read-only, not just the selected databases.
 
    If the target database contains the same database name as the source database, Azure Database Migration Service selects the target database by default.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-mysql-offline-portal/12-dms-portal-project-mysql-select-db.png" alt-text="Screenshot of Select database details screen." lightbox="media/tutorial-mysql-to-azure-mysql-offline-portal/12-dms-portal-project-mysql-select-db.png":::
 
-1. On the **Configure migration settings** screen, select the tables to be part of migration, and select **Next : Summary>>**. If the target tables have any data, they aren't selected by default but you can explicitly select them and they will be truncated before starting the migration.
+1. On the **Configure migration settings** screen, select the tables to be part of migration, and select **Next: Summary >>**. If the target tables have any data, they aren't selected by default but you can explicitly select them and they're truncated before starting the migration.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-mysql-offline-portal/13-dms-portal-project-mysql-select-tbl.png" alt-text="Screenshot of Select tables screen." lightbox="media/tutorial-mysql-to-azure-mysql-offline-portal/13-dms-portal-project-mysql-select-tbl.png":::
 
@@ -208,7 +209,7 @@ After the service is created, locate it within the Azure portal, open it, and th
 
 1. On the migration activity screen, select **Refresh** to update the display and see progress about number of tables completed.
 
-1. You can select the database name on the activity screen to see the status of each table as they are getting migrated. Select **Refresh** to update the display.
+1. You can select the database name on the activity screen to see the status of each table as they're getting migrated. Select **Refresh** to update the display.
 
    :::image type="content" source="media/tutorial-mysql-to-azure-mysql-offline-portal/16-dms-portal-project-mysql-monitor.png" alt-text="Screenshot of Monitoring migration." lightbox="media/tutorial-mysql-to-azure-mysql-offline-portal/16-dms-portal-project-mysql-monitor.png":::
 
@@ -220,10 +221,10 @@ After the service is created, locate it within the Azure portal, open it, and th
 
 ## Post migration activities
 
-Migration cutover in an offline migration is an application dependent process which is out of scope for this document, but following post-migration activities are prescribed:
+Migration cutover in an offline migration is an application dependent process that is out of scope for this document, but the following post-migration activities are prescribed:
 
-1. Create logins, roles and permissions as per the application requirements.
-1. Recreate all the triggers on the target database as extracted during the pre-migration step.
+1. Create logins, roles, and permissions as per the application requirements.
+1. Recreate all the triggers on the target database as extracted during the premigration step.
 1. Perform sanity testing of the application against the target database to certify the migration.
 
 ## Clean up resources

@@ -4,7 +4,7 @@ description: This article describes how to enable or disable zone redundant high
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 08/15/2025
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
@@ -29,15 +29,17 @@ This section provides details specifically for HA-related fields. You can follow
 
 1. In the [Azure portal](https://portal.azure.com/), choose flexible Server and select **Create**. For information about how to fill in details such as **Subscription**, **Resource group**, **Server name**, **Region**, and other fields, see the how-to documentation for Azure Database for MySQL Flexible Server instance creation.
 
-1. Select the checkbox for **Zone redundant high availability** in the Availability option.
+1. Select the radio button for **Zone-redundant** in the High availability option.
+    
+    :::image type="content" source="media/how-to-configure-high-availability\flexible-server-ha-configure.png" alt-text="Screenshot that shows how to configure high-availability." lightbox="media/how-to-configure-high-availability\flexible-server-ha-configure.png":::
 
 1. Select **Configure server** if you want to change the default compute and storage settings.
 
 1. If you select the high availability option, you can't choose the burstable tier. You can choose either
-   **General purpose** or **Business Critical** compute tiers.
+   **General purpose** or **Memory-Optimized** compute tiers.
 
    > [!IMPORTANT]  
-   We only support zone-redundant high availability for the **General purpose** and **Business Critical** pricing tiers.
+   > We only support zone-redundant high availability for the **General purpose** and **Memory-Optimized** pricing tiers.
 
 1. Select the **Compute size** for your choice from the dropdown list.
 

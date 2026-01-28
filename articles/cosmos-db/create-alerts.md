@@ -1,15 +1,20 @@
 ---
-title: Create alerts for Azure Cosmos DB using Azure Monitor
+title: Create Alerts for Using Azure Monitor
 description: Learn how to set up alerts for Azure Cosmos DB using Azure Monitor.
 author: StefArroyo
 ms.author: esarroyo
 ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 02/08/2022
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Create alerts for Azure Cosmos DB using Azure Monitor
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Alerts are used to set up recurring tests to monitor the availability and responsiveness of your Azure Cosmos DB resources. Alerts can send you a notification in the form of an  email, or execute an Azure Function when one of your metrics reaches the threshold or if a specific event is logged in the activity log.
 
@@ -28,7 +33,7 @@ You can set up alerts from the Azure Cosmos DB pane or the Azure Monitor service
 This section shows how to create an alert when you receive an HTTP status code 429, which is received when the requests are rate limited. For example, you may want to receive an alert when there are 100 or more rate limited requests. This article shows you how to configure an alert for such scenario by using the HTTP status code. You can use the similar steps to configure other types of alerts as well, you just need to choose a different condition based on your requirement.
 
 > [!TIP]
-> The scenario of alerting based on number of 429s exceeding a threshold is used here for illustration purposes. It does not mean that there is anything inherently wrong with seeing 429s on your database or container. In general, if you see 1-5% of requests with 429s in a production workload and your overall application latency is within your requirements, this is a normal and healthy sign that you are fully using the throughput (RU/s) you've provisioned. [Learn more about how to interpret and debug 429 exceptions](sql/troubleshoot-request-rate-too-large.md).
+> The scenario of alerting based on number of 429s exceeding a threshold is used here for illustration purposes. It does not mean that there is anything inherently wrong with seeing 429s on your database or container. In general, if you see 1-5% of requests with 429s in a production workload and your overall application latency is within your requirements, this is a normal and healthy sign that you are fully using the throughput (RU/s) you've provisioned. [Learn more about how to interpret and debug 429 exceptions](troubleshoot-request-rate-too-large.md).
 
 1. Sign into the [Azure portal.](https://portal.azure.com/)
 

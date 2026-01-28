@@ -1,7 +1,6 @@
 ---
 title: |
   Tutorial: Add a transformation for workspace data
-titleSuffix: Azure Cosmos DB
 description: In this tutorial, add a custom transformation to data flowing through Azure Monitor Logs from Azure Cosmos DB by using the Azure portal.
 author: StefArroyo
 ms.author: esarroyo
@@ -9,6 +8,8 @@ ms.service: azure-cosmos-db
 ms.topic: tutorial
 ms.date: 03/22/2023
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Tutorial: Add a transformation for Azure Cosmos DB workspace data by using the Azure portal

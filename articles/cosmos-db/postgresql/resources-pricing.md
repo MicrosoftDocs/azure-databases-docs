@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
 ms.date: 12/12/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Pricing for Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 For the most up-to-date general pricing information, see the service
 [pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/postgresql/).

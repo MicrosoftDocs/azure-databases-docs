@@ -1,15 +1,20 @@
 ---
-title: Optimize Request Cost in Azure Cosmos DB
+title: Optimize Request Cost
 description: Learn how to optimize costs when issuing requests in Azure Cosmos DB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: best-practice
 ms.date: 07/21/2025
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Optimize request cost in Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 This article describes how read-and-write requests translate into [Request Units (RU)](request-units.md), and how to optimize the cost of these requests. Read operations include point reads and queries. Write operations include insert, replace, delete, and upsert of items.
 
@@ -48,7 +53,7 @@ The only factor affecting the RU charge of a point read (besides the consistency
 Because point reads (key/value lookups on the item ID and partition key) are the most efficient kind of read, you should make sure your item ID has a meaningful value so you can fetch your items with a point read (instead of a query) when possible. 
 
 > [!NOTE]
-> In the API for NoSQL, point reads can only be made using the REST API or SDKs. Queries that filter on one item's ID and partition key aren't considered a point read. To see an example using the .NET SDK, see [Read an item in Azure Cosmos DB for NoSQL](./nosql/how-to-dotnet-read-item.md).
+> In the API for NoSQL, point reads can only be made using the REST API or SDKs. Queries that filter on one item's ID and partition key aren't considered a point read. To see an example using the .NET SDK, see [Read an item in Azure Cosmos DB for NoSQL](how-to-dotnet-read-item.md).
 
 ### Queries
 

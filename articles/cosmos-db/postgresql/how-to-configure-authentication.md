@@ -1,18 +1,20 @@
 ---
 title: Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
 description: Learn how to set up Microsoft Entra ID and add native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
-author: niklarin
-ms.author: nlarin
+author: abinav2307
+ms.author: abramees
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: how-to
 ms.date: 04/12/2025
 ms.custom: sfi-ropc-blocked
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Use Microsoft Entra ID and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 In this article, you configure authentication methods for Azure Cosmos DB for PostgreSQL. You manage Microsoft Entra ID admin users and native PostgreSQL roles for authentication with Azure Cosmos DB for PostgreSQL. You also learn how to use a Microsoft Entra ID token with Azure Cosmos DB for PostgreSQL.
 

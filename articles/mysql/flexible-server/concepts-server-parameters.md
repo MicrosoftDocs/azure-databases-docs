@@ -4,7 +4,7 @@ description: This article provides guidelines for configuring server parameters 
 author: VandhanaMehta  
 ms.author: vamehta  
 ms.reviewer: maghan
-ms.date: 11/27/2024
+ms.date: 11/25/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -36,11 +36,13 @@ The following sections describe the limits of the commonly updated server parame
 
 ### lower_case_table_names
 
+For [MySQL version 8.0+](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) you can configure `lower_case_table_names` only when you're initializing the server. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). Changing the `lower_case_table_names` setting after the server is initialized is prohibited. Supported values for MySQL version 8.0 are `1` and `2` in Azure Database for MySQL - Flexible Server. The default value is `1`.
+
+You can configure these settings in the portal during server creation by specifying the desired value under Server Parameters on the Additional Configuration page. For restore operations or replica server creation, the parameter will automatically be copied from the source server and cannot be changed. 
+
+:::image type="content" source="media/concepts-server-parameters\flexible-server-lower-case-configure.png" alt-text="Screenshot that shows how to configure lower case table name server parameter at the time of creation." lightbox="media/concepts-server-parameters\flexible-server-lower-case-configure.png":::
+
 For MySQL version 5.7, the default value of `lower_case_table_names` is `1` in Azure Database for MySQL - Flexible Server. Although it's possible to change the supported value to `2`, reverting from `2` back to `1` isn't allowed. For assistance in changing the default value, [create a support ticket](https://azure.microsoft.com/support/create-ticket/).
-
-For [MySQL version 8.0+](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html) you can configure `lower_case_table_names` only when you're initializing the server. [Learn more](https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html). Changing the `lower_case_table_names` setting after the server is initialized is prohibited.
-
-Supported values for MySQL version 8.0 are `1` and `2` in Azure Database for MySQL - Flexible Server. The default value is `1`. For assistance in changing the default value during server creation, [create a support ticket](https://azure.microsoft.com/support/create-ticket/).
 
 ### innodb_tmpdir
 
@@ -98,7 +100,7 @@ The [physical memory size](./concepts-service-tiers-storage.md#physical-memory-s
 | Standard_D48ds_v4 | 48 | 192 | 154618822656 | 134217728 | 154618822656 |
 | Standard_D64ads_v5 | 64 | 256 | 206158430208 | 134217728 | 206158430208 |
 | Standard_D64ds_v4| 64 | 256 | 206158430208 | 134217728 | 206158430208 |
-|**Business Critical**    |  |  |  |  |  |  
+|**Memory-Optimized**    |  |  |  |  |  |  
 | Standard_E2ds_v4 | 2 | 16 | 12884901888 | 134217728 | 12884901888 |
 | Standard_E2ads_v5, Standard_E2ds_v5| 2 | 16 | 12884901888 | 134217728 | 12884901888 |
 | Standard_E4ds_v4 | 4 | 32 | 25769803776 | 134217728 | 25769803776 |
@@ -168,7 +170,7 @@ The memory size of the server determines the value of `max_connections`. The [ph
 | Standard_D48ds_v4 | 48 | 192 | 16384 | 10 | 32768 |
 | Standard_D64ads_v5 | 64 | 256 | 21845 | 10 | 43691 |
 | Standard_D64ds_v4 | 64 | 256 | 21845 | 10 | 43691 |
-| **Business Critical** | | | | | |
+| **Memory-Optimized** | | | | | |
 | Standard_E2ds_v4 | 2 | 16 | 1365 | 10 | 2731 |
 | Standard_E2ads_v5, Standard_E2ds_v5 | 2 | 16 | 1365 | 10 | 2731 |
 | Standard_E4ds_v4 | 4 | 32 | 2731 | 10 | 5461 |
@@ -209,6 +211,12 @@ You can set this parameter at the session level by using `init_connect`. For mor
 ### time_zone
 
 You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
+
+### innodb_temp_data_file_size_max
+For Azure Database for MySQL Flexible Server (version 5.7 only), innodb_temp_data_file_size_max parameter defines the maximum size of InnoDB temporary tablespace data files in MB. Setting the value to 0 means no limit, allowing growth up to the full storage size. Any non-zero value below 64 MB is rounded up to 64 MB, while values above 64 MB are applied as specified. This is a static variable and requires a server restart for changes to take effect.
+
+> [!NOTE]  
+> - Note: In MySQL 8.0 and above, the [global temporary tablespace](https://dev.mysql.com/doc/refman/8.0/en/innodb-temporary-tablespace.html) (ibtmp1) only stores rollback segments for changes made to user-created temporary tables. Therefore, this parameter is no longer relevant.
 
 ### binlog_expire_logs_seconds
 

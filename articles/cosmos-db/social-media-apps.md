@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB design pattern: Social media apps'
+title: Design Pattern - Social Media Apps
 description: Learn about a design pattern for Social Networks by using the storage flexibility of Azure Cosmos DB and other Azure services.
 author: ealsur
 ms.service: azure-cosmos-db
@@ -7,9 +7,15 @@ ms.topic: solution-overview
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.custom: sfi-image-nochange
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
+
 # Going social with Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Living in a massively interconnected society means that, at some point in life, you become part of a **social network**. You use social networks to keep in touch with friends, colleagues, family, or sometimes to share your passion with people with common interests.
 
@@ -135,7 +141,7 @@ To solve this problem, you can use a mixed approach. As part of the User Statist
 }
 ```
 
-You can store the actual graph of followers using Azure Cosmos DB [API for Gremlin](../cosmos-db/introduction.md) to create [vertexes](http://mathworld.wolfram.com/GraphVertex.html) for each user and [edges](http://mathworld.wolfram.com/GraphEdge.html) that maintain the "A-follows-B" relationships. With the API for Gremlin, you can get the followers of a certain user and create more complex queries to suggest people in common. If you add to the graph the Content Categories that people like or enjoy, you can start weaving experiences that include smart content discovery, suggesting content that those people you follow like, or finding people that you might have much in common with.
+You can store the actual graph of followers using Azure Cosmos DB [API for Gremlin](gremlin/overview.md) to create [vertexes](http://mathworld.wolfram.com/GraphVertex.html) for each user and [edges](http://mathworld.wolfram.com/GraphEdge.html) that maintain the "A-follows-B" relationships. With the API for Gremlin, you can get the followers of a certain user and create more complex queries to suggest people in common. If you add to the graph the Content Categories that people like or enjoy, you can start weaving experiences that include smart content discovery, suggesting content that those people you follow like, or finding people that you might have much in common with.
 
 The User Statistics document can still be used to create cards in the UI or quick profile previews.
 
@@ -240,7 +246,7 @@ Azure Cosmos DB supports dynamic partitioning out-of-the-box. It automatically c
 
 For a social experience, you must align your partitioning strategy with the way you query and write. (For example, reads within the same partition are desirable, and avoid "hot spots" by spreading writes on multiple partitions.) Some options are: partitions based on a temporal key (day/month/week), by content category, by geographical region, or by user. It all really depends on how you query the data and show the data in your social experience.
 
-Azure Cosmos DB runs your queries (including [aggregates](/azure/cosmos-db/nosql/query/aggregate-functions)) across all your partitions transparently, so you don't need to add any logic as your data grows.
+Azure Cosmos DB runs your queries (including [aggregates](/cosmos-db/query/functions#aggregation-functions)) across all your partitions transparently, so you don't need to add any logic as your data grows.
 
 With time, you'll eventually grow in traffic and your resource consumption (measured in [RUs](request-units.md), or Request Units) will increase. You'll read and write more frequently as your user base grows. The user base starts creating and reading more content. So the ability of **scaling your throughput** is vital. Increasing your RUs is easy. You can do it with a few select on the Azure portal or by [issuing commands through the API](/rest/api/cosmos-db/replace-an-offer).
 
@@ -250,7 +256,7 @@ What happens if things keep getting better? Suppose users from another country/r
 
 But wait! You soon realize their experience with your platform isn't optimal. They're so far away from your operational region that the latency is terrible. You obviously don't want them to quit. If only there was an easy way of **extending your global reach**? There is!
 
-Azure Cosmos DB lets you [replicate your data globally](nosql/tutorial-global-distribution.md) and transparently with a couple of select and automatically select among the available regions from your [client code](nosql/tutorial-global-distribution.md). This process also means that you can have [multiple failover regions](high-availability.md).
+Azure Cosmos DB lets you [replicate your data globally](tutorial-global-distribution.md) and transparently with a couple of select and automatically select among the available regions from your [client code](tutorial-global-distribution.md). This process also means that you can have [multiple failover regions](high-availability.md).
 
 When you replicate your data globally, you need to make sure that your clients can take advantage of it. If you're using a web frontend or accessing APIs from mobile clients, you can deploy [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) and clone your Azure App Service on all the desired regions, using a performance configuration to support your extended global coverage. When your clients access your frontend or APIs, they are routed to the closest App Service, which in turn, will connect to the local Azure Cosmos DB replica.
 

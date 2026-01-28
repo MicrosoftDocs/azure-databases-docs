@@ -1,6 +1,5 @@
 ---
 title: Linux-based emulator - vNext (preview)
-titleSuffix: Azure Cosmos DB for NoSQL
 description: Use the Azure Cosmos DB Linux-based emulator to test your applications against API for NoSQL endpoints.
 author: Sajeetharan
 ms.author: sasinnat
@@ -8,6 +7,8 @@ ms.service: azure-cosmos-db
 ms.topic: how-to
 ms.date: 11/07/2024
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Linux-based emulator - vNext (preview)
@@ -15,7 +16,7 @@ ms.date: 11/07/2024
 The next generation of the Azure Cosmos DB emulator is entirely Linux-based and is available as a Docker container. It supports running on a wide variety of processors and operating systems.
 
 > [!IMPORTANT]
-> This version of the emulator only supports the API for NoSQL in [gateway mode](nosql/sdk-connection-modes.md#available-connectivity-modes), with a select subset of features. For more information, see [feature support](#feature-support).
+> This version of the emulator only supports the API for NoSQL in [gateway mode](sdk-connection-modes.md#available-connectivity-modes), with a select subset of features. For more information, see [feature support](#feature-support).
 
 ## Prerequisites
 
@@ -71,12 +72,16 @@ The following table summarizes the available Docker commands for configuring the
 | Enable the data explorer | `--enable-explorer` | ENABLE_EXPLORER | `true`, `false` | `true` | Enable running the Cosmos Data Explorer on the same container. |
 | Set the port used by the data explorer | `--explorer-port` | EXPLORER_PORT | INT | 1234 | The port of the Cosmos Data Explorer on the container. You still need to publish this port (for example, `-p 1234:1234`). |
 | User should be able to specify the protocol used by the explorer, otherwise default to what the Cosmos endpoint is using | `--explorer-protocol` | EXPLORER_PROTOCOL | `https`, `http`, `https-insecure` | `<the value of --protocol>` | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint. |
+| Customize the gateway public endpoint | `--gateway-endpoint` | GATEWAY_PUBLIC_ENDPOINT | N/A | `localhost` | The public gateway endpoint. Defaults to `localhost`. |
 | Specify the key via file | `--key-file [PATH]` | KEY_FILE | PATH | `<default secret>` | Override default key with the key specified in the file. You need to mount this file into the container (for example, if KEY_FILE=/mykey, you'd add an option like the following to your docker run: `--mount type=bind,source=./myKey,target=/myKey`) |
 | Set the data path | `--data-path [PATH]` | DATA_PATH | PATH | `/data` | Specify a directory for data. Frequently used with `docker run --mount` option (for example, if DATA_PATH=/usr/cosmos/data, you'd add an option like the following to your docker run: `--mount type=bind,source=./.local/data,target=/usr/cosmos/data`) |
 | Specify the cert path to be used for https | `--cert-path [PATH]` | CERT_PATH | PATH | `<default cert>` | Specify a path to a certificate for securing traffic. You need to mount this file into the container (for example, if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: `--mount type=bind,source=./mycert.pfx,target=/mycert.pfx`) |
 | Specify the cert secret to be used for https | N/A | CERT_SECRET | string | `<default secret>` | The secret for the certificate specified on CERT_PATH. |
 | Set the log level | `--log-level [LEVEL]` | LOG_LEVEL | `quiet`, `error`, `warn`, `info`, `debug`, `trace` | `info` | The verbosity of logs that emitted by the emulator and data explorer. |
-| Enable diagnostic info being sent to Microsoft | `--enable-telemetry` | ENABLE_TELEMETRY | `true`, `false` | `true` | Enable sending logs to Microsoft to help us improve the emulator. |
+| Enable OpenTelemetry OTLP exporter | `--enable-otlp` | ENABLE_OTLP_EXPORTER | `true`, `false` | `false` | Enable OpenTelemetry integration. |
+| Enable console exporter | `--enable-console` | ENABLE_CONSOLE_EXPORTER | `true`, `false` | `false` | Enable console output of telemetry data (useful for debugging). |
+| Enable diagnostic info being sent to Microsoft | `--enable-telemetry` | ENABLE_TELEMETRY | `true`, `false` | `true` | Enable sending usage data to Microsoft to help us improve the emulator. |
+
 
 ## Feature support
 
@@ -103,25 +108,25 @@ This emulator is in active development and preview. As a result, not all Azure C
 | **Insert large document** | ✅ Supported |
 | **Patch document** | ✅ Supported |
 | **Query partitioned collection in parallel** | ⚠️ Not yet implemented |
-| **Query with aggregates** | ⚠️ Not yet implemented |
-| **Query with and filter** | ⚠️ Not yet implemented |
-| **Query with and filter and projection** | ⚠️ Not yet implemented |
+| **Query with aggregates** | ✅ Supported |
+| **Query with and filter** | ✅ Supported |
+| **Query with and filter and projection** | ✅ Supported |
 | **Query with equality** | ✅ Supported |
 | **Query with equals on id** | ✅ Supported |
-| **Query with joins** | ⚠️ Not yet implemented |
+| **Query with joins** | ✅ Supported |
 | **Query with order by** | ✅ Supported |
-| **Query with order by for partitioned collection** | ⚠️ Not yet implemented |
+| **Query with order by for partitioned collection** | ✅ Supported |
 | **Query with order by numbers** | ✅ Supported |
-| **Query with order by strings** | ⚠️ Not yet implemented |
-| **Query with paging** | ⚠️ Not yet implemented |
-| **Query with range operators date times** | ⚠️ Not yet implemented |
-| **Query with range operators on numbers** | ⚠️ Not yet implemented |
-| **Query with range operators on strings** | ⚠️ Not yet implemented |
-| **Query with single join** | ⚠️ Not yet implemented |
-| **Query with string math and array operators** | ⚠️ Not yet implemented |
-| **Query with subdocuments** | ⚠️ Not yet implemented |
-| **Query with two joins** | ⚠️ Not yet implemented |
-| **Query with two joins and filter** | ⚠️ Not yet implemented |
+| **Query with order by strings** | ✅ Supported |
+| **Query with paging** | ✅ Supported |
+| **Query with range operators date times** | ✅ Supported |
+| **Query with range operators on numbers** | ✅ Supported |
+| **Query with range operators on strings** | ✅ Supported |
+| **Query with single join** | ✅ Supported |
+| **Query with string math and array operators** | ✅ Supported |
+| **Query with subdocuments** | ✅ Supported |
+| **Query with two joins** | ✅ Supported |
+| **Query with two joins and filter** | ✅ Supported |
 | **Read collection** | ✅ Supported |
 | **Read collection feed** | ⚠️ Not yet implemented |
 | **Read database** | ✅ Supported |
@@ -142,11 +147,10 @@ This emulator is in active development and preview. As a result, not all Azure C
 In addition to features not yet supported or not planned, the following list includes current limitations of the emulator.
 
 - The .NET SDK for Azure Cosmos DB doesn't support bulk execution in the emulator.
-- The .NET and Java SDKs don't support HTTP mode in the emulator. 
 
 ## Installing certificates for Java SDK
 
-When using the [Java SDK for Azure Cosmos DB](./nosql/sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
+When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
 
 ### Get certificate
 
@@ -179,6 +183,21 @@ If you get an error because the alias already exists, delete it and then run the
 ```bash
 keytool -cacerts -delete -alias cosmos_emulator
 ```
+
+## OpenTelemetry support
+
+[OpenTelemetry](https://opentelemetry.io/) is an open-source observability framework that provides a collection of tools, APIs, and SDKs for instrumenting, generating, collecting, and exporting telemetry data. The OpenTelemetry Protocol (OTLP) is the protocol used by OpenTelemetry to transmit telemetry data between components.
+
+You can use OpenTelemetry with the emulator to monitor and trace your application. The emulator supports telemetry options, which can be configured through environment variables or command-line flags when running the Docker container.
+
+The emulator exports the following metrics. These are available through any metrics backend that supports OTLP and provides valuable insights into the database's performance and health:
+
+- Request Rates: Shows the traffic patterns for different operation types
+- Query Execution Times: Measures the time taken to execute different queries
+- Resource Utilization: CPU, memory usage and connection pool metrics
+- Error Rates: Tracking of errors by type and endpoint
+
+Detailed instructions with examples [are available in the GitHub repository](https://github.com/Azure/azure-cosmos-db-emulator-docker/blob/master/docs/opentelemetry.md).
 
 ## Use in continuous integration workflow
 

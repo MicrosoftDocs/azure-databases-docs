@@ -1,109 +1,217 @@
 ### YamlMime:Hub
-
 title: Azure Cosmos DB documentation
 summary: Fully managed, distributed NoSQL, relational, and vector database for modern app development. High performance, high availability, and support for open-source PostgreSQL, MongoDB, and Apache Cassandra. Build cloud-native apps effortlessly.
 brand: azure
-
 metadata:
-  title: Azure Cosmos DB
-  description: Fully managed, distributed NoSQL and vector database for cloud-scale and AI apps. High performance, availability and low latency from Serverless to massive scale in one database.  Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and AI Samples.
-  author: markjbrown
-  ms.author: mjbrown
+  title: Azure Cosmos DB documentation
+  description: Fully managed, distributed NoSQL and vector database for cloud-scale and AI apps. High performance, availability, and low latency from Serverless to massive scale in one database. Visit our new **[Samples Gallery](https://aka.ms/AzureCosmosDB/Gallery/AI)** for the latest Vector Database and AI Samples.
+  author: seesharprun
+  ms.author: sidandrews
   ms.service: azure-cosmos-db
-  ms.topic: landing-page
-  ms.date: 06/11/2025
+  ms.topic: hub-page
+  ms.date: 12/17/2025
+  ai-usage: ai-generated
+  appliesto:
+    - ✅ NoSQL
+    - ✅ MongoDB
+    - ✅ Apache Cassandra
+    - ✅ Apache Gremlin
+    - ✅ Table
 highlightedContent:
   items:
     - title: Introduction to Azure Cosmos DB
-      itemType: concept
+      itemType: overview
       url: introduction.md
-    - title: Try Azure Cosmos DB free
-      itemType: get-started
-      url: try-free.md
-    - title: Distributed NoSQL databases
-      itemType: concept
-      url: distributed-nosql.md
-    - title: Microsoft Questions and Answers
-      itemType: reference
-      url: /answers/tags/187/azure-cosmos-db
     - title: Vector Database in Azure Cosmos DB
-      itemType: concept
+      itemType: architecture
       url: vector-database.md
-    - title: Choose an API in Azure Cosmos DB
-      itemType: concept
-      url: choose-api.md
-    - title: Create an Azure Cosmos DB for NoSQL account
-      itemType: how-to-guide
-      url: nosql/quickstart-portal.md
-    - title: Create an Azure Cosmos DB for PostgreSQL account
-      itemType: how-to-guide
-      url: postgresql/quickstart-create-portal.md
-
-additionalContent:
+    - title: Pricing
+      itemType: reference
+      url: https://azure.microsoft.com/pricing/details/cosmos-db/
+    - title: Certification - Azure Cosmos DB Developer Specialty
+      itemType: training
+      url: /certifications/azure-cosmos-db-developer-specialty/
+    - title: Certification - Azure Developer Associate
+      itemType: training
+      url: /certifications/azure-developer/
+    - title: AI agents with Azure Cosmos DB
+      itemType: tutorial
+      url: ai-agents.md
+    - title: Azure Cosmos DB Emulator
+      itemType: get-started
+      url: emulator.md
+tools:
+  title: Build your first application
+  summary: Create a console application using Azure Cosmos DB and your preferred development language and API.
+  items:
+    - title: .NET (NoSQL)
+      imageSrc: media/index/lang-dotnet.svg
+      url: nosql/quickstart-dotnet.md
+    - title: Python (NoSQL)
+      imageSrc: media/index/lang-python.svg
+      url: nosql/quickstart-python.md
+    - title: JavaScript (NoSQL)
+      imageSrc: media/index/lang-javascript.svg
+      url: nosql/quickstart-nodejs.md?pivots=programming-language-js
+    - title: TypeScript (NoSQL)
+      imageSrc: media/index/lang-typescript.svg
+      url: nosql/quickstart-nodejs.md?pivots=programming-language-ts
+    - title: Java (NoSQL)
+      imageSrc: media/index/lang-java.svg
+      url: nosql/quickstart-java.md
+    - title: Go (NoSQL)
+      imageSrc: media/index/lang-go.svg
+      url: nosql/quickstart-go.md
+    - title: Rust (NoSQL)
+      imageSrc: media/index/lang-rust.svg
+      url: nosql/quickstart-rust.md
+conceptualContent:
   sections:
     - title: APIs
+      summary: Choose from multiple APIs that provide compatibility with popular NoSQL and relational database models for modern applications.
       items:
         - title: NoSQL
+          summary: Build applications using native SQL queries with automatic indexing and schema flexibility for document-based workloads.
           links:
             - text: SQL queries
-              url: nosql/query/getting-started.md
+              itemType: how-to-guide
+              url: /cosmos-db/query/overview
             - text: Model document data
+              itemType: concept
               url: nosql/modeling-data.md
-            - text: See more >
-              url: nosql/index.yml
+          footerLink:
+            text: See more
+            url: nosql/index.yml
         - title: MongoDB
+          summary: Migrate existing MongoDB applications seamlessly with full wire protocol compatibility and familiar MongoDB tools.
           links:
             - text: Supported features and syntax
+              itemType: reference
               url: mongodb/feature-support-42.md
             - text: Mapping consistency levels
+              itemType: concept
               url: mongodb/consistency-mapping.md
             - text: Extension commands
+              itemType: concept
               url: mongodb/custom-commands.md
-            - text: See more >
-              url: mongodb/index.yml
+          footerLink:
+            text: See more
+            url: mongodb/index.yml
         - title: Apache Cassandra
+          summary: Build highly scalable applications using the Cassandra Query Language (CQL) with automatic global distribution.
           links:
             - text: Wire protocol support
+              itemType: reference
               url: cassandra/support.md
             - text: Partitioning
+              itemType: concept
               url: cassandra/partitioning.md
             - text: Secondary indexing
+              itemType: concept
               url: cassandra/secondary-indexing.md
-            - text: See more >
-              url: cassandra/index.yml
+          footerLink:
+            text: See more
+            url: cassandra/index.yml
         - title: Apache Gremlin
+          summary: Create graph-based applications using the Gremlin graph traversal language for complex relationship queries.
           links:
             - text: Wire protocol support
+              itemType: reference
               url: gremlin/support.md
             - text: Graph data modeling
+              itemType: concept
               url: gremlin/modeling.md
             - text: Import graph data
+              itemType: how-to-guide
               url: gremlin/bulk-executor-dotnet.md
-            - text: See more >
-              url: graph/index.yml
+          footerLink:
+            text: See more
+            url: graph/index.yml
         - title: Table
+          summary: Modernize Azure Table Storage applications with premium capabilities and global distribution.
           links:
-            - text: Build apps with API for Table
+            - text: Wire protocol support
+              itemType: reference
               url: table/support.md
             - text: Find request unit charge
+              itemType: how-to-guide
               url: table/find-request-unit-charge.md
             - text: FAQ
+              itemType: reference
               url: table/faq.yml
-            - text: See more >
-              url: table/index.yml
+          footerLink:
+            text: See more
+            url: table/index.yml
         - title: PostgreSQL
+          summary: Build distributed relational applications using the familiar PostgreSQL wire protocol with horizontal scaling.
           links:
             - text: Distributed relational databases
+              itemType: concept
               url: distributed-relational.md
             - text: Connect and run SQL commands using Python
+              itemType: how-to-guide
               url: postgresql/quickstart-app-stacks-python.md
             - text: Distribute and modify tables
+              itemType: how-to-guide
               url: postgresql/howto-modify-distributed-tables.md
-            - text: See more >
-              url: postgresql/index.yml
-    - title: Concepts
+          footerLink:
+            text: See more
+            url: postgresql/index.yml
+    - title: Developer and DevOps guides
+      summary: Advance your development and DevOps workflows with practical guides, tools, and best practices for building scalable applications on Azure Cosmos DB.
+      items:
+        - title: Vector search and AI integration
+          summary: Unlock new capabilities in your applications with Azure Cosmos DB by implementing powerful vector search and AI-driven features.
+          links:
+            - text: Vector Database in Azure Cosmos DB
+              itemType: concept
+              url: vector-database.md
+            - text: Vector search in Azure Cosmos DB for NoSQL
+              itemType: concept
+              url: nosql/vector-search.md
+        - title: Infrastructure as code (IaC)
+          summary: Automate deployment and management of Azure Cosmos DB resources using modern Infrastructure as Code (IaC) tools like Bicep, ARM templates, and Terraform.
+          links:
+            - text: Azure Resource Manager templates
+              itemType: quickstart
+              url: nosql/quickstart-template-json.md
+            - text: Bicep templates
+              itemType: how-to-guide
+              url: nosql/quickstart-template-bicep.md
+            - text: Terraform provider
+              itemType: how-to-guide
+              url: nosql/quickstart-terraform.md
+        - title: Connect to your database
+          summary: Learn how to connect to your Azure Cosmos DB using various tools, drivers, and popular programming languages across different APIs.
+          links:
+            - text: Create an Azure Cosmos DB for NoSQL account
+              itemType: quickstart
+              url: nosql/quickstart-portal.md
+            - text: Create an Azure Cosmos DB for PostgreSQL account
+              itemType: quickstart
+              url: postgresql/quickstart-create-portal.md
+            - text: Create an Azure Cosmos DB for MongoDB account
+              itemType: quickstart
+              url: mongodb/quickstart-nodejs.md
+        - title: Performance optimization
+          summary: Discover techniques to improve the speed, efficiency, and scalability of your Azure Cosmos DB applications across different workload patterns.
+          links:
+            - text: Performance tips for Azure Cosmos DB for NoSQL
+              itemType: concept
+              url: nosql/performance-tips-dotnet-sdk-v3.md
+            - text: Optimize request costs
+              itemType: how-to-guide
+              url: optimize-cost-reads-writes.md
+            - text: Partitioning and horizontal scaling
+              itemType: concept
+              url: partitioning-overview.md
+additionalContent:
+  sections:
+    - title: Core concepts and architecture
+      summary: Understand the fundamental concepts that power Azure Cosmos DB's global distribution, consistency, and performance capabilities.
       items:
         - title: Explore core concepts
+          summary: Learn about the essential building blocks of Azure Cosmos DB including resource models, global distribution, and consistency levels.
           links:
             - text: Resource model
               url: resource-model.md
@@ -114,60 +222,65 @@ additionalContent:
             - text: Throughput & request units
               url: request-units.md
         - title: Model your data
+          summary: Design effective data models and partitioning strategies for optimal performance and cost efficiency.
           links:
             - text: Data modeling and partitioning
               url: nosql/model-partition-example.md
             - text: Azure Cosmos DB service quotas
               url: concepts-limits.md
-        - title: Analytics and BI
+            - text: Distributed NoSQL databases
+              url: distributed-nosql.md
+        - title: Analytics with Microsoft Fabric
+          summary: Integrate Azure Cosmos DB with Microsoft Fabric for analytics.
           links:
-            - text: Analytics and BI overview
-              url: analytics-and-business-intelligence-overview.md
-            - text: Analytics and BI use cases
-              url: analytics-and-business-intelligence-use-cases.md
-            - text: Mirroring in Microsoft Fabric
+            - text: Azure Cosmos DB Mirroring
               url: /fabric/database/mirrored-database/azure-cosmos-db?context=/azure/cosmos-db/context/context
-            - text: API for NoSQL mirroring tutorial in Microsoft Fabric
-              url: /fabric/database/mirrored-database/azure-cosmos-db-tutorial?context=/azure/cosmos-db/context/context
-            - text: Azure Synapse Link for Azure Cosmos DB
-              url: synapse-link.md
-    - title: Training & certification
+            - text: Cosmos DB in Microsoft Fabric
+              url: /fabric/database/cosmos-db/overview?context=/azure/cosmos-db/context/context
+    - title: Security and compliance
+      summary: Protect your data and applications with comprehensive security features including encryption, access controls, and compliance certifications.
       items:
-        - title: Create an API for NoSQL application
+        - title: Security overview
+          summary: Comprehensive security features to protect your data at rest, in transit, and during processing.
           links:
-            - text: Build a .NET app
-              url: /training/modules/build-dotnet-app-cosmos-db-sql-api/
-            - text: Build a Node.js app
-              url: /training/modules/build-node-cosmos-app-vscode/
-            - text: Build a Java app
-              url: /training/modules/build-cosmos-db-java-app/
-            - text: See more >
-              url: /training/browse/?resource_type=module&products=azure-cosmos-db
-        - title: Work with API for PostgreSQL
+            - text: Security baseline for Azure Cosmos DB
+              url: /security/benchmark/azure/baselines/cosmos-db-security-baseline?context=/azure/cosmos-db/context/context
+            - text: Database encryption at rest
+              url: database-encryption-at-rest.md
+            - text: Configure IP firewall
+              url: how-to-configure-firewall.md
+            - text: Compliance
+              url: compliance.md
+        - title: Access control and authentication
+          summary: Manage user access and authentication using Microsoft Entra ID, role-based access control, and resource tokens.
           links:
-            - text: Model data
-              url: /training/modules/model-data-azure-cosmos-db-postgresql/
-            - text: Ingest and query data
-              url: /training/modules/ingest-query-data-using-azure-cosmos-db-for-postgresql/
-            - text: Extend PostgreSQL functionality using extensions
-              url: /training/modules/extend-the-functionality-of-azure-cosmos-db-for-postgresql-using-extensions/
-            - text: See more >
-              url: /training/paths/azure-cosmos-db-for-postgresql/
-        - title: Certifications
+            - text: Access control in Azure Cosmos DB
+              url: secure-access-to-data.md
+            - text: Configure role-based access control with Microsoft Entra ID
+              url: how-to-setup-rbac.md
+            - text: Access Azure Key Vault using managed identities
+              url: access-key-vault-managed-identity.md
+        - title: Network security
+          summary: Secure your database connectivity using virtual networks, private endpoints, and firewall rules.
           links:
-            - text: Microsoft Certified - Azure Cosmos DB Developer Specialty
-              url: /certifications/azure-cosmos-db-developer-specialty/
-            - text: Microsoft Certified - Azure Developer Associate
-              url: /certifications/azure-developer/
-    - title: Data Migration
+            - text: Configure private endpoints
+              url: how-to-configure-private-endpoints.md
+            - text: Configure virtual network service endpoint
+              url: how-to-configure-vnet-service-endpoint.md
+    - title: Data migration and tools
+      summary: Migrate existing data to Azure Cosmos DB using various tools and services designed for different data sources and migration scenarios.
       items:
         - title: Migration options
+          summary: Choose the right migration approach for your data source and target API using Azure native tools and services.
           links:
             - text: Cassandra Query Language (CQL) shell, Spark – API for Cassandra
               url: cassandra/migrate-data.md
             - text: Azure Database Migration Service – API for MongoDB
               url: ../dms/tutorial-mongodb-cosmos-db.md
+            - text: Migrate hundreds of terabytes of data
+              url: migrate.md
         - title: Migration guides
+          summary: Step-by-step migration guides for specific database platforms and migration tools.
           links:
             - text: Oracle Database to Azure Cosmos DB API for NoSQL using Striim
               url: cosmosdb-sql-api-migrate-data-striim.md
@@ -175,5 +288,46 @@ additionalContent:
               url: cassandra/migrate-data-striim.md
             - text: Oracle Database to Azure Cosmos DB API for Cassandra using Arcion
               url: cassandra/oracle-migrate-cosmos-db-arcion.md
-            - text: Migrate hundreds of terabytes of data
-              url: migrate.md
+    - title: Samples and resources
+      summary: Accelerate your Azure Cosmos DB development with code samples, community resources, and learning materials.
+      items:
+        - title: Microsoft samples
+          summary: Official Microsoft samples, galleries, and code repositories for Azure Cosmos DB development across all APIs.
+          links:
+            - text: Azure Cosmos DB samples gallery
+              url: https://azurecosmosdb.github.io/gallery/
+            - text: Microsoft Questions and Answers
+              url: /answers/tags/187/azure-cosmos-db
+        - title: Open-source community
+          summary: Community-driven samples, tools, and resources from the Azure Cosmos DB open-source ecosystem.
+          links:
+            - text: Azure Cosmos DB GitHub organization
+              url: https://github.com/azurecosmosdb/
+            - text: Published GitHub samples
+              url: https://github.com/search?q=org%3Aazure-samples+cosmos&type=repositories
+        - title: Videos and events
+          summary: Stay updated with the latest Azure Cosmos DB developments through conferences, webinars, and educational video series.
+          links:
+            - text: Azure Cosmos DB Conf 2025
+              url: https://www.youtube.com/playlist?list=PLmamF3YkHLoLQhnFsKWhtKu_Tp0uXPFdn
+            - text: Azure Cosmos DB TV
+              url: https://www.youtube.com/playlist?list=PLmamF3YkHLoKMzT3gP4oqHiJbjMaiiLEh
+            - text: Azure Cosmos DB & AI Integration
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoJyuoikrskPzpttybXiuFFL&si=ljM012JQu0ReuYEo
+            - text: Customer Stories - Azure Cosmos DB real-world examples
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoJtcbM2-_e5U3R6tL2LLbig&si=f-jDPhcUvEmvjpoj
+            - text: Azure Cosmos DB Design Patterns
+              url: https://youtube.com/playlist?list=PLmamF3YkHLoI69DIwplhBqk-KYoOLEqOs&si=E6Q1NYfKgGDw279m
+  footer: |
+    Azure Cosmos DB is a fully managed NoSQL, relational, and vector database for modern app development. Build cloud-native apps with guaranteed speed at any scale, turnkey global distribution, and comprehensive SLA-backed availability.
+
+    **Key capabilities:**
+    - **Single-digit millisecond response times** with automatic and instant scalability
+    - **Multi-API support** - NoSQL, MongoDB, PostgreSQL, Apache Cassandra, Apache Gremlin, and Table
+    - **AI-powered features** - Vector database, Query Copilot, and seamless Azure AI Services integration
+    - **Enterprise-grade security** - Encryption at rest, role-based access control, and compliance certifications
+    - **Global distribution** - Multi-region writes and data distribution to any Azure region
+
+    **Trusted by industry leaders:** OpenAI relies on Azure Cosmos DB to dynamically scale ChatGPT, enabling high reliability and low maintenance for one of the fastest-growing consumer applications ever.
+
+    Get started today with the **[Azure Cosmos DB Emulator](emulator.md)** for local development.

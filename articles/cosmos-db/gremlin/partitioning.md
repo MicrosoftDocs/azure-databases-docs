@@ -9,8 +9,10 @@ ms.topic: how-to
 ms.date: 06/24/2019
 ms.devlang: java
 ---
+
 # Using a partitioned graph in Azure Cosmos DB
-[!INCLUDE[Gremlin](../includes/appliesto-gremlin.md)]
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 One of the key features of the API for Gremlin in Azure Cosmos DB is the ability to handle large-scale graphs through horizontal scaling. The containers can scale independently in terms of storage and throughput. You can create containers in Azure Cosmos DB that can be automatically scaled to store a graph data. The data is automatically balanced based on the specified **partition key**.
 
@@ -72,11 +74,3 @@ Use the following guidelines to ensure performance and scalability when using pa
 - **Choose a partition key that will evenly distribute data across partitions**. This decision heavily depends on the data model of the solution. Read more about creating an appropriate partition key in [Partitioning and scale in Azure Cosmos DB](../partitioning-overview.md).
 
 - **Optimize queries to obtain data within the boundaries of a partition**. An optimal partitioning strategy would be aligned to the querying patterns. Queries that obtain data from a single partition provide the best possible performance.
-
-## Next steps
-
-Next you can proceed to read the following articles:
-
-* Learn about [Partition and scale in Azure Cosmos DB](../partitioning-overview.md).
-* Learn about the [Gremlin support in API for Gremlin](support.md).
-* Learn about [Introduction to API for Gremlin](overview.md).

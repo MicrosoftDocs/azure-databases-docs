@@ -10,11 +10,11 @@ ms.subservice: table
 ms.topic: overview
 ms.date: 07/22/2025
 ai-usage: ai-generated
-appliesto:
-  - ✅ Table
 ---
 
 # What is Azure Cosmos DB for Table?
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 

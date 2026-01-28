@@ -1,17 +1,19 @@
 ---
 title: DNS names and connection strings - Azure Cosmos DB for PostgreSQL
 description: Connection strings and DNS names for the nodes.
-ms.author: nlarin
-author: niklarin
+ms.author: abramees
+author: abinav2307
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: concept-article
-ms.date: 06/04/2023
+ms.date: 10/29/2025
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Node DNS names in Azure Cosmos DB for PostgreSQL
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 When an Azure Cosmos DB for PostgreSQL [cluster](./concepts-cluster.md) is provisioned, every node is assigned its own [fully qualified domain name (FQDN)](https://wikipedia.org/wiki/Fully_qualified_domain_name). This FQDN is used to connect to each node provided proper [network security](./concepts-security-overview.md) was set up to grant access. The FQDN is used in the Postgres connection string whether private or public access is used. 
 
@@ -23,7 +25,7 @@ All node domain names in Azure Cosmos DB for PostgreSQL are created in postgres.
 <node-qualifier>-<cluster-name>.<uniqueID>.postgres.cosmos.azure.com
 ```
 
-where `node-qualifier` can be 'c' for coordinator or 'w0', 'w1', etc. for worker nodes; `cluster-name` is the name for the cluster you selected during cluster provisioning; `uniqueID` is a randomly generated globally unique 14-character identifier.
+Where `node-qualifier` can be 'c' for coordinator or 'w0,' 'w1,' etc. for worker nodes; `cluster-name` is the name for the cluster you selected during cluster provisioning; `uniqueID` is a randomly generated globally unique 14-character identifier.
 
 For instance: c-mycluster.12345678901234.postgres.cosmos.azure.com.
 
@@ -35,11 +37,11 @@ When you enable [private access](./concepts-private-access.md) on the cluster, A
 <node-qualifier>-<cluster-name>.<uniqueID>.privatelink.postgres.cosmos.azure.com
 ```
 
-where `node-qualifier` can be 'c' for coordinator or 'w0', 'w1', etc. for worker nodes; `cluster-name` is the name for the cluster you selected during cluster provisioning; `uniqueID` is a randomly generated globally unique 14-character identifier.
+Where `node-qualifier` can be 'c' for coordinator or 'w0', 'w1', etc. for worker nodes; `cluster-name` is the name for the cluster you selected during cluster provisioning; `uniqueID` is a randomly generated globally unique 14-character identifier.
 
 For instance: c-mycluster.12345678901234.privatelink.postgres.cosmos.azure.com.
 
-`node-qualifier`-`cluster-name`.`uniqueID`.postgres.cosmos.azure.com FQDN can be used from within a virtual network (VNet) environment too. If DNS name resolution is performed from within a VNet, FQDN resolves into a private IP assigned to a node via a private endpoint. If DNS name resolution is done from the public Internet, FQDN resolves into a public IP assigned to that node.
+`node-qualifier`-`cluster-name`.`uniqueID`.postgres.cosmos.azure.com FQDN can be used from within a virtual network environment too. If DNS name resolution is performed from within a virtual network, FQDN resolves into a private IP assigned to a node via a private endpoint. If DNS name resolution is done from the public Internet, FQDN resolves into a public IP assigned to that node.
 
 It's important to use only FQDN to access a node as assigned public IP addresses may change during normal operations such as an HA failover or compute scaling operation.
 

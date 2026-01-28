@@ -16,6 +16,8 @@ appliesto:
 
 # What is Azure Cosmos DB for Apache Cassandra?
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB is a fully managed and serverless NoSQL database for modern app development, including AI applications and agents. With its SLA-backed speed and availability as well as instant dynamic scalability, it's ideal for real-time NoSQL applications that require high performance and distributed computing over massive volumes of NoSQL data.
 
 Azure Cosmos DB for Apache Cassandra is a fully managed NoSQL database service that enables you to run Cassandra workloads in the cloud with minimal changes to your application code. This API supports the Cassandra Query Language (CQL) and is compatible with existing Cassandra drivers and tools, making it easy to migrate or extend your applications without rearchitecting.

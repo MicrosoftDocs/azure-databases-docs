@@ -7,11 +7,13 @@ ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: reference
 ms.date: 06/06/2023
+appliesto:
+  - ✅ PostgreSQL
 ---
 
 # Multi-tenant monitoring
 
-[!INCLUDE [PostgreSQL](../includes/appliesto-postgresql.md)]
+[!INCLUDE [Note - Recommended services](includes/note-recommended-services.md)]
 
 > [!IMPORTANT]
 > Applicable to Citus 11.3 & newer versions

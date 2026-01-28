@@ -1,6 +1,5 @@
 ---
 title: Container Copy Jobs
-titleSuffix: Azure Cosmos DB
 description: Learn how to copy data from one container to another in Azure Cosmos DB (preview).
 author: richagaur
 ms.author: richagaur
@@ -9,6 +8,8 @@ ms.topic: how-to
 ms.date: 06/23/2025
 ms.custom: references_regions, build-2023, ignite-2023, ignite-2024
 zone_pivot_groups: azure-cosmos-db-apis-nosql-mongodb-cassandra
+appliesto:
+  - ✅ NoSQL
 ---
 
 # Copy jobs in Azure Cosmos DB (preview)
@@ -29,19 +30,46 @@ Copy jobs can be [created and managed by using Azure CLI commands](how-to-contai
 
 ::: zone pivot="api-nosql"
 
-## Get started
+## Getting started
 
 ### [Online copy](#tab/online-copy)
-
-To get started with online container copy for Azure Cosmos DB for NoSQL API accounts, register for the **Online container copy (NoSQL)** preview feature flag in [Preview Features](access-previews.md) in the Azure portal. Once the registration is complete, the preview is effective for all NoSQL API accounts in the subscription.
 
 #### Prerequisites
 
 1. Enable [continuous backup](continuous-backup-restore-introduction.md) on source Azure Cosmos DB account. 
-1. Register for [All version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) preview feature on the source account’s subscription.
+1. Enable [All version and delete change feed mode (preview)](change-feed-modes.md?tabs=all-versions-and-deletes#get-started) preview feature on the source account.
+
+#### Enable Online copy
+
+To enable online copy on your source account, execute following steps using [Azure CLI](/cli/azure/install-azure-cli).
+
+```azurecli
+# Set shell variables.
+ $resourceGroupName = <azure_resource_group>
+ $accountName = <azure_cosmos_db_account_name>
+ $EnableOnlineContainerCopy = "EnableOnlineContainerCopy"
+
+# List down existing capabilities of your account.
+ $cosmosdb = az cosmosdb show \
+    --resource-group $resourceGroupName \
+    --name $accountName
+
+$capabilities = (($cosmosdb | ConvertFrom-Json).capabilities)
+
+# Append EnableOnlineContainerCopy capability in the list of capabilities.
+ $capabilitiesToAdd = @()
+ foreach ($item in $capabilities) {
+    $capabilitiesToAdd += $item.name
+ }
+ $capabilitiesToAdd += $EnableOnlineContainerCopy
+
+ # Update Cosmos DB account
+ az cosmosdb update --capabilities $capabilitiesToAdd \
+    -n $accountName -g $resourceGroupName
+```
 
 > [!IMPORTANT]
-> All write operations to the source container are charged 10% additional RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
+> All write operations on the source account are charged double RUs in order to preserve both the previous and current versions of changes to items in the container. This RU charge increase is subject to change in the future.
 
 ## Copy a container's data
 
@@ -55,7 +83,7 @@ To get started with online container copy for Azure Cosmos DB for NoSQL API acco
 
 1. The platform allocates server-side compute instances for the destination Azure Cosmos DB account to run the container copy jobs.
 1. A single job is executed across all instances at any time.
-1. The online copy jobs utilize [all version and delete change feed mode](nosql/change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
+1. The online copy jobs utilize [all version and delete change feed mode](change-feed-modes.md?tabs=latest-version#all-versions-and-deletes-change-feed-mode-preview) to copy the data and replicate incremental changes from the source container to the destination container. 
 1. Once the job is completed, the platform deallocates these instances after 15 minutes of inactivity.
 
 ### [Offline copy](#tab/offline-copy)
@@ -80,7 +108,7 @@ Start using offline copy by following [how to create, monitor, and manage copy j
 1. The container copy jobs run on these instances.
 1. A single job is executed across all instances at any time.
 1. The instances are shared by all the container copy jobs that are running within the same account.
-1. The offline copy jobs utilize [Latest version change feed mode](nosql/change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
+1. The offline copy jobs utilize [Latest version change feed mode](change-feed-modes.md?tabs=latest-version#latest-version-change-feed-mode) to copy the data and replicate incremental changes from the source container to the destination container.
 1. The platform might deallocate the instances if they're idle for longer than 15 minutes.
 
 ::: zone-end
@@ -162,7 +190,6 @@ The rate of container copy job progress is determined by these factors:
 Container copy jobs don't work with accounts that have the following capabilities enabled. Disable these features before you run container copy jobs:
 
 * [Merge partition](merge.md)
-* [Disable key-based authentication](nosql/security/how-to-disable-key-based-authentication.md)
 
 ### Account configurations
 
@@ -272,17 +299,6 @@ Currently, container copy is supported in the following regions:
     ```output
     "code": "404",
     "message": "Response status code does not indicate success: NotFound (404); Substatus: 1003; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {\"Errors\":[\"Owner resource does not exist\"]
-    ```
-
-* Error - Request is unauthorized
-
-    If the request fails and displays the error "Unauthorized" (error code 401), local authorization might be disabled.
-
-    Container copy jobs use primary keys to authenticate. If local authorization is disabled, the job creation fails. Local authorization must be enabled for container copy jobs to work.
-
-    ```output
-    "code": "401",
-    "message": " Response status code does not indicate success: Unauthorized (401); Substatus: 5202; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: Local Authorization is disabled. Use an AAD token to authorize all requests."
     ```
 
 * Error - Error while getting resources for job
