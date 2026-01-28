@@ -89,7 +89,7 @@ You can monitor the lag in building global secondary indexes through the **Globa
 
 #### I want to understand the lag between my source container and index containers
 
-The **Global Secondary Index Propagation Latency in Seconds** metric shows the average difference in seconds between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then select **GlobalSecondaryIndexName** from the drop down of values.
+The **Global Secondary Index Propagation Latency in Seconds** metric shows the average difference in seconds between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then select **GlobalSecondaryIndexName** from the drop-down of values.
 
 #### I want to understand when my global secondary index is caught up and ready to use
 
