@@ -616,8 +616,12 @@
           href: monitor/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: monitor/concepts-query-performance-insight.md
-        - name: Autonomous tuning
+        - name: Autonomous tuning overview
           href: monitor/concepts-autonomous-tuning.md
+        - name: Configure autonomous tuning
+          href: monitor/how-to-configure-autonomous-tuning.md
+        - name: Use recommendations
+          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
         - name: Intelligent tuning
           href: monitor/concepts-intelligent-tuning.md
     - name: Download PostgreSQL and upgrade logs
@@ -626,12 +630,6 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Autonomous tuning
-      items:
-        - name: Configure autonomous tuning
-          href: monitor/how-to-configure-autonomous-tuning.md
-        - name: Use recommendations
-          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
     - name: Intelligent tuning
       items:
         - name: Azure portal
