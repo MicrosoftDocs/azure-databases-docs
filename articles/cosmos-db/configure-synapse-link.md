@@ -5,7 +5,7 @@ author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 12/05/2025
+ms.date: 01/28/2026
 ms.custom: references_regions, synapse-cosmos-db
 appliesto:
   - ✅ NoSQL
@@ -24,7 +24,6 @@ Azure Synapse Link is available for Azure Cosmos DB SQL API or for Azure Cosmos 
 * [Connect your Azure Cosmos DB database to an Azure Synapse workspace](#connect-to-cosmos-database)
 * [Query analytical store using Azure Synapse Analytics](#query)
 * [Improve performance with Best Practices](#best)
-* [Use Azure Synapse serverless SQL pool to analyze and visualize data in Power BI](#analyze-with-powerbi)
 
 You can also check the training module on how to [configure Azure Synapse Link for Azure Cosmos DB](/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/).
 
@@ -36,34 +35,17 @@ The first step to use Synapse Link is to enable it for your Azure Cosmos DB data
 > If you want to use customer-managed keys with Azure Synapse Link, you must configure your account's managed identity in your Azure Key Vault access policy before enabling Synapse Link on your account. To learn more, see how to [Configure customer-managed keys using Azure Cosmos DB accounts' managed identities](how-to-setup-cmk.md#using-managed-identity) article.
 
 > [!NOTE]
-> If you want to use Full Fidelity Schema for API for NoSQL accounts, you can't use the Azure portal to enable Synapse Link. This option can't be changed after Synapse Link is enabled in your account and to set it you must use Azure CLI or PowerShell. For more information, check [analytical store schema representation documentation](analytical-store-introduction.md#schema-representation). 
+> To configure Full Fidelity Schema for API for NoSQL accounts, enable Synapse Link by using Azure CLI or PowerShell. The selection can't be changed after Synapse Link is enabled. For more information, see [analytical store schema representation documentation](analytical-store-introduction.md#schema-representation).
 
 > [!NOTE]
 > You need [Contributor](/azure/role-based-access-control/built-in-roles#databases) role to enable Synapse Link at account level. And you need at least [Operator](/azure/role-based-access-control/built-in-roles#databases) to enable Synapse Link in your containers or collections.
 
-### Azure portal
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-
-1. [Create a new Azure account](create-sql-api-dotnet.md#create-account), or select an existing Azure Cosmos DB account.
-
-1. Navigate to your Azure Cosmos DB account and open the **Azure Synapse Link** under Integrations in the left pane.
-
-1. Select **Enable**. This process can take 1 to 5 minutes to complete.
-
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link.png" alt-text="Screenshot showing how to enable Synapse Link feature.":::
-
-1. Your account is now enabled to use Synapse Link. Next see how to create analytical store enabled containers to automatically start replicating your operational data from the transactional store to the analytical store.
-
-> [!NOTE]
-> Turning on Synapse Link does not turn on the analytical store automatically. Once you enable Synapse Link on the Cosmos DB account, enable analytical store on containers to start using Synapse Link. 
-
-> [!NOTE]
-> You can also enable Synapse Link for your account using the **Power BI** and the **Synapse Link** pane, in the **Integrations** section of the left navigation menu.
-
 ### Command-Line Tools
 
 Enable Synapse Link in your Azure Cosmos DB API for NoSQL or MongoDB account using Azure CLI or PowerShell.
+
+> [!NOTE]
+> Turning on Synapse Link does not turn on the analytical store automatically. Once you enable Synapse Link on the Cosmos DB account, enable analytical store on containers to start using Synapse Link. 
 
 #### Azure CLI
 
@@ -99,45 +81,12 @@ The second step is to enable Synapse Link for your containers or collections. Th
 Please note the following details when enabling Azure Synapse Link on your existing SQL API containers:
 
 * The same performance isolation of the analytical store auto-sync process applies to the initial sync and there is no performance impact on your OLTP workload.
-* A container's initial sync with analytical store total time will vary depending on the data volume and on the documents complexity. This process can take anywhere from a few seconds to multiple days. Please use the Azure portal to monitor the migration progress.
+* A container's initial sync with analytical store total time will vary depending on the data volume and on the documents complexity. This process can take anywhere from a few seconds to multiple days.
 * The throughput of your container, or database account, also influences the total initial sync time. Although RU/s are not used in this migration, the total RU/s available influences the performance of the process. You can temporarily increase your environment's available RUs to speed up the process.
 * You won't be able to query analytical store of an existing container while Synapse Link is being enabled on that container. Your OLTP workload isn't impacted and you can keep on reading data normally. Data ingested after the start of the initial sync will be merged into analytical store by the regular analytical store auto-sync process.
 
 > [!NOTE]
 > Now you can enable Synapse Link on your existing MongoDB API collections, using Azure CLI or PowerShell.
-
-
-### Azure portal
-
-#### New container 
-1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB Explorer](https://cosmos.azure.com).
-
-1. Navigate to your Azure Cosmos DB account and open the **Data Explorer** tab.
-
-1. Select **New Container** and enter a name for your database, container, partition key and throughput details. Turn on the **Analytical store** option. After you enable the analytical store, it creates a container with `analytical TTL` property set to the default value of  -1 (infinite retention). This analytical store that retains all the historical versions of records and can be changed later.
-
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Turn on analytical store for Azure Cosmos DB container":::
-
-1. If you have previously not enabled Synapse Link on this account, it will prompt you to do so because it's a pre-requisite to create an analytical store enabled container. If prompted, select **Enable Synapse Link**. This process can take 1 to 5 minutes to complete.
-
-1. Select **OK**, to create an analytical store enabled Azure Cosmos DB container.
-
-1. After the container is created, verify that analytical store has been enabled by clicking **Settings**, right below Documents in Data Explorer, and check if the **Analytical Store Time to Live** option is turned on.
-
-#### Existing container
-
-1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos DB Explorer](https://cosmos.azure.com).
-
-1. Navigate to your Azure Cosmos DB account and open the **Azure Synapse Link** tab.
-
-1. Under the **Enable Azure Synapse Link for your containers** section select the container. 
-
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-existing-container.png" alt-text="Screenshot showing how to turn on analytical store for an Azure Cosmos DB existing container.":::
-
-1. After the container enablement, verify that analytical store has been enabled by clicking **Settings**, right below Documents in Data Explorer, and check if the **Analytical Store Time to Live** option is turned on.
-
-> [!NOTE]
-> You can also enable Synapse Link for your account using the **Power BI** and the **Synapse Link** pane, in the **Integrations** section of the left navigation menu.
 
 ### Command-Line Tools
 
@@ -244,18 +193,6 @@ Use the instructions in [Connect to Azure Synapse Link](/azure/synapse-analytics
 Use the instructions in the [Query Azure Cosmos DB analytical store using Spark 3](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark-3) article on how to query with Synapse Spark 3. That article gives some examples on how you can interact with the analytical store from Synapse gestures. Those gestures are visible when you right-click on a container. With gestures, you can quickly generate code and tweak it to your needs. They are also perfect for discovering data with a single click.
 
 For Spark 2 integration use the instruction in the [Query Azure Cosmos DB analytical store using Spark 2](/azure/synapse-analytics/synapse-link/how-to-query-analytical-store-spark) article.
-
-### Query the analytical store using serverless SQL pool in Azure Synapse Analytics
-
-Serverless SQL pool allows you to query and analyze data in your Azure Cosmos DB containers that are enabled with Azure Synapse Link. You can analyze data in near real-time without impacting the performance of your transactional workloads. It offers a familiar T-SQL syntax to query data from the analytical store and integrated connectivity to a wide range of BI and ad-hoc querying tools via the T-SQL interface. To learn more, see the [Query analytical store using serverless SQL pool](/azure/synapse-analytics/sql/query-cosmos-db-analytical-store) article.
-
-## <a id="analyze-with-powerbi"></a>Use serverless SQL pool to analyze and visualize data in Power BI
-
-You can use the integrated BI experience in the Azure Cosmos DB portal, to build BI dashboards using Synapse Link with just a few clicks. To learn more, see [how to build BI dashboards using Synapse Link](integrated-power-bi-synapse-link.md). This integrated experience will create simple T-SQL views in Synapse serverless SQL pools, for your Azure Cosmos DB containers. You can build BI dashboards over these views, which will query your Azure Cosmos DB containers in real-time, using [Direct Query](/power-bi/connect-data/service-dataset-modes-understand#directquery-mode), reflecting latest changes to your data. There is no performance or cost impact to your transactional workloads, and no complexity of managing ETL pipelines.
-
-If you want to use advanced T-SQL views with joins across your containers or build Power BI dashboards in [Import mode](/power-bi/connect-data/service-dataset-modes-understand#import-mode), see [Use serverless SQL pool to analyze Azure Cosmos DB data with Synapse Link](synapse-link-power-bi.md).
-
-## <a id="best"></a> Improve Performance with Best Practices
 
 ### Custom Partitioning
 
