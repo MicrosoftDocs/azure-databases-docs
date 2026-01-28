@@ -2387,7 +2387,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-resource-usage-cost-based-vacuum-delay.md",
-            "redirect_url": "/azure/postgresql/flexible-server/param-resource-usage-cost-based-vacuum-delay",
+            "redirect_url": "/azure/postgresql/flexible-server/param-resource-usage-cost-based-vacuum-delay.md",
             "redirect_document_id": false
         },
         {

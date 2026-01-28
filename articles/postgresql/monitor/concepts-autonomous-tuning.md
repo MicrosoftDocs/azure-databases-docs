@@ -4,7 +4,7 @@ description: This article describes the autonomous tuning feature available in a
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/18/2025
+ms.date: 01/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -17,19 +17,22 @@ ms.custom:
 
 # Autonomous tuning
 
-Autonomous tuning is a feature in your Azure Database for PostgreSQL flexible server instance that automatically improves the performance of your workload by analyzing the tracked queries and providing index or table recommendations.
+Autonomous tuning is a feature in your Azure Database for PostgreSQL flexible server instance that analyzes queries traced of your workload and provides recommendations to improve the performance of those queries.
 
-It's a built-in offering in your Azure Database for PostgreSQL flexible server instance, which builds on top of [Monitor performance with query store](concepts-query-store.md) functionality. Autonomous tuning analyzes the workload tracked by query store, and produces index or table recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes.
+It's a built-in offering in your Azure Database for PostgreSQL flexible server instance, which builds on top of [query store](concepts-query-store.md) functionality. Autonomous tuning analyzes the workload tracked by query store, and produces index or table recommendations to improve the performance of the analyzed workload. It can produce recommendations to create new indexes, eliminate duplicate or unused indexes, analyze tables that have no statistics or outdated statistics, or vacuum bloated tables.
 
 - [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an autonomous tuning session.
-- [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes) to reduce the performance impact their existence and maintenance have on the system's overall performance.
+- [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes).
 - [Identify indexes not used in a configurable period](#drop-unused-indexes) that could be candidates to eliminate.
+- [Identify indexes marked as invalid](#reindex-invalid-indexes) that should be reindexed to turn them into valid ones.
+- [Identify tables that lack current statistics](#analyze-table-recommendations) that should be analyzed.
+- [Identify tables that are bloated](#vacuum-table-recommendations) that should be vacuumed.
 
 ## General description of the autonomous tuning algorithm
 
 When the `index_tuning.mode` server parameter is configured to `report`, tuning sessions are automatically started with the frequency configured in server parameter `index_tuning.analysis_interval`, expressed in minutes.
 
-In the first phase, the tuning session searches for the list of databases in which it considers that whatever recommendations it might produce might significantly impact the overall performance of the system. To do so, it collects all queries recorded by query store whose executions were captured within the lookup interval this tuning session is focusing on. The lookup interval currently spans to the past `index_tuning.analysis_interval` minutes, from the starting time of the tuning session.
+In the first phase, the tuning session searches for the list of databases in which it considers that whatever recommendations it might produce might significantly affect the overall performance of the system. To do so, it collects all queries recorded by query store whose executions were captured within the lookup interval this tuning session is focusing on. The lookup interval currently spans to the past `index_tuning.analysis_interval` minutes, from the starting time of the tuning session.
 
 For all user-initiated queries with executions recorded in [query store](concepts-query-store.md) and whose runtime statistics aren't [reset](concepts-query-store.md#query_storeqs_reset), the system ranks them based on their aggregated total execution time. It focuses its attention on the most prominent queries, based on their duration.
 
@@ -55,11 +58,9 @@ Potential recommendations aim to improve the performance of these types of queri
 - Queries combining filters and sorting.
 
 > [!NOTE]
-> The only type of indexes the system currently recommends are those of type [B-Tree](https://www.postgresql.org/docs/current/indexes-types.html#INDEXES-TYPES-BTREE).
+> The only type of indexes the system currently recommends is [B-Tree](https://www.postgresql.org/docs/current/indexes-types.html#INDEXES-TYPES-BTREE).
 
-If a query references one column of a table and that table has no statistics, it skips the whole query and doesn't produce any index recommendations to improve its execution.
-
-Analysis required to gather statistics can be triggered manually using the ANALYZE command or automatically by the autovacuum daemon.
+If a query references one column of a table and that table has no statistics, doesn't produce any index recommendations to improve its execution. However, it will generate a recommendation to analyze the table.
 
 `index_tuning.max_indexes_per_table` specifies the number of indexes that can be recommended, excluding any indexes that might already exist on the table for any single table referenced by any number of queries during a tuning session.
 
@@ -76,9 +77,9 @@ All the parameters mentioned in the previous paragraphs, their default values an
 
 The script produced along with the recommendation to create an index, follows this pattern:
 
-`create index concurrently {indexName} on {schema}.{table}({column_name}[, ...])`
+`CREATE INDEX CONCURRENTLY {indexName} ON {schema}.{table}({column_name}[, ...])`
 
-It includes the clause `concurrently`. For further information about the effects of this clause, visit PostgreSQL official documentation for [CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY).
+It includes the clause `CONCURRENTLY`. For further information about the effects of this clause, visit PostgreSQL official documentation for [CREATE INDEX](https://www.postgresql.org/docs/current/sql-createindex.html#SQL-CREATEINDEX-CONCURRENTLY).
 
 Autonomous tuning automatically generates the names of the recommended indexes, which typically consist of the names of the different key columns separated by "_" (underscores) and with a constant "_idx" suffix. If the total length of the name exceeds PostgreSQL limits or if it clashes with any existing relations, the name is slightly different. It could be truncated, and a number could be appended to the end of the name.
 
