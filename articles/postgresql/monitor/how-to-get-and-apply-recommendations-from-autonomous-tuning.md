@@ -50,7 +50,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
 
-3. If there are recommendations available of any of the five existing types, select on the **View recommendations** summarization to access the full list of that specific type you're interested in:
+3. If there are recommendations available of any of the five existing types, select on its summarization card to access the full list of that specific type you're interested in:
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
@@ -541,7 +541,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. Assuming autonomous tuning produced recommendations, select the **View recommendations** summarization to access the list of available recommendations.
+3. Assuming autonomous tuning produced recommendations, select one of the summarization cards to access the list of available recommendations of that type.
 
      :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
