@@ -20,7 +20,7 @@ The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-vers
 
 ### Limitations
 
-- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](../extensions/how-to-allow-extensions.md) for details.
+- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](https://learn.microsoft.com/en-us/azure/postgresql/extensions/concepts-extensions-by-engine?pivots=postgresql-18) for details.
 - Can't configure server to use new Async I/O `io_method = io_uring`.
 
 ## PostgreSQL version 17
