@@ -83,14 +83,19 @@ The command returns all information about the CREATE INDEX recommendations produ
 [
   {
     "analyzedWorkload": {
-      "endTime": "2025-12-18T14:40:18.788628+00:00",
+      "endTime": "2026-01-27T14:40:18.788628+00:00",
       "queryCount": 18,
-      "startTime": "2025-12-18T13:40:22.544654+00:00"
+      "startTime": "2026-01-27T13:40:22.544654+00:00"
     },
+    "currentState": "Active",
     "details": {
       "databaseName": "<database>",
-      "includedColumns": "",
-      "indexColumns": "\"<table>\".\"<column>\"",
+      "includedColumns": [
+        ""
+      ],
+      "indexColumns": [
+        "\"<tabe>\".\"<column>\""
+      ],
       "indexName": "<index>",
       "indexType": "BTREE",
       "schema": "<schema>",
@@ -98,31 +103,31 @@ The command returns all information about the CREATE INDEX recommendations produ
     },
     "estimatedImpact": [
       {
-        "absoluteValue": 0.3984375,
+        "absoluteValue": 1.9296875,
         "dimensionName": "IndexSize",
         "queryId": null,
         "unit": "MB"
       },
       {
-        "absoluteValue": 62.86969111969111,
+        "absoluteValue": 99.98674047373842,
         "dimensionName": "QueryCostImprovement",
-        "queryId": -555955670159268890,
+        "queryId": -2000193826232128395,
         "unit": "Percentage"
       }
     ],
     "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
     "implementationDetails": {
       "method": "SQL",
-      "script": "create index concurrently <index> on <schema>.<table>(<column>)"
+      "script": "CREATE INDEX CONCURRENTLY \"<index>\" ON \"<schema>\".\"<tabe>\"(\"<column>\");"
     },
     "improvedQueryIds": [
-      -555955670159268890
+      -2000193826232128395
     ],
-    "initialRecommendedTime": "2025-12-18T14:40:19.707617+00:00",
+    "initialRecommendedTime": "2026-01-27T14:40:19.707617+00:00",
     "kind": "",
-    "lastRecommendedTime": "2025-12-18T14:40:19.707617+00:00",
-    "name": "CreateIndex_<database>_<schema>_<column>_idx",
-    "recommendationReason": "Column \"<table>\".\"<column>\" appear in Equal Predicate clause(s) in query -555955670159268890;",
+    "lastRecommendedTime": "2026-01-27T14:40:19.707617+00:00",
+    "name": "CreateIndex_<database>_<schema>_<index>",
+    "recommendationReason": "Column \"<table>\".\"<coumn>\" appear in Equal Predicate clause(s) in query -2000193826232128395;",
     "recommendationType": "CreateIndex",
     "resourceGroup": "<resource_group>",
     "systemData": null,
@@ -152,14 +157,19 @@ The command returns all information about the DROP INDEX recommendations produce
 [
   {
     "analyzedWorkload": {
-      "endTime": "2025-12-18T19:02:47.522193+00:00",
+      "endTime": "2026-01-27T19:02:47.522193+00:00",
       "queryCount": 0,
-      "startTime": "2025-12-18T19:02:47.522193+00:00"
+      "startTime": "2026-01-27T19:02:47.522193+00:00"
     },
+    "currentState": "Active",
     "details": {
       "databaseName": "<database>",
-      "includedColumns": "",
-      "indexColumns": "<column>",
+      "includedColumns": [
+        ""
+      ],
+      "indexColumns": [
+        "<column>"
+      ],
       "indexName": "<index>",
       "indexType": "BTREE",
       "schema": "<schema>",
@@ -167,34 +177,39 @@ The command returns all information about the DROP INDEX recommendations produce
     },
     "estimatedImpact": [
       {
-        "absoluteValue": 35.0,
+        "absoluteValue": 31.0,
         "dimensionName": "Benefit",
         "queryId": null,
         "unit": "Percentage"
       },
       {
-        "absoluteValue": 31.28125,
+        "absoluteValue": 0.0078125,
         "dimensionName": "IndexSize",
         "queryId": null,
         "unit": "MB"
       }
     ],
-    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/recommendations/<recommendation_id>",
     "implementationDetails": {
       "method": "SQL",
-      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+      "script": "DROP INDEX CONCURRENTLY \"public\".\"idx_dropindextable_c2\";"
     },
     "improvedQueryIds": null,
-    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "initialRecommendedTime": "2026-01-27T19:02:47.556792+00:00",
     "kind": "",
-    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
-    "name": "DropIndex_<database>_<sechema>_<index>",
-    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
+    "lastRecommendedTime": "2026-01-27T19:02:47.556792+00:00",
+    "name": "DropIndex_<database>_<schema>_<index>",
+    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a smaller oid compared to \"<index>\".",
     "recommendationType": "DropIndex",
     "resourceGroup": "<resource_group>",
     "systemData": null,
-    "timesRecommended": 1,
+    "timesRecommended": 5,
     "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+  },
+  {
+    .
+    .
+    .
   }
 ]
 ```
@@ -214,14 +229,19 @@ The command returns all information about the REINDEX recommendations produced b
 [
   {
     "analyzedWorkload": {
-      "endTime": "2025-12-18T19:02:47.522193+00:00",
+      "endTime": "2026-01-27T19:02:47.522193+00:00",
       "queryCount": 0,
-      "startTime": "2025-12-18T19:02:47.522193+00:00"
+      "startTime": "2026-01-27T19:02:47.522193+00:00"
     },
+    "currentState": "Active",
     "details": {
       "databaseName": "<database>",
-      "includedColumns": "",
-      "indexColumns": "<column>",
+      "includedColumns": [
+        ""
+      ],
+      "indexColumns": [
+        "<column>"
+      ],
       "indexName": "<index>",
       "indexType": "BTREE",
       "schema": "<schema>",
@@ -229,34 +249,39 @@ The command returns all information about the REINDEX recommendations produced b
     },
     "estimatedImpact": [
       {
-        "absoluteValue": 35.0,
+        "absoluteValue": 41.0,
         "dimensionName": "Benefit",
         "queryId": null,
         "unit": "Percentage"
       },
       {
-        "absoluteValue": 31.28125,
+        "absoluteValue": 0.0,
         "dimensionName": "IndexSize",
         "queryId": null,
         "unit": "MB"
       }
     ],
-    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/recommendations/<recommendation_id>",
     "implementationDetails": {
       "method": "SQL",
-      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+      "script": "REINDEX INDEX CONCURRENTLY \"<schema>\".\"<schema>\";"
     },
     "improvedQueryIds": null,
-    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "initialRecommendedTime": "2026-01-27T15:26:37.647505+00:00",
     "kind": "",
-    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
-    "name": "DropIndex_<database>_<sechema>_<index>",
-    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
-    "recommendationType": "DropIndex",
+    "lastRecommendedTime": "2026-01-27T19:26:43.297535+00:00",
+    "name": "ReIndex_<database>_<schema>_<index>",
+    "recommendationReason": "The index is invalid and the recommended recovery method is to reindex.",
+    "recommendationType": "ReIndex",
     "resourceGroup": "<resource_group>",
     "systemData": null,
-    "timesRecommended": 1,
+    "timesRecommended": 5,
     "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+  },
+  {
+    .
+    .
+    .
   }
 ]
 ```
@@ -267,7 +292,7 @@ To list all ANALYZE recommendations, use this command:
 az postgres flexible-server autonomous-tuning list-table-recommendations \
   --resource-group <resource_group> \
   --server-name <server> \
-  --recommendation-type analyze
+  --recommendation-type analyzetable
 ```
 
 The command returns all information about the ANALYZE recommendations produced by autonomous tuning, showing something similar to the following output:
@@ -276,49 +301,44 @@ The command returns all information about the ANALYZE recommendations produced b
 [
   {
     "analyzedWorkload": {
-      "endTime": "2025-12-18T19:02:47.522193+00:00",
+      "endTime": "2026-01-27T19:02:47.522193+00:00",
       "queryCount": 0,
-      "startTime": "2025-12-18T19:02:47.522193+00:00"
+      "startTime": "2026-01-27T19:02:47.522193+00:00"
     },
+    "currentState": null,
     "details": {
       "databaseName": "<database>",
-      "includedColumns": "",
-      "indexColumns": "<column>",
-      "indexName": "<index>",
-      "indexType": "BTREE",
+      "includedColumns": null,
+      "indexColumns": null,
+      "indexName": null,
+      "indexType": null,
       "schema": "<schema>",
       "table": "<table>"
     },
-    "estimatedImpact": [
-      {
-        "absoluteValue": 35.0,
-        "dimensionName": "Benefit",
-        "queryId": null,
-        "unit": "Percentage"
-      },
-      {
-        "absoluteValue": 31.28125,
-        "dimensionName": "IndexSize",
-        "queryId": null,
-        "unit": "MB"
-      }
-    ],
-    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "estimatedImpact": null,
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/recommendations/<recommendation_id>",
     "implementationDetails": {
       "method": "SQL",
-      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+      "script": "ANALYZE \"<schema>\".\"<table>\";"
     },
-    "improvedQueryIds": null,
-    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "improvedQueryIds": [
+      1574410013562407420
+    ],
+    "initialRecommendedTime": "2026-01-27T17:26:40.825994+00:00",
     "kind": "",
-    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
-    "name": "DropIndex_<database>_<sechema>_<index>",
-    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
-    "recommendationType": "DropIndex",
+    "lastRecommendedTime": "2026-01-27T17:26:40.825994+00:00",
+    "name": "Analyze_<database>_<schema>_<table>",
+    "recommendationReason": "Table \"<schema>\".\"<table>\" has not been analyzed but is being used by queries: \"1574410013562407420\".",
+    "recommendationType": "Analyze",
     "resourceGroup": "<resource_group>",
     "systemData": null,
     "timesRecommended": 1,
-    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/table"
+  },
+  {
+    .
+    .
+    .
   }
 ]
 ```
@@ -329,7 +349,7 @@ To list all VACUUM recommendations, use this command:
 az postgres flexible-server autonomous-tuning list-table-recommendations \
   --resource-group <resource_group> \
   --server-name <server> \
-  --recommendation-type vacuum
+  --recommendation-type vacuumtable
 ```
 
 The command returns all information about the VACUUM recommendations produced by autonomous tuning, showing something similar to the following output:
@@ -338,49 +358,44 @@ The command returns all information about the VACUUM recommendations produced by
 [
   {
     "analyzedWorkload": {
-      "endTime": "2025-12-18T19:02:47.522193+00:00",
-      "queryCount": 0,
-      "startTime": "2025-12-18T19:02:47.522193+00:00"
+      "endTime": "2026-01-27T17:26:40.102894+00:00",
+      "queryCount": 5,
+      "startTime": "2026-01-27T16:26:40.102895+00:00"
     },
+    "currentState": null,
     "details": {
       "databaseName": "<database>",
-      "includedColumns": "",
-      "indexColumns": "<column>",
-      "indexName": "<index>",
-      "indexType": "BTREE",
+      "includedColumns": null,
+      "indexColumns": null,
+      "indexName": null,
+      "indexType": null,
       "schema": "<schema>",
       "table": "<table>"
     },
-    "estimatedImpact": [
-      {
-        "absoluteValue": 35.0,
-        "dimensionName": "Benefit",
-        "queryId": null,
-        "unit": "Percentage"
-      },
-      {
-        "absoluteValue": 31.28125,
-        "dimensionName": "IndexSize",
-        "queryId": null,
-        "unit": "MB"
-      }
-    ],
-    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/index/recommendations/<recommendation_id>",
+    "estimatedImpact": null,
+    "id": "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server>/tuningOptions/table/recommendations/<recommendation_id>",
     "implementationDetails": {
       "method": "SQL",
-      "script": "drop index concurrently \"<schema>\".\"<index>\";"
+      "script": "VACUUM \"<schema>\".\"<table>\";"
     },
-    "improvedQueryIds": null,
-    "initialRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
+    "improvedQueryIds": [
+      -2306335776078168728
+    ],
+    "initialRecommendedTime": "2026-01-27T17:26:40.823239+00:00",
     "kind": "",
-    "lastRecommendedTime": "2025-12-18T19:02:47.556792+00:00",
-    "name": "DropIndex_<database>_<sechema>_<index>",
-    "recommendationReason": "Duplicate of \"<index>\". The equivalent index \"<index>\" has a shorter length compared to \"<index>\".",
-    "recommendationType": "DropIndex",
+    "lastRecommendedTime": "2026-01-27T17:26:40.823239+00:00",
+    "name": "Vacuum_<database>_<schema>_<table>",
+    "recommendationReason": "Table \"<schema>\".\"<table>\" should be vacuumed. It has an estimated size of <table_size>GB and a bloat percentage of <bloat_percentage>% (bloat size represents <bloat_size>GB).",
+    "recommendationType": "Vacuum",
     "resourceGroup": "<resource_group>",
     "systemData": null,
     "timesRecommended": 1,
-    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/index"
+    "type": "Microsoft.DBforPostgreSQL/flexibleServers/tuningOptions/table"
+  },
+  {
+    .
+    .
+    .
   }
 ]
 ```
@@ -421,9 +436,9 @@ The `recommendations` view exposes all the details for all recommendations gener
 | column name | data type | Description |
 | --- | --- | --- |
 | recommendation_id | integer | Number that uniquely identifies a recommendation in the whole server. |
-| current_state | XXXXX | XXXXX. |
+| current_state | intelligentperformance.recommendation_current_state | Indicates the current state of the recommendation produced. Possible values are: `Active`, `Detected`. |
 | last_known_session_id | uuid | Every index tuning session is assigned a Globally Unique Identifier. The value in this column represents that of the session which most recently produced this recommendation. |
-| last_known_session_type | XXXXX | XXXXX. |
+| last_known_session_type | intelligentperformance.recommendation_type | Type of the recommendation session where recommendation was last recommended. Possibe values are: `CreateIndex`, `DropIndex`, `ReIndex`. |
 | database_name | varchar(64) | Name of the database in whose context was produced the recommendation. |
 | recommendation_type | intelligentperformance.recommendation_type | Indicates the type of the recommendation produced. Possible values are: `CreateIndex`, `DropIndex`, `ReIndex`, `AnalyzeTable`, `VacuumTable`. |
 | initial_recommended_time | timestamp without timezone | Timestamp at which the tuning session that produced this recommendation was started. |
@@ -559,8 +574,9 @@ The command returns all the statements that must be run to implement all produce
 
 ```output
 [
-  "create index concurrently <column>_idx on <schema>.<table>(<column>)",
-  "drop index concurrently \"<schema>\".\"<index>\";"
+  "CREATE INDEX CONCURRENTLY \"<column>_idx\" on \"<schema>\".\"<table>\"(\"<column>\");",
+  "DROP INDEX concurrently \"<schema>\".\"<index>\";"
+  "REINDEX INDEX CONCURRENTLY \"<schema>\".\"<index>\";"
 ]
 ```
 
@@ -579,11 +595,10 @@ The command returns all the statements that must be run to implement all produce
 
 ```output
 [
-  "analyze <schema>.<table>;",
-  "vacuum \"<schema>\".\"<index>\";"
+  "VACUUM \"<schema>\".\"<index>\";"
+  "ANALYZE <schema>.<table>;",
 ]
 ```
-
 
 ---
 
