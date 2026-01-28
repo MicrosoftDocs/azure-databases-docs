@@ -10,7 +10,7 @@ ai-usage: ai-assisted
 
 # Quickstart: AI Agent with vector search in Azure DocumentDB using Go
 
-Build an intelligent AI agent using Go and Azure DocumentDB. This quickstart demonstrates a two-agent architecture that performs semantic hotel search and generates personalized recommendations.
+Build an intelligent AI agent by using Go and Azure DocumentDB. This quickstart demonstrates a two-agent architecture that performs semantic hotel search and generates personalized recommendations.
 
 > [!IMPORTANT]
 > This sample is a reference implementation demonstrating agentic patterns in Go. It uses a custom-built agent architecture rather than an agent framework, which is the recommended approach for production agentic applications.
@@ -32,7 +32,7 @@ Build an intelligent AI agent using Go and Azure DocumentDB. This quickstart dem
     - **IVF (Inverted File Index)**: M10 or higher (default algorithm)
     - **HNSW (Hierarchical Navigable Small World)**: M30 or higher (graph-based)
     - **DiskANN**: M40 or higher (optimized for large-scale)
-  - **Firewall configuration**: REQUIRED Without proper firewall configuration, connection attempts will fail
+  - **Firewall configuration**: REQUIRED Without proper firewall configuration, connection attempts fail
     - Add your client IP address to the cluster's firewall rules. For more information, see [Grant access from your IP address](/azure/cosmos-db/how-to-configure-firewall#grant-access-from-your-ip-address).
   - For passwordless authentication, Role Based Access Control (RBAC) enabled
 
@@ -92,7 +92,7 @@ MONGO_DB_INDEX_NAME=vectorSearchIndex
 ```
 
 **Prerequisites for passwordless authentication:**
-- Ensure you're logged in to Azure: `az login`
+- Ensure you're signed in to Azure: `az login`
 - Grant your identity the following roles:
   - `Cognitive Services OpenAI User` on the Azure OpenAI resource
   - `DocumentDB Account Contributor` and `Cosmos DB Account Reader Role` on the Azure DocumentDB resource
@@ -101,7 +101,7 @@ MONGO_DB_INDEX_NAME=vectorSearchIndex
 
 ### Option 2: Connection string and API key authentication
 
-Use key-based authentication by setting `USE_PASSWORDLESS=false` (or omitting it) and providing `AZURE_OPENAI_API_KEY` and `AZURE_DOCUMENTDB_CONNECTION_STRING` in your `.env` file.
+Use key-based authentication by setting `USE_PASSWORDLESS=false` (or omitting it) and providing `AZURE_OPENAI_API_KEY` and `AZURE_DOCUMENTDB_CONNECTION_STRING` values in your `.env` file.
 
 ```.env
 # Disable passwordless authentication
@@ -120,7 +120,7 @@ MONGO_DB_INDEX_NAME=vectorSearchIndex
 
 ## Copy the sample hotel data
 
-Copy `HotelsData_toCosmosDB.JSON` file from the root data directory of the repository into the data directory for the sample.
+Copy the `HotelsData_toCosmosDB.JSON` file from the root data directory of the repository into the data directory for the sample.
 
 ```bash
 mkdir -p ./data    # Create data directory if it doesn't exist
@@ -129,7 +129,7 @@ cp ../data/HotelsData_toCosmosDB.JSON ./data/    # Copy the sample data file
 
 ## Project structure
 
-The project follows the standard Go project layout. Your directory structure should look like the following:
+The project follows the standard Go project layout. Your directory structure should look like the following structure:
 
 ```
 mongo-vcore-agent-go/
@@ -167,7 +167,7 @@ This section walks through the core components of the AI agent workflow. It high
 
 The `cmd/agent/main.go` file orchestrates an AI-powered hotel recommendation system.
 
-The uses two Azure services:
+The application uses two Azure services:
 
 - Azure OpenAI that uses AI models that understand queries and generate recommendations
 - Azure DocumentDB that stores hotel data and performs vector similarity searches
@@ -205,15 +205,15 @@ The planner agent receives the user's natural language query and sends it to an 
 
 The synthesizer agent is the *writer* that creates helpful recommendations.
 
-The synthesizer agent receives the original user query along with the hotel search results and sends everything to an AI model with instructions for writing recommendations. It returns a natural language response that compares hotels and explains the best options. This matters because raw search results aren't user-friendly. The synthesizer transforms database records into a conversational recommendation that explains why certain hotels match the user's needs.
+The synthesizer agent receives the original user query along with the hotel search results. It sends everything to an AI model with instructions for writing recommendations. It returns a natural language response that compares hotels and explains the best options. This approach matters because raw search results aren't user-friendly. The synthesizer transforms database records into a conversational recommendation that explains why certain hotels match the user's needs.
 
 :::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/agents.go" range="87-109":::
 
 ### Agent tools
 
-The `internal/agents/tools.go` source file defines the vector search tool used by the planner agent.
+The `internal/agents/tools.go` source file defines the vector search tool that the planner agent uses.
 
-The tools file defines a search tool that the AI agent can use to find hotels. This is how the agent connects to the database. The AI doesn't search the database directly. It asks to use the search tool, and the tool executes the actual search.
+The tools file defines a search tool that the AI agent can use to find hotels. This tool is how the agent connects to the database. The AI doesn't search the database directly. It asks to use the search tool, and the tool executes the actual search.
 
 #### Tool definition
 
@@ -227,9 +227,9 @@ When the AI calls the tool, the `Execute` method runs. It generates an embedding
 
 :::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/tools.go" range="30-52":::
 
-#### Why this pattern?
+#### Why use this pattern?
 
-Separating the tool from the agent provides flexibility. The AI decides when to search and what to search for, while the tool handles how to search. You can add more tools without changing agent logic.
+Separating the tool from the agent provides flexibility. The AI decides when to search and what to search for, while the tool handles how to search. You can add more tools without changing the agent logic.
 
 ### Prompts
 
@@ -237,19 +237,19 @@ The `internal/prompts/prompts.go` source file contains system prompts and tool d
 
 The prompts file defines the instructions and context given to the AI models for both the planner and synthesizer agents. These prompts guide the AI's behavior and ensure it understands its role in the workflow.
 
-The quality of AI responses depends heavily on clear instructions. These prompts set boundaries, define output format, and focus the AI on the user's goal of making a decision. You can customize these prompts to change how the agents behave without modifying any code.
+The quality of AI responses depends heavily on clear instructions. These prompts set boundaries, define the output format, and focus the AI on the user's goal of making a decision. You can customize these prompts to change how the agents behave without modifying any code.
 
 :::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/prompts/prompts.go" range="20-51":::
 
 ## Run the sample
 
-1. Before running the agent, you need to upload hotel data with embeddings. The `cmd/upload/main.go` command loads hotels from the JSON file, generates embeddings for each hotel using `text-embedding-3-small`, inserts documents into Azure DocumentDB, and creates a vector index.
+1. Before running the agent, upload hotel data with embeddings. The `cmd/upload/main.go` command loads hotels from the JSON file, generates embeddings for each hotel using `text-embedding-3-small`, inserts documents into Azure DocumentDB, and creates a vector index.
 
     ```bash
     go run cmd/upload/main.go
     ```
 
-1. Run the hotel recommendation agent using the `cmd/agent/main.go` command. The agent calls the planner agent, the vector search, and the synthesizer agent. The output includes similarity scores, and the synthesizer agent's comparative analysis with recommendations.
+1. Run the hotel recommendation agent by using the `cmd/agent/main.go` command. The agent calls the planner agent, the vector search, and the synthesizer agent. The output includes similarity scores, and the synthesizer agent's comparative analysis with recommendations.
 
     ```bash
     go run cmd/agent/main.go
@@ -301,7 +301,7 @@ The quality of AI responses depends heavily on clear instructions. These prompts
 
 ## Clean up resources
 
-Use the cleanup command to delete the test database when done. Run the following command:
+Use the cleanup command to delete the test database when you're done. Run the following command:
 
 ```bash
 go run cmd/cleanup/main.go
