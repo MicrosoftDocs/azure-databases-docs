@@ -40,27 +40,27 @@ Using the [Azure portal](https://portal.azure.com/):
 
    - If the feature is enabled but no recommendations are produced yet, the screen looks like this:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-enabled-and-no-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is enabled but there aren't recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-enabled-and-no-recommendations.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-enabled-and-no-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is enabled but there aren't recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-enabled-and-no-recommendations.png":::
 
    - If the feature is disabled and it never produced recommendations in the past, the screen looks like this:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-no-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there aren't recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-no-recommendations.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-no-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there aren't recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-no-recommendations.png":::
 
    - If the feature is disabled but it was enabled before and produced recommendations, the screen looks like this:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
 
 3. If there are recommendations available of any of the five existing types, select on its summarization card to access the full list of that specific type you're interested in:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
 4. The list shows all available recommendations of that type, with some details for each of them. By default, the list is sorted by **Last recommended** in descending order, showing the most recent recommendations at the top. However, you can sort by any other column, and can use the filtering box to reduce the list of items shown. Filtered items are those whose database, schema, or table names contain the text provided:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png" alt-text="Screenshot that shows the aspect of 'Recommendations' page with several recommendations." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png" alt-text="Screenshot that shows the aspect of 'Recommendations' page with several recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
 5. To see further information about any specific recommendation, select on the name of that recommendation, and the **Recommendation details** pane opens on the right side of the screen to surface all available details about the recommendation:
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png" alt-text="Screenshot that shows the aspect of 'Recommendation details' pane for one particular recommendation." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png" alt-text="Screenshot that shows the aspect of 'Recommendation details' pane for one particular recommendation." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png":::
 
 ### [CLI](#tab/CLI-list-recommendations)
 
@@ -543,17 +543,17 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Assuming autonomous tuning produced recommendations, select one of the summarization cards to access the list of available recommendations of that type.
 
-     :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
 4. From the list of recommendations, either:
 
     - Select the ellipsis to the right of the recommendation name, for which you want to obtain the SQL statement, and select **Copy SQL script**. 
 
-       :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
+       :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
     - Or select the name of the recommendation to show its **Recommendation details**, and select the copy to clipboard icon in the **SQL script** text box to copy the SQL statement.
 
-       :::image type="content" source="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendation details' page." lightbox="media/how-to-get-and-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png":::
+       :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendation details' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png":::
 
 ### [CLI](#tab/CLI-apply-recommendations)
 

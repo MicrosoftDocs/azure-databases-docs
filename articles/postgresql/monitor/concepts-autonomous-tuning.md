@@ -176,7 +176,7 @@ If you use the CLI commands `az postgres flexible-server autonomous-tuning show-
 
 ## Information produced by autonomous tuning
 
-[Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md) describes in full detail how to obtain and use the recommendations produced by autonomous tuning.
+[Use autonomous tuning recommendations](how-to-get-apply-recommendations-from-autonomous-tuning.md) describes in full detail how to obtain and use the recommendations produced by autonomous tuning.
 
 ## Limitations and supportability
 
@@ -247,4 +247,4 @@ Following is a list of query types for which autonomous tuning won't generate CR
 
 - [Query store](concepts-query-store.md).
 - [Configure autonomous tuning](how-to-configure-autonomous-tuning.md).
-- [Use autonomous tuning recommendations](how-to-get-and-apply-recommendations-from-autonomous-tuning.md).
+- [Use autonomous tuning recommendations](how-to-get-apply-recommendations-from-autonomous-tuning.md).

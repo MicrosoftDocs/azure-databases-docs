@@ -3902,7 +3902,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/monitor/how-to-get-and-apply-recommendations-from-index-tuning.md",
-            "redirect_url": "/azure/postgresql/monitor/how-to-get-and-apply-recommendations-from-autonomous-tuning",
+            "redirect_url": "/azure/postgresql/monitor/how-to-get-apply-recommendations-from-autonomous-tuning",
             "redirect_document_id": true
         }
     ]

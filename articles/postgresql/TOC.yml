@@ -631,7 +631,7 @@
         - name: Configure autonomous tuning
           href: monitor/how-to-configure-autonomous-tuning.md
         - name: Use recommendations
-          href: monitor/how-to-get-and-apply-recommendations-from-autonomous-tuning.md
+          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
     - name: Intelligent tuning
       items:
         - name: Azure portal
