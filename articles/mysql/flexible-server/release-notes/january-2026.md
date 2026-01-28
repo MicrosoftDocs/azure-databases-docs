@@ -39,7 +39,7 @@ This version doesn't introduce any new features.
 - Improved the error message that's shown when you attempt to enable HA on a VNET-based instance that still has Accelerated Logs enabled.
 - Added TLS 1.3 support for Azure MySQL 5.7 version.
 
-## Known problems fixes
+## Known issues fixes
 
-- Fixed a problem where enabling geo backup caused subsequent GTID reset operations to fail.
-- Fixed a problem where certain HA servers behind a dedicated SLB couldn't enable a private endpoint.
+- Fixed an issue where enabling geo backup caused subsequent GTID reset operations to fail.
+- Fixed an issue where certain HA servers behind a dedicated SLB couldn't enable a private endpoint.
