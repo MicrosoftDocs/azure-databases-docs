@@ -40,11 +40,11 @@ The following queries are excluded from that list:
 - System-initiated queries. (that is, queries executed by `azuresu` role)
 - Queries executed in the context of any system database (`azure_sys`, `template0`, `template1`, and `azure_maintenance`).
 
-The algorithm iterates over the target databases, searching for possible indexes that could improve the performance of analyzed workloads. It also searches for indexes that can be eliminated because they're identified as duplicates or not used for a configurable period of time.
+The algorithm iterates over the target databases, searching for possible indexes that could improve the performance of analyzed workloads. Also searches for indexes that can be eliminated because they're duplicates or not used for a configurable period of time. Also identifies tables lacking current statistics or bloated tables.
 
 ### CREATE INDEX recommendations
 
-For each database identified as a candidate to analyze for producing recommendations, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
+For each database identified as a candidate to analyze, all SELECT, UPDATE, INSERT, and DELETE queries executed during the lookup interval and in the context of that specific database are factored in.
 
 The resulting set of queries is ranked based on their aggregated total execution time, and the top `index_tuning.max_queries_per_database` is analyzed for possible index recommendations.
 
@@ -60,7 +60,7 @@ Potential recommendations aim to improve the performance of these types of queri
 > [!NOTE]
 > The only type of indexes the system currently recommends is [B-Tree](https://www.postgresql.org/docs/current/indexes-types.html#INDEXES-TYPES-BTREE).
 
-If a query references one column of a table and that table has no statistics, doesn't produce any index recommendations to improve its execution. However, it will generate a recommendation to analyze the table.
+If a query references one column of a table and that table has no statistics, doesn't produce any index recommendations to improve its execution. However, it generates a recommendation to analyze the table.
 
 `index_tuning.max_indexes_per_table` specifies the number of indexes that can be recommended, excluding any indexes that might already exist on the table for any single table referenced by any number of queries during a tuning session.
 
@@ -93,10 +93,10 @@ QueryCostImprovement consists of an array of values, where each element represen
 
 ### DROP INDEX and REINDEX recommendations
 
-For each database identified as a candidate to analyze for producing recommendations, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
+For each database identified as a candidate, it should initiate a new session, and after the CREATE INDEX recommendations phase completes, it recommends dropping or reindexing existing indexes, based on the following criteria:
 - Drop if it's considered duplicate of others.
 - Drop if it isn't used for a configurable amount of time.
-- Reindex indexes which are marked as invalid.
+- Reindex indexes that are marked as invalid.
 
 #### Drop duplicate indexes
 
@@ -135,18 +135,18 @@ IndexSize is a single value that represents the estimated size of the index, con
 
 ### Table recommendations
 
-For each database identified as a candidate to analyze, it initiates a session that aims to produce table level recommendations. Those recommendations invite you to run ANALYZE or VACUUM on the tables that were accessed by the queries inspected, for which the tuning engine considers running those commands could improve the performance of your workload.
+For each database identified as a candidate to analyze, it initiates a session that aims to produce table level recommendations. Those recommendations invite you to run ANALYZE or VACUUM on the tables that are accessed by the queries inspected, for which the tuning engine considers running those commands could improve the performance of your workload.
 
 ### ANALYZE table recommendations
 
-Recommendations for analyzing a table identify those tables which:
-- Were referenced in a query, and have some column of that table used in one of its predicates (WHERE, JOIN, ORDER BY, GROUP BY), and also meet either of the two following conditions:
+Recommendations for analyzing a table identify those tables that:
+- Are referenced in a query, and have some column of that table used in one of its predicates (WHERE, JOIN, ORDER BY, GROUP BY), and also meet either of the two following conditions:
   - Have never been analyzed.
   - Were analyzed at some point, but are now lacking statistics (typically because the server crashed before the statistics were persisted to disk).
 
 ### VACUUM table recommendations
 
-Recommendations for vacuuming a table identify those tables which are significantly bloated. What's considered significant varies with the estimated size of the table. Also, these recommendations are produced when `autovacuum_enabled` isn't set to `off` at server level when the workload is analyzed.
+Recommendations for vacuuming a table identify those tables that are bloated. These recommendations are only produced when `autovacuum_enabled` isn't set to `off` at server level when the workload is analyzed.
 
 ## Configuring autonomous tuning
 
@@ -154,7 +154,7 @@ Autonomous tuning can be enabled, disabled, and configured through a set of para
 
 When autonomous tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
 
-Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM won't affect that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
+Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM don't have an effect on that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
 
 The following options are available for configuring autonomous tuning parameters:
 
@@ -185,17 +185,17 @@ Following is the list of limitations and supportability scope for autonomous tun
 
 ### Automatic deletion of recommendations
 
-Recommendations are automatically deleted 35 days after the last time they are produced. For this automatic deletion mechanism to work, autonomous tuning must be enabled.
+Recommendations are automatically deleted 35 days after the last time they're produced. For this automatic deletion mechanism to work, autonomous tuning must be enabled.
 
 ### Dependency on hypopg extension
 
 For autonomous tuning to produce CREATE INDEX recommendations, it uses the [hypopg](https://github.com/HypoPG/hypopg/) extension.
 
-If the extension already exists when a tuning session begins, it is used on the schema in which it was created. And when the tuning session finishes, the extension is not dropped. An exception to this is if the extension was created in the `pg_catalog` schema. If that's the case, autonomous tuning drops the extension.
+If the extension already exists when a tuning session begins, it's used on the schema in which it was created. And when the tuning session finishes, the extension isn't dropped. An exception to this rule is if the extension was created in the `pg_catalog` schema. If that's the case, autonomous tuning drops the extension.
 
-If the extension didn't exist in the first place or we dropped it because it was created in `pg_catalog` schema, autonomous tuning will create it under a schema called `ms_temp_recommendations709253` and, when the tuning session finishes successfully, it drops the extension and removes the schema.
+If the extension didn't exist in the first place or we dropped it because it was created in `pg_catalog` schema, autonomous tuning creates it under a schema called `ms_temp_recommendations709253` and, when the tuning session finishes successfully, it drops the extension and removes the schema.
 
-Users who are members of the `azure_pg_admin` role can drop the hypopg extension at any point in time, even when it was created by the autonomous tuning feature. However, dropping it while an autonomous tuning session is running might cause that session to fail and don't produce any recommendations.
+Users who are members of the `azure_pg_admin` role can drop the hypopg extension at any point in time, even when it's created by the autonomous tuning feature. However, dropping it while an autonomous tuning session is running might cause that session to fail and don't produce any recommendations.
 
 ### Supported compute tiers and SKUs
 
@@ -217,13 +217,13 @@ For the analysis of parameterized queries, autonomous tuning requires that [pg_q
 
 ### Read-only mode and read replicas
 
-Because autonomous tuning relies on the data that [query store](concepts-query-store.md) persists locally to the `azure_sys` database, which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances which are in read-only mode.
+Because autonomous tuning relies on the data that [query store](concepts-query-store.md) persists locally to the `azure_sys` database, which is [not supported in read replicas or when an instance is in read-only mode](concepts-query-store.md#read-only-mode), we don't support it on read replicas or on instances that are in read-only mode.
 
 Any recommendations seen on a read replica were produced on the primary replica after analyzing exclusively the workload that executed on the primary replica.
 
 ### Scale down of compute
 
-If autonomous tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` server parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute which didn't meet the requirements.
+If autonomous tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` server parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute that didn't meet the requirements.
 
 ### High availability and read replicas
 
@@ -231,17 +231,17 @@ If you have [high availability](/azure/reliability/reliability-postgresql-flexib
 
 ### Reasons why autonomous tuning might not produce create index recommendations for certain queries
 
-Following is a list of query types for which autonomous tuning won't generate CREATE INDEX recommendations. Those which:
+Following is a list of query types for which autonomous tuning don't generate CREATE INDEX recommendations. Queries which:
 
 - Encounter an error when autonomous tuning engine tries to obtain its EXPLAIN output during the analysis phase.
-- Reference tables that don't have statistics about their contents in the pg_statistic system catalog. Run [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) on those tables so that the tuning engine can tae into consideration these queries in the future.
-- Have the query text truncated in query store. That's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
+- Reference tables that don't have statistics about their contents in the pg_statistic system catalog. Run [ANALYZE](https://www.postgresql.org/docs/current/sql-analyze.html) on those tables so that the tuning engine can take into consideration these queries in the future.
+- Have the query text truncated in query store. It's the case when the length of query text exceeds the value configured in [pg_qs.max_query_text_length](concepts-query-store.md#configuration-options).
 - Reference objects that were dropped or renamed before the analysis occurs. These queries could still be syntactically valid, but not semantically valid.
 - Access temporary tables or indexes on temporary tables.
 - Access views or materialized views.
 - Access partitioned tables.
 - Are identified as utility statements. Utility statements or utility commands are, basically, any statement not considered SELECT, INSERT, UPDATE, DELETE, or MERGE, and certain commands containing one of these.
-- Are not among the top [index_tuning.max_queries_per_database](concepts-autonomous-tuning.md#configuring-autonomous-tuning) slowest, for the database and period analyzed.
+- Aren't among the top [index_tuning.max_queries_per_database](concepts-autonomous-tuning.md#configuring-autonomous-tuning) slowest, for the database and period analyzed.
 - Were run in the context of one specific database, when none of those queries were identified as the top slowest at the server level.
 
 ## Related content
