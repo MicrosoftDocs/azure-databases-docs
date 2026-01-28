@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.custom: references_regions
 ms.date: 01/16/2025
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: compute-storage
 ms.topic: concept-article
 ---
 

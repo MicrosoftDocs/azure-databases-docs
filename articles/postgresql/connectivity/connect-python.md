@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 08/27/2025
 ms.service: azure-database-postgresql
+ms.subservice: connectivity
 ms.topic: quickstart
 ms.custom:
   - mvc

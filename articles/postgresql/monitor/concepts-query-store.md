@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 01/20/2025
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.custom:
   - ignite-2024
 ms.topic: how-to

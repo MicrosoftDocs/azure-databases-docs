@@ -3886,6 +3886,11 @@
             "redirect_document_id": true
         },
         {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/how-to-deploy-on-azure-free-account.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/quickstart-create-server",
+            "redirect_document_id": false
+        },
+        {
             "source_path_from_root": "/articles/postgresql/monitor/concepts-index-tuning.md",
             "redirect_url": "/azure/postgresql/monitor/concepts-autonomous-tuning",
             "redirect_document_id": true

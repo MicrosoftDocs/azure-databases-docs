@@ -6,7 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 01/27/2026
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: monitoring
 ms.custom:
 - build-2024
 - ignite-2024

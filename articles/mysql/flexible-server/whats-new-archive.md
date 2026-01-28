@@ -47,7 +47,7 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
 - **Accelerated logs in Azure Database for MySQL Flexible Server (Preview)**
 
-  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Business Critical service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
+  We're excited to announce a preview of the accelerated logs feature for Azure Database for MySQL's Flexible Server. This feature is available within the Memory Optimized service tier. Accelerated logs significantly enhance the performance of Azure Database for MySQL Flexible Server instances, offering a dynamic solution that is designed for high throughput needs that also reduces latency and optimizes cost efficiency. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
 
 - **Universal Geo Restore in Azure Database for MySQL Flexible Server (General Availability)**
 
@@ -57,7 +57,7 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
 - **Addition of New vCore Options in Azure Database for MySQL Flexible Server**
 
-  We're excited to inform you that we have introduced 20 new vCores options under the Business Critical Service tier for Azure Database for MySQL Flexible Server. Find more information under [Compute Option for Azure Database for MySQL Flexible Server](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
+  We're excited to inform you that we have introduced 20 new vCores options under the Memory Optimized Service tier for Azure Database for MySQL Flexible Server. Find more information under [Compute Option for Azure Database for MySQL Flexible Server](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
 
 - **Known Issues**
 
@@ -122,7 +122,7 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
 - **Max IOPS support for Azure Database for MySQL- Flexible Server**
 
-  Business Critical SKU now supports 80 K IOPS, enabling enhanced performance with increased IO operations per second. [Learn more](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
+  Memory Optimized SKU now supports 80 K IOPS, enabling enhanced performance with increased IO operations per second. [Learn more](concepts-service-tiers-storage.md#service-tiers-size-and-server-types).
 
 ## May 2023
 
@@ -286,8 +286,8 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
 - **Memory-Optimized tier now supports Ev5 compute series**
 
-  Business Critical tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
-Learn more about [Boost Azure MySQL Business Critical Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
+  Memory Optimized tier for Azure Database for MySQL Flexible Server now supports the Ev5 compute series in more regions.
+Learn more about [Boost Azure MySQL Memory Optimized Flexible Server performance by 30% with the Ev5 compute series!](https://techcommunity.microsoft.com/blog/adformysql/boost-azure-mysql-business-critical-flexible-server-performance-by-30-with-the-e/3603698)
 
 - **Server parameters that are now configurable**
 
@@ -315,7 +315,7 @@ Learn more about [Boost Azure MySQL Business Critical Flexible Server performanc
 ## May 2022
 
 - **Announcing Azure Database for MySQL Flexible Server for business-critical workloads**
-  Azure Database for MySQL Business Critical service tier is generally available. The Business Critical service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Business Critical service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
+  Azure Database for MySQL Memory Optimized service tier is generally available. The Memory Optimized service tier is ideal for Tier 1 production workloads that require low latency, high concurrency, fast failover, and high scalability, such as gaming, e-commerce, and Internet-scale applications, to learn more about [Memory Optimized service Tier](https://techcommunity.microsoft.com/blog/adformysql/announcing-azure-database-for-mysql---flexible-server-for-business-critical-work/3361718).
 
 - **Announcing the addition of new Burstable compute instances for Azure Database for MySQL Flexible Server**
   We're announcing the addition of new Burstable compute instances to support customers' autoscaling compute requirements from 1 vCore up to 20 vCores. learn more about [Compute Option for Azure Database for MySQL Flexible Server](./concepts-compute-storage.md).
@@ -419,7 +419,7 @@ This release of Azure Database for MySQL Flexible Server includes the following 
 
 - **Read replicas in Azure Database for MySQL Flexible Server will no longer be available on Burstable SKUs**
 
-  If you have an existing Azure Database for MySQL Flexible Server instance with read replica enabled, you have to scale up your server to either General Purpose or Business Critical pricing tiers or delete the read replica within 60 days. After the 60 days, while you can continue to use the primary server for your read-write operations, replication to read replica servers will be stopped. For newly created servers, read replica option is available only for the General Purpose and Business Critical pricing tiers.
+  If you have an existing Azure Database for MySQL Flexible Server instance with read replica enabled, you have to scale up your server to either General Purpose or Memory Optimized pricing tiers or delete the read replica within 60 days. After the 60 days, while you can continue to use the primary server for your read-write operations, replication to read replica servers will be stopped. For newly created servers, read replica option is available only for the General Purpose and Memory Optimized pricing tiers.
 
 - **Monitoring Azure Database for MySQL Flexible Server with Azure Monitor Workbooks**
 

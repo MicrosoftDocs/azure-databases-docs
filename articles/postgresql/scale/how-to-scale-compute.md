@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: scale-out
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL.
 ---

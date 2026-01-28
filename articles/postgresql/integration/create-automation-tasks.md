@@ -6,6 +6,7 @@ ms.author: dabukhari # Microsoft alias
 ms.reviewer: maghan
 ms.date: 10/13/2024
 ms.service: azure-database-postgresql
+ms.subservice: data-movement
 ms.topic: quickstart
 ---
 

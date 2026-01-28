@@ -6,6 +6,7 @@ ms.author: hganten
 ms.reviewer: maghan
 ms.date: 03/30/2025
 ms.service: azure-database-postgresql
+ms.subservice: networking
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to add firewall rules to an Azure Database for PostgreSQL.
 ---

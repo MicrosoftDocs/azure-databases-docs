@@ -6,6 +6,7 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: how-to
 ---
 

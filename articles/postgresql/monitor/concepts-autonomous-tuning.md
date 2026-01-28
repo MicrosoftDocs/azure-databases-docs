@@ -6,7 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 12/18/2025
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
+ms.subservice: monitoring
 ms.topic: concept-article
 ms.custom:
   - references_regions
