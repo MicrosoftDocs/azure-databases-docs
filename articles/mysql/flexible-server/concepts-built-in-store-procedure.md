@@ -90,6 +90,7 @@ A sample output might look like this:
 > The time required for an undo log to become empty depends on its file size. Larger undo log files will take longer to clear.
 
 To reduce the time to truncate the target undo log set below parameters and restart your server.
+
 | parameter | value |
 | :--- | :--- |
 |innodb_purge_rseg_truncate_frequency|8|
