@@ -1742,7 +1742,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-resource-usage---cost-based-vacuum-delay.md",
-            "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-resource-usage-cost-based-vacuum-delay.md ",
+            "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-resource-usage-cost-based-vacuum-delay",
             "redirect_document_id": false
         },
         {
@@ -2479,7 +2479,7 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-tls.md",
             "redirect_url": "/azure/postgresql/flexible-server/param-tls",
             "redirect_document_id": false
-       },
+        },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/generative-ai-agents.md",
             "redirect_url": "/azure/postgresql/azure-ai/generative-ai-agents",
