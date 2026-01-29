@@ -1,7 +1,7 @@
 ---
 title: Quickstart - AI Agent with Vector Search in Go
 description: Learn how to build an AI agent using Go with vector search in Azure DocumentDB. Create intelligent hotel recommendation agents that use semantic search with a custom agentic architecture.
-ms.date: 01/23/2026
+ms.date: 01/29/2026
 ms.topic: quickstart-sdk
 ms.custom: devx-track-go
 ai-usage: ai-assisted
@@ -51,12 +51,12 @@ This sample uses a custom implementation with the OpenAI SDK directly, without r
 
 ## Get the sample code
 
-1. Clone or download the repository [Azure DocumentDB Vector Search - Go Agent Sample](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-agent-go) to your local machine to follow the quickstart.
+1. Clone or download the repository [Azure DocumentDB Samples](https://github.com/Azure-Samples/documentdb-samples/) to your local machine to follow the quickstart.
 
 1. Navigate to the project directory:
 
     ```bash
-    cd mongo-vcore-agent-go
+    cd ai/vector-search-agent-go
     ```
 
 ## Configure environment variables
@@ -118,15 +118,6 @@ MONGO_DB_COLLECTION=vectorSearchCollection
 MONGO_DB_INDEX_NAME=vectorSearchIndex
 ```
 
-## Copy the sample hotel data
-
-Copy the `HotelsData_toCosmosDB.JSON` file from the root data directory of the repository into the data directory for the sample.
-
-```bash
-mkdir -p ./data    # Create data directory if it doesn't exist
-cp ../data/HotelsData_toCosmosDB.JSON ./data/    # Copy the sample data file
-```
-
 ## Project structure
 
 The project follows the standard Go project layout. Your directory structure should look like the following structure:
@@ -140,8 +131,6 @@ mongo-vcore-agent-go/
 │   │   └── main.go
 │   └── cleanup/        # Database cleanup utility
 │       └── main.go
-├── data/               # Sample data files
-│   └── HotelsData_toCosmosDB.JSON
 ├── internal/
 │   ├── agents/         # Agent and tool implementations
 │   │   ├── agents.go   # Planner and synthesizer agents
@@ -187,7 +176,7 @@ The application processes a hotel search request in two steps:
 - **Planning:** The workflow calls the planner agent, which analyzes the user's query (like "hotels near running trails") and searches the database for matching hotels.
 - **Synthesizing:** The workflow calls the synthesizer agent, which reviews the search results and writes a personalized recommendation explaining which hotels best match the request.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/cmd/agent/main.go" range="71-85":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/cmd/agent/main.go" range="71-85":::
 
 ### Agents
 
@@ -199,7 +188,7 @@ The planner agent is the *decision maker* that determines how to search for hote
 
 The planner agent receives the user's natural language query and sends it to an AI model along with available tools it can use. The AI decides to call the vector search tool and provides search parameters. The agent then extracts the tool name and arguments from the AI's response, executes the search tool, and returns the matching hotels. Instead of hardcoding search logic, the AI interprets what the user wants and chooses how to search, making the system flexible for different types of queries.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/agents.go" range="12-79":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/internal/agents/agents.go" range="12-79":::
 
 #### Synthesizer agent
 
@@ -207,7 +196,7 @@ The synthesizer agent is the *writer* that creates helpful recommendations.
 
 The synthesizer agent receives the original user query along with the hotel search results. It sends everything to an AI model with instructions for writing recommendations. It returns a natural language response that compares hotels and explains the best options. This approach matters because raw search results aren't user-friendly. The synthesizer transforms database records into a conversational recommendation that explains why certain hotels match the user's needs.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/agents.go" range="87-109":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/internal/agents/agents.go" range="87-109":::
 
 ### Agent tools
 
@@ -219,13 +208,13 @@ The tools file defines a search tool that the AI agent can use to find hotels. T
 
 The `GetToolDefinition` method describes the tool to the AI model in a format it understands. It specifies the tool's name, a description of what the tool does, and the parameters defining what inputs the tool needs. This definition lets the AI know the tool exists and how to use it correctly.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/tools.go" range="54-81":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/internal/agents/tools.go" range="54-81":::
 
 #### Tool execution
 
 When the AI calls the tool, the `Execute` method runs. It generates an embedding by converting the text query into a numeric vector using Azure OpenAI's embedding model. Then it searches the database by sending the vector to Azure DocumentDB, which finds hotels with similar vectors meaning similar descriptions. Finally, it formats results by converting the database records into readable text that the synthesizer agent can understand.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/agents/tools.go" range="30-52":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/internal/agents/tools.go" range="30-52":::
 
 #### Why use this pattern?
 
@@ -239,7 +228,7 @@ The prompts file defines the instructions and context given to the AI models for
 
 The quality of AI responses depends heavily on clear instructions. These prompts set boundaries, define the output format, and focus the AI on the user's goal of making a decision. You can customize these prompts to change how the agents behave without modifying any code.
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-agent-go/internal/prompts/prompts.go" range="20-51":::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-agent-go/internal/prompts/prompts.go" range="20-51":::
 
 ## Run the sample
 
