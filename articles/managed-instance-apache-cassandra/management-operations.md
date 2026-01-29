@@ -34,7 +34,7 @@ This article defines the management operations and features provided by the serv
 - The version in Apache Cassandra is in the format `X.Y.Z`. You can control the deployment of major (X) and minor (Y) versions manually by using service tools. The Cassandra patches (Z) that might be required for that major/minor version combination are done automatically.
 
 > [!NOTE]
-> The service currently supports Cassandra versions till v5.0. To specify a Cassandra version when you deploy a cluster, see [Azure CLI Quickstart](create-cluster-cli.md).
+> The service currently supports Cassandra versions till 5.0. To specify a Cassandra version when you deploy a cluster, see [Azure CLI Quickstart](create-cluster-cli.md).
 
 ## Maintenance
 
