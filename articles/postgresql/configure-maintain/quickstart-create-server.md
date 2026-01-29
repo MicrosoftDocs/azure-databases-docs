@@ -32,7 +32,7 @@ An Azure Database for PostgreSQL flexible server instance includes:
 - Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 - A `postgres` database created by default.
 - An `azure_maintenance` database for managed service processes.
-- An `azure_sys` database for query store and index tuning features.
+- An `azure_sys` database for query store and autonomous tuning features.
 
 > [!NOTE]
 > Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler.
