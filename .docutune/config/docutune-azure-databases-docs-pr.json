@@ -1,1 +1,13 @@
-{"BaseConfigruation":null,"Docsets":[{"DocsetName":"azure-databases","BuildSourceFolder":".","BasePath":null}],"MetadataDelimiter":"\"","Exclude":[],"PreloadTOCFiles":[],"TermFiles":[],"ApplyPolicies":[]}
+{
+  "Docsets": [
+    {
+      "DocsetName": "azure-databases",
+      "BuildSourceFolder": "."
+    }
+  ],
+  "MetadataDelimiter": "\"",
+  "Exclude": [],
+  "PreloadTOCFiles": [],
+  "TermFiles": [],
+  "ApplyPolicies": []
+}
