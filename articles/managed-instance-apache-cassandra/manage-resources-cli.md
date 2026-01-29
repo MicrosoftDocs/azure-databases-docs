@@ -291,7 +291,7 @@ az managed-cassandra datacenter update \
 ```
 
 > [!IMPORTANT]
-> Ensure that the Cassandra YAML settings that you provide are appropriate for your version of Cassandra. See the [Cassandra v5.0 settings](https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml) and the [Cassandra v4.0 settings](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) and [Cassandra v3.11 settings](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml). You're *not* allowed to update the following YAML settings:
+> Ensure that the Cassandra YAML settings that you provide are appropriate for your version of Cassandra. See the [Cassandra v5.0 settings] (https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml), the [Cassandra v4.0 settings](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) and [Cassandra v3.11 settings](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml). You're *not* allowed to update the following YAML settings:
 >
 > * `cluster_name`
 > * `seed_provider`
