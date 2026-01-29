@@ -96,6 +96,9 @@
         - name: Model context protocol (MCP) toolkit
           displayName: mcp, model context protocol, ai
           href: gen-ai/model-context-protocol-toolkit.md
+        - name: Agent Kit for AI coding assistants
+          displayName: agent kit, github copilot, claude code, gemini cli, best practices, skills
+          href: gen-ai/agent-kit.md
     - name: Learn core AI concepts
       items:
         - name: Vector databases

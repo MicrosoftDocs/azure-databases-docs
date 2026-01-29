@@ -194,7 +194,7 @@ You can use the Azure portal or [CLI commands](manage-resources-cli.md#update-ya
 
    Only overridden Cassandra configuration values are shown in the Azure portal.
 
-   Ensure that the Cassandra YAML settings that you provide are appropriate for the version of Cassandra that you deployed. For more information, see [Cassandra v5.0] (https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml) and [Cassandra v4.0](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) for v4.0 and [Cassandra v3.11](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml) for Cassandra v3.11 settings. You can't update the following YAML settings:
+   Ensure that the Cassandra YAML settings that you provide are appropriate for the version of Cassandra that you deployed. For more information, see [Cassandra v5.0](https://github.com/apache/cassandra/blob/cassandra-5.0/conf/cassandra.yaml), [Cassandra v4.0](https://github.com/apache/cassandra/blob/cassandra-4.0/conf/cassandra.yaml) for v4.0 and [Cassandra v3.11](https://github.com/apache/cassandra/blob/cassandra-3.11/conf/cassandra.yaml) for Cassandra v3.11 settings. You can't update the following YAML settings:
 
    - `cluster_name`
    - `seed_provider`
@@ -225,8 +225,6 @@ You can use the Azure portal or [CLI commands](manage-resources-cli.md#update-ya
    - `rpc_interface`
 
 ## Update the Cassandra version
-
-Cassandra 5.0 and Turnkey version updates are in public preview. These features are provided without an SLA. We don't recommend these features for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 You can conduct in-place major version upgrades directly from the portal or through the Azure CLI, Terraform, or Azure Resource Manager templates.
 
