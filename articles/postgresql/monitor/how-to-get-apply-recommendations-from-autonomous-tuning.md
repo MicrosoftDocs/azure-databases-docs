@@ -1,5 +1,5 @@
 ---
-title: How to Query, Interpret and Apply Recommendations Produced by Autonomous Tuning
+title: How to Query, Interpret and Apply Recommendations Produced by Autonomous Tuning in Azure Database for PostgreSQL
 description: This article describes how to query, interpret, and apply the recommendations produced by autonomous tuning feature in an Azure Database for PostgreSQL flexible server instance.
 author: nachoalonsoportillo
 ms.author: ialonso
