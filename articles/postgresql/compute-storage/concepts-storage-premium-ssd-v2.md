@@ -76,15 +76,15 @@ Geo DR*
 
 - If you create a new server by using point-in-time restore (PITR) and immediately perform an operation that requires a full backup, the following error might occur. This error occurs because Premium SSD v2 disks don't support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
-         _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
+ _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
 - Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation might fail. Wait an hour or stagger operations to avoid this error.
 
-          _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
+  _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
   **Examples include**:
-             - Compute scaling, enabling HA, and performing failover and failback within one hour.
-            - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
+  - Compute scaling, enabling HA, and performing failover and failback within one hour.
+  - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
 
 - Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
