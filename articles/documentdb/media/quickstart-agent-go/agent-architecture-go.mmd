@@ -4,11 +4,7 @@
 %%    npm i -g @mermaid-js/mermaid-cli@10.9.1
 %% 2. Run command: mmdc -i agent-architecture-go.mmd -o ./agent-architecture-go.svg
 
-flowchart LR
-    subgraph Input
-        U[User Query]
-    end
-
+flowchart TB
     subgraph Planner["Planner Agent (gpt-4o-mini)"]
         P1[Refine user query]
         P2[OpenAI function calling]
@@ -27,8 +23,4 @@ flowchart LR
         S3[Explain tradeoffs<br/>between options]
     end
 
-    subgraph Output
-        R[Hotel Recommendations]
-    end
-
-    U --> P1 --> P2 --> T1 --> T2 --> T3 --> P3 --> S1 --> S2 --> S3 --> R
+    P1 --> P2 --> T1 --> T2 --> T3 --> P3 --> S1 --> S2 --> S3

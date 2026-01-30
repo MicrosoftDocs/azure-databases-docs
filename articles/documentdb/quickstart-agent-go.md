@@ -17,6 +17,8 @@ Build an intelligent AI agent by using Go and Azure DocumentDB. This quickstart 
 
 ## Prerequisites
 
+You can use the Azure Developer CLI to create the required Azure resources by running the `azd` commands in the sample repository. For more information, see [Deploy Infrastructure with Azure Developer CLI](https://github.com/Azure-Samples/documentdb-samples/).
+
 ### Azure resources
 
 - **Azure OpenAI resource** with the following model deployments in Microsoft Azure AI Foundry:
@@ -27,13 +29,13 @@ Build an intelligent AI agent by using Go and Azure DocumentDB. This quickstart 
     - See [Manage Azure OpenAI quotas](/azure/ai-services/openai/how-to/quota) for quota management
     - If you encounter 429 errors, increase your TPM quota or reduce request frequency
 
-- **Azure Cosmos DB for MongoDB vCore cluster** with vector search support:
+- **Azure DocumentDB (with MongoDB compatibility) cluster** with vector search support:
   - **Cluster tier requirements** based on vector index algorithm:
     - **IVF (Inverted File Index)**: M10 or higher (default algorithm)
     - **HNSW (Hierarchical Navigable Small World)**: M30 or higher (graph-based)
     - **DiskANN**: M40 or higher (optimized for large-scale)
   - **Firewall configuration**: REQUIRED Without proper firewall configuration, connection attempts fail
-    - Add your client IP address to the cluster's firewall rules. For more information, see [Grant access from your IP address](/azure/cosmos-db/how-to-configure-firewall#grant-access-from-your-ip-address).
+    - Add your client IP address to the cluster's firewall rules. For more information, see [Grant access from your IP address](/azure/documentdb/how-to-configure-firewall#grant-access-from-your-ip-address).
   - For passwordless authentication, Role Based Access Control (RBAC) enabled
 
 ### Development tools
@@ -45,7 +47,7 @@ Build an intelligent AI agent by using Go and Azure DocumentDB. This quickstart 
 
 The sample uses a two-agent architecture where each agent has a specific role.
 
-:::image type="content" source="media/quickstart-agent-go/agent-architecture-go.svg" alt-text="Architecture diagram showing the two-agent workflow with planner agent, vector search tool, and synthesizer agent." border="false" lightbox="media/quickstart-agent-go/agent-architecture-go.svg":::
+:::image type="content" source="media/quickstart-agent-go/agent-architecture-go.svg" alt-text="Architecture diagram showing the two-agent workflow with planner agent, vector search tool, and synthesizer agent." border="false":::
 
 This sample uses a custom implementation with the OpenAI SDK directly, without relying on an agent framework. It leverages OpenAI function calling for tool integration and follows a linear workflow between the agents and the search tool. The execution is stateless with no conversation history, making it suitable for single-turn query and response scenarios.
 
@@ -75,20 +77,20 @@ You can choose between two authentication methods: passwordless authentication u
 
 ### Option 1: Passwordless authentication
 
-Use Azure Identity for passwordless authentication with both Azure OpenAI and Azure DocumentDB. Set `USE_PASSWORDLESS=true` or omit `AZURE_OPENAI_API_KEY` and `AZURE_DOCUMENTDB_CONNECTION_STRING`, and provide `AZURE_OPENAI_API_INSTANCE_NAME` and `MONGO_CLUSTER_NAME` instead.
+Use passwordless authentication with both Azure OpenAI and Azure DocumentDB. Set `USE_PASSWORDLESS=true`, `AZURE_OPENAI_ENDPOINT`, and `AZURE_DOCUMENTDB_CLUSTER`.
 
 ```.env
 # Enable passwordless authentication
 USE_PASSWORDLESS=true
 
 # Azure OpenAI Configuration (passwordless)
-AZURE_OPENAI_API_INSTANCE_NAME=your-openai-instance-name
+AZURE_OPENAI_ENDPOINT=your-openai-endpoint
 
 # Azure DocumentDB (passwordless)
-MONGO_CLUSTER_NAME=your-mongo-cluster-name
-MONGO_DB_NAME=vectorSearchDB
-MONGO_DB_COLLECTION=vectorSearchCollection
-MONGO_DB_INDEX_NAME=vectorSearchIndex
+AZURE_DOCUMENTDB_CLUSTER=your-mongo-cluster-name
+AZURE_DOCUMENTDB_DATABASENAME=Hotels
+AZURE_DOCUMENTDB_COLLECTION=hotel_data
+AZURE_DOCUMENTDB_INDEX_NAME=vectorIndex
 ```
 
 **Prerequisites for passwordless authentication:**
@@ -108,14 +110,14 @@ Use key-based authentication by setting `USE_PASSWORDLESS=false` (or omitting it
 USE_PASSWORDLESS=false
 
 # Azure OpenAI Configuration (API key)
-AZURE_OPENAI_API_INSTANCE_NAME=your-openai-instance-name
+AZURE_OPENAI_ENDPOINT=your-openai-endpoint
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key
 
 # Azure DocumentDB (connection string)
 AZURE_DOCUMENTDB_CONNECTION_STRING=mongodb+srv://username:password@cluster.mongocluster.cosmos.azure.com/
-MONGO_DB_NAME=vectorSearchDB
-MONGO_DB_COLLECTION=vectorSearchCollection
-MONGO_DB_INDEX_NAME=vectorSearchIndex
+AZURE_DOCUMENTDB_DATABASENAME=Hotels
+AZURE_DOCUMENTDB_COLLECTION=hotel_data
+AZURE_DOCUMENTDB_INDEX_NAME=vectorIndex
 ```
 
 ## Project structure
