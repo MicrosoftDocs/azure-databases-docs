@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path_from_root": "/articles/cosmos-db/introduction.md",
+      "redirect_url": "/azure/cosmos-db/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/cosmos-db/how-pricing-works.md",
+      "redirect_url": "/azure/cosmos-db/overview",
+      "redirect_document_id": false
+    },
+    {
       "source_path_from_root": "/articles/cosmos-db/partitioning-overview.md",
       "redirect_url": "/azure/cosmos-db/partitioning",
       "redirect_document_id": true
