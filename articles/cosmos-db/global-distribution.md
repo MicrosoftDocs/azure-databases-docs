@@ -82,13 +82,17 @@ For the Azure Cosmos DB databases configured with multiple write regions, the sy
 - **Last-Write-Wins (LWW)**, which, by default, uses a system-defined timestamp property (which is based on the time-synchronization clock protocol). Azure Cosmos DB also allows you to specify any other custom numerical property to be used for conflict resolution.  
 - **Application-defined (Custom) conflict resolution policy** (expressed via merge procedures), which is designed for application-defined semantics reconciliation of conflicts. These procedures get invoked upon detection of the write-write conflicts under the auspices of a database transaction on the server side. The system provides exactly once guarantee for the execution of a merge procedure as a part of the commitment protocol. There are [several conflict resolution samples](how-to-manage-conflicts.md) available for you to play with.  
 
-## Consistency Models
+## Consistency models
 
-Whether you configure your Azure Cosmos DB database with a single or multiple write regions, you can choose from the five well-defined consistency models. With multiple write regions, the following are a few notable aspects of the consistency levels:  
+Whether you configure your Azure Cosmos DB database with a single or multiple write regions, you can choose from [five well-defined consistency models](consistency-levels.md). These models range from strong to eventual consistency and affect how replicas within partition-sets synchronize data.
 
-The bounded staleness consistency guarantees that all reads will be within *K* prefixes or *T* seconds from the latest write in any of the regions. Furthermore, reads with bounded staleness consistency are guaranteed to be monotonic and with consistent prefix guarantees. The anti-entropy protocol operates in a rate-limited manner and ensures that the prefixes do not accumulate and the backpressure on the writes does not have to be applied. Session consistency guarantees monotonic read, monotonic write, read your own writes, write follows read, and consistent prefix guarantees, worldwide. For the databases configured with strong consistency, the benefits (low write latency, high write availability) of multiple write regions does not apply, because of synchronous replication across regions.
+In the context of global distribution:
 
-The semantics of the five consistency models in Azure Cosmos DB are described [here](consistency-levels.md), and mathematically described using a high-level TLA+ specifications [here](https://github.com/Azure/azure-cosmos-tla).
+- **Bounded staleness** uses the anti-entropy protocol in a rate-limited manner, ensuring prefixes don't accumulate and writes aren't throttled unnecessarily.
+- **Session consistency** guarantees monotonic read, monotonic write, read your own writes, write follows read, and consistent prefix—worldwide.
+- **Strong consistency** requires synchronous replication across regions, which means multi-region write accounts don't benefit from low write latency or high write availability when using this level.
+
+For complete details on consistency level semantics and guarantees, see [Consistency levels in Azure Cosmos DB](consistency-levels.md). The consistency models are also mathematically described using [TLA+ specifications](https://github.com/Azure/azure-cosmos-tla).
 
 ## Next steps
 
