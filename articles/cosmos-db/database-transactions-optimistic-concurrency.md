@@ -17,7 +17,7 @@ Database transactions provide a safe and predictable programming model to deal w
 
 With traditional relational databases, you're required to deal with two different programming languages: a nontransactional application programming language, such as JavaScript, Python, C#, or Java; and a transactional programming language, such as T-SQL, that's natively executed by the database.
 
-The database engine in Azure Cosmos DB supports full ACID (atomicity, consistency, isolation, durability) compliant transactions with snapshot isolation. All the database operations within the scope of a container's [logical partition](partitioning-overview.md) are transactionally executed within the database engine that's hosted by the replica of the partition. These operations include both write (updating one or more items within the logical partition) and read operations.
+The database engine in Azure Cosmos DB supports full ACID (atomicity, consistency, isolation, durability) compliant transactions with snapshot isolation. All the database operations within the scope of a container's [logical partition](partitioning.md) are transactionally executed within the database engine that's hosted by the replica of the partition. These operations include both write (updating one or more items within the logical partition) and read operations.
 
 The following table lists different operations and transaction types:
 

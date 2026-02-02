@@ -19,7 +19,7 @@ appliesto:
 
 Azure Cosmos DB is a foundational service in Azure, so it's deployed across all Azure regions worldwide including the public, sovereign, Department of Defense (DoD) and government clouds.
 
-At a high level, Azure Cosmos DB container data is [horizontally partitioned](partitioning-overview.md) into many replica-sets, which replicate writes, in each region. Replica-sets durably commit writes using a majority quorum.
+At a high level, Azure Cosmos DB container data is [horizontally partitioned](partitioning.md) into many replica-sets, which replicate writes, in each region. Replica-sets durably commit writes using a majority quorum.
 
 Each region contains all the data partitions of an Azure Cosmos DB container and can serve reads as well as serve writes when multi-region writes is enabled. If your Azure Cosmos DB account is distributed across *N* Azure regions, there will be at least *N* x 4 copies of all your data.
 
@@ -57,7 +57,7 @@ A physical partition is materialized as a self-managed and dynamically load-bala
 
 - Secondly, as far as possible, the read quorum for a given consistency level is composed exclusively of the follower replicas. We avoid contacting the leader for serving reads unless  required. We employ a number of ideas from the research done on the relationship of [load and capacity](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) in the quorum-based systems for the [five consistency models](consistency-levels.md) that Azure Cosmos DB supports.  
 
-For more information about replica sets and how they relate to physical partitions, see [partition replica sets](partitioning-overview.md#replica-sets).
+For more information about replica sets and how they relate to physical partitions, see [partition replica sets](partitioning.md#replica-sets).
 
 ## Partition-sets
 

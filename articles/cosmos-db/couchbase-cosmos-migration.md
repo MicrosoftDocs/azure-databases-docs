@@ -33,7 +33,7 @@ The following are the key features that work differently in Azure Cosmos DB when
 
 * Azure Cosmos DB has an "ID" field within the document whereas Couchbase has the ID as a part of bucket. The "ID" field is unique across the partition.
 
-* Azure Cosmos DB scales by using the partitioning or sharding technique. Which means it splits the data into multiple shards/partitions. These partitions/shards are created based on the partition key property that you provide. You can select the partition key to optimize read as well write operations or read/write optimized too. To learn more, see the [partitioning](partitioning-overview.md) article.
+* Azure Cosmos DB scales by using the partitioning or sharding technique. Which means it splits the data into multiple shards/partitions. These partitions/shards are created based on the partition key property that you provide. You can select the partition key to optimize read as well write operations or read/write optimized too. To learn more, see the [partitioning](partitioning.md) article.
 
 * In Azure Cosmos DB, it isn't required for the top-level hierarchy to denote the collection because the collection name already exists. This feature makes the JSON structure simpler. The following is an example that shows differences in the data model between Couchbase and Azure Cosmos DB:
 
