@@ -139,4 +139,4 @@ Users who want to migrate many resources from standard provisioned throughput to
 - Review the [autoscale FAQ](autoscale-faq.yml).
 - Learn how to [choose between manual and autoscale throughput](how-to-choose-offer.md).
 - Learn how to [allocate autoscale throughput on an Azure Cosmos DB database or container](how-to-provision-autoscale-throughput.md).
-- Learn more about [partitioning](partitioning-overview.md) in Azure Cosmos DB.
+- Learn more about [partitioning](partitioning.md) in Azure Cosmos DB.

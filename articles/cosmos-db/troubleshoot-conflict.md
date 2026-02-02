@@ -28,5 +28,5 @@ Use [large partition key](large-partition-keys.md). Enabling large partition key
 ## Related content
 
 - [Large partition keys](large-partition-keys.md)
-- [Partitioning overview](partitioning-overview.md)
+- [Partitioning overview](partitioning.md)
 - [Resource model](resource-model.md)

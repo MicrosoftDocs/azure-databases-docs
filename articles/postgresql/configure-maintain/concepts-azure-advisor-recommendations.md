@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 04/02/2025
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---

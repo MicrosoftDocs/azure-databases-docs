@@ -330,4 +330,4 @@ In addition to the previous table, the [per-account limits](#per-account-limits)
 ## Related content
 
 * [Global distribution](distribute-data-globally.md)
-* [Partitioning](partitioning-overview.md) and [provisioned throughput](request-units.md)
+* [Partitioning](partitioning.md) and [provisioned throughput](request-units.md)

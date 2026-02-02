@@ -6,6 +6,7 @@ ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 1/5/2026
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: concept-article
 ms.custom:
   - build-2025
@@ -94,7 +95,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: December 2024
 - General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
-- General Availability of [index tuning](../monitor/concepts-index-tuning.md) on Azure Database for PostgreSQL.
+- General Availability of [index tuning](../monitor/concepts-autonomous-tuning.md) on Azure Database for PostgreSQL.
 - General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
 - Public preview of [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL.
@@ -141,7 +142,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability of Postgres [azure_ai](../azure-ai/generative-ai-azure-overview.md) extension.
 - Public preview of [azure_local_ai](../extensions/azure-local-ai.md) extension.
-- Public preview of [index tuning](../monitor/concepts-index-tuning.md) on Azure Database for PostgreSQL.
+- Public preview of [index tuning](../monitor/concepts-autonomous-tuning.md) on Azure Database for PostgreSQL.
 - Public preview of [Updating PostgreSQL extensions](../extensions/how-to-update-extensions.md) on Azure Database for PostgreSQL.
 - Support for the following [extensions](../extensions/how-to-allow-extensions.md):
     - [TimescaleDB (ver 2.13.0) for PG16](../extensions/concepts-extensions-versions.md#timescaledb).
@@ -231,7 +232,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability: [Pgvector extension](../extensions/how-to-use-pgvector.md) for Azure Database for PostgreSQL.
 - General availability: [Azure Key Vault Managed HSM](../security/security-data-encryption.md) with Azure Database for PostgreSQL.
 - General availability [32 TB Storage](../extensions/concepts-storage.md) with Azure Database for PostgreSQL.
-- Support for [Ddsv5 and Edsv5 SKUs](../configure-maintain/concepts-compute.md) with Azure Database for PostgreSQL.
+- Support for [Ddsv5 and Edsv5 SKUs](../compute-storage/concepts-compute.md) with Azure Database for PostgreSQL.
 
 ## Release: April 2023
 

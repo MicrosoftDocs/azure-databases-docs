@@ -13,7 +13,7 @@ appliesto:
 
 # Unique key constraints in Azure Cosmos DB
 
-Unique keys add a layer of data integrity to an Azure Cosmos DB container. You create a unique key policy when you create an Azure Cosmos DB container. With unique keys, you make sure that one or more values within a logical partition is unique. You also can guarantee uniqueness per [partition key](partitioning-overview.md).
+Unique keys add a layer of data integrity to an Azure Cosmos DB container. You create a unique key policy when you create an Azure Cosmos DB container. With unique keys, you make sure that one or more values within a logical partition is unique. You also can guarantee uniqueness per [partition key](partitioning.md).
 
 After you create a container with a unique key policy, the creation of a new item or an update of an existing item that results in a duplicate within a logical partition is prevented, as specified by the unique key constraint. The partition key combined with the unique key guarantees the uniqueness of an item within the scope of the container.
 
@@ -52,7 +52,7 @@ You can define unique keys only when you create an Azure Cosmos DB container. A 
 
 ## Next steps
 
-* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 * [Define unique keys for an Azure Cosmos DB container](how-to-define-unique-keys.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
   * If all you know is the number of vcores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 

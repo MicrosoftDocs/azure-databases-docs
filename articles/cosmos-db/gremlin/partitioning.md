@@ -18,7 +18,7 @@ One of the key features of the API for Gremlin in Azure Cosmos DB is the ability
 
 Partitioning is done internally if the container is expected to store more than 20 GB in size or if you want to allocate more than 10,000 request units per second (RUs). Data is automatically partitioned based on the partition key you specify. Partition key is required if you create graph containers from the Azure portal or the 3.x or higher versions of Gremlin drivers. Partition key is not required if you use 2.x or lower versions of Gremlin drivers.
 
-The same general principles from the [Azure Cosmos DB partitioning mechanism](../partitioning-overview.md) apply with a few graph-specific optimizations described below.
+The same general principles from the [Azure Cosmos DB partitioning mechanism](../partitioning.md) apply with a few graph-specific optimizations described below.
 
 :::image type="content" source="./media/partitioning/graph-partitioning.png" alt-text="Graph partitioning." border="false":::
 
@@ -71,6 +71,6 @@ Use the following guidelines to ensure performance and scalability when using pa
 
 - **Use the outgoing direction when querying edges whenever it's possible**. As mentioned above, edges are stored with their source vertices in the outgoing direction. So the chances of resorting to cross-partition queries are minimized when the data and queries are designed with this pattern in mind. On the contrary, the `in()` query will always be an expensive fan-out query.
 
-- **Choose a partition key that will evenly distribute data across partitions**. This decision heavily depends on the data model of the solution. Read more about creating an appropriate partition key in [Partitioning and scale in Azure Cosmos DB](../partitioning-overview.md).
+- **Choose a partition key that will evenly distribute data across partitions**. This decision heavily depends on the data model of the solution. Read more about creating an appropriate partition key in [Partitioning and scale in Azure Cosmos DB](../partitioning.md).
 
 - **Optimize queries to obtain data within the boundaries of a partition**. An optimal partitioning strategy would be aligned to the querying patterns. Queries that obtain data from a single partition provide the best possible performance.

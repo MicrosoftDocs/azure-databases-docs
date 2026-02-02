@@ -1,11 +1,11 @@
 ---
 title: Enable LDAP Authentication in Azure Managed Instance for Apache Cassandra
 description: Learn how to enable LDAP authentication in Azure Managed Instance for Apache Cassandra in your clusters and datacenters.
-author: TheovanKraay
-ms.author: thvankra
+author: ManishSharma
+ms.author: mansha
 ms.service: azure-managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 06/05/2025
+ms.date: 01/28/2026
 ms.custom: sfi-image-nochange, sfi-ropc-blocked
 #customer intent: As a database administrator, I want to set up LDAP authentication in Azure Managed Instance for Apache Cassandra.
 ---
@@ -16,7 +16,7 @@ Azure Managed Instance for Apache Cassandra provides automated deployment and sc
 
 > [!IMPORTANT]
 > LDAP authentication is in public preview.
->
+> LDAP doesn't support Cassandra v5.0, it is currently in-progress, you can submit your interest by creating Technical Azure Support ticket.
 > This feature is provided without a service-level agreement. We don't recommend it for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites

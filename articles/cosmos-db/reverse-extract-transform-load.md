@@ -78,7 +78,7 @@ There are two options for CDC sync into Azure Cosmos DB for NoSQL:
     > [!TIP]
     > If the [normalized RU consumption metric](monitor-normalized-request-units.md) is consistently 100%, then the metric indicates that the initial load consistently consumes the maximum autoscale request units (RUs). This threshold is a clear indicator that this scenario applies to your workload and you should use standard provisioned throughput.
 
-- Choose an effective partition key that maximizes parallelism. For more information, see [partitioning and partition key recommendations](partitioning-overview.md).
+- Choose an effective partition key that maximizes parallelism. For more information, see [partitioning and partition key recommendations](partitioning.md).
 
 - Plan for the total number of partitions and total RU/s across all partitions for large data ingestions. For more information and guidance, see [recommendations for partitioning and throughput](scaling-provisioned-throughput-best-practices.md#how-to-optimize-rus-for-large-data-ingestion).
 

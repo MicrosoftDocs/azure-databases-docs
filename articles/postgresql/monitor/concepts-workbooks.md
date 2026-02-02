@@ -6,6 +6,7 @@ ms.author: hganten
 ms.reviewer: maghan
 ms.date: 12/09/2024
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.topic: how-to
 ---
 

@@ -66,7 +66,7 @@ When you create a container, you need to supply a partition key. The partition k
 
 The underlying storage mechanism for data in Azure Cosmos DB is referred to as a *physical partition*. Physical partitions can have a throughput amount up to 10,000 Request Units per second, and they can store up to 50 GB of data. Azure Cosmos DB abstracts this partitioning concept with a logical partition, which can store up to 20 GB of data.
 
-Logical partitions allow the service to provide greater elasticity and better management of data on the underlying physical partitions as you add more partitions. To learn more about partitioning and partition keys, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md).
+Logical partitions allow the service to provide greater elasticity and better management of data on the underlying physical partitions as you add more partitions. To learn more about partitioning and partition keys, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
 
 When you create a container, you configure throughput in one of the following modes:
 

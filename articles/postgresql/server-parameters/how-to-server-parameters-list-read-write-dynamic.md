@@ -6,6 +6,7 @@ ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: server-parameters
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to list read-write dynamic server parameters of an Azure Database for PostgreSQL.
 ---
@@ -26,7 +27,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-configure-server-parameters/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="./media/how-to-configure-server-parameters/server-parameters.png":::
 
-3. Select the **Dynamic** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+3. Select the **Dynamic** tab. The page shows a list of read-write parameters for which, if their value is changed, the new value takes effect **immediately without requiring a server restart**.
 
     :::image type="content" source="./media/how-to-configure-server-parameters/dynamic-parameters.png" alt-text="Screenshot that shows the list of dynamic server parameters." lightbox="./media/how-to-configure-server-parameters/dynamic-parameters.png":::
 
