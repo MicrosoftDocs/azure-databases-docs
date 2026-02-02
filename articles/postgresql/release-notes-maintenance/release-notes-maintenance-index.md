@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 01/30/2026
 ms.service: azure-database-postgresql
 ms.subservice: flexible-server
-ms.topic: maintenance-release-notes
+ms.topic: release-notes
 ---
 
 

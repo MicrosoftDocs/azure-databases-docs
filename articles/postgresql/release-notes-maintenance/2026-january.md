@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Azure Database For PostgreSQL January 2026 Maintenance Release Notes
+# Azure Database for PostgreSQL January 2026 Maintenance Release Notes
 
 We're excited to announce the January 2026 version of Azure Database for PostgreSQL. Beginning January 20, 2026, all new servers are automatically onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
 
@@ -18,7 +18,7 @@ This new version introduces a range of new features and enhancements, resolves k
 ## Engine version changes
 
 - PG18 now generally available on Azure Database for PostgreSQL for new server deployments.
-- Latest [minor versions](https://learn.microsoft.com/azure/postgresql/configure-maintain/concepts-supported-versions) updated for Azure Postgres Flexible Server: 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23.
+- Latest [minor versions](../configure-maintain/concepts-supported-versions) updated for Azure Postgres Flexible Server: 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23.
 - Added PG18 support for Fabric mirroring.
 
 ## Features
@@ -34,7 +34,7 @@ This new version introduces a range of new features and enhancements, resolves k
 - **Elastic cluster – Custom Database Name**: Create clusters with a database name of your choice for easier organization and migration during provisioning.
 - **Cascading Replica (Limited Public Preview)**: Scale read workloads with multi-level cascading replicas, now available in select regions.
 
-## Improvemnents 
+## Improvements 
 
 - Updated validation for the pg_partman_bgworker_role server parameter to allow role names that include numeric characters.
 - Improved TOAST compression performance by changing the default compression algorithm to LZ4.
