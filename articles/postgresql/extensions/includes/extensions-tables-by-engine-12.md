@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/29/2025
+ms.date: 02/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
