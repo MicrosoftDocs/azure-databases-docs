@@ -4,9 +4,9 @@ description: Replication / Primary Server server parameters for Azure Database f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 02/02/2026
 ms.service: azure-database-postgresql
-ms.subservice: server-parameters
+ms.subservice: flexible-server
 ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version

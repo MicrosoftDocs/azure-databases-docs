@@ -2,8 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 02/02/2026
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
@@ -66,7 +67,7 @@ ms.custom: automatically generated
 | Description | Lists shared libraries to preload into server. |
 | Data type | set |
 | Default value | `pg_stat_statements` |
-| Allowed values | `anon,auto_explain,azure_storage,credcheck,pg_cron,pg_duckdb,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,timescaledb,wal2json` |
+| Allowed values | `age,anon,auto_explain,azure_storage,credcheck,pg_cron,pg_duckdb,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,timescaledb,wal2json` |
 | Parameter type | static |
 | Documentation | [shared_preload_libraries](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES) |
 

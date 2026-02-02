@@ -2,8 +2,9 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 02/02/2026
 ms.service: azure-database-postgresql
+ms.subservice: flexible-server
 ms.topic: include
 ms.custom: automatically generated
 ---
@@ -48,8 +49,8 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Define multiple masking policies (NOT IMPLEMENTED YET). |
 | Data type | string |
-| Default value | `anon` |
-| Allowed values | `anon` |
+| Default value | |
+| Allowed values | |
 | Parameter type | read-only |
 | Documentation | [anon.masking_policies](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
 
@@ -388,7 +389,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Fraction of queries to process. |
 | Data type | numeric |
-| Default value | `1.0` |
+| Default value | `1` |
 | Allowed values | `0.0-1.0` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.sample_rate](https://www.postgresql.org/docs/18/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-SAMPLE-RATE) |
@@ -576,7 +577,7 @@ ms.custom: automatically generated
 | Description | List of extensions, separated by comma, that are allowlisted. If an extension is not in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -1867,7 +1868,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Selects types of wait events are tracked by this extension. Need to reload the config to make change take effect. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `all` |
 | Allowed values | `all,none` |
 | Parameter type | dynamic |
 | Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
@@ -1969,7 +1970,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Role to be used by BGW. Must have execute permissions on run_maintenance(). |
 | Data type | string |
-| Default value | |
+| Default value | `postgres` |
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
@@ -2105,7 +2106,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Selects which statements are tracked by pg_qs. Need to reload the config to make change take effect. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `top` |
 | Allowed values | `top,all,none` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
