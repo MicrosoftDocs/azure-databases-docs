@@ -80,7 +80,7 @@ Currently, you cannot use containers with large partition key within in Power BI
 
 ## Next steps
 
-* [Partitioning in Azure Cosmos DB](partitioning-overview.md)
+* [Partitioning in Azure Cosmos DB](partitioning.md)
 * [Request Units in Azure Cosmos DB](request-units.md)
 * [Provision throughput on containers and databases](set-throughput.md)
 * [Work with Azure Cosmos DB account](./resource-model.md)

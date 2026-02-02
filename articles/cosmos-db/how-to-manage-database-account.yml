@@ -112,7 +112,7 @@ procedureSection:
       Add/remove regions from your database account
     summary: |
       > [!TIP]
-      > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete. Additionally, when removing an existing region, all replication across regions (within [partition sets](./global-dist-under-the-hood.md)) must complete before the region is marked as unavailable.
+      > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete. Additionally, when removing an existing region, all replication across regions (within [partition sets](./global-distribution.md)) must complete before the region is marked as unavailable.
     steps:
       - |
         Sign in to [Azure portal](https://portal.azure.com).

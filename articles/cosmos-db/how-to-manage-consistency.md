@@ -344,7 +344,7 @@ To view the PBS metric:
 Learn more about how to manage data conflicts, or move on to the next key concept in Azure Cosmos DB.
 
 * [Consistency Levels in Azure Cosmos DB](consistency-levels.md)
-* [Partitioning and horizontal scaling](partitioning-overview.md)
+* [Partitioning and horizontal scaling](partitioning.md)
 * [Manage conflict resolution policies](how-to-manage-conflicts.md)
 * [Consistency tradeoffs in modern distributed database systems design](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [High availability (Reliability) in Azure Cosmos DB for NoSQL](/azure/reliability/reliability-cosmos-db-nosql)

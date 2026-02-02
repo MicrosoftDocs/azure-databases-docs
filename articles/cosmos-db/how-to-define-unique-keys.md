@@ -177,5 +177,5 @@ _, err = db.CreateContainer(context.Background(), azcosmos.ContainerProperties{
 
 ## Next steps
 
-- Learn more about [partitioning](partitioning-overview.md)
+- Learn more about [partitioning](partitioning.md)
 - Explore [how indexing works](index-overview.md)
