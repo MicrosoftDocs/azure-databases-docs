@@ -5,8 +5,9 @@ author: thakagi
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: how-to
-ms.date: 12/05/2025
+ms.date: 02/02/2026
 ms.author: hitakagi
+ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
 ---
@@ -53,7 +54,7 @@ The key differences between the data structure of Azure Cosmos DB and HBase are 
 
 * In HBase, data is stored by [RowKey](https://hbase.apache.org/book.html#rowkey.design) and horizontally partitioned into regions by the range of RowKey specified during the table creation.
 
-* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](partitioning-overview.md).
+* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](partitioning.md).
 
 **Column family**
 
@@ -128,11 +129,12 @@ You can also use [autoscaling provisioning throughput](provision-throughput-auto
 HBase sorts data according to RowKey. The data is then partitioned into regions and stored in RegionServers. The automatic partitioning divides regions horizontally according to the partitioning policy. This is controlled by the value assigned to HBase parameter `hbase.hregion.max.filesize` (default value is 10 GB). A row in HBase with a given RowKey always belongs to one region. In addition, the data is separated on disk for each column family. This enables filtering at the time of reading and isolation of I/O on HFile.
 
 **Azure Cosmos DB**
-Azure Cosmos DB uses [partitioning](partitioning-overview.md) to scale individual containers in the database. Partitioning divides the items in a container into specific subsets called "logical partitions". Logical partitions are formed based on the value of the "partition key" associated with each item in the container. All items in a logical partition have the same partition key value. Each logical partition can hold up to 20 GB of data.
+Azure Cosmos DB uses [partitioning](partitioning.md) to scale individual containers. For comprehensive details about logical partitions, physical partitions, and partition key selection, see the [partitioning overview](partitioning.md).
 
-Physical partitions each contain a replica of your data and an instance of the Azure Cosmos DB database engine. This structure makes your data durable and highly available and throughput is divided equally amongst the local physical partitions. Physical partitions are automatically created and configured, and it's not possible to control their size, location, or which logical partitions they contain. Logical partitions aren't split between physical partitions.
+**Key differences for migration:**
 
-As with HBase RowKey, partition key design is important for Azure Cosmos DB. HBase's Row Key works by sorting data and storing continuous data, and Azure Cosmos DB's Partition Key is a different mechanism because it hash-distributes data. Assuming your application using HBase is optimized for data access patterns to HBase, using the same RowKey for the partition Key won't give good performance results. Given that it's sorted data on HBase, the [Azure Cosmos DB composite index](index-policy.md#composite-indexes) may be useful. It's required if you want to use the ORDER BY clause in more than one field. You can also improve the performance of many equal and range queries by defining a composite index.
+- **Data distribution mechanism**: HBase's RowKey sorts data and stores continuous data, while Azure Cosmos DB's partition key hash-distributes data. Using the same RowKey for your partition key typically won't give optimal performance results.
+- **Composite indexes for sorted queries**: Given that data is sorted on HBase, the [Azure Cosmos DB composite index](index-policy.md#composite-indexes) may be useful. It's required if you want to use the ORDER BY clause on multiple fields. You can also improve the performance of many equality and range queries by defining a composite index.
 
 ### Availability
 

@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/03/2025
+ms.date: 02/02/2026
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
 appliesto:
@@ -67,7 +67,7 @@ If you assign a throughput of 18,000 request units per second (RU/s), each of th
 
 ## Managing logical partitions
 
-Azure Cosmos DB automatically manages the placement of logical partitions on physical partitions to meet the scalability and performance needs of the container. When the throughput and storage requirements of an application increase, Azure Cosmos DB moves logical partitions to spread the load across more physical partitions. Learn more about [physical partitions](partitioning-overview.md#physical-partitions).
+Azure Cosmos DB automatically manages the placement of logical partitions on physical partitions to meet the scalability and performance needs of the container. When the throughput and storage requirements of an application increase, Azure Cosmos DB moves logical partitions to spread the load across more physical partitions. Learn more about [physical partitions](partitioning.md#physical-partitions).
 
 Azure Cosmos DB uses hash-based partitioning to distribute logical partitions across physical partitions. Azure Cosmos DB hashes the partition key value of an item. The hashed result determines the logical partition. Then, Azure Cosmos DB allocates the key space of partition key hashes evenly across the physical partitions.
 
@@ -75,11 +75,11 @@ Transactions in stored procedures or triggers are allowed only for items in a si
 
 ## Replica sets
 
-Each physical partition consists of a set of replicas, also called a [*replica set*](global-dist-under-the-hood.md). Each replica hosts an instance of the database engine. A replica set makes the data store within the physical partition durable, highly available, and consistent. Each replica in the physical partition inherits the partition's storage quota. All replicas of a physical partition collectively support the throughput allocated to that physical partition. Azure Cosmos DB automatically manages replica sets.
+Each physical partition consists of a set of replicas, also called a [*replica set*](global-distribution.md). Each replica hosts an instance of the database engine. A replica set makes the data store within the physical partition durable, highly available, and consistent. Each replica in the physical partition inherits the partition's storage quota. All replicas of a physical partition collectively support the throughput allocated to that physical partition. Azure Cosmos DB automatically manages replica sets.
 
 Smaller containers usually require a single physical partition, but they still have at least four replicas.
 
-This image shows how logical partitions map to physical partitions distributed globally. [Partition set](global-dist-under-the-hood.md#partition-sets) in the image refers to a group of physical partitions that manage the same logical partition keys across multiple regions:
+This image shows how logical partitions map to physical partitions distributed globally. [Partition set](global-distribution.md#partition-sets) in the image refers to a group of physical partitions that manage the same logical partition keys across multiple regions:
 
 :::image type="content" source="./media/partitioning-overview/logical-partitions.png" alt-text="Diagram that shows Azure Cosmos DB partitioning." border="false":::
 
@@ -165,7 +165,7 @@ The *item ID* is a great partition key choice for the following reasons:
 Consider the following caveats when selecting the *item ID* as the partition key:
 
 * If the *item ID* is the partition key, it becomes a unique identifier for your entire container. You can't create items with duplicate *identifiers*.
-* If you have a read-heavy container with many [physical partitions](partitioning-overview.md#physical-partitions), queries are more efficient if they have an equality filter with the *item ID*.
+* If you have a read-heavy container with many [physical partitions](partitioning.md#physical-partitions), queries are more efficient if they have an equality filter with the *item ID*.
 * Stored procedures or triggers can't target multiple logical partitions.
 
 ## Related content
