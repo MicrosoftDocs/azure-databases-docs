@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: overview
-ms.date: 12/15/2025
+ms.date: 02/02/2026
 ai-usage: ai-assisted
 adobe-target: true
 ms.collection:
