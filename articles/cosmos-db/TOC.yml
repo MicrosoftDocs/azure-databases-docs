@@ -3,12 +3,10 @@
 - name: Overview
   expanded: true
   items:
-    - name: Welcome to Azure Cosmos DB
-      href: introduction.md
+    - name: What is Azure Cosmos DB?
+      href: overview.md
     - name: FAQ
       href: faq.yml
-    - name: Overview
-      href: overview.md
     - name: Understand distributed NoSQL
       href: distributed-nosql.md
     - name: Compare to Azure DocumentDB
