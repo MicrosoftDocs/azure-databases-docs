@@ -39,7 +39,7 @@ When you choose each level of your hierarchical partition key, it's important to
 
 - **Read-heavy workloads:** We recommend that you choose hierarchical partition keys that appear frequently in your queries. 
 
-  - For example, a workload that frequently runs queries to filter out specific user sessions in a multitenant application can benefit from hierarchical partition keys of `TenantId`, `UserId`, and `SessionId`, in that order. Queries can be efficiently routed to only the relevant physical partitions by including the partition key in the filter predicate. For more information about choosing partition keys for read-heavy workloads, see the [partitioning overview](partitioning-overview.md).
+  - For example, a workload that frequently runs queries to filter out specific user sessions in a multitenant application can benefit from hierarchical partition keys of `TenantId`, `UserId`, and `SessionId`, in that order. Queries can be efficiently routed to only the relevant physical partitions by including the partition key in the filter predicate. For more information about choosing partition keys for read-heavy workloads, see the [partitioning overview](partitioning.md).
 
 - **Write-heavy workloads:** We recommend using a high cardinal value for the **first level** of your hierarchical partition key. High cardinality means that the first-level key (and subsequent levels as well) has at least thousands of unique values and more unique values than the number of your physical partitions.
 
@@ -67,7 +67,7 @@ When using hierarchical partition keys, you can add the item ID as the last leve
 
 For example, in a multitenant workload partitioned by `TenantId` and `UserId`, if a single combination of these values might exceed 20 GB, add a third-level key with high cardinality. A GUID is a good choice because the combination of `TenantId`, `UserId`, and a GUID is unlikely to exceed 20 GB, allowing the `TenantId` and `UserId` combination to effectively scale beyond 20 GB.
 
-For comprehensive guidance on why item ID is an effective partition key choice (high cardinality, even distribution, and efficient point reads), see [Use item ID as the partition key](partitioning-overview.md#use-item-id-as-the-partition-key) in the partitioning overview.
+For comprehensive guidance on why item ID is an effective partition key choice (high cardinality, even distribution, and efficient point reads), see [Use item ID as the partition key](partitioning.md#use-item-id-as-the-partition-key) in the partitioning overview.
 
 ## Get started
 
@@ -808,5 +808,5 @@ for pager.More() {
 ## Next steps
 
 - [Frequently asked questions on hierarchical partition keys in Azure Cosmos DB](hierarchical-partition-keys-faq.yml)
-- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 - [Azure Resource Manager templates with Microsoft.DocumentDB databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts?pivots=deployment-language-arm-template)

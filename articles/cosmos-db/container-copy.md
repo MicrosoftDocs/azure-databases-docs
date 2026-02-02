@@ -20,7 +20,7 @@ You might need to copy data from your Azure Cosmos DB account if you want to ach
 
 * Copy all items from one container to another.
 * Change the [granularity at which throughput is provisioned, from database to container](set-throughput.md) and vice versa.
-* Change the [partition key](partitioning-overview.md#choose-a-partition-key) of a container.
+* Change the [partition key](partitioning.md#choose-a-partition-key) of a container.
 * Update the [unique keys](unique-keys.md) for a container.
 * Rename a container or database.
 * Change capacity mode of an account from serverless to provisioned or vice-versa.
