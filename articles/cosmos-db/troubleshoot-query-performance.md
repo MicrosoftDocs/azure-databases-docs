@@ -435,7 +435,7 @@ If the **Retrieved Document Count** is approximately equal to the **Output Docum
 
 ### Minimize cross partition queries
 
-Azure Cosmos DB uses [partitioning](partitioning-overview.md) to scale individual containers as Request Unit and data storage needs increase. Each physical partition has a separate and independent index. If your query has an equality filter that matches your container's partition key, you need to check only the relevant partition's index. This optimization reduces the total number of RUs that the query requires.
+Azure Cosmos DB uses [partitioning](partitioning.md) to scale individual containers as Request Unit and data storage needs increase. Each physical partition has a separate and independent index. If your query has an equality filter that matches your container's partition key, you need to check only the relevant partition's index. This optimization reduces the total number of RUs that the query requires.
 
 If you have a large number of provisioned RUs (more than 30,000) or a large amount of data stored (more than approximately 100 GB), you probably have a large enough container to see a significant reduction in query RU charges.
 

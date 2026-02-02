@@ -22,7 +22,7 @@ This article describes best practices and strategies for scaling the throughput 
 
 ## Prerequisites
 
-- If you're new to partitioning and scaling in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md).
+- If you're new to partitioning and scaling in Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
 - If you're planning to scale your RU/s due to 429 exceptions, review the guidance in [Diagnose and troubleshoot "Request rate too large" (429) exceptions](troubleshoot-request-rate-too-large.md). Before increasing RU/s, identify the root cause of the issue and whether increasing RU/s is the right solution.
 
 ## Background on scaling RU/s
@@ -137,7 +137,7 @@ We can take advantage of the fact that during container creation, Azure Cosmos D
 
 ### Step 1: Review the choice of partition key
 
-Follow [best practices](partitioning-overview.md) for choosing a partition key to ensure you have even distribution of request volume and storage post-migration. 
+Follow [best practices](partitioning.md) for choosing a partition key to ensure you have even distribution of request volume and storage post-migration. 
 
 ### Step 2: Calculate the number of physical partitions you need 
 
