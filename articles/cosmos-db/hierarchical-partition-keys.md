@@ -5,8 +5,9 @@ author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 06/24/2025
+ms.date: 02/02/2026
 ms.custom: build-2023, sfi-image-nochange
+ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
 ---
@@ -62,11 +63,11 @@ Queries that specify either `TenantId`, or both `TenantId` and `UserId`, are eff
 
 ## Use item ID in hierarchy
 
-If your container has a property that has a large range of possible values, the property is likely a great partition key choice for the last level of your hierarchy. One possible example of this type of property is the *item ID*. The system property item ID exists in every item in your container. Adding the item ID as another level guarantees that you can scale beyond the logical partition key limit of 20 GB. You can scale beyond this limit for the first level or for the first and second levels of keys.
+When using hierarchical partition keys, you can add the item ID as the last level in your hierarchy to guarantee that you can scale beyond the logical partition key limit of 20 GB. This approach is particularly useful for the first level, or for the combination of first and second levels of keys.
 
-For example, you might have a container for a multitenant workload that's partitioned by `TenantId` and `UserId`. If it's possible for a single combination of `TenantId` and `UserId` to exceed 20 GB, then we recommend that you partition by using three levels of keys, and in which the third-level key has high cardinality. An example of this scenario is if the third-level key is a GUID that has naturally high cardinality. It's unlikely that the combination of `TenantId`, `UserId`, and a GUID exceeds 20 GB, so the combination of `TenantId` and `UserId` can effectively scale beyond 20 GB.
+For example, in a multitenant workload partitioned by `TenantId` and `UserId`, if a single combination of these values might exceed 20 GB, add a third-level key with high cardinality. A GUID is a good choice because the combination of `TenantId`, `UserId`, and a GUID is unlikely to exceed 20 GB, allowing the `TenantId` and `UserId` combination to effectively scale beyond 20 GB.
 
-For more information about using item ID as a partition key, see the [partitioning overview](partitioning-overview.md).
+For comprehensive guidance on why item ID is an effective partition key choice (high cardinality, even distribution, and efficient point reads), see [Use item ID as the partition key](partitioning-overview.md#use-item-id-as-the-partition-key) in the partitioning overview.
 
 ## Get started
 

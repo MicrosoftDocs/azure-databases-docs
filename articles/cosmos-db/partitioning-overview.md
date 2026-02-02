@@ -5,7 +5,7 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 09/03/2025
+ms.date: 02/02/2026
 ms.custom: cosmos-db-video
 ai-usage: ai-assisted
 appliesto:
