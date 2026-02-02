@@ -54,7 +54,7 @@ The key differences between the data structure of Azure Cosmos DB and HBase are 
 
 * In HBase, data is stored by [RowKey](https://hbase.apache.org/book.html#rowkey.design) and horizontally partitioned into regions by the range of RowKey specified during the table creation.
 
-* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](partitioning-overview.md).
+* Azure Cosmos DB on the other side distributes data into partitions based on the hash value of a specified [Partition key](partitioning.md).
 
 **Column family**
 
@@ -129,7 +129,7 @@ You can also use [autoscaling provisioning throughput](provision-throughput-auto
 HBase sorts data according to RowKey. The data is then partitioned into regions and stored in RegionServers. The automatic partitioning divides regions horizontally according to the partitioning policy. This is controlled by the value assigned to HBase parameter `hbase.hregion.max.filesize` (default value is 10 GB). A row in HBase with a given RowKey always belongs to one region. In addition, the data is separated on disk for each column family. This enables filtering at the time of reading and isolation of I/O on HFile.
 
 **Azure Cosmos DB**
-Azure Cosmos DB uses [partitioning](partitioning-overview.md) to scale individual containers. For comprehensive details about logical partitions, physical partitions, and partition key selection, see the [partitioning overview](partitioning-overview.md).
+Azure Cosmos DB uses [partitioning](partitioning.md) to scale individual containers. For comprehensive details about logical partitions, physical partitions, and partition key selection, see the [partitioning overview](partitioning.md).
 
 **Key differences for migration:**
 

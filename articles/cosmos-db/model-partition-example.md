@@ -15,7 +15,7 @@ appliesto:
 
 # How to model and partition data using a real-world example
 
-This article builds on several Azure Cosmos DB concepts like [data modeling](modeling-data.md), [partitioning](partitioning-overview.md), and [provisioned throughput](request-units.md) to demonstrate how to tackle a real-world data design exercise.
+This article builds on several Azure Cosmos DB concepts like [data modeling](modeling-data.md), [partitioning](partitioning.md), and [provisioned throughput](request-units.md) to demonstrate how to tackle a real-world data design exercise.
 
 If you usually work with relational databases, you've probably developed habits for designing data models. Because of the specific constraints, but also the unique strengths of Azure Cosmos DB, most of these best practices don't translate well and might drag you into suboptimal solutions. The goal of this article is to guide you through the complete process of modeling a real-world use case on Azure Cosmos DB, from item modeling to entity colocation and container partitioning.
 
@@ -595,5 +595,5 @@ The change feed that we use to distribute updates to other containers store all 
 After this introduction to practical data modeling and partitioning, you might want to check the following articles to review the concepts:
 
 - [Databases, containers, and items in Azure Cosmos DB](resource-model.md)
-- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 - [Change feed in Azure Cosmos DB](change-feed.md)
