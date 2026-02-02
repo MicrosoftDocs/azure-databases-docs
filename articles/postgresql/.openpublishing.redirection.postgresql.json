@@ -1666,6 +1666,11 @@
             "redirect_document_id": false
         },
         {
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/concepts-user-roles-migration-service.md",
+            "redirect_url": "/azure/articles/postgresql/migrate/migration-service/overview-migration-service-postgresql",
+            "redirect_document_id": false
+        },
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-query-tuning---genetic-query-optimizer.md",
             "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-query-tuning-genetic-query-optimizer",
             "redirect_document_id": false
@@ -3884,11 +3889,6 @@
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
             "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
             "redirect_document_id": true
-        },
-        {
-            "source_path_from_root": "/articles/postgresql/migrate/migration-service/concepts-user-roles-migration-service.md",
-            "redirect_url": "/azure/articles/postgresql/migrate/migration-service/overview-migration-service-postgresql",
-            "redirect_document_id": false
         }
     ]
 }
