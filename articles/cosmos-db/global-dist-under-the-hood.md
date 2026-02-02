@@ -5,7 +5,8 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
 ms.topic: concept-article
-ms.date: 07/02/2020
+ms.date: 02/02/2026
+ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
@@ -55,6 +56,8 @@ A physical partition is materialized as a self-managed and dynamically load-bala
 - First, the cost of processing the write requests on the leader is higher than the cost of applying the updates on the follower. Correspondingly, the leader is budgeted more system resources than the followers. 
 
 - Secondly, as far as possible, the read quorum for a given consistency level is composed exclusively of the follower replicas. We avoid contacting the leader for serving reads unless  required. We employ a number of ideas from the research done on the relationship of [load and capacity](https://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf) in the quorum-based systems for the [five consistency models](consistency-levels.md) that Azure Cosmos DB supports.  
+
+For more information about replica sets and how they relate to physical partitions, see [partition replica sets](partitioning-overview.md#replica-sets).
 
 ## Partition-sets
 
