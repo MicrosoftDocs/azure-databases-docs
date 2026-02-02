@@ -43,6 +43,6 @@ Welcome to the centralized index of maintenance release notes for **Azure Databa
 
 ## 💬 Feedback & Support
 
-If you have questions or feedback about a specific release, please reach out via [Ask Azure Database for PostgreSQL](mailto:AskAzurePostgreSQL@microsoft.com)
+If you have questions or feedback about a specific release, reach out via [Ask Azure Database for PostgreSQL](https://feedback.azure.com/)
 
 
