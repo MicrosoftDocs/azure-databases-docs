@@ -3886,8 +3886,8 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
-            "redirect_url": "/azure/articles/postgresql/migrate/migration-service/overview-migration-service-postgresql.md",
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/concepts-user-roles-migration-service.md",
+            "redirect_url": "/azure/articles/postgresql/migrate/migration-service/overview-migration-service-postgresql",
             "redirect_document_id": false
         }
     ]
