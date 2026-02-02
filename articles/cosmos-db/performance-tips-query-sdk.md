@@ -51,7 +51,7 @@ Here are a few examples of simple single partition queries that can benefit from
 - SELECT * FROM r WHERE r.id > 5 OFFSET 5 LIMIT 3 
 ```
 
-There can be cases where single partition queries might still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](partitioning-overview.md#physical-partitions). Examples of queries where this could occur include:
+There can be cases where single partition queries might still require distribution if the number of data items increases over time and your Azure Cosmos DB database [splits the partition](partitioning.md#physical-partitions). Examples of queries where this could occur include:
 
 ```
 - SELECT Count(r.id) AS count_a FROM r
@@ -143,7 +143,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ---
 
 > [!NOTE]
-> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning-overview.md#physical-partitions) the container has, the slower they can potentially be.
+> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning.md#physical-partitions) the container has, the slower they can potentially be.
 
 ### Avoid recreating the iterator unnecessarily
 
@@ -344,7 +344,7 @@ CosmosPagedFlux<MyItem> filteredItems =
 ```
 
 > [!NOTE]
-> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning-overview.md#physical-partitions) the container has, the slowed they can potentially be.
+> Cross-partition queries require the SDK to visit all existing partitions to check for results. The more [physical partitions](partitioning.md#physical-partitions) the container has, the slowed they can potentially be.
 
 ## Tune the degree of parallelism
 
