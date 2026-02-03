@@ -9,8 +9,6 @@
     - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
