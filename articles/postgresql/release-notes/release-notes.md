@@ -85,7 +85,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL.
 - General availability of [New Zealand North](../overview.md#azure-regions) region.
-- Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with [GA REST API](/azure/postgresql/release-notes/release-notes) version.
+- Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with [GA REST API](release-notes-api.md) version.
 
 
 ## Release: March 2025
