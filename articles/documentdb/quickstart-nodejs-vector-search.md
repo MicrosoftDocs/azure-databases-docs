@@ -7,7 +7,7 @@ ms.author: diberry
 ms.reviewer: khelanmodi
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 01/26/2026
+ms.date: 02/03/2026
 ms.custom:
   - devx-track-ts
   - devx-track-ts-ai
@@ -21,7 +21,7 @@ Use vector search in Azure DocumentDB with the Node.js client library. Store and
 
 This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-3-small` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/mongo-vcore-vector-search-typescript) on GitHub. 
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-typescript) on GitHub. 
 
 ## Prerequisites
 
@@ -48,7 +48,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
 ## Create a Node.js project
 
-1. Create a new directory for your project and open it in Visual Studio Code:
+1. Create a new sibling directory for your project, at the same level as the data directory, and open it in Visual Studio Code:
 
     ```bash
     mkdir vector-search-quickstart
@@ -227,11 +227,13 @@ This utility module provides these features:
 
 ## Authenticate with Azure CLI
 
-Sign in to Azure CLI before you run the application so it can access Azure resources securely.
+Sign in to Azure CLI before you run the application so it can access Azure resources securely. 
 
 ```bash
 az login
 ```
+
+Your local developer authentication is used to access both Azure DocumentDB and Azure OpenAI in the code using the `getClientsPasswordless` function from `utils.ts`. This function relies on [ DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
 
 ## Build and run the application
 
