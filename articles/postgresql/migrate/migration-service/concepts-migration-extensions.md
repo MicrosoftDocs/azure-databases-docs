@@ -44,12 +44,19 @@ The migration service considers configuration tables for migration if they're li
 > [!IMPORTANT]
   > Tables that aren't referenced in the `extconfig` column of the `pg_extension` system catalog table won't be migrated to the target. During CDC, ensure these tables aren't referenced as they won't have any data loaded.
 
-## Considerations for postgres_fdw migration
+## Considerations for postgres_fdw extension
 
-The migration service doesn't support migrating the postgres_fdw extension in the following scenarios:
-- When user/roles migration is disabled using the migration server parameter: `azure.migration_skip_role_user = on`.
-- When the source PostgreSQL version is greater than 15.
-- When the source database is from AWS, on-premises, GCP, or an Azure VM (excluding Azure Database for PostgreSQL - Single Server).
+The [postgres_fdw module](https://www.postgresql.org/docs/current/postgres-fdw.html) provides the foreign data wrapper postgres_fdw, which can be used to access data stored in external PostgreSQL servers. If your database uses this extension, the following steps must be performed to ensure a successful migration.
+
+1. Temporarily remove (unlink) the foreign data wrapper on the source instance.
+2. Perform data migration of the rest by using the migration service.
+3. Restore the foreign data wrapper roles, user, and links to the target after migration.
+
+## Considerations for postGIS extension
+
+The postGIS extension has breaking changes/compact issues between different versions. If you migrate to a flexible server, the application should be checked against the newer postGIS version to ensure that the application isn't affected or that the necessary changes must be made. The [postGIS news](https://postgis.net/news/) and [release notes](https://postgis.net/docs/release_notes.html#idm45191) are a good starting point to understand the breaking changes across versions.
+- The `topology_id_seq` sequence isn't reset during migration. Users must manually reset it before creating a new topology.
+- Some functions have been removed or had schema changes, such as `ST_Quantile`, `ST_ApproxQuantile`, and `MULTIPOINT`. These changes could lead to migration failures.
 
 ## Considerations for pg_partman migration
 `pg_partman` (PG Partition Manager) is an extension that automates partition management for time-based and serial-based table partitioning. It simplifies partition handling by managing the creation, retention, and maintenance of partitions.
@@ -58,22 +65,13 @@ The migration service doesn't support migrating the postgres_fdw extension in th
 - **Trigger-based partitioning**: pg_partman 5.x doesn't support trigger-based partitioning. Users must transition from trigger-based partitioning to native PostgreSQL partitions before migration.
 - **Premigration consideration**: Users must ensure that no background job (for example, cron, BGP) is running that recreates partitions during the migration process.
 
-## Considerations for postgis migration
-There are breaking changes between multiple PostGIS versions that may impact migration. Customers should review the official [PostGIS release notes](https://postgis.net/docs/manual-3.3/release_notes.html) to understand potential issues.
-
-- The `topology_id_seq` sequence isn't reset during migration. Users must manually reset it before creating a new topology.
-- Some functions have been removed or had schema changes, such as `ST_Quantile`, `ST_ApproxQuantile`, and `MULTIPOINT`. These changes could lead to migration failures.
-
-
 ## TimescaleDB migration
 The `TimescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales PostgreSQL for time-series workloads. [Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses), and the migration service supports the same.
 
 > [!NOTE]  
   > Only **Offline** migration is possible for time series databases.
 
-
 By ensuring proper verification and configuration of extensions before migration, you can facilitate a seamless transition to Azure Database for PostgreSQL flexible Server using Migration service for Azure Database for PostgreSQL.
-
 
 ## Related content
 

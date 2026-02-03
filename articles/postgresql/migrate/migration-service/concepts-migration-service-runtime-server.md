@@ -21,14 +21,7 @@ This article provides an in-depth look at the migration runtime server, its supp
 
 ## Supported migration scenarios with the migration runtime server
 
-Migration runtime server is essential for transferring data between different source PostgreSQL instances and the Azure Database for PostgreSQL flexible server instance. It's necessary in the following scenarios:
-
-- When the source is an Azure Database for PostgreSQL - Single Server configured with a private endpoint and the target is an Azure Database for PostgreSQL flexible server with a private endpoint.
-
-> [!NOTE]  
-> The migration service does not support copying Microsoft Entra ID–authenticated roles when using a runtime server for performing the migration from single server to flexible server. We recommend that you manually create the Entra ID–authenticated roles on the target server before initiating the migration.
-
-- For sources such as on-premises databases, Azure virtual machines, or AWS instances, that are only accessible via private networks, and the target Azure Database for PostgreSQL flexible server instance with a private endpoint.
+Migration runtime server is essential for transferring data from different source PostgreSQL instances to the Azure Database for PostgreSQL flexible server instance. Runtime server is applicable for sources such as on-premises databases, Azure virtual machines, or AWS instances, that are only accessible via private networks, and the target Azure Database for PostgreSQL flexible server instance with a private endpoint.
 
 ## How do you use the migration runtime server?
 
