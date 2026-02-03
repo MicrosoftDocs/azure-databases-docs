@@ -4,7 +4,7 @@ description: This article provides an overview of the built-in PgBouncer feature
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/22/2026
+ms.date: 2/2/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -135,12 +135,6 @@ In zone-redundant, high-availability (HA) servers, the primary server runs PgBou
 
 PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After being enabled, port 6432 will route to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 will route to the PgBouncer instances running on the worker nodes in the cluster.
 
-## Using PgBouncer with other connection pools
-
-In some cases, you might already have an application-side connection pool or have PgBouncer set up on your application side (for example, an Azure Kubernetes Service sidecar). In these cases, the built-in PgBouncer feature can still be useful because it provides the benefits of idle connection scaling.
-
-Using an application-side pool together with PgBouncer on the database server can be beneficial. Here, the application-side pool brings the benefit of reduced initial connection latency (because the roundtrip to initialize the connection is much faster), and the database-side PgBouncer provides idle connection scaling.
-
 ## Limitations
 
 - The PgBouncer feature is currently not supported with the Burstable server compute tier. If you change the compute tier from General Purpose or Memory Optimized to Burstable, you lose the built-in PgBouncer capability.
@@ -148,7 +142,6 @@ Using an application-side pool together with PgBouncer on the database server ca
 - The portal doesn't show all PgBouncer parameters. After you enable PgBouncer and save the parameters, you have to close the **Server parameters** pane (for example, select **Overview**) and then go back to the **Server parameters** pane.
 - You can't use statement pool modes along with prepared statements. Current version of PgBouncer added support for prepared statements inside of transaction mode. This support can be enabled and configured via [max_prepared_statements parameter](../server-parameters/concepts-server-parameters.md). Setting this parameter above default value of 0 will turn on support for prepared statements. This support only applies to protocol-level prepared statements. For most programming languages, this means that we are using the *[libpq](https://www.postgresql.org/docs/current/libpq.html)* function *PQprepare* on the client, sending protocol level commands that PgBouncer can intercept, rather than issuing a dynamic SQL command similar to *PREPARE proc AS*, which is sending text that PgBouncer will not interpret correctly. To check other limitations of your chosen pool mode, refer to the [PgBouncer documentation](https://www.pgbouncer.org/features.html).
 - If PgBouncer is deployed as a feature, it becomes a potential single point of failure. If the PgBouncer feature is down, it can disrupt the entire database connection pool and cause downtime for the application. To mitigate the single point of failure, you can set up multiple PgBouncer instances behind a load balancer for high availability on Azure VMs.
-- Token Size Restriction with Azure AD Authentication - Users with a large number of group memberships won't be able to connect through PgBouncer due to a token size restriction. Applications, services, and users with a small number of groups work.
 - PgBouncer is a lightweight application that uses a single-threaded architecture. This design is great for most application workloads. But in applications that create a large number of short-lived connections, this design might affect pgBouncer performance and limit your ability to scale your application. You might need to try one of these approaches:
    - Distribute the connection load across multiple PgBouncer instances on Azure VMs.
    - Consider alternative solutions, including multithreaded solutions like [PgCat](https://github.com/postgresml/pgcat), on Azure VMs.

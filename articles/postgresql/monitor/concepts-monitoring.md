@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/20/2026
+ms.date: 2/2/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -237,11 +237,12 @@ For more information about setting up charts for dimensional metrics, see [Metri
 
 There are several options to visualize Azure Monitor metrics.
 
-|Component  |Description | Required training and/or configuration|
-|---------|---------|--------|
-|Overview page|Most Azure services have an **Overview** page in the Azure portal that includes a **Monitor** section with charts that show recent critical metrics. This information is intended for owners of individual services to quickly assess the performance of the resource. |This page is based on platform metrics that are collected automatically. No configuration is required.         |
-|[Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started)|You can use Metrics Explorer to interactively work with metric data and create metric alerts. You need minimal training to use Metrics Explorer, but you must be familiar with the metrics you want to analyze. |- Once data collection is configured, no other configuration is required.<br>- Platform metrics for Azure resources are automatically available.<br>- Guest metrics for virtual machines are available after an Azure Monitor agent is deployed to the virtual machine.<br>- Application metrics are available after Application Insights is configured.         |
-| [Grafana](https://grafana.com/grafana/dashboards/19556-azure-insights-postgresql-flexible-server-monitoring) | You can use Grafana for visualizing and alerting on metrics. All versions of Grafana include the [Azure Monitor datasource plug-in](/azure/azure-monitor/visualize/grafana-plugin) to visualize your Azure Monitor metrics and logs.                                                     | To become familiar with Grafana dashboards, some training is required. However, you can simplify the process by downloading a prebuilt [Azure PostgreSQL Monitoring](https://grafana.com/grafana/dashboards/21177-azure-azure-postgresql-flexible-server-monitoring/), which allows for easy monitoring of all Azure Database for PostgreSQL flexible server instances within your organization.                                                                                                                                              |
+| Component | Description | Required training and/or configuration |
+|----------|-------------|---------------------------------------|
+| Overview page | Most Azure services include an **Overview** page in the Azure portal with a **Monitor** section that shows recent, commonly used metrics. This view is intended for a quick health and performance check of an individual Azure PostgreSQL server. | Platform metrics are collected automatically.<br>No configuration required. |
+| [Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started) | Use Metrics Explorer to interactively analyze Azure Monitor metrics and create metric-based alerts. It provides flexible filtering, aggregation, and visualization capabilities. | - Platform metrics for Azure resources are available automatically.<br>- No additional configuration required after data collection is enabled.<br>- Guest metrics require the Azure Monitor Agent (VMs only).<br>- Application metrics require Application Insights. |
+| [Grafana](https://aka.ms/azure-postgres-grafana) | Use Grafana for advanced visualization and alerting on Azure Monitor metrics and logs. All Grafana distributions include the [Azure Monitor data source plug-in](/azure/azure-monitor/visualize/grafana-plugin), enabling rich dashboards and cross-metric correlations. | Familiarity with Grafana concepts is recommended.<br>Setup can be simplified by using the prebuilt **Azure PostgreSQL Grafana dashboard**, which enables monitoring across multiple Azure PostgreSQL Flexible Server instances with minimal configuration. |                                                                                                                                       |
+
 ## Azure Database for PostgreSQL resource logs
 
 These are logs generated and collected from operations that occur at the data plane level.
