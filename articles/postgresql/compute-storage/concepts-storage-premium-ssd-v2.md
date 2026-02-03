@@ -67,7 +67,6 @@ In preview, the following features are now supported for Azure Database for Post
 Geo Replicas
 Geo Redundant Backups
 Major Version Upgrade
-Virtual Endpoints 
 Geo DR*
 
 ### Supported features limitations
