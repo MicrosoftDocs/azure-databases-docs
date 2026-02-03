@@ -55,7 +55,7 @@ This new version introduces a range of new features and enhancements, resolves k
 - Fixed a rare race condition that could cause synchronized_standby_slots to be incorrect during high availability failover.
 - Fixed an issue that could cause near zero downtime scaling operations to stall under certain high availability configurations.
 - Fixed a race condition that was causing authentication errors after certification rotation on Fabric mirroring.
-- Elastic cluster - Adding a node to an Elastic cluster where previously installed extensions need an update no longer fails.
+- **Elastic cluster**: Adding a node to an Elastic cluster where previously installed extensions need an update no longer fails.
 
 
 ## Related content
