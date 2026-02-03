@@ -29,81 +29,14 @@ appliesto:
 > [!IMPORTANT]
 > * Versions 4.3.0b2 and higher support Async IO operations and version 4.5.2b4 and higher only support Python 3.8+. Python 2 is not supported.
 
-## Release history
-Release history is maintained in the azure-sdk-for-python repo, for detailed list of releases, see the [changelog file](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md).
+## Release history and retirement dates
 
-## Release & retirement dates
+Release history is maintained in the azure-sdk-for-python repo, for detailed list of releases, see the [changelog file](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md).
 
 Microsoft provides notification at least **12 months** in advance of retiring an SDK in order to smooth the transition to a newer/supported version. New features and functionality and optimizations are only added to the current SDK, as such it is recommended that you always upgrade to the latest SDK version as early as possible.
 
 > [!WARNING]
 > After 31 August 2022, Azure Cosmos DB will no longer make bug fixes or provide support to versions 1.x and 2.x of the Azure Cosmos DB Python SDK for API for NoSQL. If you prefer not to upgrade, requests sent from version 1.x and 2.x of the SDK will continue to be served by the Azure Cosmos DB service.
-
-| Version | Release Date | Retirement Date |
-| --- | --- | --- |
-| 4.15.0b2 |Dec 16, 2025 |--- |
-| 4.14.3 |Dec 08, 2025 |--- |
-| 4.15.0b1 |Nov 26, 2025 |--- |
-| 4.14.2 |Nov 14, 2025 |--- |
-| 4.14.1 |Nov 04, 2025 |--- |
-| 4.14.0 |Oct 13, 2025 |--- |
-| 4.14.0b4 |Sep 11, 2025 |--- |
-| 4.14.0b3 |Sep 09, 2025 |--- |
-| 4.14.0b2 |Aug 12, 2025 |--- |
-| 4.14.0b1 |Jul 14, 2025 |--- |
-| 4.13.0b2 |Jun 18, 2025 |--- |
-| 4.13.0b1 |Jun 05, 2025 |--- |
-| 4.12.0b1 |May 19, 2025 |--- |
-| 4.11.0b1 |Apr 30, 2025 |--- |
-| 4.10.0b4 |Apr 01, 2025 |--- |
-| 4.10.0b3 |Mar 27, 2025 |--- |
-| 4.10.0b2 |Mar 17, 2025 |--- |
-| 4.10.0b1 |Feb 13, 2025 |--- |
-| 4.9.1b4 |Feb 06, 2025 |--- |
-| 4.9.1b3 |Feb 04, 2025 |--- |
-| 4.9.1b2 |Jan 24, 2025 |--- |
-| 4.9.1b1 |Dec 13, 2024 |--- |
-| 4.9.0 |Nov 18, 2024 |--- |
-| 4.8.0 |Nov 12, 2024 |--- |
-| 4.7.0 |May 15, 2024 |--- |
-| 4.6.1 |May 15, 2024 |--- |
-| 4.6.0 |Mar 14, 2024 |--- |
-| 4.5.1 |Sep 14, 2023 |--- |
-| 4.5.0 |Aug 10, 2023 |--- |
-| 4.4.0 |Jun 10, 2023 |--- |
-| 4.3.1 |Feb 24, 2023 |--- |
-| 4.3.0 |May 23, 2022 |--- |
-| 4.2.0 |Oct 09, 2020 |--- |
-| 4.1.0 |Aug 10, 2020 |--- |
-| 4.0.0 |May 20, 2020 |--- |
-| 3.0.2 |Nov 15, 2018 |--- |
-| 3.0.1 |Oct 04, 2018 |--- |
-| 2.3.3 |Sept 08, 2018 |August 31, 2022 |
-| 2.3.2 |May 08, 2018 |August 31, 2022 |
-| 2.3.1 |December 21, 2017 |August 31, 2022 |
-| 2.3.0 |November 10, 2017 |August 31, 2022 |
-| 2.2.1 |Sep 29, 2017 |August 31, 2022 |
-| 2.2.0 |May 10, 2017 |August 31, 2022 |
-| 2.1.0 |May 01, 2017 |August 31, 2022 |
-| 2.0.1 |October 30, 2016 |August 31, 2022 |
-| 2.0.0 |September 29, 2016 |August 31, 2022 |
-| 1.9.0 |July 07, 2016 |August 31, 2022 |
-| 1.8.0 |June 14, 2016 |August 31, 2022 |
-| 1.7.0 |April 26, 2016 |August 31, 2022 |
-| 1.6.1 |April 08, 2016 |August 31, 2022 |
-| 1.6.0 |March 29, 2016 |August 31, 2022 |
-| 1.5.0 |January 03, 2016 |August 31, 2022 |
-| 1.4.2 |October 06, 2015 |August 31, 2022 |
-| 1.4.1 |October 06, 2015 |August 31, 2022 |
-| 1.2.0 |August 06, 2015 |August 31, 2022 |
-| 1.1.0 |July 09, 2015 |August 31, 2022 |
-| 1.0.1 |May 25, 2015 |August 31, 2022 |
-| 1.0.0 |April 07, 2015 |August 31, 2022 |
-| 0.9.4-prelease |January 14, 2015 |February 29, 2016 |
-| 0.9.3-prelease |December 09, 2014 |February 29, 2016 |
-| 0.9.2-prelease |November 25, 2014 |February 29, 2016 |
-| 0.9.1-prelease |September 23, 2014 |February 29, 2016 |
-| 0.9.0-prelease |August 21, 2014 |February 29, 2016 |
 
 ## FAQ
 
