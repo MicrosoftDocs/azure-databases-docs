@@ -8,6 +8,7 @@ ms.reviewer: khelanmodi
 ms.devlang: typescript
 ms.topic: quickstart-sdk
 ms.date: 02/03/2026
+ai-usage: ai-assisted
 ms.custom:
   - devx-track-ts
   - devx-track-ts-ai
@@ -230,13 +231,13 @@ This utility module provides these features:
 
 ## Authenticate with Azure CLI
 
-Sign in to Azure CLI before you run the application so it can access Azure resources securely. 
+Sign in to Azure CLI before you run the application so the app can access Azure resources securely.
 
 ```bash
 az login
 ```
 
-Your local developer authentication is used to access both Azure DocumentDB and Azure OpenAI in the code using the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this tells the function to use the Azure CLI credentials for authentication _deterministically_. The function relies on [ DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI with the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The function relies on [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
 
 ## Build and run the application
 
