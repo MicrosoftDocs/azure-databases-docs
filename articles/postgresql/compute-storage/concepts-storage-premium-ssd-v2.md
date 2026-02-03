@@ -63,10 +63,10 @@ If SSDv2 is unavailable in a region, disable the High Availability option to ena
 
 In preview, the following features are now supported for Azure Database for PostgreSQL – Flexible Server instances using Premium SSD v2 in Brazil South, Canada Central, Canada East, Central US, East Asia, East US, East US 2, South Central US, West Central US, and West US 2 regions.
 
-- *High Availability
-Geo Replicas
-Geo Redundant Backups
-Major Version Upgrade
+- *High Availability,
+Geo Replicas,
+Geo Redundant Backups,
+Major Version Upgrade and,
 Geo DR*
 
 ### Supported features limitations
