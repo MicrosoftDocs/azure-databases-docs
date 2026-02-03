@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL October 2025 Maintenance Release Notes
+# Azure Database for PostgreSQL - October 2025 Maintenance Release Notes
 
 We're excited to announce the October 2025 version of Azure Database for PostgreSQL. Starting October 24, 2025, all new servers are automatically onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
 

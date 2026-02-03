@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL January 2026 Maintenance Release Notes
+# Azure Database for PostgreSQL - January 2026 Maintenance Release Notes
 
 We're excited to announce the January 2026 version of Azure Database for PostgreSQL. Beginning January 20, 2026, all new servers are automatically onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
 
