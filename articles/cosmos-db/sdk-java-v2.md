@@ -286,7 +286,7 @@ Here's the release notes for each version of the SDK.
 
 ### 1.6.0
 
-- Implemented [partitioned collections](partitioning-overview.md) and [user-defined performance levels](performance-levels.md).
+- Implemented [partitioned collections](partitioning.md) and [user-defined performance levels](performance-levels.md).
 
 ### 1.5.1
 

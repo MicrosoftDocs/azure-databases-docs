@@ -104,7 +104,7 @@ print("Page size set to 500")
 ## Next steps
 To learn more about performance tips for Python SDK, see [Performance tips for Azure Cosmos DB Python SDK](performance-tips-python-sdk.md).
 
-To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).
+To learn more about designing your application for scale and high performance, see [Partitioning and scaling in Azure Cosmos DB](partitioning.md).
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 * If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](convert-vcore-to-request-unit.md) 

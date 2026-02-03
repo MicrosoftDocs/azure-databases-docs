@@ -25,7 +25,7 @@ A transaction in a typical database can be defined as a sequence of operations p
 * **Isolation** guarantees that no two transactions interfere with each other. Many commercial systems provide multiple isolation levels that can be used based on the application needs.
 * **Durability** ensures that any change that's committed in a database is always present.
 
-Azure Cosmos DB supports full [ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](partitioning-overview.md).
+Azure Cosmos DB supports full [ACID compliant transactions with snapshot isolation](database-transactions-optimistic-concurrency.md) for operations within the same [logical partition key](partitioning.md).
 
 ## Transactional batch operations and stored procedures
 

@@ -44,5 +44,5 @@ A multi-region-write account uses two server timestamp values for each entity. T
 - [Multi-region writes in your applications that use Azure Cosmos DB](how-to-multi-master.md)
 - [Consistency levels in Azure Cosmos DB](consistency-levels.md)
 - [Request Units in Azure Cosmos DB](request-units.md)
-- [Global data distribution with Azure Cosmos DB - under the hood](global-dist-under-the-hood.md)
+- [Global data distribution with Azure Cosmos DB - under the hood](global-distribution.md)
 - [Availability of Azure Cosmos DB software development kits (SDKs) in multiregional environments](troubleshoot-sdk-availability.md)

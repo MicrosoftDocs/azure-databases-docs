@@ -37,7 +37,7 @@ The change feed processor has four main components:
 
 * **The delegate**: The delegate is the code that defines what you, the developer, want to do with each batch of changes that the change feed processor reads.
 
-To further understand how these four elements of the change feed processor work together, let's look at an example in the following diagram. The monitored container stores items and uses 'City' as the partition key. The partition key values are distributed in ranges (each range represents a [physical partition](partitioning-overview.md#physical-partitions)) that contain items.
+To further understand how these four elements of the change feed processor work together, let's look at an example in the following diagram. The monitored container stores items and uses 'City' as the partition key. The partition key values are distributed in ranges (each range represents a [physical partition](partitioning.md#physical-partitions)) that contain items.
 
 The diagram shows two compute instances, and the change feed processor assigns different ranges to each instance to maximize compute distribution. Each instance has a different, unique name.
 

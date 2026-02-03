@@ -242,7 +242,7 @@ Another available option is to use [Azure AI services](https://www.microsoft.com
 
 There's a last, but not least, important article I must address: **scalability**. When you design an architecture, each component should scale on its own. You'll eventually need to process more data, or you'll want to have a bigger geographical coverage. Thankfully, achieving both tasks is a **turnkey experience** with Azure Cosmos DB.
 
-Azure Cosmos DB supports dynamic partitioning out-of-the-box. It automatically creates partitions based on a given **partition key**, which is defined as an attribute in your documents. Defining the correct partition key must be done at design time. For more information, see [Partitioning in Azure Cosmos DB](partitioning-overview.md).
+Azure Cosmos DB supports dynamic partitioning out-of-the-box. It automatically creates partitions based on a given **partition key**, which is defined as an attribute in your documents. Defining the correct partition key must be done at design time. For more information, see [Partitioning in Azure Cosmos DB](partitioning.md).
 
 For a social experience, you must align your partitioning strategy with the way you query and write. (For example, reads within the same partition are desirable, and avoid "hot spots" by spreading writes on multiple partitions.) Some options are: partitions based on a temporal key (day/month/week), by content category, by geographical region, or by user. It all really depends on how you query the data and show the data in your social experience.
 
