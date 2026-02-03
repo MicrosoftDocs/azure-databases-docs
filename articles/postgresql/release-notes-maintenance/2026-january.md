@@ -32,7 +32,6 @@ This new version introduces a range of new features and enhancements, resolves k
 - **Elastic cluster**: Introduced support for routing traffic directly to worker nodes in Elastic cluster by using port offsets.
 - **Elastic  cluster – Geo Restore**: Restore cluster to a different region with a simple, reliable geo restore workflow.
 - **Elastic cluster – Custom Database Name**: Create clusters with a database name of your choice for easier organization and migration during provisioning.
-- **Cascading Replica (Limited Public Preview)**: Scale read workloads with multi-level cascading replicas, now available in select regions.
 
 ## Improvements 
 
