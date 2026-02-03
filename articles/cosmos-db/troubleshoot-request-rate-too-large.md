@@ -127,7 +127,7 @@ This sample output shows that in a particular minute, the logical partition key 
 
 #### Recommended solution
 
-Review the guidance on [how to chose a good partition key](partitioning-overview.md#choose-a-partition-key).
+Review the guidance on [how to chose a good partition key](partitioning.md#choose-a-partition-key).
 
 If there's high percent of rate limited requests and no hot partition:
 - You can [increase the RU/s](set-throughput.md) on the database or container using the client SDKs, Azure portal, PowerShell, CLI, or ARM template. Follow [best practices for scaling provisioned throughput (RU/s)](scaling-provisioned-throughput-best-practices.md) to determine the right RU/s to set.

@@ -482,4 +482,4 @@ The request charge (that is, the request-processing cost) of a specified operati
 ## Next steps
 
 - [Measure Azure Cosmos DB for NoSQL performance with a benchmarking framework](benchmarking-framework.md)
-- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+- [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)

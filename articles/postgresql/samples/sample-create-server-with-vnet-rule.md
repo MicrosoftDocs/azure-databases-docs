@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 01/06/2025
 ms.service: azure-database-postgresql
+ms.subservice: development
 ms.topic: how-to
 ms.custom:
   - mvc

@@ -142,7 +142,7 @@
     - name: Partitioning (sharding)
       items:
         - name: Partitioning overview
-          href: ../partitioning-overview.md
+          href: ../partitioning.md
     - name: Throughput (RU/s)
       items:
         - name: Request units
@@ -240,7 +240,7 @@
                   displayName: last write wins, custom, multi-region writes, multi-master
                   href: ../conflict-resolution-policies.md
         - name: Global distribution - under the hood
-          href: ../global-dist-under-the-hood.md
+          href: ../global-distribution.md
     - name: Security
       items:
         - name: Considerations and guidance

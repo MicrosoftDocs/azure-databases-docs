@@ -6,6 +6,7 @@ ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 09/30/2025
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: concept-article
 ---
 

@@ -44,4 +44,4 @@ This guide includes best practices for solutions built using the latest version 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Partitioning and scaling in Azure Cosmos DB](partitioning-overview.md).
+> [Partitioning and scaling in Azure Cosmos DB](partitioning.md).

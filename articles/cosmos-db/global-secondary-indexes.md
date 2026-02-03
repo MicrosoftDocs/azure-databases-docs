@@ -10,7 +10,7 @@ ms.custom:
   - devx-track-azurecli
   - build-2025
 ms.topic: concept-article
-ms.date: 05/08/2025
+ms.date: 01/28/2026
 appliesto:
   - ✅ NoSQL
 ---
@@ -81,26 +81,23 @@ Because global secondary indexes can have a different partition key than source 
 
 ## Monitoring
 
-You can monitor the lag in building global secondary indexes through the **Global Secondary Index Catchup Gap In Minutes** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+You can monitor the lag in building global secondary indexes through the **Global Secondary Index Propagation Latency in Seconds** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
-:::image type="content" source="./media/global-secondary-indexes/global-secondary-index-catchup-gap.png" alt-text="Screenshot of the Global Secondary Index Catchup Gap In Minutes Metric in the Metrics page of the Azure portal." :::
+:::image type="content" source="./media/global-secondary-indexes/global-secondary-index-catchup-gap.png" alt-text="Screenshot of the Global Secondary Index Propagation Latency in Seconds metric in the Metrics page of the Azure portal." :::
 
 ### Troubleshooting common issues
 
 #### I want to understand the lag between my source container and index containers
 
-The **Global Secondary Index Catchup Gap In Minutes** metric shows the maximum difference in minutes between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then **Split by** and select **GlobalSecondaryIndexName**.
+The **Global Secondary Index Propagation Latency in Seconds** metric shows the average difference in seconds between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then select **GlobalSecondaryIndexName** from the drop-down of values.
+
+#### I want to understand when my global secondary index is caught up and ready to use
+
+There are two status types to differentiate between propagation latency when building the global secondary index for the first time and latency for active global secondary indexes. Use the **Global Secondary Index Propagation Latency in Seconds** metric and select **Apply splitting**. Select the **GlobalSecondaryIndexStatus** value to view latency for global secondary indexes in the **Active**  or **InitialBuildAfterCreate** status. You can use this metric and status to configure [alerts](./create-alerts.md) should the latency go above a certain threshold.
 
 #### I want to understand if my global secondary index containers have enough RUs
 
 The RUs provisioned on source and index containers affect the rate of changes propagated to the global secondary index container. Check the **Normalized RU Consumption** metric, if it's too high the container may benefit from increasing the maximum RUs.
-
-## Limitations
-
-There are a few limitations with the Azure Cosmos DB for NoSQL API global secondary index feature.
-
-- You must enable continuous backups on your account before global secondary indexes can be enabled.
-- Global secondary index containers aren't automatically restored during the account restore process. You must enable the global secondary index feature on the restored account after the restore process is finished. Then, you can create the global secondary indexes again.
 
 ## Next steps
 

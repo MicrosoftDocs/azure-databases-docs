@@ -112,7 +112,7 @@ You can also monitor pooled RU/s consumption at the account level in Azure porta
 
 ## Default limitations
 
-With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](partitioning-overview.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
+With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](partitioning.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
 
 In the preview:
 

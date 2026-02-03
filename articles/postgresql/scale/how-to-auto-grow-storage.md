@@ -6,6 +6,7 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 07/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: scale-out
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange

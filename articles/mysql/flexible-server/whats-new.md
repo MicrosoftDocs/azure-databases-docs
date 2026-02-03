@@ -93,7 +93,7 @@ The Self-Heal feature in Azure Database for MySQL empowers customers to resolve 
 
 ### Accelerated logs feature is now available in General Purpose service tier
 
-Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL - Flexible Server. Previously available only in the Business Critical tier, this feature enhances performance and reduces transaction latency. The accelerated logs feature in the General Purpose tier is available at an extra cost. For more information, see [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
+Accelerated logs are now supported in the General Purpose service tier of Azure Database for MySQL - Flexible Server. Previously available only in the Memory Optimized tier, this feature enhances performance and reduces transaction latency. The accelerated logs feature in the General Purpose tier is available at an extra cost. For more information, see [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
 
 ### Automate scheduling of on-demand backups
 
@@ -166,11 +166,11 @@ In response to customer feedback requesting flexibility in choosing their deploy
 You now benefit from the highest level of availability against infrastructure failures within an availability zone at no extra cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files are hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zonal redundancy and hot standby, non-HA servers can recover quickly from zonal outages using zone-redundant backups. This enhancement applies to all new servers provisioned in the Business-Critical service tier.
 
 > [!NOTE]  
-> Based on customer feedback requesting the ability to choose their preferred deployment type, we've decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Business Critical and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and can't be modified later.
+> Based on customer feedback requesting the ability to choose their preferred deployment type, we've decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Memory Optimized and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and can't be modified later.
 
 ### Accelerated Logs enabled for all new Memory-Optimized servers
 
-Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL flexible server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no extra cost. Existing Business Critical servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
+Accelerated Logs, a feature that significantly enhances the performance of Azure Database for MySQL flexible server instances, is now enabled by default for all new Business-Critical servers. Accelerated Logs offers a dynamic solution designed for high throughput needs, reducing latency with no extra cost. Existing Memory Optimized servers can also enable Accelerated Logs through the Azure portal. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md).
 
 ## November 2024
 
@@ -255,7 +255,7 @@ For more information, see [Data encryption with customer managed keys for Azure 
 
 - **Support for storage up to 32 TB in Azure Database for MySQL Flexible Server is now Generally Available**
 
-  Storage support up to 32 TB in Azure Database for MySQL Flexible Server is now generally available (GA). This feature is available only in the Business Critical service tier.
+  Storage support up to 32 TB in Azure Database for MySQL Flexible Server is now generally available (GA). This feature is available only in the Memory Optimized service tier.
 
   For more information, see [Azure Database for MySQL - Flexible Server service tiers](concepts-service-tiers-storage.md).
 
@@ -297,7 +297,7 @@ To learn more, visit [Backup and restore in Azure Database for MySQL](concepts-b
 
 - **Accelerated Logs is now available for existing servers and three new regions.**
 
-  Accelerated Logs, previously limited to servers created after November 14, is now accessible for all existing Business Critical tier's **standalone** servers in the preview phase. Accelerated logs also support [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md). Additionally, this feature is available in three new regions: Japan East, Korea Central, and Poland Central. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md)
+  Accelerated Logs, previously limited to servers created after November 14, is now accessible for all existing Memory Optimized tier's **standalone** servers in the preview phase. Accelerated logs also support [Microsoft Entra authentication for Azure Database for MySQL - Flexible Server](security-entra-authentication.md). Additionally, this feature is available in three new regions: Japan East, Korea Central, and Poland Central. [Accelerated logs in Azure Database for MySQL](concepts-accelerated-logs.md)
 
 - **Known Issues**
 

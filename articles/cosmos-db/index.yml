@@ -204,7 +204,7 @@ conceptualContent:
               url: optimize-cost-reads-writes.md
             - text: Partitioning and horizontal scaling
               itemType: concept
-              url: partitioning-overview.md
+              url: partitioning.md
 additionalContent:
   sections:
     - title: Core concepts and architecture
@@ -218,7 +218,7 @@ additionalContent:
             - text: Distribute data globally
               url: distribute-data-globally.md
             - text: Partitioning
-              url: partitioning-overview.md
+              url: partitioning.md
             - text: Throughput & request units
               url: request-units.md
         - title: Model your data

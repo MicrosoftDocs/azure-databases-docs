@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: scale-out
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL.
 ---
@@ -84,6 +85,6 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 
 ## Related content
 
-- [Compute options](../configure-maintain/concepts-compute.md).
+- [Compute options](../compute-storage/concepts-compute.md).
 - [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md).
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)

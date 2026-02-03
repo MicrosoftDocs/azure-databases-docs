@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 11/28/2024
 ms.service: azure-database-postgresql
+ms.subservice: backup-restore
 ms.topic: concept-article
 ms.custom:
   - ignite-2023

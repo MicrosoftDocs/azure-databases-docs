@@ -94,4 +94,4 @@ Your choice of [consistency model](consistency-levels.md) also affects the throu
 
 - [Assign throughput on Azure Cosmos DB containers and databases](set-throughput.md).
 - [Serverless on Azure Cosmos DB](serverless.md).
-- [Logical partitions](./partitioning-overview.md)
+- [Logical partitions](./partitioning.md)

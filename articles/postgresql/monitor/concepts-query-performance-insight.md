@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 09/29/2024
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---

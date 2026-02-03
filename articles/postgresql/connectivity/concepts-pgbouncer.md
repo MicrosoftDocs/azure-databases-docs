@@ -4,8 +4,9 @@ description: This article provides an overview of the built-in PgBouncer feature
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 10/22/2025
+ms.date: 1/22/2026
 ms.service: azure-database-postgresql
+ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
@@ -17,15 +18,9 @@ PgBouncer runs on the same virtual machine (VM) as the database server for your 
 
 PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postgres connections only when needed--that is, when inside an open transaction or when a query is active. This model allows scaling to up to 10,000 connections with low overhead.
 
-PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
+The version of PgBouncer deployed on all supported major versions of the engine, in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**. PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
 
 PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](../security/security-entra-concepts.md) (Azure AD).
-
-## PgBouncer with elastic clusters
-
-PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After being enabled, port 6432 will route to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 will route to the PgBouncer instances running on the worker nodes in the cluster.
-
-Currently, the version of PgBouncer deployed on all supported major versions of the engine, in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
 
 ## Enable and configure PgBouncer
 
@@ -61,6 +56,41 @@ By using the built-in PgBouncer feature with your Azure Database for PostgreSQL 
 [!INCLUDE [PgBouncer Metrics](includes/pgbouncer-metrics.md)]
 
 To learn more, see [PgBouncer metrics](../monitor/concepts-monitoring.md#pgbouncer-metrics).
+
+### Logs
+
+PgBouncer logs are available in Azure Database for PostgreSQL Flexible Server to help audit connection pooling activity and troubleshoot issues such as connection drops, authentication failures, or pool exhaustion. PgBouncer logs include details such as authentication failures, connection lifecycle events, errors, and server state changes — all useful for identifying connection bottlenecks and behavioral anomalies.
+
+#### Enabling Logs
+
+PgBouncer logs are automatically emitted when Logs Diagnostic Settings are enabled. Two schema types are supported in Log Analytics **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
+
+- **Azure diagnostics Schema**  
+     - Logs appear in the `AzureDiagnostics` table  
+     - Filter using: `Category == "PostgreSQLFlexPGBouncer"`
+
+- **Resource-Specific Schema**  
+     - Logs appear in the `PGSQLPgBouncer` table  
+     - Easier to query, structured format
+
+#### Sample KQL Queries
+
+**Azure diagnostics Schema:**
+```kusto
+AzureDiagnostics
+| where Category == "PostgreSQLFlexPGBouncer"
+| where LogicalServerName_s =~ "your-server-name"
+| order by TimeGenerated desc
+```
+
+**Resource-Specific Schema:**
+```kusto
+PGSQLPgBouncer
+| where _ResourceId =~ "your-server-name"
+| order by TimeGenerated desc
+```
+> [!NOTE]  
+> The field names and schema format may vary slightly depending on the schema used (Consolidated vs Resource-Specific).
 
 ### Admin console
 
@@ -100,6 +130,10 @@ To start using PgBouncer, follow these steps:
 ## PgBouncer in zone-redundant high availability
 
 In zone-redundant, high-availability (HA) servers, the primary server runs PgBouncer. You can connect to PgBouncer on the primary server over port 6432. After a failover, PgBouncer is restarted on the newly promoted standby, which is now the primary server. So your application connection string remains the same after failover.
+
+## PgBouncer with elastic clusters
+
+PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After being enabled, port 6432 will route to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 will route to the PgBouncer instances running on the worker nodes in the cluster.
 
 ## Using PgBouncer with other connection pools
 
