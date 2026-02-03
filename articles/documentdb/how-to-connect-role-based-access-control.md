@@ -1249,17 +1249,17 @@ Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity dir
 1. Create and Assign a Managed Identity to the Virtual Machine.
 Create either a System-assigned Managed Identity or a [User-assigned Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal), and associate it with the Virtual Machine.
 
-   :::image source="/media/how-to-configure-entra-authentication/assign-managed-identity.png" alt-text="Screenshot to assign managed identity on the Azure portal.":::
+   :::image source="media/how-to-configure-entra-authentication/assign-managed-identity.png" alt-text="Screenshot to assign managed identity on the Azure portal.":::
 
 1. Register the Managed Identity in the Azure DocumentDB Cluster.
 
-   :::image source="/media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot to register managed identity on the Azure DocumentDB Cluster.":::
+   :::image source="media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot to register managed identity on the Azure DocumentDB Cluster.":::
 
 1. Start the [MongoDB Compass](https://www.mongodb.com/products/tools/compass) application or [Mongo shell](https://www.mongodb.com/try/download/shell) in terminal.
 
 1. With Compass, Select **+** in the **Connections** menu to add a new connection. While using shell, get the **name** of your Azure DocumentDB cluster and the **client ID** for the target identity.
 
-   :::image source="/media/how-to-configure-entra-authentication/review-clientid.png" alt-text="Screenshot to review clientid needed for constructing the Entra connection string from portal on the Azure DocumentDB.":::
+   :::image source="media/how-to-configure-entra-authentication/review-clientid.png" alt-text="Screenshot to review clientid needed for constructing the Entra connection string from portal on the Azure DocumentDB.":::
 
 1. Enter the following connection string into the **URI** input box.
 
