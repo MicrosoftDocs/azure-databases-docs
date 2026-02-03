@@ -3878,7 +3878,7 @@
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/overview.md",
             "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-overview",
-            "redirect_document_id": true 
+            "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-connect.md",
