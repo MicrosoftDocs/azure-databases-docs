@@ -27,7 +27,7 @@ Role-based access control provides a centralized mechanism to assign and enforce
 Enable Microsoft Entra ID to allow Microsoft Entra principals (users, service principals, or managed identities) to authenticate to the cluster. Microsoft Entra ID authentication is implemented using OpenID Connect (OIDC). Clients present an Entra-issued OIDC access token to the MongoDB driver. A cluster must have native authentication enabled; the supported configurations are native-only or Microsoft Entra ID authentication only or native and Microsoft Entra ID authentication.
 
 > [!NOTE]
-> You can enable or change authentication methods on a cluster at any time after provisioning. Changing authentication methods does **not** require a cluster restart and is non-disruptive. When a cluster is created, native DocumentDB authentication must be enabled. You can disable native authentication after the cluster is finished provisioning.
+> You can enable or change authentication methods on a cluster at any time after provisioning. Changing authentication methods does **not** require a cluster restart and is nondisruptive. When a cluster is created, native DocumentDB authentication must be enabled. You can disable native authentication after the cluster is finished provisioning.
 
 Benefits of using Microsoft Entra ID for authentication include:
 
@@ -1244,7 +1244,7 @@ Use Visual Studio Code with the [DocumentDB extension](https://github.com/micros
 
 Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity directly with the  [MongoDB Compass](https://www.mongodb.com/products/tools/compass) application.
 
-1. Create an Azure Virtual Machine that will be used as the execution environment for connecting to the Azure DocumentDB cluster.
+1. Create an Azure Virtual Machine that is used as the execution environment for connecting to the Azure DocumentDB cluster.
 
 1. Create and Assign a Managed Identity to the Virtual Machine.
 Create either a System-assigned Managed Identity or a [User-assigned Managed Identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal), and associate it with the Virtual Machine.
@@ -1288,7 +1288,7 @@ Sign in to the cluster with an administrative Microsoft Entra ID identity to per
 > [!NOTE]
 > All management commands for nonadministrative users are supported for `SecurityPrincipal` and `user` principal types.
 >
-> nonadministrative users doesn't require registration on the portal.
+> Nonadministrative users don't require registration on the portal.
 
 1. Sign in to the cluster using an administrative Microsoft Entra ID identity and using a tool like [MongoDB Shell](#connect-using-microsoft-entra-id-in-mongodb-compass-or-mongodb-shell).
 
