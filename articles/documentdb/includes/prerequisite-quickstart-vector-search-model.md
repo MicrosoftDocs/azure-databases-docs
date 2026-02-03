@@ -3,8 +3,12 @@ ms.topic: include
 ms.date: 10/13/2025
 ---
 
-[!INCLUDE[Prerequisite - Existing cluster](prerequisite-existing-cluster.md)]
+[!INCLUDE[Prerequisites - Azure subscription](prerequisite-azure-subscription.md)]
 
+- An existing Azure DocumentDB cluster
+
+  - If you don't have a cluster, create a [new cluster](../quickstart-portal.md)
+  
   - [Role Based Access Control (RBAC) enabled](../how-to-connect-role-based-access-control.md#enable-microsoft-entra-id-authentication)
   
   - [Firewall configured to allow access to your client IP address](../how-to-configure-firewall.md#grant-access-from-your-ip-address)
