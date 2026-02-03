@@ -24,6 +24,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: November 2025
 - General availability
     - [PostgreSQL 18](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
+    - [Mirroring Azure Database for PostgreSQL in Microsoft Fabric](../integration/concepts-fabric-mirroring.md)
 
 ## Release: October 2025
 - General availability
