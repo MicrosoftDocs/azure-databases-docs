@@ -4,7 +4,7 @@ description: Configure Microsoft Entra ID–based role-based access control (rol
 author: seesharprun
 ms.author: sidandrews
 ms.topic: how-to
-ms.date: 01/02/2026
+ms.date: 01/19/2026
 ms.devlang: python
 defaultDevLang: python
 dev_langs:
@@ -809,7 +809,7 @@ When you create an Azure DocumentDB cluster, the cluster is configured to solely
 
 ## Manage DocumentDB administrative Microsoft Entra ID identities and native users
 
-When Microsoft Entra ID authentication is enabled on an Azure DocumetnDB cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time.
+When Microsoft Entra ID authentication is enabled on an Azure DocumentDB cluster, you can add one or more Microsoft Entra ID principals as *administrator users* to that cluster. The Microsoft Entra ID administrator can be a Microsoft Entra ID user, a service principal, or a managed identity. Multiple Microsoft Entra ID administrators can be configured at any time.
 
 Administrative Entra ID users are created as Azure entities under `Microsoft.DocumentDB/mongoClusters/users` and are replicated to the database.
 
@@ -1212,20 +1212,6 @@ The `tls` setting must also be enabled. The remaining recommended settings are b
 
 ::: zone-end
 
-## Connect using Microsoft Entra ID in MongoDB Shell
-
-Use a client device with the [MongoDB Shell](https://www.mongodb.com/try/download/shell) installed to connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity.
-
-1. Open a terminal on a client with MongoDB shell installed.
-
-1. Get the **name** of your Azure DocumentDB cluster and the **client ID** for the target identity.
-
-1. Connect by using the following connection string:
-
-     ```console
-     mongosh "mongodb+srv://<client-id>@<cluster-name>.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=MONGODB-OIDC&retrywrites=false&maxIdleTimeMS=120000"
-     ```
-
 ## Connect using Microsoft Entra ID in Visual Studio Code
 
 Use Visual Studio Code with the [DocumentDB extension](https://github.com/microsoft/vscode-documentdb) to connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity.
@@ -1254,15 +1240,26 @@ Use Visual Studio Code with the [DocumentDB extension](https://github.com/micros
 
 1. Wait for the connection to finalize. A new DocumentDB entry is then added to the **Connections** section for the cluster.
 
-## Connect using Microsoft Entra ID in MongoDB Compass
+## Connect using Microsoft Entra ID in MongoDB Compass or MongoDB Shell
 
 Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity directly with the  [MongoDB Compass](https://www.mongodb.com/products/tools/compass) application.
 
-1. Start the MongoDB Compass application.
+1. Create an Azure Virtual Machine that will be used as the execution environment for connecting to the Azure DocumentDB cluster.
 
-1. Select **+** in the **Connections** menu to add a new connection.
+1. Create and Assign a Managed Identity to the Virtual Machine.
+Create either a System-assigned Managed Identity or a [User-assigned Managed Identity](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal), and associate it with the Virtual Machine.
 
-1. Toggle the **Edit Connection String** setting to enable in the **New Connection** dialog.
+   :::image source="/media/how-to-configure-entra-authentication/assign-managed-identity.png" alt-text="Screenshot to assign managed identity on the Azure portal.":::
+
+1. Register the Managed Identity in the Azure DocumentDB Cluster.
+
+   :::image source="/media/how-to-configure-entra-authentication/open-side-panel-to-add-entra-id-users.png" alt-text="Screenshot to register managed identity on the Azure DocumentDB Cluster.":::
+
+1. Start the [MongoDB Compass](https://www.mongodb.com/products/tools/compass) application or [Mongo shell](https://www.mongodb.com/try/download/shell) in terminal.
+
+1. With Compass, Select **+** in the **Connections** menu to add a new connection. While using shell, get the **name** of your Azure DocumentDB cluster and the **client ID** for the target identity.
+
+   :::image source="/media/how-to-configure-entra-authentication/review-clientid.png" alt-text="Screenshot to register managed identity on the Azure DocumentDB Cluster.":::
 
 1. Enter the following connection string into the **URI** input box.
 
@@ -1274,7 +1271,7 @@ Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity dir
 
 1. In the **General** section, select `mongodb+srv` for the **Connection String Scheme**.
 
-1. Next, navigate to the **Authentication** section. 
+1. Next, navigate to the **Authentication** section.
 
 1. Ensure that the **OIDC** option is selected.
 
@@ -1290,6 +1287,8 @@ Sign in to the cluster with an administrative Microsoft Entra ID identity to per
 
 > [!NOTE]
 > All management commands for nonadministrative users are supported for `SecurityPrincipal` and `user` principal types.
+>
+> nonadministrative users doesn't require registration on the portal.
 
 1. Sign in to the cluster using an administrative Microsoft Entra ID identity and using a tool like [MongoDB Shell](#connect-using-microsoft-entra-id-in-mongodb-shell).
 
