@@ -1259,7 +1259,7 @@ Create either a System-assigned Managed Identity or a [User-assigned Managed Ide
 
 1. With Compass, Select **+** in the **Connections** menu to add a new connection. While using shell, get the **name** of your Azure DocumentDB cluster and the **client ID** for the target identity.
 
-   :::image source="/media/how-to-configure-entra-authentication/review-clientid.png" alt-text="Screenshot to register managed identity on the Azure DocumentDB Cluster.":::
+   :::image source="/media/how-to-configure-entra-authentication/review-clientid.png" alt-text="Screenshot to review clientid needed for constructing the Entra connection string from portal on the Azure DocumentDB.":::
 
 1. Enter the following connection string into the **URI** input box.
 
