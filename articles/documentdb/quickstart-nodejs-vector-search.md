@@ -76,6 +76,9 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
@@ -233,7 +236,7 @@ Sign in to Azure CLI before you run the application so it can access Azure resou
 az login
 ```
 
-Your local developer authentication is used to access both Azure DocumentDB and Azure OpenAI in the code using the `getClientsPasswordless` function from `utils.ts`. This function relies on [ DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
+Your local developer authentication is used to access both Azure DocumentDB and Azure OpenAI in the code using the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this tells the function to use the Azure CLI credentials for authentication _deterministically_. The function relies on [ DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
 
 ## Build and run the application
 
