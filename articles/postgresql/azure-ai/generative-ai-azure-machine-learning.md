@@ -6,6 +6,7 @@ ms.author: denzilr
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-azure-ml-integration
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot

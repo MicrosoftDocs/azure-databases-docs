@@ -1,11 +1,12 @@
 ---
 title: Connection pooling best practices
-description: This article describes the best practices for connection pooling in an Azure Database for PostgreSQL flexible server instance.
-author: rkniyer999
-ms.author: ramyerrabotu
+description: This article describes the best practices for connection pooling in an Azure Database for PostgreSQL.
+author: varun-dhawan
+ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 1/22/2026
 ms.service: azure-database-postgresql
+ms.subservice: connectivity
 ms.topic: best-practice
 ---
 
@@ -72,9 +73,7 @@ It's important to weigh these limitations against the benefits and evaluate whet
 
 It's possible to utilize **PgBouncer** as a sidecar container if your application is containerized and running on [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/), [Azure Container Instance (ACI)](https://azure.microsoft.com/products/container-instances), [Azure Container Apps (ACA)](https://azure.microsoft.com/products/container-apps/), or [Azure Red Hat OpenShift (ARO)](https://azure.microsoft.com/products/openshift/). The Sidecar pattern draws its inspiration from the concept of a sidecar that attached to a motorcycle, where an auxiliary container, known as the sidecar container, is attached to a parent application. This pattern enriches the parent application by extending its functionalities and delivering supplementary support.
 
-The sidecar pattern is typically used with containers being coscheduled as an atomic container group. deploying PgBouncer in an AKS sidecar tightly couples the application and sidecar lifecycles and shares resources such as hostname and networking to make efficient use of resources. The PgBouncer sidecar operates alongside the application container within the same pod in Azure Kubernetes Service (AKS) with 1:1 mapping, serving as a connection pooling proxy for Azure Database for PostgreSQL flexible server instances.
-
-This sidecar pattern is typically used with containers being coscheduled as an atomic container group. sidecar pattern strongly binds the application and sidecar lifecycles and has shared resources such hostname and networking. By using this setup, PgBouncer optimizes connection management and facilitates efficient communication between the application and the Azure Database for PostgreSQL flexible server instance.
+Deploying PgBouncer in an AKS sidecar tightly couples the application and sidecar lifecycles and shares resources such as hostname and networking to make efficient use of resources. The PgBouncer sidecar operates alongside the application container within the same pod in Azure Kubernetes Service (AKS) with 1:1 mapping, serving as a connection pooling proxy for Azure Database for PostgreSQL flexible server instances.
 
 Microsoft has published a **PgBouncer** sidecar proxy image in Microsoft container registry.
 

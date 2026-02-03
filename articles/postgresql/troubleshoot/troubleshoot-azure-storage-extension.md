@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 11/03/2025
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: reference
 ms.custom:
 - ignite-2024

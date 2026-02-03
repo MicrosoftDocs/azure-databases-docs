@@ -181,6 +181,36 @@ The `azurecosmosdb.instructions.md` file is open and extensible. You can:
 3. **Contribute improvements** by submitting pull requests to the [GitHub repository](https://github.com/microsoft/vscode-cosmosdb)
 4. **Report issues or suggestions** in the [issues section](https://github.com/microsoft/vscode-cosmosdb/issues)
 
+## Alternative: Azure Cosmos DB Agent Kit
+
+For more comprehensive coverage, consider using the [Azure Cosmos DB Agent Kit](gen-ai/agent-kit.md) as an alternative or supplement to the instructions file. The Agent Kit provides:
+
+- **45+ curated rules** across eight categories (data modeling, partition keys, queries, SDKs, indexing, throughput, global distribution, and monitoring)
+- **Priority-based guidance** with rules ranked by real-world impact
+- **Broader compatibility** with GitHub Copilot, Claude Code, Gemini CLI, and other Agent Skills-compatible tools
+- **Community contributions** for continuously updated best practices
+
+Install the Agent Kit with a single command:
+
+```bash
+npx add-skill AzureCosmosDB/cosmosdb-agent-kit
+```
+### Disabling the instructions file
+
+If you prefer to use only the Agent Kit or want to disable the automatic instructions file:
+
+1. Navigate to your user profile folder:
+   - **Windows**: `%APPDATA%\Code\User\prompts\`
+   - **macOS**: `~/Library/Application Support/Code/User/prompts/`
+   - **Linux**: `~/.config/Code/User/prompts/`
+
+2. Delete or rename the `azurecosmosdb.instructions.md` file
+
+3. Optionally, create an empty file with the same name to prevent the extension from recreating it
+
+> [!NOTE]
+> The extension may recreate the instructions file when you reconnect to your Azure Cosmos DB account. To permanently disable it, you can create a backup of your preferred configuration or use the Agent Kit exclusively.
+
 ## Best practices for maximum benefit
 
 To get the most from this context-aware AI assistance:
@@ -242,6 +272,7 @@ Use the extension's built-in features alongside Copilot for a complete developme
 
 ## Related content
 
+- [Azure Cosmos DB Agent Kit for AI coding assistants](gen-ai/agent-kit.md)
 - [Azure Cosmos DB Visual Studio Code extension](visual-studio-code-extension.md)
 - [Azure Cosmos DB scaling provisioned throughput best practices](scaling-provisioned-throughput-best-practices.md)
 - [Contributing to the Azure Cosmos DB Visual Studio Code extension](https://github.com/microsoft/vscode-cosmosdb)

@@ -1,0 +1,209 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/_themes/**",
+          "**/includes/**",
+          "**/obj/**"
+        ],
+        "src": "citus",
+        "dest": "."
+      },
+      {
+        "files": [
+          "toc.yml"
+        ],
+        "src": "citus/breadcrumb",
+        "dest": "citus/breadcrumbs"
+      },
+      {
+        "files": [
+          "zone-pivot-groups.yml"
+        ],
+        "src": "zone-pivots",
+        "dest": "zone-pivots/citus"
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.gif",
+          "**/*.jpeg",
+          "**/*.jpg",
+          "**/*.png",
+          "**/*.svg"
+        ],
+        "exclude": [
+          "**/_themes/**",
+          "**/obj/**"
+        ],
+        "src": "citus",
+        "dest": "."
+      }
+    ],
+    "globalMetadata": {
+      "contributors_to_exclude": [
+        "alexbuckgit",
+        "American-Dipper",
+        "AnnaMHuff",
+        "cdpark",
+        "Court72",
+        "damabe",
+        "denrea",
+        "dksimpson",
+        "garycentric",
+        "GitHubber17",
+        "Jak-MS",
+        "JamesJBarnett",
+        "JasonWHowell",
+        "JillGrant615",
+        "JKirsch1",
+        "Jmart1428",
+        "JustPies",
+        "ktoliver",
+        "LizCasey1",
+        "MeeraDi",
+        "meganbradley",
+        "mohitp930",
+        "mSarts",
+        "ms-robkni",
+        "openpublishingbuild",
+        "paulth1",
+        "PMEds28",
+        "PRmerger",
+        "PRMerger17",
+        "PRMerger-2",
+        "PRMerger3",
+        "PRMerger4",
+        "PRMerger5",
+        "PRMerger9",
+        "rjagiewich",
+        "rmca14",
+        "Saisang",
+        "sdwheeler",
+        "ShannonLeavitt",
+        "ShawnJackson",
+        "ShawnKupfer",
+        "tfosmark",
+        "TimShererWithAquent",
+        "ttorble",
+        "tysonn",
+        "v-albemi",
+        "v-ccolin",
+        "v-dirichards",
+        "v-emilypr",
+        "v-lmcdonald",
+        "v-regandowner",
+        "v-savila",
+        "v-shils",
+        "v-stsavell",
+        "v-thepet",
+        "v-thpra"
+      ],
+      "breadcrumb_path": "citus/breadcrumb/citus/toc.yml",
+      "_op_documentIdPathDepotMapping": {
+        "articles/iot-central/": {}
+      },
+      "brand": "citus",
+      "feedback_github_repo": "MicrosoftDocs/azure-docs",
+      "feedback_help_link_url": "/answers/tags/133/azure",
+      "feedback_help_link_type": "get-help-at-qna",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
+      "feedback_system": "Standard",
+      "searchScope": [
+        "Azure"
+      ],
+      "permissioned-type": "public",
+      "recommendations": true,
+      "recommendation_types": [
+        "Training",
+        "Certification"
+      ],
+      "uhfHeaderId": "citus",
+      "ms.suite": "office",
+      "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
+    },
+    "fileMetadata": {
+      "adobe-target": {
+
+      },
+      "featureFlags": {
+        "articles/**/*.md": [
+          "show_learn_banner"
+        ]
+      },
+      "feedback_product_url": {
+        "citus/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
+      },
+      "feedback_help_link_url": {
+        "citus/**/*": "/answers/tags/214/azure-database-postgresql/"
+      },
+      "feedback_help_link_type": {
+        "**/*": "get-help-at-qna"
+      },
+      "learn_banner_products": {
+        "citus/**/*.md": [
+          "citus"
+        ]
+      },
+      "ms.service": {
+        "citus/**/*": "postgresql-citus"
+      },
+      "ms.subservice": {
+
+      },
+      "author": {
+        "citus/**/*": "ihalatci"
+      },
+      "ms.author": {
+        "citus/**/*": "ihalatci"
+      },
+      "ms.reviewer": {
+        "citus/**/*": "adamwolk, maghan"
+      },
+      "searchScope": {
+        "citus/**.yml": [
+          "Citus",
+          "Citus for PostgreSQL"
+        ]
+      },
+      "titleSuffix": {
+        "citus/**/*.md": "Citus for PostgreSQL"
+      },
+
+      "ms.update-cycle": {
+
+      }
+    },
+    "overwrite": [],
+    "externalReference": [],
+    "template": [],
+    "rules": {
+      "sensitive-language-ma": {
+        "exclude": [
+          "citus/**/*.md"
+        ]
+      },
+      "sensitive-language-sl": {
+        "exclude": [
+          "citus/**/*.md"
+        ]
+      },
+      "sensitive-language-bl": {
+        "exclude": [
+          "/citus/**/*.md"
+        ]
+      },
+      "sensitive-language-wl": {
+        "exclude": [
+          "citus/**/*.md"
+        ]
+      }
+    }
+  }
+}

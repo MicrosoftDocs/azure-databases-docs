@@ -21,7 +21,7 @@ From the developer perspective, partitioning behaves in the same way for Azure C
 
 ## Differences between Apache Cassandra and Azure Cosmos DB
 
-In Azure Cosmos DB, each machine on which partitions are stored is itself referred to as a [physical partition](../partitioning-overview.md#physical-partitions). The physical partition is akin to a Virtual Machine; a dedicated compute unit, or set of physical resources. Each partition stored on this compute unit is referred to as a [logical partition](../partitioning-overview.md#logical-partitions) in Azure Cosmos DB. If you are already familiar with Apache Cassandra, you can think of logical partitions in the same way that you think of regular partitions in Cassandra. 
+In Azure Cosmos DB, each machine on which partitions are stored is itself referred to as a [physical partition](../partitioning.md#physical-partitions). The physical partition is akin to a Virtual Machine; a dedicated compute unit, or set of physical resources. Each partition stored on this compute unit is referred to as a [logical partition](../partitioning.md#logical-partitions) in Azure Cosmos DB. If you're already familiar with Apache Cassandra, you can think of logical partitions in the same way that you think of regular partitions in Cassandra. 
 
 Apache Cassandra recommends a 100-MB limit on the size of a data that can be stored in a partition. The API for Cassandra for Azure Cosmos DB allows up to 20 GB per logical partition, and up to 30GB of data per physical partition. In Azure Cosmos DB, unlike Apache Cassandra, compute capacity available in the physical partition is expressed using a single metric called [request units](../request-units.md), which allows you to think of your workload in terms of requests (reads or writes) per second, rather than cores, memory, or IOPS. This can make capacity planning more straight forward, once you understand the cost of each request. Each physical partition can have up to 10000 RUs of compute available to it. You can learn more about scalability options by reading our article on [elastic scale](scale-account-throughput.md) in API for Cassandra. 
 
@@ -47,7 +47,7 @@ CREATE TABLE uprofile.user (
    message text);
 ```
 
-In this design, we have defined the `id` field as the primary key. The primary key functions as the identifier for the record in the table and it is also used as the partition key in Azure Cosmos DB. If the primary key is defined in the previously described way, there will only be a single record in each partition. This will result in a perfectly horizontal and scalable distribution when writing data to the database, and is ideal for key-value lookup use cases. The application should provide the primary key whenever reading data from the table, to maximize read performance. 
+In this design, the `id` field is defined as the primary key. The primary key functions as the identifier for the record in the table and is also used as the partition key in Azure Cosmos DB. If the primary key is defined in the previously described way, there's only a single record in each partition. This results in a perfectly horizontal and scalable distribution when writing data to the database, and is ideal for key-value lookup use cases. The application should provide the primary key whenever reading data from the table, to maximize read performance. 
 
 :::image type="content" source="./media/partitioning/cassandra-partitioning.png" alt-text="partitions" border="false":::
 
@@ -70,7 +70,7 @@ CREATE TABLE uprofile.user (
    PRIMARY KEY (user, id));
 ```
 
-In this design, we are now defining `user` as the partition key, and `id` as the clustering key. You can define as many clustering keys as you wish, but each value (or a combination of values) for the clustering key must be unique in order to result in multiple records being added to the same partition, for example:
+In this design, `user` is now defined as the partition key, and `id` as the clustering key. You can define as many clustering keys as you wish, but each value (or a combination of values) for the clustering key must be unique in order to result in multiple records being added to the same partition, for example:
 
 ```shell
 insert into uprofile.user (user, id, message) values ('theo', 1, 'hello');
@@ -88,7 +88,7 @@ When data is returned, it is sorted by the clustering key, as expected in Apache
 >    CREATE INDEX ON uprofile.user (user);
 >    ```
 >
-> Azure Cosmos DB for Apache Cassandra does not apply indexes to partition keys by default, and the index in this scenario may significantly improve query performance. Review our article on [secondary indexing](secondary-indexing.md) for more information.
+> Azure Cosmos DB for Apache Cassandra doesn't apply indexes to partition keys by default, and the index in this scenario may significantly improve query performance. Review our article on [secondary indexing](secondary-indexing.md) for more information.
 
 With data modeled in this way, multiple records can be assigned to each partition, grouped by user. We can thus issue a query that is efficiently routed by the `partition key` (in this case, `user`) to get all the messages for a given user. 
 
@@ -119,6 +119,6 @@ CREATE TABLE uprofile.user (
 
 ## Next steps
 
-* Learn about [partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md).
+* Learn about [partitioning and horizontal scaling in Azure Cosmos DB](../partitioning.md).
 * Learn about [provisioned throughput in Azure Cosmos DB](../request-units.md).
 * Learn about [global distribution in Azure Cosmos DB](../distribute-data-globally.md).

@@ -334,9 +334,9 @@ Azure Cosmos DB supports Azure role-based access control (Azure RBAC) for provis
 
 ## Keyspace and Table options
 
-The options for region name, class, replication_factor, and datacenter in the `CREATE KEYSPACE` command are ignored currently. The system uses the underlying Azure Cosmos DB's [global distribution](../global-dist-under-the-hood.md) replication method to add the regions. If you need the cross-region presence of data, you can enable it at the account level with PowerShell, CLI, or the Azure portal. For more information, see [Add regions to your database account](../how-to-manage-database-account.yml#add-remove-regions-from-your-database-account).
+The options for region name, class, replication_factor, and datacenter in the `CREATE KEYSPACE` command are ignored currently. The system uses the underlying Azure Cosmos DB's [global distribution](../global-distribution.md) replication method to add the regions. If you need the cross-region presence of data, you can enable it at the account level with PowerShell, CLI, or the Azure portal. For more information, see [Add regions to your database account](../how-to-manage-database-account.yml#add-remove-regions-from-your-database-account).
 
-Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. In every region, Azure Cosmos DB replicates the data across the replica set that is made up of four replicas and this replica set [configuration](../global-dist-under-the-hood.md) can't be modified.
+Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. In every region, Azure Cosmos DB replicates the data across the replica set that is made up of four replicas and this replica set [configuration](../global-distribution.md) can't be modified.
  
 All the options are ignored when creating the table, except `gc_grace_seconds`, which should be set to zero.
 The Keyspace and table have an extra option named `cosmosdb_provisioned_throughput` with a minimum value of 400 RU/s. The Keyspace throughput allows sharing throughput across multiple tables. It's useful for scenarios when all tables aren't using the provisioned throughput. The `ALTER TABLE` command allows changing the provisioned throughput across the regions. 

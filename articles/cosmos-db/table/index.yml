@@ -26,7 +26,7 @@ landingContent:
           - text: Differences between API for Table and Azure Table storage
             url: support.md
           - text: Partitioning
-            url: ../partitioning-overview.md
+            url: ../partitioning.md
           - text: Optimize your costs
             url: ../optimize-costs.yml
   - title: Get started

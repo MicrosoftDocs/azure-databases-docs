@@ -10,8 +10,6 @@ ms.date: 03/10/2025
 ---
 # Built-in stored procedures in Azure Database for MySQL
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 Azure Database for MySQL provides several built-in stored procedures that simplify and automate advanced database management tasks. These stored procedures help you efficiently configure features such as data-in replication, Undo log cleanup, and plugin management.  
 
 This article introduces the built-in stored procedures available in Azure Database for MySQL, their functionalities, and how to use them.  
@@ -29,13 +27,13 @@ Azure Database for MySQL supports the **Validate Password Plugin**, which enforc
 
 #### **Enable the validate password plugin**  
 ```sql
-CALL az_install_validate_password_plugin();
+CALL mysql.az_install_validate_password_plugin();
 ```
 After enabling the plugin, you can view and configure related parameters on the Server Parameters page in the Azure portal.
 
 #### **Disable the validate password plugin**  
 ```sql
-CALL az_uninstall_validate_password_plugin();
+CALL mysql.az_uninstall_validate_password_plugin();
 ```
 This stored procedure removes the plugin.
 
@@ -51,22 +49,22 @@ In some cases your undo log might grow large, and you might want to clean it up.
     ```
 1. If you find that your undo log is large, call the following command to create a new table space.
     ```sql
-    call az_create_undo_tablespace(X)
+    call mysql.az_create_undo_tablespace(X)
     ``` 
     Currently, we support up to eight tablespaces, including two default ones. The X value must be between 3 and 8. After the command finishes, the new tablespace should be in an active state.
 1. Execute the following command to deactivate the innodb_undo_001 (default one).
     ```sql
-    call az_deactivate_undo_tablespace(1)
+    call mysql.az_deactivate_undo_tablespace(1)
     ```
     Then wait for the state of innodb_undo_001 to be empty(It means undo log is truncated).     
     You can verify undo log truncation by checking [Verifying and Checking Undo Tablespaces](./concepts-built-in-store-procedure.md#verifying-and-checking-undo-tablespaces)
 1. Execute the following command to activate the innodb_undo_001 (default one).
     ```sql
-    call az_activate_undo_tablespace(1)
+    call mysql.az_activate_undo_tablespace(1)
     ```
     Then wait for the state of innodb_undo_001 to be active.
 1. Repeat the 1-4 steps for the innodb_undo_002.
-1. Execute ```call az_deactivate_undo_tablespace(3);``` to deactivate the newly created table space. Wait for the state to be empty. Then execute ```Call az_drop_undo_tablespace(3);``` to drop the newly created table space. 
+1. Execute ```call mysql.az_deactivate_undo_tablespace(3);``` to deactivate the newly created table space. Wait for the state to be empty. Then execute ```Call az_drop_undo_tablespace(3);``` to drop the newly created table space. 
    You can't drop the default ones (innodb_undo_001, innodb_undo_002). You can only drop the one you created, in this example it's x_undo_003.Before dropping, first deactivate x_undo_003 to empty state.
 #### Verifying and Checking Undo Tablespaces
 Check the status of the undo tablespaces:
@@ -89,7 +87,14 @@ A sample output might look like this:
 > [!NOTE]
 > The time required for an undo log to become empty depends on its file size. Larger undo log files will take longer to clear.
 
+To reduce the time to truncate the target undo log set below parameters and restart your server.
 
+| parameter | value |
+| :--- | :--- |
+|innodb_purge_rseg_truncate_frequency|8|
+|innodb_purge_threads|16|
+
+Keep [Verifying and Checking Undo Tablespaces](./concepts-built-in-store-procedure.md#verifying-and-checking-undo-tablespaces) until its empty.
 
 ### Drop problematic table 
 

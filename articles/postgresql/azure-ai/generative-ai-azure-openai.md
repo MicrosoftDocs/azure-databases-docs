@@ -6,6 +6,7 @@ ms.author: adamwolk
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-azure
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
@@ -146,7 +147,7 @@ FROM
 INNER JOIN
     conference_sessions c ON c.session_id = e.session_id
 ORDER BY
-    e.session_embedding <#> azure_openai.create_embeddings('text-embedding-ada-002', 'Session to learn about building chatbots')::vector
+    e.session_embedding <=> azure_openai.create_embeddings('text-embedding-ada-002', 'Session to learn about building chatbots')::vector
 LIMIT 1;
 ```
 

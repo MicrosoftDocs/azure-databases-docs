@@ -3,6 +3,10 @@
     {
       "DocsetName": "azure-databases",
       "BuildSourceFolder": "."
+    },
+    {
+      "DocsetName": "postgresql-citus",
+      "BuildSourceFolder": "citus"
     }
   ],
   "MetadataDelimiter": "\"",

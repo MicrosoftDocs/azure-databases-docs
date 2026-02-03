@@ -135,7 +135,7 @@ It's recommended in these cases to:
 ## Next steps
 
 * [Measure Azure Cosmos DB for NoSQL performance with a benchmarking framework](benchmarking-framework.md)
-* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 
 Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.
 * If you know typical request rates for your current database workload, see [Estimate RU/s using the Azure Cosmos DB capacity planner](estimate-ru-with-capacity-planner.md)

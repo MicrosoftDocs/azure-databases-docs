@@ -6,6 +6,7 @@ ms.author: sbalijepalli
 ms.reviewer: maghan
 ms.date: 12/10/2024
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 

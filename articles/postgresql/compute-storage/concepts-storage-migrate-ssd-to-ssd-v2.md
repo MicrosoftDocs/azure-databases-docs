@@ -6,6 +6,7 @@ ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 08/10/2025
 ms.service: azure-database-postgresql
+ms.subservice: compute-storage
 ms.topic:  concept-article
 #customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure Database for PostgreSQL flexible server.
 ---

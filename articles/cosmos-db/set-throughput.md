@@ -35,7 +35,7 @@ The throughput provisioned for a container is evenly distributed among its physi
 
 If the workload running on a logical partition consumes more than the throughput that was allocated to the underlying physical partition, it's possible that your operations are rate-limited. What is known as a _hot partition_ occurs when one logical partition has disproportionately more requests than other partition key values.
 
-When rate-limiting occurs, you can either increase the provisioned throughput for the entire container or retry the operations. You also should ensure that you choose a partition key that evenly distributes storage and request volume. For more information about partitioning, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md).
+When rate-limiting occurs, you can either increase the provisioned throughput for the entire container or retry the operations. You also should ensure that you choose a partition key that evenly distributes storage and request volume. For more information about partitioning, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
 
 We recommend that you configure throughput at the container granularity when you want predictable performance for the container.
 
@@ -61,9 +61,9 @@ The following examples demonstrate where it's preferred to provision throughput 
 
 * Sharing a database's provisioned throughput across a set of containers is useful when you migrate a NoSQL database, such as MongoDB or Cassandra, hosted on a cluster of VMs or from on-premises physical servers to Azure Cosmos DB. Think of the provisioned throughput configured on your Azure Cosmos DB database as a logical equivalent, but more cost-effective and elastic, to that of the compute capacity of your MongoDB or Cassandra cluster.  
 
-All containers created inside a database with provisioned throughput must be created with a [partition key](partitioning-overview.md). At any given point in time, the throughput configured on a database is shared by all the containers within that database. When you have containers that share provisioned throughput configured on a database, you can't selectively apply the throughput to a specific container or a logical partition. 
+All containers created inside a database with provisioned throughput must be created with a [partition key](partitioning.md). At any given point in time, the throughput configured on a database is shared by all the containers within that database. When you have containers that share provisioned throughput configured on a database, you can't selectively apply the throughput to a specific container or a logical partition. 
 
-If the workload on one or more logical partitions collectively exceeds the allocated throughput of the underlying physical partition, your operations are rate-limited. When rate-limiting occurs, you can either increase the throughput for the entire database or retry the operations. For more information on partitioning, see [Partitioning](partitioning-overview.md).
+If the workload on one or more logical partitions collectively exceeds the allocated throughput of the underlying physical partition, your operations are rate-limited. When rate-limiting occurs, you can either increase the throughput for the entire database or retry the operations. For more information on partitioning, see [Partitioning](partitioning.md).
 
 Containers in a shared throughput database share the throughput (RU/s) allocated to that database. With standard (manual) provisioned throughput, you can have up to 25 containers with a minimum of 400 RU/s on the database. With autoscale provisioned throughput, you can have up to 25 containers in a database with autoscale minimum 1000 RU/s (scales between 100 - 1000 RU/s).
 
@@ -149,7 +149,7 @@ This table shows a comparison between provisioning standard (manual) throughput 
 
 ## Next steps
 
-* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 * [Provision standard (manual) throughput on an Azure Cosmos DB container ](how-to-provision-container-throughput.md)
 * [Provision autoscale throughput on database or container in Azure Cosmos DB](how-to-provision-autoscale-throughput.md)
 * Trying to do capacity planning for a migration to Azure Cosmos DB? You can use information about your existing database cluster for capacity planning.

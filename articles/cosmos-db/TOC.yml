@@ -3,12 +3,10 @@
 - name: Overview
   expanded: true
   items:
-    - name: Welcome to Azure Cosmos DB
-      href: introduction.md
+    - name: What is Azure Cosmos DB?
+      href: overview.md
     - name: FAQ
       href: faq.yml
-    - name: Overview
-      href: overview.md
     - name: Understand distributed NoSQL
       href: distributed-nosql.md
     - name: Compare to Azure DocumentDB
@@ -96,6 +94,9 @@
         - name: Model context protocol (MCP) toolkit
           displayName: mcp, model context protocol, ai
           href: gen-ai/model-context-protocol-toolkit.md
+        - name: Agent Kit for AI coding assistants
+          displayName: agent kit, github copilot, claude code, gemini cli, best practices, skills
+          href: gen-ai/agent-kit.md
     - name: Learn core AI concepts
       items:
         - name: Vector databases
@@ -212,7 +213,7 @@
     - name: Partitioning and horizontal scaling
       items:
         - name: Partitioning overview
-          href: partitioning-overview.md?context=/azure/cosmos-db/context/context
+          href: partitioning.md?context=/azure/cosmos-db/context/context
         - name: Designing multitenant applications
           href: /azure/architecture/guide/multitenant/service/cosmos-db?context=/azure/cosmos-db/context/context
         - name: Hierarchical partition keys
@@ -700,7 +701,7 @@
     - name: Migrate - DynamoDB data to API for NoSQL
       href: dynamodb-data-migration-cosmos-db.md
     - name: Migrate - HBase to API for NoSQL
-      href: migrate-hbase-to-cosmos-db.md
+      href: migrate-hbase.md
 
 - name: High availability
   items:
@@ -712,7 +713,7 @@
           displayName: replication, replicate, geo distribution
           href: distribute-data-globally.md?context=/azure/cosmos-db/context/context
         - name: Global distribution - under the hood
-          href: global-dist-under-the-hood.md?context=/azure/cosmos-db/context/context
+          href: global-distribution.md?context=/azure/cosmos-db/context/context
         - name: Distribute data globally tutorial
           href: tutorial-global-distribution.md
     - name: Consistency

@@ -15,8 +15,6 @@ ms.custom:
 
 # Azure Database for MySQL - Flexible Server service tiers
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 You can create an Azure Database for MySQL Flexible Server instance in one of three service tiers: Burstable, General Purpose, and Memory-Optimized. The underlying VM SKU differentiates the service tiers used B-series, D-series, and E-series. The compute tier and size choice determines the memory and vCores available on the server. The exact storage technology is used across all service tiers. All resources are provisioned at the Azure Database for MySQL Flexible Server instance level. A server can have one or many databases.
 
 | Resource / Tier | **Burstable** | **General Purpose** | **Memory-Optimized** |
