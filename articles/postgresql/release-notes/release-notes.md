@@ -21,8 +21,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23. <sup>$</sup>
     - Support for [.NET](https://www.nuget.org/packages/Azure.ResourceManager.PostgreSql/#versions-body-tab) SDK with [GA REST API](release-notes-api.md) version.
-
-    
+    - Support for zone resilient [high availability](../high-availability/how-to-configure-high-availability.md) with Azure CLI.
+          
 ## Release: December 2025
 - General availability
     - Support for [Python](https://pypi.org/project/azure-mgmt-postgresqlflexibleservers/2.0.0/), [Javascript](https://www.npmjs.com/package/@azure/arm-postgresql-flexible/v/9.0.0), [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0), and [Java](https://central.sonatype.com/artifact/com.azure.resourcemanager/azure-resourcemanager-postgresqlflexibleserver/2.0.0) SDKs with [GA REST API](release-notes-api.md) version.
@@ -304,7 +304,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - Support for [**PostgreSQL version 14**](../configure-maintain/concepts-supported-versions.md).
 - Support for [minor versions](../configure-maintain/concepts-supported-versions.md) 14.3, 13.7, 12.11, 11.16. <sup>$</sup>
-- Support for [Same-zone high availability]/azure/reliability/reliability-postgresql-flexible-server deployment option.
+- Support for [Same-zone high availability](/azure/reliability/reliability-postgresql-flexible-server) deployment option.
 - Support for choosing [standby availability zone](../high-availability/how-to-configure-high-availability.md) when deploying zone-redundant high availability.
 - Support for [plv8](../extensions/concepts-extensions-versions.md#plv8) extension with new servers. <sup>$</sup>
 - Support for [pgrouting](../extensions/concepts-extensions-versions.md#pgrouting) extension with new servers. <sup>$</sup>
