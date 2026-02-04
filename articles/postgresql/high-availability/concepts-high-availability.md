@@ -52,7 +52,7 @@ Use HA health status monitoring to:
 
 For a detailed guide on configuring and interpreting HA health statuses, see [High Availability (HA) health status monitoring for Azure Database for PostgreSQL](/azure/postgresql/flexible-server/how-to-monitor-high-availability).
 
-### High availability limitations
+## High availability limitations
 
 - Because of synchronous replication to the standby server, especially with a zone-redundant configuration, applications can experience elevated write and commit latency.
 
@@ -80,21 +80,21 @@ For a detailed guide on configuring and interpreting HA health statuses, see [Hi
 
 - You can only configure availability zones within a single region. You can't configure availability zones across regions.
 
-### High availability components and workflow
+## High availability components and workflow
 
-#### Transaction completion
+### Transaction completion
 
 An application transaction triggers a write and commit that first logs to the WAL on the primary server. The primary server streams these logs to the standby server by using the Postgres streaming protocol. When the standby server storage persists the logs, the primary server acknowledges write completion. The application commits its transaction only after this acknowledgment. This extra round-trip adds latency to your application. The impact percentage depends on the application. This acknowledgment process doesn't wait for the logs to be applied to the standby server. The standby server stays in recovery mode until it's promoted.
 
-#### Health check
+### Health check
 
 Flexible server health monitoring periodically checks the health of both the primary and standby servers. After multiple pings, if health monitoring detects that a primary server isn't reachable, the service initiates an automatic failover to the standby server. The health monitoring algorithm uses multiple data points to avoid false positive situations.
 
-#### Failover modes
+### Failover modes
 
 Flexible server supports two failover modes, [**Planned failover**](#planned-failover) and [**Unplanned failover**](#unplanned-failover). In both modes, once replication breaks, the standby server runs recovery before promotion as a primary and opens for read/write. With automatic DNS entries updated with the new primary server endpoint, applications can connect to the server by using the same endpoint. A new standby server is established in the background, so that your application can maintain connectivity.
 
-#### High availability status
+### High availability status
 
 The system continuously monitors the health of primary and standby servers. It takes appropriate actions to fix issues, including triggering a failover to the standby server. The following table lists the possible high availability statuses:
 
@@ -110,7 +110,7 @@ The system continuously monitors the health of primary and standby servers. It t
 > [!NOTE]  
 > You can enable high availability during server creation or at a later time. If you enable or disable high availability during the post-create stage, do so when the primary server activity is low.
 
-#### Steady-state operations
+### Steady-state operations
 
 PostgreSQL client applications connect to the primary server by using the DB server name. The primary server directly serves application reads. At the same time, the application receives confirmation of commits and writes only after the log data persists on both the primary server and the standby replica. Due to this extra round-trip, applications can expect elevated latency for writes and commits. You can monitor the health of the high availability on the portal.
 
@@ -121,7 +121,7 @@ PostgreSQL client applications connect to the primary server by using the DB ser
 1. Primary receives an acknowledgment.
 1. Writes and commits are acknowledged.
 
-#### Point-in-time restore of high availability servers
+### Point-in-time restore of high availability servers
 
 For flexible servers configured with high availability, the system replicates log data in real-time to the standby server. Any user errors on the primary server - such as an accidental drop of a table or incorrect data updates - are replicated to the standby replica. So, you can't use the standby to recover from such logical errors. To recover from such errors, you must perform a point-in-time restore from the backup. By using a flexible server's point-in-time restore capability, you can restore to the time before the error occurred. A new database server is restored as a single-zone flexible server with a new user-provided server name for databases configured with high availability. You can use the restored server for several use cases:
 
@@ -132,9 +132,9 @@ For flexible servers configured with high availability, the system replicates lo
 
 To learn how to do a point-in-time restore of a flexible server, see [Point-in-time restore of a flexible server](/azure/postgresql/flexible-server/how-to-restore-server-portal).
 
-### Failover support
+## Failover support
 
-#### Planned failover
+### Planned failover
 
 Planned downtime events include Azure scheduled periodic software updates and minor version upgrades. You can also use a planned failover to return the primary server to a preferred availability zone. When you configure high availability, these operations first apply to the standby replica while applications continue to access the primary server. Once the process updates the standby replica, it drains primary server connections and triggers a failover that activates the standby replica as the primary server with the same database server name. Client applications reconnect with the same database server name to the new primary server and can resume their operations. The process establishes a new standby server in the same zone as the old primary.
 
@@ -165,13 +165,13 @@ Application downtime starts at step 3 and can resume operation after step 5. The
 
 For a list of possible planned downtime events, see [Planned downtime events](/azure/postgresql/flexible-server/concepts-business-continuity#planned-downtime-events).
 
-#### Unplanned failover
+### Unplanned failover
 
 Unplanned downtimes can occur as a result of unforeseen disruptions such as underlying hardware faults, networking issues, and software bugs. If the database server configured with high availability goes down unexpectedly, the process activates the standby replica and clients can resume their operations. If you don't configure high availability (HA), and the restart attempt fails, the process automatically provisions a new database server. While an unplanned downtime can't be avoided, flexible server helps mitigate the downtime by automatically performing recovery operations without requiring human intervention.
 
 For information on unplanned failovers and downtime, including possible scenarios, see [Unplanned downtime mitigation](/azure/postgresql/flexible-server/concepts-business-continuity#unplanned-downtime-mitigation).
 
-#### Failover testing (forced failover)
+### Failover testing (forced failover)
 
 With a forced failover, you can simulate an unplanned outage scenario while running your production workload and observe your application downtime. You can also use a forced failover when your primary server becomes unresponsive.
 
@@ -198,7 +198,7 @@ Application downtime starts after step 1 and continues until step 6 finishes. Th
 > [!IMPORTANT]  
 > The end-to-end failover process includes (a) failing over to the standby server after the primary failure and (b) establishing a new standby server in a steady state. As your application incurs downtime until the failover to the standby is complete, **measure the downtime from your application/client perspective** instead of the overall end-to-end failover process.
 
-#### Considerations when performing forced failovers
+### Considerations when performing forced failovers
 
 - The overall end-to-end operation time can be longer than the actual downtime experienced by the application.
 
@@ -209,7 +209,7 @@ Application downtime starts after step 1 and continues until step 6 finishes. Th
 
 - Perform a forced failover during a low-activity period to reduce downtime.
 
-#### Best practices for PostgreSQL statistics after failover
+### Best practices for PostgreSQL statistics after failover
 
 After a PostgreSQL failover, maintaining optimal database performance involves understanding the distinct roles of [pg_statistic](https://www.postgresql.org/docs/current/catalog-pg-statistic.html) and the [pg_stat_*](https://www.postgresql.org/docs/current/monitoring-stats.html) views. The `pg_statistic` table stores optimizer statistics, which are crucial for the query planner. These statistics include data distributions within tables and remain intact after a failover, ensuring that the query planner can continue to optimize query execution effectively based on accurate, historical data distribution information.
 
