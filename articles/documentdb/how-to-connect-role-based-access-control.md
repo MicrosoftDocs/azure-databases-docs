@@ -4,7 +4,7 @@ description: Configure Microsoft Entra ID–based role-based access control (rol
 author: seesharprun
 ms.author: sidandrews
 ms.topic: how-to
-ms.date: 02/03/2026
+ms.date: 02/04/2026
 ms.devlang: python
 defaultDevLang: python
 dev_langs:
