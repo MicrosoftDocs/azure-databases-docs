@@ -114,7 +114,7 @@ The system continuously monitors the health of primary and standby servers. It t
 
 PostgreSQL client applications connect to the primary server by using the DB server name. The primary server directly serves application reads. At the same time, the application receives confirmation of commits and writes only after the log data persists on both the primary server and the standby replica. Due to this extra round-trip, applications can expect elevated latency for writes and commits. You can monitor the health of the high availability on the portal.
 
-:::image type="content" source="./media/concepts-high-availability/high-availability-steady-state.png" alt-text="Picture showing high availability steady state operation workflow.":::
+:::image type="content" source="../media/concepts-high-availability/high-availability-steady-state.png" alt-text="Picture showing high availability steady state operation workflow.":::
 
 1. Clients connect to the flexible server and perform write operations.
 1. Changes replicate to the standby site.
