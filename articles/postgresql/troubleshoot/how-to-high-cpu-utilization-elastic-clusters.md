@@ -1,18 +1,18 @@
 ---
 title: High CPU Utilization Across Elastic Clusters
 description: Troubleshoot high CPU utilization across Azure PostgreSQL elastic clusters.
-author: gapaderla
+author: GayathriPaderla
 ms.author: gapaderla
 ms.reviewer: jaredmeade
 ms.date: 01/28/2026
 ms.service: azure-database-postgresql
-ms.subservice: flexible-server
-ms.topic: troubleshooting-elastic-clusters
+ms.subservice: performance
+ms.topic: troubleshooting-general
 ---
 
 # Troubleshoot High CPU Utilization in Azure Database for PostgreSQL Elastic Clusters
 
-This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Elastic clusters in Azure Database for PostgreSQL](concepts-elastic-clusters.md).
+This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Elastic clusters in Azure Database for PostgreSQL](../elastic-clusters/concepts-elastic-clusters.md).
 
 In this article, you learn about:
 
@@ -329,9 +329,9 @@ In situations where there are many short-lived connections, or many connections 
 
 For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/connection-handling-best-practice-with-postgresql/ba-p/790883)
 
-Azure Database for PostgreSQL Elastic Clusters offer PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](concepts-pgbouncer.md).
+Azure Database for PostgreSQL Elastic Clusters offer PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](../connectivity/concepts-pgbouncer.md).
 
 ## Related content
 
-- [Server parameters in Azure Database for PostgreSQL](concepts-server-parameters.md).
+- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).
