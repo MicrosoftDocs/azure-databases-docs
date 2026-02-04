@@ -35,11 +35,6 @@ The following permissions are the minimum required for a user to successfully cr
     - Microsoft.DBforPostgreSQL/flexibleServers/read
     - Microsoft.DBforPostgreSQL/flexibleServers/databases/read
 
-- **Source server (required for Single Server sources only)**
-    - Microsoft.DBforPostgreSQL/servers/read
-    - Microsoft.DBforPostgreSQL/servers/administrators/read
-    - Microsoft.DBforPostgreSQL/servers/databases/read
-
 - **Connectivity** and **Database List**
     - Microsoft.DBforPostgreSQL/flexibleServers/testConnectivity/action
     - Microsoft.DBforPostgreSQL/flexibleServers/getSourceDatabaseList/action
@@ -58,7 +53,7 @@ If you want to grant permissions specifically for creating and monitoring migrat
 
 - [Create a custom role](/azure/role-based-access-control/custom-roles-portal) with the permissions listed above.
 
-- Assign the custom role's scope at the subscription level for both the single server and flexible server involved in the migration.
+- Assign the custom role's scope at the subscription level for the flexible server involved in the migration.
 
 - [Assign this custom role to the user](/azure/role-based-access-control/role-assignments-portal) responsible for conducting the migration.
 
