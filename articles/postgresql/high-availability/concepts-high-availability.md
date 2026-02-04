@@ -11,20 +11,11 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server instance.
 ---
 
-> [!NOTE]  
-> Both zonal and zone-redundant deployment models architecturally behave the same. Various discussions in the following sections apply to both unless called out otherwise.
+# High availability in Azure Database for PostgreSQL
 
-### Configure Business Critical (High Availability) in the portal
+Azure Database for PostgreSQL supports high availability by provisioning physically separated primary and standby replicas, either within the same availability zone (zonal) or across availability zones (zone-redundant). This high availability model is designed to ensure that committed data is never lost during failures. In a high availability (HA) setup, data is synchronously committed to both the primary and standby servers. The model is designed so that the database doesn't become a single point of failure in your software architecture.
 
-You can configure high availability (HA) in two ways: zone-redundant HA, which places the standby server in a different availability zone for maximum resiliency, or same-zone HA, which deploys the standby server in the same zone as the primary server to minimize latency.
-
-The **'Business Critical (High Availability)'** section provides an option to create a standby HA server with **zonal resiliency** setup. To simplify configuration and ensure zonal resiliency, the portal provides a Zonal Resiliency option with two radio buttons: Enabled and Disabled. Selecting Enabled attempts to create the standby server in a different availability zone (zone-redundant HA mode). If the region doesn't support zone-redundant HA, you can select the fallback checkbox (highlighted in the following image) to enable same-zone HA instead.
-
-:::image type="content" source="media/reliability-azure-database-postgresql/multi-availability-zones.png" alt-text="Screenshot of the zonal resiliency experience in the portal." lightbox="./media/reliability-azure-database-postgresql/multi-availability-zones.png":::
-
-When you select the fallback checkbox, the system creates the standby server in the same zone. If zonal capacity later becomes available, Azure will notify you so you can choose to migrate to a zone-redundant HA configuration using [PITR or read replicas](/azure/postgresql/flexible-server/how-to-configure-high-availability).  If you don't select the checkbox and zonal capacity is unavailable, HA enablement fails. This design enforces zone-redundant HA as the default while providing a controlled fallback for same-zone HA, ensuring workloads eventually achieve full zone resiliency.
-
-### High availability features
+## High availability features
 
 - A standby replica is deployed in the same VM configuration - including vCores, storage, and network settings - as the primary server.
 
@@ -49,7 +40,7 @@ When you select the fallback checkbox, the system creates the standby server in 
 > [!NOTE]  
 > To ensure high availability functions properly, configure the `max_replication_slots` and `max_wal_senders` server parameter values. High availability requires four of each to handle failovers and seamless upgrades. For a high availability setup with five read replicas and 12 logical replication slots, set both `max_replication_slots` and `max_wal_senders` parameter values to 21. This configuration is necessary because each read replica and logical replication slot requires one of each, plus the four needed for high availability to function properly. For more information about `max_replication_slots` and `max_wal_senders` parameters, refer to the [documentation](/azure/postgresql/flexible-server/server-parameters-table-replication-sending-servers).
 
-### Monitor high-availability health
+## Monitor high-availability health
 
 High availability (HA) health status monitoring in Azure Database for PostgreSQL provides a continuous overview of the health and readiness of HA-enabled instances. This monitoring feature applies [Azure's Resource Health Check (RHC)](/azure/service-health/resource-health-overview) framework to detect and alert on any issues that might affect your database's failover readiness or overall availability. By assessing key metrics like connection status, failover state, and data replication health, HA health status monitoring enables proactive troubleshooting and helps maintain your database's uptime and performance.
 
@@ -89,20 +80,6 @@ For a detailed guide on configuring and interpreting HA health statuses, see [Hi
 
 - You can only configure availability zones within a single region. You can't configure availability zones across regions.
 
-### SLA
-
-- The **Zonal** model offers an uptime for an [SLA for about 99.95%](https://azure.microsoft.com/support/legal/sla/postgresql).
-
-- The **Zone-redundancy** model offers an uptime for an [SLA for about 99.99%](https://azure.microsoft.com/support/legal/sla/postgresql).
-
-### Create an Azure Database for PostgreSQL with availability zone enabled
-
-To learn how to create an Azure Database for PostgreSQL for high availability with availability zones, see [Quickstart: Create an Azure Database for PostgreSQL in the Azure portal](/azure/postgresql/flexible-server/quickstart-create-server-portal).
-
-### Availability zone redeployment and migration
-
-To learn how to enable or disable high availability configuration in your flexible server in both zone-redundant and zonal deployment models, see [Manage high availability in Flexible Server](/azure/postgresql/flexible-server/how-to-manage-high-availability-portal).
-
 ### High availability components and workflow
 
 #### Transaction completion
@@ -137,7 +114,7 @@ The system continuously monitors the health of primary and standby servers. It t
 
 PostgreSQL client applications connect to the primary server by using the DB server name. The primary server directly serves application reads. At the same time, the application receives confirmation of commits and writes only after the log data persists on both the primary server and the standby replica. Due to this extra round-trip, applications can expect elevated latency for writes and commits. You can monitor the health of the high availability on the portal.
 
-:::image type="content" source="./media/reliability-azure-database-postgresql/high-availability-steady-state.png" alt-text="Picture showing high availability steady state operation workflow.":::
+:::image type="content" source="./media/concepts-high-availability/high-availability-steady-state.png" alt-text="Picture showing high availability steady state operation workflow.":::
 
 1. Clients connect to the flexible server and perform write operations.
 1. Changes replicate to the standby site.
