@@ -326,13 +326,15 @@
               href: backup-restore/how-to-restore-dropped-server.md
     - name: Reliability
       items:
+        - name: High availability
+          href: high-availability/concepts-high-availability.md
         - name: Configure high availability
           href: high-availability/how-to-configure-high-availability.md
         - name: Schedule maintenance
           href: configure-maintain/how-to-configure-scheduled-maintenance.md
         - name: Enable deletion protection
           href: configure-maintain/how-to-enable-deletion-protection.md
-        - name: Monitor High-availability
+        - name: Monitor high availability
           href: high-availability/how-to-monitor-high-availability.md
     - name: Read replicas
       items:
