@@ -1286,9 +1286,10 @@ Create either a System-assigned Managed Identity or a [User-assigned Managed Ide
 Sign in to the cluster with an administrative Microsoft Entra ID identity to perform management operations for nonadministrative Microsoft Entra ID identities.
 
 > [!NOTE]
-> All management commands for nonadministrative users are supported for `SecurityPrincipal` and `user` principal types.
+> All management commands for nonadministrative users are supported for `securityPrincipal` and `user` principal types.
 >
-> Nonadministrative users don't require registration on the portal.
+> Nonadministrative users are not registered in the Azure portal.
+>
 
 1. Sign in to the cluster using an administrative Microsoft Entra ID identity and using a tool like [MongoDB Shell](#connect-using-microsoft-entra-id-in-mongodb-compass-or-mongodb-shell).
 
