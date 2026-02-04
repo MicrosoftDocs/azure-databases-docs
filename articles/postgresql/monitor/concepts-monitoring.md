@@ -48,7 +48,7 @@ The following metrics are available for an Azure Database for PostgreSQL flexibl
 | **Storage Used** | `storage_used` | Bytes | Amount of storage space that's used. The storage used by the service can include the database files, transaction logs, and the server logs. | Yes |
 | **Transaction Log Storage Used** | `txlogs_storage_used` | Bytes | Amount of storage space that's used by the transaction logs. | Yes |
 | **Write Throughput ^** | `write_throughput` | Bytes | Bytes written to disk per second. | Yes |
-| **Write IOPS ^** | `write_iops` | Count | Numbers of data disk I/O write operations per second. | Yes |
+| **Write IOPS ^** | `write_iops` | Count | Number of data disk I/O write operations per second. | Yes |
 
 > [!NOTE]  
 > Metrics marked with `^` are emitted every minute but are processed and displayed in five-minute batches. This process results in up to a five-minute delay in metric visibility. When creating alerts on these metrics, account for this latency to ensure accurate and timely alerting.
