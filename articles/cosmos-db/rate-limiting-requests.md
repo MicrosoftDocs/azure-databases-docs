@@ -37,7 +37,7 @@ The RUs provisioned for a container will be evenly shared across the number of p
 For more information about Request Units, see [Request Units in Azure Cosmos DB
 ](request-units.md).
 For more information about estimating the number of RUs consumed by your workload, see [Request Unit considerations](request-units.md#request-unit-considerations).
-For more information about partitioning Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md).
+For more information about partitioning Azure Cosmos DB, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
 
 ## Methodology
 
@@ -74,7 +74,7 @@ There are some key concepts when measuring cost:
 * Consider all factors that affect RU usage, as described in [request unit considerations](request-units.md#request-unit-considerations).
 * All reads and writes in your database or container will share the same provisioned throughput.
 * RU consumption is incurred regardless of the Azure Cosmos DB APIs being used.
-* The partition strategy for a collection can have a significant impact on the cost of a system. For more information, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md).
+* The partition strategy for a collection can have a significant impact on the cost of a system. For more information, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
 * Use representative documents and representative queries.
   * These are documents and queries that you think are close to what the operational system will come across.
   * The best way to get these representative documents and queries is to instrument the usage of your application. It's always better to make a data-driven decision.

@@ -4,12 +4,13 @@ description: Learn how to build a semantic search application by using Azure Dat
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 11/19/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-vector-search
 ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - ignite-2023
 ---
@@ -18,32 +19,31 @@ ms.custom:
 
 This hands-on tutorial shows you how to build a semantic search application by using Azure Database for PostgreSQL and Azure OpenAI.
 
-Semantic search does searches based on semantics. Standard lexical search does searches based on keywords provided in a query. For example, your recipe dataset might not contain labels like gluten-free, vegan, dairy-free, fruit-free, or dessert, but these characteristics can be deduced from the ingredients. The idea is to issue such semantic queries and get relevant search results.
+Semantic search does searches based on semantics. Standard lexical search does searches based on keywords provided in a query. For example, your recipe dataset might not contain labels like gluten-free, vegan, dairy-free, fruit-free, or dessert, but you can deduce these characteristics from the ingredients. The idea is to issue such semantic queries and get relevant search results.
 
 In this tutorial, you:
 
 > [!div class="checklist"]
->
-> - Identify the search scenarios and the data fields that will be involved in a search.
+> - Identify the search scenarios and the data fields that are involved in a search.
 > - For every data field involved in a search, create a corresponding vector field to store the embeddings of the value stored in the data field.
 > - Generate embeddings for the data in the selected data fields and store the embeddings in their corresponding vector fields.
 > - Generate the embedding for any input search query.
-> - Search for the vector data field and list the nearest neighbors.
+> - Search the vector data field and list the nearest neighbors.
 > - Run the results through appropriate relevance, ranking, and personalization models to produce the final ranking. In the absence of such models, rank the results in decreasing dot-product order.
-> - Monitor the model, results quality, and business metrics, such as click-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
+> - Monitor the model, results quality, and business metrics, such as select-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
 
 ## Prerequisites
 
 1. Create an OpenAI account and [request access to Azure OpenAI](https://aka.ms/oai/access).
-1. Grant access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
+1. Get access to Azure OpenAI in the desired subscription.
+1. Get permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
 1. [Create and deploy an Azure OpenAI resource and a model](/azure/ai-services/openai/how-to/create-resource). Deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name, because you need it to create embeddings.
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
-Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. You need to repeat the command separately for every database where you want the extension to be available.
+Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
 ```sql
 CREATE EXTENSION azure_ai;
@@ -65,7 +65,7 @@ Download the data from [Kaggle](https://www.kaggle.com/datasets/thedevastator/be
 
 ## Create the table
 
-Connect to your server and create a `test` database. In that database, use the following command to create a table in which you'll import data:
+Connect to your server and create a `test` database. In that database, use the following command to create a table where you import data:
 
 ```sql
 CREATE TABLE public.recipes(
@@ -102,7 +102,7 @@ Set PGCLIENTENCODING=utf-8;
 export PGCLIENTENCODING=utf-8
 ```
 
-Import the data into the table that you created. Note that this dataset contains a header row.
+Import the data into the table that you created. This dataset contains a header row.
 
 ```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"
@@ -118,7 +118,7 @@ ALTER TABLE recipes ADD COLUMN embedding vector(1536);
 
 ## Generate embeddings
 
-Generate embeddings for your data by using the `azure_ai` extension. The following example vectorizes a few fields and is concatenated.
+Generate embeddings for your data by using the `azure_ai` extension. The following example vectorizes a few fields and concatenates them.
 
 ```sql
 WITH ro AS (
@@ -142,7 +142,7 @@ WHERE
 Repeat the command until there are no more rows to process.
 
 > [!TIP]  
-> Play around with the `LIMIT` value. With a high value, the statement might fail halfway through due to throttling that Azure OpenAI imposes. If the statement fails, wait for at least one minute and run the command again.
+> Experiment with the `LIMIT` value. If you set a high value, Azure OpenAI might throttle the request and cause the statement to fail halfway through. If the statement fails, wait for at least one minute and run the command again.
 
 ## Search
 
@@ -180,7 +180,7 @@ Now just invoke the function to search:
 select recipeid, recipe_name, score from recipe_search('vegan recipes', 10);
 ```
 
-And explore the results:
+Explore the results:
 
 ```bash
  recipeid |                         recipe_name                          |   score
@@ -206,4 +206,4 @@ And explore the results:
 - [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
 - [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/how-to-use-pgvector.md)

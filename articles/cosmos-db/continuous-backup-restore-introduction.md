@@ -192,4 +192,4 @@ Currently the point-in-time restore functionality has the following limitations:
 * [Resource model for the Azure Cosmos DB point-in-time restore](continuous-backup-restore-resource-model.md)
 * [Understanding multi-region writes in Azure Cosmos DB](multi-region-writes.md)
 * [Understanding timestamps in Cosmos DB](multi-region-writes.md#understanding-timestamps)
-* [Global data distribution with Azure Cosmos DB - under the hood](global-dist-under-the-hood.md)
+* [Global data distribution with Azure Cosmos DB - under the hood](global-distribution.md)

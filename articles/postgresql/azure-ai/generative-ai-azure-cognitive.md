@@ -4,13 +4,15 @@ description: Create AI applications with sentiment analysis, summarization, or k
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 05/20/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
+ms.subservice: ai-azure
+ms.topic: how-to
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2024
-ms.topic: how-to
 ---
 
 # Integrate Azure Database for PostgreSQL with Azure Cognitive Services
@@ -299,7 +301,7 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 ## Personally Identifiable data (PII) detection
 
- Identifies [PII data](/azure/ai-services/language-service/personally-identifiable-information/overview) found in the input text and categorizes those entities into types.
+Identifies [PII data](/azure/ai-services/language-service/personally-identifiable-information/overview) found in the input text and categorizes those entities into types.
 
 ### `azure_cognitive.recognize_pii_entities`
 
@@ -492,7 +494,7 @@ select * from pg_available_extensions where name = 'azure_ai';
 
 #### Arguments
 
-For more information on parameters, see [Translator API](/azure/ai-services/translator/reference/v3-0-translate).  
+For more information on parameters, see [Translator API](/azure/ai-services/translator/reference/v3-0-translate).
 
 ##### `text`
 
@@ -511,18 +513,23 @@ For more information on parameters, see [Translator API](/azure/ai-services/tran
 `boolean DEFAULT 'plain'` Defines the type of text being translated. Valid values are 'plain' or 'html'. Any HTML needs to be well-formed.
 
 ##### `profanity_action`
+
 `boolean DEFAULT 'NoAction'` Specifies how profanities are treated in translations. Valid values are 'NoAction', 'Marked', or 'Deleted'. 'NoAction' is the default behavior and profanity passes from source to target. 'Deleted' indicates that profane words are removed without replacement. 'Marked' replaces the marked word in the output with the profanity_marker parameter.
 
 ##### `profanity_marker`
+
 `boolean DEFAULT 'Asterisk'` Specifies how profanities are marked in translations. Possible values are 'Asterisk' that replaces profane words with *** or 'Tag' that replaces profane words with '\<profanity> \</profanity>' tags.
 
 ##### `suggested_source_language`
+
 `text DEFAULT NULL` Specifies fallback language if the language of input text can't be identified.
 
 ##### `source_script`
+
 `text DEFAULT NULL` Specific script of the input text.
 
 ##### `target_script`
+
 `text DEFAULT NULL` Specific script of the input text.
 
 ##### `batch_size`
@@ -544,7 +551,6 @@ For more information on parameters, see [Translator API](/azure/ai-services/tran
 ##### `retry_delay_ms`
 
 `integer DEFAULT 1000` amount of time (milliseconds) that the extension waits, before calling again the Azure Language Service endpoint for linked identities, when it fails with any retryable error.
-
 
 #### Return type
 
@@ -594,10 +600,10 @@ select
 
 - [Learn more about Azure OpenAI Service integration](generative-ai-azure-openai.md)
 - [Learn more about Azure Machine Learning integration](generative-ai-azure-machine-learning.md)
-- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md).
-- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
-- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md)
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
+- [Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)

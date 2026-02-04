@@ -29,6 +29,17 @@ Terraform should be installed on your local computer. Installation instructions 
 
 The Terraform files used in this quickstart can be found on the [terraform samples repository](https://github.com/Azure/terraform). Create the below three files: providers.tf, main.tf and variables.tf. Variables can be set in command line or alternatively with a terraforms.tfvars file.
 
+### Key Terraform parameters
+
+The following table summarizes the critical variables used in this quickstart, their scope, constraints, and example values.
+
+| Parameter | Scope | Description and constraints | Example value |
+|----------|------|-----------------------------|---------------|
+| `prefix` | Naming | Prefix used for all resource names. Must be lowercase, alphanumeric, and unique per subscription. | `cosmosdemo` |
+| `location` | Resource group | Azure region for the resource group. This location applies to the resource group only, not the Cosmos DB account. | `eastus` |
+| `cosmosdb_account_location` | Cosmos DB account | Azure region for the Azure Cosmos DB account. This can differ from the resource group location. | `eastus` |
+| `throughput` | Database (RU/s) | Provisioned throughput for the SQL database in request units per second (RU/s). Must be between 400 and 1,000,000 RU/s. | `400` |
+
 ### Provider Terraform File
 
 :::code language="terraform" source="~/terraform_samples/quickstart/101-cosmos-db-autoscale/providers.tf":::
@@ -37,26 +48,29 @@ The Terraform files used in this quickstart can be found on the [terraform sampl
 
 :::code language="terraform" source="~/terraform_samples/quickstart/101-cosmos-db-manualscale/main.tf":::
 
-### Variables Terraform File
-
-:::code language="terraform" source="~/terraform_samples/quickstart/101-cosmos-db-manualscale/variables.tf":::
-
 Three Cosmos DB resources are defined in the main terraform file.
 
 - [Microsoft.DocumentDB/databaseAccounts](/azure/templates/microsoft.documentdb/databaseaccounts): Create an Azure Cosmos account.
 
-- [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Create an Azure Cosmos database.
+- [Microsoft.DocumentDB/databaseAccounts/sqlDatabases](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases): Create an Azure Cosmos database with database-level throughput (RU/s).
 
 - [Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers](/azure/templates/microsoft.documentdb/databaseaccounts/sqldatabases/containers): Create an Azure Cosmos container.
+
+### Variables Terraform File
+
+:::code language="terraform" source="~/terraform_samples/quickstart/101-cosmos-db-manualscale/variables.tf":::
 
 ## Deploy via terraform
 
 1. Save the terraform files as main.tf, variables.tf and providers.tf to your local computer.
 2. Sign in to your terminal via Azure CLI or PowerShell
 3. Deploy via Terraform commands
-    - terraform init
-    - terraform plan
-    - terraform apply
+    - terraform init  
+      *Expected result:* Terraform initializes successfully and downloads the azurerm provider.
+    - terraform plan  
+      *Expected result:* The plan output shows **3 to add, 0 to change, 0 to destroy**.
+    - terraform apply  
+      *Expected result:* The final output includes **Apply complete! Resources: 3 added, 0 changed, 0 destroyed.**
 
 ## Validate the deployment
 
@@ -68,11 +82,15 @@ Use the Azure portal, Azure CLI, or Azure PowerShell to list the deployed resour
 az resource list --resource-group "your resource group name"
 ```
 
+*Expected result:* The output lists a `Microsoft.DocumentDB/databaseAccounts` resource along with its database and container.
+
 ### [Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceGroupName "your resource group name"
 ```
+
+*Expected result:* The command returns the Cosmos DB account, SQL database, and container resources.
 
 ---
 
@@ -87,11 +105,15 @@ When no longer needed, use the Azure portal, Azure CLI, or Azure PowerShell to d
 az group delete --name "your resource group name"
 ```
 
+*Expected result:* Azure CLI confirms the resource group deletion and no longer lists it in the subscription.
+
 ### [Azure PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "your resource group name"
 ```
+
+*Expected result:* The resource group is removed and no longer appears in `Get-AzResourceGroup` output.
 
 ---
 

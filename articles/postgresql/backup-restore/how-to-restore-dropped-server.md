@@ -6,6 +6,7 @@ ms.author: dabukhari
 ms.reviewer: maghan
 ms.date: 09/18/2024
 ms.service: azure-database-postgresql
+ms.subservice: backup-restore
 ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---

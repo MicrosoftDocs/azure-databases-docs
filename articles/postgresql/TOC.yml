@@ -9,8 +9,6 @@
     - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
@@ -103,14 +101,12 @@
       href: azure-ai/generative-ai-azure-machine-learning.md
     - name: Enable managed identity in azure_ai
       href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-  - name: In-database embeddings with azure_local_ai
-    href: extensions/azure-local-ai.md
-  - name: AI Frameworks
-    items:
     - name: Tutorial - Build a semantic search application
       href: azure-ai/generative-ai-semantic-search.md
     - name: Tutorial - Build a recommendation system
       href: azure-ai/generative-ai-recommendation-system.md
+  - name: AI Frameworks
+    items:
     - name: Integrate with AI Frameworks
       href: azure-ai/generative-ai-frameworks.md
     - name: Tutorial - Develop with LangChain
@@ -187,6 +183,8 @@
           href: extensions/reference-azure-storage-extension.md
     - name: Partitioning (pg_partman)
       href: configure-maintain/how-to-use-pg-partman.md
+    - name: In-database embeddings with azure_local_ai
+      href: extensions/azure-local-ai.md
 - name: Configure and maintain
   items:
     - name: Prepay for reserved capacity
@@ -209,6 +207,8 @@
       href: security/security-data-encryption.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
+    - name: Extended support
+      href: configure-maintain/extended-support.md
     - name: Create a server
       items:
         - name: Servers concepts
@@ -513,8 +513,6 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships, and permissions
-              href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
             - name: Required user permissions
@@ -614,8 +612,12 @@
           href: monitor/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: monitor/concepts-query-performance-insight.md
-        - name: Index tuning
-          href: monitor/concepts-index-tuning.md
+        - name: Autonomous tuning overview
+          href: monitor/concepts-autonomous-tuning.md
+        - name: Configure autonomous tuning
+          href: monitor/how-to-configure-autonomous-tuning.md
+        - name: Use recommendations
+          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
         - name: Intelligent tuning
           href: monitor/concepts-intelligent-tuning.md
     - name: Download PostgreSQL and upgrade logs
@@ -624,12 +626,6 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Index tuning
-      items:
-        - name: Configure index tuning
-          href: monitor/how-to-configure-index-tuning.md
-        - name: Use index recommendations
-          href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
     - name: Intelligent tuning
       items:
         - name: Azure portal

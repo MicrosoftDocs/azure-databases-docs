@@ -6,6 +6,7 @@ ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
+ms.subservice: scale-out
 ms.topic: concept-article
 ---
 

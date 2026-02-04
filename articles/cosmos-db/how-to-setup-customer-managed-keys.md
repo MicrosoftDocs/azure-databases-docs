@@ -673,7 +673,7 @@ All the data stored in your Azure Cosmos DB account is encrypted with the custom
 
 - The property paths declared in your [indexing policies](./index-policy.md)
 
-- The values of your containers' [partition keys](./partitioning-overview.md)
+- The values of your containers' [partition keys](./partitioning.md)
 
 ### Are customer-managed keys supported for existing Azure Cosmos DB accounts?
 

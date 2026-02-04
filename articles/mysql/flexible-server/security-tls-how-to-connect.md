@@ -16,8 +16,6 @@ ms.devlang: csharp
 
 # Connect to Azure Database for MySQL - Flexible Server with encrypted connections
 
-[!INCLUDE [applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
 In this article, you learn how to:
 
 - Configure your Azure Database for MySQL Flexible Server instance

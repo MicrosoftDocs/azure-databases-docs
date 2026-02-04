@@ -6,6 +6,7 @@ ms.author: sbalijepalli
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
+ms.subservice: performance
 ms.topic: troubleshooting-general
 ms.custom:
   - template-how-to
@@ -161,7 +162,7 @@ For more information about monitoring and tuning in scenarios where autovacuum i
 
 ### Increase storage
 
-Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](../configure-maintain/concepts-compute.md).
+Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](../compute-storage/concepts-compute.md).
 
 ## Related content
 

@@ -532,10 +532,10 @@ while conflict:
 
 Learn about the following Azure Cosmos DB concepts:
 
-- [Global distribution - under the hood](global-dist-under-the-hood.md)
+- [Global distribution - under the hood](global-distribution.md)
 - [How to configure multi-region writes in your applications](how-to-multi-master.md)
 - [Configure clients for multihoming](how-to-manage-database-account.yml#configure-multiple-write-regions)
 - [Add or remove regions from your Azure Cosmos DB account](how-to-manage-database-account.yml#add-remove-regions-from-your-database-account)
 - [How to configuremulti-region writes in your applications](how-to-multi-master.md).
-- [Partitioning and data distribution](partitioning-overview.md)
+- [Partitioning and data distribution](partitioning.md)
 - [Indexing in Azure Cosmos DB](index-policy.md)

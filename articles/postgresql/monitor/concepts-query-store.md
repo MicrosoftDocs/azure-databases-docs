@@ -4,8 +4,9 @@ description: This article describes the query store feature for Azure Database f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/24/2024
+ms.date: 01/20/2025
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.custom:
   - ignite-2024
 ms.topic: how-to
@@ -73,7 +74,7 @@ Here are some examples of how you can gain more insights into your workload usin
 | **Observation** | **Action** |
 | --- | --- |
 | High lock waits | Check the query texts for the affected queries and identify the target entities. Look in query store for other queries which are executed frequently and/or have high duration and are modifying the same entity. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
-| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider enabling the [automated index tuning](concepts-index-tuning.md) feature to see if it can recommend creating some indexes which might decrease the number of physical reads for those queries. |
+| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider enabling the [autonomous tuning](concepts-autonomous-tuning.md) feature to see if it can recommend creating some indexes which might decrease the number of physical reads for those queries. |
 | High memory waits | Find the top memory consuming queries in query store. These queries are probably delaying further progress of the affected queries. |
 
 ## Configuration options
@@ -84,8 +85,9 @@ The following options are available for configuring Query Store parameters:
 
 | **Parameter** | **Description** | **Default** | **Range** |
 | --- | --- | --- | --- |
-| `pg_qs.interval_length_minutes` (*) | Capture interval in minutes for query store. Defines the frequency of data persistence. | `15` | `1` - `30` |
+| `pg_qs.interval_length_minutes` | Capture interval in minutes for query store. Defines the frequency of data persistence. | `15` | `1` - `30` |
 | `pg_qs.is_enabled_fs` | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, query store is disabled, despite the value set for `pg_qs.query_capture_mode`. | `on` | `on`, `off` |
+| `pg_qs.max_captured_queries` | Maximum number of queries persisted by query store from all queries recorded during each capture interval. | `500` | `100` - `500` |
 | `pg_qs.max_plan_size` | Maximum number of bytes saved from query plan text by query store; longer plans are truncated. | `7500` | `100` - `10000` |
 | `pg_qs.max_query_text_length` | Maximum query length that can be saved; longer queries are truncated. | `6000` | `100` - `10000` |
 | `pg_qs.parameters_capture_mode` | Whether and when to capture query positional parameters. | `capture_parameterless_only` | `capture_parameterless_only`, `capture_first_sample` |
@@ -93,8 +95,6 @@ The following options are available for configuring Query Store parameters:
 | `pg_qs.retention_period_in_days` | Retention period window in days for query store. Older data is automatically deleted. | `7` | `1` - `30` |
 | `pg_qs.store_query_plans` | Whether query plans should be saved in query store. | `off` | `on`, `off` |
 | `pg_qs.track_utility` | Whether query store must track utility commands. | `on` | `on`, `off` |
-
-(*) Static server parameter which requires a server restart for a change in its value to take effect. 
 
 > [!NOTE]  
 > If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you will see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.

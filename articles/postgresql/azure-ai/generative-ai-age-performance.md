@@ -4,12 +4,13 @@ description: Best practices for improving queries in Apache Age with Azure Datab
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/19/2025
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-graph
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
 # customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure Database for PostgreSQL.
@@ -21,7 +22,7 @@ Apache AGE supported by Azure Database for PostgreSQL, provides support for adva
 
 ## Indexing in Apache AGE
 
-Indexing is pivotal for improving query performance, especially in graph databases. 
+Indexing is pivotal for improving query performance, especially in graph databases.
 
 ### Default behavior
 
@@ -101,14 +102,14 @@ Use the following commands to create indexes for vertex and edge tables:
   CREATE INDEX ON graph_name."VLABEL" USING BTREE (id);
   CREATE INDEX ON graph_name."VLABEL" USING GIN (properties);
   ```
-    
+
 - Microsoft Edge table:
 
   ```sql
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (id);
   CREATE INDEX ON graph_name."ELABEL" USING GIN (properties);
   ```
-  
+
   ```sql
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (start_id);
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (end_id);
@@ -209,9 +210,9 @@ AGEFreighter supports other formats such as MultiCSV, Avro, Parquet, Azure Stora
 - Dataset size: 725K cases, 2.8M relationships.
 - Loading time: 83 seconds.
 
-Efficient data loading is essential for handling large datasets effectively. 
+Efficient data loading is essential for handling large datasets effectively.
 
-> [!NOTE]
+> [!NOTE]  
 > While suitable for large files, this process might be less effective for smaller datasets due to preparation time.
 
 ## Related content

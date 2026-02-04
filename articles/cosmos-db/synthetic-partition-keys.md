@@ -58,7 +58,7 @@ With this strategy, the writes are evenly spread across the partition key values
 
 You can learn more about the partitioning concept in the following articles:
 
-* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning-overview.md)
+* [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
 * [Introduction to provisioned throughput in Azure Cosmos DB](set-throughput.md)
 * [Provision standard (manual) throughput on a database in Azure Cosmos DB](how-to-provision-container-throughput.md)
 

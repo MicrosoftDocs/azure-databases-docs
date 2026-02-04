@@ -6,6 +6,7 @@ ms.author: varundhawan
 ms.reviewer: maghan
 ms.date: 1/12/2026
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: concept-article
 ms.custom: references_regions
 ---

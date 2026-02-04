@@ -6,6 +6,7 @@ ms.author: adityaduvuri
 ms.reviewer: maghan
 ms.date: 11/18/2025
 ms.service: azure-database-postgresql
+ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
 ---
 

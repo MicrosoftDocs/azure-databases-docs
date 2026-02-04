@@ -403,7 +403,7 @@ The ability to have a model with precalculated fields is made possible because A
 
 ## Distinguish between different item types
 
-In some scenarios, you might want to mix different item types in the same collection; this design choice is usually the case when you want multiple, related documents to sit in the same [partition](partitioning-overview.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such a situation, you usually want to add a field to your documents that identifies their type to differentiate them.
+In some scenarios, you might want to mix different item types in the same collection; this design choice is usually the case when you want multiple, related documents to sit in the same [partition](partitioning.md). For example, you could put both books and book reviews in the same collection and partition it by `bookId`. In such a situation, you usually want to add a field to your documents that identifies their type to differentiate them.
 
 ```json
 Book documents:
@@ -536,6 +536,6 @@ Just as there's no single way to represent a piece of data on a screen, there's 
 
 ## Related content
 
-- [Partitioning data in Azure Cosmos DB](partitioning-overview.md)
+- [Partitioning data in Azure Cosmos DB](partitioning.md)
 - [Data modeling and partitioning - a real-world example](model-partition-example.md)
 - [Model and partition your data in Azure Cosmos DB](/training/modules/model-partition-data-azure-cosmos-db/)

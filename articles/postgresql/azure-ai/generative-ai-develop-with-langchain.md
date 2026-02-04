@@ -3,13 +3,16 @@ title: Use LangChain with Azure Database for PostgreSQL
 description: Integrate Azure Database for PostgreSQL with AI and LangChain, so that you can use advanced AI capabilities in your applications.
 author: abeomor
 ms.author: abeomorogbe
-ms.date: 03/31/2025
-ms.update-cycle: 180-days
+ms.reviewer: maghan
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
+ms.subservice: ai-frameworks
+ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2025
-ms.topic: concept-article
 ---
 
 # Use LangChain with Azure Database for PostgreSQL
@@ -51,7 +54,7 @@ See [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../
 
 ### Set up credentials
 
-You need to get your Azure Database for PostgreSQL [connection details](../configure-maintain/quickstart-create-server.md#get-the-connection-information) and add them as environment variables.
+You need to get your Azure Database for PostgreSQL [connection details](../configure-maintain/quickstart-create-server.md) and add them as environment variables.
 
 Set the `USE_ENTRA_AUTH` flag to `True` if you want to use Microsoft Entra authentication. If you're using Microsoft Entra authentication, you need to supply the only host and database names. If you're using password authentication, you also need to set the username and password.
 
@@ -97,9 +100,9 @@ embeddings = AzureOpenAIEmbeddings(
 
 ### Use Microsoft Entra authentication
 
-The following sections demonstrate how to set up LangChain to use Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library. 
+The following sections demonstrate how to set up LangChain to use Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure Database for PostgreSQL service by using `DefaultAzureCredential` from the `azure.identity` library.
 
-The connection  can be passed into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
+The connection can be passed into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
 
 #### Sign in to Azure
 
@@ -248,24 +251,24 @@ After you create your vector store and add the relevant documents, you can query
 
 The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
 
-| Operator | Meaning/Category                |
-| -------- | ------------------------------- |
-| `=`      | Equality (==)                   |
-| `!=`      | Inequality (!=)                 |
-| `<`      | Less than (<)                   |
-| `<=`     | Less than or equal (<=)         |
-| `>`      | Greater than (>)                |
-| `>=`     | Greater than or equal (>=)      |
-| `in`      | Special cased (in)              |
-| `not in`     | Special cased (not in)          |
-| `is null`     | Special cased (is null)          |
-| `is not null`     | Special cased (is not null)          |
-| `between` | Special cased (between)         |
-| `not between` | Special cased (not between)         |
-| `like`    | Text (like)                     |
-| `ilike`   | Text (case-insensitive like)    |
-| `AND`     | Logical (and)                   |
-| `OR`      | Logical (or)                    |
+| Operator | Meaning/Category |
+| --- | --- |
+| `=` | Equality (==) |
+| `!=` | Inequality (!=) |
+| `<` | Less than (<) |
+| `<=` | Less than or equal (<=) |
+| `>` | Greater than (>) |
+| `>=` | Greater than or equal (>=) |
+| `in` | Special cased (in) |
+| `not in` | Special cased (not in) |
+| `is null` | Special cased (is null) |
+| `is not null` | Special cased (is not null) |
+| `between` | Special cased (between) |
+| `not between` | Special cased (not between) |
+| `like` | Text (like) |
+| `ilike` | Text (case-insensitive like) |
+| `AND` | Logical (and) |
+| `OR` | Logical (or) |
 
 ### Direct query
 
@@ -362,7 +365,6 @@ for doc in results:
     * the new art exhibit is fascinating [{'doc_id': 5, 'topic': 'art', 'location': 'museum'}]
     * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
-
 
 For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
 

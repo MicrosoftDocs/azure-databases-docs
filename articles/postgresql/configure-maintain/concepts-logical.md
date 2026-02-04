@@ -6,6 +6,7 @@ ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 06/30/2025
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: concept-article
 ms.custom:
 - ignite-2023

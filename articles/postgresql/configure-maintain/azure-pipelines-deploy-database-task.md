@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 12/17/2024
 ms.service: azure-database-postgresql
+ms.subservice: configuration
 ms.topic: quickstart
 ms.custom:
   - mode-other

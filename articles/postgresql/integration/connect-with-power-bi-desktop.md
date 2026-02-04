@@ -6,6 +6,7 @@ ms.author: arianap
 ms.reviewer: maghan
 ms.date: 09/18/2024
 ms.service: azure-database-postgresql
+ms.subservice: database-mirroring
 ms.topic: quickstart
 ms.custom: sfi-image-nochange
 ---

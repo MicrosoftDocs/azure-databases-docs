@@ -4,12 +4,13 @@ description: Learn how to build a recommendation system by using Azure Database 
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 11/19/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-vector-search
 ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - ignite-2023
 ---
@@ -24,12 +25,12 @@ There are various ways to model recommendation systems. This tutorial explores t
 
 1. Create an OpenAI account and [request access to Azure OpenAI](https://aka.ms/oai/access).
 1. Grant access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
+1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
 1. [Create and deploy an Azure OpenAI resource and a model](/azure/ai-services/openai/how-to/create-resource). Deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name, because you need it to create embeddings.
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, you need to [add them to your allowlist](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure Database for PostgreSQL flexible server instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
 Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
@@ -53,7 +54,7 @@ Download the data from [Kaggle](https://www.kaggle.com/datasets/thedevastator/be
 
 ## Create the table
 
-Connect to your server and create a `test` database. In that database, use the following command to create a table in which you'll import data:
+Connect to your server and create a `test` database. In that database, use the following command to create a table where you import data:
 
 ```sql
 CREATE TABLE public.recipes(
@@ -90,7 +91,7 @@ Set PGCLIENTENCODING=utf-8;
 export PGCLIENTENCODING=utf-8
 ```
 
-Import the data into the table that you created. Note that this dataset contains a header row.
+Import the data into the table that you created. This dataset contains a header row.
 
 ```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"
@@ -130,7 +131,7 @@ WHERE
 Repeat the command until there are no more rows to process.
 
 > [!TIP]  
-> Play around with the `LIMIT` value. With a high value, the statement might fail halfway through due to throttling that Azure OpenAI imposes. If the statement fails, wait for at least one minute and run the command again.
+> Experiment with the `LIMIT` value. With a high value, Azure OpenAI might throttle the statement and cause it to fail halfway through. If the statement fails, wait for at least one minute and run the command again.
 
 ## Search
 

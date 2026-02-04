@@ -110,7 +110,7 @@ The `$explain` command output is lengthy and has detailed information about quer
 | `timeInclusiveMS` | Backend query latency |
 | `pathsIndexed` | Shows indexes that the query used | 
 | `pathsNotIndexed` | Shows indexes that the query could have used, if available | 
-| `shardInformation` | Summary of query performance for a particular [physical partition](../partitioning-overview.md#physical-partitions) | 
+| `shardInformation` | Summary of query performance for a particular [physical partition](../partitioning.md#physical-partitions) | 
 | `retrievedDocumentCount` | Number of documents loaded by the query engine | 
 | `outputDocumentCount` | Number of documents returned in the query results | 
 | `estimatedDelayFromRateLimitingInMilliseconds` | Estimated additional query latency due to rate limiting | 
@@ -280,7 +280,7 @@ If the `retrievedDocumentCount` is approximately equal to the `outputDocumentCou
 
 ### Minimize cross partition queries
 
-Azure Cosmos DB uses [partitioning](../partitioning-overview.md) to scale individual containers as Request Unit and data storage needs increase. Each physical partition has a separate and independent index. If your query has an equality filter that matches your container's partition key, you'll need to check only the relevant partition's index. This optimization reduces the total number of RUs that the query requires. [Learn more about the differences between in-partition queries and cross-partition queries](../how-to-query-container.md).
+Azure Cosmos DB uses [partitioning](../partitioning.md) to scale individual containers as Request Unit and data storage needs increase. Each physical partition has a separate and independent index. If your query has an equality filter that matches your container's partition key, you'll need to check only the relevant partition's index. This optimization reduces the total number of RUs that the query requires. [Learn more about the differences between in-partition queries and cross-partition queries](../how-to-query-container.md).
 
 If you have a large number of provisioned RUs (more than 30,000) or a large amount of data stored (more than approximately 100 GB), you probably have a large enough container to see a significant reduction in query RU charges. 
 

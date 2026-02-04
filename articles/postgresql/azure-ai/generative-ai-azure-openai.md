@@ -1,14 +1,16 @@
 ---
-title: Generate vector embeddings with Azure OpenAI
+title: Generate Vector Embeddings with Azure OpenAI
 description: Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 05/20/2024
-ms.update-cycle: 180-days
+ms.date: 01/20/2026
 ms.service: azure-database-postgresql
+ms.subservice: ai-azure
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - ignite-2023
   - build-2024
@@ -23,15 +25,16 @@ Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings)
 1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` extension.
 1. Create an OpenAI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
 1. Grant Access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
-1. [Create and deploy an Azure OpenAI service resource and a model](/azure/ai-services/openai/how-to/create-resource), for example deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings. 
+1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
+1. [Create and deploy an Azure OpenAI service resource and a model](/azure/ai-services/openai/how-to/create-resource), for example deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings.
+
 ## Configure OpenAI endpoint and key
 
 In the Azure OpenAI resource, under **Resource Management** > **Keys and Endpoints** you can find the endpoint and the keys for your Azure OpenAI resource. To invoke the model deployment, enable the `azure_ai` extension using the endpoint and one of the keys.
 
 ```sql
-select azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com'); 
-select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>'); 
+select azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com');
+select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
 ```
 
 ## `azure_openai.create_embeddings`
@@ -42,6 +45,7 @@ Invokes the Azure OpenAI API to create embeddings using the provided deployment 
 azure_openai.create_embeddings(deployment_name text, input text, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
 azure_openai.create_embeddings(deployment_name text, input text[], batch_size integer DEFAULT 100, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
 ```
+
 ### Arguments
 
 #### `deployment_name`
@@ -103,10 +107,10 @@ CREATE TABLE conference_session_embeddings(
 
 -- Insert a row into the sessions table
 INSERT INTO conference_sessions
-    (title,session_abstract,duration_minutes,publish_date) 
+    (title,session_abstract,duration_minutes,publish_date)
 VALUES
     ('Gen AI with Azure Database for PostgreSQL flexible server'
-    ,'Learn about building intelligent applications with azure_ai extension and pg_vector' 
+    ,'Learn about building intelligent applications with azure_ai extension and pg_vector'
     , 60, current_timestamp)
     ,('Deep Dive: PostgreSQL database storage engine internals'
     ,' We will dig deep into storage internals'
@@ -120,13 +124,13 @@ SELECT
   FROM
     conference_sessions c LIMIT 10;
 
--- Insert embeddings 
+-- Insert embeddings
 INSERT INTO conference_session_embeddings
     (session_id, session_embedding)
 SELECT
     c.session_id, (azure_openai.create_embeddings('text-embedding-ada-002', c.session_abstract))
 FROM
-    conference_sessions as c  
+    conference_sessions as c
 LEFT OUTER JOIN
     conference_session_embeddings e ON e.session_id = c.session_id
 WHERE
@@ -134,7 +138,6 @@ WHERE
 
 -- Create a DiskANN index
 CREATE INDEX ON conference_session_embeddings USING diskann (session_embedding vector_cosine_ops);
-
 
 -- Retrieve top similarity match
 SELECT
@@ -144,16 +147,16 @@ FROM
 INNER JOIN
     conference_sessions c ON c.session_id = e.session_id
 ORDER BY
-    e.session_embedding <#> azure_openai.create_embeddings('text-embedding-ada-002', 'Session to learn about building chatbots')::vector
+    e.session_embedding <=> azure_openai.create_embeddings('text-embedding-ada-002', 'Session to learn about building chatbots')::vector
 LIMIT 1;
-
 ```
+
 ## Related content
 
-- [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md).
-- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md).
-- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md).
-- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md).
-- [Recommendation System with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md).
-- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md).
-- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md).
+- [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](generative-ai-azure-cognitive.md)
+- [Integrate Azure Database for PostgreSQL with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
+- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
+- [Recommendation System with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI](generative-ai-semantic-search.md)
+- [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/../extensions/how-to-use-pgvector.md)

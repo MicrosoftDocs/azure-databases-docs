@@ -107,6 +107,6 @@ For solutions to common issues, see [Troubleshoot common issues in the Azure Cos
 
 ## Next steps
 
-- Learn about [partitioning and horizontal scaling in Azure Cosmos DB](../partitioning-overview.md).
+- Learn about [partitioning and horizontal scaling in Azure Cosmos DB](../partitioning.md).
 - Learn about [provisioned throughput in Azure Cosmos DB](../request-units.md).
 - Learn about [global distribution in Azure Cosmos DB](../distribute-data-globally.md).

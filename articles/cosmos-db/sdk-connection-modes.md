@@ -46,11 +46,11 @@ The following table shows a summary of the connectivity modes available for vari
 
 ## <a id="direct-mode"></a> Direct mode connection architecture
 
-As detailed in the [introduction](#available-connectivity-modes), direct mode clients connect directly to the backend nodes through TCP protocol. Each backend node represents a replica in a [replica set](partitioning-overview.md#replica-sets) belonging to a [physical partition](partitioning-overview.md#physical-partitions).
+As detailed in the [introduction](#available-connectivity-modes), direct mode clients connect directly to the backend nodes through TCP protocol. Each backend node represents a replica in a [replica set](partitioning.md#replica-sets) belonging to a [physical partition](partitioning.md#physical-partitions).
 
 ### Routing
 
-When an Azure Cosmos DB SDK on direct mode performs an operation, it needs to resolve which backend replica to connect to. The first step is knowing which physical partition should the operation go to, and for that, the SDK obtains the container information that includes the [partition key definition](partitioning-overview.md#choose-a-partition-key) from a gateway node. It also needs the routing information that contains the replicas' TCP addresses. The routing information is available also from gateway nodes and both are considered [control plane metadata](concepts-limits.md#control-plane). Once the SDK obtains the routing information, it can proceed to open the TCP connections to the replicas belonging to the target physical partition and execute the operations.
+When an Azure Cosmos DB SDK on direct mode performs an operation, it needs to resolve which backend replica to connect to. The first step is knowing which physical partition should the operation go to, and for that, the SDK obtains the container information that includes the [partition key definition](partitioning.md#choose-a-partition-key) from a gateway node. It also needs the routing information that contains the replicas' TCP addresses. The routing information is available also from gateway nodes and both are considered [control plane metadata](concepts-limits.md#control-plane). Once the SDK obtains the routing information, it can proceed to open the TCP connections to the replicas belonging to the target physical partition and execute the operations.
 
 Each replica set contains one primary replica and three secondaries. Write operations are always routed to primary replica nodes while read operations can be served from primary or secondary nodes.
 

@@ -6,6 +6,7 @@ ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
+ms.subservice: monitoring
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
