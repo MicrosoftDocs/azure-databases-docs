@@ -1244,7 +1244,7 @@ Use Visual Studio Code with the [DocumentDB extension](https://github.com/micros
 
 Connect to your Azure DocumentDB cluster using a Microsoft Entra ID identity directly with the [MongoDB Compass](https://www.mongodb.com/products/tools/compass) application.
 
-1. Setup an execution environment for connecting to the Azure DocumentDB cluster by creating an Azure compute resource, like an Azure Virtual Machine.
+1. Set up an execution environment for connecting to the Azure DocumentDB cluster by creating an Azure compute resource, like an Azure Virtual Machine.
 
 1. Create either a system-assigned managed identity or a [user-assigned managed identity](/entra/identity/managed-identities-azure-resources/manage-user-assigned-managed-identities-azure-portal), and associate it with the virtual machine.
 
