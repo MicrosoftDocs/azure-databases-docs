@@ -1288,7 +1288,7 @@ Sign in to the cluster with an administrative Microsoft Entra ID identity to per
 > [!NOTE]
 > All management commands for nonadministrative users are supported for `securityPrincipal` and `user` principal types.
 >
-> Nonadministrative users are not registered in the Azure portal.
+> Nonadministrative users aren't registered in the Azure portal.
 >
 
 1. Sign in to the cluster using an administrative Microsoft Entra ID identity and using a tool like [MongoDB Shell](#connect-using-microsoft-entra-id-in-mongodb-compass-or-mongodb-shell).
