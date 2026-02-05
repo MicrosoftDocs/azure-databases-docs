@@ -30,7 +30,7 @@ This version introduces new features and enhancements, resolves known problems, 
 
 ## Known issues fixed
 
-- Fixed a problem that could leave a server in a failed state after a user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now deallocated in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
+- Fixed an issue that could leave a server in a failed state after a user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now deallocated in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
 
 
 ## Related content
