@@ -31,15 +31,21 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
 - An existing Cosmos DB resource
   - If you don't have a resource, create a [new resource](https://docs.azure.cn/en-us/cosmos-db/nosql/quickstart-portal)
-  - Role Based Access Control (RBAC) roles assigned:
-    - **Cosmos DB Built-in Data Contributor** (data plane) - Role ID: `00000000-0000-0000-0000-000000000002`
-    - **DocumentDB Account Contributor** (control plane)
-  - [Firewall configured to allow access to your client IP address]()
+  - [Firewall configured to allow access to your client IP address](how-to-configure-firewall.md)
+  - Role Based Access Control (RBAC) roles assigned: 
+  
+      - **Cosmos DB Built-in Data Contributor** (data plane) 
+      - Role ID: `00000000-0000-0000-0000-000000000002`
+      
+
 
 - [Azure OpenAI resource](/azure/ai-foundry/openai/how-to/create-resource?view=foundry-classic&pivots=cli#create-a-resource)
   - Custom domain configured
+
   - Role Based Access Control (RBAC) role assigned:
     - **Cognitive Services OpenAI User**
+    - Role ID: `5e0bd9bd-7b93-4f28-af87-19fc36ad61bd`
+
   - `text-embedding-3-small` model deployed
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
@@ -432,3 +438,4 @@ Delete the resource group, Cosmos DB account, and Azure OpenAI resource when you
 - [Vector search in Azure Cosmos DB](gen-ai/vector-search-overview.md)
 - [Document Indexer for Azure Cosmos DB (preview)](gen-ai/document-indexer.md)
 - [Vector embeddings in Azure Cosmos DB](gen-ai/vector-embeddings.md)
+- [Azure RBAC built-in roles](/azure/role-based-access-control/built-in-roles)
