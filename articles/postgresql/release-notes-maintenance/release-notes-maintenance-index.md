@@ -1,5 +1,5 @@
 ---
-title: Maintenance release notes index for Azure Database for PPostgreSQL
+title: Maintenance release notes index for Azure Database for PostgreSQL
 description: Learn about the maintenance release notes for Azure Database for PostgreSQL.
 author: jasomaning
 ms.author: jasomaning
