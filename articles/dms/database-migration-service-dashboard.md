@@ -1,10 +1,10 @@
 ---
 title: Dashboards in Azure Database Migration Service
 description: Overview of Discovery and Assessment dashboards available in the Azure Database Migration Service portal.
-author: nilabjaball
-ms.author: niball
-ms.reviewer: randolphwest
-ms.date: 09/13/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: niball
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
 ms.topic: overview
 ms.collection:
@@ -82,6 +82,6 @@ Indicates which databases are ready to migrate:
 
 ## Related content
 
-- [Tutorial: Migrate SQL Server to Azure SQL Managed Instance with DMS](/data-migration/sql-server/managed-instance/database-migration-service)
+- [Migration to Azure SQL Managed Instance - SQL Server migration in Azure Arc](/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance)
 - [Connect your SQL Server to Azure Arc](/sql/sql-server/azure-arc/connect)
 - [Use Azure Migrate for full assessment](/azure/migrate/concepts-overview)

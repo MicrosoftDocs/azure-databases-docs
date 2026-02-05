@@ -9,25 +9,21 @@
 
 - name: Concepts
   items:
-  - name: Migration using Azure Data Studio
-    href: migration-using-azure-data-studio.md
-  - name: Get Azure recommendation for migration using Azure Data Studio
-    href: ads-sku-recommend.md  
   - name: Migrate databases at scale using automation
     href: migration-dms-powershell-cli.md  
   - name: Database migration scenario status
     href: resource-scenario-status.md
   - name: Migration to Azure SQL Managed Instance
     items: 
-    - name: Custom roles for SQL Server to Azure SQL Managed Instance migrations using Azure Data Studio
+    - name: Custom roles for SQL Server to Azure SQL Managed Instance migrations
       href: /data-migration/sql-server/managed-instance/custom-roles?toc=/azure/dms/toc.json
   - name: Migration to SQL Server on Azure Virtual Machine
     items: 
-    - name: Custom roles for SQL Server to Azure Virtual Machine migrations using Azure Data Studio
+    - name: Custom roles for SQL Server to Azure Virtual Machine migrations
       href: /data-migration/sql-server/virtual-machines/custom-roles?toc=/azure/dms/toc.json
   - name: Migration to Azure SQL Database
     items: 
-    - name: Custom roles for SQL Server to Azure SQL Database migrations using Azure Data Studio
+    - name: Custom roles for SQL Server to Azure SQL Database migrations
       href: /data-migration/sql-server/database/custom-roles?toc=/azure/dms/toc.json
   - name: Migration to Azure Database for MySQL
     items: 
@@ -57,17 +53,19 @@
     - name: to Azure SQL Database (offline)
       href: /data-migration/sql-server/database/database-migration-service?toc=/azure/dms/toc.json
     - name: to Azure SQL Managed Instance
-      href: /data-migration/sql-server/managed-instance/database-migration-service?toc=/azure/dms/toc.json
+      href: /sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance?toc=/azure/dms/toc.json
     - name: to SQL Server for Azure Virtual Machines
       href: /data-migration/sql-server/virtual-machines/database-migration-service?toc=/azure/dms/toc.json
-    - name: Login migrations
-      href: tutorial-login-migration-ads.md
-    - name: TDE-enabled databases to Azure SQL
-      href: tutorial-transparent-data-encryption-migration-ads.md
+    - name: Login migrations (PowerShell)
+      href: /powershell/module/az.datamigration/new-azdatamigrationloginsmigration?toc=/azure/dms/toc.json
+    - name: Login migrations (Azure CLI)
+      href: /cli/azure/datamigration#az-datamigration-login-migration?toc=/azure/dms/toc.json
+    - name: TDE-enabled databases to Azure SQL (PowerShell)
+      href: /powershell/module/az.datamigration/new-azdatamigrationtdecertificatemigration?toc=/azure/dms/toc.json
+    - name: TDE-enabled databases to Azure SQL (Azure CLI)
+      href: /cli/azure/datamigration#az-datamigration-tde-migration?toc=/azure/dms/toc.json
     - name: Dashboards in Azure Database Migration Service
       href: database-migration-service-dashboard.md
-    - name: Known issues and troubleshooting
-      href: known-issues-azure-sql-migration-azure-data-studio.md
   - name: Migrate MySQL
     items: 
     - name: to Azure Database for MySQL (offline)
@@ -138,18 +136,12 @@
       href: dms-tools-matrix.md
     - name: Azure Database Migration Guide
       href: /data-migration/
-    - name: Azure SQL Migration extension for Azure Data Studio
-      href: /azure-data-studio/extensions/azure-sql-migration-extension
     - name: Azure Migrate
       href: /azure/migrate/migrate-services-overview
     - name: SQL Database Projects
-      href: /azure-data-studio/extensions/sql-database-project-extension
+      href: /sql/tools/visual-studio-code-extensions/sql-database-projects/sql-database-projects-extension
     - name: SQL Server Migration Assistant
       href: /sql/ssma/sql-server-migration-assistant
-    - name: Older tools
-      items: 
-      - name: Data Migration Assistant
-        href: /sql/dma/dma-overview
   - name: Troubleshooting and known issues
     items:
     - name: Database Migration Service
@@ -177,10 +169,6 @@
 
   - name: Videos
     items:
-    - name: How to migrate SQL Server to Azure SQL Database offline using Azure Data Studio
-      href: https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=how-to-migrate-sql-server-to-azure-sql-database-offline-using-azure-data-studio-data-exposed
-    - name: Assess, get recommendations, & migrate SQL Server to Azure using Azure Data Studio 
-      href: https://learn-video.azurefd.net/vod/player?show=data-exposed&ep=assess-get-recommendations-migrate-sql-server-to-azure-using-azure-data-studio
     - name: Introduction to Azure Data Migration Service
       href: https://learn-video.azurefd.net/vod/player?id=58ca75ec-3688-4a84-bbf4-cf0265e9ab0d
     - name: Cloud Migration Strategies and Phases in Migration Journey
