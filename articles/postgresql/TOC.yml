@@ -14,7 +14,13 @@
     - name: Release notes
       href: release-notes/release-notes.md
     - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
+      items:
+      - name: Maintenance release notes index
+        href: release-notes-maintenance/release-notes-maintenance-index.md
+      - name: January 2026
+        href: release-notes-maintenance/2026-january.md
+      - name: October 2025
+        href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: release-notes/release-notes-api.md
     - name: CLI release notes
