@@ -13,7 +13,7 @@ ms.topic: release-notes
 
 The October 2025 version of Azure Database for PostgreSQL is now available. Starting October 24, 2025, all new servers automatically use this version. Existing servers upgrade during their next scheduled maintenance.
 
-This version introduces new features and enhancements, resolves known problems, and includes important security patches to ensure optimal performance and security.
+This version introduces new features and enhancements, resolves known issues, and includes important security patches to ensure optimal performance and security.
 
 ## Engine version changes
 
