@@ -56,11 +56,15 @@ You can choose to restore any combination of provisioned throughput containers, 
 
 The following configurations aren't restored after the point-in-time recovery:
 
-* A subset of containers under a shared throughput database can't be restored. The entire database can be restored as a whole.
-* Firewall, [virtual network](how-to-configure-vnet-service-endpoint.md), data plane role-based access control, or private endpoint settings.
-* All the regions from the source account.
-* Stored procedures, triggers, UDFs.
-* Role-based access control assignments.
+- A subset of containers under a shared throughput database can't be restored. The entire database can be restored as a whole.
+- Database account keys. The restored account is generated with new database account keys. 
+- Firewall, [virtual network](how-to-configure-vnet-service-endpoint.md), data plane RBAC, or private endpoint settings.
+- All the regions from the source account.
+- Stored procedures, triggers, UDFs.
+- Role-based access control assignments. These need to be reassigned.
+- Documents that were deleted because of expired TTL are not restored by default, however the behavior can be enforced explicitly.
+- Analytical data when synapse link is enabled. 
+- Materialized views.
 
 You can add these configurations to the restored account after the restore is completed.
 
