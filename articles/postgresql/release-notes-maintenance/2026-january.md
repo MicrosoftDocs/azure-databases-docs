@@ -18,6 +18,7 @@ This new version introduces a range of new features and enhancements, resolves k
 ## Engine version changes
 
 - PG18 is now generally available on Azure Database for PostgreSQL for new server deployments.
+- Latest [minor versions](../configure-maintain/concepts-supported-versions.md) updated for Azure Postgres Flexible Server: 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23.
 - Added PG18 support for Fabric mirroring.
 
 ## Features

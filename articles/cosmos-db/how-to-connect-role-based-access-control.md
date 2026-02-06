@@ -258,20 +258,15 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     > [!NOTE]
     > In this example, the `--role-definition-id` value would be `bbbbbbbb-1111-2222-3333-cccccccccccc`. This example uses fictitious data and your identifier would be distinct from this example.
 
-1. Use the `id` obtained in the previous step and determine the `--scope` by removing everything after the account name.
-
-    > [!NOTE]
-    > In this example, the `--scope` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourcegroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
-
-1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). </br>Use the previously recorded role definition identifiers to the `--role-definition-id` argument, </br>unique identifier for your identity to the `--principal-id` argument, </br>and finally, use your account's identifier for the `--scope` argument.
+1. Assign the new role using [`az cosmosdb sql role assignment create`](/cli/azure/cosmosdb/sql/role/assignment#az-cosmosdb-sql-role-assignment-create). Use the previously recorded role definition identifiers for the `--role-definition-id` argument, unique identifier for your identity for the `--principal-id` argument, and the data plane scope for the `--scope` argument. To grant access to the entire account, use `/` as the scope.
 
     ```azurecli-interactive
     az cosmosdb sql role assignment create \
         --resource-group "<name-of-existing-resource-group>" \
         --account-name "<name-of-existing-nosql-account>" \
-        --role-definition-id "<id-of-new-role-definition>" \ 
+        --role-definition-id "<id-of-new-role-definition>" \
         --principal-id "<id-of-existing-identity>" \
-        --scope "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
+        --scope "/"
     ```
 
     > [!TIP]
@@ -640,18 +635,7 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
     Get-AzCosmosDBAccount @parameters | Select -Property Id
     ```
 
-1. Observe the output of the previous command. Record the value of the `Id` property for this account as it is required to use in the next step.
-
-    ```output
-    Id
-    --    
-    /subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql
-    ```
-
-    > [!NOTE]
-    > In this example, the `Id` value would be `/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql`. This example uses fictitious data and your identifier would be distinct from this example.
-
-1. Use [`New-AzCosmosDBSqlRoleAssignment`](/powershell/module/az.cosmosdb/new-azcosmosdbsqlroleassignment) to assign the new role. Use the previously recorded role definition identifiers to the `RoleDefinitionId` parameter, and the unique identifier for your identity to the `PrincipalId` parameter. Finally, use your account's identifier for the `Scope` parameter.
+1. Use [`New-AzCosmosDBSqlRoleAssignment`](/powershell/module/az.cosmosdb/new-azcosmosdbsqlroleassignment) to assign the new role. Use the previously recorded role definition identifiers for the `RoleDefinitionId` parameter, unique identifier for your identity for the `PrincipalId` parameter, and the data plane scope for the `Scope` parameter. To grant access to the entire account, use `/` as the scope.
 
     ```azurepowershell-interactive
     $parameters = @{
@@ -659,8 +643,8 @@ First, you must prepare a role definition with a list of `dataActions` to grant 
         AccountName = "<name-of-existing-nosql-account>"
         RoleDefinitionId = "<id-of-new-role-definition>"
         PrincipalId = "<id-of-existing-identity>"
-        Scope = "/subscriptions/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/resourceGroups/msdocs-identity-example/providers/Microsoft.DocumentDB/databaseAccounts/msdocs-identity-example-nosql"
-    }    
+        Scope = "/"
+    }
     New-AzCosmosDBSqlRoleAssignment @parameters
     ```
 
