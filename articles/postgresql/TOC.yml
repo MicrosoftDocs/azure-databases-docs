@@ -9,14 +9,18 @@
     - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
       href: release-notes/release-notes.md
     - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
+      items:
+      - name: Maintenance release notes index
+        href: release-notes-maintenance/release-notes-maintenance-index.md
+      - name: January 2026
+        href: release-notes-maintenance/2026-january.md
+      - name: October 2025
+        href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: release-notes/release-notes-api.md
     - name: CLI release notes
@@ -515,8 +519,6 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships, and permissions
-              href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
             - name: Required user permissions

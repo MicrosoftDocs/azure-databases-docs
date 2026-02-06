@@ -24,6 +24,8 @@
         href: quickstart-dotnet-vector-search.md
       - name: Create AI vector search app with Go
         href: quickstart-go-vector-search.md
+      - name: Create AI agent with vector search in Go
+        href: quickstart-agent-go.md
     - name: Develop a Python console application
       href: quickstart-python.md
     - name: Develop a TypeScript console application

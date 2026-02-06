@@ -25,7 +25,7 @@ The following figure shows the PostgreSQL sources you can migrate by using the m
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-postgresql-sources.png" alt-text="Diagram that shows different PostgreSQL sources." lightbox="media/overview-migration-service-postgresql/migrate-postgresql-sources.png":::
 
-The next figure depicts the detailed steps that are involved in migrating from Azure Database for PostgreSQL - Single Server to Azure Database for PostgreSQL flexible server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure Database for PostgreSQL flexible server.
+The next figure depicts the detailed steps that are involved in migrating from any PostgreSQL source to Azure Database for PostgreSQL flexible server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure Database for PostgreSQL flexible server.
 
 :::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to flexible server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
 
@@ -74,7 +74,6 @@ The following table lists the sources that the migration service supports:
 
 | PostgreSQL source type | Offline migration | Online migration |
 | --- | --- | --- |
-| [Azure Database for PostgreSQL - Single Server](../how-to-migrate-single-to-flexible-portal.md) | Supported | Supported |
 | Amazon RDS for PostgreSQL | [Supported](tutorial-migration-service-aws-offline.md) | [Supported](tutorial-migration-service-aws-online.md) |
 | On-premises | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
 | Azure virtual machine | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
@@ -98,7 +97,6 @@ The following list describes the key benefits of using the migration service in 
 
 Get started with the migration service by using one of the following methods:
 
-- [Migrate from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
 - [Migrate from an on-premises or infrastructure as a service (IaaS) environment](tutorial-migration-service-iaas.md)
 - [Migrate from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)
 
@@ -109,5 +107,4 @@ The migration service for Azure Database for PostgreSQL is a hosted solution. It
 ## Related content
 
 - [Premigration validations](concepts-premigration-migration-service.md)
-- [Migration from Azure Database for PostgreSQL - Single Server](tutorial-migration-service-single-to-flexible.md)
 - [Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)

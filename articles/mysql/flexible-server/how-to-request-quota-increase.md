@@ -1,8 +1,8 @@
 ---
 title: Request Quota Increases for Azure Database for MySQL
 description: Request quota increases for Azure Database for MySQL - Flexible Server resources.
-author: karla-escobar # GitHub alias
-ms.author: karlaescobar # Microsoft alias
+author: karla-escobar
+ms.author: karlaescobar
 ms.reviewer: maghan
 ms.date: 08/21/2025
 ms.service: azure-database-mysql

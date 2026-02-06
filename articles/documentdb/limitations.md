@@ -204,7 +204,7 @@ The [Microsoft Entra ID authentication](./how-to-connect-role-based-access-contr
 - This feature doesn't support Microsoft Entra ID groups.
 
 - When native DocumentDB authentication method is disabled, MongoDB Shell isn't supported in the Azure portal's **Quick start**.
-    - You can [use MongoDB Shell with Microsoft Entra ID authentication](./how-to-connect-role-based-access-control.md#connect-using-microsoft-entra-id-in-mongodb-shell) outside of the Azure portal. 
+    - You can [use MongoDB Shell with Microsoft Entra ID authentication](./how-to-connect-role-based-access-control.md#connect-using-microsoft-entra-id-in-mongodb-compass-or-mongodb-shell) outside of the Azure portal. 
 
 ### Native DocumentDB secondary users
 

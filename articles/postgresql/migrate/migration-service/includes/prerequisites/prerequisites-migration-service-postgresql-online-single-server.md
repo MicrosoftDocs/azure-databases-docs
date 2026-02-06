@@ -27,9 +27,6 @@ For Online migration, the replication support should be set to Logical under rep
 
 Ensure that there are no **long running transactions**. Long running transactions don't allow creation of replication slots. The creation of a replication slot will succeed if all long running transactions are committed or rolled-back. You'll need to restart the source PostgreSQL server after completing all the Online migration prerequisites.
 
-> [!NOTE]  
-> For online migration with Azure Database for PostgreSQL single server, the Azure replication support is set to logical under the replication settings of the single server page in the Azure portal.
-
 To prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` on the flexible server for the duration of the migration, and restore it to the original state after the migration.
 
 ### Set up target
@@ -45,9 +42,6 @@ To prevent the Online migration from running out of storage to store the logs, e
 - ALTER SYSTEM SET max_replication_slots = `number of databases to migrate` + 1;
 
 - When migrating across PostgreSQL versions (major or minor), ensure compatibility between your database and application by reviewing the [release notes](https://www.postgresql.org/docs/17/release.html) for potential breaking changes.
-
-> [!IMPORTANT]  
-> [Change the **password_encryption** server parameter on your flexible server](../../../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server.
 
 ### Set up Network
 

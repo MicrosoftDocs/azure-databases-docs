@@ -1,19 +1,19 @@
 ---
 title: Release Notes for Azure Database for PostgreSQL Maintenance - October 2025
-description: Learn about the maintenance release notes for Azure Database for PostgreSQL Flexible Server October 2025.
+description: Learn about the maintenance release notes for Azure Database for PostgreSQL Server October 2025.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 10/24/2025
+ms.date: 02/05/2026
 ms.service: azure-database-postgresql
-ms.topic: concept-article
+ms.topic: release-notes
 ---
 
-# Azure Database For PostgreSQL October 2025 Maintenance Release Notes
+# Azure Database for PostgreSQL: October 2025 Release
 
-We're excited to announce the October 2025 version of Azure Database for PostgreSQL. Starting October 24, 2025, all new servers are automatically onboarded to this latest version. Existing servers are upgraded during their next scheduled maintenance.
+The October 2025 version of Azure Database for PostgreSQL is now available. Starting October 24, 2025, all new servers automatically use this version. Existing servers upgrade during their next scheduled maintenance.
 
-This new version introduces a range of new features and enhancements, resolves known issues, and includes essential security patches to ensure optimal performance and security.
+This version introduces new features and enhancements, resolves known issues, and includes important security patches to ensure optimal performance and security.
 
 ## Engine version changes
 
@@ -21,16 +21,16 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Features
 
-- [PgBouncer](https://www.pgbouncer.org/usage.html#admin-console) updated from version 1.22 to 1.23. Admin console queries now include additional columns with this update.
-- [Citus 13.2](https://www.citusdata.com/updates/v13-2/) set as the default for PG16 & PG17 for all new Elastic Cluster provisions
+- [PgBouncer](https://www.pgbouncer.org/usage.html#admin-console) updated from version 1.22 to 1.23. Admin console queries now include extra columns with this update.
+- [Citus 13.2](https://www.citusdata.com/updates/v13-2/) set as the default for PG16 and PG17 for all new Elastic Cluster provisions.
 - Enabled the query store extension for PG18.
-- [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) extension upgraded to version 1.9 resolving a critical bug in the squeeze.squeeze_table() function that could lead to data corruption.
+- [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) extension upgraded to version 1.9, resolving a critical bug in the `squeeze.squeeze_table()` function that could lead to data corruption.
 - [IP4R](https://github.com/RhodiumToad/ip4r) extension enabled.
-- TimescaleDB extension upgraded to V2.22.0
+- TimescaleDB extension upgraded to version 2.22.0.
 
-## Known issues fix
+## Known issues fixed
 
-- Fixed issue, which could leave a server in a failed state after user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now brought to a deallocated state in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
+- Fixed an issue that could leave a server in a failed state after a user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now deallocated in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
 
 
 ## Related content

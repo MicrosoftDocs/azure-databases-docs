@@ -80,8 +80,6 @@
               href: flexible-server/connect-azure-cli.md
             - name: PHP
               href: flexible-server/connect-php.md
-            - name: Azure Data Studio
-              href: /azure-data-studio/quickstart-mysql
             - name: MySQL Workbench
               href: flexible-server/connect-workbench.md
             - name: Python

@@ -7,7 +7,8 @@ ms.author: diberry
 ms.reviewer: khelanmodi
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 10/23/2025
+ms.date: 02/03/2026
+ai-usage: ai-assisted
 ms.custom:
   - devx-track-ts
   - devx-track-ts-ai
@@ -19,13 +20,13 @@ ms.custom:
 
 Use vector search in Azure DocumentDB with the Node.js client library. Store and query vector data efficiently.
 
-This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-ada-002` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
+This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-3-small` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-typescript) on GitHub.
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-typescript) on GitHub. 
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
+[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search-model.md)]
 
 - [Node.js LTS](https://nodejs.org/download/)
 
@@ -35,9 +36,20 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     npm install -g typescript
     ```
 
+## Create data file with vectors
+
+1. Create a new data directory for the hotels data file:
+
+    ```bash
+    mkdir data
+    ```
+
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
+
+
 ## Create a Node.js project
 
-1. Create a new directory for your project and open it in Visual Studio Code:
+1. Create a new sibling directory for your project, at the same level as the data directory, and open it in Visual Studio Code:
 
     ```bash
     mkdir vector-search-quickstart
@@ -65,8 +77,11 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI Embedding Settings
-    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
+    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
     EMBEDDING_SIZE_BATCH=16
@@ -75,8 +90,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     MONGO_CLUSTER_NAME=
 
     # Data file
-    DATA_FILE_WITH_VECTORS=HotelsData_toCosmosDB_Vector.json
-    EMBEDDED_FIELD=text_embedding_ada_002
+    DATA_FILE_WITH_VECTORS=../data/Hotels_Vector.json
+    FIELD_TO_EMBED=Description
+    EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=100
     ```
@@ -87,9 +103,9 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 1. Add a `tsconfig.json` file to configure TypeScript:
 
-    :::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/tsconfig.json" :::
+    :::code language="json" source="~/documentdb-samples/ai/vector-search-typescript/tsconfig.json" :::
 
-1. Copy the `HotelsData_toCosmosDB_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to your project root.
+
 
 ## Create npm scripts
 
@@ -170,19 +186,19 @@ touch src/utils.ts
 
 Paste the following code into the `diskann.ts` file.
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/diskann.ts" :::
+:::code language="typescript" source="~/documentdb-samples/ai/vector-search-typescript/src/diskann.ts" :::
 
 #### [IVF](#tab/tab-ivf)
 
 Paste the following code into the `ivf.ts` file.
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/ivf.ts" :::
+:::code language="typescript" source="~/documentdb-samples/ai/vector-search-typescript/src/ivf.ts" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
 Paste the following code into the `hnsw.ts` file.
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/hnsw.ts" :::
+:::code language="typescript" source="~/documentdb-samples/ai/vector-search-typescript/src/hnsw.ts" :::
 
 ----
 
@@ -200,7 +216,7 @@ This main module provides these features:
 
 Paste the following code into `utils.ts`:
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-typescript/src/utils.ts" :::
+:::code language="typescript" source="~/documentdb-samples/ai/vector-search-typescript/src/utils.ts" :::
 
 This utility module provides these features:
 
@@ -215,11 +231,13 @@ This utility module provides these features:
 
 ## Authenticate with Azure CLI
 
-Sign in to Azure CLI before you run the application so it can access Azure resources securely.
+Sign in to Azure CLI before you run the application so the app can access Azure resources securely.
 
 ```bash
 az login
 ```
+
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI with the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The function relies on [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
 
 ## Build and run the application
 
@@ -256,54 +274,14 @@ The app logging and output show:
 
 ### [DiskANN](#tab/tab-diskann)
 
-```output
-Created collection: hotels_diskann
-Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
-Processing in batches of 100...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_diskann
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
-Closing database connection...
-Database connection closed
-```
+:::code language="output" source="~/documentdb-samples/ai/vector-search-typescript/output/diskann.txt" :::
 
 #### [IVF](#tab/tab-ivf)
 
-```output
-Created collection: hotels_ivf
-Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
-Processing in batches of 100...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_ivf
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
-Closing database connection...
-Database connection closed
-```
-
+:::code language="output" source="~/documentdb-samples/ai/vector-search-typescript/output/ivf.txt" :::
 #### [HNSW](#tab/tab-hnsw)
 
-```output
-Created collection: hotels_hnsw
-Reading JSON file from C:\Users\<username>\repos\samples\cosmos-db-vector-samples\data\HotelsData_toCosmosDB_Vector.json
-Processing in batches of 100...
-Batch 1 complete: 50 inserted
-Created vector index: vectorIndex_hnsw
-1. HotelName: Roach Motel, Score: 0.8399
-2. HotelName: Royal Cottage Resort, Score: 0.8385
-3. HotelName: Economy Universe Motel, Score: 0.8360
-4. HotelName: Foot Happy Suites, Score: 0.8354
-5. HotelName: Country Comfort Inn, Score: 0.8346
-Closing database connection...
-Database connection closed
-```
+:::code language="output" source="~/documentdb-samples/ai/vector-search-typescript/output/hnsw.txt" :::
 
 ----
 

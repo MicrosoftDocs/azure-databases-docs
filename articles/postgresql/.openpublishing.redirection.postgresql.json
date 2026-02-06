@@ -1666,6 +1666,11 @@
             "redirect_document_id": false
         },
         {
+            "source_path_from_root": "/articles/postgresql/migrate/migration-service/concepts-user-roles-migration-service.md",
+            "redirect_url": "/azure/postgresql/migrate/migration-service/overview-migration-service-postgresql",
+            "redirect_document_id": false
+        },
+        {
             "source_path_from_root": "/articles/postgresql/flexible-server/server-parameters-table-query-tuning---genetic-query-optimizer.md",
             "redirect_url": "/azure/postgresql/flexible-server/server-parameters-table-query-tuning-genetic-query-optimizer",
             "redirect_document_id": false
@@ -3893,17 +3898,17 @@
         {
             "source_path_from_root": "/articles/postgresql/monitor/concepts-index-tuning.md",
             "redirect_url": "/azure/postgresql/monitor/concepts-autonomous-tuning",
-            "redirect_document_id": true
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/monitor/how-to-configure-index-tuning.md",
             "redirect_url": "/azure/postgresql/monitor/how-to-configure-autonomous-tuning",
-            "redirect_document_id": true
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/monitor/how-to-get-and-apply-recommendations-from-index-tuning.md",
             "redirect_url": "/azure/postgresql/monitor/how-to-get-apply-recommendations-from-autonomous-tuning",
-            "redirect_document_id": true
+            "redirect_document_id": false
         }
     ]
 }

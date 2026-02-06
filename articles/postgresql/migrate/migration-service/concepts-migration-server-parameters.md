@@ -21,10 +21,8 @@ For example, customers can use the `azure.migration_skip_role_user` parameter to
 
 | Parameter name | Type | Description | Supported sources |
 | --- | --- | --- | --- |
-| `azure.migration_skip_role_user` | Boolean | When set to `on`, this parameter excludes user roles from the migration process. | Only Azure Database for PostgreSQL single server |
 | `azure.migration_copy_with_binary` | Boolean | When set to `on`, this parameter enables the use of the binary format for copying data during migration. | All supported sources by the migration service |
 | `azure.migration_table_split_size` | Integer (MB) | Defines the size (in MB) at which tables will be partitioned during migration. | All supported sources by the migration service |
-| `azure.migration_skip_analyze` | Boolean | When set to `on`, this parameter skips the analyze phase during the migration. | only Azure Database for PostgreSQL - Single server |
 | `azure.migration_skip_large_objects` | Boolean | When set to `on`, this parameter skips the migration of large objects such as BLOBs. | All supported sources by the migration service |
 | `azure.migration_skip_extensions` | Boolean | When set to `on`, this parameter skips the migration of extensions. | All supported sources by the migration service |
 
