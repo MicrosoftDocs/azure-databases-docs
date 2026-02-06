@@ -55,23 +55,16 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-SSDv2 is now available for Azure Database for PostgreSQL – Flexible Server in all below supported regions where Azure Storage supports it.
+SSDv2 now supports *High Availability, Geo Replicas, Geo Redundant Backups, Major Version Upgrade and, Geo DR* features for Azure Database for PostgreSQL – Flexible Server in all below supported regions.
 
-Asia East (EA), Australia Central 2, Australia East, Australia South East, Brazil South, Canada Central (CC), Canada East, Central India, Central US, China North 3, East US, East US 2, Germany West Central, Indonesia Central, Israel Central, Italy orth, Japan East, Korea Central, Mexico Central, Mongo, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, South African North, Southeast Asia, Sweden Central, Switzerland North, UAE North, UK West, US Gov Virginia, US South Central (SCUS), West Central US, West Europe, West US and West US 3 regions.
+East Asia, Australia Central 2, Australia East, Australia South East, Brazil South, Canada Central, Canada East, Central India, Central US, China North 3, East US, East US 2, Germany West Central, Indonesia Central, Israel Central, Italy North, Japan East, Korea Central, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, South African North, Southeast Asia, Sweden Central, Switzerland North, UAE North, UK West, US South Central US, West Central US, West Europe, West US and West US 3 regions.
 
-If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
-
-In preview, the following features are now supported for Azure Database for PostgreSQL – Flexible Server instances using Premium SSD v2 in Brazil South, Canada Central, Canada East, Central US, East Asia, East US, East US 2, South Central US, West Central US, and West US 2 regions.
-
-- *High Availability,
-Geo Replicas,
-Geo Redundant Backups,
-Major Version Upgrade and,
-Geo DR*
+> [!NOTE] 
+> If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
 ### Supported features limitations
 
-- Customer Managed Keys, On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
+- On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
 
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
