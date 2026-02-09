@@ -1,7 +1,7 @@
 ---
 
 title: Quickstart - CosmosDB vector search with .NET
-description: Learn how to use vector search in Azure CosmosDB with .NET. Store and query vector data efficiently in your applications. 
+description: Learn how to use vector search in Azure Cosmos DB with .NET. Store and query vector data efficiently in your applications. 
 author: alexwolfmsft
 ms.author: alexwolf
 ms.reviewer: khelanmodi
@@ -12,12 +12,12 @@ ms.custom:
   - devx-track-dotnet
   - devx-track-dotnet-ai
   - devx-track-data-ai
-# CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure CosmosDB.
+# CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure Cosmos DB.
 ---
 
-# Quickstart: Vector search with .NET in Azure CosmosDB
+# Quickstart: Vector search with .NET in Azure Cosmos DB
 
-Learn to use vector search in Azure CosmosDB with the .NET MongoDB driver to store and query vector data efficiently.
+Learn to use vector search in Azure Cosmos DB with the .NET MongoDB driver to store and query vector data efficiently.
 
 This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
 
@@ -43,7 +43,7 @@ The app uses the following NuGet packages:
 The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely.
 
 > [!NOTE]
-> Ensure your signed-in identity has the required data plane roles on both the Azure CosmosDB account and the Azure OpenAI resource.
+> Ensure your signed-in identity has the required data plane roles on both the Azure Cosmos DB account and the Azure OpenAI resource.
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -65,7 +65,7 @@ Connect-AzAccount
 
 ---
 
-## Configure and run the app
+## Provision and configure the app resources
 
 To run the .NET app, you'll need to provision the required Azure resources and configure the sample app to connect to them. This project is configured to use the Azure Developer CLI (`azd`) to provision the required Azure resources for you automatically.
 
@@ -98,7 +98,7 @@ Update the `appsettings.json` placeholder values with your own:
 :::code language="json" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/appsettings.json" :::
 
 
-### Build and run the project
+## Build and run the project
 
 The sample app populates vectorized sample data in a CosmosDB database and lets you run different types of search queries. Each query uses a different container within the database. 
 
@@ -261,9 +261,9 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 - Constructs and runs the aggregation search pipeline
 - Deserializes and prints the results
 
-### Explore the Azure CosmosDB service
+### Explore the Azure Cosmos DB service
 
-The `CosmosDBService` manages interactions with Azure CosmosDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
+The `CosmosDBService` manages interactions with Azure Cosmos DB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
 :::code language="csharp" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/services/CosmosDBService.cs" :::
 
@@ -278,13 +278,13 @@ In the preceding code, the `CosmosDBService` performs the following tasks:
 ## View and manage data in Visual Studio Code
 
 1. Install the [CosmosDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-CosmosDB) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
-1. Connect to your Azure CosmosDB account using the CosmosDB extension.
+1. Connect to your Azure Cosmos DB account using the CosmosDB extension.
 1. View the data and indexes in the Hotels database.
 
 ## Clean up resources
 
-Delete the resource group, Azure CosmosDB cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
+Delete the resource group, Azure Cosmos DB cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
 
 ## Related content
 
-- [Vector store in Azure CosmosDB](vector-search.md)
+- [Vector store in Azure Cosmos DB](vector-search.md)
