@@ -39,6 +39,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
     - Support for configuring zonal resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure Portal.
+    - [2025-08-01 Rest API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now avaialable. 
+    - [Maintenance release notes](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
     - [Read Replica support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
 
