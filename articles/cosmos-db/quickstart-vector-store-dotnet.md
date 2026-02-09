@@ -17,9 +17,9 @@ ms.custom:
 
 # Quickstart: Vector search with .NET in Azure Cosmos DB
 
-Learn to use vector search in Azure Cosmos DB with the .NET MongoDB driver to store and query vector data efficiently.
+Learn to use vector search in Azure Cosmos DB to store and query vector data efficiently.
 
-This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
+This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) on GitHub.
 
 The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-3-small` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
@@ -35,7 +35,7 @@ The app uses the following NuGet packages:
 - [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
 - [`Azure.AI.OpenAI`](https://www.nuget.org/packages/Azure.AI.OpenAI): Azure OpenAI client library to communicate with AI models and create vector embeddings
 - [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration): Configuration management for app settings
-- [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/MongoDB.Driver): CosmosDB client library for database connectivity and operations
+- [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos): Azure Cosmos DB client library for database connectivity and operations
 - [`Newtonsoft.Json`](https://www.nuget.org/packages/Newtonsoft.Json): Popular JSON serialization and deserialization library
 
 ### Authenticate to Azure
@@ -128,7 +128,7 @@ The sample app populates vectorized sample data in a CosmosDB database and lets 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
     The app logging and output show:
-    - Collection creation and data insertion status
+    - Container creation and data insertion status
     - Vector index creation confirmation
     - Search results with hotel names, locations, and similarity scores
     
@@ -174,7 +174,7 @@ The sample app populates vectorized sample data in a CosmosDB database and lets 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
     The app logging and output show:
-    - Collection creation and data insertion status
+    - Container creation and data insertion status
     - Vector index creation confirmation
     - Search results with hotel names, locations, and similarity scores
     
@@ -220,7 +220,7 @@ The sample app populates vectorized sample data in a CosmosDB database and lets 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
     The app logging and output show:
-    - Collection creation and data insertion status
+    - Container creation and data insertion status
     - Vector index creation confirmation
     - Search results with hotel names, locations, and similarity scores
     
@@ -244,7 +244,7 @@ The sample app populates vectorized sample data in a CosmosDB database and lets 
 
 ## Explore the app code
 
-The following sections provide details about the most important services and code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) to explore the full app code.
+The following sections provide details about the most important services and code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) to explore the full app code.
 
 ### Explore the search service
 
@@ -254,8 +254,8 @@ The `VectorSearchService` orchestrates an end‑to‑end vector similarity searc
 
 In the preceding code, the `VectorSearchService` performs the following tasks:
 
-- Determines the collection and index names based on the requested algorithm
-- Creates or gets the MongoDB collection and loads JSON data if it's empty
+- Determines the container and index names based on the requested algorithm
+- Creates or gets the Cosmos DB container and loads JSON data if it's empty
 - Builds the algorithm-specific index options (IVF / HNSW / DiskANN) and ensures the vector index exists
 - Generates an embedding for the configured query via Azure OpenAI
 - Constructs and runs the aggregation search pipeline
@@ -270,10 +270,10 @@ The `CosmosDBService` manages interactions with Azure Cosmos DB to handle tasks 
 In the preceding code, the `CosmosDBService` performs the following tasks:
 
 - Reads configuration and builds a passwordless client with Azure credentials
-- Provides database or collection references on demand
+- Provides database or container references on demand
 - Creates a vector search index only if it doesn't already exist
-- Lists all non-system databases, their collections, and each collection's indexes
-- Inserts sample data if the collection is empty and adds supporting indexes
+- Lists all non-system databases, their containers, and each container's indexes
+- Inserts sample data if the contaienr is empty and adds supporting indexes
 
 ## View and manage data in Visual Studio Code
 
