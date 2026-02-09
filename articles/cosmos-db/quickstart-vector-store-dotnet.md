@@ -25,8 +25,6 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
-
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later
 - [C# extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
@@ -39,16 +37,6 @@ The app uses the following NuGet packages:
 - [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration): Configuration management for app settings
 - [`Microsoft.Azure.Cosmos`](https://www.nuget.org/packages/MongoDB.Driver): CosmosDB client library for database connectivity and operations
 - [`Newtonsoft.Json`](https://www.nuget.org/packages/Newtonsoft.Json): Popular JSON serialization and deserialization library
-
-## Configure and run the app
-
-Complete the following steps to configure the app with your own values and run searches against your Azure CosmosDB cluster.
-
-### Configure the app
-
-Update the `appsettings.json` placeholder values with your own:
-
-:::code language="json" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/appsettings.json" :::
 
 ### Authenticate to Azure
 
@@ -76,6 +64,39 @@ Connect-AzAccount
 ```
 
 ---
+
+## Configure and run the app
+
+To run the .NET app, you'll need to provision the required Azure resources and configure the sample app to connect to them. This project is configured to use the Azure Developer CLI (`azd`) to provision the required Azure resources for you automatically.
+
+### Provision the resources
+
+To provision resources:
+
+1. Open a terminal in the root folder of this repository (where `azure.yml` is located).
+2. Run the following command:
+
+    ```bash
+    azd up
+    ```
+
+Follow the prompts to select your Azure subscription and environment.
+
+**What is provisioned:**
+
+* **Azure Cosmos DB for NoSQL**: Serverless account with the `Hotels` database and containers
+* **Azure OpenAI**: Resource with deployments for:
+  * Embedding model: `text-embedding-3-small`
+  * Chat model: `gpt-4o-mini`
+* **Managed Identity**: User-assigned identity for secure access.
+* RBAC assignments for Keyless authentication.
+
+### Configure the app
+
+Update the `appsettings.json` placeholder values with your own:
+
+:::code language="json" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/appsettings.json" :::
+
 
 ### Build and run the project
 
