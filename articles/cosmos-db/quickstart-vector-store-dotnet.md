@@ -17,11 +17,9 @@ ms.custom:
 
 # Quickstart: Vector search with .NET in Azure Cosmos DB
 
-Learn to use vector search in Azure Cosmos DB to store and query vector data efficiently.
+Learn to use vector search in Azure Cosmos DB to store and query vector data efficiently. This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) on GitHub.
 
-This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) on GitHub.
-
-The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-3-small` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
+The app uses a sample hotel dataset in a JSON file with calculated vectors from the `text-embedding-3-small` model. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
 ## Prerequisites
 
@@ -248,7 +246,7 @@ The following sections provide details about the most important services and cod
 
 ### Explore the search service
 
-The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques with Azure OpenAI embeddings.
+The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using Flat, QuantizedFlat, and DiskANN search techniques with Azure OpenAI embeddings.
 
 :::code language="csharp" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/services/vectorsearchservice.cs" :::
 
@@ -256,7 +254,7 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 
 - Determines the container and index names based on the requested algorithm
 - Creates or gets the Cosmos DB container and loads JSON data if it's empty
-- Builds the algorithm-specific index options (IVF / HNSW / DiskANN) and ensures the vector index exists
+- Builds the algorithm-specific index options (Flat / QuantizedFlat / DiskANN) and ensures the vector index exists
 - Generates an embedding for the configured query via Azure OpenAI
 - Constructs and runs the aggregation search pipeline
 - Deserializes and prints the results
