@@ -12,16 +12,16 @@ ms.custom:
   - devx-track-dotnet
   - devx-track-dotnet-ai
   - devx-track-data-ai
-# CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure DocumentDB.
+# CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure CosmosDB.
 ---
 
-# Quickstart: Vector search with .NET in Azure DocumentDB
+# Quickstart: Vector search with .NET in Azure CosmosDB
 
-Learn to use vector search in Azure DocumentDB with the .NET MongoDB driver to store and query vector data efficiently.
+Learn to use vector search in Azure CosmosDB with the .NET MongoDB driver to store and query vector data efficiently.
 
 This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
 
-The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-ada-002` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
+The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-3-small` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ The app uses the following NuGet packages:
 
 ## Configure and run the app
 
-Complete the following steps to configure the app with your own values and run searches against your Azure DocumentDB cluster.
+Complete the following steps to configure the app with your own values and run searches against your Azure CosmosDB cluster.
 
 ### Configure the app
 
@@ -55,7 +55,7 @@ Update the `appsettings.json` placeholder values with your own:
 The sample app uses passwordless authentication via `DefaultAzureCredential` and Microsoft Entra ID. [Sign in to Azure using a supported tool](/dotnet/azure/sdk/authentication/credential-chains?tabs=dac#defaultazurecredential-overview) such as the Azure CLI or Azure PowerShell before you run the application so it can access Azure resources securely.
 
 > [!NOTE]
-> Ensure your signed-in identity has the required data plane roles on both the Azure DocumentDB account and the Azure OpenAI resource.
+> Ensure your signed-in identity has the required data plane roles on both the Azure CosmosDB account and the Azure OpenAI resource.
 
 ### [Azure CLI](#tab/azure-cli)
 
@@ -240,9 +240,9 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 - Constructs and runs the aggregation search pipeline
 - Deserializes and prints the results
 
-### Explore the Azure DocumentDB service
+### Explore the Azure CosmosDB service
 
-The `MongoDbService` manages interactions with Azure DocumentDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
+The `MongoDbService` manages interactions with Azure CosmosDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
 :::code language="csharp" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/services/MongoDbService.cs" :::
 
@@ -256,17 +256,14 @@ In the preceding code, the `MongoDbService` performs the following tasks:
 
 ## View and manage data in Visual Studio Code
 
-1. Install the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
-1. Connect to your Azure DocumentDB account using the DocumentDB extension.
+1. Install the [CosmosDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-CosmosDB) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
+1. Connect to your Azure CosmosDB account using the CosmosDB extension.
 1. View the data and indexes in the Hotels database.
-
-    :::image type="content" source="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" lightbox="./media/quickstart-nodejs-vector-search/visual-studio-code-documentdb.png" alt-text="Screenshot of DocumentDB extension showing the DocumentDB collection.":::
 
 ## Clean up resources
 
-Delete the resource group, Azure DocumentDB cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
+Delete the resource group, Azure CosmosDB cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
 
 ## Related content
 
-- [Vector store in Azure DocumentDB](vector-search.md)
-- [Support for geospatial queries](geospatial-support.md)
+- [Vector store in Azure CosmosDB](vector-search.md)
