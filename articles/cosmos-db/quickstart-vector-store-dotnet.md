@@ -242,11 +242,11 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 
 ### Explore the Azure CosmosDB service
 
-The `MongoDbService` manages interactions with Azure CosmosDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
+The `CosmosDBService` manages interactions with Azure CosmosDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
-:::code language="csharp" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/services/MongoDbService.cs" :::
+:::code language="csharp" source="~/cosmos-db-vector-samples/nosql-vector-search-dotnet/services/CosmosDBService.cs" :::
 
-In the preceding code, the `MongoDbService` performs the following tasks:
+In the preceding code, the `CosmosDBService` performs the following tasks:
 
 - Reads configuration and builds a passwordless client with Azure credentials
 - Provides database or collection references on demand
