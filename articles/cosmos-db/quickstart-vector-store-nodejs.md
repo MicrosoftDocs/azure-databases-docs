@@ -29,8 +29,8 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 - An Azure subscription
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 
-- An existing Cosmos DB resource
-  - If you don't have a resource, create a [new resource](https://docs.azure.cn/en-us/cosmos-db/nosql/quickstart-portal)
+- An existing **Azure Cosmos DB for NoSQL** resource
+  - If you don't have a resource, create a [new resource](https://portal.azure.com/#create/Microsoft.DocumentDB)
   - [Firewall configured to allow access to your client IP address](how-to-configure-firewall.md)
   - Role Based Access Control (RBAC) roles assigned: 
   
@@ -177,14 +177,14 @@ Use these scripts to compile TypeScript files and run the DiskANN index implemen
 }
 ```
 
-#### [Quantized flat](#tab/tab-quantized-flat)
+#### [Quantized flat](#tab/tab-quantizedFlat)
 
 Use these scripts to compile TypeScript files and run the Quantized flat index implementation.
 
 ```json
 "scripts": { 
     "build": "tsc",
-    "start:quantized-flat": "node --env-file .env dist/quantized-flat.js"
+    "start:quantizedFlat": "node --env-file .env dist/quantizedFlat.js"
 }
 ```
 
@@ -213,7 +213,7 @@ touch src/diskann.ts
 touch src/utils.ts
 ```
 
-#### [Quantized flat](#tab/tab-quantized-flat)
+#### [Quantized flat](#tab/tab-quantizedFlat)
 
 Create a `src` directory for your TypeScript files. Add two files: `quantizedFlat.ts` and `utils.ts` for the Quantized flat index implementation:
 
@@ -244,7 +244,7 @@ Paste the following code into the `diskann.ts` file.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/diskann.ts" :::
 
-#### [Quantized flat](#tab/tab-quantized-flat)
+#### [Quantized flat](#tab/tab-quantizedFlat)
 
 Paste the following code into the `quantizedFlat.ts` file.
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/quantizedFlat.ts" :::
@@ -269,7 +269,7 @@ const createEmbeddedForQueryResponse = await aiClient.embeddings.create({
 });
 ```
 
-This converts text like "quintessential lodging near running trails" into a 1536-dimension vector that captures its semantic meaning. For more details on generating embeddings, see [Azure OpenAI embeddings documentation](/azure/ai-foundry/openai/how-to/embeddings).
+This OpenAI API call for [client.embeddings.create](https://platform.openai.com/docs/guides/embeddings#how-to-get-embeddings) converts text like "quintessential lodging near running trails" into a 1536-dimension vector that captures its semantic meaning. For more details on generating embeddings, see [Azure OpenAI embeddings documentation](/azure/ai-foundry/openai/how-to/embeddings).
 
 ### Understand the code: Store vectors in Cosmos DB
 
@@ -318,7 +318,7 @@ This utility module provides these features:
 - `getClientsPasswordless`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
 - `readFileReturnJson`: Reads a JSON file and returns its contents as an array of `JsonData` objects
 - `writeFileJson`: Writes an array of `JsonData` objects to a JSON file
-- `insertData`: Inserts data in batches into a Cosmos DB collection and creates standard indexes on specified fields
+- `insertData`: Inserts data in batches into a Cosmos DB container and creates standard indexes on specified fields
 - `printSearchResults`: Prints the results of a vector search, including the score and hotel name
 - `validateFieldName`: Validates that a field name exists in the data
 
@@ -343,7 +343,7 @@ npm run build
 npm run start:diskann
 ```
 
-#### [Quantized flat](#tab/tab-quantized-flat)
+#### [Quantized flat](#tab/tab-quantizedFlat)
 
 ```bash
 npm run build
@@ -361,7 +361,7 @@ npm run start:flat
 
 The app logging and output show:
 
-- Collection creation and data insertion status
+- Data insertion status
 - Vector index creation 
 - Search results with hotel names and similarity scores
 
@@ -369,7 +369,7 @@ The app logging and output show:
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/diskann.txt" :::
 
-#### [Quantized flat](#tab/tab-quantized-flat)
+#### [Quantized flat](#tab/tab-quantizedFlat)
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/quantizedflat.txt" :::
 #### [Flat](#tab/tab-flat)
@@ -424,10 +424,10 @@ For detailed information on distance functions, see [What are distance functions
 
 ## View and manage data in Visual Studio Code
 
-1. Select the [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
+1. Select the [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" alt-text="Screenshot of Cosmos DB extension showing the Cosmos DB collection.":::
+    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" alt-text="Screenshot of Cosmos DB extension showing the Cosmos DB container.":::
 
 ## Clean up resources
 
