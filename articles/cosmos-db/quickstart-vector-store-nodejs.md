@@ -1,7 +1,7 @@
 ---
 
 title: Quickstart - Vector Search with Node.js
-description: Learn how to use vector search in Azure Cosmos DB with Node.js. Store and query vector data efficiently. Get started now.
+description: Use this quickstart to implement vector search in Azure Cosmos DB with Node.js. Store and query hotel data with embeddings using the text-embedding-3-small model.
 author: diberry
 ms.author: diberry
 ms.reviewer: jcodella
@@ -88,13 +88,14 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
     ```bash
     npm install @azure/identity @azure/cosmos openai
-    npm install @types/node --save-dev
+    npm install @types/node cross-env --save-dev
     ```
 
     * **@azure/identity** - Azure authentication library for passwordless (managed identity) connections
     * **@azure/cosmos** - Azure Cosmos DB client library for database operations
     * **openai** - OpenAI SDK for generating embeddings with Azure OpenAI
     * **@types/node** (dev) - TypeScript type definitions for Node.js APIs
+    * **cross-env** (dev) - Cross-platform environment variable setting for npm scripts
 
 1. Create a `.env` file in your project root for environment variables:
 
@@ -171,23 +172,22 @@ Use these scripts to compile TypeScript files and run the DiskANN index implemen
 ```json
 "scripts": { 
     "build": "tsc",
-    "start:diskann": "set VECTOR_ALGORITHM=diskann && node --env-file .env dist/vector-search.js"
+    "start:diskann": "cross-env VECTOR_ALGORITHM=diskann node --env-file .env dist/vector-search.js"
 }
 ```
 
-#### [Quantized flat](#tab/tab-quantizedflat)
+### [Quantized flat](#tab/tab-quantizedflat)
 
 Use these scripts to compile TypeScript files and run the Quantized flat index implementation.
 
 ```json
 "scripts": { 
     "build": "tsc",
-    "start:quantizedflat": "set VECTOR_ALGORITHM=quantizedflat && node --env-file .env dist/vector-search.js"
+    "start:quantizedflat": "cross-env VECTOR_ALGORITHM=quantizedflat node --env-file .env dist/vector-search.js"
 }
 ```
-
     
-----
+---
 
 ## Create code files for vector search
 
@@ -284,7 +284,7 @@ Sign in to Azure CLI before you run the application so the app can access Azure 
 az login
 ```
 
-The code uses your local developer authentication to access Azure Cosmos DB and Azure OpenAI with the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The function relies on [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
+The code uses your local developer authentication to access Azure Cosmos DB and Azure OpenAI with the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, you deterministically select which credential `DefaultAzureCredential` uses from its credential chain. The function relies on [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity**, which walks an ordered chain of credential providers but honors the environment variable to resolve to Azure CLI credentials first. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
 
 ## Build and run the application
 
@@ -297,14 +297,14 @@ npm run build
 npm run start:diskann
 ```
 
-#### [Quantized flat](#tab/tab-quantizedflat)
+### [Quantized flat](#tab/tab-quantizedflat)
 
 ```bash
 npm run build
 npm run start:quantizedflat
 ```
 
-----
+---
 
 The app logging and output show:
 
@@ -316,11 +316,11 @@ The app logging and output show:
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/diskann.txt" :::
 
-#### [Quantized flat](#tab/tab-quantizedflat)
+### [Quantized flat](#tab/tab-quantizedflat)
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/quantizedflat.txt" :::
 
-----
+---
 
 
 ### Distance metrics
@@ -380,7 +380,7 @@ The distance function is set in the **vector embedding policy** when creating th
 }
 ```
 
-#### [Quantized flat](#tab/tab-quantizedflat)
+### [Quantized flat](#tab/tab-quantizedflat)
 
 ```bicep
 {
@@ -428,7 +428,7 @@ The distance function is set in the **vector embedding policy** when creating th
 
 This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities. The `partitionKeyPaths` specifies that documents are partitioned by `HotelId` for distributed storage. The `indexingPolicy` configures automatic indexing on all document properties (/*) except the system `_etag` field and the `DescriptionVector` array to optimize write performance—vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. The `vectorIndexes` section creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. Finally, the `vectorEmbeddingPolicy` defines the vector field's characteristics: `float32` data type with 1536 dimensions (matching the `text-embedding-3-small` model output) and cosine as the distance function to measure similarity between vectors during queries.
 
-### Interpreting similarity scores
+### Interpret similarity scores
 
 In the example output using **cosine similarity**:
 
@@ -436,7 +436,6 @@ In the example output using **cosine similarity**:
 - **0.4388** (Roach Motel) - Lower similarity, still relevant but less matching
 - Scores closer to **1.0** indicate stronger semantic similarity
 - Scores near **0** indicate little similarity
-- Negative scores indicate dissimilarity (rare with well-formed embeddings)
 
 **Important notes:**
 
@@ -451,7 +450,7 @@ For detailed information on distance functions, see [What are distance functions
 1. Select the [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" alt-text="Screenshot of Cosmos DB extension showing the Cosmos DB container.":::
+    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" alt-text="Screenshot of Visual Studio Code showing the Azure Cosmos DB extension with Hotels database items and a JSON document editor." lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png":::
 
 ## Clean up resources
 
