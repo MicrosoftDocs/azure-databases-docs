@@ -1,12 +1,12 @@
 ---
-title: Fleets Pools (Preview)
+title: Fleets Pools
 description: Pools manage throughput in Azure Cosmos DB fleets aimed at optimizing resource allocation for multitenant applications.
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 05/07/2025
+ms.date: 02/11/2026
 ai-usage: ai-assisted
 show_latex: true
 appliesto:
