@@ -5,7 +5,7 @@ description: Learn how to use the security measures provided by SQL Server and t
 author: abhims14
 ms.author: abhishekum
 ms.reviewer: mathoma, randolphwest
-ms.date: 10/28/2025
+ms.date: 02/10/2026
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ---
@@ -47,6 +47,9 @@ Consider the following security best practices for your network:
 - For data moving between your source infrastructure and Azure, consider appropriate safeguards such as HTTPS or VPN. When sending traffic between an Azure virtual network and an on-premises location over the public internet, use the encrypted [Site-to-site VPN](/azure/vpn-gateway/tutorial-site-to-site-portal). The site-to-site VPN connection is a trusted, reliable, and established technology, but the connection takes place over the internet, and bandwidth is constrained to a maximum of about 1.25 Gbps.
 
 - Use [ExpressRoute](/azure/expressroute/expressroute-introduction) to migrate larger data sets. ExpressRoute offers greater reliability, faster speeds, consistent latencies, and a higher security footprint for connections since they don't go over the public internet.
+
+  > [!NOTE]  
+  > If your DMS migration scenario requires a self-hosted integration runtime (SHIR), the SHIR machine must have public internet access to enable migration.
 
 - For migrations to Azure SQL Database, use [IP firewall rules](/azure/azure-sql/database/firewall-configure) to restrict access to only authorized IP addresses.
 
