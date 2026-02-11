@@ -85,13 +85,13 @@ Throughput pooling requires all database accounts in a **fleetspace** to have th
 Here are examples of allowed and unallowed configurations:
 
 - Varying regional configurations
-    - **Allowed**: Two accounts, both configured as single-region write in two distinct Azure regions.
-    - **Allowed**: Two accounts, both configured as multi-region write in two distinct Azure regions.
-    - **Not allowed**: One account, with single-region write but distributed to two distinct Azure regions. Another account, with single-region write, in a different single Azure region.
+    - **Allowed**: Two accounts, both configured as single-region write (general purpose) in two distinct Azure regions.
+    - **Allowed**: Two accounts, both configured as multi-region write (business critical) in two distinct Azure regions.
+    - **Not allowed**: One account, with single-region write (general purpose) but distributed to two distinct Azure regions. Another account, with single-region write (general purpose), in a different single Azure region.
     - **Not allowed**: Two accounts, with global distribution configured for two different sets of regions.
 - Varying service tiers
     - **Allowed**: Two accounts, both with multi-region write (business critical) configured in two separate Azure regions.
-    - **Not allowed**: Two accounts, one with multi-region write and the other with single-region write.
+    - **Not allowed**: Two accounts, one with multi-region write (business critical) and the other with single-region write (general purpose).
 
 > [!NOTE]
 > Accounts must have the same underlying configuration of multi-region writes (business critical) or single-region writes (general purpose) to participate in the same pool.
