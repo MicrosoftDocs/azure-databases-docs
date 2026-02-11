@@ -30,6 +30,7 @@ In the event of an Azure Cosmos DB service outage, you can find details related 
 ### Azure portal banner
 
 If a subscription is identified as impacted, there's an outage alert of a Service Issue in the Azure portal Notifications.
+
 [![Diagram that shows the example of service issue notification in Azure portal.](media/disaster-recovery-guidance/notification-service-issue-example.png)](media/disaster-recovery-guidance/notification-service-issue-example.png#lightbox)
 
 ### Help + support or Support + troubleshooting
