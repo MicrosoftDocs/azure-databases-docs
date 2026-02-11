@@ -330,88 +330,98 @@ Azure Cosmos DB for NoSQL supports three distance functions for vector similarit
 
 The distance function is set in the **vector embedding policy** when creating the container. This is provided in the [infrastructure](https://github.com/Azure-Samples/cosmos-db-vector-samples/blob/main/infra/database.bicep) in the sample repository. It is defined as part of the container definition.
 
+
+### [DiskANN](#tab/tab-diskann)
+
 ```bicep
-var containers = [
-  {
+{
     name: 'hotels_diskann'
     partitionKeyPaths: [
-      '/HotelId'
+        '/HotelId'
     ]
     indexingPolicy: {
-      indexingMode: 'consistent'
-      automatic: true
-      includedPaths: [
+        indexingMode: 'consistent'
+        automatic: true
+        includedPaths: [
         {
-          path: '/*'
+            path: '/*'
         }
-      ]
-      excludedPaths: [
+        ]
+        excludedPaths: [
         {
-          path: '/_etag/?'
+            path: '/_etag/?'
         }
         {
-          path: '/DescriptionVector/*'
+            path: '/DescriptionVector/*'
         }
-      ]
-      vectorIndexes: [
+        ]
+        vectorIndexes: [
         {
-          path: '/DescriptionVector'
-          type: 'diskANN'
+            path: '/DescriptionVector'
+            type: 'diskANN'
         }
-      ]
+        ]
     }
     vectorEmbeddingPolicy: {
-      vectorEmbeddings: [
+        vectorEmbeddings: [
         {
-          path: '/DescriptionVector'
-          dataType: 'float32'
-          dimensions: 1536
-          distanceFunction: 'cosine'
+            path: '/DescriptionVector'
+            dataType: 'float32'
+            dimensions: 1536
+            distanceFunction: 'cosine'
         }
-      ]
+        ]
     }
-  }
-  {
+}
+```
+
+#### [Quantized flat](#tab/tab-quantizedflat)
+
+```bicep
+{
     name: 'hotels_quantizedflat'
     partitionKeyPaths: [
-      '/HotelId'
+        '/HotelId'
     ]
     indexingPolicy: {
-      indexingMode: 'consistent'
-      automatic: true
-      includedPaths: [
+        indexingMode: 'consistent'
+        automatic: true
+        includedPaths: [
         {
-          path: '/*'
+            path: '/*'
         }
-      ]
-      excludedPaths: [
+        ]
+        excludedPaths: [
         {
-          path: '/_etag/?'
+            path: '/_etag/?'
         }
         {
-          path: '/DescriptionVector/*'
+            path: '/DescriptionVector/*'
         }
-      ]
-      vectorIndexes: [
+        ]
+        vectorIndexes: [
         {
-          path: '/DescriptionVector'
-          type: 'quantizedFlat'
+            path: '/DescriptionVector'
+            type: 'quantizedFlat'
         }
-      ]
+        ]
     }
     vectorEmbeddingPolicy: {
-      vectorEmbeddings: [
+        vectorEmbeddings: [
         {
-          path: '/DescriptionVector'
-          dataType: 'float32'
-          dimensions: 1536
-          distanceFunction: 'cosine'
+            path: '/DescriptionVector'
+            dataType: 'float32'
+            dimensions: 1536
+            distanceFunction: 'cosine'
         }
-      ]
+        ]
     }
-  }
-]
+}
 ```
+
+---
+
+This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities. The `partitionKeyPaths` specifies that documents are partitioned by `HotelId` for distributed storage. The `indexingPolicy` configures automatic indexing on all document properties (/*) except the system `_etag` field and the `DescriptionVector` array to optimize write performance—vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. The `vectorIndexes` section creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. Finally, the `vectorEmbeddingPolicy` defines the vector field's characteristics: `float32` data type with 1536 dimensions (matching the `text-embedding-3-small` model output) and cosine as the distance function to measure similarity between vectors during queries.
 
 ### Interpreting similarity scores
 
