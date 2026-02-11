@@ -29,7 +29,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 - An Azure subscription
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 
-- An existing **Azure Cosmos DB for NoSQL** resource
+- An existing **Azure Cosmos DB for NoSQL** resource data plane access
   - If you don't have a resource, create a [new resource](https://portal.azure.com/#create/Microsoft.DocumentDB)
   - [Firewall configured to allow access to your client IP address](how-to-configure-firewall.md)
   - Role Based Access Control (RBAC) roles assigned: 
@@ -207,6 +207,9 @@ Paste the following code into the `vector-search.ts` file.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/vector-search.ts" :::
 
+This code configures either a `DiskANN` or `quantizedFlat` vector algorithm from environment variables, connects to Azure OpenAI and Cosmos DB using passwordless authentication, loads pre-vectorized hotel data from a JSON file, inserts it into the appropriate container, then generates an embedding for a natural-language query (`quintessential lodging near running trails, eateries, retail`) and executes a VectorDistance SQL query to retrieve the top 5 most semantically similar hotels ranked by similarity score. 
+
+Error handling covers missing clients, invalid algorithm selection, and non-existent containers/databases.
 
 ### Understand the code: Generate embeddings with Azure OpenAI
 
@@ -247,6 +250,8 @@ const queryResponse = await container.items
     })
     .fetchAll();
 ```
+
+This code builds a parameterized SQL query that uses the VectorDistance function to compare the query's embedding vector (@embedding) against each document's stored vector field (`DescriptionVector`), returning the top 5 hotels with their name and similarity score, ordered from most similar to least similar. The query embedding is passed as a parameter to avoid injection and comes from a prior Azure OpenAI embeddings.create call.
 
 **What this query returns:**
 
