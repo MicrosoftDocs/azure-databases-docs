@@ -98,7 +98,7 @@ Here are examples of allowed and unallowed configurations:
 
 ## Monitoring consumption
 
-In the preview, you can monitor the RU/s the pool scaled to via the `FleetspaceAutoscaledThroughput` metric available at the fleet level.
+You can monitor the RU/s the pool scaled to via the `FleetspaceAutoscaledThroughput` metric available at the fleet level.
 
 You can also monitor pooled RU/s consumption at the account level in Azure portal via Azure Monitor following these steps:
 
@@ -114,13 +114,15 @@ You can also monitor pooled RU/s consumption at the account level in Azure porta
 
 With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](partitioning.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
 
-In the preview:
+By default:
 
-- A physical partition uses up to 5,000 extra RU/s from the pool in addition to its dedicated throughput.
+- A physical partition uses up to 5,000 extra RU/s from the pool in addition to its dedicated throughput. If your application requires a different value, file a support ticket. 
 
-- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 10,000 RU/s total, even if more RU/s are available to use from the pool. 
+- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 10,000 RU/s total, even if more RU/s are available to use from the pool.
 
-- The maximum total RU/s a physical partition can consume while using pooling = $\min(5000+currentThroughput, 10000)$.
+- In summary, the maximum total RU/s a physical partition can consume while using pooling = $\min(5000+currentThroughput, 10000)$.
+
+
 
 > [!TIP]
 > You can use the metric `PhysicalPartitionThroughput` in Azure Monitor to determine how many dedicated RU/s are allocated to each physical partition.
