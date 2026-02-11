@@ -6,7 +6,7 @@ author: sushantrane
 ms.author: srane
 ms.service: azure-cosmos-db
 ms.topic: conceptual
-ms.date: 12/09/2025
+ms.date: 02/10/2026
 ---
 
 # Disaster recovery guidance for Azure Cosmos DB
@@ -63,12 +63,12 @@ The following table summarizes the recovery options available based on the Azure
 
 | Account configuration | Outage scenario | Recovery approach | Section reference |
 |---|---|---|---|
-| Single-region account | Region outage | Wait for service restoration or request account restore from backup to another region| [Single-region accounts](#single-region-accounts) |
-| Single write region, multi-region account | Read region outage | SDK reroutes to available regions based on configuration; consider taking the region offline for strong consistency in two-region accounts | [Read region outage](#read-region-outage) |
-| Single write region, multi-region account | Write region outage (with PPAF enabled) | Automatic partition-level failover | [Accounts enabled with Per-Partition Automatic Failover](#accounts-enabled-with-per-partition-automatic-failover-ppaf-preview) |
-| Single write region, multi-region account | Write region outage (without PPAF) | Perform offline region operation | [Region offline operation](#region-offline-operation)|
-| Multi-write region account | Any region outage | Automatic routing to healthy regions via SDK configurations; no manual intervention required | [Multi-write region accounts](#multi-write-region-accounts) |
-| Any account configuration | Data corruption or accidental deletion | Point-in-time restore (continuous backup) or restore from periodic backup | [Continuous backup and point-in-time restore](#continuous-backup-and-point-in-time-restore), [Periodic backup and restore](#periodic-backup-and-restore) |
+| Single-region account | Region outage | Wait for service restoration or request account restore from backup to another region. | [Single-region accounts](#single-region-accounts) |
+| Single-write region, multiple-region account | Read region outage | SDK reroutes to available regions based on configuration; consider taking the region offline for strong consistency in two-region accounts. | [Read region outage](#read-region-outage) |
+| Single-write region, multiple-region account | Write region outage (with PPAF enabled) | Automatic partition-level failover. | [Accounts enabled with per-partition automatic failover](#accounts-enabled-with-per-partition-automatic-failover-ppaf-preview) |
+| Single-write region, multiple-region account | Write region outage (without PPAF) | Perform offline region operation. | [Region offline operation](#region-offline-operation)|
+| Multiple-write region account | Any region outage | Automatic routing to healthy regions via SDK configurations; no manual intervention required. | [Multiple-write region accounts](#multiple-write-region-accounts) |
+| Any account configuration | Data corruption or accidental deletion | Point-in-time restore (continuous backup) or restore from periodic backup. | [Continuous backup and point-in-time restore](#continuous-backup-and-point-in-time-restore), [Periodic backup and restore](#periodic-backup-and-restore) |
 
 ---
 ### Single-region accounts
@@ -83,7 +83,7 @@ A single-region account with **Availability Zones** can maintain read-write avai
 
 1. **Plan for multi-region deployment** - To prevent future single-region outages, consider deploying to multiple regions.  
 
-### Single write region, multi-region accounts
+### Single-write region, multiple-region accounts
 
 For accounts configured with a single write region and one or more read regions, the impact and recovery approach depends on which region is affected.
 
@@ -111,9 +111,9 @@ To minimize these risks, consider deploying additional regions and reviewing con
 
 If the account is configured as zone-redundant in the write region, it can sustain an availability zone outage without impacting write availability. When a regional outage affects the write region, you have several options:
 
-##### Accounts enabled with Per-Partition Automatic Failover (PPAF) (Preview)
+##### Accounts enabled with per-partition automatic failover (PPAF) (Preview)
 
-If an account is enabled with [Per-Partition Automatic Failover (PPAF)](how-to-configure-per-partition-automatic-failover.md), the service automatically manages failovers for partitions in an error state, ensuring service continuity during partial or complete regional outages.
+If an account is enabled with [per-partition automatic failover (PPAF)](how-to-configure-per-partition-automatic-failover.md), the service automatically manages failovers for partitions in an error state, ensuring service continuity during partial or complete regional outages.
 
   
 ##### Region offline operation
@@ -142,7 +142,7 @@ Service-managed failover allows Azure Cosmos DB to fail over the write region of
 **Configuration:**
 
 - **Azure portal**: Navigate to the Azure Cosmos DB account, select **Replicate data globally**, and enable **Service Managed Failover**.
-- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-service-managed-failover)]
+- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-service-managed-failover).
 - **Azure CLI**: Follow the instructions to enable [service managed failover](manage-with-cli.md#enable-service-managed-failover)
 
 > [!IMPORTANT]
@@ -160,19 +160,19 @@ Service-managed failover allows Azure Cosmos DB to fail over the write region of
 > - Change write region (manual failover) or modify failover priority
 > - Update the account to multi-write configuration
 
-### Multi-write region accounts
+### Multiple-write region accounts
 
 If an Azure Cosmos DB account is configured with multiple write regions, the service automatically handles regional failures without requiring manual intervention. Applications can continue reading and writing data in available regions with minimal disruption.
 
 **Best practices for multi-write accounts:**
 
-- **Configure SDK** - Ensure that clients are configured to utilize multi-writes with `ApplicationRegion` or `PreferredRegions`. For more information, see [Configure multi-region writes in your application](how-to-multi-master.md).
+- **Configure SDK** - Ensure that clients are configured to use multiple-write regions with `ApplicationRegion` or `PreferredRegions`. For more information, see [Configure multi-region writes in your application](how-to-multi-master.md).
 
 - **Route traffic away from affected regions** - Use regional application health probes with Azure Traffic Manager or Azure Front Door to automatically route traffic away from the affected region.
 
 **Key characteristics:**
 - No manual failover required during regional outages.
-- Applications automatically connect to healthy regions based on SDK Configuration.
+- Applications automatically connect to healthy regions based on SDK configuration.
 - Write availability is maintained as long as at least one region is available.
 
 For more information, see [Distribute data globally](distribute-data-globally.md) and [Multi-region writes](multi-region-writes.md).
