@@ -7,7 +7,7 @@ ms.author: diberry
 ms.reviewer: jcodella
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 02/05/2026
+ms.date: 02/11/2026
 ai-usage: ai-assisted
 ms.custom:
   - devx-track-ts
@@ -106,22 +106,20 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
-    EMBEDDING_SIZE_BATCH=16
 
     # Cosmos DB configuration
-    COSMOSDB_ENDPOINT=
+    AZURE_COSMOSDB_ENDPOINT=
 
     # Data file
     DATA_FILE_WITH_VECTORS=../data/HotelsData_toCosmosDB_Vector.json
     FIELD_TO_EMBED=Description
     EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
-    LOAD_SIZE_BATCH=50
     ```
 
     Replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
-    - `COSMOSDB_ENDPOINT`: Your Cosmos DB endpoint URL
+    - `AZURE_COSMOSDB_ENDPOINT`: Your Cosmos DB endpoint URL
 
 1. Add a `tsconfig.json` file to configure TypeScript:
 
@@ -173,89 +171,41 @@ Use these scripts to compile TypeScript files and run the DiskANN index implemen
 ```json
 "scripts": { 
     "build": "tsc",
-    "start:diskann": "node --env-file .env dist/diskann.js"
+    "start:diskann": "set VECTOR_ALGORITHM=diskann && node --env-file .env dist/vector-search.js"
 }
 ```
 
-#### [Quantized flat](#tab/tab-quantizedFlat)
+#### [Quantized flat](#tab/tab-quantizedflat)
 
 Use these scripts to compile TypeScript files and run the Quantized flat index implementation.
 
 ```json
 "scripts": { 
     "build": "tsc",
-    "start:quantizedFlat": "node --env-file .env dist/quantizedFlat.js"
+    "start:quantizedflat": "set VECTOR_ALGORITHM=quantizedflat && node --env-file .env dist/vector-search.js"
 }
 ```
 
-#### [Flat](#tab/tab-flat)
-
-Use these scripts to compile TypeScript files and run the Flat index implementation.
-
-```json
-"scripts": { 
-    "build": "tsc",
-    "start:flat": "node --env-file .env dist/flat.js"
-}
-```
     
 ----
 
 ## Create code files for vector search
 
-### [DiskANN](#tab/tab-diskann)
 
-Create a `src` directory for your TypeScript files. Add two files: `diskann.ts` and `utils.ts` for the DiskANN index implementation:
+Create a `src` directory for your TypeScript files. Add two files: `vector-search.ts` and `utils.ts` for the DiskANN index implementation:
 
 ```bash
 mkdir src    
-touch src/diskann.ts
+touch src/vector-search.ts
 touch src/utils.ts
 ```
-
-#### [Quantized flat](#tab/tab-quantizedFlat)
-
-Create a `src` directory for your TypeScript files. Add two files: `quantizedFlat.ts` and `utils.ts` for the Quantized flat index implementation:
-
-```bash
-mkdir src
-touch src/quantizedFlat.ts
-touch src/utils.ts
-```
-
-#### [Flat](#tab/tab-flat)
-
-Create a `src` directory for your TypeScript files. Add two files: `flat.ts` and `utils.ts` for the Flat index implementation:
-
-```bash
-mkdir src
-touch src/flat.ts
-touch src/utils.ts
-```
-
-----
-
 
 ## Create code for vector search
 
-### [DiskANN](#tab/tab-diskann)
 
-Paste the following code into the `diskann.ts` file.
+Paste the following code into the `vector-search.ts` file.
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/diskann.ts" :::
-
-#### [Quantized flat](#tab/tab-quantizedFlat)
-
-Paste the following code into the `quantizedFlat.ts` file.
-:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/quantizedFlat.ts" :::
-
-#### [Flat](#tab/tab-flat)
-
-Paste the following code into the `flat.ts` file.
-
-:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/flat.ts" :::
-
-----
+:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/vector-search.ts" :::
 
 
 ### Understand the code: Generate embeddings with Azure OpenAI
@@ -264,8 +214,8 @@ The code creates embeddings for query text:
 
 ```typescript
 const createEmbeddedForQueryResponse = await aiClient.embeddings.create({
-    model: config.deployment,
-    input: [config.query]
+    model, // OpenAI embedding model, e.g. "text-embedding-3-small"
+    input  // Array of description strings to embed, e.g. ["quintessential lodging near running trails"]
 });
 ```
 
@@ -273,22 +223,24 @@ This OpenAI API call for [client.embeddings.create](https://platform.openai.com/
 
 ### Understand the code: Store vectors in Cosmos DB
 
-Documents with vector arrays are inserted using the `insertData` utility function:
+All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/javascript/api/%40azure/cosmos/items#@azure-cosmos-items-executebulkoperations) function:
 
 ```typescript
-const insertSummary = await insertData(config, container, data.slice(0, config.batchSize));
+const response = await container.items.executeBulkOperations(operations);
 ```
 
-This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container.
+This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container. You can safely pass in all the document data, and the client library handles the batch processing and retries for you. 
 
 ### Understand the code: Run vector similarity search
 
 The code performs a vector search using the `VectorDistance` function:
 
 ```typescript
-const { resources, requestCharge } = await container.items
+const queryText = `SELECT TOP 5 c.HotelName, c.Description, c.Rating, VectorDistance(c.${safeEmbeddedField}, @embedding) AS SimilarityScore FROM c ORDER BY VectorDistance(c.${safeEmbeddedField}, @embedding)`;
+
+const queryResponse = await container.items
     .query({
-        query: `SELECT TOP 5 c.HotelName, c.Description, c.Rating, VectorDistance(c.${safeEmbeddedField}, @embedding) AS SimilarityScore FROM c ORDER BY VectorDistance(c.${safeEmbeddedField}, @embedding)`,
+        query: queryText,
         parameters: [
             { name: "@embedding", value: createEmbeddedForQueryResponse.data[0].embedding }
         ]
@@ -311,16 +263,13 @@ Paste the following code into `utils.ts`:
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/utils.ts" :::
 
-This utility module provides these features:
+This utility module provides these **key** functions:
 
-- `JsonData`: Interface for the data structure
-- `getClients`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB
 - `getClientsPasswordless`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
-- `readFileReturnJson`: Reads a JSON file and returns its contents as an array of `JsonData` objects
-- `writeFileJson`: Writes an array of `JsonData` objects to a JSON file
 - `insertData`: Inserts data in batches into a Cosmos DB container and creates standard indexes on specified fields
 - `printSearchResults`: Prints the results of a vector search, including the score and hotel name
 - `validateFieldName`: Validates that a field name exists in the data
+- `getBulkOperationRUs`: Estimates the Request Units (RUs) for bulk operations based on the number of documents and vector dimensions
 
 ## Authenticate with Azure CLI
 
@@ -343,18 +292,11 @@ npm run build
 npm run start:diskann
 ```
 
-#### [Quantized flat](#tab/tab-quantizedFlat)
+#### [Quantized flat](#tab/tab-quantizedflat)
 
 ```bash
 npm run build
-npm run start:quantizedFlat
-```
-
-#### [Flat](#tab/tab-flat)
-
-```bash
-npm run build    
-npm run start:flat
+npm run start:quantizedflat
 ```
 
 ----
@@ -369,12 +311,9 @@ The app logging and output show:
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/diskann.txt" :::
 
-#### [Quantized flat](#tab/tab-quantizedFlat)
+#### [Quantized flat](#tab/tab-quantizedflat)
 
 :::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/quantizedflat.txt" :::
-#### [Flat](#tab/tab-flat)
-
-:::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/flat.txt" :::
 
 ----
 
@@ -389,19 +328,89 @@ Azure Cosmos DB for NoSQL supports three distance functions for vector similarit
 | **Euclidean** (L2) | 0.0 to ∞ | Lower = more similar | Spatial data, when magnitude matters |
 | **Dot Product** | -∞ to +∞ | Higher = more similar | When vector magnitudes are normalized |
 
-The distance function is set in the **vector embedding policy** when creating the container:
+The distance function is set in the **vector embedding policy** when creating the container. This is provided in the [infrastructure](https://github.com/Azure-Samples/cosmos-db-vector-samples/blob/main/infra/database.bicep) in the sample repository. It is defined as part of the container definition.
 
-```typescript
-const vectorEmbeddingPolicy: VectorEmbeddingPolicy = {
-    vectorEmbeddings: [
+```bicep
+var containers = [
+  {
+    name: 'hotels_diskann'
+    partitionKeyPaths: [
+      '/HotelId'
+    ]
+    indexingPolicy: {
+      indexingMode: 'consistent'
+      automatic: true
+      includedPaths: [
         {
-            path: "/DescriptionVector",
-            dataType: VectorEmbeddingDataType.Float32,
-            dimensions: 1536,
-            distanceFunction: VectorEmbeddingDistanceFunction.Cosine, // Can be Cosine, Euclidean, or DotProduct
+          path: '/*'
         }
-    ],
-};
+      ]
+      excludedPaths: [
+        {
+          path: '/_etag/?'
+        }
+        {
+          path: '/DescriptionVector/*'
+        }
+      ]
+      vectorIndexes: [
+        {
+          path: '/DescriptionVector'
+          type: 'diskANN'
+        }
+      ]
+    }
+    vectorEmbeddingPolicy: {
+      vectorEmbeddings: [
+        {
+          path: '/DescriptionVector'
+          dataType: 'float32'
+          dimensions: 1536
+          distanceFunction: 'cosine'
+        }
+      ]
+    }
+  }
+  {
+    name: 'hotels_quantizedflat'
+    partitionKeyPaths: [
+      '/HotelId'
+    ]
+    indexingPolicy: {
+      indexingMode: 'consistent'
+      automatic: true
+      includedPaths: [
+        {
+          path: '/*'
+        }
+      ]
+      excludedPaths: [
+        {
+          path: '/_etag/?'
+        }
+        {
+          path: '/DescriptionVector/*'
+        }
+      ]
+      vectorIndexes: [
+        {
+          path: '/DescriptionVector'
+          type: 'quantizedFlat'
+        }
+      ]
+    }
+    vectorEmbeddingPolicy: {
+      vectorEmbeddings: [
+        {
+          path: '/DescriptionVector'
+          dataType: 'float32'
+          dimensions: 1536
+          distanceFunction: 'cosine'
+        }
+      ]
+    }
+  }
+]
 ```
 
 ### Interpreting similarity scores
