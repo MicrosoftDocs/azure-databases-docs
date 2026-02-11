@@ -55,12 +55,12 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-SSDv2 now supports *High Availability, Geo Replicas, Geo Redundant Backups, Major Version Upgrade and, Geo DR* features for Azure Database for PostgreSQL – Flexible Server in all below supported regions.
+SSDv2 now supports *High Availability, Geo Replicas, Major Version Upgrade and, Geo DR* features for Azure Database for PostgreSQL – Flexible Server in all below supported regions.
 
-East Asia, Australia Central 2, Australia East, Australia South East, Brazil South, Canada Central, Canada East, Central India, Central US, China North 3, East US, East US 2, Germany West Central, Indonesia Central, Israel Central, Italy North, Japan East, Korea Central, Mexico Central, New Zealand North, North Central US, North Europe, Norway East, Norway West, Poland Central, South African North, Southeast Asia, Sweden Central, Switzerland North, UAE North, UK West, US South Central US, West Central US, West Europe, West US and West US 3 regions.
+Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, China North 3**, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, US Gov Virginia**, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
 
-> [!NOTE] 
-> If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
+** High availability and Geo-redundant Backups are not supported in the region
+* Geo‑redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
 
 ### Supported features limitations
 
