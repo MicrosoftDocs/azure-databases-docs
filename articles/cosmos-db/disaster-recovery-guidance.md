@@ -142,7 +142,7 @@ Service-managed failover allows Azure Cosmos DB to fail over the write region of
 **Configuration:**
 
 - **Azure portal**: Navigate to the Azure Cosmos DB account, select **Replicate data globally**, and enable **Service Managed Failover**.
-- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-service-managed-failover).
+- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-automatic-failover).
 - **Azure CLI**: Follow the instructions to enable [service managed failover](manage-with-cli.md#enable-service-managed-failover)
 
 > [!IMPORTANT]
@@ -195,7 +195,7 @@ To request a restore from periodic backups:
 
 1. Provide the specific time for the restore.
 
-For more information, see [Configure Azure Cosmos DB account with periodic backup](periodic-backup-restore-introduction).
+For more information, see [Configure Azure Cosmos DB account with periodic backup](periodic-backup-restore-introduction.md).
 
 ## Related content
 
