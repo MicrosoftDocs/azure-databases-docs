@@ -7,10 +7,15 @@ ms.author: srane
 ms.service: azure-cosmos-db
 ms.topic: conceptual
 ms.date: 02/10/2026
+appliesto:
+  - ✅ NoSQL
+  - ✅ MongoDB
+  - ✅ Apache Cassandra
+  - ✅ Apache Gremlin
+  - ✅ Table
 ---
 
 # Disaster recovery guidance for Azure Cosmos DB
-[!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin, Table](includes/appliesto-nosql-mongodb-cassandra-gremlin-table.md)]
 
 Azure Cosmos DB provides industry-leading high availability with a comprehensive suite of built-in business continuity and disaster recovery (BCDR) capabilities. The service offers multiple availability guarantees depending on configuration, with SLAs up to 99.999% for multi-write region accounts or using Per Partition Automatic Failover (PPAF) capability. Azure Cosmos DB also provides turnkey disaster recovery capabilities that enable quick recovery in the event of a regional outage.
 
