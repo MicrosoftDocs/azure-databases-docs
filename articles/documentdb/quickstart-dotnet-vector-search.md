@@ -96,7 +96,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === DB Vector Samples Menu ===
+    === DocumentDB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -145,7 +145,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === DB Vector Samples Menu ===
+    === DocumentDB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -194,7 +194,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === DB Vector Samples Menu ===
+    === DocumentDB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
