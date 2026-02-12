@@ -23,9 +23,6 @@ This quickstart provides a guided tour of key vector search techniques using a [
 
 The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-ada-002` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-dotnet) on GitHub. 
-
-
 ## Prerequisites
 
 [!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
@@ -232,7 +229,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     5. Roach Motel (Similarity: 0.4388)
     ```
 
-----
+---
 
 ## Explore the app code
 
