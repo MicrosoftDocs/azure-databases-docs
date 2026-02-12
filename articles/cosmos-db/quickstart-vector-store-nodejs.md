@@ -33,20 +33,15 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 - An existing **Azure Cosmos DB for NoSQL** resource data plane access
   - If you don't have a resource, create a [new resource](https://portal.azure.com/#create/Microsoft.DocumentDB)
   - [Firewall configured to allow access to your client IP address](how-to-configure-firewall.md)
-  - Role Based Access Control (RBAC) roles assigned: 
-  
-      - **Cosmos DB Built-in Data Contributor** (data plane) 
-      - Role ID: `00000000-0000-0000-0000-000000000002`
-      
-
+  - Role-based access control (RBAC) roles assigned:
+    - **Cosmos DB Built-in Data Contributor** (data plane)
+    - Role ID: `00000000-0000-0000-0000-000000000002`
 
 - [Azure OpenAI resource](/azure/ai-foundry/openai/how-to/create-resource?pivots=cli#create-a-resource)
   - Custom domain configured
-
-  - Role Based Access Control (RBAC) role assigned:
+  - Role-based access control (RBAC) role assigned:
     - **Cognitive Services OpenAI User**
     - Role ID: `5e0bd9bd-7b93-4f28-af87-19fc36ad61bd`
-
   - `text-embedding-3-small` model deployed
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
