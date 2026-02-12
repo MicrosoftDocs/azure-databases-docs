@@ -40,7 +40,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
       
 
 
-- [Azure OpenAI resource](/azure/ai-foundry/openai/how-to/create-resource?view=foundry-classic&pivots=cli#create-a-resource)
+- [Azure OpenAI resource](/azure/ai-foundry/openai/how-to/create-resource?pivots=cli#create-a-resource)
   - Custom domain configured
 
   - Role Based Access Control (RBAC) role assigned:
