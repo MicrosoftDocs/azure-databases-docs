@@ -96,6 +96,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
+    === DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -126,11 +127,11 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     Executing DiskANN vector search for top 5 results
     
     Search Results (5 found using DiskANN):
-    1. Roach Motel (Similarity: 0.8399)
-    2. Royal Cottage Resort (Similarity: 0.8385)
-    3. Economy Universe Motel (Similarity: 0.8360)
-    4. Foot Happy Suites (Similarity: 0.8354)
-    5. Country Comfort Inn (Similarity: 0.8346)
+    1. Royal Cottage Resort (Similarity: 0.4991)
+    2. Country Comfort Inn (Similarity: 0.4786)
+    3. Nordick's Valley Motel (Similarity: 0.4635)
+    4. Economy Universe Motel (Similarity: 0.4461)
+    5. Roach Motel (Similarity: 0.4388)
     ```
 
 #### [IVF](#tab/tab-ivf)
@@ -144,6 +145,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
+    === DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -174,11 +176,11 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     Executing IVF vector search for top 5 results
     
     Search Results (5 found using IVF):
-    1. Roach Motel (Similarity: 0.8399)
-    2. Royal Cottage Resort (Similarity: 0.8385)
-    3. Economy Universe Motel (Similarity: 0.8360)
-    4. Foot Happy Suites (Similarity: 0.8354)
-    5. Country Comfort Inn (Similarity: 0.8346)
+    1. Royal Cottage Resort (Similarity: 0.4991)
+    2. Country Comfort Inn (Similarity: 0.4786)
+    3. Nordick's Valley Motel (Similarity: 0.4635)
+    4. Economy Universe Motel (Similarity: 0.4461)
+    5. Roach Motel (Similarity: 0.4388)
     ```
 
 #### [HNSW](#tab/tab-hnsw)
@@ -192,6 +194,7 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
+    === DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -222,11 +225,11 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     Executing HNSW vector search for top 5 results
     
     Search Results (5 found using HNSW):
-    1. Roach Motel (Similarity: 0.8399)
-    2. Royal Cottage Resort (Similarity: 0.8385)
-    3. Economy Universe Motel (Similarity: 0.8360)
-    4. Foot Happy Suites (Similarity: 0.8354)
-    5. Country Comfort Inn (Similarity: 0.8346)
+    1. Royal Cottage Resort (Similarity: 0.4991)
+    2. Country Comfort Inn (Similarity: 0.4786)
+    3. Nordick's Valley Motel (Similarity: 0.4635)
+    4. Economy Universe Motel (Similarity: 0.4461)
+    5. Roach Motel (Similarity: 0.4388)
     ```
 
 ----
