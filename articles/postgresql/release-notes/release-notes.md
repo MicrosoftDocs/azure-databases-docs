@@ -21,7 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23. <sup>$</sup>
     - Support for [.NET](https://www.nuget.org/packages/Azure.ResourceManager.PostgreSql/#versions-body-tab) SDK with [GA REST API](release-notes-api.md) version.
-    - Support for configuring zone resilient [high availability](../high-availability/how-to-configure-high-availability.md) using the Azure CLI.
+    - Support for configuring zone-resilient [high availability](../high-availability/how-to-configure-high-availability.md) using the Azure CLI.
           
 ## Release: December 2025
 - General availability
