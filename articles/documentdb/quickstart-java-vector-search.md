@@ -31,14 +31,6 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 
 - [Maven 3.6](https://maven.apache.org/download.cgi) or later
 
-## App dependencies
-
-The app uses the following Maven dependencies specified in the `pom.xml`:
-
-- [`mongodb-driver-sync`](https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync): Official MongoDB Java driver for database connectivity and operations
-- [`azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
-- [`azure-ai-openai`](https://mvnrepository.com/artifact/com.azure/azure-ai-openai): Azure OpenAI client library to communicate with AI models and create vector embeddings
-- [`jackson-databind`](https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind): JSON serialization and deserialization library
 
 ## Create data file with vectors
 
@@ -63,6 +55,14 @@ The app uses the following Maven dependencies specified in the `pom.xml`:
 1. Create a `pom.xml` file in the project root with the following content:
 
     :::code language="xml" source="~/documentdb-samples/ai/vector-search-java/pom.xml" :::
+
+    The app uses the following Maven dependencies specified in the []`pom.xml`:
+    
+    - [`mongodb-driver-sync`](https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync): Official MongoDB Java driver for database connectivity and operations
+    - [`azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
+    - [`azure-ai-openai`](https://mvnrepository.com/artifact/com.azure/azure-ai-openai): Azure OpenAI client library to communicate with AI models and create vector embeddings
+    - [`jackson-databind`](https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind): JSON serialization and deserialization library
+    
 
 1. Create a `.env` file in your project root for environment variables:
 
@@ -102,6 +102,7 @@ The app uses the following Maven dependencies specified in the `pom.xml`:
     vector-search-quickstart
     ├── .env
     ├── pom.xml
+    └── src
     ```
 
 ## Add code for vector search
@@ -197,40 +198,6 @@ Example output:
 :::code language="output" source="~/documentdb-samples/ai/vector-search-java/output/hnsw.txt" :::
 
 ---
-
-## Explore the app code
-
-The following sections provide details about the most important code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-java) to explore the full app code. Each algorithm (DiskANN, HNSW, IVF) follows the same structure.
-
-### Connect to Azure DocumentDB
-
-The app connects to Azure DocumentDB using passwordless authentication with `DefaultAzureCredential` and the MongoDB OIDC mechanism:
-
-:::code language="java" source="~/documentdb-samples/ai/vector-search-java/src/main/java/com/azure/documentdb/samples/DiskAnn.java" range="75-107" :::
-
-### Connect to Azure OpenAI
-
-The app creates an Azure OpenAI client for generating embeddings:
-
-:::code language="java" source="~/documentdb-samples/ai/vector-search-java/src/main/java/com/azure/documentdb/samples/DiskAnn.java" range="109-117" :::
-
-### Load and insert data
-
-The app loads hotel data from a JSON file and inserts it in batches:
-
-:::code language="java" source="~/documentdb-samples/ai/vector-search-java/src/main/java/com/azure/documentdb/samples/DiskAnn.java" range="119-145" :::
-
-### Create a vector index
-
-Each algorithm creates a vector index with algorithm-specific options. The following example shows the DiskANN index:
-
-:::code language="java" source="~/documentdb-samples/ai/vector-search-java/src/main/java/com/azure/documentdb/samples/DiskAnn.java" range="154-176" :::
-
-### Perform vector search
-
-The app generates an embedding for a query and runs an aggregation search pipeline:
-
-:::code language="java" source="~/documentdb-samples/ai/vector-search-java/src/main/java/com/azure/documentdb/samples/DiskAnn.java" range="178-217" :::
 
 ## View and manage data in Visual Studio Code
 
