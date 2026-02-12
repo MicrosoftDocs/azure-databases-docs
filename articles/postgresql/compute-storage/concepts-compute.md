@@ -32,6 +32,7 @@ To choose a pricing tier, use the following table as a starting point:
 | **Burstable** | Designed for workloads that do not require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
 | **General Purpose** | Provides a balance between CPU and memory with scalable I/O throughput, making it suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
 | **Memory Optimized** | Suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
+
 After you create a server for the compute tier, you can change the number of vCores (up or down) and the storage size (up) in seconds. You also can independently adjust the backup retention period up or down. For more information, see the [Scaling resources in Azure Database for PostgreSQL](../scale/concepts-scaling-resources.md) page.
 
 ## Compute tiers, vCores, and server types
@@ -130,7 +131,8 @@ The detailed specifications of the available server types are as follows:
 | E96ds_v6 | 96 | 768 GiB | 80000 | 1200 MiB/sec |
 | E128ds_v6 | 128 | 1024 GiB | 80000 | 1200 MiB/sec |
 | E192ds_v6 | 192 | 1832 GiB | 80000 | 1200 MiB/sec |
-| > [!IMPORTANT] |
+
+> [!IMPORTANT]
 > Minimum and maximum IOPS are also determined by the storage tier so choose a storage tier and instance type that can scale as per your workload requirements.
 
 [!INCLUDE [pricing](includes/compute-storage-pricing.md)]
