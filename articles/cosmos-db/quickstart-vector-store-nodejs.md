@@ -188,7 +188,7 @@ Use these scripts to compile TypeScript files and run the Quantized flat index i
 ## Create code files for vector search
 
 
-Create a `src` directory for your TypeScript files. Add two files: `vector-search.ts` and `utils.ts` for the DiskANN index implementation:
+Create a `src` directory for your TypeScript files. Add two files: `vector-search.ts` and `utils.ts` for your vector search implementation:
 
 ```bash
 mkdir src    
