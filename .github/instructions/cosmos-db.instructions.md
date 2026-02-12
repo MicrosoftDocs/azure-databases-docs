@@ -128,7 +128,7 @@ Examples of problematic partition key choices:
 | --- | --- | --- |
 | `/status` | Only few values, creates hot partitions | `/customerId` or `/tenantId` |
 | `/createdDate` | All current writes hit same partition | `/userId` with time-bucketing |
-| `/region` | Uneven distribution, large countries become hot | `/customerId` |
+| `/region` | Uneven distribution, large geographic areas become hot | `/customerId` |
 
 ### Query optimization
 
