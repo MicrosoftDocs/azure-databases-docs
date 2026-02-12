@@ -11,9 +11,9 @@ ms.topic: include
 ---
 
 > [!IMPORTANT]  
-> **Microsoft started a TLS certificate rotation for Azure Database for PostgreSQL** to update intermediate CA certificates and the resulting certificate chain. The root CA certificates stay the same.
+> **Microsoft is rotating TLS certificates for Azure Database for PostgreSQL** to update the Certificate Authority and the resulting certificate chain.
 >
-> If your client configuration uses the [***Recommended configurations for TLS***](../security-tls.md#recommended-configurations-for-tls), you don't need to take any action.
+> If your client configuration uses the [***Recommended configurations for TLS***](../security-tls.md#recommended-configurations-for-tls), you don't need to take action.
 > 
 > **Intermediate certificate rotation schedule:**
 >
