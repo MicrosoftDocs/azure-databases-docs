@@ -21,7 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23. <sup>$</sup>
     - Support for [.NET](https://www.nuget.org/packages/Azure.ResourceManager.PostgreSql/#versions-body-tab) SDK with [GA REST API](release-notes-api.md) version.
-    - Support for configuring zonal resilient [high availability](../high-availability/how-to-configure-high-availability.md) using the Azure CLI.
+    - Support for configuring zone resilient [high availability](../high-availability/how-to-configure-high-availability.md) using the Azure CLI.
           
 ## Release: December 2025
 - General availability
@@ -38,7 +38,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2025
 - General availability
     - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
-    - Support for configuring zonal resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure Portal.
+    - Support for configuring zone-resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure Portal.
     - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now avaialable. 
     - [Maintenance release notes](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
