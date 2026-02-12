@@ -211,7 +211,7 @@ This code configures either a `DiskANN` or `quantizedFlat` vector algorithm from
 
 Error handling covers missing clients, invalid algorithm selection, and non-existent containers/databases.
 
-### Understand the code: Generate embeddings with Azure OpenAI
+## Understand the code: Generate embeddings with Azure OpenAI
 
 The code creates embeddings for query text:
 
@@ -224,7 +224,7 @@ const createEmbeddedForQueryResponse = await aiClient.embeddings.create({
 
 This OpenAI API call for [client.embeddings.create](https://platform.openai.com/docs/guides/embeddings#how-to-get-embeddings) converts text like "quintessential lodging near running trails" into a 1536-dimension vector that captures its semantic meaning. For more details on generating embeddings, see [Azure OpenAI embeddings documentation](/azure/ai-foundry/openai/how-to/embeddings).
 
-### Understand the code: Store vectors in Cosmos DB
+## Understand the code: Store vectors in Cosmos DB
 
 All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/javascript/api/%40azure/cosmos/items#@azure-cosmos-items-executebulkoperations) function:
 
@@ -234,7 +234,7 @@ const response = await container.items.executeBulkOperations(operations);
 
 This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container. You can safely pass in all the document data, and the client library handles the batch processing and retries for you. 
 
-### Understand the code: Run vector similarity search
+## Understand the code: Run vector similarity search
 
 The code performs a vector search using the `VectorDistance` function:
 
@@ -323,7 +323,7 @@ The app logging and output show:
 ---
 
 
-### Distance metrics
+## Distance metrics
 
 Azure Cosmos DB for NoSQL supports three distance functions for vector similarity:
 
@@ -428,7 +428,7 @@ The distance function is set in the **vector embedding policy** when creating th
 
 This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities. The `partitionKeyPaths` specifies that documents are partitioned by `HotelId` for distributed storage. The `indexingPolicy` configures automatic indexing on all document properties (/*) except the system `_etag` field and the `DescriptionVector` array to optimize write performance—vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. The `vectorIndexes` section creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. Finally, the `vectorEmbeddingPolicy` defines the vector field's characteristics: `float32` data type with 1536 dimensions (matching the `text-embedding-3-small` model output) and cosine as the distance function to measure similarity between vectors during queries.
 
-### Interpret similarity scores
+## Interpret similarity scores
 
 In the example output using **cosine similarity**:
 
