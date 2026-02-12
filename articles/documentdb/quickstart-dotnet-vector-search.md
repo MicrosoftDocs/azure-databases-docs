@@ -7,7 +7,7 @@ ms.author: alexwolf
 ms.reviewer: khelanmodi
 ms.devlang: csharp
 ms.topic: quickstart-sdk
-ms.date: 10/23/2025
+ms.date: 02/12/2026
 ms.custom:
   - devx-track-dotnet
   - devx-track-dotnet-ai
@@ -19,9 +19,12 @@ ms.custom:
 
 Learn to use vector search in Azure DocumentDB with the .NET MongoDB driver to store and query vector data efficiently.
 
-This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) on GitHub.
+This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-dotnet) on GitHub.
 
 The app uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-ada-002` model, though you can also generate the vectors yourself. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
+
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-dotnet) on GitHub. 
+
 
 ## Prerequisites
 
@@ -49,7 +52,7 @@ Complete the following steps to configure the app with your own values and run s
 
 Update the `appsettings.json` placeholder values with your own:
 
-:::code language="json" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/appsettings.json" :::
+:::code language="json" source="~/documentdb-samples/ai/vector-search-dotnet/appsettings.json" :::
 
 ### Authenticate to Azure
 
@@ -93,7 +96,6 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === Cosmos DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -142,7 +144,6 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === Cosmos DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -191,7 +192,6 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
     The app prints a menu for you to select database and search options:
     
     ```output
-    === Cosmos DB Vector Samples Menu ===
     Please enter your choice (0-5):
     1. Create embeddings for data
     2. Show all database indexes
@@ -233,13 +233,13 @@ The sample app populates vectorized sample data in a MongoDB collection and lets
 
 ## Explore the app code
 
-The following sections provide details about the most important services and code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-dotnet) to explore the full app code.
+The following sections provide details about the most important services and code in the sample app. [Visit the GitHub repo](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-dotnet) to explore the full app code.
 
 ### Explore the search service
 
 The `VectorSearchService` orchestrates an end‑to‑end vector similarity search using IVF, HNSW, and DiskANN search techniques with Azure OpenAI embeddings.
 
-:::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/vectorsearchservice.cs" :::
+:::code language="csharp" source="~/documentdb-samples/ai/vector-search-dotnet/services/vectorsearchservice.cs" :::
 
 In the preceding code, the `VectorSearchService` performs the following tasks:
 
@@ -254,7 +254,7 @@ In the preceding code, the `VectorSearchService` performs the following tasks:
 
 The `MongoDbService` manages interactions with Azure DocumentDB to handle tasks like loading data, vector index creation, index listing, and bulk inserts for hotel vector search.
 
-:::code language="csharp" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-dotnet/services/MongoDbService.cs" :::
+:::code language="csharp" source="~/documentdb-samples/ai/vector-search-dotnet/services/MongoDbService.cs" :::
 
 In the preceding code, the `MongoDbService` performs the following tasks:
 
