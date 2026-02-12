@@ -30,7 +30,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 - An Azure subscription
   - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 
-- An existing **Azure Cosmos DB for NoSQL** resource data plane access
+- An existing **Azure Cosmos DB** resource data plane access
   - If you don't have a resource, create a [new resource](https://portal.azure.com/#create/Microsoft.DocumentDB)
   - [Firewall configured to allow access to your client IP address](how-to-configure-firewall.md)
   - Role-based access control (RBAC) roles assigned:
@@ -116,7 +116,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
     Replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
-    - `AZURE_COSMOSDB_ENDPOINT`: Your Cosmos DB endpoint URL
+    - `AZURE_COSMOSDB_ENDPOINT`: Your Azure Cosmos DB endpoint URL
 
 1. Add a `tsconfig.json` file to configure TypeScript:
 
@@ -125,14 +125,14 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
 ## Understand the document schema
 
-Before building the application, understand how vectors are stored in Cosmos DB documents. Each hotel document contains:
+Before building the application, understand how vectors are stored in Azure Cosmos DB documents. Each hotel document contains:
 
 - **Standard fields**: `HotelId`, `HotelName`, `Description`, `Category`, etc.
 - **Vector field**: `DescriptionVector` - an array of 1536 floating-point numbers representing the semantic meaning of the hotel description
 
 Here's a simplified example of a hotel document structure:
 
-```json
+```jsonc
 {
   "HotelId": "1",
   "HotelName": "Stay-Kay City Hotel",
@@ -155,7 +155,7 @@ Here's a simplified example of a hotel document structure:
 - **Indexing policy** creates a vector index on the vector field for efficient similarity search
 - The vector field should be **excluded from standard indexing** to optimize insertion performance
 
-For more information on vector policies and indexing, see [Vector search in Azure Cosmos DB for NoSQL](./vector-search.md).
+For more information on vector policies and indexing, see [Vector search in Azure Cosmos DB](./vector-search.md).
 
 ## Create npm scripts
 
@@ -203,7 +203,7 @@ Paste the following code into the `vector-search.ts` file.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/vector-search.ts" :::
 
-This code configures either a `DiskANN` or `quantizedFlat` vector algorithm from environment variables, connects to Azure OpenAI and Cosmos DB using passwordless authentication, loads pre-vectorized hotel data from a JSON file, inserts it into the appropriate container, then generates an embedding for a natural-language query (`quintessential lodging near running trails, eateries, retail`) and executes a VectorDistance SQL query to retrieve the top 5 most semantically similar hotels ranked by similarity score. 
+This code configures either a `DiskANN` or `quantizedFlat` vector algorithm from environment variables, connects to Azure OpenAI and Azure Cosmos DB using passwordless authentication, loads pre-vectorized hotel data from a JSON file, inserts it into the appropriate container, then generates an embedding for a natural-language query (`quintessential lodging near running trails, eateries, retail`) and executes a VectorDistance SQL query to retrieve the top 5 most semantically similar hotels ranked by similarity score. 
 
 Error handling covers missing clients, invalid algorithm selection, and non-existent containers/databases.
 
@@ -220,7 +220,7 @@ const createEmbeddedForQueryResponse = await aiClient.embeddings.create({
 
 This OpenAI API call for [client.embeddings.create](https://platform.openai.com/docs/guides/embeddings#how-to-get-embeddings) converts text like "quintessential lodging near running trails" into a 1536-dimension vector that captures its semantic meaning. For more details on generating embeddings, see [Azure OpenAI embeddings documentation](/azure/ai-foundry/openai/how-to/embeddings).
 
-## Understand the code: Store vectors in Cosmos DB
+## Understand the code: Store vectors in Azure Cosmos DB
 
 All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/javascript/api/%40azure/cosmos/items#@azure-cosmos-items-executebulkoperations) function:
 
@@ -267,7 +267,7 @@ Paste the following code into `utils.ts`:
 This utility module provides these **key** functions:
 
 - `getClientsPasswordless`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
-- `insertData`: Inserts data in batches into a Cosmos DB container and creates standard indexes on specified fields
+- `insertData`: Inserts data in batches into an Azure Cosmos DB container and creates standard indexes on specified fields
 - `printSearchResults`: Prints the results of a vector search, including the score and hotel name
 - `validateFieldName`: Validates that a field name exists in the data
 - `getBulkOperationRUs`: Estimates the Request Units (RUs) for bulk operations based on the number of documents and vector dimensions
@@ -321,7 +321,7 @@ The app logging and output show:
 
 ## Distance metrics
 
-Azure Cosmos DB for NoSQL supports three distance functions for vector similarity:
+Azure Cosmos DB supports three distance functions for vector similarity:
 
 | Distance Function | Score Range | Interpretation | Best For |
 |------------------|-------------|----------------|----------|
@@ -450,7 +450,7 @@ For detailed information on distance functions, see [What are distance functions
 
 ## Clean up resources
 
-Delete the resource group, Cosmos DB account, and Azure OpenAI resource when you don't need them to avoid extra costs.
+[!INCLUDE [Clean up resources](./includes/clean-up-resources.md)]
 
 ## Related content
 
