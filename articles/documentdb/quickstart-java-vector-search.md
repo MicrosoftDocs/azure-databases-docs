@@ -62,6 +62,7 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
     - [`azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
     - [`azure-ai-openai`](https://mvnrepository.com/artifact/com.azure/azure-ai-openai): Azure OpenAI client library to communicate with AI models and create vector embeddings
     - [`jackson-databind`](https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind): JSON serialization and deserialization library
+    - [`slf4j-nop`](https://mvnrepository.com/artifact/org.slf4j/slf4j-nop): No-operation SLF4J binding to suppress logging output from the MongoDB driver
     
 
 1. Create a `.env` file in your project root for environment variables:
