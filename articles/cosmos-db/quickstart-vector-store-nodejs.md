@@ -155,7 +155,7 @@ Here's a simplified example of a hotel document structure:
 - **Indexing policy** creates a vector index on the vector field for efficient similarity search
 - The vector field should be **excluded from standard indexing** to optimize insertion performance
 
-For more information on vector policies and indexing, see [Vector search in Azure Cosmos DB](./vector-search.md).
+These policies are defined in the Bicep templates for the [distance metrics](#distance-metrics) for this sample project. For more information on vector policies and indexing, see [Vector search in Azure Cosmos DB](./vector-search.md).
 
 ## Create npm scripts
 
@@ -165,7 +165,7 @@ Edit the `package.json` file and add these scripts:
 
 Use these scripts to compile TypeScript files and run the DiskANN index implementation.
 
-```json
+```jsonc
 "scripts": { 
     "build": "tsc",
     "start:diskann": "cross-env VECTOR_ALGORITHM=diskann node --env-file .env dist/vector-search.js"
@@ -176,7 +176,7 @@ Use these scripts to compile TypeScript files and run the DiskANN index implemen
 
 Use these scripts to compile TypeScript files and run the Quantized flat index implementation.
 
-```json
+```jsonc
 "scripts": { 
     "build": "tsc",
     "start:quantizedflat": "cross-env VECTOR_ALGORITHM=quantizedflat node --env-file .env dist/vector-search.js"
@@ -203,9 +203,15 @@ Paste the following code into the `vector-search.ts` file.
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/vector-search.ts" :::
 
-This code configures either a `DiskANN` or `quantizedFlat` vector algorithm from environment variables, connects to Azure OpenAI and Azure Cosmos DB using passwordless authentication, loads pre-vectorized hotel data from a JSON file, inserts it into the appropriate container, then generates an embedding for a natural-language query (`quintessential lodging near running trails, eateries, retail`) and executes a VectorDistance SQL query to retrieve the top 5 most semantically similar hotels ranked by similarity score. 
+This code:
 
-Error handling covers missing clients, invalid algorithm selection, and non-existent containers/databases.
+- Configures either a `DiskANN` or `quantizedFlat` vector algorithm from environment variables.
+- Connects to Azure OpenAI and Azure Cosmos DB using passwordless authentication.
+- Loads pre-vectorized hotel data from a JSON file.
+- Inserts data into the appropriate container.
+- Generates an embedding for a natural-language query (`quintessential lodging near running trails, eateries, retail`).
+- Executes a `VectorDistance` SQL query to retrieve the top 5 most semantically similar hotels ranked by similarity score.
+- Handles errors for missing clients, invalid algorithm selection, and non-existent containers/databases.
 
 ## Understand the code: Generate embeddings with Azure OpenAI
 
