@@ -117,7 +117,7 @@ Best practices to verify when reviewing content for technical accuracy.
 ### Partition key design
 
 - Plan for 20GB logical partition limit - flag partition keys that could accumulate unbounded data
-- Choose high-cardinality keys - flag low-cardinality keys like `status`, `country`, or boolean fields
+- Choose high-cardinality keys - flag low-cardinality keys like `status`, `region`, or boolean fields
 - Align partition key with query patterns - most frequent queries should be single-partition
 - Consider hierarchical partition keys for multi-tenant scenarios
 - Create synthetic partition keys when no single field works (combine fields)
@@ -128,7 +128,7 @@ Examples of problematic partition key choices:
 | --- | --- | --- |
 | `/status` | Only few values, creates hot partitions | `/customerId` or `/tenantId` |
 | `/createdDate` | All current writes hit same partition | `/userId` with time-bucketing |
-| `/country` | Uneven distribution, large countries become hot | `/customerId` |
+| `/region` | Uneven distribution, large countries become hot | `/customerId` |
 
 ### Query optimization
 
