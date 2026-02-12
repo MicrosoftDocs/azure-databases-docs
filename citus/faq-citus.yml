@@ -1,0 +1,212 @@
+### YamlMime:FAQ
+metadata:
+  title: Frequently Asked Questions - Citus for PostgreSQL
+  description: Learn about common questions about Citus, including primary keys, adding nodes, rebalancing shards, and distributed table management.
+  author: mulander
+  ms.author: adamwolk
+  ms.reviewer: ihalatci, maghan
+  ms.date: 02/11/2026
+  ms.service: azure-database-postgresql
+  ms.subservice: citus
+  ms.topic: faq
+  ms.custom:
+    - version 13
+  
+title: Frequently asked questions about Citus for PostgreSQL
+summary: |
+  This article answers common questions about Citus for PostgreSQL. It covers topics like primary keys, node management, shard distribution, failover handling, and PostgreSQL feature support. If you're new to Citus, see [What is Citus?](what-is-citus.md).
+
+sections:
+  - name: General
+    questions:
+      - question: |
+          Can I create primary keys on distributed tables?
+        answer: |
+          Currently, Citus imposes a primary key constraint only if the distribution column is part of the primary key. This constraint ensures that you only need to check one shard to ensure uniqueness.
+
+      - question: |
+          Are there any PostgreSQL features not supported by Citus?
+        answer: |
+          Since Citus provides distributed functionality by extending PostgreSQL, it uses the standard PostgreSQL SQL constructs. Most queries are supported, even when they combine data across the network from multiple database nodes. This support includes transactional semantics across nodes. For an up-to-date list of SQL coverage, see [Workarounds](reference-workarounds.md#workarounds).
+          
+          What's more, Citus has 100% SQL support for queries that access a single node in the database cluster. These queries are common, for instance, in multitenant applications where different nodes store different tenants. For more information, see [What is Citus?](./what-is-citus.md).
+          
+          Remember that even with this extensive SQL coverage, data modeling can have a significant effect on query performance. For details on how Citus executes queries, see [Query processing](reference-processing.md).
+
+      - question: |
+          Can I run Citus on Microsoft Azure?
+        answer: |
+          Yes, Citus is available as a managed service with [elastic clusters on Azure Database for PostgreSQL Flexible server](https://techcommunity.microsoft.com/blog/adforpostgresql/postgres-horizontal-scaling-with-elastic-clusters-on-azure-database-for-postgres/4303508).
+
+  - name: Cluster Management
+    questions:
+      - question: |
+          How do I add nodes to an existing Citus cluster?
+        answer: |
+          On the Citus managed service with elastic clusters on Azure Database for PostgreSQL, you can add nodes through the Azure portal or Azure CLI. With Citus open source, you can add nodes manually by calling the `citus_add_node` UDF with the hostname (or IP address) and port number of the new node.
+          
+          Either way, after adding a node to an existing cluster, the new node doesn't contain any data (shards). Citus starts assigning any newly created shards to this node. To rebalance existing shards from the older nodes to the new node, Citus provides an open source shard rebalancer utility. For more information, see [Parallel rebalancing](cluster-management.md#parallel-rebalancing).
+
+      - question: |
+          How does Citus handle failure of a worker node?
+        answer: |
+          Citus uses PostgreSQL's streaming replication to replicate the entire worker node as-is. It replicates worker nodes by continuously streaming their WAL records to a standby. You can configure streaming replication on-premises yourself by consulting the [PostgreSQL replication documentation](https://www.postgresql.org/docs/current/static/warm-standby.html#STREAMING-REPLICATION).
+
+      - question: |
+          How does Citus handle failover of the coordinator node?
+        answer: |
+          Because the Citus coordinator node is similar to a standard PostgreSQL server, you can use regular PostgreSQL synchronous replication and failover to provide higher availability of the coordinator node. Many of our customers use synchronous replication in this way to add resilience against coordinator node failure. For more information on node failures, see [Dealing with node failures](cluster-management.md#dealing-with-node-failures).
+
+      - question: |
+          What if a worker node's address changes?
+        answer: |
+          If the hostname or IP address of a worker changes, you need to let the coordinator know by using `citus_update_node`:
+          
+          ```sql
+          -- update worker node metadata on the coordinator
+          -- (remember to replace 'old-address' and 'new-address'
+          --  with the actual values for your situation)
+          
+          select citus_update_node(nodeid, 'new-address', nodeport)
+            from pg_dist_node
+           where nodename = 'old-address';
+          ```
+          
+          Until you execute this update, the coordinator isn't able to communicate with that worker for queries.
+
+  - name: Sharding and Distribution
+    questions:
+      - question: |
+          How do I choose the shard count when I hash-partition my data?
+        answer: |
+          You choose the shard count when you first distribute a table. You can set this value differently for each colocation group, and the optimal value depends on your use case. You can change the count after cluster creation, but it's difficult. Use these guidelines to choose the right size.
+          
+          For the `mt_blurb` use case, choose between 32 and 128 shards. For smaller workloads (less than 100 GB), start with 32 shards. For larger workloads, choose 64 or 128 shards. You can scale from 32 to 128 worker machines.
+          
+          For the `rt_blurb` use case, relate the shard count to the total number of cores on the workers. To ensure maximum parallelism, create enough shards on each node so that there's at least one shard per CPU core. Create a high number of initial shards, such as two or four times the number of current CPU cores. This setup allows for future scaling if you add more workers and CPU cores.
+          
+          To choose a shard count for a table you want to distribute, update the `citus.shard_count` variable. This variable affects subsequent calls to `create_distributed_table`. For example:
+          
+          ```sql
+          SET citus.shard_count = 64;
+          -- any tables distributed at this point will have
+          -- sixty-four shards
+          ```
+          
+          For more information, see `production_sizing`.
+
+      - question: |
+          How do I change the shard count for a hash partitioned table?
+        answer: |
+          Citus has a function called `alter_distributed_table` that can change the shard count of a distributed table.
+
+      - question: |
+          Which shard contains data for a particular tenant?
+        answer: |
+          Citus provides UDFs and metadata tables to determine the mapping of a distribution column value to a particular shard, and the shard placement on a worker node. For more information, see [Finding which shard contains data for a specific tenant](diagnostic-queries.md#finding-which-shard-contains-data-for-a-specific-tenant).
+
+      - question: |
+          I forgot the distribution column of a table, how do I find it?
+        answer: |
+          The Citus coordinator node metadata tables contain this information. For more information, see [Finding the distribution column for a table](diagnostic-queries.md#finding-the-distribution-column-for-a-table).
+
+      - question: |
+          Can I distribute a table by multiple keys?
+        answer: |
+          No, you must choose a single column per table as the distribution column. A common scenario where you want to distribute by two columns is for time series data. However, for this case, use a hash distribution on a nontime column, and combine this approach with PostgreSQL partitioning on the time column. For more information, see [Time series data](data-modeling.md#time-series-data).
+
+      - question: |
+          Can I shard by schema on Citus for multitenant applications?
+        answer: |
+          Yes, Citus supports `schema_based_sharding` starting with version 12.0.
+
+  - name: Queries and Performance
+    questions:
+      - question: |
+          How does Citus support count(distinct) queries?
+        answer: |
+          Citus can evaluate count(distinct) aggregates both in and across worker nodes. When Citus aggregates on a table's distribution column, Citus can push the counting down inside worker nodes and total the results. Otherwise, it can pull distinct rows to the coordinator and calculate there. If transferring data to the coordinator is too expensive, fast approximate counts are also available. For more information, see [Count(distinct) aggregates](reference-sql.md#countdistinct-aggregates).
+
+      - question: |
+          Why am I seeing an error about max_intermediate_result_size?
+        answer: |
+          Citus has to use more than one step to run some queries that have subqueries or CTEs. By using `push_pull_execution`, Citus pushes subquery results to all worker nodes for use by the main query. If these results are too large, this approach might cause unacceptable network overhead, or even insufficient storage space on the coordinator node, which accumulates and distributes the results.
+          
+          Citus uses a configurable setting, `citus.max_intermediate_result_size`, to specify a subquery result size threshold at which the query is canceled. If you run into the error, it appears as:
+          
+          ```output
+          ERROR: the intermediate result size exceeds citus.max_intermediate_result_size (currently 1 GB)
+          DETAIL: Citus restricts the size of intermediate results of complex subqueries and CTEs to avoid accidentally pulling large result sets into once place.
+          HINT: To run the current query, set citus.max_intermediate_result_size to a higher value or -1 to disable.
+          ```
+          
+          As the error message suggests, you can (cautiously) increase this limit by altering the variable:
+          
+          ```sql
+          SET citus.max_intermediate_result_size = '3GB';
+          ```
+
+  - name: Tables and Constraints
+    questions:
+      - question: |
+          In which situations are uniqueness constraints supported on distributed tables?
+        answer: |
+          Citus can enforce a primary key or uniqueness constraint only when the constrained columns contain the distribution column. If a single column constitutes the primary key, it needs to be the distribution column.
+          
+          This restriction allows Citus to localize a uniqueness check to a single shard and let PostgreSQL on the worker node do the check efficiently.
+
+      - question: |
+          Why does pg_relation_size report zero bytes for a distributed table?
+        answer: |
+          The data in distributed tables lives on the worker nodes (in shards), not on the coordinator. A true measure of distributed table size is obtained as a sum of shard sizes. Citus provides helper functions to query this information. For more information, see [Table management](table-management.md).
+
+  - name: Database Objects
+    questions:
+      - question: |
+          How do I create database roles, functions, extensions, and other objects in a Citus cluster?
+        answer: |
+          Certain commands that you run on the coordinator node don't propagate to the worker nodes:
+          
+          - `CREATE ROLE/USER`
+          - `CREATE DATABASE`
+          - `ALTER ... SET SCHEMA`
+          - `ALTER TABLE ALL IN TABLESPACE`
+          - `CREATE TABLE` (see `table_types`)
+          
+          For these types of objects, create them explicitly on all nodes. Citus provides a function to execute queries across all workers:
+          
+          ```sql
+          SELECT run_command_on_workers($cmd$
+            /* the command to run */
+            CREATE ROLE ...
+          $cmd$);
+          ```
+          
+          Learn more in `manual_prop`. Also note that even after manually propagating `CREATE DATABASE`, you must still install Citus there. For more information, see [Creating a new database](cluster-management.md#creating-a-new-database).
+          
+          As of Citus 13.1, additional database/role DDLs are auto-propagated: See [reference-ddl](reference-ddl.md#database-and-role-management-ddl-citus-131) for details.
+
+          In the future, Citus automatically propagates more kinds of objects. The advantage of automatic propagation is that Citus automatically creates a copy on any newly added worker nodes. For more information, see [Distributed object table](api-metadata.md#distributed-object-table).
+
+  - name: Extensions and Storage
+    questions:
+      - question: |
+          How does cstore_fdw work with Citus?
+        answer: |
+          You don't need the cstore_fdw extension on PostgreSQL 12 and later, because Citus implements `columnar` storage directly. Unlike cstore_fdw, Citus' columnar tables support transactional semantics, replication, and pg_upgrade. Citus' query parallelization, seamless sharding, and high availability benefits combine powerfully with the superior compression and I/O utilization of columnar storage for large dataset archival and reporting.
+
+  - name: Migration and Legacy
+    questions:
+      - question: |
+          What happened to pg_shard?
+        answer: |
+          The pg_shard extension is deprecated and no longer supported.
+          
+          The Citus team merged pg_shard's codebase into Citus to offer you a unified solution, starting with the open-source release of Citus v5.x. This solution provides advanced distributed query planning that previously only CitusDB customers enjoyed. It preserves the simple and transparent sharding and real-time writes and reads that pg_shard brought to the PostgreSQL ecosystem. Citus, the flagship product, provides a superset of the functionality of pg_shard. The Citus team provides migration steps to help existing users perform a drop-in replacement. For more information, please [contact us](https://www.citusdata.com/about/contact_us).
+
+additionalContent: |
+  ## Related content
+  
+  - [What is Citus?](what-is-citus.md)
+  - [Tutorial: Design a multitenant database](tutorial-multi-tenant.md)
+  - [Tutorial: Design a real-time analytics dashboard](tutorial-analytics.md)

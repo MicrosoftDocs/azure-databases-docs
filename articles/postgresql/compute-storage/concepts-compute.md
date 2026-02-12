@@ -4,7 +4,7 @@ description: This article describes the compute options in an Azure Database for
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 01/13/2026
+ms.date: 02/12/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article

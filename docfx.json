@@ -9,7 +9,8 @@
         "exclude": [
           "**/_themes/**",
           "**/includes/**",
-          "**/obj/**"
+          "**/obj/**",
+          "citus/**"
         ],
         "src": "articles",
         "dest": "."
