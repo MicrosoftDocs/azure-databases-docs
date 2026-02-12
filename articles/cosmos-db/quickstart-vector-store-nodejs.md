@@ -451,7 +451,7 @@ For detailed information on distance functions, see [What are distance functions
 1. Select the [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png" alt-text="Screenshot of Visual Studio Code showing the Azure Cosmos DB extension with Hotels database items and a JSON document editor." lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-azure-cosmos-db-extension.png":::
+    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-extension.png" alt-text="Screenshot of Visual Studio Code showing the Azure Cosmos DB extension with Hotels database items and a JSON document editor." lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-extension.png":::
 
 ## Clean up resources
 
