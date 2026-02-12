@@ -1,2 +1,140 @@
-- name: Index
-  href: index.md
+- name: Citus for PostgreSQL documentation
+  href: index.yml
+- name: Overview
+  items:
+    - name: What is Citus?
+      href: what-is-citus.md
+    - name: PostgreSQL at any scale
+      href: postgresql-citus-scale.md
+    - name: FAQ
+      href: faq-citus.yml
+- name: Quickstarts
+  items:
+    - name: Getting started
+      href: getting-started.md
+- name: Tutorials
+  items:
+    - name: Multi-tenant database
+      href: tutorial-multi-tenant.md
+    - name: Real-time analytics
+      href: tutorial-analytics.md
+    - name: Microservices
+      href: tutorial-micro-services.md
+    - name: Time series data
+      href: tutorial-time-series.md
+- name: How-tos
+  items:
+    - name: Administration
+      items:
+        - name: Cluster management
+          href: cluster-management.md
+        - name: Table management
+          href: table-management.md
+        - name: Upgrade Citus
+          href: upgrade-citus.md
+        - name: Diagnostic queries
+          href: diagnostic-queries.md
+    - name: Installation
+      items:
+        - name: Citus Cloud
+          href: citus-cloud.md
+        - name: Single-node setup
+          href: single-node.md
+        - name: Single-node (Debian)
+          href: single-node-debian.md
+        - name: Single-node (Docker)
+          href: single-node-docker.md
+        - name: Single-node (RHEL)
+          href: single-node-rhel.md
+        - name: Multi-node setup
+          href: multi-node.md
+        - name: Multi-node (Ubuntu or Debian)
+          href: multi-node-ubuntu-debian.md
+        - name: Multi-node (Fedora, CentOS, or Red Hat)
+          href: multi-node-fedora-centos-rhel.md
+    - name: Migration
+      items:
+        - name: Migration overview
+          href: migrate/migration.md
+        - name: Migrate data
+          href: migrate/migration-data.md
+        - name: Migrate large datasets
+          href: migrate/migration-data-big.md
+        - name: Migrate small datasets
+          href: migrate/migration-data-small.md
+        - name: Multitenant schema migration
+          href: migrate/migration-schema.md
+        - name: Multitenant query migration
+          href: migrate/migration-query.md
+        - name: Ruby on Rails migration
+          href: migrate/migration-ruby-rails.md
+        - name: ASP.NET migration
+          href: migrate/migration-asp.md
+    - name: Support
+      href: help-support.md
+- name: Conceptual
+  items:
+    - name: Application types
+      href: app-type.md
+    - name: Data modeling and sharding
+      href: data-modeling.md
+    - name: Guides
+      items:
+        - name: Guides index
+          href: guides.md
+        - name: Designing SaaS applications
+          href: designing-saas.md
+        - name: Sharding multi-tenant apps
+          href: sharding-mt-app.md
+        - name: Aggregation
+          href: aggregation.md
+        - name: Efficient rollups
+          href: efficient-rollup.md
+        - name: HyperLogLog count distinct
+          href: hyperloglog-count-distinct.md
+        - name: Outer joins
+          href: outer-joins.md
+        - name: Faceted search
+          href: faceted-search.md
+        - name: Metrics dashboard
+          href: metrics-dashboard.md
+        - name: Semi-structured data
+          href: semi-structured-data.md
+        - name: Parallel indexing
+          href: parallel-indexing.md
+    - name: Use cases
+      href: use-cases.md
+    - name: Performance tuning
+      href: performance-tuning.md
+    - name: Triggers
+      href: triggers.md
+    - name: Write throughput benchmark
+      href: benchmark.md
+- name: Reference
+  items:
+    - name: API overview
+      href: api.md
+    - name: GUC parameters
+      href: api-guc.md
+    - name: Metadata tables
+      href: api-metadata.md
+    - name: User-defined functions
+      href: api-udf.md
+    - name: SQL reference
+      href: reference.md
+    - name: DDL reference
+      href: reference-ddl.md
+    - name: DML reference
+      href: reference-dml.md
+    - name: Query processing
+      href: reference-processing.md
+    - name: Command propagation
+      href: reference-propagation.md
+    - name: SQL support
+      href: reference-sql.md
+    - name: Workarounds
+      href: reference-workarounds.md
+    - name: Integrations
+      href: integrations.md
+    - name: Common errors
+      href: common-errors.md
