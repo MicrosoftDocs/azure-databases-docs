@@ -64,8 +64,6 @@ The app uses the following Maven dependencies specified in the `pom.xml`:
 
     :::code language="xml" source="~/documentdb-samples/ai/vector-search-java/pom.xml" :::
 
-1. Create the Java source directory structure:
-
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
