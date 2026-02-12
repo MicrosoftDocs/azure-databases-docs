@@ -57,7 +57,7 @@ In the event of a service outage impacting application resources, consider the f
 
 - Azure teams work diligently to restore service availability as quickly as possible, but depending on the root cause, recovery can sometimes take longer. If an application can tolerate downtime, wait for the recovery to complete. In this case, no action is required. View the health of individual resources on the **Resource health** page under the **Help** menu. Refer to the Resource health page for updates and the latest information about an outage. After the region recovers, application availability is restored.
 
-- If the outage duration approaches the RTO, decide whether to wait for service recovery or initiate disaster recovery. Depending on the application's tolerance for downtime and potential business liability, make an informed decision about how to respond to prolonged unavailability.
+- If the outage duration approaches your RTO, decide whether to wait for service recovery or initiate disaster recovery. Depending on the application's tolerance for downtime and potential business liability, make an informed decision about how to respond to prolonged unavailability.
 
 ## Outage recovery guidance
 
@@ -85,7 +85,7 @@ A single-region account with **Availability Zones** can maintain read-write avai
 
 1. **Wait for service restoration** - Monitor the Service Health page and the account's Resource Health for updates. Azure teams work to restore service as quickly as possible.
 
-1. **Consider account restoration** - If the outage duration exceeds the RTO, request a restore to a different region through Azure Support. See [Periodic backup and restore](#periodic-backup-and-restore) for details.
+1. **Consider account restore** - If the outage duration exceeds your RTO, request a restore to a different region through Azure Support. See [Periodic backup and restore](#periodic-backup-and-restore) for details.
 
 1. **Plan for multi-region deployment** - To prevent future single-region outages, consider deploying to multiple regions.  
 
@@ -106,7 +106,7 @@ If the account is configured as zone-redundant in the affected read region, it c
 Reads should typically remain unaffected during a regional outage if the preferred regions list is configured correctly, as the Azure Cosmos DB SDK automatically reroutes requests to the next available region. However, specific consistency levels or configurations can lead to disruptions:
 
 - **Strong Consistency** - For accounts with only two regions, a read region outage impacts write availability because strong consistency requires [dynamic quorum](consistency-levels.md#dynamic-quorum) to maintain strict consistency guarantees. With only one operational region, quorum can't be achieved, leading to disruptions in both read and write operations.
-  - **Mitigation**: Perform a [region offline operation](how-to-manage-database-account.yml) for the affected read region to restore availability. If service-managed failover is enabled, Azure Cosmos DB eventually performs the region offline operation automatically, but this could take time based on how the outage is progressing. For faster recovery, perform a region offline operation or customer-managed failover.
+  - **Mitigation**: Perform a [region offline operation](how-to-manage-database-account.yml) for the affected read region to restore availability. If service-managed failover is enabled, Azure Cosmos DB performs the region offline operation, but this could take time based on how the outage is progressing. For faster recovery, perform a [region offline operation](how-to-manage-database-account.yml#perform-forced-failover-for-your-azure-cosmos-db-account).
 
 - **Bounded Staleness Consistency** - When the read region has an outage and the staleness window is exceeded, write operations for the partitions in the affected region are also impacted. This occurs because Bounded Staleness consistency relies on maintaining a specific staleness threshold between regions. When this threshold is breached, the system can no longer guarantee consistency for writes.
   - **Mitigation**: Perform a [region offline operation](how-to-manage-database-account.yml#perform-forced-failover-for-your-azure-cosmos-db-account) for the affected read region to restore availability. 
@@ -143,13 +143,13 @@ The region offline operation removes the affected region from the account config
 
 ##### Service-managed failover
 
-Service-managed failover allows Azure Cosmos DB to fail over the write region of a multiple-region account to preserve business continuity.
+Service-managed failover allows Azure Cosmos DB to automatically perform region offline operations for affected regions to preserve business continuity.
 
 **Configuration:**
 
 - **Azure portal**: Navigate to the Azure Cosmos DB account, select **Replicate data globally**, and enable **Service Managed Failover**.
-- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-automatic-failover).
-- **Azure CLI**: Follow the instructions to enable [service managed failover](manage-with-cli.md#enable-service-managed-failover)
+- **Azure PowerShell**: Follow the instructions to enable [service managed failover](manage-with-powershell.md#enable-automatic-failover) via PowerShell cmdlets.
+- **Azure CLI**: Follow the instructions to enable [service managed failover](manage-with-cli.md#enable-service-managed-failover) via Azure CLI commands.
 
 > [!IMPORTANT]
 > Even with service-managed failover enabled, the timing of automatic failover depends on the nature and progression of the outage. In these scenarios, failover might take up to one hour or more. To quickly restore write availability during outages, perform the [region offline operation](#region-offline-operation) instead of waiting for service-managed failover.
@@ -162,9 +162,13 @@ Service-managed failover allows Azure Cosmos DB to fail over the write region of
 ##### Operations to avoid during region outages
 
 > [!WARNING]
-> Don't perform the following control plane operations during outage scenarios, as they result in account inconsistency and delay recovery:
+> Don't perform any control plane operations on the affected region during outage scenarios, as they result in account inconsistency and delay recovery. Some of the example of control plane operations to avoid include:
 > - Change write region (manual failover) or modify failover priority
 > - Update the account to multi-write configuration
+> - Updating consistency levels or other account settings
+> - Updating private endpoint configurations or network settings
+> - Updating account throughput or scaling operations
+> - Any other operation that modifies the account configuration or region settings
 
 ### Multiple-write region accounts
 
@@ -191,7 +195,7 @@ For detailed steps on performing a point-in-time restore, see [Continuous backup
 
 ### Periodic backup and restore
 
-If an account uses periodic backup mode, request a restore from Azure Support. Periodic backups are taken automatically at regular intervals (every four hours by default), and the two most recent backups are retained.
+If an account uses periodic backup mode, request a restore from Azure Support. Periodic backups are taken automatically at regular intervals, with both the interval (every four hours by default) and retention count (two most recent backups by default) being configurable.
 
 To request a restore from periodic backups:
 
