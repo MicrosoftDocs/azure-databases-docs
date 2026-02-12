@@ -428,7 +428,14 @@ The distance function is set in the **vector embedding policy** when creating th
 
 ---
 
-This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities. The `partitionKeyPaths` specifies that documents are partitioned by `HotelId` for distributed storage. The `indexingPolicy` configures automatic indexing on all document properties (/*) except the system `_etag` field and the `DescriptionVector` array to optimize write performance—vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. The `vectorIndexes` section creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. Finally, the `vectorEmbeddingPolicy` defines the vector field's characteristics: `float32` data type with 1536 dimensions (matching the `text-embedding-3-small` model output) and cosine as the distance function to measure similarity between vectors during queries.
+This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities.
+
+| Property | Description |
+|----------|-------------|
+| `partitionKeyPaths` | Partitions documents by `HotelId` for distributed storage. |
+| `indexingPolicy` | Configures automatic indexing on all document properties (`/*`) except the system `_etag` field and the `DescriptionVector` array to optimize write performance. Vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. |
+| `vectorIndexes` | Creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. |
+| `vectorEmbeddingPolicy` | Defines the vector field's characteristics: `float32` data type with 1536 dimensions (matching the `text-embedding-3-small` model output) and cosine as the distance function to measure similarity between vectors during queries. |
 
 ## Interpret similarity scores
 
