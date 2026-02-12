@@ -6,6 +6,7 @@ author: diberry
 ms.author: diberry
 ms.reviewer: jcodella
 ms.devlang: typescript
+ms.service: azure-cosmos-db
 ms.topic: quickstart-sdk
 ms.date: 02/11/2026
 ai-usage: ai-assisted
