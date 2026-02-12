@@ -37,6 +37,9 @@
         - name: Use with a Rust app
           displayName: Quickstart, AZD, Azure Developer CLI
           href: quickstart-rust.md
+        - name: Query a vector store with a Node.js app
+          displayName: Quickstart, vector search, vector database, Node.js
+          href: quickstart-vector-store-nodejs.md
     - name: Deploy
       expanded: true
       items:
