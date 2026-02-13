@@ -76,7 +76,6 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 
     # Azure DocumentDB configuration
     MONGO_CLUSTER_NAME=
-    AZURE_MANAGED_IDENTITY_PRINCIPAL_ID=
 
     # Data file
     DATA_FILE_WITH_VECTORS=../data/Hotels_Vector.json
