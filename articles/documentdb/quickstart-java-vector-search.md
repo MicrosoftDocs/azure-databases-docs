@@ -56,12 +56,12 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 
     :::code language="xml" source="~/documentdb-samples/ai/vector-search-java/pom.xml" :::
 
-    The app uses the following Maven dependencies specified in the []`pom.xml`:
+    The app uses the following Maven dependencies specified in the `pom.xml`:
     
     - [`mongodb-driver-sync`](https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync): Official MongoDB Java driver for database connectivity and operations
     - [`azure-identity`](https://mvnrepository.com/artifact/com.azure/azure-identity): Azure Identity library for passwordless authentication with Microsoft Entra ID
     - [`azure-ai-openai`](https://mvnrepository.com/artifact/com.azure/azure-ai-openai): Azure OpenAI client library to communicate with AI models and create vector embeddings
-    - [`jackson-databind`](https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind): JSON serialization and deserialization library
+    - [`jackson-databind`](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind): JSON serialization and deserialization library
     - [`slf4j-nop`](https://mvnrepository.com/artifact/org.slf4j/slf4j-nop): No-operation SLF4J binding to suppress logging output from the MongoDB driver
     
 
@@ -147,9 +147,9 @@ Sign in to Azure before you run the application so it can access Azure resources
 az login
 ```
 
-## Build and run the application
+## Build the application
 
-Load the environment variables, compile, and run:
+Compile the application:
 
 ```bash
 mvn clean compile
