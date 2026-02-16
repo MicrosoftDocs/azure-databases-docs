@@ -3,8 +3,7 @@ title: Why Mission-Critical MongoDB Workloads Run on Azure First-Party Services
 description: Learn why mission-critical workloads rely on first-party database services.
 author: gahl-levy
 ms.author: gahllevy
-ms.service: azure-cosmos-db
-ms.subservice: mongodb-vcore
+ms.service: azure-documentdb
 ms.topic: product-comparison
 ms.date: 06/03/2025
 ---
