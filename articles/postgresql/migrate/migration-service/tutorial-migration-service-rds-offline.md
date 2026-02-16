@@ -14,6 +14,7 @@ ms.custom:
 ms.collection:
 - migration
 - rds-to-azure
+- aws-to-azure
 ---
 
 # Migrate offline, from an Amazon RDS for PostgreSQL to Azure Database for PostgreSQL, with the migration service
