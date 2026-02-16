@@ -3,8 +3,7 @@ title: DocumentDBis the Open-Source Engine Powering Azure DocumentDB
 description: Learn about DocumentDB, the open-source document database platform that powers Azure DocumentDB, its features, architecture, and how to get started.
 author: patty-chow
 ms.author: pattychow
-ms.service: azure-cosmos-db
-ms.subservice: mongodb-vcore
+ms.service: azure-documentdb
 ms.topic: overview
 ms.date: 02/07/2025
 ---
