@@ -270,14 +270,9 @@
         ]
       },
       "titleSuffix": {
+        "articles/postgresql/**/*": "Azure Database for PostgreSQL",
         "articles/mysql/flexible-server/**/*.md": "Azure Database for MySQL",
-        "articles/postgresql/scripts/**/*.md": "Azure Database for PostgreSQL",
-        "articles/postgresql/flexible-server/**/*.md": "Azure Database for PostgreSQL",
-        "articles/postgresql/migrate/**/*.md": "Azure Database for PostgreSQL",
         "articles/mysql/flexible-server/**/*.yml": "Azure Database for MySQL",
-        "articles/postgresql/scripts/**/*.yml": "Azure Database for PostgreSQL",
-        "articles/postgresql/flexible-server/**/*.yml": "Azure Database for PostgreSQL",
-        "articles/postgresql/migrate/**/*.yml": "Azure Database for PostgreSQL",
         "articles/cosmos-db/**/*": "Azure Cosmos DB",
         "articles/cosmos-db/mongodb/**/*": "Azure Cosmos DB for MongoDB",
         "articles/cosmos-db/postgresql/**/*": "Azure Cosmos DB for PostgreSQL",
