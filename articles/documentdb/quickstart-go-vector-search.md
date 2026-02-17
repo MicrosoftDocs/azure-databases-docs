@@ -6,7 +6,8 @@ ms.author: patricka
 ms.reviewer: khelanmodi
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 12/12/2025
+ms.date: 02/17/2026
+ai-usage: ai-assisted
 ms.custom: devx-track-go, devx-track-go-ai, devx-track-data-ai
 # CustomerIntent: As a developer, I want to learn how to use vector search in Go applications with Azure DocumentDB
 ---
@@ -14,15 +15,26 @@ ms.custom: devx-track-go, devx-track-go-ai, devx-track-data-ai
 
 Use vector search in Azure DocumentDB with the Go client library. Store and query vector data efficiently.
 
-This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-ada-002` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
+This quickstart uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-3-small` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-go) on GitHub.
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-go) on GitHub.
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
+[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search-model.md)]
 
-- [Go](https://golang.org/dl/) version 1.21 or later
+- [Go](https://golang.org/dl/) version 1.24 or later
+
+## Create data file with vectors
+
+1. Create a new data directory for the hotels data file:
+
+    ```bash
+    mkdir data
+    ```
+
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
+
 
 ## Create a Go project
 
@@ -43,24 +55,25 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 1. Install the required Go packages:
 
     ```bash
-    go get go.mongodb.org/mongo-driver/mongo
-    go get go.mongodb.org/mongo-driver/bson
-    go get github.com/Azure/azure-sdk-for-go/sdk/ai/azopenai
+    go get go.mongodb.org/mongo-driver
+    go get github.com/Azure/azure-sdk-for-go/sdk/azcore
     go get github.com/Azure/azure-sdk-for-go/sdk/azidentity
+    go get github.com/openai/openai-go/v3
     go get github.com/joho/godotenv
     ```
 
     - `go.mongodb.org/mongo-driver`: MongoDB Go driver
+    - `github.com/Azure/azure-sdk-for-go/sdk/azcore`: Azure SDK core utilities for HTTP pipelines and auth
     - `github.com/Azure/azure-sdk-for-go/sdk/azidentity`: Azure Identity library for passwordless token-based authentication
-    - `github.com/Azure/azure-sdk-for-go/sdk/ai/azopenai`: Azure OpenAI client library to create vectors
+    - `github.com/openai/openai-go/v3`: OpenAI Go client library to create vectors
     - `github.com/joho/godotenv`: Environment variable loading from .env files
 
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
     # Azure OpenAI Embedding Settings
-    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
-    AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
+    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+    AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
     AZURE_OPENAI_EMBEDDING_ENDPOINT=<AZURE_OPENAI_ENDPOINT>
     EMBEDDING_SIZE_BATCH=16
 
@@ -68,10 +81,10 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     MONGO_CLUSTER_NAME=<DOCUMENTDB_NAME>
 
     # Data file
-    DATA_FILE_WITH_VECTORS=data/HotelsData_toCosmosDB_Vector.json
-    EMBEDDED_FIELD=text_embedding_ada_002
+    DATA_FILE_WITH_VECTORS=data/Hotels_Vector.json
+    EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
-    LOAD_SIZE_BATCH=100
+    LOAD_SIZE_BATCH=50
     ```
 
     Replace the placeholder values in the `.env` file with your own information:
@@ -80,35 +93,21 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     You should always prefer passwordless authentication, but it requires additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Go apps to Azure services by using the Azure Identity library](/azure/developer/go/sdk/authentication/authentication-overview).
 
-1. Create a new subdirectory off the root named `data`.
-
-1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_toCosmosDB_Vector.json` file in the `data` subdirectory.
-
-1. The project structure should look like this:
-
-    ```plaintext
-    vector-search-quickstart
-    ├── .env
-    ├── data
-    │   └── HotelsData_toCosmosDB_Vector.json
-    └── venv (or your virtual environment folder)
-    ```
-
 ## Create Go source files for vector search
 
 Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
 
 ```plaintext
+data
+│── Hotels_Vector.json
 vector-search-quickstart
 ├── .env
-├── data
-│   └── HotelsData_toCosmosDB_Vector.json
+├── go.mod
 ├── src
 │   ├── diskann.go
 │   ├── ivf.go
-│   └── hnsw.go
+│   ├── hnsw.go
 │   └── utils.go
-└── venv (or your virtual environment folder)
 ```
 
 ### [DiskANN](#tab/tab-diskann)
@@ -149,19 +148,19 @@ touch src/utils.go
 
 Add the following code to the `src/diskann.go` file:
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-go/src/diskann.go" :::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-go/src/diskann.go" :::
 
 #### [IVF](#tab/tab-ivf)
 
 Add the following code to the `src/ivf.go` file:
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-go/src/ivf.go" :::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-go/src/ivf.go" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
 Add the following code to the `src/hnsw.go` file:
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-go/src/hnsw.go" :::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-go/src/hnsw.go" :::
 
 ----
 
@@ -179,7 +178,7 @@ This main module provides these features:
 
 Add the following code to `src/utils.go`:
 
-:::code language="go" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-go/src/utils.go" :::
+:::code language="go" source="~/documentdb-samples/ai/vector-search-go/src/utils.go" :::
 
 This utility module provides these features:
 
@@ -220,18 +219,10 @@ go mod tidy
 go run src/ivf.go src/utils.go
 ```
 
-```bash
-go run src/hnsw.go src/utils.go
-```
-
-```bash
-go mod tidy
-go run src/ivf.go src/utils.go
-```
-
 #### [HNSW](#tab/tab-hnsw)
 
 ```bash
+go mod tidy
 go run src/hnsw.go src/utils.go
 ```
 
@@ -249,29 +240,31 @@ The app logging and output show:
 Starting DiskANN vector search demonstration...
 
 Initializing MongoDB and Azure OpenAI clients...
+Attempting OIDC authentication...
 OIDC authentication successful!
 
-Loading data from HotelsData_toCosmosDB_Vector.json...
+Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
 Inserting data into collection 'vectorSearchCollection'...
-Cleared 0 existing documents from collection
+Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
+Successfully obtained token
 Starting batch insertion of 50 documents...
-Created index on field: HotelId
 Batch 1 completed: 50 documents inserted
 Insertion completed: 50 inserted, 0 failed
 Creating DiskANN vector index on field 'DescriptionVector'...
+No existing vector indexes found to drop
 DiskANN vector index created successfully
 Waiting for index to be ready...
 Performing DiskANN vector search for: 'quintessential lodging near running trails, eateries, retail'
 
 Search Results (showing top 5):
 ================================================================================
-HotelName: Roach Motel, Score: 0.8399
-HotelName: Royal Cottage Resort, Score: 0.8385
-HotelName: Economy Universe Motel, Score: 0.8360
-HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Comfort Inn, Score: 0.8346
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 
 DiskANN demonstration completed successfully!
 ```
@@ -282,30 +275,35 @@ DiskANN demonstration completed successfully!
 Starting IVF vector search demonstration...
 
 Initializing MongoDB and Azure OpenAI clients...
+Attempting OIDC authentication...
 OIDC authentication successful!
 
-Loading data from HotelsData_toCosmosDB_Vector.json...
+Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
 Preparing collection 'vectorSearchCollection'...
-Cleared 0 existing documents from collection
+Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
+Successfully obtained token
+Cleared 50 existing documents from collection
 Starting batch insertion of 50 documents...
-Created index on field: HotelId
 Batch 1 completed: 50 documents inserted
 Insertion completed: 50 inserted, 0 failed
 
 Creating IVF vector index...
+Creating IVF vector index on field 'DescriptionVector'...
+Dropping existing vector index: hnsw_index_DescriptionVector
+Dropped 1 existing vector index(es)
 IVF vector index created successfully
 Waiting for index clustering to complete...
 Performing IVF vector search for: 'quintessential lodging near running trails, eateries, retail'
 
 Search Results (showing top 5):
 ================================================================================
-HotelName: Roach Motel, Score: 0.8399
-HotelName: Royal Cottage Resort, Score: 0.8385
-HotelName: Economy Universe Motel, Score: 0.8360
-HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Comfort Inn, Score: 0.8346
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 
 IVF demonstration completed successfully!
 ```
@@ -316,30 +314,35 @@ IVF demonstration completed successfully!
 Starting HNSW vector search demonstration...
 
 Initializing MongoDB and Azure OpenAI clients...
+Attempting OIDC authentication...
 OIDC authentication successful!
 
-Loading data from HotelsData_toCosmosDB_Vector.json...
+Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
 Preparing collection 'vectorSearchCollection'...
-Cleared 0 existing documents from collection
+Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
+Successfully obtained token
+Cleared 50 existing documents from collection
 Starting batch insertion of 50 documents...
-Created index on field: HotelId
 Batch 1 completed: 50 documents inserted
 Insertion completed: 50 inserted, 0 failed
 
 Creating HNSW vector index...
+Creating HNSW vector index on field 'DescriptionVector'...
+Dropping existing vector index: diskann_index_DescriptionVector
+Dropped 1 existing vector index(es)
 HNSW vector index created successfully
 Waiting for index to be ready...
 Performing HNSW vector search for: 'quintessential lodging near running trails, eateries, retail'
 
 Search Results (showing top 5):
 ================================================================================
-HotelName: Roach Motel, Score: 0.8399
-HotelName: Royal Cottage Resort, Score: 0.8385
-HotelName: Economy Universe Motel, Score: 0.8360
-HotelName: Foot Happy Suites, Score: 0.8354
-HotelName: Comfort Inn, Score: 0.8346
+1. HotelName: Royal Cottage Resort, Score: 0.4991
+2. HotelName: Country Comfort Inn, Score: 0.4785
+3. HotelName: Nordick's Valley Motel, Score: 0.4635
+4. HotelName: Economy Universe Motel, Score: 0.4461
+5. HotelName: Roach Motel, Score: 0.4388
 
 HNSW demonstration completed successfully!
 ```
