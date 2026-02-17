@@ -675,6 +675,9 @@
         - name: Troubleshoot high CPU utilization
           href: troubleshoot/how-to-high-cpu-utilization.md
           displayName: High CPU Utilization
+        - name: Troubleshoot high CPU utilization on elastic clusters
+          href: troubleshoot/how-to-high-cpu-utilization-elastic-clusters.md
+          displayName: High CPU Utilization on Elastic Clusters
         - name: Troubleshoot high memory utilization
           href: troubleshoot/how-to-high-memory-utilization.md
           displayName: High Memory Utilization
