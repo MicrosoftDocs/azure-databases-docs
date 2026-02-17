@@ -24,4 +24,4 @@ ms.topic: include
 
 **Root certificate rotation schedule:**
 
-> - Updates for root CA certificates from DigiCert Global Root CA (G1) to DigiCert Global Root G2 in China regions start March 9, 2026.
+ - Updates for root CA certificates from DigiCert Global Root CA (G1) to DigiCert Global Root G2 in China regions start March 9, 2026.
