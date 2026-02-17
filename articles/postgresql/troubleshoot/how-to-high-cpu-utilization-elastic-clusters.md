@@ -231,7 +231,7 @@ Once you know the queries that are consuming more CPU, use **EXPLAIN ANALYZE** t
 
 For more information about the **EXPLAIN ANALYZE** command, review its [documentation](https://www.postgresql.org/docs/current/sql-explain.html).
 
-### Terminate long running transactions on a nodes
+### Terminate long running transactions on a node
 
 You can consider terminating a long running transaction as an option if the transaction is running longer than expected.
 
