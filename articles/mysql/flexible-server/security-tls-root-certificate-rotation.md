@@ -4,7 +4,7 @@ description: Learn about the upcoming changes of root certificate rotation that 
 author: shih-che
 ms.author: shihche
 ms.reviewer: talawren, maghan, randolphwest
-ms.date: 01/05/2026
+ms.date: 02/17/2026
 ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: concept-article
@@ -15,25 +15,25 @@ ms.custom:
 
 # Root certificate rotation for Azure Database for MySQL
 
-To maintain our security and compliance standards, we start changing the root certificates for Azure Database for MySQL Flexible Server after September 1, 2025.
+To maintain security and compliance standards, Microsoft starts changing the root certificates for Azure Database for MySQL Flexible Server after September 1, 2026.
 
 The current root certificate **DigiCert Global Root CA** is replaced by two new root certificates:
 
 - **DigiCert Global Root G2**
 - **Microsoft RSA Root Certificate Authority 2017**
 
-If you use Transport Layer Security (TLS) with root certificate verification, you must have all three root certificates installed during the transition period. Once all the certificates are changed, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store. If you don't add the new certificates before September 1, 2025, your connections to the databases **fail**.
+If you use Transport Layer Security (TLS) with root certificate verification, you must install all three root certificates during the transition period. Once you change all the certificates, you can remove the old SHA-1 root certificate **DigiCert Global Root CA** from the store. If you don't add the new certificates before September 1, 2025, your connections to the databases **fail**.
 
 This article provides instructions on how to add the two new root certificates, and answers to frequently asked questions.
 
-> [!NOTE]  
+> [!NOTE]
 > If the continued use of SHA-1 is a blocker and you want to have your certificates changed before the general rollout, follow the [instructions in this article for creating a combined certificate authority (CA) certificate on the client](#how-to-update-the-root-certificate-store-on-your-client). Then open a support request to rotate your certificate for Azure Database for MySQL.
 
 ## Why is a root certificate update required?
 
-Azure Database for MySQL users can only use the predefined certificate to connect to their MySQL server instances. The current certificate is signed by **DigiCert Global Root CA**. It uses SHA-1. The SHA-1 hashing algorithm is considerably insecure, due to discovered vulnerabilities. It's no longer compliant with our security standards.
+Azure Database for MySQL users can only use the predefined certificate to connect to their MySQL server instances. The current certificate is signed by **DigiCert Global Root CA**. It uses SHA-1. The SHA-1 hashing algorithm is considerably insecure, due to discovered vulnerabilities. It's no longer compliant with security standards.
 
-We need to rotate the certificate to one signed by a compliant root certificate authority to remediate the issue.
+Microsoft needs to rotate the certificate to one signed by a compliant root certificate authority to remediate the issue.
 
 ## How to update the root certificate store on your client
 
@@ -43,11 +43,11 @@ The following steps guide you through the process of updating the root certifica
 
 1. Download the three root certificates. If you installed the **DigiCert Global Root CA** certificate, you can skip the first download:
 
-1. [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
+- [Download the DigiCert Global Root CA certificate](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem).
 
-1. [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
+- [Download the DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem).
 
-1. [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
+- [Download the Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt).
 
 1. Add the downloaded certificates to your client certificate store. The process varies depending on the client type.
 
@@ -103,9 +103,9 @@ openssl x509 -inform der -in MicrosoftRSARootCertificateAuthority2017.crt -out M
 
 ## Other clients
 
-For other users that use other clients, you need to create a combined certificate file that contains all three root certificates.
+For users of other clients, create a combined certificate file that contains all three root certificates.
 
-Other clients such as:
+Other clients include:
 
 - MySQL Workbench
 - C or C++
@@ -119,7 +119,7 @@ Other clients such as:
 
 ### Steps
 
-1. Create a new text file and save it as `combined-ca-certificates.pem`
+1. Create a new text file and save it as `combined-ca-certificates.pem`.
 1. Copy and paste the contents of all three certificate files into this single file in the following format:
 
 ```output
@@ -136,7 +136,7 @@ Other clients such as:
 
 ## Data-in replication MySQL
 
-For data-in replication where **both primary and replica are hosted on Azure**, you can merge the CA certificate files in this format:
+For data-in replication where **both primary and replica are hosted on Azure**, merge the CA certificate files in this format:
 
 ```output
 SET @cert = '-----BEGIN CERTIFICATE-----
