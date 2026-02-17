@@ -391,10 +391,6 @@ DO
 <your statement>;
 ```
 
-#### Limitations
-
-For servers with high availability configured, when failover occurs, it's possible that the `event_scheduler` server parameter is set to `OFF`. If this occurs, when the failover is complete, configure the parameter to set the value to `ON`.
-
 ### innodb_ft_user_stopword_table
 `innodb_ft_user_stopword_table` is a server parameter in MySQL that specifies the name of the table containing custom stopwords for InnoDB Full-Text Search. The table must be in the same database as the full-text indexed table, and its first column must be of type `VARCHAR`. In Azure Database for MySQL - Flexible Server, the default setting of `sql_generate_invisible_primary_key=ON` causes all tables without an explicit primary key to automatically include an invisible primary key. This behavior conflicts with the requirements for `innodb_ft_user_stopword_table`, as the invisible primary key becomes the first column of the table, preventing it from functioning as intended during Full-Text Search. To resolve this issue, you must set `sql_generate_invisible_primary_key=OFF` in the same session before creating the custom stopword table. For example:  
 
