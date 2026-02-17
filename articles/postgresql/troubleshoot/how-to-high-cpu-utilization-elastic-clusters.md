@@ -1,5 +1,5 @@
 ---
-title: High CPU Utilization Across Elastic Clusters
+title: High CPU Utilization Across Azure PostgreSQL Elastic Clusters
 description: Troubleshoot high CPU utilization across Azure PostgreSQL elastic clusters.
 author: GayathriPaderla
 ms.author: gapaderla
@@ -184,7 +184,7 @@ Keeping table statistics up to date helps improve query performance. Monitor whe
 The following query helps to identify the tables that need vacuuming:
 ```sql
 SELECT * 
-FROM run_command_on_workers($$ 
+FROM run_command_on_all_nodes($$ 
   SELECT json_agg(t) 
   FROM ( 
     SELECT schemaname, relname
@@ -209,7 +209,7 @@ The following query provides information regarding the amount of bloat at the sc
 
 ```sql
 SELECT * 
-FROM run_command_on_workers($$ 
+FROM run_command_on_all_nodes($$ 
   SELECT json_agg(t) FROM ( 
     SELECT schemaname, sum(n_live_tup) AS live_tuples
     , sum(n_dead_tup) AS dead_tuples
