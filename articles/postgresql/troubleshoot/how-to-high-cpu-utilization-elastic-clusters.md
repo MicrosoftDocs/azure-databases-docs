@@ -1,6 +1,6 @@
 ---
-title: High CPU Utilization Across Azure PostgreSQL Elastic Clusters
-description: Troubleshoot high CPU utilization across Azure PostgreSQL elastic clusters.
+title: High CPU Utilization Across Azure Database for PostgreSQL Elastic Clusters
+description: Troubleshoot high CPU utilization across Azure Database for PostgreSQL elastic clusters.
 author: GayathriPaderla
 ms.author: gapaderla
 ms.reviewer: jaredmeade
