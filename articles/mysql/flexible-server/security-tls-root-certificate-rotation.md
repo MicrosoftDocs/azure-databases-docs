@@ -15,7 +15,7 @@ ms.custom:
 
 # Root certificate rotation for Azure Database for MySQL
 
-To maintain security and compliance standards, Microsoft starts changing the root certificates for Azure Database for MySQL Flexible Server after September 1, 2026.
+[!INCLUDE [mysql-certificate-rotation](includes/mysql-certificate-rotation.md)]
 
 The current root certificate **DigiCert Global Root CA** is replaced by two new root certificates:
 
