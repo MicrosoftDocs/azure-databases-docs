@@ -39,7 +39,7 @@ In the next section, we divide the discussion into four parts: In part one, we g
 
 ## Choose a partition key
 
-Because Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data distributes across logical and physical partitions. This distribution directly affects query performance, insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. Read about [partitioning in Azure Cosmos DB for more detail.](../partitioning-overview.md)
+Because Azure Cosmos DB automatically partitions your data, choosing a partition key is one of the most important design choices for your data model. The partition key determines how data distributes across logical and physical partitions. This distribution directly affects query performance, insert performance, scalability, and cost. Each partition key value maps to a distinct logical partition. A good partition strategy balances locality (keeping related items together for efficient queries) with distribution. In this guide, we highlight three common approaches. Read about [partitioning in Azure Cosmos DB for more detail.](../partitioning.md)
 
 Here are some common patterns and trade-offs when using Cosmos DB (or Cosmos-style NoSQL + vector features) to store agent memory.
 

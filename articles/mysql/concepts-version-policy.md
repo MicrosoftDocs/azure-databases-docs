@@ -55,8 +55,10 @@ During the Extended Support period, Microsoft prioritizes the service's availabi
 
 > [!NOTE]  
 > Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard Support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version of the software. For more information or to provide feedback, contact [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
->  
-> Pricing is available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable) later this year.
+> 
+> Servers in stopped state will not be charged for extended support. The charge will only apply to servers in succeeded state.
+> 
+> Pricing is available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable)
 
 ## Innovation release version support
 
@@ -87,7 +89,7 @@ A: If you don't upgrade your Azure Database for MySQL server to a supported majo
 
 __Q: What is the process for performing a major version upgrade on Azure Database for MySQL?__
 
-A: Azure Database for MySQL enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) document for more detailed information.
+A: Azure Database for MySQL enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) document for more detailed information.
 
 __Q: Are there any expected downtime or performance impacts during a major version upgrade?__
 

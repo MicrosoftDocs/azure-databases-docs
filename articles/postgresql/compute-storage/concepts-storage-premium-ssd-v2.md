@@ -55,20 +55,20 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-In preview, the following features are now supported for Azure Database for PostgreSQL flexible server instances using Premium SSD v2 in Brazil South, Canada Central, Canada East, Central US, East Asia, East US, East US 2, South Central US, West Central US, and West US 2 regions.
+SSDv2 now supports *High Availability, Geo-Redundant backups Geo Replicas, Major Version Upgrade and, Geo DR* features for Azure Database for PostgreSQL – Flexible Server in all below supported regions.
 
-- *High Availability
-Geo Replicas
-Geo Redundant Backups
-Major Version Upgrade
-Virtual Endpoints 
-Geo DR*
+Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, China North 3**, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, US Gov Virginia**, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
+
+> [!NOTE]
+> 1. *** Indicates High availability and Geo-Redundant Backups are not supported in the region.
+> 2. ** Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
+> 3. If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
+
+
 
 ### Supported features limitations
 
-- Customer Managed Keys, On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
-
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
+- On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
 
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
@@ -78,20 +78,19 @@ Geo DR*
 
 - If you create a new server by using point-in-time restore (PITR) and immediately perform an operation that requires a full backup, the following error might occur. This error occurs because Premium SSD v2 disks don't support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
-  _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
+ _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
 - Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation might fail. Wait an hour or stagger operations to avoid this error.
 
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
   **Examples include**:
-        - Compute scaling, enabling HA, and performing failover and failback within one hour.
-         - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
+  - Compute scaling, enabling HA, and performing failover and failback within one hour.
+  - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
 
 - Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
-- Premium SSD v2 is available only in the following regions:
-  *Australia East, Brazil South, Canada Central, Canada East,Central India, Central US, East Asia, East US 2, France Central, Germany West Central, Israel Central, Japan East, Korea Central, Norway East, Poland Central, South Central US, Southeast Asia, Switzerland North, UAE North, West Central US, West Europe, and West US 2*.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 

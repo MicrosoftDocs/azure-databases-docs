@@ -32,9 +32,6 @@ We recommend that you allocate sufficient storage on the flexible server, equiva
 
 The quickstart to [Create an Azure Database for PostgreSQL flexible server](../../flexible-server/quickstart-create-server.md) is an excellent place to begin. For more information about each server configuration, see [Compute and storage options in Azure Database for PostgreSQL flexible server](../../flexible-server/concepts-compute-storage.md).
 
-> [!IMPORTANT]  
-> Once flexible server is created, make sure to [change the **password_encryption** server parameter on your flexible server](../../flexible-server/how-to-configure-server-parameters-using-portal.md) from SCRAM-SHA-256 to MD5 before initiating the migration. This is essential for the existing credentials on single server to work on your flexible server
-
 ## Migration timeline
 
 Each migration has a maximum lifetime of seven days (168 hours) after it starts, and it times out after seven days. You can complete your migration and application cutover after the data validation and all checks are complete to avoid the migration from timing out. In online migrations, after the initial base copy is complete, the cutover window lasts three days (72 hours) before timing out. In offline migrations, the applications should stop writing to the database to prevent data loss. Similarly, for online migration, keep traffic low throughout the migration.
@@ -166,18 +163,6 @@ Online migration makes use of [pgcopydb follow](https://pgcopydb.readthedocs.io/
 > In the case of online migration of tables without a primary key, only `insert` operations are replayed on the target. This can potentially introduce inconsistency in the database if records that are updated or deleted on the source don't reflect on the target.
 
 An alternative is to use the `ALTER TABLE` command where the action is [REPLICA IDENTIY](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-REPLICA-IDENTITY) with the `FULL` option. The `FULL` option records the old values of all columns in the row so that even in the absence of a primary key, all CRUD operations are reflected on the target during the online migration. If none of these options work, perform an offline migration as an alternative.
-
-### Database with postgres_fdw extension
-
-The [postgres_fdw module](https://www.postgresql.org/docs/current/postgres-fdw.html) provides the foreign data wrapper postgres_fdw, which can be used to access data stored in external PostgreSQL servers. If your database uses this extension, the following steps must be performed to ensure a successful migration.
-
-1. Temporarily remove (unlink) the foreign data wrapper on the source instance.
-1. Perform data migration of the rest by using the migration service.
-1. Restore the foreign data wrapper roles, user, and links to the target after migration.
-
-### Database with postGIS extension
-
-The postGIS extension has breaking changes/compact issues between different versions. If you migrate to a flexible server, the application should be checked against the newer postGIS version to ensure that the application isn't affected or that the necessary changes must be made. The [postGIS news](https://postgis.net/news/) and [release notes](https://postgis.net/docs/release_notes.html#idm45191) are a good starting point to understand the breaking changes across versions.
 
 ### Database connection cleanup
 

@@ -4,27 +4,27 @@ description: This article provides an overview of the built-in PgBouncer feature
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/22/2026
+ms.date: 02/03/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
-# PgBouncer in Azure Database for PostgreSQL 
+# PgBouncer in Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL flexible server instances offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. PgBouncer is an optional feature that you can enable on a per-database-server basis. It's supported on General Purpose and Memory Optimized compute tiers in both public access and private access networks.
+Azure Database for PostgreSQL flexible server instances offer [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. PgBouncer is an optional feature that you can enable on a per-database-server basis. It's supported on General Purpose and Memory Optimized compute tiers in both public access and private access networks.
 
 PgBouncer runs on the same virtual machine (VM) as the database server for your Azure Database for PostgreSQL flexible server instance. Postgres uses a process-based model for connections, so maintaining many idle connections is expensive. Postgres runs into resource constraints when the server runs more than a few thousand connections. The primary benefit of PgBouncer is to improve idle connections and short-lived connections at the database server.
 
-PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postgres connections only when needed--that is, when inside an open transaction or when a query is active. This model allows scaling to up to 10,000 connections with low overhead.
+PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postgres connections only when needed - that is, when inside an open transaction or when a query is active. This model allows scaling to up to 10,000 connections with low overhead.
 
-PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
+The version of PgBouncer deployed on all supported major versions of the engine, in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**. PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
 
 PgBouncer in Azure Database for PostgreSQL supports [Microsoft Entra authentication](../security/security-entra-concepts.md) (Azure AD).
 
 ## Enable and configure PgBouncer
 
-PgBouncer is especially useful in transactional applications where frequent connection churn can degrade performance. It is enabled by default on port 6432, and you can connect to it using the same host name as your PostgreSQL server, but with port 6432 instead of the default port 5432.
+PgBouncer is especially useful in transactional applications where frequent connection churn can degrade performance. It's enabled by default on port 6432, and you can connect to it by using the same host name as your PostgreSQL server, but with port 6432 instead of the default port 5432.
 
 To enable PgBouncer, go to the **Server parameters** pane in the Azure portal, search for **PgBouncer**, and change the `pgbouncer.enabled` setting to `true`. There's no need to restart the server.
 
@@ -39,9 +39,9 @@ For more information about PgBouncer configurations, see the [pgbouncer.ini docu
 
 ## Benefits
 
-By using the built-in PgBouncer feature with your Azure Database for PostgreSQL flexible server instance, you can get these benefits:
+By using the built-in PgBouncer feature with your Azure Database for PostgreSQL flexible server instance, you get these benefits:
 
-- **Convenience of simplified configuration**: Because PgBouncer is integrated with your Azure Database for PostgreSQL flexible server instance, there's no need for a separate installation or complex setup. You can configure it directly from the server parameters.
+- **Convenience of simplified configuration**: Because PgBouncer is integrated with your Azure Database for PostgreSQL flexible server instance, you don't need a separate installation or complex setup. You can configure it directly from the server parameters.
 
 - **Reliability of a managed service**: PgBouncer offers the advantages of Azure managed services. For example, Azure manages updates of PgBouncer. Automatic updates eliminate the need for manual maintenance and ensure that PgBouncer stays up to date with the latest features and security patches.
 
@@ -51,31 +51,32 @@ By using the built-in PgBouncer feature with your Azure Database for PostgreSQL 
 
 ## Monitoring PgBouncer
 
-### PgBouncer Metrics
+### Metrics
 
 [!INCLUDE [PgBouncer Metrics](includes/pgbouncer-metrics.md)]
 
-To learn more, see [PgBouncer metrics](../monitor/concepts-monitoring.md#pgbouncer-metrics).
+For more information, see [PgBouncer metrics](../monitor/concepts-monitoring.md#pgbouncer-metrics).
 
-### PgBouncer Logs
+### Logs
 
-PgBouncer logs are available in Azure Database for PostgreSQL Flexible Server to help audit connection pooling activity and troubleshoot issues such as connection drops, authentication failures, or pool exhaustion. PgBouncer logs include details such as authentication failures, connection lifecycle events, errors, and server state changes — all useful for identifying connection bottlenecks and behavioral anomalies.
+Azure Database for PostgreSQL Flexible Server provides PgBouncer logs to help you audit connection pooling activity and troubleshoot problems such as connection drops, authentication failures, or pool exhaustion. PgBouncer logs include details such as authentication failures, connection lifecycle events, errors, and server state changes. These details are useful for identifying connection bottlenecks and behavioral anomalies.
 
-#### Enabling Logs
+#### Enabling logs
 
-PgBouncer logs are automatically emitted when Logs Diagnostic Settings are enabled. Two schema types are supported in Log Analytics **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
+Enable Logs Diagnostic Settings to automatically emit PgBouncer logs. Log Analytics supports two schema types: **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
 
-- **Azure diagnostics Schema**  
-     - Logs appear in the `AzureDiagnostics` table  
-     - Filter using: `Category == "PostgreSQLFlexPGBouncer"`
+- **Azure diagnostics Schema**
+  - Logs appear in the `AzureDiagnostics` table.
+  - Filter using: `Category == "PostgreSQLFlexPGBouncer"`.
 
-- **Resource-Specific Schema**  
-     - Logs appear in the `PGSQLPgBouncer` table  
-     - Easier to query, structured format
+- **Resource-Specific Schema**
+  - Logs appear in the `PGSQLPgBouncer` table.
+  - Easier to query, structured format.
 
-#### Sample KQL Queries
+#### Sample KQL queries
 
 **Azure diagnostics Schema:**
+
 ```kusto
 AzureDiagnostics
 | where Category == "PostgreSQLFlexPGBouncer"
@@ -84,15 +85,16 @@ AzureDiagnostics
 ```
 
 **Resource-Specific Schema:**
+
 ```kusto
 PGSQLPgBouncer
 | where _ResourceId =~ "your-server-name"
 | order by TimeGenerated desc
 ```
 > [!NOTE]  
-> The field names and schema format may vary slightly depending on the schema used (Consolidated vs Resource-Specific).
+> The field names and schema format might vary slightly depending on the schema used (Consolidated vs Resource-Specific).
 
-### PgBouncer Admin console
+### Admin console
 
 PgBouncer also provides an *internal* database called `pgbouncer`. When you connect to that database, you can run `SHOW` commands that provide information on the current state of PgBouncer.
 
@@ -105,7 +107,7 @@ To connect to the `pgbouncer` database:
    psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=pgbouncer user=myUser password=<password> sslmode=require"
    ```
 
-After you're connected to the database, use `SHOW` commands to view PgBouncer statistics:
+After you connect to the database, use `SHOW` commands to view PgBouncer statistics:
 
 - `SHOW HELP`: List all the available `SHOW` commands.
 - `SHOW POOLS`: Show the number of connections in each state for each pool.
@@ -129,36 +131,27 @@ To start using PgBouncer, follow these steps:
 
 ## PgBouncer in zone-redundant high availability
 
-In zone-redundant, high-availability (HA) servers, the primary server runs PgBouncer. You can connect to PgBouncer on the primary server over port 6432. After a failover, PgBouncer is restarted on the newly promoted standby, which is now the primary server. So your application connection string remains the same after failover.
+In zone-redundant, high-availability (HA) servers, the primary server runs PgBouncer. You can connect to PgBouncer on the primary server over port 6432. After a failover, the system restarts PgBouncer on the newly promoted standby, which is now the primary server. So your application connection string remains the same after failover.
 
 ## PgBouncer with elastic clusters
 
-PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After being enabled, port 6432 will route to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 will route to the PgBouncer instances running on the worker nodes in the cluster.
-
-Currently, the version of PgBouncer deployed on all supported major versions of the engine, in Azure Database for PostgreSQL, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**.
-
-## Using PgBouncer with other connection pools
-
-In some cases, you might already have an application-side connection pool or have PgBouncer set up on your application side (for example, an Azure Kubernetes Service sidecar). In these cases, the built-in PgBouncer feature can still be useful because it provides the benefits of idle connection scaling.
-
-Using an application-side pool together with PgBouncer on the database server can be beneficial. Here, the application-side pool brings the benefit of reduced initial connection latency (because the roundtrip to initialize the connection is much faster), and the database-side PgBouncer provides idle connection scaling.
+PgBouncer is also available for elastic clusters. Each node in an elastic cluster has its own instance of PgBouncer. After you enable it, port 6432 routes to PgBouncer on the elastic cluster coordinator node. Additionally, port 8432 routes to the PgBouncer instances running on the worker nodes in the cluster.
 
 ## Limitations
 
-- The PgBouncer feature is currently not supported with the Burstable server compute tier. If you change the compute tier from General Purpose or Memory Optimized to Burstable, you lose the built-in PgBouncer capability.
-- Whenever the server is restarted during scale operations, HA failover, or a restart, PgBouncer and the VM are also restarted. You then have to re-establish the existing connections.
-- The portal doesn't show all PgBouncer parameters. After you enable PgBouncer and save the parameters, you have to close the **Server parameters** pane (for example, select **Overview**) and then go back to the **Server parameters** pane.
-- You can't use statement pool modes along with prepared statements. Current version of PgBouncer added support for prepared statements inside of transaction mode. This support can be enabled and configured via [max_prepared_statements parameter](../server-parameters/concepts-server-parameters.md). Setting this parameter above default value of 0 will turn on support for prepared statements. This support only applies to protocol-level prepared statements. For most programming languages, this means that we are using the *[libpq](https://www.postgresql.org/docs/current/libpq.html)* function *PQprepare* on the client, sending protocol level commands that PgBouncer can intercept, rather than issuing a dynamic SQL command similar to *PREPARE proc AS*, which is sending text that PgBouncer will not interpret correctly. To check other limitations of your chosen pool mode, refer to the [PgBouncer documentation](https://www.pgbouncer.org/features.html).
-- If PgBouncer is deployed as a feature, it becomes a potential single point of failure. If the PgBouncer feature is down, it can disrupt the entire database connection pool and cause downtime for the application. To mitigate the single point of failure, you can set up multiple PgBouncer instances behind a load balancer for high availability on Azure VMs.
-- Token Size Restriction with Azure AD Authentication - Users with a large number of group memberships won't be able to connect through PgBouncer due to a token size restriction. Applications, services, and users with a small number of groups work.
-- PgBouncer is a lightweight application that uses a single-threaded architecture. This design is great for most application workloads. But in applications that create a large number of short-lived connections, this design might affect pgBouncer performance and limit your ability to scale your application. You might need to try one of these approaches:
-   - Distribute the connection load across multiple PgBouncer instances on Azure VMs.
-   - Consider alternative solutions, including multithreaded solutions like [PgCat](https://github.com/postgresml/pgcat), on Azure VMs.
-   
+- The PgBouncer feature currently doesn't support the Burstable server compute tier. If you change the compute tier from General Purpose or Memory Optimized to Burstable, you lose the built-in PgBouncer capability.
+- Whenever the server restarts during scale operations, HA failover, or a restart, the system also restarts PgBouncer and the VM. You then need to re-establish the existing connections.
+- The portal doesn't show all PgBouncer parameters. After you enable PgBouncer and save the parameters, you need to close the **Server parameters** pane (for example, select **Overview**) and then go back to the **Server parameters** pane to see all parameters.
+- You can't use statement pool modes along with prepared statements. The current version of PgBouncer adds support for prepared statements inside of transaction mode. This support can be enabled and configured via the [max_prepared_statements parameter](../server-parameters/concepts-server-parameters.md). Setting this parameter above the default value of 0 turns on support for prepared statements. This support only applies to protocol-level prepared statements. For most programming languages, this support means that the application uses the *[libpq](https://www.postgresql.org/docs/current/libpq.html)* function *PQprepare* on the client, sending protocol level commands that PgBouncer can intercept, rather than issuing a dynamic SQL command similar to *PREPARE proc AS*, which is sending text that PgBouncer won't interpret correctly. To check other limitations of your chosen pool mode, refer to the [PgBouncer documentation](https://www.pgbouncer.org/features.html).
+- If you deploy PgBouncer as a feature, it becomes a potential single point of failure. If the PgBouncer feature is down, it can disrupt the entire database connection pool and cause downtime for the application. To mitigate the single point of failure, you can set up multiple PgBouncer instances behind a load balancer for high availability on Azure VMs.
+- PgBouncer is a lightweight application that uses a single-threaded architecture. This design is great for most application workloads. But in applications that create a large number of short-lived connections, this design might affect PgBouncer performance and limit your ability to scale your application. You might need to try one of these approaches:
+  - Distribute the connection load across multiple PgBouncer instances on Azure VMs.
+  - Consider alternative solutions, including multithreaded solutions like [PgCat](https://github.com/postgresml/pgcat), on Azure VMs.
+
 > [!IMPORTANT]  
-> The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature has been deprecated in Azure Database for PostgreSQL.
->  
-> When TLS/SSL for connections to an Azure Database for PostgreSQL flexible server instance is enforced via setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure Database for PostgreSQL](../security/security-tls.md).
+> The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature is deprecated in Azure Database for PostgreSQL.
+>
+> When you enforce TLS/SSL for connections to an Azure Database for PostgreSQL flexible server instance by setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure Database for PostgreSQL flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure Database for PostgreSQL](../security/security-tls.md).
 
 For customers who want simplified management, built-in high availability, easy connectivity with containerized applications, and the ability to use the most popular configuration parameters, the built-in PgBouncer feature is a good choice. For customers who want multithreaded scalability, full control of all parameters, and a debugging experience, setting up PgBouncer on Azure VMs might be an alternative.
 

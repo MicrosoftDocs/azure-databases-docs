@@ -87,4 +87,4 @@ Once you have created an alert, you can select it and do the following actions:
 
 - [Configure scheduled maintenance](../configure-maintain/how-to-configure-scheduled-maintenance.md).
 - [Configure and access logs](how-to-configure-and-access-logs.md)
-- [Configure index tuning](how-to-configure-index-tuning.md).
+- [Configure autonomous tuning](how-to-configure-autonomous-tuning.md).

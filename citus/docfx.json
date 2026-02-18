@@ -1,0 +1,192 @@
+{
+  "build": {
+    "content": [
+      {
+        "dest": ".",
+        "exclude": [
+          "**/_themes/**",
+          "**/includes/**",
+          "**/obj/**"
+        ],
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "group": "group-citus",
+        "src": "."
+      },
+      {
+        "dest": "breadcrumb",
+        "files": [
+          "toc.yml"
+        ],
+        "src": "breadcrumb"
+      },
+      {
+        "dest": "zone-pivots/citus",
+        "files": [
+          "zone-pivot-groups.yml"
+        ],
+        "src": "zone-pivots"
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.png",
+          "**/*.gif",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "exclude": [
+          "**/obj/**"
+        ],
+        "src": "./",
+        "group": "group-citus"
+      }
+    ],
+    "fileMetadata": {
+      "ms.author": {
+        "**/*": "ihalatci"
+      },
+      "author": {
+        "**/*": "ihalatci"
+      },
+      "ms.reviewer": {
+        "**/*": "adamwolk, maghan"
+      },
+      "featureFlags": {
+        "**/*.md": [
+          "show_learn_banner"
+        ]
+      },
+      "learn_banner_products": {
+        "**/*.md": [
+          "postgresql-citus"
+        ]
+      },
+      "searchScope": {
+        "**/*.yml": [
+          "Citus",
+          "Citus for PostgreSQL"
+        ]
+      },
+      "titleSuffix": {
+        "**/*.md": "Citus for PostgreSQL"
+      },
+      "monikerRange": {
+        "**/*.md": "=citus-13 || =citus-14",
+        "**/*.yml": "=citus-13 || =citus-14"
+      },
+      "ms.service": {
+        "**/*": "postgresql-citus"
+      }
+    },
+    "globalMetadata": {
+      "brand": "citus",
+      "breadcrumb_path": "breadcrumb/citus/toc.yml",
+      "contributors_to_exclude": [
+        "alexbuckgit",
+        "American-Dipper",
+        "AnnaMHuff",
+        "cdpark",
+        "Court72",
+        "damabe",
+        "denrea",
+        "dksimpson",
+        "garycentric",
+        "GitHubber17",
+        "Jak-MS",
+        "JamesJBarnett",
+        "JasonWHowell",
+        "JillGrant615",
+        "JKirsch1",
+        "Jmart1428",
+        "JustPies",
+        "ktoliver",
+        "LizCasey1",
+        "MeeraDi",
+        "meganbradley",
+        "mohitp930",
+        "ms-robkni",
+        "mSarts",
+        "openpublishingbuild",
+        "paulth1",
+        "PMEds28",
+        "PRmerger",
+        "PRMerger-2",
+        "PRMerger17",
+        "PRMerger3",
+        "PRMerger4",
+        "PRMerger5",
+        "PRMerger9",
+        "rjagiewich",
+        "rmca14",
+        "Saisang",
+        "sdwheeler",
+        "ShannonLeavitt",
+        "ShawnJackson",
+        "ShawnKupfer",
+        "tfosmark",
+        "TimShererWithAquent",
+        "ttorble",
+        "tysonn",
+        "v-albemi",
+        "v-ccolin",
+        "v-dirichards",
+        "v-emilypr",
+        "v-lmcdonald",
+        "v-regandowner",
+        "v-savila",
+        "v-shils",
+        "v-stsavell",
+        "v-thepet",
+        "v-thpra"
+      ],
+      "feedback_github_repo": "MicrosoftDocs/azure-databases-docs",
+      "feedback_help_link_type": "get-help-at-qna",
+      "feedback_help_link_url": "/answers/tags/214/azure-database-postgresql/",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0",
+      "feedback_system": "Standard",
+      "permissioned-type": "public",
+      "recommendations": true,
+      "searchScope": [
+        "Citus"
+      ],
+      "uhfHeaderId": "postgresql-citus",
+      "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
+    },
+    "groups": {
+      "group-citus": {
+        "dest": "citus-all",
+        "moniker_range": "=citus-13 || =citus-14"
+      }
+    },
+    "rules": {
+      "sensitive-language-bl": {
+        "exclude": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      },
+      "sensitive-language-ma": {
+        "exclude": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      },
+      "sensitive-language-sl": {
+        "exclude": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      },
+      "sensitive-language-wl": {
+        "exclude": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      }
+    }
+  }
+}

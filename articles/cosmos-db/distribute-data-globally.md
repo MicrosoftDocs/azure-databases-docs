@@ -62,7 +62,7 @@ With Azure Cosmos DB, you can add or remove the regions associated with your acc
 
 ## <a id="Next Steps"></a>Next steps
 
-* [Global distribution - under the hood](global-dist-under-the-hood.md)
+* [Global distribution - under the hood](global-distribution.md)
 * [How to configure multi-region writes in your applications](how-to-multi-master.md)
 * [Configure multiple write-regions](how-to-manage-database-account.yml#configure-multiple-write-regions)
 * [Add or remove regions from your Azure Cosmos DB account](how-to-manage-database-account.yml#add-remove-regions-from-your-database-account)

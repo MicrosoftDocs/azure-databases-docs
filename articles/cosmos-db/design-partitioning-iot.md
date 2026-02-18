@@ -128,4 +128,4 @@ By using DeviceId +Time-based-key (Date + Hour + Minute) as a hierarchical parti
 > - We recommend  adding ID as the last level of your hierarchical partition key to ensure you never reach the 20-GB limit for a logical partition key.
 -   Optimize our most common query patterns that frequently filter by DeviceId and Date/Hour/Minute, minimizing cross-partition queries and reducing RU costs.
 
-For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](partitioning-overview.md).
+For more information on how partitioning works in Azure Cosmos DB, you can learn more [here](partitioning.md).

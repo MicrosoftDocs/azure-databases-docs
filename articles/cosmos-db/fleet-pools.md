@@ -1,12 +1,12 @@
 ---
-title: Fleets Pools (Preview)
+title: Fleets Pools
 description: Pools manage throughput in Azure Cosmos DB fleets aimed at optimizing resource allocation for multitenant applications.
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 05/07/2025
+ms.date: 02/11/2026
 ai-usage: ai-assisted
 show_latex: true
 appliesto:
@@ -85,20 +85,20 @@ Throughput pooling requires all database accounts in a **fleetspace** to have th
 Here are examples of allowed and unallowed configurations:
 
 - Varying regional configurations
-    - **Allowed**: Two accounts, both configured as single-region write in two distinct Azure regions.
-    - **Allowed**: Two accounts, both configured as multi-region write in two distinct Azure regions.
-    - **Not allowed**: One account, with single-region write but distributed to two distinct Azure regions. Another account, with single-region write, in a different single Azure region.
+    - **Allowed**: Two accounts, both configured as single-region write (general purpose) in two distinct Azure regions.
+    - **Allowed**: Two accounts, both configured as multi-region write (business critical) in two distinct Azure regions.
+    - **Not allowed**: One account, with single-region write (general purpose) but distributed to two distinct Azure regions. Another account, with single-region write (general purpose), in a different single Azure region.
     - **Not allowed**: Two accounts, with global distribution configured for two different sets of regions.
 - Varying service tiers
     - **Allowed**: Two accounts, both with multi-region write (business critical) configured in two separate Azure regions.
-    - **Not allowed**: Two accounts, one with multi-region write and the other with single-region write.
+    - **Not allowed**: Two accounts, one with multi-region write (business critical) and the other with single-region write (general purpose).
 
 > [!NOTE]
 > Accounts must have the same underlying configuration of multi-region writes (business critical) or single-region writes (general purpose) to participate in the same pool.
 
 ## Monitoring consumption
 
-In the preview, you can monitor the RU/s the pool scaled to via the `FleetspaceAutoscaledThroughput` metric available at the fleet level.
+You can monitor the RU/s the pool scaled to via the `FleetspaceAutoscaledThroughput` metric available at the fleet level.
 
 You can also monitor pooled RU/s consumption at the account level in Azure portal via Azure Monitor following these steps:
 
@@ -112,15 +112,17 @@ You can also monitor pooled RU/s consumption at the account level in Azure porta
 
 ## Default limitations
 
-With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](partitioning-overview.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
+With the pooling feature, the total RU/s available for consumption to each physical partition is still subject to standard [physical partition limits](partitioning.md#physical-partitions). Each **physical partition** has limits on how much extra RU/s it can draw from the pool. 
 
-In the preview:
+By default:
 
-- A physical partition uses up to 5,000 extra RU/s from the pool in addition to its dedicated throughput.
+- A physical partition uses up to 5,000 extra RU/s from the pool in addition to its dedicated throughput. If your application requires a different value, file a support ticket. 
 
-- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 10,000 RU/s total, even if more RU/s are available to use from the pool. 
+- A physical partition’s total consumption of dedicated + pool RU/s can't exceed 10,000 RU/s total, even if more RU/s are available to use from the pool.
 
-- The maximum total RU/s a physical partition can consume while using pooling = $\min(5000+currentThroughput, 10000)$.
+- In summary, the maximum total RU/s a physical partition can consume while using pooling = $\min(5000+currentThroughput, 10000)$.
+
+
 
 > [!TIP]
 > You can use the metric `PhysicalPartitionThroughput` in Azure Monitor to determine how many dedicated RU/s are allocated to each physical partition.

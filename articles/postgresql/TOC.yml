@@ -9,14 +9,18 @@
     - name: Version policy
       href: configure-maintain/concepts-version-policy.md
       displayName: version, postgresql
-    - name: Try for free
-      href: configure-maintain/how-to-deploy-on-azure-free-account.md
 - name: Release notes
   items:
     - name: Release notes
       href: release-notes/release-notes.md
     - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
+      items:
+      - name: Maintenance release notes index
+        href: release-notes-maintenance/release-notes-maintenance-index.md
+      - name: January 2026
+        href: release-notes-maintenance/2026-january.md
+      - name: October 2025
+        href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: release-notes/release-notes-api.md
     - name: CLI release notes
@@ -515,8 +519,6 @@
           items:
             - name: Premigration validation
               href: migrate/migration-service/concepts-premigration-migration-service.md
-            - name: Migration of roles, ownerships, and permissions
-              href: migrate/migration-service/concepts-user-roles-migration-service.md
             - name: Runtime server
               href: migrate/migration-service/concepts-migration-service-runtime-server.md
             - name: Required user permissions
@@ -616,8 +618,12 @@
           href: monitor/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: monitor/concepts-query-performance-insight.md
-        - name: Index tuning
-          href: monitor/concepts-index-tuning.md
+        - name: Autonomous tuning overview
+          href: monitor/concepts-autonomous-tuning.md
+        - name: Configure autonomous tuning
+          href: monitor/how-to-configure-autonomous-tuning.md
+        - name: Use recommendations
+          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
         - name: Intelligent tuning
           href: monitor/concepts-intelligent-tuning.md
     - name: Download PostgreSQL and upgrade logs
@@ -626,12 +632,6 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
-    - name: Index tuning
-      items:
-        - name: Configure index tuning
-          href: monitor/how-to-configure-index-tuning.md
-        - name: Use index recommendations
-          href: monitor/how-to-get-and-apply-recommendations-from-index-tuning.md
     - name: Intelligent tuning
       items:
         - name: Azure portal
@@ -675,6 +675,9 @@
         - name: Troubleshoot high CPU utilization
           href: troubleshoot/how-to-high-cpu-utilization.md
           displayName: High CPU Utilization
+        - name: Troubleshoot high CPU utilization on elastic clusters
+          href: troubleshoot/how-to-high-cpu-utilization-elastic-clusters.md
+          displayName: High CPU Utilization on Elastic Clusters
         - name: Troubleshoot high memory utilization
           href: troubleshoot/how-to-high-memory-utilization.md
           displayName: High Memory Utilization
