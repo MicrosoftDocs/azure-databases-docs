@@ -65,9 +65,9 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
 - The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `orafce`, `postgres_fdw`.
 - The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
-- When upgrading to PostgreSQL 17, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
+- When upgrading to PostgreSQL 17, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`, `pg_failover_slots`.
 
-**Note:** If any of these extensions appear in the `azure.extensions` server parameter, the upgrade will be blocked. Remove them from the parameter before starting the upgrade.
+**Note:** If any of these extensions appear in the `azure.extensions` and `shared_preload_libraries` server parameter, the upgrade will be blocked. Remove them from the parameter before starting the upgrade.
 
 ### PostGIS-Specific Considerations
 
