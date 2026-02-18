@@ -37,7 +37,7 @@ RPO is *how much data can you lose in an outage*. It's low because data is synch
 
 ## Availability zones
 
-Cassandra's peer-to-peer architecture brings fault tolerance from the ground up. Azure Managed Instance for Apache Cassandra provides support for [availability zones](/azure/reliability/availability-zones-region-support) in selected regions. This support enhances resiliency at the infrastructure level. For a replication factor of 3, availability zone support ensures that each replica is in a different availability zone. This approach prevents a zonal outage from affecting your database or application. We recommend enabling availability zones where possible.
+Cassandra's peer-to-peer architecture brings fault tolerance from the ground up. Azure Managed Instance for Apache Cassandra provides support for [availability zones](/azure/reliability/availability-zones-region-support) in selected regions. This support enhances resiliency at the infrastructure level. For a replication factor of 3, availability zone support ensures that each replica is in a different availability zone. This approach prevents a zone outage from affecting your database or application. We recommend enabling availability zones where possible.
 
 ## Multi-region redundancy
 

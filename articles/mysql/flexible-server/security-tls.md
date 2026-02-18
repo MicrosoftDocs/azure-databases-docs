@@ -50,7 +50,7 @@ Review [connect using SSL/TLS](security-tls-how-to-connect.md#verify-the-tls-con
 
 ## Trusted root certs and cert rotations
 
-[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
+[!INCLUDE [mysql-certificate-rotation](includes/mysql-certificate-rotation.md)]
 
 ### Root CAs used by Azure Database for MySQL
 
