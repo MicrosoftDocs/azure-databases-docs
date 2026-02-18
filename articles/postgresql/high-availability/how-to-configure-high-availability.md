@@ -35,7 +35,7 @@ The **Zonal Resiliency** option controls whether your server is protected across
 - Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
 - Disabled – High availability isn't configured.
 
-If you enable zonal resiliency but your region lacks capacity for a zone-redundant setup, an extra checkbox appears under the Enabled option. Selecting this checkbox allows the standby server to be created in the same zone as the primary server. When zonal capacity becomes available, Azure automatically migrate your workloads from Same-Zone HA to Zone-redundant HA.
+If you enable zonal resiliency but your region lacks capacity for a zone-redundant setup, an extra checkbox appears under the Enabled option. Selecting this checkbox allows the standby server to be created in the same zone as the primary server. When zonal capacity becomes available, Azure automatically migrates your workloads from Same-Zone HA to Zone-redundant HA.
 
 1. If you didn't enable Zonal Resiliency, select the **Enabled** option.
 
@@ -125,7 +125,7 @@ The **--zonal-resiliency** parameter helps you create a standby server in a diff
 - Enabled – When you select this option, Azure tries to create the standby server in a different availability zone than the primary. This option gives you the best protection against zone-level failures.
 - Disabled – High availability isn't configured.
 
-To ensure your server is configured for high availability, enable the `--allow-same-zone` parameter. In regions without multiple availability zones, this option allows the standby server to be created in the same zone as the primary. When zonal capacity becomes availabile, Azure automatically migrates your workloads from same-zone HA to zone-redundant HA.
+To ensure your server is configured for high availability, enable the `--allow-same-zone` parameter. In regions without multiple availability zones, this option allows the standby server to be created in the same zone as the primary. When zonal capacity becomes available, Azure automatically migrates your workloads from same-zone HA to zone-redundant HA.
 
 ```azurecli-interactive
 az postgres flexible-server update \
@@ -198,7 +198,7 @@ You can configure high availability when you first create your Azure Database fo
 
    :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png" alt-text="Screenshot that shows enabling HA with zone-redundant option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-zonal-resiliency.png":::
 
-   - If zonal capacity isn't available, select the **Allow standby in same zone if zonal resiliency fails** checkbox as a fallback. If you don't select this option, you can't proceed to the next step in the create workflow. This check ensures high availability remains enabled. When zonal capacity becomes available, Azure automatically migrate your workloads from Same-Zone HA to Zone-redundant HA.
+   - If zonal capacity isn't available, select the **Allow standby in same zone if zonal resiliency fails** checkbox as a fallback. If you don't select this option, you can't proceed to the next step in the create workflow. This check ensures high availability remains enabled. When zonal capacity becomes available, Azure automatically migrates your workloads from Same-Zone HA to Zone-redundant HA.
 
      :::image type="content" source="./media/how-to-configure-high-availability/high-availability-enable-same-zone-error.png" alt-text="Screenshot that shows validation error message for same-zone HA option." lightbox="./media/how-to-configure-high-availability/high-availability-enable-same-zone-error.png":::
 
