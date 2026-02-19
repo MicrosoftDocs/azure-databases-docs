@@ -81,7 +81,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     MONGO_CLUSTER_NAME=<DOCUMENTDB_NAME>
 
     # Data file
-    DATA_FILE_WITH_VECTORS=data/Hotels_Vector.json
+    DATA_FILE_WITH_VECTORS=../data/Hotels_Vector.json
     EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     LOAD_SIZE_BATCH=50
@@ -95,20 +95,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
 ## Create Go source files for vector search
 
-Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
-
-```plaintext
-data
-│── Hotels_Vector.json
-vector-search-quickstart
-├── .env
-├── go.mod
-├── src
-│   ├── diskann.go
-│   ├── ivf.go
-│   ├── hnsw.go
-│   └── utils.go
-```
+Continue the project by creating code files for vector search. 
 
 ### [DiskANN](#tab/tab-diskann)
 
@@ -118,6 +105,19 @@ Create a `src` directory for your Go files. Add two files: `diskann.go` and `uti
 mkdir src    
 touch src/diskann.go
 touch src/utils.go
+```
+
+When you are done, the project structure should look like this:
+
+```plaintext
+data
+│── Hotels_Vector.json
+vector-search-quickstart
+├── .env
+├── go.mod
+├── src
+│   ├── diskann.go
+│   └── utils.go
 ```
 
 #### [IVF](#tab/tab-ivf)
@@ -130,6 +130,19 @@ touch src/ivf.go
 touch src/utils.go
 ```
 
+When you are done, the project structure should look like this:
+
+```plaintext
+data
+│── Hotels_Vector.json
+vector-search-quickstart
+├── .env
+├── go.mod
+├── src
+│   ├── ivf.go
+│   └── utils.go
+```
+
 #### [HNSW](#tab/tab-hnsw)
 
 Create a `src` directory for your Go files. Add two files: `hnsw.go` and `utils.go` for the HNSW index implementation:
@@ -138,6 +151,19 @@ Create a `src` directory for your Go files. Add two files: `hnsw.go` and `utils.
 mkdir src
 touch src/hnsw.go
 touch src/utils.go
+```
+
+When you are done, the project structure should look like this:
+
+```plaintext
+data
+│── Hotels_Vector.json
+vector-search-quickstart
+├── .env
+├── go.mod
+├── src
+│   ├── hnsw.go
+│   └── utils.go
 ```
 
 ----
