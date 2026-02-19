@@ -103,27 +103,22 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 
     You should always prefer passwordless authentication, but it will require additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Python apps to Azure services by using the Azure SDK for Python](/azure/developer/python/sdk/authentication/overview).
 
-1. Create a new subdirectory named `data`.
-
-1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) into a new `Hotels_Vector.json` file in the `data` subdirectory.
-
 ## Create code files for vector search
 
 Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
 
 ```plaintext
-
-├── data
-│   └── Hotels_Vector.json
-├── vector-search-quickstart
-│   ├── venv (or your virtual environment folder)
-│   ├── .env
-│   └── src
-│       ├── diskann.py
-│       ├── ivf.py
-│       ├── hnsw.py
-│       └── utils.py
-
+├── data/
+│   ├── Hotels.json              # Source hotel data (without vectors)
+│   └── Hotels_Vector.json       # Hotel data with vector embeddings
+└── vector-search-python/
+    ├── src/
+    │   ├── diskann.py           # DiskANN vector search implementation
+    │   ├── hnsw.py              # HNSW vector search implementation
+    │   ├── ivf.py               # IVF vector search implementation
+    │   └── utils.py              # Shared utility functions
+    ├── requirements.txt         # Python dependencies
+    ├── .env                     # Environment variables template
 ```
 
 ### [DiskANN](#tab/tab-diskann)
