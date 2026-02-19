@@ -964,6 +964,31 @@
       "source_path": "articles/cosmos-db/autoscale-per-partition-region.md",
       "redirect_url": "/azure/cosmos-db/provision-throughput-autoscale",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dms/ads-sku-recommend.md",
+      "redirect_url": "/sql/sql-server/azure-arc/migration-assessment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dms/known-issues-azure-sql-migration-azure-data-studio.md",
+      "redirect_url": "/azure/dms/dms-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dms/migration-using-azure-data-studio.md",
+      "redirect_url": "/azure/dms/dms-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dms/tutorial-login-migration-ads.md",
+      "redirect_url": "/azure/dms/dms-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/dms/tutorial-transparent-data-encryption-migration-ads.md",
+      "redirect_url": "/azure/dms/dms-overview",
+      "redirect_document_id": false
     }
   ]
 }
