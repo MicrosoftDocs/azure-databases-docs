@@ -14,7 +14,7 @@ ms.custom:
   - sfi-ropc-blocked
 ---
 
-# Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL
+# How to use Microsoft Entra ID for authentication with Azure Database for PostgreSQL
 
 In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL. You also learn how to use a Microsoft Entra token with an Azure Database for PostgreSQL flexible server instance.
 
@@ -68,7 +68,6 @@ Microsoft Entra integration works with standard PostgreSQL tools like psql, whic
 We tested the following clients:
 
 - **psql command line**: Use the `PGPASSWORD` variable to pass the token.
-- **Azure Data Studio**: Use the PostgreSQL extension.
 - **Other libpq-based clients**: Examples include common application frameworks and object-relational mappers (ORMs).
 - **PgAdmin**: Clear **Connect now** at server creation.
 
