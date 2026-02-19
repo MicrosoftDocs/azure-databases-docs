@@ -5,7 +5,7 @@ author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 01/28/2026
+ms.date: 02/19/2026
 ms.custom: references_regions, synapse-cosmos-db
 appliesto:
   - ✅ NoSQL
@@ -23,7 +23,7 @@ Azure Synapse Link is available for Azure Cosmos DB SQL API or for Azure Cosmos 
 * [Enable Azure Synapse Link for your containers](#update-analytical-ttl)
 * [Connect your Azure Cosmos DB database to an Azure Synapse workspace](#connect-to-cosmos-database)
 * [Query analytical store using Azure Synapse Analytics](#query)
-* [Improve performance with Best Practices](#best)
+* [Improve performance with best practices](#synapse-sql-serverless-best-practices-for-azure-synapse-link-for-cosmos-db)
 
 You can also check the training module on how to [configure Azure Synapse Link for Azure Cosmos DB](/training/modules/configure-azure-synapse-link-with-azure-cosmos-db/).
 
