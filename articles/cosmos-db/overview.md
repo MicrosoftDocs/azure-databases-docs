@@ -1,6 +1,6 @@
 ---
 title: Unified AI Database
-description: Database for AI Era - Azure Cosmos DB is a NoSQL, relational, and vector database that provides unmatched reliability and flexibility for your operational data needs.
+description: Database for AI Era - Azure Cosmos DB is a NoSQL and vector database that provides unmatched reliability and flexibility for your operational data needs.
 author: markjbrown
 ms.author: mjbrown
 ms.service: azure-cosmos-db
@@ -13,7 +13,6 @@ ms.collection:
 appliesto:
   - ✅ NoSQL
   - ✅ MongoDB
-  - ✅ PostgreSQL
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin
   - ✅ Table
@@ -26,15 +25,15 @@ appliesto:
 
 Today's applications are required to be highly responsive and always online. They must respond in real time to large changes in usage at peak hours, store ever increasing volumes of data, and make this data available to users in milliseconds. To achieve low latency and high availability, instances of these applications need to be deployed in datacenters that are close to their users.
 
-The surge of AI-powered applications created another layer of complexity, because many of these applications integrate a multitude of data stores. For example, some organizations built applications that simultaneously connect to MongoDB, Postgres, Redis, and Gremlin. These databases differ in implementation workflow and operational performances, posing extra complexity for scaling applications.
+The surge of AI-powered applications created another layer of complexity, because many of these applications integrate a multitude of data stores. For example, some organizations built applications that simultaneously connect to MongoDB, Redis, and Gremlin. These databases differ in implementation workflow and operational performances, posing extra complexity for scaling applications.
 
-Azure Cosmos DB simplifies and expedites your application development by being the single database for your operational data needs, from [geo-replicated distributed caching](https://medium.com/@marcodesanctis2/using-azure-cosmos-db-as-your-persistent-geo-replicated-distributed-cache-b381ad80f8a0) to back up to [vector indexing and search](vector-database.md). It provides the data infrastructure for modern applications like [AI agent](ai-agents.md), digital commerce, Internet of Things, and booking management. It can accommodate all your operational data models, including relational, document, vector, key-value, graph, and table.
+Azure Cosmos DB simplifies and expedites your application development by being the single database for your operational data needs, from [geo-replicated distributed caching](https://medium.com/@marcodesanctis2/using-azure-cosmos-db-as-your-persistent-geo-replicated-distributed-cache-b381ad80f8a0) to back up to [vector indexing and search](vector-database.md). It provides the data infrastructure for modern applications like [AI agent](ai-agents.md), digital commerce, Internet of Things, and booking management. It can accommodate all your operational data models, including document, vector, key-value, graph, and table.
 
 ## An AI database providing industry-leading capabilities...
 
 ## ...for free
 
-Azure Cosmos DB is a fully managed NoSQL, relational, and vector database. It offers single-digit millisecond response times, automatic and instant scalability, along with guaranteed speed at any scale. Business continuity is assured with [SLA-backed](https://azure.microsoft.com/support/legal/sla/cosmos-db) availability and enterprise-grade security.
+Azure Cosmos DB is a fully managed NoSQL and vector database. It offers single-digit millisecond response times, automatic and instant scalability, along with guaranteed speed at any scale. Business continuity is assured with [SLA-backed](https://azure.microsoft.com/support/legal/sla/cosmos-db) availability and enterprise-grade security.
 
 App development is faster and more productive thanks to:
 
@@ -53,8 +52,6 @@ As a fully managed service, Azure Cosmos DB takes database administration off yo
 The following free options are available:
 
 * [Azure Cosmos DB lifetime free tier](free-tier.md) provides 1000 [RU/s](request-units.md) of throughput and 25 GB of storage free.
-* [Azure AI Advantage](ai-advantage.md) offers 40,000 [RU/s](request-units.md) of throughput for 90 days (equivalent of up to $6,000) to Azure AI or GitHub Copilot customers.
-* [Try Azure Cosmos DB free](https://azure.microsoft.com/try/cosmosdb/) for 30 days without creating an Azure account; no commitment follows when the trial period ends.
 * [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account) gives you $200 in Azure credits for the first 30 days and 400 RU/s of provisioned throughput with 25-GB storage for 12 months.
 * [Azure Cosmos DB emulator](emulator.md) provides a local environment that emulates the Azure Cosmos DB service for development and testing at no cost.
 
@@ -78,7 +75,7 @@ Besides AI, Azure Cosmos DB should also be your goto database for various use ca
 ##### For what kinds of apps are Azure Cosmos DB a poor fit?
 
 - **Analytical workloads (OLAP).** For example, interactive, streaming, and batch analytics to enable Data Scientist / Data Analyst scenarios. Consider Microsoft Fabric instead.
-- **Highly relational apps.** For example, white-label CRM applications. Consider Azure SQL, Azure Database for MySQL, or Azure Database for PostgreSQL instead.
+- **Highly relational apps.** For example, white-label CRM applications. Consider Azure SQL or Azure Database for MySQL instead.
 
 ## ...with unmatched reliability and flexibility
 
@@ -95,7 +92,7 @@ Gain unparalleled [SLA-backed](https://azure.microsoft.com/support/legal/sla/cos
 Build fast with open-source APIs, multiple SDKs, schemaless data, and no-ETL analytics over operational data.
 
 - Deeply integrated with key Azure services used in modern (cloud-native) app development including Azure Functions, IoT Hub, AKS (Azure Kubernetes Service), App Service, and more.
-- Use Azure Cosmos DB as your unified AI database for data models like relational, document, vector, key-value, graph, and table.
+- Use Azure Cosmos DB as your unified AI database for data models like document, vector, key-value, graph, and table.
 - Build apps on API for NoSQL using the languages of your choice with SDKs for .NET, Java, Node.js, and Python. Or your choice of drivers for any of the other database APIs.
 - Change feed makes it easy to track and manage changes to database containers and create triggered events with Azure Functions.
 - Azure Cosmos DB's schema-less service automatically indexes all your data, regardless of the data model, to deliver blazing fast queries.
@@ -149,7 +146,7 @@ Azure DocumentDB is also a good fit for multicloud portability scenarios. It's i
 For more detailed information, see [Azure DocumentDB vs. Azure Cosmos DB decision guide](../documentdb/compare-cosmos-db.md?context=/azure/cosmos-db/nosql/context/context).
 
 > [!TIP]
-> In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, (2) PostgreSQL ecosystem alignment, or (3) multicloud portability using MongoDB-compatible drivers and tooling without refactoring.
+> In most new application scenarios where you're flexible on drivers and need global scale, prefer the native **API for NoSQL** on Azure Cosmos DB for fastest feature velocity and turnkey global distribution. Choose **Azure DocumentDB** only when you require: (1) deep MongoDB aggregation & multi-document transaction fidelity, or (2) multicloud portability using MongoDB-compatible drivers and tooling without refactoring.
 
 ## Related content
 
