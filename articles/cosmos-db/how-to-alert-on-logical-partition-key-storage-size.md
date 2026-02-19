@@ -154,7 +154,11 @@ For example, in the alert that was fired, we see the logical partition of "Conto
 :::image type="content" source="media/how-to-alert-on-logical-partition-key-storage-size/alert-when-logical-partition-key-exceeds-threshold.png" alt-text="Screenshot of an alert fired when logical partition key size exceeds threshold":::
 
 ## Remediation steps
-When the 20-GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. As a result, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
+When the 20-GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. 
+
+If your workload reaches the logical partition limit of 20 GB in production, see [hierarchical partition keys overview](hierarchical-partition-keys.md) to further optimize data distribution and for a higher level of scaling. 
+
+Else, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
 
 To help give time for this, you can request a temporary increase in the logical partition key limit for your existing application.  [File an Azure support ticket](create-support-request-quota-increase.md) and select quota type **Temporary increase in container's logical partition key size.** Note this is intended as a temporary mitigation and not recommended as a long-term solution, as service level agreement (SLA) guarantees aren't honored when the limit is increased. To remove the configuration, file a support ticket and select quota type **Restore container’s logical partition key size to default (20 GB)**. This can be done after you have either deleted data to fit the 20-GB logical partition limit or have rearchitected your application with a different partition key.
 

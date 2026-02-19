@@ -290,6 +290,8 @@ Currently, container copy is supported in the following regions:
     "message": "Response status code does not indicate success: Forbidden (403); Substatus: 1014; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {"Errors":["Partition key reached maximum size of 20 GB. Learn more: https://aka.ms/CosmosDB/sql/errors/full-pk"]"
     ```
 
+    If you use hierarchical partition keys feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See [hierarchical partition keys overview](hierarchical-partition-keys.md).
+
 * Error - Owner resource doesn't exist
 
     If the job creation fails and displays the error "Owner resource doesn't exist" (error code 404), either the target container hasn't been created yet or the container name that's used to create the job doesn't match an actual container name.
