@@ -67,6 +67,7 @@ Microsoft Entra integration works with standard PostgreSQL tools like psql, whic
 
 We tested the following clients:
 
+- **PostgreSQL for Visual Studio Code extension**: Use the **AUTHENTICATION TYPE** to set the authentication method to **Entra Auth**.
 - **psql command line**: Use the `PGPASSWORD` variable to pass the token.
 - **Other libpq-based clients**: Examples include common application frameworks and object-relational mappers (ORMs).
 - **PgAdmin**: Clear **Connect now** at server creation.
