@@ -6,7 +6,7 @@ ms.author: patricka
 ms.reviewer: khelanmodi
 ms.devlang: golang
 ms.topic: quickstart-sdk
-ms.date: 02/17/2026
+ms.date: 02/19/2026
 ai-usage: ai-assisted
 ms.custom: devx-track-go, devx-track-go-ai, devx-track-data-ai
 # CustomerIntent: As a developer, I want to learn how to use vector search in Go applications with Azure DocumentDB
@@ -272,7 +272,7 @@ OIDC authentication successful!
 Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
-Inserting data into collection 'vectorSearchCollection'...
+Inserting data into collection 'hotels_diskann'...
 Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
 Successfully obtained token
 Starting batch insertion of 50 documents...
@@ -307,7 +307,7 @@ OIDC authentication successful!
 Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
-Preparing collection 'vectorSearchCollection'...
+Preparing collection 'hotels_ivf'...
 Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
 Successfully obtained token
 Cleared 50 existing documents from collection
@@ -346,7 +346,7 @@ OIDC authentication successful!
 Loading data from data/Hotels_Vector.json...
 Loaded 50 documents
 
-Preparing collection 'vectorSearchCollection'...
+Preparing collection 'hotels_hnsw'...
 Getting token with scope: https://ossrdbms-aad.database.windows.net/.default
 Successfully obtained token
 Cleared 50 existing documents from collection
