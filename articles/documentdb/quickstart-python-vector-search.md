@@ -78,7 +78,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     - `openai`: OpenAI client library to create vectors
     - `python-dotenv`: Environment variable management from .env files
 
-1. Create a `.env` file in your project root for environment variables:
+1. Create a `.env` file for environment variables in `vector-search-quickstart`:
 
     ```ini
     # Azure OpenAI configuration
@@ -111,7 +111,7 @@ Continue the project by creating code files for vector search. When you are done
 ├── data/
 │   ├── Hotels.json              # Source hotel data (without vectors)
 │   └── Hotels_Vector.json       # Hotel data with vector embeddings
-└── vector-search-python/
+└── vector-search-quickstart/
     ├── src/
     │   ├── diskann.py           # DiskANN vector search implementation
     │   ├── hnsw.py              # HNSW vector search implementation
