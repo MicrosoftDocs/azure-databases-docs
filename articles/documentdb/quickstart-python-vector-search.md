@@ -7,7 +7,8 @@ ms.author: rotabor
 ms.reviewer: khelanmodi
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 11/04/2025
+ms.date: 02/17/2026
+ai-usage: ai-assisted
 ms.custom:
   - devx-track-python
   - devx-track-python-ai
@@ -20,15 +21,26 @@ ms.custom:
 Use vector search in Azure DocumentDB
  with the Python client library. Store and query vector data efficiently.
 
-This quickstart uses a sample hotel dataset in a JSON file with vectors from the `text-embedding-ada-002` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
+This quickstart uses a sample hotel dataset in a JSON file with pre-calculated vectors from the `text-embedding-3-small` model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
-Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/mongo-vcore-vector-search-python) on GitHub.
+Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/main/ai/vector-search-python) on GitHub.
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search.md)]
+[!INCLUDE[Prerequisites - Vector Search Quickstart](includes/prerequisite-quickstart-vector-search-model.md)]
 
 - [Python](https://www.python.org/downloads/) 3.9 or greater
+
+## Create data file with vectors
+
+1. Create a new data directory for the hotels data file:
+
+    ```bash
+    mkdir data
+    ```
+
+1. Copy the `Hotels_Vector.json` [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/documentdb-samples/refs/heads/main/ai/data/Hotels_Vector.json) to your `data` directory.
+
 
 ## Create a Python project
 
@@ -66,23 +78,23 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
     - `openai`: OpenAI client library to create vectors
     - `python-dotenv`: Environment variable management from .env files
 
-1. Create a `.env` file in your project root for environment variables:
+1. Create a `.env` file for environment variables in `vector-search-quickstart`:
 
     ```ini
     # Azure OpenAI configuration
     AZURE_OPENAI_EMBEDDING_ENDPOINT= 
-    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-ada-002
-    AZURE_OPENAI_EMBEDDING_API_VERSION=2024-02-01
+    AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
+    AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
 
     # Azure DocumentDB configuration
     MONGO_CLUSTER_NAME=
 
     # Data Configuration (defaults should work)
-    DATA_FILE_WITH_VECTORS=data/HotelsData_with_vectors.json
-    EMBEDDED_FIELD=text_embedding_ada_002
+    DATA_FILE_WITH_VECTORS=data/Hotels_Vector.json
+    EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     EMBEDDING_SIZE_BATCH=16
-    LOAD_SIZE_BATCH=100
+    LOAD_SIZE_BATCH=50
     ```
 
     For the passwordless authentication used in this article, replace the placeholder values in the `.env` file with your own information:
@@ -91,35 +103,22 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
     You should always prefer passwordless authentication, but it will require additional setup. For more information on setting up managed identity and the full range of your authentication options, see [Authenticate Python apps to Azure services by using the Azure SDK for Python](/azure/developer/python/sdk/authentication/overview).
 
-1. Create a new subdirectory off the root named `data`.
-
-1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) into a new `HotelsData_with_vectors.json` file in the `data` subdirectory.
-
-1. The project structure should look like this:
-
-    ```plaintext
-    vector-search-quickstart
-    ├── .env
-    ├── data
-    │   └── HotelsData_with_vectors.json
-    └── venv (or your virtual environment folder)
-    ```
-
 ## Create code files for vector search
 
 Continue the project by creating code files for vector search. When you are done, the project structure should look like this:
 
 ```plaintext
-vector-search-quickstart
-├── .env
-├── data
-│   └── HotelsData_with_vectors.json
-├── src
-│   ├── diskann.py
-│   ├── ivf.py
-│   └── hnsw.py
-│   └── utils.py
-└── venv (or your virtual environment folder)
+├── data/
+│   ├── Hotels.json              # Source hotel data (without vectors)
+│   └── Hotels_Vector.json       # Hotel data with vector embeddings
+└── vector-search-quickstart/
+    ├── src/
+    │   ├── diskann.py           # DiskANN vector search implementation
+    │   ├── hnsw.py              # HNSW vector search implementation
+    │   ├── ivf.py               # IVF vector search implementation
+    │   └── utils.py              # Shared utility functions
+    ├── requirements.txt         # Python dependencies
+    ├── .env                     # Environment variables template
 ```
 
 ### [DiskANN](#tab/tab-diskann)
@@ -161,20 +160,20 @@ touch src/utils.py
 
 Paste the following code into the `diskann.py` file.
 
-:::code language="python" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-python/src/diskann.py" :::
+:::code language="python" source="~/documentdb-samples/ai/vector-search-python/src/diskann.py" :::
 
 
 #### [IVF](#tab/tab-ivf)
 
 Paste the following code into the `ivf.py` file.
 
-:::code language="python" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-python/src/ivf.py" :::
+:::code language="python" source="~/documentdb-samples/ai/vector-search-python/src/ivf.py" :::
 
 #### [HNSW](#tab/tab-hnsw)
 
 Paste the following code into the `hnsw.py` file.
 
-:::code language="python" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-python/src/hnsw.py" :::
+:::code language="python" source="~/documentdb-samples/ai/vector-search-python/src/hnsw.py" :::
 
 ----
 
@@ -193,20 +192,18 @@ This main module provides these features:
 
 Paste the following code into `utils.py`:
 
-:::code language="python" source="~/cosmos-db-vector-samples/mongo-vcore-vector-search-python/src/utils.py" :::
+:::code language="python" source="~/documentdb-samples/ai/vector-search-python/src/utils.py" :::
 
 This utility module provides these features:
 
-- `JsonData`: Interface for the data structure
-- `scoreProperty`: Location of the score in query results based on vector search method
-- `getClients`: Creates and returns clients for Azure OpenAI and Azure DocumentDB
-
-- `getClientsPasswordless`: Creates and returns clients for Azure OpenAI and Azure DocumentDB
- using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
-- `readFileReturnJson`: Reads a JSON file and returns its contents as an array of `JsonData` objects
-- `writeFileJson`: Writes an array of `JsonData` objects to a JSON file
-- `insertData`: Inserts data in batches into a MongoDB collection and creates standard indexes on specified fields
-- `printSearchResults`: Prints the results of a vector search, including the score and hotel name
+- `get_clients`: Creates and returns clients for Azure OpenAI and Azure DocumentDB
+- `get_clients_passwordless`: Creates and returns clients for Azure OpenAI and Azure DocumentDB using passwordless authentication
+- `azure_identity_token_callback`: Gets an Azure AD token used by MongoDB OIDC authentication
+- `read_file_return_json`: Reads a JSON file and returns its contents as an array of objects
+- `write_file_json`: Writes an array of objects to a JSON file
+- `insert_data`: Inserts data in batches into a MongoDB collection and creates standard indexes on specified fields
+- `drop_vector_indexes`: Drops existing vector indexes on the target vector field
+- `print_search_results`: Prints vector search results, including score and hotel name
 
 ## Authenticate with Azure CLI
 
