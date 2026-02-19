@@ -21,6 +21,9 @@ ms.devlang: azurecli
 
 # Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI
 
+> [!NOTE]  
+> Due to known issues, the **az mysql flexible-server import create** CLI command is temporarily disabled. Customers planning migrations should [contact the support team](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) for assistance with allowlisting backups for import while remediation is in progress.
+
 Azure Database for MySQL Import for external migrations enables you to migrate your MySQL on-premises or Virtual Machine (VM) workload seamlessly to Azure Database for MySQL - Flexible Server. It uses a user-provided physical backup file and restores the source server's physical data files to the target server, offering a simple and fast migration path. Post-import operation, you can take advantage of the benefits of a flexible server, which include better price and performance, granular control over database configuration, and custom maintenance windows.
 
 Based on user-inputs, it takes up the responsibility of provisioning your target flexible server and then restoring the user-provided physical backup of the source server stored in the Azure Blob storage account to the target Flexible Server instance.

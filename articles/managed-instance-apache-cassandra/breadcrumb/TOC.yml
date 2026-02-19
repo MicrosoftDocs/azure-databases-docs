@@ -1,0 +1,7 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Managed Instance for Apache Cassandra
+      tocHref: /azure/managed-instance-apache-cassandra/
+      topicHref: /azure/managed-instance-apache-cassandra/index
