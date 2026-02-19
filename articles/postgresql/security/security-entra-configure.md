@@ -24,7 +24,7 @@ You can have multiple Microsoft Entra admin users with Azure Database for Postgr
 
 ## Prerequisites
 
-- You need an Azure account with an active subscription. [Create an account for free](/pricing/purchase-options/azure-account?cid=msft_learn).
+- You need an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 ### Configure network requirements
 
