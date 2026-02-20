@@ -2,10 +2,10 @@
 title: Supported Database Migration Scenarios
 titleSuffix: Azure Database Migration Service
 description: Learn which migration scenarios are currently supported for Azure Database Migration Service and their availability status.
-author: abhims14
-ms.author: abhishekum
-ms.reviewer: randolphwest
-ms.date: 10/28/2025
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: abhishekum
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
 ms.topic: troubleshooting
 ms.collection:
@@ -16,7 +16,7 @@ ms.custom:
 
 # Azure Database Migration Service supported scenarios
 
-Azure Database Migration Service supports a mix of database migration scenarios (source and target pairs) for both offline (one-time) and online (continuous sync) database migrations. New scenarios are added over time to extend Database Migration Service scenario coverage. This article lists the migration scenarios currently supported by Database Migration Service and their availability status, which is *preview* or *generally available*.
+Azure Database Migration Service (Azure DMS) supports a mix of database migration scenarios (source and target pairs) for both offline (one-time) and online (continuous sync) database migrations. New scenarios are added over time to extend Database Migration Service scenario coverage. This article lists the migration scenarios currently supported by Database Migration Service and their availability status, which is *preview* or *generally available*.
 
 ## Offline vs. online migration
 
@@ -34,7 +34,7 @@ The tables in the following sections show the status of specific migration scena
 
 ### Offline (one-time) migration support
 
-The following table describes the current status of Database Migration Service (DMS) and Database Migration Service (classic) support for *offline* migrations:
+The following table describes the current status of Database Migration Service (DMS) support for *offline* migrations:
 
 | Target | Source | Support | Status |
 | --- | --- | :---: | :---: |
@@ -57,13 +57,13 @@ The following table describes the current status of Database Migration Service (
 | **Azure Database for PostgreSQL flexible server** | PostgreSQL | No | |
 | | Amazon RDS PostgreSQL | No | |
 
-<sup>1</sup> Offline migrations through the Azure SQL Migration extension for Azure Data Studio are supported for Azure SQL Managed Instance, SQL Server on Azure Virtual Machines, and Azure SQL Database. For more information, see [Migrate databases by using the Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md).
+<sup>1</sup> Offline migrations by using Azure DMS are supported for Azure SQL Managed Instance, SQL Server on Azure Virtual Machines, and Azure SQL Database.
 
 <sup>2</sup> If your source database is already in an Azure platform as a service (PaaS) like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create your scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server, choose PostgreSQL as the source engine when you create your scenario.
 
 ### Online (continuous sync) migration support
 
-The following table describes the current status of Database Migration Service (DMS) and Database Migration Service (classic) support for *online* migrations:
+The following table describes the current status of Database Migration Service (DMS) support for *online* migrations:
 
 | Target | Source | Support | Status |
 | --- | --- | :---: | :---: |
@@ -86,7 +86,7 @@ The following table describes the current status of Database Migration Service (
 | **Azure Database for PostgreSQL flexible server** | PostgreSQL | Yes | GA |
 | | Amazon RDS PostgreSQL | Yes | GA |
 
-<sup>1</sup> Online migrations (minimal downtime) through the Azure SQL Migration extension for Azure Data Studio are supported for Azure SQL Managed Instance and SQL Server on Azure Virtual Machines targets. For more information, see [Migrate databases by using the Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md).
+<sup>1</sup> Online migrations (minimal downtime) by using Azure DMS are supported for Azure SQL Managed Instance and SQL Server on Azure Virtual Machines targets.
 
 <sup>2</sup> If your source database is already in an Azure PaaS like Azure Database for MySQL or Azure Database for PostgreSQL, choose the corresponding engine when you create your migration activity. For example, if you're migrating from Azure Database for MySQL - Flexible Server to another Azure Database for MySQL - Flexible Server, choose MySQL as the source engine when you create the scenario. If you're migrating from Amazon RDS for PostgreSQL to Azure Database for PostgreSQL flexible server, choose PostgreSQL as the source engine when you create the scenario.
 
