@@ -1,11 +1,11 @@
 ---
 title: Migrate SSIS Packages to SQL Managed Instance
 titleSuffix: Azure Database Migration Service
-description: Learn how to migrate SQL Server Integration Services (SSIS) packages and projects to an Azure SQL Managed Instance using the Azure Database Migration Service or the Data Migration Assistant.
-author: abhims14
-ms.author: abhishekum
-ms.reviewer: randolphwest
-ms.date: 10/28/2025
+description: Learn how to migrate SQL Server Integration Services (SSIS) packages and projects to an Azure SQL Managed Instance using the Azure Database Migration Service.
+author: rwestMSFT
+ms.author: randolphwest
+ms.reviewer: abhishekum
+ms.date: 02/19/2026
 ms.service: azure-database-migration-service
 ms.topic: how-to
 ms.collection:
