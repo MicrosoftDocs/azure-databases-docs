@@ -6,7 +6,7 @@ ms.author: diberry
 ms.reviewer: khelanmodi
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 02/12/2026
+ms.date: 02/20/2026
 ai-usage: ai-assisted
 ms.custom:
   - devx-track-java
@@ -68,6 +68,9 @@ The app uses a sample hotel dataset in a JSON file with pre-calculated vectors f
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
@@ -146,6 +149,9 @@ Sign in to Azure before you run the application so it can access Azure resources
 ```bash
 az login
 ```
+
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The authentication relies on [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential) from **azure-identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate Java apps to Azure services using the Azure Identity library](/azure/developer/java/sdk/identity).
+
 
 ## Build the application
 

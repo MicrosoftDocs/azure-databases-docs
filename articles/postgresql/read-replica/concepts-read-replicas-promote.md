@@ -4,7 +4,7 @@ description: This article describes the promote action for read replica feature 
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 02/16/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: concept-article
@@ -21,7 +21,9 @@ Promotion of replicas can be done in two distinct manners:
 
 **Promote to primary server**
 
-This action elevates a replica to the role of the primary server. In the process, the current primary server is demoted to a replica role, swapping their roles. For a successful promotion, it's necessary to have a [virtual endpoint](concepts-read-replicas-promote.md) configured for both the current primary as the writer endpoint, and the replica intended for promotion as the reader endpoint. The promotion is successful only if the targeted replica is included in the reader endpoint configuration.
+This action elevates a replica to the role of the primary server. In the process, the current primary server is demoted to a replica role, swapping their roles. For a successful promotion, it's necessary to have a [virtual endpoint](concepts-read-replicas-promote.md) configured for both the current primary as the writer endpoint, and the replica intended for promotion as the reader endpoint. The promotion is successful only if the targeted replica is included in the reader endpoint configuration. 
+
+If the primary server has any broken replicas, those replicas must be removed before initiating the promote to primary server action. During this process, the read replica is promoted to become the new primary server. This operation may result in a brief downtime of approximately 1–3 minutes, depending on the replication lag at the time of promotion (for planned promotions). After the promotion completes, the previous primary server is reconfigured to operate as a read replica.
 
 The diagram illustrates the configuration of the servers before the promotion and the resulting state after the promotion operation is successfully completed.
 

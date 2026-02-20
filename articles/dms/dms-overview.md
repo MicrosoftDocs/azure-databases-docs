@@ -29,8 +29,6 @@ With Azure Database Migration Service currently we offer two versions:
 
 [!INCLUDE [Azure Database Migration Service (classic) - SQL scenarios retirement announcement](./includes/deprecation-announcement-dms-classic-sql.md)]
 
-[!INCLUDE [database-migration-service-ads](./includes/database-migration-service-ads.md)]
-
 ## Compare versions
 
 A newer version of the Azure Database Migration Service is available as an extension for Azure Data Studio and can be accessed from Azure portal, with improved functionality, user experience and supportability of the migration service. Consider using the [Azure SQL Migration extension for Azure Data Studio](migration-using-azure-data-studio.md) and DMS Azure portal whenever possible.
