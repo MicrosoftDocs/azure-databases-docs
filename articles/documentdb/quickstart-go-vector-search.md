@@ -71,6 +71,9 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
@@ -226,6 +229,8 @@ Sign in to Azure CLI before you run the application so it can access Azure resou
 ```bash
 az login
 ```
+
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The authentication relies on [DefaultAzureCredential](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/azidentity#DefaultAzureCredential) from **azidentity** to find your Azure credentials in the environment. Learn more about how to [Authenticate Go apps to Azure services by using the Azure Identity library](/azure/developer/go/sdk/authentication/authentication-overview).
 
 ## Build and run the application
 
