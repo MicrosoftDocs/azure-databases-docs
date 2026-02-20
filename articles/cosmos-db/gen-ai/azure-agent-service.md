@@ -1,7 +1,7 @@
 ---
-title: Integration with Azure AI Agent Service
+title: Integration with Foundry Agent Service
 titleSuffix: Azure Cosmos DB for NoSQL
-description: Learn about Integrations with Azure AI Agent Service through Azure AI Foundry connection
+description: Learn about Integrations with Foundry Agent Service through Microsoft Foundry connection
 author: jcodella
 ms.author: jacodel
 ms.service: azure-cosmos-db
@@ -16,11 +16,11 @@ ms.custom:
   - build-2025
 ---
 
-# Azure Cosmos DB integration with Azure AI Agents Service
+# Azure Cosmos DB integration with Foundry Agent Service
 
 ## Overview
 
-Azure Cosmos DB for NoSQL has a data connector in Azure AI Foundry that enables thread storage and management in Azure AI Agent Service. This feature lets developers persist and retrieve multi-turn threads directly within their own Azure Cosmos DB resource. Learn more [here](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/securely-build-and-manage-agents-in-azure-ai-foundry/4415186).
+Azure Cosmos DB for NoSQL has a data connector in Microsoft Foundry that enables thread storage and management in Foundry Agent Service. This feature lets developers persist and retrieve multi-turn threads directly within their own Azure Cosmos DB resource. Learn more [here](https://techcommunity.microsoft.com/blog/azure-ai-foundry-blog/securely-build-and-manage-agents-in-azure-ai-foundry/4415186).
 
 With BYO Thread Storage, user-agent conversations, model transactions are stored in your own Azure Cosmos DB account—giving you full control and enhanced security. Azure Cosmos DB will contain three dedicated containers within a new database called enterprise_memory to manage this data.
 
@@ -36,8 +36,8 @@ Agentic threads and conversational histories play a critical role in improving t
   
 ## Related content
 
-- [Azure AI Foundry Connections](/azure/ai-foundry/concepts/connections)
-- [What is Azure AI Agent Service?](/azure/ai-services/agents/overview)
+- [Foundry Connections](/azure/ai-foundry/concepts/connections)
+- [What is Foundry Agent Service?](/azure/ai-services/agents/overview)
 - [Vector search](../vector-search.md)
 - [Full-text search](full-text-search.md)
 - [Hybrid Search](hybrid-search.md)

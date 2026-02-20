@@ -128,7 +128,7 @@ If an account isn't enabled with PPAF, perform a region offline operation to res
 
 The region offline operation removes the affected region from the account configuration, allowing the service to restore availability to the remaining regions. To initiate this operation, [take the region offline](how-to-manage-database-account.yml#perform-forced-failover-for-your-azure-cosmos-db-account) for the affected write region. 
 
-[![Diagram that shows the example of Offline Region operation in Azure Portal.](media/disaster-recovery-guidance/offline-region-failover.png)](media/disaster-recovery-guidance/offline-region-failover.png#lightbox)
+[![Diagram that shows the example of Offline Region operation in Azure portal.](media/disaster-recovery-guidance/offline-region-failover.png)](media/disaster-recovery-guidance/offline-region-failover.png#lightbox)
 
 
 > [!NOTE]

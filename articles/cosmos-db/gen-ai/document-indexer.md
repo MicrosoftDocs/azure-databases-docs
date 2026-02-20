@@ -48,8 +48,8 @@ Before using the Document Indexer, make sure the following resources are created
   - An embedding model such as `text-embedding-3-large` must be deployed and accessible.
 - **Azure Blob Storage**:
   - Documents to be indexed must be stored in a container, or inserted in the future.
-- **Azure AI Document Intelligence (optional)**:
-  - Used to extract structured text from complex file types such as scanned PDFs or images. You can choose a workflow template that either uses or doesn't use Azure AI Document Intelligence depending on whether or not your documents require it for text extraction.
+- **Azure Document Intelligence in Foundry Tools (optional)**:
+  - Used to extract structured text from complex file types such as scanned PDFs or images. You can choose a workflow template that either uses or doesn't use Document Intelligence depending on whether or not your documents require it for text extraction.
 
 ---
 
