@@ -71,6 +71,9 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 1. Create a `.env` file in your project root for environment variables:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
     AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15

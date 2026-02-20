@@ -7,7 +7,7 @@ ms.author: rotabor
 ms.reviewer: khelanmodi
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 02/17/2026
+ms.date: 02/20/2026
 ai-usage: ai-assisted
 ms.custom:
   - devx-track-python
@@ -81,6 +81,9 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
 1. Create a `.env` file for environment variables in `vector-search-quickstart`:
 
     ```ini
+    # Identity for local developer authentication with Azure CLI
+    AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
     # Azure OpenAI configuration
     AZURE_OPENAI_EMBEDDING_ENDPOINT= 
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
@@ -90,7 +93,7 @@ Find the [sample code](https://github.com/Azure-Samples/documentdb-samples/tree/
     MONGO_CLUSTER_NAME=
 
     # Data Configuration (defaults should work)
-    DATA_FILE_WITH_VECTORS=data/Hotels_Vector.json
+    DATA_FILE_WITH_VECTORS=../data/Hotels_Vector.json
     EMBEDDED_FIELD=DescriptionVector
     EMBEDDING_DIMENSIONS=1536
     EMBEDDING_SIZE_BATCH=16
