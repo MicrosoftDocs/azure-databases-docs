@@ -216,6 +216,8 @@ Sign in to Azure CLI before you run the application so it can access Azure resou
 az login
 ```
 
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The authentication relies on [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential) from **azure-identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate Python apps to Azure services using the Azure Identity library](/azure/developer/python/sdk/authentication/overview).
+
 ## Run the application
 
 To run the Python scripts:

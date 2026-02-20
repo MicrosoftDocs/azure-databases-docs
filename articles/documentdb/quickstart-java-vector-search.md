@@ -150,6 +150,9 @@ Sign in to Azure before you run the application so it can access Azure resources
 az login
 ```
 
+The code uses your local developer authentication to access Azure DocumentDB and Azure OpenAI. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, this setting tells the function to use Azure CLI credentials for authentication _deterministically_. The authentication relies on [DefaultAzureCredential](/java/api/com.azure.identity.defaultazurecredential) from **azure-identity** to find your Azure credentials in the environment. Learn more about how to [Authenticate Java apps to Azure services using the Azure Identity library](/azure/developer/java/sdk/identity).
+
+
 ## Build the application
 
 Compile the application:
