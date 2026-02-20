@@ -370,7 +370,6 @@ az cosmosdb mongodb collection redistribute-partition-throughput \
 Use the `Update-AzCosmosDBSqlContainerPerPartitionThroughput` for containers with dedicated RU/s or the `Update-AzCosmosDBSqlDatabasePerPartitionThroughput` command for databases with shared RU/s to redistribute throughput across physical partitions. In shared throughput databases, a GUID string represents the unique identifiers of the physical partitions.
 
 ```azurepowershell-interactive
-$SourcePhysicalPartitionObjects =  @()
 $TargetPhysicalPartitionObjects =  @()
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "0" -Throughput 5000
 $TargetPhysicalPartitionObjects += New-AzCosmosDBPhysicalPartitionThroughputObject -Id "1" -Throughput 20000
@@ -382,7 +381,6 @@ $containerParams = @{
     DatabaseName = "<cosmos-database-name>"
     Name = "<cosmos-container-name>"
     TargetPhysicalPartitionThroughputObject = $TargetPhysicalPartitionObjects
-	SourcePhysicalPartitionThroughputObject = $SourcePhysicalPartitionObjects
 }
 Update-AzCosmosDBSqlContainerPerPartitionThroughput @containerParams
 
@@ -392,7 +390,6 @@ $dbParams = @{
     AccountName = "<cosmos-account-name>"
     DatabaseName = "<cosmos-database-name>"
     TargetPhysicalPartitionThroughputObject = $TargetPhysicalPartitionObjects
-	SourcePhysicalPartitionThroughputObject = $SourcePhysicalPartitionObjects
 }
 Update-AzCosmosDBSqlDatabasePerPartitionThroughput @dbParams
 ```
