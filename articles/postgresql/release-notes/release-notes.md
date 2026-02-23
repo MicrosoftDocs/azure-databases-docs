@@ -38,7 +38,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2025
 - General availability
     - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
-    - Support for configuring zone-resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure Portal.
+    - Support for configuring zone-resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure portal.
     - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now avaialable. 
     - [Maintenance release notes](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
