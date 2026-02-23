@@ -664,8 +664,7 @@ On a collection that has TTL enabled on a field:
 
 #### Configuration
 
-You can enable a custom TTL by updating the `EnableTtlOnCustomPath` capability for the account. Learn [how to configure capabilities](../../cosmos-db/mongodb/how-to-configure-capabilities.md).
-
+You can enable a custom TTL by updating the `EnableTtlOnCustomPath` capability for the account.
 ### Set up the TTL
 
 To set up the TTL, run this command: `db.coll.createIndex({"YOUR_CUSTOM_TTL_FIELD":1}, {expireAfterSeconds: 10})`

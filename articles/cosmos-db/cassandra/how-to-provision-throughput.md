@@ -16,13 +16,11 @@ ms.custom: devx-track-azurecli, devx-track-arm-template, devx-track-azurepowersh
 
 This article explains how to provision throughput in Azure Cosmos DB for Apache Cassandra. You can provision standard(manual) or autoscale throughput on a container, or a database and share it among the containers within the database. You can provision throughput using Azure portal, Azure CLI, or Azure Cosmos DB SDKs.
 
-If you are using a different API, see [API for NoSQL](../how-to-provision-container-throughput.md), [API for MongoDB](../mongodb/how-to-provision-throughput.md), [API for Gremlin](../gremlin/how-to-provision-throughput.md) articles to provision the throughput.
-
 ## <a id="portal-cassandra"></a> Azure portal
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. [Create a new Azure Cosmos DB account](../mongodb/create-mongodb-dotnet.md#create-an-azure-cosmos-db-account), or select an existing Azure Cosmos DB account.
+1. Create a new Azure Cosmos DB account or select an existing Azure Cosmos DB account.
 
 1. Open the **Data Explorer** pane, and select **New Table**. Next, provide the following details:
 
