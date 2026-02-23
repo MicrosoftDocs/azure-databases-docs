@@ -110,7 +110,7 @@ Azure Cosmos DB has the following integrations:
 - **Azure Synapse Link**: Analytics without extract, transform, and load (ETL) processes
 - **Azure Functions**: Serverless computing with change feed triggers
 - **Power BI**: Direct connectivity for business intelligence
-- **Azure AI Services**: Native integration for AI and ML workloads
+- **Foundry Tools**: Native integration for AI and ML workloads
 - **Azure OpenAI**: Seamless integration for embeddings generation and RAG applications
 - **LangChain and AI Frameworks**: Built-in support for popular AI development frameworks
 - **Semantic Kernel**: Integration for building AI agents with persistent memory systems

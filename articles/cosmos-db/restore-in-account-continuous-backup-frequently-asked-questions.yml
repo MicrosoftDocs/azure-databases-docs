@@ -55,7 +55,7 @@ sections:
       - question: |
           What are all the ways in which I can trigger a restore operation?
         answer: |
-          You can trigger restore operations from the Azure CLI, Azure PowerShell, or the Azure Portal.
+          You can trigger restore operations from the Azure CLI, Azure PowerShell, or the Azure portal.
       - question: |
           Is restore in same account supported for Azure Synapse Link enabled accounts?
         answer: |

@@ -33,7 +33,7 @@ By connecting AI agents to databases like Azure Database for PostgreSQL, agents 
 
 ## Implementation of AI agents
 
-Implementing AI agents with Azure Database for PostgreSQL involves integrating advanced AI capabilities with robust database functionalities to create intelligent, context-aware systems. By using tools like vector search, embeddings, and Azure AI Foundry Agent Service, developers can build agents that understand natural language queries, retrieve relevant data, and provide actionable insights.
+Implementing AI agents with Azure Database for PostgreSQL involves integrating advanced AI capabilities with robust database functionalities to create intelligent, context-aware systems. By using tools like vector search, embeddings, and Foundry Agent Service, developers can build agents that understand natural language queries, retrieve relevant data, and provide actionable insights.
 
 The following sections outline the step-by-step process to set up, configure, and deploy AI agents. This process enables seamless interaction between AI models and your PostgreSQL database.
 
@@ -41,7 +41,7 @@ The following sections outline the step-by-step process to set up, configure, an
 
 Various frameworks and tools can facilitate the development and deployment of AI agents. All these frameworks support using Azure Database for PostgreSQL as a tool:
 
-- [Azure AI Foundry Agent Service](/azure/ai-services/agents/overview)
+- [Agent Service](/azure/ai-services/agents/overview)
 - [LangChain/LangGraph](https://python.langchain.com/v0.1/docs/modules/agents/)
 - [LlamaIndex](https://docs.llamaindex.ai/en/stable/use_cases/agents/)
 - [Semantic Kernel](/semantic-kernel/overview/)
@@ -50,7 +50,7 @@ Various frameworks and tools can facilitate the development and deployment of AI
 
 ## Implementation example
 
-This article's example uses [Azure AI Foundry Agent Service](/azure/ai-services/agents/overview) for agent planning, tool usage, and perception. It uses Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
+This article's example uses [Agent Service](/azure/ai-services/agents/overview) for agent planning, tool usage, and perception. It uses Azure Database for PostgreSQL as a tool for vector database and semantic search capabilities.
 
 The following sections walk you through building an AI agent that helps legal teams research relevant cases to support their clients in Washington State. The agent:
 
@@ -61,7 +61,7 @@ The following sections walk you through building an AI agent that helps legal te
 ### Prerequisites
 
 1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` and `pg_vector` extensions.
-1. [Create an Azure AI Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
+1. [Create a Microsoft Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal).
 1. [Deploy models](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal#deploy-a-model) `gpt-4o-mini` and `text-embedding-small`.
 1. Install [Visual Studio Code](https://code.visualstudio.com/download).
 1. Install the [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) extension.
@@ -147,7 +147,7 @@ Embeddings added successfully All Data loaded successfully!
 
 ### Step 2: Create a Postgres tool for the agent
 
-Next, configure AI agent tools to retrieve data from Postgres. Then use the Azure AI Foundry Agent Service SDK to connect your AI agent to the Postgres database.
+Next, configure AI agent tools to retrieve data from Postgres. Then use the Agent Service SDK to connect your AI agent to the Postgres database.
 
 #### Define a function for your agent to call
 
@@ -196,15 +196,15 @@ Now, set up the AI agent and integrate it with the Postgres tool. The Python fil
 
 The `simple_postgres_and_ai_agent.py` file:
 
-1. Initializes the agent in your Azure AI Foundry project with a specific model.
+1. Initializes the agent in your Foundry project with a specific model.
 1. Adds the Postgres tool for vector search on your database, during the agent initialization.
 1. Sets up a communication thread. This thread is used to send messages to the agent for processing.
 1. Processes the user's query by using the agent and tools. The agent can plan with tools to get the correct answer. In this use case, the agent calls the Postgres tool based on the function signature and docstring to do a vector search and retrieve the relevant data to answer the question.
 1. Displays the agent's response to the user's query.
 
-#### Find the project connection string in Azure AI Foundry
+#### Find the project connection string in Foundry
 
-In your Azure AI Foundry project, you find your project connection string from the project's overview page. You use this string to connect the project to the Azure AI Foundry Agent Service SDK. Add this string to the `.env` file.
+In your Foundry project, you find your project connection string from the project's overview page. You use this string to connect the project to the Agent Service SDK. Add this string to the `.env` file.
 
 ![Screenshot that shows the project setup page.](./media/generative-ai-agents/ai-foundry-project-setup.png)
 
@@ -220,9 +220,9 @@ AZURE_TRACING_GEN_AI_CONTENT_RECORDING_ENABLED="true"
 
 ```python
 ### Create the agent with tool access
-We created the agent in the Azure AI Foundry project and added the Postgres tools needed to query the database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/simple_postgres_and_ai_agent.py).
+We created the agent in the Foundry project and added the Postgres tools needed to query the database. The code snippet below is an excerpt from the file [simple_postgres_and_ai_agent.py](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/simple_postgres_and_ai_agent.py).
 
-# Create an Azure AI Foundry client
+# Create a Foundry client
 project_client = AIProjectClient.from_connection_string(
     credential=DefaultAzureCredential(),
     conn_str=os.environ["PROJECT_CONNECTION_STRING"],
@@ -303,9 +303,9 @@ Summary: The Warners appealed a ruling finding them liable for negligence and nu
 
 ### Step 4: Test and debug with the agent playground
 
-After you run your agent by using the Azure AI Foundry Agent Service SDK, the agent is stored in your project. You can experiment with the agent in the agent playground:
+After you run your agent by using the Agent Service SDK, the agent is stored in your project. You can experiment with the agent in the agent playground:
 
-1. In Azure AI Foundry, go to the **Agents** section.
+1. In Foundry, go to the **Agents** section.
 
 1. Find your agent in the list and select it to open it.
 
@@ -317,11 +317,11 @@ After you run your agent by using the Azure AI Foundry Agent Service SDK, the ag
 
    ![Screenshot that shows the results of a query in the agent playground.](./media/generative-ai-agents/using-playground-ai-foundry.png)
 
-### Step 5: Debug with Azure AI Foundry tracing
+### Step 5: Debug with Foundry tracing
 
-When you're developing the agent by using the Azure AI Foundry Agent Service SDK, you can [debug the agent with tracing](/azure/ai-services/agents/concepts/tracing). Tracing allows you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
+When you're developing the agent by using the Agent Service SDK, you can [debug the agent with tracing](/azure/ai-services/agents/concepts/tracing). Tracing allows you to debug the calls to tools like Postgres and see how the agent orchestrates each task.
 
-1. In Azure AI Foundry, go to **Tracing**.
+1. In Foundry, go to **Tracing**.
 
 1. To create a new Application Insights resource, select **Create new**. To connect an existing resource, select one in the **Application Insights resource name** box, and then select **Connect**.
 
@@ -329,7 +329,7 @@ When you're developing the agent by using the Azure AI Foundry Agent Service SDK
 
 1. View detailed traces of your agent's operations.
 
-   ![Screenshot that the result of tracing in AI Foundry.](./media/generative-ai-agents/tracing-ai-foundry.png)
+   ![Screenshot that the result of tracing in Foundry.](./media/generative-ai-agents/tracing-ai-foundry.png)
 
 Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/advanced_postgres_and_ai_agent_with_tracing.py).
 

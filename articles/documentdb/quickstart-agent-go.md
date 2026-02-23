@@ -21,7 +21,7 @@ You can use the Azure Developer CLI to create the required Azure resources by ru
 
 ### Azure resources
 
-- **Azure OpenAI resource** with the following model deployments in Microsoft Azure AI Foundry:
+- **Azure OpenAI resource** with the following model deployments in Microsoft Foundry:
   - `gpt-4o` deployment (Synthesizer Agent) - Recommended: **50,000 tokens per minute (TPM)** capacity
   - `gpt-4o-mini` deployment (Planner Agent) - Recommended: **30,000 tokens per minute (TPM)** capacity
   - `text-embedding-3-small` deployment (Embeddings) - Recommended: **10,000 tokens per minute (TPM)** capacity
