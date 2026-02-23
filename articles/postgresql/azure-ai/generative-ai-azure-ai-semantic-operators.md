@@ -28,7 +28,7 @@ The Semantic Operators provide users with four core SQL functions that use gener
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
 
-Each function operates through AI Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
+Each function operates through Microsoft Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
 ## Understanding semantic operators
 
@@ -44,7 +44,7 @@ It supports the following input parameters:
 | --- | --- | --- |
 | `prompt` | `text` | User prompt to send to the LLM. |
 | `json_schema` (optional) | `JsonB` `DEFAULT ''` | JSON schema of the structured output you want the LLM response to follow. Must follow the [OpenAI notation for structured output](https://platform.openai.com/docs/guides/structured-outputs?api-mode=responses). |
-| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
+| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Foundry. |
 | `system_prompt` (optional) | `text` `DEFAULT "You are a helpful assistant."` | System prompt to send to the LLM. |
 
 By default, the operator returns a `text` value containing the generated response. If you provide the `json_schema` argument, the operator returns the output as a structured `JsonB` object that conforms to the specified schema.
@@ -88,7 +88,7 @@ It supports the following input parameters:
 | Argument | Type | Description |
 | --- | --- | --- |
 | `statement` | `text` | Statement to evaluate as true or false. |
-| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
+| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Foundry. |
 
 **Example usage:**
 
@@ -112,7 +112,7 @@ It supports the following input parameters:
 | --- | --- | --- |
 | `document` | `text` | A document containing the entities and features. |
 | `data` | `array[text]` | An array of labels or feature names, where each entry represents a distinct entity type to extract from the input text. |
-| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Azure AI Foundry. |
+| `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Foundry. |
 
 The operator returns a `JsonB` object containing the extracted entities mapped to their corresponding labels.
 
@@ -149,7 +149,7 @@ It supports the following input parameters:
 | `query` | `text` | The search string used to evaluate and rank the relevance of each document. |
 | `document_contents` | `array[text]` | An array of documents to be reranked. |
 | `document_ids` (optional) | `array` | An array of document identifiers corresponding to the input documents. |
-| `model` (optional) | `text` `DEFAULT "cohere-rerank-v3.5"` | Name of the model deployment in Azure AI Foundry. Supports both cross-encoder and GPT-based models. |
+| `model` (optional) | `text` `DEFAULT "cohere-rerank-v3.5"` | Name of the model deployment in Foundry. Supports both cross-encoder and GPT-based models. |
 
 The operator returns a `table` containing the document ID, its rank, and the associated relevance score.
 
@@ -187,7 +187,7 @@ To use Semantic Operators in your PostgreSQL database, follow these steps:
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series).
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server instance.
-1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Azure AI Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model).
+1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model).
 1. Note the Azure OpenAI **endpoint URL** and **API key**.
 1. **Configure access**:
 
@@ -231,7 +231,7 @@ The `.rank()` operator supports both cross encoder and chat completion models. I
 Using `Cohere-rerank-v3.5` cross-encoder:
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL instance.
-1. Go to Azure AI Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** by using the Serverless API purchase option.
+1. Go to Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** by using the Serverless API purchase option.
 1. Note the model's **endpoint key and the Reranker API route**. It should look something like this: `https://<deployment name>.<region>.models.ai.azure.com/<v1 or v2>/rerank`.
 1. **Configure access**:
 
