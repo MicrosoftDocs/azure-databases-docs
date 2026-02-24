@@ -13,6 +13,8 @@ ms.date: 11/04/2022
 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article discusses tokens and token function in Azure Cosmos DB for Apache Cassandra and clarifies the difference between the computation and usage of token in native Cassandra.
 
 ## What is a Token

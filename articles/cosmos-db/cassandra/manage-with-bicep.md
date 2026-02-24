@@ -14,6 +14,8 @@ ms.author: thvankra
 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this article, you learn how to use Bicep to deploy and manage your Azure Cosmos DB for Apache Cassandra accounts, keyspaces, and tables.
 
 This article shows Bicep samples for API for Cassandra accounts. You can also find Bicep samples for [SQL](../sql/manage-with-bicep.md), [Gremlin](../graph/manage-with-bicep.md), [MongoDB](../mongodb/manage-with-bicep.md), and [Table](../table/manage-with-bicep.md) APIs.

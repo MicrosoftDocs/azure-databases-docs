@@ -13,6 +13,8 @@ ms.subservice: apache-cassandra
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 [!INCLUDE[Diagnostic queries selector](../includes/diagnostic-queries-selector.md)]
 
 In this article, we'll cover how to write more advanced queries to help troubleshoot issues with your Azure Cosmos DB for Cassandra account by using diagnostics logs sent to **resource-specific** tables.
