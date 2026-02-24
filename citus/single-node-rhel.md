@@ -1,13 +1,13 @@
 ---
-title: Single-Node Citus Cluster on Fedora, CentOS, or Red Hat
-description: Learn how to install single-node Citus on RHEL, CentOS, or Fedora so you can start using distributed PostgreSQL.
+title: Single-Node Citus Cluster on CentOS or Red Hat
+description: Learn how to install single-node Citus on RHEL or CentOS so you can start using distributed PostgreSQL.
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: how-to
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
-# Single-node Citus cluster on Fedora, CentOS, or Red Hat
+# Single-node Citus cluster on CentOS or Red Hat
 
 This section describes the steps needed to set up a single-node Citus cluster on your own Linux machine from RPM packages.
 
@@ -18,7 +18,16 @@ This section describes the steps needed to set up a single-node Citus cluster on
 curl https://install.citusdata.com/community/rpm.sh | sudo bash
 
 # install Citus extension
+:::moniker range="<=citus-12"
+sudo yum install -y citus121_16
+:::moniker-end
+:::moniker range="=citus-13"
 sudo yum install -y citus130_17
+:::moniker-end
+:::moniker range=">=citus-14"
+sudo yum install -y citus140_18
+:::moniker-end
+
 ```
 
 ## 2. Initialize the Cluster
@@ -30,7 +39,15 @@ Let's create a new database on disk. For convenience with PostgreSQL Unix domain
 sudo su - postgres
 
 # include path to postgres binaries
+:::moniker range="<=citus-12"
+export PATH=$PATH:/usr/pgsql-16/bin
+:::moniker-end
+:::moniker range="=citus-13"
 export PATH=$PATH:/usr/pgsql-17/bin
+:::moniker-end
+:::moniker range=">=citus-14"
+export PATH=$PATH:/usr/pgsql-18/bin
+:::moniker-end
 
 cd ~
 mkdir citus

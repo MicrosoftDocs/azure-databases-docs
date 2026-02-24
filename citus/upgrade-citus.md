@@ -5,7 +5,7 @@ ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: concept-article
 ai-usage: ai-assisted
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Citus upgrade
@@ -18,7 +18,29 @@ To upgrade the Citus version, first get the new Citus extension. Then, install i
 
 ### Patch version upgrade
 
-To upgrade a Citus version to its latest patch, run a standard upgrade command for your package manager. Assume version 13.0 is currently installed on PostgreSQL 16:
+To upgrade a Citus version to its latest patch, run a standard upgrade command for your package manager.
+
+:::moniker range="<=citus-12"
+Assume version **12.1** is currently installed on PostgreSQL **15**:
+
+**Ubuntu or Debian**
+
+```bash
+sudo apt-get update
+sudo apt-get install --only-upgrade postgresql-15-citus-12.1
+sudo service postgresql restart
+```
+
+**Red Hat Enterprise Linux or CentOS**
+
+```bash
+sudo yum update citus121_15
+sudo service postgresql-15 restart
+```
+:::moniker-end
+
+:::moniker range="=citus-13"
+Assume version **13.0** is currently installed on PostgreSQL **16**:
 
 **Ubuntu or Debian**
 
@@ -28,12 +50,32 @@ sudo apt-get install --only-upgrade postgresql-16-citus-13.0
 sudo service postgresql restart
 ```
 
-**Red Hat**
+**Red Hat Enterprise Linux or CentOS**
 
 ```bash
 sudo yum update citus130_16
 sudo service postgresql-16 restart
 ```
+:::moniker-end
+
+:::moniker range=">=citus-14"
+Assume version **14.0** is currently installed on PostgreSQL **17**:
+
+**Ubuntu or Debian**
+
+```bash
+sudo apt-get update
+sudo apt-get install --only-upgrade postgresql-17-citus-14.0
+sudo service postgresql restart
+```
+
+**Red Hat Enterprise Linux or CentOS**
+
+```bash
+sudo yum update citus140_17
+sudo service postgresql-17 restart
+```
+:::moniker-end
 
 ### Major and minor version upgrades
 
@@ -46,7 +88,29 @@ Each major and minor version of Citus is published as a package with a separate 
 
 #### Step 1. Update Citus package
 
-If you upgrade both Citus and PostgreSQL, always upgrade the Citus extension first, and upgrade the PostgreSQL version second (see `Upgrade_postgres`). Here's how to do a Citus upgrade from 12.1 to 13.0 on PostgreSQL 16:
+If you upgrade both Citus and PostgreSQL, always upgrade the Citus extension first, and upgrade the PostgreSQL version second (see `Upgrade_postgres`).
+
+:::moniker range="<=citus-12"
+Here's how to do a Citus upgrade from **11.3 to 12.1** on PostgreSQL **15**:
+
+**Ubuntu or Debian**
+
+```bash
+sudo apt-get update
+sudo apt-get install postgresql-15-citus-12.1
+sudo service postgresql restart
+```
+
+**Fedora, CentOS, or Red Hat**
+
+```bash
+sudo yum swap citus113_15 citus121_15
+sudo service postgresql-15 restart
+```
+:::moniker-end
+
+:::moniker range="=citus-13"
+Here's how to do a Citus upgrade from **12.1 to 13.0** on PostgreSQL **16**:
 
 **Ubuntu or Debian**
 
@@ -59,10 +123,31 @@ sudo service postgresql restart
 **Red Hat**
 
 ```bash
-# Fedora, CentOS, or Red Hat
+# Red Hat Enterprise Linux or CentOS
 sudo yum swap citus121_16 citus130_16
 sudo service postgresql-16 restart
 ```
+:::moniker-end
+
+:::moniker range=">=citus-14"
+Here's how to do a Citus upgrade from **13.0 to 14.0** on PostgreSQL **17**:
+
+**Ubuntu or Debian**
+
+```bash
+sudo apt-get update
+sudo apt-get install postgresql-17-citus-14.0
+sudo service postgresql restart
+```
+
+**Red Hat**
+
+```bash
+# Red Hat Enterprise Linux or CentOS
+sudo yum swap citus130_17 citus140_17
+sudo service postgresql-17 restart
+```
+:::moniker-end
 
 #### Step 2. Apply update in database
 
@@ -88,7 +173,124 @@ CALL citus_finish_citus_upgrade();
 
 During a major version upgrade, from the moment of yum installing a new version, Citus doesn't run distributed queries until the server is restarted and `ALTER EXTENSION` is executed. This stipulation protects your data, as Citus object and function definitions are specific to a version. After a yum install, you should (a) restart and (b) run alter extension. In rare cases if you experience an error with upgrades, you can disable this check via the `citus.enable_version_checks <enable_version_checks>` configuration parameter. You can also [contact us](https://www.citusdata.com/about/contact_us) providing information about the error, so we can help debug the issue.
 
+:::moniker range="<=citus-12"
+## Upgrade PostgreSQL version from 15 to 16
+
+> [!NOTE]  
+> Don't attempt to upgrade *both* Citus and PostgreSQL versions at once. If you want to upgrade both, upgrade Citus first.
+>
+> Also, if you're running Citus 10.0 or 10.1, don't upgrade your PostgreSQL version. Upgrade to at least Citus 10.2 and then perform the PostgreSQL upgrade.
+
+Before you start, record the following paths. Your actual paths might be different from the paths listed here:
+
+Existing data directory (for example, `/opt/pgsql/15/data`)  
+`export OLD_PG_DATA=/opt/pgsql/15/data`
+
+Existing PostgreSQL installation path (for example, `/usr/pgsql-15`)  
+`export OLD_PG_PATH=/usr/pgsql-15`
+
+New data directory after upgrade  
+`export NEW_PG_DATA=/opt/pgsql/16/data`
+
+New PostgreSQL installation path  
+`export NEW_PG_PATH=/usr/pgsql-16`
+
+### For every node
+
+Follow these steps to upgrade the PostgreSQL version with Citus on every node (coordinator and workers):
+
+1. Back up Citus metadata.
+
+   ```sql
+   -- run this on the coordinator and worker nodes
+
+   SELECT citus_prepare_pg_upgrade();
+   ```
+
+1. Configure the new database instance to use Citus.
+
+   - Include Citus as a shared preload library in `postgresql.conf`.
+
+     ``` ini
+     shared_preload_libraries = 'citus'
+     ```
+
+   - **DO NOT CREATE** a Citus extension.
+   - **DO NOT** start the new server yet.
+
+1. Stop the old server.
+
+1. Check upgrade compatibility.
+
+   ```bash
+   $NEW_PG_PATH/bin/pg_upgrade -b $OLD_PG_PATH/bin/ -B $NEW_PG_PATH/bin/ \
+                               -d $OLD_PG_DATA -D $NEW_PG_DATA --check
+   ```
+
+   You should see a "Clusters are compatible" message. If you don't, fix any errors before proceeding. Ensure that:
+
+   - `NEW_PG_DATA` contains an empty database initialized by new PostgreSQL version
+   - The Citus extension **IS NOT** created
+
+1. Perform the upgrade (like before but without the `--check` option).
+
+   ```bash
+   $NEW_PG_PATH/bin/pg_upgrade -b $OLD_PG_PATH/bin/ -B $NEW_PG_PATH/bin/ \
+   -d $OLD_PG_DATA -D $NEW_PG_DATA
+   ```
+
+1. Start the new server.
+
+1. **DO NOT** run any query before running the queries given in the next step.
+
+1. Restore metadata on new coordinator node.
+
+   ```sql
+   -- run this on the coordinator and worker nodes
+
+   SELECT citus_finish_pg_upgrade();
+   ```
+:::moniker-end
+
+:::moniker range="=citus-13"
 ## Upgrade PostgreSQL version from 16 to 17
+
+Before you start, record the following paths. Your actual paths might be different from the paths listed here:
+
+Existing data directory (for example, `/opt/pgsql/16/data`)
+`export OLD_PG_DATA=/opt/pgsql/16/data`
+
+Existing PostgreSQL installation path (for example, `/usr/pgsql-16`)
+`export OLD_PG_PATH=/usr/pgsql-16`
+
+New data directory after upgrade
+`export NEW_PG_DATA=/opt/pgsql/17/data`
+
+New PostgreSQL installation path
+`export NEW_PG_PATH=/usr/pgsql-17`
+
+Follow the same upgrade steps as below (stop old server, pg_upgrade, copy certs if needed, start server, run citus_finish_pg_upgrade()).
+:::moniker-end
+
+:::moniker range=">=citus-14"
+## Upgrade PostgreSQL version from 17 to 18
+
+Before you start, record the following paths. Your actual paths might be different from the paths listed here:
+
+Existing data directory (for example, `/opt/pgsql/17/data`)
+`export OLD_PG_DATA=/opt/pgsql/17/data`
+
+Existing PostgreSQL installation path (for example, `/usr/pgsql-17`)
+`export OLD_PG_PATH=/usr/pgsql-17`
+
+New data directory after upgrade
+`export NEW_PG_DATA=/opt/pgsql/18/data`
+
+New PostgreSQL installation path
+`export NEW_PG_PATH=/usr/pgsql-18`
+
+Then follow the same steps as other PG upgrades (prepare metadata, configure new instance with Citus in shared_preload_libraries, stop old server, run pg_upgrade, copy `postgresql.auto.conf`, `server.crt`, `server.key` if generated by Citus, start new server, run `citus_finish_pg_upgrade()`).
+:::moniker-end
 
 > [!NOTE]  
 > Don't attempt to upgrade *both* Citus and PostgreSQL versions at once. If you want to upgrade both, upgrade Citus first.
@@ -172,6 +374,7 @@ Follow these steps to upgrade the PostgreSQL version with Citus on every node (c
 
    SELECT citus_finish_pg_upgrade();
    ```
+:::moniker-end
 
 ## Related content
 
