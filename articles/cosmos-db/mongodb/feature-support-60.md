@@ -14,6 +14,8 @@ appliesto:
 
 # Supported features and syntax in Azure Cosmos DB for MongoDB 6.0 server version
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB 6.0 enables you to use familiar MongoDB features with enterprise-grade capabilities such as global distribution, automatic sharding, and high availability. This article describes the supported features, syntax, and benefits of using Azure Cosmos DB for MongoDB 6.0.
 
 ## Protocol support

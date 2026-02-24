@@ -12,6 +12,8 @@ ms.custom: sfi-image-nochange
 # Connect to an Azure Cosmos DB account using Studio 3T
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 To connect to an Azure Cosmos DB's API for MongoDB using Studio 3T, you must:
 
 * Download and install [Studio 3T](https://studio3t.com/).

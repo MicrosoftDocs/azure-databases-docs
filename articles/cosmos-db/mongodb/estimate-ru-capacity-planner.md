@@ -13,6 +13,8 @@ show_latex: true
 # Estimate RU/s using the Azure Cosmos DB capacity planner - Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 > [!NOTE]
 > If you are planning a data migration to Azure Cosmos DB and all that you know is the number of vcores and servers in your existing sharded and replicated database cluster, please also read about [estimating request units using vCores or vCPUs](../convert-vcore-to-request-unit.md) 
 >
