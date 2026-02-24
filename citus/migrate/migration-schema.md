@@ -4,7 +4,7 @@ description: This article describes how to identify a distribution strategy for 
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: reference
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Identify a distribution strategy
