@@ -75,8 +75,8 @@
         "**/*.md": "Citus for PostgreSQL"
       },
       "monikerRange": {
-        "**/*.md": "=citus-13 || =citus-14",
-        "**/*.yml": "=citus-13 || =citus-14"
+        "**/*.md": "=citus-12 || =citus-13 || =citus-14",
+        "**/*.yml": "=citus-12 || =citus-13 || =citus-14"
       },
       "ms.service": {
         "**/*": "postgresql-citus"
@@ -159,7 +159,7 @@
     "groups": {
       "group-citus": {
         "dest": "citus-all",
-        "moniker_range": "=citus-13 || =citus-14"
+        "moniker_range": "=citus-12 || =citus-13 || =citus-14"
       }
     },
     "rules": {
