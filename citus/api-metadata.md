@@ -385,6 +385,7 @@ improvement_threshold          | 0.5
 ```
 
 The `by_shard_count` strategy assigns every shard the same cost. Its effect is to equalize the shard count across nodes. The default strategy, `by_disk_size`, assigns a cost to each shard matching its disk size in bytes plus that of the shards that are colocated with it. The disk size is calculated using `pg_total_relation_size`, so it includes indices. This strategy attempts to achieve the same disk space on every node. Note the default threshold of 0.1. It prevents unnecessary shard movement caused by insignificant differences in disk space.
+
 #### Creating custom rebalancer strategies
 
 The following examples show functions that you can use within new shard rebalancer strategies. Register these functions in the `pg_dist_rebalance_strategy` table by using the `citus_add_rebalance_strategy` function.
