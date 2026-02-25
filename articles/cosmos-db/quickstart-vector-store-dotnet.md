@@ -95,7 +95,7 @@ Follow the prompts to select your Azure subscription and environment.
 
 **What is provisioned:**
 
-* **Azure Cosmos DB for NoSQL**: Serverless account with the `Hotels` database and containers
+* **Azure Cosmos DB**: Serverless account with the `Hotels` database and containers
 * **Azure OpenAI**: Resource with deployments for:
   * Embedding model: `text-embedding-3-small`
   * Chat model: `gpt-4o-mini`
@@ -266,7 +266,7 @@ The `VectorSearchService` orchestrates an end‑to‑end vector similarity searc
 In the preceding code, the `VectorSearchService` performs the following tasks:
 
 - Determines the container and index names based on the requested algorithm
-- Creates or gets the Cosmos DB container and loads JSON data if it's empty
+- Creates or gets the Azure Cosmos DB container and loads JSON data if it's empty
 - Builds the algorithm-specific index options (Flat / QuantizedFlat / DiskANN) and ensures the vector index exists
 - Generates an embedding for the configured query via Azure OpenAI
 - Constructs and runs the aggregation search pipeline
@@ -294,8 +294,11 @@ In the preceding code, the `CosmosDBService` performs the following tasks:
 
 ## Clean up resources
 
-Delete the resource group, Azure Cosmos DB cluster, and Azure OpenAI resource when you no longer need them to avoid unnecessary costs.
+[!INCLUDE [Clean up resources](./includes/clean-up-resources.md)]
 
 ## Related content
 
-- [Vector store in Azure Cosmos DB](vector-search.md)
+- [Vector search in Azure Cosmos DB](gen-ai/vector-search-overview.md)
+- [Document Indexer for Azure Cosmos DB (preview)](gen-ai/document-indexer.md)
+- [Vector embeddings in Azure Cosmos DB](gen-ai/vector-embeddings.md)
+- [Azure RBAC built-in roles](/azure/role-based-access-control/built-in-roles)
