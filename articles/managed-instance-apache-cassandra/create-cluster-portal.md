@@ -265,6 +265,8 @@ If you set **Auto Replicate** to **All Keyspaces**, your keyspaces replication c
 If this topology isn't what you want, use **SystemKeyspaces**, adjust them yourself, and run `nodetool rebuild` manually on the Azure Managed Instance for Apache Cassandra cluster.
 
 ## Deallocate a cluster
+> [!IMPORTANT]
+> Any cluster deallocated for over seven days should be recreated, as it may not receive security patches and could pose a security risk.
 
 For nonproduction environments, you can pause or deallocate resources in the cluster to avoid being charged for them. You continue to be charged for storage. First, change **Cluster Type** to **NonProduction**, and then select **Deallocate**.
 
