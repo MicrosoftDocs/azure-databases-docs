@@ -8,6 +8,8 @@ ms.reviewer: khelanmodi
 ms.devlang: csharp
 ms.topic: quickstart-sdk
 ms.date: 02/06/2026
+ms.service: azure-cosmos-db
+ms.subservice: nosql
 ai-usage: ai-assisted
 ms.custom:
   - devx-track-dotnet
@@ -103,7 +105,7 @@ Follow the prompts to select your Azure subscription and environment.
   * Embedding model: `text-embedding-3-small`
   * Chat model: `gpt-4o-mini`
 * **Managed Identity**: User-assigned identity for secure access.
-* RBAC assignments for Keyless authentication.
+* Azure RBAC role assignments that enable Microsoft Entra ID (passwordless) access for the managed identity to Azure Cosmos DB and Azure OpenAI.
 
 ### Configure the app
 
@@ -116,7 +118,7 @@ Update the `appsettings.json` placeholder values with your own:
 
 The sample app populates vectorized sample data in an Azure Cosmos DB database and lets you run different types of search queries. Each query uses a different container within the database. 
 
-#### [Flat](#tab/tab-flat)
+### [Flat](#tab/tab-flat)
 
 1. Use the `dotnet run` command to start the app:
 
