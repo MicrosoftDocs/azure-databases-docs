@@ -25,6 +25,7 @@ The app uses a sample hotel dataset in a JSON file with calculated vectors from 
 ## Prerequisites
 
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later
+- [Azure Developer CLI (azd)](/azure/developer/azure-developer-cli/install-azd)
 - [C# extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 
 ## App dependencies
@@ -72,8 +73,19 @@ To run the .NET app, you'll need to provision the required Azure resources and c
 
 To provision resources:
 
-1. Open a terminal in the root folder of this repository (where `azure.yml` is located).
-2. Run the following command:
+1. In a terminal, clone the sample repository:
+
+    ```bash
+    git clone https://github.com/Azure-Samples/cosmos-db-vector-samples.git
+    ```
+
+1. Navigate to the root folder of the cloned repository (where `azure.yml` is located), for example:
+
+    ```bash
+    cd cosmos-db-vector-samples
+    ```
+
+1. Run the following command:
 
     ```bash
     azd up
@@ -227,7 +239,7 @@ The sample app populates vectorized sample data in an Azure Cosmos DB database a
     
     ```output
     Starting DiskANN vector search workflow
-    Container 'hotels_quantizedflat' checked
+    Container 'hotels_diskann' checked
     Vector index ready.
     Executing DiskANN vector search for top 5 results
     
@@ -239,7 +251,7 @@ The sample app populates vectorized sample data in an Azure Cosmos DB database a
     5. Roach Motel (Similarity: 0.4388)
     ```
 
-----
+---
 
 ## Explore the app code
 
@@ -276,7 +288,7 @@ In the preceding code, the `CosmosDBService` performs the following tasks:
 
 ## View and manage data in Visual Studio Code
 
-1. Install the [Azure Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-CosmosDB) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
+1. Install the [Azure Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
 1. Connect to your Azure Cosmos DB account using the Azure Cosmos DB extension.
 1. View the data and indexes in the Hotels database.
 
