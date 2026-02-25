@@ -55,7 +55,7 @@ The sections below delve into how these endpoints react to both [Promote to prim
 This section explains how to use Virtual Endpoints in an Azure Database for PostgreSQL flexible server instance to maintain a consistent hostname during Point-in-Time Recovery (PITR) or Snapshot Restore, ensuring application connection strings remain unchanged. Follow below steps:
 
 1. **Add Virtual Endpoint to Primary Server:**
-    - Browse to your primary server instance in the Azure Portal.
+    - Browse to your primary server instance in the Azure portal.
     - Navigate to **Replication** Tab, and under **Virtual Endpoints**, click **Add Virtual Endpoint**.
     - Configure the virtual endpoint with a consistent hostname (e.g., `mydb-virtual-endpoint.postgres.database.azure.com`).
     - Save the configuration.

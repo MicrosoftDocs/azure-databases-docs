@@ -324,7 +324,7 @@ additionalContent:
     **Key capabilities:**
     - **Single-digit millisecond response times** with automatic and instant scalability
     - **Multi-API support** - NoSQL, MongoDB, PostgreSQL, Apache Cassandra, Apache Gremlin, and Table
-    - **AI-powered features** - Vector database, Query Copilot, and seamless Azure AI Services integration
+    - **AI-powered features** - Vector database, Query Copilot, and seamless Foundry Tools integration
     - **Enterprise-grade security** - Encryption at rest, role-based access control, and compliance certifications
     - **Global distribution** - Multi-region writes and data distribution to any Azure region
 

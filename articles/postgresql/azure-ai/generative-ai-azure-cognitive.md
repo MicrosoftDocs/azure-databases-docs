@@ -1,6 +1,6 @@
 ---
-title: Integrate Azure AI Language Services with Azure Database for PostgreSQL
-description: Create AI applications with sentiment analysis, summarization, or key phrase extraction using Azure AI Language Services and Azure Database for PostgreSQL.
+title: Integrate Azure Language in Foundry Tools Services with Azure Database for PostgreSQL
+description: Create AI applications with sentiment analysis, summarization, or key phrase extraction using Azure Language in Foundry Tools Services and Azure Database for PostgreSQL.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
@@ -17,7 +17,7 @@ ms.custom:
 
 # Integrate Azure Database for PostgreSQL with Azure Cognitive Services
 
-Azure AI extension gives the ability to invoke the [Azure AI Language Services](/azure/ai-services/language-service/overview#which-language-service-feature-should-i-use) such as sentiment analysis right from within the database.
+Azure AI extension gives the ability to invoke the [Azure Language in Foundry Tools Services](/azure/ai-services/language-service/overview#which-language-service-feature-should-i-use) such as sentiment analysis right from within the database.
 
 ## Prerequisites
 

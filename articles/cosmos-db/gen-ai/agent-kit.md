@@ -63,7 +63,7 @@ Before installing the Azure Cosmos DB Agent Kit:
 Install the Agent Kit with a single command:
 
 ```bash
-npx add-skill AzureCosmosDB/cosmosdb-agent-kit
+npx skills add AzureCosmosDB/cosmosdb-agent-kit
 ```
 
 That's it. The skill is now installed in your development environment and activates automatically when you work on Azure Cosmos DB-related tasks.

@@ -54,4 +54,75 @@ Below are instructions specific to this repository. These may be updated by repo
 
 <!--- Add additional repository level instructions below. Do NOT update this line or above. --->
 
+### Content structure
 
+### Content completeness
+
+- Procedures must include all steps - check for missing prerequisites or follow-up actions
+- Code samples must be complete and runnable - no placeholder comments like `// add code here`
+
+### Alert usage
+
+- Limit alerts to one or two per article
+- Never place multiple notes consecutively
+- Use the correct alert type:
+  - `[!NOTE]` - Information the user should notice even if skimming
+  - `[!TIP]` - Optional information to help a user be more successful
+  - `[!IMPORTANT]` - Essential information required for user success
+  - `[!WARNING]` - Dangerous certain consequences of an action
+
+### Markdown Formatting
+
+#### Headings
+
+- Each file must have exactly one H1 heading
+- Do not skip heading levels (H2 to H4 without H3)
+
+#### Code blocks
+
+- Always specify the language identifier for syntax highlighting
+- Use `azurecli` for Azure CLI commands
+- Use `bash` for generic command line instructions
+
+#### Tables
+
+- Use exactly `| --- |` for column separators, not `|--------|`
+- For alignment: `| :-- |` (left), `| :--: |` (center), `| --: |` (right)
+- Empty first column headers are allowed when first column values are bolded
+
+### Writing Style
+
+#### Word choice
+
+| Use | Instead of |
+| --- | --- |
+| use | utilize |
+| remove | eliminate |
+| because | since (when meaning "because") |
+| to | in order to |
+
+#### Input-agnostic verbs
+
+Use verbs that work for all input methods (mouse, keyboard, touch):
+
+| Use | Instead of |
+| --- | --- |
+| Select | Click |
+| Choose | Tap |
+| Enter | Type |
+
+#### Bias-free language
+
+- Use people-first language: "users who are blind" not "blind users"
+- Use gender-neutral terms: "sales representative" not "salesman"
+- Show diverse perspectives in examples
+
+### Review Style
+
+When providing feedback:
+
+- Be specific and actionable - explain what to change and why
+- Acknowledge good patterns when you see them
+- Ask clarifying questions when intent is unclear
+- Prioritize terminology issues and technical accuracy
+- Focus on improvements that help readers succeed

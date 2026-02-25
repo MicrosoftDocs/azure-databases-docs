@@ -1,0 +1,182 @@
+### YamlMime:Landing
+metadata:
+  title: Citus documentation - Distributed PostgreSQL
+  description: "Citus is an open-source extension that transforms PostgreSQL into a distributed database, enabling horizontal scaling for multi-tenant SaaS applications, real-time analytics, and high-throughput transactional workloads."
+  author: mulander
+  ms.author: adamwolk
+  ms.reviewer: ihalatci, maghan
+  ms.date: 02/11/2026
+  ms.service: postgresql-citus
+  ms.topic: landing-page
+  
+title: Citus documentation
+summary: "Citus is an open-source PostgreSQL extension that transforms PostgreSQL into a distributed database, enabling horizontal scaling across multiple nodes. It powers multi-tenant SaaS applications, real-time analytics dashboards, and high-throughput transactional workloads while preserving full PostgreSQL compatibility."
+
+landingContent:
+#Card 1
+  - title: Get started with Citus
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Citus?
+            url: what-is-citus.md
+          - text: Use cases for Citus
+            url: use-cases.md
+          - text: Application types
+            url: app-type.md
+      - linkListType: get-started
+        links:
+          - text: Getting started guide
+            url: getting-started.md
+          - text: Single-node Citus
+            url: single-node.md
+          - text: Multi-node Citus
+            url: multi-node.md
+      - linkListType: quickstart
+        links:
+          - text: Single-node with Docker
+            url: single-node-docker.md
+          - text: Single-node on Debian/Ubuntu
+            url: single-node-debian.md
+          - text: Single-node on RHEL/CentOS
+            url: single-node-rhel.md
+
+#Card 2
+  - title: Data modeling and design
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Data modeling overview
+            url: data-modeling.md
+          - text: Designing multi-tenant SaaS applications
+            url: designing-saas.md
+          - text: Table management
+            url: table-management.md
+      - linkListType: how-to-guide
+        links:
+          - text: Sharding a multitenant app
+            url: sharding-mt-app.md
+          - text: Semi-structured data with JSONB
+            url: semi-structured-data.md
+          - text: Faceted search patterns
+            url: faceted-search.md
+
+#Card 3
+  - title: Tutorials
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Multi-tenant applications
+            url: tutorial-multi-tenant.md
+          - text: Real-time analytics dashboard
+            url: tutorial-analytics.md
+          - text: Time-series data
+            url: tutorial-time-series.md
+          - text: Microservices architecture
+            url: tutorial-micro-services.md
+
+#Card 4
+  - title: Guides and best practices
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Efficient rollup tables with HyperLogLog
+            url: efficient-rollup.md
+          - text: HyperLogLog for count distinct
+            url: hyperloglog-count-distinct.md
+          - text: Parallel indexing
+            url: parallel-indexing.md
+          - text: Aggregation optimization
+            url: aggregation.md
+          - text: Outer joins in distributed queries
+            url: outer-joins.md
+      - linkListType: how-to-guide
+        links:
+          - text: Metrics dashboard
+            url: metrics-dashboard.md
+          - text: Performance tuning
+            url: performance-tuning.md
+          - text: Diagnostic queries
+            url: diagnostic-queries.md
+          - text: Benchmarking
+            url: benchmark.md
+
+#Card 5
+  - title: API and SQL reference
+    linkLists:
+      - linkListType: reference
+        links:
+          - text: API overview
+            url: api.md
+          - text: User-defined functions (UDFs)
+            url: api-udf.md
+          - text: GUC parameters
+            url: api-guc.md
+          - text: Metadata tables
+            url: api-metadata.md
+      - linkListType: concept
+        links:
+          - text: SQL reference
+            url: reference-sql.md
+          - text: DDL operations
+            url: reference-ddl.md
+          - text: DML operations
+            url: reference-dml.md
+          - text: Query processing
+            url: reference-processing.md
+          - text: Query propagation
+            url: reference-propagation.md
+
+#Card 6
+  - title: Migration and upgrades
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Citus Cloud migration
+            url: citus-cloud.md
+      - linkListType: how-to-guide
+        links:
+          - text: Upgrade Citus
+            url: upgrade-citus.md
+          - text: Cluster management
+            url: cluster-management.md
+      - linkListType: concept
+        links:
+          - text: Reference workarounds
+            url: reference-workarounds.md
+          - text: Common errors
+            url: common-errors.md
+
+#Card 7
+  - title: Multi-node deployment
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Multi-node overview
+            url: multi-node.md
+      - linkListType: how-to-guide
+        links:
+          - text: Multi-node (Ubuntu or Debian)
+            url: multi-node-ubuntu-debian.md
+          - text: Multi-node (Fedora, CentOS, or Red Hat)
+            url: multi-node-fedora-centos-rhel.md
+
+#Card 8
+  - title: Additional resources
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Integrations
+            url: integrations.md
+          - text: Triggers
+            url: triggers.md
+          - text: PostgreSQL Citus scale
+            url: postgresql-citus-scale.md
+      - linkListType: reference
+        links:
+          - text: Full reference documentation
+            url: reference.md
+          - text: FAQ
+            url: faq-citus.yml
+          - text: Support
+            url: help-support.md

@@ -1,6 +1,6 @@
 ---
-title: Enable Managed Identity for Azure AI Services with the Azure AI Extension for PostgreSQL
-description: Enable system assigned managed identity for Azure AI Services with the Azure AI extension for PostgreSQL.
+title: Enable Managed Identity for Foundry Tools with the Azure AI Extension for PostgreSQL
+description: Enable system assigned managed identity for Foundry Tools with the Azure AI extension for PostgreSQL.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -16,9 +16,9 @@ ms.custom:
 # customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure Database for PostgreSQL flexible server instance.
 ---
 
-# Enable Managed Identity for Azure AI services with the azure_ai extension preview
+# Enable Managed Identity for Foundry Tools with the azure_ai extension preview
 
-The Azure AI extension for Azure Database for PostgreSQL supports System Assigned Managed Identity (SAMI) with Azure AI Services, Azure OpenAI, and Azure Machine Learning, offering enhanced security benefits for customers. By using Microsoft Entra ID, users can authenticate without access keys, reducing the risk of unauthorized access and simplifying credential management. This integration ensures that identities and permissions are handled securely and efficiently, providing a robust framework for database security.
+The Azure AI extension for Azure Database for PostgreSQL supports System Assigned Managed Identity (SAMI) with Foundry Tools, Azure OpenAI, and Azure Machine Learning, offering enhanced security benefits for customers. By using Microsoft Entra ID, users can authenticate without access keys, reducing the risk of unauthorized access and simplifying credential management. This integration ensures that identities and permissions are handled securely and efficiently, providing a robust framework for database security.
 
 ## Subscription key benefits
 
@@ -48,7 +48,7 @@ To learn more about it, visit [Managed Identities](/azure/active-directory/manag
 1. Select **Save** to assign the role.
 1. Return to the server's Overview page and select the Restart button to reboot the server.
 
-To learn more, visit ['Managed Identity with Azure AI Services'](/azure/active-directory/managed-identities-azure-resources/overview)
+To learn more, visit ['Managed Identity with Foundry Tools'](/azure/active-directory/managed-identities-azure-resources/overview)
 
 ### Access Control (IAM) for Azure OpenAI
 
@@ -75,7 +75,7 @@ To learn more, visit [Managed Identity with Azure OpenAI'](/azure/active-directo
 
 ## Update database authorization settings in azure_ai
 
-You need to update the database authorization settings to configure the Azure AI extension for PostgreSQL to use managed identity or subscription key authentication. This process ensures the extension is correctly authenticated with Azure AI Services, Azure OpenAI, or Azure Machine Learning. Follow the steps below to set your use case's appropriate authorization type and endpoint.
+You need to update the database authorization settings to configure the Azure AI extension for PostgreSQL to use managed identity or subscription key authentication. This process ensures the extension is correctly authenticated with Foundry Tools, Azure OpenAI, or Azure Machine Learning. Follow the steps below to set your use case's appropriate authorization type and endpoint.
 
 ### Set Authorization Type to Managed Identity
 
@@ -110,7 +110,7 @@ You need to update the database authorization settings to configure the Azure AI
 
 ### Verify settings
 
-After configuring the Azure AI extension for PostgreSQL, it's important to confirm that the settings have been applied correctly. Verifying the settings ensures the integration is properly configured and ready to interact with Azure AI Services, Azure OpenAI, or Azure Machine Learning. Use the following SQL commands to check the current configuration and validate that the correct authorization type and endpoints are in place.
+After configuring the Azure AI extension for PostgreSQL, it's important to confirm that the settings have been applied correctly. Verifying the settings ensures the integration is properly configured and ready to interact with Foundry Tools, Azure OpenAI, or Azure Machine Learning. Use the following SQL commands to check the current configuration and validate that the correct authorization type and endpoints are in place.
 
 ```sql
   SELECT azure_ai.get_setting('azure_openai.auth_type');
@@ -119,7 +119,7 @@ After configuring the Azure AI extension for PostgreSQL, it's important to confi
 
 ## Test the configuration
 
-After setting up the managed identity and configuring the Azure AI extension for PostgreSQL, verifying that the integration works as expected is essential. Testing ensures the database can authenticate successfully with Azure AI Services, Azure OpenAI, and Azure Machine Learning. The following examples demonstrate how to execute sample function calls to validate the configuration and confirm that the services function without authorization errors.
+After setting up the managed identity and configuring the Azure AI extension for PostgreSQL, verifying that the integration works as expected is essential. Testing ensures the database can authenticate successfully with Foundry Tools, Azure OpenAI, and Azure Machine Learning. The following examples demonstrate how to execute sample function calls to validate the configuration and confirm that the services function without authorization errors.
 
 ```sql
   SELECT azure_cognitive.analyze_sentiment('Your text here');
