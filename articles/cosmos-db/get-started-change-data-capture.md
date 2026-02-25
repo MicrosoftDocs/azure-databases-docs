@@ -5,7 +5,7 @@ author: jilmal
 ms.author: jmaldonado
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 12/05/2025
+ms.date: 02/19/2026
 ms.custom: sfi-image-nochange
 appliesto:
   - ✅ NoSQL
@@ -29,12 +29,7 @@ First, enable Azure Synapse Link at the account level and then enable analytical
 
 1. Enable Azure Synapse Link: [Enable Azure Synapse Link for an Azure Cosmos DB account](configure-synapse-link.md#enable-synapse-link) 
 
-1. Enable analytical store for your containers:
-
-    | Option | Guide |
-    | --- | --- |
-    | **Enable for a specific new container** | [Enable Azure Synapse Link for your new containers](configure-synapse-link.md#new-container) |
-    | **Enable for a specific existing container** | [Enable Azure Synapse Link for your existing containers](configure-synapse-link.md#existing-container) |
+1. Enable analytical store for your containers. For more information and specific instructions, see [enable Azure Synapse Link for your new containers](configure-synapse-link.md#enable-synapse-link).
 
 ## Create a target Azure resource using data flows
 

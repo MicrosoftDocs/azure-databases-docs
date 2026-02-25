@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 06/11/2025
+ms.date: 02/09/2026
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-dotnet, devx-track-azurecli
 appliesto:
   - ✅ NoSQL
@@ -38,6 +38,12 @@ Import the [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azu
 
 ```dotnetcli
 dotnet add package Microsoft.Azure.Cosmos
+```
+
+Also add the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) NuGet package, which is required by the Microsoft.Azure.Cosmos package.
+
+```dotnetcli
+dotnet add package Newtonsoft.Json
 ```
 
 Build the project with the [``dotnet build``](/dotnet/core/tools/dotnet-build) command.

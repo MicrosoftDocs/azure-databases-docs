@@ -89,7 +89,7 @@ A: If you don't upgrade your Azure Database for MySQL server to a supported majo
 
 __Q: What is the process for performing a major version upgrade on Azure Database for MySQL?__
 
-A: Azure Database for MySQL enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) document for more detailed information.
+A: Azure Database for MySQL enables you to carry out in-place major version upgrades using the Major Version Upgrade (MVU) feature. Consult the [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md) document for more detailed information.
 
 __Q: Are there any expected downtime or performance impacts during a major version upgrade?__
 

@@ -6,7 +6,7 @@ ms.author: maquaran
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: troubleshooting
-ms.date: 08/28/2025
+ms.date: 02/04/2026
 appliesto:
   - ✅ NoSQL
 ---
@@ -75,6 +75,9 @@ Forbidden (403); Substatus: 5300; The given request [PUT ...] cannot be authoriz
 ### Solution
 
 Perform the operation through Azure Resource Manager, Azure portal, Azure CLI, or Azure PowerShell.
+
+If you receive this error when using Microsoft Entra authentication with data plane SDK methods that manage database or container resources (such as `create*`, `createIfNotExists`, `replace`, or `delete` operations on databases or containers), these methods fail because they require control plane access. When you only have data plane access through Microsoft Entra role-based access control (RBAC), you can't perform control plane operations. Use the management plane SDK with appropriate Microsoft Entra RBAC roles (such as Contributor or Cosmos DB Account Contributor) to complete these tasks.
+
 If you're using the [Azure Functions Azure Cosmos DB Trigger](/azure/azure-functions/functions-bindings-cosmosdb-v2-trigger), make sure the `CreateLeaseContainerIfNotExists` property of the trigger isn't set to `true`. Using Microsoft Entra identities blocks any nondata operation, such as creating the lease container.
 
 ## Related content
