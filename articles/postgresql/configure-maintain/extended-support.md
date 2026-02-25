@@ -4,7 +4,7 @@ description: Describes the extended support offering for Postgres major versions
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 02/24/2026
+ms.date: 02/25/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -44,8 +44,8 @@ Extended Support is ideal for customers who...
 | PostgreSQL Version | Azure Standard Support Start Date | Community Retirement Date | Azure Standard Support End Date | Paid Extended Support Start Date | Paid Extended Support End Date |
 | --- | --- | --- | --- | --- | --- |
 | 11 | July 24, 2019 | November 9, 2023 | July 31, 2026 | August 1, 2026 | November 8, 2026 |
-| 12 | September 22, 2020 | November 14, 2024 | March 31, 2026 | April 1, 2026 | November 13, 2027 |
-| 13 | May 25, 2021 | November 13, 2025 | March 31, 2026 | April 1, 2026 | November 12, 2028 |
+| 12 | September 22, 2020 | November 14, 2024 | July 31, 2026 | August 1, 2026 | November 13, 2027 |
+| 13 | May 25, 2021 | November 13, 2025 | July 31, 2026 | August 1, 2026 | November 12, 2028 |
 | 14 | June 29, 2022 | November 12, 2026 | December 11, 2026 | December 12, 2026 | November 11, 2029 |
 
 ### Enrollment and price
@@ -63,7 +63,7 @@ A: No.
 
 **Q: What happens if I continue running an unsupported PostgreSQL version on Azure after its community end of support?**
 
-A: Your server is automatically enrolled in Extended Support one month after the community end of support date (or on July 1, 2026, for versions 11, 12, and 13).
+A: Your server is automatically enrolled in Extended Support one month after the community end of support date.
 
 **Q: Can I continue using my PostgreSQL instance without Extended Support?**
 
