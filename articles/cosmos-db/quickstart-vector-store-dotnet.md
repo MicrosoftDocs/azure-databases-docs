@@ -24,9 +24,12 @@ The app uses a sample hotel dataset in a JSON file with calculated vectors from 
 
 ## Prerequisites
 
+- An Azure subscription
+  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn)
 - [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) or later
 - [Azure Developer CLI (azd)](/azure/developer/azure-developer-cli/install-azd)
-- [C# extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
+- [Visual Studio Code](https://code.visualstudio.com/download)
+  - [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 
 ## App dependencies
 
@@ -47,7 +50,7 @@ The sample app uses passwordless authentication via `DefaultAzureCredential` and
 
 ### [Azure CLI](#tab/azure-cli)
 
-```bash
+```azurecli
 az login
 ```
 
@@ -134,7 +137,7 @@ The sample app populates vectorized sample data in an Azure Cosmos DB database a
     0. Exit
     ```
 
-1. Type `3` and press enter.
+1. Type `3` and press Enter.
 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
@@ -180,7 +183,7 @@ The sample app populates vectorized sample data in an Azure Cosmos DB database a
     0. Exit
     ```
 
-1. Type `4` and press enter.
+1. Type `4` and press Enter.
 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
@@ -226,7 +229,7 @@ The sample app populates vectorized sample data in an Azure Cosmos DB database a
     0. Exit
     ```
 
-1. Type `5` and press enter.
+1. Type `5` and press Enter.
 
     After the app populates the database and runs the search, you see the top five hotels that match the selected vector search query and their similarity scores.
     
