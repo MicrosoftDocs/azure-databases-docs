@@ -71,31 +71,6 @@ UPDATE line_items
 
 Doing the whole table at once might cause too much load on the database and disrupt other queries. You can do the backfill more slowly instead. One way to do that is to make a function that backfills small batches at a time, then call the function repeatedly with [pg_cron](https://github.com/citusdata/pg_cron).
 
-:::moniker range="<=citus-12"
-```sql
--- the function to backfill up to one
--- thousand rows from line_items
-
-CREATE FUNCTION backfill_batch()
-RETURNS void LANGUAGE sql AS $$
-  WITH batch AS (
-    SELECT line_items_id, order_id
-      FROM line_items
-     WHERE store_id IS NULL
-     LIMIT 1000
-       FOR UPDATE
-      SKIP LOCKED
-  )
-  UPDATE line_items AS li
-     SET store_id = orders.store_id
-    FROM batch, orders
-   WHERE batch.line_item_id = li.line_item_id
-     AND batch.order_id = orders.order_id;
-$$;
-```
-:::moniker-end
-
-:::moniker range=">=citus-13"
 ```sql
 -- the function to backfill up to ten
 -- thousand rows from line_items
@@ -116,8 +91,6 @@ RETURNS void LANGUAGE sql AS $$
    WHERE batch.line_item_id = li.line_item_id
      AND batch.order_id = orders.order_id;
 $$;
-```
-:::moniker-end
 
 -- run the function every quarter hour
 SELECT cron.schedule('*/15 * * * *', 'SELECT backfill_batch()');
