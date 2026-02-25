@@ -4,7 +4,7 @@ metadata:
   description: "Azure Database for PostgreSQL is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security."
   author: gkasar
   ms.author: gkasar
-  ms.reviewer: maghan, shaithal, hariram
+  ms.reviewer: maghan, shaithal, hariramt
   ms.date: 05/27/2025
   ms.service: azure-database-postgresql
   ms.topic: landing-page
@@ -154,6 +154,8 @@ landingContent:
             url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
           - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+          - text: Migrate (Offline) from EDB Extended server
+            url: migrate/migration-service/tutorial-migration-service-edb-extended-server-offline.md
 
 # Card 6
   - title: Migrate to Azure Database for PostgreSQL (online)
@@ -178,6 +180,8 @@ landingContent:
             url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
           - text: Migrate (Online) from Google AlloyDB for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
+          - text: Migrate (Online) from EDB Extended server
+            url: migrate/migration-service/tutorial-migration-service-edb-extended-server-online.md
 
 #Card 7
   - title: Additional Resources

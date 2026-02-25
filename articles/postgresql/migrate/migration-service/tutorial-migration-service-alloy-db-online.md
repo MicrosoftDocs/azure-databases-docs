@@ -1,5 +1,5 @@
 ---
-title: "Migrate Online, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
+title: "Migrate Online, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure (Preview)"
 description: "Learn to migrate, seamlessly and in online mode, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: hariramt
 ms.author: hariramt

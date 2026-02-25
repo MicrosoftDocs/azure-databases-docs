@@ -1,34 +1,32 @@
 ---
-title: "Migrate Offline, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure (Preview)"
-description: "Learn to migrate, seamlessly and in offline mode, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
+title: "Migrate Online, from a EDB Extended server to Azure Database for PostgreSQL, Using the Migration Service in Azure (Preview)"
+description: "Learn to migrate, seamlessly and in online mode, from a EDB Extended server to Azure Database for PostgreSQL, using the migration service in Azure."
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 11/05/2025
+ms.date: 02/25/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
 - devx-track-azurecli
 - sfi-image-nochange
-ms.collection:
-- migration
-- gcp-to-azure
+# CustomerIntent: As a user, I want to learn how to perform online migration from a EDB Extended server to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
-# (Preview) Migrate offline, from a Google AlloyDB for PostgreSQL to Azure Database for PostgreSQL, with the migration service
+# (Preview) Migrate online, from a EDB Extended server server to Azure Database for PostgreSQL, with the migration service
 
-This article guides you in migrating a Google AlloyDB for PostgreSQL instance to Azure Database for PostgreSQL flexible server in offline mode.
+This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL in online mode.
 
 The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It simplifies your migration journey to the Azure Database for PostgreSQL flexible server.
 
-[!INCLUDE [checklist-offline](includes/checklist-offline.md)]
+[!INCLUDE [checklist-online](includes/checklist-online.md)]
 
 ## Prerequisites
 
-To complete the migration, you need the following prerequisites:
+To begin the migration, you need the following prerequisites:
 
-[!INCLUDE [prerequisites-migration-service-postgresql-offline-alloy-db](includes/alloy-db/prerequisites-migration-service-postgresql-offline-alloy-db.md)]
+[!INCLUDE [prerequisites-migration-service-postgresql-online-edb-extended-server](includes/edb/prerequisites-migration-service-postgresql-online-edb-extended-server.md)]
 
 ## Perform the migration
 
@@ -36,7 +34,7 @@ You can migrate by using Azure portal or Azure CLI.
 
 #### [Portal](#tab/portal)
 
-This article guides you through using the Azure portal to migrate your PostgreSQL database from a Google AlloyDB for PostgreSQL server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. By following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
+This article guides you through using the Azure portal to migrate your PostgreSQL database from a EDB Extended server server to an Azure Database for PostgreSQL. The Azure portal allows you to perform various tasks, including database migration. By following the steps outlined in this tutorial, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
 ### Configure the migration task
 
@@ -50,14 +48,14 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/tutorial-migration-service/select-migration-page.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/select-migration-page.png":::
 
-1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from a Google AlloyDB for PostgreSQL.
+1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
     > [!NOTE]
     > The first time you use the migration service, an empty grid appears with a prompt to begin your first migration.
 
     If migrations to your flexible server target have already been created, the grid now contains information about attempted migrations.
 
-    :::image type="content" source="media/tutorial-migration-service-alloy-db-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-alloy-db-offline/create-migration.png":::
+    :::image type="content" source="media/tutorial-migration-service-edb-extended-server-online/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-edb-extended-server-online/create-migration.png":::
 
 #### Setup
 
@@ -65,7 +63,7 @@ You need to provide multiple details related to the migration, like the migratio
 
 - **Migration name** is the unique identifier for each migration to this flexible server target. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with a hyphen and should be unique for a target server. No two migrations to the same flexible server target can have the same name.
 
-- **Source server type** - Depending on your PostgreSQL source, you can select **Google AlloyDB for PostgreSQL**.
+- **Source server type** - Depending on your PostgreSQL source, you can select **Azure Virtual Machine** or **On-premise server**.
 
 - **Migration option** - Allows you to perform validations before triggering a migration. You can pick any of the following options:
     - **Validate** - Checks your server and database readiness for migration to the target.
@@ -75,11 +73,11 @@ Choosing the **Validate** or **Validate and migrate** option is always a good pr
 
 To learn more about the premigration validation, visit [premigration](concepts-premigration-migration-service.md).
 
-- **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option. In this case, we'll use the default.
+- **Migration mode** allows you to pick the mode for the migration. **Offline** is the default option. In this case, we'll change it to **Online**.
 
 Select **Next: Runtime server**.
 
-:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-alloy-db-offline/setup-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-edb-extended-server-online/setup-migration.png" alt-text="Screenshot of the Setup tab after providing necessary details." lightbox="media/tutorial-migration-service-edb-extended-server-online/setup-migration.png":::
 
 #### Runtime server
 
@@ -129,14 +127,15 @@ After selecting the databases, select **Next: Summary**.
 
 The **Summary** tab summarizes all the source and target details for creating the validation or migration. Review the details and select **Start validation and migration**.
 
-:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-alloy-db-offline/summary-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-edb-extended-server-online/summary-migration.png" alt-text="Screenshot of the Summary migration tab." lightbox="media/tutorial-migration-service-edb-extended-server-online/summary-migration.png":::
 
 ## Cancel the validation or migration
 
-You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status so that it can be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** state.
+You can cancel any ongoing validations or migrations. The workflow must be in the **In progress** status to be canceled. You can't cancel a validation or migration in the **Succeeded** or **Failed** status.
 
-- Canceling a validation stops further validation activity, and the validation moves to a **Canceled** state.
-- Canceling a migration stops further migration activity on your target server and moves to a **Canceled** state. The cancel action returns all changes the migration service makes on your target server.
+Canceling a validation stops any further validation activity and the validation moves to a **Canceled** status.
+
+Canceling a migration stops further migration activity on your target server and moves to a **Canceled** status. It doesn't drop or roll back any changes on your target server. Be sure to drop the databases on your target server that is involved in a canceled migration.
 
 #### [CLI](#tab/cli)
 
@@ -169,11 +168,14 @@ To begin the migration, create a JSON file with the migration details. The JSON 
         },
         "DBsToMigrate": "<<comma-separated-list-of-databases-in-array-like-["ticketdb","timedb","inventorydb"]>>",
         "OverwriteDBsInTarget": "true",
-        "sourceType": "AWS_AURORA",
+        "sourceType": "OnPremises",
         "sslMode": "Prefer"
     }
 }
 ```
+
+> [!NOTE]  
+> When configuring the JSON properties for the migration to Azure Database for PostgreSQL flexible server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
 
 - Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure Database for PostgreSQL flexible server target.
 
@@ -209,7 +211,7 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 
 After you select the **Start validation and migration** button, a notification appears, in a few seconds, to say that the validation or migration creation is successful. You're automatically redirected to the flexible server's **Migration** page. The entry shows **Status** as **In progress**. The workflow takes 2 to 3 minutes to set up the migration infrastructure and check network connections.
 
-:::image type="content" source="media/tutorial-migration-service-alloy-db-offline/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-alloy-db-offline/monitor-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-edb-extended-server-online/monitor-migration.png" alt-text="Screenshot of the monitor migration page." lightbox="media/tutorial-migration-service-edb-extended-server-online/monitor-migration.png":::
 
 The grid that displays the migrations has the following columns: **Name**, **Status**, **Migration mode**, **Migration type**, **Source server**, **Source server type**, **Databases**, **Duration**, and **Start time**. The entries are displayed sorted by **Start time** in descending order, with the most recent entry on the top. You can use the **Refresh** button in the toolbar, to refresh the status of the validation or migration run.
 
@@ -221,7 +223,7 @@ Remember that in the previous steps, when you created this migration, you config
 
 - If validation has errors, the migration moves into a **Failed** state.
 
-- If validation is complete without error, the migration starts, and the workflow moves into the substate of **Migrating data**.
+- If validation is complete without error, the migration starts, and the workflow moves into the substate of **Migrating Data**.
 
 Validation details are available at the instance and database level.
 
@@ -232,11 +234,11 @@ Validation details are available at the instance and database level.
 
 You can see the **Validation status** and **Migration status** under the migration details page.
 
-:::image type="content" source="media/tutorial-migration-service-offline/details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-offline/details-migration.png":::
+:::image type="content" source="media/tutorial-migration-service-online/details-migration.png" alt-text="Screenshot of the details showing validation and migration." lightbox="media/tutorial-migration-service-online/details-migration.png":::
 
 Some possible migration statuses:
 
-### Migration statuses
+### Migration status
 
 | Status | Description |
 | --- | --- |
@@ -245,13 +247,15 @@ Some possible migration statuses:
 | **Failed** | The migration has failed. |
 | **Validation failed** | The validation has failed. |
 | **Succeeded** | The migration has succeeded and is complete. |
+| **Waiting for user action** | Waiting for user action to perform cutover. |
 
-### Migration substatuses
+### Migration details
 
 | Substatus | Description |
 | --- | --- |
 | **Performing prerequisite steps** | Infrastructure setup is underway for data migration. |
 | **Validation in progress** | Validation is in progress. |
+| **Dropping database on target** | Dropping already existing database on target server. |
 | **Migrating data** | Data migration is in progress. |
 | **Completing migration** | Migration is in the final stages of completion. |
 | **Completed** | Migration has been completed. |
@@ -265,12 +269,18 @@ Some possible migration statuses:
 | **Succeeded** | Validation is successful. |
 | **Warning** | Validation is in warning. |
 
+## Initiate the cutover
+
+[!INCLUDE [initiate-cut-over](includes/initiate-cut-over.md)]
+
 ## Check the migration when completed
 
 [!INCLUDE [check-migration-completed](includes/check-migration-completed.md)]
 
 ## Related content
 
-- [Migrate online from Google AlloyDB for PostgreSQL](tutorial-migration-service-alloy-db-online.md)
 - [Migration service](concepts-migration-service-postgresql.md)
-- [Known Issues and limitations](concepts-known-issues-migration-service.md)
+- [Best practices](best-practices-migration-service-postgresql.md)
+- [Known issues and limitations](concepts-known-issues-migration-service.md)
+- [Network setup](how-to-network-setup-migration-service.md)
+- [Premigration validations](concepts-premigration-migration-service.md)
