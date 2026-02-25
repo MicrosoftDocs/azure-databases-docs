@@ -1,6 +1,6 @@
 ---
 
-title: Quickstart - CosmosDB vector search with .NET
+title: Quickstart - Azure Cosmos DB vector search with .NET
 description: Learn how to use vector search in Azure Cosmos DB with .NET. Store and query vector data efficiently in your applications. 
 author: alexwolfmsft
 ms.author: alexwolf
@@ -8,6 +8,7 @@ ms.reviewer: khelanmodi
 ms.devlang: csharp
 ms.topic: quickstart-sdk
 ms.date: 02/06/2026
+ai-usage: ai-assisted
 ms.custom:
   - devx-track-dotnet
   - devx-track-dotnet-ai
@@ -98,7 +99,7 @@ Update the `appsettings.json` placeholder values with your own:
 
 ## Build and run the project
 
-The sample app populates vectorized sample data in a CosmosDB database and lets you run different types of search queries. Each query uses a different container within the database. 
+The sample app populates vectorized sample data in an Azure Cosmos DB database and lets you run different types of search queries. Each query uses a different container within the database. 
 
 #### [Flat](#tab/tab-flat)
 
@@ -230,7 +231,7 @@ The sample app populates vectorized sample data in a CosmosDB database and lets 
     Vector index ready.
     Executing DiskANN vector search for top 5 results
     
-    Search Results (5 found using HNSW):
+    Search Results (5 found using DISKANN):
     1. Royal Cottage Resort (Similarity: 0.4991)  
     2. Country Comfort Inn (Similarity: 0.4786)   
     3. Nordick's Valley Motel (Similarity: 0.4635)
@@ -271,12 +272,12 @@ In the preceding code, the `CosmosDBService` performs the following tasks:
 - Provides database or container references on demand
 - Creates a vector search index only if it doesn't already exist
 - Lists all non-system databases, their containers, and each container's indexes
-- Inserts sample data if the contaienr is empty and adds supporting indexes
+- Inserts sample data if the container is empty and adds supporting indexes
 
 ## View and manage data in Visual Studio Code
 
-1. Install the [CosmosDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-CosmosDB) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
-1. Connect to your Azure Cosmos DB account using the CosmosDB extension.
+1. Install the [Azure Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-CosmosDB) and [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) in Visual Studio Code.
+1. Connect to your Azure Cosmos DB account using the Azure Cosmos DB extension.
 1. View the data and indexes in the Hotels database.
 
 ## Clean up resources
