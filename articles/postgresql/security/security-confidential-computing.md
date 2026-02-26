@@ -4,7 +4,7 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 09/30/2025
+ms.date:02/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -26,11 +26,10 @@ ms.custom:
 
 ## Processors
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
+**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. Only **AMD SEV-SNP** processors are supported.
 
-- AMD SEV-SNP
-
-   :::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
+> [!NOTE]
+> Intel TDX processors aren't currently supported for Azure Database for PostgreSQL.
 
 ## Virtual machine SKUs
 
@@ -84,6 +83,7 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 Be sure to evaluate the limitations carefully before deploying in a production environment.
 
 - Confidential Computing is only available in the UAE North region and West Europe regions.
+- Only AMD SEV-SNP processors are supported. Intel TDX processors aren't currently compatible with Azure Database for PostgreSQL.
 - Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
 
 ## Related content
