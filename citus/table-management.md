@@ -5,7 +5,7 @@ ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: concept-article
 ai-usage: ai-assisted
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Table management
@@ -224,6 +224,7 @@ Columnar storage works well with table partitioning. For an example, see `column
 
 - Columnar storage compresses data per stripe. Stripes are created per transaction, so inserting one row per transaction puts single rows into their own stripes. Compression and performance of single row stripes are worse than a row table. Always insert in bulk to a columnar table.
 
+:::moniker range=">=citus-13"
 - Even if you create a bunch of tiny stripes, you can repair the problem. Run `VACUUM (FULL)` on the table:
 
   ```sql
@@ -240,6 +241,20 @@ Columnar storage works well with table partitioning. For an example, see `column
   ALTER TABLE foo_compacted RENAME TO foo;
   COMMIT;
   ```
+:::moniker-end
+
+:::moniker range="<=citus-12"
+- If you create a bunch of tiny stripes, there's no in-place repair. Create a new columnar table, bulk copy the data, drop the old table, and rename:
+
+  ```sql
+  BEGIN;
+  CREATE TABLE foo_compacted (LIKE foo) USING columnar;
+  INSERT INTO foo_compacted SELECT * FROM foo;
+  DROP TABLE foo;
+  ALTER TABLE foo_compacted RENAME TO foo;
+  COMMIT;
+  ```
+:::moniker-end
 
 - Fundamentally noncompressible data can be a problem, although it can still be useful to use columnar storage so that less data is loaded into memory when selecting specific columns.
 
@@ -253,6 +268,27 @@ Columnar storage works well with table partitioning. For an example, see `column
 
 Future versions of Citus incrementally remove the following limitations:
 
+:::moniker range="<=citus-12"
+- Append-only (no UPDATE or DELETE support).
+- No space reclamation (for example, rolled-back transactions might still consume disk space).
+- Support for hash and btree indexes only.
+- No index scans or bitmap index scans.
+- No tidscans.
+- No sample scans.
+- No TOAST support (large values supported inline).
+- No support for ON CONFLICT statements (except DO NOTHING actions with no target specified).
+- No support for tuple locks (SELECT ... FOR SHARE, SELECT ... FOR UPDATE).
+- No support for serializable isolation level.
+- Support for PostgreSQL server versions 12 and later only.
+- No support for foreign keys, unique constraints, or exclusion constraints.
+- No support for logical decoding.
+- No support for intra-node parallel scans.
+- No support for AFTER ... FOR EACH ROW triggers.
+- No UNLOGGED columnar tables.
+- No TEMPORARY columnar tables.
+:::moniker-end
+
+:::moniker range=">=citus-13"
 - Append-only (no UPDATE or DELETE support).
 - No space reclamation (for example, rolled-back transactions might still consume disk space).
 - No bitmap index scans.
@@ -268,6 +304,7 @@ Future versions of Citus incrementally remove the following limitations:
 - No support for intra-node parallel scans.
 - No support for AFTER ... FOR EACH ROW triggers.
 - No UNLOGGED columnar tables.
+:::moniker-end
 
 ## Related content
 

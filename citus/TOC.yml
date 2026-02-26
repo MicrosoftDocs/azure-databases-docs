@@ -50,7 +50,7 @@
           href: multi-node.md
         - name: Multi-node (Ubuntu or Debian)
           href: multi-node-ubuntu-debian.md
-        - name: Multi-node (Fedora, CentOS, or Red Hat)
+        - name: Multi-node (Red Hat Enterprise Linux or CentOS)
           href: multi-node-fedora-centos-rhel.md
     - name: Migration
       items:
