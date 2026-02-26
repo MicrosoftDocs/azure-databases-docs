@@ -66,6 +66,10 @@ az mysql flexible-server stop  --resource-group --name myservername
 az mysql flexible-server stop
 ```
 
+> [!NOTE]  
+> * Once the server is stopped, the other management operations are not available for the Azure Database for MySQL Flexible Server instance.
+> * Stopping server with read replica is not allowed, read replica needs to be dropped or promoted before stopping server.
+
 ## Start a stopped server
 
 To start a server, run the `az mysql flexible-server start` command. If you use [local context](/cli/azure/config/param-persist), you don't need to provide any arguments.

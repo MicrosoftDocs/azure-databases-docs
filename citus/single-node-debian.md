@@ -4,7 +4,7 @@ description: Learn how to install single-node Citus on Debian or Ubuntu so you c
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: how-to
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Single-node Citus clusters on Ubuntu or Debian
@@ -18,7 +18,15 @@ This section describes the steps needed to set up a single-node Citus cluster on
 curl https://install.citusdata.com/community/deb.sh | sudo bash
 
 # install the server and initialize db
+:::moniker range="<=citus-12"
+sudo apt-get -y install postgresql-16-citus-12.1
+:::moniker-end
+:::moniker range="=citus-13"
 sudo apt-get -y install postgresql-17-citus-13.0
+:::moniker-end
+:::moniker range=">=citus-14"
+sudo apt-get -y install postgresql-18-citus-14.0
+:::moniker-end
 ```
 
 ## 2. Initialize the cluster
@@ -30,7 +38,15 @@ Create a new database on disk. For convenience with PostgreSQL Unix domain socke
 sudo su - postgres
 
 # include path to PostgreSQL binaries
+:::moniker range="<=citus-12"
+export PATH=$PATH:/usr/lib/postgresql/16/bin
+:::moniker-end
+:::moniker range="=citus-13"
 export PATH=$PATH:/usr/lib/postgresql/17/bin
+:::moniker-end
+:::moniker range=">=citus-14"
+export PATH=$PATH:/usr/lib/postgresql/18/bin
+:::moniker-end
 
 cd ~
 mkdir citus

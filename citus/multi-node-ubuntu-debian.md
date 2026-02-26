@@ -4,7 +4,7 @@ description: Learn how to install multi-node Citus on Debian or Ubuntu so you ca
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: how-to
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Multi-node Citus clusters on Ubuntu or Debian
@@ -22,6 +22,19 @@ curl https://install.citusdata.com/community/deb.sh | sudo bash
 
 ### 2. Install PostgreSQL + Citus and initialize a database
 
+:::moniker range="<=citus-12"
+```bash
+# install the server and initialize db
+sudo apt-get -y install postgresql-16-citus-12.1
+
+# preload citus extension
+sudo pg_conftool 16 main set shared_preload_libraries citus
+```
+
+This process installs a centralized configuration in `/etc/postgresql/16/main`, and creates a database in `/var/lib/postgresql/16/main`.
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 # install the server and initialize db
 sudo apt-get -y install postgresql-17-citus-13.0
@@ -31,11 +44,35 @@ sudo pg_conftool 17 main set shared_preload_libraries citus
 ```
 
 This process installs a centralized configuration in `/etc/postgresql/17/main`, and creates a database in `/var/lib/postgresql/17/main`.
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+# install the server and initialize db
+sudo apt-get -y install postgresql-18-citus-14.0
+
+# preload citus extension
+sudo pg_conftool 18 main set shared_preload_libraries citus
+```
+
+This process installs a centralized configuration in `/etc/postgresql/18/main`, and creates a database in `/var/lib/postgresql/18/main`.
+:::moniker-end
 
 ### 3. Configure connection and authentication
 
 Before you start the database, change its access permissions. By default the database server listens only to clients on localhost. As a part of this step, instruct it to listen on all IP interfaces, and then configure the client authentication file to allow all incoming connections from the local network.
 
+:::moniker range="<=citus-12"
+```bash
+sudo pg_conftool 16 main set listen_addresses '*'
+```
+
+```bash
+sudo vi /etc/postgresql/16/main/pg_hba.conf
+```
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 sudo pg_conftool 17 main set listen_addresses '*'
 ```
@@ -43,6 +80,17 @@ sudo pg_conftool 17 main set listen_addresses '*'
 ```bash
 sudo vi /etc/postgresql/17/main/pg_hba.conf
 ```
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+sudo pg_conftool 18 main set listen_addresses '*'
+```
+
+```bash
+sudo vi /etc/postgresql/18/main/pg_hba.conf
+```
+:::moniker-end
 
 ```bash
 # Allow unrestricted access to nodes in the local network. The following ranges

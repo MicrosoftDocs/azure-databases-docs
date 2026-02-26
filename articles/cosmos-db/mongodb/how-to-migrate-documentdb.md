@@ -28,13 +28,11 @@ In this guide, you take an existing collection and migrate it from Azure Cosmos 
     
     - Ensure that you have the **native authentication credentials** required to connect to your cluster. 
 
-- An Azure Key Vault account
+- An Azure Key Vault account (not required if your Azure DocumentDB supports Microsoft Entra ID authentication)
 
     - Ensure that the Key Vault account is enabled for role-based access control. For more information, see [role-based access control in Azure Key Vault](/azure/key-vault/general/rbac-guide).
 
-## Set up Azure Key Vault
-
-First, you need to configure your source Azure Cosmos DB for MongoDB account to store the target Azure DocumentDB cluster's native authentication credentials in your existing key vault.
+## Configure managed identity for your source account 
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
@@ -48,10 +46,6 @@ First, you need to configure your source Azure Cosmos DB for MongoDB account to 
 
     > [!TIP]
     > If you're using a user-assigned managed identity instead, ensure that at least one user-assigned managed identity is assigned to the source account.
-
-1. Navigate to your existing key vault.
-
-1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
 
 1. Run the command to update your source account to use the preferred identity mechanism as the default identity.
     
@@ -72,14 +66,28 @@ First, you need to configure your source Azure Cosmos DB for MongoDB account to 
     >     --default-identity "UserAssignedIdentity=<fully-qualified-resource-id-of-user-assigned-managed-identity>"
     > ```
 
-1. Back in your key vault, navigate to **Objects > Secrets**.
+## Set up Azure Key Vault (Optional)
+
+> [!TIP]
+> The migration job can use the target DocumentDB's native authentication credentials or use Microsoft Entra ID to connect. You don't need to set up Azure Key Vault if you're planning to use Microsoft Entra ID authentication. 
+
+When using  DocumentDB's native authentication, the migration job uses an Azure Key Vault to retrieve the target  authentication credentials.
+
+To store the credentials in your existing key vault.
+
+1. Navigate to your existing key vault.
+
+1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
  
-1. Then, select **Generate/Import** to create a new secret. Use these values for your secret:
+1. Navigate to **Objects > Secrets**, select **Generate/Import** to create a new secret. Use these values for your secret:
 
     | | Description |
     | --- | --- |
     | **Name** | Secret names are used to identify the secret and can only contain alphanumeric characters and dashes. This value is eventually used in the migration job's **Secret Name** field. |
     | **Secret value** | Paste the native authentication credentials for your Azure Cosmos DB for MongoDB target cluster here. |
+
+    > [!NOTE]
+    > Ensure you use the native DocumentDB connection string as the **Secret value**.
 
 1. In your newly created secret, gather the value of **Vault URI**. This value is eventually used in the migration job's **Vault URI** field.
 
@@ -117,16 +125,22 @@ The **Select Migration Mode** section is used to provide the migration mode that
 
 ## Configure target migration credentials
 
-The **Select Target Account** section is used to provide the connection details to the target Azure DocumentDB cluster. As a security best practice, we recommend that you store your native authentication credentials in Azure Key Vault.
+The **Select Target Account** section is used to provide the connection details to the target Azure DocumentDB cluster. The migration job can use the target DocumentDB's native authentication credentials or use Microsoft Entra ID to connect.
 
-> [!NOTE]
-> Connection strings that use Microsoft Entra ID authentication are currently not supported.
+As a security best practice, Microsoft Entra ID is the preferred authentication mechanism.
+
+### Configure using DocumentDB's native authentication
 
 1. Set the **Vault URI** and **Secret Name** fields to the values you recorded earlier in this guide.
 
     :::image source="media/how-to-migrate-documentdb/target-key-vault.png" alt-text="Screenshot of target selection section.":::
 
 1. Select **Next**.
+
+### Configure using Microsoft Entra ID authentication
+
+1. Make sure the managed identity has been assigned read-write privileges on the target DocumentDB cluster.
+1. Set the **Azure DocumentDB (with MongoDB Compatibility) account name** field value.  
 
 ## Update target firewall
 

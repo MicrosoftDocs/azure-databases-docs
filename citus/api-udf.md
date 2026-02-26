@@ -5,6 +5,7 @@ ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: reference
 ai-usage: ai-assisted
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Citus utility functions reference
@@ -63,6 +64,7 @@ SELECT citus_schema_undistribute('tenant_c');
 
 For more examples, see the [Citus microservices tutorial](tutorial-micro-services.md).
 
+:::moniker range=">=citus-13"
 ### citus_schema_move
 
 Use this function to move a distributed schema from one node to another.
@@ -92,6 +94,7 @@ None
 ```sql
 SELECT citus_schema_move('schema-name', 'to_host', 5432);
 ```
+:::moniker-end
 
 ### create_distributed_table
 
@@ -864,6 +867,38 @@ SELECT citus_set_coordinator_host('coord.example.com', 5432);
 -- then add a worker
 SELECT * FROM citus_add_node('worker1.example.com', 5432);
 ```
+
+:::moniker range="<=citus-12"
+### master_get_table_metadata
+
+The `master_get_table_metadata()` function returns distribution-related metadata for a distributed table. This metadata includes the relation ID, storage type, distribution method, distribution column, replication count (deprecated), maximum shard size, and the shard placement policy for that table. Behind the scenes, this function queries Citus metadata tables and concatenates the results into a tuple.
+
+#### Arguments
+
+**table_name**: Name of the distributed table whose metadata you want to fetch.
+
+#### Return value
+
+A tuple containing the following information:
+
+- **logical_relid:** Oid of the distributed table. This value references the `relfilenode` column in the `pg_class` system catalog table.
+- **part_storage_type:** Type of storage used for the table. May be `t` (standard table), `f` (foreign table), or `c` (columnar table).
+- **part_method:** Distribution method used for the table. Must be `h` (hash).
+- **part_key:** Distribution column for the table.
+- **part_replica_count:** (Deprecated) Current shard replication count.
+- **part_max_size:** Current maximum shard size in bytes.
+- **part_placement_policy:** Shard placement policy used for placing the table’s shards. May be `1` (local-node-first) or `2` (round-robin).
+
+#### Example
+
+```sql
+SELECT * from master_get_table_metadata('github_events');
+ logical_relid | part_storage_type | part_method | part_key | part_replica_count | part_max_size | part_placement_policy
+---------------+-------------------+-------------+----------+--------------------+---------------+-----------------------
+         24180 | t                 | h           | repo_id  |                  1 |    1073741824 |                     2
+(1 row)
+```
+:::moniker-end
 
 ### get_shard_id_for_distribution_column
 

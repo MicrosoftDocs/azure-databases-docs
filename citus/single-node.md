@@ -17,7 +17,7 @@ The installation instructions in this section guide you to install Citus open so
 | --- | --- |
 | [Docker](single-node-docker.md) | Install Citus using Docker containers |
 | [Debian/Ubuntu](single-node-debian.md) | Install Citus on Debian or Ubuntu systems |
-| [RHEL/CentOS/Fedora](single-node-rhel.md) | Install Citus on Red Hat Enterprise Linux, CentOS, or Fedora |
+| [RHEL/CentOS](single-node-rhel.md) | Install Citus on Red Hat Enterprise Linux or CentOS |
 
 ## Related content
 

@@ -158,7 +158,7 @@ landingContent:
         links:
           - text: Multi-node (Ubuntu or Debian)
             url: multi-node-ubuntu-debian.md
-          - text: Multi-node (Fedora, CentOS, or Red Hat)
+          - text: Multi-node (Red Hat Enterprise Linux or CentOS)
             url: multi-node-fedora-centos-rhel.md
 
 #Card 8

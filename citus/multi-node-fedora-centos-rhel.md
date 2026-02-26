@@ -1,13 +1,13 @@
 ---
-title: Multi-Node Citus Cluster on Fedora, CentOS, or Red Hat
-description: Learn how to install multi-node Citus on RHEL, CentOS, or Fedora so you can build a distributed PostgreSQL cluster.
+title: Multi-Node Citus Cluster on CentOS or Red Hat
+description: Learn how to install multi-node Citus on RHEL or CentOS so you can build a distributed PostgreSQL cluster.
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: how-to
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
-# Multi-node Citus cluster on Fedora, CentOS, or Red Hat
+# Multi-node Citus cluster on CentOS or Red Hat
 
 This section describes the steps needed to set up a multi-node Citus cluster on your own Linux machines from RPM packages.
 
@@ -22,6 +22,20 @@ curl https://install.citusdata.com/community/rpm.sh | sudo bash
 
 ### 2. Install PostgreSQL + Citus and initialize a database
 
+:::moniker range="<=citus-12"
+```bash
+# install PostgreSQL with Citus extension
+sudo yum install -y citus121_16
+# initialize system database
+sudo /usr/pgsql-16/bin/postgresql-16-setup initdb
+# preload citus extension
+echo "shared_preload_libraries = 'citus'" | sudo tee -a /var/lib/pgsql/16/data/postgresql.conf
+```
+
+PostgreSQL adds version-specific binaries in `/usr/pgsql-16/bin`, but psql is usually sufficient. The latest version is added to your path, and managing the server itself can be done with the *service* command.
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 # install PostgreSQL with Citus extension
 sudo yum install -y citus130_17
@@ -32,23 +46,63 @@ echo "shared_preload_libraries = 'citus'" | sudo tee -a /var/lib/pgsql/17/data/p
 ```
 
 PostgreSQL adds version-specific binaries in `/usr/pgsql-17/bin`, but psql is usually sufficient. The latest version is added to your path, and managing the server itself can be done with the *service* command.
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+# install PostgreSQL with Citus extension
+sudo yum install -y citus140_18
+# initialize system database
+sudo /usr/pgsql-18/bin/postgresql-18-setup initdb
+# preload citus extension
+echo "shared_preload_libraries = 'citus'" | sudo tee -a /var/lib/pgsql/18/data/postgresql.conf
+```
+
+PostgreSQL adds version-specific binaries in `/usr/pgsql-18/bin`, but psql is usually sufficient. The latest version is added to your path, and managing the server itself can be done with the *service* command.
+:::moniker-end
 
 ### 3. Configure connection and authentication
 
 Before starting the database, change its access permissions. By default the database server listens only to clients on localhost. As a part of this step, we instruct the database server to listen on all IP interfaces, and then configure the client authentication file to allow all incoming connections from the local network.
 
+:::moniker range="<=citus-12"
+```bash
+sudo vi /var/lib/pgsql/16/data/postgresql.conf
+```
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 sudo vi /var/lib/pgsql/17/data/postgresql.conf
 ```
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+sudo vi /var/lib/pgsql/18/data/postgresql.conf
+```
+:::moniker-end
 
 ```bash
 # Uncomment listen_addresses for the changes to take effect
 listen_addresses = '*'
 ```
 
+:::moniker range="<=citus-12"
+```bash
+sudo vi /var/lib/pgsql/16/data/pg_hba.conf
+```
+:::moniker-end
+:::moniker range="=citus-13"
 ```bash
 sudo vi /var/lib/pgsql/17/data/pg_hba.conf
 ```
+:::moniker-end
+:::moniker range=">=citus-14"
+```bash
+sudo vi /var/lib/pgsql/18/data/pg_hba.conf
+```
+:::moniker-end
 
 ```bash
 # Allow unrestricted access to nodes in the local network. The following ranges
@@ -65,12 +119,32 @@ host    all             all             ::1/128                 trust
 
 ### 4. Start database servers, create Citus extension
 
+:::moniker range="<=citus-12"
+```bash
+# start the db server
+sudo service postgresql-16 restart
+# and make it start automatically when computer does
+sudo chkconfig postgresql-16 on
+```
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 # start the db server
 sudo service postgresql-17 restart
 # and make it start automatically when computer does
 sudo chkconfig postgresql-17 on
 ```
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+# start the db server
+sudo service postgresql-18 restart
+# and make it start automatically when computer does
+sudo chkconfig postgresql-18 on
+```
+:::moniker-end
 
 You must add the Citus extension to **every database** you would like to use in a cluster. The following example adds the extension to the default database, which is named `postgres`.
 
