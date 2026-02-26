@@ -155,7 +155,7 @@ landingContent:
           - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
           - text: Migrate (Offline) from EDB Extended server
-            url: migrate/migration-service/tutorial-migration-service-edb-extended-server-offline.md
+            url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
 
 # Card 6
   - title: Migrate to Azure Database for PostgreSQL (online)
@@ -181,7 +181,7 @@ landingContent:
           - text: Migrate (Online) from Google AlloyDB for PostgreSQL
             url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
           - text: Migrate (Online) from EDB Extended server
-            url: migrate/migration-service/tutorial-migration-service-edb-extended-server-online.md
+            url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
 
 #Card 7
   - title: Additional Resources

@@ -1,5 +1,5 @@
 ---
-title: "Prerequisites Using the Migration Service From EDB Extended server (Offline)"
+title: "Prerequisites Using the Migration Service From EnterpriseDB Extended server (Offline) Preview"
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: hariramt
 ms.author: hariramt

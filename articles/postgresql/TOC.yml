@@ -504,7 +504,7 @@
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
                 - name: From EDB Extended server
-                  href: migrate/migration-service/tutorial-migration-service-edb-extended-server-offline.md                  
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md                  
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -518,7 +518,7 @@
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
                 - name: From EDB Extended server
-                  href: migrate/migration-service/tutorial-migration-service-edb-extended-server-online.md                  
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md                  
         - name: Concepts
           items:
             - name: Premigration validation
