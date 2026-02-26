@@ -106,6 +106,9 @@ After the global secondary index feature is enabled, you can create global secon
 
 Global secondary indexes store a copy of data from the source container. Before creating a global secondary index, create the source container that your index container will be built from. If you already have a container in your Azure Cosmos DB account that you would like to use as the source, you can skip these steps.
 
+> [!TIP]
+> If you want to delete a source container, you must first delete all global secondary indexes that are created for it.
+
 1. Use the Azure portal, the Azure SDKs, the Azure CLI, or the REST API to create a source container named `gsi-src` with `/customerId` as the partition key path.
 
    > [!NOTE]
