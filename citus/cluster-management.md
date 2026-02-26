@@ -5,6 +5,7 @@ ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: concept-article
 ai-usage: ai-assisted
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Manage your Citus cluster
@@ -163,6 +164,11 @@ Add a primary key to the table. If the desired key is the distribution column, t
 
 The Citus coordinator only stores metadata about the table shards and doesn't store any data. This architecture pushes all of the computation to the workers, and the coordinator performs only the final aggregations on the results from the workers. Therefore, it's unlikely that the coordinator becomes a bottleneck for read performance. Also, you can easily boost the coordinator's performance by shifting to a more powerful machine.
 
+:::moniker range="<=citus-12"
+However, in some write-heavy use cases where the coordinator becomes a performance bottleneck, you can add another coordinator. Because metadata tables are small (typically a few MB), it's possible to copy the metadata to another node and sync it regularly. Once synced, you can send queries to any coordinator to scale out performance. If your setup requires multiple coordinators, `contact us <https://www.citusdata.com/about/contact_us>`_.
+:::moniker-end
+
+:::moniker range=">=citus-13"
 However, in some write-heavy use cases where the coordinator becomes a performance bottleneck, you can add another node as described in the following section and load balance the client connections.
 
 ```sql
@@ -172,6 +178,7 @@ SELECT * FROM citus_set_node_property(second_coordinator_hostname, second_coordi
 
 > [!NOTE]  
 > You can run DDL queries only through the first coordinator node. See [database and role DDL propagation](reference-ddl.md).
+:::moniker-end
 
 ## Dealing with node failures
 
