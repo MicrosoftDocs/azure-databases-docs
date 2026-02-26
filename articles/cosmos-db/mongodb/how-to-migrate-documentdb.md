@@ -32,7 +32,7 @@ In this guide, you take an existing collection and migrate it from Azure Cosmos 
 
     - Ensure that the Key Vault account is enabled for role-based access control. For more information, see [role-based access control in Azure Key Vault](/azure/key-vault/general/rbac-guide).
 
-## Confgiure managed identity for your source account 
+## Configure managed identity for your source account 
 
 1. Sign in to the Azure portal (<https://portal.azure.com>).
 
@@ -79,7 +79,7 @@ To store the credentials in your existing key vault.
 
 1. If the Key Vault uses the **Role-Based Access Control (RBAC)** permission model, select the **Access Control (IAM)** option in the resource menu and assign the **Key Vault Secret User** role to the principal ID (object ID) of the managed identity used for your source account. Otherwise, use the **Access policies** option in the resource menu to create an access policy with **Get** and **List Secret** permissions, then assign it to the principal ID (object ID).
  
-1. Navigate to **Objects > Secrets**., select **Generate/Import** to create a new secret. Use these values for your secret:
+1. Navigate to **Objects > Secrets**, select **Generate/Import** to create a new secret. Use these values for your secret:
 
     | | Description |
     | --- | --- |
