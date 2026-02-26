@@ -84,7 +84,7 @@ Since GSIs can have a different partition key than the source, what would be cro
 **Choose your partition key**
 - GSI partition keys follow the same design principles as any container. Learn best practices for [choosing a partition key](./partitioning#choose-a-partition-key).
 - Select a partition key that exists in all or nearly all source items to avoid uneven distribution caused by null values.
-- Avoid sparse partition keys that could cause logical partitions to approach the 20 GB storage limit. [Monitor storage growth on logical partitions](./how-to-alert-on-logical-partition-key-storage-size.md).
+- Use [hierarchial partition keys](./hierarchical-partition-keys.md) with the final level as a high cardinality property like `id`. GSIs are uniquely positioned for hierarchical partition keys ending with `id` because writes and id generation are automatically maintained by the system. This optimizes partition keys that could cause logical partitions to approach the 20 GB storage limit without sacrificing any write or read patterns.
 
 **Design projections based on queries**
 - Only project properties you need for your data access patterns. Avoid projecting rarely-accessed properties to minimize storage and RU consumption.
