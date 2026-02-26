@@ -117,8 +117,6 @@ Azure DocumentDB imposes specific limits on cluster configuration, physical shar
 
 ### Collection limitations
 
--	Collections per cluster: 1,000
-
 -	Unsharded collection size: 32 TiB
 
 ### Secondary regions
