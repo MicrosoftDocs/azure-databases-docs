@@ -4,8 +4,8 @@ description: This article describes the confidential computing options in Azure 
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 09/30/2025
-ms.service: azure-database-postgresql
+ms.date: 02/26/2026
+ms.service: azure-database-postgresql 
 ms.subservice: security
 ms.topic: concept-article
 ms.custom:
@@ -14,27 +14,26 @@ ms.custom:
 
 # Azure Confidential Computing for Azure Database for PostgreSQL
 
-[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This allows for secure real-time analytics and collaborative machine learning across organizational boundaries.
+[Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This protection enables secure real-time analytics and collaborative machine learning across organizational boundaries.
 
 ## Understanding the architecture
 
-**Azure Database for PostgreSQL** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. Data processed inside the TEE is protected from access by the operating system, hypervisor, or other applications.
+**Azure Database for PostgreSQL** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. The operating system, hypervisor, and other applications can't access data processed inside the TEE.
 
 - Code runs in plaintext within the TEE but remains encrypted outside the enclave.
 - Data is encrypted at rest, in transit, and use.
-- Protected from access by the OS, hypervisor, or other applications.
+- The operating system, hypervisor, and other applications can't access protected data.
 
 ## Processors
 
-**Azure Confidential Computing** is supported in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. There are two processors to choose from:
+You enable **Azure Confidential Computing** in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. Only **AMD SEV-SNP** processors are supported.
 
-- AMD SEV-SNP
-
-   :::image type="content" source="media/security-confidential-computing/processor.jpg" alt-text="Screenshot of processor." lightbox="media/security-confidential-computing/processor.jpg":::
+> [!NOTE]
+> Intel TDX processors aren't currently supported for Azure Database for PostgreSQL.
 
 ## Virtual machine SKUs
 
-The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
+The SKUs that support Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
 
 | SKU Name | Processor | vCores | Memory (GiB) | Max IOPS | Max I/O Bandwidth (MBps) |
 | --- | --- | --- | --- | --- | --- |
@@ -43,9 +42,9 @@ The SKUs supporting Azure Confidential Computing (ACC) for Azure Database for Po
 
 ## Deployment
 
-You can deploy Azure Database for PostgreSQL with ACC using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, etc.
+You can deploy Azure Database for PostgreSQL with ACC by using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, and more.
 
-For this example, we're using the Azure portal.
+For this example, use the Azure portal.
 
 Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer) server:
 
@@ -69,7 +68,7 @@ Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.p
 
 ## Compare
 
-Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential Computing.
+Let's compare Azure Confidential Compute virtual machines and Azure Confidential Computing.
 
 | Feature | Confidential Compute VMs | ACC for Azure Database for PostgreSQL |
 | --- | --- | --- |
@@ -81,10 +80,11 @@ Let's compare Azure Confidential Compute virtual machines vs. Azure Confidential
 
 ## Limitations and considerations
 
-Be sure to evaluate the limitations carefully before deploying in a production environment.
+Evaluate the limitations carefully before deploying in a production environment.
 
 - Confidential Computing is only available in the UAE North region and West Europe regions.
-- Point-in-time Restore (PITR) from nonconfidential compute SKUs to confidential ones isn't allowed.
+- Only AMD SEV-SNP processors are supported. Intel TDX processors aren't currently compatible with Azure Database for PostgreSQL.
+- Point-in-time restore (PITR) from nonconfidential compute versions to confidential ones isn't allowed.
 
 ## Related content
 
