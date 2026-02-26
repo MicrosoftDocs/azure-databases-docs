@@ -1629,6 +1629,11 @@
           "source_path_from_root": "/articles/mysql/flexible-server/how-to-deploy-on-azure-free-account.md",
           "redirect_url": "/azure/mysql/flexible-server/quickstart-create-server-portal",
           "redirect_document_id": false
-        }
+        },
+    {
+      "source_path_from_root": "/articles/mariadb/migrate/whats-happening-to-mariadb.md",
+      "redirect_url": "/azure/mysql/index.yml",
+      "redirect_document_id": false
+    }
   ]
 }
