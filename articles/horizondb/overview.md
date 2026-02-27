@@ -5,7 +5,7 @@ author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 01/09/2026
-ms.service: azure-horizondb
+ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
@@ -60,8 +60,6 @@ An Azure Database for PostgreSQL flexible server instance has a [built-in PgBoun
 ## Azure regions
 
 One advantage of running your workload in Azure is global reach. Azure Database for PostgreSQL is currently available in the following Azure regions:
-
-[!INCLUDE [regions-table](includes/regions-table.md)]
 
 $ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
 

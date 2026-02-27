@@ -1,6 +1,6 @@
 ---
-title: What Is Azure HorizonDB?
-description: Provides an overview of Azure HorizonDB.
+title: Quickstart
+description: Quickstart Provides an overview of Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
