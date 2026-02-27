@@ -51,7 +51,7 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Check that your server meets all the prerequisites.
 
-   :::image type="content" source="media/fabric-mirroring-mysql/enable-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/enable-fabric-mirroring.png" alt-text="Screenshot of the enable message in the Fabric portal.":::
 
 1. Select **Enable Fabric Mirroring**.
 
@@ -59,7 +59,7 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Save the configuration to enable mirroring.
 
-   :::image type="content" source="media/fabric-mirroring-mysql/save-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/save-fabric-mirroring.png" alt-text="Screenshot of the save option in the Fabric portal.":::
 
 ### Create a mirrored database in Fabric
 
