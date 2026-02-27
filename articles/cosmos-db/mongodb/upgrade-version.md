@@ -16,6 +16,8 @@ ms.custom: sfi-image-nochange
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article describes how to upgrade the API version of your Azure Cosmos DB's API for MongoDB account. After your upgrade, you can use the latest functionality in Azure Cosmos DB's API for MongoDB. The upgrade process doesn't interrupt the availability of your account and it doesn't consume RU/s or decrease the capacity of the database at any point. This process doesn't affect existing data or indexes.
 
 When upgrading to a new API version, start with development/test workloads before upgrading production workloads. It's important to upgrade your clients to a version compatible with the API version you're upgrading to before upgrading your Azure Cosmos DB for MongoDB account.

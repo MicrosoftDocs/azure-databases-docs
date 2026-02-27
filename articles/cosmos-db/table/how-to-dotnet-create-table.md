@@ -13,6 +13,8 @@ ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track
 
 # Create a table in Azure Cosmos DB for Table using .NET
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Tables in Azure Cosmos DB for Table are units of management for multiple items. Before you can create or manage items, you must first create a table.
 
 ## Name a table

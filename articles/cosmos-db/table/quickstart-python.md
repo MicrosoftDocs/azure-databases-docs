@@ -18,6 +18,8 @@ ms.custom: devx-track-python, devx-track-extended-azdevcli, sfi-image-nochange
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Python. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Python.
 
 [API reference documentation](/python/api/azure-data-tables) | [Library source code](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/tables/azure-data-tables) | [Package (PyPI)](https://pypi.org/project/azure-data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)

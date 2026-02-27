@@ -15,6 +15,8 @@ ms.custom: devx-track-extended-java
 # Tutorial: Load sample data into an API for Cassandra table in Azure Cosmos DB
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 As a developer, you might have applications that use key/value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store and manage key/value data. This tutorial shows you how to load sample user data to a table in an API for Cassandra account in Azure Cosmos DB by using a Java application. The Java application uses the [Java driver](https://github.com/datastax/java-driver) and loads user data such as the user ID, username, and user city.
 
 This tutorial covers the following tasks:

@@ -86,7 +86,6 @@ There are multiple samples you can use to understand how to build your own seman
 
 - [What is a vector database?](../vector-database.md)
 - [Vector search in Azure Cosmos DB for NoSQL](../vector-search.md)
-- [Vector store in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [LLM tokens](tokens.md)
 - [Vector embeddings in Azure Cosmos DB](vector-embeddings.md)
 - [What are distance functions?](distance-functions.md)
