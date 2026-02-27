@@ -12,6 +12,9 @@ ms.devlang: csharp
 ---
 
 # Troubleshoot NoHostAvailableException and NoNodeAvailableException
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 NoHostAvailableException is a top-level wrapper exception with many possible causes and inner exceptions, many of which can be client-related. This exception tends to occur if there are some issues with the cluster or connection settings, or if one or more Cassandra nodes are unavailable.
 
 This article explores possible reasons for this exception, and it discusses specific details about the client driver that's being used.

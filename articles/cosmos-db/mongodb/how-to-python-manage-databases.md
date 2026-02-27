@@ -15,6 +15,8 @@ ms.custom: devx-track-python
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Your MongoDB server in Azure Cosmos DB is available from the common Python packages for MongoDB such as:
 
 * [PyMongo](https://www.mongodb.com/docs/drivers/pymongo/) for synchronous Python applications and used in this article.

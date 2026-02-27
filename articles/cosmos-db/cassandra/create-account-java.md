@@ -15,6 +15,8 @@ ms.custom: devx-track-java, devx-track-extended-java, sfi-ropc-blocked
 # Tutorial: Create an API for Cassandra account in Azure Cosmos DB by using a Java application to store key/value data
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 As a developer, you might have applications that use key/value pairs. You can use an API for Cassandra account in Azure Cosmos DB to store the key/value data. This tutorial describes how to use a Java application to create an API for Cassandra account in Azure Cosmos DB, add a database (also called a keyspace), and add a table. The Java application uses the [Java driver](https://github.com/datastax/java-driver) to create a user database that contains details such as the user ID, username, and user city.
 
 This tutorial covers the following tasks:

@@ -13,6 +13,8 @@ ms.custom: how-to, devx-track-extended-java
 # Azure Cosmos DB for Apache Cassandra driver extension
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB offers a driver extension for DataStax Java Driver 3 and 4. These driver extensions provide developers with different features to help improve the performance and reliability of your application and optimize your workloads on Azure Cosmos DB.
 
 In this article, the focus will be on Java v4 of the DataStax Java Driver. The extension created can be implemented without any changes to your code but an update to the `pom.xml` and `application.conf` files. In this article, we share the default values for all configuration options set by the Azure Cosmos DB Cassandra extensions and in what cases you might wish to override them.
