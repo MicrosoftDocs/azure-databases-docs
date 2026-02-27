@@ -14,6 +14,8 @@ ms.devlang: spark-scala
 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article details how to work with Azure Cosmos DB for Apache Cassandra from Spark on [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks).
 
 ## Prerequisites

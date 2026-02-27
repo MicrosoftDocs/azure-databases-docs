@@ -14,6 +14,8 @@ ms.custom: devx-track-csharp, devx-track-azurecli, devx-track-dotnet, devx-track
 # Create a container in Azure Cosmos DB for Apache Cassandra
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article explains the different ways to create a container in Azure Cosmos DB for Apache Cassandra. It shows how to create a container using Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
 This article explains the different ways to create a container in Azure Cosmos DB for Apache Cassandra.

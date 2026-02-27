@@ -13,6 +13,8 @@ ms.devlang: spark-scala
 # DDL operations in Azure Cosmos DB for Apache Cassandra from Spark
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article details keyspace and table DDL operations against Azure Cosmos DB for Apache Cassandra from Spark.
 
 ## Spark context

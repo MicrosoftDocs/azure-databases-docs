@@ -13,6 +13,8 @@ ms.author: thvankra
 # Manage Azure Cosmos DB for Apache Cassandra resources using Azure Resource Manager templates
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this article, you learn how to use Azure Resource Manager templates to help deploy and manage your Azure Cosmos DB accounts, keyspaces, and tables.
 
 This article has examples for API for Cassandra accounts only.

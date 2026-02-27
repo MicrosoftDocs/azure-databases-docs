@@ -12,6 +12,8 @@ ms.date: 09/24/2018
 # Create/Insert data into Azure Cosmos DB for Apache Cassandra from Spark
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
  
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article describes how to insert sample data into a table in Azure Cosmos DB for Apache Cassandra from Spark.
 
 ## API for Cassandra configuration
