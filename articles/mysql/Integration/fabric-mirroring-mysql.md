@@ -4,7 +4,8 @@ description: Learn about Mirroring in Microsoft Fabric for Azure Database for My
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 02/26/2026
+ms.date: 03/16/2026
+ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
 # customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for MySQL.
@@ -12,7 +13,7 @@ ai-usage: ai-assisted
 
 # Azure Database for MySQL mirroring in Microsoft Fabric
 
-[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
+[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-mysql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
 ## Architecture
 
@@ -22,7 +23,7 @@ Once you establish Fabric mirroring for a database in an Azure Database for MySQ
 
 The source database captures subsequent changes applied to selected tables. It ships these changes to the OneLake landing zone in batches to be applied to the respective Delta tables in the Mirrored database artifact.
 
-:::image type="content" source="media/public-preview-doc-updates-mysql-repo/architecture.png" alt-text="Diagram of Fabric Database mirroring architecture.":::
+:::image type="content" source="media/fabric-mirroring-mysql/architecture.png" alt-text="Diagram of Fabric Database mirroring architecture.":::
 
 ## Prerequisites
 
@@ -30,9 +31,9 @@ Before you set up Fabric mirroring for an Azure Database for MySQL, make sure th
 
 - **Supported service tiers**: General Purpose and Business-Critical.
 - **Supported MySQL versions**: 8.0 (LTS minor versions only).
-- **Binary log configuration**: `binlog_row_image` must be set to `FULL` or `NOBLOB`. If it's not set to one of these values, modify this setting in the Azure portal for Azure Database for MySQL. Go to **Settings > Server parameters** to make the necessary changes and save them. [Learn more](https://learn.microsoft.com/).
+- **Binary log configuration**: `binlog_row_image` must be set to `FULL` or `NOBLOB`. If it's not set to one of these values, modify this setting in the Azure portal for Azure Database for MySQL. Go to **Settings > Server parameters** to make the necessary changes and save them.
 - **User permissions**: A MySQL user account with **SELECT** permissions on all databases and tables selected for mirroring.
-- **Fabric capacity**: An active Microsoft Fabric capacity (or Fabric trial). [More details](https://learn.microsoft.com/).
+- **Fabric capacity**: An active Microsoft Fabric capacity (or Fabric trial).
 
 ## Set up mirroring in Azure Database for MySQL
 
@@ -46,11 +47,11 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Open **Fabric Mirroring (preview)** under **Settings**.
 
-   :::image type="content" source="media/public-preview-doc-updates-mysql-repo/fabric-mirroring-preview.png" alt-text="Screenshot of the Fabric Mirroring preview option under Settings in the Azure portal.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/settings-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
 
 1. Check that your server meets all the prerequisites.
 
-   :::image type="content" source="media/public-preview-doc-updates-mysql-repo/prerequisites-validation.png" alt-text="Screenshot of the prerequisites validation page for Fabric mirroring.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/enable-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
 
 1. Select **Enable Fabric Mirroring**.
 
@@ -58,7 +59,7 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Save the configuration to enable mirroring.
 
-   :::image type="content" source="media/public-preview-doc-updates-mysql-repo/configuration-saved.png" alt-text="Screenshot of the configuration saved confirmation for Fabric mirroring.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/save-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
 
 ### Create a mirrored database in Fabric
 
@@ -87,7 +88,7 @@ After replication finishes, all tables are available in the SQL Analytics endpoi
 
 ## Related content
 
-- [Microsoft Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-postgresql?source=recommendations)
-- [Tutorial: Configure Microsoft Fabric Mirrored Databases from Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-postgresql-tutorial?source=recommendations)
-- [Limitations of Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-postgresql-limitations?source=recommendations)
-- [Troubleshoot Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-postgresql-troubleshoot?source=recommendations)
+- [Microsoft Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql?source=recommendations)
+- [Tutorial: Configure Microsoft Fabric Mirrored Databases from Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-tutorial?source=recommendations)
+- [Limitations of Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-limitations?source=recommendations)
+- [Troubleshoot Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-troubleshoot?source=recommendations)
