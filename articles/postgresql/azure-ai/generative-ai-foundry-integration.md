@@ -147,7 +147,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
 
    Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). Find details for your connection in the **Connect** Tab in your Postgres Resource in the Azure portal:
 
-   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Screenshot of Connect Tab." lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
+   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgresql-connect.png" alt-text="Screenshot of Connect Tab." lightbox="media/generative-ai-foundry-integration/azure-postgresql-connect.png":::
 
    ```bash
    export PGHOST=<your-database-host-name>
@@ -225,7 +225,7 @@ After you deploy your MCP server, connect it to Foundry:
 
 1. Choose **Azure Database for PostgreSQL** as the tool and select **Create**.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-add-postgres-db-mcp.png" alt-text="Screenshot of finding the PostgreSQL tool in the Foundry catalog.":::
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-add-postgresql-db-mcp.png" alt-text="Screenshot of finding the PostgreSQL tool in the Foundry catalog.":::
 
 1. Select **Connect tool with endpoint**.
 
@@ -233,7 +233,7 @@ After you deploy your MCP server, connect it to Foundry:
 
 1. Select **Microsoft Entra** → **Project Managed Identity** as the authentication method.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgres-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool.":::
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool.":::
 
 1. Enter the `ENTRA_APP_CLIENT_ID` value as the audience. This value is from the output of the `azd env get-values` command.
 
