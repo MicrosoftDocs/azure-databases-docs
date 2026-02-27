@@ -13,6 +13,8 @@ ms.author: avijitgupta
 # Prevent rate-limiting errors for Azure Cosmos DB for MongoDB operations
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB operations might encounter rate-limiting, resulting in 16500 errors in mongo request metrics, if they exceed a collection's throughput limit (RUs).
 
 Enable Server Side Retry (SSR) to automate operation retries. SSR retries requests across all collections in your account with short delays. If a 60-second timeout is reached, a client receives an [ExceededTimeLimit exception (50)](error-codes-solutions.md).
