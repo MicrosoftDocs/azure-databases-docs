@@ -82,7 +82,7 @@ Since GSIs can have a different partition key than the source, would-be cross-pa
 ## Best practices
 
 **Choose your partition key**
-- GSI partition keys follow the same design principles as any container. Learn best practices for [choosing a partition key](./partitioning#choose-a-partition-key).
+- GSI partition keys follow the same design principles as any container. Learn best practices for [choosing a partition key](./partitioning.md#choose-a-partition-key).
 - Avoid uneven distribution caused by null values by selecting a partition key that exists in all or nearly all source items.
 - Use [hierarchical partition keys](./hierarchical-partition-keys.md) with the final level as a high cardinality property like `id`. GSIs are uniquely positioned for hierarchical partition keys ending with `id` because the system automatically maintains writes and id generation. This optimizes partition keys that could cause logical partitions to approach the 20 GB storage limit without sacrificing any write or read patterns.
 
