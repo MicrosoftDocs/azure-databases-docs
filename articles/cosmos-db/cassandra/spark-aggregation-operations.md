@@ -13,6 +13,8 @@ ms.topic: how-to
 
 [!INCLUDE [Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article describes basic aggregation operations against Azure Cosmos DB for Apache Cassandra tables from Spark.
 
 > [!NOTE]  

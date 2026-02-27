@@ -12,6 +12,7 @@ metadata:
 title: Frequently asked questions about Azure Cosmos DB for Apache Cassandra
 summary: |
   [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
+  [!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
 sections:
   - name: General
     questions:

@@ -15,6 +15,8 @@ ai-usage: ai-assisted
 
 # Use Azure Cosmos DB for Table and Azure Table Storage
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for Table and Azure Table Storage use the same table data model and operations, so you can build scalable applications easily. This article shows how to use both services together for efficient table storage management.
 
 > [!NOTE]

@@ -11,6 +11,8 @@ ms.date: 01/24/2023
 
 # Updating Data into Cosmos DB for MongoDB
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 One of the most basic operations is updating data into a collection. In this guide, we will cover everything you need to know about updating data using the Mongo Shell (Mongosh).
 
 ## Using updateOne() Method

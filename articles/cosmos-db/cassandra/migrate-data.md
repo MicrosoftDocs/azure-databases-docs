@@ -14,6 +14,8 @@ ms.devlang: csharp
 # Tutorial: Migrate your data to an API for Cassandra account
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 As a developer, you might have existing Cassandra workloads that are running on-premises or in the cloud. You might want to migrate them to Azure. You can migrate such workloads to an API for Cassandra account in Azure Cosmos DB. This tutorial provides instructions on different options that are available to migrate Apache Cassandra data into the API for Cassandra account in Azure Cosmos DB.
 
 This tutorial covers the following tasks:

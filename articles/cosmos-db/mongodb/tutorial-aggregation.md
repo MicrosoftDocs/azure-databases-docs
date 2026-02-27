@@ -11,6 +11,8 @@ ms.date: 01/24/2023
 
 # Getting Started with Aggregation Pipeline
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The aggregation pipeline is a powerful tool that allows developers to perform advanced data analysis and manipulation on their collections. The pipeline is a sequence of data processing operations, which are performed on the input documents to produce a computed output. The pipeline stages process the input documents and pass the result to the next stage. Each stage performs a specific operation on the data, such as filtering, grouping, sorting, and transforming.
 
 ## Basic Syntax

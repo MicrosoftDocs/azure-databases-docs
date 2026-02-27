@@ -18,6 +18,8 @@ ms.custom: devx-track-java, devx-track-extended-azdevcli
 
 [!INCLUDE[Developer Quickstart selector](includes/quickstart/dev-selector.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this quickstart, you deploy a basic Azure Cosmos DB for Table application using the Azure SDK for Java. Azure Cosmos DB for Table is a schemaless data store allowing applications to store structured table data in the cloud. You learn how to create tables, rows, and perform basic tasks within your Azure Cosmos DB resource using the Azure SDK for Java.
 
 [API reference documentation](/java/api/com.azure.data.tables) | [Library source code](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/tables/azure-data-tables) | [Package (Maven)](https://mvnrepository.com/artifact/com.azure/azure-data-tables) | [Azure Developer CLI](/azure/developer/azure-developer-cli/overview)

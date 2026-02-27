@@ -13,6 +13,8 @@ ms.subservice: mongodb
 
 [!INCLUDE[NoSQL, MongoDB, Cassandra, Gremlin](../includes/appliesto-nosql-mongodb-cassandra-gremlin.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 [!INCLUDE[Diagnostic queries selector](../includes/diagnostic-queries-selector.md)]
 
 In this article, we'll cover how to write more advanced queries to help troubleshoot issues with your Azure Cosmos DB account by using diagnostics logs sent to **Azure Diagnostics (legacy)** and **resource-specific (preview)** tables.

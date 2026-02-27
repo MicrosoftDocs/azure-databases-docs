@@ -16,6 +16,8 @@ ms.custom: devx-track-extended-java
 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The API for Cassandra in [Azure Cosmos DB](../introduction.md) is a compatibility layer that provides [wire protocol support](support.md) for the open-source Apache Cassandra database.
 
 This article describes common errors and solutions for applications that use the Azure Cosmos DB for Apache Cassandra. If you experience an error that isn't listed when you run a [supported operation in Cassandra](support.md), but the error isn't present in native Apache Cassandra, [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).

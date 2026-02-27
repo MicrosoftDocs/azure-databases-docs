@@ -13,6 +13,8 @@ ms.custom: devx-track-js
 # Create an Angular app with Azure Cosmos DB's API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This multi-part tutorial demonstrates how to create a new app written in Node.js with Express and Angular and then connect it to your [Azure Cosmos DB account configured with Azure Cosmos DB's API for MongoDB](introduction.md).
 
 Azure Cosmos DB is Microsoft’s fast NoSQL database with open APIs for any scale. It allows you to develop modern apps with SLA-backed speed and availability, automatic and instant scalability, and open source APIs for many NoSQL engines.

@@ -18,6 +18,8 @@ appliesto:
 
 # Manage indexing in Azure Cosmos DB for MongoDB
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB lets you use indexing to speed up query performance. This article shows you how to manage and optimize indexes for faster data retrieval and better efficiency.
 
 > [!VIDEO https://www.youtube.com/embed/qHFVwvfqZMA?si=rq2EOJSH8qY_09br]

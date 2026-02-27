@@ -151,7 +151,6 @@
         "articles/cosmos-db/**/*": "/answers/tags/187/azure-cosmos-db/",
         "articles/dms/**/*": "/answers/tags/37/azure-database-migration/",
         "articles/managed-instance-apache-cassandra/**/*": "/answers/tags/187/azure-cosmos-db/",
-        "articles/mariadb/**/*": "/answers/tags/56/azure-database-mariadb/",
         "articles/mysql/**/*": "/answers/tags/181/azure-database-mysql/",
         "articles/postgresql/**/*": "/answers/tags/214/azure-database-postgresql/"
       },
@@ -244,14 +243,6 @@
           "Azure",
           "Azure Managed Instance for Apache Cassandra"
         ],
-        "articles/mariadb/**/*.md": [
-          "Azure",
-          "Azure Database for MariaDB"
-        ],
-        "articles/mariadb/**/*.yml": [
-          "Azure",
-          "Azure Database for MariaDB"
-        ],
         "articles/mysql/**/*.md": [
           "Azure",
           "Azure Database for MySQL"
@@ -315,7 +306,6 @@
     "rules": {
       "sensitive-language-ma": {
         "exclude": [
-          "articles/mariadb/**/*.md",
           "articles/mysql/**/*.md",
           "articles/postgresql/**/*.md"
         ]
@@ -326,17 +316,12 @@
           "articles/dms/tutorial-mysql-azure-mysql-online.md",
           "articles/dms/tutorial-mysql-azure-single-to-flex-online-portal.md",
           "articles/dms/**/*.md",
-          "articles/mariadb/**/*.md",
           "articles/mysql/**/*.md",
           "articles/postgresql/**/*.md"
         ]
       },
       "sensitive-language-bl": {
         "exclude": [
-          "articles/mariadb/concepts-certificate-rotation.md",
-          "articles/mariadb/concepts-read-replicas.md",
-          "articles/mariadb/howto-create-users.md",
-          "articles/mariadb/howto-data-in-replication.md",
           "articles/mysql/concepts-certificate-rotation.md",
           "articles/mysql/concepts-read-replicas.md",
           "articles/mysql/flexible-server/concepts-read-replicas.md",
@@ -349,10 +334,6 @@
       "sensitive-language-wl": {
         "exclude": [
           "articles/managed-instance-apache-cassandra/*.*",
-          "articles/mariadb/concepts-certificate-rotation.md",
-          "articles/mariadb/concepts-read-replicas.md",
-          "articles/mariadb/howto-create-users.md",
-          "articles/mariadb/howto-data-in-replication.md",
           "articles/mysql/concepts-certificate-rotation.md",
           "articles/mysql/concepts-read-replicas.md",
           "articles/mysql/flexible-server/concepts-read-replicas.md",

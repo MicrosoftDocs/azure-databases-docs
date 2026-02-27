@@ -14,6 +14,8 @@ ms.devlang: spark-scala
 # Read data from Azure Cosmos DB for Apache Cassandra tables using Spark
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
  This article describes how to read data stored in Azure Cosmos DB for Apache Cassandra from Spark.
 
 ## API for Cassandra configuration

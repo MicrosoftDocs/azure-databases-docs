@@ -12,6 +12,8 @@ ms.date: 10/12/2020
 # Consistency levels for Azure Cosmos DB and the API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Unlike Azure Cosmos DB, the native MongoDB doesn't provide precisely defined consistency guarantees. Instead, native MongoDB allows users to configure the following consistency guarantees: a write concern, a read concern, and the isMaster directive - to direct the read operations to either primary or secondary replicas to achieve the desired consistency level.
 
 When using Azure Cosmos DB’s API for MongoDB, the MongoDB driver treats your write region as the primary replica and all other regions are read replica. You can choose which region associated with your Azure Cosmos DB account as a primary replica.

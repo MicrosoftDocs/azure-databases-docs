@@ -14,6 +14,8 @@ ms.custom: sfi-image-nochange, sfi-ropc-blocked
 # How to use Spring Data API for Apache Cassandra with Azure Cosmos DB for Apache Cassandra
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article demonstrates creating a sample application that uses [Spring Data] to store and retrieve information using the [Azure Cosmos DB for Apache Cassandra](/azure/cosmos-db/cassandra-introduction).
 
 ## Prerequisites

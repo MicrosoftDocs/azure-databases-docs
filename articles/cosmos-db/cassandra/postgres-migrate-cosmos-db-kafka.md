@@ -13,6 +13,8 @@ ms.custom: sfi-ropc-blocked
 # Migrate data from PostgreSQL to Azure Cosmos DB for Apache Cassandra account using Apache Kafka
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 API for Cassandra in Azure Cosmos DB has become a great choice for enterprise workloads running on Apache Cassandra for various reasons such as:
 
 * **Significant cost savings:** You can save cost with Azure Cosmos DB, which includes the cost of VM’s, bandwidth, and any applicable Oracle licenses. Additionally, you don’t have to manage the data centers, servers, SSD storage, networking, and electricity costs.

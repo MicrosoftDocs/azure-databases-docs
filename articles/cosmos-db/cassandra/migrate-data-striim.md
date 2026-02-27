@@ -13,6 +13,8 @@ ms.custom: sfi-image-nochange
 # Migrate data to Azure Cosmos DB for Apache Cassandra account using Striim
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The Striim image in the Azure marketplace offers continuous real-time data movement from data warehouses and databases to Azure. While moving the data, you can perform in-line denormalization, data transformation, enable real-time analytics, and data reporting scenarios. It’s easy to get started with Striim to continuously move enterprise data to Azure Cosmos DB for Apache Cassandra. Azure provides a marketplace offering that makes it easy to deploy Striim and migrate data to Azure Cosmos DB. 
 
 This article shows how to use Striim to migrate data from an **Oracle database** to an **Azure Cosmos DB for Apache Cassandra account**.

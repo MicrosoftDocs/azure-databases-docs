@@ -12,6 +12,8 @@ ms.author: gahllevy
 # Troubleshoot common issues in Azure Cosmos DB's API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The following article describes common errors and solutions for deployments using the Azure Cosmos DB for MongoDB.
 
 >[!Note]
