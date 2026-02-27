@@ -56,12 +56,12 @@ The query that defines a GSI must adhere to the following constraints. Once the 
 
 Each item in the GSI has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in GSI items is auto populated and the source item `id` value is represented as `_id`. When using `SELECT *`, the source `id` is automatically included as `_id` in GSI items. When projecting specific properties, you must explicitly include `id` if needed.
 
-For example, a valid query is: `SELECT c.id, c.name.first, c.emailAddress FROM c`. In the GSI, `_id`, `first` and `emailAddress` will appear as top-level properties, even though `name.first` was nested in the source. This query defines the data model of the GSI, determining which properties are included for each item. The source container and definition query can't be changed once created.
+For example, a valid query is: `SELECT c.id, c.name.first, c.emailAddress FROM c`. In the GSI, `_id`, `first` and `emailAddress` appear as top-level properties, even though `name.first` was nested in the source. This query defines the data model of the GSI, determining which properties are included for each item. The source container and definition query can't be changed once created.
  
  [Learn how to create global secondary indexes.](how-to-configure-global-secondary-indexes.md#create-a-global-secondary-index)
 
 > [!TIP]
-> If a projected property doesn't exist in all source items, the GSI will use null values for missing properties. If you choose a partition key that may not exist in all items, this can cause uneven partition distribution and potentially hit the 20 GB logical partition size limit. Set up alerts to [monitor if storage for a logical partition key is approaching 20 GB](./how-to-alert-on-logical-partition-key-storage-size.md).
+> If a projected property doesn't exist in all source items, the GSI uses null values for missing properties. If you choose a partition key that does not exist in all items, you can hit the 20 GB logical partition size limit. Set up alerts to [monitor if storage for a logical partition key is approaching 20 GB](./how-to-alert-on-logical-partition-key-storage-size.md).
 
 ## Syncing global secondary indexes
 
@@ -75,20 +75,20 @@ For Azure Cosmos DB accounts with a single region, change feed reads from the so
 
 ## Querying global secondary indexes
 
-Querying global secondary indexes is similar to querying any other container. You can use the full, rich Azure Cosmos DB for NoSQL query syntax to perform queries on GSIs. This includes vector, full text search, and hybrid search queries. Similar to other containers, you should [tune the indexing policy](./how-to-manage-indexing-policy.md) on GSIs based on your query patterns.
+Querying global secondary indexes is similar to querying any other container. You can use the full, rich Azure Cosmos DB for NoSQL query syntax to perform queries on GSIs including vector, full text search, and hybrid search queries. Similar to other containers, you should [tune the indexing policy](./how-to-manage-indexing-policy.md) on GSIs based on your query patterns.
 
-Since GSIs can have a different partition key than the source, what would be cross-partition queries on the source become single-partition queries on the GSI, improving latency and reducing RU consumption.
+Since GSIs can have a different partition key than the source, would-be cross-partition queries on the source can become single-partition queries on the GSI. Single partition queries improve latency and reduce RU consumption.
 
 ## Best practices
 
 **Choose your partition key**
 - GSI partition keys follow the same design principles as any container. Learn best practices for [choosing a partition key](./partitioning#choose-a-partition-key).
-- Select a partition key that exists in all or nearly all source items to avoid uneven distribution caused by null values.
-- Use [hierarchial partition keys](./hierarchical-partition-keys.md) with the final level as a high cardinality property like `id`. GSIs are uniquely positioned for hierarchical partition keys ending with `id` because writes and id generation are automatically maintained by the system. This optimizes partition keys that could cause logical partitions to approach the 20 GB storage limit without sacrificing any write or read patterns.
+- Avoid uneven distribution caused by null values by selecting a partition key that exists in all or nearly all source items.
+- Use [hierarchical partition keys](./hierarchical-partition-keys.md) with the final level as a high cardinality property like `id`. GSIs are uniquely positioned for hierarchical partition keys ending with `id` because the system automatically maintains writes and id generation. This optimizes partition keys that could cause logical partitions to approach the 20 GB storage limit without sacrificing any write or read patterns.
 
 **Design projections based on queries**
-- Only project properties you need for your data access patterns. Avoid projecting rarely-accessed properties to minimize storage and RU consumption.
-- Test your GSI definition query thoroughly before creating it. The definition cannot be changed once created.
+- Only project properties you need for your data access patterns. Avoid projecting rarely accessed properties to minimize storage and RU consumption.
+- Test your GSI definition query thoroughly before creating it. The definition can't be changed once created.
 - Use `SELECT *` only if you need all properties. Selective projections are more efficient.
 
 **Optimize for performance**
