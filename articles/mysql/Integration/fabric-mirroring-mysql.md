@@ -1,10 +1,10 @@
 ---
-title: Azure Database for MySQL mirroring in Microsoft Fabric
+title: Azure Database for MySQL Mirroring in Microsoft Fabric
 description: Learn about Mirroring in Microsoft Fabric for Azure Database for MySQL instances.
 author: VandhanaMehta
 ms.author: vamehta
 ms.reviewer: maghan
-ms.date: 03/16/2026
+ms.date: 02/26/2026
 ms.topic: concept-article
 ai-usage: ai-assisted
 # customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for MySQL.
@@ -54,7 +54,7 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Select **Enable Fabric Mirroring**.
 
-1. Choose an existing user‑assigned managed identity or create a new one. Use this identity to securely write data into OneLake.
+1. Choose an existing user-assigned managed identity or create a new one. Use this identity to securely write data into OneLake.
 
 1. Save the configuration to enable mirroring.
 
