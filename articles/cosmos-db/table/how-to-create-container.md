@@ -12,6 +12,8 @@ ms.author: sasinnat
 
 # Create a container in Azure Cosmos DB for Table
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article explains the different ways to create a container in Azure Cosmos DB for Table. It shows how to create a container using Azure portal, Azure CLI, PowerShell, or supported SDKs. This article demonstrates how to create a container, specify the partition key, and provision throughput.
 
 This article explains the different ways to create a container in Azure Cosmos DB for Table. If you are using a different API, see [API for MongoDB](../mongodb/how-to-create-container.md), [API for Cassandra](../cassandra/how-to-create-container.md), [API for Gremlin](../gremlin/how-to-create-container.md), and [API for NoSQL](../how-to-create-container.md) articles to create the container.
