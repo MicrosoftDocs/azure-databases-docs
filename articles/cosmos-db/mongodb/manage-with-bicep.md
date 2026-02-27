@@ -16,7 +16,7 @@ ms.author: gahllevy
 
 In this article, you learn how to use Bicep to deploy and manage your Azure Cosmos DB accounts for API for MongoDB, databases, and collections.
 
-This article shows Bicep samples for API for MongoDB accounts. You can also find Bicep samples for [SQL](../sql/manage-with-bicep.md), [Cassandra](../cassandra/manage-with-bicep.md), [Gremlin](../graph/manage-with-bicep.md), and [Table](../table/manage-with-bicep.md) APIs.
+This article shows Bicep samples for API for MongoDB accounts.
 
 > [!IMPORTANT]
 >

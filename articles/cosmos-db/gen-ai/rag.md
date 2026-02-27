@@ -64,7 +64,6 @@ Here's a streamlined process for building a RAG application with Azure Cosmos DB
 
 - [What is a vector database?](../vector-database.md)
 - [Vector database in Azure Cosmos DB NoSQL](../vector-search.md)
-- [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [What are tokens?](tokens.md)
 - [Vector embeddings](vector-embeddings.md)
 - [What are distance functions?](distance-functions.md)
