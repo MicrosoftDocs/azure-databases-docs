@@ -2122,7 +2122,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Selects which statements are tracked by the pgms_wait_sampling extension. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `all` |
 | Allowed values | `all,none` |
 | Parameter type | dynamic |
 | Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
@@ -2377,7 +2377,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Sets query capture mode for query store. None disables any capturing. |
 | Data type | enumeration |
-| Default value | `none` |
+| Default value | `top` |
 | Allowed values | `top,all,none` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
