@@ -137,7 +137,7 @@ For a detailed guide on configuring and interpreting HA health statuses, see [Hi
 
 - You can't schedule customer-initiated management tasks during the managed maintenance window.
 
-- Planned events such as scale computing and scale storage happen on the standby first and then on the primary server. Currently, the server doesn't failover for these planned operations.
+- Planned events such as scale computing and scale storage happen on the standby first and then on the primary server. Currently, the server doesn't fail over for these planned operations.
 
 - If you configure logical decoding or logical replication on an HA-enabled flexible server: 
     - In **PostgreSQL 16** and earlier, logical replication slots aren't preserved on the standby server after a failover by default.
@@ -213,7 +213,7 @@ Planned downtime events include Azure scheduled periodic software updates and mi
 
 For other user-initiated operations such as scale-compute or scale-storage, the process applies changes on the standby first, then the primary. Currently, the service doesn't fail over to the standby. Hence, while the scale operation runs on the primary server, applications encounter short downtime.
 
-You can also use this feature to failover to the standby server with reduced downtime. For example, your primary server could be in a different availability zone than the application after an unplanned failover. You want to bring the primary server back to the previous zone to colocate with your application.
+You can also use this feature to fail over to the standby server with reduced downtime. For example, your primary server could be in a different availability zone than the application after an unplanned failover. You want to bring the primary server back to the previous zone to colocate with your application.
 
 When you execute this feature, the process first prepares the standby server to ensure it catches up with recent transactions, allowing the application to continue performing reads and writes. The process promotes the standby and severs the connections to the primary. Your application can continue to write to the primary while the process establishes a new standby server in the background. The following table describes the steps involved with planned failover:
 
