@@ -13,7 +13,6 @@ ms.collection: ce-skilling-ai-copilot
 ms.custom:
   - build-2023
   - ignite-2023
-ai-usage: ai-assisted
 ---
 
 # Enable and use pgvector in Azure Database for PostgreSQL 
@@ -37,53 +36,6 @@ CREATE EXTENSION vector;
 > To remove the extension from the currently connected database use `DROP EXTENSION vector;`.
 
 [!INCLUDE [`pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-basics.md)]
-
-## Preprocess documents before embedding
-
-For complex source documents such as PDFs, scanned files, board packets, or forms, use [Azure Document Intelligence](/azure/ai-services/document-intelligence/overview) to extract and normalize text before chunking and embedding. Azure Document Intelligence parses layout, tables, and key fields to produce structured content that improves the quality of embeddings and downstream retrieval.
-
-A typical workflow:
-
-1. Call Azure Document Intelligence to parse and normalize document content.
-1. Persist the cleaned text and relevant metadata in a PostgreSQL table.
-1. Generate embeddings with `azure_openai.create_embeddings()` and store them in a `vector` column for retrieval.
-
-This approach improves accuracy for summarization and minutes-generation scenarios.
-
-## Hybrid SQL–vector search
-
-You can combine pgvector similarity with standard SQL filters to perform hybrid retrieval—restricting results by structured metadata while ranking by semantic distance. This pattern is common in RAG applications. Select the distance operator that matches the embedding model you use:
-
-- `<->` or `l2_distance` for Euclidean (L2) distance—smaller values indicate greater similarity.
-- `<=>` or `cosine_distance` for cosine distance—smaller values indicate greater similarity.
-- `<#>` for negative inner product—used with normalized vectors.
-
-The following example combines a metadata filter with cosine distance ordering. Replace the query vector with a call to `azure_openai.create_embeddings()` as shown in [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](../azure-ai/generative-ai-azure-openai.md):
-
-```sql
-SELECT doc_id, title, summary
-FROM documents
-WHERE document_type = 'board_packet'
-  AND meeting_date BETWEEN '2024-01-01' AND '2024-12-31'
-ORDER BY embedding <=> azure_openai.create_embeddings('{your-deployment-name}', 'quarterly earnings summary')::vector
-LIMIT 10;
-```
-
-## Indexing for vector search
-
-Create an index on the embedding column to make vector similarity queries more efficient at scale. The following example creates an IVFFLAT index on a `vector` column:
-
-```sql
-CREATE INDEX ON documents USING ivfflat (embedding vector_cosine_ops) WITH (lists = 100);
-```
-
-Before running similarity queries, set the number of probes to balance recall and performance:
-
-```sql
-SET ivfflat.probes = 10;
-```
-
-For guidance on tuning IVFFLAT index parameters and HNSW indexes for your workload, see [Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server](how-to-optimize-performance-pgvector.md).
 
 ## Related content
 
