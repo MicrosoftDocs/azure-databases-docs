@@ -13,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2024
+ai-usage: ai-assisted
 ---
 
 # Integrate Azure Database for PostgreSQL with Azure Cognitive Services
@@ -26,9 +27,9 @@ Azure AI extension gives the ability to invoke the [Azure Language in Foundry To
 1. After it deploys, select **Go to resource**.
 
 > [!NOTE]  
-> You will need the key, endpoint and region from the resource you create to connect the extension to the API.
+> You need the key, endpoint, and region from the resource you create to connect the extension to the API. If you use Azure AI Foundry for model deployment and governance, obtain the Language endpoint and key from the Foundry-managed resource. Governance policies and regional deployments are handled at the Azure AI Foundry layer and don't change the function signatures described in this article.
 
-## Configure azure_ai extension with Azure Cognitive Services
+## Configure azure_ai extension with Azure AI Language
 
 In the Language resource, under **Resource Management** > **Keys and Endpoint** you can find the endpoint, keys, and Location/Region for your language resource. Use the endpoint and key to enable `azure_ai` extension to invoke the model deployment. The Location/Region setting is only required for the translation function.
 
@@ -359,6 +360,16 @@ For more information, see Cognitive Services Compliance and Privacy notes at htt
 
 [Document summarization](/azure/ai-services/language-service/summarization/overview) uses natural language processing techniques to generate a summary for documents.
 
+### Preprocess documents with Azure Document Intelligence before summarization
+
+For complex documents such as board packets, meeting materials, PDFs, or scanned files, consider parsing them with [Azure Document Intelligence](/azure/ai-services/document-intelligence/overview) before calling the summarization functions. Azure Document Intelligence extracts structured content—including layout, tables, and key fields—from raw documents. Store the extracted text in PostgreSQL and then pass it to `azure_cognitive.summarize_abstractive` for higher-quality summaries.
+
+A typical preprocessing workflow:
+
+1. Call [Azure Document Intelligence](/azure/ai-services/document-intelligence/overview) to parse and normalize document content.
+1. Persist the extracted text and metadata in a PostgreSQL table.
+1. Invoke `azure_cognitive.summarize_abstractive` on the extracted text stored in PostgreSQL.
+
 ### `azure_cognitive.summarize_abstractive`
 
 [Document abstractive summarization](/azure/ai-services/language-service/summarization/overview) produces a summary that might not use the same words in the document but yet captures the main idea.
@@ -595,6 +606,31 @@ select
     pii_entities.*
     from azure_cognitive.recognize_pii_entities('Contoso employee with email Contoso@outlook.com is using our awesome API', 'en') as pii_entities
 ```
+
+## Hybrid SQL–vector search with pgvector for AI summaries
+
+You can combine the Language-generated summaries stored in PostgreSQL with vector embeddings to enable hybrid search—filtering by structured metadata while ranking results by semantic similarity.
+
+A typical pattern:
+
+1. Generate embeddings for document text using [Azure OpenAI embeddings](generative-ai-azure-openai.md) and store them in a `vector` column with [pgvector](../extensions/how-to-use-pgvector.md).
+1. Store the Language-generated summaries alongside the embeddings in the same table.
+1. Run queries that combine SQL metadata filters with pgvector distance ordering for retrieval-augmented generation (RAG) scenarios.
+
+The following example retrieves the most semantically relevant documents by combining a metadata filter with cosine vector similarity. The `embedding` column is populated by following the process described in [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md):
+
+```sql
+SELECT
+    doc_id,
+    title,
+    one_sentence_summary
+FROM documents
+WHERE document_type = 'board_packet'
+ORDER BY embedding <=> azure_openai.create_embeddings('{your-deployment-name}', 'quarterly earnings summary')::vector
+LIMIT 5;
+```
+
+For more detail on setting up embeddings and vector indexes, see [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md) and [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/how-to-use-pgvector.md).
 
 ## Related content
 
