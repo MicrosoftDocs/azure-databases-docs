@@ -88,7 +88,7 @@ After replication finishes, all tables are available in the SQL Analytics endpoi
 
 ## Related content
 
-- [Microsoft Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql?source=recommendations)
-- [Tutorial: Configure Microsoft Fabric Mirrored Databases from Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-tutorial?source=recommendations)
-- [Limitations of Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-limitations?source=recommendations)
-- [Troubleshoot Fabric Mirrored Databases From Azure Database for MySQL - Microsoft Fabric](/fabric/mirroring/azure-database-mysql-troubleshoot?source=recommendations)
+- [Microsoft Fabric Mirrored Databases From Azure Database for MySQL](/fabric/mirroring/azure-database-mysql)
+- [Configure Microsoft Fabric Mirrored Databases from Azure Database for MySQL](/fabric/mirroring/azure-database-mysql-tutorial)
+- [Limitations of Fabric Mirrored Databases From Azure Database for MySQL](/fabric/mirroring/azure-database-mysql-limitations)
+- [Troubleshoot Fabric Mirrored Databases From Azure Database for MySQL](/fabric/mirroring/azure-database-mysql-troubleshoot)
