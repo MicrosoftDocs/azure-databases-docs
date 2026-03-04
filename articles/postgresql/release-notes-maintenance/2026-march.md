@@ -40,13 +40,13 @@ This new version introduces a range of new features and enhancements, resolves k
 - Updated Pg_partman extension to 5.3.1
 - Updated Hll extension to version 2.19
 - Various improvements to metrics reliability.
-- Improved pgms_wait_sampling to capture correct query IDs for utility statements (e.g., DDL/maintenance), ensuring wait events are accurately attributed.
+- Improved pgms_wait_sampling to capture correct query IDs for utility statements (for example, DDL/maintenance), ensuring wait events are accurately attributed.
 - **Elastic clusters**: citus_stat_counters differential metrics are now enabled by default
 - **Elastic clusters - Firewall rule consistency**: Firewall rules are now self-healed across primary and standby instances, eliminating metadata mismatches after updates.
 - **Elastic clusters - HA firewall mirroring fix**: Firewall rule mirroring on HA clusters now correctly targets the standby Network Security Group.
 - **Elastic clusters - Node discoverability**: Cluster node active probe is enabled by default, ensuring new nodes are immediately discoverable.
 - **Fabric mirroring – Update table ownership requirement**: Table ownership is no longer required for mirrored tables that have a replica identity configured. Ownership is now only required for tables without a defined replica identity.
-- **Fabric mirroring - Pre-validation of mirroring prerequisites**: Added a database-level prerequisite validation step during table selection. If required mirroring prerequisites are not met, the operation now fails early before initiating publication.
+- **Fabric mirroring - Pre-validation of mirroring prerequisites**: Added a database-level prerequisite validation step during table selection. If the necessary mirroring prerequisites aren't met, the operation now fails early before initiating publication.
 - **MongoDB clusters – Simplified deletion with Private Link enabled**: You can now delete MongoDB clusters that have a Private link configured without first removing the Private Link.
 - Several targeted improvements and bug fixes to enhance stability, reliability, and overall service experience.
 
