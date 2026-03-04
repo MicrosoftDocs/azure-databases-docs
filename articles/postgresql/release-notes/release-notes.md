@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 2/26/2026
+ms.date: 3/4/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -20,6 +20,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: February 2026
 - General availability
     - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure Portal for PostgreSQL.
+    - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.25.1. <sup>$</sup>
 
 ## Release: January 2026
 - General availability
