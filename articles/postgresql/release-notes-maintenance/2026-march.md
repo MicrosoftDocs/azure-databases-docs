@@ -17,7 +17,7 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Engine version changes
 
-- Latest minor verions updated for Azure Database for PostgreSQL: 18.2, 17.8, 16.12, 15.16, and 14.21.
+- Latest minor versions updated for Azure Database for PostgreSQL: 18.2, 17.8, 16.12, 15.16, and 14.21.
 
 ## Features
 
