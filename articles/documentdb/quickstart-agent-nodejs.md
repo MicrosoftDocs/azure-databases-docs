@@ -51,7 +51,7 @@ You can use the Azure Developer CLI to create the required Azure resources by ru
 
 The sample uses a two-agent architecture where each agent has a specific role.
 
-:::image type="content" source="media/quickstart-agent-typescript/agent-architecture-typescript.svg" alt-text="Architecture diagram showing the two-agent workflow with planner agent, vector search tool, and synthesizer agent." border="false":::
+:::image type="content" source="media/quickstart-agent-go/agent-architecture-go.svg" alt-text="Architecture diagram showing the two-agent workflow with planner agent, vector search tool, and synthesizer agent." border="false":::
 
 This sample uses LangChain's agent framework with the OpenAI SDK. It leverages LangChain's function calling abstractions for tool integration and follows a linear workflow between the agents and the search tool. The execution is stateless with no conversation history, making it suitable for single-turn query and response scenarios.
 
@@ -383,7 +383,7 @@ The index type you choose affects performance:
 
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="media/quickstart-agent-typescript/documentdb-view-data.png" alt-text="Visual Studio Code DocumentDB extension showing the vector search index and hotel documents.":::
+    :::image type="content" source="media/quickstart-agent-go/documentdb-view-data.png" alt-text="Visual Studio Code DocumentDB extension showing the vector search index and hotel documents.":::
 
 ## Clean up resources
 
