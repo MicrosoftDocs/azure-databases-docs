@@ -251,7 +251,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples)
 - Integrations:
   - [LangChain, Python](https://python.langchain.com/v0.2/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
-  - [Semantic kernel, .NET](https://github.com/microsoft/semantic-kernel/tree/main/dotnet/src/IntegrationTests/Connectors/Memory/CosmosNoSql)
+  - [Semantic kernel, .NET](https://github.com/microsoft/semantic-kernel/tree/main/dotnet/src/IntegrationTests/Connectors)
   - [Semantic kernel, Python](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb_no_sql)
 
 ## Next step
