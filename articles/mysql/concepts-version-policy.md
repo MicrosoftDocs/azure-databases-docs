@@ -84,7 +84,10 @@ New service capabilities developed by Azure Database for MySQL might only be ava
 
 ## Retired MySQL plugins support in Azure Database for MySQL
 
-According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34. However, this plugin remains enabled in Azure Database for MySQL across all versions in Azure database for MySQL.
+- According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34. However, this plugin remains enabled in Azure Database for MySQL across all versions in Azure database for MySQL.
+- For MySQL 8.4, the caching_sha2_password plugin is the default authentication plugin. All new user accounts use the caching_sha2_password plugin for authentication.
+ Existing user accounts that use the mysql_native_password plugin will continue to be supported.
+- It is recommended to change the authentication plugin for the existing user accounts to caching_sha2_password authentication plugin instead of the mysql_native_password plugin either before or after upgrade to MySQL 8.4.
 
 ## Frequently asked questions (FAQ)
 
