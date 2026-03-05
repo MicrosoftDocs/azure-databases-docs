@@ -3,8 +3,8 @@ title: Azure Database for MySQL Mirroring in Microsoft Fabric
 description: Learn about Mirroring in Microsoft Fabric for Azure Database for MySQL instances.
 author: VandhanaMehta
 ms.author: vamehta
-ms.reviewer: maghan
-ms.date: 03/16/2026
+ms.reviewer: jingwang, maghan
+ms.date: 03/18/2026
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
