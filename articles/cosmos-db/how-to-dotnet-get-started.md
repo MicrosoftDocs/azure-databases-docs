@@ -99,7 +99,7 @@ Create a new instance of the **CosmosClient** class with your Azure Cosmos DB en
 
 ```csharp
 CosmosClient client = new(
-    accountEndpoint: "<azurecosmos-db-endpoint>",
+    accountEndpoint: "<azure-cosmos-db-endpoint>",
     tokenCredential: credential
 );
 ```
