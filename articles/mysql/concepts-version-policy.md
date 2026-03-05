@@ -84,7 +84,7 @@ New service capabilities developed by Azure Database for MySQL might only be ava
 
 ## Retired MySQL plugins support in Azure Database for MySQL
 
-According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34, is disabled by default in MySQL 8.4, and is removed starting with MySQL 9.0.0. However, this plugin remains enabled in Azure Database for MySQL.
+According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34. However, this plugin remains enabled in Azure Database for MySQL across all versions in Azure database for MySQL.
 
 ## Frequently asked questions (FAQ)
 
