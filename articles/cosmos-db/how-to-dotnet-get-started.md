@@ -95,9 +95,14 @@ For this example, we saved the instance in a variable of type [``TokenCredential
 
 :::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="credential":::
 
-Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT`` environment variable and the **TokenCredential** object as parameters.
+Create a new instance of the **CosmosClient** class with your Azure Cosmos DB endpoint and the **TokenCredential** object as parameters.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="default_credential" highlight="4":::
+```csharp
+CosmosClient client = new(
+    accountEndpoint: "<azurecosmos-db-endpoint>",
+    tokenCredential: credential
+);
+```
 
 ## Build your application
 
