@@ -81,6 +81,11 @@ New service capabilities developed by Azure Database for MySQL might only be ava
 - Uptime S.L.A.s apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
 - In the extreme event of a serious threat to the service caused by the MySQL database engine vulnerability identified in the retired database version, Azure might choose to stop the compute node of your database server from securing the service first. You're asked to upgrade the server before bringing it online. During the upgrade process, your data is always protected by automatic backups performed on the service, which can be used to restore it to an older version if desired.
 
+
+## Retired MySQL plugins support in Azure Database for MySQL
+
+According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34, is disabled by default in MySQL 8.4, and is removed starting with MySQL 9.0.0. However, this plugin remains enabled in Azure Database for MySQL.
+
 ## Frequently asked questions (FAQ)
 
 __Q: What happens if I don't upgrade my Azure Database for MySQL server to a supported major version after standard support ends?__
