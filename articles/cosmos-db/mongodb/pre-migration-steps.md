@@ -14,6 +14,8 @@ ms.date: 04/20/2023
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 > [!IMPORTANT]  
 > Please read this entire guide before carrying out your pre-migration steps.
 

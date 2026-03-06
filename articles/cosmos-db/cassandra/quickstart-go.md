@@ -18,6 +18,8 @@ appliesto:
 
 [!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Get started with the Azure Cosmos DB for Apache Cassandra client library for Go to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a Go client library, connect to the account, perform common operations, and query your final sample data.
 
 [API reference documentation](https://pkg.go.dev/github.com/apache/cassandra-gocql-driver/v2#pkg-overview) | [Library source code](https://github.com/apache/cassandra-gocql-driver) | [Package (Go)](https://pkg.go.dev/github.com/apache/cassandra-gocql-driver/v2)

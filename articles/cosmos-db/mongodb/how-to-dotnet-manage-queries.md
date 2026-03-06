@@ -15,6 +15,8 @@ ms.custom: devx-track-dotnet, devguide-csharp, cosmos-db-dev-journey
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Use queries to find documents in a collection.
 
 > [!NOTE]

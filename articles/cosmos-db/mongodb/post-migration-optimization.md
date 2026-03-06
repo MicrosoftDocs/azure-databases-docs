@@ -13,6 +13,8 @@ ms.author: gahllevy
 # Post-migration optimization steps when using Azure Cosmos DB's API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 > [!IMPORTANT]  
 > Please read this entire guide before carrying out your post-migration steps.
 >

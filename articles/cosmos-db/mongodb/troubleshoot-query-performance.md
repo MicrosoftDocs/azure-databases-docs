@@ -12,6 +12,8 @@ ms.author: avijitgupta
 # Troubleshoot query issues when using the Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article walks through a general recommended approach for troubleshooting queries in Azure Cosmos DB. Although you shouldn't consider the steps outlined in this article a complete defense against potential query issues, we've included the most common performance tips here. You should use this article as a starting place for troubleshooting slow or expensive queries in Azure Cosmos DB's API for MongoDB. If you are using the Azure Cosmos DB for NoSQL, see the [API for NoSQL query troubleshooting guide](troubleshoot-query-performance.md) article.
 
 Query optimizations in Azure Cosmos DB are broadly categorized as follows:

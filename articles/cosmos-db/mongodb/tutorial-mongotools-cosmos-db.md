@@ -13,6 +13,8 @@ ms.custom: sfi-image-nochange
 # Tutorial: Migrate MongoDB to Azure Cosmos DB's API for MongoDB offline using MongoDB native tools
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 > [!IMPORTANT]  
 > Please read this entire guide before carrying out your migration steps.
 >

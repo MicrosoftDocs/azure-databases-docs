@@ -14,6 +14,8 @@ appliesto:
 
 # Migrate from Azure Cosmos DB for MongoDB to Azure DocumentDB
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this guide, you take an existing collection and migrate it from Azure Cosmos DB for MongoDB to Azure DocumentDB using the tooling built-in to the service and Azure portal.
 
 ## Prerequisites

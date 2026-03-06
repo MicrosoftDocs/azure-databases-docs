@@ -14,6 +14,8 @@ appliesto:
 
 # Role-based access control in Azure Cosmos DB for MongoDB
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB exposes a built-in role-based access control system that lets you authorize your data requests with a fine-grained, role-based permission model. Users and roles reside within a database and are managed using the Azure CLI, Azure PowerShell, or Azure Resource Manager (ARM).
 
 ## Core concepts

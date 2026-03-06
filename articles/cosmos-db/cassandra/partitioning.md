@@ -12,6 +12,8 @@ ms.date: 09/03/2021
 # Partitioning in Azure Cosmos DB for Apache Cassandra
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article describes how partitioning works in Azure Cosmos DB for Apache Cassandra. 
 
 API for Cassandra uses partitioning to scale the individual tables in a keyspace to meet the performance needs of your application. Partitions are formed based on the value of a partition key that is associated with each record in a table. All the records in a partition have the same partition key value. Azure Cosmos DB transparently and automatically manages the placement of partitions across the physical resources to efficiently satisfy the scalability and performance needs of the table. As the throughput and storage requirements of an application increase, Azure Cosmos DB moves and balances the data across a greater number of physical machines.

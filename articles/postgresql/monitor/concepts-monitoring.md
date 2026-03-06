@@ -4,10 +4,11 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/03/2026
+ms.date: 03/03/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Monitor metrics in Azure Database for PostgreSQL
@@ -235,13 +236,34 @@ For more information about setting up charts for dimensional metrics, see [Metri
 
 ### Metrics visualization
 
-You can use several options to visualize Azure Monitor metrics.
+You can use several options to visualize Azure Monitor metrics. For most routine monitoring needs, the embedded Grafana dashboards and Metrics Explorer provide out-of-the-box visibility with no extra setup. Consider Azure Managed Grafana for cross-environment, multi-cloud, or highly customized dashboards and alerting.
 
 | Component | Description | Required training and configuration |
 | --- | --- | --- |
 | Overview page | Most Azure services include an **Overview** page in the Azure portal with a **Monitor** section that shows recent, commonly used metrics. This view is intended for a quick health and performance check of an individual Azure PostgreSQL server. | Platform metrics are collected automatically.<br />No configuration required. |
 | [Metrics Explorer](/azure/azure-monitor/essentials/metrics-getting-started) | Use Metrics Explorer to interactively analyze Azure Monitor metrics and create metric-based alerts. It provides flexible filtering, aggregation, and visualization capabilities. | - Platform metrics for Azure resources are available automatically.<br />- No additional configuration required after data collection is enabled.<br />- Guest metrics require the Azure Monitor Agent (VMs only).<br />- Application metrics require Application Insights. |
-| [Grafana](https://aka.ms/azure-postgres-grafana) | Use Grafana for advanced visualization and alerting on Azure Monitor metrics and logs. All Grafana distributions include the [Azure Monitor data source plug-in](/azure/azure-monitor/visualize/grafana-plugin), enabling rich dashboards and cross-metric correlations. | Familiarity with Grafana concepts is recommended.<br />Setup can be simplified by using the prebuilt **Azure PostgreSQL Grafana dashboard**, which enables monitoring across multiple Azure PostgreSQL Flexible Server instances with minimal configuration. |
+| Embedded Grafana dashboards (Azure portal) | Prebuilt Grafana dashboards are embedded directly in the Azure portal for Azure Database for PostgreSQL at no additional cost and without any setup. Use these dashboards for quick, built-in monitoring of your PostgreSQL servers. For details, see [Embedded Grafana dashboards in Azure portal](#embedded-grafana-dashboards-in-azure-portal). | No configuration required.<br />Dashboards are available immediately in the Azure portal. |
+| [Azure Managed Grafana](https://aka.ms/azure-postgres-grafana) | Use Azure Managed Grafana for advanced scenarios such as extended plugins, advanced authentication and provisioning, fine-grained multi-tenant control, and multi-cloud connectivity. All Grafana distributions include the [Azure Monitor data source plug-in](/azure/azure-monitor/visualize/grafana-plugin), enabling rich dashboards and cross-metric correlations. | Familiarity with Grafana concepts is recommended.<br />Setup can be simplified by using the prebuilt **Azure PostgreSQL Grafana dashboard**, which enables monitoring across multiple Azure PostgreSQL Flexible Server instances with minimal configuration. |
+
+#### Embedded Grafana dashboards in Azure portal
+
+Prebuilt Grafana dashboards are embedded directly in the Azure portal for Azure Database for PostgreSQL at no additional cost and with no setup required. These dashboards are refreshed near real time to provide visibility into server health and performance.
+
+The dashboards visualize core Azure Monitor platform metrics, including:
+
+- Availability
+- Connections
+- CPU
+- Memory
+- Storage
+- WAL
+- Disk I/O
+- Network
+- Transactions
+
+When you configure diagnostic settings to stream PostgreSQL logs to Azure Monitor Logs, the dashboards can display metrics and logs side by side. This capability enables you to correlate performance spikes with specific queries. For more information about enabling log streaming, see [Azure Database for PostgreSQL resource logs](#azure-database-for-postgresql-resource-logs).
+
+The embedded dashboards are Azure resources scoped to a subscription and resource group, and access is governed by Azure role-based access control (RBAC). You can export and deploy dashboards across environments by using Azure Resource Manager templates.
 
 ## Azure Database for PostgreSQL resource logs
 

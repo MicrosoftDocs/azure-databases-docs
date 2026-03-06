@@ -1,8 +1,6 @@
 ---
-author: sumitgaurin
-ms.author: sgaur
-manager: arthiaga
-ms.reviewer: arthiaga, randolphwest
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 10/28/2025
 ms.service: azure-database-migration-service
 ms.subservice: develop

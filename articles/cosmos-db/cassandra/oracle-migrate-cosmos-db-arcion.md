@@ -12,6 +12,8 @@ ms.date: 04/04/2022
 # Migrate data from Oracle to Azure Cosmos DB for Apache Cassandra account using Arcion
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 API for Cassandra in Azure Cosmos DB has become a great choice for enterprise workloads that are running on Oracle for reasons such as:
 
 * **Better scalability and availability:** It eliminates single points of failure, better scalability, and availability for your applications.

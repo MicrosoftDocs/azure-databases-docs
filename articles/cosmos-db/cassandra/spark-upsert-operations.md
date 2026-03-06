@@ -13,6 +13,8 @@ ms.devlang: spark-scala
 # Upsert data into Azure Cosmos DB for Apache Cassandra from Spark
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This article describes how to upsert data into Azure Cosmos DB for Apache Cassandra from Spark.
 
 ## API for Cassandra configuration
