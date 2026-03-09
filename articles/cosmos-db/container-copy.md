@@ -290,7 +290,7 @@ Currently, container copy is supported in the following regions:
     "message": "Response status code does not indicate success: Forbidden (403); Substatus: 1014; ActivityId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx; Reason: (Message: {"Errors":["Partition key reached maximum size of 20 GB. Learn more: https://aka.ms/CosmosDB/sql/errors/full-pk"]"
     ```
 
-    If you use hierarchical partition keys feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See [hierarchical partition keys overview](hierarchical-partition-keys.md).
+    If you use hierarchical partition keys feature, you can configure up to a three-level hierarchy for your partition keys, which allows you to exceed 20 GB of data for your first level key and avoid this limit. For example, with the two-level hierarchical of /employeeName and /id, data for each employee can have unlimited storage. See [hierarchical partition keys overview](hierarchical-partition-keys.md).
 
 * Error - Owner resource doesn't exist
 

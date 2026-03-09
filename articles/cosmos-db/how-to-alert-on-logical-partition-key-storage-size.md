@@ -156,7 +156,7 @@ For example, in the alert that was fired, we see the logical partition of "Conto
 ## Remediation steps
 When the 20-GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. 
 
-If your workload reaches the logical partition limit of 20 GB in production, see [hierarchical partition keys overview](hierarchical-partition-keys.md) to further optimize data distribution and for a higher level of scaling. 
+If your workload reaches the logical partition limit of 20 GB in production, the recommended long-term solution is to use [hierarchical partition keys overview](hierarchical-partition-keys.md) to rearchitect your application. With hierarchical partition keys, you can use up to three levels of keys, allowing you to exceed 20 GB of data for your first level key and avoid this limit.
 
 Else, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
 
