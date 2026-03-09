@@ -17,6 +17,8 @@
       items:
       - name: Maintenance release notes index
         href: release-notes-maintenance/release-notes-maintenance-index.md
+      - name: March 2026
+        href: release-notes-maintenance/2026-march.md
       - name: January 2026
         href: release-notes-maintenance/2026-january.md
       - name: October 2025
