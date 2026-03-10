@@ -89,7 +89,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
          Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
 
   **Best practice:**  
-         -To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
+         To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
 7. For large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
