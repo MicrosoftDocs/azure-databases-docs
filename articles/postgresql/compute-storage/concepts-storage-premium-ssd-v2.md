@@ -62,8 +62,8 @@ Australia Central 2*, Australia East, Australia South East, Brazil South*, Canad
 Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and do not currently support the features listed above. 
 
 > [!NOTE]
-> 1. * Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
-> 3. If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
+> 1. *Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
+> 2. If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
 
 
@@ -86,11 +86,11 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
   **Operations that can trigger this behavior include:**:
-  - Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-  - Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+        -Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
+        -Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
 
     **Best practice:**
-   - To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
+         -To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
 7. For very large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
