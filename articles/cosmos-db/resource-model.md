@@ -68,7 +68,7 @@ The underlying storage mechanism for data in Azure Cosmos DB is referred to as a
 
 Logical partitions allow the service to provide greater elasticity and better management of data on the underlying physical partitions as you add more partitions. To learn more about partitioning and partition keys, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md). 
 
-If you have scenarios in which partition keys can exceed 20 GB of data using hierarchical partition keys can help. If you use this feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See[hierarchical partition keys overview](hierarchical-partition-keys.md).
+If you have scenarios in which partition keys can exceed 20 GB of data, using hierarchical partition keys can help. If you use this feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See[hierarchical partition keys overview](hierarchical-partition-keys.md).
 
 When you create a container, you configure throughput in one of the following modes:
 

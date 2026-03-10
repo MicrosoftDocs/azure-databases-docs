@@ -156,13 +156,9 @@ For example, in the alert that was fired, we see the logical partition of "Conto
 ## Remediation steps
 When the 20-GB logical partition size limit is reached, you won't be able to write any more data to that logical partition. 
 
-If your workload reaches the logical partition limit of 20 GB in production, the recommended long-term solution is to use [hierarchical partition keys overview](hierarchical-partition-keys.md) to rearchitect your application. With hierarchical partition keys, you can use up to three levels of keys, allowing you to exceed 20 GB of data for your first level key and avoid this limit.
-
-Else, it's recommended to rearchitect your application with a different partition key as a long-term solution. 
+If your workload reaches the logical partition limit of 20 GB in production, the recommended long-term solution is to use [hierarchical partition keys overview](hierarchical-partition-keys.md) to rearchitect your application. With hierarchical partition keys, you can configure up to a three-level hierarchy for your partition keys, which allows you to exceed 20 GB of data for your first level key and avoid this limit. For example, with the two-level hierarchical of /employeeName and /id, data for each employee can have unlimited storage. See [hierarchical partition keys overview](hierarchical-partition-keys.md).
 
 To help give time for this, you can request a temporary increase in the logical partition key limit for your existing application.  [File an Azure support ticket](create-support-request-quota-increase.md) and select quota type **Temporary increase in container's logical partition key size.** Note this is intended as a temporary mitigation and not recommended as a long-term solution, as service level agreement (SLA) guarantees aren't honored when the limit is increased. To remove the configuration, file a support ticket and select quota type **Restore container’s logical partition key size to default (20 GB)**. This can be done after you have either deleted data to fit the 20-GB logical partition limit or have rearchitected your application with a different partition key.
-
-To learn about best practices for managing workloads that have partition keys requiring higher limits for storage or throughput, see [Create a synthetic partition key](synthetic-partition-keys.md).
 
 ## Next steps
 * How to [create alerts for Azure Cosmos DB using Azure Monitor](create-alerts.md).
