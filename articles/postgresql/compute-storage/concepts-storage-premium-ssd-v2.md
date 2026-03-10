@@ -59,10 +59,10 @@ SSDv2 now supports *High Availability, Geo-Redundant backups Geo Replicas, Major
 
 Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
 
-Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and do not currently support the features listed above. 
+Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
 > [!NOTE]
-> 1. *Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
+> 1. *Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
 > 2. If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
 
@@ -81,7 +81,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
  _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
-6. We recommend serializing operations that rely on full backups to allow sufficient time for disk hydration to complete. While hydration is in progress, the service supports up to three instant snapshots.If more than three full backup–triggering operations are initiated before hydration completes, subsequent operations may fail with the following error:
+6. We recommend serializing operations that rely on full backups to allow sufficient time for disk hydration to complete. While hydration is in progress, the service supports up to three instants snapshots.If more than three full backup–triggering operations are initiated before hydration completes, subsequent operations may fail with the following error:
 
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
@@ -92,7 +92,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
     **Best practice:**
          -To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
-7. For very large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
+7. For large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
 8. Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
 
