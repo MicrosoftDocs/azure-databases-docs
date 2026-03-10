@@ -62,7 +62,7 @@ Australia Central 2*, Australia East, Australia South East, Brazil South*, Canad
 Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
 > [!NOTE]  
-*(*) Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
+* (*)Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
 
 
