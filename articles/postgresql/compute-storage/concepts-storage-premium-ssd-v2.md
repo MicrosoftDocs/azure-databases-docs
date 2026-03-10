@@ -86,7 +86,7 @@ Geo‑redundant backups are currently unavailable in the region marked with* bec
         -Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
         -Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
 
-    **Best practice:**
+  **Best practice:**:   
          -To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
 7. For large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
