@@ -70,7 +70,7 @@ Geo‑redundant backups are currently unavailable in the region marked with* bec
 
 2. You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
-3.You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
+3. You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
 4. During preview, restoring a deleted server (Tombstone recovery) might lead to up to 24 hours of data loss. To avoid accidental deletions, enable resource lock.
 
@@ -82,11 +82,11 @@ Geo‑redundant backups are currently unavailable in the region marked with* bec
 
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
-  **Operations that can trigger this behavior include:**:
+  **Operations that can trigger this behavior include:**
         -Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
         -Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
 
-  **Best practice:**:   
+  **Best practice:**
          -To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
 7. For large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
