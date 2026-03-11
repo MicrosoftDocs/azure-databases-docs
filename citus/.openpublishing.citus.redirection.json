@@ -1,0 +1,10 @@
+{
+  "redirections": [
+    {
+      "source_path": "https://learn.microsoft.com/postgresql",
+      "redirect_url": "/postgresql/citus/citus/index",
+      "redirect_document_id": false
+    }
+
+  ]
+}
