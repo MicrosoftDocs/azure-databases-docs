@@ -45,16 +45,6 @@
         "group": "group-citus"
       }
     ],
-    "fileMetadata": {
-      "ms.author": {
-        "**/*": "ihalatci"
-      },
-      "author": {
-        "**/*": "ihalatci"
-      },
-      "ms.reviewer": {
-        "**/*": "adamwolk, maghan"
-      },
       "featureFlags": {
         "**/*.md": [
           "show_learn_banner"
@@ -160,8 +150,20 @@
       "group-citus": {
         "dest": "citus-all",
         "moniker_range": "=citus-12 || =citus-13 || =citus-14"
-      }
-    },
+      },
+      "ms.service": {
+        "**/*": "postgresql-citus"
+      },
+      "ms.subservice": {},
+      "ms.author": {
+        "**/*": "ihalatci"
+      },
+      "author": {
+        "**/*": "ihalatci"
+      },
+      "ms.reviewer": {
+        "**/*": "adamwolk, maghan"
+      },
     "rules": {
       "sensitive-language-bl": {
         "exclude": [
