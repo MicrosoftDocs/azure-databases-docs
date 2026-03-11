@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites Using the Migration Service From EnterpriseDB Extended server (Online) Preview"
+title: Prerequisites Using the Migration Service from EnterpriseDB Extended Server (Online) Preview
 description: Providing the online prerequisites for the migration service in Azure Database for PostgreSQL.
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 02/25/2026
+ms.date: 03/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -34,8 +34,8 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 ### Configure target setup
 
-- Before migrating, Azure Database for PostgreSQL – Flexible server must be created.
-- SKU provisioned for Azure Database for PostgreSQL – Flexible server should match with the source.
+- Before migrating, Azure Database for PostgreSQL - Flexible server must be created.
+- SKU provisioned for Azure Database for PostgreSQL - Flexible server should match with the source.
 - To create a new Azure Database for PostgreSQL, visit [Create an Azure Database for PostgreSQL flexible server](../../../../flexible-server/quickstart-create-server.md)
 
 ### Enable CDC as a source
@@ -48,10 +48,10 @@ ALTER USER <user> WITH REPLICATION;
 ```
 - Go to the EDB Extended server instance at the source, and modify the following flags:
 
-    - Set flag `logical_decoding = on`
-    - Set flag `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
-    - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
-    - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
+  - Set flag `logical_decoding = on`
+  - Set flag `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
+  - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
+  - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
 
 - In the target flexible server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
 
