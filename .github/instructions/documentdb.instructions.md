@@ -26,17 +26,6 @@ The following metadata fields are acceptable and should not be changed:
 
 - `ms.service` and `ms.subservice` values - Microsoft Learn taxonomy values
 
-### Language naming
-
-| Correct | Incorrect |
-| --- | --- |
-| Node.js | TypeScript |
-| Node.js | JavaScript |
-| Node.js | JS |
-| Node.js | TS |
-
-In headings and prose, use "Node.js" as the umbrella term for samples written in JavaScript or TypeScript. Node.js is the runtime platform name used in documentation regardless of whether the sample code uses JavaScript or TypeScript syntax.
-
 ## Content formatting
 
 Code blocks, queries, and documentation structure guidelines.
