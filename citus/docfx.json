@@ -2,79 +2,57 @@
   "build": {
     "content": [
       {
-        "dest": ".",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
         "exclude": [
           "**/_themes/**",
           "**/includes/**",
           "**/obj/**"
         ],
-        "files": [
-          "**/*.md",
-          "**/*.yml"
-        ],
-        "group": "group-citus",
-        "src": "."
+        "src": ".",
+        "dest": ".",
+        "group": "group-citus"
       },
       {
-        "dest": "breadcrumb",
         "files": [
           "toc.yml"
         ],
-        "src": "breadcrumb"
+        "src": "breadcrumb",
+        "dest": "breadcrumb"
       },
       {
-        "dest": "zone-pivots/citus",
         "files": [
           "zone-pivot-groups.yml"
         ],
-        "src": "zone-pivots"
+        "src": "zone-pivots",
+        "dest": "zone-pivots/citus"
       }
     ],
     "resource": [
       {
         "files": [
-          "**/*.png",
           "**/*.gif",
           "**/*.jpg",
+          "**/*.png",
           "**/*.svg"
         ],
         "exclude": [
           "**/obj/**"
         ],
         "src": "./",
+        "dest": ".",
         "group": "group-citus"
       }
     ],
-      "featureFlags": {
-        "**/*.md": [
-          "show_learn_banner"
-        ]
-      },
-      "learn_banner_products": {
-        "**/*.md": [
-          "postgresql-citus"
-        ]
-      },
-      "searchScope": {
-        "**/*.yml": [
-          "Citus",
-          "Citus for PostgreSQL"
-        ]
-      },
-      "titleSuffix": {
-        "**/*.md": "Citus for PostgreSQL"
-      },
-      "monikerRange": {
-        "**/*.md": "=citus-12 || =citus-13 || =citus-14",
-        "**/*.yml": "=citus-12 || =citus-13 || =citus-14"
-      },
-      "ms.service": {
-        "**/*": "postgresql-citus"
+    "groups": {
+      "group-citus": {
+        "dest": "citus-all",
+        "moniker_range": "=citus-12 || =citus-13 || =citus-14"
       }
     },
     "globalMetadata": {
-      "brand": "citus",
-      "breadcrumb_path": "breadcrumb/citus/toc.yml",
       "contributors_to_exclude": [
         "alexbuckgit",
         "American-Dipper",
@@ -98,14 +76,14 @@
         "MeeraDi",
         "meganbradley",
         "mohitp930",
-        "ms-robkni",
         "mSarts",
+        "ms-robkni",
         "openpublishingbuild",
         "paulth1",
         "PMEds28",
         "PRmerger",
-        "PRMerger-2",
         "PRMerger17",
+        "PRMerger-2",
         "PRMerger3",
         "PRMerger4",
         "PRMerger5",
@@ -133,44 +111,63 @@
         "v-thepet",
         "v-thpra"
       ],
+      "breadcrumb_path": "breadcrumb/citus/toc.yml",
+      "brand": "citus",
       "feedback_github_repo": "MicrosoftDocs/azure-databases-docs",
-      "feedback_help_link_type": "get-help-at-qna",
       "feedback_help_link_url": "/answers/tags/214/azure-database-postgresql/",
+      "feedback_help_link_type": "get-help-at-qna",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0",
       "feedback_system": "Standard",
-      "permissioned-type": "public",
-      "recommendations": true,
       "searchScope": [
         "Citus"
       ],
+      "permissioned-type": "public",
+      "recommendations": true,
       "uhfHeaderId": "postgresql-citus",
       "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
     },
-    "groups": {
-      "group-citus": {
-        "dest": "citus-all",
-        "moniker_range": "=citus-12 || =citus-13 || =citus-14"
+    "fileMetadata": {
+      "featureFlags": {
+        "**/*.md": [
+          "show_learn_banner"
+        ]
+      },
+      "learn_banner_products": {
+        "**/*.md": [
+          "postgresql-citus"
+        ]
       },
       "ms.service": {
         "**/*": "postgresql-citus"
       },
       "ms.subservice": {},
-      "ms.author": {
+      "author": {
         "**/*": "ihalatci"
       },
-      "author": {
+      "ms.author": {
         "**/*": "ihalatci"
       },
       "ms.reviewer": {
         "**/*": "adamwolk, maghan"
       },
-    "rules": {
-      "sensitive-language-bl": {
-        "exclude": [
-          "**/*.md",
-          "**/*.yml"
+      "searchScope": {
+        "**/*.yml": [
+          "Citus",
+          "Citus for PostgreSQL"
         ]
       },
+      "titleSuffix": {
+        "**/*.md": "Citus for PostgreSQL"
+      },
+      "monikerRange": {
+        "**/*.md": "=citus-12 || =citus-13 || =citus-14",
+        "**/*.yml": "=citus-12 || =citus-13 || =citus-14"
+      }
+    },
+    "overwrite": [],
+    "externalReference": [],
+    "template": [],
+    "rules": {
       "sensitive-language-ma": {
         "exclude": [
           "**/*.md",
@@ -178,6 +175,12 @@
         ]
       },
       "sensitive-language-sl": {
+        "exclude": [
+          "**/*.md",
+          "**/*.yml"
+        ]
+      },
+      "sensitive-language-bl": {
         "exclude": [
           "**/*.md",
           "**/*.yml"
