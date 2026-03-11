@@ -21,7 +21,7 @@ You can have a primary server in any [Azure Database for PostgreSQL flexible ser
 
 ## Paired regions for disaster recovery purposes
 
-While creating replicas in any supported region is possible, there are notable benefits for choosing replicas in paired regions, especially when architecting for disaster recovery purposes:
+While creating replicas in any supported region is possible, there are notable benefits for choosing replicas in [paired Azure regions](/azure/reliability/regions-paired), especially when architecting for disaster recovery purposes:
 
 - **Region Recovery Sequence**: In a geography-wide outage, recovery of one region from every paired set is prioritized, ensuring that applications across paired regions always have a region expedited for recovery.
 
