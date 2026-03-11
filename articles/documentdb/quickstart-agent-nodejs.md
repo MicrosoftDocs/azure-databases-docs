@@ -47,7 +47,7 @@ You can use the Azure Developer CLI to create the required Azure resources by ru
 - [Azure CLI](/cli/azure/install-azure-cli) for authentication
 - [Visual Studio Code](https://code.visualstudio.com/) with the [DocumentDB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-documentdb) for database management (optional)
 
-## Agentic RAG application Architecture
+## Agentic RAG application Architecture for Node.js
 
 The sample uses a two-agent architecture where each agent has a specific role.
 
