@@ -4,7 +4,7 @@ description: This article describes high availability on an Azure Database for P
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 03/02/2026
+ms.date: 03/12/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
@@ -29,7 +29,7 @@ By default in most regions, your standby replica is deployed into a different av
 
 - Operations such as stop, start, and restart are performed on both primary and standby database servers at the same time.
 
-- In zone-redundant and zonal models, the primary database server periodically performs automatic backups. At the same time, the standby replica continuously archives the transaction logs in the backup storage. If the region supports availability zones, backup data is stored on zone-redundant storage (ZRS). In regions that don't support availability zones, backup data is stored on local redundant storage (LRS).
+- The primary database server periodically performs automatic backups. At the same time, the standby replica continuously archives the transaction logs in the backup storage. For zone-redundant servers, backup data is stored on zone-redundant storage (ZRS). Backup data is stored on locally redundant storage (LRS) for servers configured without zone redundancy, zonal (single-zone) servers, and in regions that don't support availability zones.
 
 - Clients always connect to the end hostname of the primary database server.
 
@@ -83,7 +83,7 @@ Azure Database for PostgreSQL supports both [zone-redundant and zonal models](/a
 
 ## Azure Database for PostgreSQL without high availability
 
-Although it's not recommended, you can configure your flexible server without high availability enabled. For flexible servers configured without high availability, the service provides locally redundant storage with three copies of data, zone-redundant backup (in regions where it's supported), and built-in server resiliency to automatically restart a crashed server and relocate the server to another physical node. This configuration offers an uptime [SLA of 99.9%](https://azure.microsoft.com/support/legal/sla/postgresql). During planned or unplanned failover events, if the server goes down, the service maintains the availability of the servers by using the following automated procedure:
+Although it's not recommended, you can configure your flexible server without high availability enabled. For flexible servers configured without high availability, the service provides locally redundant storage with three copies of data, and built-in server resiliency to automatically restart a crashed server and relocate the server to another physical node. This configuration offers an uptime [SLA of 99.9%](https://azure.microsoft.com/support/legal/sla/postgresql). During planned or unplanned failover events, if the server goes down, the service maintains the availability of the servers by using the following automated procedure:
 
 1. A new compute Linux VM is provisioned.
 1. The storage with data files is mapped to the new virtual machine.
