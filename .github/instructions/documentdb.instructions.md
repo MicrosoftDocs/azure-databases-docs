@@ -26,6 +26,10 @@ The following metadata fields are acceptable and should not be changed:
 
 - `ms.service` and `ms.subservice` values - Microsoft Learn taxonomy values
 
+### Language naming in headings
+
+Use "Node.js" — not "TypeScript" or "JavaScript" — in article titles, H1 headings, and H2 headings when referring to the platform or runtime. "Node.js" is the umbrella term regardless of whether the sample code uses JavaScript or TypeScript. Do not suggest renaming "Node.js" to "TypeScript" or "JavaScript" in headings.
+
 ## Content formatting
 
 Code blocks, queries, and documentation structure guidelines.
