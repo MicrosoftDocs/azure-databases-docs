@@ -56,7 +56,7 @@ Being proactive and preparing in advance for regional disasters ensure the resil
 
 ### When outages impact your SLA
 
-If a prolonged outage with an Azure Database for PostgreSQL flexible server instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](../backup-restore/concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
+If a prolonged outage with an Azure Database for PostgreSQL flexible server instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](../backup-restore/concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following options:
 
 **Promote to primary server**
 
@@ -64,7 +64,7 @@ This option won't require updating the connection strings in your application, p
 
 **Promote to independent server and remove from replication**
 
-In that case, this is the only viable option. After promoting the server, you'll need to update your application's connection strings. Once the original region is restored, the old primary might become active again. Ensure to remove it to avoid incurring unnecessary costs. If you wish to maintain the previous topology, recreate the read replica.
+In some cases, this might be the only viable option. After promoting the server, you'll need to update your application's connection strings. Once the original region is restored, the old primary might become active again. Ensure to remove it to avoid incurring unnecessary costs. If you wish to maintain the previous topology, recreate the read replica.
 
 ## Related content
 

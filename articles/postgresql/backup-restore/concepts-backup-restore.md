@@ -109,7 +109,7 @@ With continuous backup of transaction logs, you can restore to the last transact
 
 -   **Fast restore point**: This option allows users to restore the server in the fastest time possible within the retention period defined for their Azure Database for PostgreSQL flexible server instance. Fastest restore is possible by directly choosing the timestamp from the list of backups. This restore operation provisions a server and simply restores the full snapshot backup and doesn't require any recovery of logs, which makes it fast. We recommend you select a backup timestamp, which is greater than the earliest restore point in time for a successful restore operation.
 
-The time required to recover using the latest and custom restore point options varies based on factors such as the volume of transaction logs to process since the last backup and the total number of databases being recovered simultaneously in the same region The overall recovery time usually takes from few minutes up to a few hours.
+The time required to recover using the latest and custom restore point options varies based on factors such as the volume of transaction logs to process since the last backup and the total number of databases being recovered simultaneously in the same region. The overall recovery time usually takes from few minutes up to a few hours.
 
 If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 
