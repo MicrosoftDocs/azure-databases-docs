@@ -98,9 +98,9 @@ Edit the `.env` file and replace these placeholder values:
 
 This quickstart uses a two-agent architecture (planner + synthesizer) with three model deployments (two chat models + embeddings). The environment variables are configured for each model deployment. 
 
-- `AZURE_OPENAI_PLANNER_DEPLOYMENT`: Your gpt-4o-mini deployment name
-- `AZURE_OPENAI_SYNTH_DEPLOYMENT`: Your gpt-4o deployment name
-- `AZURE_OPENAI_EMBEDDING_MODEL`: Your text-embedding-3-small deployment name
+- `AZURE_OPENAI_PLANNER_MODEL`: Your gpt-4o-mini model name
+- `AZURE_OPENAI_SYNTH_MODEL`: Your gpt-4o model name
+- `AZURE_OPENAI_EMBEDDING_MODEL`: Your text-embedding-3-small model name
 
 You can choose between two authentication methods: passwordless authentication using Azure Identity (recommended) or traditional connection string and API key.
 
@@ -114,9 +114,9 @@ USE_PASSWORDLESS=true
 
 # Azure OpenAI Configuration (passwordless)
 AZURE_OPENAI_ENDPOINT=your-openai-endpoint
-AZURE_OPENAI_PLANNER_DEPLOYMENT=gpt-4o-mini
+AZURE_OPENAI_PLANNER_MODEL=gpt-4o-mini
 AZURE_OPENAI_PLANNER_API_VERSION=2024-08-01-preview
-AZURE_OPENAI_SYNTH_DEPLOYMENT=gpt-4o
+AZURE_OPENAI_SYNTH_MODEL=gpt-4o
 AZURE_OPENAI_SYNTH_API_VERSION=2024-08-01-preview
 AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
 AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
@@ -165,11 +165,11 @@ USE_PASSWORDLESS=false
 # Azure OpenAI Configuration (API key)
 AZURE_OPENAI_ENDPOINT=your-openai-endpoint
 AZURE_OPENAI_API_KEY=your-azure-openai-api-key
-AZURE_OPENAI_PLANNER_DEPLOYMENT=gpt-4o-mini
+AZURE_OPENAI_PLANNER_MODEL=gpt-4o-mini
 AZURE_OPENAI_PLANNER_API_VERSION=2024-08-01-preview
-AZURE_OPENAI_SYNTH_DEPLOYMENT=gpt-4o
+AZURE_OPENAI_SYNTH_MODEL=gpt-4o
 AZURE_OPENAI_SYNTH_API_VERSION=2024-08-01-preview
-AZURE_OPENAI_EMBEDDING_DEPLOYMENT=text-embedding-3-small
+AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
 AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
 
 # Azure DocumentDB (connection string)
