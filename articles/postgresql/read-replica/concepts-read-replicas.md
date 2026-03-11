@@ -176,7 +176,7 @@ This section summarizes considerations about the read replica feature. The follo
 
 ### New replicas
 
-A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica. You can't create a replica of another read replica, that is, cascading replication isn't supported.
+A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica.
 
 ### Resource move
 
