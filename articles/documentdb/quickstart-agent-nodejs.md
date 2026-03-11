@@ -35,9 +35,9 @@ You can use the Azure Developer CLI to create the required Azure resources by ru
     - **IVF (Inverted File Index)**: M10 or higher (default algorithm)
     - **HNSW (Hierarchical Navigable Small World)**: M30 or higher (graph-based)
     - **DiskANN**: M40 or higher (optimized for large-scale)
-  - **Firewall configuration**: REQUIRED. Without proper firewall configuration, connection attempts fail
+  - **Firewall configuration**: REQUIRED. Without proper firewall configuration, connection attempts fail.
     - Add your client IP address to the cluster's firewall rules. For more information, see [Grant access from your IP address](how-to-configure-firewall.md#grant-access-from-your-ip-address).
-  - For passwordless authentication, Role Based Access Control (RBAC) enabled
+  - For passwordless authentication, make sure role-based access control (RBAC) is enabled.
 
 ### Development tools
 
