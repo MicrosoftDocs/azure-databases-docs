@@ -27,8 +27,6 @@ While creating replicas in any supported region is possible, there are notable b
 
 - **Sequential Updating**: Paired regions' updates are staggered chronologically, minimizing the risk of downtime from update-related issues.
 
-- **Physical Isolation**: A minimum distance of 300 miles is maintained between data centers in paired regions, reducing the risk of simultaneous outages from significant events.
-
 - **Data Residency**: With a few exceptions, regions in a paired set reside within the same geography, meeting data residency requirements.
 
 - **Performance**: While paired regions typically offer low network latency, enhancing data accessibility and user experience, they might not always be the regions with the absolute lowest latency. If the primary objective is to serve data closer to users rather than prioritize disaster recovery, it's crucial to evaluate all available regions for latency. In some cases, a non-paired region might exhibit the lowest latency. For a comprehensive understanding, you can reference [Azure's round-trip latency figures](/azure/networking/azure-network-latency#round-trip-latency-figures) to make an informed choice.
