@@ -19,7 +19,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: March 2026
 - Preview
-   - [Customer Managed Key support for Premium SSDv2 in Azure Database for PostgreSQL](..security/security-data-encryption.md)
+   - [Customer Managed Key support for Premium SSDv2 in Azure Database for PostgreSQL](../security/security-data-encryption.md)
+
 
      
 ## Release: February 2026
