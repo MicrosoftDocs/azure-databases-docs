@@ -57,18 +57,18 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 SSDv2 now supports *High Availability, Geo-Redundant backups Geo Replicas, Major Version Upgrade and, Geo DR* features for Azure Database for PostgreSQL – Flexible Server in all below supported regions.
 
-Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, China North 3**, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, US Gov Virginia**, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
+Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
 
-> [!NOTE]
-> 1. *** Indicates High availability and Geo-Redundant Backups are not supported in the region.
-> 2. ** Indicates Geo‑Redundant backups are currently unavailable in this region because one of the paired regions does not support native SSDv2 storage or the region does not have an Azure paired region.
-> 3. If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
+Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
+> [!NOTE]  
+>  Geo‑redundant backups are currently unavailable in the region marked with * because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
+> If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
 
 ### Supported features limitations
 
-- On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
+ - On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
 
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
@@ -80,15 +80,18 @@ Australia Central 2*, Australia East, Australia South East, Brazil South*, Canad
 
  _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
-- Azure Storage allows only three instant snapshots per hour. If you run more than three full-backup operations on large datasets within an hour, the operation might fail. Wait an hour or stagger operations to avoid this error.
+- We recommend serializing operations that rely on full backups to allow sufficient time for disk hydration to complete. While hydration is in progress, the service supports up to three instants snapshots.If more than three full backup–triggering operations are initiated before hydration completes, subsequent operations may fail with the following error:
 
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
-  **Examples include**:
-  - Compute scaling, enabling HA, and performing failover and failback within one hour.
-  - Major version upgrades, adding HA, failover, creating in-region replicas within one hour.
+  **Operations that can trigger this behavior include:**  
+         Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
+         Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
 
-- Wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
+  **Best practice:**  
+         To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
+
+- For large servers wait until your first backup is available before configuring in-region replicas, as this process depends on disk snapshots. This limitation doesn't apply to cross-region replicas, which use pg_basebackups instead.
 
 - Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
 
