@@ -163,7 +163,7 @@ Data plane access refers to the ability to read and write data within an Azure s
 
 First, you must prepare a role definition with a list of `dataActions` to grant access to read, query, and manage data in Azure Cosmos DB for NoSQL. In this guide, you prepare a custom role. Then, assign the newly defined role to an identity so that your applications can access data in Azure Cosmos DB for NoSQL.
 
-Azure Cosmos DB also provides built-in data plane roles (such as Data Reader and Data Contributor) to simplify common access patterns, see the full list of [built-in roles](https://learn.microsoft.com/en-us/azure/cosmos-db/reference-data-plane-security#built-in-roles).
+Azure Cosmos DB also provides built-in data plane roles (such as Data Reader and Data Contributor) to simplify common access patterns, see the full list of [built-in roles](/azure/cosmos-db/reference-data-plane-security#built-in-roles).
 
 > [!IMPORTANT]
 > Obtaining an existing data plane role definition requires these control plane permissions:
