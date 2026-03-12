@@ -147,6 +147,9 @@ This table shows a comparison between provisioning standard (manual) throughput 
 |Maximum throughput per logical partition of a container|10K RU/s|10K RU/s|10K RU/s|10K RU/s|
 |Maximum storage (data + index) per logical partition of a container|20 GB|20 GB|20 GB|20 GB|
 
+> [!NOTE]
+> If you have scenarios in which partition keys can exceed 20 GB of data using hierarchical partition keys can help. If you use this feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See[hierarchical partition keys overview](hierarchical-partition-keys.md).
+
 ## Next steps
 
 * [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md)
