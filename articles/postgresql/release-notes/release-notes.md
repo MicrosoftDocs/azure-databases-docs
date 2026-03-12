@@ -19,16 +19,16 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: March 2026
 - Preview
-   - [Customer Managed Key support for Premium SSDv2 in Azure Database for PostgreSQL](..security/security-data-encryption)
+   - [Customer Managed Key support for Premium SSDv2 in Azure Database for PostgreSQL](..security/security-data-encryption.md)
 
      
 ## Release: February 2026
 - General availability
     - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure Portal for PostgreSQL.
 - Preview
-    - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo)
-    - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery)
-    - [Major Version Upgrade support for Premium SSDv2 in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade)
+    - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
+    - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
+    - [Major Version Upgrade support for Premium SSDv2 in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md)
          
 
 ## Release: January 2026
