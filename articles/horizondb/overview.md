@@ -1,5 +1,5 @@
 ---
-title: What Is Azure HorizonDB?
+title: Quickstart
 description: Provides an overview of Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
@@ -13,7 +13,7 @@ ms.topic: overview
 
 This article provides an overview of Azure HorizonDB, helping you get acquainted with its key features and core concepts.
 
-Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see {[Supported versions of PostgreSQL in Azure HorizonDB](concepts-supported-versions.md)}. The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
+Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. 
 
 :::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure HorizonDB - Overview." lightbox="./media/overview/overview-flexible-server.png":::
 
@@ -60,8 +60,6 @@ An Azure HorizonDB flexible server instance has a [built-in PgBouncer](connectiv
 ## Azure regions
 
 One advantage of running your workload in Azure is global reach. Azure HorizonDB is currently available in the following Azure regions:
-
-[!INCLUDE [regions-table](includes/regions-table.md)]
 
 $ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
 
