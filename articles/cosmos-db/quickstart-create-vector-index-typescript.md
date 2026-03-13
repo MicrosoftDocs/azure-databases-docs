@@ -47,6 +47,7 @@ This sample demonstrates a three-layer architecture for creating and using vecto
 | Layer | Tool | What it does |
 |---|---|---|
 | **Azure CLI script** | `scripts/create-resources.sh` | Creates resource group, Azure OpenAI, Cosmos DB account, database, and RBAC assignments |
+| **Configuration** | `src/config.ts` | Loads and validates environment variables into a typed configuration object |
 | **Control plane** | `src/control-plane.ts` using `@azure/arm-cosmosdb` | Creates container with vector index and data-plane RBAC using Azure Resource Manager SDK |
 | **Data plane** | `src/data-plane.ts` using `@azure/cosmos` and `openai` | Inserts documents with embeddings and runs vector similarity queries |
 
@@ -119,9 +120,15 @@ The `VECTOR_INDEX_TYPE` can be either `diskANN` or `quantizedFlat`.
 
 ### Orchestrator: index.ts
 
-The main orchestrator loads configuration, validates environment variables, and coordinates the control plane and data plane operations:
+The main orchestrator imports configuration from `config.ts`, validates environment variables, and coordinates the control plane and data plane operations:
 
 :::code language="typescript" source="~/cosmos-db-vector-samples/nosql-create-index-typescript/src/index.ts" :::
+
+### Configuration: config.ts
+
+The configuration module loads environment variables and provides a typed `SampleConfig` interface used by all modules:
+
+:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-create-index-typescript/src/config.ts" :::
 
 ### Control plane: Create container with vector index
 
