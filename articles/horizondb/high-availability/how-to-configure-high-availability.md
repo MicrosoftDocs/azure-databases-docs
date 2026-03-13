@@ -362,9 +362,6 @@ Failing over can only be triggered for zone redundant or same zone servers.
 
 <<<<<<< HEAD
 If you try to force the failover of an Azure Database for PostgreSQL flexible server instance that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
-=======
-If you try to force the failover of an Azure HorizonDB flexible server instance that has high availability enabled but isn't ready to initiate the failover operation, you get this error:
->>>>>>> 670bc93e9c61d1623919c13bce397d0723c73d01
 
 ```output
 Code: OperationFailed
