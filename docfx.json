@@ -307,7 +307,8 @@
       "sensitive-language-ma": {
         "exclude": [
           "articles/mysql/**/*.md",
-          "articles/postgresql/**/*.md"
+          "articles/postgresql/**/*.md",
+          "articles/horizondb/**/*.md"
         ]
       },
       "sensitive-language-sl": {
@@ -317,7 +318,8 @@
           "articles/dms/tutorial-mysql-azure-single-to-flex-online-portal.md",
           "articles/dms/**/*.md",
           "articles/mysql/**/*.md",
-          "articles/postgresql/**/*.md"
+          "articles/postgresql/**/*.md",
+          "articles/horizondb/**/*.md"
         ]
       },
       "sensitive-language-bl": {
@@ -328,7 +330,8 @@
           "articles/mysql/howto-create-users.md",
           "articles/mysql/howto-data-in-replication.md",
           "articles/mysql/howto-troubleshoot-replication-latency.md",
-          "articles/postgresql/hyperscale/tutorial-design-database-multi-tenant.md"
+          "articles/postgresql/**/*.md",
+          "articles/horizondb/**/*.md"
         ]
       },
       "sensitive-language-wl": {
@@ -340,12 +343,9 @@
           "articles/mysql/howto-create-users.md",
           "articles/mysql/howto-data-in-replication.md",
           "articles/mysql/howto-troubleshoot-replication-latency.md",
-          "articles/postgresql/migrate/migration-service/*.*",
-          "articles/postgresql/flexible-server/includes/param-13-customized-options.md",
-          "articles/postgresql/flexible-server/includes/param-18-customized-options.md",
-          "articles/postgresql/flexible-server/includes/server-parameters-table.md",
-          "articles/postgresql/flexible-server/**/*.md",
-          "articles/postgresql/**/*.md"
+          "articles/postgresql/**/*.md",
+          "articles/horizondb/**/*.md"
+
         ]
       }
     }

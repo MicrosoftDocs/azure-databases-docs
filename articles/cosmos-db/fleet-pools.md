@@ -1,12 +1,12 @@
 ---
-title: Fleets Pools
-description: Pools manage throughput in Azure Cosmos DB fleets aimed at optimizing resource allocation for multitenant applications.
+title: Fleet Pools
+description: Pools manage throughput in Azure Cosmos DB fleets and help optimize resource allocation for multitenant applications.
 author: deborahc
 ms.author: dech
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: concept-article
-ms.date: 02/11/2026
+ms.date: 03/11/2026
 ai-usage: ai-assisted
 show_latex: true
 appliesto:
@@ -15,7 +15,7 @@ ms.custom:
   - build-2025
 ---
 
-# Pools for Azure Cosmos DB fleets 
+# Azure Cosmos DB fleet pools
 
 When using Azure Cosmos DB fleets, you can simplify your throughput management with **pools**. Pools allow you to create a shared pool of throughput request units per second (RU/s) at the fleetspace level that multiple resources can use RU/s from as needed. Because pools are a fleet feature, resources across different subscriptions and resource groups within the same fleetspace can share RU/s from a common pool. 
 

@@ -18,7 +18,7 @@ appliesto:
 # Azure Cosmos DB for NoSQL global secondary indexes (preview)
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Global secondary indexes (GSIs) improve query efficiency by storing data with a different partition key than the source container. GSIs are read-only containers that are automatically synchronized with the source container. Each GSI has its own partition key, indexing policy, throughput (RU) limit, and data model.
 

@@ -42,6 +42,8 @@ A logical partition also defines the scope of database transactions. You can upd
 
 There's no limit to the number of logical partitions in a container. Each logical partition can store up to 20 GB of data. Effective partition keys have a wide range of possible values. For example, in a container where all items contain a `foodGroup` property, the data within the `Beef Products` logical partition can grow up to 20 GB. [Selecting a partition key](#choose-a-partition-key) with a wide range of possible values ensures that the container is able to scale.
 
+If you have scenarios in which partition keys can exceed 20 GB of data using hierarchical partition keys can help. If you use this feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See[hierarchical partition keys overview](hierarchical-partition-keys.md).
+
 Use Azure Monitor Alerts to [monitor whether a logical partition's size is approaching 20 GB](how-to-alert-on-logical-partition-key-storage-size.md).
 
 ## Physical partitions
@@ -110,7 +112,7 @@ For **all** containers, the partition key should:
 If you need [multi-item ACID transactions](database-transactions-optimistic-concurrency.md#multi-item-transactions) in Azure Cosmos DB, you need to use [stored procedures or triggers](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures). All JavaScript-based stored procedures and triggers are scoped to a single logical partition.
 
 > [!NOTE]
-> If you have only one physical partition, the value of the partition key might not be relevant because all queries target the same physical partition.
+> If you only have one physical partition, or the number of partitions is small, for example <= 5, the value of the partition key might not be relevant. For queries, the overhead of checking each additional physical partition when the partition key is not included is 2-3 RU per physical partition. Learn more about [physical partitions](partitioning.md#physical-partitions).
 
 ## Types of partition keys
 

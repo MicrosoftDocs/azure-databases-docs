@@ -1,8 +1,8 @@
 ---
 title: High Availability (HA) Health Status Monitoring
-description: This article describes how to monitor the health of HA-enabled instances for Azure Database for PostgreSQL flexible server using Azure Resource Health.
-author: gkasar
-ms.author: gkasar
+description: This article describes how to monitor the health of HA-enabled instances for Azure HorizonDB flexible server using Azure Resource Health.
+author: avnishrastogimsft
+ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 11/04/2024
 ms.service: azure-database-postgresql
@@ -10,13 +10,13 @@ ms.subservice: high-availability
 ms.topic: how-to
 ---
 
-# High Availability (HA) health status monitoring for Azure Database for PostgreSQL 
+# High Availability (HA) health status monitoring for Azure HorizonDB 
 
-Azure Database for PostgreSQL flexible server includes a High Availability (HA) Health Status Monitoring feature, which uses Azure's Resource Health Check (RHC) framework. This service provides continuous insights into the health of HA-enabled instances, notifying you of events that might affect connectivity and availability. The following details each health state and associated scenarios to help you troubleshoot and maintain HA stability.
+Azure HorizonDB flexible server includes a High Availability (HA) Health Status Monitoring feature, which uses Azure's Resource Health Check (RHC) framework. This service provides continuous insights into the health of HA-enabled instances, notifying you of events that might affect connectivity and availability. The following details each health state and associated scenarios to help you troubleshoot and maintain HA stability.
 
 ## Health States
 
-Each HA state is monitored through various internal signals that represent specific conditions. Below are the possible HA states along with visual indicators and scenarios that might affect your Azure Database for PostgreSQL flexible server.
+Each HA state is monitored through various internal signals that represent specific conditions. Below are the possible HA states along with visual indicators and scenarios that might affect your Azure HorizonDB flexible server.
 
 ### Ready – HA is Healthy
 
