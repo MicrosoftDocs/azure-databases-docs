@@ -5,7 +5,7 @@ author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 01/09/2026
-ms.service: azure-horizondb
+ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
@@ -13,7 +13,7 @@ ms.topic: overview
 
 This article provides an overview of Azure HorizonDB, helping you get acquainted with its key features and core concepts.
 
-Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see [Supported versions of PostgreSQL in Azure HorizonDB](concepts-supported-versions.md). The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
+Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. For details on the specific versions supported, see {[Supported versions of PostgreSQL in Azure HorizonDB](concepts-supported-versions.md)}. The service is available in various [Azure regions](https://azure.microsoft.com/global-infrastructure/services/).
 
 :::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure HorizonDB - Overview." lightbox="./media/overview/overview-flexible-server.png":::
 
@@ -33,33 +33,33 @@ The service performs automated patching of the underlying hardware, OS, and data
 
 ## Automatic backups
 
-Azure Database for PostgreSQL automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
+Azure HorizonDB automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
 
 ## Adjust performance and scale within seconds
 
-Azure Database for PostgreSQL is available in three compute tiers: Burstable, General Purpose, and Memory Optimized. The Burstable tier is best for low-cost development and low concurrency workloads without continuous compute capacity. The General Purpose and Memory Optimized tiers are better for production workloads that require high concurrency, scale, and predictable performance. You can build your first application on a small database for a few dollars a month, then seamlessly adjust the scale to meet the needs of your solution.
+Azure HorizonDB is available in three compute tiers: Burstable, General Purpose, and Memory Optimized. The Burstable tier is best for low-cost development and low concurrency workloads without continuous compute capacity. The General Purpose and Memory Optimized tiers are better for production workloads that require high concurrency, scale, and predictable performance. You can build your first application on a small database for a few dollars a month, then seamlessly adjust the scale to meet the needs of your solution.
 
 ## Stop and start server to lower TCO
 
-Azure Database for PostgreSQL allows you to stop and start the server on demand to lower your TCO. The compute tier billing stops immediately when you stop the server. This feature can provide significant cost savings during development, testing, and time-bound predictable production workloads. The server remains stopped for seven days unless you restart it sooner.
+Azure HorizonDB allows you to stop and start the server on demand to lower your TCO. The compute tier billing stops immediately when you stop the server. This feature can provide significant cost savings during development, testing, and time-bound predictable production workloads. The server remains stopped for seven days unless you restart it sooner.
 
 ## Enterprise-grade security
 
-Azure Database for PostgreSQL uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure Database for PostgreSQL encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
+Azure HorizonDB uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure HorizonDB encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
 
-By using Azure virtual network, Azure Database for PostgreSQL flexible server instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
+By using Azure virtual network, Azure HorizonDB flexible server instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
 
 ## Monitor and alerting
 
-Azure Database for PostgreSQL has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
+Azure HorizonDB has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
 
 ## Built-in PgBouncer
 
-An Azure Database for PostgreSQL flexible server instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure Database for PostgreSQL flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
+An Azure HorizonDB flexible server instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure HorizonDB flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
 
 ## Azure regions
 
-One advantage of running your workload in Azure is global reach. Azure Database for PostgreSQL is currently available in the following Azure regions:
+One advantage of running your workload in Azure is global reach. Azure HorizonDB is currently available in the following Azure regions:
 
 [!INCLUDE [regions-table](includes/regions-table.md)]
 
@@ -76,7 +76,7 @@ $ New server deployments are temporarily blocked in these regions. The service f
 
 ## V6 SKU family (Preview)
 
-Azure Database for PostgreSQL now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These versions deliver massive scale for high-performance OLTP, analytics, and complex queries, with improved price performance and higher memory ceilings.
+Azure HorizonDB now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These versions deliver massive scale for high-performance OLTP, analytics, and complex queries, with improved price performance and higher memory ceilings.
 
 ### Limitations
 
@@ -86,14 +86,14 @@ Azure Database for PostgreSQL now supports General Purpose and Memory Optimized 
 
 ## Migration
 
-Azure Database for PostgreSQL runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure Database for PostgreSQL.
+Azure HorizonDB runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure HorizonDB.
 
-- **Azure Database Migration Service** – For seamless and simplified migrations to Azure Database for PostgreSQL with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure Database for PostgreSQL?](migrate/migration-service/overview-migration-service-postgresql.md)
+- **Azure Database Migration Service** – For seamless and simplified migrations to Azure HorizonDB with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure HorizonDB?](migrate/migration-service/overview-migration-service-postgresql.md)
 - **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
 
 ## Feedback and support
 
-If you have questions or suggestions about Azure Database for PostgreSQL, you can get help and support through the following channels:
+If you have questions or suggestions about Azure HorizonDB, you can get help and support through the following channels:
 
 - To contact Azure Support, [file a ticket from the Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
@@ -101,4 +101,4 @@ If you have questions or suggestions about Azure Database for PostgreSQL, you ca
 
 ## Related content
 
-- [Create an Azure Database for PostgreSQL](configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB](configure-maintain/quickstart-create-server.md)
