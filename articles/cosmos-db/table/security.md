@@ -15,6 +15,8 @@ ai-usage: ai-generated
 
 # Secure your Azure Cosmos DB for Table account
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for Table is a fully managed NoSQL database service that enables you to store, manage, and query large volumes of key-value data using the familiar Azure Table storage APIs. While Azure Cosmos DB provides built-in security features to protect your data, it's essential to follow best practices to further enhance the security of your account, data, and networking configurations.
 
 This article provides guidance on how to best secure your Azure Cosmos DB for Table deployment.

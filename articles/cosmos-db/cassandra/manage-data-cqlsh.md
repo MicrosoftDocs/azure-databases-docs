@@ -14,6 +14,8 @@ ms.custom: template-quickstart, sfi-image-nochange
 # Quickstart: Build a Cassandra app with CQLSH and Azure Cosmos DB
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](manage-data-dotnet.md)
 > * [.NET Core](manage-data-dotnet-core.md)

@@ -13,6 +13,8 @@ ms.custom: devx-track-azurecli, sfi-image-nochange
 
 # Materialized views in Azure Cosmos DB for Apache Cassandra (preview)
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
 > [!IMPORTANT]

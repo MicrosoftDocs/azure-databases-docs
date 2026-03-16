@@ -13,6 +13,8 @@ ms.author: thvankra
 
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 API for Cassandra in Azure Cosmos DB has become a great choice for enterprise workloads running on Apache Cassandra for several reasons:
 
 * **No overhead of managing and monitoring:** It eliminates the overhead of managing and monitoring settings across OS, JVM, and YAML files and their interactions.

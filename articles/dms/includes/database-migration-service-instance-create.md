@@ -1,7 +1,6 @@
 ---
-author: pehewitt
-ms.author: pehewitt
-ms.reviewer: randolphwest
+author: rwestMSFT
+ms.author: randolphwest
 ms.date: 10/28/2025
 ms.service: sql-database
 ms.topic: include

@@ -110,6 +110,16 @@ The fastest way to get started is by using the automated deployment script.
    > Find your **Foundry project** Resource ID in your Azure portal. **JSON View** → **Resource ID**:
    > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view-foundry.png" alt-text="Screenshot of Foundry details.":::
 
+1. Sign in to Azure CLI and Azure Developer CLI with the appropriate Azure account/subscription before deploying the MCP server:
+
+   ```bash
+   az login
+   ```
+
+   ```bash
+   azd auth login
+   ```
+
 1. Create a new azd environment and deploy. Make sure you are in the main directory (`azure-postgres-mcp-demo`):
 
    ```bash
@@ -117,11 +127,10 @@ The fastest way to get started is by using the automated deployment script.
    ```
 
    ```bash
-
    azd up
    ```
 
-   The deployment **usually takes 5-8 mins**. After deployment completes, azd will output the MCP server URL + Managed Identity info you'll use in the next steps.
+   The deployment **usually takes 1-2 mins**. After deployment completes, azd will output the MCP server URL + Managed Identity info you'll use in the next steps.
 
 This deployment creates:
 - Azure Container App running the MCP server with Managed Identity (Reader access to your PostgreSQL server)
@@ -138,7 +147,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
 
    Set the following environment variables by copying and pasting the lines below into your bash terminal (WSL, Azure Cloud Shell, etc.). Find details for your connection in the **Connect** Tab in your Postgres Resource in the Azure portal:
 
-   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgres-connect.png" alt-text="Screenshot of Connect Tab." lightbox="media/generative-ai-foundry-integration/azure-postgres-connect.png":::
+   :::image type="content" source="media/generative-ai-foundry-integration/azure-postgresql-connect.png" alt-text="Screenshot of Connect Tab." lightbox="media/generative-ai-foundry-integration/azure-postgresql-connect.png":::
 
    ```bash
    export PGHOST=<your-database-host-name>
@@ -156,7 +165,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
 
    Alternatively, you can connect via the [Connect and query a database with the PostgreSQL extension for Visual Studio Code](../extensions/vs-code-extension/quickstart-connect.md).
 
-1. Create the database principal for the MCP server's managed identity:
+1. Create the database principal for the MCP server's managed identity. Only run this command in the **default postgres database**, because the command is only allowed in this database:
 
    ```sql
    SELECT * FROM pgaadauth_create_principal('<CONTAINER_APP_IDENTITY_NAME>', false, false);
@@ -165,16 +174,15 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    Replace `<CONTAINER_APP_IDENTITY_NAME>` with the managed identity name from your deployment output (e.g., `azmcp-postgres-server-nc3im7asyw`).
 
    > [!TIP]  
-   > Use `azd env get-values` command to find the `CONTAINER_APP_IDENTITY_NAME` value
+   > Use `azd env get-values` command to find the `CONTAINER_APP_IDENTITY_NAME` value, or any other environment variable.
 
-1. Grant appropriate permissions to the managed identity:
+1. If you add new tables to your database, you have to grant the MCP server permissions to the new tables. Make sure you run this command in the **correct database** where your tables are located.
 
    ```sql
-   -- Grant SELECT on a specific table
-   GRANT SELECT ON TABLE_NAME TO "<CONTAINER_APP_IDENTITY_NAME>";
+   GRANT SELECT ON my_table TO "<CONTAINER_APP_IDENTITY_NAME>";
    ```
 
-   To grant permissions to all future and existing tables
+   To grant permissions to all future and existing tables:
 
    ```sql
    -- Grant SELECT on all existing tables
@@ -184,30 +192,55 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "<CONTAINER_APP_IDENTITY_NAME>";
    ```
 
+   > [!NOTE]
+   > If you have tables in a schema other than `public`, run these two same commands again with your other schema names. For example:
+
+   ```sql
+   -- Grant SELECT on all existing tables in a custom schema
+   GRANT SELECT ON ALL TABLES IN SCHEMA test_case_schema TO "<CONTAINER_APP_IDENTITY_NAME>";
+
+   -- Grant SELECT on all future tables in a custom schema
+   ALTER DEFAULT PRIVILEGES IN SCHEMA test_case_schema GRANT SELECT ON TABLES TO "<CONTAINER_APP_IDENTITY_NAME>";
+   ```
+
 ## Configure Foundry integration
 
 After you deploy your MCP server, connect it to Foundry:
 
 ### Connect via Foundry portal
 
-1. Go to your Foundry project in the Azure portal.
+1. Go to the [Azure portal](https://portal.azure.com).
 
-1. Go to **Build** → **Create agent**.
+1. Navigate to your Azure Foundry instance.
 
-1. In the tools section, select **+ Add**.
+1. Select **Go to Foundry portal**.
 
-1. Select the **Custom** tab and choose **Model Context Protocol**.
+1. In the Foundry portal, go to **Start building** → **Create agent**.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-ui-mcp-connect.png" alt-text="Screenshot of MCP connect.":::
+1. Name your agent something like `postgres-mcp-agent`.
+
+1. In the Tools section, select **Add** → **Add a new tool**.
+
+1. Select the **Catalog** tab.
+
+1. Choose **Azure Database for PostgreSQL** as the tool and select **Create**.
+
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-add-postgresql-db-mcp.png" alt-text="Screenshot of finding the PostgreSQL tool in the Foundry catalog.":::
+
+1. Select **Connect tool with endpoint**.
+
+1. Enter the `CONTAINER_APP_URL` value as the Remote MCP Server endpoint. This value is from the output of the `azd env get-values` command.
 
 1. Select **Microsoft Entra** → **Project Managed Identity** as the authentication method.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-entra-connect.png" alt-text="Screenshot of Managed Identity page.":::
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool.":::
 
-1. Enter your `ENTRA_APP_CLIENT_ID` as the audience (from your deployment output).
+1. Enter the `ENTRA_APP_CLIENT_ID` value as the audience. This value is from the output of the `azd env get-values` command.
 
    > [!TIP]  
-   > Use `azd env get-values` to find the `ENTRA_APP_CLIENT_ID` value.
+   > Use `azd env get-values` command to find the `ENTRA_APP_CLIENT_ID` and `CONTAINER_APP_URL` values.
+
+1. Select **Save** to save your progress on the agent creation.
 
 1. Add instructions to your agent:
 
@@ -219,8 +252,17 @@ After you deploy your MCP server, connect it to Foundry:
    - resource-group: <YOUR_RESOURCE_GROUP>
    - server: <YOUR_SERVER_NAME>
    - subscription: <YOUR_SUBSCRIPTION_ID>
+   - table: <YOUR_TABLE_NAME>
    - user: <CONTAINER_APP_IDENTITY_NAME>
    ```
+
+1. Select **Save** again to save your agent configuration.
+
+   > [!NOTE]
+   > The resource group is the one that contains your Azure PostgreSQL database. If you deployed the MCP Server container apps into a different resource group, still use the name of the resource group that contains your Azure PostgreSQL database.
+
+   > [!NOTE]
+   > There is a single field for `table` in these instructions. If you chose to allow permissions on all tables, this parameter is ignored and you gain access to all tables in the schema you granted permissions on.
 
 ### Test the integration
 
@@ -251,7 +293,7 @@ Do a vector search for "product for customer that love to hike"
 This is an example of a vector search.
 
 ```sql
-- `SELECT id, name, price, embedding <=> azure_openai.create_embeddings(
+SELECT id, name, price, embedding <=> azure_openai.create_embeddings(
 'text-embedding-3-small',
 'query example'
 )::vector AS similarity

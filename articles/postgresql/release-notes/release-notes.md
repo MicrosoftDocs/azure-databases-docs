@@ -20,11 +20,15 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: March 2026
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.2, 17.8, 16.12, 15.16, and 14.21. <sup>$</sup>
-
+    - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.25.1. <sup>$</sup>
+     
 ## Release: February 2026
 - General availability
     - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure Portal for PostgreSQL.
-    - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.25.1. <sup>$</sup>
+- Preview
+    - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
+    - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
+    - [Major Version Upgrade support for Premium SSDv2 in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md)
 
 ## Release: January 2026
 - General availability

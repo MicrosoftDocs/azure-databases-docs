@@ -12,6 +12,8 @@ ms.author: thvankra
 # Secondary indexing in Azure Cosmos DB for Apache Cassandra
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The API for Cassandra in Azure Cosmos DB leverages the underlying indexing infrastructure to expose the indexing strength that is inherent in the platform. However, unlike the core API for NoSQL, API for Cassandra in Azure Cosmos DB does not index all attributes by default. Instead, it supports secondary indexing to create an index on certain attributes, which behaves the same way as Apache Cassandra.  
 
 In general, it's not advised to execute filter queries on the columns that aren't partitioned. You must use ALLOW FILTERING syntax explicitly, which results in an operation that may not perform well. In Azure Cosmos DB you can run such queries on low cardinality attributes because they fan out across partitions to retrieve the results.

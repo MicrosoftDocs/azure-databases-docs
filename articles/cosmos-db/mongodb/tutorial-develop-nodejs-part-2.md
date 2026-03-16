@@ -13,6 +13,8 @@ ms.custom: devx-track-js, devx-track-ts
 # Create an Angular app with Azure Cosmos DB's API for MongoDB - Create a Node.js Express app
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 This multi-part tutorial demonstrates how to create a new app written in Node.js with Express and Angular and then connect it to your [Azure Cosmos DB account configured with Azure Cosmos DB's API for MongoDB](introduction.md).
 
 Part 2 of the tutorial builds on [the introduction](tutorial-develop-nodejs-part-1.md) and covers the following tasks:

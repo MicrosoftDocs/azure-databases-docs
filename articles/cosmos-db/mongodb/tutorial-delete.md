@@ -11,6 +11,8 @@ ms.date: 01/24/2023
 
 # Deleting Data into Cosmos DB for MongoDB
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 One of the most basic operations is deleting data in a collection. In this guide, we will cover everything you need to know about deleting data using the Mongo Shell (Mongosh).
 
 ## Understanding the deleteOne() and deleteMany() Methods

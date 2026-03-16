@@ -15,6 +15,8 @@ ms.custom: devx-track-js, devguide-js, cosmos-db-dev-journey
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Use [queries](#query-for-documents) and [aggregation pipelines](#aggregation-pipelines) to find and manipulate documents in a collection.
 
 > [!NOTE]
