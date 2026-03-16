@@ -8,7 +8,7 @@ ms.date: 03/18/2026
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for MySQL.
+# customer intent: As a database administrator, I want to learn how to use Fabric Mirroring for my Azure Database for MySQL instances.
 ---
 
 # Azure Database for MySQL mirroring in Microsoft Fabric
@@ -59,9 +59,23 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Save the configuration to enable mirroring.
 
-   :::image type="content" source="media/fabric-mirroring-mysql/save-fabric-mirroring.png" alt-text="Screenshot of the save option in the Fabric portal.":::
+   :::image type="content" source="media/fabric-mirroring-mysql/save-fabric-mirroring.png" alt-text="Screenshot of the Save button to enable Fabric Mirroring in the Azure portal.":::
 
 ### Create a mirrored database in Fabric
+
+After you enable Fabric Mirroring in the Azure portal, create the mirrored database artifact in the Fabric portal:
+
+1. Open the [Microsoft Fabric portal](https://app.fabric.microsoft.com/).
+
+1. Select your workspace, or create a new one.
+
+1. Select **New item** > **Mirrored Azure Database for MySQL**.
+
+1. Select your Azure Database for MySQL connection or create a new one by providing your server name and the user credentials with the required permissions.
+
+1. Choose the databases and tables you want to mirror, then select **Mirror database**.
+
+For detailed instructions, see [Configure Microsoft Fabric Mirrored Databases from Azure Database for MySQL](/fabric/mirroring/azure-database-mysql-tutorial).
 
 After you create the mirrored database, Fabric starts the initial data replication and then continues with continuous change replication. You can monitor the replication status and health directly from the mirrored database management view in Fabric.
 
