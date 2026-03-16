@@ -13,11 +13,7 @@ ai-usage: ai-assisted
 
 # Azure Database for MySQL mirroring in Microsoft Fabric
 
-<<<<<<< release-fabsqlcon-mysql-database-mirroring
 [Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-mysql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for MySQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for MySQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
-=======
-[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-mysql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
->>>>>>> release-fabsqlcon-2026-release
 
 ## Architecture
 
@@ -51,19 +47,11 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 1. Open **Fabric Mirroring (preview)** under **Settings**.
 
-<<<<<<< release-fabsqlcon-mysql-database-mirroring
    :::image type="content" source="media/fabric-mirroring-mysql/settings-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Azure portal.":::
 
 1. Check that your server meets all the prerequisites.
 
    :::image type="content" source="media/fabric-mirroring-mysql/enable-fabric-mirroring.png" alt-text="Screenshot of the enable message in the Azure portal.":::
-=======
-   :::image type="content" source="media/fabric-mirroring-mysql/settings-fabric-mirroring.png" alt-text="Screenshot of the Fabric Mirroring option under Settings in the Fabric portal.":::
-
-1. Check that your server meets all the prerequisites.
-
-   :::image type="content" source="media/fabric-mirroring-mysql/enable-fabric-mirroring.png" alt-text="Screenshot of the enable message in the Fabric portal.":::
->>>>>>> release-fabsqlcon-2026-release
 
 1. Select **Enable Fabric Mirroring**.
 
@@ -75,11 +63,6 @@ To enable Fabric mirroring, complete these steps in the Azure portal:
 
 ### Create a mirrored database in Fabric
 
-<<<<<<< release-fabsqlcon-mysql-database-mirroring
-=======
-For detailed guidance, see *\<insert link to fabric public documentation tutorial page\>*.
-
->>>>>>> release-fabsqlcon-2026-release
 After you create the mirrored database, Fabric starts the initial data replication and then continues with continuous change replication. You can monitor the replication status and health directly from the mirrored database management view in Fabric.
 
 ## Monitor replication
