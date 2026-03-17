@@ -389,7 +389,5 @@ This script deletes the resource group and all resources within it.
 
 ## Related content
 
-- [Vector search in Azure Cosmos DB for NoSQL](vector-search.md)
-- [Vector indexing overview](vector-indexing.md)
-- [VectorDistance system function](query/vectordistance.md)
-- [Azure OpenAI Service embeddings](/azure/ai-services/openai/concepts/understand-embeddings)
+- [Vector database](vector-database.md)
+- [Vector search](vector-search.md)
