@@ -31,19 +31,19 @@ For more details on how partition splits work and best practices for scaling, se
 
 Both partition splits and merges follow the same Activity Log pattern. To monitor the progress of an elastic operation:
 
-1. Navigate to your Cosmos DB account in the Azure portal.
+1. Navigate to your Azure Cosmos DB account in the Azure portal.
 1. In the left menu, select **Activity Log**.
 1. Filter by the resource name of the database or container you scaled.
 1. Look for log entries related to the elastic operation. Each entry includes an operation name, a status, and a timestamp.
-1. Expand the log entry to see the linked scale operations nested under the main entry. The main entry reflects the latest overall status of the scaling operation, and each nested operation has its own status as well.
-1. Select an individual log to open a details pane on the right-hand side. Under the **JSON** tab, the "properties" section contains detailed information about the operation.
+1. Expand the log entry to see the linked scale operations nested under the main entry. The main entry reflects the latest overall status of the scaling operation. Each nested operation has its own status as well.
+1. Select an individual log to open a details pane on the right. Under the **JSON** tab, the "properties" section contains detailed information about the operation.
 
 Each operation progresses through three statuses. The specific details within each status differ between splits and merges, as described in the next sections.
 
 | Status | Description |
 | --- | --- |
-| Started | Emitted at the beginning of the operation, once it has been determined which partitions will split or merge. |
-| In Progress | Emitted on a 30-minute interval for the duration of the operation, providing updated details as work progresses. \*\*\*If the operation is under 30 mins, you may not see this status. |
+| Started | Emitted at the beginning of the operation, after Azure Cosmos DB determines which partitions will split or merge. |
+| In Progress | Emitted on a 30-minute interval for the duration of the operation, providing updated details as work progresses. You may not see this status if the operation finishes in under 30 minutes. |
 | Succeeded | Emitted once, at the very end when the operation is complete. |
 
 The following example shows a scale-up operation as it appears in the Activity Log, demonstrating the layout described above.
@@ -60,7 +60,7 @@ Once the throughput split operation has started, you'll see a main entry titled:
 
 "Throughput Split Operation – Scaling up to throughput of 15,000"
 
-where the number reflects your new target throughput. This main entry contains all of the nested operations related to the split. Expand it to see the individual status updates as the operation progresses.
+The number reflects your new target throughput. This main entry contains all nested operations related to the split. Expand it to see the individual status updates as the operation progresses.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/split-main-entry.png" lightbox="media/monitor-activity-logs-elastic-operations/split-main-entry.png" alt-text="Screenshot of the main Activity Log entry for a throughput split operation.":::
 
@@ -70,7 +70,7 @@ where the number reflects your new target throughput. This main entry contains a
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/split-started-status.png" lightbox="media/monitor-activity-logs-elastic-operations/split-started-status.png" alt-text="Screenshot of the Started status entry for a partition split operation showing the target throughput and partitions to split.":::
 
-**In Progress Status** — Emitted approximately every 30 minutes, this status provides a detailed breakdown of each partition involved in the split. Each partition is represented as one operation in the trace, allowing you to track progress at a granular level.
+**In Progress Status** — Emitted approximately every 30 minutes. This status provides a detailed breakdown of each partition involved in the split. Each partition is represented as one operation in the trace, allowing you to track progress at a granular level.
 
 The breakdown below includes the values for our example and descriptions of each property.
 
@@ -146,11 +146,11 @@ Main log status: Started
 Main log status: Succeeded
 ```
 
-The Activity Log Status will look like this in the portal. Entries are stacked top-down with the most recent on top. Each round begins with its own Started entry, and all In Progress entries between one Started and the next belong to the same round.
+The Activity Log displays entries in the portal stacked top-down, with the most recent on top. Each round begins with its own Started entry. All In Progress entries between one Started and the next belong to the same round.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/multi-round-split-activity-log.png" lightbox="media/monitor-activity-logs-elastic-operations/multi-round-split-activity-log.png" alt-text="Screenshot of the Activity Log showing multiple rounds of partition splits with Started and In Progress entries for each round.":::
 
-For this example, the Activity Log was outputting results every 5 minutes. Round 1 of split is surrounded by the blue box and shows a started status, followed by 2 in-progress entries. Round 2 follows a similar pattern and is enclosed by the purple box.
+For this example, the Activity Log outputs results every 5 minutes. Round 1 of the split is surrounded by the blue box and shows a Started status, followed by 2 In Progress entries. Round 2 follows a similar pattern and is enclosed by the purple box.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" lightbox="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" alt-text="Screenshot of the Activity Log portal view showing Round 1 and Round 2 split entries highlighted in separate boxes.":::
 
@@ -177,7 +177,7 @@ When you decrease the provisioned throughput of a database or container signific
 
 A merge operation combines multiple existing partitions into a single new partition. For example, if Partitions 2, 3, and 4 are merged, the result is one new Partition 5. Each new partition created by a merge is represented as one operation in the Activity Log. The merge follows the same pattern of status updates as a throughput split.
 
-Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. The migration is now complete, and your steady-state workload only needs 10,000 RU/s. Much of the data has since expired through TTL (time to live), reducing your storage from 1 TB down to 100 GB. After reducing the provisioned throughput to 10,000 RU/s, you can merge to consolidate the 10 partitions down to 1 and optimize your RU usage.
+Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. The migration is now complete, and your steady-state workload only needs 10,000 RU/s. Much of the data has since expired through TTL (time to live), reducing your storage from 1 TB to 10 GB. After reducing the provisioned throughput to 10,000 RU/s, you can merge the 10 partitions down to 1 and optimize your RU usage.
 
 ### Main Activity Log
 
@@ -187,7 +187,7 @@ Once the partition merge operation has started, you'll see a main entry titled:
 
 This entry serves as the parent for all nested operations related to the merge. Use this entry for the duration of the operation to track its progress. There might be other merge-related logs linked underneath, such as "Merge the physical partitions of a SQL container", but they don't contain status information.
 
-Here we can see an example of multiple merge-related logs under the main entry. Only the "PartitionCoalescer Merge operation for Container" is relevant to us.
+The following example shows multiple merge-related logs under the main entry. Only the "PartitionCoalescer Merge operation for Container" entry is relevant.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/merge-main-entry.png" lightbox="media/monitor-activity-logs-elastic-operations/merge-main-entry.png" alt-text="Screenshot of the main Activity Log entry for a partition merge operation showing nested merge-related logs.":::
 
@@ -197,7 +197,7 @@ Here we can see an example of multiple merge-related logs under the main entry. 
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/merge-started-status.png" lightbox="media/monitor-activity-logs-elastic-operations/merge-started-status.png" alt-text="Screenshot of the Started status entry for a partition merge operation showing partitions to merge.":::
 
-**In Progress** — Emitted approximately every 30 minutes, this status provides a detailed breakdown of each merge operation. Each merge is represented as one operation in the trace, allowing you to track progress at a granular level.
+**In Progress** — Emitted approximately every 30 minutes. This status provides a detailed breakdown of each merge operation. Each merge is represented as one operation in the trace, so you can track progress at a granular level.
 
 The breakdown below includes the values for our example and descriptions of each property.
 
