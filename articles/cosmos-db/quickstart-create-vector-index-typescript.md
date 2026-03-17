@@ -25,11 +25,11 @@ Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples
 
 ## Prerequisites
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/).
 - [Node.js LTS](https://nodejs.org/)
 - [Azure CLI](/cli/azure/install-azure-cli)
 - [Git](https://git-scm.com/downloads)
-- Azure subscription with access to [Azure OpenAI Service](https://aka.ms/oai/access)
+
+If you don't have an Azure account, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Clone the repository
 
@@ -87,30 +87,35 @@ The script outputs environment variables that you need for the `.env` file. Copy
 
 ## Configure environment variables
 
-Copy the sample environment file and update it with your values:
-
-```bash
-cp sample.env .env
-```
-
 Your `.env` file should look like this:
 
 ```ini
+# Identity for local developer authentication with Azure CLI
 AZURE_TOKEN_CREDENTIALS=AzureCliCredential
+
+# Azure
 AZURE_SUBSCRIPTION_ID="your-subscription-id"
 AZURE_RESOURCE_GROUP="cosmos-vector-rg"
 AZURE_LOCATION="eastus2"
 AZURE_USER_PRINCIPAL_ID="your-user-object-id"
+
+# Cosmos DB (container + vector index created by npm start via ARM SDK)
 AZURE_COSMOSDB_ACCOUNT_NAME="db-vector-unique-suffix"
 AZURE_COSMOSDB_ENDPOINT="https://db-vector-unique-suffix.documents.azure.com:443/"
 AZURE_COSMOSDB_DATABASENAME="Hotels"
 AZURE_COSMOSDB_CONTAINER_NAME="hotels_diskann"
+
+# Azure OpenAI
 AZURE_OPENAI_ENDPOINT="https://your-openai-account.openai.azure.com/"
 AZURE_OPENAI_EMBEDDING_DEPLOYMENT="text-embedding-3-small"
 AZURE_OPENAI_EMBEDDING_API_VERSION="2024-08-01-preview"
+
+# Vector index configuration
 VECTOR_INDEX_TYPE="diskANN"
 EMBEDDED_FIELD="DescriptionVector"
 EMBEDDING_DIMENSIONS="1536"
+
+# Data file with pre-computed vectors (relative to dist/)
 DATA_FILE_WITH_VECTORS="../data/HotelsData_toCosmosDB_Vector.json"
 ```
 
@@ -231,12 +236,6 @@ The `.env` file sets `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, which tells `
 - Ensures consistent authentication across all SDK clients
 - Works seamlessly after `az login`
 - Avoids credential chain ambiguity in local development
-
-Before running the sample, sign in with Azure CLI:
-
-```bash
-az login
-```
 
 ## Build and run
 
