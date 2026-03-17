@@ -19,11 +19,11 @@ appliesto:
 
 ## Background
 
-In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throughput and 50 GB of storage. When you increase the provisioned throughput of a database or container beyond the capacity of the current physical partitions, Cosmos DB must split those partitions to accommodate the additional throughput.
+In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throughput and 50 GB of storage. When you increase the provisioned throughput of a database or container beyond the capacity of the current physical partitions, Azure Cosmos DB must split those partitions to accommodate the extra throughput.
 
-A partition split is the process of dividing an existing physical partition into new partitions, each of which takes on a portion of the data and throughput capacity of the original. This allows the container to serve a higher total throughput, as each new partition created by the split adds an additional 10,000 RU/s of capacity that is available for the customer to scale up to. Azure Cosmos DB may merge partitions to optimize the layout for best performance and data distribution.
+A partition split divides an existing physical partition into new partitions. Each new partition takes on a portion of the data and throughput capacity of the original. This process allows the container to serve a higher total throughput because each new partition adds an additional 10,000 RU/s of capacity. Azure Cosmos DB may also merge partitions to optimize the layout for best performance and data distribution.
 
-Both splitting and merging partitions can take hours to complete, so it is important to have visibility into their progress. This feature allows you to track the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges) — through the Activity Log in the Azure portal.
+Both splitting and merging partitions can take hours to complete. It is important to have visibility into their progress. This feature allows you to track the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges) — through the Activity Log in the Azure portal.
 
 For more details on how partition splits work and best practices for scaling, see [Best practices for scaling provisioned throughput](scaling-provisioned-throughput-best-practices.md).
 
@@ -52,7 +52,7 @@ The following example shows a scale-up operation as it appears in the Activity L
 
 ## Increasing throughput / partition split
 
-Example: Suppose you have a container with 1 physical partition, handling 5,000 RU/s. You then increase the throughput to 15,000 RU/s. The existing partition can only support up to 10,000 RU/s — not enough for the requested 15,000 RU/s. Cosmos DB will split it to create additional partitions that can distribute the higher throughput.
+Example: Suppose you have a container with 1 physical partition, handling 5,000 RU/s. You then increase the throughput to 15,000 RU/s. The existing partition can only support up to 10,000 RU/s — not enough for the requested 15,000 RU/s. Azure Cosmos DB splits it to create more partitions that can distribute the higher throughput.
 
 ### Main Activity Log
 
@@ -66,7 +66,7 @@ where the number reflects your new target throughput. This main entry contains a
 
 ### Nested Activity Logs
 
-**Started Status** — The Activity Log entry shows your new target throughput and a list of the partitions that will be split to reach it. This confirms the scaling operation is underway. For this example, the new throughput is 15,000 RUs and partition "0" will be split.
+**Started Status** — The Activity Log entry shows your new target throughput and the partitions that will be split to reach it. This confirms the scaling operation is underway. For this example, the new throughput is 15,000 RUs and partition "0" will be split.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/split-started-status.png" lightbox="media/monitor-activity-logs-elastic-operations/split-started-status.png" alt-text="Screenshot of the Started status entry for a partition split operation showing the target throughput and partitions to split.":::
 
@@ -102,9 +102,9 @@ The table below shows the JSON properties emitted at each stage of a partition s
 
 ## Multiple rounds of splitting
 
-For larger throughput increases, the split process happens in multiple rounds. Each round splits partitions created by the previous round until enough exist to serve the requested throughput. The rounds have their own Started and In Progress log entries, and when all rounds are complete, a single Succeeded status appears on the main log entry.
+For larger throughput increases, the split process happens in multiple rounds. Each round splits partitions created by the previous round until enough exist to serve the requested throughput. Each round has its own Started and In Progress log entries. When all rounds are complete, a single Succeeded status appears on the main log entry.
 
-Within each round, the Activity Log captures periodic checkpoints approximately every 30 minutes. Each checkpoint appears as an In Progress entry with an updated snapshot of the operation's status. Depending on how slowly the round completes, you may see multiple In Progress entries. If the round finishes quickly, e.g. 30 minutes or less, you may only see a Started status without any In Progress reports.
+Within each round, the Activity Log captures periodic checkpoints approximately every 30 minutes. Each checkpoint appears as an In Progress entry with an updated snapshot of the operation's status. Depending on how long the round takes, you may see multiple In Progress entries. If the round finishes quickly (for example, 30 minutes or less), you may only see a Started status without any In Progress reports.
 
 Example: Suppose you have a container with 1,000 RU/s and 1 physical partition, and you increase the throughput to 30,000 RU/s.
 
@@ -173,11 +173,11 @@ Partition 0 is now complete, we move on to split Partition 2
 
 ## Partition merge
 
-When you decrease the provisioned throughput of a database or container significantly, the existing number of physical partitions may no longer be necessary. You can start a partition merge to reduce the physical partition count, to optimize RU/s and data distribution. This reduces the overhead of maintaining unused partitions and allows the system to operate more efficiently at the reduced throughput.
+When you decrease the provisioned throughput of a database or container significantly, the existing number of physical partitions may no longer be necessary. You can start a partition merge to reduce the physical partition count and optimize RU/s and data distribution. Merging reduces the overhead of maintaining unused partitions and allows the system to operate more efficiently at the reduced throughput.
 
-A merge operation combines multiple existing partitions into a single new partition. For example, if Partitions 2, 3, and 4 are merged, the result is one new Partition 5. Each new partition created by a merge is represented as one operation in the Activity Log, following the same pattern of status updates as Throughput Split.
+A merge operation combines multiple existing partitions into a single new partition. For example, if Partitions 2, 3, and 4 are merged, the result is one new Partition 5. Each new partition created by a merge is represented as one operation in the Activity Log. The merge follows the same pattern of status updates as a throughput split.
 
-Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. The migration is now complete, and your steady-state workload only needs 10,000 RU/s. Additionally, much of the data has since expired through TTL (time to live)— reducing your storage from 1 TB down to 100 GB. After reducing the provisioned throughput down to 10,000 RU/s, you can merge to consolidate the 10 partitions down to 1 and optimize your RU usage.
+Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. The migration is now complete, and your steady-state workload only needs 10,000 RU/s. Much of the data has since expired through TTL (time to live), reducing your storage from 1 TB down to 100 GB. After reducing the provisioned throughput to 10,000 RU/s, you can merge to consolidate the 10 partitions down to 1 and optimize your RU usage.
 
 ### Main Activity Log
 
@@ -185,7 +185,7 @@ Once the partition merge operation has started, you'll see a main entry titled:
 
 "PartitionCoalescer Merge operation for Container"
 
-This entry serves as the parent for all nested operations related to the merge and is the entry you'll use for the duration of the operation to track its progress. There might be other merge-related logs linked underneath, such as "Merge the physical partitions of a SQL container", but they will not contain status information.
+This entry serves as the parent for all nested operations related to the merge. Use this entry for the duration of the operation to track its progress. There might be other merge-related logs linked underneath, such as "Merge the physical partitions of a SQL container", but they don't contain status information.
 
 Here we can see an example of multiple merge-related logs under the main entry. Only the "PartitionCoalescer Merge operation for Container" is relevant to us.
 
@@ -193,7 +193,7 @@ Here we can see an example of multiple merge-related logs under the main entry. 
 
 ### Nested Activity Logs
 
-**Started Status**— The Activity Log entry will show the Container that will be involved in the merge and a list of the partitions that will be merged. The Container will reflect whether it is Provisioned or Shared Throughput. There will be no target throughput for this operation type as we are not scaling up to a new throughput. In our example, we are merging all 10 partitions into 1 partition.
+**Started Status**— The Activity Log entry shows the container involved in the merge and the partitions that will be merged. The container reflects whether it uses provisioned or shared throughput. There's no target throughput for this operation type because you aren't scaling up. In this example, all 10 partitions merge into 1 partition.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/merge-started-status.png" lightbox="media/monitor-activity-logs-elastic-operations/merge-started-status.png" alt-text="Screenshot of the Started status entry for a partition merge operation showing partitions to merge.":::
 
