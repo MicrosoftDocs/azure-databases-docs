@@ -43,18 +43,6 @@ The current minor release is **[!INCLUDE [minor-versions-14](includes/minor-vers
 
 The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-version-13.md)]**. Refer to the [!INCLUDE [minor-versions-docs-13](includes/minor-version-docs-13.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
 
-## PostgreSQL version 12 (Extended Support)
-
-The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-version-12.md)]**. Refer to the [!INCLUDE [minor-versions-docs-12](includes/minor-version-docs-12.md)] to learn more about improvements and fixes in this release.
-
-## PostgreSQL version 11 (Extended Support)
-
-The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release.
-
-## PostgreSQL version 10 and older
-
-We don't support PostgreSQL version 10 and older for Azure HorizonDB.
-
 ## Managing upgrades
 
 The PostgreSQL project regularly issues minor releases to fix reported bugs. Azure HorizonDB automatically patches servers with minor releases during the service's monthly deployments.
