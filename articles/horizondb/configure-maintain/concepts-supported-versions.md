@@ -27,22 +27,6 @@ The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-vers
 
 The current minor release is **[!INCLUDE [minor-versions-17](includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](includes/minor-version-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
 
-## PostgreSQL version 16
-
-The current minor release is **[!INCLUDE [minor-versions-16](includes/minor-version-16.md)]**. Refer to the [!INCLUDE [minor-versions-docs-16](includes/minor-version-docs-16.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
-
-## PostgreSQL version 15
-
-The current minor release is **[!INCLUDE [minor-versions-15](includes/minor-version-15.md)]**. Refer to the [!INCLUDE [minor-versions-docs-15](includes/minor-version-docs-15.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
-
-## PostgreSQL version 14
-
-The current minor release is **[!INCLUDE [minor-versions-14](includes/minor-version-14.md)]**. Refer to the [!INCLUDE [minor-versions-docs-14](includes/minor-version-docs-14.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version.
-
-## PostgreSQL version 13 (Extended Support)
-
-The current minor release is **[!INCLUDE [minor-versions-13](includes/minor-version-13.md)]**. Refer to the [!INCLUDE [minor-versions-docs-13](includes/minor-version-docs-13.md)] to learn more about improvements and fixes in this release. New servers are created with this minor version. 
-
 ## Managing upgrades
 
 The PostgreSQL project regularly issues minor releases to fix reported bugs. Azure HorizonDB automatically patches servers with minor releases during the service's monthly deployments.
