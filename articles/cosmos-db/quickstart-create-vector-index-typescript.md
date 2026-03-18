@@ -19,7 +19,7 @@ ms.custom:
 
 # Quickstart: Create a vector index in Azure Cosmos DB for NoSQL with TypeScript
 
-In this quickstart, you create a container with a vector index using the Azure Resource Manager SDK for TypeScript. You then insert documents with embeddings and run vector similarity queries. This sample demonstrates the complete workflow: provisioning Azure resources, creating a container with vector indexing via the control plane (ARM SDK), and using the data plane (Cosmos DB SDK) to insert and query data.
+In this quickstart, you create a container with a vector index using the Azure Resource Manager SDK for TypeScript. You then insert documents with embeddings and run vector similarity queries. This sample demonstrates the complete workflow: provisioning Azure resources, creating a container with vector indexing via the control plane (ARM SDK), and using the data plane (Azure Cosmos DB SDK) to insert and query data.
 
 Find the [sample code](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-create-index-typescript) on GitHub.
 
@@ -46,23 +46,23 @@ This sample demonstrates a three-layer architecture for creating and using vecto
 
 | Layer | Tool | What it does |
 |---|---|---|
-| **Azure CLI script** | `scripts/create-resources.sh` | Creates resource group, Azure OpenAI, Cosmos DB account, database, and RBAC assignments |
+| **Azure CLI script** | `scripts/create-resources.sh` | Creates resource group, Azure OpenAI, Azure Cosmos DB account, database, and RBAC assignments |
 | **Configuration** | `src/config.ts` | Loads and validates environment variables into a typed configuration object |
 | **Control plane** | `src/control-plane.ts` using `@azure/arm-cosmosdb` | Creates container with vector index and data-plane RBAC using Azure Resource Manager SDK |
 | **Data plane** | `src/data-plane.ts` using `@azure/cosmos` and `openai` | Inserts documents with embeddings and runs vector similarity queries |
 
 The workflow:
 1. Create a container with a vector index (DiskANN or Quantized flat) via ARM SDK
-2. Create a custom data-plane RBAC role definition and assignment
-3. Verify embedding dimensions match between OpenAI model and container configuration
-4. Bulk insert 50 hotel documents with pre-computed embeddings
-5. Run a vector similarity query using `VectorDistance()` function
+1. Create a custom data-plane RBAC role definition and assignment
+1. Verify embedding dimensions match between OpenAI model and container configuration
+1. Bulk insert 50 hotel documents with pre-computed embeddings
+1. Run a vector similarity query using `VectorDistance()` function
 
 ## Create Azure resources
 
 Sign in to Azure CLI:
 
-```bash
+```azurecli
 az login
 ```
 
