@@ -91,6 +91,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
   **Best practice:**  
          To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
+> [!IMPORTANT]  
 > During an unplanned failover, the server may temporarily run without a standby while disk hydration is in progress.
 
 
