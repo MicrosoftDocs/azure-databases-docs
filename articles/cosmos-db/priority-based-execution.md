@@ -19,7 +19,7 @@ This feature enables users to execute critical tasks while delaying less importa
 
 
 > [!NOTE]
-> Priority-based execution feature doesn't guarantee always throttling low priority requests in favor of high priority ones. This operates on best-effort basis and there are no SLA's linked to the performance of the feature.
+> Priority-based execution feature doesn't guarantee always throttling low priority requests in favor of high priority ones. This operates on best-effort basis and there are no SLAs linked to the performance of the feature.
 
 ## Use-cases
 
@@ -125,18 +125,53 @@ To learn more about metrics, see [Azure Monitor metrics](monitor-reference.md#me
 If Priority-based execution is enabled and priority level isn't specified for a request by the user, then all such requests are executed with **high** priority. You can change the default priority level of requests in a Cosmos DB account using Azure CLI. 
 
 #### Azure CLI
+
+Install Azure CLI version 2.81.0 or later
+
 ```azurecli-interactive
-# install preview Azure CLI version 0.26.0 or later
-az extension add --name cosmosdb-preview --version 0.26.0
 
 # set subscription context
 az account set -s $SubscriptionId
 
 # Enable priority-based execution
-az cosmosdb update  --resource-group $ResourceGroup --name $AccountName --enable-priority-based-execution true
+az cosmosdb update `
+  -g <resource-group> `
+  -n <account-name> `
+  --enable-priority-based-execution true
 
 # change default priority level
-az cosmosdb update  --resource-group $ResourceGroup --name $AccountName --default-priority-level low
+az cosmosdb update `
+  -g <resource-group> `
+  -n <account-name> `
+  --default-priority-level low
+```
+
+#### Azure PowerShell
+
+```powershell-interactive
+
+# Install module Az.CosmosDB 1.19.0 or later
+
+Install-Module -Name Az.CosmosDB -Force
+
+# Login and Set Subscription
+
+Connect-AzAccount
+Set-AzContext -Subscription <subscription-id>
+
+# Enable Priority Based Execution
+
+Update-AzCosmosDBAccount `
+  -ResourceGroupName "<resource-group>" `
+  -Name "<account-name>" `
+  -EnablePriorityBasedExecution $true
+
+# Set Default Priority Level
+
+Update-AzCosmosDBAccount `
+  -ResourceGroupName "<resource-group>" `
+  -Name "<account-name>" `
+  -DefaultPriorityLevel "Low"
 ```
 
 ## Data explorer priority
