@@ -15,6 +15,8 @@ ai-usage: ai-assisted
 
 # Compare Azure Cosmos DB for MongoDB to MongoDB Atlas
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB is a fully managed, MongoDB-compatible database service that integrates seamlessly with the Azure ecosystem while maintaining compatibility with existing MongoDB tools and applications. This article compares Azure Cosmos DB for MongoDB with MongoDB Atlas to help you understand the key differences and choose the right solution for your needs.
 
 ## Platform and compatibility

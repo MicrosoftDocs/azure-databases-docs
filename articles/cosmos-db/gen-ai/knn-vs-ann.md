@@ -43,7 +43,6 @@ Two major categories of vector search algorithms are k-Nearest Neighbors (kNN) a
 - [What is a vector database?](../vector-database.md)
 - [Retrieval-augmented generation (RAG)](rag.md)
 - [Vector database in Azure Cosmos DB NoSQL](../vector-search.md)
-- [Vector database in Azure Cosmos DB for MongoDB](../mongodb/vcore/vector-search.md)
 - [What is vector search?](vector-search-overview.md)
 - [What are tokens?](tokens.md)
 - [Vector embeddings](vector-embeddings.md)

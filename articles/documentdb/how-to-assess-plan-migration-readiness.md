@@ -42,7 +42,7 @@ Use the **Azure DocumentDB Migration extension** in VS Code to assess the [compa
 :::image type="content" source="media/how-to-assess-plan-migration-readiness/documentdb-connections.png" alt-text="Screenshot of the Right Click menu in Document DB Connections.":::
 1. From the command palette, select **Pre-Migration Assessment for Azure DocumentDB**.
  :::image type="content" source="media/how-to-assess-plan-migration-readiness/command-palette.png" alt-text="Screenshot of the command palette in Visual Studio Code.":::
-1. The assessment wizard guides you through three steps. In the **Start Validation** step, select **Run Validation** to verify credentials, prerequisites, and connectivity before proceeding.
+1. The assessment wizard guides you through three steps. In the **Start Validation** step, select **Run Validation** to verify credentials, prerequisites, and connectivity before proceeding. 
 :::image type="content" source="media/how-to-assess-plan-migration-readiness/start-validation.png" alt-text="Screenshot of the Start Validation step in the assessment wizard.":::
 
     > [!Important]

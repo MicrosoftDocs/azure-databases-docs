@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure Database for Po
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/05/2026
+ms.date: 03/09/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -18,6 +18,7 @@ This new version introduces a range of new features and enhancements, resolves k
 ## Engine version changes
 
 - PG18 is now generally available on Azure Database for PostgreSQL for new server deployments.
+- Latest [minor versions](../configure-maintain/concepts-supported-versions.md) updated for Azure Postgres Flexible Server: 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23.
 - Added PG18 support for Fabric mirroring.
 
 ## Features
@@ -38,7 +39,6 @@ This new version introduces a range of new features and enhancements, resolves k
 - Improved TOAST compression performance by changing the default compression algorithm to LZ4.
 - Azure Storage extension now supports importing and exporting Apache Parquet format.
 - Updated validation rules to block the use of certain special characters (`'`, `"`, `;`, `--`) in Microsoft Entra ID usernames through the web API.
-- Query text captured by Query Store can now be sent to customer Log Analytics via Azure Diagnostics Settings, controlled by the `pg_qs.emit_query_text` server parameter (GUC).
 - Query Store supports capturing runtime statistics and waits statistics in read replicas and streaming them to telemetry via Diagnostics Settings.
 - Multiple performance improvements in Query Store significantly reduce runtime overhead, resulting in faster and more efficient query execution.
 - Query Store now captures and sends parameter names, improving clarity, debuggability, and accuracy of query metadata.
