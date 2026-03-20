@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect with PHP - Flexible Server"
 description: This quickstart provides a PHP code sample you can use to connect and query data from Azure Database for PostgreSQL.
-author: agapovm
-ms.author: maximagapov
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 10/12/2024
 ms.service: azure-database-postgresql
