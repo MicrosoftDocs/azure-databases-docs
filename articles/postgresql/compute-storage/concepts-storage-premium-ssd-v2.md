@@ -77,7 +77,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
   No action is required during this time. We recommend waiting for the first backup to complete before performing any backup‑dependent operations. After the initial backup is completed, all subsequent backups are      incremental and typically complete quickly.
 
 
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type or by creating read replica using Premium SSDv2 storage type.
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of your existing server to a new one with Premium SSD v2 storage type.
   
 - If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
 
