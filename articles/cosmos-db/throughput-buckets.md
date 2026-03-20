@@ -48,10 +48,17 @@ To set up throughput buckets in the Azure portal:
 3. Enable the desired throughput bucket by toggling it from "Inactive" to "Active."
 4. Set the desired maximum throughput percentage for enabled buckets (up to five buckets per container).
 
+#### Configuring Default Throughput Bucket
+
+You can optionally set a default throughput bucket for a Cosmos DB container in the Azure portal by configuring one of the enabled throughput buckets as the default. When a request does not specify a bucket, it is automatically assigned to the default throughput bucket, if one is configured. If the bucket that is configured as the default is later disabled, unassigned requests fall back to using the container's throughput instead of any bucket.
+
+![Screenshot of assigning default throughput buckets in the Data Explorer in an Azure Cosmos DB account.](media/throughput-buckets/default-bucket.png)
+
 ### Minimum SDK version requirements
 
 - .NET >=  [3.50.0-preview.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.50.0-preview.0)
-- Javascript >=[4.3.0](https://www.npmjs.com/package/@azure/cosmos/v/4.3.0)
+- Java >= [4.75.0](https://mvnrepository.com/artifact/com.azure/azure-cosmos/4.75.0)
+- Node.js >=[4.3.0](https://www.npmjs.com/package/@azure/cosmos/v/4.3.0)
 - Python >=[4.11.0b1](https://pypi.org/project/azure-cosmos/4.11.0b1/)
 
 ### Using Throughput buckets in SDK requests
