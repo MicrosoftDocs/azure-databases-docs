@@ -11,15 +11,16 @@
           "**/includes/**",
           "**/obj/**"
         ],
-        "src": "citus",
-        "dest": "."
+        "src": ".",
+        "dest": ".",
+        "group": "group-citus"
       },
       {
         "files": [
           "toc.yml"
         ],
-        "src": "citus/breadcrumb",
-        "dest": "citus/breadcrumbs"
+        "src": "breadcrumb",
+        "dest": "breadcrumb"
       },
       {
         "files": [
@@ -33,17 +34,16 @@
       {
         "files": [
           "**/*.gif",
-          "**/*.jpeg",
           "**/*.jpg",
           "**/*.png",
           "**/*.svg"
         ],
         "exclude": [
-          "**/_themes/**",
           "**/obj/**"
         ],
-        "src": "citus",
-        "dest": "."
+        "src": "./",
+        "dest": ".",
+        "group": "group-citus"
       }
     ],
     "globalMetadata": {
@@ -105,79 +105,62 @@
         "v-thepet",
         "v-thpra"
       ],
-      "breadcrumb_path": "citus/breadcrumb/citus/toc.yml",
-      "_op_documentIdPathDepotMapping": {
-        "articles/iot-central/": {}
-      },
+      "breadcrumb_path": "breadcrumb/citus/toc.yml",
       "brand": "citus",
-      "feedback_github_repo": "MicrosoftDocs/azure-docs",
-      "feedback_help_link_url": "/answers/tags/133/azure",
+      "feedback_github_repo": "MicrosoftDocs/azure-databases-docs",
+      "feedback_help_link_url": "/answers/tags/214/azure-database-postgresql/",
       "feedback_help_link_type": "get-help-at-qna",
-      "feedback_product_url": "https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4",
+      "feedback_product_url": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0",
       "feedback_system": "Standard",
       "searchScope": [
-        "Azure"
+        "Citus"
       ],
       "permissioned-type": "public",
       "recommendations": true,
-      "recommendation_types": [
-        "Training",
-        "Certification"
-      ],
-      "uhfHeaderId": "citus",
-      "ms.suite": "office",
+      "uhfHeaderId": "postgresql-citus",
       "zone_pivot_group_filename": "zone-pivots/azure-databases/zone-pivot-groups.json"
     },
     "fileMetadata": {
-      "adobe-target": {
-
-      },
       "featureFlags": {
-        "articles/**/*.md": [
+        "**/*.md": [
           "show_learn_banner"
         ]
       },
-      "feedback_product_url": {
-        "citus/**/*.md": "https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0"
-      },
-      "feedback_help_link_url": {
-        "citus/**/*": "/answers/tags/214/azure-database-postgresql/"
-      },
-      "feedback_help_link_type": {
-        "**/*": "get-help-at-qna"
-      },
       "learn_banner_products": {
-        "citus/**/*.md": [
-          "citus"
+        "**/*.md": [
+          "postgresql-citus"
         ]
       },
       "ms.service": {
-        "citus/**/*": "postgresql-citus"
-      },
-      "ms.subservice": {
-
+        "**/*": "postgresql-citus"
       },
       "author": {
-        "citus/**/*": "ihalatci"
+        "**/*": "ihalatci"
       },
       "ms.author": {
-        "citus/**/*": "ihalatci"
+        "**/*": "ihalatci"
       },
       "ms.reviewer": {
-        "citus/**/*": "adamwolk, maghan"
+        "**/*": "adamwolk, maghan"
       },
       "searchScope": {
-        "citus/**.yml": [
+        "**/*.yml": [
           "Citus",
           "Citus for PostgreSQL"
         ]
       },
       "titleSuffix": {
-        "citus/**/*.md": "Citus for PostgreSQL"
+        "**/*.md": "Citus for PostgreSQL"
       },
-
-      "ms.update-cycle": {
-
+      "monikerRange": {
+        "**/*.md": "=citus-12 || =citus-13 || =citus-14",
+        "**/*.yml": "=citus-12 || =citus-13 || =citus-14"
+      }
+    },
+    "groups": {
+      "group-citus": {
+        "dest": "citus-all",
+        "moniker_range": "=citus-12 || =citus-13 || =citus-14"
       }
     },
     "overwrite": [],
@@ -186,22 +169,26 @@
     "rules": {
       "sensitive-language-ma": {
         "exclude": [
-          "citus/**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ]
       },
       "sensitive-language-sl": {
         "exclude": [
-          "citus/**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ]
       },
       "sensitive-language-bl": {
         "exclude": [
-          "/citus/**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ]
       },
       "sensitive-language-wl": {
         "exclude": [
-          "citus/**/*.md"
+          "**/*.md",
+          "**/*.yml"
         ]
       }
     }

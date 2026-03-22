@@ -2,14 +2,13 @@
 metadata:
   title: FAQ - Azure Database Migration Service
   description: Frequently asked questions about using Azure Database Migration Service to perform database migrations.
-  services: database-migration
-  author: abhims14
-  ms.author: abhishekum
-  ms.reviewer: randolphwest
+  author: rwestMSFT
+  ms.author: randolphwest
+  ms.reviewer: abhishekum
+  ms.date: 02/19/2026
   ms.service: azure-database-migration-service
   ms.custom: mvc
   ms.topic: faq
-  ms.date: 04/18/2023
 title: FAQ about using Azure Database Migration Service
 summary: This article lists commonly asked questions about using Azure Database Migration Service together with related answers.
 
@@ -33,7 +32,7 @@ sections:
       - question: |
           What versions of SQL Server does Azure Database Migration Service support as a source?
         answer: |
-          When migrating from SQL Server, supported sources for Azure Database Migration Service are SQL Server 2008 and later versions. If you use Azure Data Studio with SQL Migration extension, supported sources are SQL Server 2008 through SQL Server 2022.
+          When migrating from SQL Server, supported sources for Azure Database Migration Service are SQL Server 2008 and later versions.
 
       - question: |
           When using Azure Database Migration Service, what's the difference between an offline and an online migration?
@@ -161,7 +160,7 @@ sections:
         answer: |
           #### TDE
 
-          DMS supports the migration of Customer Managed Keys (CMK) to Azure SQL for [Transparent Database Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption). For step by step instructions to migrate your TDE keys, see [Tutorial: Migrate TDE-enabled databases (preview) to Azure SQL in Azure Data Studio](tutorial-transparent-data-encryption-migration-ads.md).
+          DMS supports the migration of Customer Managed Keys (CMK) to Azure SQL for [Transparent Database Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption).
 
           #### Cell encryption
 
@@ -237,9 +236,7 @@ sections:
           During a typical, simple database migration, you:
 
           1. Create target databases.
-          2. Assess your source databases.
-             * For homogenous migrations, assess your existing databases by using the [Azure SQL migration extension for Azure Data Studio](/azure-data-studio/extensions/azure-sql-migration-extension).
-             * For heterogeneous migrations (from compete sources), assess your existing databases with [SSMA](/sql/ssma/sql-server-migration-assistant). You also use SSMA to convert database objects and migrate the schema to your target platform.
+          2. Assess your source databases with [SSMA](/sql/ssma/sql-server-migration-assistant). SSMA can also convert database objects and migrate the schema to your target platform.
           3. Create an instance of Azure Database Migration Service.
           4. Create a migration project specifying the source databases, target databases, and the tables to migrate.
           5. Start the full load.

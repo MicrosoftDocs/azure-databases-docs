@@ -32,7 +32,8 @@ To complete this how-to guide, you must have an Azure Database for MySQL Flexibl
     :::image type="content" source="media/how-to-stop-start-server-portal/confirm-stop.png" alt-text="Screenshot of Confirm stopping Flexible Server." lightbox="media/how-to-stop-start-server-portal/confirm-stop.png":::
 
 > [!NOTE]  
-> Once the server is stopped, the other management operations are not available for the Azure Database for MySQL Flexible Server instance.
+> * Once the server is stopped, the other management operations are not available for the Azure Database for MySQL Flexible Server instance.
+> * Stopping server with read replica is not allowed, read replica needs to be dropped or promoted before stopping server.
 
 ## Automatic server start for stopped servers after 30 days
 

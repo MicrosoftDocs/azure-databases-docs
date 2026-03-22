@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: csharp
 ms.topic: how-to
-ms.date: 06/11/2025
+ms.date: 02/09/2026
 ms.custom: devx-track-csharp, devguide-csharp, cosmos-db-dev-journey, devx-track-azurepowershell, devx-track-dotnet, devx-track-azurecli
 appliesto:
   - ✅ NoSQL
@@ -38,6 +38,12 @@ Import the [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azu
 
 ```dotnetcli
 dotnet add package Microsoft.Azure.Cosmos
+```
+
+Also add the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) NuGet package, which is required by the Microsoft.Azure.Cosmos package.
+
+```dotnetcli
+dotnet add package Newtonsoft.Json
 ```
 
 Build the project with the [``dotnet build``](/dotnet/core/tools/dotnet-build) command.
@@ -78,6 +84,9 @@ In your code editor, add using directives for ``Azure.Core`` and ``Azure.Identit
 
 :::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="using_identity_directives":::
 
+> [!NOTE]
+> In addition to Azure.Core and Azure.Identity, your application must reference the Microsoft.Azure.Cosmos namespace. This namespace provides the Azure Cosmos DB client types, such as CosmosClient, Database, and Container, that are used throughout the remainder of this article. Without this namespace reference, the application will not compile.
+
 ### Create CosmosClient with default credential implementation
 
 If you're testing on a local machine, or your application will run on Azure services with direct support for managed identities, obtain an OAuth token by creating a [``DefaultAzureCredential``](/dotnet/api/azure.identity.defaultazurecredential) instance.
@@ -86,9 +95,14 @@ For this example, we saved the instance in a variable of type [``TokenCredential
 
 :::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="credential":::
 
-Create a new instance of the **CosmosClient** class with the ``COSMOS_ENDPOINT`` environment variable and the **TokenCredential** object as parameters.
+Create a new instance of the **CosmosClient** class with your Azure Cosmos DB endpoint and the **TokenCredential** object as parameters.
 
-:::code language="csharp" source="~/cosmos-db-nosql-dotnet-samples/103-client-default-credential/Program.cs" id="default_credential" highlight="4":::
+```csharp
+CosmosClient client = new(
+    accountEndpoint: "<azure-cosmos-db-endpoint>",
+    tokenCredential: credential
+);
+```
 
 ## Build your application
 

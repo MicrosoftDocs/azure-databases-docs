@@ -93,9 +93,6 @@ Before you start, download the [public SSL certificate](https://dl.cacerts.digic
 
 If you deploy Azure Database for MySQL with the public access connectivity method, you can get started quickly by using the built-in MySQL command-line client tool or Azure Cloud Shell. To use the command-line tool, on the menu bar in the **Overview** pane, select **Connect**.
 
-> [!NOTE]  
-> You can also use the [MySQL extension](/azure-data-studio/extensions/mysql-extension) in Azure Data Studio to connect to your Azure Database for MySQL Flexible Server.
-
 :::image type="content" source="media/quickstart-create-server-portal/connect-on-overview.png" alt-text="Screenshot that shows how to connect with Azure Cloud Shell.":::
 
 After you select **Connect**, you can see details about connecting locally by using the Azure Database for MySQL - Flexible Server client tool and how to initiate data import and export operations.

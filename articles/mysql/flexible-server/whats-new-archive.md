@@ -225,10 +225,6 @@ For the latest features, visit [What's new in Azure Database for MySQL?](whats-n
 
   The major version upgrade feature allows you to perform in-place upgrades of existing instances of Azure Database for MySQL Flexible Server from MySQL 5.7 to MySQL 8.0 with the select of a button, without any data movement or the need to make any application connection string changes. Take advantage of this functionality to efficiently perform major version upgrades on your instances of Azure Database for MySQL Flexible Server and use the latest MySQL 8.0 offers. [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md).
 
-- **MySQL extension for Azure Data Studio (Preview)**
-
-  When working with multiple databases across data platforms and cloud deployment models, performing the most common tasks on all your databases using a single tool enhances productivity several fold. With the MySQL extension for Azure Data Studio, you can now connect to and modify MySQL databases along with your other databases, taking advantage of the modern editor experience and capabilities in Azure Data Studio, such as IntelliSense, code snippets, source control integration, native Jupyter Notebooks, an integrated terminal, and more. Use this new tooling with any MySQL server hosted on-premises, on virtual machines, on managed MySQL in other clouds, and on Azure Database for MySQL Flexible Server. [Quickstart: Use Azure Data Studio to connect and query MySQL](/azure-data-studio/quickstart-mysql).
-
 - **Enhanced metrics for better monitoring**
 
   You can now monitor more metrics under monitoring for your Azure Database for MySQL Flexible Server instance. Enhanced metrics allow you to have more visibility and monitor performance with [Innodb metrics](./concepts-monitoring.md#innodb-metrics) and troubleshoot database management operations with metrics like [DML statistics](./concepts-monitoring.md#dml-statistics) and [DDL statistics](./concepts-monitoring.md#ddl-statistics). [Learn more](./concepts-monitoring.md#enhanced-metrics)

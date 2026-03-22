@@ -125,11 +125,13 @@ In public connectivity, the migration job connects to your source and target usi
 
 ##### Private connectivity
 
-In private connectivity, the migration job runs within its virtual network. To securely communicate with your virtual network, we use virtual network peering.
+In private connectivity, the migration job runs within its virtual network. To securely communicate with your virtual networks, we use virtual network peering.
 
-1. Select the subscription, resource group, and virtual network from the dropdowns.
+1. The tool allows for peering with two virtual networks, one for the source and the other for the target. Depending on your network configuration, select the subscription, resource group, and virtual networks from the dropdowns.
 
-1. Run the PowerShell script provided on the screen to enable virtual network integration.
+1. In the **DMS Configuration** section, select a CIDR range that doesn't conflict with your virtual networks.
+
+1. Run the PowerShell script(s) provided on the screen to enable virtual network integration.
 
 1. Select **Next** to continue.
 

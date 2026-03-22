@@ -14,7 +14,15 @@
     - name: Release notes
       href: release-notes/release-notes.md
     - name: Maintenance release notes
-      href: release-notes-maintenance/2025-october.md
+      items:
+      - name: Maintenance release notes index
+        href: release-notes-maintenance/release-notes-maintenance-index.md
+      - name: March 2026
+        href: release-notes-maintenance/2026-march.md
+      - name: January 2026
+        href: release-notes-maintenance/2026-january.md
+      - name: October 2025
+        href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: release-notes/release-notes-api.md
     - name: CLI release notes
@@ -499,6 +507,8 @@
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+                - name: From EDB Extended server
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md                  
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -511,6 +521,8 @@
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
+                - name: From EDB Extended server
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md                  
         - name: Concepts
           items:
             - name: Premigration validation
@@ -671,6 +683,9 @@
         - name: Troubleshoot high CPU utilization
           href: troubleshoot/how-to-high-cpu-utilization.md
           displayName: High CPU Utilization
+        - name: Troubleshoot high CPU utilization on elastic clusters
+          href: troubleshoot/how-to-high-cpu-utilization-elastic-clusters.md
+          displayName: High CPU Utilization on Elastic Clusters
         - name: Troubleshoot high memory utilization
           href: troubleshoot/how-to-high-memory-utilization.md
           displayName: High Memory Utilization

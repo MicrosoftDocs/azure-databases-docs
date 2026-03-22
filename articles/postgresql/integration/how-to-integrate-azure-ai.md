@@ -17,11 +17,11 @@ ms.custom:
 
 # Integrate Azure AI capabilities into Azure Database for PostgreSQL
 
-The `azure_ai` extension adds the ability to use [large language models (LLMs)](/training/modules/fundamentals-generative-ai/3-language%20models) and build [generative AI](/training/paths/introduction-generative-ai/) applications within an Azure Database for PostgreSQL database by integrating the power of [Azure AI services](/azure/ai-services/what-are-ai-services).
+The `azure_ai` extension adds the ability to use [large language models (LLMs)](/training/modules/fundamentals-generative-ai/3-language%20models) and build [generative AI](/training/paths/introduction-generative-ai/) applications within an Azure Database for PostgreSQL database by integrating the power of [Foundry Tools](/azure/ai-services/what-are-ai-services).
 
 Generative AI is a form of artificial intelligence in which LLMs are trained to generate original content based on natural language input. By using the `azure_ai` extension, you can use generative AI's capabilities for processing natural language queries directly from the database.
 
-This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure AI Language service](/azure/ai-services/language-service/) into your database by using the extension.
+This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure Language in Foundry Tools service](/azure/ai-services/language-service/) into your database by using the extension.
 
 ## Prerequisites
 
@@ -31,7 +31,7 @@ This article showcases adding rich AI capabilities to an Azure Database for Post
 
 - An Azure OpenAI resource with the `text-embedding-ada-002` (version 2) model deployed. This model is currently available only in [certain regions](/azure/ai-services/openai/concepts/models#model-summary-table-and-region-availability). If you don't have a resource, the process for creating one is documented in the [Azure OpenAI resource deployment guide](/azure/ai-services/openai/how-to/create-resource).
 
-- An [Azure AI Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
+- A [Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
 - An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 
@@ -94,7 +94,7 @@ The functions and types are all associated with one of the schemas. To review th
 \df+ azure_ai.*
 ```
 
-Use the `azure_ai.set_setting()` function to set the endpoint and critical values for Azure AI services. It accepts a *key* and the *value* to assign it. The `azure_ai.get_setting()` function provides a way to retrieve the values that you set with the `set_setting()` function. It accepts the key of the setting that you want to view. For both methods, the key must be one of the following:
+Use the `azure_ai.set_setting()` function to set the endpoint and critical values for Foundry Tools. It accepts a *key* and the *value* to assign it. The `azure_ai.get_setting()` function provides a way to retrieve the values that you set with the `set_setting()` function. It accepts the key of the setting that you want to view. For both methods, the key must be one of the following:
 
 | Key | Description |
 | --- | --- |
@@ -104,7 +104,7 @@ Use the `azure_ai.set_setting()` function to set the endpoint and critical value
 | `azure_cognitive.subscription_key` | A subscription key for a Cognitive Services resource. |
 
 > [!IMPORTANT]
-> Because the connection information for Azure AI services, including API keys, is stored in a configuration table in the database, the `azure_ai` extension defines a role called `azure_ai_settings_manager` to help ensure that this information is protected and accessible only to users who have that role. This role enables reading and writing of settings related to the extension.
+> Because the connection information for Foundry Tools, including API keys, is stored in a configuration table in the database, the `azure_ai` extension defines a role called `azure_ai_settings_manager` to help ensure that this information is protected and accessible only to users who have that role. This role enables reading and writing of settings related to the extension.
 >
 > Only superusers and members of the `azure_ai_settings_manager` role can invoke the `azure_ai.get_setting()` and `azure_ai.set_setting()` functions. In Azure Database for PostgreSQL, all admin users have the `azure_ai_settings_manager` role.
 
@@ -188,7 +188,7 @@ The `Argument data types` property in the output of the `\df+ azure_openai.*` co
 
 | Argument | Type | Default | Description |
 | --- | --- | --- | --- |
-| `deployment_name` | `text` | | Name of the deployment in the Azure AI Foundry portal that contains the `text-embeddings-ada-002` model. |
+| `deployment_name` | `text` | | Name of the deployment in the Microsoft Foundry portal that contains the `text-embeddings-ada-002` model. |
 | `input` | `text` | | Input text used to create embeddings. |
 | `timeout_ms` | `integer` | `3600000` | Timeout in milliseconds, after which the operation is stopped. |
 | `throw_on_error` | `boolean` | `true` | Flag that indicates whether the function should, on error, throw an exception that results in a rollback of the wrapping transactions. |
@@ -197,13 +197,13 @@ The first argument is the `deployment_name` value, which was assigned when your 
 
 1. Go to your Azure OpenAI resource in the Azure portal.
 
-1. On the left menu, under **Resource Management**, select **Model deployments** to open the Azure AI Foundry portal.
+1. On the left menu, under **Resource Management**, select **Model deployments** to open the Foundry portal.
 
-1. In the Azure AI Foundry portal, select **Deployments**. On the **Deployments** pane, copy the **Deployment name** value that's associated with the `text-embedding-ada-002` model deployment.
+1. In the Foundry portal, select **Deployments**. On the **Deployments** pane, copy the **Deployment name** value that's associated with the `text-embedding-ada-002` model deployment.
 
 :::image type="content" source="media/how-to-integrate-azure-ai/azure-open-ai-studio-deployments-embeddings.png" alt-text="Screenshot of embedding deployments for integrating AI.":::
 
-By using this information, run a query to update each record in the `bill_summaries` table. Insert the generated vector embeddings for the `bill_text` field into the `bill_vector` column by using the `azure_openai.create_embeddings()` function. Replace `{your-deployment-name}` with the **Deployment name** value that you copied from the Azure AI Foundry portal's **Deployments** pane. Then run the following command:
+By using this information, run a query to update each record in the `bill_summaries` table. Insert the generated vector embeddings for the `bill_text` field into the `bill_vector` column by using the `azure_openai.create_embeddings()` function. Replace `{your-deployment-name}` with the **Deployment name** value that you copied from the Foundry portal's **Deployments** pane. Then run the following command:
 
 ```sql
 UPDATE bill_summaries b
@@ -247,13 +247,13 @@ The query uses the `<=>` [vector operator](https://github.com/pgvector/pgvector#
 
 ## Integrate Azure Cognitive Services
 
-The Azure AI services integrations included in the `azure_cognitive` schema of the `azure_ai` extension provide a rich set of AI language features that you can access directly from the database. The functionalities include sentiment analysis, language detection, key phrase extraction, entity recognition, and text summarization. Access to these capabilities is enabled through the [Azure AI Language service](/azure/ai-services/language-service/overview).
+The Foundry Tools integrations included in the `azure_cognitive` schema of the `azure_ai` extension provide a rich set of AI language features that you can access directly from the database. The functionalities include sentiment analysis, language detection, key phrase extraction, entity recognition, and text summarization. Access to these capabilities is enabled through the [Language service](/azure/ai-services/language-service/overview).
 
 To review the complete Azure AI capabilities that you can access through the extension, see [Integrate Azure Database for PostgreSQL with Azure Cognitive Services](../azure-ai/generative-ai-azure-cognitive.md).
 
-### Set the Azure AI Language service endpoint and key
+### Set the Language service endpoint and key
 
-As with the `azure_openai` functions, to successfully make calls against Azure AI services by using the `azure_ai` extension, you must provide the endpoint and a key for your Azure AI Language service resource:
+As with the `azure_openai` functions, to successfully make calls against Foundry Tools by using the `azure_ai` extension, you must provide the endpoint and a key for your Language service resource:
 
 1. In the Azure portal, go to your Language service resource.
 
@@ -275,7 +275,7 @@ To demonstrate some of the capabilities of the `azure_cognitive` functions of th
 - `summarize_abstractive`: Abstractive summarization produces a summary that captures the main concepts from input text but might not use identical words.
 - `summarize_extractive`: Extractive summarization assembles a summary by extracting critical sentences from the input text.
 
-To use the Azure AI Language service's ability to generate new, original content, you use the `summarize_abstractive` function to create a summary of text input. Use the `\df` meta-command from `psql` again, this time to look specifically at the `azure_cognitive.summarize_abstractive` function:
+To use the Language service's ability to generate new, original content, you use the `summarize_abstractive` function to create a summary of text input. Use the `\df` meta-command from `psql` again, this time to look specifically at the `azure_cognitive.summarize_abstractive` function:
 
 ```sql
 \df azure_cognitive.summarize_abstractive
@@ -339,7 +339,7 @@ Congratulations! You just learned how to use the `azure_ai` extension to integra
 
 - [Allow extensions in Azure Database for PostgreSQL](/azure/postgresql/flexible-server/concepts-extensions)
 - [Learn how to generate embeddings with Azure OpenAI](/azure/ai-services/openai/how-to/embeddings)
-- [Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/concepts/models#embeddings-models-1)
-- [Understand embeddings in Azure OpenAI in Azure AI Foundry Models](/azure/ai-services/openai/concepts/understand-embeddings)
-- [What is Azure AI Language?](/azure/ai-services/language-service/overview)
-- [What is Azure OpenAI in Azure AI Foundry Models?](/azure/ai-services/openai/overview)
+- [Azure OpenAI in Foundry Models](/azure/ai-services/openai/concepts/models#embeddings-models-1)
+- [Understand embeddings in Azure OpenAI in Foundry Models](/azure/ai-services/openai/concepts/understand-embeddings)
+- [What is Language?](/azure/ai-services/language-service/overview)
+- [What is Azure OpenAI in Foundry Models?](/azure/ai-services/openai/overview)

@@ -10,6 +10,9 @@ ms.date: 01/24/2023
 ---
 
 # Inserting Data into Cosmos DB for MongoDB
+
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 One of the most basic operations is inserting data into a collection. In this guide, we will cover everything you need to know about inserting data using the Mongo Shell (Mongosh).
 
 ## Inserting a Single Document

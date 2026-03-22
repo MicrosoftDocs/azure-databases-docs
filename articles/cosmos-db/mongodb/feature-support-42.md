@@ -14,6 +14,8 @@ appliesto:
 
 # Supported features and syntax in Azure Cosmos DB for MongoDB 4.2 server version
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Azure Cosmos DB for MongoDB 4.2 enables you to use familiar MongoDB features with enterprise-grade capabilities such as global distribution, automatic sharding, and high availability. This article describes the supported features, syntax, and benefits of using Azure Cosmos DB for MongoDB 4.2.
 
 ## Protocol support
@@ -664,8 +666,7 @@ On a collection that has TTL enabled on a field:
 
 #### Configuration
 
-You can enable a custom TTL by updating the `EnableTtlOnCustomPath` capability for the account. Learn [how to configure capabilities](../../cosmos-db/mongodb/how-to-configure-capabilities.md).
-
+You can enable a custom TTL by updating the `EnableTtlOnCustomPath` capability for the account.
 ### Set up the TTL
 
 To set up the TTL, run this command: `db.coll.createIndex({"YOUR_CUSTOM_TTL_FIELD":1}, {expireAfterSeconds: 10})`
