@@ -4,7 +4,7 @@ description: This article describes high availability on an Azure Database for P
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 03/12/2026
+ms.date: 03/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
