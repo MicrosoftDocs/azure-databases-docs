@@ -32,11 +32,27 @@ Before starting the migration, prepare your Azure DocumentDB account and your ex
 
 - Gather the Azure DocumentDB [account's credentials](./quickstart-portal.md#get-cluster-credentials).
 - Ensure user has `createCollection`, `dropCollection`, `createIndex`, `insert`, and `listCollections` permissions.
+
+### Minimum required permissions
+
+Use the following minimum roles to create and run migration jobs.
+
+| Minimum role | Scope | Applies to connectivity mode | Purpose |
+| --- | --- | --- | --- |
+| Reader | Subscription | Public and private | List subscriptions and resource groups. Required for each migration job. |
+| Azure Database Migration Service Contributor | Resource group | Public and private | Create Azure Database Migration Service (DMS). You don't need to create a new DMS for every migration. One DMS per region is enough. |
+| Contributor | Subscription | Public and private | Register DMS in the subscription. This is a one-time activity and can be delegated to another user. |
+| User Access Administrator | Virtual network | Private only | Assign the Network Contributor role to the DMS object principal. This is a one-time activity per virtual network and can be delegated to another user. |
+| Contributor | Azure DocumentDB | Public and private | Trigger the migration job. |
+
+For provider registration details, see [Register Microsoft.DataMigration resource provider in your subscription](#register-microsoftdatamigration-resource-provider-in-your-subscription).
   
 > [!IMPORTANT]
 > Microsoft Entra ID authentication isn't currently supported in migration jobs. Please use native DocumentDB authentication.
 
 ## Perform the migration
+
+For planning guidance on migration sizing, speed, and cutover, see [Migration best practices](./migration-options.md#migration-best-practices).
 
 ### Connect to source
 
@@ -192,6 +208,81 @@ To complete the online migration, follow these steps in the given order:
 
 :::image type="content" source="media/how-to-migrate-vs-code-extension/monitor-collections-online.png" alt-text="Screenshot showing collection-wise status for online migration" lightbox="media/how-to-migrate-vs-code-extension/monitor-collections-online.png":::
 
+## Migration scenarios
+
+The Azure DocumentDB Migration Extension supports several source environments, including MongoDB instances running in Azure, on-premises datacenters, and other cloud providers. The extension provides flexible connectivity options to accommodate different network configurations and security requirements.
+
+### Supported source environments
+
+The following table summarizes the supported migration sources:
+
+| Source environment | Description |
+| --- | --- |
+| Within Azure | MongoDB instances running on Azure Virtual Machines or other Azure-hosted services |
+| On-premises | MongoDB servers running in your local data center or private infrastructure |
+| Other cloud providers | MongoDB instances hosted on other cloud platforms |
+
+### Public connectivity
+
+In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allowlists on both the source and target servers.
+
+Use public connectivity when:
+- Your source and target servers are accessible through public IP addresses.
+- Your organization's security policies allow connections over the public internet.
+- You need a simpler setup without virtual network configuration.
+
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" alt-text="Network architecture for public connectivity." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" :::
+
+To enable public connectivity:
+
+1. In the migration wizard, select **Public** as the connectivity mode.
+
+1. Note the static IP addresses displayed in the wizard.
+
+1. Add these IP addresses to the firewall allowlist on your source MongoDB server.
+
+1. Add these IP addresses to the [Azure DocumentDB firewall](./how-to-configure-firewall.md).
+
+### Private connectivity
+
+In private connectivity mode, DMS connects to your source and target through private networking. You grant DMS permission to peer into your virtual networks, and DMS establishes private connectivity at runtime.
+
+The extension supports up to two virtual networks:
+- **Source VNet**: The virtual network where your source MongoDB server is accessible.
+- **Target VNet**: The virtual network where your Azure DocumentDB cluster is accessible.
+
+Use private connectivity when:
+- Your source or target servers aren't accessible over the public internet.
+- Your organization requires all traffic to flow through private networks.
+- You need to avoid public internet exposure.
+
+#### From other cloud providers or on-premises
+
+Use your preferred VPN tools to set up network connectivity between Azure and your source environment in another cloud or on-premises.
+
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" alt-text="Network architecture for private connectivity from another cloud provider or on-premises." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" :::
+
+#### From a private endpoint in Azure
+
+Set up private endpoints for the source and target virtual networks.
+
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" alt-text="Network architecture for private connectivity within Azure" lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" :::
+
+
+To enable private connectivity:
+
+1. In the migration wizard, select **Private** as the connectivity mode.
+
+1. Select the subscription, resource group, and virtual network for your source environment.
+
+1. Select the subscription, resource group, and virtual network for your target environment.
+
+1. In the **DMS Configuration** section, select a CIDR range that doesn't conflict with your existing virtual networks.
+
+1. Run the PowerShell scripts provided in the wizard to enable virtual network integration and peering.
+
+> [!IMPORTANT]
+> When using private access, a single virtual network can support only one active migration job at a time. To run multiple concurrent jobs, use different virtual networks for each job.
 
 ### Register Microsoft.DataMigration resource provider in your subscription
 

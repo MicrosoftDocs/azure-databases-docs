@@ -5,6 +5,7 @@ author: sandeep-nair
 ms.author: sandnair
 ms.topic: upgrade-and-migration-article
 ms.date: 09/17/2025
+ai-usage: ai-assisted
 # CustomerIntent: As a MongoDB user, I want to understand the various options available to migrate my data to Azure DocumentDB, so that I can make an informed decision about which option is best for my use case.
 ---
 
@@ -24,6 +25,63 @@ Use the [Azure DocumentDB Migration extension](./how-to-assess-plan-migration-re
 
 > [!TIP]
 > We recommend you review the [supported MongoDB Query Language (MQL) features and syntax](./compatibility-query-language.md) in detail and perform a proof-of-concept prior to the actual migration.
+
+## Migration best practices
+
+Use these best practices to reduce risk, estimate capacity more accurately, improve migration speed, and execute cutover safely.
+
+### Reduce failures
+
+- Use URL-encoded passwords in connection strings.
+  Special characters such as `@`, `#`, and `:` can break parsing when they aren't encoded. URL encoding helps avoid connection failures during assessment and migration runs.
+
+- Run a premigration assessment before migration.
+  Assessment helps you identify unsupported features, compatibility gaps, and potential blockers early. Resolve findings before migration to reduce rework during cutover.
+
+- Practice migration and cutover before production.
+  Run one or more rehearsal migrations in a nonproduction environment. Practice improves timing accuracy, team readiness, and confidence during production cutover.
+
+### Size infrastructure accurately
+
+- Run a trial migration on a small but representative dataset.
+  Use the trial to capture realistic throughput, latency, and resource consumption. A representative sample gives better estimates than synthetic test data.
+
+- Extrapolate trial results to estimate Compute Tier, Storage Tier, and number of shards.
+  Use observed trial metrics to project final sizing needs based on your full dataset volume. Revisit the estimate if your production data distribution differs from the sample.
+
+- Use representative document count, size, and structure with production-like settings.
+  Match production indexing and sharding settings during the trial to avoid underestimating cost or migration duration. Nonproduction settings can produce misleading results.
+
+- Estimate target storage from trial outcomes instead of assuming source and target sizes are equal.
+  Source and destination storage footprints can differ because of differences in index definitions and data layout. Use trial results to plan storage with a safe buffer.
+
+### Optimize migration speed
+
+- Migrate within the same region when possible.
+  Keeping source and target in the same region reduces network latency and improves data transfer performance. It can also reduce cross-region data transfer costs.
+
+- Scale up during migration, then scale down after cutover.
+  For example, you can temporarily scale the target cluster to M200 to increase migration throughput. After migration, scale down to an appropriate tier in the supported range for steady-state workloads.
+
+- Choose disks with higher IOPS for faster writes.
+  Higher IOPS can significantly improve write-heavy migration performance. Because disk size typically can't be scaled down later, select disk size carefully during planning.
+
+### Plan cutover carefully because there's no rollback
+
+- Plan for downtime during a low-traffic window.
+  Required downtime depends on how long your validation steps take after migration catches up. A low-traffic window reduces business impact.
+
+- Stop all writes to the source just before cutover.
+  This step prevents last-minute divergence between source and target. Confirm write activity is fully paused before you complete cutover.
+
+- Validate migrated data before moving writes.
+  Compare document counts, then run random-sample document comparison (for example, hash-based checks). Use a script when possible to make validation repeatable.
+
+- Update application connection strings and test on the target.
+  Run functional and performance validation against target reads and test traffic before enabling production writes. Confirm critical paths behave as expected.
+
+- Move write traffic only after validation succeeds.
+  Shift production writes to the target only after test results are successful and consistent. Use a staged rollout if your application architecture supports it.
 
 ## Migration
 
