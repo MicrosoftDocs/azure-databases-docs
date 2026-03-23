@@ -62,12 +62,12 @@
         },
         {
             "source_path_from_root": "/articles/dms/tutorial-sql-server-managed-instance-offline-ads.md",
-            "redirect_url": "/data-migration/sql-server/managed-instance/database-migration-service",
+            "redirect_url": "/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance",
             "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/dms/tutorial-sql-server-managed-instance-online-ads.md",
-            "redirect_url": "/data-migration/sql-server/managed-instance/database-migration-service",
+            "redirect_url": "/sql/sql-server/azure-arc/migrate-to-azure-sql-managed-instance",
             "redirect_document_id": false
         },
         {

@@ -16,7 +16,7 @@ This article describes how to deploy the Citus database across multiple nodes al
 | Article | Description |
 | --- | --- |
 | [Ubuntu/Debian](multi-node-ubuntu-debian.md) | Deploy multi-node Citus on Debian or Ubuntu systems |
-| [RHEL/CentOS/Fedora](multi-node-fedora-centos-rhel.md) | Deploy multi-node Citus on Red Hat Enterprise Linux, CentOS, or Fedora |
+| [RHEL/CentOS](multi-node-fedora-centos-rhel.md) | Deploy multi-node Citus on Red Hat Enterprise Linux or CentOS |
 
 ## Related content
 

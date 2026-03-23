@@ -4,7 +4,7 @@ description: Configure Microsoft Entra ID–based role-based access control (rol
 author: seesharprun
 ms.author: sidandrews
 ms.topic: how-to
-ms.date: 02/04/2026
+ms.date: 03/11/2026
 ms.devlang: python
 defaultDevLang: python
 dev_langs:
@@ -56,6 +56,14 @@ Review the following considerations before you use this feature:
 - Authentication methods on the primary cluster and on the replica cluster are [managed independently](cross-region-replication.md).
 - Microsoft Entra principals are persistent in the cluster metadata. If a principal is deleted from Microsoft Entra ID, the corresponding cluster user remains but can no longer obtain new tokens. Existing tokens remain valid until they expire (typically up to 90 minutes *from the issuance of the token*).
 - To immediately revoke access, remove the principal from the cluster (delete the `users/<principal-id>` resource) and drop any associated database roles; database administrators must handle transfer of ownership or cleanup for deleted principals.
+
+> [!IMPORTANT]
+> Access Token Validity and Security Consideration:
+>
+> The lifetime of an access token issued by Microsoft Entra ID represents the maximum potential attack window if the token is compromised. If a malicious actor obtains a valid access token and establishes a connection, the system may continue to accept requests using that token until it expires, even if the associated refresh token is revoked or the user account is disabled.
+>
+> We recommend following the guidelines as described [Revoke access token within Entra](https://learn.microsoft.com/entra/identity/users/users-revoke-access#on-premises-active-directory-environment)
+>
 
 ## Prerequisites
 

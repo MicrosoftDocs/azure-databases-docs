@@ -18,9 +18,9 @@ appliesto:
 # Azure Cosmos DB for NoSQL global secondary indexes (preview)
 
 > [!IMPORTANT]
-> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. This preview is provided without a service-level agreement. At this time, we don't recommend that you use global secondary indexes for production workloads. Certain features of this preview might not be supported or might have constrained capabilities. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB for NoSQL global secondary indexes are currently in preview. For more information, see the [supplemental terms of use for Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Global secondary indexes improve query efficiency by storing data with a different partition key. Global secondary indexes are read-only containers that are automatically synchronized with the source container, maintaining a persistent copy of its data. Each index container has its own settings, distinct from the source container, including partition key, indexing policy, Request Unit (RU) limit, and data model, which can be customized by selecting specific item properties.
+Global secondary indexes (GSIs) improve query efficiency by storing data with a different partition key than the source container. GSIs are read-only containers that are automatically synchronized with the source container. Each GSI has its own partition key, indexing policy, throughput (RU) limit, and data model.
 
 ## Use cases
 
@@ -28,9 +28,9 @@ Applications often need to query data using properties other than the partition 
 
 With a global secondary index, you can:
 
-- Store data with a different partition key to convert cross-partition queries on the source container into single partition lookups.
-- Add global secondary indexes to existing containers to keep queries efficient as application needs change.
-- Isolate a subset of your workload, such as creating vector or full text search indexes in the global secondary index without impacting transactional operations on the source container.
+- Store data with a different partition key to convert cross-partition queries on the source container into single partition queries.
+- Add GSIs to existing containers to keep queries efficient as application needs change.
+- Isolate a subset of your workload, such as creating vector or full text search indexes in the GSI without impacting transactional operations on the source container.
 
 ## Global secondary index benefits
 
@@ -42,62 +42,79 @@ Azure Cosmos DB global secondary indexes offer the following benefits:
 - Optimized Read Performance: Fine-tuned data model, partition key, and indexing policy for optimized read performance with support for queries using the rich NoSQL query syntax.
 - Improved Write Performance: Clients only need to write to the source container, improving write performance compared to a multi-container-write strategy.
 - Read-Only Containers: Writes to the index container are asynchronous and managed automatically. Client applications don't need to write directly to the index container.
-- Multiple Indexes: You can create multiple index containers for the same source container without extra overhead.
+- Multiple Indexes: You can create multiple index containers for the same source container.
 
 ## Defining global secondary indexes
 
-Creating a global secondary index is similar to creating a new container, with added properties to specify the source container and a query defining the global secondary index data model. Many customizations for containers also apply to global secondary index container, including custom indexing, vector, and full text search policies. Global secondary index containers must use autoscale throughput, which helps them respond to spikes in traffic without getting throttled or falling behind from updates in the source container.
+Creating a global secondary index is similar to creating a new container, with added properties to specify the source container and a query defining the GSI data model. Many customizations for containers also apply to GSIs, including custom indexing, vector, and full text search policies. GSI containers must use autoscale throughput, which helps them respond to spikes in traffic without getting throttled or falling behind from updates in the source container.
 
-Each item in the global secondary index has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in global secondary index items is auto populated. The value of `id` from the source container is represented as `_id` in the index container.
-
-The query used to define a global secondary index must adhere to the following constraints:
- - The SELECT statement allows projection of only one level of properties in the JSON tree, or it can be SELECT * to include all properties.
- - Aliasing property names using AS isn’t supported.
- - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, and EXISTS.
+The query that defines a GSI must adhere to the following constraints. Once the GSI is created, you can query it using the full Azure Cosmos DB for NoSQL query syntax.
+ - The SELECT statement can project properties from any level of the JSON tree, or use SELECT * to include all properties. Projected properties are flattened to the top level in the GSI.
+ - Property aliasing (AS) isn't supported in the definition query.
+ - Queries can’t include a WHERE clause or other clauses such as JOIN, DISTINCT, GROUP BY, ORDER BY, TOP, OFFSET LIMIT, or EXISTS.
  - System functions and user-defined functions (UDFs) aren't supported.
 
- For example, a valid query is: `SELECT c.userName, c.emailAddress FROM c`, which selects the `userName` and `emailAddress` properties from the source container `c`. This query defines the data model of the global secondary index, determining which properties are included in the index container for each item. The source container and definition query can't be changed once created.
+Each item in the GSI has a one-to-one mapping to an item in the source container. To maintain this mapping, the `id` field in GSI items is auto populated and the source item `id` value is represented as `_id`. When using `SELECT *`, the source `id` is automatically included as `_id` in GSI items. When projecting specific properties, you must explicitly include `id` if needed.
+
+For example, a valid query is: `SELECT c.id, c.name.first, c.emailAddress FROM c`. In the GSI, `_id`, `first` and `emailAddress` appear as top-level properties, even though `name.first` was nested in the source. This query defines the data model of the GSI, determining which properties are included for each item. The source container and definition query can't be changed once created.
  
  [Learn how to create global secondary indexes.](how-to-configure-global-secondary-indexes.md#create-a-global-secondary-index)
- 
+
 > [!TIP]
-> If you want to delete a source container, you must first delete all global secondary indexes that are created for it.
+> If a projected property doesn't exist in all source items, the GSI uses null values for missing properties. If you choose a partition key that does not exist in all items, you can hit the 20 GB logical partition size limit. Set up alerts to [monitor if storage for a logical partition key is approaching 20 GB](./how-to-alert-on-logical-partition-key-storage-size.md).
 
 ## Syncing global secondary indexes
 
-Global secondary index containers are automatically kept in sync with changes to data in source containers using [change feed](change-feed.md). When a global secondary index is defined for a source container, a change feed job is created and managed for you. Changes are asynchronously reflected to data in index containers and don't affect writes to the source container. Index containers are eventually consistent with the source container regardless of the [consistency level](consistency-levels.md) set for the account.
+Global secondary indexes are automatically kept in sync with changes to data in source containers using [change feed](change-feed.md). When a GSI is defined for a source container, a change feed job is created and managed for you. Changes are asynchronously reflected to data in index containers and don't affect writes to the source container. Index containers are eventually consistent with the source container regardless of the [consistency level](consistency-levels.md) set for the account.
 
-Change feed reads consume RUs from the source container, and writes to the global secondary index consume RUs from the index container. RUs provisioned on both containers determine how quickly indexes are hydrated and synced.
+Change feed reads consume RUs from the source container, and writes to the GSI consume RUs from the GSI container. RUs provisioned on both containers determine how quickly data is hydrated and synced.
 
 ### Global secondary indexes in multi-region accounts
 
-For Azure Cosmos DB accounts with a single region, change feed reads from the source container and writes to the global secondary index container occur in that region. In a multi-region account with a single write region, change feed reads and global secondary index writes occur in the write region. In an account with multiple write regions, change feed reads and global secondary index writes occur in one of the write regions. If there's a failover for your account, change feed reads and global secondary index writes occur in the new write region.
+For Azure Cosmos DB accounts with a single region, change feed reads from the source container and writes to the GSI occur in that region. In a multi-region account with a single write region, change feed reads and GSI writes occur in the write region. In an account with multiple write regions, change feed reads and GSI writes occur in one of the write regions. If there's a failover for your account, change feed reads and GSI writes occur in the new write region.
 
 ## Querying global secondary indexes
 
-Querying data from global secondary indexes is similar to querying data from any other container. You can use the full, rich Azure Cosmos DB for NoSQL query syntax to perform queries on global secondary index containers. This includes vector, full text search, and hybrid search queries. Similar to other containers, you should [tune the indexing policy](./how-to-manage-indexing-policy.md) on global secondary index containers based on your query patterns.
+Querying global secondary indexes is similar to querying any other container. You can use the full, rich Azure Cosmos DB for NoSQL query syntax to perform queries on GSIs including vector, full text search, and hybrid search queries. Similar to other containers, you should [tune the indexing policy](./how-to-manage-indexing-policy.md) on GSIs based on your query patterns.
 
-Because global secondary indexes can have a different partition key than source containers, executing would-be cross-partition queries on global secondary indexes is more efficient, saving both latency and RUs.
+Since GSIs can have a different partition key than the source, would-be cross-partition queries on the source can become single-partition queries on the GSI. Single partition queries improve latency and reduce RU consumption.
+
+## Best practices
+
+**Choose your partition key**
+- GSI partition keys follow the same design principles as any container. Learn best practices for [choosing a partition key](./partitioning.md#choose-a-partition-key).
+- Avoid uneven distribution caused by null values by selecting a partition key that exists in all or nearly all source items.
+- Use [hierarchical partition keys](./hierarchical-partition-keys.md) with the final level as a high cardinality property like `id`. GSIs are uniquely positioned for hierarchical partition keys ending with `id` because the system automatically maintains writes and `id` generation. This optimizes partition keys that could cause logical partitions to approach the 20 GB storage limit without sacrificing any write or read patterns.
+
+**Design projections based on queries**
+- Only project properties you need for your data access patterns. Avoid projecting rarely accessed properties to minimize storage and RU consumption.
+- Test your GSI definition query thoroughly before creating it. The definition can't be changed once created.
+- Use `SELECT *` only if you need all properties. Selective projections are more efficient.
+
+**Optimize for performance**
+- [Tune the indexing policy](./how-to-manage-indexing-policy.md) on GSIs based on your query patterns, just as you would on any container.
+- Remember that RUs are consumed separately: reads are from the source container during change feed processing, and writes are to the GSI during synchronization. Provision throughput on both containers appropriately.
+- Use autoscale throughput on GSIs to handle synchronization spikes without throttling.
 
 ## Monitoring
 
-You can monitor the lag in building global secondary indexes through the **Global Secondary Index Propagation Latency in Seconds** metric in **Metrics** in the Azure portal. To learn about these metrics, see [Supported metrics for Microsoft.DocumentDB/DatabaseAccounts](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
+Monitor GSI health and performance through the **Global Secondary Index Propagation Latency in Seconds** metric in the Azure portal **Metrics** section. This metric tracks the lag between source and GSIs during initial build and ongoing synchronization. For more details, see [supported metrics for Microsoft.DocumentDB/DatabaseAccounts](monitor-reference.md#supported-metrics-for-microsoftdocumentdbdatabaseaccounts).
 
 :::image type="content" source="./media/global-secondary-indexes/global-secondary-index-catchup-gap.png" alt-text="Screenshot of the Global Secondary Index Propagation Latency in Seconds metric in the Metrics page of the Azure portal." :::
 
 ### Troubleshooting common issues
 
-#### I want to understand the lag between my source container and index containers
+#### I want to understand the lag between my source container and GSIs
 
-The **Global Secondary Index Propagation Latency in Seconds** metric shows the average difference in seconds between data in source containers and global secondary index containers. To view the lag for an individual index container, select **Apply splitting** then select **GlobalSecondaryIndexName** from the drop-down of values.
+The propagation latency metric shows the average difference in seconds between source and GSI data. To view lag for an individual GSI, select **Apply splitting** and then **GlobalSecondaryIndexName** from the values list.
 
-#### I want to understand when my global secondary index is caught up and ready to use
+#### I want to know when my GSI is ready to query
 
-There are two status types to differentiate between propagation latency when building the global secondary index for the first time and latency for active global secondary indexes. Use the **Global Secondary Index Propagation Latency in Seconds** metric and select **Apply splitting**. Select the **GlobalSecondaryIndexStatus** value to view latency for global secondary indexes in the **Active**  or **InitialBuildAfterCreate** status. You can use this metric and status to configure [alerts](./create-alerts.md) should the latency go above a certain threshold.
+There are two status types to differentiate between propagation latency when building the GSI for the first time and latency for active GSIs. Use the **Global Secondary Index Propagation Latency in Seconds** metric and select **Apply splitting**. Select the **GlobalSecondaryIndexStatus** value to view latency for global secondary indexes in the **Active**  or **InitialBuildAfterCreate** status. You can use this metric and status to configure [alerts](./create-alerts.md) should the latency go above a certain threshold.
 
-#### I want to understand if my global secondary index containers have enough RUs
+#### I want to know if my GSI has enough throughput
 
-The RUs provisioned on source and index containers affect the rate of changes propagated to the global secondary index container. Check the **Normalized RU Consumption** metric, if it's too high the container may benefit from increasing the maximum RUs.
+The RUs provisioned on source and GSI affect the rate of changes propagated. Check the **Normalized RU Consumption** metric, if it's too high the container may benefit from increasing the maximum RUs.
 
 ## Next steps
 

@@ -18,6 +18,8 @@ appliesto:
 
 [!INCLUDE[Quickstart developer selector](includes/selector-quickstart-developer.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 Get started with the Azure Cosmos DB for Apache Cassandra client library for .NET to store, manage, and query unstructured data. Follow the steps in this guide to create a new account, install a .NET client library, connect to the account, perform common operations, and query your final sample data.
 
 [API reference documentation](https://docs.datastax.com/en/developer/csharp-driver/index.html) | [Library source code](https://github.com/datastax/csharp-driver) | [Package (NuGet)](https://www.nuget.org/packages/CassandraCSharpDriver)

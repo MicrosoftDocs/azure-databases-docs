@@ -21,7 +21,7 @@ ms.topic: include
 > - Updates for UK South and US Government regions start on January 21, 2026.
 > - Updates for Central US start on January 26, 2026.
 > - Updates for all other regions start on January 28, 2026.
-
-**Root certificate rotation schedule:**
-
- - Updates for root CA certificates from DigiCert Global Root CA (G1) to DigiCert Global Root G2 in China regions start March 9, 2026.
+>
+> **Root certificate rotation schedule:**
+>
+> - Updates for root CA certificates from DigiCert Global Root CA (G1) to DigiCert Global Root G2 in China regions start March 9, 2026.

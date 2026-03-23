@@ -13,6 +13,8 @@ ms.date: 10/11/2021
 # Prevent rate-limiting errors for Azure Cosmos DB for Apache Cassandra operations
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The cost of all database operations is normalized by Azure Cosmos DB and is expressed by Request Units (RU). Request unit is a performance currency abstracting the system resources such as CPU, IOPS, and memory that are required to perform the database operations supported by Azure Cosmos DB.
 
 Azure Cosmos DB for Apache Cassandra operations may fail with rate-limiting (OverloadedException/429) errors if they exceed a table’s throughput limit (RUs). This can be handled by client side as described [here](scale-account-throughput.md#handling-rate-limiting-429-errors). If the client retry policy cannot be implemented to handle the failure due to rate limiting error, then we can make use of the Server-side retry (SSR) feature where operations that exceed a table’s throughput limit will be retried automatically after a short delay. This is an account level setting and applies to all Key spaces and Tables in the account.

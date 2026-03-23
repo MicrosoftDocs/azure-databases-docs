@@ -4,7 +4,7 @@ description: Learn how to run Citus using Docker on Mac or Linux so you can quic
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: how-to
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Docker (Mac or Linux)
@@ -14,6 +14,20 @@ monikerRange: "citus-13 || citus-14"
 
 You can start Citus in Docker with one command:
 
+:::moniker range="<=citus-12"
+```bash
+# start the image
+docker run -d --name citus -p 5432:5432 -e POSTGRES_PASSWORD=mypass \
+           citusdata/citus:12.1
+
+# verify it's running, and that Citus is installed:
+psql -U postgres -h localhost -d postgres -c "SELECT * FROM citus_version();"
+```
+
+You should see Citus 12.1.x.
+:::moniker-end
+
+:::moniker range="=citus-13"
 ```bash
 # start the image
 docker run -d --name citus -p 5432:5432 -e POSTGRES_PASSWORD=mypass \
@@ -23,7 +37,21 @@ docker run -d --name citus -p 5432:5432 -e POSTGRES_PASSWORD=mypass \
 psql -U postgres -h localhost -d postgres -c "SELECT * FROM citus_version();"
 ```
 
-You should see the latest version of Citus.
+You should see Citus 13.x.
+:::moniker-end
+
+:::moniker range=">=citus-14"
+```bash
+# start the image
+docker run -d --name citus -p 5432:5432 -e POSTGRES_PASSWORD=mypass \
+           citusdata/citus:14.0
+
+# verify it's running, and that Citus is installed:
+psql -U postgres -h localhost -d postgres -c "SELECT * FROM citus_version();"
+```
+
+You should see Citus 14.x.
+:::moniker-end
 
 Once you have the cluster up and running, you can visit our tutorials on multitenant applications or real-time analytics to get started with Citus in minutes.
 
@@ -41,4 +69,4 @@ Once you have the cluster up and running, you can visit our tutorials on multite
 
 - [Single-node overview](single-node.md)
 - [Single-node on Ubuntu or Debian](single-node-debian.md)
-- [Single-node on Fedora, CentOS, or Red Hat](single-node-rhel.md)
+- [Single-node on CentOS or Red Hat](single-node-rhel.md)

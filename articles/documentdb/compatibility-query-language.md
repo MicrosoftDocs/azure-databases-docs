@@ -83,7 +83,7 @@ The table here lists the operators that are currently supported in Azure Documen
 | Bitwise Query Operators | `$bitsAnySet` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Projection Operators | `$` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Projection Operators | `$elemMatch` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Projection Operators | `$meta` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Projection Operators | `$meta` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Projection Operators | `$slice` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Miscellaneous Query Operators | `$comment` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Miscellaneous Query Operators | `$rand` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
@@ -223,7 +223,7 @@ The table here lists the operators that are currently supported in Azure Documen
 | String Expression Operators | `$toString` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | String Expression Operators | `$trim` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | String Expression Operators | `$toUpper` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
-| Text Expression Operator | `$meta` | ❌ No | ❌ No | ❌ No | ❌ No |
+| Text Expression Operator | `$meta` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Timestamp Expression Operators | `$tsIncrement` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Timestamp Expression Operators | `$tsSecond` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |
 | Trigonometry Expression Operators | `$sin` | ✅ Yes | ✅ Yes | ✅ Yes | ✅ Yes |

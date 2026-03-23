@@ -7,7 +7,7 @@ ms.author: diberry
 ms.reviewer: khelanmodi
 ms.devlang: typescript
 ms.topic: quickstart-sdk
-ms.date: 02/03/2026
+ms.date: 02/20/2026
 ai-usage: ai-assisted
 ms.custom:
   - devx-track-ts

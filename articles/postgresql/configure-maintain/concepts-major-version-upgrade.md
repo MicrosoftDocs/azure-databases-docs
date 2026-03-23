@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 1/12/2026
+ms.date: 3/18/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -56,18 +56,15 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
     - Ensure your flexible server instance can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.
 - Logical replication slots are not supported during in-place major version upgrades.
-- Servers using SSDv2 storage are not eligible for major version upgrades.
 - Views dependent on `pg_stat_activity` are not supported during major version upgrades.
 - If you are performing the upgrade from PG11 to a higher version, you must first configure your flexible server to use [SCRAM authentication ](../security/security-connect-scram.md#configure-scram-authentication) by enabling SCRAM and resetting all login-role passwords.
 
 ### Extension Limitations
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
-- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `orafce`, `postgres_fdw`.
+- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `postgres_fdw`.
 - The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
-- When upgrading to PostgreSQL 17, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
-
-**Note:** If any of these extensions appear in the `azure.extensions` server parameter, the upgrade will be blocked. Remove them from the parameter before starting the upgrade.
+- When upgrading to PostgreSQL 17 and above, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
 
 ### PostGIS-Specific Considerations
 
