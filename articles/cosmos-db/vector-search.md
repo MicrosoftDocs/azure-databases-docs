@@ -79,6 +79,9 @@ To enable this feature for Azure Cosmos DB for NoSQL, follow these steps:
 
 The registration request is autoapproved, but it might take 15 minutes to take effect.
 
+> [!NOTE]
+> If you want to use vector search on collections with [heirarchical partiton keys](hierarchical-partition-keys.md), please reach out to [our team](mailto:cosmossearch@microsoft.com) to configure your account to optimally leverage the partitioning scheme during search. 
+
 ## Container vector policies
 
 Performing vector search with Azure Cosmos DB for NoSQL requires you to define a vector policy for the container. This provides essential information for the database engine to conduct efficient similarity search for vectors found in the container's documents. This also informs the vector indexing policy of necessary information, should you choose to specify one. The following information is included in the contained vector policy:
