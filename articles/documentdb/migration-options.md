@@ -26,6 +26,62 @@ Use the [Azure DocumentDB Migration extension](./how-to-assess-plan-migration-re
 > [!TIP]
 > We recommend you review the [supported MongoDB Query Language (MQL) features and syntax](./compatibility-query-language.md) in detail and perform a proof-of-concept prior to the actual migration.
 
+
+## Migration
+
+The tools discussed in this article assist you in migrating your MongoDB workloads from the following sources:
+
+- MongoDB Virtual Machine
+- MongoDB Atlas
+- AWS DocumentDB
+
+
+### Azure DocumentDB Migration Extension
+
+Create and manage your migration jobs in **Visual Studio Code** with [Azure DocumentDB Migration Extension (Public Preview)](./how-to-migrate-vs-code-extension.md) — a solution designed for **simplicity**, **security**, and **zero downtime**.
+
+This tool provides clear, step-by-step guidance to help you migrate workloads without service interruptions. You can:
+
+- **Select specific databases and collections** for migration  
+- Perform all steps **within the familiar VS Code interface**  
+- Ensure **secure connectivity** throughout the process  
+- Enjoy **zero cost** for using the extension  
+
+With Azure DocumentDB Migration Extension, you can streamline your migration journey while maintaining control and security — all without additional infrastructure or complexity.
+
+### Web App Utility (Online)
+
+Streamline your migration to Azure DocumentDB with [MongoMigrationwebBasedUtility](https://github.com/AzureCosmosDB/MongoMigrationwebBasedUtility) a tool designed for efficiency, reliability, and ease of use. The repository offers detailed, step-by-step instructions for migrating your workloads. This tool offers a seamless experience for both online and offline data migrations. The process is user-friendly, requiring only the source and target details to be provided. It enables you to effortlessly migrate your MongoDB collections while maintaining control, security, and scalability, unlocking the full potential of Azure DocumentDB.
+
+Key features include:
+
+- Supports private deployment within your virtual network for enhanced security
+- Automatic resume capabilities if there's connection loss or transient errors
+- User-friendly interface
+- Access to C# source code on GitHub
+
+The tool supports flexible deployment options and operates independently without dependencies on other Azure resources. Additionally, it offers scalable performance with customizable Azure Web App pricing plans. 
+
+### Native MongoDB tools (Offline)
+
+You can also use the native MongoDB tools such as *mongodump/mongorestore*, *mongoexport/mongoimport* to migrate datasets offline (without replicating live changes) to Azure DocumentDB offering.
+
+| Scenario | MongoDB native tool |
+| --- | --- |
+| Move subset of database data (JSON/CSV-based) | *mongoexport/mongoimport* |
+| Move whole database (BSON-based) | *mongodump/mongorestore* |
+
+- *mongoexport/mongoimport* is the best pair of migration tools for migrating a subset of your MongoDB database.
+  - *mongoexport* exports your existing data to a human-readable JSON or CSV file. *mongoexport* takes an argument specifying the subset of your existing data to export.
+  - *mongoimport* opens a JSON or CSV file and inserts the content into the target database instance (Azure DocumentDB in this case.).
+  - JSON and CSV aren't a compact format; you could incur excess network charges as *mongoimport* sends data to Azure DocumentDB.
+- *mongodump/mongorestore* is the best pair of migration tools for migrating your entire MongoDB database. The compact BSON format makes more efficient use of network resources as the data is inserted into Azure DocumentDB.
+  - *mongodump* exports your existing data as a BSON file.
+  - *mongorestore* imports your BSON file dump into Azure DocumentDB.
+
+> [!NOTE]
+> The MongoDB native tools can move data only as fast as the host hardware allows.
+
 ## Migration best practices
 
 Use these best practices to reduce risk, estimate capacity more accurately, improve migration speed, and execute cutover safely.
@@ -82,61 +138,6 @@ Use these best practices to reduce risk, estimate capacity more accurately, impr
 
 - Move write traffic only after validation succeeds.
   Shift production writes to the target only after test results are successful and consistent. Use a staged rollout if your application architecture supports it.
-
-## Migration
-
-The tools discussed in this article assist you in migrating your MongoDB workloads from the following sources:
-
-- MongoDB Virtual Machine
-- MongoDB Atlas
-- AWS DocumentDB
-
-
-### Azure DocumentDB Migration Extension
-
-Create and manage your migration jobs in **Visual Studio Code** with [Azure DocumentDB Migration Extension (Public Preview)](./how-to-migrate-vs-code-extension.md) — a solution designed for **simplicity**, **security**, and **zero downtime**.
-
-This tool provides clear, step-by-step guidance to help you migrate workloads without service interruptions. You can:
-
-- **Select specific databases and collections** for migration  
-- Perform all steps **within the familiar VS Code interface**  
-- Ensure **secure connectivity** throughout the process  
-- Enjoy **zero cost** for using the extension  
-
-With Azure DocumentDB Migration Extension, you can streamline your migration journey while maintaining control and security — all without additional infrastructure or complexity.
-
-### Web App Utility (Online)
-
-Streamline your migration to Azure DocumentDB with [MongoMigrationwebBasedUtility](https://github.com/AzureCosmosDB/MongoMigrationwebBasedUtility) a tool designed for efficiency, reliability, and ease of use. The repository offers detailed, step-by-step instructions for migrating your workloads. This tool offers a seamless experience for both online and offline data migrations. The process is user-friendly, requiring only the source and target details to be provided. It enables you to effortlessly migrate your MongoDB collections while maintaining control, security, and scalability, unlocking the full potential of Azure DocumentDB.
-
-Key features include:
-
-- Supports private deployment within your virtual network for enhanced security
-- Automatic resume capabilities if there's connection loss or transient errors
-- User-friendly interface
-- Access to C# source code on GitHub
-
-The tool supports flexible deployment options and operates independently without dependencies on other Azure resources. Additionally, it offers scalable performance with customizable Azure Web App pricing plans. 
-
-### Native MongoDB tools (Offline)
-
-You can also use the native MongoDB tools such as *mongodump/mongorestore*, *mongoexport/mongoimport* to migrate datasets offline (without replicating live changes) to Azure DocumentDB offering.
-
-| Scenario | MongoDB native tool |
-| --- | --- |
-| Move subset of database data (JSON/CSV-based) | *mongoexport/mongoimport* |
-| Move whole database (BSON-based) | *mongodump/mongorestore* |
-
-- *mongoexport/mongoimport* is the best pair of migration tools for migrating a subset of your MongoDB database.
-  - *mongoexport* exports your existing data to a human-readable JSON or CSV file. *mongoexport* takes an argument specifying the subset of your existing data to export.
-  - *mongoimport* opens a JSON or CSV file and inserts the content into the target database instance (Azure DocumentDB in this case.).
-  - JSON and CSV aren't a compact format; you could incur excess network charges as *mongoimport* sends data to Azure DocumentDB.
-- *mongodump/mongorestore* is the best pair of migration tools for migrating your entire MongoDB database. The compact BSON format makes more efficient use of network resources as the data is inserted into Azure DocumentDB.
-  - *mongodump* exports your existing data as a BSON file.
-  - *mongorestore* imports your BSON file dump into Azure DocumentDB.
-
-> [!NOTE]
-> The MongoDB native tools can move data only as fast as the host hardware allows.
 
 ## Related content
 
