@@ -12,7 +12,7 @@ ms.topic: troubleshooting-general
 
 # Autovacuum tuning in Elastic cluster in Azure Database for PostgreSQL
 
-This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL Elastic Clusters](../elastic=clusters/concepts-elastic-clusters.md) and the troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
+This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md) and the troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
 
 > [!NOTE]
 > This article covers autovacuum tuning for all supported PostgreSQL versions in an Azure Database for PostgreSQL Elastic Cluster. Some features mentioned are version-specific (such as `vacuum_buffer_usage_limit` for PostgreSQL 16 and later, and `autovacuum_vacuum_max_threshold` for PostgreSQL 18 and later).
