@@ -19,6 +19,35 @@ Migrations can be done in two ways:
 
 - Online Migration: Apart from the bulk data copy activity done in the offline migration, a change stream monitors all additions/updates/deletes. After the bulk data copy is completed, the data in the change stream is copied to the target. This process ensures that all updates made during the migration process are also transferred to the target. The application downtime required is minimal.
 
+
+## Key migration phases
+
+A successful migration follows these distinct phases. Each phase has specific goals and success criteria.
+
+### 1. Assess
+
+Run an automated scan of your source MongoDB to identify unsupported features, commands, query syntax, and index types. The assessment also provides an overview of MongoDB version, license, instance type, and database and collection metrics. Use these findings to plan schema changes and identify any required refactoring before migration.
+
+### 2. Prepare
+
+Analyze the assessment report and measure source TPS (transactions per second). Run trial migrations on representative data to establish target Compute Tier, Storage Tier, and shard count. Conduct performance tests to ensure the target configuration meets your requirements.
+
+### 3. Refine
+
+Prepare target collections with appropriate shard keys and indexes that match your production query patterns. If using multiple shards, decide how to distribute collections across shards to balance load and minimize cross-shard operations.
+
+### 4. Migrate
+
+Run the migration job to move data in either Offline or Online mode. For online migrations, ensure that change stream is enabled and the oplog is sized appropriately on your source MongoDB to capture all changes during the migration window.
+
+### 5. Validate
+
+Validate that all data has been copied, including the latest updates. Compare document counts, run sample-based validation, and verify that indexes and data structures match expectations on the target. Use automated scripts to make validation repeatable and consistent.
+
+### 6. Cutover
+
+Move read traffic to the target and verify there are no functional or performance issues. Once read validation is successful, move write traffic to the target. Monitor closely during the cutover window for any anomalies.
+
 ## Premigration Assessment
 
 Use the [Azure DocumentDB Migration extension](./how-to-assess-plan-migration-readiness.md) to perform a compatibility assessment. The purpose of this stage is to identify any incompatibilities or warnings that exist in the current MongoDB solution. You should resolve the issues found in the assessment results before moving on with the migration process.
@@ -138,6 +167,28 @@ Use these best practices to reduce risk, estimate capacity more accurately, impr
 
 - Move write traffic only after validation succeeds.
   Shift production writes to the target only after test results are successful and consistent. Use a staged rollout if your application architecture supports it.
+
+### Coordinate across teams for seamless migration
+
+- Secure buy-in from all stakeholders: app, data, infrastructure, security, network, and management teams.
+  Align expectations and responsibilities early. Shared ownership reduces misunderstandings and delays during execution.
+
+- Use planning and trial runs to build team confidence and refine procedures.
+  There are no shortcuts to a smooth migration. Trial runs surface issues in a lower-risk environment and give teams practice.
+
+- Treat cutover as critical and time-sensitive.
+  Cutover requires precise coordination and clear communication. Designate decision makers and establish escalation paths before it begins.
+
+- Know who will perform each step, when it should happen, and how to minimize downtime.
+  Assign responsibilities, establish timelines, and align on success criteria. Document the cutover runbook and share it with all participants.
+
+- Coordinate with all stakeholders when cutover requires updates to multiple workloads simultaneously.
+  Schedule the cutover during a maintenance window that works for all teams. Avoid Friday nights or periods near major business events.
+
+- Do not rush or skip due diligence steps—there is no rollback.
+  Thorough validation and careful execution prevent costly mistakes. Accept that cutover takes time; speed-focused shortcuts create risk.
+
+
 
 ## Related content
 
