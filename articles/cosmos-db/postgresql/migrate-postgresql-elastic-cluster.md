@@ -2,8 +2,8 @@
 title: Migrate to Azure Database for PostgreSQL with Elastic Cluster
 titleSuffix: Azure Cosmos DB for PostgreSQL
 description: Migrate from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL with Elastic Cluster.
-author: jonels-msft
-ms.author: jonels
+author: hsinghjkaur
+ms.author: hasingh
 ms.service: azure-cosmos-db
 ms.subservice: postgresql
 ms.topic: overview
