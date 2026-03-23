@@ -11,13 +11,9 @@ ai-usage: ai-assisted
 
 # What are the options to migrate data from MongoDB to Azure DocumentDB?
 
-This document describes the various options to lift and shift your MongoDB workloads to Azure DocumentDB offering.
+This article helps you plan and execute a migration from MongoDB to Azure DocumentDB. It covers the available migration tools, the key phases of a migration, and best practices to reduce risk and minimize downtime.
 
-Migrations can be done in two ways:
-
-- Offline Migration: A snapshot based bulk copy from source to target. New data added/updated/deleted on the source after the snapshot isn't copied to the target. The application downtime required depends on the time taken for the bulk copy activity to complete.
-
-- Online Migration: Apart from the bulk data copy activity done in the offline migration, a change stream monitors all additions/updates/deletes. After the bulk data copy is completed, the data in the change stream is copied to the target. This process ensures that all updates made during the migration process are also transferred to the target. The application downtime required is minimal.
+Whether you're migrating from an on-premises MongoDB server, a cloud-hosted VM, or a managed MongoDB service, the options and guidance in this article apply.
 
 
 ## Key migration phases
@@ -38,7 +34,12 @@ Prepare target collections with appropriate shard keys and indexes that match yo
 
 ### 4. Migrate
 
-Run the migration job to move data in either Offline or Online mode. For online migrations, ensure that change stream is enabled and the oplog is sized appropriately on your source MongoDB to capture all changes during the migration window.
+Run the migration job to move data in either offline or online mode:
+
+- **Offline migration**: Takes a snapshot of the source at the start and bulk-copies it to the target. Any data added, updated, or deleted on the source after the snapshot isn't copied. Required downtime depends on how long the bulk copy takes.
+- **Online migration**: Performs the same bulk copy as offline, but also monitors the change stream throughout the process. Changes made during migration are replicated to the target, so the application downtime required is minimal. Requires change stream and a sufficiently large oplog on the source.
+
+For online migrations, ensure that change stream is enabled and the oplog is sized appropriately on your source MongoDB to capture all changes during the migration window.
 
 ### 5. Validate
 
