@@ -1,5 +1,5 @@
 ---
-title: High Availability in Azure Database for PostgreSL
+title: High Availability in Azure Database for PostgreSQL
 description: This article describes high availability on an Azure Database for PostgreSQL flexible server instance.
 author: gaurikasar
 ms.author: gkasar
@@ -50,7 +50,7 @@ Azure Database for PostgreSQL supports both [zone-redundant and zonal models](/a
 
   You can choose the region and the availability zones for both primary and standby servers. The standby replica server is provisioned in the chosen availability zone in the same region with a similar compute, storage, and network configuration as the primary server. Data files and transaction log files (write-ahead logs, also known as WAL) are stored on locally redundant storage (LRS) within each availability zone, automatically storing **three** data copies. A zone-redundant configuration provides physical isolation of the entire stack between primary and standby servers.
 
-  :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Pictures illustrating redundant high availability architecture." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
+  :::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram illustrating redundant high availability architecture." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
 
   The **zone-redundant** option is only available in [regions that have support for availability zones](../overview.md#azure-regions).
 
@@ -60,7 +60,7 @@ Azure Database for PostgreSQL supports both [zone-redundant and zonal models](/a
 
 - **Same-zone (zonal)**. Choose a zonal deployment when you want to achieve the highest level of availability within a single availability zone, but with the lowest network latency. You can choose the region and the availability zone to deploy both your primary database server. A standby replica server is *automatically* provisioned and managed in the *same* availability zone - with similar compute, storage, and network configuration - as the primary server. A zonal configuration protects your databases from node-level failures and also helps with reducing application downtime during planned and unplanned downtime events. Data from the primary server is replicated to the standby replica in synchronous mode. if any disruption to the primary server, the server automatically fails over to the standby replica.
 
-  :::image type="content" source="./media/concepts-high-availability/same-zone-high-availability-architecture.png" alt-text="Pictures illustrating zonal high availability architecture." lightbox="./media/concepts-high-availability/same-zone-high-availability-architecture.png":::
+  :::image type="content" source="./media/concepts-high-availability/same-zone-high-availability-architecture.png" alt-text="Diagram illustrating zonal high availability architecture." lightbox="./media/concepts-high-availability/same-zone-high-availability-architecture.png":::
 
   The **zonal** deployment option is available in all [Azure regions](../overview.md#azure-regions) where you can deploy Flexible Server.
 
@@ -77,13 +77,11 @@ Azure Database for PostgreSQL supports both [zone-redundant and zonal models](/a
 
 ### SLA
 
-- The **Zone-redundancy** model offers an uptime for an [SLA for about 99.99%](https://azure.microsoft.com/support/legal/sla/postgresql).
-
-- The **Zonal** model offers an uptime for an [SLA for about 99.95%](https://azure.microsoft.com/support/legal/sla/postgresql).
+The **Zone-redundancy** model offers a higher uptime uptime SLA. For more information, see [SLAs for online services](https://aka.ms/csla).
 
 ## Azure Database for PostgreSQL without high availability
 
-Although it's not recommended, you can configure your flexible server without high availability enabled. For flexible servers configured without high availability, the service provides locally redundant storage with three copies of data, and built-in server resiliency to automatically restart a crashed server and relocate the server to another physical node. This configuration offers an uptime [SLA of 99.9%](https://azure.microsoft.com/support/legal/sla/postgresql). During planned or unplanned failover events, if the server goes down, the service maintains the availability of the servers by using the following automated procedure:
+Although it's not recommended, you can configure your flexible server without high availability enabled. For flexible servers configured without high availability, the service provides locally redundant storage with three copies of data, and built-in server resiliency to automatically restart a crashed server and relocate the server to another physical node. This configuration offers a lower [uptime SLA](https://aka.ms/csla) than servers with high availability. During planned or unplanned failover events, if the server goes down, the service maintains the availability of the servers by using the following automated procedure:
 
 1. A new compute Linux VM is provisioned.
 1. The storage with data files is mapped to the new virtual machine.
@@ -91,7 +89,7 @@ Although it's not recommended, you can configure your flexible server without hi
 
 The following picture shows the transition between VM and storage failure.
 
-:::image type="content" source="./media/concepts-high-availability/availability-without-zone-redundant-ha-architecture.png" alt-text="Diagram that shows availability without zone redundant high availability (HA) in steady state." border="false" lightbox="./media/concepts-high-availability/availability-without-zone-redundant-ha-architecture.png":::
+:::image type="content" source="./media/concepts-high-availability/availability-without-high-availability-architecture.png" alt-text="Diagram that shows availability without zone redundant high availability (HA) in steady state." border="false" lightbox="./media/concepts-high-availability/availability-without-high-availability-architecture.png":::
 
 ## Configure Business Critical (High Availability) options
 
@@ -185,7 +183,7 @@ The system continuously monitors the health of primary and standby servers. It t
 
 PostgreSQL client applications connect to the primary server by using the DB server name. The primary server directly serves application reads. At the same time, the application receives confirmation of commits and writes only after the log data persists on both the primary server and the standby replica. Due to this extra round-trip, applications can expect elevated latency for writes and commits. You can monitor the health of the high availability on the portal.
 
-:::image type="content" source="../media/concepts-high-availability/high-availability-steady-state.png" alt-text="Picture showing high availability steady state operation workflow.":::
+:::image type="content" source="./media/concepts-high-availability/high-availability-steady-state.png" alt-text="Diagram showing high availability steady state operation workflow.":::
 
 1. Clients connect to the flexible server and perform write operations.
 1. Changes replicate to the standby site.
