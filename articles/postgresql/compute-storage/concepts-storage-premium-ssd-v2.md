@@ -55,9 +55,9 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-Premim SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
 
-Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
+Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, US South Central US, West Central US, West Europe, West US, West US 2, and West US 3* regions.
 
 Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
@@ -77,7 +77,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
   No action is required during this time. We recommend waiting for the first backup to complete before performing any backup‑dependent operations. After the initial backup is completed, all subsequent backups are      incremental and typically complete quickly.
 
 
-- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of Premium SSD (v1) server to a new one with Premium SSD v2 storage type. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable the storage autogrow setting before migrating from Premium SSD (v1) to Premium SSD v2 (v2)
+- Online migration from Premium SSD (PV1) to Premium SSD v2 (PV2) isn't supported. As an alternative, if you want to migrate across the different storage types, you can perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) of Premium SSD (v1) server to a new one with Premium SSD v2 storage type. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable the storage autogrow setting before migrating from Premium SSD (v1) to Premium SSD v2 (v2).
   
 - If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
 
@@ -85,8 +85,8 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
   **Operations that can trigger this behavior include:**  
          Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-         Performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
-         Creating a new server using PITR(point-in-time-restore) and immediately enabling High Availablity or Read Replicas while the disk is still being hydrated.  
+         If you are performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+         Creating a new server using PITR(point-in-time-restore) and immediately enabling High Availability or Read Replicas while the disk is still being hydrated.  
 
   **Best practice:**  
          To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
