@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/18/2026
+ms.date: 3/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -24,9 +24,6 @@ In-place upgrades retain the server name and other settings of the current serve
 > [!NOTE]
 > Azure Database for PostgreSQL supports in-place major version upgrades only to currently supported PostgreSQL versions. For example, you can upgrade the current version given the target version is officially supported by Azure at the time of the upgrade. Unsupported versions can't be selected as upgrade targets, and attempting to upgrade to a deprecated version may result in failure or service disruption. Always consult the [Azure PostgreSQL versioning policy](/azure/postgresql/flexible-server/concepts-version-policy) and [upgrade documentation](/azure/postgresql/flexible-server/concepts-major-version-upgrade) before initiating a major version upgrade. 
 
-> [!NOTE]
-> Major version upgrades to PostgreSQL 18 are being enabled in phases. At this time, MVU to PostgreSQL 18 is available in the AustraliaSoutheast, CanadaCentral, CentralIndia, CentralUS, EastAsia, EastUS2, NorthCentralUS, SouthAfricaNorth, SouthCentralUS, SwedenCentral, WestCentralUS, WestUS2, and WestUS3 regions.
-
 ## Upgrade Process
 
 Here are some of the important considerations with in-place major version upgrades:
@@ -36,12 +33,12 @@ Here are some of the important considerations with in-place major version upgrad
     - If the precheck finds any incompatibilities, it creates a log event that shows that the upgrade precheck failed, along with an error message.
     - If the precheck is successful, the Azure Database for PostgreSQL flexible server instance stops the service and takes an implicit backup just before starting the upgrade. The service can use this backup to restore the database instance to its previous version if there's an upgrade error.
 - An Azure Database for PostgreSQL flexible server instance uses the [pg_upgrade](https://www.postgresql.org/docs/current/pgupgrade.html) tool to perform in-place major version upgrades. The service provides the flexibility to skip versions and upgrade directly to later versions.
-- During an in-place major version upgrade of a server which is enabled for high availability (HA), the service disables HA, performs the upgrade on the primary server, and then re-enables HA after the upgrade is complete.
+- During an in-place major version upgrade of a server which is enabled for high availability (HA), the service disables HA, performs the upgrade on the primary server, and then re-enables HA after the upgrade is complete. Re-enabling HA requires sufficient capacity to provision a new standby instance.
 - Most extensions are automatically upgraded to later versions during an in-place major version upgrade, with [some exceptions](#upgrade-considerations-and-limitations).
 - The process of an in-place major version upgrade for an Azure Database for PostgreSQL flexible server instance automatically deploys the latest supported minor version.
-- An in-place major version upgrade is an offline operation, meaning the server will be unavailable during the process. While most upgrades complete in under 15 minutes, the actual duration depends on the size and complexity of the database. Specifically, the time required is directly proportional to the number of objects (tables, indexes, schemas) in your PostgreSQL instance. Larger or more complex schemas may experience longer upgrade times.
+- Upgrade duration depends on the size and complexity of your database, including the number of objects (tables, indexes, schemas), large objects, and extensions. Larger or more complex workloads may experience longer upgrade times.
 - Long-running transactions or high workload before the upgrade might increase the time taken to shut down the database and increase upgrade time.
-- After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. However, you can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version of the database instance.
+- After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. You can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version on a new server.
 - Your Azure Database for PostgreSQL flexible server instance takes a snapshot of your database during an upgrade. The snapshot is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the snapshot.
 - [PostgreSQL 16 introduces role-based security](../security/security-overview.md) measures. After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server—who is granted the ADMIN option—will now have administrative privileges over other roles for essential maintenance operations.
 
@@ -55,7 +52,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 - Network traffic rules may block upgrade operations. 
     - Ensure your flexible server instance can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
     - If Network Security Groups (NSGs) restrict this traffic, HA will not re-enable automatically post-upgrade. You may need to manually update NSG rules and re-enable HA.
-- Logical replication slots are not supported during in-place major version upgrades.
+- Logical replication slots must be dropped before performing an in-place major version upgrade. You can recreate them after the upgrade is complete.
 - Views dependent on `pg_stat_activity` are not supported during major version upgrades.
 - If you are performing the upgrade from PG11 to a higher version, you must first configure your flexible server to use [SCRAM authentication ](../security/security-connect-scram.md#configure-scram-authentication) by enabling SCRAM and resetting all login-role passwords.
 
@@ -91,23 +88,25 @@ ANALYZE
 ```
 ## View upgrade logs
 
-Major version upgrade logs (`PG_Upgrade_Logs`) provide direct access to detailed [server logs](../monitor/how-to-configure-server-logs.md). Integrating `PG_Upgrade_Logs` into your upgrade process can help ensure a smoother and more transparent transition to new PostgreSQL versions.
+Use `PG_Upgrade_Logs` to monitor upgrade progress and troubleshoot issues.
 
-You can configure your major version upgrade logs in the same way as server logs, by using the following server parameters:
+### Enable upgrade logs using server log parameters:
+- Set `logfiles.download_enable` to ON.
+- Configure retention with `logfiles.retention_days`.
 
-- To turn on the feature, set `logfiles.download_enable` to `ON`.
-- To define the retention of log files in days, use `logfiles.retention_days`.
+See [Configure capture of PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md) to get started.
 
-#### Setup upgrade logs
+### Access PG_Upgrade_Logs from the server logs UI.
 
-To start using `PG_Upgrade_Logs`, you can [Configure capture of PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md).
+- Review `PG_Upgrade_Logs` during and after the upgrade to monitor progress and diagnose failures or delays.
+- Check for errors or warnings if the upgrade fails or takes longer than expected.
+- Use logs to identify blocking issues and take corrective action quickly.
 
-You can access the upgrade logs through the UI for server logs. There, you can monitor the progress and details of your PostgreSQL major version upgrades in real time. This UI provides a centralized location for viewing logs, so you can more easily track and troubleshoot the upgrade process.
+### Benefits of using upgrade logs
+- Diagnose issues quickly: Use `PG_Upgrade_Logs` to review each step of the upgrade and identify errors or warnings.
+- Troubleshoot efficiently: Analyze logs to pinpoint failures, reduce downtime, and take corrective action faster.
 
-#### Benefits of using upgrade logs
-
-- **Insightful diagnostics**: `PG_Upgrade_Logs` provides valuable insights into the upgrade process. It captures detailed information about the operations performed, and it highlights any errors or warnings that occur. This level of detail is instrumental in diagnosing and resolving problems that might arise during the upgrade, for a smoother transition.
-- **Streamlined troubleshooting**: With direct access to these logs, you can quickly identify and address potential upgrade obstacles, reduce downtime, and minimize the impact on your operations. The logs serve as a crucial troubleshooting tool by enabling more efficient and effective problem resolution.
+`PG_Upgrade_Logs` helps you understand what happened during the upgrade and resolve issues with confidence.
 
 > [!NOTE]  
 > In-place major version upgrades are supported on [automigrated servers](../migrate/automigration-single-to-flexible-postgresql.md). After a successful in-place Major Version Upgrade on an automigrated server, the username format **username@servername** will no longer be supported. Instead, you must use the standard format: **username**.
