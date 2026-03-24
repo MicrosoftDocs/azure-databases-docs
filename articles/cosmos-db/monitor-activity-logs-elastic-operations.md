@@ -1,5 +1,5 @@
 ---
-title: Activity logs for elastic operations
+title: Activity logs for elastic (split/merge) operations
 description: Learn how to use Azure Activity Log to track partition split and merge operations in Azure Cosmos DB, including throughput scaling and multi-round splits.
 author: vidatonkova
 ms.author: vidatonkova
@@ -15,7 +15,7 @@ appliesto:
   - ✅ Table
 ---
 
-# Activity logs for elastic operations
+# Activity logs for elastic (split/merge) operations
 
 ## Background
 
@@ -23,7 +23,7 @@ In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throug
 
 A partition split divides an existing physical partition into new partitions. Each new partition takes on a portion of the data and throughput capacity of the original. This process allows the container to serve a higher total throughput because each new partition adds an additional 10,000 RU/s of capacity. Azure Cosmos DB may also merge partitions to optimize the layout for best performance and data distribution.
 
-Both splitting and merging partitions can take hours to complete. It is important to have visibility into their progress. This feature allows you to track the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges) — through the Activity Log in the Azure portal.
+Both splitting and merging partitions can take hours to complete, so tracking their progress is essential. The Activity Log in the Azure portal shows the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges).
 
 For more details on how partition splits work and best practices for scaling, see [Best practices for scaling provisioned throughput](scaling-provisioned-throughput-best-practices.md).
 
@@ -66,7 +66,7 @@ The number reflects your new target throughput. This main entry contains all nes
 
 ### Nested Activity Logs
 
-**Started Status** — The Activity Log entry shows your new target throughput and the partitions that will be split to reach it. This confirms the scaling operation is underway. For this example, the new throughput is 15,000 RUs and partition "0" will be split.
+**Started Status** — The Activity Log entry shows your new target throughput and the partitions that will be split to reach it. This confirms the scaling operation is underway. For this example, the new throughput is 15,000 RU/s and partition "0" will be split.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/split-started-status.png" lightbox="media/monitor-activity-logs-elastic-operations/split-started-status.png" alt-text="Screenshot of the Started status entry for a partition split operation showing the target throughput and partitions to split.":::
 
@@ -74,13 +74,13 @@ The number reflects your new target throughput. This main entry contains all nes
 
 The breakdown below includes the values for our example and descriptions of each property.
 
-| Property | Example | Description |
-| --- | --- | --- |
-| Total Operations Required | `1` | The total number of partitions that need to split to serve the requested throughput. |
-| In Progress Operations | `1` → `0` | Partitions that are actively splitting. |
-| WaitingToBeScheduled | `0` | Partitions ready to split but temporarily blocked by another operation on the same partition. These will proceed automatically. |
-| Completed Operations | `0` → `1` | Partitions that have finished splitting and are now serving traffic at the new throughput. |
-| Failed Operations | `0` | Partitions that encountered an error. These are automatically requeued under a new operation ID and will appear as a separate operation. |
+| Property | Example Checkpoint 1 | Example Checkpoint 2 | Description |
+| --- | --- | --- | --- |
+| Total Operations Required | `1` | `1` | The total number of partitions that need to split to serve the requested throughput. |
+| In Progress Operations | `1` | `0` | Partitions that are actively splitting. |
+| WaitingToBeScheduled | `0` | `0` | Partitions ready to split but temporarily blocked by another operation on the same partition. These will proceed automatically. |
+| Completed Operations | `0` | `1` | Partitions that have finished splitting and are now serving traffic at the new throughput. |
+| Failed Operations | `0` | `0` | Partitions that encountered an error. These are automatically requeued under a new operation ID and will appear as a separate operation. |
 
 The image below shows how these properties appear in the JSON tab of the Activity Log entry in the Azure portal.
 
@@ -158,12 +158,16 @@ For this example, the Activity Log outputs results every 5 minutes. Round 1 of t
 
 The table below shows the JSON content extracted directly from the Activity Log entries. For clarity, the common JSON fields are omitted and only the status is left.
 
+**Round 1: Split**
+
 | Status | JSON Properties | |
 | --- | --- | --- |
 | Started | `{ "status": "Will split partitions 0 into different partitions" }` | |
 | In Progress | **Checkpoint 1:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | **Checkpoint 2:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
 
-Partition 0 is now complete, we move on to split Partition 2
+Partition 0 has finished splitting, as shown by the transition from an In Progress operation to a Completed Operation. Now we move on to split Partition 2.
+
+**Round 2: Split**
 
 | Status | JSON Properties | |
 | --- | --- | --- |
@@ -177,7 +181,9 @@ When you decrease the provisioned throughput of a database or container signific
 
 A merge operation combines multiple existing partitions into a single new partition. For example, if Partitions 2, 3, and 4 are merged, the result is one new Partition 5. Each new partition created by a merge is represented as one operation in the Activity Log. The merge follows the same pattern of status updates as a throughput split.
 
-Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. The migration is now complete, and your steady-state workload only needs 10,000 RU/s. Much of the data has since expired through TTL (time to live), reducing your storage from 1 TB to 10 GB. After reducing the provisioned throughput to 10,000 RU/s, you can merge the 10 partitions down to 1 and optimize your RU usage.
+Example: Suppose you scaled a container up to 100,000 RU/s for a large data migration, which required 10 physical partitions. Though 10 physical partitions can hold 500 GB of data, only 50 GB of data was ingested, and steady state RU/s needed is only 10,000 RU/s.
+
+After reducing the provisioned throughput to 10,000 RU/s, you can merge the 10 partitions down to 1 partition and optimize your RU/s usage.
 
 ### Main Activity Log
 
@@ -187,7 +193,7 @@ Once the partition merge operation has started, you'll see a main entry titled:
 
 This entry serves as the parent for all nested operations related to the merge. Use this entry for the duration of the operation to track its progress. There might be other merge-related logs linked underneath, such as "Merge the physical partitions of a SQL container", but they don't contain status information.
 
-The following example shows multiple merge-related logs under the main entry. Only the "PartitionCoalescer Merge operation for Container" entry is relevant.
+The following example shows multiple merge-related logs under the main entry. Only the **PartitionCoalescer Merge operation for Container** entry is relevant.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/merge-main-entry.png" lightbox="media/monitor-activity-logs-elastic-operations/merge-main-entry.png" alt-text="Screenshot of the main Activity Log entry for a partition merge operation showing nested merge-related logs.":::
 
@@ -201,13 +207,13 @@ The following example shows multiple merge-related logs under the main entry. On
 
 The breakdown below includes the values for our example and descriptions of each property.
 
-| Property | Example | Description |
-| --- | --- | --- |
-| Total Operations Required | `1` | The total number of partition merges needed to reach the target partition count. |
-| In Progress Operations | `1` → `0` | Merges that are actively running. |
-| WaitingToBeScheduled | `0` | Merges ready to proceed but temporarily blocked by another operation on the same partition. |
-| Completed Operations | `0` → `1` | Merges that have finished. |
-| Failed Operations | `0` | Merges that encountered an error. These are automatically requeued under a new operation ID. |
+| Property | Example Checkpoint 1 | Example Checkpoint 2 | Description |
+| --- | --- | --- | --- |
+| Total Operations Required | `1` | `1` | The total number of partition merges needed to reach the target partition count. |
+| In Progress Operations | `1` | `0` | Merges that are actively running. |
+| WaitingToBeScheduled | `0` | `0` | Merges ready to proceed but temporarily blocked by another operation on the same partition. |
+| Completed Operations | `0` | `1` | Merges that have finished. |
+| Failed Operations | `0` | `0` | Merges that encountered an error. These are automatically requeued under a new operation ID. |
 
 The image below shows how these properties appear in the JSON tab of the Activity Log entry in the Azure portal.
 

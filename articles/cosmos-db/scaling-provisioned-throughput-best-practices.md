@@ -174,6 +174,7 @@ Once the migration is over, you can lower the RU/s or enable autoscale as needed
 
 ## Next steps
 
+* [Monitor activity logs for elastic (split/merge) operations](monitor-activity-logs-elastic-operations.md)
 * [How to monitor normalized RU/s for an Azure Cosmos DB container or an account](monitor-normalized-request-units.md)
 * [Diagnose and troubleshoot "Request rate too large" (429) exceptions](troubleshoot-request-rate-too-large.md)
 * [Create Azure Cosmos DB containers and databases with autoscale throughput](provision-throughput-autoscale.md)

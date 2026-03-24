@@ -244,7 +244,7 @@ Partition merge is a long-running operation and there's no SLA on how long it ta
 
 While partition merge is running on your container, if you change container settings (TTL, indexing policy, unique keys, etc.), the ongoing merge operation will be canceled. If you increase your RU/s while a merge is running, the ongoing merge operation will be canceled and your container's RU/s will be updated with your new value. Depending on the RU/s requested, your [scale-up may be instant or take longer](scaling-provisioned-throughput-best-practices.md#step-2-calculate-the-default-maximum-throughput). If you decrease your RU/s while a merge is running, the RU/s will be instantly updated to the new RU/s. The in-progress merge will continue, with the same target partition count based on the RU/s set at the time the merge was triggered. As a best practice, it is recommended to wait until the merge operation completes before changing your container or throughput settings. 
 
-You can track whether merge is still in progress by checking the **Activity Log** and filtering for the events **Merge the physical partitions of a MongoDB collection** or **Merge the physical partitions of a SQL container**.
+You can track whether merge is still in progress by checking the [Activity Log](monitor-activity-logs-elastic-operations.md) and filtering for the events **Merge the physical partitions of a MongoDB collection** or **Merge the physical partitions of a SQL container**.
 
 ## Limitations
 
