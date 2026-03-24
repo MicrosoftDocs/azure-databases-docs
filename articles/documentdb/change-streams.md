@@ -38,9 +38,19 @@ az resource show --ids "/subscriptions/<sub id>/resourceGroups/<resource group n
 
 3. Send PATCH request to enable the feature.
 
+# [Bash](#tab/bash)
+
 ```bash
 az resource patch --ids "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>" --api-version 2024-10-01-preview --properties "{\"previewFeatures\": [ \"ChangeStreams\"]}"
 ```
+
+# [PowerShell](#tab/powershell)
+
+```powershell
+az resource patch --ids "/subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>" --api-version 2024-10-01-preview --properties '{\"previewFeatures\": [\"ChangeStreams\"]}'
+```
+
+---
 
 4. Verify result:
    - Ensure the response payload includes `"previewFeatures": ["ChangeStreams"]`.
