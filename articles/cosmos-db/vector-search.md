@@ -80,7 +80,7 @@ To enable this feature for Azure Cosmos DB for NoSQL, follow these steps:
 The registration request is autoapproved, but it might take 15 minutes to take effect.
 
 > [!NOTE]
-> If you want to use vector search on collections with [heirarchical partiton keys](hierarchical-partition-keys.md), please reach out to [our team](mailto:cosmossearch@microsoft.com) to configure your account to optimally leverage the partitioning scheme during search. 
+> If you want to use vector search on collections with [heirarchical partiton keys](hierarchical-partition-keys.md), please reach out to team at: cosmossearch@microsoft.com to configure your account to optimally leverage the partitioning scheme during search. 
 
 ## Container vector policies
 
@@ -254,7 +254,7 @@ Vector indexing and search in Azure Cosmos DB for NoSQL has some limitations.
 - [Vector indexing policy examples](how-to-manage-indexing-policy.md#vector-indexing-policy-examples)
 - Integrations:
   - [LangChain, Python](https://python.langchain.com/v0.2/docs/integrations/vectorstores/azure_cosmos_db_no_sql/)
-  - [Semantic kernel, .NET](https://github.com/microsoft/semantic-kernel/tree/main/dotnet/src/IntegrationTests/Connectors/Memory/CosmosNoSql)
+  - [Semantic kernel, .NET](https://github.com/microsoft/semantic-kernel/tree/main/dotnet/src/IntegrationTests/Connectors)
   - [Semantic kernel, Python](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb_no_sql)
 
 ## Next step
