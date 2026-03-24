@@ -49,9 +49,6 @@ You can create a read replica in a different region from your source server. Cro
 
 When you start the create replica workflow, you create a blank Azure Database for MySQL Flexible Server instance. The new server contains the data that was on the source server. The creation time depends on the amount of data on the source and the time since the last weekly full backup. The time can range from a few minutes to several hours.
 
-> [!NOTE]  
-> You create read replicas with the same server configuration as the source. You can change the replica server configuration after creation. You always create the replica server in the same resource group and subscription as the source server. If you want to create a replica server in a different resource group or a different subscription, you can [move the replica server](/azure/azure-resource-manager/management/move-resource-group-and-subscription) after creation. Keep the replica server's configuration at equal or greater values than the source to ensure the replica can keep up with the source.
-
 Learn how to [create a read replica in the Azure portal](how-to-read-replicas-portal.md).
 
 ## Connect to a replica

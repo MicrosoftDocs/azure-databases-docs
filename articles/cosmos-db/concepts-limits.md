@@ -184,6 +184,13 @@ Azure Cosmos DB automatically backs up your data at regular intervals. For detai
 
 Here are the limits per account.
 
+### Role-based access control
+
+| Resource | Default limit |
+|---|---|
+| Maximum custom role definitions per account (native data plane RBAC) | 100 |
+| Maximum role assignments per account (native data plane RBAC) | 2,000 |
+
 ### Provisioned throughput
 
 | Resource | Limit |
