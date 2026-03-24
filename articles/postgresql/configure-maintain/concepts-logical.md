@@ -325,12 +325,15 @@ SELECT * FROM pg_replication_slots;
 [Set alerts](../monitor/../monitor/how-to-alert-on-metrics.md) on the **Maximum Used Transaction IDs** and **Storage Used**  metrics to notify you when the values increase past normal thresholds.
 
 
+
 ## Limitations
 
 - **Logical replication** limitations apply as documented [here](https://www.postgresql.org/docs/current/logical-replication-restrictions.html).
 
-- **Slots and HA failover** - When using [high-availability (HA)](/azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json) enabled servers with Azure Database for PostgreSQL, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
+- **Slots and HA failover** - In PostgreSQL 16 and earlier When using [high-availability (HA)](/azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json) enabled servers with Azure Database for PostgreSQL, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension and configure supporting settings such as `hot_standby_feedback = on`. For more information on enabling this extension, please refer to the [documentation](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 
+> [!NOTE]  
+> For PostgreSQL 17 and above versions, slot synchronization is supported natively. If you enable the correct PostgreSQL configurations (`sync_replication_slots`, `hot_standby_feedback`), logical replication slots are preserved automatically after failover, and no extension is required.
 
 > [!IMPORTANT]  
 > You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. Suppose the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), in that case, the Azure Database for PostgreSQL flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
