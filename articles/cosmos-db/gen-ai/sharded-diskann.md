@@ -33,7 +33,7 @@ Sharded DiskANN is useful in the following scenarios:
 - **Category-Specific Searches.** Sharded DiskANN enables efficient category-specific vector search by partitioning the index based on a property that defines a category of your data. Then vector searches can be executed exclusively for that category. 
 
 > [!NOTE]
-> If you want to use vector search on collections with [heirarchical partiton keys](../hierarchical-partition-keys.md), please reach out to [our team](mailto:cosmossearch@microsoft.com) to configure your account to use it optimally.
+> If you want to use vector search on collections with [heirarchical partiton keys](../hierarchical-partition-keys.md), please reach out to team at: cosmossearch@microsoft.com to configure your account to use it optimally.
 
 ## How to use Sharded DiskANN
 ### Use DiskANN without sharding
