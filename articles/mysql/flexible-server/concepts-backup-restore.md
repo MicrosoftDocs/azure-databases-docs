@@ -145,7 +145,7 @@ The estimated time of recovery depends on several factors including the database
 
 ## Geo-restore
 
-You can restore a server to its [geo-paired region](overview.md#azure-regions) where the service is available if you have configured your server for geo-redundant backups or any other Azure supported region where Azure Database for MySQL Flexible Server is available. Ability to restore to any non-paired Azure supported region (except `Brazil South`, `USGov Virginia` and `West US 3)` is known as "Universal Geo-restore".
+If you have configured your server to use geo-redundant backups, you can restore it to its [geo-paired region](overview.md#azure-regions), or any other Azure supported region where Azure Database for MySQL Flexible Server is available (except `Brazil South`, `USGov Virginia` and `West US 3`). The ability to restore a geo-redundant backup to any region is known as "Universal Geo-restore".
 
 Geo-restore is the default recovery option when your server is unavailable because of an incident in the region where the server is hosted. If a large-scale incident in a region results in unavailability of your database application, you can restore a server from the geo-redundant backups to a server in any other region. Geo-restore utilizes the most recent backup of the server. There's a delay between when a backup is taken and when it's replicated to different region. This delay can be up to an hour, so if a disaster occurs there can be up to one hour data loss.
 
