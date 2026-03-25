@@ -25,7 +25,7 @@ When you deploy a server with zone-redundant high availability, Azure creates tw
 - A primary server in one availability zone.
 - A standby replica server in another availability zone of the same Azure region. The standby replica server has the same configuration as the primary server, including the compute tier, compute size, storage size, and network configuration.
 
-You can choose the availability zone for both the primary server and the standby replica. Placing the standby database servers and standby applications in the same zone reduces latency. It also helps you prepare for disaster recovery situations and zone down scenarios.
+You can choose the availability zone for both the primary server and the standby replica. Placing the standby database servers and standby applications in different zones helps you prepare for disaster recovery situations and zone down scenarios.
 
 :::image type="content" source="media/concepts-high-availability/mysql-overview-same-zone-ha.png" alt-text="Diagram that shows the architecture for local-redundant high-availability." lightbox="media/concepts-high-availability/mysql-overview-same-zone-ha.png":::
 
