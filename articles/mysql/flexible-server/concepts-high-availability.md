@@ -72,6 +72,33 @@ The primary database server automatically backs up both snapshots and log backup
 > - The standby server isn't available for read or write operations. It's a passive standby to enable fast failover.
 > - Always use a fully qualified domain name (FQDN) to connect to your primary server. Avoid using an IP address to connect. If a failover occurs, after the primary and standby server roles are switched, a DNS A record might change. That change prevents the application from connecting to the new primary server if an IP address is used in the connection string.
 
+## Migrate from an existing server to a zone-redundant server
+
+If you originally provisioned your Azure Database for MySQL server as a non-HA server, you can simply enable it for same-zone HA architecture. However, if you want to enable it for zone-redundant HA architecture, then you need to create a new server with your desired configuration and migrate to it, by following these steps:
+
+1. Create a new server with zone-redundant high availability enabled, by following the instructions for your preferred deployment tool:
+
+    - Azure portal: [Manage zone redundant high availability in Azure Database for MySQL with the Azure portal](./how-to-configure-high-availability.md#enable-high-availability-during-server-creation)
+    - Azure CLI: [Manage zone redundant high-availability in Azure Database for MySQL with Azure CLI](./how-to-configure-high-availability-cli.md#enable-high-availability-during-server-creation)
+
+1. Migrate your workload to the new server, following one of these approaches. Depending on the migration approach, downtime might be required.
+
+    - **Offline migration approaches:** If your application can afford some downtime, offline migrations are always the preferred choice, as they're simple and easy to execute. With an offline migration, the source server is taken offline, and a dump and restores of the databases are performed on the target server. This option will require the most downtime. The duration of the downtime is determined by the time it takes to perform the restoration on the target server.
+
+        - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
+        
+            Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn’t support availability zones to another that supports availability zones.
+
+        - **Open-source tools:** You can migrate offline with open-source tools, such as **MySQL Workbench**, **mydumper/myloader**, or **mysqldump** to backup and restore the database. For information on how to use these tools, see [Options for migrating Azure Database for  MySQL - Single Server to Flexible Server](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/options-for-migrating-azure-database-for-mysql-single-server-to/ba-p/2674062). Although the tutorial outlines steps for migrating from Azure MySQL Single Server to Flexible Server, you can use the same procedure for migrating data from one Azure Database for MySQL Flexible Server that doesn’t support availability zones to another that supports availability zones.
+
+    - **Online migration approaches:** Online migrations minimize application minimal downtime. The source server allows updates, and the migration solution replicates the ongoing changes between the source and target server along with the initial dump and restore on the target. However, these approaches are more complex to implement than an offline migration.
+
+        - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
+        
+            Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn’t support availability zones to another that supports availability zones.
+
+        - **Open-source tools:** You can use a combination of open-source tools such as **mydumper/myloader** together with [Data-in replication](./concepts-data-in-replication.md)
+
 ## Failover process
 
 During the failover process in Azure Database for MySQL, the system automatically switches from the primary server to the standby replica. This switch ensures continuity and minimizes downtime. When the system detects a failure, it promotes the standby replica to become the new primary server. The system applies the binary log files from the original primary server to the standby replica. This process synchronizes the standby replica with the last committed transaction and ensures no data loss. This seamless transition helps maintain high availability and reliability of the database service.
