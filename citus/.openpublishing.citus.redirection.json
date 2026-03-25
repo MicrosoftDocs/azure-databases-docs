@@ -1,0 +1,9 @@
+{
+  "redirections": [
+    {
+    "source_path": "/postgresql/index",
+    "redirect_url": "/postgresql/citus/",
+    "redirect_document_id": false
+    }
+  ]
+}

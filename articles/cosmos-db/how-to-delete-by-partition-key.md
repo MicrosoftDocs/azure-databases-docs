@@ -99,13 +99,23 @@ CosmosItemResponse<?> deleteResponse = container.deleteAllItemsByPartitionKey(
 
 #### [Python](#tab/python-example)
 
-To delete items by partition key, use [beta-version 4.4.0b1](https://pypi.org/project/azure-cosmos/4.4.0b1/) or higher of the Azure Cosmos DB Python SDK. The delete by partition key API is marked as beta.
-
+To delete items by partition key, use [4.4.0](https://pypi.org/project/azure-cosmos/4.4.0/) or higher of the Azure Cosmos DB Python SDK.
 ```python
 # Suppose our container is partitioned by tenantId, and we want to delete all the data for a particular tenant Contoso
 
 # Delete by logical partition key
 container.delete_all_items_by_partition_key("Contoso")
+
+```
+#### [Node.js](#tab/javascript-example)
+
+To delete items by partition key, use [4.8.0](https://www.npmjs.com/package/@azure/cosmos/v/4.8.0) or higher of the Azure Cosmos DB Node.js SDK.
+
+```javascript
+//Suppose our container is partitioned by tenantId, and we want to delete all the data for a particular tenant Contoso
+
+//Delete by logical partition key
+container.deleteAllItemsForPartitionKey("Contoso");
 
 ```
 
