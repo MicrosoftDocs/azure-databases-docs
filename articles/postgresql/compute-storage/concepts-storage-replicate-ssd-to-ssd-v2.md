@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Choose **Premium SSD v2** for the **Storage type** Field.
 
-   :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-ssdv2.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-ssdv2.png":::":::
+   :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png":::":::
 
 5.  Once all the replica server is configured to your needs, select **Review + create**.
 
@@ -50,7 +50,7 @@ Using the [Azure portal](https://portal.azure.com/):
    
 8. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure Database for PostgreSQL flexible server, and start validate your **Storage type**.
 
-    :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/validate-ssdv2.png" alt-text="Screenshot that shows new server created using premium ssd v2." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/validate-ssdv2.png":::
+    :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png" alt-text="Screenshot that shows new server created using premium ssd v2." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png":::
 
 9. Select **Replication** and click  **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting**  and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
 
@@ -65,6 +65,5 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Related content
 
-- [Migrate SSD to SSDv2 using restore](concepts-storage-replicate-ssd-ssd-v2.md).
 - [Restore to paired region (geo-restore)](../backup-restore/how-to-restore-paired-region.md).
 - [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md).
