@@ -38,7 +38,7 @@ Read replicas are primarily designed for scenarios where offloading queries is b
 
 ## Create a replica
 
-A primary server for an Azure Database for PostgreSQL flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
+A primary server for an Azure Database for PostgreSQL flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL is available. The capability to create replicas now extends to some Azure regions in sovereign clouds. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of sovereign cloud regions where you can create replicas.
 
 When you start the create replica workflow, a blank Azure Database for PostgreSQL flexible server instance is created. The new server is filled with the data on the primary server. For the creation of replicas in the same region, a snapshot approach is used. Therefore, the time of creation is independent of the size of the data. Geo-replicas are created using the base backup of the primary instance, which is then transmitted over the network; therefore, the creation time might range from minutes to several hours, depending on the primary size.
 
@@ -176,7 +176,7 @@ This section summarizes considerations about the read replica feature. The follo
 
 ### New replicas
 
-A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica. You can't create a replica of another read replica, that is, cascading replication isn't supported.
+A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica.
 
 ### Resource move
 

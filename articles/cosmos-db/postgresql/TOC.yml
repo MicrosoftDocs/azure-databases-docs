@@ -5,6 +5,8 @@
   items:
     - name: What is Azure Cosmos DB for PostgreSQL?
       href: introduction.md
+    - name: Migrate to Azure Database for PostgreSQL with Elastic Cluster
+      href: migrate-postgresql-elastic-cluster.md
     - name: Product updates
       href: product-updates.md
 - name: Quickstart

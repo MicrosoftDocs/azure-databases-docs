@@ -344,6 +344,8 @@
           href: configure-maintain/how-to-enable-deletion-protection.md
         - name: Monitor high availability
           href: high-availability/how-to-monitor-high-availability.md
+        - name: Reliability in Azure Database for PostgreSQL
+          href: /azure/reliability/reliability-database-postgresql?toc=/azure/postgresql/toc.json
     - name: Read replicas
       items:
         - name: Overview
