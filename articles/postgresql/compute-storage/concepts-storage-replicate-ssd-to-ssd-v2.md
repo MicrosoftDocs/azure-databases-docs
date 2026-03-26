@@ -37,7 +37,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Choose **Premium SSD v2** for the **Storage type** Field.
 
-   :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png":::":::
+   :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png":::"
 
 5.  Once all the replica server is configured to your needs, select **Review + create**.
 
@@ -48,19 +48,23 @@ Using the [Azure portal](https://portal.azure.com/):
 7. A new deployment is launched to create your new Azure Database for PostgreSQL flexible server with Premium SSD v2 storage type with the latest data using replication.
 
    
-8. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure Database for PostgreSQL flexible server, and start validate your **Storage type**.
+8. When the deployment completes, Go to newly created Premium SSDv2 server and can select **Compute +Storage** button and validate your **Storage type**.
 
     :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png" alt-text="Screenshot that shows new server created using premium ssd v2." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png":::
 
-9. Select **Replication** and click  **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting**  and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
+9.  Select **Replication** and click  **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting**  and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
 
     :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png" alt-text="Screenshot that shows promoting new server ssd v2 server as standalone." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png":::
 
 
-10. Once the promotion is complete, you can repoint your virtual endpoints from the Premium SSD–based server to the new Premium SSD v2 server and safely decommission the original server
+10. Once the promotion is complete, you can repoint your virtual endpoints from the old Premium SSD flexible server to the new Premium SSD v2 server.
+1.
 
  :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/recreate-virtual-endpoint.png" alt-text="Screenshot that shows new server  using virtual endpoint." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/recreate-virtual-endpoint.png":::
 
+
+> [!NOTE]
+> - Once the migration is complete, you can stop the original server, allow the required backup retention to be satisfied on the new server, and then safely decommission the old server.
 ---
 
 ## Related content
