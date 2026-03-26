@@ -83,11 +83,11 @@ The migration approach centers on creating a new data disk on Flex by taking a s
 
 The tool along with the popup reminder will be available through the Migration tab in Azure Cosmos DB for PostgreSQL starting April 13<sup>th</sup>.
 
-![Screenshot of an Azure Cosmos DB for PostgreSQL Cluster dashboard with various information and options such as cluster properties, access policies, metrics, and management features.](media/migrate-postgresql-elastic-cluster/action-required.png)
+[![Screenshot of an Azure Cosmos DB for PostgreSQL Cluster dashboard with various information and options such as cluster properties, access policies, metrics, and management features.](media/migrate-postgresql-elastic-cluster/action-required.png)](media/migrate-postgresql-elastic-cluster/action-required.png#lightbox)
 
 From there, the migration can be initiated by providing simple details for the target server
 
-![Screenshot of a migration configuration page for Azure Cosmos DB for PostgreSQL, featuring various settings for the migration process.](media/migrate-postgresql-elastic-cluster/configuration.png)
+[![Screenshot of a migration configuration page for Azure Cosmos DB for PostgreSQL, featuring various settings for the migration process.](media/migrate-postgresql-elastic-cluster/configuration.png)](media/migrate-postgresql-elastic-cluster/configuration.png#lightbox)
 
 ### SKU Mapping
 
@@ -136,7 +136,7 @@ The Azure Cosmos DB for PostgreSQL will be matched to the target Azure Database 
 
 1. Migration completes: Portal updates the success/failure when complete.CPG Cluster will be stopped and Elastic Cluster becomes the new writable target where the customer switches over (new connection string, recreate PEC if needed). 
 
-![Diagram illustrating the migration process from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL Elastic Cluster.](media/migrate-postgresql-elastic-cluster/diagram.png)
+[![Diagram illustrating the migration process from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL Elastic Cluster.](media/migrate-postgresql-elastic-cluster/diagram.png)](media/migrate-postgresql-elastic-cluster/diagram.png#lightbox)
 
 ### Average migration timing
 
