@@ -5,7 +5,7 @@ author: seesharprun
 ms.author: sidandrews
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 10/14/2025
+ms.date: 03/25/2026
 ms.custom:
   - sfi-ropc-nochange
 ai-usage: ai-generated
@@ -45,7 +45,8 @@ Create a new Python project and set up a virtual environment in your current dir
 
     ```console
     python -m venv venv
-    venv\Scripts\activate
+    source venv/bin/activate  # On macOS/Linux
+    venv\Scripts\activate     # On Windows
     ```
 
 ### Install the client library

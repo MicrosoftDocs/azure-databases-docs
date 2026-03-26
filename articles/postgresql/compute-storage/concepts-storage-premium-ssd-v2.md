@@ -61,6 +61,8 @@ Australia Central 2*, Australia East, Australia South East, Brazil South*, Canad
 
 Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
+Customer Managed Keys is available in following regions Central India, Central US, East Asia, East US, East US2, France Central, Japan West, New Zealand North, North Europe, South Central US, Southeast Asia, West Europe, West US 2.
+
 > [!NOTE]  
 >  Geo‑redundant backups are currently unavailable in the region marked with* because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 

@@ -5,7 +5,7 @@ author: seesharprun
 ms.author: sidandrews
 ms.topic: quickstart-sdk
 ms.devlang: golang
-ms.date: 10/14/2025
+ms.date: 03/25/2026
 ms.custom:
   - sfi-ropc-nochange
 ai-usage: ai-generated
@@ -23,7 +23,7 @@ In this quickstart, you create a basic Azure DocumentDB application using Go. Az
 
 [!INCLUDE[Prerequisites - Developer Quickstart](includes/prerequisite-quickstart-dev.md)]
 
-- Golang 1.18 or later
+- Go 1.18 or later
 
 ## Create an Azure DocumentDB cluster
 
