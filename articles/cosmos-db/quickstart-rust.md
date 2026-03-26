@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: rust
 ms.topic: quickstart-sdk
-ms.date: 07/03/2025
+ms.date: 03/25/2026
 ms.custom: devx-track-rust
 appliesto:
   - ✅ NoSQL
@@ -136,15 +136,13 @@ let item = Item {
 };
 
 let partition_key = PartitionKey::from(item.category.clone());
-        
-let partition_key = PartitionKey::from(item.category.clone());
 
 container.upsert_item(partition_key, item.clone(), None).await?;
 ```
 
 ### Read an item
 
-Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.ReadItem` to efficiently retrieve the specific item.
+Perform a point read operation by using both the unique identifier (`id`) and partition key fields. Use `container.read_item` to efficiently retrieve the specific item.
 
 ```rust
 let item_id = "aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb";
@@ -157,7 +155,7 @@ let item: Item = response.into_json_body().await?;
 
 ### Query items
 
-Perform a query over multiple items in a container using `container.NewQueryItemsPager`. Find all items within a specified category using this parameterized query:
+Perform a query over multiple items in a container using `container.query_items`. Find all items within a specified category using this parameterized query:
 
 ```nosql
 SELECT * FROM products p WHERE p.category = @category
