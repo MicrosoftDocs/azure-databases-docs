@@ -54,17 +54,14 @@ Using the [Azure portal](https://portal.azure.com/):
 
 9. Select **Replication** and click  **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting**  and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
 
-### [CLI](#tab/cli-restore-custom-point)
+ :::image type="content" source="./media/concepts-storage-replicate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows promoting new server ssd v2 server as standalone." lightbox="./media/concepts-storage-replicate-ssd-to-ssd-v2/promote-primary.png":::
 
-You can restore a backup of a server to the latest restore point via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
 
-```azurecli-interactive
-az postgres flexible-server restore \
-  --resource-group <resource_group> \
-  --name <server> \
-  --source-server <source_server> \
-  --restore-time 2025-04-26T02:10:00+00:00
-  --storage-type PremiumV2_LRS
+10. Once the promotion is complete, you can repoint your virtual endpoints from the Premium SSD–based server to the new Premium SSD v2 server and safely decommission the original server
+
+ :::image type="content" source="./media/concepts-storage-replicate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows new server  using virtual endpoint." lightbox="./media/concepts-storage-replicate-ssd-to-ssd-v2/recreate-virtual-endpoint.png":::
+
+
 ```
 
 > [!NOTE]
@@ -77,7 +74,7 @@ az postgres flexible-server restore \
 
 ## Related content
 
-- [Restore to latest restore point](../backup-restore/how-to-restore-latest-restore-point.md).
-- [Restore full backup (fast restore)](../backup-restore/how-to-restore-full-backup.md).
+- [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md).
+- [Migrate SSD to SSDv2 using restore](concepts-storage-replicate-ssd-to-ssd-v2.md).
 - [Restore to paired region (geo-restore)](../backup-restore/how-to-restore-paired-region.md).
 - [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md).
