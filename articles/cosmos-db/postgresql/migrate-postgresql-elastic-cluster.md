@@ -138,8 +138,6 @@ The Azure Cosmos DB for PostgreSQL will be matched to the target Azure Database 
 
 1. Migration completes: the portal updates the success/failure status when complete. CPG Cluster is stopped and Elastic Cluster becomes the new writable target where the customer switches over (new connection string, recreate PEC if needed).
 
-[![Diagram illustrating the migration process from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL Elastic Cluster.](media/migrate-postgresql-elastic-cluster/diagram.png)](media/migrate-postgresql-elastic-cluster/diagram.png#lightbox)
-
 ### Average migration timing
 
 In most cases, the end-to-end migration completes in **under 10 minutes**. The **write-lock (read-only) window**—from the point the source cluster is switched to read-only until the target Elastic Cluster is writable—typically averages **~5–8 minutes**, making it suitable to run within a standard scheduled maintenance window.
