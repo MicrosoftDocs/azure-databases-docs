@@ -16,7 +16,7 @@ This article describes how to identify and diagnose the root cause of slow-runni
 
 ## Identifying the slow query
 
-You could identify the slow query using `pg_stat_statments`. Below is the query which would help us identify the top 5 slow queries.
+You could identify the slow query using `pg_stat_statments`. The following query helps us identify the top five slowest operations.
 
 ```sql
 SELECT userid::regrole, dbid, query, mean_exec_time
@@ -53,7 +53,7 @@ ORDER BY NOW() - query_start  DESC;
 
 :::image type="content" source="./media/how-to-identify-slow-queries-elastic-clusters/long-running-queries.png" alt-text="Screenshot of long-running queries result." lightbox="./media/how-to-identify-slow-queries-elastic-clusters/long-running-queries.png":::
 
-This tells us there is one query on the server which has been running slow and taking longer execution times.
+This result tells us there's one query on the server that has been running slow and taking longer execution times.
 
 The `global_pid` associated to the long running query is the same, which means the same query is running the longest on all the worker nodes.
 
@@ -63,7 +63,7 @@ The `global_pid` associated to the long running query is the same, which means t
    2.	The reference tables
    3.	The colocation tables
 
-If any tables are regular, make them either reference tables or colocation tables.  You can find that information using the query below.
+If any tables are regular, make them either reference tables or colocation tables. You can find that information using the following query.
 
 ```sql
 SELECT table_name,
@@ -75,14 +75,14 @@ FROM citus_tables
 ORDER BY table_name;
 ```
 
-What to look for in the above query:
+What to look for in the preceding query:
 
    -	distribution_type = reference → broadcast joins
    -	Missing or wrong distribution_column
 
 ### Solution:
 
-Change the regular table to a reference or colocation table, this enables reducing the network latency going back and forth the different nodes.
+Changing the regular table to a reference or colocation table reduces network activity between nodes.
 
 ```sql
 SELECT create_reference_table('products');
@@ -90,7 +90,7 @@ SELECT create_reference_table('products');
 
 ## Detect Non-Colocated tables used in joins:
 
-One of the topmost causes for slow queries could be non-colocated table. Here is the query below to identify any such non-colocated tables.
+One of the topmost causes for slow queries could be non-colocated table. Here's a query to identify non-colocated tables.
 
 ```sql
 SELECT a.table_name AS table_a,
@@ -103,24 +103,25 @@ JOIN citus_tables b
 WHERE a.colocation_id <> b.colocation_id;
 ```
 
-What to look for in the above query:
+What to look for in the preceding query:
 
-   1.	If your tables from query join are listed here, which means they are not collocated causing the below.
+   1.	If your tables are listed here, you should consider colocating them. Colocating tables prevents:
       a.	Data reshuffling across nodes
       b.	Network overhead
       c.	Temp file spills
 
-You can identify this from query plans of the query. If you notice the nodes below:
+You can also identify these symptoms by reviewing the execution plans of your query. Pay attention to these action types:
 
    1.	Distributed Repartition Join
    2.	Distributed Subplan/Union
 
 ### Solution:
-   •	Distribute tables on the join key.
-   •	Make sure the distributed table and reference table are joined correctly
-   •	Index the join keys
-   •	Fix colocation of the table by pointing the table to the right distribution key.
-    o	For which you might need to undistributed the table and then distribute the table using the right distribution key.
+
+ - Distribute tables on the join key.
+- Make sure the distributed table and reference table are joined correctly
+- Index the join keys
+- Fix colocation of the table by pointing the table to the right distribution key.
+   - You may need to recombine the table and then distribute the table using a more appropriate distribution key.
 
 ```sql
 SELECT undistribute_table('orders');
@@ -129,7 +130,7 @@ SELECT create_distributed_table('orders', 'customer_id');
 
 ## Check for the Skewness of data across shards/nodes
 
-The below query provides which shard/Node the query is running longer on and shard size.
+The following query identifies which shards/nodes contain long-running queries, and their shard sizes.
 
 ```sql
 SELECT
@@ -147,11 +148,11 @@ JOIN citus_stat_activity ON citus_stat_activity.query LIKE '%' || cs.shardid || 
 ORDER BY duration DESC;
 ```
 
-From the output we see the queries are accessing 4 specific shards in each of the worker nodes. 
+We can see from the results that the queries are accessing four specific shards in each of the worker nodes. 
 
-If you see the data sitting on just few worker nodes and the remaining worker nodes have no data. Then this points out to distribution key selection issue.
+If you see the majority of data on a subset of worker nodes, then this indicates your distribution key selection needs further consideration.
 
-You can further troubleshoot but get into the details of the distributed table by shards using the below query
+You can troubleshoot further by reviewing details of the distributed table by shards using the following query:
 
 ```sql
 SELECT * FROM run_command_on_shards('orders', $$ SELECT json_build_object( 'shard_name', '%1$s', 'size', pg_size_pretty(pg_table_size('%1$s')) ); $$); 
@@ -159,13 +160,13 @@ SELECT * FROM run_command_on_shards('orders', $$ SELECT json_build_object( 'shar
 
 ### Solution:
 
-Based on the above output, if the data is skewed on few shards and not on all, that might point us to the distribution key causing the skewness in which case rearchitecting the distribution key would be a good solution. 
+Based on the preceding output, if the data is skewed to a few shards, this suggests that the distribution key is the cause of the skewness. In this case, rearchitecting the distribution key would be recommended. 
 
-Here is a talk on choosing the right shard key. [Efficiently distributing Postgres with Citus – How to choose the right shard key? | Citus Con 2022](https://www.youtube.com/watch?v=t0EXeWk3lAk)
+Here's a related talk on choosing the right shard key. [Efficiently distributing Postgres with Citus – How to choose the right shard key? | Citus Con 2022](https://www.youtube.com/watch?v=t0EXeWk3lAk)
 
 ## Diagnose any lock contention
 
-Check for any locking and blocking happening using the below query.
+Check for any locking and blocking occurring using the following query.
 
 ```sql
 SELECT
@@ -189,7 +190,7 @@ ORDER BY blocked_duration DESC NULLS LAST;
 ```
 
 ### Solution:
-Terminate the blocking_gpid using the command below.
+Terminate the blocking_gpid using the following command:
 
 ```sql
 SELECT pg_terminate_backend(blocking_gpid);
@@ -197,7 +198,7 @@ SELECT pg_terminate_backend(blocking_gpid);
 
 ## Check for the Bloat for the tables involved in the slow query
 
-Get the stats details by executing the below query from the customer server to see the vacuum and analyze statistics of the tables involved in the slow query.
+To see the vacuum statistics details, execute the following query:
 
 ```sql
 SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM ( 
@@ -205,23 +206,23 @@ SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
 ) t $$) ;
 ```
 
-This query provides the output in the below format. The result column is a json column with all the information of the stats related to the table.
+This query provides the output in the following format. The result contains a json column with all the statistics information for the table.
 
 :::image type="content" source="./media/how-to-identify-slow-queries-elastic-clusters/bloat.png" alt-text="Screenshot of bloat check query result." lightbox="./media/how-to-identify-slow-queries-elastic-clusters/bloat.png":::
  
 ### Solution:
 
-If you observe the `n_dead_tup/n_live_tup` proceed to run `VACUUM` on the table.
+If you observe the `n_dead_tup/n_live_tup` is high, proceed to run `VACUUM` on the table.
 
 ## Check the query plan for missing indexes
 
-Get the query plan of the query by running the below
+Get the query plan of the query by running the following query:
 
 ```sql
 EXPLAIN (ANALYZE,BUFFERS) <query>;
 ```
 
-Look for sequential scan nodes in the query plan and the number of row processed, if number of rows are huge taking up the maximum execution time.
+Look for sequential scan nodes in the query plan and the number of rows processed, if number of rows are high and taking up the maximum execution time, you should consider adding indexes.
 
 ### Solution:
 
@@ -229,7 +230,7 @@ Add appropriate indexes to the table to improve the query performance.
 
 ## Check for Cache/IO efficiency
 
-To check for cache hit rate using the below query.
+To check for cache hit rate using the following query.
 
 ```sql
 SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
@@ -247,9 +248,7 @@ SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
 ) t $$ );
 ```
 
-### Solution:
-   •	All the above solutions should fix this too
-   •	This might happen when server restarted or scaled recently; in which cases waiting out would help.
+ - Note: this might happen when your server is restarted or scaled; in which cases waiting for your system to stabilize would help.
 
 ## Related content
 
@@ -257,4 +256,3 @@ SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure Database for PostgreSQL elastic clusters](how-to-autovacuum-tuning-elastic-clusters.md).
