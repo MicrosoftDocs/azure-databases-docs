@@ -26,18 +26,18 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Settings** go to **Replication** and click the **Create replica** button. 
 
-        :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/create-replica.png" alt-text="Screenshot showing the Replication page." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/create-replica.png":::
+     :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/create-replica.png" alt-text="Screenshot showing the Replication page." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/create-replica.png":::
 
    
 3.  Provide Server name and Select **Configure server**.
 
 
-        :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/configure-server-page.png"  alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/configure-server-page.png":::
+     :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/configure-server-page.png"  alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/configure-server-page.png":::
 
 
 4. Choose **Premium SSD v2** for the **Storage type** Field.
 
-       :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png":::
+     :::image type="content" source="media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png" alt-text="Screenshot showing the Premium SSDv2 storage type button selected." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/premium-storage.png":::
 
 5.  Once the replica server is configured to your needs, select **Review + create**.
 
@@ -51,13 +51,13 @@ Using the [Azure portal](https://portal.azure.com/):
 7. When the deployment completes, Go to newly created Premium SSDv2 server and select **Compute +Storage** button and validate your **Storage type**.
 
 
-        :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png" alt-text="Screenshot that shows new server created using new storage type." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png":::
+     :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png" alt-text="Screenshot that shows new server created using new storage type." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/validate-storage.png":::
 
 
 8.  Select **Replication** and click  **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting**  and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
 
 
-        :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png" alt-text="Screenshot that shows promoting new server ssd v2 server as standalone." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png":::
+     :::image type="content" source="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png" alt-text="Screenshot that shows promoting new server ssd v2 server as standalone." lightbox="./media/concepts-storage-replicate-ssd-ssd-v2/promote-primary.png":::
 
 
 10. Optionally, Once the promotion is complete, you can repoint your virtual endpoints from Premium SSD flexible server to the new Premium SSD v2 server.
