@@ -68,14 +68,14 @@ Azure Database for PostgreSQL – Elastic Clusters is the next evolution of Azur
 | **Terraform** | Yes | Yes | Parity. |
 | **Storage autogrow** | No | Planned (GA+) | Elastic advantage. |
 | **Premium SSD v2 (80K IOPS/node)** | No | Planned (GA+) | Elastic advantage. |
-| **Remove node** | No\* | No | Parity |
+| **Remove node** | No¹ | No | Parity |
 | **Long-term retention** | No | Roadmap (GA+) | Elastic advantage. |
 | **Query store** | No | Roadmap (GA+) | Elastic advantage. |
 | **Management & integration** | Part of Azure Cosmos DB portal/experience; ties to Cosmos ecosystem | Integrated into Azure Database for PostgreSQL Flexible Server (e.g., backups, metrics, Entra ID) | Different portals; Elastic leverages Flexible Server features. |
 | **Pricing model** | vCore-based; separate for coordinator/workers | vCore, storage, IOPS (no extra cost for Citus) | Elastic advantage (simpler model). |
 | **Networking** | Public access (firewall rules), private access (Private Link), or both | Public access (allowed IP addresses); private access via Private Link on underlying Flexible Server nodes | Parity (similar options). |
 
-\* Remove node is available through rebalancing to move data off a node, but the node itself isn't automatically deprovisioned.
+¹ Remove node is available through rebalancing to move data off a node, but the node itself isn't automatically deprovisioned.
 
 ## Migration tool
 
