@@ -73,7 +73,7 @@ Azure Database for PostgreSQL provides up to 100 percent of your provisioned ser
 
 For example, if you have provisioned a server with 250 gibibytes (GiB) of storage, then you have 250 GiB of backup storage capacity at no more charge. If the daily backup usage is 25 GiB, then you can have up to 10 days of free backup storage. Backup storage consumption that exceeds 250 GiB is charged as defined in the [pricing model](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
 
-If you configured your server with geo-redundant backup, the backup data is also copied to the Azure paired region. So, your backup size will be twice the size of the local backup copy. Billing is calculated as *( (2 x local backup size) - provisioned storage size ) x price @ gigabytes per month*. 
+If you configured your server with geo-redundant backup, the backup data is also copied to the Azure paired region. So, your backup size will be twice the size of the local backup copy. Billing is calculated as *((2 x local backup size) - provisioned storage size) x price @ gigabytes per month*. 
 
 You can use the [Backup Storage Used](../concepts-monitoring.md) metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
 
@@ -144,7 +144,7 @@ For more information, see the [Restore to paired region (geo-restore)](how-to-re
 > With the primary region down, you can still geo-restore the source server to the geo-paired region. For more information, see the [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
 > You should use Geo-replicas as your disaster recovery (DR) strategy if you need to configure DR to any region, or if the primary region doesn't support Geo-redundant backups.
 > 
-> We recommend using Virtual Endpoints for your mission critical workloads, as it  provide a stable connection point for applications, ensuring minimal disruption. If you have a Virtual Endpoint mapped to your primary server, remove the virtual endpoint from the primary server, once removed add the same virtual endpoint to the newly created server. This ensures application connectivity remains consistent and minimizes downtime. For more information, see the [using virtual endpoints for consistent hostname during PITR](../read-replica/../read-replica/../read-replica/concepts-read-replicas-virtual-endpoints.md#using-virtual-endpoints-for-consistent-hostname-during-point-in-time-recovery-pitr-or-snapshot-restore)
+> We recommend using Virtual Endpoints for your mission critical workloads, as it provides a stable connection point for applications, ensuring minimal disruption. If you have a Virtual Endpoint mapped to your primary server, remove the virtual endpoint from the primary server, once removed add the same virtual endpoint to the newly created server. This ensures application connectivity remains consistent and minimizes downtime. For more information, see the [using virtual endpoints for consistent hostname during PITR](../read-replica/../read-replica/../read-replica/concepts-read-replicas-virtual-endpoints.md#using-virtual-endpoints-for-consistent-hostname-during-point-in-time-recovery-pitr-or-snapshot-restore)
 ## Restore and networking
 
 ### Point-in-time recovery
@@ -329,7 +329,7 @@ For more information about performing a long term backup, visit the [how-to guid
 
 * **How long does a PITR take? Why is my restore taking so much time?**
   
-    The data restore operation from a snapshot doesn't depend on the size of data. But the recovery process timing that applies the logs (transaction activities to replay) might vary, depending on the previous backup of the requested date/time and the number of logs to process. This applies to both restoring within the same zone or and restoring data to a different zone. 
+    The data restore operation from a snapshot doesn't depend on the size of data. But the recovery process timing that applies the logs (transaction activities to replay) might vary, depending on the previous backup of the requested date/time and the number of logs to process. This applies to both restoring within the same zone and restoring data to a different zone. 
  
 * **If I restore my HA-enabled server, is the restore server automatically configured with high availability?**
   
