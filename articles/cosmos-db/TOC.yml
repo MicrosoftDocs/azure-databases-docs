@@ -231,6 +231,8 @@
               href: hierarchical-partition-keys.md?context=/azure/cosmos-db/context/context
             - name: Hierarchical partition keys FAQ
               href: hierarchical-partition-keys-faq.yml?context=/azure/cosmos-db/context/context
+            - name: Unlimited scale with hierarchical partition keys
+              href: hierarchical-partition-keys-unlimited-scale.md?context=/azure/cosmos-db/context/context
         - name: Change partition key
           href: change-partition-key.md
         - name: Synthetic partition keys
