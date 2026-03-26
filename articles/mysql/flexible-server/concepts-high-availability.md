@@ -12,7 +12,7 @@ ai-usage: ai-assisted
 
 # High availability in Azure Database for MySQL
 
-By using Azure Database for MySQL Flexible Server, you can configure high availability with automatic failover. This solution ensures that failures never cause loss of committed data and that the database isn't a single point of failure in your software architecture. When you configure high availability, Flexible Server automatically provisions and manages a standby Hyper-V Replica. You pay for the provisioned compute and storage for both the primary and secondary Replica. Two high-availability architectural models are available:
+By using Azure Database for MySQL Flexible Server, you can configure high availability with automatic failover. This solution ensures that failures never cause loss of committed data and that the database isn't a single point of failure in your software architecture. When you configure high availability, Flexible Server automatically provisions and manages a standby Hyper-V replica. You pay for the provisioned compute and storage for both the primary and secondary replicas. Two high-availability architectural models are available:
 
 - **Zone-redundant high availability**. This option provides complete isolation and redundancy of infrastructure across multiple availability zones. It offers the highest level of availability, but it requires you to configure application redundancy across zones. Choose zone-redundant high availability when you want to protect against any infrastructure failure in the availability zone and when latency across the availability zone is acceptable. You can enable zone-redundant high availability only when you create the server. Zone-redundant high availability is available in a [subset of Azure regions](./overview.md#azure-regions) where the region supports multiple [availability zones](/azure/reliability/availability-zones-overview) and [zone-redundant Premium file shares](/azure/storage/common/storage-redundancy#zone-redundant-storage) are available.
 
@@ -33,7 +33,7 @@ The data and log files are hosted in [zone-redundant storage (ZRS)](/azure/stora
 
 If a failover occurs:
 
-- The standby Replica activates.
+- The standby replica activates.
 - The binary log files of the primary server continue to apply to the standby server to bring it online to the last committed transaction on the primary server.
 
 Logs in ZRS are accessible even when the primary server is unavailable. This availability helps to ensure there's no loss of data. After the standby replica activates and binary logs are applied, the current standby replica server takes the role of the primary server. DNS updates so that client connections direct to the new primary when the client reconnects. The failover is fully transparent from the client application and doesn't require any action from you. The HA solution then brings back the old primary server when possible and places it as a standby.
@@ -47,7 +47,7 @@ The primary database server automatically backs up both snapshots and log backup
 When you deploy a server with local-redundant HA, you create two servers in the same zone:
 
 - A primary server
-- A standby Replica server that has the same configuration as the primary server (compute tier, compute size, storage size, and network configuration)
+- A standby replica server that has the same configuration as the primary server (compute tier, compute size, storage size, and network configuration)
 
 The standby server provides infrastructure redundancy by using a separate virtual machine (compute). This redundancy reduces failover time and network latency between the application and the database server because of colocation.
 
@@ -57,18 +57,18 @@ The data and log files are hosted in [locally redundant storage (LRS)](/azure/st
 
 If a failover occurs:
 
-- The standby Replica activates.
+- The standby replica activates.
 - The binary log files of the primary server continue to apply to the standby server to bring it online to the last committed transaction on the primary server.
 
-Logs in LRS are accessible even when the primary server is unavailable. This availability helps to ensure there's no loss of data. After the standby Replica activates and binary logs are applied, the current standby Replica takes the role of the primary server. DNS is updated to redirect connections to the new primary when the client reconnects. The failover is fully transparent from the client application and doesn't require any action from you. The HA solution then brings back the old primary server when possible and places it as a standby.
+Logs in LRS are accessible even when the primary server is unavailable. This availability helps to ensure there's no loss of data. After the standby replica activates and binary logs are applied, the current standby replica takes the role of the primary server. DNS is updated to redirect connections to the new primary when the client reconnects. The failover is fully transparent from the client application and doesn't require any action from you. The HA solution then brings back the old primary server when possible and places it as a standby.
 
-The database server name connects applications to the primary server. Standby Replica information isn't exposed for direct access. Commits and writes are acknowledged after the log files are flushed at the primary server's LRS. Because the primary and the standby Replica are in the same zone, there's less replication lag and lower latency between the application server and the database server. The local-redundant setup doesn't provide high availability when dependent infrastructures are down for the specific availability zone. There's downtime until all dependent services are back online for that availability zone.
+The database server name connects applications to the primary server. Standby replica information isn't exposed for direct access. Commits and writes are acknowledged after the log files are flushed at the primary server's LRS. Because the primary and the standby replica are in the same zone, there's less replication lag and lower latency between the application server and the database server. The local-redundant setup doesn't provide high availability when dependent infrastructures are down for the specific availability zone. There's downtime until all dependent services are back online for that availability zone.
 
 The primary database server automatically backs up both snapshots and log backups to locally redundant storage.
 
 > [!NOTE]  
 > For both zone-redundant and local-redundant HA:
-> - If a failure occurs, the time needed for the standby Replica to take over the role of primary depends on the time it takes to replay the binary log from the primary storage account to the standby. To reduce failover time, use primary keys on all tables. Failover times typically take between 60 and 120 seconds.
+> - If a failure occurs, the time needed for the standby replica to take over the role of primary depends on the time it takes to replay the binary log from the primary storage account to the standby. To reduce failover time, use primary keys on all tables. Failover times typically take between 60 and 120 seconds.
 > - The standby server isn't available for read or write operations. It's a passive standby to enable fast failover.
 > - Always use a fully qualified domain name (FQDN) to connect to your primary server. Avoid using an IP address to connect. If a failover occurs, after the primary and standby server roles are switched, a DNS A record might change. That change prevents the application from connecting to the new primary server if an IP address is used in the connection string.
 
