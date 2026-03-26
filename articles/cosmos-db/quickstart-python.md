@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: python
 ms.topic: quickstart-sdk
-ms.date: 06/11/2025
+ms.date: 03/25/2026
 ms.custom: devx-track-python, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -181,7 +181,7 @@ existing_item = container.read_item(
 
 ### Query items
 
-Perform a query over multiple items in a container using `container.GetItemQueryIterator`. Find all items within a specified category using this parameterized query:
+Perform a query over multiple items in a container using `container.query_items`. Find all items within a specified category using this parameterized query:
 
 ```nosql
 SELECT * FROM products p WHERE p.category = @category
@@ -235,4 +235,4 @@ azd down
 - [Node.js Quickstart](quickstart-nodejs.md)
 - [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
-- [Rust Quickstart](quickstart-go.md)
+- [Rust Quickstart](quickstart-rust.md)
