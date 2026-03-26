@@ -4,7 +4,7 @@ description: Get a conceptual overview of zone-redundant high-availability in Az
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 03/05/2026
+ms.date: 03/26/2026
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
@@ -74,30 +74,30 @@ The primary database server automatically backs up both snapshots and log backup
 
 ## Migrate from an existing server to a zone-redundant server
 
-If you originally provisioned your Azure Database for MySQL server as a non-HA server, you can simply enable it for same-zone HA architecture. However, if you want to enable it for zone-redundant HA architecture, then you need to create a new server with your desired configuration and migrate to it, by following these steps:
+If you originally provisioned your Azure Database for MySQL server as a non-HA server, you can simply enable it for same-zone HA architecture. However, if you want to enable it for zone-redundant HA architecture, you need to create a new server with your desired configuration and migrate to it by following these steps:
 
-1. Create a new server with zone-redundant high availability enabled, by following the instructions for your preferred deployment tool:
+1. Create a new server with zone-redundant high availability enabled by following the instructions for your preferred deployment tool:
 
-    - Azure portal: [Manage zone redundant high availability in Azure Database for MySQL with the Azure portal](./how-to-configure-high-availability.md#enable-high-availability-during-server-creation)
-    - Azure CLI: [Manage zone redundant high-availability in Azure Database for MySQL with Azure CLI](./how-to-configure-high-availability-cli.md#enable-high-availability-during-server-creation)
+   - Azure portal: [Manage zone redundant high availability in Azure Database for MySQL with the Azure portal](./how-to-configure-high-availability.md#enable-high-availability-during-server-creation)
+   - Azure CLI: [Manage zone redundant high-availability in Azure Database for MySQL with Azure CLI](./how-to-configure-high-availability-cli.md#enable-high-availability-during-server-creation)
 
-1. Migrate your workload to the new server, following one of these approaches. Depending on the migration approach, downtime might be required.
+1. Migrate your workload to the new server by following one of these approaches. Depending on the migration approach, downtime might be required.
 
-    - **Offline migration approaches:** If your application can afford some downtime, offline migrations are always the preferred choice, as they're simple and easy to execute. With an offline migration, the source server is taken offline, and a dump and restores of the databases are performed on the target server. This option will require the most downtime. The duration of the downtime is determined by the time it takes to perform the restoration on the target server.
+   - **Offline migration approaches:** If your application can afford some downtime, offline migrations are always the preferred choice, as they're simple and easy to execute. With an offline migration, the source server is taken offline, and a dump and restore of the databases are performed on the target server. This option requires the most downtime. The duration of the downtime is determined by the time it takes to perform the restoration on the target server.
 
-        - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
-        
-            Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn’t support availability zones to another that supports availability zones.
+     - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
 
-        - **Open-source tools:** You can migrate offline with open-source tools, such as **MySQL Workbench**, **mydumper/myloader**, or **mysqldump** to backup and restore the database. For information on how to use these tools, see [Options for migrating Azure Database for  MySQL - Single Server to Flexible Server](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/options-for-migrating-azure-database-for-mysql-single-server-to/ba-p/2674062). Although the tutorial outlines steps for migrating from Azure MySQL Single Server to Flexible Server, you can use the same procedure for migrating data from one Azure Database for MySQL Flexible Server that doesn’t support availability zones to another that supports availability zones.
+       Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
 
-    - **Online migration approaches:** Online migrations minimize application minimal downtime. The source server allows updates, and the migration solution replicates the ongoing changes between the source and target server along with the initial dump and restore on the target. However, these approaches are more complex to implement than an offline migration.
+     - **Open-source tools:** You can migrate offline by using open-source tools such as **MySQL Workbench**, **mydumper/myloader**, or **mysqldump** to back up and restore the database. For information on how to use these tools, see [Options for migrating Azure Database for MySQL - Single Server to Flexible Server](https://techcommunity.microsoft.com/t5/azure-database-for-mysql-blog/options-for-migrating-azure-database-for-mysql-single-server-to/ba-p/2674062). Although the tutorial outlines steps for migrating from Azure MySQL Single Server to Flexible Server, you can use the same procedure for migrating data from one Azure Database for MySQL Flexible Server that doesn't support availability zones to another that supports availability zones.
 
-        - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
-        
-            Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn’t support availability zones to another that supports availability zones.
+   - **Online migration approaches:** Online migrations minimize application downtime. The source server allows updates, and the migration solution replicates the ongoing changes between the source and target server along with the initial dump and restore on the target. However, these approaches are more complex to implement than an offline migration.
 
-        - **Open-source tools:** You can use a combination of open-source tools such as **mydumper/myloader** together with [Data-in replication](./concepts-data-in-replication.md)
+     - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
+
+       Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
+
+     - **Open-source tools:** You can use a combination of open-source tools such as **mydumper/myloader** together with [Data-in replication](./concepts-data-in-replication.md).
 
 ## Failover process
 
@@ -126,7 +126,7 @@ Unplanned service downtime can occur due to software bugs or infrastructure faul
 The overall failover time is usually between 60 and 120 seconds. However, depending on the activity in the primary database server at the time of the failover (such as large transactions and recovery time), the failover might take longer.
 
 > [!NOTE]  
-> An Azure Resource Health event is generated during an unplanned failover. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
+> An Resource Health event is generated during an unplanned failover. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
 >
 > For example, **Unavailable**: A failover operation was triggered automatically (**Unplanned**). If your resource stays in this state for a long time, open a [support ticket](https://azure.microsoft.com/support/create-ticket/) and we help you.
 
@@ -180,7 +180,6 @@ Keep the following considerations in mind when you use high availability:
 ## Known problems
 
 Azure Database for MySQL Flexible Server uses native MySQL replication at the backend. A known problem exists in the MySQL Community Edition 8.0 and greater that can break replication when performing a multitable DELETE operation that relies on foreign key constraints with ON DELETE CASCADE. This problem is tracked as [MySQL Bug 102586](https://bugs.mysql.com/bug.php?id=102586). As a result, when you enable high availability on Azure Database for MySQL Flexible Server, avoid using cascaded deletes with foreign keys, as this pattern can lead to replication failures and might affect the availability of the server.
-
 
 ## Health checks
 
