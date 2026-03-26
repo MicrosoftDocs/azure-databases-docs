@@ -28,7 +28,7 @@ Azure Database for PostgreSQL – Elastic Clusters is the next evolution of Azur
 
 - **Built on Azure Database for PostgreSQL Flexible Server**: Elastic Clusters inherits the operational model customers already use for Flexible Server—backups, monitoring/metrics, maintenance controls, and platform integration—reducing day-2 operations complexity.
 
-- **Stronger identity and security integration**: Support for managed identity and Entra ID authentication helps simplify secret management and align database access with enterprise identity controls.
+- **Stronger identity and security integration**: Support for managed identity and Microsoft Entra ID authentication helps simplify secret management and align database access with enterprise identity controls.
 
 ## Feature comparison
 
@@ -52,7 +52,7 @@ Azure Database for PostgreSQL – Elastic Clusters is the next evolution of Azur
 | **PostgreSQL versions** | Up to recent versions (e.g., 15/16 historically) | Supports latest, including PostgreSQL 17 | Elastic advantage (newer version support). |
 | **Postgres 17/18 support** | No | Yes | Elastic advantage (newer version support). |
 | **Extensions support** | Subset of key extensions (e.g., PostGIS, JSONB) | Standard Flexible Server extensions; some limitations (e.g., no TimescaleDB in cluster mode) | Parity (minor differences). |
-| **Entra ID authentication** | Yes | Yes | Parity. |
+| **Microsoft Entra ID authentication** | Yes | Yes | Parity. |
 | **HA planned failovers** | No | Planned (GA+) | Gap (planned). |
 | **Private endpoints** | Yes | Yes | Parity. |
 | **Virtual network** | No | No | Parity (not supported). |
@@ -75,7 +75,9 @@ Azure Database for PostgreSQL – Elastic Clusters is the next evolution of Azur
 | **Pricing model** | vCore-based; separate for coordinator/workers | vCore, storage, IOPS (no extra cost for Citus) | Elastic advantage (simpler model). |
 | **Networking** | Public access (firewall rules), private access (Private Link), or both | Public access (allowed IP addresses); private access via Private Link on underlying Flexible Server nodes | Parity (similar options). |
 
-## Migration Tool
+\* Remove node is available through rebalancing to move data off a node, but the node itself isn't automatically deprovisioned.
+
+## Migration tool
 
 A dedicated migration tool is provided to facilitate seamless transition from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL Elastic Cluster. This tool automates schema and data migration, minimizes downtime, and ensures data integrity.
 
@@ -89,7 +91,7 @@ From there, the migration can be initiated by providing simple details for the t
 
 [![Screenshot of a migration configuration page for Azure Cosmos DB for PostgreSQL, featuring various settings for the migration process.](media/migrate-postgresql-elastic-cluster/configuration.png)](media/migrate-postgresql-elastic-cluster/configuration.png#lightbox)
 
-### SKU Mapping
+### SKU mapping
 
 The Azure Cosmos DB for PostgreSQL will be matched to the target Azure Database for PostgreSQL (Elastic Cluster) as per the below mapping table. After migration, customers can scale up or down with almost 0 downtime.
 
@@ -114,13 +116,13 @@ The Azure Cosmos DB for PostgreSQL will be matched to the target Azure Database 
 
 ### Migration flow
 
-1. User starts migration from the CPG cluster page in Azure Portal.
+1. User starts migration from the CPG cluster page in the Azure portal.
 
-1. Portal runs pre-validation checks. 
+1. The portal runs pre-validation checks.
 
-1. If checks pass, Portal provisions the target Elastic Cluster (EC) with CPG-migration settings (e.g., collation/PG+Citus version setup). 
+1. If checks pass, the portal provisions the target Elastic Cluster (EC) with CPG-migration settings (e.g., collation/PG+Citus version setup).
 
-1. Portal will start migration on the provisioned EC. 
+1. The portal starts migration on the provisioned EC.
 
 1. Migration tool switches the CPG cluster to read-only and triggers snapshot creation (one per node for multi-node). 
 
@@ -134,7 +136,7 @@ The Azure Cosmos DB for PostgreSQL will be matched to the target Azure Database 
 
 1. After success, tool applies post-migration settings to EC (user-overridden configs, HA settings). 
 
-1. Migration completes: Portal updates the success/failure when complete.CPG Cluster will be stopped and Elastic Cluster becomes the new writable target where the customer switches over (new connection string, recreate PEC if needed). 
+1. Migration completes: the portal updates the success/failure status when complete. CPG Cluster is stopped and Elastic Cluster becomes the new writable target where the customer switches over (new connection string, recreate PEC if needed).
 
 [![Diagram illustrating the migration process from Azure Cosmos DB for PostgreSQL to Azure Database for PostgreSQL Elastic Cluster.](media/migrate-postgresql-elastic-cluster/diagram.png)](media/migrate-postgresql-elastic-cluster/diagram.png#lightbox)
 
