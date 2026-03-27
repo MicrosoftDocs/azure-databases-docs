@@ -1,5 +1,5 @@
 ---
-title: Identify slow-running queries on elastic clusters
+title: Identify Slow-Running Queries on Elastic Clusters
 description: Troubleshooting guide for identifying slow-running queries in Azure Database for PostgreSQL elastic clusters.
 author: GayathriPaderla
 ms.author: gapaderla
@@ -12,11 +12,11 @@ ms.topic: troubleshooting-general
 
 # Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL Elastic Clusters
 
-This article describes how to identify and diagnose the root cause of slow-running queries, which can consume CPU resources and lead to high CPU utilization.
+This article describes how to identify and diagnose the root cause of slow-running queries. These queries can consume CPU resources and lead to high CPU utilization.
 
 ## Identify the slow query
 
-You can identify the slow query by using `pg_stat_statements`. The following query helps identify the top five slowest operations.
+Use `pg_stat_statements` to identify the slow query. The following query helps you find the top five slowest operations.
 
 ```sql
 SELECT userid::regrole, dbid, query, mean_exec_time
@@ -24,9 +24,9 @@ FROM pg_stat_statements
 ORDER BY mean_exec_time DESC LIMIT 5;
 ```
 
-## Inspect current active/long-running queries
+## Inspect current active or long-running queries
 
-The following query helps identify queries running for greater than 15 minutes.
+The following query helps you identify queries running for more than 15 minutes.
 
 ```sql
 SELECT
@@ -53,9 +53,9 @@ ORDER BY NOW() - query_start  DESC;
 
 :::image type="content" source="media/how-to-identify-slow-queries-elastic-clusters/long-running-queries.png" alt-text="Screenshot of long-running queries result." lightbox="media/how-to-identify-slow-queries-elastic-clusters/long-running-queries.png":::
 
-This result shows there's one query on the server that has been running slow and taking longer execution times.
+This result shows there's one query on the server that runs slow and takes longer execution times.
 
-The `global_pid` associated with the long-running query is the same, which means the same query is running the longest on all the worker nodes.
+The `global_pid` associated with the long-running query is the same, which means the same query runs the longest on all the worker nodes.
 
 ### Identify the tables and their distribution type in the query
 
@@ -63,7 +63,7 @@ The `global_pid` associated with the long-running query is the same, which means
 1. The reference tables
 1. The colocation tables
 
-If any tables are regular, make them either reference tables or colocation tables. You can find that information using the following query.
+If the query uses regular tables, change them to either reference tables or colocation tables. To find this information, use the following query.
 
 ```sql
 SELECT table_name,
@@ -77,8 +77,8 @@ ORDER BY table_name;
 
 What to look for in the preceding query:
 
--     distribution_type = reference → broadcast joins
--     Missing or wrong distribution_column
+- `distribution_type = reference` → broadcast joins
+- Missing or wrong `distribution_column`
 
 ### Solution
 
@@ -90,7 +90,7 @@ SELECT create_reference_table('products');
 
 ## Detect non-colocated tables used in joins
 
-One of the top causes for slow queries could be a non-colocated table. Here's a query to identify non-colocated tables.
+One of the top causes for slow queries is a non-colocated table. Here's a query to identify non-colocated tables.
 
 ```sql
 SELECT a.table_name AS table_a,
@@ -105,10 +105,10 @@ WHERE a.colocation_id <> b.colocation_id;
 
 What to look for in the preceding query:
 
-1. If your tables are listed here, you should consider colocating them. Colocating tables prevents:
-   a.    Data reshuffling across nodes
-   b.    Network overhead
-   c.    Temp file spills
+1. If your tables are listed, consider colocating them. Colocating tables prevents:
+   - Data reshuffling across nodes
+   - Network overhead
+   - Temp file spills
 
 You can also identify these symptoms by reviewing the execution plans of your query. Pay attention to these action types:
 
@@ -118,8 +118,8 @@ You can also identify these symptoms by reviewing the execution plans of your qu
 ### Solution
 
 - Distribute tables on the join key.
-- Make sure the distributed table and reference table are joined correctly
-- Index the join keys
+- Make sure you join the distributed table and reference table correctly.
+- Index the join keys.
 - Fix colocation of the table by pointing the table to the right distribution key.
   - You might need to recombine the table and then distribute the table using a more appropriate distribution key.
 
@@ -130,7 +130,7 @@ SELECT create_distributed_table('orders', 'customer_id');
 
 ## Check for skewness of data across shards and nodes
 
-The following query identifies which shards/nodes contain long-running queries, and their shard sizes.
+The following query identifies which shards and nodes contain long-running queries, and their shard sizes.
 
 ```sql
 SELECT
@@ -148,11 +148,11 @@ JOIN citus_stat_activity ON citus_stat_activity.query LIKE '%' || cs.shardid || 
 ORDER BY duration DESC;
 ```
 
-The results show that the queries are accessing four specific shards in each of the worker nodes.
+The results show that the queries access four specific shards in each of the worker nodes.
 
-If you see the majority of data on a subset of worker nodes, this indicates you should reconsider your distribution key selection.
+If you see the majority of data on a subset of worker nodes, reconsider your distribution key selection.
 
-You can troubleshoot further by reviewing details of the distributed table by shards using the following query:
+To troubleshoot further, review details of the distributed table by shards using the following query:
 
 ```sql
 SELECT * FROM run_command_on_shards('orders', $$ SELECT json_build_object( 'shard_name', '%1$s', 'size', pg_size_pretty(pg_table_size('%1$s')) ); $$);
@@ -160,9 +160,9 @@ SELECT * FROM run_command_on_shards('orders', $$ SELECT json_build_object( 'shar
 
 ### Solution
 
-Based on the preceding output, if the data is skewed to a few shards, the distribution key is likely the cause. In this case, consider rearchitecting the distribution key.
+Based on the preceding output, if the data is skewed to a few shards, the distribution key is likely the cause. Consider rearchitecting the distribution key.
 
-Here's a related talk on choosing the right shard key. [Efficiently distributing Postgres with Citus - How to choose the right shard key? | Citus Con 2022](https://www.youtube.com/watch?v=t0EXeWk3lAk)
+Here's a related talk on choosing the right shard key: [Efficiently distributing Postgres with Citus - How to choose the right shard key? | Citus Con 2022](https://www.youtube.com/watch?v=t0EXeWk3lAk).
 
 ## Diagnose lock contention
 
@@ -249,8 +249,8 @@ SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
 ) t $$ );
 ```
 
-> [!NOTE]
-> This might happen when your server is restarted or scaled. In those cases, wait for your system to stabilize.
+> [!NOTE]  
+> This condition might happen when your server restarts or scales. In those cases, wait for your system to stabilize.
 
 ## Related content
 
