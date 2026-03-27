@@ -19,11 +19,11 @@ appliesto:
 
 ## Background
 
-In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throughput and 50 GB of storage. When you increase the provisioned throughput of a database or container beyond the capacity of the current physical partitions, Azure Cosmos DB must split those partitions to accommodate the extra throughput.
+In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throughput. When you increase the provisioned throughput of a database or container beyond the capacity of the current physical partitions, Azure Cosmos DB must split those partitions to accommodate the extra throughput.
 
-A partition split divides an existing physical partition into new partitions. Each new partition takes on a portion of the data and throughput capacity of the original. This process allows the container to serve a higher total throughput because each new partition adds an additional 10,000 RU/s of capacity. Azure Cosmos DB may also merge partitions to optimize the layout for best performance and data distribution.
+A partition split divides an existing physical partition into new partitions. Each new partition takes on a portion of the data of the original. This process allows the container to serve a higher total throughput because each new partition can serve up to 10,000 RU/s of capacity. Azure Cosmos DB may also merge partitions to optimize the layout for best performance and data distribution.
 
-Both splitting and merging partitions can take hours to complete, so tracking their progress is essential. The Activity Log in the Azure portal shows the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges).
+Depending on the data size and throughput request, both splitting and merging partitions can take several hours to complete. The Activity Log in the Azure portal shows the status of these elastic operations — both throughput increases (partition splits) and decreases (partition merges).
 
 For more details on how partition splits work and best practices for scaling, see [Best practices for scaling provisioned throughput](scaling-provisioned-throughput-best-practices.md).
 
@@ -33,7 +33,7 @@ Both partition splits and merges follow the same Activity Log pattern. To monito
 
 1. Navigate to your Azure Cosmos DB account in the Azure portal.
 1. In the left menu, select **Activity Log**.
-1. Filter by the resource name of the database or container you scaled.
+1. Filter by the resource name of the database or container.
 1. Look for log entries related to the elastic operation. Each entry includes an operation name, a status, and a timestamp.
 1. Expand the log entry to see the linked scale operations nested under the main entry. The main entry reflects the latest overall status of the scaling operation. Each nested operation has its own status as well.
 1. Select an individual log to open a details pane on the right. Under the **JSON** tab, the "properties" section contains detailed information about the operation.
