@@ -11,4 +11,5 @@ ms.date: 07/08/2025
 > - [C#](../quickstart-dotnet.md)
 > - [Java](../quickstart-java.md)
 > - [Go](../quickstart-go.md)
+> - [Rust](../quickstart-rust.md)
 >
