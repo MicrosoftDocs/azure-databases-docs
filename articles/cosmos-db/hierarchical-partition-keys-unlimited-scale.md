@@ -67,9 +67,9 @@ However, if you want to **enforce** that all new containers created in an accoun
 | Behavior | Description |
 | --- | --- |
 | **No defaulting of `/id`** | Azure Cosmos DB doesn't add `/id` as the last level automatically. You must specify the full HPK path at container creation time with `/id` as the last level. |
-| **New container restrictions** | Creating new containers with a non-hierarchical partition key path is blocked on the account. All new containers must use hierarchical partition keys with `/id` as the last level. |
+| **New containers must use HPK + /id as last level** | Any new container created in the account must both use hierarchical partition keys and end with `/id` as the last level. If you want to partition only by `/id`, you can achieve this by setting `/id` as the first and only level in your hierarchical partition key. |
 | **Existing containers unchanged** | Enabling this property doesn't retroactively modify existing containers or their partition key configuration. To adopt this pattern for existing containers, create a new container with the desired HPK definition and [migrate your data](container-copy.md). |
-| **Support for additional levels** | There is support for four levels, however, a fourth level is recommended only for rare scenarios where three levels are needed in addition to `/id`. |
+| **Support for additional levels** | There is support for four levels of keys. However, a fourth level is recommended only for rare scenarios where three levels are needed in addition to `/id`. For the majority of workloads, two or three level of keys are sufficient to achieve good data distribution and optimize query performance. |
 
 ## Enable and configure enforcement
 
