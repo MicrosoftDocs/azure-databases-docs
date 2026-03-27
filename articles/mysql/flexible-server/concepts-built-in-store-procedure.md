@@ -4,8 +4,8 @@ description: Learn about the Built-in Store Procedure of Azure Database for MySQ
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
-author: xboxeer
-ms.author: yuzheng1
+author: moabuham 
+ms.author: moabuham 
 ms.date: 03/10/2025 
 ---
 # Built-in stored procedures in Azure Database for MySQL

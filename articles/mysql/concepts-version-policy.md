@@ -1,8 +1,8 @@
 ---
 title: Version Support Policy
 description: Describes the policy around MySQL major and minor versions in Azure Database for MySQL
-author: xboxeer
-ms.author: yuzheng1
+author: moabuham 
+ms.author: moabuham 
 ms.reviewer: maghan
 ms.date: 03/27/2026
 ms.service: azure-database-mysql
