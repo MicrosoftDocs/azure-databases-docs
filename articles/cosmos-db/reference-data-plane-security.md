@@ -31,6 +31,7 @@ Here's a list of data actions that can be individually set in a role definition.
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/replace`** | Replaces existing items |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/upsert`** | Creates a new item if it doesn't exist or replaces an existing item |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/delete`** | Deletes an item |
+| **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/unmask`** | Reads items bypassing Dynamic Data Masking to reveal original values |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeQuery`** | Executes a NoSQL query |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/readChangeFeed`** | Reads from the container's change feed |
 | **`Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/executeStoredProcedure`** | Executes stored procedures |

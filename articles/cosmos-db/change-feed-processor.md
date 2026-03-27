@@ -9,6 +9,7 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 07/02/2025
 ms.custom: devx-track-csharp, build-2023
+ai-usage: ai-assisted
 appliesto:
   - ✅ NoSQL
 ---
@@ -219,6 +220,22 @@ For full working samples, see [this GitHub repository](https://github.com/Azure-
 > In this example, you pass a variable `options` of type `ChangeFeedProcessorOptions`, which can be used to set various values, including `setStartFromBeginning`:
 >
 > [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/changefeed/SampleChangeFeedProcessor.java?name=ChangeFeedProcessorOptions)]
+
+> [!WARNING]
+> Change feed payloads include Azure Cosmos DB system metadata fields (`_lsn`, `_rid`, `_ts`, `_etag`, `_self`) in addition to your document properties. When you deserialize change feed events into typed Java objects (POJOs) using Jackson's `ObjectMapper`, these fields cause an `UnrecognizedPropertyException` unless your model class explicitly ignores unknown properties. Add `@JsonIgnoreProperties(ignoreUnknown = true)` to your POJO classes to prevent deserialization failures:
+>
+> ```java
+> import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+>
+> @JsonIgnoreProperties(ignoreUnknown = true)
+> public class MyItem {
+>     private String id;
+>     private String name;
+>     private String status;
+> }
+> ```
+>
+> This annotation ensures that system metadata fields present in the change feed payload are silently ignored during deserialization.
 
 The delegate implementation for reading the change feed in [all versions and deletes mode](change-feed-modes.md#all-versions-and-deletes-change-feed-mode-preview) is similar, but instead of calling `.handleChanges()`, call `.handleAllVersionsAndDeletesChanges()`. The All versions and deletes mode is in preview and is available in Java SDK version >= `4.42.0`.
 
