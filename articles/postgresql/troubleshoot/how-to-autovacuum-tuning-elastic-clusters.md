@@ -23,32 +23,32 @@ Autovacuum is a PostgreSQL background process that automatically cleans up dead 
 
 - VACUUM - Reclaims space within the database's files by removing dead tuples and marking that space as reusable by PostgreSQL. It doesn't necessarily reduce the physical size of the database files on the disk. To return space to the operating system, use operations that rewrite the table (for example, VACUUM FULL or `pg_repack`), which have additional considerations such as exclusive locks or maintenance windows.
 
-The following query runs VACUUM on all the nodes.
+   The following query runs VACUUM on all the nodes.
 
-```sql
-VACUUM;
-```
+   ```sql
+   VACUUM;
+   ```
 
-The following query runs VACUUM on orders tables in all the nodes.
+   The following query runs VACUUM on orders tables in all the nodes.
 
-```sql
-VACUUM (VERBOSE, ANALYZE) public.orders;
-```
+   ```sql
+   VACUUM (VERBOSE, ANALYZE) public.orders;
+   ```
 
 - ANALYZE - Collects table and index statistics that the PostgreSQL query planner uses to choose efficient execution plans.
   To ensure autovacuum works properly, set the autovacuum server parameter to `ON`. When enabled, PostgreSQL automatically decides when to run VACUUM or ANALYZE on a table, ensuring the database remains efficient and optimized.
 
-The following query runs ANALYZE on all the nodes.
+   The following query runs ANALYZE on all the nodes.
 
-```sql
-ANALYZE;
-```
+   ```sql
+   ANALYZE;
+   ```
 
-The following query runs ANALYZE on orders tables in all the nodes.
+   The following query runs ANALYZE on orders tables in all the nodes.
 
-```sql
-ANALYZE public.orders;
-```
+   ```sql
+   ANALYZE public.orders;
+   ```
 
 ## Autovacuum internals
 
