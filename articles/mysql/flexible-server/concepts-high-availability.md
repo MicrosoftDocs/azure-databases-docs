@@ -27,8 +27,6 @@ When you deploy a server with zone-redundant high availability, Azure creates tw
 
 You can choose the availability zone for both the primary server and the standby replica. Placing the primary server and the standby server in the same zone reduces latency, whereas placing them in different zones helps you prepare for disaster recovery situations and zone-down scenarios.
 
-:::image type="content" source="media/concepts-high-availability/mysql-overview-same-zone-ha.png" alt-text="Diagram that shows the architecture for local-redundant high-availability." lightbox="media/concepts-high-availability/mysql-overview-same-zone-ha.png":::
-
 The data and log files are hosted in [zone-redundant storage (ZRS)](/azure/storage/common/storage-redundancy#redundancy-in-the-primary-region). The standby server continuously reads and replays the log files from the primary server's storage account, which storage-level replication protects.
 
 If a failover occurs:
@@ -50,8 +48,6 @@ When you deploy a server with local-redundant HA, you create two servers in the 
 - A standby replica server that has the same configuration as the primary server (compute tier, compute size, storage size, and network configuration)
 
 The standby server provides infrastructure redundancy by using a separate virtual machine (compute). This redundancy reduces failover time and network latency between the application and the database server because of colocation.
-
-:::image type="content" source="media/concepts-high-availability/mysql-overview-same-zone-ha.png" alt-text="Diagram that shows the architecture for local-redundant high-availability." lightbox="media/concepts-high-availability/mysql-overview-same-zone-ha.png":::
 
 The data and log files are hosted in [locally redundant storage (LRS)](/azure/storage/common/storage-redundancy#locally-redundant-storage). The standby server continuously reads and replays the log files from the primary server's storage account, which is protected by storage-level replication.
 
