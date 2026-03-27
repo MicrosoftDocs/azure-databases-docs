@@ -3781,11 +3781,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-identify-slow-queries-elastic-clusters.md",
-            "redirect_url": "/azure/postgresql/troubleshoot/how-to-identify-slow-queries-elastic-clusters",
-            "redirect_document_id": true
-        },
-        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-optimize-query-stats-collection.md",
             "redirect_url": "/azure/postgresql/troubleshoot/how-to-optimize-query-stats-collection",
             "redirect_document_id": true
