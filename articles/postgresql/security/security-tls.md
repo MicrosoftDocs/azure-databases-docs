@@ -29,11 +29,6 @@ Root CAs are the top-level authorities in the certificate chain. Azure Database 
 - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
 - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 
-China regions currently use the following CAs:
-
-- [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
-- [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
-- After Spring Festival (Chinese New Year) 2026: [Digicert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt). Prepare for this change in advance by adding the new root CA to your trusted root store.
 
 ### Intermediate CAs
 
@@ -58,9 +53,6 @@ Don't use intermediate CAs or server certificates in your trusted root store.
     - `Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16`
       - Server certificate
 
-### Read replicas
-
-Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root CA certificate than the primary server. You should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
 
 ### Certificate chains
 
