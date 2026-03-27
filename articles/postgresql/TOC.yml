@@ -697,6 +697,9 @@
         - name: Troubleshoot autovacuum
           href: troubleshoot/how-to-autovacuum-tuning.md
           displayName: Autovacuum troubleshooting, tuning
+        - name: Troubleshoot autovacuum on elastic clusters
+          href: troubleshoot/how-to-autovacuum-tuning-elastic-clusters.md
+          displayName: Autovacuum troubleshooting, tuning on elastic clusters       
         - name: Full vacuum using pg_repack extension
           href: troubleshoot/how-to-perform-fullvacuum-pg-repack.md
           displayName: Full vacuum using pg_repack extension

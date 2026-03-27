@@ -1,8 +1,8 @@
 ---
 title: Major Version Upgrade
 description: Learn how to upgrade major version for an Azure Database for MySQL flexible server instance.
-author: xboxeer
-ms.author: yuzheng1
+author: moabuham 
+ms.author: moabuham 
 ms.reviewer: yuzheng1, maghan
 ms.date: 06/11/2025
 ms.service: azure-database-mysql
