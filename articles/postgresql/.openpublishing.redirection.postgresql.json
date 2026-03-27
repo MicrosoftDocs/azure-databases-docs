@@ -3756,11 +3756,6 @@
             "redirect_document_id": true
         },
         {
-            "source_path_from_root": "/articles/postgresql/flexible-server/how-to-autovacuum-tuning-elastic-clusters.md",
-            "redirect_url": "/azure/postgresql/troubleshoot/how-to-autovacuum-tuning-elastic-clusters",
-            "redirect_document_id": true
-        },
-        {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-bulk-load-data.md",
             "redirect_url": "/azure/postgresql/troubleshoot/how-to-bulk-load-data",
             "redirect_document_id": true
