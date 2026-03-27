@@ -122,7 +122,7 @@ Unplanned service downtime can occur due to software bugs or infrastructure faul
 The overall failover time is usually between 60 and 120 seconds. However, depending on the activity in the primary database server at the time of the failover (such as large transactions and recovery time), the failover might take longer.
 
 > [!NOTE]  
-> An Resource Health event is generated during an unplanned failover. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
+> A Resource Health event is generated during an unplanned failover. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
 >
 > For example, **Unavailable**: A failover operation was triggered automatically (**Unplanned**). If your resource stays in this state for a long time, open a [support ticket](https://azure.microsoft.com/support/create-ticket/) and we help you.
 
