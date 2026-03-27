@@ -138,6 +138,7 @@ Every Azure Cosmos DB item has the following system-defined properties. Dependin
 |`_etag` | System generated | Entity tag used for optimistic concurrency control | Yes | No | No | No | No |
 |`_ts` | System generated | Time stamp of the last update of the item | Yes | No | No | No | No |
 |`_self` | System generated | Addressable URI of the item | Yes | No | No | No | No |
+|`_lsn` | System generated | Log sequence number used to track the change feed sequence position of an item. Present in [change feed](change-feed.md) payloads only; not returned on standard item reads. | Yes | No | No | No | No |
 |`id` | Either | User-defined unique name in a logical partition | Yes | Yes | Yes | Yes | Yes |
 |Arbitrary user-defined properties | User defined | User-defined properties in API-native representation including JSON, binary JSON (BSON), and Cassandra Query Language (CQL) | Yes | Yes | Yes | Yes | Yes |
 

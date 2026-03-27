@@ -5,7 +5,7 @@ author: seesharprun
 ms.author: sidandrews
 ms.topic: quickstart-sdk
 ms.devlang: csharp
-ms.date: 10/14/2025
+ms.date: 03/25/2026
 ms.custom:
   - sfi-ropc-nochange
 ai-usage: ai-generated
