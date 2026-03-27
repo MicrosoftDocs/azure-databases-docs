@@ -1,5 +1,5 @@
 ---
-title: Identify slow-running queries on elastic clusters
+title: Identify Slow-Running Queries on Elastic Clusters
 description: Troubleshooting guide for identifying slow-running queries in Azure Database for PostgreSQL elastic clusters.
 author: GayathriPaderla
 ms.author: gapaderla
