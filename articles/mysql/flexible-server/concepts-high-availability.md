@@ -4,7 +4,7 @@ description: Get a conceptual overview of zone-redundant high-availability in Az
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 03/26/2026
+ms.date: 03/27/2026
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
@@ -81,7 +81,7 @@ If you originally provisioned your Azure Database for MySQL server as a non-HA s
 
    - **Offline migration approaches:** If your application can afford some downtime, offline migrations are always the preferred choice, as they're simple and easy to execute. With an offline migration, the source server is taken offline, and a dump and restore of the databases are performed on the target server. This option requires the most downtime. The duration of the downtime is determined by the time it takes to perform the restoration on the target server.
 
-     - **Data Migration Service (DMS):** To learn how to use DMS, see Azure Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
+     - **Data Migration Service (DMS):** To learn how to use DMS, see Data Migration Service (DMS): To learn how to use DMS, see Azure Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
 
        Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
 
@@ -89,7 +89,7 @@ If you originally provisioned your Azure Database for MySQL server as a non-HA s
 
    - **Online migration approaches:** Online migrations minimize application downtime. The source server allows updates, and the migration solution replicates the ongoing changes between the source and target server along with the initial dump and restore on the target. However, these approaches are more complex to implement than an offline migration.
 
-     - **Data Migration Service (DMS):** To learn how to use DMS, see Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
+     - **Data Migration Service (DMS):** To learn how to use DMS, see Database Migration Service (DMS): To learn how to use DMS, see Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
 
        Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
 
@@ -122,7 +122,7 @@ Unplanned service downtime can occur due to software bugs or infrastructure faul
 The overall failover time is usually between 60 and 120 seconds. However, depending on the activity in the primary database server at the time of the failover (such as large transactions and recovery time), the failover might take longer.
 
 > [!NOTE]  
-> A Resource Health event is generated during an unplanned failover. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
+> An unplanned failover generates a Resource Health event. The event represents the failover time when the server is unavailable. You can see the triggered events when you select **Resource Health** in the left pane. Automatic failover shows a status of **Unavailable** and is tagged as **Unplanned**.
 >
 > For example, **Unavailable**: A failover operation was triggered automatically (**Unplanned**). If your resource stays in this state for a long time, open a [support ticket](https://azure.microsoft.com/support/create-ticket/) and we help you.
 
@@ -133,7 +133,7 @@ The primary server and the secondary server each have two network endpoints:
 - Management Endpoint: Used internally for service communications to management components and to connect to backend storage.
 
 The health monitor component continuously does the following checks:
-- The monitor pings the node's Management network Endpoint. If this check fails two times in a row, it triggers an automatic failover operation. This health check addresses scenarios such as node unavailability or nonresponsiveness due to OS problems, networking problems between management components and nodes, and similar problems.
+- The monitor pings the node's management network endpoint. If this check fails two times in a row, it triggers an automatic failover operation. This health check addresses scenarios such as node unavailability or nonresponsiveness due to OS problems, networking problems between management components and nodes, and similar problems.
 - The monitor runs a simple query on the instance. If the queries fail to run, automatic failover triggers. This health check addresses scenarios such as MySQL daemon crashes, stops, or hangs, and backend storage problems and similar problems.
 
 > [!NOTE]  
@@ -179,7 +179,7 @@ Azure Database for MySQL Flexible Server uses native MySQL replication at the ba
 
 ## Health Check
 
-When you configure high availability (HA) for Azure Database for MySQL, Health Check play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any problems promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, Health Check help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured Health Check are essential for achieving the desired level of availability and resilience in your database setup.
+When you configure high availability (HA) for Azure Database for MySQL, Health Check plays a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any problems promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, Health Check help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured Health Check are essential for achieving the desired level of availability and resilience in your database setup.
 
 ### Monitoring health
 
