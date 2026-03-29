@@ -81,7 +81,7 @@ If you originally provisioned your Azure Database for MySQL server as a non-HA s
 
    - **Offline migration approaches:** If your application can afford some downtime, offline migrations are always the preferred choice, as they're simple and easy to execute. With an offline migration, the source server is taken offline, and a dump and restore of the databases are performed on the target server. This option requires the most downtime. The duration of the downtime is determined by the time it takes to perform the restoration on the target server.
 
-     - **Data Migration Service (DMS):** To learn how to use DMS, see Data Migration Service (DMS): To learn how to use DMS, see Azure Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
+     - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL offline using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-mysql-offline-portal).
 
        Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
 
@@ -89,7 +89,7 @@ If you originally provisioned your Azure Database for MySQL server as a non-HA s
 
    - **Online migration approaches:** Online migrations minimize application downtime. The source server allows updates, and the migration solution replicates the ongoing changes between the source and target server along with the initial dump and restore on the target. However, these approaches are more complex to implement than an offline migration.
 
-     - **Data Migration Service (DMS):** To learn how to use DMS, see Database Migration Service (DMS): To learn how to use DMS, see Database Migration Service (DMS): To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
+     - **Data Migration Service (DMS):** To learn how to use DMS, see [Migrate from MySQL to Azure Database for MySQL online using DMS via the Azure portal](/azure/dms/tutorial-mysql-azure-external-to-flex-online-portal).
 
        Although the tutorial outlines steps for migrating from an on-premises MySQL server to Azure Database for MySQL, you can use the same procedure for migrating data from one Azure Database for MySQL server that doesn't support availability zones to another that supports availability zones.
 
