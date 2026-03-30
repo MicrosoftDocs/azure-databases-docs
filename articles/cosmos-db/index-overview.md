@@ -228,8 +228,6 @@ To learn how to configure vector indexes, see [Vector indexing policy examples](
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
 
-> [!IMPORTANT]
-> Currently, vector policies and vector indexes are immutable after creation. To make changes, create a new collection.
 
 ## Index usage
 
