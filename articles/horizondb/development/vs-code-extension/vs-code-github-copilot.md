@@ -32,7 +32,6 @@ These tools and resources help you follow along with this article and make the m
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
-- {[Azure account](../../configure-maintain/how-to-deploy-on-azure-free-account.md)} for connecting to cloud-hosted databases (optional).
 
 ## Install GitHub Copilot and GitHub Copilot Chat extensions
 

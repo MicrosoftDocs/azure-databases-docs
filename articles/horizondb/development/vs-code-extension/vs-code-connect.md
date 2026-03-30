@@ -13,7 +13,6 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - ignite-2025
-# customer intent: As a user, I want to understand what Semantic Operators are available in the azure_ai extension for an Azure HorizonDB .
 ---
 
 # Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code
@@ -31,7 +30,6 @@ These tools and resources help you follow along with this article and make the m
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
-- {[Azure account](../../flexible-server/how-to-deploy-on-azure-free-account.md)} for connecting to cloud-hosted databases (optional).
 
 ## Install the PostgreSQL extension
 

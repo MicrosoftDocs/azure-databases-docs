@@ -11,6 +11,7 @@ ms.topic: overview
 ms.custom:
   - ignite-2025
 ai-usage: ai-assisted
+---
 
 # What is the PostgreSQL extension for Visual Studio Code with HorizonDB
 
