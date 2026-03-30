@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Create with Bicep"
-description: In this Quickstart, learn how to create an Azure HorizonDB flexible server instance by using Bicep.
+description: In this Quickstart, learn how to create an Azure HorizonDB server by using Bicep.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan

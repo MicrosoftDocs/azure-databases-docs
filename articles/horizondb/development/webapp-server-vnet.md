@@ -1,6 +1,6 @@
 ---
-title: "Article: Create Azure App Service Web App in Same Virtual Network"
-description: Quickstart guide to create an Azure HorizonDB flexible server instance with a web app in the same virtual network.
+title: "Article: Create Azure App Service Web App in Same Virtual Network with Azure HorizonDB"
+description: Quickstart guide to create an Azure HorizonDB server instance with a web app in the same virtual network.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -17,14 +17,14 @@ ms.devlang: azurecli
 
 # Create an Azure HorizonDB with a web app in a virtual network
 
-This article shows you how to create an Azure App Service Web app with Azure HorizonDB flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
+This article shows you how to create an Azure App Service Web app with Azure HorizonDB server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 
 In this article, you learn how to:
 > [!div class="checklist"]
-> - Create an Azure HorizonDB flexible server instance in a virtual network
+> - Create an Azure HorizonDB server instance in a virtual network
 > - Create a web app
 > - Add the web app to the virtual network
-> - Connect to Azure HorizonDB flexible server from the web app
+> - Connect to Azure HorizonDB server from the web app
 
 ## Prerequisites
 
@@ -43,7 +43,7 @@ In this article, you learn how to:
 
 ## Create a flexible server instance
 
-Create a private Azure Database for a PostgreSQL flexible server instance inside a virtual network by using the following command:
+Create a private Azure HorizonDB flexible server instance inside a virtual network by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server create --resource-group demoresourcegroup --name demoserverpostgres --vnet demoappvnet --location westus2

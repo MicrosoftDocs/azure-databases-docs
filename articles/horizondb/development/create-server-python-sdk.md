@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Create with Azure Libraries (SDK) for Python"
-description: In this Quickstart, learn how to create an Azure HorizonDB flexible server instance using Azure libraries (SDK) for Python.
+title: "Quickstart: Create with Azure Libraries (SDK) for Python with HorizonDB"
+description: In this Quickstart, learn how to create an Azure HorizonDB server using Azure libraries (SDK) for Python.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -15,19 +15,19 @@ ms.custom:
 
 # Manage Azure HorizonDB with Azure SDK for Python
 
-In this quickstart, you learn how to use the Azure Python SDK to interact with an Azure HorizonDB flexible server instance.
+In this quickstart, you learn how to use the Azure Python SDK to interact with an Azure HorizonDB server.
 
-Azure HorizonDB is a managed service for running, managing, and scaling highly available PostgreSQL databases in the cloud. You can use the Python SDK to provision an Azure HorizonDB flexible server instance, multiple servers, or multiple databases on a server.
+Azure HorizonDB is a managed service for running, managing, and scaling highly available PostgreSQL databases in the cloud. You can use the Python SDK to provision an Azure HorizonDB server, multiple servers, or multiple databases on a server.
 
 You can perform the following operations with this library:
 
-- Create a PostgreSQL flexible server instance
+- Create a PostgreSQL server
 - Manage databases
 - Configure firewall rules
 - Perform scaling operations
 - Back up and restore
 
-This guide helps you explore the basic functionalities of this SDK, including creating a flexible server instance, reviewing the created server, creating a database, and deleting the instance.
+This guide helps you explore the basic functionalities of this SDK, including creating a server, reviewing the created server, creating a database, and deleting the server.
 
 ## Prerequisites
 
@@ -190,7 +190,7 @@ If you no longer need the Azure HorizonDB flexible server instance, you can dele
 
 ### Use Python SDK to delete the instance
 
-Create a 'delete_server.py' file to delete the Azure Databases for PostgreSQL Server instance that was created.
+Create a 'delete_server.py' file to delete the Azure HorizonDB flexible server instance that was created.
 
 ### [Python](#tab/Python)
 

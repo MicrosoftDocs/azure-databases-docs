@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Deploy Django on AKS Cluster by Using Azure CLI"
-description: Learn how to quickly build and deploy Django  on AKS with Azure HorizonDB flexible server.
+title: "Tutorial: Deploy Django on AKS Cluster by Using Azure CLI with HorizonDB"
+description: Learn how to quickly build and deploy Django  on AKS with Azure HorizonDB server.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -15,9 +15,9 @@ ms.custom:
 
 # Deploy a Django app on Azure Kubernetes Service with Azure HorizonDB
 
-In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure HorizonDB flexible server by using the Azure CLI.
+In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure HorizonDB server by using the Azure CLI.
 
-[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that you use to quickly deploy and manage clusters. [Azure HorizonDB flexible server](../overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
+[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that you use to quickly deploy and manage clusters. [Azure HorizonDB server](../overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
 
 > [!NOTE]  
 > This quickstart assumes a basic understanding of Kubernetes concepts, Django, and PostgreSQL.

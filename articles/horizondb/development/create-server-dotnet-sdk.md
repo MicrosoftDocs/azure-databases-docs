@@ -1,6 +1,6 @@
 ---
 title: "Quickstart: Create with Azure Libraries (SDK) For.NET"
-description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure PostgreSQL flexible server instance.
+description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure HorizonDB server.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.topic: quickstart
 
 # Create an Azure HorizonDB instance using .NET SDK
 
-In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure PostgreSQL flexible server instance. Azure HorizonDB is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure HorizonDB flexible server instance, multiple servers, or multiple databases on a server.
+In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure HorizonDB flexible server instance. Azure HorizonDB is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure HorizonDB flexible server instance, multiple servers, or multiple databases on a server.
 
 ## Prerequisites
 
@@ -23,28 +23,28 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 
 ## Azure.ResourceManager.PostgreSql library
 
-The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing PostgreSQL flexible server instances in Azure. With this library, you can perform various operations related to PostgreSQL flexible server instances, including but not limited to:
+The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing Azure HorizonDB flexible server instances in Azure. With this library, you can perform various operations related to Azure HorizonDB flexible server instances, including but not limited to:
 
-1. **Creating Azure PostgreSQL flexible server instances**:\
+1. **Creating Azure HorizonDB flexible server instances**:\
    You can create new flexible server instances with specified configurations such as location, SKU, storage, and version.
 
-1. **Updating Azure PostgreSQL flexible server instances**:\
-   You can update existing PostgreSQL flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
+1. **Updating Azure HorizonDB flexible server instances**:\
+   You can update existing Azure HorizonDB flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
 
-1. **Deleting Azure PostgreSQL flexible server instances**:\
-   You can delete existing Azure PostgreSQL flexible server instances.
+1. **Deleting Azure HorizonDB flexible server instances**:\
+   You can delete existing Azure HorizonDB flexible server instances.
 
-1. **Retrieving Azure PostgreSQL Information**:\
-   You can retrieve details about existing PostgreSQL flexible server instances, including their configurations, status, and other metadata.
+1. **Retrieving Azure HorizonDB Information**:\
+   You can retrieve details about existing Azure HorizonDB flexible server instances, including their configurations, status, and other metadata.
 
 1. **Managing Databases**:\
-   You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+   You can create, update, delete, and retrieve databases within the Azure HorizonDB flexible server instance.
 
 1. **Managing Firewall Rules**:\
    You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 1. **Managing Configuration Settings**:\
-   You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+   You can manage configuration settings for an Azure HorizonDB flexible server instance, including retrieving and updating server parameters.
 
 ## Log in to Azure
 
@@ -81,7 +81,7 @@ Create a new .NET project by following the steps mentioned in this [link](/dotne
 
 ### Create the Server
 
-To create a PostgreSQL flexible server instance, create a file named `CreateServer.cs` with the following code.
+To create an Azure HorizonDB flexible server instance, create a file named `CreateServer.cs` with the following code.
 
 ```csharp
 using System;
@@ -137,13 +137,13 @@ namespace CreatePostgreSqlFlexibleServer
 }
 ```
 
-This example demonstrates creating a PostgreSQL flexible server instance using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your PostgreSQL flexible server instances and related resources.
+This example demonstrates creating an Azure HorizonDB flexible server instance using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your Azure HorizonDB flexible server instances and related resources.
 
 Replace the following parameters in the code with your data:
 
 - `subscription-id`: Your Azure subscription ID.
 - `resource-group-name`: The name of your resource group.
-- `server-name`: A unique name for your PostgreSQL server.
+- `server-name`: A unique name for your Azure HorizonDB server.
 - `location`: The Azure region for your server.
 - `admin-username`: The administrator username.
 - `admin-password`: The administrator password.
@@ -155,7 +155,7 @@ The `DefaultAzureCredential` class tries to authenticate using methods like envi
 
 ## Run the file
 
-To run the file, you must build and execute the .cs file using the .NET CLI. This initiates the creation, update, or deletion process for the PostgreSQL instance as per the code.
+To run the file, you must build and execute the .cs file using the .NET CLI. This initiates the creation, update, or deletion process for the Azure HorizonDB instance as per the code.
 
 Every time you make any change in the .cs file, don't forget to build and then run the file
 
@@ -177,7 +177,7 @@ You can review the deployed flexible server instance through Azure portal, Azure
 
 Create a `UpdateServerData.cs` file.
 
-You can also update server data using the Azure PostgreSQL .NET SDK.
+You can also update server data using the Azure HorizonDB .NET SDK.
 
 For example, you can update the version, admin username, password, etc., using the `CreateOrUpdateAsync` method.
 

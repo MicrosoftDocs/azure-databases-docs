@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Create with Azure Libraries (SDK) for Java"
-description: This document is a QuickStart guide for Azure SDK library for Java to create, update, and delete an Azure PostgreSQL flexible server instance.
+title: "Quickstart: Create with Azure Libraries (SDK) for Java with HorizonDB"
+description: This document is a QuickStart guide for Azure SDK library for Java to create, update, and delete an Azure HorizonDB server.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -12,7 +12,7 @@ ms.topic: quickstart
 
 # Create an Azure HorizonDB instance using the Azure SDK for Java
 
-In this quickstart, you learn how to create, update, and delete an Azure HorizonDB flexible server instance using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure HorizonDB service.
+In this quickstart, you learn how to create, update, and delete an Azure HorizonDB server using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure HorizonDB service.
 
 The Azure SDK for Java provides a set of libraries that allow you to interact with Azure services using Java. The SDK provides a consistent programming model and simplifies working with Azure services, including Azure HorizonDB.
 
@@ -25,31 +25,31 @@ The Azure SDK for Java provides a set of libraries that allow you to interact wi
 
 ## Operations supported by Azure Java SDK
 
-Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dependency that supports these operations for Azure Databases for PostgreSQL.
+Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dependency that supports these operations for Azure HorizonDB.
 
 - **Creating Azure HorizonDB**\
-  You can create a new Azure PostgreSQL flexible server instance with specified configurations such as location, SKU, storage, and version.
+  You can create a new Azure HorizonDB server with specified configurations such as location, SKU, storage, and version.
 
 - **Updating Azure HorizonDB**\
-  You can update existing Azure PostgreSQL flexible server instances, including changing configurations like administrator sign-in, password, SKU, storage, and version.
+  You can update existing Azure HorizonDB servers, including changing configurations like administrator sign-in, password, SKU, storage, and version.
 
 - **Deleting Azure HorizonDB**
 
 - **Retrieving Azure HorizonDB information**\
-  You can retrieve details about existing Azure PostgreSQL flexible server instances, including their configurations, status, and other metadata.
+  You can retrieve details about existing Azure HorizonDB servers, including their configurations, status, and other metadata.
 
 - **Managing databases**\
-  You can create, update, delete, and retrieve databases within the Azure PostgreSQL flexible server instance.
+  You can create, update, delete, and retrieve databases within the Azure HorizonDB server.
 
 - **Managing firewall rules**\
-  You can create, update, delete, and retrieve firewall rules for an instance to control access.
+  You can create, update, delete, and retrieve firewall rules for a server to control access.
 
 - **Managing configuration settings** \
-  You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+  You can manage configuration settings for an Azure HorizonDB server, including retrieving and updating server parameters.
 
 ## Setting up your account with az cli
 
-Before using the Azure SDK for Java to create, update, or delete an Azure HorizonDB flexible server instance, you must sign in to your Azure account using the Azure CLI.
+Before using the Azure SDK for Java to create, update, or delete an Azure HorizonDB server, you must sign in to your Azure account using the Azure CLI.
 
 Sign in to your account using [az CLI](/cli/azure/authenticate-azure-cli-interactively)
 
@@ -108,7 +108,7 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 
 ### Create an Azure HorizonDB instance
 
-To create an Azure PostgreSQL flexible server instance, create a file named `CreateServer.java` with the following code.
+To create an Azure HorizonDB flexible server instance, create a file named `CreateServer.java` with the following code.
 
 ```java
 package com.example.restservice;
@@ -163,14 +163,14 @@ public class CreateServer {
 }
 ```
 
-This example demonstrates creating an Azure HorizonDB flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated, it defines the Azure PostgreSQL flexible server instance with your specified configuration.
+This example demonstrates creating an Azure HorizonDB flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated, it defines the Azure HorizonDB flexible server instance with your specified configuration.
 
 Replace the following parameters in the code with your data:
 
 - `subscription-id`: Your Azure subscription ID.
 - `tenant-id` : The tenant ID of your Microsoft Entra account. You can get this from the portal or by using the CLI
 - `resource-group-name`: The name of your resource group.
-- `server-name`: A unique name for your PostgreSQL server.
+- `server-name`: A unique name for your Azure HorizonDB server.
 - `location`: The Azure region for your server.
 - `admin-username`: The administrator username.
 - `admin-password`: The administrator password.
@@ -196,7 +196,7 @@ To run the file, you can use your IDE to run this code or use the command line t
   > [!NOTE]  
   > Running this code initiates the instance creation process, which might take a few minutes to complete.
 
-You can review the deployed Azure PostgreSQL flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
+You can review the deployed Azure HorizonDB flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
 ### Create a database
 
