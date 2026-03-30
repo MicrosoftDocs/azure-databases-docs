@@ -143,9 +143,6 @@ In addition to including or excluding paths for individual properties, you can a
 > [!IMPORTANT]
 > Wild card characters (`*`, `[]`) and vector paths nested inside arrays aren't currently supported in the vector policy or vector index.
 
-> [!IMPORTANT]
-> Currently, vector policies and vector indexes are immutable after creation. To make changes, create a new collection.
-
 You can define the following types of vector index policies:
 
 | Type | Description | Max dimensions |
