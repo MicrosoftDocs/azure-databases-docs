@@ -94,10 +94,10 @@ The image below shows how these properties appear in the JSON tab of the Activit
 
 The table below shows the JSON properties emitted at each stage of a partition split operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
 
-| Status | JSON Properties | |
+| Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
 | Started | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "status": "Will split partitions 0 into different partitions" }` | |
-| In Progress | **Checkpoint 1:** <br> `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | **Checkpoint 2:** <br> `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
+| In Progress | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
 | Succeeded | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "status": "Completed splits operation" }` | |
 
 ## Multiple rounds of splitting
@@ -160,19 +160,19 @@ The table below shows the JSON content extracted directly from the Activity Log 
 
 **Round 1: Split**
 
-| Status | JSON Properties | |
+| Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
 | Started | `{ "status": "Will split partitions 0 into different partitions" }` | |
-| In Progress | **Checkpoint 1:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | **Checkpoint 2:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
+| In Progress | `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
 
 Partition 0 has finished splitting, as shown by the transition from an In Progress operation to a Completed Operation. Now we move on to split Partition 2.
 
 **Round 2: Split**
 
-| Status | JSON Properties | |
+| Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
 | Started | `{ "status": "Will split partitions 2 into different partitions" }` | |
-| In Progress | **Checkpoint 1:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | **Checkpoint 2:** <br> `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
+| In Progress | `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
 | Succeeded | `{ "status": "Completed splits operation" }` | |
 
 ## Partition merge
@@ -227,8 +227,8 @@ The image below shows how these properties appear in the JSON tab of the Activit
 
 The table below shows the JSON properties emitted at each stage of a merge operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
 
-| Status | JSON Properties | |
+| Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
 | Started | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "status": "Collection <id> will merge partitions 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 into a new partition" }` | |
-| In Progress | **Checkpoint 1:** <br> `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | **Checkpoint 2:** <br> `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
+| In Progress | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
 | Succeeded | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "status": "Completed merge operation." }` | |
