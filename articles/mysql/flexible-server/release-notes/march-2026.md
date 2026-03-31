@@ -1,6 +1,6 @@
 ---
-title: Release Notes for Azure Database for MySQL Flexible Server - April 2026
-description: Learn about the release notes for Azure Database for MySQL Flexible Server April 2026.
+title: Release Notes for Azure Database for MySQL Flexible Server - March 2026
+description: Learn about the release notes for Azure Database for MySQL Flexible Server March 2026.
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
