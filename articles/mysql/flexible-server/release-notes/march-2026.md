@@ -10,9 +10,9 @@ ms.topic: release-notes
 ai-usage: ai-assisted
 ---
 
-# Azure Database for MySQL April 2026 version release notes
+# Azure Database for MySQL March 2026 version release notes
 
-The March 2026 version of Azure Database for MySQL Flexible Server is now available. Starting April 1, 2026, all new servers will automatically use this version. Existing servers upgrade during their next scheduled maintenance. To upgrade your servers earlier, enroll in the [Virtual Canary Program](https://aka.ms/mysql/virtual-canary).
+The March 2026 version of Azure Database for MySQL Flexible Server is now available. Starting March 31, 2026, all new servers will automatically use this version. Existing servers upgrade during their next scheduled maintenance. To upgrade your servers earlier, enroll in the [Virtual Canary Program](https://aka.ms/mysql/virtual-canary).
 
 This version introduces enhancements, resolves known problems, and includes important security patches to ensure optimal performance and security.
 
