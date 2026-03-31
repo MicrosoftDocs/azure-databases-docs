@@ -3,16 +3,16 @@ title: Migrate from VNet to a Private Endpoint Capable Network Configuration
 description: Learn how to migrate Azure Database for PostgreSQL from a VNet deployment to a network configuration that supports private endpoint connectivity.
 author: milenak
 ms.author: mpopovic
-ms.reviewer: maghan
-ms.date: 03/27/2026
-ms.topic: how-to
+ms.reviewer: maghan, ignacioal
+ms.date: 03/31/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
+ms.topic: how-to
 ---
 
 # Migrate from VNet to a Private Endpoint Capable Network Configuration (Preview)
 
-Azure Database for PostgreSQL flexible servers instances deployed with Virtual Network (VNet) integration can be migrated to a network configuration that supports private endpoints. Private endpoints provide secure connectivity through Azure Private Link, allowing your server to be accessed over a private IP address within your virtual network. This migration replaces VNet-injected networking with private endpoint support, giving you more flexibility in network design while maintaining private connectivity.
+Azure Database for PostgreSQL deployed with [private access](concepts-networking-private.md) uses [virtual network injection](/azure/virtual-network/virtual-network-for-azure-services) to place the server in a delegated subnet within your virtual network. You can migrate these servers to a network configuration that supports private endpoints. Private endpoints provide secure connectivity through Azure Private Link, so you can access your server over a private IP address within your virtual network. This migration replaces VNet-injected networking with private endpoint support, giving you more flexibility in network design while maintaining private connectivity.
 
 This article walks you through the steps to migrate your server, what to expect during the process, and how to restore connectivity after the migration is complete.
 
@@ -20,14 +20,14 @@ This article walks you through the steps to migrate your server, what to expect 
 
 Before you begin, verify that your server and environment meet the following requirements.
 
-- Server Configuration:
+- Server configuration:
 
   - The migration currently supports servers that are non-High Availability (HA) and non-replica. If HA is enabled, you must disable it before migration. Support for HA-enabled server migration is planned for future updates.
 
-    > [!TIP]
+    > [!TIP]  
     > You can re-enable HA after the process is complete.
 
-- Access Requirements:
+- Access requirements:
 
   - Azure API, SDK, or CLI supports this migration operation. Ensure you have access to one of these tools.
 
@@ -39,12 +39,12 @@ Review the following information about connectivity, downtime, and post-migratio
 
   - After migration, public access is enabled by default. The migration doesn't configure any firewall rules that permit inbound traffic unless you explicitly define them. If you don't want public access, you can disable it after migration.
 
-  > [!NOTE]
+  > [!NOTE]  
   > A future update changes the default to disable public access after migration.
 
 - You need to adjust Terraform scripts after the migration to comply with the new setup. For more information, see the *Post-migration Setup* section.
 
-- The end-to-end migration process typically takes about 20 minutes. During this time, the server is in an "updating" state.
+- The end-to-end migration process typically takes about 20 minutes. During this time, the server is in an **Updating** state.
 
 - Connectivity impact:
 
@@ -52,32 +52,34 @@ Review the following information about connectivity, downtime, and post-migratio
 
 ## Migration steps
 
-Use the Azure CLI to start the migration and then monitor the server status until the operation completes.
+### [Portal](#tab/portal-migrate)
 
-### Initiate the migration
+This operation isn't currently available through the Azure portal. Use the **CLI** tab to initiate the migration.
 
-Use the Azure CLI to migrate your server to a PE-capable network configuration. Replace `your-resource-group` and `your-server-name` with your actual resource group and server names.
+After you start the migration, monitor the server status in the Azure portal. Refresh the page periodically until the status changes from **Updating** to **Ready**.
 
-```azurecli
-az postgres flexible-server migrate-network --resource-group your-resource-group --name your-server-name
+:::image type="content" source="media/how-to-migrate-vnet-private-endpoint-capable-server/server-updating-status.png" alt-text="Screenshot of the Azure portal showing the server in Updating state." lightbox="media/how-to-migrate-vnet-private-endpoint-capable-server/server-updating-status.png" :::
+
+### [CLI](#tab/cli-migrate)
+
+Run the following command to migrate your server to a PE-capable network configuration:
+
+```azurecli-interactive
+az postgres flexible-server migrate-network \
+  --resource-group <resource_group> \
+  --name <server>
 ```
 
-### Monitor server status
+After you run the command, the server's status changes to **Updating**. You can check the server state:
 
-After you run the CLI command, the server's status changes to **updating**. Monitor the status:
+```azurecli-interactive
+az postgres flexible-server show \
+  --resource-group <resource_group> \
+  --name <server> \
+  --query "state"
+```
 
-- **From portal**: Refresh the page in the Azure portal periodically until the update finishes.
-
-  :::image type="content" source="media/how-to-migrate-vnet-private-endpoint-capable-server/image2.png" alt-text="Screenshot of the Azure portal showing the server in updating state.":::
-
-- **From terminal**: You see the Azure CLI progress spinner for a long-running operation. This spinner means the command starts successfully and the service processes the network migration asynchronously on the backend. In a second terminal, you can check the server state:
-
-    ```azurecli
-    az postgres flexible-server show \
-        --resource-group your-resource-group \
-        --name your-server-name \
-        --query "state"
-    ```
+---
 
 ## Post-migration setup
 
