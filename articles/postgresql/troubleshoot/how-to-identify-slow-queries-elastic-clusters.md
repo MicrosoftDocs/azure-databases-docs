@@ -59,9 +59,9 @@ The `global_pid` associated with the long-running query is the same, which means
 
 ### Identify the tables and their distribution type in the query
 
-1. The distributed tables
-1. The reference tables
-1. The colocation tables
+ - The distributed tables
+ - The reference tables
+ - The colocation tables
 
 If the query uses regular tables, change them to either reference tables or colocation tables. To find this information, use the following query.
 
@@ -105,15 +105,15 @@ WHERE a.colocation_id <> b.colocation_id;
 
 What to look for in the preceding query:
 
-1. If your tables are listed, consider colocating them. Colocating tables prevents:
+ - If your tables are listed, consider colocating them. Colocating tables prevents:
    - Data reshuffling across nodes
    - Network overhead
    - Temp file spills
 
 You can also identify these symptoms by reviewing the execution plans of your query. Pay attention to these action types:
 
-1. Distributed Repartition Join
-1. Distributed Subplan/Union
+ - Distributed Repartition Join
+ - Distributed Subplan/Union
 
 ### Solution
 
