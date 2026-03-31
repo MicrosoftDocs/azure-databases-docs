@@ -7,8 +7,6 @@ ms.date: 12/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Audit logging in Azure Database for PostgreSQL for Microsoft Entra ID principals

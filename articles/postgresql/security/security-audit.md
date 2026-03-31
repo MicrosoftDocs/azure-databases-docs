@@ -8,8 +8,6 @@ ms.date: 08/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Audit logging in Azure Database for PostgreSQL
