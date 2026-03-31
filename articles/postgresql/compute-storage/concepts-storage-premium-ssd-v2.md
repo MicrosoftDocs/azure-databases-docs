@@ -23,20 +23,20 @@ Premium SSD v2 offers higher performance than Premium SSD, while also being less
 
 Unlike Premium SSD, Premium SSD v2 doesn't have dedicated sizes. You can set a Premium SSD v2 disk to any size you prefer, and make granular adjustments as per your workload requirements. Those granular increments can go in steps of 1 GiB. Premium SSD v2 doesn't support host caching, but still provides lower latency than Premium SSD. Premium SSD v2 capacities range from 1 GiB to 64 TiB.
 
-Premium SSD v2 offers flexible IOPS configurations. Azure Database for PostgreSQL server provides a baseline IOPS of 3,000 for disks up to 399 GiB, and 12,000 IOPS for disks over 400 GiB at no extra cost. Disks can achieve up to 80,000 IOPS when sized at least 160 GiB. IOPS beyond the free tier incur extra charges.
+Premium SSD v2 offers flexible IOPS configurations. Azure Database for PostgreSQL server provides a baseline IOPS of 3,000 for disks up to 399 GiB, and 12,000 IOPS for disks 400 GiB or larger at no extra cost. Disks can achieve up to 80,000 IOPS when sized at least 160 GiB. IOPS beyond the free tier incur extra charges.
 
-Premium SSD v2 also offers flexible throughput configurations. Azure Database for PostgreSQL provides a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no extra cost. Throughput beyond the free tier incurs extra charges.
+Premium SSD v2 also offers flexible throughput configurations. Azure Database for PostgreSQL provides a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB or larger at no extra cost. Throughput beyond the free tier incurs extra charges.
 
 > [!NOTE]  
 > Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
 ### IOPS
 
-Azure Database for PostgreSQL server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks over 400 GiB at no extra cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in extra charges.
+Azure Database for PostgreSQL server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks 400 GiB or larger at no extra cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in extra charges.
 
 ### Throughput
 
-Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no extra cost. Increasing throughput beyond the free tier results in extra charges.
+Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB larger at no extra cost. Increasing throughput beyond the free tier results in extra charges.
 
 The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
