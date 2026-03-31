@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/15/2026
+ms.date: 3/30/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -17,6 +17,10 @@ ms.custom:
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
 
+## Release: April 2026
+- General availability
+    - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.3, 17.9, 16.13, 15.17, and 14.22. <sup>$</sup>
+    
 ## Release: March 2026
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.2, 17.8, 16.12, 15.16, and 14.21. <sup>$</sup>
@@ -24,7 +28,7 @@ This article highlights the latest updates and enhancements for Azure Database f
      
 ## Release: February 2026
 - General availability
-    - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure Portal for PostgreSQL.
+    - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure portal for PostgreSQL.
 - Preview
     - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
     - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
@@ -38,7 +42,7 @@ This article highlights the latest updates and enhancements for Azure Database f
           
 ## Release: December 2025
 - General availability
-    - Support for [Python](https://pypi.org/project/azure-mgmt-postgresqlflexibleservers/2.0.0/), [Javascript](https://www.npmjs.com/package/@azure/arm-postgresql-flexible/v/9.0.0), [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0), and [Java](https://central.sonatype.com/artifact/com.azure.resourcemanager/azure-resourcemanager-postgresqlflexibleserver/2.0.0) SDKs with [GA REST API](release-notes-api.md) version.
+    - Support for [Python](https://pypi.org/project/azure-mgmt-postgresqlflexibleservers/2.0.0/), [JavaScript](https://www.npmjs.com/package/@azure/arm-postgresql-flexible/v/9.0.0), [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0), and [Java](https://central.sonatype.com/artifact/com.azure.resourcemanager/azure-resourcemanager-postgresqlflexibleserver/2.0.0) SDKs with [GA REST API](release-notes-api.md) version.
     - Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.14.0) with [GA REST API](release-notes-api.md) version.
     - Support for [PostgreSQL 18](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) with Terraform resource.
  
@@ -52,7 +56,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for new [PgBouncer versions](../connectivity/../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
     - Support for configuring zone-resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure portal.
-    - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now avaialable. 
+    - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now available. 
     - [Maintenance release notes](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
     - [Read Replica support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
