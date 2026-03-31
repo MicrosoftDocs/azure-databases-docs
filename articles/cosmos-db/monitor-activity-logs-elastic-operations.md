@@ -78,7 +78,7 @@ The breakdown below includes the values for our example and descriptions of each
 | --- | --- | --- | --- |
 | Total Operations Required | `1` | `1` | The total number of partitions that need to split to serve the requested throughput. |
 | In Progress Operations | `1` | `0` | Partitions that are actively splitting. |
-| WaitingToBeScheduled | `0` | `0` | Partitions ready to split but temporarily blocked by another operation on the same partition. These will proceed automatically. |
+| WaitingToBeScheduled Operations | `0` | `0` | Partitions ready to split but temporarily blocked by another operation on the same partition. These will proceed automatically. |
 | Completed Operations | `0` | `1` | Partitions that have finished splitting and are now serving traffic at the new throughput. |
 | Failed Operations | `0` | `0` | Partitions that encountered an error. These are automatically requeued under a new operation ID and will appear as a separate operation. |
 
@@ -114,7 +114,7 @@ Round 2 — Partition 1 splits into Partition 3 and Partition 4.
 
 At the end, you have 3 partitions (Partitions 2, 3, and 4) serving the 30,000 RU/s. Once Round 2 is completed, the main log entry shows Succeeded.
 
-```
+```text
 Main log status: Started
 
 ┌───────  Round 1: Split  ───────┐
@@ -211,7 +211,7 @@ The breakdown below includes the values for our example and descriptions of each
 | --- | --- | --- | --- |
 | Total Operations Required | `1` | `1` | The total number of partition merges needed to reach the target partition count. |
 | In Progress Operations | `1` | `0` | Merges that are actively running. |
-| WaitingToBeScheduled | `0` | `0` | Merges ready to proceed but temporarily blocked by another operation on the same partition. |
+| WaitingToBeScheduled Operations | `0` | `0` | Merges ready to proceed but temporarily blocked by another operation on the same partition. |
 | Completed Operations | `0` | `1` | Merges that have finished. |
 | Failed Operations | `0` | `0` | Merges that encountered an error. These are automatically requeued under a new operation ID. |
 
