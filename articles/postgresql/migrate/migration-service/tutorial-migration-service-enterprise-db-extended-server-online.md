@@ -1,5 +1,5 @@
 ---
-title: Migrate Online, from an EDB Extended Server to Azure Database for PostgreSQL, Using the Migration Service in Azure (Preview)
+title: Migrate Online, from an EDB Extended Server to Azure Database for PostgreSQL, Using the Migration Service in Azure
 description: Learn to migrate, seamlessly and in online mode, from an EDB Extended server to Azure Database for PostgreSQL, using the migration service in Azure.
 author: hariramt
 ms.author: hariramt
@@ -14,7 +14,7 @@ ms.custom:
 # CustomerIntent: As a user, I want to learn how to perform online migration from a EDB Extended server to Azure Database for PostgreSQL flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
-# Migrate online, from an EDB Extended server to Azure Database for PostgreSQL, with the migration service Preview
+# Migrate online, from an EDB Extended server to Azure Database for PostgreSQL, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL in online mode.
 
