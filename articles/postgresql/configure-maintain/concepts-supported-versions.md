@@ -4,7 +4,7 @@ description: Describes the supported major and minor versions of PostgreSQL in A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/15/2026
+ms.date: 3/30/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -50,10 +50,6 @@ The current minor release is **[!INCLUDE [minor-versions-12](includes/minor-vers
 ## PostgreSQL version 11 (Extended Support)
 
 The current minor release is **[!INCLUDE [minor-versions-11](includes/minor-version-11.md)]**. Refer to the [!INCLUDE [minor-versions-docs-11](includes/minor-version-docs-11.md)] to learn more about improvements and fixes in this release.
-
-## PostgreSQL version 10 and older
-
-We don't support PostgreSQL version 10 and older for Azure Database for PostgreSQL flexible server instances.
 
 ## Managing upgrades
 
