@@ -66,9 +66,9 @@ However, if you want to **enforce** that all new containers created in an accoun
 
 | Behavior | Description |
 | --- | --- |
-| **No defaulting of `/id`** | Azure Cosmos DB doesn't add `/id` as the last level automatically. You must specify the full HPK path at container creation time with `/id` as the last level. |
 | **New containers must use HPK + /id as last level** | Any new container created in the account must both use hierarchical partition keys and end with `/id` as the last level. If you want to partition only by `/id`, you can achieve this by setting `/id` as the first and only level in your hierarchical partition key. |
 | **Existing containers unchanged** | Enabling this property doesn't retroactively modify existing containers or their partition key configuration. To adopt this pattern for existing containers, create a new container with the desired HPK definition and [migrate your data](container-copy.md). |
+| **No defaulting of `/id`** | Azure Cosmos DB doesn't add `/id` as the last level automatically. You must specify the full HPK path at container creation time with `/id` as the last level. |
 | **Support for additional levels** | There is support for four levels of keys. However, a fourth level is recommended only for rare scenarios where three levels are needed in addition to `/id`. For the majority of workloads, two or three level of keys are sufficient to achieve good data distribution and optimize query performance. |
 
 ## Enable and configure enforcement
@@ -149,7 +149,7 @@ Update-AzCosmosDBAccount `
     -EnableHierarchicalPartitionKeyIdLastLevel $true
 ```
 
-### [.NET SDK](#tab/net-v3)
+### [Management .NET SDK](#tab/net-v3)
 
 Use the `Azure.ResourceManager.CosmosDB` management SDK to enable the property on your account.
 
@@ -171,7 +171,7 @@ patch.EnableHierarchicalPartitionKeyIdLastLevel = true;
 await account.UpdateAsync(WaitUntil.Completed, patch);
 ```
 
-### [Java SDK](#tab/java-v4)
+### [Management Java SDK](#tab/java-v4)
 
 Use the `azure-resourcemanager-cosmos` management SDK to enable the property on your account.
 
@@ -189,7 +189,7 @@ account.update()
     .apply();
 ```
 
-### [Python SDK](#tab/python)
+### [Management Python SDK](#tab/python)
 
 Use the `azure-mgmt-cosmosdb` management SDK to enable the property on your account.
 
@@ -218,6 +218,8 @@ client.database_accounts.begin_create_or_update(
 
 After you enable the property, create a new container by specifying a hierarchical partition key path that ends with `/id` (for example: `/tenantId`, `/userId`, `/id`). For more information about creating containers with hierarchical partition keys, see [Create a container by using hierarchical partition keys](hierarchical-partition-keys.md#create-a-container-by-using-hierarchical-partition-keys).
 
+To disable this feature set 'enableHierarchicalPartitionKeyIdLastLevel' property back to false.
+
 ## Frequently asked questions
 
 ### Why am I getting errors related to the 20-GB limit?
@@ -226,11 +228,11 @@ This typically means a single logical partition (a single partition key value) h
 
 ### Why does my request fail with "The last level of the hierarchical partition key must be '/id'"?
 
-With `EnforceHierarchicalPartitionKeyIdLastLevel` enabled, your items must include every partition key property in the hierarchy. For example, if your HPK is `/tenantId`, `/userId`, `/id`, then each item must have `tenantId`, `userId`, and `id` properties. The request must supply the matching full partition key value for point reads, updates, and deletes.
+With `EnforceHierarchicalPartitionKeyIdLastLevel` enabled, your items must include every partition key property in the hierarchy. For example, if your HPK is `/tenantId`, `/userId`, `/id`, then each item must have `tenantId`, `userId`, and `id` properties. The request must supply the matching full partition key value for point reads, updates, and deletes. If this is not needed please disable.
 
 ### Why can't I create a container with a non-hierarchical partition key? Request failing with "Non-hierarchical partition key collection creation is blocked"
 
-After you enable `EnforceHierarchicalPartitionKeyIdLastLevel`, you must use hierarchical partition keys for all newly created containers. This restriction doesn't affect existing containers.
+After you enable `EnforceHierarchicalPartitionKeyIdLastLevel`, you must use hierarchical partition keys for all newly created containers. This restriction doesn't affect existing containers. If this is not needed please disable.
 
 ### Can I change an existing container to use hierarchical partition keys?
 

@@ -79,10 +79,10 @@ Find the latest preview version of each supported SDK:
 
 | SDK | Supported versions | Package manager link |
 | --- | --- | --- |
-| .NET SDK v3 | >= 3.33.0 | <https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.33.0/> |
-| Java SDK v4 | >= 4.42.0 | <https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md#4420-2023-03-17/> |
+| .NET SDK v3 | >= 3.33.0 | <https://www.nuget.org/packages/Microsoft.Azure.Cosmos> |
+| Java SDK v4 | >= 4.42.0 | <https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos> |
 | JavaScript SDK v4 | 4.0.0 | <https://www.npmjs.com/package/@azure/cosmos/> |
-| Python SDK | >= 4.6.0 | <https://pypi.org/project/azure-cosmos/4.6.0/> |
+| Python SDK | >= 4.6.0 | <https://pypi.org/project/azure-cosmos> |
 
 ## Create a container by using hierarchical partition keys
 
