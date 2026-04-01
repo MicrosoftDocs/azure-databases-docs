@@ -13,7 +13,6 @@ ms.custom:
   - devx-track-extended-java
   - devx-track-python
   - sfi-ropc-nochange
-  - horz-security
 ---
 
 # Connect with managed identity to Azure Database for PostgreSQL 

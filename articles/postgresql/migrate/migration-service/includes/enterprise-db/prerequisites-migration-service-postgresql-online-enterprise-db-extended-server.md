@@ -12,7 +12,6 @@ ms.topic: include
 Before starting the migration with the Azure Database for PostgreSQL migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
-- [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
 - [Configure target setup](#configure-target-setup)
 - [Enable CDC as a source](#enable-cdc-as-a-source)
 - [Configure network setup](#configure-network-setup)
@@ -26,11 +25,11 @@ The source PostgreSQL server version must be 9.5 or later.
 
 If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher before you start the migration.
 
-### Install test_decoding - source setup
-
-- **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
-- In EDB Extended server, the test_decoding plugin is preinstalled and ready for logical replication. This allows you to easily set up logical replication slots and stream WAL changes, facilitating use cases such as change data capture (CDC) or replication to external systems.
-- For more information about the test-decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html)
+> [!NOTE]  
+> - [PgOutput](../../concepts-required-user-permissions.md#online-migration-using-pgoutput---required-publication-permissions) is the default logical decoding plugin used for Online migration. If source PostgreSQL version <10, **test_decoding** plugin is used.
+> - **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
+> - In EDB Extended server, the test_decoding plugin is preinstalled and ready for logical replication. This allows you to easily set up logical replication slots and stream WAL changes, facilitating use cases such as change data capture (CDC) or replication to external systems.
+> - For more information about the test-decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html)
 
 ### Configure target setup
 
@@ -40,7 +39,7 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 ### Enable CDC as a source
 
-- `test_decoding` logical decoding plugin captures the changed records from the source.
+- Logical decoding plugin captures the changed records from the source.
 - To ensure the migration user has the necessary replication privileges, execute the following SQL command:
 
 ```sql
