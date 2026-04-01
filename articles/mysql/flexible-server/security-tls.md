@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: concept-article
 ms.custom:
-  - horz-security
   - references_regions
 ---
 

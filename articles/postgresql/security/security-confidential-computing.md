@@ -8,8 +8,6 @@ ms.date: 02/26/2026
 ms.service: azure-database-postgresql 
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Azure Confidential Computing for Azure Database for PostgreSQL

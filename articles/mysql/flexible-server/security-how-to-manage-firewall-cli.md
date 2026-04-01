@@ -10,7 +10,6 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-  - horz-security
 ms.devlang: azurecli
 ---
 
