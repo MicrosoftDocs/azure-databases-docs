@@ -77,7 +77,8 @@ Azure Database for PostgreSQL supports both [zone-redundant and zonal models](/a
 
 ### SLA
 
-The **Zone-redundancy** model offers a higher uptime uptime SLA. For more information, see [SLAs for online services](https://aka.ms/csla).
+The **Zone-redundancy** model offers an uptime for an [SLA for about 99.99%](https://azure.microsoft.com/support/legal/sla/postgresql).
+The **Zonal** model offers an uptime for an [SLA for about 99.95%](https://azure.microsoft.com/support/legal/sla/postgresql).
 
 ## Azure Database for PostgreSQL without high availability
 
