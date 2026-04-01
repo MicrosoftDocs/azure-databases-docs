@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Connect clients with TLS security to your database
+# Connect clients with TLS security to your HorizondDB database (Preview) 
 
 Connections between your client applications and the database server always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
