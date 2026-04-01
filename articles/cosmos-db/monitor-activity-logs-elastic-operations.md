@@ -17,6 +17,8 @@ appliesto:
 
 # Activity logs for elastic (split/merge) operations
 
+This article explains how to use the Azure Activity Log to monitor partition split and merge operations in Azure Cosmos DB.
+
 ## Background
 
 In Azure Cosmos DB, each physical partition supports up to 10,000 RU/s of throughput. When you increase the provisioned throughput of a database or container beyond the capacity of the current physical partitions, Azure Cosmos DB must split those partitions to accommodate the extra throughput.
@@ -150,7 +152,7 @@ The Activity Log displays entries in the portal stacked top-down, with the most 
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/multi-round-split-activity-log.png" lightbox="media/monitor-activity-logs-elastic-operations/multi-round-split-activity-log.png" alt-text="Screenshot of the Activity Log showing multiple rounds of partition splits with Started and In Progress entries for each round.":::
 
-For this example, the Activity Log outputs results every 5 minutes. Round 1 of the split is surrounded by the blue box and shows a Started status, followed by 2 In Progress entries. Round 2 follows a similar pattern and is enclosed by the purple box.
+In this example view, Round 1 of the split is surrounded by the blue box and shows a Started status, followed by 2 In Progress entries. Round 2 follows a similar pattern and is enclosed by the purple box.
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" lightbox="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" alt-text="Screenshot of the Activity Log portal view showing Round 1 and Round 2 split entries highlighted in separate boxes.":::
 
