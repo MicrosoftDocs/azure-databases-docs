@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Connect and query overview for Azure HorizonDB 
 
-The following document includes links to examples showing how to connect and query with Azure HorizonDB. This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
+HorizonDB is Azure’s next‑generation PostgreSQL platform, designed to let developers securely connect to an Azure HorizonDB cluster and run standard PostgreSQL read and write queries without changing application code. Applications connect to a primary read‑write endpoint for transactional workloads and administrative operations, or to read‑only endpoints to scale read traffic across multiple readable replicas. HorizonDB is fully compatible with existing PostgreSQL clients, drivers, ORMs, and SQL syntax, allowing developers to integrate it into current applications with minimal or no code changes. This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
 
 ## Quickstarts
 
