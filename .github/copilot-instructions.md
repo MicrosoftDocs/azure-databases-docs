@@ -126,3 +126,7 @@ When providing feedback:
 - Ask clarifying questions when intent is unclear
 - Prioritize terminology issues and technical accuracy
 - Focus on improvements that help readers succeed
+
+### Git operations
+
+- Do not commit or push changes without explicit user approval.

@@ -92,15 +92,15 @@ The image below shows how these properties appear in the JSON tab of the Activit
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/split-succeeded-status.png" lightbox="media/monitor-activity-logs-elastic-operations/split-succeeded-status.png" alt-text="Screenshot of the Succeeded status entry for a completed partition split operation.":::
 
-### Activity Log Status JSON Table
+### Activity Log status JSON
 
-The table below shows the JSON properties emitted at each stage of a partition split operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
+The following JSON properties are emitted at each stage of a partition split operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
 
 | Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
-| Started | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "status": "Will split partitions 0 into different partitions" }` | |
-| In Progress | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
-| Succeeded | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database1", "collectionName": "container1", "targetThroughput": "15000", "status": "Completed splits operation" }` | |
+| Started | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database1",` <br>&nbsp;&nbsp;`"collectionName": "container1",` <br>&nbsp;&nbsp;`"targetThroughput": "15000",` <br>&nbsp;&nbsp;`"status": "Will split partitions 0 into different partitions"` <br>`}` | |
+| In Progress | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database1",` <br>&nbsp;&nbsp;`"collectionName": "container1",` <br>&nbsp;&nbsp;`"targetThroughput": "15000",` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "1",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "0",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database1",` <br>&nbsp;&nbsp;`"collectionName": "container1",` <br>&nbsp;&nbsp;`"targetThroughput": "15000",` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "0",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "1",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` |
+| Succeeded | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database1",` <br>&nbsp;&nbsp;`"collectionName": "container1",` <br>&nbsp;&nbsp;`"targetThroughput": "15000",` <br>&nbsp;&nbsp;`"status": "Completed splits operation"` <br>`}` | |
 
 ## Multiple rounds of splitting
 
@@ -156,16 +156,16 @@ In this example view, Round 1 of the split is surrounded by the blue box and sho
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" lightbox="media/monitor-activity-logs-elastic-operations/multi-round-split-rounds.png" alt-text="Screenshot of the Activity Log portal view showing Round 1 and Round 2 split entries highlighted in separate boxes.":::
 
-### Activity Log Status JSON Table
+### Activity Log status JSON
 
-The table below shows the JSON content extracted directly from the Activity Log entries. For clarity, the common JSON fields are omitted and only the status is left.
+The following JSON content is extracted directly from the Activity Log entries. For clarity, the common JSON fields are omitted and only the status is left.
 
 **Round 1: Split**
 
 | Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
-| Started | `{ "status": "Will split partitions 0 into different partitions" }` | |
-| In Progress | `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
+| Started | `{` <br>&nbsp;&nbsp;`"status": "Will split partitions 0 into different partitions"` <br>`}` | |
+| In Progress | `{` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "1",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "0",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` | `{` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "0",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "1",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` |
 
 Partition 0 has finished splitting, as shown by the transition from an In Progress operation to a Completed Operation. Now we move on to split Partition 2.
 
@@ -173,9 +173,9 @@ Partition 0 has finished splitting, as shown by the transition from an In Progre
 
 | Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
-| Started | `{ "status": "Will split partitions 2 into different partitions" }` | |
-| In Progress | `{ "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
-| Succeeded | `{ "status": "Completed splits operation" }` | |
+| Started | `{` <br>&nbsp;&nbsp;`"status": "Will split partitions 2 into different partitions"` <br>`}` | |
+| In Progress | `{` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "1",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "0",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` | `{` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "0",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "1",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` |
+| Succeeded | `{` <br>&nbsp;&nbsp;`"status": "Completed splits operation"` <br>`}` | |
 
 ## Partition merge
 
@@ -225,12 +225,12 @@ The image below shows how these properties appear in the JSON tab of the Activit
 
 :::image type="content" source="media/monitor-activity-logs-elastic-operations/merge-succeeded-status.png" lightbox="media/monitor-activity-logs-elastic-operations/merge-succeeded-status.png" alt-text="Screenshot of the Succeeded status entry for a completed partition merge operation.":::
 
-### Activity Log Status JSON Table
+### Activity Log status JSON
 
-The table below shows the JSON properties emitted at each stage of a merge operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
+The following JSON properties are emitted at each stage of a merge operation. Checkpoint 1 and Checkpoint 2 illustrate how the In Progress status updates over time as partitions complete their work.
 
 | Status | JSON properties (Checkpoint 1) | JSON properties (Checkpoint 2) |
 | --- | --- | --- |
-| Started | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "status": "Collection <id> will merge partitions 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 into a new partition" }` | |
-| In Progress | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "1", "WaitingToBeScheduled Operations": "0", "Completed Operations": "0", "Failed Operations": "0" }` | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "Total Operations Required": "1", "In Progress Operations": "0", "WaitingToBeScheduled Operations": "0", "Completed Operations": "1", "Failed Operations": "0" }` |
-| Succeeded | `{ "isSharedThroughput": "False", "resourceRid": "<id>", "databaseName": "database3", "collectionName": "container3", "status": "Completed merge operation." }` | |
+| Started | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database3",` <br>&nbsp;&nbsp;`"collectionName": "container3",` <br>&nbsp;&nbsp;`"status": "Collection <id> will merge partitions 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 into a new partition"` <br>`}` | |
+| In Progress | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database3",` <br>&nbsp;&nbsp;`"collectionName": "container3",` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "1",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "0",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database3",` <br>&nbsp;&nbsp;`"collectionName": "container3",` <br>&nbsp;&nbsp;`"Total Operations Required": "1",` <br>&nbsp;&nbsp;`"In Progress Operations": "0",` <br>&nbsp;&nbsp;`"WaitingToBeScheduled Operations": "0",` <br>&nbsp;&nbsp;`"Completed Operations": "1",` <br>&nbsp;&nbsp;`"Failed Operations": "0"` <br>`}` |
+| Succeeded | `{` <br>&nbsp;&nbsp;`"isSharedThroughput": "False",` <br>&nbsp;&nbsp;`"resourceRid": "<id>",` <br>&nbsp;&nbsp;`"databaseName": "database3",` <br>&nbsp;&nbsp;`"collectionName": "container3",` <br>&nbsp;&nbsp;`"status": "Completed merge operation."` <br>`}` | |
