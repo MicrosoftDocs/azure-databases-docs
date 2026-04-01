@@ -11,7 +11,6 @@ ms.topic: how-to
 ms.custom:
   - devx-track-dotnet
   - devx-track-extended-java
-  - horz-security
 ---
 
 # Update application client certificates

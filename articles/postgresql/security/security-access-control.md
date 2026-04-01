@@ -8,8 +8,6 @@ ms.date: 09/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Access management for Azure Database for PostgreSQL

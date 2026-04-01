@@ -12,7 +12,6 @@ ms.topic: include
 Before you start a migration by using the migration service in Azure Database for PostgreSQL, it's important to complete the following prerequisites. These prerequisites are specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
-- [Install test_decoding for source setup](#install-test_decoding-for-source-setup)
 - [Configure the target setup](#configure-the-target-setup)
 - [Enable CDC as a source](#enable-cdc-as-a-source)
 - [Configure the network setup](#configure-the-network-setup)
@@ -24,10 +23,11 @@ Before you start a migration by using the migration service in Azure Database fo
 
 The source PostgreSQL server version must be 9.5 or later. If the source PostgreSQL version is earlier than 9.5, upgrade the version to 9.5 or later before you start the migration.
 
-### Install test_decoding for source setup
-
-- The test_decoding plugin receives Write-Ahead Logging (WAL) through the logical decoding mechanism. The plugin decodes WAL into text representations of the operations that are performed.
-- In Amazon RDS for PostgreSQL, the test_decoding plugin is preinstalled and ready for logical replication. You can easily set up logical replication slots and stream WAL changes, for example, for change data capture (CDC) or for replication to external systems.
+> [!NOTE]  
+> - [PgOutput](../../concepts-required-user-permissions.md#online-migration-using-pgoutput---required-publication-permissions) is the default logical decoding plugin used for Online migration. If source PostgreSQL version <10, **test_decoding** plugin is used. 
+> - **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
+> - In Amazon RDS for PostgreSQL, the test_decoding plugin is preinstalled and ready for logical replication. You can easily set up logical replication slots and stream WAL changes, for example, for change data capture (CDC) or for replication to external systems.
+> - For more information about the test-decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html)
 
 For more information about the test_decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html).
 
@@ -39,7 +39,7 @@ For more information, see [Create an Azure Database for PostgreSQL flexible serv
 
 ### Enable CDC as a source
 
-- The test_decoding logical decoding plugin captures the changed records from the source.
+- Logical decoding plugin captures the changed records from the source.
 - To allow the migration user to access replication permissions, execute the following command:
 
   ```bash

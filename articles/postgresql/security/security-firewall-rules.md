@@ -10,7 +10,6 @@ ms.subservice: security
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-  - horz-security
 ---
 
 # Firewall rules in Azure Database for PostgreSQL 
