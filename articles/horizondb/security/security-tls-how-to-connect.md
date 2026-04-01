@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Connect clients with TLS security to your database
+# Connect clients with TLS security to your HorizondDB database (Preview) 
 
 Connections between your client applications and the database server always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
@@ -148,7 +148,7 @@ Some application frameworks that use PostgreSQL for their database services don'
 The following example shows how to connect to your server by using the `PSQL` command-line interface. Use the `sslmode=verify-full` or `sslmode=verify-ca` connection string setting to enforce TLS certificate verification. Pass the local certificate file path to the `sslrootcert` parameter.
 
 ```bash
- psql "sslmode=verify-full sslrootcert=<path-of-pem-file> host=mydemoserver.postgres.database.azure.com dbname=postgres user=myadmin"
+ psql "sslmode=verify-full sslrootcert=<path-of-pem-file> host=mydemoserver.x99xx0xxx9xx.australiaeast.horizondb.azure.com dbname=postgres user=myadmin"
 ```
 
 ### Test TLS connectivity
