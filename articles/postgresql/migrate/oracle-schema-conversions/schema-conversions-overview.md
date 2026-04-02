@@ -77,6 +77,67 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 - Code completion for complex transformations
 - Integration with your existing development workflow
 
+## Oracle connectivity modes
+
+The schema conversion tool supports two connectivity modes for connecting to your source Oracle database: **thin** and **thick**. Understanding the difference helps you choose the right mode for your environment.
+
+### Thin client mode (default)
+
+Thin mode connects directly to Oracle Database without requiring any additional Oracle client libraries. This mode is the default and works out of the box.
+
+- No Oracle Instant Client installation required
+- Supports Oracle Database 12.1 and later
+- Suitable for most schema conversion scenarios
+- Connects using standard TCP/IP networking
+
+### Thick client mode
+
+Thick mode uses Oracle Instant Client libraries to connect to Oracle Database. This mode is required when thin mode can't establish a connection to your source Oracle environment.
+
+### Identify whether your Oracle source requires thick client mode
+
+You can determine whether thick client mode is required by checking the Oracle network configuration files in your source environment. Look for the following parameters in the `sqlnet.ora` file (typically located in `$ORACLE_HOME/network/admin/`):
+
+| Parameter | Indicates thick mode is required |
+| --- | --- |
+| `SQLNET.CRYPTO_CHECKSUM_CLIENT` | Set to `REQUIRED` or `REQUESTED` for native network encryption |
+| `SQLNET.ENCRYPTION_CLIENT` | Set to `REQUIRED` or `REQUESTED` for native network encryption |
+
+If any of these parameters are configured in your source Oracle environment, select **Thick** client mode in the Migration Wizard and ensure Oracle Instant Client is installed.
+
+### Install Oracle Instant Client
+
+To use thick client mode, install Oracle Instant Client on the machine where VS Code and the schema conversion tool are running. Schema conversion is supported on **Windows** and **Linux** only.
+
+1. Download the **Oracle Instant Client Basic** or **Basic Light** package from Oracle's website for your operating system.
+1. Extract the package to a directory on the machine.
+1. Add the Instant Client directory to the system **PATH** environment variable:
+   - **Windows**: Add the Instant Client directory to the `PATH` variable through **System Properties** > **Environment Variables**, or by using PowerShell.
+   - **Linux**: Add the Instant Client directory to `PATH` and set the `LD_LIBRARY_PATH` environment variable to include the directory. Ensure the `libaio` library is installed.
+1. Restart VS Code to pick up the updated environment variables.
+
+## Authentication for Azure OpenAI and Azure AI Foundry
+
+The schema conversion tool supports two authentication methods for connecting to Azure OpenAI or Azure AI Foundry models:
+
+### API key authentication
+
+API key authentication uses a deployment-specific key to authorize requests. This method is straightforward and suitable for development and testing scenarios.
+
+### Microsoft Entra ID authentication
+
+Microsoft Entra ID (formerly Azure Active Directory) authentication provides token-based, identity-driven access to Azure OpenAI and Azure AI Foundry without managing API keys. This method is recommended for production environments and organizations with centralized identity management.
+
+To use Microsoft Entra ID authentication:
+
+1. **Assign the required role**: Ensure the signed-in user or service principal has the **Cognitive Services OpenAI User** role (or higher) on the Azure OpenAI resource. Assign the role in the Azure portal under **Access control (IAM)**.
+1. **Sign in to Azure in VS Code**: Use the **Azure: Sign In** command from the Command Palette (`Ctrl+Shift+P`) to authenticate with your Microsoft Entra ID account.
+1. **Select Entra ID authentication**: In the Migration Wizard language model configuration step, select **Microsoft Entra ID** as the authentication method instead of API key.
+1. **Provide the endpoint**: Enter your Azure OpenAI or Azure AI Foundry endpoint URL. The tool acquires the authentication token automatically from your signed-in session.
+
+> [!NOTE]
+> Microsoft Entra ID authentication requires the **Azure Account** extension in VS Code. The extension must be signed in with an identity that has the appropriate role assignment on the Azure OpenAI resource.
+
 ## Security and networking
 
 When you use the schema conversion feature, make sure your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure Database for PostgreSQL flexible server instance that you use as the scratch database.
@@ -98,6 +159,8 @@ Converting Oracle schemas to Azure Database for PostgreSQL streamlines migration
 - **AI-powered intelligence**: Uses Azure OpenAI for smart transformation decisions
 - **Validation-first approach**: Uses the scratch database to ensure converted objects work correctly
 - **Integrated workflow**: Works seamlessly within Visual Studio Code development environment
+- **Flexible Oracle connectivity**: Supports both thin and thick client modes for connecting to Oracle databases
+- **Multiple authentication options**: Supports API key and Microsoft Entra ID authentication for Azure OpenAI and Azure AI Foundry
 - **Review and refinement**: Provides clear guidance for manual review tasks
 - **Azure optimization**: Designed for Azure Database for PostgreSQL flexible server
 
