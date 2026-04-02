@@ -4,8 +4,9 @@ description: Connections and Authentication / TCP Settings server parameters for
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/01/2026
+ms.date: 05/05/2025
 ms.service: azure-database-postgresql
+ms.subservice: server-parameters
 ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
