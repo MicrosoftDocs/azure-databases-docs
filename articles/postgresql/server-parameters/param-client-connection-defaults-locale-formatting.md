@@ -6,6 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 05/05/2025
 ms.service: azure-database-postgresql
+ms.subservice: server-parameters
 ms.topic: concept-article
 ms.custom: automatically generated
 zone_pivot_groups: postgresql-server-version
