@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 02/02/2026
+ms.date: 04/01/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -16,10 +16,10 @@ ms.custom:
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -32,10 +32,10 @@ ms.custom:
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -47,7 +47,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
+| 18 | 1.7.0 <sup>*</sup> |
 | 17 | 1.6.0 <sup>*</sup> |
 | 16 | 1.6.0 <sup>*</sup> |
 | 15 | 1.5.0 <sup>*</sup> |
@@ -79,12 +79,12 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 2.4.0 <sup>*</sup> |
-| 17 | 2.4.0 <sup>*</sup> |
-| 16 | 2.4.0 <sup>*</sup> |
-| 15 | 2.4.0 <sup>*</sup> |
-| 14 | 2.4.0 <sup>*</sup> |
-| 13 | 2.4.0 <sup>*</sup> |
+| 18 | 2.5.1 <sup>*</sup> |
+| 17 | 2.5.1 <sup>*</sup> |
+| 16 | 2.5.1 <sup>*</sup> |
+| 15 | 2.5.1 <sup>*</sup> |
+| 14 | 2.5.1 <sup>*</sup> |
+| 13 | 2.5.1 <sup>*</sup> |
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
@@ -111,7 +111,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
+| 18 | 2.0.0 |
 | 17 | 1.3.1 |
 | 16 | 1.3.1 |
 | 15 | 1.3.1 |
@@ -319,11 +319,11 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 2.18 |
-| 17 | 2.18 |
-| 16 | 2.18 |
-| 15 | 2.18 |
-| 14 | 2.18 |
+| 18 | 2.19 |
+| 17 | 2.19 |
+| 16 | 2.19 |
+| 15 | 2.19 |
+| 14 | 2.19 |
 | 13 | 2.18 |
 | 12 | 2.18 |
 | 11 | Not supported |
@@ -447,14 +447,14 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.5 |
-| 17 | 1.5 |
-| 16 | 1.5 |
-| 15 | 1.4 |
-| 14 | 1.4 |
-| 13 | 1.4 |
-| 12 | 1.4 |
-| 11 | 1.4 |
+| 18 | 1.7 |
+| 17 | 1.7 |
+| 16 | 1.7 |
+| 15 | 1.7 |
+| 14 | 1.7 |
+| 13 | 1.7 |
+| 12 | 1.7 |
+| 11 | 1.7 |
 
 
 ## ltree
@@ -592,7 +592,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
+| 18 | 0.6.5 |
 | 17 | 0.6.4 |
 | 16 | 0.6.4 |
 | 15 | 0.6.4 |
@@ -668,6 +668,22 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
+## pg_ivm
+
+[pg_ivm](https://github.com/sraoss/pg_ivm) (Preview) provides Incremental View Maintenance (IVM) feature for PostgreSQL.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 1.13 <sup>*</sup> |
+| 17 | 1.13 <sup>*</sup> |
+| 16 | 1.13 <sup>*</sup> |
+| 15 | 1.13 <sup>*</sup> |
+| 14 | 1.13 <sup>*</sup> |
+| 13 | 1.13 <sup>*</sup> |
+| 12 | Not supported |
+| 11 | Not supported |
+
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -739,14 +755,14 @@ Read the special considerations for extension [pg_prewarm](../concepts-extension
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.4.7 |
-| 17 | 1.5.1 |
-| 16 | 1.5.1 |
-| 15 | 1.5.1 |
-| 14 | 1.5.1 |
-| 13 | 1.5.1 |
-| 12 | 1.4.7 |
-| 11 | 1.4.7 |
+| 18 | 1.5.3 |
+| 17 | 1.5.3 |
+| 16 | 1.5.3 |
+| 15 | 1.5.3 |
+| 14 | 1.5.3 |
+| 13 | 1.5.3 |
+| 12 | 1.5.3 |
+| 11 | 1.5.3 |
 
 Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
 ## pgrouting
@@ -901,10 +917,10 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -917,10 +933,10 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -933,10 +949,10 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -949,10 +965,10 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -965,10 +981,10 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 3.6.1 |
-| 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
+| 17 | 3.6.1 |
+| 16 | 3.6.1 |
+| 15 | 3.6.1 |
+| 14 | 3.6.1 |
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
@@ -1204,12 +1220,12 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 0.8.1 |
-| 17 | 0.8.0 |
-| 16 | 0.8.0 |
-| 15 | 0.8.0 |
-| 14 | 0.8.0 |
-| 13 | 0.8.0 |
+| 18 | 0.8.2 |
+| 17 | 0.8.2 |
+| 16 | 0.8.2 |
+| 15 | 0.8.2 |
+| 14 | 0.8.2 |
+| 13 | 0.8.2 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
 
