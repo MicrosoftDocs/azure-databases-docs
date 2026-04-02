@@ -879,6 +879,8 @@
               href: monitor-logs-basic-queries.md?context=/azure/cosmos-db/context/context
             - name: Audit control plane logs
               href: audit-control-plane-logs.md?context=/azure/cosmos-db/context/context
+            - name: Monitor activity logs for elastic (split/merge) operations
+              href: monitor-activity-logs-elastic-operations.md?context=/azure/cosmos-db/context/context
             - name: Troubleshoot issues with advanced diagnostics queries
               href: diagnostic-queries.md
             - name: Add a transformation for workspace data
