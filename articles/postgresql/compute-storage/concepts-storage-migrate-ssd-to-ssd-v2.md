@@ -58,7 +58,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-restore-custom-point)
 
-You can restore a backup of a server to the latest restore poietylkykljrtkyjknt via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
+You can restore a backup of a server to the latest restore via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
 
 ```azurecli-interactive
 az postgres flexible-server restore \
