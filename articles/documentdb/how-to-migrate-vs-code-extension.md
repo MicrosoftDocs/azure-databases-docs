@@ -224,7 +224,7 @@ The following table summarizes the supported migration sources:
 
 ### Public connectivity
 
-In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allowlists on both the source and target servers.
+In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allowlists on both the source and target servers. DMS uses a shared public virtual network (VNet) for all migrations within a given region. While this VNet is shared across customers, each migration job runs on its own isolated private worker node to ensure job-level isolation.
 
 Use public connectivity when:
 - Your source and target servers are accessible through public IP addresses.
@@ -245,7 +245,7 @@ To enable public connectivity:
 
 ### Private connectivity
 
-In private connectivity mode, DMS connects to your source and target through private networking. You grant DMS permission to peer into your virtual networks, and DMS establishes private connectivity at runtime.
+In private connectivity mode, DMS provisions a dedicated private VNet for each migration job and peers it with your source and target VNets. This means every job gets both isolated worker nodes and an isolated network, ensuring that no traffic crosses between jobs and no shared network paths exist between customers.
 
 The extension supports up to two virtual networks:
 - **Source VNet**: The virtual network where your source MongoDB server is accessible.
@@ -336,9 +336,9 @@ The following databases and collections are considered internal for MongoDB:
 
 
 #### Does the migration jobs run locally on my machine?
-The databases and collections are listed directly in the wizard UI using commands executed from the local VS Code client. This functionality requires network connectivity between the machine running VS Code and both the source and target environments.
+The migration wizard in VS Code requires network connectivity from your local machine to both the source and target environments. This connectivity is used to enumerate databases and collections and to submit the migration job. Once the job is submitted, you can close VS Code or disconnect from the source and target environments.
 
-Data migration tasks are executed by the **Azure Database Migration Service (DMS)**. DMS is an Azure-hosted service that orchestrates and manages data movement activities. Once the migration tasks are created, you no longer need to maintain connectivity to the source and target environments.
+Data migration is executed entirely by **Azure Database Migration Service (DMS)**, an Azure-hosted service that manages all data movement. DMS doesn't rely on your local machine or VS Code for job execution, so local connectivity isn't required after job submission.
 
 #### Can I rename databases and collections during migration?
 The extension doesn't support database and collection renaming during migration.
@@ -355,7 +355,7 @@ Also refer to [VS Code connectivity](#does-the-migration-jobs-run-locally-on-my-
 
 #### How many databases and collections can I migrate in a single migration?
 
-You can include up to **25 collections** in a single migration. However, you can create and run **multiple migration jobs** to migrate other collections.
+You can include unlimited number of collections in a single migration.
 
 #### How many migration jobs can I run simultaneously?
 

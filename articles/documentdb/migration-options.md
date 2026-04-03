@@ -13,7 +13,7 @@ ai-usage: ai-assisted
 
 This article helps you plan and execute a migration from MongoDB to Azure DocumentDB. It covers the available migration tools, the key phases of a migration, and best practices to reduce risk and minimize downtime.
 
-Whether you're migrating from an on-premises MongoDB server, a cloud-hosted VM, or a managed MongoDB service, the options and guidance in this article apply.
+Whether you're migrating from an on-premises MongoDB server, a cloud-hosted VM, or a managed MongoDB service, the migration options, guidance, and best practices in this article apply.
 
 
 ## Key migration phases
@@ -22,7 +22,10 @@ A successful migration follows these distinct phases. Each phase has specific go
 
 ### 1. Assess
 
-Run an automated scan of your source MongoDB to identify unsupported features, commands, query syntax, and index types. The assessment also provides an overview of MongoDB version, license, instance type, and database and collection metrics. Use these findings to plan schema changes and identify any required refactoring before migration.
+Run an automated scan of your source MongoDB by using the [Azure DocumentDB Migration extension](./how-to-assess-plan-migration-readiness.md) to identify unsupported features, commands, query syntax, and index types. The assessment also provides an overview of MongoDB version, license, instance type, and database and collection metrics. Use these findings to plan schema changes and identify any required refactoring before migration.
+
+> [!TIP]
+> We recommend you review the [supported MongoDB Query Language (MQL) features and syntax](./compatibility-query-language.md) in detail and perform a proof-of-concept prior to the actual migration.
 
 ### 2. Prepare
 
@@ -39,7 +42,10 @@ Run the migration job to move data in either offline or online mode:
 - **Offline migration**: Takes a snapshot of the source at the start and bulk-copies it to the target. Any data added, updated, or deleted on the source after the snapshot isn't copied. Required downtime depends on how long the bulk copy takes.
 - **Online migration**: Performs the same bulk copy as offline, but also monitors the change stream throughout the process. Changes made during migration are replicated to the target, so the application downtime required is minimal. Requires change stream and a sufficiently large oplog on the source.
 
-For online migrations, ensure that change stream is enabled and the oplog is sized appropriately on your source MongoDB to capture all changes during the migration window.
+> [!TIP]
+> For online migrations, ensure that change stream is enabled and the oplog is sized appropriately on your source MongoDB to capture all changes during the migration window.
+
+For available tools, see [Migration tools](#migration-tools).
 
 ### 5. Validate
 
@@ -49,15 +55,8 @@ Validate that all data has been copied, including the latest updates. Compare do
 
 Move read traffic to the target and verify there are no functional or performance issues. Once read validation is successful, move write traffic to the target. Monitor closely during the cutover window for any anomalies.
 
-## Premigration Assessment
 
-Use the [Azure DocumentDB Migration extension](./how-to-assess-plan-migration-readiness.md) to perform a compatibility assessment. The purpose of this stage is to identify any incompatibilities or warnings that exist in the current MongoDB solution. You should resolve the issues found in the assessment results before moving on with the migration process.
-
-> [!TIP]
-> We recommend you review the [supported MongoDB Query Language (MQL) features and syntax](./compatibility-query-language.md) in detail and perform a proof-of-concept prior to the actual migration.
-
-
-## Migration
+## Migration tools
 
 The tools discussed in this article assist you in migrating your MongoDB workloads from the following sources:
 
