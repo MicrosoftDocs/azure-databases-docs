@@ -135,13 +135,15 @@ This screen depends on the connectivity mode you chose in Step 1.
 
 ##### Public connectivity
 
-In public connectivity, the migration job connects to your source and target using public internet. To enable communication, you're required to update the source and target firewalls. To enable communication from the DMS servers, add the IP addresses listed in the screen to the source and target firewalls. For more information, see [configure Azure DocumentDB cluster](./how-to-configure-firewall.md) firewall.
+In public connectivity, the migration job connects to your source and target using public internet. To enable communication, you're required to update the source and target firewalls. To enable communication from the DMS servers, add the IP addresses listed in the screen to the source and target firewalls. For more information about the networking model, see [Public connectivity](#public-connectivity-1). For firewall configuration guidance, see [configure Azure DocumentDB cluster](./how-to-configure-firewall.md) firewall.
+
+
 
 :::image type="content" source="media/how-to-migrate-vs-code-extension/configure-connectivity-public.png" alt-text="Screenshot of the  public connectivity configuration step in wizard." lightbox="media/how-to-migrate-vs-code-extension/configure-connectivity-public.png":::
 
 ##### Private connectivity
 
-In private connectivity, the migration job runs within its virtual network. To securely communicate with your virtual networks, we use virtual network peering.
+In private connectivity, the migration job runs within its virtual network. To securely communicate with your virtual networks, we use virtual network peering. For more information about the networking model, see [Private connectivity](#private-connectivity-1).
 
 1. The tool allows for peering with two virtual networks, one for the source and the other for the target. Depending on your network configuration, select the subscription, resource group, and virtual networks from the dropdowns.
 
