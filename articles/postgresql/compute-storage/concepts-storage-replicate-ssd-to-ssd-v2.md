@@ -68,6 +68,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 > [!NOTE]
 > - Once the migration is complete, you can stop the original server, allow the required backup retention to be satisfied on the new server, and then safely decommission the old server.
+> - Please wait for the first automated backup to complete before configuring in‑region replicas, as replica creation depends on an existing backup.
 ---
 
 ## Related content
