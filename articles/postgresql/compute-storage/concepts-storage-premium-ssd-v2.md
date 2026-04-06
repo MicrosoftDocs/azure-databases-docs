@@ -12,12 +12,10 @@ ms.custom:
   - references_regions
 ---
 
-# Azure Database for PostgreSQL Premium SSD v2 storage option preview
+# Azure Database for PostgreSQL Premium SSD v2 storage option 
 
 Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments mean your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
-> [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
 ## Differences between Premium SSD and Premium SSD v2
 
@@ -27,8 +25,6 @@ Premium SSD v2 offers flexible IOPS configurations. Azure Database for PostgreSQ
 
 Premium SSD v2 also offers flexible throughput configurations. Azure Database for PostgreSQL provides a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB or larger at no extra cost. Throughput beyond the free tier incurs extra charges.
 
-> [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
 ### IOPS
 
@@ -55,7 +51,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade Customer Managed Keys and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, Customer Managed Keys and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
 
 Australia Central 2*, Australia East, Australia South East, Austria East, Brazil South*, Brazil Southeast*  Canada Central, Canada East, Central India, Central US, East Asia, East US, East US 2, France Central*  Germany West Central, Germany North, Indonesia Central*, Israel Central*, Italy North*, Japan East, Japan West, Korea Central*, Malaysia West*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South Africa North, South Africa West, Southeast Asia, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, South India, UAE North*, UK South, UK West, US South Central US, West Central US, West Europe, West US, West US 2, and West US 3* regions.
 
