@@ -43,9 +43,9 @@
         - name: Query a vector store with a .NET app
           displayName: Quickstart, vector search, vector database, dotnet
           href: quickstart-vector-store-dotnet.md
-          - name: Query a vector store with a Go app
-            displayName: Quickstart, vector search, vector database, Go
-            href: quickstart-vector-store-go.md
+        - name: Query a vector store with a Go app
+          displayName: Quickstart, vector search, vector database, Go
+          href: quickstart-vector-store-go.md
         - name: Create a vector index with a Node.js app
           displayName: Quickstart, vector search, vector index, Node.js, TypeScript, DiskANN
           href: quickstart-create-vector-index-typescript.md
@@ -563,7 +563,7 @@
         - name: Indexing
           items:
             - name: Indexing policies
-            displayName: consistent, none, indexing, policy
+              displayName: consistent, none, indexing, policy
               href: index-policy.md?context=/azure/cosmos-db/context/context
             - name: Manage indexing policies
               href: how-to-manage-indexing-policy.md
@@ -752,7 +752,7 @@
           href: how-to-multi-master.md
           items:
             - name: Conflict resolution policies
-            displayName: last write wins, custom, multi-region writes, multi-master
+              displayName: last write wins, custom, multi-region writes, multi-master
               href: conflict-resolution-policies.md?context=/azure/cosmos-db/context/context
             - name: Configure conflict resolution policies
               href: how-to-manage-conflicts.md
@@ -1087,7 +1087,7 @@
         - name: Templates
           items:
             - name: JSON syntax templates
-            displayName: ARM
+              displayName: ARM
               href: samples-resource-manager-templates.md
             - name: Bicep syntax templates
               href: bicep-samples.md
