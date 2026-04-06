@@ -24,12 +24,11 @@ How to connect to HorizonDB read/write instance (primary endpoint):
    	psql "host=<horizondb-primary-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
 	```
 
-How to connect to HorizonDB read replica pool (reader endpoint): arhorizondb.f90ac0bff9db.australiaeast.horizondb.azure.com
+How to connect to HorizonDB read replica pool (reader endpoint): 
 
 	```cmd
 	psql "host=<horizondb-reader-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
 	```
-
 
 This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
 
