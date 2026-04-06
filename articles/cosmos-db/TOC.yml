@@ -43,6 +43,9 @@
         - name: Query a vector store with a .NET app
           displayName: Quickstart, vector search, vector database, dotnet
           href: quickstart-vector-store-dotnet.md
+          - name: Query a vector store with a Go app
+            displayName: Quickstart, vector search, vector database, Go
+            href: quickstart-vector-store-go.md
         - name: Create a vector index with a Node.js app
           displayName: Quickstart, vector search, vector index, Node.js, TypeScript, DiskANN
           href: quickstart-create-vector-index-typescript.md
