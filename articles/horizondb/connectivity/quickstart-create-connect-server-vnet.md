@@ -19,20 +19,6 @@ ms.custom:
 
 Azure HorizonDB is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure HorizonDB flexible server instance in a virtual network by using the Azure portal.
 
-Applications can connect using standard PostgreSQL connection strings to either the primary server endpoint for read‑write workloads or the read‑replica endpoint for read‑only traffic.
-
-How to connect to HorizonDB read/write instance (primary endpoint): 
-
-	```cmd
-   	psql "host=<horizondb-primary-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
-	```
-
-How to connect to HorizonDB read replica pool (reader endpoint): arhorizondb.f90ac0bff9db.australiaeast.horizondb.azure.com
-
-	```sql
-	psql "host=<horizondb-reader-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
-	```
-
 
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
@@ -42,7 +28,7 @@ Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials 
 
 ## Create an Azure HorizonDB 
 
-You create an Azure HorizonDB flexible server instance with a defined set of [compute and storage resources](../compute-storage/concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+Create an Azure HorizonDB flexible server instance with a defined set of [compute and storage resources](../compute-storage/concepts-compute.md). Create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Complete these steps to create an Azure HorizonDB flexible server instance:
 
