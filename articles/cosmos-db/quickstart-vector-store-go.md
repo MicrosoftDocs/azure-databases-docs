@@ -361,13 +361,13 @@ Build and run the application with Go:
 
 ### [DiskANN](#tab/tab-diskann)
 
-#### [Linux/macOS](#tab/tab-diskann/tab-run-linux)
+Linux/macOS:
 
 ```bash
 VECTOR_ALGORITHM=diskann go run ./cmd/vector-search
 ```
 
-#### [Windows](#tab/tab-diskann/tab-run-windows)
+Windows:
 
 ```cmd
 set VECTOR_ALGORITHM=diskann && go run ./cmd/vector-search
@@ -375,13 +375,13 @@ set VECTOR_ALGORITHM=diskann && go run ./cmd/vector-search
 
 ### [Quantized flat](#tab/tab-quantizedflat)
 
-#### [Linux/macOS](#tab/tab-quantizedflat/tab-run-linux)
+Linux/macOS:
 
 ```bash
 VECTOR_ALGORITHM=quantizedflat go run ./cmd/vector-search
 ```
 
-#### [Windows](#tab/tab-quantizedflat/tab-run-windows)
+Windows:
 
 ```cmd
 set VECTOR_ALGORITHM=quantizedflat && go run ./cmd/vector-search
