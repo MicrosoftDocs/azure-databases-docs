@@ -235,6 +235,9 @@ public interface ItemRepository extends CosmosRepository<Item, String> {
 }
 ```
 
+> [!IMPORTANT]
+> `@Query`-annotated methods must return `List<T>` or a single `T`, not `Optional<T>`. `Optional<T>` is only supported for derived query methods such as `findById`. Using `Optional<T>` with `@Query` compiles without errors but causes a `ClassCastException` at runtime.
+
 Fetch all of the results of the query using `repository.getItemsByCategory`. Loop through the results of the query.
 
 ```java
