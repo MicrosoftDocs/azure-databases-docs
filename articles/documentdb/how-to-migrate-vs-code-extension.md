@@ -226,14 +226,14 @@ The following table summarizes the supported migration sources:
 
 ### Public connectivity
 
-In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allowlists on both the source and target servers. DMS uses a shared public virtual network (VNet) for all migrations within a given region. While this VNet is shared across customers, each migration job runs on its own isolated private worker node to ensure job-level isolation.
+In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allow lists on both the source and target servers. DMS uses a shared public virtual network (VNet) for all migrations within a given region. While this VNet is shared across customers, each migration job runs on its own isolated private worker node to ensure job-level isolation.
 
 Use public connectivity when:
 - Your source and target servers are accessible through public IP addresses.
 - Your organization's security policies allow connections over the public internet.
 - You need a simpler setup without virtual network configuration.
 
-:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" alt-text="Network architecture for public connectivity." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" :::
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" alt-text="Diagram that shows network architecture for public connectivity." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-public-endpoint.png" :::
 
 To enable public connectivity:
 
@@ -241,7 +241,7 @@ To enable public connectivity:
 
 1. Note the static IP addresses displayed in the wizard.
 
-1. Add these IP addresses to the firewall allowlist on your source MongoDB server.
+1. Add these IP addresses to the firewall allow list on your source MongoDB server.
 
 1. Add these IP addresses to the [Azure DocumentDB firewall](./how-to-configure-firewall.md).
 
@@ -262,13 +262,13 @@ Use private connectivity when:
 
 Use your preferred VPN tools to set up network connectivity between Azure and your source environment in another cloud or on-premises.
 
-:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" alt-text="Network architecture for private connectivity from another cloud provider or on-premises." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" :::
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" alt-text="Diagram that shows network architecture for private connectivity from another cloud provider or on-premises." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" :::
 
 #### From a private endpoint in Azure
 
 Set up private endpoints for the source and target virtual networks.
 
-:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" alt-text="Network architecture for private connectivity within Azure" lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" :::
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" alt-text="Diagram that shows network architecture for private connectivity within Azure" lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-azure.png" :::
 
 
 To enable private connectivity:
