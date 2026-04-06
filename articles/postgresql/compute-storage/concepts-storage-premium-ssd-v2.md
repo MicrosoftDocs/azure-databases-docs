@@ -55,7 +55,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade Customer Managed Keys and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
 
 Australia Central 2*, Australia East, Australia South East, Austria East, Brazil South*, Brazil Southeast*  Canada Central, Canada East, Central India, Central US, East Asia, East US, East US 2, France Central*  Germany West Central, Germany North, Indonesia Central*, Israel Central*, Italy North*, Japan East, Japan West, Korea Central*, Malaysia West*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South Africa North, South Africa West, Southeast Asia, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, South India, UAE North*, UK South, UK West, US South Central US, West Central US, West Europe, West US, West US 2, and West US 3* regions.
 
