@@ -20,15 +20,15 @@ Applications can connect using standard PostgreSQL connection strings to either 
 
 How to connect to HorizonDB read/write instance (primary endpoint): 
 
-	```cmd
+	
    	psql "host=<horizondb-primary-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
-	```
+	
 
 How to connect to HorizonDB read replica pool (reader endpoint): 
 
-	```cmd
+	
 	psql "host=<horizondb-reader-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
-	```
+	
 
 This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
 
