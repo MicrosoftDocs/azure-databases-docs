@@ -313,25 +313,29 @@ The code uses your local developer authentication to access Azure Cosmos DB and 
 
 Use the `VECTOR_ALGORITHM` environment variable to select which vector index implementation to run. The variable controls which Azure Cosmos DB container the application connects to.
 
-### [DiskANN - Linux/macOS](#tab/diskann-linux)
+### [DiskANN](#tab/tab-diskann)
+
+Linux/macOS:
 
 ```bash
 VECTOR_ALGORITHM=diskann python -m src.vector_search
 ```
 
-### [DiskANN - Windows](#tab/diskann-windows)
+Windows:
 
 ```powershell
 $env:VECTOR_ALGORITHM="diskann"; python -m src.vector_search
 ```
 
-### [Quantized flat - Linux/macOS](#tab/quantizedflat-linux)
+### [Quantized flat](#tab/tab-quantizedflat)
+
+Linux/macOS:
 
 ```bash
 VECTOR_ALGORITHM=quantizedflat python -m src.vector_search
 ```
 
-### [Quantized flat - Windows](#tab/quantizedflat-windows)
+Windows:
 
 ```powershell
 $env:VECTOR_ALGORITHM="quantizedflat"; python -m src.vector_search
