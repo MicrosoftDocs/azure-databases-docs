@@ -12,7 +12,26 @@ ms.topic: how-to
 
 # Connect and query overview for Azure HorizonDB 
 
-HorizonDB is Azure’s next‑generation PostgreSQL platform, designed to let developers securely connect to an Azure HorizonDB cluster and run standard PostgreSQL read and write queries without changing application code. Applications connect to a primary read‑write endpoint for transactional workloads and administrative operations, or to read‑only endpoints to scale read traffic across multiple readable replicas. HorizonDB is fully compatible with existing PostgreSQL clients, drivers, ORMs, and SQL syntax, allowing developers to integrate it into current applications with minimal or no code changes. This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
+HorizonDB is Azure’s next‑generation PostgreSQL platform, designed to let developers securely connect to an Azure HorizonDB cluster and run standard PostgreSQL read and write queries without changing application code. Applications connect to a primary read‑write endpoint for transactional workloads and administrative operations, or to read‑only endpoints to scale read traffic across multiple readable replicas. HorizonDB is fully compatible with existing PostgreSQL clients, drivers, ORMs, and SQL syntax, allowing developers to integrate it into current applications with minimal or no code changes. 
+
+Applications can connect using standard PostgreSQL connection strings to either the primary server endpoint for read‑write workloads or the read‑replica endpoint for read‑only traffic.
+
+Applications can connect using standard PostgreSQL connection strings to either the primary server endpoint for read‑write workloads or the read‑replica endpoint for read‑only traffic.
+
+How to connect to HorizonDB read/write instance (primary endpoint): 
+
+	```cmd
+   	psql "host=<horizondb-primary-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
+	```
+
+How to connect to HorizonDB read replica pool (reader endpoint): arhorizondb.f90ac0bff9db.australiaeast.horizondb.azure.com
+
+	```cmd
+	psql "host=<horizondb-reader-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"
+	```
+
+
+This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
 
 ## Quickstarts
 
