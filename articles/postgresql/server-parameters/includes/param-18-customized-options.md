@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 04/01/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -48,8 +48,8 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Define multiple masking policies (NOT IMPLEMENTED YET). |
 | Data type | string |
-| Default value | |
-| Allowed values | |
+| Default value | `anon` |
+| Allowed values | `anon` |
 | Parameter type | read-only |
 | Documentation | [anon.masking_policies](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
 
@@ -388,7 +388,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Fraction of queries to process. |
 | Data type | numeric |
-| Default value | `1` |
+| Default value | `1.0` |
 | Allowed values | `0.0-1.0` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.sample_rate](https://www.postgresql.org/docs/18/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-SAMPLE-RATE) |
@@ -576,7 +576,7 @@ ms.custom: automatically generated
 | Description | List of extensions, separated by comma, that are allowlisted. If an extension is not in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,amcheck,anon,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_ivm,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,topn,timescaledb,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -1305,10 +1305,10 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Customized Options |
 | Description | Specify timezone used for cron schedule. |
-| Data type | enumeration |
+| Data type | string |
 | Default value | `GMT` |
-| Allowed values | `GMT` |
-| Parameter type | read-only |
+| Allowed values | `.*` |
+| Parameter type | static |
 | Documentation | [cron.timezone](https://github.com/citusdata/pg_cron) |
 
 
@@ -1428,7 +1428,7 @@ ms.custom: automatically generated
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation |  |
+| Documentation | [pgaadauth.enable_group_sync](https://go.microsoft.com/fwlink/?linkid=2338467) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -1969,7 +1969,7 @@ ms.custom: automatically generated
 | Category | Customized Options |
 | Description | Role to be used by BGW. Must have execute permissions on run_maintenance(). |
 | Data type | string |
-| Default value | `postgres` |
+| Default value | |
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |

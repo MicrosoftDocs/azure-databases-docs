@@ -8,8 +8,6 @@ ms.date: 10/06/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Microsoft Entra authentication with Azure Database for PostgreSQL

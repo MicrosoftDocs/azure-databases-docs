@@ -10,7 +10,6 @@ ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-  - horz-security
 ---
 
 # Manage firewall rules for Azure Database for MySQL - Flexible Server using the Azure portal

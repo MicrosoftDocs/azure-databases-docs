@@ -71,7 +71,7 @@ For vector search functionality, you need:
 
 Before deploying the Azure Cosmos DB MCP Toolkit:
 
-- **Azure Subscription** with Contributor or Owner access ([Free account](https://azure.microsoft.com/free/))
+- **Azure Subscription** with Contributor or Owner access ([Free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn))
 - **Azure CLI** ([Install](/cli/azure/install-azure-cli)) installed and authenticated
 - **PowerShell 7+** ([Install](/powershell/scripting/install/installing-powershell)) for deployment scripts
 - **Existing Azure Cosmos DB account** with data (the toolkit connects to your existing Cosmos DB)

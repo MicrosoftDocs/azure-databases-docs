@@ -9,7 +9,6 @@ ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - sfi-image-nochange
   - sfi-ropc-blocked
 ---

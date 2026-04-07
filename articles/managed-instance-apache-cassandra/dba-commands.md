@@ -15,7 +15,7 @@ ms.author: thvankra
 Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload. This feature allows maximum flexibility and control where needed. This article describes how to run database administrator (DBA) commands manually when necessary.
 
 > [!IMPORTANT]
-> The `nodetool` and `sstable` commands are in public preview.
+> The `nodetool` and `sstable` commands are in public preview. These commands are on hold for now, please raise a support ticket for execution of any specific command. It is a temporary restriction and will be lifted soon.
 >
 > This feature is provided without a service-level agreement (SLA). We don't recommend this feature for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

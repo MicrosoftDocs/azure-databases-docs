@@ -708,6 +708,9 @@
         - name: Troubleshoot and identify slow running queries
           href: troubleshoot/how-to-identify-slow-queries.md
           displayName: Troubleshoot and identify slow running queries
+        - name: Troubleshoot and identify slow running queries on elastic clusters
+          href: troubleshoot/how-to-identify-slow-queries-elastic-clusters.md
+          displayName: Troubleshoot and identify slow running queries on elastic clusters
         - name: Troubleshoot connections
           href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
           displayName: Troubleshoot connections

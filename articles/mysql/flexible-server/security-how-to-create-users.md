@@ -8,8 +8,6 @@ ms.date: 01/07/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Create users in Azure Database for MySQL
