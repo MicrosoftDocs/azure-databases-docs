@@ -12,7 +12,7 @@ ms.custom:
   - references_regions
 ---
 
-# Azure Database for PostgreSQL Premium SSD v2 storage option 
+# Azure Database for PostgreSQL Premium SSD v2 
 
 Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments mean your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
@@ -64,8 +64,10 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 ### Limitations and Considerations
 
  - Long‑term backups, storage autogrow, and PostgreSQL version 13 are currently not supported with Premium SSD v2.
-
+   
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
+
+- While CMK is supported across all the regions above, geo-redundant backups cannot currently be enabled when using CMK
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
