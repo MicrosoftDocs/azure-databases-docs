@@ -251,14 +251,16 @@
       href: compute-storage/concepts-compute.md
     - name: Storage
       items:
-        - name: Overview
-          href: compute-storage/concepts-storage.md
-        - name: Premium SSD
-          href: compute-storage/concepts-storage-premium-ssd.md
-        - name: Premium SSD v2
-          href: compute-storage/concepts-storage-premium-ssd-v2.md
-        - name: Migrate from Premium SSD to Premium SSD v2
-          href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
+      - name: Overview
+        href: compute-storage/concepts-storage.md
+      - name: Premium SSD
+        href: compute-storage/concepts-storage-premium-ssd.md  
+      - name: Premium SSD v2
+        href: compute-storage/concepts-storage-premium-ssd-v2.md  
+      - name: Migrate from Premium SSD to Premium SSD v2 using PITR
+        href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
+      - name: Migrate from Premium SSD to Premium SSD v2 using replication
+        href: compute-storage/concepts-storage-replicate-ssd-to-ssd-v2.md
 - name: Scaling
   items:
     - name: Scaling resources
