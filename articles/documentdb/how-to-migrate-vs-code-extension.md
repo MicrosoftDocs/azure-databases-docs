@@ -226,7 +226,7 @@ The following table summarizes the supported migration sources:
 
 ### Public connectivity
 
-In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allow lists on both the source and target servers. DMS uses a shared public virtual network (VNet) for all migrations within a given region. While this VNet is shared across customers, each migration job runs on its own isolated private worker node to ensure job-level isolation.
+In public connectivity mode, the Azure Database Migration Service (DMS) connects to your source and target servers over the public internet. DMS provides static IP addresses that you add to the firewall allow lists on both the source and target servers. DMS uses a shared public virtual network for all migrations within a given region. While this virtual network is shared across customers, each migration job runs on its own isolated private worker node to ensure job-level isolation.
 
 Use public connectivity when:
 - Your source and target servers are accessible through public IP addresses.
@@ -247,11 +247,11 @@ To enable public connectivity:
 
 ### Private connectivity
 
-In private connectivity mode, DMS provisions a dedicated private VNet for each migration job and peers it with your source and target VNets. This means every job gets both isolated worker nodes and an isolated network, ensuring that no traffic crosses between jobs and no shared network paths exist between customers.
+In private connectivity mode, DMS provisions a dedicated private virtual network for each migration job and peers it with your source and target virtual networks. This means every job gets both isolated worker nodes and an isolated network, ensuring that no traffic crosses between jobs and no shared network paths exist between customers.
 
 The extension supports up to two virtual networks:
-- **Source VNet**: The virtual network where your source MongoDB server is accessible.
-- **Target VNet**: The virtual network where your Azure DocumentDB cluster is accessible.
+- **Source virtual network**: The virtual network where your source MongoDB server is accessible.
+- **Target virtual network**: The virtual network where your Azure DocumentDB cluster is accessible.
 
 Use private connectivity when:
 - Your source or target servers aren't accessible over the public internet.
