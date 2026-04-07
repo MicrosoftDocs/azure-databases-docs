@@ -13,8 +13,6 @@ ms.topic:  concept-article
 
 # Migrate or restore from Premium SSD to Premium SSDv2
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides step-by-step instructions to perform a restore of an Azure Database for PostgreSQL flexible server to a custom restore point.
 
 ## Steps to migrate or restore from Premium SSD to Premium SSDv2

@@ -12,12 +12,10 @@ ms.custom:
   - references_regions
 ---
 
-# Azure Database for PostgreSQL Premium SSD v2 storage option preview
+# Premium SSD v2 storage option in Azure Database for PostgreSQL
 
 Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments mean your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
-> [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
 ## Differences between Premium SSD and Premium SSD v2
 
@@ -27,8 +25,6 @@ Premium SSD v2 offers flexible IOPS configurations. Azure Database for PostgreSQ
 
 Premium SSD v2 also offers flexible throughput configurations. Azure Database for PostgreSQL provides a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB or larger at no extra cost. Throughput beyond the free tier incurs extra charges.
 
-> [!NOTE]  
-> Premium SSD v2 is currently in preview for Azure Database for PostgreSQL flexible server instances.
 
 ### IOPS
 
@@ -50,35 +46,42 @@ Your virtual machine type also has IOPS limits. Although you can select any stor
 
 To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
 
-> [!NOTE]  
-> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
+
+> [!IMPORTANT]  
+> The selected compute size determines the minimum and maximum IOPS. 
+
 
 ## Supported features
 
-Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade Customer Managed Keys and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys) and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL in below supported regions.
 
-Australia Central 2*, Australia East, Australia South East, Austria East, Brazil South*, Brazil Southeast*  Canada Central, Canada East, Central India, Central US, East Asia, East US, East US 2, France Central*  Germany West Central, Germany North, Indonesia Central*, Israel Central*, Italy North*, Japan East, Japan West, Korea Central*, Malaysia West*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South Africa North, South Africa West, Southeast Asia, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, South India, UAE North*, UK South, UK West, US South Central US, West Central US, West Europe, West US, West US 2, and West US 3* regions.
+**Americas**: Brazil South*, Brazil Southeast*, Canada Central, Canada East, Central US, East US, East US 2, North Central US, South Central US, West Central US, West US, West US 2, West US 3*.
+**Europe**: Austria East, France Central*, Germany West Central, Germany North, Italy North*, North Europe, Norway East, Norway West, Poland Central*, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, UK South, UK West, West Europe.
+**Asia Pacific & Middle East**: Australia Central 2*, Australia East, Australia Southeast, Central India, East Asia, Indonesia Central*, Israel Central*, Japan East, Japan West, Korea Central*, Malaysia West*, New Zealand North*, South India, Southeast Asia, UAE North*.
+**Africa**: South Africa North, South Africa West.
 
-Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
+Sovereign regions, including China North 3 and US Gov Virginia, support only standalone SSDv2 deployments and don't currently support these features. 
 
+ 
 > [!NOTE]  
->  Geo‑redundant backups are currently unavailable in the region marked with* because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
-
+> Geo‑redundant backups are currently unavailable in regions marked with an asterisk (*) because either the paired region doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
 
 ### Limitations and Considerations
 
  - Long‑term backups, storage autogrow, and PostgreSQL version 13 are currently not supported with Premium SSD v2.
-
+   
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
+
+-  Although CMK and geo-redundant backups are each supported, enabling geo-redundant backups with CMK isn't currently supported.
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
-- For larger servers, the initial automated backup may take longer to complete and will appear in the Azure portal once it finishes. This is expected behavior while the service completes the first full backup. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas. After the initial backup, all subsequent backups are incremental and typically complete quickly.
+- For larger servers, the initial automated backup takes longer to complete and appears in the Azure portal after it completes. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas. After the initial backup, all subsequent backups are incremental and typically complete quickly.
 
 
-- Online migration from Premium SSD to Premium SSD v2 is not supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2, or create a read replica from Premium SSD to Premium SSD V2 server. Because storage autogrow is not currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
+- Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
 
- - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios.It is not supported for ongoing operations, as Premium SSD cannot keep pace with Premium SSD v2 performance and may introduce latency issues.
+ - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in increased latency.
   
 - If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
 
@@ -86,7 +89,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
   **Operations that can trigger this behavior include:**  
          Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-         If you are performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+         If you're performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
          Creating a new server using PITR(point-in-time-restore) and immediately enabling High Availability or Read Replicas while the disk is still being hydrated.  
 
   **Best practice:**  
@@ -98,8 +101,8 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
-> [!IMPORTANT]  
-> The selected compute size determines the minimum and maximum IOPS.
+> [!NOTE]  
+> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
 
 
 ## Related content
