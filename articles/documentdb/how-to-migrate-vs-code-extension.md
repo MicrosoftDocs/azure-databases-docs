@@ -262,7 +262,7 @@ Use private connectivity when:
 
 Use your preferred VPN tools to set up network connectivity between Azure and your source environment in another cloud or on-premises.
 
-:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" alt-text="Diagram that shows network architecture for private connectivity from another cloud provider or on-premises." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premise-other-cloud.png" :::
+:::image type="content" source="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premises-other-cloud.png" alt-text="Diagram that shows network architecture for private connectivity from another cloud provider or on-premises." lightbox="media/how-to-migrate-vs-code-extension/migrate-using-private-endpoint-on-premises-other-cloud.png" :::
 
 #### From a private endpoint in Azure
 
