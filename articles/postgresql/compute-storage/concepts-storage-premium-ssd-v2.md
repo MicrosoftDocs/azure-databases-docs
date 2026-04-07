@@ -53,7 +53,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys) and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL – Flexible Server in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys) and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL in below supported regions.
 
 Australia Central 2*, Australia East, Australia South East, Austria East, Brazil South*, Brazil Southeast*  Canada Central, Canada East, Central India, Central US, East Asia, East US, East US 2, France Central*  Germany West Central, Germany North, Indonesia Central*, Israel Central*, Italy North*, Japan East, Japan West, Korea Central*, Malaysia West*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South Africa North, South Africa West, Southeast Asia, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, South India, UAE North*, UK South, UK West, US South Central US, West Central US, West Europe, West US, West US 2, and West US 3* regions.
 
@@ -61,8 +61,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
  
 > [!NOTE]  
->  Geo‑redundant backups are currently unavailable in the region marked with* because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
-
+> Geo‑redundant backups are currently unavailable in regions marked with an asterisk (*) because either the paired region does not support native SSDv2 storage or the region does not have an Azure paired region.
 
 ### Limitations and Considerations
 
@@ -77,7 +76,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 - For larger servers, the initial automated backup may take longer to complete and will appear in the Azure portal once it finishes. This is expected behavior while the service completes the first full backup. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas. After the initial backup, all subsequent backups are incremental and typically complete quickly.
 
 
-- Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2, or create a read replica from Premium SSD to Premium SSD V2 server. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
+- Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
 
  - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in increased latency.
   
