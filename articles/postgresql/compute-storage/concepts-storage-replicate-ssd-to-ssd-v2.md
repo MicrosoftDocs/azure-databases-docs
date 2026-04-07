@@ -1,25 +1,27 @@
 ---
 title: Migrate SSD Server to SSDv2 Using Replicas
-description: This article describes how to migrate a Premium SSD server to Premium SSDv2 using replicas in Azure Database for PostgreSQL flexible server.
+description: This article describes how to migrate a Premium SSD server to Premium SSDv2 using replicas in Azure Database for PostgreSQL flexible server instance.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 04/06/2026
+ms.date: 04/06/2026 
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article
-# customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure Database for PostgreSQL flexible server.
+# customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Migrate or replicate from Premium SSD to Premium SSDv2
 
-This article provides step-by-step instructions to migrate from Premium SSD to Premium SSDv2 using replication in Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to migrate from Premium SSD to Premium SSDv2 using replication in Azure Database for PostgreSQL flexible server instance.
 
 ## Steps to migrate or replicate from Premium SSD to Premium SSDv2
 
+### [Portal](#tab/portal-create-virtual-endpoints)
+
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server.
+1. Select your Azure Database for PostgreSQL flexible server instance.
 
 1. In the resource menu, select **Settings** go to **Replication** and select the **Create replica** button.
 
@@ -37,23 +39,24 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/concepts-storage-ssd-v2-migration-using-replication/add-replica-validation.png" alt-text="Screenshot showing the Add Replica page." lightbox="media/concepts-storage-ssd-v2-migration-using-replication/add-replica-validation.png":::
 
-1. A new deployment is created to provision an Azure Database for PostgreSQL flexible server using Premium SSD v2 storage, with the latest data replicated from the source server.
+1. A new deployment is created to provision an Azure Database for PostgreSQL flexible server instance using Premium SSD v2 storage, with the latest data replicated from the source server.
 
-1. When the deployment completes, Go to newly created Premium SSDv2 server and select **Compute +Storage** button and validate your **Storage type**.
+1. When the deployment completes, go to newly created Premium SSDv2 server and select **Compute + Storage** button, and validate your **Storage type**.
 
    :::image type="content" source="media/concepts-storage-ssd-v2-migration-using-replication/validate-storage.png" alt-text="Screenshot that shows new server created using new storage type." lightbox="media/concepts-storage-ssd-v2-migration-using-replication/validate-storage.png":::
 
-1. Select **Replication** and select **Switch over or promote to standalone**, select **Promote to standalone server and remove from replication.This won't impact primary server** for **Action**. And select **Planned-sync data before promoting** and you have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
+1. Select **Replication** and select **Switch over or promote to standalone**. Select **Promote to standalone server and remove from replication. This won't impact primary server** for **Action**. And select **Planned - sync data before promoting**. You have to mark the **I understand that this read replica will become an independent standalone server and this action can't be undone.** checkbox to acknowledge. Finally, select **Promote to standalone**.
 
    :::image type="content" source="media/concepts-storage-ssd-v2-migration-using-replication/promote-primary.png" alt-text="Screenshot that shows promoting new server ssd v2 server as standalone." lightbox="media/concepts-storage-ssd-v2-migration-using-replication/promote-primary.png":::
 
-1. Optionally, Once the promotion is complete, you can repoint your virtual endpoints from Premium SSD flexible server to the new Premium SSD v2 server.
+1. Optionally, once the promotion is complete, you can point your virtual endpoint pairs from the Premium SSD flexible server instance to the new Premium SSD v2 instance.
 
    :::image type="content" source="media/concepts-storage-ssd-v2-migration-using-replication/recreate-virtual-endpoint.png" alt-text="Screenshot that shows new server using virtual endpoint." lightbox="media/concepts-storage-ssd-v2-migration-using-replication/recreate-virtual-endpoint.png":::
+---
 
 > [!NOTE]  
 > - Once the migration is complete, you can stop the original server, allow the required backup retention to be satisfied on the new server, and then safely decommission the old server.
-> - Please wait for the first automated backup to complete before configuring in-region replicas, as replica creation depends on an existing backup.
+> - Wait for the first automated backup to complete before configuring in-region replicas, as replica creation depends on an existing backup.
 ---
 
 ## Related content
