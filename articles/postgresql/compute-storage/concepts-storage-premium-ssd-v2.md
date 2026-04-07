@@ -57,6 +57,7 @@ Australia Central 2*, Australia East, Australia South East, Austria East, Brazil
 
 Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
 
+ 
 > [!NOTE]  
 >  Geo‑redundant backups are currently unavailable in the region marked with* because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region. Additionally, if SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
 
@@ -67,16 +68,16 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
    
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
-- While CMK is supported across all the regions above, geo-redundant backups cannot currently be enabled when using CMK
+-  Although CMK and geo-redundant backups are each supported, enabling geo-redundant backups with CMK is not currently supported.
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
 - For larger servers, the initial automated backup may take longer to complete and will appear in the Azure portal once it finishes. This is expected behavior while the service completes the first full backup. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas. After the initial backup, all subsequent backups are incremental and typically complete quickly.
 
 
-- Online migration from Premium SSD to Premium SSD v2 is not supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2, or create a read replica from Premium SSD to Premium SSD V2 server. Because storage autogrow is not currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
+- Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2, or create a read replica from Premium SSD to Premium SSD V2 server. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
 
- - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios.It is not supported for ongoing operations, as Premium SSD cannot keep pace with Premium SSD v2 performance and may introduce latency issues.
+ - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication is not supported because Premium SSD cannot match the performance of Premium SSD v2 and may result in increased latency.
   
 - If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
 
@@ -84,7 +85,7 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
   **Operations that can trigger this behavior include:**  
          Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-         If you are performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+         If you're performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
          Creating a new server using PITR(point-in-time-restore) and immediately enabling High Availability or Read Replicas while the disk is still being hydrated.  
 
   **Best practice:**  
