@@ -58,8 +58,6 @@ This operation isn't currently available through the Azure portal. Use the **CLI
 
 After you start the migration, monitor the server status in the Azure portal. Refresh the page periodically until the status changes from **Updating** to **Ready**.
 
-:::image type="content" source="media/how-to-migrate-vnet-private-endpoint-capable-server/server-updating-status.png" alt-text="Screenshot of the Azure portal showing the server in Updating state." lightbox="media/how-to-migrate-vnet-private-endpoint-capable-server/server-updating-status.png" :::
-
 ### [CLI](#tab/cli-migrate)
 
 Run the following command to migrate your server to a PE-capable network configuration:
