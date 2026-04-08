@@ -4,7 +4,7 @@ description: Overview of Apache AGE and its capabilities in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 04/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
