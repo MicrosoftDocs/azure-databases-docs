@@ -141,38 +141,34 @@
           href: security/security-tls-how-to-connect.md
 - name: Networking
   items:
-    - name: Overview
-      items:
-      - name: Networking with public access
-        href: network/concepts-networking-public.md
-      - name: Networking with private access
-        href: network/concepts-networking-private.md
-      - name: Networking with Private Endpoint
-        href: network/concepts-networking-private-link.md
-    - name: Quickstarts
-        items:
-          - name: Public access (allowed IP addresses)
-            items:
-            - name: Enable public access
-              href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-            - name: Disable public access
-              href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
-            - name: Add firewall rules
-              href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
-            - name: Delete firewall rules
-              href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
-            - name: Add private endpoint connections
-              href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
-            - name: Delete private endpoint connections
-              href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
-            - name: Approve private endpoint connections
-              href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
-            - name: Reject private endpoint connections
-              href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-            - name: Private access (virtual network integration)
-              items:
-                - name: Change private DNS zone
-                  href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+  - name: Overview
+    items:
+    - name: Networking with public access
+      href: network/concepts-networking-public.md
+    - name: Networking with private access
+      href: network/concepts-networking-private.md
+    - name: Networking with Private Endpoint
+      href: network/concepts-networking-private-link.md
+  - name: Quickstarts
+    items:
+    - name: Enable public access
+      href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+    - name: Disable public access
+      href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+    - name: Add firewall rules
+      href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+    - name: Delete firewall rules
+      href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+    - name: Add private endpoint connections
+      href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+    - name: Delete private endpoint connections
+      href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+    - name: Approve private endpoint connections
+      href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+    - name: Reject private endpoint connections
+      href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+    - name: Change private DNS zone
+      href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
 - name: Migration
   items:
     - name: Overview
