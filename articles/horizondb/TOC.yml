@@ -22,7 +22,7 @@
       href: release-notes/release-notes-cli.md
 - name: Create and connect
   items:
-  - name: Connection types and connectors for Azure HorizonDB
+  - name: Connection types
     href: connectivity/concepts-connect-overview.md
   - name: How-to Guides
     items:
@@ -34,8 +34,10 @@
         href: connectivity/connect-python.md
       - name: Using Java
         href: connectivity/connect-java.md
-- name: Configure and Maintain
+- name: Configure and maintain
   items:
+    - name: Scheduled maintenance
+      href: configure-maintain/concepts-maintenance.md
     - name: Scaling compute resources
       href: scale/concepts-scaling-resources.md
     - name: Readable HA replicas
@@ -74,7 +76,7 @@
           href: extensions/how-to-drop-extensions.md
         - name: Update extensions
           href: extensions/how-to-update-extensions.md
-- name: High Availability & Resilience
+- name: High availability & resilience
   items:
     - name: Business Continuity
       href: backup-restore/concepts-business-continuity.md
@@ -88,10 +90,6 @@
           href: backup-restore/concepts-backup-restore.md
         - name: Restore
           href: backup-restore/how-to-restore-latest-restore-point.md
-    - name: Monthly maintenance
-      items:
-        - name: Concepts
-          href: configure-maintain/concepts-maintenance.md
 - name: Performance and Monitoring
   items:
     - name: Query Monitoring
@@ -118,7 +116,7 @@
           href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
         - name: Optimize query statistics
           href: troubleshoot/how-to-optimize-query-stats-collection.md
-- name: AI & Agentic Workloads
+- name: AI & agentic workloads
   items:
     - name: Generative AI with Azure HorizonDB
       href: azure-ai/generative-ai-overview.md
