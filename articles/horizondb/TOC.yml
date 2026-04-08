@@ -2,36 +2,22 @@
   href: index.yml
 - name: Overview
   items:
-    - name: Overview
-      items:
-        - name: What is Azure HorizonDB?
-          href: overview.md
-        - name: Supported versions
-          href: configure-maintain/concepts-supported-versions.md
-    - name: How-to Guides
-      items:
-        - name: Create a HorizonDB cluster
-          href: configure-maintain/quickstart-create-server.md
+    - name: What is Azure HorizonDB?
+      href: overview.md
+    - name: Supported versions
+      href: configure-maintain/concepts-supported-versions.md
 - name: Release Notes
   items:
-    - name: Overview
-      items:
-        - name: Release notes
-          href: release-notes/release-notes.md
-        - name: Maintenance release notes
-          href: release-notes-maintenance/release-notes-maintenance-index.md
-        - name: API release notes
-          href: release-notes/release-notes-api.md
-        - name: CLI release notes
-          href: release-notes/release-notes-cli.md
+    - name: Release notes
+      href: release-notes/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/release-notes-maintenance-index.md
 - name: Connect and Query
   items:
-    - name: Overview
+    - name: How-to Guides
       items:
         - name: Connect and query guide
           href: connectivity/how-to-connect-query-guide.md
-    - name: How-to Guides
-      items:
         - name: Create a HorizonDB cluster
           href: configure-maintain/quickstart-create-server.md
         - name: Using Python
@@ -78,12 +64,10 @@
           href: extensions/how-to-update-extensions.md
 - name: High Availability & Resilience
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Business continuity
           href: backup-restore/concepts-business-continuity.md
-    - name: Conceptual
-      items:
         - name: Backup and restore
           href: backup-restore/concepts-backup-restore.md
         - name: Monthly Maintenance
@@ -96,12 +80,10 @@
           href: backup-restore/how-to-restore-latest-restore-point.md
 - name: Performance and Monitoring
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Metrics
           href: monitor/concepts-monitoring.md
-    - name: Conceptual
-      items:
         - name: Query Store on primary
           href: monitor/concepts-query-store.md
         - name: Query Store usage scenarios
@@ -124,7 +106,7 @@
           href: troubleshoot/how-to-optimize-query-stats-collection.md
 - name: AI & Agentic Workloads
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Generative AI overview
           href: azure-ai/generative-ai-overview.md
@@ -132,12 +114,10 @@
           href: azure-ai/generative-ai-azure-overview.md
         - name: AI Agents overview
           href: azure-ai/generative-ai-agents.md
-        - name: Overview Apache AGE for PostgreSQL
+        - name: Apache AGE for PostgreSQL
           href: azure-ai/generative-ai-age-overview.md
         - name: AI Model Management
           href: extensions/azure-local-ai.md
-    - name: Conceptual
-      items:
         - name: PostgreSQL as a vector store
           href: azure-ai/generative-ai-vector-databases.md
         - name: Integrate with AI Frameworks
@@ -180,7 +160,7 @@
               href: azure-ai/generative-ai-foundry-integration.md
 - name: Application Development
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: PostgreSQL extension for Visual Studio Code
           href: development/vs-code-extension/vs-code-overview.md
@@ -190,7 +170,7 @@
           href: development/vs-code-extension/vs-code-connect.md
 - name: Migration
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Migration Service for Azure HorizonDB
           href: migrate/migration-service/overview-migration-service-postgresql.md
@@ -200,7 +180,7 @@
           href: migrate/how-to-migrate-using-dump-and-restore.md
 - name: Networking
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Public Access
           href: network/concepts-networking-public.md
@@ -236,14 +216,12 @@
           href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
 - name: Security
   items:
-    - name: Overview
+    - name: Concepts
       items:
         - name: Secure your Azure HorizonDB
           href: security/security-overview.md
         - name: HorizonDB Cluster identity
           href: security/security-managed-identity-overview.md
-    - name: Conceptual
-      items:
         - name: Microsoft Entra authentication
           href: security/security-entra-concepts.md
         - name: Access control
@@ -279,13 +257,16 @@
             - name: Configure data encryption
               href: security/security-configure-data-encryption.md
 - name: References
+  items:
+    - name: API release notes
+      href: release-notes/release-notes-api.md
+    - name: CLI release notes
+      href: release-notes/release-notes-cli.md
 - name: Resources
   items:
-    - name: Overview
+    - name: Possible errors when managing extensions
+      href: extensions/errors-extensions.md
+    - name: Connection Errors Troubleshooting
       items:
-        - name: Possible errors when managing extensions
-          href: extensions/errors-extensions.md
-        - name: Connection Errors Troubleshooting
-          items:
-            - name: Password authentication failed for user
-              href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
+        - name: Password authentication failed for user
+          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
