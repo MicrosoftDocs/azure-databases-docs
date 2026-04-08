@@ -6,191 +6,260 @@
       href: overview.md
     - name: Supported versions
       href: configure-maintain/concepts-supported-versions.md
-- name: Release notes
-- name: Connect and query
-  items:
-  - name: Quickstart
-    items:
-      - name: Connect in virtual network
-        href: connectivity/quickstart-create-connect-server-vnet.md
-  - name: Quickstarts
-    items:
-      - name: Python
-        href: connectivity/connect-python.md
-      - name: Java
-        href: connectivity/connect-java.md
-      - name: .NET
-        href: connectivity/connect-csharp.md
-- name: High availability and resilience
-  items:
-    - name: Overview
-      items:
-        - name: Business continuity
-          href: backup-restore/concepts-business-continuity.md
-    - name: Conceptual
-      items:
-        - name: HorizonDB cluster
-          href: configure-maintain/concepts-servers.md
-        - name: HorizonDB read pool
-          href: read-replica/concepts-read-replicas.md
-        - name: Backup and restore
-          href: backup-restore/concepts-backup-restore.md
-    - name: Quickstarts
-      items:
-        - name: Configure high availability
-          href: high-availability/how-to-configure-high-availability.md
-        - name: Restore to latest restore point
-          href: backup-restore/how-to-restore-latest-restore-point.md
-        - name: Restore to custom restore point
-          href: backup-restore/how-to-restore-custom-restore-point.md
-- name: Performance and Monitoring
-  items:
-    - name: Quickstarts
-      items:
-        - name: Scale out reader pool
-          href: scale/how-to-scale-out.md
-- name: Application Development
-  items:
-    - name: Overview
-      items:
-        - name: PostgreSQL extension for Visual Studio Code
-          href: development/vs-code-extension/vs-code-overview.md
-    - name: QuickStart
-      items:
-        - name: Connect with VS Code extension
-          href: development/vs-code-extension/vs-code-connect.md
-        - name: Configure GitHub Copilot
-          href: development/vs-code-extension/vs-code-github-copilot.md
-- name: AI and Agentic Workflow
-  items:
-    - name: Overview
-      items:
-        - name: Generative AI overview
-          href: azure-ai/generative-ai-overview.md
-    - name: Conceptual
-      items:
-        - name: Special considerations
-          href: extensions/concepts-extensions-considerations.md
-    - name: Quickstarts
-      items:
-        - name: Partitioning (pg_partman)
-          href: configure-maintain/how-to-use-pg-partman.md
-- name: Configure and maintain
-  items:
     - name: QuickStart
       items:
         - name: Create a HorizonDB cluster
           href: configure-maintain/quickstart-create-server.md
-        - name: Azure Storage quickstart examples
-          href: extensions/quickstart-azure-storage-extension.md
-        - name: Create a read replica
-          href: read-replica/how-to-create-read-replica.md
-        - name: Delete a read replica
-          href: read-replica/how-to-delete-read-replica.md
-    - name: Conceptual
-      items:
-        - name: Server parameters
-          href: server-parameters/concepts-server-parameters.md
-        - name: Extensions by name
-          href: extensions/concepts-extensions-versions.md
-        - name: Extensions by version of PostgreSQL
-          href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
-    - name: Quickstarts
-      items:
-        - name: Delete a cluster
-          href: configure-maintain/how-to-delete-server.md
-        - name: Extensions management
-          items:
-            - name: Allow extensions
-              href: extensions/how-to-allow-extensions.md
-            - name: Create extensions
-              href: extensions/how-to-create-extensions.md
-            - name: Drop extensions
-              href: extensions/how-to-drop-extensions.md
-            - name: Update extensions
-              href: extensions/how-to-update-extensions.md
-            - name: View installed extensions
-              href: extensions/how-to-view-installed-extensions.md
-        - name: Configure Azure Storage extension (pg_azure_storage)
-          href: extensions/how-to-configure-azure-storage-extension.md
-- name: Security
+- name: Release Notes
+  items:
+    - name: Release notes
+      href: release-notes/release-notes.md
+    - name: Maintenance release notes
+      href: release-notes-maintenance/release-notes-maintenance-index.md
+    - name: API release notes
+      href: release-notes/release-notes-api.md
+    - name: CLI release notes
+      href: release-notes/release-notes-cli.md
+- name: Connect and Query
   items:
     - name: Overview
+      href: connectivity/how-to-connect-query-guide.md
+    - name: QuickStarts
       items:
-        - name: Secure your Azure HorizonDB
-          href: security/security-overview.md
+        - name: Create a HorizonDB cluster
+          href: configure-maintain/quickstart-create-server.md
+        - name: Using Python
+          href: connectivity/connect-python.md
+        - name: Using Java
+          href: connectivity/connect-java.md
+- name: Configure and Maintain
+  items:
+    - name: Scaling compute resources
+      href: scale/concepts-scaling-resources.md
+    - name: Readable HA replicas
+      href: read-replica/concepts-read-replicas.md
+    - name: Parameter Groups
+      href: server-parameters/concepts-server-parameters.md
+    - name: Enable deletion protection
+      href: configure-maintain/how-to-enable-deletion-protection.md
+    - name: Extensions
+      items:
+        - name: Overview
+          href: extensions/concepts-extensions.md
+        - name: Special considerations
+          href: extensions/concepts-extensions-considerations.md
+        - name: Extensions by version of PostgreSQL
+          href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
+        - name: Possible errors when managing extensions
+          href: extensions/errors-extensions.md
+    - name: QuickStarts
+      items:
+        - name: Add a read replica
+          href: read-replica/how-to-create-read-replica.md
+        - name: Remove a read replica
+          href: read-replica/how-to-delete-read-replica.md
+        - name: Allow extensions
+          href: extensions/how-to-allow-extensions.md
+        - name: Load libraries
+          href: extensions/how-to-load-libraries.md
+        - name: Create extensions
+          href: extensions/how-to-create-extensions.md
+        - name: Drop extensions
+          href: extensions/how-to-drop-extensions.md
+        - name: Update extensions
+          href: extensions/how-to-update-extensions.md
+- name: High Availability & Resilience
+  items:
+    - name: Overview
+      href: backup-restore/concepts-business-continuity.md
+    - name: Reliability
+      items:
+        - name: Configure high availability
+          href: high-availability/how-to-configure-high-availability.md
+    - name: Backup & Restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
+          href: backup-restore/how-to-restore-latest-restore-point.md
+    - name: Monthly Maintenance
+      items:
+        - name: Overview
+          href: configure-maintain/concepts-maintenance.md
+- name: Performance and Monitoring
+  items:
+    - name: Query Monitoring
+      items:
+        - name: Query Store on primary
+          href: monitor/concepts-query-store.md
+        - name: Query Store usage scenarios
+          href: monitor/concepts-query-store-scenarios.md
+        - name: Query Store best practices
+          href: monitor/concepts-query-store-best-practices.md
+    - name: Metrics
+      href: monitor/concepts-monitoring.md
+    - name: Performance troubleshooting
+      items:
+        - name: Troubleshoot high CPU utilization
+          href: troubleshoot/how-to-high-cpu-utilization.md
+        - name: Troubleshoot high memory utilization
+          href: troubleshoot/how-to-high-memory-utilization.md
+        - name: Troubleshoot high IOPS utilization
+          href: troubleshoot/how-to-high-io-utilization.md
+        - name: Troubleshoot and identify slow running queries
+          href: troubleshoot/how-to-identify-slow-queries.md
+        - name: Troubleshoot connections
+          href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
+        - name: Optimize query statistics
+          href: troubleshoot/how-to-optimize-query-stats-collection.md
+- name: AI & Agentic Workloads
+  items:
+    - name: Overview
+      href: azure-ai/generative-ai-overview.md
+    - name: Semantic search
+      items:
+        - name: PostgreSQL as a vector store
+          href: azure-ai/generative-ai-vector-databases.md
+        - name: Vector search using pgvector
+          href: extensions/how-to-use-pgvector.md
+        - name: Optimize performance when using pgvector
+          href: extensions/how-to-optimize-performance-pgvector.md
+        - name: Scalable vector indexing using pg_diskann
+          href: extensions/how-to-use-pgdiskann.md
+    - name: AI Functions
+      items:
+        - name: Introduction to the azure_ai extension
+          href: azure-ai/generative-ai-azure-overview.md
+        - name: Create vector embeddings using Azure OpenAI
+          href: azure-ai/generative-ai-azure-openai.md
+        - name: "Use generate(), is_true() and extract() operators"
+          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Invoke Azure Language capabilities
+          href: azure-ai/generative-ai-azure-cognitive.md
+        - name: Invoke Azure Machine Learning models
+          href: azure-ai/generative-ai-azure-machine-learning.md
+        - name: Enable managed identity in azure_ai
+          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+        - name: "Tutorial: Build a semantic search application"
+          href: azure-ai/generative-ai-semantic-search.md
+        - name: "Tutorial: Build a recommendation system"
+          href: azure-ai/generative-ai-recommendation-system.md
+    - name: AI Frameworks
+      items:
+        - name: Integrate with AI Frameworks
+          href: azure-ai/generative-ai-frameworks.md
+        - name: "Tutorial: Develop with LangChain"
+          href: azure-ai/generative-ai-develop-with-langchain.md
+    - name: AI Agents
+      items:
+        - name: Overview
+          href: azure-ai/generative-ai-agents.md
+        - name: Build an agent with Microsoft Foundry
+          href: azure-ai/generative-ai-foundry-integration.md
+    - name: Graph Database
+      items:
+        - name: Overview Apache AGE for PostgreSQL
+          href: azure-ai/generative-ai-age-overview.md
+        - name: Performance best practices for Apache AGE
+          href: azure-ai/generative-ai-age-performance.md
+    - name: AI Model Management
+      items:
+        - name: Overview
+          href: extensions/azure-local-ai.md
+- name: Application Development
+  items:
+    - name: PostgreSQL extension for Visual Studio Code
+      items:
+        - name: Overview
+          href: development/vs-code-extension/vs-code-overview.md
+        - name: QuickStart
+          href: development/vs-code-extension/vs-code-connect.md
+- name: Migration
+  items:
+    - name: Overview
+      href: migrate/migration-service/overview-migration-service-postgresql.md
+    - name: Offline Migration
+      items:
+        - name: Restore PostgreSQL backup
+          href: migrate/how-to-migrate-using-dump-and-restore.md
+- name: Networking
+  items:
+    - name: Public Access
+      href: network/concepts-networking-public.md
+    - name: Private Endpoints
+      href: network/concepts-networking-private-link.md
+    - name: Secure Connectivity with SSL and TLS
+      href: security/security-tls.md
+    - name: QuickStarts
+      items:
+        - name: Enable and disable public access
+          items:
+            - name: Enable public access
+              href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+            - name: Disable public access
+              href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+        - name: Add and delete firewall rules
+          items:
+            - name: Add firewall rules
+              href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+            - name: Delete firewall rules
+              href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+        - name: Private endpoint configuration
+          items:
+            - name: Add private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+            - name: Delete private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+            - name: Approve private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+            - name: Reject private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+        - name: Manage Private DNS Zone
+          href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+- name: Security
+  items:
+    - name: Secure your Azure HorizonDB
+      href: security/security-overview.md
+    - name: Authentication and access control
+      items:
         - name: Microsoft Entra authentication
           href: security/security-entra-concepts.md
-        - name: Access control
-          href: security/security-access-control.md
-        - name: Transport Layer Security (TLS)
-          href: security/security-tls.md
-        - name: Data encryption
-          href: security/security-data-encryption.md
-        - name: Firewall rules
-          href: security/security-firewall-rules.md
-    - name: Quickstarts
-      items:
         - name: Configure Microsoft Entra integration
           href: security/security-entra-configure.md
         - name: Manage database users
           href: security/security-manage-database-users.md
+        - name: Access control
+          href: security/security-access-control.md
         - name: Connect applications with a managed identity
           href: security/security-connect-with-managed-identity.md
+        - name: Connect local database users with SCRAM authentication
+          href: security/security-connect-scram.md
+        - name: Reset local administrator password
+          href: security/security-reset-admin-password.md
+    - name: HorizonDB Cluster identity
+      items:
+        - name: Overview
+          href: security/security-managed-identity-overview.md
+        - name: Configure user assigned managed identities
+          href: security/security-configure-managed-identities-user-assigned.md
+    - name: Transport Layer Security (TLS)
+      items:
+        - name: Overview
+          href: security/security-tls.md
         - name: Connect clients with TLS
           href: security/security-tls-how-to-connect.md
-- name: Networking
-  items:
-  - name: Overview
-    items:
-    - name: Networking with public access
-      href: network/concepts-networking-public.md
-    - name: Networking with private access
-      href: network/concepts-networking-private.md
-    - name: Networking with Private Endpoint
-      href: network/concepts-networking-private-link.md
-  - name: Quickstarts
-    items:
-    - name: Enable public access
-      href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-    - name: Disable public access
-      href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
-    - name: Add firewall rules
-      href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
-    - name: Delete firewall rules
-      href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
-    - name: Add private endpoint connections
-      href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
-    - name: Delete private endpoint connections
-      href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
-    - name: Approve private endpoint connections
-      href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
-    - name: Reject private endpoint connections
-      href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-    - name: Change private DNS zone
-      href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
-- name: Migration
-  items:
-    - name: Overview
+    - name: Data protection
       items:
-        - name: Migration Service for Azure HorizonDB
-          href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: Tutorial
-      items:
-        - name: Migrate offline
-          items:
-            - name: From an Azure VM or an on-premises PostgreSQL server
-              href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-            - name: From Amazon RDS
-              href: migrate/migration-service/tutorial-migration-service-rds-offline.md
-            - name: From Amazon Aurora
-              href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
-            - name: From Google Cloud SQL for PostgreSQL
-              href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
-            - name: From Google AlloyDB for PostgreSQL
-              href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+        - name: Data encryption overview
+          href: security/security-data-encryption.md
+        - name: Configure data encryption
+          href: security/security-configure-data-encryption.md
 - name: References
+- name: Resources
   items:
     - name: Possible errors when managing extensions
       href: extensions/errors-extensions.md
-- name: Resources
+    - name: Connection Errors Troubleshooting
+      items:
+        - name: Password authentication failed for user
+          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
