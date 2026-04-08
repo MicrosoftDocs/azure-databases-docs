@@ -6,50 +6,64 @@
       href: overview.md
     - name: Supported versions
       href: configure-maintain/concepts-supported-versions.md
+    - name: How-to Guides
+      items:
+        - name: Create a HorizonDB cluster
+          href: configure-maintain/quickstart-create-server.md
 - name: Release Notes
   items:
     - name: Release notes
       href: release-notes/release-notes.md
     - name: Maintenance release notes
       href: release-notes-maintenance/release-notes-maintenance-index.md
-- name: Connect and Query
+    - name: API release notes
+      href: release-notes/release-notes-api.md
+    - name: CLI release notes
+      href: release-notes/release-notes-cli.md
+- name: Create and connect
   items:
-    - name: How-to Guides
-      items:
-        - name: Connect and query guide
-          href: connectivity/how-to-connect-query-guide.md
-        - name: Create a HorizonDB cluster
-          href: configure-maintain/quickstart-create-server.md
-        - name: Using Python
-          href: connectivity/connect-python.md
-        - name: Using Java
-          href: connectivity/connect-java.md
+  - name: Connection types and connectors for Azure HorizonDB
+    href: connectivity/concepts-connect-overview.md
+  - name: How-to Guides
+    items:
+      - name: Create a HorizonDB cluster
+        href: configure-maintain/quickstart-create-server.md
+      - name: How to connect
+        href: connectivity/how-to-connect.md
+      - name: Using Python
+        href: connectivity/connect-python.md
+      - name: Using Java
+        href: connectivity/connect-java.md
 - name: Configure and Maintain
   items:
-    - name: Concepts
+    - name: Scaling compute resources
+      href: scale/concepts-scaling-resources.md
+    - name: Readable HA replicas
+      href: read-replica/concepts-read-replicas.md
+    - name: Parameter Groups
+      href: server-parameters/concepts-server-parameters.md
+    - name: Enable deletion protection
+      href: configure-maintain/how-to-enable-deletion-protection.md
+    - name: Extensions
       items:
-        - name: Scaling compute resources
-          href: scale/concepts-scaling-resources.md
-        - name: Readable HA replicas
-          href: read-replica/concepts-read-replicas.md
-        - name: Parameter Groups
-          href: server-parameters/concepts-server-parameters.md
-        - name: Extensions
+        - name: Extensions and modules
           href: extensions/concepts-extensions.md
         - name: Special considerations
           href: extensions/concepts-extensions-considerations.md
-        - name: Extensions by version of PostgreSQL
+        - name: List by name
+          href: extensions/concepts-extensions-versions.md
+        - name: List by version of PostgreSQL
           href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
         - name: Possible errors when managing extensions
           href: extensions/errors-extensions.md
     - name: How-to Guides
       items:
-        - name: Enable deletion protection
-          href: configure-maintain/how-to-enable-deletion-protection.md
         - name: Add a read replica
           href: read-replica/how-to-create-read-replica.md
         - name: Remove a read replica
           href: read-replica/how-to-delete-read-replica.md
+        # - name: Create Parameter Groups  # TODO: No file exists yet
+        # - name: Drop Parameter Groups  # TODO: No file exists yet
         - name: Allow extensions
           href: extensions/how-to-allow-extensions.md
         - name: Load libraries
@@ -62,32 +76,34 @@
           href: extensions/how-to-update-extensions.md
 - name: High Availability & Resilience
   items:
-    - name: Concepts
-      items:
-        - name: Business continuity
-          href: backup-restore/concepts-business-continuity.md
-        - name: Backup and restore
-          href: backup-restore/concepts-backup-restore.md
-        - name: Monthly Maintenance
-          href: configure-maintain/concepts-maintenance.md
-    - name: How-to Guides
+    - name: Business Continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: Reliability
       items:
         - name: Configure high availability
           href: high-availability/how-to-configure-high-availability.md
-        - name: Restore to latest restore point
+    - name: Backup & restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
           href: backup-restore/how-to-restore-latest-restore-point.md
+    - name: Monthly maintenance
+      items:
+        - name: Concepts
+          href: configure-maintain/concepts-maintenance.md
 - name: Performance and Monitoring
   items:
-    - name: Concepts
+    - name: Query Monitoring
       items:
-        - name: Metrics
-          href: monitor/concepts-monitoring.md
         - name: Query Store on primary
           href: monitor/concepts-query-store.md
         - name: Query Store usage scenarios
           href: monitor/concepts-query-store-scenarios.md
         - name: Query Store best practices
           href: monitor/concepts-query-store-best-practices.md
+    - name: Metrics
+      href: monitor/concepts-monitoring.md
     - name: How-to Guides
       items:
         - name: Troubleshoot high CPU utilization
@@ -104,88 +120,80 @@
           href: troubleshoot/how-to-optimize-query-stats-collection.md
 - name: AI & Agentic Workloads
   items:
-    - name: Concepts
+    - name: Generative AI with Azure HorizonDB
+      href: azure-ai/generative-ai-overview.md
+    - name: Semantic search
       items:
-        - name: Generative AI overview
-          href: azure-ai/generative-ai-overview.md
-        - name: Introduction to the azure_ai extension
-          href: azure-ai/generative-ai-azure-overview.md
-        - name: AI Agents overview
-          href: azure-ai/generative-ai-agents.md
-        - name: Apache AGE for PostgreSQL
-          href: azure-ai/generative-ai-age-overview.md
-        - name: AI Model Management
-          href: extensions/azure-local-ai.md
         - name: PostgreSQL as a vector store
           href: azure-ai/generative-ai-vector-databases.md
+        - name: Vector search using pgvector
+          href: extensions/how-to-use-pgvector.md
+        - name: Optimize performance when using pgvector
+          href: extensions/how-to-optimize-performance-pgvector.md
+        - name: Scalable vector indexing using pg_diskann
+          href: extensions/how-to-use-pgdiskann.md
+        # - name: Advanced pg_diskann filtering  # TODO: No file exists yet
+        # - name: Semantic reranking of vector search results  # TODO: No file exists yet
+    - name: AI Functions
+      items:
+        - name: Introduction to the azure_ai extension
+          href: azure-ai/generative-ai-azure-overview.md
+        - name: Create vector embeddings using Azure OpenAI
+          href: azure-ai/generative-ai-azure-openai.md
+        - name: "Use generate(), is_true() and extract() operators"
+          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Invoke Azure Language capabilities
+          href: azure-ai/generative-ai-azure-cognitive.md
+        - name: Invoke Azure Machine Learning models
+          href: azure-ai/generative-ai-azure-machine-learning.md
+        - name: Enable managed identity in azure_ai
+          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+        - name: "Tutorial: Build a semantic search application"
+          href: azure-ai/generative-ai-semantic-search.md
+        - name: "Tutorial: Build a recommendation system"
+          href: azure-ai/generative-ai-recommendation-system.md
+    - name: AI Frameworks
+      items:
         - name: Integrate with AI Frameworks
           href: azure-ai/generative-ai-frameworks.md
+        - name: "Tutorial: Develop with LangChain"
+          href: azure-ai/generative-ai-develop-with-langchain.md
+    - name: AI Agents
+      items:
+        - name: AI agents in Azure HorizonDB
+          href: azure-ai/generative-ai-agents.md
+        - name: Build an agent with Microsoft Foundry
+          href: azure-ai/generative-ai-foundry-integration.md
+    - name: Graph Database
+      items:
+        - name: Concepts Apache AGE for PostgreSQL
+          href: azure-ai/generative-ai-age-overview.md
         - name: Performance best practices for Apache AGE
           href: azure-ai/generative-ai-age-performance.md
-    - name: How-to Guides
-      items:
-        - name: Semantic search
-          items:
-            - name: Vector search using pgvector
-              href: extensions/how-to-use-pgvector.md
-            - name: Optimize performance when using pgvector
-              href: extensions/how-to-optimize-performance-pgvector.md
-            - name: Scalable vector indexing using pg_diskann
-              href: extensions/how-to-use-pgdiskann.md
-        - name: AI Functions
-          items:
-            - name: Create vector embeddings using Azure OpenAI
-              href: azure-ai/generative-ai-azure-openai.md
-            - name: "Use generate(), is_true() and extract() operators"
-              href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-            - name: Invoke Azure Language capabilities
-              href: azure-ai/generative-ai-azure-cognitive.md
-            - name: Invoke Azure Machine Learning models
-              href: azure-ai/generative-ai-azure-machine-learning.md
-            - name: Enable managed identity in azure_ai
-              href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-            - name: "Tutorial: Build a semantic search application"
-              href: azure-ai/generative-ai-semantic-search.md
-            - name: "Tutorial: Build a recommendation system"
-              href: azure-ai/generative-ai-recommendation-system.md
-        - name: AI Frameworks
-          items:
-            - name: "Tutorial: Develop with LangChain"
-              href: azure-ai/generative-ai-develop-with-langchain.md
-        - name: AI Agents
-          items:
-            - name: Build an agent with Microsoft Foundry
-              href: azure-ai/generative-ai-foundry-integration.md
-- name: Application Development
+- name: Application development
   items:
-    - name: Concepts
+    - name: PostgreSQL extension for Visual Studio Code
       items:
-        - name: PostgreSQL extension for Visual Studio Code
+        - name: Concepts
           href: development/vs-code-extension/vs-code-overview.md
-    - name: How-to Guides
-      items:
-        - name: Connect with VS Code extension
+        - name: Quick Start
           href: development/vs-code-extension/vs-code-connect.md
+        - name: Configure GitHub Copilot
+          href: development/vs-code-extension/vs-code-github-copilot.md
 - name: Migration
   items:
-    - name: Concepts
-      items:
-        - name: Migration Service for Azure HorizonDB
-          href: migrate/migration-service/overview-migration-service-postgresql.md
-    - name: How-to Guides
+    - name: Offline migration
       items:
         - name: Restore PostgreSQL backup
           href: migrate/how-to-migrate-using-dump-and-restore.md
 - name: Networking
   items:
-    - name: Concepts
-      items:
-        - name: Public Access
-          href: network/concepts-networking-public.md
-        - name: Private Endpoints
-          href: network/concepts-networking-private-link.md
-        - name: Secure Connectivity with SSL and TLS
-          href: security/security-tls.md
+    - name: Public Access
+      href: network/concepts-networking-public.md
+    - name: Private Endpoints
+      href: network/concepts-networking-private-link.md
+    - name: Secure Connectivity with SSL and TLS
+      href: security/security-tls.md
     - name: How-to Guides
       items:
         - name: Enable and disable public access
@@ -214,52 +222,48 @@
           href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
 - name: Security
   items:
-    - name: Concepts
+    - name: Secure your Azure HorizonDB
+      href: security/security-overview.md
+    - name: Authentication and access control
       items:
-        - name: Secure your Azure HorizonDB
-          href: security/security-overview.md
-        - name: HorizonDB Cluster identity
-          href: security/security-managed-identity-overview.md
         - name: Microsoft Entra authentication
           href: security/security-entra-concepts.md
+        - name: Configure Microsoft Entra integration
+          href: security/security-entra-configure.md
+        - name: Manage database users
+          href: security/security-manage-database-users.md
         - name: Access control
           href: security/security-access-control.md
-        - name: Transport Layer Security (TLS)
-          href: security/security-tls.md
-        - name: Data encryption
-          href: security/security-data-encryption.md
-    - name: How-to Guides
+        - name: Connect applications with a managed identity
+          href: security/security-connect-with-managed-identity.md
+        - name: Connect local database users with SCRAM authentication
+          href: security/security-connect-scram.md
+        - name: Reset local administrator password
+          href: security/security-reset-admin-password.md
+    - name: HorizonDB Cluster identity
       items:
-        - name: Authentication and access control
-          items:
-            - name: Configure Microsoft Entra integration
-              href: security/security-entra-configure.md
-            - name: Manage database users
-              href: security/security-manage-database-users.md
-            - name: Connect applications with a managed identity
-              href: security/security-connect-with-managed-identity.md
-            - name: Connect local database users with SCRAM authentication
-              href: security/security-connect-scram.md
-            - name: Reset local administrator password
-              href: security/security-reset-admin-password.md
-        - name: Cluster identity
-          items:
-            - name: Configure user assigned managed identities
-              href: security/security-configure-managed-identities-user-assigned.md
-        - name: Transport Layer Security (TLS)
-          items:
-            - name: Connect clients with TLS
-              href: security/security-tls-how-to-connect.md
-        - name: Data protection
-          items:
-            - name: Configure data encryption
-              href: security/security-configure-data-encryption.md
+        - name: Concepts
+          href: security/security-managed-identity-overview.md
+        - name: Configure user assigned managed identities
+          href: security/security-configure-managed-identities-user-assigned.md
+    - name: Transport Layer Security (TLS)
+      items:
+        - name: Concepts
+          href: security/security-tls.md
+        - name: Connect clients with TLS
+          href: security/security-tls-how-to-connect.md
+        - name: Update trusted root certificate for Java
+          href: security/security-update-trusted-root-java.md
+    - name: Data protection
+      items:
+        - name: Data encryption overview
+          href: security/security-data-encryption.md
+        - name: Configure data encryption
+          href: security/security-configure-data-encryption.md
 - name: References
   items:
-    - name: API release notes
-      href: release-notes/release-notes-api.md
-    - name: CLI release notes
-      href: release-notes/release-notes-cli.md
+    - name: Azure HorizonDB documentation
+      href: https://learn.microsoft.com/azure/horizondb/
 - name: Resources
   items:
     - name: Possible errors when managing extensions

@@ -1,21 +1,21 @@
 ---
-title: "Quickstart: Create a Flexible Server Instance"
-description: Quickstart guide to creating and managing an Azure HorizonDB flexible server instance.
+title: "Quickstart: Create a Azure HorizonDB database"
+description: Quickstart guide to creating and managing an Azure HorizonDB database.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 01/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
-ms.topic: quickstart
+ms.topic: how-to
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Create an Azure HorizonDB flexible server
+# Create an Azure HorizonDB database
 
 Azure HorizonDB is a managed service that you can use to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
-This quickstart shows you how to create an Azure HorizonDB flexible server instance by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
+This quickstart shows you how to create an Azure HorizonDB database by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Before you begin, make sure you have:
 
 ## Understand what you're creating
 
-An Azure HorizonDB flexible server instance includes:
+An Azure HorizonDB database includes:
 
 - A configured set of {[compute and storage resources](concepts-compute.md)}.
 - Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
@@ -37,14 +37,16 @@ An Azure HorizonDB flexible server instance includes:
 > [!NOTE]
 > Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler.
 
-## Create server using Azure portal
+## Create Azure HorizonDB database using Azure portal
+
+Follow these steps to create an Azure HorizonDB database using the Azure portal. The wizard guides you through essential configuration options for compute, storage, and authentication.
 
 ### Navigate to the creation wizard
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. Select **Create a resource** in the upper-left corner.
 1. Under **Categories**, select **Databases**.
-1. Find and select **Azure HorizonDB flexible server**.
+1. Find and select **Azure HorizonDB**.
 1. Select **Create**.
 
 ### Configure basic settings
