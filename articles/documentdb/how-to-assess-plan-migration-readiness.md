@@ -16,8 +16,6 @@ Carry out up-front planning tasks and make critical decisions before migrating y
 
 ## Prerequisites
 
-[!INCLUDE[Prerequisite - Existing cluster](includes/prerequisite-existing-cluster.md)]
-
 - An existing MongoDB installation.
 
 ## Assess the compatibility and readiness of your resources for migration
