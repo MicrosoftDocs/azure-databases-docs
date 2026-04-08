@@ -73,9 +73,11 @@ You can invoke the Migration Extension from the DocumentDB Connections.
 
     :::image type="content" source="media/how-to-migrate-vs-code-extension/context-menu.png" alt-text="Screenshot of the context menu in Visual Studio Code."  :::
 
-1. Select **Migrate to Azure DocumentDB** from the command palette. 
+1. From the command palette, select *Migration to Azure DocumentDB**.
+    :::image type="content" source="media/how-to-assess-plan-migration-readiness/command-palette-migration-tools.png" alt-text="Screenshot of the command palette listing migration tools in Visual Studio Code.":::
 
-    :::image type="content" source="media/how-to-migrate-vs-code-extension/command-palette.png" alt-text="Screenshot of the command palette in Visual Studio Code." :::
+1. Then select **Migrate to Azure DocumentDB**.
+    :::image type="content" source="media/how-to-assess-plan-migration-readiness/command-palette-migrate.png" alt-text="Screenshot of the command palette showing migration option in Visual Studio Code.":::
 
 1. A migration wizard guides you through the process.
 
