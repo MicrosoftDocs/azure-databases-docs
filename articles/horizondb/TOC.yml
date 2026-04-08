@@ -13,7 +13,7 @@
     items:
       - name: Connect in virtual network
         href: connectivity/quickstart-create-connect-server-vnet.md
-  - name: How-to Guides
+  - name: Quickstarts
     items:
       - name: Python
         href: connectivity/connect-python.md
@@ -35,7 +35,7 @@
           href: read-replica/concepts-read-replicas.md
         - name: Backup and restore
           href: backup-restore/concepts-backup-restore.md
-    - name: How-to Guides
+    - name: Quickstarts
       items:
         - name: Configure high availability
           href: high-availability/how-to-configure-high-availability.md
@@ -45,7 +45,7 @@
           href: backup-restore/how-to-restore-custom-restore-point.md
 - name: Performance and Monitoring
   items:
-    - name: How-to Guides
+    - name: Quickstarts
       items:
         - name: Scale out reader pool
           href: scale/how-to-scale-out.md
@@ -71,7 +71,7 @@
       items:
         - name: Special considerations
           href: extensions/concepts-extensions-considerations.md
-    - name: How-to Guides
+    - name: Quickstarts
       items:
         - name: Partitioning (pg_partman)
           href: configure-maintain/how-to-use-pg-partman.md
@@ -83,6 +83,10 @@
           href: configure-maintain/quickstart-create-server.md
         - name: Azure Storage quickstart examples
           href: extensions/quickstart-azure-storage-extension.md
+        - name: Create a read replica
+          href: read-replica/how-to-create-read-replica.md
+        - name: Delete a read replica
+          href: read-replica/how-to-delete-read-replica.md
     - name: Conceptual
       items:
         - name: Server parameters
@@ -91,7 +95,7 @@
           href: extensions/concepts-extensions-versions.md
         - name: Extensions by version of PostgreSQL
           href: extensions/concepts-extensions-by-engine.md?pivots=postgresql-17
-    - name: How-to Guides
+    - name: Quickstarts
       items:
         - name: Delete a cluster
           href: configure-maintain/how-to-delete-server.md
@@ -109,20 +113,12 @@
               href: extensions/how-to-view-installed-extensions.md
         - name: Configure Azure Storage extension (pg_azure_storage)
           href: extensions/how-to-configure-azure-storage-extension.md
-- name: Networking and Security
+- name: Security
   items:
     - name: Overview
       items:
         - name: Secure your Azure HorizonDB
           href: security/security-overview.md
-    - name: Conceptual
-      items:
-        - name: Networking with public access
-          href: network/concepts-networking-public.md
-        - name: Networking with private access
-          href: network/concepts-networking-private.md
-        - name: Networking with Private Endpoint
-          href: network/concepts-networking-private-link.md
         - name: Microsoft Entra authentication
           href: security/security-entra-concepts.md
         - name: Access control
@@ -133,10 +129,30 @@
           href: security/security-data-encryption.md
         - name: Firewall rules
           href: security/security-firewall-rules.md
-    - name: How-to Guides
+    - name: Quickstarts
       items:
-        - name: Public access (allowed IP addresses)
-          items:
+        - name: Configure Microsoft Entra integration
+          href: security/security-entra-configure.md
+        - name: Manage database users
+          href: security/security-manage-database-users.md
+        - name: Connect applications with a managed identity
+          href: security/security-connect-with-managed-identity.md
+        - name: Connect clients with TLS
+          href: security/security-tls-how-to-connect.md
+- name: Networking
+  items:
+    - name: Overview
+      items:
+      - name: Networking with public access
+        href: network/concepts-networking-public.md
+      - name: Networking with private access
+        href: network/concepts-networking-private.md
+      - name: Networking with Private Endpoint
+        href: network/concepts-networking-private-link.md
+    - name: Quickstarts
+        items:
+          - name: Public access (allowed IP addresses)
+            items:
             - name: Enable public access
               href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
             - name: Disable public access
@@ -153,27 +169,11 @@
               href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
             - name: Reject private endpoint connections
               href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-        - name: Private access (virtual network integration)
-          items:
-            - name: Change private DNS zone
-              href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
-        - name: Configure Microsoft Entra integration
-          href: security/security-entra-configure.md
-        - name: Manage database users
-          href: security/security-manage-database-users.md
-        - name: Connect applications with a managed identity
-          href: security/security-connect-with-managed-identity.md
-        - name: Connect clients with TLS
-          href: security/security-tls-how-to-connect.md
-- name: Operational management
-  items:
-    - name: How-to Guides
-      items:
-        - name: Create a read replica
-          href: read-replica/how-to-create-read-replica.md
-        - name: Delete a read replica
-          href: read-replica/how-to-delete-read-replica.md
-- name: Migration and modernization
+            - name: Private access (virtual network integration)
+              items:
+                - name: Change private DNS zone
+                  href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+- name: Migration
   items:
     - name: Overview
       items:
