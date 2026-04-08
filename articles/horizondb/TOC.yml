@@ -26,11 +26,7 @@
           href: connectivity/connect-java.md
 - name: Configure and Maintain
   items:
-    - name: Overview
-      items:
-        - name: Extensions
-          href: extensions/concepts-extensions.md
-    - name: Conceptual
+    - name: Concepts
       items:
         - name: Scaling compute resources
           href: scale/concepts-scaling-resources.md
@@ -38,6 +34,8 @@
           href: read-replica/concepts-read-replicas.md
         - name: Parameter Groups
           href: server-parameters/concepts-server-parameters.md
+        - name: Extensions
+          href: extensions/concepts-extensions.md
         - name: Special considerations
           href: extensions/concepts-extensions-considerations.md
         - name: Extensions by version of PostgreSQL
