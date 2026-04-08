@@ -4,7 +4,7 @@ description: Describes the extended support offering for Postgres major versions
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 03/09/2026
+ms.date: 03/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -67,11 +67,15 @@ A: Your server is automatically enrolled in Extended Support one month after the
 
 **Q: Can I continue using my PostgreSQL instance without Extended Support?**
 
-A: Yes, but after the grace period, you're automatically enrolled in paid Extended Support unless you upgrade to a supported version. During the grace period, you assume full operational risk, and Microsoft support can't guarantee issue resolution.
+A: No, extended support is not optional. After the grace period, you're automatically enrolled in paid Extended Support unless you upgrade to a supported version. 
 
 **Q: Will I be charged for Extended Support if my server is stopped, failed, or not running??**
 
 A: No. Extended support billing charges apply only to servers that are in a Succeeded (running) state. If a server is stopped, deleted, or in a failed provisioning state, extended support charges will not be applied for that period. Billing automatically resumes once the server returns to a succeeded state and continues running an end‑of‑life engine version under extended support.
+
+**Q: What happens if I’m ready to upgrade to a supported PostgreSQL version, but capacity constraints in my region prevent me from upgrading before Extended Support billing begins?**
+
+A: If regional capacity constraints prevent you from upgrading, your server will be temporarily excluded from Extended Support billing until capacity becomes available and an upgrade path is offered, ensuring you’re not charged for factors outside your control.
 
 **Q: Can my applications break during a major version upgrade?**
 
