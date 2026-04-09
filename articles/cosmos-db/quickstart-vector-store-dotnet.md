@@ -84,7 +84,7 @@ To provision resources:
     git clone https://github.com/Azure-Samples/cosmos-db-vector-samples.git
     ```
 
-1. Navigate to the root folder of the cloned repository (where `azure.yml` is located), for example:
+1. Navigate to the root folder of the cloned repository (where `azure.yaml` is located), for example:
 
     ```bash
     cd cosmos-db-vector-samples
@@ -307,3 +307,4 @@ In the preceding code, the `CosmosDBService` performs the following tasks:
 - [Document Indexer for Azure Cosmos DB (preview)](gen-ai/document-indexer.md)
 - [Vector embeddings in Azure Cosmos DB](gen-ai/vector-embeddings.md)
 - [Azure RBAC built-in roles](/azure/role-based-access-control/built-in-roles)
+
