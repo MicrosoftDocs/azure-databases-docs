@@ -291,29 +291,32 @@ When using logical replication or logical decoding with High Availability (HA) i
 ### PostgreSQL 16 and earlier
 In PostgreSQL 16 and earlier, logical replication slots aren't automatically preserved on the standby server after a failover. To maintain logical replication across failover, you must:
 - Enable the `pg_failover_slots` extension
-- Configure required settings such as `hot_standby_feedback = on`
+- Configure required settings such as:
+  - `hot_standby_feedback = on`
 
 Without these configurations, logical replication might stop working after a failover because replication slots aren't available on the new primary.
 
 ### PostgreSQL 17 and later
 Starting with PostgreSQL 17, logical replication slot synchronization is supported natively. When correctly configured, replication slots are automatically synchronized to the standby server.
+
 To enable this behavior:
 - Set `sync_replication_slots = on`
 - Set `hot_standby_feedback = on`
 
-With these settings, logical replication slots are preserved during failover, and replication can continue without requiring extensions. For setup steps and prerequisites,  refer to the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
+With these settings, logical replication slots are preserved during failover, and replication can continue without requiring extensions. For details,  refer to the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
 
 ### Important considerations
-- Logical replication slots are managed on the primary server, but **must also exist** on the standby to ensure logical works post HA failover.
-- System views (for example, querying `pg_replication_slots`) only show the state on the primary and don't confirm whether slots are synchronized to the standby. A system can appear healthy on the primary but still not be failover-ready.
+- Logical replication slots are managed on the primary server, but **must also exist** on the standby to ensure logical replication continues after HA failover.
+- System views (for example, querying `pg_replication_slots`) only show the state on the primary and don't confirm whether slots are synchronized to the standby. A system can appear healthy on the primary but still not be failover-ready to preserve logical replication slots on the standby.
 
 ### Monitor logical replication failover readiness
 To help validate failover readiness, you can use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
-This metric indicates whether logical replication slots are synchronized across the HA primary and standby:
+
+This metric indicates whether logical replication slots are synchronized between the HA primary and standby:
 - `1` indicates that slots are synchronized across primary and standby.
 - `0` indicates that slots aren't synchronized on the standby.
 
 If the metric value is 0, logical replication might continue to function on the current primary, but it might not continue after a failover. For more details, refer to the [Logical replication monitoring](../monitor/concepts-monitoring.md#logical-replication).
 
-> [!NOTE] 
-> This synchronization state reflects the status across HA nodes and can't be verified using system views on the primary server alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events.
+> [!NOTE]
+> This synchronization state reflects the status across HA nodes and can't be verified using system views on the primary alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events. Consider configuring alerts when this metric remains 0 for a sustained period.
