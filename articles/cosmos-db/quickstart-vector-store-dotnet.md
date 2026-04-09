@@ -22,6 +22,30 @@ ms.custom:
 
 Learn to use vector search in Azure Cosmos DB to store and query vector data efficiently. This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) on GitHub.
 
+The app uses a sample hotel dataset in a ---
+
+title: Quickstart - Azure Cosmos DB vector search with .NET
+description: Learn how to use vector search in Azure Cosmos DB with .NET. Store and query vector data efficiently in your applications. 
+author: alexwolfmsft
+ms.author: alexwolf
+ms.reviewer: khelanmodi
+ms.devlang: csharp
+ms.topic: quickstart-sdk
+ms.date: 02/06/2026
+ms.service: azure-cosmos-db
+ms.subservice: nosql
+ai-usage: ai-assisted
+ms.custom:
+  - devx-track-dotnet
+  - devx-track-dotnet-ai
+  - devx-track-data-ai
+# CustomerIntent: As a developer, I want to learn how to use vector search in .NET applications with Azure Cosmos DB.
+---
+
+# Quickstart: Vector search with .NET in Azure Cosmos DB
+
+Learn to use vector search in Azure Cosmos DB to store and query vector data efficiently. This quickstart provides a guided tour of key vector search techniques using a [.NET sample app](https://github.com/Azure-Samples/cosmos-db-vector-samples/tree/main/nosql-vector-search-dotnet) on GitHub.
+
 The app uses a sample hotel dataset in a JSON file with calculated vectors from the `text-embedding-3-small` model. The hotel data includes hotel names, locations, descriptions, and vector embeddings.
 
 ## Prerequisites
@@ -84,7 +108,7 @@ To provision resources:
     git clone https://github.com/Azure-Samples/cosmos-db-vector-samples.git
     ```
 
-1. Navigate to the root folder of the cloned repository (where `azure.yml` is located), for example:
+1. Navigate to the root folder of the cloned repository (where `azure.yaml` is located), for example:
 
     ```bash
     cd cosmos-db-vector-samples
