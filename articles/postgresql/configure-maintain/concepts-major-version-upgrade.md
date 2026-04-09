@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/23/2026
+ms.date: 4/8/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -22,7 +22,7 @@ Your Azure Database for PostgreSQL flexible server instance has a feature that p
 In-place upgrades retain the server name and other settings of the current server after the upgrade of a major version. They don't require data migration or changes to the application connection strings. In-place upgrades are faster and involve shorter downtime than data migration.
 
 > [!NOTE]
-> Azure Database for PostgreSQL supports in-place major version upgrades only to currently supported PostgreSQL versions. For example, you can upgrade the current version given the target version is officially supported by Azure at the time of the upgrade. Unsupported versions can't be selected as upgrade targets, and attempting to upgrade to a deprecated version may result in failure or service disruption. Always consult the [Azure PostgreSQL versioning policy](/azure/postgresql/flexible-server/concepts-version-policy) and [upgrade documentation](/azure/postgresql/flexible-server/concepts-major-version-upgrade) before initiating a major version upgrade. 
+>  Azure Database for PostgreSQL supports in-place major version upgrades only to currently supported PostgreSQL versions. The target version must be officially supported by Azure at the time of the upgrade. The Azure portal prevents selecting unsupported versions, but API or CLI calls that target a deprecated version will fail. Always consult the [Azure PostgreSQL versioning policy](/azure/postgresql/flexible-server/concepts-version-policy) and [upgrade how-to guide](/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade) before initiating a major version upgrade. 
 
 ## Upgrade Process
 
@@ -59,7 +59,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 ### Extension Limitations
 
 In-place major version upgrades do not support all PostgreSQL extensions. The upgrade will fail during the precheck if unsupported extensions are found.
-- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `postgres_fdw`.
+- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `postgres_fdw`, `session_variable`, `pg_hint_plan`, `plv8`.
 - The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
 - When upgrading to PostgreSQL 17 and above, the following extensions are **not supported** and must be removed before upgrade. You may re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
 
