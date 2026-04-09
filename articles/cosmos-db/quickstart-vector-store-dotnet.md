@@ -127,7 +127,7 @@ Follow the prompts to select your Azure subscription and environment.
 * **Azure Cosmos DB**: Serverless account with the `Hotels` database and containers
 * **Azure OpenAI**: Resource with deployments for:
   * Embedding model: `text-embedding-3-small`
-  * Chat model: `gpt-4o-mini`
+  * Chat model: `gpt-4.1-mini`
 * **Managed Identity**: User-assigned identity for secure access.
 * Azure RBAC role assignments that enable Microsoft Entra ID (passwordless) access for the managed identity to Azure Cosmos DB and Azure OpenAI.
 
