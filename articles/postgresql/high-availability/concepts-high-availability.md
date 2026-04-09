@@ -4,7 +4,7 @@ description: This article describes high availability on an Azure Database for P
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 03/23/2026
+ms.date: 04/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
@@ -139,12 +139,6 @@ For a detailed guide on configuring and interpreting HA health statuses, see [Hi
 - You can't schedule customer-initiated management tasks during the managed maintenance window.
 
 - Planned events such as scale computing and scale storage happen on the standby first and then on the primary server. Currently, the server doesn't fail over for these planned operations.
-
-- If you configure logical decoding or logical replication on an HA-enabled flexible server: 
-    - In **PostgreSQL 16** and earlier, logical replication slots aren't preserved on the standby server after a failover by default.
-    - To ensure logical replication continues to function after failover, you need to enable the `pg_failover_slots` extension and configure supporting settings such as `hot_standby_feedback = on`.
-    - Starting with **PostgreSQL 17**, slot synchronization is supported natively. If you enable the correct PostgreSQL configurations (`sync_replication_slots`, `hot_standby_feedback`), logical replication slots are preserved automatically after failover, and no extension is required.
-    - For setup steps and prerequisites,  refer to the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
 
 - Configuring availability zones between private (virtual network) and public access with private endpoints isn't supported. You must configure availability zones within a virtual network (spanned across availability zones within a region) or public access with private endpoints.
 
@@ -290,3 +284,39 @@ After a PostgreSQL failover, maintaining optimal database performance involves u
 In contrast, the `pg_stat_*` views, provide runtime activity statistics such as the number of scans, tuples read, and updates, are stored in memory and reset upon failover. An example is `pg_stat_user_tables`, which tracks activity for user-defined tables. This reset accurately reflects the new primary's operational state but also means the loss of historical activity metrics that could inform the autovacuum process and other operational efficiencies.
 
 Given this distinction, you may consider running `ANALYZE` after a PostgreSQL failover. This action updates the `pg_stat_*` data (e.g., `pg_stat_user_tables`) with fresh vacuum activity statistics, helping the autovacuum process, which in turn, ensures that the database performance remains optimal in its new role. This proactive step bridges the gap between preserving essential optimizer statistics and refreshing activity metrics to align with the database's current state.
+
+## Logical replication support with HA
+When using logical replication or logical decoding with High Availability (HA) in Azure Database for PostgreSQL Flexible Server, it’s important to understand how replication slots behave during failover and how to ensure continuity of replication.
+
+### PostgreSQL 16 and earlier
+In PostgreSQL 16 and earlier, logical replication slots aren't automatically preserved on the standby server after a failover. To maintain logical replication across failover, you must:
+- Enable the `pg_failover_slots` extension
+- Configure required settings such as:
+  - `hot_standby_feedback = on`
+
+Without these configurations, logical replication might stop working after a failover because replication slots aren't available on the new primary.
+
+### PostgreSQL 17 and later
+Starting with PostgreSQL 17, logical replication slot synchronization is supported natively. When correctly configured, replication slots are automatically synchronized to the standby server.
+
+To enable this behavior:
+- Set `sync_replication_slots = on`
+- Set `hot_standby_feedback = on`
+
+With these settings, logical replication slots are preserved during failover, and replication can continue without requiring extensions. For details,  refer to the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
+
+### Important considerations
+- Logical replication slots are managed on the primary server, but **must also exist** on the standby to ensure logical replication continues after HA failover.
+- System views (for example, querying `pg_replication_slots`) only show the state on the primary and don't confirm whether slots are synchronized to the standby. A system can appear healthy on the primary but still not be failover-ready to preserve logical replication slots on the standby.
+
+### Monitor logical replication failover readiness
+To help validate failover readiness, you can use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
+
+This metric indicates whether logical replication slots are synchronized between the HA primary and standby:
+- `1` indicates that slots are synchronized across primary and standby.
+- `0` indicates that slots aren't synchronized on the standby.
+
+If the metric value is 0, logical replication might continue to function on the current primary, but it might not continue after a failover. For more details, refer to the [Logical replication monitoring](../monitor/concepts-monitoring.md#logical-replication).
+
+> [!NOTE]
+> This synchronization state reflects the status across HA nodes and can't be verified using system views on the primary alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events. Consider configuring alerts when this metric remains 0 for a sustained period.
