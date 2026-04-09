@@ -84,7 +84,7 @@ To provision resources:
     git clone https://github.com/Azure-Samples/cosmos-db-vector-samples.git
     ```
 
-1. Navigate to the root folder of the cloned repository (where `azure.yml` is located), for example:
+1. Navigate to the root folder of the cloned repository (where `azure.yaml` is located), for example:
 
     ```bash
     cd cosmos-db-vector-samples
