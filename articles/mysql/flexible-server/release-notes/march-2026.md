@@ -33,6 +33,7 @@ This version doesn't introduce any new features.
 
 - Returns clear, actionable customer‑facing errors for invalid key scenarios, improving troubleshooting and support experience.
 - Enables self‑service configuration of binlog_row_metadata, unblocking CDC/Data Out integrations and reducing support dependency.
+- As part of the March 2026 update, the daily automated backup time for your server is expected to change once. After this update, backups will continue to run once, every day as usual. Daily automatic backup continues unchanged and only the scheduled time of the daily backup shifts once. No user action is required.
 
 ## Known issues fixes
 
