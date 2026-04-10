@@ -35,9 +35,8 @@ The **maximum storage performance** for your Azure DocumentDB cluster depends on
 
 This table lists the highest achievable IOPS and bandwidth configurations per compute cluster tier. Premium SSD v2 disks, regardless of storage capacity, will be auto configured with the upper bound values tabulated below, at no added cost.
 
-### `2` vCores (M30)
-
 | Compute Tier | Max IOPS | Max bandwidth (MBps) |
+|--------------|-------------- |--------------------|
 | M30 (2 core) | 3,750 | 85 |
 | M40 (4 core) | 6,400 | 145 |
 | M50 (8 core) | 12,800 | 290 |
