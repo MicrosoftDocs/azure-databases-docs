@@ -146,7 +146,6 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     ```ini
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
-    AZURE_OPENAI_EMBEDDING_API_VERSION=2024-08-01-preview
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
 
     # Cosmos DB configuration
@@ -161,6 +160,9 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     # Vector search algorithm: diskann or quantizedflat
     VECTOR_ALGORITHM=diskann
     ```
+
+    > [!NOTE]
+    > The Go `azopenai` SDK manages API versioning internally. No API version environment variable is needed.
 
     Replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
