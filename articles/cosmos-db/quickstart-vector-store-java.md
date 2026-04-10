@@ -91,7 +91,8 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
     ```bash
     mkdir vector-search-quickstart
-    code vector-search-quickstart
+    cd vector-search-quickstart
+    code .
     ```
 
 1. Create a `pom.xml` file in the project root with the Maven configuration:
@@ -110,13 +111,13 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     ### [Linux/macOS](#tab/tab-mkdir-linux)
 
     ```bash
-    mkdir -p src/main/java/com/azure/cosmos/vectorsearch
+    mkdir -p src/main/java/com/example/cosmos/vectorsearch
     ```
 
     ### [Windows](#tab/tab-mkdir-windows)
 
     ```powershell
-    New-Item -ItemType Directory -Force -Path src/main/java/com/azure/cosmos/vectorsearch | Out-Null
+    New-Item -ItemType Directory -Force -Path src\main\java\com\example\cosmos\vectorsearch | Out-Null
     ```
 
     ---
@@ -187,7 +188,7 @@ These policies are defined in the Bicep templates for the [distance metrics](#di
 
 ## Create code files for vector search
 
-Create two Java source files in the `src/main/java/com/azure/cosmos/vectorsearch` directory:
+Create two Java source files in the `src/main/java/com/example/cosmos/vectorsearch` directory:
 
 ### [Linux/macOS](#tab/tab-touch-linux)
 
@@ -237,7 +238,7 @@ This Azure OpenAI SDK call converts text like "quintessential lodging near runni
 
 ## Understand the code: Store vectors in Azure Cosmos DB
 
-All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/java/api/com.azure.cosmos.cosmoscontainer) method in `Utils.insertData()`. Each document is mapped to a bulk create operation with a `PartitionKeyBuilder` for hierarchical partition keys. The utility tracks inserted, skipped, and failed counts along with total RU consumption.
+All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/java/api/com.azure.cosmos.cosmoscontainer) method in `Utils.insertData()`. Each document is mapped to a bulk create operation using the `PartitionKeyBuilder` with each document's partition key value. The utility tracks inserted, skipped, and failed counts along with total RU consumption.
 
 This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container. You can safely pass in all the document data, and the client library handles the batch processing and retries for you.
 
