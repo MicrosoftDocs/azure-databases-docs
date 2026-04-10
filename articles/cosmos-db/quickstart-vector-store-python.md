@@ -364,7 +364,7 @@ The app logging and output show:
 Azure Cosmos DB supports three distance functions for vector similarity:
 
 | Distance Function | Score Range | Interpretation | Best For |
-|------------------|-------------|----------------|----------|
+| --- | --- | --- | --- |
 | **Cosine** (default) | 0.0 to 1.0 | Higher scores (closer to 1.0) indicate greater similarity | General text similarity, Azure OpenAI embeddings (used in this quickstart) |
 | **Euclidean** (L2) | 0.0 to ∞ | Lower = more similar | Spatial data, when magnitude matters |
 | **Dot Product** | -∞ to +∞ | Higher = more similar | When vector magnitudes are normalized |
@@ -465,7 +465,7 @@ The distance function is set in the **vector embedding policy** when creating th
 This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities.
 
 | Property | Description |
-|----------|-------------|
+| --- | --- |
 | `partitionKeyPaths` | Partitions documents by `HotelId` for distributed storage. |
 | `indexingPolicy` | Configures automatic indexing on all document properties (`/*`) except the system `_etag` field and the `DescriptionVector` array to optimize write performance. Vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. |
 | `vectorIndexes` | Creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. |
