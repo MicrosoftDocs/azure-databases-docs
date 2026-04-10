@@ -31,45 +31,6 @@ selected number of vCores.
 | M80          | 32            | 128                |
 | M200         | 64            | 256                |
 
-## Storage in Azure DocumentDB
-
-The total amount of storage you assign also defines the I/O capacity
-available to each shard in the cluster.
-
-| Storage size, GiB | Maximum IOPS |
-|-------------------|--------------|
-| 32                | 3,500†       |
-| 64                | 3,500†       |
-| 128               | 3,500†       |
-| 256               | 3,500†       |
-| 512               | 3,500†       |
-| 1,024             | 5,000        |
-| 2,048             | 7,500        |
-| 4,095             | 7,500        |
-| 8,192             | 16,000       |
-| 16,384            | 18,000       |
-| 32,767            | 20,000       |
-
-† Max IOPS (Input/Output Operations Per Second) with free disk bursting. Storage up to 512 GiB inclusive come with free disk bursting enabled.
-
-## Maximize IOPS for your compute and storage configuration
-
-Each *compute* configuration has an IOPS limit that depends on the number of vCores. Make sure you select compute configuration for your cluster to fully utilize IOPS in the selected storage.
-
-| Storage size      | Storage IOPS, up to | Min compute tier | Min vCores |
-|-------------------|---------------------|------------------|------------|
-| Up to 0.5 TiB     | 3,500†              | M30              | 2 vCores   |
-| 1 TiB             | 5,000               | M40              | 4 vCores   |
-| 2 TiB             | 7,500               | M50              | 8 vCores   |
-| 4 TiB             | 7,500               | M50              | 8 vCores   |
-| 8 TiB             | 16,000              | M60              | 16 vCores  |
-| 16 TiB            | 18,000              | M60              | 16 vCores  |
-| 32 TiB            | 20,000              | M60              | 16 vCores  |
-
-† Max IOPS with free disk bursting. Storage up to 512 GiB inclusive come with free disk bursting enabled.
-
-For instance, if you need 8 TiB of storage per shard or more, make sure you select 16 vCores or more for the node's compute configuration. That selection would allow you to maximize IOPS usage provided by the selected storage.
-
 ## Considerations for compute and storage
 
 When configuring your Azure DocumentDB cluster, it's important to understand how compute and storage choices affect performance, cost, and scalability for your specific workload.
