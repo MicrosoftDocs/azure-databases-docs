@@ -21,6 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.3, 17.9, 16.13, 15.17, and 14.22. <sup>$</sup>
     - Support for [Premium SSD v2](../compute-storage/concepts-storage-premium-ssd-v2.md) now available in Azure portal for PostgreSQL
+    - Support for [Cascading read replicas](../read-replica/concepts-read-replicas.md#create-cascading-read-replicas) now available in Azure Portal, terraform for PostgreSQL
 - Preview
     - [Logical replication monitoring metrics](../monitor/concepts-monitoring.md#logical-replication) (`logical_replication_slot_sync_status`) is now available.
 
