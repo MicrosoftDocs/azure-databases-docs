@@ -2,7 +2,7 @@
 title: "Oracle to PostgreSQL Application Conversion: Tutorial"
 description: "Step-by-step tutorial for converting Application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension."
 author: shriram-muthukrishnan
-ms.author: shriram-muthukrishnan
+ms.author: shriramm
 ms.reviewer: maghan
 ms.date: 04/13/2026
 ms.service: azure-database-postgresql
@@ -100,7 +100,7 @@ This section walks through the complete application conversion workflow: set up 
  - Open the GitHub Copilot chat interface.
  - Select **Claude Sonnet 4.6 or Claude Opus 4.6** for the model.
 
-![model selection](media/modelselection.png)
+![model selection](media/model-selection.png)
 
 > Using Claude Sonnet 4.6 or Claude Opus 4.6 is required for optimal application conversion results. Lower models may produce less accurate conversions.
 

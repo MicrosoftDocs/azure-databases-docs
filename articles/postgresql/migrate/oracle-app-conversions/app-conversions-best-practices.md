@@ -2,7 +2,7 @@
 title: "Oracle to PostgreSQL Application Conversion: Best Practices"
 description: "Best practices and recommendations for optimal Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension."
 author: shriram-muthukrishnan
-ms.author: shriram-muthukrishnan
+ms.author: shriramm
 ms.reviewer: maghan
 ms.date: 04/13/2026
 ms.service: azure-database-postgresql
