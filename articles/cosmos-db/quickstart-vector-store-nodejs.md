@@ -7,6 +7,7 @@ ms.author: diberry
 ms.reviewer: jcodella
 ms.devlang: typescript
 ms.service: azure-cosmos-db
+ms.subservice: nosql
 ms.topic: quickstart-sdk
 ms.date: 02/11/2026
 ai-usage: ai-assisted
@@ -58,11 +59,35 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
 1. Create a new data directory for the hotels data file:
 
+    ### [Linux/macOS](#tab/tab-data-linux)
+
     ```bash
     mkdir data
     ```
 
-1. Copy the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to your `data` directory.
+    ### [Windows](#tab/tab-data-windows)
+
+    ```powershell
+    New-Item -ItemType Directory -Force -Path data
+    ```
+
+    ---
+
+1. Download the [raw data file with vectors](https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json) to your `data` directory:
+
+    ### [Linux/macOS](#tab/tab-curl-linux)
+
+    ```bash
+    curl -o data/HotelsData_toCosmosDB_Vector.json https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json
+    ```
+
+    ### [Windows](#tab/tab-curl-windows)
+
+    ```powershell
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure-Samples/cosmos-db-vector-samples/refs/heads/main/data/HotelsData_toCosmosDB_Vector.json" -OutFile "data/HotelsData_toCosmosDB_Vector.json"
+    ```
+
+    ---
 
 ## Create a Node.js project
 
@@ -190,11 +215,23 @@ Use these scripts to compile TypeScript files and run the Quantized flat index i
 
 Create a `src` directory for your TypeScript files. Add two files: `vector-search.ts` and `utils.ts` for your vector search implementation:
 
+### [Linux/macOS](#tab/tab-touch-linux)
+
 ```bash
-mkdir src    
+mkdir src
 touch src/vector-search.ts
 touch src/utils.ts
 ```
+
+### [Windows](#tab/tab-touch-windows)
+
+```powershell
+New-Item -ItemType Directory -Force -Path src | Out-Null
+New-Item -ItemType File -Path src/vector-search.ts | Out-Null
+New-Item -ItemType File -Path src/utils.ts | Out-Null
+```
+
+---
 
 ## Create code for vector search
 
@@ -282,7 +319,7 @@ This utility module provides these **key** functions:
 
 Sign in to Azure CLI before you run the application so the app can access Azure resources securely.
 
-```bash
+```azurecli
 az login
 ```
 
