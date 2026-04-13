@@ -82,15 +82,17 @@ Use the Code Conversion Report to validate conversion results, plan testing, and
 ### Understanding conversion status
 
 **Executive Summary Indicators:**
+
 | Status | Description |
-|--------|-------------|
+| --- | --- |
 | **✅ COMPLETED SUCCESSFULLY** | Overall migration completed without blocking issues |
 | **Files with Warnings: N** | N files converted but should be reviewed |
 | **Files Requiring Manual Review: N** | N files need manual attention before deployment |
 
 **Individual File Status (in Files Converted section):**
+
 | Status | Description |
-|--------|-------------|
+| --- | --- |
 | **✅ Completed** | File was successfully converted with no issues |
 | **⚠️ Completed with Warnings** | File was converted but has areas that should be reviewed |
 | **❌ Requires Manual Review** | File has sections that need manual attention |
