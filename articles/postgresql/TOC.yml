@@ -588,15 +588,15 @@
         - name: Application Conversion
           items:
             - name: Application conversion overview
-              href: migrate/oracle-application-conversion/application-conversion-overview.md
+              href: migrate/oracle-app-conversions/application-conversion-overview.md
             - name: Application conversion tutorial
-              href: migrate/oracle-application-conversion/application-conversion-tutorial.md
+              href: migrate/oracle-app-conversions/application-conversion-tutorial.md
             - name: Application conversion best practices
-              href: migrate/oracle-application-conversion/application-conversion-best-practices.md
+              href: migrate/oracle-app-conversions/application-conversion-best-practices.md
             - name: Application conversion limitations
-              href: migrate/oracle-application-conversion/application-conversion-limitations.md
+              href: migrate/oracle-app-conversions/application-conversion-limitations.md
             - name: Application conversion reports
-              href: migrate/oracle-application-conversion/application-conversion-reports.md
+              href: migrate/oracle-app-conversions/application-conversion-reports.md
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks

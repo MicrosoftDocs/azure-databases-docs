@@ -1,3 +1,15 @@
+---
+title: "Oracle to PostgreSQL Application Conversion: Tutorial"
+description: "Step-by-step tutorial for converting Application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension."
+author: shriram-muthukrishnan
+ms.author: shriram-muthukrishnan
+ms.reviewer: maghan
+ms.date: 04/13/2026
+ms.service: azure-database-postgresql
+ms.topic: tutorial
+ms.collection: ce-skilling-ai-copilot
+---
+
 # Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)
 
 This tutorial guides you through converting Oracle client application code to Azure Database for PostgreSQL using the Visual Studio Code PostgreSQL extension with GitHub Copilot Agent Mode to automate and validate code transformation.
@@ -110,7 +122,7 @@ This section walks through the complete application conversion workflow: set up 
  - Copy the codebase folder you want to migrate into the `application_code` folder inside your project folder.
  - Organize files logically to facilitate systematic conversion.
 
-![application code folder inside your project](media/appCodeInsideProject.png)
+![application code folder inside your project](media/app-code-inside-project.png)
 
 > Keep your original application code in a separate location as a backup. Only copy the files you want to convert into the migration project structure.
 
@@ -122,7 +134,7 @@ This section walks through the complete application conversion workflow: set up 
    - The PostgreSQL database where you deployed your converted DDL, or
    - The PostgreSQL database where your application schema already exists
  - Select **Convert Application**.
-![Convert Application](media/startApplicationMigration.png)
+![Convert Application](media/start-application-migration.png)
 
 This action initiates the following processes:
 
@@ -160,7 +172,7 @@ Based on your converted codebase, the App Modernization Extension automatically 
 
  - When the application conversion finishes in Agent Mode, it automatically generates and opens a comprehensive report.
  - The report provides detailed results and recommended next steps for your conversion.
-![Conversion Report](media/conversionReport.png)
+![Conversion Report](media/conversion-report.png)
 
 > **For comprehensive report guidance**: See the [Reports document](app-conversions-reports.md) for detailed information on interpreting your conversion results, understanding file statuses, and planning your validation strategy.
 
@@ -197,7 +209,7 @@ After completing the application conversion:
 
 > **Comprehensive validation strategies**: See [Best Practices document](app-conversions-best-practices.md) for detailed validation frameworks, testing priorities, and team coordination approaches based on your conversion complexity.
 
-For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](https://learn.microsoft.com/en-us/azure/postgresql/extensions/vs-code-extension/overview).
+For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../developer/vs-code-extension/vs-code-overview.md).
 
 ## Related content
 

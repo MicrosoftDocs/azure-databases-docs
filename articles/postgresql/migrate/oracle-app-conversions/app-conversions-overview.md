@@ -1,3 +1,14 @@
+---
+title: "What is Oracle to PostgreSQL Application Conversion?"
+description: "Learn how to convert application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension with AI-powered transformation."
+author: shriram-muthukrishnan
+ms.author: shriram-muthukrishnan
+ms.reviewer: maghan
+ms.date: 04/13/2026
+ms.service: azure-database-postgresql
+ms.collection: ce-skilling-ai-copilot
+ms.topic: concept-article
+---
 # What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?
 
 The Oracle to Azure Database for PostgreSQL application conversion feature helps you migrate existing Oracle-based applications to work with Azure Database for PostgreSQL by automatically converting Oracle-specific database interaction code into PostgreSQL-compatible code.
@@ -103,7 +114,7 @@ Complete the schema conversion process for the schemas you want to migrate from 
     - Copy the codebase folder you want to migrate into the `application_code` folder inside your project folder.
     - Organize files logically to facilitate systematic conversion.
 
-   ![application code folder inside your project](media/appCodeInsideProject.png)
+   ![application code folder inside your project](media/app-code-inside-project.png)
 
     > Keep your original application code in a separate location as a backup. Only copy the files you want to convert into the migration project structure.
 
@@ -129,7 +140,7 @@ Before starting the application conversion process, verify you have completed:
    - The PostgreSQL database where you deployed your converted DDL, or
    - The PostgreSQL database where your application schema already exists
 4. Select **Convert Application**.
-![Convert Application](media/startApplicationMigration.png)
+![Convert Application](media/start-application-migration.png)
 
 This action initiates the following processes:
 
@@ -151,7 +162,7 @@ The tool generates the following files for review:
  - TODO lists for manual follow-up work
  - Conversion reports
  - File comparison views
-![Conversion Report](media/conversionReport.png)
+![Conversion Report](media/conversion-report.png)
 
 ## Core Concepts
 
@@ -214,4 +225,4 @@ When you create your issue or provide feedback, include `Application Conversion:
 - [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
 - [Oracle to PostgreSQL Application Conversion Best Practices](app-conversions-best-practices.md)
 - [Oracle to PostgreSQL Application Conversion Limitations](app-conversions-limitations.md)
-- [Oracle to PostgreSQL Schema Conversion Overview](https://learn.microsoft.com/en-us/azure/postgresql/migrate/oracle-schema-conversions/schema-conversions-overview)
+- [Oracle to PostgreSQL Schema Conversion Overview](../oracle-schema-conversions/schema-conversions-overview.md)

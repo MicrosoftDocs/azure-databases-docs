@@ -1,3 +1,15 @@
+---
+title: "Oracle to PostgreSQL Application Conversion: Limitations"
+description: "Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL schema conversion feature in Visual Studio Code."
+author: shriram-muthukrishnan
+ms.author: shriram-muthukrishnan
+ms.reviewer: maghan
+ms.date: 04/13/2026
+ms.service: azure-database-postgresql
+ms.collection: ce-skilling-ai-copilot
+ms.topic: concept-article
+---
+
 # Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)
 
 This article outlines the known limitations and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code.
@@ -212,4 +224,4 @@ When you encounter limitations:
 - [Oracle to PostgreSQL Application Conversion Overview](app-conversions-overview.md)
 - [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
 - [Oracle to PostgreSQL Application Conversion Best Practices](app-conversions-best-practices.md)
-- [Oracle to PostgreSQL Schema Conversion Limitations](https://learn.microsoft.com/en-us/azure/postgresql/migrate/oracle-schema-conversions/schema-conversions-limitations)
+- [Oracle to PostgreSQL Schema Conversion Limitations](../oracle-schema-conversions/schema-conversions-limitations.md)

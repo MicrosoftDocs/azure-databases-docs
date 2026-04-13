@@ -1,3 +1,14 @@
+---
+title: "Oracle to PostgreSQL Application Conversion: Reports"
+description: "Understanding the summary reports generated during Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension."
+author: shriram-muthukrishnan
+ms.author: shriram-muthukrishnan
+ms.reviewer: maghan
+ms.date: 04/13/2026
+ms.service: azure-database-postgresql
+ms.topic: concept-article
+---
+
 # Oracle to Azure Database for PostgreSQL application conversion generated reports (Preview)
 
 The Oracle to Azure Database for PostgreSQL Application Conversion feature generates a comprehensive report during the conversion process to help you validate and understand your application code conversion.
