@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/30/2026
+ms.date: 04/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -21,7 +21,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.3, 17.9, 16.13, 15.17, and 14.22. <sup>$</sup>
     - Support for [Premium SSD v2](../compute-storage/concepts-storage-premium-ssd-v2.md) now available in Azure portal for PostgreSQL
-    
+- Preview
+    - [Logical replication monitoring metrics](../monitor/concepts-monitoring.md#logical-replication) (`logical_replication_slot_sync_status`) is now available.
+
 ## Release: March 2026
 - General availability
     - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.2, 17.8, 16.12, 15.16, and 14.21. <sup>$</sup>
