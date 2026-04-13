@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 03/03/2026
+ms.date: 04/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -111,8 +111,9 @@ Choose from the following categories of enhanced metrics:
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
 | **Max Logical Replication Lag** | `logical_replication_delay_in_bytes` | Bytes | Maximum lag across all logical replication slots. | Doesn't apply | Yes |
+| **Logical replication slot sync status (preview)** | `logical_replication_slot_sync_status` | Count | Indicates whether logical replication slots are synchronized across High Availability (HA) primary and standby.<br><br>**1** → Slots are synchronized across primary and standby.<br>**0** → Slots are not synchronized on the standby. | Logical Replication Slot | No |
 
-##### Replication
+##### Read Replication
 
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
@@ -125,7 +126,7 @@ Choose from the following categories of enhanced metrics:
 | --- | --- | --- | --- | --- | --- |
 | **Disk Bandwidth Consumed Percentage ^** | `disk_bandwidth_consumed_percentage` | Percent | Percentage of data disk bandwidth consumed per minute. | Doesn't apply | Yes |
 | **Disk IOPS Consumed Percentage ^** | `disk_iops_consumed_percentage` | Percent | Percentage of data disk I/Os consumed per minute. | Doesn't apply | Yes |
-| **Postmaster Process cpu usage (preview)** | `postmaster_process_cpu_usage_percent` | Percent | CPU utilization of Postmaster process. Not applicable for Burstable SKU. | Doesn't apply | No |
+| **Postmaster Process cpu usage** | `postmaster_process_cpu_usage_percent` | Percent | CPU utilization of Postmaster process. Not applicable for Burstable SKU. | Doesn't apply | No |
 
 > [!NOTE]  
 > Metrics marked with `^` are emitted every minute but are processed and displayed in five-minute batches. This process results in up to a five-minute delay in metric visibility. When creating alerts on these metrics, account for this latency to ensure accurate and timely alerting.
@@ -135,7 +136,7 @@ Choose from the following categories of enhanced metrics:
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
 | **Max Connections** ** | `max_connections` | Count | Number of maximum connections. | Doesn't apply | Yes |
-| **TCP Connection Backlog (preview)** | `tcp_connection_backlog` | Count | Number of pending TCP connections waiting to be processed by the server. | Doesn't apply | No |
+| **TCP Connection Backlog** | `tcp_connection_backlog` | Count | Number of pending TCP connections waiting to be processed by the server. | Doesn't apply | No |
 
 ** **Max Connections** represents the configured value for the `max_connections` server parameter. The system polls this metric every 30 minutes.
 
