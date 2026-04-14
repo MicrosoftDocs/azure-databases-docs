@@ -12,6 +12,8 @@ ms.author: thvankra
 # Elastically scale an Azure Cosmos DB for Apache Cassandra account
 [!INCLUDE[Cassandra](../includes/appliesto-cassandra.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 There are a variety of options to explore the elastic nature of the Azure Cosmos DB for Apache Cassandra. To understand how to scale effectively in Azure Cosmos DB, it is important to understand how to provision the right amount of request units (RU/s) to account for the performance demands in your system. To learn more about request units, see the [request units](../request-units.md) article. 
 
 For the API for Cassandra, you can retrieve the Request Unit charge for individual queries using the [.NET and Java SDKs](./find-request-unit-charge.md). This is helpful in determining the amount of RU/s you will need to provision in the service.

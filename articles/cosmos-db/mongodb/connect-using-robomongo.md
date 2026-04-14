@@ -12,6 +12,8 @@ ms.custom: sfi-image-nochange, sfi-ropc-blocked
 # Use Robo 3T with Azure Cosmos DB's API for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 To connect to Azure Cosmos DB account using Robo 3T, you must:
 
 * Download and install [Robo 3T](https://robomongo.org/)

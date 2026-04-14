@@ -244,7 +244,7 @@ Partition merge is a long-running operation and there's no SLA on how long it ta
 
 While partition merge is running on your container, if you change container settings (TTL, indexing policy, unique keys, etc.), the ongoing merge operation will be canceled. If you increase your RU/s while a merge is running, the ongoing merge operation will be canceled and your container's RU/s will be updated with your new value. Depending on the RU/s requested, your [scale-up may be instant or take longer](scaling-provisioned-throughput-best-practices.md#step-2-calculate-the-default-maximum-throughput). If you decrease your RU/s while a merge is running, the RU/s will be instantly updated to the new RU/s. The in-progress merge will continue, with the same target partition count based on the RU/s set at the time the merge was triggered. As a best practice, it is recommended to wait until the merge operation completes before changing your container or throughput settings. 
 
-You can track whether merge is still in progress by checking the **Activity Log** and filtering for the events **Merge the physical partitions of a MongoDB collection** or **Merge the physical partitions of a SQL container**.
+You can track whether the merge is still in progress by checking the [Activity Log](monitor-activity-logs-elastic-operations.md) and filtering for the events **Merge the physical partitions of a MongoDB collection** or **Merge the physical partitions of a SQL container**.
 
 ## Limitations
 
@@ -260,14 +260,15 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Your Azure Cosmos DB account doesn't use any of the following features:
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
+   - [Per-partition automatic failover](how-to-configure-per-partition-automatic-failover.md)
    - Analytical store for Synapse Link *(deprecated)*
-- If you're using API for NoSQL, your application must use the Azure Cosmos DB .NET v3 SDK (version 3.27.0 or higher) or Java v4 SDK (version 4.42.0 or higher) OR JavaScript V4 SDK(version 4.3.0 or higher). When merge preview is enabled on your account, the account doesn't accept requests sent from non .NET/Java SDKs or older .NET/Java SDK versions.
+- If you're using API for NoSQL, your application must a supported version of the SDK. When merge preview is enabled on your account, the account doesn't accept requests sent from SDKs that are not supported with merge.
   - There are no SDK or driver requirements to use the feature with API for MongoDB.
 - Your Azure Cosmos DB account doesn't use any currently unsupported connectors:
   - Azure Data Factory
   - Azure Functions extension <= 3.x (Azure Functions extension 4.0 and higher is supported)
   - Azure Cosmos DB Spark connector < 4.18.0
-  - Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't .NET v3 SDK >= v3.27.0 or Java v4 SDK >= 4.42.0 or JavaScript v4 SDK >= 4.3.0
+  - Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't using a merge supported version of the SDK
 
 ### Account resources and configuration
 
@@ -276,12 +277,13 @@ To enroll in the preview, your Azure Cosmos DB account must meet all the followi
 - Accounts using merge functionality can't also use these features (if these features are added to a merge enabled account, the account can't merge resources):
    - [Point-in-time restore](continuous-backup-restore-introduction.md)
    - [Customer-managed keys](how-to-setup-cmk.md)
+   - [Per-partition automatic failover](how-to-configure-per-partition-automatic-failover.md)
    - Analytical store for Synapse Link *(deprecated)*
 - After a container has been merged, it isn't possible to read the change feed with start time. Support for this feature is planned for the future.
 
 ### SDK requirements (API for NoSQL only)
 
-Accounts with the merge feature enabled are supported only when you use the latest version of the .NET v3 SDK or Java v4 SDK. When the feature is enabled on your account (regardless of whether you run the merge), you must only use the supported SDK using the account. Requests sent from other SDKs or earlier versions aren't accepted. As long as you're using the supported SDK, your application can continue to run while a merge is ongoing.
+Accounts with the merge feature enabled are supported only when you use the latest version of SDK with merge support. When the feature is enabled on your account (regardless of whether you run the merge), you must only use the supported SDK using the account. Requests sent from other SDKs or earlier versions aren't accepted. As long as you're using the supported SDK, your application can continue to run while a merge is ongoing.
 
 Find the latest version of the supported SDK:
 
@@ -289,8 +291,8 @@ Find the latest version of the supported SDK:
 | --- | --- | --- |
 | **.NET SDK v3** | *>= 3.27.0* | <https://www.nuget.org/packages/Microsoft.Azure.Cosmos> |
 | **Java SDK v4** | *>= 4.42.0* | <https://mvnrepository.com/artifact/com.azure/azure-cosmos> |
-
-Support for other SDKs is planned for the future.
+| **JavaScript SDK v4** | *>= 4.3.0* | <https://www.npmjs.com/package/@azure/cosmos> |
+| **Python SDK v4** | *>= 4.14.2* | <https://pypi.org/project/azure-cosmos/> |
 
 > [!TIP]
 > You should ensure that your application has been updated to use a compatible SDK version prior to enrolling in the preview. If you're using a legacy SDK, follow the appropriate migration guide:
@@ -304,9 +306,9 @@ Support for other SDKs is planned for the future.
 If you enroll in the preview, the following connectors fail.
 
 - Azure Data Factory ¹
-- Azure Functions extension <= 3.x (Azure Functions extension 4.0 and higher is supported) ¹
+- Azure Functions extension <= 3.x (Azure Functions extension 4.0 and higher is supported)
 - Azure Cosmos DB Spark connector < 4.18.0
-- Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that isn't .NET v3 SDK >= v3.27.0 or Java v4 SDK >= 4.42.0
+- Any third party library or tool that has a dependency on an Azure Cosmos DB SDK that doesn't have merge support
 
 ¹ Support for these connectors is planned for the future.
 

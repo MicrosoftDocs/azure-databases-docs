@@ -335,4 +335,4 @@ Azure Database for PostgreSQL Elastic Clusters offer PgBouncer as a built-in con
 ## Related content
 
 - [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
-- [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md)
+- [Autovacuum tuning in Azure Database for PostgreSQL elastic clusters](how-to-autovacuum-tuning-elastic-clusters.md)

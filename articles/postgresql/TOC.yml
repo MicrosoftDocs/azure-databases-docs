@@ -15,12 +15,14 @@
       href: release-notes/release-notes.md
     - name: Maintenance release notes
       items:
-      - name: Maintenance release notes index
-        href: release-notes-maintenance/release-notes-maintenance-index.md
-      - name: January 2026
-        href: release-notes-maintenance/2026-january.md
-      - name: October 2025
-        href: release-notes-maintenance/2025-october.md
+        - name: Maintenance release notes index
+          href: release-notes-maintenance/release-notes-maintenance-index.md
+        - name: March 2026
+          href: release-notes-maintenance/2026-march.md
+        - name: January 2026
+          href: release-notes-maintenance/2026-january.md
+        - name: October 2025
+          href: release-notes-maintenance/2025-october.md
     - name: API release notes
       href: release-notes/release-notes-api.md
     - name: CLI release notes
@@ -39,96 +41,96 @@
           href: connectivity/connect-azure-cli.md
 - name: Developer experience
   items:
-  - name: Create a server
-    items:
-    - name: Azure SDK for Python
-      href: developer/create-server-python-sdk.md
-    - name: Azure SDK for .NET
-      href: developer/create-server-dotnet-sdk.md
-    - name: Azure SDK for Java
-      href: developer/create-server-java-sdk.md
-    - name: Bicep
-      href: developer/create-server-bicep.md
-    - name: Connect and query
+    - name: Create a server
       items:
-        - name: Python
-          href: connectivity/connect-python.md
-        - name: Java
-          href: connectivity/connect-java.md
-        - name: .NET
-          href: connectivity/connect-csharp.md
-        - name: Go
-          href: connectivity/connect-go.md
-        - name: PHP
-          href: connectivity/connect-php.md
-  - name: PostgreSQL extension for Visual Studio Code
-    items:
-      - name: Overview
-        href: extensions/vs-code-extension/overview.md
-      - name: QuickStart
-        href: extensions/vs-code-extension/quickstart-connect.md
-      - name: Configure GitHub Copilot
-        href: extensions/vs-code-extension/quickstart-github-copilot.md
-  - name: Application development
-    items:
-      - name: Deploy Django app on AKS
-        href: developer/django-aks-database.md
-      - name: Create web app in virtual network
-        href: developer/webapp-server-vnet.md
-      - name: Deploy Django app on App Service
-        href: /azure/app-service/tutorial-python-postgresql-app
+        - name: Azure SDK for Python
+          href: developer/create-server-python-sdk.md
+        - name: Azure SDK for .NET
+          href: developer/create-server-dotnet-sdk.md
+        - name: Azure SDK for Java
+          href: developer/create-server-java-sdk.md
+        - name: Bicep
+          href: developer/create-server-bicep.md
+        - name: Connect and query
+          items:
+            - name: Python
+              href: connectivity/connect-python.md
+            - name: Java
+              href: connectivity/connect-java.md
+            - name: .NET
+              href: connectivity/connect-csharp.md
+            - name: Go
+              href: connectivity/connect-go.md
+            - name: PHP
+              href: connectivity/connect-php.md
+    - name: PostgreSQL extension for Visual Studio Code
+      items:
+        - name: Overview
+          href: extensions/vs-code-extension/overview.md
+        - name: QuickStart
+          href: extensions/vs-code-extension/quickstart-connect.md
+        - name: Configure GitHub Copilot
+          href: extensions/vs-code-extension/quickstart-github-copilot.md
+    - name: Application development
+      items:
+        - name: Deploy Django app on AKS
+          href: developer/django-aks-database.md
+        - name: Create web app in virtual network
+          href: developer/webapp-server-vnet.md
+        - name: Deploy Django app on App Service
+          href: /azure/app-service/tutorial-python-postgresql-app
 - name: Generative AI
   items:
-  - name: Overview
-    href: azure-ai/generative-ai-overview.md
-  - name: Semantic search
-    items:
-    - name: PostgreSQL as a vector store
-      href: azure-ai/generative-ai-semantic-search.md
-    - name: Vector search using pgvector
-      href: extensions/how-to-use-pgvector.md
-    - name: Optimize performance when using pgvector
-      href: extensions/how-to-optimize-performance-pgvector.md
-    - name: Scalable vector indexing using pg_diskann
-      href: extensions/how-to-use-pgdiskann.md
-    - name: Semantic reranking of vector search results
-      href: azure-ai/generative-ai-semantic-search.md
-  - name: Semantic operators in SQL
-    items:
-    - name: Introduction to the azure_ai extension
-      href: azure-ai/generative-ai-azure-overview.md
-    - name: Create vector embeddings using Azure OpenAI
-      href: azure-ai/generative-ai-azure-openai.md
-    - name: Use generate(), is_true() and extract() operators
-      href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-    - name: Invoke Azure Language capabilities
-      href: azure-ai/generative-ai-azure-cognitive.md
-    - name: Invoke Azure Machine Learning models
-      href: azure-ai/generative-ai-azure-machine-learning.md
-    - name: Enable managed identity in azure_ai
-      href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-    - name: Tutorial - Build a semantic search application
-      href: azure-ai/generative-ai-semantic-search.md
-    - name: Tutorial - Build a recommendation system
-      href: azure-ai/generative-ai-recommendation-system.md
-  - name: AI Frameworks
-    items:
-    - name: Integrate with AI Frameworks
-      href: azure-ai/generative-ai-frameworks.md
-    - name: Tutorial - Develop with LangChain
-      href: azure-ai/generative-ai-develop-with-langchain.md
-  - name: AI Agents
-    items:
     - name: Overview
-      href: azure-ai/generative-ai-agents.md
-    - name: Build an agent with Microsoft Foundry
-      href: azure-ai/generative-ai-foundry-integration.md
-  - name: Graph database
-    items:
-    - name: Overview Apache AGE for PostgreSQL
-      href: azure-ai/generative-ai-age-overview.md
-    - name: Performance Best Practices for Apache AGE
-      href: azure-ai/generative-ai-age-performance.md
+      href: azure-ai/generative-ai-overview.md
+    - name: Semantic search
+      items:
+        - name: PostgreSQL as a vector store
+          href: azure-ai/generative-ai-semantic-search.md
+        - name: Vector search using pgvector
+          href: extensions/how-to-use-pgvector.md
+        - name: Optimize performance when using pgvector
+          href: extensions/how-to-optimize-performance-pgvector.md
+        - name: Scalable vector indexing using pg_diskann
+          href: extensions/how-to-use-pgdiskann.md
+        - name: Semantic reranking of vector search results
+          href: azure-ai/generative-ai-semantic-search.md
+    - name: Semantic operators in SQL
+      items:
+        - name: Introduction to the azure_ai extension
+          href: azure-ai/generative-ai-azure-overview.md
+        - name: Create vector embeddings using Azure OpenAI
+          href: azure-ai/generative-ai-azure-openai.md
+        - name: Use generate(), is_true() and extract() operators
+          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Invoke Azure Language capabilities
+          href: azure-ai/generative-ai-azure-cognitive.md
+        - name: Invoke Azure Machine Learning models
+          href: azure-ai/generative-ai-azure-machine-learning.md
+        - name: Enable managed identity in azure_ai
+          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
+        - name: Tutorial - Build a semantic search application
+          href: azure-ai/generative-ai-semantic-search.md
+        - name: Tutorial - Build a recommendation system
+          href: azure-ai/generative-ai-recommendation-system.md
+    - name: AI Frameworks
+      items:
+        - name: Integrate with AI Frameworks
+          href: azure-ai/generative-ai-frameworks.md
+        - name: Tutorial - Develop with LangChain
+          href: azure-ai/generative-ai-develop-with-langchain.md
+    - name: AI Agents
+      items:
+        - name: Overview
+          href: azure-ai/generative-ai-agents.md
+        - name: Build an agent with Microsoft Foundry
+          href: azure-ai/generative-ai-foundry-integration.md
+    - name: Graph database
+      items:
+        - name: Overview Apache AGE for PostgreSQL
+          href: azure-ai/generative-ai-age-overview.md
+        - name: Performance Best Practices for Apache AGE
+          href: azure-ai/generative-ai-age-performance.md
 - name: Extensions
   items:
     - name: Overview
@@ -244,7 +246,7 @@
     - name: Azure Advisor recommendations
       href: configure-maintain/concepts-azure-advisor-recommendations.md
 - name: Compute and Storage
-  items: 
+  items:
     - name: Compute
       href: compute-storage/concepts-compute.md
     - name: Storage
@@ -255,14 +257,16 @@
         href: compute-storage/concepts-storage-premium-ssd.md  
       - name: Premium SSD v2
         href: compute-storage/concepts-storage-premium-ssd-v2.md  
-      - name: Migrate from Premium SSD to Premium SSD v2
+      - name: Migrate from Premium SSD to Premium SSD v2 using PITR
         href: compute-storage/concepts-storage-migrate-ssd-to-ssd-v2.md
+      - name: Migrate from Premium SSD to Premium SSD v2 using replication
+        href: compute-storage/concepts-storage-replicate-ssd-to-ssd-v2.md
 - name: Scaling
   items:
     - name: Scaling resources
       href: scale/concepts-scaling-resources.md
     - name: Scale out
-      href: scale/how-to-scale-out.md          
+      href: scale/how-to-scale-out.md
     - name: Scale compute
       href: scale/how-to-scale-compute.md
     - name: Scale storage size
@@ -290,8 +294,8 @@
         - name: Bicep
           href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
         - name: ARM template
-          displayName: Azure Resource Manager
           href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
+          displayName: Azure Resource Manager
     - name: Build with Elastic clusters
       items:
         - name: Design a multitenant database
@@ -332,14 +336,18 @@
               href: backup-restore/how-to-restore-dropped-server.md
     - name: Reliability
       items:
+        - name: High availability
+          href: high-availability/concepts-high-availability.md
         - name: Configure high availability
           href: high-availability/how-to-configure-high-availability.md
         - name: Schedule maintenance
           href: configure-maintain/how-to-configure-scheduled-maintenance.md
         - name: Enable deletion protection
           href: configure-maintain/how-to-enable-deletion-protection.md
-        - name: Monitor High-availability
+        - name: Monitor high availability
           href: high-availability/how-to-monitor-high-availability.md
+        - name: Reliability in Azure Database for PostgreSQL
+          href: /azure/reliability/reliability-database-postgresql?toc=/azure/postgresql/toc.json
     - name: Read replicas
       items:
         - name: Overview
@@ -385,104 +393,106 @@
       href: connectivity/concepts-connection-pooling-best-practices.md
 - name: Networking
   items:
-  - name: Networking with public access (allowed IP addresses)
-    href: network/concepts-networking-public.md
-  - name: Networking with private access (virtual network Integration)
-    href: network/concepts-networking-private.md
-  - name: Networking with Private Endpoint
-    href: network/concepts-networking-private-link.md
-  - name: Secure connectivity with SSL and TLS
-    href: security/security-tls.md
-  - name: Public access (allowed IP addresses)
-    items:
-      - name: Enable public access
-        href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-      - name: Disable public access
-        href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
-      - name: Add firewall rules
-        href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
-      - name: Delete firewall rules
-        href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
-      - name: Add private endpoint connections
-        href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
-      - name: Delete private endpoint connections
-        href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
-      - name: Approve private endpoint connections
-        href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
-      - name: Reject private endpoint connections
-        href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-  - name: Private access (virtual network Integration)
-    items:
-      - name: Change private DNS zone
-        href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+    - name: Networking with public access (allowed IP addresses)
+      href: network/concepts-networking-public.md
+    - name: Networking with private access (virtual network Integration)
+      href: network/concepts-networking-private.md
+    - name: Networking with Private Endpoint
+      href: network/concepts-networking-private-link.md
+    - name: Secure connectivity with SSL and TLS
+      href: security/security-tls.md
+    - name: Public access (allowed IP addresses)
+      items:
+        - name: Enable public access
+          href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+        - name: Disable public access
+          href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+        - name: Add firewall rules
+          href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+        - name: Delete firewall rules
+          href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+        - name: Add private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+        - name: Delete private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+        - name: Approve private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+        - name: Reject private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+    - name: Private access (virtual network Integration)
+      items:
+        - name: Change private DNS zone
+          href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+    - name: How to migrate vnet private endpoint capable server
+      href: network/how-to-migrate-vnet-private-endpoint-capable-server.md
 - name: Security
   items:
-  - name: Secure your Azure Database for PostgreSQL
-    href: security/security-overview.md
-  - name: Authentication and access control
-    items:
-      - name: Microsoft Entra authentication
-        href: security/security-entra-concepts.md
-      - name: Configure Microsoft Entra integration
-        href: security/security-entra-configure.md
-      - name: Manage database users
-        href: security/security-manage-database-users.md
-      - name: Access control
-        href: security/security-access-control.md
-      - name: Connect applications with a managed identity
-        href: security/security-connect-with-managed-identity.md
-      - name: Connect local database users with SCRAM authentication
-        href: security/security-connect-scram.md
-      - name: Reset local administrator password
-        href: security/security-reset-admin-password.md
-  - name: Database server identity
-    items:
-      - name: Overview
-        href: security/security-managed-identity-overview.md
-      - name: Configure system assigned managed identity
-        href: security/security-configure-managed-identities-system-assigned.md
-      - name: Configure user assigned managed identities
-        href: security/security-configure-managed-identities-user-assigned.md
-  - name: Transport Layer Security (TLS)
-    items:
-      - name: Overview
-        href: security/security-tls.md
-      - name: Connect clients with TLS
-        href: security/security-tls-how-to-connect.md
-      - name: Update trusted root certificate for Java
-        href: security/security-update-trusted-root-java.md
-  - name: Data protection
-    items:
-      - name: Data encryption overview
-        href: security/security-data-encryption.md
-      - name: Configure data encryption
-        href: security/security-configure-data-encryption.md
-      - name: Confidential computing
-        href: security/security-confidential-computing.md
-  - name: Firewall rules
-    href: security/security-firewall-rules.md
-  - name: Auditing, logging and Defender for cloud
-    items:
-      - name: Audit logs
-        href: security/security-audit.md
-      - name: Logs
-        href: monitor/concepts-logging.md
-      - name: Microsoft Defender for Cloud - OSS Databases
-        href: security/security-defender-for-cloud.md
-  - name: Compliance
-    href: security/security-compliance.md
-  - name: Azure Policy
-    href: security/security-azure-policy.md
-  - name: Encrypted connectivity
-    items:
-      - name: Encrypted connectivity with TLS
-        href: security/security-tls-how-to-connect.md
-      - name: Update application client certificates
-        href: security/security-update-trusted-root-java.md
-  - name: Troubleshoot
-    items:
-    - name: Troubleshoot TLS connection failures
-      href: security/security-tls-troubleshoot.md
+    - name: Secure your Azure Database for PostgreSQL
+      href: security/security-overview.md
+    - name: Authentication and access control
+      items:
+        - name: Microsoft Entra authentication
+          href: security/security-entra-concepts.md
+        - name: Configure Microsoft Entra integration
+          href: security/security-entra-configure.md
+        - name: Manage database users
+          href: security/security-manage-database-users.md
+        - name: Access control
+          href: security/security-access-control.md
+        - name: Connect applications with a managed identity
+          href: security/security-connect-with-managed-identity.md
+        - name: Connect local database users with SCRAM authentication
+          href: security/security-connect-scram.md
+        - name: Reset local administrator password
+          href: security/security-reset-admin-password.md
+    - name: Database server identity
+      items:
+        - name: Overview
+          href: security/security-managed-identity-overview.md
+        - name: Configure system assigned managed identity
+          href: security/security-configure-managed-identities-system-assigned.md
+        - name: Configure user assigned managed identities
+          href: security/security-configure-managed-identities-user-assigned.md
+    - name: Transport Layer Security (TLS)
+      items:
+        - name: Overview
+          href: security/security-tls.md
+        - name: Connect clients with TLS
+          href: security/security-tls-how-to-connect.md
+        - name: Update trusted root certificate for Java
+          href: security/security-update-trusted-root-java.md
+    - name: Data protection
+      items:
+        - name: Data encryption overview
+          href: security/security-data-encryption.md
+        - name: Configure data encryption
+          href: security/security-configure-data-encryption.md
+        - name: Confidential computing
+          href: security/security-confidential-computing.md
+    - name: Firewall rules
+      href: security/security-firewall-rules.md
+    - name: Auditing, logging and Defender for cloud
+      items:
+        - name: Audit logs
+          href: security/security-audit.md
+        - name: Logs
+          href: monitor/concepts-logging.md
+        - name: Microsoft Defender for Cloud - OSS Databases
+          href: security/security-defender-for-cloud.md
+    - name: Compliance
+      href: security/security-compliance.md
+    - name: Azure Policy
+      href: security/security-azure-policy.md
+    - name: Encrypted connectivity
+      items:
+        - name: Encrypted connectivity with TLS
+          href: security/security-tls-how-to-connect.md
+        - name: Update application client certificates
+          href: security/security-update-trusted-root-java.md
+    - name: Troubleshoot
+      items:
+        - name: Troubleshoot TLS connection failures
+          href: security/security-tls-troubleshoot.md
 - name: Migrate
   items:
     - name: Migration Service for Azure Database for PostgreSQL
@@ -503,6 +513,8 @@
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+                - name: From EDB Extended server
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
             - name: Migrate online
               items:
                 - name: From an Azure VM or an on-premises PostgreSQL server
@@ -515,6 +527,8 @@
                   href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
                 - name: From Google AlloyDB for PostgreSQL
                   href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
+                - name: From EDB Extended server
+                  href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
         - name: Concepts
           items:
             - name: Premigration validation
@@ -545,32 +559,32 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-      - name: Oracle to PostgreSQL schema conversion
-        href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-      - name: Migrating Oracle To Azure Database for PostgreSQL
-        href: migrate/concepts-oracle-migration.md
-      - name: Migration stages
-        href: migrate/concepts-oracle-migration-stages.md
-      - name: Schema conversion
-        items:
-          - name: Schema conversion overview
-            href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-          - name: Schema conversion tutorial
-            href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
-          - name: Schema conversion reports
-            href: migrate/oracle-schema-conversions/schema-conversions-reports.md
-          - name: Schema conversion best practices
-            href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
-          - name: Schema conversion limitations
-            href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
-          - name: Application Conversion Quickstart
-            href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
-          - name: Best practices
-            href: migrate/best-practices-oracle-to-postgresql.md
-          - name: Premigration checklist
-            href: migrate/best-practices-oracle-to-postgresql-checklist.md
-          - name: Migrate with Ora2Pg
-            href: migrate/how-to-migrate-oracle-ora2pg.md
+        - name: Oracle to PostgreSQL schema conversion
+          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+        - name: Migrating Oracle To Azure Database for PostgreSQL
+          href: migrate/concepts-oracle-migration.md
+        - name: Migration stages
+          href: migrate/concepts-oracle-migration-stages.md
+        - name: Schema conversion
+          items:
+            - name: Schema conversion overview
+              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+            - name: Schema conversion tutorial
+              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+            - name: Schema conversion reports
+              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+            - name: Schema conversion best practices
+              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+            - name: Schema conversion limitations
+              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+            - name: Application Conversion Quickstart
+              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
+            - name: Best practices
+              href: migrate/best-practices-oracle-to-postgresql.md
+            - name: Premigration checklist
+              href: migrate/best-practices-oracle-to-postgresql-checklist.md
+            - name: Migrate with Ora2Pg
+              href: migrate/how-to-migrate-oracle-ora2pg.md
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks
@@ -687,12 +701,18 @@
         - name: Troubleshoot autovacuum
           href: troubleshoot/how-to-autovacuum-tuning.md
           displayName: Autovacuum troubleshooting, tuning
+        - name: Troubleshoot autovacuum on elastic clusters
+          href: troubleshoot/how-to-autovacuum-tuning-elastic-clusters.md
+          displayName: Autovacuum troubleshooting, tuning on elastic clusters       
         - name: Full vacuum using pg_repack extension
           href: troubleshoot/how-to-perform-fullvacuum-pg-repack.md
           displayName: Full vacuum using pg_repack extension
         - name: Troubleshoot and identify slow running queries
           href: troubleshoot/how-to-identify-slow-queries.md
           displayName: Troubleshoot and identify slow running queries
+        - name: Troubleshoot and identify slow running queries on elastic clusters
+          href: troubleshoot/how-to-identify-slow-queries-elastic-clusters.md
+          displayName: Troubleshoot and identify slow running queries on elastic clusters
         - name: Troubleshoot connections
           href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
           displayName: Troubleshoot connections

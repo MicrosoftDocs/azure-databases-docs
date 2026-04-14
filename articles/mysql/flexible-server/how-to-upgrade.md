@@ -1,8 +1,8 @@
 ---
 title: Major Version Upgrade
 description: Learn how to upgrade major version for an Azure Database for MySQL flexible server instance.
-author: xboxeer
-ms.author: yuzheng1
+author: moabuham 
+ms.author: moabuham 
 ms.reviewer: yuzheng1, maghan
 ms.date: 06/11/2025
 ms.service: azure-database-mysql
@@ -77,6 +77,9 @@ To perform a major version upgrade for an Azure Database for MySQL Burstable SKU
     After the upgrade, decide whether to retain the General Purpose SKU or revert to Burstable SKU. This choice is prompted during the initial upgrade steps.
     
     The system automatically upgrades your compute tier from Burstable SKU to the selected General Purpose SKU to support the major version upgrade.
+
+   > [!IMPORTANT]
+   > Before or after upgrade, the change of SKU compute tier can be unsuccessful in regions experiencing high capacity demand at that point of time. In such cases, the SKU compute tier change can be retried outside of peak business hours in that region.
 
 6. Major Version Upgrade
 

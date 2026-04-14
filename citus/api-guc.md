@@ -5,6 +5,7 @@ ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: reference
 ai-usage: ai-assisted
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Configure Citus: GUC parameters reference
@@ -89,6 +90,23 @@ SET citus.node_conninfo =
 
 Citus honors only a specific subset of the allowed options, namely:
 
+:::moniker range="<=citus-12"
+- application_name
+- connect_timeout
+- gsslib†
+- keepalives
+- keepalives_count
+- keepalives_idle
+- keepalives_interval
+- krbsrvname†
+- sslcompression
+- sslcrl
+- sslmode (defaults to "require" as of Citus 8.1)
+- sslrootcert
+- tcp_user_timeout
+:::moniker-end
+
+:::moniker range=">=citus-13"
 - connect_timeout
 - gsslib†
 - host
@@ -103,6 +121,7 @@ Citus honors only a specific subset of the allowed options, namely:
 - sslnegotiation
 - sslrootcert
 - tcp_user_timeout
+:::moniker-end
 
 *(† = subject to the runtime presence of optional PostgreSQL features)*
 

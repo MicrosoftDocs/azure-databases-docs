@@ -4,7 +4,7 @@ description: This article describes the read replica feature usage for an Azure 
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 07/16/2025
+ms.date: 04/6/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
@@ -38,7 +38,7 @@ Read replicas are primarily designed for scenarios where offloading queries is b
 
 ## Create a replica
 
-A primary server for an Azure Database for PostgreSQL flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
+A primary server for an Azure Database for PostgreSQL flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure Database for PostgreSQL is available. The capability to create replicas now extends to some Azure regions in sovereign clouds. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of sovereign cloud regions where you can create replicas.
 
 When you start the create replica workflow, a blank Azure Database for PostgreSQL flexible server instance is created. The new server is filled with the data on the primary server. For the creation of replicas in the same region, a snapshot approach is used. Therefore, the time of creation is independent of the size of the data. Geo-replicas are created using the base backup of the primary instance, which is then transmitted over the network; therefore, the creation time might range from minutes to several hours, depending on the primary size.
 
@@ -85,20 +85,20 @@ Certain functionalities are restricted to primary servers and can't be set up on
 
 If your source Azure Database for PostgreSQL flexible server instance is encrypted with customer-managed keys, see the [documentation](../security/security-data-encryption.md) for other considerations.
 
-## Create cascading read replicas (Preview)
+## Create cascading read replicas
 
-Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure Database for PostgreSQL flexible server instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure Database for PostgreSQL server. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
 
 The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. To add a cascading read replica to Azure Database for PostgreSQL flexible server instance, select the existing read replica (created from the primary server), and navigate to the 'Replication' tab and click 'Create replica'.
 
 For example, your primary server can have up to 5 read replicas (level 1). One of these, say read-replica-1, can act as the source for another replica read-replica-2 which becomes part of (level 2).
 
-#### Preview considerations:
+#### Key considerations:
 1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
-2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
-3. Virtual endpoints are not supported for cascading replicas.
-4. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
-5. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
+2. Switchover operation is supported between intermediate read replica (source) and cascading read replica.
+3. Promote to primary operation is not supported for intermediate read replicas with cascading read replicas.
+4. Virtual endpoints are not supported for cascading replicas.
+5. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
    
 ## Connect to a replica
 
@@ -176,7 +176,7 @@ This section summarizes considerations about the read replica feature. The follo
 
 ### New replicas
 
-A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica. You can't create a replica of another read replica, that is, cascading replication isn't supported.
+A read replica is created as a new Azure Database for PostgreSQL flexible server instance. An existing server can't be made into a replica.
 
 ### Resource move
 
@@ -238,7 +238,7 @@ It's essential to monitor storage usage and replication lag closely and take nec
 
 When a read replica is created, it inherits the server parameters from the primary server. This is to ensure a consistent and reliable starting point. However, any changes to the server parameters on the primary server made after creating the read replica aren't automatically replicated. This behavior offers the advantage of individual tuning of the read replica, such as enhancing its performance for read-intensive operations without modifying the primary server's parameters. While this provides flexibility and customization options, it also necessitates careful and manual management to maintain consistency between the primary and its replica when uniformity of server parameters is required.
 
-Administrators can change server parameters on the read replica server and set different values than on the primary server. The only exception is parameters that might affect the recovery of the replica, mentioned also in the "Scaling" section below: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`. To ensure the read replica's recovery is seamless and it doesn't encounter shared memory limitations, these particular parameters should always be set to values that are either equivalent to or [greater than those configured on the primary server](https://www.postgresql.org/docs/current/hot-standby.html#HOT-STANDBY-ADMIN).
+Administrators can change server parameters on the read replica server and set different values than on the primary server. The only exception is parameters that might affect the recovery of the replica, mentioned also in the "Scaling" section below: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`. To ensure the read replica's recovery is seamless and it doesn't encounter shared memory limitations, these particular parameters should always be set to values that are either equivalent to or [greater than those configured on the primary server](https://www.postgresql.org/docs/current/hot-standby.html#HOT-STANDBY-ADMIN). Before lowering parameter values on a read replica server, ensure that replication lag is minimal or the replica is fully caught up with the primary server, to avoid potential replication or recovery issues.
 
 ### Scale
 

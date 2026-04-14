@@ -15,6 +15,8 @@ ms.devlang: javascript
 
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 The following document contains the custom action commands that are specific to Azure Cosmos DB for MongoDB. These commands can be used to create and obtain database resources that are specific to the [Azure Cosmos DB capacity model](../resource-model.md).
 
 By using Azure Cosmos DB for MongoDB, you can enjoy the shared benefits of Azure Cosmos DB. These benefits include, but aren't limited to:
@@ -296,7 +298,7 @@ The update collection extension command updates the properties associated with t
 {
   customAction: "UpdateCollection",
   collection: "<Name of the collection that you want to update>",
-  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure Portal.
+  // Replace the line below with "autoScaleSettings: { maxThroughput: (int) }" if using Autoscale instead of Provisioned Throughput. Fill the required Autoscale max throughput setting. Changing between Autoscale and Provisioned throughput is only supported in the Azure portal.
   offerThroughput: (int) // Provisioned Throughput enabled with required throughput amount set.
   indexes: [{key: {_id: 1}, name: "_id_1"}, ... ] // Optional indexes (3.6+ accounts only).
 }

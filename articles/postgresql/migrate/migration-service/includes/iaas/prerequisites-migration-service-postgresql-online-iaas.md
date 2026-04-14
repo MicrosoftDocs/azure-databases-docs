@@ -12,7 +12,6 @@ ms.topic: include
 Before starting the migration with the Azure Database for PostgreSQL migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
-- [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
 - [Configure target setup](#configure-target-setup)
 - [Enable CDC as a source](#enable-cdc-as-a-source)
 - [Configure network setup](#configure-network-setup)
@@ -27,9 +26,9 @@ The source PostgreSQL server version must be 9.5 or later.
 
 If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher before you start the migration.
 
-### Install test_decoding - Source Setup
-
-- **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
+> [!NOTE]  
+> - [PgOutput](../../concepts-required-user-permissions.md#online-migration-using-pgoutput---required-publication-permissions) is the default logical decoding plugin used for Online migration. If source PostgreSQL version <10, **test_decoding** plugin is used.
+> - **test_decoding** receives WAL through the logical decoding mechanism and decodes it into text representations of the operations performed.
 
 - For more information about the test-decoding plugin, see the [PostgreSQL documentation](https://www.postgresql.org/docs/16/test-decoding.html).
 
@@ -43,7 +42,7 @@ When migrating across PostgreSQL versions (major or minor), ensure compatibility
 
 ### Enable CDC as a source
 
-- `test_decoding` logical decoding plugin captures the changed records from the source.
+- Logical decoding plugin captures the changed records from the source.
 - In the source PostgreSQL instance, set the following parameters and values in the postgresql.conf configuration file:
     - Set `wal_level` to `logical`.
     - Set `max_replication_slots` to a value greater than 1. Should be greater than the number of databases selected for migration.

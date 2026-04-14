@@ -1,8 +1,8 @@
 ---
 title: Server self-heal for Azure Database for MySQL - Flexible Server
 description: Learn how to use server self-heal in Azure Database for MySQL - Flexible Server to automatically recover from certain failures.
-author: xboxeer
-ms.author: yuzheng1
+author: moabuham 
+ms.author: moabuham 
 ms.date: 07/09/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server

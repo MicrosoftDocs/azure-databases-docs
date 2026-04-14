@@ -12,6 +12,8 @@ ms.date: 06/05/2025
 
 # Live migrate data from Apache Cassandra to the Azure Cosmos DB for Apache Cassandra by using dual-write proxy and Apache Spark
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 API for Cassandra in Azure Cosmos DB is a great choice for enterprise workloads that run on Apache Cassandra for various reasons: 
 
 - **No overhead of managing and monitoring:** It eliminates the overhead of managing and monitoring a myriad of settings across operating systems, Java virtual machines, and yaml files and their interactions.

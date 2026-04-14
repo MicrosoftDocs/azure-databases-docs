@@ -40,6 +40,21 @@
         - name: Query a vector store with a Node.js app
           displayName: Quickstart, vector search, vector database, Node.js
           href: quickstart-vector-store-nodejs.md
+        - name: Query a vector store with a .NET app
+          displayName: Quickstart, vector search, vector database, dotnet
+          href: quickstart-vector-store-dotnet.md
+        - name: Query a vector store with a Go app
+          displayName: Quickstart, vector search, vector database, Go
+          href: quickstart-vector-store-go.md
+        - name: Query a vector store with a Python app
+          displayName: Quickstart, vector search, vector database, Python
+          href: quickstart-vector-store-python.md
+        - name: Query a vector store with a Java app
+          displayName: Quickstart, vector search, vector database, Java
+          href: quickstart-vector-store-java.md
+        - name: Create a vector index with a Node.js app
+          displayName: Quickstart, vector search, vector index, Node.js, TypeScript, DiskANN
+          href: quickstart-create-vector-index-typescript.md
     - name: Deploy
       expanded: true
       items:
@@ -871,6 +886,8 @@
               href: monitor-logs-basic-queries.md?context=/azure/cosmos-db/context/context
             - name: Audit control plane logs
               href: audit-control-plane-logs.md?context=/azure/cosmos-db/context/context
+            - name: Monitor activity logs for elastic (split/merge) operations
+              href: monitor-activity-logs-elastic-operations.md?context=/azure/cosmos-db/context/context
             - name: Troubleshoot issues with advanced diagnostics queries
               href: diagnostic-queries.md
             - name: Add a transformation for workspace data

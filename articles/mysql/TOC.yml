@@ -24,6 +24,8 @@
           items:
             - name: Release notes index
               href: flexible-server/release-notes/release-notes-index.md
+            - name: March 2026
+              href: flexible-server/release-notes/march-2026.md              
             - name: January 2026
               href: flexible-server/release-notes/january-2026.md
             - name: October 2025
@@ -210,7 +212,7 @@
               href: flexible-server/security-how-to-data-encryption-cli.md
         - name: Threat protection with Microsoft Defender for Cloud
           href: /azure/defender-for-cloud/defender-for-databases-introduction?toc=/azure/mysql/toc.json&bc=/azure/mysql/breadcrumb/toc.json
-    - name: Integrations
+    - name: Integration
       items:
         - name: Automation tasks
           href: flexible-server/create-automation-tasks.md
@@ -236,6 +238,10 @@
           href: /azure/data-factory/connector-azure-database-for-mysql
         - name: Azure Functions
           href: /azure/azure-functions/functions-bindings-azure-mysql
+        - name: Microsoft Fabric
+          items:
+            - name: Fabric mirroring
+              href: integration/fabric-mirroring-mysql.md
     - name: Tutorials
       items:
         - name: Application development

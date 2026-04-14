@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 04/01/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -761,10 +761,10 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Customized Options |
 | Description | Specify timezone used for cron schedule. |
-| Data type | enumeration |
+| Data type | string |
 | Default value | `GMT` |
-| Allowed values | `GMT` |
-| Parameter type | read-only |
+| Allowed values | `.*` |
+| Parameter type | static |
 | Documentation | [cron.timezone](https://github.com/citusdata/pg_cron) |
 
 

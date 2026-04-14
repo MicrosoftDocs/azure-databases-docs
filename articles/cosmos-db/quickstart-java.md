@@ -7,7 +7,7 @@ ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.devlang: java
 ms.topic: quickstart-sdk
-ms.date: 06/11/2025
+ms.date: 03/25/2026
 ms.custom: devx-track-extended-java, devx-track-extended-azdevcli
 appliesto:
   - ✅ NoSQL
@@ -235,6 +235,9 @@ public interface ItemRepository extends CosmosRepository<Item, String> {
 }
 ```
 
+> [!IMPORTANT]
+> `@Query`-annotated methods must return `List<T>` or a single `T`, not `Optional<T>`. `Optional<T>` is only supported for derived query methods such as `findById`. Using `Optional<T>` with `@Query` compiles without errors but causes a `ClassCastException` at runtime.
+
 Fetch all of the results of the query using `repository.getItemsByCategory`. Loop through the results of the query.
 
 ```java
@@ -267,6 +270,6 @@ azd down
 
 - [.NET Quickstart](quickstart-dotnet.md)
 - [Node.js Quickstart](quickstart-nodejs.md)
-- [java Quickstart](quickstart-java.md)
+- [Java Quickstart](quickstart-java.md)
 - [Go Quickstart](quickstart-go.md)
-- [Rust Quickstart](quickstart-go.md)
+- [Rust Quickstart](quickstart-rust.md)

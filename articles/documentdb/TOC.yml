@@ -26,6 +26,8 @@
         href: quickstart-go-vector-search.md
       - name: Create AI vector search app with Java
         href: quickstart-java-vector-search.md
+      - name: Create AI agent with vector search in TypeScript
+        href: quickstart-agent-nodejs.md
       - name: Create AI agent with vector search in Go
         href: quickstart-agent-go.md
     - name: Develop a Python console application
@@ -40,6 +42,8 @@
       href: quickstart-java.md
     - name: Develop a Go console application
       href: quickstart-go.md
+    - name: Develop a Rust console application
+      href: quickstart-rust.md
     - name: Create a cluster using the Azure portal
       href: quickstart-portal.md
     - name: Deploy a cluster using Bicep templates

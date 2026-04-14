@@ -16,7 +16,7 @@ appliesto:
 
 # Model context protocol (MCP) toolkit for Azure Cosmos DB for NoSQL
 
-The Azure Cosmos DB model context protocol (MCP) toolkit ([AzureCosmosDB/MCPToolKit](https://github.com/azurecosmosdb/mcptoolkit)) is an open-source solution that enables AI agents and agentic applications to interact securely with **Azure Cosmos DB** through the **Model Context Protocol (MCP)**. This toolkit provides enterprise-grade authentication, comprehensive database operations, and seamless integration with AI platforms like **Azure AI Foundry**.
+The Azure Cosmos DB model context protocol (MCP) toolkit ([AzureCosmosDB/MCPToolKit](https://github.com/azurecosmosdb/mcptoolkit)) is an open-source solution that enables AI agents and agentic applications to interact securely with **Azure Cosmos DB** through the **Model Context Protocol (MCP)**. This toolkit provides enterprise-grade authentication, comprehensive database operations, and seamless integration with AI platforms like **Microsoft Foundry**.
 
 The MCP Toolkit helps AI systems work with your Azure Cosmos DB data. It lets AI understand your database using everyday language queries. This functionality makes it perfect for building smart apps that need to read and study database content.
 
@@ -41,7 +41,7 @@ This toolkit provides:
 
 - **Secure MCP Server**: JWT-authenticated endpoint for AI agents
 - **Azure Cosmos DB Integration**: Full CRUD operations, vector search, and schema discovery
-- **AI Foundry Ready**: Optional one-step integration with Azure AI Foundry projects
+- **Foundry Ready**: Optional one-step integration with Foundry projects
 - **Enterprise Security**: Microsoft Entra ID, Managed Identity, role-based access control
 - **Production Ready**: Container Apps hosting 
 - **Local Development**: Docker Compose and .NET dev options
@@ -71,7 +71,7 @@ For vector search functionality, you need:
 
 Before deploying the Azure Cosmos DB MCP Toolkit:
 
-- **Azure Subscription** with Contributor or Owner access ([Free account](https://azure.microsoft.com/free/))
+- **Azure Subscription** with Contributor or Owner access ([Free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn))
 - **Azure CLI** ([Install](/cli/azure/install-azure-cli)) installed and authenticated
 - **PowerShell 7+** ([Install](/powershell/scripting/install/installing-powershell)) for deployment scripts
 - **Existing Azure Cosmos DB account** with data (the toolkit connects to your existing Cosmos DB)
@@ -80,7 +80,7 @@ Before deploying the Azure Cosmos DB MCP Toolkit:
 - **Azure OpenAI** service for enabling vector search capabilities
 - **Optional**: Docker Desktop ([Install](https://www.docker.com/products/docker-desktop/)) for local development
 - **Optional**: .NET 9.0 SDK ([Install](https://dotnet.microsoft.com/download/dotnet/9.0)) for local development
-- **Optional**: Azure AI Foundry project 
+- **Optional**: Foundry project 
 
 ## Deployment Overview
 
@@ -89,7 +89,7 @@ To deploy and use the Azure Cosmos DB MCP Toolkit:
 1. **Deploy Infrastructure**: Use the Deploy to Azure button
 2. **Deploy MCP Server**: Run the automated deployment script
 3. **Test**: Access the built-in test UI
-4. **Integrate**: Connect with Azure AI Foundry or Visual Studio Code
+4. **Integrate**: Connect with Foundry or Visual Studio Code
 
 For detailed deployment instructions, testing guides, and configuration options, see the [Azure Cosmos DB MCP Toolkit README](https://github.com/AzureCosmosDB/MCPToolKit#quick-start).
 
@@ -112,9 +112,9 @@ The MCP server includes a web-based test interface accessible at your Container 
 - **Search content**: Configure search parameters → Select `text_search`
 - **Vector search**: Provide search text and vector property → Select `vector_search`
 
-## Connect to Azure AI Foundry  
+## Connect to Foundry  
 
-To connect your MCP server to an Azure AI Foundry project, run the setup script:
+To connect your MCP server to a Foundry project, run the setup script:
 
 ```powershell
 .\scripts\Setup-AIFoundry-RoleAssignment.ps1 `
@@ -122,11 +122,11 @@ To connect your MCP server to an Azure AI Foundry project, run the setup script:
   -ResourceGroup "YOUR-RESOURCE-GROUP"
 ```
 
-This script assigns the necessary roles for AI Foundry to call your MCP server.
+This script assigns the necessary roles for Foundry to call your MCP server.
 
-### Configuring the Connection in AI Foundry
+### Configuring the Connection in Foundry
 
-1. Navigate to [Azure AI Foundry](https://ai.azure.com)
+1. Navigate to [Foundry](https://ai.azure.com)
 2. Open your AI project
 3. Go to **Tools** → **Add Custom Tool**
 4. Configure the connection:
@@ -144,22 +144,22 @@ Once connected, you can prompt your AI agents with natural language:
 - *"Search for products containing 'electronics' in the description"*
 - *"What's the schema of the products container?"*
 
-AI Foundry translates these requests into MCP tool calls, executing them securely against your Cosmos DB.
+Foundry translates these requests into MCP tool calls, executing them securely against your Cosmos DB.
 
 ### Python Client Example
 
-For a complete example of using the MCP server with Azure AI Foundry agents, see the [Python Client README](https://github.com/AzureCosmosDB/MCPToolKit/blob/main/client/README.md).
+For a complete example of using the MCP server with Foundry agents, see the [Python Client README](https://github.com/AzureCosmosDB/MCPToolKit/blob/main/client/README.md).
 
 ## How it Works
 
-:::image type="complex" source="media/model-context-protocol-toolkit/architecture-diagram.svg" lightbox="media/model-context-protocol-toolkit/architecture-diagram.svg" alt-text="Diagram of AI Foundry connecting to Azure Cosmos DB through MCP Toolkit.":::
-  This architecture diagram illustrates a three-tier system for connecting AI agents to Azure Cosmos DB data. Three primary components are arranged horizontally and connected in sequence: AI Foundry (which hosts AI Agents), the MCP Toolkit (deployed as a Container App) in the center, and Azure Cosmos DB (containing your data). The MCP Toolkit serves as the intermediary layer, enabling AI Foundry to access and interact with data stored in Azure Cosmos DB.
+:::image type="complex" source="media/model-context-protocol-toolkit/architecture-diagram.svg" lightbox="media/model-context-protocol-toolkit/architecture-diagram.svg" alt-text="Diagram of Foundry connecting to Azure Cosmos DB through MCP Toolkit.":::
+  This architecture diagram illustrates a three-tier system for connecting AI agents to Azure Cosmos DB data. Three primary components are arranged horizontally and connected in sequence: Foundry (which hosts AI Agents), the MCP Toolkit (deployed as a Container App) in the center, and Azure Cosmos DB (containing your data). The MCP Toolkit serves as the intermediary layer, enabling Foundry to access and interact with data stored in Azure Cosmos DB.
   
   Microsoft Entra ID authentication (providing security) connects to all three primary components through diagonal lines, forming a hub-and-spoke pattern. This central authentication layer ensures that all communications between the AI agents, the MCP Toolkit, and the database are properly secured and authorized. The diagram demonstrates a secure, layered architecture where the MCP Toolkit acts as a bridge between AI workloads and data storage. This diagram demonstrates the user of Microsoft Entra ID providing unified identity and access management across the entire system.
 :::image-end:::
 
 **Key Components:**
-- **AI Foundry**: Hosts AI agents that need database access
+- **Foundry**: Hosts AI agents that need database access
 - **MCP Toolkit**: Translates AI requests to Cosmos DB operations  
 - **Microsoft Entra ID**: Provides enterprise authentication and authorization
 - **Cosmos DB**: Your existing database with business data
@@ -173,7 +173,7 @@ For a complete example of using the MCP server with Azure AI Foundry agents, see
 - **RBAC**: Least-privilege role assignments
 
 ### Authentication Flow
-1. **AI Foundry** requests database operation via MCP protocol
+1. **Foundry** requests database operation via MCP protocol
 2. **MCP Toolkit** validates Microsoft Entra token and role membership
 3. **Cosmos DB** access uses managed identity (no stored credentials)
 4. **Results** returned securely to AI agent

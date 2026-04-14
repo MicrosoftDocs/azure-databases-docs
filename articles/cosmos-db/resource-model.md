@@ -66,7 +66,9 @@ When you create a container, you need to supply a partition key. The partition k
 
 The underlying storage mechanism for data in Azure Cosmos DB is referred to as a *physical partition*. Physical partitions can have a throughput amount up to 10,000 Request Units per second, and they can store up to 50 GB of data. Azure Cosmos DB abstracts this partitioning concept with a logical partition, which can store up to 20 GB of data.
 
-Logical partitions allow the service to provide greater elasticity and better management of data on the underlying physical partitions as you add more partitions. To learn more about partitioning and partition keys, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md).
+Logical partitions allow the service to provide greater elasticity and better management of data on the underlying physical partitions as you add more partitions. To learn more about partitioning and partition keys, see [Partitioning and horizontal scaling in Azure Cosmos DB](partitioning.md). 
+
+If you have scenarios in which partition keys can exceed 20 GB of data, using hierarchical partition keys can help. If you use this feature, you can configure up to a three-level hierarchy for your partition keys to further optimize data distribution and for a higher level of scaling. See[hierarchical partition keys overview](hierarchical-partition-keys.md).
 
 When you create a container, you configure throughput in one of the following modes:
 
@@ -136,6 +138,7 @@ Every Azure Cosmos DB item has the following system-defined properties. Dependin
 |`_etag` | System generated | Entity tag used for optimistic concurrency control | Yes | No | No | No | No |
 |`_ts` | System generated | Time stamp of the last update of the item | Yes | No | No | No | No |
 |`_self` | System generated | Addressable URI of the item | Yes | No | No | No | No |
+|`_lsn` | System generated | Log sequence number used to track the change feed sequence position of an item. Present in [change feed](change-feed.md) payloads only; not returned on standard item reads. | Yes | No | No | No | No |
 |`id` | Either | User-defined unique name in a logical partition | Yes | Yes | Yes | Yes | Yes |
 |Arbitrary user-defined properties | User defined | User-defined properties in API-native representation including JSON, binary JSON (BSON), and Cassandra Query Language (CQL) | Yes | Yes | Yes | Yes | Yes |
 

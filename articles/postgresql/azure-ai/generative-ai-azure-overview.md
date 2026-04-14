@@ -19,7 +19,7 @@ ms.custom:
 
 # Azure AI extension in Azure Database for PostgreSQL
 
-Azure Database for PostgreSQL extension for Azure AI enables you to use large language models (LLMS) and build rich generative AI applications within the database. The Azure AI extension enables the database to call into various Azure AI services including [Azure OpenAI](/azure/ai-services/openai/overview) and [Azure Cognitive Services](https://azure.microsoft.com/products/ai-services/cognitive-search/) simplifying the development process allowing seamless integration into those services.
+Azure Database for PostgreSQL extension for Azure AI enables you to use large language models (LLMS) and build rich generative AI applications within the database. The Azure AI extension enables the database to call into various Microsoft Foundry tools including [Azure OpenAI](/azure/ai-services/openai/overview) and [Azure Cognitive Services](https://azure.microsoft.com/products/ai-services/cognitive-search/) simplifying the development process allowing seamless integration into those services.
 
 ## Enable the azure_ai extension
 
@@ -47,7 +47,7 @@ The extension also allows calling Azure OpenAI and Azure Cognitive Services.
 
 ## Configure the azure_ai extension
 
-Configuring the extension requires you to provide the endpoints to connect to the Azure AI services and the API keys required for authentication. Service settings are stored using following functions:
+Configuring the extension requires you to provide the endpoints to connect to the Foundry tools and the API keys required for authentication. Service settings are stored using following functions:
 
 ### Permissions
 

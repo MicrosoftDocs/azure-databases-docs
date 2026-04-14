@@ -100,6 +100,19 @@ The following privileges are required on the Azure Database for PostgreSQL Flexi
 - **HTTPS access** for Visual Studio Code extension marketplace and GitHub Copilot services
 - **GitHub repository access** to https://github.com/microsoft/pgsql-tools/
 
+### Oracle Instant Client (for thick client mode)
+
+The schema conversion tool connects to Oracle using thin client mode by default, which requires no extra software. If your environment requires thick client mode, install Oracle Instant Client on the machine running VS Code.
+
+### Azure OpenAI authentication
+
+You need one of the following authentication methods configured for Azure OpenAI or Azure AI Foundry:
+
+| Authentication method | Requirements |
+| --- | --- |
+| **API key** | Azure OpenAI endpoint URL and API key |
+| **Microsoft Entra ID** | Azure Account extension signed in, **Cognitive Services OpenAI User** role assigned on the Azure OpenAI resource |
+
 ## Migration process
 
 This section walks through the complete migration workflow: install the PostgreSQL extension, create, and test connections to your Oracle source and Azure Database for PostgreSQL target, open and initialize a migration project, configure Azure OpenAI for schema translation, run the Migration Wizard to discover and convert schemas, validate converted objects in a scratch database, and review or fix any flagged items before applying the generated PostgreSQL artifacts to your target.
@@ -150,6 +163,9 @@ This section walks through the complete migration workflow: install the PostgreS
    - Port number
    - Database or service name
    - Username and password
+1. **Select the client mode** for the Oracle connection:
+   - **Thin** (default): Connects directly without Oracle client libraries.
+   - **Thick**: Uses Oracle Instant Client libraries. Required when thin mode can't establish a connection to your source Oracle environment. Ensure Oracle Instant Client is installed and the PATH environment variable is configured on Windows or Linux before selecting this option.
 1. Select **Load Schemas**.
 1. The system **Tests the Oracle connection**.
 1. If successful, it **Lists all user-defined schemas** available in Oracle.
@@ -170,10 +186,12 @@ This section walks through the complete migration workflow: install the PostgreS
 
 1. Enter your **Azure OpenAI details** including:
    - Endpoint URL
-   - API key
    - Deployment name (must be gpt-4.1)
-1. Select **Test Connection** to verify the configuration
-1. Once the connection is **successful**, select **Create Migration Project**
+1. **Select the authentication method**:
+   - **API key**: Enter the API key for your Azure OpenAI deployment.
+   - **Microsoft Entra ID**: Sign in with the Azure Account extension. The tool acquires the authentication token automatically. Ensure the signed-in identity has the **Cognitive Services OpenAI User** role on the Azure OpenAI resource.
+1. Select **Test Connection** to verify the configuration.
+1. Once the connection is **successful**, select **Create Migration Project**.
 
     :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration.":::
 
@@ -204,7 +222,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Review resolutions for all **Review tasks** and re-test after changes.
 
 > [!IMPORTANT]
-> Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Azure AI Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Azure AI Foundry](/azure/ai-foundry/concepts/content-filtering).
+> Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Microsoft Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Foundry](/azure/ai-foundry/concepts/content-filtering).
 
 For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
 

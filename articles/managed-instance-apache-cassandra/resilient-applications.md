@@ -89,4 +89,4 @@ Backups are automatic in Azure Managed Instance for Apache Cassandra. You can pi
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Create a cluster using Azure Portal](create-cluster-portal.md)
+> [Create a cluster using Azure portal](create-cluster-portal.md)

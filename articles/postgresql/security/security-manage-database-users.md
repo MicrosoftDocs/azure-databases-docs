@@ -8,8 +8,6 @@ ms.date: 08/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Manage users in Azure Database for PostgreSQL

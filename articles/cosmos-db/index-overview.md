@@ -157,6 +157,17 @@ Range indexes can be used on scalar values (string or number). The default index
 
 Spatial indexes can be used on correctly formatted [GeoJSON](/cosmos-db/query/geospatial) objects. Points, LineStrings, Polygons, and MultiPolygons are currently supported. To learn how to configure spatial indexes, see [Manage indexing policies in Azure Cosmos DB](how-to-manage-indexing-policy.md).
 
+> [!IMPORTANT]
+> Azure Cosmos DB spatial indexing is not equivalent to MongoDB’s `2dsphere` index behavior, even when using the Azure Cosmos DB for MongoDB API.  
+> 
+> While Cosmos DB supports geospatial queries through its native spatial index and functions such as `ST_DISTANCE`, `ST_WITHIN`, and `ST_INTERSECTS`, it does not implement MongoDB’s geospatial query engine or execution model. As a result:
+>
+> - Creating a `2dsphere` index in the MongoDB API does not guarantee the same performance characteristics as MongoDB.
+> - Query execution plans and optimization strategies differ between Cosmos DB and MongoDB.
+> - Applications migrating from MongoDB may observe different performance behavior for geospatial queries, even when indexes appear to be created successfully.
+>
+> For best performance, validate that your data is stored as valid GeoJSON and use the Cosmos DB spatial functions that are optimized for the native spatial index.
+
 ### Composite indexes
 
 **Composite** indexes increase the efficiency when you're performing operations on multiple fields. The composite index type is used for:
@@ -341,7 +352,7 @@ FROM company
 WHERE STARTSWITH(company.headquarters.country, "United", true)
 ```
 
-The query predicate (filtering on items that have headquarters in a location that starts with case-insensitive "United") can be evaluated with an expanded index scan of the `headquarters/country` path. Operations that do an expanded index scan have optimizations that can help avoid needs to scan every index page but are slightly more expensive than a precise index scan's binary search.
+The query predicate (filtering on items that have headquarters in a location that starts with case-insensitive "United") can be evaluated with an expanded index scan of the `headquarters/country` path. Operations that do an expanded index scan have optimizations that can help avoid needing to scan every index page but are slightly more expensive than a precise index scan's binary search.
 
 For example, when evaluating case-insensitive `StartsWith`, the query engine checks the index for different possible combinations of uppercase and lowercase values. This optimization allows the query engine to avoid reading most index pages. Different system functions have different optimizations that they can use to avoid reading every index page, so they're broadly categorized as expanded index scan.
 

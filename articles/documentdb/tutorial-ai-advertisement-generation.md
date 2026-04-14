@@ -27,7 +27,7 @@ In this tutorial, you:
 > * Generate advertisement content using GPT-4 and DALL-E 3
 > * Build an interactive web interface with Gradio
 
-If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/) before you begin.
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Prerequisites
 

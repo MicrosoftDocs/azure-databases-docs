@@ -119,7 +119,7 @@ You can maximize savings with the biggest reservation for your scenario. Example
 
 You can combine multiple reservations to fit quantities that don't have a dedidcated SKU. For example, you can reserve 6,000,000 RU/s by adding 5,000,000 RU/s + 1,000,000 RU/s reservation.
 
-Reservations larger than or equal to 1,000,000 RU/sec are hidden by default. You can access large reservations in the Azure Portal through this [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
+Reservations larger than or equal to 1,000,000 RU/sec are hidden by default. You can access large reservations in the Azure portal through this [link](https://portal.azure.com/?allCosmosDbSkus=true#view/Microsoft_Azure_Reservations/CreateBlade/referrer/PurchaseNowButton/productType/Reservation).
 
 ## Azure Pricing Calculator
 

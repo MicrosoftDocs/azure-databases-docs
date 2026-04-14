@@ -163,7 +163,14 @@ BEGIN
          SUM(CASE WHEN status_code BETWEEN 200 AND 299 THEN 0 ELSE 1 END) error_count,
          SUM(response_time_msec) / COUNT(*) average_response_time_msec
   FROM http_request
-  WHERE ingest_time <@ tstzrange(last_rollup_time, curr_rollup_time, '(]')
+:::moniker range="<=citus-12"
+    WHERE date_trunc('minute', ingest_time) <@
+            tstzrange(last_rollup_time, curr_rollup_time, '(]')
+:::moniker-end
+
+:::moniker range=">=citus-13"
+    WHERE ingest_time <@ tstzrange(last_rollup_time, curr_rollup_time, '(]')
+:::moniker-end
   GROUP BY 1,2;
 
   UPDATE latest_rollup SET minute = curr_rollup_time;

@@ -13,6 +13,8 @@ ms.devlang: javascript
 # Use Multi-document transactions in Azure Cosmos DB for MongoDB
 [!INCLUDE[MongoDB](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
+[!INCLUDE[Note - Recommended services](includes/note-recommended-services.md)]
+
 In this article, you'll create a Mongo shell app that executes a multi-document transaction on a fixed collection in Azure Cosmos DB for MongoDB with server version 4.0.
 
 ## What are multi-document transactions?
