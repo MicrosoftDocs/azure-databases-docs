@@ -1,26 +1,26 @@
 ---
 
-title: Quickstart - Vector Search with Node.js
-description: Use this quickstart to implement vector search in Azure Cosmos DB with Node.js. Store and query hotel data with embeddings using the text-embedding-3-small model.
+title: Quickstart - Vector Search with Python
+description: Use this quickstart to implement vector search in Azure Cosmos DB with Python using the text-embedding-3-small model. Store and query hotel data with embeddings.
 author: diberry
 ms.author: diberry
 ms.reviewer: jcodella
-ms.devlang: typescript
+ms.devlang: python
 ms.service: azure-cosmos-db
 ms.subservice: nosql
 ms.topic: quickstart-sdk
-ms.date: 02/11/2026
+ms.date: 03/26/2026
 ai-usage: ai-assisted
 ms.custom:
-  - devx-track-ts
-  - devx-track-ts-ai
+  - devx-track-python
+  - devx-track-python-ai
   - devx-track-data-ai
-# CustomerIntent: As a developer, I want to learn how to use vector search in Node.js applications with Azure Cosmos DB.
+# CustomerIntent: As a developer, I want to learn how to use vector search in Python applications with Azure Cosmos DB.
 ---
 
-# Quickstart: Vector search with Node.js in Azure Cosmos DB
+# Quickstart: Vector search with Python in Azure Cosmos DB
 
-Use vector search in Azure Cosmos DB with the Node.js client library. Store and query vector data efficiently in your applications.
+Use vector search in Azure Cosmos DB with the Python client library. Store and query vector data efficiently in your applications.
 
 This quickstart uses a sample hotel dataset in a JSON file with vectors from the **text-embedding-3-small** model. The dataset includes hotel names, locations, descriptions, and vector embeddings.
 
@@ -48,12 +48,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 - [Visual Studio Code](https://code.visualstudio.com/download)
   - [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb)
 
-- [Node.js LTS](https://nodejs.org/download/)
-- [TypeScript](https://www.typescriptlang.org/download): Install TypeScript globally:
-
-    ```bash
-    npm install -g typescript
-    ```
+- [Python 3.10 or later](https://www.python.org/downloads/)
 
 ## Create data file with vectors
 
@@ -89,7 +84,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
     ---
 
-## Create a Node.js project
+## Create a Python project
 
 1. Create a new sibling directory for your project, at the same level as the data directory, and open it in Visual Studio Code:
 
@@ -98,25 +93,40 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     code vector-search-quickstart
     ```
 
-1. In the terminal, initialize a Node.js project:
+1. In the terminal, create and activate a Python virtual environment:
 
     ```bash
-    npm init -y
-    npm pkg set type="module"
+    python -m venv .venv
     ```
+
+    ### [Linux/macOS](#tab/venv-linux)
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+    ### [Windows](#tab/venv-windows)
+
+    ```bash
+    .venv\Scripts\activate
+    ```
+
+    ---
+
+1. Create a `requirements.txt` file in your project root with the following content:
+
+    :::code language="plaintext" source="~/cosmos-db-vector-samples/nosql-vector-search-python/requirements.txt" :::
 
 1. Install the required packages:
 
     ```bash
-    npm install @azure/identity @azure/cosmos openai
-    npm install @types/node cross-env --save-dev
+    pip install -r requirements.txt
     ```
 
-    * **@azure/identity** - Azure authentication library for passwordless (managed identity) connections
-    * **@azure/cosmos** - Azure Cosmos DB client library for database operations
+    * **azure-cosmos** - Azure Cosmos DB client library for database operations
+    * **azure-identity** - Azure authentication library for passwordless (managed identity) connections
     * **openai** - OpenAI SDK for generating embeddings with Azure OpenAI
-    * **@types/node** (dev) - TypeScript type definitions for Node.js APIs
-    * **cross-env** (dev) - Cross-platform environment variable setting for npm scripts
+    * **python-dotenv** - Loads environment variables from a `.env` file
 
 1. Create a `.env` file in your project root for environment variables:
 
@@ -126,7 +136,7 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
 
     # Azure OpenAI Embedding Settings
     AZURE_OPENAI_EMBEDDING_MODEL=text-embedding-3-small
-    AZURE_OPENAI_EMBEDDING_API_VERSION=2023-05-15
+    AZURE_OPENAI_EMBEDDING_API_VERSION=2024-08-01-preview
     AZURE_OPENAI_EMBEDDING_ENDPOINT=
 
     # Cosmos DB configuration
@@ -142,11 +152,6 @@ Find the sample code with resource provisioning on [GitHub](https://github.com/A
     Replace the placeholder values in the `.env` file with your own information:
     - `AZURE_OPENAI_EMBEDDING_ENDPOINT`: Your Azure OpenAI resource endpoint URL
     - `AZURE_COSMOSDB_ENDPOINT`: Your Azure Cosmos DB endpoint URL
-
-1. Add a `tsconfig.json` file to configure TypeScript:
-
-    :::code language="json" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/tsconfig.json" :::
-
 
 ## Understand the document schema
 
@@ -182,63 +187,35 @@ Here's a simplified example of a hotel document structure:
 
 These policies are defined in the Bicep templates for the [distance metrics](#distance-metrics) for this sample project. For more information on vector policies and indexing, see [Vector search in Azure Cosmos DB](./vector-search.md).
 
-## Create npm scripts
-
-Edit the `package.json` file and add these scripts:
-
-### [DiskANN](#tab/tab-diskann)
-
-Use these scripts to compile TypeScript files and run the DiskANN index implementation.
-
-```jsonc
-"scripts": { 
-    "build": "tsc",
-    "start:diskann": "cross-env VECTOR_ALGORITHM=diskann node --env-file .env dist/vector-search.js"
-}
-```
-
-### [Quantized flat](#tab/tab-quantizedflat)
-
-Use these scripts to compile TypeScript files and run the Quantized flat index implementation.
-
-```jsonc
-"scripts": { 
-    "build": "tsc",
-    "start:quantizedflat": "cross-env VECTOR_ALGORITHM=quantizedflat node --env-file .env dist/vector-search.js"
-}
-```
-    
----
-
 ## Create code files for vector search
 
-
-Create a `src` directory for your TypeScript files. Add two files: `vector-search.ts` and `utils.ts` for your vector search implementation:
+Create a `src` directory for your Python files. Add two files: `vector_search.py` and `utils.py` for your vector search implementation:
 
 ### [Linux/macOS](#tab/tab-touch-linux)
 
 ```bash
 mkdir src
-touch src/vector-search.ts
-touch src/utils.ts
+touch src/__init__.py
+touch src/vector_search.py
+touch src/utils.py
 ```
 
 ### [Windows](#tab/tab-touch-windows)
 
 ```powershell
 New-Item -ItemType Directory -Force -Path src | Out-Null
-New-Item -ItemType File -Path src/vector-search.ts | Out-Null
-New-Item -ItemType File -Path src/utils.ts | Out-Null
+New-Item -ItemType File -Path src/__init__.py | Out-Null
+New-Item -ItemType File -Path src/vector_search.py | Out-Null
+New-Item -ItemType File -Path src/utils.py | Out-Null
 ```
 
 ---
 
 ## Create code for vector search
 
+Paste the following code into the `vector_search.py` file.
 
-Paste the following code into the `vector-search.ts` file.
-
-:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/vector-search.ts" :::
+:::code language="python" source="~/cosmos-db-vector-samples/nosql-vector-search-python/src/vector_search.py" :::
 
 This code:
 
@@ -254,40 +231,47 @@ This code:
 
 The code creates embeddings for query text:
 
-```typescript
-const createEmbeddedForQueryResponse = await aiClient.embeddings.create({
-    model, // OpenAI embedding model, e.g. "text-embedding-3-small"
-    input  // Array of description strings to embed, e.g. ["quintessential lodging near running trails"]
-});
+```python
+embedding_response = ai_client.embeddings.create(
+    model=config["deployment"],  # OpenAI embedding model, e.g. "text-embedding-3-small"
+    input=[config["query"]],     # List of description strings to embed
+)
+query_embedding = embedding_response.data[0].embedding
 ```
 
 This OpenAI API call for [client.embeddings.create](https://platform.openai.com/docs/guides/embeddings#how-to-get-embeddings) converts text like "quintessential lodging near running trails" into a 1536-dimension vector that captures its semantic meaning. For more details on generating embeddings, see [Azure OpenAI embeddings documentation](/azure/ai-foundry/openai/how-to/embeddings).
 
 ## Understand the code: Store vectors in Azure Cosmos DB
 
-All documents with vector arrays are inserted at scale using the [`executeBulkOperations`](/javascript/api/%40azure/cosmos/items#@azure-cosmos-items-executebulkoperations) function:
+All documents with vector arrays are inserted using the [`upsert_item`](/python/api/azure-cosmos/azure.cosmos.containerproxy#azure-cosmos-containerproxy-upsert-item) function:
 
-```typescript
-const response = await container.items.executeBulkOperations(operations);
+```python
+for item in data:
+    doc = {"id": item["HotelId"], **item}
+    response = container.upsert_item(body=doc)
 ```
 
-This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container. You can safely pass in all the document data, and the client library handles the batch processing and retries for you. 
+This inserts hotel documents including their pre-generated `DescriptionVector` arrays into the container. Each document gets an `id` field mapped from `HotelId`, and the function handles upserts so documents can be safely re-inserted.
 
 ## Understand the code: Run vector similarity search
 
 The code performs a vector search using the `VectorDistance` function:
 
-```typescript
-const queryText = `SELECT TOP 5 c.HotelName, c.Description, c.Rating, VectorDistance(c.${safeEmbeddedField}, @embedding) AS SimilarityScore FROM c ORDER BY VectorDistance(c.${safeEmbeddedField}, @embedding)`;
+```python
+query_text = (
+    f"SELECT TOP 5 c.HotelName, c.Description, c.Rating, "
+    f"VectorDistance(c.{safe_field}, @embedding) AS SimilarityScore "
+    f"FROM c "
+    f"ORDER BY VectorDistance(c.{safe_field}, @embedding)"
+)
 
-const queryResponse = await container.items
-    .query({
-        query: queryText,
-        parameters: [
-            { name: "@embedding", value: createEmbeddedForQueryResponse.data[0].embedding }
-        ]
-    })
-    .fetchAll();
+results = list(
+    container.query_items(
+        query=query_text,
+        parameters=[{"name": "@embedding", "value": query_embedding}],
+        enable_cross_partition_query=True,
+    )
+)
 ```
 
 This code builds a parameterized SQL query that uses the VectorDistance function to compare the query's embedding vector (@embedding) against each document's stored vector field (`DescriptionVector`), returning the top 5 hotels with their name and similarity score, ordered from most similar to least similar. The query embedding is passed as a parameter to avoid injection and comes from a prior Azure OpenAI embeddings.create call.
@@ -303,17 +287,17 @@ For more information on the `VectorDistance` function, see [VectorDistance docum
 
 ## Create utility functions
 
-Paste the following code into `utils.ts`:
+Paste the following code into `utils.py`:
 
-:::code language="typescript" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/src/utils.ts" :::
+:::code language="python" source="~/cosmos-db-vector-samples/nosql-vector-search-python/src/utils.py" :::
 
 This utility module provides these **key** functions:
 
-- `getClientsPasswordless`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
-- `insertData`: Inserts data in batches into an Azure Cosmos DB container and creates standard indexes on specified fields
-- `printSearchResults`: Prints the results of a vector search, including the score and hotel name
-- `validateFieldName`: Validates that a field name exists in the data
-- `getBulkOperationRUs`: Estimates the Request Units (RUs) for bulk operations based on the number of documents and vector dimensions
+- `get_clients_passwordless`: Creates and returns clients for Azure OpenAI and Azure Cosmos DB using passwordless authentication. Enable RBAC on both resources and sign in to Azure CLI
+- `insert_data`: Inserts data into an Azure Cosmos DB container and tracks Request Units (RUs) for each operation
+- `print_search_results`: Prints the results of a vector search, including the score and hotel name
+- `validate_field_name`: Validates that a field name exists in the data
+- `get_bulk_operation_rus`: Extracts total RU cost from Azure Cosmos DB response headers
 
 ## Authenticate with Azure CLI
 
@@ -323,51 +307,64 @@ Sign in to Azure CLI before you run the application so the app can access Azure 
 az login
 ```
 
-The code uses your local developer authentication to access Azure Cosmos DB and Azure OpenAI with the `getClientsPasswordless` function from `utils.ts`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, you deterministically select which credential `DefaultAzureCredential` uses from its credential chain. The function relies on [DefaultAzureCredential](/javascript/api/@azure/identity/defaultazurecredential) from **@azure/identity**, which walks an ordered chain of credential providers but honors the environment variable to resolve to Azure CLI credentials first. Learn more about how to [Authenticate JavaScript apps to Azure services using the Azure Identity library](/azure/developer/javascript/sdk/authentication/overview).
+The code uses your local developer authentication to access Azure Cosmos DB and Azure OpenAI with the `get_clients_passwordless` function from `utils.py`. When you set `AZURE_TOKEN_CREDENTIALS=AzureCliCredential`, you deterministically select which credential `DefaultAzureCredential` uses from its credential chain. The function relies on [DefaultAzureCredential](/python/api/azure-identity/azure.identity.defaultazurecredential) from **azure-identity**, which walks an ordered chain of credential providers but honors the environment variable to resolve to Azure CLI credentials first. Learn more about how to [Authenticate Python apps to Azure services using the Azure Identity library](/azure/developer/python/sdk/authentication/overview).
 
-## Build and run the application
+## Run the application
 
-Build the TypeScript files, then run the application:
+Use the `VECTOR_ALGORITHM` environment variable to select which vector index implementation to run. The variable controls which Azure Cosmos DB container the application connects to.
 
 ### [DiskANN](#tab/tab-diskann)
 
+Linux/macOS:
+
 ```bash
-npm run build
-npm run start:diskann
+VECTOR_ALGORITHM=diskann python -m src.vector_search
+```
+
+Windows:
+
+```powershell
+$env:VECTOR_ALGORITHM="diskann"; python -m src.vector_search
 ```
 
 ### [Quantized flat](#tab/tab-quantizedflat)
 
+Linux/macOS:
+
 ```bash
-npm run build
-npm run start:quantizedflat
+VECTOR_ALGORITHM=quantizedflat python -m src.vector_search
+```
+
+Windows:
+
+```powershell
+$env:VECTOR_ALGORITHM="quantizedflat"; python -m src.vector_search
 ```
 
 ---
 
 The app logging and output show:
 
+- Container connection status
 - Data insertion status
-- Vector index creation 
 - Search results with hotel names and similarity scores
 
 ### [DiskANN](#tab/tab-diskann)
 
-:::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/diskann.txt" :::
+:::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-python/output/diskann.txt" :::
 
 ### [Quantized flat](#tab/tab-quantizedflat)
 
-:::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-typescript/output/quantizedflat.txt" :::
+:::code language="output" source="~/cosmos-db-vector-samples/nosql-vector-search-python/output/quantizedflat.txt" :::
 
 ---
-
 
 ## Distance metrics
 
 Azure Cosmos DB supports three distance functions for vector similarity:
 
 | Distance Function | Score Range | Interpretation | Best For |
-|------------------|-------------|----------------|----------|
+| --- | --- | --- | --- |
 | **Cosine** (default) | 0.0 to 1.0 | Higher scores (closer to 1.0) indicate greater similarity | General text similarity, Azure OpenAI embeddings (used in this quickstart) |
 | **Euclidean** (L2) | 0.0 to ∞ | Lower = more similar | Spatial data, when magnitude matters |
 | **Dot Product** | -∞ to +∞ | Higher = more similar | When vector magnitudes are normalized |
@@ -468,7 +465,7 @@ The distance function is set in the **vector embedding policy** when creating th
 This Bicep code defines an Azure Cosmos DB container configuration for storing hotel documents with vector search capabilities.
 
 | Property | Description |
-|----------|-------------|
+| --- | --- |
 | `partitionKeyPaths` | Partitions documents by `HotelId` for distributed storage. |
 | `indexingPolicy` | Configures automatic indexing on all document properties (`/*`) except the system `_etag` field and the `DescriptionVector` array to optimize write performance. Vector fields don't need standard indexing because they use a specialized `vectorIndexes` configuration instead. |
 | `vectorIndexes` | Creates either a DiskANN or quantizedFlat index on the `/DescriptionVector` path for efficient similarity searches. |
@@ -496,7 +493,7 @@ For detailed information on distance functions, see [What are distance functions
 1. Select the [Cosmos DB extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb) in Visual Studio Code to connect to your Azure Cosmos DB account.
 1. View the data and indexes in the Hotels database.
 
-    :::image type="content" source="./media/quickstart-vector-store-nodejs/visual-studio-code-extension.png" alt-text="Screenshot of Visual Studio Code showing the Azure Cosmos DB extension with Hotels database items and a JSON document editor." lightbox="./media/quickstart-vector-store-nodejs/visual-studio-code-extension.png":::
+    :::image type="content" source="./media/quickstart-vector-store-python/visual-studio-code-extension.png" alt-text="Screenshot of Visual Studio Code showing the Azure Cosmos DB extension with Hotels database items and a JSON document editor." lightbox="./media/quickstart-vector-store-python/visual-studio-code-extension.png":::
 
 ## Clean up resources
 

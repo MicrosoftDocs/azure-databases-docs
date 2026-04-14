@@ -79,7 +79,7 @@ If you don't have an Azure subscription, create a [free account](https://azure.m
    We introduced write-through caching (public preview) by using L-series VM product tiers. This implementation aims to minimize tail latencies and enhance read performance, particularly for read-intensive workloads. These specific product tiers are equipped with locally attached disks, which ensure increased IOPS for read operations and reduced tail latency.
 
    Write-through caching is provided without a service-level agreement (SLA). We don't recommend it for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-   - **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node.
+   - **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node. When calculating storage capacity, assume a maximum sustained usage of 50%. This buffer accounts for tombstones and disk consumption by system services. Additionally, backups temporarily consume disk space before data is persisted to Blob storage.
    - **No. of nodes**: Choose the number of Cassandra nodes to deploy to this datacenter.
 
       :::image type="content" source="media/create-cluster-portal/create-datacenter-page.png" border="true" alt-text="Screenshot that shows the Data center tab where you can review the values." lightbox="media/create-cluster-portal/create-datacenter-page.png":::
@@ -146,7 +146,7 @@ Scaling is an online operation and works in the same manner as described for pat
    * **Availability zone**: Select if you want to enable availability zones in this datacenter.
    * **Location**: Location where your datacenter is deployed.
    * **SKU size**: Choose from the available VM product tier sizes.
-   * **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node.
+   * **No. of disks**: Choose the number of p30 disks to be attached to each Cassandra node. When calculating storage capacity, assume a maximum sustained usage of 50%. This buffer accounts for tombstones and disk consumption by system services. Additionally, backups temporarily consume disk space before data is persisted to Blob storage.
    * **No. of nodes**: Choose the number of Cassandra nodes to deploy to this datacenter.
    * **Virtual network**: Select an existing virtual network and subnet.
 
