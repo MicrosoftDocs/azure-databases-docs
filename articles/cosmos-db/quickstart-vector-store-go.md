@@ -1,5 +1,5 @@
 ---
-title: Quickstart - Vector Search with Go
+title: Quickstart - Azure Cosmos DB vector search with Go
 description: Use this quickstart to implement vector search in Azure Cosmos DB with Go. Store and query hotel data with embeddings.
 author: diberry
 ms.author: diberry
@@ -527,11 +527,10 @@ In the example output using **cosine similarity**:
 - Scores closer to **1.0** indicate stronger semantic similarity
 - Scores near **0** indicate little similarity
 
-**Important notes:**
-
-- Absolute score values depend on your embedding model and data
-- Focus on **relative ranking** rather than absolute thresholds
-- Azure OpenAI embeddings work best with cosine similarity
+> [!IMPORTANT]
+> - Absolute score values depend on your embedding model and data
+> - Focus on **relative ranking** rather than absolute thresholds
+> - Azure OpenAI embeddings work best with cosine similarity
 
 For detailed information on distance functions, see [What are distance functions?](./gen-ai/distance-functions.md)
 
