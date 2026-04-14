@@ -1,6 +1,6 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Tutorial"
-description: "Step-by-step tutorial for converting Application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension."
+description: "Step-by-step tutorial for converting application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension."
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
@@ -18,12 +18,12 @@ It covers setting up your environment, importing your application codebase, runn
 
 Here's what you can expect during the conversion:
 
-- **Environment Setup**: Configure GitHub Copilot Agent Mode with the appropriate AI model
-- **Codebase Import**: Organize your application code in the migration project structure
-- **AI Processing**: GitHub Copilot processes and converts application code using database context
-- **TODO Task Execution**: Automated task list generation and systematic conversion
-- **Report Generation**: Comprehensive conversion report with results and recommendations
-- **File Comparison**: Built-in diff tools for reviewing original vs. converted code
+- **Environment setup**: Configure GitHub Copilot Agent Mode with the appropriate AI model
+- **Codebase import**: Organize your application code in the migration project structure
+- **AI processing**: GitHub Copilot processes and converts application code using database context
+- **TODO task execution**: Automated task list generation and systematic conversion
+- **Report generation**: Comprehensive conversion report with results and recommendations
+- **File comparison**: Built-in diff tools for reviewing original vs. converted code
 
 ## Prerequisites
 
@@ -32,14 +32,14 @@ This section describes the prerequisites for using the Oracle to Azure Database 
 ### System requirements
 
 | Requirement | Specification |
-|-------------|---------------|
+| --- | --- |
 | Visual Studio Code version | 1.95.2 or higher |
 | GitHub Copilot subscription | Pro+, Business, Enterprise |
 
 ### Operating system support
 
 | Platform | Architecture |
-|----------|-------------|
+| --- | --- |
 | Windows | x64 and ARM64 |
 | Linux | x64 and ARM64 |
 | macOS | x64 (Intel) and ARM64 (Apple Silicon) |
@@ -49,7 +49,7 @@ This section describes the prerequisites for using the Oracle to Azure Database 
 You need one of the following AI models configured in GitHub Copilot Agent Mode:
 
 | Model | Version |
-|-------|---------|
+| --- | --- |
 | Claude | Sonnet 4.6 or Opus 4.6 or higher |
 
 > Before starting application conversion, set your GitHub Copilot Agent Mode Model to Claude Sonnet 4.6 or Claude Opus 4.6 or higher for optimal code transformation results.
@@ -57,13 +57,13 @@ You need one of the following AI models configured in GitHub Copilot Agent Mode:
 ### PostgreSQL version support
 
 | Target Database | Version |
-|----------------|---------|
+| --- | --- |
 | Azure Database for PostgreSQL Flexible Server | PostgreSQL version 15 or higher |
 | Azure HorizonDB | PostgreSQL version 17 or higher |
 
 ### Schema conversion recommendation
 
-While it's not required to perform a database schema conversion beforehand, we strongly recommend completing a schema migration first. If you already converted your Oracle schema to PostgreSQL, the application conversion process provides more accurate context and higher-quality code transformation results through:
+While it's not required to perform a database schema conversion beforehand, completing a schema migration first is strongly recommended. If you already converted your Oracle schema to PostgreSQL, the application conversion process provides more accurate context and higher-quality code transformation results through:
 
 - **Coding Notes**: Metadata artifacts generated during schema conversion (see [What are Coding Notes?](#what-are-coding-notes) below)
 - **Database context**: Direct access to converted schema objects
@@ -75,12 +75,11 @@ While it's not required to perform a database schema conversion beforehand, we s
 - Database connectivity to your Azure Database for PostgreSQL instance
 - Access to Visual Studio Code extension marketplace and GitHub Copilot services
 
-## What are "Coding Notes"?
+## What are Coding Notes?
 
 Coding Notes are metadata artifacts automatically generated during the schema conversion phase. They capture key transformation details and insights from your Oracle-to-PostgreSQL schema conversion that the process later uses to enhance application code conversion.
 
 Coding Notes might include information such as:
-
 - Data type mappings and structural changes
 - Conversion details for sequences, identities, and composite types
 - Adjustments to date/time or interval implementations
@@ -102,7 +101,7 @@ This section walks through the complete application conversion workflow: set up 
 
 ![model selection](media/model-selection.png)
 
-> Using Claude Sonnet 4.6 or Claude Opus 4.6 is required for optimal application conversion results. Lower models may produce less accurate conversions.
+> Using Claude Sonnet 4.6 or Claude Opus 4.6 is required for optimal application conversion results. Lower models might produce less accurate conversions.
 
 ### Step 2: Open your migration project
 
@@ -146,11 +145,11 @@ This action initiates the following processes:
 ### Step 5: Monitor conversion progress
 
  - Watch the GitHub Copilot Agent Mode interface as it processes files.
- -  The agent will work through the generated TODO list systematically.
- - Review any prompts or questions from the agent that may require input.
+ - The agent works through the generated TODO list systematically.
+ - Review any prompts or questions from the agent that might require input.
  - Allow the conversion process to complete fully before reviewing results.
 
-### Step 6: Enhanced Java conversion with GitHub Copilot App Modernization Extension (Optional)
+### Step 6: Enhanced Java conversion with GitHub Copilot App Modernization extension (optional)
 
 **If working with Java code**: You can enhance your conversion process by installing the [GitHub Copilot App Modernization Extension](https://marketplace.visualstudio.com/items?itemName=vscjava.migrate-java-to-azure) before starting your conversion.
 
@@ -193,7 +192,8 @@ Based on your converted codebase, the App Modernization Extension automatically 
  - **Validate SQL query results** against expected outcomes from Oracle
  - **Address flagged areas** identified in the conversion report
 
-> **Customer validation responsibility**: AI systems can occasionally make mistakes. To prevent functional regressions, security issues, or data access problems, independently validate all converted application code before deploying to production.
+> [!IMPORTANT]
+> AI systems can occasionally make mistakes. To prevent functional regressions, security issues, or data access problems, independently validate all converted application code before deploying to production.
 
 > **Systematic validation approach**: Use the validation frameworks in the [Best Practices document](app-conversions-best-practices.md) to prioritize testing based on your Oracle integration complexity and conversion report results.
 
