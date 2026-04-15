@@ -22,7 +22,7 @@ These shortcuts are used with the toolbar present in the Data Explorer.
 
 | | Windows | macOS |
 | --- | --- | --- |
-| **Close tab** | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>W</kbd> | <kbd>Cmd</kbd>+<kbd>Opt</kbd>+<kbd>W |
+| **Close tab** | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>W</kbd> | <kbd>Cmd</kbd>+<kbd>Opt</kbd>+<kbd>W</kbd> |
 | **Discard edit Query/Item/Stored Procedure/Trigger/UDF** | <kbd>Esc</kbd> | <kbd>Esc</kbd> |
 | **Download Query to Disk** | <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> | <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> |
 | **Enable/Disable Copilot** | <kbd>Ctrl</kbd>+<kbd>P</kbd> | <kbd>Cmd</kbd>+<kbd>P</kbd> |

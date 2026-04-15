@@ -23,7 +23,7 @@ appliesto:
 |API Documentation  |  [JavaScript SDK reference documentation](/javascript/api/%40azure/cosmos/)
 |SDK installation instructions  |  `npm install @azure/cosmos`
 |Contribute to SDK | [Contributing guide for azure-sdk-for-js repo](https://github.com/Azure/azure-sdk-for-js/blob/main/CONTRIBUTING.md)
-| Getting started tutorial | [Get started with the JavaScript SDK](sql-api-nodejs-get-started.md)
+| Getting started tutorial | [Get started with the JavaScript SDK](how-to-javascript-get-started.md)
 | Web app tutorial | [Build a Node.js web application using Azure Cosmos DB](quickstart-nodejs.md)
 | Current supported Node.js platforms | [LTS versions of Node.js](https://github.com/nodejs/release#release-schedule)
 

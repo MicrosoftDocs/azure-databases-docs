@@ -47,7 +47,7 @@ The following example creates a database with the [`CosmosClient.create_database
 
 ### Create a database asynchronously
 
-You can also create a database asynchronously using similar object and methods in the [azure.cosmos.aio](/python/api/azure-cosmos/azure.cosmos.aio) namespace. For example, use the [`CosmosClient.create_database`](/python/api/azure-cosmos/azure.cosmos.aio.cosmosclient#azure-cosmos-aio-cosmosclient-create-database) method or the ['CosmoClient.create_database_if_not_exists](/python/api/azure-cosmos/azure.cosmos.aio.cosmosclient#azure-cosmos-aio-cosmosclient-create-database-if-not-exists) method.
+You can also create a database asynchronously using similar object and methods in the [azure.cosmos.aio](/python/api/azure-cosmos/azure.cosmos.aio) namespace. For example, use the [`CosmosClient.create_database`](/python/api/azure-cosmos/azure.cosmos.aio.cosmosclient#azure-cosmos-aio-cosmosclient-create-database) method or the [`CosmosClient.create_database_if_not_exists`](/python/api/azure-cosmos/azure.cosmos.aio.cosmosclient#azure-cosmos-aio-cosmosclient-create-database-if-not-exists) method.
 
 Working asynchronously is useful when you want to perform multiple operations in parallel. For more information, see [Using the asynchronous client](https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/cosmos/azure-cosmos#using-the-asynchronous-client).
 

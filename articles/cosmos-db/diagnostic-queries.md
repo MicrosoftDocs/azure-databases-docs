@@ -108,7 +108,7 @@ Common queries are shown in the resource-specific and Azure Diagnostics tables.
    AzureDiagnostics
    | where Category == "QueryRuntimeStatistics"
    //specify collection and database
-   //| where databasename_s == "DBNAME" and collectioname_s == "COLLECTIONNAME"
+   //| where databasename_s == "DBNAME" and collectionname_s == "COLLECTIONNAME"
    | join kind=inner operationsbyUserAgent on activityId_g
    | summarize max(responseLength_s1) by querytext_s
    | order by max_responseLength_s1 desc
@@ -138,7 +138,7 @@ Common queries are shown in the resource-specific and Azure Diagnostics tables.
    | where TimeGenerated >= now(-1d)
    | where Category == 'PartitionKeyRUConsumption'
    //specify collection and database
-   //| where databasename_s == "DBNAME" and collectioname_s == "COLLECTIONNAME"
+   //| where databasename_s == "DBNAME" and collectionname_s == "COLLECTIONNAME"
    // filter by operation type
    //| where operationType_s == 'Create'
    | summarize sum(todouble(requestCharge_s)) by toint(partitionKeyRangeId_s)
@@ -169,7 +169,7 @@ Common queries are shown in the resource-specific and Azure Diagnostics tables.
    | where TimeGenerated >= now(-1d)
    | where Category == 'PartitionKeyRUConsumption'
    //specify collection and database
-   //| where databasename_s == "DBNAME" and collectioname_s == "COLLECTIONNAME"
+   //| where databasename_s == "DBNAME" and collectionname_s == "COLLECTIONNAME"
    // filter by operation type
    //| where operationType_s == 'Create'
    | summarize sum(todouble(requestCharge_s)) by partitionKey_s, partitionKeyRangeId_s

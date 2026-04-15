@@ -23,7 +23,10 @@ Some servers with CMW enabled might be assigned a maintenance date outside of th
 
 ## Engine version changes
 
-This version doesn't include any engine version changes.
+This version includes the following minor version changes:
+- 8.0.42 -> 8.0.44
+- 8.4.5 -> 8.4.7
+- 9.3.0 -> 9.5.0
 
 ## Features
 

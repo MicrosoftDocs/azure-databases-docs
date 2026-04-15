@@ -104,7 +104,7 @@ Now create and configure a source to flow data from the Azure Cosmos DB account'
 
 ### Working with source options
   
-When you check any of the `Capture intermediate updates`, `Capture Deltes`, and `Capture Transactional store TTLs` options, your CDC process will create and populate the `__usr_opType` field in sink with the following values:
+When you check any of the `Capture intermediate updates`, `Capture Deletes`, and `Capture Transactional store TTLs` options, your CDC process will create and populate the `__usr_opType` field in sink with the following values:
 
 | Value | Description | Option
 | --- | --- | --- |
