@@ -169,7 +169,7 @@ request_charge = container.client_connection.last_response_headers["x-ms-request
 
 ```python
 existing_item = container.read_item(
-    item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb"
+    item="aaaaaaaa-0000-1111-2222-bbbbbbbbbbbb",
     partition_key="61dba35b-4f02-45c5-b648-c6badc0cbd79"
 )
 
