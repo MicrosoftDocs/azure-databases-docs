@@ -46,7 +46,7 @@ A JSON Patch document:
 [
   { "op": "add", "path": "/color", "value": "silver" },
   { "op": "remove", "path": "/used" },
-  { "op": "set", "path": "/price", "value": 355.45 }
+  { "op": "set", "path": "/price", "value": 355.45 },
   { "op": "incr", "path": "/inventory/quantity", "value": 10 },
   { "op": "add", "path": "/tags/-", "value": "featured-bikes" },
   { "op": "move", "from": "/color", "path": "/inventory/color" }
