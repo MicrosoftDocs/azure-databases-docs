@@ -102,6 +102,7 @@ To set this property using an ARM template, update your existing template or exp
 
 ```json
 {
+  "resources": [
     {
       "type": "Microsoft.DocumentDB/databaseAccounts",
       "name": "mycosmosdbaccount",
@@ -114,17 +115,12 @@ To set this property using an ARM template, update your existing template or exp
           "maxStalenessPrefix": 1,
           "maxIntervalInSeconds": 5
         },
-        "locations": [
-          {
-            "locationName": "[parameters('location')]",
-            "failoverPriority": 0
-          }
-        ],
-        "locations": "[variable('locations')]",
+        "locations": "[variables('locations')]",
         "databaseAccountOfferType": "Standard",
-        "minimalTlsVersion": "[parameters('minimalTlsVersion')]",
+        "minimalTlsVersion": "[parameters('minimalTlsVersion')]"
       }
     }
+  ]
 }
 ```
 
