@@ -96,8 +96,6 @@ Next, use the Data Explorer to create a database and container in-portal.
 
     :::image source="media/quickstart-portal/new-container-dialog.png" alt-text="Screenshot of the dialog to create a new database and container with the specified options filled.":::
 
-1. Create a new file named *demo.bicepparam* or (`demo.bicepparam`).
-
 1. Observe the newly created database and container in the Data Explorer's hierarchy.
 
     :::image source="media/quickstart-portal/data-explorer-tree.png" alt-text="Screenshot of the Data Explorer hierarchy with a database container present.":::

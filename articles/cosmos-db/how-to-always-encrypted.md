@@ -282,13 +282,13 @@ await database.DefineContainer("my-container", "/partition-key")
 
 ```java
 ClientEncryptionIncludedPath path1 = new ClientEncryptionIncludedPath();
-path1.setClientEncryptionKeyId("my-key"):
+path1.setClientEncryptionKeyId("my-key");
 path1.setPath("/property1");
 path1.setEncryptionType(CosmosEncryptionType.DETERMINISTIC.getName());
 path1.setEncryptionAlgorithm(CosmosEncryptionAlgorithm.AEAES_256_CBC_HMAC_SHA_256.getName());
 
 ClientEncryptionIncludedPath path2 = new ClientEncryptionIncludedPath();
-path2.setClientEncryptionKeyId("my-key"):
+path2.setClientEncryptionKeyId("my-key");
 path2.setPath("/property2");
 path2.setEncryptionType(CosmosEncryptionType.RANDOMIZED.getName());
 path2.setEncryptionAlgorithm(CosmosEncryptionAlgorithm.AEAES_256_CBC_HMAC_SHA_256.getName());

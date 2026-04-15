@@ -31,7 +31,7 @@ Azure Cosmos DB may need to read secret/key data from Azure Key Vault. For examp
 1. In a terminal or command window, store the names of your Azure Key Vault resource, Azure Cosmos DB account, and resource group as shell variables named ``keyVaultName``, ``cosmosName``, and ``resourceGroupName``.
 
     ```azurecli-interactive
-    # Variable for function app name
+    # Variable for Key Vault name
     keyVaultName="msdocs-keyvault"
     
     # Variable for Azure Cosmos DB account name
