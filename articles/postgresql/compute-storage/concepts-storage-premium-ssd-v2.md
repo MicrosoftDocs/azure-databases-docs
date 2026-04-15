@@ -56,8 +56,11 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys) and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL in below supported regions.
 
 **Americas**: Brazil South*, Brazil Southeast*, Canada Central, Canada East, Central US, East US, East US 2, North Central US, South Central US, West Central US, West US, West US 2, West US 3*.
+
 **Europe**: Austria East, France Central*, Germany West Central, Germany North, Italy North*, North Europe, Norway East, Norway West, Poland Central*, Spain Central*, Sweden Central*, Switzerland North, Switzerland West, UK South, UK West, West Europe.
-**Asia Pacific & Middle East**: Australia Central 2*, Australia East, Australia Southeast, Central India, East Asia, Indonesia Central*, Israel Central*, Japan East, Japan West, Korea Central*, Malaysia West*, New Zealand North*, South India, Southeast Asia, UAE North*.
+
+**Asia Pacific & Middle East**: Australia Central 2*, Australia East, Australia Southeast, Central India, East Asia, Indonesia Central*, Israel Central*, Japan East, Japan West, Jio India Central, Jio India West, Korea Central*, Malaysia West*, New Zealand North*, South India, Southeast Asia, UAE North*.
+
 **Africa**: South Africa North, South Africa West.
 
 Sovereign regions, including China North 3 and US Gov Virginia, support only standalone SSDv2 deployments and don't currently support these features. 
