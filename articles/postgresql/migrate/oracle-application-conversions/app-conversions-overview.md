@@ -1,13 +1,14 @@
 ---
-title: "What is Oracle to PostgreSQL Application Conversion?"
-description: "Learn how to convert application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension with AI-powered transformation."
+title: What Is Oracle to PostgreSQL Application Conversion?
+description: Learn how to convert application code interacting with Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension with AI-powered transformation.
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 04/13/2026
+ms.date: 04/15/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 # What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?
 
@@ -17,17 +18,17 @@ This feature is designed to accelerate application modernization and reduce manu
 
 The application conversion capability is available through the Visual Studio Code PostgreSQL extension and integrates with GitHub Copilot Agent Mode to assist with code transformation and review workflows.
 
-> [!NOTE]
+> [!NOTE]  
 > This feature is currently in preview. Conversion coverage, supported patterns, and automation quality will continue to improve.
 
 ## When should you use application conversion?
 
 Use this feature if:
 
- - You have an existing application that connects to Oracle databases.
- - You're migrating your Oracle databases to Azure Database for PostgreSQL.
- - You want to accelerate application migration and reduce manual code rewrite effort.
- - You have completed (or plan to complete) schema conversion.
+- You have an existing application that connects to Oracle databases.
+- You're migrating your Oracle databases to Azure Database for PostgreSQL.
+- You want to accelerate application migration and reduce manual code rewrite effort.
+- You have completed (or plan to complete) schema conversion.
 
 ## How application conversion fits into your migration journey
 
@@ -45,7 +46,7 @@ Completing schema conversion before application conversion is strongly recommend
 
 The application conversion process involves multiple components working together to transform your Oracle-based applications for PostgreSQL:
 
-![Application Conversion Architecture](media/architecture-diagram.png)
+:::image type="content" source="media/architecture-diagram.png" alt-text="Screenshot of application Conversion Architecture." lightbox="media/architecture-diagram.png":::
 
 The architecture demonstrates how the Visual Studio Code PostgreSQL extension, GitHub Copilot Agent Mode, and Azure Database for PostgreSQL collaborate to provide intelligent, context-aware code conversion with comprehensive reporting and validation capabilities.
 
@@ -54,13 +55,13 @@ The architecture demonstrates how the Visual Studio Code PostgreSQL extension, G
 Application conversion helps reduce migration complexity by automating common Oracle-to-PostgreSQL application changes.
 
 Key benefits include:
- - **Automated code transformation** - Converts Oracle-specific SQL syntax, connection logic, and database interaction patterns.
- - **Schema-aware conversion** - Uses schema conversion metadata to improve accuracy.
- - **Database context awareness** - Aligns application code with deployed PostgreSQL schema objects.
- - **Integrated developer workflow** - Runs directly inside Visual Studio Code.
- - **Review and reporting support** - Generates conversion reports, TODO lists, and file comparison views.
+- **Automated code transformation** - Converts Oracle-specific SQL syntax, connection logic, and database interaction patterns.
+- **Schema-aware conversion** - Uses schema conversion metadata to improve accuracy.
+- **Database context awareness** - Aligns application code with deployed PostgreSQL schema objects.
+- **Integrated developer workflow** - Runs directly inside Visual Studio Code.
+- **Review and reporting support** - Generates conversion reports, TODO lists, and file comparison views.
 
-> [!NOTE]
+> [!NOTE]  
 > Application conversion accelerates migration but doesn't replace application validation. AI-assisted code transformation can produce incorrect or incomplete results. You must validate converted code through functional testing, integration testing, and performance testing before production deployment.
 
 ## Prerequisites
@@ -102,7 +103,7 @@ Complete the schema conversion process for the schemas you want to migrate from 
 1. Open the GitHub Copilot chat interface.
 1. Select **Claude Sonnet 4.6 or Claude Opus 4.6** for the model.
 
-![model selection](media/model-selection.png)
+:::image type="content" source="media/model-selection.png" alt-text="Screenshot of model selection." lightbox="media/model-selection.png":::
 
 > Using Claude Sonnet 4.6 or Claude Opus 4.6 is required for optimal application conversion results. Lower models might produce less accurate conversions.
 
@@ -110,6 +111,7 @@ Complete the schema conversion process for the schemas you want to migrate from 
 
 1. Open the workspace containing your schema conversion project.
 1. Navigate to the migration project folder structure:
+
    ```
    .github/postgres-migration/project_name/
    ```
@@ -117,29 +119,30 @@ Complete the schema conversion process for the schemas you want to migrate from 
 
 1. Copy your codebase into the migration project.
 
-    - Locate the `application_code` folder in your project:
+   - Locate the `application_code` folder in your project:
+
    ```
    .github/postgres-migration/project_name/application_code/
    ```
-    - Copy the codebase folder you want to migrate into the `application_code` folder inside your project folder.
-    - Organize files logically to facilitate systematic conversion.
+   - Copy the codebase folder you want to migrate into the `application_code` folder inside your project folder.
 
-   ![application code folder inside your project](media/app-code-inside-project.png)
+   - Organize files logically to facilitate systematic conversion.
 
-    > Keep your original application code in a separate location as a backup. Only copy the files you want to convert into the migration project structure.
+   :::image type="content" source="media/app-code-inside-project.png" alt-text="Screenshot of application code folder inside your project.":::
+
+   > Keep your original application code in a separate location as a backup. Only copy the files you want to convert into the migration project structure.
 
 ## Quick start checklist
 
 Before starting the application conversion process, verify you have completed:
 
 - **Schema conversion completed** for your Oracle database
-- **VS Code + PostgreSQL extension** installed and configured  
+- **VS Code + PostgreSQL extension** installed and configured
 - **GitHub Copilot subscription** active (Pro+, Business, or Enterprise)
 - **Claude Sonnet 4.6 or Claude Opus 4.6** model selected in GitHub Copilot
 - **Application code backed up** in a separate location
 - **PostgreSQL database** accessible and schema deployed
 - **Application codebase** ready for copying into migration project
-
 
 ## Conversion workflow
 
@@ -151,7 +154,7 @@ Before starting the application conversion process, verify you have completed:
    - The PostgreSQL database where you deployed your converted DDL, or
    - The PostgreSQL database where your application schema already exists
 1. Select **Convert Application**.
-![Convert Application](media/start-application-migration.png)
+   :::image type="content" source="media/start-application-migration.png" alt-text="Screenshot of convert Application." lightbox="media/start-application-migration.png":::
 
 This action initiates the following processes:
 
@@ -167,53 +170,55 @@ This action initiates the following processes:
 1. Review any prompts or questions from the agent that might require input.
 1. Allow the conversion process to complete fully before reviewing results.
 
-
 ### Review and validate
+
 The tool generates the following files for review:
- - TODO lists for manual follow-up work
- - Conversion reports
- - File comparison views
-![Conversion Report](media/conversion-report.png)
+- TODO lists for manual follow-up work
+- Conversion reports
+- File comparison views
+  :::image type="content" source="media/conversion-report.png" alt-text="Screenshot of conversion Report." lightbox="media/conversion-report.png":::
 
 ## Core concepts
 
-### Coding Notes
+<a id="coding-notes"></a>
+
+### Code Notes
 
 Coding Notes are metadata artifacts generated during schema conversion. They capture transformation decisions such as:
- - Data type mappings
- - Sequence and identity conversions
- - Date and time handling adjustments
- - Object dependency relationships
- - Procedure and function signatures
+- Data type mappings
+- Sequence and identity conversions
+- Date and time handling adjustments
+- Object dependency relationships
+- Procedure and function signatures
 
 During application conversion, these notes improve translation accuracy and consistency.
 
 ### Database context integration
 
 The conversion workflow can connect to your Azure Database for PostgreSQL database to:
- - Validate object references
- - Align application code with deployed schema
- - Validate function and procedure signatures
+- Validate object references
+- Align application code with deployed schema
+- Validate function and procedure signatures
 
 ## Supported languages and frameworks
 
 The application conversion tool supports many common Oracle-connected application stacks including:
- - Java (JDBC, Spring, Hibernate)
- - Python (cx_Oracle, SQLAlchemy)
- - .NET (Oracle.DataAccess, ODP.NET)
- - Node.js (oracledb package)
- - C++ (OCCI, Pro*C)
- - Ruby (ruby-oci8, ActiveRecord Oracle adapter)
- - Other languages using Oracle database connectivity
+- Java (JDBC, Spring, Hibernate)
+- Python (cx_Oracle, SQLAlchemy)
+- .NET (Oracle.DataAccess, ODP.NET)
+- Node.js (oracledb package)
+- C++ (OCCI, Pro*C)
+- Ruby (ruby-oci8, ActiveRecord Oracle adapter)
+- Other languages using Oracle database connectivity
 
 ## Conversion coverage
 
 Application conversion focuses on:
- - Oracle SQL syntax embedded in application code
- - Database connection configuration
- - Data type usage in application logic
- - Stored procedure and function calls
- - Migration from Oracle-specific database libraries to PostgreSQL-compatible equivalents
+- Oracle SQL syntax embedded in application code
+- Database connection configuration
+- Data type usage in application logic
+- Stored procedure and function calls
+- Migration from Oracle-specific database libraries to PostgreSQL-compatible equivalents
 
 Conversion completeness might vary depending on application architecture, database usage patterns, and Oracle-specific feature usage.
 
@@ -234,7 +239,7 @@ When you create your issue or provide feedback, include `Application Conversion:
 
 ## Related content
 
-- [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
-- [Oracle to PostgreSQL Application Conversion Best Practices](app-conversions-best-practices.md)
-- [Oracle to PostgreSQL Application Conversion Limitations](app-conversions-limitations.md)
-- [Oracle to PostgreSQL Schema Conversion Overview](../oracle-schema-conversions/schema-conversions-overview.md)
+- [Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)](app-conversions-tutorial.md)
+- [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md)
+- [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md)
+- [What is Oracle to Azure Database for PostgreSQL schema conversion Preview?](../oracle-schema-conversions/schema-conversions-overview.md)

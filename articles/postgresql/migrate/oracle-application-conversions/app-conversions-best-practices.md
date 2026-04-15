@@ -1,13 +1,14 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Best Practices"
-description: "Best practices and recommendations for optimal Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension."
+description: Best practices and recommendations for optimal Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension.
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 04/13/2026
+ms.date: 04/15/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)
@@ -28,6 +29,7 @@ This article provides best practices and recommendations to ensure optimal resul
 All projects follow the same conversion process, but your Oracle integration level determines where to focus your preparation and validation efforts.
 
 ### Standard Oracle usage
+
 **Your application primarily uses**:
 - Standard JDBC/ODBC connections
 - Basic SQL operations (SELECT, INSERT, UPDATE, DELETE)
@@ -43,7 +45,7 @@ All projects follow the same conversion process, but your Oracle integration lev
 Requires careful validation.
 **Your application includes**:
 - Some Oracle-specific SQL (CONNECT BY, PIVOT, outer join syntax)
-- Basic PL/SQL procedure calls  
+- Basic PL/SQL procedure calls
 - Oracle data types (CLOB, BLOB, NUMBER with precision)
 - Framework-specific Oracle configurations
 
@@ -56,15 +58,15 @@ Requires careful validation.
 Requires a migration strategy.
 **Your application heavily uses**:
 - Oracle-specific APIs (Advanced Queuing, Spatial, Text Search)
-- Complex PL/SQL with business logic  
+- Complex PL/SQL with business logic
 - Oracle system packages (DBMS_*, UTL_*)
 - Oracle enterprise features (TAF, FCF, VPD)
 
-**Preparation emphasis**: Review [Limitations document](app-conversions-limitations.md) for manual replacement strategies  
+**Preparation emphasis**: Review [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md) for manual replacement strategies  
 **Validation emphasis**: Architecture review and comprehensive testing strategy  
 **Risk level**: High - significant manual work and potential architecture changes required
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Regardless of integration level, all projects require thorough testing and validation before production deployment. The conversion tool accelerates migration but doesn't replace proper testing practices.
 
 ## Pre-conversion preparation
@@ -128,10 +130,10 @@ The PostgreSQL account used for application conversion should have:
 
 | Privilege | Purpose |
 | --- | --- |
-| CONNECT | Connect to the database |
-| SELECT on tables | Read schema and table information |
-| SELECT on views | Access view definitions |
-| USAGE on schemas | Access schema objects |
+| `CONNECT` | Connect to the database |
+| `SELECT` on tables | Read schema and table information |
+| `SELECT` on views | Access view definitions |
+| `USAGE` on schemas | Access schema objects |
 
 ## Conversion execution best practices
 
@@ -139,9 +141,9 @@ Follow these practices during the conversion process for optimal results.
 
 ### Project structure
 
-Maintain proper project structure:
+Maintain project structure:
 
-```
+```output
 .github/postgres-migration/project_name/
 ├── application_code/
 │   └── your_codebase/
@@ -186,16 +188,19 @@ Although automated conversion accelerates migration, manual validation is essent
 ### High priority
 
 #### Database connectivity
+
 - Verify connection string formats for PostgreSQL
-- Test connection pooling configurations  
+- Test connection pooling configurations
 - Validate timeout and retry settings
 
 #### SQL query conversions
+
 - Review converted query syntax for correctness
 - Test queries that use complex Oracle-specific features (CONNECT BY, PIVOT)
 - Validate parameter binding and placeholder syntax
 
 #### Data type handling
+
 - Verify type conversions in application logic (NUMBER, DATE precision)
 - Test date/time handling code (Oracle vs PostgreSQL differences)
 - Validate numeric precision handling
@@ -203,11 +208,13 @@ Although automated conversion accelerates migration, manual validation is essent
 ### Medium priority
 
 #### Stored procedure calls
+
 - Review procedure and function call syntax
 - Validate parameter passing (REF CURSOR, OUT parameters)
 - Test return value handling and exception management
 
 #### Framework configurations
+
 - Verify ORM dialect changes (Hibernate, Entity Framework)
 - Test connection pool settings in application servers
 - Validate transaction management configurations
@@ -215,6 +222,7 @@ Although automated conversion accelerates migration, manual validation is essent
 ### Lower priority
 
 #### Performance and optimization
+
 - Query performance compared to Oracle
 - Indexing strategy effectiveness
 - Connection pool sizing
@@ -222,7 +230,7 @@ Although automated conversion accelerates migration, manual validation is essent
 ### Validation process
 
 - **Review conversion report**: Start with the generated report to identify flagged areas
-- **Use file comparison**: Leverage built-in diff tools to understand changes
+- **Use file comparison**: Use built-in diff tools to understand changes
 - **Unit testing**: Execute unit tests against converted code
 - **Integration testing**: Test with actual PostgreSQL database
 - **Performance testing**: Validate query performance meets requirements
@@ -230,21 +238,23 @@ Although automated conversion accelerates migration, manual validation is essent
 ## Common mistakes to avoid
 
 ### Setup issues
+
 - **Using lower AI models**: Claude Sonnet 4.6 or Claude Opus 4.6 is required for better conversion quality
-- **Skipping schema conversion**: Loses accuracy context and type mapping information  
+- **Skipping schema conversion**: Loses accuracy context and type mapping information
 - **Interrupting agent mid-process**: Causes incomplete conversion and missing files
 - **Wrong database selection**: Pointing to empty database instead of deployed schema
-- **Not reviewing Oracle feature compatibility**: Check [Limitations document](app-conversions-limitations.md) before starting if you use Oracle Advanced Queuing, Spatial, Text Search, or other specialized features that require architecture planning
+- **Not reviewing Oracle feature compatibility**: Check [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md) before starting if you use Oracle Advanced Queuing, Spatial, Text Search, or other specialized features that require architecture planning
 
 ### Validation issues
 
 Catch these to prevent production problems.
--  **Assuming all conversions are correct**: AI can miss semantic differences
--  **Skipping integration testing**: Unit tests alone don't catch PostgreSQL-specific issues
--  **Not validating date/time handling**: Oracle vs PostgreSQL date behavior differs significantly
--  **Ignoring performance testing**: Query performance patterns might change
+- **Assuming all conversions are correct**: AI can miss semantic differences
+- **Skipping integration testing**: Unit tests alone don't catch PostgreSQL-specific issues
+- **Not validating date/time handling**: Oracle vs PostgreSQL date behavior differs significantly
+- **Ignoring performance testing**: Query performance patterns might change
 
 ### Process issues
+
 - **Converting without backups**: Always maintain original code separately
 - **Large batch conversions**: Convert in smaller, manageable modules
 - **Skipping team validation**: Have both Oracle and PostgreSQL experts review results
@@ -258,7 +268,7 @@ Focus on JDBC and framework configurations.
 **Critical areas to validate**:
 - Review JDBC connection code for PostgreSQL driver usage
 - Validate Hibernate/JPA configuration updates (dialect changes)
-- Check Spring Data repository configurations  
+- Check Spring Data repository configurations
 - Test stored procedure annotations and parameter handling
 
 **Common issues**: Connection pool configuration, transaction isolation levels, Oracle-specific annotations
@@ -301,7 +311,9 @@ Focus on async patterns and connection management.
 
 ## Post-conversion best practices
 
-### Testing strategy
+<a id="testing-strategy"></a>
+
+### Test strategy
 
 Implement a comprehensive testing strategy:
 
@@ -331,7 +343,7 @@ Update project documentation to reflect:
 
 ## Related content
 
-- [Oracle to PostgreSQL Application Conversion Overview](app-conversions-overview.md)
-- [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
-- [Oracle to PostgreSQL Application Conversion Reports](app-conversions-reports.md)
-- [Oracle to PostgreSQL Application Conversion Limitations](app-conversions-limitations.md)
+- [What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?](app-conversions-overview.md)
+- [Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)](app-conversions-tutorial.md)
+- [Oracle to Azure Database for PostgreSQL application conversion generated reports (Preview)](app-conversions-reports.md)
+- [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md)

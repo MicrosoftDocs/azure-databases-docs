@@ -1,13 +1,14 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Reports"
-description: "Understanding the summary reports generated during Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension."
+description: Understanding the summary reports generated during Oracle to PostgreSQL application conversion using Visual Studio Code PostgreSQL extension.
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 04/13/2026
+ms.date: 04/15/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Oracle to Azure Database for PostgreSQL application conversion generated reports (Preview)
@@ -29,7 +30,7 @@ The Oracle to Azure Database for PostgreSQL Application Conversion feature gener
 
 **What success looks like**: Migration Status shows completion, most files converted cleanly, minimal warnings or manual review items
 
-> **Next Steps**: Use your report results to guide your validation strategy from [Best Practices document](app-conversions-best-practices.md). Focus testing on flagged areas and files with warnings.
+> **Next Steps**: Use your report results to guide your validation strategy from [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md). Focus testing on flagged areas and files with warnings.
 
 ## Report overview
 
@@ -44,13 +45,15 @@ Generated after application conversion completion, your report provides detailed
 The Code Conversion Report is comprehensive and typically includes the following sections:
 
 #### Executive summary
+
 - **Total Files Processed**: Count of all files analyzed
-- **Successfully Converted**: Files converted without issues  
+- **Successfully Converted**: Files converted without issues
 - **Files with Warnings**: Files converted but flagged for review
 - **Files Requiring Manual Review**: Files needing manual attention
 - **Migration Status**: Overall completion indicator
 
 #### Detailed analysis sections
+
 - **Migration Overview**: Project details and target environment information
 - **Directory Structure Comparison**: Before/after folder layouts
 - **Files Converted**: Detailed table of all file conversion results
@@ -60,7 +63,8 @@ The Code Conversion Report is comprehensive and typically includes the following
 - **Environment Configuration Changes**: Updated connection parameters and dependencies
 
 #### Additional sections (when applicable)
-- **Known Issues and Limitations**: Resolved issues and production considerations  
+
+- **Known Issues and Limitations**: Resolved issues and production considerations
 - **Future Considerations**: Performance optimizations and enhancements
 - **Migration Success Metrics**: Comparative analysis table
 - **Appendix**: Summary of code changes and mappings
@@ -78,7 +82,7 @@ Use the Code Conversion Report to validate conversion results, plan testing, and
 - **Verify Testing Results**: Ensure application startup and endpoint functionality
 - **Plan next steps**: Use "Known Issues" and "Future Considerations" for deployment planning
 
-> **For systematic validation**: Use the [Best Practices document](app-conversions-best-practices.md) validation frameworks to prioritize testing based on your file statuses and Oracle integration complexity.
+> **For systematic validation**: Use the [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md) validation frameworks to prioritize testing based on your file statuses and Oracle integration complexity.
 
 ### Understand conversion status
 
@@ -98,7 +102,7 @@ Use the Code Conversion Report to validate conversion results, plan testing, and
 | **⚠️ Completed with Warnings** | File was converted but has areas that should be reviewed |
 | **❌ Requires Manual Review** | File has sections that need manual attention |
 
-> **Understanding what triggers manual review**: Files requiring manual review typically contain Oracle-specific features that can't be automatically converted. See [Limitations document](app-conversions-limitations.md) to understand which Oracle constructs commonly require manual attention and how to assess their complexity.
+> **Understanding what triggers manual review**: Files requiring manual review typically contain Oracle-specific features that can't be automatically converted. See [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md) to understand which Oracle constructs commonly require manual attention and how to assess their complexity.
 
 ## File comparison feature
 
@@ -117,7 +121,7 @@ In addition to the report, the Application Conversion feature provides built-in 
 - Validate SQL query transformations maintain intended behavior
 - Review any inline comments added by the conversion process
 
-> **Validation priorities**: Focus your file comparison efforts using the testing priorities from [Best Practices document](app-conversions-best-practices.md) - start with files flagged for manual review, then files with warnings, especially those containing database connections or complex queries.
+> **Validation priorities**: Focus your file comparison efforts using the testing priorities from [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md) - start with files flagged for manual review, then files with warnings, especially those containing database connections or complex queries.
 
 ## Integrate reports with your workflow
 
@@ -128,7 +132,7 @@ In addition to the report, the Application Conversion feature provides built-in 
 1. Use the report as a checklist for code review sessions.
 1. Track conversion progress across multiple application modules.
 
-> **For teams new to PostgreSQL conversion**: Use the [Overview document](app-conversions-overview.md) to ensure all team members understand the conversion process and expected outcomes before diving into report details.
+> **For teams new to PostgreSQL conversion**: Use the [What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?](app-conversions-overview.md) to ensure all team members understand the conversion process and expected outcomes before diving into report details.
 
 ### For testing teams
 
@@ -146,7 +150,7 @@ In addition to the report, the Application Conversion feature provides built-in 
 
 ## Related content
 
-- [Oracle to PostgreSQL Application Conversion Overview](app-conversions-overview.md)
-- [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
-- [Oracle to PostgreSQL Application Conversion Best Practices](app-conversions-best-practices.md)
-- [Oracle to PostgreSQL Application Conversion Limitations](app-conversions-limitations.md)
+- [What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?](app-conversions-overview.md)
+- [Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)](app-conversions-tutorial.md)
+- [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md)
+- [Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)](app-conversions-limitations.md)
