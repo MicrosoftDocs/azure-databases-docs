@@ -72,7 +72,7 @@ To get started, get the Windows-variant of the container image from the [Microso
 To get started, download and install the latest version of Azure Cosmos DB Emulator on your local computer.
 
 > [!TIP]
-> The [emulator release notes](local-emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
+> The [emulator release notes](emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
 
 1. Download the [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator).
 
@@ -111,7 +111,7 @@ The Docker (Windows) container image doesn't support the API for MongoDB.
 To get started, download and install the latest version of Azure Cosmos DB Emulator on your local computer.
 
 > [!TIP]
-> The [emulator release notes](local-emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
+> The [emulator release notes](emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
 
 1. Download the [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator).
 
@@ -134,7 +134,7 @@ The Docker container variant (Linux or Windows) of the emulator doesn't support 
 To get started, download and install the latest version of Azure Cosmos DB Emulator on your local computer.
 
 > [!TIP]
-> The [emulator release notes](local-emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
+> The [emulator release notes](emulator-release-notes.md) article lists all the available versions and the feature updates that were made in each release.
 
 1. Download the [Azure Cosmos DB emulator](https://aka.ms/cosmosdb-emulator).
 
