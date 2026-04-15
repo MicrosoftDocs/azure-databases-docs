@@ -101,6 +101,9 @@ For **all** containers, the partition key should:
 
 * Be a property that has a value, which doesn't change. If a property is your partition key, you can't update that property's value.
 
+  > [!IMPORTANT]
+  > **Partition key values are immutable.** Once an item is created, its partition key value cannot be changed in place. A ReplaceItem operation requires the partition key to match the existing item — you cannot use it to move an item between partitions. To "move" an item, you must create a new item with the new partition key value and delete the original item. These two operations cannot be performed atomically across different logical partitions.
+
 * Contain only `String` values—or convert numbers into a `String` if they might exceed the boundaries of double precision numbers according to [Institute of Electrical and Electronics Engineers (IEEE) 754 binary64](https://www.rfc-editor.org/rfc/rfc8259#ref-IEEE754). The [Json specification](https://www.rfc-editor.org/rfc/rfc8259#section-6) explains why using numbers outside this boundary is a bad practice due to interoperability problems. These concerns are especially relevant for the partition key column because it's immutable and requires data migration to change later.  
 
 * Have a high cardinality. In other words, the property should have a wide range of possible values.
