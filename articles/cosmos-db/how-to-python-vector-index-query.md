@@ -124,12 +124,9 @@ indexing_policy = {
         } 
     ], 
     "excludedPaths": [ 
-        { 
-            "path": "/\"_etag\"/?",
-            "path": "/coverImageVector/*",
-            "path": "/contentVector/*"
-            
-        } 
+        {"path": "/\"_etag\"/?"},
+        {"path": "/coverImageVector/*"},
+        {"path": "/contentVector/*"}
     ], 
     "vectorIndexes": [ 
         {"path": "/coverImageVector", 
