@@ -42,7 +42,7 @@ SELECT * FROM c WHERE c.DeviceId > 'XMS-0001'
 The following query doesn't have a filter on the partition key (`DeviceId`). Therefore, it must fan out to all physical partitions where it's run against each partition's index:
 
 ```sql
-SELECT * FROM c WHERE c.Location = 'Seattle`
+SELECT * FROM c WHERE c.Location = 'Seattle'
 ```
 
 Each physical partition has its own index. Therefore, when you run a cross-partition query on a container, you're effectively running one query *per* physical partition. Azure Cosmos DB automatically aggregates results across different physical partitions.
