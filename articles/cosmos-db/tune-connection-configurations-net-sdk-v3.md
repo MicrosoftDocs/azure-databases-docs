@@ -36,7 +36,7 @@ You configure the connection mode when you create the `CosmosClient` instance in
 ```csharp
 CosmosClient client = new CosmosClient(
   "<nosql-account-endpoint>",
-  tokenCredential
+  tokenCredential,
   new CosmosClientOptions
   {
       ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
@@ -58,7 +58,7 @@ Direct mode can be customized through the *CosmosClientOptions* passed to the *C
 | PortReuseMode      | PortReuseMode.ReuseUnicastPort     | PortReuseMode.ReuseUnicastPort  | This represents the client port reuse policy used by the transport stack. |
 
 > [!NOTE]
-> See also [Networking perfomance tips for direct connection mode](performance-tips-dotnet-sdk-v3.md?tabs=trace-net-core#networking)
+> See also [Networking performance tips for direct connection mode](performance-tips-dotnet-sdk-v3.md?tabs=trace-net-core#networking)
 
 #### Customizing gateway connection mode
 
