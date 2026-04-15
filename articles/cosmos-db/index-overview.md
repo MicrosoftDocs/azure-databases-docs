@@ -227,9 +227,9 @@ To learn how to configure vector indexes, see [Vector indexing policy examples](
     WHERE VectorDistance(c.vector1, c.vector2) > 0.8
     ORDER BY VectorDistance(c.vector1, c.vector2)
     ```
+> [!NOTE]
+> You can add new path configurations or remove existing ones, but you cannot change the settings of a vector embedding policy or vector indexing policy directly. To do so you must first drop the existing vector policy and/or index, then add it back with new configuration. 
 
-> [!IMPORTANT]
-> Currently, vector policies and vector indexes are immutable after creation. To make changes, create a new collection.
 
 ## Index usage
 
