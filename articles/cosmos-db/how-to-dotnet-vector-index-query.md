@@ -129,14 +129,20 @@ After you decide on the vector embedding paths, you must add vector indexes to t
             {
                 new VectorIndexPath()
                 {
-                    Path = "/vector",
+                    Path = "/coverImageVector",
+                    Type = VectorIndexType.QuantizedFlat,
+                },
+                new VectorIndexPath()
+                {
+                    Path = "/contentVector",
                     Type = VectorIndexType.QuantizedFlat,
                 }
             }
         },
     };
     properties.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });    
-    properties.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/vector/*" });
+    properties.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/coverImageVector/*" });
+    properties.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/contentVector/*" });
 ```
 
 > [!IMPORTANT]
