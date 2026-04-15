@@ -267,7 +267,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | UK South | Yes | Yes | Yes | Yes |
 | UK West | Yes | Yes | No | Yes |
 | USGov Virginia | Yes | Yes | Yes | No |
-| USGov Arizona | Yes | Yes | No | Yes |
+| USGov Arizona | Yes | Yes | Yes | Yes |
 | USGov Texas | Yes | Yes | No | Yes |
 | West Central US | Yes | Yes | No | Yes |
 | West Europe | Yes | Yes | Yes | Yes |
