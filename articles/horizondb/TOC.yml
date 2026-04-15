@@ -184,6 +184,16 @@
       items:
         - name: Restore PostgreSQL backup
           href: migrate/how-to-migrate-using-dump-and-restore.md
+- name: Integration
+  items:
+    - name: Microsoft Fabric
+      items:
+      - name: Fabric mirroring
+        href: fabric/concepts-fabric-mirroring.md
+      - name: Copy activity
+        href: fabric/how-to-data-factory-copy-activity-fabric.md
+      - name: Script activity
+        href: fabric/how-to-data-factory-script-activity-fabric.md
 - name: Networking
   items:
     - name: Public Access
