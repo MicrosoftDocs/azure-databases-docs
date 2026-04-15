@@ -1,6 +1,6 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Limitations"
-description: "Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL schema conversion feature in Visual Studio Code."
+description: "Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code."
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
@@ -14,7 +14,7 @@ ms.topic: concept-article
 
 This article outlines the known limitations and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code.
 
-## Overview & Quick Assessment
+## Overview and quick assessment
 
 The Oracle to PostgreSQL application conversion feature successfully handles the majority of common database application patterns automatically. However, some Oracle-specific features and advanced functionality require manual intervention during or after the automated conversion process.
 
@@ -26,7 +26,7 @@ The Oracle to PostgreSQL application conversion feature successfully handles the
 - Typical transaction management patterns
 
 **What requires attention:**
-- Oracle-specific APIs and packages (DBMS_*, UTL_*, etc.) 
+- Oracle-specific APIs and packages (DBMS_*, UTL_*)
 - Advanced PL/SQL integration
 - Specialized Oracle features (Advanced Queuing, Spatial, Text Search)
 - Custom connection pooling configurations
@@ -34,11 +34,13 @@ The Oracle to PostgreSQL application conversion feature successfully handles the
 
 **Bottom line:** Most business applications that use Oracle as a standard relational database will convert successfully with minimal manual work. Applications heavily integrated with Oracle-specific features will require more planning and manual intervention.
 
-## Quick Impact Check
+## Quick impact check
 
 Use this checklist to assess the likely conversion complexity for your application:
 
-### **Low Impact - Proceed with Confidence**
+### Low impact
+
+Proceed with confidence.
 
 Your application will likely convert smoothly if it primarily uses:
 
@@ -49,7 +51,9 @@ Your application will likely convert smoothly if it primarily uses:
 - **Simple stored procedures**: Basic parameter passing and result handling
 - **Standard connection patterns**: Connection strings, basic pooling, standard transactions
 
-### **Medium Impact - Plan for Manual Work**
+### Medium impact
+
+Plan for manual work.
 
 Your application will need some manual attention if it includes:
 
@@ -60,7 +64,9 @@ Your application will need some manual attention if it includes:
 - **Connection complexity**: TNS names, Oracle Wallet, advanced pooling configurations
 - **Basic Oracle packages**: Limited use of DBMS_OUTPUT, simple UTL_FILE operations
 
-### **High Impact - Significant Migration Effort Required**
+### High impact
+
+Significant migration effort required.
 
 Your application will require substantial manual work if it heavily uses:
 
@@ -75,20 +81,22 @@ Your application will require substantial manual work if it heavily uses:
 ## AI model requirements
 
 - **Model requirement**: Claude Sonnet 4.6 or Claude Opus 4.6 is required for optimal conversion results
-- **Lower models**: Using models below Claude Sonnet 4 may produce less accurate or incomplete conversions
-- **Token limits**: Very large codebases may require multiple conversion sessions
+- **Lower models**: Using models below Claude Sonnet 4 might produce less accurate or incomplete conversions
+- **Token limits**: Very large codebases might require multiple conversion sessions
 
 ## Schema conversion dependency
 
 While not strictly required, the following limitations apply when schema conversion is not performed first:
 
-- **Reduced accuracy**: Conversion accuracy may be lower without Coding Notes context
-- **Missing type mappings**: Data type conversions may not align with actual database schema
-- **Object reference issues**: Application code may reference objects that don't exist in PostgreSQL format
+- **Reduced accuracy**: Conversion accuracy might be lower without Coding Notes context
+- **Missing type mappings**: Data type conversions might not align with actual database schema
+- **Object reference issues**: Application code might reference objects that don't exist in PostgreSQL format
 
-## Common Application Limitations
+## Common application limitations
 
-### **What Gets Converted Automatically**
+The following sections describe what converts automatically, what might need manual review, and what requires manual replacement.
+
+### What gets converted automatically
 
 The application conversion tool handles these common patterns without manual intervention:
 
@@ -99,51 +107,57 @@ The application conversion tool handles these common patterns without manual int
 - **Common ORM annotations and configurations**: Framework-specific Oracle configurations converted to PostgreSQL equivalents
 - **Standard data type usage in application logic**: VARCHAR, INTEGER, DATE, TIMESTAMP, DECIMAL handling
 
-### **What May Need Manual Review** *(Moderate frequency)*
+### What might need manual review
 
-These patterns often convert but may require verification or adjustment:
+These patterns occur with moderate frequency.
 
-#### **Complex SQL patterns**
+These patterns often convert but might require verification or adjustment:
+
+#### Complex SQL patterns
 - **CONNECT BY hierarchical queries**: Require PostgreSQL recursive CTEs
 - **PIVOT/UNPIVOT operations**: Require PostgreSQL crosstab or manual rewrite
 - **MODEL clause**: No direct PostgreSQL equivalent
-- **MERGE statement variations**: May require PostgreSQL INSERT ON CONFLICT syntax
+- **MERGE statement variations**: Might require PostgreSQL INSERT ON CONFLICT syntax
 
-#### **Advanced PL/SQL integration**
+#### Advanced PL/SQL integration
 - **Complex procedure calls**: Advanced parameter handling, REF CURSORs
 - **Oracle-specific transaction modes**: Isolation levels, autonomous transactions
 - **Exception handling patterns**: Oracle-specific exception types
 
-#### **Specialized data types**
+#### Specialized data types
 - **LONG and LONG RAW**: Deprecated types requiring special handling
-- **Oracle Object types**: Complex object types may need restructuring
+- **Oracle Object types**: Complex object types might need restructuring
 - **VARRAY and nested tables**: Require PostgreSQL array handling
 - **BFILE**: No direct PostgreSQL equivalent
 
-### **What Requires Manual Replacement** *(Specialized Oracle features)*
+### What requires manual replacement
+
+These are specialized Oracle features with no direct PostgreSQL equivalent.
 
 These Oracle-specific features have no direct PostgreSQL equivalent:
 
-#### **Oracle-specific APIs**
+#### Oracle-specific APIs
 - **Oracle Advanced Queuing (AQ)**: Requires complete messaging architecture replacement
 - **Oracle Streams**: No direct PostgreSQL equivalent for data replication
 - **Oracle Spatial APIs**: Requires PostGIS integration and manual conversion
 - **Oracle Text search APIs**: Requires PostgreSQL full-text search implementation
-- **Oracle XMLDB functions**: May require manual PostgreSQL XML function mapping
+- **Oracle XMLDB functions**: Might require manual PostgreSQL XML function mapping
 
-#### **Oracle system packages**
+#### Oracle system packages
 - **DBMS_OUTPUT calls**: Require manual replacement or removal
 - **DBMS_SCHEDULER references**: Need PostgreSQL pg_cron or alternative job scheduling
 - **UTL_FILE operations**: Require PostgreSQL-specific file handling approaches
 - **DBMS_LOCK usage**: Requires PostgreSQL advisory locks
 
-#### **Enterprise Oracle features**
+#### Enterprise Oracle features
 - **Oracle Transparent Application Failover (TAF)**: Requires alternative high-availability approach
 - **Oracle Fast Connection Failover (FCF)**: No direct PostgreSQL equivalent
 - **Oracle proxy authentication**: Requires alternative authentication approach
 - **Flashback queries**: No time-travel query equivalent
 
-### 🔧 **External Configuration** *(Outside application codebase)*
+### External configuration
+
+These items are outside the application codebase.
 
 These items are outside the scope of application code conversion:
 
@@ -154,13 +168,14 @@ These items are outside the scope of application code conversion:
 
 ## Language-specific limitations
 
- **Note**: Standard driver imports and basic usage patterns convert automatically. The limitations below apply to advanced features and specialized APIs that may require manual attention.
+> [!NOTE]
+> Standard driver imports and basic usage patterns convert automatically. The limitations below apply to advanced features and specialized APIs that might require manual attention.
 
 ### Java limitations
 
-- **Oracle JDBC extensions**: Custom Oracle JDBC features may not convert automatically
+- **Oracle JDBC extensions**: Custom Oracle JDBC features might not convert automatically
 - **Oracle UCP (Universal Connection Pool)**: Requires HikariCP or other PostgreSQL-compatible pool
-- **Oracle-specific annotations**: May require manual updates
+- **Oracle-specific annotations**: Might require manual updates
 
 ### Python limitations
 
@@ -171,7 +186,7 @@ These items are outside the scope of application code conversion:
 ### .NET limitations
 
 - **ODP.NET managed driver features**: Some features don't map to Npgsql
-- **Oracle-specific transaction modes**: May require adjustment
+- **Oracle-specific transaction modes**: Might require adjustment
 - **REF CURSOR handling**: Differs between providers
 
 ### Node.js limitations
@@ -181,7 +196,8 @@ These items are outside the scope of application code conversion:
 
 ## Infrastructure and deployment considerations
 
-> **Note**: These items are outside the scope of application code conversion and require separate infrastructure updates.
+> [!NOTE]
+> These items are outside the scope of application code conversion and require separate infrastructure updates.
 
 ### Connection configuration files
 - **TNS names files**: Oracle tnsnames.ora files need PostgreSQL host/port/database equivalents
@@ -190,34 +206,34 @@ These items are outside the scope of application code conversion:
 
 ### Deployment artifacts
 - **Build scripts**: Maven/Gradle dependencies need PostgreSQL driver updates
-- **Docker configurations**: Base images and driver installations need updates  
+- **Docker configurations**: Base images and driver installations need updates
 - **CI/CD pipelines**: Database connection tests and deployment scripts need updates
 
 ## Large codebase considerations
 
 For very large codebases:
 
-- **Conversion time**: Large projects may take significant time to process
-- **Memory usage**: Very large files may require more system resources
+- **Conversion time**: Large projects might take significant time to process
+- **Memory usage**: Very large files might require more system resources
 - **Incremental approach**: Consider converting in logical modules rather than entire codebase at once
-- **Token limits**: AI model token limits may affect very large individual files
+- **Token limits**: AI model token limits might affect very large individual files
 
 ## Getting help
 
 When you encounter limitations:
 
-1. **Use GitHub Copilot Agent Mode**: Request additional assistance for manual conversion tasks
-2. **Consult PostgreSQL documentation**: Find alternative implementations for Oracle-specific features
-3. **Review best practices**: See the best practices guide for Oracle to PostgreSQL migration patterns
-4. **Test thoroughly**: Validate all converted code in a nonproduction environment before deployment
-5. **File feedback**: Report issues using the built-in feedback tool with `Application Conversion:` prefix
+1. **Use GitHub Copilot Agent Mode**: Request additional assistance for manual conversion tasks.
+1. **Consult PostgreSQL documentation**: Find alternative implementations for Oracle-specific features.
+1. **Review best practices**: See the best practices guide for Oracle to PostgreSQL migration patterns.
+1. **Test thoroughly**: Validate all converted code in a nonproduction environment before deployment.
+1. **File feedback**: Report issues using the built-in feedback tool with `Application Conversion:` prefix.
 
 ### Reporting issues
 
-1. Open the Command Palette with `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS)
-2. Run the command: **PGSQL: Report Issue**
-3. Include `Application Conversion:` as a prefix in your issue title
-4. Provide details about the specific limitation or issue encountered
+1. Open the Command Palette with `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (macOS).
+1. Run the command: **PGSQL: Report Issue**.
+1. Include `Application Conversion:` as a prefix in your issue title.
+1. Provide details about the specific limitation or issue encountered.
 
 ## Related content
 

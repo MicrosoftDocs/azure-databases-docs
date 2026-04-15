@@ -14,20 +14,20 @@ ms.topic: concept-article
 
 This article provides best practices and recommendations to ensure optimal results when using the Oracle to Azure Database for PostgreSQL application conversion feature in Visual Studio Code.
 
-## Quick Start: Essential Practices
+## Quick start: essential practices
 
-**Most Critical for Success**:
-1. **Complete schema conversion first** (important for accurate conversions)
-2. **Use Claude Sonnet 4.6 or Claude Opus 4.6 model** (or similar code-centric model such as GPT-5.2-Codex; as critical for high-quality conversion results)
-3. **Connect to deployed PostgreSQL database** (provides accurate object context)
-4. **Let agent complete TODO list without interruption** (ensures complete conversion)
-5. **Test converted code thoroughly** (manual validation is essential)
+**Most critical for success**:
+1. **Complete schema conversion first**: Improves conversion accuracy through Coding Notes and type mapping context.
+1. **Select a code-centric AI model**: Use Claude Sonnet 4.6, Claude Opus 4.6, or a similar model such as GPT-5.2-Codex.
+1. **Connect to your deployed PostgreSQL database**: Provides accurate object references during conversion.
+1. **Let the agent complete its TODO list without interruption**: Ensures a complete and consistent conversion.
+1. **Test converted code thoroughly**: Manual validation is essential to catch semantic differences.
 
-## Assess Your Oracle Integration Level
+## Assess your Oracle integration level
 
 All projects follow the same conversion process, but your Oracle integration level determines where to focus your preparation and validation efforts.
 
-### **Standard Oracle Usage** 
+### Standard Oracle usage
 **Your application primarily uses**:
 - Standard JDBC/ODBC connections
 - Basic SQL operations (SELECT, INSERT, UPDATE, DELETE)
@@ -38,7 +38,9 @@ All projects follow the same conversion process, but your Oracle integration lev
 **Validation emphasis**: Automated testing and basic connectivity verification  
 **Risk level**: Low - conversion typically succeeds with standard practices
 
-### **Moderate Oracle Integration** *(Requires careful validation)*  
+### Moderate Oracle integration
+
+Requires careful validation.
 **Your application includes**:
 - Some Oracle-specific SQL (CONNECT BY, PIVOT, outer join syntax)
 - Basic PL/SQL procedure calls  
@@ -49,7 +51,9 @@ All projects follow the same conversion process, but your Oracle integration lev
 **Validation emphasis**: Manual review of converted SQL and extensive integration testing  
 **Risk level**: Medium - expect some manual fixes and thorough testing required
 
-### **Heavy Oracle Integration** *(Requires migration strategy)*
+### Heavy Oracle integration
+
+Requires a migration strategy.
 **Your application heavily uses**:
 - Oracle-specific APIs (Advanced Queuing, Spatial, Text Search)
 - Complex PL/SQL with business logic  
@@ -60,7 +64,8 @@ All projects follow the same conversion process, but your Oracle integration lev
 **Validation emphasis**: Architecture review and comprehensive testing strategy  
 **Risk level**: High - significant manual work and potential architecture changes required
 
-> **Important**: Regardless of integration level, all projects require thorough testing and validation before production deployment. The conversion tool accelerates migration but doesn't replace proper testing practices.
+> [!IMPORTANT]
+> Regardless of integration level, all projects require thorough testing and validation before production deployment. The conversion tool accelerates migration but doesn't replace proper testing practices.
 
 ## Pre-conversion preparation
 
@@ -122,7 +127,7 @@ When prompted to select a database during conversion:
 The PostgreSQL account used for application conversion should have:
 
 | Privilege | Purpose |
-|-----------|---------|
+| --- | --- |
 | CONNECT | Connect to the database |
 | SELECT on tables | Read schema and table information |
 | SELECT on views | Access view definitions |
@@ -154,12 +159,12 @@ Maintain proper project structure:
 
 During conversion:
 
- - **Watch the TODO list**: Monitor as Agent Mode works through tasks
- - **Note any errors**: Document any errors or warnings that appear
- - **Don't interrupt**: Allow the process to complete fully
- - **Review incrementally**: Check converted files as they're completed
+- **Watch the TODO list**: Monitor as Agent Mode works through tasks
+- **Note any errors**: Document any errors or warnings that appear
+- **Don't interrupt**: Allow the process to complete fully
+- **Review incrementally**: Check converted files as they're completed
 
-## Success Indicators
+## Success indicators
 
 **You're on track if**:
 - Conversion completes without errors
@@ -174,11 +179,11 @@ During conversion:
 - Extensive manual code changes needed
 - Performance degradation in converted queries
 
-## Critical Validation Strategy
+## Critical validation strategy
 
 Although automated conversion accelerates migration, manual validation is essential to catch semantic differences, platform-specific behaviors, and edge cases that AI might miss.
 
-### **High Priority** 
+### High priority
 
 #### Database connectivity
 - Verify connection string formats for PostgreSQL
@@ -195,7 +200,7 @@ Although automated conversion accelerates migration, manual validation is essent
 - Test date/time handling code (Oracle vs PostgreSQL differences)
 - Validate numeric precision handling
 
-### **Medium Priority**
+### Medium priority
 
 #### Stored procedure calls
 - Review procedure and function call syntax
@@ -207,7 +212,7 @@ Although automated conversion accelerates migration, manual validation is essent
 - Test connection pool settings in application servers
 - Validate transaction management configurations
 
-### **Lower Priority**
+### Lower priority
 
 #### Performance and optimization
 - Query performance compared to Oracle
@@ -216,35 +221,39 @@ Although automated conversion accelerates migration, manual validation is essent
 
 ### Validation process
 
- - **Review conversion report**: Start with the generated report to identify flagged areas
- - **Use file comparison**: Leverage built-in diff tools to understand changes
- - **Unit testing**: Execute unit tests against converted code
- - **Integration testing**: Test with actual PostgreSQL database
- - **Performance testing**: Validate query performance meets requirements
+- **Review conversion report**: Start with the generated report to identify flagged areas
+- **Use file comparison**: Leverage built-in diff tools to understand changes
+- **Unit testing**: Execute unit tests against converted code
+- **Integration testing**: Test with actual PostgreSQL database
+- **Performance testing**: Validate query performance meets requirements
 
-## Common Mistakes to Avoid
+## Common mistakes to avoid
 
-### **Setup Issues** 
+### Setup issues
 - **Using lower AI models**: Claude Sonnet 4.6 or Claude Opus 4.6 is required for better conversion quality
 - **Skipping schema conversion**: Loses accuracy context and type mapping information  
 - **Interrupting agent mid-process**: Causes incomplete conversion and missing files
 - **Wrong database selection**: Pointing to empty database instead of deployed schema
 - **Not reviewing Oracle feature compatibility**: Check [Limitations document](app-conversions-limitations.md) before starting if you use Oracle Advanced Queuing, Spatial, Text Search, or other specialized features that require architecture planning
 
-### **Validation Issues** *(Prevent production problems)*
+### Validation issues
+
+Catch these to prevent production problems.
 -  **Assuming all conversions are correct**: AI can miss semantic differences
 -  **Skipping integration testing**: Unit tests alone don't catch PostgreSQL-specific issues
 -  **Not validating date/time handling**: Oracle vs PostgreSQL date behavior differs significantly
--  **Ignoring performance testing**: Query performance patterns may change
+-  **Ignoring performance testing**: Query performance patterns might change
 
-### **Process Issues**
+### Process issues
 - **Converting without backups**: Always maintain original code separately
 - **Large batch conversions**: Convert in smaller, manageable modules
 - **Skipping team validation**: Have both Oracle and PostgreSQL experts review results
 
-## Language-Specific Best Practices
+## Language-specific best practices
 
-### Java applications *(Focus: JDBC and framework configurations)*
+### Java applications
+
+Focus on JDBC and framework configurations.
 
 **Critical areas to validate**:
 - Review JDBC connection code for PostgreSQL driver usage
@@ -254,7 +263,9 @@ Although automated conversion accelerates migration, manual validation is essent
 
 **Common issues**: Connection pool configuration, transaction isolation levels, Oracle-specific annotations
 
-### Python applications *(Focus: Driver conversion and ORM dialects)*
+### Python applications
+
+Focus on driver conversion and ORM dialects.
 
 **Critical areas to validate**:
 - Review cx_Oracle to psycopg2/asyncpg conversions
@@ -264,7 +275,9 @@ Although automated conversion accelerates migration, manual validation is essent
 
 **Common issues**: LOB handling differences, array binding syntax, async patterns
 
-### .NET applications *(Focus: Provider changes and data access)*
+### .NET applications
+
+Focus on provider changes and data access.
 
 **Critical areas to validate**:
 - Review Oracle.DataAccess to Npgsql conversions
@@ -274,7 +287,9 @@ Although automated conversion accelerates migration, manual validation is essent
 
 **Common issues**: REF CURSOR handling, Oracle-specific transaction modes, data type mappings
 
-### Node.js applications *(Focus: Async patterns and connection management)*
+### Node.js applications
+
+Focus on async patterns and connection management.
 
 **Critical areas to validate**:
 - Review oracledb to pg package conversions
@@ -290,11 +305,11 @@ Although automated conversion accelerates migration, manual validation is essent
 
 Implement a comprehensive testing strategy:
 
- -  **Unit tests**: Run all existing unit tests against converted code
- - **Integration tests**: Test database interactions with PostgreSQL
- - **Regression tests**: Verify existing functionality is preserved
- - **Performance tests**: Validate query and application performance
- - **User acceptance testing**: Conduct UAT in a staging environment
+- **Unit tests**: Run all existing unit tests against converted code
+- **Integration tests**: Test database interactions with PostgreSQL
+- **Regression tests**: Verify existing functionality is preserved
+- **Performance tests**: Validate query and application performance
+- **User acceptance testing**: Conduct UAT in a staging environment
 
 ### Code review process
 
