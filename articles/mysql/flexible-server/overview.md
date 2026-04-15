@@ -238,7 +238,7 @@ One advantage of running your workload in Azure is its global reach. Azure Datab
 | Israel Central | Yes | Yes | Yes | No |
 | Italy North | Yes | Yes | Yes | No |
 | Japan East | Yes | Yes | Yes | Yes |
-| Japan West | Yes | Yes | No | Yes |
+| Japan West | Yes | Yes | Yes | Yes |
 | Jio India West | Yes | Yes | No | No |
 | Korea Central | Yes | Yes | Yes | Yes |
 | Korea South | Yes | Yes | No | Yes |
