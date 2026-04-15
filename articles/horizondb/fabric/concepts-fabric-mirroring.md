@@ -4,7 +4,7 @@ description: Learn about Mirroring in Microsoft Fabric for Azure HorizonDB insta
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 04/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
@@ -90,7 +90,7 @@ When you're done, select the databases to enable Fabric mirroring (up to three b
 
 The workflow presents a Restart Server pop-up. By selecting **Restart**, you start the process. The workflow automates all remaining configuration steps. You can start creating your mirrored database from the [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial).
 
-:::image type="content" source="media/concepts-fabric-mirroring/server-ready.png" alt-text="Fabric mirroring page showing server ready for mirroring." lightbox="media/concepts-fabric-mirroring/server-ready.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/server-ready.png" alt-text="Screenshot of fabric mirroring page showing server ready for mirroring." lightbox="media/concepts-fabric-mirroring/server-ready.png":::
 
 ## Create a database role for Fabric Mirroring
 
@@ -117,7 +117,7 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
    ```
 
 1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
-   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure HorizonDB [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure HorizonDB [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/ddl-priv.html).
 
 > [!IMPORTANT]  
 > Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
@@ -159,7 +159,9 @@ Monitoring the Fabric mirroring in Azure HorizonDB instances is essential to ens
 
 You can use several user-defined functions and tables to monitor important CDC metrics in the Azure HorizonDB instances and troubleshoot the mirroring process to Fabric.
 
-### Monitoring functions
+<a id="monitoring-functions"></a>
+
+### Monitor functions
 
 The mirroring function for fabric mirroring in Azure HorizonDB replicates your PostgreSQL databases into Microsoft Fabric seamlessly, so you can use advanced analytics and data integration scenarios.
 
@@ -175,58 +177,60 @@ The mirroring function for fabric mirroring in Azure HorizonDB replicates your P
   - <status, start_lsn, stop_lsn, flush_lsn>.
   - Status consists of ["Slot name," "Origin name," "CDC data destination path," "Active," "Snapshot Done," "Progress percentage," "Generation ID," "Completed Batch ID," "Uploaded Batch ID," "CDC start time"]
 
-- **azure_cdc.get_all_tables_mirror_status()**: Returns the mirroring status for all eligible tables in the database. Excludes system schemas (pg_catalog, information_schema, pg_toast) and extension-owned tables. 
+- **azure_cdc.get_all_tables_mirror_status()**: Returns the mirroring status for all eligible tables in the database. Excludes system schemas (pg_catalog, information_schema, pg_toast) and extension-owned tables.
 
 | Column Name | Postgres Type | Explanation |
 | --- | --- | --- |
 | table_schema | text | schema name of the table |
-| table_name | text |  name of the table |
+| table_name | text | name of the table |
 | mirroring_status | text | Overall status - OK, WARNING, or ERROR |
 | mirroring_data | jsonb | JSONB array containing detailed status entries with status, status_code, and optional details |
 
 | Status Code | Level | Description |
-|------------|-------|-------------|
-| SCHEMA_DOES_NOT_EXIST | ERROR | The specified schema does not exist |
-| TABLE_DOES_NOT_EXIST | ERROR | The specified table does not exist in the schema |
+| --- | --- | --- |
+| SCHEMA_DOES_NOT_EXIST | ERROR | The specified schema doesn't exist |
+| TABLE_DOES_NOT_EXIST | ERROR | The specified table doesn't exist in the schema |
 | FORBIDDEN_CHARS_IN_COLUMN_NAME | ERROR | Column names contain forbidden characters |
 | FORBIDDEN_CHARS_IN_TABLE_NAME | ERROR | Table name contains forbidden characters |
 | UNSUPPORTED_DATA_TYPE | WARNING | Table has columns with unsupported data types |
 | UNSUPPORTED_TYPE_IN_REPLICA_IDENTITY | ERROR | Unsupported data type in replica identity columns (when no unique index exists) |
-| NOT_REGULAR_TABLE | ERROR | Table is not a regular, permanent table |
-| NOT_TABLE_OWNER | ERROR | Current user is not the owner of the table |
+| NOT_REGULAR_TABLE | ERROR | Table isn't a regular, permanent table |
+| NOT_TABLE_OWNER | ERROR | Current user isn't the owner of the table |
 | HAS_PRIMARY_KEY | OK | Table has a primary key |
 | HAS_UNIQUE_INDEX | OK | Table has a suitable unique index |
-| NO_INDEX_FULL_IDENTITY | WARNING | No suitable unique index; full row identity will be used (may affect performance) |
- 
-  - For a table to be mirrorable, it needs to satisfy the following conditions:
-      - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
-      - The column types are one of the following types:
-        - `bigint`
-        - `bigserial`
-        - `boolean`
-        - `bytes`
-        - `character`
-        - `character varying`
-        - `date`
-        - `double precision`
-        - `integer`
-        - `numeric`
-        - `real`
-        - `serial`
-        - `oid`
-        - `money`
-        - `smallint`
-        - `smallserial`
-        - `text`
-        - `time without time zone`
-        - `time with time zone`
-        - `timestamp without time zone`
-        - `timestamp with time zone`
-        - `uuid`
-      - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
-      - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
-    
-### Tracking tables
+| NO_INDEX_FULL_IDENTITY | WARNING | No suitable unique index; full row identity will be used (might affect performance) |
+
+- For a table to be mirrorable, it needs to satisfy the following conditions:
+  - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
+  - The column types are one of the following types:
+    - `bigint`
+    - `bigserial`
+    - `boolean`
+    - `bytes`
+    - `character`
+    - `character varying`
+    - `date`
+    - `double precision`
+    - `integer`
+    - `numeric`
+    - `real`
+    - `serial`
+    - `oid`
+    - `money`
+    - `smallint`
+    - `smallserial`
+    - `text`
+    - `time without time zone`
+    - `time with time zone`
+    - `timestamp without time zone`
+    - `timestamp with time zone`
+    - `uuid`
+  - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
+  - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
+
+<a id="tracking-tables"></a>
+
+### Track tables
 
 - **azure_cdc.tracked_publications**: one row for each existing mirrored database in Fabric. Query this table to understand the status of each publication.
 
@@ -268,4 +272,4 @@ The mirroring function for fabric mirroring in Azure HorizonDB replicates your P
 
 - [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
 - [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
-- [Networking overview for Azure HorizonDB instances with public access](../network/../network/concepts-networking-public.md)
+- [Networking overview for Azure HorizonDB with public access (allowed IP addresses)](../network/concepts-networking-public.md)
