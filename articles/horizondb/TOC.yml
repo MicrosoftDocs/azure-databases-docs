@@ -29,7 +29,7 @@
       - name: Create a HorizonDB cluster
         href: configure-maintain/quickstart-create-server.md
       - name: How to connect
-        href: connectivity/how-to-connect.md
+        href: connectivity/how-to-connect-query-guide.md
       - name: Using Python
         href: connectivity/connect-python.md
       - name: Using Java
@@ -270,8 +270,10 @@
           href: security/security-configure-data-encryption.md
 - name: References
   items:
-    - name: Azure HorizonDB documentation
-      href: https://learn.microsoft.com/azure/horizondb/
+      - name: Using Python
+        href: connectivity/connect-python.md
+      - name: Using Java
+        href: connectivity/connect-java.md
 - name: Resources
   items:
     - name: Possible errors when managing extensions
