@@ -85,7 +85,7 @@ All containers include a default indexing policy that will successfully index ge
     }
     ```
 
-1. Use [``az cosmosdb sql container create``](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) to create a new container named ``locations`` with a partition key path of ``/region``.
+1. Use [``az cosmosdb sql container create``](/cli/azure/cosmosdb/sql/container#az-cosmosdb-sql-container-create) to create a new container named ``locations`` with a partition key path of ``/category``.
 
     ```azurecli-interactive
     az cosmosdb sql container create \
@@ -127,7 +127,7 @@ The .NET SDK for Azure Cosmos DB for NoSQL provides classes for common GeoJSON o
     ```
 
     > [!WARNING]
-    > Entity Framework does not currently spatial data in Azure Cosmos DB for NoSQL. Use one of the Azure Cosmos DB for NoSQL SDKs for strongly-typed GeoJSON support.
+    > Entity Framework does not currently support spatial data in Azure Cosmos DB for NoSQL. Use one of the Azure Cosmos DB for NoSQL SDKs for strongly-typed GeoJSON support.
 
 1. Import the [`Azure.Identity`](https://www.nuget.org/packages/Azure.Identity) NuGet package.
 
@@ -169,10 +169,10 @@ The .NET SDK for Azure Cosmos DB for NoSQL provides classes for common GeoJSON o
     string endpoint = "<nosql-account-endpoint>";
     ```
 
-1. Create a new instance of the [``CosmosClient``](/dotnet/api/microsoft.azure.cosmos.cosmosclient) class passing in ``connectionString`` and wrapping it in a [using statement](/dotnet/csharp/language-reference/statements/using).
+1. Create a new instance of the [``CosmosClient``](/dotnet/api/microsoft.azure.cosmos.cosmosclient) class passing in ``endpoint`` and ``credential`` and wrapping it in a [using statement](/dotnet/csharp/language-reference/statements/using).
 
     ```csharp
-    using CosmosClient client = new (connectionString);
+    using CosmosClient client = new (endpoint, credential);
     ```
 
 1. Retrieve a reference to the previously created container (``cosmicworks/locations``) in the Azure Cosmos DB for NoSQL account by using [``CosmosClient.GetDatabase``](/dotnet/api/microsoft.azure.cosmos.cosmosclient.getdatabase) and then [``Database.GetContainer``](/dotnet/api/microsoft.azure.cosmos.database.getcontainer). Store the result in a variable named ``container``.
