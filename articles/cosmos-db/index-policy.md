@@ -159,7 +159,7 @@ Here are some rules for included and excluded paths precedence in Azure Cosmos D
 **Vector** indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when applying a vector index.  You can specify the following types of vector index policies:
 
 | Type | Description | Max dimensions |
-| --- | --- |
+| --- | --- | --- |
 | **`flat`** | Stores vectors on the same index as other indexed properties. | 505 |
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |
