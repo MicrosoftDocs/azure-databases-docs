@@ -32,7 +32,7 @@ This guide includes best practices for solutions built using the latest version 
 
 - The request charge of a specified operation correlates directly to the size of the document. We recommend reducing the size of your documents as operations on large documents cost more than operations on smaller documents.
 - Some characters are restricted and can't be used in some identifiers: '/', '\\', '?', '#'. The general recommendation is to not use any special characters in identifiers like database name, collection name, item ID, or partition key to avoid any unexpected behavior.
-- The Azure Cosmos DB indexing policy also allows you to specify which document paths to include or exclude from indexing by using indexing paths `IndexingPolicy#getIncludedPaths()` and `IndexingPolicy#getExcludedPaths()`.  Ensure that you exclude unused paths from indexing for faster writes.  For more information, see [creating indexes using the SDK sample](performance-tips-java-sdk-v4.md#indexing-policy).
+- The Azure Cosmos DB indexing policy also allows you to specify which document paths to include or exclude from indexing by using indexing paths `includedPaths` and `excludedPaths`.  Ensure that you exclude unused paths from indexing for faster writes.  For more information, see [creating indexes using the SDK sample](how-to-manage-indexing-policy.md#use-the-nodejs-sdk).
 
 ## Host characteristics
 
