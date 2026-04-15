@@ -1,6 +1,6 @@
 ---
 title: Create a Copy Activity in Microsoft Fabric Data Factory
-description: Learn how to create a copy activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
+description: Learn how to create a copy activity in Microsoft Fabric Data Factory for Azure HorizonDB.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -12,15 +12,15 @@ ms.topic: how-to
 
 # Create a copy activity in Microsoft Fabric Data Factory
 
-The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure Database for PostgreSQL flexible server instance to perform data movement and transformation activities.
+The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure HorizonDB instance to perform data movement and transformation activities.
 
-The copy activity supports *copy command*, *bulk insert*, and *upsert* as write methods. To learn more, see [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
+The copy activity supports *copy command*, *bulk insert*, and *upsert* as write methods. To learn more, see [Configure Azure HorizonDB in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
 
 This article has step-by-step instructions on how to create a copy activity.
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a copy activity
@@ -47,11 +47,11 @@ This article has step-by-step instructions on how to create a copy activity.
 
    :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/select-source-connection.png" alt-text="Screenshot that shows where to select or create a source connection on the Source tab." lightbox="./media/how-to-data-factory-copy-activity-fabric/select-source-connection.png":::
 
-   The following example shows the selection of an Azure Database for PostgreSQL table as a source connection.
+   The following example shows the selection of an Azure HorizonDB table as a source connection.
 
    :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/source-datasource-selected.png" alt-text="Screenshot that shows a source connection selected." lightbox="./media/how-to-data-factory-copy-activity-fabric/source-datasource-selected.png":::
 
-1. On the **Destination** tab, select or create an Azure Database for PostgreSQL connection.
+1. On the **Destination** tab, select or create an Azure HorizonDB connection.
 
    :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/select-destination-datasource.png" alt-text="Screenshot that shows where to select or create a destination data source on the Destination tab." lightbox="./media/how-to-data-factory-copy-activity-fabric/select-destination-datasource.png":::
 
@@ -79,7 +79,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
 ## Specify the behavior of key columns on upsert
 
-When you upsert data by using the Azure Database for PostgreSQL connector, you need to specify fields called *key columns*. You specify them in the **Key columns** area of the **Destination** tab.
+When you upsert data by using the Azure HorizonDB connector, you need to specify fields called *key columns*. You specify them in the **Key columns** area of the **Destination** tab.
 
 :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/select-key-columns.png" alt-text="Screenshot that shows the area for key columns on the Destination tab." lightbox="./media/how-to-data-factory-copy-activity-fabric/select-key-columns.png":::
 
@@ -93,6 +93,6 @@ There are two acceptable ways to use key columns:
 
 ## Related content
 
-- [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity)
-- [Azure Database for PostgreSQL connector overview](/fabric/data-factory/connector-azure-database-for-postgresql-overview)
+- [Configure Azure HorizonDB in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity)
+- [Azure HorizonDB connector overview](/fabric/data-factory/connector-azure-database-for-postgresql-overview)
 - [Create a script activity in Microsoft Fabric Data Factory](how-to-data-factory-script-activity-fabric.md)

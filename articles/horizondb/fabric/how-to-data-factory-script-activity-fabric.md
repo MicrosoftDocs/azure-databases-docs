@@ -1,6 +1,6 @@
 ---
 title: Create a Script Activity in Microsoft Fabric Data Factory
-description: Learn how to create a script activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
+description: Learn how to create a script activity in Microsoft Fabric Data Factory for Azure HorizonDB.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -19,7 +19,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a script activity
@@ -38,7 +38,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
    :::image type="content" source="./media/how-to-data-factory-script-activity-fabric/script-activity-name.png" alt-text="Screenshot that shows where to enter a name for a script activity on the General tab." lightbox="./media/how-to-data-factory-script-activity-fabric/script-activity-name.png":::
 
-1. On the **Settings** tab, select your Azure Database for PostgreSQL connection, or create a new one by using the **More** option. [Learn more about connecting to your data by using the modern get-data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline).
+1. On the **Settings** tab, select your Azure HorizonDB connection, or create a new one by using the **More** option. [Learn more about connecting to your data by using the modern get-data experience for data pipelines](/fabric/data-factory/modern-get-data-experience-pipeline).
 
    :::image type="content" source="media/how-to-data-factory-script-activity-fabric/script-activity-settings-connection.png" alt-text="Screenshot that shows an example setting for a connection." lightbox="media/how-to-data-factory-script-activity-fabric/script-activity-settings-connection.png":::
 
@@ -455,5 +455,5 @@ To set up logging in the activity output:
 ## Related content
 
 - [How to use a script activity](/fabric/data-factory/script-activity)
-- [Azure Database for PostgreSQL connector overview](/fabric/data-factory/connector-azure-database-for-postgresql-overview)
+- [Azure HorizonDB connector overview](/fabric/data-factory/connector-azure-database-for-postgresql-overview)
 - [Copy activity in Microsoft Fabric Data Factory](how-to-data-factory-copy-activity-fabric.md)

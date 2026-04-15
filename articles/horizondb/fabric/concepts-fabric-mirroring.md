@@ -1,6 +1,6 @@
 ---
 title: Mirroring in Microsoft Fabric
-description: Learn about Mirroring in Microsoft Fabric for Azure Database for PostgreSQL flexible server instances.
+description: Learn about Mirroring in Microsoft Fabric for Azure HorizonDB instances.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -8,25 +8,25 @@ ms.date: 11/18/2025
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL.
+# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure HorizonDB.
 ---
 
-# Azure Database for PostgreSQL mirroring in Microsoft Fabric
+# Azure HorizonDB mirroring in Microsoft Fabric
 
-[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure Database for PostgreSQL estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure Database for PostgreSQL directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
+[Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure HorizonDB estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure HorizonDB directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
 > [!IMPORTANT]  
 > Newly created servers after Ignite 2025 automatically include the latest general availability version of mirroring components. Existing servers upgrade progressively as part of the next maintenance cycles without requiring manual intervention. You don't need to disable and re-enable mirroring to receive updates.
 
 ## Architecture
 
-Fabric mirroring in Azure Database for PostgreSQL is built on concepts like [logical replication](../configure-maintain/concepts-logical.md) and Change Data Capture (CDC) design pattern.
+Fabric mirroring in Azure HorizonDB is built on concepts like [logical replication](../configure-maintain/concepts-logical.md) and Change Data Capture (CDC) design pattern.
 
-Once you establish Fabric mirroring for a database in an Azure Database for PostgreSQL flexible server instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored. It ships the snapshot to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
+Once you establish Fabric mirroring for a database in an Azure HorizonDB instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored. It ships the snapshot to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
 
 The source database captures subsequent changes applied to selected tables. It ships these changes to the OneLake landing zone in batches to be applied to the respective Delta tables in the Mirrored database artifact.
 
-:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in an Azure Database for PostgreSQL flexible server instance." lightbox="media/concepts-fabric-mirroring/architecture.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in an Azure HorizonDB instance." lightbox="media/concepts-fabric-mirroring/architecture.png":::
 
 ## What is Change Data Capture (CDC)?
 
@@ -38,7 +38,7 @@ Instead, it involves a continuous stream of change events published by the datab
 
 Clients can subscribe to this stream to monitor changes, focusing on specific databases, individual tables, or even subsets of columns within a table.
 
-For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The control plane for an Azure Database for PostgreSQL flexible server instance is installed and registered in source databases during the Fabric mirroring enablement workflow.
+For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The control plane for an Azure HorizonDB instance is installed and registered in source databases during the Fabric mirroring enablement workflow.
 
 ## Azure Change Data Capture (CDC) extension
 
@@ -54,15 +54,15 @@ Azure CDC exports table snapshots and modifications as Parquet files and copies 
 
 ## Enable Fabric mirroring in the Azure portal
 
-Fabric mirroring in the Azure portal for an Azure Database for PostgreSQL flexible server instance allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
+Fabric mirroring in the Azure portal for an Azure HorizonDB instance allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
 
 ## Supported versions
 
-Azure Database for PostgreSQL supports **PostgreSQL 14 and later** for Fabric mirroring.
+Azure HorizonDB supports **PostgreSQL 14 and later** for Fabric mirroring.
 
 ## Prerequisites
 
-Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible server instance, you need to configure several prerequisites.
+Before you can use Fabric mirroring in an Azure HorizonDB instance, you need to configure several prerequisites.
 
 - **System-assigned Managed Identity (SAMI)** must be [enabled](../security/security-configure-managed-identities-system-assigned.md).
   - Azure CDC uses this identity to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
@@ -94,16 +94,16 @@ The workflow presents a Restart Server pop-up. By selecting **Restart**, you sta
 
 ## Create a database role for Fabric Mirroring
 
-Next, you need to provide or create a PostgreSQL role for the Fabric service to connect to your Azure Database for PostgreSQL flexible server.
+Next, you need to provide or create a PostgreSQL role for the Fabric service to connect to your Azure HorizonDB.
 
 You can accomplish this task by specifying a [database role](#use-a-database-role) for connecting to your source system.
 
 > [!NOTE]  
-> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL, select the [authentication method](../security/security-overview.md#access-control) that best fits your purposes.
+> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure HorizonDB, select the [authentication method](../security/security-overview.md#access-control) that best fits your purposes.
 
 #### Use a database role
 
-1. Connect to your Azure Database for PostgreSQL using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). Connect with a principal that is a member of the role `azure_pg_admin`.
+1. Connect to your Azure HorizonDB using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). Connect with a principal that is a member of the role `azure_pg_admin`.
 1. Create a PostgreSQL role named `fabric_user`. You can choose any name for this role. Provide your own strong password. Grant the permissions needed for Fabric mirroring in the database. Run the following SQL script to grant the `CREATEDB`, `CREATEROLE`, `LOGIN`, `REPLICATION`, and `azure_cdc_admin` permissions to the new role named `fabric_user`.
 
    ```sql
@@ -117,14 +117,14 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
    ```
 
 1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
-   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure Database for PostgreSQL [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure HorizonDB [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
 
 > [!IMPORTANT]  
 > Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
 
 ## Server parameters
 
-These server parameters directly affect Fabric mirroring for Azure Database for PostgreSQL and can be used to tune replication process to Fabric OneLake:
+These server parameters directly affect Fabric mirroring for Azure HorizonDB and can be used to tune replication process to Fabric OneLake:
 
 - **Azure.fabric_mirror_enabled**: The default is off. This parameter specifies the flag indicating whether mirroring is enabled on the server. It's set automatically at the end of the server enablement workflow, so you shouldn't change it manually.
 
@@ -155,13 +155,13 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 ## Monitor
 
-Monitoring the Fabric mirroring in Azure Database for PostgreSQL flexible server instances is essential to ensure that the mirroring process runs smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions.
+Monitoring the Fabric mirroring in Azure HorizonDB instances is essential to ensure that the mirroring process runs smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions.
 
-You can use several user-defined functions and tables to monitor important CDC metrics in the Azure Database for PostgreSQL flexible server instances and troubleshoot the mirroring process to Fabric.
+You can use several user-defined functions and tables to monitor important CDC metrics in the Azure HorizonDB instances and troubleshoot the mirroring process to Fabric.
 
 ### Monitoring functions
 
-The mirroring function for fabric mirroring in Azure Database for PostgreSQL replicates your PostgreSQL databases into Microsoft Fabric seamlessly, so you can use advanced analytics and data integration scenarios.
+The mirroring function for fabric mirroring in Azure HorizonDB replicates your PostgreSQL databases into Microsoft Fabric seamlessly, so you can use advanced analytics and data integration scenarios.
 
 - **azure_cdc.list_tracked_publications()**: For each publication in the source flexible server instance, returns a comma-separated string containing the following information
   - publicationName (text)
@@ -267,5 +267,5 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 ## Related content
 
 - [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
-- [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md)
-- [Networking overview for Azure Database for PostgreSQL instances with public access](../network/../network/concepts-networking-public.md)
+- [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
+- [Networking overview for Azure HorizonDB instances with public access](../network/../network/concepts-networking-public.md)
