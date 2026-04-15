@@ -79,7 +79,7 @@ Sovereign regions, including China North 3 and US Gov Virginia, support only sta
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
-- For larger servers, the initial automated backup takes longer to complete and appears in the Azure portal after it completes. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas. After the initial backup, all subsequent backups are incremental and typically complete quickly.
+- For larger servers, the initial automated backup takes longer to complete and appears in the Azure portal after it completes. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas or performing major version upgrade. After the initial backup, all subsequent backups are incremental and typically complete quickly.
 
 
 - Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
