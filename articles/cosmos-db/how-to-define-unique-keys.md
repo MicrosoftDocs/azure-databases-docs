@@ -20,7 +20,7 @@ This article presents the different ways to define [unique keys](unique-keys.md)
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 
-1. [Create a new Azure Cosmos DB account](create-sql-api-dotnet.md#create-account) or select an existing one.
+1. [Create a new Azure Cosmos DB account](how-to-create-account.md) or select an existing one.
 
 1. Open the **Data Explorer** pane and select the container that you want to work on.
 
