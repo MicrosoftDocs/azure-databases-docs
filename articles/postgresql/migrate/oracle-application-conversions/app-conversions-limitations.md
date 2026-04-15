@@ -1,13 +1,14 @@
 ---
 title: "Oracle to PostgreSQL Application Conversion: Limitations"
-description: "Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code."
+description: Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code.
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 04/13/2026
+ms.date: 04/15/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)
@@ -71,7 +72,7 @@ Significant migration effort required.
 Your application will require substantial manual work if it heavily uses:
 
 - **Oracle Advanced Queuing (AQ)**: Message queuing and notifications
-- **Oracle Spatial/GIS**: Geospatial data types and spatial queries  
+- **Oracle Spatial/GIS**: Geospatial data types and spatial queries
 - **Oracle Text Search**: Full-text indexing and search APIs
 - **Oracle Streams**: Data replication and change capture
 - **Complex PL/SQL**: Heavy business logic in database procedures/packages
@@ -86,7 +87,7 @@ Your application will require substantial manual work if it heavily uses:
 
 ## Schema conversion dependency
 
-While not strictly required, the following limitations apply when schema conversion is not performed first:
+While not strictly required, the following limitations apply when schema conversion isn't performed first:
 
 - **Reduced accuracy**: Conversion accuracy might be lower without Coding Notes context
 - **Missing type mappings**: Data type conversions might not align with actual database schema
@@ -114,17 +115,20 @@ These patterns occur with moderate frequency.
 These patterns often convert but might require verification or adjustment:
 
 #### Complex SQL patterns
+
 - **CONNECT BY hierarchical queries**: Require PostgreSQL recursive CTEs
 - **PIVOT/UNPIVOT operations**: Require PostgreSQL crosstab or manual rewrite
 - **MODEL clause**: No direct PostgreSQL equivalent
 - **MERGE statement variations**: Might require PostgreSQL INSERT ON CONFLICT syntax
 
 #### Advanced PL/SQL integration
+
 - **Complex procedure calls**: Advanced parameter handling, REF CURSORs
 - **Oracle-specific transaction modes**: Isolation levels, autonomous transactions
 - **Exception handling patterns**: Oracle-specific exception types
 
 #### Specialized data types
+
 - **LONG and LONG RAW**: Deprecated types requiring special handling
 - **Oracle Object types**: Complex object types might need restructuring
 - **VARRAY and nested tables**: Require PostgreSQL array handling
@@ -137,6 +141,7 @@ These are specialized Oracle features with no direct PostgreSQL equivalent.
 These Oracle-specific features have no direct PostgreSQL equivalent:
 
 #### Oracle-specific APIs
+
 - **Oracle Advanced Queuing (AQ)**: Requires complete messaging architecture replacement
 - **Oracle Streams**: No direct PostgreSQL equivalent for data replication
 - **Oracle Spatial APIs**: Requires PostGIS integration and manual conversion
@@ -144,12 +149,14 @@ These Oracle-specific features have no direct PostgreSQL equivalent:
 - **Oracle XMLDB functions**: Might require manual PostgreSQL XML function mapping
 
 #### Oracle system packages
+
 - **DBMS_OUTPUT calls**: Require manual replacement or removal
 - **DBMS_SCHEDULER references**: Need PostgreSQL pg_cron or alternative job scheduling
 - **UTL_FILE operations**: Require PostgreSQL-specific file handling approaches
 - **DBMS_LOCK usage**: Requires PostgreSQL advisory locks
 
 #### Enterprise Oracle features
+
 - **Oracle Transparent Application Failover (TAF)**: Requires alternative high-availability approach
 - **Oracle Fast Connection Failover (FCF)**: No direct PostgreSQL equivalent
 - **Oracle proxy authentication**: Requires alternative authentication approach
@@ -168,7 +175,7 @@ These items are outside the scope of application code conversion:
 
 ## Language-specific limitations
 
-> [!NOTE]
+> [!NOTE]  
 > Standard driver imports and basic usage patterns convert automatically. The limitations below apply to advanced features and specialized APIs that might require manual attention.
 
 ### Java limitations
@@ -196,15 +203,17 @@ These items are outside the scope of application code conversion:
 
 ## Infrastructure and deployment considerations
 
-> [!NOTE]
+> [!NOTE]  
 > These items are outside the scope of application code conversion and require separate infrastructure updates.
 
 ### Connection configuration files
+
 - **TNS names files**: Oracle tnsnames.ora files need PostgreSQL host/port/database equivalents
 - **Oracle Wallet configurations**: SSL/authentication files require PostgreSQL certificate setup
 - **Connection pool configurations**: Application server pools (WebLogic, Tomcat) need PostgreSQL driver setup
 
 ### Deployment artifacts
+
 - **Build scripts**: Maven/Gradle dependencies need PostgreSQL driver updates
 - **Docker configurations**: Base images and driver installations need updates
 - **CI/CD pipelines**: Database connection tests and deployment scripts need updates
@@ -218,7 +227,9 @@ For very large codebases:
 - **Incremental approach**: Consider converting in logical modules rather than entire codebase at once
 - **Token limits**: AI model token limits might affect very large individual files
 
-## Getting help
+<a id="getting-help"></a>
+
+## Get help
 
 When you encounter limitations:
 
@@ -237,7 +248,7 @@ When you encounter limitations:
 
 ## Related content
 
-- [Oracle to PostgreSQL Application Conversion Overview](app-conversions-overview.md)
-- [Oracle to PostgreSQL Application Conversion Tutorial](app-conversions-tutorial.md)
-- [Oracle to PostgreSQL Application Conversion Best Practices](app-conversions-best-practices.md)
-- [Oracle to PostgreSQL Schema Conversion Limitations](../oracle-schema-conversions/schema-conversions-limitations.md)
+- [What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?](app-conversions-overview.md)
+- [Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)](app-conversions-tutorial.md)
+- [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md)
+- [Oracle to Azure Database PostgreSQL schema conversion limitations Preview](../oracle-schema-conversions/schema-conversions-limitations.md)
