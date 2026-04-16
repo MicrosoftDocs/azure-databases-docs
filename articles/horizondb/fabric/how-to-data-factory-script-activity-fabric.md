@@ -1,6 +1,6 @@
 ---
-title: Create a Script Activity in Microsoft Fabric Data Factory
-description: Learn how to create a script activity in Microsoft Fabric Data Factory for Azure HorizonDB.
+title: Create a script activity in Microsoft Fabric Data Factory for Azure HorizonDB
+description: Learn how to create and configure a script activity in Microsoft Fabric Data Factory to run PostgreSQL queries on your Azure HorizonDB instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Create a script activity in Microsoft Fabric Data Factory
+# Create a script activity in Microsoft Fabric Data Factory for Azure HorizonDB
 
 In this article, you learn how to create a script activity in Microsoft Fabric Data Factory to run custom PostgreSQL queries. A script activity allows you to run various types of PostgreSQL commands directly in your pipelines. These commands include:
 
