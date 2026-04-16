@@ -13,27 +13,21 @@ ai-usage: ai-assisted
 
 # High performance storage in Azure DocumentDB
 
-Azure DocumentDB high performance storage uses **Premium SSD v2** disks to deliver much higher performance for I/O-intensive workloads by de-coupling storage capacity from IOPS and bandwidth.
+Azure DocumentDB uses **Premium SSD v2** disks to deliver significantly higher performance for I/O-intensive workloads by de-coupling storage capacity from IOPS and bandwidth settings.
 
-With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default. The capacity of the Compute tier determines the achievable IOPS and and bandwidth regardless of the size of the storage disk. 
+With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default regardless of the storage capacity configured for the cluster. The IOPS and bandwidth capacity of the Compute tier determines the achievable IOPS and bandwidth in the storage layer without the need to scale up storage capacity. 
 
-Only the required storage capacity needs to be selected, while IOPS and bandwidth settings are auto configured at no added cost.
+Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. Only the desired storage needs to be provisioned with no additional user intervention needed to ensure the cluster is setup for optimal performance. The result is a **12x performance boost at no added cost**.
 
-Previously, more IOPS meant scaling up storage capacity. For instance, a jump from 5,000 IOPS to 20,000 IOPS required scaling storage capacity from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the compute tier has the capacity. Larger Compute tiers can support up to 80,000 IOPS - a 4x increase over previous limits.  
+Previously, increasing IOPS demands meant scaling up the storage capacity on the cluster. For instance, a jump from 5,000 IOPS to 20,000 IOPS required increasing the size of the disk from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the cluster's compute tier has the capacity to push and sustain 20,000 IOPS. Moreover, Premium SSD v2 disks can support up to 80,000 IOPS - a 4x increase over Premium SSD.
 
 ## Guidance
 
-The **maximum storage performance** for your Azure DocumentDB cluster depends on the combination of **compute tier** and **storage size** you select. Each combination determines the effective limits for **IOPS** and **throughput**. Start by choosing the storage size you need, then select a compute tier that provides the required Input/output operations per second (IOPS) and throughput for your workload. If you’re unsure about performance requirements:
-
-- Begin with the compute tier that fully unlocks the storage performance for your selected size.
-
-- Run workload benchmarks.
-
-- Gradually reduce compute until you find the smallest tier that delivers your desired performance.
+The **maximum performance** for your Azure DocumentDB cluster is now only dependent on the **compute tier** and not the storage size. Start by choosing just the desired storage size needed for the cluster, then select a compute tier that provides the required (IOPS) and throughput (MBps) for your workload. Tabulated below are the highest achievable and sustainable IOPS and bandwidth limits per compute tier.
 
 ## IOPS and throughput caps
 
-This table lists the highest achievable IOPS and bandwidth configurations per compute cluster tier. Premium SSD v2 disks, regardless of storage capacity, will be auto configured with the upper bound values tabulated below, at no added cost.
+With Premium SSD v2 disks, regardless of storage capacity, the cluster will be auto configured with the upper bound values tabulated below, **at no added cost**.
 
 | Compute Tier | Max IOPS | Max bandwidth (MBps) |
 |--------------|-------------- |--------------------|
@@ -108,7 +102,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 1. Add this template to the file's content. Replace the `<cluster-name>`, `<location>`, `<username>`, and `<password>` placeholders with appropriate values.
 
     ```bicep
-    resource cluster 'Microsoft.DocumentDB/mongoClusters@2025-08-01-preview' = {
+    resource cluster 'Microsoft.DocumentDB/mongoClusters@2025-09-01' = {
       name: '<cluster-name>'
       location: '<location>'
       properties: {
@@ -282,7 +276,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
     ```azurecli-interactive
     az rest \
         --method "GET" \
-        --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-08-01-preview" \
+        --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-09-01" \
         --body @cluster.json
     ```
 
@@ -293,27 +287,25 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 ::: zone-end
 
-## Limitations of high performance storage
+## Current limitations of high performance storage
 
-Here are limitations of the high performance storage feature:
+- Customer-managed keys (CMK) aren't supported with Premium SSD v2 storage.
 
-- Customer-managed keys (CMK) aren't supported.
-
-- Storage capacity settings on Premimum SSD v2 disks can be adjusted up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours. 
+- Storage capacity settings on Premimum SSD v2 disks can be adjusted up to four times within a 24-hour period. For newly created clusters, a maximum of three storage capacity adjustments can be made during the first 24 hours. 
   
-- Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in increased latency.
+- Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in higher latency.
 
 - Online migration from Premium SSD to Premium SSD v2 isn't currently supported. To upgrade from Premium SSD to Premium SSD V2, you can perform a point-in-time-restore to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes.
 
-- If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating.
+- If you perform any operation that requires disk hydration the following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating.
   - Error message: Unable to complete the operation because the disk is still being hydrated. Retry after some time.
   - Operations that can trigger this behavior include:
       - Performing compute scaling, storage scaling, enabling high availability (HA) in quick succession.
       - This also includes service-triggered failovers to guarantee high availability.
       - Using PITR (point-in-time-restore) to create a new cluster and immediately enabling High Availability while the disk is still being hydrated.
-  - As a best practice, space out these operations or complete them sequentially, allowing hydration to finish between actions.
+  - As a best practice, when using Premium SSD v2 disks, space out these operations or complete them sequentially, ensuring disk hydration finishes between actions.
 
 ## Related content
 
-- [Compute and storage tiers in Azure DocumentDB](compute-storage.md)
-- [Azure DocumentDB limitations](limitations.md)
+- [Compare Azure DocumentDB to MongoDB](compare-mongodb-atlas.md)
+- [Review supported Mongo API surface area in Azure DocumentDB](compatibility-query-language.md)
