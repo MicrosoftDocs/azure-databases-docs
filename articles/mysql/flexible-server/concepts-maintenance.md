@@ -172,5 +172,5 @@ No, opting out of scheduled maintenance isn't allowed. However, you can use the 
 ## Related content
 
 - [Change the maintenance schedule](how-to-maintenance-portal.md)
-- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [Get notifications about upcoming maintenance](/azure/service-health/service-health-planned-maintenance)
 - [Set up alerts about upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)

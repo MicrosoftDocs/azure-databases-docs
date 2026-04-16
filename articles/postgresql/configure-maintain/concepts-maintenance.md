@@ -72,5 +72,5 @@ Customers might notice a slight increase in restart time (5-8 minutes) when pend
 ## Related content
 
 - [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md)
-- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [Get notifications about upcoming maintenance](/azure/service-health/service-health-planned-maintenance)
 - [Set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)
