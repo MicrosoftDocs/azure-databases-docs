@@ -226,6 +226,20 @@ Azure Cosmos DB supports the following database commands on API for Cassandra ac
 
 Azure Cosmos DB for Apache Cassandra doesn't have any limits on the size of data stored in a table. Hundreds of terabytes or Petabytes of data can be stored while ensuring partition key limits are honored. Similarly, every entity or row equivalent doesn't have any limits on the number of columns. The total size of the entity shouldn't exceed 2 MB. The data per partition key can't exceed 20 GB as in all other APIs.
 
+### String Range Query Behavior on Text Columns
+Range operators (>, >=, <, <=) applied to string (text) columns don’t perform prefix or substring searches. This behavior follows Cassandra Query Language (CQL) semantics and is consistent with Apache Cassandra behavior.
+Behavior
+Azure Cosmos DB for Apache Cassandra evaluates string range comparisons using lexicographic (byte-by-byte) ordering. When comparing a string value against a partial string, the comparison is performed character-by-character rather than as a prefix or pattern match.
+For example:
+
+'ABCD' > 'ABC' → returns true
+'ABZ' > 'ABC' → returns true
+'AB' > 'ABC' → returns false (shorter strings are lexicographically smaller)
+
+#### Implication
+Because comparisons are strictly lexicographic, range predicates on partial string values can’t be used to implement prefix- or substring-based search semantics. Applications that require prefix search patterns should design their data model or query strategy accordingly.
+
+
 ## Tools 
 
 Azure Cosmos DB for Apache Cassandra is a managed service platform. The platform doesn't require any management overhead or utilities such as Garbage Collector, Java Virtual Machine (JVM), and node tool to manage the cluster. Tools such as `cqlsh` that use Binary CQLv4 compatibility are supported. 
