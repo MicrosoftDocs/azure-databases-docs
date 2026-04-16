@@ -29,7 +29,7 @@
       - name: Create a HorizonDB cluster
         href: configure-maintain/quickstart-create-server.md
       - name: How to connect
-        href: connectivity/how-to-connect.md
+        href: connectivity/how-to-connect-query-guide.md
       - name: Using Python
         href: connectivity/connect-python.md
       - name: Using Java
@@ -184,6 +184,16 @@
       items:
         - name: Restore PostgreSQL backup
           href: migrate/how-to-migrate-using-dump-and-restore.md
+- name: Integration
+  items:
+    - name: Microsoft Fabric
+      items:
+      - name: Fabric mirroring
+        href: fabric/concepts-fabric-mirroring.md
+      - name: Copy activity
+        href: fabric/how-to-data-factory-copy-activity-fabric.md
+      - name: Script activity
+        href: fabric/how-to-data-factory-script-activity-fabric.md
 - name: Networking
   items:
     - name: Public Access
@@ -260,8 +270,10 @@
           href: security/security-configure-data-encryption.md
 - name: References
   items:
-    - name: Azure HorizonDB documentation
-      href: https://learn.microsoft.com/azure/horizondb/
+      - name: Using Python
+        href: connectivity/connect-python.md
+      - name: Using Java
+        href: connectivity/connect-java.md
 - name: Resources
   items:
     - name: Possible errors when managing extensions
