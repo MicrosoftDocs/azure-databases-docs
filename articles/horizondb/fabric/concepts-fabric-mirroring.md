@@ -1,6 +1,6 @@
 ---
-title: Mirroring in Microsoft Fabric
-description: Learn about Mirroring in Microsoft Fabric for Azure HorizonDB instances.
+title: Mirroring in Microsoft Fabric for Azure HorizonDB
+description: Learn about database mirroring in Microsoft Fabric for Azure HorizonDB instances, including architecture, CDC, and setup.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -11,7 +11,7 @@ ms.topic: concept-article
 # customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure HorizonDB.
 ---
 
-# Azure HorizonDB mirroring in Microsoft Fabric
+# Azure HorizonDB database mirroring in Microsoft Fabric
 
 [Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure HorizonDB estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure HorizonDB directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
