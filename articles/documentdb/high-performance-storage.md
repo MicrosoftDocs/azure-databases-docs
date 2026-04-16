@@ -1,5 +1,5 @@
 ---
-title: Premium SSD v2 - High Performance Storage
+title: Premium SSD v2 Disks - High Performance Storage
 description: Learn how to use Premium SSD v2 high performance storage in Azure DocumentDB for higher IOPS and bandwidth.
 author: suvishodcitus
 ms.author: suvishod
@@ -13,7 +13,7 @@ ai-usage: ai-assisted
 
 # High performance storage in Azure DocumentDB
 
-Azure DocumentDB high uses **Premium SSD v2** disks to deliver high performance storage for I/O-intensive workloads by de-coupling storage capacity from IOPS and bandwidth.
+Azure DocumentDB high performance storage uses **Premium SSD v2** disks to deliver much higher performance for I/O-intensive workloads by de-coupling storage capacity from IOPS and bandwidth.
 
 With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default. The capacity of the Compute tier determines the achievable IOPS and and bandwidth regardless of the size of the storage disk. 
 
