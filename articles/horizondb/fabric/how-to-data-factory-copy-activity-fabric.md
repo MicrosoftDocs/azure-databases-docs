@@ -1,6 +1,6 @@
 ---
-title: Create a Copy Activity in Microsoft Fabric Data Factory
-description: Learn how to create a copy activity in Microsoft Fabric Data Factory for Azure HorizonDB.
+title: Create a copy activity in Microsoft Fabric Data Factory for Azure HorizonDB
+description: Learn how to create and configure a copy activity in Microsoft Fabric Data Factory to connect to your Azure HorizonDB instance.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Create a copy activity in Microsoft Fabric Data Factory
+# Create a copy activity in Microsoft Fabric Data Factory for Azure HorizonDB
 
 The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure HorizonDB instance to perform data movement and transformation activities.
 
