@@ -585,6 +585,18 @@
               href: migrate/best-practices-oracle-to-postgresql-checklist.md
             - name: Migrate with Ora2Pg
               href: migrate/how-to-migrate-oracle-ora2pg.md
+        - name: Application Conversion
+          items:
+            - name: Application conversion overview
+              href: migrate/oracle-application-conversions/app-conversions-overview.md
+            - name: Application conversion tutorial
+              href: migrate/oracle-application-conversions/app-conversions-tutorial.md
+            - name: Application conversion best practices
+              href: migrate/oracle-application-conversions/app-conversions-best-practices.md
+            - name: Application conversion limitations
+              href: migrate/oracle-application-conversions/app-conversions-limitations.md
+            - name: Application conversion reports
+              href: migrate/oracle-application-conversions/app-conversions-reports.md
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks
