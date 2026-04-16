@@ -796,6 +796,17 @@ for pager.More() {
 
 ---
 
+## Migrate existing containers to hierarchical partition keys
+
+Hierarchical partition keys must be set at container creation time and can't be changed on existing containers. To migrate an existing container to use hierarchical partition keys:
+
+1. **Create a new container** with the desired hierarchical partition key configuration.
+1. **Copy data** using [container copy jobs](container-copy.md) for offline migration, or use the [change feed](change-feed.md) for live migration with minimal downtime.
+1. **Update your application** to point to the new container.
+1. **Validate** that queries are correctly using the hierarchical key prefixes.
+
+---
+
 ## Limitations and known issues
 
 - Working with containers that use hierarchical partition keys is supported only in the .NET v3 SDK, in the Java v4 SDK, in the Python SDK, and in the preview version of the JavaScript SDK. You must use a supported SDK to create new containers that have hierarchical partition keys and to perform CRUD or query operations on the data. Support for other SDKs, including Python, isn't available currently.
