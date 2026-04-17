@@ -17,7 +17,7 @@ Azure DocumentDB uses **Premium SSD v2** disks to deliver significantly higher p
 
 With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default regardless of the storage capacity configured for the cluster. The IOPS and bandwidth capacity of the Compute tier determines the achievable IOPS and bandwidth in the storage layer without the need to scale up storage capacity. 
 
-Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. No additional user intervention is needed to ensure the cluster is setup for optimal performance. The result is a **12x performance boost at no added cost**.
+Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. No additional user intervention is needed to ensure the cluster is set up for optimal performance. The result is a **12x performance boost at no added cost**.
 
 Previously, a jump from 5,000 IOPS to 20,000 IOPS required increasing the size of the disk from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the cluster's compute tier has the capacity to push and maintain 20,000 IOPS. Moreover, Premium SSD v2 disks can support up to 80,000 IOPS - a 4x increase over Premium SSD.
 
@@ -291,7 +291,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 - Customer-managed keys (CMK) aren't supported with Premium SSD v2 storage.
 
-- Storage capacity settings on Premimum SSD v2 disks can be adjusted up to four times within a 24-hour period. For newly created clusters, a maximum of three storage capacity adjustments can be made during the first 24 hours. 
+- Storage capacity settings on Premium SSD v2 disks can be adjusted up to four times within a 24-hour period. For newly created clusters, a maximum of three storage capacity adjustments can be made during the first 24 hours. 
   
 - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in higher latency.
 
