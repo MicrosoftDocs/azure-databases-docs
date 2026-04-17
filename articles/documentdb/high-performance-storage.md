@@ -1,77 +1,43 @@
 ---
-title: High Performance Storage (Preview)
-description: Learn how to use Premium SSD v2 high performance storage in Azure DocumentDB for consistent low latency and predictable IOPS scaling. Configure storage for I/O-intensive workloads.
+title: Premium SSD v2 Disks - High Performance Storage
+description: Learn how to use Premium SSD v2 high performance storage in Azure DocumentDB for higher IOPS and bandwidth.
 author: suvishodcitus
 ms.author: suvishod
 ms.topic: feature-guide
-ms.date: 11/21/2025
+ms.date: 04/13/2026
 ms.custom:
   - references_regions
 zone_pivot_groups: azure-interface-portal-rest-bicep-terraform
 ai-usage: ai-assisted
 ---
 
-# High performance storage in Azure DocumentDB (preview)
+# High performance storage in Azure DocumentDB
 
-Azure DocumentDB high performance storage uses **Premium SSD v2** to deliver consistent low latency and predictable IOPS for I/O-intensive workloads. This capability enables you to achieve performance scaling based on your compute and storage configurations, maximizing throughput and efficiency per vCore.
+Azure DocumentDB uses **Premium SSD v2** disks to deliver significantly higher performance for I/O-intensive workloads by de-coupling storage capacity from IOPS and bandwidth settings.
+
+With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default regardless of the storage capacity configured for the cluster. The IOPS and bandwidth capacity of the Compute tier determines the achievable IOPS and bandwidth in the storage layer without the need to scale up storage capacity. 
+
+Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. No additional user intervention is needed to ensure the cluster is set up for optimal performance. The result is a **12x performance boost at no added cost**.
+
+Previously, a jump from 5,000 IOPS to 20,000 IOPS required increasing the size of the disk from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the cluster's compute tier has the capacity to push and maintain 20,000 IOPS. Moreover, Premium SSD v2 disks can support up to 80,000 IOPS - a 4x increase over Premium SSD.
 
 ## Guidance
 
-The **maximum storage performance** for your Azure DocumentDB cluster depends on the combination of **compute tier** and **storage size** you select. Each combination determines the effective limits for **IOPS** and **throughput**. Start by choosing the storage size you need, then select a compute tier that provides the required Input/output operations per second (IOPS) and throughput for your workload. If you’re unsure about performance requirements:
-
-- Begin with the compute tier that fully unlocks the storage performance for your selected size.
-
-- Run workload benchmarks.
-
-- Gradually reduce compute until you find the smallest tier that delivers your desired performance.
+The **maximum performance** for your Azure DocumentDB cluster is now only dependent on the **compute tier** and not the storage size. Start by choosing just the desired storage size needed for the cluster, then select a compute tier that provides the required (IOPS) and throughput (MBps) for your workload. Tabulated below are the highest achievable and sustainable IOPS and bandwidth limits per compute tier.
 
 ## IOPS and throughput caps
 
-This section lists the limits in IOPS and throughput for each tier of Azure DocumentDB:
+With Premium SSD v2 disks, the cluster will be auto configured with the upper bound values tabulated below, **at no added cost**.
 
-For more information on tiers, see [compute and storage tiers](compute-storage.md).
+| Compute Tier | Max IOPS | Max bandwidth (MBps) |
+|--------------|-------------- |--------------------|
+| M30 (2 core) | 3,750 | 85 |
+| M40 (4 core) | 6,400 | 145 |
+| M50 (8 core) | 12,800 | 290 |
+| M60 (16 core) | 25,600 | 600 |
+| M80 (32 core) | 51,200 | 865 |
+| M200 (64 core) | 80,000 | 1,200 |
 
-### `2` vCores (M30)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 | 3,750 |
-| **Max throughput (MB/s)** | 85 | 85 | 85 | 85 | 85 | 85 | 85 | 85 | 85 | 85 | 85 | 85 |
-
-### `4` vCores (M40)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 | 6,400 |
-| **Max throughput (MB/s)** | 145 | 145 | 145 | 145 | 145 | 145 | 145 | 145 | 145 | 145 | 145 | 145 |
-
-### `8` vCores (M50)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 | 12,800 |
-| **Max throughput (MB/s)** | 290 | 290 | 290 | 290 | 290 | 290 | 290 | 290 | 290 | 290 | 290 | 290 |
-
-### `16` vCores (M60)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 16,000 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 | 25,600 |
-| **Max throughput (MB/s)** | 600 | 600 | 600 | 600 | 600 | 600 | 600 | 600 | 600 | 600 | 600 | 600 |
-
-### `32` vCores (M80)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 16,000 | 32,000 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 | 51,200 |
-| **Max throughput (MB/s)** | 865 | 865 | 865 | 865 | 865 | 865 | 865 | 865 | 865 | 865 | 865 | 865 |
-
-### `64` vCores (M200)
-
-| Storage (GiB) | 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768 | 65536 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Max IOPS** | 16,000 | 32,000 | 64,000 | 80,000 | 80,000 | 80,000 | 80,000 | 80,000 | 80,000 | 80,000 | 80,000 | 80,000 |
-| **Max throughput (MB/s)** | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 | 1,200 |
 
 ## Prerequisites
 
@@ -111,7 +77,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
     :::image type="content" source="media/high-performance-storage/select-configure-option.png" alt-text="Screenshot of the options available to configure an Azure DocumentDB cluster.":::
 
-1. On the **Configure** page, choose the cluster tier and storage size as required. Select the storage type as **Premium SSD v2** (preview) to enable high-performance storage, then select Save to apply the changes.
+1. On the **Configure** page, choose the cluster tier and storage size as required. Select the storage type as **Premium SSD v2** to enable high-performance storage, then select Save to apply the changes.
 
     :::image type="content" source="media/high-performance-storage/enable-premium-storage.png" alt-text="Screenshot of the configuration option specific to premium SSD v2 disks in Azure DocumentDB.":::
 
@@ -136,7 +102,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 1. Add this template to the file's content. Replace the `<cluster-name>`, `<location>`, `<username>`, and `<password>` placeholders with appropriate values.
 
     ```bicep
-    resource cluster 'Microsoft.DocumentDB/mongoClusters@2025-08-01-preview' = {
+    resource cluster 'Microsoft.DocumentDB/mongoClusters@2025-09-01' = {
       name: '<cluster-name>'
       location: '<location>'
       properties: {
@@ -310,7 +276,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
     ```azurecli-interactive
     az rest \
         --method "GET" \
-        --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-08-01-preview" \
+        --url "https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.DocumentDB/mongoClusters/<cluster-name>/users?api-version=2025-09-01" \
         --body @cluster.json
     ```
 
@@ -321,27 +287,25 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 ::: zone-end
 
-## Limitations of high performance storage
+## Current limitations of high performance storage (Premium SSD v2 storage)
 
-Here are limitations of the high performance storage feature:
+- Customer-managed keys (CMK) aren't supported with Premium SSD v2 storage.
 
-- High availability (HA) isn't supported 
+- Storage capacity settings on Premium SSD v2 disks can be adjusted up to four times within a 24-hour period. For newly created clusters, a maximum of three storage capacity adjustments can be made during the first 24 hours. 
+  
+- Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in higher latency.
 
-- Replica clusters aren't supported
+- Online migration from Premium SSD to Premium SSD v2 isn't currently supported. To upgrade from Premium SSD to Premium SSD V2, you can perform a point-in-time-restore to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes.
 
-- Customer-managed keys (CMK) aren't supported
-
-- The Azure portal renders storage size but doesn't render effective IOPS/throughput
-
-- High performance storage is available in a limited subset of Azure regions
-
-## Considerations for high performance storage
-
-Consider these things when using high performance storage in your Azure DocumentDB cluster:
-
-- High performance storage can get the maximum performance for your selected compute/storage combination for the fixed price per 1 GiB of storage / month. For more information, see [Azure DocumentDB pricing](https://azure.microsoft.com/pricing/details/document-db/).
+- If you perform any operation that requires disk hydration the following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating.
+  - Error message: Unable to complete the operation because the disk is still being hydrated. Retry after some time.
+  - Operations that can trigger this behavior include:
+      - Performing compute scaling, storage scaling, enabling high availability (HA) in quick succession.
+      - This also includes service-triggered failovers to guarantee high availability.
+      - Using PITR (point-in-time-restore) to create a new cluster and immediately enabling High Availability while the disk is still being hydrated.
+  - As a best practice, when using Premium SSD v2 disks, space out these operations or complete them sequentially, ensuring disk hydration finishes between actions.
 
 ## Related content
 
-- [Compute and storage tiers in Azure DocumentDB](compute-storage.md)
-- [Azure DocumentDB limitations](limitations.md)
+- [Compare Azure DocumentDB to MongoDB](compare-mongodb-atlas.md)
+- [Review supported Mongo API surface area in Azure DocumentDB](compatibility-query-language.md)
