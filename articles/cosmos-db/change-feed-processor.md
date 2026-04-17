@@ -22,7 +22,7 @@ The main benefit of using the change feed processor is its fault-tolerant design
 
 ## Supported SDKs
 
-|  .NET V3  |   Java    |  Node.JS  |  Python   |
+|  .NET V3  |   Java    |  Node.js  |  Python   |
 | --------- | --------- | --------- | --------- |
 |     ✓     |    ✓     |     ✕     |    ✕     |
 
