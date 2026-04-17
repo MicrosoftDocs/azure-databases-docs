@@ -16,8 +16,7 @@ database server logs. You can select the compute and storage settings independen
 
 ## Compute in Azure DocumentDB
 
-The total amount of RAM in a single shard is based on the
-selected number of vCores.
+The total amount of RAM in a single shard is based on the selected number of vCores.
 
 | Cluster tier | vCores        | One shard, GiB RAM |
 |--------------|-------------- |--------------------|
@@ -30,45 +29,6 @@ selected number of vCores.
 | M60          | 16            | 64                 |
 | M80          | 32            | 128                |
 | M200         | 64            | 256                |
-
-## Storage in Azure DocumentDB
-
-The total amount of storage you assign also defines the I/O capacity
-available to each shard in the cluster.
-
-| Storage size, GiB | Maximum IOPS |
-|-------------------|--------------|
-| 32                | 3,500†       |
-| 64                | 3,500†       |
-| 128               | 3,500†       |
-| 256               | 3,500†       |
-| 512               | 3,500†       |
-| 1,024             | 5,000        |
-| 2,048             | 7,500        |
-| 4,095             | 7,500        |
-| 8,192             | 16,000       |
-| 16,384            | 18,000       |
-| 32,767            | 20,000       |
-
-† Max IOPS (Input/Output Operations Per Second) with free disk bursting. Storage up to 512 GiB inclusive come with free disk bursting enabled.
-
-## Maximize IOPS for your compute and storage configuration
-
-Each *compute* configuration has an IOPS limit that depends on the number of vCores. Make sure you select compute configuration for your cluster to fully utilize IOPS in the selected storage.
-
-| Storage size      | Storage IOPS, up to | Min compute tier | Min vCores |
-|-------------------|---------------------|------------------|------------|
-| Up to 0.5 TiB     | 3,500†              | M30              | 2 vCores   |
-| 1 TiB             | 5,000               | M40              | 4 vCores   |
-| 2 TiB             | 7,500               | M50              | 8 vCores   |
-| 4 TiB             | 7,500               | M50              | 8 vCores   |
-| 8 TiB             | 16,000              | M60              | 16 vCores  |
-| 16 TiB            | 18,000              | M60              | 16 vCores  |
-| 32 TiB            | 20,000              | M60              | 16 vCores  |
-
-† Max IOPS with free disk bursting. Storage up to 512 GiB inclusive come with free disk bursting enabled.
-
-For instance, if you need 8 TiB of storage per shard or more, make sure you select 16 vCores or more for the node's compute configuration. That selection would allow you to maximize IOPS usage provided by the selected storage.
 
 ## Considerations for compute and storage
 
@@ -104,7 +64,7 @@ Determining the right compute and storage configuration for your Azure DocumentD
 1. **Estimate resource requirements**
     - **Memory**: Ensure that your [working set](#working-set-and-memory-considerations) (frequently accessed data and indexes) fits into RAM. If your working set size exceeds available memory, consider adding more RAM or optimizing your data model.
     - **CPU**: Choose a CPU configuration that can handle your query load and concurrency requirements. CPU-intensive workloads could require more cores. Use 'CPU percent' metric with 'Max' aggregation on your Azure DocumentDB cluster to see historical compute usage patterns.
-    - **Storage IOPS**: Select storage with sufficient IOPS to handle your read and write operations. Use 'IOPS' metric with 'Max' aggregation on your cluster to see historical storage IOPS usage.
+    - **Storage IOPS**: Use 'IOPS' metric with 'Max' aggregation on your cluster to see historical storage IOPS usage.
     - **Network**: Ensure adequate network bandwidth to handle data transfer between your application and the database, especially for distributed setups. Make sure you configured host for your MongoDB application to support [accelerated networking](/azure/virtual-network/accelerated-networking-overview) technologies such as SR-IOV.
 
 1. **Scale appropriately**
@@ -138,7 +98,7 @@ Deciding on the appropriate storage size for your workload involves several cons
 
 1. **Performance considerations:**
    - Disk performance impacts database operations, especially for workloads that can't fit their [working set](#working-set-and-memory-considerations) into RAM. Consider:
-     - **I/O throughput:** IOPS, or Input/Output Operations Per Second, is the number of requests that are sent to storage disks in one second. The larger storage size comes with more IOPS. Ensure adequate throughput for read/write operations. Use 'IOPS' metric with 'Max' aggregation to monitor used IOPS on your cluster.
+     - **I/O throughput:** IOPS, or Input/Output Operations Per Second, is the number of requests that are sent to storage disks in one second. Premium SSD v2 disks are configured with the highest achievable IOPS and bandwidth that the compute tier can push. Ensure adequate throughput for read/write operations. Use 'IOPS' metric with 'Max' aggregation to monitor used IOPS on your cluster.
      - **Latency:** Latency is the time it takes an application to receive a single request, send it to storage disks, and send the response to the client. Latency is a critical measure of an application's performance in addition to IOPS and throughput. The type of storage used and storage configuration largely defines latency. In a managed service like Azure DocumentDB, the fast storage such as Premium SSD disks is used with settings optimized to reduce latency. 
 
 1. **Future growth and scalability:**

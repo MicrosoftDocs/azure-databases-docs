@@ -4,7 +4,7 @@ description: This article describes high availability on an Azure Database for P
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/09/2026
+ms.date: 04/17/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
@@ -312,11 +312,14 @@ With these settings, logical replication slots are preserved during failover, an
 ### Monitor logical replication failover readiness
 To help validate failover readiness, you can use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
 
+> [!IMPORTANT]
+> To emit this metric, ensure the server parameter `metrics.collector_database_activity` is set to `on`.
+
 This metric indicates whether logical replication slots are synchronized between the HA primary and standby:
 - `1` indicates that slots are synchronized across primary and standby.
 - `0` indicates that slots aren't synchronized on the standby.
 
-If the metric value is 0, logical replication might continue to function on the current primary, but it might not continue after a failover. For more details, refer to the [Logical replication monitoring](../monitor/concepts-monitoring.md#logical-replication).
+If the metric value is 0, logical replication might continue to function on the current primary, but it might not continue after a failover. For a full list of logical replication metrics, see [Logical replication monitoring](../monitor/concepts-monitoring.md#logical-replication).
 
 > [!NOTE]
 > This synchronization state reflects the status across HA nodes and can't be verified using system views on the primary alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events. Consider configuring alerts when this metric remains 0 for a sustained period.
