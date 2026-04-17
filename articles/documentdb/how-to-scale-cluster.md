@@ -68,7 +68,7 @@ You can use the Azure REST API directly or wrapped into `az rest` from Azure CLI
 
 ## Increase storage size
 
-You can increase [the storage size](./compute-storage.md#storage-in-azure-documentdb) to give your database more room to grow. For example, you can increase the storage from **128 GiB** to **256 GiB**.
+You can increase the storage size capacity to give your database more room to grow. For example, you can increase the storage from **128 GiB** to **256 GiB**.
 
 ### [Azure portal](#tab/portal)
 
@@ -80,7 +80,7 @@ You can increase [the storage size](./compute-storage.md#storage-in-azure-docume
 
 ### [Azure CLI](#tab/cli)
 
-1. To increase cluster storage size, update the existing cluster with an `update` operation by increasing the value in the `storage.sizeGb` property. Supported storage sizes are listed on [the supported storage page](./compute-storage.md#storage-in-azure-documentdb).
+1. To increase cluster storage size, update the existing cluster with an `update` operation by increasing the value in the `storage.sizeGb` property.
 
     ```azurecli-interactive
     az resource update \
