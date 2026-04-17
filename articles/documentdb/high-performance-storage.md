@@ -17,9 +17,9 @@ Azure DocumentDB uses **Premium SSD v2** disks to deliver significantly higher p
 
 With Premium SSD v2 storage on Azure DocumentDB, the maximum configurable IOPS and bandwidth settings are available by default regardless of the storage capacity configured for the cluster. The IOPS and bandwidth capacity of the Compute tier determines the achievable IOPS and bandwidth in the storage layer without the need to scale up storage capacity. 
 
-Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. Only the desired storage needs to be provisioned with no additional user intervention needed to ensure the cluster is setup for optimal performance. The result is a **12x performance boost at no added cost**.
+Only the required storage capacity needs to be selected, while the highest achievable IOPS and bandwidth are auto configured by Azure DocumentDB at no added cost. No additional user intervention is needed to ensure the cluster is setup for optimal performance. The result is a **12x performance boost at no added cost**.
 
-Previously, increasing IOPS demands meant scaling up the storage capacity on the cluster. For instance, a jump from 5,000 IOPS to 20,000 IOPS required increasing the size of the disk from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the cluster's compute tier has the capacity to push and sustain 20,000 IOPS. Moreover, Premium SSD v2 disks can support up to 80,000 IOPS - a 4x increase over Premium SSD.
+Previously, a jump from 5,000 IOPS to 20,000 IOPS required increasing the size of the disk from 1TB to 20TB, even in the absence of higher storage needs. With Premium SSD v2, 20,000 IOPS can be achieved on the same 1TB disk so long as the cluster's compute tier has the capacity to push and maintain 20,000 IOPS. Moreover, Premium SSD v2 disks can support up to 80,000 IOPS - a 4x increase over Premium SSD.
 
 ## Guidance
 
@@ -27,7 +27,7 @@ The **maximum performance** for your Azure DocumentDB cluster is now only depend
 
 ## IOPS and throughput caps
 
-With Premium SSD v2 disks, regardless of storage capacity, the cluster will be auto configured with the upper bound values tabulated below, **at no added cost**.
+With Premium SSD v2 disks, the cluster will be auto configured with the upper bound values tabulated below, **at no added cost**.
 
 | Compute Tier | Max IOPS | Max bandwidth (MBps) |
 |--------------|-------------- |--------------------|
@@ -287,7 +287,7 @@ Configure a cluster using **Premium SSD v2** (high performance) storage as part 
 
 ::: zone-end
 
-## Current limitations of high performance storage
+## Current limitations of high performance storage (Premium SSD v2 storage)
 
 - Customer-managed keys (CMK) aren't supported with Premium SSD v2 storage.
 
