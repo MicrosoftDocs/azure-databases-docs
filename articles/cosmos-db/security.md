@@ -36,7 +36,7 @@ This article provides guidance on how to best secure your Azure Cosmos DB for No
 
 - **Separate the Azure identities used for data and control plane access**: Use distinct Azure identities for control plane and data plane operations to reduce the risk of privilege escalation and ensure better access control. This separation enhances security by limiting the scope of each identity.
 
-- **Rotate access keys regularly if using key-based authentication**: If your account has not yet migrated to role-based access control, rotate your primary and secondary keys on a regular schedule. Use the secondary key during primary key rotation to avoid downtime. For key rotation steps, see [Rotate account keys](how-to-rotate-keys.md). For migration to keyless authentication, see [Connect using role-based access control](how-to-connect-role-based-access-control.md).
+- **Rotate access keys regularly if using key-based authentication**: If you still use key-based authentication, rotate your primary and secondary keys on a regular schedule. Use the secondary key during primary key rotation to avoid downtime. For key rotation steps, see [Rotate account keys](how-to-rotate-keys.md). To migrate to Microsoft Entra ID authentication, see [Connect using role-based access control](how-to-connect-role-based-access-control.md).
 
 ## Transport security
 
