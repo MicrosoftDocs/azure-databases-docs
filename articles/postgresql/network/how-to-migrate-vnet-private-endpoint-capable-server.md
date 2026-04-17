@@ -20,13 +20,6 @@ This article walks you through the steps to migrate your server, what to expect 
 
 Before you begin, verify that your server and environment meet the following requirements.
 
-- Server configuration:
-
-  - The migration currently supports servers that are non-High Availability (HA) and non-replica. If HA is enabled, you must disable it before migration. Support for HA-enabled server migration is planned for future updates.
-
-    > [!TIP]  
-    > You can re-enable HA after the process is complete.
-
 - Access requirements:
 
   - Azure API, SDK, or CLI supports this migration operation. Ensure you have access to one of these tools.
@@ -37,12 +30,12 @@ Review the following information about connectivity, downtime, and post-migratio
 
 - Public access settings:
 
-  - After migration, public access is enabled by default. The migration doesn't configure any firewall rules that permit inbound traffic unless you explicitly define them. If you don't want public access, you can disable it after migration.
+  - After migration, public access is enabled by default. The migration process doesn't configure any firewall rules that permit inbound traffic unless you explicitly define them. If you don't want public access, you can disable it after migration.
 
   > [!NOTE]  
   > A future update changes the default to disable public access after migration.
 
-- You need to adjust Terraform scripts after the migration to comply with the new setup. For more information, see the *Post-migration Setup* section.
+- If you use Terraform to deploy PostgreSQL, you need to adjust your scripts after the migration to comply with the new setup. For more information, see the [Post-migration Setup](#post-migration-setup) section.
 
 - The end-to-end migration process typically takes about 20 minutes. During this time, the server is in an **Updating** state.
 
@@ -91,7 +84,7 @@ For more information, see [Add private endpoint connections to Azure Database fo
 
 ### Update Terraform scripts
 
-After the VNet to PE-capable network migration, the server is no longer VNet-integrated. Update Terraform configurations accordingly:
+After the VNet to PE-capable network migration, the server is no longer VNet-integrated. If you have Terraform configurations, update them accordingly:
 
 - Remove `delegated_subnet_id` from the PostgreSQL server resource.
 - Ensure `public_network_access_enabled` remains `true` (this value is the post-migration default).
