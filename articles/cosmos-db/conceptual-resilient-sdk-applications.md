@@ -29,7 +29,7 @@ Gateway mode is always used to fetch metadata such as the account, container, an
 In summary, for SDKs in Gateway mode, you can expect HTTP traffic, while for SDKs in Direct mode, you can expect a combination of HTTP and TCP traffic under different circumstances, such as initialization, fetching metadata, or routing information.
 
 > [!NOTE]
-> The Go SDK (azcosmos) and Rust SDK currently support Gateway mode only. The error status codes and retry guidance in this article apply across all SDKs. For SDK-specific details, see the [Go SDK](sdk-go.md) documentation.
+> Direct mode is available only in the .NET and Java SDKs. All other Azure Cosmos DB SDKs use Gateway mode. The error status codes and retry guidance in this article apply across all SDKs. For more information, see [connectivity modes](sdk-connection-modes.md).
 
 ## Client instances and connections
 
