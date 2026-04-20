@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/01/2026
+ms.date: 04/20/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -17,7 +17,7 @@ ms.custom:
 | [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools. | 2.5.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand. | Without version <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL. | 1.3.1 | |
-| [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL. | 1.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [azure_storage](../../flexible-server/concepts-storage-extension.md) provides Azure Storage integration for PostgreSQL. | 1.9 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [bloom](https://www.postgresql.org/docs/current/bloom.html) provides an index access method based on Bloom filters. | 1.0 | |
 | [btree_gin](https://www.postgresql.org/docs/current/btree-gin.html) provides support for indexing common datatypes in GIN. | 1.3 | |
 | [btree_gist](https://www.postgresql.org/docs/current/btree-gist.html) provides support for indexing common datatypes in GiST. | 1.5 | |
@@ -65,7 +65,7 @@ ms.custom:
 | [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams. | 1.5 | |
 | [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info. | 1.2 | |
 | [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language. | 1.0 | |
-| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.0.0 | |
+| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.2.4 | |
 | [postgis](https://www.postgis.net/) geometry and geography spatial types and functions. | 3.5.2 | |
 | [postgis_raster](https://www.postgis.net) raster types and functions. | 3.5.2 | |
 | [postgis_sfcgal](https://www.postgis.net) sFCGAL functions. | 3.5.2 | |
