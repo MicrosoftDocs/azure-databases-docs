@@ -123,12 +123,15 @@ procedureSection:
         Go to your Azure Cosmos DB account and select **Replicate data globally** in the resource menu.
       - |
         Select **Manage regions** to open the **Manage regions** pane.
+
+          :::image type="content" source="./media/how-to-manage-database-account/manage-regions.png" alt-text="Screenshot of the Replicate data globally page with manage regions selected.":::
+
       - |
         To add a region, select a region from the **Region** dropdown. If you want to enable availability zone support for the region, select the **Availability zone** checkbox, then select **Add**. To learn more, see [Availability zone support for Azure Cosmos DB](/azure/reliability/reliability-cosmos-db-nosql#availability-zone-support).
       - |
         To remove a region, select the delete icon next to the region you want to remove.
 
-          :::image type="content" source="./media/how-to-manage-database-account/add-region.png" alt-text="Screenshot of the Replicate data globally page and the Manage regions pane.":::
+          :::image type="content" source="./media/how-to-manage-database-account/manage-regions-pane.png" alt-text="Screenshot of the Replicate data globally page and the Manage regions pane.":::
 
         In single-region write mode, you can't remove the write region. You must fail over to a different region before you can delete the current write region.
 
