@@ -1,5 +1,5 @@
 ---
-title: Dynamic Data Masking (DDM) (Preview)
+title: Dynamic Data Masking (DDM)
 description: Learn how to configure Dynamic Data Masking (DDM) in Azure Cosmos DB to protect sensitive data like personal data and protected health information with policy-based security features.
 author: skhera
 ms.author: skhera
@@ -11,14 +11,10 @@ appliesto:
   - ✅ NoSQL
 ---
 
-# Dynamic Data Masking in Azure Cosmos DB for NoSQL (preview)
+# Dynamic Data Masking in Azure Cosmos DB for NoSQL
 
 This article explains how to configure Dynamic Data Masking on your Azure Cosmos DB account. 
 
-> [!IMPORTANT]
-> Dynamic Data Masking is in public preview.
-> This feature is provided without a service level agreement.
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Overview
 
@@ -49,6 +45,8 @@ Email | Only the first letter of the username and the domain ending (such as .co
 ### Enable dynamic data masking
 
 Dynamic Data Masking can be configured for an account via the **Features** tab located under the **Settings** navigation pane.
+
+:::image type="content" source="media/dynamic-data-masking/features.png" lightbox="media/dynamic-data-masking/features.png" alt-text="Screenshot of a dynamic data masking feature enablement in the Azure portal.":::
 
 > [!NOTE]
 > Once Dynamic Data Masking is enabled on an account, it can't be turned off. Enabling this feature could require up to 15 minutes before it's ready in Azure Cosmos DB.
@@ -179,8 +177,7 @@ In the Azure portal, go to your Azure Cosmos DB account, select **Container**, t
     {
       "path": "/projects/[]/details/technologies"
     }
-  ],
-  "isPolicyEnabled": true
+  ]
 }
 ```
 
@@ -296,18 +293,19 @@ Applying masking rules requires extra processing to mask sensitive fields before
 - **Other Scenarios:**
 For queries that don't involve masked columns, Dynamic Data Masking has no effect on compute usage.
 
-## Limitations and restrictions
+## Limitations and considerations
 
-1. Dynamic data masking is limited to the NoSQL API in Azure Cosmos DB.
-1. Once data masking is enabled at the account level, it remains active and can't be turned off.
-1. Enabling masking by itself doesn’t add cost, unless a masking policy is applied to a container.
-1. In the MaskSubstring strategy, only positive start positions are allowed. Reverse indexing isn’t allowed.
-1. Exclude paths can be used only when all paths(/) are included in the policy.
-1. Masking values on specific array indexes isn’t supported.
-1. If either the ID or the Partition Key is masked, the document view in Data Explorer (portal) doesn't work.
-1. Change feed (both Latest and AllVersionsAndDeletes) isn’t available for low-privileged users.
-1. Fabric Mirroring, materialized views, and backups (periodic or continuous) operate on unmasked data.
-1. Complex queries could occasionally expose unmasked data or enable inference of sensitive values. Dynamic Data Masking is intended to minimize data exposure for unauthorized users, not to prevent direct database access, or exhaustive queries.
+1. Dynamic Data Masking is limited to the NoSQL API in Azure Cosmos DB.
+1. Once dynamic data masking is enabled at the account level, it remains active and cannot be turned off. Removing all paths from the masking policy prevents masking from being applied.
+1. Enabling dynamic data masking does not incur additional cost, unless a masking policy is applied to a container.
+1. In the MaskSubstring strategy, only positive start positions are supported. Reverse indexing is not supported.
+1. Excluded paths are supported only when all paths (/) are included in the masking policy.
+1. Masking values on specific array indexes is not supported.
+1. If the ID or the Partition Key is masked, the document view in Data Explorer (portal) is not available.
+1. Change feed (Latest and AllVersionsAndDeletes) is not available for users without unmask permissions.
+1. Materialized views and backups (periodic or continuous) operate on original unmasked data.
+1. Fabric mirroring and Analytical store are not supported by default for accounts with Dynamic Data Masking enabled. To enable these capabilities, contact Microsoft Support.
+1. Complex queries may expose unmasked data or allow inference of sensitive values. Dynamic Data Masking is designed to minimize data exposure for unauthorized users and is not a substitute for restricting direct database access.
 
 ## Related content
 
