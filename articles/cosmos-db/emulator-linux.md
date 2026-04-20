@@ -5,7 +5,7 @@ author: Sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 20/04/2026
+ms.date: 20/4/2026
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
 appliesto:
   - ✅ NoSQL
