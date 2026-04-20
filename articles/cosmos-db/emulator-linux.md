@@ -5,7 +5,7 @@ author: Sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 20/04/2026
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
 appliesto:
   - ✅ NoSQL
@@ -45,35 +45,35 @@ CONTAINER ID   IMAGE                                                            
 c1bb8cf53f8a   mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview  "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   <container-name>
 ```
 
-> [!NOTE]
-> The emulator is comprised of two components:
->
-> - **Data explorer** - interactively explore the data in the emulator. By default this runs on port `1234`
-> - **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port `8081`.
->
-> The emulator gateway endpoint is typically available on port `8081` at the address <http://localhost:8081>. To navigate to the data explorer, use the address <http://localhost:1234> in your web browser. It may take a few seconds for data explorer to be available. The gateway endpoint is typically available immediately.
+The emulator includes two components:
 
-> [!IMPORTANT]
-> The .NET and Java SDKs don't support HTTP mode in the emulator. Since this version of the emulator starts with HTTP by default, you will need to explicitly enable HTTPS when starting the container (see below). For the Java SDK, you will also need to [install certificates](#installing-certificates-for-java-sdk).
->
-> ```bash
-> docker run --detach --publish 8081:8081 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview --protocol https
-> ```
-> When using HTTPS with persisted data volumes, SSL certificates are automatically regenerated at startup. You do not need to manually manage certificate renewal when restarting the emulator with the same volume.
+- **Data Explorer** - Interactively explore the data in the emulator. By default, this component runs on port `1234`.
+- **Azure Cosmos DB emulator** - A local version of the Azure Cosmos DB database service. By default, this component runs on port `8081`.
 
-## Health probe
+The emulator gateway endpoint uses port `8081` at the address <http://localhost:8081>. To navigate to the Data Explorer, use the address <http://localhost:1234> in your web browser. The gateway endpoint is typically available immediately, but Data Explorer might take a few seconds to start.
 
-The emulator exposes a health probe endpoint on port `8080` that can be used to check container readiness. This is the recommended approach for determining when the emulator is fully initialized and ready to accept requests.
+### Health probe
+
+The emulator exposes a health probe endpoint on port `8080`. Use this endpoint to determine when the emulator is fully initialized and ready to accept requests.
 
 The following endpoints are available:
 
-- http://localhost:8080/alive — liveness probe
-- http://localhost:8080/ready — readiness probe
-- http://localhost:8080/status — detailed status
+- <http://localhost:8080/alive> — Liveness probe.
+- <http://localhost:8080/ready> — Readiness probe.
+- <http://localhost:8080/status> — Detailed status.
 
-> [!NOTE] 
-> A legacy log message ("System is now fully ready to accept requests") is still emitted for backward compatibility. However, using the health probe is the recommended approach for readiness checks.
+> [!NOTE]
+> The legacy log message `System is now fully ready to accept requests` is still emitted for backward compatibility but might be removed in a future version. Use the health probe for readiness checks instead.
 
+### HTTPS mode
+
+The .NET and Java SDKs don't support HTTP mode in the emulator. Since this version of the emulator starts with HTTP by default, you will need to explicitly enable HTTPS when starting the container (see below). For the Java SDK, you will also need to [install certificates](#installing-certificates-for-java-sdk).
+
+```bash
+docker run --detach --publish 8081:8081 --publish 8080:8080 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview --protocol https
+```
+
+When you use HTTPS with persisted data volumes, the emulator automatically regenerates SSL certificates at startup, so you don't need to manage certificate renewal.
 
 ## Docker commands
 
@@ -162,16 +162,15 @@ This emulator is in active development and preview. As a result, not all Azure C
 | **Permissions endpoint**                           | ⚠️ No-op               |
 | **Client Encryption Keys (CEK)**                   | ⚠️ No-op               |
 
-> [!IMPORTANT]
-> **No-op features**: These return appropriate HTTP status codes but do not perform any actual operations. Code that calls these endpoints will not break, but should not rely on functional behavior.
-> Index operations (custom index creation, collection replacement) are accepted but have no effect — queries are not optimized by custom indices. 
+> [!NOTE]
+> Features marked **No-op** accept requests and return valid HTTP status codes but don't execute the underlying operation. Your code won't break, but don't depend on these features for functional behavior. Custom index policies and collection updates are accepted for compatibility, but queries aren't optimized by custom indexes.
 
 ## Limitations
 
 In addition to features not yet supported or not planned, the following list includes current limitations of the emulator.
 
 - The .NET SDK for Azure Cosmos DB doesn't support bulk execution in the emulator.
-- For large query results that return HTTP 500 errors, increase the query buffer size using the `--query-buffer-size` flag or the `QUERY_BUFFER_SIZE_KB` environment variable. The default is `4096` KB (`4` MB) and can be increased up to `65536` KB (`64` MB).
+- If you get HTTP 500 errors on large query results, increase the query buffer size with the `--query-buffer-size` flag or the `QUERY_BUFFER_SIZE_KB` environment variable. The default is `4096` KB (`4` MB), and the maximum is `65536` KB (`64` MB).
 
 ## Installing certificates for Java SDK
 
@@ -222,8 +221,8 @@ The emulator exports the following metrics. These are available through any metr
 - Resource Utilization: CPU, memory usage and connection pool metrics
 - Error Rates: Tracking of errors by type and endpoint
 
-> ![NOTE]
-> The emulator supports conditional `TLS` for the OTLP exporter, enabling smoother integration with observability platforms that require secure connections.
+> [!NOTE]
+> The emulator supports conditional TLS for the OTLP exporter, so you can integrate with observability platforms that require secure connections.
 
 Detailed instructions with examples [are available in the GitHub repository](https://github.com/Azure/azure-cosmos-db-emulator-docker/blob/master/docs/opentelemetry.md).
 
