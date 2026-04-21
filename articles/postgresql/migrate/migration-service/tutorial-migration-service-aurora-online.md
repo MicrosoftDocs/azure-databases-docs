@@ -11,6 +11,9 @@ ms.topic: tutorial
 ms.custom:
 - devx-track-azurecli
 - sfi-image-nochange
+ms.collection:
+  - migration
+  - aws-to-azure
 ---
 
 # Migrate online, from an Amazon Aurora PostgreSQL server to Azure Database for PostgreSQL, with the migration service

@@ -689,11 +689,11 @@ Use Semantic Kernel to orchestrate your information retrieval from Azure Documen
 
 ###  Use as a vector database with LangChain
 
-Use LangChain to orchestrate your information retrieval from Azure DocumentDB and your LLM. For more information, see [LangChain integrations for Azure DocumentDB](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/).
+Use LangChain to orchestrate your information retrieval from Azure DocumentDB and your LLM. For more information, see [LangChain integrations for Azure DocumentDB](https://docs.langchain.com/oss/python/integrations/vectorstores/azure_cosmos_db_no_sql/).
 
 ### Use as a semantic cache with LangChain
 
-Use LangChain and Azure DocumentDB to orchestrate Semantic Caching, using previously recorded LLM responses that can save you LLM API costs and reduce latency for responses. For more information, see [LangChain integration with Azure DocumentDB](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/).
+Use LangChain and Azure DocumentDB to orchestrate Semantic Caching, using previously recorded LLM responses that can save you LLM API costs and reduce latency for responses. For more information, see [LangChain integration with Azure DocumentDB](https://docs.langchain.com/oss/python/integrations/vectorstores/azure_cosmos_db_no_sql/).
 
 ## Features and limitations
 
@@ -714,8 +714,8 @@ This guide shows how to create a vector index, add documents that have vector da
 - [.NET RAG pattern retail reference solution](https://github.com/Azure/Vector-Search-AI-Assistant-MongoDBvCore)
 - [C# RAG pattern - Integrate OpenAI Services with Cosmos](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/C%23/CosmosDB-MongoDBvCore)
 - [Python RAG pattern - Azure product chatbot](https://github.com/microsoft/AzureDataRetrievalAugmentedGenerationSamples/tree/main/Python/CosmosDB-MongoDB-vCore)
-- [Python notebook tutorial - Vector database integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db)
-- [Python notebook tutorial - LLM Caching integration through LangChain](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/)
+- [Python notebook tutorial - Vector database integration through LangChain](https://docs.langchain.com/oss/python/integrations/vectorstores/azure_cosmos_db_no_sql)
+- [Python notebook tutorial - LLM Caching integration through LangChain](https://docs.langchain.com/oss/python/integrations/vectorstores/azure_cosmos_db_no_sql/)
 - [Python - LlamaIndex integration](https://developers.llamaindex.ai/python/examples/vector_stores/azurecosmosdbmongodbvcoredemo/)
 - [Python - Semantic Kernel memory integration](https://github.com/microsoft/semantic-kernel/tree/main/python/semantic_kernel/connectors/memory_stores/azure_cosmosdb)
 

@@ -72,5 +72,5 @@ notify you five days before the next maintenance event.
 ## Next steps
 
 * Learn how to [change the maintenance schedule](howto-maintenance.md)
-* Learn how to [get notifications about upcoming maintenance](/azure/service-health/service-notifications) using Azure Service Health
+* Learn how to [get notifications about upcoming maintenance](/azure/service-health/service-health-planned-maintenance) using Azure Service Health
 * Learn how to [set up alerts about upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)
