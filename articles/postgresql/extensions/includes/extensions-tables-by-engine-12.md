@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/01/2026
+ms.date: 04/20/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -65,7 +65,7 @@ ms.custom:
 | [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams. | 1.4 | |
 | [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info. | 1.2 | |
 | [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language. | 1.0 | |
-| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.0.0 | |
+| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.2.4 | |
 | [postgis](https://www.postgis.net/) geometry and geography spatial types and functions. | 3.2.3 | |
 | [postgis_raster](https://www.postgis.net) raster types and functions. | 3.2.3 | |
 | [postgis_sfcgal](https://www.postgis.net) sFCGAL functions. | 3.2.3 | |
