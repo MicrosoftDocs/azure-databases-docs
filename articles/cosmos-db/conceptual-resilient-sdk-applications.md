@@ -28,6 +28,9 @@ Gateway mode is always used to fetch metadata such as the account, container, an
 
 In summary, for SDKs in Gateway mode, you can expect HTTP traffic, while for SDKs in Direct mode, you can expect a combination of HTTP and TCP traffic under different circumstances, such as initialization, fetching metadata, or routing information.
 
+> [!NOTE]
+> Direct mode is available only in the .NET and Java SDKs. All other Azure Cosmos DB SDKs use Gateway mode. The error status codes and retry guidance in this article apply across all SDKs. For more information, see [connectivity modes](sdk-connection-modes.md).
+
 ## Client instances and connections
 
 Regardless of the connectivity mode, it's critical to maintain a singleton instance of the SDK client per account per application. Connections, both HTTP and TCP, are scoped to the client instance. Most compute environments have limitations in terms of the number of connections that can be open at the same time. When these limits are reached, connectivity is affected.

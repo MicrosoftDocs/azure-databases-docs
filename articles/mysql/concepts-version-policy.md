@@ -4,7 +4,7 @@ description: Describes the policy around MySQL major and minor versions in Azure
 author: moabuham 
 ms.author: moabuham 
 ms.reviewer: maghan
-ms.date: 03/27/2026
+ms.date: 04/16/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -48,7 +48,7 @@ The retirement details for MySQL major versions are listed in the following tabl
 
 To provide customers with sufficient time to decide whether to upgrade to a supported version, Extended Support is planned to begin in spring 2026.
 
-After the standard support end date, Azure Database for MySQL servers running on unsupported MySQL versions are automatically enrolled in Extended Support and are automatically charged for this service after a one-month grace period. Extended Support provides critical security updates for up to three years after the end of standard Support, allowing customers more time to plan and execute major version upgrades. To avoid Extended Support charges, you must upgrade your Azure Database for MySQL server to a MySQL version that is still within standard Support.
+After the standard support end date, Azure Database for MySQL servers running on unsupported MySQL versions are automatically enrolled in Extended Support and are automatically charged for this service after the grace period. Extended Support provides critical security updates for up to three years after the end of standard Support, allowing customers more time to plan and execute major version upgrades. To avoid Extended Support charges, you must upgrade your Azure Database for MySQL server to a MySQL version that is still within standard Support.
 
 During the Extended Support period, Microsoft prioritizes the service's availability, reliability, and security. Essential modifications are implemented to ensure the service remains accessible and protected, but new features and minor version upgrades might not be guaranteed.
 
