@@ -1,5 +1,5 @@
 ---
-title: Understanding Request Units Consumption in Azure Cosmos DB
+title: Understanding Request Units Consumption
 description: This article explains how request units are consumed in Azure Cosmos DB with some examples.
 author: richagaur
 ms.author: richagaur
@@ -14,7 +14,7 @@ appliesto:
   - ✅ Table
 ---
 
-# Understand Request Units Consumption in Azure Cosmos DB
+# Understand request units consumption in Azure Cosmos DB
 
 Azure Cosmos DB uses Request Units (RUs) as a normalized measure of the resources required to execute database operations. Instead of managing provisioning of resources such as CPU, memory, and I/O independently, RUs provide a simple and consistent way to understand how different operations consume resources. Each operation consumes Request Units reflecting the work performed by the service to execute the request with a focus on trying to ensure predictability.
 This article explains what influences RU consumption, how common operations consume RUs, and practical ways to design efficient workloads.
@@ -39,7 +39,8 @@ Request Units consumption for an operation scales with document size due to the 
 |1,024 KB |145.90 | 625.00  |
 |2,048 KB |291.80 | 1250.00 |
 
-*Read RUs mentioned are applicable to session and eventual consistency. 
+> [!NOTE]
+> Read RUs mentioned are applicable to session and eventual consistency. 
 
 ### Indexing
 Indexes improve query performance but increase the RUs consumed by write operations. Indexing only required properties reduces RU consumption for writes and updates while balancing query performance. For more information on how to index only required properties, see [indexing policy](index-policy.md).
@@ -77,8 +78,8 @@ Although specific RU values can change over time, the principles remain consiste
 
 Request Units are consumed based on the work required to perform an operation. This section explains how RUs are consumed across common document operations, using illustrative examples to highlight the underlying principles.
 
-[!Important]
-The RU values described in this document are illustrative and reflect how Azure Cosmos DB processes operations at a given point in time.
+> [!IMPORTANT]
+> The RU values described in this document are illustrative and reflect how Azure Cosmos DB processes operations at a given point in time.
 
 ### Write Operations
 Different types of write operations follow similar principles. RU consumption primarily depends on **document size** and **indexed properties**.
