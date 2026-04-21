@@ -65,6 +65,6 @@ With Azure Cosmos DB, you can add or remove the regions associated with your acc
 * [Global distribution - under the hood](global-distribution.md)
 * [How to configure multi-region writes in your applications](how-to-multi-master.md)
 * [Configure multiple write-regions](how-to-manage-database-account.yml#configure-multiple-write-regions)
-* [Add or remove regions from your Azure Cosmos DB account](how-to-manage-database-account.yml#add-remove-regions-from-your-database-account)
+* [Add or remove regions from your Azure Cosmos DB account](how-to-manage-database-account.yml#add-or-remove-regions-from-your-database-account)
 * [Create a custom conflict resolution policy for API for NoSQL accounts](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 * [Programmable consistency models in Azure Cosmos DB](consistency-levels.md)
