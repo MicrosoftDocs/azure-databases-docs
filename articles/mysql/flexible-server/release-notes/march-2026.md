@@ -23,7 +23,10 @@ Some servers with CMW enabled might be assigned a maintenance date outside of th
 
 ## Engine version changes
 
-This version doesn't include any engine version changes.
+This version includes the following minor version changes:
+- 8.0.42 -> 8.0.44
+- 8.4.5 -> 8.4.7
+- 9.3.0 -> 9.5.0
 
 ## Features
 
@@ -33,6 +36,7 @@ This version doesn't introduce any new features.
 
 - Returns clear, actionable customer‑facing errors for invalid key scenarios, improving troubleshooting and support experience.
 - Enables self‑service configuration of binlog_row_metadata, unblocking CDC/Data Out integrations and reducing support dependency.
+- As part of the March 2026 update, the daily automated backup time for your server is expected to change once. After this update, backups will continue to run once, every day as usual. Daily automatic backup continues unchanged and only the scheduled time of the daily backup shifts once. No user action is required.
 
 ## Known issues fixes
 

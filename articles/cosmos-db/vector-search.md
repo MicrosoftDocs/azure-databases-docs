@@ -80,7 +80,7 @@ To enable this feature for Azure Cosmos DB for NoSQL, follow these steps:
 The registration request is autoapproved, but it might take 15 minutes to take effect.
 
 > [!NOTE]
-> If you want to use vector search on collections with [heirarchical partiton keys](hierarchical-partition-keys.md), please reach out to team at: cosmossearch@microsoft.com to configure your account to optimally leverage the partitioning scheme during search. 
+> If you want to use vector search on collections with [hierarchical partition keys](hierarchical-partition-keys.md), please reach out to team at: cosmossearch@microsoft.com to configure your account to optimally leverage the partitioning scheme during search. 
 
 ## Container vector policies
 
@@ -143,7 +143,7 @@ The container vector policy can be described as JSON objects. Here are two examp
 Vector indexes increase the efficiency when performing vector searches using the `VectorDistance` system function. Vectors searches have lower latency, higher throughput, and less RU consumption when using a vector index. You can specify the following types of vector index policies:
 
 | Type | Description | Max dimensions |
-| --- | --- |
+| --- | --- | --- |
 | **`flat`** | Stores vectors on the same index as other indexed properties. | 505 |
 | **`quantizedFlat`** | Quantizes (compresses) vectors before storing on the index. This can improve latency and throughput at the cost of a small amount of accuracy. | 4096 |
 | **`diskANN`** | Creates an index based on DiskANN for fast and efficient approximate search. | 4096 |

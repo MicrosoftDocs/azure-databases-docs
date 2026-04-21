@@ -141,7 +141,7 @@ Alternatively, use the connector’s REST API:
 
 ```bash
 # Curl to Kafka connect service
-curl -X DELETE http://localhost:8083/connectors/cosmosdb-source-connector
+curl -X DELETE http://localhost:8083/connectors/cosmosdb-source-connector-v2
 ```
 
 To delete the created Azure Cosmos DB service and its resource group using Azure CLI, refer to these [steps](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos-kafka-connect/docs/CosmosDB_Setup.md#cleanup).

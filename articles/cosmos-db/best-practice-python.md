@@ -10,6 +10,7 @@ ms.topic: best-practice
 ms.date: 04/08/2024
 appliesto:
   - ✅ NoSQL
+ai-usage: ai-assisted
 ---
 
 # Best practices for Python SDK in Azure Cosmos DB for NoSQL
@@ -58,6 +59,49 @@ print(client.client_connection._preferred_locations)
 A transient error is an error that has an underlying cause that soon resolves itself. Applications that connect to your database should be built to expect these transient errors. To handle them, implement retry logic in your code instead of surfacing them to users as application errors. The SDK has built-in logic to handle these transient failures on retryable requests like read or query operations. The SDK can't retry on writes for transient failures as writes aren't idempotent. The SDK does allow users to configure retry logic for throttles. For details on which errors to retry on, see [resilient application guidance](conceptual-resilient-sdk-applications.md#should-my-application-retry-on-errors).
 
 Use SDK logging to [capture diagnostic information](troubleshoot-python-sdk.md#logging-and-capturing-the-diagnostics) and troubleshoot latency issues.
+
+## Async client
+
+### Async client requirements
+
+| Requirement | Default or constraint | When to use |
+| --- | --- | --- |
+| Import path | `azure.cosmos.aio.CosmosClient` | Use in async frameworks and event loops |
+| `aiohttp` dependency | Not installed by default | Install explicitly: `pip install aiohttp` |
+| Client lifecycle | Must be closed explicitly | Use `async with` or call `await client.close()` |
+
+```python
+from azure.cosmos.aio import CosmosClient
+
+# Preferred: use async with to manage lifecycle automatically
+async with CosmosClient(url, credential) as client:
+    database = client.get_database_client("mydb")
+    container = database.get_container_client("mycontainer")
+    item = await container.read_item(item="id1", partition_key="pk1")
+
+# Alternative: manage lifecycle manually
+client = CosmosClient(url, credential)
+try:
+    database = client.get_database_client("mydb")
+    container = database.get_container_client("mycontainer")
+    item = await container.read_item(item="id1", partition_key="pk1")
+finally:
+    await client.close()
+```
+
+### When to use async vs sync
+
+| Scenario | Recommended client |
+| --- | --- |
+| Web frameworks (FastAPI, Quart) | `azure.cosmos.aio.CosmosClient` |
+| Serverless (Azure Functions async) | `azure.cosmos.aio.CosmosClient` |
+| Scripts and batch jobs | `azure.cosmos.CosmosClient` |
+| Simple CLI tools | `azure.cosmos.CosmosClient` |
+
+> [!WARNING]
+> Don't use the sync `CosmosClient` inside an async event loop. The sync client makes blocking I/O calls that block the event loop, degrading performance and potentially causing deadlocks in your application.
+
+For more information, see the [Python SDK README async section](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/cosmos/azure-cosmos/README.md#using-the-asynchronous-client).
 
 ## Data design
 

@@ -276,7 +276,7 @@ Container container = database.GetContainer("container");
 
 SalesOrder item = new (
     "SO05", 
-    "CO18009186470"
+    "CO18009186470",
     // Expire sales order in 30 days using "ttl" property
     ttl:  60 * 60 * 24 * 30
 );
