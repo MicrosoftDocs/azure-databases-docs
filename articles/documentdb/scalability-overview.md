@@ -4,7 +4,7 @@ description: Cost and performance advantages of scalability for Azure DocumentDB
 author: abinav2307
 ms.author: abramees
 ms.topic: concept-article
-ms.date: 06/09/2025
+ms.date: 04/17/2026
 ---
 
 # Scalability in Azure DocumentDB
@@ -31,9 +31,9 @@ Eventually, the application grows to a point where scaling vertically isn't suff
 - Read operations first consult the cache in the compute layer and fall back to the disk when data couldn't be retrieved from the cache. For workloads with a higher rate of read operations per second, scaling up the cluster tier to get more CPU and memory resources leads to higher throughput.
 - In addition to read throughput, workloads with a high volume of data per read operation also benefit from scaling the compute resources of the cluster. For instance, cluster tiers with more memory facilitate larger payload sizes per document and a larger number of smaller documents per response.
 
-[Disk IOPS](./compute-storage.md#storage-in-azure-documentdb) influences write operations in Azure DocumentDB more than the CPU and memory capacities of the compute resources.
-- Write operations always persist data to disk (in addition to persisting data in memory to optimize reads). Larger disks with more IOPS provide higher write throughput, particularly when running at scale.
-- The service supports upto 32 TB disks per shard, with more IOPS per shard to benefit write heavy workloads, particularly when running at scale.
+[Disk IOPS](./compute-storage.md#compute-in-azure-documentdb) influences write operations in Azure DocumentDB more than the CPU and memory capacities of the compute resources.
+- Write operations always persist data to disk (in addition to persisting data in memory to optimize reads).
+- Azure DocumentDB supports upto 80,000 IOPS and 1.2 GB/s per shard with Premium SSD v2 disks to benefit write heavy workloads, particularly when running at scale.
 
 
 ## Storage heavy workloads and large disks

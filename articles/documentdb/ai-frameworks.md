@@ -15,7 +15,7 @@ Azure DocumentDB seamlessly integrates with leading large language model (LLM) o
 
 | Integration Tool | Description | Language | Type of Integration |
 | --- | --- | --- | --- |
-| **[LangChain](https://www.langchain.com/)** | A framework for building context-aware and reasoning-based applications powered by large language models (LLM). | [Python](https://python.langchain.com/docs/integrations/vectorstores/azure_cosmos_db/) | Vector Store, Chat History, [Semantic Cache](https://python.langchain.com/docs/integrations/llm_caching/#azure-cosmos-db-semantic-cache) |
+| **[LangChain](https://www.langchain.com/)** | A framework for building context-aware and reasoning-based applications powered by large language models (LLM). | [Python](https://docs.langchain.com/oss/python/integrations/vectorstores/azure_cosmos_db_no_sql) | Vector Store, Chat History, [Semantic Cache](https://python.langchain.com/docs/integrations/llm_caching/#azure-cosmos-db-semantic-cache) |
 | | | [JavaScript](https://js.langchain.com/docs/integrations/vectorstores/azure_cosmosdb_mongodb/) | Vector Store, Semantic Cache, [Chat History](https://js.langchain.com/docs/integrations/platforms/microsoft#azure-cosmos-db-mongodb-vcore-chat-message-history) |
 | | | [Java](https://docs.langchain4j.dev/integrations/embedding-stores/azure-cosmos-mongo-vcore/) | Chat History |
 | **[LangChain-azure](https://github.com/langchain-ai/langchain-azure)** | A framework for building context-aware and reasoning-based applications powered by large language models (LLM) on Azure. | [Python](https://github.com/langchain-ai/langchain-azure/blob/main/libs/azure-ai/langchain_azure_ai/vectorstores/azure_cosmos_db_mongo_vcore.py) | Vector Store, Semantic Cache |

@@ -30,7 +30,7 @@ When you choose each level of your hierarchical partition key, it's important to
 
   - **Have a high cardinality**. The first, second, and third (if applicable) keys of the hierarchical partition should all have a wide range of possible values.
 
-    - Having low cardinality at the first level of the hierarchical partition key limits all of your write operations at the time of ingestion to just one physical partition until it reaches 50 GB and splits into two physical partitions. For example, suppose your first-level key is on `TenantId` and you only have five unique tenants. Each of these tenants' operations are scoped to just one physical partition, limiting your throughput consumption to just what is on that one physical partition. This is because hierarchical partitions optimize for all documents with the same first-level key to be collocated on the same physical partition to avoid full-fanout queries.
+    - Having low cardinality at the first level of the hierarchical partition key limits all of your write operations at the time of ingestion to just one physical partition until it reaches 50 GB and splits into two physical partitions. For example, suppose your first-level key is on `TenantId` and you only have five unique tenants. Each of these tenants' operations is scoped to just one physical partition, limiting your throughput consumption to just what is on that one physical partition. This is because hierarchical partitions optimize for all documents with the same first-level key to be collocated on the same physical partition to avoid full-fanout queries.
     - While this might be okay for workloads where we do a one-time ingest of all our tenants' data and the following operations are primarily read-heavy afterwards, this can be unideal for workloads where your business requirements involve ingestion of data within a specific time. For example, if you have strict business requirements to avoid latencies, the maximum throughput your workload can theoretically achieve to ingest data is number of physical partitions * 10k. If your top-level key has low cardinality, your number of physical partitions is likely 1, unless there's sufficient data for the level-1 key for it to be spread across multiple partitions after splits, which can take between 4-6 hours to complete.
 
   - **Spread RU consumption and data storage evenly across all logical partitions**. This spread ensures even RU consumption and storage distribution across your physical partitions. 
@@ -79,10 +79,10 @@ Find the latest preview version of each supported SDK:
 
 | SDK | Supported versions | Package manager link |
 | --- | --- | --- |
-| .NET SDK v3 | >= 3.33.0 | <https://www.nuget.org/packages/Microsoft.Azure.Cosmos/3.33.0/> |
-| Java SDK v4 | >= 4.42.0 | <https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md#4420-2023-03-17/> |
+| .NET SDK v3 | >= 3.33.0 | <https://www.nuget.org/packages/Microsoft.Azure.Cosmos> |
+| Java SDK v4 | >= 4.42.0 | <https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos> |
 | JavaScript SDK v4 | 4.0.0 | <https://www.npmjs.com/package/@azure/cosmos/> |
-| Python SDK | >= 4.6.0 | <https://pypi.org/project/azure-cosmos/4.6.0/> |
+| Python SDK | >= 4.6.0 | <https://pypi.org/project/azure-cosmos> |
 
 ## Create a container by using hierarchical partition keys
 

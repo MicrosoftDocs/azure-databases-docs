@@ -22,9 +22,11 @@ The main benefit of using the change feed processor is its fault-tolerant design
 
 ## Supported SDKs
 
-|  .NET V3  |   Java    |  Node.JS  |  Python   |
+|  .NET V3  |   Java    |  Node.js  |  Python   |
 | --------- | --------- | --------- | --------- |
 |     ✓     |    ✓     |     ✕     |    ✕     |
+
+For Python and Node.js, use the [change feed pull model](change-feed-pull-model.md), which provides direct access to the change feed with manual checkpoint management, because the change feed processor library is only available for .NET and Java.
 
 ## Components of the change feed processor
 

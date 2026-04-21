@@ -82,7 +82,7 @@ For best results, set up a series of alerts at **75%**, **85%**, and **95%** usa
 
 To free up disk space, consider the following actions:
 - **Review your data retention policy** and move older data to cold storage if possible.
-- **Increase the node capacity** if necessary. Each node can support up to [**32 TiB** of storage](./compute-storage.md#storage-in-azure-documentdb).
+- **Increase the node capacity** if necessary. Each node can support up to **32 TiB** of storage.
 
 ### CPU usage
 

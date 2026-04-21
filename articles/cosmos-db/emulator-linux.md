@@ -5,7 +5,7 @@ author: Sajeetharan
 ms.author: sasinnat
 ms.service: azure-cosmos-db
 ms.topic: how-to
-ms.date: 11/07/2024
+ms.date: 4/21/2026
 # CustomerIntent: As a developer, I want to use the Linux-based Azure Cosmos DB emulator so that I can develop my application against a database during development.
 appliesto:
   - ✅ NoSQL
@@ -35,7 +35,7 @@ docker pull mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 To run the container, use `docker run`. Afterwards, use `docker ps` to validate that the container is running.
 
 ```bash
-docker run --detach --publish 8081:8081 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
+docker run --detach --publish 8081:8081 --publish 8080:8080 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview
 
 docker ps
 ```
@@ -45,112 +45,136 @@ CONTAINER ID   IMAGE                                                            
 c1bb8cf53f8a   mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview  "/bin/bash -c /home/…"   5 seconds ago   Up 5 seconds   0.0.0.0:1234->1234/tcp, :::1234->1234/tcp, 0.0.0.0:8081->8081/tcp, :::8081->8081/tcp   <container-name>
 ```
 
-> [!NOTE]
-> The emulator is comprised of two components:
->
-> - **Data explorer** - interactively explore the data in the emulator. By default this runs on port `1234`
-> - **Azure Cosmos DB emulator** - a local version of the Azure Cosmos DB database service. By default, this runs on port `8081`.
->
-> The emulator gateway endpoint is typically available on port `8081` at the address <http://localhost:8081>. To navigate to the data explorer, use the address <http://localhost:1234> in your web browser. It may take a few seconds for data explorer to be available. The gateway endpoint is typically available immediately.
+The emulator includes two components:
 
-> [!IMPORTANT]
-> The .NET and Java SDKs don't support HTTP mode in the emulator. Since this version of the emulator starts with HTTP by default, you will need to explicitly enable HTTPS when starting the container (see below). For the Java SDK, you will also need to [install certificates](#installing-certificates-for-java-sdk).
->
-> ```bash
-> docker run --detach --publish 8081:8081 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview --protocol https
-> ```
+- **Data Explorer** - Interactively explore the data in the emulator. By default, this component runs on port `1234`.
+- **Azure Cosmos DB emulator** - A local version of the Azure Cosmos DB database service. By default, this component runs on port `8081`.
+
+The emulator gateway endpoint uses port `8081` at the address <http://localhost:8081>. To navigate to the Data Explorer, use the address <http://localhost:1234> in your web browser. The gateway endpoint is typically available immediately, but Data Explorer might take a few seconds to start.
+
+### Health probe
+
+The emulator exposes a health probe endpoint on port `8080`. Use this endpoint to determine when the emulator is fully initialized and ready to accept requests.
+
+The following endpoints are available:
+
+- <http://localhost:8080/alive> — Liveness probe.
+- <http://localhost:8080/ready> — Readiness probe.
+- <http://localhost:8080/status> — Detailed status.
+
+> [!NOTE]
+> The legacy log message `System is now fully ready to accept requests` is still emitted for backward compatibility but might be removed in a future version. Use the health probe for readiness checks instead.
+
+### HTTPS mode
+
+The .NET and Java SDKs don't support HTTP mode in the emulator. Since this version of the emulator starts with HTTP by default, you will need to explicitly enable HTTPS when starting the container (see below). For the Java SDK, you will also need to [install certificates](#installing-certificates-for-java-sdk).
+
+```bash
+docker run --detach --publish 8081:8081 --publish 8080:8080 --publish 1234:1234 mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:vnext-preview --protocol https
+```
+
+When you use HTTPS with persisted data volumes, the emulator automatically regenerates SSL certificates at startup, so you don't need to manage certificate renewal.
 
 ## Docker commands
 
 The following table summarizes the available Docker commands for configuring the emulator. This table details the corresponding arguments, environment variables, allowed values, default settings, and descriptions of each command.
 
-| Requirement | Arg | Env | Allowed values | Default | Description |
-|---|---|---|---|---|---|
-| Print the settings to stdout from the container | `--help`, `-h` | N/A | N/A | N/A | Display information on available configuration |
-| Set the port of the Cosmos endpoint | `--port [INT]` | PORT | INT | 8081 | The port of the Cosmos endpoint on the container. You still need to publish this port (for example, `-p 8081:8081`). |
-| Specify the protocol used by the Cosmos endpoint | `--protocol` | PROTOCOL | `https`, `http`, `https-insecure` | `http` | The protocol of the Cosmos endpoint on the container. |
-| Enable the data explorer | `--enable-explorer` | ENABLE_EXPLORER | `true`, `false` | `true` | Enable running the Cosmos Data Explorer on the same container. |
-| Set the port used by the data explorer | `--explorer-port` | EXPLORER_PORT | INT | 1234 | The port of the Cosmos Data Explorer on the container. You still need to publish this port (for example, `-p 1234:1234`). |
-| User should be able to specify the protocol used by the explorer, otherwise default to what the Cosmos endpoint is using | `--explorer-protocol` | EXPLORER_PROTOCOL | `https`, `http`, `https-insecure` | `<the value of --protocol>` | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint. |
-| Customize the gateway public endpoint | `--gateway-endpoint` | GATEWAY_PUBLIC_ENDPOINT | N/A | `localhost` | The public gateway endpoint. Defaults to `localhost`. |
-| Specify the key via file | `--key-file [PATH]` | KEY_FILE | PATH | `<default secret>` | Override default key with the key specified in the file. You need to mount this file into the container (for example, if KEY_FILE=/mykey, you'd add an option like the following to your docker run: `--mount type=bind,source=./myKey,target=/myKey`) |
-| Set the data path | `--data-path [PATH]` | DATA_PATH | PATH | `/data` | Specify a directory for data. Frequently used with `docker run --mount` option (for example, if DATA_PATH=/usr/cosmos/data, you'd add an option like the following to your docker run: `--mount type=bind,source=./.local/data,target=/usr/cosmos/data`) |
-| Specify the cert path to be used for https | `--cert-path [PATH]` | CERT_PATH | PATH | `<default cert>` | Specify a path to a certificate for securing traffic. You need to mount this file into the container (for example, if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: `--mount type=bind,source=./mycert.pfx,target=/mycert.pfx`) |
-| Specify the cert secret to be used for https | N/A | CERT_SECRET | string | `<default secret>` | The secret for the certificate specified on CERT_PATH. |
-| Set the log level | `--log-level [LEVEL]` | LOG_LEVEL | `quiet`, `error`, `warn`, `info`, `debug`, `trace` | `info` | The verbosity of logs that emitted by the emulator and data explorer. |
-| Enable OpenTelemetry OTLP exporter | `--enable-otlp` | ENABLE_OTLP_EXPORTER | `true`, `false` | `false` | Enable OpenTelemetry integration. |
-| Enable console exporter | `--enable-console` | ENABLE_CONSOLE_EXPORTER | `true`, `false` | `false` | Enable console output of telemetry data (useful for debugging). |
-| Enable diagnostic info being sent to Microsoft | `--enable-telemetry` | ENABLE_TELEMETRY | `true`, `false` | `true` | Enable sending usage data to Microsoft to help us improve the emulator. |
+| Requirement                                      | Arg                   | Env                     | Allowed values                                     | Default                        | Description                                                                                                                                                                                                                                                         |
+| ------------------------------------------------ | --------------------- | ----------------------- | -------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Print the settings to stdout from the container  | `--help`, `-h`        | N/A                     | N/A                                                | N/A                            | Display information on available configuration                                                                                                                                                                                                                      |
+| Set the port of the Cosmos endpoint              | `--port [INT]`        | PORT                    | INT                                                | 8081                           | The port of the Cosmos endpoint on the container. You still need to publish this port (for example, `-p 8081:8081`).                                                                                                                                                |
+| Specify the protocol used by the Cosmos endpoint | `--protocol`          | PROTOCOL                | `https`, `http`, `https-insecure`                  | `http`                         | The protocol of the Cosmos endpoint on the container.                                                                                                                                                                                                               |
+| Enable the data explorer                         | `--enable-explorer`   | ENABLE_EXPLORER         | `true`, `false`                                    | `true`                         | Enable running the Cosmos Data Explorer on the same container.                                                                                                                                                                                                      |
+| Set the port used by the data explorer           | `--explorer-port`     | EXPLORER_PORT           | INT                                                | 1234                           | The port of the Cosmos Data Explorer on the container. You still need to publish this port (for example, `-p 1234:1234`).                                                                                                                                           |
+| Specify the protocol used by the data explorer   | `--explorer-protocol` | EXPLORER_PROTOCOL       | `https`, `http`, `https-insecure`                  | `<the value of --protocol>`    | The protocol of the Cosmos Data Explorer on the container. Defaults to the protocol setting on the Cosmos endpoint.                                                                                                                                                 |
+| Customize the gateway public endpoint            | `--gateway-endpoint`  | GATEWAY_PUBLIC_ENDPOINT | N/A                                                | `localhost`                    | The public gateway endpoint. Defaults to `localhost`.                                                                                                                                                                                                               |
+| Specify the key via file                         | `--key-file [PATH]`   | KEY_FILE                | PATH                                               | `<default secret>`             | Override default key with the key specified in the file. You need to mount this file into the container (for example, if KEY_FILE=/mykey, you'd add an option like the following to your docker run: `--mount type=bind,source=./myKey,target=/myKey`)              |
+| Set the data path                                | `--data-path [PATH]`  | DATA_PATH               | PATH                                               | `/data`                        | Specify a directory for data. Frequently used with `docker run --mount` option (for example, if DATA_PATH=/usr/cosmos/data, you'd add an option like the following to your docker run: `--mount type=bind,source=./.local/data,target=/usr/cosmos/data`)            |
+| Specify the cert path to be used for https       | `--cert-path [PATH]`  | CERT_PATH               | PATH                                               | `<default cert>`               | Specify a path to a certificate for securing traffic. You need to mount this file into the container (for example, if CERT_PATH=/mycert.pfx, you'd add an option like the following to your docker run: `--mount type=bind,source=./mycert.pfx,target=/mycert.pfx`) |
+| Specify the cert secret to be used for https     | N/A                   | CERT_SECRET             | string                                             | `<default secret>`             | The secret for the certificate specified on CERT_PATH.                                                                                                                                                                                                              |
+| Set the log level                                | `--log-level [LEVEL]` | LOG_LEVEL               | `quiet`, `error`, `warn`, `info`, `debug`, `trace` | `info`                         | The verbosity of logs that are emitted by the emulator and data explorer.                                                                                                                                                                                           |
+| Enable OpenTelemetry OTLP exporter               | `--enable-otlp`       | ENABLE_OTLP_EXPORTER    | `true`, `false`                                    | `false`                        | Enable OpenTelemetry integration.                                                                                                                                                                                                                                   |
+| Enable console exporter                          | `--enable-console`    | ENABLE_CONSOLE_EXPORTER | `true`, `false`                                    | `false`                        | Enable console output of telemetry data (useful for debugging).                                                                                                                                                                                                     |
+| Enable verbose mode                              | `--verbose`           | VERBOSE                 | `true`, `false`                                    | `false`                        | Enable verbose mode to print PostgreSQL logs (pglog) to console. Useful for debugging.                                                                                                                                                                              |
+| Set query buffer size                            | `--query-buffer-size` | QUERY_BUFFER_SIZE_KB    | INT                                                | 4096 (4 MB), max 65536 (64 MB) | The maximum size in KB for query result buffers. Increase this if you encounter HTTP 500 errors on large queries.                                                                                                                                                   |
+| Enable diagnostic info being sent to Microsoft   | `--enable-telemetry`  | ENABLE_TELEMETRY        | `true`, `false`                                    | `true`                         | Enable sending usage data to Microsoft to help us improve the emulator.                                                                                                                                                                                             |
 
 
 ## Feature support
 
 This emulator is in active development and preview. As a result, not all Azure Cosmos DB features are supported. Some features will also not be supported in the future. This table includes the state of various features and their level of support.
 
-| Feature | Support |
-|---|---|
-| **Batch API** | ✅ Supported |
-| **Bulk API** | ✅ Supported |
-| **Change Feed** | ✅ Supported |
-| **Create and read document with utf data** | ✅ Supported |
-| **Create collection** | ✅ Supported |
-| **Create collection twice conflict** | ✅ Supported |
-| **Create collection with custom index policy** | ⚠️ Not yet implemented |
-| **Create collection with ttl expiration** | ✅ Supported  |
-| **Create database** | ✅ Supported |
-| **Create database twice conflict** | ✅ Supported |
-| **Create document** | ✅ Supported |
-| **Create partitioned collection** | ✅ Supported |
-| **Delete collection** | ✅ Supported |
-| **Delete database** | ✅ Supported |
-| **Delete document** | ✅ Supported |
-| **Get and change collection performance** | ⚠️ Not yet implemented |
-| **Insert large document** | ✅ Supported |
-| **Patch document** | ✅ Supported |
-| **Query partitioned collection in parallel** | ⚠️ Not yet implemented |
-| **Query with aggregates** | ✅ Supported |
-| **Query with and filter** | ✅ Supported |
-| **Query with and filter and projection** | ✅ Supported |
-| **Query with equality** | ✅ Supported |
-| **Query with equals on id** | ✅ Supported |
-| **Query with joins** | ✅ Supported |
-| **Query with order by** | ✅ Supported |
-| **Query with order by for partitioned collection** | ✅ Supported |
-| **Query with order by numbers** | ✅ Supported |
-| **Query with order by strings** | ✅ Supported |
-| **Query with paging** | ✅ Supported |
-| **Query with range operators date times** | ✅ Supported |
-| **Query with range operators on numbers** | ✅ Supported |
-| **Query with range operators on strings** | ✅ Supported |
-| **Query with single join** | ✅ Supported |
-| **Query with string math and array operators** | ✅ Supported |
-| **Query with subdocuments** | ✅ Supported |
-| **Query with two joins** | ✅ Supported |
-| **Query with two joins and filter** | ✅ Supported |
-| **Read collection** | ✅ Supported |
-| **Read collection feed** | ⚠️ Not yet implemented |
-| **Read database** | ✅ Supported |
-| **Read database feed** | ⚠️ Not yet implemented |
-| **Read document** | ✅ Supported |
-| **Read document feed** | ✅ Supported |
-| **Replace document** | ✅ Supported |
-| **Request Units** | ⚠️ Not yet implemented |
-| **Stored procedures** | ❌ Not planned |
-| **Triggers** | ❌ Not planned |
-| **UDFs** | ❌ Not planned |
-| **Update collection** | ⚠️ Not yet implemented |
-| **Update document** | ✅ Supported |
+| Feature                                            | Support               |
+| -------------------------------------------------- | --------------------- |
+| **Batch API**                                      | ✅ Supported           |
+| **Bulk API**                                       | ✅ Supported           |
+| **Change Feed**                                    | ✅ Supported           |
+| **Create and read document with utf data**         | ✅ Supported           |
+| **Create collection**                              | ✅ Supported           |
+| **Create collection twice conflict**               | ✅ Supported           |
+| **Create collection with custom index policy**     | ⚠️ No-op               |
+| **Create collection with ttl expiration**          | ✅ Supported           |
+| **Create database**                                | ✅ Supported           |
+| **Create database twice conflict**                 | ✅ Supported           |
+| **Create document**                                | ✅ Supported           |
+| **Create partitioned collection**                  | ✅ Supported           |
+| **Delete collection**                              | ✅ Supported           |
+| **Delete database**                                | ✅ Supported           |
+| **Delete document**                                | ✅ Supported           |
+| **Get and change collection performance**          | ⚠️ Not yet implemented |
+| **Insert large document**                          | ✅ Supported           |
+| **Patch document**                                 | ✅ Supported           |
+| **Query partitioned collection in parallel**       | ⚠️ Not yet implemented |
+| **Query with aggregates**                          | ✅ Supported           |
+| **Query with and filter**                          | ✅ Supported           |
+| **Query with and filter and projection**           | ✅ Supported           |
+| **Query with equality**                            | ✅ Supported           |
+| **Query with equals on id**                        | ✅ Supported           |
+| **Query with joins**                               | ✅ Supported           |
+| **Query with order by**                            | ✅ Supported           |
+| **Query with order by for partitioned collection** | ✅ Supported           |
+| **Query with order by numbers**                    | ✅ Supported           |
+| **Query with order by strings**                    | ✅ Supported           |
+| **Query with paging**                              | ✅ Supported           |
+| **Query with range operators date times**          | ✅ Supported           |
+| **Query with range operators on numbers**          | ✅ Supported           |
+| **Query with range operators on strings**          | ✅ Supported           |
+| **Query with single join**                         | ✅ Supported           |
+| **Query with string math and array operators**     | ✅ Supported           |
+| **Query with subdocuments**                        | ✅ Supported           |
+| **Query with two joins**                           | ✅ Supported           |
+| **Query with two joins and filter**                | ✅ Supported           |
+| **Read collection**                                | ✅ Supported           |
+| **Read collection feed**                           | ⚠️ Not yet implemented |
+| **Read database**                                  | ✅ Supported           |
+| **Read database feed**                             | ⚠️ Not yet implemented |
+| **Read document**                                  | ✅ Supported           |
+| **Read document feed**                             | ✅ Supported           |
+| **Replace document**                               | ✅ Supported           |
+| **Request Units**                                  | ⚠️ Not yet implemented |
+| **Stored procedures**                              | ❌ Not planned         |
+| **Triggers**                                       | ❌ Not planned         |
+| **UDFs**                                           | ❌ Not planned         |
+| **Update collection**                              | ⚠️ No-op               |
+| **Update document**                                | ✅ Supported           |
+| **Offers endpoint**                                | ⚠️ No-op               |
+| **Users endpoint**                                 | ⚠️ No-op               |
+| **Permissions endpoint**                           | ⚠️ No-op               |
+| **Client Encryption Keys (CEK)**                   | ⚠️ No-op               |
 
+> [!NOTE]
+> Features marked **No-op** accept requests and return valid HTTP status codes but don't execute the underlying operation. Your code won't break, but don't depend on these features for functional behavior. Custom index policies and collection updates are accepted for compatibility, but queries aren't optimized by custom indexes.
 
 ## Limitations
 
 In addition to features not yet supported or not planned, the following list includes current limitations of the emulator.
 
 - The .NET SDK for Azure Cosmos DB doesn't support bulk execution in the emulator.
+- If you get HTTP 500 errors on large query results, increase the query buffer size with the `--query-buffer-size` flag or the `QUERY_BUFFER_SIZE_KB` environment variable. The default is `4096` KB (`4` MB), and the maximum is `65536` KB (`64` MB).
 
 ## Installing certificates for Java SDK
 
-When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
+When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install its certificates to your local Java trust store.
 
 ### Get certificate
 
@@ -197,11 +221,14 @@ The emulator exports the following metrics. These are available through any metr
 - Resource Utilization: CPU, memory usage and connection pool metrics
 - Error Rates: Tracking of errors by type and endpoint
 
+> [!NOTE]
+> The emulator supports conditional TLS for the OTLP exporter, so you can integrate with observability platforms that require secure connections.
+
 Detailed instructions with examples [are available in the GitHub repository](https://github.com/Azure/azure-cosmos-db-emulator-docker/blob/master/docs/opentelemetry.md).
 
 ## Use in continuous integration workflow
 
-There are lot of benefits to using Docker containers in CI/CD pipelines, especially for stateful systems like databases. This could be in terms of cost-effectiveness, performance, reliability and consistency of your test suites. 
+There are lots of benefits to using Docker containers in CI/CD pipelines, especially for stateful systems like databases. This could be in terms of cost-effectiveness, performance, reliability and consistency of your test suites. 
 
 The emulator can be incorporated as part CI/CD pipelines. You can refer to this [GitHub repository](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions) that provides examples of how to use the emulator as part of a GitHub Actions CI workflow for .NET, Python, Java, and Go applications on both `x64` and `ARM64` architectures (demonstrated for Linux runner using `ubuntu`).
 
