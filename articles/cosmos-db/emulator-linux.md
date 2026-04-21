@@ -174,7 +174,7 @@ In addition to features not yet supported or not planned, the following list inc
 
 ## Installing certificates for Java SDK
 
-When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install it's certificates to your local Java trust store.
+When using the [Java SDK for Azure Cosmos DB](sdk-java-v4.md) with this version of the emulator in https mode, it is necessary to install its certificates to your local Java trust store.
 
 ### Get certificate
 
@@ -228,7 +228,7 @@ Detailed instructions with examples [are available in the GitHub repository](htt
 
 ## Use in continuous integration workflow
 
-There are lot of benefits to using Docker containers in CI/CD pipelines, especially for stateful systems like databases. This could be in terms of cost-effectiveness, performance, reliability and consistency of your test suites. 
+There are lots of benefits to using Docker containers in CI/CD pipelines, especially for stateful systems like databases. This could be in terms of cost-effectiveness, performance, reliability and consistency of your test suites. 
 
 The emulator can be incorporated as part CI/CD pipelines. You can refer to this [GitHub repository](https://github.com/AzureCosmosDB/cosmosdb-linux-emulator-github-actions) that provides examples of how to use the emulator as part of a GitHub Actions CI workflow for .NET, Python, Java, and Go applications on both `x64` and `ARM64` architectures (demonstrated for Linux runner using `ubuntu`).
 
