@@ -31,7 +31,7 @@ To complete this how-to guide, you need:
 
 ## Notifications about scheduled maintenance events
 
-You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and past scheduled maintenance on your cluster. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
+You can use Azure Service Health to [view notifications](/azure/service-health/service-health-planned-maintenance) about upcoming and past scheduled maintenance on your cluster. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
 
 ## Next steps
 
