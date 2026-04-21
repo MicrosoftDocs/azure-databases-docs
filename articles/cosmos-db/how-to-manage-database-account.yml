@@ -5,7 +5,7 @@ metadata:
   description: Learn how to manage Azure Cosmos DB resources by using the Azure portal, PowerShell, CLI, and Azure Resource Manager templates.
   author: markjbrown
   ms.author: mjbrown
-  ms.date: 06/26/2025
+  ms.date: 04/21/2026
   ms.service: azure-cosmos-db
   ms.subservice: nosql
   ms.topic: how-to
@@ -111,11 +111,15 @@ procedureSection:
   - title: |
       Add or remove regions from your database account
     summary: |
+      > [!TIP]
+      > When a new region is added, all data must be fully replicated and committed into the new region before the region is marked as available. The amount of time this operation takes depends upon how much data is stored within the account. If an [asynchronous throughput scaling operation](scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) is in progress, the throughput scale-up operation is paused and resumes automatically when the add/remove region operation is complete. Additionally, when removing an existing region, all replication across regions (within [partition sets](./global-distribution.md)) must complete before the region is marked as unavailable.
+      <!--
       > [!NOTE]
       > Adding or removing a region is an asynchronous operation that performs consistency checks and transfers data. This can result in long execution times, possibly many hours, depending on the amount of data. During this time, other operations that need to update the account aren't allowed.
 
       > [!IMPORTANT]
       > When you add a region, you're billed for the additional RU/s and storage copied to the region.
+      -->
     steps:
       - |
         Sign in to [Azure portal](https://portal.azure.com).
@@ -123,16 +127,16 @@ procedureSection:
         Go to your Azure Cosmos DB account and select **Replicate data globally** in the resource menu.
       - |
         Select **Manage regions** to open the **Manage regions** pane.
-
+          <!--
           :::image type="content" source="./media/how-to-manage-database-account/manage-regions.png" alt-text="Screenshot of the Replicate data globally page with manage regions selected.":::
-
+          -->
       - |
         To add a region, select a region from the **Region** dropdown. If you want to enable availability zone support for the region, select the **Availability zone** checkbox, then select **Add**. To learn more, see [Availability zone support for Azure Cosmos DB](/azure/reliability/reliability-cosmos-db-nosql#availability-zone-support).
       - |
         To remove a region, select the delete icon next to the region you want to remove.
-
+          <!--
           :::image type="content" source="./media/how-to-manage-database-account/manage-regions-pane.png" alt-text="Screenshot of the Replicate data globally page and the Manage regions pane.":::
-
+          -->
         In single-region write mode, you can't remove the write region. You must fail over to a different region before you can delete the current write region.
 
         In multi-region write mode, you can add or remove any region, as long as at least one region remains.
@@ -140,8 +144,9 @@ procedureSection:
         ## <a id="configure-multiple-write-regions"></a>Configure multiple write-regions
 
         In the **Configuration** section of the **Replicate data globally** page, select the **Multi-region writes** checkbox to enable multi-region writes. It will ask for a confirmation to enable this feature. After you enable multi-region writes, all the read regions that you currently have on the account become read and write regions.
-
+        <!--
         :::image type="content" source="./media/how-to-manage-database-account/configure-multi-region-writes.png" alt-text="Screenshot of the Replicate data globally page, highlighting the Multi-region writes checkbox.":::
+        -->
   - title: |
       Enable service-managed failover for your Azure Cosmos DB account
     summary: |
@@ -168,19 +173,21 @@ procedureSection:
         From your Azure Cosmos DB account, open the **Replicate data globally** pane.
       - |
         At the top of the pane, select **Offline region**.
-
+          <!--
           :::image type="content" source="./media/how-to-manage-database-account/offline-region.png" alt-text="Screenshot that shows the offline region portal menu.":::
+          -->
       - |
         Review the warning message indicating the possibility of data loss due to un-replicated writes not being available in the region that will be promoted to the new write region based on the failover priority.
       - |
         Select the region to be marked offline, check the box titled **I understand and agree to offline the currently selected region**, and click the **Offline region** button. 
-
+          <!--
           :::image type="content" source="./media/how-to-manage-database-account/offline-region-pane.png" alt-text="Screenshot that shows the offline region warning.":::
+          -->
       - |
         Once completed, the region with the highest failover priority is promoted to the new write region, while the original write region is marked offline.
-
+          <!--
           :::image type="content" source="./media/how-to-manage-database-account/offline-region-complete.png" alt-text="Screenshot that shows the offline region complete.":::
-
+          -->
         The Azure Cosmos DB service team handles bringing back the region online. If the region is offline during an outage, it might take more than three days to restore it online, depending on the impact's severity. For a disaster recovery drill where a region is taken offline, please create a support ticket request to bring the region back online.
 
         In the case of a single-write region, if the write region is offline during the drill or an outage, bringing the region back online restores it as a 'read region'. Afterward, you can perform the 'change write region' operation to promote the region back to a write region. 
@@ -197,13 +204,17 @@ procedureSection:
       - |
         At the top of the pane, select **Configure failvoer policy**.
 
+        <!--
         :::image type="content" source="./media/how-to-manage-database-account/configure-failover-policy.png" alt-text="Screenshot showing the Replicate data globally menu.":::
+        -->
       - |
         On the **Configure failover policy** pane, drag and drop the priorities of read regions to be failed over to as needed.
       - |
         Select **OK** to save the failover priority configuration.
 
+        <!--
         :::image type="content" source="./media/how-to-manage-database-account/configure-failover-policy-pane.png" alt-text="Screenshot of the Configure failover policy portal menu.":::
+        -->
   - title: |
       Change write region for your Azure Cosmos DB Account
     summary: |
