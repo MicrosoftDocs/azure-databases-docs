@@ -32,7 +32,14 @@ Before you set up Fabric mirroring for an Azure Database for MySQL, make sure th
 - **Supported service tiers**: General Purpose and Business-Critical.
 - **Supported MySQL versions**: 8.0 (LTS minor versions only).
 - **Binary log configuration**: `binlog_row_image` must be set to `FULL` or `NOBLOB`. If it's not set to one of these values, modify this setting in the Azure portal for Azure Database for MySQL. Go to **Settings > Server parameters** to make the necessary changes and save them.
-- **User permissions**: A MySQL user account with **SELECT** permissions on all databases and tables selected for mirroring.
+- **User permissions**: A MySQL user account must have the required permissions to support mirroring operations. This includes not only **SELECT** permissions on all databases and tables selected for mirroring, but also additional privileges needed for routines and execution as shown below. In the following example, "test" is the MySQL user and "db1" is the target database:
+
+```sql
+GRANT CREATE TEMPORARY TABLES, SELECT, CREATE ROUTINE, ALTER ROUTINE, EXECUTE ON db1.* TO 'test'@'%';
+GRANT SELECT, EXECUTE ON fabric_info.* TO 'test'@'%';
+GRANT EXECUTE ON mysql.* TO 'test'@'%';
+```
+
 - **Fabric capacity**: An active Microsoft Fabric capacity (or Fabric trial).
 
 ## Set up mirroring in Azure Database for MySQL
