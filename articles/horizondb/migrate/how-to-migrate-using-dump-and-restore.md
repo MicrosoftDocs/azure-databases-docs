@@ -1,6 +1,6 @@
 ---
-title: Dump and Restore - Azure HorizonDB flexible server
-description: You can extract a PostgreSQL database into a dump file. Then, you can restore from a file created by pg_dump in Azure HorizonDB Single Server or flexible server.
+title: Dump and Restore - Azure HorizonDB
+description: You can extract a PostgreSQL database into a dump file. Then, you can restore from a file created by pg_dump in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -22,7 +22,7 @@ You can use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.
 
 In this article, we focus on the plain (default) and directory formats. The directory format is useful as it allows you to use multiple cores for processing, which can significantly enhance efficiency, especially for large databases.
 
-The Azure portal streamlines this process via the Connect blade by offering preconfigured commands that are tailored to your server, with values substituted with your user data. It's important to note that the Connect blade is only available for Azure HorizonDB flexible server and not for Single Server. Here's how you can use this feature:
+The Azure portal streamlines this process via the Connect blade by offering preconfigured commands that are tailored to your server, with values substituted with your user data. It's important to note that the Connect blade is only available for Azure HorizonDB. Here's how you can use this feature:
 
 1. **Access Azure portal**: First, go to the Azure portal and choose the Connect blade.
 
