@@ -13,7 +13,7 @@ ms.collection:
   - onprem-to-azure
 ---
 
-# Migrate your PostgreSQL database by using dump and restore
+# Migrate your PostgreSQL database to HorizonDB using dump and restore
 
 You can use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) to extract a PostgreSQL database into a dump file. The method to restore the database depends on the format of the dump you choose. If your dump is taken with the plain format (which is the default `-Fp`, so no specific option needs to be specified), then the only option to restore it is by using [psql](https://www.postgresql.org/docs/current/app-psql.html), as it outputs a plain text file. For the other three dump methods: custom, directory, and tar, [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) should be used.
 
@@ -48,7 +48,6 @@ If you're using a Single Server, or don't have access to the flexible server por
 > Because `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities all rely on libpq, you can use any of the supported [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) it offers, or you can use the [password file](https://www.postgresql.org/docs/current/libpq-pgpass.html) to avoid being prompted for the password every time you run any of these commands.
 
 To step through this how-to guide, you need:
-- An {[Azure HorizonDB server](../single-server/quickstart-create-server-database-portal.md)}, including firewall rules to allow access.
 - [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html), [psql](https://www.postgresql.org/docs/current/app-psql.html), [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) and [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html) in case you want to migrate with roles and permissions, command-line utilities installed.
 - **Decide on the location for the dump**: Choose the place you want to perform the dump from. It can be done from various locations, such as a separate VM, [cloud shell](/azure/cloud-shell/overview) (where the command-line utilities are already installed, but might not be in the appropriate version, so always check the version using, for instance, `psql --version`), or your own laptop. Always keep in mind the distance and latency between the PostgreSQL server and the location from which you're running the dump or restore.
 
@@ -239,9 +238,6 @@ After the restoration process is complete, it's important to review the `errors.
 
 When working with large databases, the dump and restore process can be lengthy and might require optimization to ensure efficiency and reliability. It's important to be aware of the various factors that can impact the performance of these operations and to take steps to optimize them.
 
-For detailed guidance on optimizing the dump and restore process, refer to the {[Best practices for pg_dump and pg_restore](../flexible-server/how-to-pgdump-restore.md)} article. This resource provides comprehensive information and strategies that can be beneficial for handling large databases.
-
 ## Related content
 
-- {[Best practices for pg_dump and pg_restore](../flexible-server/how-to-pgdump-restore.md)}
 - [Database Migration Guide](/data-migration/)
