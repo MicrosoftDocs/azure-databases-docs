@@ -565,6 +565,8 @@ The SDK code that you use to run a query on a subpartitioned container is identi
 
 When the query specifies all values of the partition keys in the `WHERE` filter or in a prefix of the key hierarchy, the SDK automatically routes the query to the corresponding physical partitions. Queries that provide only the "middle" of the hierarchy are cross-partition queries.
 
+For queries that target a prefix of the hierarchical partition key path, you should include those leading partition key values in the **WHERE** clause so the query can be routed efficiently. Supplying values only via `PartitionKeyBuilder` doesn't by itself guarantee efficient routing. Queries that omit partition key values from the **WHERE** clause might incur significantly higher RU costs.
+
 For example, consider a hierarchical partition key that's composed of `TenantId` > `UserId` > `SessionId`. The components of the query's filter determines if the query is a single-partition query, a targeted cross-partition query, or a fan-out query.
 
 | Query | Routing |
