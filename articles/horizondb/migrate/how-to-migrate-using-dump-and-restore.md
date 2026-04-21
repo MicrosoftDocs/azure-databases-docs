@@ -13,27 +13,27 @@ ms.collection:
   - onprem-to-azure
 ---
 
-# Migrate your PostgreSQL database to HorizonDB using dump and restore
+# Migrate your PostgreSQL database to HorizonDB by using dump and restore
 
-You can use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) to extract a PostgreSQL database into a dump file. The method to restore the database depends on the format of the dump you choose. If your dump is taken with the plain format (which is the default `-Fp`, so no specific option needs to be specified), then the only option to restore it is by using [psql](https://www.postgresql.org/docs/current/app-psql.html), as it outputs a plain text file. For the other three dump methods: custom, directory, and tar, [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) should be used.
+Use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) to extract a PostgreSQL database into a dump file. The method you use to restore the database depends on the format of the dump you choose. If you use the plain format (which is the default `-Fp`, so you don't need to specify a specific option), restore the database by using [psql](https://www.postgresql.org/docs/current/app-psql.html) because it outputs a plain text file. For the other three dump methods - custom, directory, and tar - use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html).
 
 > [!IMPORTANT]  
-> The instructions and commands provided in this article are designed to be executed in bash terminals. This includes environments such as Windows Subsystem for Linux (WSL), Azure Cloud Shell, and other bash-compatible interfaces. Please ensure you are using a bash terminal to follow the steps and execute the commands detailed in this guide. Using a different type of terminal or shell environment might result in differences in command behavior and might not produce the intended outcomes.
+> The instructions and commands in this article are designed to be executed in bash terminals. This requirement includes environments such as Windows Subsystem for Linux (WSL), Azure Cloud Shell, and other bash-compatible interfaces. To follow the steps and execute the commands in this guide, use a bash terminal. Using a different type of terminal or shell environment might result in differences in command behavior and might not produce the intended outcomes.
 
-In this article, we focus on the plain (default) and directory formats. The directory format is useful as it allows you to use multiple cores for processing, which can significantly enhance efficiency, especially for large databases.
+In this article, you focus on the plain (default) and directory formats. The directory format is useful because it allows you to use multiple cores for processing, which can significantly enhance efficiency, especially for large databases.
 
-The Azure portal streamlines this process via the Connect blade by offering preconfigured commands that are tailored to your server, with values substituted with your user data. It's important to note that the Connect blade is only available for Azure HorizonDB. Here's how you can use this feature:
+The Azure portal streamlines this process via the **Connect** page by offering preconfigured commands that are tailored to your server, with values substituted with your user data. The **Connect** blade is only available for Azure HorizonDB. Here's how you can use this feature:
 
-1. **Access Azure portal**: First, go to the Azure portal and choose the Connect blade.
+1. **Access Azure portal**: First, go to the Azure portal and choose the **Connect** page.
 
    :::image type="content" source="media/how-to-migrate-using-dump-and-restore/portal-connect-blade.png" alt-text="Screenshot showing the placement of Connect blade in Azure portal.":::
 
-1. **Select your database**: In the Connect blade, you find a dropdown list of your databases. Select the database you wish to perform a dump from.
+1. **Select your database**: In the **Connect** page, you find a dropdown list of your databases. Select the database you want to perform a dump from.
 
    :::image type="content" source="media/how-to-migrate-using-dump-and-restore/dropdown-list-of-databases.png" alt-text="Screenshot showing the dropdown where specific database can be chosen." lightbox="media/how-to-migrate-using-dump-and-restore/dropdown-list-of-databases.png":::
 
-1. **Choose the appropriate method**: Depending on your database size, you can choose between two methods:
-      - `pg_dump` & `psql` - using singular text file**: Ideal for smaller databases, this option utilizes a single text file for the dump and restore process.
+1. **Choose the appropriate method**: Depending on your database size, choose between two methods:
+      - `pg_dump` and `psql` - using singular text file**: Ideal for smaller databases, this option uses a single text file for the dump and restore process.
       - `pg_dump` & `pg_restore` - using multiple cores**: For larger databases, this method is more efficient as it uses multiple cores to handle the dump and restore process.
 
    :::image type="content" source="media/how-to-migrate-using-dump-and-restore/different-dump-methods.png" alt-text="Screenshot showing two possible dump methods.":::
@@ -41,8 +41,6 @@ The Azure portal streamlines this process via the Connect blade by offering prec
 1. **Copy and paste commands**: The portal provides you with ready to use `pg_dump` and `psql` or `pg_restore` commands. These commands come with values already substituted according to the server and database you've chosen. Copy and paste these commands.
 
 ## Prerequisites
-
-If you're using a Single Server, or don't have access to the flexible server portal, read through this documentation page. It contains information that is similar to what is presented in the Connect blade for flexible server on the portal.
 
 > [!NOTE]  
 > Because `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities all rely on libpq, you can use any of the supported [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) it offers, or you can use the [password file](https://www.postgresql.org/docs/current/libpq-pgpass.html) to avoid being prompted for the password every time you run any of these commands.
@@ -74,7 +72,7 @@ pg_dumpall -r -h mydemoserver.postgres.database.azure.com -U myuser > roles.sql
 
 If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
 
-### Dumping Roles from a flexible server
+### Dump roles 
 
 In a flexible server environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
 
@@ -97,8 +95,6 @@ pg_dumpall -r --no-role-passwords -h mydemoserver.postgres.database.azure.com -U
 When migrating the output file `roles.sql` might include certain roles and attributes that aren't applicable or permissible in the new environment. Here's what you need to consider:
 
 - **Removing attributes that can be set only by superusers**: If migrating to an environment where you don't have superuser privileges, remove attributes like `NOSUPERUSER` and `NOBYPASSRLS` from the roles dump.
-
-- **Excluding service-specific users**: Exclude Single Server service users, such as `azure_superuser` or `azure_pg_admin`. These are specific to the service and will be created automatically in the new environment.
 
 Use the following `sed` command to clean up your roles dump:
 
