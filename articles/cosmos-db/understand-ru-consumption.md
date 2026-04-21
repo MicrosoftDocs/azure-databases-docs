@@ -1,5 +1,5 @@
 ---
-title: Understanding Request Units Consumption in Azure Cosmos DB
+title: Understanding Request Units Consumption
 description: This article explains how request units are consumed in Azure Cosmos DB with some examples.
 author: richagaur
 ms.author: richagaur
@@ -12,19 +12,20 @@ appliesto:
   - ✅ Apache Cassandra
   - ✅ Apache Gremlin
   - ✅ Table
+show_latex: true
 ---
 
-# Understand Request Units Consumption in Azure Cosmos DB
+# Understand request units consumption in Azure Cosmos DB
 
-Azure Cosmos DB uses Request Units (RUs) as a normalized measure of the resources required to execute database operations. Instead of managing provisioning of resources such as CPU, memory, and I/O independently, RUs provide a simple and consistent way to understand how different operations consume resources. Each operation consumes Request Units reflecting the work performed by the service to execute the request with a focus on trying to ensure predictability.
+Azure Cosmos DB uses request units (RUs) as a normalized measure of the resources required to execute database operations. Instead of managing provisioning of resources such as CPU, memory, and I/O independently, RUs provide a simple and consistent way to understand how different operations consume resources. Each operation consumes Request Units reflecting the work performed by the service to execute the request with a focus on trying to ensure predictability.
 This article explains what influences RU consumption, how common operations consume RUs, and practical ways to design efficient workloads.
 
 ## What influences RU consumption
 
 ### Document size
-Request Units consumption for an operation scales with document size due to the increased CPU and I/O needed to process larger documents.
+Request units consumption for an operation scales with document size due to the increased CPU and I/O needed to process larger documents.
 
-|**Document Size** |**Read Operation*** |**Write Operation**
+|**Document Size** |**Read Operation** |**Write Operation**
 |---------|---------|---------|
 |1 KB |1.00 | 4.95  |
 |2 KB |1.04 | 6.29  |
@@ -39,10 +40,11 @@ Request Units consumption for an operation scales with document size due to the 
 |1,024 KB |145.90 | 625.00  |
 |2,048 KB |291.80 | 1250.00 |
 
-*Read RUs mentioned are applicable to session and eventual consistency. 
+> [!NOTE]
+> Read RUs mentioned are applicable to session and eventual consistency. 
 
 ### Indexing
-Indexes improve query performance but increase the RUs consumed by write operations. Indexing only required properties reduces RU consumption for writes and updates while balancing query performance. For more information on how to index only required properties, see [indexing policy](https://learn.microsoft.com/eazure/cosmos-db/index-policy).
+Indexes improve query performance but increase the RUs consumed by write operations. Indexing only required properties reduces RU consumption for writes and updates while balancing query performance. For more information on how to index only required properties, see [indexing policy](index-policy.md).
 
 ### Configuration choices
 Some features require more processing that influences RU consumption, such as:
@@ -52,9 +54,7 @@ Some features require more processing that influences RU consumption, such as:
 * Customer managed keys
 * Dynamic data masking
 
-### Additional factors
-
-#### RU consumption in multi-region accounts
+### RU consumption in multi-region accounts
 When an account has multiple regions, Azure Cosmos DB provisions throughput independently in each region, enabling low latency access and high availability.
 
 * **Write** operations consume RUs for writing data in the primary region and for replicating the data to additional regions. As a result, write RU consumption increases with the number of regions configured.
@@ -62,23 +62,23 @@ When an account has multiple regions, Azure Cosmos DB provisions throughput inde
 
 This model ensures predictable performance and durability while making global distribution transparent.
 
-#### RU consumption in multi-region write accounts 
+### RU consumption in multi-region write accounts 
 
 Multi-region write accounts allow write operations across all account regions. RU consumption for document operations follows the same general principles as multi-region accounts, with more processing to coordinate conflicting writes across regions.
 Because of this added coordination, the unit price of RUs in this configuration differs from single-region write setups. For current pricing details, see [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
-## How Request Units consumption evolves
+## How request units consumption evolves
 
-Request Units consumption in Azure Cosmos DB evolves over time as platform efficiency improves through hardware upgrades and service optimizations. These improvements are typically passed on to customers automatically, often resulting in more efficient RU consumption without any application changes. For example, binary encoding of stored data reduced the persisted size of documents, which lowered RU consumption for read operations without requiring any application changes.
+Request units consumption in Azure Cosmos DB evolves over time as platform efficiency improves through hardware upgrades and service optimizations. These improvements are typically passed on to customers automatically, often resulting in more efficient RU consumption without any application changes. For example, binary encoding of stored data reduced the persisted size of documents, which lowered RU consumption for read operations without requiring any application changes.
 
 Although specific RU values can change over time, the principles remain consistent and predictable. Customers can achieve better cost efficiency by focusing on the factors that influence RU consumption, including document size, indexing decisions, configuration choices, and access patterns.
 
-## Document operations and Request Units
+## Document operations and request units
 
-Request Units are consumed based on the work required to perform an operation. This section explains how RUs are consumed across common document operations, using illustrative examples to highlight the underlying principles.
+Request units are consumed based on the work required to perform an operation. This section explains how RUs are consumed across common document operations, using illustrative examples to highlight the underlying principles.
 
-[!Important]
-The RU values described in this document are illustrative and reflect how Azure Cosmos DB processes operations at a given point in time.
+> [!Important]
+> The RU values described in this document are illustrative and reflect how Azure Cosmos DB processes operations at a given point in time.
 
 ### Write Operations
 Different types of write operations follow similar principles. RU consumption primarily depends on **document size** and **indexed properties**.
@@ -87,9 +87,8 @@ Different types of write operations follow similar principles. RU consumption pr
 A create operation includes:
 * Inserting the document
 * Adding indexed terms defined by the indexing policy
-
-**Example:** 
-RUs consumed for a 1-KB document with 10 indexed terms in one region:
+ 
+For example, RUs consumed for a 1-KB document with ten indexed terms in one region:
 5.0 (document size based) + 0.2 × 10 (indexing) = 7 RUs
 
 #### Updates (replace)
@@ -99,20 +98,18 @@ Update operations involve:
 * Deleting any modified indexed terms
 * Inserting any modified indexed terms
 
-**Example:**
-Updating a 1-KB document with two modified indexed terms:
+For example, updating a 1-KB document with two modified indexed terms:
 5.0 (deletion) + 5.0 (insertion) + 0.2 × 2 (index deletion) + 0.2 × 2 (index insertion) = 10.8 RUs
 
-[!Tip]
-Updates approximately consume twice as many RUs as creates when only a small number of index terms change.
+> [!Tip]
+> Updates approximately consume twice as many RUs as creates when only a small number of index terms change.
 
 #### Patch
 
 Patch operations update specific properties within a document. The RUs consumed is similar to a replace operation and scales with the number of modified properties.
 
-**Example:**
-Updating a 1-KB document with two modified indexed terms:
-5.0 (deletion) + 5.0 (insertion) + 0.2 × 2 (index removal) + 0.2 × 2 (index insertion) + 0.4 * 2 (base charge for patch) = 11.6 RUs
+For example, updating a 1-KB document with two modified indexed terms using patch operation:
+5.0 (deletion) + 5.0 (insertion) + 0.2 × 2 (index removal) + 0.2 × 2 (index insertion) + 0.4 * 2 (base for patch) = 11.6 RUs
 
 #### Delete
 
@@ -120,8 +117,7 @@ Delete operations includes:
 * Deleting the document
 * Deleting indexed terms
 
-**Example:**
-Deleting a 1-KB document with 10 indexed terms:
+For example, deleting a 1-KB document with ten indexed terms:
 5.0 (document size) + 0.2 × 10 (index removal) = 7.0 RUs
 
 #### Stored procedures
@@ -135,8 +131,8 @@ Point reads (using document ID and partition key) are read operations that are m
 
 |**Document Size** |**RUs for point read** |
 |---------|---------|
-|1 KB |1.00 RU |
-|100 KB |~10.00 RUs |
+|1 KB |1.00 |
+|100 KB |~10.00 |
 
 #### Feed operations
 Feed operations include Change Feed and Read Feed. These operations return a stream or batch of documents rather than a single document.
@@ -144,8 +140,7 @@ Feed operations consume RUs based on:
 * The number of documents processed
 * The size of those documents
 
-**Example:**
-Processing five 1-KB documents through a feed consumes approximately the same RUs as reading those five documents individually.
+For example, processing five 1-KB documents through a feed consumes approximately the same RUs as reading those five documents individually.
 
 This design provides predictable, linear scaling: as the volume of data processed increases, RU consumption increases proportionally. RU usage depends on data changes and volume, not on how quickly a client consumes the feed.
 
@@ -171,15 +166,15 @@ Examples include:
 * Delete by partition key
 * Time-to-live (TTL) deletion
 * Unique key reindexing
-* Materialized view (GSI) maintenance
+* Global Secondary Index (GSI) maintenance
 
 ## Measuring and monitoring RU consumption
 
-Each request to Azure Cosmos DB returns the number of Request Units (RUs) consumed as part of the response. This value is exposed through the RequestCharge property and represents the RUs consumed by that specific operation.
+Each request to Azure Cosmos DB returns the number of request units (RUs) consumed as part of the response. This value is exposed through the RequestCharge property and represents the RUs consumed by that specific operation.
 
-For query workloads, RU consumption and performance depend on the query shape and index utilization. Enabling [query metrics](https://learn.microsoft.com/azure/cosmos-db/optimize-cost-reads-writes#metrics-for-troubleshooting-queries) allows you to see how RU consumption is distributed across query execution phases, helping identify opportunities to optimize query performance and reduce RU consumption.
+For query workloads, RU consumption and performance depend on the query shape and index utilization. Enabling [query metrics](optimize-cost-reads-writes.md#metrics-for-troubleshooting-queries) allows you to see how RU consumption is distributed across query execution phases, helping identify opportunities to optimize query performance and reduce RU consumption.
 
-To understand RU consumption at a broader level, you can monitor Total Request Units metrics in the Azure portal. This metric shows RU consumption at the container or database level and supports filters like database name, container name, operation type, region, and response status.
+To understand RU consumption at a broader level, you can monitor **Total Request Units** metrics in the Azure portal. This metric shows RU consumption at the container or database level and supports filters like database name, container name, operation type, region, and response status.
 
 ![Screenshot of Total Request Units metric in monitoring tab of Azure Cosmos DB account.](media/monitor-request-unit-usage/request-unit-usage-metric.png)
 
