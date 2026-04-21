@@ -77,7 +77,8 @@ Although specific RU values can change over time, the principles remain consiste
 
 Request units are consumed based on the work required to perform an operation. This section explains how RUs are consumed across common document operations, using illustrative examples to highlight the underlying principles.
 
-> [!Important]
+
+> [!IMPORTANT]
 > The RU values described in this document are illustrative and reflect how Azure Cosmos DB processes operations at a given point in time.
 
 ### Write Operations
