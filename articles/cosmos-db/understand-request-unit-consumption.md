@@ -42,7 +42,7 @@ Request Units consumption for an operation scales with document size due to the 
 *Read RUs mentioned are applicable to session and eventual consistency. 
 
 ### Indexing
-Indexes improve query performance but increase the RUs consumed by write operations. Indexing only required properties reduces RU consumption for writes and updates while balancing query performance. For more information on how to index only required properties, see [indexing policy](https://learn.microsoft.com/eazure/cosmos-db/index-policy).
+Indexes improve query performance but increase the RUs consumed by write operations. Indexing only required properties reduces RU consumption for writes and updates while balancing query performance. For more information on how to index only required properties, see [indexing policy](index-policy.md).
 
 ### Configuration choices
 Some features require more processing that influences RU consumption, such as:
@@ -177,7 +177,7 @@ Examples include:
 
 Each request to Azure Cosmos DB returns the number of Request Units (RUs) consumed as part of the response. This value is exposed through the RequestCharge property and represents the RUs consumed by that specific operation.
 
-For query workloads, RU consumption and performance depend on the query shape and index utilization. Enabling [query metrics](https://learn.microsoft.com/azure/cosmos-db/optimize-cost-reads-writes#metrics-for-troubleshooting-queries) allows you to see how RU consumption is distributed across query execution phases, helping identify opportunities to optimize query performance and reduce RU consumption.
+For query workloads, RU consumption and performance depend on the query shape and index utilization. Enabling [query metrics](optimize-cost-reads-writes.md#metrics-for-troubleshooting-queries) allows you to see how RU consumption is distributed across query execution phases, helping identify opportunities to optimize query performance and reduce RU consumption.
 
 To understand RU consumption at a broader level, you can monitor Total Request Units metrics in the Azure portal. This metric shows RU consumption at the container or database level and supports filters like database name, container name, operation type, region, and response status.
 
