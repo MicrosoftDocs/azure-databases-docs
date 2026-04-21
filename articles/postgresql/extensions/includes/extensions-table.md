@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 04/01/2026
+ms.date: 04/20/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -127,12 +127,12 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.7 <sup>*</sup> |
-| 17 | 1.7 <sup>*</sup> |
-| 16 | 1.7 <sup>*</sup> |
-| 15 | 1.7 <sup>*</sup> |
-| 14 | 1.7 <sup>*</sup> |
-| 13 | 1.7 <sup>*</sup> |
+| 18 | 1.9 <sup>*</sup> |
+| 17 | 1.9 <sup>*</sup> |
+| 16 | 1.9 <sup>*</sup> |
+| 15 | 1.9 <sup>*</sup> |
+| 14 | 1.9 <sup>*</sup> |
+| 13 | 1.9 <sup>*</sup> |
 | 12 | 1.6 <sup>*</sup> |
 | 11 | Not supported |
 
@@ -351,7 +351,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.4.1 |
+| 18 | 1.4.2 |
 | 17 | 1.4.1 |
 | 16 | 1.4.0 |
 | 15 | 1.4.0 |
@@ -608,11 +608,11 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0.0 <sup>*</sup> |
-| 17 | 1.0.0 <sup>*</sup> |
-| 16 | 1.0.0 <sup>*</sup> |
-| 15 | 1.0.0 <sup>*</sup> |
-| 14 | 1.0.0 <sup>*</sup> |
+| 18 | 1.1.0 <sup>*</sup> |
+| 17 | 1.1.0 <sup>*</sup> |
+| 16 | 1.1.0 <sup>*</sup> |
+| 15 | 1.1.0 <sup>*</sup> |
+| 14 | 1.1.0 <sup>*</sup> |
 | 13 | Not supported |
 | 12 | Not supported |
 | 11 | Not supported |
@@ -900,14 +900,14 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.1.10 |
-| 17 | 3.1.7 |
-| 16 | 3.1.7 |
-| 15 | 3.1.7 |
-| 14 | 3.0.0 |
-| 13 | 3.0.0 |
-| 12 | 3.0.0 |
-| 11 | 3.0.0 |
+| 18 | 3.2.4 |
+| 17 | 3.2.4 |
+| 16 | 3.2.4 |
+| 15 | 3.2.4 |
+| 14 | 3.2.4 |
+| 13 | 3.2.4 |
+| 12 | 3.2.4 |
+| 11 | 3.2.4 |
 
 
 ## postgis
