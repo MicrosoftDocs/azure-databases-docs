@@ -8,6 +8,9 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.collection:
+  - migration
+  - aws-to-azure
 ---
 
 # Migrate Amazon RDS for MySQL to Azure Database for MySQL using data-in replication
