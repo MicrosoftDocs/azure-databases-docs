@@ -315,6 +315,8 @@
       href: throughput-serverless.md?context=/azure/cosmos-db/context/context
     - name: Best practices for scaling provisioned throughput
       href: scaling-provisioned-throughput-best-practices.md?context=/azure/cosmos-db/context/context
+    - name: Understanding request unit consumption
+      href: understand-ru-consumption.md?context=/azure/cosmos-db/context/context
     - name: Burst capacity
       items:
         - name: Burst capacity overview
