@@ -350,7 +350,7 @@ Azure Cosmos DB supports Azure role-based access control (Azure RBAC) for provis
 
 ## Keyspace and Table options
 
-The options for region name, class, replication_factor, and datacenter in the `CREATE KEYSPACE` command are ignored currently. The system uses the underlying Azure Cosmos DB's [global distribution](../global-distribution.md) replication method to add the regions. If you need the cross-region presence of data, you can enable it at the account level with PowerShell, CLI, or the Azure portal. For more information, see [Add regions to your database account](../how-to-manage-database-account.yml#add-remove-regions-from-your-database-account).
+The options for region name, class, replication_factor, and datacenter in the `CREATE KEYSPACE` command are ignored currently. The system uses the underlying Azure Cosmos DB's [global distribution](../global-distribution.md) replication method to add the regions. If you need the cross-region presence of data, you can enable it at the account level with PowerShell, CLI, or the Azure portal. For more information, see [Add regions to your database account](../how-to-manage-database-account.yml#add-or-remove-regions-from-your-database-account).
 
 Durable_writes can't be disabled because Azure Cosmos DB ensures every write is durable. In every region, Azure Cosmos DB replicates the data across the replica set that is made up of four replicas and this replica set [configuration](../global-distribution.md) can't be modified.
  
