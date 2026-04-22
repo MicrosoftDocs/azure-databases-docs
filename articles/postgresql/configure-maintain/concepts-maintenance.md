@@ -1,10 +1,10 @@
 ---
 title: Scheduled Maintenance
 description: This article describes the scheduled maintenance feature in your Azure Database for PostgreSQL flexible server instances.
-author: varun-dhawan
-ms.author: varundhawan
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 04/21/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -68,6 +68,13 @@ Some considerations when considering during monthly maintenance:
 If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day autorestart](./concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
+
+## Consolidated Maintenance Notifications
+
+To help reduce notification fatigue, Azure Database for PostgreSQL now consolidates planned maintenance notifications for multiple servers in the same region into a single notification, instead of sending a separate notification for each server. This helps customers track upcoming maintenance more efficiently while preserving visibility into impacted resources.
+
+To view the servers in a subscription that have upcoming maintenance in a region, go to the Impacted Resources tab in the corresponding notification under Azure Service Health | Planned Maintenance. This tab lists each affected server in the subscription. For each resource, select More info to view details such as maintenance status and the scheduled maintenance start and end times for that server. To download a list of all impacted servers, select Export to CSV on the Impacted Resources tab. The exported .csv file includes each affected server along with its maintenance status and scheduled maintenance start and end times. 
+
 
 ## Related content
 
