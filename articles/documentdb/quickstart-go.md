@@ -114,7 +114,7 @@ First, connect to the client using a basic connection string.
         ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
         defer cancel()
         
-        client, err := mongo.Connect(ctx, clientOptions)
+        client, err := mongo.Connect(clientOptions)
         if err != nil {
             log.Fatal(err)
         }
@@ -193,7 +193,7 @@ Then, create a couple of new documents within your collection. Upsert the docume
         for _, product := range products {
             filter := bson.M{"_id": product.ID}
             update := bson.M{"$set": product}
-            opts := options.Update().SetUpsert(true)
+            opts := options.UpdateOne().SetUpsert(true)
             
             result, err := collection.UpdateOne(ctx, filter, update, opts)
             if err != nil {

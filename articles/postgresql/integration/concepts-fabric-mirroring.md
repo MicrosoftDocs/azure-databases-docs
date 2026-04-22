@@ -4,7 +4,7 @@ description: Learn about Mirroring in Microsoft Fabric for Azure Database for Po
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 04/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL supports **PostgreSQL 14 and later** for Fabric mi
 
 ## Prerequisites
 
-Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible server instance, you need to configure several prerequisites.
+Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible server instance, you need to configure the following prerequisites:
 
 - **System-assigned Managed Identity (SAMI)** must be [enabled](../security/security-configure-managed-identities-system-assigned.md).
   - Azure CDC uses this identity to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
@@ -76,6 +76,9 @@ You configure additional prerequisites through a dedicated enablement workflow d
 
 - **azure_cdc** extension. The Azure CDC extension (azure_cdc) is preloaded on the source server and registered for selected databases to mirror (it requires restart).
 
+> [!IMPORTANT]  
+> You don't need to manually configure these three parameters, just follow the workflow mentioned below!
+
 A new page is available in the Azure portal to automate these prerequisite configurations on the source server.
 
 :::image type="content" source="media/concepts-fabric-mirroring/start-enablement.png" alt-text="Screenshot showing New Fabric mirroring page in Azure portal to start enablement." lightbox="media/concepts-fabric-mirroring/start-enablement.png":::
@@ -86,7 +89,7 @@ Select **Get Started** to initiate the enablement workflow.
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
-When you're done, select the databases to enable Fabric mirroring (up to three by default, but you can increase this limit by changing the **max_mirrored_databases** server parameter) and then select **Prepare**.
+When you're done, select the databases to enable Fabric mirroring (up to three by default, but you can increase this limit up to six by changing the **max_mirrored_databases** server parameter) and then select **Prepare**.
 
 The workflow presents a Restart Server pop-up. By selecting **Restart**, you start the process. The workflow automates all remaining configuration steps. You can start creating your mirrored database from the [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial).
 
@@ -136,7 +139,7 @@ These server parameters directly affect Fabric mirroring for Azure Database for 
 
 - **max_parallel_workers**: The default is 8, which limits the number of workers that can run simultaneously. If you enable multiple mirroring sessions on the same server, you might consider increasing this parameter to allow more parallel operations (for example, increasing parallelism in initial snapshots).
 
-- **azure_cdc.max_fabric_mirrors** Default is 3. Customers can increase this value if they need to mirror more than three databases on this server. It's important to consider that every new mirrored database consumes server resources (five background processes using CPU and Memory resources for snapshot creation and change batching), so depending on how busy your server is, you should monitor resource utilization and scale up your compute size to the next size available if CPU and memory utilization are constantly above 80% or performance aren't what you expect.
+- **azure_cdc.max_fabric_mirrors** Default is 3. Customers can increase this value up to 6 (hard limit) if they need to mirror more than three databases on this server. It's important to consider that every new mirrored database consumes server resources (five background processes using CPU and Memory resources for snapshot creation and change batching), so depending on how busy your server is, you should monitor resource utilization and scale up your compute size to the next size available if CPU and memory utilization are constantly above 80% or performance aren't what you expect.
 
 - **azure_cdc.max_snapshot_workers**: Default is 3. Maximum number of worker processes used during initial snapshot creation. Increase this to speed up initial snapshot creation when increasing the number of mirrored databases. However, you should consider all the other background processes running in the system before doing that.
 
@@ -223,6 +226,29 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
         - `timestamp without time zone`
         - `timestamp with time zone`
         - `uuid`
+        - `xml` 
+        - `json`
+        - `jsonb`
+        - `inet`
+        - `cidr`
+        - `macaddr`
+        - `macaddr8` 
+        - `tsvector`
+        - `tsquery`
+        - `int4range`
+        - `int8range`
+        - `numrange`
+        - `tsrange` 
+        - `tstzrange`
+        - `daterange`
+        - `circle`
+        - `line`
+        - `lseg`
+        - `box`
+        - `path`
+        - `point`
+        - `polygon`
+        - `interval`
       - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
       - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
     
