@@ -67,18 +67,18 @@ pg_dumpall -r -h <server name> -U <user name> > roles.sql
 For example, if you have a server named `mydemoserver` and a user named `myuser` run the following command:
 
 ```bash
-pg_dumpall -r -h mydemoserver.postgres.database.azure.com -U myuser > roles.sql
+pg_dumpall -r -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser > roles.sql
 ```
 
-If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
+
 
 ### Dump roles 
 
-In a flexible server environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
+In a HorizonDB environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
 
-When dumping roles from a flexible server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it cannot read due to security restrictions.
+When dumping roles from a HorizonDB server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it cannot read due to security restrictions.
 
-To successfully dump roles from a flexible server, use the following command:
+To successfully dump roles from a HorizonDB server, use the following command:
 
 ```bash
 pg_dumpall -r --no-role-passwords -h <server name> -U <user name> > roles.sql
@@ -87,7 +87,7 @@ pg_dumpall -r --no-role-passwords -h <server name> -U <user name> > roles.sql
 For example, if you have a server named `mydemoserver`, a user named `myuser`, run the following command:
 
 ```bash
-pg_dumpall -r --no-role-passwords -h mydemoserver.postgres.database.azure.com -U myuser > roles.sql
+pg_dumpall -r --no-role-passwords -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser > roles.sql
 ```
 
 ### Cleaning up the roles dump
@@ -117,7 +117,7 @@ pg_dump <database name> -h <server name> -U <user name> > <database name>_dump.s
 For example, if you have a server named `mydemoserver`, a user named `myuser` and a database called `testdb`, run the following command:
 
 ```bash
-pg_dump testdb -h mydemoserver.postgres.database.azure.com -U myuser > testdb_dump.sql
+pg_dump testdb -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser > testdb_dump.sql
 ```
 
 #### [pg_dump & pg_restore - using multiple cores](#tab/pgrestore)
@@ -131,12 +131,12 @@ In these commands, the `-j` option stands for the number of cores you wish to us
 For example, if you have a server named `mydemoserver`, a user named `myuser` and a database called `testdb`, and you want to use two cores for the dump, run the following command:
 
 ```bash
-pg_dump -Fd -j 2 testdb -h mydemoserver.postgres.database.azure.com -U myuser -f testdb.dump
+pg_dump -Fd -j 2 testdb -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser -f testdb.dump
 ```
 
 ---
 
-If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
+
 
 ## Restore the data into the target database
 
@@ -155,13 +155,13 @@ Replace `<server_name>` with the name of your target server and `<user_name>` wi
 For example, if you have a server named `mydemoserver`, a user named `myuser`, run the following command:
 
 ```bash
-psql -f roles.sql -h mydemoserver.postgres.database.azure.com -U myuser
+psql -f roles.sql -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser
 ```
 
-If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
+
 
 > [!NOTE]  
-> If you already have users with the same names on your Single Server or on-premises server from which you are migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords. This does not apply if your source server is a flexible server, as flexible server does not allow dumping passwords for users due to enhanced security measures.
+> If you already have users with the same names on your on-premises server from which you are migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords.
 
 ### Create a new database
 
@@ -176,10 +176,10 @@ Before restoring your database, you might need to create a new, empty database. 
    For example, if you have a server named `mydemoserver`, a user named `myuser` and the new database you want to create is `testdb_copy`, run the following command:
 
    ```bash
-   createdb testdb_copy -h mydemoserver.postgres.database.azure.com -U myuser
+   createdb testdb_copy -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser
    ```
 
-   If you're using a Single Server, your username includes the server name component. Therefore, instead of `myuser`, use `myuser@mydemoserver`.
+
 
 1. **Using SQL command**
 To create a database using a SQL command, you'll need to connect to your PostgreSQL server via a command line interface or a database management tool. Once connected, you can use the following SQL command to create a new database:
@@ -207,7 +207,7 @@ psql -f <database name>_dump.sql <new database name> -h <server name> -U <user n
 For example, if you have a server named `mydemoserver`, a user named `myuser` and a new database called `testdb_copy`, run the following command:
 
 ```bash
-psql -f testdb_dump.sql testdb_copy -h mydemoserver.postgres.database.azure.com -U myuser 2> errors.log
+psql -f testdb_dump.sql testdb_copy -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser 2> errors.log
 ```
 
 #### [pg_dump & pg_restore - using multiple cores](#tab/pgrestore)
@@ -221,7 +221,7 @@ In these commands, the `-j` option stands for the number of cores you wish to us
 For example, if you have a server named `mydemoserver`, a user named `myuser` and a new database called `testdb_copy`, and you want to use two cores for the dump, run the following command:
 
 ```bash
-pg_restore -Fd -j 2 -d testdb_copy testdb.dump -h mydemoserver.postgres.database.azure.com -U myuser 2> errors.log
+pg_restore -Fd -j 2 -d testdb_copy testdb.dump -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser 2> errors.log
 ```
 
 ---
