@@ -182,8 +182,8 @@
   items:
     - name: Offline migration
       items:
-        - name: Restore PostgreSQL backup
-          href: migrate/how-to-migrate-using-dump-and-restore.md
+        - name: Dump and restore PostgreSQL migration
+          href: migrate/how-to-migrate-using-dump-and-restore.md      
 - name: Integration
   items:
     - name: Microsoft Fabric
