@@ -26,7 +26,10 @@ This new version introduces a range of new features and enhancements, resolves k
 ## Improvements 
 
 - Improved error handling when the Private DNS Zone subscription isn't registered for Microsoft.DBforPostgreSQL, preventing prolonged retries and surfacing a clearer customer facing error.
-- Subnets with both IPv4 & IPv6 now supported for Flexible Server integration. [!NOTE]: PostgreSQL connections are still limited to IPv4 only.
+- Subnets with both IPv4 & IPv6 now supported for Flexible Server integration. 
+
+>[!NOTE] 
+>PostgreSQL connections are still limited to IPv4 only.
 
 ## Known issues fix
 
