@@ -20,7 +20,6 @@ ms.custom:
 Azure HorizonDB is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure HorizonDB flexible server instance in a virtual network by using the Azure portal.
 
 
-
 If you don't have an Azure subscription, create a [free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
 ## Sign in to the Azure portal
@@ -29,7 +28,7 @@ Sign in to the [Azure portal](https://portal.azure.com). Enter your credentials 
 
 ## Create an Azure HorizonDB 
 
-You create an Azure HorizonDB flexible server instance with a defined set of [compute and storage resources](../compute-storage/concepts-compute.md). You create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
+Create an Azure HorizonDB flexible server instance with a defined set of [compute and storage resources](../compute-storage/concepts-compute.md). Create the server within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 
 Complete these steps to create an Azure HorizonDB flexible server instance:
 
