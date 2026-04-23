@@ -1,8 +1,8 @@
 ---
 title: Scale storage size
 description: This article describes how to scale the storage size of an Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
