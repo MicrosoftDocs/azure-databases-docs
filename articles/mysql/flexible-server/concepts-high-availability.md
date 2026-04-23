@@ -49,7 +49,7 @@ When you deploy a server with local-redundant HA, you create two servers in the 
 - A primary server
 - A standby replica server that has the same configuration as the primary server (compute tier, compute size, storage size, and network configuration)
 
-:::image type="content" source="media/concepts-high-availability/same-zone-ha-2.png" alt-text="Diagram of availbility zone." lightbox="media/concepts-high-availability/same-zone-ha-2.png":::
+:::image type="content" source="media/concepts-high-availability/same-zone-ha-2.png" alt-text="Diagram of availability zone." lightbox="media/concepts-high-availability/same-zone-ha-2.png":::
 
 The standby server provides infrastructure redundancy by using a separate virtual machine (compute). This redundancy reduces failover time and network latency between the application and the database server because of colocation.
 
