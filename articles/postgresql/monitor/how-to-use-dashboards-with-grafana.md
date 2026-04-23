@@ -1,6 +1,6 @@
 ---
 title: Visualize PostgreSQL metrics and logs with dashboards with Grafana
-description: Learn how to use dashboards with Grafana in the Azure Portal to monitor Azure Database for PostgreSQL metrics and logs.
+description: Learn how to use dashboards with Grafana in the Azure portal to monitor Azure Database for PostgreSQL metrics and logs.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
@@ -12,13 +12,13 @@ ms.topic: how-to
 
 # Visualize PostgreSQL metrics and logs with dashboards with Grafana
 
-Dashboards with Grafana are now natively integrated into the Azure Portal for Azure Database for PostgreSQL. This experience enables you to visualize key metrics and logs in a unified, interactive dashboard — without needing to deploy or manage a separate Grafana instance.
+Dashboards with Grafana are now natively integrated into the Azure portal for Azure Database for PostgreSQL. This experience enables you to visualize key metrics and logs in a unified, interactive dashboard—without needing to deploy or manage a separate Grafana instance.
 
-With just a few clicks, you can explore PostgreSQL server metrics, correlate them with log entries by timestamp, and build visual insights into performance and availability.
+With just a few select, you can explore Azure PostgreSQL server metrics, correlate them with log entries by timestamp, and build visual insights into performance and availability.
 
-## What is dashboards with Grafana?
+## What are dashboards with Grafana?
 
-Dashboards with Grafana is a built-in monitoring experience powered by Azure Monitor and Grafana. It surfaces featured and customizable dashboards directly within the Azure Portal, scoped to your PostgreSQL server resource.
+Dashboards with Grafana are a built-in monitoring experience powered by Azure Monitor and Grafana. It surfaces featured and customizable dashboards directly within the Azure portal, scoped to your PostgreSQL server resource.
 
 Unlike Azure Managed Grafana, this experience requires no provisioning, no cost, and is fully integrated into the PostgreSQL flexible server blade.
 
@@ -29,7 +29,7 @@ Unlike Azure Managed Grafana, this experience requires no provisioning, no cost,
 - Timestamp-based correlation between events and queries
 - Prebuilt dashboards available out of the box
 - Fully customizable dashboards with support for filters, variables, and panel edits
-- Governance support via Azure RBAC and resource scoping
+- Governance support via Azure Role-Based Access Control (RBAC) and resource scoping
 
 ## Access dashboards with Grafana
 
@@ -37,7 +37,7 @@ To launch the experience:
 
 1. Open the **Azure Portal**
 2. Navigate to your **Azure Database for PostgreSQL flexible server**
-3. Under **Monitoring**, select **Dashboards with Grafana**
+3. Left navigation pane, select **Dashboards with Grafana**
 4. Choose a featured dashboard (e.g., *Azure PostgreSQL Monitoring v2*)
 
 ## Customize dashboards
@@ -62,7 +62,9 @@ Dashboards with Grafana uses the Azure Monitor platform to surface PostgreSQL me
 - WAL (Write-Ahead Log) usage
 - Query throughput and commit rates
 
-You can also view PostgreSQL logs if diagnostic settings are enabled to send logs to Azure Monitor Logs. This allows you to:
+For complete set of metrics available for visualization, refer [Azure PostgreSQL monitoring metrics](concepts-monitoring.md).  
+
+In addition to metrics, you can also view PostgreSQL logs if diagnostic settings are enabled to send logs to Azure Monitor Logs. This allows you to:
 
 - View and search logs by timestamp
 - Correlate high CPU events with slow queries
