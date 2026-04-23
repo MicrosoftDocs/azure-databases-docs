@@ -1,8 +1,8 @@
 ---
 title: CLI release notes
 description: Azure CLI release notes for Azure Database for PostgreSQL.
-author: jjfrost
-ms.author: jfrost
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 5/1/2024
 ms.service: azure-database-postgresql
