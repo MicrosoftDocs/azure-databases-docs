@@ -25,7 +25,7 @@ When you deploy a server with zone-redundant high availability, Azure creates tw
 - A primary server in one availability zone.
 - A standby replica server in another availability zone of the same Azure region. The standby replica server has the same configuration as the primary server, including the compute tier, compute size, storage size, and network configuration.
 
-:::image type="content" source="media/concepts-high-availability/same-zone-ha-1.png" alt-text="Diagram that shows the architecture for zone-redundant high-availability." lightbox="media/concepts-high-availability/same-zone-ha-1.png":::
+:::image type="content" source="media/concepts-high-availability/zone-redundant-ha.png" alt-text="Diagram that shows the architecture for zone-redundant high-availability." lightbox="media/concepts-high-availability/zone-redundant-ha.png":::
 
 You can choose the availability zone for both the primary server and the standby replica. Placing the primary server and the standby server in the same zone reduces latency, whereas placing them in different zones helps you prepare for disaster recovery situations and zone-down scenarios.
 
@@ -49,7 +49,7 @@ When you deploy a server with local-redundant HA, you create two servers in the 
 - A primary server
 - A standby replica server that has the same configuration as the primary server (compute tier, compute size, storage size, and network configuration)
 
-:::image type="content" source="media/concepts-high-availability/same-zone-ha-2.png" alt-text="Diagram of availability zone." lightbox="media/concepts-high-availability/same-zone-ha-2.png":::
+:::image type="content" source="media/concepts-high-availability/local-redundant-ha.png" alt-text="Diagram of availability zone." lightbox="media/concepts-high-availability/local-redundant-ha.png":::
 
 The standby server provides infrastructure redundancy by using a separate virtual machine (compute). This redundancy reduces failover time and network latency between the application and the database server because of colocation.
 
