@@ -4,12 +4,12 @@ description: The $set operator in Azure DocumentDB updates or creates a new fiel
 author: abinav2307
 ms.author: abramees
 ms.topic: language-reference
-ms.date: 09/05/2025
+ms.date: 04/23/2026
 ---
 
 # $set
 
-The `$set` operator updates an existing field or creates a new field with the specified value if it does not exist. One or more fields listed are updated or created. The dot notation is used to update or create nested objects.
+The `$set` operator in Azure DocumentDB updates an existing field or creates a new field with the specified value if it does not exist. One or more fields listed are updated or created. The dot notation is used to update or create nested objects.
 
 ## Syntax
 
