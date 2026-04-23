@@ -195,9 +195,13 @@ You can monitor the health of your HA setup through the Azure portal. Key metric
 - **Replication lag:** Measures the delay between the primary and standby replicas, ensuring data consistency.
 - **Resource utilization:** Monitors CPU, memory, and storage usage to prevent bottlenecks.
 
+
+## Reliability and resilience
+
+For a comprehensive overview of reliability in Azure Database for MySQL, including transient fault handling, availability zone resilience, cross-region disaster recovery with read replicas, backup and restore, and service maintenance, see [Reliability in Azure Database for MySQL](/azure/reliability/reliability-database-mysql).
+
 ## Related content
 
 - [High-availability (HA) frequently asked questions (FAQ) in Azure Database for MySQL](concepts-high-availability-faq.md)
 - [Overview of business continuity with Azure Database for MySQL - Flexible Server](concepts-business-continuity.md)
-- [High availability in Azure Database for MySQL](concepts-high-availability.md)
-- [Backup and restore in Azure Database for MySQL](concepts-backup-restore.md)
+- [Reliability in Azure Database for MySQL](/azure/reliability/reliability-database-mysql)
