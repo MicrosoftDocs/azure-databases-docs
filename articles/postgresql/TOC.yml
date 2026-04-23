@@ -658,6 +658,8 @@
       href: monitor/how-to-alert-on-metrics.md
     - name: Configure and access logs
       href: monitor/how-to-configure-and-access-logs.md
+    - name: Use Azure Monitor dashboards with Grafana
+      href: monitor/how-to-use-dashboards-with-grafana.md
     - name: Intelligent tuning
       items:
         - name: Azure portal
