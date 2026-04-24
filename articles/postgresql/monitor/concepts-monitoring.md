@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/17/2026
+ms.date: 04/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
