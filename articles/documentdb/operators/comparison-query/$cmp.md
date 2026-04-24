@@ -1,10 +1,10 @@
 ---
   title: $cmp
-  description: The $cmp operator compares two values
+  description: The $cmp operator in Azure DocumentDB compares two values
   author: abinav2307
   ms.author: abramees
   ms.topic: language-reference
-  ms.date: 09/05/2025
+  ms.date: 04/23/2026
 ---
 
 # $cmp
