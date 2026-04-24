@@ -35,7 +35,7 @@ Unlike Azure Managed Grafana, this experience requires no provisioning, no cost,
 
 To launch the experience:
 
-1. Open the **Azure Portal**
+1. Open the **Azure portal**
 2. Navigate to your **Azure Database for PostgreSQL flexible server**
 3. Left navigation pane, select **Dashboards with Grafana**
 4. Choose a featured dashboard (e.g., *Azure PostgreSQL Monitoring v2*)
@@ -84,4 +84,4 @@ In addition to metrics, you can also view PostgreSQL logs if diagnostic settings
 - [Monitor metrics in Azure Database for PostgreSQL](concepts-monitoring.md)
 - [Configure and access logs in Azure Database for PostgreSQL](how-to-configure-and-access-logs.md)
 - [Visualize Azure Monitor data with Grafana](https://learn.microsoft.com/azure/azure-monitor/visualize/visualize-grafana-overview)
-- [GA blog: Dashboards with Grafana — Now in Azure Portal for PostgreSQL](https://aka.ms/azure-postgres-dashboards-grafana)
+- [GA blog: Dashboards with Grafana — Now in Azure portal for PostgreSQL](https://aka.ms/azure-postgres-dashboards-grafana)
