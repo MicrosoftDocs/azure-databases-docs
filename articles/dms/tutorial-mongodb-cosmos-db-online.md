@@ -54,7 +54,7 @@ This article describes an online migration from MongoDB to Azure Cosmos DB for M
 
 To complete this tutorial, you need to:
 
-- [Complete the pre-migration](/azure/cosmos-db/mongodb-pre-migration.md) steps such as estimating throughput, choosing a partition key, and the indexing policy.
+- [Complete the pre-migration](/azure/cosmos-db/mongodb-pre-migration) steps such as estimating throughput, choosing a partition key, and the indexing policy.
 
 - [Create an Azure Cosmos DB for MongoDB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and ensure [Prevent rate-limiting errors for Azure Cosmos DB for MongoDB operations](/azure/cosmos-db/mongodb/prevent-rate-limiting-errors) is enabled.
 
