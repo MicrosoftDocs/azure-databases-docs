@@ -19,7 +19,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md).
+This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](/azure/cosmos-db/mongodb-pre-migration), migration, and [post-migration](/azure/cosmos-db/mongodb-post-migration).
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png" alt-text="Diagram of migration steps.":::
 
