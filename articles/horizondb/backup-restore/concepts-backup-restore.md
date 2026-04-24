@@ -88,7 +88,7 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-Total billable backup storage size = (data backup storage size + log backup storage size)
+Total billable backup storage size = ( Changes to Data pages + log backup storage size)
 
 Data storage size isn't included in the billable backup because it's already billed as allocated database storage.
 
