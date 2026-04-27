@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 04/20/2026
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -585,7 +585,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
+Read the special considerations for extension [pgcrypto](../concepts-extensions-considerations.md#pgcrypto) in flexible server.
 ## pg_diskann
 
 [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
@@ -1116,6 +1116,22 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
+
+
+## temporal_tables
+
+[temporal_tables](https://github.com/arkhipov/temporal_tables) supports the system-period temporal tables.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 1.2.2 |
+| 17 | 1.2.2 |
+| 16 | 1.2.2 |
+| 15 | 1.2.2 |
+| 14 | 1.2.2 |
+| 13 | 1.2.2 |
+| 12 | Not supported |
+| 11 | Not supported |
 
 
 ## timescaledb
