@@ -54,16 +54,16 @@ Transaction log backups occur at variable intervals based on workload activity. 
 
 #### Monitor backup storage consumption
 
-In Azure HorizonDB, automated backup storage is free up to the initial data size. Any extra backup storage that you use is charged in gigabytes per month. 
+In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
 
 
 You can use the {[Backup Storage Used](../concepts-monitoring.md)} metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
 
 You can use the {[Backup Storage Used](../concepts-monitoring.md)} metrics in the Azure portal to monitor the backup storage that a server consumes.In HorizonDB, Azure Monitor metrics report the following consumption information:
 
-1. Data backup storage size (snapshot backup size)
-2. Data storage size (allocated database size)
-3. Log backup storage size (transaction log backup size)
+1. Data backup storage size (snapshot backup size).
+2. Data storage size (allocated database size).
+3. Log backup storage size (transaction log backup size).
 
 To view backup and data storage metrics in the Azure portal, follow these steps:
 
