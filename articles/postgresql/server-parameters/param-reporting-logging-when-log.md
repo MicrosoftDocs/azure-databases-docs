@@ -1,10 +1,10 @@
 ---
 title: Reporting and Logging / When to Log server parameters
 description: Reporting and Logging / When to Log server parameters for Azure Database for PostgreSQL flexible server.
-author: varun-dhawan
-ms.author: varundhawan
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
