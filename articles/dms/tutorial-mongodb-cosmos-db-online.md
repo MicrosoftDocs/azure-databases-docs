@@ -19,7 +19,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md).
+This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](/azure/cosmos-db/mongodb-pre-migration), migration, and [post-migration](/azure/cosmos-db/mongodb-post-migration).
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png" alt-text="Diagram of migration steps.":::
 
@@ -54,9 +54,9 @@ This article describes an online migration from MongoDB to Azure Cosmos DB for M
 
 To complete this tutorial, you need to:
 
-- [Complete the pre-migration](../cosmos-db/mongodb-pre-migration.md) steps such as estimating throughput, choosing a partition key, and the indexing policy.
+- [Complete the pre-migration](/azure/cosmos-db/mongodb-pre-migration) steps such as estimating throughput, choosing a partition key, and the indexing policy.
 
-- [Create an Azure Cosmos DB for MongoDB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and ensure [Prevent rate-limiting errors for Azure Cosmos DB for MongoDB operations](../cosmos-db/mongodb/prevent-rate-limiting-errors.md) is enabled.
+- [Create an Azure Cosmos DB for MongoDB account](https://portal.azure.com/#create/Microsoft.DocumentDB) and ensure [Prevent rate-limiting errors for Azure Cosmos DB for MongoDB operations](/azure/cosmos-db/mongodb/prevent-rate-limiting-errors) is enabled.
 
   > [!NOTE]  
   > DMS is currently not supported if you're migrating to an Azure Cosmos DB for MongoDB account provisioned with serverless mode.
@@ -196,7 +196,7 @@ After the service is created, locate it within the Azure portal, open it, and th
 
    If the string **Create** appears next to the database name, it indicates that Azure Database Migration Service didn't find the target database, and the service will create the database for you.
 
-   At this point in the migration, if you want share throughput on the database, specify a throughput RU. In Azure Cosmos DB, you can provision throughput either at the database-level or individually for each collection. Throughput is measured in [Request Units in Azure Cosmos DB](../cosmos-db/request-units.md) (RUs). Learn more about [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
+   At this point in the migration, if you want share throughput on the database, specify a throughput RU. In Azure Cosmos DB, you can provision throughput either at the database-level or individually for each collection. Throughput is measured in [Request Units in Azure Cosmos DB](/azure/cosmos-db/request-units) (RUs). Learn more about [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
    :::image type="content" source="media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png" alt-text="Screenshot of Map to target databases." lightbox="media/tutorial-mongodb-to-cosmosdb-online/dms-map-target-databases1.png":::
 
@@ -210,7 +210,7 @@ After the service is created, locate it within the Azure portal, open it, and th
 
    Perform the database migration and collection in parallel using multiple instances of Azure Database Migration Service, if necessary, to speed up the run.
 
-   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) for optimal scalability. Be sure to review the [best practices for selecting a shard/partition key](../cosmos-db/partitioning-overview.md). If you don't have a partition key, you can always use **_id** as the shard key for better throughput.
+   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](/azure/cosmos-db/partitioning-overview) for optimal scalability. Be sure to review the [best practices for selecting a shard/partition key](/azure/cosmos-db/partitioning-overview). If you don't have a partition key, you can always use **_id** as the shard key for better throughput.
 
    :::image type="content" source="media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png" alt-text="Screenshot of Select collections tables." lightbox="media/tutorial-mongodb-to-cosmosdb-online/dms-collection-setting1.png":::
 
@@ -255,7 +255,7 @@ This action will finish replaying all the pending changes and complete the migra
 
 ## Post-migration optimization
 
-After you migrate the data stored in MongoDB database to Azure Cosmos DB for MongoDB, you can connect to Azure Cosmos DB and manage the data. You can also perform other post-migration optimization steps such as optimizing the indexing policy, update the default consistency level, or configure global distribution for your Azure Cosmos DB account. For more information, see the [Post-migration optimization](../cosmos-db/mongodb-post-migration.md) article.
+After you migrate the data stored in MongoDB database to Azure Cosmos DB for MongoDB, you can connect to Azure Cosmos DB and manage the data. You can also perform other post-migration optimization steps such as optimizing the indexing policy, update the default consistency level, or configure global distribution for your Azure Cosmos DB account. For more information, see the [Post-migration optimization](/azure/cosmos-db/mongodb-post-migration) article.
 
 ## Additional resources
 
@@ -263,8 +263,8 @@ After you migrate the data stored in MongoDB database to Azure Cosmos DB for Mon
 
 - Trying to do capacity planning for a migration to Azure Cosmos DB?
 
-  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../cosmos-db/convert-vcore-to-request-unit.md)
-  - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)
+  - If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](/azure/cosmos-db/convert-vcore-to-request-unit)
+  - If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](/azure/cosmos-db/mongodb/estimate-ru-capacity-planner)
 
 ## Related content
 

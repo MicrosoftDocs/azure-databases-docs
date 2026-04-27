@@ -97,7 +97,7 @@
     - name: to Azure Cosmos DB for MongoDB (online)
       href: tutorial-mongodb-cosmos-db-online.md
     - name: to Azure DocumentDB
-      href: ../documentdb/migration-options.md#web-app-utility-online
+      href: /azure/documentdb/migration-options#web-app-utility-online
 - name: How-to guides
   items:
   - name: DMS (classic)
