@@ -19,7 +19,7 @@ ms.custom:
 
 [!INCLUDE [appliesto-mongodb-api](~/reusable-content/ce-skilling/azure/includes/cosmos-db/includes/appliesto-mongodb.md)]
 
-This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](../cosmos-db/mongodb-pre-migration.md), migration, and [post-migration](../cosmos-db/mongodb-post-migration.md), as shown below.
+This MongoDB migration guide is part of series on MongoDB migration. The critical MongoDB migration steps are [pre-migration](/azure/cosmos-db/mongodb-pre-migration), migration, and [post-migration](/azure/cosmos-db/mongodb-post-migration), as shown below.
 
 :::image type="content" source="~/reusable-content/ce-skilling/azure/media/cosmos-db/overall-migration-steps.png" alt-text="Diagram of migration steps.":::
 
@@ -40,7 +40,7 @@ In this tutorial, you migrate a dataset in MongoDB that is hosted in an Azure vi
 
 To complete this tutorial, you need to:
 
-- [Complete the pre-migration](../cosmos-db/mongodb-pre-migration.md) steps, such as estimating throughput and choosing a partition key.
+- [Complete the pre-migration](/azure/cosmos-db/mongodb-pre-migration) steps, such as estimating throughput and choosing a partition key.
 - [Create an account for the Azure Cosmos DB for MongoDB](https://portal.azure.com/#create/Microsoft.DocumentDB).
 
   > [!NOTE]  
@@ -182,7 +182,7 @@ After you create the service, locate it within the Azure portal, and open it. Th
 
    If **Create** appears next to the database name, it indicates that Azure Database Migration Service didn't find the target database, and the service will create the database for you.
 
-   At this point in the migration, you can [provision throughput](../cosmos-db/set-throughput.md). In Azure Cosmos DB, you can provision throughput either at the database level or individually for each collection. Throughput is measured in [request units](../cosmos-db/request-units.md). Learn more about [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
+   At this point in the migration, you can [provision throughput](/azure/cosmos-db/set-throughput). In Azure Cosmos DB, you can provision throughput either at the database level or individually for each collection. Throughput is measured in [request units](/azure/cosmos-db/request-units). Learn more about [Azure Cosmos DB pricing](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
    :::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png" alt-text="Screenshot that shows mapping to target databases." lightbox="media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png":::
 
@@ -197,7 +197,7 @@ After you create the service, locate it within the Azure portal, and open it. Th
    > [!NOTE]  
    > Perform the database migration and collection in parallel. If necessary, you can use multiple instances of Azure Database Migration Service to speed up the run.
 
-   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](../cosmos-db/partitioning-overview.md) for optimal scalability. Review the [best practices for selecting a shard/partition key](../cosmos-db/partitioning-overview.md).
+   You can also specify a shard key to take advantage of [partitioning in Azure Cosmos DB](/azure/cosmos-db/partitioning-overview) for optimal scalability. Review the [best practices for selecting a shard/partition key](/azure/cosmos-db/partitioning-overview).
 
    :::image type="content" source="media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png" alt-text="Screenshot that shows selecting collections tables." lightbox="media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png":::
 
@@ -230,14 +230,14 @@ After the migration finishes, you can check your Azure Cosmos DB account to veri
 
 ## Post-migration optimization
 
-After you migrate the data stored in MongoDB database to the Azure Cosmos DB for MongoDB, you can connect to Azure Cosmos DB and manage the data. You can also perform other post-migration optimization steps. These might include optimizing the indexing policy, updating the default consistency level, or configuring global distribution for your Azure Cosmos DB account. For more information, see [Post-migration optimization](../cosmos-db/mongodb-post-migration.md).
+After you migrate the data stored in MongoDB database to the Azure Cosmos DB for MongoDB, you can connect to Azure Cosmos DB and manage the data. You can also perform other post-migration optimization steps. These might include optimizing the indexing policy, updating the default consistency level, or configuring global distribution for your Azure Cosmos DB account. For more information, see [Post-migration optimization](/azure/cosmos-db/mongodb-post-migration).
 
 ## Additional resources
 
 Trying to do capacity planning for a migration to Azure Cosmos DB?
 
-- If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](../cosmos-db/convert-vcore-to-request-unit.md)
-- If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)
+- If all you know is the number of vCores and servers in your existing database cluster, read about [estimating request units using vCores or vCPUs](/azure/cosmos-db/convert-vcore-to-request-unit)
+- If you know typical request rates for your current database workload, read about [estimating request units using Azure Cosmos DB capacity planner](/azure/cosmos-db/mongodb/estimate-ru-capacity-planner)
 
 ## Related content
 
