@@ -4,7 +4,7 @@ description: Review the monitoring and metrics features in an Azure Database for
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/23/2026
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -107,12 +107,6 @@ Choose from the following categories of enhanced metrics:
 | **Tuples Updated** | `tup_updated` | Count | Number of rows that are updated by queries in this database. | DatabaseName | No |
 
 ##### Logical replication
-
-| Display name | Metric ID | Unit | Description | Dimension | Default enabled |
-| --- | --- | --- | --- | --- | --- |
-| **Max Logical Replication Lag** | `logical_replication_delay_in_bytes` | Bytes | Maximum lag across all logical replication slots. | Doesn't apply | Yes |
-| **Logical replication slot sync status (preview)** | `logical_replication_slot_sync_status` | Count | Indicates whether logical replication slots are synchronized across High Availability (HA) primary and standby.<br><br>**1** → Slots are synchronized across primary and standby.<br>**0** → Slots are not synchronized on the standby. | Logical Replication Slot | No |
-
 
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
