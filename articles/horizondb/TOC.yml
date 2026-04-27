@@ -36,8 +36,8 @@
         href: connectivity/connect-java.md
 - name: Configure and maintain
   items:
-    - name: Scale out reads
-      href: configure-maintain/scale-out-reads.md
+    - name: How to add or remove replica
+      href: configure-maintain/how-to-add-remove-replica.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
     - name: Scaling compute resources
