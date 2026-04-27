@@ -33,7 +33,7 @@ Like most NoSQL stores, Apache Cassandra isn't designed to have a normalized dat
 - `BATCH` guarantees that all statements in the batch are committed or none.
 - All the statements have the same quorum and commit semantics.
 
-If your workload truly needs a normalized data model, consider a scalable relational store like [Azure Cosmos DB for PostgreSQL](../cosmos-db/postgresql/introduction.md).
+If your workload truly needs a normalized data model, consider a scalable relational store like [Azure Cosmos DB for PostgreSQL](/azure/cosmos-db/postgresql/introduction).
 
 ## Enable materialized views
 
