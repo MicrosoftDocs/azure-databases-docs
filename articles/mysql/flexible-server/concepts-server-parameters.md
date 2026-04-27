@@ -197,7 +197,7 @@ Creating new client connections to MySQL takes time. After you establish these c
 A connection pooler that decreases idle connections and reuses existing connections helps you avoid this problem. For the best experience, we recommend that you use a connection pooler like ProxySQL to efficiently manage connections. To learn about setting up ProxySQL, see [this blog post](https://techcommunity.microsoft.com/blog/adformysql/load-balance-read-replicas-using-proxysql-in-azure-database-for-mysql/880042).
 
 > [!NOTE]  
-> ProxySQL is an open-source community tool. Microsoft supports it on a best-effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/services/support/).
+> ProxySQL is an open-source community tool. Microsoft supports it on a best-effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/contact-us).
 
 ### innodb_strict_mode
 

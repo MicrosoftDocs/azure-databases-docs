@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/20/2026
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -45,7 +45,7 @@ ms.custom:
 | [pgaudit](https://www.pgaudit.org/) provides auditing functionality. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server. |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server. |
-| [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | Read the special considerations for extension [pgcrypto](../concepts-extensions-considerations.md#pgcrypto) in flexible server. |
 | [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | Not supported | |
 | [pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications. | Not supported | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server. |
@@ -79,6 +79,7 @@ ms.custom:
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
 | [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | Not supported | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
+| [temporal_tables](https://github.com/arkhipov/temporal_tables) supports the system-period temporal tables. | Not supported | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 1.7.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | Not supported | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |
