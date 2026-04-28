@@ -1,6 +1,6 @@
 ---
 title: AI functions in the azure_ai extension (Preview)
-description: Overview of AI functions in the azure_ai extension for Azure Database for PostgreSQL. These operfunctionsators bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+description: Overview of AI functions in the azure_ai extension for Azure Database for PostgreSQL. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
