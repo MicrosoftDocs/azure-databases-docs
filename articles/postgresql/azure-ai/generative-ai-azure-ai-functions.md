@@ -1,42 +1,43 @@
 ---
-title: Semantic Operators in the Azure AI Extension
-description: Overview of semantic operator capabilities in the azure_ai extension for Azure Database for PostgreSQL. These operators bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+title: AI functions in the azure_ai extension (Preview)
+description: Overview of AI functions in the azure_ai extension for Azure Database for PostgreSQL. These operfunctionsators bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.subservice: ai-semantic-operators
+ms.subservice: ai-functions
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure Database for PostgreSQL flexible server instances, explore their use cases, and learn how to use them effectively.
+# customer intent: As a user, I want to understand the available AI functions in the azure_ai extension for Azure Database for PostgreSQL flexible server instances, explore their use cases, and learn how to use them effectively.
 ---
 
-# Semantic operators in the Azure AI extension (Preview)
+# AI functions in the azure_ai extension (Preview)
 
-The Azure AI extension introduces **Semantic Operators**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these operators, which models like chat completion and other [Azure AI deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for understanding text, reasoning, and generating structured outputs.
+The `azure_ai` extension introduces **AI functions**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these functions with models like chat-completion, embeddings and other [Foundry model deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for generating vector embeddings, understanding text, reasoning, and generating structured outputs.
 
 ## Key features
 
-The Semantic Operators provide users with four core SQL functions that use generative AI capabilities:
+The AI functions provide users with five core SQL functions that use generative AI capabilities:
 
 - `azure_ai.generate()`: Generates text or structured output using Large Language Models (LLMs).
 - `azure_ai.is_true()`: Evaluates the likelihood that a given statement is true.
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
+- [`azure_openai.create_embeddings()`](generative-ai-azure-openai): Creates vector embeddings for a given input text.
 
 Each function operates through Microsoft Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
-## Understanding semantic operators
+## Understanding AI functions
 
-Semantic Operators in the Azure AI extension simplify complex AI-driven tasks directly within your PostgreSQL database. By using these operators, you can seamlessly integrate generative AI capabilities into your SQL workflows. You can perform advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
+AI functions in the `azure_ai` extension simplify complex AI-driven tasks directly within your PostgreSQL database. By using these functions, you can seamlessly integrate generative AI capabilities into your SQL workflows. You can perform advanced text generation, truth evaluation, entity extraction, and document ranking. Each function is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
 ### `azure_ai.generate()`
 
-Use this operator to generate text or structured output by using LLMs.
+Use this function to generate text or structured output by using LLMs.
 
 It supports the following input parameters:
 
@@ -47,7 +48,7 @@ It supports the following input parameters:
 | `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Foundry. |
 | `system_prompt` (optional) | `text` `DEFAULT "You are a helpful assistant."` | System prompt to send to the LLM. |
 
-By default, the operator returns a `text` value containing the generated response. If you provide the `json_schema` argument, the operator returns the output as a structured `JsonB` object that conforms to the specified schema.
+By default, the function returns a `text` value containing the generated response. If you provide the `json_schema` argument, the function returns the output as a structured `JsonB` object that conforms to the specified schema.
 
 **Example usage:**
 
@@ -81,7 +82,7 @@ FROM
 
 ### `azure_ai.is_true()`
 
-This operator evaluates the likelihood that a given statement is true. It returns a `boolean` value or `NULL` if the result is inconclusive.
+This function evaluates the likelihood that a given statement is true. It returns a `boolean` value or `NULL` if the result is inconclusive.
 
 It supports the following input parameters:
 
@@ -104,7 +105,7 @@ FROM product_reviews;
 
 ### `azure_ai.extract()`
 
-Use this operator to extract structured features or entities from text based on user-defined labels.
+Use this function to extract structured features or entities from text based on user-defined labels.
 
 It supports the following input parameters:
 
@@ -114,7 +115,7 @@ It supports the following input parameters:
 | `data` | `array[text]` | An array of labels or feature names, where each entry represents a distinct entity type to extract from the input text. |
 | `model` (optional) | `text` `DEFAULT "gpt-4.1"` | Name of the model deployment in Foundry. |
 
-The operator returns a `JsonB` object containing the extracted entities mapped to their corresponding labels.
+The function returns a `JsonB` object containing the extracted entities mapped to their corresponding labels.
 
 **Example usage**:
 
@@ -140,7 +141,7 @@ SELECT azure_ai.extract(
 
 ### `azure_ai.rank()`
 
-Use this operator to rerank documents based on their relevance to a given query. It supports cross-encoder and GPT models.
+Use this function to rerank documents based on their relevance to a given query. It supports cross-encoder and GPT models.
 
 It supports the following input parameters:
 
@@ -151,7 +152,7 @@ It supports the following input parameters:
 | `document_ids` (optional) | `array` | An array of document identifiers corresponding to the input documents. |
 | `model` (optional) | `text` `DEFAULT "cohere-rerank-v3.5"` | Name of the model deployment in Foundry. Supports both cross-encoder and GPT-based models. |
 
-The operator returns a `table` containing the document ID, its rank, and the associated relevance score.
+The function returns a `table` containing the document ID, its rank, and the associated relevance score.
 
 **Example usage:**
 
@@ -180,11 +181,11 @@ SELECT azure_ai.rank(
 
 ## How to get started
 
-To use Semantic Operators in your PostgreSQL database, follow these steps:
+To use AI functions in your PostgreSQL database, follow these steps:
 
-### Setup for `.generate()`, `.extract()`, and `.is_true()` operators
+### Setup for `.generate()`, `.extract()`, and `.is_true()` functions
 
-These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series).
+These functions support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series).
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server instance.
 1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model).
@@ -204,7 +205,7 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
    - Set the `azure_openai.auth_type` to 'managed-identity'.
    - Set the `azure_openai.endpoint` with the endpoint URL.
 
-1. You're now all set to invoke the `.generate()`, `.is_true()`, and `.extract()` operators.
+1. You're now all set to invoke the `.generate()`, `.is_true()`, and `.extract()` functions.
 
    Example usage with `gpt-4.1` (default):
 
@@ -224,9 +225,9 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
    FROM products;
    ```
 
-### Setup for `.rank()` operator
+### Setup for `.rank()` function
 
-The `.rank()` operator supports both cross encoder and chat completion models. It defaults to the cross encoder [`Cohere-rerank-v3.5`](/azure/ai-foundry/concepts/models-inference-examples#cohere-rerank).
+The `.rank()` function supports both cross encoder and chat completion models. It defaults to the cross encoder [`Cohere-rerank-v3.5`](/azure/ai-foundry/concepts/models-inference-examples#cohere-rerank).
 
 Using `Cohere-rerank-v3.5` cross-encoder:
 
@@ -248,7 +249,7 @@ Using `Cohere-rerank-v3.5` cross-encoder:
    - Set the `azure_ml.auth_type` to 'managed-identity'.
    - Set the `azure_ml.serverless_ranking_endpoint` with the Cohere reranker API.
 
-1. You're now all set to invoke the `.rank()` operator by using Cohere reranker model.
+1. You're now all set to invoke the `.rank()` function by using Cohere reranker model.
 
    ```sql
    SELECT azure_ai.rank(
@@ -261,7 +262,7 @@ Using `Cohere-rerank-v3.5` cross-encoder:
    ) AS ranked_reviews;
    ```
 
-To use the `.rank()` operator with chat completion models like `gpt-4.1`, deploy the desired model on Azure OpenAI, configure the `azure_ai` extension with the model's endpoint details, and specify the model name when invoking the operator.
+To use the `.rank()` function with chat completion models like `gpt-4.1`, deploy the desired model on Azure OpenAI, configure the `azure_ai` extension with the model's endpoint details, and specify the model name when invoking the function.
 
 ```sql
 SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com/');
@@ -281,7 +282,7 @@ SELECT azure_ai.rank(
 ## Related content
 
 - [Generative AI with Azure Database for PostgreSQL](generative-ai-overview.md)
-- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [azure_ai extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Vector stores in Azure Database for PostgreSQL](generative-ai-vector-databases.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
