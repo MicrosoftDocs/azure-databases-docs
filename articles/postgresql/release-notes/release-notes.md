@@ -100,7 +100,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Preview
     - [Confidential Computing](../security/security-confidential-computing.md)
     - [Apache Age extension](../azure-ai/generative-ai-age-overview.md)
-    - [Semantic operators](../azure-ai/generative-ai-azure-ai-semantic-operators.md)
+    - [AI functions](../azure-ai/generative-ai-azure-ai-functions.md)
     - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
     - [GitHub Copilot integration with new PostgreSQL VS Code extension](../extensions/vs-code-extension/quickstart-github-copilot.md)
     - [Major Version Upgrade Support for PostgreSQL 17](../configure-maintain/concepts-major-version-upgrade.md)

@@ -19,7 +19,7 @@ ms.custom:
 
 # azure_ai extension in Azure Database for PostgreSQL
 
-The azure_ai extension in Azure Database for PostgreSQL enables in-database use of large language models (LLMs) to build generative AI applications. It allows the database to call into [Azure OpenAI in Microsoft Foundry models](https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure#azure-openai-in-microsoft-foundry-models), [Azure OpenAI Service](/azure/ai-services/openai/overview), [Azure Cognitive Services (Azure Language in Foundry Tools)](https://learn.microsoft.com/en-us/azure/ai-services/language-service/), and [Azure Machine Learning Services](https://learn.microsoft.com/en-us/azure/machine-learning/), simplifying development through seamless integration with these services.
+The azure_ai extension in Azure Database for PostgreSQL enables in-database use of large language models (LLMs) to build generative AI applications. It allows the database to call into [Azure OpenAI in Microsoft Foundry models](https://learn.microsoft.com/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure#azure-openai-in-microsoft-foundry-models), [Azure OpenAI Service](/azure/ai-services/openai/overview), [Azure Cognitive Services (Azure Language in Foundry Tools)](https://learn.microsoft.com/azure/ai-services/language-service/), and [Azure Machine Learning Services](https://learn.microsoft.com/azure/machine-learning/), simplifying development through seamless integration with these services.
 
 ## Enable the azure_ai extension
 
@@ -120,7 +120,7 @@ SELECT azure_ai.version()
 
 The azure_ai extension for Azure Database for PostgreSQL supports System Assigned Managed Identity (SAMI) which offers enhanced security benefits. By using Microsoft Entra ID, users can authenticate without access keys, reducing the risk of unauthorized access and simplifying credential management.
 
-To enable managed identity authentication, see [this how-to guide](generative-ai-enable-managed-identity-azure-ai).
+To enable managed identity authentication, see [this how-to guide](generative-ai-enable-managed-identity-azure-ai.md).
 
 ## Capabilities of the `azure_ai` extension
 
@@ -128,17 +128,17 @@ To enable managed identity authentication, see [this how-to guide](generative-ai
 
 The azure_ai extension enables in-database calls to models hosted in Microsoft Foundry and Azure OpenAI through the following **AI functions (Preview)**:
 
-- [`azure_openai.create_embeddings()`](generative-ai-azure-openai): Creates vector embeddings for a given input text.
-- [`azure_ai.generate()`](generative-ai-azure-ai-functions#azure_aigenerate): Generates text or structured output using Large Language Models (LLMs).
-- [`azure_ai.is_true()`](generative-ai-azure-ai-functions#azure_aiis_true): Evaluates the likelihood that a given statement is true.
-- [`azure_ai.extract()`](generative-ai-azure-ai-functions#azure_aiextract): Extracts structured features or entities from text.
-- [`azure_ai.rank()`](generative-ai-azure-ai-functions#azure_airank): Reranks a list of documents based on relevance to a given query.
+- [`azure_openai.create_embeddings()`](generative-ai-azure-openai.md): Creates vector embeddings for a given input text.
+- [`azure_ai.generate()`](generative-ai-azure-ai-functions.md#azure_aigenerate): Generates text or structured output using Large Language Models (LLMs).
+- [`azure_ai.is_true()`](generative-ai-azure-ai-functions.md#azure_aiis_true): Evaluates the likelihood that a given statement is true.
+- [`azure_ai.extract()`](generative-ai-azure-ai-functions.md#azure_aiextract): Extracts structured features or entities from text.
+- [`azure_ai.rank()`](generative-ai-azure-ai-functions.md#azure_airank): Reranks a list of documents based on relevance to a given query.
 
 ### Additional capabilities 
 
 The extension also supports invoking
-- [Azure Language in Foundry Tools](generative-ai-azure-cognitive): Enables tasks such as sentiment analysis directly within the database.
-- [Azure Machine Learning online endpoints](generative-ai-azure-machine-learning): Allows you to call models from the Azure Machine Learning catalog or custom-trained deployments.
+- [Azure Language in Foundry Tools](generative-ai-azure-cognitive.md): Enables tasks such as sentiment analysis directly within the database.
+- [Azure Machine Learning online endpoints](generative-ai-azure-machine-learning.md): Allows you to call models from the Azure Machine Learning catalog or custom-trained deployments.
 
 
 ## Upgrade the Azure AI extension

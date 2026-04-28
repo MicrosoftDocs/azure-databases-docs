@@ -6,7 +6,7 @@ ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql
-ms.subservice: ai-functions
+ms.subservice: ai-semantic-operators
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
@@ -27,7 +27,7 @@ The AI functions provide users with five core SQL functions that use generative 
 - `azure_ai.is_true()`: Evaluates the likelihood that a given statement is true.
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
-- [`azure_openai.create_embeddings()`](generative-ai-azure-openai): Creates vector embeddings for a given input text.
+- [`azure_openai.create_embeddings()`](generative-ai-azure-openai.md): Creates vector embeddings for a given input text.
 
 Each function operates through Microsoft Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
