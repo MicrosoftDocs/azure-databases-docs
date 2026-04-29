@@ -1,8 +1,8 @@
 ---
 title: Release notes index for Azure Database for MySQL Flexible Server
 description: Learn about the release notes for Azure Database for MySQL Flexible Server.
-author: moabuham 
-ms.author: moabuham 
+author: SudheeshGH
+ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 09/01/2025
 ms.service: azure-database-mysql
