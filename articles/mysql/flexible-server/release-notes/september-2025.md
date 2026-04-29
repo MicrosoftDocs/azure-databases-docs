@@ -1,8 +1,8 @@
 ---
 title: Release Notes for Azure Database for MySQL Flexible Server - September 2025
 description: Learn about the release notes for Azure Database for MySQL Flexible Server September 2025.
-author: moabuham 
-ms.author: moabuham 
+author: SudheeshGH
+ms.author: sunaray
 ms.reviewer: maghan, randolphwest
 ms.date: 01/05/2026
 ms.service: azure-database-mysql
