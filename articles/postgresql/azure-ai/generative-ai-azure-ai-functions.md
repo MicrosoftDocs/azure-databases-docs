@@ -1,5 +1,5 @@
 ---
-title: AI functions in the azure_ai extension (Preview)
+title: AI Functions in the azure_ai Extension (Preview)
 description: Overview of AI functions in the azure_ai extension for Azure Database for PostgreSQL. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
 author: shreyaaithal
 ms.author: shaithal
@@ -17,21 +17,23 @@ ms.custom:
 
 # AI functions in the azure_ai extension (Preview)
 
-The `azure_ai` extension introduces **AI functions**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these functions with models like chat-completion, embeddings and other [Foundry model deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for generating vector embeddings, understanding text, reasoning, and generating structured outputs.
+The `azure_ai` extension introduces **AI functions**, a feature that integrates advanced generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these functions with models like chat-completion, embeddings, and other [Foundry model deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for generating vector embeddings, understanding text, reasoning, and generating structured outputs.
 
 ## Key features
 
 The AI functions provide users with five core SQL functions that use generative AI capabilities:
 
-- `azure_ai.generate()`: Generates text or structured output using Large Language Models (LLMs).
+- `azure_ai.generate()`: Generates text or structured output by using large language models (LLMs).
 - `azure_ai.is_true()`: Evaluates the likelihood that a given statement is true.
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
-- [`azure_openai.create_embeddings()`](generative-ai-azure-openai.md): Creates vector embeddings for a given input text.
+- [Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL](generative-ai-azure-openai.md): Creates vector embeddings for a given input text.
 
 Each function operates through Microsoft Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
-## Understanding AI functions
+<a id="understanding-ai-functions"></a>
+
+## Understand AI functions
 
 AI functions in the `azure_ai` extension simplify complex AI-driven tasks directly within your PostgreSQL database. By using these functions, you can seamlessly integrate generative AI capabilities into your SQL workflows. You can perform advanced text generation, truth evaluation, entity extraction, and document ranking. Each function is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
@@ -189,7 +191,7 @@ These functions support chat completion models and default to [`gpt-4.1`](/azure
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL flexible server instance.
 1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model).
-1. Note the Azure OpenAI **endpoint URL** and **API key**.
+1. Note the Azure OpenAI in Foundry Models **endpoint URL** and **API key**.
 1. **Configure access**:
 
    To enable the `azure_ai` extension to invoke this model by using subscription key authentication, run the following SQL commands:
@@ -229,7 +231,7 @@ These functions support chat completion models and default to [`gpt-4.1`](/azure
 
 The `.rank()` function supports both cross encoder and chat completion models. It defaults to the cross encoder [`Cohere-rerank-v3.5`](/azure/ai-foundry/concepts/models-inference-examples#cohere-rerank).
 
-Using `Cohere-rerank-v3.5` cross-encoder:
+To use the `Cohere-rerank-v3.5` cross encoder:
 
 1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure Database for PostgreSQL instance.
 1. Go to Foundry and **[deploy the `Cohere-rerank-v3.5` model](https://ai.azure.com/explore/models?&selectedCollection=cohere)** by using the Serverless API purchase option.
