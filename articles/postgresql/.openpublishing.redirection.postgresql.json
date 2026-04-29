@@ -3904,6 +3904,11 @@
             "source_path_from_root": "/articles/postgresql/monitor/how-to-get-and-apply-recommendations-from-index-tuning.md",
             "redirect_url": "/azure/postgresql/monitor/how-to-get-apply-recommendations-from-autonomous-tuning",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/azure-ai/generative-ai-azure-ai-semantic-operators.md",
+            "redirect_url": "/azure/postgresql/azure-ai/generative-ai-azure-ai-functions",
+            "redirect_document_id": true
         }
     ]
 }
