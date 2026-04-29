@@ -96,15 +96,15 @@
         - name: Scalable vector indexing using pg_diskann
           href: extensions/how-to-use-pgdiskann.md
         - name: Semantic reranking of vector search results
-          href: azure-ai/generative-ai-semantic-search.md
-    - name: Semantic operators in SQL
+          href: azure-ai/generative-ai-azure-ai-functions.md#setup-for-rank-function
+    - name: AI functions in SQL
       items:
         - name: Introduction to the azure_ai extension
           href: azure-ai/generative-ai-azure-overview.md
-        - name: Create vector embeddings using Azure OpenAI
+        - name: Create vector embeddings using create_embeddings() function
           href: azure-ai/generative-ai-azure-openai.md
-        - name: Use generate(), is_true() and extract() operators
-          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: Use generate(), is_true(), extract() and rank() functions
+          href: azure-ai/generative-ai-azure-ai-functions.md
         - name: Invoke Azure Language capabilities
           href: azure-ai/generative-ai-azure-cognitive.md
         - name: Invoke Azure Machine Learning models
@@ -157,14 +157,14 @@
       href: extensions/how-to-update-extensions.md
     - name: View installed extensions
       href: extensions/how-to-view-installed-extensions.md
-    - name: Azure AI
+    - name: azure_ai
       items:
         - name: Overview
           href: azure-ai/generative-ai-azure-overview.md
         - name: create_embeddings() using Azure OpenAI
           href: azure-ai/generative-ai-azure-openai.md
-        - name: generate(), is_true(), extract() and rank() operators
-          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
+        - name: generate(), is_true(), extract() and rank() functions
+          href: azure-ai/generative-ai-azure-ai-functions.md
         - name: Invoke Azure Cognitive Services
           href: azure-ai/generative-ai-azure-cognitive.md
         - name: Invoke Azure Machine Learning models
