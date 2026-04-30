@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/20/2026
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -2551,6 +2551,23 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/16/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_qs.emit_query_text
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Controls whether query text is emitted in telemetry pipeline. Need to reload the config for the change to take effect |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [pg_qs.emit_query_text](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

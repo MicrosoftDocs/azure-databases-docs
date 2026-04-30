@@ -1,10 +1,10 @@
 ---
 title: Replication / Master Server server parameters
 description: Replication / Master Server server parameters for Azure Database for PostgreSQL flexible server.
-author: gkasar
-ms.author: gkasar
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article

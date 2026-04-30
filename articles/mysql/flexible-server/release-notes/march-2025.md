@@ -1,8 +1,8 @@
 ---
 title: Release Notes for Azure Database for MySQL - March 2025
 description: Learn about the release notes for Azure Database for MySQL Flexible Server March 2025.
-author: moabuham 
-ms.author: moabuham 
+author: SudheeshGH
+ms.author: sunaray
 ms.reviewer: maghan
 ms.date: 04/22/2025
 ms.service: azure-database-mysql
