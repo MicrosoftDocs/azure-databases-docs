@@ -1,8 +1,8 @@
 ---
 title: Set up Scheduled Maintenance in the Azure portal
 description: Learn how to configure scheduled maintenance settings for Azure Database for MySQL - Flexible server from the Azure portal.
-author: SudheeshGH
-ms.author: sunaray
+author: hariramt
+ms.author: hariramt
 ms.reviewer: sunaray, maghan
 ms.date: 11/25/2025
 ms.service: azure-database-mysql
