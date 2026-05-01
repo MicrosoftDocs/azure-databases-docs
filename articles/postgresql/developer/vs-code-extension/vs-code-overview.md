@@ -68,6 +68,41 @@ The Results Viewer enables you to interact with query results through features s
 
 This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
 
+### Apache AGE Graph Visualization
+
+Run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
+
+To render results in the graph visualizer, your queries must meet the following requirements:
+
+- **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead of returning properties, return the full objects and name the relationship variable:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+
+- **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      SET a.disp_label = a.title
+      SET b.disp_label = b.title
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+
+- **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r1:BOUGHT_TOGETHER]->(mid:Product)-[r2:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r1, mid, r2, b
+  $$) AS (a agtype, r1 agtype, mid agtype, r2 agtype, b agtype);
+  ```
+
 ## Supported operating systems
 
 The PostgreSQL extension works with the following operating systems:
