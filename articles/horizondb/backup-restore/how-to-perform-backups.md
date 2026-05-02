@@ -68,4 +68,4 @@ az postgres flexible-server backup create \
 ## Related content
 
 - [List all backups](how-to-list-all-backups.md).
-- [Delete on-demand backups](how-to-delete-backups.md).
+

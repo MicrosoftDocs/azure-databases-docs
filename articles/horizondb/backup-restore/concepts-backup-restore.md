@@ -10,7 +10,7 @@ ms.subservice: backup-restore
 ms.topic: concept-article
 ms.custom:
   - build-2026
-  ---
+---
 
 # Backup and restore in Azure HorizonDB
 
@@ -122,7 +122,7 @@ The following screenshot shows an example cost analysis.
 
 << Image>>
 
->[!Note]
+> [!Note]
 > Irrespective of the database size, heavy transactional activity on the server generates more WAL files. The increase in files in turn increases the backup storage.
 
 ## Point-in-time recovery
