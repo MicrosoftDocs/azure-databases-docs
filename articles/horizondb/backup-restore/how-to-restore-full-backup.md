@@ -1,17 +1,17 @@
 ---
-title: Restore full backup (fast restore)
+title: Fast restore in Azure HorizonDB
 description: This article describes how to restore a full backup (fast restore) of an Azure HorizonDB flexible server.
-author: avnishrastogimsft
-ms.author: avrastog
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 04/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to restore a full backup (fast restore) of an Azure HorizonDB.
 ---
 
-# Restore full backup (fast restore)
+# Perform fast restore in Azure HorizonDB
 
 This article provides step-by-step instructions to perform a restore of an Azure HorizonDB flexible server to one of its available full backups.
 
@@ -48,7 +48,6 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Resource group** | The [resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group) in the selected subscription, in which you want to create the resource. It can be an existing resource group, or you can select **Create new**, and provide a name in that subscription which is unique among the existing resource group names. | A resource group is a container that holds related resources for an Azure solution. The resource group can include all the resources for the solution, or only those resources that you want to manage as a group. You decide how you want to allocate resources to resource groups based on what makes the most sense for your organization. Generally, add resources that share the same lifecycle to the same resource group so you can easily deploy, update, and delete them as a group | An existing Azure HorizonDB flexible server instance can be moved to a different subscription from the one it was originally created. For more information, see Move [Azure resources to a new resource group or subscription](/azure/azure-resource-manager/management/move-resource-group-and-subscription). |
     | **Source details** | | | | |
     | | **Source server** | The name of the server whose backup you want to restore on the newly deployed server. | | |
-    | | **Geo-redundant restore** | If the source server was created with [geo-redundant backups](concepts-backup-restore.md#geo-redundant-backup-and-restore), this option would be enabled. If it's enabled, you could restore a backup kept in the storage account of the paired region to create a new server in that other region. | | |
     | | **Earliest restore point** | The oldest backup of the source server available to restore from. the server whose backup you want to restore on the newly deployed server. Backups are automatically deleted, based on the backup retention period configured on the source server. | | |
     | | **Point-in-time-restore (PITR)** | Possible options are **Latest restore point (Now)**, **Select a custom restore point**, and **Select Fast restore point (Restore using full backup only)**. | To restore to latest restore point, select **Latest restore point (Now)**. | |
     | **Server details** | | | | |
@@ -80,9 +79,7 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Storage autogrow** | Can't be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow in an Azure HorizonDB flexible server](../scale/how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
     | **Backups** | | | | |
     | | **Backup retention period (in days)** | Can't be changed and is automatically set to the same value as the source server. | The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. | Can be changed after instance is created. |
-    | | **Backup redundancy** | Automatically selected for you, based on the configuration of high availability and geo-redundancy of backups. | Possible values are **Locally redundant** (provides at least 99.999999999% durability of backup objects over a year), **Zone redundant** (provides at least 99.9999999999% durability of backup objects over a year), and **Geo-Redundant** (provides at least 99.99999999999999% durability of backup objects over a year). When **Geo-redundancy** is enabled for the backup, then the backup redundancy option is set to **Geo-Redundant**. Otherwise, if high availability is set to **Disabled** or **Same zone**, then backup redundancy is set to **Locally redundant**. And if high availability is set to **Zone redundant**, then backup redundancy is set to **Zone redundant**. For more information, see [Backup redundancy options in Azure HorizonDB flexible server](concepts-backup-restore.md#backup-redundancy-options). | Can't be changed after instance is created. |
-    | | **Geo-redundancy** | Leave this option disabled. | Geo-redundancy in backups is only supported on instances deployed in any of the [Azure paired regions](/azure/reliability/cross-region-replication-azure). For more information, see [Geo-redundant backup and restore in Azure HorizonDB flexible server](concepts-backup-restore.md#geo-redundant-backup-and-restore)| Can't be changed after instance is created. |
-
+    
 10. Once all the new server is configured to your needs, select **Review + create**.
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::

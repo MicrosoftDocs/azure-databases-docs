@@ -1,10 +1,10 @@
 ---
-title: Overview of business continuity
+title: Overview of business continuity in Azure HorizonDB
 description: Learn about the concepts of business continuity with an Azure HorizonDB flexible server instance.
-author: avnishrastogimsft
-ms.author: avrastog
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 10/17/2025
+ms.date: 04/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -53,7 +53,7 @@ Below are some planned maintenance scenarios. These events typically incur up to
 | <b>Compute scaling (User-initiated)| During compute scaling operation, active checkpoints are allowed to complete, client connections are drained, any uncommitted transactions are canceled, storage is detached, and then it's shut down. A new Azure HorizonDB flexible server instance with the same database server name is provisioned with the scaled compute configuration. The storage is then attached to the new server and the database is started which performs recovery, if necessary, before accepting client connections. |
 | <b>Scaling up storage (User-initiated) | When a scaling up storage operation is initiated, active checkpoints are allowed to complete, client connections are drained, and any uncommitted transactions are canceled. After that the server is shut down. The storage is scaled to the desired size and then attached to the new server. A recovery is performed if needed before accepting client connections. Note that scaling down of the storage size isn't supported. |
 | <b>New software deployment (Azure-initiated) | New features rollout or bug fixes automatically happen as part of service’s planned maintenance, and you can schedule when those activities to happen. For more information, check your [portal](https://aka.ms/servicehealthpm). | 
-| <b>Minor version upgrades (Azure-initiated) | Azure HorizonDB automatically patches database servers to the minor version determined by Azure. It happens as part of the service's planned maintenance. The database server is automatically restarted with the new minor version. For more information, see {[documentation](../concepts-monitoring.md#planned-maintenance-notification)}. You can also check your [portal](https://aka.ms/servicehealthpm).| 
+| <b>Minor version upgrades (Azure-initiated) | Azure HorizonDB automatically patches database servers to the minor version determined by Azure. It happens as part of the service's planned maintenance. The database server is automatically restarted with the new minor version. 
 
 When the Azure HorizonDB flexible server instance is configured with **high availability**, the service performs the scaling and the maintenance operations on the standby server first. For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server.
 
@@ -94,24 +94,20 @@ Below are some unplanned failure scenarios and the recovery process.
 | ---------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------- |
 | **Database server failure** | If the database server is down, Azure will attempt to restart the database server. If that fails, the database server will be restarted on another physical node.  <br /> <br /> The recovery time (RTO) is dependent on various factors including the activity at the time of fault, such as large transaction, and the volume of recovery to be performed during the database server startup process. <br /> <br /> Applications using the PostgreSQL databases need to be built in a way that they detect and retry dropped connections and failed transactions.                                                                                                                                                                  | If the database server failure is detected, the server is failed over to the standby server, thus reducing downtime. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. RTO is expected to be 60-120s, with zero data loss. |
 | **Storage failure** | Applications don't see any impact for any storage-related issues such as a disk failure or a physical block corruption. As the data is stored in three copies, the copy of the data is served by the surviving storage. The corrupted data block is automatically repaired and a new copy of the data is automatically created. | For any rare and non-recoverable errors such as the entire storage is inaccessible, the Azure HorizonDB flexible server instance is failed over to the standby replica to reduce the downtime. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. |
-| **Logical/user errors** | To recover from user errors, such as accidentally dropped tables or incorrectly updated data, you have to perform a {[point-in-time recovery](../concepts-backup.md)} (PITR). While performing the restore operation, you specify the custom restore point, which is the time right before the error occurred.<br> <br>  If you want to restore only a subset of databases or specific tables rather than all databases in the database server, you can restore the database server in a new instance, export the table(s) via [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), and then use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to restore those tables into your database. | These user errors aren't protected with high availability as all changes are replicated to the standby replica synchronously. You have to perform point-in-time restore to recover from such errors. |
+| **Logical/user errors** | To recover from user errors, such as accidentally dropped tables or incorrectly updated data, you have to perform a point-in-time recovery(PITR). While performing the restore operation, you specify the custom restore point, which is the time right before the error occurred.<br> <br>  If you want to restore only a subset of databases or specific tables rather than all databases in the database server, you can restore the database server in a new instance, export the table(s) via [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), and then use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to restore those tables into your database. | These user errors aren't protected with high availability as all changes are replicated to the standby replica synchronously. You have to perform point-in-time restore to recover from such errors. |
 | **Availability zone failure** | To recover from a zone-level failure, you can perform point-in-time restore using the backup and choosing a custom restore point with the latest time to restore the latest data. A new Azure HorizonDB flexible server instance is deployed in another non-impacted zone. The time taken to restore depends on the previous backup and the volume of transaction logs to recover. | An Azure HorizonDB flexible server instance is automatically failed over to the standby server within 60-120s with zero data loss. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. | 
-| **Region failure** | If your server is configured with geo-redundant backup, you can perform geo-restore in the paired region. A new server will be provisioned and recovered to the last available data that was copied to this region. <br /> <br /> You can also use cross region read replicas. In the event of region failure you can perform disaster recovery operation by promoting your read replica to be a standalone read-writeable server. RPO is expected to be up to 5 minutes (data loss possible) except in the case of severe regional failure when the RPO can be close to the replication lag at the time of failure.                                                                                                               | Same process. |
 
 
 ### Configure your database after recovery from regional failure
 
-* If you are using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. You can follow the [Post-restore tasks](concepts-backup-restore.md#geo-redundant-backup-and-restore).
 * If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in Azure HorizonDB](../monitor/how-to-configure-and-access-logs.md).
 * Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure HorizonDB](../monitor/how-to-alert-on-metrics.md).
 
-> [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+
 
 ## Related content
 
-- [High availability in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server).
 - [Restore to latest restore point](how-to-restore-latest-restore-point.md).
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 - [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
-- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
+
