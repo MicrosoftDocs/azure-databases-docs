@@ -1,5 +1,5 @@
 ---
-title: List all backups
+title: List all backups in Azure HorizonDB Cluster
 description: This article describes how to list all backups of an Azure HorizonDB flexible server instance.
 author: avnishrastogimsft
 ms.author: avrastog
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how can I list all full backups of an Azure HorizonDB flexible server instance.
 ---
 
-# List all backups
+# List all backups in Azure HorizonDB
 
 This article provides step-by-step instructions to list all full backups of an Azure HorizonDB flexible server instance.
 
@@ -47,5 +47,5 @@ az postgres flexible-server backup list \
 
 ## Related content
 
-- [Perform on-demand backups](how-to-perform-backups.md).
-- [Delete on-demand backups](how-to-delete-backups.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore full backup (fast restore)](how-to-restore-full-backup.md).

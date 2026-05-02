@@ -1,5 +1,5 @@
 ---
-title: Backup and restore
+title: Backup and restore in Azure HorizonDB Cluster
 description: Learn about the concepts of backup and restore with Azure HorizonDB.
 author: kabharati
 ms.author: kabharati
@@ -57,9 +57,9 @@ Transaction log backups occur at variable intervals based on workload activity. 
 In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
 
 
-You can use the {[Backup Storage Used](../concepts-monitoring.md)} metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
+You can use the Backup Storage Used metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
 
-You can use the {[Backup Storage Used](../concepts-monitoring.md)} metrics in the Azure portal to monitor the backup storage that a server consumes.In HorizonDB, Azure Monitor metrics report the following consumption information:
+You can use the Backup Storage Used metrics in the Azure portal to monitor the backup storage that a server consumes.In HorizonDB, Azure Monitor metrics report the following consumption information:
 
 1. Data backup storage size (snapshot backup size).
 2. Data storage size (allocated database size).
@@ -137,7 +137,7 @@ To restore your database server, see any of the following:
 - [Restore to latest restore point](how-to-restore-latest-restore-point.md).
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 - [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
-- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
+
 
 > [!IMPORTANT]
 > A restore operation in your Azure HorizonDB flexible server instance always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
@@ -160,13 +160,10 @@ The time required to recover using the latest and custom restore point options v
 
 If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 
-> [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for Azure HorizonDB flexible server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
-
 
 ## Related content
 
 - [Restore to latest restore point](how-to-restore-latest-restore-point.md).
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 - [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
-- [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
+
