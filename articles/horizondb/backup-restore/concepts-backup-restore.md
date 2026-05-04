@@ -13,12 +13,12 @@ ms.custom:
 ---
 
 # Backup and restore in Azure HorizonDB
+This article explains the automated backup feature in Azure HorizonDB.
 
-Backups form an essential part of any business continuity strategy. They help protect data from accidental corruption or deletion. 
+Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete nearly instantaneously, with no impact on database performance or service availability. In addition to snapshots, transaction logs are continuously backed up to Azure Storage. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window. You can specify a backup retention period from 7–35 days when you create or restore a HorizonDB cluster.
 
-Azure HorizonDB uses highly scalable storage and compute performance tiers. HorizonDB Backups are snapshot-based and complete nearly instantaneously, with no impact on database performance or service availability during backup operations. Transaction log backups are stored in Azure Storage and retained for the configured backup retention period.This enables point-in-time restore (PITR) within the specified retention window.
+ During restore operations, you have the option to specify a backup retention period for your HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot or cluster. Note that this inheritance behavior is unique to restore operations when creating a new cluster, the system applies default retention periods instead.
 
- Restore time primarily depends on the volume of transaction logs that must be replayed to reach the selected recovery point.
 
 ## Backup overview
 
@@ -26,22 +26,12 @@ Storage and compute separation enables HorizonDB to offload backup and restore o
 
 Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. 
 
-## Point-in-time restore (PITR)
-
-HorizonDB services restores a database to any point in time within the configured retention period using the following process:
-
-1. Restores the most recent snapshot prior to the selected restore time.
-2. Applies transaction logs from that snapshot forward to the desired restore point to ensure transactional consistency.
-
-For example, if the latest snapshot is at 6 PM and the target restore time is 9 PM, the service restores the 6 PM snapshot and applies transaction logs generated between 6 PM and 9 PM.
-
-Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
 
 ## Backup retention
 
-The default backup retention period is 7 days. You can specify a backup retention period from 1–35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
+The default backup retention period is 7 days. You can specify a backup retention period from 7–35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
 
-These backup files can't be exported or used to create servers outside your Azure HorizonDB flexible server instance. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
+These backup files can't be exported or used to create servers outside your Azure HorizonDB cluster. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
 
 ## Backup frequency
 
@@ -98,7 +88,7 @@ Total billable backup storage size for deleted HorizonDB database = (data storag
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
->[!Note]
+> [!Note]
 > The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of one full database size. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
 
 Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
@@ -115,7 +105,7 @@ For Scope, select the desired subscription.
 Filter for the time period and service you're interested in by following these steps:
 
 Add a filter for Service name.
-Choose sql-database from the dropdown list.
+Choose HorizonDB from the dropdown list.
 Add another filter for Meter.
 To monitor backup costs for point-in-time recovery, select Data Stored - Backup - RA from the dropdown list.
 The following screenshot shows an example cost analysis.
@@ -127,22 +117,18 @@ The following screenshot shows an example cost analysis.
 
 ## Point-in-time recovery
 
-In an Azure HorizonDB flexible server instance, performing a PITR creates a new server in the same region as your source server, but you can choose the availability zone. It's created with the source server's configuration for the pricing tier, compute generation, number of virtual cores, storage size, backup retention period, and backup redundancy option. 
+Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. During the restore process, you can configure the availability zone and select the source server’s settings, including pricing tier, compute generation, number of virtual cores, storage size, and backup retention period. 
 
-The physical database files are first restored from the snapshot backups to the server's data location. The appropriate backup that was taken earlier than the desired point in time is automatically chosen and restored. A recovery process then starts by using WAL files to bring the database to a consistent state. 
+HorizonDB services restores a database to any point in time within the configured retention period using the following process:
 
-For example, assume that the backups are performed at 11:00 PM every night. If the restore point is for August 15 at 10:00 AM, the daily backup of August 14 is restored. The database will be recovered until 10:00 AM of August 15 by using the transaction log backup from August 14, 11:00 PM, to August 15, 10:00 AM. 
+1. Restores the most recent snapshot prior to the selected restore time.
+2. Applies transaction logs from that snapshot forward to the desired restore point to ensure transactional consistency.
 
-To restore your database server, see any of the following:
-- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
-- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
-- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+For example, if the latest snapshot is at 6 PM and the target restore time is 9 PM, the service restores the 6 PM snapshot and applies transaction logs generated between 6 PM and 9 PM.
 
+Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
 
-> [!IMPORTANT]
-> A restore operation in your Azure HorizonDB flexible server instance always creates a new database server with the name that you provide. It doesn't overwrite the existing database server.
-
-PITR is useful in scenarios like these:
+Point-in-time restore(PITR) is useful in scenarios like these:
 
 - A user accidentally deletes data, a table, or a database.
 - An application accidentally overwrites good data with bad data because of an application defect. 
@@ -152,9 +138,9 @@ With continuous backup of transaction logs, you can restore to the last transact
 
 -   **Latest restore point (now)**: This is the default option, which allows you to restore the server to the latest point in time. 
 
--   **Custom restore point**: This option allows you to choose any point in time within the retention period defined for this Azure HorizonDB flexible server instance. By default, the latest time in UTC is automatically selected. Automatic selection is useful if you want to restore to the last committed transaction for test purposes. You can optionally choose other days and times. 
+-   **Custom restore point**: This option allows you to choose any point in time within the retention period defined for this Azure HorizonDB cluster. By default, the latest time in UTC is automatically selected. Automatic selection is useful if you want to restore to the last committed transaction for test purposes. You can optionally choose other days and times. 
 
--   **Fast restore point**: This option allows users to restore the server in the fastest time possible within the retention period defined for their Azure HorizonDB flexible server instance. Fastest restore is possible by directly choosing the timestamp from the list of backups. This restore operation provisions a server and simply restores the full snapshot backup and doesn't require any recovery of logs, which makes it fast. We recommend you select a backup timestamp, which is greater than the earliest restore point in time for a successful restore operation.
+-   **Fast restore point**: This option allows users to restore the server in the fastest time possible within the retention period defined for their Azure HorizonDB cluster. Fastest restore is possible by directly choosing the timestamp from the list of backups. This restore operation provisions a server and simply restores the full snapshot backup and doesn't require any recovery of logs, which makes it fast. We recommend you select a backup timestamp, which is greater than the earliest restore point in time for a successful restore operation.
 
 The time required to recover using the latest and custom restore point options varies based on factors such as the volume of transaction logs to process since the last backup and the total number of databases being recovered simultaneously in the same region The overall recovery time usually takes from few minutes up to a few hours.
 
