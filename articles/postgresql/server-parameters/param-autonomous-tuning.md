@@ -63,3 +63,10 @@ zone_pivot_groups: postgresql-server-version
 ::: zone-end
 
 
+::: zone pivot="postgresql-11"
+
+[!INCLUDE [param-11-autonomous-tuning](./includes/param-11-autonomous-tuning.md)]
+
+::: zone-end
+
+

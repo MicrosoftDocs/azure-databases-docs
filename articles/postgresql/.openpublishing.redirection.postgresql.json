@@ -3909,6 +3909,11 @@
             "source_path_from_root": "/articles/postgresql/azure-ai/generative-ai-azure-ai-semantic-operators.md",
             "redirect_url": "/azure/postgresql/azure-ai/generative-ai-azure-ai-functions",
             "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "articles/postgresql/server-parameters/param-metrics.md",
+            "redirect_url": "articles/postgresql/server-parameters/param-log-files-metrics.md",
+            "redirect_document_id": true
         }
     ]
 }
