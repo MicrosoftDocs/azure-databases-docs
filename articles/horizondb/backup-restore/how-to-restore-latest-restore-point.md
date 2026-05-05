@@ -8,12 +8,12 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to restore to latest restore point an Azure HorizonDB.
+# customer intent: As a user, I want to learn how to restore to latest restore point in Azure HorizonDB.
 ---
 
 # Restore to latest restore point in Azure HorizonDB
 
-This article provides step-by-step instructions to perform a restore of an Azure HorizonDB flexible server to the latest restore point.
+This article provides step-by-step instructions to perform a restore in Azure HorizonDB to the latest restore point.
 
 ## Steps to restore to latest restore point
 
@@ -21,21 +21,21 @@ This article provides step-by-step instructions to perform a restore of an Azure
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
-2. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
-    :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
+   :::image type="content" source="media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/how-to-restore-server/overview.png":::
 
-3. Select the **Restore** button.
+1. Select the **Restore** button.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/how-to-restore-server/restore-button.png":::
+   :::image type="content" source="media/how-to-restore-server/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="media/how-to-restore-server/restore-button.png":::
 
-4. You're redirected to the **Create Azure HorizonDB flexible server - Restore server** wizard, from where you can configure some settings for the new server that is created. After the new server is deployed, the most recent snapshot of the source server data disk is restored. In the **Point-in-time-restore (PITR)** section, select **Latest restore point (Now)**.
+1. You're redirected to the **Create Azure HorizonDB - Restore server** wizard, from where you can configure some settings for the new server that is created. After the new server is deployed, the most recent snapshot of the source server data disk is restored. In the **Point-in-time-restore (PITR)** section, select **Latest restore point (Now)**.
 
-    :::image type="content" source="./media/how-to-restore-server/latest-restore-point.png" alt-text="Screenshot showing the Latest restore point (Now) radio button selected." lightbox="./media/how-to-restore-server/latest-restore-point.png":::
+   :::image type="content" source="media/how-to-restore-server/latest-restore-point.png" alt-text="Screenshot showing the Latest restore point (Now) radio button selected." lightbox="media/how-to-restore-server/latest-restore-point.png":::
 
-5. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
+1. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -53,15 +53,15 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Availability zone** | Your preferred [availability zone](/azure/reliability/availability-zones-overview). | You can choose in which availability zone you want your server to be deployed. Being able to choose the availability zone in which your instance is deployed, is useful to colocate it with your application. If you choose *No preference*, a default availability zone is automatically assigned to your instance during its creation. | Although the availability zone in which an instance is deployed can't be changed after its creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature to restore the server under a different name on a different availability zone. |
     | | **Compute + storage** | Assigns the same type and size of compute and same size of storage, as the ones used by the source server at the time the backup is restored. However, if you select the **Configure server** link, you can change the type of storage allocated to the new server, and whether or not it should be provisioned with geo-redundant backups. | | After the new server is deployed, its compute options can be scaled up or down. |
 
-6. If you want to change the type of storage assigned to the new server, or if you want to deploy it with geo-redundant backups, select **Configure server**:
+1. If you want to change the type of storage assigned to the new server, or if you want to deploy it with geo-redundant backups, select **Configure server**:
 
-    :::image type="content" source="./media/how-to-restore-server/configure-server-button.png" alt-text="Screenshot showing the location of the Configure server link." lightbox="./media/how-to-restore-server/configure-server-button.png":::
+   :::image type="content" source="media/how-to-restore-server/configure-server-button.png" alt-text="Screenshot showing the location of the Configure server link." lightbox="media/how-to-restore-server/configure-server-button.png":::
 
-7. The **Compute + storage** opens to show compute and storage options for the new server:
+1. The **Compute + storage** opens to show compute and storage options for the new server:
 
-    :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
+   :::image type="content" source="media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="media/how-to-restore-server/configure-server-page.png":::
 
-8. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
+1. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
@@ -76,19 +76,19 @@ Using the [Azure portal](https://portal.azure.com/):
     
 9. Once all the new server is configured to your needs, select **Review + create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
+   :::image type="content" source="media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="media/how-to-restore-server/restore-point-review-create.png":::
 
-10. Review that all configurations for the new deployment are correctly set, and select **Create**.
+1. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-create.png" alt-text="Screenshot showing the location of the Create button." lightbox="./media/how-to-restore-server/restore-point-create.png":::
+   :::image type="content" source="media/how-to-restore-server/restore-point-create.png" alt-text="Screenshot showing the location of the Create button." lightbox="media/how-to-restore-server/restore-point-create.png":::
 
-11. A new deployment is launched to create your new Azure HorizonDB flexible server and restore the most recent data available on the source server at the time of restore:
+1. A new deployment is launched to create your new Azure HorizonDB and restore the most recent data available on the source server at the time of restore:
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure HorizonDB Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/how-to-restore-server/restore-point-deployment-progress.png":::
+   :::image type="content" source="media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure HorizonDB Flexible server, on which the most recent data available on the source server is restored." lightbox="media/how-to-restore-server/restore-point-deployment-progress.png":::
 
-12. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB flexible server, and start using it:
+1. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB, and start using it:
 
-    :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB Flexible server." lightbox="./media/how-to-restore-server/restore-point-deployment-completed.png":::
+   :::image type="content" source="media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB Flexible server." lightbox="media/how-to-restore-server/restore-point-deployment-completed.png":::
 
 ### [CLI](#tab/cli-restore-latest-point)
 
@@ -101,8 +101,8 @@ az postgres flexible-server restore \
   --source-server <source_server>
 ```
 
-> [!NOTE]
-> The `az postgres flexible-server restore` command accepts a `--restore-time` parameter. That parameter can be passed a value that represents the point in time, in UTC, to restore from (ISO8601 format). One example valid value would be `2025-04-26T02:10:00+00:00`. However, when that parameter isn't present, its value defaults to the current time in the system from where the command is executed.
+> [!NOTE]  
+> The `az horizondb-cluster-restore` command accepts a `--restore-time` parameter. That parameter can be passed a value that represents the point in time, in UTC, to restore from (ISO8601 format). One example valid value would be `2025-04-26T02:10:00+00:00`. However, when that parameter isn't present, its value defaults to the current time in the system from where the command is executed.
 
 ---
 
