@@ -2,7 +2,7 @@
 title: Deprecate In-Database Embedding
 author: avnishrastogimsft
 ms.author: avrastog
-ms.date: 12/22/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

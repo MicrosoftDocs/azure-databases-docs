@@ -4,7 +4,7 @@ description: Provides resolutions for a connection error - password authenticati
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-error-codes

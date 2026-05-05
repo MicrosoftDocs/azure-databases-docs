@@ -4,7 +4,7 @@ description: This article provides an overview of the built-in PgBouncer feature
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: concept-article

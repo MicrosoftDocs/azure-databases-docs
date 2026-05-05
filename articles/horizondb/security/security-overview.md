@@ -4,7 +4,7 @@ description: Learn how to secure an Azure HorizonDB, with best practices for sec
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: overview

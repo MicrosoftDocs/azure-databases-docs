@@ -4,7 +4,7 @@ description: This article describes how to create virtual endpoints in Azure Hor
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to

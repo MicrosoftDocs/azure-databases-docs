@@ -4,7 +4,7 @@ description: Client Connection Defaults / Shared Library Preloading parameters f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ms.custom:

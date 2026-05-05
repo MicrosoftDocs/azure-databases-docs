@@ -4,7 +4,7 @@ description: This sample CLI script creates an Azure HorizonDB instance with a s
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to

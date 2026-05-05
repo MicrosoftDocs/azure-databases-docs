@@ -4,7 +4,7 @@ description: Learn how to request a quota increase for Azure HorizonDB. You also
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to

@@ -4,7 +4,7 @@ description: Error codes for troubleshooting and resolving issues during the mig
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: error-reference
 ms.custom:

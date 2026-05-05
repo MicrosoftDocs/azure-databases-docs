@@ -4,7 +4,7 @@ description: Learn to migrate, seamlessly and in online mode, from an Azure VM o
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
