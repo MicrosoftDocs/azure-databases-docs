@@ -1,8 +1,8 @@
 ---
 title: Configure Storage Autogrow in Azure HorizonDB
 description: This article describes how you can configure storage autogrow in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -149,6 +149,5 @@ A. No, it relies on online disk scaling.
 
 ## Related content
 
-- [Scale storage performance in Azure HorizonDB](how-to-scale-storage-performance.md)
 - [Storage in Azure HorizonDB](../compute-storage/concepts-storage.md)
 - [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)
