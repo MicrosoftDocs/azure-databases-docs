@@ -7,5 +7,5 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
-> ![IMPORTANT]
+> [!IMPORTANT]
 > There are no parameters of this category for this version of PostgreSQL.
