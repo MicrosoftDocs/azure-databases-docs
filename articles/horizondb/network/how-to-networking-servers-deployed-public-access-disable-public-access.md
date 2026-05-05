@@ -33,18 +33,18 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Clear the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
-4. Select **Save**.
+1. Select **Save**.
 
-5. A notification informs you that the changes are being applied.
+1. A notification informs you that the changes are being applied.
 
-6. Also, the status of the server changes to **Updating**.
+1. Also, the status of the server changes to **Updating**.
 
-7. When the process completes, a notification informs you that the changes were applied.
+1. When the process completes, a notification informs you that the changes were applied.
 
-8. Also, the status of the server changes to **Ready**.
-
+1. Also, the status of the server changes to **Ready**.
 
 <!--
+
 ## [CLI](#tab/CLI-disable-public-access)
 
 You can disable public access on a server via the [az postgres flexible-server update](/CLI/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
