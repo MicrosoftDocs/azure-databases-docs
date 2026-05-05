@@ -110,7 +110,7 @@ Backup storage consumption for a HorizonDB cluster depends on the retention peri
 
 Reduce the backup retention period to the minimum for your needs.
 Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
-For large data-load operations, consider using data compression when appropriate.
+
 
 ## Point-in-time recovery
 

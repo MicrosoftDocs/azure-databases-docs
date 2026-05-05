@@ -33,7 +33,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-list-on-demand-backups)
 
-You can list currently available on-demand backups of a server via the [az postgres flexible-server backup list](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-list) command.
+You can list currently available on-demand backups of a server via the [az horizondb cluster-backup list](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-list) command.
 
 ```azurecli-interactive
 az postgres flexible-server backup list \
