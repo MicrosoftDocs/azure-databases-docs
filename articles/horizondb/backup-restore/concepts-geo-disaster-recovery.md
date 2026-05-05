@@ -1,5 +1,5 @@
 ---
-title: Geo-disaster recovery
+title: Overview of geo-disaster recovery in Azure HorizonDB 
 description: Learn about the concepts of Geo-disaster recovery with an Azure HorizonDB flexible server instance.
 author: kabharati
 ms.author: kabharati
@@ -10,7 +10,7 @@ ms.subservice: backup-restore
 ms.topic: concept-article
 ---
 
-# Geo-disaster recovery in Azure HorizonDB
+# Geo-disaster recovery in Azure HorizonDB 
 
 If there's a region-wide disaster, Azure can provide protection from regional or large geography disasters with disaster recovery by making use of another region. For more information on Azure disaster recovery architecture, see [Azure to Azure disaster recovery architecture](/azure/site-recovery/azure-to-azure-architecture).
 
