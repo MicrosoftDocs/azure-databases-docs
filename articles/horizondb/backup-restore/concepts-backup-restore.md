@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure HorizonDB
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/2/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -82,7 +82,7 @@ Billable backup storage for a deleted database reduces gradually over time after
 
 
 
-#### Monitor backup costs
+## Monitor backup costs
 To understand backup storage costs:
 
 In the Azure portal, go to Cost Management + Billing.
