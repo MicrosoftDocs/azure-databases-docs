@@ -11,6 +11,37 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to restore to latest restore point in Azure HorizonDB.
 ---
 
+
+## Point-in-time recovery
+
+Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. During the restore process, you can configure the availability zone and select the source server’s settings, including pricing tier, compute generation, number of virtual cores, storage size, and backup retention period. 
+
+HorizonDB services restores a database to any point in time within the configured retention period using the following process:
+
+1. Restores the most recent snapshot prior to the selected restore time.
+2. Applies transaction logs from that snapshot forward to the desired restore point to ensure transactional consistency.
+
+For example, if the latest snapshot is at 6 PM and the target restore time is 9 PM, the service restores the 6 PM snapshot and applies transaction logs generated between 6 PM and 9 PM.
+
+Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
+
+Point-in-time restore(PITR) is useful in scenarios like these:
+
+- A user accidentally deletes data, a table, or a database.
+- An application accidentally overwrites good data with bad data because of an application defect.
+- You want to clone your server for test, development, or for data verification.
+
+With continuous backup of transaction logs, you can restore to the last transaction. You can choose between the following restore options:
+
+- **Latest restore point (now)**: This is the default option, which allows you to restore the server to the latest point in time.
+
+-   **Custom restore point**: This option allows you to choose any point in time within the retention period defined for this Azure HorizonDB cluster. By default, the latest time in UTC is automatically selected. Automatic selection is useful if you want to restore to the last committed transaction for test purposes. You can optionally choose other days and times. 
+
+-   **Fast restore point**: This option allows users to restore the server in the fastest time possible within the retention period defined for their Azure HorizonDB cluster. Fastest restore is possible by directly choosing the timestamp from the list of backups. This restore operation provisions a server and simply restores the full snapshot backup and doesn't require any recovery of logs, which makes it fast. We recommend you select a backup timestamp, which is greater than the earliest restore point in time for a successful restore operation.
+
+The time required to recover using the latest and custom restore point options varies based on factors such as the volume of transaction logs to process since the last backup and the total number of databases being recovered simultaneously in the same region The overall recovery time usually takes from few minutes up to a few hours.
+
+If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 # Restore to latest restore point in Azure HorizonDB
 
 This article provides step-by-step instructions to perform a restore in Azure HorizonDB to the latest restore point.
@@ -47,7 +78,7 @@ Using the [Azure portal](https://portal.azure.com/):
     | | **Earliest restore point** | The oldest backup of the source server available to restore from. the server whose backup you want to restore on the newly deployed server. Backups are automatically deleted, based on the backup retention period configured on the source server. | | |
     | | **Point-in-time-restore (PITR)** | Possible options are **Latest restore point (Now)**, **Select a custom restore point**, and **Select Fast restore point (Restore using full backup only)**. | To restore to latest restore point, select **Latest restore point (Now)**. | |
     | **Server details** | | | | |
-    | | **Name** | The name that you want to assign to the newly deployed server, on top of which a backup of the source is restored. | A unique name that identifies your Azure HorizonDB flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provide, to conform the fully qualified host name by which you can use a Domain Naming System server to resolve the IP address of your instance. | Although the server name can't be changed after server creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature, to restore the server under a different name. An alternative approach to continue using the existing server, but being able to refer to it using a different server name, would use the [virtual endpoints](../read-replica/../read-replica/../read-replica/concepts-read-replicas-virtual-endpoints.md) to create a writer endpoint with the new desired name. With this approach, you could refer to the instance by its original name, or that assigned to the write virtual endpoint. |
+    | | **Name** | The name that you want to assign to the newly deployed server, on top of which a backup of the source is restored. | A unique name that identifies your Azure HorizonDB flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provide, to conform the fully qualified host name by which you can use a Domain Naming System server to resolve the IP address of your instance. | Although the server name can't be changed after server creation, you can use the point in time recovery feature, to restore the server under a different name. An alternative approach to continue using the existing server, but being able to refer to it using a different server name, would use the [virtual endpoints](../read-replica/../read-replica/../read-replica/concepts-read-replicas-virtual-endpoints.md) to create a writer endpoint with the new desired name. With this approach, you could refer to the instance by its original name, or that assigned to the write virtual endpoint. |
     | | **Location** | The name of one of the [regions in which the service is supported](../overview.md#azure-regions). Point in time restore only supports the deployment of the new server in the same region in which the source server exists. | Compliance, data residency, pricing, proximity to your users, or availability of other services in the same region, are some of the requirements you should use when choosing the region. | The service doesn't offer a feature to automatically and transparently relocate an instance to a different region. |
     | | **PostgreSQL version** | The version selected by default. | Point in time restore only supports the deployment of the new server with the exact same major version used by the source server.
     | | **Availability zone** | Your preferred [availability zone](/azure/reliability/availability-zones-overview). | You can choose in which availability zone you want your server to be deployed. Being able to choose the availability zone in which your instance is deployed, is useful to colocate it with your application. If you choose *No preference*, a default availability zone is automatically assigned to your instance during its creation. | Although the availability zone in which an instance is deployed can't be changed after its creation, you can use the [point in time recovery](concepts-backup-restore.md#point-in-time-recovery) feature to restore the server under a different name on a different availability zone. |
