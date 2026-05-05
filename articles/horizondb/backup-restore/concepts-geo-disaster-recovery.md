@@ -24,8 +24,6 @@ For more information on read replica features and considerations, see [Read repl
 
 ## Outage detection, notification, and management
 
-If your server is configured with geo-redundant backup, you can perform geo-restore in the paired region. A new server is provisioned and recovered to the last available data that was copied to this region.
-
 You can also use cross region read replicas. In the event of region failure you can perform disaster recovery operation by promoting your read replica to be a standalone read-writeable server. RPO is expected to be up to 5 minutes (data loss possible) except if there's severe regional failure, the RPO can be close to the replication lag at the time of failure.
 
 For more information on unplanned downtime mitigation and recovery after regional disaster, see [Unplanned downtime mitigation](/azure/postgresql/flexible-server/concepts-business-continuity#unplanned-downtime-mitigation).

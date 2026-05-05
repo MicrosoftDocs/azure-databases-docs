@@ -80,6 +80,10 @@ Billable backup storage for a deleted database reduces gradually over time after
 > [!Note]
 > The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of HoirzonDB cluster. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
 
+Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
+
+Reduce the backup retention period to the minimum for your needs.
+Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
 
 
 ## Monitor backup costs
@@ -103,45 +107,6 @@ The following screenshot shows an example cost analysis.
 
 > [!Note]
 > Irrespective of the database size, heavy transactional activity on the server generates more WAL files. The increase in files in turn increases the backup storage.
-
-## Backup storage consumption
-
-Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
-
-Reduce the backup retention period to the minimum for your needs.
-Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
-
-
-## Point-in-time recovery
-
-Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. During the restore process, you can configure the availability zone and select the source server’s settings, including pricing tier, compute generation, number of virtual cores, storage size, and backup retention period. 
-
-HorizonDB services restores a database to any point in time within the configured retention period using the following process:
-
-1. Restores the most recent snapshot prior to the selected restore time.
-2. Applies transaction logs from that snapshot forward to the desired restore point to ensure transactional consistency.
-
-For example, if the latest snapshot is at 6 PM and the target restore time is 9 PM, the service restores the 6 PM snapshot and applies transaction logs generated between 6 PM and 9 PM.
-
-Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
-
-Point-in-time restore(PITR) is useful in scenarios like these:
-
-- A user accidentally deletes data, a table, or a database.
-- An application accidentally overwrites good data with bad data because of an application defect.
-- You want to clone your server for test, development, or for data verification.
-
-With continuous backup of transaction logs, you can restore to the last transaction. You can choose between the following restore options:
-
-- **Latest restore point (now)**: This is the default option, which allows you to restore the server to the latest point in time.
-
--   **Custom restore point**: This option allows you to choose any point in time within the retention period defined for this Azure HorizonDB cluster. By default, the latest time in UTC is automatically selected. Automatic selection is useful if you want to restore to the last committed transaction for test purposes. You can optionally choose other days and times. 
-
--   **Fast restore point**: This option allows users to restore the server in the fastest time possible within the retention period defined for their Azure HorizonDB cluster. Fastest restore is possible by directly choosing the timestamp from the list of backups. This restore operation provisions a server and simply restores the full snapshot backup and doesn't require any recovery of logs, which makes it fast. We recommend you select a backup timestamp, which is greater than the earliest restore point in time for a successful restore operation.
-
-The time required to recover using the latest and custom restore point options varies based on factors such as the volume of transaction logs to process since the last backup and the total number of databases being recovered simultaneously in the same region The overall recovery time usually takes from few minutes up to a few hours.
-
-If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 
 
 ## Related content
