@@ -4,7 +4,7 @@ description: Learn about the concepts of business continuity with an Azure Horiz
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 04/22/2026
+ms.date: 06/2/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article

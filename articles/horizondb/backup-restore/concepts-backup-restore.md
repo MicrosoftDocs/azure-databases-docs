@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure HorizonDB
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 4/22/2026
+ms.date: 06/2/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -15,10 +15,9 @@ ms.custom:
 # Backup and restore in Azure HorizonDB
 This article explains the automated backup feature in Azure HorizonDB.
 
-Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete nearly instantaneously, with no impact on database performance or service availability. In addition to snapshots, transaction logs are continuously backed up to Azure Storage. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window. You can specify a backup retention period from 7–35 days when you create or restore a HorizonDB cluster.
+Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, transaction logs are continuously backed up to Azure Storage when the write-ahead log (WAL) file is ready to be archived. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window. You can specify a backup retention period from 7–35 days when you create or restore a HorizonDB cluster.
 
- During restore operations, you have the option to specify a backup retention period for your HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot or cluster. Note that this inheritance behavior is unique to restore operations when creating a new cluster, the system applies default retention periods instead.
-
+ During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
 
 ## Backup overview
 
@@ -31,25 +30,21 @@ Backup and restore operations for HorizonDB databases are fast regardless of dat
 
 The default backup retention period is 7 days. You can specify a backup retention period from 7–35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
 
-These backup files can't be exported or used to create servers outside your Azure HorizonDB cluster. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
-
-## Backup frequency
-
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
 
-Transaction log backups occur at variable intervals based on workload activity. Logs are captured when the write-ahead log (WAL) is ready to be archived. This ensures a transactionally consistent database state and enables point-in-time restore within the configured retention period, with no data loss at the selected restore point (RPO = 0).
+Transaction log backups occur at variable intervals based on workload activity. Logs are captured when the write-ahead log (WAL) is ready to be archived. This ensures a transactional consistent database state and enables point-in-time restore within the configured retention period, with no data loss at the selected restore point, allowing for a recovery point objective (RPO) of zero.
+
+These backup files can't be exported or used to create servers outside your Azure HorizonDB cluster. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
 
 
-
-
-#### Monitor backup storage consumption
+## Backup Metrics
 
 In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
 
 
 You can use the Backup Storage Used metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
 
-You can use the Backup Storage Used metrics in the Azure portal to monitor the backup storage that a server consumes.In HorizonDB, Azure Monitor metrics report the following consumption information:
+In HorizonDB, Azure Monitor metrics report the following consumption information:
 
 1. Data backup storage size (snapshot backup size).
 2. Data storage size (allocated database size).
@@ -62,19 +57,11 @@ In the Monitoring section, select the Metrics page.
 From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
 << Image here>>
 
-## Reduce backup storage consumption
-
-Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
-
-Reduce the backup retention period to the minimum for your needs.
-Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
-For large data-load operations, consider using data compression when appropriate.
-
-### Backup storage cost
+## Backup storage cost
 
 Azure HorizonDB backup storage cost depends on the workload type.
 
-Write-heavy workloads are more likely to change data pages frequently, which results in larger storage snapshots. Such workloads also generate more transaction logs, contributing to the overall backup costs. Backup storage is charged based on gigabytes consumed per month. The backup storage amount equal to the database size is provided at no extra charge. For pricing details, see the Azure SQL Database pricing page.
+Write-heavy workloads are more likely to change data pages frequently, which results in larger storage snapshots. Such workloads also generate more transaction logs, contributing to the overall backup costs. Backup storage is charged based on gigabytes consumed per month. The backup storage amount equal to the database size is provided at no extra charge. For pricing details, see the Azure HorizonDB pricing page.
 
 For HorizonDB, billable backup storage is calculated as follows:
 
@@ -88,10 +75,12 @@ Total billable backup storage size for deleted HorizonDB database = (data storag
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
-> [!Note]
-> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of one full database size. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
-
 Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
+
+> [!Note]
+> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of HoirzonDB cluster. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
+
+
 
 #### Monitor backup costs
 To understand backup storage costs:
@@ -114,6 +103,14 @@ The following screenshot shows an example cost analysis.
 
 > [!Note]
 > Irrespective of the database size, heavy transactional activity on the server generates more WAL files. The increase in files in turn increases the backup storage.
+
+## Backup storage consumption
+
+Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
+
+Reduce the backup retention period to the minimum for your needs.
+Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
+For large data-load operations, consider using data compression when appropriate.
 
 ## Point-in-time recovery
 

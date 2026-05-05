@@ -4,7 +4,7 @@ description: This article describes how to list all backups of an Azure HorizonD
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
