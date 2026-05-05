@@ -12,7 +12,7 @@ ms.topic: how-to
 ---
 
 
-## Point-in-time recovery
+# Restore in Azure HorizonDB.
 
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. During the restore process, you can configure the availability zone and select the source server’s settings, including pricing tier, compute generation, number of virtual cores, storage size, and backup retention period. 
 
