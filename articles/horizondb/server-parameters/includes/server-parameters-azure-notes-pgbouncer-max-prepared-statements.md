@@ -4,7 +4,7 @@ description: pgbouncer.max_prepared_statements server parameter for Azure Horizo
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

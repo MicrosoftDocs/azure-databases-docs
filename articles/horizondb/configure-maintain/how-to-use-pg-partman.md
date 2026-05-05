@@ -4,7 +4,7 @@ description: Learn how to enable and use pg_partman on Azure HorizonDB to optimi
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: sbalijepalli, maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to

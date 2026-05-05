@@ -4,7 +4,7 @@ description: Step-by-step quickstart for converting Oracle client application co
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: quickstart
 ms.collection:

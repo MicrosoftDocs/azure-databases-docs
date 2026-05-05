@@ -4,7 +4,7 @@ description: shared_buffers server parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

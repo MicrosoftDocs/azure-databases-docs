@@ -4,7 +4,7 @@ description: What is sharding, and what sharding models are available with elast
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: concept-article

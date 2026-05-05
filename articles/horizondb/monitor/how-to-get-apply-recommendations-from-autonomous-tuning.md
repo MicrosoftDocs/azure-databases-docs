@@ -4,7 +4,7 @@ description: This article describes how to query, interpret, and apply the recom
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to

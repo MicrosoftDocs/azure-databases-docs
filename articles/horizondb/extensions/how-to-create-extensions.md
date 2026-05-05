@@ -4,7 +4,7 @@ description: This article describes how to create extensions in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to

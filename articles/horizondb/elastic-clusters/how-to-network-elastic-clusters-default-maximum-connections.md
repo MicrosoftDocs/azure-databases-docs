@@ -4,7 +4,7 @@ description: This article describes how the maximum number of client connections
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 05/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: how-to
