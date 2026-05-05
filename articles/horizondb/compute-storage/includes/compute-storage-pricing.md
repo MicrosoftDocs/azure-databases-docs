@@ -2,13 +2,14 @@
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/16/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
+
 ## Price
 
-For the most up-to-date pricing information, see [Azure HorizonDB flexible server pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
+For the most up-to-date pricing information, see [Azure HorizonDB pricing](https://azure.microsoft.com/pricing/details/postgresql/flexible-server/).
 
 [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) also shows you an estimation of the monthly costs of a server configuration, based on the options selected.
 
@@ -18,7 +19,7 @@ That estimation can be seen throughout the server creation experience, in the **
 
 It can also be seen for existing servers if, in the resource menu of an existing instance, under the **Settings** section, you select **Compute + storage**:
 
-:::image type="content" source="../../extensions/media/compute-storage-pricing/existing-server-estimated-costs.png" alt-text="Screenshot that shows the estimated monthly costs in the Compute + storage page of an existing Azure HorizonDB flexible server instance." lightbox="../../extensions/media/compute-storage-pricing/existing-server-estimated-costs.png":::
+:::image type="content" source="../../extensions/media/compute-storage-pricing/existing-server-estimated-costs.png" alt-text="Screenshot that shows the estimated monthly costs in the Compute + storage page of an existing Azure HorizonDB instance." lightbox="../../extensions/media/compute-storage-pricing/existing-server-estimated-costs.png":::
 
 If you don't have an Azure subscription, you can use the Azure pricing calculator to get an estimated price. In the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) website, select **Databases** category, and then select **Azure HorizonDB** to add the service to your estimate and then customize the options.
 

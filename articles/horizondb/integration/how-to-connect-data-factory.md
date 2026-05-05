@@ -1,18 +1,18 @@
 ---
 title: How to Connect from Azure Data Factory to Azure HorizonDB
-description: Guide on how to connect an Azure HorizonDB flexible server instance from Azure Data Factory using the Azure HorizonDB connector
+description: Guide on how to connect an Azure HorizonDB instance from Azure Data Factory using the Azure HorizonDB connector
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/11/2025 
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
 ---
 
-# Connect Azure HorizonDB to Azure Data Factory and Synapse Analytics
+# Connect Azure HorizonDB to Azure Data Factory and Synapse Analytics in Azure HorizonDB
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > The Azure HorizonDB version 2.0 provides an improved native Azure HorizonDB support. If you use the Azure HorizonDB version 1.0 in your solution, you should upgrade your Azure HorizonDB linked service at your earliest convenience.
 
 ## What is Azure Data Factory
@@ -29,7 +29,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 ### Prerequisites
 
-- An Azure HorizonDB flexible server instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 
 ### Create a linked service via the Azure portal
@@ -38,22 +38,21 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 1. Browse to the **Manage** tab in your Azure Data Factory or Synapse workspace and select **Linked Services**, then select **New**:
 
-    #### [Azure Data Factory](#tab/data-factory)
-    
-    :::image type="content" source="media/how-to-connect-data-factory/new-linked-service.png" alt-text="Screenshot of Create a new linked service with Azure Data Factory UI." lightbox="media/how-to-connect-data-factory/new-linked-service.png":::
-    
-    #### [Azure Synapse](#tab/synapse-analytics)
-    
-    :::image type="content" source="media/how-to-connect-data-factory/new-linked-service-synapse.png" alt-text="Screenshot of Create a new linked service with Azure Synapse UI." lightbox="media/how-to-connect-data-factory/new-linked-service-synapse.png":::
-    
+   #### [Azure Data Factory](#tab/data-factory)
+
+   :::image type="content" source="media/how-to-connect-data-factory/new-linked-service.png" alt-text="Screenshot of Create a new linked service with Azure Data Factory UI." lightbox="media/how-to-connect-data-factory/new-linked-service.png":::
+
+   #### [Azure Synapse](#tab/synapse-analytics)
+
+   :::image type="content" source="media/how-to-connect-data-factory/new-linked-service-synapse.png" alt-text="Screenshot of Create a new linked service with Azure Synapse UI." lightbox="media/how-to-connect-data-factory/new-linked-service-synapse.png":::
 
 1. From the linked services page, create a new linked service by selecting **+ New**. It opens a window with a list of all Azure Data Factory connectors. Search for **Azure HorizonDB**, select it, and then select **Continue**.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-search.png" alt-text="Screenshot of Searching for 'Azure HorizonDB' in new linked service field." lightbox="media/how-to-connect-data-factory/linked-service-search.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-search.png" alt-text="Screenshot of Searching for 'Azure HorizonDB' in new linked service field." lightbox="media/how-to-connect-data-factory/linked-service-search.png":::
 
 1. Make sure that **Version 2.0** is selected.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-new.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector." lightbox="media/how-to-connect-data-factory/linked-service-new.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-new.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector." lightbox="media/how-to-connect-data-factory/linked-service-new.png":::
 
 #### Authentication
 
@@ -63,25 +62,25 @@ There are four supported methods for authentication: basic authentication, servi
 
 1. Select **Basic auth** as the Authentication type and make sure to enter your Azure PostgreSQL flexible server instance connection details, including **Server name**, **Username**, and **Password**.
 
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-basic-auth.png" alt-text="Screenshot of a new linked service window for Azure HorizonDB connector with basic authentication type." lightbox="media/how-to-connect-data-factory/authentication-basic-auth.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-basic-auth.png" alt-text="Screenshot of a new linked service window for Azure HorizonDB connector with basic authentication type." lightbox="media/how-to-connect-data-factory/authentication-basic-auth.png":::
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**
 
-    ###### [Azure subscription](#tab/from-azure-subscription)
-    
-    Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+   ###### [Azure subscription](#tab/from-azure-subscription)
 
-    ###### [Enter manually](#tab/enter-manually)
-    
-    Enter the **Fully qualified domain name**, **Port**, and **Database name**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
+   Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+
+   ###### [Enter manually](#tab/enter-manually)
+
+   Enter the **Fully qualified domain name**, **Port**, and **Database name**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
 1. Enter the **Username** and **Password**.
 
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
 
 1. Now you can [Test the connection](#test-connection) and create the linked service
 
@@ -93,105 +92,104 @@ Following the service principal authentication setup steps requires setting up a
 
 1. Select **Service Principal** on Authentication type.
 
-    There are two types of Service principal credential types, and both service principal methods require a **"Tenant"**, **"Service principal ID"**, and **"Azure Cloud Type"** values.
+   There are two types of Service principal credential types, and both service principal methods require a **"Tenant"**, **"Service principal ID"**, and **"Azure Cloud Type"** values.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal authentication type." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal authentication type." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png":::
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
 
-    ###### [Azure subscription](#tab/from-azure-subscription)
-    
-    Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+   ###### [Azure subscription](#tab/from-azure-subscription)
 
-    ###### [Enter manually](#tab/enter-manually)
-    
-    Enter the **Fully qualified domain name**, **Port**, and **Database name**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
+   Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+
+   ###### [Enter manually](#tab/enter-manually)
+
+   Enter the **Fully qualified domain name**, **Port**, and **Database name**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
 1. Enter your **Service Principal Name**, also shown as the **Display Name** for your service principal key.
 
 1. Select **Inline** in the **Authentication reference method**.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal-inline.png" alt-text="Screenshot of Service principal inline authentication reference method." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal-inline.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal-inline.png" alt-text="Screenshot of Service principal inline authentication reference method." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal-inline.png":::
 
 1. Enter the **Tenant**. The tenant ID is in Azure, where the Service Principal Name was created.
 
-    :::image type="content" source="media/how-to-connect-data-factory/azure-tenant-id.png" alt-text="Screenshot of Service principal tenant on Azure." lightbox="media/how-to-connect-data-factory/azure-tenant-id.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/azure-tenant-id.png" alt-text="Screenshot of Service principal tenant on Azure." lightbox="media/how-to-connect-data-factory/azure-tenant-id.png":::
 
 1. Enter the **Service principal ID**. You can find the client ID in Azure, where the Service Principal Name was created.
 
-    :::image type="content" source="media/how-to-connect-data-factory/azure-service-principal-id.png" alt-text="Screenshot of Service principal ID on Azure." lightbox="media/how-to-connect-data-factory/azure-service-principal-id.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/azure-service-principal-id.png" alt-text="Screenshot of Service principal ID on Azure." lightbox="media/how-to-connect-data-factory/azure-service-principal-id.png":::
 
 1. Select **Service Principal Certificate** or **Service Principal Key** in the **Service principal credential type**.
 
-    ###### [Service Principal Certificate](#tab/service-principal-certificate)
-    
-    **Service principal certificate** authentication requires a **service principal certificate** and optionally a **service principal password**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-service-principal-certificate.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal certificate authentication type." lightbox="media/how-to-connect-data-factory/authentication-service-principal-certificate.png":::
+   ###### [Service Principal Certificate](#tab/service-principal-certificate)
 
-    ###### [Service Principal Key](#tab/service-principal-key)
-    
-    **Service principal key** authentication requires a **service principal key**.
-    
-    The service principal key where the Service Principal Name was created is the **Value** under Client secrets.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/service-principal-key.png" alt-text="Screenshot of Where to find the service principal key." lightbox="media/how-to-connect-data-factory/service-principal-key.png":::
-    
-    1. Fill **Service principal key** in Data Factory.
-    
-        :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal-key.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal key authentication type." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal-key.png":::
-    
+   **Service principal certificate** authentication requires a **service principal certificate** and optionally a **service principal password**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-service-principal-certificate.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal certificate authentication type." lightbox="media/how-to-connect-data-factory/authentication-service-principal-certificate.png":::
+
+   ###### [Service Principal Key](#tab/service-principal-key)
+
+   **Service principal key** authentication requires a **service principal key**.
+
+   The service principal key where the Service Principal Name was created is the **Value** under Client secrets.
+
+   :::image type="content" source="media/how-to-connect-data-factory/service-principal-key.png" alt-text="Screenshot of Where to find the service principal key." lightbox="media/how-to-connect-data-factory/service-principal-key.png":::
+
+   1. Fill **Service principal key** in Data Factory.
+
+      :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal-key.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector with service principal key authentication type." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal-key.png":::
+
 1. Select your **Azure cloud type**.
 
-1. Now you can [Test the connection](#test-connection) and create the linked service 
+1. Now you can [Test the connection](#test-connection) and create the linked service
 
 ##### System-assigned Managed Identity authentication
 
 Using System-assigned managed identity as the authentication type in the linked service in Azure Data Factory or Synapse Analytics to connect to your Azure HorizonDB requires the following steps. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
 1. In your Azure HorizonDB resource under **Security**
-    1. Select **Identity**
-    1. Make sure that **System assigned managed identity** is **On**
-    
-        :::image type="content" source="media/how-to-connect-data-factory/system-managed-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure HorizonDB server resource." lightbox="media/how-to-connect-data-factory/system-managed-identity-configuration.png":::
+   1. Select **Identity**
+   1. Make sure that **System assigned managed identity** is **On**
+
+      :::image type="content" source="media/how-to-connect-data-factory/system-managed-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure HorizonDB server resource." lightbox="media/how-to-connect-data-factory/system-managed-identity-configuration.png":::
 
 1. In your Azure Data Factory resource,
-    1. Select **Settings** and then **Managed Identities**
-    1. Under the **System assigned** tab Make sure that status is **On**
+   1. Select **Settings** and then **Managed Identities**
+   1. Under the **System assigned** tab Make sure that status is **On**
 
-        :::image type="content" source="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png":::
+      :::image type="content" source="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png":::
 
+1. In your Azure HorizonDB resource under **Security**
+   1. Select **Authentication**
+   1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
+   1. Select **+ Add Microsoft Entra administrators**
+   1. Add the system-assigned managed identity for the Azure Data Factory resource as one of the **Microsoft Entra Administrators**
 
-1.  In your Azure HorizonDB resource under **Security**
-    1. Select **Authentication**
-    1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
-    1. Select **+ Add Microsoft Entra administrators**
-    1. Add the system-assigned managed identity for the Azure Data Factory resource as one of the **Microsoft Entra Administrators** 
-        
-        :::image type="content" source="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png" alt-text="Screenshot of adding the Azure Data Factory system assigned managed identity configuration in the Azure HorizonDB resource." lightbox="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png":::
+      :::image type="content" source="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png" alt-text="Screenshot of adding the Azure Data Factory system assigned managed identity configuration in the Azure HorizonDB resource." lightbox="media/how-to-connect-data-factory/authentication-adding-system-assigned-managed-identity-access.png":::
 
 1. In the Linked Service of the Azure Data Factory, select **System-assigned managed identity** as the Authentication type.
 
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-system-managed-identity.png" alt-text="Screenshot of the system assigned managed identity selected." lightbox="media/how-to-connect-data-factory/authentication-system-managed-identity.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-system-managed-identity.png" alt-text="Screenshot of the system assigned managed identity selected." lightbox="media/how-to-connect-data-factory/authentication-system-managed-identity.png":::
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
 
-    ###### [Azure subscription](#tab/from-azure-subscription)
-    
-    Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+   ###### [Azure subscription](#tab/from-azure-subscription)
 
-    ###### [Enter manually](#tab/enter-manually)
-    
-    Enter the **Fully qualified domain name**, **Port**, and **Database name**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
-    
+   Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+
+   ###### [Enter manually](#tab/enter-manually)
+
+   Enter the **Fully qualified domain name**, **Port**, and **Database name**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
+
 1. Now you can [Test the connection](#test-connection) and create the linked service
 
 ##### User-assigned Managed Identity authentication
@@ -200,58 +198,57 @@ Using User-assigned managed identity as the authentication type in the linked se
 
 1. Create a **User-assigned Managed Identity** resource on Azure portal. To learn more, go to [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp)
 1. Assign the **User-assigned Managed Identity** to your Azure HorizonDB resource
-    1. In your Azure HorizonDB server resource, under **Security**
-    1. Select **Authentication**
-    1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
-    1. Click on **+ Add Microsoft Entra administrators** and select your user-assigned managed identity
+   1. In your Azure HorizonDB server resource, under **Security**
+   1. Select **Authentication**
+   1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
+   1. Select on **+ Add Microsoft Entra administrators** and select your user-assigned managed identity
 
-        :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure HorizonDB server." lightbox="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png":::
+      :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure HorizonDB server." lightbox="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png":::
 
 1. Assign the **User-assigned Managed Identity** to your Azure Data Factory resource
-    1. Select **Settings** and then **Managed Identities**
-    1. Under the **User assigned** tab. Click on the **+ Add** and select your user-managed identity
+   1. Select **Settings** and then **Managed Identities**
+   1. Under the **User assigned** tab. Select on the **+ Add** and select your user-managed identity
 
-        :::image type="content" source="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png":::
+      :::image type="content" source="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png":::
 
-1. In the Linked Service  of the Azure Data Factory, select **User-assigned managed identity**  as the **Authentication type**
+1. In the Linked Service of the Azure Data Factory, select **User-assigned managed identity** as the **Authentication type**
 
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png" alt-text="Screenshot of the user assigned managed identity selected under the authentication type in the linked service." lightbox="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png" alt-text="Screenshot of the user assigned managed identity selected under the authentication type in the linked service." lightbox="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png":::
 
 1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
 
-    ###### [Azure subscription](#tab/from-azure-subscription)
-    
-    Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+   ###### [Azure subscription](#tab/from-azure-subscription)
 
-    ###### [Enter manually](#tab/enter-manually)
-    
-    Enter the **Fully qualified domain name**, **Port**, and **Database name**.
-    
-    :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
+   Select the **Azure subscription**, **Server name**, and **Database name**. Also, enter the **Port**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method.png" alt-text="Screenshot of Account selection method Azure subscription." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method.png":::
+
+   ###### [Enter manually](#tab/enter-manually)
+
+   Enter the **Fully qualified domain name**, **Port**, and **Database name**.
+
+   :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
 1. On **Credentials** or select a user-assigned managed identity credential or create a new one with **+ New**
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png" alt-text="Screenshot of the credentials drop menu selected." lightbox="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png" alt-text="Screenshot of the credentials drop menu selected." lightbox="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png":::
 
-    1. If you need to create a new credential, select **+ New**
-    1. Make sure that **Type** is **User-assigned managed identity**
-    1. Select your **Azure subscription**
-    1. In **User-assigned managed identities**. Select under **Assigned to Data Factory** your managed identity and click on **Create**
+   1. If you need to create a new credential, select **+ New**
+   1. Make sure that **Type** is **User-assigned managed identity**
+   1. Select your **Azure subscription**
+   1. In **User-assigned managed identities**. Select under **Assigned to Data Factory** your managed identity and select on **Create**
 
-        :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-credential.png" alt-text="Screenshot of the Create credential with your user managed identity selected." lightbox="media/how-to-connect-data-factory/user-managed-identity-credential.png":::
+      :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-credential.png" alt-text="Screenshot of the Create credential with your user managed identity selected." lightbox="media/how-to-connect-data-factory/user-managed-identity-credential.png":::
 
 1. Now you can [Test the connection](#test-connection) and create the linked service
-
 
 #### Test Connection
 
 1. Once all required connection fields are filled in, the bottom right-hand corner should display a **Test connection** button. The test connection button verifies that the linked service can connect to your Azure HorizonDB server.
 
-    :::image type="content" source="media/how-to-connect-data-factory/linked-service-test-connection.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector test connection.":::
+   :::image type="content" source="media/how-to-connect-data-factory/linked-service-test-connection.png" alt-text="Screenshot of New linked service window for Azure HorizonDB connector test connection.":::
 
-1. Click on **Create** button
+1. Select on **Create** button
 
 ### Linked service JSON
 
@@ -259,10 +256,10 @@ The following table describes the properties of the linked service for Azure Hor
 
 | Property | Description | Required |
 | --- | --- | --- |
-| name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
+| name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) | Yes |
 | type | Type of the linked service. It should be **AzurePostgreSql** | Yes |
-| server | Full qualified host name for Azure HorizonDB flexible server instance | Yes |
-| port | The Azure HorizonDB flexible server instance port number | Yes |
+| server | Full qualified host name for Azure HorizonDB instance | Yes |
+| port | The Azure HorizonDB instance port number | Yes |
 | database | Database name | Yes |
 | sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
 | authenticationType | Specify the authentication to be used. **BasicAuth**, **ServicePrincipal**, **SystemAssignedManagedIdentity**, or **UserAssignedManagedIdentity** | Yes |
@@ -271,7 +268,7 @@ The following table describes the properties of the linked service for Azure Hor
 | password | Username password for the Basic Auth | Required when **BasicAuth**. Otherwise isn't required |
 | tenant | Tenant ID | Required for **ServicePrincipal** authentication type |
 | servicePrincipalId | Service Principal ID | Required for **ServicePrincipal** authentication type |
-| servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**| Yes |
+| servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey** | Yes |
 | servicePrincipalEmbeddedCert | The service principal certificate | Required when **ServicePrincipalCert**. Otherwise isn't required |
 | servicePrincipalEmbeddedCertPassword | The service principal certificate password | No |
 | servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise isn't required |
@@ -416,5 +413,5 @@ Activities are tasks within a pipeline that can execute specific tasks. With scr
 
 ## Related content
 
-- [How to connect to data factory private endpoint](how-to-connect-data-factory-private-endpoint.md)
-- [Azure HorizonDB networking with Private Link](../network/concepts-networking-private-link.md)
+- [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
+- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

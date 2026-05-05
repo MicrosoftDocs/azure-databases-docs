@@ -1,16 +1,16 @@
 ---
-title: List of the PostgreSQL Extensions and Modules, by Name
-description: The following extensions and modules are available in an Azure Database for the PostgreSQL flexible server instance.
+title: List of Extensions and Modules by Name in Azure HorizonDB
+description: The following extensions and modules are available in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: concept-article
 ---
 
-# List of extensions and modules by name
+# List of extensions and modules by name in Azure HorizonDB
 
 The following extensions and modules are available for the Azure Database for the PostgreSQL service.
 
@@ -18,7 +18,7 @@ The following extensions and modules are available for the Azure Database for th
 
 ## Related content
 
-- [Extensions](concepts-extensions.md)
-- [Allow extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
-- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
+- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)

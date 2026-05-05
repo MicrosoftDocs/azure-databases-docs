@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### backend_flush_after
 
 | Attribute | Value |
@@ -16,13 +18,9 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `256` |
 | Allowed values | `0-256` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [backend_flush_after](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-BACKEND-FLUSH-AFTER) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### effective_io_concurrency
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1000` |
 | Parameter type | dynamic |
 | Documentation | [effective_io_concurrency](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-EFFECTIVE-IO-CONCURRENCY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### maintenance_io_concurrency
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `10` |
 | Parameter type | read-only |
 | Documentation | [maintenance_io_concurrency](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAINTENANCE-IO-CONCURRENCY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_notify_queue_pages
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `1048576` |
 | Parameter type | read-only |
 | Documentation | [max_notify_queue_pages](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-NOTIFY-QUEUE-PAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_parallel_maintenance_workers
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `0-64` |
 | Parameter type | dynamic |
 | Documentation | [max_parallel_maintenance_workers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-PARALLEL-MAINTENANCE-WORKERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_parallel_workers
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1024` |
 | Parameter type | dynamic |
 | Documentation | [max_parallel_workers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-PARALLEL-WORKERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_parallel_workers_per_gather
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1024` |
 | Parameter type | dynamic |
 | Documentation | [max_parallel_workers_per_gather](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-PARALLEL-WORKERS-PER-GATHER) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_worker_processes
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `0-262143` |
 | Parameter type | static |
 | Documentation | [max_worker_processes](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-WORKER-PROCESSES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### parallel_leader_participation
 
@@ -154,9 +124,4 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [parallel_leader_participation](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-PARALLEL-LEADER-PARTICIPATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

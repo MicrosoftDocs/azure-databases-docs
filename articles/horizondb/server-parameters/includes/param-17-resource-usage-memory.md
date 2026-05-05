@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### autovacuum_work_mem
 
 | Attribute | Value |
@@ -16,13 +18,9 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `-1` |
 | Allowed values | `-1-2097151` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [autovacuum_work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-AUTOVACUUM-WORK-MEM) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### commit_timestamp_buffers
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `0-131072` |
 | Parameter type | static |
 | Documentation | [commit_timestamp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-COMMIT_TIMESTAMP_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### dynamic_shared_memory_type
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `posix` |
 | Parameter type | read-only |
 | Documentation | [dynamic_shared_memory_type](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-DYNAMIC-SHARED-MEMORY-TYPE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### hash_mem_multiplier
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `1-1000` |
 | Parameter type | dynamic |
 | Documentation | [hash_mem_multiplier](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-HASH-MEM-MULTIPLIER) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### huge_pages
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off,try` |
 | Parameter type | static |
 | Documentation | [huge_pages](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-HUGE-PAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-huge-pages](./server-parameters-azure-notes-huge-pages.md)]
-
-
 
 ### huge_page_size
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [huge_page_size](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-HUGE-PAGE-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### io_combine_limit
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `16` |
 | Parameter type | read-only |
 | Documentation | [io_combine_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-IO-COMBINE-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### logical_decoding_work_mem
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `64-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [logical_decoding_work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-LOGICAL-DECODING-WORK-MEM) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### maintenance_work_mem
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `1024-2097151` |
 | Parameter type | dynamic |
 | Documentation | [maintenance_work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) |
-
-
 [!INCLUDE [server-parameters-azure-notes-maintenance-work-mem](./server-parameters-azure-notes-maintenance-work-mem.md)]
-
-
 
 ### max_prepared_transactions
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `0-262143` |
 | Parameter type | static |
 | Documentation | [max_prepared_transactions](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_stack_depth
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `2048` |
 | Parameter type | read-only |
 | Documentation | [max_stack_depth](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MAX-STACK-DEPTH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### min_dynamic_shared_memory
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [min_dynamic_shared_memory](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MIN-DYNAMIC-SHARED-MEMORY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### multixact_member_buffers
 
@@ -222,11 +176,7 @@ ms.custom: automatically generated
 | Allowed values | `16-131072` |
 | Parameter type | static |
 | Documentation | [multixact_member_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MUTIXACT_MEMBER_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### multixact_offset_buffers
 
@@ -239,11 +189,7 @@ ms.custom: automatically generated
 | Allowed values | `16-131072` |
 | Parameter type | static |
 | Documentation | [multixact_offset_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-MULTIXACT_OFFSET_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### notify_buffers
 
@@ -256,11 +202,7 @@ ms.custom: automatically generated
 | Allowed values | `16-131072` |
 | Parameter type | static |
 | Documentation | [notify_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-NOTIFY_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### serializable_buffers
 
@@ -273,11 +215,7 @@ ms.custom: automatically generated
 | Allowed values | `16-131072` |
 | Parameter type | static |
 | Documentation | [serializable_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SERIALIZABLE_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### shared_buffers
 
@@ -290,11 +228,7 @@ ms.custom: automatically generated
 | Allowed values | `16-1073741823` |
 | Parameter type | static |
 | Documentation | [shared_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SHARED-BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-shared-buffers](./server-parameters-azure-notes-shared-buffers.md)]
-
-
 
 ### shared_memory_type
 
@@ -307,11 +241,7 @@ ms.custom: automatically generated
 | Allowed values | `mmap` |
 | Parameter type | read-only |
 | Documentation | [shared_memory_type](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SHARED-MEMORY-TYPE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### subtransaction_buffers
 
@@ -324,11 +254,7 @@ ms.custom: automatically generated
 | Allowed values | `0-131072` |
 | Parameter type | static |
 | Documentation | [subtransaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-SUBTRANSACTION_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### temp_buffers
 
@@ -341,11 +267,7 @@ ms.custom: automatically generated
 | Allowed values | `100-1073741823` |
 | Parameter type | dynamic |
 | Documentation | [temp_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TEMP-BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transaction_buffers
 
@@ -358,11 +280,7 @@ ms.custom: automatically generated
 | Allowed values | `0-131072` |
 | Parameter type | static |
 | Documentation | [transaction_buffers](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TRANSACTION_BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_buffer_usage_limit
 
@@ -375,11 +293,7 @@ ms.custom: automatically generated
 | Allowed values | `0-16777216` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_buffer_usage_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-BUFFER-USAGE-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### work_mem
 
@@ -392,9 +306,4 @@ ms.custom: automatically generated
 | Allowed values | `4096-2097151` |
 | Parameter type | dynamic |
 | Documentation | [work_mem](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-WORK-MEM) |
-
-
 [!INCLUDE [server-parameters-azure-notes-work-mem](./server-parameters-azure-notes-work-mem.md)]
-
-
-

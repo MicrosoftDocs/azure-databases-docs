@@ -1,10 +1,10 @@
 ---
-title: Enable Managed Identity for Foundry Tools with the Azure AI Extension for PostgreSQL
-description: Enable system assigned managed identity for Foundry Tools with the Azure AI extension for PostgreSQL.
+title: Enable Managed Identity for Foundry Tools with the Azure AI Extension for PostgreSQL in Azure HorizonDB
+description: Enable system assigned managed identity for Foundry Tools with the Azure AI extension for PostgreSQL in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to
@@ -13,23 +13,23 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2025
-# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to understand how to enable managed identity with the azure_ai extension for my Azure HorizonDB instance.
 ---
 
-# Enable Managed Identity for Foundry Tools with the azure_ai extension preview
+# Enable Managed Identity for Foundry Tools with the azure_ai extension preview in Azure HorizonDB
 
 The Azure AI extension for Azure HorizonDB supports System Assigned Managed Identity (SAMI) with Foundry Tools, Azure OpenAI, and Azure Machine Learning, offering enhanced security benefits for customers. By using Microsoft Entra ID, users can authenticate without access keys, reducing the risk of unauthorized access and simplifying credential management. This integration ensures that identities and permissions are handled securely and efficiently, providing a robust framework for database security.
 
 ## Subscription key benefits
 
-- **No Secrets to Store** – No need to manually manage or rotate subscription keys.
-- **Improved Security** – No risk of exposing API keys in logs or code repositories.
-- **Simpler Maintenance** – Azure handles authentication behind the scenes, reducing operational overhead.
+- **No Secrets to Store** - No need to manually manage or rotate subscription keys.
+- **Improved Security** - No risk of exposing API keys in logs or code repositories.
+- **Simpler Maintenance** - Azure handles authentication behind the scenes, reducing operational overhead.
 
 ## Create a system-assigned managed identity
 
 1. Navigate to the Azure portal.
-1. Select your Azure HorizonDB flexible server instance within the Portal.
+1. Select your Azure HorizonDB instance within the Portal.
 1. Enable Managed Identity:
 - From the left navigation menu of the server overview page, expand **Security** and select **Identity**.
 - Select the **On** radio button for **System assigned managed identity**.
@@ -187,7 +187,7 @@ Use your preferred PostgreSQL client to connect to your database.
 
 ## Related content
 
-- [Azure HorizonDB documentation](../overview.md)
+- [What is Azure HorizonDB?](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)

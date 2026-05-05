@@ -1,10 +1,10 @@
 ---
-title: Autovacuum Tuning
-description: Troubleshooting guide for autovacuum in an Azure HorizonDB flexible server instance.
+title: Autovacuum Tuning in Azure HorizonDB
+description: Troubleshooting guide for autovacuum in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 11/06/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: how-to
@@ -12,10 +12,10 @@ ms.topic: how-to
 
 # Autovacuum tuning in Azure HorizonDB
 
-This article provides an overview of the autovacuum feature for [Azure HorizonDB](../overview.md) and the feature troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
+This article provides an overview of the autovacuum feature for [What is Azure HorizonDB?](../overview.md) and the feature troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
 
-> [!NOTE]
-> This article covers autovacuum tuning for all supported PostgreSQL versions in Azure HorizonDB flexible server. Some features mentioned are version-specific (such as `vacuum_buffer_usage_limit` for PostgreSQL 16 and later, and `autovacuum_vacuum_max_threshold` for PostgreSQL 18 and later).
+> [!NOTE]  
+> This article covers autovacuum tuning for all supported PostgreSQL versions in Azure HorizonDB. Some features mentioned are version-specific (such as `vacuum_buffer_usage_limit` for PostgreSQL 16 and later, and `autovacuum_vacuum_max_threshold` for PostgreSQL 18 and later).
 
 ## What is autovacuum?
 
@@ -30,7 +30,7 @@ To ensure autovacuum works properly, set the autovacuum server parameter to `ON`
 
 Autovacuum reads pages looking for dead tuples. If it doesn't find any dead tuples, autovacuum discards the page. When autovacuum finds dead tuples, it removes them. The cost is based on the following parameters:
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `vacuum_cost_page_hit` | Cost of reading a page that's already in shared buffers and doesn't need a disk read. The default value is 1. |
 | `vacuum_cost_page_miss` | Cost of fetching a page that isn't in shared buffers. The default value is 10. |
@@ -38,7 +38,7 @@ Autovacuum reads pages looking for dead tuples. If it doesn't find any dead tupl
 
 The amount of work autovacuum performs depends on two parameters:
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `autovacuum_vacuum_cost_limit` | The amount of work autovacuum does in one go. |
 | `autovacuum_vacuum_cost_delay` | Number of milliseconds that autovacuum is asleep after it reaches the cost limit specified by the `autovacuum_vacuum_cost_limit` parameter. |
@@ -51,7 +51,7 @@ The default value for `autovacuum_vacuum_cost_delay` is 2 milliseconds in Postgr
 
 Starting with PostgreSQL version 16, you can use the `vacuum_buffer_usage_limit` parameter to control memory usage during VACUUM, ANALYZE, and autovacuum operations.
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `vacuum_buffer_usage_limit` | Sets the buffer pool size for VACUUM, ANALYZE, and autovacuum operations. This parameter limits the amount of shared buffer cache that these operations can use, preventing them from consuming excessive memory resources. |
 
@@ -61,7 +61,7 @@ This parameter helps prevent VACUUM and autovacuum from evicting too many useful
 
 Starting with PostgreSQL version 18, you can use the `autovacuum_vacuum_max_threshold` parameter to set an upper limit on the number of tuple updates or deletes that trigger autovacuum.
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `autovacuum_vacuum_max_threshold` | Sets a maximum number of tuple updates or deletes prior to vacuum. When set to `-1`, the maximum threshold is disabled. Use this parameter for fine-tuned control over autovacuum triggering on very large tables. |
 
@@ -91,13 +91,15 @@ select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_t
 
 The following columns help you determine if autovacuum is catching up to table activity:
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `dead_pct` | Percentage of dead tuples when compared to live tuples. |
 | `last_autovacuum` | The date of the last time the table was autovacuumed. |
 | `last_autoanalyze` | The date of the last time the table was automatically analyzed. |
 
-## Triggering autovacuum
+<a id="triggering-autovacuum"></a>
+
+## Trigger autovacuum
 
 An autovacuum action (*ANALYZE* or *VACUUM*) triggers when the number of dead tuples exceeds a particular number. This number depends on two factors: the total count of rows in a table, plus a fixed threshold. *ANALYZE* triggers by default when 10% of the table plus 50 row changes occur, while *VACUUM* triggers when 20% of the table plus 50 row changes occur. Since the *VACUUM* threshold is twice as high as the *ANALYZE* threshold, *ANALYZE* triggers earlier than *VACUUM*.
 
@@ -124,7 +126,7 @@ For inserts:
 
 Here's the description of the parameters used in the equation:
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `autovacuum_analyze_scale_factor` | Percentage of inserts, updates, and deletes that triggers *ANALYZE* on the table. |
 | `autovacuum_analyze_threshold` | Minimum number of tuples inserted, updated, or deleted to *ANALYZE* a table. |
@@ -186,7 +188,7 @@ If you set `autovacuum_vacuum_cost_limit` to -1, autovacuum uses the `vacuum_cos
 
 If autovacuum isn't keeping up, consider changing the following parameters:
 
-| Parameter                        | Description
+| Parameter | Description
 | --- | --- |
 | `autovacuum_vacuum_cost_limit` | Default: `200`. You can increase the cost limit. Monitor CPU and I/O utilization on the database before and after making changes. |
 | `autovacuum_vacuum_cost_delay` | **PostgreSQL Version 12 and later** - Default: `2 ms`. You can decrease this value for more aggressive autovacuum. |
@@ -204,7 +206,7 @@ If autovacuum runs continuously, it can affect CPU and I/O utilization on the se
 
 The autovacuum daemon uses `autovacuum_work_mem`, which is set to `-1` by default. This default setting means `autovacuum_work_mem` uses the same value as the `maintenance_work_mem` parameter. This article assumes `autovacuum_work_mem` is set to `-1` and the autovacuum daemon uses `maintenance_work_mem`.
 
-If `maintenance_work_mem` is low, you can increase it up to 2 GB on an Azure HorizonDB flexible server instance. A general rule of thumb is to allocate 50 MB to `maintenance_work_mem` for every 1 GB of RAM.
+If `maintenance_work_mem` is low, you can increase it up to 2 GB on an Azure HorizonDB instance. A general rule of thumb is to allocate 50 MB to `maintenance_work_mem` for every 1 GB of RAM.
 
 #### Large number of databases
 
@@ -345,9 +347,11 @@ For guidance, see [special considerations about using pg_cron in Azure HorizonDB
 
 Autovacuum runs on tables with an insert-only workload. Two server parameters, `autovacuum_vacuum_insert_threshold` and `autovacuum_vacuum_insert_scale_factor`, help control when autovacuum can be triggered on insert-only tables.
 
-## Troubleshooting guides
+<a id="troubleshooting-guides"></a>
 
-Azure HorizonDB flexible server provides troubleshooting guides in the portal that help you monitor bloat at the database or individual schema level and identify potential blockers to the autovacuum process. 
+## Troubleshoot guides
+
+Azure HorizonDB provides troubleshooting guides in the portal that help you monitor bloat at the database or individual schema level and identify potential blockers to the autovacuum process.
 
 Two troubleshooting guides are available:
 
@@ -356,7 +360,9 @@ Two troubleshooting guides are available:
 
 The troubleshooting guides also share recommendations to mitigate potential issues. For information about how to set up and use the troubleshooting guides, see [setup troubleshooting guides](how-to-troubleshooting-guides.md).
 
-### Terminating autovacuum process: pg_signal_autovacuum_worker role
+<a id="terminating-autovacuum-process-pg_signal_autovacuum_worker-role"></a>
+
+### Terminate autovacuum process: pg_signal_autovacuum_worker role
 
 Autovacuum is an important background process because it helps with efficient storage and performance maintenance in the database. In the normal autovacuum process, it cancels itself after the `deadlock_timeout`. If a user executes a DDL statement on a table, the user might have to wait until the `deadlock_timeout` interval. Autovacuum doesn't allow executing reads or writes on the table requested by different connection requests, adding to latency in the transaction.
 
@@ -369,8 +375,8 @@ In rare scenarios, such as anti-wraparound autovacuum, workers might restart imm
 - Queue the DDL operation prior to termination:
   - Session 1: Prepare and run the DDL statement.
   - Session 2: Terminate the autovacuum process.
-  
-    > [!Important]
+
+    > [!IMPORTANT]  
     > These two steps must be executed back-to-back. If the DDL statement remains blocked for too long, it can hold locks and block other DML operations on the server.
 
 - Terminate autovacuum and execute DDL: If the DDL must run immediately:
@@ -381,27 +387,27 @@ Steps to avoid repeated conflicts:
 
 1. Grant role to user
 
-    ```sql
-    GRANT pg_signal_autovacuum_worker TO app_user;
-    ```
-    1. Identify autovacuum process ID
-    
-    ```sql
-    SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
-    ```
+   ```sql
+   GRANT pg_signal_autovacuum_worker TO app_user;
+   ```
+   1. Identify autovacuum process ID
+
+   ```sql
+   SELECT pid, query FROM pg_stat_activity WHERE query LIKE '%autovacuum%' and pid!=pg_backend_pid();
+   ```
 
 1. Terminate autovacuum
 
-    ```sql
-    SELECT pg_terminate_backend(<pid>);
-    ```
-    
+   ```sql
+   SELECT pg_terminate_backend(<pid>);
+   ```
+
 1. Execute DDL statement immediately
 
-    ```sql
-    ALTER TABLE my_table ADD COLUMN new_col TEXT;
-    ```
-    
+   ```sql
+   ALTER TABLE my_table ADD COLUMN new_col TEXT;
+   ```
+
 > [!NOTE]  
 > We don't recommend terminating ongoing autovacuum processes because doing so might lead to table and database bloat, which can further lead to performance regressions. However, in cases where there's a business-critical requirement involving the scheduled execution of a DDL statement that coincides with the autovacuum process, non-superusers can terminate the autovacuum in a controlled and secure manner by using the `pg_signal_autovacuum_worker` role.
 
@@ -413,7 +419,7 @@ The recommendations are:
 
 - **High bloat ratio**: A high bloat ratio can affect server performance in several ways. One significant issue is that the PostgreSQL Engine Optimizer might struggle to select the best execution plan, leading to degraded query performance. Therefore, a recommendation is triggered when the bloat percentage on a server reaches a certain threshold to avoid such performance issues.
 
-- **Transaction wraparound**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state, it might stop accepting any more transactions, causing the server to become read-only. Hence, a recommendation is triggered when the server crosses 1 billion transactions threshold.
+- **Transaction wraparound**: This scenario is one of the most serious issues a server can encounter. Once your server is in this state, it might stop accepting anymore transactions, causing the server to become read-only. Hence, a recommendation is triggered when the server crosses 1 billion transactions threshold.
 
 ## Related content
 
@@ -422,4 +428,4 @@ The recommendations are:
 - [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md)
 - [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md)
 - [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md)
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)

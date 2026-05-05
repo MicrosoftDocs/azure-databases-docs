@@ -1,10 +1,10 @@
 ---
-title: "Transport Layer Security (TLS) in Azure HorizonDB Overview"
-description: Learn about secure connectivity with an Azure HorizonDB flexible server instance using TLS.
+title: Transport Layer Security (TLS) in Azure HorizonDB
+description: Learn about secure connectivity with an Azure HorizonDB instance using TLS.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -66,14 +66,16 @@ Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/Di
 
 A certificate chain is a hierarchical sequence of certificates issued by trusted Certificate Authorities (CAs). The chain starts at the root CA, which issues intermediate CA (ICA) certificates. ICAs can issue certificates for lower ICAs. The lowest ICA in the chain issues individual server certificates. You establish the chain of trust by verifying each certificate in the chain up to the root CA certificate.
 
-### Reducing connection failures
+<a id="reducing-connection-failures"></a>
+
+### Reduce connection failures
 
 Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
 
-> [!CAUTION]
+> [!CAUTION]  
 > Using ***[unsupported (client) configurations](#trusted-root-certs-and-cert-rotations)*** causes unexpected connection failures.
 
 ## Recommended configurations for TLS
@@ -106,12 +108,12 @@ Azure PostgreSQL doesn't announce changes about intermediate CA changes or indiv
 - Using intermediate CA certificates in your trusted store.
 - Using certificate pinning, such as, using individual server certificates in your trusted store.
 
-> [!CAUTION]
+> [!CAUTION]  
 > Your applications fail to connect to the database servers without warning whenever Microsoft changes the certificate chain's intermediate CAs or rotates the server certificate.
 
 ### Certificate pinning problems
 
-> [!NOTE]
+> [!NOTE]  
 > Certificate rotations don't affect you if you don't use the `sslmode=verify-full` or `sslmode=verify-ca` settings in your client application connection string. Therefore, you don't need to follow the steps in this section.
 
 Never use certificate pinning in your applications since it breaks certificate rotation, such as the current certificate change of Intermediate CAs. If you don't know what certificate pinning is, it's unlikely that you're using it. To check for [certificate pinning](/azure/security/fundamentals/certificate-pinning):
@@ -128,8 +130,8 @@ If you experience problems due to the intermediate certificate even after follow
 
 Beyond the core TLS configuration and certificate management, several other factors influence the security and behavior of encrypted connections to Azure HorizonDB. Understanding these considerations helps you make informed decisions about TLS implementation in your environment.
 
-> [!IMPORTANT]
-> Azure HorizonDB doesn't support TLS client certificate authentication (mutual TLS). Don't include client certificate parameters (`sslcert`, `sslkey`) in your connection strings as they're not supported and may cause connection issues.
+> [!IMPORTANT]  
+> Azure HorizonDB doesn't support TLS client certificate authentication (mutual TLS). Don't include client certificate parameters (`sslcert`, `sslkey`) in your connection strings as they're not supported and might cause connection issues.
 
 ### Insecure and secure TLS versions
 
@@ -142,7 +144,7 @@ The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 
 
 Although we don't recommend it, if needed, you can disable TLS for connections to your Azure HorizonDB. You can update the `require_secure_transport` server parameter to `OFF`.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` server parameter.
 
 ### Cipher suites
@@ -162,5 +164,5 @@ At this time, Azure HorizonDB doesn't implement the following TLS features:
 
 ## Related content
 
-- [Configure TLS client settings to connect to Azure HorizonDB](security-tls-how-to-connect.md)
-- [Validating client configuration and troubleshooting connection failures](security-tls-troubleshoot.md)
+- [Connect clients with TLS security to your database in Azure HorizonDB](security-tls-how-to-connect.md)
+- [Troubleshoot TLS connection failures in Azure HorizonDB](security-tls-troubleshoot.md)

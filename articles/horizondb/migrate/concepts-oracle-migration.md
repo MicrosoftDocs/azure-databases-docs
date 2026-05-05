@@ -1,11 +1,10 @@
 ---
-title: "Migrating Oracle to Azure HorizonDB"
-description: "This article discusses concepts regarding Oracle to Azure HorizonDB migrations."
+title: Migrating Oracle to Azure HorizonDB
+description: This article discusses concepts regarding Oracle to Azure HorizonDB migrations.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.contributor: datasqlninja
-ms.date: 01/24/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration
 ms.topic: concept-article
@@ -17,7 +16,7 @@ ms.collection:
 
 # Migrating Oracle To Azure HorizonDB
 
-Migrating from Oracle database to Azure HorizonDB flexible server can provide multiple key benefits to organizations who are modernizing their operations and infrastructure including: cost efficiency, simplified licensing models and vendor independence, flexible resource scalability, open-source extensibility, and advanced security integration features.
+Migrating from Oracle database to Azure HorizonDB can provide multiple key benefits to organizations who are modernizing their operations and infrastructure including: cost efficiency, simplified licensing models and vendor independence, flexible resource scalability, open-source extensibility, and advanced security integration features.
 
 The success and increasing popularity of open source technologies over the past several years have resulted in Postgres database gaining the status as the preferred platform for Oracle migrations. This same popularity and extended ecosystem have led to new challenges as well. Organizations interested in migrating must navigate through a crowded solution space occupied by numerous open-source and private third-party providers offering similar, yet critically unique differences in their approach and feature sets.
 
@@ -37,17 +36,19 @@ Azure Postgres is built upon the official open-source Postgres community builds,
 
 :::image type="content" source="media/concepts-oracle-migration/azure-postgres-benefits.png" alt-text="Screenshot of examples how Azure builds upon the core benefits of PostgreSQL." lightbox="media/concepts-oracle-migration/azure-postgres-benefits.png":::
 
-## Getting Started
+<a id="getting-started"></a>
+
+## Get Started
 
 A critical step toward the successful completion of your initiative includes recognition that Oracle migrations are complex operations which require the successful execution of multiple sequential key phases and must be addressed in a specific and structured order. Carefully orchestrating and following these established methodologies and battle-tested processes are essential to achieving success. Our experience and expertise in supporting countless successful migrations can ensure that your migration is able to use and apply our learned lessons within your specific migration scenario. Additionally, there are key solution providers within the Microsoft Partner network offering powerful tools to assist with your migration efforts.
 
 This reference is intended to help identify key migration stages and recommend the ideal set of services and solutions for each stage of your Oracle migration:
 
-:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization." lightbox="media/concepts-oracle-migration/migration-stages.png":::
+:::image type="content" source="media/concepts-oracle-migration/migration-stages.png" alt-text="Screenshot of migration Stages: Discovery, Assessment, Schema Migration, Code Migration, Data Migration, Application Migration, Performance Tuning, and Cloud Optimization." lightbox="media/concepts-oracle-migration/migration-stages.png":::
 
 ## Related content
 
-- [Oracle to Azure PostgreSQL Migration Stages](./concepts-oracle-migration-stages.md)
+- [Oracle To Azure HorizonDB Migration Stages](concepts-oracle-migration-stages.md)
 - [Oracle to Azure PostgreSQL Migration Playbook](https://download.microsoft.com/download/8/f/c/8fc4fe39-7cb1-484a-aaa0-418704b90c0e/Oracle%20to%20Azure%20Postgres%20Migration%20Playbook.pdf)
 - [Oracle to Azure PostgreSQL Migration Workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
-- [Azure HorizonDB Migration Partners](./partners-migration-postgresql.md)
+- [Azure HorizonDB migration partners](partners-migration-postgresql.md)

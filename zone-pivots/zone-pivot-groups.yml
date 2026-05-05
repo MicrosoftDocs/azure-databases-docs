@@ -78,7 +78,7 @@ groups:
     title: NodeJS
   - id: programming-language-python
     title: Python
-# Postgresql
+# Owner: ialonso
 - id: postgresql-server-version
   title: PostgreSQL Server Versions
   prompt: Choose a PostgreSQL version

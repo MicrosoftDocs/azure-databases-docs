@@ -1,14 +1,14 @@
 ---
-title: "Quickstart: Create elastic clusters with portal"
+title: "Quickstart: Create Elastic Clusters with Portal in Azure HorizonDB"
 description: Quickstart guide to creating an instance of elastic cluster in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: quickstart
-#Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
+# Customer intent: As a system administrator, I want to deploy an elastic cluster using the portal.
 ---
 
 # Quickstart: Create an instance of elastic cluster in Azure HorizonDB
@@ -23,25 +23,25 @@ Open your web browser and go to the [portal](https://portal.azure.com/). Enter y
 
 ## Create an Azure HorizonDB server
 
-An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](../compute-storage/concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
+An elastic cluster, like a flexible server instance are created with a configured set of [compute and storage resources](../compute-storage/concepts-compute.md). The cluster is created within an [Azure resource group](/azure/azure-resource-manager/management/overview). The steps outlined in [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) equally apply to elastic clusters. This section outlines the changes in the process.
 
-To create an Azure HorizonDB flexible server instance, take the following steps:
+To create an Azure HorizonDB instance, take the following steps:
 
 1. After filling out basic information, go to the **Configure server** section.
 
-   :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/1-elastic-clusters-configure-server.png" alt-text="Screenshot of the Azure portal showing Compute + storage section and an actionable Configure server URL.":::
+   :::image type="content" source="media/quickstart-create-elastic-cluster-portal/1-elastic-clusters-configure-server.png" alt-text="Screenshot of the Azure portal showing Compute + storage section and an actionable Configure server URL.":::
 
 1. From section **Cluster** select **Elastic cluster** radio option.
 
-    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/2-elastic-clusters-configure-server.png" alt-text="Screenshot of the top section of Compute + storage configuration page. Server is selected. Elastic cluster is cleared.":::
+   :::image type="content" source="media/quickstart-create-elastic-cluster-portal/2-elastic-clusters-configure-server.png" alt-text="Screenshot of the top section of Compute + storage configuration page. Server is selected. Elastic cluster is cleared.":::
 
 1. Provide a desired node count and configure desired compute size.
 
-    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of Compute + storage configuration with elastic clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
+   :::image type="content" source="media/quickstart-create-elastic-cluster-portal/3-elastic-clusters-configure-server.png" alt-text="Screenshot of Compute + storage configuration with elastic clusters. Elastic cluster is selected. Node count input box has a value of 4. Compute tier and size options are visible.":::
 
 1. Save changes and verify your choices on the main configuration page.
 
-    :::image type="content" source="./media/quickstart-create-elastic-cluster-portal/4-elastic-clusters-configure-server.png" alt-text="Screenshot of main configuration page. The Compute + storage section has a new line Sharding Schema/Row and a line stating four nodes. Database name field is visible with the value postgres grayed out.":::
+   :::image type="content" source="media/quickstart-create-elastic-cluster-portal/4-elastic-clusters-configure-server.png" alt-text="Screenshot of main configuration page. The Compute + storage section has a new line Sharding Schema/Row and a line stating four nodes. Database name field is visible with the value postgres grayed out.":::
 
 1. Select **Review + create** to review your selections. Select **Create** to provision the server. This operation can take a few minutes.
 
@@ -49,10 +49,10 @@ To create an Azure HorizonDB flexible server instance, take the following steps:
 
    :::image type="content" source="../configure-maintain/media/quickstart-create-server/7-notifications.png" alt-text="Screenshot of the Notifications pane." lightbox="../configure-maintain/media/quickstart-create-server/7-notifications.png":::
 
-   By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/static/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
+   By default, a **postgres** database is created under your server. The [postgres](https://www.postgresql.org/docs/current/app-initdb.html) database is a default database meant for users, utilities, and applications. (The other default database is **azure_maintenance**. Its function is to separate the managed service processes from user actions. You can't access this database.)
 
-    > [!NOTE]
-    > Connections to your Azure HorizonDB flexible server instance communicate over port 5432 and 6432 (PgBouncer). When you try to connect from within a corporate network, outbound traffic over port 5432 and 6432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432 and 6432. Elastic clusters also use port 7432 and 8432 (PgBouncer) for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
+   > [!NOTE]  
+   > Connections to your Azure HorizonDB instance communicate over port 5432 and 6432 (PgBouncer). When you try to connect from within a corporate network, outbound traffic over port 5432 and 6432 might not be allowed by your network's firewall. If so, you can't connect to your server unless your IT department opens port 5432 and 6432. Elastic clusters also use port 7432 and 8432 (PgBouncer) for load balanced connections across the cluster nodes and might need to be allow listed in a similar way by your IT department.
 
 ## Get the connection information
 
@@ -62,19 +62,19 @@ Open your server's **Overview** page. Make a note of the **Server name** and the
 
 :::image type="content" source="../configure-maintain/media/quickstart-create-server/8-server-name.png" alt-text="Screenshot of the server Overview page." lightbox="../configure-maintain/media/quickstart-create-server/8-server-name.png":::
 
-<a name="connect-to-the-postgresql-database-using-psql"></a>
+<a id="connect-to-the-postgresql-database-using-psql"></a>
 
-## Connect to the Azure HorizonDB  database using psql
+## Connect to the Azure HorizonDB database using psql
 
-There are many applications you can use to connect to your Azure HorizonDB flexible server instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/static/app-psql.html) to connect to an Azure HorizonDB flexible server instance. Let's now use the psql command-line utility to connect to the Azure HorizonDB flexible server instance.
+There are many applications you can use to connect to your Azure HorizonDB instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/app-psql.html) to connect to an Azure HorizonDB instance. Let's now use the psql command-line utility to connect to the Azure HorizonDB instance.
 
-1. Run the following psql command to connect to an Azure HorizonDB flexible server instance.
+1. Run the following psql command to connect to an Azure HorizonDB instance.
 
    ```bash
    psql --host=<servername> --port=<port> --username=<user> --dbname=<dbname>
    ```
 
-   For example, the following command connects to the default database called **postgres** on your Azure HorizonDB flexible server instance **mydemoserver.postgres.database.azure.com** using access credentials. Enter the `<server_admin_password>` you chose when prompted for password.
+   For example, the following command connects to the default database called **postgres** on your Azure HorizonDB instance **mydemoserver.postgres.database.azure.com** using access credentials. Enter the `<server_admin_password>` you chose when prompted for password.
 
    ```bash
    psql --host=mydemoserver-pg.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
@@ -86,7 +86,7 @@ There are many applications you can use to connect to your Azure HorizonDB flexi
    psql --host=mydemoserver-pg.postgres.database.azure.com --port=7432 --username=myadmin --dbname=postgres
    ```
 
-   After you connect, the psql utility displays a postgres prompt where you type sql commands. In the initial connection output, a warning might appear because the psql you're using might be a different version than the Azure HorizonDB flexible server instance version.
+   After you connect, the psql utility displays a postgres prompt where you type sql commands. In the initial connection output, a warning might appear because the psql you're using might be a different version than the Azure HorizonDB instance version.
 
    Example psql output:
 
@@ -100,22 +100,22 @@ There are many applications you can use to connect to your Azure HorizonDB flexi
 
    > [!TIP]  
    > If the firewall isn't configured to allow the IP address of your client, the following error occurs:
-   >  
+   >
    > psql: FATAL: no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry.
-   >  
+   >
    > Confirm your client's IP is allowed in the firewall rules.
 
 1. Create a blank schema called "mypgsqlschema" at the prompt by typing the following command:
 
-    ```bash
-    CREATE SCHEMA mypgsqlschema;
-    ```
+   ```bash
+   CREATE SCHEMA mypgsqlschema;
+   ```
 
 1. At the prompt, execute the following command to make the schema `mypgsqlschema` distributed:
 
-    ```sql
-    SELECT citus_schema_distribute('mypgsqlschema');
-    ```
+   ```sql
+   SELECT citus_schema_distribute('mypgsqlschema');
+   ```
 
 1. Type `\q`, and then select the Enter key to quit psql.
 
@@ -140,9 +140,10 @@ To delete only the newly created server:
 
 1. On the **Overview** page, select **Delete**.
 
-    :::image type="content" source="../configure-maintain/media/quickstart-create-server/9-delete.png" alt-text="Screenshot of the Delete button." lightbox="../configure-maintain/media/quickstart-create-server/9-delete.png":::
+   :::image type="content" source="../configure-maintain/media/quickstart-create-server/9-delete.png" alt-text="Screenshot of the Delete button." lightbox="../configure-maintain/media/quickstart-create-server/9-delete.png":::
 
 1. Confirm the name of the server you want to delete, and view the databases under it that are affected. Enter your server name in the text box, and select **Delete**.
 
 ## Related content
-- [Design multitenant database with elastic clusters](../configure-maintain/tutorial-multitenant-database.md).
+
+- [Tutorial: Design a multitenant database with elastic clusters in Azure HorizonDB](../configure-maintain/tutorial-multitenant-database.md)

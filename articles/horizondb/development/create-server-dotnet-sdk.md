@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create with Azure Libraries (SDK) For.NET"
-description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete an Azure HorizonDB server.
+title: "Quickstart: Create with Azure Libraries (SDK) For.NET in Azure HorizonDB"
+description: This document is a QuickStart guide for Azure SDK library for .NET to create, update, and delete in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: quickstart
@@ -12,43 +12,43 @@ ms.topic: quickstart
 
 # Create an Azure HorizonDB instance using .NET SDK
 
-In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure HorizonDB flexible server instance. Azure HorizonDB is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure HorizonDB flexible server instance, multiple servers, or multiple databases on a server.
+In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure HorizonDB instance. Azure HorizonDB is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure HorizonDB instance, multiple servers, or multiple databases on a server.
 
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- [Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md).
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
 ## Azure.ResourceManager.PostgreSql library
 
-The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing Azure HorizonDB flexible server instances in Azure. With this library, you can perform various operations related to Azure HorizonDB flexible server instances, including but not limited to:
+The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET and provides functionality for managing Azure HorizonDB instances in Azure. With this library, you can perform various operations related to Azure HorizonDB instances, including but not limited to:
 
-1. **Creating Azure HorizonDB flexible server instances**:\
+1. **Creating Azure HorizonDB instances**:\
    You can create new flexible server instances with specified configurations such as location, SKU, storage, and version.
 
-1. **Updating Azure HorizonDB flexible server instances**:\
-   You can update existing Azure HorizonDB flexible server instances, including changing configurations like administrator login, password, SKU, storage, and version.
+1. **Updating Azure HorizonDB instances**:\
+   You can update existing Azure HorizonDB instances, including changing configurations like administrator login, password, SKU, storage, and version.
 
-1. **Deleting Azure HorizonDB flexible server instances**:\
-   You can delete existing Azure HorizonDB flexible server instances.
+1. **Deleting Azure HorizonDB instances**:\
+   You can delete existing Azure HorizonDB instances.
 
 1. **Retrieving Azure HorizonDB Information**:\
-   You can retrieve details about existing Azure HorizonDB flexible server instances, including their configurations, status, and other metadata.
+   You can retrieve details about existing Azure HorizonDB instances, including their configurations, status, and other metadata.
 
 1. **Managing Databases**:\
-   You can create, update, delete, and retrieve databases within the Azure HorizonDB flexible server instance.
+   You can create, update, delete, and retrieve databases within the Azure HorizonDB instance.
 
 1. **Managing Firewall Rules**:\
    You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 1. **Managing Configuration Settings**:\
-   You can manage configuration settings for an Azure HorizonDB flexible server instance, including retrieving and updating server parameters.
+   You can manage configuration settings for an Azure HorizonDB instance, including retrieving and updating server parameters.
 
 ## Log in to Azure
 
-Before using the Azure SDK for .NET to create, update, or delete an Azure HorizonDB flexible server instance, you must log in to your Azure account using the Azure CLI.
+Before using the Azure SDK for .NET to create, update, or delete an Azure HorizonDB instance, you must log in to your Azure account using the Azure CLI.
 
 ### Run the login command
 
@@ -73,7 +73,7 @@ After installing these packages, ensure that each em is listed in the `.csproj` 
 To Learn more about the `.csproj` file, visit [Web Deployment](/aspnet/web-forms/overview/deployment/web-deployment-in-the-enterprise/understanding-the-project-file).
 
 > [!NOTE]  
-> If you are having issues related to initial setup for .NET, follow this [guide](/dotnet/core/install/windows).
+> If you're having issues related to initial setup for .NET, follow this [guide](/dotnet/core/install/windows).
 
 ## Create the project
 
@@ -81,7 +81,7 @@ Create a new .NET project by following the steps mentioned in this [link](/dotne
 
 ### Create the Server
 
-To create an Azure HorizonDB flexible server instance, create a file named `CreateServer.cs` with the following code.
+To create an Azure HorizonDB instance, create a file named `CreateServer.cs` with the following code.
 
 ```csharp
 using System;
@@ -137,7 +137,7 @@ namespace CreatePostgreSqlFlexibleServer
 }
 ```
 
-This example demonstrates creating an Azure HorizonDB flexible server instance using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your Azure HorizonDB flexible server instances and related resources.
+This example demonstrates creating an Azure HorizonDB instance using the Azure Resource Manager. PostgreSql library. You can similarly use other methods provided by the library to manage your Azure HorizonDB instances and related resources.
 
 Replace the following parameters in the code with your data:
 
@@ -301,4 +301,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Quickstart: Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)

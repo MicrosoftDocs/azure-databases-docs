@@ -1,20 +1,19 @@
 ---
-title: Allow extensions
-description: This article describes how to allow extensions in an Azure HorizonDB flexible server instance.
+title: Allow Extensions in Azure HorizonDB
+description: This article describes how to allow extensions in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to allow extensions in an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn how to allow extensions in Azure HorizonDB.
 ---
 
-# Allow extensions
+# Allow extensions in Azure HorizonDB
 
-
-Before creating extensions for an Azure HorizonDB flexible server instance, you must allowlist them.
+Before creating extensions in Azure HorizonDB, you must allowlist them.
 
 ## Steps to allow extensions
 
@@ -22,26 +21,26 @@ Before creating extensions for an Azure HorizonDB flexible server instance, you 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. From the resource menu, under **Settings** section, select **Server parameters**.
+1. From the resource menu, under **Settings** section, select **Server parameters**.
 
-    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+   :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
 
-3. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
+1. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
 
-    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot that shows how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
+   :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot that shows how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
-4. Select **Save**.
+1. Select **Save**.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
+   :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 
 You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter).
 
 ```azurecli-interactive
-    az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
+    az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
 ```
 
 ### [Resource Manager Template](#tab/allow-extensions-azure-resource-manager)
@@ -83,7 +82,7 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 
 ## Related content
 
-- [Extensions and modules](concepts-extensions.md)
-- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
-- [List of extensions and modules by name](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)

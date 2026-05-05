@@ -1,19 +1,20 @@
 ---
-title: Connect with Power BI
-description: This article shows how to build Power BI reports from data on your Azure HorizonDB flexible server instance.
+title: Connect with Power BI in Azure HorizonDB
+description: This article shows how to build Power BI reports from data in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 09/18/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: quickstart
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
 
-# Quickstart: Import data from Azure HorizonDB  in Power BI
+# Quickstart: Import data in Power BI in Azure HorizonDB
 
-In this Quickstart, you learn how to connect to an Azure HorizonDB flexible server instance with Power BI Desktop. With Power BI Desktop, you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experience. You can import directly from the tables or import from a SELECT query. This article applies to Power BI Desktop only. Currently, Power Query online or Power BI Service is **not supported**.
+In this Quickstart, you learn how to connect to an Azure HorizonDB instance with Power BI Desktop. With Power BI Desktop, you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experience. You can import directly from the tables or import from a SELECT query. This article applies to Power BI Desktop only. Currently, Power Query online or Power BI Service is **not supported**.
 
 ## Prerequisites
 
@@ -21,35 +22,35 @@ In this Quickstart, you learn how to connect to an Azure HorizonDB flexible serv
 
 ## Connect with Power BI desktop from Azure portal
 
-Get the connection information needed to connect to the Azure HorizonDB flexible server instance. You need the fully qualified server name and sign in credentials.
+Get the connection information needed to connect to the Azure HorizonDB instance. You need the fully qualified server name and sign in credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you've created (such as **mydemoserverpbi**).
 1. Select the server name.
 1. From the server's **Overview** panel, Select **Power BI** setting from the left-hand menu.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-1.png" alt-text="Screenshot of viewing Power BI in Azure portal to connect to the database.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-1.png" alt-text="Screenshot of viewing Power BI in Azure portal to connect to the database." lightbox="media/connect-with-power-bi-desktop/connector-power-bi-ap-1.png" :::
 
-1. Select a database from the dropdown, for example *postgres* and then select **Get started**.
+1. Select a database from the dropdown list, for example *postgres* and then select **Get started**.
 1. Download the Power BI desktop file *mydemoserverpbi_postgres.pbids*.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-2.png" alt-text="Screenshot of downloading Power BI file for the database.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-2.png" alt-text="Screenshot of downloading Power BI file for the database.":::
 
 1. Open the file in Power BI desktop.
 1. Switch to **Database** tab to provide the username and password for your database server.
 
-   > [!NOTE]
-   > Windows authentication is not supported for Azure HorizonDB.
+   > [!NOTE]  
+   > Windows authentication isn't supported for Azure HorizonDB.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-3.png" alt-text="Screenshot of entering credentials to connect with Azure HorizonDB flexible server instance database.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-3.png" alt-text="Screenshot of entering credentials to connect with Azure HorizonDB instance database.":::
 
 1. In **Navigator**, select the data you require, then either load or transform the data.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" alt-text="Screenshot of navigator to view Azure HorizonDB flexible server instance tables.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" alt-text="Screenshot of navigator to view Azure HorizonDB instance tables." lightbox="media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" :::
 
-## Connect to Azure HorizonDB  database from Power BI Desktop
+## Connect to Azure HorizonDB database from Power BI Desktop
 
-You can connect to an Azure HorizonDB flexible server instance with Power BI desktop directly without the use of Azure portal.
+You can connect to an Azure HorizonDB instance with Power BI desktop directly without the use of Azure portal.
 
 ### Get the Azure HorizonDB connection information
 
@@ -63,23 +64,23 @@ You can connect to an Azure HorizonDB flexible server instance with Power BI des
 
 1. Select the **PostgreSQL database** option in the connector selection.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-5.png" alt-text="Screenshot of adding a postgresql connection in Power BI.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-5.png" alt-text="Screenshot of adding a postgresql connection in Power BI.":::
 
 1. In the **PostgreSQL database** dialog, provide the name of the server and database.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-6.png" alt-text="Screeshot of Signing in to Power BI.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-6.png" alt-text="Screenshot of screeshot of Signing in to Power BI.":::
 
-1. Select the **Database** authentication type and input your Azure HorizonDB flexible server instance credentials in the **User name** and **Password** boxes. Make sure to select the level to apply your credentials to.
+1. Select the **Database** authentication type and input your Azure HorizonDB instance credentials in the **User name** and **Password** boxes. Make sure to select the level to apply your credentials to.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-3.png" alt-text="Screenshot of entering credentials to connect with Azure HorizonDB flexible server instance database.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-3.png" alt-text="Screenshot of entering credentials to connect with Azure HorizonDB instance database.":::
 
 1. Once you're done, select **OK**.
 
 1. In **Navigator**, select the data you require, then either load or transform the data.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" alt-text="Screenshot of navigator to view Azure HorizonDB flexible server instance tables.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" alt-text="Screenshot of navigator to view Azure HorizonDB instance tables." lightbox="media/connect-with-power-bi-desktop/connector-power-bi-ap-4.png" :::
 
-## Connect to Azure HorizonDB  database from Power Query Online
+## Connect to Azure HorizonDB database from Power Query Online
 
 To make the connection, take the following steps:
 
@@ -87,12 +88,12 @@ To make the connection, take the following steps:
 
 1. In the **PostgreSQL database** dialog, provide the name of the server and database.
 
-    :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-7.png" alt-text="Screenshot of PostgreSQL connection with power query online.":::
+   :::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-7.png" alt-text="Screenshot of PostgreSQL connection with power query online.":::
 
    > [!NOTE]  
-   > Data gateway is not needed for Azure HorizonDB.
+   > Data gateway isn't needed for Azure HorizonDB.
 
-1. Select the **Basic** authentication kind and input your Azure HorizonDB flexible server instance credentials in the **Username** and **Password** boxes.
+1. Select the **Basic** authentication kind and input your Azure HorizonDB instance credentials in the **Username** and **Password** boxes.
 
 1. If your connection isn't encrypted, clear **Use Encrypted Connection**.
 
@@ -104,7 +105,7 @@ To make the connection, take the following steps:
 
 Power Query Desktop provides a set of advanced options that you can add to your query if needed.
 
-   :::image type="content" source="./media/connect-with-power-bi-desktop/connector-power-bi-ap-8.png" alt-text="Screenshot of PostgreSQL advanced options.":::
+:::image type="content" source="media/connect-with-power-bi-desktop/connector-power-bi-ap-8.png" alt-text="Screenshot of PostgreSQL advanced options.":::
 
 The following table lists all of the advanced options you can set in Power Query Desktop.
 
@@ -119,11 +120,11 @@ Once you've selected the advanced options you require, select **OK** in Power Qu
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
-- [Build visuals with Power BI Desktop](/power-bi/fundamentals/desktop-what-is-desktop).
-- [Quickstart: Use Python to connect and query data in Azure HorizonDB](../connectivity/connect-python.md).
-- [Quickstart: Use Java and JDBC with Azure HorizonDB](../connectivity/connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](../connectivity/connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](../connectivity/connect-go.md).
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](../connectivity/connect-php.md).
-- [Quickstart: Connect and query with Azure CLI with Azure HorizonDB](../connectivity/connect-azure-cli.md).
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
+- [Build visuals with Power BI Desktop](/power-bi/fundamentals/desktop-what-is-desktop)
+- [Quickstart: Use Python to connect and query data in Azure HorizonDB](../connectivity/connect-python.md)
+- [Quickstart: Use Java and JDBC in Azure HorizonDB](../connectivity/connect-java.md)
+- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](../connectivity/connect-csharp.md)
+- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](../connectivity/connect-go.md)
+- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](../connectivity/connect-php.md)
+- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](../connectivity/connect-azure-cli.md)

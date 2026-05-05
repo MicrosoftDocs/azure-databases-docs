@@ -1,19 +1,19 @@
 ---
-title: Schedule maintenance
-description: This article describes how to schedule maintenance of an Azure HorizonDB flexible server instance.
+title: Schedule Maintenance in Azure HorizonDB
+description: This article describes how to schedule maintenance of an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to schedule maintenance of an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn how to schedule maintenance of an Azure HorizonDB instance.
 ---
 
-# Schedule maintenance
+# Schedule maintenance in Azure HorizonDB
 
-You can specify scheduled maintenance options for each Azure HorizonDB flexible server instance in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
+You can specify scheduled maintenance options for each Azure HorizonDB instance in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
 ## Steps to schedule maintenance
 
@@ -21,35 +21,35 @@ You can specify scheduled maintenance options for each Azure HorizonDB flexible 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Settings** section, select **Maintenance**.
+1. In the resource menu, under the **Settings** section, select **Maintenance**.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/maintenance.png" alt-text="Screenshot showing the Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/maintenance.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/maintenance.png" alt-text="Screenshot showing the Maintenance page." lightbox="media/how-to-configure-scheduled-maintenance/maintenance.png":::
 
-3. If you select **System-managed schedule**, the system automatically assigns a random day of the week, and a 60-minute window which begins somewhere between 11pm and 7am (local server time).
+1. If you select **System-managed schedule**, the system automatically assigns a random day of the week, and a 60-minute window which begins somewhere between 11pm and 7am (local server time).
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/system-managed-schedule.png" alt-text="Screenshot showing the selection of system managed schedule in Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/system-managed-schedule.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/system-managed-schedule.png" alt-text="Screenshot showing the selection of system managed schedule in Maintenance page." lightbox="media/how-to-configure-scheduled-maintenance/system-managed-schedule.png":::
 
-4. If you want to have more granular control, select **Custom schedule**.
+1. If you want to have more granular control, select **Custom schedule**.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/custom-schedule.png" alt-text="Screenshot showing the selection of custom schedule in Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/custom-schedule.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/custom-schedule.png" alt-text="Screenshot showing the selection of custom schedule in Maintenance page." lightbox="media/how-to-configure-scheduled-maintenance/custom-schedule.png":::
 
-5. Select a preferred day of the week, and a start time for the 60-minute window in which you want maintenance to occur.
+1. Select a preferred day of the week, and a start time for the 60-minute window in which you want maintenance to occur.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/day-time.png" alt-text="Screenshot showing the selection of custom day of the week and start time for the maintenance window." lightbox="./media/how-to-configure-scheduled-maintenance/day-time.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/day-time.png" alt-text="Screenshot showing the selection of custom day of the week and start time for the maintenance window." lightbox="media/how-to-configure-scheduled-maintenance/day-time.png":::
 
-5. Select **Save**.
+1. Select **Save**.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/save-changes-enable.png" alt-text="Screenshot showing how to save configuration changes made to Maintenance page." lightbox="./media/how-to-configure-scheduled-maintenance/save-changes-enable.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/save-changes-enable.png" alt-text="Screenshot showing how to save configuration changes made to Maintenance page." lightbox="media/how-to-configure-scheduled-maintenance/save-changes-enable.png":::
 
-6. A notification informs you that the service is updating the maintenance window settings.
+1. A notification informs you that the service is updating the maintenance window settings.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="./media/how-to-configure-scheduled-maintenance/notification-configuring.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="media/how-to-configure-scheduled-maintenance/notification-configuring.png":::
 
-7. Once the operation ends, a notification informs you that the service completed the update of the maintenance window settings.
+1. Once the operation ends, a notification informs you that the service completed the update of the maintenance window settings.
 
-    :::image type="content" source="./media/how-to-configure-scheduled-maintenance/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="./media/how-to-configure-scheduled-maintenance/notification-configured.png":::
+   :::image type="content" source="media/how-to-configure-scheduled-maintenance/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="media/how-to-configure-scheduled-maintenance/notification-configured.png":::
 
 ### [CLI](#tab/cli-maintenance-settings)
 
@@ -85,13 +85,13 @@ az postgres flexible-server update \
 ---
 
 ## Notifications about scheduled maintenance events
- 
-You can use Azure Service Health to [view notifications](/azure/service-health/service-notifications) about upcoming and performed scheduled maintenance on your Azure HorizonDB flexible server instance.
+
+You can use Azure Service Health to [view notifications](/azure/service-health/service-health-notifications-properties) about upcoming and performed scheduled maintenance on your Azure HorizonDB instance.
 
 You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
 
 ## Related content
 
-- [Download PostgreSQL server logs and major version upgrade logs](../monitor/how-to-configure-server-logs.md).
-- [Create alerts on metrics using portal](../monitor/../monitor/how-to-alert-on-metrics.md).
-- [Configure and access logs](../monitor/how-to-configure-and-access-logs.md)
+- [Download PostgreSQL and upgrade logs in Azure HorizonDB](../monitor/how-to-configure-server-logs.md)
+- [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md)
+- [Configure and access logs in Azure HorizonDB](../monitor/how-to-configure-and-access-logs.md)

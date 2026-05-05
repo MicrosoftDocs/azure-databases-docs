@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create with Bicep"
-description: In this Quickstart, learn how to create an Azure HorizonDB server by using Bicep.
+title: "Quickstart: Create with Bicep in Azure HorizonDB"
+description: In this Quickstart, learn how to create using Bicep in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: quickstart
@@ -12,11 +12,11 @@ ms.custom:
   - devx-track-bicep
 ---
 
-# Create an Azure HorizonDB instance using Bicep
+# Create using Bicep in Azure HorizonDB
 
-In this quickstart, you learn how to use a Bicep file to create an Azure HorizonDB flexible server instance.
+In this quickstart, you learn how to use a Bicep file to create an Azure HorizonDB instance.
 
-Azure HorizonDB is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. You can use Bicep to provision an Azure HorizonDB flexible server instance to deploy multiple servers or multiple databases on a server.
+Azure HorizonDB is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud. You can use Bicep to provision an Azure HorizonDB instance to deploy multiple servers or multiple databases on a server.
 
 [!INCLUDE [About Bicep](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
 
@@ -26,7 +26,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 ## Review the Bicep
 
-An Azure HorizonDB flexible server instance is the parent resource for one or more databases within a region. It provides the scope for management policies that apply to its databases: login, firewall, users, roles, and configurations.
+An Azure HorizonDB instance is the parent resource for one or more databases within a region. It provides the scope for management policies that apply to its databases: login, firewall, users, roles, and configurations.
 
 Create a _main.bicep_ file and copy the following Bicep into it.
 
@@ -103,7 +103,7 @@ New-AzResourceGroupDeployment -ResourceGroupName exampleRG  -TemplateFile "./mai
 
 You're prompted to enter these values:
 
-- **serverName**: enter a unique name that identifies your Azure HorizonDB flexible server instance. For example, `mydemoserver-pg`. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
+- **serverName**: enter a unique name that identifies your Azure HorizonDB instance. For example, `mydemoserver-pg`. The domain name `postgres.database.azure.com` is appended to the server name you provide. The server can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
 - **administratorLogin**: enter your own login account to use when you connect to the server. For example, `myadmin`. The admin login name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
 - **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
@@ -147,4 +147,4 @@ Remove-AzResourceGroup -Name exampleRG
 
 ## Related content
 
-- [Connect and query overview for Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)
+- [Connect and query overview in Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)

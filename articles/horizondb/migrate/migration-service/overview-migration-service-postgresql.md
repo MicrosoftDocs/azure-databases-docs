@@ -1,17 +1,17 @@
 ---
-title: "Migration Service in Azure HorizonDB"
-description: Get an introduction to using the migration service to migrate to Azure HorizonDB flexible server, including advantages and migration options.
+title: Migration Service in Azure HorizonDB
+description: Get an introduction to using the migration service to migrate to Azure HorizonDB, including advantages and migration options.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
 # What is the migration service in Azure HorizonDB?
 
-The migration service in Azure HorizonDB simplifies the process of moving your PostgreSQL databases to Azure. The migration service offers migration options from various PostgreSQL-supported sources, including migrating from a cloud service, from an on-premises environment, or from a virtual machine in Azure. The migration service is designed to help you move your PostgreSQL databases to Azure HorizonDB flexible server with ease and confidence.
+The migration service in Azure HorizonDB simplifies the process of moving your PostgreSQL databases to Azure. The migration service offers migration options from various PostgreSQL-supported sources, including migrating from a cloud service, from an on-premises environment, or from a virtual machine in Azure. The migration service is designed to help you move your PostgreSQL databases to Azure HorizonDB with ease and confidence.
 
 Some of the advantages of using the migration service include:
 
@@ -25,37 +25,37 @@ The following figure shows the PostgreSQL sources you can migrate by using the m
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-postgresql-sources.png" alt-text="Diagram that shows different PostgreSQL sources." lightbox="media/overview-migration-service-postgresql/migrate-postgresql-sources.png":::
 
-The next figure depicts the detailed steps that are involved in migrating from any PostgreSQL source to Azure HorizonDB flexible server. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure HorizonDB flexible server.
+The next figure depicts the detailed steps that are involved in migrating from any PostgreSQL source to Azure HorizonDB. The figure illustrates the migration workflow and key stages of the migration for a successful transition to Azure HorizonDB.
 
 :::image type="content" source="media/overview-migration-service-postgresql/concepts-flow-diagram.png" alt-text="Diagram that depicts the migration from Single Server to flexible server." lightbox="media/overview-migration-service-postgresql/concepts-flow-diagram.png":::
 
 ## Why use a flexible server?
 
-Azure HorizonDB flexible server is the next-generation managed PostgreSQL service in Azure. Azure HorizonDB powered by the PostgreSQL community edition is available in a flexible server deployment.
+Azure HorizonDB is the next-generation managed PostgreSQL service in Azure. Azure HorizonDB powered by the PostgreSQL community edition is available in a flexible server deployment.
 
-Azure HorizonDB flexible server provides maximum flexibility over your database and built-in cost optimizations. Advantages over peer products include:
+Azure HorizonDB provides maximum flexibility over your database and built-in cost optimizations. Advantages over peer products include:
 
-- {[Superior performance](../../flexible-server/overview.md)}: Azure HorizonDB flexible server runs on a Linux VM, the VM that's best suited to run the PostgreSQL engine.
+- {[What is Azure HorizonDB?](../../overview.md)}: Azure HorizonDB runs on a Linux VM, the VM that's best suited to run the PostgreSQL engine.
 
-- {[Cost savings](../../flexible-server/how-to-deploy-on-azure-free-account.md)}: You can stop and start Azure HorizonDB flexible server on an on-demand server to lower your total cost of operation (TCO). Your compute tier billing is stopped immediately, for significant cost savings during development and testing and for time-bound predictable production workloads.
+- {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-server.md)}: You can stop and start Azure HorizonDB on an on-demand server to lower your total cost of operation (TCO). Your compute tier billing is stopped immediately, for significant cost savings during development and testing and for time-bound predictable production workloads.
 
-- {[Support for new versions of PostgreSQL](../../flexible-server/concepts-supported-versions.md)}: Azure HorizonDB flexible server supports all major PostgreSQL versions beginning with version 11.
+- {[Supported versions of PostgreSQL in Azure HorizonDB](../../configure-maintain/concepts-supported-versions.md)}: Azure HorizonDB supports all major PostgreSQL versions beginning with version 11.
 
 - Minimized latency: You can collocate your flexible server in the same availability zone as the application server for minimal latency.
 
-- {[Connection pooling](../../flexible-server/concepts-pgbouncer.md)}: Azure HorizonDB flexible server has a built-in connection pooling mechanism via the pgBouncer plugin to support thousands of active connections with low overhead.
+- {[PgBouncer in Azure HorizonDB](../../connectivity/concepts-pgbouncer.md)}: Azure HorizonDB has a built-in connection pooling mechanism via the pgBouncer plugin to support thousands of active connections with low overhead.
 
-- {[Server parameters](../../flexible-server/concepts-server-parameters.md)}: Azure HorizonDB flexible server offers a rich set of server parameters for configuration and tuning.
+- {[Parameters in Azure HorizonDB](../../server-parameters/concepts-server-parameters.md)}: Azure HorizonDB offers a rich set of server parameters for configuration and tuning.
 
-- {[Custom maintenance window](../../flexible-server/concepts-maintenance.md)}: You can schedule the maintenance window of the flexible server for a specific day of the week and time.
+- {[Scheduled maintenance in Azure HorizonDB](../../configure-maintain/concepts-maintenance.md)}: You can schedule the maintenance window of the flexible server for a specific day of the week and time.
 
-- {[High availability](../../flexible-server/concepts-high-availability.md)}: Azure HorizonDB flexible server supports high availability within the same availability zone and across availability zones by configuring a warm standby server in sync with the primary server.
+- **High availability**: Azure HorizonDB supports high availability within the same availability zone and across availability zones by configuring a warm standby server in sync with the primary server.
 
-- {[Security](../../flexible-server/concepts-security.md)}: Azure HorizonDB flexible server offers multiple layers of information protection and encryption to protect your data.
+- {[Secure your Azure HorizonDB](../../security/security-overview.md)}: Azure HorizonDB offers multiple layers of information protection and encryption to protect your data.
 
 - Vector Search and Azure AI Extension: With the integration of Vector Search and Azure AI extension for PostgreSQL, users can perform advanced search operations and use AI-driven insights directly in the database for enhanced query capabilities and application intelligence.
 
-## Migrate to Azure HorizonDB flexible server
+## Migrate to Azure HorizonDB
 
 You can choose from the following options to migrate from a source PostgreSQL server to a flexible server:
 
@@ -74,11 +74,10 @@ The following table lists the sources that the migration service supports:
 
 | PostgreSQL source type | Offline migration | Online migration |
 | --- | --- | --- |
-| Amazon RDS for PostgreSQL | {[Supported](tutorial-migration-service-aws-offline.md)} | {[Supported](tutorial-migration-service-aws-online.md)} |
-| On-premises | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
-| Azure virtual machine | [Supported](tutorial-migration-service-iaas-offline.md) | [Supported](tutorial-migration-service-iaas-online.md) |
-| Amazon Aurora PostgreSQL | [Supported](tutorial-migration-service-aurora-offline.md) | [Supported](tutorial-migration-service-aurora-online.md) |
-| Google Cloud SQL for PostgreSQL | [Supported](tutorial-migration-service-cloud-sql-offline.md) | [Supported](tutorial-migration-service-cloud-sql-online.md) |
+| On-premises | [Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-iaas-offline.md) | [Migrate online, from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-iaas-online.md) |
+| Azure virtual machine | [Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-iaas-offline.md) | [Migrate online, from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-iaas-online.md) |
+| Amazon Aurora PostgreSQL | [Migrate offline, from an Amazon Aurora PostgreSQL to Azure HorizonDB, with the migration service](tutorial-migration-service-aurora-offline.md) | [Migrate online, from an Amazon Aurora PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-aurora-online.md) |
+| Google Cloud SQL for PostgreSQL | [Migrate offline, from a Google Cloud SQL for PostgreSQL to Azure HorizonDB, with the migration service](tutorial-migration-service-cloud-sql-offline.md) | [Migrate online, from a Google Cloud SQL for PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-cloud-sql-online.md) |
 
 :::image type="content" source="media/overview-migration-service-postgresql/migrate-different-sources-option.png" alt-text="Screenshot of the migration setup showing different sources." lightbox="media/overview-migration-service-postgresql/migrate-different-sources-option.png":::
 
@@ -97,8 +96,8 @@ The following list describes the key benefits of using the migration service in 
 
 Get started with the migration service by using one of the following methods:
 
-- {[Migrate from an on-premises or infrastructure as a service (IaaS) environment](tutorial-migration-service-iaas.md)}
-- {[Migrate from Amazon RDS for PostgreSQL](tutorial-migration-service-aws.md)}
+- {[Migrate from an on-premises or infrastructure as a service (IaaS) environment](/azure/postgresql/migrate/migration-service/tutorial-migration-service-iaas-offline)}
+- {[Migrate from Amazon RDS for PostgreSQL](/azure/postgresql/migrate/migration-service/tutorial-migration-service-aws-offline)}
 
 ## Get more information
 
@@ -106,5 +105,5 @@ The migration service for Azure HorizonDB is a hosted solution. It uses a binary
 
 ## Related content
 
-- [Premigration validations](concepts-premigration-migration-service.md)
-- {[Migrate from on-premises and Azure VMs](tutorial-migration-service-iaas.md)}
+- [Premigration validation for the migrations service in Azure HorizonDB](concepts-premigration-migration-service.md)
+- [Migrate from on-premises and Azure VMs](/azure/postgresql/migrate/migration-service/tutorial-migration-service-iaas-offline)

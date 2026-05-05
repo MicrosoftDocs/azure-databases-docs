@@ -4,7 +4,7 @@ description: Provides an overview of Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: overview
 ---
@@ -13,9 +13,9 @@ ms.topic: overview
 
 This article provides an overview of Azure HorizonDB, helping you get acquainted with its key features and core concepts.
 
-Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB flexible server instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL. 
+Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL.
 
-:::image type="content" source="./media/overview/overview-flexible-server.png" alt-text="Diagram of Azure HorizonDB - Overview." lightbox="./media/overview/overview-flexible-server.png":::
+:::image type="content" source="media/overview/overview-flexible-server.png" alt-text="Diagram of Azure HorizonDB - Overview." lightbox="media/overview/overview-flexible-server.png":::
 
 ## Architecture and high availability
 
@@ -33,7 +33,7 @@ The service performs automated patching of the underlying hardware, OS, and data
 
 ## Automatic backups
 
-Azure HorizonDB automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backups](backup-restore/concepts-backup-restore.md).
+Azure HorizonDB automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backup and restore in Azure HorizonDB](backup-restore/concepts-backup-restore.md).
 
 ## Adjust performance and scale within seconds
 
@@ -47,7 +47,7 @@ Azure HorizonDB allows you to stop and start the server on demand to lower your 
 
 Azure HorizonDB uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure HorizonDB encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
 
-By using Azure virtual network, Azure HorizonDB flexible server instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
+By using Azure virtual network, Azure HorizonDB instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
 
 ## Monitor and alerting
 
@@ -55,7 +55,7 @@ Azure HorizonDB has built-in performance monitoring and alerting features. All A
 
 ## Built-in PgBouncer
 
-An Azure HorizonDB flexible server instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure HorizonDB flexible server instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
+An Azure HorizonDB instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure HorizonDB instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
 
 ## Azure regions
 
@@ -86,8 +86,8 @@ Azure HorizonDB now supports General Purpose and Memory Optimized V6 SKU family 
 
 Azure HorizonDB runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure HorizonDB.
 
-- **Azure Database Migration Service** – For seamless and simplified migrations to Azure HorizonDB with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure HorizonDB?](migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** – For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
+- **Azure Database Migration Service** - For seamless and simplified migrations to Azure HorizonDB with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure HorizonDB?](migrate/migration-service/overview-migration-service-postgresql.md)
+- **Dump and Restore** - For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate your PostgreSQL database to HorizonDB by using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
 
 ## Feedback and support
 
@@ -99,4 +99,4 @@ If you have questions or suggestions about Azure HorizonDB, you can get help and
 
 ## Related content
 
-- [Create an Azure HorizonDB](configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-server.md)

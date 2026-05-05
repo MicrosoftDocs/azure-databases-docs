@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure HorizonDB March
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/03/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -28,9 +28,9 @@ This new version introduces a range of new features and enhancements, resolves k
 - **Server Parameters**: cron.timezone parameter is now configurable, allowing you to set your preferred time zone for scheduled cron jobs.
 - Support for VNET-to-Private Endpoint migration for HA servers. High Availability (HA) enabled servers can now be migrated from VNET integration to Private Link.
 
-## Improvements 
+## Improvements
 
-- PgBouncer upgraded to latest community version release version v1.25.1 
+- PgBouncer upgraded to latest community version release version v1.25.1
 - Updated anon extension to version 2.5.1.
 - Updated PostGIS to version 3.6.1.
 - Updated the orafce extension to version 4.16.3.
@@ -45,21 +45,19 @@ This new version introduces a range of new features and enhancements, resolves k
 - **Elastic clusters - Firewall rule consistency**: Firewall rules are now self-healed across primary and standby instances, eliminating metadata mismatches after updates.
 - **Elastic clusters - HA firewall mirroring fix**: Firewall rule mirroring on HA clusters now correctly targets the standby Network Security Group.
 - **Elastic clusters - Node discoverability**: Cluster node active probe is enabled by default, ensuring new nodes are immediately discoverable.
-- **Fabric mirroring – Update table ownership requirement**: Table ownership is no longer required for mirrored tables that have a replica identity configured. Ownership is now only required for tables without a defined replica identity.
+- **Fabric mirroring - Update table ownership requirement**: Table ownership is no longer required for mirrored tables that have a replica identity configured. Ownership is now only required for tables without a defined replica identity.
 - **Fabric mirroring - Pre-validation of mirroring prerequisites**: Added a database-level prerequisite validation step during table selection. If the necessary mirroring prerequisites aren't met, the operation now fails early before initiating publication.
-- **MongoDB clusters – Simplified deletion with Private Link enabled**: You can now delete MongoDB clusters that have a Private link configured without first removing the Private Link.
+- **MongoDB clusters - Simplified deletion with Private Link enabled**: You can now delete MongoDB clusters that have a Private link configured without first removing the Private Link.
 - Several targeted improvements and bug fixes to enhance stability, reliability, and overall service experience.
 
 ## Known issues fix
 
-- Fixed an issue to improve cleanup of replication slots, addressing rare edge‑case scenarios.
+- Fixed an issue to improve cleanup of replication slots, addressing rare edge-case scenarios.
 - Fixed an issue where PgBouncer could be deemed unhealthy when reaching max client connections (leading to PgBouncer restart). This fix prevents unnecessary restarts.
 - **Improved server deletion reliability**: Fixed an edge case where a server deletion could become stuck if provisioning was still in progress.
 - **Improved deletion stability for server and Private Endpoint**: Resolved a race condition that could cause drop operations to become stuck when rapid deletion requests are issued for both a server and its Private Endpoint.
 - **Elastic clusters**: Active node probe now correctly verifies primary role, preventing traffic from being routed to non-primary nodes.
 
-
-
 ## Related content
 
-- {[Release notes - Azure HorizonDB](../flexible-server/release-notes.md)}
+- [Release notes - Azure HorizonDB](../release-notes/release-notes.md)

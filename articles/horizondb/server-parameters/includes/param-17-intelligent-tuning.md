@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### index_tuning.analysis_interval
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `60-10080` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.analysis_interval](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_columns_per_index
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `1-10` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_columns_per_index](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_index_count
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `1-25` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_index_count](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_indexes_per_table
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `1-25` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_indexes_per_table](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_queries_per_database
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `5-100` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_queries_per_database](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_regression_factor
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `0.05-0.2` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_regression_factor](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.max_total_size_factor
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.0` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.max_total_size_factor](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.min_improvement_factor
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `0-20.0` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.min_improvement_factor](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.mode
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `off,report` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.mode](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.unused_dml_per_table
 
@@ -171,28 +137,20 @@ ms.custom: automatically generated
 | Allowed values | `0-9999999` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.unused_dml_per_table](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.unused_min_period
 
 | Attribute | Value |
 | --- | --- |
 | Category | Intelligent Tuning |
-| Description | Minimum number of days the index has not been used, based on system statistics, so that it is considered for dropping. |
+| Description | Minimum number of days the index hasn't been used, based on system statistics, so that it's considered for dropping. |
 | Data type | integer |
 | Default value | `35` |
 | Allowed values | `30-720` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.unused_min_period](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### index_tuning.unused_reads_per_table
 
@@ -205,13 +163,11 @@ ms.custom: automatically generated
 | Allowed values | `0-9999999` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.unused_reads_per_table](https://go.microsoft.com/fwlink/?linkid=2274149) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="intelligent_tuning"></a>
 
-
-### intelligent_tuning
+### intelligent_tun
 
 | Attribute | Value |
 | --- | --- |
@@ -222,11 +178,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [intelligent_tuning](https://go.microsoft.com/fwlink/?linkid=2274150) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### intelligent_tuning.metric_targets
 
@@ -239,11 +191,7 @@ ms.custom: automatically generated
 | Allowed values | `none,Storage-checkpoint_completion_target,Storage-min_wal_size,Storage-max_wal_size,Storage-bgwriter_delay,tuning-autovacuum,all` |
 | Parameter type | dynamic |
 | Documentation | [intelligent_tuning.metric_targets](https://go.microsoft.com/fwlink/?linkid=2274150) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### logfiles.download_enable
 
@@ -256,11 +204,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### logfiles.retention_days
 
@@ -273,9 +217,4 @@ ms.custom: automatically generated
 | Allowed values | `1-7` |
 | Parameter type | dynamic |
 | Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

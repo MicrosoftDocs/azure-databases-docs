@@ -4,7 +4,7 @@ description: Learn how to quickly build and deploy Django  on AKS with Azure Hor
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: tutorial
@@ -17,7 +17,7 @@ ms.custom:
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure HorizonDB server by using the Azure CLI.
 
-[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that you use to quickly deploy and manage clusters. [Azure HorizonDB server](../overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
+[AKS](/azure/aks/intro-kubernetes) is a managed Kubernetes service that you use to quickly deploy and manage clusters. [What is Azure HorizonDB?](../overview.md) is a fully managed database service designed to provide more granular control and flexibility over database management functions and configuration settings.
 
 > [!NOTE]  
 > This quickstart assumes a basic understanding of Kubernetes concepts, Django, and PostgreSQL.
@@ -26,7 +26,7 @@ In this quickstart, you deploy a Django application on Azure Kubernetes Service 
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
-- Launch [Azure Cloud Shell](https://shell.azure.com) in new browser window. You can [install Azure CLI](/cli/azure/install-azure-cli#install) on your local machine too. If you're using a local install, sign in by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal.
+- Launch [Azure Cloud Shell](https://portal.azure.com/#cloudshell) in new browser window. You can [install Azure CLI](/cli/azure/install-azure-cli#install) on your local machine too. If you're using a local install, sign in by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal.
 - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade). This article requires the latest version of Azure CLI. If you're using Azure Cloud Shell, the latest version is already installed.
 
 ## Create a resource group
@@ -97,7 +97,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 
 ## Create a flexible server instance
 
-Create an Azure HorizonDB flexible server instance with the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server using service defaults and values from your Azure CLI's local context:
+Create an Azure HorizonDB instance with the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server using service defaults and values from your Azure CLI's local context:
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access all
@@ -204,7 +204,7 @@ Make sure you're in the `my-django-app` directory in a terminal by using the `cd
 docker build --tag myblog:latest .
 ```
 
-Deploy your image to [Docker hub](https://docs.docker.com/get-started/part3/#create-a-docker-hub-repository-and-push-your-image) or [Azure Container registry](/azure/container-registry/container-registry-get-started-azure-cli).
+Deploy your image to [Docker hub](https://docs.docker.com/get-started/workshop/04_sharing_app/#create-a-docker-hub-repository-and-push-your-image) or [Azure Container registry](/azure/container-registry/container-registry-get-started-azure-cli).
 
 > [!IMPORTANT]  
 > If you're using Azure container registry (ACR), run the `az aks update` command to attach the ACR account to the AKS cluster.
@@ -218,7 +218,7 @@ Deploy your image to [Docker hub](https://docs.docker.com/get-started/part3/#cre
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. Create a manifest file named `djangoapp.yaml` and copy in the following YAML definition.
 
 > [!IMPORTANT]  
-> Update the `env` section with your `SERVERNAME`, `YOUR-DATABASE-USERNAME`, and `YOUR-DATABASE-PASSWORD` values for your Azure HorizonDB flexible server instance.
+> Update the `env` section with your `SERVERNAME`, `YOUR-DATABASE-USERNAME`, and `YOUR-DATABASE-PASSWORD` values for your Azure HorizonDB instance.
 
 ```yaml
 apiVersion: apps/v1
@@ -387,4 +387,4 @@ az group delete --name django-project --yes --no-wait
 - [Automated deployments for Azure Kubernetes Service](/azure/aks/automated-deployments)
 - [Scale applications in Azure Kubernetes Service](/azure/aks/tutorial-kubernetes-scale)
 - [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
-- [Configure server parameters in Azure HorizonDB](../server-parameters/how-to-server-parameters-list-all.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)

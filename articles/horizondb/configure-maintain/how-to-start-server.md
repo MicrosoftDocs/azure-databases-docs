@@ -1,19 +1,19 @@
 ---
-title: Start compute of a server
-description: This article describes how to start the compute of an Azure HorizonDB flexible server.
+title: Start Compute of a Server in Azure HorizonDB
+description: This article describes how to start the compute of an Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/22/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to start the compute of an Azure HorizonDB.
+# customer intent: As a user, I want to learn how to start the compute of an Azure HorizonDB.
 ---
 
-# Start compute of a server
+# Start compute of a server in Azure HorizonDB
 
-This article provides step-by-step instructions to start the compute of an Azure HorizonDB flexible server.
+This article provides step-by-step instructions to start the compute of an Azure HorizonDB.
 
 ## Steps to start compute of a server
 
@@ -21,35 +21,35 @@ This article provides step-by-step instructions to start the compute of an Azure
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
-2. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
-    :::image type="content" source="./media/how-to-start-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-start-server/overview.png":::
+   :::image type="content" source="media/how-to-start-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="media/how-to-start-server/overview.png":::
 
-3. The status of the server must be **Stopped**, for the **Start** button to appear on the toolbar.
+1. The status of the server must be **Stopped**, for the **Start** button to appear on the toolbar.
 
-    :::image type="content" source="./media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-start-server/server-status.png":::
+   :::image type="content" source="media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="media/how-to-start-server/server-status.png":::
 
-3. Select the **Start** button.
+1. Select the **Start** button.
 
-    :::image type="content" source="./media/how-to-start-server/start-server.png" alt-text="Screenshot showing how to start a stopped server." lightbox="./media/how-to-start-server/start-server.png":::
+   :::image type="content" source="media/how-to-start-server/start-server.png" alt-text="Screenshot showing how to start a stopped server." lightbox="media/how-to-start-server/start-server.png":::
 
-4. A notification informs you that the server is starting.
+1. A notification informs you that the server is starting.
 
-    :::image type="content" source="./media/how-to-start-server/starting-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a start operation." lightbox="./media/how-to-start-server/starting-server-notification.png":::
+   :::image type="content" source="media/how-to-start-server/starting-server-notification.png" alt-text="Screenshot showing the notification seen when a server initiates a start operation." lightbox="media/how-to-start-server/starting-server-notification.png":::
 
-5. Also, the status of the server changes to **Starting**.
+1. Also, the status of the server changes to **Starting**.
 
-    :::image type="content" source="./media/how-to-start-server/starting-server-status.png" alt-text="Screenshot showing a server which is starting, highlighting its status as Starting." lightbox="./media/how-to-start-server/starting-server-status.png":::
+   :::image type="content" source="media/how-to-start-server/starting-server-status.png" alt-text="Screenshot showing a server which is starting, highlighting its status as Starting." lightbox="media/how-to-start-server/starting-server-status.png":::
 
-6. When the process completes, a notification informs you that the server is started.
+1. When the process completes, a notification informs you that the server is started.
 
-    :::image type="content" source="./media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful start operation." lightbox="./media/how-to-start-server/started-server-notification.png":::
+   :::image type="content" source="media/how-to-start-server/started-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful start operation." lightbox="media/how-to-start-server/started-server-notification.png":::
 
-7. Also, the status of the server changes to **Ready**.
+1. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="./media/how-to-start-server/started-server-status.png":::
+   :::image type="content" source="media/how-to-start-server/started-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="media/how-to-start-server/started-server-status.png":::
 
 ### [CLI](#tab/cli-start-server)
 
@@ -71,11 +71,11 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 ---
 
-> [!NOTE]
-> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation is not guaranteed to succeed. Once the server is started, all management operations are available for the Azure HorizonDB flexible server.
+> [!NOTE]  
+> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation isn't guaranteed to succeed. Once the server is started, all management operations are available for the Azure HorizonDB.
 
 ## Related content
 
-- [Stop compute of a server](how-to-stop-server.md).
-- [Restart PostgreSQL engine](how-to-restart-server.md).
-- [Configure high availability](../high-availability/how-to-configure-high-availability.md).
+- [Stop compute of a server in Azure HorizonDB](how-to-stop-server.md)
+- [Restart PostgreSQL engine in Azure HorizonDB](how-to-restart-server.md)
+- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)

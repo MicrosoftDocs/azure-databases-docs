@@ -1,17 +1,17 @@
 ---
-title: Mirroring in Microsoft Fabric for Azure HorizonDB
+title: Mirroring in Microsoft Fabric in Azure HorizonDB
 description: Learn about database mirroring in Microsoft Fabric for Azure HorizonDB instances, including architecture, CDC, and setup.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 04/15/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure HorizonDB.
+# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in Azure HorizonDB.
 ---
 
-# Azure HorizonDB database mirroring in Microsoft Fabric
+# Database mirroring in Microsoft Fabric in Azure HorizonDB
 
 [Mirroring in Fabric](/fabric/database/mirrored-database/azure-database-postgresql) (now generally available) provides an easy experience to avoid complex ETL (Extract Transform Load) and integrate your existing Azure HorizonDB estate with the rest of your data in Microsoft Fabric. You can continuously replicate your existing Azure HorizonDB directly into Fabric OneLake. Inside Fabric, you can unlock powerful business intelligence, artificial intelligence, Data Engineering, Data Science, and data sharing scenarios.
 
@@ -270,6 +270,6 @@ The mirroring function for fabric mirroring in Azure HorizonDB replicates your P
 
 ## Related content
 
-- [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
+- [System assigned managed identity in Azure HorizonDB](../security/security-configure-managed-identities-system-assigned.md)
 - [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
-- [Networking overview for Azure HorizonDB with public access (allowed IP addresses)](../network/concepts-networking-public.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)

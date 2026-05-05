@@ -1,10 +1,10 @@
 ---
-title: Firewall Rules
-description: This article describes how to use firewall rules to connect to an Azure HorizonDB flexible server instance with the public networking deployment option.
+title: Firewall Rules in Azure HorizonDB
+description: This article describes how to use firewall rules to connect with the public networking deployment option in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/13/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -13,15 +13,15 @@ ms.custom:
   - horz-security
 ---
 
-# Firewall rules in Azure HorizonDB 
+# Firewall rules in Azure HorizonDB
 
-When you're running an Azure HorizonDB flexible server instance, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
+When you're running an Azure HorizonDB instance, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
 
-With public access, the Azure HorizonDB flexible server instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](../network/concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access your Azure HorizonDB flexible server instance.
+With public access, the Azure HorizonDB instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](../network/concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access your Azure HorizonDB instance.
 
 You can create firewall rules by using the Azure portal or by using Azure CLI commands. You must be the subscription owner or a subscription contributor.
 
-Server-level firewall rules apply to all databases on the same Azure HorizonDB flexible server instance. The rules don't affect access to the Azure portal website.
+Server-level firewall rules apply to all databases on the same Azure HorizonDB instance. The rules don't affect access to the Azure portal website.
 
 The following diagram shows how connection attempts from the internet and Azure must pass through the firewall before they can reach Azure HorizonDB databases:
 
@@ -37,7 +37,7 @@ For example, if your application connects with a Java Database Connectivity (JDB
 - org.postgresql.util.PSQLException: FATAL: no pg\_hba.conf entry for host "123.45.67.890", user "adminuser", database "postgresql", SSL
 
 > [!NOTE]  
-> To access the Azure HorizonDB flexible server instance from your local computer, ensure that the firewall on your network and local computer allows outgoing communication on TCP port 5432.
+> To access the Azure HorizonDB instance from your local computer, ensure that the firewall on your network and local computer allows outgoing communication on TCP port 5432.
 
 ## Connect from Azure
 
@@ -49,24 +49,24 @@ If a fixed outgoing IP address isn't available for your Azure service, consider 
 
 1. Select **Save**.
 
-    :::image type="content" source="media/security-firewall-rules/allow-public-access.png" alt-text="Screenshot of networking page with firewall.":::
+   :::image type="content" source="media/security-firewall-rules/allow-public-access.png" alt-text="Screenshot of networking page with firewall." lightbox="media/security-firewall-rules/allow-public-access.png" :::
 
-    > [!IMPORTANT]  
-    > The **Allow public access from any Azure service within Azure to this server** option configures the firewall to allow all connections from Azure, including connections from the subscriptions of other customers. When you're using this option, make sure your sign-in and user permissions limit access to only authorized users.
+   > [!IMPORTANT]  
+   > The **Allow public access from any Azure service within Azure to this server** option configures the firewall to allow all connections from Azure, including connections from the subscriptions of other customers. When you're using this option, make sure your sign-in and user permissions limit access to only authorized users.
 
 ## Programmatically manage firewall rules
 
 In addition to using the Azure portal, you can manage firewall rules programmatically by using the Azure CLI.
 
-From the Azure CLI, a firewall rule setting with a starting and ending address equal to 0.0.0.0 does the equivalent of the **Allow public access from any Azure service within Azure to this server** option in the portal. If firewall rules reject the connection attempt, the app won't reach the Azure HorizonDB flexible server instance.
+From the Azure CLI, a firewall rule setting with a starting and ending address equal to 0.0.0.0 does the equivalent of the **Allow public access from any Azure service within Azure to this server** option in the portal. If firewall rules reject the connection attempt, the app won't reach the Azure HorizonDB instance.
 
 ## Troubleshoot firewall problems
 
-Consider the following possibilities when access to an Azure HorizonDB flexible server instance doesn't behave as you expect:
+Consider the following possibilities when access to an Azure HorizonDB instance doesn't behave as you expect:
 
-- **Changes to the allowlist haven't taken effect yet**: Changes to the firewall configuration of an Azure HorizonDB flexible server instance might take up to five minutes.
+- **Changes to the allowlist haven't taken effect yet**: Changes to the firewall configuration of an Azure HorizonDB instance might take up to five minutes.
 
-- **The sign-in isn't authorized, or an incorrect password was used**: If a sign-in doesn't have permissions on the Azure HorizonDB flexible server instance or the password is incorrect, the connection to the server is denied. Creating a firewall setting only provides clients with an opportunity to try connecting to your server. Each client must still provide the necessary security credentials.
+- **The sign-in isn't authorized, or an incorrect password was used**: If a sign-in doesn't have permissions on the Azure HorizonDB instance or the password is incorrect, the connection to the server is denied. Creating a firewall setting only provides clients with an opportunity to try connecting to your server. Each client must still provide the necessary security credentials.
 
 For example, the following error might appear if authentication fails for a JDBC client:
 
@@ -74,7 +74,7 @@ For example, the following error might appear if authentication fails for a JDBC
 
 - **The firewall isn't allowing dynamic IP addresses**: If you have an internet connection with dynamic IP addressing and you're having trouble getting through the firewall, try one of the following solutions:
 
-- Ask your internet service provider (ISP) for the IP address range assigned to your client computers that access the Azure HorizonDB flexible server instance. Then add the IP address range as a firewall rule.
+- Ask your internet service provider (ISP) for the IP address range assigned to your client computers that access the Azure HorizonDB instance. Then add the IP address range as a firewall rule.
 
 - Get static IP addresses instead for your client computers, and then add the static IP addresses as a firewall rule.
 
@@ -82,4 +82,4 @@ For example, the following error might appear if authentication fails for a JDBC
 
 ## Related content
 
-- [Create and manage firewall rules for Azure HorizonDB](../network/how-to-networking.md)
+- [Networking in Azure HorizonDB](../network/how-to-networking.md)

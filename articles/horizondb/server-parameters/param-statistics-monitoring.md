@@ -1,72 +1,16 @@
 ---
-title: Statistics / Monitoring server parameters
-description: Statistics / Monitoring server parameters for Azure HorizonDB flexible server.
+title: Statistics / Monitoring Parameters
+description: Statistics / Monitoring parameters for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
-ms.custom: automatically generated
-zone_pivot_groups: postgresql-server-version
+ms.custom:
+  - automatically generated
 ---
-# Statistics / Monitoring
-
-
-::: zone pivot="postgresql-18"
-
-[!INCLUDE [param-18-statistics-monitoring](./includes/param-18-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-17"
+# HorizonDB - Statistics / Monitoring
 
 [!INCLUDE [param-17-statistics-monitoring](./includes/param-17-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-16"
-
-[!INCLUDE [param-16-statistics-monitoring](./includes/param-16-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-15"
-
-[!INCLUDE [param-15-statistics-monitoring](./includes/param-15-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-14"
-
-[!INCLUDE [param-14-statistics-monitoring](./includes/param-14-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-13"
-
-[!INCLUDE [param-13-statistics-monitoring](./includes/param-13-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-12"
-
-[!INCLUDE [param-12-statistics-monitoring](./includes/param-12-statistics-monitoring.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-11"
-
-[!INCLUDE [param-11-statistics-monitoring](./includes/param-11-statistics-monitoring.md)]
-
-::: zone-end
-
-

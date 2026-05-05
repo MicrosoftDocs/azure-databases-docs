@@ -1,22 +1,22 @@
 ---
-title: Delete on-demand backups
-description: This article describes how to delete on-demand backups of an Azure HorizonDB flexible server instance.
+title: Delete On-Demand Backups in Azure HorizonDB
+description: This article describes how to delete on-demand backups in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I delete full on-demand backups of an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn how can I delete full on-demand backups in Azure HorizonDB.
 ---
 
-# Delete on-demand backups
+# Delete on-demand backups in Azure HorizonDB
 
-This article provides step-by-step instructions to delete on-demand backups of an Azure HorizonDB flexible server instance.
+This article provides step-by-step instructions to delete on-demand backups in Azure HorizonDB.
 
-> [!IMPORTANT]
-> On-demand backups are automatically deleted, according to your configured backup retention period. However, you can manually delete them earlier if they’re no longer needed.
+> [!IMPORTANT]  
+> On-demand backups are automatically deleted, according to your configured backup retention period. However, you can manually delete them earlier if they're no longer needed.
 
 ## Steps to delete on-demand backups
 
@@ -24,31 +24,31 @@ This article provides step-by-step instructions to delete on-demand backups of a
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Settings** section, select **Backup and restore**.
+1. In the resource menu, under the **Settings** section, select **Backup and restore**.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
 
-3. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
+1. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="./media/how-to-on-demand-backup/list-on-demand-backups.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="media/how-to-on-demand-backup/list-on-demand-backups.png":::
 
-4. Identify the on-demand backup that you want to delete. Then, under the **Actions** column, select **Delete**.
+1. Identify the on-demand backup that you want to delete. Then, under the **Actions** column, select **Delete**.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/delete-on-demand-backup.png" alt-text="Screenshot showing how to delete an on-demand backup." lightbox="./media/how-to-on-demand-backup/delete-on-demand-backup.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/delete-on-demand-backup.png" alt-text="Screenshot showing how to delete an on-demand backup." lightbox="media/how-to-on-demand-backup/delete-on-demand-backup.png":::
 
-5. A dialog asks for confirmation before the irreversible operation is initiated. Select **Delete** if you want to initiate the permanent deletion of that particular on-demand backup.
+1. A dialog asks for confirmation before the irreversible operation is initiated. Select **Delete** if you want to initiate the permanent deletion of that particular on-demand backup.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/delete-confirmation.png" alt-text="Screenshot showing the confirmation dialog to initiate the deletion of an on-demand backup." lightbox="./media/how-to-on-demand-backup/delete-confirmation.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/delete-confirmation.png" alt-text="Screenshot showing the confirmation dialog to initiate the deletion of an on-demand backup." lightbox="media/how-to-on-demand-backup/delete-confirmation.png":::
 
-6.  A notification informs you that the on-demand backup is being deleted.
+1. A notification informs you that the on-demand backup is being deleted.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/notification-backup-deleting.png" alt-text="Screenshot showing the notification informing that on-demand backup is being deleted." lightbox="./media/how-to-on-demand-backup/notification-backup-deleting.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/notification-backup-deleting.png" alt-text="Screenshot showing the notification informing that on-demand backup is being deleted." lightbox="media/how-to-on-demand-backup/notification-backup-deleting.png":::
 
-7.  Upon successful completion, a notification informs you that the on-demand backup is deleted.
+1. Upon successful completion, a notification informs you that the on-demand backup is deleted.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/notification-backup-deleted.png" alt-text="Screenshot showing the notification informing that on-demand backup is deleted." lightbox="./media/how-to-on-demand-backup/notification-backup-deleted.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/notification-backup-deleted.png" alt-text="Screenshot showing the notification informing that on-demand backup is deleted." lightbox="media/how-to-on-demand-backup/notification-backup-deleted.png":::
 
 ### [CLI](#tab/cli-delete-on-demand-backups)
 
@@ -77,12 +77,12 @@ az postgres flexible-server backup delete \
   --yes
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > If you provide the name that doesn't match any of the available on-demand backups, the command doesn't report any error.
 
 ---
 
 ## Related content
 
-- [Perform on-demand backups](how-to-perform-backups.md).
-- [List all backups](how-to-list-all-backups.md).
+- [Perform on-demand backups in Azure HorizonDB](how-to-perform-backups.md)
+- [List all backups in Azure HorizonDB](how-to-list-all-backups.md)

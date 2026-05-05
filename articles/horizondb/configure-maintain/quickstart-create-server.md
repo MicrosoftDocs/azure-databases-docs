@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create a Azure HorizonDB database"
+title: "Quickstart: Create a Azure HorizonDB Database"
 description: Quickstart guide to creating and managing an Azure HorizonDB database.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/23/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
@@ -28,14 +28,14 @@ Before you begin, make sure you have:
 
 An Azure HorizonDB database includes:
 
-- A configured set of {[compute and storage resources](concepts-compute.md)}.
+- A configured set of {[compute resources](../compute-storage/concepts-compute.md)} and {[storage resources](../compute-storage/concepts-storage.md)}.
 - Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 - A `postgres` database created by default.
 - An `azure_maintenance` database for managed service processes.
 - An `azure_sys` database for query store and autonomous tuning features.
 
-> [!NOTE]
-> Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler.
+> [!NOTE]  
+> Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer in Azure HorizonDB](../connectivity/concepts-pgbouncer.md) connection pooler.
 
 ## Create Azure HorizonDB database using Azure portal
 
@@ -54,14 +54,14 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 #### Project details
 
 | Setting | Suggested value | Notes |
-|---------|----------------|-------|
+| --- | --- | --- |
 | **Subscription** | Your subscription | Choose where to bill the resource |
 | **Resource group** | myresourcegroup | Create new or select existing |
 
 #### Server details
 
 | Setting | Suggested value | Description |
-|---------|----------------|-------------|
+| --- | --- | --- |
 | **Server name** | mydemoserver-pgsql | Must be globally unique. Domain `.postgres.database.azure.com` is added automatically |
 | **Region** | Region closest to you | Consider compliance, data residency, pricing, and proximity to users |
 | **PostgreSQL version** | Latest available | Currently supported: **[!INCLUDE [major-versions-ascending](../includes/major-versions-ascending.md)]** |
@@ -71,7 +71,7 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 #### High availability
 
 | Option | SLA | Description |
-|--------|-----|-------------|
+| --- | --- | --- |
 | Disabled | 99.9% | Single server with no standby |
 | Same zone | 99.95% | Standby in the same availability zone |
 | Zone redundant | 99.99% | Standby in a different availability zone |
@@ -79,9 +79,9 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 #### Authentication
 
 | Setting | Description | Recommended |
-|---------|-------------|-------------|
-| **Authentication method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br>- **Microsoft Entra authentication** (for production)<br>- **Both** (for flexibility) |
-| **Admin username** | adminuser | - Must be 1-63 characters<br>- Only numbers and letters<br>- Can't start with `pg_`<br>- Can't be system reserved names |
+| --- | --- | --- |
+| **Authentication method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br />- **Microsoft Entra authentication** (for production)<br />- **Both** (for flexibility) |
+| **Admin username** | adminuser | - Must be 1-63 characters<br />- Only numbers and letters<br />- Can't start with `pg_`<br />- Can't be system reserved names |
 | **Password** | Complex password | 8-128 characters with uppercase, lowercase, numbers, and special characters |
 
 ### Configure compute and storage
@@ -91,7 +91,7 @@ Select **Configure server** to customize:
 #### Compute tier
 
 | Tier | Use case | Description |
-|------|----------|-------------|
+| --- | --- | --- |
 | **Burstable** | Development | For workloads that don't need continuous full CPU |
 | **General Purpose** | Production | Most common production workloads |
 | **Memory Optimized** | High-memory workloads | Workloads requiring high memory-to-CPU ratio |
@@ -99,7 +99,7 @@ Select **Configure server** to customize:
 #### Storage settings
 
 | Setting | Can change later | Description |
-|---------|-----------------|-------------|
+| --- | --- | --- |
 | **Storage type** | ❌ No | Premium SSD or Premium SSD v2 |
 | **Storage size** | ✅ Yes (increase only) | Can't shrink after creation |
 | **Performance tier** | ✅ Yes | Controls IOPS and throughput |
@@ -108,7 +108,7 @@ Select **Configure server** to customize:
 #### Backup settings
 
 | Setting | Can change later | Description |
-|---------|-----------------|-------------|
+| --- | --- | --- |
 | **Backup retention** | ✅ Yes | 7-35 days |
 | **Backup redundancy** | ❌ No | Locally redundant, Zone redundant, or Geo-redundant |
 | **Geo-redundancy** | ❌ No | Available only in [Azure paired regions](/azure/reliability/cross-region-replication-azure) |
@@ -124,19 +124,19 @@ Connect through a public endpoint by using firewall rules.
 **Settings:**
 
 | Setting | Description |
-|---------|-------------|
+| --- | --- |
 | **Allow public access** | Enable public access to configure firewall rules |
 | **Allow Azure services** | Permit connections from all Azure services |
 | **Add current client IP** | Add your IP address to allow list |
 
 #### Private access (virtual network Integration)
 
-Connect through a private endpoint within a virtual network. For more information, see [Network with private access for Azure HorizonDB](../network/concepts-networking-private.md).
+Connect through a private endpoint within a virtual network. For more information, see [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md).
 
 ### Configure security
 
 | Setting | Can change later | Options |
-|---------|-----------------|---------|
+| --- | --- | --- |
 | **Data encryption key** | ❌ No | Service-managed or Customer-managed |
 
 ### Add resource tags (optional)
@@ -144,7 +144,7 @@ Connect through a private endpoint within a virtual network. For more informatio
 Organize resources with name-value pairs:
 
 | Name | Value | Purpose |
-|------|-------|---------|
+| --- | --- | --- |
 | Environment | Development | Identify environment type |
 | CostCenter | IT-Dept | Track costs by department |
 | Owner | admin@contoso.com | Identify responsible party |
@@ -186,7 +186,7 @@ az postgres flexible-server create \
 ### CLI parameters reference
 
 | Parameter | Description | Example |
-|-----------|-------------|---------|
+| --- | --- | --- |
 | `--resource-group` | Resource group name | myresourcegroup |
 | `--name` | Globally unique server name | mydemoserver-pgsql |
 | `--location` | Azure region | eastus |
@@ -325,7 +325,9 @@ az deployment group create \
 
 After creating your server, retrieve connection details:
 
-### Using Azure portal
+<a id="using-azure-portal"></a>
+
+### Use Azure portal
 
 1. Go to your server in the Azure portal.
 1. Open the **Overview** page.
@@ -333,7 +335,9 @@ After creating your server, retrieve connection details:
    - **Server name** (Endpoint): `mydemoserver-pgsql.postgres.database.azure.com`
    - **Administrator login**: `myadmin`
 
-### Using Azure CLI
+<a id="using-azure-cli"></a>
+
+### Use Azure CLI
 
 ```azurecli-interactive
 az postgres flexible-server show \
@@ -385,7 +389,9 @@ CREATE DATABASE user_database;
 \q
 ```
 
-## Troubleshooting connection issues
+<a id="troubleshooting-connection-issues"></a>
+
+## Troubleshoot connection issues
 
 ### Firewall blocking connection
 
@@ -432,4 +438,4 @@ az postgres flexible-server delete \
 ## Related content
 
 - [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
-- [Connect and query overview for Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)
+- [Connect and query overview in Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)

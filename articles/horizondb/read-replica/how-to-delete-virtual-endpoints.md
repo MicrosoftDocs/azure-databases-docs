@@ -1,18 +1,18 @@
 ---
-title: Delete virtual endpoints
-description: This article describes how to delete virtual endpoints for an Azure HorizonDB flexible server instance.
+title: Delete Virtual Endpoints in Azure HorizonDB
+description: This article describes how to delete virtual endpoints in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/13/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
 ---
 
-# Delete virtual endpoints
+# Delete virtual endpoints in Azure HorizonDB
 
-This article provides step-by-step instructions to delete virtual endpoints associated to an Azure HorizonDB flexible server instance.
+This article provides step-by-step instructions to delete virtual endpoints associated to an Azure HorizonDB instance.
 
 ## Steps to delete virtual endpoints
 
@@ -20,31 +20,31 @@ This article provides step-by-step instructions to delete virtual endpoints asso
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure HorizonDB flexible server instance for which you want to delete its associated virtual endpoints.
+1. Select the Azure HorizonDB instance for which you want to delete its associated virtual endpoints.
 
-2. In the resource menu, under the **Settings** section, select **Replication**.
+1. In the resource menu, under the **Settings** section, select **Replication**.
 
-    :::image type="content" source="./media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="./media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
 
-3.  In the **Virtual endpoints** section, select the ellipsis to the right of the pencil icon, then select **Delete**.
+1. In the **Virtual endpoints** section, select the ellipsis to the right of the pencil icon, then select **Delete**.
 
-    :::image type="content" source="./media/how-to-read-replicas/delete-virtual-endpoints.png" alt-text="Screenshot showing the location of the Delete virtual endpoints button in the Replication page." lightbox="./media/how-to-read-replicas/delete-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/delete-virtual-endpoints.png" alt-text="Screenshot showing the location of the Delete virtual endpoints button in the Replication page." lightbox="media/how-to-read-replicas/delete-virtual-endpoints.png":::
 
-4. A dialog box asks for confirmation to proceed with the deletion of the virtual endpoints. Select **Delete** to proceed.
+1. A dialog box asks for confirmation to proceed with the deletion of the virtual endpoints. Select **Delete** to proceed.
 
-    :::image type="content" source="./media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png" alt-text="Screenshot showing the Delete confirmation dialog." lightbox="./media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png":::
+   :::image type="content" source="media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png" alt-text="Screenshot showing the Delete confirmation dialog." lightbox="media/how-to-read-replicas/delete-virtual-endpoints-confirmation.png":::
 
-5. A notification informs you that the virtual endpoints are being deleted.
+1. A notification informs you that the virtual endpoints are being deleted.
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-deleting-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints are being deleted." lightbox="./media/how-to-read-replicas/notification-deleting-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/notification-deleting-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints are being deleted." lightbox="media/how-to-read-replicas/notification-deleting-virtual-endpoints.png":::
 
-6. When the process completes, a notification informs you that the virtual endpoints were successfully deleted.
+1. When the process completes, a notification informs you that the virtual endpoints were successfully deleted.
 
-    :::image type="content" source="./media/how-to-read-replicas/notification-deleted-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were deleted successfully." lightbox="./media/how-to-read-replicas/notification-deleted-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/notification-deleted-virtual-endpoints.png" alt-text="Screenshot showing a notification informing that the virtual endpoints were deleted successfully." lightbox="media/how-to-read-replicas/notification-deleted-virtual-endpoints.png":::
 
 ### [CLI](#tab/cli-delete-virtual-endpoints)
 
-You can delete the existing virtual endpoints of your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server virtual-endpoint delete`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-delete) command. 
+You can delete the existing virtual endpoints of your Azure PostgreSQL flexible server instance via the [`az postgres flexible-server virtual-endpoint delete`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-delete) command.
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint delete \
@@ -56,8 +56,8 @@ az postgres flexible-server virtual-endpoint delete \
 
 ## Related content
 
-- [Read replicas](concepts-read-replicas.md).
-- [Create virtual endpoints](how-to-create-virtual-endpoints.md).
-- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
-- [Show virtual endpoints](how-to-show-virtual-endpoints.md).
-- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
+- [Read replicas in Azure HorizonDB](concepts-read-replicas.md)
+- [Create virtual endpoints in Azure HorizonDB](how-to-create-virtual-endpoints.md)
+- [Update virtual endpoints in Azure HorizonDB](how-to-update-virtual-endpoints.md)
+- [Show virtual endpoints in Azure HorizonDB](how-to-show-virtual-endpoints.md)
+- [Switch over read replica to primary in Azure HorizonDB](how-to-switch-over-replica-to-primary.md)

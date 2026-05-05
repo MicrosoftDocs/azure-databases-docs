@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### event_source
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `PostgreSQL` |
 | Parameter type | read-only |
 | Documentation | [event_source](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-EVENT-SOURCE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_destination
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `stderr,csvlog` |
 | Parameter type | dynamic |
 | Documentation | [log_destination](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-DESTINATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_directory
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `log` |
 | Parameter type | read-only |
 | Documentation | [log_directory](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-DIRECTORY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_file_mode
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `0600` |
 | Parameter type | read-only |
 | Documentation | [log_file_mode](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-FILE-MODE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_filename
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `postgresql-%Y-%m-%d_%H%M%S.log` |
 | Parameter type | read-only |
 | Documentation | [log_filename](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-FILENAME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### logging_collector
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [logging_collector](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOGGING-COLLECTOR) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_rotation_age
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `60` |
 | Parameter type | read-only |
 | Documentation | [log_rotation_age](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-ROTATION-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_rotation_size
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `102400` |
 | Parameter type | read-only |
 | Documentation | [log_rotation_size](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-ROTATION-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_truncate_on_rotation
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [log_truncate_on_rotation](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-TRUNCATE-ON-ROTATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### syslog_facility
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `local0` |
 | Parameter type | read-only |
 | Documentation | [syslog_facility](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-SYSLOG-FACILITY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### syslog_ident
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `postgres` |
 | Parameter type | read-only |
 | Documentation | [syslog_ident](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-SYSLOG-IDENT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### syslog_sequence_numbers
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [syslog_sequence_numbers](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-SYSLOG-SEQUENCE-NUMBERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### syslog_split_messages
 
@@ -222,9 +176,4 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [syslog_split_messages](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-SYSLOG-SPLIT-MESSAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

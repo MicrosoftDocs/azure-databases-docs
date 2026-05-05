@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### vacuum_cost_delay
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `0-100` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_cost_delay](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-COST-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_cost_limit
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `1-10000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_cost_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-COST-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_cost_page_dirty
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `0-10000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_cost_page_dirty](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-COST-PAGE-DIRTY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_cost_page_hit
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `0-10000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_cost_page_hit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-COST-PAGE-HIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_cost_page_miss
 
@@ -86,9 +72,4 @@ ms.custom: automatically generated
 | Allowed values | `0-10000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_cost_page_miss](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-VACUUM-COST-PAGE-MISS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

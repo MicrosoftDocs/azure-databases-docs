@@ -1,13 +1,14 @@
 ---
-title: "Oracle to PostgreSQL Schema Conversion: Tutorial"
-description: "Step-by-step tutorial for converting Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration."
+title: "Oracle to PostgreSQL Schema Conversion: Tutorial in Azure HorizonDB"
+description: Step-by-step tutorial for converting Oracle database schemas to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration in Azure HorizonDB.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: tutorial
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Tutorial: Oracle to Azure HorizonDB schema conversion Preview
@@ -109,39 +110,39 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Open Visual Studio.
 1. Go to the **Extensions** view (Ctrl+Shift+X).
 1. Search for *PostgreSQL* and install the **PostgreSQL** extension.
-    1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
- 
-    :::image type="content" source="media/schema-conversions-tutorial/postgres-extension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code.":::
+   1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+
+   :::image type="content" source="media/schema-conversions-tutorial/postgres-extension-installation.png" alt-text="Screenshot of installing PostgreSQL extension in VS Code." lightbox="media/schema-conversions-tutorial/postgres-extension-installation.png" :::
 
 ### Step 2: Create PostgreSQL connection
 
 1. In the PostgreSQL extension panel, create a connection to your **Azure HorizonDB**.
 1. Enter the necessary connection details (host, database, username, password).
 1. Test and save the connection.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/postgres-new-connection.png" alt-text="Screenshot of adding new PostgreSQL connection.":::
+
+   :::image type="content" source="media/schema-conversions-tutorial/postgres-new-connection.png" alt-text="Screenshot of adding new PostgreSQL connection." lightbox="media/schema-conversions-tutorial/postgres-new-connection.png" :::
 
 ### Step 3: Open new workspace
 
 1. Create a new folder on your local machine for the migration project.
 1. Open a **new workspace** in Visual Studio Code.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/open-workspace.png" alt-text="Screenshot of adding new workspace in VS Code.":::
+
+   :::image type="content" source="media/schema-conversions-tutorial/open-workspace.png" alt-text="Screenshot of adding new workspace in VS Code.":::
 
 ### Step 4: Initialize migration project
 
 1. Go to the **PostgreSQL extension**.
 1. Navigate to the **Migrations (preview)** panel.
-1. Select on **Create Migration Project**.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
+1. Select **Create Migration Project**.
+
+   :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
 
 ### Step 5: Configure project settings
 
 1. In the **Migration Wizard**, enter your **project name**.
 1. Select **Next** to proceed to the next step.
 
-    :::image type="content" source="media/schema-conversions-tutorial/new-migration-project.png" alt-text="Screenshot of project name.":::
+   :::image type="content" source="media/schema-conversions-tutorial/new-migration-project.png" alt-text="Screenshot of project name.":::
 
 ### Step 6: Configure Oracle connection
 
@@ -164,7 +165,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. **Select the target database** from the dropdown list
 1. Select **Next** to proceed
 
-    :::image type="content" source="media/schema-conversions-tutorial/scratch-database.png" alt-text="Screenshot of configuring a scratch database.":::
+   :::image type="content" source="media/schema-conversions-tutorial/scratch-database.png" alt-text="Screenshot of configuring a scratch database." lightbox="media/schema-conversions-tutorial/scratch-database.png" :::
 
 ### Step 8: Configure an Azure OpenAI language model
 
@@ -175,7 +176,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Select **Test Connection** to verify the configuration
 1. Once the connection is **successful**, select **Create Migration Project**
 
-    :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration.":::
+   :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration." lightbox="media/schema-conversions-tutorial/language-model.png" :::
 
 ### Step 9: Execute schema conversion
 
@@ -183,7 +184,7 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Select **Migrate** to initiate the **Schema Conversion** process
 1. Monitor the conversion progress in the Visual Studio interface
 
-    :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
+   :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
 
 ### Step 10: Review schema conversion report
 
@@ -203,12 +204,12 @@ This section walks through the complete migration workflow: install the PostgreS
 1. Confirm dependencies, constraints, and representative workloads behave as expected.
 1. Review resolutions for all **Review tasks** and re-test after changes.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Microsoft Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Foundry](/azure/ai-foundry/concepts/content-filtering).
 
-For more information about the Visual Studio Code extension, visit {[PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md)}.
+For more information about the Visual Studio Code extension, visit {[What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../../development/vs-code-extension/vs-code-overview.md)}.
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
-- [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)
+- [What is Oracle to Azure HorizonDB schema conversion Preview?](schema-conversions-overview.md)
+- [Oracle to Azure Database PostgreSQL schema conversion limitations Preview in Azure HorizonDB](schema-conversions-limitations.md)
