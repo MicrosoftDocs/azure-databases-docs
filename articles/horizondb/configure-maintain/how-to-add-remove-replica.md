@@ -4,7 +4,7 @@ description: This article describes the steps to add or remove a HorizonDB repli
 author: DDL-PM
 ms.author: ludingding
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 06/02/2026 
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
