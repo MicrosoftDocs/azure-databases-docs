@@ -3912,7 +3912,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/server-parameters/param-metrics.md",
-            "redirect_url": "/articles/postgresql/server-parameters/param-log-files-metrics.md",
+            "redirect_url": "/articles/postgresql/server-parameters/param-log-files-metrics",
             "redirect_document_id": true
         }
     ]
