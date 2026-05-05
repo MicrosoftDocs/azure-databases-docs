@@ -46,6 +46,7 @@ To check which networking mode your server uses:
    - **Private access (VNet Integration)**: This article doesn't apply. See the [Prerequisites](#prerequisites) section for your options.
 
 <!--
+
 ### [CLI](#tab/CLI-check-mode)
 
 Run the following command to check your server's networking configuration:
@@ -78,13 +79,14 @@ When you enable public access:
 1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB.
 1. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-enabled.png":::
+   :::image type="content" source="media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled.png":::
 
 1. Under **Public access**, select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 1. Select **Save**.
 1. Wait for the server status to change from **Updating** to **Ready**. A notification confirms when the changes are applied.
 
 <!--
+
 ### [CLI](#tab/CLI-enable-public-access)
 
 Run the [az postgres flexible-server update](/CLI/azure/postgres/flexible-server#az-postgres-flexible-server-update) command:

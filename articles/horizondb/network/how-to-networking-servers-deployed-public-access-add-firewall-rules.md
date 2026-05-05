@@ -27,35 +27,27 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. To create a firewall rule that allows connections from the public IP address of the client machine you're using to connect to the portal, select **Add current client IP address (###.###.###.###)**.
 
-
 1. Add a new firewall rule to the grid. The portal automatically generates the **Firewall rule name**, but you can change it to any valid name you prefer. The portal sets the **Start IP address** and **End IP address** to the public IP address from which you're connected to the Azure portal.
-
 
 1. To create a firewall rule that allows connections from any public IP address, select **Add 0.0.0.0 / 255.255.255.255**.
 
-
 1. To create a firewall rule that allows connections from any IP address allocated to any Azure service or asset, select **Allow public access from any Azure service within Azure to this server**.
 
-
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 1. Select **Save**.
 
-
 1. A notification informs you that the changes are being applied.
-
 
 1. The status of the server changes to **Updating**.
 
-
 1. When the process completes, a notification informs you that the changes were applied.
-
 
 1. The status of the server changes to **Ready**.
 
-
 <!--
+
 ## [CLI](#tab/CLI-add-firewall-rules)
 
 You can add firewall rules to a server by using the [az postgres flexible-server firewall-rule create](/CLI/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-create) command.
@@ -106,7 +98,7 @@ If you try to add a firewall rule to a server that doesn't have public access en
 Firewall rule operations cannot be requested for a private access enabled server.
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > Although not recommended, you can create multiple firewall rules with different names and either overlapping IP ranges or even matching start and end IP addresses.
 
 To allow public access from any Azure service within Azure to your server, you must create a firewall rule whose start and end IP addresses are both set to `0.0.0.0`.

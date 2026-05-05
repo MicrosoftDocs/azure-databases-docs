@@ -108,9 +108,10 @@ To find the IP address currently assigned to your Azure HorizonDB instance:
 
 - **Using DNS resolution**: You can resolve the server's FQDN (`servername.xxxxxxxxxxxx.region.horizondb.azure.com`) to get the current IP address. Use tools like `nslookup` or `dig`:
 
-    ```bash
-    nslookup servername.xxxxxxxxxxxx.region.horizondb.azure.com
-    ```
+  ```bash
+  nslookup servername.xxxxxxxxxxxx.region.horizondb.azure.com
+  ```
+
   ```bash
   nslookup servername.postgres.database.azure.com
   ```
