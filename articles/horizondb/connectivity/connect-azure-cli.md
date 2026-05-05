@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Connect using Azure CLI"
-description: This quickstart provides several ways to connect with Azure CLI with an Azure HorizonDB flexible server instance.
+title: "Quickstart: Connect and Query with Azure CLI in Azure HorizonDB"
+description: This quickstart provides several ways to connect with Azure CLI with an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 05/10/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
@@ -14,19 +14,20 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Quickstart: Connect and query with Azure CLI  with Azure HorizonDB 
+# Quickstart: Connect and query with Azure CLI in Azure HorizonDB
 
-This quickstart demonstrates how to connect to an Azure HorizonDB flexible server instance using Azure CLI with `az postgres flexible-server connect` and execute single query or sql file with `az postgres flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode. 
+This quickstart demonstrates how to connect to an Azure HorizonDB instance using Azure CLI with `az postgres flexible-server connect` and execute single query or sql file with `az postgres flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode.
 
 ## Prerequisites
+
 - An Azure account with an active subscription. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - Install [Azure CLI](/cli/azure/install-azure-cli) latest version.
 - Sign in using Azure CLI with `az login` command.
 - (optional) Turn on an experimental parameter persistence with `az config param-persist on`. Parameter persistence helps you use local context without having to repeat numerous arguments like resource group or location.
 
-## Create Azure HorizonDB  instance
+## Create Azure HorizonDB instance
 
-The first thing to create is a managed Azure HorizonDB flexible server instance. In [Azure Cloud Shell](https://shell.azure.com/), run the following script and make a note of the **server name**, **username, and  **password** generated from this command.
+The first thing to create is a managed Azure HorizonDB instance. In [Azure Cloud Shell](https://portal.azure.com/#cloudshell), run the following script and make a note of the **server name**, **username, and **password** generated from this command.
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access <your-ip-address>
@@ -35,20 +36,23 @@ az postgres flexible-server create --public-access <your-ip-address>
 You can provide more arguments for this command to customize it. See all arguments for [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create).
 
 ## View all the arguments
-You can view all the arguments for this command with `--help` argument. 
+
+You can view all the arguments for this command with `--help` argument.
 
 ```azurecli-interactive
 az postgres flexible-server connect --help
 ```
 
 ## Test database server connection
+
 You can test and validate the connection to the database from your development environment using the [az postgres flexible-server connect](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-connect) command.
 
 ```azurecli-interactive
 az postgres flexible-server connect \
     -n <servername> -u <username> -p "<password>" -d <databasename>
 ```
-**Example:** 
+**Example:**
+
 ```azurecli-interactive
 az postgres flexible-server connect \
     -n server372060240 -u starchylapwing9 -p "dbpassword" -d postgres
@@ -65,6 +69,7 @@ If the connection failed, check the following points:
 - if your server is configured with private access with virtual networking, make sure your client machine is in the same virtual network.
 
 ## Run multiple queries using interactive mode
+
 You can run multiple queries using the **interactive** mode. To enable interactive mode, run the following command.
 
 ```azurecli-interactive
@@ -99,6 +104,7 @@ postgres>
 ```
 
 ## Execute single queries
+
 You can run single queries against Postgres database using [az postgres flexible-server execute](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-execute).
 
 ```azurecli-interactive
@@ -107,7 +113,8 @@ az postgres flexible-server execute \
     -q <querytext> --output table
 ```
 
-**Example:** 
+**Example:**
+
 ```azurecli-interactive
 az postgres flexible-server execute \
     -n server372060240 -u starchylapwing9 -p "dbpassword" -d postgres \
@@ -127,6 +134,7 @@ Closed the connection to server372060240
 ```
 
 ## Run SQL File
+
 You can execute a sql file with the [az postgres flexible-server execute](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-execute) command using `--file-path` argument, `-f`.
 
 ```azurecli-interactive
@@ -135,7 +143,7 @@ az postgres flexible-server execute \
     --file-path "<file-path>"
 ```
 
-**Example:** 
+**Example:**  
 Prepare a `test.sql` file. You can use the following test script with simple `SELECT` queries:
 
 ```sql
@@ -145,7 +153,6 @@ SELECT 3;
 ```
 
 Save the content to the `test.sql` file in the current directory and execute using following command.
-
 
 ```azurecli-interactive
 az postgres flexible-server execute \
@@ -163,10 +170,10 @@ Closed the connection to server372060240
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data from an Azure HorizonDB](connect-python.md).
-- [Quickstart: Use Java to connect and query data from an Azure HorizonDB](connect-java.md).
-- [Quickstart: Use .NET (C#) to connect and query data from an Azure HorizonDB](connect-csharp.md).
-- [Quickstart: Use Go language to connect and query data from an Azure HorizonDB](connect-go.md).
-- [Quickstart: Use PHP to connect and query data from an Azure HorizonDB](connect-php.md).
-- [Quickstart: Import data from Azure HorizonDB in Power BI](../integration/connect-with-power-bi-desktop.md).
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
+- [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
+- [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
+- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
+- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
+- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
+- [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

@@ -1,16 +1,16 @@
 ---
-title: Handle Transient Connectivity Errors
-description: Learn how to handle transient connectivity errors for Azure HorizonDB.
+title: Handle Transient Connectivity Errors in Azure HorizonDB
+description: Learn how to handle transient connectivity errors in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 09/30/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: concept-article
 ---
 
-# Handling transient connectivity errors in Azure HorizonDB 
+# Handling transient connectivity errors in Azure HorizonDB
 
 This article describes how to handle transient errors connecting to Azure HorizonDB.
 
@@ -18,7 +18,9 @@ This article describes how to handle transient errors connecting to Azure Horizo
 
 A transient error, also known as a transient fault, is an error that resolves itself. Most typically these errors manifest as a connection to the database server being dropped. Also new connections to a server can't be opened. Transient errors can occur, for example, when hardware or network failure happens. Another reason could be a new version of a PaaS service that's being rolled out. The system automatically mitigates most of these events in less than 60 seconds. A best practice for designing and developing applications in the cloud is to expect transient errors. Assume they can happen in any component at any time and to have the appropriate logic in place to handle these situations.
 
-## Handling transient errors
+<a id="handling-transient-errors"></a>
+
+## Handle transient errors
 
 Transient errors should be handled using retry logic. Situations that must be considered:
 
@@ -26,7 +28,7 @@ Transient errors should be handled using retry logic. Situations that must be co
 - An idle connection is dropped on the server side. When you try to issue a command, it can't be executed
 - An active connection that currently is executing a command is dropped.
 
-The first and second cases are fairly straight forward to handle. Try to open the connection again. Once the system mitigates the transient error, you succeed to connect. You can use your Azure HorizonDB flexible server instance again. We recommend having waits before retrying the connection. Back off if the initial retries fail. This way the system can use all resources available to overcome the error situation. A good pattern to follow is:
+The first and second cases are fairly straight forward to handle. Try to open the connection again. Once the system mitigates the transient error, you succeed to connect. You can use your Azure HorizonDB instance again. We recommend having waits before retrying the connection. Back off if the initial retries fail. This way the system can use all resources available to overcome the error situation. A good pattern to follow is:
 
 - Wait for 5 seconds before your first retry.
 - For each following retry, increase the wait exponentially, up to 60 seconds.
@@ -36,10 +38,10 @@ When a connection with an active transaction fails, it's more difficult to handl
 
 One way of doing this, is to generate a unique ID on the client that is used for all the retries. You pass this unique ID as part of the transaction to the server and to store it in a column with a unique constraint. This way you can safely retry the transaction. It succeeds if the previous transaction was rolled back and the client generated unique ID doesn't yet exist in the system. It fails to indicate a duplicate key violation if the unique ID was previously stored because the previous transaction completed successfully.
 
-When your program communicates with Azure HorizonDB flexible server through third-party middleware, ask the vendor whether the middleware contains retry logic for transient errors.
+When your program communicates with Azure HorizonDB through third-party middleware, ask the vendor whether the middleware contains retry logic for transient errors.
 
-Make sure to test your retry logic. For example, try to execute your code while scaling up or down the compute resources of your Azure HorizonDB flexible server instance. Your application should handle the brief downtime that is encountered during this operation without any problems.
+Make sure to test your retry logic. For example, try to execute your code while scaling up or down the compute resources of your Azure HorizonDB instance. Your application should handle the brief downtime that is encountered during this operation without any problems.
 
 ## Related content
 
-[What is Azure HorizonDB?](../overview.md)
+- [What is Azure HorizonDB?](../overview.md)

@@ -1,33 +1,34 @@
 ---
-title: "Networking Scenarios for the Migration Service"
-titleSuffix: Azure HorizonDB flexible server
-description: Learn about network scenarios for connecting supported source environments with Azure HorizonDB flexible server.
+title: Networking Scenarios for the Migration Service in Azure HorizonDB
+titleSuffix: Azure HorizonDB
+description: Learn about network scenarios for connecting supported source environments with Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
-ms.custom: sfi-image-nochange
+ms.custom:
+  - sfi-image-nochange
 ---
 
 # Network scenarios for the migration service in Azure HorizonDB
 
-This article outlines various scenarios for connecting a source database to an Azure HorizonDB flexible server by using the migration service in Azure HorizonDB. Each scenario has different networking requirements and configurations to successfully establish a connection for migration. Specific details vary based on the actual network setup and requirements of the source environment and the target environment.
+This article outlines various scenarios for connecting a source database to an Azure HorizonDB by using the migration service in Azure HorizonDB. Each scenario has different networking requirements and configurations to successfully establish a connection for migration. Specific details vary based on the actual network setup and requirements of the source environment and the target environment.
 
 The following table summarizes the migration scenarios. The table indicates whether each scenario is supported based on the configurations of the source and target environments.
 
 | PostgreSQL source | Target | Supported |
 | --- | --- | --- |
-| On-premises with a public IP address | Azure HorizonDB flexible server with public access | Yes |
-| On-premises with a private IP address via a virtual private network (VPN) or Azure ExpressRoute | Virtual network (VNet)-integrated Azure HorizonDB flexible server | Yes |
-| Amazon Relational Database Service (Amazon RDS) for PostgreSQL or Amazon Aurora PostgreSQL with a public IP address | Azure HorizonDB flexible server with public access | Yes |
-| Amazon RDS for PostgreSQL or Amazon Aurora PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure HorizonDB flexible server | Yes |
-| Google Cloud SQL for PostgreSQL | Azure HorizonDB flexible server with public access | Yes |
-| Google Cloud SQL for PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure HorizonDB flexible server | Yes |
-| PostgreSQL installed on an Azure virtual machine (VM) in the same virtual network or in a different virtual network | VNet-integrated Azure HorizonDB flexible server in the same virtual network or in a different virtual network | Yes |
-| PostgreSQL sources with private access | Azure HorizonDB flexible server with a private endpoint | Yes |
-| PostgreSQL sources with private access | Azure HorizonDB flexible server with public access | No |
+| On-premises with a public IP address | Azure HorizonDB with public access | Yes |
+| On-premises with a private IP address via a virtual private network (VPN) or Azure ExpressRoute | Virtual network (VNet)-integrated Azure HorizonDB | Yes |
+| Amazon Relational Database Service (Amazon RDS) for PostgreSQL or Amazon Aurora PostgreSQL with a public IP address | Azure HorizonDB with public access | Yes |
+| Amazon RDS for PostgreSQL or Amazon Aurora PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure HorizonDB | Yes |
+| Google Cloud SQL for PostgreSQL | Azure HorizonDB with public access | Yes |
+| Google Cloud SQL for PostgreSQL with private access via a VPN or ExpressRoute | VNet-integrated Azure HorizonDB | Yes |
+| PostgreSQL installed on an Azure virtual machine (VM) in the same virtual network or in a different virtual network | VNet-integrated Azure HorizonDB in the same virtual network or in a different virtual network | Yes |
+| PostgreSQL sources with private access | Azure HorizonDB with a private endpoint | Yes |
+| PostgreSQL sources with private access | Azure HorizonDB with public access | No |
 
 ## On-premises (public IP) to flexible server (public access)
 
@@ -72,7 +73,7 @@ Networking steps:
 
 ## Azure VM (private access) to Azure HorizonDB (different virtual networks)
 
-This scenario describes connectivity between an instance of Azure Virtual Machines and an Azure HorizonDB flexible server that are in different virtual networks. Virtual network peering and appropriate network security group rules are required to facilitate traffic between the VNets.
+This scenario describes connectivity between an instance of Azure Virtual Machines and an Azure HorizonDB that are in different virtual networks. Virtual network peering and appropriate network security group rules are required to facilitate traffic between the VNets.
 
 :::image type="content" source="media/how-to-network-setup-migration-service/vm-to-azure-peering.png" alt-text="Screenshot of an Azure VM in one virtual network connects to Azure HorizonDB in another virtual network." lightbox="media/how-to-network-setup-migration-service/vm-to-azure-peering.png":::
 
@@ -83,7 +84,7 @@ Networking steps:
 
 ## Azure VM to Azure HorizonDB (same virtual network)
 
-Configuration is straightforward when an Azure VM and an Azure HorizonDB flexible server are in the same virtual network. Set network security group rules to allow internal traffic on the PostgreSQL port. No other firewall rules are necessary because the traffic remains in the virtual network.
+Configuration is straightforward when an Azure VM and an Azure HorizonDB are in the same virtual network. Set network security group rules to allow internal traffic on the PostgreSQL port. No other firewall rules are necessary because the traffic remains in the virtual network.
 
 :::image type="content" source="media/how-to-network-setup-migration-service/vm-to-azure-same-vnet.png" alt-text="Screenshot of an Azure VM in the same virtual network connects directly to the instance of Azure HorizonDB." lightbox="media/how-to-network-setup-migration-service/vm-to-azure-same-vnet.png":::
 
@@ -94,7 +95,7 @@ Networking steps:
 
 ## PostgreSQL source (private IP) to flexible server (private endpoint)
 
-This section describes the networking steps to migrate a PostgreSQL database from a cloud-based PostgreSQL service, an on-premises setup, or a VM, all with private IP addresses, to an Azure HorizonDB flexible server that is secured with a private endpoint. The migration ensures secure data transfer within a private network space by using an Azure VPN or ExpressRoute for on-premises connections and virtual network peering or a VPN for cloud-to-cloud migrations. For more information, see [Migration runtime server](concepts-migration-service-runtime-server.md).
+This section describes the networking steps to migrate a PostgreSQL database from a cloud-based PostgreSQL service, an on-premises setup, or a VM, all with private IP addresses, to an Azure HorizonDB that is secured with a private endpoint. The migration ensures secure data transfer within a private network space by using an Azure VPN or ExpressRoute for on-premises connections and virtual network peering or a VPN for cloud-to-cloud migrations. For more information, see [Migration runtime server with the migration service in Azure HorizonDB](concepts-migration-service-runtime-server.md).
 
 - Establish network connectivity:
 
@@ -103,7 +104,7 @@ This section describes the networking steps to migrate a PostgreSQL database fro
 
 - Gather VNet details for the migration runtime server:
 
-  1. In the Azure portal, go to the migration runtime server. That is, go to the instance of VNet-integrated Azure HorizonDB flexible server.
+  1. In the Azure portal, go to the migration runtime server. That is, go to the instance of VNet-integrated Azure HorizonDB.
   1. Record the virtual network and subnet details that are listed under the virtual network.
 
 - Assess VNet peering requirements:
@@ -124,7 +125,7 @@ Alternatively, when a custom DNS server or custom DNS namespaces are in use, you
 
 - [What is Azure ExpressRoute?](/azure/expressroute/expressroute-introduction)
 - [About point-to-site VPNs](/azure/vpn-gateway/point-to-site-about)
-- [virtual network peering](/azure/virtual-network/virtual-network-peering-overview)
-- {[migration service](concepts-migration-service-postgresql.md)}
+- [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview)
+- [What is the migration service in Azure HorizonDB?](overview-migration-service-postgresql.md)
 - [known issues and limitations](concepts-known-issues-migration-service.md)
 - [premigration validations](concepts-premigration-migration-service.md)

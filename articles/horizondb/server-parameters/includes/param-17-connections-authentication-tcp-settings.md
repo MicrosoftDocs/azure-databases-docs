@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### client_connection_check_interval
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [client_connection_check_interval](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-CLIENT-CONNECTION-CHECK-INTERVAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### tcp_keepalives_count
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [tcp_keepalives_count](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-TCP-KEEPALIVES-COUNT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### tcp_keepalives_idle
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [tcp_keepalives_idle](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-TCP-KEEPALIVES-IDLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### tcp_keepalives_interval
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [tcp_keepalives_interval](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-TCP-KEEPALIVES-INTERVAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### tcp_user_timeout
 
@@ -86,9 +72,4 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [tcp_user_timeout](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-TCP-USER-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

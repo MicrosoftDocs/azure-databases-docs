@@ -1,19 +1,19 @@
 ---
-title: Scale Storage Performance
-description: This article describes how to scale the storage performance of an Azure HorizonDB.
+title: Scale Storage Performance in Azure HorizonDB
+description: This article describes how to scale the storage performance in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to scale the storage performance of an Azure HorizonDB.
+# customer intent: As a user, I want to learn how to scale the storage performance in Azure HorizonDB.
 ---
 
-# Scale storage performance
+# Scale storage performance in Azure HorizonDB
 
-This article provides step-by-step instructions to perform scaling operations on the performance aspects of the storage attached to an Azure HorizonDB flexible server.
+This article provides step-by-step instructions to perform scaling operations on the performance aspects of the storage attached to an Azure HorizonDB.
 
 If your server uses [Premium SSD disk](/azure/virtual-machines/disks-types#premium-ssds), you can use a performance tier higher than the original baseline to meet higher demand. The provisioned disk size sets the baseline performance tier. For more information, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
 
@@ -35,27 +35,27 @@ Message: Unable to downgrade storage tier: A higher tier was explicitly set on t
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
 1. In the resource menu, select **Compute + storage**.
 
-   :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd.png":::
+   :::image type="content" source="media/how-to-scale-storage/compute-storage-ssd.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="media/how-to-scale-storage/compute-storage-ssd.png":::
 
-1. If you want to increase the performance tier of the disk allocated to your server, expand the **Performance tier** dropdown and select the tier that suits your needs. The smallest tier that you can assign to a disk depends on the allocated size of the disk. The smallest tier is the baseline performance tier of a disk of that size. If you increase the performance tier, you increase the maximum IOPS and throughput of the disk. To learn about the baseline performance tiers set for each size of a disk, and the tiers to which you can upgrade, see [what Premium SSD disk performance tiers can be changed](/azure/virtual-machines/disks-change-performance#what-tiers-can-be-changed).
+1. If you want to increase the performance tier of the disk allocated to your server, expand the **Performance tier** dropdown list and select the tier that suits your needs. The smallest tier that you can assign to a disk depends on the allocated size of the disk. The smallest tier is the baseline performance tier of a disk of that size. If you increase the performance tier, you increase the maximum IOPS and throughput of the disk. To learn about the baseline performance tiers set for each size of a disk, and the tiers to which you can upgrade, see [what Premium SSD disk performance tiers can be changed](/azure/virtual-machines/disks-change-performance#what-tiers-can-be-changed).
 
-   :::image type="content" source="./media/how-to-scale-storage/storage-performance-tier-ssd.png" alt-text="Screenshot showing where to select a different storage performance tier for Premium SSD disks." lightbox="./media/how-to-scale-storage/storage-performance-tier-ssd.png":::
+   :::image type="content" source="media/how-to-scale-storage/storage-performance-tier-ssd.png" alt-text="Screenshot showing where to select a different storage performance tier for Premium SSD disks." lightbox="media/how-to-scale-storage/storage-performance-tier-ssd.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="./media/how-to-scale-storage/save-performance-tier-ssd.png" alt-text="Screenshot showing the Save button enabled after changing performance tier for a Premium SSD disk." lightbox="./media/how-to-scale-storage/save-performance-tier-ssd.png":::
+   :::image type="content" source="media/how-to-scale-storage/save-performance-tier-ssd.png" alt-text="Screenshot showing the Save button enabled after changing performance tier for a Premium SSD disk." lightbox="media/how-to-scale-storage/save-performance-tier-ssd.png":::
 
 1. A notification shows that a deployment is in progress.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png" alt-text="Screenshot showing a deployment is in progress to scale the performance tier of a Premium SSD disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png" alt-text="Screenshot showing a deployment is in progress to scale the performance tier of a Premium SSD disk." lightbox="media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png" alt-text="Screenshot showing that the deployment to scale the performance tier of the Premium SSD disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png" alt-text="Screenshot showing that the deployment to scale the performance tier of the Premium SSD disk succeeded." lightbox="media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png":::
 
 ### [CLI](#tab/cli-scale-storage-performance-tier-ssd)
 
@@ -100,26 +100,26 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Compute + storage**.
 
-   :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-1. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. The range of IOPS that you can assign to a disk depends on the allocated size of the disk. For more information, see {[Premium SSD v2 - IOPS](../configure-maintain/concepts-storage-premium-ssd-v2.md#iops)}.
+1. If you want to change the IOPS assigned to the disk allocated to your server, type the desired value in the **IOPS (operations/sec)** text box. The range of IOPS that you can assign to a disk depends on the allocated size of the disk. For more information, see {[Premium SSD v2 - IOPS](../compute-storage/concepts-storage-premium-ssd-v2.md#iops)}.
 
-   :::image type="content" source="./media/how-to-scale-storage/storage-iops-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of IOPS for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-iops-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/storage-iops-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of IOPS for Premium SSD v2 disks." lightbox="media/how-to-scale-storage/storage-iops-ssd-v2.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="./media/how-to-scale-storage/save-iops-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing IOPS for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-iops-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/save-iops-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing IOPS for a Premium SSD v2 disk." lightbox="media/how-to-scale-storage/save-iops-ssd-v2.png":::
 
 > [!IMPORTANT]  
 > The operation to change the IOPS assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
 
 1. A notification shows that a deployment is in progress.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the IOPS of a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the IOPS of a Premium SSD v2 disk." lightbox="media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification-iops-ssd-v2.png" alt-text="Screenshot showing that the deployment to scale the IOPS of the Premium SSD v2 disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-iops-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-succeeded-notification-iops-ssd-v2.png" alt-text="Screenshot showing that the deployment to scale the IOPS of the Premium SSD v2 disk succeeded." lightbox="media/how-to-scale-storage/deployment-succeeded-notification-iops-ssd-v2.png":::
 
 ### [CLI](#tab/cli--scale-storage-iops-ssd-v2)
 
@@ -157,30 +157,30 @@ az postgres flexible-server show --resource-group <resource_group> --name <serve
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
 1. In the resource menu, select **Compute + storage**.
 
-   :::image type="content" source="./media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-storage/compute-storage-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/compute-storage-ssd-v2.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="media/how-to-scale-storage/compute-storage-ssd-v2.png":::
 
-1. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. The range of throughput that you can assign to a disk depends on the size of the disk and the IOPS assigned. For more information, see {[Premium SSD v2 - Throughput](../configure-maintain/concepts-storage-premium-ssd-v2.md#throughput)}.
+1. If you want to change the throughput assigned to the disk allocated to your server, type the desired value in the **Throughput (MB/sec)** text box. The range of throughput that you can assign to a disk depends on the size of the disk and the IOPS assigned. For more information, see {[Premium SSD v2 - Throughput](../compute-storage/concepts-storage-premium-ssd-v2.md#throughput)}.
 
-   :::image type="content" source="./media/how-to-scale-storage/storage-throughput-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of throughput for Premium SSD v2 disks." lightbox="./media/how-to-scale-storage/storage-throughput-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/storage-throughput-ssd-v2.png" alt-text="Screenshot showing where to specify a different number of throughput for Premium SSD v2 disks." lightbox="media/how-to-scale-storage/storage-throughput-ssd-v2.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="./media/how-to-scale-storage/save-throughput-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing throughput for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-throughput-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/save-throughput-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing throughput for a Premium SSD v2 disk." lightbox="media/how-to-scale-storage/save-throughput-ssd-v2.png":::
 
 > [!IMPORTANT]  
 > The operation to change the throughput assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
 
 1. A notification shows that a deployment is in progress.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the throughput of a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the throughput of a Premium SSD v2 disk." lightbox="media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification-throughput-ssd-v2.png" alt-text="Screenshot showing that the deployment to scale the throughput of the Premium SSD v2 disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-throughput-ssd-v2.png":::
+   :::image type="content" source="media/how-to-scale-storage/deployment-succeeded-notification-throughput-ssd-v2.png" alt-text="Screenshot showing that the deployment to scale the throughput of the Premium SSD v2 disk succeeded." lightbox="media/how-to-scale-storage/deployment-succeeded-notification-throughput-ssd-v2.png":::
 
 ### [CLI](#tab/cli--scale-storage-throughput-ssd-v2)
 
@@ -217,6 +217,6 @@ az postgres flexible-server show \
 
 ## Related content
 
-- [Scale storage size](how-to-scale-storage-size.md)
-- {[Storage options](../extensions/concepts-storage.md)}
-- [Limits in Azure HorizonDB flexible server](../configure-maintain/concepts-limits.md)
+- [Scale storage size in Azure HorizonDB](how-to-scale-storage-size.md)
+- [Storage in Azure HorizonDB](../compute-storage/concepts-storage.md)
+- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)

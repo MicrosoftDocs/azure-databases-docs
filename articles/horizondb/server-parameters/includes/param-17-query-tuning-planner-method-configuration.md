@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### enable_async_append
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [enable_async_append](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-ASYNC-APPEND) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_bitmapscan
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_bitmapscan](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-BITMAPSCAN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_gathermerge
 
@@ -52,13 +46,11 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_gathermerge](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-GATHERMERGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="enable_group_by_reordering"></a>
 
-
-### enable_group_by_reordering
+### enable_group_by_reorder
 
 | Attribute | Value |
 | --- | --- |
@@ -69,11 +61,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_group_by_reordering](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-GROUPBY-REORDERING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_hashagg
 
@@ -86,11 +74,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_hashagg](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-HASHAGG) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_hashjoin
 
@@ -103,11 +87,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_hashjoin](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-HASHJOIN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_incremental_sort
 
@@ -120,11 +100,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_incremental_sort](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-INCREMENTAL-SORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_indexonlyscan
 
@@ -137,11 +113,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_indexonlyscan](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-INDEXONLYSCAN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_indexscan
 
@@ -154,11 +126,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_indexscan](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-INDEXSCAN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_material
 
@@ -171,11 +139,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_material](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-MATERIAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_memoize
 
@@ -188,11 +152,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [enable_memoize](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-MEMOIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_mergejoin
 
@@ -205,11 +165,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_mergejoin](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-MERGEJOIN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_nestloop
 
@@ -222,11 +178,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_nestloop](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-NESTLOOP) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_parallel_append
 
@@ -239,11 +191,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_parallel_append](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARALLEL-APPEND) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_parallel_hash
 
@@ -256,13 +204,11 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [enable_parallel_hash](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARALLEL-HASH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="enable_partition_pruning"></a>
 
-
-### enable_partition_pruning
+### enable_partition_prun
 
 | Attribute | Value |
 | --- | --- |
@@ -273,11 +219,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [enable_partition_pruning](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARTITION-PRUNING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_partitionwise_aggregate
 
@@ -290,11 +232,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_partitionwise_aggregate](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARTITIONWISE-AGGREGATE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_partitionwise_join
 
@@ -307,11 +245,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_partitionwise_join](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PARTITIONWISE-JOIN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_presorted_aggregate
 
@@ -324,11 +258,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_presorted_aggregate](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-PRESORTED-AGGREGATE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_seqscan
 
@@ -341,11 +271,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_seqscan](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-SEQSCAN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_sort
 
@@ -358,11 +284,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_sort](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-SORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### enable_tidscan
 
@@ -375,9 +297,4 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [enable_tidscan](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-ENABLE-TIDSCAN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

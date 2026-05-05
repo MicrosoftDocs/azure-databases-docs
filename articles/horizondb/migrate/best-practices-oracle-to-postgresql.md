@@ -1,12 +1,10 @@
 ---
-title: Best Practices for Migrations From Oracle to Azure HorizonDB
+title: Best Practices for Migrations from Oracle to Azure HorizonDB
 description: Best practices for migrations from Oracle into Azure HorizonDB
 author: avnishrastogimsft
 ms.author: avrastog
-author: avnishrastogimsft
-ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration
 ms.topic: best-practice
@@ -91,7 +89,7 @@ LIMIT 10;
 
 **Scenario:** In some instances, legacy table partition strategies have resulted in the creation of thousands of partitions. While this might have been effective when used previously, these strategies can slow query performance in Postgres under certain circumstances. In very specific instances, the query planner might be unable to determine the appropriate partition key when parsing the query. The resulting behavior generates extended planning time and causes query planning to take longer than the actual query execution.
 
-**Recommended Solution:** Reevaluate the need for partitioning strategies generating excessively large numbers of partitions. The Postgres database engine might no longer require the same segmentation of data and reducing the number of partitions might likely improve performance. If a legacy partitioning scheme is assessed and it is determined to be required, consider restructuring your query into discrete operations to first identify and extract dynamic partition keys, and then subsequently use the partition keys in your query operations.
+**Recommended Solution:** Reevaluate the need for partitioning strategies generating excessively large numbers of partitions. The Postgres database engine might no longer require the same segmentation of data and reducing the number of partitions might likely improve performance. If a legacy partitioning scheme is assessed and it's determined to be required, consider restructuring your query into discrete operations to first identify and extract dynamic partition keys, and then subsequently use the partition keys in your query operations.
 
 **Scenario:** At times, external dependencies and environmental circumstances might require hybrid database scenarios where both Oracle and Azure Postgres databases need to coexist. For example, there might be occasions where phased migrations are necessary to access and query Oracle data directly from Azure Postgres without the overhead of importing data or modifying complex ETL processes. In other instances, performing parallel data validation by comparing equivalent datasets in both Oracle and Azure Postgres environments simultaneously can help ensure data consistency and integrity during and/or after your migration.
 
@@ -106,7 +104,7 @@ Effectively using oracle_fdw can potentially help in simplifying the database tr
 
 ## Related content
 
-- [Oracle to Azure PostgreSQL Migration Checklist](./best-practices-oracle-to-postgresql-checklist.md)
+- [Oracle To Azure HorizonDB Pre-Migration Checklist](best-practices-oracle-to-postgresql-checklist.md)
 - [Oracle to Azure PostgreSQL Migration Playbook](https://download.microsoft.com/download/8/f/c/8fc4fe39-7cb1-484a-aaa0-418704b90c0e/Oracle%20to%20Azure%20Postgres%20Migration%20Playbook.pdf)
 - [Oracle to Azure PostgreSQL Migration Workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
-- [Azure HorizonDB Migration Partners](./partners-migration-postgresql.md)
+- [Azure HorizonDB migration partners](partners-migration-postgresql.md)

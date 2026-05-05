@@ -1,10 +1,10 @@
 ---
-title: Azure Policy Support
+title: Azure Policy Support in Azure HorizonDB
 description: Learn how to use Azure Policy to secure Azure HorizonDB
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Azure Policy Support for Azure HorizonDB
+# Azure Policy support in Azure HorizonDB
 
 [Azure Policy](/azure/governance/policy/overview) helps you enforce organizational standards and assess compliance at scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, per-policy granularity. It also helps bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
 
@@ -29,7 +29,7 @@ The following section provides an index of Azure Policy built-in policy definiti
 | [Connection throttling should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdacf07fa-0eea-4486-80bc-b93fae88ac40) | This policy helps audit any PostgreSQL flexible server instances in your environment without Connection throttling enabled. This setting enables temporary connection throttling per IP for too many invalid password login failures | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_ConnectionThrottling_Enabled_AINE.json) |
 | [Deploy Diagnostic Settings for PostgreSQL flexible server instances to Log Analytics workspace](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F78ed47da-513e-41e9-a088-e829b373281d) | Deploys the diagnostic settings for PostgreSQL flexible server instances to stream to a regional Log Analytics workspace when any PostgreSQL flexible server instances, which is missing this diagnostic setting is created or updated | DeployIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_DiagnosticSettings_LogAnalytics_DINE.json) |
 | [Disconnections should be logged for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d14b021-1bae-4f93-b36b-69695e14984a) | This policy helps audit any PostgreSQL flexible server instances in your environment without log_disconnections enabled | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnableLogDisconnections_AINE.json) |
-| [Enforce SSL connection should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc29c38cb-74a7-4505-9a06-e588ab86620a) | Azure HorizonDB supports connecting your Azure HorizonDB flexible server instance to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between your database instance and your client applications helps protect against attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your PostgreSQL flexible server instance | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnableSSL_AINE.json) |
+| [Enforce SSL connection should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc29c38cb-74a7-4505-9a06-e588ab86620a) | Azure HorizonDB supports connecting your Azure HorizonDB instance to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between your database instance and your client applications helps protect against attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your PostgreSQL flexible server instance | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnableSSL_AINE.json) |
 | [Geo-redundant backup should be enabled for Azure HorizonDB](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee2f9fd-3968-44be-a863-bd62c9884423) | Azure HorizonDB allows you to choose the redundancy option for your database server. It can be set to a geo-redundant backup storage in which the data isn't only stored within the region in which your server is hosted, but is also replicated to a paired region to provide recovery option for a region failure. Configuring geo-redundant storage for backup is only allowed during server create | Audit, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_GeoRedundant_Audit.json) |
 | [Log checkpoints should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F70be9e12-c935-49ac-9bd8-fd64b85c1f87) | This policy helps audit any PostgreSQL flexible server instances in your environment without log_checkpoints setting enabled | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnableLogCheckpoint_AINE.json) |
 | [Log connections should be enabled for PostgreSQL flexible server instances](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F086709ac-11b5-478d-a893-9567a16d2ae3) | This policy helps audit any PostgreSQL flexible server instances in your environment without log_connections setting enabled | AuditIfNotExists, Disabled | [1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/PostgreSQL/FlexibleServers_EnableLogConnections_AINE.json) |
@@ -39,5 +39,4 @@ The following section provides an index of Azure Policy built-in policy definiti
 
 ## Related content
 
-- [Secure your Azure HorizonDB Serverr](security-overview.md)
-
+- [Secure your Azure HorizonDB](security-overview.md)

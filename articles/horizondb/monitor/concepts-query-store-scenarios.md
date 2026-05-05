@@ -1,18 +1,18 @@
 ---
-title: Usage scenarios for query store
-description: This article describes some usage scenarios for query store in an Azure HorizonDB flexible server instance.
+title: Usage Scenarios for Query Store in Azure HorizonDB
+description: This article describes some usage scenarios for query store in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/26/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
+ms.topic: concept-article
 ms.custom:
   - ignite-2024
-ms.topic: concept-article
 ---
 
-# Usage scenarios for query store
+# Usage scenarios for query store in Azure HorizonDB
 
 You can use query store in a wide variety of scenarios in which tracking and maintaining predictable workload performance is critical. Consider the following examples:
 - Identify and tune expensive queries.
@@ -33,7 +33,7 @@ Query store slices the performance data into time windows, so you can track the 
 
 When you identify a query with suboptimal performance, the action you take depends on the nature of the problem. Some of these actions might be:
 - Make sure that the statistics are up-to-date for the underlying tables used by the query.
-- Consider rewriting expensive queries. For example, take advantage of query parameterization and reduce the use of ad-hoc SQL. Implement optimal logic when reading data, like applying data filtering on database side, instead of doing it on application side.
+- Consider rewriting expensive queries. For example, take advantage of query parameterization and reduce the use of ad hoc SQL. Implement optimal logic when reading data, like applying data filtering on database side, instead of doing it on application side.
 
 ## Perform A/B testing
 
@@ -55,10 +55,10 @@ In any of these scenarios, apply the following workflow:
 
 Some workloads don't have dominant queries that you can tune to improve overall application performance. Those workloads are typically characterized with a relatively large number of unique queries, each of them consuming a portion of system resources. Each unique query is executed infrequently, so individually their runtime consumption isn't critical. On the other hand, given that the application is generating new queries all the time, a significant portion of system resources is spent on query compilation, which isn't optimal. Usually, this situation happens if your application generates queries (instead of using stored procedures or parameterized queries) or if it relies on object-relational mapping frameworks that generate queries by default.
 
-If you are in control of the application code, you might consider rewriting the data access layer to use stored procedures or parameterized queries. However, this situation can also be improved without application changes, by forcing query parameterization for the entire database (all queries) or for the individual query templates with the same query hash.
+If you're in control of the application code, you might consider rewriting the data access layer to use stored procedures or parameterized queries. However, this situation can also be improved without application changes, by forcing query parameterization for the entire database (all queries) or for the individual query templates with the same query hash.
 
 ## Related content
 
-- [Query store](concepts-query-store.md)
-- [Best practices for query store](concepts-query-store-best-practices.md)
-- [Query Performance Insight](concepts-query-performance-insight.md)
+- [Query store in Azure HorizonDB](concepts-query-store.md)
+- [Best practices for query store in Azure HorizonDB](concepts-query-store-best-practices.md)
+- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md)

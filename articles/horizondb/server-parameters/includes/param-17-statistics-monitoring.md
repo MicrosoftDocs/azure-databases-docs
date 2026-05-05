@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### compute_query_id
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `auto` |
 | Parameter type | read-only |
 | Documentation | [compute_query_id](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-COMPUTE-QUERY-ID) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_executor_stats
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [log_executor_stats](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-LOG-STATEMENT-STATS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_parser_stats
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [log_parser_stats](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-LOG-STATEMENT-STATS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_planner_stats
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [log_planner_stats](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-LOG-STATEMENT-STATS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_statement_stats
 
@@ -86,9 +72,4 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [log_statement_stats](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-LOG-STATEMENT-STATS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

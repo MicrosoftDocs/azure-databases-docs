@@ -1,10 +1,10 @@
 ---
-title: Security and Compliance Certifications
+title: Security and Compliance Certifications in Azure HorizonDB
 description: Learn about compliance in the deployment options for Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Security and compliance certifications in Azure HorizonDB 
+# Security and compliance certifications in Azure HorizonDB
 
 Customers experience an increasing demand for highly secure and compliant solutions as they face data breaches along with requests from governments to access online customer information. Important regulatory requirements such as [General Data Protection Regulation (GDPR)](/compliance/regulatory/gdpr) and [Sarbanes-Oxley (SOX)](/compliance/regulatory/offering-sox) make selecting cloud services that help customers achieve trust, transparency, security, and compliance essential.
 
@@ -25,34 +25,34 @@ Azure compliance offerings are grouped into four segments: globally applicable, 
 
 More detailed information about Azure compliance offerings is available from the [Microsoft Trust Center](https://www.microsoft.com/trust-center/compliance/compliance-overview).
 
-## Azure HorizonDB  compliance certifications
+## Azure HorizonDB compliance certifications
 
 Azure HorizonDB has achieved a comprehensive set of national/regional and industry-specific compliance certifications in the Azure public cloud. These certifications help you comply with requirements that govern the collection and use of data.
 
-| Certification                | Applicable to                                                                                   |
-|------------------------------|------------------------------------------------------------------------------------------------|
-| HIPAA and HITECH Act (US)    | Healthcare                                                                                     |
-| HITRUST                      | Healthcare                                                                                     |
-| CFTC 1.31                    | Financial                                                                                      |
-| DPP (UK)                     | Media                                                                                          |
-| EN 301 549 (EU)              | Accessibility                                                                                  |
-| ENISA IAF (EU)               | Public and private companies, government entities, and nonprofits                              |
-| EU-US Privacy Shield         | Public and private companies, government entities, and nonprofits                              |
-| ISO/IEC 27018                | Public and private companies, government entities, and nonprofits that process personal data via the cloud |
-| EU Model Clauses             | Public and private companies, government entities, and nonprofits that process personal data via the cloud |
-| FERPA                        | Educational institutions                                                                       |
-| FedRAMP High                 | US federal agencies and contractors                                                            |
-| GLBA                         | Financial                                                                                      |
-| ISO 27001:2013               | Public and private companies, government entities, and nonprofits                              |
-| My Number Act (Japan)        | Public and private companies, government entities, and nonprofits                              |
-| TISAX                        | Automotive                                                                                     |
-| NEN 7510 (Netherlands)       | Healthcare                                                                                     |
-| NHS IG Toolkit (UK)          | Healthcare                                                                                     |
-| BIR 2012 (Netherlands)       | Public and private companies, government entities, and nonprofits                              |
-| PCI DSS Level 1              | Payment processors and financial                                                               |
-| SOC 2 Type 2                 | Public and private companies, government entities, and nonprofits                              |
-| SEC 17a-4                    | Financial                                                                                      |
-| Spanish DPA                  | Public and private companies, government entities, and nonprofits                              |
+| Certification | Applicable to |
+| --- | --- |
+| HIPAA and HITECH Act (US) | Healthcare |
+| HITRUST | Healthcare |
+| CFTC 1.31 | Financial |
+| DPP (UK) | Media |
+| EN 301 549 (EU) | Accessibility |
+| ENISA IAF (EU) | Public and private companies, government entities, and nonprofits |
+| EU-US Privacy Shield | Public and private companies, government entities, and nonprofits |
+| ISO/IEC 27018 | Public and private companies, government entities, and nonprofits that process personal data via the cloud |
+| EU Model Clauses | Public and private companies, government entities, and nonprofits that process personal data via the cloud |
+| FERPA | Educational institutions |
+| FedRAMP High | US federal agencies and contractors |
+| GLBA | Financial |
+| ISO 27001:2013 | Public and private companies, government entities, and nonprofits |
+| My Number Act (Japan) | Public and private companies, government entities, and nonprofits |
+| TISAX | Automotive |
+| NEN 7510 (Netherlands) | Healthcare |
+| NHS IG Toolkit (UK) | Healthcare |
+| BIR 2012 (Netherlands) | Public and private companies, government entities, and nonprofits |
+| PCI DSS Level 1 | Payment processors and financial |
+| SOC 2 Type 2 | Public and private companies, government entities, and nonprofits |
+| SEC 17a-4 | Financial |
+| Spanish DPA | Public and private companies, government entities, and nonprofits |
 
 ## Related content
 

@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites Using the Migration Service From Google AlloyDB PostgreSQL (Online)"
+title: Prerequisites Using the Migration Service from Google AlloyDB PostgreSQL (Online)
 description: Providing the online prerequisites for the migration service in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -37,9 +37,9 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 ### Configure target setup
 
-- Before migrating, Azure HorizonDB – Flexible server must be created.
-- SKU provisioned for Azure HorizonDB – Flexible server should match with the source.
-- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB flexible server](../../../../flexible-server/quickstart-create-server.md)}
+- Before migrating, Azure HorizonDB - Flexible server must be created.
+- SKU provisioned for Azure HorizonDB - Flexible server should match with the source.
+- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}
 
 ### Enable CDC as a source
 
@@ -51,10 +51,10 @@ ALTER USER <user> WITH REPLICATION;
 ```
 - Go to the Google AlloyDB PostgreSQL instance in the Google Cloud Console, select the instance name to open its details page, select the Edit button, and in the Flags section, modify the following flags:
 
-    - Set flag `alloydb.logical_decoding = on`
-    - Set flag `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
-    - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
-    - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
+  - Set flag `alloydb.logical_decoding = on`
+  - Set flag `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
+  - Set flag `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
+  - The flag `wal_sender_timeout` ends inactive replication connections longer than the specified number of milliseconds. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
 
 - In the target flexible server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
 
@@ -62,7 +62,7 @@ ALTER USER <user> WITH REPLICATION;
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target Azure HorizonDB server. The following network configurations are essential for a successful migration.
 
-For information about network setup, visit [Network guide for migration service](../../how-to-network-setup-migration-service.md).
+For information about network setup, visit [Network scenarios for the migration service in Azure HorizonDB](../../how-to-network-setup-migration-service.md).
 
 ### Enable extensions
 
@@ -80,7 +80,7 @@ These parameters aren't automatically migrated to the target environment and mus
 
 When migrating to Azure HorizonDB, it's essential to address the migration of users and roles separately, as they require manual intervention:
 
-- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the Azure   Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
+- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the Azure Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
 
   ```sql
   pg_dumpall --globals-only -U <<username>> -f <<filename>>.sql

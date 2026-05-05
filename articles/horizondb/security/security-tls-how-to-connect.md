@@ -4,13 +4,13 @@ description: Learn how to configure Transport Layer Security (TLS) connections t
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ---
 
-# Connect clients with TLS security to your HorizondDB database (Preview) 
+# Connect clients with TLS security to your database in Azure HorizonDB
 
 Connections between your client applications and the database server always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
@@ -126,9 +126,9 @@ To update client root CA certificates for client certificate pinning scenarios w
 
 ### Update root CA certificates in Azure App Services
 
-For Azure App Services connecting to an Azure HorizonDB flexible server instance, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
+For Azure App Services connecting to an Azure HorizonDB instance, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
 
-- Add new certificates to App Service at platform level before changes occur in your Azure HorizonDB flexible server instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
+- Add new certificates to App Service at platform level before changes occur in your Azure HorizonDB instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
 - If you're explicitly including the path to an SSL certificate file in your code, you need to download the new certificate and update the code to use it.
 
 ### Update root CA certificates when using clients in Azure Kubernetes Service (AKS)
@@ -199,5 +199,5 @@ public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() {
 
 ## Related content
 
-- [Validate client configuration and troubleshoot connection failures](security-tls-troubleshoot.md)
+- [Troubleshoot TLS connection failures in Azure HorizonDB](security-tls-troubleshoot.md)
 - [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES)

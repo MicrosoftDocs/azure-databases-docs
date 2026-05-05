@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### cluster_name
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [cluster_name](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-CLUSTER-NAME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### update_process_title
 
@@ -35,9 +33,4 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [update_process_title](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-UPDATE-PROCESS-TITLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,10 +1,10 @@
 ---
-title: Audit Logging
-description: Concepts for `pgaudit` audit logging in Azure HorizonDB.
+title: Audit Logging in Azure HorizonDB
+description: Concepts for pgaudit audit logging in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -24,9 +24,11 @@ By default, `pgaudit` logs statements and your regular log statements are emitte
 
 To learn how to set up logging to Azure Storage, Event Hubs, or Azure Monitor logs, visit the resource logs section of the [server logs article](../monitor/concepts-logging.md).
 
-## Installing the extension
+<a id="installing-the-extension"></a>
 
-To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions), [load](../extensions/how-to-load-libraries.md), and [create](../extensions/how-to-create-extensions.md) the extension in the database on which you plan to use it.
+## Install the extension
+
+To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), [load](../extensions/how-to-load-libraries.md), and [create](../extensions/how-to-create-extensions.md) the extension in the database on which you plan to use it.
 
 ## Configure extension settings
 
@@ -75,11 +77,15 @@ You can, however, use the `pgaudit` extension and set `pgaudit.log` to `DDL`, wh
 
 Each audit entry begins with `AUDIT:`. The format of the rest of the entry is detailed in the [documentation](https://github.com/pgaudit/pgaudit/blob/master/README.md#format) of `pgaudit`.
 
-## Getting started
+<a id="getting-started"></a>
+
+## Get started
 
 To start quickly, set `pgaudit.log` to `ALL`, and open your server logs to review the output.
 
-## Viewing audit logs
+<a id="viewing-audit-logs"></a>
+
+## View audit logs
 
 The way you access the logs depends on which endpoint you choose. See the [logs storage account](/azure/azure-monitor/essentials/resource-logs#send-to-azure-storage) article for Azure Storage. See the [stream Azure logs](/azure/azure-monitor/essentials/resource-logs#send-to-azure-event-hubs) article for Event Hubs.
 
@@ -103,5 +109,5 @@ During a major version upgrade, the pgaudit extension is automatically dropped a
 
 ## Related content
 
-- [Logging in Azure HorizonDB](../monitor/concepts-logging.md)
-- [Configure logging and access logs in Azure HorizonDB](../monitor/how-to-configure-and-access-logs.md)
+- [Logs in Azure HorizonDB](../monitor/concepts-logging.md)
+- [Configure and access logs in Azure HorizonDB](../monitor/how-to-configure-and-access-logs.md)

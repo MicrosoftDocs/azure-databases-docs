@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure HorizonDB Serve
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/05/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -32,7 +32,6 @@ This version introduces new features and enhancements, resolves known issues, an
 
 - Fixed an issue that could leave a server in a failed state after a user attempts a Start operation multiple times in a region experiencing capacity constraints. The server is now deallocated in these situations, and a capacity-related error message is returned to the user. This fix now enables users to reattempt Start operations without the server entering a failed state.
 
-
 ## Related content
 
-- {[Release notes - Azure HorizonDB](../flexible-server/release-notes.md)}
+- [Release notes - Azure HorizonDB](../release-notes/release-notes.md)

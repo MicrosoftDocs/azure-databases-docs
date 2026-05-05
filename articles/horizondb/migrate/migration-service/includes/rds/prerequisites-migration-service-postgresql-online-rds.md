@@ -1,15 +1,15 @@
 ---
-title: "Prerequisites Using The Migration Service From Aws Rds Postgresql (Online)"
+title: Prerequisites Using the Migration Service from Aws Rds Postgresql (Online)
 description: Providing the online prerequisites for the migration service in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
 
-Before starting the migration with the Azure HorizonDB migration service, it is important to fulfill the following prerequisites, specifically designed for online migration scenarios.
+Before starting the migration with the Azure HorizonDB migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
 - [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
@@ -34,9 +34,9 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 ### Configure target setup
 
-- Before migrating, Azure HorizonDB – Flexible server must be created.
-- SKU provisioned for Azure HorizonDB – Flexible server should match with the source.
-- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB flexible server](../../../../flexible-server/quickstart-create-server.md)}
+- Before migrating, Azure HorizonDB - Flexible server must be created.
+- SKU provisioned for Azure HorizonDB - Flexible server should match with the source.
+- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}
 
 ### Enable CDC as a source
 
@@ -48,10 +48,10 @@ GRANT rds_replication TO <<username>>;
 ```
 - In the source, PostgreSQL instance, modify the following parameters by creating a new parameter group:
 
-    - Set `rds.logical_replication = 1`
-    - Set `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
-    - Set `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
-    - The `wal_sender_timeout` parameter ends inactive replication connections longer than the specified number of milliseconds. The default for an AWS RDS for PostgreSQL instance is `30000 milliseconds (30 seconds)`. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
+  - Set `rds.logical_replication = 1`
+  - Set `max_replication_slots` to a value greater than one; the value should be greater than the number of databases selected for migration.
+  - Set `max_wal_senders` to a value greater than one. It should be at least the same as `max_replication_slots`, plus the number of senders already used on your instance.
+  - The `wal_sender_timeout` parameter ends inactive replication connections longer than the specified number of milliseconds. The default for an AWS RDS for PostgreSQL instance is `30000 milliseconds (30 seconds)`. Setting the value to 0 (zero) disables the timeout mechanism and is a valid setting for migration.
 
 - In the target flexible server, to prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration, and restore it to the original state after the migration.
 
@@ -59,7 +59,7 @@ GRANT rds_replication TO <<username>>;
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target Azure HorizonDB server. The following network configurations are essential for a successful migration.
 
-For information about network setup, visit [Network guide for migration service](../../how-to-network-setup-migration-service.md).
+For information about network setup, visit [Network scenarios for the migration service in Azure HorizonDB](../../how-to-network-setup-migration-service.md).
 
 ### Enable extensions
 
@@ -77,7 +77,7 @@ These parameters aren't automatically migrated to the target environment and mus
 
 When migrating to Azure HorizonDB, it's essential to address the migration of users and roles separately, as they require manual intervention:
 
-- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the Azure   Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
+- **Manual migration of users and roles**: Users and their associated roles must be manually migrated to the Azure Database for PostgreSQL. To facilitate this process, you can use the `pg_dumpall` utility with the `--globals-only` flag to export global objects such as roles and user accounts. Execute the following command, replacing `<<username>>` with the actual username and `<<filename>>` with your desired output file name:
 
   ```sql
   pg_dumpall --globals-only -U <<username>> -f <<filename>>.sql

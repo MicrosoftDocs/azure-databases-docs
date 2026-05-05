@@ -1,10 +1,10 @@
 ---
-title: Logs
+title: Logs in Azure HorizonDB
 description: Describes logging configuration, storage, and analysis in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 1/20/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to
@@ -20,9 +20,9 @@ Audit logging is made available through a Postgres extension, `pgaudit`. To lear
 
 You can configure Postgres standard logging on your server using the logging server parameters. To learn more about Postgres log parameters, visit the [When To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN) and [What To Log](https://www.postgresql.org/docs/current/runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT) sections of the Postgres documentation. Most, but not all, Postgres logging parameters are available to configure in Azure HorizonDB.
 
-To learn how to configure parameters in Azure HorizonDB, see the [portal documentation](../server-parameters/how-to-server-parameters-list-all.md) or the [CLI documentation](../server-parameters/how-to-server-parameters-list-all.md).
+To learn how to configure parameters in Azure HorizonDB, see the [parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
 
-> [!NOTE]
+> [!NOTE]  
 > To configure a high volume of logs, you can add significant performance overhead. For example, statement logging can impact performance.
 
 ## Access logs
@@ -38,7 +38,7 @@ Access to server logs is controlled through Azure Role-Based Access Control (RBA
 - Log Analytics Reader
 - Or equivalent custom roles
 
-> [!WARNING]
+> [!WARNING]  
 > Logs might contain sensitive information, such as credentials, depending on your logging configuration.
 
 ## Data Retention Policy and Pricing
@@ -52,10 +52,10 @@ For a breakdown of the costs associated with data ingestion and retention, visit
 
 ### Log format
 
-The following table describes the fields for the **PostgreSQLLogs** type. Depending on the output endpoint you choose, the fields included and the order in which they appear might vary. 
+The following table describes the fields for the **PostgreSQLLogs** type. Depending on the output endpoint you choose, the fields included and the order in which they appear might vary.
 
-|**Field** | **Description** |
-|---|---|
+| **Field** | **Description** |
+| --- | --- |
 | TenantId | Your tenant ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Time stamp when the log was recorded in UTC |
@@ -71,21 +71,20 @@ The following table describes the fields for the **PostgreSQLLogs** type. Depend
 | errorLevel_s | Logging level, example: LOG, ERROR, NOTICE |
 | processId_d | Process ID of the PostgreSQL backend |
 | sqlerrcode_s | PostgreSQL Error code that follows the SQL standard's conventions for SQLSTATE codes |
-| Message | Primary log message | 
+| Message | Primary log message |
 | Detail | Secondary log message (if applicable) |
 | ColumnName | Name of the column (if applicable) |
 | SchemaName | Name of the schema (if applicable) |
-| DatatypeName | Name of the datatype (if applicable) |
+| DatatypeName | Name of the data type (if applicable) |
 | _ResourceId | Resource URI |
 
 ## Known limitations
 
-- **Log Event Size**: Query plans or log messages larger than 65 KB aren't captured in Azure Monitor Logs. This is a platform-wide Azure Monitor limit. As a result, complex queries (for example, those involving nested views) might generate incomplete or missing query plan output in server logs. 
+- **Log Event Size**: Query plans or log messages larger than 65 KB aren't captured in Azure Monitor Logs. This is a platform-wide Azure Monitor limit. As a result, complex queries (for example, those involving nested views) might generate incomplete or missing query plan output in server logs.
 - **Other Constraints**: Other platform-wide limits apply to Azure Monitor Logs, such as alert rule quotas and query result size. For the complete list, refer to the [Azure Monitor service limits](/azure/azure-monitor/fundamentals/service-limits) documentation for details.
-
 
 ## Related content
 
-- [Configure and access logs in Azure HorizonDB](how-to-configure-and-access-logs.md).
-- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
-- [Audit logging in Azure HorizonDB](../security/security-audit.md).
+- [Configure and access logs in Azure HorizonDB](how-to-configure-and-access-logs.md)
+- [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/)
+- [Audit logging in Azure HorizonDB](../security/security-audit.md)

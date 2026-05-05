@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### allow_alter_system
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [allow_alter_system](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-ALLOW-ALTER-SYSTEM) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transform_null_equals
 
@@ -35,9 +33,4 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [transform_null_equals](https://www.postgresql.org/docs/17/runtime-config-compatible.html#GUC-TRANSFORM-NULL-EQUALS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

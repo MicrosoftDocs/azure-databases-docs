@@ -1,10 +1,10 @@
 ---
-title: Read replicas
-description: This article describes the read replica feature usage for an Azure HorizonDB flexible server instance.
+title: Read Replicas in Azure HorizonDB
+description: This article describes the read replica feature usage for Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 07/16/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
@@ -12,9 +12,9 @@ ms.custom:
   - ignite-2023
 ---
 
-# Read replicas in Azure HorizonDB 
+# Read replicas in Azure HorizonDB
 
-The read replica feature allows you to replicate data from an Azure HorizonDB flexible server instance to a read-only replica. Replicas are updated **asynchronously** with the PostgreSQL engine's native physical replication technology. Streaming replication by using replication slots is the default operation mode. When necessary, file-based log shipping is used to catch up. You can replicate from the primary server to up to five replicas.
+The read replica feature allows you to replicate data in Azure HorizonDB to a read-only replica. Replicas are updated **asynchronously** with the PostgreSQL engine's native physical replication technology. Streaming replication by using replication slots is the default operation mode. When necessary, file-based log shipping is used to catch up. You can replicate from the primary server to up to five replicas.
 
 Replicas are new servers you manage similar to regular Azure HorizonDB. For each read replica, you're billed for the provisioned compute in vCores and storage in GB/ month.
 
@@ -30,33 +30,33 @@ Because replicas are read-only, they don't directly reduce write-capacity burden
 
 ### Considerations
 
-Read replicas are primarily designed for scenarios where offloading queries is beneficial, and a slight lag is manageable. They're optimized to provide near real time updates from the primary for most workloads, making them an excellent solution for read-heavy scenarios. However, it's important to note that they aren't intended for synchronous replication scenarios requiring up-to-the-minute data accuracy. While the data on the replica eventually becomes consistent with the primary, there might be a delay, which typically ranges from a few seconds to minutes, and in some heavy workload or high-latency scenarios, this delay could extend to hours. Typically, read replicas in the same region as the primary has less lag than geo-replicas, as the latter often deals with geographical distance-induced latency. For more insights into the performance implications of geo-replication, refer to [Geo-replication](concepts-read-replicas-geo.md) article. The data on the replica eventually becomes consistent with the data on the primary. Use this feature for workloads that can accommodate this delay.
+Read replicas are primarily designed for scenarios where offloading queries is beneficial, and a slight lag is manageable. They're optimized to provide near real time updates from the primary for most workloads, making them an excellent solution for read-heavy scenarios. However, it's important to note that they aren't intended for synchronous replication scenarios requiring up-to-the-minute data accuracy. While the data on the replica eventually becomes consistent with the primary, there might be a delay, which typically ranges from a few seconds to minutes, and in some heavy workload or high-latency scenarios, this delay could extend to hours. Typically, read replicas in the same region as the primary has less lag than geo-replicas, as the latter often deals with geographical distance-induced latency. For more insights into the performance implications of geo-replication, refer to [Geo-replication in Azure HorizonDB](concepts-read-replicas-geo.md) article. The data on the replica eventually becomes consistent with the data on the primary. Use this feature for workloads that can accommodate this delay.
 
 > [!NOTE]  
 > For most workloads, read replicas offer near-real-time updates from the primary. However, with persistent heavy write-intensive primary workloads, the replication lag could continue to grow and might only be able to catch up with the primary. This might also increase storage usage at the primary as the WAL files are only deleted once received at the replica. If this situation persists, deleting and recreating the read replica after the write-intensive workloads are completed, you can bring the replica back to a good state for lag.
-> Asynchronous read replicas are not suitable for such heavy write workloads. When evaluating read replicas for your application, monitor the lag on the replica for a complete app workload cycle through its peak and non-peak times to assess the possible lag and the expected RTO/RPO at various points of the workload cycle.
+> Asynchronous read replicas aren't suitable for such heavy write workloads. When evaluating read replicas for your application, monitor the lag on the replica for a complete app workload cycle through its peak and non-peak times to assess the possible lag and the expected RTO/RPO at various points of the workload cycle.
 
 ## Create a replica
 
-A primary server for an Azure HorizonDB flexible server instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure HorizonDB is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
+A primary server for an Azure HorizonDB instance can be deployed in [any region that supports the service](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=postgresql&regions=all). You can create replicas of the primary server within the same region or across different global Azure regions where Azure HorizonDB is available. The capability to create replicas now extends to some special Azure regions. See the [Geo-replication in Azure HorizonDB](concepts-read-replicas-geo.md) article for a list of special regions where you can create replicas.
 
-When you start the create replica workflow, a blank Azure HorizonDB flexible server instance is created. The new server is filled with the data on the primary server. For the creation of replicas in the same region, a snapshot approach is used. Therefore, the time of creation is independent of the size of the data. Geo-replicas are created using the base backup of the primary instance, which is then transmitted over the network; therefore, the creation time might range from minutes to several hours, depending on the primary size.
+When you start the create replica workflow, a blank Azure HorizonDB instance is created. The new server is filled with the data on the primary server. For the creation of replicas in the same region, a snapshot approach is used. Therefore, the time of creation is independent of the size of the data. Geo-replicas are created using the base backup of the primary instance, which is then transmitted over the network; therefore, the creation time might range from minutes to several hours, depending on the primary size.
 
 Replica is only considered successfully created when two conditions are met: the entire backup of the primary instance must be copied to the replica, and the transaction logs must synchronize with no more than a 1-GB lag.
 
-To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to an Azure HorizonDB flexible server instance or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](../monitor/concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
+To achieve a successful create operation, avoid making replicas during times of high transactional load. For example, you should avoid creating replicas when migrating from other sources to an Azure HorizonDB instance or during heavy bulk load operations. If you're migrating data or loading large amounts of data right now, it's best to finish this task first. After completing it, you can then start setting up the replicas. Once the migration or bulk load operation has finished, check whether the transaction log size has returned to its normal size. Typically, the transaction log size should be close to the value defined in the max_wal_size server parameter for your instance. You can track the transaction log storage footprint using the [Transaction Log Storage Used](../monitor/concepts-monitoring.md#default-metrics) metric, which provides insights into the amount of storage used by the transaction log. By monitoring this metric, you can ensure that the transaction log size is within the expected range and that the replica creation process might be started.
 
 > [!IMPORTANT]  
-> Read Replicas are currently supported for the General Purpose and Memory Optimized server compute tiers. The Burstable server compute tier is not supported.
+> Read Replicas are currently supported for the General Purpose and Memory Optimized server compute tiers. The Burstable server compute tier isn't supported.
 
 > [!IMPORTANT]  
-> When performing replica creation, deletion, and promotion operations, the primary server will enter an **updating state**. During this time, server management operations such as modifying server parameters, changing high availability options, or adding or removing firewalls will be unavailable. It's important to note that the updating state only affects server management operations and does not affect [data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#data-plane) operations. This means that your database server will remain fully functional and able to accept connections, as well as serve read and write traffic.
+> When performing replica creation, deletion, and promotion operations, the primary server will enter an **updating state**. During this time, server management operations such as modifying server parameters, changing high availability options, or adding or removing firewalls will be unavailable. It's important to note that the updating state only affects server management operations and doesn't affect [data plane](/azure/azure-resource-manager/management/control-plane-and-data-plane#data-plane) operations. This means that your database server will remain fully functional and able to accept connections, as well as serve read and write traffic.
 
-Learn how to [Create a read replica](how-to-create-read-replica.md).
+Learn how to [Create a read replica in Azure HorizonDB](how-to-create-read-replica.md).
 
 ### Configuration management
 
-When setting up read replicas for an Azure HorizonDB flexible server instance, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
+When setting up read replicas for an Azure HorizonDB instance, it's essential to understand the server configurations that can be adjusted, the ones inherited from the primary, and any related limitations.
 
 **Inherited configurations**
 
@@ -83,23 +83,24 @@ Certain functionalities are restricted to primary servers and can't be set up on
 - Backups, including geo-backups.
 - High availability (HA)
 
-If your source Azure HorizonDB flexible server instance is encrypted with customer-managed keys, see the [documentation](../security/security-data-encryption.md) for other considerations.
+If your source Azure HorizonDB instance is encrypted with customer-managed keys, see the [documentation](../security/security-data-encryption.md) for other considerations.
 
 ## Create cascading read replicas (Preview)
 
-Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure HorizonDB flexible server instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level. 
+Cascading read replicas can help distribute read workloads, reducing the load on the primary server. Deploying read replicas in different regions (cross-region read replicas) can help distribute read traffic closer to users in various geographies. You can add cascading read replicas to Azure HorizonDB instance, this feature is supported in public preview capacity. This allows you to create new read replicas on top of an existing read replica, with the existing read replica acting as the source for the next level.
 
-The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. To add a cascading read replica to Azure HorizonDB flexible server instance, select the existing read replica (created from the primary server), and navigate to the 'Replication' tab and click 'Create replica'.
+The first-level read replica asynchronously replicates data from the primary server. A second-level read replica can then be created using the first-level replica as its source, forming a two-tier replication hierarchy. This architecture increases scalability, supporting up to 30 read replica servers with the primary server allowing up to 5 read replicas, and each of those replicas supporting 5 additional replicas. To add a cascading read replica to Azure HorizonDB instance, select the existing read replica (created from the primary server), and navigate to the 'Replication' tab and select 'Create replica'.
 
 For example, your primary server can have up to 5 read replicas (level 1). One of these, say read-replica-1, can act as the source for another replica read-replica-2 which becomes part of (level 2).
 
-#### Preview considerations:
+#### Preview considerations
+
 1. Up to 5 read replicas can be created per source read replica, with support for 2 levels of replication.
-2. Promote operation is not supported for intermediate read replicas with cascading read replicas.
-3. Virtual endpoints are not supported for cascading replicas.
-4. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
-5. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
-   
+1. Promote operation isn't supported for intermediate read replicas with cascading read replicas.
+1. Virtual endpoints aren't supported for cascading replicas.
+1. Cascading read replicas are supported on intermediate replicas with PostgreSQL version 14 and above.
+1. This feature is supported in: West US, Spain Central, Australia East, South Central US, UK West, Poland Central, Italy North, West US 2, East US 2, East Asia and Canada Central.
+
 ## Connect to a replica
 
 When you create a replica, it does inherit the firewall rules or virtual network service endpoint of the primary server. These rules might be changed during replica creation and at any later point in time.
@@ -108,7 +109,7 @@ The replica inherits the admin account from the primary server. All user account
 
 There are two methods to connect to the replica:
 
-* **Direct to the Replica Instance**: You can connect to the replica using its hostname and a valid user account, as you would on a regular Azure HorizonDB flexible server instance. For a server named **myreplica** with the admin username **myadmin**, you can connect to the replica by using `psql`:
+- **Direct to the Replica Instance**: You can connect to the replica using its hostname and a valid user account, as you would on a regular Azure HorizonDB instance. For a server named **myreplica** with the admin username **myadmin**, you can connect to the replica by using `psql`:
 
 ```bash
 psql -h myreplica.postgres.database.azure.com -U myadmin postgres
@@ -118,8 +119,7 @@ At the prompt, enter the password for the user account.
 
 Furthermore, to ease the connection process, the Azure portal provides ready-to-use connection strings. These can be found in the **Connect** page. They encompass both `libpq` variables and connection strings tailored for bash consoles.
 
-* **Via Virtual Endpoints**: There's an alternative connection method using virtual endpoints, as detailed in [Virtual endpoints](concepts-read-replicas-virtual-endpoints.md) article. By using virtual endpoints, you can configure the read-only endpoint to consistently point to the replica, regardless of which server currently holds the replica role.
-
+- **Via Virtual Endpoints**: There's an alternative connection method using virtual endpoints, as detailed in [Virtual endpoints for read replicas in Azure HorizonDB](concepts-read-replicas-virtual-endpoints.md) article. By using virtual endpoints, you can configure the read-only endpoint to consistently point to the replica, regardless of which server currently holds the replica role.
 
 ## Monitor replication
 
@@ -128,13 +128,15 @@ Therefore, monitoring the replication lag and replication slots status is crucia
 
 We recommend setting alert rules for storage used or storage percentage, and for replication lags, when they exceed certain thresholds so that you can proactively act, increase the storage size, and delete lagging read replicas. For example, you can set an alert if the storage percentage exceeds 80% usage, and if the replica lag is higher than 5 minutes. The [Transaction Log Storage Used](../monitor/concepts-monitoring.md#default-metrics) metric shows you if the WAL files accumulation is the main reason of the excessive storage usage.
 
-#### Monitoring metrics
+<a id="monitoring-metrics"></a>
 
-Azure HorizonDB service provides following metrics for monitoring replication. 
+#### Monitor metrics
+
+Azure HorizonDB service provides following metrics for monitoring replication.
 
 [!INCLUDE [Read-Replica Metrics](includes/read-replica-metrics-table.md)]
 
-To learn more, see [read replica how-to article](../read-replica/how-to-create-read-replica.md).
+To learn more, see [read replica how-to article](how-to-create-read-replica.md).
 
 The **Max Physical Replication Lag** metric shows the lag in bytes between the primary and the most-lagging replica. This metric is applicable and available on the primary server only, and will be available only if at least one of the read replicas is connected to the primary. The lag information is present also when the replica is in the process of catching up with the primary, during replica creation, or when replication becomes inactive.
 
@@ -162,8 +164,7 @@ Here are the possible values:
 | <b> Active | Healthy state, indicating that the read replica has been successfully connected to the primary. If the servers are stopped but were successfully connected prior, the status remains as active. | 4 | 4 |
 | <b> Broken | Unhealthy state, indicating the promote operation might have failed, or the replica is unable to connect to the primary for some reason. Please drop the replica and recreate the replica to resolve this." | N/A | N/A |
 
-Learn how to [monitor replication](../read-replica/how-to-create-read-replica.md).
-
+Learn how to [monitor replication](how-to-create-read-replica.md).
 
 ## Considerations
 
@@ -171,29 +172,30 @@ This section summarizes considerations about the read replica feature. The follo
 
 - **Power operations**: Power operations, including [start](../configure-maintain/how-to-start-server.md) and [stop](../configure-maintain/how-to-stop-server.md) actions, can be applied to both the primary and replica servers. However, to preserve system integrity, a specific sequence should be followed. Before stopping the read replicas, ensure the primary server is stopped first. When commencing operations, initiate the start action on the replica servers before starting the primary server.
 - If server has read replicas, then read replicas should be deleted first before deleting the primary server.
-- [In-place major version upgrade](../configure-maintain/concepts-major-version-upgrade.md) for an Azure HorizonDB flexible server instance requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
+- [Major version upgrades in Azure HorizonDB](../configure-maintain/concepts-major-version-upgrade.md) for an Azure HorizonDB instance requires removing any read replicas and cascading read replicas that are enabled on the server. Once the replicas have been deleted, the primary server can be upgraded to the desired major version. After the upgrade is complete, you can recreate the replicas to resume the replication process.
   - **Resetting admin password**: Resetting the admin password on the replica server is currently not supported. Additionally, updating the admin password along with [promoting](concepts-read-replicas-promote.md) replica operation in the same request is also not supported. If you wish to do this you must first promote the replica server, and then update the password on the newly promoted server separately.
 
 ### New replicas
 
-A read replica is created as a new Azure HorizonDB flexible server instance. An existing server can't be made into a replica. You can't create a replica of another read replica, that is, cascading replication isn't supported.
+A read replica is created as a new Azure HorizonDB instance. An existing server can't be made into a replica. You can't create a replica of another read replica, that is, cascading replication isn't supported.
 
 ### Resource move
 
 Users can create read replicas in a different resource group than the primary. However, moving read replicas to another resource group after their creation is unsupported. Additionally, moving replicas to a different subscription, and moving the primary that has read replicas to another resource group or subscription, it's not supported.
 
 ### Storage autogrow
-When configuring read replicas for an Azure HorizonDB flexible server instance, it's essential to ensure that the storage autogrow setting on the replicas matches that of the primary server. The storage autogrow feature allows the database storage to increase automatically to prevent running out of space, which could lead to database outages.
-Here’s how to manage storage autogrow settings effectively:
 
-- You can have storage autogrow enabled on any replica regardless of the primary server’s setting.
+When configuring read replicas for an Azure HorizonDB instance, it's essential to ensure that the storage autogrow setting on the replicas matches that of the primary server. The storage autogrow feature allows the database storage to increase automatically to prevent running out of space, which could lead to database outages.
+Here's how to manage storage autogrow settings effectively:
+
+- You can have storage autogrow enabled on any replica regardless of the primary server's setting.
 - If storage autogrow is enabled on the primary server, it must also be enabled on the replicas to ensure consistency in storage scaling behaviors.
 - To enable storage autogrow on the primary, you must first enable it on the replicas. This order of operations is crucial to maintain replication integrity.
 - Conversely, if you wish to disable storage autogrow, begin by disabling it on the primary server before the replicas to avoid replication complications.
 
 ### Back up and Restore
 
-When managing backups and restores for your Azure HorizonDB flexible server instance, it's essential to keep in mind the current and previous role of the server in different [promotion scenarios](concepts-read-replicas-promote.md). Here are the key points to remember:
+When managing backups and restores for your Azure HorizonDB instance, it's essential to keep in mind the current and previous role of the server in different [promotion scenarios](concepts-read-replicas-promote.md). Here are the key points to remember:
 
 **Promote to primary server**
 
@@ -262,8 +264,8 @@ For storage scaling:
 
 ## Related content
 
-- [Geo-replication in Azure HorizonDB](concepts-read-replicas-geo.md).
-- [Promote read replicas in Azure HorizonDB](concepts-read-replicas-promote.md).
-- [Virtual endpoints for read replicas in Azure HorizonDB](concepts-read-replicas-virtual-endpoints.md).
-- [Creata read replica](how-to-create-read-replica.md).
-- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Geo-replication in Azure HorizonDB](concepts-read-replicas-geo.md)
+- [Promote read replicas in Azure HorizonDB](concepts-read-replicas-promote.md)
+- [Virtual endpoints for read replicas in Azure HorizonDB](concepts-read-replicas-virtual-endpoints.md)
+- [Create a read replica in Azure HorizonDB](how-to-create-read-replica.md)
+- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)

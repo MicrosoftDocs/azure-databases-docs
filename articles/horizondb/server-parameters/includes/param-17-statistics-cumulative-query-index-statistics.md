@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### stats_fetch_consistency
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `cache` |
 | Parameter type | read-only |
 | Documentation | [stats_fetch_consistency](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-STATS-FETCH-CONSISTENCY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### track_activities
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [track_activities](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-ACTIVITIES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### track_activity_query_size
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `100-102400` |
 | Parameter type | static |
 | Documentation | [track_activity_query_size](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-ACTIVITY-QUERY-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### track_counts
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [track_counts](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-COUNTS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### track_functions
 
@@ -86,13 +72,11 @@ ms.custom: automatically generated
 | Allowed values | `none,pl,all` |
 | Parameter type | dynamic |
 | Documentation | [track_functions](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-FUNCTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="track_io_timing"></a>
 
-
-### track_io_timing
+### track_io_tim
 
 | Attribute | Value |
 | --- | --- |
@@ -103,13 +87,11 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [track_io_timing](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-IO-TIMING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="track_wal_io_timing"></a>
 
-
-### track_wal_io_timing
+### track_wal_io_tim
 
 | Attribute | Value |
 | --- | --- |
@@ -120,9 +102,4 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [track_wal_io_timing](https://www.postgresql.org/docs/17/runtime-config-statistics.html#GUC-TRACK-WAL-IO-TIMING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,10 +1,10 @@
 ---
-title: Manage server - Azure CLI
-description: Learn how to manage an Azure HorizonDB flexible server instance from the Azure CLI.
+title: Manage Server - Azure CLI in Azure HorizonDB
+description: Learn how to manage an Azure HorizonDB instance from the Azure CLI.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
@@ -12,17 +12,17 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Manage Azure HorizonDB by using the Azure CLI
+# Manage Azure HorizonDB using the Azure CLI
 
-This article shows you how to manage your Azure HorizonDB flexible server instance deployed in Azure. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
+This article shows you how to manage your Azure HorizonDB instance deployed in Azure. Management tasks include compute and storage scaling, admin password reset, and viewing server details.
 
 ## Prerequisites
 
-If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin. 
+If you don't have an Azure subscription, create a [free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) account before you begin.
 
 You'll need to be running the Azure CLI version 2.0, or later, locally. To see the version installed, run the `az --version` command. If you need to install or upgrade, see [Install the Azure CLI](/cli/azure/install-azure-cli).
 
-Sign in to your account by using the [az login](/cli/azure/reference-index#az-login) command. 
+Sign in to your account by using the [az login](/cli/azure/reference-index#az-login) command.
 
 ```azurecli-interactive
 az login
@@ -34,13 +34,13 @@ Select your subscription by using the [az account set](/cli/azure/account) comma
 az account set --subscription <subscription id>
 ```
 
-> [!Important]
-> If you haven't created an Azure HorizonDB flexible server instance yet, you need to do so to follow this how-to guide.
+> [!IMPORTANT]  
+> If you haven't created an Azure HorizonDB instance yet, you need to do so to follow this how-to guide.
 
 ## Scale compute and storage
 
-> [!IMPORTANT]
-> To scale the storage or compute, you must have at minimum READ permission on the owning resource group. 
+> [!IMPORTANT]  
+> To scale the storage or compute, you must have at minimum READ permission on the owning resource group.
 
 You can easily scale up your compute tier, vCores, and storage by using the following command. For a list of all the server operations you can run, see the [az postgres flexible-server](/cli/azure/postgres/flexible-server) overview.
 
@@ -54,15 +54,15 @@ Following are the details for the arguments in the preceding code:
 ---|---|---
 name | mydemoserver | Enter a unique name for your server. The server name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain 3 to 63 characters.
 resource-group | myresourcegroup | Provide the name of the Azure resource group.
-sku-name|Standard_D4ds_v3|Enter the name of the compute tier and size. The value follows the convention *Standard_{VM size}* in shorthand. See the {[pricing tiers](../concepts-pricing-tiers.md)} for more information.
-storage-size | 32768 | Enter the storage capacity of the server in megabytes. The minimum storage size 32768, 
+sku-name|Standard_D4ds_v3|Enter the name of the compute tier and size. The value follows the convention *Standard_{VM size}* in shorthand. See the {[pricing tiers](concepts-reserved-pricing.md)} for more information.
+storage-size | 32768 | Enter the storage capacity of the server in megabytes. The minimum storage size 32768,
 
-> [!IMPORTANT]
-> You cannot scale down storage. 
+> [!IMPORTANT]  
+> You can't scale down storage.
 
-## Manage Azure HorizonDB  databases on a server
+## Manage Azure HorizonDB databases on a server
 
-There are a number of applications you can use to connect to your Azure HorizonDB flexible server instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/static/app-psql.html). Let's now use the psql command-line tool to connect to the Azure HorizonDB flexible server instance.
+There are a number of applications you can use to connect to your Azure HorizonDB instance. If your client computer has PostgreSQL installed, you can use a local instance of [psql](https://www.postgresql.org/docs/current/app-psql.html). Let's now use the psql command-line tool to connect to the Azure HorizonDB instance.
 
 1. Run the following **psql** command:
 
@@ -70,13 +70,13 @@ There are a number of applications you can use to connect to your Azure HorizonD
    psql --host=<servername> --port=<port> --username=<user> --dbname=<dbname>
    ```
 
-   For example, the following command connects to the default database called **postgres** on your Azure HorizonDB flexible server instance **mydemoserver.postgres.database.azure.com** through your access credentials. When you're prompted, enter the `<server_admin_password>` that you chose.
-  
+   For example, the following command connects to the default database called **postgres** on your Azure HorizonDB instance **mydemoserver.postgres.database.azure.com** through your access credentials. When you're prompted, enter the `<server_admin_password>` that you chose.
+
    ```bash
    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin --dbname=postgres
    ```
 
-   After you connect, the psql tool displays a **postgres** prompt where you can enter SQL commands. A warning will appear in the initial connection output if the version of psql you're using is different from the version on the Azure HorizonDB flexible server instance.
+   After you connect, the psql tool displays a **postgres** prompt where you can enter SQL commands. A warning will appear in the initial connection output if the version of psql you're using is different from the version on the Azure HorizonDB instance.
 
    Example psql output:
 
@@ -90,28 +90,28 @@ There are a number of applications you can use to connect to your Azure HorizonD
    postgres=>
    ```
 
-   > [!TIP]
-   > If the firewall is not configured to allow the IP address of your client, the following error occurs:
+   > [!TIP]  
+   > If the firewall isn't configured to allow the IP address of your client, the following error occurs:
    >
-   > "psql: FATAL:  no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry."
+   > "psql: FATAL: no pg_hba.conf entry for host `<IP address>`, user "myadmin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry."
    >
    > Confirm your client's IP address is allowed in the firewall rules.
 
-2. Create a blank database called **postgresdb** by typing the following command at the prompt:
+1. Create a blank database called **postgresdb** by typing the following command at the prompt:
 
-    ```bash
-    CREATE DATABASE postgresdb;
-    ```
+   ```bash
+   CREATE DATABASE postgresdb;
+   ```
 
-3. At the prompt, run the following command to switch connections to the newly created database **postgresdb**:
+1. At the prompt, run the following command to switch connections to the newly created database **postgresdb**:
 
-    ```bash
-    \c postgresdb
-    ```
+   ```bash
+   \c postgresdb
+   ```
 
-4. Type  `\q` and select Enter to quit psql.
+1. Type `\q` and select Enter to quit psql.
 
-In this section, you connected to the Azure HorizonDB flexible server instance via psql and created a blank user database.
+In this section, you connected to the Azure HorizonDB instance via psql and created a blank user database.
 
 ## Reset the admin password
 
@@ -121,8 +121,8 @@ You can change the administrator role's password with the following command:
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --admin-password <new-password>
 ```
 
-> [!IMPORTANT]
-> Choose a password that has a minimum of 8 characters and a maximum of 128 characters. The password must contain characters from three of the following categories: 
+> [!IMPORTANT]  
+> Choose a password that has a minimum of 8 characters and a maximum of 128 characters. The password must contain characters from three of the following categories:  
 > - English uppercase letters
 > - English lowercase letters
 > - Numbers
@@ -130,12 +130,13 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## Delete a server
 
-To delete the Azure HorizonDB flexible server instance, run the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgresql-flexible-server-delete) command.
+To delete the Azure HorizonDB instance, run the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgresql-flexible-server-delete) command.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## Related content
-- [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md).
-- [Monitor metrics in Azure HorizonDB](../monitor/concepts-monitoring.md).
+
+- [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
+- [Monitor metrics in Azure HorizonDB](../monitor/concepts-monitoring.md)

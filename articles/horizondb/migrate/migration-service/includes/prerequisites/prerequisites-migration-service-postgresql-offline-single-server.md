@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites For The Migration Service In Azure HorizonDB (Offline)"
+title: Prerequisites for the Migration Service in Azure HorizonDB (Offline)
 description: Providing the prerequisites of the migration service in Azure HorizonDB
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -19,7 +19,7 @@ Source PostgreSQL version should be `>= 9.5`. If the source PostgreSQL version i
 
 ### Target setup
 
-- Azure HorizonDB flexible server must be deployed and properly configured in Azure before you begin the migration process.
+- Azure HorizonDB must be deployed and properly configured in Azure before you begin the migration process.
 
 - The SKU chosen for the Azure HorizonDB should correspond with the specifications of the source database to ensure compatibility and adequate performance.
 
@@ -31,7 +31,7 @@ Source PostgreSQL version should be `>= 9.5`. If the source PostgreSQL version i
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target Azure HorizonDB server. The following network configurations are essential for a successful migration.
 
-For information about network setup, visit [Network guide for migration service](../../how-to-network-setup-migration-service.md).
+For information about network setup, visit [Network scenarios for the migration service in Azure HorizonDB](../../how-to-network-setup-migration-service.md).
 
 ### Enable extensions
 
@@ -43,7 +43,7 @@ These parameters aren't automatically migrated to the target environment and mus
 
 - Match server parameter values from the source PostgreSQL database to the Azure HorizonDB by accessing the **Server parameters** section in the Azure portal and manually updating the values accordingly.
 
-- Save the parameter changes and, if necessary, restart the Azure HorizonDB flexible server to apply the new configuration.
+- Save the parameter changes and, if necessary, restart the Azure HorizonDB to apply the new configuration.
 
 ### Disable high availability (reliability) and read replicas in the target
 

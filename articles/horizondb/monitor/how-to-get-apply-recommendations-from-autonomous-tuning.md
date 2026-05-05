@@ -1,31 +1,31 @@
 ---
 title: How to Query, Interpret and Apply Recommendations Produced by Autonomous Tuning in Azure HorizonDB
-description: This article describes how to query, interpret, and apply the recommendations produced by autonomous tuning feature in an Azure HorizonDB flexible server instance.
+description: This article describes how to query, interpret, and apply the recommendations produced by autonomous tuning feature in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/27/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
-ms.custom:
-- build-2024
-- ignite-2024
-- sfi-image-nochange
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to query, interpret and apply recommendations produced by autonomous tuning feature in an Azure HorizonDB flexible server instance.
+ms.custom:
+  - build-2024
+  - ignite-2024
+  - sfi-image-nochange
+# customer intent: As a user, I want to learn about how to query, interpret and apply recommendations produced by autonomous tuning feature in Azure HorizonDB.
 ---
 
-# Use autonomous tuning recommendations
+# Use autonomous tuning recommendations in Azure HorizonDB
 
 Autonomous tuning persists the recommendations that it produces in a set of tables located under the `intelligentperformance` schema in the `azure_sys` database.
 
 These recommendations can be read using the **Autonomous tuning** page in Azure portal, or using the Azure CLI `az postgres flexible-server autonomous-tuning list-table-recommendations` and `az postgres flexible-server autonomous-tuning list-index-recommendations` commands.
 
-However, none of those two methods reveal the text of the queries for which the recommendations were produced. This behavior is intentional, because the texts of the queries might contain sensitive information. Seeing the text of those statements should only be allowed to subjects with authorization to access the database. But it shouldn't be allowed to subjects who are only granted access to the instance of Azure HorizonDB flexible server, as an Azure resource.
+However, none of those two methods reveal the text of the queries for which the recommendations were produced. This behavior is intentional, because the texts of the queries might contain sensitive information. Seeing the text of those statements should only be allowed to subjects with authorization to access the database. But it shouldn't be allowed to subjects who are only granted access to the instance of Azure HorizonDB, as an Azure resource.
 
 Hence, if you need to read the text of the queries, you need to be granted permissions to connect to the database engine, so that you can execute queries to retrieve that information from two views available inside the `intelligent performance` of the `azure_sys` database.
 
-> [!NOTE]
+> [!NOTE]  
 > Recommendations are automatically deleted 35 days after the last time they're produced. For this automatic deletion mechanism to work, autonomous tuning must be enabled.
 
 ## Steps to list autonomous tuning recommendations
@@ -34,9 +34,9 @@ Hence, if you need to read the text of the queries, you need to be granted permi
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    - If the feature is enabled but no recommendations are produced yet, the screen looks like this:
 
@@ -50,17 +50,17 @@ Using the [Azure portal](https://portal.azure.com/):
 
      :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when the feature is disabled and there are recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-when-disabled-and-has-recommendations.png":::
 
-3. If there are recommendations available of any of the five existing types, select on its summarization card to access the full list of that specific type you're interested in:
+1. If there are recommendations available of any of the five existing types, select its summarization card to access the full list of that specific type you're interested in:
 
-     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
+   :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list for a given recommendation type." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
-4. The list shows all available recommendations of that type, with some details for each of them. By default, the list is sorted by **Last recommended** in descending order, showing the most recent recommendations at the top. However, you can sort by any other column, and can use the filtering box to reduce the list of items shown. Filtered items are those whose database, schema, or table names contain the text provided:
+1. The list shows all available recommendations of that type, with some details for each of them. By default, the list is sorted by **Last recommended** in descending order, showing the most recent recommendations at the top. However, you can sort by any other column, and can use the filtering box to reduce the list of items shown. Filtered items are those whose database, schema, or table names contain the text provided:
 
-     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png" alt-text="Screenshot that shows the aspect of 'Recommendations' page with several recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
+   :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png" alt-text="Screenshot that shows the aspect of 'Recommendations' page with several recommendations." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
-5. To see further information about any specific recommendation, select the name of that recommendation, and the **Recommendation details** pane opens on the right side of the screen to surface all available details about the recommendation:
+1. To see further information about any specific recommendation, select the name of that recommendation, and the **Recommendation details** pane opens on the right side of the screen to surface all available details about the recommendation:
 
-     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png" alt-text="Screenshot that shows the aspect of 'Recommendation details' pane for one particular recommendation." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png":::
+   :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png" alt-text="Screenshot that shows the aspect of 'Recommendation details' pane for one particular recommendation." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-page.png":::
 
 ### [CLI](#tab/CLI-list-recommendations)
 
@@ -404,9 +404,9 @@ Using any PostgreSQL client tool of your preference:
 
 1. Connect to the `azure_sys` database available in your server with any role that has permission to connect to the instance. Members of the `public` role can read from these views.
 
-2. Execute queries on the `sessions` view to retrieve the details about recommendation sessions.
+1. Execute queries on the `sessions` view to retrieve the details about recommendation sessions.
 
-3. Execute queries on the `recommendations` view to retrieve the recommendations produced by autonomous tuning for CREATE INDEX, DROP INDEX, and REINDEX.
+1. Execute queries on the `recommendations` view to retrieve the recommendations produced by autonomous tuning for CREATE INDEX, DROP INDEX, and REINDEX.
 
 #### Views
 
@@ -450,7 +450,7 @@ The `recommendations` view exposes all the details for all recommendations gener
 When autonomous tuning recommends the creation of an index, it does add at least one of the following reasons:
 
 | Reason |
-| ------ |
+| --- |
 | `Column <column> appear in Join On clause(s) in query <queryId>` |
 | `Column <column> appear in Equal Predicate clause(s) in query <queryId>` |
 | `Column <column> appear in Non-Equal Predicate clause(s) in query <queryId>` |
@@ -463,7 +463,7 @@ When autonomous tuning identifies any indexes are marked as invalid, it proposes
 
 `The index is invalid and the recommended recovery method is to reindex.`
 
- To learn more about why and when indexes are marked as invalid, refer to the [REINDEX](https://www.postgresql.org/docs/current/sql-reindex.html#DESCRIPTION) in PostgreSQL official documentation.
+To learn more about why and when indexes are marked as invalid, refer to the [REINDEX](https://www.postgresql.org/docs/current/sql-reindex.html#DESCRIPTION) in PostgreSQL official documentation.
 
 ###### Reasons for DROP INDEX recommendations
 
@@ -473,12 +473,12 @@ When autonomous tuning detects an index that's unused for, at least, the number 
 
 When autonomous tuning detects duplicate indexes, one of the duplicates survives, and it proposes to drop the remaining. The reason provided always has the following starting text:
 
-`Duplicate of <surviving_duplicate>.` 
+`Duplicate of <surviving_duplicate>.`
 
 Followed by another text that explains the reason why each of the duplicates is chosen for drop:
 
 | Reason |
-| ------ |
+| --- |
 | `The equivalent index "<surviving_duplicate>" is a Primary key, while "<droppable_duplicate>" is not.` |
 | `The equivalent index "<surviving_duplicate>" is a unique index, while "<droppable_duplicate>" is not.` |
 | `The equivalent index "<surviving_duplicate>" is a constraint, while "<droppable_duplicate>" is not.` |
@@ -529,31 +529,31 @@ Recommendations contain the SQL statement that you can execute to implement the 
 
 The following section demonstrates how this statement can be obtained for a particular recommendation.
 
-Once you have the statement, you can use any PostgreSQL client of your preference to connect to your server and apply the recommendation. 
+Once you have the statement, you can use any PostgreSQL client of your preference to connect to your server and apply the recommendation.
 
 ### [Portal](#tab/portal-apply-recommendations)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. Assuming autonomous tuning produced recommendations, select one of the summarization cards to access the list of available recommendations of that type.
+1. Assuming autonomous tuning produced recommendations, select one of the summarization cards to access the list of available recommendations of that type.
 
-     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
+   :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png" alt-text="Screenshot that shows the aspect of 'Autonomous tuning' page when there are recommendations, and the way to get to the full list." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-page-access-full-list-via-summarization-card.png":::
 
-4. From the list of recommendations, either:
+1. From the list of recommendations, either:
 
-    - Select the ellipsis to the right of the recommendation name, for which you want to obtain the SQL statement, and select **Copy SQL script**. 
+   - Select the ellipsis to the right of the recommendation name, for which you want to obtain the SQL statement, and select **Copy SQL script**.
 
-       :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendations' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendations-page.png":::
 
-    - Or select the name of the recommendation to show its **Recommendation details**, and select the copy to clipboard icon in the **SQL script** text box to copy the SQL statement.
+   - Or select the name of the recommendation to show its **Recommendation details**, and select the copy to clipboard icon in the **SQL script** text box to copy the SQL statement.
 
-       :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendation details' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png":::
+     :::image type="content" source="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png" alt-text="Screenshot that shows how to copy SQL statement from 'Recommendation details' page." lightbox="media/how-to-get-apply-recommendations-from-autonomous-tuning/autonomous-tuning-autonomous-recommendation-details-copy-sql-script.png":::
 
 ### [CLI](#tab/CLI-apply-recommendations)
 
@@ -602,6 +602,6 @@ The command returns all the statements that must be run to implement all produce
 
 ## Related content
 
-- [Autonomous tuning](concepts-autonomous-tuning.md)
-- [Configure autonomous tuning](how-to-configure-autonomous-tuning.md)
-- [Query store](concepts-query-store.md)
+- [Autonomous tuning in Azure HorizonDB](concepts-autonomous-tuning.md)
+- [Configure autonomous tuning in Azure HorizonDB](how-to-configure-autonomous-tuning.md)
+- [Query store in Azure HorizonDB](concepts-query-store.md)

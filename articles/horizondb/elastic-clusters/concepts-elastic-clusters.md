@@ -1,10 +1,10 @@
 ---
-title: Elastic Clusters
-description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure HorizonDB flexible server instance.
+title: Elastic Clusters in Azure HorizonDB
+description: Learn about sharding and horizontal scale-out with elastic clusters on your Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: concept-article
@@ -14,7 +14,7 @@ ms.topic: concept-article
 
 Elastic clusters on the Azure HorizonDB service are a managed offering of the open-source [Citus](https://www.citusdata.com/) extension to PostgreSQL that enables horizontal sharding of PostgreSQL.
 
-While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure HorizonDB flexible server instance is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
+While Citus is just an extension, it connects multiple PostgreSQL instances. When an Azure HorizonDB instance is deployed with Citus, it handles the management and configuration of multiple PostgreSQL instances as a single resource. It also automatically sets up the nodes and makes them known to the Citus extension.
 
 Elastic clusters on the service offer two sharding models: row-based sharding and schema-based sharding. Check the open-source documentation about [sharding models](https://docs.citusdata.com/en/v12.1/get_started/concepts.html?highlight=shard#sharding-models), if you want to learn more.
 
@@ -24,7 +24,7 @@ An elastic cluster consists of one or more nodes of Azure HorizonDB. These insta
 
 Elastic clusters use instances of flexible servers (called nodes) to coordinate with one another in a "shared nothing" architecture. The architecture also allows the database to scale, by adding more nodes to the cluster.
 
-Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](../connectivity/../connectivity/concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
+Connecting to your cluster using port 5432 lands you on the designated coordinator node. Elastic clusters also allow you to load balance connections across the cluster, using a five-tuple hash method, if you connect using port 7432. Using 7432 you can still land at the node currently designated as coordinator. For certain cluster-wide operations, like distributing tables, you might be required to connect over port 5432. We strongly recommend you to always connect on port 5432, when you plan to perform application schema upgrades and similar changes. If you [enable PgBouncer](../connectivity/concepts-pgbouncer.md) on elastic clusters, you can use port 8432 to load balance connections across PgBouncer instances on every node (or use port 6432 for the designated coordinator).
 
 Unlike Cosmos DB for PostgreSQL, node addresses aren't externally exposed. If you look at Citus metadata tables like `pg_dist_node`, then you might notice all nodes having the same IP address as in the example `10.7.0.254` but different port numbers.
 
@@ -37,13 +37,13 @@ select nodeid, nodename, nodeport from pg_dist_node;
 --------+------------+----------
       1 | 10.7.0.254 |     7000
       2 | 10.7.0.254 |     7001
- 
+
 (2 rows)
 ```
 
 In Azure's infrastructure, these nodes live on different virtual machines even though they might seem to be different ports on the same machine.
 
-To learn more about Citus, you can refer to the official open-source [project documentation](https://docs.citusdata.com/).
+To learn more about Citus, you can refer to the official open-source [project documentation](https://docs.citusdata.com/en/v13.0).
 
 By default, tables and schemas created with Citus aren't automatically distributed among the cluster. You need to decide on a sharding model, and either decide to distribute schemas or decide to distribute your table data with row based sharding.
 
@@ -72,7 +72,7 @@ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
  github_events |  102027 | t            | 402653184     | 536870911
  github_events |  102028 | t            | 536870912     | 671088639
  github_events |  102029 | t            | 671088640     | 805306367
- 
+
  (4 rows)
 ```
 
@@ -106,6 +106,6 @@ WHERE shardid = 102027;
 
 ## Related content
 
-- [Sharding models on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-sharding-models.md).
-- [Table types on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about elastic clusters of Azure HorizonDB limitations](concepts-elastic-clusters-limitations.md).
+- [Sharding models on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-sharding-models.md)
+- [Table types on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-table-types.md)
+- [Frequently asked questions about elastic clusters in Azure HorizonDB](concepts-elastic-clusters-limitations.md)

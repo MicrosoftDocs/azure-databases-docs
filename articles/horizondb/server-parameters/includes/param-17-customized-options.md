@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### anon.algorithm
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `sha256` |
 | Parameter type | read-only |
 | Documentation | [anon.algorithm](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.k_anonymity_provider
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `k_anonymity` |
 | Parameter type | read-only |
 | Documentation | [anon.k_anonymity_provider](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.masking_policies
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `anon` |
 | Parameter type | read-only |
 | Documentation | [anon.masking_policies](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.maskschema
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `mask` |
 | Parameter type | read-only |
 | Documentation | [anon.maskschema](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.privacy_by_default
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [anon.privacy_by_default](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.restrict_to_trusted_schemas
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [anon.restrict_to_trusted_schemas](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.salt
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [anon.salt](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.sourceschema
 
@@ -137,30 +111,24 @@ ms.custom: automatically generated
 | Allowed values | `public` |
 | Parameter type | read-only |
 | Documentation | [anon.sourceschema](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### anon.strict_mode
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | A masking rule cannot change a column data type, unless you disable this. Disabling the mode is not recommended. |
+| Description | A masking rule can't change a column data type, unless you disable this. Disabling the mode isn't recommended. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [anon.strict_mode](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="anontransparent_dynamic_masking"></a>
 
-
-### anon.transparent_dynamic_masking
+### anon.transparent_dynamic_mask
 
 | Attribute | Value |
 | --- | --- |
@@ -171,11 +139,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [anon.transparent_dynamic_masking](https://postgresql-anonymizer.readthedocs.io/en/stable/) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_analyze
 
@@ -188,11 +152,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_analyze](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-ANALYZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_buffers
 
@@ -205,11 +165,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_buffers](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_format
 
@@ -222,11 +178,7 @@ ms.custom: automatically generated
 | Allowed values | `text,xml,json,yaml` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_format](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-FORMAT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_level
 
@@ -239,11 +191,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,debug,info,notice,warning,log` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_level](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-LEVEL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_min_duration
 
@@ -256,11 +204,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_min_duration](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-MIN-DURATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_nested_statements
 
@@ -273,11 +217,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_nested_statements](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-NESTED-STATEMENTS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_parameter_max_length
 
@@ -290,11 +230,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_parameter_max_length](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-MIN-DURATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_settings
 
@@ -307,13 +243,11 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_settings](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-SETTINGS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="auto_explainlog_timing"></a>
 
-
-### auto_explain.log_timing
+### auto_explain.log_tim
 
 | Attribute | Value |
 | --- | --- |
@@ -324,11 +258,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_timing](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-TIMING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_triggers
 
@@ -341,11 +271,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_triggers](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-TRIGGERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_verbose
 
@@ -358,11 +284,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_verbose](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-VERBOSE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.log_wal
 
@@ -375,11 +297,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.log_wal](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-LOG-WAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### auto_explain.sample_rate
 
@@ -392,11 +310,7 @@ ms.custom: automatically generated
 | Allowed values | `0.0-1.0` |
 | Parameter type | dynamic |
 | Documentation | [auto_explain.sample_rate](https://www.postgresql.org/docs/17/auto-explain.html#AUTO-EXPLAIN-CONFIGURATION-PARAMETERS-SAMPLE-RATE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.accepted_password_auth_method
 
@@ -409,11 +323,7 @@ ms.custom: automatically generated
 | Allowed values | `md5,scram-sha-256` |
 | Parameter type | dynamic |
 | Documentation | [azure.accepted_password_auth_method](https://go.microsoft.com/fwlink/?linkid=2274147) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.change_batch_buffer_size
 
@@ -426,11 +336,7 @@ ms.custom: automatically generated
 | Allowed values | `1-100` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.change_batch_export_timeout
 
@@ -443,11 +349,7 @@ ms.custom: automatically generated
 | Allowed values | `10-60` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.max_fabric_mirrors
 
@@ -460,11 +362,7 @@ ms.custom: automatically generated
 | Allowed values | `1-6` |
 | Parameter type | static |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.max_snapshot_workers
 
@@ -477,11 +375,7 @@ ms.custom: automatically generated
 | Allowed values | `0-100` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.onelake_buffer_size
 
@@ -494,11 +388,7 @@ ms.custom: automatically generated
 | Allowed values | `1-1024` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.parquet_compression
 
@@ -511,28 +401,20 @@ ms.custom: automatically generated
 | Allowed values | `uncompressed,snappy,gzip,zstd` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.snapshot_buffer_size
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Buffer size, in megabytes, for snapshot data files. These buffers are used for writing snapshot data. While this indirectly influences the file size, the actual file size may be smaller due to compression and other factors. |
+| Description | Buffer size, in megabytes, for snapshot data files. These buffers are used for writing snapshot data. While this indirectly influences the file size, the actual file size might be smaller due to compression and other factors. |
 | Data type | integer |
 | Default value | `1000` |
 | Allowed values | `10-4000` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_cdc.snapshot_export_timeout
 
@@ -545,11 +427,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1440` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.enable_temp_tablespaces_on_local_ssd
 
@@ -562,28 +440,20 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.extensions
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | List of extensions, separated by comma, that are allowlisted. If an extension is not in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
+| Description | List of extensions, separated by comma, that are allowlisted. If an extension isn't in this list, trying to execute CREATE, ALTER, COMMENT, DROP EXTENSION statements on that extension fails. |
 | Data type | set |
 | Default value | |
 | Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.fabric_mirror_enabled
 
@@ -596,11 +466,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [azure.fabric_mirror_enabled](https://go.microsoft.com/fwlink/?linkid=2285682) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.service_principal_id
 
@@ -613,11 +479,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.service_principal_tenant_id
 
@@ -630,11 +492,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.single_to_flex_migration
 
@@ -647,11 +505,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_storage.allow_network_access
 
@@ -664,11 +518,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [azure_storage.allow_network_access](https://go.microsoft.com/fwlink/?linkid=2323791) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_storage.blob_block_size_mb
 
@@ -681,11 +531,7 @@ ms.custom: automatically generated
 | Allowed values | `1024` |
 | Parameter type | read-only |
 | Documentation | [azure_storage.blob_block_size_mb](https://go.microsoft.com/fwlink/?linkid=2323791) |
-
-
 [!INCLUDE [server-parameters-azure-notes-azure-storage-blob-block-size-mb](./server-parameters-azure-notes-azure-storage-blob-block-size-mb.md)]
-
-
 
 ### azure_storage.log_level
 
@@ -698,11 +544,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,debug,log,info,notice,warning,error` |
 | Parameter type | dynamic |
 | Documentation | [azure_storage.log_level](https://go.microsoft.com/fwlink/?linkid=2323791) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure_storage.public_account_access
 
@@ -715,11 +557,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [azure_storage.public_account_access](https://go.microsoft.com/fwlink/?linkid=2323791) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.bucket_limit
 
@@ -732,11 +570,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.enable
 
@@ -749,11 +583,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.factor_bias
 
@@ -766,11 +596,7 @@ ms.custom: automatically generated
 | Allowed values | `0.0-0.9` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.hash_entries_max
 
@@ -783,11 +609,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.reset_time
 
@@ -800,11 +622,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.restore_factor
 
@@ -817,11 +635,7 @@ ms.custom: automatically generated
 | Allowed values | `1.0-100.0` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### connection_throttle.update_time
 
@@ -834,11 +648,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.auth_delay_ms
 
@@ -851,11 +661,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.auth_delay_ms](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.auth_failure_cache_size
 
@@ -868,11 +674,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2097151` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.auth_failure_cache_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.encrypted_password_allowed
 
@@ -885,11 +687,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.encrypted_password_allowed](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.history_max_size
 
@@ -902,11 +700,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2097151` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.history_max_size](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.max_auth_failure
 
@@ -919,13 +713,11 @@ ms.custom: automatically generated
 | Allowed values | `0-64` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.max_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="credcheckno_password_logging"></a>
 
-
-### credcheck.no_password_logging
+### credcheck.no_password_logg
 
 | Attribute | Value |
 | --- | --- |
@@ -936,11 +728,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.no_password_logging](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_contain
 
@@ -953,11 +741,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_contain_username
 
@@ -970,11 +754,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_contain_username](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_ignore_case
 
@@ -987,11 +767,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_digit
 
@@ -1004,11 +780,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_length
 
@@ -1021,11 +793,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_lower
 
@@ -1038,11 +806,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_repeat
 
@@ -1055,11 +819,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_special
 
@@ -1072,11 +832,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_min_upper
 
@@ -1089,28 +845,20 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_not_contain
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Password should not contain these characters |
+| Description | Password shouldn't contain these characters |
 | Data type | string |
 | Default value | |
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_reuse_history
 
@@ -1123,11 +871,7 @@ ms.custom: automatically generated
 | Allowed values | `0-100` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_reuse_history](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_reuse_interval
 
@@ -1140,11 +884,7 @@ ms.custom: automatically generated
 | Allowed values | `0-730` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_reuse_interval](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_valid_max
 
@@ -1157,11 +897,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_valid_max](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.password_valid_until
 
@@ -1174,11 +910,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.password_valid_until](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.reset_superuser
 
@@ -1191,11 +923,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [credcheck.reset_superuser](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_contain
 
@@ -1208,11 +936,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_contain_password
 
@@ -1225,11 +949,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_contain_password](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_ignore_case
 
@@ -1242,11 +962,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_ignore_case](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_digit
 
@@ -1259,11 +975,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_digit](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_length
 
@@ -1276,11 +988,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_length](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_lower
 
@@ -1293,11 +1001,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_lower](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_repeat
 
@@ -1310,11 +1014,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_repeat](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_special
 
@@ -1327,11 +1027,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_special](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_min_upper
 
@@ -1344,28 +1040,20 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_min_upper](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.username_not_contain
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Username should not contain these characters |
+| Description | Username shouldn't contain these characters |
 | Data type | string |
 | Default value | |
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.username_not_contain](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.whitelist
 
@@ -1378,11 +1066,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.whitelist](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### credcheck.whitelist_auth_failure
 
@@ -1395,11 +1079,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [credcheck.whitelist_auth_failure](https://github.com/HexaCluster/credcheck/blob/master/README.md#checks) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.database_name
 
@@ -1412,11 +1092,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9_]+` |
 | Parameter type | static |
 | Documentation | [cron.database_name](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.enable_superuser_jobs
 
@@ -1429,11 +1105,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [cron.enable_superuser_jobs](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.host
 
@@ -1446,11 +1118,7 @@ ms.custom: automatically generated
 | Allowed values | `/tmp` |
 | Parameter type | read-only |
 | Documentation | [cron.host](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.launch_active_jobs
 
@@ -1463,11 +1131,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [cron.launch_active_jobs](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.log_min_messages
 
@@ -1480,11 +1144,7 @@ ms.custom: automatically generated
 | Allowed values | `warning` |
 | Parameter type | read-only |
 | Documentation | [cron.log_min_messages](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.log_run
 
@@ -1497,11 +1157,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | static |
 | Documentation | [cron.log_run](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.log_statement
 
@@ -1514,11 +1170,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | static |
 | Documentation | [cron.log_statement](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.max_running_jobs
 
@@ -1531,11 +1183,7 @@ ms.custom: automatically generated
 | Allowed values | `0-5000` |
 | Parameter type | static |
 | Documentation | [cron.max_running_jobs](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.timezone
 
@@ -1548,11 +1196,7 @@ ms.custom: automatically generated
 | Allowed values | `GMT` |
 | Parameter type | read-only |
 | Documentation | [cron.timezone](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cron.use_background_workers
 
@@ -1565,11 +1209,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [cron.use_background_workers](https://github.com/citusdata/pg_cron) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### duckdb.max_memory
 
@@ -1582,11 +1222,7 @@ ms.custom: automatically generated
 | Allowed values | `1024` |
 | Parameter type | read-only |
 | Documentation | [duckdb.max_memory](https://github.com/duckdb/pg_duckdb) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### duckdb.max_workers_per_postgres_scan
 
@@ -1599,11 +1235,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1024` |
 | Parameter type | static |
 | Documentation | [duckdb.max_workers_per_postgres_scan](https://github.com/duckdb/pg_duckdb) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### duckdb.memory_limit
 
@@ -1616,11 +1248,7 @@ ms.custom: automatically generated
 | Allowed values | `1024` |
 | Parameter type | read-only |
 | Documentation | [duckdb.memory_limit](https://github.com/duckdb/pg_duckdb) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### duckdb.threads
 
@@ -1633,11 +1261,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-96` |
 | Parameter type | static |
 | Documentation | [duckdb.threads](https://github.com/duckdb/pg_duckdb) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### duckdb.worker_threads
 
@@ -1650,11 +1274,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-96` |
 | Parameter type | static |
 | Documentation | [duckdb.worker_threads](https://github.com/duckdb/pg_duckdb) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaadauth.enable_group_sync
 
@@ -1666,12 +1286,8 @@ ms.custom: automatically generated
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation |  |
-
-
+| Documentation | |
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log
 
@@ -1684,11 +1300,7 @@ ms.custom: automatically generated
 | Allowed values | `none,read,write,function,role,ddl,misc,all` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_catalog
 
@@ -1701,45 +1313,33 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_catalog](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_client
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether audit messages should be visible to the client. This setting should generally be left disabled but may be useful for debugging or other purposes. |
+| Description | Specifies whether audit messages should be visible to the client. This setting should generally be left disabled but might be useful for debugging or other purposes. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_client](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_level
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the log level that will be used for log entries. This setting is used for regression testing and may also be useful to end users for testing or other purposes. It is not intended to be used in a production environment as it may leak which statements are being logged to the user. |
+| Description | Specifies the log level that will be used for log entries. This setting is used for regression testing and might also be useful to end users for testing or other purposes. It's not intended to be used in a production environment as it might leak which statements are being logged to the user. |
 | Data type | enumeration |
 | Default value | `log` |
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,log` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_level](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_parameter
 
@@ -1752,28 +1352,20 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_parameter](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_parameter_max_size
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies, in bytes, the maximum length of variable-length parameters to log. If 0 (the default), parameters are not checked for size. If set, when the size of the parameter is longer than the setting, the value in the audit log is replaced with a placeholder. Note that for character types, the length is in bytes for the parameter's encoding, not characters. |
+| Description | Specifies, in bytes, the maximum length of variable-length parameters to log. If 0 (the default), parameters aren't checked for size. If set, when the size of the parameter is longer than the setting, the value in the audit log is replaced with a placeholder. For character types, the length is in bytes for the parameter's encoding, not characters. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-1073741823` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_parameter_max_size](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_relation
 
@@ -1786,11 +1378,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_relation](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_rows
 
@@ -1803,11 +1391,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_rows](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_statement
 
@@ -1820,45 +1404,33 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_statement](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.log_statement_once
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Disabling this setting will result in less verbose logging but may make it more difficult to determine the statement that generated a log entry, though the statement/substatement pair along with the process id should suffice to identify the statement text logged with a previous entry. |
+| Description | Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Disabling this setting will result in less verbose logging but might make it more difficult to determine the statement that generated a log entry, though the statement/substatement pair along with the process id should suffice to identify the statement text logged with a previous entry. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.log_statement_once](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgaudit.role
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies the master role to use for object audit logging. Multiple audit roles can be defined by granting them to the master role. This allows multiple groups to be in charge of different aspects of audit logging. |
+| Description | Specifies the `master` role to use for object audit logging. Multiple audit roles can be defined by granting them to the `master` role. This allows multiple groups to be in charge of different aspects of audit logging. |
 | Data type | string |
 | Default value | |
 | Allowed values | `[A-Za-z\\._]*` |
 | Parameter type | dynamic |
 | Documentation | [pgaudit.role](https://github.com/pgaudit/pgaudit/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_hint_plan.debug_print
 
@@ -1871,11 +1443,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [pg_hint_plan.debug_print](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_hint_plan.enable_hint
 
@@ -1888,11 +1456,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [pg_hint_plan.enable_hint](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_hint_plan.enable_hint_table
 
@@ -1905,11 +1469,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [pg_hint_plan.enable_hint_table](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_hint_plan.message_level
 
@@ -1922,11 +1482,7 @@ ms.custom: automatically generated
 | Allowed values | `log` |
 | Parameter type | read-only |
 | Documentation | [pg_hint_plan.message_level](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_hint_plan.parse_messages
 
@@ -1939,11 +1495,7 @@ ms.custom: automatically generated
 | Allowed values | `info` |
 | Parameter type | read-only |
 | Documentation | [pg_hint_plan.parse_messages](https://github.com/ossc-db/pg_hint_plan/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.batch_inserts
 
@@ -1956,11 +1508,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pglogical.batch_inserts](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.conflict_log_level
 
@@ -1973,11 +1521,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
 | Parameter type | dynamic |
 | Documentation | [pglogical.conflict_log_level](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.conflict_resolution
 
@@ -1990,11 +1534,7 @@ ms.custom: automatically generated
 | Allowed values | `error,apply_remote,keep_local,last_update_wins,first_update_wins` |
 | Parameter type | dynamic |
 | Documentation | [pglogical.conflict_resolution](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.extra_connection_options
 
@@ -2007,11 +1547,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [pglogical.extra_connection_options](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.synchronous_commit
 
@@ -2024,11 +1560,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [pglogical.synchronous_commit](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.temp_directory
 
@@ -2041,11 +1573,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [pglogical.temp_directory](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pglogical.use_spi
 
@@ -2058,11 +1586,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pglogical.use_spi](https://github.com/ArmMbedCloud/pglogical) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgms_stats.is_enabled_fs
 
@@ -2075,11 +1599,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgms_wait_sampling.history_period
 
@@ -2092,11 +1612,7 @@ ms.custom: automatically generated
 | Allowed values | `1-600000` |
 | Parameter type | dynamic |
 | Documentation | [pgms_wait_sampling.history_period](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgms_wait_sampling.is_enabled_fs
 
@@ -2109,11 +1625,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [pgms_wait_sampling.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pgms_wait_sampling.query_capture_mode
 
@@ -2126,11 +1638,7 @@ ms.custom: automatically generated
 | Allowed values | `all,none` |
 | Parameter type | dynamic |
 | Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.analyze
 
@@ -2143,11 +1651,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.analyze](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.dbname
 
@@ -2160,11 +1664,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.dbname](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.interval
 
@@ -2177,28 +1677,20 @@ ms.custom: automatically generated
 | Allowed values | `1-315360000` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.interval](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.jobmon
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Whether to log run_maintenance() calls to pg_jobmon if it is installed. Set to 'on' to send TRUE (default). Set to 'off' to send FALSE. |
+| Description | Whether to log run_maintenance() calls to pg_jobmon if it's installed. Set to 'on' to send TRUE (default). Set to 'off' to send FALSE. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.jobmon](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.maintenance_wait
 
@@ -2211,11 +1703,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [pg_partman_bgw.maintenance_wait](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_partman_bgw.role
 
@@ -2228,11 +1716,7 @@ ms.custom: automatically generated
 | Allowed values | `.*` |
 | Parameter type | dynamic |
 | Documentation | [pg_partman_bgw.role](https://github.com/pgpartman/pg_partman) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_prewarm.autoprewarm
 
@@ -2245,11 +1729,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm](https://www.postgresql.org/docs/17/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_prewarm.autoprewarm_interval
 
@@ -2262,11 +1742,7 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/17/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.interval_length_minutes
 
@@ -2279,11 +1755,7 @@ ms.custom: automatically generated
 | Allowed values | `1-30` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.is_enabled_fs
 
@@ -2296,11 +1768,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.max_captured_queries
 
@@ -2313,11 +1781,7 @@ ms.custom: automatically generated
 | Allowed values | `100-500` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.max_captured_queries](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.max_plan_size
 
@@ -2330,11 +1794,7 @@ ms.custom: automatically generated
 | Allowed values | `100-10000` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.max_plan_size](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.max_query_text_length
 
@@ -2347,11 +1807,7 @@ ms.custom: automatically generated
 | Allowed values | `100-10000` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.max_query_text_length](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.parameters_capture_mode
 
@@ -2364,11 +1820,7 @@ ms.custom: automatically generated
 | Allowed values | `capture_parameterless_only,capture_first_sample` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.parameters_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.query_capture_mode
 
@@ -2381,11 +1833,7 @@ ms.custom: automatically generated
 | Allowed values | `top,all,none` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.retention_period_in_days
 
@@ -2398,11 +1846,7 @@ ms.custom: automatically generated
 | Allowed values | `1-30` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.retention_period_in_days](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.store_query_plans
 
@@ -2415,11 +1859,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.store_query_plans](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_qs.track_utility
 
@@ -2432,11 +1872,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.track_utility](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_stat_statements.max
 
@@ -2449,11 +1885,7 @@ ms.custom: automatically generated
 | Allowed values | `100-2147483647` |
 | Parameter type | static |
 | Documentation | [pg_stat_statements.max](https://www.postgresql.org/docs/17/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_stat_statements.save
 
@@ -2466,11 +1898,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_stat_statements.save](https://www.postgresql.org/docs/17/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_stat_statements.track
 
@@ -2483,13 +1911,11 @@ ms.custom: automatically generated
 | Allowed values | `top,all,none` |
 | Parameter type | dynamic |
 | Documentation | [pg_stat_statements.track](https://www.postgresql.org/docs/17/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="pg_stat_statementstrack_planning"></a>
 
-
-### pg_stat_statements.track_planning
+### pg_stat_statements.track_plann
 
 | Attribute | Value |
 | --- | --- |
@@ -2500,11 +1926,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_stat_statements.track_planning](https://www.postgresql.org/docs/17/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pg_stat_statements.track_utility
 
@@ -2517,11 +1939,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [pg_stat_statements.track_utility](https://www.postgresql.org/docs/17/pgstatstatements.html#PGSTATSTATEMENTS-CONFIG-PARAMS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### postgis.gdal_enabled_drivers
 
@@ -2534,28 +1952,20 @@ ms.custom: automatically generated
 | Allowed values | `DISABLE_ALL,ENABLE_ALL` |
 | Parameter type | dynamic |
 | Documentation | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### squeeze.max_xlock_time
 
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | The maximum time the processed table may be locked exclusively. The source table is locked exclusively during the final stage of processing. If the lock time should exceed this value, the lock is released and the final stage is retried a few more times. |
+| Description | The maximum time the processed table might be locked exclusively. The source table is locked exclusively during the final stage of processing. If the lock time should exceed this value, the lock is released and the final stage is retried a few more times. |
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [squeeze.max_xlock_time](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### squeeze.worker_autostart
 
@@ -2568,11 +1978,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [squeeze.worker_autostart](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### squeeze.worker_role
 
@@ -2585,11 +1991,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [squeeze.worker_role](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### squeeze.workers_per_database
 
@@ -2602,11 +2004,7 @@ ms.custom: automatically generated
 | Allowed values | `1` |
 | Parameter type | read-only |
 | Documentation | [squeeze.workers_per_database](https://github.com/cybertec-postgresql/pg_squeeze/blob/master/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### timescaledb.bgw_launcher_poll_time
 
@@ -2619,11 +2017,7 @@ ms.custom: automatically generated
 | Allowed values | `60000` |
 | Parameter type | read-only |
 | Documentation | [timescaledb.bgw_launcher_poll_time](https://github.com/timescale/timescaledb/blob/main/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### timescaledb.disable_load
 
@@ -2636,11 +2030,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [timescaledb.disable_load](https://github.com/timescale/timescaledb/blob/main/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### timescaledb.max_background_workers
 
@@ -2653,11 +2043,7 @@ ms.custom: automatically generated
 | Allowed values | `16` |
 | Parameter type | read-only |
 | Documentation | [timescaledb.max_background_workers](https://github.com/timescale/timescaledb/blob/main/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### timescaledb_osm.disable_load
 
@@ -2670,9 +2056,4 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [timescaledb_osm.disable_load](https://github.com/timescale/timescaledb/blob/main/README.md) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,18 +1,18 @@
 ---
-title: High CPU utilization
-description: Troubleshooting guide for high CPU utilization.
+title: High CPU Utilization in Azure HorizonDB
+description: Troubleshooting guide for high CPU utilization in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/10/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high CPU utilization in Azure HorizonDB 
+# Troubleshoot high CPU utilization in Azure HorizonDB
 
-This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Azure HorizonDB](../overview.md).
+This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [What is Azure HorizonDB?](../overview.md)
 
 In this article, you can learn:
 
@@ -21,7 +21,9 @@ In this article, you can learn:
 - How to identify root causes, such as long running queries and total connections.
 - How to resolve high CPU utilization by using EXPLAIN ANALYZE, connection pooling, and vacuuming tables.
 
-## Troubleshooting guides
+<a id="troubleshooting-guides"></a>
+
+## Troubleshoot guides
 
 Using the **Troubleshooting guides** you can identify the probable root cause of a high CPU scenario, and can read through recommendations to mitigate the problem found.
 
@@ -33,13 +35,13 @@ Consider the use of the following list of tools to identify high CPU utilization
 
 ### Azure Metrics
 
-Azure Metrics is a good starting point to check the CPU utilization for a specific period. Metrics provide information about the resources utilized during the period in which CPU utilization is high. Compare the graphs of **Write IOPs**, **Read IOPs**, **Read Throughput Bytes/Sec**, and **Write Throughput Bytes/Sec** with **CPU percent**, to find out times when the workload caused high CPU.
+Azure Metrics is a good starting point to check the CPU utilization for a specific period. Metrics provide information about the resources utilized during the period in which CPU utilization is high. Compare the graphs of **Write IOPs**, **Read IOPs**, **Read Throughput Bytes/Sec**, and **Write Throughput Bytes/Sec** with **CPU percent**, to find out times when the workload caused high CPU.
 
-For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](../monitor/how-to-alert-on-metrics.md).
+For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md).
 
 ### Query store
 
-Query store automatically captures the history of queries and runtime statistics, and it retains them for your review. It slices the data by time, so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure HorizonDB flexible server instance.
+Query store automatically captures the history of queries and runtime statistics, and it retains them for your review. It slices the data by time, so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure HorizonDB instance.
 
 Query store can correlate wait event information with query run time statistics. Use query store to identify queries that have high CPU consumption during the period of interest.
 
@@ -147,9 +149,9 @@ For more information about the **EXPLAIN ANALYZE** command, review its [document
 
 In situations where there are many short-lived connections, or many connections that remain idle for most of their life, consider using a connection pooler like PgBouncer.
 
-For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/connection-handling-best-practice-with-postgresql/ba-p/790883)
+For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/blog/adforpostgresql/not-all-postgres-connection-pooling-is-equal/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/blog/adforpostgresql/connection-handling-best-practice-with-postgresql/790883)
 
-Azure HorizonDB offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](../connectivity/concepts-pgbouncer.md).
+Azure HorizonDB offers PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer in Azure HorizonDB](../connectivity/concepts-pgbouncer.md).
 
 ### Terminate long running transactions
 
@@ -186,7 +188,7 @@ WHERE n_live_tup > 0;
 
 `last_autovacuum` and `last_autoanalyze` columns give the date and time when the table was last autovacuumed or analyzed. If the tables aren't being vacuumed regularly, take steps to tune autovacuum.
 
-For more information about autovacuum troubleshooting and tuning, see [Autovacuum Troubleshooting](how-to-autovacuum-tuning.md).
+For more information about autovacuum troubleshooting and tuning, see [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
 
 A short-term solution would be to do a manual vacuum analyze of the tables where slow queries are seen:
 
@@ -196,8 +198,8 @@ VACUUM ANALYZE <table>;
 
 ## Related content
 
-- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md).
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
+- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md)
+- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md)
+- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

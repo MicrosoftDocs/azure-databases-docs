@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### azure.migration_copy_with_binary
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `on, off` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_copy_with_binary](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.migration_skip_analyze
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on, off` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_skip_analyze](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.migration_skip_extensions
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `on, off` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_skip_extensions](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.migration_skip_large_objects
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `on, off` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_skip_large_objects](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.migration_skip_role_user
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [azure.migration_skip_role_user](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### azure.migration_table_split_size
 
@@ -103,9 +85,4 @@ ms.custom: automatically generated
 | Allowed values | `1-204800` |
 | Parameter type | dynamic |
 | Documentation | [azure.migration_table_split_size](https://aka.ms/migration_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

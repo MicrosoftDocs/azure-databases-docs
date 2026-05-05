@@ -1,21 +1,21 @@
 ---
-title: Disable public access
-description: This article describes how to disable public access in an Azure HorizonDB flexible server.
+title: Disable Public Access in Azure HorizonDB
+description: This article describes how to disable public access in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/30/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to disable public network access in an Azure HorizonDB.
+# customer intent: As a user, I want to learn how to disable public network access in Azure HorizonDB.
 ---
 
-# Disable public access
+# Disable public access in Azure HorizonDB
 
 If you disable public access, connectivity to the server is only possible via private endpoints.
 
-You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure HorizonDB flexible server.
+You must configure those private endpoints so that hosts that can route traffic to the Azure virtual network in which you inject the private endpoints, can access your Azure HorizonDB.
 
 When public access is disabled, any firewall rules you created while public access was enabled, aren't enforced.
 
@@ -25,35 +25,35 @@ Also, any modifications made to the firewall rules are discarded.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
-2. In the resource menu, select **Networking**.
+1. In the resource menu, select **Networking**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="./media/how-to-networking/public-access-networking-enabled.png":::
+   :::image type="content" source="media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled.png":::
 
-3. Clear the **Allow public access to this resource through the internet using a public IP address** checkbox.
+1. Clear the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
-    :::image type="content" source="./media/how-to-networking/public-access-disable-public-access.png" alt-text="Screenshot showing how to disable public access." lightbox="./media/how-to-networking/public-access-disable-public-access.png":::
+   :::image type="content" source="media/how-to-networking/public-access-disable-public-access.png" alt-text="Screenshot showing how to disable public access." lightbox="media/how-to-networking/public-access-disable-public-access.png":::
 
-4. Select **Save**.
+1. Select **Save**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-disable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="./media/how-to-networking/public-access-disable-public-access-save.png":::
+   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="media/how-to-networking/public-access-disable-public-access-save.png":::
 
-5. A notification informs you that the changes are being applied.
+1. A notification informs you that the changes are being applied.
 
-    :::image type="content" source="./media/how-to-networking/public-access-disable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="./media/how-to-networking/public-access-disable-public-access-progressing-notification.png":::
+   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="media/how-to-networking/public-access-disable-public-access-progressing-notification.png":::
 
-6. Also, the status of the server changes to **Updating**.
+1. Also, the status of the server changes to **Updating**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="./media/how-to-networking/public-access-updating.png":::
+   :::image type="content" source="media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="media/how-to-networking/public-access-updating.png":::
 
-7. When the process completes, a notification informs you that the changes were applied.
+1. When the process completes, a notification informs you that the changes were applied.
 
-    :::image type="content" source="./media/how-to-networking/public-access-disable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="./media/how-to-networking/public-access-disable-public-access-succeeded-notification.png":::
+   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="media/how-to-networking/public-access-disable-public-access-succeeded-notification.png":::
 
-8. Also, the status of the server changes to **Ready**.
+1. Also, the status of the server changes to **Ready**.
 
-    :::image type="content" source="./media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="./media/how-to-networking/public-access-available.png":::
+   :::image type="content" source="media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="media/how-to-networking/public-access-available.png":::
 
 ## [CLI](#tab/cli-disable-public-access)
 
@@ -69,7 +69,7 @@ az postgres flexible-server update \
 If you attempt to disable public access on a server which isn't in `Ready` state, you receive an error like this:
 
 ```output
-Code: 
+Code:
 Message: Server <server> is busy with other operations. Please try later
 ```
 
@@ -88,11 +88,11 @@ az postgres flexible-server show \
 
 ## Related content
 
-- [Networking](how-to-networking.md).
-- [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
-- [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
-- [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
-- [Delete private endpoint connections](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
-- [Approve private endpoint connections](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
-- [Reject private endpoint connections](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).
+- [Networking in Azure HorizonDB](how-to-networking.md)
+- [Enable public access in Azure HorizonDB](how-to-networking-servers-deployed-public-access-enable-public-access.md)
+- [Add firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-firewall-rules.md)
+- [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)
+- [Add private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-private-endpoint.md)
+- [Delete private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md)
+- [Approve private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md)
+- [Reject private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md)

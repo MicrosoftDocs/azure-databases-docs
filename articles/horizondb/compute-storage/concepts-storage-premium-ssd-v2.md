@@ -1,10 +1,10 @@
 ---
-title: Premium SSD V2
-description: This article describes the Premium SSD v2 storage option for an Azure HorizonDB flexible server instance.
+title: Premium SSD V2 in Azure HorizonDB
+description: This article describes the Premium SSD v2 storage option for an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/13/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article
@@ -38,7 +38,7 @@ Azure HorizonDB server offers a baseline IOPS of 3000 for disks up to 399 GiB, a
 
 Azure HorizonDB offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks over 400 GiB at no extra cost. Increasing throughput beyond the free tier results in extra charges.
 
-The storage that you provision is the amount of storage capacity available to your Azure HorizonDB flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+The storage that you provision is the amount of storage capacity available to your Azure HorizonDB instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
 The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which one you should use.
 
@@ -55,20 +55,19 @@ To learn more, see [Compute options in Azure HorizonDB](concepts-compute.md).
 
 ## Supported features
 
-SSDv2 now supports *High Availability, Geo-Redundant backups Geo Replicas, Major Version Upgrade and, Geo DR* features for Azure HorizonDB – Flexible Server in all below supported regions.
+SSDv2 now supports *High Availability, Geo-Redundant backups Geo Replicas, Major Version Upgrade and, Geo DR* features for Azure HorizonDB - Flexible Server in all below supported regions.
 
 Australia Central 2*, Australia East, Australia South East, Brazil South*, Canada Central, Canada East, Central India*, Central US, East Asia, East US, East US 2, Germany West Central*, Indonesia Central*, Israel Central*, Italy North*, Japan East, Korea Central*, Mexico Central*, New Zealand North*, North Central US, North Europe, Norway East, Norway West, Poland Central*, South African North*, Southeast Asia, Sweden Central*, Switzerland North*, UAE North*, UK South, UK West, support US South Central US, West Central US, West Europe, West US, West US 2 and West US 3* regions.
 
-Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above. 
+Sovereign regions such as China North 3 and US Gov Virginia support standalone SSDv2 deployments only and currently don't support the features listed above.
 
 > [!NOTE]  
->  Geo‑redundant backups are currently unavailable in the region marked with * because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
+> Geo-redundant backups are currently unavailable in the region marked with * because one of the paired regions doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
 > If SSDv2 is unavailable in a region, disable the High Availability option to enable SSDv2 storage.
-
 
 ### Supported features limitations
 
- - On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
+- On-demand backups, Long Term Backups, Online Disk scaling, and storage autogrow features aren't supported for Premium SSD v2.
 
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
@@ -78,15 +77,15 @@ Sovereign regions such as China North 3 and US Gov Virginia support standalone S
 
 - If you create a new server by using point-in-time restore (PITR) and immediately perform an operation that requires a full backup, the following error might occur. This error occurs because Premium SSD v2 disks don't support creating a snapshot while the disk is still hydrating. Wait until hydration finishes before retrying the operation.
 
- _Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
+_Error message: Unable to create a snapshot from the disk because the disk is still being hydrated. Retry after some time._
 
-- We recommend serializing operations that rely on full backups to allow sufficient time for disk hydration to complete. While hydration is in progress, the service supports up to three instants snapshots.If more than three full backup–triggering operations are initiated before hydration completes, subsequent operations may fail with the following error:
+- We recommend serializing operations that rely on full backups to allow sufficient time for disk hydration to complete. While hydration is in progress, the service supports up to three instants snapshots.If more than three full backup-triggering operations are initiated before hydration completes, subsequent operations might fail with the following error:
 
   _Error message: Snapshot Limit Reached. You reached the snapshot limit for this disk. Wait until the current background copy process completes before creating new snapshots._
 
   **Operations that can trigger this behavior include:**  
          Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-         Running major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+         Running major version upgrades, adding HA, initiating failovers, or creating in-region replicas within a short interval before disk hydration completes.
 
   **Best practice:**  
          To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
@@ -102,5 +101,5 @@ You can monitor your I/O consumption in the [Azure portal](https://portal.azure.
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
-- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md).
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
+- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)

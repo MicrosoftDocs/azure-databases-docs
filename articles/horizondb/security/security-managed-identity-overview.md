@@ -1,10 +1,10 @@
 ---
-title: Managed Identities
+title: Managed Identities in Azure HorizonDB
 description: Learn about Managed identities in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Managed identities
+# Managed identities in Azure HorizonDB
 
 A common challenge for developers is the management of secrets, credentials, certificates, and keys used to secure communication between services. Managed identities eliminate the need for developers to manage these credentials.
 
@@ -39,20 +39,20 @@ There are two types of managed identities:
 - Multiple resources can utilize user assigned identities.
 - You authorize the managed identity to have access to one or more services.
 
-## Uses of managed identities in Azure HorizonDB 
+## Uses of managed identities in Azure HorizonDB
 
 **System assigned managed identity** for an Azure HorizonDB is used by:
 
 - [azure_storage extension](../extensions/concepts-storage-extension.md), when configured to access a storage account using the `managed-identity` authentication type. For more information, see how to [configure the azure_storage extension to use authorization with Microsoft Entra ID](../extensions/how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id).
 - [Microsoft Fabric mirrored databases from Azure HorizonDB (preview)](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) uses the credentials of the system assigned managed identity to sign the requests that your instance of flexible server sends to the Azure DataLake service in Microsoft Fabric to mirror your designated databases.
 
-**User assigned managed identities** configured for an Azure HorizonDB flexible server instance can be used for:
+**User assigned managed identities** configured for an Azure HorizonDB instance can be used for:
 
-- [Data encryption with customer managed keys](../security/security-data-encryption.md).
+- [Data encryption at rest in Azure HorizonDB](security-data-encryption.md).
 
 ## Related content
 
-- [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
-- [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
-- [Networking overview for Azure HorizonDB with public access ](../network/concepts-networking-public.md)
-- [Network with private access for Azure HorizonDB](../network/concepts-networking-private.md)
+- [System assigned managed identity in Azure HorizonDB](security-configure-managed-identities-system-assigned.md)
+- [Firewall rules in Azure HorizonDB](security-firewall-rules.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
+- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)

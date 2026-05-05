@@ -1,16 +1,17 @@
 ---
-title: "Oracle to PostgreSQL Schema Conversion: Best Practices"
-description: "Best practices and recommendations for optimal Oracle to PostgreSQL schema conversion using Visual Studio Code PostgreSQL extension with Azure OpenAI integration."
+title: "Oracle to PostgreSQL Schema Conversion: Best Practices in Azure HorizonDB"
+description: Best practices and recommendations for optimal Oracle to PostgreSQL schema conversion using Visual Studio Code PostgreSQL extension with Azure OpenAI integration in Azure HorizonDB.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
-# Best practices for converting Oracle schemas to Azure HorizonDB Preview
+# Best practices for converting Oracle schemas in Azure HorizonDB
 
 This article provides best practices and recommendations to ensure optimal results when using the Oracle to Azure HorizonDB schema conversion feature in Visual Studio Code.
 
@@ -23,7 +24,7 @@ Proper management of Azure OpenAI tokens is critical to ensure reliable, perform
 - **Minimum token limit**: Ensure your Azure OpenAI deployment has a token limit greater than **500K** tokens for optimal performance.
 - **Token usage**: Complex schema objects require significant token capacity for accurate conversion.
 
-:::image type="content" source="media/schema-conversions-best-practices/token-per-minute.png" alt-text="Screenshot of token per minute settings.":::
+:::image type="content" source="media/schema-conversions-best-practices/token-per-minute.png" alt-text="Screenshot of token per minute settings." lightbox="media/schema-conversions-best-practices/token-per-minute.png" :::
 
 ### Project execution strategy
 
@@ -65,5 +66,5 @@ Manually validate the following complex Oracle code objects:
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
-- [Oracle to PostgreSQL Migration Tutorial](schema-conversions-tutorial.md)
+- [What is Oracle to Azure HorizonDB schema conversion Preview?](schema-conversions-overview.md)
+- [Tutorial: Oracle to Azure HorizonDB schema conversion Preview](schema-conversions-tutorial.md)

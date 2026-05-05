@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### data_sync_retry
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [data_sync_retry](https://www.postgresql.org/docs/17/runtime-config-error-handling.html#GUC-DATA-SYNC-RETRY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### exit_on_error
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [exit_on_error](https://www.postgresql.org/docs/17/runtime-config-error-handling.html#GUC-EXIT-ON-ERROR) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_init_sync_method
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `fsync` |
 | Parameter type | read-only |
 | Documentation | [recovery_init_sync_method](https://www.postgresql.org/docs/17/runtime-config-error-handling.html#GUC-RECOVERY-INIT-SYNC-METHOD) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### restart_after_crash
 
@@ -69,9 +59,4 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [restart_after_crash](https://www.postgresql.org/docs/17/runtime-config-error-handling.html#GUC-RESTART-AFTER-CRASH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,35 +1,35 @@
 ---
-title: Intelligent tuning
+title: Intelligent Tuning in Azure HorizonDB
 description: This article describes the intelligent tuning feature in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
 ---
 
-# Perform intelligent tuning in Azure HorizonDB 
+# Perform intelligent tuning in Azure HorizonDB
 
-An Azure HorizonDB flexible server instance has an intelligent tuning feature that's designed to enhance
-performance automatically and help prevent problems. Intelligent tuning continuously monitors the Azure HorizonDB flexible server database's
+An Azure HorizonDB instance has an intelligent tuning feature that's designed to enhance
+performance automatically and help prevent problems. Intelligent tuning continuously monitors the Azure HorizonDB database's
 status and dynamically adapts the database to your workload.
 
 This feature comprises two
 automatic tuning functions:
 
-* **Autovacuum tuning**: This function tracks the bloat ratio and adjusts autovacuum settings accordingly. It
+- **Autovacuum tuning**: This function tracks the bloat ratio and adjusts autovacuum settings accordingly. It
   factors in both current and predicted resource usage to prevent workload disruptions.
-* **Writes tuning**: This function monitors the volume and patterns of write operations, and it modifies
+- **Writes tuning**: This function monitors the volume and patterns of write operations, and it modifies
   parameters that affect write performance. These adjustments enhance both system performance and reliability, to proactively avert potential
   complications.
 
-You can enable intelligent tuning by using the [Azure portal](how-to-enable-intelligent-performance-portal.md) or the [Azure CLI](how-to-enable-intelligent-performance-cli.md).
+You can enable intelligent tuning by using the [Configure intelligent tuning by using the Azure portal in Azure HorizonDB](how-to-enable-intelligent-performance-portal.md) or the [Configure intelligent tuning by using the Azure CLI in Azure HorizonDB](how-to-enable-intelligent-performance-cli.md).
 
 ## Why intelligent tuning?
 
-The autovacuum process is a critical part of maintaining the health and performance of an Azure HorizonDB flexible server database. It helps
+The autovacuum process is a critical part of maintaining the health and performance of an Azure HorizonDB database. It helps
 reclaim storage occupied by "dead" rows, freeing up space and keeping the database running smoothly.
 
 Equally important is the tuning of write operations within the database. This task typically falls to database
@@ -44,7 +44,7 @@ The autovacuum tuning function in intelligent tuning monitors the bloat ratio an
 
 The writes tuning function observes the quantity and transactional patterns of write operations. It intelligently adjusts parameters such as `bgwriter_delay`, `checkpoint_completion_target`, `max_wal_size`, and `min_wal_size`. By doing so, it enhances system performance and reliability, even under high write loads.
 
-When you use intelligent tuning, you can save valuable time and resources by relying on your Azure HorizonDB flexible server instance to maintain the optimal performance of your databases.
+When you use intelligent tuning, you can save valuable time and resources by relying on your Azure HorizonDB instance to maintain the optimal performance of your databases.
 
 ## How does intelligent tuning work?
 
@@ -63,14 +63,14 @@ autovacuum: `autovacuum_vacuum_scale_factor`, `autovacuum_cost_limit`, `autovacu
 and `autovacuum_vacuum_cost_delay`. These parameters regulate components such as:
 
 - The fraction of the table that sets off
-a `VACUUM` process.
+  a `VACUUM` process.
 - The cost-based vacuum delay limit.
 - The pause interval between autovacuum runs.
 - The minimum count of
-updated or dead tuples needed to start a `VACUUM` process.
+  updated or dead tuples needed to start a `VACUUM` process.
 - The pause duration between cleanup rounds.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Intelligent tuning modifies autovacuum-related parameters at the server level, not at individual table levels. Also, if autovacuum is turned off, intelligent tuning can't operate correctly. For intelligent tuning to optimize the process, the autovacuum feature must be enabled.
 
 Although the autovacuum daemon triggers two operations (`VACUUM` and `ANALYZE`), intelligent tuning fine-tunes only the `VACUUM`
@@ -93,14 +93,14 @@ scale factor, and naptime. This balance minimizes bloat and helps ensure that th
 Intelligent tuning adjusts four parameters related to writes
 tuning: `bgwriter_delay`, `checkpoint_completion_target`, `max_wal_size`, and `min_wal_size`.
 
-The `bgwriter_delay` parameter determines the frequency at which the background writer process is awakened to clean "dirty" buffers (buffers that are new or modified). The background writer process is one of three processes in an Azure HorizonDB flexible server instance
+The `bgwriter_delay` parameter determines the frequency at which the background writer process is awakened to clean "dirty" buffers (buffers that are new or modified). The background writer process is one of three processes in an Azure HorizonDB instance
 that handle write operations. The other are the checkpointer process and back-end writes (standard client processes, such
 as application connections).
 
 The background writer process's primary role is to alleviate the load from the main
 checkpointer process and decrease the strain of back-end writes. The `bgwriter_delay` parameter governs the frequency of background writer rounds. By adjusting this parameter, you can also optimize the performance of Data Manipulation Language (DML) queries.
 
-The `checkpoint_completion_target` parameter is part of the second write mechanism that an Azure HorizonDB flexible server instance supports, specifically
+The `checkpoint_completion_target` parameter is part of the second write mechanism that an Azure HorizonDB instance supports, specifically
 the checkpointer process. Checkpoints occur at constant intervals that `checkpoint_timeout` defines (unless forced by
 exceeding the configured space). To avoid overloading the I/O system with a surge of page writes, writing dirty buffers
 during a checkpoint is spread out over a period of time. The `checkpoint_completion_target` parameter controls this duration by using `checkpoint_timeout` to specify the duration as a fraction of the checkpoint interval.
@@ -112,16 +112,16 @@ performance is the reason why `checkpoint_completion_target` is a target metric 
 
 ## Limitations and known issues
 
-* Intelligent tuning makes optimizations only in specific ranges. It's possible that the feature won't make any changes.
-* Intelligent tuning doesn't adjust `ANALYZE` settings.
-* Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier is not supported.
+- Intelligent tuning makes optimizations only in specific ranges. It's possible that the feature won't make any changes.
+- Intelligent tuning doesn't adjust `ANALYZE` settings.
+- Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier isn't supported.
 
 ## Related content
 
-- [Configure intelligent tuning by using the Azure portal](how-to-enable-intelligent-performance-portal.md).
-- [Troubleshooting for Azure HorizonDB](../troubleshoot/concepts-troubleshooting-guides.md).
-- [Autovacuum tuning in Azure HorizonDB](../troubleshoot/how-to-autovacuum-tuning.md).
-- [Troubleshoot high IOPS utilization in Azure HorizonDB](../troubleshoot/how-to-high-io-utilization.md).
-- [Best practices to bulk upload data to Azure HorizonDB](../troubleshoot/how-to-bulk-load-data.md).
-- [Troubleshoot high CPU utilization in an Azure HorizonDB](../troubleshoot/how-to-high-cpu-utilization.md).
-- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md).
+- [Configure intelligent tuning by using the Azure portal in Azure HorizonDB](how-to-enable-intelligent-performance-portal.md)
+- [Troubleshooting guides overview in Azure HorizonDB](../troubleshoot/concepts-troubleshooting-guides.md)
+- [Autovacuum tuning in Azure HorizonDB](../troubleshoot/how-to-autovacuum-tuning.md)
+- [Troubleshoot high IOPS utilization in Azure HorizonDB](../troubleshoot/how-to-high-io-utilization.md)
+- [Best practices to bulk upload data in Azure HorizonDB](../troubleshoot/how-to-bulk-load-data.md)
+- [Troubleshoot high CPU utilization in Azure HorizonDB](../troubleshoot/how-to-high-cpu-utilization.md)
+- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md)

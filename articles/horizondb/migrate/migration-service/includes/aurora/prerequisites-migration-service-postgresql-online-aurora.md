@@ -1,10 +1,10 @@
 ---
-title: "Prerequisites to Use the Migration Service From Amazon Aurora PostgreSQL (Online)"
+title: Prerequisites to Use the Migration Service from Amazon Aurora PostgreSQL (Online)
 description: Get the online prerequisites for the migration service in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---
@@ -33,9 +33,9 @@ For more information about the test_decoding plugin, see the [PostgreSQL documen
 
 ### Configure the target setup
 
-Before you begin the migration, you must create an instance of [Azure HorizonDB](/azure/postgresql/flexible-server/) in Azure. The SKU that's provisioned for Azure HorizonDB flexible server should match the source.
+Before you begin the migration, you must create an instance of [Azure HorizonDB](/azure/postgresql/flexible-server/) in Azure. The SKU that's provisioned for Azure HorizonDB should match the source.
 
-For more information, see {[Create an Azure HorizonDB flexible server](../../../../flexible-server/quickstart-create-server.md)}.
+For more information, see {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}.
 
 ### Enable CDC as a source
 
@@ -59,7 +59,7 @@ For more information, see {[Create an Azure HorizonDB flexible server](../../../
 
 Network setup is crucial for the migration service to function correctly. Ensure that the source PostgreSQL server can communicate with the target server in Azure HorizonDB.
 
-For information about network setup, see [Network scenarios for the migration service](../../how-to-network-setup-migration-service.md).
+For information about network setup, see [Network scenarios for the migration service in Azure HorizonDB](../../how-to-network-setup-migration-service.md).
 
 ### Enable extensions
 

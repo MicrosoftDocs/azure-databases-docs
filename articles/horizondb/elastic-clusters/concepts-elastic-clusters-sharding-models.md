@@ -1,10 +1,10 @@
 ---
-title: Sharding models - elastic clusters
+title: Sharding Models - Elastic Clusters in Azure HorizonDB
 description: What is sharding, and what sharding models are available with elastic clusters on Azure HorizonDB
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: concept-article
@@ -48,7 +48,9 @@ Drawbacks:
 
 - Fewer tenants per node compared to row-based sharding.
 
-## Sharding tradeoffs
+<a id="sharding-tradeoffs"></a>
+
+## Shard tradeoffs
 
 | | Schema-based sharding | Row-based sharding |
 | --- | --- | --- |
@@ -66,6 +68,6 @@ Drawbacks:
 
 ## Related content
 
-- [Overview of elastic clusters](concepts-elastic-clusters.md).
-- [Table types on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-table-types.md).
-- [Frequently asked questions about elastic clusters of Azure HorizonDB limitations](concepts-elastic-clusters-limitations.md).
+- [Elastic clusters in Azure HorizonDB](concepts-elastic-clusters.md)
+- [Table types on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-table-types.md)
+- [Frequently asked questions about elastic clusters in Azure HorizonDB](concepts-elastic-clusters-limitations.md)

@@ -1,13 +1,14 @@
 ---
-title: max_replication_slots server parameter
-description: max_replication_slots server parameter for Azure HorizonDB flexible server.
-ms.service: azure-database-postgresql
-ms.topic: include
-ms.date: 10/14/2024
+title: Max_replication_slots Server Parameter
+description: max_replication_slots server parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
-zone_pivot_groups: postgresql-server-version
+ms.reviewer: maghan
+ms.date: 05/05/2026
+ms.service: azure-database-postgresql
+ms.topic: include
 ---
+
 #### Azure-specific notes
 
 The default value for `max_replication_slots` parameter is 10. If you enable high availability, you need a minimum of 4 `max_replication_slots` for high availability to function properly.

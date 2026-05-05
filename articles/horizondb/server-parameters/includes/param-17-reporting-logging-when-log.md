@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### log_min_duration_sample
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [log_min_duration_sample](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-MIN-DURATION-SAMPLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_min_duration_statement
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [log_min_duration_statement](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-MIN-DURATION-STATEMENT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_min_error_statement
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
 | Parameter type | dynamic |
 | Documentation | [log_min_error_statement](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-MIN-ERROR-STATEMENT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_min_messages
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,warning,error,log,fatal,panic` |
 | Parameter type | dynamic |
 | Documentation | [log_min_messages](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-MIN-MESSAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_startup_progress_interval
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `10000` |
 | Parameter type | read-only |
 | Documentation | [log_startup_progress_interval](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-STARTUP-PROGRESS-INTERVAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_statement_sample_rate
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1` |
 | Parameter type | dynamic |
 | Documentation | [log_statement_sample_rate](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-STATEMENT-SAMPLE-RATE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### log_transaction_sample_rate
 
@@ -120,9 +98,4 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [log_transaction_sample_rate](https://www.postgresql.org/docs/17/runtime-config-logging.html#GUC-LOG-TRANSACTION-SAMPLE-RATE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
