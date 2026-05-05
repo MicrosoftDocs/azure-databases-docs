@@ -36,6 +36,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure portal for PostgreSQL.
+  - [Terraform support](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database) for [Elastic Clusters](https://learn.microsoft.com/azure/postgresql/elastic-clusters/concepts-elastic-clusters)
 - Preview
   - [Geo-replication in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
   - [Geo-disaster recovery in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
