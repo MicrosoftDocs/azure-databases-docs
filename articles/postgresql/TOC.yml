@@ -760,6 +760,8 @@
       items:
         - name: Overview
           href: server-parameters/concepts-server-parameters.md
+        - name: Autonomous Tuning
+          href: server-parameters/param-autonomous-tuning.md?pivots=postgresql-17
         - name: Autovacuum
           href: server-parameters/param-autovacuum.md?pivots=postgresql-17
         - name: Client Connection Defaults / Locale and Formatting
@@ -786,12 +788,12 @@
           href: server-parameters/param-error-handling.md?pivots=postgresql-17
         - name: File Locations
           href: server-parameters/param-file-locations.md?pivots=postgresql-17
-        - name: Intelligent tuning
+        - name: Intelligent Tuning
           href: server-parameters/param-intelligent-tuning.md?pivots=postgresql-17
         - name: Lock Management
           href: server-parameters/param-lock-management.md?pivots=postgresql-17
-        - name: Metrics
-          href: server-parameters/param-metrics.md?pivots=postgresql-17
+        - name: Log Files and Metrics
+          href: server-parameters/param-log-files-metrics.md?pivots=postgresql-17
         - name: Migration
           href: server-parameters/param-migration.md?pivots=postgresql-17
         - name: PgBouncer
@@ -800,6 +802,8 @@
           href: server-parameters/param-preset-options.md?pivots=postgresql-17
         - name: Process Title
           href: server-parameters/param-process-title.md?pivots=postgresql-17
+        - name: Query Store
+          href: server-parameters/param-query-store.md?pivots=postgresql-17
         - name: Query Tuning / Genetic Query Optimizer
           href: server-parameters/param-query-tuning-genetic-query-optimizer.md?pivots=postgresql-17
         - name: Query Tuning / Other Planner Options
