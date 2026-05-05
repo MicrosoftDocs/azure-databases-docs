@@ -380,9 +380,7 @@
     - name: Data protection
       items:
         - name: Data encryption overview
-          href: security/security-data-encryption.md
-        - name: Configure data encryption
-          href: security/security-configure-data-encryption.md
+          href: security/security-data-encryption.md        
 - name: References
   items:
       - name: Using Python

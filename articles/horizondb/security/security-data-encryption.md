@@ -45,4 +45,3 @@ Data encryption with **service managed keys** for Azure HorizonDB provides the f
 
 ## Related content
 
-- [Configure data encryption in Azure HorizonDB](security-configure-data-encryption.md)
