@@ -1,7 +1,7 @@
 ---
 title: Plan Azure Database for PostgreSQL deployments for operational performance
 description: Learn how to plan Azure Database for PostgreSQL deployments by aligning workload requirements with compute, storage, IOPS, throughput, latency, and monitoring needs.
-author: jaredmeade
+author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: maghan
 ms.date: 05/05/2026
