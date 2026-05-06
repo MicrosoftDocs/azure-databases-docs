@@ -6,7 +6,7 @@ ms.author: jaredmeade
 ms.reviewer: maghan
 ms.date: 05/05/2026
 ms.service: azure-database-postgresql
-ms.subservice: performance
+ms.subservice: compute-storage
 ms.topic: concept-article
 ---
 
