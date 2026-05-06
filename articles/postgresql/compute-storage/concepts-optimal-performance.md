@@ -75,7 +75,7 @@ This article focuses primarily on the third layer: planning the Azure Postgres d
 
 Azure Database for PostgreSQL Flexible Server provides a wide range of deployment options, including:
 
-| Deployment area | Available choices |
+| Deployment&nbsp;area | Available choices |
 | --- | --- |
 | Compute | Compute tiers, virtual machine (VM) generations, General Purpose configurations, and Memory Optimized configurations. |
 | Storage | Premium SSD v1, Premium SSD v2, storage scaling, IOPS configuration, and throughput configuration. |
@@ -91,7 +91,7 @@ The planning goal is to identify your workload performance profile needs, and th
 
 Before choosing compute or storage, define the workload. Useful planning dimensions include:
 
-| Planning area | Questions to answer |
+| Planning&nbsp;area | Questions to answer |
 | --- | --- |
 | Geography | Where are users, applications, replicas, and integrations located? |
 | Concurrency | How many simultaneous connections and active queries are expected? |
@@ -296,13 +296,18 @@ The lesson is simple: **maximum database performance is an end-to-end property,
 
 Many systems don't have a single performance profile. They have several:
 
-|  |  |
-| --- | --- |
-| Normal weekday traffic. | Peak business hours. |
-| Month-end or quarter-end processing. | Holiday or seasonal demand. |
-| Product launch events. | Reporting windows. |
-| Maintenance windows. | Batch ingestion periods. |
-| Backup and restore scenarios. | Disaster recovery events. |
+<div style="columns: 2;">
+ * Normal weekday traffic.
+ * Peak business hours.
+ * Month-end or quarter-end processing.
+ * Holiday or seasonal demand.
+ * Product launch events.
+ * Reporting windows.
+ * Maintenance windows.
+ * Batch ingestion periods.
+ * Backup and restore scenarios.
+ * Disaster recovery events.
+</div>
 
 A database sized for average utilization may struggle during the moments that matter most. Conversely, a database sized permanently for a once-a-month peak may be unnecessarily expensive.
 
@@ -321,7 +326,7 @@ Azure's flexibility allows teams to make more nuanced choices. For example:
 
 Performance planning shouldn't stop at deployment. Postgres workloads change over time. Data grows, query patterns shift, new features launch, customer traffic changes, and operational jobs accumulate.
 
-| Monitoring area | Signals to review |
+| Monitoring&nbsp;area | Signals to review |
 | --- | --- |
 | Compute | CPU utilization and memory pressure. |
 | Connections | Active connections, idle connections, and connection pool behavior. |
@@ -393,7 +398,7 @@ All benchmarks ran on Azure Database for PostgreSQL Flexible Server in the same 
 
 Five distinct configurations were tested, varying both storage tier and compute size to illustrate key planning concepts.
 
-| Configuration | Compute SKU | vCores | Memory | Max compute IOPS | Storage type | Capacity | IOPS | Throughput |
+| Configuration | Compute&nbsp;SKU | vCores | Memory | Max&nbsp;compute&nbsp;IOPS | Storage&nbsp;type | Capacity | IOPS | Throughput |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Config 1 | Standard_D16ds_v5 | 16 | 64 GB | 25,600 (40,000 burst) | Premium SSD (P50) | 4,095 GB | 7,500 | 250 MB/s |
 | Config 2 | Standard_D16ds_v5 | 16 | 64 GB | 25,600 (40,000 burst) | Premium SSD (P50) | 4,096 GB | 7,500 | 250 MB/s |
