@@ -513,7 +513,7 @@ The best Azure Postgres deployments combine platform capability with deliberate 
 - [Azure disk bursting](/azure/virtual-machines/disk-bursting#burstable-virtual-machine-with-nonburstable-disks).
 - [Ddv5 and Ddsv5-series VM sizes](/azure/virtual-machines/sizes/general-purpose/ddsv5-series?tabs=sizestorageremote#sizes-in-series).
 - [Ddsv6-series VM sizes](/azure/virtual-machines/sizes/general-purpose/ddsv6-series?tabs=sizestorageremote#sizes-in-series).
-- [Premium SSD storage in Azure Database for PostgreSQL](../compute-storage/concepts-storage-premium-ssd.md).
-- [Premium SSD v2 storage in Azure Database for PostgreSQL](../compute-storage/concepts-storage-premium-ssd-v2.md).
+- [Premium SSD storage in Azure Database for PostgreSQL](./concepts-storage-premium-ssd.md).
+- [Premium SSD v2 storage in Azure Database for PostgreSQL](./concepts-storage-premium-ssd-v2.md).
 - [Azure managed disk types](/azure/virtual-machines/disks-types).
 - [Monitor Azure Database for PostgreSQL](../monitor/concepts-monitoring.md).
