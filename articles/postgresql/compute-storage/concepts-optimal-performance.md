@@ -60,11 +60,14 @@ These details should be captured before deployment, not after a production incid
 
 Database performance is rarely determined by a single setting. Successful deployment experiences depend on several layers working together:
 
-1. **Application layer performance.** 
+1. **Application layer performance.**
+<br />
 This includes application code, query patterns, index coverage, trigger usage, data partitioning, connection handling, caching, retry logic, pooling, ORM behavior, transaction design, and background job behavior.  
-1. **Client and network layer performance.** 
+1. **Client and network layer performance.**
+<br />
 This includes where clients are located, how they connect, whether requests cross regions and/or availability zones, network latency, TLS overhead, connection churn, and whether the application uses connection pooling efficiently.
-1. **Database platform performance.** 
+1. **Database platform performance.**
+<br />
 This includes Postgres deployment configuration, compute size, memory, CPU, storage type, storage size, storage IOPS, storage throughput, high availability, replicas, and maintenance operations.
 
 This article focuses primarily on the third layer: planning the Azure Postgres database deployment so that compute and storage choices support the required performance profile.
@@ -160,10 +163,9 @@ For Postgres, the practical implication is that workload storage planning should
  * A high-concurrency OLTP system may need more IOPS and lower latency.
  * A reporting-heavy system may need more throughput.
  * A hybrid system may need both, especially during peak cycles.
-
-- A high-concurrency OLTP system might need more IOPS and lower latency.
-- A reporting-heavy system might need more throughput.
-- A hybrid system might need both, especially during peak cycles.
+ * A high-concurrency OLTP system might need more IOPS and lower latency.
+ * A reporting-heavy system might need more throughput.
+ * A hybrid system might need both, especially during peak cycles.
 
 ## Your deployment choices directly affect storage performance
 
@@ -357,25 +359,25 @@ Before selecting the production Azure Database for PostgreSQL configuration, cap
 Use the following principles when planning Azure Postgres deployments for operational performance.
 
 1. **Size for workload shape, not just data size.**
-<br>
+<br/>
 A 500-GB database can need more IOPS than a 5-TB database if it's highly transactional and latency-sensitive. Size matters, but workload behavior matters more.
-1. **Validate compute and storage together.** 
+1. **Validate compute and storage together.**
 <br/>
 Don't choose storage based only on disk limits. Confirm that the selected compute SKU can drive the required IOPS and throughput.
-1. **Treat the 4-TB Premium SSD caching boundary as a design milestone.** 
-<br /> 
+1. **Treat the 4-TB Premium SSD caching boundary as a design milestone.**
+<br/>
 Premium SSD deployments under 4 TB can benefit from host caching. At 4,096 GB and above, host caching isn't supported. If growth will cross that threshold, plan the future performance model early.
-1. **Consider Premium SSD v2 for flexible performance tuning.**  
-<br />  
+1. **Consider Premium SSD v2 for flexible performance tuning.**
+<br />
 Premium SSD v2 allows more granular control of capacity, IOPS, and throughput. It can be a strong fit when performance needs don't map cleanly to fixed disk sizes.
-1. **Use bursting for bursts, not sustained demand.**  
-<br />  
+1. **Use bursting for bursts, not sustained demand.**
+<br />
 Bursting can help with short-lived spikes, but frequent or sustained bursting usually means the baseline configuration should be revisited.
-1. **Match generation to ambition.**  
-<br />  
+1. **Match generation to ambition.**
+<br />
 For high-end performance goals, newer compute generations such as v6-series can expose much higher aggregate remote storage limits than earlier general-purpose generations. If the target is a 400,000-IOPS-class architecture, select the compute generation accordingly.
-1. **Measure before and after changes.**  
-<br />  
+1. **Measure before and after changes.**
+<br />
 Scaling is easier in the cloud, but measurement is what makes scaling effective. Capture baseline, peak, and post-change metrics so performance decisions are evidence-based.
 
 ## Real-world benchmark: compare storage configurations under load
@@ -473,10 +475,18 @@ By aligning both compute and storage to higher performance tiers, this configura
 
 These five configurations illustrate the key principles from this article:
 
-1. **The 4-TB caching boundary matters.** Config 1 vs. Config 2 shows that host caching provides measurable read performance amplification below 4 TB, while crossing into 4,096 GB removes that benefit.
-1. **Capacity isn't performance.** Config 3 provisioned 32 TB but didn't deliver the highest IOPS. Storage capacity alone doesn't determine transaction throughput.
-1. **Premium SSD v2 provides flexible performance tuning.** Config 4 demonstrated high IOPS on modest capacity, validating the decoupled model that Premium SSD v2 enables.
-1. **Compute and storage must be aligned.** Config 5 shows that maximizing storage performance requires sufficient compute headroom. The higher storage ceiling of D32ds_v5 was necessary to more fully use the 60,000-IOPS provision.
+1. **The 4-TB caching boundary matters.**
+<br />
+Config 1 vs. Config 2 shows that host caching provides measurable read performance amplification below 4 TB, while crossing into 4,096 GB removes that benefit.
+1. **Capacity isn't performance.**
+<br />
+Config 3 provisioned 32 TB but didn't deliver the highest IOPS. Storage capacity alone doesn't determine transaction throughput.
+1. **Premium SSD v2 provides flexible performance tuning.**
+<br />
+Config 4 demonstrated high IOPS on modest capacity, validating the decoupled model that Premium SSD v2 enables.
+1. **Compute and storage must be aligned.**
+<br />
+Config 5 shows that maximizing storage performance requires sufficient compute headroom. The higher storage ceiling of D32ds_v5 was necessary to more fully use the 60,000-IOPS provision.
 
 The benchmark results validate the core principle: maximum performance is an end-to-end property. No single layer, such as storage, compute, or networking, determines the outcome. Success requires intentional alignment across all layers, measured validation, and continuous observation as workloads evolve.
 
