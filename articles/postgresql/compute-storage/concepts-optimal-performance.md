@@ -432,7 +432,7 @@ This configuration demonstrates the practical importance of the 4-TB caching bou
 
 Configuration 3 addresses Premium SSD v1 upper IOPS and throughput limits by scaling to 32-TB capacity. This configuration achieved:
 
-- **Max IOPS:** 14,847.
+- **Max IOPS:** 20,000.
 - **Max read IOPS:** Approximately 12,000.
 - **Max write IOPS:** Approximately 5,000.
 
