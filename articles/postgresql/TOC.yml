@@ -253,6 +253,8 @@
       items:
       - name: Overview
         href: compute-storage/concepts-storage.md
+      - name: Optimal performance planning
+        href: compute-storage/concepts-optimal-performance.md
       - name: Premium SSD
         href: compute-storage/concepts-storage-premium-ssd.md  
       - name: Premium SSD v2

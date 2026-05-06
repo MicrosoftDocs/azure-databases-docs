@@ -58,6 +58,8 @@ landingContent:
             url: flexible-server/concepts-networking-private-link.md
           - text: Storage concepts
             url: flexible-server/concepts-storage.md
+          - text: Optimal performance planning
+            url: compute-storage/concepts-optimal-performance.md            
           - text: Read replicas 
             url: flexible-server/concepts-read-replicas.md
           - text: Horizontal scale out
