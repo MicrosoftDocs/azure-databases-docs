@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -576,7 +576,7 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_freespacemap,pg_hint_plan,pg_ivm,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,temporal_tables,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -1543,10 +1543,10 @@ ms.custom: automatically generated
 | --- | --- |
 | Category | Customized Options |
 | Description | Specify timezone used for cron schedule. |
-| Data type | enumeration |
+| Data type | string |
 | Default value | `GMT` |
-| Allowed values | `GMT` |
-| Parameter type | read-only |
+| Allowed values | `.*` |
+| Parameter type | static |
 | Documentation | [cron.timezone](https://github.com/citusdata/pg_cron) |
 
 
@@ -1581,7 +1581,7 @@ ms.custom: automatically generated
 | Default value | `off` |
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
-| Documentation |  |
+| Documentation | [pgaadauth.enable_group_sync](https://go.microsoft.com/fwlink/?linkid=2338467) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -2064,74 +2064,6 @@ ms.custom: automatically generated
 
 
 
-### pgms_stats.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pgms_wait_sampling.history_period
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Set the frequency, in milliseconds, at which wait events are sampled. |
-| Data type | integer |
-| Default value | `100` |
-| Allowed values | `1-600000` |
-| Parameter type | dynamic |
-| Documentation | [pgms_wait_sampling.history_period](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pgms_wait_sampling.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, wait sampling will be disabled despite the value set for pgms_wait_sampling.query_capture_mode. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [pgms_wait_sampling.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pgms_wait_sampling.query_capture_mode
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Selects which statements are tracked by the pgms_wait_sampling extension. |
-| Data type | enumeration |
-| Default value | `none` |
-| Allowed values | `all,none` |
-| Parameter type | dynamic |
-| Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### pg_partman_bgw.analyze
 
 | Attribute | Value |
@@ -2245,176 +2177,6 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/16/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.interval_length_minutes
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the query_store capture interval in minutes for pg_qs - this is the frequency of data persistence. |
-| Data type | integer |
-| Default value | `15` |
-| Allowed values | `1-30` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store will be disabled despite the value set for pg_qs.query_capture_mode. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.max_captured_queries
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Specifies the number of most relevant queries for which query store captures runtime statistics at each interval. |
-| Data type | integer |
-| Default value | `500` |
-| Allowed values | `100-500` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.max_captured_queries](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.max_plan_size
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the maximum number of bytes that will be saved for query plan text for pg_qs; longer plans will be truncated. |
-| Data type | integer |
-| Default value | `7500` |
-| Allowed values | `100-10000` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.max_plan_size](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.max_query_text_length
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the maximum query text length that will be saved; longer queries will be truncated. |
-| Data type | integer |
-| Default value | `6000` |
-| Allowed values | `100-10000` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.max_query_text_length](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.parameters_capture_mode
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Whether and when to capture query positional parameters. |
-| Data type | enumeration |
-| Default value | `capture_parameterless_only` |
-| Allowed values | `capture_parameterless_only,capture_first_sample` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.parameters_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.query_capture_mode
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets query capture mode for query store. None disables any capturing. |
-| Data type | enumeration |
-| Default value | `none` |
-| Allowed values | `top,all,none` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.retention_period_in_days
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Sets the retention period window in days for pg_qs - after this time data will be deleted. |
-| Data type | integer |
-| Default value | `7` |
-| Allowed values | `1-30` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.retention_period_in_days](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.store_query_plans
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Turns saving query plans on or off for pg_qs |
-| Data type | boolean |
-| Default value | `off` |
-| Allowed values | `on,off` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.store_query_plans](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.track_utility
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Selects whether utility commands are tracked by pg_qs. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on,off` |
-| Parameter type | dynamic |
-| Documentation | [pg_qs.track_utility](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - devx-track-azurecli
   - has-azure-ad-ps-ref
   - sfi-image-nochange

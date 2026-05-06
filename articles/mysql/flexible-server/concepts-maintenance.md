@@ -1,5 +1,5 @@
 ---
-title: Scheduled Maintenance
+title: Scheduled Maintenance in Azure Database for MySQL
 description: This article describes the scheduled maintenance feature in Azure Database for MySQL.
 author: SudheeshGH 
 ms.author: sunaray
@@ -114,7 +114,8 @@ ServiceHealthResources
 
 ```
 
-You can also go to Azure Service Health's Impacted Resources tab to view the maintenance status for all your Azure resources, including Azure Database for MySQL flexible servers. Please note that the maintenance status that appears in Azure Service Health represents the overall status of the maintenance event at region level and might not reflect the status of individual servers.
+> [!NOTE]  
+> You can also go to Azure Service Health's Impacted Resources tab to view the maintenance status for all your Azure resources, including Azure Database for MySQL flexible servers. Please note that the status of a maintenance event that appears under Azure Service Health represents the overall status of the maintenance event at region level and might not reflect the status of individual servers. To access an individual server maintenance status, click on the region-specific service health alert and select `More info` under the **Impacted Resources** tab.
 
 ## Near-zero-downtime maintenance
 
@@ -172,5 +173,5 @@ No, opting out of scheduled maintenance isn't allowed. However, you can use the 
 ## Related content
 
 - [Change the maintenance schedule](how-to-maintenance-portal.md)
-- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [Get notifications about upcoming maintenance](/azure/service-health/service-health-planned-maintenance)
 - [Set up alerts about upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)
