@@ -14,18 +14,19 @@ ms.topic: concept-article
 
 Cloud computing has dramatically reshaped the database hosting landscape, giving teams access to scalability, resilience, global reach, and capabilities that were previously unobtainable. Instead of the considerable costs and overhead required when planning for the largest possible workload (and carrying that cost from day one), teams can now optimize around the precise scale they need, when they need it, and adjust as their demands change.
 
-## Table of Contents
-[Introduction](#introduction)
-[Cloud performance planning is a shared responsibility](#cloud-performance-planning-is-a-shared-responsibility)
-[Understand the three core storage performance concepts](#understand-the-three-core-storage-performance-concepts)
-[Your deployment choices directly affect storage performance](#your-deployment-choices-directly-affect-storage-performance)
-[Observability is part of the architecture](#observability-is-part-of-the-architecture)
-[Practical planning checklist](#practical-planning-checklist)
-[Recommended design principles](#recommended-design-principles)
-[Real-world benchmark: comparing storage configurations under load](#real-world-benchmark-compare-storage-configurations-under-load)
-[Conclusion](#conclusion)  
+## Table of Contents  
+[Introduction](#introduction)  
+[Cloud performance planning is a shared responsibility](#cloud-performance-planning-is-a-shared-responsibility)  
+[Understand the three core storage performance concepts](#understand-the-three-core-storage-performance-concepts)  
+[Your deployment choices directly affect storage performance](#your-deployment-choices-directly-affect-storage-performance)  
+[Observability is part of the architecture](#observability-is-part-of-the-architecture)  
+[Practical planning checklist](#practical-planning-checklist)  
+[Recommended design principles](#recommended-design-principles)  
+[Real-world benchmark: comparing storage configurations under load](#real-world-benchmark-compare-storage-configurations-under-load)  
+[Conclusion](#conclusion)    
 
 <br/>
+
 ## Introduction
 
 The flexibility to choose the appropriate balance of resources is especially valuable for Postgres database deployments. Postgres database workloads may start small, grow quickly, spike seasonally, shift from read-heavy to write-heavy, or evolve from transactional workloads into hybrid operational and analytical systems in real-time. Azure Database for PostgreSQL ensures your solutions hit your targets by offering a broad range of choices across compute, storage, availability, replication, security, backup, and operational management.
