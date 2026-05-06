@@ -8,8 +8,6 @@ ms.date: 08/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Microsoft Defender for Cloud for Azure Database for PostgreSQL

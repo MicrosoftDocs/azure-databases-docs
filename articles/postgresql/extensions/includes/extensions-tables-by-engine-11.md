@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/02/2026
+ms.date: 04/27/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -37,7 +37,7 @@ ms.custom:
 | [ip4r](https://github.com/RhodiumToad/ip4r) provides a set of data types for IPv4 and IPv6 network addresses. | Not supported | |
 | [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards. | 1.2 | |
 | [lo](https://www.postgresql.org/docs/current/lo.html) provides support for managing Large Objects (also called LOs or BLOBs). This includes a data type lo and a trigger lo_manage. | 1.1 | |
-| [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time. | 1.4 | |
+| [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time. | 1.7 | |
 | [ltree](https://www.postgresql.org/docs/current/ltree.html) is a data type for hierarchical tree-like structures. | 1.1 | |
 | [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases. | Not supported | |
 | [orafce](https://github.com/orafce/orafce) provides functions and operators that emulate a subset of functions and packages from the Oracle RDBMS. | 3.18 | |
@@ -45,17 +45,18 @@ ms.custom:
 | [pgaudit](https://www.pgaudit.org/) provides auditing functionality. | 1.3.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache. | 1.3 | Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server. |
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server. |
-| [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | |
+| [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | Read the special considerations for extension [pgcrypto](../concepts-extensions-considerations.md#pgcrypto) in flexible server. |
 | [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | Not supported | |
 | [pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications. | Not supported | |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | 1.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server. |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.3.7 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server. |
+| [pg_ivm](https://github.com/sraoss/pg_ivm) (Preview) provides Incremental View Maintenance (IVM) feature for PostgreSQL. | Not supported | |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 4.5.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 4.5.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data. | 1.2 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server. |
-| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.4.7 | Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server. |
+| [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks. | 1.5.3 | Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server. |
 | [pgrouting](https://pgrouting.org/) provides geospatial routing functionality. | 3.3.0 | |
 | [pgrowlocks](https://www.postgresql.org/docs/current/pgrowlocks.html) shows row-level locking information. | 1.2 | |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation. | 1.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -64,7 +65,7 @@ ms.custom:
 | [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams. | 1.4 | |
 | [pg_visibility](https://www.postgresql.org/docs/current/pgvisibility.html) examines the visibility map and page-level visibility info. | 1.2 | |
 | [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language. | 1.0 | |
-| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.0.0 | |
+| [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language. | 3.2.4 | |
 | [postgis](https://www.postgis.net/) geometry and geography spatial types and functions. | 3.2.3 | |
 | [postgis_raster](https://www.postgis.net) raster types and functions. | 3.2.3 | |
 | [postgis_sfcgal](https://www.postgis.net) sFCGAL functions. | 3.2.3 | |
@@ -78,6 +79,7 @@ ms.custom:
 | [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab. | 1.0 | |
 | [tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means. | Not supported | |
 | [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server). | 2.0.3 | |
+| [temporal_tables](https://github.com/arkhipov/temporal_tables) supports the system-period temporal tables. | Not supported | |
 | [timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data. | 1.7.4 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria. | Not supported | |
 | [tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit. | 1.0 | |

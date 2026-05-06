@@ -8,8 +8,6 @@ ms.date: 01/07/2026
 ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Data encryption with customer managed keys for Azure Database for MySQL

@@ -24,6 +24,8 @@
           items:
             - name: Release notes index
               href: flexible-server/release-notes/release-notes-index.md
+            - name: March 2026
+              href: flexible-server/release-notes/march-2026.md              
             - name: January 2026
               href: flexible-server/release-notes/january-2026.md
             - name: October 2025

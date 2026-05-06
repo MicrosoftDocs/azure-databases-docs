@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - devx-track-azurecli
   - devx-track-arm-template
 ---
