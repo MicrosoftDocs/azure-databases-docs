@@ -15,23 +15,17 @@ ms.topic: concept-article
 Cloud computing has dramatically reshaped the database hosting landscape, giving teams access to scalability, resilience, global reach, and capabilities that were previously unobtainable. Instead of the considerable costs and overhead required when planning for the largest possible workload (and carrying that cost from day one), teams can now optimize around the precise scale they need, when they need it, and adjust as their demands change.
 
 ## Table of Contents
+[Introduction](#introduction)
 [Cloud performance planning is a shared responsibility](#cloud-performance-planning-is-a-shared-responsibility)
-
 [Understand the three core storage performance concepts](#understand-the-three-core-storage-performance-concepts)
-
 [Your deployment choices directly affect storage performance](#your-deployment-choices-directly-affect-storage-performance)
-
 [Observability is part of the architecture](#observability-is-part-of-the-architecture)
-
 [Practical planning checklist](#practical-planning-checklist)
-
 [Recommended design principles](#recommended-design-principles)
-
 [Real-world benchmark: comparing storage configurations under load](#real-world-benchmark-compare-storage-configurations-under-load)
-
 [Conclusion](#conclusion)  
 
-
+<br/>
 ## Introduction
 
 The flexibility to choose the appropriate balance of resources is especially valuable for Postgres database deployments. Postgres database workloads may start small, grow quickly, spike seasonally, shift from read-heavy to write-heavy, or evolve from transactional workloads into hybrid operational and analytical systems in real-time. Azure Database for PostgreSQL ensures your solutions hit your targets by offering a broad range of choices across compute, storage, availability, replication, security, backup, and operational management.
@@ -40,17 +34,16 @@ But with all this power comes responsibility; most decisively when planning your
 
 A successful Azure Postgres deployment isn't just a question of choosing "the most cores and memory we need"; instead, maximum operational performance comes from understanding your application's behaviors, client's behaviors, compute, storage, and database growth characteristics, and how these all intersect and interact.
 
-```text
-The best architecture is the one where these pieces are intentionally aligned.
-```
+
+> [!TIP]
+> The best architecture is the one where these pieces are intentionally aligned.
 
 ## Cloud performance planning is a shared responsibility
 
 One of the major benefits of moving to a trusted cloud platform is the shared responsibility model. Microsoft provides the global infrastructure, managed services, hardware innovation, reliability, security, and operational engineering. Your teams bring the specific application context expertise: business criticality, workload behavior, data model design, network traffic profile, growth expectations, recovery objectives, and end-user experience requirements.
 
-```text
-The strongest outcomes arise when these two forces are unified.
-```
+> [!TIP]
+> The strongest outcomes arise when these two forces are unified.
 
 Azure provides highly scalable Postgres infrastructure, but your team must bring insights to these areas:
 
@@ -111,9 +104,8 @@ Before choosing compute or storage, define the workload. Useful planning dimensi
 | Throughput needs | Are there large data scans, exports, imports, or extract, transform, and load (ETL) processes? |
 | Scaling expectations | Will the workload need temporary bursts or sustained higher performance? |
 
-```text
-The goal is not to predict the future perfectly. The goal is to avoid designing blindly.
-```
+> [!TIP]
+> The goal is not to predict the future perfectly. The goal is to avoid designing blindly.
 
 ## Understand the three core storage performance concepts
 
@@ -164,9 +156,8 @@ IOPS and throughput are connected. A workload issuing several small 8-KiB operat
 
 A simple way to think about it:
 
-```text
-IOPS x I/O size = Throughput
-```
+> [!TIP]
+> IOPS x I/O size = Throughput
 
 For Postgres, the practical implication is that workload storage planning should be based on observed or estimated workload behavior, not database size alone. For example:
 
@@ -194,9 +185,8 @@ In practical terms: **your effective performance ceiling is your lowest relevan
 
 If the storage configuration can provide 80,000 IOPS but the compute SKU can only drive 20,000 IOPS, the deployment won't deliver 80,000 IOPS. Conversely, if the VM generation supports very high IOPS but the selected storage tier is capped lower, the storage tier becomes the limit.
 
-```text
-Compute and storage planning should happen together.
-```
+> [!TIP]
+> Compute and storage planning should happen together.
 
 ### Premium SSD v1: strong baseline performance with important caching behavior
 
@@ -324,9 +314,8 @@ Azure's flexibility allows teams to make more nuanced choices. For example:
  * Tune queries, indexes, and connection pooling before scaling infrastructure.
  * Use observability to identify whether the bottleneck is CPU, memory, IOPS, throughput, lock contention, connection pressure, or query design.
 
-```text
-The best deployment is not always the largest deployment. It is the design that matches the workload and can evolve safely.
-```
+> [!TIP]
+> The best deployment is not always the largest deployment. It is the design that matches the workload and can evolve safely.
 
 ## Observability is part of the architecture
 
@@ -347,9 +336,8 @@ These metrics help answer the most important operational question: **which laye
 
 Without observability, teams may scale the wrong thing. A query plan problem may look like a storage problem. Connection storms may look like CPU pressure. A missing index may look like insufficient IOPS. A regional client placement issue may look like database latency.
 
-```text
-Monitoring helps teams make targeted changes instead of expensive guesses.
-```
+> [!TIP]
+> Monitoring helps teams make targeted changes instead of expensive guesses.
 
 ## Practical planning checklist
 
@@ -497,9 +485,8 @@ The benchmark results validate the core principle: maximum performance is an end
 
 Azure Postgres offers access to a powerful and flexible platform for building modern, cloud-hosted database solutions. The engineering available across Azure compute, storage, networking, high availability, replication, security, and observability enables some of the most performant and resilient Postgres architectures available.
 
-```text
-Maximum performance does not happen by accident.
-```
+> [!TIP]
+> Maximum performance does not happen by accident.
 
 Maximum operational performance requires understanding the application, the clients, the workload, the data growth profile, the read/write mix, and the business cycles that shape demand. It also requires aligning both compute and storage choices so that IOPS, throughput, and latency targets can be achieved end-to-end.
 
