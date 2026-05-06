@@ -356,19 +356,26 @@ Before selecting the production Azure Database for PostgreSQL configuration, cap
 
 Use the following principles when planning Azure Postgres deployments for operational performance.
 
-1. **Size for workload shape, not just data size.** 
+1. **Size for workload shape, not just data size.**
+<br>
 A 500-GB database can need more IOPS than a 5-TB database if it's highly transactional and latency-sensitive. Size matters, but workload behavior matters more.
 1. **Validate compute and storage together.** 
+<br/>
 Don't choose storage based only on disk limits. Confirm that the selected compute SKU can drive the required IOPS and throughput.
 1. **Treat the 4-TB Premium SSD caching boundary as a design milestone.** 
+<br /> 
 Premium SSD deployments under 4 TB can benefit from host caching. At 4,096 GB and above, host caching isn't supported. If growth will cross that threshold, plan the future performance model early.
-1. **Consider Premium SSD v2 for flexible performance tuning.** 
+1. **Consider Premium SSD v2 for flexible performance tuning.**  
+<br />  
 Premium SSD v2 allows more granular control of capacity, IOPS, and throughput. It can be a strong fit when performance needs don't map cleanly to fixed disk sizes.
-1. **Use bursting for bursts, not sustained demand.** 
+1. **Use bursting for bursts, not sustained demand.**  
+<br />  
 Bursting can help with short-lived spikes, but frequent or sustained bursting usually means the baseline configuration should be revisited.
-1. **Match generation to ambition.** 
+1. **Match generation to ambition.**  
+<br />  
 For high-end performance goals, newer compute generations such as v6-series can expose much higher aggregate remote storage limits than earlier general-purpose generations. If the target is a 400,000-IOPS-class architecture, select the compute generation accordingly.
-1. **Measure before and after changes.** 
+1. **Measure before and after changes.**  
+<br />  
 Scaling is easier in the cloud, but measurement is what makes scaling effective. Capture baseline, peak, and post-change metrics so performance decisions are evidence-based.
 
 ## Real-world benchmark: compare storage configurations under load
