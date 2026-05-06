@@ -79,14 +79,13 @@ Here are some examples of how you can gain more insights into your workload usin
 
 ## Configuration options
 
-When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../server-parameters/param-customized-options.md#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
+When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../server-parameters/param-query-store.md#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
 
 The following options are available for configuring Query Store parameters:
 
 | **Parameter** | **Description** | **Default** | **Range** |
 | --- | --- | --- | --- |
 | `pg_qs.interval_length_minutes` | Capture interval in minutes for query store. Defines the frequency of data persistence. | `15` | `1` - `30` |
-| `pg_qs.is_enabled_fs` | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, query store is disabled, despite the value set for `pg_qs.query_capture_mode`. | `on` | `on`, `off` |
 | `pg_qs.max_captured_queries` | Maximum number of queries persisted by query store from all queries recorded during each capture interval. | `500` | `100` - `500` |
 | `pg_qs.max_plan_size` | Maximum number of bytes saved from query plan text by query store; longer plans are truncated. | `7500` | `100` - `10000` |
 | `pg_qs.max_query_text_length` | Maximum query length that can be saved; longer queries are truncated. | `6000` | `100` - `10000` |
@@ -105,7 +104,6 @@ The following options apply specifically to wait statistics:
 | **Parameter** | **Description** | **Default** | **Range** |
 | --- | --- | --- | --- |
 | `pgms_wait_sampling.history_period` | Frequency, in milliseconds, at which wait events are sampled. | `100` | `1` - `600000` |
-| `pgms_wait_sampling.is_enabled_fs` | Internal Use Only: This parameter is used as a feature override switch. If it shows as `off`, wait sampling is disabled despite the value set for `pgms_wait_sampling.query_capture_mode`. | `on` | `on`, `off` |
 | `pgms_wait_sampling.query_capture_mode` | Which statements the `pgms_wait_sampling` extension must track. | `none` | `none`, `all` |
 
 > [!NOTE]  
