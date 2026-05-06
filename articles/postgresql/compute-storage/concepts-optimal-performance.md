@@ -144,7 +144,7 @@ Common throughput-sensitive scenarios include:
 
 A system can have high theoretical IOPS but still feel slow if latency is high. For Postgres workloads, storage latency can directly affect query response times, transaction commit behavior, checkpoint behavior, and overall application responsiveness.
 
-> !NOTE
+> [!NOTE]
 > Premium SSD v1 disks are designed for single-digit millisecond latencies for most I/O operations, and notably, disk caching can further reduce read latency for disk configurations under 4 TB. Premium SSD v2 and Ultra Disk offer submillisecond latency.
 
 ### IOPS, throughput, and latency must be considered together
