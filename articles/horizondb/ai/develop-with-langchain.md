@@ -265,7 +265,7 @@ The vector store supports a set of filters that can be applied against the metad
 | `in` | Special cased (in) |
 | `not in` | Special cased (not in) |
 | `is null` | Special cased (is null) |
-| `is not null` | Special cased (isn't null) |
+| `is not null` | Special cased (is not null) |
 | `between` | Special cased (between) |
 | `not between` | Special cased (not between) |
 | `like` | Text (like) |
