@@ -166,34 +166,6 @@ WITH (
 );
 ```
 
-### Improve accuracy with vector reranking
-
-Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with spherical quantization to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (for example, cosine similarity or Euclidean distance). It is **not** the same as [reranking using a ranking model](semantic-reranking.md).
-
-To balance speed and precision when querying a quantized DiskANN index, use a two-step reranking strategy:
-
-1. **Initial approximate search.** The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and leverages the quantized index.
-1. **Precise reranking.** The outer query reorders those 50 results by their exact computed distance and returns the top 10 most relevant matches.
-
-Example:
-
-```sql
-SELECT id
-FROM (
-    SELECT id, embedding <=> %s::vector AS distance
-    FROM demo
-    ORDER BY embedding <=> %s::vector ASC
-    LIMIT 50
-) AS t
-ORDER BY t.distance
-LIMIT 10;
-```
-
-> [!NOTE]  
-> Replace **%s** with your query vector. You can generate a query vector directly in Postgres with [`azure_ai`](ai-functions.md).
-
-This approach balances speed (via approximate search) and accuracy (via full vector reranking), ensuring high-quality results without scanning the entire dataset.
-
 ### Support for high dimension embeddings
 
 Advanced generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. Traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
