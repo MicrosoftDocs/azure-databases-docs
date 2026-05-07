@@ -4,7 +4,7 @@ description: Learn how to choose between IVFFLAT, HNSW, and DiskANN vector index
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -16,6 +16,6 @@ ms.custom:
 # customer intent: As a user, I want to learn how to choose between IVFFLAT, HNSW, and DiskANN vector indexes in Azure HorizonDB based on performance, recall, and dataset size.
 ---
 
-#  Select the right vector index for your workload - IVFFLAT, HNSW, DiskANN
+# Select the right vector index for your workload - IVFFLAT, HNSW, DiskANN
 
 Content: WIP

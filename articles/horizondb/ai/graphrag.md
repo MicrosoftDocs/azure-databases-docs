@@ -4,7 +4,7 @@ description: Learn how to combine knowledge graphs, vector search, and LLM reaso
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
@@ -285,3 +285,4 @@ Get started quickly with pre-built solution accelerators:
 - [Azure AI extension overview](../ai/azure-ai-extension.md)
 - [Microsoft Research: GraphRAG paper](https://www.microsoft.com/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)
 - [Build Knowledge Graph tutorial](./build-knowledge-graph.md)
+

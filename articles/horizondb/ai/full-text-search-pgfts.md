@@ -4,7 +4,7 @@ description: Use the pg_fts extension to enable full-text search in Azure Horizo
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to

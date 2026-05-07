@@ -156,6 +156,7 @@ There are a few ways we recommend to improve your index build times.
 <a id="using-more-memory"></a>
 
 ### Use more memory
+
 To speed up the creation of the index, you can increase the memory allocated on your Postgres instance for the index build. The memory usage can be specified through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter.
 
 ```sql
@@ -175,6 +176,7 @@ CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_
 <a id="using-parallelization"></a>
 
 ### Use parallelization
+
 To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
 
 ```sql
