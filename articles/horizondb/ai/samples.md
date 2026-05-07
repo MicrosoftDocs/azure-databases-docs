@@ -4,7 +4,7 @@ description: A collection of AI and agentic use cases with sample apps in Azure 
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article

@@ -4,7 +4,7 @@ description: Define and run durable AI data pipelines directly in Azure HorizonD
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article

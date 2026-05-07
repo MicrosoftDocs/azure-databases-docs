@@ -44,8 +44,8 @@ The following sections outline the step-by-step process to set up, configure, an
 Various frameworks and tools can facilitate the development and deployment of AI agents. All these frameworks support using Azure HorizonDB as a tool:
 
 - [Agent Service](/azure/ai-services/agents/overview)
-- [LangChain/LangGraph](https://python.langchain.com/v0.1/docs/modules/agents/)
-- [LlamaIndex](https://docs.llamaindex.ai/en/stable/use_cases/agents/)
+- [LangChain/LangGraph](https://docs.langchain.com/oss/python/langchain/overview)
+- [LlamaIndex](https://developers.llamaindex.ai/python/framework/use_cases/agents)
 - [Semantic Kernel](/semantic-kernel/overview/)
 - [AutoGen](https://microsoft.github.io/autogen/)
 - [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview)
@@ -73,7 +73,9 @@ The following sections walk you through building an AI agent that helps legal te
    > [!NOTE]  
    > You need the key and endpoint from the deployed models that you created for the agent.
 
-### Getting started
+<a id="getting-started"></a>
+
+### Get started
 
 All the code and sample datasets are available in [this GitHub repository](https://github.com/Azure-Samples/postgres-agents).
 
@@ -208,8 +210,6 @@ The `simple_postgres_and_ai_agent.py` file:
 
 In your Foundry project, you find your project connection string from the project's overview page. You use this string to connect the project to the Agent Service SDK. Add this string to the `.env` file.
 
-![Screenshot that shows the project setup page.](./media/generative-ai-agents/ai-foundry-project-setup.png)
-
 #### Set up the connection
 
 Add these variables to your `.env` file in the root directory:
@@ -313,11 +313,11 @@ After you run your agent by using the Agent Service SDK, the agent is stored in 
 
 1. Use the playground interface to test various legal queries.
 
-   ![Screenshot that shows selections for finding the agent playground.](./media/generative-ai-agents/find-playground.png)
+   :::image type="content" source="media/generative-ai-agents/find-playground.png" alt-text="Screenshot that shows selections for finding the agent playground." lightbox="media/generative-ai-agents/find-playground.png":::
 
 1. Test the query "Water leaking into the apartment from the floor above, What are the prominent legal precedents in Washington?" The agent picks the right tool to use and asks for the expected output for that query. Use [sample_vector_search_cases_output.json](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/sample_outputs_for_playground/sample_vector_search_cases_output.json) as the sample output.
 
-   ![Screenshot that shows the results of a query in the agent playground.](./media/generative-ai-agents/using-playground-ai-foundry.png)
+   :::image type="content" source="media/generative-ai-agents/playground-ai-foundry.png" alt-text="Screenshot that shows the results of a query in the agent playground." lightbox="media/generative-ai-agents/playground-ai-foundry.png":::
 
 ### Step 5: Debug with Foundry tracing
 
@@ -327,11 +327,11 @@ When you're developing the agent by using the Agent Service SDK, you can [debug 
 
 1. To create a new Application Insights resource, select **Create new**. To connect an existing resource, select one in the **Application Insights resource name** box, and then select **Connect**.
 
-   ![Screenshot that shows the area for selecting an Application Insights resource and activating tracing.](./media/generative-ai-agents/activate-tracing.png)
+   :::image type="content" source="media/generative-ai-agents/activate-tracing.png" alt-text="Screenshot that shows the area for selecting an Application Insights resource and activating tracing." lightbox="media/generative-ai-agents/activate-tracing.png":::
 
 1. View detailed traces of your agent's operations.
 
-   ![Screenshot that the result of tracing in Foundry.](./media/generative-ai-agents/tracing-ai-foundry.png)
+   :::image type="content" source="media/generative-ai-agents/tracing-ai-foundry.png" alt-text="Screenshot that the result of tracing in Foundry." lightbox="media/generative-ai-agents/tracing-ai-foundry.png":::
 
 Learn more about how to set up tracing with the AI agent and Postgres in the [advanced_postgres_and_ai_agent_with_tracing.py file on GitHub](https://github.com/Azure-Samples/postgres-agents/blob/main/azure-ai-agent-service/src/advanced_postgres_and_ai_agent_with_tracing.py).
 

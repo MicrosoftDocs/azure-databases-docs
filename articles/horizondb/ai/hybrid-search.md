@@ -4,7 +4,7 @@ description: Combine BM25 full-text search with pgvector and DiskANN vector sear
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
