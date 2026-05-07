@@ -4,7 +4,7 @@ description: GraphRAG uses graph structures to improve how applications retrieve
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
