@@ -1,10 +1,10 @@
 ---
-title: Create a Semantic Search with Azure OpenAI
-description: Learn how to build a semantic search application by using Azure HorizonDB and Azure OpenAI.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Build a Semantic Search Application with Azure HorizonDB
+description: Learn how to build a semantic search application by using Azure HorizonDB, vector and azure_ai extensions.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: tutorial
@@ -12,10 +12,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2023
+  - build-2026
+# customer intent: As a user, I want to learn how to build and end-to-end semantic search application with Azure HorizonDB and it's generative AI capabilities.
 ---
 
-# Tutorial: Create a semantic search with Azure HorizonDB and Azure OpenAI
+# Tutorial: Build a semantic search application with Azure HorizonDB
 
 This hands-on tutorial shows you how to build a semantic search application by using Azure HorizonDB and Azure OpenAI.
 

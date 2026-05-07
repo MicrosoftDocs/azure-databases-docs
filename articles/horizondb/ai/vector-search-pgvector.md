@@ -1,21 +1,20 @@
 ---
-title: Vector search on Azure HorizonDB
-description: Enable semantic similarity search for Retrieval Augmented Generation (RAG) on Azure HorizonDB with pgvector database extension.
-author: avnishrastogimsft
-ms.author: avrastog
-ms.reviewer: kabharati, maghan
-ms.date: 04/27/2024
+title: Implement vector search in Azure HorizonDB using the pgvector extension
+description: Implement vector search in Azure HorizonDB using the pgvector extension to enable semantic similarity search over embeddings for AI and retrieval workloads.
+author: shreyaaithal
+ms.author: shaithal
+ms.reviewer: maghan
+ms.date: 05/08/2026
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: ai-vector-search
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
 ms.custom:
-  - build-2023
-  - ignite-2023
+  - build-2026
 ---
 
-# Enable and use pgvector in Azure HorizonDB 
+# Implement vector search in Azure HorizonDB using the pgvector extension
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 

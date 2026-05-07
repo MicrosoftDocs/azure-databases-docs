@@ -1,10 +1,10 @@
 ---
-title: Use LangChain with Azure HorizonDB
-description: Integrate Azure HorizonDB with AI and LangChain, so that you can use advanced AI capabilities in your applications.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Develop AI apps with LangChain and Azure HorizonDB
+description: Integrate Azure HorizonDB with LangChain to build AI applications.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
@@ -13,9 +13,10 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2025
+# customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
-# Use LangChain with Azure HorizonDB
+# Develop AI apps with LangChain and Azure HorizonDB
 
 Azure HorizonDB seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 

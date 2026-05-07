@@ -1,10 +1,10 @@
 ---
 title: Apache AGE Performance Best Practices
 description: Best practices for improving queries in Apache Age with Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: aditivgupta
+ms.author: adig
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
@@ -12,11 +12,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - build-2026
 # customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure HorizonDB.
 ---
 
-# Best practices: indexing, AGE EXPLAIN, and data load benchmarks
+# Performance best practices for Apache AGE: indexing, AGE EXPLAIN, and data load benchmarks
 
 Apache AGE supported by Azure HorizonDB, provides support for advanced graph processing and querying. However, achieving optimal query performance requires a thoughtful strategy for indexing and data loading. This guide outlines some best practices based on recent benchmarking results and technical insights.
 

@@ -1,23 +1,22 @@
 ---
-title: Generate Vector Embeddings with Azure OpenAI in Azure HorizonDB
-description: Use vector indexes and OpenAI embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns.
-author: avnishrastogimsft
-ms.author: avrastog
+title: azure_ai Extension in Azure HorizonDB
+description: Introduction to the azure_ai extension in Azure HorizonDB, which enables you to invoke models hosted in Microsoft Foundry from within the database.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
-ms.topic: how-to
+ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2023
-  - build-2024
-  - build-2025
+  - build-2026
+# customer intent: As a user, I want to understand how to use the azure_ai extension to invoke Foundry models from within the database.
 ---
 
-# Azure AI extension in Azure HorizonDB
+# azure_ai Extension in Azure HorizonDB
 
 Azure HorizonDB extension for Azure AI enables you to use large language models (LLMS) and build rich generative AI applications within the database. The Azure AI extension enables the database to call into various Microsoft Foundry tools including [Azure OpenAI](/azure/ai-services/openai/overview) and [Azure Cognitive Services](https://azure.microsoft.com/products/ai-services/cognitive-search/) simplifying the development process allowing seamless integration into those services.
 

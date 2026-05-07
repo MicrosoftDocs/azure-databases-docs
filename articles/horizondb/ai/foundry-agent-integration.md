@@ -1,10 +1,10 @@
 ---
-title: Connect Azure HorizonDB to Microsoft Foundry Using MCP
-description: Learn how to integrate Azure HorizonDB with Microsoft Foundry using Model Context Protocol (MCP) to enable AI agents to interact with your database through natural language queries.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Implement Agent Knowledge Retrieval with Azure HorizonDB and Foundry
+description: Learn how to use Azure HorizonDB as the retrieval layer for agents built with Microsoft Foundry and Model Context Protocol to access and ground responses in stored knowledge. Build a simple AI agent to interact with your database through natural language queries.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-foundry
 ms.topic: how-to
@@ -12,10 +12,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2025
+  - build-2026
+# customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
-# Connect Azure HorizonDB to Microsoft Foundry with MCP
+# Implement Agent Knowledge Retrieval with Azure HorizonDB and Foundry
 
 The Azure HorizonDB MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 

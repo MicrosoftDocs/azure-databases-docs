@@ -1,10 +1,10 @@
 ---
-title: Generative AI
+title: Overview of AI capabilities in Azure HorizonDB
 description: Learn about using generative AI with Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
 ms.topic: concept-article
@@ -12,10 +12,10 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2023
+  - build-2026
 ---
 
-# Generative AI with Azure HorizonDB
+# Overview of AI capabilities in Azure HorizonDB
 
 Generative AI refers to a class of AI algorithms that can learn from existing multimedia content and produce new content. You can customize the generated content through techniques such as prompts and fine-tuning. Generative AI algorithms use specific machine learning models:
 

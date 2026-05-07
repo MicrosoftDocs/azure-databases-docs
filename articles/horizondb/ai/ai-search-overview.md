@@ -1,10 +1,10 @@
 ---
-title: Vector Stores in Azure HorizonDB
-description: Enhance AI-based applications by using the integrated vector store functionality in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Retrieval foundations - Vector, Full-Text, and Hybrid Search in Azure HorizonDB
+description: Explore vector, full-text, and hybrid search in Azure HorizonDB to build effective retrieval strategies that balance keyword matching and semantic understanding.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -12,10 +12,10 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - build-2026
 ---
 
-# Vector stores in Azure HorizonDB
+# Retrieval foundations: Vector, Full-Text, and Hybrid Search in Azure HorizonDB
 
 Vector stores are used in numerous domains and situations across analytical and generative AI, including natural language processing, video and image recognition, recommendation systems, and search.
 

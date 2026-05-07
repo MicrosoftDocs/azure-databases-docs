@@ -1,19 +1,19 @@
 ---
-title: Enable and use DiskANN
-description: This article describes how to enable DiskANN for improved semantic similarity search for Retrieval Augmented Generation (RAG) on an Azure HorizonDB flexible server.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Scalable vector indexing with DiskANN
+description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets.
+author: abeomor
+ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 01/25/2025
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.subservice: ai-vector-search
 ms.topic: how-to
 ms.custom:
-  - build-2025
-# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB.
+  - build-2026
+# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Enable and use DiskANN extension
+# Scalable Vector Indexing with DiskANN
 
 DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 

@@ -1,10 +1,10 @@
 ---
 title: Generative AI Frameworks and Azure HorizonDB
-description: Integrate Azure HorizonDB with AI and large language model (LLM) orchestration packages like Semantic Kernel and LangChain.
-author: avnishrastogimsft
-ms.author: avrastog
+description: Integrate Azure HorizonDB with AI and large language model (LLM) orchestration frameworks like Semantic Kernel and LangChain to build AI applications.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
@@ -12,10 +12,10 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - build-2026
 ---
 
-# Azure HorizonDB integrations for AI applications
+# Build AI Applications with Azure HorizonDB and LLM Orchestration Frameworks
 
 Azure HorizonDB seamlessly integrates with leading large language model (LLM) orchestration packages so that developers can use advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases in developing generative AI applications.
 

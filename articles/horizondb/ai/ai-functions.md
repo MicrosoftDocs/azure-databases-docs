@@ -1,21 +1,21 @@
 ---
-title: Semantic Operators in the Azure AI Extension
-description: Overview of semantic operator capabilities in the azure_ai extension for Azure HorizonDB. These operators bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
-author: avnishrastogimsft
-ms.author: avrastog
+title: AI functions in the azure_ai extension
+description: Overview of AI functions in the azure_ai extension for Azure HorizonDB. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-semantic-operators
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.custom:
-  - build-2025
-# customer intent: As a user, I want to understand the available Semantic Operators in the azure_ai extension for Azure HorizonDB, explore their use cases, and learn how to use them effectively.
+  - build-2026
+# customer intent: As a user, I want to understand the available AI functions in the azure_ai extension for Azure HorizonDB, explore their use cases, and learn how to use them effectively.
 ---
 
-# Semantic operators in the Azure AI extension (Preview)
+# AI functions in the azure_ai extension
 
 The Azure AI extension introduces **Semantic Operators**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these operators, which models like chat completion and other [Azure AI deployments](https://azure.microsoft.com/products/ai-model-catalog), developers can build GenAI-driven applications directly within their databases. This integration unlocks new capabilities for understanding text, reasoning, and generating structured outputs.
 

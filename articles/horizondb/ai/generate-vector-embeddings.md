@@ -1,10 +1,10 @@
 ---
-title: Generate Vector Embeddings with Azure OpenAI
-description: Use vector indexes and Azure OpenAI embeddings in PostgreSQL for retrieval augmented generation (RAG) patterns.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Generate vector embeddings using the create_embeddings() AI function
+description: Generate vector embeddings using the create_embeddings() function in the azure_ai extension to call Foundry models directly from the database.
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to
@@ -12,11 +12,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2023
-  - build-2024
+  - build-2026
+# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
-# Generate vector embeddings with Azure OpenAI in Azure HorizonDB
+# Generate vector embeddings using the create_embeddings() AI function
 
 Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](../extensions/how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
 
