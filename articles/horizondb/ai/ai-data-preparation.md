@@ -4,7 +4,7 @@ description: Understand the key steps involved in ingesting, preparing and pre-p
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article

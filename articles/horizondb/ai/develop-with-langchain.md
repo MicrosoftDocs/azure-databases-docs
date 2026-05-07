@@ -33,7 +33,7 @@ You can use Azure HorizonDB to efficiently store and query millions of vector em
 
 ## Authentication
 
-Azure HorizonDB supports password-based and [Microsoft Entra](../security/security-entra-concepts.md) (formerly Azure Active Directory) authentication.
+Azure HorizonDB supports password-based and [Microsoft Entra authentication in Azure HorizonDB](../security/security-entra-concepts.md) (formerly Azure Active Directory) authentication.
 
 Microsoft Entra authentication allows you to use Microsoft Entra ID to authenticate to your PostgreSQL server. Microsoft Entra ID eliminates the need to manage separate usernames and passwords for your database users. It allows you to use the same security mechanisms that you use for other Azure services.
 
@@ -41,7 +41,7 @@ In this article, you can use either authentication method.
 
 ## Setup
 
-Azure HorizonDB uses the open-source [LangChain Postgres support](https://python.langchain.com/docs/integrations/vectorstores/pgvector/) to connect to Azure HorizonDB. First, download the partner package:
+Azure HorizonDB uses the open-source [LangChain Postgres support](https://docs.langchain.com/oss/python/integrations/vectorstores/pgvector) to connect to Azure HorizonDB. First, download the partner package:
 
 ```python
 %pip install -qU langchain-azure-postgresql
@@ -248,7 +248,9 @@ vector_store.delete(ids=[uuids[-1]])
 
 After you create your vector store and add the relevant documents, you can query the vector store in your chain or agent.
 
-### Filtering support
+<a id="filtering-support"></a>
+
+### Filter support
 
 The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
 
@@ -263,7 +265,7 @@ The vector store supports a set of filters that can be applied against the metad
 | `in` | Special cased (in) |
 | `not in` | Special cased (not in) |
 | `is null` | Special cased (is null) |
-| `is not null` | Special cased (is not null) |
+| `is not null` | Special cased (isn't null) |
 | `between` | Special cased (between) |
 | `not between` | Special cased (not between) |
 | `like` | Text (like) |
@@ -367,7 +369,7 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://python.langchain.com/api_reference/postgres/vectorstores/langchain_postgres.vectorstores.PGVector.html).
+For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://reference.langchain.com/python/langchain-postgres).
 
 ### Transformation into a retriever
 
