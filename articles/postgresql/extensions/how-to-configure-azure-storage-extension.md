@@ -4,7 +4,7 @@ description: Learn how to configure the Azure Storage extension in an Azure Data
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
@@ -23,6 +23,7 @@ You must follow these steps to be able to use the Azure Storage extension:
 1. [Load the extension's library](#load-the-extensions-library)
 1. [Allowlist the extension](#allowlist-the-extension)
 1. [Create the extension](#create-the-extension)
+1. [Initialize encryption key to encrypt sensitive credentials](#initialize-encryption-key-to-encrypt-sensitive-credentials)
 1. [Use the extension to import and export data](#use-the-extension-to-import-and-export-data)
 
 
@@ -193,11 +194,28 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
 
- To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 
 ```sql
 CREATE EXTENSION azure_storage;
 ```
+
+## Initialize encryption key to encrypt sensitive credentials
+
+Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
+
+To initialize the encryption key with which all sensitive credentials used to authenticate with the different Azure storage accounts, execute the following statement:
+
+> [!NOTE]
+> Make sure you change `<strong passphrase>` with your own strong secret.
+
+```sql
+ALTER SYSTEM SET azure_storage.credential_encryption_key = '<strong passphrase>';
+```
+
+> [!IMPORTANT]
+> Note that if you create the extension in multiple databases, the value of `azure_storage.credential_encryption_key` is scoped at server level, so all sensitive credentials, regardless of the database in which are stored, will be encrypted using the same key.
+> Notice that if you change the value of `azure_storage.credential_encryption_key`, you'll have to manually add again, using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) which was encrypted with the previous value. Currently the extension doesn't support automatic rollover of encryption key.
 
 ## Use the extension to import and export data
 
