@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the Azure Storage extension in Azure Data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: reference

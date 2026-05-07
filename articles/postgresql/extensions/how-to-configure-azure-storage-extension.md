@@ -4,7 +4,7 @@ description: Learn how to configure the Azure Storage extension in an Azure Data
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
