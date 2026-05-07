@@ -82,26 +82,26 @@ landingContent:
 # Card 3
   - title: Build AI apps and agents
     linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Overview of AI capabilities in Azure HorizonDB
-            url: ai/overview.md
-          - text: AI pipelines and data preparation
-            url: ai/ai-pipelines.md
-          - text: AI functions in SQL with the azure_ai extension
-            url: ai/azure-ai-extension.md
-          - text: Semantic Search and Hybrid Search
-            url: ai/ai-search-overview.md
-          - text: Efficient web-scale vector search with DiskANN
-            url: ai/vector-indexing-diskann.md
-          - text: Semantic reranking to improve search relevance
-            url: ai/semantic-reranking.md
-          - text: Build an AI app with LangChain
-            url: ai/develop-with-langchain.md
-          - text: Build an AI agent with Foundry and MCP
-            url: ai/foundry-agent-integration.md
-          - text: Build a knowledge graph from unstructured text
-            url: ai/build-knowledge-graph.md
+    - linkListType: how-to-guide
+      links:
+      - text: Overview of AI capabilities in Azure HorizonDB
+        url: ai/overview.md
+      - text: AI pipelines and data preparation
+        url: ai/ai-pipelines.md
+      - text: AI functions in SQL with the azure_ai extension
+        url: ai/azure-ai-extension.md
+      - text: Semantic Search and Hybrid Search
+        url: ai/ai-search-overview.md
+      - text: Efficient web-scale vector search with DiskANN
+        url: ai/vector-indexing-diskann.md
+      - text: Semantic reranking to improve search relevance
+        url: ai/semantic-reranking.md
+      - text: Build an AI app with LangChain
+        url: ai/develop-with-langchain.md
+      - text: Build an AI agent with Foundry and MCP
+        url: ai/foundry-agent-integration.md
+      - text: Build a knowledge graph from unstructured text
+        url: ai/build-knowledge-graph.md
 
 - title: Advanced concepts and overview
   linkLists:

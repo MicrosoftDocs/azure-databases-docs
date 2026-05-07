@@ -250,7 +250,7 @@
     - name: AI functions in SQL
       items:
       - name: AI functions (azure_ai)
-        href: ai/azure-ai-functions.md
+        href: ai/ai-functions.md
       - name: AI Model Management
         href: ai/ai-model-management.md
     - name: AI Pipelines and Data Preparation
