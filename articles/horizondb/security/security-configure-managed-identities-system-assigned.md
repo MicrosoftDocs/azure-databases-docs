@@ -1,10 +1,10 @@
 ---
-title: System Assigned Managed Identity
-description: This article describes how to configure system assigned managed identity of an Azure HorizonDB flexible server instance.
+title: System Assigned Managed Identity in Azure HorizonDB
+description: This article describes how to configure system assigned managed identity in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/13/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -12,9 +12,9 @@ ms.custom:
   - horz-security
 ---
 
-# System assigned managed identity
+# System assigned managed identity in Azure HorizonDB
 
-This article provides step-by-step instructions to enable or disable a system assigned managed identity for an Azure HorizonDB flexible server instance.
+This article provides step-by-step instructions to enable or disable a system assigned managed identity for an Azure HorizonDB instance.
 
 ## Steps to enable for existing servers
 
@@ -22,21 +22,21 @@ This article provides step-by-step instructions to enable or disable a system as
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+1. Locate your server in the portal, if you don't have it open. One way to do it's by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-server.png":::
 
 1. In the resource menu, under **Security**, select **Identity**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to enable the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to enable the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-identity.png":::
 
 1. In the **System assigned managed identity** section, select **On**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png" alt-text="Screenshot that shows the Identity page, to enable the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png" alt-text="Screenshot that shows the Identity page, to enable the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png" alt-text="Screenshot that shows the Save button after having enabled the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png" alt-text="Screenshot that shows the Save button after having enabled the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/enable-system-assigned-managed-identity-status-on-save.png":::
 
 1. If the server has data encryption configured to use customer managed keys, it isn't supported to disable the system assigned managed identity of the server once you enable it. For that reason, if that condition is detected, you're requested to confirm that you want to enable the system assigned managed identity.
 
@@ -72,21 +72,21 @@ fi
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+1. Locate your server in the portal, if you don't have it open. One way to do it's by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-server.png":::
 
 1. In the resource menu, under **Security**, select **Identity**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to disable the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png" alt-text="Screenshot that shows the Identity page, under Security, to disable the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-identity.png":::
 
 1. In the **System assigned managed identity** section, select **Off**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png" alt-text="Screenshot that shows the Identity page, to disable the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png" alt-text="Screenshot that shows the Identity page, to disable the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png" alt-text="Screenshot that shows the Save button after having disabled the system assigned managed identity of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png" alt-text="Screenshot that shows the Save button after having disabled the system assigned managed identity of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/disable-system-assigned-managed-identity-status-off-save.png":::
 
 1. When the process completes, a notification informs you that the system assigned managed identity is disabled.
 
@@ -119,17 +119,17 @@ fi
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+1. Locate your server in the portal, if you don't have it open. One way to do it's by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-server.png":::
 
 1. In the resource menu, select **Overview**
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/overview.png" alt-text="Screenshot that shows the Overview page of an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/overview.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/overview.png" alt-text="Screenshot that shows the Overview page of an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/overview.png":::
 
 1. Select **JSON View**.
 
-   :::image type="content" source="media/security-configure-managed-identities-system-assigned/json-view.png" alt-text="Screenshot that shows how to select JSON View on an Azure HorizonDB flexible server instance." lightbox="media/security-configure-managed-identities-system-assigned/json-view.png":::
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/json-view.png" alt-text="Screenshot that shows how to select JSON View on an Azure HorizonDB instance." lightbox="media/security-configure-managed-identities-system-assigned/json-view.png":::
 
 1. In the **Resource JSON** panel that opens, find the **identity** property and, inside it, you can find the **principalId** and **tenantId** for the system assigned managed identity.
 
@@ -156,13 +156,13 @@ az postgres flexible-server identity list \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it is by typing its name in the search bar. When the service with the matching name is shown, select it.
+1. Locate the **Enterprise Applications** service in the portal, if you don't have it open. One way to do it's by typing its name in the search bar. When the service with the matching name is shown, select it.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-enterprise-applications.png" alt-text="Screenshot that shows how to search for the Enterprise applications service using the search bar in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-enterprise-applications.png":::
 
 1. Choose **Application Type == Managed Identity**.
 
-1. Provide the name of your instance of Azure HorizonDB flexible server instance in the **Search by application name or object ID** text box.
+1. Provide the name of your instance of Azure HorizonDB instance in the **Search by application name or object ID** text box.
 
    :::image type="content" source="media/security-configure-managed-identities-system-assigned/search-managed-identity.png" alt-text="Screenshot that shows how to search for a managed identity using the Enterprise applications service interface in the Azure portal." lightbox="media/security-configure-managed-identities-system-assigned/search-managed-identity.png":::
 
@@ -178,4 +178,4 @@ az ad sp list --display-name $server
 
 ## Related content
 
-- [User assigned managed identities](security-configure-managed-identities-user-assigned.md)
+- [User assigned managed identities in Azure HorizonDB](security-configure-managed-identities-user-assigned.md)

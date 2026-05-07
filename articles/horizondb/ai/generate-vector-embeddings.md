@@ -4,7 +4,7 @@ description: Generate vector embeddings using the create_embeddings() function i
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to
@@ -26,7 +26,7 @@ Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings)
 1. Create an OpenAI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
 1. Grant Access to Azure OpenAI in the desired subscription.
 1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
-1. [Create and deploy an Azure OpenAI service resource and a model](/azure/ai-services/openai/how-to/create-resource), for example deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it is needed to create embeddings.
+1. [Create and deploy an Azure OpenAI service resource and a model](/azure/ai-services/openai/how-to/create-resource), for example deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it's needed to create embeddings.
 
 ## Configure OpenAI endpoint and key
 
@@ -109,7 +109,7 @@ CREATE TABLE conference_session_embeddings(
 INSERT INTO conference_sessions
     (title,session_abstract,duration_minutes,publish_date)
 VALUES
-    ('Gen AI with Azure HorizonDB flexible server'
+    ('Gen AI with Azure HorizonDB'
     ,'Learn about building intelligent applications with azure_ai extension and pg_vector'
     , 60, current_timestamp)
     ,('Deep Dive: PostgreSQL database storage engine internals'
@@ -156,7 +156,7 @@ LIMIT 1;
 - [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
 - [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Generative AI with Azure HorizonDB](generative-ai-overview.md)
-- [Recommendation System with Azure HorizonDB and Azure OpenAI](generative-ai-recommendation-system.md)
-- [Create a semantic search with Azure HorizonDB and Azure OpenAI](generative-ai-semantic-search.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/../extensions/how-to-use-pgvector.md)
+- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
+- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
+- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md)
+- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)

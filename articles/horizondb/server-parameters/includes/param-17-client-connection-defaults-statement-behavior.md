@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### bytea_output
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `escape,hex` |
 | Parameter type | dynamic |
 | Documentation | [bytea_output](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-BYTEA-OUTPUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### check_function_bodies
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [check_function_bodies](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CHECK-FUNCTION-BODIES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### client_min_messages
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `debug5,debug4,debug3,debug2,debug1,log,notice,warning,error` |
 | Parameter type | dynamic |
 | Documentation | [client_min_messages](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CLIENT-MIN-MESSAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### createrole_self_grant
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [createrole_self_grant](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CREATEROLE-SELF-GRANT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_table_access_method
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `heap` |
 | Parameter type | read-only |
 | Documentation | [default_table_access_method](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TABLE-ACCESS-METHOD) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_tablespace
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z._]*` |
 | Parameter type | dynamic |
 | Documentation | [default_tablespace](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TABLESPACE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_toast_compression
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `lz4` |
 | Parameter type | read-only |
 | Documentation | [default_toast_compression](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TOAST-COMPRESSION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_transaction_deferrable
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [default_transaction_deferrable](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-DEFERRABLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_transaction_isolation
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `serializable,repeatable read,read committed,read uncommitted` |
 | Parameter type | dynamic |
 | Documentation | [default_transaction_isolation](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-ISOLATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_transaction_read_only
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [default_transaction_read_only](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TRANSACTION-READ-ONLY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### event_triggers
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [event_triggers](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EVENT-TRIGGERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### gin_pending_list_limit
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `64-2097151` |
 | Parameter type | dynamic |
 | Documentation | [gin_pending_list_limit](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-GIN-PENDING-LIST-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### idle_in_transaction_session_timeout
 
@@ -222,11 +176,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [idle_in_transaction_session_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-IDLE-IN-TRANSACTION-SESSION-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### idle_session_timeout
 
@@ -239,11 +189,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [idle_session_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-IDLE-SESSION-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### lock_timeout
 
@@ -256,11 +202,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [lock_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LOCK-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### restrict_nonsystem_relation_kind
 
@@ -273,11 +215,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [restrict_nonsystem_relation_kind](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-RESTRICT-NONSYSTEM-RELATION-KIND) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### row_security
 
@@ -290,28 +228,20 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### search_path
 
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Statement Behavior |
-| Description | Sets the schema search order for names that are not schema-qualified. |
+| Description | Sets the schema search order for names that aren't schema-qualified. |
 | Data type | string |
 | Default value | `\"$user\", public` |
 | Allowed values | `[A-Za-z0-9.\"$,_ -]+` |
 | Parameter type | dynamic |
 | Documentation | [search_path](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SEARCH-PATH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### session_replication_role
 
@@ -324,11 +254,7 @@ ms.custom: automatically generated
 | Allowed values | `origin,replica,local` |
 | Parameter type | dynamic |
 | Documentation | [session_replication_role](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SESSION-REPLICATION-ROLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### statement_timeout
 
@@ -341,11 +267,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [statement_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-STATEMENT-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### temp_tablespaces
 
@@ -358,11 +280,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z._]*` |
 | Parameter type | dynamic |
 | Documentation | [temp_tablespaces](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TEMP-TABLESPACES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transaction_deferrable
 
@@ -375,11 +293,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [transaction_deferrable](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-DEFERRABLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transaction_isolation
 
@@ -392,11 +306,7 @@ ms.custom: automatically generated
 | Allowed values | `read committed` |
 | Parameter type | read-only |
 | Documentation | [transaction_isolation](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-ISOLATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transaction_read_only
 
@@ -409,11 +319,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [transaction_read_only](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-READ-ONLY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### transaction_timeout
 
@@ -426,11 +332,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [transaction_timeout](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TRANSACTION-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_failsafe_age
 
@@ -443,11 +345,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2100000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_failsafe_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-FAILSAFE-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_freeze_min_age
 
@@ -460,11 +358,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1000000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_freeze_min_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-FREEZE-MIN-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_freeze_table_age
 
@@ -477,11 +371,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2000000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_freeze_table_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-FREEZE-TABLE-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_multixact_failsafe_age
 
@@ -494,11 +384,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2100000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_multixact_failsafe_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-FREEZE-TABLE-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_multixact_freeze_min_age
 
@@ -511,11 +397,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1000000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_multixact_freeze_min_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-MULTIXACT-FREEZE-MIN-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### vacuum_multixact_freeze_table_age
 
@@ -528,11 +410,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2000000000` |
 | Parameter type | dynamic |
 | Documentation | [vacuum_multixact_freeze_table_age](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-VACUUM-MULTIXACT-FREEZE-TABLE-AGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### xmlbinary
 
@@ -545,11 +423,7 @@ ms.custom: automatically generated
 | Allowed values | `base64,hex` |
 | Parameter type | dynamic |
 | Documentation | [xmlbinary](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-XMLBINARY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### xmloption
 
@@ -562,9 +436,4 @@ ms.custom: automatically generated
 | Allowed values | `content,document` |
 | Parameter type | dynamic |
 | Documentation | [xmloption](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-XMLOPTION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

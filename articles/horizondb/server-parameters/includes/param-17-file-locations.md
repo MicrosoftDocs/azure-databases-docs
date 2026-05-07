@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### config_file
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `/datadrive/pg/data/postgresql.conf` |
 | Parameter type | read-only |
 | Documentation | [config_file](https://www.postgresql.org/docs/17/runtime-config-file-locations.html#GUC-CONFIG-FILE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### data_directory
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `/datadrive/pg/data` |
 | Parameter type | read-only |
 | Documentation | [data_directory](https://www.postgresql.org/docs/17/runtime-config-file-locations.html#GUC-DATA-DIRECTORY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### external_pid_file
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [external_pid_file](https://www.postgresql.org/docs/17/runtime-config-file-locations.html#GUC-EXTERNAL-PID-FILE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### hba_file
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `/datadrive/pg/data/pg_hba.conf` |
 | Parameter type | read-only |
 | Documentation | [hba_file](https://www.postgresql.org/docs/17/runtime-config-file-locations.html#GUC-HBA-FILE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### ident_file
 
@@ -86,9 +72,4 @@ ms.custom: automatically generated
 | Allowed values | `/datadrive/pg/data/pg_ident.conf` |
 | Parameter type | read-only |
 | Documentation | [ident_file](https://www.postgresql.org/docs/17/runtime-config-file-locations.html#GUC-IDENT-FILE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: PostgreSQL Extension for Visual Studio Code"
-description: Quickstart guide for the PostgreSQL extension for Visual Studio Code with HorizonDB.
+title: "Quickstart: PostgreSQL Extension for Visual Studio Code in Azure HorizonDB"
+description: Quickstart guide for the PostgreSQL extension for Visual Studio Code in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: quickstart
@@ -118,7 +118,7 @@ Write prompts like the following example to receive detailed insights and sugges
 @pgsql tell me about the tables in the HR schema
 ```
 
-For more information, see [Configure GitHub Copilot](vs-code-github-copilot.md).
+For more information, see [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md).
 
 ## Connect to Azure HorizonDB with Visual Studio Code
 
@@ -194,6 +194,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
+- [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](vs-code-overview.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

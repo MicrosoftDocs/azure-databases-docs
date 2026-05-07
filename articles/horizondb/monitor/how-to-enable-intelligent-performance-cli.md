@@ -1,21 +1,21 @@
 ---
-title: Configure intelligent tuning - Azure CLI
-description: This article describes how to configure intelligent tuning in an Azure HorizonDB flexible server instance by using the Azure CLI.
+title: Configure Intelligent Tuning - Azure CLI in Azure HorizonDB
+description: This article describes how to configure intelligent tuning in an Azure HorizonDB instance by using the Azure CLI.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.devlang: azurecli
+ms.devlang: "azurecli"
 ---
 
-# Configure intelligent tuning for Azure HorizonDB  by using the Azure CLI
+# Configure intelligent tuning by using the Azure CLI in Azure HorizonDB
 
-You can verify and update the intelligent tuning configuration for an Azure HorizonDB flexible server instance by using the Azure CLI.
+You can verify and update the intelligent tuning configuration for an Azure HorizonDB instance by using the Azure CLI.
 
 To learn more about intelligent tuning, see the [overview](concepts-intelligent-tuning.md).
 
@@ -25,21 +25,21 @@ To learn more about intelligent tuning, see the [overview](concepts-intelligent-
 - Install or upgrade the Azure CLI to the latest version. See [Install the Azure CLI](/cli/azure/install-azure-cli).
 - Sign in to your Azure account by using the [az login](/cli/azure/reference-index#az-login) command. Note the `id` property, which refers to the subscription ID for your Azure account.
 
-    ```azurecli-interactive
-    az login
-    ````
+  ```azurecli-interactive
+  az login
+  ````
 
 - If you have multiple subscriptions, choose the appropriate subscription in which you want to create the server by using the `az account set` command:
 
-    ```azurecli-interactive
-    az account set --subscription <subscription id>
-    ```
+  ```azurecli-interactive
+  az account set --subscription <subscription id>
+  ```
 
-- If you haven't already created an Azure HorizonDB flexible server instance, create one by using the `az postgres flexible-server create` command:
+- If you haven't already created an Azure HorizonDB instance, create one by using the `az postgres flexible-server create` command:
 
-    ```azurecli-interactive
-    az postgres flexible-server create --resource-group myresourcegroup --name myservername
-    ```
+  ```azurecli-interactive
+  az postgres flexible-server create --resource-group myresourcegroup --name myservername
+  ```
 
 ## Verify current settings
 
@@ -61,7 +61,7 @@ az postgres flexible-server parameter show --resource-group myresourcegroup --se
 
 To enable or disable intelligent tuning, use the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command. You can choose among the following tuning targets: `none`, `Storage-checkpoint_completion_target`, `Storage-min_wal_size`,`Storage-max_wal_size`, `Storage-bgwriter_delay`, `tuning-autovacuum`, and `all`.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier isn't supported.
 
 1. Activate the intelligent tuning feature by using the following command:
@@ -74,15 +74,15 @@ To enable or disable intelligent tuning, use the [az postgres flexible-server pa
 
    - To activate all tuning targets, use the following command:
 
-      ```azurecli-interactive
-      az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value all
-      ```
+     ```azurecli-interactive
+     az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value all
+     ```
 
    - To enable autovacuum tuning only, use the following command:
 
-      ```azurecli-interactive
-      az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum
-      ```
+     ```azurecli-interactive
+     az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum
+     ```
 
    - To activate two tuning targets, use the following command:
 
@@ -96,20 +96,20 @@ To enable or disable intelligent tuning, use the [az postgres flexible-server pa
    az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets
    ```
 
-> [!NOTE]
+> [!NOTE]  
 > Both `intelligent_tuning` and `intelligent_tuning.metric_targets` server parameters are dynamic, meaning no server restart is required when their values are changed.
 
 ### Considerations for selecting values for tuning targets
 
 When you're choosing values from the `intelligent_tuning.metric_targets` server parameter, take the following considerations into account:
 
-* The `NONE` value takes precedence over all other values. If you choose `NONE` alongside any combination of other values, the parameter is perceived as set to `NONE`. This is equivalent to `intelligent_tuning = OFF`, so no tuning occurs.
+- The `NONE` value takes precedence over all other values. If you choose `NONE` alongside any combination of other values, the parameter is perceived as set to `NONE`. This is equivalent to `intelligent_tuning = OFF`, so no tuning occurs.
 
-* The `ALL` value takes precedence over all other values, with the exception of `NONE`. If you choose `ALL` with any combination, barring `NONE`, all the listed parameters undergo tuning.
+- The `ALL` value takes precedence over all other values, with the exception of `NONE`. If you choose `ALL` with any combination, barring `NONE`, all the listed parameters undergo tuning.
 
-* The `ALL` value encompasses all existing metric targets. This value also automatically applies to any new metric targets that you might add in the future. This allows for comprehensive and future-proof tuning of your Azure HorizonDB flexible server instance.
+- The `ALL` value encompasses all existing metric targets. This value also automatically applies to any new metric targets that you might add in the future. This allows for comprehensive and future-proof tuning of your Azure HorizonDB instance.
 
-* If you want to include another tuning target, you need to specify both the existing and new tuning targets. For example, if `bgwriter_delay` is already enabled and you want to add autovacuum tuning, your command should look like this:
+- If you want to include another tuning target, you need to specify both the existing and new tuning targets. For example, if `bgwriter_delay` is already enabled and you want to add autovacuum tuning, your command should look like this:
 
   ```azurecli-interactive
   az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum,Storage-bgwriter_delay
@@ -119,4 +119,4 @@ When you're choosing values from the `intelligent_tuning.metric_targets` server 
 
 ## Related content
 
-- [Perform intelligent tuning in Azure HorizonDB](concepts-intelligent-tuning.md).
+- [Perform intelligent tuning in Azure HorizonDB](concepts-intelligent-tuning.md)

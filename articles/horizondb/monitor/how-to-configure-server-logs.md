@@ -1,21 +1,21 @@
 ---
-title: Download PostgreSQL and upgrade logs
-description: This article describes how to configure, list, and download PostgreSQL and upgrade logs.
+title: Download PostgreSQL and Upgrade Logs in Azure HorizonDB
+description: This article describes how to configure, list, and download PostgreSQL and upgrade logs in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure, list, and download PostgreSQL and upgrade logs.
 ---
 
-# Download PostgreSQL and upgrade logs
+# Download PostgreSQL and upgrade logs in Azure HorizonDB
 
-You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure HorizonDB flexible server instance, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
+You can use PostgreSQL server logs to diagnose specific issues experienced in an Azure HorizonDB instance, and to gain detailed insights about the activities that run on your servers. You can use major version upgrade logs to troubleshoot errors that might occur during an attempt to upgrade your server to a higher major version of PostgreSQL.
 
-By default, capturing server logs for download in an Azure HorizonDB flexible server instance is disabled. However, after you enable the feature, your Azure HorizonDB flexible server instance starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and  download these files that can assist you with any troubleshooting efforts.
+By default, capturing server logs for download in an Azure HorizonDB instance is disabled. However, after you enable the feature, your Azure HorizonDB instance starts capturing the server logs to files, which you can download for detailed inspection. You can use Azure portal or Azure CLI commands to list and download these files that can assist you with any troubleshooting efforts.
 
 This article explains how to enable and disable the feature. It also describes how you can list all available server logs, and how can you download any of them.
 
@@ -25,31 +25,31 @@ This article explains how to enable and disable the feature. It also describes h
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Monitoring** section, select **Server logs**.
+1. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-disabled.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-disabled.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-disabled.png" alt-text="Screenshot showing the Server logs page." lightbox="media/how-to-configure-server-logs/server-logs-page-disabled.png":::
 
-3. Mark the **Capture logs for download** checkbox.
+1. Mark the **Capture logs for download** checkbox.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files for inspection." lightbox="./media/how-to-configure-server-logs/enable-server-logs.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/enable-server-logs.png" alt-text="Screenshot showing how to configure the server for PostgreSQL server logs and major version upgrade logs to be captured. You can download captured log files for inspection." lightbox="media/how-to-configure-server-logs/enable-server-logs.png":::
 
-4. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Log retention period (in days)** slicer to adjust to your desired configuration.
+1. By default, log files are retained for three days, but you can adjust the retention period from 1 to 7 days. Use the **Log retention period (in days)** slicer to adjust to your desired configuration.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/adjust-retention.png" alt-text="Screenshot showing how to adjust the retention period for PostgreSQL server logs and major version upgrade logs captured." lightbox="./media/how-to-configure-server-logs/adjust-retention.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/adjust-retention.png" alt-text="Screenshot showing how to adjust the retention period for PostgreSQL server logs and major version upgrade logs captured." lightbox="media/how-to-configure-server-logs/adjust-retention.png":::
 
-5. Select the **Save** button.
+1. Select the **Save** button.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/save-changes-enable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes-enable.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/save-changes-enable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="media/how-to-configure-server-logs/save-changes-enable.png":::
 
-6. A notification informs you that the service is configuring the capture of logs for download.
+1. A notification informs you that the service is configuring the capture of logs for download.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="./media/how-to-configure-server-logs/notification-configuring.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="media/how-to-configure-server-logs/notification-configuring.png":::
 
-7. Once the operation ends, a notification informs you that the service completed the configuration of the capture of logs for download.
+1. Once the operation ends, a notification informs you that the service completed the configuration of the capture of logs for download.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="./media/how-to-configure-server-logs/notification-configured.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="media/how-to-configure-server-logs/notification-configured.png":::
 
 ### [CLI](#tab/cli-enable-capture-of-logs)
 
@@ -84,11 +84,10 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 
 ---
 
-> [!NOTE]
+> [!NOTE]  
 > * A few minutes after enabling the capture of server logs for download, the first log will be available for download.
 >
 > * Initially, and for approximately one hour, server logs occupy data disk space. Then, they're moved to backup storage and kept there for the configured retention period.
-
 
 ## Steps to disable the capture of PostgreSQL and upgrade logs for download
 
@@ -96,27 +95,27 @@ Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Monitoring** section, select **Server logs**.
+1. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. Clear the **Capture logs for download** checkbox.
+1. Clear the **Capture logs for download** checkbox.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/disable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs stop being captured for download." lightbox="./media/how-to-configure-server-logs/disable-server-logs.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/disable-server-logs.png" alt-text="Screenshot showing how to configure the server so that PostgreSQL server logs and major version upgrade logs stop being captured for download." lightbox="media/how-to-configure-server-logs/disable-server-logs.png":::
 
-4. Select the **Save** button.
+1. Select the **Save** button.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/save-changes-disable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="./media/how-to-configure-server-logs/save-changes-disable.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/save-changes-disable.png" alt-text="Screenshot showing how to save configuration changes made to Server logs page." lightbox="media/how-to-configure-server-logs/save-changes-disable.png":::
 
-5. A notification informs you that the service is configuring the capture of logs for download.
+1. A notification informs you that the service is configuring the capture of logs for download.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="./media/how-to-configure-server-logs/notification-configuring.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/notification-configuring.png" alt-text="Screenshot showing the notification informing that configuration changes are being applied." lightbox="media/how-to-configure-server-logs/notification-configuring.png":::
 
-6. Once the operation ends, a notification informs you that the service completed the configuration of the capture of logs for download.
+1. Once the operation ends, a notification informs you that the service completed the configuration of the capture of logs for download.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="./media/how-to-configure-server-logs/notification-configured.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/notification-configured.png" alt-text="Screenshot showing the notification informing that configuration changes were successfully applied." lightbox="media/how-to-configure-server-logs/notification-configured.png":::
 
 ### [CLI](#tab/cli-disable-capture-of-logs)
 
@@ -140,23 +139,23 @@ az postgres flexible-server parameter \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Monitoring** section, select **Server logs**.
+1. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
-    - **Name**: Name of the log file. The service assigns each log file a name with this pattern `postgresql_yyyy_mm_dd_hh_00_00.log`.
-    - **Last update time**: Timestamp of the last time each log file was uploaded. Log files are uploaded, approximately, every 10 minutes.
-    - **Size**: Size in bytes occupied by the log file.
-    - **Log type**: **Server log** indicates the file corresponds to a PostgreSQL server log. **Upgrade log** indicates the file corresponds to a major version upgrade log.
+1. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Under each available column, you can see the different attributes of each file:
+   - **Name**: Name of the log file. The service assigns each log file a name with this pattern `postgresql_yyyy_mm_dd_hh_00_00.log`.
+   - **Last update time**: Timestamp of the last time each log file was uploaded. Log files are uploaded, approximately, every 10 minutes.
+   - **Size**: Size in bytes occupied by the log file.
+   - **Log type**: **Server log** indicates the file corresponds to a PostgreSQL server log. **Upgrade log** indicates the file corresponds to a major version upgrade log.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting column headers." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting column headers." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-filter-sort.png":::
 
-4. Content of the table isn't automatically updated. To see the most recent information, you can select **Refresh**.
+1. Content of the table isn't automatically updated. To see the most recent information, you can select **Refresh**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-refresh.png" alt-text="Screenshot showing the Server logs page and highlighting the Refresh button to update the contents of the page." lightbox="./media/how-to-configure-server-logs/server-logs-page-refresh.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-refresh.png" alt-text="Screenshot showing the Server logs page and highlighting the Refresh button to update the contents of the page." lightbox="media/how-to-configure-server-logs/server-logs-page-refresh.png":::
 
 ### [CLI](#tab/cli-list-captured-logs)
 
@@ -205,23 +204,23 @@ az postgres flexible-server server-logs list \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Monitoring** section, select **Server logs**.
+1. In the resource menu, under the **Monitoring** section, select **Server logs**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png" alt-text="Screenshot showing the Server logs page with some logs captured." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured.png":::
 
-3. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
+1. A table shows all captured log files which aren't deleted yet. Files which were captured at some point, but were deleted because they exceeded the configured retention period, aren't visible or accessible anymore. Using the **Search for files with names that contain**, **Time range**, and **Log type** boxes, you can define filtering conditions to reduce the logs shown. By selecting a column header, you can sort the list of visible log files, in ascending or descending order, by the value of the attribute represented by the selected header. Identify the log that you want to download and, under the **Actions** column, select **Download**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download one of them." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download one of them." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download.png":::
 
-4. If you want to download multiple log files at one time, select all the files that you want to download, and select **Download** in the toolbar.
+1. If you want to download multiple log files at one time, select all the files that you want to download, and select **Download** in the toolbar.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download-multiple.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download multiple files." lightbox="./media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download-multiple.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download-multiple.png" alt-text="Screenshot showing the Server logs page with some logs captured and highlighting how to download multiple files." lightbox="media/how-to-configure-server-logs/server-logs-page-enabled-with-logs-captured-download-multiple.png":::
 
-5. Content of the table isn't automatically updated. To see the most recent information, you can select **Refresh**.
+1. Content of the table isn't automatically updated. To see the most recent information, you can select **Refresh**.
 
-    :::image type="content" source="./media/how-to-configure-server-logs/server-logs-page-refresh.png" alt-text="Screenshot showing the Server logs page and highlighting the Refresh button to update the contents of the page." lightbox="./media/how-to-configure-server-logs/server-logs-page-refresh.png":::
+   :::image type="content" source="media/how-to-configure-server-logs/server-logs-page-refresh.png" alt-text="Screenshot showing the Server logs page and highlighting the Refresh button to update the contents of the page." lightbox="media/how-to-configure-server-logs/server-logs-page-refresh.png":::
 
 ### [CLI](#tab/cli-download-captured-logs)
 
@@ -245,16 +244,15 @@ az postgres flexible-server server-logs download \
   --name <log1_name log2_name ...logn_name>
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > * For the file names provided for which there're log files with matching names available to download, a local file is created with the same name and contents.
-> 
+>
 > * If any of the file names provided aren't available to download, the command doesn't report any error. It simply doesn't download that file.
 
 ---
 
 ## Related content
 
-- [Configure high availability](../high-availability/how-to-configure-high-availability.md).
-- [Configure scheduled maintenance](../configure-maintain/how-to-configure-scheduled-maintenance.md).
-- [Create alerts on metrics using portal](how-to-alert-on-metrics.md).
-
+- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)
+- [Schedule maintenance in Azure HorizonDB](../configure-maintain/how-to-configure-scheduled-maintenance.md)
+- [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](how-to-alert-on-metrics.md)

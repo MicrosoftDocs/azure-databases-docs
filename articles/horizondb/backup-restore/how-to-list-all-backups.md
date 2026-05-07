@@ -1,19 +1,19 @@
 ---
-title: List all backups
-description: This article describes how to list all backups of an Azure HorizonDB flexible server instance.
+title: List All Backups in Azure HorizonDB
+description: This article describes how to list all backups in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I list all full backups of an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn how can I list all full backups in Azure HorizonDB.
 ---
 
-# List all backups
+# List all backups in Azure HorizonDB
 
-This article provides step-by-step instructions to list all full backups of an Azure HorizonDB flexible server instance.
+This article provides step-by-step instructions to list all full backups in Azure HorizonDB.
 
 ## Steps to list all backups
 
@@ -21,15 +21,15 @@ This article provides step-by-step instructions to list all full backups of an A
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under the **Settings** section, select **Backup and restore**.
+1. In the resource menu, under the **Settings** section, select **Backup and restore**.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
 
-3. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
+1. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="./media/how-to-on-demand-backup/list-on-demand-backups.png":::
+   :::image type="content" source="media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="media/how-to-on-demand-backup/list-on-demand-backups.png":::
 
 ### [CLI](#tab/cli-list-on-demand-backups)
 
@@ -47,5 +47,5 @@ az postgres flexible-server backup list \
 
 ## Related content
 
-- [Perform on-demand backups](how-to-perform-backups.md).
-- [Delete on-demand backups](how-to-delete-backups.md).
+- [Perform on-demand backups in Azure HorizonDB](how-to-perform-backups.md)
+- [Delete on-demand backups in Azure HorizonDB](how-to-delete-backups.md)

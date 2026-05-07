@@ -1,16 +1,16 @@
 ---
-title: Version Policy
+title: Version Policy in Azure HorizonDB
 description: Describes the policy around Postgres major and minor versions for Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Azure HorizonDB version policy
+# Version policy in Azure HorizonDB
 
 This article describes the Azure HorizonDB versioning policy.
 
@@ -24,7 +24,7 @@ The following table provides the retirement details for PostgreSQL major version
 
 | PostgreSQL Version | What's New | Azure Standard Support Start Date | Azure Standard Support End Date |
 | --- | --- | --- | --- |
-| [PostgreSQL 18](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025| 14-Nov-2030 |
+| [PostgreSQL 18](https://www.postgresql.org/about/press/) | [Release notes](https://www.postgresql.org/docs/18/release-18.html) | 25-Sep-2025 | 14-Nov-2030 |
 | [PostgreSQL 17](https://www.postgresql.org/about/news/postgresql-17-released-2936/) | [Release notes](https://www.postgresql.org/docs/17/release-17.html) | 30-Sep-2024 | 8-Nov-2029 |
 | [PostgreSQL 16](https://www.postgresql.org/about/news/postgresql-16-released-2715/) | [Release notes](https://www.postgresql.org/docs/16/release-16.html) | 15-Oct-2023 | 9-Nov-2028 |
 | [PostgreSQL 15](https://www.postgresql.org/about/news/postgresql-15-released-2526/) | [Release notes](https://www.postgresql.org/docs/15/release-15.html) | 15-May-2023 | 11-Nov-2027 |
@@ -33,11 +33,11 @@ The following table provides the retirement details for PostgreSQL major version
 | [PostgreSQL 12](https://www.postgresql.org/about/news/postgresql-12-released-1976/) | [Release notes](https://www.postgresql.org/docs/12/release-12.html) | 22-Sep-2020 | 31-Jul-2026 |
 | [PostgreSQL 11](https://www.postgresql.org/about/news/postgresql-11-released-1894/) | [Release notes](https://www.postgresql.org/docs/11/release-11.html) | 24-Jul-2019 | 31-Jul-2026 |
 
-For options available after the Azure Standard Support End Date, see [Azure HorizonDB Extended Support](./extended-support.md).
+For options available after the Azure Standard Support End Date, see [Extended support in Azure HorizonDB](extended-support.md).
 
 ## Minor version support
 
-An Azure HorizonDB flexible server instance automatically upgrades minor versions to the Azure preferred PostgreSQL version during periodic maintenance.
+An Azure HorizonDB instance automatically upgrades minor versions to the Azure preferred PostgreSQL version during periodic maintenance.
 
 ## Retired PostgreSQL engine versions not supported in Azure HorizonDB
 
@@ -51,7 +51,7 @@ You can continue to use the retired version in Azure HorizonDB. However, after t
 
 - New service capabilities developed by Azure HorizonDB server might only be available to supported database server versions.
 
-- Uptime SLAs apply solely to Azure HorizonDB flexible server instance service-related issues and don't apply to any downtime caused by database engine-related bugs.
+- Uptime SLAs apply solely to Azure HorizonDB instance service-related issues and don't apply to any downtime caused by database engine-related bugs.
 
 - In rare cases where a critical vulnerability in a retired PostgreSQL version poses a threat to the service, Azure might stop affected servers to protect the platform. In such cases, you're notified to upgrade the server before bringing the server online.
 
@@ -64,4 +64,4 @@ Before PostgreSQL version 10, the [PostgreSQL versioning policy](https://www.pos
 ## Related content
 
 - [Supported versions of PostgreSQL in Azure HorizonDB](concepts-supported-versions.md)
-- [Azure HorizonDB extended support](./extended-support.md)
+- [Extended support in Azure HorizonDB](extended-support.md)

@@ -1,43 +1,43 @@
 ---
-title: Scale Out With Elastic Clusters
-description: This article describes how to scale out an Azure HorizonDB flexible server elastic cluster.
+title: Scale out with Elastic Clusters in Azure HorizonDB
+description: This article describes how to scale out an Azure HorizonDB elastic cluster.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale out an Azure HorizonDB elastic cluster.
 ---
 
-# Scale out with elastic clusters
+# Scale out with elastic clusters in Azure HorizonDB
 
-This article provides step-by-step instructions to perform horizontal scaling operations for your Azure HorizonDB flexible server elastic cluster.
+This article provides step-by-step instructions to perform horizontal scaling operations for your Azure HorizonDB elastic cluster.
 
 Azure HorizonDB Elastic Clusters provides horizontal scaling by adding more worker nodes to your cluster. When you scale your PostgreSQL Elastic Cluster, you can handle growth by giving your database more resources or more nodes for parallel query processing. You get all these benefits with minimal downtime and built-in shard management.
 
 ## Scale-out methods
 
-Use one of several methods to add worker nodes to your elastic cluster—including the Azure portal, the Azure CLI, or automation via ARM templates and APIs—depending on your workflow and automation needs. The following sections provide step‑by‑step instructions for the portal and CLI, and explain post‑scale rebalancing. 
+Use one of several methods to add worker nodes to your elastic cluster-including the Azure portal, the Azure CLI, or automation via ARM templates and APIs-depending on your workflow and automation needs. The following sections provide step-by-step instructions for the portal and CLI, and explain post-scale rebalancing.
 
 #### [Portal](#tab/portal-scale-compute)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Open the resource: In the Azure portal, navigate to your Azure HorizonDB – Flexible Server elastic cluster.
+1. Open the resource: In the Azure portal, navigate to your Azure HorizonDB - Flexible Server elastic cluster.
 
 1. Go to Compute + Storage: Under the Settings section, select Compute + storage. This page displays the current configuration of your cluster's nodes.
 
-   :::image type="content" source="./media/how-to-scale-out/overview.png" alt-text="Screenshot showing the Overview page of an elastic cluster." lightbox="./media/how-to-scale-out/overview.png":::
+   :::image type="content" source="media/how-to-scale-out/overview.png" alt-text="Screenshot showing the Overview page of an elastic cluster." lightbox="media/how-to-scale-out/overview.png":::
 
 1. Adjust Node Count: Find the Node count field. Increase the number to the desired total nodes (between 2 and 20 for most clusters at GA). For example, to double a four node cluster to eight nodes, increase the slider to 8. Azure provisions additional worker nodes to reach this count.
 
-   :::image type="content" source="./media/how-to-scale-out/scale-out.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-out/scale-out.png":::
+   :::image type="content" source="media/how-to-scale-out/scale-out.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="media/how-to-scale-out/scale-out.png":::
 
 1. Apply changes: Select Save. Confirm the scale-out operation when prompted. Azure begins adding nodes to your cluster. This operation is performed online and typically doesn't interrupt existing connections or queries. The deployment might take a few minutes. You can monitor progress in the portal notifications. Once complete, your cluster's node count reflects the new value.
 
-> [!NOTE]
+> [!NOTE]  
 > You must explicitly trigger the shard rebalancing background process to allow existing data to be redistributed across all of your nodes. This operation involves no downtime for reads and writes.
 
 #### [CLI](#tab/cli-scale-compute)
@@ -53,7 +53,9 @@ az postgres flexible-server update `
 
 ---
 
-## Rebalancing
+<a id="rebalancing"></a>
+
+## Rebalance
 
 After adding nodes to your cluster, any new data modifications or newly added distributed tables use all of the available nodes. Existing data shards stay where they are until they're redistributed. Online rebalancing ensures that reads and writes from the application continue with minimal interruption while data is being moved.
 
@@ -97,6 +99,6 @@ By using the preceding scaling techniques, Azure HorizonDB elastic clusters give
 
 ## Related content
 
-- [Compute options](../compute-storage/concepts-compute.md)
-- [Limits in Azure HorizonDB flexible server](../configure-maintain/concepts-limits.md)
+- [Compute options in Azure HorizonDB](../compute-storage/concepts-compute.md)
+- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)
 - [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)

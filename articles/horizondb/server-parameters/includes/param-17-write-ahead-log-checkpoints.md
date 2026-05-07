@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### checkpoint_completion_target
 
 | Attribute | Value |
@@ -16,13 +18,9 @@ ms.custom: automatically generated
 | Data type | numeric |
 | Default value | `0.9` |
 | Allowed values | `0-1` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [checkpoint_completion_target](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-CHECKPOINT-COMPLETION-TARGET) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### checkpoint_flush_after
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `32` |
 | Parameter type | read-only |
 | Documentation | [checkpoint_flush_after](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-CHECKPOINT-FLUSH-AFTER) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### checkpoint_timeout
 
@@ -50,15 +44,13 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `600` |
 | Allowed values | `30-86400` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [checkpoint_timeout](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-CHECKPOINT-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="checkpoint_warning"></a>
 
-
-### checkpoint_warning
+### checkpoint_warn
 
 | Attribute | Value |
 | --- | --- |
@@ -69,11 +61,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [checkpoint_warning](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-CHECKPOINT-WARNING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_wal_size
 
@@ -86,11 +74,7 @@ ms.custom: automatically generated
 | Allowed values | `32-65536` |
 | Parameter type | dynamic |
 | Documentation | [max_wal_size](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-MAX-WAL-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-max-wal-size](./server-parameters-azure-notes-max-wal-size.md)]
-
-
 
 ### min_wal_size
 
@@ -103,9 +87,4 @@ ms.custom: automatically generated
 | Allowed values | `32-2097151` |
 | Parameter type | dynamic |
 | Documentation | [min_wal_size](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-MIN-WAL-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

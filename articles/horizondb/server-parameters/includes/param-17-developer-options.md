@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### allow_in_place_tablespaces
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [allow_in_place_tablespaces](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-IN-PLACE-TABLESPACES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### allow_system_table_mods
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [allow_system_table_mods](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ALLOW-SYSTEM-TABLE-MODS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### backtrace_functions
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [backtrace_functions](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-BACKTRACE-FUNCTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### debug_discard_caches
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [debug_discard_caches](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-DISCARD-CACHES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### debug_io_direct
 
@@ -86,13 +72,11 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [debug_io_direct](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-IO-DIRECT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="debug_logical_replication_streaming"></a>
 
-
-### debug_logical_replication_streaming
+### debug_logical_replication_stream
 
 | Attribute | Value |
 | --- | --- |
@@ -103,11 +87,7 @@ ms.custom: automatically generated
 | Allowed values | `buffered` |
 | Parameter type | read-only |
 | Documentation | [debug_logical_replication_streaming](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-LOGICAL-REPLICATION-STREAMING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### debug_parallel_query
 
@@ -120,11 +100,7 @@ ms.custom: automatically generated
 | Allowed values | `off,on,regress` |
 | Parameter type | dynamic |
 | Documentation | [debug_parallel_query](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-DEBUG-PARALLEL-QUERY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### ignore_checksum_failure
 
@@ -137,45 +113,33 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [ignore_checksum_failure](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-IGNORE-CHECKSUM-FAILURE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### ignore_invalid_pages
 
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Continues recovery after an invalid pages failure. Detection of WAL records having references to invalid pages during recovery causes PostgreSQL to raise a PANIC-level error, aborting the recovery. Setting \"ignore_invalid_pages\" to true causes the system to ignore invalid page references in WAL records (but still report a warning), and continue recovery. This behavior may cause crashes, data loss, propagate or hide corruption, or other serious problems. Only has an effect during recovery or in standby mode. |
+| Description | Continues recovery after an invalid pages failure. Detection of WAL records having references to invalid pages during recovery causes PostgreSQL to raise a PANIC-level error, aborting the recovery. Setting \"ignore_invalid_pages\" to true causes the system to ignore invalid page references in WAL records (but still report a warning), and continue recovery. This behavior might cause crashes, data loss, propagate or hide corruption, or other serious problems. Only has an effect during recovery or in standby mode. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [ignore_invalid_pages](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-IGNORE-INVALID-PAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### ignore_system_indexes
 
 | Attribute | Value |
 | --- | --- |
 | Category | Developer Options |
-| Description | Disables reading from system indexes. It does not prevent updating the indexes, so it is safe to use. The worst consequence is slowness. |
+| Description | Disables reading from system indexes. It doesn't prevent updating the indexes, so it's safe to use. The worst consequence is slowness. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [ignore_system_indexes](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-IGNORE-SYSTEM-INDEXES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_debugging_support
 
@@ -188,11 +152,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [jit_debugging_support](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-JIT-DEBUGGING-SUPPORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_dump_bitcode
 
@@ -205,11 +165,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [jit_dump_bitcode](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-JIT-DUMP-BITCODE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_expressions
 
@@ -222,11 +178,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [jit_expressions](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-JIT-EXPRESSIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_profiling_support
 
@@ -239,13 +191,11 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [jit_profiling_support](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-JIT-PROFILING-SUPPORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="jit_tuple_deforming"></a>
 
-
-### jit_tuple_deforming
+### jit_tuple_deform
 
 | Attribute | Value |
 | --- | --- |
@@ -256,11 +206,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [jit_tuple_deforming](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-JIT-TUPLE-DEFORMING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### post_auth_delay
 
@@ -273,11 +219,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [post_auth_delay](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-POST-AUTH-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### pre_auth_delay
 
@@ -290,11 +232,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [pre_auth_delay](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-PRE-AUTH-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### remove_temp_files_after_crash
 
@@ -307,11 +245,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [remove_temp_files_after_crash](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-REMOVE-TEMP-FILES-AFTER-CRASH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### send_abort_for_crash
 
@@ -324,11 +258,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [send_abort_for_crash](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-SEND-ABORT-FOR-CRASH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### send_abort_for_kill
 
@@ -341,11 +271,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [send_abort_for_kill](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-SEND-ABORT-FOR-KILL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### trace_connection_negotiation
 
@@ -358,11 +284,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [trace_connection_negotiation](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-TRACE-NOTIFY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### trace_notify
 
@@ -375,11 +297,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [trace_notify](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-TRACE-NOTIFY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### trace_sort
 
@@ -392,13 +310,11 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [trace_sort](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-TRACE-SORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
+<a id="wal_consistency_checking"></a>
 
-
-### wal_consistency_checking
+### wal_consistency_check
 
 | Attribute | Value |
 | --- | --- |
@@ -409,11 +325,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [wal_consistency_checking](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-WAL-CONSISTENCY-CHECKING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### zero_damaged_pages
 
@@ -426,9 +338,4 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [zero_damaged_pages](https://www.postgresql.org/docs/17/runtime-config-developer.html#GUC-ZERO-DAMAGED-PAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

@@ -1,10 +1,10 @@
 ---
-title: Monitoring and Metrics
-description: Review the monitoring and metrics features in an Azure HorizonDB flexible server instance.
+title: Monitoring and Metrics in Azure HorizonDB
+description: Review the monitoring and metrics features in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/03/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -13,18 +13,18 @@ ai-usage: ai-assisted
 
 # Monitor metrics in Azure HorizonDB
 
-Monitoring data about your servers helps you troubleshoot and optimize for your workload. Your Azure HorizonDB flexible server instance provides various monitoring options to give you insight into how your server is performing.
+Monitoring data about your servers helps you troubleshoot and optimize for your workload. Azure HorizonDB provides various monitoring options to give you insight into how your server is performing.
 
 ## Metrics
 
-Azure HorizonDB provides various metrics that give insight into the behavior of the resources that support the Azure HorizonDB flexible server instance. Each metric is emitted at a one-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
+Azure HorizonDB provides various metrics that give insight into the behavior of the resources that support the Azure HorizonDB instance. Each metric is emitted at a one-minute interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Other options include setting up automated actions, performing advanced analytics, and archiving the history. For more information, see the [Azure Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 
 > [!NOTE]  
 > While metrics are stored for 93 days, you can only query (in the Metrics tile) for a maximum of 30 days' worth of data on any single chart. If you see a blank chart or your chart displays only part of metric data, verify that the difference between start and end dates in the time picker doesn't exceed the 30-day interval. After you select a 30-day interval, you can pan the chart to view the full retention window.
 
 ### Default metrics
 
-The following metrics are available for an Azure HorizonDB flexible server instance:
+The following metrics are available for an Azure HorizonDB instance:
 
 | Display name | Metric ID | Unit | Description | Default enabled |
 | --- | --- | --- | --- | --- |
@@ -56,9 +56,11 @@ The following metrics are available for an Azure HorizonDB flexible server insta
 
 ### Enhanced metrics
 
-Use enhanced metrics for your Azure HorizonDB flexible server instance to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
+Use enhanced metrics for your Azure HorizonDB instance to get fine-grained monitoring and alerting on databases. Each metric is emitted at a *1-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metrics. Some enhanced metrics include a `Dimension` parameter that you can use to split and filter metrics data by using a dimension like database name or state.
 
-#### Enabling enhanced metrics
+<a id="enabling-enhanced-metrics"></a>
+
+#### Enable enhanced metrics
 
 - Most of these new metrics are *disabled* by default. The rightmost column in the following tables indicates whether each metric is enabled by default or not. A few metrics are enabled by default.
 - To enable metrics that aren't enabled by default, set the server parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
@@ -148,7 +150,7 @@ Choose from the following categories of enhanced metrics:
 
 ### Autovacuum metrics
 
-Use autovacuum metrics to monitor and tune autovacuum performance for your Azure HorizonDB flexible server instance. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
+Use autovacuum metrics to monitor and tune autovacuum performance for your Azure HorizonDB instance. Each metric is emitted at a *30-minute* interval and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can create alerts for specific metrics, and you can split and filter metrics data by using the `DatabaseName` dimension.
 
 #### How to enable autovacuum metrics
 
@@ -194,10 +196,10 @@ Use PgBouncer metrics to monitor the performance of the PgBouncer process. These
 
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
-| **Active client connections** | `client_connections_active` | Count | Connections from clients that are associated with an Azure HorizonDB flexible server instance connection. | DatabaseName | No |
-| **Waiting client connections** | `client_connections_waiting` | Count | Connections from clients that are waiting for an Azure HorizonDB flexible server instance connection to service them. | DatabaseName | No |
-| **Active server connections** | `server_connections_active` | Count | Connections to an Azure HorizonDB flexible server instance that are in use by a client connection. | DatabaseName | No |
-| **Idle server connections** | `server_connections_idle` | Count | Connections to an Azure HorizonDB flexible server instance that are idle and ready to service a new client connection. | DatabaseName | No |
+| **Active client connections** | `client_connections_active` | Count | Connections from clients that are associated with an Azure HorizonDB instance connection. | DatabaseName | No |
+| **Waiting client connections** | `client_connections_waiting` | Count | Connections from clients that are waiting for an Azure HorizonDB instance connection to service them. | DatabaseName | No |
+| **Active server connections** | `server_connections_active` | Count | Connections to an Azure HorizonDB instance that are in use by a client connection. | DatabaseName | No |
+| **Idle server connections** | `server_connections_idle` | Count | Connections to an Azure HorizonDB instance that are idle and ready to service a new client connection. | DatabaseName | No |
 | **Total pooled connections** | `total_pooled_connections` | Count | Current number of pooled connections. | DatabaseName | No |
 | **Number of connection pools** | `num_pools` | Count | Total number of connection pools. | DatabaseName | No |
 
@@ -209,7 +211,7 @@ Use PgBouncer metrics to monitor the performance of the PgBouncer process. These
 
 ### Database availability metric
 
-The `is-db-alive` metric is a database server availability metric for an Azure HorizonDB flexible server instance. It returns `1` for available and `0` for not available. Each metric is emitted at a one-minute frequency and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metric.
+The `is-db-alive` metric is a database server availability metric for an Azure HorizonDB instance. It returns `1` for available and `0` for not available. Each metric is emitted at a one-minute frequency and has up to [93 days of retention](/azure/azure-monitor/essentials/data-platform-metrics#retention-of-metrics). You can configure alerts on the metric.
 
 | Display Name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
@@ -261,7 +263,7 @@ The dashboards visualize core Azure Monitor platform metrics, including:
 - Network
 - Transactions
 
-When you configure diagnostic settings to stream PostgreSQL logs to Azure Monitor Logs, the dashboards can display metrics and logs side by side. This capability enables you to correlate performance spikes with specific queries. For more information about enabling log streaming, see [Azure HorizonDB resource logs](#azure-database-for-postgresql-resource-logs).
+When you configure diagnostic settings to stream PostgreSQL logs to Azure Monitor Logs, the dashboards can display metrics and logs side by side. This capability enables you to correlate performance spikes with specific queries. For more information about enabling log streaming, see [Azure HorizonDB resource logs](#azure-horizondb-resource-logs).
 
 The embedded dashboards are Azure resources scoped to a subscription and resource group, and access is governed by Azure role-based access control (RBAC). You can export and deploy dashboards across environments by using Azure Resource Manager templates.
 
@@ -353,14 +355,14 @@ The following logs can be streamed to an external destination like a Log Analyti
 
 ## Server logs
 
-The Server Logs feature in your Azure HorizonDB flexible server instance allows you to enable, configure, and **download server logs**. These logs are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature is disabled. However, after you enable the feature, your Azure HorizonDB flexible server instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
+The Server Logs feature in your Azure HorizonDB instance allows you to enable, configure, and **download server logs**. These logs are essential for troubleshooting and performing historical analyses of server activity. By default, the server logs feature is disabled. However, after you enable the feature, your Azure HorizonDB instance starts capturing events of the selected log type and writes them to a file. You can then use the Azure portal or the Azure CLI to download the files to assist with your troubleshooting efforts.
 
 ### Server logs retention
 
-Server logs have a minimum retention of one day and a maximum retention of seven days. If you exceed this limit, the oldest logs are deleted to make room for new logs. For details on enabling and managing server logs, see [Configure capture of PostgreSQL server logs and major version upgrade logs](how-to-configure-server-logs.md).
+Server logs have a minimum retention of one day and a maximum retention of seven days. If you exceed this limit, the oldest logs are deleted to make room for new logs. For details on enabling and managing server logs, see [Download PostgreSQL and upgrade logs in Azure HorizonDB](how-to-configure-server-logs.md).
 
 ## Related content
 
-- [Configure logging and access logs in Azure HorizonDB](how-to-configure-and-access-logs.md)
+- [Configure and access logs in Azure HorizonDB](how-to-configure-and-access-logs.md)
 - [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/)
 - [Audit logging in Azure HorizonDB](../security/security-audit.md)

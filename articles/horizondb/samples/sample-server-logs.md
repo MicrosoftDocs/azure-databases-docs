@@ -1,19 +1,19 @@
 ---
-title: Azure CLI Script - Download Server Logs
-description: This sample Azure CLI script shows how to enable and download the server logs of an Azure HorizonDB flexible server instance.
+title: Azure CLI Script - Download Server Logs in Azure HorizonDB
+description: This sample Azure CLI script shows how to enable and download the server logs of an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
-ms.devlang: azurecli
+ms.devlang: "azurecli"
 ---
 
-# Enable and download server slow query logs of an Azure HorizonDB flexible server instance using Azure CLI
+# Enable and download server slow query logs of an Azure HorizonDB instance using Azure CLI in Azure HorizonDB
 
-This sample CLI script enables and downloads the slow query logs of a single Azure HorizonDB flexible server instance.
+This sample CLI script enables and downloads the slow query logs of a single Azure HorizonDB instance.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -42,7 +42,7 @@ This script uses the commands outlined in the following table:
 | **Command** | **Notes** |
 | --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgres server create](/cli/azure/postgres/server) | Creates an Azure HorizonDB flexible server instance that hosts the databases. |
+| [az postgres server create](/cli/azure/postgres/server) | Creates an Azure HorizonDB instance that hosts the databases. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Lists the configuration values for a server. |
 | [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Updates the configuration of a server. |
 | [az postgres server-logs list](/cli/azure/postgres/server-logs) | Lists log files for a server. |
@@ -52,5 +52,5 @@ This script uses the commands outlined in the following table:
 ## Related content
 
 - [Azure CLI documentation](/cli/azure)
-- {[Azure CLI samples for Azure HorizonDB flexible server instance](../sample-scripts-azure-cli.md)}
-- {[Configure and access server logs in the Azure portal](../howto-configure-server-logs-in-portal.md)}
+- [Azure CLI samples for Azure HorizonDB instance](/azure/postgresql/single-server/sample-scripts-azure-cli)
+- [Download PostgreSQL and upgrade logs in Azure HorizonDB](../monitor/how-to-configure-server-logs.md)

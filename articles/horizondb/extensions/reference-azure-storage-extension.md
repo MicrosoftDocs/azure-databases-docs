@@ -1,19 +1,19 @@
 ---
-title: Function Reference for Azure Storage Extension
+title: Reference of Functions Provided by the Azure Storage Extension in Azure HorizonDB
 description: Learn everything about the functions provided by the Azure Storage extension in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/29/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
 ms.custom:
-- ignite-2024
-- sfi-image-nochange
+  - ignite-2024
+  - sfi-image-nochange
 ---
 
-# Reference of functions provided by the Azure Storage extension in Azure HorizonDB 
+# Reference of functions provided by the Azure Storage extension in Azure HorizonDB
 
 Following is the list of functions provided by the Azure Storage extension:
 
@@ -82,7 +82,7 @@ Any user or role can invoke this function.
 
 #### Return type
 
-`jsonb` 
+`jsonb`
 
 ### azure_storage.account_options_credentials
 
@@ -112,7 +112,7 @@ Any user or role can invoke this function.
 
 #### Return type
 
-`jsonb` 
+`jsonb`
 
 ### azure_storage.account_options
 
@@ -146,7 +146,7 @@ Any user or role can invoke this function.
 
 #### Return type
 
-`jsonb` 
+`jsonb`
 
 ### azure_storage.account_remove
 
@@ -168,7 +168,7 @@ Must be a member of `azure_storage_admin`.
 
 #### Return type
 
-`VOID` 
+`VOID`
 
 ### azure_storage.account_user_add
 
@@ -197,13 +197,13 @@ Must be a member of `azure_storage_admin`.
 
 #### Return type
 
-`VOID` 
+`VOID`
 
 ### azure_storage.account_user_remove
 
 Function that allows revoking a PostgreSQL user or role access to a storage account through the functions provided by the `azure_storage` extension.
 
-> [!NOTE]
+> [!NOTE]  
 > The execution of this function only succeeds if the storage account whose name is being passed as the first argument has already been created using [azure_storage.account_add](#azure_storageaccount_add), and if the user or role whose name is passed as the second argument still exists.
 > When a user or role is dropped from the server, by executing `DROP USER | ROLE`, the permissions that were granted on any reference to Azure Storage accounts are also automatically eliminated.
 
@@ -227,7 +227,7 @@ Must be a member of `azure_storage_admin`.
 
 #### Return type
 
-`VOID` 
+`VOID`
 
 ### azure_storage.account_list
 
@@ -304,14 +304,15 @@ The URI for a container is similar to:
 
 `text` the content type specified for the blob. The default content type is `application/octet-stream`.
 
-##### content_encoding
+<a id="content_encoding"></a>
+
+##### content_encod
 
 `text` the Content-Encoding property of a blob that Azure Storage allows you to define. For compressed content, you could set the property to be Gzip. When the browser accesses the content, it automatically decompresses the content.
 
 ##### content_hash
 
 `text` the hash used to verify the integrity of the blob during transport. When this header is specified, the storage service checks the provided hash with one computed from content. If the two hashes don't match, the operation fails with error code 400 (Bad Request).
-
 
 ### azure_storage.blob_get
 
@@ -363,7 +364,7 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.parquet`, it assumes `parquet`. If ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.parquet`, it assumes `parquet`. If ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
 | `binary` | | Binary PostgreSQL COPY format. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `parquet` | | Parquet format. |
@@ -374,15 +375,15 @@ The URI for a container is similar to:
 
 `text` the specification of compression type. Can be set to any of the following values:
 
-| **Format** | **Default** | **Description**                                                                                                                                                                      |
+| **Format** | **Default** | **Description** |
 | --- | --- | --- |
 | `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
-| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder.|
+| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 | `gzip` | | Forces using gzip compression algorithm to compress the blob. |
-| `lz4` | | Forces using lz4 compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `lz4` | | Forces using lz4 compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 | `none` | | Forces to not compress the blob. |
-| `snappy` | | Forces using snappy compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
-| `zstd` | | Forces using zstd compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `snappy` | | Forces using snappy compression algorithm to compress the blob. Only supported by `parquet` encoder. |
+| `zstd` | | Forces using zstd compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 
 The extension doesn't support any other compression types.
 
@@ -392,8 +393,8 @@ The extension doesn't support any other compression types.
 
 #### Return type
 
-`SETOF record` 
-`SETOF  anyelement`
+`SETOF record`  
+`SETOF anyelement`
 
 ### azure_storage.blob_put
 
@@ -461,26 +462,26 @@ The URI for a container is similar to:
 
 | **Format** | **Default** | **Description** |
 | --- | --- | --- |
-| `auto` | `true`      | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes  `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
+| `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.csv` or `.csv.gz`, it assumes `csv`. If ends with `.tsv` or `.tsv.gz`, it assumes `tsv`. If ends with `.json`, `.json.gz`, `.xml`, `.xml.gz`, `.txt`, or `.txt.gz`, it assumes `text`. |
 | `binary` | | Binary PostgreSQL COPY format. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `parquet` | | Parquet format. |
-| `text` \| `xml` \| `json` | | A file containing a single text value. |
+| `text`, `xml`, `json` | | A file containing a single text value. |
 | `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
 
 `text` the specification of compression type. Can be set to any of the following values:
 
-| **Format** | **Default** | **Description**                                                                                                                                                                      |
+| **Format** | **Default** | **Description** |
 | --- | --- | --- |
 | `auto` | `true` | Infers the value based on the last series of characters assigned to the name of the blob. If the blob name ends with `.gz`, it assumes `gzip`. Otherwise, it assumes `none`. |
-| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder.|
+| `brotli` | | Forces using brotli compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 | `gzip` | | Forces using gzip compression algorithm to compress the blob. |
-| `lz4` | | Forces using lz4 compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `lz4` | | Forces using lz4 compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 | `none` | | Forces to not compress the blob. |
-| `snappy` | | Forces using snappy compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
-| `zstd` | | Forces using zstd compression algorithm to compress the blob.  Only supported by `parquet` encoder.|
+| `snappy` | | Forces using snappy compression algorithm to compress the blob. Only supported by `parquet` encoder. |
+| `zstd` | | Forces using zstd compression algorithm to compress the blob. Only supported by `parquet` encoder. |
 
 The extension doesn't support any other compression types.
 
@@ -510,13 +511,15 @@ Any user or role can invoke this function.
 
 `text` the character that separates columns within each row (line) of the file. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY delimiter must be a single one-byte character` error.
 
-##### null_string
+<a id="null_string"></a>
+
+##### null_str
 
 `text` the string that represents a null value. The default is \N (backslash-N) in text format, and an unquoted empty string in CSV format. You might prefer an empty string even in text format for cases where you don't want to distinguish nulls from empty strings.
 
 ##### header
 
-`boolean` flag that indicates if  the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
+`boolean` flag that indicates if the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
 
 ##### quote
 
@@ -538,7 +541,9 @@ Any user or role can invoke this function.
 
 `text[]` match the specified columns' values against the null string, even if quoted, and if a match is found, set the value to NULL. In the default case where the null string is empty, it converts a quoted empty string into NULL.
 
-##### content_encoding
+<a id="content_encoding"></a>
+
+##### content_encod
 
 `text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
 
@@ -582,13 +587,15 @@ Any user or role can invoke this function.
 
 `text` the character that separates columns within each row (line) of the file. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY delimiter must be a single one-byte character` error.
 
-##### null_string
+<a id="null_string"></a>
+
+##### null_str
 
 `text` the string that represents a null value. The default is \N (backslash-N) in text format, and an unquoted empty string in CSV format. You might prefer an empty string even in text format for cases where you don't want to distinguish nulls from empty strings.
 
 ##### header
 
-`boolean` flag that indicates if  the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
+`boolean` flag that indicates if the file contains a header line with the names of each column in the file. On output, the initial line contains the column names from the table.
 
 ##### quote
 
@@ -606,7 +613,9 @@ Any user or role can invoke this function.
 
 `text[]` match the specified columns' values against the null string, even if quoted, and if a match is found, set the value to NULL. In the default case where the null string is empty, it converts a quoted empty string into NULL.
 
-##### content_encoding
+<a id="content_encoding"></a>
+
+##### content_encod
 
 `text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
 
@@ -632,11 +641,15 @@ Any user or role can invoke this function.
 
 `text` the character that separates columns within each row (line) of the file. It must be a single 1-byte character. Although this function supports delimiters of any number of characters, if you try to use more than a single 1-byte character, PostgreSQL reports back a `COPY delimiter must be a single one-byte character` error.
 
-##### null_string
+<a id="null_string"></a>
+
+##### null_str
 
 `text` the string that represents a null value. The default is \N (backslash-N) in text format, and an unquoted empty string in CSV format. You might prefer an empty string even in text format for cases where you don't want to distinguish nulls from empty strings.
 
-##### content_encoding
+<a id="content_encoding"></a>
+
+##### content_encod
 
 `text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
 
@@ -658,7 +671,9 @@ Any user or role can invoke this function.
 
 #### Arguments
 
-##### content_encoding
+<a id="content_encoding"></a>
+
+##### content_encod
 
 `text` name of the encoding with which the file is encoded. If the option is omitted, the current client encoding is used.
 
@@ -668,8 +683,8 @@ Any user or role can invoke this function.
 
 ## Related content
 
-- [Azure Storage extension](concepts-storage-extension.md).
-- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
-- [Quickstart examples](quickstart-azure-storage-extension.md).
-- [Troubleshoot errors](../troubleshoot/troubleshoot-azure-storage-extension.md).
-- [Extensions and modules](../extensions/concepts-extensions.md).
+- [Azure storage extension in Azure HorizonDB](concepts-storage-extension.md)
+- [Configure the Azure Storage extension in Azure HorizonDB](how-to-configure-azure-storage-extension.md)
+- [Quickstart examples for Azure Storage extension in Azure HorizonDB](quickstart-azure-storage-extension.md)
+- [Troubleshoot the Azure Storage extension in Azure HorizonDB](../troubleshoot/troubleshoot-azure-storage-extension.md)
+- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)

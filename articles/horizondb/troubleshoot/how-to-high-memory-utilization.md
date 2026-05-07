@@ -1,18 +1,18 @@
 ---
-title: High memory utilization
-description: Troubleshooting guide for high memory utilization.
+title: High Memory Utilization in Azure HorizonDB
+description: Troubleshooting guide for high memory utilization in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/10/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high memory utilization in Azure HorizonDB 
+# Troubleshoot high memory utilization in Azure HorizonDB
 
-This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [Azure HorizonDB](../overview.md).
+This article describes how to identify the root cause of high memory utilization. It also provides possible remedial actions to control CPU utilization when using [What is Azure HorizonDB?](../overview.md)
 
 In this article, you can learn:
 
@@ -20,7 +20,9 @@ In this article, you can learn:
 - About tools to identify high memory utilization.
 - Reasons for high memory utilization and remedial actions.
 
-## Troubleshooting guides
+<a id="troubleshooting-guides"></a>
+
+## Troubleshoot guides
 
 Using the **Troubleshooting guides** you can identify the probable root cause of a high CPU scenario, and can read through recommendations to mitigate the problem found.
 
@@ -34,11 +36,11 @@ Consider the use of the following list of tools to identify high CPU utilization
 
 Azure Metrics is a good starting point to monitor the percentage of memory in use for a specific period.
 
-For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](../monitor/how-to-alert-on-metrics.md).
+For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md).
 
 ### Query store
 
-Query store automatically captures the history of queries and runtime statistics, and it retains them for your review. It slices the data by time, so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure HorizonDB flexible server instance.
+Query store automatically captures the history of queries and runtime statistics, and it retains them for your review. It slices the data by time, so that you can see temporal usage patterns. Data for all users, databases, and queries is stored in a database named `azure_sys` in the Azure HorizonDB instance.
 
 Query store can correlate wait event information with query run time statistics. Use query store to identify queries that have high memory consumption during the period of interest.
 
@@ -64,8 +66,8 @@ For more information about the **EXPLAIN ANALYZE** command, review its [document
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md).
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md)
+- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md)
+- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

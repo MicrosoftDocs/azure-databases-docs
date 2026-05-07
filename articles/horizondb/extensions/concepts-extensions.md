@@ -1,17 +1,17 @@
 ---
-title: Extensions and modules
-description: Learn about extensions and modules in an Azure HorizonDB flexible server instance.
+title: Extensions and Modules in Azure HorizonDB
+description: Learn about extensions and modules in an Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 10/14/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: concept-article
-# customer intent: As a user, I want to learn what are extensions and modules in an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn what are extensions and modules in an Azure HorizonDB.
 ---
 
-# Extensions and modules
+# Extensions and modules in Azure HorizonDB
 
 Extensions and modules in PostgreSQL are powerful tools that allow users to extend the functionality of the database system. They can range from simple SQL objects to complex binary libraries, providing extra features and capabilities that aren't available in the core PostgreSQL distribution.
 
@@ -51,7 +51,7 @@ Azure HorizonDB supports the following modules:
 
 ## Related content
 
-- [Allow extensions](how-to-allow-extensions.md)
-- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
-- [List of extensions and modules by name](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
+- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)

@@ -1,17 +1,17 @@
 ---
-title: "Premigration Error Codes in the Migration Service"
+title: Premigration Error Codes in the Migration Service in Azure HorizonDB
 description: Error codes for troubleshooting and resolving issues during the migration process in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/07/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: error-reference
 ms.custom:
   - troubleshooting
 ---
 
-# Known errors in the migration service for Azure HorizonDB
+# Known errors in the migration service in Azure HorizonDB
 
 This article contains error message numbers and their description for premigration validation.
 
@@ -38,15 +38,16 @@ In the context of migration service in Azure HorizonDB, a connection time-out be
 
 - To address the connection time-out issues, adjust the TCP parameters on both the source and target servers as follows:
 
-    - `tcp_keepalives_idle=10`
-    - `tcp_keepalives_interval=10`
-    - `tcp_keepalives_count=60`
+  - `tcp_keepalives_idle=10`
+  - `tcp_keepalives_interval=10`
+  - `tcp_keepalives_count=60`
 
 These settings help maintain the connection by sending keepalive probes to prevent time-outs due to inactivity. Importantly, modifying these TCP parameters doesn't require a restart of the source or target PostgreSQL instances. Changes can be applied dynamically, allowing for a seamless continuation of service without interrupting the database operations.
 
 ## Connection Terminated Due to Idle-in-Transaction time-out
 
 ### Symptoms
+
 - The Migration service encounters a connection termination message.
 - Logs display the error: `terminating connection due to idle-in-transaction timeout`.
 
@@ -58,6 +59,7 @@ This error occurs when a database connection remains idle within a transaction f
 
 - Set the `idle_in_transaction_timeout` parameter to `0` to disable the time-out during the migration process.
 - Example command to apply this setting:
+
 ```azurecli-interactive
 ALTER SYSTEM SET idle_in_transaction_timeout = 0;
 ```
@@ -66,6 +68,7 @@ ALTER SYSTEM SET idle_in_transaction_timeout = 0;
 ## Shared Memory Exhaustion
 
 ### Symptoms
+
 The migration process halts unexpectedly. Logs display the error: `out of shared memory`.
 
 ### Cause
@@ -82,7 +85,8 @@ This error indicates that PostgreSQL has exhausted the shared memory allocated f
 ## Use of CREATE TYPE
 
 ### Symptoms
-The migration process halts unexpectedly. Logs display the error: `pg_restore: error: could not execute query: ERROR:  must be superuser to create a base type `.
+
+The migration process halts unexpectedly. Logs display the error: `pg_restore: error: could not execute query: ERROR: must be superuser to create a base type `.
 
 ### Cause
 
@@ -97,8 +101,8 @@ To create a new base type, you must be a superuser (This restriction is made bec
 
 | Error Code | Error message | Resolution |
 | --- | --- | --- |
-| 603000 | Connection failed. Connection to the server `{serverName}` was unsuccessful. Ensure that the source server is reachable from the target or runtime server. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
-| 603001 | SSL Configuration Error. The server `{serverName}` doesn't support SSL. Check SSL settings. Set SSL mode to *prefer* and retry the migration. | Refer to [Network guide](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
+| 603000 | Connection failed. Connection to the server `{serverName}` was unsuccessful. Ensure that the source server is reachable from the target or runtime server. | Refer to [Network scenarios for the migration service in Azure HorizonDB](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
+| 603001 | SSL Configuration Error. The server `{serverName}` doesn't support SSL. Check SSL settings. Set SSL mode to *prefer* and retry the migration. | Refer to [Network scenarios for the migration service in Azure HorizonDB](how-to-network-setup-migration-service.md) for debugging connectivity issues. |
 | 603100 | Authentication failed. The password for server `{serverName}` is incorrect. Enter the correct password and retry the migration. | N/A |
 | 603101 | Database exists in target. Database `{dbName}` exists on the target server. Ensure the target server doesn't have the database and retry the migration. | N/A |
 | 603102 | Source Database Missing. Database `{dbName}` doesn't exist on the source server. Provide a valid database and retry the migration. | N/A |
@@ -123,12 +127,12 @@ To create a new base type, you must be a superuser (This restriction is made bec
 | 603403 | Collation mismatch. Source database contains user-defined collations. Drop these collations and retry the migration. | N/A |
 | 603404 | Unsupported OIDs Detected. Tables with 'WITH OIDs' detected in database `{0}`. They aren't supported in PostgreSQL version 12 and later. | Visit [PostgreSQL release notes](https://www.postgresql.org/docs/release/12.0). |
 | 603405 | Unsupported Extensions. The migration service doesn't support the migration of databases with `{0}` extensions on the target server. | N/A |
-| 603406 | Unsupported Extensions. Target PostgreSQL `{0}` supports POSTGIS version 3.2.3, which is incompatible with source's `{1}`. | Recommend target server upgrade to version 11. Visit [PostGIS breaking changes](https://git.osgeo.org/gitea/postgis/postgis/raw/tag/3.4.1/NEWS). |
-| 603407 | Extension Schema Error. Extensions `{0}` located in the system schema on the source server are unsupported on the target server. Drop and recreate the extensions in a nonsystem schema, then retry the migration. | Visit {[PostgreSQL extensions](../../flexible-server/concepts-extensions.md)}. |
+| 603406 | Unsupported Extensions. Target PostgreSQL `{0}` supports POSTGIS version 3.2.3, which is incompatible with source's `{1}`. | Recommend target server upgrade to version 11. Visit [PostGIS breaking changes](https://gitea.osgeo.org/postgis/postgis/raw/tag/3.4.1/NEWS). |
+| 603407 | Extension Schema Error. Extensions `{0}` located in the system schema on the source server are unsupported on the target server. Drop and recreate the extensions in a nonsystem schema, then retry the migration. | Visit {[Extensions and modules in Azure HorizonDB](../../extensions/concepts-extensions.md)}. |
 | 603408 | Unsupported Extensions. Target server version 16 doesn't support `{0}` extensions. Migrate to version 15 or lower, then upgrade once the extensions are supported. | N/A |
 | 603409 | User-defined casts present. Source database `{0}` contains user-defined casts that can't be migrated to the target server. | N/A |
 | 603410 | System table permission error. Users have access to system tables like pg_authid and pg_shadow that can't be migrated to the target. Revoke these permissions and retry the migration. | Validating the default permissions granted to `pg_catalog` tables/views (such as `pg_authid` and `pg_shadow`) is essential. However, these permissions can't be assigned to the target. Specifically, User `{1}` possesses `{2}` permissions, while User `{3}` holds `{4}` permissions. For a workaround, visit [User, Roles, and Permissions](https://aka.ms/troubleshooting-user-roles-permission-ownerships-issues) |
-| 603413 | Unsupported language(s). The migration service does not support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | The target server does not support the unsupported languages. Try disabling or removing the respective language on the source server before migrating to the target server. |
+| 603413 | Unsupported language(s). The migration service doesn't support the migration of databases with `{0}` language(s) on the target server. Remove the language(s) and its implemented function(s). | The target server doesn't support the unsupported languages. Try disabling or removing the respective language on the source server before migrating to the target server. |
 | 603700 | Target database cleanup failed. Unable to terminate active connections on the target database during the pre-migration/post-migration phase. | N/A |
 | 603701 | Internal server error. Failed to create roles on the target server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
 | 603702 | Internal server error. Failed to dump roles from source server. | [Contact Microsoft support](https://support.microsoft.com/contactus) for further analysis. |
@@ -142,6 +146,6 @@ To create a new base type, you must be a superuser (This restriction is made bec
 
 ## Related content
 
-- [Troubleshoot the migration service for Azure HorizonDB](how-to-network-setup-migration-service.md)
+- [Network scenarios for the migration service in Azure HorizonDB](how-to-network-setup-migration-service.md)
 - [Best practices for seamless migration into Azure HorizonDB](best-practices-migration-service-postgresql.md)
-- [Known issues and limitations](concepts-known-issues-migration-service.md)
+- [Known issues and limitations for the migration service in Azure HorizonDB](concepts-known-issues-migration-service.md)

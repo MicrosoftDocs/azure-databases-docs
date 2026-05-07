@@ -1,16 +1,16 @@
 ---
-title: "Quickstart: Create elastic clusters with ARM template"
-description: In this Quickstart, learn how to create an Azure HorizonDB flexible server instance with elastic clusters by using an ARM template.
+title: "Quickstart: Create Elastic Clusters with ARM Template in Azure HorizonDB"
+description: In this Quickstart, learn how to create an Azure HorizonDB instance with elastic clusters by using an ARM template.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: quickstart
 ---
 
-# Quickstart: Use an ARM template to create an elastic cluster with Azure HorizonDB
+# Quickstart: Use an ARM template to create an elastic cluster in Azure HorizonDB
 
 Azure HorizonDB with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use an Azure Resource Manager template (ARM template) to create an elastic clusters instance.
 
@@ -24,7 +24,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 ## Review the template
 
-An Azure HorizonDB flexible server instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
+An Azure HorizonDB instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
 
 Create a _elastic-cluster-template.json_ file and copy the following JSON script into it.
 
@@ -176,9 +176,9 @@ These resources are defined in the template:
 Select **Try it** from the following PowerShell code block to open Azure Cloud Shell.
 
 ```azurepowershell-interactive
-$clusterName = Read-Host -Prompt "Enter a name for the new Azure HorizonDB flexible server elastic cluster instance"
+$clusterName = Read-Host -Prompt "Enter a name for the new Azure HorizonDB elastic cluster instance"
 $resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the elastic cluster will exist"
-$adminUser = Read-Host -Prompt "Enter the Azure HorizonDB flexible server elastic cluster instance's administrator account name"
+$adminUser = Read-Host -Prompt "Enter the Azure HorizonDB elastic cluster instance's administrator account name"
 $adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureString
 # New-AzResourceGroup -Name $resourceGroupName -Location <AZURE_LOCATION>  Use this command when you need to create a new resource group for your deployment
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
@@ -192,16 +192,16 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## Review deployed resources
 
-Follow these steps to verify if your Azure HorizonDB flexible server elastic cluster was created.
+Follow these steps to verify if your Azure HorizonDB elastic cluster was created.
 
 # [Azure portal](#tab/portal)
 
-1. In the [Azure portal](https://portal.azure.com), search for and select **Azure HorizonDB flexible servers**.
+1. In the [Azure portal](https://portal.azure.com), search for and select **Azure HorizonDBs**.
 1. In the database list, select your new server to view the **Overview** page to manage your elastic cluster.
 
 # [PowerShell](#tab/PowerShell)
 
-You have to enter the name of the new cluster to view the details of your Azure HorizonDB flexible server elastic cluster.
+You have to enter the name of the new cluster to view the details of your Azure HorizonDB elastic cluster.
 
 ```azurepowershell-interactive
 $clusterName = Read-Host -Prompt "Enter the name of your Azure HorizonDB elastic cluster"
@@ -211,23 +211,25 @@ Write-Host "Press [ENTER] to continue..."
 
 # [CLI](#tab/CLI)
 
-You have to enter the name and the resource group of your new elastic cluster to view details about your Azure HorizonDB flexible server elastic cluster instance.
+You have to enter the name and the resource group of your new elastic cluster to view details about your Azure HorizonDB elastic cluster instance.
 
 ```azurecli-interactive
-echo "Enter your Azure HorizonDB flexible server elastic cluster name:" &&
+echo "Enter your Azure HorizonDB elastic cluster name:" &&
 read clusterName &&
-echo "Enter the resource group where the Azure HorizonDB flexible server elastic cluster exists:" &&
+echo "Enter the resource group where the Azure HorizonDB elastic cluster exists:" &&
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $clusterName --resource-type "Microsoft.DBforPostgreSQL/flexibleServers"
 ```
 
 ---
 
-## Next Steps
-Keep this resource group and the elastic cluster if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use elastic clusters with different application sharding models and designs.
+## Next step
+
+- Keep this resource group and the elastic cluster if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use elastic clusters with different application sharding models and designs.
 
 ## Clean up resources
-When you are finished with your elastic cluster environment, you can delete your elastic cluster resource: 
+
+When you're finished with your elastic cluster environment, you can delete your elastic cluster resource:
 
 To delete the elastic cluster:
 
@@ -241,14 +243,14 @@ In the [portal](https://portal.azure.com), select the resource group you want to
 # [PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$clusterName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB flexible server elastic cluster exists"
+$clusterName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB elastic cluster exists"
 Remove-AzResourceGroup -Name $clusterName
 ```
 
 # [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-echo "Enter the resource group where the Azure HorizonDB flexible server elastic cluster exists:" &&
+echo "Enter the resource group where the Azure HorizonDB elastic cluster exists:" &&
 read resourcegroupName &&
 az group delete --name $resourcegroupName
 ```
@@ -257,4 +259,4 @@ az group delete --name $resourcegroupName
 
 ## Related content
 
-- [Design multitenant database with elastic clusters](../configure-maintain/tutorial-multitenant-database.md).
+- [Tutorial: Design a multitenant database with elastic clusters in Azure HorizonDB](../configure-maintain/tutorial-multitenant-database.md)

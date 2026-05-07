@@ -2,13 +2,14 @@
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan, randolphwest
-ms.date: 02/02/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
 ms.custom:
   - automatically generated
 ---
+
 ## address_standardizer
 
 [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step.
@@ -24,7 +25,6 @@ ms.custom:
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
 ## address_standardizer_data_us
 
 [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
@@ -39,7 +39,6 @@ ms.custom:
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
 
 ## age
 
@@ -57,6 +56,7 @@ ms.custom:
 | 11 | Not supported |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## amcheck
 
 [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity.
@@ -71,7 +71,6 @@ ms.custom:
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.1 |
-
 
 ## anon
 
@@ -89,6 +88,7 @@ ms.custom:
 | 11 | 1.3.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## auto_explain
 
 [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand.
@@ -105,9 +105,10 @@ ms.custom:
 | 11 | Without version <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## azure_ai
 
-{[azure_ai](../../flexible-server/generative-ai-azure-overview.md)} provides Azure AI and ML Services integration for PostgreSQL.
+{[azure_ai](../../azure-ai/generative-ai-azure-overview.md)} provides Azure AI and ML Services integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -120,10 +121,9 @@ ms.custom:
 | 12 | 1.3.1 |
 | 11 | Not supported |
 
-
 ## azure_storage
 
-{[azure_storage](../../flexible-server/concepts-storage-extension.md)} provides Azure Storage integration for PostgreSQL.
+{[azure_storage](../concepts-storage-extension.md)} provides Azure Storage integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -137,6 +137,7 @@ ms.custom:
 | 11 | Not supported |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## bloom
 
 [bloom](https://www.postgresql.org/docs/current/bloom.html) provides an index access method based on Bloom filters.
@@ -151,7 +152,6 @@ ms.custom:
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
 
 ## btree_gin
 
@@ -168,7 +168,6 @@ ms.custom:
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
 ## btree_gist
 
 [btree_gist](https://www.postgresql.org/docs/current/btree-gist.html) provides support for indexing common datatypes in GiST.
@@ -184,7 +183,6 @@ ms.custom:
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-
 ## citext
 
 [citext](https://www.postgresql.org/docs/current/citext.html) is a data type for case-insensitive character strings.
@@ -199,7 +197,6 @@ ms.custom:
 | 13 | 1.6 |
 | 12 | 1.6 |
 | 11 | 1.5 |
-
 
 ## credcheck
 
@@ -217,6 +214,7 @@ ms.custom:
 | 11 | Not supported |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -231,7 +229,6 @@ ms.custom:
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
 
 ## dblink
 
@@ -249,6 +246,7 @@ ms.custom:
 | 11 | 1.2 |
 
 Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server.
+
 ## dict_int
 
 [dict_int](https://www.postgresql.org/docs/current/dict-int.html) provides a text search dictionary template for integers.
@@ -263,7 +261,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
 
 ## dict_xsyn
 
@@ -280,7 +277,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
 ## earthdistance
 
 [earthdistance](https://www.postgresql.org/docs/current/earthdistance.html) calculates great-circle distances on the surface of the Earth.
@@ -295,7 +291,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.1 |
 | 12 | 1.1 |
 | 11 | 1.1 |
-
 
 ## fuzzystrmatch
 
@@ -312,7 +307,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## hll
 
 [hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure.
@@ -327,7 +321,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 2.18 |
 | 12 | 2.18 |
 | 11 | Not supported |
-
 
 ## hstore
 
@@ -344,7 +337,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.6 |
 | 11 | 1.5 |
 
-
 ## hypopg
 
 [hypopg](https://github.com/HypoPG/hypopg) provides hypothetical indexes for PostgreSQL.
@@ -359,7 +351,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.4.0 |
 | 12 | 1.4.0 |
 | 11 | 1.4.0 |
-
 
 ## intagg
 
@@ -376,7 +367,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## intarray
 
 [intarray](https://www.postgresql.org/docs/current/intarray.html) provides functions, operators, and index support for 1-D arrays of integers.
@@ -391,7 +381,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.3 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
 
 ## ip4r
 
@@ -408,7 +397,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | Not supported |
 | 11 | Not supported |
 
-
 ## isn
 
 [isn](https://www.postgresql.org/docs/current/isn.html) provides data types for international product numbering standards.
@@ -423,7 +411,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
 
 ## lo
 
@@ -440,7 +427,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## login_hook
 
 [login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
@@ -455,7 +441,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.4 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
 
 ## ltree
 
@@ -472,7 +457,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## oracle_fdw
 
 [oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases.
@@ -487,7 +471,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | Not supported |
-
 
 ## orafce
 
@@ -504,7 +487,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 3.18 |
 | 11 | 3.18 |
 
-
 ## pageinspect
 
 [pageinspect](https://www.postgresql.org/docs/current/pageinspect.html) inspects the contents of database pages at a low level.
@@ -519,7 +501,6 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 13 | 1.8 |
 | 12 | 1.7 |
 | 11 | 1.7 |
-
 
 ## pgaudit
 
@@ -537,6 +518,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 11 | 1.3.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_buffercache
 
 [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache.
@@ -553,6 +535,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 11 | 1.3 |
 
 Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server.
+
 ## pg_cron
 
 [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL.
@@ -570,6 +553,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
+
 ## pgcrypto
 
 [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions.
@@ -585,10 +569,9 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-
 ## pg_diskann
 
-{[pg_diskann](../../flexible-server/how-to-use-pgdiskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+{[pg_diskann](../how-to-use-pgdiskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -600,7 +583,6 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 13 | Not supported |
 | 12 | Not supported |
 | 11 | Not supported |
-
 
 ## pg_duckdb
 
@@ -618,6 +600,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 11 | Not supported |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -635,6 +618,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
+
 ## pg_freespacemap
 
 [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM).
@@ -649,7 +633,6 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
 
 ## pg_hint_plan
 
@@ -668,6 +651,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
+
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -684,6 +668,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 11 | 2.4.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_partman
 
 [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
@@ -700,6 +685,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 11 | 4.5.0 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_partman_bgw
 
 [pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
@@ -716,6 +702,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 11 | 4.5.0 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_prewarm
 
 [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data.
@@ -733,6 +720,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
+
 ## pg_repack
 
 [pg_repack](https://reorg.github.io/pg_repack/) reorganizes tables in PostgreSQL databases with minimal locks.
@@ -749,7 +737,10 @@ Read the special considerations for extension [pg_prewarm](../concepts-extension
 | 11 | 1.4.7 |
 
 Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
-## pgrouting
+
+<a id="pgrouting"></a>
+
+## pgrout
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
 
@@ -763,7 +754,6 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 13 | 3.3.0 |
 | 12 | 3.3.0 |
 | 11 | 3.3.0 |
-
 
 ## pgrowlocks
 
@@ -779,7 +769,6 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 13 | 1.2 |
 | 12 | 1.2 |
 | 11 | 1.2 |
-
 
 ## pg_squeeze
 
@@ -797,6 +786,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 11 | 1.5 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## pg_stat_statements
 
 [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) tracks execution statistics of all SQL statements executed.
@@ -814,6 +804,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
+
 ## pgstattuple
 
 [pgstattuple](https://www.postgresql.org/docs/current/pgstattuple.html) shows tuple-level statistics.
@@ -830,6 +821,7 @@ Read the special considerations for extension [pg_stat_statements](../concepts-e
 | 11 | 1.5 |
 
 Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
+
 ## pg_trgm
 
 [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) provides text similarity measurement and index searching based on trigrams.
@@ -844,7 +836,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 1.5 |
 | 12 | 1.4 |
 | 11 | 1.4 |
-
 
 ## pg_visibility
 
@@ -861,7 +852,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
 ## plpgsql
 
 [plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
@@ -876,7 +866,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
 
 ## plv8
 
@@ -893,7 +882,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 12 | 3.0.0 |
 | 11 | 3.0.0 |
 
-
 ## postgis
 
 [postgis](https://www.postgis.net/) geometry and geography spatial types and functions.
@@ -908,7 +896,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
 
 ## postgis_raster
 
@@ -925,7 +912,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
 ## postgis_sfcgal
 
 [postgis_sfcgal](https://www.postgis.net) sFCGAL functions.
@@ -940,7 +926,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
 
 ## postgis_tiger_geocoder
 
@@ -957,7 +942,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
 
-
 ## postgis_topology
 
 [postgis_topology](https://postgis.net/docs/Topology.html) spatial types and functions.
@@ -972,7 +956,6 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 3.5.2 |
 | 12 | 3.2.3 |
 | 11 | 3.2.3 |
-
 
 ## postgres_fdw
 
@@ -990,6 +973,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 11 | 1.0 |
 
 Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server.
+
 ## postgres_protobuf
 
 [postgres_protobuf](https://github.com/mpartel/postgres-protobuf) provides protocol buffers for PostgreSQL.
@@ -1004,7 +988,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 0.2 |
 | 12 | 0.2 |
 | 11 | Not supported |
-
 
 ## semver
 
@@ -1021,7 +1004,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 0.32.0 |
 | 11 | 0.32.0 |
 
-
 ## session_variable
 
 [session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants.
@@ -1036,7 +1018,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 3.4 |
 | 12 | 3.3 |
 | 11 | 3.3 |
-
 
 ## sslinfo
 
@@ -1053,7 +1034,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-
 ## tablefunc
 
 [tablefunc](https://www.postgresql.org/docs/current/tablefunc.html) provides functions that manipulate whole tables, including crosstab.
@@ -1068,7 +1048,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
 
 ## tdigest
 
@@ -1085,7 +1064,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 1.4.2 |
 | 11 | Not supported |
 
-
 ## tds_fdw
 
 [tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
@@ -1100,7 +1078,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 2.0.3 |
 | 12 | 2.0.3 |
 | 11 | 2.0.3 |
-
 
 ## timescaledb
 
@@ -1118,6 +1095,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 11 | 1.7.4 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+
 ## topn
 
 [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
@@ -1132,7 +1110,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 2.7.0 |
 | 12 | Not supported |
 | 11 | Not supported |
-
 
 ## tsm_system_rows
 
@@ -1149,7 +1126,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-
 ## tsm_system_time
 
 [tsm_system_time](https://www.postgresql.org/docs/current/tsm-system-time.html) is a `TABLESAMPLE` method which accepts time in milliseconds as a limit.
@@ -1164,7 +1140,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
-
 
 ## unaccent
 
@@ -1181,7 +1156,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## uuid-ossp
 
 [uuid-ossp](https://www.postgresql.org/docs/current/uuid-ossp.html) generates universally unique identifiers (UUIDs).
@@ -1197,7 +1171,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 1.1 |
 | 11 | 1.1 |
 
-
 ## vector
 
 [vector](https://github.com/pgvector/pgvector) is a vector data type and `ivfflat` and `hnsw` access methods.
@@ -1212,7 +1185,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 13 | 0.8.0 |
 | 12 | 0.7.0 |
 | 11 | 0.5.1 |
-
 
 ## wal2json
 

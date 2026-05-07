@@ -4,7 +4,7 @@ description: Learn how to build a semantic search application by using Azure Hor
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: tutorial
@@ -42,9 +42,9 @@ In this tutorial, you:
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure HorizonDB flexible server instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure HorizonDB instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
-Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
+Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
 ```sql
 CREATE EXTENSION azure_ai;
@@ -202,9 +202,9 @@ Explore the results:
 ## Related content
 
 - [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning services](generative-ai-azure-machine-learning.md)
+- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
 - [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Generative AI with Azure HorizonDB](generative-ai-overview.md)
-- [Create a recommendation system with Azure HorizonDB and Azure OpenAI](generative-ai-recommendation-system.md)
+- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
+- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
 - [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)

@@ -1,10 +1,10 @@
 ---
-title: "Oracle to Azure HorizonDB Migration Stages"
-description: "This article outlines the key stages involving successful Oracle to Azure HorizonDB migrations."
+title: Oracle to Azure HorizonDB Migration Stages
+description: This article outlines the key stages involving successful Oracle to Azure HorizonDB migrations.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration
 ms.topic: concept-article
@@ -14,15 +14,13 @@ ms.topic: concept-article
 
 A comprehensive end-to-end migration from Oracle to Azure Postgres requires the careful execution of several key steps and migration stages. These milestones are all closely related and essential to a complete and successful migration.
 
-
-
 ## Discovery
 
-Most customers are already well acquainted with the quantities and locations of their Oracle database instances (especially their associated licensing costs), however for the sake of completeness we are highlighting this phase as an important starting point in your migration. The Discovery phase is an ideal stage to determine the appropriate scope of your migration efforts. Do you have an Oracle database server "farm" environment requiring tens, hundreds, or even thousands of databases to migrate? Are you considering an at-scale migration following a "migration factory" approach? Rather, is your environment more suitable for the end-to-end migration of a single database alongside a parallel modernization of all connected clients before moving onto the next database on the migration list? In either case, an up-to-date and thorough inventory is a critical prerequisite, and the Discovery phase ensures you are prepared for success.
+Most customers are already well acquainted with the quantities and locations of their Oracle database instances (especially their associated licensing costs), however for the sake of completeness we are highlighting this phase as an important starting point in your migration. The Discovery phase is an ideal stage to determine the appropriate scope of your migration efforts. Do you have an Oracle database server "farm" environment requiring tens, hundreds, or even thousands of databases to migrate? Are you considering an at-scale migration following a "migration factory" approach? Rather, is your environment more suitable for the end-to-end migration of a single database alongside a parallel modernization of all connected clients before moving onto the next database on the migration list? In either case, an up-to-date and thorough inventory is a critical prerequisite, and the Discovery phase ensures you're prepared for success.
 
 ## Assessments
 
-Assessments encapsulate many different types of estimate-based exploratory operations which are individually defined by their unique characteristics. Some assessments are designed to estimate and categorize the complexity of effort and resources involved in migration of database objects and based upon factors such as the numbers of objects (potentially even exploring the number of lines of code) requiring attention from a subject matter expert. Alternatively, other types of assessments explore the structure and size of the underlying data and provide guidance regarding the amount of time required to fully migrate data to the destination environment. Yet another assessment type is structured to ensure your destination Azure Postgres resources are appropriately scaled to accommodate the compute, memory, IOPS, and network configuration required to service your data. One of the most important assessments which must be included to ensure your migration success is a thorough review and consideration of all connected clients and the scope comprising all dependent applications. To summarize, when preparing your migration assessments, ensure you are assessing all aspects of your database migration, including:
+Assessments encapsulate many different types of estimate-based exploratory operations which are individually defined by their unique characteristics. Some assessments are designed to estimate and categorize the complexity of effort and resources involved in migration of database objects and based upon factors such as the numbers of objects (potentially even exploring the number of lines of code) requiring attention from a subject matter expert. Alternatively, other types of assessments explore the structure and size of the underlying data and provide guidance regarding the amount of time required to fully migrate data to the destination environment. Yet another assessment type is structured to ensure your destination Azure Postgres resources are appropriately scaled to accommodate the compute, memory, IOPS, and network configuration required to service your data. One of the most important assessments which must be included to ensure your migration success is a thorough review and consideration of all connected clients and the scope comprising all dependent applications. To summarize, when preparing your migration assessments, ensure you're assessing all aspects of your database migration, including:
 
 - Database schema / code conversion quantity and complexity
 - Database size and scale
@@ -51,7 +49,7 @@ For additional information and examples of the differences between Oracle and Po
 
 In today's data-driven environment, your data is arguably your most valuable asset. Your data resources increasingly influence every aspect of informed business operations and strategic decision making. It's therefore especially vital that your data migration pipelines operate efficiently and expediently, are fully consistent and verifiable, and ultimately complete successfully.
 
-Your data migration strategy should be carefully considered to determine whether "offline" or "live" approaches are applicable to your environment. Each data migration strategy has its own blend of benefits and considerations, and the choice between "offline" and "live" operations depend on the specific requirements and constraints of your environment. For example, "offline" migrations can be more straightforward and less complex than "live" migrations, however, "offline" migrations involve downtime for the period of time required to fully migrate your data to your destination database. "Live" migrations offer minimal to no downtime, however they involve more complexity and infrastructure to oversee the initial backfill data load and the subsequent data synchronization of changes which might have occurred since the start of the data migration. Careful planning, thorough assessment of business requirements, and consideration of your team's specific critical factors will ensure you are able to make an informed decision fully aligned with your data migration needs.
+Your data migration strategy should be carefully considered to determine whether "offline" or "live" approaches are applicable to your environment. Each data migration strategy has its own blend of benefits and considerations, and the choice between "offline" and "live" operations depend on the specific requirements and constraints of your environment. For example, "offline" migrations can be more straightforward and less complex than "live" migrations, however, "offline" migrations involve downtime for the period of time required to fully migrate your data to your destination database. "Live" migrations offer minimal to no downtime, however they involve more complexity and infrastructure to oversee the initial backfill data load and the subsequent data synchronization of changes which might have occurred since the start of the data migration. Careful planning, thorough assessment of business requirements, and consideration of your team's specific critical factors will ensure you're able to make an informed decision fully aligned with your data migration needs.
 
 ## Application Code Migration
 
@@ -62,7 +60,7 @@ Alternatively, there are partner solution providers offering novel approaches ca
 In many cases, your decision might incorporate a combination of multiple strategies and hybrid approach collectively employed for their respective strengths and combined capabilities. Deploying a real-time database translation layer can enable your teams to rapidly re-deploy their client applications while providing your software engineers and developers with appropriate time and resource planning to refactor their database-specific dependencies to support Postgres native operations.
 
 > [!IMPORTANT]  
-> Each of these choices is accompanied by their own particular sets of considerations and benefits and it is essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
+> Each of these choices is accompanied by their own particular sets of considerations and benefits and it's essential that your teams carefully review each of these approaches to determine the ideal strategic path forward.
 
 ## Migration Validation
 
@@ -72,7 +70,7 @@ This typically involves setting up automated validation scripts that can compare
 
 ## Performance Tuning
 
-Performance is generally viewed as one of the most tangible and important characteristics that determine the perception and usability of your platform. Ensuring that your migration is both accurate and performant is paramount to achieving success and cannot be overlooked. More specifically, query performance is often considered the most critical indicator of optimal database configuration and is commonly used as a litmus test by your users to determine the state of health of your environment.
+Performance is generally viewed as one of the most tangible and important characteristics that determine the perception and usability of your platform. Ensuring that your migration is both accurate and performant is paramount to achieving success and can't be overlooked. More specifically, query performance is often considered the most critical indicator of optimal database configuration and is commonly used as a litmus test by your users to determine the state of health of your environment.
 
 Fortunately, the Azure platform natively incorporates the tooling and capabilities needed to monitor performance points across a variety of metrics, including scale, efficiency, and perhaps most importantly, speed. These Intelligent Performance features work hand-in-hand with the Postgres monitoring resources to simplify your tuning processes, and in many cases, automate these steps to automatically adapt and adjust as needed. The following Azure tools can ensure your database systems are operating at their very best levels.
 
@@ -88,7 +86,7 @@ Query Store for Azure Postgres serves as the foundation for your monitoring feat
 
 ### Index Tuning
 
-Index tuning is a feature of Azure HorizonDB flexible server that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure HorizonDB flexible server, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
+Index tuning is a feature of Azure HorizonDB that can automatically improve the performance of your workload by analyzing tracked queries and providing index recommendations. It's natively built into Azure HorizonDB, and builds upon Query Store functionality. Index tuning analyzes workloads tracked by Query Store and produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. This is accomplished in three unique ways:
 
 - Identify which indexes are beneficial to create because they could significantly improve the queries analyzed during an index tuning session.
 - Identify indexes that are exact duplicates and can be eliminated to reduce the performance impact their existence and maintenance have on the system's overall performance.
@@ -124,7 +122,7 @@ To ensure these pillars are aligned to your Azure Postgres deployment, review ou
 
 ## Related content
 
-- [Oracle to Azure PostgreSQL Best Practices](./best-practices-oracle-to-postgresql.md)
+- [Best Practices For Migrations From Oracle To Azure HorizonDB](best-practices-oracle-to-postgresql.md)
 - [Oracle to Azure PostgreSQL Migration Playbook](https://download.microsoft.com/download/8/f/c/8fc4fe39-7cb1-484a-aaa0-418704b90c0e/Oracle%20to%20Azure%20Postgres%20Migration%20Playbook.pdf)
 - [Oracle to Azure PostgreSQL Migration Workarounds](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20Database%20for%20PostgreSQL%20Migration%20Workarounds.pdf)
-- [Azure HorizonDB Migration Partners](./partners-migration-postgresql.md)
+- [Azure HorizonDB migration partners](partners-migration-postgresql.md)

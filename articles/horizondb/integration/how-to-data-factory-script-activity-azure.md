@@ -1,16 +1,16 @@
 ---
-title: Script Activity in Data Factory
+title: Script Activity in Data Factory in Azure HorizonDB
 description: Guide on using script activity in the Azure HorizonDB connector in Azure Data Factory
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 07/22/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
 ---
 
-# Script activity in Data Factory and Azure Synapse Analytics
+# Script activity in Data Factory and Azure Synapse Analytics in Azure HorizonDB
 
 In this article, you learn how to create a script activity in Azure Data Factory to run custom PostgreSQL queries. With script activity, you can execute various types of PostgreSQL commands, such as Data Manipulation Language (DML) and Data Definition Language (DDL) commands, directly in your pipelines.
 
@@ -20,9 +20,9 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ## Prerequisites
 
-- An Azure HorizonDB flexible server instance. To learn more, see [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, see [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
-- An Azure Data Factory Linked Service [connected to Azure HorizonDB](../integration/how-to-connect-data-factory-private-endpoint.md).
+- An Azure Data Factory Linked Service [connected to Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md).
 
 ## Create a script activity
 
@@ -371,7 +371,9 @@ Set a timeout in minutes for each script block run. If any script block in your 
    }
 ```
 
-### Logging
+<a id="logging"></a>
+
+### Log
 
 Use logging to send PostgreSQL Notices to an external Blob Storage or to internal storage.
 
@@ -427,6 +429,6 @@ For activity output logging, expand the **Advanced** section and select **Enable
 ## Related content
 
 - [Learn more about Script activity for Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script)
-- [Copy activity in Azure HorizonDB](how-to-data-factory-copy-activity-azure.md)
-- [How to connect to Data Factory private endpoint](../integration/how-to-connect-data-factory-private-endpoint.md)
-- [Networking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)
+- [Copy activity in Azure Data Factory and Azure Synapse Analytics in Azure HorizonDB](how-to-data-factory-copy-activity-azure.md)
+- [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
+- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

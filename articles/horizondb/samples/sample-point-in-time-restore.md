@@ -1,19 +1,19 @@
 ---
-title: Azure CLI Script - Restore
-description: This sample Azure CLI script shows how to restore an Azure HorizonDB flexible server instance and its databases to a previous point in time.
+title: Azure CLI Script - Restore in Azure HorizonDB
+description: This sample Azure CLI script shows how to restore an Azure HorizonDB instance and its databases to a previous point in time.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
-ms.devlang: azurecli
+ms.devlang: "azurecli"
 ---
 
-# Restore an Azure HorizonDB flexible server instance using Azure CLI
+# Restore an Azure HorizonDB instance using Azure CLI in Azure HorizonDB
 
-This sample CLI script restores a single Azure HorizonDB flexible server instance to a previous point in time.
+This sample CLI script restores a single Azure HorizonDB instance to a previous point in time.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -42,12 +42,12 @@ This script uses the commands outlined in the following table:
 | **Command** | **Notes** |
 | --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure HorizonDB flexible server instance that hosts the databases. |
+| [az postgresql server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure HorizonDB instance that hosts the databases. |
 | [az postgresql server restore](/cli/azure/postgres/server#az-postgres-server-restore) | Restore a server from backup. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 
 ## Related content
 
 - [Azure CLI documentation](/cli/azure)
-- {[Azure CLI samples for Azure HorizonDB flexible server](../sample-scripts-azure-cli.md)}
-- {[How to backup and restore a server in Azure HorizonDB flexible server using the Azure portal](../howto-restore-server-portal.md)}
+- [Azure CLI samples for Azure HorizonDB](/azure/postgresql/single-server/sample-scripts-azure-cli)
+- [Restore full backup (fast restore) in Azure HorizonDB](../backup-restore/how-to-restore-full-backup.md)

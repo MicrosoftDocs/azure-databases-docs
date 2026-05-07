@@ -2,27 +2,25 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### archive_command
 
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Archiving |
-| Description | Sets the shell command that will be called to archive a WAL file. This is used only if \"archive_library\" is not set. |
+| Description | Sets the shell command that will be called to archive a WAL file. This is used only if \"archive_library\" isn't set. |
 | Data type | string |
 | Default value | `BlobLogUpload.sh %f %p` |
 | Allowed values | `BlobLogUpload.sh %f %p` |
 | Parameter type | read-only |
 | Documentation | [archive_command](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-ARCHIVE-COMMAND) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### archive_library
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [archive_library](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-ARCHIVE-LIBRARY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### archive_mode
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `always` |
 | Parameter type | read-only |
 | Documentation | [archive_mode](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-ARCHIVE-MODE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### archive_timeout
 
@@ -69,9 +59,4 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [archive_timeout](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-ARCHIVE-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

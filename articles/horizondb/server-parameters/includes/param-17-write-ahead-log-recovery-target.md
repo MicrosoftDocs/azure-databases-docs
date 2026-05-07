@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### recovery_target
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_action
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `pause` |
 | Parameter type | read-only |
 | Documentation | [recovery_target_action](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-ACTION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_inclusive
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [recovery_target_inclusive](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-INCLUSIVE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_lsn
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target_lsn](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-LSN) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_name
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target_name](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-NAME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_time
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target_time](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-TIME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_timeline
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `latest` |
 | Parameter type | read-only |
 | Documentation | [recovery_target_timeline](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-TIMELINE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_target_xid
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [recovery_target_xid](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-TARGET-XID) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### summarize_wal
 
@@ -154,9 +124,4 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [summarize_wal](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-SUMMARIZE-WAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

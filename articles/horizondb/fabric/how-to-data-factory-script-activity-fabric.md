@@ -4,7 +4,7 @@ description: Learn how to create and configure a script activity in Microsoft Fa
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 04/25/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to

@@ -1,22 +1,23 @@
 ---
-title: What Is Oracle to PostgreSQL Schema Conversion?
-description: Learn how to convert Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension with AI-powered transformation, Azure OpenAI integration, and intelligent review tasks for seamless migration to Azure HorizonDB flexible server.
+title: What Is Oracle to Azure HorizonDB Schema Conversion?
+description: Learn how to convert Oracle database schemas to PostgreSQL using the Visual Studio Code PostgreSQL extension with AI-powered transformation, Azure OpenAI integration, and intelligent review tasks for seamless migration to Azure HorizonDB.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: overview
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # What is Oracle to Azure HorizonDB schema conversion Preview?
 
-The Oracle to Azure HorizonDB schema conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure HorizonDB flexible server.
+The Oracle to Azure HorizonDB schema conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and ensures that the converted schema works seamlessly with Azure HorizonDB.
 
 The tool provides a project-based user interface to automate schema conversion. If certain objects can't be converted automatically, the tool flags them as Review Tasks, which you can resolve manually by using GitHub Copilot Agents.
 
-:::image type="content" source="media/schema-conversions-overview/schema-conversion.png" alt-text="Diagram of schema conversion.":::
+:::image type="content" source="media/schema-conversions-overview/schema-conversion.png" alt-text="Diagram of schema conversion." lightbox="media/schema-conversions-overview/schema-conversion.png" :::
 
 ## Architecture
 
@@ -24,7 +25,7 @@ The schema conversion process involves multiple components working together:
 
 - **Source Oracle Database**: Your existing Oracle database containing the schema to convert
 - **Visual Studio Code PostgreSQL Extension**: The primary interface for managing the conversion process
-- **Azure HorizonDB flexible server**: Used as the scratch database for validation and testing
+- **Azure HorizonDB**: Used as the scratch database for validation and testing
 - **Azure OpenAI**: Provides intelligent transformation capabilities for complex schema objects
 - **Schema Conversion Agents**: AI-powered agents that handle the automated conversion process
 
@@ -36,7 +37,7 @@ The schema conversion process uses an intelligent, multistage approach that comb
 - **AI-Powered Transformation**: Schema Conversion Agents use Azure OpenAI to intelligently transform Oracle-specific constructs into PostgreSQL-compatible equivalents. The AI understands context, relationships, and best practices for both database platforms.
 - **Validation in Scratch Environment**: The tool tests all converted objects in the Azure HorizonDB database (scratch database) environment. This step ensures syntax correctness and compatibility before final output generation.
 - **Review Task Generation**: The tool flags objects that can't be fully automated or require human judgment as Review Tasks. These objects might include complex business logic or Oracle-specific features that need manual attention.
-- **Guided Resolution**: GitHub Copilot Agent Mode provides intelligent assistance for completing Review Tasks. It offers context-aware suggestions and Azure HorizonDB flexible server best practices to help you make informed decisions.
+- **Guided Resolution**: GitHub Copilot Agent Mode provides intelligent assistance for completing Review Tasks. It offers context-aware suggestions and Azure HorizonDB best practices to help you make informed decisions.
 - **Output Generation**: The tool converts successfully validated objects into organized PostgreSQL `.sql` files, ready for deployment to your target environment.
 
 ## Install the extension
@@ -52,11 +53,11 @@ The Oracle to PostgreSQL Schema Conversion functionality is built into the **Pos
 
 ## Schema conversion workflow
 
-This section explains the core concepts used throughout the Oracle to PostgreSQL schema conversion workflow - including conversion units (schemas, tables, indexes, views, and procedures), review tasks for human oversight, scratch database validation, AI-powered schema conversion agents, and the resulting PostgreSQL SQL artifacts. Understanding these concepts helps you interpret conversion results, prioritize and resolve flagged items, and prepare converted files for deployment to Azure HorizonDB flexible server.
+This section explains the core concepts used throughout the Oracle to PostgreSQL schema conversion workflow - including conversion units (schemas, tables, indexes, views, and procedures), review tasks for human oversight, scratch database validation, AI-powered schema conversion agents, and the resulting PostgreSQL SQL artifacts. Understanding these concepts helps you interpret conversion results, prioritize and resolve flagged items, and prepare converted files for deployment to Azure HorizonDB.
 
 ### Scratch database
 
-An Azure HorizonDB flexible server that you use during conversion for validation purposes to ensure compatibility. This approach ensures that:
+An Azure HorizonDB that you use during conversion for validation purposes to ensure compatibility. This approach ensures that:
 - Converted objects are syntactically correct
 - Dependencies are properly resolved
 - Performance characteristics are maintained
@@ -79,15 +80,15 @@ An integrated feature in Visual Studio Code that provides guided prompts to help
 
 ## Security and networking
 
-When you use the schema conversion feature, make sure your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure HorizonDB flexible server instance that you use as the scratch database.
+When you use the schema conversion feature, make sure your Visual Studio Code environment can securely connect to both your source Oracle database and the Azure HorizonDB instance that you use as the scratch database.
 
 Microsoft recommends connecting to an Azure OpenAI resource by using a private endpoint. For more information, see [Create a private endpoint for Azure OpenAI](/azure/ai-foundry/openai/how-to/network).
 
 For more information on securing your Azure OpenAI connections, visit [Data, privacy, and security for Azure Direct Models in Microsoft Foundry](/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal).
 
-:::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint.":::
+:::image type="content" source="media/schema-conversions-overview/azure-openai-networking.png" alt-text="Diagram of how Visual Studio Code connects to a private endpoint." lightbox="media/schema-conversions-overview/azure-openai-networking.png" :::
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before deploying to production. As part of your controls, consider enabling Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering in Foundry](/azure/ai-foundry/concepts/content-filtering).
 
 ## Why use the schema conversion feature?
@@ -99,7 +100,7 @@ Converting Oracle schemas to Azure HorizonDB streamlines migration and moderniza
 - **Validation-first approach**: Uses the scratch database to ensure converted objects work correctly
 - **Integrated workflow**: Works seamlessly within Visual Studio Code development environment
 - **Review and refinement**: Provides clear guidance for manual review tasks
-- **Azure optimization**: Designed for Azure HorizonDB flexible server
+- **Azure optimization**: Designed for Azure HorizonDB
 
 ## Supported schema objects
 
@@ -157,5 +158,5 @@ When you create your issue or provide feedback, include `Schema Conversion:` as 
 
 ## Related content
 
-- [Best practices for converting Oracle schemas to PostgreSQL](schema-conversions-best-practices.md)
-- [Schema conversion limitations](schema-conversions-limitations.md)
+- [Best practices for converting Oracle schemas in Azure HorizonDB](schema-conversions-best-practices.md)
+- [Oracle to Azure Database PostgreSQL schema conversion limitations Preview in Azure HorizonDB](schema-conversions-limitations.md)

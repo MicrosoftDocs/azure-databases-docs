@@ -1,18 +1,18 @@
 ---
-title: Networking Overview with Private Link Connectivity
-description: Learn about connectivity and networking options for an Azure HorizonDB flexible server instance with Azure Private Link.
+title: Networking Overview with Private Link Connectivity in Azure HorizonDB
+description: Learn about connectivity and networking options with Azure Private Link in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/30/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: concept-article
 ---
 
-# Azure HorizonDB networking with Private Link
+# Ntworking with Private Link in Azure HorizonDB
 
-Azure Private Link allows you to create private endpoints for your Azure HorizonDB flexible server instance to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
+Azure Private Link allows you to create private endpoints in Azure HorizonDB to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
 With Private Link, traffic between your virtual network and the service traverses the Microsoft backbone network. Exposing your service to the public internet is no longer necessary. You can create your own private link service in your virtual network and deliver it to your customers. Setup and consumption by using Private Link is consistent across Azure PaaS, customer-owned, and shared partner services.
 
@@ -37,7 +37,7 @@ Private Link provides the following benefits:
 - **Protection against data leakage:** A private endpoint is mapped to an instance of a PaaS resource instead of the entire service. Consumers can only connect to the specific resource. Access to any other resource in the service is blocked. This mechanism provides protection against data leakage risks.
 - **Global reach: Connect privately to services running in other regions:** The consumer's virtual network could be in region A. It can connect to services behind Private Link in region B.
 
-## Use cases for Private Link with Azure HorizonDB 
+## Use cases for Private Link with Azure HorizonDB
 
 Clients can connect to the private endpoint from:
 
@@ -51,7 +51,7 @@ Clients can also connect from on-premises by using ExpressRoute, private peering
 
 ### Supported features for Private Link
 
-Here's a cross-feature availability matrix for private endpoints in an Azure HorizonDB flexible server instance.
+Here's a cross-feature availability matrix for private endpoints in an Azure HorizonDB instance.
 
 | Feature | Availability | Notes |
 | --- | --- | --- |
@@ -73,15 +73,15 @@ The use of private endpoints isn't currently supported on servers created with v
 
 ### Connect from an Azure VM in a peered virtual network
 
-Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to an Azure HorizonDB flexible server instance from an Azure virtual machine (VM) in a peered virtual network.
+Configure [virtual network peering](/azure/virtual-network/tutorial-connect-virtual-networks-powershell) to establish connectivity to an Azure HorizonDB instance from an Azure virtual machine (VM) in a peered virtual network.
 
 ### Connect from an Azure VM in a network-to-network environment
 
-Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure HorizonDB flexible server instance from an Azure VM in a different region or subscription.
+Configure a [network-to-network VPN gateway](/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal) connection to establish connectivity to an Azure HorizonDB instance from an Azure VM in a different region or subscription.
 
 ### Connect from an on-premises environment over VPN
 
-To establish connectivity from an on-premises environment to the Azure HorizonDB flexible server instance, choose and implement one of the options:
+To establish connectivity from an on-premises environment to the Azure HorizonDB instance, choose and implement one of the options:
 
 - [Point-to-site connection](/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 - [Site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell)
@@ -105,9 +105,9 @@ Private DNS zones provide separate DNS zone names for each Azure service. For ex
 
 > [!NOTE]  
 > Private endpoint Private DNS zone configurations automatically generate only if you use the recommended naming scheme: `privatelink.postgres.database.azure.com`.
-> On newly provisioned public access (not virtual network integrated) servers, there is a change in the DNS layout. The server's FQDN now becomes a CNAME record in the form `servername.postgres.database.azure.com` which points to an A record in one of the following formats:
+> On newly provisioned public access (not virtual network integrated) servers, there's a change in the DNS layout. The server's FQDN now becomes a CNAME record in the form `servername.postgres.database.azure.com` which points to an A record in one of the following formats:
 > 1. If the server has a private endpoint with a default private DNS zone linked, the A record uses this format: `server_name.privatelink.postgres.database.azure.com`.
-> 2. If the server doesn't have private endpoints, then the A record uses this format `server_name.rs-<15 semi-random bytes>.postgres.database.azure.com`.
+> 1. If the server doesn't have private endpoints, then the A record uses this format `server_name.rs-<15 semi-random bytes>.postgres.database.azure.com`.
 
 ### Hybrid DNS for Azure and on-premises resources
 
@@ -130,7 +130,7 @@ In such architecture, the following components are configured:
 
 - On-premises DNS servers have conditional forwarders configured for each private endpoint public DNS zone, pointing to the Private DNS Resolver hosted in the hub virtual network.
 - The Private DNS Resolver hosted in the hub virtual network uses the Azure-provided DNS (168.63.129.16) as a forwarder.
-- The hub virtual network must be linked to the Private DNS zone names for Azure services (such as `privatelink.postgres.database.azure.com`, for an Azure HorizonDB flexible server instance).
+- The hub virtual network must be linked to the Private DNS zone names for Azure services (such as `privatelink.postgres.database.azure.com`, for an Azure HorizonDB instance).
 - All Azure virtual networks use Private DNS Resolver hosted in the hub virtual network.
 - The Private DNS Resolver isn't authoritative for a customer's corporate domains because it's just a forwarder (for example, Microsoft Entra domain names), it should have outbound endpoint forwarders to the customer's corporate domains, pointing to the on-premises DNS servers, or DNS servers deployed in Azure that are authoritative for such zones.
 
@@ -149,15 +149,15 @@ Limitations to NSGs and private endpoints are listed in [What is a private endpo
 
 The following situations and outcomes are possible when you use Private Link in combination with firewall rules:
 
-- If you don't configure any firewall rules, by default, traffic can't access the Azure HorizonDB flexible server instance.
+- If you don't configure any firewall rules, by default, traffic can't access the Azure HorizonDB instance.
 
 - If you configure public traffic or a service endpoint and you create private endpoints, different types of incoming traffic are authorized by the corresponding type of firewall rule.
 
-- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure HorizonDB flexible server instance is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure HorizonDB flexible server instance.
+- If you don't configure any public traffic or service endpoint and you create private endpoints, the Azure HorizonDB instance is accessible only through private endpoints. If you don't configure public traffic or a service endpoint, after all approved private endpoints are rejected or deleted, no traffic can access the Azure HorizonDB instance.
 
 ## Troubleshoot
 
-When you use Private Link endpoints with an Azure HorizonDB flexible server instance, connectivity issues might occur due to misconfigurations or network constraints. To troubleshoot these issues, verify the setup of private endpoints, DNS configurations, network security groups (NSGs), and route tables. Systematically addressing these areas can help you identify and resolve common problems, ensuring seamless connectivity and secure access to your database.
+When you use Private Link endpoints with an Azure HorizonDB instance, connectivity issues might occur due to misconfigurations or network constraints. To troubleshoot these issues, verify the setup of private endpoints, DNS configurations, network security groups (NSGs), and route tables. Systematically addressing these areas can help you identify and resolve common problems, ensuring seamless connectivity and secure access to your database.
 
 ### Connectivity issues with private endpoint-based networking
 
@@ -180,13 +180,12 @@ If you have DNS resolution issues when you use private endpoint-based networking
 
 ## Limitations and considerations
 
-- Private endpoints can only be configured for servers created after the introduction of Private Link. Servers that use virtual network (VNet) integration are not eligible for private endpoint configuration.
+- Private endpoints can only be configured for servers created after the introduction of Private Link. Servers that use virtual network (VNet) integration aren't eligible for private endpoint configuration.
 
-- The number of private endpoints is not limited by the database service itself but rather by Azure networking constraints—specifically, the number of private endpoints that can be injected into a given subnet within a VNet 3.
+- The number of private endpoints isn't limited by the database service itself but rather by Azure networking constraints-specifically, the number of private endpoints that can be injected into a given subnet within a VNet 3.
 
 - Virtual Machines can connect to the database through private endpoints, provided they are correctly configured within the same virtual network or have appropriate routing in place.
 
 ## Related content
 
-- [Azure portal](../network/how-to-networking.md)
-- [Azure CLI](../network/how-to-networking.md)
+- [Networking in Azure HorizonDB](how-to-networking.md)

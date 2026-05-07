@@ -1,69 +1,69 @@
 ---
-title: "Quickstart: Connect with C#"
-description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from an Azure HorizonDB flexible server instance."
+title: "Quickstart: Use .NET (C#) to Connect and Query Data in Azure HorizonDB"
+description: This quickstart provides a C# (.NET) code sample you can use to connect and query data from an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
 ms.custom:
-- mvc
-- devcenter
-- devx-track-csharp
-- mode-other
-- devx-track-dotnet
-- sfi-image-nochange
-- sfi-ropc-nochange
-ms.devlang: csharp
+  - mvc
+  - devcenter
+  - devx-track-csharp
+  - mode-other
+  - devx-track-dotnet
+  - sfi-image-nochange
+  - sfi-ropc-nochange
+ms.devlang: "csharp"
 ---
 
-# Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB 
+# Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB
 
-This quickstart demonstrates how to connect to an Azure HorizonDB flexible server instance using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you are familiar with developing using C#, and that you are new to working with Azure HorizonDB.
+This quickstart demonstrates how to connect to an Azure HorizonDB instance using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you're familiar with developing using C#, and that you're new to working with Azure HorizonDB.
 
 ## Prerequisites
 
 For this quickstart you need:
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
-- [Create an Azure HorizonDB flexible server](../configure-maintain/quickstart-create-server.md) instance, if you do not have one.
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) instance, if you don't have one.
 - Use the empty *postgres* database available on the server or create a [new database](../configure-maintain/quickstart-create-server.md#connect-using-psql).
 - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
-- Install [Visual Studio](https://www.visualstudio.com/downloads/) to build your project.
+- Install [Visual Studio](https://visualstudio.microsoft.com/downloads) to build your project.
 - Install [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet package in Visual Studio.
 
 ## Get connection information
 
-Get the connection information needed to connect to the Azure HorizonDB flexible server instance. You need the fully qualified server name and login credentials.
+Get the connection information needed to connect to the Azure HorizonDB instance. You need the fully qualified server name and login credentials.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created.
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created.
 
-2. Click the server name.
+1. Select the server name.
 
-3. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
-    :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
+   :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
 
-4. Copy the values shown as **Endpoint** and **Administrator login**.
+1. Copy the values shown as **Endpoint** and **Administrator login**.
 
-    :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
+   :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
 
-5. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
+1. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
 
-    :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
+   :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
 
 ## Step 1: Connect and insert data
 
-Use the following code to connect and load the data using **CREATE TABLE** and  **INSERT INTO** SQL statements. The code uses NpgsqlCommand class with method:
-- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB flexible server database.
+Use the following code to connect and load the data using **CREATE TABLE** and **INSERT INTO** SQL statements. The code uses NpgsqlCommand class with method:
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB database.
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) sets the CommandText property.
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) method to run the database commands.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.
 
 ```csharp
@@ -94,7 +94,6 @@ namespace Driver
                     DBname,
                     Port,
                     Password);
-
 
             using (var conn = new NpgsqlConnection(connString))
 
@@ -146,7 +145,7 @@ Use the following code to connect and read the data using a **SELECT** SQL state
 - [Read()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) to advance to the record in the results.
 - [GetInt32()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) and [GetString()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) to parse the values in the record.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.
 
 ```csharp
@@ -184,7 +183,6 @@ namespace Driver
                 Console.Out.WriteLine("Opening connection");
                 conn.Open();
 
-
                 using (var command = new NpgsqlCommand("SELECT * FROM inventory", conn))
                 {
 
@@ -212,15 +210,14 @@ namespace Driver
 ```
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-
 ## Step 3: Update data
 
 Use the following code to connect and update the data using an **UPDATE** SQL statement. The code uses NpgsqlCommand class with method:
-- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB flexible server instance.
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB instance.
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand), sets the CommandText property.
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) method to run the database commands.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.
 
 ```csharp
@@ -272,8 +269,6 @@ namespace Driver
         }
     }
 }
-
-
 ```
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
@@ -282,9 +277,9 @@ namespace Driver
 
 Use the following code to connect and delete data using a **DELETE** SQL statement.
 
-The code uses NpgsqlCommand class with method [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB flexible server database. Then, the code uses the [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) method, sets the CommandText property, and calls the method [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) to run the database commands.
+The code uses NpgsqlCommand class with method [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure HorizonDB database. Then, the code uses the [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) method, sets the CommandText property, and calls the method [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) to run the database commands.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.
 
 ```csharp
@@ -335,7 +330,6 @@ namespace Driver
         }
     }
 }
-
 ```
 
 ## Clean up resources
@@ -350,10 +344,10 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
-- [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md).
-- [Quickstart: Use Java and JDBC with Azure HorizonDB](connect-java.md).
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md).
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md).
-- [Quickstart: Connect and query with Azure CLI with Azure HorizonDB](connect-azure-cli.md).
-- [Quickstart: Import data from Azure HorizonDB in Power BI](../integration/connect-with-power-bi-desktop.md).
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
+- [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
+- [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
+- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
+- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
+- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
+- [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

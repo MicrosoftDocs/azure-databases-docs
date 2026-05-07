@@ -4,7 +4,7 @@ description: Quickstart guide to create an Azure HorizonDB server instance with 
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: article
@@ -12,7 +12,7 @@ ms.custom:
   - mvc
   - devx-track-azurecli
   - sfi-ropc-blocked
-ms.devlang: azurecli
+ms.devlang: "azurecli"
 ---
 
 # Create an Azure HorizonDB with a web app in a virtual network
@@ -43,7 +43,7 @@ In this article, you learn how to:
 
 ## Create a flexible server instance
 
-Create a private Azure HorizonDB flexible server instance inside a virtual network by using the following command:
+Create a private Azure HorizonDB instance inside a virtual network by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server create --resource-group demoresourcegroup --name demoserverpostgres --vnet demoappvnet --location westus2
@@ -52,7 +52,7 @@ This command performs the following actions, which might take a few minutes:
 
 - Creates the resource group if it doesn't already exist.
 - Generates a server name if you don't provide one.
-- Creates a virtual network and subnet for the Azure HorizonDB flexible server instance.
+- Creates a virtual network and subnet for the Azure HorizonDB instance.
 - Creates admin username and password for your server if you don't provide them.
 - Creates an empty database named **postgres**.
 
@@ -84,7 +84,7 @@ Try using 'az postgres flexible-server connect' command to test out connection.
 
 ## Create a web app
 
-In this section, you create an app host in an App Service app, connect this app to the Azure HorizonDB flexible server database, and then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. The Basic Plan doesn't support virtual network integration. Use Standard or Premium.
+In this section, you create an app host in an App Service app, connect this app to the Azure HorizonDB database, and then deploy your code to that host. Make sure you're in the repository root of your application code in the terminal. The Basic Plan doesn't support virtual network integration. Use Standard or Premium.
 
 Create an App Service app (the host process) by using the `az webapp up` command.
 
@@ -111,7 +111,7 @@ Before enabling virtual network integration, you need a subnet that's delegated 
 az network vnet show --resource-group demoresourcegroup -n demoappvnet
 ```
 
-Run the following command to create a new subnet in the same virtual network as the Azure HorizonDB flexible server instance. **Update the address prefix to avoid conflict with the Azure HorizonDB flexible server subnet.**
+Run the following command to create a new subnet in the same virtual network as the Azure HorizonDB instance. **Update the address prefix to avoid conflict with the Azure HorizonDB subnet.**
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group demoresourcegroup --vnet-name demoappvnet --name webappsubnet  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms
@@ -127,12 +127,12 @@ az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp -
 
 ## Configure environment variables to connect the database
 
-After deploying the code to App Service, connect the app to the Azure HorizonDB flexible server instance in Azure. The app code expects to find database information in many environment variables. To set environment variables in App Service, use the [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command.
+After deploying the code to App Service, connect the app to the Azure HorizonDB instance in Azure. The app code expects to find database information in many environment variables. To set environment variables in App Service, use the [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command.
 
 ```azurecli-interactive
 az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="postgres" DBUSER="<username>" DBPASS="<password>"
 ```
-- Replace **postgres-server-name**, **username**, and **password** with the values for the newly created Azure HorizonDB flexible server instance.
+- Replace **postgres-server-name**, **username**, and **password** with the values for the newly created Azure HorizonDB instance.
 
 - Replace **\<username\>** and **\<password\>** with the credentials that the command also generated for you.
 - The resource group and app name come from the cached values in the .azure/config file.

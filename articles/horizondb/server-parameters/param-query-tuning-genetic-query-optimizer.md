@@ -1,72 +1,16 @@
 ---
-title: Query Tuning / Genetic Query Optimizer server parameters
-description: Query Tuning / Genetic Query Optimizer server parameters for Azure HorizonDB flexible server.
+title: Query Tuning / Genetic Query Optimizer Parameters
+description: Query Tuning / Genetic Query Optimizer parameters for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
-ms.custom: automatically generated
-zone_pivot_groups: postgresql-server-version
+ms.custom:
+  - automatically generated
 ---
-# Query Tuning / Genetic Query Optimizer
-
-
-::: zone pivot="postgresql-18"
-
-[!INCLUDE [param-18-query-tuning-genetic-query-optimizer](./includes/param-18-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-17"
+# HorizonDB - Query Tuning / Genetic Query Optimizer
 
 [!INCLUDE [param-17-query-tuning-genetic-query-optimizer](./includes/param-17-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-16"
-
-[!INCLUDE [param-16-query-tuning-genetic-query-optimizer](./includes/param-16-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-15"
-
-[!INCLUDE [param-15-query-tuning-genetic-query-optimizer](./includes/param-15-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-14"
-
-[!INCLUDE [param-14-query-tuning-genetic-query-optimizer](./includes/param-14-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-13"
-
-[!INCLUDE [param-13-query-tuning-genetic-query-optimizer](./includes/param-13-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-12"
-
-[!INCLUDE [param-12-query-tuning-genetic-query-optimizer](./includes/param-12-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-11"
-
-[!INCLUDE [param-11-query-tuning-genetic-query-optimizer](./includes/param-11-query-tuning-genetic-query-optimizer.md)]
-
-::: zone-end
-
-

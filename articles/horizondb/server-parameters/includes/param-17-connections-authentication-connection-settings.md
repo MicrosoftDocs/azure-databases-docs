@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### bonjour
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [bonjour](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-BONJOUR) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### bonjour_name
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [bonjour_name](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-BONJOUR-NAME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### listen_addresses
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `*` |
 | Parameter type | read-only |
 | Documentation | [listen_addresses](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-LISTEN-ADDRESSES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_connections
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `25-5000` |
 | Parameter type | static |
 | Documentation | [max_connections](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-MAX-CONNECTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-max-connections](./server-parameters-azure-notes-max-connections.md)]
-
-
 
 ### port
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `5432` |
 | Parameter type | read-only |
 | Documentation | [port](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-PORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### reserved_connections
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `5` |
 | Parameter type | read-only |
 | Documentation | [reserved_connections](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-RESERVED-CONNECTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### superuser_reserved_connections
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `10` |
 | Parameter type | read-only |
 | Documentation | [superuser_reserved_connections](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-SUPERUSER-RESERVED-CONNECTIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### unix_socket_directories
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `/tmp,/tmp/tuning_sockets` |
 | Parameter type | read-only |
 | Documentation | [unix_socket_directories](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-UNIX-SOCKET-DIRECTORIES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### unix_socket_group
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [unix_socket_group](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-UNIX-SOCKET-GROUP) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### unix_socket_permissions
 
@@ -171,9 +137,4 @@ ms.custom: automatically generated
 | Allowed values | `0777` |
 | Parameter type | read-only |
 | Documentation | [unix_socket_permissions](https://www.postgresql.org/docs/17/runtime-config-connection.html#GUC-UNIX-SOCKET-PERMISSIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

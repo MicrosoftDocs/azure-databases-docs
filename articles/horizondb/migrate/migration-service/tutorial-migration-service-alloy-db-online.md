@@ -4,21 +4,21 @@ description: Learn to migrate, seamlessly and in online mode, from a Google Allo
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/11/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
 ms.custom:
   - devx-track-azurecli
   - sfi-image-nochange
-# CustomerIntent: As a user, I want to learn how to perform online migration from a Google AlloyDB for PostgreSQL to Azure HorizonDB flexible server, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
+# CustomerIntent: As a user, I want to learn how to perform online migration from a Google AlloyDB for PostgreSQL to Azure HorizonDB, using the migration service in Azure, so that I can simplify the transition and ensure data integrity and efficient deployment.
 ---
 
 # (Preview) Migrate online, from a Google AlloyDB for PostgreSQL server to Azure HorizonDB, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure HorizonDB in online mode.
 
-The migration service in Azure HorizonDB is a fully managed service integrated into the Azure portal and Azure CLI. It simplifies your migration journey to the Azure HorizonDB flexible server.
+The migration service in Azure HorizonDB is a fully managed service integrated into the Azure portal and Azure CLI. It simplifies your migration journey to the Azure HorizonDB.
 
 [!INCLUDE [checklist-online](includes/checklist-online.md)]
 
@@ -42,7 +42,7 @@ The migration service comes with a simple, wizard-based experience on the Azure 
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
 1. In the resource menu, select **Migration**.
 
@@ -81,11 +81,11 @@ Select **Next: Runtime server**.
 
 #### Runtime server
 
-The migration runtime server is a specialized feature within the {[migration service in Azure HorizonDB](concepts-migration-service-postgresql.md)}, designed to act as an intermediary server during migration. It's a separate Azure HorizonDB flexible server instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
+The migration runtime server is a specialized feature within the {[migration service in Azure HorizonDB](overview-migration-service-postgresql.md)}, designed to act as an intermediary server during migration. It's a separate Azure HorizonDB instance that isn't the target server, but is used to facilitate the migration of databases from a source environment that is only accessible via a private network.
 
 :::image type="content" source="media/tutorial-migration-service/runtime-server-migration.png" alt-text="Screenshot of the Runtime server tab." lightbox="media/tutorial-migration-service/runtime-server-migration.png":::
 
-For more information about the runtime server, visit [Migration runtime server](concepts-migration-service-runtime-server.md).
+For more information about the runtime server, visit [Migration runtime server with the migration service in Azure HorizonDB](concepts-migration-service-runtime-server.md).
 
 #### Source server
 
@@ -141,7 +141,7 @@ Canceling a migration stops further migration activity on your target server and
 
 This article explores using the Azure CLI to migrate your PostgreSQL database from an Azure virtual machine or an on-premises PostgreSQL instance to an Azure HorizonDB. The Azure CLI provides a powerful and flexible command-line interface that allows you to perform various tasks, including database migration. Following the steps outlined in this article, you can seamlessly transfer your database to Azure and take advantage of its powerful features and scalability.
 
-To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for the migration service](how-to-setup-azure-cli-commands-postgresql.md).
+To learn more about Azure CLI with the migration service, visit [How to set up Azure CLI for migration service in Azure HorizonDB](how-to-setup-azure-cli-commands-postgresql.md).
 
 Once the CLI is installed, open the command prompt and log into your Azure account using the below command.
 
@@ -175,9 +175,9 @@ To begin the migration, create a JSON file with the migration details. The JSON 
 ```
 
 > [!NOTE]  
-> When configuring the JSON properties for the migration to Azure HorizonDB flexible server, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
+> When configuring the JSON properties for the migration to Azure HorizonDB, if your source environment is an Azure Virtual Machine, you can specify the source type using the `"sourceType":"AzureVM"` property. This helps the migration service understand the environment from which the data is being migrated.
 
-- Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure HorizonDB flexible server target.
+- Run the following command to check if any migrations are running. The migration name is unique across the migrations within the Azure HorizonDB target.
 
   ```azurecli-interactive
   az postgres flexible-server migration list --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --filter all
@@ -228,9 +228,9 @@ Remember that in the previous steps, when you created this migration, you config
 Validation details are available at the instance and database level.
 
 - **Validation details for instance**
-  - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure HorizonDB flexible server.
+  - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure HorizonDB.
 - **Validation and migration details for databases**
-  - It contains validation of the individual databases related to extensions and collations support in Azure HorizonDB flexible server.
+  - It contains validation of the individual databases related to extensions and collations support in Azure HorizonDB.
 
 You can see the **Validation status** and **Migration status** under the migration details page.
 
@@ -279,8 +279,8 @@ Some possible migration statuses:
 
 ## Related content
 
-- {[Migration service](concepts-migration-service-postgresql.md)}
-- [Best practices](best-practices-migration-service-postgresql.md)
-- [Known issues and limitations](concepts-known-issues-migration-service.md)
-- [Network setup](how-to-network-setup-migration-service.md)
-- [Premigration validations](concepts-premigration-migration-service.md)
+- [What is the migration service in Azure HorizonDB?](overview-migration-service-postgresql.md)
+- [Best practices for seamless migration into Azure HorizonDB](best-practices-migration-service-postgresql.md)
+- [Known issues and limitations for the migration service in Azure HorizonDB](concepts-known-issues-migration-service.md)
+- [Network scenarios for the migration service in Azure HorizonDB](how-to-network-setup-migration-service.md)
+- [Premigration validation for the migrations service in Azure HorizonDB](concepts-premigration-migration-service.md)

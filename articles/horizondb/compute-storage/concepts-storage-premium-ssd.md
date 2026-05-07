@@ -1,26 +1,26 @@
 ---
-title: Premium SSD
-description: This article describes the Premium ssd storage option in an Azure HorizonDB flexible server instance.
+title: Premium SSD in Azure HorizonDB
+description: This article describes the Premium ssd storage option in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.custom: references_regions
-ms.date: 01/16/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article
+ms.custom:
+  - references_regions
 ---
 
-
-# Premium SSD  storage option in Azure HorizonDB 
+# Premium SSD storage option in Azure HorizonDB
 
 ## Premium SSD
 
 Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
 
 The maximum supported storage size is 32 TiB with Premium SSD, allowing you to scale up to 20,000 IOPS and 900 MB/s throughput. By switching to Premium SSD v2, you can scale up to 64 TiB with support for 80,000 IOPS and 1,200 MB/s throughput.
-  
-The storage that you provision is the amount of storage capacity available to your Azure HorizonDB flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+
+The storage that you provision is the amount of storage capacity available to your Azure HorizonDB instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
 Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.To learn more, see [Compute options in Azure HorizonDB](concepts-compute.md).
 
@@ -29,10 +29,9 @@ Your virtual machine type also has IOPS limits. Although you can select any stor
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
-
 ## Storage autogrow (Premium SSD)
 
-Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only which happens when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB.  When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
+Storage autogrow can help ensure that your server always has enough free space available, and doesn't become read-only which happens when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. When you turn on storage autogrow, disk size increases without affecting the workload. Storage autogrow is only supported for Premium SSD storage tier.
 
 For servers with more than 1 TiB of provisioned storage, the storage autogrow mechanism activates when the available space falls below 10% of the total capacity or 64 GiB, whichever of the two values are smaller. Conversely, for servers with storage under 1 TiB this threshold is adjusted to 20% of the available free space or 64 GiB, depending on which of these values is smaller.
 
@@ -71,5 +70,5 @@ Learn how to [scale up or down IOPS](../scale/how-to-scale-compute.md).
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md).
-- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md).
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
+- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)

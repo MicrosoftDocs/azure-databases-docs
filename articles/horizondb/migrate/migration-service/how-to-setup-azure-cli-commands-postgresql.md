@@ -1,16 +1,17 @@
 ---
-title: "How to Set Up Azure CLI for Migration Service in Azure HorizonDB flexible server"
-description: Learn how to set up Azure CLI for migration service in Azure HorizonDB flexible server and begin migrating your data.
+title: How to Set up Azure CLI for Migration Service in Azure HorizonDB
+description: Learn how to set up Azure CLI for migration service in Azure HorizonDB and begin migrating your data.
 author: avnishrastogimsft
 ms.author: avrastog
-ms.date: 02/07/2025
+ms.reviewer: maghan
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
 ---
 
-# How to set up Azure CLI for migration service in Azure HorizonDB flexible server
+# How to set up Azure CLI for migration service in Azure HorizonDB
 
 The Azure CLI is a set of commands used across Azure services to create and manage resources. It provides the same capabilities as the Azure portal but is optimized for users who prefer to work within a command-line environment. To begin migrating using Azure CLI, you need to install the Azure CLI on your local machine.
 
@@ -34,9 +35,9 @@ All the CLI commands start with `az postgres flexible-server migration`. There a
 
 1. **Install Azure CLI**: Follow the instructions provided in the official Azure documentation to install the Azure CLI - [How to install the Azure CLI](/cli/azure/install-azure-cli).
 
-2. **Check Azure CLI Version**: Ensure that your Azure CLI version is at least 2.56.0 or higher. Use the command `az --version` to check your current version.
+1. **Check Azure CLI Version**: Ensure that your Azure CLI version is at least 2.56.0 or higher. Use the command `az --version` to check your current version.
 
-3. **Sign in to Azure**: After installation, execute `az login` to authenticate. This opens your default browser to complete the sign-in process with your Azure credentials.
+1. **Sign in to Azure**: After installation, execute `az login` to authenticate. This opens your default browser to complete the sign-in process with your Azure credentials.
 
 Once the CLI is installed, open the command prompt and log into the Azure account using the following command.
 
@@ -46,21 +47,21 @@ az login
 
 ## Migrate commands
 
-The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure HorizonDB flexible server.
+The migration service provides the following commands to help you migrate your PostgreSQL instances to Azure HorizonDB.
 
 ### Help command
 
-The `--help` command in Azure CLI is a valuable option that provides detailed documentation about the commands and their subcommands, including the required verbs for operations. The `–-help`command displays the necessary commands and their associated actions for migration service in Azure HorizonDB.
+The `--help` command in Azure CLI is a valuable option that provides detailed documentation about the commands and their subcommands, including the required verbs for operations. The `--help`command displays the necessary commands and their associated actions for migration service in Azure HorizonDB.
 
 ```azurecli-interactive
-az postgres flexible-server migration –-help
+az postgres flexible-server migration --help
 ```
 
 The output guides you through the necessary steps and parameters required to manage your database migrations effectively using the Azure CLI.
 
 ### Create command
 
-The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure HorizonDB flexible server instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
+The `az postgres flexible-server migration create` command in Azure CLI is used to initiate a new migration workflow. It facilitates the migration of databases from a source PostgreSQL instance to a target Azure HorizonDB instance. This command sets up the necessary parameters and configurations to ensure a smooth and efficient migration process.
 
 For more information, see [az postgres flexible-server migration create](/cli/azure/postgres/flexible-server/migration#az-postgres-flexible-server-migration-create)
 
@@ -110,7 +111,7 @@ Some possible migration states:
 
 ### Update command
 
-The `az postgres flexible-server migration update` command is used to manage the migration process to an Azure HorizonDB flexible server. Specifically, it can be used to:
+The `az postgres flexible-server migration update` command is used to manage the migration process to an Azure HorizonDB. Specifically, it can be used to:
 
 - **Perform a cutover**: This finalizes the migration process by switching the database traffic from the source server to the target flexible server.
 
@@ -135,7 +136,7 @@ The following table summarizes the parameters used by the migration commands:
 | `resource-group` | create, list, show, update | Resource group of PostgreSQL Flexible server |
 | `name` | create, list, show | Name of the PostgreSQL Flexible server |
 | `migration-name` | create, show, update | Unique identifier to migrations attempted to flexible server. This field accepts only alphanumeric characters and doesn't accept any special characters except a hyphen (-). The name can't start with -, and no two migrations to a flexible server target can have the same name. |
-| `filter` | list | To filter migrations, two values are supported – Active and All |
+| `filter` | list | To filter migrations, two values are supported - Active and All |
 | `help` | create, list, show, update | Provides information about each command. |
 | `migration-mode` | create | This is an optional parameter. Allowed Values are - offline, online. Default value: Offline. |
 | `migration-option` | create | Allows you to perform validations before triggering a migration. Default is ValidateAndMigrate. Allowed values are - Migrate, Validate, ValidateAndMigrate. |
@@ -160,4 +161,4 @@ The `az postgres flexible-server migration create` command requires a JSON file 
 ## Related content
 
 - [What is the migration service in Azure HorizonDB?](overview-migration-service-postgresql.md)
-- [Tutorial: Migrate offline from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB with the migration service](tutorial-migration-service-iaas-offline.md)
+- [Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure HorizonDB, with the migration service](tutorial-migration-service-iaas-offline.md)

@@ -1,21 +1,22 @@
 ---
-title: Upload Data in Bulk
-description: This article discusses best practices for uploading data in bulk to an Azure HorizonDB flexible server instance.
+title: Upload Data in Bulk in Azure HorizonDB
+description: This article discusses best practices for uploading data in bulk in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/16/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: best-practice
-ai.usage: ai-assisted
 ---
 
-# Best practices to bulk upload data to Azure HorizonDB 
+# Best practices to bulk upload data in Azure HorizonDB
 
-This article discusses various methods for loading data in bulk to an Azure HorizonDB flexible server instance, along with best practices for both initial data loads in empty databases and incremental data loads.
+This article discusses various methods for loading data in bulk to an Azure HorizonDB instance, along with best practices for both initial data loads in empty databases and incremental data loads.
 
-## Loading methods
+<a id="loading-methods"></a>
+
+## Load methods
 
 The following data-loading methods are arranged in order from most time-consuming to least time-consuming:
 
@@ -28,7 +29,7 @@ The preferred method for loading data into a database is the `COPY` command. If 
 
 ## Steps to upload bulk data
 
-Here are steps to bulk upload data to an Azure HorizonDB flexible server instance.
+Here are steps to bulk upload data to an Azure HorizonDB instance.
 
 ### Step 1: Prepare your data
 
@@ -82,15 +83,15 @@ To create an unlogged table or change an existing table to an unlogged table, us
 
 - Create a new unlogged table by using the following syntax:
 
-    ```sql
-    CREATE UNLOGGED TABLE <tablename>;
-    ```
+  ```sql
+  CREATE UNLOGGED TABLE <tablename>;
+  ```
 
 - Convert an existing logged table to an unlogged table by using the following syntax:
 
-    ```sql
-    ALTER TABLE <tablename> SET UNLOGGED;
-    ```
+  ```sql
+  ALTER TABLE <tablename> SET UNLOGGED;
+  ```
 
 ### Server parameter tuning
 
@@ -99,19 +100,19 @@ To create an unlogged table or change an existing table to an unlogged table, us
 > [!NOTE]  
 > Follow the recommendations here only if there's enough memory and disk space.
 
-- `maintenance_work_mem`: Can be set to a maximum of 2 gigabytes (GB) on an Azure HorizonDB flexible server instance. `maintenance_work_mem` helps in speeding up auto vacuum, index, and foreign key creation.
+- `maintenance_work_mem`: Can be set to a maximum of 2 gigabytes (GB) on an Azure HorizonDB instance. `maintenance_work_mem` helps in speeding up auto vacuum, index, and foreign key creation.
 
-- `checkpoint_timeout`: On an Azure HorizonDB flexible server instance, the `checkpoint_timeout` value can be increased to a maximum of 24 hours from the default setting of 5 minutes. We recommend increasing the value to 1 hour before you initially load data on the Azure HorizonDB flexible server instance.
+- `checkpoint_timeout`: On an Azure HorizonDB instance, the `checkpoint_timeout` value can be increased to a maximum of 24 hours from the default setting of 5 minutes. We recommend increasing the value to 1 hour before you initially load data on the Azure HorizonDB instance.
 
 - `checkpoint_completion_target`: We recommend a value of 0.9.
 
-- `max_wal_size`: Can be set to the maximum allowed value on an Azure HorizonDB flexible server instance, which is 64 GB while you're doing the initial data load.
+- `max_wal_size`: Can be set to the maximum allowed value on an Azure HorizonDB instance, which is 64 GB while you're doing the initial data load.
 
 - `wal_compression`: This can be turned on. Enabling this parameter can incur some extra CPU costs for compression during write-ahead log (WAL) logging and decompression during WAL replay.
 
 ### Recommendations
 
-Before you begin an initial data load on the Azure HorizonDB flexible server instance, we recommend that you:
+Before you begin an initial data load on the Azure HorizonDB instance, we recommend that you:
 
 - Disable high availability on the server. You can enable it after the initial load is completed on the primary.
 - Create read replicas after the initial data load is completed.
@@ -147,7 +148,7 @@ We always recommend that you partition large tables. Some advantages of partitio
 
 ### Maintain up-to-date table statistics
 
-Monitoring and maintaining table statistics is important for query performance on the database. This also includes scenarios where you have incremental loads. PostgreSQL uses the autovacuum daemon process to clean up dead tuples and analyze the tables to keep the statistics updated. For more information, see [Autovacuum monitoring and tuning](how-to-autovacuum-tuning.md).
+Monitoring and maintaining table statistics is important for query performance on the database. This also includes scenarios where you have incremental loads. PostgreSQL uses the autovacuum daemon process to clean up dead tuples and analyze the tables to keep the statistics updated. For more information, see [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
 
 ### Create indexes on foreign key constraints
 
@@ -163,7 +164,7 @@ You can identify unused indexes in two ways: by Query Store and an index usage q
 
 **Query Store**
 
-The Query Store feature helps identify indexes, which can be dropped based on query usage patterns on the database. For step-by-step guidance, see [Query Store](../monitor/concepts-query-store.md).
+The Query Store feature helps identify indexes, which can be dropped based on query usage patterns on the database. For step-by-step guidance, see [Query store in Azure HorizonDB](../monitor/concepts-query-store.md).
 
 After you've enabled Query Store on the server, you can use the following query to identify indexes that can be dropped by connecting to azure_sys database.
 
@@ -177,23 +178,23 @@ You can also use the following query to identify unused indexes:
 
 ```sql
 SELECT
-    t.schemaname,
-    t.tablename,
-    c.reltuples::bigint                            AS num_rows,
- pg_size_pretty(pg_relation_size(c.oid))        AS table_size,
-    psai.indexrelname                              AS index_name,
+    t.schemaname,
+    t.tablename,
+    c.reltuples::bigint                            AS num_rows,
+ pg_size_pretty(pg_relation_size(c.oid))        AS table_size,
+    psai.indexrelname                              AS index_name,
  pg_size_pretty(pg_relation_size(i.indexrelid)) AS index_size,
-    CASE WHEN i.indisunique THEN 'Y' ELSE 'N' END AS "unique",
-    psai.idx_scan                                  AS number_of_scans,
-    psai.idx_tup_read                              AS tuples_read,
-    psai.idx_tup_fetch                             AS tuples_fetched
+    CASE WHEN i.indisunique THEN 'Y' ELSE 'N' END AS "unique",
+    psai.idx_scan                                  AS number_of_scans,
+    psai.idx_tup_read                              AS tuples_read,
+    psai.idx_tup_fetch                             AS tuples_fetched
 FROM
  pg_tables t
-    LEFT JOIN pg_class c ON t.tablename = c.relname
-    LEFT JOIN pg_index i ON c.oid = i.indrelid
-    LEFT JOIN pg_stat_all_indexes psai ON i.indexrelid = psai.indexrelid
+    LEFT JOIN pg_class c ON t.tablename = c.relname
+    LEFT JOIN pg_index i ON c.oid = i.indrelid
+    LEFT JOIN pg_stat_all_indexes psai ON i.indexrelid = psai.indexrelid
 WHERE
-    t.schemaname NOT IN ('pg_catalog', 'information_schema')
+    t.schemaname NOT IN ('pg_catalog', 'information_schema')
 ORDER BY 1, 2;
 ```
 
@@ -204,9 +205,9 @@ The `number_of_scans`, `tuples_read`, and `tuples_fetched` columns would indicat
 > [!NOTE]  
 > Follow the recommendations in the following parameters only if there's enough memory and disk space.
 
-- `maintenance_work_mem`: This parameter can be set to a maximum of 2 GB on the Azure HorizonDB flexible server instance. `maintenance_work_mem` helps speed up index creation and foreign key additions.
+- `maintenance_work_mem`: This parameter can be set to a maximum of 2 GB on the Azure HorizonDB instance. `maintenance_work_mem` helps speed up index creation and foreign key additions.
 
-- `checkpoint_timeout`: On the Azure HorizonDB flexible server instance, the `checkpoint_timeout` value can be increased to 10 or 15 minutes from the default setting of 5 minutes. Increasing `checkpoint_timeout` to a more significant value, such as 15 minutes, can reduce the I/O load, but the downside is that it takes longer to recover if there's a crash. We recommend careful consideration before you make the change.
+- `checkpoint_timeout`: On the Azure HorizonDB instance, the `checkpoint_timeout` value can be increased to 10 or 15 minutes from the default setting of 5 minutes. Increasing `checkpoint_timeout` to a more significant value, such as 15 minutes, can reduce the I/O load, but the downside is that it takes longer to recover if there's a crash. We recommend careful consideration before you make the change.
 
 - `checkpoint_completion_target`: We recommend a value of 0.9.
 
@@ -218,7 +219,7 @@ a. Take the current WAL log sequence number (LSN) by running the following query
 
 ```sql
 SELECT pg_current_wal_lsn ();
-``` 
+```
 
 b. Wait for the `checkpoint_timeout` number of seconds. Take the current WAL LSN by running the following query:
 
@@ -236,8 +237,8 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md).
-- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md).
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md)
+- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md)
+- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

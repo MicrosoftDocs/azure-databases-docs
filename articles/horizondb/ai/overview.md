@@ -4,7 +4,7 @@ description: Learn about using generative AI with Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
 ms.topic: concept-article
@@ -24,7 +24,7 @@ Generative AI refers to a class of AI algorithms that can learn from existing mu
 
 Generative AI is used in image and music synthesis and in healthcare, along with common tasks such as text autocompletion, text summarization, and translation. Generative AI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, article modeling, question answering, and anomaly detection.
 
-The following video demonstrates the use of generative AI with Azure HorizonDB and the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md). It can help you understand the concepts in this article.
+The following video demonstrates the use of generative AI with Azure HorizonDB and the [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md). It can help you understand the concepts in this article.
 
 > [!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
 
@@ -88,7 +88,7 @@ Key characteristics of vector databases include:
 - **Geospatial data handling**: Some vector databases are designed for geospatial data, so they're well suited for applications like location-based services, geographic information systems (GISs), and map-related tasks.
 - **Support for diverse data types**: Vector databases can store and manage various types of data, such as vectors, images, and text.
 
-PostgreSQL can gain the capabilities of a vector database by using the [`pgvector` extension](../extensions/../extensions/how-to-use-pgvector.md).
+PostgreSQL can gain the capabilities of a vector database by using the [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md).
 
 ## Embeddings
 
@@ -110,7 +110,7 @@ PostgreSQL can gain the capabilities of [generating vector embeddings with Azure
 
 Generative AI has a wide range of applications across various domains and industries, including technology, healthcare, entertainment, finance, manufacturing, and more. Here are some common tasks that you can accomplish by using generative AI:
 
-- [Semantic search](generative-ai-semantic-search.md):
+- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md):
   - Generative AI enables semantic search on data rather than lexicographical search. The latter looks for exact matches to queries, whereas semantic search finds content that satisfies the search query's intent.
 - Chatbots and virtual assistants:
   - Develop chatbots that can engage in natural context-aware conversations, such as implementing self-help for customers.
@@ -142,9 +142,9 @@ Generative AI has a wide range of applications across various domains and indust
 ## Related content
 
 - [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning](generative-ai-azure-machine-learning.md)
+- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
 - [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Create a recommendation system with Azure HorizonDB and Azure OpenAI](generative-ai-recommendation-system.md)
-- [Create a semantic search with Azure HorizonDB and Azure OpenAI](generative-ai-semantic-search.md)
+- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
+- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md)
 - [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)

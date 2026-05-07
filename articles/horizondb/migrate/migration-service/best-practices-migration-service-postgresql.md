@@ -1,10 +1,10 @@
 ---
-title: Best Practices to Migrate into Flexible Server
+title: Best Practices to Migrate into Azure HorizonDB
 description: Best practices for migration into Azure HorizonDB, including premigration validation, target server configuration, migration timeline, and migration speed benchmarking.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -15,7 +15,7 @@ This article explains common pitfalls encountered and best practices to ensure a
 
 ## Premigration validation
 
-As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validations](concepts-premigration-migration-service.md).
+As a first step in the migration, run the premigration validation before you perform a migration. You can use the **Validate** and **Validate and migrate** options on the migration **Setup** page. Premigration validation conducts thorough checks against a predefined rule set. The goal is to identify potential problems and provide actionable insights for remedial actions. Keep running premigration validation until it results in a **Succeeded** state. To learn more, see [Premigration validation for the migrations service in Azure HorizonDB](concepts-premigration-migration-service.md).
 
 ## Target flexible server configuration
 
@@ -25,12 +25,12 @@ To calculate the number, sign in to the source instance and run this command for
 
 `SELECT pg_size_pretty( pg_database_size('dbname') );`
 
-We recommend that you allocate sufficient storage on the flexible server, equivalent to 1.25 times or 25% more storage than what's being used per the output to the preceding command. You can also use {[Storage Autogrow](../../flexible-server/how-to-auto-grow-storage-portal.md)}.
+We recommend that you allocate sufficient storage on the flexible server, equivalent to 1.25 times or 25% more storage than what's being used per the output to the preceding command. You can also use {[Configure storage autogrow in Azure HorizonDB](../../scale/how-to-auto-grow-storage.md)}.
 
 > [!IMPORTANT]  
 > Storage size can't be reduced in manual configuration or Storage Autogrow. Each step in the storage configuration spectrum doubles in size, so estimating the required storage beforehand is prudent.
 
-The quickstart to {[Create an Azure HorizonDB flexible server](../../flexible-server/quickstart-create-server.md)} is an excellent place to begin. For more information about each server configuration, see {[Compute and storage options in Azure HorizonDB flexible server](../../flexible-server/concepts-compute-storage.md)}.
+The quickstart to {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-server.md)} is an excellent place to begin. For more information about each server configuration, see {[Compute options in Azure HorizonDB](../../compute-storage/concepts-compute.md)} and {[Storage in Azure HorizonDB](../../compute-storage/concepts-storage.md)}.
 
 ## Migration timeline
 
@@ -44,14 +44,14 @@ The following phases are considered for calculating the total downtime to perfor
 
 - **Migration of PITR**: The best way to get a good estimate on the time taken to migrate your production database server is to take a point-in time restore (PITR) of your production server and run the offline migration on this newly restored server.
 - **Migration of buffer**: After you finish the preceding step, you can plan for actual production migration during a time period when application traffic is low. This migration can be planned on the same day or probably a week away. By this time, the size of the source server might have increased. Update your estimated migration time for your production server based on the amount of this increase. If the increase is significant, consider doing another test by using the PITR server. But for most servers, the size increase shouldn't be significant enough.
-- **Data validation**: After the migration is finished for the production server, you need to verify if the data in the flexible server is an exact copy of the source instance. You can use open-source or third-party tools or you can do the validation manually. Prepare the validation steps you want to do before the actual migration. Validation can include:
+- **Data validation**: After the migration is finished for the production server, you need to verify if the data in the flexible server is an exact copy of the source instance. You can use open-source or third-party tools or you can do the validation manually. Prepare the validation steps you want to do before the actual migration. Validation can include:
 
-   - Row count match for all the tables involved in the migration.
-   - Matching counts for all the database objects (tables, sequences, extensions, procedures, and indexes).
-   - Comparing maximum or minimum IDs of key application-related columns.
+  - Row count match for all the tables involved in the migration.
+  - Matching counts for all the database objects (tables, sequences, extensions, procedures, and indexes).
+  - Comparing maximum or minimum IDs of key application-related columns.
 
     > [!NOTE]  
-    > The comparative size of databases is not the right metric for validation. The source instance might have bloats or dead tuples, which can bump up the size of the source instance. It's normal to have size differences between source instances and target servers. An issue in the preceding three steps of validation indicates a problem with the migration.
+    > The comparative size of databases isn't the right metric for validation. The source instance might have bloats or dead tuples, which can bump up the size of the source instance. It's normal to have size differences between source instances and target servers. An issue in the preceding three steps of validation indicates a problem with the migration.
 
 - **Migration of server settings**: Any custom server parameters, firewall rules (if applicable), tags, and alerts must be manually copied from the source instance to the target.
 - **Changing connection strings**: The application should change its connection strings to a flexible server after successful validation. This activity is coordinated with the application team to change all the references of connection strings pointing to the source instance. In the flexible server, the user parameter can be used in the **user=username** format in the connection string.
@@ -65,7 +65,7 @@ Although a migration often runs without any problems, it's good practice to plan
 The following table shows the time it takes to perform migrations for databases of various sizes by using the migration service. The migration was performed by using a flexible server with the SKU Standard_D4ds_v4 (4 cores, 16-GB memory).
 
 | Database size | Approximate time taken (HH:MM) |
-| :--- | :--- |
+| --- | --- |
 | 1 GB | 00:01 |
 | 5 GB | 00:03 |
 | 10 GB | 00:08 |
@@ -77,7 +77,7 @@ The following table shows the time it takes to perform migrations for databases 
 The preceding numbers give you an approximation of the time taken to complete the migration. We strongly recommend running a test migration with your workload to get a precise value for migrating your server.
 
   > [!IMPORTANT]  
-  > Though the Burstable SKU is not a limitation, it is recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure HorizonDB flexible server supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
+  > Though the Burstable SKU isn't a limitation, it's recommended to choose a higher SKU for your flexible server to perform faster migrations. Azure HorizonDB supports near-zero downtime compute and IOPS scaling, so the SKU can be updated with minimal downtime. You can always change the SKU to match the application needs post-migration.
 
 ### Improve migration speed: Parallel migration of tables
 
@@ -87,27 +87,27 @@ If the data distribution on the source is highly skewed, with most of the data p
 
 - The table must have a column with a simple (not composite) primary key or unique index of type `smallint`, `integer` or `big int`.
 
-    > [!NOTE]  
-    > In the case of the first or second approaches, you must carefully evaluate the implications of adding a unique index column to the source schema. Only after confirmation that adding a unique index column won't affect the application should you go ahead with the changes.
+  > [!NOTE]  
+  > In the case of the first or second approaches, you must carefully evaluate the implications of adding a unique index column to the source schema. Only after confirmation that adding a unique index column won't affect the application should you go ahead with the changes.
 
 - If the table doesn't have a simple primary key or unique index of type `smallint`, `integer` or `big int` but has a column that meets the data type criteria, the column can be converted into a unique index by using the following command. This command doesn't require a lock on the table.
 
-    ```sql
-        create unique index concurrently partkey_idx on <table name> (column name);
-    ```
+  ```sql
+      create unique index concurrently partkey_idx on <table name> (column name);
+  ```
 
 - If the table doesn't have a `smallint`, `integer` or `big int` primary key or unique index or any column that meets the data type criteria, you can add such a column by using [ALTER](https://www.postgresql.org/docs/current/sql-altertable.html) and drop it post-migration. Running the `ALTER` command requires a lock on the table.
 
-    ```sql
-        alter table <table name> add column <column name> big serial unique;
-    ```
+  ```sql
+      alter table <table name> add column <column name> big serial unique;
+  ```
 
 If any of the preceding conditions are satisfied, the table is migrated in multiple partitions in parallel, which should provide an increase in the migration speed.
 
 #### How it works
 
-- The migration service looks up the size of a table to check if it is larger than 20 GB.
-- If the size is larger than 20 GB, and there is a `smallint`, `integer` or `big int` primary key or unique index, the table is split into multiple parts and each part is migrated in parallel.
+- The migration service looks up the size of a table to check if it's larger than 20 GB.
+- If the size is larger than 20 GB, and there's a `smallint`, `integer` or `big int` primary key or unique index, the table is split into multiple parts and each part is migrated in parallel.
 
 In summary, the PostgreSQL migration service migrates a table in parallel threads and reduces the migration time if:
 
@@ -123,21 +123,21 @@ PostgreSQL provides the `VACUUM` command to reclaim storage occupied by dead row
 
 - Standard vacuum
 
-    ```sql
-    VACUUM your_table;
-    ```
+  ```sql
+  VACUUM your_table;
+  ```
 
 - Vacuum with analyze
 
-    ```sql
-    VACUUM ANALYZE your_table;
-    ```
+  ```sql
+  VACUUM ANALYZE your_table;
+  ```
 
 - Aggressive vacuum for heavy write tables
 
-    ```sql
-    VACUUM FULL your_table;
-    ```
+  ```sql
+  VACUUM FULL your_table;
+  ```
 
 In this example, replace your_table with the actual table name. The `VACUUM` command without `FULL` reclaims space efficiently, whereas `VACUUM ANALYZE` optimizes query planning. The `VACUUM FULL` option should be used judiciously because of its heavier performance impact.
 
@@ -145,9 +145,9 @@ Some databases store large objects, such as images or documents, that can contri
 
 - Vacuum large objects
 
-    ```sql
-    VACUUMLO;
-    ```
+  ```sql
+  VACUUMLO;
+  ```
 
 Regularly incorporating these vacuuming strategies ensures a well-maintained PostgreSQL database.
 
@@ -174,5 +174,5 @@ In this scenario, you can grant the `migration user` permission to close all act
 
 ## Related content
 
-- {[Migration service](concepts-migration-service-postgresql.md)}
-- [Known issues and limitations](concepts-known-issues-migration-service.md)
+- [What is the migration service in Azure HorizonDB?](overview-migration-service-postgresql.md)
+- [Known issues and limitations for the migration service in Azure HorizonDB](concepts-known-issues-migration-service.md)

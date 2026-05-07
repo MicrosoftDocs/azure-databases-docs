@@ -1,13 +1,14 @@
 ---
-title: pgbouncer.enabled server parameter
-description: pgbouncer.enabled server parameter for Azure HorizonDB flexible server.
-ms.service: azure-database-postgresql
-ms.topic: include
-ms.date: 09/13/2024
+title: "Pgbouncer.enabled Server Parameter"
+description: pgbouncer.enabled server parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
-zone_pivot_groups: postgresql-server-version
+ms.reviewer: maghan
+ms.date: 06/02/2026
+ms.service: azure-database-postgresql
+ms.topic: include
 ---
+
 #### Azure-specific notes
 
-This server parameter is only visible when the server is running on General Purpose or Memory Optimized tiers. In Burstable tier, it is hidden and PgBouncer is not supported or available.
+This server parameter is only visible when the server is running on General Purpose or Memory Optimized tiers. In Burstable tier, it's hidden and PgBouncer isn't supported or available.

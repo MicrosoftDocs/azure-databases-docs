@@ -1,13 +1,14 @@
 ---
-title: "Oracle to Azure HorizonDB Application Conversion: Quickstart"
-description: "Step-by-step quickstart for converting Oracle client application code to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration."
+title: "Oracle to Azure HorizonDB Application Conversion: Quickstart in Azure HorizonDB"
+description: Step-by-step quickstart for converting Oracle client application code to PostgreSQL using the Visual Studio PostgreSQL extension with Azure OpenAI integration in Azure HorizonDB.
 author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: quickstart
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
 # Quickstart: Oracle to Azure HorizonDB application conversion Preview
@@ -70,6 +71,6 @@ During **application conversion**, the AI model uses these notes as contextual s
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
-- [Oracle to PostgreSQL Migration Schema Tutorial](schema-conversions-tutorial.md)
-- [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)
+- [What is Oracle to Azure HorizonDB schema conversion Preview?](schema-conversions-overview.md)
+- [Tutorial: Oracle to Azure HorizonDB schema conversion Preview](schema-conversions-tutorial.md)
+- [Oracle to Azure Database PostgreSQL schema conversion limitations Preview in Azure HorizonDB](schema-conversions-limitations.md)

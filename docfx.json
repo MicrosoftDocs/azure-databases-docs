@@ -154,6 +154,11 @@
         "articles/**/*.md": [
           "azure"
         ]
+      },
+      "titleSuffix": {
+        "articles/horizondb/**/*.md": "Azure HorizonDB",
+        "articles/postgresql/**/*.md": "Azure Database for PostgreSQL",
+        "articles/mysql/**/*.md": "Azure Database for MySQL"
       }
     },
     "overwrite": [],

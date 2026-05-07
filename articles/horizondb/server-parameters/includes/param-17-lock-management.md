@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### deadlock_timeout
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [deadlock_timeout](https://www.postgresql.org/docs/17/runtime-config-locks.html#GUC-DEADLOCK-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_locks_per_transaction
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `10-8388608` |
 | Parameter type | static |
 | Documentation | [max_locks_per_transaction](https://www.postgresql.org/docs/17/runtime-config-locks.html#GUC-MAX-LOCKS-PER-TRANSACTION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_pred_locks_per_page
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [max_pred_locks_per_page](https://www.postgresql.org/docs/17/runtime-config-locks.html#GUC-MAX-PRED-LOCKS-PER-PAGE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_pred_locks_per_relation
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `-2147483648-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [max_pred_locks_per_relation](https://www.postgresql.org/docs/17/runtime-config-locks.html#GUC-MAX-PRED-LOCKS-PER-RELATION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_pred_locks_per_transaction
 
@@ -86,9 +72,4 @@ ms.custom: automatically generated
 | Allowed values | `64` |
 | Parameter type | read-only |
 | Documentation | [max_pred_locks_per_transaction](https://www.postgresql.org/docs/17/runtime-config-locks.html#GUC-MAX-PRED-LOCKS-PER-TRANSACTION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

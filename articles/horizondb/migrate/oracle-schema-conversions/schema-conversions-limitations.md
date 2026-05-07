@@ -1,16 +1,17 @@
 ---
-title: "Oracle to PostgreSQL Schema Conversion - Limitations"
-description: "Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL schema conversion feature in Visual Studio Code with Azure OpenAI integration."
+title: Oracle to PostgreSQL Schema Conversion - Limitations in Azure HorizonDB
+description: Known limitations, unsupported objects, and constraints when using the Oracle to PostgreSQL schema conversion feature in Visual Studio Code with Azure OpenAI integration in Azure HorizonDB.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
-ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
+ms.collection:
+  - ce-skilling-ai-copilot
 ---
 
-# Oracle to Azure Database PostgreSQL schema conversion limitations Preview
+# Oracle to Azure Database PostgreSQL schema conversion limitations Preview in Azure HorizonDB
 
 This preview summarizes known limitations, unsupported objects, and migration considerations when using the Oracle → PostgreSQL schema conversion feature in Visual Studio Code.
 
@@ -51,7 +52,9 @@ The following Oracle database objects aren't automatically converted and are fla
 
 - INVISIBLE data type
 
-## Getting help
+<a id="getting-help"></a>
+
+## Get help
 
 When you encounter limitations:
 
@@ -62,5 +65,5 @@ When you encounter limitations:
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
-- [Oracle to PostgreSQL Migration Best Practices](schema-conversions-best-practices.md)
+- [What is Oracle to Azure HorizonDB schema conversion Preview?](schema-conversions-overview.md)
+- [Best practices for converting Oracle schemas in Azure HorizonDB](schema-conversions-best-practices.md)

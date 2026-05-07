@@ -1,10 +1,10 @@
 ---
-title: Identify Slow Running Query
+title: Identify Slow Running Query in Azure HorizonDB
 description: Troubleshooting guide for identifying slow running queries in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 09/30/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-general
@@ -25,7 +25,7 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
+1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
 1. After the `auto_explain` extension is configured, change the following [server parameters](../server-parameters/concepts-server-parameters.md), which control the behavior of the extension:
 
@@ -35,7 +35,7 @@ In this article, you can learn:
    - `auto_explain.log_timing` to `ON`.
    - `auto_explain.log_verbose` to `ON`.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain server parameters that need to be configured." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain server parameters that need to be configured." lightbox="media/how-to-identify-slow-queries/auto-explain-parameters.png":::
 
 > [!NOTE]  
 > If you set `auto_explain.log_min_duration` to 0, the extension starts logging all queries being executed on the server. This might affect performance of the database. Proper due diligence must be made to come to a value, which is considered slow on the server. For example, if all queries complete in less than 30 seconds, and that's acceptable for your application, then it's advised to update the parameter to 30,000 milliseconds. This would then log any query, which takes longer than 30 seconds to complete.
@@ -46,21 +46,21 @@ With troubleshooting guides and `auto_explain` extension in place, we describe t
 
 We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow these steps:
 
-1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure HorizonDB flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
+1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure HorizonDB, under the **Monitoring** section, select **Troubleshooting guides**.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu option." lightbox="media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
 1. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides menu - tabs. " lightbox="media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
-1. From the **Analysis period (local time)** dropdown, select the time range on which you want to focus the analysis.
+1. From the **Analysis period (local time)** dropdown list, select the time range on which you want to focus the analysis.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-timerange.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/high-cpu-timerange.png" alt-text="Screenshot of troubleshooting guides menu - CPU tab." lightbox="media/how-to-identify-slow-queries/high-cpu-timerange.png":::
 
 1. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-query.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/high-cpu-query.png" alt-text="Screenshot of troubleshooting guides menu - Top CPU consuming queries tab." lightbox="media/how-to-identify-slow-queries/high-cpu-query.png":::
 
 1. To retrieve the actual query text, connect to the `azure_sys` database and execute the following query.
 
@@ -83,11 +83,11 @@ ORDER BY c_w_id;
 
 1. To understand what exact explain plan was generated, use Azure HorizonDB logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="./media/how-to-identify-slow-queries/log-analytics-tab.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/log-analytics-tab.png" alt-text="Screenshot of troubleshooting guides menu - Logs." lightbox="media/how-to-identify-slow-queries/log-analytics-tab.png":::
 
 1. Select the time range where 90% CPU Utilization was found.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot showing how to pick a time window in Troubleshooting guides." lightbox="media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
 1. Execute the following query to retrieve the output of EXPLAIN ANALYZE for the query identified.
 
@@ -131,21 +131,21 @@ With troubleshooting guides and auto_explain extension in place, we explain the 
 
 We have a scenario where CPU utilization spikes to 90% and want to determine the cause of the spike. To debug the scenario, follow these steps:
 
-1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure HorizonDB flexible server, under the **Monitoring** section, select **Troubleshooting guides**.
+1. As soon as you're alerted by a CPU scenario, in the resource menu of the affected instance of Azure HorizonDB, under the **Monitoring** section, select **Troubleshooting guides**.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="./media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/troubleshooting-guides-blade.png" alt-text="Screenshot of troubleshooting guides menu." lightbox="media/how-to-identify-slow-queries/troubleshooting-guides-blade.png":::
 
 1. Select the **CPU** tab. The **Optimizing high CPU utilization** troubleshooting guide opens.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="./media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png" alt-text="Screenshot of troubleshooting guides tabs." lightbox="media/how-to-identify-slow-queries/cpu-troubleshooting-guide.png":::
 
-1. From the **Analysis period (local time)** dropdown, select the time range on which you want to focus the analysis.
+1. From the **Analysis period (local time)** dropdown list, select the time range on which you want to focus the analysis.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png" alt-text="Screenshot of troubleshooting guides - CPU tab." lightbox="media/how-to-identify-slow-queries/high-cpu-procedure-timerange.png":::
 
 1. Select **Queries** tab. It shows details of all the queries that ran in the interval where 90% CPU utilization was seen. From the snapshot, it looks like the query with the slowest average execution time during the time interval was ~2.6 minutes, and the query ran 22 times during the interval. That query is most likely the cause of the CPU spikes.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="./media/how-to-identify-slow-queries/high-cpu-procedure.png":::
+   :::image type="content" source="media/how-to-identify-slow-queries/high-cpu-procedure.png" alt-text="Screenshot of troubleshooting guides - CPU tab - queries." lightbox="media/how-to-identify-slow-queries/high-cpu-procedure.png":::
 
 1. Connect to azure_sys database and execute the query to retrieve actual query text using the below script.
 
@@ -165,7 +165,7 @@ We have a scenario where CPU utilization spikes to 90% and want to determine the
 
 1. To understand what exact explain plan was generated, use Azure HorizonDB logs. Every time the query completed execution during that time window, the `auto_explain` extension should write an entry in the logs. In the resource menu, under the **Monitoring** section, select **Logs**. Then, in **Time range:**, select the time window where you want to focus the analysis.
 
-:::image type="content" source="./media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="./media/how-to-identify-slow-queries/log-analytics-timerange.png":::
+:::image type="content" source="media/how-to-identify-slow-queries/log-analytics-timerange.png" alt-text="Screenshot of troubleshooting guides menu - Logs Time range." lightbox="media/how-to-identify-slow-queries/log-analytics-timerange.png":::
 
 1. Execute the following query to retrieve the explain analyze output of the query identified.
 
@@ -212,8 +212,8 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md).
-- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md).
-- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md).
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md)
+- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md)
+- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

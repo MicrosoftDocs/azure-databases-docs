@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create with Azure Libraries (SDK) for Java with HorizonDB"
-description: This document is a QuickStart guide for Azure SDK library for Java to create, update, and delete an Azure HorizonDB server.
+title: "Quickstart: Create with Azure Libraries (SDK) for Java in Azure HorizonDB"
+description: This document is a QuickStart guide for Azure SDK library for Java to create, update, and delete in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: quickstart
@@ -47,7 +47,9 @@ Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dep
 - **Managing configuration settings** \
   You can manage configuration settings for an Azure HorizonDB server, including retrieving and updating server parameters.
 
-## Setting up your account with az cli
+<a id="setting-up-your-account-with-az-cli"></a>
+
+## Set up your account with az cli
 
 Before using the Azure SDK for Java to create, update, or delete an Azure HorizonDB server, you must sign in to your Azure account using the Azure CLI.
 
@@ -108,7 +110,7 @@ Once you create a Maven project, a pom.xml file that is created. Ensure all depe
 
 ### Create an Azure HorizonDB instance
 
-To create an Azure HorizonDB flexible server instance, create a file named `CreateServer.java` with the following code.
+To create an Azure HorizonDB instance, create a file named `CreateServer.java` with the following code.
 
 ```java
 package com.example.restservice;
@@ -163,7 +165,7 @@ public class CreateServer {
 }
 ```
 
-This example demonstrates creating an Azure HorizonDB flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated, it defines the Azure HorizonDB flexible server instance with your specified configuration.
+This example demonstrates creating an Azure HorizonDB flexible instance server using the `PostgreSqlManager` class. Before invoking the create method, it authenticates using the TokenCredential and AzureProfile. Once authenticated, it defines the Azure HorizonDB instance with your specified configuration.
 
 Replace the following parameters in the code with your data:
 
@@ -196,11 +198,11 @@ To run the file, you can use your IDE to run this code or use the command line t
   > [!NOTE]  
   > Running this code initiates the instance creation process, which might take a few minutes to complete.
 
-You can review the deployed Azure HorizonDB flexible server instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
+You can review the deployed Azure HorizonDB instance through the Azure portal, Azure CLI, Azure PowerShell, and various other tools to validate the deployment and review the deployed resources.
 
 ### Create a database
 
-You can add a new database to your newly created server. Make sure your Azure HorizonDB flexible server instance is up and running.
+You can add a new database to your newly created server. Make sure your Azure HorizonDB instance is up and running.
 
 ```java
 package com.example.restservice;
@@ -349,4 +351,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)

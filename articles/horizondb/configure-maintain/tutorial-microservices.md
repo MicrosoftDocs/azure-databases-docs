@@ -1,17 +1,17 @@
 ---
-title: "Tutorial: Design for Microservices with Elastic Clusters"
-description: This tutorial shows how to design for microservices with elastic clusters on Azure HorizonDB.
+title: "Tutorial: Design for Microservices with Elastic Clusters in Azure HorizonDB"
+description: This tutorial shows how to design for microservices with elastic clusters in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
 # customer intent: As a user, I want to learn how to use elastic clusters on Azure HorizonDB when deploying applications using the microservices architecture.
 ---
 
-# Tutorial: Design for microservices with elastic clusters
+# Tutorial: Design for microservices with elastic clusters in Azure HorizonDB
 
 In this tutorial, you use Azure HorizonDB as the storage backend for multiple microservices. The tutorial demonstrates a sample setup and basic operation of such a cluster. Learn how to:
 
@@ -27,9 +27,9 @@ In this tutorial, you use Azure HorizonDB as the storage backend for multiple mi
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
-- [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
-- [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
+- [Quickstart: Create an instance of elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Quickstart: Use a Bicep template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
+- [Quickstart: Use an ARM template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 
 ## Create roles for your microservices
 
@@ -71,7 +71,7 @@ SELECT citus_schema_distribute('ping_service');
 
 This method also allows you to convert existing regular schemas into distributed schemas.
 
-> [!NOTE]
+> [!NOTE]  
 > You can only distribute schemas that don't contain distributed and reference tables.
 
 - By enabling the `citus.enable_schema_based_sharding` configuration variable. You can change the variable for the current session or permanently from the coordinator node parameters. When you set the parameter to ON, all created schemas are distributed by default.
@@ -303,4 +303,4 @@ According to expectations, the schemas are moved and we have a more balanced clu
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Learn more about elastic clusters](../elastic-clusters/concepts-elastic-clusters.md)
+> [Elastic clusters in Azure HorizonDB](../elastic-clusters/concepts-elastic-clusters.md)

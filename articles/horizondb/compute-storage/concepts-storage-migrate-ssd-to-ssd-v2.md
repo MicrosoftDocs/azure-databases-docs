@@ -1,21 +1,21 @@
 ---
-title: Migrate SSD Server to SSDv2 Using Point-in-Time-Restore
-description: This article describes how to migrate a Premium SSD server to Premium SSDv2 in Azure HorizonDB flexible server.
+title: Migrate SSD Server to SSDv2 Using Point-in-Time-Restore in Azure HorizonDB
+description: This article describes how to migrate a Premium SSD server to Premium SSDv2 in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/10/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
-ms.topic:  concept-article
-#customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure HorizonDB flexible server.
+ms.topic: concept-article
+# customer intent: As a user, I want to learn how to migrate from Premium SSD server to Premium SSDv2 in Azure HorizonDB.
 ---
 
-# Migrate or restore from Premium SSD to Premium SSDv2
+# Migrate or restore from Premium SSD to Premium SSDv2 in Azure HorizonDB
 
 [!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
 
-This article provides step-by-step instructions to perform a restore of an Azure HorizonDB flexible server to a custom restore point.
+This article provides step-by-step instructions to perform a restore of an Azure HorizonDB to a custom restore point.
 
 ## Steps to migrate or restore from Premium SSD to Premium SSDv2
 
@@ -23,38 +23,35 @@ This article provides step-by-step instructions to perform a restore of an Azure
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
-2. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/overview.png":::
 
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/overview.png":::
+1. Select the **Restore** button.
 
-3. Select the **Restore** button.
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png":::
 
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-button.png":::
+1. You're redirected to the **Create Azure HorizonDB - Restore server** wizard, from where you can configure some settings for the new server that is getting created. In the **Point-in-time-restore (PITR)** section, select **Latest restore point**.
 
-4. You're redirected to the **Create Azure HorizonDB flexible server - Restore server** wizard, from where you can configure some settings for the new server that is getting created. In the **Point-in-time-restore (PITR)** section, select **Latest restore point**.
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png":::
 
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/latest-restore-point.png":::
+1. Select **Configure server** and choose **Premium SSD v2** for the **Storage type** Field.
 
-5. Select **Configure server** and choose **Premium SSD v2** for the **Storage type** Field.
-  
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png":::
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png":::
 
+1. Once all the new server is configured to your needs, select **Review + create**.
 
-6. Once all the new server is configured to your needs, select **Review + create**.
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png":::
 
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png":::
+1. A new deployment is launched to create your new Azure HorizonDB and restore the most recent data available on the source server at the time of restore:
 
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure HorizonDB Flexible server, on which the most recent data available on the source server is restored." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png":::
 
-7. A new deployment is launched to create your new Azure HorizonDB flexible server and restore the most recent data available on the source server at the time of restore:
+1. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure HorizonDB, and start validate your **Storage type**.
 
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment in progress to create your new Azure HorizonDB Flexible server, on which the most recent data available on the source server is restored." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-progress.png":::
-
-8. When the deployment completes, you can select **Go to resource**, to get you to the **Compute +Storage** page of your new Azure HorizonDB flexible server, and start validate your **Storage type**.
-
-    :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB Flexible server." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png":::
+   :::image type="content" source="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB Flexible server." lightbox="media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-deployment-completed.png":::
 
 ### [CLI](#tab/cli-restore-custom-point)
 
@@ -69,7 +66,7 @@ az postgres flexible-server restore \
   --storage-type PremiumV2_LRS
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > - The value passed to the `--restore-time` parameter represents the point in time, in UTC, to restore from (ISO8601 format).
 > - If the `--restore-time` parameter isn't present, its value defaults to the current time in the system from where the command is executed.
 > - If the value passed is in the future, the backend service that receives the request normalizes it to the current date and time.
@@ -79,7 +76,7 @@ az postgres flexible-server restore \
 
 ## Related content
 
-- [Restore to latest restore point](../backup-restore/how-to-restore-latest-restore-point.md).
-- [Restore full backup (fast restore)](../backup-restore/how-to-restore-full-backup.md).
-- [Restore to paired region (geo-restore)](../backup-restore/how-to-restore-paired-region.md).
-- [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md).
+- [Restore to latest restore point in Azure HorizonDB](../backup-restore/how-to-restore-latest-restore-point.md)
+- [Restore full backup (fast restore) in Azure HorizonDB](../backup-restore/how-to-restore-full-backup.md)
+- [Restore to paired region (geo-restore) in Azure HorizonDB](../backup-restore/how-to-restore-paired-region.md)
+- [Restore a dropped cluster in Azure HorizonDB](../backup-restore/how-to-restore-dropped-server.md)

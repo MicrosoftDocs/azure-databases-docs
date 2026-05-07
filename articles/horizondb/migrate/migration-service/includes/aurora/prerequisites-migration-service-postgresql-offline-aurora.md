@@ -4,7 +4,7 @@ description: Providing the offline prerequisites for the migration service in Az
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

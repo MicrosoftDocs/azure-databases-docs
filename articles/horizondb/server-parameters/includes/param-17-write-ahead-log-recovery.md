@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### recovery_prefetch
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `try` |
 | Parameter type | read-only |
 | Documentation | [recovery_prefetch](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-RECOVERY-PREFETCH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_decode_buffer_size
 
@@ -35,9 +33,4 @@ ms.custom: automatically generated
 | Allowed values | `524288` |
 | Parameter type | read-only |
 | Documentation | [wal_decode_buffer_size](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-DECODE-BUFFER-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

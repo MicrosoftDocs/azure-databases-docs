@@ -1,14 +1,14 @@
 ---
-title: Mirroring in Microsoft Fabric
+title: Azure HorizonDB Mirroring in Microsoft Fabric
 description: Learn about Mirroring in Microsoft Fabric for Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure HorizonDB.
+# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in Azure HorizonDB.
 ---
 
 # Azure HorizonDB mirroring in Microsoft Fabric
@@ -22,11 +22,11 @@ ms.topic: concept-article
 
 Fabric mirroring in Azure HorizonDB is built on concepts like [logical replication](../configure-maintain/concepts-logical.md) and Change Data Capture (CDC) design pattern.
 
-Once you establish Fabric mirroring for a database in an Azure HorizonDB flexible server instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored. It ships the snapshot to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
+Once you establish Fabric mirroring for a database in an Azure HorizonDB instance, a PostgreSQL background process creates an initial snapshot for selected tables to be mirrored. It ships the snapshot to a Fabric OneLake landing zone in Parquet format. A Replicator process running in Fabric takes these initial snapshot files and creates Delta tables in the Mirrored database artifact.
 
 The source database captures subsequent changes applied to selected tables. It ships these changes to the OneLake landing zone in batches to be applied to the respective Delta tables in the Mirrored database artifact.
 
-:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in an Azure HorizonDB flexible server instance." lightbox="media/concepts-fabric-mirroring/architecture.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/architecture.png" alt-text="Diagram of end-to-end architecture for Fabric mirroring in an Azure HorizonDB instance." lightbox="media/concepts-fabric-mirroring/architecture.png":::
 
 ## What is Change Data Capture (CDC)?
 
@@ -38,7 +38,7 @@ Instead, it involves a continuous stream of change events published by the datab
 
 Clients can subscribe to this stream to monitor changes, focusing on specific databases, individual tables, or even subsets of columns within a table.
 
-For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The control plane for an Azure HorizonDB flexible server instance is installed and registered in source databases during the Fabric mirroring enablement workflow.
+For Fabric mirroring, the CDC pattern is implemented in a proprietary PostgreSQL extension called azure_cdc. The control plane for an Azure HorizonDB instance is installed and registered in source databases during the Fabric mirroring enablement workflow.
 
 ## Azure Change Data Capture (CDC) extension
 
@@ -54,7 +54,7 @@ Azure CDC exports table snapshots and modifications as Parquet files and copies 
 
 ## Enable Fabric mirroring in the Azure portal
 
-Fabric mirroring in the Azure portal for an Azure HorizonDB flexible server instance allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
+Fabric mirroring in the Azure portal for an Azure HorizonDB instance allows you to replicate your PostgreSQL databases into Microsoft Fabric. This feature helps you integrate your data seamlessly with other services in Microsoft Fabric, enabling advanced analytics, business intelligence, and data science scenarios. By following a few simple steps in the Azure portal, you can configure the necessary prerequisites and start mirroring your databases to use the full potential of Microsoft Fabric.
 
 ## Supported versions
 
@@ -62,7 +62,7 @@ Azure HorizonDB supports **PostgreSQL 14 and later** for Fabric mirroring.
 
 ## Prerequisites
 
-Before you can use Fabric mirroring in an Azure HorizonDB flexible server instance, you need to configure several prerequisites.
+Before you can use Fabric mirroring in an Azure HorizonDB instance, you need to configure several prerequisites.
 
 - **System-assigned Managed Identity (SAMI)** must be [enabled](../security/security-configure-managed-identities-system-assigned.md).
   - Azure CDC uses this identity to authenticate communications with Fabric OneLake, copy initial snapshots, and change batches to the landing zone.
@@ -90,11 +90,11 @@ When you're done, select the databases to enable Fabric mirroring (up to three b
 
 The workflow presents a Restart Server pop-up. By selecting **Restart**, you start the process. The workflow automates all remaining configuration steps. You can start creating your mirrored database from the [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial).
 
-:::image type="content" source="media/concepts-fabric-mirroring/server-ready.png" alt-text="Fabric mirroring page showing server ready for mirroring." lightbox="media/concepts-fabric-mirroring/server-ready.png":::
+:::image type="content" source="media/concepts-fabric-mirroring/server-ready.png" alt-text="Screenshot of fabric mirroring page showing server ready for mirroring." lightbox="media/concepts-fabric-mirroring/server-ready.png":::
 
 ## Create a database role for Fabric Mirroring
 
-Next, you need to provide or create a PostgreSQL role for the Fabric service to connect to your Azure HorizonDB flexible server.
+Next, you need to provide or create a PostgreSQL role for the Fabric service to connect to your Azure HorizonDB.
 
 You can accomplish this task by specifying a [database role](#use-a-database-role) for connecting to your source system.
 
@@ -117,7 +117,7 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
    ```
 
 1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
-   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure HorizonDB [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure HorizonDB [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/ddl-priv.html).
 
 > [!IMPORTANT]  
 > Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
@@ -159,7 +159,9 @@ Monitoring the Fabric mirroring in Azure HorizonDB is essential to ensure that t
 
 You can use several user-defined functions and tables to monitor important CDC metrics in the Azure HorizonDB and troubleshoot the mirroring process to Fabric.
 
-### Monitoring functions
+<a id="monitoring-functions"></a>
+
+### Monitor functions
 
 The mirroring function for fabric mirroring in Azure HorizonDB replicates your PostgreSQL databases into Microsoft Fabric seamlessly, so you can use advanced analytics and data integration scenarios.
 
@@ -175,58 +177,60 @@ The mirroring function for fabric mirroring in Azure HorizonDB replicates your P
   - <status, start_lsn, stop_lsn, flush_lsn>.
   - Status consists of ["Slot name," "Origin name," "CDC data destination path," "Active," "Snapshot Done," "Progress percentage," "Generation ID," "Completed Batch ID," "Uploaded Batch ID," "CDC start time"]
 
-- **azure_cdc.get_all_tables_mirror_status()**: Returns the mirroring status for all eligible tables in the database. Excludes system schemas (pg_catalog, information_schema, pg_toast) and extension-owned tables. 
+- **azure_cdc.get_all_tables_mirror_status()**: Returns the mirroring status for all eligible tables in the database. Excludes system schemas (pg_catalog, information_schema, pg_toast) and extension-owned tables.
 
 | Column Name | Postgres Type | Explanation |
 | --- | --- | --- |
 | table_schema | text | schema name of the table |
-| table_name | text |  name of the table |
+| table_name | text | name of the table |
 | mirroring_status | text | Overall status - OK, WARNING, or ERROR |
 | mirroring_data | jsonb | JSONB array containing detailed status entries with status, status_code, and optional details |
 
 | Status Code | Level | Description |
-|------------|-------|-------------|
-| SCHEMA_DOES_NOT_EXIST | ERROR | The specified schema does not exist |
-| TABLE_DOES_NOT_EXIST | ERROR | The specified table does not exist in the schema |
+| --- | --- | --- |
+| SCHEMA_DOES_NOT_EXIST | ERROR | The specified schema doesn't exist |
+| TABLE_DOES_NOT_EXIST | ERROR | The specified table doesn't exist in the schema |
 | FORBIDDEN_CHARS_IN_COLUMN_NAME | ERROR | Column names contain forbidden characters |
 | FORBIDDEN_CHARS_IN_TABLE_NAME | ERROR | Table name contains forbidden characters |
 | UNSUPPORTED_DATA_TYPE | WARNING | Table has columns with unsupported data types |
 | UNSUPPORTED_TYPE_IN_REPLICA_IDENTITY | ERROR | Unsupported data type in replica identity columns (when no unique index exists) |
-| NOT_REGULAR_TABLE | ERROR | Table is not a regular, permanent table |
-| NOT_TABLE_OWNER | ERROR | Current user is not the owner of the table |
+| NOT_REGULAR_TABLE | ERROR | Table isn't a regular, permanent table |
+| NOT_TABLE_OWNER | ERROR | Current user isn't the owner of the table |
 | HAS_PRIMARY_KEY | OK | Table has a primary key |
 | HAS_UNIQUE_INDEX | OK | Table has a suitable unique index |
-| NO_INDEX_FULL_IDENTITY | WARNING | No suitable unique index; full row identity will be used (may affect performance) |
- 
-  - For a table to be mirrorable, it needs to satisfy the following conditions:
-      - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
-      - The column types are one of the following types:
-        - `bigint`
-        - `bigserial`
-        - `boolean`
-        - `bytes`
-        - `character`
-        - `character varying`
-        - `date`
-        - `double precision`
-        - `integer`
-        - `numeric`
-        - `real`
-        - `serial`
-        - `oid`
-        - `money`
-        - `smallint`
-        - `smallserial`
-        - `text`
-        - `time without time zone`
-        - `time with time zone`
-        - `timestamp without time zone`
-        - `timestamp with time zone`
-        - `uuid`
-      - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
-      - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
-    
-### Tracking tables
+| NO_INDEX_FULL_IDENTITY | WARNING | No suitable unique index; full row identity will be used (might affect performance) |
+
+- For a table to be mirrorable, it needs to satisfy the following conditions:
+  - The column names don't contain any of the following characters: `[ ;{}\n\t=()]`
+  - The column types are one of the following types:
+    - `bigint`
+    - `bigserial`
+    - `boolean`
+    - `bytes`
+    - `character`
+    - `character varying`
+    - `date`
+    - `double precision`
+    - `integer`
+    - `numeric`
+    - `real`
+    - `serial`
+    - `oid`
+    - `money`
+    - `smallint`
+    - `smallserial`
+    - `text`
+    - `time without time zone`
+    - `time with time zone`
+    - `timestamp without time zone`
+    - `timestamp with time zone`
+    - `uuid`
+  - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
+  - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
+
+<a id="tracking-tables"></a>
+
+### Track tables
 
 - **azure_cdc.tracked_publications**: one row for each existing mirrored database in Fabric. Query this table to understand the status of each publication.
 
@@ -266,6 +270,6 @@ The mirroring function for fabric mirroring in Azure HorizonDB replicates your P
 
 ## Related content
 
-- [System assigned managed identity](../security/security-configure-managed-identities-system-assigned.md)
+- [System assigned managed identity in Azure HorizonDB](../security/security-configure-managed-identities-system-assigned.md)
 - [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
-- [Networking overview for Azure HorizonDB instances with public access](../network/../network/concepts-networking-public.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)

@@ -1,10 +1,10 @@
 ---
-title: "Migration Service - Premigration Validations"
+title: Migration Service - Premigration Validations in Azure HorizonDB
 description: Learn about premigration validations to identify issues before you run a migration to Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 07/21/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -21,19 +21,19 @@ You can migrate by using Azure portal or Azure CLI.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server.
+1. Select your Azure HorizonDB.
 
 1. In the resource menu, select **Migration**.
 
-    :::image type="content" source="media/tutorial-migration-service/select-migration-page.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/select-migration-page.png":::
+   :::image type="content" source="media/tutorial-migration-service/select-migration-page.png" alt-text="Screenshot of the Migration page." lightbox="media/tutorial-migration-service/select-migration-page.png":::
 
 1. Select **Create** to go through a wizard-based series of tabs to perform a migration to a flexible server from on-premises or Azure VM.
 
-    :::image type="content" source="media/tutorial-migration-service-iaas-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/create-migration.png":::
+   :::image type="content" source="media/tutorial-migration-service-iaas-offline/create-migration.png" alt-text="Screenshot of the Setup tab which appears after selecting Create in the Migration page." lightbox="media/tutorial-migration-service-iaas-offline/create-migration.png":::
 
 1. In **Migration option**, select **Validate** or **Validate and migrate**.
 
-    :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
+   :::image type="content" source="media/concepts-premigration-migration-service/premigration-option.png" alt-text="Screenshot that shows the premigration option to start migration." lightbox="media/concepts-premigration-migration-service/premigration-option.png":::
 
 ### [CLI](#tab/cli)
 
@@ -43,9 +43,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Construct your migration task creation command with the Azure CLI.
 
-    ```azurecli-interactive
-    az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option ValidateAndMigrate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
-    ```
+   ```azurecli-interactive
+   az postgres flexible-server migration create --subscription <subscription_id> --resource-group <resource_group> --name <target_server> --migration-name <migration> --migration-option ValidateAndMigrate --properties "path_to_json_file_with_all_migration_properties" --migration-mode offline
+   ```
 ---
 
 ## Premigration validation options
@@ -53,7 +53,7 @@ Using the [Azure portal](https://portal.azure.com/):
 You can choose any of the following options:
 
 - **Validate**: Use this option to check your server and database readiness for migration to the target. *This option won't start data migration and won't require any server downtime.*
-     - Plan your migrations better by performing premigration validations in advance to know the potential issues you might encounter while you perform migrations.
+  - Plan your migrations better by performing premigration validations in advance to know the potential issues you might encounter while you perform migrations.
 - **Validate and migrate**: This option performs validations, and migration gets triggered if all checks are in the **Succeeded** or **Warning** state. Validation failures don't start the migration between source and target servers.
 
 We recommend that you use premigration validations to identify issues before you run migrations. This technique helps you to plan your migrations better and avoid any surprises during the migration process.
@@ -76,6 +76,6 @@ After you run the **Validate** option, you see one of the following options:
 
 ## Related content
 
-- {[Migration service](concepts-migration-service-postgresql.md)}
-- [Known issues and limitations](concepts-known-issues-migration-service.md)
-- [Network setup](how-to-network-setup-migration-service.md)
+- [What is the migration service in Azure HorizonDB?](overview-migration-service-postgresql.md)
+- [Known issues and limitations for the migration service in Azure HorizonDB](concepts-known-issues-migration-service.md)
+- [Network scenarios for the migration service in Azure HorizonDB](how-to-network-setup-migration-service.md)

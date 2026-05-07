@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### cpu_index_tuple_cost
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [cpu_index_tuple_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-CPU-INDEX-TUPLE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cpu_operator_cost
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [cpu_operator_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-CPU-OPERATOR-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### cpu_tuple_cost
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [cpu_tuple_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-CPU-TUPLE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### effective_cache_size
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [effective_cache_size](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-EFFECTIVE-CACHE-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-effective-cache-size](./server-parameters-azure-notes-effective-cache-size.md)]
-
-
 
 ### jit_above_cost
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [jit_above_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-JIT-ABOVE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_inline_above_cost
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [jit_inline_above_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-JIT-INLINE-ABOVE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### jit_optimize_above_cost
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [jit_optimize_above_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-JIT-OPTIMIZE-ABOVE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### min_parallel_index_scan_size
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `0-715827882` |
 | Parameter type | dynamic |
 | Documentation | [min_parallel_index_scan_size](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-MIN-PARALLEL-INDEX-SCAN-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### min_parallel_table_scan_size
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `0-715827882` |
 | Parameter type | dynamic |
 | Documentation | [min_parallel_table_scan_size](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-MIN-PARALLEL-TABLE-SCAN-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### parallel_setup_cost
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [parallel_setup_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-PARALLEL-SETUP-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### parallel_tuple_cost
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [parallel_tuple_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-PARALLEL-TUPLE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### random_page_cost
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [random_page_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-RANDOM-PAGE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### seq_page_cost
 
@@ -222,9 +176,4 @@ ms.custom: automatically generated
 | Allowed values | `0-1.79769e+308` |
 | Parameter type | dynamic |
 | Documentation | [seq_page_cost](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-SEQ-PAGE-COST) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

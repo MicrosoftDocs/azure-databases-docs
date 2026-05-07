@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### commit_delay
 
 | Attribute | Value |
@@ -16,13 +18,9 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-100000` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [commit_delay](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-COMMIT-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### commit_siblings
 
@@ -33,13 +31,9 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `5` |
 | Allowed values | `0-1000` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [commit_siblings](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-COMMIT-SIBLINGS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### fsync
 
@@ -52,28 +46,20 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [fsync](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-FSYNC) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### full_page_writes
 
 | Attribute | Value |
 | --- | --- |
 | Category | Write-Ahead Log / Settings |
-| Description | Writes full pages to WAL when first modified after a checkpoint. A page write in process during an operating system crash might be only partially written to disk. During recovery, the row changes stored in WAL are not enough to recover. This option writes pages when first modified after a checkpoint to WAL so full recovery is possible. |
+| Description | Writes full pages to WAL when first modified after a checkpoint. A page write in process during an operating system crash might be only partially written to disk. During recovery, the row changes stored in WAL aren't enough to recover. This option writes pages when first modified after a checkpoint to WAL so full recovery is possible. |
 | Data type | boolean |
 | Default value | `on` |
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [full_page_writes](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-FULL-PAGE-WRITES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### synchronous_commit
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [synchronous_commit](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-SYNCHRONOUS-COMMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_buffers
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-262143` |
 | Parameter type | static |
 | Documentation | [wal_buffers](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-BUFFERS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-wal-buffers](./server-parameters-azure-notes-wal-buffers.md)]
-
-
 
 ### wal_compression
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `pglz,lz4,on,off` |
 | Parameter type | dynamic |
 | Documentation | [wal_compression](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-COMPRESSION) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_init_zero
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [wal_init_zero](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-INIT-ZERO) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_level
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `replica,logical` |
 | Parameter type | static |
 | Documentation | [wal_level](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-LEVEL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_log_hints
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [wal_log_hints](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-LOG-HINTS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_recycle
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [wal_recycle](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-RECYCLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_skip_threshold
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `2048` |
 | Parameter type | read-only |
 | Documentation | [wal_skip_threshold](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-SKIP-THRESHOLD) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_summary_keep_time
 
@@ -222,11 +176,7 @@ ms.custom: automatically generated
 | Allowed values | `14400` |
 | Parameter type | read-only |
 | Documentation | [wal_summary_keep_time](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-SUMMARY-KEEP-TIME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_sync_method
 
@@ -239,11 +189,7 @@ ms.custom: automatically generated
 | Allowed values | `fdatasync` |
 | Parameter type | read-only |
 | Documentation | [wal_sync_method](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-SYNC-METHOD) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_writer_delay
 
@@ -256,11 +202,7 @@ ms.custom: automatically generated
 | Allowed values | `1-10000` |
 | Parameter type | dynamic |
 | Documentation | [wal_writer_delay](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-WRITER-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_writer_flush_after
 
@@ -273,9 +215,4 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [wal_writer_flush_after](https://www.postgresql.org/docs/17/runtime-config-wal.html#GUC-WAL-WRITER-FLUSH-AFTER) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

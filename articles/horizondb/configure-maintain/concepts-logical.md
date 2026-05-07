@@ -1,21 +1,21 @@
 ---
-title: Logical replication and logical decoding
+title: Logical Replication and Logical Decoding in Azure HorizonDB
 description: Learn about using logical replication and logical decoding in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/30/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
 ms.custom:
-- ignite-2023
-- sfi-ropc-nochange
+  - ignite-2023
+  - sfi-ropc-nochange
 ---
 
-# Logical replication and logical decoding in Azure HorizonDB 
+# Logical replication and logical decoding in Azure HorizonDB
 
-An Azure HorizonDB flexible server instance supports the following logical data extraction and replication methodologies:
+An Azure HorizonDB instance supports the following logical data extraction and replication methodologies:
 
 1. **Logical replication**
    1. Using PostgreSQL [native logical replication](https://www.postgresql.org/docs/current/logical-replication.html) to replicate data objects. Logical replication allows fine-grained control over the data replication, including table-level data replication.
@@ -58,7 +58,7 @@ Logical decoding:
 
 1. Save the changes and restart the server to apply the changes.
 
-1. Confirm that your Azure HorizonDB flexible server instance allows network traffic from your connecting resource.
+1. Confirm that your Azure HorizonDB instance allows network traffic from your connecting resource.
 
 1. Grant the admin user replication permissions.
 
@@ -72,14 +72,14 @@ Logical decoding:
 
 ## Use logical replication and logical decoding
 
-Using native logical replication is the simplest way to replicate data out of your Azure HorizonDB flexible server instance. You can use the SQL interface or the streaming protocol to consume the changes. You can also use the SQL interface to consume changes using logical decoding.
+Using native logical replication is the simplest way to replicate data out of your Azure HorizonDB instance. You can use the SQL interface or the streaming protocol to consume the changes. You can also use the SQL interface to consume changes using logical decoding.
 
 ### Native logical replication
 
 Logical replication uses the terms 'publisher' and 'subscriber'.
 
-- The publisher is the Azure HorizonDB flexible server instance database you're sending data **from**.
-- The subscriber is the Azure HorizonDB flexible server instance database you're sending data **to**.
+- The publisher is the Azure HorizonDB instance database you're sending data **from**.
+- The subscriber is the Azure HorizonDB instance database you're sending data **to**.
 
 Here's some sample code you can use to try out logical replication.
 
@@ -122,7 +122,7 @@ Visit the PostgreSQL documentation to understand more about [logical replication
 
 ### Use logical replication between databases on the same server
 
-When you're aiming to set up logical replication between different databases residing on the same Azure HorizonDB flexible server instance, it's essential to follow specific guidelines to avoid implementation restrictions that are currently present. As of now, creating a subscription that connects to the same database cluster will only succeed if the replication slot isn't created within the same command; otherwise, the `CREATE SUBSCRIPTION` call hangs, on a `LibPQWalReceiverReceive` wait event. This happens due to an existing restriction within Postgres engine, which might be removed in future releases.
+When you're aiming to set up logical replication between different databases residing on the same Azure HorizonDB instance, it's essential to follow specific guidelines to avoid implementation restrictions that are currently present. As of now, creating a subscription that connects to the same database cluster will only succeed if the replication slot isn't created within the same command; otherwise, the `CREATE SUBSCRIPTION` call hangs, on a `LibPQWalReceiverReceive` wait event. This happens due to an existing restriction within Postgres engine, which might be removed in future releases.
 
 To effectively set up logical replication between your "source" and "target" databases on the same server while circumventing this restriction, follow the steps outlined below:
 
@@ -141,7 +141,7 @@ CREATE PUBLICATION pub FOR TABLE basic;
 SELECT pg_create_logical_replication_slot('myslot', 'pgoutput');
 ```
 
-Thereafter, in your target database, create a subscription to the previously created publication, ensuring that `create_slot` is set to `false` to prevent your Azure HorizonDB flexible server instance from creating a new slot, and correctly specifying the slot name that was created in the previous step. Before running the command, replace the placeholders in the connection string with your actual database credentials:
+Thereafter, in your target database, create a subscription to the previously created publication, ensuring that `create_slot` is set to `false` to prevent your Azure HorizonDB instance from creating a new slot, and correctly specifying the slot name that was created in the previous step. Before running the command, replace the placeholders in the connection string with your actual database credentials:
 
 ```sql
 -- Run this on the target database
@@ -322,8 +322,7 @@ The 'active' column in the `pg_replication_slots` view indicates whether there's
 ```sql
 SELECT * FROM pg_replication_slots;
 ```
-[Set alerts](../monitor/../monitor/how-to-alert-on-metrics.md) on the **Maximum Used Transaction IDs** and **Storage Used**  metrics to notify you when the values increase past normal thresholds.
-
+[Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md) on the **Maximum Used Transaction IDs** and **Storage Used** metrics to notify you when the values increase past normal thresholds.
 
 ## Limitations
 
@@ -331,14 +330,13 @@ SELECT * FROM pg_replication_slots;
 
 - **Slots and HA failover** - When using [high-availability (HA)](/azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json) enabled servers with Azure HorizonDB, be aware that logical replication slots aren't preserved during failover events. To maintain logical replication slots and ensure data consistency after a failover, it's recommended to use the PG Failover Slots extension. For more information on enabling this extension, please refer to the [documentation](../extensions/concepts-extensions-considerations.md#pg_failover_slots).
 
-
 > [!IMPORTANT]  
-> You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. Suppose the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), in that case, the Azure HorizonDB flexible server instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
+> You must drop the logical replication slot in the primary server if the corresponding subscriber no longer exists. Otherwise, the WAL files accumulate in the primary, filling up the storage. The primary server is automatically switched to read-only mode when the storage usage reaches 95 percent, or when the available capacity is less than 5 GiB. Suppose the storage threshold exceeds a certain limit, and the logical replication slot isn't in use (due to a nonavailable subscriber), in that case, the Azure HorizonDB instance automatically drops that unused logical replication slot. That action releases accumulated WAL files and avoids your server becoming unavailable due to storage getting filled situation.
 
 ## Related content
 
-- [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md).
-- [Networking overview for Azure HorizonDB with public access](../network/../network/concepts-networking-public.md).
-- [Virtual network integration in Azure HorizonDB](../network/concepts-networking-private.md).
-- [How to use extensions](../extensions/how-to-allow-extensions.md).
-- [High availability in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server).
+- [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
+- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)
+- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
+- [High availability in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server)

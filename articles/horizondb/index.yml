@@ -1,82 +1,84 @@
 ### YamlMime:Landing
 metadata:
-  title: Azure HorizonDB documentation landing page
-  description: "Azure HorizonDB is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security."
-  author: gkasar
-  ms.author: gkasar
-  ms.reviewer: maghan, shaithal, hariramt
-  ms.date: 05/27/2025
+  title: Microsoft Azure HorizonDB Documentation Landing Page
+  description: Azure HorizonDB is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security.
+  author: denzilribeiro
+  ms.author: denzilr
+  ms.reviewer: maghan
+  ms.date: 06/02/2026
   ms.service: azure-database-postgresql
   ms.topic: landing-page
 
-title:  Azure HorizonDB documentation
-summary: "Azure HorizonDB is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Foundry Tools."
+title: Microsoft Azure HorizonDB documentation
+summary: Azure HorizonDB is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Foundry Tools.
 
 landingContent:
-#Card 1
-  - title: Beginners guide to Azure HorizonDB
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: What is Azure HorizonDB?
-            url: flexible-server/service-overview.md
-      - linkListType: whats-new
-        links:
-          - text: Check out our blog
-            url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
-          - text: Check out our release notes
-            url: flexible-server/release-notes.md
-      - linkListType: get-started
-        links:
-          - text: Try Azure HorizonDB for free
-            url: flexible-server/how-to-deploy-on-azure-free-account.md
-      - linkListType: quickstart
-        links:
-          - text: Create an Azure HorizonDB
-            url: flexible-server/quickstart-create-server.md
-          - text: Create an elastic cluster 
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
-      - linkListType: how-to-guide
-        links:
-          - text: Manage your server
-            url: flexible-server/how-to-manage-server-portal.md
-          - text: Connect and query using Visual Studio Code
-            url: extensions/vs-code-extension/overview.md
+# Card 1
 
-  #Card 2        
-  - title: Enterprise ready features
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Business continuity overview
-            url: flexible-server/concepts-business-continuity.md
-          - text: High availability
-            url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
-          - text: Back up and restore
-            url: flexible-server/concepts-backup-restore.md
-          - text: Networking with Private Endpoint
-            url: flexible-server/concepts-networking-private-link.md
-          - text: Storage concepts
-            url: flexible-server/concepts-storage.md
-          - text: Read replicas 
-            url: flexible-server/concepts-read-replicas.md
-          - text: Horizontal scale out
-            url: flexible-server/concepts-elastic-clusters.md        
-          - text: Security concepts
-            url: flexible-server/concepts-security.md
-      - linkListType: how-to-guide
-        links:
-          - text: Manage high availability
-            url: flexible-server/how-to-configure-high-availability.md
-          - text: Guide on scalable compute
-            url: flexible-server/how-to-scale-compute.md
-          - text: Scale out with elastic clusters
-            url: flexible-server/how-to-scale-out.md            
-          - text: Restore to paired region (geo-restore)
-            url: flexible-server/how-to-restore-paired-region.md
-          - text: Entra-id authentication guide
-            url: flexible-server/how-to-configure-sign-in-azure-ad-authentication.md
-                      
+- title: Beginners guide to Azure HorizonDB
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: What is Azure HorizonDB?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Check out our blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+    - text: Check out our release notes
+      url: release-notes/release-notes.md
+  - linkListType: get-started
+    links:
+    - text: Try Azure HorizonDB for free
+      url: configure-maintain/quickstart-create-server.md
+  - linkListType: quickstart
+    links:
+    - text: Create an Azure HorizonDB
+      url: configure-maintain/quickstart-create-server.md
+    - text: Create an elastic cluster
+      url: elastic-clusters/quickstart-create-elastic-cluster-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Manage your server
+      url: configure-maintain/how-to-manage-server-portal.md
+    - text: Connect and query using Visual Studio Code
+      url: developer/vs-code-extension/vs-code-overview.md
+
+# Card 2
+
+- title: Enterprise ready features
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Business continuity overview
+      url: backup-restore/concepts-business-continuity.md
+    - text: High availability
+      url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
+    - text: Back up and restore
+      url: backup-restore/concepts-backup-restore.md
+    - text: Networking with Private Endpoint
+      url: network/concepts-networking-private-link.md
+    - text: Storage concepts
+      url: compute-storage/concepts-storage.md
+    - text: Read replicas
+      url: read-replica/concepts-read-replicas.md
+    - text: Horizontal scale out
+      url: elastic-clusters/concepts-elastic-clusters.md
+    - text: Security concepts
+      url: security/security-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Manage high availability
+      url: high-availability/how-to-configure-high-availability.md
+    - text: Guide on scalable compute
+      url: scale/how-to-scale-compute.md
+    - text: Scale out with elastic clusters
+      url: scale/how-to-scale-out.md
+    - text: Restore to paired region (geo-restore)
+      url: backup-restore/how-to-restore-paired-region.md
+    - text: Entra-id authentication guide
+      url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
+
 # Card 3
   - title: Build AI apps and agents
     linkLists:
@@ -101,105 +103,106 @@ landingContent:
           - text: Build a knowledge graph from unstructured text
             url: ai/build-knowledge-graph.md
 
-  #Card 4       
-  - title: Advanced concepts and overview
-    linkLists:      
-      - linkListType: concept
-        links:
-          - text: Server parameters
-            url: flexible-server/concepts-server-parameters.md
-          - text: Compute and storage
-            url: flexible-server/concepts-compute-storage.md
-          - text: Identity and access management
-            url: flexible-server/concepts-identity.md
-          - text: Extensions
-            url: flexible-server/concepts-extensions.md
-          - text: Monitor
-            url: flexible-server/concepts-monitoring.md
-          - text: Scheduled maintenance
-            url: flexible-server/concepts-maintenance.md
-          - text: Fabric mirroring
-            url: flexible-server/concepts-fabric-mirroring.md
-          - text: Data Encryption
-            url: flexible-server/concepts-data-encryption.md
-          - text: Overview of REST API
-            url: https://learn.microsoft.com/rest/api/postgresql/
-            
+- title: Advanced concepts and overview
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Server parameters
+      url: server-parameters/concepts-server-parameters.md
+    - text: Compute
+      url: compute-storage/concepts-compute.md
+    - text: Storage
+      url: compute-storage/concepts-storage.md
+    - text: Identity and access management
+      url: security/security-managed-identity-overview.md
+    - text: Extensions
+      url: extensions/concepts-extensions.md
+    - text: Monitor
+      url: monitor/concepts-monitoring.md
+    - text: Scheduled maintenance
+      url: configure-maintain/concepts-maintenance.md
+    - text: Fabric mirroring
+      url: fabric/concepts-fabric-mirroring.md
+    - text: Data Encryption
+      url: security/security-data-encryption.md
+    - text: Overview of REST API
+      url: https://learn.microsoft.com/rest/api/postgresql/
+
 # Card 5
-  - title: Migrate to Azure HorizonDB (offline)
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Migration Service overview
-            url: migrate/migration-service/overview-migration-service-postgresql.md
-          - text: Pre-Migration Validation
-            url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: tutorial
-        links:
-          - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
-            url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-          - text: Migrate (Offline) from Amazon RDS
-            url: migrate/migration-service/tutorial-migration-service-aws-offline.md
-          - text: Migrate (Offline) from Amazon Aurora
-            url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
-          - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
-          - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
-          - text: Migrate (Offline) from EDB Extended server
-            url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
+
+- title: Migrate to Azure HorizonDB (offline)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Migration Service overview
+      url: migrate/migration-service/overview-migration-service-postgresql.md
+    - text: Pre-Migration Validation
+      url: migrate/migration-service/concepts-premigration-migration-service.md
+  - linkListType: tutorial
+    links:
+    - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
+      url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+    - text: Migrate (Offline) from Amazon RDS
+      url: /azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-offline
+    - text: Migrate (Offline) from Amazon Aurora
+      url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+    - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
+      url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+    - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
+      url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+    - text: Migrate (Offline) from EDB Extended server
+      url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
 
 # Card 6
-  - title: Migrate to Azure HorizonDB (online)
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Migration Service overview
-            url: migrate/migration-service/overview-migration-service-postgresql.md
-          - text: Pre-Migration Validation
-            url: migrate/migration-service/concepts-premigration-migration-service.md
-      - linkListType: tutorial
-        links:
-          - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
-            url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-          - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
-            url: migrate/migration-service/tutorial-migration-service-iaas-online.md
-          - text: Migrate (Online) from Amazon RDS
-            url: migrate/migration-service/tutorial-migration-service-aws-online.md
-          - text: Migrate (Online) from Amazon Aurora
-            url: migrate/migration-service/tutorial-migration-service-aurora-online.md
-          - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
-          - text: Migrate (Online) from Google AlloyDB for PostgreSQL
-            url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
-          - text: Migrate (Online) from EDB Extended server
-            url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
 
-#Card 7
-  - title: Additional Resources
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Connect with Azure CLI
-            url: flexible-server/connect-azure-cli.md
-          - text: Connection libraries for App development
-            url: flexible-server/concepts-connection-libraries.md        
-          - text: Deploy with Terraform
-            url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
-          - text: Troubleshooting guides overview
-            url: flexible-server/how-to-troubleshooting-guides.md
-          - text: Quickstart guide for Bicep
-            url: flexible-server/quickstart-create-server-bicep.md
-          - text: Quickstart guide for Python
-            url: flexible-server/quickstart-create-server-python-sdk.md
-          - text: Pricing 
-            url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
-          - text: Region Availability
-            url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
-          - text: Customer success stories
-            url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
-          - text: Build your skills with Microsoft Learn
-            url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql
-            
-          
+- title: Migrate to Azure HorizonDB (online)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Migration Service overview
+      url: migrate/migration-service/overview-migration-service-postgresql.md
+    - text: Pre-Migration Validation
+      url: migrate/migration-service/concepts-premigration-migration-service.md
+  - linkListType: tutorial
+    links:
+    - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
+      url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+    - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
+      url: migrate/migration-service/tutorial-migration-service-iaas-online.md
+    - text: Migrate (Online) from Amazon RDS
+      url: /azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-online
+    - text: Migrate (Online) from Amazon Aurora
+      url: migrate/migration-service/tutorial-migration-service-aurora-online.md
+    - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
+      url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+    - text: Migrate (Online) from Google AlloyDB for PostgreSQL
+      url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
+    - text: Migrate (Online) from EDB Extended server
+      url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
 
+# Card 7
+
+- title: Additional Resources
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Connect with Azure CLI
+      url: connectivity/connect-azure-cli.md
+    - text: Connection libraries for App development
+      url: connectivity/concepts-connection-libraries.md
+    - text: Deploy with Terraform
+      url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
+    - text: Troubleshooting guides overview
+      url: troubleshoot/how-to-troubleshooting-guides.md
+    - text: Quickstart guide for Bicep
+      url: development/create-server-bicep.md
+    - text: Quickstart guide for Python
+      url: development/create-server-python-sdk.md
+    - text: Pricing
+      url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
+    - text: Region Availability
+      url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
+    - text: Customer success stories
+      url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
+    - text: Build your skills with Microsoft Learn
+      url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql

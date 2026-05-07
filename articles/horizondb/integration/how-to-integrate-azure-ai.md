@@ -1,27 +1,28 @@
 ---
-title: Integrate Azure AI Capabilities
-description: Integrate Azure AI capabilities into Azure HorizonDB.
+title: Integrate Azure AI Capabilities in Azure HorizonDB
+description: Integrate Azure AI capabilities in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan, carols
-ms.date: 04/27/2024
-ms.update-cycle: 180-days
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
-- ignite-2023
-- sfi-ropc-nochange
+  - ignite-2023
+  - sfi-ropc-nochange
 ---
 
-# Integrate Azure AI capabilities into Azure HorizonDB
+# Integrate Azure AI capabilities in Azure HorizonDB
 
 The `azure_ai` extension adds the ability to use [large language models (LLMs)](/training/modules/fundamentals-generative-ai/3-language%20models) and build [generative AI](/training/paths/introduction-generative-ai/) applications within an Azure HorizonDB database by integrating the power of [Foundry Tools](/azure/ai-services/what-are-ai-services).
 
 Generative AI is a form of artificial intelligence in which LLMs are trained to generate original content based on natural language input. By using the `azure_ai` extension, you can use generative AI's capabilities for processing natural language queries directly from the database.
 
-This article showcases adding rich AI capabilities to an Azure HorizonDB flexible server instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure Language in Foundry Tools service](/azure/ai-services/language-service/) into your database by using the extension.
+This article showcases adding rich AI capabilities to an Azure HorizonDB instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure Language in Foundry Tools service](/azure/ai-services/language-service/) into your database by using the extension.
 
 ## Prerequisites
 
@@ -33,33 +34,33 @@ This article showcases adding rich AI capabilities to an Azure HorizonDB flexibl
 
 - A [Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-- An Azure HorizonDB flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md).
+- An Azure HorizonDB instance in your Azure subscription. If you don't have this resource, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
 
 ## Connect to the database by using psql in Azure Cloud Shell
 
-Open [Azure Cloud Shell](https://shell.azure.com/) in a web browser. Select **Bash** as the environment. If you're prompted, select the subscription that you used for your Azure HorizonDB database, and then select **Create storage**.
+Open [Azure Cloud Shell](https://portal.azure.com/#cloudshell) in a web browser. Select **Bash** as the environment. If you're prompted, select the subscription that you used for your Azure HorizonDB database, and then select **Create storage**.
 
 To retrieve the database connection details:
 
-1. In the [Azure portal](https://portal.azure.com/), go to your Azure HorizonDB flexible server instance.
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure HorizonDB instance.
 
 1. On the left menu, under **Settings**, select **Connect**. Copy the **Connection details** block.
 
 1. Paste the copied declaration lines for environment variables into the Azure Cloud Shell terminal. Replace the `{your-password}` token with the password that you set when you created the database.
 
-    ```bash
-    export PGHOST={your-server-name}.postgresql.database.azure.com
-    export PGUSER={your-user-name}
-    export PGPORT=5432
-    export PGDATABASE={your-database-name}
-    export PGPASSWORD="{your-password}"
-    ```
+   ```bash
+   export PGHOST={your-server-name}.postgresql.database.azure.com
+   export PGUSER={your-user-name}
+   export PGPORT=5432
+   export PGDATABASE={your-database-name}
+   export PGPASSWORD="{your-password}"
+   ```
 
 1. Connect to your database by using the [psql command-line tool](https://www.postgresguide.com/utilities/psql/). Enter the following command at the prompt:
 
-    ```bash
-    psql
-    ```
+   ```bash
+   psql
+   ```
 
 ## Install the azure_ai extension
 
@@ -67,9 +68,9 @@ You can use the `azure_ai` extension to integrate Azure OpenAI and Azure Cogniti
 
 To enable the extension in your database:
 
-1. Add the extension to your allowlist, as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions).
+1. Add the extension to your allowlist, as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb).
 
-1. In the database in which you plan to use the `azure_ai` extension, install the extension as described in [Create extensions](../extensions/how-to-create-extensions.md).
+1. In the database in which you plan to use the `azure_ai` extension, install the extension as described in [Create extensions in Azure HorizonDB](../extensions/how-to-create-extensions.md).
 
 ## Inspect the objects in the azure_ai extension
 
@@ -103,7 +104,7 @@ Use the `azure_ai.set_setting()` function to set the endpoint and critical value
 | `azure_cognitive.endpoint` | A supported Cognitive Services endpoint (for example, `https://example.cognitiveservices.azure.com`). |
 | `azure_cognitive.subscription_key` | A subscription key for a Cognitive Services resource. |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Because the connection information for Foundry Tools, including API keys, is stored in a configuration table in the database, the `azure_ai` extension defines a role called `azure_ai_settings_manager` to help ensure that this information is protected and accessible only to users who have that role. This role enables reading and writing of settings related to the extension.
 >
 > Only superusers and members of the `azure_ai_settings_manager` role can invoke the `azure_ai.get_setting()` and `azure_ai.set_setting()` functions. In Azure HorizonDB, all admin users have the `azure_ai_settings_manager` role.
@@ -201,7 +202,7 @@ The first argument is the `deployment_name` value, which was assigned when your 
 
 1. In the Foundry portal, select **Deployments**. On the **Deployments** pane, copy the **Deployment name** value that's associated with the `text-embedding-ada-002` model deployment.
 
-:::image type="content" source="media/how-to-integrate-azure-ai/azure-open-ai-studio-deployments-embeddings.png" alt-text="Screenshot of embedding deployments for integrating AI.":::
+:::image type="content" source="media/how-to-integrate-azure-ai/azure-open-ai-studio-deployments-embeddings.png" alt-text="Screenshot of embedding deployments for integrating AI." lightbox="media/how-to-integrate-azure-ai/azure-open-ai-studio-deployments-embeddings.png" :::
 
 By using this information, run a query to update each record in the `bill_summaries` table. Insert the generated vector embeddings for the `bill_text` field into the `bill_vector` column by using the `azure_openai.create_embeddings()` function. Replace `{your-deployment-name}` with the **Deployment name** value that you copied from the Foundry portal's **Deployments** pane. Then run the following command:
 

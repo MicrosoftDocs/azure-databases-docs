@@ -1,21 +1,21 @@
 ---
-title: "Quickstart: Connect with GitHub Actions"
-description: Use an Azure HorizonDB flexible server instance from a GitHub Actions workflow.
+title: "Quickstart: Connect with GitHub Actions in Azure HorizonDB"
+description: Use an Azure HorizonDB instance from a GitHub Actions workflow.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/10/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: quickstart
 ms.custom:
-- github-actions-azure
-- mode-other
-- devx-track-azurecli
-- sfi-ropc-blocked
+  - github-actions-azure
+  - mode-other
+  - devx-track-azurecli
+  - sfi-ropc-blocked
 ---
 
-# Quickstart: Use GitHub Actions to connect to Azure HorizonDB 
+# Quickstart: Connect with GitHub Actions in Azure HorizonDB
 
 Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure HorizonDB](https://azure.microsoft.com/services/postgresql/).
 
@@ -25,8 +25,8 @@ You need:
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
-- An Azure HorizonDB flexible server instance.
-- [Create an Azure HorizonDB](quickstart-create-server.md).
+- An Azure HorizonDB instance.
+- [Create an Azure HorizonDB database](quickstart-create-server.md).
 
 ## Workflow file overview
 
@@ -43,9 +43,9 @@ The file has two sections:
 
 [!INCLUDE [include](~/reusable-content/github-actions/generate-deployment-credentials.md)]
 
-## Copy the Azure HorizonDB  connection string
+## Copy the Azure HorizonDB connection string
 
-In the Azure portal, go to your Azure HorizonDB flexible server instance and from the resource menu, under **Settings**, select **Connect**. In that page, use the **Database name** combo box to select the name of the database you want to connect to. Expand the **Connect from your app** section, and copy **ADO.NET** connection string, and replace the placeholder value `{your_password}` with your actual password. The connection string looks similar to this.
+In the Azure portal, go to your Azure HorizonDB instance and from the resource menu, under **Settings**, select **Connect**. In that page, use the **Database name** combo box to select the name of the database you want to connect to. Expand the **Connect from your app** section, and copy **ADO.NET** connection string, and replace the placeholder value `{your_password}` with your actual password. The connection string looks similar to this.
 
 ```output
 Server={servername.postgres.database.azure.com};Database={your_database};Port=5432;User Id={adminusername};Password={your_password};Ssl Mode=Require;
@@ -63,16 +63,16 @@ You use the connection string as a GitHub secret.
 
 1. Select **Set up your workflow yourself**.
 
-1. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow may look like this.
+1. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow might look like this.
 
     ```yaml
     name: CI
 
     on:
     push:
-        branches: [ main ]
+       branches: [ main ]
     pull_request:
-        branches: [ main ]
+       branches: [ main ]
     ```
 
 1. Rename your workflow `PostgreSQL for GitHub Actions` and add the checkout and sign in actions. These actions check out your site code and authenticate with Azure using the GitHub secret(s) you created earlier.
@@ -84,20 +84,20 @@ You use the connection string as a GitHub secret.
 
     on:
     push:
-        branches: [ main ]
+       branches: [ main ]
     pull_request:
-        branches: [ main ]
+       branches: [ main ]
 
     jobs:
     build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v2
-        with:
-            client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+       runs-on: ubuntu-latest
+       steps:
+       - uses: actions/checkout@v1
+       - uses: azure/login@v2
+       with:
+           client-id: ${{ secrets.AZURE_CLIENT_ID }}
+           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     ```
 
     # [Service principal](#tab/userlevel)
@@ -107,102 +107,96 @@ You use the connection string as a GitHub secret.
 
     on:
     push:
-        branches: [ main ]
+       branches: [ main ]
     pull_request:
-        branches: [ main ]
+       branches: [ main ]
 
     jobs:
     build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v2
-        with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+       runs-on: ubuntu-latest
+       steps:
+       - uses: actions/checkout@v1
+       - uses: azure/login@v2
+       with:
+           creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
     ---
 
-1. Use the Azure PostgreSQL Deploy action to connect to your Azure HorizonDB flexible server instance. Replace `POSTGRESQL_SERVER_NAME` with the name of your server. You should have an Azure HorizonDB data file named `data.sql` at the root level of your repository.
+1. Use the Azure PostgreSQL Deploy action to connect to your Azure HorizonDB instance. Replace `POSTGRESQL_SERVER_NAME` with the name of your server. You should have an Azure HorizonDB data file named `data.sql` at the root level of your repository.
 
     ```yaml
-     - uses: azure/postgresql@v1
-       with:
-        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
-        server-name: POSTGRESQL_SERVER_NAME
-        plsql-file: './data.sql'
+    - uses: azure/postgresql@v1
+      with:
+       connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+       server-name: POSTGRESQL_SERVER_NAME
+       plsql-file: './data.sql'
     ```
 
 1. Complete your workflow by adding an action to sign out of Azure. Here's the completed workflow. The file appears in the `.github/workflows` folder of your repository.
 
-    # [OpenID Connect](#tab/openid)
+### [OpenID Connect](#tab/openid)
 
-    ```yaml
-   name: PostgreSQL for GitHub Actions
+```yaml
+name: PostgreSQL for GitHub Actions
 
-    on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v2
-        with:
-            client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
     - uses: azure/postgresql@v1
       with:
         server-name: POSTGRESQL_SERVER_NAME
-        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
         plsql-file: './data.sql'
-
-        # Azure logout
+    # Azure logout
     - name: logout
       run: |
-         az logout
-    ```
+        az logout
+```
 
-    # [Service principal](#tab/userlevel)
+### [Service principal](#tab/userlevel)
 
-    ```yaml
-   name: PostgreSQL for GitHub Actions
+```yaml
+name: PostgreSQL for GitHub Actions
 
-    on:
-    push:
-        branches: [ main ]
-    pull_request:
-        branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v1
-        - uses: azure/login@v2
-        with:
-            client-id: ${{ secrets.AZURE_CREDENTIALS }}
-
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - uses: azure/postgresql@v1
       with:
         server-name: POSTGRESQL_SERVER_NAME
-        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
+        connection-string: ${{ secrets.AZURE_POSTGRESQL_CONNECTION_STRING }}
         plsql-file: './data.sql'
-
-        # Azure logout
+    # Azure logout
     - name: logout
       run: |
-         az logout
-    ```
+        az logout
+```
 
-    ---
+---
 
 ## Review your deployment
 
@@ -210,7 +204,7 @@ You use the connection string as a GitHub secret.
 
 1. Open the first result to see detailed logs of your workflow's run.
 
-    :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="Log of GitHub Actions run." lightbox="media/how-to-deploy-github-action/gitbub-action-postgres-success.png":::
+   :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="Screenshot of log of GitHub Actions run." lightbox="media/how-to-deploy-github-action/gitbub-action-postgres-success.png":::
 
 ## Clean up resources
 
@@ -218,5 +212,5 @@ When your Azure HorizonDB database and repository are no longer needed, clean up
 
 ## Related content
 
-- [Azure and GitHub integration](/azure/developer/github/).
-- [How to connect to the server](../connectivity/connect-csharp.md).
+- [Azure and GitHub integration](/azure/developer/github/)
+- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](../connectivity/connect-csharp.md)
