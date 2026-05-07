@@ -32,7 +32,7 @@ The system uses three main components:
 - **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access
 - **PostgreSQL Database** (Target): Azure HorizonDB with Microsoft Entra ID authentication
 
-This architecture ensures proper security isolation with separate managed identities for client authentication and database access.
+This architecture ensures proper security isolation with separate managed identities for client authentication and database access. End-to-end, no passwords or static keys live in the agent, the MCP server, or the database — every hop uses Microsoft Entra ID.
 
 ## Features and capabilities
 
@@ -164,7 +164,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    psql
    ```
 
-   Alternatively, you can connect via the {[Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code](../development/vs-code-extension/vs-code-connect.md)}.
+   Alternatively, you can connect via the [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code](../development/vs-code-extension/vs-code-connect.md).
 
 1. Create the database principal for the MCP server's managed identity. Only run this command in the **default postgres database**, because the command is only allowed in this database:
 
@@ -360,6 +360,44 @@ For programmatic access, use the following MCP configuration in your Python code
    }
    ```
 
+## Limit the MCP tool surface
+
+The MCP server's database permissions are not set by the deployment template — only an Azure RBAC **Reader** role on the Postgres resource is. The actual database grants are the ones you ran in [Step 2: Configure database access](#step-2-configure-database-access). Step 2 shows the simplest pattern (`GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>"`), which lets the agent read every table in `public`. For production, narrow that grant — the database is the only authoritative boundary on what the agent can see.
+
+### Use a schema allow-list
+
+Put the tables an agent is allowed to see into a dedicated schema (or a small set of schemas) and grant access only to those. For sensitive tables, expose a redacted view instead of the raw table:
+
+```sql
+-- Create a schema that holds only agent-safe tables/views.
+CREATE SCHEMA IF NOT EXISTS agent_safe;
+
+-- Expose a redacted view in agent_safe instead of the raw table when
+-- the underlying table contains sensitive columns.
+CREATE OR REPLACE VIEW agent_safe.orders_recent AS
+    SELECT id, customer_id, total, created_at
+    FROM public.orders
+    WHERE created_at > now() - INTERVAL '90 days';
+
+-- Grant access only to the allow-listed schema.
+GRANT USAGE ON SCHEMA agent_safe TO "<CONTAINER_APP_IDENTITY_NAME>";
+GRANT SELECT ON ALL TABLES IN SCHEMA agent_safe TO "<CONTAINER_APP_IDENTITY_NAME>";
+ALTER DEFAULT PRIVILEGES IN SCHEMA agent_safe
+    GRANT SELECT ON TABLES TO "<CONTAINER_APP_IDENTITY_NAME>";
+
+-- Revoke the broad grants from Step 2 once the allow-list is in place.
+REVOKE SELECT ON ALL TABLES IN SCHEMA public FROM "<CONTAINER_APP_IDENTITY_NAME>";
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+    REVOKE SELECT ON TABLES FROM "<CONTAINER_APP_IDENTITY_NAME>";
+REVOKE USAGE ON SCHEMA public FROM "<CONTAINER_APP_IDENTITY_NAME>";
+```
+
+With this pattern, even if a prompt convinces the agent to ask for `SELECT * FROM customers_pii`, the database returns a permission error — the safety boundary is enforced by HorizonDB, not by the agent's instructions.
+
+### Use Row Level Security for tenant isolation
+
+If the agent serves multiple tenants from the same tables, layer Row Level Security on top of the read-only role so each query the agent issues only sees the calling tenant's rows. See the [PostgreSQL Row Security Policies documentation](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) for the syntax; the role to attach policies to is the MCP server's `<CONTAINER_APP_IDENTITY_NAME>`.
+
 ## Security
 
 When using the Azure MCP PostgreSQL Server, be aware of the following security considerations:
@@ -462,3 +500,5 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 - [Azure HorizonDB integrations for AI applications](generative-ai-frameworks.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
 - [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)
+- [Hybrid search](hybrid-search.md) — combine BM25 and vector search to ground agent answers
+- [Vector indexing with DiskANN](vector-indexing-diskann.md) — scale agent retrieval to large vector workloads

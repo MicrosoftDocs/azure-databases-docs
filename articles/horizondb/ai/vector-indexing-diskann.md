@@ -1,10 +1,10 @@
 ---
 title: Scalable vector indexing with DiskANN
-description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets.
+description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets, with advanced filtering for combined vector and metadata queries.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
@@ -13,11 +13,13 @@ ms.custom:
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Scalable Vector Indexing with DiskANN
+# Scalable vector indexing with DiskANN
 
-DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
+DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets — which is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to billions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 
-To learn more about DiskANN, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search).
+If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload](vector-index-selection-guide.md).
+
+To learn more about the DiskANN algorithm, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search).
 
 The `pg_diskann` extension adds support for using DiskANN for efficient vector indexing and searching.
 
@@ -89,63 +91,122 @@ COMMIT;
 > [!IMPORTANT]  
 > Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
-## Scale efficiently with Quantization (Preview)
+## Filter your search with advanced filtering
 
-DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance. DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. **This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)**.
+> [!NOTE]  
+> Advanced filtering for DiskANN in Azure HorizonDB is in **public preview**.
+
+Most real-world retrieval queries combine vector similarity with structured filters — by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors — in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
+
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multi-tenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack — [`pgvector`](vector-search-pgvector.md), the [Azure AI integrations](ai-functions.md), [BM25 full-text search](full-text-search-pgfts.md), and [hybrid search](hybrid-search.md).
+
+### How it differs from other indexes
+
+| Index | Behavior with `WHERE` clause |
+|---|---|
+| `ivfflat` / `hnsw` | Returns top-K candidates from the ANN search, then filters — with a selective predicate, most candidates are discarded and recall drops. You typically have to over-fetch and re-rank in the application. |
+| `diskann` (advanced filtering) | Predicate is evaluated inside the index walk. The index keeps fetching matching candidates until `LIMIT` is satisfied. Recall and latency stay stable as filters get more selective. |
+
+### Use advanced filtering
+
+There is no special syntax. Add metadata columns to your table, create the DiskANN index, and write a normal `SELECT` that combines `WHERE` with the vector ordering operator. The planner uses advanced filtering automatically when a DiskANN index is available.
+
+```sql
+-- Add metadata columns alongside the embedding
+CREATE TABLE products (
+    id          INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tenant_id   INT NOT NULL,
+    category    TEXT NOT NULL,
+    price       NUMERIC(10,2) NOT NULL,
+    created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+    embedding   public.vector(1536)
+);
+
+-- Create the DiskANN index on the vector column
+CREATE INDEX products_embedding_diskann_idx
+    ON products USING diskann (embedding vector_cosine_ops);
+
+-- Vector search filtered by tenant, category, price, and date
+SELECT id, category, price
+FROM products
+WHERE tenant_id = 42
+  AND category = 'kitchen'
+  AND price BETWEEN 20 AND 200
+  AND created_at > now() - INTERVAL '30 days'
+ORDER BY embedding <=> :query_embedding
+LIMIT 10;
+```
+
+> [!TIP]  
+> Add a btree index on the columns you filter on most often (for example `tenant_id`, `category`). The planner uses both indexes together for the best plan.
+
+### Recall and `LIMIT`
+
+Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit — increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
+
+### Limitations during preview
+
+- Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
+- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fall back to post-filtering with the standard recall caveats.
+- Index rebuild is not required when adding metadata columns; the existing DiskANN index continues to work.
+
+## Scale efficiently with spherical quantization (Preview)
+
+DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
 
 > [!IMPORTANT]  
-> Product quantization support in DiskANN is available starting from **pg_diskann v0.6 and above**.
+> Spherical quantization in DiskANN is in **public preview**. Available in `pg_diskann` <!-- TODO: confirm minimum version --> and above.
 
-To reduce the size of your index and fit more data into memory, you can utilize PQ:
+To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops)
-WITH(
-    product_quantized=true
-    );
+WITH (
+    spherical_quantized = true  -- TODO: confirm final parameter name
+);
 ```
 
-### Improve accuracy when using PQ with vector reranking
+### Improve accuracy with vector reranking
 
-Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with Product Quantization (PQ) to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (e.g., cosine similarity or Euclidean distance). This technique is **not** the same as [reranking using a ranking model](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-the-semantic-ranking-solution-for-azure-database-for-postgresql/4298781).
+Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with spherical quantization to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (for example, cosine similarity or Euclidean distance). It is **not** the same as [reranking using a ranking model](semantic-reranking.md).
 
-To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented when querying with DiskANN and product quantization to improve accuracy.
+To balance speed and precision when querying a quantized DiskANN index, use a two-step reranking strategy:
 
-1. **Initial Approximate Search**: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN's indexing capabilities.
+1. **Initial approximate search.** The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and leverages the quantized index.
+1. **Precise reranking.** The outer query reorders those 50 results by their exact computed distance and returns the top 10 most relevant matches.
 
-1. **Precise Reranking**: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
-
-Here is an example of reranking using this 2 step approach:
+Example:
 
 ```sql
 SELECT id
 FROM (
     SELECT id, embedding <=> %s::vector AS distance
     FROM demo
-    ORDER BY embedding <=> %s::vector asc
+    ORDER BY embedding <=> %s::vector ASC
     LIMIT 50
 ) AS t
 ORDER BY t.distance
 LIMIT 10;
 ```
+
 > [!NOTE]  
-> **%s** should be replace by the query vector. You can use [azure_ai](../azure-ai/generative-ai-azure-openai.md) to create a query vector directly in Postgres.
+> Replace **%s** with your query vector. You can generate a query vector directly in Postgres with [`azure_ai`](ai-functions.md).
 
 This approach balances speed (via approximate search) and accuracy (via full vector reranking), ensuring high-quality results without scanning the entire dataset.
 
 ### Support for high dimension embeddings
 
-Advanced Generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
+Advanced generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. Traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
 
-Starting in pg_diskann v0.6 and above, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
+DiskANN supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
 
 > [!IMPORTANT]  
-> Product Quantization must be turned on to use high-dimensional support.
+> Spherical quantization must be enabled to use high-dimensional support.
 
 **Recommended settings:**
-- `product_quantized`: Set to true
-- `pq_param_num_chunks`: Set to one-third of the embedding dimension for optimal performance.
-- `pq_param_training_samples`: Automatically determined based on table size unless explicitly set.
+
+- `spherical_quantized`: Set to `true`. <!-- TODO: confirm final parameter name -->
+- <!-- TODO: add spherical quantization tuning parameters (e.g., chunk count / training sample equivalents) once finalized -->
 
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
@@ -220,19 +281,17 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `product_quantized`: Enables product quantization for more efficient search (Defaults to false).
-- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it's determined automatically, based on embedding dimensions. It's recommended to use 1/3 of the original embedding dimensions.
-- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it's determined automatically, based on table size.
+- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false). <!-- TODO: confirm final parameter name -->
+- <!-- TODO: add spherical quantization tuning parameters (chunk count / training samples equivalents) once finalized -->
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
- max_neighbors = 48,
- l_value_ib = 100,
- product_quantized=true,
- pq_param_num_chunks = 0,
- pq_param_training_samples = 0
- );
+    max_neighbors = 48,
+    l_value_ib = 100,
+    spherical_quantized = true  -- TODO: confirm final parameter name
+    -- TODO: add spherical quantization tuning parameters once finalized
+);
 ```
 
 ### Extension parameters
@@ -289,12 +348,12 @@ WITH (
 | | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
-| 1M-50M | Index build | `product_quantized` | true |
+| 1M-50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
 | | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
-| >50M | Index build | `product_quantized` | true |
+| >50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]  
@@ -360,5 +419,7 @@ The vector type allows you to perform three types of searches on the stored vect
 
 ## Related content
 
+- [Choose the right vector index for your workload](vector-index-selection-guide.md)
+- [Hybrid search](hybrid-search.md)
 - [Enable and use pgvector in Azure HorizonDB](how-to-use-pgvector.md)
 - [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
