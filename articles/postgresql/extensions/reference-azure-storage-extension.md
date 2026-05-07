@@ -4,7 +4,7 @@ description: Learn everything about the functions provided by the Azure Storage 
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 08/29/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
@@ -57,6 +57,29 @@ Must be a member of `azure_storage_admin`.
 #### Return type
 
 `VOID`
+
+### azure_storage.account_encrypt_existing_credentials
+
+Function that scans list of existing storage accounts which were added using [azure_storage.account_add](#azure_storageaccount_add) in old versions of the extension, which stored unencrypted credentials, and encrypts them all using the key stored in `azure_storage.credential_encryption_key`. The value of `azure_storage.credential_encryption_key` is scoped at the server level. Therefore, if you create the Azure Storage extension in multiple databases in the same server, the same encryption key will be used to encrypt all sensitive credentials stored by the extension, regardless of the database in which they are stored.
+
+> [!IMPORTANT]
+> If you have created the Azure Storage extension in multiple databases of the same server, you must execute the `azure_storage.account_encrypt_existing_credentials` function in each of those databases.
+
+```sql
+azure_storage.account_encrypt_existing_credentials();
+```
+
+#### Permissions
+
+Must be a member of `azure_storage_admin`.
+
+#### Arguments
+
+This function doesn't take any arguments.
+
+#### Return type
+
+`bigint` The number of existing storage account credentials which were unencrypted before executing the function and are now encrypted using the key stored in `azure_storage.credential_encryption_key`.
 
 ### azure_storage.account_options_managed_identity
 

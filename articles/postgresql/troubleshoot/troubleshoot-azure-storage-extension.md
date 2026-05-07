@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the Azure Storage extension in Azure Data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: reference
@@ -60,6 +60,18 @@ The name of the container passed through the `container_name` parameter of the `
 ### ERROR:  azure_storage: blob with the given name does not exist
 
 The name of the blob passed through the `path` parameter of the `blob_get` function doesn't exist in the referred container in the storage account.
+
+### ERROR:  azure_storage: credential encryption key is not configured
+
+A member of the `azure_storage_admin` role must connect to the server and execute `ALTER SYSTEM SET azure_storage.credential_encryption_key = '<strong passphrase>';` to initialize the encryption key that will be used to encrypt all Azure storage account credentials kept in the catalog. After running this command, you should also invoke the `azure_storage.account_encrypt_existing_credentials()` function so that the credentials of existing accounts are encrypted with this key. To do so, execute `SELECT azure_storage.account_encrypt_existing_credentials();`.
+
+### ERROR:  azure_storage: failed to encrypt storage credentials
+
+An attempt to encrypt the credentials used to access an storage account using the encryption key set via `azure_storage.credential_encryption_key` failed. Retry the operation. If it keeps failing, create an incident with our support services.
+
+### ERROR:  azure_storage: failed to decrypt storage credentials
+
+An attempt to decrypt the encrypted credentials used to access an storage account using the encryption key set via `azure_storage.credential_encryption_key` failed. Retry the operation. If it keeps failing, create an incident with our support services.
 
 ## Related content
 
