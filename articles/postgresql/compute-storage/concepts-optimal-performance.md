@@ -12,21 +12,7 @@ ms.topic: concept-article
 
 # Plan Azure Database for PostgreSQL deployments for operational performance
 
-Cloud computing dramatically reshaped the database hosting landscape. It gives teams access to scalability, resilience, global reach, and capabilities that were previously unobtainable. Instead of incurring considerable costs and overhead by planning for the largest possible workload (and carrying that cost from day one), teams can now optimize around the precise scale they need, when they need it, and adjust as their demands change.
-
-## Table of contents
-
-[Introduction](#introduction)  
-[Cloud performance planning is a shared responsibility](#cloud-performance-planning-is-a-shared-responsibility)  
-[Understand the three core storage performance concepts](#understand-the-three-core-storage-performance-concepts)  
-[Your deployment choices directly affect storage performance](#your-deployment-choices-directly-affect-storage-performance)  
-[Observability is part of the architecture](#observability-is-part-of-the-architecture)  
-[Practical planning checklist](#practical-planning-checklist)  
-[Recommended design principles](#recommended-design-principles)  
-[Real-world benchmark: comparing storage configurations under load](#real-world-benchmark-compare-storage-configurations-under-load)  
-[Conclusion](#conclusion)
-
-<br />
+Cloud computing dramatically reshaped the database hosting landscape. It gives teams access to scalability, resilience, global reach, and capabilities that were previously unobtainable. Instead of incurring considerable costs and overhead by planning for the largest possible workload (and carrying that cost from day one), teams can now optimize around the precise scale they need, when they need it, and adjust as their demands change. 
 
 ## Introduction
 
@@ -61,13 +47,13 @@ Capture these details before deployment, not after a production incident. Cloud 
 
 Database performance is rarely determined by a single setting. Successful deployment experiences depend on several layers working together:
 
-1. **Application layer performance.**
+- **Application layer performance.**
 <br />
    This layer includes application code, query patterns, index coverage, trigger usage, data partitioning, connection handling, caching, retry logic, pooling, ORM behavior, transaction design, and background job behavior.
-1. **Client and network layer performance.**
+- **Client and network layer performance.**
 <br />
    This layer includes where clients are located, how they connect, whether requests cross regions and availability zones, network latency, TLS overhead, connection churn, and whether the application uses connection pooling efficiently.
-1. **Database platform performance.**
+- **Database platform performance.**
 <br />
    This layer includes Postgres deployment configuration, compute size, memory, CPU, storage type, storage size, storage IOPS, storage throughput, high availability, replicas, and maintenance operations.
 
@@ -174,11 +160,11 @@ A common mistake is setting your storage for a target performance number without
 
 Azure storage performance has multiple considerations. These details include:
 
-1. The compute capability set (maximum compute IOPS and throughput limits).
-1. The storage generation (SSD v1, SSD v2, Ultra Disk).
-1. The storage disk size (SSD v1 disks under 4,096 GB include host caching, which allows for IOPS bursts above standard baselines).
-1. The storage IOPS capacity.
-1. The storage throughput capacity.
+- The compute capability set (maximum compute IOPS and throughput limits).
+- The storage generation (SSD v1, SSD v2, Ultra Disk).
+- The storage disk size (SSD v1 disks under 4,096 GB include host caching, which allows for IOPS bursts above standard baselines).
+- The storage IOPS capacity.
+- The storage throughput capacity.
 
 In practical terms: **your effective performance ceiling is your lowest relevant limit in the chain.**
 
@@ -297,11 +283,11 @@ Many systems don't have a single performance profile. They have several:
 
 | | |
 | --- | --- |
-| * Normal weekday traffic. | * Peak business hours. |
-| * Month-end or quarter-end processing. | * Holiday or seasonal demand. |
-| * Product launch events. | * Reporting windows. |
-| * Maintenance windows. | * Azure Batch ingestion periods. |
-| * Backup and restore scenarios. | * Disaster recovery events. |
+| Normal weekday traffic. | Peak business hours. |
+| Month-end or quarter-end processing. | Holiday or seasonal demand. |
+| Product launch events. | Reporting windows. |
+| Maintenance windows. | Azure Batch ingestion periods. |
+| Backup and restore scenarios. | Disaster recovery events. |
 
 A database sized for average utilization might struggle during the moments that matter most. Conversely, a database sized permanently for a once-a-month peak might be unnecessarily expensive.
 
@@ -361,25 +347,25 @@ Before selecting the production Azure Database for PostgreSQL configuration, cap
 
 Use the following principles when planning Azure Postgres deployments for operational performance.
 
-1. **Size for workload shape, not just data size.**
+- **Size for workload shape, not just data size.**
 <br />
    A 500-GB database can need more IOPS than a 5-TB database if it's highly transactional and latency-sensitive. Size matters, but workload behavior matters more.
-1. **Validate compute and storage together.**
+- **Validate compute and storage together.**
 <br />
    Don't choose storage based only on disk limits. Confirm that the selected compute SKU can drive the required IOPS and throughput.
-1. **Treat the 4-TB Premium SSD caching boundary as a design milestone.**
+- **Treat the 4-TB Premium SSD caching boundary as a design milestone.**
 <br />
    Premium SSD deployments under 4 TB can benefit from host caching. At 4,096 GB and above, host caching isn't supported. If growth will cross that threshold, plan the future performance model early.
-1. **Consider Premium SSD v2 for flexible performance tuning.**
+- **Consider Premium SSD v2 for flexible performance tuning.**
 <br />
    Premium SSD v2 allows more granular control of capacity, IOPS, and throughput. It can be a strong fit when performance needs don't map cleanly to fixed disk sizes.
-1. **Use bursting for bursts, not sustained demand.**
+- **Use bursting for bursts, not sustained demand.**
 <br />
    Bursting can help with short-lived spikes, but frequent or sustained bursting usually means the baseline configuration should be revisited.
-1. **Match generation to ambition.**
+- **Match generation to ambition.**
 <br />
    For high-end performance goals, newer compute generations such as v6-series can expose higher aggregate remote storage limits than earlier general-purpose generations. If the target is a 400,000-IOPS-class architecture, select the compute generation accordingly.
-1. **Measure before and after changes.**
+- **Measure before and after changes.**
 <br />
    Scaling is easier in the cloud, but measurement is what makes scaling effective. Capture baseline, peak, and post-change metrics so performance decisions are evidence-based.
 
@@ -478,16 +464,16 @@ By aligning both compute and storage to higher performance tiers, this configura
 
 These five configurations illustrate the key principles from this article:
 
-1. **The 4-TB caching boundary matters.**
+- **The 4-TB caching boundary matters.**
 <br />
    Config 1 vs. Config 2 shows that host caching provides measurable read performance amplification below 4 TB, while crossing into 4,096 GB removes that benefit.
-1. **Capacity isn't performance.**
+- **Capacity isn't performance.**
 <br />
    Config 3 provisioned 32 TB but didn't deliver the highest IOPS. Storage capacity alone doesn't determine transaction throughput.
-1. **Premium SSD v2 provides flexible performance tuning.**
+- **Premium SSD v2 provides flexible performance tuning.**
 <br />
    Config four demonstrated high IOPS on modest capacity, validating the decoupled model that Premium SSD v2 enables.
-1. **Compute and storage must be aligned.**
+- **Compute and storage must be aligned.**
 <br />
    Config five shows that maximizing storage performance requires sufficient compute headroom. The higher storage ceiling of D32ds_v5 was necessary to more fully use the 60,000-IOPS provision.
 
