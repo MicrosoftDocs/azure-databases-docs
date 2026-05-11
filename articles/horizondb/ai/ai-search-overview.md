@@ -13,7 +13,6 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 

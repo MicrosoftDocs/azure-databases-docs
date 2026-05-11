@@ -25,9 +25,9 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 
 ## Enable pg_diskann
 
-To use the `pg_diskann` extension on your Azure HorizonDB instance, you need to [allow the extension](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level. Then you need to [create the extension](how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
+To use the `pg_diskann` extension on your Azure HorizonDB instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
 
-Because `pg_diskann` has a dependency on the [`vector`](concepts-extensions-versions.md#vector) extension, either you [allow](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [create](how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
@@ -395,5 +395,5 @@ The vector type allows you to perform three types of searches on the stored vect
 
 - [Choose the right vector index for your workload](vector-index-selection-guide.md)
 - [Hybrid search](hybrid-search.md)
-- [Enable and use pgvector in Azure HorizonDB](how-to-use-pgvector.md)
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
+- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
+- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)

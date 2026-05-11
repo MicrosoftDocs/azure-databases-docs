@@ -21,10 +21,13 @@ The `pgvector` extension adds an open-source vector similarity search to Azure H
 
 This article explores the limitations and tradeoffs of [`pgvector`](https://github.com/pgvector/pgvector) and shows how to use partitioning, indexing, and search settings to improve performance.
 
-For more on the extension itself, see [basics of `pgvector`](how-to-use-pgvector.md). You might also want to refer to the official [README](https://github.com/pgvector/pgvector/blob/master/README.md) of the project.
+For more on the extension itself, see [basics of `pgvector`](vector-search-pgvector.md). You might also want to refer to the official [README](https://github.com/pgvector/pgvector/blob/master/README.md) of the project.
 
 [!INCLUDE [Performance](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-performance.md)]
 
 ## Related content
 
-- [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](../azure-ai/generative-ai-azure-openai.md)
+- [Implement vector search with pgvector](vector-search-pgvector.md)
+- [Vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Choose the right vector index](vector-index-selection-guide.md)
+- [Generate vector embeddings in Azure HorizonDB](generate-vector-embeddings.md)

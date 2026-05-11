@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
@@ -22,7 +21,7 @@ ms.custom:
 
 ## Enable extension
 
-Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!IMPORTANT]  
 > Although all PostgreSQL community tends to refer to this extension as pgvector, the name of the binary and the extension itself is simply `vector`. Take that into consideration, because that is the name you must use to allowlist it or to create it on any database via the CREATE EXTENSION command.
@@ -40,12 +39,12 @@ CREATE EXTENSION vector;
 
 ## Related content
 
-- [Optimize performance when using pgvector in Azure HorizonDB](how-to-optimize-performance-pgvector.md)
-- [Integrate Azure HorizonDB with Azure Cognitive Services](../azure-ai/generative-ai-azure-cognitive.md)
-- [Generative AI in Azure HorizonDB](../azure-ai/generative-ai-overview.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning Services](../azure-ai/generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](../azure-ai/generative-ai-azure-openai.md)
-- [Azure AI extension in Azure HorizonDB](../azure-ai/generative-ai-azure-overview.md)
-- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](../azure-ai/generative-ai-recommendation-system.md)
-- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](../azure-ai/generative-ai-semantic-search.md)
-- [Enable and use pgvector in Azure HorizonDB](how-to-use-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
+- [Optimize performance when using pgvector](optimize-pgvector-performance.md)
+- [Vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Choose the right vector index](vector-index-selection-guide.md)
+- [Generate vector embeddings](generate-vector-embeddings.md)
+- [Build a semantic search application](build-semantic-search-app.md)
+- [Hybrid search](hybrid-search.md)
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [AI overview for Azure HorizonDB](overview.md)

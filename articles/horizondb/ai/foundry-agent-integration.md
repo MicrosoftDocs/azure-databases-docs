@@ -1,5 +1,5 @@
 ---
-title: Implement Agent Knowledge Retrieval with Azure HorizonDB and Foundry
+title: Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
 description: Learn how to use Azure HorizonDB as the retrieval layer for agents built with Microsoft Foundry and Model Context Protocol to access and ground responses in stored knowledge. Build a simple AI agent to interact with your database through natural language queries.
 author: shreyaaithal
 ms.author: shaithal
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
-# Implement Agent Knowledge Retrieval with Azure HorizonDB and Foundry
+# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
 
 The Azure HorizonDB MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 
@@ -60,7 +60,7 @@ With the MCP integration, your AI agents can handle queries like:
 Before you begin, make sure you have the required tools, accounts, and permissions in place to deploy and configure the MCP PostgreSQL Server. Having these prerequisites ready minimizes interruptions and helps ensure a smooth integration with Foundry.
 
 - [Azure CLI](/cli/azure/install-azure-cli) (latest version)
-- [Azure HorizonDB Flexible Server](/azure/postgresql/flexible-server/overview) with Microsoft Entra ID authentication enabled
+- [Azure HorizonDB](overview.md) with Microsoft Entra ID authentication enabled
 - [Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
@@ -85,7 +85,7 @@ The fastest way to get started is by using the automated deployment script.
 
    | Parameter | Description |
    | --- | --- |
-   | `postgresResourceId` | Resource ID of the Azure HorizonDB Flexible Server you want to connect to |
+   | `postgresResourceId` | Resource ID of the Azure HorizonDB server you want to connect to |
    | `aifProjectResourceId` | Resource ID of the Azure Foundry project you want to use |
 
    a. Update the [`postgresResourceId`](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json#L17) variable to match the Postgres DB you want to access.
@@ -260,7 +260,7 @@ After you deploy your MCP server, connect it to Foundry:
 1. Select **Save** again to save your agent configuration.
 
    > [!NOTE]  
-   > The resource group is the one that contains your Azure PostgreSQL database. If you deployed the MCP Server container apps into a different resource group, still use the name of the resource group that contains your Azure PostgreSQL database.
+   > The resource group is the one that contains your Azure HorizonDB database. If you deployed the MCP Server container apps into a different resource group, still use the name of the resource group that contains your Azure HorizonDB database.
 
    > [!NOTE]  
    > There's a single field for `table` in these instructions. If you chose to allow permissions on all tables, this parameter is ignored and you gain access to all tables in the schema you granted permissions on.
@@ -497,8 +497,8 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 - [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
 - [Model Context Protocol specification](https://modelcontextprotocol.io/docs/learn/versioning)
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
-- [Azure HorizonDB integrations for AI applications](generative-ai-frameworks.md)
-- [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)
+- [Azure HorizonDB integrations for AI applications](ai-frameworks.md)
+- [AI functions in Azure HorizonDB](ai-functions.md)
+- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
 - [Hybrid search](hybrid-search.md) — combine BM25 and vector search to ground agent answers
 - [Vector indexing with DiskANN](vector-indexing-diskann.md) — scale agent retrieval to large vector workloads

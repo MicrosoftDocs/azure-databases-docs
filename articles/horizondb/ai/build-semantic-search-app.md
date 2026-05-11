@@ -1,6 +1,6 @@
 ---
 title: Build a Semantic Search Application with Azure HorizonDB
-description: Learn how to build a semantic search application by using Azure HorizonDB, vector and azure_ai extensions.
+description: Learn how to build an end-to-end semantic search application with vector search, DiskANN indexing, and semantic reranking in Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -13,60 +13,83 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-# customer intent: As a user, I want to learn how to build and end-to-end semantic search application with Azure HorizonDB and it's generative AI capabilities.
+# customer intent: As a user, I want to learn how to build an end-to-end semantic search application with Azure HorizonDB and its generative AI capabilities.
 ---
 
 # Tutorial: Build a semantic search application with Azure HorizonDB
 
-This hands-on tutorial shows you how to build a semantic search application by using Azure HorizonDB and Azure OpenAI.
+This hands-on tutorial shows you how to build a semantic search application by using Azure HorizonDB. You use vector search to find semantically similar results, DiskANN indexing for scalable performance, and semantic reranking to surface the most relevant matches.
 
-Semantic search does searches based on semantics. Standard lexical search does searches based on keywords provided in a query. For example, your recipe dataset might not contain labels like gluten-free, vegan, dairy-free, fruit-free, or dessert, but you can deduce these characteristics from the ingredients. The idea is to issue such semantic queries and get relevant search results.
+Semantic search finds results based on meaning rather than exact keywords. For example, a recipe dataset might not contain labels like "gluten-free" or "vegan," but you can deduce these characteristics from the ingredients. Semantic search lets you issue natural language queries like "healthy vegan breakfast" and get relevant results, even when those exact words don't appear in the data.
 
 In this tutorial, you:
 
 > [!div class="checklist"]
-> - Identify the search scenarios and the data fields that are involved in a search.
-> - For every data field involved in a search, create a corresponding vector field to store the embeddings of the value stored in the data field.
-> - Generate embeddings for the data in the selected data fields and store the embeddings in their corresponding vector fields.
-> - Generate the embedding for any input search query.
-> - Search the vector data field and list the nearest neighbors.
-> - Run the results through appropriate relevance, ranking, and personalization models to produce the final ranking. In the absence of such models, rank the results in decreasing dot-product order.
-> - Monitor the model, results quality, and business metrics, such as select-through rate and dwell time. Incorporate feedback mechanisms to debug and improve the search stack, from data quality, data freshness, and personalization to user experience.
+> - Install required extensions and set up AI models.
+> - Import sample recipe data.
+> - Generate vector embeddings for your data using the `create_embeddings()` AI function.
+> - Create a DiskANN index for scalable vector search.
+> - Perform semantic search queries to find nearest neighbors.
+> - Rerank search results using the `rank()` AI function to improve relevance.
 
 ## Prerequisites
 
-1. Create an OpenAI account and [request access to Azure OpenAI](https://aka.ms/oai/access).
-1. Get access to Azure OpenAI in the desired subscription.
-1. Get permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
-1. [Create and deploy an Azure OpenAI resource and a model](/azure/ai-services/openai/how-to/create-resource). Deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name, because you need it to create embeddings.
+1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](/azure/postgresql/flexible-server/quickstart-create-server-portal).
+1. [AI Model Management](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
-## Enable the azure_ai and pgvector extensions
+## Install extensions and set up AI models
 
-Before you can enable `azure_ai` and `pgvector` on your Azure HorizonDB instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+### Enable the required extensions
 
-Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
+Add `vector` and `pg_diskann` to your [extension allow list](../extensions/how-to-allow-extensions.md), and verify they're correctly added by running `SHOW azure.extensions;`.
+
+Then install the extensions by connecting to your target database and running the following commands:
 
 ```sql
-CREATE EXTENSION azure_ai;
 CREATE EXTENSION vector;
+CREATE EXTENSION pg_diskann;
 ```
 
-## Configure an OpenAI endpoint and key
+### Set up AI models
 
-In Azure AI services, under **Resource Management** > **Keys and Endpoints**, you can find the endpoint and the keys for your Azure AI resource. Use the endpoint and one of the keys to enable the `azure_ai` extension to invoke the model deployment:
+This tutorial uses [AI Model Management](ai-model-management.md), which automatically provisions and configures the AI models you need. When you enable AI Model Management, it:
+
+- Installs the `azure_ai` extension.
+- Registers a `default-embedding` model (`text-embedding-3-small`) for generating vector embeddings.
+- Registers a `default-reranker` model (`Cohere-rerank-v4.0-fast`) for semantic reranking.
+
+With AI Model Management enabled, you can call AI functions without specifying a model. They automatically use the corresponding default model.
+
+### Use your own models (BYOM)
+
+If you prefer to use your own Microsoft Foundry model deployments instead of the Managed Models, register them in the model registry:
 
 ```sql
-select azure_ai.set_setting('azure_openai.endpoint','https://<endpoint>.openai.azure.com');
-select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
+SELECT model_registry.model_add(
+    'my-embedding',                              -- a unique alias for your model
+    'https://my-endpoint.openai.azure.com/',     -- your Azure OpenAI endpoint URL
+    'my-embedding-deployment',                   -- deployment name
+    'text-embedding-3-small',                    -- model name
+    NULL,                                        -- API version (NULL for latest)
+    'subscription-key',                          -- auth type
+    '<your-endpoint-key>'                        -- endpoint key
+);
 ```
 
-## Download the data
+Then pass your model alias (for example, `'my-embedding'`) to AI function calls throughout this tutorial. For complete details on model registration and management, see [AI functions in the azure_ai extension](ai-functions.md#option-2-manual-setup-with-model-registry).
 
-Download the data from [Kaggle](https://www.kaggle.com/datasets/thedevastator/better-recipes-for-a-better-life).
+## Import sample data
 
-## Create the table
+### Download the data
 
-Connect to your server and create a `test` database. In that database, use the following command to create a table where you import data:
+Download the recipe dataset from [Kaggle](https://www.kaggle.com/datasets/thedevastator/better-recipes-for-a-better-life).
+
+> [!TIP]
+> For datasets with large documents that exceed embedding model token limits, you should chunk the content into smaller segments before generating embeddings. This tutorial's recipe dataset has naturally small rows, so chunking isn't needed. For guidance on chunking strategies, see [Data preparation for AI](ai-data-preparation.md).
+
+### Create the table
+
+Connect to your server and create a `test` database. In that database, create a table to import the data:
 
 ```sql
 CREATE TABLE public.recipes(
@@ -89,7 +112,7 @@ CREATE TABLE public.recipes(
 );
 ```
 
-## Import the data
+### Load the data
 
 Set the following environment variable on the client window to set encoding to UTF-8. This step is necessary because this particular dataset uses Windows-1252 encoding.
 
@@ -103,37 +126,37 @@ Set PGCLIENTENCODING=utf-8;
 export PGCLIENTENCODING=utf-8
 ```
 
-Import the data into the table that you created. This dataset contains a header row.
+Import the data into the table. This dataset contains a header row.
 
 ```bash
 psql -d <database> -h <host> -U <user> -c "\copy recipes FROM <local recipe data file> DELIMITER ',' CSV HEADER"
 ```
 
-## Add a column to store the embeddings
+## Generate vector embeddings
 
-Add an embedding column to the table:
+Add a vector column to the table to store the embeddings:
 
 ```sql
 ALTER TABLE recipes ADD COLUMN embedding vector(1536);
 ```
 
-## Generate embeddings
-
-Generate embeddings for your data by using the `azure_ai` extension. The following example vectorizes a few fields and concatenates them.
+Generate embeddings for your data by using the `create_embeddings()` AI function. The following example concatenates several fields to produce a rich text representation of each recipe and generates an embedding for the result.
 
 ```sql
 WITH ro AS (
     SELECT ro.rid
     FROM
-        recipes ro
+      recipes ro
     WHERE
-        ro.embedding is null
-        LIMIT 500
+      ro.embedding IS NULL
+      LIMIT 500
 )
 UPDATE
     recipes r
 SET
-    embedding = azure_openai.create_embeddings('text-embedding-ada-002', r.recipe_name||' '||r.cuisine_path||' '||r.ingredients||' '||r.nutrition||' '||r.directions)
+    embedding = azure_openai.create_embeddings(
+      input => r.recipe_name || ' ' || r.cuisine_path || ' ' || r.ingredients || ' ' || r.nutrition || ' ' || r.directions
+    )
 FROM
     ro
 WHERE
@@ -142,50 +165,67 @@ WHERE
 
 Repeat the command until there are no more rows to process.
 
-> [!TIP]  
-> Experiment with the `LIMIT` value. If you set a high value, Azure OpenAI might throttle the request and cause the statement to fail halfway through. If the statement fails, wait for at least one minute and run the command again.
+> [!NOTE]
+> To use your own embedding model instead of the default Managed Model, pass your model alias as the first argument: `azure_openai.create_embeddings('my-embedding', input => ...)`. See [Use your own models (BYOM)](#use-your-own-models-byom).
 
-## Search
+> [!TIP]
+> Experiment with the `LIMIT` value. A high value might cause Azure OpenAI to throttle the request and cause the statement to fail partway through. If the statement fails, wait for at least one minute and run the command again.
+
+## Create a DiskANN index
+
+After you generate embeddings, create a DiskANN index on the vector column for fast, scalable approximate nearest neighbor search:
+
+```sql
+CREATE INDEX recipes_embedding_diskann ON recipes
+    USING diskann (embedding vector_cosine_ops);
+```
+
+DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more details, see [Scalable vector indexing with DiskANN](vector-indexing-diskann.md).
+
+## Semantic search
 
 Create a search function in your database for convenience:
 
 ```sql
-create function
-    recipe_search(searchQuery text, numResults int)
-returns table(
-            recipeId int,
-            recipe_name text,
-            nutrition text,
-            score real)
-as $$
-declare
+CREATE FUNCTION
+    recipe_search(search_query text, num_results int)
+RETURNS TABLE(
+    recipe_id int,
+    recipe_name text,
+    nutrition text,
+    score real)
+AS $$
+DECLARE
     query_embedding vector(1536);
-begin
-    query_embedding := (azure_openai.create_embeddings('text-embedding-ada-002', searchQuery));
-    return query
-    select
-        r.rid,
-        r.recipe_name,
-        r.nutrition,
-        (r.embedding <=> query_embedding)::real as score
-    from
-        recipes r
-    order by score asc limit numResults; -- cosine distance
-end $$
-language plpgsql;
+BEGIN
+    query_embedding := azure_openai.create_embeddings(input => search_query);
+    RETURN QUERY
+    SELECT
+      r.rid,
+      r.recipe_name,
+      r.nutrition,
+      (r.embedding <=> query_embedding)::real AS score
+    FROM
+      recipes r
+    ORDER BY score ASC LIMIT num_results; -- cosine distance
+END $$
+LANGUAGE plpgsql;
 ```
 
-Now just invoke the function to search:
+> [!NOTE]
+> To use your own embedding model, replace `azure_openai.create_embeddings(input => search_query)` with `azure_openai.create_embeddings('my-embedding', search_query)`. See [AI functions in the azure_ai extension](ai-functions.md).
+
+Invoke the function to search:
 
 ```sql
-select recipeid, recipe_name, score from recipe_search('vegan recipes', 10);
+SELECT recipe_id, recipe_name, score FROM recipe_search('vegan recipes', 10);
 ```
 
 Explore the results:
 
-```bash
- recipeid |                         recipe_name                          |   score
-----------+--------------------------------------------------------------+------------
+```
+ recipe_id |                         recipe_name                          |   score
+-----------+--------------------------------------------------------------+------------
       829 | Avocado Toast (Vegan)                                        | 0.15672222
       836 | Vegetarian Tortilla Soup                                     | 0.17583494
       922 | Vegan Overnight Oats with Chia Seeds and Fruit               | 0.17668104
@@ -199,12 +239,55 @@ Explore the results:
 (10 rows)
 ```
 
+## Semantic reranking
+
+Vector search returns results that are semantically similar, but the top results might not be the most relevant for the specific query. Semantic reranking applies a second-stage scoring pass using a cross-encoder model to re-score the initial results and surface the best matches.
+
+The following query retrieves the top 20 vector search results and then reranks them using the `rank()` AI function:
+
+```sql
+WITH vector_results AS (
+    SELECT rid, recipe_name, ingredients,
+      (embedding <=> azure_openai.create_embeddings(
+          input => 'quick vegan dinner recipes'
+      ))::real AS vector_score
+    FROM recipes
+    ORDER BY vector_score ASC
+    LIMIT 20
+),
+reranked AS (
+    SELECT id AS row_id, rank
+    FROM azure_ai.rank(
+      'quick vegan dinner recipes',
+      ARRAY(SELECT recipe_name || ': ' || ingredients FROM vector_results),
+      ARRAY(SELECT rid FROM vector_results)
+    )
+)
+SELECT
+    vr.rid,
+    vr.recipe_name,
+    vr.vector_score,
+    rr.rank AS rerank_position
+FROM vector_results vr
+LEFT JOIN reranked rr ON rr.row_id = vr.rid
+ORDER BY rr.rank ASC;
+```
+
+> [!NOTE]
+> To use your own reranker model instead of the default Managed Model, pass your model alias as the last argument to `azure_ai.rank()`. For example: `azure_ai.rank('query', documents, ids, 'my-reranker')`. See [AI functions in the azure_ai extension](ai-functions.md#azure_airank).
+
+The reranked results prioritize recipes that are most relevant to the specific query intent — in this case, recipes that are both quick to prepare and vegan — rather than just semantically similar to the query text.
+
+For more details on the two-stage retrieval-and-rerank pattern, see [Semantic reranking](semantic-reranking.md) and [AI pipelines](ai-pipelines.md).
+
 ## Related content
 
-- [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
-- [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
-- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [AI Model Management in Azure HorizonDB](ai-model-management.md)
+- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
+- [Vector search with pgvector](vector-search-pgvector.md)
+- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Semantic reranking](semantic-reranking.md)
+- [AI pipelines](ai-pipelines.md)
+- [Data preparation for AI](ai-data-preparation.md)
+- [Overview of AI capabilities in Azure HorizonDB](overview.md)

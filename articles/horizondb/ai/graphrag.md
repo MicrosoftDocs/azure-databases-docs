@@ -1,6 +1,6 @@
 ---
-title: Graph-augmented RAG patterns with Azure Database for PostgreSQL
-description: Learn how to combine knowledge graphs, vector search, and LLM reasoning in Azure Database for PostgreSQL to build more accurate retrieval-augmented generation (RAG) applications.
+title: Graph-augmented RAG patterns with Azure HorizonDB
+description: Learn how to combine knowledge graphs, vector search, and LLM reasoning in Azure HorizonDB to build more accurate retrieval-augmented generation (RAG) applications.
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
@@ -16,11 +16,11 @@ ms.custom:
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
-# Graph-augmented RAG patterns with Azure Database for PostgreSQL
+# Graph-augmented RAG patterns with Azure HorizonDB
 
 Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-augmented RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 
-Azure Database for PostgreSQL lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
+Azure HorizonDB lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
 
 ## Why vector search alone is not enough
 
@@ -39,7 +39,7 @@ Graph-augmented RAG extends the standard RAG pipeline with a graph retrieval sta
 
 **Stage 1: Vector search.** Embed the user query and retrieve the top-N candidates by cosine similarity using pgvector with a DiskANN or HNSW index.
 
-**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere Rerank v3.5 by default, deployed via Foundry) to re-score by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
+**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere-rerank-v4.0-fast by default, deployed via Foundry) to re-score by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
 
 **Stage 3: Graph traversal.** Query the knowledge graph (Apache AGE) to find entities and documents connected to the query through relationships: citations, causal links, organizational hierarchy, or domain-specific edges. Graph retrieval surfaces structurally important results that vector search misses.
 
@@ -195,7 +195,7 @@ JOIN documents d ON d.service = ps.service_name;
 
 ## Graph construction approaches
 
-The most common barrier to graph-augmented RAG is building the knowledge graph itself. Azure Database for PostgreSQL provides multiple paths depending on your data and requirements.
+The most common barrier to graph-augmented RAG is building the knowledge graph itself. Azure HorizonDB provides multiple paths depending on your data and requirements.
 
 ### Approach 1: LLM-powered construction (unstructured text)
 The full LLM-powered construction pipeline involves three stages:
@@ -273,16 +273,16 @@ Get started quickly with pre-built solution accelerators:
 |-------------|-------------|------|
 | **GraphRAG Legal Research Copilot** | End-to-end graph-augmented RAG with U.S. Case Law (500K cases). Includes vector search, semantic ranking, AGE graph, and RRF fusion. | [GitHub repo](https://github.com/Azure-Samples/graphrag-legalcases-postgres) |
 | **Contract Intelligence Platform** | Graph-based contract analysis with entity extraction, obligation tracking, and conflict detection across counterparties and regions. | [GitHub repo](https://github.com/james-tn/graph/tree/main/contract_intelligence) |
-| **Build Your Own Advanced AI Copilot** | End-to-end copilot template combining graph retrieval, vector search, and LLM generation on Azure Database for PostgreSQL. | [GitHub repo](https://github.com/Azure-Samples/postgres-sa-byoac) |
+| **Build Your Own Advanced AI Copilot** | End-to-end copilot template combining graph retrieval, vector search, and LLM generation. | [GitHub repo](https://github.com/Azure-Samples/postgres-sa-byoac) |
 | **GraphRAG + Docker + AI Agents** | Containerized GraphRAG deployment with AI agent integration for automated graph construction and retrieval. | [GitHub repo](https://github.com/Azure-Samples/postgreSQL-graphRAG-docker) |
 | **Implement GraphRAG Lab** | Hands-on Microsoft Learn module walking through graph-augmented RAG implementation step by step. | [Microsoft Learn](https://aka.ms/mslearn-graphrag) |
 
 ## Related content
 
-- [Apache AGE on Azure Database for PostgreSQL](../graph/age-overview.md)
-- [Use pgvector on Azure Database for PostgreSQL](../ai/vector-search-pgvector.md)
-- [Use DiskANN on Azure Database for PostgreSQL](../ai/vector-indexing-diskann.md)
-- [Azure AI extension overview](../ai/azure-ai-extension.md)
+- [Apache AGE on Azure HorizonDB](../graph/age-overview.md)
+- [Implement vector search with pgvector](vector-search-pgvector.md)
+- [Vector indexing with DiskANN](vector-indexing-diskann.md)
+- [AI functions in the azure_ai extension](ai-functions.md)
 - [Microsoft Research: GraphRAG paper](https://www.microsoft.com/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)
 - [Build Knowledge Graph tutorial](./build-knowledge-graph.md)
 

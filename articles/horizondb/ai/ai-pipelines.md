@@ -20,7 +20,7 @@ ms.custom:
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow — chunking, embedding, extraction, generation, ranking, human approval — declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
-AI pipelines are built on top of [pg_durable](pg-durable.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface — sources, steps, sinks, and triggers — that compiles down to a durable graph automatically.
+AI pipelines are built on top of [pg_durable](../development/pg-durable.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface — sources, steps, sinks, and triggers — that compiles down to a durable graph automatically.
 
 > [!NOTE]  
 > AI pipelines and the `pg_durable` runtime they depend on are in **public preview**.
@@ -65,7 +65,7 @@ CREATE EXTENSION IF NOT EXISTS azure_ai;
 CREATE EXTENSION IF NOT EXISTS vector;
 ```
 
-`pg_durable` must also be in `shared_preload_libraries` and the database restarted. See [Durable execution with pg_durable](pg-durable.md#enable-pg_durable) for the full setup.
+`pg_durable` must also be in `shared_preload_libraries` and the database restarted. See [Durable execution with pg_durable](../development/pg-durable.md#enable-pg_durable) for the full setup.
 
 You also need an embedding (and optionally a generation) model that `azure_ai` can call. You have two options:
 
@@ -238,7 +238,7 @@ Use one-shot calls for interactive queries and small jobs. Use a pipeline whenev
 
 ## Related content
 
-- [Durable execution with pg_durable](pg-durable.md)
+- [Durable execution with pg_durable](../development/pg-durable.md)
 - [Generate vector embeddings in SQL](generate-vector-embeddings.md)
 - [Vector indexing with DiskANN](vector-indexing-diskann.md)
 - [Hybrid search](hybrid-search.md)

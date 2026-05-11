@@ -77,7 +77,10 @@ CREATE EXTENSION IF NOT EXISTS pg_fts;
 CREATE EXTENSION IF NOT EXISTS azure_ai;
 ```
 
-For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md).
+For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md).
+
+> [!TIP]
+> If you have [AI Model Management](ai-model-management.md) enabled, the `azure_ai` extension is already installed and configured with a `default-embedding` model. You can skip the `CREATE EXTENSION azure_ai` step and omit the model alias in AI function calls.
 
 ## Set up the table and indexes
 
@@ -110,15 +113,20 @@ CREATE INDEX idx_products_vec
 
 You can generate embeddings inside Postgres using the [`azure_ai` extension](ai-functions.md). This eliminates the embedding pipeline entirely — no external service calls in your application code.
 
+If you have [AI Model Management](ai-model-management.md) enabled, you can omit the model parameter — the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model (BYOM), pass your registered model alias as the first argument. See [AI functions](ai-functions.md) for details on registering models.
+
 ```sql
 -- Backfill embeddings for existing rows
 UPDATE products
 SET embedding = azure_openai.create_embeddings(
-    'text-embedding-3-small',
+    'my-embedding',                              -- model alias (omit if using AI Model Management)
     name || ' ' || description
 )::vector
 WHERE embedding IS NULL;
 ```
+
+> [!NOTE]
+> **AI Model Management users:** You can simplify the call to `azure_openai.create_embeddings(input => name || ' ' || description)` — the `default-embedding` model is used automatically.
 
 For an end-to-end embedding workflow including durable batch processing for large tables, see [Generate vector embeddings in SQL](generate-vector-embeddings.md) and [AI pipelines](ai-pipelines.md).
 
@@ -133,7 +141,7 @@ query AS (
     SELECT
         'wireless noise cancelling headphones' AS q_text,
         azure_openai.create_embeddings(
-            'text-embedding-3-small',
+            'my-embedding',                          -- model alias (omit if using AI Model Management)
             'wireless noise cancelling headphones'
         )::vector AS q_vec
 ),
@@ -183,7 +191,7 @@ WITH query AS (
     SELECT
         'noise cancelling for travel' AS q_text,
         azure_openai.create_embeddings(
-            'text-embedding-3-small',
+            'my-embedding',                          -- model alias (omit if using AI Model Management)
             'noise cancelling for travel'
         )::vector AS q_vec
 ),

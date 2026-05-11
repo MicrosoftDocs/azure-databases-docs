@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2025
+  - build-2026
 # customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
@@ -20,7 +20,7 @@ ms.custom:
 
 Azure HorizonDB seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 
-This article shows you how to use the integrated [vector database](../extensions/../extensions/how-to-use-pgvector.md) in Azure HorizonDB to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
+This article shows you how to use the integrated [vector database](vector-search-pgvector.md) in Azure HorizonDB to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
 
 ## Vector support
 
@@ -51,7 +51,7 @@ Azure HorizonDB uses the open-source [LangChain Postgres support](https://docs.l
 
 ### Enable pgvector on Azure HorizonDB
 
-See [Enable and use pgvector in Azure HorizonDB](../extensions/../extensions/how-to-use-pgvector.md).
+See [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md).
 
 ### Set up credentials
 
@@ -160,7 +160,7 @@ connection = entra_connection_pool if USE_ENTRA_AUTH else basic_auth_connection_
 
 vector_store = AzurePGVectorStore(
     embeddings=embeddings,
-    table_name=table_name,
+    table_name=collection_name,
     connection=connection,
 )
 ```
@@ -369,7 +369,7 @@ for doc in results:
     * the library hosts a weekly story time for kids [{'doc_id': 9, 'topic': 'reading', 'location': 'library'}]
 ```
 
-For a full list of the searches that you can execute on a `PGVector` vector store, refer to the [API reference](https://reference.langchain.com/python/langchain-postgres).
+For a full list of the searches that you can execute on an `AzurePGVectorStore` vector store, refer to the [API reference](https://pypi.org/project/langchain-azure-postgresql/).
 
 ### Transformation into a retriever
 
@@ -387,8 +387,10 @@ retriever.invoke("kitty")
 ## Related content
 
 - [LangChain AzurePGVectorStore reference](https://pypi.org/project/langchain-azure-postgresql/)
-- [Azure HorizonDB integrations for AI applications](generative-ai-frameworks.md)
-- [AI agents in Azure HorizonDB](generative-ai-agents.md)
-- [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
-- [Generative AI with Azure HorizonDB](generative-ai-overview.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/../extensions/how-to-use-pgvector.md)
+- [LLM framework integrations](ai-frameworks.md)
+- [AI agents in Azure HorizonDB](ai-agents.md)
+- [Generate vector embeddings in Azure HorizonDB](generate-vector-embeddings.md)
+- [AI overview for Azure HorizonDB](overview.md)
+- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
+- [AI search overview](ai-search-overview.md)
+- [AI Model Management](ai-model-management.md)

@@ -53,7 +53,7 @@ That's why every modern search engine uses BM25 (or a close variant) as its base
 
 ## Enable pg_fts
 
-To use the `pg_fts` extension, [allow the extension](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level, then [create the extension](how-to-create-extensions.md) on each database where you want to use it.
+To use the `pg_fts` extension, [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level, then [create the extension](../extensions/how-to-create-extensions.md) on each database where you want to use it.
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_fts;
@@ -256,4 +256,4 @@ For an end-to-end walkthrough — including embedding generation in SQL and addi
 - [Hybrid search](hybrid-search.md)
 - [Choose the right vector index for your workload](vector-index-selection-guide.md)
 - [Implement vector search using the pgvector extension](vector-search-pgvector.md)
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
+- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)

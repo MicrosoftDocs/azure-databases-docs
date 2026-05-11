@@ -233,7 +233,7 @@
           href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
         - name: Optimize query statistics
           href: troubleshoot/how-to-optimize-query-stats-collection.md
-- name: Application development
+- name: Development Experience
   items:
     - name: PostgreSQL extension for Visual Studio Code
       items:
@@ -243,6 +243,8 @@
           href: development/vs-code-extension/vs-code-connect.md
         - name: Configure GitHub Copilot
           href: development/vs-code-extension/vs-code-github-copilot.md
+    - name: Durable execution with pg_durable
+      href: development/pg-durable.md
 - name: Generative AI
   items:
     - name: Introduction

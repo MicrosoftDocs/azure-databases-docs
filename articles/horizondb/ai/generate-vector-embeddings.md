@@ -1,6 +1,6 @@
 ---
 title: Generate vector embeddings using the create_embeddings() AI function
-description: Generate vector embeddings using the create_embeddings() function in the azure_ai extension to call Foundry models directly from the database.
+description: Generate vector embeddings using the create_embeddings() function in the azure_ai extension. Use AI Model Management for a turn-key experience, or register your own embedding model.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -13,150 +13,127 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
+# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extensi
 ---
 
 # Generate vector embeddings using the create_embeddings() AI function
 
-Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](../extensions/how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
+Vector embeddings are numerical representations of text that capture semantic meaning, enabling [vector similarity search](vector-search-pgvector.md), clustering, and other vector-based operations. The `azure_openai.create_embeddings()` AI function in the `azure_ai` extension generates vector embeddings directly inside your database. 
 
 ## Prerequisites
 
-1. [Enable and configure](generative-ai-azure-overview.md#enable-the-azure_ai-extension) the `azure_ai` extension.
-1. Create an OpenAI account and [request access to Azure OpenAI Service](https://aka.ms/oai/access).
-1. Grant Access to Azure OpenAI in the desired subscription.
-1. Grant permissions to [create Azure OpenAI resources and to deploy models](/azure/ai-services/openai/how-to/role-based-access-control).
-1. [Create and deploy an Azure OpenAI service resource and a model](/azure/ai-services/openai/how-to/create-resource), for example deploy the embeddings model [text-embedding-ada-002](/azure/ai-services/openai/concepts/models#embeddings-models). Copy the deployment name as it's needed to create embeddings.
+- An Azure HorizonDB instance with one of the following configurations:
 
-## Configure OpenAI endpoint and key
+  - **[AI Model Management](ai-model-management.md) enabled (recommended)**: It automatically installs the `azure_ai` extension and provisions a `default-embedding` model (`text-embedding-3-small`) ready to use.
+  - **Manual setup**: Install the `azure_ai` extension and register your own embedding model through the model registry. See [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry) for detailed steps.
 
-In the Azure OpenAI resource, under **Resource Management** > **Keys and Endpoints** you can find the endpoint and the keys for your Azure OpenAI resource. To invoke the model deployment, enable the `azure_ai` extension using the endpoint and one of the keys.
+- The `pgvector` extension enabled on your database for storing and querying vector data:
 
-```sql
-select azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com');
-select azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');
-```
+  ```sql
+  CREATE EXTENSION IF NOT EXISTS vector;
+  ```
 
-## `azure_openai.create_embeddings`
+## `azure_openai.create_embeddings()`
 
-Invokes the Azure OpenAI API to create embeddings using the provided deployment over the given input.
+Creates vector embeddings for the given input text by calling the embedding model registered in the model registry.
+
+### Syntax
 
 ```sql
-azure_openai.create_embeddings(deployment_name text, input text, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
-azure_openai.create_embeddings(deployment_name text, input text[], batch_size integer DEFAULT 100, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
+-- Single text input
+azure_openai.create_embeddings(model text, input text, dimensions integer DEFAULT NULL, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
+
+-- Batch input
+azure_openai.create_embeddings(model text, input text[], batch_size integer DEFAULT 100, dimensions integer DEFAULT NULL, timeout_ms integer DEFAULT 3600000, throw_on_error boolean DEFAULT true, max_attempts integer DEFAULT 1, retry_delay_ms integer DEFAULT 1000)
 ```
 
 ### Arguments
 
-#### `deployment_name`
-
-`text` name of the deployment in Azure OpenAI studio that contains the model.
-
-#### `input`
-
-`text` or `text[]` single text or array of texts, depending on the overload of the function used, for which embeddings are created.
-
-#### `dimensions`
-
-`integer DEFAULT NULL` The number of dimensions the resulting output embeddings should have. Only supported in text-embedding-3 and later models. Available in versions 1.1.0 and later of the azure_ai extension
-
-#### `batch_size`
-
-`integer DEFAULT 100` number of records to process at a time (only available for the overload of the function for which parameter `input` is of type `text[]`).
-
-#### `timeout_ms`
-
-`integer DEFAULT 3600000` timeout in milliseconds after which the operation is stopped.
-
-#### `throw_on_error`
-
-`boolean DEFAULT true` on error should the function throw an exception resulting in a rollback of wrapping transactions.
-
-#### `max_attempts`
-
-`integer DEFAULT 1` number of times the extension retries the Azure OpenAI embedding creation if it fails with any retryable error.
-
-#### `retry_delay_ms`
-
-`integer DEFAULT 1000` amount of time (milliseconds) that the extension waits before calling again the Azure OpenAI endpoint for embedding creation, when it fails with any retryable error.
+| Argument | Type | Description |
+| --- | --- | --- |
+| `model` (optional) | `text` | Model alias registered in the model registry. When omitted, uses the `default-embedding` Managed Model provisioned by [AI Model Management](ai-model-management.md). |
+| `input` | `text` or `text[]` | Single text or array of texts to generate embeddings for. |
+| `dimensions` | `integer DEFAULT NULL` | Number of dimensions for the output embeddings. Only supported in `text-embedding-3` and later models. |
+| `batch_size` | `integer DEFAULT 100` | Number of records to process at a time. Only available for the `text[]` overload. |
+| `timeout_ms` | `integer DEFAULT 3600000` | Timeout in milliseconds after which the operation is stopped. |
+| `throw_on_error` | `boolean DEFAULT true` | When true, the function throws an exception on error, resulting in a rollback of wrapping transactions. |
+| `max_attempts` | `integer DEFAULT 1` | Number of times the extension retries embedding creation on retryable errors. |
+| `retry_delay_ms` | `integer DEFAULT 1000` | Time in milliseconds to wait before retrying on retryable errors. |
 
 ### Return type
 
-`real[]` or `TABLE(embedding real[])` a single element or a single-column table, depending on the overload of the function used, with vector representations of the input text, when processed by the selected deployment.
+`real[]` for single text input, or `TABLE(embedding real[])` for batch input. Each value is a vector representation of the corresponding input text.
 
-## Use OpenAI to create embeddings and store them in a vector data type
+## Generate embeddings
+
+The following examples show how to generate, store, and query vector embeddings. 
+
+- If you have [AI Model Management](ai-model-management.md) enabled, you can omit the model parameter as the function automatically uses the `default-embedding` model.
+- If you're using your own model (BYOM), pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions](ai-functions.md) for details on registering models.
+
+### Create a sample table
 
 ```sql
--- Create tables and populate data
-DROP TABLE IF EXISTS conference_session_embeddings;
-DROP TABLE IF EXISTS conference_sessions;
-
-CREATE TABLE conference_sessions(
-  session_id int PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
-  title text,
-  session_abstract text,
-  duration_minutes integer,
-  publish_date timestamp
+CREATE TABLE conference_sessions (
+    session_id int PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY,
+    title text NOT NULL,
+    session_abstract text NOT NULL,
+    abstract_embedding vector(1536)
 );
 
--- Create a table to store embeddings with a vector column.
-CREATE TABLE conference_session_embeddings(
-  session_id integer NOT NULL REFERENCES conference_sessions(session_id),
-  session_embedding vector(1536)
-);
-
--- Insert a row into the sessions table
-INSERT INTO conference_sessions
-    (title,session_abstract,duration_minutes,publish_date)
+INSERT INTO conference_sessions (title, session_abstract)
 VALUES
-    ('Gen AI with Azure HorizonDB'
-    ,'Learn about building intelligent applications with azure_ai extension and pg_vector'
-    , 60, current_timestamp)
-    ,('Deep Dive: PostgreSQL database storage engine internals'
-    ,' We will dig deep into storage internals'
-    , 30, current_timestamp)
-    ;
-
--- Get an embedding for the Session Abstract
-SELECT
-     pg_typeof(azure_openai.create_embeddings('text-embedding-ada-002', c.session_abstract)) as embedding_data_type
-    ,azure_openai.create_embeddings('text-embedding-ada-002', c.session_abstract)
-  FROM
-    conference_sessions c LIMIT 10;
-
--- Insert embeddings
-INSERT INTO conference_session_embeddings
-    (session_id, session_embedding)
-SELECT
-    c.session_id, (azure_openai.create_embeddings('text-embedding-ada-002', c.session_abstract))
-FROM
-    conference_sessions as c
-LEFT OUTER JOIN
-    conference_session_embeddings e ON e.session_id = c.session_id
-WHERE
-    e.session_id IS NULL;
-
--- Create a DiskANN index
-CREATE INDEX ON conference_session_embeddings USING diskann (session_embedding vector_cosine_ops);
-
--- Retrieve top similarity match
-SELECT
-    c.*
-FROM
-    conference_session_embeddings e
-INNER JOIN
-    conference_sessions c ON c.session_id = e.session_id
-ORDER BY
-    e.session_embedding <=> azure_openai.create_embeddings('text-embedding-ada-002', 'Session to learn about building chatbots')::vector
-LIMIT 1;
+    ('Gen AI with Azure HorizonDB',
+     'Learn about building intelligent applications with the azure_ai extension and pgvector'),
+    ('Deep dive: PostgreSQL storage engine internals',
+     'We will dig deep into storage internals');
 ```
+
+### Generate and store embeddings
+
+```sql
+UPDATE conference_sessions
+SET abstract_embedding = azure_openai.create_embeddings(
+    input => session_abstract
+)::vector
+WHERE abstract_embedding IS NULL;
+```
+
+> [!NOTE]
+> **BYOM users:** Replace `azure_openai.create_embeddings(input => session_abstract)` with `azure_openai.create_embeddings('your-model-alias', session_abstract)`.
+
+### Create a DiskANN index
+
+For fast similarity search at scale, create a [DiskANN index](vector-indexing-diskann.md) on the embedding column:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_diskann;
+
+CREATE INDEX ON conference_sessions USING diskann (abstract_embedding vector_cosine_ops);
+```
+
+### Query with vector similarity search
+
+Find the most relevant sessions for a given query:
+
+```sql
+SELECT session_id, title, session_abstract
+FROM conference_sessions
+ORDER BY abstract_embedding <=> azure_openai.create_embeddings(
+    input => 'Session about building chatbots'
+)::vector
+LIMIT 5;
+```
+
+> [!NOTE]
+> **BYOM users:** Replace `azure_openai.create_embeddings(input => 'Session about building chatbots')` with `azure_openai.create_embeddings('your-model-alias', 'Session about building chatbots')`.
 
 ## Related content
 
-- [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
-- [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
-- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
-- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [AI Model Management](ai-model-management.md)
+- [Implement vector search with pgvector](vector-search-pgvector.md)
+- [Vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
+- [Build a semantic search application](build-semantic-search-app.md)
+- [AI overview for Azure HorizonDB](overview.md)
