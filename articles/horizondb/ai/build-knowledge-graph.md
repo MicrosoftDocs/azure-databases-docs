@@ -431,7 +431,7 @@ This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands th
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-  ![Graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents.](../ai/media/knowledge%20graph/checkout-workflow-traversal.png)
+  ![Graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents.](media/knowledge-graph/checkout-workflow-traversal.png)
 
 ## Scaling the pattern
 

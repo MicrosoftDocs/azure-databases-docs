@@ -108,7 +108,7 @@ ms.custom:
 
 ## azure_ai
 
-{[azure_ai](../../azure-ai/generative-ai-azure-overview.md)} provides Azure AI and ML Services integration for PostgreSQL.
+{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundru and Azure ML Services integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -571,7 +571,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 ## pg_diskann
 
-{[pg_diskann](../how-to-use-pgdiskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+{[pg_diskann](../../ai/vector-indexing-diskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |

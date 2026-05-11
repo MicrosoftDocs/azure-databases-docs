@@ -20,7 +20,7 @@ ms.custom:
 
 `pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows — embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows — and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](https://learn.microsoft.com/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
 
-`pg_durable` is also the execution layer underneath [AI pipelines](ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
+`pg_durable` is also the execution layer underneath [AI pipelines](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
 > `pg_durable` is in **private preview**.
@@ -274,8 +274,8 @@ For details on switching to a group role before submitting, see the user guide. 
 
 ## Related content
 
-- [AI pipelines](ai-pipelines.md)
-- [AI functions (azure_ai)](ai-functions.md)
-- [Generate vector embeddings in SQL](generate-vector-embeddings.md)
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
+- [AI pipelines](../ai/ai-pipelines.md)
+- [AI functions (azure_ai)](../ai/ai-functions.md)
+- [Generate vector embeddings in SQL](../ai/generate-vector-embeddings.md)
+- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
 - [Duroxide on GitHub](https://github.com/microsoft/duroxide) — open-source runtime that powers `pg_durable`
