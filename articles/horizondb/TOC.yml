@@ -261,8 +261,6 @@
           href: ai/ai-data-preparation.md
         - name: AI pipelines
           href: ai/ai-pipelines.md
-        - name: Durable execution (pg_durable)
-          href: ai/pg-durable.md
         - name: Generate vector embeddings in SQL
           href: ai/generate-vector-embeddings.md
     - name: Semantic Search and Hybrid Search
