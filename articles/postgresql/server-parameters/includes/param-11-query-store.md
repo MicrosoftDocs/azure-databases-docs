@@ -24,6 +24,23 @@ ms.custom: automatically generated
 
 
 
+### pgms_wait_sampling.is_enabled_fs
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, wait sampling will be disabled despite the value set for pgms_wait_sampling.query_capture_mode. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | read-only |
+| Documentation | [pgms_wait_sampling.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgms_wait_sampling.query_capture_mode
 
 | Attribute | Value |
