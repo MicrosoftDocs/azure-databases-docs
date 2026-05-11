@@ -42,10 +42,10 @@ CREATE EXTENSION IF NOT EXISTS age;
 SET search_path = ag_catalog, "$user", public;
 ```
 
-### Deploy a model from Azure AI Foundry
+### Deploy a model from Microsoft Foundry
 
 1. Open [Microsoft Foundry](https://ai.azure.com) and create a project (or open an existing one).
-2. Go to **Model catalog** > select a model (e.g. `gpt-5.5`) > **Deploy**. Note the deployment name.
+2. Go to **Model catalog** > select a model (e.g. `gpt-5.4`) > **Deploy**. Note the deployment name.
 3. Go to your project **Settings** > **Connected resources** > click the Azure OpenAI connection. Copy the **Endpoint URL** and **Key**.
 
 ### Configure the azure_ai extension
