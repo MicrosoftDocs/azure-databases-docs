@@ -7,6 +7,23 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
+### pgms_stats.is_enabled_fs
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Internal Use Only: This parameter is used as a feature override switch. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | read-only |
+| Documentation | [pgms_stats.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pgms_wait_sampling.history_period
 
 | Attribute | Value |
