@@ -41,6 +41,8 @@ landingContent:
     links:
     - text: Manage your server
       url: configure-maintain/how-to-manage-server-portal.md
+    - text: Scale compute in Azure HorizonDB
+      url: configure-maintain/how-to-scale-compute.md
     - text: Connect and query using Visual Studio Code
       url: developer/vs-code-extension/vs-code-overview.md
 
@@ -70,8 +72,6 @@ landingContent:
     links:
     - text: Manage high availability
       url: high-availability/how-to-configure-high-availability.md
-    - text: Guide on scalable compute
-      url: scale/how-to-scale-compute.md
     - text: Scale out with elastic clusters
       url: scale/how-to-scale-out.md
     - text: Entra-id authentication guide
