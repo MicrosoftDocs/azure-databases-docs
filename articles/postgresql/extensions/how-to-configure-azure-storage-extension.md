@@ -210,12 +210,16 @@ To initialize the encryption key with which all sensitive credentials used to au
 > Make sure you change `<strong passphrase>` with your own strong secret.
 
 ```sql
-ALTER SYSTEM SET azure_storage.credential_encryption_key = '<strong passphrase>';
+ALTER DATABASE <database_with_created_extension> azure_storage.credential_encryption_key = '<strong_passphrase>';
 ```
 
-> [!IMPORTANT]
-> Note that if you create the extension in multiple databases, the value of `azure_storage.credential_encryption_key` is scoped at server level, so all sensitive credentials, regardless of the database in which are stored, will be encrypted using the same key.
-> Notice that if you change the value of `azure_storage.credential_encryption_key`, you'll have to manually add again, using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) which was encrypted with the previous value. Currently the extension doesn't support automatic rollover of encryption key.
+Note that if you create the extension in multiple databases, you must initialize the value of `azure_storage.credential_encryption_key` at the database level, so all sensitive credentials kept in that database are encrypted using the same key.
+ 
+To set the value of `azure_storage.credential_encryption_key`, you must be member of the `azure_storage_admin` role. Then connect to the server, in the context of the database in which you created the extension. And, in that context, execute `ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong passphrase>';` to initialize the encryption key that's used to encrypt all Azure storage account credentials kept by the extension in the catalog of that database. After running this command, you must disconnect and reconnect to the database again, so that the override value takes effect, and you should also invoke the `azure_storage.account_encrypt_existing_credentials()` function so that the credentials of existing accounts which were never encrypted before with any other key, are encrypted with this key. To do so, execute `SELECT azure_storage.account_encrypt_existing_credentials();`.
+ 
+Although possible, we recommend against trying to use other statements like `ALTER ROLE` or `ALTER ROLE IN DATABASE` to set the value of `azure_storage.credential_encryption_key`.
+
+Notice that if you change the value of `azure_storage.credential_encryption_key`, you'll have to manually add again, using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) which was encrypted with the previous value. Currently the extension doesn't support automatic rollover of encryption key.
 
 ## Use the extension to import and export data
 
