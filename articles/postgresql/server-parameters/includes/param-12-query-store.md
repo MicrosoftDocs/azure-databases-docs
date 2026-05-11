@@ -7,6 +7,40 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
+### pgms_wait_sampling.history_period
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Set the frequency, in milliseconds, at which wait events are sampled. |
+| Data type | integer |
+| Default value | `100` |
+| Allowed values | `1-600000` |
+| Parameter type | dynamic |
+| Documentation | [pgms_wait_sampling.history_period](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pgms_wait_sampling.query_capture_mode
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Selects which statements are tracked by the pgms_wait_sampling extension. |
+| Data type | enumeration |
+| Default value | `none` |
+| Allowed values | `all,none` |
+| Parameter type | dynamic |
+| Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
 ### pg_qs.interval_length_minutes
 
 | Attribute | Value |
@@ -18,6 +52,23 @@ ms.custom: automatically generated
 | Allowed values | `1-30` |
 | Parameter type | dynamic |
 | Documentation | [pg_qs.interval_length_minutes](https://go.microsoft.com/fwlink/?linkid=2274607) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### pg_qs.is_enabled_fs
+
+| Attribute | Value |
+| --- | --- |
+| Category | Query store |
+| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store will be disabled despite the value set for pg_qs.query_capture_mode. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on` |
+| Parameter type | read-only |
+| Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

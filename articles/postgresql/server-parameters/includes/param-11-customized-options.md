@@ -721,23 +721,6 @@ ms.custom: automatically generated
 
 
 
-### pg_qs.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store will be disabled despite the value set for pg_qs.query_capture_mode. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### pg_stat_statements.max
 
 | Attribute | Value |
