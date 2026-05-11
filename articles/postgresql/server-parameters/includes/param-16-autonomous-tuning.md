@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -11,7 +11,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Sets the frequency at which each index optimization session is triggered when index_tuning.mode is set to 'REPORT'. |
 | Data type | integer |
 | Default value | `720` |
@@ -28,7 +28,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Maximum number of columns that can be part of the index key for any recommended index. |
 | Data type | integer |
 | Default value | `2` |
@@ -45,7 +45,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Maximum number of indexes that can be recommended for each database during one optimization session. |
 | Data type | integer |
 | Default value | `10` |
@@ -62,7 +62,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Maximum number of indexes that can be recommended for each table. |
 | Data type | integer |
 | Default value | `10` |
@@ -79,7 +79,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Number of slowest queries per database for which indexes can be recommended. |
 | Data type | integer |
 | Default value | `25` |
@@ -96,7 +96,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Acceptable regression introduced by a recommended index on any of the queries analyzed during one optimization session. |
 | Data type | numeric |
 | Default value | `0.1` |
@@ -113,7 +113,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Maximum total size, in percentage of total disk space, that all recommended indexes for any given database can use. |
 | Data type | numeric |
 | Default value | `0.1` |
@@ -130,7 +130,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Cost improvement that a recommended index must provide to at least one of the queries analyzed during one optimization session. |
 | Data type | numeric |
 | Default value | `0.2` |
@@ -147,7 +147,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Configures index optimization as disabled ('OFF') or enabled to only emit recommendation. Requires Query Store to be enabled by setting pg_qs.query_capture_mode to 'TOP' or 'ALL'. |
 | Data type | enumeration |
 | Default value | `off` |
@@ -164,7 +164,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Minimum number of daily average DML operations affecting the table, so that their unused indexes are considered for dropping. |
 | Data type | integer |
 | Default value | `1000` |
@@ -181,7 +181,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Minimum number of days the index has not been used, based on system statistics, so that it is considered for dropping. |
 | Data type | integer |
 | Default value | `35` |
@@ -198,13 +198,47 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Autonomous Tuning |
 | Description | Minimum number of daily average read operations affecting the table, so that their unused indexes are considered for dropping. |
 | Data type | integer |
 | Default value | `1000` |
 | Allowed values | `0-9999999` |
 | Parameter type | dynamic |
 | Documentation | [index_tuning.unused_reads_per_table](https://go.microsoft.com/fwlink/?linkid=2274149) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### intelligent_tuning
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autonomous Tuning |
+| Description | Enables intelligent tuning |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [intelligent_tuning](https://go.microsoft.com/fwlink/?linkid=2274150) |
+
+
+[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
+
+
+
+### intelligent_tuning.metric_targets
+
+| Attribute | Value |
+| --- | --- |
+| Category | Autonomous Tuning |
+| Description | Specifies which metrics will be adjusted by intelligent tuning. |
+| Data type | set |
+| Default value | `none` |
+| Allowed values | `none,Storage-checkpoint_completion_target,Storage-min_wal_size,Storage-max_wal_size,Storage-bgwriter_delay,tuning-autovacuum,all` |
+| Parameter type | dynamic |
+| Documentation | [intelligent_tuning.metric_targets](https://go.microsoft.com/fwlink/?linkid=2274150) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]

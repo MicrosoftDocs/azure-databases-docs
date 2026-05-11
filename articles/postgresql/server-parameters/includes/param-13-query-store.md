@@ -2,50 +2,16 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2026
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
-### pgms_wait_sampling.history_period
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Set the frequency, in milliseconds, at which wait events are sampled. |
-| Data type | integer |
-| Default value | `100` |
-| Allowed values | `1-600000` |
-| Parameter type | dynamic |
-| Documentation | [pgms_wait_sampling.history_period](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pgms_wait_sampling.query_capture_mode
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Selects which statements are tracked by the pgms_wait_sampling extension. |
-| Data type | enumeration |
-| Default value | `none` |
-| Allowed values | `all,none` |
-| Parameter type | dynamic |
-| Documentation | [pgms_wait_sampling.query_capture_mode](https://go.microsoft.com/fwlink/?linkid=2274607) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
 ### pg_qs.emit_query_text
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Controls whether query text is emitted in telemetry pipeline. Need to reload the config for the change to take effect |
 | Data type | boolean |
 | Default value | `off` |
@@ -62,7 +28,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Sets the query_store capture interval in minutes for pg_qs - this is the frequency of data persistence. |
 | Data type | integer |
 | Default value | `15` |
@@ -79,7 +45,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Specifies the number of most relevant queries for which query store captures runtime statistics at each interval. |
 | Data type | integer |
 | Default value | `500` |
@@ -96,7 +62,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Sets the maximum number of bytes that will be saved for query plan text for pg_qs; longer plans will be truncated. |
 | Data type | integer |
 | Default value | `7500` |
@@ -113,7 +79,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Sets the maximum query text length that will be saved; longer queries will be truncated. |
 | Data type | integer |
 | Default value | `6000` |
@@ -130,7 +96,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Whether and when to capture query positional parameters. |
 | Data type | enumeration |
 | Default value | `capture_parameterless_only` |
@@ -147,7 +113,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Sets query capture mode for query store. None disables any capturing. |
 | Data type | enumeration |
 | Default value | `none` |
@@ -164,7 +130,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Sets the retention period window in days for pg_qs - after this time data will be deleted. |
 | Data type | integer |
 | Default value | `7` |
@@ -181,7 +147,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Turns saving query plans on or off for pg_qs |
 | Data type | boolean |
 | Default value | `off` |
@@ -198,7 +164,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Query store |
 | Description | Selects whether utility commands are tracked by pg_qs. |
 | Data type | boolean |
 | Default value | `on` |
