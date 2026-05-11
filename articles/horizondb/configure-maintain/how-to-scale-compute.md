@@ -1,8 +1,8 @@
 ---
 title: Scale Compute in Azure HorizonDB
 description: This article describes how to scale the compute in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -15,9 +15,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to perform scaling operations for the compute in Azure HorizonDB.
 
-You're allowed to change your compute between the burstable, general purpose, and memory optimized tiers. And, among each of those tiers, you can choose the number of virtual cores (vCores) that is more suitable to run your application. To learn more about the different compute tiers available in Azure Virtual Machines, and the use case for which they're best suited, refer to [size for virtual machines in Azure](/azure/virtual-machines/sizes/overview).
-
-When you request a scaling operation of the compute used by your Azure HorizonDB, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
+When you request a scaling operation of the compute used by your Azure HorizonDB, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, 
 
 ## Steps to scale compute
 
