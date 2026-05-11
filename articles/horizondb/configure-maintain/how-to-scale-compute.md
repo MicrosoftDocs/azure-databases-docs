@@ -27,41 +27,37 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Compute + storage**.
 
-   :::image type="content" source="media/how-to-scale-compute/compute-storage.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="media/how-to-scale-compute/compute-storage.png":::
+   
 
 1. If you want to select a different tier than the one currently selected, in the **Compute tier** group of radio buttons, select the option that best adjusts to your needs.
 
-   :::image type="content" source="media/how-to-scale-compute/compute-tier.png" alt-text="Screenshot showing where to select a different compute tier." lightbox="media/how-to-scale-compute/compute-tier.png":::
 
 1. If the region of your server supports Intel and AMD processors, you can use the **Compute processor** radio button to filter the options listed in the **Compute size** dropdown list to only hardware produced by the manufacturer selected.
 
-   :::image type="content" source="media/how-to-scale-compute/compute-processor.png" alt-text="Screenshot showing where to select a different compute processor manufacturer." lightbox="media/how-to-scale-compute/compute-processor.png":::
+
 
 1. If you want to select a different machine size among the ones available in the same tier, expand the **Compute size** dropdown list and select the size that best suits your needs.
 
-   :::image type="content" source="media/how-to-scale-compute/compute-size.png" alt-text="Screenshot showing where to select a different compute size." lightbox="media/how-to-scale-compute/compute-size.png":::
 
 1. Once you choose your desired configuration, select **Save**.
 
-   :::image type="content" source="media/how-to-scale-compute/save.png" alt-text="Screenshot showing the location of the Save button, enabled once you make some changes to current configuration." lightbox="media/how-to-scale-compute/save.png":::
+
 
 > [!NOTE]  
 > When you select **Save** you're not asked for confirmation to proceed with the changes. The operation is immediately initiated and can't be aborted.
 
 1. A notification shows that a deployment is in progress.
 
-   :::image type="content" source="media/how-to-scale-compute/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to scale the compute." lightbox="media/how-to-scale-compute/deployment-progress-notification.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
-   :::image type="content" source="media/how-to-scale-compute/deployment-succeeded-notification.png" alt-text="Screenshot showing that the deployment to scale the compute succeeded." lightbox="media/how-to-scale-compute/deployment-succeeded-notification.png":::
 
 ### [CLI](#tab/cli-scale-compute)
 
 You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
-az postgres flexible-server update \
+az postgres horizondb-cluster update \
   --resource-group <resource_group> \
   --name <server> \
   --tier <tier> \
@@ -83,6 +79,6 @@ Incorrect value for --sku-name. The SKU name does not match <tier> tier. Specify
 
 ## Related content
 
-- [Compute options in Azure HorizonDB](../compute-storage/concepts-compute.md)
-- [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)
-- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
+
+
+
