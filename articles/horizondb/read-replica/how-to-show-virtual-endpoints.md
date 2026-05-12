@@ -1,18 +1,18 @@
 ---
-title: Show virtual endpoints
-description: This article describes how to show virtual endpoints for an Azure HorizonDB flexible server.
+title: Show Virtual Endpoints in Azure HorizonDB
+description: This article describes how to show virtual endpoints in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/13/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
 ---
 
-# Show virtual endpoints
+# Show virtual endpoints in Azure HorizonDB
 
-This article provides step-by-step instructions to show virtual endpoints associated to an Azure HorizonDB flexible server.
+This article provides step-by-step instructions to show virtual endpoints associated to an Azure HorizonDB.
 
 ## Steps to show virtual endpoints
 
@@ -20,11 +20,11 @@ This article provides step-by-step instructions to show virtual endpoints associ
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure HorizonDB flexible server for which you want to show its associated virtual endpoints.
+1. Select the Azure HorizonDB for which you want to show its associated virtual endpoints.
 
-2. In the resource menu, under the **Settings** section, select **Replication**. In the **Virtual endpoints** section you can see the reader and writer endpoints displayed, along with the endpoints of the servers to which each of them is pointing to.
+1. In the resource menu, under the **Settings** section, select **Replication**. In the **Virtual endpoints** section you can see the reader and writer endpoints displayed, along with the endpoints of the servers to which each of them is pointing to.
 
-    :::image type="content" source="./media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="./media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
 
 ### [CLI](#tab/cli-show-virtual-endpoints)
 
@@ -48,7 +48,7 @@ az postgres flexible-server virtual-endpoint list \
 
 ## Related content
 
-- [Read replicas](concepts-read-replicas.md).
-- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
-- [Delete virtual endpoints](how-to-delete-virtual-endpoints.md).
-- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
+- [Read replicas in Azure HorizonDB](concepts-read-replicas.md)
+- [Update virtual endpoints in Azure HorizonDB](how-to-update-virtual-endpoints.md)
+- [Delete virtual endpoints in Azure HorizonDB](how-to-delete-virtual-endpoints.md)
+- [Switch over read replica to primary in Azure HorizonDB](how-to-switch-over-replica-to-primary.md)

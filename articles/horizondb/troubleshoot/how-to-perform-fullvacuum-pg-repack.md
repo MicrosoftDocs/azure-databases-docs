@@ -1,38 +1,38 @@
 ---
-title: Optimize by using pg_repack
-description: Perform full vacuum using pg_Repack extension.
+title: Optimize by Using pg_repack in Azure HorizonDB
+description: Perform full vacuum using pg_Repack extension in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/22/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: how-to
 ---
 
-# Full vacuum using pg_repack in Azure HorizonDB 
+# Full vacuum using pg_repack in Azure HorizonDB
 
-In this article, you learn how to use `pg_repack` to remove bloat and improve your Azure HorizonDB flexible server performance. Bloat is the unnecessary data accumulating in tables and indexes due to frequent updates and deletes. Bloat can cause the database size to grow larger than expected, and it can severely affect the performance of some queries. Use `pg_repack` to reclaim the wasted space and reorganize the data more efficiently.
+In this article, you learn how to use `pg_repack` to remove bloat and improve your Azure HorizonDB performance. Bloat is the unnecessary data accumulating in tables and indexes due to frequent updates and deletes. Bloat can cause the database size to grow larger than expected, and it can severely affect the performance of some queries. Use `pg_repack` to reclaim the wasted space and reorganize the data more efficiently.
 
 ## What is pg_repack?
 
-`pg_repack` is a PostgreSQL extension that removes bloat from tables and indexes and reorganizes them more efficiently. `pg_repack` works by creating a new copy of the target table or index, applying any changes that occurred during the process, and then swapping the old and new versions atomically. `pg_repack` doesn't require any downtime or exclusive access locks on the processed table or index, except for a brief period at the beginning and at the end of the operation. You can use `pg_repack` to optimize any table or index in your Azure HorizonDB flexible server databases.
+`pg_repack` is a PostgreSQL extension that removes bloat from tables and indexes and reorganizes them more efficiently. `pg_repack` works by creating a new copy of the target table or index, applying any changes that occurred during the process, and then swapping the old and new versions atomically. `pg_repack` doesn't require any downtime or exclusive access locks on the processed table or index, except for a brief period at the beginning and at the end of the operation. You can use `pg_repack` to optimize any table or index in your Azure HorizonDB databases.
 
 ## How to use pg_repack?
 
-To use `pg_repack`, you need to install the extension in your Azure HorizonDB flexible server database and then run the `pg_repack` command, specifying the table name or index you want to optimize. The extension acquires locks on the table or index to prevent other operations from being performed while the optimization is in progress. It removes the bloat and reorganizes the data more efficiently.
+To use `pg_repack`, you need to install the extension in your Azure HorizonDB database and then run the `pg_repack` command, specifying the table name or index you want to optimize. The extension acquires locks on the table or index to prevent other operations from being performed while the optimization is in progress. It removes the bloat and reorganizes the data more efficiently.
 
 ## How full table repacking works
 
 To perform a full table repacking, the extension follows these steps:
 
-1.    Creates a log table to record changes made to the original table.
-2.    Adds a trigger to the original table, logging INSERTs, UPDATEs, and DELETEs into the log table.
-3.    Creates a new table containing all the rows in the original table.
-4.    Builds indexes on the new table.
-5.    Applies all changes recorded in the log table to the new table.
-6.    Swaps the original and new tables, including indexes and toast tables.
-7.    Drops the original table.
+1. Creates a log table to record changes made to the original table.
+1. Adds a trigger to the original table, logging INSERTs, UPDATEs, and DELETEs into the log table.
+1. Creates a new table containing all the rows in the original table.
+1. Builds indexes on the new table.
+1. Applies all changes recorded in the log table to the new table.
+1. Swaps the original and new tables, including indexes and toast tables.
+1. Drops the original table.
 
 During these steps, `pg_repack` only holds an exclusive access lock for a short period, during the initial setup (steps 1 and 2) and again during the final swap-and-drop phase (steps 6 and 7). For the rest of the time, `pg_repack` only needs to hold a shared access lock on the original table, allowing INSERTs, UPDATEs, and DELETEs to proceed as usual.
 
@@ -40,14 +40,14 @@ During these steps, `pg_repack` only holds an exclusive access lock for a short 
 
 `pg_repack` has some limitations that you should be aware of before using it:
 
--  The target table must have either a PRIMARY KEY or a UNIQUE index on a NOT NULL column for the operation to be successful.
--  While `pg_repack` is running, you aren't able to perform any Data Definition Language (DDL) commands on the target tables except for VACUUM or ANALYZE. To ensure these restrictions are enforced, `pg_repack` holds a shared access lock on the target table during a full table repacking.
+- The target table must have either a PRIMARY KEY or a UNIQUE index on a NOT NULL column for the operation to be successful.
+- While `pg_repack` is running, you aren't able to perform any Data Definition Language (DDL) commands on the target tables except for VACUUM or ANALYZE. To ensure these restrictions are enforced, `pg_repack` holds a shared access lock on the target table during a full table repacking.
 
 ## Setup
 
 ### Prerequisites
 
-1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [creating](../extensions/how-to-create-extensions.md) the extension.
+1. Configure the `pg_repack` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [creating](../extensions/how-to-create-extensions.md) the extension.
 
 ### Build pg_repack client application
 
@@ -80,31 +80,31 @@ pg_repack --version
 
 ## Use pg_repack
 
-Example of how to run `pg_repack` on a table named info in a public schema within the Azure HorizonDB flexible server instance with endpoint pgserver.postgres.database.azure.com, username azureuser, and database foo using the following command.
+Example of how to run `pg_repack` on a table named info in a public schema within the Azure HorizonDB instance with endpoint pgserver.postgres.database.azure.com, username azureuser, and database foo using the following command.
 
-1. Using the client of your preference, connect to the Azure HorizonDB flexible server instance. We use psql in this example.
+1. Using the client of your preference, connect to the Azure HorizonDB instance. We use psql in this example.
 
-    ```bash
-        psql "host=<server>.postgres.database.azure.com port=5432 dbname=<database> user=<user> password=<password> sslmode=require"
-    ```
+   ```bash
+       psql "host=<server>.postgres.database.azure.com port=5432 dbname=<database> user=<user> password=<password> sslmode=require"
+   ```
 
-2. Find the version of `pg_repack` extension installed in the database.
+1. Find the version of `pg_repack` extension installed in the database.
 
-    ```sql
-    SELECT installed_version FROM pg_available_extensions WHERE name = 'pg_repack';
-    ```
+   ```sql
+   SELECT installed_version FROM pg_available_extensions WHERE name = 'pg_repack';
+   ```
 
-3. The version of the extension must match the version of the client application, which you can check by running this command:
+1. The version of the extension must match the version of the client application, which you can check by running this command:
 
-    ```bash
-    azureuser@azureuser:~$ pg_repack --version
-    ```
+   ```bash
+   azureuser@azureuser:~$ pg_repack --version
+   ```
 
-4. Run `pg_repack` client against a table called **info** which exists in database **foo**.
+1. Run `pg_repack` client against a table called **info** which exists in database **foo**.
 
-    ```bash
-    pg_repack --host=<server>.postgres.database.azure.com --username=<user> --dbname=<database> --table=info --jobs=2 --no-kill-backend --no-superuser-check
-    ```
+   ```bash
+   pg_repack --host=<server>.postgres.database.azure.com --username=<user> --dbname=<database> --table=info --jobs=2 --no-kill-backend --no-superuser-check
+   ```
 
 ### pg_repack options
 
@@ -112,9 +112,9 @@ Useful `pg_repack` options for production workloads:
 
 - `-k`, `--no-superuser-check`: Skip the superuser checks in the client. This setting is helpful for using `pg_repack` on platforms that support running it as non-superusers, like Azure HorizonDB.
 
-- `-j`, `--jobs`: Create the specified number of extra connections to Azure HorizonDB flexible server, and use these extra connections to parallelize the rebuild of indexes on each table. Parallel index builds are only supported for full-table repacks.
+- `-j`, `--jobs`: Create the specified number of extra connections to Azure HorizonDB, and use these extra connections to parallelize the rebuild of indexes on each table. Parallel index builds are only supported for full-table repacks.
 
-- `--index` or `--only` indexes options: If your Azure HorizonDB flexible server instance has extra cores and disk I/O available, the use of this option can be a useful way to speed up `pg_repack`.
+- `--index` or `--only` indexes options: If your Azure HorizonDB instance has extra cores and disk I/O available, the use of this option can be a useful way to speed up `pg_repack`.
 
 - `-D`, `--no-kill-backend`: Instead of killing backend clients that are running blocking queries, skip the repacking of a table if the lock can't be acquired after waiting for the time specified in `--wait-timeout`. By default, `--wait-timeout` is set to 60 seconds. The default value for this parameter is `false`.
 
@@ -132,4 +132,4 @@ On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/maste
 
 ## Related content
 
-- [Autovacuum tuning in Azure HorizonDB flexible server](how-to-autovacuum-tuning.md).
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

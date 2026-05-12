@@ -1,21 +1,21 @@
 ---
-title: Configure Autonomous Tuning
-description: This article describes how to configure the autonomous tuning feature in your Azure HorizonDB flexible server instance.
+title: Configure Autonomous Tuning in Azure HorizonDB
+description: This article describes how to configure the autonomous tuning feature in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/27/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
-ms.custom:
-- build-2024
-- ignite-2024
-- sfi-image-nochange
 ms.topic: how-to
-# customer intent: As a user, I want to learn about how to enable, disable and configure the autonomous tuning feature in an Azure HorizonDB flexible server instance.
+ms.custom:
+  - build-2024
+  - ignite-2024
+  - sfi-image-nochange
+# customer intent: As a user, I want to learn about how to enable, disable and configure the autonomous tuning feature in an Azure HorizonDB instance.
 ---
 
-# Configure autonomous tuning
+# Configure autonomous tuning in Azure HorizonDB
 
 Autonomous tuning can be enabled, disabled, and configured through a [set of parameters](concepts-autonomous-tuning.md#configuring-autonomous-tuning) that control its behavior, such as how often a tuning session should run.
 
@@ -29,21 +29,21 @@ Autonomous tuning is an opt-in feature that isn't enabled by default on a server
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-autonomous-tuning.png":::
 
-3. If either `pg_qs.query_capture_mode` is set to `none` or `index_tuning.mode` is set to `off`, the **Autonomous tuning** page gives you the option to enable autonomous tuning. Select on either of the two **Enable tuning** buttons, to enable autonomous tuning feature and its required query store dependency, if query store is disabled.
+1. If either `pg_qs.query_capture_mode` is set to `none` or `index_tuning.mode` is set to `off`, the **Autonomous tuning** page gives you the option to enable autonomous tuning. Select either of the two **Enable tuning** buttons, to enable autonomous tuning feature and its required query store dependency, if query store is disabled.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png" alt-text="Screenshot that shows how to enable autonomous tuning through the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/enable-autonomous-tuning-via-page-enable-autonomous-tuning.png":::
 
-4. Wait for the deployment to complete successfully before considering that the feature is enabled.
+1. Wait for the deployment to complete successfully before considering that the feature is enabled.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to enable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
-5. After enabling autonomous tuning, allow up to 12 hours for the autonomous tuning engine to analyze the workload collected by query store during that time, and eventually produce recommendations.
+1. After enabling autonomous tuning, allow up to 12 hours for the autonomous tuning engine to analyze the workload collected by query store during that time, and eventually produce recommendations.
 
 > [!IMPORTANT]  
 > When autonomous tuning is enabled through the **Enable tuning** button, if `pg_qs.query_capture_mode` is set to `none`, it's changed to `all`. If it was already set to either `top` or `all`, it's left in its current state.
@@ -76,24 +76,24 @@ WARNING: Autonomous tuning is enabled for the server.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-autonomous-tuning.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-autonomous-tuning.png":::
 
-3. Select **Disable tuning** to disable the feature.
+1. Select **Disable tuning** to disable the feature.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-disable-autonomous-tuning.png" alt-text="Screenshot that shows how to disable autonomous tuning through the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/disable-autonomous-tuning-via-page-disable-autonomous-tuning.png":::
 
-4. Wait for the deployment to complete successfully before considering that the feature is disabled.
+1. Wait for the deployment to complete successfully before considering that the feature is disabled.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png" alt-text="Screenshot that shows the deployment completed to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/wait-for-autonomous-tuning-deployment.png":::
 
-5. Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, do so by setting `pg_qs.query_capture_mode` to `none`.
+1. Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, do so by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
+> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it's configured.
 
 ### [CLI](#tab/CLI-disable)
 
@@ -118,7 +118,7 @@ WARNING: Autonomous tuning is disabled for the server.
 Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
+> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it's configured.
 
 ---
 
@@ -128,17 +128,17 @@ Assess whether you want to continue using [query store](concepts-query-store.md)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. If autonomous tuning is enabled, the page displays the **Disable tuning** button.
+1. If autonomous tuning is enabled, the page displays the **Disable tuning** button.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-enabled-disable-button.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is enabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-enabled-disable-button.png":::
 
-4. If autonomous tuning is disabled, the page displays the **Enable tuning** button.
+1. If autonomous tuning is disabled, the page displays the **Enable tuning** button.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-enable-button.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is disabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-enable-button.png":::
 
@@ -174,13 +174,13 @@ WARNING: Autonomous tuning is disabled for the server.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. Select **Tuning settings**.
+1. Select **Tuning settings**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png":::
 
@@ -461,24 +461,23 @@ The command returns all server parameters that control the different settings of
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
-2. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
+1. In the resource menu, under **Intelligent Performance**, select **Autonomous tuning**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png" alt-text="Screenshot that shows the Autonomous tuning menu option under the Intelligent Performance section, to disable autonomous tuning." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled.png":::
 
-3. Select **Tuning settings**.
+1. Select **Tuning settings**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png" alt-text="Screenshot that shows the Tune settings button in the Autonomous tuning page." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-disabled-tune-settings.png":::
 
-4. Modify the values of as many settings as you want to change, and select **Save**.
+1. Modify the values of as many settings as you want to change, and select **Save**.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-save.png" alt-text="Screenshot that shows the aspect of the Autonomous tuning page when the feature is enabled." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-save.png":::
 
-5. Wait for the deployment to complete successfully before considering that the value of the settings is changed.
+1. Wait for the deployment to complete successfully before considering that the value of the settings is changed.
 
    :::image type="content" source="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-deployment.png" alt-text="Screenshot that shows a successfully completed deployment to modify one or more autonomous tuning settings." lightbox="media/how-to-configure-autonomous-tuning/autonomous-tuning-page-tuning-settings-deployment.png":::
-
 
 ### [CLI](#tab/CLI-modify-settings)
 
@@ -521,6 +520,6 @@ The command returns all information about the server parameter corresponding to 
 
 ## Related content
 
-- [Autonomous tuning](concepts-autonomous-tuning.md)
-- [Use autonomous tuning recommendations](how-to-get-apply-recommendations-from-autonomous-tuning.md)
-- [Query store](concepts-query-store.md)
+- [Autonomous tuning in Azure HorizonDB](concepts-autonomous-tuning.md)
+- [Use autonomous tuning recommendations in Azure HorizonDB](how-to-get-apply-recommendations-from-autonomous-tuning.md)
+- [Query store in Azure HorizonDB](concepts-query-store.md)

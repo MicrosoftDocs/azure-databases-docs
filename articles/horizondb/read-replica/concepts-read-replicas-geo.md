@@ -1,10 +1,10 @@
 ---
-title: Geo-replication
-description: This article describes the Geo-replication in an Azure HorizonDB flexible server instance.
+title: Geo-Replication in Azure HorizonDB
+description: This article describes the Geo-replication in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: concept-article
@@ -12,12 +12,11 @@ ms.custom:
   - ignite-2023
 ---
 
-# Geo-replication in Azure HorizonDB 
+# Geo-replication in Azure HorizonDB
 
 A read replica can be created in the same region as the primary server or in a different geographical region. Geo-replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users.
 
-You can have a primary server in any [Azure HorizonDB flexible server service region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure HorizonDB. Additionally, we also support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations). 
-
+You can have a primary server in any [Azure HorizonDB service region](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql). A primary server can also have replicas in any global region of Azure that supports Azure HorizonDB. Additionally, we also support special regions [Azure Government](/azure/azure-government/documentation-government-welcome) and [Microsoft Azure operated by 21Vianet](/azure/china/overview-operations).
 
 ## Paired regions for disaster recovery purposes
 
@@ -35,30 +34,29 @@ While creating replicas in any supported region is possible, there are notable b
 
 For a deeper understanding of the advantages of paired regions, refer to [Azure's documentation on cross-region replication](/azure/reliability/cross-region-replication-azure#azure-paired-regions).
 
-
 ## Regional Failures and Recovery
 
 Azure facilities across various regions are designed to be highly reliable. However, under rare circumstances, an entire region can become inaccessible due to reasons ranging from network failures to severe scenarios like natural disasters. Azure's capabilities allow for creating applications that are distributed across multiple regions, ensuring that a failure in one region doesn't affect others.
 
 ### Prepare for Regional Disasters
 
-Being prepared for potential regional disasters is critical to ensure the uninterrupted operation of your applications and services. If you're considering a robust contingency plan for your Azure HorizonDB flexible server instance, here are the key steps and considerations:
+Being prepared for potential regional disasters is critical to ensure the uninterrupted operation of your applications and services. If you're considering a robust contingency plan for your Azure HorizonDB instance, here are the key steps and considerations:
 
-1.  **Establish a geo-replicated read replica**: It's essential to have a read replica set up in a separate region from your primary. This ensures continuity in case the primary region faces an outage. 
-2.  **Ensure server symmetry**: The "promote to primary server" action is the most recommended for handling regional outages, but it comes with a [server symmetry](concepts-read-replicas.md#configuration-management) requirement. This means both the primary and replica servers must have identical configurations of specific settings. The advantages of using this action include:
-     * No need to modify application connection strings if you use [virtual endpoints](concepts-read-replicas-virtual-endpoints.md).
-     * It provides a seamless recovery process where, once the affected region is back online, the original primary server automatically resumes its function, but in a new replica role.
-3.  **Set up virtual endpoints**: Virtual endpoints allow for a smooth transition of your application to another region if there's an outage. They eliminate the need for any changes in the connection strings of your application.
-4.  **Configure the read replica**: Not all settings from the primary server are replicated over to the read replica. It's crucial to ensure that all necessary configurations and features (for example, PgBouncer) are appropriately set up on your read replica. For more information, see the [Configuration management](concepts-read-replicas-promote.md#configuration-management) section.
-5.  **Prepare for High Availability (HA)**: If your setup requires high availability, it won't be automatically enabled on a promoted replica. Be ready to activate it post-promotion. Consider automating this step to minimize downtime.
-6.  **Regular testing**: Regularly simulate regional disaster scenarios to validate existing thresholds, targets, and configurations. Ensure that your application responds as expected during these test scenarios.
-7.  **Follow Azure's general guidance**: Azure provides comprehensive guidance on [reliability and disaster preparedness](/azure/reliability/overview). It's highly beneficial to consult these resources and integrate best practices into your preparedness plan.
+1. **Establish a geo-replicated read replica**: It's essential to have a read replica set up in a separate region from your primary. This ensures continuity in case the primary region faces an outage.
+1. **Ensure server symmetry**: The "promote to primary server" action is the most recommended for handling regional outages, but it comes with a [server symmetry](concepts-read-replicas.md#configuration-management) requirement. This means both the primary and replica servers must have identical configurations of specific settings. The advantages of using this action include:
+   - No need to modify application connection strings if you use [virtual endpoints](concepts-read-replicas-virtual-endpoints.md).
+   - It provides a seamless recovery process where, once the affected region is back online, the original primary server automatically resumes its function, but in a new replica role.
+1. **Set up virtual endpoints**: Virtual endpoints allow for a smooth transition of your application to another region if there's an outage. They eliminate the need for any changes in the connection strings of your application.
+1. **Configure the read replica**: Not all settings from the primary server are replicated over to the read replica. It's crucial to ensure that all necessary configurations and features (for example, PgBouncer) are appropriately set up on your read replica. For more information, see the [Configuration management](concepts-read-replicas-promote.md#configuration-management) section.
+1. **Prepare for High Availability (HA)**: If your setup requires high availability, it won't be automatically enabled on a promoted replica. Be ready to activate it post-promotion. Consider automating this step to minimize downtime.
+1. **Regular testing**: Regularly simulate regional disaster scenarios to validate existing thresholds, targets, and configurations. Ensure that your application responds as expected during these test scenarios.
+1. **Follow Azure's general guidance**: Azure provides comprehensive guidance on [reliability and disaster preparedness](/azure/reliability/overview). It's highly beneficial to consult these resources and integrate best practices into your preparedness plan.
 
 Being proactive and preparing in advance for regional disasters ensure the resilience and reliability of your applications and data.
 
 ### When outages impact your SLA
 
-If a prolonged outage with an Azure HorizonDB flexible server instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](../backup-restore/concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
+If a prolonged outage with an Azure HorizonDB instance in a specific region that threatens your application's service-level agreement (SLA), be aware that both the actions discussed below aren't service-driven. User intervention is required for both. It's a best practice to automate the entire process as much as possible and to have robust monitoring in place. For more information about what information is provided during an outage, see the [Service outage](../backup-restore/concepts-business-continuity.md#service-outage) page. Only a **forced** promote is possible in a region down scenario, meaning the amount of data loss is roughly equal to the current lag between the replica and primary. Hence, it's crucial to [monitor the lag](concepts-read-replicas.md#monitor-replication). Consider the following steps:
 
 **Promote to primary server**
 
@@ -70,8 +68,8 @@ In that case, this is the only viable option. After promoting the server, you'll
 
 ## Related content
 
-- [Read replicas in Azure HorizonDB](concepts-read-replicas.md).
-- [Promote read replicas in Azure HorizonDB](concepts-read-replicas-promote.md).
-- [Virtual endpoints for read replicas in Azure HorizonDB](concepts-read-replicas-virtual-endpoints.md).
-- [Create a read replica](how-to-create-read-replica.md).
-- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking).
+- [Read replicas in Azure HorizonDB](concepts-read-replicas.md)
+- [Promote read replicas in Azure HorizonDB](concepts-read-replicas-promote.md)
+- [Virtual endpoints for read replicas in Azure HorizonDB](concepts-read-replicas-virtual-endpoints.md)
+- [Create a read replica in Azure HorizonDB](how-to-create-read-replica.md)
+- [Replication across Azure regions and virtual networks with private networking](../network/concepts-networking-private.md#replication-across-azure-regions-and-virtual-networks-with-private-networking)

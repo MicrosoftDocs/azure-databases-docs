@@ -4,7 +4,7 @@ description: Learn how to create and configure a copy activity in Microsoft Fabr
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 04/15/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to

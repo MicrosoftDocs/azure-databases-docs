@@ -1,22 +1,24 @@
 ---
-title: Azure Confidential Computing
+title: Azure Confidential Computing in Azure HorizonDB
 description: This article describes the confidential computing options in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/26/2026
-ms.service: azure-database-postgresql 
+ms.date: 06/02/2026
+ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
 ms.custom:
   - horz-security
 ---
 
-# Azure Confidential Computing for Azure HorizonDB
+# Azure Confidential Computing in Azure HorizonDB
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This protection enables secure real-time analytics and collaborative machine learning across organizational boundaries.
 
-## Understanding the architecture
+<a id="understanding-the-architecture"></a>
+
+## Understand the architecture
 
 **Azure HorizonDB** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. The operating system, hypervisor, and other applications can't access data processed inside the TEE.
 
@@ -28,7 +30,7 @@ ms.custom:
 
 You enable **Azure Confidential Computing** in **Azure HorizonDB** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. Only **AMD SEV-SNP** processors are supported.
 
-> [!NOTE]
+> [!NOTE]  
 > Intel TDX processors aren't currently supported for Azure HorizonDB.
 
 ## Virtual machine SKUs

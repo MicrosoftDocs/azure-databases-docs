@@ -1,10 +1,10 @@
 ---
-title: Troubleshoot High CPU Utilization in Elastic Clusters
+title: Troubleshoot High CPU Utilization in Elastic Clusters in Azure HorizonDB
 description: How to troubleshoot high CPU utilization across Azure HorizonDB Elastic Clusters.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: jaredmeade, maghan
-ms.date: 02/17/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-general
@@ -202,7 +202,7 @@ $$);
 
 The following image highlights the output from the preceding query. The `result` column is a JSON data type containing information on the stats.
 
-:::image type="content" source="./media/how-to-high-cpu-utilization-elastic-clusters/elastic-clusters-cpu-utilization-result.png" alt-text="Results returned from query response - including `result` column as a json datatype " lightbox="./media/how-to-high-cpu-utilization-elastic-clusters/elastic-clusters-cpu-utilization-result.png":::
+:::image type="content" source="media/how-to-high-cpu-utilization-elastic-clusters/elastic-clusters-cpu-utilization-result.png" alt-text="Screenshot of results returned from query response - including `result` column as a json datatype " lightbox="media/how-to-high-cpu-utilization-elastic-clusters/elastic-clusters-cpu-utilization-result.png":::
 
 The `last_autovacuum` and `last_autoanalyze` columns provide the date and time when the table was last autovacuumed or analyzed. If the tables aren't autovacuumed regularly, take steps to tune autovacuum.
 
@@ -305,7 +305,7 @@ The same query running on different worker nodes might have same global_pid's. I
 
 The following screenshot shows the relativity of the global_pid's to session pid's.
 
-:::image type="content" source="./media/how-to-high-cpu-utilization-elastic-clusters/global-pid-to-session-pid-example.png" alt-text="global pid to session pid reference example" lightbox="./media/how-to-high-cpu-utilization-elastic-clusters/global-pid-to-session-pid-example.png":::
+:::image type="content" source="media/how-to-high-cpu-utilization-elastic-clusters/global-pid-to-session-pid-example.png" alt-text="Screenshot of global pid to session pid reference example" lightbox="media/how-to-high-cpu-utilization-elastic-clusters/global-pid-to-session-pid-example.png":::
 
 ```sql
 SELECT pg_terminate_backend(global_pid);
@@ -314,7 +314,9 @@ SELECT pg_terminate_backend(global_pid);
 > [!NOTE]  
 > To terminate long running transactions, set server parameters `statement_timeout` or `idle_in_transaction_session_timeout`.
 
-## Clearing bloat
+<a id="clearing-bloat"></a>
+
+## Clear bloat
 
 A short-term solution is to manually vacuum and then analyze the tables where slow queries appear:
 
@@ -322,17 +324,19 @@ A short-term solution is to manually vacuum and then analyze the tables where sl
 VACUUM ANALYZE <table>;
 ```
 
-## Managing connections
+<a id="managing-connections"></a>
+
+## Manage connections
 
 If your application uses many short-lived connections or many connections that stay idle for most of their life, consider using a connection pooler like PgBouncer.
 
 ## PgBouncer, a built-in connection pooler
 
-For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/connection-handling-best-practice-with-postgresql/ba-p/790883).
+For more information about PgBouncer, see [connection pooler](https://techcommunity.microsoft.com/blog/adforpostgresql/not-all-postgres-connection-pooling-is-equal/825717) and [connection handling best practices with PostgreSQL](https://techcommunity.microsoft.com/blog/adforpostgresql/connection-handling-best-practice-with-postgresql/790883).
 
-Azure HorizonDB Elastic Clusters offer PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer](../connectivity/concepts-pgbouncer.md).
+Azure HorizonDB Elastic Clusters offer PgBouncer as a built-in connection pooling solution. For more information, see [PgBouncer in Azure HorizonDB](../connectivity/concepts-pgbouncer.md).
 
 ## Related content
 
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
 - [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

@@ -1,10 +1,10 @@
 ---
-title: Create a Recommendation System with Azure OpenAI
-description: Learn how to build a recommendation system by using Azure HorizonDB and Azure OpenAI.
+title: Create a Recommendation System with Azure OpenAI in Azure HorizonDB
+description: Learn how to build a recommendation system by using Azure OpenAI in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: tutorial
@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Tutorial: Create a recommendation system with Azure HorizonDB and Azure OpenAI
+# Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB
 
 This hands-on tutorial shows you how to build a recommender application by using Azure HorizonDB and Azure OpenAI. Recommendations have applications in different domains. Service providers tend to provide recommendations for products and services that they offer based on prior history and contextual information collected from the customer and environment.
 
@@ -30,9 +30,9 @@ There are various ways to model recommendation systems. This tutorial explores t
 
 ## Enable the azure_ai and pgvector extensions
 
-Before you can enable `azure_ai` and `pgvector` on your Azure HorizonDB flexible server instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
+Before you can enable `azure_ai` and `pgvector` on your Azure HorizonDB instance, [add them to your allow list](../extensions/how-to-allow-extensions.md). Make sure that they're correctly added by running `SHOW azure.extensions;`.
 
-Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/static/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
+Then you can install the extension by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. Repeat the command separately for every database where you want the extension to be available.
 
 ```sql
 CREATE EXTENSION azure_ai;
@@ -205,9 +205,9 @@ And explore the results:
 ## Related content
 
 - [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning services](generative-ai-azure-machine-learning.md)
+- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
 - [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Generative AI with Azure HorizonDB](generative-ai-overview.md)
-- [Create a semantic search with Azure HorizonDB and Azure OpenAI](generative-ai-recommendation-system.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/../extensions/how-to-use-pgvector.md)
+- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
+- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
+- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)

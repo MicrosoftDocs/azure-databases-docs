@@ -1,17 +1,17 @@
 ---
-title: 'Tutorial: Real-time dashboard with elastic clusters'
-description: This tutorial shows how to parallelize real-time dashboard queries with elastic clusters on Azure HorizonDB.
+title: "Tutorial: Real-Time Dashboard with Elastic Clusters in Azure HorizonDB"
+description: This tutorial shows how to parallelize real-time dashboard queries with elastic clusters in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
-#Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
+# Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 ---
 
-# Tutorial: Design a real-time analytics dashboard with elastic clusters
+# Tutorial: Design a real-time analytics dashboard with elastic clusters in Azure HorizonDB
 
 In this tutorial, you use elastic clusters on Azure HorizonDB elastic clusters to learn how to design a real-time dashboard and parallelize queries.
 
@@ -27,9 +27,9 @@ In this tutorial, you use elastic clusters on Azure HorizonDB elastic clusters t
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
-- [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
-- [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
+- [Quickstart: Create an instance of elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Quickstart: Use a Bicep template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
+- [Quickstart: Use an ARM template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 
 ## Use psql utility to create a schema
 
@@ -92,7 +92,7 @@ SELECT create_distributed_table('http_request',      'site_id');
 SELECT create_distributed_table('http_request_1min', 'site_id');
 ```
 
-> [!NOTE]
+> [!NOTE]  
 >
 > Distributing tables or using schema-based sharding is necessary to take advantage of elastic clusters of Azure HorizonDB performance features. Until you distribute tables or schemas, your cluster nodes will not run distributed queries involving their data.
 
@@ -127,14 +127,14 @@ END $$;
 
 The query inserts approximately eight rows every second. The rows are stored on different worker nodes based upon their distribution column, `site_id`.
 
-   > [!NOTE]
+   > [!NOTE]  
    > Leave the data generation query running, and open a second psql
    > connection for the remaining commands in this tutorial.
    >
 
 ## Query
 
-Azure HorizonDB  elastic clusters allows multiple nodes to process queries in parallel for speed. For instance, the database calculates aggregates like SUM and COUNT on worker nodes, and combines the results into a final answer.
+Azure HorizonDB elastic clusters allows multiple nodes to process queries in parallel for speed. For instance, the database calculates aggregates like SUM and COUNT on worker nodes, and combines the results into a final answer.
 
 Here's a query to count web requests per minute along with a few statistics. Try running it in psql and observe the results.
 
@@ -208,9 +208,11 @@ FROM http_request_1min
 WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## Expiring old data
+<a id="expiring-old-data"></a>
 
-The rollups make queries faster, but we still need to expire old data to avoid unbounded storage costs. Decide how long you’d like to keep data for each granularity, and use standard queries to delete expired data. In the following example, we decided to keep raw data for one day, and per-minute aggregations for one month:
+## Expire old data
+
+The rollups make queries faster, but we still need to expire old data to avoid unbounded storage costs. Decide how long you'd like to keep data for each granularity, and use standard queries to delete expired data. In the following example, we decided to keep raw data for one day, and per-minute aggregations for one month:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
@@ -221,7 +223,5 @@ In production, you could wrap these queries in a function and call it every minu
 
 ## Next step
 
-In this tutorial, you learned how to create an elastic cluster. You connected to it with psql, created a schema, and distributed data. You learned to query data in the raw form, regularly aggregate that data, query the aggregated tables, and expire old data.
-
 > [!div class="nextstepaction"]
-> [Learn more about elastic clusters](../elastic-clusters/concepts-elastic-clusters.md)
+> [Elastic clusters in Azure HorizonDB](../elastic-clusters/concepts-elastic-clusters.md)

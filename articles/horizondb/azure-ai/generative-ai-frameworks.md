@@ -4,7 +4,7 @@ description: Integrate Azure HorizonDB with AI and large language model (LLM) or
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article

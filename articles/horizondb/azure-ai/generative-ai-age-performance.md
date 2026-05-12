@@ -1,10 +1,10 @@
 ---
-title: Apache AGE Performance Best Practices
+title: Apache AGE Performance Best Practices in Azure HorizonDB
 description: Best practices for improving queries in Apache Age with Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
@@ -16,11 +16,13 @@ ms.custom:
 # customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure HorizonDB.
 ---
 
-# Best practices: indexing, AGE EXPLAIN, and data load benchmarks
+# Best practices: indexing, AGE EXPLAIN, and data load benchmarks in Azure HorizonDB
 
 Apache AGE supported by Azure HorizonDB, provides support for advanced graph processing and querying. However, achieving optimal query performance requires a thoughtful strategy for indexing and data loading. This guide outlines some best practices based on recent benchmarking results and technical insights.
 
-## Indexing in Apache AGE
+<a id="indexing-in-apache-age"></a>
+
+## Index in Apache AGE
 
 Indexing is pivotal for improving query performance, especially in graph databases.
 
@@ -115,7 +117,9 @@ Use the following commands to create indexes for vertex and edge tables:
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (end_id);
   ```
 
-### Indexing a specific key-value in properties
+<a id="indexing-a-specific-key-value-in-properties"></a>
+
+### Index a specific key-value in properties
 
 For targeted queries, a smaller, more efficient BTREE index can be created for specific keys within the properties column:
 
@@ -152,7 +156,7 @@ AGEFreighter is a Python library designed to facilitate the loading of data into
 
 #### Environment setup
 
-- Created an Azure HorizonDB flexible server instance with AGE enabled.
+- Created an Azure HorizonDB instance with AGE enabled.
 - Python dependency management tool such as Poetry is recommended. Python 3.9 or later must be installed.
 - The AGEFreighter library (AGEFreighter PyPi) must be installed as a dependency:
 
@@ -217,7 +221,7 @@ Efficient data loading is essential for handling large datasets effectively.
 
 ## Related content
 
-- [Azure HorizonDB documentation](../overview.md)
+- [What is Azure HorizonDB?](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)

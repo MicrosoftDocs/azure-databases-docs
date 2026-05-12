@@ -1,9 +1,9 @@
 ---
 title: Major Version Upgrade FAQ
 description: Major Version Upgrade FAQ
-author: moabuham 
-ms.author: moabuham 
-ms.reviewer: yuzheng1, maghan
+author: hariramt
+ms.author: hariramt
+ms.reviewer: maghan
 ms.date: 06/11/2025
 ms.service: azure-database-mysql
 ms.subservice: flexible-server

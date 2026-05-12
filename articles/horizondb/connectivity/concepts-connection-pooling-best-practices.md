@@ -1,26 +1,26 @@
 ---
-title: Connection pooling best practices
+title: Connection Pooling Strategy Using PgBouncer in Azure HorizonDB
 description: This article describes the best practices for connection pooling in an Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 1/22/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: best-practice
 ---
 
-# Connection pooling strategy for Azure HorizonDB  using PgBouncer
+# Connection pooling strategy using PgBouncer in Azure HorizonDB
 
 Strategic guidance for selecting connection pooling mechanism for your Azure HorizonDB.
 
 ## Introduction
 
-When using an Azure HorizonDB flexible server instance, establishing a connection to the database involves creating a communication channel between the client application and the server. This channel is responsible for managing data, executing queries, and initiating transactions. Once the connection is established, the client application can send commands to the server and receive responses. However, creating a new connection for each operation can cause performance issues for mission-critical applications. Every time a new connection is created, Azure HorizonDB spawns a new process using the postmaster process, which consumes more resources.
+When using an Azure HorizonDB instance, establishing a connection to the database involves creating a communication channel between the client application and the server. This channel is responsible for managing data, executing queries, and initiating transactions. Once the connection is established, the client application can send commands to the server and receive responses. However, creating a new connection for each operation can cause performance issues for mission-critical applications. Every time a new connection is created, Azure HorizonDB spawns a new process using the postmaster process, which consumes more resources.
 
 To mitigate this issue, connection pooling is used to create a cache of connections that can be reused in Azure HorizonDB. When an application or client requests a connection, it's created from the connection pool. After the session or transaction is completed, the connection is returned to the pool for reuse. By reusing connections, resources usage is reduced, and performance is improved.
 
-:::image type="content" source="./media/concepts-connection-pooling-best-practices/connection-patterns.png" alt-text="Diagram for Connection Pooling Patterns.":::
+:::image type="content" source="media/concepts-connection-pooling-best-practices/connection-patterns.png" alt-text="Diagram for Connection Pooling Patterns." lightbox="media/concepts-connection-pooling-best-practices/connection-patterns.png" :::
 
 Although there are different tools for connection pooling, in this section, we discuss different strategies to use connection pooling using **PgBouncer**.
 
@@ -29,15 +29,14 @@ Although there are different tools for connection pooling, in this section, we d
 **PgBouncer** is an efficient connection pooler designed for PostgreSQL, offering the advantage of reducing processing time and optimizing resource usage in managing multiple client connections to one or more databases. **PgBouncer** incorporates three distinct pooling mode for connection rotation:
 
 - **Session pooling:** This method assigns a server connection to the client application for the entire duration of the client's connection. Upon disconnection of the client application, **PgBouncer** promptly returns the server connection back to the pool. Session pooling mechanism is the default mode in Open Source PgBouncer. See [PgBouncer configuration](https://www.pgbouncer.org/config.html)
-- **Transaction pooling:** With transaction pooling, a server connection is dedicated to the client application during a transaction. Once the transaction is successfully completed, **PgBouncer** intelligently releases the server connection, making it available again within the pool. Transaction pooling is the default mode in Azure HorizonDB's in-built PgBouncer, and it does not support prepared transactions.
-- **Statement pooling:** In statement pooling, a server connection is allocated to the client application for each individual statement. Upon the statement's completion, the server connection is promptly returned to the connection pool. It's important to note that multi-statement transactions are not supported in this mode.
+- **Transaction pooling:** With transaction pooling, a server connection is dedicated to the client application during a transaction. Once the transaction is successfully completed, **PgBouncer** intelligently releases the server connection, making it available again within the pool. Transaction pooling is the default mode in Azure HorizonDB's in-built PgBouncer, and it doesn't support prepared transactions.
+- **Statement pooling:** In statement pooling, a server connection is allocated to the client application for each individual statement. Upon the statement's completion, the server connection is promptly returned to the connection pool. It's important to note that multi-statement transactions aren't supported in this mode.
 
 The effective utilization of PgBouncer can be categorized into three distinct usage patterns.
 
 - **PgBouncer and Application Colocation deployment**
 - **Application independent centralized PgBouncer deployments**
 - **Inbuilt PgBouncer and Database deployment**
-
 
 Each of these patterns has its own advantages & disadvantages.
 
@@ -47,24 +46,23 @@ When utilizing this approach, PgBouncer is deployed on the same server where you
 
 ### I. PgBouncer deployed in Application VM
 
-If your application runs on an Azure VM, you can set up PgBouncer on the same VM. To install and configure PgBouncer as a connection pooling proxy with your Azure HorizonDB flexible server instance, follow the instructions provided in the following [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555).
+If your application runs on an Azure VM, you can set up PgBouncer on the same VM. To install and configure PgBouncer as a connection pooling proxy with your Azure HorizonDB instance, follow the instructions provided in the following [link](https://techcommunity.microsoft.com/blog/adforpostgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy-with-azure-db-for-/730555).
 
-:::image type="content" source="./media/concepts-connection-pooling-best-practices/co-location.png" alt-text="Diagram for App co-location on VM.":::
+:::image type="content" source="media/concepts-connection-pooling-best-practices/co-location.png" alt-text="Diagram for App co-location on VM." lightbox="media/concepts-connection-pooling-best-practices/co-location.png" :::
 
-
-Deploying PgBouncer in an application server can provide several advantages, especially when working with Azure HorizonDB flexible server databases. Some of the key benefits & limitations of this deployment method are:
+Deploying PgBouncer in an application server can provide several advantages, especially when working with Azure HorizonDB databases. Some of the key benefits & limitations of this deployment method are:
 
 **Benefits:**
 
 - **Reduced Latency:** By deploying **PgBouncer** on the same Application VM, communication between the primary application and the connection pooler is efficient due to their proximity. Deploying PgBouncer in Application VM minimizes latency and ensures smooth and swift interactions.
 - **Improved security:** **PgBouncer** can act as a secure intermediary between the application and the database, providing an extra layer of security. It can enforce authentication and encryption, ensuring that only authorized clients can access the database.
 
-Overall, deploying PgBouncer in an application server provides a more efficient, secure, and scalable approach to managing connections to Azure HorizonDB flexible server databases, enhancing the performance and reliability of the application.
+Overall, deploying PgBouncer in an application server provides a more efficient, secure, and scalable approach to managing connections to Azure HorizonDB databases, enhancing the performance and reliability of the application.
 
 **Limitations:**
 
 - **Single point of failure:** If PgBouncer is deployed as a single instance on the application server, it becomes a potential single point of failure. If the PgBouncer instance goes down, it can disrupt the entire database connection pool, causing downtime for the application. To mitigate Single point of failure, you can set up multiple PgBouncer instances behind a load balancer for high availability.
-- **Limited scalability:** PgBouncer scalability depends on the capacity of the server where it's deployed. If the application server reaches its connection limit, PgBouncer may become a bottleneck, limiting the ability to scale the application. You may need to distribute the connection load across multiple PgBouncer instances or consider alternative solutions like connection pooling at the application level.
+- **Limited scalability:** PgBouncer scalability depends on the capacity of the server where it's deployed. If the application server reaches its connection limit, PgBouncer might become a bottleneck, limiting the ability to scale the application. You might need to distribute the connection load across multiple PgBouncer instances or consider alternative solutions like connection pooling at the application level.
 - **Configuration complexity:** Configuring and fine-tuning PgBouncer can be complex, especially when considering factors such as connection limits, pool sizing, and load balancing. Administrators need to carefully tune the PgBouncer configuration to match the application's requirements and ensure optimal performance and stability.
 
 It's important to weigh these limitations against the benefits and evaluate whether PgBouncer is the right choice for your specific application and database setup.
@@ -77,15 +75,15 @@ Deploying PgBouncer in an AKS sidecar tightly couples the application and sideca
 
 Microsoft has published a **PgBouncer** sidecar proxy image in Microsoft container registry.
 
-Refer [this](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-on-azure/ba-p/3633043) for more details.
+Refer [this](https://techcommunity.microsoft.com/blog/adforpostgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-on-azure-kubernetes-serv/3633043) for more details.
 
-:::image type="content" source="./media/concepts-connection-pooling-best-practices/sidecar-proxy.png" alt-text="Diagram for App co-location on Sidecar.":::
+:::image type="content" source="media/concepts-connection-pooling-best-practices/sidecar-proxy.png" alt-text="Diagram for App co-location on Sidecar." lightbox="media/concepts-connection-pooling-best-practices/sidecar-proxy.png" :::
 
 Some of the key benefits & limitations of this deployment method are:
 
 **Benefits:**
 
-- **Reduced Latency:** By deploying **PgBouncer** as an AKS sidecar, communication between the primary application and the connection pooler is seamless and efficient due to their proximity. Deploying  PgBouncer an AKS sidecar minimizes latency and ensures smooth and swift interactions.
+- **Reduced Latency:** By deploying **PgBouncer** as an AKS sidecar, communication between the primary application and the connection pooler is seamless and efficient due to their proximity. Deploying PgBouncer an AKS sidecar minimizes latency and ensures smooth and swift interactions.
 - **Simplified Management and Deployment:** The tight coupling of **PgBouncer** with the application container simplifies the management and deployment process. Both components are tightly integrated, allowing for easier administration and seamless coordination.
 - **High Availability and Connection Resiliency:** If an application container failure or restart, the **PgBouncer** sidecar container closely follows, ensuring high availability. This setup guarantees connection resiliency and maintains predictable performance even during failovers, contributing to a reliable and robust system.
 
@@ -93,9 +91,9 @@ By considering PgBouncer as an AKS sidecar, you can use these advantages to enha
 
 **Limitations:**
 
-- **Connection Performance Issues:** Large-scale applications that utilize thousands of pods, each running sidecar PgBouncer, may encounter potential challenges related to database connection exhaustion. This situation can result in performance degradation and service disruptions. Deploying a sidecar PgBouncer for each pod increases the number of concurrent connections to the database server, which can exceed its capacity. As a result, the database may struggle to handle the high volume of incoming connections, may lead to performance issues such as increased response times or even service outages.
+- **Connection Performance Issues:** Large-scale applications that utilize thousands of pods, each running sidecar PgBouncer, might encounter potential challenges related to database connection exhaustion. This situation can result in performance degradation and service disruptions. Deploying a sidecar PgBouncer for each pod increases the number of concurrent connections to the database server, which can exceed its capacity. As a result, the database might struggle to handle the high volume of incoming connections, might lead to performance issues such as increased response times or even service outages.
 - **Complex Deployment:** The utilization of the sidecar pattern introduces a level of complexity to the deployment process, as it involves running two containers within the same pod. This can potentially complicate troubleshooting and debugging activities, requiring extra effort to identify and resolve issues.
-- **Scaling Challenges:** It's important to note that the sidecar pattern may not be the ideal choice for applications that demand high scalability. The inclusion of a sidecar container can impose more resource requirements, potentially limiting the number of pods that can be effectively created and managed.
+- **Scaling Challenges:** It's important to note that the sidecar pattern might not be the ideal choice for applications that demand high scalability. The inclusion of a sidecar container can impose more resource requirements, potentially limiting the number of pods that can be effectively created and managed.
 
 While considering this sidecar pattern, it's crucial to carefully assess the trade-offs between deployment complexity and scalability requirements to determine the most appropriate approach for your specific application scenario.
 
@@ -107,26 +105,25 @@ When utilizing this approach, PgBouncer is deployed as a centralized service, in
 
 **PgBouncer** connection proxy is set up between the application and database layer behind an Azure Load Balancer as shown in the image. In this pattern multiple PgBouncer instances are deployed behind a load balancer as a service to mitigate single point of failure. This pattern is also suitable in scenarios where the application is running on a managed service like Azure App Services or Azure Functions and connecting to **PgBouncer** service for easy integration with your existing infrastructure.
 
-Refer [link](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy/ba-p/730555)  to install and set up PgBouncer connection pooling proxy with Azure HorizonDB.
+Refer [link](https://techcommunity.microsoft.com/blog/adforpostgresql/steps-to-install-and-setup-pgbouncer-connection-pooling-proxy-with-azure-db-for-/730555) to install and set up PgBouncer connection pooling proxy with Azure HorizonDB.
 
-:::image type="content" source="./media/concepts-connection-pooling-best-practices/deploying-vm.png" alt-text="Diagram for App co-location on Vm with Load Balancer.":::
+:::image type="content" source="media/concepts-connection-pooling-best-practices/deploying-vm.png" alt-text="Diagram for App co-location on Vm with Load Balancer." lightbox="media/concepts-connection-pooling-best-practices/deploying-vm.png" :::
 
 Some of the key benefits & limitations of this deployment method are:
 
 **Benefits:**
 
-- **Removing Single Point of Failure:** Application connectivity may not be affected by the failure of a single PgBouncer VM, as there are several PgBouncer instances behind Azure Load Balancer.
+- **Removing Single Point of Failure:** Application connectivity might not be affected by the failure of a single PgBouncer VM, as there are several PgBouncer instances behind Azure Load Balancer.
 - **Seamless Integration with Managed Services:** If your application is hosted on a managed service platform such as Azure App Services or Azure Functions, deploying PgBouncer on a VM allows for easy integration with your existing infrastructure.
-- **Simplified Setup on Azure VM:** If you're already running your application on an Azure VM, setting up PgBouncer on the same VM is straightforward. deploying the  PgBouncer in VM ensures that PgBouncer is deployed in close proximity to your application, minimizing network latency and maximizing performance.
-- **Non-Intrusive Configuration:** By deploying PgBouncer on a VM, you can avoid modifying server parameters on your Azure HorizonDB flexible server instance. This is useful when you want to configure PgBouncer on an Azure HorizonDB flexible server instance. For example, changing the SSLMODE parameter to "required" on an Azure HorizonDB flexible server instance might cause certain applications that rely on SSLMODE=FALSE to fail. Deploying PgBouncer on a separate VM allows you to maintain the default server configuration while still using PgBouncer's benefits.
-
+- **Simplified Setup on Azure VM:** If you're already running your application on an Azure VM, setting up PgBouncer on the same VM is straightforward. deploying the PgBouncer in VM ensures that PgBouncer is deployed in close proximity to your application, minimizing network latency and maximizing performance.
+- **Non-Intrusive Configuration:** By deploying PgBouncer on a VM, you can avoid modifying server parameters on your Azure HorizonDB instance. This is useful when you want to configure PgBouncer on an Azure HorizonDB instance. For example, changing the SSLMODE parameter to "required" on an Azure HorizonDB instance might cause certain applications that rely on SSLMODE=FALSE to fail. Deploying PgBouncer on a separate VM allows you to maintain the default server configuration while still using PgBouncer's benefits.
 
 By considering these benefits, deploying PgBouncer on a VM offers a convenient and efficient solution for enhancing the performance and compatibility of your application running on Azure infrastructure.
 
 **Limitations:**
 
 - **Management overhead:** As **PgBouncer** is installed in VM, there might be management overhead to manage multiple configuration files. This makes it difficult to cope up with version upgrades, new releases, and product updates.
-- **Feature parity:** If you're migrating from traditional PostgreSQL to an Azure HorizonDB flexible server instance and using **PgBouncer**, there might be some features gaps. For example, lack of md5 support in Azure HorizonDB.
+- **Feature parity:** If you're migrating from traditional PostgreSQL to an Azure HorizonDB instance and using **PgBouncer**, there might be some features gaps. For example, lack of md5 support in Azure HorizonDB.
 
 ### II. Centralized PgBouncer deployed as a service within AKS
 
@@ -136,13 +133,13 @@ By utilizing **PgBouncer** as a separate service, you can efficiently manage and
 
 **PgBouncer** sidecar proxy image published in Microsoft container registry can be used to create and deploy a service.
 
-:::image type="content" source="./media/concepts-connection-pooling-best-practices/centralized-aks.png" alt-text="Diagram for PgBouncer as a service within AKS.":::
+:::image type="content" source="media/concepts-connection-pooling-best-practices/centralized-aks.png" alt-text="Diagram for PgBouncer as a service within AKS." lightbox="media/concepts-connection-pooling-best-practices/centralized-aks.png" :::
 
 Some of the key benefits & limitations of this deployment method are:
 
 **Benefits:**
 
-- **Enhanced Reliability:** Deploying **PgBouncer** as a standalone service allows for configuration in a highly available manner. This improves the overall reliability of the connection pooling infrastructure, ensuring continuous availability even in the face of failures or disruptions. 
+- **Enhanced Reliability:** Deploying **PgBouncer** as a standalone service allows for configuration in a highly available manner. This improves the overall reliability of the connection pooling infrastructure, ensuring continuous availability even in the face of failures or disruptions.
 - **Optimal Resource Utilization:** If your application or the database server has limited resources, opting for a separate machine dedicated to running the **PgBouncer** service can be advantageous. By deploying **PgBouncer** on a machine with ample resources, you can ensure optimal performance and prevent resource contention issues.
 - **Centralized Connection Management:** When centralized management of database connections is a requirement, a standalone **PgBouncer** service provides a more streamlined approach. By consolidating connection management tasks into a centralized service, you can effectively monitor and control database connections across multiple applications, simplifying administration and ensuring consistency.
 
@@ -154,9 +151,9 @@ By considering **PgBouncer** as a standalone service within AKS, you can use the
 
 While **PgBouncer** running as a standalone service offers benefits such as centralized management and resource optimization, it's important to assess the impact of potential latency on your application's performance to ensure it aligns with your specific requirements.
 
-## 3. Built-in PgBouncer in Azure HorizonDB 
+## 3. Built-in PgBouncer in Azure HorizonDB
 
-Azure HorizonDB offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. This is offered as an optional service that can be enabled on a per-database server basis. PgBouncer runs in the same virtual machine as the Azure HorizonDB flexible server instance. As the number of connections increases beyond a few hundreds or thousand, Azure HorizonDB may encounter resource limitations. In such cases, built-in PgBouncer can provide a significant advantage by improving the management of idle and short-lived connections at the database server.
+Azure HorizonDB offers [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. This is offered as an optional service that can be enabled on a per-database server basis. PgBouncer runs in the same virtual machine as the Azure HorizonDB instance. As the number of connections increases beyond a few hundreds or thousand, Azure HorizonDB might encounter resource limitations. In such cases, built-in PgBouncer can provide a significant advantage by improving the management of idle and short-lived connections at the database server.
 
 Refer link to enable and set up PgBouncer connection pooling in Azure HorizonDB.
 
@@ -164,13 +161,13 @@ Some of the key benefits & limitations of this deployment method are:
 
 **Benefits:**
 
-- **Seamless Configuration:** With the built-in **PgBouncer** in your Azure HorizonDB flexible server instance, there's no need for a separate installation or complex setup. It can be easily configured directly from the server parameters, ensuring a hassle-free experience.
+- **Seamless Configuration:** With the built-in **PgBouncer** in your Azure HorizonDB instance, there's no need for a separate installation or complex setup. It can be easily configured directly from the server parameters, ensuring a hassle-free experience.
 - **Managed Service Convenience:** As a managed service, users can enjoy the advantages of other Azure managed services. This includes automatic updates, eliminating the need for manual maintenance and ensuring that **PgBouncer** stays up to date with the latest features and security patches.
-- **Public and Private Connection Support:** The built-in **PgBouncer** in your Azure HorizonDB flexible server instance provides support for both public and private connections. This allows users to establish secure connections over private networks or connect externally, depending on their specific requirements.
+- **Public and Private Connection Support:** The built-in **PgBouncer** in your Azure HorizonDB instance provides support for both public and private connections. This allows users to establish secure connections over private networks or connect externally, depending on their specific requirements.
 - **High Availability (HA):** In the event of a failover, where a standby server is promoted to the primary role, **PgBouncer** seamlessly restarts on the newly promoted standby without any changes required to the application connection string. This ensures continuous availability and minimizes disruption to the application.
-- **Cost Efficient:** It's cost efficient as the users don’t need to pay for extra compute like VM or the containers, though it does have some CPU impact as it's another process running on the same machine.
+- **Cost Efficient:** It's cost efficient as the users don't need to pay for extra compute like VM or the containers, though it does have some CPU impact as it's another process running on the same machine.
 
-With built-in PgBouncer in an Azure HorizonDB flexible server instance, users can enjoy the convenience of simplified configuration, the reliability of a managed service, support for various pooling modes, and seamless high availability during failover scenarios.
+With built-in PgBouncer in an Azure HorizonDB instance, users can enjoy the convenience of simplified configuration, the reliability of a managed service, support for various pooling modes, and seamless high availability during failover scenarios.
 
 **Limitations:**
 
@@ -179,27 +176,18 @@ With built-in PgBouncer in an Azure HorizonDB flexible server instance, users ca
 
 We have discussed different ways of implementing PgBouncer and the table summarizes which deployment method to opt for:
 
+| **Selection Criteria** | **PgBouncer on App VM** | **PgBouncer on VM using ALB*** | **PgBouncer on AKS Sidecar** | **PgBouncer as a Service** | **Azure HorizonDB built-in PgBouncer** |
+| --- | :---: | :---: | :---: | :---: | :---: |
+| Simplified Management | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/red.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/red.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: |
+| HA | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: |
+| Containerized Apps | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: |
+| Reduced Network Overhead & Latency | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: |
+| Fine-grained control on monitoring and debugging | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/red.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/red.png"::: | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: |
+:::image type="icon" source="media/concepts-connection-pooling-best-practices/black.png"::: **Legend**
 
-
-|**Selection Criteria**|**PgBouncer on App VM**|**PgBouncer on VM using ALB***|**PgBouncer on AKS Sidecar**|**PgBouncer as a Service**|**Azure HorizonDB built-in PgBouncer**|
-|---|:-:|:-:|:-:|:-:|:-:|
-|Simplified Management|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/red.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/red.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|
-|HA|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|
-|Containerized Apps|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|
-|Reduced Network Overhead & Latency|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|
-|Fine grain control on monitoring and debugging|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/red.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/red.png":::|:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|
-
-
-
-:::image type="icon" source="./media/concepts-connection-pooling-best-practices/black.png"::: **Legend**
-
-
-|**Difficulty Level**|**Symbol**|
-|---|:-:|
-|Easy |:::image type="icon" source="./media/concepts-connection-pooling-best-practices/green.png":::|
-|Medium| :::image type="icon" source="./media/concepts-connection-pooling-best-practices/yellow.png":::|
-|Difficult |:::image type="icon" source="./media/concepts-connection-pooling-best-practices/red.png":::|
-
-
+| **Difficulty Level** | **Symbol** |
+| --- | :---: |
+| Easy | :::image type="icon" source="media/concepts-connection-pooling-best-practices/green.png"::: |
+| Medium | :::image type="icon" source="media/concepts-connection-pooling-best-practices/yellow.png"::: |
+| Difficult | :::image type="icon" source="media/concepts-connection-pooling-best-practices/red.png"::: |
 *ALB: Azure Load Balancer.
-

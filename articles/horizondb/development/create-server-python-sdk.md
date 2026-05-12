@@ -1,10 +1,10 @@
 ---
-title: "Quickstart: Create with Azure Libraries (SDK) for Python with HorizonDB"
+title: "Quickstart: Create with Azure Libraries (SDK) for Python in Azure HorizonDB"
 description: In this Quickstart, learn how to create an Azure HorizonDB server using Azure libraries (SDK) for Python.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: quickstart
@@ -101,8 +101,8 @@ Replace the following parameters with your data:
 
 - **subscription-id**: Your own subscription ID.
 - **resource-group**: Name the resource group you want to use. If it doesn't exist, the script creates a new one.
-- **server-name**: A unique name that identifies your Azure HorizonDB flexible server instance. The domain name `postgres.database.azure.com` is appended to the server name you provided. The server name must be at least three characters and at most 63 characters and can only contain lowercase letters, numbers, and hyphens.
-- **Location**: The Azure region where you want to create your Azure HorizonDB flexible server instance. It defines the geographical location where your server and its data reside. Choose a region close to your users for reduced latency. The location should be specified in the Azure region short names format, like `westus2`, `eastus`, or `northeurope`.
+- **server-name**: A unique name that identifies your Azure HorizonDB instance. The domain name `postgres.database.azure.com` is appended to the server name you provided. The server name must be at least three characters and at most 63 characters and can only contain lowercase letters, numbers, and hyphens.
+- **Location**: The Azure region where you want to create your Azure HorizonDB instance. It defines the geographical location where your server and its data reside. Choose a region close to your users for reduced latency. The location should be specified in the Azure region short names format, like `westus2`, `eastus`, or `northeurope`.
 - **admin-username**: The primary administrator username for the server. After the server has been created, you can create additional users.
 - **password**: A password for the primary administrator for the server. It must contain between 8 and 128 characters. Your password must contain characters from three categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
@@ -120,7 +120,7 @@ You can use the Python SDK, Azure portal, Azure CLI, Azure PowerShell, and vario
 
 ### Validate deployment with Python SDK
 
-Add the `check_server_created` function to your existing script to use the servers attribute of the [PostgreSQLManagementClient](/python/api/azure-mgmt-rdbms/azure.mgmt.rdbms.postgresql_flexibleservers.postgresqlmanagementclient?view=azure-python&preserve-view=true) instance to check if the Azure HorizonDB flexible server instance was created:
+Add the `check_server_created` function to your existing script to use the servers attribute of the [PostgreSQLManagementClient](/python/api/azure-mgmt-rdbms/azure.mgmt.rdbms.postgresql_flexibleservers.postgresqlmanagementclient?view=azure-python&preserve-view=true) instance to check if the Azure HorizonDB instance was created:
 
 ```python
 def check_server_created(subscription_id, resource_group, server_name):
@@ -186,11 +186,11 @@ if __name__ == "__main__":
 
 ## Clean up resources
 
-If you no longer need the Azure HorizonDB flexible server instance, you can delete it and the associated resource group using either the Portal, Python SDK, or Azure CLI.
+If you no longer need the Azure HorizonDB instance, you can delete it and the associated resource group using either the Portal, Python SDK, or Azure CLI.
 
 ### Use Python SDK to delete the instance
 
-Create a 'delete_server.py' file to delete the Azure HorizonDB flexible server instance that was created.
+Create a 'delete_server.py' file to delete the Azure HorizonDB instance that was created.
 
 ### [Python](#tab/Python)
 
@@ -222,4 +222,4 @@ az postgres flexible-server delete \
 
 ## Related content
 
-- [Create an Azure HorizonDB](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)

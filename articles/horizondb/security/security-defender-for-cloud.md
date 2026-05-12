@@ -1,10 +1,10 @@
 ---
-title: Microsoft Defender for Cloud
+title: Microsoft Defender for Cloud in Azure HorizonDB
 description: Learn how to use Microsoft Defender for Cloud to secure Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -38,12 +38,12 @@ To get alerts from the Microsoft Defender plan, you'll first need to **enable it
 
 1. Select Enable in the right pane.
 
-    :::image type="content" source="media/security-defender-for-cloud/defender-for-cloud-azure-portal-postgresql.png" alt-text="screenshot of enable page.":::
+   :::image type="content" source="media/security-defender-for-cloud/defender-for-cloud-azure-portal-postgresql.png" alt-text="screenshot of enable page." lightbox="media/security-defender-for-cloud/defender-for-cloud-azure-portal-postgresql.png" :::
 
-    > [!NOTE]  
-    > If you have the "open-source relational databases" feature enabled in your Microsoft Defender plan, you'll observe that Microsoft Defender is automatically enabled by default for your Azure HorizonDB  resource.
+   > [!NOTE]  
+   > If you have the "open-source relational databases" feature enabled in your Microsoft Defender plan, you'll observe that Microsoft Defender is automatically enabled by default for your Azure HorizonDB resource.
 
 ## Related content
 
-- [System assigned managed identity](security-configure-managed-identities-system-assigned.md)
-- [User assigned managed identity](security-configure-managed-identities-user-assigned.md)
+- [System assigned managed identity in Azure HorizonDB](security-configure-managed-identities-system-assigned.md)
+- [User assigned managed identities in Azure HorizonDB](security-configure-managed-identities-user-assigned.md)

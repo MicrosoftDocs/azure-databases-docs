@@ -1,16 +1,16 @@
 ---
-title: Prepay for compute resources with reserved capacity
+title: Prepay for Compute Resources with Reserved Capacity in Azure HorizonDB
 description: Learn about reserved compute pricing and how to purchase Azure HorizonDB reserved capacity.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 12/16/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Prepay for Azure HorizonDB  compute resources with reserved capacity
+# Prepay for compute resources with reserved capacity in Azure HorizonDB
 
 Azure HorizonDB helps you save money by prepaying for compute resources, compared to pay-as-you-go prices. With reserved capacity, you make an upfront commitment on Azure HorizonDB for a one-year or three-year period. This commitment gives you a significant discount on the compute costs.
 
@@ -18,7 +18,7 @@ To purchase Azure HorizonDB reserved capacity, you need to specify the Azure reg
 
 ## How instance reservations work
 
-You don't need to assign the reservation to specific Azure HorizonDB. An already running Azure HorizonDB flexible server instance (or one that's newly deployed) automatically gets the benefit of reserved pricing.
+You don't need to assign the reservation to specific Azure HorizonDB. An already running Azure HorizonDB instance (or one that's newly deployed) automatically gets the benefit of reserved pricing.
 
 By purchasing a reservation, you're prepaying for the compute costs for one or three years. As soon as you buy a reservation, the compute charges that match the reservation attributes are no longer charged at the pay-as-you go rates.
 
@@ -26,9 +26,9 @@ A reservation doesn't cover software, networking, or storage charges associated 
 
 You can buy reserved capacity in the [Azure portal](https://portal.azure.com/). Pay for the reservation [up front or with monthly payments](/azure/cost-management-billing/reservations/prepare-buy-reservation). To buy the reserved capacity:
 
-* To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
-* For EA subscriptions, **Add Reserved Instances** must be turned on in the [EA portal](https://ea.azure.com/). Or, if that setting is off, you must be an EA admin on the subscription.
-* For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase reserved capacity.
+- To buy a reservation, you must have owner role or reservation purchaser role on an Azure subscription.
+- For EA subscriptions, **Add Reserved Instances** must be turned on in the [EA portal](https://login.microsoftonline.com/common/oauth2/authorize?client_id=0dbcecc1-8b29-410a-b222-b4f5241c6d0f&redirect_uri=https%3A%2F%2Fea.azure.com&response_type=code%20id_token&scope=openid%20profile&state=OpenIdConnect.AuthenticationProperties%3DpF8SYRSxQNVu-uwYm2JDSzbe4Ajf106jP6pOCJ33RwkBZT0eaMeJWYfcFtg-mDEA3CkAlaYXbQGOJNJWVdijlEaW4eTTbimNpJ8e2KCgcD4JvbOBpz4RMIUlzvQgpMtnLlVpT_PNYme731fI4K-jWhtUiiTQ1Q9X0e0Ggsv31tA&response_mode=form_post&nonce=639135917587409409.YzYxOWVkZWUtZGUzOS00MzUyLWE5ZTktNGZhOTczMGExZDI1YmVkYjM0YTctOTdiZi00NjU3LThjMTItMDc1MGU4NTYzNzQ5&x-client-SKU=ID_NET472&x-client-ver=8.15.0.0). Or, if that setting is off, you must be an EA admin on the subscription.
+- For the Cloud Solution Provider (CSP) program, only the admin agents or sales agents can purchase reserved capacity.
 
 For details on how enterprise customers and pay-as-you-go customers are charged for reservation purchases, see [understand Azure reservation usage for your Enterprise Agreement enrollment](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea) and [understand Azure reservation usage for your pay-as-you-go subscription](/azure/cost-management-billing/reservations/understand-reserved-instance-usage).
 
@@ -44,52 +44,54 @@ You can save up to 65% on compute costs with reserved instances. To find the dis
 
 Reserved instances help you manage your workloads, budget, and forecast better with an upfront payment for a one-year or three-year term. You can also exchange or cancel reservations as business needs change.
 
-## Determining the right server size before purchase
+<a id="determining-the-right-server-size-before-purchase"></a>
+
+## Determine the right server size before purchase
 
 You should base the size of a reservation on the total amount of compute that the existing or soon-to-be-deployed servers use within a specific region at the same performance tier and hardware generation.
 
 For example, suppose that:
 
-* You're running one general-purpose Gen5 32-vCore PostgreSQL database, and two memory-optimized Gen5 16-vCore PostgreSQL databases.
-* Within the next month, you plan to deploy another general-purpose Gen5 8-vCore database server and one memory-optimized Gen5 32-vCore database server.
-* You know that you need these resources for at least one year.
+- You're running one general-purpose Gen5 32-vCore PostgreSQL database, and two memory-optimized Gen5 16-vCore PostgreSQL databases.
+- Within the next month, you plan to deploy another general-purpose Gen5 8-vCore database server and one memory-optimized Gen5 32-vCore database server.
+- You know that you need these resources for at least one year.
 
 In this case, you should purchase both:
 
-* A 40-vCore (32 + 8), one-year reservation for single-database general-purpose Gen5
-* A 64-vCore (2x16 + 32) one-year reservation for single-database memory-optimized Gen5
+- A 40-vCore (32 + 8), one-year reservation for single-database general-purpose Gen5
+- A 64-vCore (2x16 + 32) one-year reservation for single-database memory-optimized Gen5
 
-## Procedure for buying Azure HorizonDB  reserved capacity
+## Procedure for buying Azure HorizonDB reserved capacity
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Select **All services** > **Reservations**.
-3. Select **Add**. On the **Purchase reservations** pane, select **Azure HorizonDB** to purchase a new reservation for your databases.
-4. Fill in the required fields. Existing or new databases that match the attributes you select qualify to get the reserved capacity discount. The actual number of your Azure HorizonDB that get the discount depends on the selected scope and quantity.
+1. Select **All services** > **Reservations**.
+1. Select **Add**. On the **Purchase reservations** pane, select **Azure HorizonDB** to purchase a new reservation for your databases.
+1. Fill in the required fields. Existing or new databases that match the attributes you select qualify to get the reserved capacity discount. The actual number of your Azure HorizonDB that get the discount depends on the selected scope and quantity.
 
-:::image type="content" source="media/concepts-reserved-pricing/postgresql-reserved-price.png" alt-text="Screenshot that shows an overview of reserved pricing.":::
+:::image type="content" source="media/concepts-reserved-pricing/postgresql-reserved-price.png" alt-text="Screenshot that shows an overview of reserved pricing." lightbox="media/concepts-reserved-pricing/postgresql-reserved-price.png" :::
 
 The following table describes the required fields.
 
 | Field | Description |
-| :------------ | :------- |
-| **Billing subscription**   | The subscription that you use to pay for the Azure HorizonDB reserved capacity.</br></br> The payment method on the subscription is charged the upfront costs for the  reserved capacity. The subscription type must be Enterprise Agreement (offer number: MS-AZR-0017P or MS-AZR-0148P) or an individual agreement with pay-as-you-go pricing (offer number: MS-AZR-0003P or MS-AZR-0023P).</br></br> For an EA subscription, the charges are deducted from the enrollment's Azure prepayment (previously called *monetary commitment*) balance or are charged as overage. For an individual subscription with pay-as-you-go pricing, the charges are billed to the credit card or invoice payment method on the subscription. |
-| **Scope** | The vCore reservation's scope can cover one subscription or multiple subscriptions (shared scope). If you select: </br></br>**Shared**, the vCore reservation discount is applied to Azure HorizonDB running in any subscriptions within your billing context. For enterprise customers, the shared scope is the enrollment and includes all subscriptions within the enrollment. For pay-as-you-go customers, the shared scope is all pay-as-you-go subscriptions that the account administrator created. </br></br>**Management group**, the reservation discount is applied to Azure HorizonDB running in any subscriptions that are a part of both the management group and the billing scope. </br></br>**Single subscription**, the vCore reservation discount is applied to Azure HorizonDB in this subscription. </br></br>**Single resource group**, the reservation discount is applied to Azure HorizonDB in the selected subscription and the selected resource group within that subscription.|
-| **Region** | The Azure region that the reserved capacity covers.|
-| **Deployment Type** | The Azure HorizonDB flexible server resource type that you want to buy the reservation for.|
-| **Performance Tier** | The service tier for the Azure HorizonDB.|
-| **Term** | One year.|
-| **Quantity** | The amount of compute resources being purchased within the  reserved capacity. The quantity represents the number of vCores in the selected Azure region and performance tier that are being reserved and that get the billing discount. For example, if you're running or planning to run Azure HorizonDB with the total compute capacity of Gen5 16 vCores in the East US region, you would specify the quantity as 16 to maximize the benefit for all servers.|
+| --- | --- |
+| **Billing subscription** | The subscription that you use to pay for the Azure HorizonDB reserved capacity.<br /><br />The payment method on the subscription is charged the upfront costs for the reserved capacity. The subscription type must be Enterprise Agreement (offer number: MS-AZR-0017P or MS-AZR-0148P) or an individual agreement with pay-as-you-go pricing (offer number: MS-AZR-0003P or MS-AZR-0023P).<br /><br />For an EA subscription, the charges are deducted from the enrollment's Azure prepayment (previously called *monetary commitment*) balance or are charged as overage. For an individual subscription with pay-as-you-go pricing, the charges are billed to the credit card or invoice payment method on the subscription. |
+| **Scope** | The vCore reservation's scope can cover one subscription or multiple subscriptions (shared scope). If you select:<br /><br />**Shared**, the vCore reservation discount is applied to Azure HorizonDB running in any subscriptions within your billing context. For enterprise customers, the shared scope is the enrollment and includes all subscriptions within the enrollment. For pay-as-you-go customers, the shared scope is all pay-as-you-go subscriptions that the account administrator created.<br /><br />**Management group**, the reservation discount is applied to Azure HorizonDB running in any subscriptions that are a part of both the management group and the billing scope.<br /><br />**Single subscription**, the vCore reservation discount is applied to Azure HorizonDB in this subscription.<br /><br />**Single resource group**, the reservation discount is applied to Azure HorizonDB in the selected subscription and the selected resource group within that subscription. |
+| **Region** | The Azure region that the reserved capacity covers. |
+| **Deployment Type** | The Azure HorizonDB resource type that you want to buy the reservation for. |
+| **Performance Tier** | The service tier for the Azure HorizonDB. |
+| **Term** | One year. |
+| **Quantity** | The amount of compute resources being purchased within the reserved capacity. The quantity represents the number of vCores in the selected Azure region and performance tier that are being reserved and that get the billing discount. For example, if you're running or planning to run Azure HorizonDB with the total compute capacity of Gen5 16 vCores in the East US region, you would specify the quantity as 16 to maximize the benefit for all servers. |
 
 ## API support for reserved instances
 
 Use Azure APIs to programmatically get information for your organization about Azure service or software reservations. For example, use the APIs to:
 
-* Find reservations to buy.
-* Buy a reservation.
-* View purchased reservations.
-* View and manage reservation access.
-* Split or merge reservations.
-* Change the scope of reservations.
+- Find reservations to buy.
+- Buy a reservation.
+- View purchased reservations.
+- View and manage reservation access.
+- Split or merge reservations.
+- Change the scope of reservations.
 
 For more information, see [APIs for Azure reservation automation](/azure/cost-management-billing/reservations/reservation-apis).
 
@@ -108,10 +110,6 @@ You receive an email notification 30 days before a reservation expires and anoth
 ## Support
 
 If you have questions or need help, [create a support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-## Next steps
-
-The vCore reservation discount is applied automatically to the Azure HorizonDB that match the reserved capacity scope and attributes. You can update the scope of the reserved capacity through the Azure portal, PowerShell, Azure CLI, or REST APIs.
 
 ## Related content
 

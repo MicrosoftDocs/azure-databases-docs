@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### hot_standby
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `on` |
 | Parameter type | read-only |
 | Documentation | [hot_standby](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-HOT-STANDBY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### hot_standby_feedback
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [hot_standby_feedback](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-HOT-STANDBY-FEEDBACK) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_standby_archive_delay
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [max_standby_archive_delay](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-MAX-STANDBY-ARCHIVE-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### max_standby_streaming_delay
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [max_standby_streaming_delay](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-MAX-STANDBY-STREAMING-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### primary_conninfo
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [primary_conninfo](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-PRIMARY-CONNINFO) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### primary_slot_name
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [primary_slot_name](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-PRIMARY-SLOT-NAME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### recovery_min_apply_delay
 
@@ -120,11 +98,7 @@ ms.custom: automatically generated
 | Allowed values | `0` |
 | Parameter type | read-only |
 | Documentation | [recovery_min_apply_delay](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-RECOVERY-MIN-APPLY-DELAY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### synchronized_standby_slots
 
@@ -137,11 +111,7 @@ ms.custom: automatically generated
 | Allowed values | |
 | Parameter type | read-only |
 | Documentation | [synchronized_standby_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNCHRONIZED-STANDBY-SLOTS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### sync_replication_slots
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [sync_replication_slots](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-SYNC-REPLICATION-SLOTS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_receiver_create_temp_slot
 
@@ -171,11 +137,7 @@ ms.custom: automatically generated
 | Allowed values | `off` |
 | Parameter type | read-only |
 | Documentation | [wal_receiver_create_temp_slot](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-WAL-RECEIVER-CREATE-TEMP-SLOT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_receiver_status_interval
 
@@ -188,11 +150,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483` |
 | Parameter type | dynamic |
 | Documentation | [wal_receiver_status_interval](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-WAL-RECEIVER-STATUS-INTERVAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_receiver_timeout
 
@@ -205,11 +163,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [wal_receiver_timeout](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-WAL-RECEIVER-TIMEOUT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### wal_retrieve_retry_interval
 
@@ -222,9 +176,4 @@ ms.custom: automatically generated
 | Allowed values | `5000` |
 | Parameter type | read-only |
 | Documentation | [wal_retrieve_retry_interval](https://www.postgresql.org/docs/17/runtime-config-replication.html#GUC-WAL-RETRIEVE-RETRY-INTERVAL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

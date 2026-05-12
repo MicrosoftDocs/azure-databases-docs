@@ -1,16 +1,16 @@
 ---
-title: Extended Support
+title: Extended Support in Azure HorizonDB
 description: Describes the extended support offering for Postgres major versions for Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 03/09/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Azure HorizonDB extended support
+# Extended support in Azure HorizonDB
 
 To help you maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure HorizonDB.
 
@@ -71,11 +71,11 @@ A: Yes, but after the grace period, you're automatically enrolled in paid Extend
 
 **Q: Will I be charged for Extended Support if my server is stopped, failed, or not running??**
 
-A: No. Extended support billing charges apply only to servers that are in a Succeeded (running) state. If a server is stopped, deleted, or in a failed provisioning state, extended support charges will not be applied for that period. Billing automatically resumes once the server returns to a succeeded state and continues running an end‑of‑life engine version under extended support.
+A: No. Extended support billing charges apply only to servers that are in a Succeeded (running) state. If a server is stopped, deleted, or in a failed provisioning state, extended support charges will not be applied for that period. Billing automatically resumes once the server returns to a succeeded state and continues running an end-of-life engine version under extended support.
 
 **Q: Can my applications break during a major version upgrade?**
 
-A: PostgreSQL major version upgrades can introduce changes that might affect your application - such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. Validate upgrades in a nonproduction environment before applying them in production. For more details, review the key considerations and limitations in [Major Version Upgrades](./concepts-major-version-upgrade.md) docs.
+A: PostgreSQL major version upgrades can introduce changes that might affect your application - such as deprecated configuration parameters, incompatible extensions, or SQL behavior differences. Validate upgrades in a nonproduction environment before applying them in production. For more details, review the key considerations and limitations in [Major version upgrades in Azure HorizonDB](concepts-major-version-upgrade.md) docs.
 
 [!INCLUDE [supported-upgrades](includes/supported-upgrades.md)]
 

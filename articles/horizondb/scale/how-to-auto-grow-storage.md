@@ -1,19 +1,19 @@
 ---
-title: Configure Storage Autogrow
-description: This article describes how you can configure storage autogrow in an Azure HorizonDB flexible server instance.
+title: Configure Storage Autogrow in Azure HorizonDB
+description: This article describes how you can configure storage autogrow in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 07/03/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure HorizonDB flexible server instance.
+# customer intent: As a user, I want to learn how to configure storage autogrow in Azure HorizonDB.
 ---
 
-# Configure storage autogrow
+# Configure storage autogrow in Azure HorizonDB
 
 This article describes how you can configure Azure HorizonDB server storage to grow without affecting the workload.
 
@@ -21,7 +21,7 @@ For servers with more than 1 TiB of provisioned storage, the storage autogrow me
 
 As an illustration, take a server with a storage capacity of 2 TiB (greater than 1 TiB). In this case, the autogrow limit is set at 64 GiB. This choice is made because 64 GiB is the smaller value when compared to 10% of 2 TiB, which is roughly 204.8 GiB. In contrast, for a server with a storage size of 128 GiB (less than 1 TiB), the autogrow feature activates when there's only 25.8 GiB of space left. This activation is based on the 20% threshold of the total allocated storage (128 GiB), which is smaller than 64 GiB.
 
-> [!NOTE]
+> [!NOTE]  
 > Azure HorizonDB only supports the storage autogrow feature on storage type Premium SSD.
 >
 > Storage always doubles in size for premium disk SSD, and that doubles the storage cost.
@@ -34,23 +34,23 @@ As an illustration, take a server with a storage capacity of 2 TiB (greater than
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
 1. In the resource menu, under the **Settings** section, select **Compute + storage**.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/compute-storage-disabled.png" alt-text="Screenshot the Compute + storage page." lightbox="media/how-to-auto-grow-storage/compute-storage-disabled.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/compute-storage-disabled.png" alt-text="Screenshot the Compute + storage page." lightbox="media/how-to-auto-grow-storage/compute-storage-disabled.png":::
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
 
 1. Select **Save** to apply the changes.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
 
 1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
 
 ### [CLI](#tab/cli-enable-existing-server)
 
@@ -71,23 +71,23 @@ az postgres flexible-server update \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB flexible server instance.
+1. Select your Azure HorizonDB instance.
 
 1. In the resource menu, under the **Settings** section, select **Compute + storage**.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/compute-storage-enabled.png" alt-text="Screenshot the Compute + storage page." lightbox="media/how-to-auto-grow-storage/compute-storage-enabled.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/compute-storage-enabled.png" alt-text="Screenshot the Compute + storage page." lightbox="media/how-to-auto-grow-storage/compute-storage-enabled.png":::
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png" alt-text="Screenshot showing how to disable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png" alt-text="Screenshot showing how to disable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server.png":::
 
 1. Select **Save** to apply the changes.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after disabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after disabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png":::
 
 1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
 
 ### [CLI](#tab/cli-disable-existing-server)
 
@@ -108,13 +108,13 @@ az postgres flexible-server update \
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. During provisioning of a new Azure HorizonDB flexible server instance, in the **Compute + storage** section, select **Configure server**.
+1. During provisioning of a new Azure HorizonDB instance, in the **Compute + storage** section, select **Configure server**.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png" alt-text="Screenshot showing how to configure server compute and storage during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png" alt-text="Screenshot showing how to configure server compute and storage during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/create-server-storage-auto-grow.png":::
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png" alt-text="Screenshot showing how to enable storage autogrow during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png":::
+   :::image type="content" source="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png" alt-text="Screenshot showing how to enable storage autogrow during provisioning of a new Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/server-provisioning-storage-auto-grow.png":::
 
 ### [CLI](#tab/cli-enable-new-server)
 
@@ -127,7 +127,7 @@ az postgres flexible-server create \
   --storage-auto-grow disabled ...
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > The previous command needs to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the provisioned server.
 
 ---
@@ -140,7 +140,7 @@ az postgres flexible-server create \
 
 ## Frequently asked questions (FAQ)
 
-**Q. Does autogrow work with high WAL usage?  
+**Q. Does autogrow work with high WAL usage?
 
 A.No, it doesn't trigger in that case.
 
@@ -149,6 +149,6 @@ A. No, it relies on online disk scaling.
 
 ## Related content
 
-- [Scale storage performance](how-to-scale-storage-performance.md)
-- {[Storage options](../extensions/concepts-storage.md)}
+- [Scale storage performance in Azure HorizonDB](how-to-scale-storage-performance.md)
+- [Storage in Azure HorizonDB](../compute-storage/concepts-storage.md)
 - [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)

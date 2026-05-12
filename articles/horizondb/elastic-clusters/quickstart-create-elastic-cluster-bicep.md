@@ -1,18 +1,18 @@
 ---
-title: "Quickstart: Create elastic clusters with Bicep template"
-description: In this Quickstart, learn how to create an Azure HorizonDB flexible server instance with elastic clusters by using a Bicep template.
+title: "Quickstart: Create Elastic Clusters with Bicep Template in Azure HorizonDB"
+description: In this Quickstart, learn how to create an Azure HorizonDB instance with elastic clusters by using a Bicep template.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: quickstart
 ---
 
-# Quickstart: Use a Bicep template to create an elastic cluster with Azure HorizonDB
+# Quickstart: Use a Bicep template to create an elastic cluster in Azure HorizonDB
 
-Azure HorizonDB with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use a Bicep template to provision your Azure HorizonDB flexible server elastic clusters instance.
+Azure HorizonDB with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use a Bicep template to provision your Azure HorizonDB elastic clusters instance.
 
 [!INCLUDE [About Bicep](~/reusable-content/ce-skilling/azure/includes/resource-manager-quickstart-bicep-introduction.md)]
 
@@ -22,7 +22,7 @@ An Azure account with an active subscription. [Create one for free](https://azur
 
 ## Review the Bicep template
 
-An Azure HorizonDB flexible server elastic cluster instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
+An Azure HorizonDB elastic cluster instance is the parent resource for a distributed database within a region. It provides the scope for management policies that apply to the cluster: firewall, users, roles, and configurations.
 
 Create an `elastic-cluster-template.bicep` file and copy the following script into it.
 
@@ -123,37 +123,37 @@ az deployment group create `
 
 You're prompted to enter these values:
 
-- **clusterName**: enter a unique name that identifies your Azure HorizonDB flexible server elastic cluster instance. The domain name `postgres.database.azure.com` is appended to the cluster name you provide. The cluster name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
+- **clusterName**: enter a unique name that identifies your Azure HorizonDB elastic cluster instance. The domain name `postgres.database.azure.com` is appended to the cluster name you provide. The cluster name can contain only lowercase letters, numbers, and the hyphen (-) character. It must contain at least 3 through 63 characters.
 - **administratorLogin**: enter your own authentication account to use when you connect to the server. For example, `clusterAdmin`. The admin authentication name can't be `azure_superuser`, `azure_pg_admin`, `admin`, `administrator`, `root`, `guest`, or `public`. It can't start with `pg_`.
 - **administratorLoginPassword**: enter a new password for the server admin account. It must contain between 8 and 128 characters. Your password must contain characters from three of the following categories: English uppercase letters, English lowercase letters, numbers (0 through 9), and nonalphanumeric characters (!, $, #, %, etc.).
 
 ## Review deployed resources
 
-Follow these steps to verify if your Azure HorizonDB flexible server elastic cluster was created.
+Follow these steps to verify if your Azure HorizonDB elastic cluster was created.
 
 #### [Azure portal](#tab/portal)
 
-1. In the [Azure portal](https://portal.azure.com), search for and select **Azure HorizonDB flexible servers**.
+1. In the [Azure portal](https://portal.azure.com), search for and select **Azure HorizonDBs**.
 1. In the database list, select your new server to view the **Overview** page to manage your elastic cluster.
 
 #### [CLI](#tab/CLI)
 
-You have to enter the name and the resource group of the new elastic cluster to view details about your Azure HorizonDB flexible server elastic cluster.
+You have to enter the name and the resource group of the new elastic cluster to view details about your Azure HorizonDB elastic cluster.
 
 ```azurecli-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB flexible server cluster exists"
-$clusterName = Read-Host -Prompt "Enter your Azure HorizonDB flexible server elastic cluster name"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB cluster exists"
+$clusterName = Read-Host -Prompt "Enter your Azure HorizonDB elastic cluster name"
 az resource show --resource-group $resourcegroupName --name $clusterName --resource-type "Microsoft.DBforPostgreSQL/flexibleServers"
 ```
 
 ---
 
-> [!NOTE]
+> [!NOTE]  
 > Keep this resource group and the elastic cluster if you want to use it to continue with the next suggested steps listed in the [Related content](#related-content) section. The next steps show you how to use elastic clusters with different application sharding models and designs.
 
 ## Clean up resources
 
-When you're finished with your elastic cluster environment, delete your elastic cluster resource. 
+When you're finished with your elastic cluster environment, delete your elastic cluster resource.
 
 To delete the elastic cluster, follow these steps:
 
@@ -168,16 +168,14 @@ In the [portal](https://portal.azure.com), select the elastic cluster you want t
 #### [CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-
-$resourceGroupName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB flexible server exists"
-$clusterName = Read-Host -Prompt "Enter your Azure HorizonDB flexible server elastic cluster name"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group where the Azure HorizonDB exists"
+$clusterName = Read-Host -Prompt "Enter your Azure HorizonDB elastic cluster name"
 az resource delete --resource-type Microsoft.DBforPostgreSQL/flexibleServers `
 --name $clusterName --resource-group $resourceGroupName
-
 ```
 
 ---
 
 ## Related content
 
-- [Design multitenant database with elastic clusters](../configure-maintain/tutorial-multitenant-database.md).
+- [Tutorial: Design a multitenant database with elastic clusters in Azure HorizonDB](../configure-maintain/tutorial-multitenant-database.md)

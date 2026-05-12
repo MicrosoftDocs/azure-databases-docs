@@ -1,10 +1,10 @@
 ---
-title: Autonomous Tuning
-description: This article describes the autonomous tuning feature available in an Azure HorizonDB flexible server instance.
+title: Autonomous Tuning in Azure HorizonDB
+description: This article describes the autonomous tuning feature in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/27/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -12,14 +12,14 @@ ms.custom:
   - references_regions
   - build-2024
   - ignite-2024
-# customer intent: As a user, I want to learn about the autonomous tuning feature available in an Azure HorizonDB, how does it work and what benefits it provides.
+# customer intent: As a user, I want to learn about the autonomous tuning feature available in Azure HorizonDB, how does it work and what benefits it provides.
 ---
 
-# Autonomous tuning
+# Autonomous tuning in Azure HorizonDB
 
-Autonomous tuning is a feature in your Azure HorizonDB flexible server instance that analyzes queries traced of your workload and provides recommendations to improve the performance of those queries.
+Autonomous tuning is a feature in your Azure HorizonDB instance that analyzes queries traced of your workload and provides recommendations to improve the performance of those queries.
 
-It's a built-in offering in your Azure HorizonDB flexible server instance, which builds on top of [query store](concepts-query-store.md) functionality. Autonomous tuning analyzes the workload tracked by query store, and produces index or table recommendations to improve the performance of the analyzed workload. It can produce recommendations to create new indexes, eliminate duplicate or unused indexes, analyze tables that have no statistics or outdated statistics, or vacuum bloated tables.
+It's a built-in offering in your Azure HorizonDB instance, which builds on top of [query store](concepts-query-store.md) functionality. Autonomous tuning analyzes the workload tracked by query store, and produces index or table recommendations to improve the performance of the analyzed workload. It can produce recommendations to create new indexes, eliminate duplicate or unused indexes, analyze tables that have no statistics or outdated statistics, or vacuum bloated tables.
 
 - [Identify which indexes are beneficial](#create-index-recommendations) to create because they could significantly improve the queries analyzed during an autonomous tuning session.
 - [Identify indexes that are exact duplicates and can be eliminated](#drop-duplicate-indexes).
@@ -57,7 +57,7 @@ Potential recommendations aim to improve the performance of these types of queri
 - Queries with sorting (queries with an ORDER BY clause).
 - Queries combining filters and sorting.
 
-> [!NOTE]
+> [!NOTE]  
 > The only type of indexes the system currently recommends is [B-Tree](https://www.postgresql.org/docs/current/indexes-types.html#INDEXES-TYPES-BTREE).
 
 If a query references one column of a table and that table has no statistics, doesn't produce any index recommendations to improve its execution. However, it generates a recommendation to analyze the table.
@@ -70,7 +70,7 @@ For an index recommendation to be emitted, the tuning engine must estimate that 
 
 Likewise, all index recommendations are checked to ensure that they don't introduce regression on any single query in that workload of a factor specified with `index_tuning.max_regression_factor`.
 
-> [!NOTE]
+> [!NOTE]  
 > `index_tuning.min_improvement_factor` and `index_tuning.max_regression_factor` both refer to cost of query plans, not to their duration or the resources they consume during execution.
 
 All the parameters mentioned in the previous paragraphs, their default values and valid ranges are described in [configuration options](#configuring-autonomous-tuning).
@@ -148,13 +148,15 @@ Recommendations for analyzing a table identify those tables that:
 
 Recommendations for vacuuming a table identify those tables that are bloated. These recommendations are only produced when `autovacuum_enabled` isn't set to `off` at server level when the workload is analyzed.
 
-## Configuring autonomous tuning
+<a id="configuring-autonomous-tuning"></a>
+
+## Configure autonomous tuning
 
 Autonomous tuning can be enabled, disabled, and configured through a set of parameters that control its behavior.
 
 When autonomous tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
 
-Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM don't have an effect on that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
+If you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM don't have an effect on that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
 
 The following options are available for configuring autonomous tuning parameters:
 
@@ -177,7 +179,7 @@ If you use the CLI commands `az postgres flexible-server autonomous-tuning show-
 
 ## Information produced by autonomous tuning
 
-[Use autonomous tuning recommendations](how-to-get-apply-recommendations-from-autonomous-tuning.md) describes in full detail how to obtain and use the recommendations produced by autonomous tuning.
+[Use autonomous tuning recommendations in Azure HorizonDB](how-to-get-apply-recommendations-from-autonomous-tuning.md) describes in full detail how to obtain and use the recommendations produced by autonomous tuning.
 
 ## Limitations and supportability
 
@@ -246,6 +248,6 @@ Following is a list of query types for which autonomous tuning don't generate CR
 
 ## Related content
 
-- [Query store](concepts-query-store.md).
-- [Configure autonomous tuning](how-to-configure-autonomous-tuning.md).
-- [Use autonomous tuning recommendations](how-to-get-apply-recommendations-from-autonomous-tuning.md).
+- [Query store in Azure HorizonDB](concepts-query-store.md)
+- [Configure autonomous tuning in Azure HorizonDB](how-to-configure-autonomous-tuning.md)
+- [Use autonomous tuning recommendations in Azure HorizonDB](how-to-get-apply-recommendations-from-autonomous-tuning.md)

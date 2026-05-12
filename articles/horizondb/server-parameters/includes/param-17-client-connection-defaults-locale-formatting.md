@@ -2,12 +2,16 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
-### client_encoding
+
+<a id="client_encoding"></a>
+
+### client_encod
 
 | Attribute | Value |
 | --- | --- |
@@ -18,11 +22,7 @@ ms.custom: automatically generated
 | Allowed values | `BIG5,EUC_CN,EUC_JP,EUC_JIS_2004,EUC_KR,EUC_TW,GB18030,GBK,ISO_8859_5,ISO_8859_6,ISO_8859_7,ISO_8859_8,JOHAB,KOI8R,KOI8U,LATIN1,LATIN2,LATIN3,LATIN4,LATIN5,LATIN6,LATIN7,LATIN8,LATIN9,LATIN10,MULE_INTERNAL,SJIS,SHIFT_JIS_2004,SQL_ASCII,UHC,UTF8,WIN866,WIN874,WIN1250,WIN1251,WIN1252,WIN1253,WIN1254,WIN1255,WIN1256,WIN1257,WIN1258` |
 | Parameter type | dynamic |
 | Documentation | [client_encoding](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-CLIENT-ENCODING) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### DateStyle
 
@@ -35,11 +35,7 @@ ms.custom: automatically generated
 | Allowed values | `(ISO|POSTGRES|SQL|GERMAN)(, (DMY|MDY|YMD))?` |
 | Parameter type | dynamic |
 | Documentation | [DateStyle](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DATESTYLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### default_text_search_config
 
@@ -52,11 +48,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z._]+` |
 | Parameter type | dynamic |
 | Documentation | [default_text_search_config](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DEFAULT-TEXT-SEARCH-CONFIG) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### extra_float_digits
 
@@ -69,11 +61,7 @@ ms.custom: automatically generated
 | Allowed values | `-15-3` |
 | Parameter type | dynamic |
 | Documentation | [extra_float_digits](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-EXTRA-FLOAT-DIGITS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### icu_validation_level
 
@@ -86,11 +74,7 @@ ms.custom: automatically generated
 | Allowed values | `warning` |
 | Parameter type | read-only |
 | Documentation | [icu_validation_level](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-ICU-VALIDATION-LEVEL) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### IntervalStyle
 
@@ -103,11 +87,7 @@ ms.custom: automatically generated
 | Allowed values | `postgres,postgres_verbose,sql_standard,iso_8601` |
 | Parameter type | dynamic |
 | Documentation | [IntervalStyle](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-INTERVALSTYLE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### lc_messages
 
@@ -120,11 +100,7 @@ ms.custom: automatically generated
 | Allowed values | `en_US.utf8` |
 | Parameter type | read-only |
 | Documentation | [lc_messages](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LC-MESSAGES) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### lc_monetary
 
@@ -137,11 +113,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9._ -]+` |
 | Parameter type | dynamic |
 | Documentation | [lc_monetary](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LC-MONETARY) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### lc_numeric
 
@@ -154,11 +126,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9._ -]+` |
 | Parameter type | dynamic |
 | Documentation | [lc_numeric](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LC-NUMERIC) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### lc_time
 
@@ -171,11 +139,7 @@ ms.custom: automatically generated
 | Allowed values | `en_US.utf8` |
 | Parameter type | read-only |
 | Documentation | [lc_time](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LC-TIME) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### TimeZone
 
@@ -188,11 +152,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9/+_-]+` |
 | Parameter type | dynamic |
 | Documentation | [TimeZone](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TIMEZONE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### timezone_abbreviations
 
@@ -205,9 +165,4 @@ ms.custom: automatically generated
 | Allowed values | `Default` |
 | Parameter type | read-only |
 | Documentation | [timezone_abbreviations](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-TIMEZONE-ABBREVIATIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

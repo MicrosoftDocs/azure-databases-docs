@@ -1,10 +1,10 @@
 ---
-title: Use Microsoft Entra ID Authentication
-description: Learn how to set up Microsoft Entra ID for authentication for your Azure HorizonDB flexible server instance.
+title: Use Microsoft Entra ID Authentication in Azure HorizonDB
+description: Learn how to set up Microsoft Entra ID for authentication in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/19/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -14,11 +14,11 @@ ms.custom:
   - sfi-ropc-blocked
 ---
 
-# How to use Microsoft Entra ID for authentication with Azure HorizonDB
+# How to use Microsoft Entra ID for authentication in Azure HorizonDB
 
-In this article, you configure Microsoft Entra ID access for authentication with Azure HorizonDB. You also learn how to use a Microsoft Entra token with an Azure HorizonDB flexible server instance.
+In this article, you configure Microsoft Entra ID access for authentication with Azure HorizonDB. You also learn how to use a Microsoft Entra token in Azure HorizonDB.
 
-You can configure Microsoft Entra authentication for an Azure HorizonDB flexible server instance either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. Don't use the Microsoft Entra administrator for regular database operations because that role has elevated user permissions, such as `CREATEDB`.
+You can configure Microsoft Entra authentication for an Azure HorizonDB instance either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. Don't use the Microsoft Entra administrator for regular database operations because that role has elevated user permissions, such as `CREATEDB`.
 
 You can have multiple Microsoft Entra admin users with Azure HorizonDB. Microsoft Entra admin users can be a user, a group, or service principal.
 
@@ -53,13 +53,13 @@ You can optionally add a local PostgreSQL admin account if you prefer using the 
 
 To set the Microsoft Entra administrator after server creation, follow these steps:
 
-1. In the Azure portal, select the instance of Azure HorizonDB flexible server that you want to enable for Microsoft Entra ID.
+1. In the Azure portal, select the instance of Azure HorizonDB that you want to enable for Microsoft Entra ID.
 1. Under **Security**, select **Authentication**. Then choose either **PostgreSQL and Microsoft Entra authentication** or **Microsoft Entra authentication only** as the authentication method, based on your requirements.
 1. Select **Add Microsoft Entra Admins**. Then select a valid Microsoft Entra user, group, service principal, or managed identity in the customer tenant to be a Microsoft Entra administrator.
 1. Select **Save**.
 
 > [!IMPORTANT]  
-> When you set the administrator, you add a new user to your Azure HorizonDB flexible server instance with full administrator permissions.
+> When you set the administrator, you add a new user to your Azure HorizonDB instance with full administrator permissions.
 
 ## Connect to Azure HorizonDB by using Microsoft Entra ID
 
@@ -74,7 +74,7 @@ Tested clients include:
 
 ## Authenticate with Microsoft Entra ID
 
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure HorizonDB flexible server instance user.
+Use the following procedures to authenticate with Microsoft Entra ID as an Azure HorizonDB instance user.
 
 You can follow along by using:
 
@@ -258,7 +258,7 @@ These considerations are essential when you're connecting as a group member:
 - The group name must exactly match the Microsoft Entra group display name (case-sensitive).
 - Use only the group name, not a member alias.
 - Escape spaces where required (for example, `Prod\ DB\ Readonly`).
-- Token validity is 5–60 minutes. Acquire it just before connecting; don't store tokens in scripts.
+- Token validity is 5-60 minutes. Acquire it just before connecting; don't store tokens in scripts.
 
 > [!TIP]  
 > If authentication fails, verify the database role exists (for example, with `\du`) and confirm the `pgaadauth.enable_group_sync` setting.
@@ -267,5 +267,5 @@ You're now authenticated to your PostgreSQL server through Microsoft Entra authe
 
 ## Related content
 
-- [Microsoft Entra authentication with Azure HorizonDB](../security/security-entra-concepts.md)
-- [Manage Microsoft Entra roles in Azure HorizonDB](../security/security-manage-entra-users.md)
+- [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md)
+- [Manage Microsoft Entra roles in Azure HorizonDB](security-manage-entra-users.md)

@@ -1,10 +1,10 @@
 ---
-title: Access Management
-description: Learn how to manage access permissions for Azure HorizonDB using roles.
+title: Access Management in Azure HorizonDB
+description: Learn how to manage access permissions using roles in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 09/19/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Access management for Azure HorizonDB
+# Access management in Azure HorizonDB
 
 Managing access to your Azure HorizonDB resources is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 
@@ -71,7 +71,7 @@ oid            | 24827
 >
 > Azure HorizonDB only supports CAST commands that use the `WITH FUNCTION` and `WITH INOUT` options. The `WITHOUT FUNCTION` option isn't supported.
 
-[Audit logging in Azure HorizonDB](../security/security-audit.md) is also available with Azure HorizonDB to track activity in your databases.
+[Audit logging in Azure HorizonDB](security-audit.md) is also available with Azure HorizonDB to track activity in your databases.
 
 ### Control schema access
 
@@ -115,7 +115,6 @@ Newly created databases in Azure HorizonDB include a default set of privileges i
   ```
 In this example, user *user1* can connect and has all privileges in the test database *Test_db*, but not any other database on the server. Instead of giving this user or role *ALL PRIVILEGES* on that database and its objects, consider providing more selective permissions, such as `SELECT`, `INSERT`, `EXECUTE`, and others. For more information about privileges in PostgreSQL databases, see the [GRANT](https://www.postgresql.org/docs/current/sql-grant.html) and [REVOKE](https://www.postgresql.org/docs/current/sql-revoke.html) commands in the PostgreSQL docs.
 
-
 ### Public schema ownership changes in Azure HorizonDB
 
 In PostgreSQL 15 and later, the ownership of the public schema changed to the new `pg_database_owner` role, which allows database owners to control it. For more information, see the [PostgreSQL release notes](https://www.postgresql.org/docs/release/15.0/).
@@ -129,10 +128,9 @@ In PostgreSQL 16, users with the **CREATEROLE** attribute no longer have the abi
 
 PostgreSQL 16 also introduces new and improved built-in role. The *pg_create_subscription* role allows superusers to create subscriptions.
 
-In Azure HorizonDB Flexible server, the azure_pg_admin role is a system-managed, restricted role and cannot be modified by users. Attempts to alter it, such as granting another role to it , will result in an error like:
+In Azure HorizonDB Flexible server, the azure_pg_admin role is a system-managed, restricted role and can't be modified by users. Attempts to alter it, such as granting another role to it , will result in an error like:
 
- ```sql
-
+```sql
    GRANT <db_user> TO azure_pg_admin;
  ERROR: permission denied to alter restricted role "azure_pg_admin"
  ```

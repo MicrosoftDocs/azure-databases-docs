@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### pgbouncer.default_pool_size
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `1-4950` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.default_pool_size](https://www.pgbouncer.org/config.html#default_pool_size) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-default-pool-size](./server-parameters-azure-notes-pgbouncer-default-pool-size.md)]
-
-
 
 ### pgbouncer.enabled
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `true, false` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.enabled](https://www.pgbouncer.org/config.html#enabled) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-enabled](./server-parameters-azure-notes-pgbouncer-enabled.md)]
-
-
 
 ### pgbouncer.ignore_startup_parameters
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9_\\.,]*` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.ignore_startup_parameters](https://www.pgbouncer.org/config.html#ignore_startup_parameters) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-ignore-startup-parameters](./server-parameters-azure-notes-pgbouncer-ignore-startup-parameters.md)]
-
-
 
 ### pgbouncer.max_client_conn
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `1-50000` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.max_client_conn](https://www.pgbouncer.org/config.html#max_client_conn) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-max-client-conn](./server-parameters-azure-notes-pgbouncer-max-client-conn.md)]
-
-
 
 ### pgbouncer.max_prepared_statements
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `0-5000` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.max_prepared_statements](https://www.pgbouncer.org/config.html#max_prepared_statements) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-max-prepared-statements](./server-parameters-azure-notes-pgbouncer-max-prepared-statements.md)]
-
-
 
 ### pgbouncer.min_pool_size
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `0-4950` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.min_pool_size](https://www.pgbouncer.org/config.html#min_pool_size) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-min-pool-size](./server-parameters-azure-notes-pgbouncer-min-pool-size.md)]
-
-
 
 ### pgbouncer.pool_mode
 
@@ -120,28 +98,20 @@ ms.custom: automatically generated
 | Allowed values | `session,transaction,statement` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.pool_mode](https://www.pgbouncer.org/config.html#pool_mode) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-pool-mode](./server-parameters-azure-notes-pgbouncer-pool-mode.md)]
-
-
 
 ### pgbouncer.query_wait_timeout
 
 | Attribute | Value |
 | --- | --- |
 | Category | PgBouncer |
-| Description | Maximum time (in seconds) queries are allowed to spend waiting for execution. If the query is not assigned to a server during that time, the client is disconnected. |
+| Description | Maximum time (in seconds) queries are allowed to spend waiting for execution. If the query isn't assigned to a server during that time, the client is disconnected. |
 | Data type | integer |
 | Default value | `120` |
 | Allowed values | `0-86400` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.query_wait_timeout](https://www.pgbouncer.org/config.html#query_wait_timeout) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-query-wait-timeout](./server-parameters-azure-notes-pgbouncer-query-wait-timeout.md)]
-
-
 
 ### pgbouncer.server_idle_timeout
 
@@ -154,11 +124,7 @@ ms.custom: automatically generated
 | Allowed values | `0-86400` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.server_idle_timeout](https://www.pgbouncer.org/config.html#server_idle_timeout) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-server-idle-timeout](./server-parameters-azure-notes-pgbouncer-server-idle-timeout.md)]
-
-
 
 ### pgbouncer.stats_users
 
@@ -171,9 +137,4 @@ ms.custom: automatically generated
 | Allowed values | `[A-Za-z0-9,@_\\-\\.]*` |
 | Parameter type | dynamic |
 | Documentation | [pgbouncer.stats_users](https://www.pgbouncer.org/config.html#stats_users) |
-
-
 [!INCLUDE [server-parameters-azure-notes-pgbouncer-stats-users](./server-parameters-azure-notes-pgbouncer-stats-users.md)]
-
-
-

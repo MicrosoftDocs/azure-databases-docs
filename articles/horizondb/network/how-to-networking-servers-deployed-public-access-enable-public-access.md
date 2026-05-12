@@ -1,20 +1,20 @@
 ---
-title: Enable public access
-description: Learn how to enable public access in an Azure HorizonDB flexible server deployed with public access networking mode.
+title: Enable Public Access in Azure HorizonDB
+description: Learn how to enable public access in Azure HorizonDB deployed with public access networking mode.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/23/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
 ai-usage: ai-assisted
-# customer intent: As a user, I want to learn how to enable public network access in an Azure HorizonDB flexible server.
+# customer intent: As a user, I want to learn how to enable public network access in Azure HorizonDB.
 ---
 
-# Enable public access
+# Enable public access in Azure HorizonDB
 
-This article explains how to enable public network access on an Azure HorizonDB flexible server. Public access allows connections from the internet using a public IP address, which you can secure with firewall rules and private endpoints.
+This article explains how to enable public network access in Azure HorizonDB. Public access allows connections from the internet using a public IP address, which you can secure with firewall rules and private endpoints.
 
 ## Prerequisites
 
@@ -24,14 +24,14 @@ Before you begin, verify that your server meets the following requirements:
 
 - **Server status is Ready**: The server must be in a `Ready` state before you can modify networking settings.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > **This article doesn't apply to servers configured with private access (VNet Integration).** The networking mode is a permanent setting chosen during server creation. If your server's **Networking** page shows **Private access (VNet Integration)** as the connectivity method, you can't enable public access on that server.
 >
 > To switch from private access to public access, you must either:
 > - **Create a new server** with the **Public access (allowed IP addresses)** networking option selected during deployment.
 > - **Restore the server** to a new instance with public access enabled.
 >
-> For more information about the differences between networking modes, see [Private access (VNet Integration)](concepts-networking-private.md) and [Public access (allowed IP addresses)](concepts-networking-public.md).
+> For more information about the differences between networking modes, see [Network with private access (virtual network integration) in Azure HorizonDB](concepts-networking-private.md) and [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md).
 
 ## Determine your server's networking mode
 
@@ -39,7 +39,7 @@ To check which networking mode your server uses:
 
 ### [Portal](#tab/portal-check-mode)
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB flexible server.
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB.
 1. In the resource menu, select **Networking**.
 1. Check the **Connectivity method** section at the top of the page:
    - **Public access (allowed IP addresses)**: This article applies to your server. Continue with the steps in this article.
@@ -73,7 +73,7 @@ When you enable public access:
 
 ### [Portal](#tab/portal-enable-public-access)
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB flexible server.
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB.
 1. In the resource menu, select **Networking**.
 1. Under **Public access**, select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 1. Select **Save**.
@@ -93,7 +93,7 @@ az postgres flexible-server update \
 **Common errors:**
 
 | Error | Cause | Solution |
-|-------|-------|----------|
+| --- | --- | --- |
 | `Server <server> is busy with other operations. Please try later` | Server isn't in `Ready` state | Wait for the current operation to complete, then retry |
 | Command succeeds but setting doesn't change | Server was deployed with private access | You can't enable public access on VNet-integrated servers. Create a new server with public access instead |
 
@@ -110,17 +110,12 @@ The output should show `"publicAccess": "Enabled"`.
 
 ---
 
-## Next steps
-
-After you enable public access, configure firewall rules to control which IP addresses can connect to your server:
-
-- [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md)
-- [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)
-
 ## Related content
 
-- [Networking overview](how-to-networking.md)
-- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md)
-- [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md)
-- [Private access (VNet Integration)](concepts-networking-private.md)
-- [Public access (allowed IP addresses)](concepts-networking-public.md)
+- [Networking in Azure HorizonDB](how-to-networking.md)
+- [Disable public access in Azure HorizonDB](how-to-networking-servers-deployed-public-access-disable-public-access.md)
+- [Add private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-private-endpoint.md)
+- [Network with private access (virtual network integration) in Azure HorizonDB](concepts-networking-private.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md)
+- [Add firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-firewall-rules.md)
+- [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)

@@ -1,16 +1,16 @@
 ---
-title: "Tutorial: Design Multitenant Database with Elastic Clusters"
+title: "Tutorial: Design Multitenant Database with Elastic Clusters in Azure HorizonDB"
 description: Learn how to design a scalable multitenant application with Azure HorizonDB elastic clusters.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
 ---
 
-# Tutorial: Design a multitenant database with elastic clusters
+# Tutorial: Design a multitenant database with elastic clusters in Azure HorizonDB
 
 In this tutorial, you use Azure HorizonDB with elastic clusters to learn how to design a multitenant application that benefits from horizontal scale-out.
 
@@ -26,15 +26,15 @@ In this tutorial, you use Azure HorizonDB with elastic clusters to learn how to 
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
-- [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
-- [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
+- [Quickstart: Create an instance of elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Quickstart: Use a Bicep template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
+- [Quickstart: Use an ARM template to create an elastic cluster in Azure HorizonDB](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 
 ## Use psql utility to create a schema
 
 After you connect to the elastic cluster by using psql, you can configure your elastic cluster. This tutorial walks you through creating an application platform that allows companies to track their ad campaigns.
 
-> [!NOTE]
+> [!NOTE]  
 > When distributing data across your cluster, any unique data constraints are scoped to their distribution "shard". In our multitenant example, application data uniqueness is enforced per tenant (for example, company ID). For this reason, our distributed table definitions for primary and foreign key constraints always include the company ID column.
 
 Create a table to hold your multitenant company information, and another table for their campaigns. In the psql console, run these commands:
@@ -240,7 +240,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-PostgreSQL includes a powerful feature that allows you to index a specific portion or subset of your data. You can further optimize your query for company 5 by creating a [partial index](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+PostgreSQL includes a powerful feature that allows you to index a specific portion or subset of your data. You can further optimize your query for company 5 by creating a [partial index](https://www.postgresql.org/docs/current/indexes-partial.html).
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -265,4 +265,4 @@ SELECT id
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Learn more about elastic clusters](../elastic-clusters/concepts-elastic-clusters.md)
+> [Elastic clusters in Azure HorizonDB](../elastic-clusters/concepts-elastic-clusters.md)

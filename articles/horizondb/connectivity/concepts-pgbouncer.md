@@ -1,10 +1,10 @@
 ---
-title: PgBouncer
-description: This article provides an overview of the built-in PgBouncer feature.
+title: PgBouncer in Azure HorizonDB
+description: This article provides an overview of the built-in PgBouncer feature in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/03/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: concept-article
@@ -14,13 +14,13 @@ ms.topic: concept-article
 
 Azure HorizonDB offer [PgBouncer](https://github.com/pgbouncer/pgbouncer) as a built-in connection pooling solution. PgBouncer is an optional feature that you can enable on a per-database-server basis. It's supported on General Purpose and Memory Optimized compute tiers in both public access and private access networks.
 
-PgBouncer runs on the same virtual machine (VM) as the database server for your Azure HorizonDB flexible server instance. Postgres uses a process-based model for connections, so maintaining many idle connections is expensive. Postgres runs into resource constraints when the server runs more than a few thousand connections. The primary benefit of PgBouncer is to improve idle connections and short-lived connections at the database server.
+PgBouncer runs on the same virtual machine (VM) as the database server for your Azure HorizonDB instance. Postgres uses a process-based model for connections, so maintaining many idle connections is expensive. Postgres runs into resource constraints when the server runs more than a few thousand connections. The primary benefit of PgBouncer is to improve idle connections and short-lived connections at the database server.
 
 PgBouncer uses a lightweight model that utilizes asynchronous I/O. It uses Postgres connections only when needed - that is, when inside an open transaction or when a query is active. This model allows scaling to up to 10,000 connections with low overhead.
 
 The version of PgBouncer deployed on all supported major versions of the engine, in Azure HorizonDB, is **[!INCLUDE [pgbouncer-table](includes/pgbouncer-table.md)]**. PgBouncer runs on port 6432 on your database server. You can change your application's database connection configuration to use the same host name, but change the port to 6432 to start using PgBouncer and benefit from improved scaling of idle connections.
 
-PgBouncer in Azure HorizonDB supports [Microsoft Entra authentication](../security/security-entra-concepts.md) (Azure AD).
+PgBouncer in Azure HorizonDB supports [Microsoft Entra authentication in Azure HorizonDB](../security/security-entra-concepts.md) (Azure AD).
 
 ## Enable and configure PgBouncer
 
@@ -39,9 +39,9 @@ For more information about PgBouncer configurations, see the [pgbouncer.ini docu
 
 ## Benefits
 
-By using the built-in PgBouncer feature with your Azure HorizonDB flexible server instance, you get these benefits:
+By using the built-in PgBouncer feature with your Azure HorizonDB instance, you get these benefits:
 
-- **Convenience of simplified configuration**: Because PgBouncer is integrated with your Azure HorizonDB flexible server instance, you don't need a separate installation or complex setup. You can configure it directly from the server parameters.
+- **Convenience of simplified configuration**: Because PgBouncer is integrated with your Azure HorizonDB instance, you don't need a separate installation or complex setup. You can configure it directly from the server parameters.
 
 - **Reliability of a managed service**: PgBouncer offers the advantages of Azure managed services. For example, Azure manages updates of PgBouncer. Automatic updates eliminate the need for manual maintenance and ensure that PgBouncer stays up to date with the latest features and security patches.
 
@@ -49,7 +49,9 @@ By using the built-in PgBouncer feature with your Azure HorizonDB flexible serve
 
 - **High availability in failover scenarios**: If a standby server is promoted to the primary role during a failover, PgBouncer seamlessly restarts on the newly promoted standby. You don't need to make any changes to the application connection string. This ability helps ensure continuous availability and minimizes disruption to the application's connection pool.
 
-## Monitoring PgBouncer
+<a id="monitoring-pgbouncer"></a>
+
+## Monitor PgBouncer
 
 ### Metrics
 
@@ -61,7 +63,9 @@ For more information, see [PgBouncer metrics](../monitor/concepts-monitoring.md#
 
 Azure HorizonDB Flexible Server provides PgBouncer logs to help you audit connection pooling activity and troubleshoot problems such as connection drops, authentication failures, or pool exhaustion. PgBouncer logs include details such as authentication failures, connection lifecycle events, errors, and server state changes. These details are useful for identifying connection bottlenecks and behavioral anomalies.
 
-#### Enabling logs
+<a id="enabling-logs"></a>
+
+#### Enable logs
 
 Enable Logs Diagnostic Settings to automatically emit PgBouncer logs. Log Analytics supports two schema types: **Azure diagnostics** and **Resource-Specific**. For more information, see [Common and service-specific schemas for Azure resource logs](/azure/azure-monitor/platform/resource-logs?tabs=log-analytics#select-the-collection-mode).
 
@@ -116,7 +120,9 @@ After you connect to the database, use `SHOW` commands to view PgBouncer statist
 
 For more information on the PgBouncer `SHOW` commands, see [Admin console](https://www.pgbouncer.org/usage.html#admin-console).
 
-## Switching your application to use PgBouncer
+<a id="switching-your-application-to-use-pgbouncer"></a>
+
+## Switch your application to use PgBouncer
 
 To start using PgBouncer, follow these steps:
 
@@ -151,12 +157,12 @@ PgBouncer is also available for elastic clusters. Each node in an elastic cluste
 > [!IMPORTANT]  
 > The parameter `pgbouncer.client_tls_sslmode` for the built-in PgBouncer feature is deprecated in Azure HorizonDB.
 >
-> When you enforce TLS/SSL for connections to an Azure HorizonDB flexible server instance by setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure HorizonDB flexible server instance and enable the built-in PgBouncer feature. For more information, see [Secure connectivity with TLS in Azure HorizonDB](../security/security-tls.md).
+> When you enforce TLS/SSL for connections to an Azure HorizonDB instance by setting the `require_secure_transport` server parameter to `ON`, TLS/SSL is automatically enforced for connections to the built-in PgBouncer feature. This setting is on by default when you create a new Azure HorizonDB instance and enable the built-in PgBouncer feature. For more information, see [Transport Layer Security (TLS) in Azure HorizonDB](../security/security-tls.md).
 
 For customers who want simplified management, built-in high availability, easy connectivity with containerized applications, and the ability to use the most popular configuration parameters, the built-in PgBouncer feature is a good choice. For customers who want multithreaded scalability, full control of all parameters, and a debugging experience, setting up PgBouncer on Azure VMs might be an alternative.
 
 ## Related content
 
-- [Connection pooling strategy for Azure HorizonDB using PgBouncer](concepts-connection-pooling-best-practices.md)
-- [Networking overview for Azure HorizonDB with public access](../network/concepts-networking-public.md)
-- [Network with private access for Azure HorizonDB](../network/concepts-networking-private.md)
+- [Connection pooling strategy using PgBouncer in Azure HorizonDB](concepts-connection-pooling-best-practices.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
+- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)

@@ -4,7 +4,7 @@ description: Providing the online prerequisites for the migration service in Azu
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/24/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ---

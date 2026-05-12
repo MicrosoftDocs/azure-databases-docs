@@ -4,7 +4,7 @@ description: Create AI applications with sentiment analysis, summarization, or k
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to

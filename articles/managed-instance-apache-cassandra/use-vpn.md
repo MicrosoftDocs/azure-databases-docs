@@ -55,7 +55,7 @@ We want to prevent attackers from accessing the virtual network where the operat
 
     From the output, make a copy of the `privateLinkResourceId` value.
 
-1. In the Azure portal, [create a private endpoint](../cosmos-db/how-to-configure-private-endpoints.md) by following these steps:
+1. In the Azure portal, [create a private endpoint](/azure/cosmos-db/how-to-configure-private-endpoints) by following these steps:
     1. On the **Resource** tab, select **Connect to an Azure resource by resource ID or alias** as the connection method and select **Microsoft.Network/privateLinkServices** as the resource type. Enter the `privateLinkResourceId` value from the previous step.
     1. On the **Virtual Network** tab, select your virtual network's subnet, and select the **Statically allocate IP address** option.
     1. Validate and create.

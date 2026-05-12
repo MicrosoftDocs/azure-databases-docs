@@ -4,7 +4,7 @@ description: Overview of semantic operator capabilities in the azure_ai extensio
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-semantic-operators
 ms.topic: concept-article
@@ -30,7 +30,9 @@ The Semantic Operators provide users with four core SQL functions that use gener
 
 Each function operates through Microsoft Foundry endpoints registered by using the `azure_ai.set_setting` function, ensuring seamless integration and user control.
 
-## Understanding semantic operators
+<a id="understanding-semantic-operators"></a>
+
+## Understand semantic operators
 
 Semantic Operators in the Azure AI extension simplify complex AI-driven tasks directly within your PostgreSQL database. By using these operators, you can seamlessly integrate generative AI capabilities into your SQL workflows. You can perform advanced text generation, truth evaluation, entity extraction, and document ranking. Each operator is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
@@ -186,7 +188,7 @@ To use Semantic Operators in your PostgreSQL database, follow these steps:
 
 These operators support chat completion models and default to [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series).
 
-1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure HorizonDB flexible server instance.
+1. **[Enable the `azure_ai` extension](generative-ai-azure-overview.md#enable-the-azure_ai-extension)** on your Azure HorizonDB instance.
 1. [Create an Azure OpenAI service resource](/azure/ai-services/openai/how-to/create-resource) and **deploy a chat completion model** (for example, [`gpt-4.1`](/azure/ai-foundry/openai/concepts/models#gpt-41-series)). Alternatively, you can deploy and manage models through the intuitive experiences provided by [Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model).
 1. Note the Azure OpenAI **endpoint URL** and **API key**.
 1. **Configure access**:
@@ -199,7 +201,7 @@ These operators support chat completion models and default to [`gpt-4.1`](/azure
    ```
 
    If you want to use managed identities instead, refer to [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-   - Enable system-assigned managed identity for your Azure HorizonDB flexible server instance and restart the server.
+   - Enable system-assigned managed identity for your Azure HorizonDB instance and restart the server.
    - Assign the "Cognitive Services OpenAI User" role to the managed identity to interact with the Azure OpenAI resource.
    - Set the `azure_openai.auth_type` to 'managed-identity'.
    - Set the `azure_openai.endpoint` with the endpoint URL.
@@ -243,7 +245,7 @@ Using `Cohere-rerank-v3.5` cross-encoder:
    ```
 
    If you want to use managed identities instead, refer to [this article](generative-ai-enable-managed-identity-azure-ai.md) to perform the following steps:
-   - Enable system-assigned managed identity for your Azure HorizonDB flexible server instance and restart the server.
+   - Enable system-assigned managed identity for your Azure HorizonDB instance and restart the server.
    - Assign the "Azure Machine Learning Data Scientist" role to the managed identity to interact with the Cohere model.
    - Set the `azure_ml.auth_type` to 'managed-identity'.
    - Set the `azure_ml.serverless_ranking_endpoint` with the Cohere reranker API.
@@ -280,7 +282,7 @@ SELECT azure_ai.rank(
 
 ## Related content
 
-- [Generative AI with Azure HorizonDB](generative-ai-overview.md)
+- [Generative AI in Azure HorizonDB](generative-ai-overview.md)
 - [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
 - [Vector stores in Azure HorizonDB](generative-ai-vector-databases.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)

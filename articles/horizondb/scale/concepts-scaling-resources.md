@@ -1,10 +1,10 @@
 ---
-title: Scaling Resources
-description: This article describes the resource scaling in an Azure HorizonDB flexible server instance.
+title: Scaling Resources in Azure HorizonDB
+description: This article describes the resource scaling in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: concept-article
@@ -12,15 +12,15 @@ ms.topic: concept-article
 
 # Scaling resources in Azure HorizonDB
 
-An Azure HorizonDB flexible server instance supports both vertical and horizontal scaling options.
+An Azure HorizonDB instance supports both vertical and horizontal scaling options.
 
 ## Vertical scaling
 
-You can scale your instance vertically by adding more resources to your Azure HorizonDB flexible server instance. You can increase or decrease the number of CPUs and memory assigned to it.
+You can scale your instance vertically by adding more resources to your Azure HorizonDB instance. You can increase or decrease the number of CPUs and memory assigned to it.
 
 The network throughput of your instance depends on the values you choose for CPU and memory.
 
-After you create an Azure HorizonDB flexible server instance, you can independently scale:
+After you create an Azure HorizonDB instance, you can independently scale:
 
 - Compute tier and SKU.
 - Storage tier and size.
@@ -30,7 +30,7 @@ You can scale the compute tier up or down between Burstable, General Purpose, an
 
 You can scale the number of vCores and installed memory up or down. You can also configure the storage tier up or down to accommodate the throughput and IOPS requirements that your workload demands. You can only increase the storage size. Depending on your requirements, you can increase or decrease the backup retention period between 7 to 35 days.
 
-You can scale these resources by using multiple interfaces. For instance, you can use the [Azure portal](../configure-maintain/quickstart-create-server.md) or [Azure CLI](../configure-maintain/quickstart-create-server.md).
+You can scale these resources by using multiple interfaces. For instance, you can use the [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) or [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
 
 > [!NOTE]  
 > After you increase the size of the storage assigned to your instance, you can't shrink it to a smaller size.
@@ -51,7 +51,7 @@ When you change the number of vCores or the compute tier, the instance restarts 
 
 The overall time it takes to restart your server depends on the crash recovery process and database activity at the time of the restart. Restart typically takes a minute or less, but it can be several minutes. Timing depends on the transactional activity when the restart was initiated.
 
-If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, implement a transaction {[retry pattern](../single-server/concepts-connectivity.md#handling-transient-errors)}.
+If your application is sensitive to loss of in-flight transactions that might occur during compute scaling, implement a transaction {[retry pattern](../troubleshoot/concepts-connectivity.md#handling-transient-errors)}.
 
 Scaling the storage doesn't require a server restart in most cases. For more information, see [storage options in Azure HorizonDB](concepts-scaling-resources.md).
 
@@ -67,7 +67,7 @@ Typically, this process could take anywhere between 2 to 10 minutes with regular
 
 ### How it works
 
-When you update your Azure HorizonDB flexible server instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then it synchronizes with the virtual machine that's currently running your instance, and then switches to the new virtual machine with a brief interruption. Then a background process eliminates the old virtual machine.
+When you update your Azure HorizonDB instance in scaling scenarios, the service creates a new virtual machine for your server with the updated configuration. Then it synchronizes with the virtual machine that's currently running your instance, and then switches to the new virtual machine with a brief interruption. Then a background process eliminates the old virtual machine.
 
 This process enables seamless updates with minimal downtime and is automatically triggered when you change storage or compute tiers. You don't need to take any action to use this capability. This capability is supported for both HA and non-HA Azure HorizonDB.
 
@@ -93,4 +93,4 @@ For horizontally scaled configurations, consisting of a primary server and one o
 
 ## Related content
 
-- [Manage Azure HorizonDB](../configure-maintain/how-to-manage-server-portal.md)
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)

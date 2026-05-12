@@ -1,10 +1,10 @@
 ---
-title: Manage Microsoft Entra Users
-description: This article describes how you can manage Microsoft Entra ID enabled roles to interact with an Azure HorizonDB flexible server instance.
+title: Manage Microsoft Entra Users in Azure HorizonDB
+description: This article describes how you can manage Microsoft Entra ID enabled roles to interact with an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 10/06/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -15,16 +15,16 @@ ms.custom:
 
 # Manage Microsoft Entra roles in Azure HorizonDB
 
-This article describes how to create Microsoft Entra ID-enabled database roles within an Azure HorizonDB flexible server instance.
+This article describes how to create Microsoft Entra ID-enabled database roles within an Azure HorizonDB instance.
 
 To learn about how to create and manage Azure subscription users and their privileges, see the [Azure role-based access control (Azure RBAC) article](/azure/role-based-access-control/built-in-roles) or review [how to customize roles](/azure/role-based-access-control/custom-roles).
 
 > [!NOTE]  
-> This guide assumes you already enabled Microsoft Entra authentication on your Azure HorizonDB flexible server instance.
+> This guide assumes you already enabled Microsoft Entra authentication on your Azure HorizonDB instance.
 
 ## Create or delete Microsoft Entra administrators using Azure portal or Azure Resource Manager (ARM) API
 
-1. Open the **Authentication** page for your Azure HorizonDB flexible server instance in the Azure portal.
+1. Open the **Authentication** page for your Azure HorizonDB instance in the Azure portal.
 1. To add an administrator, select **Add Microsoft Entra Admin** and select a user, group, application, or a managed identity from the current Microsoft Entra tenant.
 1. To remove an administrator, select the **Delete** icon for the administrator you want to remove.
 1. Select **Save** and wait for the provisioning operation to complete.
@@ -34,7 +34,7 @@ To learn about how to create and manage Azure subscription users and their privi
 
 ## Manage Microsoft Entra roles using SQL
 
-After you create the first Microsoft Entra administrator from the Azure portal or API, you can use the administrator role to manage Microsoft Entra roles in your Azure HorizonDB flexible server instance.
+After you create the first Microsoft Entra administrator from the Azure portal or API, you can use the administrator role to manage Microsoft Entra roles in your Azure HorizonDB instance.
 
 For the best experience with Microsoft Entra integration in Azure HorizonDB, we recommend getting familiar with [Microsoft identity platform](/azure/active-directory/develop/v2-overview).
 
@@ -45,7 +45,7 @@ Each PostgreSQL database role can be mapped to one of the following Microsoft En
 
 - **User** - Including tenant local and guest users.
 - **Service Principal** - Including [Applications and Managed identities](/azure/active-directory/develop/app-objects-and-service-principals)
-- **Group** - When a PostgreSQL role is linked to a Microsoft Entra group, any user or service principal member of this group can connect to the Azure HorizonDB flexible server instance with the group role.
+- **Group** - When a PostgreSQL role is linked to a Microsoft Entra group, any user or service principal member of this group can connect to the Azure HorizonDB instance with the group role.
 
 ### List Microsoft Entra roles using SQL
 
@@ -106,9 +106,9 @@ You can drop a role that corresponds to a Microsoft Entra ID principal in three 
 - The Azure Resource Manager (ARM) API
 - By executing the following SQL statement:
 
-   ```sql
-   DROP ROLE rolename;
-   ```
+  ```sql
+  DROP ROLE rolename;
+  ```
 
 > [!NOTE]  
 > The Azure portal displays only admin roles. To drop a nonadmin role, use either the Azure Resource Manager (ARM) API or the SQL statement.
@@ -181,4 +181,4 @@ SECURITY LABEL for "pgaadauth" on role "<roleName>" is 'aadauth,oid=<objectId>,t
 
 ## Related content
 
-- [Microsoft Entra authentication in Azure HorizonDB](../security/security-entra-concepts.md)
+- [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md)

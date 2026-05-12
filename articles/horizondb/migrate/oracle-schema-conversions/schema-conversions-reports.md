@@ -1,10 +1,10 @@
 ---
-title: "Oracle to PostgreSQL Schema Conversion: Reports"
-description: "Understanding the extraction and migration summary reports generated during Oracle to PostgreSQL schema conversion using Visual Studio Code PostgreSQL extension."
+title: "Oracle to PostgreSQL Schema Conversion: Reports in Azure HorizonDB"
+description: Understanding the extraction and migration summary reports generated during Oracle to PostgreSQL schema conversion using Visual Studio Code PostgreSQL extension in Azure HorizonDB.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
@@ -38,7 +38,7 @@ Generated after schema conversion completion, providing detailed conversion resu
 - Deployment instructions and file references
 - Performance recommendations and known limitations
 
-    :::image type="content" source="media/schema-conversion-reports/conversion-report.png" alt-text="Screenshot of conversion report.":::
+  :::image type="content" source="media/schema-conversion-reports/conversion-report.png" alt-text="Screenshot of conversion report.":::
 
 ## Use the report
 
@@ -50,10 +50,10 @@ Use the Extraction Report to validate migration scope and verify Oracle connecti
 - Check data type conversions for compatibility
 - Implement performance recommendations for optimal PostgreSQL results
 
-    :::image type="content" source="media/schema-conversion-reports/extraction-report.png" alt-text="Screenshot of extraction report.":::
+  :::image type="content" source="media/schema-conversion-reports/extraction-report.png" alt-text="Screenshot of extraction report.":::
 
 ## Related content
 
-- [Oracle to PostgreSQL Migration Overview](schema-conversions-overview.md)
-- [Oracle to PostgreSQL Migration Tutorial](schema-conversions-tutorial.md)
-- [Oracle to PostgreSQL Migration Limitations](schema-conversions-limitations.md)
+- [What is Oracle to Azure HorizonDB schema conversion Preview?](schema-conversions-overview.md)
+- [Tutorial: Oracle to Azure HorizonDB schema conversion Preview](schema-conversions-tutorial.md)
+- [Oracle to Azure Database PostgreSQL schema conversion limitations Preview in Azure HorizonDB](schema-conversions-limitations.md)

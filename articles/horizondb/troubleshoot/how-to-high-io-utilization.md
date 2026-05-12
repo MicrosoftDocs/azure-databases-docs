@@ -1,10 +1,10 @@
 ---
-title: High IOPS utilization
-description: This article is a troubleshooting guide for high IOPS utilization in an Azure HorizonDB flexible server instance.
+title: High IOPS Utilization in Azure HorizonDB
+description: This article is a troubleshooting guide for high IOPS utilization in an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: troubleshooting-general
@@ -12,9 +12,9 @@ ms.custom:
   - template-how-to
 ---
 
-# Troubleshoot high IOPS utilization in Azure HorizonDB 
+# Troubleshoot high IOPS utilization in Azure HorizonDB
 
-This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure HorizonDB](../overview.md).
+This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [What is Azure HorizonDB?](../overview.md)
 
 In this article, you learn how to:
 
@@ -23,7 +23,9 @@ In this article, you learn how to:
 - Identify root causes, such as long-running queries, checkpoint timings, a disruptive autovacuum daemon process, and high storage utilization.
 - Resolve high I/O utilization by using Explain Analyze, tune checkpoint-related server parameters, and tune the autovacuum daemon.
 
-## Troubleshooting guides
+<a id="troubleshooting-guides"></a>
+
+## Troubleshoot guides
 
 Using the feature troubleshooting guides which is available on the Azure HorizonDB portal the probable root cause and recommendations to the mitigate high IOPS utilization scenario can be found. How to setup the troubleshooting guides to use them please follow [setup troubleshooting guides](how-to-troubleshooting-guides.md).
 
@@ -33,11 +35,11 @@ Consider the following tools to identify high I/O utilization.
 
 ### Azure Metrics
 
-Azure Metrics is a good starting point to check I/O utilization for a defined date and period. Metrics give information about the time during which I/O utilization is high. Compare the graphs of Write IOPs, Read IOPs, Read Throughput, and Write Throughput to find out times when the workload is causing high I/O utilization. For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Azure Metrics](../monitor/how-to-alert-on-metrics.md).
+Azure Metrics is a good starting point to check I/O utilization for a defined date and period. Metrics give information about the time during which I/O utilization is high. Compare the graphs of Write IOPs, Read IOPs, Read Throughput, and Write Throughput to find out times when the workload is causing high I/O utilization. For proactive monitoring, you can configure alerts on the metrics. For step-by-step guidance, see [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md).
 
 ### Query Store
 
-The Query Store feature automatically captures the history of queries and runtime statistics, and retains them for your review. It slices the data by time to see temporal usage patterns. Data for all users, databases, and queries is stored in a database named *azure_sys* in the Azure HorizonDB flexible server instance. For step-by-step guidance, see [Monitor performance with Query Store](../monitor/concepts-query-store.md).
+The Query Store feature automatically captures the history of queries and runtime statistics, and retains them for your review. It slices the data by time to see temporal usage patterns. Data for all users, databases, and queries is stored in a database named *azure_sys* in the Azure HorizonDB instance. For step-by-step guidance, see [Query store in Azure HorizonDB](../monitor/concepts-query-store.md).
 
 Use the following statement to view the top five SQL statements that consume I/O:
 
@@ -81,7 +83,7 @@ ORDER BY duration DESC;
 
 ### Checkpoint timings
 
-High I/O can also be seen in scenarios where a checkpoint is happening too frequently. One way to identify this is by checking the Azure HorizonDB flexible server instance log file for the following log text: "LOG: checkpoints are occurring too frequently."
+High I/O can also be seen in scenarios where a checkpoint is happening too frequently. One way to identify this is by checking the Azure HorizonDB instance log file for the following log text: "LOG: checkpoints are occurring too frequently."
 
 You could also investigate by using an approach where periodic snapshots of `pg_stat_bgwriter` with a time stamp are saved. By using the saved snapshots, you can calculate the average checkpoint interval, number of checkpoints requested, and number of checkpoints timed.
 
@@ -93,7 +95,6 @@ Run the following query to monitor autovacuum:
 SELECT schemaname, relname, n_dead_tup, n_live_tup, autovacuum_count, last_vacuum, last_autovacuum, last_autoanalyze, autovacuum_count, autoanalyze_count FROM pg_stat_all_tables WHERE n_live_tup > 0;
 ```
 The query is used to check how frequently the tables in the database are being vacuumed.
-
 
 - `last_autovacuum`: The date and time when the last autovacuum ran on the table.
 - `autovacuum_count`: The number of times the table was vacuumed.
@@ -134,23 +135,23 @@ If you observe that the checkpoint is happening too frequently, increase the `ma
 
 - `max_wal_size`: Peak business hours are a good time to arrive at a `max_wal_size` value. To arrive at a value, do the following:
 
-    1. Run the following query to get the current WAL LSN, and then note the result:
+  1. Run the following query to get the current WAL LSN, and then note the result:
 
-        ```sql
-        select pg_current_wal_lsn();
-        ```
+     ```sql
+     select pg_current_wal_lsn();
+     ```
 
-    1. Wait for a `checkpoint_timeout` number of seconds. Run the following query to get the current WAL LSN, and then note the result:
+  1. Wait for a `checkpoint_timeout` number of seconds. Run the following query to get the current WAL LSN, and then note the result:
 
-        ```sql
-        select pg_current_wal_lsn();
-        ```
+     ```sql
+     select pg_current_wal_lsn();
+     ```
 
-    1. Run the following query, which uses the two results, to check the difference, in gigabytes (GB):
+  1. Run the following query, which uses the two results, to check the difference, in gigabytes (GB):
 
-        ```sql
-        select round (pg_wal_lsn_diff ('LSN value when run second time', 'LSN value when run first time')/1024/1024/1024,2) WAL_CHANGE_GB;
-        ```
+     ```sql
+     select round (pg_wal_lsn_diff ('LSN value when run second time', 'LSN value when run first time')/1024/1024/1024,2) WAL_CHANGE_GB;
+     ```
 
 - `checkpoint_completion_target`: A good practice would be to set the value to 0.9. As an example, a value of 0.9 for a `checkpoint_timeout` of 5 minutes indicates that the target to complete a checkpoint is 270 seconds (0.9\*300 seconds). A value of 0.9 provides a fairly consistent I/O load. An aggressive value of `checkpoint_completion_target` might result in an increased I/O load on the server.
 
@@ -158,16 +159,16 @@ If you observe that the checkpoint is happening too frequently, increase the `ma
 
 ### Tune autovacuum to decrease disruptions
 
-For more information about monitoring and tuning in scenarios where autovacuum is too disruptive, review [Autovacuum tuning](how-to-autovacuum-tuning.md).
+For more information about monitoring and tuning in scenarios where autovacuum is too disruptive, review [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
 
 ### Increase storage
 
-Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute and storage options](../compute-storage/concepts-compute.md).
+Increasing storage helps when you're adding more IOPS to the server. For more information about storage and associated IOPS, review [Compute options in Azure HorizonDB](../compute-storage/concepts-compute.md).
 
 ## Related content
 
-- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md).
-- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md).
-- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md).
-- [Server parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
-- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
+- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md)
+- [Troubleshoot high memory utilization in Azure HorizonDB](how-to-high-memory-utilization.md)
+- [Troubleshoot and identify slow-running queries in Azure HorizonDB](how-to-identify-slow-queries.md)
+- [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)

@@ -1,16 +1,16 @@
 ---
-title: Validate the Client Configuration and Troubleshoot Connection Failures
+title: Validate the Client Configuration and Troubleshoot Connection Failures in Azure HorizonDB
 description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan, randolphwest
-ms.date: 01/05/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: troubleshooting
 ---
 
-# Troubleshoot TLS connection failures
+# Troubleshoot TLS connection failures in Azure HorizonDB
 
 TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure HorizonDB. This article guides you through validating your client configuration and troubleshooting potential connectivity issues.
 
@@ -29,7 +29,7 @@ Make sure your client's root certificate store contains either the minimum requi
 
 ### Determine TLS connection status
 
-To determine your current TLS connection status, load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if TLS is being used. The function returns `t` if the connection uses TLS. Otherwise, it returns `f`. You can also collect all the information about your Azure HorizonDB flexible server instance's TLS usage by process, client, and application by using the following query:
+To determine your current TLS connection status, load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if TLS is being used. The function returns `t` if the connection uses TLS. Otherwise, it returns `f`. You can also collect all the information about your Azure HorizonDB instance's TLS usage by process, client, and application by using the following query:
 
 ```sql
 SELECT datname AS "Database name",
@@ -67,7 +67,7 @@ When root CA migration occurs to [Microsoft RSA Root CA 2017](https://www.micros
 
 ### TLS connectivity errors
 
-1. Identify the error messages that you or your users see when they try to access your Azure HorizonDB flexible server instance under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
+1. Identify the error messages that you or your users see when they try to access your Azure HorizonDB instance under TLS encryption from the client. Depending on the application and platform, the error messages might be different. In many cases, they point to the underlying issue.
 1. Check the TLS configuration of the database server and the application client to make sure they support compatible versions and cipher suites.
 1. Analyze any discrepancies or gaps between the database server and the client's TLS versions and cipher suites. Try to resolve them by enabling or disabling certain options, upgrading or downgrading software, or changing certificates or keys. For example, you might need to enable or disable specific TLS versions on the server or the client, depending on security and compatibility requirements. You might need to disable TLS 1.0 and TLS 1.1, which are considered nonsecure and deprecated, and enable TLS 1.2 and TLS 1.3, which are more secure and modern.
 1. The newest certificate issued by [Microsoft RSA Root CA 2017 has intermediate in the chain cross-signed by Digicert Global Root G2 CA](https://www.microsoft.com/pkiops/docs/repository.htm). Some of the Postgres client libraries, while using `sslmode=verify-full` or `sslmode=verify-ca` settings, might experience connection failures with root CA certificates that are cross-signed with intermediate certificates. The result is alternate trust paths.
@@ -120,4 +120,4 @@ If you experience issues even after following these steps, contact Microsoft sup
 ## Related content
 
 - [Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md)
-- [Connect clients with TLS security to your database](security-tls-how-to-connect.md)
+- [Connect clients with TLS security to your database in Azure HorizonDB](security-tls-how-to-connect.md)

@@ -4,7 +4,7 @@ description: Explains supported upgrades using MVU.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 10/01/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ai.usage: ai.assisted

@@ -1,10 +1,10 @@
 ---
-title: Table types - elastic clusters
+title: Table Types - Elastic Clusters in Azure HorizonDB
 description: Learn about the different types of tables available in an elastic cluster on Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: concept-article
@@ -46,6 +46,6 @@ With [schema-based sharding](concepts-elastic-clusters-sharding-models.md#schema
 
 ## Related content
 
-- [Overview of elastic clusters](concepts-elastic-clusters.md).
-- [Sharding models on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-sharding-models.md).
-- [Frequently asked questions about elastic clusters of Azure HorizonDB limitations](concepts-elastic-clusters-limitations.md).
+- [Elastic clusters in Azure HorizonDB](concepts-elastic-clusters.md)
+- [Sharding models on elastic clusters in Azure HorizonDB](concepts-elastic-clusters-sharding-models.md)
+- [Frequently asked questions about elastic clusters in Azure HorizonDB](concepts-elastic-clusters-limitations.md)

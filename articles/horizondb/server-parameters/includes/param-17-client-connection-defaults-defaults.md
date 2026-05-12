@@ -2,27 +2,25 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### dynamic_library_path
 
 | Attribute | Value |
 | --- | --- |
 | Category | Client Connection Defaults / Other Defaults |
-| Description | Sets the path for dynamically loadable modules. If a dynamically loadable module needs to be opened and the specified name does not have a directory component (i.e., the name does not contain a slash), the system will search this path for the specified file. |
+| Description | Sets the path for dynamically loadable modules. If a dynamically loadable module needs to be opened and the specified name doesn't have a directory component (i.e., the name doesn't contain a slash), the system will search this path for the specified file. |
 | Data type | string |
 | Default value | `$libdir` |
-| Allowed values | `$libdir` |
+| Allowed values | `.*` |
 | Parameter type | read-only |
 | Documentation | [dynamic_library_path](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-DYNAMIC-LIBRARY-PATH) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### gin_fuzzy_search_limit
 
@@ -33,11 +31,6 @@ ms.custom: automatically generated
 | Data type | integer |
 | Default value | `0` |
 | Allowed values | `0-2147483647` |
-| Parameter type | dynamic |
+| Parameter type | static |
 | Documentation | [gin_fuzzy_search_limit](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-GIN-FUZZY-SEARCH-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

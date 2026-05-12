@@ -1,10 +1,10 @@
 ---
-title: Compute Options
-description: This article describes the compute options in an Azure HorizonDB flexible server instance.
+title: Compute Options in Azure HorizonDB
+description: This article describes the compute options in an Azure HorizonDB instance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 02/12/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article
@@ -14,7 +14,7 @@ ms.custom:
 
 # Compute options in Azure HorizonDB
 
-You can create an Azure HorizonDB flexible server instance in one of three pricing tiers: Burstable, General Purpose, and Memory Optimized. The pricing tier is calculated based on the compute, memory, and storage you provision. A server can have one or many databases.
+You can create an Azure HorizonDB instance in one of three pricing tiers: Burstable, General Purpose, and Memory Optimized. The pricing tier is calculated based on the compute, memory, and storage you provision. A server can have one or many databases.
 
 | Resource/Tier | Burstable | General Purpose | Memory Optimized |
 | --- | --- | --- | --- |
@@ -29,7 +29,7 @@ To choose a pricing tier, use the following table as a starting point:
 
 | Pricing tier | Target workloads |
 | --- | --- |
-| **Burstable** | Designed for workloads that do not require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
+| **Burstable** | Designed for workloads that don't require full CPU performance continuously. Uses a CPU credit model: credits accumulate when usage is below baseline and are consumed when usage exceeds it. When credits are exhausted, the VM is restricted to baseline CPU, which under sustained load can cause severe performance degradation, connection timeouts, and delays or transient failures in management operations until credits rebuild. Best suited for web servers, proof-of-concept environments, small databases, and development builds. Not recommended for production workloads. |
 | **General Purpose** | Provides a balance between CPU and memory with scalable I/O throughput, making it suitable for most production workloads. Examples include servers for hosting web and mobile apps and other enterprise applications. |
 | **Memory Optimized** | Suitable for high-performance database workloads that require in-memory performance for faster transaction processing and higher concurrency. Examples include servers for processing real-time data and high-performance transactional or analytical apps. |
 
@@ -132,12 +132,12 @@ The detailed specifications of the available server types are as follows:
 | E128ds_v6 | 128 | 1024 GiB | 80000 | 1200 MiB/sec |
 | E192ds_v6 | 192 | 1832 GiB | 80000 | 1200 MiB/sec |
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Minimum and maximum IOPS are also determined by the storage tier so choose a storage tier and instance type that can scale as per your workload requirements.
 
 [!INCLUDE [pricing](includes/compute-storage-pricing.md)]
 
 ## Related content
 
-- [Manage Azure HorizonDB](../configure-maintain/how-to-manage-server-portal.md)
+- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
 - [Limits in Azure HorizonDB](../configure-maintain/concepts-limits.md)

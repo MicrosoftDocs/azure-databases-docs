@@ -1,10 +1,10 @@
 ---
-title: Apache AGE Extension
+title: Apache AGE Extension in Azure HorizonDB
 description: Overview of Apache AGE and its capabilities in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 04/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
@@ -16,13 +16,15 @@ ms.custom:
 # customer intent: As a user, I want to understand what the Apache AGE extension is and how to enable it in Azure HorizonDB.
 ---
 
-# AGE extension with Azure HorizonDB
+# AGE extension in Azure HorizonDB
 
 Apache AGE (a graph extension) is a powerful PostgreSQL extension designed to seamlessly integrate graph database functionalities into the PostgreSQL ecosystem. AGE enables users to store and query graph data efficiently and expressively by supporting the intuitive openCypher query language, when developed under the Apache Incubator project. It bridges the gap between relational and graph data, allowing developers to manage complex relationships and uncover insights that traditional databases might struggle to reveal.
 
 Graph data, represented through nodes (entities) and edges (relationships), is increasingly recognized as essential for applications such as social networks, recommendation systems, fraud detection, network analysis, and knowledge graphs. Apache AGE provides a robust solution for handling such interconnected data, enabling advanced analyses and streamlined data management.
 
-## Unlocking graph data capabilities with Apache AGE
+<a id="unlocking-graph-data-capabilities-with-apache-age"></a>
+
+## Unlock graph data capabilities with Apache AGE
 
 Unlocking graph data capabilities with Apache AGE empowers developers to harness the full potential of interconnected data within PostgreSQL. Apache AGE enables seamless exploration and analysis of complex relationships by integrating graph database functionality directly into the relational database. This capability is valuable for applications requiring deep insights into data connections, such as social networks, fraud detection, and recommendation systems. With its support for the openCypher query language and robust PostgreSQL foundation, Apache AGE provides a scalable and efficient solution for managing and querying graph data.
 
@@ -152,7 +154,7 @@ Access method: heap
 
 ## Related content
 
-- [Azure HorizonDB documentation](../overview.md)
+- [What is Azure HorizonDB?](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)

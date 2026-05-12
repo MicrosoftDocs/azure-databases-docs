@@ -1,8 +1,8 @@
 ---
 title: Set up Scheduled Maintenance in the Azure portal
 description: Learn how to configure scheduled maintenance settings for Azure Database for MySQL - Flexible server from the Azure portal.
-author: moabuham 
-ms.author: moabuham 
+author: hariramt
+ms.author: hariramt
 ms.reviewer: sunaray, maghan
 ms.date: 11/25/2025
 ms.service: azure-database-mysql
@@ -128,7 +128,7 @@ This query can be executed in Azure Resource Graph Explorer or via Azure CLI/Pow
 
 ## Notifications about scheduled maintenance events
 
-You can use Azure Service Health to [view notifications](/azure/service-health/service-health-planned-maintenance) about upcoming and performed scheduled maintenance on your Azure Database for MySQL Flexible Server instance. You can also [set up](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
+You can use Azure Service Health to [view notifications](/azure/service-health/service-health-planned-maintenance) about upcoming and performed scheduled maintenance on your Azure Database for MySQL Flexible Server instance. You can also [set up](/azure/service-health/alerts-activity-log-service-notifications-portal) and [monitor](/azure/service-health/resource-health-alert-monitor-guide) alerts in Azure Service Health to get notifications about maintenance events.
 
 ## Related content
 

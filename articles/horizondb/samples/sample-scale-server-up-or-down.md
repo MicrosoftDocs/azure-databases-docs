@@ -1,18 +1,18 @@
 ---
-title: Azure CLI Script - Scale and Monitor
-description: Azure CLI Script Sample - Scale an Azure HorizonDB flexible server instance to a different performance level after querying the metrics.
+title: Azure CLI Script - Scale and Monitor in Azure HorizonDB
+description: Azure CLI Script Sample - Scale to a different performance level after querying the metrics in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
-ms.devlang: azurecli
+ms.devlang: "azurecli"
 ---
-# Monitor and scale a single Azure HorizonDB flexible server instance using Azure CLI
+# Monitor and scale a single Azure HorizonDB instance using Azure CLI in Azure HorizonDB
 
-This sample CLI script scales compute and storage for a single Azure HorizonDB flexible server instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
+This sample CLI script scales compute and storage for a single Azure HorizonDB instance after querying the metrics. Compute can scale up or down. Storage can only scale up.
 
 > [!IMPORTANT]  
 > Storage can only be scaled up, not down.
@@ -44,13 +44,13 @@ This script uses the commands outlined in the following table:
 | **Command** | **Notes** |
 | --- | --- |
 | [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure HorizonDB flexible server instance that hosts the databases. |
-| [az postgres server update](/cli/azure/postgres/server#az-postgres-server-update) | Updates properties of the Azure HorizonDB flexible server instance. |
+| [az postgres server create](/cli/azure/postgres/server#az-postgres-server-create) | Creates an Azure HorizonDB instance that hosts the databases. |
+| [az postgres server update](/cli/azure/postgres/server#az-postgres-server-update) | Updates properties of the Azure HorizonDB instance. |
 | [az monitor metrics list](/cli/azure/monitor/metrics) | Lists the metric value for the resources. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 
 ## Related content
 
-- {[Azure HorizonDB flexible server compute and storage](../concepts-pricing-tiers.md)}
-- {[Azure CLI samples for Azure HorizonDB flexible server](../sample-scripts-azure-cli.md)}
+- [Azure HorizonDB compute and storage](/azure/postgresql/single-server/concepts-pricing-tiers)
+- [Azure CLI samples for Azure HorizonDB](/azure/postgresql/single-server/sample-scripts-azure-cli)
 - [Azure CLI](/cli/azure)

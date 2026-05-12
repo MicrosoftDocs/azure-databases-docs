@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### geqo
 
 | Attribute | Value |
@@ -18,11 +20,7 @@ ms.custom: automatically generated
 | Allowed values | `on,off` |
 | Parameter type | dynamic |
 | Documentation | [geqo](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_effort
 
@@ -35,11 +33,7 @@ ms.custom: automatically generated
 | Allowed values | `1-10` |
 | Parameter type | dynamic |
 | Documentation | [geqo_effort](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-EFFORT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_generations
 
@@ -52,11 +46,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [geqo_generations](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-GENERATIONS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_pool_size
 
@@ -69,11 +59,7 @@ ms.custom: automatically generated
 | Allowed values | `0-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [geqo_pool_size](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-POOL-SIZE) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_seed
 
@@ -86,11 +72,7 @@ ms.custom: automatically generated
 | Allowed values | `0-1` |
 | Parameter type | dynamic |
 | Documentation | [geqo_seed](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-SEED) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_selection_bias
 
@@ -103,11 +85,7 @@ ms.custom: automatically generated
 | Allowed values | `1.5-2` |
 | Parameter type | dynamic |
 | Documentation | [geqo_selection_bias](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-SELECTION-BIAS) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
 
 ### geqo_threshold
 
@@ -120,9 +98,4 @@ ms.custom: automatically generated
 | Allowed values | `2-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [geqo_threshold](https://www.postgresql.org/docs/17/runtime-config-query.html#GUC-GEQO-THRESHOLD) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

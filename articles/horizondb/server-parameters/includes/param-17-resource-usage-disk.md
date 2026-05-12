@@ -2,11 +2,13 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: include
-ms.custom: automatically generated
+ms.custom:
+  - automatically generated
 ---
+
 ### temp_file_limit
 
 | Attribute | Value |
@@ -18,9 +20,4 @@ ms.custom: automatically generated
 | Allowed values | `-1-2147483647` |
 | Parameter type | dynamic |
 | Documentation | [temp_file_limit](https://www.postgresql.org/docs/17/runtime-config-resource.html#GUC-TEMP-FILE-LIMIT) |
-
-
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-

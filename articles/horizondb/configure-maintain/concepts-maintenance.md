@@ -1,10 +1,10 @@
 ---
-title: Scheduled Maintenance
+title: Scheduled Maintenance in Azure HorizonDB
 description: This article describes the scheduled maintenance feature in your Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -12,12 +12,12 @@ ms.collection:
   - ce-skilling-ai-copilot
 ---
 
-# Scheduled maintenance
+# Scheduled maintenance in Azure HorizonDB
 
-Your Azure HorizonDB flexible server instance periodically performs maintenance operations to help keep your managed database secure, stable, and up to date. During maintenance, the server gets new features, updates, and patches.
+Your Azure HorizonDB instance periodically performs maintenance operations to help keep your managed database secure, stable, and up to date. During maintenance, the server gets new features, updates, and patches.
 
 > [!IMPORTANT]  
-> Avoid all server operations (modifications, configuration changes, starting/stopping the server) during Azure HorizonDB flexible server instance maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
+> Avoid all server operations (modifications, configuration changes, starting/stopping the server) during Azure HorizonDB instance maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
 
 ## Maintenance window
 
@@ -33,16 +33,16 @@ You can receive notifications about upcoming scheduled maintenance through:
 - Push notification to an Azure app.
 - Voice message.
 
-When you're specifying preferences for the maintenance schedule, you can choose between a custom schedule and a system managed schedule. If you opt for a custom schedule, you can specify a day of the week and a time window. But if you select a system managed schedule, the system chooses a day for you. And within that day, it chooses a one hour time window, between 11:00 PM and 7:00 AM in your server region's time. You can configure different maintenance schedules for each of your Azure HorizonDB flexible server instance.
+When you're specifying preferences for the maintenance schedule, you can choose between a custom schedule and a system managed schedule. If you opt for a custom schedule, you can specify a day of the week and a time window. But if you select a system managed schedule, the system chooses a day for you. And within that day, it chooses a one hour time window, between 11:00 PM and 7:00 AM in your server region's time. You can configure different maintenance schedules for each of your Azure HorizonDB instance.
 
 > [!IMPORTANT]  
 > Normally, the interval between successful scheduled maintenance events for a server is, at least, 30 days. But for a critical emergency update, such as a severe vulnerability, the notification window could be shorter than five days or even be omitted. The critical update might be applied to your server, even if the system performed scheduled maintenance in the last 30 days.
 
-You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure HorizonDB flexible server instance and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings become effective upon successful completion of the next scheduled maintenance.
+You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure HorizonDB instance and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings become effective upon successful completion of the next scheduled maintenance.
 
 ## System-managed vs. custom maintenance
 
-You can define a system-managed schedule or a custom schedule for each Azure HorizonDB flexible server instance in your Azure subscription:
+You can define a system-managed schedule or a custom schedule for each Azure HorizonDB instance in your Azure subscription:
 
 - With a system-managed schedule, the system chooses any one hour window between 11:00 PM and 7:00 AM in your server region's time.
 - With a custom schedule, you can specify your maintenance window for the server, by choosing the day of the week and the start time of a one hour time window.
@@ -63,14 +63,16 @@ Some considerations when considering during monthly maintenance:
 - Downtime depends on the transactional load on the server at the time of maintenance.
 - Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
 
-## Applying Maintenance on Stopped/Disabled Instances
+<a id="applying-maintenance-on-stoppeddisabled-instances"></a>
 
-If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day autorestart](./concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
+## Apply Maintenance on Stopped/Disabled Instances
+
+If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day autorestart](concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
 
 ## Related content
 
-- [Configure scheduled maintenance](how-to-configure-scheduled-maintenance.md)
-- [Get notifications about upcoming maintenance](/azure/service-health/service-notifications)
+- [Schedule maintenance in Azure HorizonDB](how-to-configure-scheduled-maintenance.md)
+- [Get notifications about upcoming maintenance](/azure/service-health/service-health-notifications-properties)
 - [Set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)

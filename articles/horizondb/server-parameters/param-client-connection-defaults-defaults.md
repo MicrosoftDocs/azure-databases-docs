@@ -1,72 +1,16 @@
 ---
-title: Client Connection Defaults / Other Defaults server parameters
-description: Client Connection Defaults / Other Defaults server parameters for Azure HorizonDB flexible server.
+title: Client Connection Defaults / Other Defaults Parameters
+description: Client Connection Defaults / Other Defaults parameters for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
-ms.custom: automatically generated
-zone_pivot_groups: postgresql-server-version
+ms.custom:
+  - automatically generated
 ---
-# Client Connection Defaults / Other Defaults
-
-
-::: zone pivot="postgresql-18"
-
-[!INCLUDE [param-18-client-connection-defaults-defaults](./includes/param-18-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-17"
+# HorizonDB - Client Connection Defaults / Other Defaults
 
 [!INCLUDE [param-17-client-connection-defaults-defaults](./includes/param-17-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-16"
-
-[!INCLUDE [param-16-client-connection-defaults-defaults](./includes/param-16-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-15"
-
-[!INCLUDE [param-15-client-connection-defaults-defaults](./includes/param-15-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-14"
-
-[!INCLUDE [param-14-client-connection-defaults-defaults](./includes/param-14-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-13"
-
-[!INCLUDE [param-13-client-connection-defaults-defaults](./includes/param-13-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-12"
-
-[!INCLUDE [param-12-client-connection-defaults-defaults](./includes/param-12-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-
-::: zone pivot="postgresql-11"
-
-[!INCLUDE [param-11-client-connection-defaults-defaults](./includes/param-11-client-connection-defaults-defaults.md)]
-
-::: zone-end
-
-

@@ -150,6 +150,35 @@ Foreign-key constraints:
 Access method: heap
 ```
 
+### Apache AGE Graph Visualization
+
+The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the extension, see [PostgreSQL extension](../developer/vs-code-extension/vs-code-overview.md).
+
+To render results in the graph visualizer, your queries must meet the following requirements:
+- **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead of returning properties, return the full objects and name the relationship variable:
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      SET a.disp_label = a.title
+      SET b.disp_label = b.title
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r1:BOUGHT_TOGETHER]->(mid:Product)-[r2:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r1, mid, r2, b
+  $$) AS (a agtype, r1 agtype, mid agtype, r2 agtype, b agtype);
+  ```
+
 ## Related content
 
 - [Azure Database for PostgreSQL documentation](../overview.md)

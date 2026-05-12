@@ -1,10 +1,10 @@
 ---
-title: Best Practices for pg_dump and pg_restore
-description: This article discusses best practices for pg_dump and pg_restore in Azure HorizonDB flexible server.
+title: Best Practices for pg_dump and pg_restore in Azure HorizonDB
+description: This article discusses best practices for pg_dump and pg_restore in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/22/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: best-practice
@@ -12,13 +12,13 @@ ms.custom:
   - template-how-to
 ---
 
-# Best practices for pg_dump and pg_restore for Azure HorizonDB 
+# Best practices for pg_dump and pg_restore in Azure HorizonDB
 
 This article reviews options and best practices for speeding up pg_dump and pg_restore. It also explains the best server configurations for carrying out pg_restore.
 
 ## Best practices for pg_dump
 
-You can use the pg_dump utility to extract an Azure HorizonDB flexible server database into a script file or archive file. A few of the command line options that you can use to reduce the overall dump time by using pg_dump are listed in the following sections.
+You can use the pg_dump utility to extract an Azure HorizonDB database into a script file or archive file. A few of the command line options that you can use to reduce the overall dump time by using pg_dump are listed in the following sections.
 
 ### Directory format(-Fd)
 
@@ -41,10 +41,10 @@ This option specifies the compression level to use. Zero means no compression. Z
 Before you start the pg_dump process, consider whether table vacuuming is necessary. Bloat on tables significantly increases pg_dump times. Execute the following query to identify table bloats:
 
 ```sql
-select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_tup::float*100) dead_pct,autovacuum_count,last_vacuum,last_autovacuum,last_autoanalyze,last_analyze from pg_stat_all_tables where n_live_tup >0;
+select schemaname,relname,n_dead_tup,n_live_tup,round(n_dead_tup::float/n_live_tup::float*100) dead_pct,autovacuum_count,last_vacuum,last_autovacuum,last_autoanalyze,last_analyze from pg_stat_all_tables where n_live_tup >0;
 ```
 
-The `dead_pct` column in this query is the percentage of dead tuples when compared to live tuples. A high `dead_pct` value for a table might indicate that the table isn't being properly vacuumed. For more information, see [Autovacuum tuning in Azure HorizonDB flexible server](how-to-autovacuum-tuning.md).
+The `dead_pct` column in this query is the percentage of dead tuples when compared to live tuples. A high `dead_pct` value for a table might indicate that the table isn't being properly vacuumed. For more information, see [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md).
 
 For each table that you identify, you can perform a manual vacuum analysis by running the following:
 
@@ -58,7 +58,7 @@ You can perform a pg_dump on an online or live server. It makes consistent backu
 
 For large databases, you could create a point-in-time recovery (PITR) server from the production server and perform the pg_dump process on the PITR server. Running pg_dump on a PITR would be a cold run process. The trade-off for this approach is that you wouldn't be concerned with extra CPU, memory, and IO utilization that comes with a pg_dump process that runs on an actual production server. You can run pg_dump on a PITR server and then drop the PITR server after the pg_dump process is completed.
 
-### Recommended server sizing 
+### Recommended server sizing
 
 When you observe slow pg_dump performance while network bandwidth is high, consider using a higher vCore SKU. Higher vCore SKUs typically provide additional CPU and network throughput, which can reduce overall dump time. Monitor CPU, network, and IOPS metrics to confirm whether bandwidth or compute is the bottleneck before you scale.
 
@@ -66,8 +66,8 @@ When you observe slow pg_dump performance while network bandwidth is high, consi
 
 Tune the following server parameters to help speed up index creation during restore operations. pg_dump archives often include index-creation commands (for example, CREATE INDEX or ALTER TABLE ... ADD CONSTRAINT); improving index-build performance can shorten total migration time:
 
-- `maintenance_work_mem` = 2097151 (2 GB) — Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
-- `max_parallel_maintenance_workers` = 4 — Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
+- `maintenance_work_mem` = 2097151 (2 GB) - Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
+- `max_parallel_maintenance_workers` = 4 - Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
 
 Test any parameter or SKU changes on a nonproduction or PITR server. Validate performance and stability, then apply the changes to production. After migration or large restores complete, revert parameters to values that match normal workload requirements.
 
@@ -77,7 +77,7 @@ Use the following syntax for pg_dump:
 
 `pg_dump -h <hostname> -U <username> -d <databasename> -Fd -j <Num of parallel jobs> -Z0 -f sampledb_dir_format`
 
-You can use the pg_restore utility to restore an Azure HorizonDB flexible server database from an archive that's created by pg_dump. A few command line options for reducing the overall restore time are listed in the following sections.
+You can use the pg_restore utility to restore an Azure HorizonDB database from an archive that's created by pg_dump. A few command line options for reducing the overall restore time are listed in the following sections.
 
 ### Parallel restore
 
@@ -130,7 +130,9 @@ For more information about the SKUs, see:
 
 Here are some examples of how to use `pg_dump` and `pg_restore` with the best practices discussed above.
 
-### Using `pg_dump` with directory format and parallel jobs
+<a id="using-pg_dump-with-directory-format-and-parallel-jobs"></a>
+
+### Use `pg_dump` with directory format and parallel jobs
 
 ```bash
 pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
@@ -142,7 +144,9 @@ pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
 - `-j 4`: Uses 4 parallel jobs to speed up the dump.
 - `-f`: Specifies the output directory.
 
-### Using `pg_dump` with no compression for performance
+<a id="using-pg_dump-with-no-compression-for-performance"></a>
+
+### Use `pg_dump` with no compression for performance
 
 ```bash
 pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
@@ -153,7 +157,9 @@ pg_dump -h <server>.postgres.database.azure.com -U <username> -d <database> \
 - `-F c`: Custom format.
 - `-Z 0`: Disables compression to improve performance.
 
-### Using `pg_restore` with parallel obs
+<a id="using-pg_restore-with-parallel-obs"></a>
+
+### Use `pg_restore` with parallel obs
 
 ```bash
 pg_restore -h <server>.postgres.database.azure.com -U <username> -d <target_database> \
@@ -166,9 +172,9 @@ pg_restore -h <server>.postgres.database.azure.com -U <username> -d <target_data
 
 ## Related content
 
-- [Configure intelligent tuning for Azure HorizonDB flexible server](../monitor/how-to-enable-intelligent-performance-portal.md)
-- [Troubleshooting guides for Azure HorizonDB flexible server](concepts-troubleshooting-guides.md)
-- [Autovacuum tuning in Azure HorizonDB flexible server](how-to-autovacuum-tuning.md)
-- [Troubleshoot high IOPS utilization in Azure HorizonDB flexible server](how-to-high-io-utilization.md)
-- [Troubleshoot high CPU utilization in Azure HorizonDB flexible server](how-to-high-cpu-utilization.md)
-- [Query Performance Insight in Azure HorizonDB flexible server](../monitor/concepts-query-performance-insight.md)
+- [Configure intelligent tuning by using the Azure portal in Azure HorizonDB](../monitor/how-to-enable-intelligent-performance-portal.md)
+- [Troubleshooting guides overview in Azure HorizonDB](concepts-troubleshooting-guides.md)
+- [Autovacuum tuning in Azure HorizonDB](how-to-autovacuum-tuning.md)
+- [Troubleshoot high IOPS utilization in Azure HorizonDB](how-to-high-io-utilization.md)
+- [Troubleshoot high CPU utilization in Azure HorizonDB](how-to-high-cpu-utilization.md)
+- [Query Performance Insight in Azure HorizonDB](../monitor/concepts-query-performance-insight.md)

@@ -1,10 +1,10 @@
 ---
-title: Connect with Managed Identity
-description: Learn about how to connect and authenticate using managed identity for authentication with an Azure HorizonDB flexible server instance.
+title: Connect with Managed Identity in Azure HorizonDB
+description: Learn about how to connect and authenticate using managed identity for authentication in Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -16,14 +16,14 @@ ms.custom:
   - horz-security
 ---
 
-# Connect with managed identity to Azure HorizonDB 
+# Connect with managed identity in Azure HorizonDB
 
-You can use both system-assigned and user-assigned managed identities to authenticate to an Azure HorizonDB flexible server instance. This article shows you how to use a system-assigned managed identity for an Azure Virtual Machine (VM) to access an Azure HorizonDB flexible server instance. Managed Identities are automatically managed by Azure and enable you to authenticate to services that support Microsoft Entra authentication without needing to insert credentials into your code.
+You can use both system-assigned and user-assigned managed identities to authenticate to an Azure HorizonDB instance. This article shows you how to use a system-assigned managed identity for an Azure Virtual Machine (VM) to access an Azure HorizonDB instance. Managed Identities are automatically managed by Azure and enable you to authenticate to services that support Microsoft Entra authentication without needing to insert credentials into your code.
 
 You learn how to:
-- Grant your VM access to an Azure HorizonDB flexible server instance.
+- Grant your VM access to an Azure HorizonDB instance.
 - Create a user in the database that represents the VM's system-assigned identity.
-- Get an access token using the VM identity and use it to query an Azure HorizonDB flexible server instance.
+- Get an access token using the VM identity and use it to query an Azure HorizonDB instance.
 - Implement the token retrieval in a C# example application.
 
 ## Prerequisites
@@ -31,8 +31,8 @@ You learn how to:
 - If you're not familiar with the managed identities for Azure resources feature, see this [overview](/azure/active-directory/managed-identities-azure-resources/overview). If you don't have an Azure account, [sign up for a free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you continue.
 - To do the required resource creation and role management, your account needs "Owner" permissions at the appropriate scope (your subscription or resource group). If you need assistance with a role assignment, see [Assign Azure roles to manage access to your Azure subscription resources](/azure/role-based-access-control/role-assignments-portal).
 - You need an Azure VM (for example, running Ubuntu Linux) that you'd like to use to access your database using Managed Identity
-- You need an Azure HorizonDB flexible server instance that has [Microsoft Entra authentication](../security/security-entra-configure.md) configured
-- To follow the C# example, first, complete the guide on how to [Connect with C#](../connectivity/connect-csharp.md)
+- You need an Azure HorizonDB instance that has [How to use Microsoft Entra ID for authentication in Azure HorizonDB](security-entra-configure.md) configured
+- To follow the C# example, first, complete the guide on how to [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](../connectivity/connect-csharp.md)
 
 ## Create a system-assigned managed identity for your VM
 
@@ -50,9 +50,9 @@ Retrieve the application ID for the system-assigned managed identity, which you 
 az ad sp list --display-name vm-name --query [*].appId --out tsv
 ```
 
-## Create an Azure HorizonDB  user for your Managed Identity
+## Create an Azure HorizonDB user for your Managed Identity
 
-Now, connect as the Microsoft Entra administrator user to your Azure HorizonDB flexible server database, and run the following SQL statements, replacing `<identity_name>` with the name of the resources for which you created a system-assigned managed identity:
+Now, connect as the Microsoft Entra administrator user to your Azure HorizonDB database, and run the following SQL statements, replacing `<identity_name>` with the name of the resources for which you created a system-assigned managed identity:
 
 Note **pgaadauth_create_principal** must be run on the Postgres database.
 
@@ -69,12 +69,12 @@ Success looks like:
 (1 row)
 ```
 
-For more information on managing Microsoft Entra ID enabled database roles, see [Manage Microsoft Entra roles in Azure HorizonDB](../security/security-manage-entra-users.md).
+For more information on managing Microsoft Entra ID enabled database roles, see [Manage Microsoft Entra roles in Azure HorizonDB](security-manage-entra-users.md).
 
 The managed identity now has access when authenticating with the identity name as a role name and the Microsoft Entra token as a password.
 
 > [!NOTE]  
-> If the managed identity is not valid, an error is returned: `ERROR:   Could not validate AAD user <ObjectId> because its name is not found in the tenant. [...]`.
+> If the managed identity isn't valid, an error is returned: `ERROR: Could not validate AAD user <ObjectId> because its name is not found in the tenant. [...]`.
 >
 > If you see an error like "No function matches...", make sure you're connecting to the `postgres` database, not a different database that you also created.
 
@@ -109,7 +109,7 @@ You're now connected to the database you configured earlier.
 
 ## Connect using Managed Identity
 
-This section shows how to get an access token using the VM's user-assigned managed identity and use it to call an Azure HorizonDB flexible server instance. Azure HorizonDB natively supports Microsoft Entra authentication, so it can directly accept access tokens obtained using managed identities for Azure resources. When creating a connection to an Azure HorizonDB, you pass the access token in the password field.
+This section shows how to get an access token using the VM's user-assigned managed identity and use it to call an Azure HorizonDB instance. Azure HorizonDB natively supports Microsoft Entra authentication, so it can directly accept access tokens obtained using managed identities for Azure resources. When creating a connection to an Azure HorizonDB, you pass the access token in the password field.
 
 ## Connect using Managed Identity in Python
 
@@ -117,11 +117,11 @@ For a Python code example, refer to the [Quickstart: Use Python to connect and q
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, refer to the [Quickstart: Use Java and JDBC with Azure HorizonDB](../connectivity/connect-java.md)
+For a Java code example, refer to the [Quickstart: Use Java and JDBC in Azure HorizonDB](../connectivity/connect-java.md)
 
 ## Connect using Managed Identity in C#
 
-Here's a .NET code example of opening a connection to an Azure HorizonDB flexible server instance using an access token. This code must run on the VM to use the system-assigned managed identity to obtain an access token from Microsoft Entra ID. Replace the values of HOST, USER (with `<identity_name>`), and `DATABASE`.
+Here's a .NET code example of opening a connection to an Azure HorizonDB instance using an access token. This code must run on the VM to use the system-assigned managed identity to obtain an access token from Microsoft Entra ID. Replace the values of HOST, USER (with `<identity_name>`), and `DATABASE`.
 
 ```csharp
 using Azure.Identity;
@@ -189,4 +189,4 @@ Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 
 ## Related content
 
-- [Microsoft Entra authentication in Azure HorizonDB](../security/security-entra-concepts.md)
+- [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md)
