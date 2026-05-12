@@ -1,6 +1,6 @@
 ---
 title: Implement durable AI pipelines in Azure HorizonDB
-description: Define and run durable AI data pipelines directly in Azure HorizonDB with built-in support for chunking, embeddings, extraction, retrieval, and re-ranking, backed by reliable execution with state, retries, and crash recovery.
+description: Define and run durable AI data pipelines directly in Azure HorizonDB with built-in support for chunking, embeddings, extraction, retrieval, and reranking, backed by reliable execution with state, retries, and crash recovery.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
@@ -18,9 +18,9 @@ ms.custom:
 
 # Implement durable AI pipelines in Azure HorizonDB
 
-AI pipelines in Azure HorizonDB let you describe an AI workflow — chunking, embedding, extraction, generation, ranking, human approval — declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
+AI pipelines in Azure HorizonDB let you describe an AI workflow - chunking, embedding, extraction, generation, ranking, human approval - declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
-AI pipelines are built on top of [pg_durable](../development/pg-durable.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface — sources, steps, sinks, and triggers — that compiles down to a durable graph automatically.
+AI pipelines are built on top of [pg_durable](../development/pg-durable.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface - sources, steps, sinks, and triggers - that compiles down to a durable graph automatically.
 
 > [!NOTE]  
 > AI pipelines and the `pg_durable` runtime they depend on are in **public preview**.
@@ -34,21 +34,21 @@ The most common pattern for getting data into a vector store today is a service 
 - The embedding model changes, and now there's no clean way to re-embed exactly the rows that need it.
 - Cost tracking lives in application logs, not next to the data.
 
-AI pipelines move that logic into HorizonDB itself. The source, the steps, the sink, and the run history are all SQL. The database is already where your data lives, where your transactions commit, and where backups and PITR already protect you — so it's the natural place for the embedding pipeline to live too.
+AI pipelines move that logic into HorizonDB itself. The source, the steps, the sink, and the run history are all SQL. The database is already where your data lives, where your transactions commit, and where backups and PITR already protect you - so it's the natural place for the embedding pipeline to live too.
 
 ## Pipeline anatomy
 
 A pipeline has four parts:
 
-1. **Source** — where rows come from. Today, a `table_source(...)` over a HorizonDB table, optionally with an `incremental_column` (so the pipeline can skip rows it's already processed) and a row `filter`.
-2. **Steps** — the AI operations that transform each row, in order. Each step appends columns to the in-flight batch.
-3. **Sink** *(optional)* — where the resulting rows are written. If you don't specify one, the pipeline auto-creates `<pipeline_name>_output`.
-4. **Trigger** — `'on_change'` (run automatically when source rows change) or `'manual'` (run only when you call `ai.run()`).
+1. **Source** - where rows come from. Today, a `table_source(...)` over a HorizonDB table, optionally with an `incremental_column` (so the pipeline can skip rows it's already processed) and a row `filter`.
+1. **Steps** - the AI operations that transform each row, in order. Each step appends columns to the in-flight batch.
+1. **Sink** *(optional)* - where the resulting rows are written. If you don't specify one, the pipeline autocreates `<pipeline_name>_output`.
+1. **Trigger** - `'on_change'` (run automatically when source rows change) or `'manual'` (run only when you call `ai.run()`).
 
 ### Step types
 
 | Step | Purpose |
-|---|---|
+| --- | --- |
 | `ai.chunk()` | Split a long text column into overlapping chunks. |
 | `ai.embed()` | Generate vector embeddings for a column. |
 | `ai.extract()` | Extract structured fields from text using an LLM. |
@@ -71,7 +71,7 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management (recommended)
 
-If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically — there's no endpoint or key to manage. AI functions use the Managed Models by default:
+If [AI Model Management in Azure HorizonDB](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default:
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
@@ -101,7 +101,7 @@ The pipeline examples in this article work the same way under either option.
 
 ## Define a pipeline
 
-The smallest useful AI pipeline takes a source table of documents, chunks the body, generates embeddings, and writes the result to an auto-created sink:
+The smallest useful AI pipeline takes a source table of documents, chunks the body, generates embeddings, and writes the result to an autocreated sink:
 
 ```sql
 CREATE TABLE documents (
@@ -129,13 +129,13 @@ SELECT ai.create_pipeline(
 );
 ```
 
-`ai.create_pipeline()` registers the definition. It does not run anything yet. Inspect the compiled execution plan with `ai.explain()`:
+`ai.create_pipeline()` registers the definition. It doesn't run anything yet. Inspect the compiled execution plan with `ai.explain()`:
 
 ```sql
 SELECT ai.explain('rag_pipeline');
 ```
 
-Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via `df.start()`. Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't re-run `ai.chunk()`.
+Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via `df.start()`. Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 ## Run, monitor, and retry
 
@@ -175,7 +175,7 @@ SELECT ai.resume('rag_pipeline');
 
 ## Use an explicit sink
 
-Auto-created `<pipeline>_output` tables are convenient for getting started, but most production pipelines want a stable, indexable target table they own:
+Autocreated `<pipeline>_output` tables are convenient for getting started, but most production pipelines want a stable, indexable target table they own:
 
 ```sql
 CREATE TABLE document_vectors (
@@ -201,7 +201,7 @@ SELECT ai.create_pipeline(
 );
 ```
 
-Once the sink exists, you can build a [DiskANN vector index](vector-indexing-diskann.md) on `document_vectors.embedding` and use it directly in [hybrid-search](hybrid-search.md) queries.
+Once the sink exists, you can build a [Scalable vector indexing with DiskANN](vector-indexing-diskann.md) on `document_vectors.embedding` and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ## Re-embed when the model changes
 
@@ -214,15 +214,15 @@ SELECT ai.backfill('document_ingestion');
 SELECT ai.wait_for_completion('document_ingestion', 600);
 ```
 
-The backfill runs as a single durable instance. If the database restarts mid-backfill, it resumes from the last checkpointed batch — you don't restart from row zero.
+The backfill runs as a single durable instance. If the database restarts mid-backfill, it resumes from the last checkpointed batch - you don't restart from row zero.
 
 ## Cost controls
 
-Embedding and LLM calls cost money. AI pipelines give you a few practical levers to keep that cost predictable:
+Embedding and LLM call cost money. AI pipelines give you a few practical levers to keep that cost predictable:
 
-- **`incremental_column`** ensures you only embed new or changed rows on subsequent runs.
-- **`filter`** on `ai.table_source(...)` lets you scope the pipeline to rows you care about (for example, `status = 'published'`) instead of the whole table.
-- **`ai.pause()`** stops the change trigger from launching new runs while you're tuning.
+- `incremental_column` ensures you only embed new or changed rows on subsequent runs.
+- `filter` on `ai.table_source(...)` lets you scope the pipeline to rows you care about (for example, `status = 'published'`) instead of the whole table.
+- `ai.pause()` stops the change trigger from launching new runs while you're tuning.
 - **`ai.backfill()` is explicit.** Re-embedding everything only happens when you ask for it.
 
 ## Compared to one-shot `azure_ai` calls
@@ -230,10 +230,10 @@ Embedding and LLM calls cost money. AI pipelines give you a few practical levers
 The `azure_ai` extension can also call models from SQL. The two surfaces solve different problems:
 
 | | One-shot `azure_ai` calls | AI pipelines |
-|---|---|---|
+| --- | --- | --- |
 | Shape | Single SQL function call (`azure_openai.create_embeddings(...)`) | Declarative pipeline with source, steps, sink |
-| Durability | None — fails the calling statement | Durable: retries, resume after crash, checkpoints |
-| Best for | Ad-hoc embedding of a few rows; using AI inside a query | Bulk ingestion, ongoing change-driven embedding, multi-step workflows |
+| Durability | None - fails the calling statement | Durable: retries, resume after crash, checkpoints |
+| Best for | Ad hoc embedding of a few rows; using AI inside a query | Bulk ingestion, ongoing change-driven embedding, multi-step workflows |
 | Backfill | Manual `UPDATE ... SET embedding = ...` | `ai.backfill()` |
 
 Use one-shot calls for interactive queries and small jobs. Use a pipeline whenever the work is large enough, long enough, or important enough that you'd otherwise build a service tier for it.
@@ -243,13 +243,13 @@ Use one-shot calls for interactive queries and small jobs. Use a pipeline whenev
 - Sources are HorizonDB tables. To ingest from blob storage or external systems, land the content in a staging table first; the pipeline handles chunking, embedding, checkpointing, and sink writes from there.
 - Pipeline definitions are static. Multi-model routing (for example, send "simple" rows to a cheap model and "complex" rows to a stronger one) is expressed as multiple pipelines over the same source with different `filter` clauses.
 - Pipelines run on the primary. Read replicas can query `ai.*` views but don't execute pipelines.
-- Pipeline state is not portable across major versions of `pg_durable` during preview. Drain or pause running pipelines before upgrading.
+- Pipeline state isn't portable across major versions of `pg_durable` during preview. Drain or pause running pipelines before upgrading.
 
 ## Related content
 
-- [Durable execution with pg_durable](../development/pg-durable.md)
-- [Generate vector embeddings in SQL](generate-vector-embeddings.md)
-- [Vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Hybrid search](hybrid-search.md)
-- [Choose a vector index](vector-index-selection-guide.md)
-- [AI functions (azure_ai)](ai-functions.md)
+- [Durable execution with pg_durable in Azure HorizonDB](../development/pg-durable.md)
+- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Hybrid search in Azure HorizonDB](hybrid-search.md)
+- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
+- [AI functions in the azure_ai extension](ai-functions.md)

@@ -20,7 +20,7 @@ ms.custom:
 
 The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
-**`azure_ai.extract()`** discovers hidden relationships and entities from unstructured text, right inside a SQL query. Feed it contracts, support tickets, research papers, or any text-heavy data, and it pulls out the structured relationships you need to populate your knowledge graph.
+`azure_ai.extract()` discovers hidden relationships and entities from unstructured text, right inside a SQL query. Feed it contracts, support tickets, research papers, or any text-heavy data, and it pulls out the structured relationships you need to populate your knowledge graph.
 
 This document walks through a concrete, end-to-end example: extracting entities from IT incident tickets, flowing them into an Apache AGE graph, and querying the graph to find cascading failure chains.
 
@@ -48,7 +48,7 @@ You need a chat/generation model (such as `gpt-5.4`) that the `azure_ai` extensi
 
 #### Option 1: AI Model Management (recommended)
 
-If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically — there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
+If [AI Model Management in Azure HorizonDB](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
 
 #### Option 2: Manually register a model in the model registry
 
@@ -114,7 +114,7 @@ Use `azure_ai.extract()` to pull structured relationship triples from each docum
 
 Pass the ticket ID as part of the input text so the model can reference it as a source entity:
 
-> [!TIP]
+> [!TIP]  
 > **Adapting the extraction prompt:** The only thing you change for a different domain is the example relationship types in the ARRAY hint:
 > - **Contracts:** `BINDS, REFERENCES, AMENDS, GOVERNS`
 > - **Research papers:** `AUTHORED, CITES, EVALUATES, CONTRADICTS`
@@ -158,7 +158,7 @@ When you run `azure_ai.extract()` across thousands of tickets, the same entity a
 
 Use `azure_ai.generate()` to normalize entity names into canonical forms before inserting into the graph.
 
-> [!TIP]
+> [!TIP]  
 > **When to skip this step:** If your source data uses controlled vocabulary (for example, service names from a CMDB, or product SKUs from a catalog), entities are already canonical. Skip deduplication and go directly to Step 3.
 
 ```sql
@@ -249,7 +249,7 @@ SELECT * FROM entity_canonical ORDER BY canonical, alias;
 Example output:
 
 | canonical | alias |
-|-----------|-------|
+| --- | --- |
 | API Gateway | API gateway |
 | API Gateway | api-gateway |
 | API Gateway | the gateway service |
@@ -301,7 +301,7 @@ Compare this list against `raw_entities`. You should see fewer distinct names (a
 
 Take the normalized output from Step 2 and load it into an Apache AGE graph. The generic pipeline (3a + 3b) works for **any domain** because it operates entirely on `normalized_rels`, which has a universal schema: `source`, `relationship`, `target`. No customization is needed.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > The `DO` blocks below use the `agtype` type, which lives in the `ag_catalog` schema. Make sure your search path includes it before running Step 3. If you set it during [Enable extensions](#enable-extensions), run it again in case your session was reset.
 >
 > ```sql
@@ -310,7 +310,7 @@ Take the normalized output from Step 2 and load it into an Apache AGE graph. The
 
 ### 3a: Create entity nodes
 
-Create one graph node for every unique entity found in `normalized_rels`. This block is domain-agnostic: it reads the `source` and `target` columns without knowing what kind of entities they represent. The `MERGE` command creates the node only if it does not already exist, so this block is safe to re-run.
+Create one graph node for every unique entity found in `normalized_rels`. This block is domain-agnostic: it reads the `source` and `target` columns without knowing what kind of entities they represent. The `MERGE` command creates the node only if it doesn't already exist, so this block is safe to re-run.
 
 ```sql
 SELECT ag_catalog.create_graph('incident_graph');
@@ -336,7 +336,7 @@ END $$;
 
 ### 3b: Create relationship edges
 
-Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, etc.) become edge labels automatically. The `regexp_replace` sanitizes the relationship type into a valid Cypher label (uppercase, underscores only).
+Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, etc.) become edge labels automatically. The `regexp_replace` sanitizes the relationship type into a valid Cipher label (uppercase, underscores only).
 
 ```sql
 DO $$
@@ -372,7 +372,7 @@ $$) AS (source agtype, edge_type agtype, target agtype);
 
 ## Step 4 - Query the Graph
 
-With the graph populated, use Cypher traversals to answer operational questions that are difficult with flat tables alone. Each query below represents a real question an on-call engineer or incident reviewer would ask.
+With the graph populated, use Cipher traversals to answer operational questions that are difficult with flat tables alone. Each query below represents a real question an on-call engineer or incident reviewer would ask.
 
 ### "What downstream services did this failure break?"
 
@@ -392,7 +392,7 @@ $$) AS (
 
 ### "Which services are the riskiest single points of failure?"
 
-Count how many other services depend on or are impacted by each node. Services with the highest incoming edge count are your reliability hotspots:
+Count how many other services depend on or are affected by each node. Services with the highest incoming edge count are your reliability hotspots:
 
 ```sql
 SELECT * FROM ag_catalog.cypher(
@@ -407,19 +407,19 @@ $$) AS (
 ORDER BY incoming_edges DESC;
 ```
 
-> [!TIP]
+> [!TIP]  
 > The edge labels in your graph depend on what the LLM extracted. Run this query to see all available edge types, then adjust the patterns above:
 >
 > ```sql
 > SELECT * FROM ag_catalog.cypher('incident_graph', $$
->     MATCH ()-[r]->()
->     RETURN DISTINCT label(r) AS edge_type
+> MATCH ()-[r]->()
+> RETURN DISTINCT label(r) AS edge_type
 > $$) AS (edge_type agtype);
 > ```
 
 ### Step 5 - Visualize the graph with VS Code
 
-The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [PostgreSQL extension](../development/vs-code-extension/vs-code-overview.md).
+The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cipher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../development/vs-code-extension/vs-code-overview.md).
 
 This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands the neighborhood around each node:
 
@@ -436,9 +436,11 @@ This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands th
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-  ![Graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents.](media/knowledge-graph/checkout-workflow-traversal.png)
+:::image type="content" source="media/knowledge-graph/checkout-workflow-traversal.png" alt-text="Screenshot of graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents." lightbox="media/knowledge-graph/checkout-workflow-traversal.png":::
 
-## Scaling the pattern
+<a id="scaling-the-pattern"></a>
+
+## Scale the pattern
 
 Scale this across thousands of tickets and you have an incident knowledge graph that an AI agent can query to answer questions like:
 
@@ -460,7 +462,6 @@ This tutorial runs extraction, deduplication, and graph loading as interactive S
 
 ## Related content
 
-- [AI Functions in Azure HorizonDB](../ai/ai-functions.md)
-- [Apache AGE extension overview](../graph/age-overview.md)
-- [Graph-augmented RAG patterns](../ai/graphrag.md)
-
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
+- [Graph-augmented RAG patterns with Azure HorizonDB](graphrag.md)

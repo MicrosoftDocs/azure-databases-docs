@@ -27,7 +27,7 @@ For a comprehensive hub of app development resources, tutorials, and community c
 ## Quick reference
 
 | Industry | Use case | Key capabilities |
-|---|---|---|
+| --- | --- | --- |
 | **Financial services** | [AI copilot for financial research](#ai-copilot-for-financial-research) | Hybrid search, semantic reranking, AI pipelines |
 | | [Fraud detection & compliance](#fraud-detection-and-compliance) | Knowledge graph, AI functions in SQL, real-time scoring |
 | **Retail & e-commerce** | [Personalized shopping (AgenticShop)](#personalized-shopping-agenticshop) | Vector search, semantic reranking, multi-agent |
@@ -45,14 +45,14 @@ For a comprehensive hub of app development resources, tutorials, and community c
 
 Financial analysts need fast, accurate answers grounded in earnings reports, SEC filings, and market data, not LLM hallucinations. A RAG copilot retrieves the most relevant passages from your financial document corpus using hybrid search, reranks them for precision, and generates grounded answers with citations.
 
-> [!TIP]
+> [!TIP]  
 > The [Build your own AI copilot](https://aka.ms/pg-byoac-docs) solution accelerator provides an end-to-end guide for building this pattern with Azure HorizonDB and Azure AI Services.
 
 **Build with Azure HorizonDB:**
 
 1. Store financial documents (earnings reports, SEC filings, analyst notes) in Azure HorizonDB with chunked text and `pgvector` embeddings indexed with DiskANN for sub-millisecond similarity search across millions of passages.
 1. Create a full-text search index with `pg_fts` over financial terms, tickers, and entity names for precise keyword matching.
-1. Use the `azure_ai` extension to generate embeddings and chat completions directly from SQL — no external orchestration needed.
+1. Use the `azure_ai` extension to generate embeddings and chat completions directly from SQL - no external orchestration needed.
 1. Combine vector search and BM25 full-text search with Reciprocal Rank Fusion for hybrid retrieval, then apply `azure_ai.rank()` to rerank the top candidates for precision.
 1. Build a conversational interface that retrieves context, generates grounded answers, and cites the source passages with document IDs and page numbers.
 
@@ -73,7 +73,7 @@ Financial services companies process millions of transactions daily. Manual revi
 
 Traditional search fails when a customer says "a lightweight jacket for hiking in the rain." An agent can understand intent using vector similarity, filter by availability and purchase history, and present ranked recommendations that improve with every interaction.
 
-> [!TIP]
+> [!TIP]  
 > Try the [AgenticShop](https://aka.ms/agentic-shop) solution accelerator: a multi-agent e-commerce demo powered by LlamaIndex with observability and memory persistence.
 
 **Build with Azure HorizonDB:**
@@ -130,7 +130,7 @@ Planning a trip means juggling flights, hotels, restaurants, budgets, and person
 *Example prompt: "Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget."*
 
 | Agent | Role | Shared table |
-|---|---|---|
+| --- | --- | --- |
 | **Research agent** | Finds flights, hotels, and attractions. Stores candidates with cost and fit scores. | `travel_options` |
 | **Budget agent** | Tracks totals, flags overruns, suggests alternatives. | `trip_budget` |
 | **Itinerary agent** | Builds a day-by-day plan accounting for timing and travel distances. | `itinerary` |
@@ -143,14 +143,14 @@ Planning a trip means juggling flights, hotels, restaurants, budgets, and person
 1. Enable DiskANN indexing on `pgvector` columns for fast preference matching across large option sets.
 1. Model location connectivity and route relationships using Apache AGE for graph-based itinerary planning.
 1. Build each agent with its own tool set (search APIs, budget calculators, scheduling logic, graph queries).
-1. Point all agents at the same Azure HorizonDB instance so they coordinate through shared tables — one agent writes its findings, the next picks up exactly where the first left off.
+1. Point all agents at the same Azure HorizonDB instance so they coordinate through shared tables - one agent writes its findings, the next picks up exactly where the first left off.
 1. Orchestrate the agents in sequence or parallel using a multi-agent framework.
 
 ### Legal research with GraphRAG
 
 Legal research requires traversing complex relationships between cases, statutes, and precedents, not just keyword matching. GraphRAG combines vector search over case text with graph traversal over citation networks, so a research assistant can find relevant precedents, trace how rulings build on each other, and synthesize answers that cite the full chain of reasoning.
 
-> [!TIP]
+> [!TIP]  
 > Try the [GraphRAG Legal Research Copilot](https://github.com/Azure-Samples/graphrag-legalcases-postgres): an end-to-end sample with U.S. Case Law (500K cases), vector search, semantic ranking, AGE graph, and RRF fusion.
 
 **Build with Azure HorizonDB:**
@@ -167,7 +167,7 @@ Organizations struggle to answer "Who has experience with payment systems and Po
 
 **Build with Azure HorizonDB:**
 
-1. Enable the Apache AGE extension and model employee–skill–project relationships as a property graph. Employees, skills, projects, and teams become nodes; proficiency levels and assignments become edges.
+1. Enable the Apache AGE extension and model employee-skill-project relationships as a property graph. Employees, skills, projects, and teams become nodes; proficiency levels and assignments become edges.
 1. Use the `azure_ai` extension to generate skill embeddings from résumés and project descriptions using Azure OpenAI.
 1. Index skill embeddings with DiskANN for fast similarity matching across large workforces to find people with *similar* skills, not just exact keyword matches.
 1. Build an agent with tools for graph traversal queries (AGE) and semantic skill matching (`pgvector`) so it can answer questions like "Find engineers who've worked on payment systems and speak Japanese."
@@ -179,8 +179,8 @@ Organizations struggle to answer "Who has experience with payment systems and Po
 Development teams spend too much time on database plumbing: provisioning instances, designing schemas by hand, onboarding new members to unfamiliar databases, and chasing down slow queries after the fact. An agent can handle the full lifecycle from a single conversation. You describe your workload, and it provisions an Azure HorizonDB instance, designs your schema, ships migration scripts, onboards your team, tunes performance, and audits security continuously.
 
 | Capability | Description |
-|---|---|
-| **Provision** | Creates an Azure HorizonDB instance with the right SKU, region, networking, and extensions. No portal clicks required. |
+| --- | --- |
+| **Provision** | Creates an Azure HorizonDB instance with the right SKU, region, networking, and extensions. No portal selects required. |
 | **Design and ship** | Converts a feature request into schema design, migration scripts, API endpoints, test data, and validation. |
 | **Clone and stage** | Mirrors production into a safe staging environment with realistic synthetic data and performance checks. |
 | **Onboard** | Reads an unfamiliar database and explains key tables, relationships, query patterns, and red flags. |
@@ -200,14 +200,14 @@ Development teams spend too much time on database plumbing: provisioning instanc
 Get started quickly with these end-to-end solution accelerators and sample applications:
 
 | Solution | Description | Link |
-|---|---|---|
+| --- | --- | --- |
 | **Build your own AI copilot (Financial Services)** | End-to-end guide for building RAG-based copilots with Azure HorizonDB and Azure AI Services. Covers ingestion, embeddings, retrieval, and generation. | [Documentation](https://aka.ms/pg-byoac-docs) |
 | **Chat with your Data** | Conversational search experience combining Azure AI Search and Azure OpenAI with natural language and speech-to-text. Deployable in your Azure subscription. | [GitHub repo](https://aka.ms/pg-cwyd-repo) |
 | **GraphRAG Legal Research Copilot** | Graph-augmented RAG with U.S. Case Law (500K cases). Includes vector search, semantic ranking, AGE graph, and RRF fusion. | [GitHub repo](https://github.com/Azure-Samples/graphrag-legalcases-postgres) |
 | **GraphRAG + Docker + AI Agents** | Containerized GraphRAG deployment with AI agent integration for automated graph construction and retrieval. | [GitHub repo](https://github.com/Azure-Samples/postgreSQL-graphRAG-docker) |
 | **AgenticShop** | Multi-agent e-commerce demo powered by LlamaIndex. Showcases personalized product discovery using unstructured data, with observability and memory persistence. | [Documentation](https://aka.ms/agentic-shop) |
 
-> [!TIP]
+> [!TIP]  
 > Visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/postgres-hub) for more tutorials, samples, community content, and everything app development with PostgreSQL on Azure.
 
 ## Related content

@@ -32,7 +32,7 @@ The system uses three main components:
 - **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access
 - **PostgreSQL Database** (Target): Azure HorizonDB with Microsoft Entra ID authentication
 
-This architecture ensures proper security isolation with separate managed identities for client authentication and database access. End-to-end, no passwords or static keys live in the agent, the MCP server, or the database — every hop uses Microsoft Entra ID.
+This architecture ensures proper security isolation with separate managed identities for client authentication and database access. End-to-end, no passwords or static keys live in the agent, the MCP server, or the database - every hop uses Microsoft Entra ID.
 
 ## Features and capabilities
 
@@ -60,7 +60,7 @@ With the MCP integration, your AI agents can handle queries like:
 Before you begin, make sure you have the required tools, accounts, and permissions in place to deploy and configure the MCP PostgreSQL Server. Having these prerequisites ready minimizes interruptions and helps ensure a smooth integration with Foundry.
 
 - [Azure CLI](/cli/azure/install-azure-cli) (latest version)
-- [Azure HorizonDB](overview.md) with Microsoft Entra ID authentication enabled
+- [Overview of AI capabilities in Azure HorizonDB](overview.md) with Microsoft Entra ID authentication enabled
 - [Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
@@ -362,7 +362,7 @@ For programmatic access, use the following MCP configuration in your Python code
 
 ## Limit the MCP tool surface
 
-The MCP server's database permissions are not set by the deployment template — only an Azure RBAC **Reader** role on the Postgres resource is. The actual database grants are the ones you ran in [Step 2: Configure database access](#step-2-configure-database-access). Step 2 shows the simplest pattern (`GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>"`), which lets the agent read every table in `public`. For production, narrow that grant — the database is the only authoritative boundary on what the agent can see.
+The MCP server's database permissions aren't set by the deployment template - only an Azure RBAC **Reader** role on the Postgres resource is. The actual database grants are the ones you ran in [Step 2: Configure database access](#step-2-configure-database-access). Step 2 shows the simplest pattern (`GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>"`), which lets the agent read every table in `public`. For production, narrow that grant - the database is the only authoritative boundary on what the agent can see.
 
 ### Use a schema allow-list
 
@@ -392,7 +392,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
 REVOKE USAGE ON SCHEMA public FROM "<CONTAINER_APP_IDENTITY_NAME>";
 ```
 
-With this pattern, even if a prompt convinces the agent to ask for `SELECT * FROM customers_pii`, the database returns a permission error — the safety boundary is enforced by HorizonDB, not by the agent's instructions.
+With this pattern, even if a prompt convinces the agent to ask for `SELECT * FROM customers_pii`, the database returns a permission error - the safety boundary is enforced by HorizonDB, not by the agent's instructions.
 
 ### Use Row Level Security for tenant isolation
 
@@ -497,8 +497,8 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 - [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
 - [Model Context Protocol specification](https://modelcontextprotocol.io/docs/learn/versioning)
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
-- [Azure HorizonDB integrations for AI applications](ai-frameworks.md)
-- [AI functions in Azure HorizonDB](ai-functions.md)
-- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
-- [Hybrid search](hybrid-search.md) — combine BM25 and vector search to ground agent answers
-- [Vector indexing with DiskANN](vector-indexing-diskann.md) — scale agent retrieval to large vector workloads
+- [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Hybrid search in Azure HorizonDB](hybrid-search.md)
+- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)

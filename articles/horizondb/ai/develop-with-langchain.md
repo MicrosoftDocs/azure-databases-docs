@@ -20,7 +20,7 @@ ms.custom:
 
 [LangChain](https://www.langchain.com/) is an LLM orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
 
-Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing](https://aka.ms/pg-diskann-docs) for high-performance search at scale. For details, see [Retrieval foundations](ai-search-overview.md).
+Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing](https://aka.ms/pg-diskann-docs) for high-performance search at scale. For details, see [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md).
 
 ## Authentication
 
@@ -42,7 +42,7 @@ Azure HorizonDB uses the open-source [LangChain Postgres support](https://docs.l
 
 ### Enable pgvector on Azure HorizonDB
 
-See [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md).
+See [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md).
 
 ### Set up credentials
 
@@ -256,7 +256,7 @@ The vector store supports a set of filters that can be applied against the metad
 | `in` | Special cased (in) |
 | `not in` | Special cased (not in) |
 | `is null` | Special cased (is null) |
-| `is not null` | Special cased (is not null) |
+| `is not null` | Special cased (isn't null) |
 | `between` | Special cased (between) |
 | `not between` | Special cased (not between) |
 | `like` | Text (like) |
@@ -378,10 +378,10 @@ retriever.invoke("kitty")
 ## Related content
 
 - [LangChain AzurePGVectorStore reference](https://pypi.org/project/langchain-azure-postgresql/)
-- [LLM framework integrations](ai-frameworks.md)
-- [AI agents in Azure HorizonDB](ai-agents.md)
-- [Generate vector embeddings in Azure HorizonDB](generate-vector-embeddings.md)
-- [AI overview for Azure HorizonDB](overview.md)
-- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
-- [AI search overview](ai-search-overview.md)
-- [AI Model Management](ai-model-management.md)
+- [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
+- [Build AI agents with Azure HorizonDB](ai-agents.md)
+- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Overview of AI capabilities in Azure HorizonDB](overview.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
+- [AI Model Management in Azure HorizonDB](ai-model-management.md)

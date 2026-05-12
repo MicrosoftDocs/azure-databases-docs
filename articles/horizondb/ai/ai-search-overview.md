@@ -18,11 +18,11 @@ ms.custom:
 
 # Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB
 
-Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results — even when the query doesn't share exact words with the content.
+Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results - even when the query doesn't share exact words with the content.
 
 This article introduces the core retrieval techniques available in Azure HorizonDB, explains when and why to use each one, and shows how they fit together into a complete search strategy. For implementation details, each section links to the corresponding deep-dive article.
 
-:::image type="content" source="media/ai-search-overview/retrieval-capabilities.svg" alt-text="Diagram showing retrieval capabilities in Azure HorizonDB grouped by search techniques, performance and scale, and relevance enhancement.":::
+:::image type="content" source="media/ai-search-overview/retrieval-capabilities.svg" alt-text="Diagram showing retrieval capabilities in Azure HorizonDB grouped by search techniques, performance and scale, and relevance enhancement." lightbox="media/ai-search-overview/retrieval-capabilities.svg" :::
 
 ## Why traditional search isn't enough
 
@@ -55,7 +55,7 @@ Azure HorizonDB supports vector search through the `pgvector` extension, with bu
 To learn more, see:
 
 - [Vector search with pgvector](vector-search-pgvector.md)
-- [Data preparation for AI — chunking, pipelines, and embeddings](ai-data-preparation.md)
+- [Data preparation for AI - chunking, pipelines, and embeddings](ai-data-preparation.md)
 
 ## Full-text search
 
@@ -65,7 +65,7 @@ Full-text search is keyword-based retrieval that finds documents containing spec
 
 1. **Analyze the text.** Documents are broken into tokens, normalized (lowercased, stemmed to root forms), and common stop words are removed. The result is stored in an inverted index that maps each term to the documents containing it.
 1. **Parse the query.** The user's search query goes through the same normalization, so "running" matches "run" and "ran."
-1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance — accounting for how often a term appears, how rare it is across the corpus, and document length.
+1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance - accounting for how often a term appears, how rare it's across the corpus, and document length.
 
 ### When to use it
 
@@ -103,7 +103,7 @@ As your dataset grows, search performance becomes critical. Azure HorizonDB prov
 
 ### Vector indexing
 
-Without an index, vector search performs an exact nearest neighbor scan — comparing the query vector against every row. This guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
+Without an index, vector search performs an exact nearest neighbor scan - comparing the query vector against every row. This guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
 
 Azure HorizonDB supports three vector index types:
 
@@ -125,7 +125,7 @@ Retrieval is only the first step. Even the best hybrid search can return results
 
 ### Semantic reranking
 
-Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and re-scores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50–150 results), you get significantly higher precision at the top of the ranking.
+Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and re-scores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50-150 results), you get significantly higher precision at the top of the ranking.
 
 The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
 

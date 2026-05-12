@@ -17,7 +17,7 @@ ms.custom:
 
 # AI Model Management in Azure HorizonDB
 
-AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AI Model Management handles everything for you with a single toggle in the Azure portal.
+AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials. AI Model Management handles everything for you with a single toggle in the Azure portal.
 
 When enabled, the feature:
 
@@ -53,7 +53,7 @@ In addition to Managed Models, you can register your own Microsoft Foundry model
 
 ### Integrated billing
 
-AI model usage is billed directly through your Azure HorizonDB resource with no additional markup over Microsoft Foundry pricing. For more details, see [Pricing](#pricing).
+AI model usage is billed directly through your Azure HorizonDB resource with no additional markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing).
 
 ## Enable AI Model Management
 
@@ -67,11 +67,11 @@ To enable AI Model Management on your Azure HorizonDB instance:
 
 1. Select **Save**.
 
-   :::image type="content" source="media/ai-model-management/enable-ai-model-management.png" alt-text="Screenshot of the AI Model Management pane showing the AI Model Management option in the resource menu, the Enable managed models checkbox, and the Save button.":::
+   :::image type="content" source="media/ai-model-management/enable-ai-model-management.png" alt-text="Screenshot of the AI Model Management pane showing the AI Model Management option in the resource menu, the Enable managed models checkbox, and the Save button." lightbox="media/ai-model-management/enable-ai-model-management.png" :::
 
 1. Review and agree to the terms of use.
 
-   :::image type="content" source="media/ai-model-management/aimm-accept-terms.png" alt-text="Screenshot of the terms and conditions acceptance dialog for AI Model Management.":::
+   :::image type="content" source="media/ai-model-management/aimm-accept-terms.png" alt-text="Screenshot of the terms and conditions acceptance dialog for AI Model Management." lightbox="media/ai-model-management/aimm-accept-terms.png" :::
 
 After you enable the feature, Azure HorizonDB automatically:
 
@@ -80,11 +80,11 @@ After you enable the feature, Azure HorizonDB automatically:
 - Registers the Managed Models in the model registry with their default aliases (`default-chat`, `default-embedding`, `default-reranker`).
 - Establishes secure connections to the model endpoints.
 
-:::image type="content" source="media/ai-model-management/view-managed-models.png" alt-text="Screenshot of the AI Model Management pane with AI Model Management fully enabled, showing the three Managed Models registered in the model registry.":::
+:::image type="content" source="media/ai-model-management/view-managed-models.png" alt-text="Screenshot of the AI Model Management pane with AI Model Management fully enabled, showing the three Managed Models registered in the model registry." lightbox="media/ai-model-management/view-managed-models.png" :::
 
 ## Use AI functions with Managed Models
 
-After you enable AI Model Management, you can immediately invoke [AI functions](ai-functions.md) by using the default model aliases or by omitting the model parameter entirely (the functions default to the corresponding Managed Model).
+After you enable AI Model Management, you can immediately invoke [AI functions in the azure_ai extension](ai-functions.md) by using the default model aliases or by omitting the model parameter entirely (the functions default to the corresponding Managed Model).
 
 ### Generate text with the default chat model
 
@@ -181,7 +181,9 @@ FROM reports;
 
 You can restrict which database users can access specific models in the registry. For detailed information about user access management, including the `model_registry_manager` role and the `model_user_add`, `model_user_set`, and `model_user_remove` functions, see [User access management](ai-functions.md#user-access-management).
 
-## Pricing
+<a id="pricing"></a>
+
+## Price
 
 AI Model Management pricing is based entirely on usage of the provisioned AI models. There's no extra charge for enabling the feature itself. Model usage is billed using the same meters and rates as Microsoft Foundry, with no additional markup.
 
@@ -192,7 +194,7 @@ For current model pricing, see the [Microsoft Foundry pricing page](https://azur
 ## Related content
 
 - [AI functions in the azure_ai extension](ai-functions.md)
-- [Generate vector embeddings in Azure HorizonDB](generate-vector-embeddings.md)
-- [Extract knowledge graphs in Azure HorizonDB](build-knowledge-graph.md)
-- [Build a semantic search application](build-semantic-search-app.md)
-- [Semantic reranking in Azure HorizonDB](semantic-reranking.md)
+- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md)
+- [Tutorial: Build a semantic search application with Azure HorizonDB](build-semantic-search-app.md)
+- [Semantic reranking with the rank() function](semantic-reranking.md)
