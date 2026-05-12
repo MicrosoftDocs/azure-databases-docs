@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: tutorial
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to learn how to build an end-to-end semantic search application with Azure HorizonDB and its generative AI capabilities.
 ---
 
@@ -282,12 +280,6 @@ For more information on the two-stage retrieval-and-rerank pattern, see [Semanti
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management in Azure HorizonDB](ai-model-management.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
 - [Semantic reranking with the rank() function](semantic-reranking.md)
-- [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md)
-- [Prepare data for AI app and agent development in Azure HorizonDB](ai-data-preparation.md)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)

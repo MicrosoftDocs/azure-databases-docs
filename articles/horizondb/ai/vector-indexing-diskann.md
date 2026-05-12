@@ -8,11 +8,9 @@ ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
@@ -394,6 +392,5 @@ The vector type allows you to perform three types of searches on the stored vect
 ## Related content
 
 - [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
-- [Hybrid search in Azure HorizonDB](hybrid-search.md)
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
+- [Hybrid search in Azure HorizonDB](hybrid-search.md)

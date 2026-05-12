@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
@@ -254,6 +252,4 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 
 - [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
 - [Hybrid search in Azure HorizonDB](hybrid-search.md)
-- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)

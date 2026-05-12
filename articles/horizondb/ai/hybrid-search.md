@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 ---
 
@@ -253,8 +251,4 @@ For mixed real-world queries - which is most production retrieval - hybrid is th
 
 - [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
 - [Full-text search with pg_fts](full-text-search-pgfts.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Choose the right vector index for your workload](vector-index-selection-guide.md)
 - [Semantic reranking](semantic-reranking.md)
-- [AI pipelines](ai-pipelines.md)
-- [Generate vector embeddings in SQL](generate-vector-embeddings.md)

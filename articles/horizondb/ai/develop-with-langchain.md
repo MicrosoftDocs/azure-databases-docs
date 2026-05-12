@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
@@ -377,11 +375,6 @@ retriever.invoke("kitty")
 
 ## Related content
 
-- [LangChain AzurePGVectorStore reference](https://pypi.org/project/langchain-azure-postgresql/)
 - [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
-- [AI Model Management in Azure HorizonDB](ai-model-management.md)

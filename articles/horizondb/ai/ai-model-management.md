@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-semantic-operators
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
@@ -198,6 +196,4 @@ For current model pricing, see the [Microsoft Foundry pricing page](https://azur
 
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md)
-- [Tutorial: Build a semantic search application with Azure HorizonDB](build-semantic-search-app.md)
 - [Semantic reranking with the rank() function](semantic-reranking.md)

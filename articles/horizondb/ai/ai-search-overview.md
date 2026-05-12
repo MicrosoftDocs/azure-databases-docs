@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 
@@ -159,17 +157,6 @@ To learn how to build a retrieval-and-rerank pipeline, see [AI pipelines](ai-pip
 
 ## Related content
 
-- [Data preparation for AI](ai-data-preparation.md)
-- [AI pipelines](ai-pipelines.md)
 - [Vector search with pgvector](vector-search-pgvector.md)
 - [Full-text search with pg_fts](full-text-search-pgfts.md)
 - [Hybrid search](hybrid-search.md)
-- [Optimize pgvector performance](optimize-pgvector-performance.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Vector index selection guide](vector-index-selection-guide.md)
-- [Semantic reranking](semantic-reranking.md)
-- [GraphRAG for knowledge graph enhanced search](graphrag.md)
-- [Extract knowledge graphs from unstructured text](build-knowledge-graph.md)
-- [Tutorial: Build a semantic search application](build-semantic-search-app.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management in Azure HorizonDB](ai-model-management.md)

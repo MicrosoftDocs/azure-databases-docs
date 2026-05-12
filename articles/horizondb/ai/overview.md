@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
 ms.topic: overview
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
@@ -140,9 +138,5 @@ To go further, visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/po
 ## Related content
 
 - [AI functions in the azure_ai extension](ai-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
-- [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
-- [AI and agentic use cases and sample applications](samples.md)

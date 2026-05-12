@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 
@@ -135,8 +133,4 @@ For industry-specific implementation patterns, see [AI and agentic use cases and
 
 - [Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP](foundry-agent-integration.md)
 - [AI and agentic use cases and sample applications](samples.md)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Graph-augmented RAG patterns with Azure HorizonDB](graphrag.md)
-- [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md)
+- [Wgat are AI capabilities in Azure HorizonDB](overview.md)

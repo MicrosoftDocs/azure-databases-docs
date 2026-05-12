@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 
@@ -131,5 +129,3 @@ The operator must match the index access method's operator class. Cosine distanc
 - [Implement vector search using the pgvector extension](vector-search-pgvector.md)
 - [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
 - [Optimize performance when using pgvector](optimize-pgvector-performance.md)
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Hybrid search](hybrid-search.md)

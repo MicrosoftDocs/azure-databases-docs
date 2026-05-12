@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-foundry
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
@@ -494,11 +492,6 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 
 ## Related content
 
-- [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
-- [Model Context Protocol specification](https://modelcontextprotocol.io/docs/learn/versioning)
-- [Microsoft Foundry documentation](/azure/ai-foundry/)
+- [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
 - [AI functions in the azure_ai extension](ai-functions.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Hybrid search in Azure HorizonDB](hybrid-search.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)

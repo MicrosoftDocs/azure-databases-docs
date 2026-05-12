@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-semantic-operators
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 ---
 
@@ -203,10 +201,5 @@ LIMIT 10;
 ## Related content
 
 - [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management](ai-model-management.md)
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
 - [Hybrid search](hybrid-search.md)
-- [Implement vector search with pgvector](vector-search-pgvector.md)
-- [Generate vector embeddings](generate-vector-embeddings.md)
-- [AI pipelines](ai-pipelines.md)
 - [Build a semantic search application](build-semantic-search-app.md)

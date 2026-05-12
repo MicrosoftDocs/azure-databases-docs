@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 ---
 
 # Optimize performance when using pgvector in Azure HorizonDB
@@ -30,4 +28,3 @@ For more on the extension itself, see [basics of `pgvector`](vector-search-pgvec
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
 - [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
 - [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)

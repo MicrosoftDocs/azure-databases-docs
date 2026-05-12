@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
@@ -281,8 +279,5 @@ Get started quickly with prebuilt solution accelerators:
 ## Related content
 
 - [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [Microsoft Research: GraphRAG paper](https://www.microsoft.com/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data)
 - [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)

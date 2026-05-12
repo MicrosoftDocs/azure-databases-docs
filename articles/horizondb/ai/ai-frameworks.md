@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 ---
 
 # Build AI apps and agents with orchestration frameworks
@@ -38,7 +36,3 @@ The following frameworks and services integrate with Azure HorizonDB:
 - [Develop AI apps with LangChain and Azure HorizonDB](develop-with-langchain.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP](foundry-agent-integration.md)
-- [Graph-augmented RAG patterns with Azure HorizonDB](graphrag.md)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)

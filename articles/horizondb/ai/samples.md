@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 ---
 
@@ -212,12 +210,6 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 
 ## Related content
 
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)
+- [Wgat are AI capabilities in Azure HorizonDB](overview.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management](ai-model-management.md)
-- [AI pipelines](ai-pipelines.md)
-- [LLM framework integrations](ai-frameworks.md)
 - [Build a semantic search application](build-semantic-search-app.md)
-- [GraphRAG](graphrag.md)
-- [Foundry Agent Service integration](foundry-agent-integration.md)

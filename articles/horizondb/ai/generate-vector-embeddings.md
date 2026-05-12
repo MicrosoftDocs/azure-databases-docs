@@ -8,11 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
+ms.custom: build-2026
 # customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
@@ -133,7 +131,3 @@ LIMIT 5;
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [AI Model Management](ai-model-management.md)
 - [Implement vector search with pgvector](vector-search-pgvector.md)
-- [Vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Build a semantic search application](build-semantic-search-app.md)
-- [AI overview for Azure HorizonDB](overview.md)
