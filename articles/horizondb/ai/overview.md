@@ -13,7 +13,6 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
