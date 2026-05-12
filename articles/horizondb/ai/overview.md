@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
-ms.topic: concept-article
+ms.topic: overview
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
-# Overview of AI capabilities in Azure HorizonDB
+# What are AI capabilities in Azure HorizonDB
 
 Generative AI is transforming how applications interact with data. As organizations move beyond basic chatbots toward retrieval-augmented generation (RAG), autonomous agents, and intelligent search, one thing is clear: **data is the foundation of intelligence**. Raw data becomes knowledge when it's structured, embedded, and made searchable, and knowledge becomes intelligence when AI models can reason over it, retrieve what's relevant, and take action.
 
@@ -136,3 +136,13 @@ Connect Azure HorizonDB to agent frameworks, orchestration services, and tools.
 Azure HorizonDB gives you a single platform to go from raw data to production AI: embedding generation, vector and hybrid search, semantic reranking, knowledge graphs, durable pipelines, and agent integration, all within PostgreSQL and all accessible through SQL. Whether you're building your first RAG application or deploying multi-agent systems at scale, the capabilities described in this article work together as a complete, integrated stack. Explore the linked articles to dive deeper into each capability.
 
 To go further, visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/postgres-hub): a one-stop shop for curated code samples, solution accelerators, tutorials, structured learning pathways, and a growing developer community where you can connect with Microsoft and ecosystem experts.
+
+## Related content
+
+- [AI functions in the azure_ai extension](ai-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
+- [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md)
+- [Build AI agents with Azure HorizonDB](ai-agents.md)
+- [AI and agentic use cases and sample applications](samples.md)

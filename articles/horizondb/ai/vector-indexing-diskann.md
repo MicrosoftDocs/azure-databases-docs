@@ -8,6 +8,9 @@ ms.date: 05/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2026
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
@@ -155,14 +158,14 @@ Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LI
 DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
 
 > [!IMPORTANT]  
-> Spherical quantization in DiskANN is in **public preview**. Available in `pg_diskann` <!-- TODO: confirm minimum version --> and above.
+> Spherical quantization in DiskANN is in **public preview**. Available in `pg_diskann` and above.
 
 To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops)
 WITH (
-    spherical_quantized = true  -- TODO: confirm final parameter name
+    spherical_quantized = true
 );
 ```
 
@@ -177,8 +180,7 @@ DiskANN supports indexing vectors with up to 16,000 dimensions, significantly ex
 
 **Recommended settings:**
 
-- `spherical_quantized`: Set to `true`. <!-- TODO: confirm final parameter name -->
-  - <!-- TODO: add spherical quantization tuning parameters (e.g., chunk count / training sample equivalents) once finalized -->
+- `spherical_quantized`: Set to `true`.
 
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
@@ -255,16 +257,14 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false). <!-- TODO: confirm final parameter name -->
-  - <!-- TODO: add spherical quantization tuning parameters (chunk count / training samples equivalents) once finalized -->
+- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false).
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
     max_neighbors = 48,
     l_value_ib = 100,
-    spherical_quantized = true  -- TODO: confirm final parameter name
-    -- TODO: add spherical quantization tuning parameters once finalized
+    spherical_quantized = true
 );
 ```
 
@@ -322,12 +322,12 @@ WITH (
 | | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
-| 1M-50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
+| 1M-50M | Index build | `spherical_quantized` | true |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
 | | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
-| >50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
+| >50M | Index build | `spherical_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]  

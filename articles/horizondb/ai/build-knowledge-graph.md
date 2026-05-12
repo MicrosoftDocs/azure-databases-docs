@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
-ms.topic: concept-article
+ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days

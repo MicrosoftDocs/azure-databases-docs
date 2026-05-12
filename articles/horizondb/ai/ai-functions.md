@@ -10,6 +10,7 @@ ms.subservice: ai-semantic-operators
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2026
 # customer intent: As a user, I want to understand the available AI functions in the azure_ai extension for Azure HorizonDB, explore their use cases, and learn how to use them effectively.

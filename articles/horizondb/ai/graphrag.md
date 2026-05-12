@@ -20,7 +20,7 @@ ms.custom:
 
 Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-augmented RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 
-Azure HorizonDB lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cipher graph traversal, and result fusion) inside the database without moving data between systems.
+Azure HorizonDB lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
 
 ## Why vector search alone isn't enough
 
@@ -263,7 +263,7 @@ Best for: Large document corpora where you need multi-level summarization and co
 
 - **Cypher language subset.** Apache AGE implements a subset of openCypher. Features such as `MERGE ... ON CREATE SET`, `EXISTS` subqueries, and `datetime()` aren't available. Use `CREATE` with deduplication logic or PL/pgSQL wrappers for conditional create patterns.
 - **Graph maintenance is manual.** Knowledge graphs require updates when source data changes. There's no built-in change-data-capture mechanism for automatic graph sync. Use PostgreSQL triggers on source tables or schedule periodic re-extraction jobs.
-- **Variable-length path performance.** Cipher traversals (`[*1..N]`) beyond 3-4 hops can produce exponential path expansion. Constrain hop depth and add property filters on intermediate nodes to prune early.
+- **Variable-length path performance.** Cypher traversals (`[*1..N]`) beyond 3-4 hops can produce exponential path expansion. Constrain hop depth and add property filters on intermediate nodes to prune early.
 - **No cross-database graph queries.** A graph created in one database can't be queried from another database on the same server. Plan your schema so that graph data and vector data coexist in the same database.
 
 ## Solution accelerators

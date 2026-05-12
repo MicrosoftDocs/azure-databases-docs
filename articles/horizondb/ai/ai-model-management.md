@@ -10,6 +10,7 @@ ms.subservice: ai-semantic-operators
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2026
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
@@ -28,6 +29,8 @@ When enabled, the feature:
 - Provides monitoring and usage metrics within Azure HorizonDB. (coming soon)
 
 ## Key features
+
+Azure HorizonDB provides a curated selection of pre-configured AI models that are automatically deployed and maintained for you. The following sections describe the managed models, model registry, and bring-your-own-model capabilities available through AI Model Management.
 
 ### Managed Models
 

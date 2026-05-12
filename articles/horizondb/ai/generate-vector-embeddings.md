@@ -13,7 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extensi
+# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
 # Generate vector embeddings using the create_embeddings() AI function

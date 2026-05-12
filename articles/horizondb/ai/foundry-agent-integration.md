@@ -60,7 +60,7 @@ With the MCP integration, your AI agents can handle queries like:
 Before you begin, make sure you have the required tools, accounts, and permissions in place to deploy and configure the MCP PostgreSQL Server. Having these prerequisites ready minimizes interruptions and helps ensure a smooth integration with Foundry.
 
 - [Azure CLI](/cli/azure/install-azure-cli) (latest version)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md) with Microsoft Entra ID authentication enabled
+- An [Azure HorizonDB instance](overview.md) with Microsoft Entra ID authentication enabled
 - [Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources

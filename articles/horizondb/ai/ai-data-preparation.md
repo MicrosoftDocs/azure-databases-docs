@@ -64,7 +64,7 @@ A common starting point is 512-2,000 characters. Tune based on your content type
 
 ### Chunk in Azure HorizonDB
 
-Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md). You specify a target chunk size and an overlap:
+Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [AI pipelines](ai-pipelines.md). You specify a target chunk size and an overlap:
 
 ```sql
 ai.chunk(input_column => 'content', chunk_size => 512, overlap => 64)
@@ -85,7 +85,7 @@ It's important that you use the same embedding model for both your stored data a
 Azure HorizonDB provides two ways to generate embeddings:
 
 - **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for ad hoc embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md).
-- **In a pipeline**: Use the `ai.embed()` step in an [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
+- **In a pipeline**: Use the `ai.embed()` step in an [AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
 
 ## Step 4: Enrich with metadata
 
@@ -146,7 +146,7 @@ The five core steps prepare your data for vector and hybrid search, which form t
 
 ## Automate with AI pipelines
 
-Rather than running each step manually, you can define a complete data preparation workflow as a durable [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+Rather than running each step manually, you can define a complete data preparation workflow as a durable [AI pipeline](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
 
 ## Related content
 
