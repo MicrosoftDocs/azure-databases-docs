@@ -32,7 +32,7 @@ Before running this tutorial, you need an Azure HorizonDB instance, an AI model 
 
 ### Enable extensions
 
-Allowlist `vector`, `azure_ai`, and `age` extensions and add `age` to `shared_preload_libraries` via the Azure Portal or CLI, then run:
+Allowlist `vector`, `azure_ai`, and `age` extensions and add `age` to `shared_preload_libraries` via the Azure portal or CLI, then run:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -310,7 +310,7 @@ Take the normalized output from Step 2 and load it into an Apache AGE graph. The
 
 ### 3a: Create entity nodes
 
-Create one graph node for every unique entity found in `normalized_rels`. This block is domain-agnostic: it reads the `source` and `target` columns without knowing what kind of entities they represent. The `MERGE` command creates the node only if it doesn't already exist, so this block is safe to re-run.
+Create one graph node for every unique entity found in `normalized_rels`. This block is domain-agnostic: it reads the `source` and `target` columns without knowing what kind of entities they represent. The `MERGE` command creates the node only if it doesn't already exist, so this block is safe to rerun.
 
 ```sql
 SELECT ag_catalog.create_graph('incident_graph');

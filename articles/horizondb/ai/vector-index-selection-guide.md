@@ -41,7 +41,7 @@ All four are exposed through the `vector` (pgvector) extension; DiskANN addition
 | --- | --- | --- | --- | --- |
 | Algorithm | Exact scan | Inverted file (partitioned) | Hierarchical graph | SSD-optimized graph |
 | Recall | 100% | Low-medium | High | High |
-| Query latency on 10M+ rows | Very high | Medium | Low (if in RAM) | Low |
+| Query latency on 10M+ rows | High | Medium | Low (if in RAM) | Low |
 | Build time | None | Fast | Slow | Medium |
 | Memory footprint | None (sequential I/O) | Small | Large - index must fit in RAM | Small - most data stays on SSD |
 | Update / insert cost | None | Recall degrades; periodic rebuild needed | Per-insert cost; in place | Per-insert cost; in place |
@@ -66,11 +66,11 @@ Start at the top and stop at the first match.
 
 These examples illustrate the tradeoffs. Always benchmark with your own data, queries, and recall target.
 
-### 1 million vectors, 1,536 dimensions, mostly read-only
+### One million vectors, 1,536 dimensions, mostly read-only
 
 Either HNSW or DiskANN works. Pick HNSW if the index fits comfortably in RAM and the dataset is stable; pick DiskANN if you expect the dataset to keep growing or you plan to run filtered queries.
 
-### 10 million vectors, 1,536 dimensions, daily inserts
+### Ten million vectors, 1,536 dimensions, daily inserts
 
 Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed; updates are applied in place. See [Recommended configuration of parameters](vector-indexing-diskann.md#recommended-configuration-of-parameters).
 
@@ -86,10 +86,10 @@ Use a flat scan. It's the fastest way to validate that an ANN index is returning
 
 Most production retrieval queries combine vector similarity with structured `WHERE` clauses - by tenant, category, date range, price, status, or any other metadata column. The index you pick determines whether those filtered queries stay fast and accurate.
 
-- IVFFlat and HNSW apply predicates **after** the ANN search returns candidates. With a selective filter, most candidates are thrown away and recall collapses, often forcing you to over-fetch and re-rank in the application.
+- IVFFlat and HNSW apply predicates **after** the ANN search returns candidates. With a selective filter, most candidates are thrown away and recall collapses, often forcing you to over-fetch and rerank in the application.
 - **DiskANN supports advanced filtering on HorizonDB** (public preview), which pushes metadata predicates into the index itself. The index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the filter - so you get low-latency, high-recall results in a single SQL query, even with selective predicates over millions of vectors.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multi-tenant AI search, and any retrieval workload where filtering is part of the query. It runs natively inside HorizonDB next to your relational data, so you keep transactional consistency, familiar PostgreSQL SQL, and a single store - no separate vector database or external search service. It works with `pgvector`, the Azure AI integrations, BM25 full-text search, and the rest of the HorizonDB AI retrieval stack.
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and any retrieval workload where filtering is part of the query. It runs natively inside HorizonDB next to your relational data, so you keep transactional consistency, familiar PostgreSQL SQL, and a single store - no separate vector database or external search service. It works with `pgvector`, the Azure AI integrations, BM25 full-text search, and the rest of the HorizonDB AI retrieval stack.
 
 If filtered queries are part of your workload, choose DiskANN. See [Filter your search with DiskANN](vector-indexing-diskann.md) for query examples and the index parameters that control this behavior.
 

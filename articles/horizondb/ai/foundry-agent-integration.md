@@ -1,5 +1,5 @@
 ---
-title: Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
+title: Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP
 description: Learn how to use Azure HorizonDB as the retrieval layer for agents built with Microsoft Foundry and Model Context Protocol to access and ground responses in stored knowledge. Build a simple AI agent to interact with your database through natural language queries.
 author: shreyaaithal
 ms.author: shaithal
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
-# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
+# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP
 
 The Azure HorizonDB MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 
@@ -81,7 +81,7 @@ The fastest way to get started is by using the automated deployment script.
    cd azure-postgres-mcp-demo
    ```
 
-1. Open [infra/main.parameters.json](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json) and update these 2 values
+1. Open [infra/main.parameters.json](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json) and update these two values
 
    | Parameter | Description |
    | --- | --- |
@@ -172,7 +172,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    SELECT * FROM pgaadauth_create_principal('<CONTAINER_APP_IDENTITY_NAME>', false, false);
    ```
 
-   Replace `<CONTAINER_APP_IDENTITY_NAME>` with the managed identity name from your deployment output (e.g., `azmcp-postgres-server-nc3im7asyw`).
+   Replace `<CONTAINER_APP_IDENTITY_NAME>` with the managed identity name from your deployment output (for example, `azmcp-postgres-server-nc3im7asyw`).
 
    > [!TIP]  
    > Use `azd env get-values` command to find the `CONTAINER_APP_IDENTITY_NAME` value, or any other environment variable.
@@ -396,7 +396,7 @@ With this pattern, even if a prompt convinces the agent to ask for `SELECT * FRO
 
 ### Use Row Level Security for tenant isolation
 
-If the agent serves multiple tenants from the same tables, layer Row Level Security on top of the read-only role so each query the agent issues only sees the calling tenant's rows. See the [PostgreSQL Row Security Policies documentation](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) for the syntax; the role to attach policies to is the MCP server's `<CONTAINER_APP_IDENTITY_NAME>`.
+If the agent serves multiple tenants from the same tables, layer Row Level Security on top of the read-only role so each query the agent issues only sees the calling tenant's rows. See the [PostgreSQL Row Security Policies documentation](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) for the syntax; the role to attach policies to be the MCP server's `<CONTAINER_APP_IDENTITY_NAME>`.
 
 ## Security
 
@@ -442,12 +442,12 @@ If MCP is up and running:
 64 bytes from X.XXX.XXX.X: icmp_seq=0 ttl=108 time=92.748 ms
 ```
 
-If MCP is *not running*:
+If MCP isn't running*:
 
 ```
 ping: cannot resolve https://your-mcp-server.azurecontainerapps.io: Unknown host
 ```
-You'll need to re-run `azd up`.
+You'll need to rerun `azd up`.
 
 ### Limitations and considerations
 

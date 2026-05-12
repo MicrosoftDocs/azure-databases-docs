@@ -19,7 +19,7 @@ ms.custom:
 
 Vector search retrieves results that are semantically close to a query, but "close" in embedding space doesn't always mean "relevant" to the user's intent. Synonyms, intent shifts, long-tail phrasing, and domain-specific nuance can cause the most relevant document to rank third or tenth instead of first. Users judge results by how well they match their intent, not by raw distance scores.
 
-**Semantic reranking** addresses this. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescores each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing significantly more accurate relevance scores.
+**Semantic reranking** addresses this. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescores each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing more accurate relevance scores.
 
 The `azure_ai.rank()` function in the `azure_ai` extension brings this capability directly into SQL, so you can add a reranking stage without leaving the database.
 
@@ -47,7 +47,7 @@ This pattern gives you the speed of embedding-based retrieval with the accuracy 
 | Search quality directly affects user experience (product search, support search, knowledge base) | Simple exact-match lookups (product code, ID search) |
 | Queries are natural language with nuance, synonyms, or intent variation | The corpus is small and homogeneous enough that vector search alone achieves high precision |
 | You're building RAG or [AI pipelines](ai-pipelines.md) and need the best possible context for LLM generation | Latency budget can't accommodate the additional model call |
-| Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a very small set (fewer than 5) |
+| Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a small set (fewer than 5) |
 
 ## Prerequisites
 
@@ -197,7 +197,7 @@ LIMIT 10;
 | **Candidate pool size** | Rerank 20-50 candidates. More candidates improve recall but increase latency and cost linearly. |
 | **Latency** | Cross-encoder scoring adds tens to low hundreds of milliseconds depending on the pool size and document length. |
 | **Document length** | Shorter documents rerank faster. If documents are long, consider reranking over summaries or the most relevant chunk rather than the full text. |
-| **When to skip** | If your retrieval stage already returns fewer than 5 results, reranking adds cost with diminishing accuracy gains. |
+| **When to skip** | If your retrieval stage already returns fewer than five results, reranking adds cost with diminishing accuracy gains. |
 
 ## Related content
 

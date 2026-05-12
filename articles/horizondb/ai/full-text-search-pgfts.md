@@ -241,7 +241,7 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 - **LIMIT pushdown.** The `pg_fts` custom scan pushes `LIMIT` into the index and only retrieves as many candidates as you ask for. This is what makes multi-keyword queries fast on large tables.
 - **Index size.** The `fts` index is denser than a GIN index over `tsvector` because it stores positions, frequencies, and language-specific analyzer state. Plan disk accordingly.
 - **Updates.** Inserts and updates are applied to the index continuously. There's no separate refresh step.
-- **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't re-rank the whole table.
+- **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't rerank the whole table.
 
 ## Limitations during preview
 

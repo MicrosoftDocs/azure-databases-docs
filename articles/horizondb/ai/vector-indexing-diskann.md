@@ -89,7 +89,7 @@ COMMIT;
 ```
 
 > [!IMPORTANT]  
-> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
+> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disabled using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
 ## Filter your search with advanced filtering
 
@@ -98,7 +98,7 @@ COMMIT;
 
 Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multi-tenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md), the [AI functions in the azure_ai extension](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB](full-text-search-pgfts.md), and [hybrid search](hybrid-search.md).
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md), the [AI functions in the azure_ai extension](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB](full-text-search-pgfts.md), and [hybrid search](hybrid-search.md).
 
 ### How it differs from other indexes
 
@@ -147,7 +147,7 @@ Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LI
 ### Limitations during preview
 
 - Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
-- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fall back to post-filtering with the standard recall caveats.
+- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fallback to post-filtering with the standard recall caveats.
 - Index rebuild isn't required when adding metadata columns; the existing DiskANN index continues to work.
 
 ## Scale efficiently with spherical quantization (Preview)
@@ -184,7 +184,7 @@ This enhancement enables scalable, efficient search across large vector datasets
 
 ## Speed up index build
 
-There are a few ways we recommend to improve your index build times.
+There are a few ways we recommend improving your index build times.
 
 <a id="using-more-memory"></a>
 

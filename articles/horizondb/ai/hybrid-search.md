@@ -31,10 +31,10 @@ This article shows you how to build hybrid search end to end inside HorizonDB, w
 
 A query like `"connection timeout error PG-4012"` has two signals:
 
-- The literal token `PG-4012` is a precise identifier - vector search will likely miss it because the embedding model has never seen it.
+- The literal token `PG-4012` is a precise identifier - vector search likely can miss it because the embedding model has never seen it.
 - The phrase `"connection timeout error"` is semantic - BM25 might match the words, but a different document phrased as `"the database stopped responding after the network dropped"` is a better answer that BM25 won't surface.
 
-Pure vector search misses the first signal. Pure BM25 misses the second. Hybrid search returns a single ranked list that surfaces both. The boost is largest exactly where customers care most: enterprise-specific terminology, product names, error codes, multi-tenant filtered queries, and any corpus where a phrase can mean two different things.
+Pure vector search misses the first signal. Pure BM25 misses the second. Hybrid search returns a single ranked list that surfaces both. The boost is largest exactly where customers care most: enterprise-specific terminology, product names, error codes, multitenant filtered queries, and any corpus where a phrase can mean two different things.
 
 ## How hybrid search works on HorizonDB
 
@@ -46,7 +46,7 @@ A hybrid query has three logical steps, all of which run inside HorizonDB:
 
 Optionally, a fourth step:
 
-1. **Re-rank the top-K** of the fused list with a cross-encoder model for a final accuracy bump on the documents that will actually be shown to the user.
+1. **Re-rank the top-K** of the fused list with a cross-encoder model for a final accuracy bump on the documents that actually show the user.
 
 Everything happens in a single SQL query. There's no copy-syncing to an external search index, no application-side join, and no separate vector database.
 
@@ -236,7 +236,7 @@ For the full reranking pattern using the `azure_ai.rank()` function, see [Semant
 
 Hybrid search adds two index scans and a fusion step. It's not free. Reach for pure BM25 or pure vector search when:
 
-- Your queries are unambiguously keyword (product code lookup, log search, code search). Pure BM25 is faster and just as accurate.
+- Your queries are unambiguously keyword (product code lookup, log search, code search). Pure BM25 is faster and as accurate.
 - Your queries are unambiguously semantic over a small homogeneous corpus (FAQ retrieval over a few thousand answers). Pure vector search with DiskANN is enough.
 - Your application latency budget is below the combined cost of two index scans and you can validate that one ranker alone meets your relevance bar.
 

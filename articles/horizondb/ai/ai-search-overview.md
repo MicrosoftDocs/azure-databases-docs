@@ -42,7 +42,7 @@ Vector search finds results based on semantic similarity rather than exact keywo
 
 1. **Prepare and embed your data.** Chunk large documents into meaningful segments, then use an embedding model (for example, `text-embedding-3-small`) to convert each chunk into a vector. Store the vector alongside your relational data using the `vector` extension in PostgreSQL. For guidance on chunking strategies and embedding pipelines, see [Data preparation for AI](ai-data-preparation.md).
 1. **Embed the query.** At query time, convert the user's search query into a vector using the same embedding model.
-1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches which represent the most semantically similar results.
+1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches, which represent the most semantically similar results.
 
 ### When to use it
 
@@ -93,7 +93,7 @@ Hybrid search is the recommended approach for most production search application
 
 ### Azure HorizonDB implementation
 
-Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [DiskANN advanced filtering](vector-indexing-diskann.md) for pre-filtered hybrid queries.
+Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [DiskANN advanced filtering](vector-indexing-diskann.md) for prefiltered hybrid queries.
 
 To learn more, see [Hybrid search](hybrid-search.md).
 
@@ -125,7 +125,7 @@ Retrieval is only the first step. Even the best hybrid search can return results
 
 ### Semantic reranking
 
-Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and re-scores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50-150 results), you get significantly higher precision at the top of the ranking.
+Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and rescores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50-150 results), you get higher precision at the top of the ranking.
 
 The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
 

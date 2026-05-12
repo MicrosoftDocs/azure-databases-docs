@@ -50,7 +50,7 @@ Financial analysts need fast, accurate answers grounded in earnings reports, SEC
 
 **Build with Azure HorizonDB:**
 
-1. Store financial documents (earnings reports, SEC filings, analyst notes) in Azure HorizonDB with chunked text and `pgvector` embeddings indexed with DiskANN for sub-millisecond similarity search across millions of passages.
+1. Store financial documents (earnings reports, SEC filings, analyst notes) in Azure HorizonDB with chunked text and `pgvector` embeddings indexed with DiskANN for submillisecond similarity search across millions of passages.
 1. Create a full-text search index with `pg_fts` over financial terms, tickers, and entity names for precise keyword matching.
 1. Use the `azure_ai` extension to generate embeddings and chat completions directly from SQL - no external orchestration needed.
 1. Combine vector search and BM25 full-text search with Reciprocal Rank Fusion for hybrid retrieval, then apply `azure_ai.rank()` to rerank the top candidates for precision.
@@ -58,13 +58,13 @@ Financial analysts need fast, accurate answers grounded in earnings reports, SEC
 
 ### Fraud detection and compliance
 
-Financial services companies process millions of transactions daily. Manual review doesn't scale, and batch processing lets fraudulent transactions slip through. An agent can evaluate each transaction in real time against rule-based checks and ML models, flag anomalies, enforce KYC and AML compliance, and maintain the auditable trail that regulators require.
+Financial services companies process millions of transactions daily. Manual review doesn't scale, and batch processing lets fraudulent transactions slip through. An agent can evaluate each transaction in real time against rule-based checks and ML models, flag anomalies, enforce KYC, and AML compliance, and maintain the auditable trail that regulators require.
 
 **Build with Azure HorizonDB:**
 
 1. Write transactions to partitioned Azure HorizonDB tables with row-level security enabled.
 1. Use Apache AGE to model transaction networks as a graph and detect ring fraud patterns through relationship traversal.
-1. Use the `azure_ai` extension to call Azure ML models for real-time fraud scoring directly from SQL.
+1. Use the `azure_ai` extension to call Azure Machine Learning models for real-time fraud scoring directly from SQL.
 1. Build an agent with tools for rule evaluation, graph-based anomaly detection, and compliance checks.
 1. Use PostgreSQL triggers to route flagged transactions to a `fraud_alerts` table with confidence scores.
 1. Enable `pg_audit` for a complete compliance trail and connect escalation to your risk team's workflow.
@@ -78,7 +78,7 @@ Traditional search fails when a customer says "a lightweight jacket for hiking i
 
 **Build with Azure HorizonDB:**
 
-1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for sub-millisecond similarity search across millions of products.
+1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for submillisecond similarity search across millions of products.
 1. Use `azure_ai.rank()` to rank results by relevance to the customer's natural-language query.
 1. Use the `azure_ai` extension to generate product embeddings and enrich catalog metadata with Azure OpenAI.
 1. Build an agent with tools for vector search, keyword matching, and customer history lookup.
@@ -170,7 +170,7 @@ Organizations struggle to answer "Who has experience with payment systems and Po
 1. Enable the Apache AGE extension and model employee-skill-project relationships as a property graph. Employees, skills, projects, and teams become nodes; proficiency levels and assignments become edges.
 1. Use the `azure_ai` extension to generate skill embeddings from résumés and project descriptions using Azure OpenAI.
 1. Index skill embeddings with DiskANN for fast similarity matching across large workforces to find people with *similar* skills, not just exact keyword matches.
-1. Build an agent with tools for graph traversal queries (AGE) and semantic skill matching (`pgvector`) so it can answer questions like "Find engineers who've worked on payment systems and speak Japanese."
+1. Build an agent with tools for graph traversal queries (AGE) and semantic skill matching (`pgvector`) so it can answer questions like "Find engineers who have worked on payment systems and speak Japanese."
 1. Ingest employee profiles, project assignments, and skill assessments into the graph on a recurring basis.
 1. Expose the agent to hiring managers and leadership for talent search, team composition, and gap analysis.
 
@@ -185,7 +185,7 @@ Development teams spend too much time on database plumbing: provisioning instanc
 | **Clone and stage** | Mirrors production into a safe staging environment with realistic synthetic data and performance checks. |
 | **Onboard** | Reads an unfamiliar database and explains key tables, relationships, query patterns, and red flags. |
 | **Optimize** | Identifies the biggest bottlenecks and recommends specific query, index, and configuration changes. |
-| **Secure** | Audits for security risks, PII exposure, and over-permissioned roles. Can lock down critical gaps automatically. |
+| **Secure** | Audits for security risks, personal data (PII) exposure, and over-permissioned roles. Can lock down critical gaps automatically. |
 
 **Build with Azure HorizonDB:**
 

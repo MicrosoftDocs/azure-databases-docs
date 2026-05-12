@@ -180,7 +180,7 @@ CREATE INDEX recipes_embedding_diskann ON recipes
     USING diskann (embedding vector_cosine_ops);
 ```
 
-DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more details, see [Scalable vector indexing with DiskANN](vector-indexing-diskann.md).
+DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more information, see [Scalable vector indexing with DiskANN](vector-indexing-diskann.md).
 
 ## Semantic search
 
@@ -241,7 +241,7 @@ Explore the results:
 
 ## Semantic reranking
 
-Vector search returns results that are semantically similar, but the top results might not be the most relevant for the specific query. Semantic reranking applies a second-stage scoring pass using a cross-encoder model to re-score the initial results and surface the best matches.
+Vector search returns results that are semantically similar, but the top results might not be the most relevant for the specific query. Semantic reranking applies a second-stage scoring pass using a cross-encoder model to rescore the initial results and surface the best matches.
 
 The following query retrieves the top 20 vector search results and then reranks them using the `rank()` AI function:
 
@@ -276,9 +276,9 @@ ORDER BY rr.rank ASC;
 > [!NOTE]  
 > To use your own reranker model instead of the default Managed Model, pass your model alias as the last argument to `azure_ai.rank()`. For example: `azure_ai.rank('query', documents, ids, 'my-reranker')`. See [AI functions in the azure_ai extension](ai-functions.md#azure_airank).
 
-The reranked results prioritize recipes that are most relevant to the specific query intent - in this case, recipes that are both quick to prepare and vegan - rather than just semantically similar to the query text.
+The reranked results prioritize recipes that are most relevant to the specific query intent - in this case, recipes that are both quick to prepare and vegan - rather than semantically similar to the query text.
 
-For more details on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-reranking.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-reranking.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
 
 ## Related content
 

@@ -39,7 +39,7 @@ Graph-augmented RAG extends the standard RAG pipeline with a graph retrieval sta
 
 **Stage 1: Vector search.** Embed the user query and retrieve the top-N candidates by cosine similarity using pgvector with a DiskANN or HNSW index.
 
-**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere-rerank-v4.0-fast by default, deployed via Foundry) to re-score by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
+**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere-rerank-v4.0-fast by default, deployed via Foundry) to rescore by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
 
 **Stage 3: Graph traversal.** Query the knowledge graph (Apache AGE) to find entities and documents connected to the query through relationships: citations, causal links, organizational hierarchy, or domain-specific edges. Graph retrieval surfaces structurally important results that vector search misses.
 
@@ -75,7 +75,7 @@ These patterns describe how graph retrieval augments vector search at query time
 
 ### Pattern 1: Authority boosting
 
-Use graph structure to re-score vector search results. Documents that are heavily cited, centrally connected, or structurally important get a higher rank even if their embedding similarity is moderate.
+Use graph structure to rescore vector search results. Documents that are heavily cited, centrally connected, or structurally important get a higher rank even if their embedding similarity is moderate.
 
 **Pick this when:** Structural importance (citation count, link density) is a stronger relevance signal than semantic similarity alone.
 
@@ -155,7 +155,7 @@ Use graph relationships to constrain vector search results before or after retri
 
 **Pick this when:** Graph relationships represent permissions, organizational scope, or domain boundaries that must be enforced, not just weighted.
 
-**Example domains:** Multi-tenant knowledge bases (team ownership boundaries), compliance (jurisdiction filtering), content platforms (user access graphs).
+**Example domains:** Multitenant knowledge bases (team ownership boundaries), compliance (jurisdiction filtering), content platforms (user access graphs).
 
 ```sql
 -- Vector search filtered by graph-derived scope
@@ -211,7 +211,7 @@ Best for: Support tickets, research papers, contracts, incident reports, meeting
 
 ### Approach 2: Schema-driven construction (structured data)
 
-Transform existing relational tables into graph nodes and edges. If you already have foreign key relationships, you already have a graph, just not queryable as one.
+Transform existing relational tables into graph nodes and edges. If you already have foreign key relationships, you already have a graph, not queryable as one.
 
 ```sql
 -- Create nodes from relational tables
@@ -268,7 +268,7 @@ Best for: Large document corpora where you need multi-level summarization and co
 
 ## Solution accelerators
 
-Get started quickly with pre-built solution accelerators:
+Get started quickly with prebuilt solution accelerators:
 
 | Accelerator | Description | Link |
 | --- | --- | --- |
