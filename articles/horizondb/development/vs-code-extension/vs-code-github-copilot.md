@@ -17,7 +17,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code (Preview)
 
 The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This access enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
@@ -70,7 +70,9 @@ Try a prompt like:
 
 1. Copilot responds with a detailed description of your schema's tables.
 
-## Using read and write capabilities
+<a id="using-read-and-write-capabilities"></a>
+
+## Use read and write capabilities
 
 The GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code enables seamless read and write capabilities. With this integration, you can interact with your databases more efficiently. By using AI-powered suggestions, you can perform tasks such as querying data, modifying schemas, and updating records directly from the editor. This feature simplifies complex operations, reduces manual effort, and enhances productivity while maintaining accuracy and context-awareness.
 
@@ -97,7 +99,9 @@ Then Copilot asks for confirmation:
   @pgsql Yes, I confirm
  ```
 
-## Using context menu options
+<a id="using-context-menu-options"></a>
+
+## Use context menu options
 
 - You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**.
 
@@ -161,6 +165,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](vs-code-overview.md)
+- [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
