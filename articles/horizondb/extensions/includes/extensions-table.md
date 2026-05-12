@@ -112,14 +112,8 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
-| 17 | 1.3.1 |
-| 16 | 1.3.1 |
-| 15 | 1.3.1 |
-| 14 | 1.3.1 |
-| 13 | 1.3.1 |
-| 12 | 1.3.1 |
-| 11 | Not supported |
+| 17 | 2.2.0 |
+
 
 ## azure_storage
 

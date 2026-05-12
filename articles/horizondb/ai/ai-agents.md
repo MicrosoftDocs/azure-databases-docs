@@ -18,7 +18,7 @@ ms.custom:
 
 # Build AI agents with Azure HorizonDB
 
-AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need — persistent memory, knowledge retrieval, and scalable storage — all inside a single PostgreSQL database.
+AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need: persistent memory, knowledge retrieval, and scalable storage, all inside a single PostgreSQL database.
 
 ## What are AI agents?
 
@@ -33,7 +33,7 @@ These capabilities make agents fundamentally different from traditional retrieva
 
 ### How agents differ from RAG
 
-Traditional RAG follows a fixed pipeline: retrieve documents via vector search, pass them as context to an LLM, and generate a response. It works for simple question-answering but can't break down multi-step queries, choose between tools, remember prior interactions, or self-correct. Agentic systems add a reasoning loop — the agent decides *when* to retrieve, *what* to search for, *which* tool to use, and *whether* to try a different approach.
+Traditional RAG follows a fixed pipeline: retrieve documents via vector search, pass them as context to an LLM, and generate a response. It works for simple question-answering but can't break down multi-step queries, choose between tools, remember prior interactions, or self-correct. Agentic systems add a reasoning loop: the agent decides *when* to retrieve, *what* to search for, *which* tool to use, and *whether* to try a different approach.
 
 ### Key capabilities of AI agents
 
@@ -48,40 +48,29 @@ Effective AI agents exhibit six core capabilities:
 | **Evaluation, feedback, and self-correction** | Assess the quality of outputs, detect errors or hallucinations, and iterate to improve results without human intervention. |
 | **Trust, safety, and reliability** | Operate within guardrails, handle sensitive data appropriately, and produce auditable, explainable outputs. |
 
-## Why databases are essential for AI agents
+## Why PostgreSQL and Azure HorizonDB for AI agents
 
-AI agents need more than an LLM — they need persistent infrastructure. Databases serve three essential roles:
-
-- **Memory and context**: Persist conversation history, user preferences, and task state so agents maintain continuity across interactions.
-- **Knowledge retrieval**: Give agents access to your business data like product catalogs, customer records, policies, so that responses are grounded in facts, not just the LLM's training data.
-- **Scalable multi-modal storage**: Handle relational records, JSON documents, vector embeddings, graph relationships, and geospatial data in a single system, eliminating the complexity of managing separate stores.
-
-## Why PostgreSQL and Azure HorizonDB
-
-PostgreSQL delivers on each of these pillars with purpose-built capabilities:
+AI agents need more than an LLM, they need persistent infrastructure. PostgreSQL delivers on each of the three pillars that agents require:
 
 ### Memory
 
-PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state, critical for reliable memory persistence. Agents need both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks including [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python), [LangGraph](https://langchain-ai.github.io/langgraph/concepts/persistence/), and [Mem0](https://docs.mem0.ai/open-source/quickstart#4-postgresql) support PostgreSQL as a memory backend, providing built-in connectors for persisting chat history, agent state, and semantic memory.
+Agents need continuity across interactions, which means conversation history, user preferences, and task state must persist reliably. 
+
+PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks including [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python), [LangGraph](https://langchain-ai.github.io/langgraph/concepts/persistence/), and [Mem0](https://docs.mem0.ai/open-source/quickstart#4-postgresql) support PostgreSQL as a memory backend, providing built-in connectors for persisting chat history, agent state, and semantic memory.
 
 ### Knowledge retrieval
 
-PostgreSQL extensions like `pgvector`, Apache AGE, and full-text search bring AI-native retrieval directly into the database engine — vector search, graph traversal, and keyword matching all run alongside your operational data in a single system.
+Agents need access to your business data (product catalogs, customer records, policies, etc.) so that responses are grounded in facts, not just the LLM's training data. 
 
-Azure HorizonDB builds on this foundation with the following retrieval and AI capabilities:
+PostgreSQL extensions like `pgvector`, Apache AGE, and full-text search bring AI-native retrieval directly into the database engine. Which means, vector search, graph traversal, and keyword matching can all run alongside your operational data in a single system.
 
-- **[Vector search](vector-search-pgvector.md)**: Find content by semantic meaning, with [embeddings generated](generate-vector-embeddings.md) directly in SQL.
-- **[Full-text and hybrid search](hybrid-search.md)**: Combine [full-text search](full-text-search-pgfts.md) with vector search for both semantic and keyword matching.
-- **[Semantic reranking](semantic-reranking.md)**: Reorder results by true relevance to the query after initial retrieval.
-- **[Knowledge graphs](build-knowledge-graph.md)**: Traverse entity relationships for [graph-augmented RAG](graphrag.md) and multi-hop reasoning.
-- **[AI functions in SQL](ai-functions.md)**: Run extraction, generation, reranking, and embeddings directly in database queries.
-- **[AI pipelines](ai-pipelines.md)**: Automate chunking, embedding, indexing, search, and reranking as durable pipelines inside the database.
+Azure HorizonDB builds on this foundation with [vector, full-text, hybrid search, semantic reranking, knowledge graphs, AI functions, and durable AI pipelines](ai-search-overview.md), giving agents multiple retrieval strategies to connect to your business data.
 
 ### Scalable multi-modal storage
 
-Native support for JSONB, geospatial data (PostGIS), arrays, full-text search, vector embeddings, and binary data, all in a single database. No need to manage separate stores for each data type your agents consume.
+Agents work with diverse data types. PostgreSQL handles JSONB, geospatial data (PostGIS), arrays, full-text search, vector embeddings, and binary data natively, all in a single database. No need to manage separate stores for each data type your agents consume.
 
-Additionally, PostgreSQL's open-source ecosystem provides decades of community development, extensive tooling, and [broad framework support](#orchestration-frameworks).
+Additionally, PostgreSQL's open-source ecosystem provides decades of community development, extensive tooling, and [broad framework support](ai-frameworks.md).
 
 Azure HorizonDB adds managed infrastructure, built-in AI functions, AI Model Management, and AI pipelines on top of PostgreSQL, and is purpose-built for AI agent workloads.
 
@@ -89,7 +78,7 @@ Azure HorizonDB adds managed infrastructure, built-in AI functions, AI Model Man
 
 ### Single agent vs. multi-agent
 
-A single agent handles all reasoning, tool use, and retrieval within one orchestration loop — suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems — useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
+A single agent handles all reasoning, tool use, and retrieval within one orchestration loop, suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems, useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
 
 ### Orchestration patterns
 
@@ -101,7 +90,7 @@ Multi-agent systems use several common patterns:
 | **Sequential pipeline** | Agents hand off work in a defined sequence. Each agent's output becomes the next agent's input. |
 | **Collaborative** | Agents communicate peer-to-peer, negotiating and sharing intermediate results without a central coordinator. |
 
-When you build multi-agent systems, Azure HorizonDB serves as the shared data layer. All agents read from and write to the same database, ensuring consistent state and enabling coordination through shared memory and knowledge.
+When you build multi-agent systems, Azure HorizonDB can serve as the shared data layer. All agents read from and write to the same database, ensuring consistent state and enabling coordination through shared memory and knowledge.
 
 ## Agent standards and protocols
 
@@ -127,20 +116,7 @@ Azure HorizonDB provides an [MCP server](foundry-agent-integration.md) that enab
 - **Agent Cards**: Agents publish their capabilities through standardized metadata, enabling discovery.
 - **Cross-vendor interoperability**: Agents built on different platforms can collaborate on shared workflows.
 
-These protocols are complementary — MCP connects agents to tools and data, A2A connects agents to each other. Together, they enable complex multi-agent workflows that span multiple data sources and agent platforms.
-
-## Orchestration frameworks
-
-Agent frameworks provide the scaffolding for building, deploying, and managing AI agents. The following frameworks integrate with Azure HorizonDB:
-
-| Framework | Description | Azure HorizonDB integration |
-| --- | --- | --- |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) | A unified, production-ready SDK by Microsoft for building AI agents in .NET and Python. Incorporates Semantic Kernel for orchestration, planning, and multi-agent workflows. | [Python connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python), [.NET connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-csharp), [Java connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-java) |
-| [LangChain / LangGraph](https://www.langchain.com/) | LangChain simplifies LLM application development. LangGraph adds stateful, graph-based orchestration for complex multi-agent workflows with checkpointed execution. | [Python](develop-with-langchain.md), [JavaScript](https://docs.langchain.com/oss/javascript/langchain/overview) |
-| [LlamaIndex](https://www.llamaindex.ai/) | A framework for building context-augmented AI applications. Excels at structured data retrieval and knowledge-graph-powered reasoning over enterprise data. | [Python](https://aka.ms/azpg-llamaindex) |
-| [CrewAI](https://www.crewai.com/) | An open-source framework for orchestrating role-based, collaborative multi-agent workflows with task delegation and standard operating procedures. | [PGSearchTool](https://docs.crewai.com/en/tools/database-data/pgsearchtool) |
-| [AutoGen](https://microsoft.github.io/autogen/) | A Microsoft framework for multi-agent conversation patterns. Supports flexible agent communication topologies and tool integration. | [PostgreSQL tools](https://microsoft.github.io/autogen/) |
-| [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) | A managed service for building, deploying, and scaling AI agents with built-in tool support, tracing, and monitoring. | [Implementation guide](foundry-agent-integration.md) |
+These protocols are complementary: MCP connects agents to tools and data, A2A connects agents to each other. Together, they enable complex multi-agent workflows that span multiple data sources and agent platforms.
 
 ## Build AI agents with Azure HorizonDB
 

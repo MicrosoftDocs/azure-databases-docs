@@ -26,23 +26,23 @@ This article introduces the core retrieval techniques available in Azure Horizon
 
 ## Why traditional search isn't enough
 
-Traditional database queries rely on exact matches — a `WHERE` clause or a `LIKE` pattern. These approaches break down when users search with natural language, use different terminology than what's stored, or ask questions that span multiple concepts. Consider these scenarios:
+Traditional database queries rely on exact matches: a `WHERE` clause or a `LIKE` pattern. These approaches break down when users search with natural language, use different terminology than what's stored, or ask questions that span multiple concepts. Consider these scenarios:
 
 - A user searches for "lightweight laptop for travel" but the product description says "ultraportable notebook weighing under 1 kg."
 - A support agent searches for "app crashes on startup" but the knowledge base article is titled "application initialization failure."
 - A researcher queries "climate change effects on agriculture" across a multilingual document corpus.
 
-In each case, exact-match queries return nothing — yet the relevant content exists. Semantic and hybrid search techniques bridge this gap. Vector search understands that "lightweight laptop" and "ultraportable notebook" mean the same thing, full-text search handles exact terms and identifiers with precision, and hybrid search combines both to cover the widest range of query types. Azure HorizonDB provides the building blocks to implement these patterns entirely within your database, optimized for high-performance and accuracy, eliminating the need for external search services.
+In each case, exact-match queries return nothing, yet the relevant content exists. Semantic and hybrid search techniques bridge this gap. Vector search understands that "lightweight laptop" and "ultraportable notebook" mean the same thing, full-text search handles exact terms and identifiers with precision, and hybrid search combines both to cover the widest range of query types. Azure HorizonDB provides the building blocks to implement these patterns entirely within your database, optimized for high-performance and accuracy, eliminating the need for external search services.
 
 ## Vector search
 
-Vector search finds results based on semantic similarity rather than exact keyword matches. It works by converting text (or other content) into numerical representations called **vector embeddings** — dense arrays of floating-point numbers that capture the meaning of the content. Texts with similar meanings produce vectors that are geometrically close together in high-dimensional space, even if they use entirely different words.
+Vector search finds results based on semantic similarity rather than exact keyword matches. It works by converting text (or other content) into numerical representations called **vector embeddings** which are dense arrays of floating-point numbers that capture the meaning of the content. Texts with similar meanings produce vectors that are geometrically close together in high-dimensional space, even if they use entirely different words.
 
 ### How it works
 
 1. **Prepare and embed your data.** Chunk large documents into meaningful segments, then use an embedding model (for example, `text-embedding-3-small`) to convert each chunk into a vector. Store the vector alongside your relational data using the `vector` extension in PostgreSQL. For guidance on chunking strategies and embedding pipelines, see [Data preparation for AI](ai-data-preparation.md).
 1. **Embed the query.** At query time, convert the user's search query into a vector using the same embedding model.
-1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches — the most semantically similar results.
+1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches which represent the most semantically similar results.
 
 ### When to use it
 
@@ -133,7 +133,7 @@ To learn more, see [Semantic reranking](semantic-reranking.md) and [AI pipelines
 
 ### Knowledge graphs and GraphRAG
 
-Vector search retrieves content that's semantically similar to a query, but it can't follow relationships between entities. For questions like "What are all the subsidiaries of Company X and their financial risks?", vector search returns similar-sounding text. A knowledge graph traverses typed relationships — `Company X → hasSubsidiary → Company Y → hasRisk → Regulatory Filing` — and assembles a structured, complete answer.
+Vector search retrieves content that's semantically similar to a query, but it can't follow relationships between entities. For questions like "What are all the subsidiaries of Company X and their financial risks?", vector search returns similar-sounding text. A knowledge graph traverses typed relationships like `Company X → hasSubsidiary → Company Y → hasRisk → Regulatory Filing` and assembles a structured, complete answer.
 
 **GraphRAG** (Graph-based Retrieval-Augmented Generation) combines knowledge graphs with vector search to enhance RAG pipelines. By extracting entities and relationships from your data into a graph structure, then traversing that graph at query time, GraphRAG retrieves not just directly relevant content, but contextually connected information across entity boundaries.
 

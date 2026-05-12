@@ -22,7 +22,7 @@ Azure HorizonDB combines relational, vector, graph, and document storage in a si
 
 This article is a starting point for exploring what you can build. Each use case highlights the problem, how an AI application or agent solves it, and which Azure HorizonDB features power the solution.
 
-For a comprehensive hub of app development resources, tutorials, and community content for PostgreSQL on Azure, visit the [Azure Database for PostgreSQL Developer Hub](https://aka.ms/postgres-hub).
+For a comprehensive hub of app development resources, tutorials, and community content for PostgreSQL on Azure, visit the [PostrgeSQL Hub for Azure Developers](https://aka.ms/postgres-hub).
 
 ## Quick reference
 
@@ -208,7 +208,7 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 | **AgenticShop** | Multi-agent e-commerce demo powered by LlamaIndex. Showcases personalized product discovery using unstructured data, with observability and memory persistence. | [Documentation](https://aka.ms/agentic-shop) |
 
 > [!TIP]
-> Visit the [Azure Database for PostgreSQL Developer Hub](https://aka.ms/postgres-hub) for more tutorials, samples, community content, and everything app development with PostgreSQL on Azure.
+> Visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/postgres-hub) for more tutorials, samples, community content, and everything app development with PostgreSQL on Azure.
 
 ## Related content
 

@@ -1,6 +1,6 @@
 ---
-title: Generative AI Frameworks and Azure HorizonDB
-description: Integrate Azure HorizonDB with AI and large language model (LLM) orchestration frameworks like Microsoft Agent Framework, Semantic Kernel, LangChain, LlamaIndex and CrewAI to build AI applications.
+title: AI frameworks for building apps and agents with Azure HorizonDB
+description: Integrate Azure HorizonDB with AI and LLM orchestration frameworks like Microsoft Agent Framework, Semantic Kernel, LangChain, LlamaIndex, and CrewAI to build AI applications and agents.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -15,21 +15,23 @@ ms.custom:
   - build-2026
 ---
 
-# Build AI Applications with Azure HorizonDB and LLM Orchestration Frameworks
+# Build AI apps and agents with orchestration frameworks
 
-Azure HorizonDB seamlessly integrates with leading large language model (LLM) orchestration frameworks so that developers can use advanced AI capabilities within their applications. These frameworks can streamline the management and use of LLMs, embedding models, and databases in developing generative AI applications.
+Azure HorizonDB integrates with leading LLM orchestration frameworks for building both AI applications and autonomous agents. These frameworks provide the scaffolding for managing LLMs, embedding models, agent memory, multi-agent workflows, and database connectivity.
 
-## LLM framework integrations
+## Framework integrations
 
-The following table highlights some popular LLM orchestration frameworks that integrate with Azure HorizonDB.
+The following frameworks and services integrate with Azure HorizonDB:
 
-| Integration tool | Description | Azure HorizonDB |
+| Framework | Description | Azure HorizonDB integration |
 | --- | --- | --- |
-| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (incorporating [Semantic Kernel](https://github.com/microsoft/semantic-kernel)) | A unified, production-ready open-source SDK by Microsoft for building AI agents in .NET and Python. It merges the orchestration and plugin capabilities of Semantic Kernel with multi-agent workflow patterns. It uses the same PostgreSQL connectors as Semantic Kernel. | [Python connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python)<br />[.NET connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-csharp)<br />[Java connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-java) |
-| [LangChain](https://www.langchain.com/) | A framework that simplifies the creation of applications powered by LLMs. It offers tools for context-aware reasoning applications in Python, JavaScript, and Java. | [Python](develop-with-langchain.md)<br />[JavaScript](https://docs.langchain.com/oss/javascript/langchain/overview) |
-| [LlamaIndex](https://www.llamaindex.ai/) | A framework for building context-augmented AI applications that can integrate private or domain-specific data with LLMs for complex workflows. | [Python](https://aka.ms/azpg-llamaindex) |
+| [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) (incorporating [Semantic Kernel](https://github.com/microsoft/semantic-kernel)) | A unified, production-ready open-source SDK by Microsoft for building AI agents in .NET and Python. It merges the orchestration and plugin capabilities of Semantic Kernel with multi-agent workflow patterns. | [Python connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python)<br />[.NET connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-csharp)<br />[Java connector](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-java) |
+| [LangChain / LangGraph](https://www.langchain.com/) | LangChain simplifies LLM application development with tools for context-aware reasoning in Python and JavaScript. [LangGraph](https://langchain-ai.github.io/langgraph/) adds stateful, graph-based orchestration for complex multi-agent workflows with checkpointed execution. | [Python](develop-with-langchain.md)<br />[JavaScript](https://docs.langchain.com/oss/javascript/langchain/overview) |
+| [LlamaIndex](https://www.llamaindex.ai/) | A framework for building context-augmented AI applications that integrates private or domain-specific data with LLMs for complex workflows. Excels at structured data retrieval and knowledge-graph-powered reasoning. | [Python](https://aka.ms/azpg-llamaindex) |
 | [GraphRAG](https://microsoft.github.io/graphrag/) | A framework by Microsoft that uses Azure HorizonDB to create AI-powered knowledge graphs. It enables robust data models and reveals relationships in semistructured data. | [Quickstart](https://github.com/Azure-Samples/graphrag-legalcases-postgres/) |
-| [CrewAI](https://www.crewai.com/) | An open-source framework for orchestrating autonomous AI agents with role-based collaboration, task delegation, and multi-agent workflows. It supports PostgreSQL integration through its PGSearchTool for semantic search. | [PGSearchTool](https://docs.crewai.com/en/tools/database-data/pgsearchtool) |
+| [CrewAI](https://www.crewai.com/) | An open-source framework for orchestrating role-based, collaborative multi-agent workflows with task delegation and standard operating procedures. | [PGSearchTool](https://docs.crewai.com/en/tools/database-data/pgsearchtool) |
+| [AutoGen](https://microsoft.github.io/autogen/) | A Microsoft framework for multi-agent conversation patterns. Supports flexible agent communication topologies and tool integration. | [PostgreSQL tools](https://microsoft.github.io/autogen/) |
+| [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) | A managed service for building, deploying, and scaling AI agents with built-in tool support, tracing, and monitoring. | [Implementation guide](foundry-agent-integration.md) |
 
 ## Related content
 

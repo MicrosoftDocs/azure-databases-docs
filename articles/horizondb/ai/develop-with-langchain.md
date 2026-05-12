@@ -18,18 +18,9 @@ ms.custom:
 
 # Develop AI apps with LangChain and Azure HorizonDB
 
-Azure HorizonDB seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
+[LangChain](https://www.langchain.com/) is an LLM orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
 
-This article shows you how to use the integrated [vector database](vector-search-pgvector.md) in Azure HorizonDB to store and manage documents in collections with LangChain. It also shows you how to create indices and perform vector search queries by using nearest-neighbor algorithms such as cosine distance, L2 distance (Euclidean distance), and inner product to locate documents close to the query vectors.
-
-## Vector support
-
-You can use Azure HorizonDB to efficiently store and query millions of vector embeddings in PostgreSQL. The service can help you scale your AI use cases from proof of concept to production. It offers these benefits:
-
-- Provides a familiar SQL interface for querying vector embeddings and relational data.
-- Boosts `pgvector` with a faster and more precise similarity search across more than 100 million vectors by using the [DiskANN indexing algorithm](https://aka.ms/pg-diskann-docs).
-- Simplifies operations by integrating relational metadata, vector embeddings, and time-series data into a single database.
-- Uses the power of the robust PostgreSQL ecosystem and the Azure cloud platform for enterprise-grade features, including replication and high availability.
+Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing](https://aka.ms/pg-diskann-docs) for high-performance search at scale. For details, see [Retrieval foundations](ai-search-overview.md).
 
 ## Authentication
 

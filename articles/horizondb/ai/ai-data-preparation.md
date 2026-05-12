@@ -18,7 +18,7 @@ ms.custom:
 
 # Prepare data for AI app and agent development in Azure HorizonDB
 
-Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps — cleaning, chunking, embedding, enrichment, and indexing — and explains how Azure HorizonDB supports each one.
+Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing, and explains how Azure HorizonDB supports each one.
 
 ## Why data preparation matters
 
@@ -70,15 +70,11 @@ ai.chunk(input_column => 'content', chunk_size => 512, overlap => 64)
 
 ## Step 3: Generate embeddings
 
-Embeddings convert each text chunk into a dense numerical vector — an array of floating-point numbers (for example, 1,536 dimensions) that captures the semantic meaning of the text. Chunks with similar meanings produce vectors that are geometrically close together in high-dimensional space, even if they use different words.
+Embeddings convert each text chunk into a dense numerical vector, an array of floating-point numbers (for example, 1,536 dimensions) that captures the semantic meaning of the text. Chunks with similar meanings produce vectors that are geometrically close together in high-dimensional space, even if they use different words. 
 
-### How embeddings enable search
+Traditional keyword search matches exact terms and fails when a user searches for "time off policy" but the document says "PTO guidelines." Vector embeddings capture meaning rather than spelling, enabling similarity search across synonyms, paraphrases, and even different languages. 
 
-Traditional keyword search matches exact terms. For example, it fails when a user searches for "time off policy" but the document says "PTO guidelines." Vector embeddings capture meaning rather than spelling, enabling similarity search across synonyms, paraphrases, and even different languages.
-
-### Consistency matters
-
-You must use the same embedding model for both your stored data and your search queries. If you embed documents with `text-embedding-3-small` but embed queries with a different model, the vectors exist in different mathematical spaces and similarity comparisons are meaningless.
+It is important that you use the same embedding model for both your stored data and your search queries. If you embed documents with `text-embedding-3-small` but embed queries with a different model, the vectors exist in different mathematical spaces and similarity comparisons are meaningless.
 
 ### Embedding in Azure HorizonDB
 
@@ -139,7 +135,7 @@ pg_fts enables BM25-ranked keyword matching alongside vector similarity, which c
 
 ## Beyond search: additional preparation tasks
 
-The five core steps prepare your data for vector and hybrid search — the foundation of most AI applications. Depending on your scenario, you might also need:
+The five core steps prepare your data for vector and hybrid search, which form the foundation of most AI applications. Depending on your scenario, you might also need:
 
 - **Structured data extraction**: Use the `ai.extract()` pipeline step or the [`azure_ai.extract()`](ai-functions.md) function to pull structured fields (entities, dates, categories) from unstructured text. Extracted data can feed agent tools, power filtering, or populate relational tables alongside your vectors.
 

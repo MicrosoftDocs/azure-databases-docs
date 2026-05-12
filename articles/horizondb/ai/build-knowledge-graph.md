@@ -18,7 +18,7 @@ ms.custom:
 
 # Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE
 
-The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure Database for PostgreSQL solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
+The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
 **`azure_ai.extract()`** discovers hidden relationships and entities from unstructured text, right inside a SQL query. Feed it contracts, support tickets, research papers, or any text-heavy data, and it pulls out the structured relationships you need to populate your knowledge graph.
 
@@ -26,9 +26,9 @@ This document walks through a concrete, end-to-end example: extracting entities 
 
 ## Prerequisites
 
-Before running this tutorial, you need an Azure Database for PostgreSQL flexible server instance, an Azure OpenAI model deployment, and the required PostgreSQL extensions.
+Before running this tutorial, you need an Azure HorizonDB instance, an AI model configured via the model registry, and the required PostgreSQL extensions.
 
-- **Azure Database for PostgreSQL flexible server** with a firewall rule that allows connections from your client IP. Configure this in the Azure portal under **Networking** > **Firewall rules**, or via CLI.
+- **Azure HorizonDB** with a firewall rule that allows connections from your client IP. Configure this in the Azure portal under **Networking** > **Firewall rules**, or via CLI.
 
 ### Enable extensions
 
@@ -42,33 +42,41 @@ CREATE EXTENSION IF NOT EXISTS age;
 SET search_path = ag_catalog, "$user", public;
 ```
 
-### Deploy a model from Microsoft Foundry
+### Configure AI models
 
-1. Open [Microsoft Foundry](https://ai.azure.com) and create a project (or open an existing one).
-2. Go to **Model catalog** > select a model (e.g. `gpt-5.4`) > **Deploy**. Note the deployment name.
-3. Go to your project **Settings** > **Connected resources** > click the Azure OpenAI connection. Copy the **Endpoint URL** and **Key**.
+You need a chat/generation model (such as `gpt-5.4`) that the `azure_ai` extension can call. You have two options:
 
-### Configure the azure_ai extension
+#### Option 1: AI Model Management (recommended)
 
-Connect to your PostgreSQL database and register the Azure OpenAI endpoint:
+If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically — there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
 
-```sql
-SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<your-resource>.openai.azure.com');
-SELECT azure_ai.set_setting('azure_openai.subscription_key', '<your-key>');
-```
+#### Option 2: Manually register a model in the model registry
 
-Verify the settings:
+If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), follow these steps:
 
-```sql
-SELECT azure_ai.get_setting('azure_openai.endpoint');
-```
+1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use (for example, `gpt-5.4`) and complete the deployment.
 
-> [!TIP]
-> For production workloads, use managed identity instead of API keys. Enable system-assigned identity on your PostgreSQL server, grant it the **Cognitive Services OpenAI User** role on the Azure OpenAI resource, then switch the auth type:
->
-> ```sql
-> SELECT azure_ai.set_setting('azure_openai.auth_type', 'managed-identity');
-> ```
+1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
+
+1. Navigate to your model deployment and note the following:
+   - **Deployment name**: The name you assigned during deployment (for example, `gpt-5-deployment`).
+   - **Model name**: The underlying model name (for example, `gpt-5.4`).
+
+1. Register the model in the model registry:
+
+  ```sql
+  SELECT model_registry.model_add(
+      'my-gpt',                                  -- a unique alias for your model
+      'https://my-endpoint.openai.azure.com/',    -- your Azure OpenAI endpoint
+      'gpt-5-deployment',                        -- deployment name
+      'gpt-5',                                   -- model name
+      '2025-01-01-preview',                      -- API version (NULL for latest)
+      'subscription-key',                        -- auth type
+      '<your-endpoint-key>'                      -- endpoint key
+  );
+  ```
+
+For complete details on model registration, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ## The Source Data
 
@@ -126,14 +134,11 @@ SELECT ticket_id,
       'relationship_types: string - comma separated relationship types (e.g. CAUSED_FAILURE_IN, OPERATES_ON, INVOLVES, RESOLVED, PART_OF)',
       'relationship_targets: string - comma separated target entities, one per relationship'
     ],
-    '<your-deployment-name>'  -- e.g. 'gpt-5.5' or 'gpt-4.1'
+    'my-gpt'  -- model alias (omit if using AI Model Management)
   ) AS extracted
 FROM support_tickets
 WHERE ticket_id = 4012;
 ```
-
-> [!NOTE]
-> Replace `<your-deployment-name>` with the name of your model deployment in Azure AI Foundry (for example, `gpt-5.5`). If you omit the model parameter, the function defaults to a deployment named `gpt-4.1`, which must exist in your configured endpoint.
 
 This returns structured JSON:
 
@@ -169,7 +174,7 @@ SELECT ticket_id,
       'relationship_types: string - comma separated relationship types (e.g. CAUSED_FAILURE_IN, OPERATES_ON, INVOLVES, RESOLVED, PART_OF)',
       'relationship_targets: string - comma separated target entities, one per relationship'
     ],
-    '<your-deployment-name>'  -- e.g. 'gpt-5.5' or 'gpt-4.1'
+    'my-gpt'  -- model alias (omit if using AI Model Management)
   ) AS data
 FROM support_tickets;
 
@@ -229,7 +234,7 @@ FROM jsonb_array_elements(
         "additionalProperties": false
       }
     }',
-    model => '<your-deployment-name>'  -- e.g. 'gpt-5.5' or 'gpt-4.1'
+    model => 'my-gpt'  -- model alias (omit if using AI Model Management)
   )->'groups')
 ) AS item,
 jsonb_array_elements_text(item->'aliases') AS alias;
@@ -455,7 +460,7 @@ This tutorial runs extraction, deduplication, and graph loading as interactive S
 
 ## Related content
 
-- [AI Functions in Azure Database for PostgreSQL](../ai/ai-functions.md)
+- [AI Functions in Azure HorizonDB](../ai/ai-functions.md)
 - [Apache AGE extension overview](../graph/age-overview.md)
 - [Graph-augmented RAG patterns](../ai/graphrag.md)
 

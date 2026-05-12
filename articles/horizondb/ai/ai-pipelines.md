@@ -71,22 +71,31 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management (recommended)
 
-If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and wired up to `azure_ai` automatically — there's no endpoint or key to manage. Just reference the model name in pipeline steps:
+If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically — there's no endpoint or key to manage. AI functions use the Managed Models by default:
 
 ```sql
--- No endpoint configuration needed; AI Model Management has already wired this up.
-SELECT azure_openai.create_embeddings('text-embedding-3-small', 'hello world');
+-- No endpoint configuration needed; AI Model Management handles it.
+-- Uses the default-embedding Managed Model when no model alias is specified.
+SELECT azure_openai.create_embeddings(input => 'hello world');
 ```
 
-### Option 2: Manually configure an Azure OpenAI endpoint
+### Option 2: Manually register a model in the model registry
 
-If you're not using AI Model Management, point `azure_ai` at your own Azure OpenAI resource. Run this once per database:
+If you're not using AI Model Management, deploy your own model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model) and register it in the model registry:
 
 ```sql
-SELECT azure_ai.set_setting('azure_openai.endpoint',
-                            'https://YOUR_RESOURCE.openai.azure.com');
-SELECT azure_ai.set_setting('azure_openai.subscription_key', 'YOUR_API_KEY');
+SELECT model_registry.model_add(
+    'my-embedding',                          -- a unique alias for your model
+    'https://YOUR_RESOURCE.openai.azure.com/', -- your Azure OpenAI endpoint
+    'text-embedding-3-small',                -- deployment name
+    'text-embedding-3-small',                -- model name
+    NULL,                                    -- API version (NULL for latest)
+    'subscription-key',                      -- auth type
+    'YOUR_API_KEY'                           -- endpoint key
+);
 ```
+
+For complete details on model registration, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 The pipeline examples in this article work the same way under either option.
 
@@ -112,7 +121,7 @@ SELECT ai.create_pipeline(
         ai.chunk(input_column => 'content',
                  chunk_size   => 512,
                  overlap      => 64),
-        ai.embed(model        => 'text-embedding-3-small',
+        ai.embed(model        => 'my-embedding',
                  input_column => 'chunk_text',
                  dimensions   => 1536)
     ],
@@ -183,7 +192,7 @@ SELECT ai.create_pipeline(
     source => ai.table_source('documents', incremental_column => 'updated_at'),
     steps  => ARRAY[
         ai.chunk(input_column => 'content', chunk_size => 768, overlap => 96),
-        ai.embed(model => 'text-embedding-3-small',
+        ai.embed(model => 'my-embedding',
                  input_column => 'chunk_text',
                  dimensions => 1536)
     ],

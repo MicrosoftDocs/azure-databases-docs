@@ -1,6 +1,6 @@
 ---
 title: Overview of AI capabilities in Azure HorizonDB
-description: Learn about using generative AI with Azure HorizonDB.
+description: Learn about the AI capabilities in Azure HorizonDB, including AI functions, pipelines, vector search, semantic reranking, knowledge graphs, and agent integrations.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -13,138 +13,127 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
+# customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
 # Overview of AI capabilities in Azure HorizonDB
 
-Generative AI refers to a class of AI algorithms that can learn from existing multimedia content and produce new content. You can customize the generated content through techniques such as prompts and fine-tuning. Generative AI algorithms use specific machine learning models:
+Generative AI is transforming how applications interact with data. As organizations move beyond basic chatbots toward retrieval-augmented generation (RAG), autonomous agents, and intelligent search, one thing is clear: **data is the foundation of intelligence**. Raw data becomes knowledge when it's structured, embedded, and made searchable, and knowledge becomes intelligence when AI models can reason over it, retrieve what's relevant, and take action.
 
-- Transformers and recurrent neural networks (RNNs) for text generation
-- Generative adversarial networks (GANs) and variational autoencoders (VAEs) for image generation
+Azure HorizonDB brings this full stack into PostgreSQL. Instead of stitching together separate services for embeddings, vector search, reranking, and orchestration, you get a single database that handles your operational data and your AI workloads together, with SQL as the interface.
 
-Generative AI is used in image and music synthesis and in healthcare, along with common tasks such as text autocompletion, text summarization, and translation. Generative AI techniques enable features on data such as clustering and segmentation, semantic search and recommendations, article modeling, question answering, and anomaly detection.
+## Key concepts
 
-The following video demonstrates the use of generative AI with Azure HorizonDB and the [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md). It can help you understand the concepts in this article.
+If you're new to generative AI, this section introduces the core concepts that underpin AI applications and agents. Each concept builds on the previous one.
 
-> [!Video https://www.youtube.com/embed/em0PKDGzzlQ?si=cT0VVzVv_2xV1Mi_]
+### Large language models (LLMs)
 
-## OpenAI
+A large language model (LLM) is an AI model trained on massive amounts of text data to understand and generate human-like language. LLMs use deep learning architectures (primarily transformers) with billions or trillions of parameters that capture complex patterns in language. Models like GPT-4o, GPT-5, and open-source alternatives (Llama, Mistral) can perform a wide range of tasks: text generation, summarization, translation, code generation, question answering, and more.
 
-OpenAI is a research organization and technology company known for its pioneering work in the field of AI and machine learning. Its mission is to ensure that artificial general intelligence (AGI), which refers to highly autonomous AI systems that can outperform humans in most economically valuable work, benefits all of humanity. OpenAI brought to market state-of-the-art generative models such as GPT-3, GPT-3.5, and GPT-4.
+LLMs are powerful but have a key limitation: they only know what was in their training data. They can't access your private business data, and their knowledge has a cutoff date. This limitation is what makes the next concept, RAG, essential.
 
-Azure OpenAI is a Microsoft service offering to help build generative AI applications by using Azure. Azure OpenAI gives customers advanced language AI with OpenAI GPT-4, GPT-3, Codex, DALL-E, and Whisper models, with the security and enterprise capabilities of Azure. Azure OpenAI codevelops the APIs with OpenAI to ensure compatibility and a smooth transition from one to the other.
+To learn more, see [Large language models](/azure/foundry/concepts/large-language-models).
 
-By using Azure OpenAI, customers get the security capabilities of Microsoft Azure while running the same models as OpenAI. Azure OpenAI offers private networking, regional availability, and responsible AI content filtering.
+### Retrieval-augmented generation (RAG)
 
-[Learn more about Azure OpenAI](/azure/ai-services/openai/overview).
+Retrieval-augmented generation (RAG) is a pattern that addresses the limitation of LLMs by grounding their responses in your actual data. Instead of relying solely on what the model learned during training, a RAG system retrieves relevant documents from a data source and passes them as context to the LLM before it generates a response.
 
-## Large language model
+A typical RAG flow has three steps:
 
-A large language model (LLM) is a type of AI model that's trained on massive amounts of text data to understand and generate human-like language. LLMs typically use deep learning architectures, such as transformers. They're known for their ability to perform a wide range of natural language understanding and generation tasks. The Azure OpenAI service and OpenAI's ChatGPT are examples of LLM offerings.
+1. **Retrieve**: Search your data (using vector search, keyword search, or hybrid techniques) to find content relevant to the user's query.
+1. **Augment**: Include the retrieved content in the prompt sent to the LLM, providing factual context the model wouldn't otherwise have.
+1. **Generate**: The LLM produces a response grounded in the retrieved information, reducing hallucination and improving accuracy.
 
-Key characteristics and capabilities of LLMs include:
+RAG is the foundation of most production AI applications, from customer-facing Q&A systems to internal knowledge assistants. The quality of a RAG system depends heavily on how well your data is prepared, embedded, indexed, and searched.
 
-- **Scale**: LLMs use architectures with an immense scale in terms of the number of parameters. Models like GPT-3 contain from hundreds of millions to trillions of parameters, which allow them to capture complex patterns in language.
-- **Pretraining**: LLMs are pretrained on a large corpus of text data from the internet. This pretraining enables them to learn grammar, syntax, semantics, and a broad range of knowledge about language and the world.
-- **Fine-tuning**: After pretraining, you can fine-tune LLMs on specific tasks or domains with smaller, task-specific datasets. This fine-tuning process allows them to adapt to more specialized tasks, such as text classification, translation, summarization, and question answering.
+To learn more, see [Retrieval-augmented generation (RAG)](/azure/foundry/concepts/retrieval-augmented-generation).
 
-## GPT
+### AI agents
 
-GPT stands for Generative Pretrained Transformer, and it refers to a series of large language models that OpenAI developed. The GPT models are neural networks that OpenAI pretrained on vast amounts of data from the internet, so they're capable of understanding and generating human-like text.
+AI agents go beyond RAG by adding a reasoning loop. Where a RAG application follows a fixed retrieve-then-generate pipeline, an agent uses an LLM to *plan*, *decide* which tools to call, *retrieve* information, *evaluate* results, and *self-correct*, autonomously completing multi-step tasks without human intervention. Agents combine a model, instructions, tools, and persistent memory to operate across sessions and workflows. Because agents need durable storage, access to knowledge, and scalable infrastructure, the choice of database is critical to their design.
 
-Here's an overview of the major GPT models and their key characteristics:
+To learn more, see [What are AI agents?](ai-agents.md#what-are-ai-agents).
 
-- **GPT-3**: Released in June 2020 and a well-known model in the GPT series. It has 175 billion parameters, which makes it one of the largest and most powerful language models in existence.
+### Embeddings, vectors, and vector search
 
-  GPT-3 achieves remarkable performance on a wide range of natural language understanding and generation tasks. It can perform tasks like text completion, translation, and question answering with human-level fluency.
+A **vector** is a mathematical object: an ordered array of numbers that represents a point in multidimensional space. In AI, vectors are used to encode the meaning of content (text, images, records) so that machines can compare, search, and reason over it numerically.
 
-  GPT-3 is divided into various model sizes, ranging from the smallest (125 million parameters) to the largest (175 billion parameters).
+An **embedding** is a specific type of vector produced by a machine learning model, where semantically similar content maps to nearby points in vector space. For example, the phrases "lightweight laptop for travel" and "ultraportable notebook under 1 kg" produce embeddings that are geometrically close together, even though they share no words. **Embedding models** such as `text-embedding-3-small` or `text-embedding-ada-002` are the AI models that perform this conversion, taking raw text (or other content) as input and outputting a dense vector of floating-point numbers.
 
-- **GPT-4**: The latest GPT model from OpenAI. It has 1.76 trillion parameters.
+The proximity between vectors is measured using **vector similarity** functions like cosine similarity, inner product, or Euclidean distance. **Vector search** uses this property to find content by meaning rather than keywords. At query time, the user's question is converted into a vector using the same embedding model, and the database finds the stored vectors closest to the query vector, returning the most semantically relevant results. Vector search is the core retrieval mechanism behind RAG. When combined with keyword search and other techniques like semantic reranking, it forms a comprehensive retrieval strategy. For a detailed look at all available retrieval techniques, see [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md).
 
-## Vectors
+To see an interactive visualization of how vector similarity works, see [Vectors comparison](https://pamelafox.github.io/vectors-comparison/).
 
-A vector is a mathematical concept that's used in linear algebra and geometry to represent quantities that have both magnitude and direction. In the context of machine learning, use vectors to represent data points or features.
+## The role of databases in AI
 
-Key attributes and operations of vectors include:
+Every AI pattern, be it RAG, agents or fine-tuning, starts with data. But the relationship between AI and databases goes deeper than simple storage. As AI applications move from prototypes to production, the database becomes the critical infrastructure layer that determines scalability, reliability, and data freshness.
 
-- **Magnitude**: The length or size of a vector, often denoted as its norm, represents the magnitude of the data. It's a non-negative real number.
-- **Direction**: The direction indicates the orientation or angle of the quantity that it represents, in relation to a reference point or coordinate system.
-- **Components**: A vector can be decomposed into its components along different axes or dimensions. In a 2D Cartesian coordinate system, a vector can be represented as (*x*, *y*), where *x* and *y* are its components along the x-axis and y-axis, respectively. A vector in *n* dimensions is an *n*-tuple (`{x1, x2... xn}`).
-- **Addition and scalar multiplication**: Add vectors together to form new vectors, and multiply them by scalars (real numbers).
-- **Dot products and cross-products**: Combine vectors via dot products (scalar products) and cross-products (vector products).
+- **Data is the source of knowledge.** LLMs are only as good as the context they receive. Your business data (product catalogs, support tickets, policy documents, customer records, etc.) needs to be chunked, embedded, indexed, and kept in sync. The database orchestrates this entire data-to-knowledge pipeline.
+- **Persistent memory for stateful applications.** Chatbots and agents need to remember conversation history, user preferences, and task progress across sessions. Without durable, transactional storage, every interaction starts from zero.
+- **Unified multi-modal storage.** AI workloads involve relational records, JSON documents, vector embeddings, graph relationships, and geospatial data. Managing these across separate specialized systems introduces synchronization complexity, consistency risks, and operational overhead. A database that handles all of these natively eliminates that fragmentation.
+- **Production-grade reliability.** Prototype AI apps can use in-memory stores or flat files. Production systems need ACID transactions, point-in-time recovery, high availability, and security. Mature database systems provide these capabilities out of the box.
 
-## Vector databases
+PostgreSQL is uniquely suited for AI workloads because it handles relational data, JSON, vectors, graphs, and full-text search in a single transactional system backed by decades of ecosystem maturity, extensibility, and broad framework support. Azure HorizonDB builds on PostgreSQL with managed infrastructure, built-in AI functions, model management, and durable pipelines purpose-built for AI workloads. For a deeper dive, see [Why PostgreSQL and Azure HorizonDB for AI agents](ai-agents.md#why-postgresql-and-azure-horizondb-for-ai-agents).
 
-A vector database, also known as a vector database management system (DBMS), is a type of database system that's designed to store, manage, and query vector data efficiently. Traditional relational databases primarily handle structured data in tables, whereas vector databases are optimized for the storage and retrieval of multidimensional data points represented as vectors. These databases are useful for applications where operations such as similarity searches, geospatial data, recommendation systems, and clustering are involved.
+## AI capabilities in Azure HorizonDB
 
-Key characteristics of vector databases include:
+:::image type="content" source="media/overview/ai-capabilities-overview.png" alt-text="Diagram showing AI capabilities in Azure HorizonDB organized as a top-down flow: Build AI agents and apps, AI functions in SQL, Data preparation and pipelines, Search and retrieval with sub-sections for improving performance and enhancing relevance, all on the Azure HorizonDB PostgreSQL foundation.":::
 
-- **Vector storage**: Vector databases store data points as vectors with multiple dimensions. Each dimension represents a feature or attribute of the data point. These vectors can represent a wide range of data types, including numerical, categorical, and textual data.
-- **Efficient vector operations**: Vector databases are optimized for performing vector operations, such as vector addition, subtraction, dot products, and similarity calculations (for example, cosine similarity or Euclidean distance).
-- **Efficient search**: Efficient indexing mechanisms are crucial for quick retrieval of similar vectors. Vector databases use various indexing mechanisms to enable fast retrieval.
-- **Query languages**: Vector databases provide query languages and APIs that are tailored for vector operations and similarity searches. These query languages allow users to express their search criteria efficiently.
-- **Similarity search**: Vector databases excel at similarity searches, which allow users to find data points that are similar to a provided query point. This characteristic is valuable in search and recommendation systems.
-- **Geospatial data handling**: Some vector databases are designed for geospatial data, so they're well suited for applications like location-based services, geographic information systems (GISs), and map-related tasks.
-- **Support for diverse data types**: Vector databases can store and manage various types of data, such as vectors, images, and text.
+### AI functions in SQL
 
-PostgreSQL can gain the capabilities of a vector database by using the [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md).
+Call AI models directly from SQL queries with no application code required.
 
-## Embeddings
+- **[AI functions (azure_ai)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
+- **[AI Model Management](ai-model-management.md)**: One-click provisioning of embedding, chat, and reranking models. Models are automatically registered, configured, and kept up to date. You do not need to manage endpoints or keys.
 
-Embeddings are a concept in machine learning and natural language processing. They represent objects, such as words, documents, or entities, as vectors in a multidimensional space.
+### Data preparation and pipelines
 
-These vectors are often dense, meaning they have a high number of dimensions. You learn them through various techniques, including neural networks. Embeddings aim to capture semantic relationships and similarities between objects in a continuous vector space.
+Prepare your data for AI retrieval with automated, fault-tolerant workflows.
 
-Common types of embeddings include:
+- **[Data preparation for AI](ai-data-preparation.md)**: Strategies for chunking, formatting, and structuring your data for effective embedding and retrieval.
+- **[AI pipelines](ai-pipelines.md)**: Declare multi-step AI workflows (chunk → embed → index → search → rerank) as durable pipelines that run inside the database with automatic retries, checkpointing, and crash recovery.
+- **[Generate vector embeddings](generate-vector-embeddings.md)**: Create embeddings directly in SQL using `azure_openai.create_embeddings()`, with support for batch processing and multiple models.
 
-- **Word**: In natural language processing, word embeddings represent words as vectors. Each word maps to a vector in a high-dimensional space, where words with similar meanings or contexts are located closer to each other. `Word2Vec` and `GloVe` are popular word-embedding techniques.
-- **Document**: Document embeddings represent documents as vectors. `Doc2Vec` is popular for creating document embeddings.
-- **Image**: You can represent images as embeddings to capture visual features for tasks like object recognition.
+### Search and retrieval
 
-Embeddings are central to representing complex, high-dimensional data in a form that machine learning models can easily process. You can train them on large datasets and then use them as features for various tasks. LLMs use them.
+Find the right information using multiple retrieval strategies, individually or combined.
 
-PostgreSQL can gain the capabilities of [generating vector embeddings with Azure AI extension OpenAI integration](generative-ai-azure-openai.md).
+- **[Vector search (pgvector)](vector-search-pgvector.md)**: Semantic similarity search using vector embeddings.
+- **[Full-text search (pg_fts)](full-text-search-pgfts.md)**: BM25 keyword matching for exact terms and identifiers.
+- **[Hybrid search](hybrid-search.md)**: Combine vector and full-text search with Reciprocal Rank Fusion for best overall coverage.
 
-## Scenarios
+#### Improve search performance
 
-Generative AI has a wide range of applications across various domains and industries, including technology, healthcare, entertainment, finance, manufacturing, and more. Here are some common tasks that you can accomplish by using generative AI:
+As your dataset grows, indexing strategies become critical for maintaining fast query response times.
 
-- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md):
-  - Generative AI enables semantic search on data rather than lexicographical search. The latter looks for exact matches to queries, whereas semantic search finds content that satisfies the search query's intent.
-- Chatbots and virtual assistants:
-  - Develop chatbots that can engage in natural context-aware conversations, such as implementing self-help for customers.
-- Recommendation systems:
-  - Improve recommendation algorithms by generating embeddings or representations of items or users.
-- Clustering and segmentation:
-  - Generative AI-generated embeddings allow clustering algorithms to cluster data so that similar data is grouped together. This clustering enables scenarios such as customer segmentation, which allows advertisers to target their customers differently based on their attributes.
-- Content generation:
-  - Generate human-like text for applications like chatbots, novel and poetry creation, and natural language understanding.
-  - Create realistic images, artwork, or designs for graphics, entertainment, and advertising.
-  - Generate videos, animations, or video effects for films, gaming, and marketing.
-  - Generate music.
-- Translation:
-  - Translate text from one language to another.
-- Summarization:
-  - Summarize long articles or documents to extract key information.
-- Data augmentation:
-  - Generate extra data samples to expand and improve training datasets for machine learning models.
-  - Create synthetic data for scenarios that are difficult or expensive to collect in the real world, such as medical imaging.
-- Drug discovery:
-  - Generate molecular structures and predict potential drug candidates for pharmaceutical research.
-- Game development:
-  - Create game content, including levels, characters, and textures.
-  - Generate realistic in-game environments and landscapes.
-- Data denoising and completion:
-  - Clean noisy data by generating clean data samples.
-  - Fill in missing or incomplete data in datasets.
+- **[Scalable vector indexing with DiskANN](vector-indexing-diskann.md)**: Microsoft Research's graph-based algorithm, recommended for large, growing datasets with high dimensions and filtered queries.
+- **[Optimize pgvector performance](optimize-pgvector-performance.md)**: Tuning HNSW and IVFFlat indexes for your workload.
+- **[Vector index selection guide](vector-index-selection-guide.md)**: Choose the right index type based on dataset size, query patterns, and recall requirements.
 
-## Related content
+#### Enhance search relevance
 
-- [Integrate Azure HorizonDB with Azure Cognitive Services](generative-ai-azure-cognitive.md)
-- [Integrate Azure HorizonDB with Azure Machine Learning Services](generative-ai-azure-machine-learning.md)
-- [Generate vector embeddings with Azure OpenAI in Azure HorizonDB](generative-ai-azure-openai.md)
-- [Azure AI extension in Azure HorizonDB](generative-ai-azure-overview.md)
-- [Tutorial: Create a recommendation system with Azure OpenAI in Azure HorizonDB](generative-ai-recommendation-system.md)
-- [Tutorial: Create a semantic search with Azure OpenAI in Azure HorizonDB](generative-ai-semantic-search.md)
-- [Enable and use pgvector in Azure HorizonDB](../extensions/how-to-use-pgvector.md)
+Retrieval is only the first step. Enhance accuracy and depth with second-stage scoring and structured knowledge.
+
+- **[Semantic reranking](semantic-reranking.md)**: Cross-encoder re-scoring that reorders initial search results by true relevance to the query.
+- **[Knowledge graphs and GraphRAG](graphrag.md)**: Entity relationship traversal with Apache AGE for multi-hop reasoning across connected data. See also [Build knowledge graphs from unstructured text](build-knowledge-graph.md).
+
+### Build AI agents and apps
+
+Connect Azure HorizonDB to agent frameworks, orchestration services, and tools.
+
+- **[Build AI agents with Azure HorizonDB](ai-agents.md)**: Conceptual guide covering agent memory, knowledge retrieval, multi-agent architecture, standards (MCP, A2A), and orchestration frameworks.
+- **[Build an AI agent with Microsoft Foundry and MCP](foundry-agent-integration.md)**: Implementation guide for connecting Foundry agents to your database through the MCP server.
+- **[Integrate with LLM orchestration frameworks](ai-frameworks.md)**: Native connectors for Microsoft Agent Framework, LangGraph/LangChain, LlamaIndex, CrewAI, AutoGen, and more.
+- **[Develop with LangChain](develop-with-langchain.md)**: Step-by-step guide for using LangChain with Azure HorizonDB.
+
+### Samples and tutorials
+
+- **[AI and agentic use cases and sample applications](samples.md)**: Industry-specific patterns and end-to-end implementations.
+- **[Build a semantic search application](build-semantic-search-app.md)**: Tutorial for building a complete semantic search app with Azure HorizonDB.
+
+## Get started
+
+Azure HorizonDB gives you a single platform to go from raw data to production AI: embedding generation, vector and hybrid search, semantic reranking, knowledge graphs, durable pipelines, and agent integration, all within PostgreSQL and all accessible through SQL. Whether you're building your first RAG application or deploying multi-agent systems at scale, the capabilities described in this article work together as a complete, integrated stack. Explore the linked articles to dive deeper into each capability.
+
+To go further, visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/postgres-hub): a one-stop shop for curated code samples, solution accelerators, tutorials, structured learning pathways, and a growing developer community where you can connect with Microsoft and ecosystem experts.
