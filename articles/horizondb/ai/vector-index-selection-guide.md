@@ -1,5 +1,5 @@
 ---
-title: Choose the right vector index for your workload in Azure HorizonDB
+title: Choose the Right Vector Index for Your Workload in Azure HorizonDB
 description: Compare flat, IVFFlat, HNSW, and DiskANN vector indexes in Azure HorizonDB and choose the right one based on dataset size, recall target, update rate, and filter selectivity.
 author: abeomor
 ms.author: abeomorogbe
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 
-# Choose the right vector index for your workload in Azure HorizonDB
+# Choose the right vector index for your workload in Azure HorizonDB (Preview)
 
 Azure HorizonDB supports four ways to run vector similarity search: an exact (flat) scan and three approximate nearest-neighbor (ANN) indexes - IVFFlat, HNSW, and DiskANN. The right choice depends on how many vectors you have, how often they change, what recall you need, how much memory you can spend, and how often you filter by metadata.
 

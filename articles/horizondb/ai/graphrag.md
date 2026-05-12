@@ -1,5 +1,5 @@
 ---
-title: Graph-augmented RAG patterns with Azure HorizonDB
+title: Graph-Augmented RAG Patterns with Azure HorizonDB
 description: Learn how to combine knowledge graphs, vector search, and LLM reasoning in Azure HorizonDB to build more accurate retrieval-augmented generation (RAG) applications.
 author: aditivgupta
 ms.author: adig
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
-# Graph-augmented RAG patterns with Azure HorizonDB
+# Graph-augmented RAG patterns with Azure HorizonDB (Preview)
 
 Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-augmented RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 

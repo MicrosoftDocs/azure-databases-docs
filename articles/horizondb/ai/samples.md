@@ -1,5 +1,5 @@
 ---
-title: AI and agentic use cases and sample applications
+title: AI and Agentic Use Cases and Sample Applications
 description: Explore AI and agentic use cases across industries, with solution accelerators and sample applications for Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 ---
 
-# AI and agentic use cases and sample applications
+# AI and agentic use cases and sample applications (Preview)
 
 Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [AI agent and framework integrations](ai-frameworks.md), [MCP connectivity](foundry-agent-integration.md), and [durable AI pipelines](ai-pipelines.md).
 

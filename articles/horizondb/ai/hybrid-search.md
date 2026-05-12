@@ -1,5 +1,5 @@
 ---
-title: Hybrid search in Azure HorizonDB
+title: Hybrid Search in Azure HorizonDB
 description: Combine BM25 full-text search with pgvector and DiskANN vector search in Azure HorizonDB to get keyword precision plus semantic recall, fused with Reciprocal Rank Fusion.
 author: abeomor
 ms.author: abeomorogbe
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 ---
 
-# Hybrid search in Azure HorizonDB
+# Hybrid search in Azure HorizonDB (Preview)
 
 Hybrid search combines two retrieval strategies in a single query:
 

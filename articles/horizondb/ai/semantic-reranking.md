@@ -1,5 +1,5 @@
 ---
-title: Semantic reranking with the rank() function
+title: Semantic Reranking with the Rank () Function
 description: Understand why semantic reranking improves search relevance, and use the azure_ai.rank() function to add a cross-encoder reranking stage to vector, full-text, or hybrid search in Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-semantic-operators
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 ---
 
-# Semantic reranking with the rank() function
+# Semantic reranking with the rank() function (Preview)
 
 Vector search retrieves results that are semantically close to a query, but "close" in embedding space doesn't always mean "relevant" to the user's intent. Synonyms, intent shifts, long-tail phrasing, and domain-specific nuance can cause the most relevant document to rank third or tenth instead of first. Users judge results by how well they match their intent, not by raw distance scores.
 

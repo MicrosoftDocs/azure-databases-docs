@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-foundry
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
-# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP
+# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP (Preview)
 
 The Azure HorizonDB MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 

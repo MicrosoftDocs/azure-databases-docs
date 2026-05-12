@@ -1,5 +1,5 @@
 ---
-title: Overview of AI capabilities in Azure HorizonDB
+title: Overview of AI Capabilities in Azure HorizonDB
 description: Learn about the AI capabilities in Azure HorizonDB, including AI functions, pipelines, vector search, semantic reranking, knowledge graphs, and agent integrations.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
 ms.topic: overview
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
-# What are AI capabilities in Azure HorizonDB
+# What are the AI capabilities in Azure HorizonDB (Preview)
 
 Generative AI is transforming how applications interact with data. As organizations move beyond basic chatbots toward retrieval-augmented generation (RAG), autonomous agents, and intelligent search, one thing is clear: **data is the foundation of intelligence**. Raw data becomes knowledge when it's structured, embedded, and made searchable, and knowledge becomes intelligence when AI models can reason over it, retrieve what's relevant, and take action.
 

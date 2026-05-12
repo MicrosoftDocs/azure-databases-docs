@@ -1,5 +1,5 @@
 ---
-title: Data preparation for AI app and agent development in Azure HorizonDB
+title: Data Preparation for AI App and Agent Development in Azure HorizonDB
 description: Learn the key data preparation steps—cleaning, chunking, embedding, enrichment, and indexing—required before building AI apps and agents with Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand the data preparation steps required before building AI apps and agents, including search, RAG, and knowledge graph scenarios.
 ---
 
-# Prepare data for AI app and agent development in Azure HorizonDB
+# Prepare data for AI app and agent development in Azure HorizonDB (Preview)
 
 Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing, and explains how Azure HorizonDB supports each one.
 

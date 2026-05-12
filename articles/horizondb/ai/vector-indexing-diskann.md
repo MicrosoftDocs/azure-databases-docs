@@ -1,20 +1,22 @@
 ---
-title: Scalable vector indexing with DiskANN
+title: Scalable Vector Indexing with DiskANN
 description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets, with advanced filtering for combined vector and metadata queries.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Scalable vector indexing with DiskANN
+# Scalable vector indexing with DiskANN (Preview)
 
 DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets - which is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to billions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 

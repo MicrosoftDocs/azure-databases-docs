@@ -1,5 +1,5 @@
 ---
-title: Full-text search with pg_fts in Azure HorizonDB
+title: Full-Text Search with pg_fts in Azure HorizonDB
 description: Use the pg_fts extension to add BM25-ranked full-text search to Azure HorizonDB for keyword-based retrieval at scale, with fuzzy matching, phrase proximity, and CJK language support.
 author: abeomor
 ms.author: abeomorogbe
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB
+# Full-text search with pg_fts in Azure HorizonDB (Preview)
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 

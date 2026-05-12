@@ -1,5 +1,5 @@
 ---
-title: Retrieval foundations - vector, full-text, and hybrid search in Azure HorizonDB
+title: Retrieval Foundations - Vector, Full-Text, and Hybrid Search in Azure HorizonDB
 description: Explore vector, full-text, and hybrid search in Azure HorizonDB, and learn how to optimize search performance and enhance relevance with semantic reranking and knowledge graphs.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 
-# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB
+# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)
 
 Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results - even when the query doesn't share exact words with the content.
 

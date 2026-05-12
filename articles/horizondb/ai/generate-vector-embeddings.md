@@ -1,5 +1,5 @@
 ---
-title: Generate vector embeddings using the create_embeddings() AI function
+title: Generate Vector Embeddings Using the create_embeddings () AI Function
 description: Generate vector embeddings using the create_embeddings() function in the azure_ai extension. Use AI Model Management for a turn-key experience, or register your own embedding model.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-azure
 ms.topic: how-to
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
-# Generate vector embeddings using the create_embeddings() AI function
+# Generate vector embeddings using the create_embeddings() AI function (Preview)
 
 Vector embeddings are numerical representations of text that capture semantic meaning, enabling [vector similarity search](vector-search-pgvector.md), clustering, and other vector-based operations. The `azure_openai.create_embeddings()` AI function in the `azure_ai` extension generates vector embeddings directly inside your database.
 

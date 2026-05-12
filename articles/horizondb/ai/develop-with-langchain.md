@@ -1,5 +1,5 @@
 ---
-title: Develop AI apps with LangChain and Azure HorizonDB
+title: Develop AI Apps with LangChain and Azure HorizonDB
 description: Integrate Azure HorizonDB with LangChain to build AI applications.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
-# Develop AI apps with LangChain and Azure HorizonDB
+# Develop AI apps with LangChain and Azure HorizonDB (Preview)
 
 [LangChain](https://www.langchain.com/) is an LLM orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
 

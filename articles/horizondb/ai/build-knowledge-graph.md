@@ -1,5 +1,5 @@
 ---
-title: Tutorial - Build a knowledge graph from unstructured text using AI Functions and Apache AGE
+title: Tutorial - Build a Knowledge Graph from Unstructured Text Using AI Functions and Apache AGE
 description: Convert raw text into a knowledge graph using AI Functions and Apache AGE. This tutorial shows how to extract key entities and relationships and organize them into a graph for better search, exploration, and insights.
 author: aditivgupta
 ms.author: adig
@@ -8,13 +8,15 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-graph
 ms.topic: tutorial
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom: build-2026
+ms.custom:
+  - build-2026
 # customer intent: As a user, I want to understand how to construct knowledge graphs with unstructured text in Azure HorizonDB so I can discover hidden relationships and query cascading failure chains.
 ---
 
-# Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE
+# Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)
 
 The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
