@@ -1,6 +1,6 @@
 ---
-title: What Is the PostgreSQL Extension for Visual Studio Code?
-description: Overview of the PostgreSQL extension for Visual Studio Code with HorizonDB.
+title: What Is the PostgreSQL Extension for Visual Studio Code with Azure HorizonDB
+description: Overview of the PostgreSQL extension for Visual Studio Code with Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -13,7 +13,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code with HorizonDB
+# What is the PostgreSQL extension for Visual Studio Code with Azure HorizonDB (Preview)
 
 The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure HorizonDB.
 
@@ -67,7 +67,6 @@ The Results Viewer enables you to interact with query results through features s
 
 This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
 
-
 ### Apache AGE Graph Visualization
 
 The Apache AGE Graph Visualizer lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
@@ -100,7 +99,6 @@ To render results in the graph visualizer, your queries must meet the following 
   $$) AS (a agtype, r1 agtype, mid agtype, r2 agtype, b agtype);
   ```
 
-
 ## Supported operating systems
 
 The PostgreSQL extension works with the following operating systems:
@@ -123,6 +121,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
