@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
 ms.custom:
-  - build-2026
+  - ignite-2025
 ai-usage: ai-assisted
 ---
 
