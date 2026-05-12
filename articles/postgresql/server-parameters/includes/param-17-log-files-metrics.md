@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -11,7 +11,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Log Files and Metrics |
 | Description | Enables or disables server logs functionality. |
 | Data type | boolean |
 | Default value | `off` |
@@ -28,7 +28,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Intelligent Tuning |
+| Category | Log Files and Metrics |
 | Description | Sets the retention period window in days for server logs - after this time data will be deleted. |
 | Data type | integer |
 | Default value | `3` |
@@ -45,7 +45,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for all table statistics within a database |
 | Data type | boolean |
 | Default value | `off` |
@@ -62,7 +62,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for database and activity statistics |
 | Data type | boolean |
 | Default value | `off` |
@@ -79,7 +79,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for PgBouncer. |
 | Data type | boolean |
 | Default value | `off` |
