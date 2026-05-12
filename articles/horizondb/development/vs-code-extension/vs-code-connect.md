@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2025
+  - build-2026
 ---
 
 # Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code (Preview)

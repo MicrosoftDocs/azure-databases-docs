@@ -11,9 +11,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - copilot
-  - vs-code
-  - ignite-2025
+  - build-2026
 ai-usage: ai-assisted
 ---
 
