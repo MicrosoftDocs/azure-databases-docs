@@ -4,7 +4,7 @@ description: Use the pg_durable extension to define and run fault-tolerant, long
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
 ---
 
-# Durable execution with pg_durable in Azure HorizonDB
+# Durable execution with pg_durable in Azure HorizonDB (Preview)
 
 `pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows — embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows — and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](https://learn.microsoft.com/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
 
