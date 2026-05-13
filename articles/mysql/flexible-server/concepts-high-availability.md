@@ -1,10 +1,10 @@
 ---
-title: Zone-Redundant High-Availability (HA)
+title: High availability in Azure Database for MySQL - Flexible Server
 description: Get a conceptual overview of zone-redundant high-availability in Azure Database for MySQL.
 author: SudheeshGH
 ms.author: sunaray
 ms.reviewer: maghan
-ms.date: 04/22/2026
+ms.date: 05/13/2026
 ms.service: azure-database-mysql
 ms.topic: concept-article
 ai-usage: ai-assisted
@@ -147,7 +147,7 @@ The health monitor component continuously does the following checks:
 
 ## Monitor high availability
 
-To check the server's high-availability configuration status, use the **high-availability Status** in the server's *high-availability* pane in the portal.
+To check the server's high-availability configuration status, use the **high-availability Status** in the server's **high-availability** pane in the portal.
 
 | **Status** | **Description** |
 | --- | --- |
@@ -181,9 +181,9 @@ Keep the following considerations in mind when you use high availability:
 
 Azure Database for MySQL Flexible Server uses native MySQL replication at the backend. A known problem exists in the MySQL Community Edition 8.0 and greater that can break replication when performing a multitable DELETE operation that relies on foreign key constraints with ON DELETE CASCADE. This problem is tracked as [MySQL Bug 102586](https://bugs.mysql.com/bug.php?id=102586). As a result, when you enable high availability on Azure Database for MySQL Flexible Server, avoid using cascaded deletes with foreign keys, as this pattern can lead to replication failures and might affect the availability of the server.
 
-## Health Check
+## Health checks
 
-When you configure high availability (HA) for Azure Database for MySQL, Health Check plays a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any problems promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, Health Check help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured Health Check are essential for achieving the desired level of availability and resilience in your database setup.
+When you configure high availability (HA) for Azure Database for MySQL, health checks play a crucial role in maintaining the reliability and performance of your database. These checks continuously monitor the status and health of both the primary and standby replicas, ensuring that they detect any problems promptly. By tracking various metrics such as server responsiveness, replication lag, and resource utilization, health checks help ensure that failover processes can be executed seamlessly, minimizing downtime and preventing data loss. Properly configured health checks are essential for achieving the desired level of availability and resilience in your database setup.
 
 <a id="monitoring-health"></a>
 
@@ -194,7 +194,6 @@ You can monitor the health of your HA setup through the Azure portal. Key metric
 - **Server responsiveness:** Indicates whether the primary server is reachable.
 - **Replication lag:** Measures the delay between the primary and standby replicas, ensuring data consistency.
 - **Resource utilization:** Monitors CPU, memory, and storage usage to prevent bottlenecks.
-
 
 ## Reliability and resilience
 

@@ -1,10 +1,10 @@
 ---
-title: Version Support Policy
+title: Version support policy
 description: Describes the policy around MySQL major and minor versions in Azure Database for MySQL
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 04/16/2026
+ms.date: 05/13/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: concept-article
@@ -18,7 +18,7 @@ Azure Database for MySQL provides a fully managed database service powered by th
 
 ## Supported MySQL versions
 
-Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions, namely MySQL 5.7 and 8.0. MySQL uses the X.Y.Z. naming scheme where X.Y is the major version, Z is the minor version.Z is incremented for each new LTS release, but is likely always 0 for innovation releases. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/8.4/en/which-version.html).
+Azure Database for MySQL was developed from the [MySQL Community Edition](https://www.mysql.com/products/community/), using the InnoDB storage engine. The service supports the community's current major versions. MySQL uses the X.Y.Z. naming scheme where X.Y is the major version, Z is the minor version. Z is incremented for each new LTS release, but is likely always 0 for innovation releases. For more information about the scheme, see the [MySQL documentation](https://dev.mysql.com/doc/refman/8.4/en/which-version.html).
 
 Azure Database for MySQL currently supports the following major and minor versions of MySQL:
 
@@ -27,9 +27,9 @@ Azure Database for MySQL currently supports the following major and minor versio
 | MySQL Version 5.7 | [5.7.44](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-44.html) | GA (Retired) |
 | MySQL Version 8.0 | [8.0.44](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-44.html) | GA |
 | MySQL Version 8.4 | [8.4.7](https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-7.html) | GA |
-| MySQL Version 9.5 | [9.5.0](https://dev.mysql.com/doc/relnotes/mysql/9.6/en/news-9-5-0.html) | Public Preview ([Innovation Release](#innovation-release-version-support)) |
+| MySQL Version 9.5 | [9.5.0](https://dev.mysql.com/doc/relnotes/mysql/9.5/en/news-9-5-0.html) | Public Preview ([Innovation Release](#innovation-release-version-support)) |
 
-Read the version support policy for retired versions in [version support policy documentation.](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)
+Read the version support policy for retired versions in [version support policy documentation](#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql).
 
 ## Major version support
 
@@ -46,22 +46,22 @@ The retirement details for MySQL major versions are listed in the following tabl
 
 ### What happens after standard support ends?
 
-To provide customers with sufficient time to decide whether to upgrade to a supported version, Extended Support is planned to begin in spring 2026.
+To provide customers with sufficient time to upgrade to a supported version, Extended Support begins after Standard Support ends for each version.
 
-After the standard support end date, Azure Database for MySQL servers running on unsupported MySQL versions are automatically enrolled in Extended Support and are automatically charged for this service after the grace period. Extended Support provides critical security updates for up to three years after the end of standard Support, allowing customers more time to plan and execute major version upgrades. To avoid Extended Support charges, you must upgrade your Azure Database for MySQL server to a MySQL version that is still within standard Support.
+After the Standard Support end date, Azure Database for MySQL servers running on unsupported MySQL versions are automatically enrolled in Extended Support and are automatically charged for this service after the grace period. Extended Support provides critical security updates for up to three years after the end of Standard Support, allowing customers more time to plan and execute major version upgrades. To avoid Extended Support charges, you must upgrade your Azure Database for MySQL server to a MySQL version that is still within Standard Support.
 
 During the Extended Support period, Microsoft prioritizes the service's availability, reliability, and security. Essential modifications are implemented to ensure the service remains accessible and protected, but new features and minor version upgrades might not be guaranteed.
 
 > [!NOTE]  
-> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after standard Support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version of the software. For more information or to provide feedback, contact [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
+> Extended Support is automatically applied and charged to servers running on legacy MySQL versions after Standard Support ends. To opt out of Extended Support and avoid charges, customers must upgrade to a supported major version of the software. For more information or to provide feedback, contact [Ask Azure Database For MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com).
 >
-> Servers in stopped state will not be charged for extended support. The charge will only apply to servers in succeeded state.
+> Servers in stopped state won't be charged for Extended Support. The charge only applies to servers in succeeded state.
 >
 > Pricing is available on the [pricing page](https://azure.microsoft.com/pricing/details/mysql/?cdn=disable)
 
 ## Innovation release version support
 
-The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it's automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions. The Innovation Release track does not go GA.
+The MySQL Innovation Release versions are provided to enable access to the latest MySQL features and capabilities. Support for these versions includes core functionalities but excludes advanced features such as High Availability (HA), replicas, and automated backups. Innovation Release support is limited to the most current version, with previous versions not retained to ensure users have access to the newest advancements. Each Innovation Release server has a 30-day lifecycle from the date of creation, after which it's automatically removed. No monthly maintenance updates are applied during the lifecycle of these versions. The Innovation Release track doesn't go GA.
 
 > [!NOTE]  
 > Innovation Release versions are intended for early access and experimentation. As such, they don't qualify for customer support cases, and no direct support assistance is provided. Users are encouraged to refer to documentation and community resources for troubleshooting and guidance.
@@ -74,10 +74,10 @@ Azure Database for MySQL automatically performs minor version upgrades to the Az
 
 The following restrictions apply only after the extended support period has ended, and your server is still running a retired MySQL version:
 
-- No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues are no longer be available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
+- No further security or support updates are provided for the retired version. Azure Database for MySQL can't patch the retired database engine for any bugs or security issues, and support for database engine-related issues is no longer available. However, Azure continues performing periodic maintenance and patching for the host, OS, containers, and other service-related components.
 - You can't create new database servers for the retired version. However, you can perform point-in-time recoveries and create read replicas for your existing servers.
   New service capabilities developed by Azure Database for MySQL might only be available for supported database server versions.
-- Uptime S.L.A.s apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
+- Uptime SLAs apply solely to Azure Database for MySQL service-related issues and not to any downtime caused by database engine-related bugs.
 - In the extreme event of a serious threat to the service caused by the MySQL database engine vulnerability identified in the retired database version, Azure might choose to stop the compute node of your database server from securing the service first. You're asked to upgrade the server before bringing it online. During the upgrade process, your data is always protected by automatic backups performed on the service, which can be used to restore it to an older version if desired.
 
 ## Retired MySQL plugins support in Azure Database for MySQL
@@ -85,17 +85,17 @@ The following restrictions apply only after the extended support period has ende
 - According to the MySQL public documentation, the [mysql_native_password](https://dev.mysql.com/doc/refman/8.4/en/native-pluggable-authentication.html) authentication plugin was deprecated in MySQL 8.0.34. However, this plugin remains enabled in Azure Database for MySQL across all versions in Azure database for MySQL.
 - For MySQL 8.4, the caching_sha2_password plugin is the default authentication plugin. All new user accounts use the caching_sha2_password plugin for authentication.
   Existing user accounts that use the mysql_native_password plugin will continue to be supported.
-- It is recommended to change the authentication plugin for the existing user accounts to caching_sha2_password authentication plugin instead of the mysql_native_password plugin either before or after upgrade to MySQL 8.4.
+- Change the authentication plugin for existing user accounts to caching_sha2_password instead of mysql_native_password either before or after upgrading to MySQL 8.4.
 
 ## Frequently asked questions (FAQ)
 
 __Q: What is the difference between Azure Standard Support and Azure Extended Support?__
 
-A: Azure Standard Support refers to the regular support period for a database version, during which it receives full updates, features, and support. Azure Extended Support applies after this period ends, allowing you to continue running older versions with security updates and technical support, but without new features—and it is automatically applied and charged if you don’t upgrade.
+A: Azure Standard Support refers to the regular support period for a database version, during which it receives full updates, features, and support. Azure Extended Support applies after this period ends, allowing you to continue running older versions with security updates and technical support, but without new features-and it's automatically applied and charged if you don't upgrade.
 
-__Q: What happens if I don't upgrade my Azure Database for MySQL server to a supported major version after standard support ends?__
+__Q: What happens if I don't upgrade my Azure Database for MySQL server to a supported major version after Standard Support ends?__
 
-A: If you don't upgrade your Azure Database for MySQL server to a supported major version before the Azure extended support start date, your server is automatically enrolled in extended support, and you're charged for this service. To avoid extended support charges, you must upgrade your server to a MySQL version that is still within the standard support period.
+A: If you don't upgrade your Azure Database for MySQL server to a supported major version before the Azure Extended Support start date, your server is automatically enrolled in Extended Support, and you're charged for this service. To avoid Extended Support charges, you must upgrade your server to a MySQL version that is still within the Standard Support period.
 
 __Q: What is the process for performing a major version upgrade on Azure Database for MySQL?__
 
@@ -133,7 +133,7 @@ A: Extended Support is a feature offering that allows customers to continue runn
 
 __Q: Is Extended Support a separate support plan like Azure Standard or Professional Direct Support?__
 
-A: No. Extended Support is not a support plan. It is a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community end of support. It is independent of your Azure Support Plan.
+A: No. Extended Support isn't a support plan. It's a feature of the Azure Database for MySQL service that applies to specific MySQL versions after their community end of support. It's independent of your Azure Support Plan.
 
 __Q: Do I need to take any action to enable Extended Support?__
 
@@ -145,7 +145,7 @@ A: Billing starts one month after the community end of support date of the MySQL
 
 __Q: How is Extended Support priced?__
 
-A: Extended Support is billed on a per vCore per hour basis. Pricing details will be published in November 2025 and will be available in the https://azure.microsoft.com/pricing/calculator/.
+A: Extended Support is billed on a per vCore per hour basis. For pricing details, see the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
 __Q: How do I exit Extended Support?__
 
@@ -154,4 +154,4 @@ A: Simply upgrade your server to a MySQL version that is still under community s
 ## Related content
 
 - [Major version upgrade in Azure Database for MySQL](flexible-server/how-to-upgrade.md)
-- [Dump and restore](flexible-server/concepts-migrate-dump-restore.md)
+- [Migrate your MySQL database to Azure Database for MySQL - Flexible Server using dump and restore](flexible-server/concepts-migrate-dump-restore.md)

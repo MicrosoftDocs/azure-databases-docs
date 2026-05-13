@@ -4,10 +4,11 @@ description: Major Version Upgrade FAQ
 author: hariramt
 ms.author: hariramt
 ms.reviewer: maghan
-ms.date: 06/11/2025
+ms.date: 05/13/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ai-usage: ai-assisted
 ---
 
 # Frequently asked questions (FAQs)
@@ -18,7 +19,7 @@ ms.topic: how-to
 
 - Q: **Will this cause downtime of the server, and if so, how long?**
 
-    A. To have minimal downtime during upgrades, follow the steps mentioned under [Perform minimal downtime major version upgrade using read replicas](./how-to-upgrade.md#perform-minimal-downtime-major-version-upgrade-using-read-replicas). The server is unavailable during the upgrade process, so we recommend you perform this operation during your planned maintenance window. The estimated downtime depends on the database size, storage size provisioned (IOPs provisioned), and the number of tables on the database. The upgrade time is directly proportional to the number of tables on the server. To estimate the downtime for your server environment, we recommend first performing an upgrade on a restored copy of the server.
+    A. To have minimal downtime during upgrades, follow the steps mentioned under [Perform minimal downtime major version upgrade using read replicas](how-to-upgrade.md#perform-minimal-downtime-major-version-upgrade-using-read-replicas). The server is unavailable during the upgrade process, so we recommend you perform this operation during your planned maintenance window. The estimated downtime depends on the database size, storage size provisioned (IOPs provisioned), and the number of tables on the database. The upgrade time is directly proportional to the number of tables on the server. To estimate the downtime for your server environment, we recommend first performing an upgrade on a restored copy of the server.
 
 - Q: **I'm using an HA server. Can I expect a near zero downtime experience for a major version upgrade, similar to routine maintenance?**
 
@@ -47,3 +48,7 @@ Change Entra ID auth only after the hierarchy is upgraded to the same version.
 Depending on the workload, slowness or high CPU usage can be observed in version 8.0 compared to 5.7. It's recommended to upgrade a read replica or restore and upgrade to Azure Database for MySQL Flexible Server 8.0. The replica should be used to test and tune production load/queries before upgrading the primary.
 
 If the slowness is observed with queries such as update/insert/delete, then enabling **Accelerated Logs** on your server under **Settings** > **Compute + Storage** in the side pane of your server's portal page might help.
+
+## Related content
+
+- [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md)
