@@ -30,13 +30,13 @@ ms.topic: how-to
 
 ## Known issues and limitations
 
-### AAD Authentication blocked on Replica
+### Microsoft Entra ID Authentication blocked on Replica
 
-After upgrading the replica from version 5.7 to 8.0, any AAD Entra update operation performed on the older source server changes the authentication method on the replica from 'MySQL and Entra auth' to 'MySQL auth only'. This blocks AAD authentication on replica.
+After upgrading the replica from version 5.7 to 8.0, any Entra ID update operation performed on the older source server changes the authentication method on the replica from 'MySQL and Entra auth' to 'MySQL auth only'. This blocks Entra ID authentication on replica.
 
 #### Resolution
 
-Change AAD Entra auth only after the hierarchy is upgraded to same version.
+Change Entra ID auth only after the hierarchy is upgraded to same version.
 - Upgrade source to 8.0 and set required Entra Admin user.
 - Create new replica on version 8.0
 - Drop old replica with broken replication (if facing this error)
@@ -45,7 +45,5 @@ Change AAD Entra auth only after the hierarchy is upgraded to same version.
 ### Slowness or High CPU usage in 8.0 compared to 5.7
 
 Depending on the workload, slowness or High CPU usage can be observed in version 8.0 compared to 5.7. It's recommended to upgrade a read replica or restore and upgrade to MySQL Flexible 8.0 Server. The replica should be used to test and tune production load/queries before upgrading the primary.
-
-#### Resolution
 
 If the slowness is observed with queries such as update/insert/delete, then enabling "Accelerated Logs" on your server under 'Settings -> Compute + Storage' in the side pane of your server's portal page might help.
