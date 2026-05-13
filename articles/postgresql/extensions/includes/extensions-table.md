@@ -604,7 +604,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 
 ## pg_duckdb
 
-[pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
+[pg_duckdb](https://github.com/duckdb/pg_duckdb) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
