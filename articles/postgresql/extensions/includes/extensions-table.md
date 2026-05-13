@@ -670,7 +670,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 ## pg_ivm
 
-[pg_ivm](https://github.com/sraoss/pg_ivm) (Preview) provides Incremental View Maintenance (IVM) feature for PostgreSQL.
+[pg_ivm](https://github.com/sraoss/pg_ivm) provides Incremental View Maintenance (IVM) feature for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
