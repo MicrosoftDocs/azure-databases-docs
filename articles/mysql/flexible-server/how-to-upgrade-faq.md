@@ -14,7 +14,7 @@ ms.topic: how-to
 
 - Q: **Can I upgrade directly from MySQL 5.7 to 8.4 (or skip major versions)?**
 
-    A. Cross-major version upgrades (for example, upgrading directly from MySQL 5.7 to 8.4) aren't supported. You must upgrade from 5.7 to 8.0 and then from 8.0 to 8.4. If new MySQL major versions are released in the future, direct upgrades skipping major versions are not supported. Each major version upgrade must be performed sequentially.
+    A. Cross-major version upgrades (for example, upgrading directly from MySQL 5.7 to 8.4) aren't supported. You must upgrade from 5.7 to 8.0 and then from 8.0 to 8.4. If new MySQL major versions are released in the future, direct upgrades skipping major versions aren't supported. Each major version upgrade must be performed sequentially.
 
 - Q: **Will this cause downtime of the server, and if so, how long?**
 
@@ -30,20 +30,20 @@ ms.topic: how-to
 
 ## Known issues and limitations
 
-### Microsoft Entra ID Authentication blocked on Replica
+### Microsoft Entra ID authentication blocked on replica
 
 After upgrading the replica from version 5.7 to 8.0, any Entra ID update operation performed on the older source server changes the authentication method on the replica from 'MySQL and Entra auth' to 'MySQL auth only'. This blocks Entra ID authentication on replica.
 
 #### Resolution
 
-Change Entra ID auth only after the hierarchy is upgraded to same version.
+Change Entra ID auth only after the hierarchy is upgraded to the same version.
 - Upgrade source to 8.0 and set required Entra Admin user.
 - Create new replica on version 8.0
 - Drop old replica with broken replication (if facing this error)
 - Use new replica
 
-### Slowness or High CPU usage in 8.0 compared to 5.7
+### Slowness or high CPU usage in 8.0 compared to 5.7
 
-Depending on the workload, slowness or High CPU usage can be observed in version 8.0 compared to 5.7. It's recommended to upgrade a read replica or restore and upgrade to MySQL Flexible 8.0 Server. The replica should be used to test and tune production load/queries before upgrading the primary.
+Depending on the workload, slowness or high CPU usage can be observed in version 8.0 compared to 5.7. It's recommended to upgrade a read replica or restore and upgrade to Azure Database for MySQL Flexible Server 8.0. The replica should be used to test and tune production load/queries before upgrading the primary.
 
-If the slowness is observed with queries such as update/insert/delete, then enabling "Accelerated Logs" on your server under 'Settings -> Compute + Storage' in the side pane of your server's portal page might help.
+If the slowness is observed with queries such as update/insert/delete, then enabling **Accelerated Logs** on your server under **Settings** > **Compute + Storage** in the side pane of your server's portal page might help.
