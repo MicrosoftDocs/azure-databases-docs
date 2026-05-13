@@ -6,6 +6,7 @@ ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: quickstart
 ms.collection:
   - ce-skilling-ai-copilot
@@ -15,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code (Preview)
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)
 
 The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This access enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
@@ -26,8 +27,8 @@ Before you begin, verify you have the proper tools and resources downloaded and 
 These tools and resources help you follow along with this article and make the most of the GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code.
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- PostgreSQL database installed locally or hosted in the {[cloud](../../configure-maintain/quickstart-create-server.md)}.
-- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql) installed in Visual Studio Code.
+- HorizonDB database installed locally or hosted in the [cloud](../../configure-maintain/quickstart-create-server.md).
+- [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
 
@@ -43,7 +44,7 @@ These tools and resources help you follow along with this article and make the m
 
 1. Make sure you have a GitHub account and an active GitHub Copilot subscription:
 
-   - [Create GitHub account](https://www.github.com)
+   - [Create GitHub account](https://github.com)
    - [Enable GitHub Copilot Subscription](https://github.com/settings/copilot)
 
 1. In Visual Studio Code, select the **Account** icon and choose **Sign in with GitHub to use GitHub Copilot**.
@@ -153,7 +154,7 @@ To ensure a smooth experience, clean up any temporary resources or configuration
 
 ## Feedback and support
 
-For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this feedback via the Visual Studio Code Help menu or the PGSQL command palette.
+For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this feedback through the Visual Studio Code Help menu or the PGSQL command palette.
 
 - Help menu
   - Go to **Help > Report Issue**
@@ -163,6 +164,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](vs-code-overview.md)
-- [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [What is the PostgreSQL extension for Visual Studio Code with Azure HorizonDB (Preview)](vs-code-overview.md)
+- [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code (Preview)](vs-code-connect.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

@@ -135,4 +135,4 @@ For industry-specific implementation patterns, see [AI and agentic use cases and
 
 - [Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP](foundry-agent-integration.md)
 - [AI and agentic use cases and sample applications](samples.md)
-- [Wgat are AI capabilities in Azure HorizonDB](overview.md)
+- [What are AI capabilities in Azure HorizonDB](overview.md)

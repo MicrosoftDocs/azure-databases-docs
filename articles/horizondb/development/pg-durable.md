@@ -1,5 +1,5 @@
 ---
-title: Durable execution with pg_durable in Azure HorizonDB
+title: Durable Execution with pg_durable in Azure HorizonDB
 description: Use the pg_durable extension to define and run fault-tolerant, long-running workflows directly inside Azure HorizonDB — including retries, scheduling, signals, and HTTP calls — without external orchestrators.
 author: abeomor
 ms.author: abeomorogbe
@@ -13,14 +13,15 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
 ---
 
 # Durable execution with pg_durable in Azure HorizonDB (Preview)
 
-`pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows — embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows — and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](https://learn.microsoft.com/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
+`pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows - embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows - and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
 
-`pg_durable` is also the execution layer underneath [AI pipelines](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
+`pg_durable` is also the execution layer underneath [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
 > `pg_durable` is in **private preview**.
@@ -30,10 +31,10 @@ ms.custom:
 A durable function in `pg_durable` is persisted to disk every step of the way. That gives you a specific set of guarantees you don't get from a plain `BEGIN ... COMMIT` block or a cron job:
 
 - **Survives database crashes and restarts.** Completed steps aren't re-executed when the server comes back up. In-progress steps resume from the last checkpoint. Pending steps run when the worker comes back online.
-- **Survives long waits.** A workflow can sleep for hours, wait for a cron schedule, or block on an external signal — and still pick up where it left off.
+- **Survives long waits.** A workflow can sleep for hours, wait for a cron schedule, or block on an external signal - and still pick up where it left off.
 - **Survives failures.** Failed steps can be retried automatically without re-running the whole function.
 - **Captures identity.** A function executes with the privileges of the user who started it, not the privileges of the background worker. Multi-tenant workloads stay isolated.
-- **Stays observable from SQL.** You can inspect status, history, execution count, and outputs through the same interface you use for everything else in HorizonDB — a `SELECT` statement.
+- **Stays observable from SQL.** You can inspect status, history, execution count, and outputs through the same interface you use for everything else in HorizonDB - a `SELECT` statement.
 
 What durability **doesn't** do automatically: it doesn't make non-idempotent external operations safe to retry on its own. If a step calls an external API that charges money, design the step to be idempotent (for example, by passing an idempotency key).
 
@@ -56,18 +57,18 @@ A durable function is a graph of steps that you build with a SQL DSL and submit 
 
 Two key ideas:
 
-- **Function graph and execution state are stored in HorizonDB itself**, in the `df` and `duroxide` schemas. Backups, point-in-time restore, and high availability all apply to your workflow state automatically — no separate orchestrator state to manage.
+- **Function graph and execution state are stored in HorizonDB itself**, in the `df` and `duroxide` schemas. Backups, point-in-time restore, and high availability all apply to your workflow state automatically - no separate orchestrator state to manage.
 - **The background worker is started by `shared_preload_libraries`.** It detects the extension after `CREATE EXTENSION` and begins executing functions. If the database restarts, the worker reattaches to running instances and resumes them.
 
 > [!NOTE]  
-> The execution engine inside `pg_durable` is built on [Duroxide](https://github.com/microsoft/duroxide), Microsoft's open-source durable execution runtime for Rust (inspired by the Durable Task Framework and Temporal). The `duroxide` schema name reflects this — that's where Duroxide persists orchestration history, correlation IDs, and replay state. The deterministic-replay, correlated-event-ID, and durable-timer guarantees you get from `pg_durable` come directly from Duroxide.
+> The execution engine inside `pg_durable` is built on [Duroxide](https://github.com/microsoft/duroxide), Microsoft's open-source durable execution runtime for Rust (inspired by the Durable Task Framework and Temporal). The `duroxide` schema name reflects this - that's where Duroxide persists orchestration history, correlation IDs, and replay state. The deterministic-replay, correlated-event-ID, and durable-timer guarantees you get from `pg_durable` come directly from Duroxide.
 
 ## Enable pg_durable
 
 `pg_durable` requires both a server-level setting and an extension creation step.
 
 1. Add `pg_durable` to `shared_preload_libraries` for your HorizonDB instance and restart the server.
-2. Create the extension in each database where you want to use it:
+1. Create the extension in each database where you want to use it:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_durable;
@@ -76,7 +77,7 @@ CREATE EXTENSION IF NOT EXISTS pg_durable;
 `CREATE EXTENSION` provisions the `df` schema (function graphs and monitoring views) and the `duroxide` schema (execution state). The background worker detects the extension within a few seconds and is ready to run functions.
 
 > [!IMPORTANT]  
-> If `pg_durable` is in `shared_preload_libraries` but you haven't created the extension, the worker remains idle and durable functions don't execute. Likewise, the worker only services **one** database — the one it was configured to attach to — so create the extension there.
+> If `pg_durable` is in `shared_preload_libraries` but you haven't created the extension, the worker remains idle and durable functions don't execute. Likewise, the worker only services **one** database - the one it was configured to attach to - so create the extension there.
 
 ## Your first durable function
 
@@ -94,20 +95,22 @@ SELECT df.result('a1b2c3d4');
 
 Even a one-step function is durable: if the database restarts after `df.start()` and before the worker picks it up, the function still runs.
 
-## Programming model
+<a id="programming-model"></a>
 
-A durable function is a graph built from steps, operators, and built-in functions. Plain SQL strings are auto-wrapped — you don't need to call `df.sql()` explicitly.
+## Program model
+
+A durable function is a graph built from steps, operators, and built-in functions. Plain SQL strings are auto-wrapped - you don't need to call `df.sql()` explicitly.
 
 ### Operators
 
 | Operator | Meaning | Example |
 |---|---|---|
-| `~>` | Sequence — run left, then right | `'SELECT 1' ~> 'SELECT 2'` |
-| `&` | Join — run in parallel, wait for all | `'SELECT 1' & 'SELECT 2'` |
-| `|` | Race — run in parallel, first wins | `fast_query | df.sleep(30)` |
-| `?>` `!>` | If / else — branch on a boolean condition | `cond ?> then_branch !> else_branch` |
-| `@>` | Loop — repeat forever (prefix operator) | `@> body` |
-| `|=>` | Name — capture a step's result | `'SELECT id FROM users LIMIT 1' |=> 'user_id'` |
+| `~>` | Sequence - run left, then right | `'SELECT 1' ~> 'SELECT 2'` |
+| `&` | Join - run in parallel, wait for all | `'SELECT 1' & 'SELECT 2'` |
+| `|` | Race - run in parallel, first wins | `fast_query | df.sleep(30)` |
+| `?>` `!>` | If / else - branch on a boolean condition | `cond ?> then_branch !> else_branch` |
+| `@>` | Loop - repeat forever (prefix operator) | `@> body` |
+| `|=>` | Name - capture a step's result | `'SELECT id FROM users LIMIT 1' |=> 'user_id'` |
 
 ### Useful built-ins
 
@@ -136,7 +139,9 @@ SELECT df.start(
 );
 ```
 
-## Usage Examples
+## Usage examples
+
+The following examples show common patterns for durable functions.
 
 ### Multi-step ETL with retries
 
@@ -152,7 +157,7 @@ SELECT df.start(
 );
 ```
 
-If the database restarts between the `DELETE` and the `INSERT`, the worker resumes from the `INSERT` — it doesn't re-run the `DELETE`.
+If the database restarts between the `DELETE` and the `INSERT`, the worker resumes from the `INSERT` - it doesn't re-run the `DELETE`.
 
 ### Scheduled job (cron)
 
@@ -192,7 +197,7 @@ SELECT df.signal('a1b2c3d4', 'approval',
 
 ### Durable HTTP call
 
-`df.http()` makes external calls as durable activities — 5xx responses, network errors, and timeouts are retried automatically.
+`df.http()` makes external calls as durable activities - 5xx responses, network errors, and timeouts are retried automatically.
 
 ```sql
 SELECT df.start(
@@ -234,7 +239,7 @@ SELECT epoch_id, last_seen_at, now() - last_seen_at AS time_since_last_heartbeat
 FROM df._worker_epoch;
 ```
 
-A `time_since_last_heartbeat` under 15 seconds means the worker is healthy. Anything larger, or no rows at all, means the worker is down or hasn't initialized — the most common cause is `pg_durable` not being in `shared_preload_libraries`.
+A `time_since_last_heartbeat` under 15 seconds means the worker is healthy. Anything larger, or no rows at all, means the worker is down or hasn't initialized - the most common cause is `pg_durable` not being in `shared_preload_libraries`.
 
 ## Identity and isolation
 
@@ -246,7 +251,7 @@ This means:
 - Non-superusers can't escalate privileges by submitting a durable function.
 - Multi-tenant workloads stay isolated as long as your role and grant model is correct.
 
-For details on switching to a group role before submitting, see the user guide. <!-- TODO: link to public version of user guide once it exists -->
+For details on switching to a group role before submitting, see the user guide.
 
 ## Interaction with replicas, backup, and PITR
 
@@ -261,21 +266,21 @@ For details on switching to a group role before submitting, see the user guide. 
 | Deployment | Separate service, separate identity, separate state store | One database |
 | State durability | Orchestrator's storage layer | Same backups, HA, and PITR as your data |
 | Identity | Workers run under a service identity | Functions execute as the submitting user |
-| Failure modes | Network between orchestrator and database | None — same process |
+| Failure modes | Network between orchestrator and database | None - same process |
 | Best for | Cross-system orchestration that touches many services | Workloads where most of the work is in or near Postgres |
 
-`pg_durable` is not trying to replace external orchestrators for cross-system pipelines. It's the right choice when most of the work is database work — embeddings, transforms, AI calls, scheduled maintenance — and adding another service is more cost than benefit.
+`pg_durable` isn't trying to replace external orchestrators for cross-system pipelines. It's the right choice when most of the work is database work - embeddings, transforms, AI calls, scheduled maintenance - and adding another service is more cost than benefit.
 
 ## Limitations during preview
 
 - `df.http()` retries on 5xx and network errors. 4xx responses are returned to the workflow for you to handle; they aren't retried automatically.
 - The background worker services a single database per instance. Multi-database fan-out is supported through `df.start(..., database => 'other_db')` from a function running in the worker's database.
-- Function definitions and execution state are not portable across major versions of `pg_durable` during preview. Drain or cancel running instances before upgrading.
+- Function definitions and execution state aren't portable across major versions of `pg_durable` during preview. Drain or cancel running instances before upgrading.
 
 ## Related content
 
-- [AI pipelines](../ai/ai-pipelines.md)
-- [AI functions (azure_ai)](../ai/ai-functions.md)
-- [Generate vector embeddings in SQL](../ai/generate-vector-embeddings.md)
+- [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md)
+- [AI functions in the azure_ai extension (Preview)](../ai/ai-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](../ai/generate-vector-embeddings.md)
 - [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
-- [Duroxide on GitHub](https://github.com/microsoft/duroxide) — open-source runtime that powers `pg_durable`
+- [Duroxide on GitHub](https://github.com/microsoft/duroxide)

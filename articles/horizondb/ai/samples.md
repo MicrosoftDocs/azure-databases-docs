@@ -212,6 +212,6 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 
 ## Related content
 
-- [Wgat are AI capabilities in Azure HorizonDB](overview.md)
+- [What are AI capabilities in Azure HorizonDB](overview.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Build a semantic search application](build-semantic-search-app.md)
