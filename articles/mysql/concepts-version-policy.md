@@ -89,9 +89,13 @@ The following restrictions apply only after the extended support period has ende
 
 ## Frequently asked questions (FAQ)
 
+__Q: What is the difference between Azure standard Support and Azure extended support?__
+
+A: Azure Standard Support refers to the regular support period for a database version, during which it receives full updates, features, and support. Azure Extended Support applies after this period ends, allowing you to continue running older versions with security updates and technical support, but without new features—and it is automatically applied and charged if you don’t upgrade.
+
 __Q: What happens if I don't upgrade my Azure Database for MySQL server to a supported major version after standard support ends?__
 
-A: If you don't upgrade your Azure Database for MySQL server to a supported major version before the Azure extended support start date, your server is automatically enrolled in extended support, and you're charged for this service. To avoid extended support charges, you must upgrade your server to a MySQL version that is still within the standard support Period.
+A: If you don't upgrade your Azure Database for MySQL server to a supported major version before the Azure extended support start date, your server is automatically enrolled in extended support, and you're charged for this service. To avoid extended support charges, you must upgrade your server to a MySQL version that is still within the standard support period.
 
 __Q: What is the process for performing a major version upgrade on Azure Database for MySQL?__
 

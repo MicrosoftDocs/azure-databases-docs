@@ -27,3 +27,25 @@ ms.topic: how-to
 - Q: **What happens to my backups after the upgrade?**
 
     A. All backups (automated/on-demand) taken before a major version upgrade are restored to a server with the previous version when used for restoration. All the backups (automated/on-demand) taken after a major version upgrade are restored to the server with the upgraded version. It's highly recommended to take an on-demand backup before you perform the major version upgrade for an easy rollback.
+
+## Known issues and limitations
+
+### AAD Authentication blocked on Replica
+
+After upgrade from version 5.7 to 8.0 on replica, if any AAD Entra update operation is performed on the source server running 5.7 before upgrading it, authentication method on the replica changes from 'MySQL and Entra auth' to 'MySQL auth only'. This blocks AAD authentication on replica.
+
+#### Resolution
+
+Change AAD Entra auth only after the hierarchy is upgraded to same version.
+- Upgrade source to 8.0 and set required Entra Admin user.
+- Create new replica on version 8.0
+- Drop old replica with broken replication (if facing this error)
+- Use new replica
+
+### Slowness or High CPU usage in 8.0 compared to 5.7
+
+Depending on the workload, slowness or High CPU usage can be observed in version 8.0 compared to 5.7. It is recommended to upgrade a read replica or restore and upgrade to MySQL Flexible 8.0 Server. The replica should be used to test and tune production load/queries before upgrading the primary.
+
+#### Resolution
+
+If the slowness is observed with queries such as update/insert/delete, then enabling "Accelerated Logs" on your server under 'Settings -> Compute + Storage' in the side pane of your server's portal page might help.
