@@ -104,7 +104,7 @@ Then Copilot asks for confirmation:
 
 - You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**.
 
-## Additional ideas and prompt recipes
+## Other ideas and prompt recipes
 
 There are many prompts and things you can do with GitHub Copilot for PostgreSQL - the limit is only your imagination! To help jumpstart some ideas, here are some concept prompts you can try or modify to match your database context and development environment:
 

@@ -40,7 +40,7 @@ To install the PostgreSQL extension:
 1. Search for *PostgreSQL* in the Extensions Marketplace.
 1. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
 
-When the extension is installed, the PostgreSQL page, represented by an elephant icon, appears in the Visual Studio Code sidebar.
+When the extension is installed, the PostgreSQL page, represented by an elephant icon, appear in the Visual Studio Code sidebar.
 
 ## Add a connection to HorizonDB
 

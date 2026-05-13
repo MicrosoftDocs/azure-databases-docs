@@ -18,7 +18,7 @@ ms.custom:
 
 # Graph database capabilities with Apache AGE extension
 
-Apache AGE (a graph extension) is a powerful PostgreSQL extension designed to seamlessly integrate graph database functionalities into the PostgreSQL ecosystem. AGE enables users to store and query graph data efficiently and expressively by supporting the intuitive openCypher query language, when developed under the Apache Incubator project. It bridges the gap between relational and graph data, allowing developers to manage complex relationships and uncover insights that traditional databases might struggle to reveal.
+Apache AGE (a graph extension) is a powerful PostgreSQL extension designed to seamlessly integrate graph database functionalities into the PostgreSQL ecosystem. Developed under the Apache Incubator project, AGE enables users to store and query graph data efficiently and expressively by supporting the intuitive openCypher query language. It bridges the gap between relational and graph data, allowing developers to manage complex relationships and uncover insights that traditional databases might struggle to reveal.
 
 Graph data, represented through nodes (entities) and edges (relationships), is increasingly recognized as essential for applications such as social networks, recommendation systems, fraud detection, network analysis, and knowledge graphs. Apache AGE provides a robust solution for handling such interconnected data, enabling advanced analyses and streamlined data management.
 
@@ -152,7 +152,7 @@ Foreign-key constraints:
 Access method: heap
 ```
 
-### Apache AGE Graph Visualization
+### Apache AGE graph visualization
 
 The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the extension, see [PostgreSQL extension](../developer/vs-code-extension/vs-code-overview.md).
 
@@ -183,8 +183,7 @@ To render results in the graph visualizer, your queries must meet the following 
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)
+

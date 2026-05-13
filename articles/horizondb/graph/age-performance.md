@@ -54,7 +54,7 @@ To take full advantage of indexing, you must understand which types of indexes a
 
 ## EXPLAIN in Apache AGE
 
-Unlike standard SQL, the EXPLAIN keyword in Cipher queries requires a different query format.
+Unlike standard SQL, the EXPLAIN keyword in Cypher queries requires a different query format.
 
 ```sql
 SELECT * FROM cypher('graph_name',
@@ -105,7 +105,7 @@ Use the following commands to create indexes for vertex and edge tables:
   CREATE INDEX ON graph_name."VLABEL" USING GIN (properties);
   ```
 
-- Microsoft Edge table:
+- Edge table:
 
   ```sql
   CREATE INDEX ON graph_name."ELABEL" USING BTREE (id);
@@ -156,7 +156,7 @@ AGEFreighter is a Python library designed to facilitate the loading of data into
 
 #### Environment setup
 
-- Created an Azure HorizonDB instance with AGE enabled.
+- Create an Azure HorizonDB instance with AGE enabled.
 - Python dependency management tool such as Poetry is recommended. Python 3.9 or later must be installed.
 - The AGEFreighter library (AGEFreighter PyPi) must be installed as a dependency:
 
@@ -166,9 +166,9 @@ poetry add agefreighter
 
 #### Use the CSV data format for benchmarks
 
-For the benchmarks, I used a CSV file to load data into AGE. The CSV format is widely supported and easy to work with, making it a good choice for data loading tasks.
+For the benchmarks, a CSV file is used to load data into AGE. The CSV format is widely supported and easy to work with, making it a good choice for data loading tasks.
 
-Since the dataset used consists of legal cases and relationships between them, I structured my input CSV file as follows:
+Since the dataset consists of legal cases and relationships between them, the input CSV file is structured as follows:
 
 ```csv
 id,CaseID,start_vertex_type,end_CaseID,end_vertex_type
@@ -183,7 +183,7 @@ Each row represents a relationship between two cases. CaseID refers to the start
 
 #### Use the data loading script for benchmarks
 
-The following Python script was used to load my dataset into AGE. You might also refer to "Usage of CSVFreighter" section in AGEFreighter PyPi for a different example.
+The following Python script was used to load the dataset into AGE. You might also refer to "Usage of CSVFreighter" section in AGEFreighter PyPi for a different example.
 
 ```python
 await instance.load(
@@ -207,7 +207,7 @@ As you can see, the graph_name and fields in the provided csv file is defined he
 
 ### Other data sources
 
-AGEFreighter supports other formats such as MultiCSV, Avro, Parquet, Azure Storage, etc. which can be adapted based on data format requirements. You can get more information here: ['AGEFreighter PyPi'](https://pypi.org/project/agefreighter/)
+AGEFreighter supports other formats, such as MultiCSV, Avro, Parquet, and Azure Storage, which can be adapted based on data format requirements. For more information, see [AGEFreighter on PyPI](https://pypi.org/project/agefreighter/).
 
 ## Data loading performance benchmarks
 
@@ -221,8 +221,7 @@ Efficient data loading is essential for handling large datasets effectively.
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-- [MSSQL extension for Visual Studio Code?](/sql/tools/visual-studio-code-extensions/mssql/mssql-extension-visual-studio-code)
+
