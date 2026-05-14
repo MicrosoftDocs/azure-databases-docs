@@ -1,5 +1,5 @@
 ---
-title: Semantic reranking with the rank() function
+title: Semantic Reranking with the Rank () Function
 description: Understand why semantic reranking improves search relevance, and use the azure_ai.rank() function to add a cross-encoder reranking stage to vector, full-text, or hybrid search in Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
@@ -10,16 +10,17 @@ ms.subservice: ai-semantic-operators
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2026
 # customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 ---
 
-# Semantic reranking with the rank() function
+# Semantic reranking with the rank() function (Preview)
 
 Vector search retrieves results that are semantically close to a query, but "close" in embedding space doesn't always mean "relevant" to the user's intent. Synonyms, intent shifts, long-tail phrasing, and domain-specific nuance can cause the most relevant document to rank third or tenth instead of first. Users judge results by how well they match their intent, not by raw distance scores.
 
-**Semantic reranking** addresses this. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescores each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing significantly more accurate relevance scores.
+**Semantic reranking** addresses this. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescores each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing more accurate relevance scores.
 
 The `azure_ai.rank()` function in the `azure_ai` extension brings this capability directly into SQL, so you can add a reranking stage without leaving the database.
 
@@ -35,19 +36,19 @@ A cross-encoder, by contrast, processes the query and document as a **single inp
 
 Cross-encoders are accurate but expensive. Scoring 1 million documents with a cross-encoder at query time is impractical as it would take seconds to minutes per query. That's why production retrieval uses a **two-stage pipeline**:
 
-1. **Stage 1: Retrieve** a broad set of candidates cheaply (vector search, BM25, or hybrid search). This narrows millions of documents down to the top 50–100.
-2. **Stage 2: Rerank** only those 50–100 candidates with a cross-encoder for precision on the results that matter most.
+1. **Stage 1: Retrieve** a broad set of candidates cheaply (vector search, BM25, or hybrid search). This narrows millions of documents down to the top 50-100.
+1. **Stage 2: Rerank** only those 50-100 candidates with a cross-encoder for precision on the results that matter most.
 
 This pattern gives you the speed of embedding-based retrieval with the accuracy of cross-encoder scoring, at a fraction of the cost of running the cross-encoder over the entire corpus.
 
 ## When to use semantic reranking
 
 | Use reranking when | Skip reranking when |
-|--------------------|---------------------|
+| --- | --- |
 | Search quality directly affects user experience (product search, support search, knowledge base) | Simple exact-match lookups (product code, ID search) |
 | Queries are natural language with nuance, synonyms, or intent variation | The corpus is small and homogeneous enough that vector search alone achieves high precision |
 | You're building RAG or [AI pipelines](ai-pipelines.md) and need the best possible context for LLM generation | Latency budget can't accommodate the additional model call |
-| Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a very small set (fewer than 5) |
+| Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a small set (fewer than 5) |
 
 ## Prerequisites
 
@@ -84,7 +85,7 @@ azure_ai.rank(
 
 Returns a table with columns: `document_id`, `rank`, and `relevance_score`.
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Pass your registered reranker model alias as the `model` argument. For example: `azure_ai.rank('query', documents, ids, 'my-reranker')`. See [AI functions](ai-functions.md) for details on registering models.
 
 ## Basic reranking example
@@ -103,7 +104,7 @@ SELECT * FROM azure_ai.rank(
 );
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Add your model alias as the last argument: `azure_ai.rank('wireless noise cancelling headphones', ARRAY[...], NULL, 'my-reranker')`.
 
 ## Two-stage retrieval: vector search + reranking
@@ -134,12 +135,12 @@ ORDER BY r.rank ASC
 LIMIT 10;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Replace `azure_openai.create_embeddings(input => 'wireless noise cancelling headphones')` with `azure_openai.create_embeddings('my-embedding', 'wireless noise cancelling headphones')` and add `'my-reranker'` as the last argument to `azure_ai.rank()`.
 
 ## Hybrid search + reranking
 
-For the best retrieval quality, combine BM25 full-text search and vector search with Reciprocal Rank Fusion, then rerank the fused results. If you want to run this pattern as a durable, fault-tolerant workflow with automatic retries and checkpointing, see [AI pipelines](ai-pipelines.md) — which supports `ai.rank()` as a built-in pipeline step.
+For the best retrieval quality, combine BM25 full-text search and vector search with Reciprocal Rank Fusion, then rerank the fused results. If you want to run this pattern as a durable, fault-tolerant workflow with automatic retries and checkpointing, see [AI pipelines](ai-pipelines.md) - which supports `ai.rank()` as a built-in pipeline step.
 
 ```sql
 WITH query AS (
@@ -187,25 +188,20 @@ ORDER BY r.rank ASC
 LIMIT 10;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Pass your model aliases to `create_embeddings()` and `rank()` as shown in previous examples.
 
 ## Performance considerations
 
 | Factor | Recommendation |
-|--------|---------------|
-| **Candidate pool size** | Rerank 20–50 candidates. More candidates improve recall but increase latency and cost linearly. |
+| --- | --- |
+| **Candidate pool size** | Rerank 20-50 candidates. More candidates improve recall but increase latency and cost linearly. |
 | **Latency** | Cross-encoder scoring adds tens to low hundreds of milliseconds depending on the pool size and document length. |
 | **Document length** | Shorter documents rerank faster. If documents are long, consider reranking over summaries or the most relevant chunk rather than the full text. |
-| **When to skip** | If your retrieval stage already returns fewer than 5 results, reranking adds cost with diminishing accuracy gains. |
+| **When to skip** | If your retrieval stage already returns fewer than five results, reranking adds cost with diminishing accuracy gains. |
 
 ## Related content
 
 - [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management](ai-model-management.md)
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
 - [Hybrid search](hybrid-search.md)
-- [Implement vector search with pgvector](vector-search-pgvector.md)
-- [Generate vector embeddings](generate-vector-embeddings.md)
-- [AI pipelines](ai-pipelines.md)
 - [Build a semantic search application](build-semantic-search-app.md)

@@ -1,7 +1,7 @@
 ---
 author: avnishrastogimsft
 ms.author: avrastog
-ms.reviewer: maghan, randolphwest
+ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
@@ -12,7 +12,7 @@ ms.custom:
 
 ## address_standardizer
 
-[address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step.
+[address_standardizer](https://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -27,7 +27,7 @@ ms.custom:
 
 ## address_standardizer_data_us
 
-[address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
+[address_standardizer_data_us](https://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -108,7 +108,7 @@ ms.custom:
 
 ## azure_ai
 
-{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundru and Azure ML Services integration for PostgreSQL.
+{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundry and Azure ML Services integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -734,7 +734,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 <a id="pgrouting"></a>
 
-## pgrout
+## pgrouting
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
 

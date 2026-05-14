@@ -1,5 +1,5 @@
 ---
-title: Retrieval foundations - vector, full-text, and hybrid search in Azure HorizonDB
+title: Retrieval Foundations - Vector, Full-Text, and Hybrid Search in Azure HorizonDB
 description: Explore vector, full-text, and hybrid search in Azure HorizonDB, and learn how to optimize search performance and enhance relevance with semantic reranking and knowledge graphs.
 author: shreyaaithal
 ms.author: shaithal
@@ -16,13 +16,13 @@ ms.custom:
 # customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 
-# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB
+# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)
 
-Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results — even when the query doesn't share exact words with the content.
+Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results - even when the query doesn't share exact words with the content.
 
 This article introduces the core retrieval techniques available in Azure HorizonDB, explains when and why to use each one, and shows how they fit together into a complete search strategy. For implementation details, each section links to the corresponding deep-dive article.
 
-:::image type="content" source="media/ai-search-overview/retrieval-capabilities.svg" alt-text="Diagram showing retrieval capabilities in Azure HorizonDB grouped by search techniques, performance and scale, and relevance enhancement.":::
+:::image type="content" source="media/ai-search-overview/retrieval-capabilities.svg" alt-text="Diagram showing retrieval capabilities in Azure HorizonDB grouped by search techniques, performance and scale, and relevance enhancement." lightbox="media/ai-search-overview/retrieval-capabilities.svg" :::
 
 ## Why traditional search isn't enough
 
@@ -42,7 +42,7 @@ Vector search finds results based on semantic similarity rather than exact keywo
 
 1. **Prepare and embed your data.** Chunk large documents into meaningful segments, then use an embedding model (for example, `text-embedding-3-small`) to convert each chunk into a vector. Store the vector alongside your relational data using the `vector` extension in PostgreSQL. For guidance on chunking strategies and embedding pipelines, see [Data preparation for AI](ai-data-preparation.md).
 1. **Embed the query.** At query time, convert the user's search query into a vector using the same embedding model.
-1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches which represent the most semantically similar results.
+1. **Find nearest neighbors.** The database computes the distance between the query vector and all stored vectors, returning the closest matches, which represent the most semantically similar results.
 
 ### When to use it
 
@@ -55,7 +55,7 @@ Azure HorizonDB supports vector search through the `pgvector` extension, with bu
 To learn more, see:
 
 - [Vector search with pgvector](vector-search-pgvector.md)
-- [Data preparation for AI — chunking, pipelines, and embeddings](ai-data-preparation.md)
+- [Data preparation for AI - chunking, pipelines, and embeddings](ai-data-preparation.md)
 
 ## Full-text search
 
@@ -65,7 +65,7 @@ Full-text search is keyword-based retrieval that finds documents containing spec
 
 1. **Analyze the text.** Documents are broken into tokens, normalized (lowercased, stemmed to root forms), and common stop words are removed. The result is stored in an inverted index that maps each term to the documents containing it.
 1. **Parse the query.** The user's search query goes through the same normalization, so "running" matches "run" and "ran."
-1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance — accounting for how often a term appears, how rare it is across the corpus, and document length.
+1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance - accounting for how often a term appears, how rare it's across the corpus, and document length.
 
 ### When to use it
 
@@ -93,7 +93,7 @@ Hybrid search is the recommended approach for most production search application
 
 ### Azure HorizonDB implementation
 
-Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [DiskANN advanced filtering](vector-indexing-diskann.md) for pre-filtered hybrid queries.
+Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [DiskANN advanced filtering](vector-indexing-diskann.md) for prefiltered hybrid queries.
 
 To learn more, see [Hybrid search](hybrid-search.md).
 
@@ -103,7 +103,7 @@ As your dataset grows, search performance becomes critical. Azure HorizonDB prov
 
 ### Vector indexing
 
-Without an index, vector search performs an exact nearest neighbor scan — comparing the query vector against every row. This guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
+Without an index, vector search performs an exact nearest neighbor scan - comparing the query vector against every row. This guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
 
 Azure HorizonDB supports three vector index types:
 
@@ -125,7 +125,7 @@ Retrieval is only the first step. Even the best hybrid search can return results
 
 ### Semantic reranking
 
-Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and re-scores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50–150 results), you get significantly higher precision at the top of the ranking.
+Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and rescores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50-150 results), you get higher precision at the top of the ranking.
 
 The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
 
@@ -159,17 +159,6 @@ To learn how to build a retrieval-and-rerank pipeline, see [AI pipelines](ai-pip
 
 ## Related content
 
-- [Data preparation for AI](ai-data-preparation.md)
-- [AI pipelines](ai-pipelines.md)
 - [Vector search with pgvector](vector-search-pgvector.md)
 - [Full-text search with pg_fts](full-text-search-pgfts.md)
 - [Hybrid search](hybrid-search.md)
-- [Optimize pgvector performance](optimize-pgvector-performance.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Vector index selection guide](vector-index-selection-guide.md)
-- [Semantic reranking](semantic-reranking.md)
-- [GraphRAG for knowledge graph enhanced search](graphrag.md)
-- [Extract knowledge graphs from unstructured text](build-knowledge-graph.md)
-- [Tutorial: Build a semantic search application](build-semantic-search-app.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management in Azure HorizonDB](ai-model-management.md)

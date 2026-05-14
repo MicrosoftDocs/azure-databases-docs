@@ -1,23 +1,26 @@
 ---
-title: Scalable vector indexing with DiskANN
+title: Scalable Vector Indexing with DiskANN
 description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets, with advanced filtering for combined vector and metadata queries.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 05/08/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
   - build-2026
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Scalable vector indexing with DiskANN
+# Scalable vector indexing with DiskANN (Preview)
 
-DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets — which is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to billions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
+DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets - which is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to billions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 
-If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload](vector-index-selection-guide.md).
+If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md).
 
 To learn more about the DiskANN algorithm, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search).
 
@@ -89,27 +92,27 @@ COMMIT;
 ```
 
 > [!IMPORTANT]  
-> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
+> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disabled using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
 ## Filter your search with advanced filtering
 
 > [!NOTE]  
 > Advanced filtering for DiskANN in Azure HorizonDB is in **public preview**.
 
-Most real-world retrieval queries combine vector similarity with structured filters — by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors — in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
+Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multi-tenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack — [`pgvector`](vector-search-pgvector.md), the [Azure AI integrations](ai-functions.md), [BM25 full-text search](full-text-search-pgfts.md), and [hybrid search](hybrid-search.md).
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Vector search using the pgvector extension](vector-search-pgvector.md), the [AI functions in the azure_ai extension](ai-functions.md), [Full-text search using the pg_fts extension](full-text-search-pgfts.md), and [hybrid search](hybrid-search.md).
 
 ### How it differs from other indexes
 
 | Index | Behavior with `WHERE` clause |
-|---|---|
-| `ivfflat` / `hnsw` | Returns top-K candidates from the ANN search, then filters — with a selective predicate, most candidates are discarded and recall drops. You typically have to over-fetch and re-rank in the application. |
+| --- | --- |
+| `ivfflat` / `hnsw` | Returns top-K candidates from the ANN search, then filters - with a selective predicate, most candidates are discarded and recall drops. You typically have to over-fetch and re-rank in the application. |
 | `diskann` (advanced filtering) | Predicate is evaluated inside the index walk. The index keeps fetching matching candidates until `LIMIT` is satisfied. Recall and latency stay stable as filters get more selective. |
 
 ### Use advanced filtering
 
-There is no special syntax. Add metadata columns to your table, create the DiskANN index, and write a normal `SELECT` that combines `WHERE` with the vector ordering operator. The planner uses advanced filtering automatically when a DiskANN index is available.
+There's no special syntax. Add metadata columns to your table, create the DiskANN index, and write a normal `SELECT` that combines `WHERE` with the vector ordering operator. The planner uses advanced filtering automatically when a DiskANN index is available.
 
 ```sql
 -- Add metadata columns alongside the embedding
@@ -142,27 +145,27 @@ LIMIT 10;
 
 ### Recall and `LIMIT`
 
-Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit — increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
+Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
 
 ### Limitations during preview
 
 - Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
-- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fall back to post-filtering with the standard recall caveats.
-- Index rebuild is not required when adding metadata columns; the existing DiskANN index continues to work.
+- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fallback to post-filtering with the standard recall caveats.
+- Index rebuild isn't required when adding metadata columns; the existing DiskANN index continues to work.
 
 ## Scale efficiently with spherical quantization (Preview)
 
 DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
 
 > [!IMPORTANT]  
-> Spherical quantization in DiskANN is in **public preview**. Available in `pg_diskann` <!-- TODO: confirm minimum version --> and above.
+> Spherical quantization in DiskANN is in **public preview**. Available in the `pg_diskann` extension.
 
 To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops)
 WITH (
-    spherical_quantized = true  -- TODO: confirm final parameter name
+    spherical_quantized = true
 );
 ```
 
@@ -177,14 +180,13 @@ DiskANN supports indexing vectors with up to 16,000 dimensions, significantly ex
 
 **Recommended settings:**
 
-- `spherical_quantized`: Set to `true`. <!-- TODO: confirm final parameter name -->
-- <!-- TODO: add spherical quantization tuning parameters (e.g., chunk count / training sample equivalents) once finalized -->
+- `spherical_quantized`: Set to `true`.
 
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
 ## Speed up index build
 
-There are a few ways we recommend to improve your index build times.
+There are a few ways we recommend improving your index build times.
 
 <a id="using-more-memory"></a>
 
@@ -255,16 +257,14 @@ When creating a `diskann` index, you can specify various parameters to control i
 
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false). <!-- TODO: confirm final parameter name -->
-- <!-- TODO: add spherical quantization tuning parameters (chunk count / training samples equivalents) once finalized -->
+- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false).
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
     max_neighbors = 48,
     l_value_ib = 100,
-    spherical_quantized = true  -- TODO: confirm final parameter name
-    -- TODO: add spherical quantization tuning parameters once finalized
+    spherical_quantized = true
 );
 ```
 
@@ -322,12 +322,12 @@ WITH (
 | | | | |
 | 1M-50M | Index build | `l_value_ib` | 100 |
 | 1M-50M | Index build | `max_neighbors` | 64 |
-| 1M-50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
+| 1M-50M | Index build | `spherical_quantized` | true |
 | 1M-50M | Query time | `diskann.l_value_is` | 100 |
 | | | | |
 | >50M | Index build | `l_value_ib` | 100 |
 | >50M | Index build | `max_neighbors` | 96 |
-| >50M | Index build | `spherical_quantized` | true <!-- TODO: confirm final parameter name --> |
+| >50M | Index build | `spherical_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]  
@@ -393,7 +393,6 @@ The vector type allows you to perform three types of searches on the stored vect
 
 ## Related content
 
-- [Choose the right vector index for your workload](vector-index-selection-guide.md)
-- [Hybrid search](hybrid-search.md)
-- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
-- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
+- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Hybrid search in Azure HorizonDB](hybrid-search.md)

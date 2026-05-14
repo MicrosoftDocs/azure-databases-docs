@@ -2,22 +2,22 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
 ### logfiles.download_enable
 
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Log Files |
-| Description    | Enables or disables server logs functionality.                                                   |
-| Data type      | boolean   |
-| Default value  | `off`         |
-| Allowed values | `on,off`       |
-| Parameter type | dynamic        |
-| Documentation  | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270) |
+| Attribute | Value |
+| --- | --- |
+| Category | Log Files and Metrics |
+| Description | Enables or disables server logs functionality. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [logfiles.download_enable](https://go.microsoft.com/fwlink/?linkid=2274270) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -26,15 +26,15 @@ ms.custom: automatically generated
 
 ### logfiles.retention_days
 
-| Attribute      | Value                                                      |
-|----------------|------------------------------------------------------------|
-| Category       | Log Files |
-| Description    | Sets the retention period window in days for server logs - after this time data will be deleted. |
-| Data type      | integer   |
-| Default value  | `3`           |
-| Allowed values | `1-7`          |
-| Parameter type | dynamic        |
-| Documentation  | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270)  |
+| Attribute | Value |
+| --- | --- |
+| Category | Log Files and Metrics |
+| Description | Sets the retention period window in days for server logs - after this time data will be deleted. |
+| Data type | integer |
+| Default value | `3` |
+| Allowed values | `1-7` |
+| Parameter type | dynamic |
+| Documentation | [logfiles.retention_days](https://go.microsoft.com/fwlink/?linkid=2274270) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
@@ -45,7 +45,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for all table statistics within a database |
 | Data type | boolean |
 | Default value | `off` |
@@ -62,7 +62,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for database and activity statistics |
 | Data type | boolean |
 | Default value | `off` |
@@ -79,7 +79,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Metrics |
+| Category | Log Files and Metrics |
 | Description | Enables metrics collection for PgBouncer. |
 | Data type | boolean |
 | Default value | `off` |

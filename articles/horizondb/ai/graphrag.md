@@ -1,5 +1,5 @@
 ---
-title: Graph-augmented RAG patterns with Azure HorizonDB
+title: Graph-Augmented RAG Patterns with Azure HorizonDB
 description: Learn how to combine knowledge graphs, vector search, and LLM reasoning in Azure HorizonDB to build more accurate retrieval-augmented generation (RAG) applications.
 author: aditivgupta
 ms.author: adig
@@ -16,13 +16,13 @@ ms.custom:
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
-# Graph-augmented RAG patterns with Azure HorizonDB
+# Graph-augmented RAG patterns with Azure HorizonDB (Preview)
 
 Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-augmented RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 
 Azure HorizonDB lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
 
-## Why vector search alone is not enough
+## Why vector search alone isn't enough
 
 Vector similarity retrieves documents that are semantically close to a query. This works well for simple factual lookups but breaks down when:
 
@@ -39,7 +39,7 @@ Graph-augmented RAG extends the standard RAG pipeline with a graph retrieval sta
 
 **Stage 1: Vector search.** Embed the user query and retrieve the top-N candidates by cosine similarity using pgvector with a DiskANN or HNSW index.
 
-**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere-rerank-v4.0-fast by default, deployed via Foundry) to re-score by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
+**Stage 2: Semantic reranking.** Pass the top-N candidates through `azure_ai.rank()` with a cross-encoder model (Cohere-rerank-v4.0-fast by default, deployed via Foundry) to rescore by deep semantic relevance. This reorders results that are close in embedding space but differ in actual relevance.
 
 **Stage 3: Graph traversal.** Query the knowledge graph (Apache AGE) to find entities and documents connected to the query through relationships: citations, causal links, organizational hierarchy, or domain-specific edges. Graph retrieval surfaces structurally important results that vector search misses.
 
@@ -52,7 +52,7 @@ Graph-augmented RAG extends the standard RAG pipeline with a graph retrieval sta
 Graph-augmented RAG is most effective when your queries depend on relationships between entities. The following table helps you decide which retrieval approach fits your scenario.
 
 | Use graph-augmented RAG when | Use vector-only RAG when |
-|------------------------------|--------------------------|
+| --- | --- |
 | Answers depend on entity relationships (citations, causality, hierarchy) | Queries are simple factual lookups against document content |
 | Multi-hop reasoning is required (A caused B, B affected C) | Single-hop semantic similarity is sufficient |
 | Structural authority matters (heavily cited documents, central nodes) | All documents have equal structural weight |
@@ -62,7 +62,7 @@ Graph-augmented RAG is most effective when your queries depend on relationships 
 ### Domain examples
 
 | Domain | Graph structure | Graph-augmented retrieval value |
-|--------|----------------|-------------------------------|
+| --- | --- | --- |
 | **Healthcare** | Patients connect to diagnoses, treatments, and outcomes (clinical pathway graph) | Surface treatment protocols through multi-hop patient pathway traversal |
 | **Drug discovery** | Molecules interact with proteins (interaction graph) | Find drug candidates through multi-hop protein pathway traversal |
 | **Cybersecurity** | Vulnerabilities chain to exploits to assets (attack graph) | Trace lateral movement paths and identify high-risk exposure chains |
@@ -75,7 +75,7 @@ These patterns describe how graph retrieval augments vector search at query time
 
 ### Pattern 1: Authority boosting
 
-Use graph structure to re-score vector search results. Documents that are heavily cited, centrally connected, or structurally important get a higher rank even if their embedding similarity is moderate.
+Use graph structure to rescore vector search results. Documents that are heavily cited, centrally connected, or structurally important get a higher rank even if their embedding similarity is moderate.
 
 **Pick this when:** Structural importance (citation count, link density) is a stronger relevance signal than semantic similarity alone.
 
@@ -155,7 +155,7 @@ Use graph relationships to constrain vector search results before or after retri
 
 **Pick this when:** Graph relationships represent permissions, organizational scope, or domain boundaries that must be enforced, not just weighted.
 
-**Example domains:** Multi-tenant knowledge bases (team ownership boundaries), compliance (jurisdiction filtering), content platforms (user access graphs).
+**Example domains:** Multitenant knowledge bases (team ownership boundaries), compliance (jurisdiction filtering), content platforms (user access graphs).
 
 ```sql
 -- Vector search filtered by graph-derived scope
@@ -198,19 +198,20 @@ JOIN documents d ON d.service = ps.service_name;
 The most common barrier to graph-augmented RAG is building the knowledge graph itself. Azure HorizonDB provides multiple paths depending on your data and requirements.
 
 ### Approach 1: LLM-powered construction (unstructured text)
+
 The full LLM-powered construction pipeline involves three stages:
 
 1. **Extract** - Call `azure_ai.extract()` on each document to pull entities and relationship triples as structured JSON.
-2. **Deduplicate** - Use `azure_ai.generate()` to normalize entity names into canonical forms and map aliases (for example, "PostgreSQL", "Postgres", and "PG" resolve to one node).
-3. **Load into graph** - Create nodes and edges in Apache AGE using the deduplicated entities, then add structural edges (temporal chains, hub nodes) to connect related clusters.
+1. **Deduplicate** - Use `azure_ai.generate()` to normalize entity names into canonical forms and map aliases (for example, "PostgreSQL", "Postgres", and "PG" resolve to one node).
+1. **Load into graph** - Create nodes and edges in Apache AGE using the deduplicated entities, then add structural edges (temporal chains, hub nodes) to connect related clusters.
 
-For a step-by-step walkthrough, see [Extract-to-graph pipeline tutorial](./build-knowledge-graph.md).
+For a step-by-step walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
 
 Best for: Support tickets, research papers, contracts, incident reports, meeting notes.
 
 ### Approach 2: Schema-driven construction (structured data)
 
-Transform existing relational tables into graph nodes and edges. If you already have foreign key relationships, you already have a graph, just not queryable as one.
+Transform existing relational tables into graph nodes and edges. If you already have foreign key relationships, you already have a graph, not queryable as one.
 
 ```sql
 -- Create nodes from relational tables
@@ -250,7 +251,7 @@ Best for: Large document corpora where you need multi-level summarization and co
 ## Performance considerations
 
 | Factor | Recommendation |
-|--------|---------------|
+| --- | --- |
 | **Vector index choice** | Use DiskANN for datasets over 1M vectors. Use HNSW for smaller datasets or when you need faster index build times. |
 | **Graph index strategy** | Create GIN indexes on frequently filtered node properties. Use composite indexes for traversals that filter on edge properties. |
 | **Candidate set size** | Retrieve 60-100 vector candidates before reranking. Larger sets improve recall but increase latency. |
@@ -260,17 +261,17 @@ Best for: Large document corpora where you need multi-level summarization and co
 
 ## Known limitations
 
-- **Cypher language subset.** Apache AGE implements a subset of openCypher. Features such as `MERGE ... ON CREATE SET`, `EXISTS` subqueries, and `datetime()` are not available. Use `CREATE` with deduplication logic or PL/pgSQL wrappers for conditional create patterns.
-- **Graph maintenance is manual.** Knowledge graphs require updates when source data changes. There is no built-in change-data-capture mechanism for automatic graph sync. Use PostgreSQL triggers on source tables or schedule periodic re-extraction jobs.
+- **Cypher language subset.** Apache AGE implements a subset of openCypher. Features such as `MERGE ... ON CREATE SET`, `EXISTS` subqueries, and `datetime()` aren't available. Use `CREATE` with deduplication logic or PL/pgSQL wrappers for conditional create patterns.
+- **Graph maintenance is manual.** Knowledge graphs require updates when source data changes. There's no built-in change-data-capture mechanism for automatic graph sync. Use PostgreSQL triggers on source tables or schedule periodic re-extraction jobs.
 - **Variable-length path performance.** Cypher traversals (`[*1..N]`) beyond 3-4 hops can produce exponential path expansion. Constrain hop depth and add property filters on intermediate nodes to prune early.
-- **No cross-database graph queries.** A graph created in one database cannot be queried from another database on the same server. Plan your schema so that graph data and vector data coexist in the same database.
+- **No cross-database graph queries.** A graph created in one database can't be queried from another database on the same server. Plan your schema so that graph data and vector data coexist in the same database.
 
 ## Solution accelerators
 
-Get started quickly with pre-built solution accelerators:
+Get started quickly with prebuilt solution accelerators:
 
 | Accelerator | Description | Link |
-|-------------|-------------|------|
+| --- | --- | --- |
 | **GraphRAG Legal Research Copilot** | End-to-end graph-augmented RAG with U.S. Case Law (500K cases). Includes vector search, semantic ranking, AGE graph, and RRF fusion. | [GitHub repo](https://github.com/Azure-Samples/graphrag-legalcases-postgres) |
 | **Contract Intelligence Platform** | Graph-based contract analysis with entity extraction, obligation tracking, and conflict detection across counterparties and regions. | [GitHub repo](https://github.com/james-tn/graph/tree/main/contract_intelligence) |
 | **Build Your Own Advanced AI Copilot** | End-to-end copilot template combining graph retrieval, vector search, and LLM generation. | [GitHub repo](https://github.com/Azure-Samples/postgres-sa-byoac) |
@@ -279,10 +280,6 @@ Get started quickly with pre-built solution accelerators:
 
 ## Related content
 
-- [Apache AGE on Azure HorizonDB](../graph/age-overview.md)
-- [Implement vector search with pgvector](vector-search-pgvector.md)
-- [Vector indexing with DiskANN](vector-indexing-diskann.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [Microsoft Research: GraphRAG paper](https://www.microsoft.com/research/blog/graphrag-unlocking-llm-discovery-on-narrative-private-data/)
-- [Build Knowledge Graph tutorial](./build-knowledge-graph.md)
-
+- [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
+- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)

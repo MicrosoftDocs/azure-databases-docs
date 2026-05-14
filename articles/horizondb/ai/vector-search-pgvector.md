@@ -1,5 +1,5 @@
 ---
-title: Implement vector search in Azure HorizonDB using the pgvector extension
+title: Implement Vector Search in Azure HorizonDB Using the Pgvector Extension
 description: Implement vector search in Azure HorizonDB using the pgvector extension to enable semantic similarity search over embeddings for AI and retrieval workloads.
 author: shreyaaithal
 ms.author: shaithal
@@ -15,7 +15,7 @@ ms.custom:
   - build-2026
 ---
 
-# Implement vector search in Azure HorizonDB using the pgvector extension
+# Implement vector search in Azure HorizonDB using the pgvector extension (Preview)
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 
@@ -39,12 +39,6 @@ CREATE EXTENSION vector;
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Optimize performance when using pgvector](optimize-pgvector-performance.md)
-- [Vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Choose the right vector index](vector-index-selection-guide.md)
-- [Generate vector embeddings](generate-vector-embeddings.md)
-- [Build a semantic search application](build-semantic-search-app.md)
-- [Hybrid search](hybrid-search.md)
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI overview for Azure HorizonDB](overview.md)
+- [Optimize performance when using pgvector in Azure HorizonDB](optimize-pgvector-performance.md)
+- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
+- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)

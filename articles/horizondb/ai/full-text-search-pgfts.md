@@ -1,5 +1,5 @@
 ---
-title: Full-text search with pg_fts in Azure HorizonDB
+title: Full-Text Search with pg_fts in Azure HorizonDB
 description: Use the pg_fts extension to add BM25-ranked full-text search to Azure HorizonDB for keyword-based retrieval at scale, with fuzzy matching, phrase proximity, and CJK language support.
 author: abeomor
 ms.author: abeomorogbe
@@ -16,9 +16,9 @@ ms.custom:
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB
+# Full-text search with pg_fts in Azure HorizonDB (Preview)
 
-The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search — `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
+The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
 `pg_fts` is the recommended full-text search option on HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
 
@@ -27,19 +27,19 @@ The `pg_fts` extension adds production-quality, BM25-ranked full-text search to 
 
 ## When to use pg_fts vs. built-in tsvector
 
-PostgreSQL has had built-in full-text search through `tsvector` and `tsquery` for years. `pg_fts` doesn't replace that — it solves the cases where built-in FTS falls short:
+PostgreSQL has had built-in full-text search through `tsvector` and `tsquery` for years. `pg_fts` doesn't replace that - it solves the cases where built-in FTS falls short:
 
 | Need | Built-in `tsvector` + GIN | `pg_fts` |
-|---|---|---|
-| Ranking algorithm | `ts_rank` — no term saturation, no length normalization, no native IDF | **BM25** — industry-standard ranker with all three |
+| --- | --- | --- |
+| Ranking algorithm | `ts_rank` - no term saturation, no length normalization, no native IDF | **BM25** - industry-standard ranker with all three |
 | Latency at 100K+ rows on multi-keyword queries | Often hundreds of ms to seconds | Single-digit to low double-digit ms |
-| Scale to billions of documents | Degrades — GIN posting lists grow large | Designed for scale via a custom index |
+| Scale to billions of documents | Degrades - GIN posting lists grow large | Designed for scale via a custom index |
 | Fuzzy / typo tolerance | Manual `pg_trgm` plumbing | First-class fuzzy queries |
 | Phrase proximity (words within N positions) | Limited | First-class |
 | CJK languages | Requires custom dictionaries | Built-in analyzers for Chinese, Japanese, Korean, Thai |
 | Hybrid with vector search | Custom SQL each time | Composes naturally with `pgvector` and DiskANN |
 
-If you have a small, low-traffic search workload and you're already happy with `ts_rank`, the built-in path is fine. For anything closer to a real search experience — product catalog, support content, log search, agent retrieval — use `pg_fts`.
+If you have a small, low-traffic search workload and you're already happy with `ts_rank`, the built-in path is fine. For anything closer to a real search experience - product catalog, support content, log search, agent retrieval - use `pg_fts`.
 
 ## Why BM25
 
@@ -78,7 +78,7 @@ DROP EXTENSION IF EXISTS pg_fts;
 ```
 
 > [!IMPORTANT]  
-> Projecting BM25 scores with `pgfts.fts_score()` requires `pg_fts` to be loaded via `shared_preload_libraries` so the planner hook can rewrite the function call at plan time. Search and ranking through `pgfts.fts_query()` work without it — results still come back in BM25 rank order. To enable score projection, configure `shared_preload_libraries` for your HorizonDB instance and restart.
+> Projecting BM25 scores with `pgfts.fts_score()` requires `pg_fts` to be loaded via `shared_preload_libraries` so the planner hook can rewrite the function call at plan time. Search and ranking through `pgfts.fts_query()` work without it - results still come back in BM25 rank order. To enable score projection, configure `shared_preload_libraries` for your HorizonDB instance and restart.
 
 ## Create a full-text search index
 
@@ -98,9 +98,9 @@ CREATE INDEX idx_products_fts
 
 Key differences from a GIN index on `tsvector`:
 
-- The data column stays as plain `text` — no `tsvector` column to maintain.
+- The data column stays as plain `text` - no `tsvector` column to maintain.
 - The index updates automatically on `INSERT`, `UPDATE`, and `DELETE`. No `REFRESH` step.
-- The index is not visible in `pg_stat_user_indexes` the same way GIN is, because results are produced through a custom scan.
+- The index isn't visible in `pg_stat_user_indexes` the same way GIN is, because results are produced through a custom scan.
 
 ## Run searches
 
@@ -168,7 +168,7 @@ WHERE pgfts.fts_query('"wireless headphones"~5', 'idx_products_fts');
 
 ### The `@@?` operator
 
-For simple, single-keyword filters on a text column, you can use the `@@?` operator directly. It does **not** support boolean syntax — use `pgfts.fts_query()` for `AND` / `OR` / `NOT`.
+For simple, single-keyword filters on a text column, you can use the `@@?` operator directly. It does **not** support boolean syntax - use `pgfts.fts_query()` for `AND` / `OR` / `NOT`.
 
 ```sql
 SELECT id, name
@@ -181,7 +181,7 @@ WHERE description OPERATOR(pgfts.@@?) 'wireless headphones';
 `pg_fts` ships with analyzers for major non-Latin-script languages.
 
 | Analyzer | Language | Description |
-|---|---|---|
+| --- | --- | --- |
 | `default` | Multiple | Simple tokenizer with lowercase filter, suitable for English and most Latin-script languages |
 | `chinese` | Chinese | Jieba segmentation |
 | `japanese` | Japanese | Lindera with IPADIC dictionary |
@@ -234,26 +234,24 @@ ORDER BY rrf_score DESC
 LIMIT 10;
 ```
 
-For an end-to-end walkthrough — including embedding generation in SQL and adding a semantic reranker — see [Hybrid search](hybrid-search.md).
+For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB](hybrid-search.md).
 
 ## Performance notes
 
 - **LIMIT pushdown.** The `pg_fts` custom scan pushes `LIMIT` into the index and only retrieves as many candidates as you ask for. This is what makes multi-keyword queries fast on large tables.
 - **Index size.** The `fts` index is denser than a GIN index over `tsvector` because it stores positions, frequencies, and language-specific analyzer state. Plan disk accordingly.
-- **Updates.** Inserts and updates are applied to the index continuously. There is no separate refresh step.
-- **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan — it doesn't re-rank the whole table.
+- **Updates.** Inserts and updates are applied to the index continuously. There's no separate refresh step.
+- **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't rerank the whole table.
 
 ## Limitations during preview
 
 - `pgfts.fts_score()` requires `pg_fts` in `shared_preload_libraries`. Without it, only `pgfts.fts_query()` (which already returns rows in rank order) works.
-- The `@@?` operator does not support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.
-- CJK analyzers can be inspected with `pgfts.debug_analyze_text()` but cannot yet be selected at index creation time via a `WITH (tokenizer = '...')` option. <!-- TODO: confirm whether this lands by GA -->
-- The index is not represented in `pg_stat_user_indexes` the same way GIN is, because results come through a custom scan.
+- The `@@?` operator doesn't support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.
+- CJK analyzers can be inspected with `pgfts.debug_analyze_text()` but can't yet be selected at index creation time via a `WITH (tokenizer = '...')` option. <!-- TODO: confirm whether this lands by GA -->
+- The index isn't represented in `pg_stat_user_indexes` the same way GIN is, because results come through a custom scan.
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Hybrid search](hybrid-search.md)
-- [Choose the right vector index for your workload](vector-index-selection-guide.md)
-- [Implement vector search using the pgvector extension](vector-search-pgvector.md)
-- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
+- [Hybrid search in Azure HorizonDB](hybrid-search.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)

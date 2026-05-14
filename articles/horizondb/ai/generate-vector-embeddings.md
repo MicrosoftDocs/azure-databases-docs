@@ -1,5 +1,5 @@
 ---
-title: Generate vector embeddings using the create_embeddings() AI function
+title: Generate Vector Embeddings Using the create_embeddings () AI Function
 description: Generate vector embeddings using the create_embeddings() function in the azure_ai extension. Use AI Model Management for a turn-key experience, or register your own embedding model.
 author: shreyaaithal
 ms.author: shaithal
@@ -13,12 +13,12 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
-# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extensi
+# customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
-# Generate vector embeddings using the create_embeddings() AI function
+# Generate vector embeddings using the create_embeddings() AI function (Preview)
 
-Vector embeddings are numerical representations of text that capture semantic meaning, enabling [vector similarity search](vector-search-pgvector.md), clustering, and other vector-based operations. The `azure_openai.create_embeddings()` AI function in the `azure_ai` extension generates vector embeddings directly inside your database. 
+Vector embeddings are numerical representations of text that capture semantic meaning, enabling [vector similarity search](vector-search-pgvector.md), clustering, and other vector-based operations. The `azure_openai.create_embeddings()` AI function in the `azure_ai` extension generates vector embeddings directly inside your database.
 
 ## Prerequisites
 
@@ -66,7 +66,7 @@ azure_openai.create_embeddings(model text, input text[], batch_size integer DEFA
 
 ## Generate embeddings
 
-The following examples show how to generate, store, and query vector embeddings. 
+The following examples show how to generate, store, and query vector embeddings.
 
 - If you have [AI Model Management](ai-model-management.md) enabled, you can omit the model parameter as the function automatically uses the `default-embedding` model.
 - If you're using your own model (BYOM), pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions](ai-functions.md) for details on registering models.
@@ -99,7 +99,7 @@ SET abstract_embedding = azure_openai.create_embeddings(
 WHERE abstract_embedding IS NULL;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Replace `azure_openai.create_embeddings(input => session_abstract)` with `azure_openai.create_embeddings('your-model-alias', session_abstract)`.
 
 ### Create a DiskANN index
@@ -125,7 +125,7 @@ ORDER BY abstract_embedding <=> azure_openai.create_embeddings(
 LIMIT 5;
 ```
 
-> [!NOTE]
+> [!NOTE]  
 > **BYOM users:** Replace `azure_openai.create_embeddings(input => 'Session about building chatbots')` with `azure_openai.create_embeddings('your-model-alias', 'Session about building chatbots')`.
 
 ## Related content
@@ -133,7 +133,3 @@ LIMIT 5;
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [AI Model Management](ai-model-management.md)
 - [Implement vector search with pgvector](vector-search-pgvector.md)
-- [Vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Build a semantic search application](build-semantic-search-app.md)
-- [AI overview for Azure HorizonDB](overview.md)

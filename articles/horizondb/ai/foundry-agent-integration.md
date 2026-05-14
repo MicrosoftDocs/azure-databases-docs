@@ -1,5 +1,5 @@
 ---
-title: Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
+title: Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP
 description: Learn how to use Azure HorizonDB as the retrieval layer for agents built with Microsoft Foundry and Model Context Protocol to access and ground responses in stored knowledge. Build a simple AI agent to interact with your database through natural language queries.
 author: shreyaaithal
 ms.author: shaithal
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to build AI agents interacting with and retrieving knowledge stored in Azure HorizonDB, via Model Context Protocol (MCP).
 ---
 
-# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry and MCP
+# Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP (Preview)
 
 The Azure HorizonDB MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 
@@ -32,7 +32,7 @@ The system uses three main components:
 - **Azure PostgreSQL MCP Server** (Server): Runs in Azure Container Apps, using managed identity for PostgreSQL access
 - **PostgreSQL Database** (Target): Azure HorizonDB with Microsoft Entra ID authentication
 
-This architecture ensures proper security isolation with separate managed identities for client authentication and database access. End-to-end, no passwords or static keys live in the agent, the MCP server, or the database — every hop uses Microsoft Entra ID.
+This architecture ensures proper security isolation with separate managed identities for client authentication and database access. End-to-end, no passwords or static keys live in the agent, the MCP server, or the database - every hop uses Microsoft Entra ID.
 
 ## Features and capabilities
 
@@ -60,7 +60,7 @@ With the MCP integration, your AI agents can handle queries like:
 Before you begin, make sure you have the required tools, accounts, and permissions in place to deploy and configure the MCP PostgreSQL Server. Having these prerequisites ready minimizes interruptions and helps ensure a smooth integration with Foundry.
 
 - [Azure CLI](/cli/azure/install-azure-cli) (latest version)
-- [Azure HorizonDB](overview.md) with Microsoft Entra ID authentication enabled
+- An [Azure HorizonDB instance](overview.md) with Microsoft Entra ID authentication enabled
 - [Foundry project](/azure/ai-services/agents/quickstart?pivots=ai-foundry-portal)
 - [Microsoft .NET](https://dotnet.microsoft.com/download)
 - An Azure subscription with appropriate permissions to create resources
@@ -81,7 +81,7 @@ The fastest way to get started is by using the automated deployment script.
    cd azure-postgres-mcp-demo
    ```
 
-1. Open [infra/main.parameters.json](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json) and update these 2 values
+1. Open [infra/main.parameters.json](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json) and update these two values
 
    | Parameter | Description |
    | --- | --- |
@@ -172,7 +172,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    SELECT * FROM pgaadauth_create_principal('<CONTAINER_APP_IDENTITY_NAME>', false, false);
    ```
 
-   Replace `<CONTAINER_APP_IDENTITY_NAME>` with the managed identity name from your deployment output (e.g., `azmcp-postgres-server-nc3im7asyw`).
+   Replace `<CONTAINER_APP_IDENTITY_NAME>` with the managed identity name from your deployment output (for example, `azmcp-postgres-server-nc3im7asyw`).
 
    > [!TIP]  
    > Use `azd env get-values` command to find the `CONTAINER_APP_IDENTITY_NAME` value, or any other environment variable.
@@ -362,7 +362,7 @@ For programmatic access, use the following MCP configuration in your Python code
 
 ## Limit the MCP tool surface
 
-The MCP server's database permissions are not set by the deployment template — only an Azure RBAC **Reader** role on the Postgres resource is. The actual database grants are the ones you ran in [Step 2: Configure database access](#step-2-configure-database-access). Step 2 shows the simplest pattern (`GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>"`), which lets the agent read every table in `public`. For production, narrow that grant — the database is the only authoritative boundary on what the agent can see.
+The MCP server's database permissions aren't set by the deployment template - only an Azure RBAC **Reader** role on the Postgres resource is. The actual database grants are the ones you ran in [Step 2: Configure database access](#step-2-configure-database-access). Step 2 shows the simplest pattern (`GRANT SELECT ON ALL TABLES IN SCHEMA public TO "<CONTAINER_APP_IDENTITY_NAME>"`), which lets the agent read every table in `public`. For production, narrow that grant - the database is the only authoritative boundary on what the agent can see.
 
 ### Use a schema allow-list
 
@@ -392,11 +392,11 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
 REVOKE USAGE ON SCHEMA public FROM "<CONTAINER_APP_IDENTITY_NAME>";
 ```
 
-With this pattern, even if a prompt convinces the agent to ask for `SELECT * FROM customers_pii`, the database returns a permission error — the safety boundary is enforced by HorizonDB, not by the agent's instructions.
+With this pattern, even if a prompt convinces the agent to ask for `SELECT * FROM customers_pii`, the database returns a permission error - the safety boundary is enforced by HorizonDB, not by the agent's instructions.
 
 ### Use Row Level Security for tenant isolation
 
-If the agent serves multiple tenants from the same tables, layer Row Level Security on top of the read-only role so each query the agent issues only sees the calling tenant's rows. See the [PostgreSQL Row Security Policies documentation](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) for the syntax; the role to attach policies to is the MCP server's `<CONTAINER_APP_IDENTITY_NAME>`.
+If the agent serves multiple tenants from the same tables, layer Row Level Security on top of the read-only role so each query the agent issues only sees the calling tenant's rows. See the [PostgreSQL Row Security Policies documentation](https://www.postgresql.org/docs/current/ddl-rowsecurity.html) for the syntax; the role to attach policies to be the MCP server's `<CONTAINER_APP_IDENTITY_NAME>`.
 
 ## Security
 
@@ -442,12 +442,12 @@ If MCP is up and running:
 64 bytes from X.XXX.XXX.X: icmp_seq=0 ttl=108 time=92.748 ms
 ```
 
-If MCP is *not running*:
+If MCP isn't running*:
 
 ```
 ping: cannot resolve https://your-mcp-server.azurecontainerapps.io: Unknown host
 ```
-You'll need to re-run `azd up`.
+You'll need to rerun `azd up`.
 
 ### Limitations and considerations
 
@@ -494,11 +494,7 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 
 ## Related content
 
-- [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
-- [Model Context Protocol specification](https://modelcontextprotocol.io/docs/learn/versioning)
+- [Build AI agents with Azure HorizonDB](ai-agents.md)
+- [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
-- [Azure HorizonDB integrations for AI applications](ai-frameworks.md)
-- [AI functions in Azure HorizonDB](ai-functions.md)
-- [Enable and use pgvector in Azure HorizonDB](vector-search-pgvector.md)
-- [Hybrid search](hybrid-search.md) — combine BM25 and vector search to ground agent answers
-- [Vector indexing with DiskANN](vector-indexing-diskann.md) — scale agent retrieval to large vector workloads
+- [AI functions in the azure_ai extension](ai-functions.md)
