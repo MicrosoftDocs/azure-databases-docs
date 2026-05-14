@@ -19,7 +19,7 @@ This quickstart shows how to create an automated workflow using Azure Logic Apps
 
 ## Prerequisites
 
-- An Azure account and subscription. If you don't have a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free).
+- An Azure account and subscription. If you don't have a subscription, [sign up for a free Azure account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - Create an Azure Database for MySQL Flexible Server instance using [Quickstart: Create an instance of Azure Database for MySQL with the Azure portal](quickstart-create-server-portal.md) <br/> or [Quickstart: Create an instance of Azure Database for MySQL - Flexible Server by using the Azure CLI](quickstart-create-server-cli.md) if you don't have one.
 - Get the [inbound](/azure/logic-apps/logic-apps-limits-and-config#inbound) and [outbound](/azure/logic-apps/logic-apps-limits-and-config#outbound) IP addresses used by the Logic Apps service in the Azure region where you create your logic app workflow.
