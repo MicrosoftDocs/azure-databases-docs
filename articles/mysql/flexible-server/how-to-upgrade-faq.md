@@ -52,6 +52,20 @@ Depending on the workload, slowness or high CPU usage can be observed in version
 
 If the slowness is observed with queries such as update/insert/delete, then enabling **Accelerated Logs** on your server under **Settings** > **Compute + Storage** in the side pane of your server's portal page might help.
 
+### Silent data inconsistency when inserting timestamp literals with fractional seconds and timezone offsets after upgrading from 5.7 to 8.0 (and 8.4)
+
+In MySQL 8.0, timestamp literals that include both fractional seconds and a timezone offset (for example, `'2025-01-01 12:00:00.123+00:00'`) can be silently converted to incorrect values during `INSERT` or `UPDATE` operations. The incorrect value is stored without any error or warning, which can lead to data inconsistency that is difficult to detect after the fact. Customers upgrading from MySQL 5.7 to 8.0 (and 8.4) might encounter this issue if their applications insert datetime values in this format.
+
+This is a known MySQL community bug. For more information, see [MySQL Bug #118011](https://bugs.mysql.com/bug.php?id=118011).
+
+#### Resolution
+
+Until the upstream fix is available, take the following precautions before and after the upgrade:
+
+- Audit your application code for timestamp literals that combine fractional seconds with timezone offsets, and normalize them to UTC (or a single timezone) without an inline offset before insertion.
+- Set the session or server `time_zone` explicitly, and write datetime values without an inline offset so the server applies the configured timezone consistently.
+- Validate a representative sample of newly inserted rows after the upgrade to confirm that stored values match the expected values.
+
 ## Related content
 
 - [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md)
