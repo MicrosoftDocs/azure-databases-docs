@@ -33,15 +33,18 @@ ai-usage: ai-assisted
 
 ### Microsoft Entra ID authentication blocked on replica
 
-After upgrading the replica from version 5.7 to 8.0, any Entra ID update operation performed on the older source server changes the authentication method on the replica from 'MySQL and Entra auth' to 'MySQL auth only'. This blocks Entra ID authentication on replica.
+If a primary server and its replica are both configured with Microsoft Entra authentication, and you perform a major version upgrade on the replica (from 5.7 to 8.0, or from 8.0 to 8.4), any subsequent change to the Entra authentication configuration on the primary can cause an issue on the upgraded replica. Specifically, the replica's authentication method is reset from "MySQL and Entra authentication" to "MySQL authentication only," which blocks Microsoft Entra ID authentication on the replica.
 
 #### Resolution
 
-Change Entra ID auth only after the hierarchy is upgraded to the same version.
-- Upgrade source to 8.0 and set required Entra Admin user.
-- Create new replica on version 8.0
-- Drop old replica with broken replication (if facing this error)
-- Use new replica
+To avoid this issue, don't modify the Microsoft Entra authentication configuration while the primary and replica are running on different MySQL versions. Only change Entra ID authentication settings after every server in the replication hierarchy has been upgraded to the same version.
+
+If you've already encountered this issue, use the following steps to recover:
+
+1. Upgrade the primary server to version 8.0 (or 8.4) and configure the required Microsoft Entra admin user
+2. Create a new replica on version 8.0 (or 8.4)
+3. Decommission the old replica that has broken replication
+4. Switch your workload to use the new replica
 
 ### Slowness or high CPU usage in 8.0 compared to 5.7
 

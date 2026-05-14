@@ -91,7 +91,7 @@ The following restrictions apply only after the extended support period has ende
 
 __Q: What is the difference between Azure Standard Support and Azure Extended Support?__
 
-A: Azure Standard Support refers to the regular support period for a database version, during which it receives full updates, features, and support. Azure Extended Support applies after this period ends, allowing you to continue running older versions with security updates and technical support, but without new features-and it's automatically applied and charged if you don't upgrade.
+A: Azure Standard Support refers to the time period between the end of community support (EOL) and the start of Extended Support and is provided at no additional cost. During Standard support, Microsoft continues to prioritize the service’s availability, reliability, and security. Only essential changes are made to keep the service stable and secure, and new features or minor version upgrades may not be introduced. Azure Extended Support applies after Standard support period ends, allowing you to continue running older versions with security updates and technical support, but without new features — and it is automatically applied and charged if you don’t upgrade.
 
 __Q: What happens if I don't upgrade my Azure Database for MySQL server to a supported major version after Standard Support ends?__
 
