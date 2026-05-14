@@ -66,11 +66,11 @@ Start at the top and stop at the first match.
 
 These examples illustrate the tradeoffs. Always benchmark with your own data, queries, and recall target.
 
-### One million vectors, 1,536 dimensions, mostly read-only
+### 1 million vectors, 1,536 dimensions, mostly read-only
 
 Either HNSW or DiskANN works. Pick HNSW if the index fits comfortably in RAM and the dataset is stable; pick DiskANN if you expect the dataset to keep growing or you plan to run filtered queries.
 
-### Ten million vectors, 1,536 dimensions, daily inserts
+### 10 million vectors, 1,536 dimensions, daily inserts
 
 Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed; updates are applied in place. See [Recommended configuration of parameters](vector-indexing-diskann.md#recommended-configuration-of-parameters).
 

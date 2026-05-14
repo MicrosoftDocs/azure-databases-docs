@@ -496,4 +496,5 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
+- [Microsoft Foundry documentation](/azure/ai-foundry/)
 - [AI functions in the azure_ai extension](ai-functions.md)

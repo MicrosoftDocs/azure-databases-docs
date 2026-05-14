@@ -18,7 +18,7 @@ ms.custom:
 
 # AI Model Management in Azure HorizonDB (Preview)
 
-AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials. AI Model Management handles everything for you with a single toggle in the Azure portal.
+AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AI Model Management handles everything for you with a single toggle in the Azure portal.
 
 When enabled, the feature:
 
@@ -184,9 +184,7 @@ FROM reports;
 
 You can restrict which database users can access specific models in the registry. For detailed information about user access management, including the `model_registry_manager` role and the `model_user_add`, `model_user_set`, and `model_user_remove` functions, see [User access management](ai-functions.md#user-access-management).
 
-<a id="pricing"></a>
-
-## Price
+## Pricing details
 
 AI Model Management pricing is based entirely on usage of the provisioned AI models. There's no extra charge for enabling the feature itself. Model usage is billed using the same meters and rates as Microsoft Foundry, with no additional markup.
 

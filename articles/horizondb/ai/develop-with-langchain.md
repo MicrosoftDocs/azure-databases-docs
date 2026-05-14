@@ -377,6 +377,7 @@ retriever.invoke("kitty")
 
 ## Related content
 
+- [Retrieval foundations: vector, full-text and hybrid search](ai-search-overview.md)
 - [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
 - [Build AI agents with Azure HorizonDB](ai-agents.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)

@@ -336,7 +336,7 @@ END $$;
 
 ### 3b: Create relationship edges
 
-Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, etc.) become edge labels automatically. The `regexp_replace` sanitizes the relationship type into a valid Cipher label (uppercase, underscores only).
+Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, etc.) become edge labels automatically. The `regexp_replace` sanitizes the relationship type into a valid Cypher label (uppercase, underscores only).
 
 ```sql
 DO $$
@@ -372,7 +372,7 @@ $$) AS (source agtype, edge_type agtype, target agtype);
 
 ## Step 4 - Query the Graph
 
-With the graph populated, use Cipher traversals to answer operational questions that are difficult with flat tables alone. Each query below represents a real question an on-call engineer or incident reviewer would ask.
+With the graph populated, use Cypher traversals to answer operational questions that are difficult with flat tables alone. Each query below represents a real question an on-call engineer or incident reviewer would ask.
 
 ### "What downstream services did this failure break?"
 
@@ -419,7 +419,7 @@ ORDER BY incoming_edges DESC;
 
 ### Step 5 - Visualize the graph with VS Code
 
-The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cipher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../development/vs-code-extension/vs-code-overview.md).
+The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../development/vs-code-extension/vs-code-overview.md).
 
 This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands the neighborhood around each node:
 

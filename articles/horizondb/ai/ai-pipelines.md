@@ -71,7 +71,7 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management (recommended)
 
-If [AI Model Management in Azure HorizonDB](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default:
+If [AI Model Management](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default:
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
@@ -201,7 +201,7 @@ SELECT ai.create_pipeline(
 );
 ```
 
-Once the sink exists, you can build a [Scalable vector indexing with DiskANN](vector-indexing-diskann.md) on `document_vectors.embedding` and use it directly in [hybrid-search](hybrid-search.md) queries.
+Once the sink exists, you can build a [DiskANN vector index](vector-indexing-diskann.md) on `document_vectors.embedding` and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ## Re-embed when the model changes
 
@@ -218,7 +218,7 @@ The backfill runs as a single durable instance. If the database restarts mid-bac
 
 ## Cost controls
 
-Embedding and LLM call cost money. AI pipelines give you a few practical levers to keep that cost predictable:
+Embedding and LLM calls cost money. AI pipelines give you a few practical levers to keep that cost predictable:
 
 - `incremental_column` ensures you only embed new or changed rows on subsequent runs.
 - `filter` on `ai.table_source(...)` lets you scope the pipeline to rows you care about (for example, `status = 'published'`) instead of the whole table.

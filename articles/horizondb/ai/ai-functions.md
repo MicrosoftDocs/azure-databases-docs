@@ -30,7 +30,7 @@ The AI functions provide five core SQL functions that use generative AI capabili
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
 - `azure_openai.create_embeddings()`: Creates vector embeddings for a given input text.
 
-Each function operates through model endpoints registered in the model registry or through [AI Model Management in Azure HorizonDB](ai-model-management.md) provisioned by AI Model Management, ensuring seamless integration and user control.
+Each function operates through model endpoints registered in the model registry or through Managed Models provisioned by [AI Model Management](ai-model-management.md), ensuring seamless integration and user control.
 
 ## Enable the azure_ai extension and register models
 
@@ -472,3 +472,4 @@ The following table lists the models supported by each AI function.
 - [AI Model Management in Azure HorizonDB](ai-model-management.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
 - [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Extract knowledge graphs in Azure HorizonDB](build-knowledge-graph.md)

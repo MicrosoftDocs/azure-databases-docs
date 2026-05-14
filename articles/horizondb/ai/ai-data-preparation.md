@@ -60,9 +60,7 @@ Adding **overlap** between consecutive chunks (repeating a portion of text at ea
 
 A common starting point is 512-2,000 characters. Tune based on your content type and retrieval quality.
 
-<a id="chunking-in-azure-horizondb"></a>
-
-### Chunk in Azure HorizonDB
+### Chunking in Azure HorizonDB
 
 Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [AI pipelines](ai-pipelines.md). You specify a target chunk size and an overlap:
 
@@ -78,9 +76,7 @@ Traditional keyword search matches exact terms and fails when a user searches fo
 
 It's important that you use the same embedding model for both your stored data and your search queries. If you embed documents with `text-embedding-3-small` but embed queries with a different model, the vectors exist in different mathematical spaces and similarity comparisons are meaningless.
 
-<a id="embedding-in-azure-horizondb"></a>
-
-### Embed in Azure HorizonDB
+### Generate embeddings in Azure HorizonDB
 
 Azure HorizonDB provides two ways to generate embeddings:
 
@@ -140,7 +136,7 @@ The `pg_fts` extension enables BM25-ranked keyword matching alongside vector sim
 
 The five core steps prepare your data for vector and hybrid search, which form the foundation of most AI applications. Depending on your scenario, you might also need:
 
-- **Structured data extraction**: Use the `ai.extract()` pipeline step or the [AI functions in the azure_ai extension](ai-functions.md) function to pull structured fields (entities, dates, categories) from unstructured text. Extracted data can feed agent tools, power filtering, or populate relational tables alongside your vectors.
+- **Structured data extraction**: Use the `ai.extract()` pipeline step or the [extract() AI function in the azure_ai extension](ai-functions.md) to pull structured fields (entities, dates, categories) from unstructured text. Extracted data can feed agent tools, power filtering, or populate relational tables alongside your vectors.
 
 - **Knowledge graph construction**: Extract entities and relationships from text and store them as a graph by using Apache AGE, enabling relationship-based queries that complement vector search. For a walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
 
