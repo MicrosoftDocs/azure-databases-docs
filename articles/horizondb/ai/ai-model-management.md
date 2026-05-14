@@ -56,7 +56,7 @@ In addition to Managed Models, you can register your own Microsoft Foundry model
 
 ### Integrated billing
 
-AI model usage is billed directly through your Azure HorizonDB resource with no additional markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing).
+AI model usage is billed directly through your Azure HorizonDB resource with no additional markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing-details).
 
 ## Enable AI Model Management
 

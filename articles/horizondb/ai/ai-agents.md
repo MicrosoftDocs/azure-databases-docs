@@ -56,7 +56,7 @@ AI agents need more than an LLM, they need persistent infrastructure. PostgreSQL
 
 Agents need continuity across interactions, which means conversation history, user preferences, and task state must persist reliably.
 
-PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks including [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python), [LangGraph](https://langchain-ai.github.io/langgraph/concepts/persistence/), and [Mem0](https://docs.mem0.ai/open-source/quickstart#4-postgresql) support PostgreSQL as a memory backend, providing built-in connectors for persisting chat history, agent state, and semantic memory.
+PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks support PostgreSQL as a memory backend. Frameworks like [LangGraph](https://docs.langchain.com/oss/python/langgraph/persistence) provide built-in PostgreSQL checkpointers for persisting conversation history and agent state, while [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) offers PostgreSQL connectors for vector-based semantic memory.
 
 ### Knowledge retrieval
 
@@ -110,7 +110,7 @@ Azure HorizonDB provides an [MCP server](foundry-agent-integration.md) that enab
 
 ### Agent-to-Agent Protocol (A2A)
 
-[Agent-to-Agent Protocol (A2A)](https://developers.google.com/a2a) is an open standard developed by Google for inter-agent communication. While MCP handles agent-to-tool connectivity, A2A enables agent-to-agent collaboration:
+[Agent-to-Agent Protocol (A2A)](https://github.com/a2aproject/A2A) is an open standard developed by Google for inter-agent communication. While MCP handles agent-to-tool connectivity, A2A enables agent-to-agent collaboration:
 
 - **Peer-to-peer delegation**: Agents can discover, negotiate with, and delegate tasks to other agents.
 - **Agent Cards**: Agents publish their capabilities through standardized metadata, enabling discovery.

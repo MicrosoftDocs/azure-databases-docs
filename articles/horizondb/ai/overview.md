@@ -32,8 +32,6 @@ A large language model (LLM) is an AI model trained on massive amounts of text d
 
 LLMs are powerful but have a key limitation: they only know what was in their training data. They can't access your private business data, and their knowledge has a cutoff date. This limitation is what makes the next concept, RAG, essential.
 
-To learn more, see [Large language models](/azure/foundry/concepts/large-language-models).
-
 ### Retrieval-augmented generation (RAG)
 
 Retrieval-augmented generation (RAG) is a pattern that addresses the limitation of large language models (LLMs) by grounding their responses in your actual data. Instead of relying solely on what the model learned during training, a RAG system retrieves relevant documents from a data source and passes them as context to the LLM before it generates a response.
