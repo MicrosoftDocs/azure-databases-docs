@@ -434,4 +434,3 @@ This failover operation provides the least downtime, because it performs a grace
 
 ## Related content
 - [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
-- [Restore to custom restore point](how-to-restore-custom-restore-point.md).

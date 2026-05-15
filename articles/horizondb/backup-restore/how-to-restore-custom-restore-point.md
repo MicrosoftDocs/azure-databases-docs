@@ -35,20 +35,21 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!NOTE]
 >  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
 
-5. If you want to change the type of compute assigned to the new server, or if you want to deploy it with high availablity or replicas, select **Configure server** and adjust the settings as needed.
+4. If you want to change the type of compute assigned to the new server, or if you want to deploy it with high availablity or replicas, select **Configure server** and adjust the settings as needed.
 
      :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
     
 
-10. Review that all configurations for the new deployment are correctly set, and select **Create**.
+5. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
       :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
-11. A new deployment is launched to create your new Azure HorizonDB  and restore the most recent data available on the source server at the time of restore
+6.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
+
 
   :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-process.png":
 
-12. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB , and start using it:
+7. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB , and start using it:
 
   
 
