@@ -64,22 +64,22 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/configure-server-button.png" alt-text="Screenshot showing the location of the Configure server link." lightbox="./media/how-to-restore-server/configure-server-button.png":::
 
-8. The **Compute + storage** opens to show compute and storage options for the new server:
+8. The **Compute** opens to show compute options for the new server:
 
     :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
 
-9. Use the following table to understand the meaning of the different fields available in the **Compute + storage** page, and as guidance to fill the page:
+9. Use the following table to understand the meaning of the different fields available in the **Compute +** page, and as guidance to fill the page:
 
     | Section | Setting | Suggested value | Description | Can be changed after instance creation |
     | --- | --- | --- | --- | --- |
     | **Compute** | | | | |
-    | | **Compute tier** | Can't be changed and is automatically set to the same value as the source server. | Possible values are **Burstable** (typically used for development environments in which workloads don't need the full capacity of the CPU continuously) and **General Purpose** (typically used for production environments with most common workloads), and **Memory Optimized** (typically used for production environments running workloads that require a high memory to CPU ratio). For more information, see [Compute options in Azure HorizonDB server](../compute-storage/concepts-compute.md). | Can be changed after the server is created. However, if you're using some functionality which is only supported on certain tiers and change the current tier to one in which the feature isn't supported, the feature stops being available or gets disabled. |
-    | | **Compute size** | Can't be changed and is automatically set to the same value as the source server. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure HorizonDB ](../compute-storage/concepts-compute.md). | Can be changed after instance is created. |
-    | **Storage** | | | | |
-    | | **Performance tier** | Can't be changed and is automatically set to the same value as the source server. | Performance of Premium solid-state drives (SSD) is set when you create the disk, in the form of their performance tier. When setting the provisioned size of the disk, a performance tier is automatically selected. This performance tier determines the IOPS and throughput of your managed disk. For Premium SSD disks, this tier can be changed at deployment or afterwards, without changing the size of the disk, and without downtime. Changing the tier allows you to prepare for and meet higher demand without using your disk's bursting capability. It can be more cost-effective to change your performance tier rather than rely on bursting, depending on how long the extra performance is necessary. This is ideal for events that temporarily require a consistently higher level of performance. Events like holiday shopping, performance testing, or running a training environment. To handle these events, you can switch a disk to a higher performance tier without downtime, for as long as you need the extra performance. You can then return to the original tier without downtime when the extra performance is no longer necessary. | Can be changed after the instance is created. |
-    | | **Storage autogrow** | Can't be changed and is automatically set to the same value as the source server. | Notice that this option might not be supported for some storage types, and it might not be honored for certain storage sizes. For more information, see [Configure storage autogrow in an Azure HorizonDB server](../scale/how-to-auto-grow-storage.md). | Can be changed after the instance is created, as long as the storage type supports this feature. |
+    | | **Compute size** | Change the processor and vcores as per your needs. | Notice that the list of supported values might vary across regions, depending on the hardware available on each region. For more information, see [Compute options in Azure HorizonDB ](../compute-storage/concepts-compute.md). | Can be changed after instance is created. |
+    | **Replicas** | | | | |
+    | | **High Availability** | Choose *Zone redundant - Replica ina different availability zone* or  *Disabled* based upon your high availability needs. |
+    | | **Readable high availability replicas** | use the slider to configure number of replicas.
+
     | **Backups** | | | | |
-    | | **Backup retention period (in days)** | Can't be changed and is automatically set to the same value as the source server. | The default backup retention period is 7 days, but you can extend the period to a maximum of 35 days. | Can be changed after instance is created. |
+    | | **Backup retention period (in days)** | Can't be changed and is automatically set to 7. | The default backup retention period is 7 days. |
     
 10. Once all the new server is configured to your needs, select **Review + create**.
 
