@@ -27,13 +27,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
 
-3. You are redirected to the **Create Azure HorizonDB  - Restore** wizard, fwhere you can configure settings for the new cluster being created.In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**  select Custom restore point, and then choose a restore date and time from the calendar based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
+3. You are redirected to the **Create Azure HorizonDB  - Restore** wizard, where you can configure settings for the new cluster being created. In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**  and then choose a restore date and time from the calendar based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
 
     :::image type="content" source="./media/how-to-restore-server/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-server/custom-restore-point.png":::
 
  
 > [!NOTE]
->  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
+>  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past. If you choose current time restore will fail.
 
 4. If you want to change the type of compute assigned to the new server, or if you want to deploy it with high availablity or replicas, select **Configure server** and adjust the settings as needed.
 
@@ -46,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
 
-  :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-process.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-process.png":::
+      :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-process.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-process.png":::
 
 7. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB , and start using it:
 
