@@ -23,7 +23,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Networking**.
 
-   :::image type="content" source="media/how-to-networking/public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled-existing-firewall-rules.png":::
+   :::image type="content" source="media/how-to-networking-servers-deployed-public-access-delete-firewall-rules/public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking-servers-deployed-public-access-delete-firewall-rules/public-access-networking-enabled-existing-firewall-rules.png":::
 
 1. To delete a firewall rule, select the trash bin icon located to the right of the rule definition.
 
