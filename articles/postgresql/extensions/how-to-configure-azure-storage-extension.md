@@ -210,7 +210,7 @@ To initialize the encryption key with which all sensitive credentials used to au
 > Make sure you change `<strong passphrase>` with your own strong secret.
 
 ```sql
-ALTER DATABASE <database_with_created_extension> azure_storage.credential_encryption_key = '<strong_passphrase>';
+ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong_passphrase>';
 ```
 
 Note that if you create the extension in multiple databases, you must initialize the value of `azure_storage.credential_encryption_key` at the database level, so all sensitive credentials kept in that database are encrypted using the same key.
