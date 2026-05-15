@@ -97,7 +97,7 @@ Prepare your data for AI retrieval with automated, fault-tolerant workflows.
 Find the right information using multiple retrieval strategies, individually or combined.
 
 - **[Vector search (pgvector)](vector-search-pgvector.md)**: Semantic similarity search using vector embeddings.
-- **[Full-text search (pg_fts)](full-text-search-pgfts.md)**: BM25 keyword matching for exact terms and identifiers.
+- **[Full-text search (pg_fts)](full-text-search.md)**: BM25 keyword matching for exact terms and identifiers.
 - **[Hybrid search](hybrid-search.md)**: Combine vector and full-text search with Reciprocal Rank Fusion for best overall coverage.
 
 #### Improve search performance
@@ -112,8 +112,8 @@ As your dataset grows, indexing strategies become critical for maintaining fast 
 
 Retrieval is only the first step. Enhance accuracy and depth with second-stage scoring and structured knowledge.
 
-- **[Semantic reranking](semantic-reranking.md)**: Cross-encoder rescoring that reorders initial search results by true relevance to the query.
-- **[Knowledge graphs and GraphRAG](graphrag.md)**: Entity relationship traversal with Apache AGE for multi-hop reasoning across connected data. See also [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
+- **[Semantic reranking](semantic-rank-function.md)**: Cross-encoder rescoring that reorders initial search results by true relevance to the query.
+- **[Knowledge graphs and GraphRAG](graph-rag.md)**: Entity relationship traversal with Apache AGE for multi-hop reasoning across connected data. See also [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
 
 ### Build AI agents and apps
 

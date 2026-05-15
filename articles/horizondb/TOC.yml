@@ -260,7 +260,7 @@
         - name: Vector search (pgvector)
           href: ai/vector-search-pgvector.md
         - name: Full-text search (pg_fts)
-          href: ai/full-text-search-pgfts.md
+          href: ai/full-text-search.md
         - name: Hybrid Search
           href: ai/hybrid-search.md
         - name: Tutorial - Build a semantic search application
@@ -276,9 +276,9 @@
         - name: Enhance search relevance
           items:
             - name: Semantic reranking
-              href: ai/semantic-reranking.md
+              href: ai/semantic-rank-function.md
             - name: GraphRAG for knowledge graph enhanced search
-              href: ai/graphrag.md
+              href: ai/graph-rag.md
             - name: Build a knowledge graph from unstructured text
               href: ai/build-knowledge-graph.md
     - name: Build AI Agents and Apps
@@ -304,7 +304,7 @@
     - name: Tutorial- Build a knowledge graph from unstructured text
       href: ai/build-knowledge-graph.md
     - name: GraphRAG for knowledge graph enhanced search
-      href: ai/graphrag.md
+      href: ai/graph-rag.md
 - name: Migration
   items:
     - name: Offline migration

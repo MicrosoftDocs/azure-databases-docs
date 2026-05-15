@@ -123,11 +123,11 @@ These protocols are complementary: MCP connects agents to tools and data, A2A co
 To start building AI agents with Azure HorizonDB:
 
 1. **Set up your data layer**: Create an Azure HorizonDB instance and enable the `azure_ai` and `pgvector` extensions. Store your domain data and [generate vector embeddings](generate-vector-embeddings.md).
-1. **Choose a retrieval strategy**: Based on your use case, implement [vector search](vector-search-pgvector.md), [hybrid search](hybrid-search.md), or [graph-augmented RAG](graphrag.md) to give your agent access to domain knowledge.
+1. **Choose a retrieval strategy**: Based on your use case, implement [vector search](vector-search-pgvector.md), [hybrid search](hybrid-search.md), or [graph-augmented RAG](graph-rag.md) to give your agent access to domain knowledge.
 1. **Configure agent memory**: Use your framework's PostgreSQL connector to persist conversation history and agent state in Azure HorizonDB.
 1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](foundry-agent-integration.md) to build your agent, connecting it to Azure HorizonDB through native connectors or the [MCP server](foundry-agent-integration.md).
 1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
-1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-reranking.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.
+1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-rank-function.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.
 
 For industry-specific implementation patterns, see [AI and agentic use cases and sample applications](samples.md).
 

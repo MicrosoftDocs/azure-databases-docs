@@ -196,4 +196,4 @@ For current model pricing, see the [Microsoft Foundry pricing page](https://azur
 
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Semantic reranking with the rank() function](semantic-rank-function.md)

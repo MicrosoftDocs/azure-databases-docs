@@ -95,7 +95,7 @@ landingContent:
     - text: Efficient web-scale vector search with DiskANN
       url: ai/vector-indexing-diskann.md
     - text: Semantic reranking to improve search relevance
-      url: ai/semantic-reranking.md
+      url: ai/semantic-rank-function.md
     - text: Build an AI app with LangChain
       url: ai/develop-with-langchain.md
     - text: Build an AI agent with Foundry and MCP
