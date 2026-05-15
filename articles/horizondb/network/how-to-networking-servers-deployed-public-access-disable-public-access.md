@@ -33,31 +33,21 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Clear the **Allow public access to this resource through the internet using a public IP address** checkbox.
 
-   :::image type="content" source="media/how-to-networking/public-access-disable-public-access.png" alt-text="Screenshot showing how to disable public access." lightbox="media/how-to-networking/public-access-disable-public-access.png":::
-
 1. Select **Save**.
-
-   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-save.png" alt-text="Screenshot showing the Save button." lightbox="media/how-to-networking/public-access-disable-public-access-save.png":::
 
 1. A notification informs you that the changes are being applied.
 
-   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-progressing-notification.png" alt-text="Screenshot showing a server whose network settings are being saved." lightbox="media/how-to-networking/public-access-disable-public-access-progressing-notification.png":::
-
 1. Also, the status of the server changes to **Updating**.
-
-   :::image type="content" source="media/how-to-networking/public-access-updating.png" alt-text="Screenshot showing that server status is Updating." lightbox="media/how-to-networking/public-access-updating.png":::
 
 1. When the process completes, a notification informs you that the changes were applied.
 
-   :::image type="content" source="media/how-to-networking/public-access-disable-public-access-succeeded-notification.png" alt-text="Screenshot showing a server whose network settings were successfully saved." lightbox="media/how-to-networking/public-access-disable-public-access-succeeded-notification.png":::
-
 1. Also, the status of the server changes to **Ready**.
 
-   :::image type="content" source="media/how-to-networking/public-access-available.png" alt-text="Screenshot showing that server status is Ready." lightbox="media/how-to-networking/public-access-available.png":::
+<!--
 
-## [CLI](#tab/cli-disable-public-access)
+## [CLI](#tab/CLI-disable-public-access)
 
-You can disable public access on a server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+You can disable public access on a server via the [az postgres flexible-server update](/CLI/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
 ```azurecli-interactive
 az postgres flexible-server update \
@@ -65,6 +55,7 @@ az postgres flexible-server update \
   --name <server> \
   --public-access disabled
 ```
+-->
 
 If you attempt to disable public access on a server which isn't in `Ready` state, you receive an error like this:
 
@@ -75,6 +66,7 @@ Message: Server <server> is busy with other operations. Please try later
 
 If you attempt to disable public access on a server which wasn't deployed with networking mode public access (allowed IP addresses), you don't receive an error. The request to change that configuration is ignored.
 
+<!--
 To determine if a server has public access disabled or enabled, run the following command:
 
 ```azurecli-interactive
@@ -83,6 +75,7 @@ az postgres flexible-server show \
   --name <server> \
   --query '{"publicAccess":network.publicNetworkAccess}'
 ```
+-->
 
 ---
 
