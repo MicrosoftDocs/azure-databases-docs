@@ -97,18 +97,6 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-completed.png":::
 
-### [CLI](#tab/cli-restore-custom-point)
-
-You can restore a backup of a server to the latest restore point via the [az postgres flexible-server restore](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-restore) command.
-
-```azurecli-interactive
-az postgres horizondb-cluster restore \
-  --resource-group <resource_group> \
-  --name <server> \
-  --source-server <source_server> \
-  --restore-time 2025-04-26T02:10:00+00:00
-```
-
 > [!NOTE]
 > - The value passed to the `--restore-time` parameter represents the point in time, in UTC, to restore from (ISO8601 format).
 > - If the `--restore-time` parameter isn't present, its value defaults to the current time in the system from where the command is executed.
@@ -119,6 +107,5 @@ az postgres horizondb-cluster restore \
 
 ## Related content
 
-- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
-- [Restore full backup (fast restore)](how-to-restore-full-backup.md).
+
 

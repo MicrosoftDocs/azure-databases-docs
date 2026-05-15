@@ -203,8 +203,6 @@
       items:
         - name: Backups
           href: backup-restore/concepts-backup-restore.md
-        - name: Restore
-          href: backup-restore/how-to-restore-latest-restore-point.md
 - name: Performance and Monitoring
   items:
     - name: Query Monitoring

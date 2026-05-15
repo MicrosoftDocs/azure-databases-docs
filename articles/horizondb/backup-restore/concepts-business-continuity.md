@@ -94,7 +94,6 @@ Below are some unplanned failure scenarios and the recovery process.
 
 ## Related content
 
-- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md).
-- [Restore to full backup (fast restore)](how-to-restore-full-backup.md).
+
 
