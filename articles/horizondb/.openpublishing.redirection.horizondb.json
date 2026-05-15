@@ -1,0 +1,49 @@
+{
+    "redirections": [
+        {
+            "source_path_from_root": "/articles/horizondb/developer/vs-code-extension/vs-code-overview.md",
+            "redirect_url": "/azure/horizondb/development/vs-code-extension/vs-code-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/vs-code-extension/vs-code-github-copilot.md",
+            "redirect_url": "/azure/horizondb/development/vs-code-extension/vs-code-github-copilot",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/vs-code-extension/vs-code-connect.md",
+            "redirect_url": "/azure/horizondb/development/vs-code-extension/vs-code-connect",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/webapp-server-vnet.md",
+            "redirect_url": "/azure/horizondb/development/webapp-server-vnet",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/create-server-python-sdk.md",
+            "redirect_url": "/azure/horizondb/development/create-server-python-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/create-server-java-sdk.md",
+            "redirect_url": "/azure/horizondb/development/create-server-java-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/create-server-dotnet-sdk.md",
+            "redirect_url": "/azure/horizondb/development/create-server-dotnet-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/create-server-bicep.md",
+            "redirect_url": "/azure/horizondb/development/create-server-bicep",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/horizondb/developer/django-aks-database.md",
+            "redirect_url": "/azure/horizondb/development/django-aks-database",
+            "redirect_document_id": true
+        }
+    ]
+}
