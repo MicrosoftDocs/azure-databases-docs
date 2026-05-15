@@ -46,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 6.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
 
-  :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-completed.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-process.png":::
+  :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-process.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-process.png":::
 
 7. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB , and start using it:
 
