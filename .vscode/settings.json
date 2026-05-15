@@ -2,11 +2,5 @@
     "cSpell.words": [
         "azurecli",
         "multicloud"
-    ],
-    "chat.tools.terminal.autoApprove": {
-        "/^cd /c/GitHub/tools/dc && pwsh -Command \"\\.\\\\dc\\.exe format -r 'C:/GitHub/repos/azure-databases-docs-pr' -p 'articles/mysql/flexible-server/release-notes/may-2026\\.md' --runAllOptions --dryRun\"$/": {
-            "approve": true,
-            "matchCommandLine": true
-        }
-    }
+    ]
 }
