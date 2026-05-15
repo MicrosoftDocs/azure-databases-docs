@@ -27,9 +27,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
 
-3. You are redirected to the **Create Azure HorizonDB  - Restore** wizard, fwhere you can configure settings for the new cluster being created.
-
- In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**  select Custom restore point, and then choose a restore date and time from the calendar based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
+3. You are redirected to the **Create Azure HorizonDB  - Restore** wizard, fwhere you can configure settings for the new cluster being created.In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**  select Custom restore point, and then choose a restore date and time from the calendar based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
 
     :::image type="content" source="./media/how-to-restore-server/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-server/custom-restore-point.png":::
 

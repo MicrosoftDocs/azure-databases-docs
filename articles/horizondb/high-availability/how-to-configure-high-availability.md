@@ -420,7 +420,6 @@ This failover operation provides the least downtime, because it performs a grace
 
 #### Restore option
 
-1. [Restore to latest restore point in Azure HorizonDB](../backup-restore/how-to-restore-latest-restore-point.md).
 1. After you create the new server, [enable high availability with zone redundancy](#enable-high-availability-for-existing-servers).
 1. After data verification, you can optionally [delete](../configure-maintain/how-to-delete-server.md) the old server.
 1. Make sure that the connection strings of your clients are modified to point to your newly restored server.
