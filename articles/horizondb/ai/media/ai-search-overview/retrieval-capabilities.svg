@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" font-family="Segoe UI, sans-serif">
+  <rect width="960" height="460" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="350" y="32" text-anchor="middle" font-size="16" font-weight="600" fill="#1a1a1a">Retrieval capabilities in Azure HorizonDB</text>
+
+  <!-- ===== TOP CENTER: Search Techniques ===== -->
+  <rect x="30" y="50" width="640" height="130" rx="8" fill="#f0f7ff" stroke="#0078d4" stroke-width="1.5"/>
+  <text x="350" y="72" text-anchor="middle" font-size="13" font-weight="600" fill="#0078d4">Search techniques</text>
+
+  <!-- Vector search card -->
+  <rect x="50" y="84" width="190" height="80" rx="5" fill="#ffffff" stroke="#a0cfef" stroke-width="1"/>
+  <text x="145" y="106" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">Vector search</text>
+  <text x="145" y="123" text-anchor="middle" font-size="10" fill="#505050">Semantic similarity</text>
+  <text x="145" y="138" text-anchor="middle" font-size="10" fill="#505050">with pgvector</text>
+  <text x="145" y="155" text-anchor="middle" font-size="8" fill="#707070">Meaning · Multilingual</text>
+
+  <!-- Full-text search card -->
+  <rect x="255" y="84" width="190" height="80" rx="5" fill="#ffffff" stroke="#a0cfef" stroke-width="1"/>
+  <text x="350" y="106" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">Full-text search</text>
+  <text x="350" y="123" text-anchor="middle" font-size="10" fill="#505050">BM25 keyword matching</text>
+  <text x="350" y="138" text-anchor="middle" font-size="10" fill="#505050">with pg_fts</text>
+  <text x="350" y="155" text-anchor="middle" font-size="8" fill="#707070">Exact terms · Identifiers</text>
+
+  <!-- Hybrid search card -->
+  <rect x="460" y="84" width="190" height="80" rx="5" fill="#ffffff" stroke="#a0cfef" stroke-width="1"/>
+  <text x="555" y="106" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">Hybrid search</text>
+  <text x="555" y="123" text-anchor="middle" font-size="10" fill="#505050">Vector + full-text</text>
+  <text x="555" y="138" text-anchor="middle" font-size="10" fill="#505050">merged with RRF</text>
+  <text x="555" y="155" text-anchor="middle" font-size="8" fill="#707070">Best overall coverage</text>
+
+  <!-- ===== BOTTOM LEFT: Improve Performance ===== -->
+  <rect x="30" y="205" width="310" height="200" rx="8" fill="#f0fff4" stroke="#28a745" stroke-width="1.5"/>
+  <text x="185" y="227" text-anchor="middle" font-size="13" font-weight="600" fill="#28a745">Improve search performance</text>
+
+  <!-- DiskANN - full width, centered -->
+  <rect x="50" y="247" width="270" height="60" rx="5" fill="#ffffff" stroke="#8fd4a4" stroke-width="1.5"/>
+  <text x="185" y="266" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">DiskANN</text>
+  <text x="250" y="266" text-anchor="middle" font-size="9" font-weight="600" fill="#28a745">(Recommended)</text>
+  <text x="185" y="283" text-anchor="middle" font-size="10" fill="#505050">Scalable vector indexing with pg_diskann</text>
+  <text x="185" y="299" text-anchor="middle" font-size="8" fill="#707070">Large, growing datasets . High dimensions . Filtered queries</text>
+
+  <!-- HNSW - below DiskANN, left -->
+  <rect x="50" y="326" width="130" height="60" rx="5" fill="#ffffff" stroke="#8fd4a4" stroke-width="1"/>
+  <text x="115" y="345" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">HNSW</text>
+  <text x="115" y="362" text-anchor="middle" font-size="10" fill="#505050">via pgvector</text>
+  <text x="115" y="378" text-anchor="middle" font-size="8" fill="#707070">In-memory . High recall</text>
+
+  <!-- IVFFlat - below DiskANN, right -->
+  <rect x="190" y="326" width="130" height="60" rx="5" fill="#ffffff" stroke="#8fd4a4" stroke-width="1"/>
+  <text x="255" y="345" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">IVFFlat</text>
+  <text x="255" y="362" text-anchor="middle" font-size="10" fill="#505050">via pgvector</text>
+  <text x="255" y="378" text-anchor="middle" font-size="8" fill="#505050">Fast builds · Static data</text>
+
+  <!-- ===== BOTTOM RIGHT: Enhance Relevance ===== -->
+  <rect x="360" y="205" width="310" height="200" rx="8" fill="#fdf6ec" stroke="#d4a017" stroke-width="1.5"/>
+  <text x="515" y="227" text-anchor="middle" font-size="13" font-weight="600" fill="#b8860b">Enhance search relevance</text>
+
+  <rect x="380" y="247" width="270" height="60" rx="5" fill="#ffffff" stroke="#e8c96a" stroke-width="1"/>
+  <text x="515" y="266" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">Semantic reranking</text>
+  <text x="515" y="283" text-anchor="middle" font-size="10" fill="#505050">Cross-encoder re-scoring with rank()</text>
+  <text x="515" y="299" text-anchor="middle" font-size="8" fill="#707070">Higher precision at top of results</text>
+
+  <rect x="380" y="326" width="270" height="60" rx="5" fill="#ffffff" stroke="#e8c96a" stroke-width="1"/>
+  <text x="515" y="345" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1a1a1a">Knowledge graphs</text>
+  <text x="515" y="362" text-anchor="middle" font-size="10" fill="#505050">Entity relationship traversal with Apache AGE</text>
+  <text x="515" y="378" text-anchor="middle" font-size="8" fill="#707070">Multi-hop reasoning · GraphRAG</text>
+
+  <!-- ===== VERTICAL DOTTED LINE ===== -->
+  <line x1="700" y1="50" x2="700" y2="415" stroke="#999999" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+  <!-- ===== RIGHT SIDE: AI Infrastructure ===== -->
+  <rect x="730" y="50" width="200" height="355" rx="8" fill="#f5f0ff" stroke="#6b3fa0" stroke-width="1.5"/>
+  <text x="830" y="78" text-anchor="middle" font-size="13" font-weight="600" fill="#6b3fa0">AI infrastructure</text>
+
+  <!-- AIMM -->
+  <rect x="748" y="108" width="164" height="115" rx="5" fill="#ffffff" stroke="#b89ddb" stroke-width="1"/>
+  <text x="830" y="130" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">AI Model Management</text>
+  <line x1="762" y1="140" x2="898" y2="140" stroke="#e8e0f0" stroke-width="1"/>
+  <text x="830" y="160" text-anchor="middle" font-size="10" fill="#505050">Embedding, reranking,</text>
+  <text x="830" y="176" text-anchor="middle" font-size="10" fill="#505050">and reasoning models</text>
+  <text x="830" y="192" text-anchor="middle" font-size="10" fill="#707070">via Microsoft Foundry</text>
+  <text x="830" y="208" text-anchor="middle" font-size="8" fill="#707070">One-click setup . Enables AI functions</text>
+
+  <!-- AI Pipelines -->
+  <rect x="748" y="250" width="164" height="115" rx="5" fill="#ffffff" stroke="#b89ddb" stroke-width="1"/>
+  <text x="830" y="272" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1a1a">AI Pipelines</text>
+  <line x1="762" y1="282" x2="898" y2="282" stroke="#e8e0f0" stroke-width="1"/>
+  <text x="830" y="302" text-anchor="middle" font-size="10" fill="#505050">Chunking, Embedding</text>
+  <text x="830" y="318" text-anchor="middle" font-size="10" fill="#505050">Extraction, Generation</text>
+  <text x="830" y="334" text-anchor="middle" font-size="10" fill="#505050">Retrieval &amp; Ranking</text>
+  <text x="830" y="350" text-anchor="middle" font-size="8" fill="#707070">End-to-end workflows</text>
+
+  <!-- Footer -->
+  <text x="480" y="440" text-anchor="middle" font-size="11" fill="#707070">All capabilities run natively inside Azure HorizonDB — no external search service required.</text>
+</svg>

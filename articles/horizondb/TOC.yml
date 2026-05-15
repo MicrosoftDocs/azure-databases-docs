@@ -233,59 +233,7 @@
           href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
         - name: Optimize query statistics
           href: troubleshoot/how-to-optimize-query-stats-collection.md
-- name: AI & agentic workloads
-  items:
-    - name: Generative AI with Azure HorizonDB
-      href: azure-ai/generative-ai-overview.md
-    - name: Semantic search
-      items:
-        - name: PostgreSQL as a vector store
-          href: azure-ai/generative-ai-vector-databases.md
-        - name: Vector search using pgvector
-          href: extensions/how-to-use-pgvector.md
-        - name: Optimize performance when using pgvector
-          href: extensions/how-to-optimize-performance-pgvector.md
-        - name: Scalable vector indexing using pg_diskann
-          href: extensions/how-to-use-pgdiskann.md
-        # - name: Advanced pg_diskann filtering  # TODO: No file exists yet
-        # - name: Semantic reranking of vector search results  # TODO: No file exists yet
-    - name: AI Functions
-      items:
-        - name: Introduction to the azure_ai extension
-          href: azure-ai/generative-ai-azure-overview.md
-        - name: Create vector embeddings using Azure OpenAI
-          href: azure-ai/generative-ai-azure-openai.md
-        - name: "Use generate(), is_true() and extract() operators"
-          href: azure-ai/generative-ai-azure-ai-semantic-operators.md
-        - name: Invoke Azure Language capabilities
-          href: azure-ai/generative-ai-azure-cognitive.md
-        - name: Invoke Azure Machine Learning models
-          href: azure-ai/generative-ai-azure-machine-learning.md
-        - name: Enable managed identity in azure_ai
-          href: azure-ai/generative-ai-enable-managed-identity-azure-ai.md
-        - name: "Tutorial: Build a semantic search application"
-          href: azure-ai/generative-ai-semantic-search.md
-        - name: "Tutorial: Build a recommendation system"
-          href: azure-ai/generative-ai-recommendation-system.md
-    - name: AI Frameworks
-      items:
-        - name: Integrate with AI Frameworks
-          href: azure-ai/generative-ai-frameworks.md
-        - name: "Tutorial: Develop with LangChain"
-          href: azure-ai/generative-ai-develop-with-langchain.md
-    - name: AI Agents
-      items:
-        - name: AI agents in Azure HorizonDB
-          href: azure-ai/generative-ai-agents.md
-        - name: Build an agent with Microsoft Foundry
-          href: azure-ai/generative-ai-foundry-integration.md
-    - name: Graph Database
-      items:
-        - name: Concepts Apache AGE for PostgreSQL
-          href: azure-ai/generative-ai-age-overview.md
-        - name: Performance best practices for Apache AGE
-          href: azure-ai/generative-ai-age-performance.md
-- name: Application development
+- name: Development Experience
   items:
     - name: PostgreSQL extension for Visual Studio Code
       items:
@@ -295,6 +243,78 @@
           href: development/vs-code-extension/vs-code-connect.md
         - name: Configure GitHub Copilot
           href: development/vs-code-extension/vs-code-github-copilot.md
+    - name: Durable execution with pg_durable
+      href: development/pg-durable.md
+- name: Generative AI
+  items:
+    - name: Introduction
+      href: ai/overview.md
+    - name: AI functions in SQL
+      items:
+      - name: AI functions (azure_ai)
+        href: ai/ai-functions.md
+      - name: AI Model Management
+        href: ai/ai-model-management.md
+    - name: AI Pipelines and Data Preparation
+      items:
+        - name: Data preparation for AI
+          href: ai/ai-data-preparation.md
+        - name: AI pipelines
+          href: ai/ai-pipelines.md
+        - name: Generate vector embeddings in SQL
+          href: ai/generate-vector-embeddings.md
+    - name: Semantic Search and Hybrid Search
+      items:
+        - name: Introduction
+          href: ai/ai-search-overview.md
+        - name: Vector search (pgvector)
+          href: ai/vector-search-pgvector.md
+        - name: Full-text search (pg_fts)
+          href: ai/full-text-search-pgfts.md
+        - name: Hybrid Search
+          href: ai/hybrid-search.md
+        - name: Tutorial - Build a semantic search application
+          href: ai/build-semantic-search-app.md
+        - name: Improve search performance
+          items:
+            - name: Optimize pgvector performance
+              href: ai/optimize-pgvector-performance.md
+            - name: Scalable vector indexing with DiskANN
+              href: ai/vector-indexing-diskann.md
+            - name: Index selection guide
+              href: ai/vector-index-selection-guide.md
+        - name: Enhance search relevance
+          items:
+            - name: Semantic reranking
+              href: ai/semantic-reranking.md
+            - name: GraphRAG for knowledge graph enhanced search
+              href: ai/graphrag.md
+            - name: Build a knowledge graph from unstructured text
+              href: ai/build-knowledge-graph.md
+    - name: Build AI Agents and Apps
+      items:
+        - name: Overview
+          href: ai/ai-agents.md
+        - name: Build an AI agent with Microsoft Foundry and MCP
+          href: ai/foundry-agent-integration.md
+        - name: Integrate with LLM orchestration frameworks
+          href: ai/ai-frameworks.md
+        - name: Develop with LangChain
+          href: ai/develop-with-langchain.md
+        #- name: Implement agent memory in Azure HorizonDB
+        #  href: ai/agent-memory.md
+    - name: Samples
+      href: ai/samples.md
+- name: Graph Database
+  items:
+    - name: Graph data capabilities with Apache AGE extension
+      href: graph/age-overview.md
+    - name: Performance best practices for Apache AGE
+      href: graph/age-performance.md
+    - name: Tutorial- Build a knowledge graph from unstructured text
+      href: ai/build-knowledge-graph.md
+    - name: GraphRAG for knowledge graph enhanced search
+      href: ai/graphrag.md
 - name: Migration
   items:
     - name: Offline migration
