@@ -406,9 +406,33 @@ This failover operation provides the least downtime, because it performs a grace
 1. If the high-availability mode is configured as **Zone redundant**, confirm that the values of **Primary availability zone** and **Standby availability zone** are now reversed.
 
 
+## Limitations and considerations
 
+- Enabling or disabling high availability on an Azure HorizonDB instance doesn't change other settings, including networking configuration, firewall settings, server parameters, or backup retention. Enabling or disabling high availability is an online operation. It doesn't affect your application connectivity and operations.
+
+- Azure HorizonDB supports high availability with both replicas deployed in the same zone. This configuration is available in all supported regions. However, high availability with zone redundancy is [available only in certain regions](../overview.md#azure-regions).
+
+- The **Burstable** tier doesn't support high availability. Only the **General purpose** and **Memory optimized** tiers support high availability.
+
+- If you deploy a server in a region that consists of a single availability zone, you can enable high availability in the same-zone mode only. If the region is enhanced in the future with multiple availability zones, you can deploy new Azure HorizonDB with high availability configured as same zone or zone redundant.
+
+  However, for any instances that you deployed in the region when the region consisted of a single availability zone, you can't directly enable high availability in zone-redundant mode. As a workaround, you can use the restore option or read replica option:
+
+#### Restore option
+
+1. [Restore to latest restore point in Azure HorizonDB](../backup-restore/how-to-restore-latest-restore-point.md).
+1. After you create the new server, [enable high availability with zone redundancy](#enable-high-availability-for-existing-servers).
+1. After data verification, you can optionally [delete](../configure-maintain/how-to-delete-server.md) the old server.
+1. Make sure that the connection strings of your clients are modified to point to your newly restored server.
+
+#### Read replica option
+
+1. [Read replicas in Azure HorizonDB](../read-replica/concepts-read-replicas.md).
+1. Promote the read replica to become the new primary server.
+1. To preserve the original name, either use virtual endpoints or drop the old primary, then create and promote a new read replica.
+1. For portal users, enable Zonal Resiliency. For developer tools, set High Availability with the Zone-Redundant option
 ---
 
 ## Related content
-
-- [High availability (reliability) in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server)
+- [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).

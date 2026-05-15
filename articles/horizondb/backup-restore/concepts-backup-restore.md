@@ -101,5 +101,5 @@ Avoid doing large write operations, such as vaccum and reindex, more frequently 
 
 ## Related content
 
-- [Restore to latest restore point](how-to-restore-latest-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 
