@@ -31,17 +31,16 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/restore-button.png" alt-text="Screenshot showing the location of the Restore button in the Overview page." lightbox="./media/how-to-restore-server/restore-button.png":::
 
-4. You're redirected to the **Create Azure HorizonDB  - Restore server** wizard, from where you can configure some settings for the new server that is created. After the new server is deployed, the most recent snapshot of the source server data disk is restored. In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**.
+4. You're redirected to the **Create Azure HorizonDB  - Restore** wizard, from where you can configure some settings for the new cluster that is getting created. In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**.
 
     :::image type="content" source="./media/how-to-restore-server/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-server/custom-restore-point.png":::
 
-5. In **Custom restore point (UTC)**, select a date from the calendar control, and specify a time in the time text box.
+5. In **Custom restore point (UTC)**, select a date from the calendar control, and specify a time in the time text box. Select a restore point based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
 
     :::image type="content" source="./media/how-to-restore-server/custom-restore-point-date-time.png" alt-text="Screenshot showing the date picker and time textbox, available to configure the custom restore point." lightbox="./media/how-to-restore-server/custom-restore-point-date-time.png":::
 
 > [!NOTE]
-> Selectable dates in the calendar control are restricted to the ones covering the range from the day in which the oldest available backup was taken until now.
-> If you select a time which, when combined with the selected date, falls outside the period ranging from the earliest restore point and the time (UTC) at which you landed in the **Create Azure HorizonDB  - Restore server** wizard, and error asks you to adjust the value.
+>  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
 
 6. Use the following table to understand the meaning of the different fields available in the **Basics** page, and as guidance to fill the page:
 

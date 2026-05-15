@@ -52,10 +52,10 @@ In HorizonDB, Azure Monitor metrics report the following consumption information
 
 To view backup and data storage metrics in the Azure portal, follow these steps:
 
-Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
-In the Monitoring section, select the Metrics page.
-From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
-<< Image here>>
+* Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
+* In the Monitoring section, select the Metrics page.
+* From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
+
 
 ## Backup storage cost
 
@@ -65,13 +65,13 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-Total billable backup storage size = ( Changes to Data pages + log backup storage size)
+*Total billable backup storage size = ( Changes to Data pages + log backup storage size)*
 
 Data storage size isn't included in the billable backup because it's already billed as allocated database storage.
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HoirzonDB database, billable backup storage is calculated as follows:
 
-Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + log backup storage size) * (remaining backup retention period after deletion / configured backup retention period)
+*Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + log backup storage size) * (remaining backup retention period after deletion / configured backup retention period)*
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
@@ -86,22 +86,17 @@ Reduce the backup retention period to the minimum for your needs.
 Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
 
 
-## Monitor backup costs
-To understand backup storage costs:
+## Backup Limitations
 
-In the Azure portal, go to Cost Management + Billing.
+- Geo-redundant backups are currently not supported.
+   
+- Maximum backup retention currently supported is 7 days. This limit will be increased to 35 days in the coming weeks.
 
-Select Cost Management > Cost analysis.
+- Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
 
-For Scope, select the desired subscription.
+-  
 
-Filter for the time period and service you're interested in by following these steps:
 
-Add a filter for Service name.
-Choose HorizonDB from the dropdown list.
-Add another filter for Meter.
-To monitor backup costs for point-in-time recovery, select Data Stored - Backup - RA from the dropdown list.
-The following screenshot shows an example cost analysis.
 
 << Image>>
 
