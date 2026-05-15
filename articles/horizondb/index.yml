@@ -80,39 +80,28 @@ landingContent:
       url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
 
 # Card 3
-
-- title: Build apps and AI agents
+- title: Build AI apps and agents
   linkLists:
-  - linkListType: tutorial
+  - linkListType: how-to-guide
     links:
-    - text: Build a Python CRUD app (Entra and Password-based authentication)
-      url: connectivity/connect-python.md
-    - text: Deploy a Python app on Azure App Service
-      url: /azure/app-service/tutorial-python-postgresql-app-flask
-    - text: Deploy Django App with AKS
-      url: development/django-aks-database.md
-    - text: Implement Semantic Search with pgvector and Azure OpenAI
-      url: azure-ai/generative-ai-semantic-search.md
-    - text: Integrate Azure AI capabilities
-      url: integration/how-to-integrate-azure-ai.md
-    - text: Build an AI agent using Azure AI Agent Services
-      url: azure-ai/generative-ai-agents.md
-    - text: Develop with LangChain
-      url: azure-ai/generative-ai-develop-with-langchain.md
-    - text: Graph database using Apache AGE
-      url: azure-ai/generative-ai-age-overview.md
-  - linkListType: concept
-    links:
-    - text: Generative AI overview
-      url: azure-ai/generative-ai-overview.md
-    - text: Vector Search with pgvector
-      url: extensions/how-to-use-pgvector.md
+    - text: Overview of AI capabilities in Azure HorizonDB
+      url: ai/overview.md
+    - text: AI pipelines and data preparation
+      url: ai/ai-pipelines.md
+    - text: AI functions in SQL with the azure_ai extension
+      url: ai/ai-functions.md
+    - text: Semantic Search and Hybrid Search
+      url: ai/ai-search-overview.md
     - text: Efficient web-scale vector search with DiskANN
-      url: extensions/how-to-use-pgdiskann.md
-    - text: GenAI Framework integrations (Semantic Kernel, LangChain, LlamaIndex and Microsoft GraphRAG)
-      url: azure-ai/generative-ai-frameworks.md
-
-# Card 4
+      url: ai/vector-indexing-diskann.md
+    - text: Semantic reranking to improve search relevance
+      url: ai/semantic-reranking.md
+    - text: Build an AI app with LangChain
+      url: ai/develop-with-langchain.md
+    - text: Build an AI agent with Foundry and MCP
+      url: ai/foundry-agent-integration.md
+    - text: Build a knowledge graph from unstructured text
+      url: ai/build-knowledge-graph.md
 
 - title: Advanced concepts and overview
   linkLists:
