@@ -12,10 +12,11 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2025
+  - build-2026
+ai-usage: ai-assisted
 ---
 
-# Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code
+# Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code (Preview)
 
 The PostgreSQL extension for Visual Studio Code is a powerful tool designed to streamline the development and management of PostgreSQL databases. This guide walks you through connecting to a HorizonDB database and executing queries within the Visual Studio Code environment.
 
@@ -23,10 +24,10 @@ The PostgreSQL extension for Visual Studio Code is a powerful tool designed to s
 
 Before you begin, verify you have the proper tools and resources downloaded and installed.
 
-These tools and resources help you follow along with this article and make the most of the GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code.
+These tools and resources help you follow along with this article.
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- HorizonDB database installed locally or hosted in the {[cloud](../../configure-maintain/quickstart-create-server.md)}.
+- HorizonDB database installed locally or hosted in the [cloud](../../configure-maintain/quickstart-create-server.md).
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
@@ -39,7 +40,7 @@ To install the PostgreSQL extension:
 1. Search for *PostgreSQL* in the Extensions Marketplace.
 1. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
 
-When the extension is installed, the PostgreSQL page, represented by an elephant icon, appears in the Visual Studio Code sidebar.
+When the extension is installed, the PostgreSQL page, represented by an elephant icon, appear in the Visual Studio Code sidebar.
 
 ## Add a connection to HorizonDB
 
@@ -90,7 +91,7 @@ Use the Query Editor to draft and execute SQL queries:
 
 - Take advantage of context-aware IntelliSense to autocomplete SQL keywords and object names.
 - Use syntax highlighting and autoformatting for better readability and accuracy.
-- Access previously executed queries via the Query History pane.
+- Access previously executed queries through the Query History pane.
 
 ## Review query results
 
@@ -118,18 +119,18 @@ Write prompts like the following example to receive detailed insights and sugges
 @pgsql tell me about the tables in the HR schema
 ```
 
-For more information, see [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md).
+For more information, see [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)](vs-code-github-copilot.md).
 
 ## Connect to Azure HorizonDB with Visual Studio Code
 
 Connect to an Azure HorizonDB by using Visual Studio Code by following these steps:
 
-1. Sign in to the Azure portal and locate your Azure HorizonDB .
+1. Sign in to the Azure portal and locate your Azure HorizonDB server.
 1. Go to the **Overview** page of your server instance.
 
 ### Connect with Visual Studio Code
 
-The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure HorizonDB . This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
+The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure HorizonDB server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
 
 - Select the prominent **Connect with Visual Studio Code** button on the **Overview** page.
 - A side pane appears that lists the requirements to connect by using Visual Studio Code.
@@ -194,6 +195,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](vs-code-overview.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
+- [What is the PostgreSQL extension for Visual Studio Code with Azure HorizonDB (Preview)](vs-code-overview.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

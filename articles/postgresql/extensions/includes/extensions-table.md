@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 04/27/2026
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -48,7 +48,7 @@ ms.custom:
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 1.7.0 <sup>*</sup> |
-| 17 | 1.6.0 <sup>*</sup> |
+| 17 | 1.7.0 <sup>*</sup> |
 | 16 | 1.6.0 <sup>*</sup> |
 | 15 | 1.5.0 <sup>*</sup> |
 | 14 | 1.5.0 <sup>*</sup> |
@@ -604,7 +604,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 
 ## pg_duckdb
 
-[pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
+[pg_duckdb](https://github.com/duckdb/pg_duckdb) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -670,7 +670,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 ## pg_ivm
 
-[pg_ivm](https://github.com/sraoss/pg_ivm) (Preview) provides Incremental View Maintenance (IVM) feature for PostgreSQL.
+[pg_ivm](https://github.com/sraoss/pg_ivm) provides Incremental View Maintenance (IVM) feature for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |

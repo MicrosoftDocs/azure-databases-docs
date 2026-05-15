@@ -44,7 +44,7 @@ In this article, you learn how to:
 
 To complete these steps, you need:
 
-- Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
+- Have an Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 
 - Have an on-premises MySQL database with version 5.6 or above. If not, then download and install [MySQL community edition](https://dev.mysql.com/downloads/mysql/) 5.6 or above.
 

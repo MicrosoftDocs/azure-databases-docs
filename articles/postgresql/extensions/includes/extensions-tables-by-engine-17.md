@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2026
+ms.date: 05/11/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom:
@@ -12,7 +12,7 @@ ms.custom:
 | --- | --- | --- |
 | [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step. | 3.6.1 | |
 | [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example. | 3.6.1 | |
-| [age](https://age.apache.org/) (Preview) provides graph database capabilities. | 1.6.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [age](https://age.apache.org/) (Preview) provides graph database capabilities. | 1.7.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity. | 1.4 | |
 | [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools. | 2.5.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand. | Without version <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
@@ -47,11 +47,11 @@ ms.custom:
 | [pg_cron](https://github.com/citusdata/pg_cron) is a job scheduler for PostgreSQL. | 1.6 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server. |
 | [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) provides cryptographic functions. | 1.3 | Read the special considerations for extension [pgcrypto](../concepts-extensions-considerations.md#pgcrypto) in flexible server. |
 | [pg_diskann](../../flexible-server/how-to-use-pgdiskann.md) is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. | 0.6.4 | |
-| [pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications. | 1.1.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [pg_duckdb](https://github.com/duckdb/pg_duckdb) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications. | 1.1.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes. | Not supported <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server. |
 | [pg_freespacemap](https://www.postgresql.org/docs/current/pgfreespacemap.html) examines the free space map (FSM). | 1.2 | |
 | [pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments. | 1.7.0 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.<br />Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server. |
-| [pg_ivm](https://github.com/sraoss/pg_ivm) (Preview) provides Incremental View Maintenance (IVM) feature for PostgreSQL. | 1.13 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
+| [pg_ivm](https://github.com/sraoss/pg_ivm) provides Incremental View Maintenance (IVM) feature for PostgreSQL. | 1.13 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication. | 2.4.5 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 5.3.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
 | [pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID. | 5.0.1 <sup>*</sup> | <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter. |
