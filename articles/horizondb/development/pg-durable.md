@@ -261,7 +261,7 @@ For details on switching to a group role before submitting, see the user guide.
 
 ## Compared to external orchestrators
 
-| | External orchestrator | `pg_durable` |
+| Concepts | External orchestrator | `pg_durable` |
 |---|---|---|
 | Deployment | Separate service, separate identity, separate state store | One database |
 | State durability | Orchestrator's storage layer | Same backups, HA, and PITR as your data |
