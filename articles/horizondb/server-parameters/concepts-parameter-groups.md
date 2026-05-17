@@ -45,7 +45,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 
 ## Best practices
 
-1. **Naming conventions**: Include the engine version in the name (e.g., `production-pg17-group`) to easily identify compatibility.
+1. **Naming conventions**: Preferably, embed some form of encoded description in the name so that you can later identify the potential target clusters of that configuration.
 1. **Version tracking**: Use the `/versions` API to audit who and when changed what configuration.
 1. **Staging**: Always test new parameter groups on a development cluster before applying them to production, especially when setting `applyImmediately` to `true`.
 
