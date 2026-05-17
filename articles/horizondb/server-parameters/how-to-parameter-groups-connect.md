@@ -19,7 +19,30 @@ You can connect one parameter group to one or more clusters, as long as the regi
 
 ### [Portal](#tab/portal-list)
 
-[!INCLUDE [no-portal-support](../includes/no-portal-support.md)]
+Using the [Azure portal](https://portal.azure.com):
+
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+
+1. By using the filtering buttons and the search box, find the parameter group which you want to check what clusters are connected to it, and select it.
+
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to connect to one or more clusters." lightbox="./media/how-to-connect-clusters--parameter-groups/filter-search-parameter-groups.png":::
+
+1. In the **Connected clusters** section, select the **Connect clusters** command bar button.
+
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/connect-clusters-first.png" alt-text="Screenshot that shows the Overview page of the selected parameter group from where you can connect it to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/connect-clusters-first.png":::
+
+1. In the **Connect clusters** page that opens on the side, use the filtering button and the search box to find the clusters that you want to connect to this parameter group. Select the checkbox of each cluster that you want to connect. Then, select **Connect clusters**.
+
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/connect-clusters-second.png" alt-text="Screenshot that shows the Connect clusters page of the selected parameter group from where you can connect it to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/connect-clusters-second.png":::
+
+1. A notification indicates that the operation to connect the parameter group is to the clusters selected is initiated.
+
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/notification-connecting.png" alt-text="Screenshot that shows the notification that indicates the connection of the parameter group to the selected clusters is initiated." lightbox="./media/how-to-connect-clusters-parameter-groups/notification-connecting.png":::
+
+1. A few seconds later, a notification indicates that the operation completed successfully.
+
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/notification-connected.png" alt-text="Screenshot that shows the notification that indicates the connection of the parameter group to the selected clusters completed successfuly." lightbox="./media/how-to-connect-clusters-parameter-groups/notification-connected.png":::
+
 
 ### [CLI](#tab/cli-list)
 
@@ -48,13 +71,13 @@ Replace the placeholders:
 > [!IMPORTANT]  
 > Avoid passing properties other than createMode and parameterGroup or the parameter group connection to the cluster might not be processed. This is a current limitation that will be removed in the future.
 
----
-
-## Possible errors
+#### Possible errors
 
 | Error code | Description |
 | --- | --- |
 | `ParameterGroupApplyFailed` | When the attempt to apply the parameter group to the cluster fails. |
+
+---
 
 ## Related content
 
