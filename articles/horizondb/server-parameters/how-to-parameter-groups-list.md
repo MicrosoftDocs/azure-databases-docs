@@ -19,7 +19,14 @@ When listing parameter groups, you can scope the operation to a single parameter
 
 ### [Portal](#tab/portal-list)
 
-[!INCLUDE [no-portal-support](../includes/no-portal-support.md)]
+Using the [Azure portal](https://portal.azure.com):
+
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+
+1. By using the filtering buttons and the search box, find the parameter groups which you're looking for.
+
+    :::image type="content" source="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to delete." lightbox="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png":::
+
 
 ### [CLI](#tab/cli-list)
 
