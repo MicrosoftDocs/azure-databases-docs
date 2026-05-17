@@ -22,6 +22,8 @@
       href: release-notes/release-notes-cli.md
 - name: Create and connect
   items:
+  - name: Connection endpoints
+    href: connectivity/concepts-connection-endpoints.md
   - name: Connection types
     href: connectivity/concepts-connect-overview.md
   - name: How-to Guides
