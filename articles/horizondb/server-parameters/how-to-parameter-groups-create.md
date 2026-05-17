@@ -53,7 +53,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Search for the names of the parameters whose default values you want to override, and change their defaults. Once finished with the list of parameters whose defaults you want to change, select **Create**.
 
-    :::image type="content" source="./media/how-to-create-parameter-groups/change-maxconnections-parameter.png" alt-text="Screenshot that shows the Create a parameter group page and the max_connections parameter default value changed." lightbox="./media/how-to-create-parameter-groups/change-maxconnections-parameter.png":::
+    :::image type="content" source="./media/how-to-create-parameter-groups/change-max-connections-parameter.png" alt-text="Screenshot that shows the Create a parameter group page and the max_connections parameter default value changed." lightbox="./media/how-to-create-parameter-groups/change-max-connections-parameter.png":::
 
 1. A new deployment is initialized to create the parameter group.
 
