@@ -19,7 +19,61 @@ When creating a parameter group, at least one parameter must be provided. The un
 
 ### [Portal](#tab/portal-list)
 
-[!INCLUDE [no-portal-support](../includes/no-portal-support.md)]
+Using the [Azure portal](https://portal.azure.com):
+
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+
+1. In the command bar, select **Create**.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/browse-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page." lightbox="./media/how-to-create-parameter-groups/browse-parameter-groups.png":::
+
+1. In the **Create a parameter group** page, select the subscription and resource group in which you want to create the parameter group.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/select-subscription-resource-group.png" alt-text="Screenshot that shows the Create a parameter group page and a subscription and resource group selected." lightbox="./media/how-to-create-parameter-groups/select-subscription-resource-group.png":::
+
+1. Provide a name which is unique among all the parameter groups that already exist in that resource group of that subscription. Preferably, embed some form of encoded description in the name so that you can later identify the potential target clusters of that configuration.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/parameter-group-name.png" alt-text="Screenshot that shows the Create a parameter group page and a parameter group name provided." lightbox="./media/how-to-create-parameter-groups/parameter-group-name.png":::
+
+1. Select a location in which you want to create the parameter group. Notice that you can only connect parameter groups created in a location to clusters that also exist in that same location.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/location.png" alt-text="Screenshot that shows the Create a parameter group page and a location selected." lightbox="./media/how-to-create-parameter-groups/location.png":::
+
+1. Although not required, it's recommended to provide a description explaining in more detail what's the purpose of the parameter group configuration you're creating, or what are the ideal target clusters for which it's conceived.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/description.png" alt-text="Screenshot that shows the Create a parameter group page and a description provided." lightbox="./media/how-to-create-parameter-groups/description.png":::
+
+1. Finally, select the version of PostgreSQL for which the parameter group is supported. Notice that parameter groups created for a given version of PostgreSQL cannot be applied to clusters of a different version of PostgreSQL.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/postgresql-version.png" alt-text="Screenshot that shows the Create a parameter group page and a PostgreSQL version selected." lightbox="./media/how-to-create-parameter-groups/postgresql-version.png":::
+
+1. Select **Next** so that you can configure the values of the modifiable parameters whose defaults you want to change in this parameter group.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/configure-parameters.png" alt-text="Screenshot that shows the Create a parameter group page and the first page of parameters available in the default parameter group selected." lightbox="./media/how-to-create-parameter-groups/configure-parameters.png":::
+
+1. Search for the names of the parameters whose default values you want to override, and change their defaults. Once finished with the list of parameters whose defaults you want to change, select **Create**.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/change-maxconnections-parameter.png" alt-text="Screenshot that shows the Create a parameter group page and the max_connections parameter default value changed." lightbox="./media/how-to-create-parameter-groups/change-maxconnections-parameter.png":::
+
+1. A new deployment is initialized to create the parameter group.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/initializing-deployment.png" alt-text="Screenshot that shows the Create a parameter group page and the initializing deployment notification." lightbox="./media/how-to-create-parameter-groups/initializing-deployment.png":::
+
+1. Wait until the deployment completes.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-progress.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-progress.png":::
+
+1. Wait until the deployment completes.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-progress.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-progress.png":::
+
+1. Select **Go to resource** to visit the newly created parameter group.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-completed.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-completed.png":::
+
+1. You can now inspect all details associated to the newly created parameter group.
+
+    :::image type="content" source="./media/how-to-create-parameter-groups/parameter-group-created.png" alt-text="Screenshot that shows the Overview page of the newly created parameter group." lightbox="./media/how-to-create-parameter-groups/parameter-group-created.png":::
 
 ### [CLI](#tab/cli-list)
 
@@ -34,7 +88,7 @@ az rest --method PUT \
     "location": "{location}",
     "properties": {
       "pgVersion": 17,
-      "description": "Production configuration for PG17",
+      "description": "{parameterGroupDescription}",
       "parameters": [
         {
           "name": "max_connections",
@@ -50,6 +104,7 @@ Replace the placeholders:
 - `{resourceGroupName}` with your resource group name.
 - `{parameterGroupName}` with the desired parameter group name.
 - `{location}` with the target location.
+- `{parameterGroupDescription}` with the verbose description of the purpose for which this parameter group is created.
 
 ---
 
