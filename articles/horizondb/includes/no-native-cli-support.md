@@ -9,4 +9,4 @@ ms.topic: include
 ---
 
 > [!IMPORTANT]  
-> This feature isn't supported yet from Azure CLI via a specific module for HorizonDB.
+> This feature isn't supported yet from Azure CLI via a specific module or extension for HorizonDB.

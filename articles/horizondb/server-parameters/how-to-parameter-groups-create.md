@@ -63,13 +63,9 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-create-parameter-groups/deployment-progress.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-progress.png":::
 
-1. Wait until the deployment completes.
+1. When the deployment completes, select **Go to resource** to visit the newly created parameter group.
 
-    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-progress.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-progress.png":::
-
-1. Select **Go to resource** to visit the newly created parameter group.
-
-    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-completed.png" alt-text="Screenshot that shows the Deployment is in progress page." lightbox="./media/how-to-create-parameter-groups/deployment-completed.png":::
+    :::image type="content" source="./media/how-to-create-parameter-groups/deployment-completed.png" alt-text="Screenshot that shows the Deployment is completed page." lightbox="./media/how-to-create-parameter-groups/deployment-completed.png":::
 
 1. You can now inspect all details associated to the newly created parameter group.
 
