@@ -102,9 +102,7 @@ Replace the placeholders:
 - `{location}` with the target location.
 - `{parameterGroupDescription}` with the verbose description of the purpose for which this parameter group is created.
 
----
-
-## Possible errors
+#### Possible errors
 
 | Error code | Description |
 | --- | --- |
@@ -115,6 +113,8 @@ Replace the placeholders:
 | `ParameterIsReadOnly` | When one or more parameters passed as input are read-only parameters. |
 | `ParameterValueInvalid` | When the value assigned to one or more parameters passed as input isn't valid according to the data type and allowed values of that parameter. |
 | `ParameterGroupParametersRequired` | When not even one parameter is passed as input. |
+
+---
 
 ## Related content
 

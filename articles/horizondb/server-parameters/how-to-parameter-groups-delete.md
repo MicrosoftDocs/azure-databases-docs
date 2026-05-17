@@ -64,13 +64,13 @@ Replace the placeholders:
 - `{resourceGroupName}` with your resource group name.
 - `{parameterGroupName}` with the desired parameter group name.
 
----
-
-## Possible errors
+#### Possible errors
 
 | Error code | Description |
 | --- | --- |
 | `ParameterGroupHasActiveMappings` | When parameter group is connected to one or more clusters. |
+
+---
 
 ## Related content
 
