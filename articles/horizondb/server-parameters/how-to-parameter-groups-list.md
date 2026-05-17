@@ -29,7 +29,7 @@ You can list one specific parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
 ```
 
 The output that command returns would look like the following:
@@ -70,9 +70,9 @@ The output that command returns would look like the following:
         "createTime": "2026-04-26T17:17:37.1068799"
     },
     "location": "{location}",
-    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName}",
+    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}",
     "name": "{parameterGroupName}",
-    "type": "Microsoft.HorizonDb/parameterGroups"
+    "type": "Microsoft.HorizonDB/parameterGroups"
 }
 ```
 
@@ -130,9 +130,9 @@ The output either of the two previous commands return would look like the follow
                 "createTime": "2026-03-22T16:18:20.0000000"
             },
             "location": "{location-1}",
-            "id": "/subscriptions/{subscriptionId-1}/resourceGroups/{resourceGroupName-1}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName-1}",
+            "id": "/subscriptions/{subscriptionId-1}/resourceGroups/{resourceGroupName-1}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName-1}",
             "name": "{parameterGroupName-1}",
-            "type": "Microsoft.HorizonDb/parameterGroups"
+            "type": "Microsoft.HorizonDB/parameterGroups"
         },
         .
         .
@@ -172,9 +172,9 @@ The output either of the two previous commands return would look like the follow
                 "createTime": "2026-03-22T16:18:20.0000000"
             },
             "location": "{location-N}",
-            "id": "/subscriptions/{subscriptionId-N}/resourceGroups/{resourceGroupName-N}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName-N}",
+            "id": "/subscriptions/{subscriptionId-N}/resourceGroups/{resourceGroupName-N}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName-N}",
             "name": "{parameterGroupName-N}",
-            "type": "Microsoft.HorizonDb/parameterGroups"
+            "type": "Microsoft.HorizonDB/parameterGroups"
         }
     ]
 }

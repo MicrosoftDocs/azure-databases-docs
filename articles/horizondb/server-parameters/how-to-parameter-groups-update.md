@@ -35,7 +35,7 @@ You can update a parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method PATCH \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview" \
   --body '{
     "location": "{location}",
     "properties": {

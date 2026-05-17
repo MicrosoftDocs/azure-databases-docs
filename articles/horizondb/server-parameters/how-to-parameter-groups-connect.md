@@ -29,12 +29,12 @@ You can connect one specific parameter group to a cluster using the `az rest` co
 
 ```azurecli-interactive
 az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/clusters/{clusterName}?api-version=2026-01-20-preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-preview" \
   --body '{
     "properties": {
         "createMode": "Update",
             "parameterGroup": {
-            "Id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName}"
+            "Id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}"
         }
     }
   }'

@@ -29,7 +29,7 @@ You can list clusters connected to parameter groups using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups/{parameterGroupName}/connections?api-version=2026-01-20-preview"
+  --uri "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}/connections?api-version=2026-01-20-preview"
 ```
 
 Replace the placeholders:
@@ -43,18 +43,18 @@ The output that command returns would look like the following:
 {
     "connections": [
         {
-            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName-1}",
+            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName-1}",
             "name": "{clusterName-1}",
-            "type": "Microsoft.HorizonDb/clusters",
+            "type": "Microsoft.HorizonDB/clusters",
             "status": "{syncStatus}"
         },
     .
     .
     .
         {
-            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/clusters/{clusterName-N}",
+            "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName-N}",
             "name": "{clusterName-N}",
-            "type": "Microsoft.HorizonDb/clusters",
+            "type": "Microsoft.HorizonDB/clusters",
             "status": "{syncStatus}"
         },
     ]

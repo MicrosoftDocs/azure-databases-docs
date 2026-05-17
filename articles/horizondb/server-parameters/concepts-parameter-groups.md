@@ -12,7 +12,7 @@ ms.topic: concept-article
 
 # Parameter groups in Azure HorizonDB
 
-Parameter groups in HorizonDb act as containers for cluster configuration values that can be applied to one or more database clusters. Instead of managing configuration settings for each cluster individually, you can define them in a parameter group and connect that group with multiple clusters to ensure consistency across your environment.
+Parameter groups in HorizonDB act as containers for cluster configuration values that can be applied to one or more database clusters. Instead of managing configuration settings for each cluster individually, you can define them in a parameter group and connect that group with multiple clusters to ensure consistency across your environment.
 
 Parameter groups are first-class resources in Azure and are surfaced within the specific resource group and subscription defined in their resource identifier.
 
@@ -21,7 +21,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 - **Engine versioning**: Parameter groups are specific to a PostgreSQL engine version (e.g., 17).
 - **Default parameter inheritance**: When creating a group, you only need to specify a subset of parameters. Any parameters not explicitly provided are automatically seeded and merged from the system default parameter group for the target engine version.
 - **Default Resource Identifier**: Every HorizonDB cluster is assigned a system-managed **Default Parameter Group** upon creation if no custom group is specified. The resource identifier for this group follows the convention:
-  `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/default_pg{pgVersion}`
+  `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/default_pg{pgVersion}`
   *(e.g., `default_pg17` for PostgreSQL version 17)*
 - **Versioning**: Each update to a parameter group creates a new, immutable version of the data. This allows you to track configuration history and audit changes over time. **Currently, parameter groups don't support updates.**
 - **Immediate vs. deferred application**: Some parameters (static) require a server restart to take effect, while others (dynamic) can be applied immediately.
