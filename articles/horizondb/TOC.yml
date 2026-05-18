@@ -53,10 +53,7 @@
     - name: Scaling compute resources
       href: scale/concepts-scaling-resources.md
     - name: configure compute 
-      href: configure-maintain/how-to-scale-compute.md
-
-
-          
+      href: configure-maintain/how-to-scale-compute.md     
     - name: Readable HA replicas
       href: read-replica/concepts-read-replicas.md
     - name: Parameters
@@ -196,8 +193,6 @@
           href: read-replica/how-to-create-read-replica.md
         - name: Remove a read replica
           href: read-replica/how-to-delete-read-replica.md
-        # - name: Create Parameter Groups  # TODO: No file exists yet
-        # - name: Drop Parameter Groups  # TODO: No file exists yet
         - name: Allow extensions
           href: extensions/how-to-allow-extensions.md
         - name: Load libraries
@@ -210,16 +205,16 @@
           href: extensions/how-to-update-extensions.md
     - name: Performance and Monitoring
       items:
-    - name: Query Monitoring
-      items:
-        - name: Query Store on primary
-          href: monitor/concepts-query-store.md
-        - name: Query Store usage scenarios
-          href: monitor/concepts-query-store-scenarios.md
-        - name: Query Store best practices
-          href: monitor/concepts-query-store-best-practices.md
-    - name: Metrics
-      href: monitor/concepts-monitoring.md
+        - name: Query Monitoring
+          items:
+             - name: Query Store on primary
+               href: monitor/concepts-query-store.md
+             - name: Query Store usage scenarios
+               href: monitor/concepts-query-store-scenarios.md
+             - name: Query Store best practices
+               href: monitor/concepts-query-store-best-practices.md
+        - name: Metrics
+          href: monitor/concepts-monitoring.md
     - name: How-to Guides
       items:
         - name: Troubleshoot high CPU utilization
