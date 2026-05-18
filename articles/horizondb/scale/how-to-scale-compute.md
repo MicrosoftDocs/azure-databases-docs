@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Use the **vCores** slider to adjust the number of cores as needed. The underlying memory is automatically adjusted. 
 
-    :::image type="content" source="./media/how-to-scale-server/scaling.png" alt-text="Screenshot showing the scaling page." lightbox="./media/how-to-restore-server/scaling.png":::
+    :::image type="content" source="./media/how-to-scale-server/scaling.png" alt-text="Screenshot showing the scaling page." lightbox="./media/how-to-scale-server/scaling.png":::
 
 4. Once you choose your desired configuration, select **Save**.
 
@@ -38,7 +38,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 5. A notification shows that a compute update is in progress.
 
- :::image type="content" source="./media/how-to-scale-server/update-cores.png" alt-text="Screenshot showing the configuration page." lightbox="./media/how-to-restore-server/update-cores.png":::
+ :::image type="content" source="./media/how-to-scale-server/update-cores.png" alt-text="Screenshot showing the configuration page." lightbox="./media/how-to-scale-server/update-cores.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
