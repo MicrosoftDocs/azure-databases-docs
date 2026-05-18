@@ -10,6 +10,10 @@
       items:
         - name: Create a HorizonDB cluster
           href: configure-maintain/quickstart-create-server.md
+- name: Release Notes
+  items:
+    - name: Release notes
+      href: release-notes/release-notes.md
 - name: Create and connect
   items:
   - name: Connection types
