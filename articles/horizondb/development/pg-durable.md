@@ -1,6 +1,6 @@
 ---
 title: Durable Execution with pg_durable in Azure HorizonDB
-description: Use the pg_durable extension to define and run fault-tolerant, long-running workflows directly inside Azure HorizonDB — including retries, scheduling, signals, and HTTP calls — without external orchestrators.
+description: Use the pg_durable extension to define and run fault-tolerant, long-running workflows directly inside Azure HorizonDB, with retries, scheduling, signals, and HTTP calls, without external orchestrators.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Durable execution with pg_durable in Azure HorizonDB (Preview)
 
-`pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows - embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows - and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
+`pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows - embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows - and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](/azure/azure-functions/durable-functions/durable-functions-overview), without leaving PostgreSQL.
 
 `pg_durable` is also the execution layer underneath [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
@@ -47,7 +47,7 @@ Use `pg_durable` when you have work that:
 - Needs to run on a schedule (every hour, every weekday at 9 AM).
 - Needs to wait for an external event (an approval, a webhook, a signal from another system).
 - Coordinates multiple steps with branching, joining, or racing.
-- Is currently implemented as an external orchestrator + a Postgres database, where most of the work is the database part.
+- Is currently implemented as an external orchestrator + a PostgreSQL database, where most of the work is the database part.
 
 If your workload is a single short transactional statement, you don't need `pg_durable`. Use a regular `INSERT` / `UPDATE`.
 
@@ -95,16 +95,14 @@ SELECT df.result('a1b2c3d4');
 
 Even a one-step function is durable: if the database restarts after `df.start()` and before the worker picks it up, the function still runs.
 
-<a id="programming-model"></a>
-
-## Program model
+## Programming model
 
 A durable function is a graph built from steps, operators, and built-in functions. Plain SQL strings are auto-wrapped - you don't need to call `df.sql()` explicitly.
 
 ### Operators
 
 | Operator | Meaning | Example |
-|---|---|---|
+| --- | --- | --- |
 | `~>` | Sequence - run left, then right | `'SELECT 1' ~> 'SELECT 2'` |
 | `&` | Join - run in parallel, wait for all | `'SELECT 1' & 'SELECT 2'` |
 | `|` | Race - run in parallel, first wins | `fast_query | df.sleep(30)` |
@@ -115,7 +113,7 @@ A durable function is a graph built from steps, operators, and built-in function
 ### Useful built-ins
 
 | Function | Purpose |
-|---|---|
+| --- | --- |
 | `df.sleep(seconds)` | Pause for N seconds. Durable across restarts. |
 | `df.wait_for_schedule(cron)` | Wait until the next time a cron expression matches. |
 | `df.wait_for_signal(name, timeout)` | Block until an external `df.signal()` arrives. |
@@ -262,12 +260,12 @@ For details on switching to a group role before submitting, see the user guide.
 ## Compared to external orchestrators
 
 | Concepts | External orchestrator | `pg_durable` |
-|---|---|---|
+| --- | --- | --- |
 | Deployment | Separate service, separate identity, separate state store | One database |
 | State durability | Orchestrator's storage layer | Same backups, HA, and PITR as your data |
 | Identity | Workers run under a service identity | Functions execute as the submitting user |
 | Failure modes | Network between orchestrator and database | None - same process |
-| Best for | Cross-system orchestration that touches many services | Workloads where most of the work is in or near Postgres |
+| Best for | Cross-system orchestration that touches many services | Workloads where most of the work is in or near PostgreSQL |
 
 `pg_durable` isn't trying to replace external orchestrators for cross-system pipelines. It's the right choice when most of the work is database work - embeddings, transforms, AI calls, scheduled maintenance - and adding another service is more cost than benefit.
 
@@ -280,7 +278,7 @@ For details on switching to a group role before submitting, see the user guide.
 ## Related content
 
 - [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md)
-- [AI functions in the azure_ai extension (Preview)](../ai/ai-functions.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](../ai/ai-functions.md)
 - [Generate vector embeddings using the create_embeddings() AI function (Preview)](../ai/generate-vector-embeddings.md)
 - [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
 - [Duroxide on GitHub](https://github.com/microsoft/duroxide)

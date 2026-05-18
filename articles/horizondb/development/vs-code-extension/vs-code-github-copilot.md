@@ -23,7 +23,7 @@ The PostgreSQL extension for Visual Studio Code includes GitHub Copilot integrat
 The `@pgsql` participant works against any database the extension can connect to, including:
 
 - **Azure Database for PostgreSQL flexible server**, and
-- **Azure HorizonDB for PostgreSQL** clusters.
+- **Azure HorizonDB** clusters.
 
 When connected to a HorizonDB cluster, Copilot is aware of the HorizonDB-specific extensions installed on the database (such as `pgvector`, `pg_diskann`, `azure_ai`, and `age`) and can generate prompts and SQL that take advantage of them.
 
@@ -40,24 +40,25 @@ Before you begin, verify you have the proper tools and resources downloaded and 
 
 ## Install GitHub Copilot and GitHub Copilot Chat extensions
 
-1. If you don't already have the GitHub Copilot extension installed in Visual Studio Code:
-2. Select the **Extensions** icon in Visual Studio Code, search for **GitHub Copilot**, and select **Install**.
-3. The GitHub Copilot Chat extension is automatically installed along with GitHub Copilot.
+If you don't already have the GitHub Copilot extension installed in Visual Studio Code:
+
+1. Select the **Extensions** icon in Visual Studio Code, search for **GitHub Copilot**, and select **Install**.
+1. The GitHub Copilot Chat extension is automatically installed along with GitHub Copilot.
 
 ## Sign in to GitHub in Visual Studio Code
 
 1. Make sure you have a GitHub account and an active GitHub Copilot subscription:
-   - [Create a GitHub account](https://www.github.com/)
+   - [Create a GitHub account](https://github.com)
    - [Enable a GitHub Copilot subscription](https://github.com/settings/copilot)
-2. In Visual Studio Code, select the **Account** icon and choose **Sign in with GitHub** to use GitHub Copilot.
+1. In Visual Studio Code, select the **Account** icon and choose **Sign in with GitHub** to use GitHub Copilot.
 
 ## Get started with GitHub Copilot
 
 Follow the steps to begin using GitHub Copilot with the PostgreSQL Visual Studio Code extension.
 
-1. Right-click on a PostgreSQL database in the Object Explorer and select **Chat with this database**. This works for any connection — local PostgreSQL, Azure Database for PostgreSQL flexible server, or Azure HorizonDB.
-2. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
-3. When the Copilot chat interface opens, start asking questions by using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
+1. Right-click on a PostgreSQL database in the Object Explorer and select **Chat with this database**. This works for any connection - local PostgreSQL, Azure Database for PostgreSQL flexible server, or Azure HorizonDB.
+1. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
+1. When the Copilot chat interface opens, start asking questions by using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
 
 Try a prompt like:
 
@@ -67,21 +68,25 @@ Try a prompt like:
 
 Copilot responds with a detailed description of your schema's tables.
 
-### Connecting to the right HorizonDB endpoint
+<a id="connecting-to-the-right-horizondb-endpoint"></a>
+
+### Connect to the right HorizonDB endpoint
 
 Because an Azure HorizonDB cluster exposes two endpoints, the connection you start chatting on determines which endpoint Copilot's generated SQL will run against:
 
-- **Read/write endpoint** – Use this connection when you want Copilot to draft, modify, or execute statements that change data or schema, or that must read the latest committed state.
-- **Reader endpoint** – Use this connection when you want Copilot to draft and run **read-only** queries that benefit from load-balanced scale-out across HA replicas (for example, exploratory analytics or reporting prompts).
+- **Read/write endpoint** - Use this connection when you want Copilot to draft, modify, or execute statements that change data or schema, or that must read the latest committed state.
+- **Reader endpoint** - Use this connection when you want Copilot to draft and run **read-only** queries that benefit from load-balanced scale-out across HA replicas (for example, exploratory analytics or reporting prompts).
 
-If Copilot generates a write statement while you are connected to the reader endpoint, switch the active connection to the read/write endpoint before approving execution.
+If Copilot generates a write statement while you're connected to the reader endpoint, switch the active connection to the read/write endpoint before approving execution.
 
-## Using read and write capabilities
+<a id="using-read-and-write-capabilities"></a>
 
-The GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code enables seamless read and write capabilities. With this integration, you can interact with your databases more efficiently. By using AI-powered suggestions, you can perform tasks such as querying data, modifying schemas, and updating records directly from the editor. This feature simplifies complex operations, reduces manual effort, and enhances productivity while maintaining accuracy and context-awareness.
+## Use read and write capabilities
 
-> [!NOTE]
-> The GitHub Copilot Chat integration for PostgreSQL is a powerful tool that can make changes to your database. Use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first. On Azure HorizonDB, also ensure write operations target the **read/write endpoint** — the reader endpoint is read-only.
+The GitHub Copilot integration for the PostgreSQL extension in Visual Studio Code supports both read and write operations. You can query data, modify schemas, and update records directly from the editor with AI-powered suggestions that take the live connection context into account.
+
+> [!NOTE]  
+> The GitHub Copilot Chat integration for PostgreSQL can make changes to your database. Use this feature with caution, especially in staging and production environments. Always review the generated SQL code before executing it, and consider testing it in a safe environment first. On Azure HorizonDB, also ensure write operations target the **read/write endpoint** - the reader endpoint is read-only.
 
 Try a more advanced prompt:
 
@@ -103,13 +108,15 @@ Then Copilot asks for confirmation:
 @pgsql Yes, I confirm
 ```
 
-## Using context menu options
+<a id="using-context-menu-options"></a>
+
+## Use context menu options
 
 You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**. These work the same way against flexible server and HorizonDB connections; on HorizonDB, the explanations and rewrite suggestions also account for HorizonDB-specific indexes (such as `pg_diskann` vector indexes) when they're present.
 
 ## Additional ideas and prompt recipes
 
-There are many prompts and things you can do with GitHub Copilot for PostgreSQL — the limit is only your imagination. To help jumpstart some ideas, here are some concept prompts you can try or modify to match your database context and development environment.
+The following sections show concept prompts you can try or modify to match your database context and development environment.
 
 ### Query optimization
 
@@ -149,12 +156,12 @@ Generate a FastAPI project with my database using SQLAlchemy.
 
 ### AI workloads on Azure HorizonDB
 
-When you are connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities — `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by AI Model Management or your own Microsoft Foundry deployments.
+When you're connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities - `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by AI Model Management or your own Microsoft Foundry deployments.
 
 ```text
 @pgsql Create a products table with a description column and a vector(1536) embedding column. Then write a query that populates the embedding column for any rows where it's NULL using azure_openai.create_embeddings with the default-embedding managed model.
 
-@pgsql Build a pg_diskann index on the products.embedding column using vector_cosine_ops, then write a similarity search that finds the top 10 products with average_rating > 4.5 and price between 100 and 200 — using DiskANN Advanced Filtering so the WHERE clause is evaluated during the vector search.
+@pgsql Build a pg_diskann index on the products.embedding column using vector_cosine_ops, then write a similarity search that finds the top 10 products with average_rating > 4.5 and price between 100 and 200 - using DiskANN Advanced Filtering so the WHERE clause is evaluated during the vector search.
 
 @pgsql Use azure_ai.extract() to pull product and sentiment out of the review_text column of the product_reviews table, and azure_ai.is_true() to flag reviews that mention shipping issues.
 
@@ -188,6 +195,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code?](./vs-code-overview.md)
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](./vs-code-connect.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
