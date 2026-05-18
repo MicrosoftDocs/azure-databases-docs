@@ -1,8 +1,8 @@
 ---
 title: Enable Deletion Protection in Azure HorizonDB
 description: This article describes how to enable deletion protection in an Azure HorizonDB instance using Azure Resource Manager locks.
-author: avnishrastogimsft
-ms.author: avrastog
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -13,13 +13,13 @@ ms.topic: how-to
 
 # Protect with Resource Locks in Azure HorizonDB
 
-You can apply **management locks**-specifically **CanNotDelete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
+You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
 
 ## Lock Types
 
 | Lock Type | Description |
 | --- | --- |
-| **CanNotDelete** | Users can read and modify settings, but can't delete the server resource. |
+| **Delete** | Users can read and modify settings, but can't delete the server resource. |
 | **ReadOnly** | Users can only read; they can't update or delete the server. Similar to the *Reader* role. |
 
 ## Prerequisites
@@ -30,53 +30,27 @@ You can apply **management locks**-specifically **CanNotDelete** or **ReadOnly**
 
 - Locks can be applied at the **subscription**, **resource group**, or **server** level.
 - Child resources inherit locks from their parents; the **most restrictive lock** takes precedence.
-- Locks restrict ARM operations (Portal, CLI, API) but do **not** block SQL data plane actions (like editing tables or schemas).
+- Locks restrict ARM operations (Portal, CLI, API) but do **not** block data plane actions (like editing tables or schemas).
 
-## Apply Locks Using Azure CLI or ARM
+## Apply Locks Using Portal
 
-### Azure CLI
+### [Portal](#tab/lock-compute)
 
-<a id="to-apply-a-cannotdelete-lock-on-an-existing-server"></a>
+Using the [Azure portal](https://portal.azure.com/):
 
-##### Apply a CanNotDelete lock on an existing server
+1. Select your Azure HorizonDB.
 
-```azurecli-interactive
-az lock create \
-  --name PreventDelete \
-  --lock-type CanNotDelete \
-  --resource-group MyResourceGroup \
-  --resource-type Microsoft.DBforPostgreSQL/flexibleServers \
-  --resource-name MyFlexibleServer
-```
+2. In the settings menu, select **Locks** blade.
 
-<a id="to-remove-the-lock"></a>
+3. Click the **Addd** button to provide your **Lock name**  and Choose **Delete** lock type.
 
-##### Remove the lock
+    :::image type="content" source="./media/how-to-enable-delete-protection/delete-lock.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/delete-lock.png":::
 
-```azurecli-interactive
-az lock delete \
-  --name PreventDelete \
-  --resource-group MyResourceGroup \
-  --resource-type Microsoft.DBforPostgreSQL/flexibleServers \
-  --resource-name MyFlexibleServer
-```
+4. Click **Ok**.You should see a confirmation message indicating that the lock was created successfully
 
-### ARM Template
+    :::image type="content" source="./media/how-to-enable-delete-protection/success-lock.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/success-lock.png":::
 
-When applying a lock to an Azure PostgreSQL DB resource, use the [Microsoft.Authorization/locks](/azure/templates/microsoft.authorization/2017-04-01/locks) Azure Resource Manager (ARM) resource.
 
-```json
-{
-  "type": "Microsoft.Authorization/locks",
-  "apiVersion": "2016-09-01",
-  "name": "serverLock",
-  "scope": "[resourceId('Microsoft.DBforPostgreSQL/flexibleServers', parameters('serverName'))]",
-  "properties": {
-    "level": "CanNotDelete",
-    "notes": "Prevent accidental deletion of PostgreSQL server."
-  }
-}
-```
 
 ## Permissions
 
@@ -89,9 +63,6 @@ Creating or deleting locks requires permissions for `Microsoft.Authorization/loc
 - Ensure **network resources (VNETs/subnets)** are unlocked before provisioning, then reapply locks post-deployment to avoid interference.
 - While locks prevent server deletion, they do **not** restrict destructive SQL operations. Enforce SQL-level policies as needed.
 
-## Conclusion
-
-Using ARM management locks helps protect your PostgreSQL flexible server instance from accidental deletions without impeding daily operations. Consider adding this to your automation scripts and deployment policies for safer production workflows.
 
 ---
 
