@@ -91,3 +91,4 @@ Where `syncStatus` can be any of the following values:
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
 - [List parameter groups](how-to-parameter-groups-list.md)
 - [Connect clusters to parameter groups](how-to-parameter-groups-connect.md)
+- [Identity parameter group connected to a cluster](how-to-parameter-groups-identify-connected-cluster.md)

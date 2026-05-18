@@ -124,3 +124,4 @@ Replace the placeholders:
 - [List parameter groups](how-to-parameter-groups-list.md)
 - [Connect clusters to parameter groups](how-to-parameter-groups-connect.md)
 - [List clusters connected to parameter groups](how-to-parameter-groups-list-connected.md)
+- [Identity parameter group connected to a cluster](how-to-parameter-groups-identify-connected-cluster.md)

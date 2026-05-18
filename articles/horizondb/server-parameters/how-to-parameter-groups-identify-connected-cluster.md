@@ -76,5 +76,6 @@ Replace the placeholders:
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
+- [List parameter groups](how-to-parameter-groups-list.md)
 - [Connect clusters to parameter groups](how-to-parameter-groups-connect.md)
 - [List clusters connected to parameter groups](how-to-parameter-groups-list-connected.md)

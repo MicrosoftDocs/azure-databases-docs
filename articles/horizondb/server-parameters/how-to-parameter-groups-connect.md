@@ -85,5 +85,6 @@ Replace the placeholders:
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
-- [Connect clusters to parameter groups](how-to-parameter-groups-connect.md)
+- [List parameter groups](how-to-parameter-groups-list.md)
 - [List clusters connected to parameter groups](how-to-parameter-groups-list-connected.md)
+- [Identity parameter group connected to a cluster](how-to-parameter-groups-identify-connected-cluster.md)
