@@ -40,8 +40,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
  :::image type="content" source="./media/how-to-scale-server/update-cores.png" alt-text="Screenshot showing the configuration page." lightbox="./media/how-to-scale-server/update-cores.png":::
 
-1. When the scale process completes, a notification shows that the deployment succeeded.
+6. When the scale process completes, a notification shows that the deployment succeeded.
 
+ :::image type="content" source="./media/how-to-scale-server/success-cores.png" alt-text="Screenshot showing the successful update." lightbox="./media/how-to-scale-server/success-cores.png":::
 
 > [!NOTE]  
 > The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
