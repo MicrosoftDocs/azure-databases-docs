@@ -2,14 +2,13 @@
 title: Reset Administrator Password in Azure HorizonDB
 description: This article describes how to reset the password of the administrator in Azure HorizonDB.
 author: avnishrastogimsft
-ms.author: avrastog
+ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 06/02/2026
-ms.service: azure-database-postgresql
+ms.date: 05/15/2026
+ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
+ms.custom: horz-security
 ---
 
 # Reset administrator password in Azure HorizonDB
@@ -18,57 +17,39 @@ This article provides step-by-step instructions to reset the administrator passw
 
 ## Steps to reset administrator password
 
-### [Portal](#tab/portal-reset-admin-password)
+<!-- ### [Portal](#tab/portal-reset-admin-password) -->
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure HorizonDB instance.
+1. Select your Azure HorizonDB cluster.
 
 1. In the resource menu, select **Overview**.
 
-   :::image type="content" source="media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure HorizonDB instance." lightbox="media/security-reset-admin-password/overview.png":::
+    :::image type="content" source="./media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure HorizonDB cluster." lightbox="./media/security-reset-admin-password/overview.png":::
 
 1. The status of the server must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
-   :::image type="content" source="media/security-reset-admin-password/server-status.png" alt-text="Screenshot showing the status of the server set to Ready." lightbox="media/security-reset-admin-password/server-status.png":::
 
-1. In the resource menu, under the **Security** section, select **Authentication**.
+1. **Authentication method** must include PostgreSQL aithentication. In other words **Authentication method** must be set to either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. To check the **Authentication method** go to the resource menu and under the **Security** section select **Authentication**.
 
-   :::image type="content" source="media/security-reset-admin-password/authentication.png" alt-text="Screenshot showing the Authentication page of an Azure HorizonDB instance." lightbox="media/security-reset-admin-password/authentication.png":::
 
-1. **Authentication method** must be either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. When set to **Microsoft Entra authentication only**, the **Reset password** button is disabled.
+1. Select the **Reset password** button and In the **Reset admin password** panel enter the new password in the **Password** text box. Confirm it in the **Confirm password** text box.
 
-   :::image type="content" source="media/security-reset-admin-password/microsoft-entra-authentication-only.png" alt-text="Screenshot showing that server's authentication is configured with Microsoft Entra authentication only." lightbox="media/security-reset-admin-password/microsoft-entra-authentication-only.png":::
+    :::image type="content" source="./media/security-reset-admin-password/reset-password.png" alt-text="Screenshot showing how to reset password of the server administrator." lightbox="./media/security-reset-admin-password/reset-password.png":::
 
-1. If **Reset password** button is disabled, you can hover the mouse over it, and a tooltip describes the reason why the button is disabled.
-
-   :::image type="content" source="media/security-reset-admin-password/reset-password-disabled.png" alt-text="Screenshot showing Reset password button disabled." lightbox="media/security-reset-admin-password/reset-password-disabled.png":::
-
-1. Select the **Reset password** button.
-
-   :::image type="content" source="media/security-reset-admin-password/reset-password.png" alt-text="Screenshot showing how to reset password of the server administrator." lightbox="media/security-reset-admin-password/reset-password.png":::
-
-1. In the **Reset admin password** panel, enter the new password in the **Password** text box.
-
-   :::image type="content" source="media/security-reset-admin-password/enter-password.png" alt-text="Screenshot showing how to enter new password for the server administrator." lightbox="media/security-reset-admin-password/enter-password.png":::
-
-1. In the **Reset admin password** panel, enter the new password in the **Confirm password** text box.
-
-   :::image type="content" source="media/security-reset-admin-password/confirm-password.png" alt-text="Screenshot showing how to confirm new password for the server administrator." lightbox="media/security-reset-admin-password/confirm-password.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-reset-admin-password/save-password.png" alt-text="Screenshot showing how to save the new password provided for the server administrator." lightbox="media/security-reset-admin-password/save-password.png":::
 
 1. A notification informs you that the password of the server administrator is being reset.
 
-   :::image type="content" source="media/security-reset-admin-password/notification-resetting-password.png" alt-text="Screenshot showing a server whose administrator's password is being reset." lightbox="media/security-reset-admin-password/notification-resetting-password.png":::
+    :::image type="content" source="./media/security-reset-admin-password/notification-resetting-password.png" alt-text="Screenshot showing a server whose administrator's password is being reset." lightbox="./media/security-reset-admin-password/notification-resetting-password.png":::
 
 1. When the process completes, a notification informs you that the password was successfully reset.
 
-   :::image type="content" source="media/security-reset-admin-password/notification-reset-password.png" alt-text="Screenshot showing a server whose administrator's password reset completed successfully." lightbox="media/security-reset-admin-password/notification-reset-password.png":::
+    :::image type="content" source="./media/security-reset-admin-password/notification-reset-password.png" alt-text="Screenshot showing a server whose administrator's password reset completed successfully." lightbox="./media/security-reset-admin-password/notification-reset-password.png":::
 
-### [CLI](#tab/cli-reset-admin-password)
+<!-- ### [CLI](#tab/cli-reset-admin-password)
 
 You can reset the password of as server via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
 
@@ -95,14 +76,15 @@ If you attempt to reset the administrator password of a server which isn't in `R
 
 ```output
 () Server <server> is busy with other operations. Please try later
-Code:
+Code: 
 Message: Server <server> is busy with other operations. Please try later
 ```
 
 ---
+-->
 
-> [!NOTE]  
-> Resetting the password of the server administrator in [read replicas](../read-replica/concepts-read-replicas.md) isn't supported. You can reset the password of the server administrator in the primary server. That password change operation, which is recorded in the Write-Ahead Log of the primary server, is sent asynchronously to all read replicas. When a read replica receives and applies that change locally, any attempt to connect to those replicas with the server administrator user name, must be made using the new password.
+> [!NOTE]
+> Resetting the password of the server administrator in [replicas](../read-replica/concepts-read-replicas.md) isn't supported. You can reset the password of the server administrator in the primary instance. That password change operation, which is recorded in the Write-Ahead Log of the primary instance, is sent asynchronously to all replicas. When a replica receives and applies that change locally, any attempt to connect to those replicas with the server administrator user name, must be made using the new password.
 
 ## Related content
 
