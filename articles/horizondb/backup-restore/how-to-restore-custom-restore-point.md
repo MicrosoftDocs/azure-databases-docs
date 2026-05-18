@@ -14,8 +14,6 @@ ms.topic: concept-article
 # Restore in Azure HorizonDB
 This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
 
-## Point-in-time recovery 
-
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB services restores a database to any point in time within the configured retention period using the following process:
 
 1. Restores the most recent snapshot prior to the selected restore time.
@@ -24,7 +22,6 @@ Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same
 For example, if the latest snapshot is at 6 PM and the target restore time is 9 PM, the service restores the 6 PM snapshot and applies transaction logs generated between 6 PM and 9 PM.
 
 Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
-
 
 ## Restore to custom restore point in Azure HorizonDB
 
@@ -50,7 +47,7 @@ Using the [Azure portal](https://portal.azure.com/):
 > [!NOTE]
 >  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past. If you choose current time restore will fail.
 
-4. If you want to change the type of compute assigned to the new server, or if you want to deploy it with high availablity or replicas, select **Configure server** and adjust the settings as needed.
+4. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server’s settings, you can skip this step.
 
      :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
     
@@ -59,7 +56,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
       :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
 
-6.  A new deployment is launched to create your new Azure Database for PostgreSQL flexible server and restore the most recent data available on the source server at the time of restore:
+6. A new deployment is initiated to create a new Azure Database for PostgreSQL flexible server and restore it using the most recent data available on the source server at the time of the restore operation.
 
       :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB ." lightbox="./media/how-to-restore-server/restore-point-deployment-progress.png":::
 
