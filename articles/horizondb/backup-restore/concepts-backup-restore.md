@@ -15,15 +15,15 @@ ms.custom:
 # Backup and restore in Azure HorizonDB
 This article explains the automated backup feature in Azure HorizonDB.
 
-Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, transaction logs are continuously backed up to Azure Storage when the write-ahead log (WAL) file is ready to be archived. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window.
-
- During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
 
 ## Backup overview
 
+Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, transaction logs are continuously backed up to Azure Storage when the write-ahead log (WAL) file is ready to be archived. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window.
+
 Storage and compute separation enables HorizonDB to offload backup and restore operations to the storage layer, eliminating resource consumption on compute replicas. As a result, backups do not impact the performance of either primary or secondary compute replicas.
 
-Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. 
+Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots.During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
+
 
 
 ## Backup retention
