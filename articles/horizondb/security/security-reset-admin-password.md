@@ -1,11 +1,11 @@
 ---
 title: Reset Administrator Password in Azure HorizonDB
 description: This article describes how to reset the password of the administrator in Azure HorizonDB.
-author: avnishrastogimsft
+author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-horizondb
+ms.service: azure-postgresql
 ms.subservice: security
 ms.topic: how-to
 ms.custom: horz-security
