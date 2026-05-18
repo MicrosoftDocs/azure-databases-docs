@@ -16,11 +16,11 @@ ms.custom:
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
-# Graph-augmented RAG patterns with Azure HorizonDB (Preview)
+# Graph-RAG patterns with Azure HorizonDB (Preview)
 
-Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-augmented RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
+Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 
-Azure HorizonDB lets you execute the full graph-augmented RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
+Azure HorizonDB lets you execute the full graph-RAG pipeline (vector search, semantic reranking, Cypher graph traversal, and result fusion) inside the database without moving data between systems.
 
 ## Why vector search alone isn't enough
 
