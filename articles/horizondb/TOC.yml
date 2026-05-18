@@ -47,7 +47,7 @@
         - name: Backups
           href: backup-restore/concepts-backup-restore.md
         - name: Restore
-          href: backup-restore/how-to-restore-customer-restore-point.md
+          href: backup-restore/how-to-restore-custom-restore-point.md
 - name: Configure and maintain
   items:
     - name: Scheduled maintenance
