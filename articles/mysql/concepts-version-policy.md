@@ -103,7 +103,7 @@ A: Azure Database for MySQL enables you to carry out in-place major version upgr
 
 __Q: Are there any expected downtime or performance impacts during a major version upgrade?__
 
-A: Yes, there's some downtime during the major version upgrade process. The specific duration varies depending on factors such as the size and complexity of the database. We recommend conducting a test upgrade in a nonproduction environment to assess the expected downtime and evaluate potential performance. To minimize downtime for your applications during the upgrade, you can explore the [recommended major version upgrade procedure across major versions using Read replica or Point-in-time restore (PITR)](flexible-server/how-to-upgrade.md#recommended-major-version-upgrade-procedure-across-major-versions-using-read-replica-or-point-in-time-restore-pitr).
+A: Yes, there's some downtime during the major version upgrade process. The specific duration varies depending on factors such as the size and complexity of the database. We recommend conducting a test upgrade in a nonproduction environment to assess the expected downtime and evaluate potential performance. To minimize downtime for your applications during the upgrade, you can explore the [recommended major version upgrade procedure across major versions](flexible-server/how-to-upgrade.md#recommended-major-version-upgrade-procedure-across-major-versions).
 
 __Q: Can I roll back to a previous major version after upgrading?__
 

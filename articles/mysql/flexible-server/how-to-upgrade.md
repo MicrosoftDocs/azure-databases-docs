@@ -171,7 +171,7 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. Go to your primary server and perform a major version upgrade.
 
-## Recommended major version upgrade procedure across major versions using Read replica or Point-in-time restore (PITR)
+## Recommended major version upgrade procedure across major versions
 
 To perform a major version upgrade of an Azure Database for MySQL Flexible Server with minimal downtime using read replica servers or PITR, perform the following steps.
 
