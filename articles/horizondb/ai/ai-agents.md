@@ -45,7 +45,7 @@ Effective AI agents exhibit six core capabilities:
 | **Dynamic task decomposition and planning** | Break complex goals into subtasks, sequence them appropriately, and adapt plans when conditions change. |
 | **Contextual retrieval and grounded generation** | Retrieve relevant knowledge from databases, documents, and knowledge graphs to produce accurate, grounded responses. |
 | **Tool use and orchestration** | Select and invoke the right tools (databases, APIs, code execution, search engines) based on the task at hand. |
-| **Evaluation, feedback, and self-correction** | Assess the quality of outputs, detect errors or hallucinations, and iterate to improve results without human intervention. |
+| **Evaluation, feedback, and self-correction** | Assess the quality of outputs, detect errors, and iterate to improve results without human intervention. |
 | **Trust, safety, and reliability** | Operate within guardrails, handle sensitive data appropriately, and produce auditable, explainable outputs. |
 
 ## Why PostgreSQL and Azure HorizonDB for AI agents

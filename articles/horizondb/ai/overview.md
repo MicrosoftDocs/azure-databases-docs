@@ -40,7 +40,7 @@ A typical RAG flow has three steps:
 
 1. **Retrieve**: Search your data (using vector search, keyword search, or hybrid techniques) to find content relevant to the user's query.
 1. **Augment**: Include the retrieved content in the prompt sent to the LLM, providing factual context the model wouldn't otherwise have.
-1. **Generate**: The LLM produces a response grounded in the retrieved information, reducing hallucination and improving accuracy.
+1. **Generate**: The LLM produces a response grounded in the retrieved information, reducing inaccurate information and improving accuracy.
 
 RAG is the foundation of most production AI applications, from customer-facing Q&A systems to internal knowledge assistants. The quality of a RAG system depends heavily on how well your data is prepared, embedded, indexed, and searched.
 
