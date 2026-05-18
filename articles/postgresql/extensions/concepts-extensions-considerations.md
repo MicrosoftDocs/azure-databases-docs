@@ -252,7 +252,7 @@ Customers can't directly grant the necessary permissions. If you need to be able
 ### timescaleDB
 
 The `timescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales Postgres for time-series workloads.
-[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
+[Learn more about TimescaleDB](https://docs.timescale.com/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
 
 #### Install TimescaleDB
 
