@@ -25,14 +25,14 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. By using the filtering buttons and the search box, find the cluster for which you want to check what parameter group it's connected to, and select it.
 
-    :::image type="content" source="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to connect to one or more clusters." lightbox="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group that you want to connect to one or more clusters." lightbox="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png":::
 
 1. In the resource menu, under **Settings**, select **Parameters**. The name of the parameter group to which the cluster is connected appears to the side of the **Parameter group (create):** label. You can also scroll or search for parameter names to check how each parameter is configured in that parameter group.
 
     :::image type="content" source="./media/how-to-identify-connected-cluster/parameters.png" alt-text="Screenshot that shows the Parameters page of the selected cluster, from where you can check which parameter group the cluster is connected to." lightbox="./media/how-to-identify-connected-cluster/parameters.png":::
 
 > [!NOTE]
-> If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This is a known issue which will be fixed.
+> If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This issue is known and will be fixed.
 
 1. If you select the name, you're taken to the **Overview** page of the parameter group resource.
 
@@ -72,7 +72,7 @@ Replace the placeholders:
 - `{clusterName}` with the desired cluster name.
 
 > [!NOTE]
-> If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This is a known issue which will be fixed.
+> If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This issue is known and will be fixed.
 > In this case, you receive the following error: Not Found({"error":{"code":"ResourceNotFound","message":"The Resource 'Microsoft.HorizonDb/parameterGroups/default_pg17' under resource group '{resourceGroupName}' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"}})
 
 ---

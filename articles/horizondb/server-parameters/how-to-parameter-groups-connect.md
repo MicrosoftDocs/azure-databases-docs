@@ -23,9 +23,9 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
-1. By using the filtering buttons and the search box, find the parameter group which you want to check what clusters are connected to it, and select it.
+1. By using the filtering buttons and the search box, find the parameter group for which you want to check what clusters are connected to it, and select it.
 
-    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to connect to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group for which you want to connect to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png":::
 
 1. In the **Connected clusters** section, select the **Connect clusters** command bar button.
 
@@ -41,7 +41,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. A few seconds later, a notification indicates that the operation completed successfully.
 
-    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/notification-connected.png" alt-text="Screenshot that shows the notification that indicates the connection of the parameter group to the selected clusters completed successfuly." lightbox="./media/how-to-connect-clusters-parameter-groups/notification-connected.png":::
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/notification-connected.png" alt-text="Screenshot that shows the notification that indicates the connection of the parameter group to the selected clusters completed successfully." lightbox="./media/how-to-connect-clusters-parameter-groups/notification-connected.png":::
 
 
 ### [CLI](#tab/cli-list)
@@ -69,13 +69,13 @@ Replace the placeholders:
 - `{parameterGroupName}` with the desired parameter group name.
 
 > [!IMPORTANT]  
-> Avoid passing properties other than createMode and parameterGroup or the parameter group connection to the cluster might not be processed. This is a current limitation that will be removed in the future.
+> Avoid passing properties other than createMode and parameterGroup or the parameter group connection to the cluster might not be processed. This limitation will be removed in the future.
 
 #### Possible errors
 
 | Error code | Description |
 | --- | --- |
-| `ParameterGroupApplyFailed` | When the attempt to apply the parameter group to the cluster fails. |
+| `ParameterGroupApplyFailed` | Is raised when the attempt to apply the parameter group to the cluster fails. |
 
 ---
 

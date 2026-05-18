@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # List clusters connected to parameter groups
 
-Given a parameter group, you can list the clusters which are connected to it and current synchronization status for each of them.
+Given a parameter group, you can list the clusters that are connected to it and identify what's the current synchronization status for each of them.
 
 ## Steps to list clusters connected to parameter groups
 
@@ -23,13 +23,13 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
-1. By using the filtering buttons and the search box, find the parameter group which you want to check what clusters are connected to it, and select it.
+1. By using the filtering buttons and the search box, find the parameter group that you want to check what clusters are connected to it, and select it.
 
-    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to check what clusters are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page. Filter by the name of the parameter group that you want to check what clusters are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png":::
 
-1. In the **Connected clusters** section, find the list of clusters which are connected to the parameter group.
+1. In the **Connected clusters** section, find the list of clusters that are connected to the parameter group.
 
-    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png" alt-text="Screenshot that shows the Overview page of the selected parameter group with the clusters which are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png":::
+    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png" alt-text="Screenshot that shows the Overview page of the selected parameter group with the clusters that are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png":::
 
 ### [CLI](#tab/cli-list)
 
@@ -47,7 +47,7 @@ Replace the placeholders:
 - `{resourceGroupName}` with your resource group name.
 - `{parameterGroupName}` with the desired parameter group name.
 
-The output that command returns would look like the following:
+The output that command returns would look like this:
 
 ```json
 {

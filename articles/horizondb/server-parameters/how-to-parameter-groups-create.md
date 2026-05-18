@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Create parameter groups
 
-When creating a parameter group, at least one parameter must be provided. The underlying operation in the backend will merge your input with the system defaults for the specified `pgVersion`.
+When you create a parameter group, at least one parameter must be provided. The underlying operation in the backend merges your input with the system defaults for the specified `pgVersion`.
 
 ## Steps to create parameter groups
 
@@ -39,11 +39,11 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-create-parameter-groups/location.png" alt-text="Screenshot that shows the Create a parameter group page and a location selected." lightbox="./media/how-to-create-parameter-groups/location.png":::
 
-1. Although not required, it's recommended to provide a description explaining in more detail what's the purpose of the parameter group configuration you're creating, or what are the ideal target clusters for which it's conceived.
+1. Although not required, we recommend providing a description explaining in more detail what's the purpose of the parameter group configuration you're creating. It can also describe what are the ideal target clusters for which it was conceived.
 
     :::image type="content" source="./media/how-to-create-parameter-groups/description.png" alt-text="Screenshot that shows the Create a parameter group page and a description provided." lightbox="./media/how-to-create-parameter-groups/description.png":::
 
-1. Finally, select the version of PostgreSQL for which the parameter group is supported. Notice that parameter groups created for a given version of PostgreSQL cannot be applied to clusters of a different version of PostgreSQL.
+1. Finally, select the version of PostgreSQL for which the parameter group is supported. Notice that parameter groups created for a given version of PostgreSQL can't be applied to clusters of a different version of PostgreSQL.
 
     :::image type="content" source="./media/how-to-create-parameter-groups/postgresql-version.png" alt-text="Screenshot that shows the Create a parameter group page and a PostgreSQL version selected." lightbox="./media/how-to-create-parameter-groups/postgresql-version.png":::
 
@@ -107,7 +107,7 @@ Replace the placeholders:
 | Error code | Description |
 | --- | --- |
 | `ParameterGroupNameConflictsWithDefault` | When the name of the parameter group matches any of the ones reserved for default parameter groups. |
-| `ParameterGroupAlreadyExists` | When a parameter group with the same resource identifier already exist. |
+| `ParameterGroupAlreadyExists` | When a parameter group with the same resource identifier already exists. |
 | `ParameterGroupPgVersionRequired` | When `pgVersion` isn't passed as one of the properties in the input. |
 | `ParameterNotRecognized` | When one or more parameter names passed as input aren't recognized among the ones supported for the version of PostgreSQL for which the parameter group is defined. |
 | `ParameterIsReadOnly` | When one or more parameters passed as input are read-only parameters. |
