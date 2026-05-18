@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the Azure Storage extension in Azure Data
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 11/03/2025
+ms.date: 05/07/2026
 ms.service: azure-database-postgresql
 ms.subservice: performance
 ms.topic: reference
@@ -60,6 +60,24 @@ The name of the container passed through the `container_name` parameter of the `
 ### ERROR:  azure_storage: blob with the given name does not exist
 
 The name of the blob passed through the `path` parameter of the `blob_get` function doesn't exist in the referred container in the storage account.
+
+### ERROR:  azure_storage: credential encryption key is not configured
+
+Note that if you create the extension in multiple databases, you must initialize the value of `azure_storage.credential_encryption_key` at the database level, so all sensitive credentials kept in that database are encrypted using the same key.
+ 
+To set the value of `azure_storage.credential_encryption_key`, you must be member of the `azure_storage_admin` role. Then connect to the server, in the context of the database in which you created the extension. And, in that context, execute `ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong passphrase>';` to initialize the encryption key that's used to encrypt all Azure storage account credentials kept by the extension in the catalog of that database. After running this command, you must disconnect and reconnect to the database again, so that the override value takes effect, and you should also invoke the `azure_storage.account_encrypt_existing_credentials()` function so that the credentials of existing accounts which were never encrypted before with any other key, are encrypted with this key. To do so, execute `SELECT azure_storage.account_encrypt_existing_credentials();`.
+ 
+Although possible, we recommend against trying to use other statements like `ALTER ROLE` or `ALTER ROLE IN DATABASE` to set the value of `azure_storage.credential_encryption_key`.
+
+Notice that if you change the value of `azure_storage.credential_encryption_key`, you'll have to manually add again, using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) which was encrypted with the previous value. Currently the extension doesn't support automatic rollover of encryption key.
+
+### ERROR:  azure_storage: failed to encrypt storage credentials
+
+An attempt to encrypt the credentials used to access an storage account using the encryption key set via `azure_storage.credential_encryption_key` failed. Retry the operation. If it keeps failing, create an incident with our support services.
+
+### ERROR:  azure_storage: failed to decrypt storage credentials
+
+An attempt to decrypt the encrypted credentials used to access an storage account using the encryption key set via `azure_storage.credential_encryption_key` failed. Retry the operation. If it keeps failing, create an incident with our support services.
 
 ## Related content
 
