@@ -20,7 +20,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 
 - **Engine versioning**: Parameter groups are specific to a PostgreSQL engine version (for example, 17).
 - **Default parameter inheritance**: When creating a group, you only need to specify a subset of parameters. Any parameters not explicitly provided are automatically seeded and merged from the system default parameter group for the target engine version.
-- **Default Resource Identifier**: Every HorizonDB cluster is assigned a system-managed **Default Parameter Group** upon creation if no custom group is specified. The resource identifier for this group follows the convention:
+- **Default parameter group identifier**: Every HorizonDB cluster is assigned a system-managed default parameter group upon creation. The resource identifier for this group follows the convention:
   `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/default_pg{pgVersion}`
   *(for example, `default_pg17` for PostgreSQL version 17)*
 <!-- **Versioning**: Each update to a parameter group creates a new, immutable version of the data. This allows you to track configuration history and audit changes over time. **Currently, parameter groups don't support updates.**-->
