@@ -1,5 +1,5 @@
 ---
-title: Enable Deletion Protection in Azure HorizonDB
+title: Enable deletion protection in Azure HorizonDB
 description: This article describes how to enable deletion protection in an Azure HorizonDB instance using Azure Resource Manager locks.
 author: kabharati
 ms.author: kabharati
@@ -48,7 +48,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4. Click **Ok**.You should see a confirmation message indicating that the lock was created successfully
 
-    :::image type="content" source="./media/how-to-enable-delete-protection/success-lock.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/success-lock.png":::
+    :::image type="content" source="./media/how-to-enable-delete-protection/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/how-to-enable-delete-protection/success-lock.png":::
 
 
 
