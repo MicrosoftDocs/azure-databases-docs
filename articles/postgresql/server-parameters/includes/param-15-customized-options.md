@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/11/2026
+ms.date: 05/18/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -2432,23 +2432,6 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/16/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store will be disabled despite the value set for pg_qs.query_capture_mode. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
