@@ -6,7 +6,7 @@ ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 05/18/2026
 ms.service: azure-database-postgresql
-ms.subservice: parameter-groups
+ms.subservice: server-parameters
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to list clusters connected to parameter groups in Azure HorizonDB.
 ---
