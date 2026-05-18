@@ -42,6 +42,8 @@
       items:
     - name: Configure high availability
       href: high-availability/how-to-configure-high-availability.md
+    - name: Geo Disaster Recovery
+      href: geo-disaster-recovery/concepts-geo-disaster-recovery.md
     - name: Backup & restore
       items:
         - name: Backups

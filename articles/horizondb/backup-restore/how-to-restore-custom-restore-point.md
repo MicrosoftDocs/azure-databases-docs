@@ -11,7 +11,7 @@ ms.topic: concept-article
 #customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
-## Point-in-time recovery
+# Point-in-time recovery
 
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB services restores a database to any point in time within the configured retention period using the following process:
 
@@ -23,7 +23,7 @@ For example, if the latest snapshot is at 6 PM and the target restore time is 9 
 Because restore operations are based on snapshots and log replay rather than full data movement, restore time is not dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
 
 
-# Restore to custom restore point in Azure HorizonDB
+## Restore to custom restore point in Azure HorizonDB
 
 This article provides step-by-step instructions to perform a restore of an Azure HorizonDB  to a custom restore point.
 
