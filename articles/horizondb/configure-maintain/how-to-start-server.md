@@ -78,4 +78,3 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 - [Stop compute of a server in Azure HorizonDB](how-to-stop-server.md)
 - [Restart PostgreSQL engine in Azure HorizonDB](how-to-restart-server.md)
-- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)
