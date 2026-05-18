@@ -54,10 +54,6 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
 > [!IMPORTANT]
 > As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, as well as other internal database operations, such as sorting. Therefore we do not recommend creating user schema objects in temporary tablespace, as we don't guarantee durability of such objects after Server restarts, HA failovers, etc.
 
-
-                                                                                               | Same process. |
-
-
 ### Configure your database after recovery from regional failure
 
 * If you are using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. 
