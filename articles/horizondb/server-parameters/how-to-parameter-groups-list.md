@@ -4,7 +4,7 @@ description: This article describes how to list parameter groups in Azure Horizo
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/18/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -19,7 +19,14 @@ When listing parameter groups, you can scope the operation to a single parameter
 
 ### [Portal](#tab/portal-list)
 
-[!INCLUDE [no-portal-support](../includes/no-portal-support.md)]
+Using the [Azure portal](https://portal.azure.com):
+
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+
+1. By using the filtering buttons and the search box, find the parameter groups which you're looking for.
+
+    :::image type="content" source="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to delete." lightbox="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png":::
+
 
 ### [CLI](#tab/cli-list)
 
@@ -29,7 +36,7 @@ You can list one specific parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
 ```
 
 The output that command returns would look like the following:
@@ -70,9 +77,9 @@ The output that command returns would look like the following:
         "createTime": "2026-04-26T17:17:37.1068799"
     },
     "location": "{location}",
-    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName}",
+    "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}",
     "name": "{parameterGroupName}",
-    "type": "Microsoft.HorizonDb/parameterGroups"
+    "type": "Microsoft.HorizonDB/parameterGroups"
 }
 ```
 
@@ -130,9 +137,9 @@ The output either of the two previous commands return would look like the follow
                 "createTime": "2026-03-22T16:18:20.0000000"
             },
             "location": "{location-1}",
-            "id": "/subscriptions/{subscriptionId-1}/resourceGroups/{resourceGroupName-1}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName-1}",
+            "id": "/subscriptions/{subscriptionId-1}/resourceGroups/{resourceGroupName-1}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName-1}",
             "name": "{parameterGroupName-1}",
-            "type": "Microsoft.HorizonDb/parameterGroups"
+            "type": "Microsoft.HorizonDB/parameterGroups"
         },
         .
         .
@@ -172,9 +179,9 @@ The output either of the two previous commands return would look like the follow
                 "createTime": "2026-03-22T16:18:20.0000000"
             },
             "location": "{location-N}",
-            "id": "/subscriptions/{subscriptionId-N}/resourceGroups/{resourceGroupName-N}/providers/Microsoft.HorizonDb/parameterGroups/{parameterGroupName-N}",
+            "id": "/subscriptions/{subscriptionId-N}/resourceGroups/{resourceGroupName-N}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName-N}",
             "name": "{parameterGroupName-N}",
-            "type": "Microsoft.HorizonDb/parameterGroups"
+            "type": "Microsoft.HorizonDB/parameterGroups"
         }
     ]
 }
@@ -195,3 +202,4 @@ Replace the placeholders:
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
 - [Connect clusters to parameter groups](how-to-parameter-groups-connect.md)
 - [List clusters connected to parameter groups](how-to-parameter-groups-list-connected.md)
+- [Identity parameter group connected to a cluster](how-to-parameter-groups-identify-connected-cluster.md)

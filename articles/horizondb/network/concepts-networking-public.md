@@ -94,7 +94,7 @@ Consider the following points when access to an Azure HorizonDB instance doesn't
 
 Regardless of the networking option that you choose, we recommend that you always use an FQDN as host name when connecting to your Azure HorizonDB instance. The server's IP address isn't guaranteed to remain static. Using the FQDN helps you avoid making changes to your connection string.
 
-An example that uses an FQDN as a host name is `hostname = servername.postgres.database.azure.com`. Where possible, avoid using `hostname = 10.0.0.4` (a private address) or `hostname = 40.2.45.67` (a public address).
+An example that uses an FQDN as a host name is `hostname = servername.xxxxxxxxxxxx.region.horizondb.azure.com`. Where possible, avoid using `hostname = 10.0.0.4` (a private address) or `hostname = 40.2.45.67` (a public address).
 
 ## Outbound IP addresses for firewall configuration
 
@@ -106,7 +106,11 @@ When your Azure HorizonDB instance needs to make outbound connections to externa
 
 To find the IP address currently assigned to your Azure HorizonDB instance:
 
-- **Using DNS resolution**: You can resolve the server's FQDN (`servername.postgres.database.azure.com`) to get the current IP address. Use tools like `nslookup` or `dig`:
+- **Using DNS resolution**: You can resolve the server's FQDN (`servername.xxxxxxxxxxxx.region.horizondb.azure.com`) to get the current IP address. Use tools like `nslookup` or `dig`:
+
+  ```bash
+  nslookup servername.xxxxxxxxxxxx.region.horizondb.azure.com
+  ```
 
   ```bash
   nslookup servername.postgres.database.azure.com
@@ -114,6 +118,7 @@ To find the IP address currently assigned to your Azure HorizonDB instance:
 
 - **Using the Azure portal**: Navigate to your Azure HorizonDB instance in the Azure portal. The server's public IP address isn't directly displayed, but you can find it by resolving the server's FQDN.
 
+<!--
 - **Using Azure CLI**: You can use Azure CLI to get information about your server and then resolve the hostname:
 
   ```azurecli

@@ -45,7 +45,9 @@ To check which networking mode your server uses:
    - **Public access (allowed IP addresses)**: This article applies to your server. Continue with the steps in this article.
    - **Private access (VNet Integration)**: This article doesn't apply. See the [Prerequisites](#prerequisites) section for your options.
 
-### [CLI](#tab/cli-check-mode)
+<!--
+
+### [CLI](#tab/CLI-check-mode)
 
 Run the following command to check your server's networking configuration:
 
@@ -55,6 +57,7 @@ az postgres flexible-server show \
   --name <server> \
   --query '{delegatedSubnetId:network.delegatedSubnetResourceId, publicAccess:network.publicNetworkAccess}'
 ```
+-->
 
 Interpret the results:
 
@@ -75,13 +78,18 @@ When you enable public access:
 
 1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB.
 1. In the resource menu, select **Networking**.
+
+   :::image type="content" source="media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled.png":::
+
 1. Under **Public access**, select the **Allow public access to this resource through the internet using a public IP address** checkbox.
 1. Select **Save**.
 1. Wait for the server status to change from **Updating** to **Ready**. A notification confirms when the changes are applied.
 
-### [CLI](#tab/cli-enable-public-access)
+<!--
 
-Run the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command:
+### [CLI](#tab/CLI-enable-public-access)
+
+Run the [az postgres flexible-server update](/CLI/azure/postgres/flexible-server#az-postgres-flexible-server-update) command:
 
 ```azurecli-interactive
 az postgres flexible-server update \
@@ -89,14 +97,19 @@ az postgres flexible-server update \
   --name <server> \
   --public-access Enabled
 ```
+-->
 
 **Common errors:**
 
-| Error | Cause | Solution |
-| --- | --- | --- |
-| `Server <server> is busy with other operations. Please try later` | Server isn't in `Ready` state | Wait for the current operation to complete, then retry |
-| Command succeeds but setting doesn't change | Server was deployed with private access | You can't enable public access on VNet-integrated servers. Create a new server with public access instead |
+- Error: `Server <server> is busy with other operations. Please try later`
+  Cause: Server isn't in `Ready` state.
+  Solution: Wait for the current operation to complete, then retry.
 
+- Error: Command succeeds but setting doesn't change.
+  Cause: Server was deployed with private access.
+  Solution: You can't enable public access on VNet-integrated servers. Create a new server with public access instead.
+
+<!--
 **Verify the change:**
 
 ```azurecli-interactive
@@ -107,6 +120,8 @@ az postgres flexible-server show \
 ```
 
 The output should show `"publicAccess": "Enabled"`.
+
+-->
 
 ---
 

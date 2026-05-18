@@ -1,6 +1,6 @@
 ---
-title: What Is the PostgreSQL Extension for Visual Studio Code?
-description: Overview of the PostgreSQL extension for Visual Studio Code with HorizonDB.
+title: What Is the PostgreSQL Extension for Visual Studio Code with Azure HorizonDB
+description: Overview of the PostgreSQL extension for Visual Studio Code with Azure HorizonDB.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
@@ -8,14 +8,17 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
+ms.collection:
+  - ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ms.custom:
-  - ignite-2025
+  - build-2026
 ai-usage: ai-assisted
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code with HorizonDB
+# What is the PostgreSQL extension for Visual Studio Code with Azure HorizonDB (Preview)
 
-The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure HorizonDB.
+The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension streamlines the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure HorizonDB.
 
 ## How to install the extension
 
@@ -67,6 +70,38 @@ The Results Viewer enables you to interact with query results through features s
 
 This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
 
+### Apache AGE Graph Visualization
+
+The Apache AGE Graph Visualizer lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
+
+To render results in the graph visualizer, your queries must meet the following requirements:
+- **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead of returning properties, return the full objects and name the relationship variable:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      SET a.disp_label = a.title
+      SET b.disp_label = b.title
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r1:BOUGHT_TOGETHER]->(mid:Product)-[r2:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r1, mid, r2, b
+  $$) AS (a agtype, r1 agtype, mid agtype, r2 agtype, b agtype);
+  ```
+
 ## Supported operating systems
 
 The PostgreSQL extension works with the following operating systems:
@@ -89,6 +124,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
+- [Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code (Preview)](vs-code-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
