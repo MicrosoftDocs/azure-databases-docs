@@ -71,7 +71,7 @@ landingContent:
     - text: Manage high availability
       url: high-availability/how-to-configure-high-availability.md
     - text: Scale out with horizonDB
-      url: scale/how-to-scale-compute.md
+      url: configure-maintain/how-to-scale-compute.md
     - text: Entra-id authentication guide
       url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
 
