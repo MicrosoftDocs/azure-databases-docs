@@ -4,7 +4,7 @@ description: This article describes how to delete parameter groups in Azure Hori
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 06/18/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
