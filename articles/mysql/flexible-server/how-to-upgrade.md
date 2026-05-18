@@ -171,13 +171,15 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. Go to your primary server and perform a major version upgrade.
 
-## Perform minimal downtime major version upgrade using read replicas
+## Recommended major version upgrade procedure across major versions using Read replica or Point-in-time restore (PITR)
 
-To perform a major version upgrade of an Azure Database for MySQL Flexible Server with minimal downtime using read replica servers, perform the following steps.
+To perform a major version upgrade of an Azure Database for MySQL Flexible Server with minimal downtime using read replica servers or PITR, perform the following steps.
+
+### Using a Read replica
 
 1. Select your existing Azure Database for MySQL Flexible Server instance in the Azure portal.
 
-1. Create a [read replica](how-to-read-replicas-portal.md) from your primary server.
+1. Create a [read replica](how-to-read-replicas-portal.md) from your existing primary server.
 
 1. [Upgrade](#perform-a-planned-major-version-upgrade-using-the-azure-cli) your read replica to the target major version.
 
@@ -196,10 +198,20 @@ To perform a major version upgrade of an Azure Database for MySQL Flexible Serve
 
 1. Set Server Parameter read_only to **0** (OFF) to start writing on the promoted primary.
 
-1. Point your application to the new primary (former replica) running the target version. Each server has a unique connection string. Update your application to point to the (former) replica instead of the source.
+1. Update your application to point to the new primary (former replica) running the target version. Each server has a unique connection string.
 
     > [!NOTE]  
     > This scenario only incurs downtime during steps 4 through 7.
+
+### Using Point-in-time restore (PITR)
+
+1. Perform PITR of your existing Azure Database for MySQL Flexible Server.
+
+1. Upgrade the PITR instance to the target version.
+
+1. Test and tune your production load/queries on the upgraded PITR instance until the result is satisfactory.
+
+1. Update your application to point to the new primary (PITR instance) running the target version. Each server has a unique connection string.
 
 ## Related content
 

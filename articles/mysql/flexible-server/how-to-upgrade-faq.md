@@ -66,6 +66,32 @@ Until the upstream fix is available, take the following precautions before and a
 - Set the session or server `time_zone` explicitly, and write datetime values without an inline offset so the server applies the configured timezone consistently.
 - Validate a representative sample of newly inserted rows after the upgrade to confirm that stored values match the expected values.
 
+### Performance regression for IN() queries on indexed string columns after upgrading to 8.4
+
+In MySQL 8.4, a query that uses an `IN()` predicate on an indexed non-binary string column (for example, `VARCHAR` with a `utf8mb4` or `utf8mb3` non-binary collation such as `utf8mb4_0900_ai_ci`) can deteriorate to a full table or index scan when at least one value in the `IN()` list is longer than the column's defined length, or longer than a prefix index's defined length. Queries that previously used efficient index range scans on the same data in MySQL 5.7 or 8.0 might experience performance degradation after upgrading to 8.4.
+
+This is a known MySQL community bug. For more information, see [MySQL Bug #118009](https://bugs.mysql.com/bug.php?id=118009).
+
+#### Resolution
+
+Until the fix is available on Azure Database for MySQL Flexible Server, use one or more of the following mitigations:
+
+- Audit application queries that use `IN()` on indexed string columns, and filter or truncate values on the application side so that none of the values exceed the column's defined length (or the prefix index length).
+- For affected queries, split the `IN()` list into multiple shorter `IN()` lists or `OR` conditions that exclude oversized values, so the optimizer can continue to use index range scans.
+- Use binary collations (for example, `utf8mb4_bin`) or the `latin1` character set for affected columns, because these collations aren't impacted by this regression. Evaluate the change against your application's sorting and comparison requirements before adopting it.
+- Review query plans by using `EXPLAIN` after the upgrade to identify queries that have switched from `range` to `ALL` or `index` access, and prioritize them for mitigation.
+
+### Slowness or high CPU usage for SELECT queries with very large IN() lists after upgrading to 8.0 or 8.4
+
+After upgrading to MySQL 8.0 or 8.4, `SELECT` queries that use an `IN()` predicate with an extremely large set of values (for example, several thousand or more values in a single `IN()` list) might exhibit significantly higher query latency and CPU usage compared to the same workload on MySQL 5.7. The optimizer's handling of very large `IN()` lists is more expensive in 8.0 and 8.4, and the cost grows with the number of values in the list.
+
+#### Resolution
+
+- Reduce the number of values passed in the `IN()` list. Where possible, refactor the application to send a smaller, more selective set of values per query.
+- For workloads that need to filter against a large set of values, load the values into a temporary or staging table and use a `JOIN` against that table instead of a single large `IN()` list.
+- Batch the query into multiple smaller queries with shorter `IN()` lists and combine the results in the application layer.
+- Test the refactored queries on a read replica or restored copy of the server before applying changes to the primary.
+
 ## Related content
 
 - [Major version upgrade in Azure Database for MySQL](how-to-upgrade.md)
