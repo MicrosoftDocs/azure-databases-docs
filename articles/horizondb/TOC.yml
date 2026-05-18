@@ -34,6 +34,20 @@
         href: connectivity/connect-python.md
       - name: Using Java
         href: connectivity/connect-java.md
+- name: High availability & resilience
+  items:
+    - name: Business Continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: Reliability
+      items:
+    - name: Configure high availability
+      href: high-availability/how-to-configure-high-availability.md
+    - name: Backup & restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
+          href: backup-restore/how-to-restore-customer-restore-point.md
 - name: Configure and maintain
   items:
     - name: Scheduled maintenance
@@ -191,22 +205,8 @@
           href: extensions/how-to-drop-extensions.md
         - name: Update extensions
           href: extensions/how-to-update-extensions.md
-- name: High availability & resilience
-  items:
-    - name: Business Continuity
-      href: backup-restore/concepts-business-continuity.md
-    - name: Reliability
-      items:
-    - name: Configure high availability
-      href: high-availability/how-to-configure-high-availability.md
-    - name: Backup & restore
-      items:
-    - name: Backups
-      href: backup-restore/concepts-backup-restore.md
-    - name: Restore
-      href: backup-restore/how-to-restore-customer-restore-point.md
     - name: Performance and Monitoring
-  items:
+      items:
     - name: Query Monitoring
       items:
         - name: Query Store on primary
