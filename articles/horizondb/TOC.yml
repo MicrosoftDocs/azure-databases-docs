@@ -161,6 +161,8 @@
           href: server-parameters/how-to-parameter-groups-connect.md
         - name: List clusters connected to parameter groups
           href: server-parameters/how-to-parameter-groups-list-connected.md
+        - name: Identify parameter group connected to a cluster
+          href: server-parameters/how-to-parameter-groups-identify-connected-cluster.md
     - name: Enable deletion protection
       href: configure-maintain/how-to-enable-deletion-protection.md
     - name: Extensions

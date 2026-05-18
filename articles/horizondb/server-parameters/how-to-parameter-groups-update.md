@@ -86,7 +86,7 @@ You can also see that change of synchronization status by [listing all clusters 
 | `ParameterIsReadOnly` | When one or more parameters passed as input are read-only parameters. |
 | `ParameterValueInvalid` | When the value assigned to one or more parameters passed as input isn't valid according to the data type and allowed values of that parameter. |
 | `ParameterGroupParametersRequired` | When not even one parameter is passed as input. |
-| --> |
+--> 
 
 ## Related content
 
