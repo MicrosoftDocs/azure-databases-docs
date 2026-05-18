@@ -30,7 +30,7 @@ Using the [Azure portal](https://portal.azure.com/):
 1. The status of the server must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
 
-1. **Authentication method** must include PostgreSQL aithentication. In other words **Authentication method** must be set to either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. To check the **Authentication method** go to the resource menu and under the **Security** section select **Authentication**.
+1. **Authentication method** must include PostgreSQL authentication. In other words **Authentication method** must be set to either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. To check the **Authentication method** go to the resource menu and under the **Security** section select **Authentication**.
 
 
 1. Select the **Reset password** button and In the **Reset admin password** panel enter the new password in the **Password** text box. Confirm it in the **Confirm password** text box.
