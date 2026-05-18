@@ -197,13 +197,15 @@
       href: backup-restore/concepts-business-continuity.md
     - name: Reliability
       items:
-        - name: Configure high availability
+    - name: Configure high availability
           href: high-availability/how-to-configure-high-availability.md
     - name: Backup & restore
       items:
         - name: Backups
           href: backup-restore/concepts-backup-restore.md
-- name: Performance and Monitoring
+        - name: Restore
+          href: backup-restore/how-to-restore-customer-restore-point.md
+    - name: Performance and Monitoring
   items:
     - name: Query Monitoring
       items:
