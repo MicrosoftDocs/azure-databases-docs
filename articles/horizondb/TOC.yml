@@ -10,16 +10,6 @@
       items:
         - name: Create a HorizonDB cluster
           href: configure-maintain/quickstart-create-server.md
-- name: Release Notes
-  items:
-    - name: Release notes
-      href: release-notes/release-notes.md
-    - name: Maintenance release notes
-      href: release-notes-maintenance/release-notes-maintenance-index.md
-    - name: API release notes
-      href: release-notes/release-notes-api.md
-    - name: CLI release notes
-      href: release-notes/release-notes-cli.md
 - name: Create and connect
   items:
   - name: Connection types
@@ -272,7 +262,7 @@
         - name: Vector search (pgvector)
           href: ai/vector-search-pgvector.md
         - name: Full-text search (pg_fts)
-          href: ai/full-text-search-pgfts.md
+          href: ai/full-text-search.md
         - name: Hybrid Search
           href: ai/hybrid-search.md
         - name: Tutorial - Build a semantic search application
@@ -288,9 +278,9 @@
         - name: Enhance search relevance
           items:
             - name: Semantic reranking
-              href: ai/semantic-reranking.md
+              href: ai/semantic-rank-function.md
             - name: GraphRAG for knowledge graph enhanced search
-              href: ai/graphrag.md
+              href: ai/graph-rag.md
             - name: Build a knowledge graph from unstructured text
               href: ai/build-knowledge-graph.md
     - name: Build AI Agents and Apps
@@ -316,7 +306,7 @@
     - name: Tutorial- Build a knowledge graph from unstructured text
       href: ai/build-knowledge-graph.md
     - name: GraphRAG for knowledge graph enhanced search
-      href: ai/graphrag.md
+      href: ai/graph-rag.md
 - name: Migration
   items:
     - name: Offline migration

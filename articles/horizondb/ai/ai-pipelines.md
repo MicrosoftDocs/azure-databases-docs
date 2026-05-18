@@ -229,7 +229,7 @@ Embedding and LLM calls cost money. AI pipelines give you a few practical levers
 
 The `azure_ai` extension can also call models from SQL. The two surfaces solve different problems:
 
-| | One-shot `azure_ai` calls | AI pipelines |
+| Concepts | One-shot `azure_ai` calls | AI pipelines |
 | --- | --- | --- |
 | Shape | Single SQL function call (`azure_openai.create_embeddings(...)`) | Declarative pipeline with source, steps, sink |
 | Durability | None - fails the calling statement | Durable: retries, resume after crash, checkpoints |

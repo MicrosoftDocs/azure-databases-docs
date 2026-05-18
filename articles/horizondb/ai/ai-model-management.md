@@ -188,7 +188,7 @@ You can restrict which database users can access specific models in the registry
 
 AI Model Management pricing is based entirely on usage of the provisioned AI models. There's no extra charge for enabling the feature itself. Model usage is billed using the same meters and rates as Microsoft Foundry, with no additional markup.
 
-Your AI model usage costs appear in your Azure invoice and the Azure Cost Management portal, tagged to your Azure HorizonDB resource. This integrated billing eliminates the need to track costs across separate Azure AI services.
+Your AI model usage costs appear in your Azure invoice and the Microsoft Cost Management portal, tagged to your Azure HorizonDB resource. This integrated billing eliminates the need to track costs across separate Azure AI services.
 
 For current model pricing, see the [Microsoft Foundry pricing page](https://azure.microsoft.com/pricing/details/cognitive-services/openai-service/).
 
@@ -196,4 +196,4 @@ For current model pricing, see the [Microsoft Foundry pricing page](https://azur
 
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Semantic reranking with the rank() function](semantic-rank-function.md)

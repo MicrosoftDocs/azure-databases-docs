@@ -130,7 +130,7 @@ For hybrid search (combining keyword and vector results), also create a full-tex
 CREATE INDEX ON document_chunks USING fts (chunk_text);
 ```
 
-The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB](full-text-search-pgfts.md).
+The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB](full-text-search.md).
 
 ## Beyond search: additional preparation tasks
 

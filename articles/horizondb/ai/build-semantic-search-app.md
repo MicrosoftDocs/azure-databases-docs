@@ -278,10 +278,10 @@ ORDER BY rr.rank ASC;
 
 The reranked results prioritize recipes that are most relevant to the specific query intent - in this case, recipes that are both quick to prepare and vegan - rather than semantically similar to the query text.
 
-For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-reranking.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-rank-function.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
 
 ## Related content
 
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Semantic reranking with the rank() function](semantic-rank-function.md)
