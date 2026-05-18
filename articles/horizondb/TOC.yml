@@ -38,8 +38,6 @@
   items:
     - name: Business Continuity
       href: backup-restore/concepts-business-continuity.md
-    - name: Reliability
-      items:
     - name: Configure high availability
       href: high-availability/how-to-configure-high-availability.md
     - name: Geo Disaster Recovery
