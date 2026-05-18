@@ -4,7 +4,7 @@ description: Learn about the parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/18/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
@@ -23,7 +23,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 - **Default Resource Identifier**: Every HorizonDB cluster is assigned a system-managed **Default Parameter Group** upon creation if no custom group is specified. The resource identifier for this group follows the convention:
   `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/default_pg{pgVersion}`
   *(for example, `default_pg17` for PostgreSQL version 17)*
-- **Versioning**: Each update to a parameter group creates a new, immutable version of the data. This allows you to track configuration history and audit changes over time. **Currently, parameter groups don't support updates.**
+<!-- **Versioning**: Each update to a parameter group creates a new, immutable version of the data. This allows you to track configuration history and audit changes over time. **Currently, parameter groups don't support updates.**-->
 - **Immediate vs. deferred application**: Some parameters (static) require a server restart to take effect, while others (dynamic) can be applied immediately.
   - **Dynamic parameters**: Modified values are applied to active clusters immediately without requiring a restart.
   - **Static parameters**: Modified values are stored in the cluster's configuration but remain "pending" until the next server restart.
@@ -34,7 +34,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 - **Resource uniqueness**: Parameter group names must be unique within their resource group and subscription.
 - **Connections**: Parameter groups can be connected (linked or associated) with one or more **clusters**. One parameter group created in one region can't be connected to one cluster created on a different region. Connections are managed via an internal mapping system that tracks:
   - **Sync status**: Whether the cluster configuration matches the parameter group version.
-  - **Last applied version**: The specific data version currently running on the cluster.
+<!--  - **Last applied version**: The specific data version currently running on the cluster.-->
 - **Scenario: Multi-cluster connection and deferred application**:
   - Suppose **cluster A** and **cluster B** are both connected with **parameter group X**.
   - If a **static parameter** (for example, `max_connections`) is updated in parameter group X and `applyImmediately` is set to `false`:
@@ -46,9 +46,9 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 ## Best practices
 
 1. **Naming conventions**: Preferably, embed some form of encoded description in the name so that you can later identify the potential target clusters of that configuration.
-1. **Version tracking**: Use the `/versions` API to audit who and when changed what configuration.
+<!--1. **Version tracking**: Use the `/versions` API to audit who and when changed what configuration.-->
 1. **Staging**: Always test new parameter groups on a development cluster before applying them to production, especially when setting `applyImmediately` to `true`.
-
+<!--
 ## Resource model
 
 ### HorizonDbParameterGroup
@@ -61,6 +61,7 @@ Parameter groups are first-class resources in Azure and are surfaced within the 
 | `properties.description` | string | A user-defined description of the group. |
 | `properties.parameters` | array | A list of parameter objects (Name, Value, etc.). |
 | `properties.applyImmediately` | boolean | If true, applies changes immediately (might trigger restart). |
+-->
 
 ## Related content
 
