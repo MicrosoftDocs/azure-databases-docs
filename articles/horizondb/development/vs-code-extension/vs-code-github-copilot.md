@@ -72,7 +72,7 @@ Copilot responds with a detailed description of your schema's tables.
 
 ### Connect to the right HorizonDB endpoint
 
-Because an Azure HorizonDB cluster exposes two endpoints, the connection you start chatting on determines which endpoint Copilot's generated SQL will run against:
+Because an Azure HorizonDB cluster exposes two endpoints, the connection you start chatting on determines which endpoint Copilot's generated SQL runs against:
 
 - **Read/write endpoint** - Use this connection when you want Copilot to draft, modify, or execute statements that change data or schema, or that must read the latest committed state.
 - **Reader endpoint** - Use this connection when you want Copilot to draft and run **read-only** queries that benefit from load-balanced scale-out across HA replicas (for example, exploratory analytics or reporting prompts).
@@ -114,7 +114,7 @@ Then Copilot asks for confirmation:
 
 You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**. These work the same way against flexible server and HorizonDB connections; on HorizonDB, the explanations and rewrite suggestions also account for HorizonDB-specific indexes (such as `pg_diskann` vector indexes) when they're present.
 
-## Additional ideas and prompt recipes
+## Other ideas and prompt recipes
 
 The following sections show concept prompts you can try or modify to match your database context and development environment.
 

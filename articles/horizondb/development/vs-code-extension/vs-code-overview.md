@@ -54,8 +54,8 @@ The Connection Manager simplifies connecting to local and cloud-hosted PostgreSQ
 
 Azure HorizonDB exposes two endpoints, which you can add as separate connection profiles in the extension:
 
-- **Read/write endpoint** - Connects to the primary, which accepts both read and write transactions. Use this endpoint for application writes, schema changes, and any read workload that requires the latest committed data. The endpoint is listed on the cluster **Overview** blade and on the **Replicas** blade in the Azure portal.
-- **Reader endpoint** - Automatically load-balances read-only connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out workloads, reporting, and analytics. Up to 4 readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
+- **Read/write endpoint** - Connects to the primary, which accepts both read and write transactions. Use this endpoint for application writes, schema changes, and any read workload that requires the latest committed data. The endpoint is listed on the cluster **Overview** page and on the **Replicas** page in the Azure portal.
+- **Reader endpoint** - Automatically load-balances read-only connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out workloads, reporting, and analytics. Up to four readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
 
 A typical pattern is to save two profiles in the Connection Manager - one pointed at the read/write endpoint and one pointed at the reader endpoint - and switch between them in the Object Explorer based on the task at hand.
 

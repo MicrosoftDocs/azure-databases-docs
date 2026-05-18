@@ -47,7 +47,7 @@ To install the PostgreSQL extension:
 1. Search for **PostgreSQL** in the Extensions Marketplace.
 1. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
 
-When the extension is installed, the PostgreSQL page, represented by an elephant icon, appears in the Visual Studio Code sidebar.
+After installation, the PostgreSQL extension icon appears in the Visual Studio Code sidebar.
 
 ## Add a connection to PostgreSQL
 
@@ -73,9 +73,9 @@ psql -h <server>.postgres.database.azure.com -p 5432 -U <user> -d <database>
 An Azure HorizonDB cluster exposes **two** endpoints. Choose the one that matches your workload:
 
 - **Read/write endpoint** - Connects to the primary, which accepts both reads and writes. Use this endpoint for application writes, schema changes, and reads that must see the latest committed data.
-- **Reader endpoint** - Automatically load-balances connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out, reporting, and analytics workloads. Up to 4 readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
+- **Reader endpoint** - Automatically load-balances connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out, reporting, and analytics workloads. Up to four readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
 
-Both endpoint hostnames are listed on the cluster **Overview** blade and on the **Replicas** blade in the Azure portal. The connection string format is the standard libpq form:
+Both endpoint hostnames are listed on the cluster **Overview** page and on the **Replicas** page in the Azure portal. The connection string format is the standard libpq form:
 
 ```bash
 # Read/write endpoint (primary)
@@ -143,7 +143,7 @@ Use the Query Editor to draft and execute SQL queries:
 
 ### Route reads and writes on HorizonDB
 
-When you have profiles for both the read/write and reader endpoints, simply pick the appropriate connection in the Query Editor's connection picker before running a query. Writes and DDL must run against the read/write endpoint; the reader endpoint accepts read-only queries and load-balances them across HA replicas.
+When you have profiles for both the read/write and reader endpoints, pick the appropriate connection in the Query Editor's connection picker before running a query. Writes and DDL must run against the read/write endpoint; the reader endpoint accepts read-only queries and load-balances them across HA replicas.
 
 ## Review query results
 
@@ -189,7 +189,7 @@ The **Connect with Visual Studio Code** option in the Azure portal simplifies co
 
 :::image type="content" source="media/vs-code-connect/portal-connect-1.png" alt-text="Screenshot of the Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code button.":::
 
-For a HorizonDB cluster, the side pane lets you choose whether to pre-fill the connection with the **read/write endpoint** or the **reader endpoint**.
+For a HorizonDB cluster, the side pane lets you choose whether to prefill the connection with the **read/write endpoint** or the **reader endpoint**.
 
 ### Confirm requirements
 
