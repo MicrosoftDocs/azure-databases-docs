@@ -42,7 +42,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the settings menu, select **Locks** blade.
 
-3. Click the **Addd** button to provide your **Lock name**  and Choose **Delete** lock type.
+3. Click the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
 
     :::image type="content" source="./media/how-to-enable-delete-protection/delete-lock.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/delete-lock.png":::
 
