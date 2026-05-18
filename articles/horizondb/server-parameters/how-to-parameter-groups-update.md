@@ -13,10 +13,11 @@ ms.topic: how-to
 
 # Update parameter groups
 
-> [!IMPORTANT]  
-> Currently, parameter groups don't support updates.
-
 Should you need to change the value of some parameters on a given cluster, [create a new parameter group](how-to-parameter-groups-create.md) overriding the values of all those parameters, and [connect that given cluster to the new parameter group](how-to-parameter-groups-connect.md).
+
+## Limitations
+
+Currently, parameter groups don't support updates.
 
 <!--
 When updating a parameter group, at least one parameter must be provided. The underlying operation in the backend will merge your input with the system defaults for the specified `pgVersion`.

@@ -31,8 +31,8 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-identify-connected-cluster/parameters.png" alt-text="Screenshot that shows the Parameters page of the selected cluster, from where you can check which parameter group the cluster is connected to." lightbox="./media/how-to-identify-connected-cluster/parameters.png":::
 
-> [!NOTE]
-> If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This issue is known and will be fixed.
+  > [!NOTE]
+  > If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This issue is known and will be fixed.
 
 1. If you select the name, you're taken to the **Overview** page of the parameter group resource.
 
@@ -73,7 +73,7 @@ Replace the placeholders:
 
 > [!NOTE]
 > If the parameter group assigned to a cluster is the default, you don't see any parameters listed. This issue is known and will be fixed.
-> In this case, you receive the following error: Not Found({"error":{"code":"ResourceNotFound","message":"The Resource 'Microsoft.HorizonDb/parameterGroups/default_pg17' under resource group '{resourceGroupName}' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"}})
+> In this case, you receive the following error: `Not Found({"error":{"code":"ResourceNotFound","message":"The Resource 'Microsoft.HorizonDb/parameterGroups/default_pg17' under resource group '{resourceGroupName}' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"}})`
 
 ---
 
