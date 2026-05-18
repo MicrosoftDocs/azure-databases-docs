@@ -25,8 +25,6 @@ To calculate the number, sign in to the source instance and run this command for
 
 `SELECT pg_size_pretty( pg_database_size('dbname') );`
 
-We recommend that you allocate sufficient storage on the flexible server, equivalent to 1.25 times or 25% more storage than what's being used per the output to the preceding command. You can also use {[Configure storage autogrow in Azure HorizonDB](../../scale/how-to-auto-grow-storage.md)}.
-
 > [!IMPORTANT]  
 > Storage size can't be reduced in manual configuration or Storage Autogrow. Each step in the storage configuration spectrum doubles in size, so estimating the required storage beforehand is prudent.
 

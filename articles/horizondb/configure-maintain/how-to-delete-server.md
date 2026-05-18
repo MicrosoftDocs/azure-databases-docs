@@ -63,30 +63,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was successfully deleted." lightbox="media/how-to-delete-server/notification-deleted-server.png":::
 
-### [CLI](#tab/cli-reset-admin-password)
 
-You can delete a server via the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command.
-
-```azurecli-interactive
-az postgres flexible-server delete \
-  --resource-group <resource_group> \
-  --name <server>
-```
-
-If you run the previous command, it requires you to explicitly confirm, responding with a `y` (yes):
-
-```output
-Are you sure you want to delete the server '<server>' in resource group '<resource_group>' (y/n):
-```
-
-If you want to run the command without needing the user interaction, you can add the `--yes` parameter like this:
-
-```azurecli-interactive
-az postgres flexible-server delete \
-  --resource-group <resource_group> \
-  --name <server> \
-  --yes
-```
 
 ---
 
@@ -95,5 +72,5 @@ az postgres flexible-server delete \
 - [Start compute of a server in Azure HorizonDB](how-to-start-server.md)
 - [Stop compute of a server in Azure HorizonDB](how-to-stop-server.md)
 - [Restart PostgreSQL engine in Azure HorizonDB](how-to-restart-server.md)
-- [Reset administrator password in Azure HorizonDB](../security/security-reset-admin-password.md)
-- [Configure storage autogrow in Azure HorizonDB](../scale/how-to-auto-grow-storage.md)
+
+
