@@ -92,7 +92,7 @@ A common pattern is to save two profiles in the Connection Manager - one for the
 The extension supports two authentication methods:
 
 - **Username/Password** - Enter your database credentials directly into the connection fields. Supported by both Azure Database for PostgreSQL flexible server and Azure HorizonDB.
-- **Microsoft Entra ID authentication** - Add your Microsoft Entra ID account for Azure-hosted databases. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, only PostgreSQL authentication is supported during the current release; Microsoft Entra ID authentication support is coming soon.
+- **Microsoft Entra ID authentication** - Add your Microsoft Entra ID account for Azure-hosted databases. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, only PostgreSQL authentication is supported during the current release.
 
 :::image type="content" source="media/vs-code-connect/connect-server-1.png" alt-text="Screenshot of PostgreSQL extension for Visual Studio Code connection dialog." lightbox="media/vs-code-connect/connect-server-1.png" :::
 
@@ -214,7 +214,7 @@ For a HorizonDB cluster, the side pane lets you choose whether to prefill the co
 Select your preferred authentication method:
 
 - **Password Authentication** - Enter your username and password manually. Supported on both flexible server and HorizonDB.
-- **Entra Authentication** - Enter your Azure account credentials. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, password authentication is the only option today; Microsoft Entra ID support is coming soon.
+- **Entra Authentication** - Enter your Azure account credentials. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, password authentication is the only option today.
 
 Specify other connection details such as **Profile Name**, **Database Name** (optional), **Server Group**, and **Port Number**.
 
