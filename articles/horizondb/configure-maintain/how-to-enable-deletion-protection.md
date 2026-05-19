@@ -59,7 +59,7 @@ Creating or deleting locks requires permissions for `Microsoft.Authorization/loc
 
 - Ideal for **production workloads** that require deletion safeguards.
 - For **high availability or backend servers**, consider implementing locks at deployment time.
-- Ensure **network resources (VNETs/subnets)** are unlocked before provisioning, then reapply locks post-deployment to avoid interference.
+- Ensure **network resources (virtual networks and subnets)** are unlocked before provisioning, then reapply locks post-deployment to avoid interference.
 - While locks prevent server deletion, they do **not** restrict destructive SQL operations. Enforce SQL-level policies as needed.
 
 
@@ -67,4 +67,4 @@ Creating or deleting locks requires permissions for `Microsoft.Authorization/loc
 
 ## Related content
 
-- [Overview of Azure Resource Manager Locks](/azure/azure-resource-manager/management/lock-resources)
+- [Overview of Resource Manager locks](/azure/azure-resource-manager/management/lock-resources)
