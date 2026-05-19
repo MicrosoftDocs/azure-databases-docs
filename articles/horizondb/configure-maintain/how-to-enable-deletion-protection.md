@@ -44,11 +44,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Click the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
 
-    :::image type="content" source="./media/how-to-enable-delete-protection/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/delete-lock-01.png":::
+    :::image type="content" source="./media/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/delete-lock-01.png":::
 
 4. Click **Ok**.You should see a confirmation message indicating that the lock was created successfully
 
-    :::image type="content" source="./media/how-to-enable-delete-protection/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/how-to-enable-delete-protection/success-lock.png":::
+    :::image type="content" source="./media/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/success-lock.png":::
 
 
 ## Permissions
