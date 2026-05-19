@@ -27,7 +27,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure HorizonDB cluster." lightbox="./media/security-reset-admin-password/overview.png":::
 
-1. The status of the server must be **Ready** for the **Reset password** button to be enabled on the toolbar.
+1. The status of the Azure HorizonDB cluster must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
 
 1. **Authentication method** must include PostgreSQL aithentication. In other words **Authentication method** must be set to either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. To check the **Authentication method** go to the resource menu and under the **Security** section select **Authentication**.
@@ -83,8 +83,6 @@ Message: Server <server> is busy with other operations. Please try later
 ---
 -->
 
-> [!NOTE]
-> Resetting the password of the server administrator in [replicas](../read-replica/concepts-read-replicas.md) isn't supported. You can reset the password of the server administrator in the primary instance. That password change operation, which is recorded in the Write-Ahead Log of the primary instance, is sent asynchronously to all replicas. When a replica receives and applies that change locally, any attempt to connect to those replicas with the server administrator user name, must be made using the new password.
 
 ## Related content
 
