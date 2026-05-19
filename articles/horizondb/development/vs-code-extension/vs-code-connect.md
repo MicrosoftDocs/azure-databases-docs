@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code
+# Quickstart: PostgreSQL Extension for Visual Studio Code in Azure HorizonDB
 
 The PostgreSQL extension for Visual Studio Code is a powerful tool designed to streamline the development and management of PostgreSQL databases. This guide walks you through connecting to a PostgreSQL database and executing queries within the Visual Studio Code environment.
 
