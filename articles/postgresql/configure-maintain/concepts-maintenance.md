@@ -71,9 +71,33 @@ Customers might notice a slight increase in restart time (5-8 minutes) when pend
 
 ## Consolidated Maintenance Notifications
 
-To help reduce notification fatigue, Azure Database for PostgreSQL now consolidates planned maintenance notifications for multiple servers in the same region into a single notification, instead of sending a separate notification for each server. This helps customers track upcoming maintenance more efficiently while preserving visibility into impacted resources.
+Customers running multiple Azure Database for PostgreSQL servers may receive several separate notifications for the same planned maintenance event, making maintenance tracking more difficult. To reduce this overhead, Azure Database for PostgreSQL now consolidates planned maintenance notifications for multiple servers in the same region into a single notification. This helps reduce notification fatigue and makes it easier to track upcoming maintenance while maintaining visibility into impacted resources.
 
-To view the servers in a subscription that have upcoming maintenance in a region, go to the Impacted Resources tab in the corresponding notification under Azure Service Health | Planned Maintenance. This tab lists each affected server in the subscription. For each resource, select More info to view details such as maintenance status and the scheduled maintenance start and end times for that server. To download a list of all impacted servers, select Export to CSV on the Impacted Resources tab. The exported .csv file includes each affected server along with its maintenance status and scheduled maintenance start and end times. 
+[!NOTE] 
+If you have configured a service health alert, you will receive an email or azure mobile app notification alerting you to upcoming planned maintenance in a region. For consolidated maintenance, a **single notification/email** is sent to inform you of upcoming maintenance in a region and another notification sent when maintenance is completed in the region. If maintenance is cancelled for the region, you will receive a 3rd notification/email. You do not receive a notification/email when maintenance is in progress nor complete for each server. 
+
+To view planned maintenance, select View in Azure Service Health within your maintenance notification email as shown below.
+
+   :::image type="content" source="./media/consolidated-maintenance/consolidated-maintenance-email-notification.png" alt-text="Screenshot that shows email notification for planned maintenance." lightbox="./media/consolidated-maintenance/consolidated-maintenance-email-notification.png":::
+
+Next navigate to Planned Maintenance blade in [Azure Service Health Portal](https://portal.azure.com/#view/Microsoft_Azure_Health/AzureHealthBrowseBlade/%7E/serviceIssues) and select the specific Azure Database for PostgreSQL notification.
+
+   :::image type="content" source="./media/consolidated-maintenance/planned-maintenance-alert.png" alt-text="Screenshot that shows planned maintenance alert in Azure Service Health." lightbox="./media/consolidated-maintenance/planned-maintenance-alert.png":::
+
+The summary tab contains details of upcoming maintenance in a region including the region, impacted subscription(s), start and end time of the maintenance. The start and end times shown represent the duration of the planned maintenance **for all impacted servers(s) in this region including yours**. To view the servers in the subscription that have upcoming maintenance and their scheduled start and end times, select the impacted resources tab. To view the list of notable features, PostgreSQL version changes, improvements and issue fixes contained in the maintenance upgrade select the maintenance release notes on the summary page.
+
+   :::image type="content" source="./media/consolidated-maintenance/planned-maintenance-summary-page.png" alt-text="Screenshot that shows summary page of a planned maintenance alert." lightbox="./media/consolidated-maintenance/planned-maintenance-summary-page.png":::
+
+The impacted resources tab lists each affected server in the subscription. For each resource, select More info to view details such as maintenance status, server specific scheduled maintenance start and end times. To view the maintenance status, start and end time of all impacted servers, select Export to CSV on the Impacted Resources tab.
+
+   :::image type="content" source="./media/consolidated-maintenance/planned-maintenance-impacted-resources-page.png" alt-text="Screenshot that shows impacted resources page of a planned maintenance alert." lightbox="./media/consolidated-maintenance/planned-maintenance-impacted-resources-page.png":::
+
+The exported .csv file includes each impacted server along with its maintenance status and scheduled maintenance start and end times. All times listed are in UTC.
+
+   :::image type="content" source="./media/consolidated-maintenance/planned-maintenance-export-to-csv.png" alt-text="Screenshot that shows csv export of impacted resources page of a planned maintenance alert." lightbox="./media/consolidated-maintenance/planned-maintenance-export-to-csv.png":::
+
+[!NOTE]
+This .csv file represents a snapshot of the status of your impacted servers at one point in time. It is recommended to download .csv file again to check the current status of maintenance at any given time, especially to verify maintenance is complete on a server. For questions or support, create a [support request](https://aka.ms/azuresupportrequest) through the Azure Portal
 
 
 ## Related content
