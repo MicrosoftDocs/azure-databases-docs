@@ -24,7 +24,7 @@ ai-usage: ai-assisted
 `pg_durable` is also the execution layer underneath [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
-> `pg_durable` is in **private preview**.
+> `pg_durable` is in **preview**.
 
 ## What "durable" means
 
@@ -40,7 +40,7 @@ What durability **doesn't** do automatically: it doesn't make nonidempotent exte
 
 ## When to use pg_durable
 
-Use `pg_durable` when you have to work that:
+Use `pg_durable` when you have work that:
 
 - Takes long enough to fail in the middle (embedding generation across millions of rows, a multi-step ETL job, a backfill).
 - Needs to be retried on failure without redoing the parts that already succeeded.
