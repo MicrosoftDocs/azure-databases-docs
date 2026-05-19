@@ -102,7 +102,7 @@ Connect through a public endpoint by using firewall rules.
 | Setting | Description |
 | --- | --- |
 | **Allow Azure services** | Permit connections from all Azure services |
-| **Add current client IP** | Add your IP address to the allowlist |
+| **Add current client IP** | Add your IP address to the allow list |
 
 #### Private endpoints
 
