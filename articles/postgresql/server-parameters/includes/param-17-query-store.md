@@ -97,7 +97,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Store |
-| Description | Sets the aggregration window in minutes. Need to reload the config to make change take effect. |
+| Description | Sets the aggregation window in minutes. Need to reload the config to make change take effect. |
 | Data type | integer |
 | Default value | `15` |
 | Allowed values | `1-30` |

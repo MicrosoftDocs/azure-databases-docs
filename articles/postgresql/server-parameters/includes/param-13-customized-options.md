@@ -1780,7 +1780,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Number of slots from pg_failover_slots.standby_slot_names that must confirm lsn. Modifies behaviour of pg_failover_slots.standby_slot_names so to allow logical replication of a transaction after at least pg_failover_slots.standby_slots_min_confirmed physical peers have confirmed the transaction as durably flushed. The value -1 (default) means all entries in pg_failover_slots.standby_slot_namesmust confirm the write. The value 0 causes pg_failover_slots.standby_slots_min_confirmedto be effectively ignored. |
+| Description | Number of slots from pg_failover_slots.standby_slot_names that must confirm lsn. Modifies behavior of pg_failover_slots.standby_slot_names so to allow logical replication of a transaction after at least pg_failover_slots.standby_slots_min_confirmed physical peers have confirmed the transaction as durably flushed. The value -1 (default) means all entries in pg_failover_slots.standby_slot_namesmust confirm the write. The value 0 causes pg_failover_slots.standby_slots_min_confirmedto be effectively ignored. |
 | Data type | integer |
 | Default value | `1` |
 | Allowed values | `1` |
