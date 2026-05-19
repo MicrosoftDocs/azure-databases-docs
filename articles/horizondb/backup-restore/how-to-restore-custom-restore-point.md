@@ -29,8 +29,6 @@ This article provides step-by-step instructions to perform a restore of an Azure
 
 ## Steps to restore to custom restore point
 
-### [Portal](#tab/portal-custom-restore)
-
 Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
