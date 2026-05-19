@@ -20,7 +20,7 @@ ms.collection:
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
+The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server. For more information about migration scenarios, see [Migrate databases from Amazon Web Services to Azure](/azure/migration/migrate-databases-from-aws).
 
 [!INCLUDE [checklist-online](includes/checklist-online.md)]
 
