@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/11/2026
+ms.date: 05/18/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -1746,7 +1746,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies that audit logging should include the parameters that were passed with the statement. When parameters are present they will be be included in CSV format after the statement text. |
+| Description | Specifies that audit logging should include the parameters that were passed with the statement. When parameters are present they will be included in CSV format after the statement text. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
@@ -2194,23 +2194,6 @@ ms.custom: automatically generated
 | Allowed values | `300` |
 | Parameter type | read-only |
 | Documentation | [pg_prewarm.autoprewarm_interval](https://www.postgresql.org/docs/17/pgprewarm.html#PGPREWARM-CONFIG-PARAMS) |
-
-
-[!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
-
-
-
-### pg_qs.is_enabled_fs
-
-| Attribute | Value |
-| --- | --- |
-| Category | Customized Options |
-| Description | Internal Use Only: This parameter is used as a feature override switch. If it shows as off, Query Store will be disabled despite the value set for pg_qs.query_capture_mode. |
-| Data type | boolean |
-| Default value | `on` |
-| Allowed values | `on` |
-| Parameter type | read-only |
-| Documentation | [pg_qs.is_enabled_fs](https://go.microsoft.com/fwlink/?linkid=2274607) |
 
 
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
