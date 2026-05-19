@@ -1,5 +1,5 @@
 ---
-title: What Is the PostgreSQL Extension for Visual Studio Code with Azure HorizonDB
+title: What Is the PostgreSQL Extension for Visual Studio Code with Azure HorizonDB?
 description: Overview of the PostgreSQL extension for Visual Studio Code with Azure HorizonDB.
 author: jjfrost
 ms.author: jfrost
@@ -48,7 +48,7 @@ The Connection Manager simplifies connecting to local and cloud-hosted PostgreSQ
 - Support for multiple connection profiles, so you can connect to and manage multiple PostgreSQL instances side by side, including a mix of flexible server and HorizonDB clusters.
 - Connection string parsing for seamless connectivity, whether you're connecting to a local database, an Azure Database for PostgreSQL flexible server instance, or an Azure HorizonDB cluster.
 - Integration with Azure Database for PostgreSQL flexible server **and** Azure HorizonDB for direct browsing and filtering of instances by subscription, resource group, server/cluster, and database.
-- Microsoft Entra ID authentication for Azure Database for PostgreSQL flexible server. (Azure HorizonDB currently supports PostgreSQL authentication; Microsoft Entra ID authentication is coming soon.)
+- Microsoft Entra ID authentication for Azure Database for PostgreSQL flexible server. (Azure HorizonDB currently supports PostgreSQL authentication.)
 
 #### HorizonDB connection endpoints
 
@@ -169,6 +169,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [Quickstart: PostgreSQL Extension for Visual Studio Code in Azure HorizonDB](vs-code-connect.md)
 - [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
