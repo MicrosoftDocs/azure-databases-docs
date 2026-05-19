@@ -30,7 +30,7 @@ You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Az
 
 - Locks can be applied at the **subscription**, **resource group**, or **server** level.
 - Child resources inherit locks from their parents; the **most restrictive lock** takes precedence.
-- Locks restrict ARM(Azure Resource Manager) operations (Portal, CLI, API) but do **not** block data plane actions (like editing tables or schemas).
+- Locks restrict Azure Resource Manager operations (Portal, CLI, API) but do **not** block data plane actions (like editing tables or schemas).
 
 ## Apply Locks Using Portal
 
