@@ -8,13 +8,14 @@ ms.date: 11/03/2025
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
+ms.update-cycle: 365-days
 ms.custom:
-- ignite-2024
-- ignite-2025
-- sfi-image-nochange
+  - ignite-2024
+  - ignite-2025
+  - sfi-image-nochange
 ---
 
-# Quickstart examples for the Azure Storage extension in Azure Database for PostgreSQL 
+# Quickstart examples for the Azure Storage extension in Azure Database for PostgreSQL
 
 Following is a list of examples to help you learn how to use the Azure Storage extension.
 
@@ -22,6 +23,7 @@ Following is a list of examples to help you learn how to use the Azure Storage e
 
 1. Create an Azure Storage account.
    To create an Azure Storage account, if you don't have one already, customize the values of `<resource_group>`, `<location>`, `<account_name>`, and `<container_name>`, and run the following Azure CLI command:
+
    ```azurecli-interactive
    random_suffix=$(tr -dc 'a-z0-9' </dev/urandom | head -c8)
    resource_group="resource-group-$random_suffix"
@@ -36,20 +38,26 @@ Following is a list of examples to help you learn how to use the Azure Storage e
    echo $blob_container
    ```
 1. Create a blob container.
+
    To create the blob container, run the following Azure CLI:
+
    ```azurecli-interactive
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
-1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add) in a subsequent step.
+1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add) in a subsequent step.
+
    To fetch the first of the two access keys, run the following Azure CLI command:
+
    ```azurecli-interactive
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
    echo "Following is the value of your access key:"
    echo $access_key
    ```
 1. Download the file with the data set that is used during the examples, and upload it to your blob container.
+
    To download the file with the data set, run the following Azure CLI command:
-   ```azurecli-interactive   
+
+   ```azurecli-interactive
    mkdir --parents azure_storage_examples
    cd azure_storage_examples
    curl -L -O https://github.com/Azure-Samples/azure-postgresql-storage-extension/raw/main/storage_extension_sample.parquet
@@ -63,7 +71,7 @@ Following is a list of examples to help you learn how to use the Azure Storage e
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](./reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
 ## Create a table in which data is loaded
 
@@ -82,7 +90,7 @@ CREATE TABLE IF NOT EXISTS sample_data (
 
 Before proceeding, make sure that you:
 1. [Load the extension's library](how-to-configure-azure-storage-extension.md#load-the-extensions-library)
-1. [Allowlist the extension](how-to-configure-azure-storage-extension.md#allowlist-the-extension)
+1. [Allow list the extension](how-to-configure-azure-storage-extension.md#allow-list-the-extension)
 1. [Create the extension](how-to-configure-azure-storage-extension.md#create-the-extension)
 
 ## Add access key of storage account
@@ -145,52 +153,52 @@ SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE
 
 ## Import data using a COPY FROM statement
 
-The following example shows the import of data from a blob called `storage_extension_sample.parquet`  that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+The following example shows the import of data from a blob called `storage_extension_sample.parquet` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
 1. Create a table that matches the schema of the source file:
 
-    ```sql
-    CREATE TABLE IF NOT EXISTS sample_data (
-        id BIGINT PRIMARY KEY,
-        sample_text TEXT,
-        sample_integer INTEGER,
-        sample_timestamp TIMESTAMP
-    );
-    ```
+   ```sql
+   CREATE TABLE IF NOT EXISTS sample_data (
+       id BIGINT PRIMARY KEY,
+       sample_text TEXT,
+       sample_integer INTEGER,
+       sample_timestamp TIMESTAMP
+   );
+   ```
 
-2. Use a `COPY` statement to copy data into the target table. Format is inferred as Parquet from the extension of the file.
+1. Use a `COPY` statement to copy data into the target table. Format is inferred as Parquet from the extension of the file.
 
-    ```sql
-    TRUNCATE TABLE sample_data;
-    COPY sample_data
-    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.parquet';
-    ```
+   ```sql
+   TRUNCATE TABLE sample_data;
+   COPY sample_data
+   FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.parquet';
+   ```
 
-2. Use a `COPY` statement to copy data into the target table. Because encoding format cannot be inferred from file extension, it's explicitly specified via the `FORMAT` option.
+1. Use a `COPY` statement to copy data into the target table. Because encoding format can't be inferred from file extension, it's explicitly specified via the `FORMAT` option.
 
-    ```sql
-    TRUNCATE TABLE sample_data;
-    COPY sample_data
-    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/parquet_without_extension'
-    WITH (FORMAT 'parquet');
-    ```
+   ```sql
+   TRUNCATE TABLE sample_data;
+   COPY sample_data
+   FROM 'https://<account_name>.blob.core.windows.net/<container_name>/parquet_without_extension'
+   WITH (FORMAT 'parquet');
+   ```
 
-2. Use a `COPY` statement to copy data into the target table. Encoding format can be inferred from file extension. However, presence of column headers in first row needs to be explicitly configured via `HEADERS` option.
+1. Use a `COPY` statement to copy data into the target table. Encoding format can be inferred from file extension. However, presence of column headers in first row needs to be explicitly configured via `HEADERS` option.
 
-    ```sql
-    TRUNCATE TABLE sample_data;
-    COPY sample_data
-    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.csv'
-    WITH (HEADERS);
-    ```
+   ```sql
+   TRUNCATE TABLE sample_data;
+   COPY sample_data
+   FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.csv'
+   WITH (HEADERS);
+   ```
 
-3. Execute the following `SELECT` statement to confirm that the data is loaded into the table.
+1. Execute the following `SELECT` statement to confirm that the data is loaded into the table.
 
-    ```sql
-    SELECT *
-    FROM sample_data
-    LIMIT 100;
-    ```
+   ```sql
+   SELECT *
+   FROM sample_data
+   LIMIT 100;
+   ```
 
 ## Export data using a COPY TO statement
 
@@ -198,18 +206,18 @@ The following examples show the export of data from a table called `sample_data`
 
 1. Create a table that matches the schema of the source file:
 
-    ```sql
-    CREATE TABLE IF NOT EXISTS sample_data (
-        id BIGINT PRIMARY KEY,
-        sample_text TEXT,
-        sample_integer INTEGER,
-        sample_timestamp TIMESTAMP
-    );
-    ```
+   ```sql
+   CREATE TABLE IF NOT EXISTS sample_data (
+       id BIGINT PRIMARY KEY,
+       sample_text TEXT,
+       sample_integer INTEGER,
+       sample_timestamp TIMESTAMP
+   );
+   ```
 
-2. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
+1. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
 
-3. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be parquet.
+1. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be parquet.
 
    ```sql
    COPY sample_data
@@ -217,7 +225,7 @@ The following examples show the export of data from a table called `sample_data`
    WITH (FORMAT 'parquet');
    ```
 
-4. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be CSV and the first row of the resulting file contains column headers.
+1. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be CSV and the first row of the resulting file contains column headers.
 
    ```sql
    COPY sample_data
@@ -225,11 +233,11 @@ The following examples show the export of data from a table called `sample_data`
    WITH (FORMAT 'csv', HEADERS);
    ```
 
-5. Execute the following `SELECT` statement to confirm that the blob exists in the storage account.
+1. Execute the following `SELECT` statement to confirm that the blob exists in the storage account.
 
-    ```sql
-    SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE 'storage_extension_sample_exported%';
-    ```
+   ```sql
+   SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE 'storage_extension_sample_exported%';
+   ```
 
 ## Read content from a blob
 
@@ -252,7 +260,7 @@ SELECT * FROM azure_storage.blob_get
 LIMIT 5;
 ```
 
-Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](./reference-azure-storage-extension.md#azure_storageblob_get) function.
+Alternatively, you can explicitly define the schema of the result using the `AS` clause after the [blob_get](reference-azure-storage-extension.md#azure_storageblob_get) function.
 
 ```sql
 SELECT * FROM azure_storage.blob_get('<account_name>','<container_name>','storage_extension_sample.parquet')
@@ -284,7 +292,7 @@ LIMIT 5;
 
 ## Read content from file with custom options (headers, column delimiters, escape characters)
 
-This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](./reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
+This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -302,7 +310,7 @@ SELECT * FROM azure_storage.blob_get
 
 ## Use the decoder option
 
-This example illustrates the use of the `decoder` option. When the decoder option is not present, it's inferred from the extension of the file. But when the file name doesn't have an extension, or when that file name extension doesn't correspond to the one associated to the decoder that must be used to properly parse the contents of the file, you can explicitly pass the decoder argument.
+This example illustrates the use of the `decoder` option. When the decoder option isn't present, it's inferred from the extension of the file. But when the file name doesn't have an extension, or when that file name extension doesn't correspond to the one associated to the decoder that must be used to properly parse the contents of the file, you can explicitly pass the decoder argument.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -367,7 +375,7 @@ SELECT azure_storage.blob_put
 FROM (SELECT * FROM sample_data LIMIT 5) AS top_5_sample_data;
 ```
 
-Encoding format cannot be inferred because the file doesn't have a file extension, so it's explicitly configured as `parquet`. Also, compression algorithm is set to `zstd`.
+Encoding format can't be inferred because the file doesn't have a file extension, so it's explicitly configured as `parquet`. Also, compression algorithm is set to `zstd`.
 
 ```sql
 SELECT azure_storage.blob_put
@@ -382,7 +390,7 @@ FROM (SELECT * FROM sample_data LIMIT 5) AS top_5_sample_data;
 
 ## List all the references to Azure storage accounts
 
-This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](./reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
+This example illustrates how to find out which Azure storage accounts the `azure_storage` extension can reference in this database, together with the type of authentication that is used to access each storage account, and which users or roles are granted permission, via the [azure_storage.account_user_add](reference-azure-storage-extension.md#azure_storageaccount_user_add) function, to access that Azure storage account through the functionality provided by the extension.
 
 ```sql
 SELECT * FROM azure_storage.account_list();
@@ -390,7 +398,7 @@ SELECT * FROM azure_storage.account_list();
 
 ## Revoke access from a user or role on the Azure Blob storage reference
 
-This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account. 
+This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
 `<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
 
@@ -412,8 +420,8 @@ SELECT azure_storage.account_remove('<account_name>');
 
 ## Related content
 
-- [Troubleshoot errors](../troubleshoot/troubleshoot-azure-storage-extension.md).
-- [Reference](reference-azure-storage-extension.md).
-- [Azure Storage extension](concepts-storage-extension.md).
-- [Configure the Azure Storage extension](how-to-configure-azure-storage-extension.md).
-- [Extensions and modules](../extensions/concepts-extensions.md).
+- [Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL](../troubleshoot/troubleshoot-azure-storage-extension.md)
+- [Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL](reference-azure-storage-extension.md)
+- [Azure storage extension in Azure Database for PostgreSQL](concepts-storage-extension.md)
+- [Configure the Azure Storage extension in Azure Database for PostgreSQL](how-to-configure-azure-storage-extension.md)
+- [Extensions and modules](concepts-extensions.md)
