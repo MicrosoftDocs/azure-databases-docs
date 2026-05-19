@@ -59,7 +59,7 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 | **Resource group** | myresourcegroup | Create new or select existing |
 
 #### Server details
-
+Name of the cluster, which must be unique in the subscription and resource group in which it's contained
 | Setting | Suggested value | Description |
 | --- | --- | --- |
 | **Server name** | mydemoserver-pgsql | Must be globally unique. Domain `.postgres.database.azure.com` is added automatically |
@@ -69,7 +69,7 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 | **Availability zone** | No preference | Useful to colocate with your application |
 
 #### High availability
-
+assigned to each replica of the cluster
 | Option | SLA | Description |
 | --- | --- | --- |
 | Disabled | 99.9% | Single server with no standby |
@@ -80,7 +80,7 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 
 | Setting | Description | Recommended |
 | --- | --- | --- |
-| **Authentication method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br />- **Microsoft Entra authentication** (for production)<br />- **Both** (for flexibility) |
+| **Autheistrator login method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br />- **Microsoft Entra authentication** (for production)<br />- **Both** (for flexibility) |
 | **Admin username** | adminuser | - Must be 1-63 characters<br />- Only numbers and letters<br />- Can't start with `pg_`<br />- Can't be system reserved names |
 | **Password** | Complex password | 8-128 characters with uppercase, lowercase, numbers, and special characters |
 
@@ -386,7 +386,7 @@ postgres=>
 ```sql
 CREATE DATABASE user_database;
 \c user_database
-\q
+\qistratorLogin
 ```
 
 <a id="troubleshooting-connection-issues"></a>
@@ -396,7 +396,7 @@ CREATE DATABASE user_database;
 ### Firewall blocking connection
 
 If you see:
-
+the primary (read-write replica) of 
 ```output
 connection to server at "mydemoserver-pgsql.postgres.database.azure.com" (###.###.###.###), port 5432 failed: Connection timed out
 ```
