@@ -42,14 +42,5 @@ Using the [Azure portal](https://portal.azure.com/):
 
  :::image type="content" source="./media/how-to-scale-server/success-cores.png" alt-text="Screenshot showing the successful update." lightbox="./media/how-to-scale-server/success-cores.png":::
 
-> [!NOTE]  
-> The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
-
-
-## Related content
-
-- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
-
-
 
 
