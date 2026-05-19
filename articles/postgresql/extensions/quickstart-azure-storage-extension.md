@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS sample_data (
 
 Before proceeding, make sure that you:
 1. [Load the extension's library](how-to-configure-azure-storage-extension.md#load-the-extensions-library)
-1. [Allowlist the extension](how-to-configure-azure-storage-extension.md#allowlist-the-extension)
+1. [Allow list the extension](how-to-configure-azure-storage-extension.md#allow-list-the-extension)
 1. [Create the extension](how-to-configure-azure-storage-extension.md#create-the-extension)
 
 ## Add access key of storage account
