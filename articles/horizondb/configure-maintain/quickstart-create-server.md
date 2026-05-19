@@ -1,21 +1,21 @@
 ---
-title: "Quickstart: Create a Azure HorizonDB Database"
-description: Quickstart guide to creating and managing an Azure HorizonDB database.
-author: avnishrastogimsft
-ms.author: avrastog
+title: "Quickstart: Create an Azure HorizonDB cluster"
+description: Quickstart guide to creating an Azure HorizonDB cluster.
+author: scoriani
+ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
-ms.topic: how-to
+ms.topic: quickstart
 ai-usage: ai-assisted
 ---
 
-# Create an Azure HorizonDB database
+# Create an Azure HorizonDB cluster
 
-Azure HorizonDB is a managed service that you can use to run, manage, and scale highly available PostgreSQL databases in the cloud.
+Azure HorizonDB is a cloud native fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
 
-This quickstart shows you how to create an Azure HorizonDB database by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
+This quickstart shows you how to create an Azure HorizonDB cluster by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
 
 ## Prerequisites
 
@@ -26,20 +26,17 @@ Before you begin, make sure you have:
 
 ## Understand what you're creating
 
-An Azure HorizonDB database includes:
+An Azure HorizonDB cluster includes:
 
-- A configured set of {[compute resources](../compute-storage/concepts-compute.md)} and {[storage resources](../compute-storage/concepts-storage.md)}.
+- A configured set of compute resources and storage resources.
 - Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
 - A `postgres` database created by default.
 - An `azure_maintenance` database for managed service processes.
 - An `azure_sys` database for query store and autonomous tuning features.
 
-> [!NOTE]  
-> Connections typically use port 5432, or port 6432 if connecting through the built-in [PgBouncer in Azure HorizonDB](../connectivity/concepts-pgbouncer.md) connection pooler.
+## Create a cluster using the Azure portal
 
-## Create Azure HorizonDB database using Azure portal
-
-Follow these steps to create an Azure HorizonDB database using the Azure portal. The wizard guides you through essential configuration options for compute, storage, and authentication.
+Follow these steps to create an Azure HorizonDB cluster using the Azure portal. The wizard guides you through essential configuration options for compute, storage, and authentication.
 
 ### Navigate to the creation wizard
 
@@ -56,88 +53,66 @@ Follow these steps to create an Azure HorizonDB database using the Azure portal.
 | Setting | Suggested value | Notes |
 | --- | --- | --- |
 | **Subscription** | Your subscription | Choose where to bill the resource |
-| **Resource group** | myresourcegroup | Create new or select existing |
+| **Resource group** | {resourceGroup} | Create new or select existing |
 
-#### Server details
-Name of the cluster, which must be unique in the subscription and resource group in which it's contained
+#### Cluster details
+
 | Setting | Suggested value | Description |
 | --- | --- | --- |
-| **Server name** | mydemoserver-pgsql | Must be globally unique. Domain `.postgres.database.azure.com` is added automatically |
-| **Region** | Region closest to you | Consider compliance, data residency, pricing, and proximity to users |
-| **PostgreSQL version** | Latest available | Currently supported: **[!INCLUDE [major-versions-ascending](../includes/major-versions-ascending.md)]** |
-| **Workload type** | Development | Development uses Burstable SKUs. Production uses General Purpose or Memory Optimized. |
-| **Availability zone** | No preference | Useful to colocate with your application |
+| **Cluster name** | horizondb-production | Must be unique within the same Azure subscription and resource group. |
+| **Region** | Region closest to you | Consider compliance, data residency, pricing, and proximity to users. |
+| **PostgreSQL version** | Latest available | Only v17 is currently supported. |
 
-#### High availability
-assigned to each replica of the cluster
-| Option | SLA | Description |
+#### Compute details
+
+Select **Configure** to customize:
+
+| Setting | Suggested value | Description |
 | --- | --- | --- |
-| Disabled | 99.9% | Single server with no standby |
-| Same zone | 99.95% | Standby in the same availability zone |
-| Zone redundant | 99.99% | Standby in a different availability zone |
+| **vCores** | 2 | Number of vCores provisioned for primary and replica compute nodes (memory is automatically adjusted). |
+| **High availability** | Zone redundant | Disable or enable readable high availability replicas. |
+| **Readable high availability replicas** | 1 | Creates one or more replicas to increase availability protection in region and increase read throughput. |
+
+Select **Save** to confirm or **Cancel** to discard changes.
 
 #### Authentication
 
 | Setting | Description | Recommended |
-| --- | --- | --- |
-| **Autheistrator login method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br />- **Microsoft Entra authentication** (for production)<br />- **Both** (for flexibility) |
-| **Admin username** | adminuser | - Must be 1-63 characters<br />- Only numbers and letters<br />- Can't start with `pg_`<br />- Can't be system reserved names |
+|---------|-------------|-------------|
+| **Authentication method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br>- **Microsoft Entra authentication** (for production)<br>- **Both** (for flexibility) |
+| **Admin username** | adminuser | - Must be 1-63 characters<br>- Only numbers and letters<br>- Can't start with `pg_`<br>- Can't be system reserved names |
 | **Password** | Complex password | 8-128 characters with uppercase, lowercase, numbers, and special characters |
-
-### Configure compute and storage
-
-Select **Configure server** to customize:
-
-#### Compute tier
-
-| Tier | Use case | Description |
-| --- | --- | --- |
-| **Burstable** | Development | For workloads that don't need continuous full CPU |
-| **General Purpose** | Production | Most common production workloads |
-| **Memory Optimized** | High-memory workloads | Workloads requiring high memory-to-CPU ratio |
-
-#### Storage settings
-
-| Setting | Can change later | Description |
-| --- | --- | --- |
-| **Storage type** | ❌ No | Premium SSD or Premium SSD v2 |
-| **Storage size** | ✅ Yes (increase only) | Can't shrink after creation |
-| **Performance tier** | ✅ Yes | Controls IOPS and throughput |
-| **Storage autogrow** | ✅ Yes | Autoexpand when approaching limits |
-
-#### Backup settings
-
-| Setting | Can change later | Description |
-| --- | --- | --- |
-| **Backup retention** | ✅ Yes | 7-35 days |
-| **Backup redundancy** | ❌ No | Locally redundant, Zone redundant, or Geo-redundant |
-| **Geo-redundancy** | ❌ No | Available only in [Azure paired regions](/azure/reliability/cross-region-replication-azure) |
 
 ### Configure networking
 
 Choose your connectivity method (can't be changed after creation):
 
-#### Public access (allowed IP addresses)
+#### Network connectivity
 
 Connect through a public endpoint by using firewall rules.
 
-**Settings:**
+**Connectivity method:**
 
 | Setting | Description |
 | --- | --- |
-| **Allow public access** | Enable public access to configure firewall rules |
+| **Public access** |  Only the IP addresses you configure in the Firewall rules section can access this cluster. By default, no public IP addresses are allowed. |
+
+**Firewall rules:**
+
+| Setting | Description |
+| --- | --- |
 | **Allow Azure services** | Permit connections from all Azure services |
-| **Add current client IP** | Add your IP address to allow list |
+| **Add current client IP** | Add your IP address to the allowlist |
 
-#### Private access (virtual network Integration)
+#### Private endpoints
 
-Connect through a private endpoint within a virtual network. For more information, see [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md).
+Connect to a virtual network through a private endpoint. For more information, see [Network with private access for Azure HorizonDB](../network/concepts-networking-private-link.md).
 
 ### Configure security
 
 | Setting | Can change later | Options |
 | --- | --- | --- |
-| **Data encryption key** | ❌ No | Service-managed or Customer-managed |
+| **Data encryption key** | ❌ No | The storage used for database and backup is encrypted by default with service managed keys |
 
 ### Add resource tags (optional)
 
@@ -155,9 +130,11 @@ Organize resources with name-value pairs:
 1. Review all configurations.
 1. Select **Create** to deploy.
 
-Deployment typically takes 5-10 minutes. When complete, select **Go to resource** to access your server.
+Deployment typically takes 5-10 minutes. When complete, select **Go to resource** to access your cluster.
 
-## Create server using Azure CLI
+:::image type="content" source="media/quickstart-create-server/overview.png" alt-text="Screenshot of the Azure HorizonDB cluster Overview page in the Azure portal.":::
+
+## Create a cluster using the Azure CLI
 
 ### Prerequisites for CLI
 
@@ -165,64 +142,80 @@ Deployment typically takes 5-10 minutes. When complete, select **Go to resource*
 
 If you use Azure Cloud Shell, you're already signed in.
 
-### Create server with CLI
+Add the Azure CLI extension for HorizonDB:
+```azurecli-interactive
+az extension add --name horizondb
+```
 
-Create a server with one command:
+### Create an Azure HorizonDB cluster with CLI
+
+Create a cluster with one command:
 
 ```azurecli-interactive
-az postgres flexible-server create \
-  --resource-group myresourcegroup \
-  --name mydemoserver-pgsql \
-  --location eastus \
-  --admin-user myadmin \
-  --admin-password <password> \
-  --sku-name Standard_D4ds_v5 \
-  --tier GeneralPurpose \
-  --public-access 0.0.0.0 \
-  --storage-size 128 \
-  --tags "Environment=Development"
+az horizondb create \
+  --resource-group {resourceGroup} \
+  --name {cluster} \
+  --location australiaeast \
+  --version 17 \
+  --administrator-login {administratorLogin} \
+  --administrator-login-password {administratorLoginPassword} \
+  --v-cores 2
 ```
 
 ### CLI parameters reference
 
 | Parameter | Description | Example |
 | --- | --- | --- |
-| `--resource-group` | Resource group name | myresourcegroup |
-| `--name` | Globally unique server name | mydemoserver-pgsql |
-| `--location` | Azure region | eastus |
-| `--admin-user` | Administrator username | myadmin |
-| `--admin-password` | Administrator password | YourPassword123! |
-| `--sku-name` | Compute SKU | Standard_D4ds_v5 |
-| `--tier` | Compute tier | Burstable, GeneralPurpose, MemoryOptimized |
-| `--storage-size` | Storage in GB | 128 |
-| `--public-access` | IP addresses allowed | 0.0.0.0 (all Azure services), IP address, or IP range |
-| `--version` | PostgreSQL version | 16 |
-| `--high-availability` | HA mode | Disabled, SameZone, ZoneRedundant |
-| `--backup-retention` | Backup retention days | 7-35 |
+| `--resource-group` | Resource group name | {resourceGroup} |
+| `--name` | Cluster name (unique within the subscription and resource group) | {cluster} |
+| `--location` | Azure region | australiaeast |
+| `--version` | PostgreSQL version | 17 |
+| `--administrator-login` | Administrator username | {administratorLogin} |
+| `--administrator-login-password` | Administrator password | {administratorLoginPassword} |
+| `--v-cores` | Number of vCores assigned to each replica of the cluster | 2 |
+| `--replica-count` | Number of readable high availability replicas | 1 |
+| `--zone-placement-policy` | Defines how replicas are placed across availability zones | BestEffort or Strict |
+
+Add firewall rules for client connectivity:
+
+```azurecli-interactive
+az horizondb firewall-rule create \
+  --resource-group {resourceGroup} \
+  --cluster-name {cluster} \
+  --firewall-rule-name {firewallRule} \
+  --start-ip-address {yourIPAddress} \
+  --end-ip-address {yourIPAddress}
+```
 
 ### Advanced CLI example
 
-Create a zone-redundant highly available server:
+Create a zone-redundant highly available cluster:
 
 ```azurecli-interactive
-az postgres flexible-server create \
-  --resource-group myresourcegroup \
-  --name mydemoserver-pgsql-ha \
-  --location eastus \
-  --admin-user myadmin \
-  --admin-password <password> \
-  --sku-name Standard_D4ds_v5 \
-  --tier GeneralPurpose \
-  --storage-size 256 \
-  --storage-type PremiumV2_LRS \
-  --high-availability ZoneRedundant \
-  --zone 1 \
-  --standby-zone 2 \
-  --backup-retention 14 \
-  --public-access 0.0.0.0
+az horizondb create \
+  --resource-group {resourceGroup} \
+  --name {cluster} \
+  --location australiaeast \
+  --version 17 \
+  --administrator-login {administratorLogin} \
+  --administrator-login-password {administratorLoginPassword} \
+  --v-cores 2 \
+  --replica-count 2 \
+  --zone-placement-policy Strict
 ```
 
-## Create server using ARM template
+Add firewall rules for client connectivity:
+
+```azurecli-interactive
+az horizondb firewall-rule create \
+  --resource-group {resourceGroup} \
+  --cluster-name {cluster} \
+  --firewall-rule-name {firewallRule} \
+  --start-ip-address {myIPAddress} \
+  --end-ip-address {myIPAddress}
+```
+
+## Create a cluster using an ARM template
 
 ### ARM template overview
 
@@ -230,120 +223,170 @@ Azure Resource Manager (ARM) templates let you define infrastructure as code. Us
 
 ### Minimal ARM template
 
-Save this file as `postgres-server-template.json`:
+Save this file as `horizondb-template.json`:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "serverName": {
-      "type": "string",
-      "metadata": {
-        "description": "Server name must be globally unique"
-      }
-    },
-    "administratorLogin": {
-      "type": "string",
-      "minLength": 1,
-      "maxLength": 63,
-      "metadata": {
-        "description": "Administrator username"
-      }
-    },
-    "administratorLoginPassword": {
-      "type": "securestring",
-      "minLength": 8,
-      "metadata": {
-        "description": "Administrator password"
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Server location"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.DBforPostgreSQL/flexibleServers",
-      "apiVersion": "2024-08-01",
-      "name": "[parameters('serverName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard_D4ds_v5",
-        "tier": "GeneralPurpose"
-      },
-      "properties": {
-        "administratorLogin": "[parameters('administratorLogin')]",
-        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-        "version": "16",
-        "storage": {
-          "storageSizeGB": 128,
-          "type": "Premium_LRS",
-          "autoGrow": "Enabled"
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "String"
         },
-        "backup": {
-          "backupRetentionDays": 7,
-          "geoRedundantBackup": "Disabled"
+        "poolName": {
+            "defaultValue": "DefaultPool",
+            "type": "String"
         },
-        "network": {
-          "publicNetworkAccess": "Enabled"
+        "location": {
+            "type": "String"
         },
-        "highAvailability": {
-          "mode": "Disabled"
+        "administratorLogin": {
+            "type": "String"
+        },
+        "administratorLoginPassword": {
+            "type": "SecureString"
+        },
+        "version": {
+            "type": "String"
+        },
+        "vCores": {
+            "type": "String"
+        },
+        "apiVersion": {
+            "defaultValue": "2026-01-20-preview",
+            "type": "String"
+        },
+        "firewallRules": {
+            "defaultValue": [],
+            "type": "Array"
         }
-      }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.HorizonDB/clusters",
+            "apiVersion": "[parameters('apiVersion')]",
+            "name": "[parameters('clusterName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "createMode": "Default",
+                "version": "[parameters('version')]",
+                "administratorLogin": "[parameters('administratorLogin')]",
+                "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+                "vCores": "[parameters('vCores')]"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2019-08-01",
+            "name": "[concat('firewallRules-', copyIndex())]",
+            "dependsOn": [
+                "[concat('Microsoft.HorizonDB/clusters/', parameters('clusterName'))]"
+            ],
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.HorizonDB/clusters/pools/firewallRules",
+                            "name": "[concat(parameters('clusterName'),'/',parameters('poolName'),'/',parameters('firewallRules')[copyIndex()].name)]",
+                            "apiVersion": "[parameters('apiVersion')]",
+                            "properties": {
+                                "description": "[parameters('firewallRules')[copyIndex()].name]",
+                                "startIpAddress": "[parameters('firewallRules')[copyIndex()].startIpAddress]",
+                                "endIpAddress": "[parameters('firewallRules')[copyIndex()].endIpAddress]"
+                            }
+                        }
+                    ]
+                }
+            },
+            "copy": {
+                "name": "firewallRulesIterator",
+                "count": "[if(greater(length(parameters('firewallRules')), 0), length(parameters('firewallRules')), 1)]",
+                "mode": "Serial"
+            },
+            "condition": "[greater(length(parameters('firewallRules')), 0)]"
+        }
+    ]
+}
+```
+
+Save this file as `horizondb-parameters.json`:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "{cluster}"
+        },
+        "location": {
+            "value": "australiaeast"
+        },
+        "administratorLogin": {
+            "value": "{administratorLogin}"
+        },
+        "administratorLoginPassword": {
+            "value": "{administratorLoginPassword}"
+        },
+        "version": {
+            "value": "17"
+        },
+        "vCores": {
+            "value": "2"
+        },
+        "apiVersion": {
+            "value": "2026-01-20-preview"
+        },
+        "firewallRules": {
+            "value": [
+                {
+                    "name": "myfirewallrule",
+                    "startIpAddress": "{yourIPAddress}",
+                    "endIpAddress": "{yourIPAddress}"
+                }
+            ]
+        }
     }
-  ],
-  "outputs": {
-    "serverFQDN": {
-      "type": "string",
-      "value": "[reference(parameters('serverName')).fullyQualifiedDomainName]"
-    }
-  }
 }
 ```
 
 ### Deploy the ARM template
 
 ```azurecli-interactive
-az group create --name myresourcegroup --location eastus
+az group create --name {resourceGroup} --location australiaeast
 
 az deployment group create \
-  --resource-group myresourcegroup \
-  --template-file postgres-server-template.json \
-  --parameters \
-    serverName=mydemoserver-pgsql \
-    administratorLogin=myadmin \
-    administratorLoginPassword=<password>
+  --resource-group {resourceGroup} \
+  --template-file horizondb-template.json \
+  --parameters horizondb-parameters.json
 ```
 
 ## Get connection information
 
-After creating your server, retrieve connection details:
+After creating your cluster, retrieve connection details:
 
 <a id="using-azure-portal"></a>
 
 ### Use Azure portal
 
-1. Go to your server in the Azure portal.
+1. Go to your cluster in the Azure portal.
 1. Open the **Overview** page.
 1. Copy these values:
-   - **Server name** (Endpoint): `mydemoserver-pgsql.postgres.database.azure.com`
-   - **Administrator login**: `myadmin`
+   - **Cluster name** (Primary endpoint): `{cluster}.{randomId}.australiaeast.horizondb.azure.com`
+   - **Administrator login**: `{administratorLogin}`
 
 <a id="using-azure-cli"></a>
 
 ### Use Azure CLI
 
 ```azurecli-interactive
-az postgres flexible-server show \
-  --resource-group myresourcegroup \
-  --name mydemoserver-pgsql \
-  --query "{serverName:fullyQualifiedDomainName, adminUser:administratorLogin}" \
+az horizondb show \
+  --resource-group {resourceGroup} \
+  --name {cluster} \
+  --query "{clusterName:properties.fullyQualifiedDomainName, adminUser:properties.administratorLogin}" \
   --output table
 ```
 
@@ -353,18 +396,18 @@ az postgres flexible-server show \
 
 If you don't have PostgreSQL client tools, [download PostgreSQL](https://www.postgresql.org/download) for your platform.
 
-### Connect to your server
+### Connect to your cluster
 
 ```bash
-psql "host=mydemoserver-pgsql.postgres.database.azure.com port=5432 dbname=postgres user=myadmin sslmode=require"
+psql "host={cluster}.{randomId}.australiaeast.horizondb.azure.com port=5432 dbname=postgres user={administratorLogin} sslmode=require"
 ```
 
-When prompted, enter the administrator password you set during server creation.
+When prompted, enter the administrator password you set during cluster creation.
 
 ### Connection string format
 
 ```
-host=<server-name>.postgres.database.azure.com port=5432 dbname=<database-name> user=<admin-user> password=<password> sslmode=require
+host={cluster}.{randomId}.australiaeast.horizondb.azure.com port=5432 dbname={databaseName} user={administratorLogin} password={administratorLoginPassword} sslmode=require
 ```
 
 ### Verify connection
@@ -372,10 +415,10 @@ host=<server-name>.postgres.database.azure.com port=5432 dbname=<database-name> 
 After connecting, you should see:
 
 ```output
-psql (14.13, server 16.4)
-WARNING: psql major version 14, server major version 16.
+psql (16.12, server 17.9 (Azure HorizonDB (c8e7b717d05)(release)))
+WARNING: psql major version 16, server major version 17.
          Some psql features might not work.
-SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, compression: off)
 Type "help" for help.
 
 postgres=>
@@ -386,7 +429,7 @@ postgres=>
 ```sql
 CREATE DATABASE user_database;
 \c user_database
-\qistratorLogin
+\q
 ```
 
 <a id="troubleshooting-connection-issues"></a>
@@ -396,20 +439,20 @@ CREATE DATABASE user_database;
 ### Firewall blocking connection
 
 If you see:
-the primary (read-write replica) of 
+
 ```output
-connection to server at "mydemoserver-pgsql.postgres.database.azure.com" (###.###.###.###), port 5432 failed: Connection timed out
+connection to server at "{cluster}.{randomId}.australiaeast.horizondb.azure.com" (###.###.###.###), port 5432 failed: Connection timed out
 ```
 
-**Solution**: Add your IP address to the firewall rules:
+**Solution**: Make sure that there's a firewall rule whose range of start and end IP addresses includes the IP address with which your computer is trying to access the cluster.
 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create \
-  --resource-group myresourcegroup \
-  --name mydemoserver-pgsql \
-  --rule-name AllowMyIP \
-  --start-ip-address <your-ip> \
-  --end-ip-address <your-ip>
+az horizondb firewall-rule create \
+  --resource-group {resourceGroup} \
+  --cluster-name {cluster} \
+  --firewall-rule-name {firewallRule} \
+  --start-ip-address {yourIPAddress} \
+  --end-ip-address {yourIPAddress}
 ```
 
 ### SSL required but not configured
@@ -423,15 +466,15 @@ When you finish the quickstart, delete the resources to avoid charges.
 ### Delete the entire resource group
 
 ```azurecli-interactive
-az group delete --name myresourcegroup --yes
+az group delete --name {resourceGroup} --yes
 ```
 
-### Delete only the server
+### Delete only the cluster
 
 ```azurecli-interactive
-az postgres flexible-server delete \
-  --resource-group myresourcegroup \
-  --name mydemoserver-pgsql \
+az horizondb delete \
+  --resource-group {resourceGroup} \
+  --name {cluster} \
   --yes
 ```
 
