@@ -53,8 +53,8 @@ In HorizonDB, Azure Monitor metrics report the following consumption information
 To view backup and data storage metrics in the Azure portal, follow these steps:
 
 1. Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
-2. In the Monitoring section, select the Metrics page.
-3. From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
+1. In the Monitoring section, select the Metrics page.
+1. From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
 
 
 ## Backup storage cost
@@ -99,4 +99,4 @@ Avoid doing large write operations, such as vacuum and reindex, more frequently 
 
 ## Related content
 
-- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md)
