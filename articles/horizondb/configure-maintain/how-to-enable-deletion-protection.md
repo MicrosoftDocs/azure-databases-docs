@@ -40,13 +40,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
 
-2. In the settings menu, select **Locks** blade.
+2. In the settings menu, select **Locks** page.
 
-3. Click the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
+3. Select the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
 
     :::image type="content" source="./media/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/delete-lock-01.png":::
 
-4. Click **Ok**.You should see a confirmation message indicating that the lock was created successfully
+4. Select **Ok**.You should see a confirmation message indicating that the lock was created successfully
 
     :::image type="content" source="./media/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/success-lock.png":::
 
