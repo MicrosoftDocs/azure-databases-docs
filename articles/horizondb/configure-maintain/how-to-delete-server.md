@@ -17,8 +17,6 @@ This article provides step-by-step instructions to delete an Azure HorizonDB ins
 
 ## Delete a server
 
-### [Portal](#tab/portal-delete-server)
-
 Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB instance.
