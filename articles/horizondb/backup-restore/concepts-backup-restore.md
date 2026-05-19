@@ -99,4 +99,4 @@ Avoid doing large write operations, such as vacuum and reindex, more frequently 
 
 ## Related content
 
-- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+-[Restore to custom restore point](how-to-restore-custom-restore-point.md).
