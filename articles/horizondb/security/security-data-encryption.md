@@ -45,3 +45,4 @@ Data encryption with **service managed keys** for Azure HorizonDB provides the f
 
 ## Related content
 
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).

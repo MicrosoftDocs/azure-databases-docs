@@ -30,7 +30,7 @@ You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Az
 
 - Locks can be applied at the **subscription**, **resource group**, or **server** level.
 - Child resources inherit locks from their parents; the **most restrictive lock** takes precedence.
-- Locks restrict ARM operations (Portal, CLI, API) but do **not** block data plane actions (like editing tables or schemas).
+- Locks restrict ARM(Azure Resource Manager) operations (Portal, CLI, API) but do **not** block data plane actions (like editing tables or schemas).
 
 ## Apply Locks Using Portal
 
@@ -44,12 +44,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Click the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
 
-    :::image type="content" source="./media/how-to-enable-delete-protection/delete-lock.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/delete-lock.png":::
+    :::image type="content" source="./media/how-to-enable-delete-protection/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/how-to-enable-delete-protection/delete-lock-01.png":::
 
 4. Click **Ok**.You should see a confirmation message indicating that the lock was created successfully
 
     :::image type="content" source="./media/how-to-enable-delete-protection/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/how-to-enable-delete-protection/success-lock.png":::
-
 
 
 ## Permissions

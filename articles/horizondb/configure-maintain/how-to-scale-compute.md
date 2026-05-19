@@ -15,11 +15,9 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to perform scaling operations for the compute in Azure HorizonDB.
 
-When you request a scaling operation of the compute used by your Azure HorizonDB, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, 
+When you request a scaling operation of the compute used by your Azure HorizonDB, your server undergoes a restart.
 
 ## Steps to scale compute
-
-### [Portal](#tab/portal-scale-compute)
 
 Using the [Azure portal](https://portal.azure.com/):
 
@@ -52,6 +50,6 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Related content
 
-
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 
 

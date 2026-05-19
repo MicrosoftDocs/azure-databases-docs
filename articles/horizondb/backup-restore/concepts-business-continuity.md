@@ -27,8 +27,8 @@ The table below illustrates the features that Azure Database for PostgreSQL offe
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
-| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups can be retained from 7 days up to 35 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to few hours. For more details, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
-| **Zone redundant high availability** | Azure HorizonDB need atleast two replicas on the cluster to have zonal resilience.You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it. |
+| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups can be retained from 7 days up to 35 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to few hours. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
+| **Zone redundant high availability** | Azure HorizonDB need at least two replicas on the cluster to have zonal resilience. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it. |
 | **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |
 
 
@@ -52,16 +52,11 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
 
 
 > [!IMPORTANT]
-> As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, as well as other internal database operations, such as sorting. Therefore we do not recommend creating user schema objects in temporary tablespace, as we don't guarantee durability of such objects after Server restarts, HA failovers, etc.
+> As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, and other internal database operations, such as sorting. Therefore we don't recommend creating user schema objects in temporary tablespace, as we don't guarantee durability of such objects after Server restarts, HA failovers, etc.
 
-### Configure your database after recovery from regional failure
-
-* If you are using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. 
-* If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and Access Logs in Azure Database for PostgreSQL](../monitor/how-to-configure-and-access-logs.md).
-* Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](../monitor/how-to-alert-on-metrics.md).
 
 > [!IMPORTANT]
-> Deleted servers cannot be restored. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
 
 
 

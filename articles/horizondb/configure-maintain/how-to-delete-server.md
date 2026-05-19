@@ -47,7 +47,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure HorizonDB instance when there are private endpoints." lightbox="media/how-to-delete-server/accept-conditions-private-endpoints.png":::
 
-1. If the server is VNET integrated, you also have to check the **I acknowledge that the deletion of the server doesn't delete the virtual network in which the server is integrated. After the server is deleted, consider if you should also delete the virtual network.** box, so that the **Delete** button is enabled.
+1. If the server is VNET(Virtual Network) integrated, you also have to check the **I acknowledge that the deletion of the server doesn't delete the virtual network in which the server is integrated. After the server is deleted, consider if you should also delete the virtual network.** box, so that the **Delete** button is enabled.
 
    :::image type="content" source="media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure HorizonDB instance when it's VNET integrated." lightbox="media/how-to-delete-server/accept-conditions-vnet-integration.png":::
 

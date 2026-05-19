@@ -22,7 +22,7 @@ Azure HorizonDB provides highly scalable storage and compute performance tiers. 
 
 Storage and compute separation enables HorizonDB to offload backup and restore operations to the storage layer, eliminating resource consumption on compute replicas. As a result, backups do not impact the performance of either primary or secondary compute replicas.
 
-Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots.During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
+Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
 
 
 
@@ -37,7 +37,7 @@ Transaction log backups occur at variable intervals based on workload activity. 
 These backup files can't be exported or used to create servers outside your Azure HorizonDB cluster. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
 
 
-## Backup Metrics
+## Backup metrics
 
 In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
 
@@ -46,15 +46,15 @@ You can use the Backup Storage Used metric in the Azure portal to monitor the 
 
 In HorizonDB, Azure Monitor metrics report the following consumption information:
 
-1. Data backup storage size (snapshot backup size).
-2. Data storage size (allocated database size).
-3. Log backup storage size (transaction log backup size).
+- Data backup storage size (snapshot backup size).
+- Data storage size (allocated database size).
+- Log backup storage size (transaction log backup size).
 
 To view backup and data storage metrics in the Azure portal, follow these steps:
 
-* Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
-* In the Monitoring section, select the Metrics page.
-* From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
+- Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
+- In the Monitoring section, select the Metrics page.
+- From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
 
 
 ## Backup storage cost
@@ -65,7 +65,7 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-*Total billable backup storage size = ( Changes to Data pages + log backup storage size)*
+*Total billable backup storage size = (Changes to Data pages + log backup storage size)*
 
 Data storage size isn't included in the billable backup because it's already billed as allocated database storage.
 
@@ -83,15 +83,13 @@ Billable backup storage for a deleted database reduces gradually over time after
 Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
 
 Reduce the backup retention period to the minimum for your needs.
-Avoid doing large write operations, such as vaccum and reindex, more frequently than you need to. 
+Avoid doing large write operations, such as vacuum and reindex, more frequently than you need to. 
 
 
-## Backup Limitations
+## Backup limitations
 
 - Geo-redundant backups are currently not supported.
-   
-- Maximum backup retention currently supported is 7 days. This limit will be increased to 35 days in the coming weeks.
-
+- Maximum backup retention currently supported is 7 days. 
 - Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
 
 

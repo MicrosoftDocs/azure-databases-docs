@@ -37,17 +37,6 @@ Network security articles are in the networking sections:
 
 - [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
 
-- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)
-
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)
-
-## Identity management
-
-The Identity Management section focuses on authentication, securing identities, and access controls using centralized identity and access management systems. It covers best practices such as strong authentication mechanisms and managed identities for applications.
-
-Here are some possible security services, features, and best practices for the identity management section:
-
-- **Use Entra instead of database local authentication**: You should disallow local authentication for your PostgreSQL server. Instead, use Microsoft Entra authentication only (not mixed mode) to manage access to your database. Microsoft Entra provides centralized authentication with strong security controls and Defender for Identity real-time protection. For more information, visit [Microsoft Entra](/entra) in general and [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md).
 
 - **Use managed identities for secure application access**: Use managed identities in Azure to securely authenticate applications and services without the need to manage credentials. This provides a secure and simplified way to access resources like Azure HorizonDB. For more information, visit [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
 
