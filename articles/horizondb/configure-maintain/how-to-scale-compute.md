@@ -46,10 +46,10 @@ Using the [Azure portal](https://portal.azure.com/):
 > The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
 
 
----
-
 ## Related content
 
--[Restore to custom restore point](how-to-restore-custom-restore-point.md)
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+
+
 
 
