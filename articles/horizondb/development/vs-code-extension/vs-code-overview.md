@@ -18,28 +18,28 @@ ai-usage: ai-assisted
 
 # What is the PostgreSQL extension for Visual Studio Code?
 
-The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment.
+The PostgreSQL extension for Visual Studio Code simplifies PostgreSQL database management and development. You can connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving Visual Studio Code.
 
-The extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with Azure-managed PostgreSQL services, including:
+The extension integrates with Azure-managed PostgreSQL services, including:
 
-- **Azure Database for PostgreSQL flexible server** – the general-purpose managed PostgreSQL service in Azure.
-- **Azure HorizonDB for PostgreSQL** – a cloud-native PostgreSQL service built for tier-1 enterprise workloads, featuring a disaggregated storage/compute architecture, low-latency commits, fast failover, load-balanced read scale-out across readable HA replicas, and deep AI integration.
+- **Azure Database for PostgreSQL flexible server** - the general-purpose managed PostgreSQL service in Azure.
+- **Azure HorizonDB** - a cloud-native PostgreSQL service built for tier-1 enterprise workloads. HorizonDB features a disaggregated storage/compute architecture, low-latency commits, fast failover, load-balanced read scale-out across readable HA replicas, and deep AI integration.
 
-The same extension works against both services. Where behavior differs (for example, connection endpoints or supported authentication methods), it is called out in the sections below.
+The same extension works against both services. Where behavior differs (for example, connection endpoints or supported authentication methods), it's called out in the sections that follow.
 
 ## How to install the extension
 
 You can install the PostgreSQL extension directly from the Extensions Marketplace in Visual Studio Code. Follow these steps:
 
 1. Open the Extensions view in Visual Studio Code by selecting the **Extensions** icon in the Activity Bar or by using the **View: Extensions** command.
-2. Search for **PostgreSQL** in the Extensions Marketplace.
-3. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
+1. Search for **PostgreSQL** in the Extensions Marketplace.
+1. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
 
 When you install the extension, an elephant icon appears to represent the PostgreSQL page in the Visual Studio Code sidebar.
 
 ## Features
 
-The PostgreSQL extension for Visual Studio Code brings an array of powerful features to enhance productivity and streamline development workflows against both Azure Database for PostgreSQL flexible server and Azure HorizonDB.
+The PostgreSQL extension for Visual Studio Code provides the following features for both Azure Database for PostgreSQL flexible server and Azure HorizonDB.
 
 ### Connection Manager
 
@@ -54,10 +54,10 @@ The Connection Manager simplifies connecting to local and cloud-hosted PostgreSQ
 
 Azure HorizonDB exposes two endpoints, which you can add as separate connection profiles in the extension:
 
-- **Read/write endpoint** – Connects to the primary, which accepts both read and write transactions. Use this endpoint for application writes, schema changes, and any read workload that requires the latest committed data. The endpoint is listed on the cluster **Overview** blade and on the **Replicas** blade in the Azure portal.
-- **Reader endpoint** – Automatically load-balances read-only connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out workloads, reporting, and analytics. Up to 4 readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
+- **Read/write endpoint** - Connects to the primary, which accepts both read and write transactions. Use this endpoint for application writes, schema changes, and any read workload that requires the latest committed data. The endpoint is listed on the cluster **Overview** page and on the **Replicas** page in the Azure portal.
+- **Reader endpoint** - Automatically load-balances read-only connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out workloads, reporting, and analytics. Up to four readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
 
-A typical pattern is to save two profiles in the Connection Manager — one pointed at the read/write endpoint and one pointed at the reader endpoint — and switch between them in the Object Explorer based on the task at hand.
+A typical pattern is to save two profiles in the Connection Manager - one pointed at the read/write endpoint and one pointed at the reader endpoint - and switch between them in the Object Explorer based on the task at hand.
 
 ### Object Explorer
 
@@ -90,11 +90,11 @@ The Schema Visualizer gives you an interactive, diagram-based view of your datab
 
 Key capabilities include:
 
-- **Full table view** – Every table is rendered as a card showing its columns and data types.
-- **Relationship lines** – Foreign key relationships between tables are drawn as connecting lines, so you can see at a glance how your data model fits together.
-- **Schema-based organization** – Tables are grouped by their parent schema (for example, `public`, `hr`, `ecom`), making it easy to navigate large databases.
-- **Show / hide by schema** – Toggle entire schemas on or off to focus only on the parts of the model you care about, and to keep diagrams readable on large databases.
-- **Pan and zoom** – Navigate large diagrams with standard pan, zoom, and fit-to-screen controls.
+- **Full table view** - Every table is rendered as a card showing its columns and data types.
+- **Relationship lines** - Foreign key relationships between tables are drawn as connecting lines, so you can see at a glance how your data model fits together.
+- **Schema-based organization** - Tables are grouped by their parent schema (for example, `public`, `hr`, `ecom`), making it easy to navigate large databases.
+- **Show / hide by schema** - Toggle entire schemas on or off to focus only on the parts of the model you care about, and to keep diagrams readable on large databases.
+- **Pan and zoom** - Navigate large diagrams with standard pan, zoom, and fit-to-screen controls.
 
 Schema Visualization works against any connected database, including local PostgreSQL, Azure Database for PostgreSQL flexible server, and Azure HorizonDB clusters.
 
@@ -102,9 +102,9 @@ Schema Visualization works against any connected database, including local Postg
 
 The Apache AGE Graph Visualizer lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
 
-The `age` extension is allow-listed by default on Azure HorizonDB, so graph workloads can run on a HorizonDB cluster without additional configuration. The same requirements apply when authoring Cypher queries against flexible server or HorizonDB:
+The `age` extension is allow-listed by default on Azure HorizonDB, so graph workloads can run on a HorizonDB cluster without additional configuration. The same requirements apply when you author Cypher queries against flexible server or HorizonDB:
 
-- **Return full objects, not scalar properties** – The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead, return the full objects and name the relationship variable:
+- **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead, return the full objects and name the relationship variable:
 
   ```sql
   SELECT * FROM cypher('my_graph', $$
@@ -113,7 +113,7 @@ The `age` extension is allow-listed by default on Azure HorizonDB, so graph work
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-- **Set `disp_label` for meaningful node text** – Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+- **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
 
   ```sql
   SELECT * FROM cypher('my_graph', $$
@@ -124,7 +124,7 @@ The `age` extension is allow-listed by default on Azure HorizonDB, so graph work
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-- **Match output columns to returned objects** – The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+- **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
 
   ```sql
   SELECT * FROM cypher('my_graph', $$
@@ -137,16 +137,16 @@ The `age` extension is allow-listed by default on Azure HorizonDB, so graph work
 
 When connected to an Azure HorizonDB cluster, the extension gives you a first-class authoring surface for HorizonDB's AI capabilities, which are exposed as standard PostgreSQL extensions and functions:
 
-- **`pgvector`** – Vector data type and similarity operators.
-- **`pg_diskann`** – High-performance vector index with **Advanced Filtering**, which evaluates `WHERE` predicates during the vector graph traversal so filtered similarity queries return faster and more consistently.
-- **`azure_ai`** – AI Functions such as `azure_ai.generate()`, `azure_ai.is_true()`, `azure_ai.extract()`, and `azure_openai.create_embeddings()`.
-- **AI Model Management** – When enabled on the cluster, HorizonDB automatically provisions a default chat model (`gpt-5`) and a default embedding model (`text-embedding-3-small`) through Microsoft Foundry, installs and configures `azure_ai`, and wires the AI Functions to those managed models — no manual key handling required. You can also register your own Microsoft Foundry deployments (Bring Your Own Model) and call them by alias from the same AI Functions.
+- `pgvector` - Vector data type and similarity operators.
+- `pg_diskann` - High-performance vector index with **Advanced Filtering**, which evaluates `WHERE` predicates during the vector graph traversal so filtered similarity queries return faster and more consistently.
+- `azure_ai` - AI Functions such as `azure_ai.generate()`, `azure_ai.is_true()`, `azure_ai.extract()`, and `azure_openai.create_embeddings()`.
+- **AI Model Management** - When enabled on the cluster, HorizonDB automatically provisions a default chat model (`gpt-5`) and a default embedding model (`text-embedding-3-small`) through Microsoft Foundry, installs and configures `azure_ai`, and wires the AI Functions to those managed models - no manual key handling required. You can also register your own Microsoft Foundry deployments (Bring Your Own Model) and call them by alias from the same AI Functions.
 
 You can author and run these AI workloads directly from the Query Editor, and the Results Viewer renders vector and JSONB output inline.
 
 ### GitHub Copilot integration
 
-This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and request Copilot to execute specific SQL operations against either an Azure Database for PostgreSQL flexible server instance or an Azure HorizonDB cluster. Copilot picks up the live connection context — including extensions installed on the target — so suggestions on a HorizonDB connection are aware of `pgvector`, `pg_diskann`, `azure_ai`, and `age`.
+This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and request Copilot to execute specific SQL operations against either an Azure Database for PostgreSQL flexible server instance or an Azure HorizonDB cluster. Copilot picks up the live connection context - including extensions installed on the target - so suggestions on a HorizonDB connection are aware of `pgvector`, `pg_diskann`, `azure_ai`, and `age`.
 
 ## Supported operating systems
 
@@ -169,6 +169,6 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 
 ## Related content
 
-- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](./vs-code-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](./vs-code-github-copilot.md)
+- [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
