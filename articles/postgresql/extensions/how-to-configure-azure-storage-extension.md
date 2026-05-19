@@ -21,7 +21,7 @@ You must follow these steps to be able to use the Azure Storage extension:
 1. [Identify Azure Storage accounts](#identify-the-azure-storage-accounts) 
 1. [Choose type of authorization](#choose-type-of-authorization)
 1. [Load the extension's library](#load-the-extensions-library)
-1. [Allowlist the extension](#allowlist-the-extension)
+1. [Allow list the extension](#allow-list-the-extension)
 1. [Create the extension](#create-the-extension)
 1. [Initialize encryption key to encrypt sensitive credentials](#initialize-encryption-key-to-encrypt-sensitive-credentials)
 1. [Use the extension to import and export data](#use-the-extension-to-import-and-export-data)
@@ -160,9 +160,9 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 
 ---
 
-## Allowlist the extension
+## Allow list the extension
 
-You must allowlist the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
+You must allow list the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
 
 ### [Azure portal](#tab/portal-02)
 
