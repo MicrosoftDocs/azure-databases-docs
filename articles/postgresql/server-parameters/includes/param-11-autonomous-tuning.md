@@ -2,10 +2,10 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/11/2026
+ms.date: 05/18/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL Flexible Server 18 does not have any server parameter in the 'Autonomous Tuning' category.
+> Azure Database for PostgreSQL Flexible Server 11 does not have any server parameter in the 'Autonomous Tuning' category.
