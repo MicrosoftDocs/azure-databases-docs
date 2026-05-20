@@ -19,8 +19,7 @@ Azure HorizonDB provides fully managed, built‑in backups to protect data and s
 
 ## Backup overview
 
-Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshot-based backups, Azure HorizonDB continuously captures database changes by archiving write-ahead logs (WAL) to Azure Blob storage as transactions are committed. This ensures that all changes are durably persisted in near real time without requiring any manual intervention.
-The WAL archiving process is managed by the storage layer and operates independently of the compute layer. This design reduces overhead on database resources and helps maintain consistent performance for active workloads.
+Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshot-based backups, Azure HorizonDB continuously captures database changes by archiving write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving continuously captures and persists database changes in near real time without requiring manual intervention. The archiving process is handled by the storage layer and operates independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workload.
 
 Because WAL archiving runs continuously in the background, it provides ongoing data protection without affecting query execution or application availability. WAL files are retained in accordance with the configured backup retention policy. When combined with periodic snapshots, they enable point-in-time restore (PITR), allowing the database to be recovered to a specific moment within the retention window. This supports reliable recovery from scenarios such as data corruption, unintended modifications, or operational incidents.
 
@@ -39,7 +38,7 @@ WAL archiving occur at variable intervals based on workload activity. Logs are c
 
 ## Backup metrics
 
-In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
+In Azure HorizonDB, automated backups capture incremental changes to data pages and transaction logs, which are both retained for the configured backup retention period.
 
 
 You can use the Backup Storage Used metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
@@ -67,7 +66,7 @@ For HorizonDB, billable backup storage is calculated as follows:
 
 *Total billable backup storage size = (Changes to Data pages + log backup storage size)*
 
-Data storage size isn't included in the billable backup because it's already billed as allocated database storage.
+Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HoirzonDB database, billable backup storage is calculated as follows:
 
@@ -75,7 +74,7 @@ Deleted HorizonDB databases incur backup costs to support recovery to a point in
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
-Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
+Billable backup storage for a deleted database decreases over time after deletion, based on the remaining retention period. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
 
 > [!Note]
 > The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of HoirzonDB cluster. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
