@@ -1,8 +1,8 @@
 ---
 title: Manage User in Azure HorizonDB
 description: This article describes how you can create new user accounts to interact with an Azure HorizonDB instance.
-author: avnishrastogimsft
-ms.author: avrastog
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -20,7 +20,7 @@ Suppose you want to learn how to create and manage Azure subscription users and 
 
 ## The server admin account
 
-When you first created your Azure HorizonDB instance, you provided a server admin username and password. For more information, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) to see the step-by-step approach. Since the server admin user name is a custom name, you can locate the chosen server admin user name from the Azure portal.
+When you first created your Azure HorizonDB instance, you provided a cluster administrator username and password. For more information, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) to see the step-by-step approach. Since the server admin user name is a custom name, you can locate the chosen server admin user name from the Azure portal.
 
 The Azure HorizonDB instance is created with the three default roles defined. You can see these roles by running the command: `SELECT rolname FROM pg_roles;`
 
@@ -28,13 +28,13 @@ The Azure HorizonDB instance is created with the three default roles defined. Yo
 - azuresu
 - your server admin user
 
-Your server admin user is a member of the azure_pg_admin role. However, the server admin account isn't part of the azuresu role. Since this service is a managed PaaS service, only Microsoft is part of the super user role.
+Your admin user is a member of the azure_pg_admin role. However, the admin account isn't part of the azuresu role. Since this service is a managed PaaS service, only Microsoft is part of the super user role.
 
 The PostgreSQL engine uses privileges to control access to database objects, as discussed in the [PostgreSQL product documentation](https://www.postgresql.org/docs/current/sql-createrole.html). In Azure HorizonDB, the server admin user is granted these privileges:
 
 - Sign in, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE
 
-The server admin user account can be used to create more users and grant those users into the azure_pg_admin role. Also, the server admin account can be used to create less privileged users and roles that have access to individual databases and schemas.
+The cluster admin user account can be used to create more users and grant those users into the azure_pg_admin role. Also, the server admin account can be used to create less privileged users and roles that have access to individual databases and schemas.
 
 ## How to create more admin users in Azure HorizonDB
 
@@ -88,7 +88,7 @@ The server admin user account can be used to create more users and grant those u
 1. Sign in to your server, specifying the designated database, using the new username and password. This example shows the psql command line. With this command, you're prompted for the password for the user name. Replace your own server name, database name, and user name.
 
    ```bash
-   psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=db_user --dbname=newdb
+   psql --host=myhorizondb.xxxxx.centralus.horizondb.azure.com --port=5432 --username=db_user --dbname=newdb
    ```
 
 ## Related content

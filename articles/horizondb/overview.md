@@ -129,12 +129,12 @@ Azure HorizonDB is currently available in the following Azure regions:
 
 | Geography | Regions |
 | --- | --- |
-| Americas | Canada Central, Central US, West US 2, WestUS 3 |
-| Europe | Sweden Central, Poland Central, Italy North |
-| Asia Pacific | Australia East, Korea Central, Indonesia Central |
+| Americas |  Central US, West US 2, WestUS 3 |
+| Europe | Sweden Central |
+| Asia Pacific | Australia East |
 
 > [!NOTE]  
-> Region availability is subject to change. Some regions might have restrictions on new deployments. For the latest region availability, see the Azure portal or contact Azure support.
+> Region availability is subject to change and we will be adding additional regions soon. Some regions might have restrictions on new deployments. For the latest region availability, see the Azure portal or contact Azure support.
 
 ## Feedback and support
 
