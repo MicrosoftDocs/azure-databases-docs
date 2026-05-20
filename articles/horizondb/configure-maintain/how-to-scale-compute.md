@@ -32,13 +32,13 @@ Using the [Azure portal](https://portal.azure.com/):
 4. Once you choose your desired configuration, select **Save**.
 
 > [!NOTE]  
-> When you select **Save** you're not asked for confirmation to proceed with the changes. The operation is immediately initiated and can't be aborted.
+>  When you select **Save**, the changes are applied immediately. No confirmation prompt is shown, and the operation can't be canceled.
 
 5. A notification shows that a compute update is in progress.
 
  :::image type="content" source="./media/update-cores.png" alt-text="Screenshot showing the configuration page." lightbox="./media/update-cores.png":::
 
-6. When the scale process completes, a notification shows that the deployment succeeded.
+6. When the scaling process completes, a notification shows that the deployment succeeded.
 
  :::image type="content" source="./media/success-cores.png" alt-text="Screenshot showing the successful update." lightbox="./media/success-cores.png":::
 

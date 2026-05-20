@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Deletion protection with Resource Locks in Azure HorizonDB (Preview)
 
-You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an additional layer of resource protection.
+You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an extra layer of resource protection.
 
 ## Lock Types
 
@@ -46,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/delete-lock-01.png":::
 
-4. Select **Ok**.You should see a confirmation message indicating that the lock was created successfully
+4. Select **Ok**. You should see a confirmation message indicating that the lock was created successfully
 
     :::image type="content" source="./media/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/success-lock.png":::
 
