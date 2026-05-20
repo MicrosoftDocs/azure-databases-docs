@@ -44,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png":::
 
 
-6. Once all the new server is configured to your needs, select **Review + create**.
+6. Once the new server is configured to your needs, select **Review + create**.
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png":::
 
