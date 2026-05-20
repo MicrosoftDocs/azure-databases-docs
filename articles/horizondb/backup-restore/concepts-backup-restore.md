@@ -19,9 +19,9 @@ Azure HorizonDB provides fully managed, built‑in backups to protect data and s
 
 ## Backup overview
 
-Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and does not require manual configuration. The archiving process is managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
+Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The archiving process is managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
 
-WAL archiving runs continuously in the background and does not impact query execution or application availability. WAL files are retained according to the configured backup retention policy. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), allowing the database to be restored to a specific time within the retention window. This supports recovery from scenarios such as data corruption, unintended changes, or operational incidents.
+WAL archiving runs continuously in the background and doesn't impact query execution or application availability. WAL files are retained according to the configured backup retention policy. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), allowing the database to be restored to a specific time within the retention window. This supports recovery from scenarios such as data corruption, unintended changes, or operational incidents.
 
 Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. During restore operations, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
 
@@ -64,7 +64,7 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
- ``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*
+``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*
 
 Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
