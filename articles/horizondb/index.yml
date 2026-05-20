@@ -66,14 +66,8 @@ landingContent:
       url: security/security-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Manage high availability
-      url: high-availability/how-to-configure-high-availability.md
-    - text: Guide on scalable compute
-      url: scale/how-to-scale-compute.md
-    - text: Scale out with elastic clusters
-      url: scale/how-to-scale-out.md
-    - text: Restore to paired region (geo-restore)
-      url: backup-restore/how-to-restore-paired-region.md
+    - text: Scale out with HorizonDB
+      url: configure-maintain/how-to-scale-compute.md
     - text: Entra-id authentication guide
       url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
 

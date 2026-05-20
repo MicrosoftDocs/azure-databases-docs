@@ -30,6 +30,16 @@
         href: connectivity/connect-python.md
       - name: Using Java
         href: connectivity/connect-java.md
+- name: High availability & resilience
+  items:
+    - name: Business Continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: Backup & restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
+          href: backup-restore/how-to-restore-custom-restore-point.md
 - name: Configure and maintain
   items:
     - name: How to add or remove replica
@@ -38,6 +48,8 @@
       href: configure-maintain/concepts-maintenance.md
     - name: Scaling compute resources
       href: scale/concepts-scaling-resources.md
+    - name: How to scale compute
+      href: configure-maintain/how-to-scale-compute.md     
     - name: Readable HA replicas
       href: read-replica/concepts-read-replicas.md
     - name: Parameters
@@ -179,8 +191,6 @@
           href: read-replica/how-to-create-read-replica.md
         - name: Remove a read replica
           href: read-replica/how-to-delete-read-replica.md
-        # - name: Create Parameter Groups  # TODO: No file exists yet
-        # - name: Drop Parameter Groups  # TODO: No file exists yet
         - name: Allow extensions
           href: extensions/how-to-allow-extensions.md
         - name: Load libraries
@@ -191,32 +201,18 @@
           href: extensions/how-to-drop-extensions.md
         - name: Update extensions
           href: extensions/how-to-update-extensions.md
-- name: High availability & resilience
-  items:
-    - name: Business Continuity
-      href: backup-restore/concepts-business-continuity.md
-    - name: Reliability
+    - name: Performance and Monitoring
       items:
-        - name: Configure high availability
-          href: high-availability/how-to-configure-high-availability.md
-    - name: Backup & restore
-      items:
-        - name: Backups
-          href: backup-restore/concepts-backup-restore.md
-        - name: Restore
-          href: backup-restore/how-to-restore-latest-restore-point.md
-- name: Performance and Monitoring
-  items:
-    - name: Query Monitoring
-      items:
-        - name: Query Store on primary
-          href: monitor/concepts-query-store.md
-        - name: Query Store usage scenarios
-          href: monitor/concepts-query-store-scenarios.md
-        - name: Query Store best practices
-          href: monitor/concepts-query-store-best-practices.md
-    - name: Metrics
-      href: monitor/concepts-monitoring.md
+        - name: Query Monitoring
+          items:
+             - name: Query Store on primary
+               href: monitor/concepts-query-store.md
+             - name: Query Store usage scenarios
+               href: monitor/concepts-query-store-scenarios.md
+             - name: Query Store best practices
+               href: monitor/concepts-query-store-best-practices.md
+        - name: Metrics
+          href: monitor/concepts-monitoring.md
     - name: How-to Guides
       items:
         - name: Troubleshoot high CPU utilization
@@ -400,9 +396,7 @@
     - name: Data protection
       items:
         - name: Data encryption overview
-          href: security/security-data-encryption.md
-        - name: Configure data encryption
-          href: security/security-configure-data-encryption.md
+          href: security/security-data-encryption.md        
 - name: References
   items:
       - name: Using Python

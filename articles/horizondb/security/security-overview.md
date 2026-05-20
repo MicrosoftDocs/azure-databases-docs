@@ -27,7 +27,7 @@ The Network Security section guides you through preventing public access and usi
 
 - **Disable public network access**: Disable public network access for your PostgreSQL to prevent exposure to the internet. This action ensures that only trusted networks can access your database.
 
-- **Private Endpoints**: Use [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md) to securely connect to your PostgreSQL from within your virtual network.
+- **Private Endpoints**: Use [Networking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md) to securely connect to your PostgreSQL from within your virtual network.
 
 - **Alternatively, use virtual network integration**: [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md) to connect your PostgreSQL to your virtual network. This integration allows secure access from your Azure resources and from the server to resources consumed, such as AI.
 
@@ -37,17 +37,6 @@ Network security articles are in the networking sections:
 
 - [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
 
-- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)
-
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)
-
-## Identity management
-
-The Identity Management section focuses on authentication, securing identities, and access controls using centralized identity and access management systems. It covers best practices such as strong authentication mechanisms and managed identities for applications.
-
-Here are some possible security services, features, and best practices for the identity management section:
-
-- **Use Entra instead of database local authentication**: You should disallow local authentication for your PostgreSQL server. Instead, use Microsoft Entra authentication only (not mixed mode) to manage access to your database. Microsoft Entra provides centralized authentication with strong security controls and Defender for Identity real-time protection. For more information, visit [Microsoft Entra](/entra) in general and [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md).
 
 - **Use managed identities for secure application access**: Use managed identities in Azure to securely authenticate applications and services without the need to manage credentials. This provides a secure and simplified way to access resources like Azure HorizonDB. For more information, visit [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
 
@@ -86,9 +75,6 @@ Here are some possible security services, features, and best practices for the d
 
 - **Data is always transparently encrypted at rest with SMK**: Azure HorizonDB automatically encrypts data at rest by using service-managed keys (SMK). This encryption ensures that your data is protected without requiring extra configuration. It relies on the underlying Azure storage infrastructure. It covers the primary server, replicas, point-in-time-recovery (PITR), and backups. For more information, visit [Data encryption at rest in Azure HorizonDB](security-data-encryption.md).
 
-- **Use customer-managed keys for additional control**: If you require more control over encryption keys, use customer-managed keys (CMK) stored in Azure Key Vault or Azure HSM. This option allows you to manage your encryption keys and provides more security and compliance options. For more information, visit [customer managed keys in Azure HorizonDB](security-data-encryption.md#benefits-provided-by-each-mode-smk-or-cmk) and [Configure data encryption in Azure HorizonDB](security-configure-data-encryption.md).
-
-- **Setup automatic key rotation in KV or Managed HSM**: If you use customer managed keys, configure automatic key rotation in Azure Key Vault to ensure that your encryption keys are regularly updated. Azure HorizonDB supports automatic key version updates after a key is rotated. For more information, visit [Configure key autorotation in Azure Managed HSM](/azure/key-vault/managed-hsm/key-rotation) or [Understanding autorotation in Azure Key Vault](/azure/key-vault/general/autorotation) for more Key Vault details. For more information, visit [Configure data encryption with customer managed key during server provisioning](security-configure-data-encryption.md#configure-data-encryption-with-customer-managed-key-during-server-provisioning) for more details on how to configure automatic key rotation.
 
 - **Encrypt ultra-sensitive data with client-side encryption**: For ultra-sensitive data, consider implementing client-side encryption. This approach involves encrypting data before you send it to the database, ensuring that only encrypted data is stored in the database. This practice provides a more layer of security, as the database itself and therefore the database administrator doesn't have access to the unencrypted data.
 
@@ -134,8 +120,6 @@ Here are some possible security services, features, and best practices for the l
 The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, For more information, visit [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md).
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
-
-- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server instance to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md).
 
 - **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md).
 

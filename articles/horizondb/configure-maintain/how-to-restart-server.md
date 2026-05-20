@@ -79,4 +79,4 @@ Message: Restart or Stop Server can only be performed on Started servers. Server
 
 - [Start compute of a server in Azure HorizonDB](how-to-start-server.md)
 - [Stop compute of a server in Azure HorizonDB](how-to-stop-server.md)
-- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)
+

@@ -29,7 +29,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. The status of the server must be **Stopped**, for the **Start** button to appear on the toolbar.
 
-   :::image type="content" source="media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="media/how-to-start-server/server-status.png":::
+   :::image type="content" source="media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="media/how-to-start-server/server-status.png":::
 
 1. Select the **Start** button.
 
@@ -41,7 +41,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Also, the status of the server changes to **Starting**.
 
-   :::image type="content" source="media/how-to-start-server/starting-server-status.png" alt-text="Screenshot showing a server which is starting, highlighting its status as Starting." lightbox="media/how-to-start-server/starting-server-status.png":::
+   :::image type="content" source="media/how-to-start-server/starting-server-status.png" alt-text="Screenshot showing a server, which is starting, highlighting its status as Starting." lightbox="media/how-to-start-server/starting-server-status.png":::
 
 1. When the process completes, a notification informs you that the server is started.
 
@@ -61,10 +61,10 @@ az postgres flexible-server start \
   --name <server>
 ```
 
-If you attempt to start the compute of a server which isn't in `Stopped` state, you receive an error like this:
+If you attempt to start the compute of a server, which isn't in `Stopped` state, you receive an error like this:
 
 ```output
-(ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
+(ServerIsNotStopped) Start Server can only be performed on Stopped servers. Server Name = <server>, Current Server State = Updating
 Code: ServerIsNotStopped
 Message: Start Server can only be performed on Stopped servers. Server Name = <server>, Current Server State = Updating
 ```
@@ -78,4 +78,3 @@ Message: Start Server can only be performed on Stopped servers. Server Name = <s
 
 - [Stop compute of a server in Azure HorizonDB](how-to-stop-server.md)
 - [Restart PostgreSQL engine in Azure HorizonDB](how-to-restart-server.md)
-- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)
