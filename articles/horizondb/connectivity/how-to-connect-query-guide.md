@@ -14,7 +14,11 @@ ms.topic: how-to
 
 HorizonDB is Azure's next-generation PostgreSQL platform, designed to let developers securely connect to an Azure HorizonDB cluster and run standard PostgreSQL read and write queries without changing application code. Applications connect to a primary (read-write) endpoint for transactional workloads and administrative operations, or to read-only endpoints to scale read traffic across multiple readable replicas. HorizonDB is fully compatible with existing PostgreSQL clients, drivers, ORMs, and SQL syntax, allowing developers to integrate it into current applications with minimal or no code changes.
 
-Applications can connect using standard PostgreSQL connection strings to either the primary server endpoint for read-write workloads or the read-replica endpoint for read-only traffic.
+Applications can connect using standard PostgreSQL connection strings to either the primary cluster endpoint for read-write workloads or the read-replica endpoint for read-only traffic.
+
+You can find Azure HorizonDB cluster endpoints details in the Overview page:
+
+:::image type="content" source="media/how-to-connect-query-guide/endpoint-administrator-login.png" alt-text="Screenshot showing the Overview page and connection details." lightbox="media/how-to-connect-query-guide/endpoint-administrator-login.png":::
 
 How to connect to HorizonDB read/write instance (primary endpoint):
 
