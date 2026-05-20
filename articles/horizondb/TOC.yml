@@ -34,6 +34,8 @@
   items:
     - name: Business Continuity
       href: backup-restore/concepts-business-continuity.md
+    - name: High Availability
+      href: configure-maintain/how-to-configure-high-availability.md
     - name: Backup & restore
       items:
         - name: Backups
