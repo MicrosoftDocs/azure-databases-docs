@@ -34,8 +34,8 @@ This guide also includes TLS recommendations and extensions that you can use to 
 
 | Quickstart | Description |
 | --- | --- |
-| [PostgreSQL for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) | PostgreSQL for Visual Studio Code is the essential extension for working with PostgreSQL databases - locally or in the cloud. Connect, query, build, and chat with your databases with ease, including seamless Entra authentication for Azure HorizonDB. |
-| [pgAdmin](https://www.pgadmin.org/) | You can use pgAdmin to connect to the server. It simplifies the creation, maintenance, and use of database objects. |
+| [PostgreSQL for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) | PostgreSQL for Visual Studio Code is the essential extension for working with PostgreSQL databases - locally or in the cloud. Connect, query, build, and chat with your databases with ease, including seamless Microsoft Entra authentication for Azure HorizonDB. |
+| [pgAdmin](https://www.pgadmin.org/) | You can use pgAdmin to connect to the server. It simplifies the creation, maintenance, and uses of database objects. |
 | [psql in Azure Cloud Shell](../configure-maintain/quickstart-create-server.md#connect-using-psql) | This article shows how to run [**psql**](https://www.postgresql.org/docs/current/app-psql.html) in [Azure Cloud Shell](/azure/cloud-shell/overview) to connect to your server and then run statements to query, insert, update, and delete data in the database. You can run **psql** if installed on your development environment. |
 | [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md) | This quickstart demonstrates how to use Python to connect to a database and work with database objects to query data. |
 | [Django with App Service](/azure/app-service/tutorial-python-postgresql-app) | This tutorial demonstrates how to use Django to create a program to connect to a database and work with database objects to query data. |
