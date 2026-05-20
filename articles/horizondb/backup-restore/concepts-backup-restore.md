@@ -12,34 +12,31 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB
+# Backups in Azure HorizonDB (Preview)
 This article explains the automated backup feature in Azure HorizonDB.
 
+Azure HorizonDB provides fully managed, built‑in backups to protect data and support reliable recovery. Backups are performed automatically, with no manual configuration, or ongoing management required, allowing you to focus on your application while HorizonDB continuously safeguards your data.
 
 ## Backup overview
 
-Azure HorizonDB provides highly scalable storage and compute performance tiers. Backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, WAL is continuously archived to Azure Storage when the write-ahead log (WAL) file is ready to be archived. These logs are retained according to the configured backup retention period, enabling point-in-time restore (PITR) within the specified retention window.
+Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The snapshot and archiving process are managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
 
-Storage and compute separation enables HorizonDB to offload backup and restore operations to the storage layer, eliminating resource consumption on compute replicas. As a result, backups do not impact the performance of either primary or secondary compute replicas.
+WAL archiving runs continuously in the background and doesn't impact query execution or application availability. WAL files are retained according to the configured backup retention policy. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), allowing the database to be restored to a specific time within the retention window. This supports recovery from scenarios such as data corruption, unintended changes, or operational incidents.
 
-Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. During restore operations, you have the option to specify a backup retention period for your Azure HorizonDB cluster. When you don't explicitly set this value, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
+Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. During restore operations, the restored cluster inherits the backup retention period from the source snapshot of the cluster. 
 
 
 
 ## Backup retention
 
-The default backup retention period is 7 days. You can specify a backup retention period from 7–35 days. All backups are encrypted through AES 256-bit encryption for data stored at rest.
+The default backup retention period is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
 
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
-
-Transaction log backups occur at variable intervals based on workload activity. Logs are captured when the write-ahead log (WAL) is ready to be archived. This ensures a transactional consistent database state and enables point-in-time restore within the configured retention period, with no data loss at the selected restore point, allowing for a recovery point objective (RPO) of zero.
-
-These backup files can't be exported or used to create servers outside your Azure HorizonDB cluster. For that purpose, you can use the PostgreSQL tools pg_dump and pg_restore/psql.
 
 
 ## Backup metrics
 
-In Azure HorizonDB, automated backups store incremental changes to data pages along with transaction log backups, both retained for the duration of the configured retention window.
+In Azure HorizonDB, automated backups capture incremental changes to data pages and transaction logs, which are both retained for the configured backup retention period.
 
 
 You can use the Backup Storage Used metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server. 
@@ -65,32 +62,24 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-*Total billable backup storage size = (Changes to Data pages + log backup storage size)*
+``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*```
 
-Data storage size isn't included in the billable backup because it's already billed as allocated database storage.
+Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HoirzonDB database, billable backup storage is calculated as follows:
 
-*Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + log backup storage size) * (remaining backup retention period after deletion / configured backup retention period)*
+``` *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + WAL archive size) * (remaining backup retention period after deletion / configured backup retention period)*```
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
-Billable backup storage for a deleted database reduces gradually over time after it's deleted. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
-
-> [!Note]
-> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of HoirzonDB cluster. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
-
-Backup storage consumption for a HorizonDB cluster depends on the retention period and workload type. Consider some of the following tuning techniques to reduce your backup storage consumption for a HorizonDB cluster:
-
-Reduce the backup retention period to the minimum for your needs.
-Avoid doing large write operations, such as vacuum and reindex, more frequently than you need to. 
+Billable backup storage for a deleted database decreases over time after deletion, based on the remaining retention period. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
 
 
 ## Backup limitations
 
 - Geo-redundant backups are currently not supported.
 - Maximum backup retention currently supported is 7 days. 
-- Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past.
+- Currently point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
 
 
 > [!Note]
