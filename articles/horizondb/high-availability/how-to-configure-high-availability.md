@@ -35,7 +35,7 @@ You have two choices:
 
 3. select the **Zone redundant - Replica in a different availability zone** option.
 
-   :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
 4. When you're done configuring the settings, select **Save** to apply the changes.
 
@@ -50,7 +50,7 @@ You can configure high availability when you first create your Azure HorizonDB i
 
 1.  In the [Azure portal](https://portal.azure.com/), select Azure HorizonDB Service and Click Create.
 
-      :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
+      :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
 
 2. Provide your cluster name and go to  **High availability** section.
@@ -62,7 +62,7 @@ You have two High availability mode choices:
 
 3. select the **Zone redundant - Replica in a different availability zone** option.
 
-   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
 
 4. When you're done configuring the settings, select  **Review + create** to review the changes then click **create**
 
