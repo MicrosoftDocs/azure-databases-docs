@@ -70,7 +70,7 @@ Data storage size is excluded from billable backup storage because it is already
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HoirzonDB database, billable backup storage is calculated as follows:
 
-            *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + log backup storage size) * (remaining backup retention period after deletion / configured backup retention period)*
+            *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + WAL archive size) * (remaining backup retention period after deletion / configured backup retention period)*
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
