@@ -1,0 +1,33 @@
+---
+title: Release Notes for Azure HorizonDB
+description: Release notes for Azure HorizonDB, including feature additions, engine versions support, extensions, and other announcements.
+author: avnishrastogimsft
+ms.author: avrastog
+ms.reviewer: maghan
+ms.date: 06/02/2026
+ms.service: azure-database-postgresql
+ms.subservice: configuration
+ms.topic: concept-article
+ms.custom:
+  - build-2026
+# customer intent: As a reader, I want to learn about the latest release notes and feature updates for Azure HorizonDB.
+---
+
+# Release notes - Azure HorizonDB (Preview)
+
+This article highlights the latest updates and enhancements for Azure HorizonDB, including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: June 2026
+
+- Azure HorizonDB is now available in public preview.
+
+## Contacts
+
+For any questions or suggestions you might have on Azure HorizonDB, consider the following points of contact as appropriate:
+
+- To contact Azure Support, [file a ticket from the Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- To fix an issue with your account, file a [support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) in the Azure portal.
+
+## Related content
+
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)

@@ -1,0 +1,415 @@
+- name: Azure HorizonDB documentation
+  href: index.yml
+- name: Overview
+  items:
+    - name: What is Azure HorizonDB?
+      href: overview.md
+    - name: Supported versions
+      href: configure-maintain/concepts-supported-versions.md
+    - name: How-to Guides
+      items:
+        - name: Create a HorizonDB cluster
+          href: configure-maintain/quickstart-create-server.md
+- name: Release Notes
+  items:
+    - name: Release notes
+      href: release-notes/release-notes.md
+- name: Create and connect
+  items:
+  - name: Connection endpoints
+    href: connectivity/concepts-connection-endpoints.md
+  - name: Connection types
+    href: connectivity/concepts-connect-overview.md
+  - name: How-to Guides
+    items:
+      - name: Create a HorizonDB cluster
+        href: configure-maintain/quickstart-create-server.md
+      - name: How to connect
+        href: connectivity/how-to-connect-query-guide.md
+      - name: Using Python
+        href: connectivity/connect-python.md
+      - name: Using Java
+        href: connectivity/connect-java.md
+- name: High availability & resilience
+  items:
+    - name: Business Continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: High Availability
+      href: high-availability/how-to-configure-high-availability.md
+    - name: Backup & restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
+          href: backup-restore/how-to-restore-custom-restore-point.md
+- name: Configure and maintain
+  items:
+    - name: How to add or remove replica
+      href: configure-maintain/how-to-add-remove-replica.md
+    - name: Scheduled maintenance
+      href: configure-maintain/concepts-maintenance.md
+    - name: Scaling compute resources
+      href: scale/concepts-scaling-resources.md
+    - name: How to scale compute
+      href: configure-maintain/how-to-scale-compute.md     
+    - name: Readable HA replicas
+      href: read-replica/concepts-read-replicas.md
+    - name: Parameters
+      items:
+        - name: Overview
+          href: server-parameters/concepts-server-parameters.md
+        - name: Adaptive autovacuum
+          href: server-parameters/param-adaptive-autovacuum.md
+        - name: Autovacuum
+          href: server-parameters/param-autovacuum.md
+        - name: Client Connection Defaults / Locale and Formatting
+          href: server-parameters/param-client-connection-defaults-locale-formatting.md
+        - name: Client Connection Defaults / Other Defaults
+          href: server-parameters/param-client-connection-defaults-defaults.md
+        - name: Client Connection Defaults / Shared Library Preloading
+          href: server-parameters/param-client-connection-defaults-shared-library-preloading.md
+        - name: Client Connection Defaults / Statement Behavior
+          href: server-parameters/param-client-connection-defaults-statement-behavior.md
+        - name: Connections and Authentication / Authentication
+          href: server-parameters/param-connections-authentication-authentication.md
+        - name: Connections and Authentication / Connection Settings
+          href: server-parameters/param-connections-authentication-connection-settings.md
+        - name: Connections and Authentication / SSL
+          href: server-parameters/param-connections-authentication-ssl.md
+        - name: Connections and Authentication / TCP Settings
+          href: server-parameters/param-connections-authentication-tcp-settings.md
+        - name: Customized Options
+          href: server-parameters/param-customized-options.md
+        - name: Developer Options
+          href: server-parameters/param-developer-options.md
+        - name: Error Handling
+          href: server-parameters/param-error-handling.md
+        - name: File Locations
+          href: server-parameters/param-file-locations.md
+        - name: Intelligent Tuning
+          href: server-parameters/param-intelligent-tuning.md
+        - name: Lock Management
+          href: server-parameters/param-lock-management.md
+        - name: Metrics
+          href: server-parameters/param-metrics.md
+        - name: Migration
+          href: server-parameters/param-migration.md
+        - name: PgBouncer
+          href: server-parameters/param-pgbouncer.md
+        - name: Preset Options
+          href: server-parameters/param-preset-options.md
+        - name: Process Title
+          href: server-parameters/param-process-title.md
+        - name: Query Tuning / Genetic Query Optimizer
+          href: server-parameters/param-query-tuning-genetic-query-optimizer.md
+        - name: Query Tuning / Other Planner Options
+          href: server-parameters/param-query-tuning-planner-options.md
+        - name: Query Tuning / Planner Cost Constants
+          href: server-parameters/param-query-tuning-planner-cost-constants.md
+        - name: Query Tuning / Planner Method Configuration
+          href: server-parameters/param-query-tuning-planner-method-configuration.md
+        - name: Replication / Master Server
+          href: server-parameters/param-replication-master-server.md
+        - name: Replication / Sending Servers
+          href: server-parameters/param-replication-sending-servers.md
+        - name: Replication / Standby Servers
+          href: server-parameters/param-replication-standby-servers.md
+        - name: Replication / Subscribers
+          href: server-parameters/param-replication-subscribers.md
+        - name: Reporting and Logging / What to Log
+          href: server-parameters/param-reporting-logging-what-log.md
+        - name: Reporting and Logging / When to Log
+          href: server-parameters/param-reporting-logging-when-log.md
+        - name: Reporting and Logging / Where to Log
+          href: server-parameters/param-reporting-logging-where-log.md
+        - name: Resource Usage / Asynchronous Behavior
+          href: server-parameters/param-resource-usage-asynchronous-behavior.md
+        - name: Resource Usage / Background Writer
+          href: server-parameters/param-resource-usage-background-writer.md
+        - name: Resource Usage / Cost-Based Vacuum Delay
+          href: server-parameters/param-resource-usage-cost-based-vacuum-delay.md
+        - name: Resource Usage / Disk
+          href: server-parameters/param-resource-usage-disk.md
+        - name: Resource Usage / Kernel Resources
+          href: server-parameters/param-resource-usage-kernel-resources.md
+        - name: Resource Usage / Memory
+          href: server-parameters/param-resource-usage-memory.md
+        - name: Statistics / Cumulative Query and Index Statistics
+          href: server-parameters/param-statistics-cumulative-query-index-statistics.md
+        - name: Statistics / Monitoring
+          href: server-parameters/param-statistics-monitoring.md
+        - name: TLS
+          href: server-parameters/param-tls.md
+        - name: Version and Platform Compatibility / Other Platforms and Clients
+          href: server-parameters/param-version-platform-compatibility-platforms-clients.md
+        - name: Version and Platform Compatibility / Previous PostgreSQL Versions
+          href: server-parameters/param-version-platform-compatibility-postgresql-versions.md
+        - name: Write-Ahead Log / Archive Recovery
+          href: server-parameters/param-write-ahead-log-archive-recovery.md
+        - name: Write-Ahead Log / Archiving
+          href: server-parameters/param-write-ahead-log-archiving.md
+        - name: Write-Ahead Log / Checkpoints
+          href: server-parameters/param-write-ahead-log-checkpoints.md
+        - name: Write-Ahead Log / Recovery
+          href: server-parameters/param-write-ahead-log-recovery.md
+        - name: Write-Ahead Log / Recovery Target
+          href: server-parameters/param-write-ahead-log-recovery-target.md
+        - name: Write-Ahead Log / Settings
+          href: server-parameters/param-write-ahead-log-settings.md
+    - name: Parameter groups
+      href: server-parameters/concepts-parameter-groups.md
+      items:
+        - name: Create parameter groups
+          href: server-parameters/how-to-parameter-groups-create.md
+        - name: Update parameter groups
+          href: server-parameters/how-to-parameter-groups-update.md
+        - name: Delete parameter groups
+          href: server-parameters/how-to-parameter-groups-delete.md
+        - name: List parameter groups
+          href: server-parameters/how-to-parameter-groups-list.md
+        - name: Connect clusters to parameter groups
+          href: server-parameters/how-to-parameter-groups-connect.md
+        - name: List clusters connected to parameter groups
+          href: server-parameters/how-to-parameter-groups-list-connected.md
+        - name: Identify parameter group connected to a cluster
+          href: server-parameters/how-to-parameter-groups-identify-connected-cluster.md
+    - name: Enable deletion protection
+      href: configure-maintain/how-to-enable-deletion-protection.md
+    - name: Extensions
+      items:
+        - name: Extensions and modules
+          href: extensions/concepts-extensions.md
+        - name: Special considerations
+          href: extensions/concepts-extensions-considerations.md
+        - name: List by name
+          href: extensions/concepts-extensions-versions.md
+        - name: List by version of PostgreSQL
+          href: extensions/concepts-extensions-by-engine.md
+        - name: Possible errors when managing extensions
+          href: extensions/errors-extensions.md
+    - name: How-to Guides
+      items:
+        - name: Add a read replica
+          href: read-replica/how-to-create-read-replica.md
+        - name: Remove a read replica
+          href: read-replica/how-to-delete-read-replica.md
+        - name: Allow extensions
+          href: extensions/how-to-allow-extensions.md
+        - name: Load libraries
+          href: extensions/how-to-load-libraries.md
+        - name: Create extensions
+          href: extensions/how-to-create-extensions.md
+        - name: Drop extensions
+          href: extensions/how-to-drop-extensions.md
+        - name: Update extensions
+          href: extensions/how-to-update-extensions.md
+    - name: Performance and Monitoring
+      items:
+        - name: Query Monitoring
+          items:
+             - name: Query Store on primary
+               href: monitor/concepts-query-store.md
+             - name: Query Store usage scenarios
+               href: monitor/concepts-query-store-scenarios.md
+             - name: Query Store best practices
+               href: monitor/concepts-query-store-best-practices.md
+        - name: Metrics
+          href: monitor/concepts-monitoring.md
+    - name: How-to Guides
+      items:
+        - name: Troubleshoot high CPU utilization
+          href: troubleshoot/how-to-high-cpu-utilization.md
+        - name: Troubleshoot high memory utilization
+          href: troubleshoot/how-to-high-memory-utilization.md
+        - name: Troubleshoot high IOPS utilization
+          href: troubleshoot/how-to-high-io-utilization.md
+        - name: Troubleshoot and identify slow running queries
+          href: troubleshoot/how-to-identify-slow-queries.md
+        - name: Troubleshoot connections
+          href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
+        - name: Optimize query statistics
+          href: troubleshoot/how-to-optimize-query-stats-collection.md
+- name: Development Experience
+  items:
+    - name: PostgreSQL extension for Visual Studio Code
+      items:
+        - name: Concepts
+          href: development/vs-code-extension/vs-code-overview.md
+        - name: Quick Start
+          href: development/vs-code-extension/vs-code-connect.md
+        - name: Configure GitHub Copilot
+          href: development/vs-code-extension/vs-code-github-copilot.md
+    - name: Durable execution with pg_durable
+      href: development/pg-durable.md
+- name: Generative AI
+  items:
+    - name: Introduction
+      href: ai/overview.md
+    - name: AI functions in SQL
+      items:
+      - name: AI functions (azure_ai)
+        href: ai/ai-functions.md
+      - name: AI Model Management
+        href: ai/ai-model-management.md
+    - name: AI Pipelines and Data Preparation
+      items:
+        - name: Data preparation for AI
+          href: ai/ai-data-preparation.md
+        - name: AI pipelines
+          href: ai/ai-pipelines.md
+        - name: Generate vector embeddings in SQL
+          href: ai/generate-vector-embeddings.md
+    - name: Semantic Search and Hybrid Search
+      items:
+        - name: Introduction
+          href: ai/ai-search-overview.md
+        - name: Vector search (pgvector)
+          href: ai/vector-search-pgvector.md
+        - name: Full-text search (pg_fts)
+          href: ai/full-text-search.md
+        - name: Hybrid Search
+          href: ai/hybrid-search.md
+        - name: Tutorial - Build a semantic search application
+          href: ai/build-semantic-search-app.md
+        - name: Improve search performance
+          items:
+            - name: Optimize pgvector performance
+              href: ai/optimize-pgvector-performance.md
+            - name: Scalable vector indexing with DiskANN
+              href: ai/vector-indexing-diskann.md
+            - name: Index selection guide
+              href: ai/vector-index-selection-guide.md
+        - name: Enhance search relevance
+          items:
+            - name: Semantic reranking
+              href: ai/semantic-rank-function.md
+            - name: GraphRAG for knowledge graph enhanced search
+              href: ai/graph-rag.md
+            - name: Build a knowledge graph from unstructured text
+              href: ai/build-knowledge-graph.md
+    - name: Build AI Agents and Apps
+      items:
+        - name: Overview
+          href: ai/ai-agents.md
+        - name: Build an AI agent with Microsoft Foundry and MCP
+          href: ai/foundry-agent-integration.md
+        - name: Integrate with LLM orchestration frameworks
+          href: ai/ai-frameworks.md
+        - name: Develop with LangChain
+          href: ai/develop-with-langchain.md
+        #- name: Implement agent memory in Azure HorizonDB
+        #  href: ai/agent-memory.md
+    - name: Samples
+      href: ai/samples.md
+- name: Graph Database
+  items:
+    - name: Graph data capabilities with Apache AGE extension
+      href: graph/age-overview.md
+    - name: Performance best practices for Apache AGE
+      href: graph/age-performance.md
+    - name: Tutorial- Build a knowledge graph from unstructured text
+      href: ai/build-knowledge-graph.md
+    - name: GraphRAG for knowledge graph enhanced search
+      href: ai/graph-rag.md
+- name: Migration
+  items:
+    - name: Offline migration
+      items:
+        - name: Dump and restore PostgreSQL migration
+          href: migrate/how-to-migrate-using-dump-and-restore.md      
+- name: Integration
+  items:
+    - name: Microsoft Fabric
+      items:
+      - name: Fabric mirroring
+        href: fabric/concepts-fabric-mirroring.md
+      - name: Copy activity
+        href: fabric/how-to-data-factory-copy-activity-fabric.md
+      - name: Script activity
+        href: fabric/how-to-data-factory-script-activity-fabric.md
+- name: Networking
+  items:
+    - name: Public Access
+      href: network/concepts-networking-public.md
+    - name: Private Endpoints
+      href: network/concepts-networking-private-link.md
+    - name: Secure Connectivity with SSL and TLS
+      href: security/security-tls.md
+    - name: How-to Guides
+      items:
+        - name: Enable and disable public access
+          items:
+            - name: Enable public access
+              href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+            - name: Disable public access
+              href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+        - name: Add and delete firewall rules
+          items:
+            - name: Add firewall rules
+              href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+            - name: Delete firewall rules
+              href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+        - name: Private endpoint configuration
+          items:
+            - name: Add private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+            - name: Delete private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+            - name: Approve private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+            - name: Reject private endpoint connections
+              href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
+        - name: Manage Private DNS Zone
+          href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+- name: Security
+  items:
+    - name: Secure your Azure HorizonDB
+      href: security/security-overview.md
+    - name: Authentication and access control
+      items:
+        - name: Microsoft Entra authentication
+          href: security/security-entra-concepts.md
+        - name: Configure Microsoft Entra integration
+          href: security/security-entra-configure.md
+        - name: Manage database users
+          href: security/security-manage-database-users.md
+        - name: Access control
+          href: security/security-access-control.md
+        - name: Connect applications with a managed identity
+          href: security/security-connect-with-managed-identity.md
+        - name: Connect local database users with SCRAM authentication
+          href: security/security-connect-scram.md
+        - name: Reset local administrator password
+          href: security/security-reset-admin-password.md
+    - name: HorizonDB Cluster identity
+      items:
+        - name: Concepts
+          href: security/security-managed-identity-overview.md
+        - name: Configure user assigned managed identities
+          href: security/security-configure-managed-identities-user-assigned.md
+    - name: Transport Layer Security (TLS)
+      items:
+        - name: Concepts
+          href: security/security-tls.md
+        - name: Connect clients with TLS
+          href: security/security-tls-how-to-connect.md
+        - name: Update trusted root certificate for Java
+          href: security/security-update-trusted-root-java.md
+    - name: Data protection
+      items:
+        - name: Data encryption overview
+          href: security/security-data-encryption.md        
+- name: References
+  items:
+      - name: Using Python
+        href: connectivity/connect-python.md
+      - name: Using Java
+        href: connectivity/connect-java.md
+- name: Resources
+  items:
+    - name: Possible errors when managing extensions
+      href: extensions/errors-extensions.md
+    - name: Connection Errors Troubleshooting
+      items:
+        - name: Password authentication failed for user
+          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
