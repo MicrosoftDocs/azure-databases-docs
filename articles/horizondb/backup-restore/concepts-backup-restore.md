@@ -64,13 +64,13 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-              *Total billable backup storage size = (Changes to Data pages + WAL archive size)*
+ ``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*
 
 Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HoirzonDB database, billable backup storage is calculated as follows:
 
-            *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + WAL archive size) * (remaining backup retention period after deletion / configured backup retention period)*
+``` *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + WAL archive size) * (remaining backup retention period after deletion / configured backup retention period)*
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
