@@ -65,7 +65,7 @@ A provisioned Azure HorizonDB resource is a cluster. An Azure HorizonDB cluster 
 
 An Azure HorizonDB compute replica can be either the primary (writeable) or a standby replica that is a readable, while also being a candidate for failover. Compute replica is where the PostgreSQL relational engine lives and where the language, query, and transaction processing occur. All interactions with the Azure HorizonDB cluster happen through the compute replicas. In order to have zonal resilience, you need atleast two replicas on the cluster. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it.
 
-Compute replicas come with 8 GB of memory per core provisioned. Compute replicas also have a local SSD cache. This cache is a low latency NVME cache that caches hot pages and minimizes the need to fetch data from the remote storage layer. The cache is present on all replicas, the primary, and the standby.
+Compute replicas come with 8 GB of memory per core provisioned. Compute replicas also have a local SSD cache. This cache is a low latency NVMe cache that caches hot pages and minimizes the need to fetch data from the remote storage layer. The cache is present on all replicas, the primary, and the standby.
 
 Compute replicas are used efficiently as they offload durability and high availability related tasks to the storage layer. This offloading gives more CPU, disk, and network to run business logic of applications on the database. The following tasks are offloaded from the Compute replicas to storage layer.
 

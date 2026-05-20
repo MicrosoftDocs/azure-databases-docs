@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Access management in Azure HorizonDB
+# Access management in Azure HorizonDB (Preview)
 
 Managing access to your Azure HorizonDB is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 
@@ -34,16 +34,16 @@ The roles are:
 
 When you create the Azure HorizonDB cluster, you provide credentials for an **administrator role**. Use this administrator role to create more [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
 
-For example, you can create a user or role named `demouser`.
+For example, you can create a user or role named `exampleuser`.
 
 ```sql
-CREATE USER demouser PASSWORD password123;
+CREATE USER exampleuser PASSWORD password123;
 ```
 Don't use the **administrator role** for the application.
 
 In cloud-based PaaS environments, access to an Azure HorizonDB superuser account is restricted to control plane operations only. The `azuresu` role has superuser privileges, but the Azure HorizonDB cluster admin account isn't part of the `azuresu` role. 
 
-The `azure_pg_admin` role exists as a pseudo-superuser account. The administrator account you configured when creating the cluster is a member of the `azure_pg_admin` role.
+The `azure_pg_admin` role exists as a pseudo-superuser account. The administrator login you configured when creating the cluster is a member of the `azure_pg_admin` role.
 
 You can periodically audit the list of roles in your server.
 
@@ -68,7 +68,7 @@ oid            | 24827
 ```
 
 > [!IMPORTANT]  
-> Azure HorizonDB allows you to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)**. To run the `CREATE` CAST statement, the user must be a member of the *azure_pg_admin* group. Currently, you can't drop a CAST after you create it.
+> Azure HorizonDB allows you to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)**. To run the `CREATE CAST` statement, the user must be a member of the `azure_pg_admin` role. Currently, you can't drop a CAST after you create it.
 >
 > Azure HorizonDB only supports CAST commands that use the `WITH FUNCTION` and `WITH INOUT` options. The `WITHOUT FUNCTION` option isn't supported.
 
@@ -119,9 +119,9 @@ In this example, user *user1* can connect and has all privileges in the test dat
 
 In Azure HorizonDB the public schema is owned by the `azure_pg_admin` role across all supported PostgreSQL versions. 
 
-### Improved control for *azure_pg_admin*
+### Improved control for azure_pg_admin
 
-In Azure HorizonDB Flexible server, the azure_pg_admin role is a system-managed, restricted role and can't be modified. Attempts to alter it, such as granting another role to it, results in an error like:
+In Azure HorizonDB server, the azure_pg_admin role is a system-managed, restricted role and can't be modified. Attempts to alter it, such as granting another role to it, results in an error like:
 
 ```sql
    GRANT <db_user> TO azure_pg_admin;
