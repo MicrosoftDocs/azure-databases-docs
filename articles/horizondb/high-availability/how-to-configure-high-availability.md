@@ -30,12 +30,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. On the left menu, in the **Settings** section, select **High availability**.
 
- You have two choices:
+  You have two choices:
 
-- **Disabled** - High availability isn't configured.
-- **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
+    - **Disabled** - High availability isn't configured.
+    - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
 
-3. select the **Zone redundant - Replica in a different availability zone** option.
+3. Select the **Zone redundant - Replica in a different availability zone** option.
 
    :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
@@ -58,8 +58,8 @@ Using the [Azure portal](https://portal.azure.com/):
 
      You have two High availability mode choices:
 
-- **Disabled** - High availability isn't configured.
-- **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
+    - **Disabled** - High availability isn't configured.
+    - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
 
 3. Select the **Zone redundant - Replica in a different availability zone** option.
 
