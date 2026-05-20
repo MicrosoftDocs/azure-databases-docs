@@ -12,7 +12,7 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB
+# Backups in Azure HorizonDB (Preview)
 This article explains the automated backup feature in Azure HorizonDB.
 
 Azure HorizonDB provides fully managed, built‑in backups to protect data and support reliable recovery. Backups are performed automatically, with no manual configuration, or ongoing management required, allowing you to focus on your application while HorizonDB continuously safeguards your data.
@@ -64,7 +64,7 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 
 For HorizonDB, billable backup storage is calculated as follows:
 
-              *Total billable backup storage size = (Changes to Data pages + log backup storage size)*
+              *Total billable backup storage size = (Changes to Data pages + WAL archive size)*
 
 Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
@@ -75,9 +75,6 @@ Deleted HorizonDB databases incur backup costs to support recovery to a point in
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.
 
 Billable backup storage for a deleted database decreases over time after deletion, based on the remaining retention period. It becomes zero when backups are no longer retained, and then recovery is no longer possible. If it's a permanent deletion and you no longer need backups, you can optimize costs by reducing retention before deleting the database.
-
-> [!Note]
-> The data backup storage size metric only reflects billable backup storage consumed beyond the free allowance of HoirzonDB cluster. The data backup storage size metric only emits a value after backup storage consumption exceeds the free tier.
 
 
 ## Backup limitations
