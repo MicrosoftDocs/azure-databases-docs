@@ -1,6 +1,5 @@
 ---
-title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDB"
-description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
+title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDBdescription: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -60,6 +59,8 @@ source .venv/bin/activate
 
 > [!NOTE]  
 > Ensure the virtual environment is activated before you run any `python -m pip instalL...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
+
+---
 
 ## Install the Python libraries
 
@@ -149,6 +150,8 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
    export DBPASSWORD=<password>
    export SSLMODE=require
    ```
+
+---
 
 ## How to run the Python examples
 
