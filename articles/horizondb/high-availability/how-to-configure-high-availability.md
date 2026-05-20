@@ -13,9 +13,11 @@ ms.topic: how-to
 
 # Configure high availability in Azure HorizonDB (Preview)
 
-This article describes how to enable or disable high availability (HA) on your Azure HorizonDB instance by using the Azure portal.
+This article describes how to enable or disable high availability (HA) on your Azure HorizonDB cluster by using the Azure portal.
 
-The high-availability feature deploys physically separate primary and standby compute replicas in different availability zones. You can enable high availability during or after the creation of your Azure HorizonDB instance.
+The high-availability feature enhances reliability and fault tolerance by deploying physically isolated primary and standby compute replicas across different availability zones within the same Azure region. This zone-level separation ensures that your database remains resilient to infrastructure failures, such as zone outages, and enabling automatic failover to the standby replica when needed.
+
+High availability can be configured either during the initial creation of your Azure HorizonDB instance or enabled later on an existing instance. This flexibility allows you to align availability settings with your workload requirements, ensuring minimal downtime and improved business continuity without requiring application-level changes.
 
 
 ## Enable high availability for existing servers
@@ -46,16 +48,14 @@ You have two choices:
 
 You can configure high availability when you first create your Azure HorizonDB instance. By enabling high availability during provisioning, you deploy a standby replica alongside your primary server, so you get immediate protection against zone or server failures.
 
-### [Portal](#tab/portal-enable-new-server)
 
-1.  In the [Azure portal](https://portal.azure.com/), select Azure HorizonDB Service and Click Create.
+1.  In the [Azure portal] select Azure HorizonDB Service and Click **Create**.
 
-      :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
-
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
 2. Provide your cluster name and go to  **High availability** section.
 
-You have two High availability mode choices:
+ You have two High availability mode choices:
 
 - **Disabled** - High availability isn't configured.
 - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
