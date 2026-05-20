@@ -21,19 +21,19 @@ ms.devlang: "java"
 
 # Quickstart: Use Java and JDBC in Azure HorizonDB
 
-This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure HorizonDB](../index.yml).
+This article demonstrates how to create a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure HorizonDB](../index.yml).
 
-JDBC is the standard Java API to connect to traditional relational databases.
+JDBC is the standard Java API for connecting to traditional relational databases.
 
 The steps in this article include PostgreSQL authentication.
 
-PostgreSQL authentication uses accounts stored in PostgreSQL and you need to manage the rotation of the passwords by yourself.
+PostgreSQL authentication uses accounts stored in PostgreSQL, and you need to manage the rotation of the passwords yourself.
 
 ## Prerequisites
 
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). We recommend Azure Cloud Shell so you'll be logged in automatically and have access to all the tools you'll need.
-- A supported [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), version 8 (included in Azure Cloud Shell).
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). Use Azure Cloud Shell so you're authenticated automatically and have access to all the tools you need.
+- A supported [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), version 8 (included in Cloud Shell).
 - The [Apache Maven](https://maven.apache.org/) build tool.
 
 ## Prepare the working environment
@@ -54,11 +54,11 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.
-- `<YOUR_DATABASE_NAME>`: The database name you are using within your Azure HorizonDB cluster.
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
-- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.  
+- `<YOUR_DATABASE_NAME>`: The database name you're using within your Azure HorizonDB cluster.  
+- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.  
+- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and nonalphanumeric characters (!, $, #, %, and so on).  
+- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
 
 Next, create a resource group by using the following command:
 
@@ -75,15 +75,15 @@ The following sections describe how to create and configure your database cluste
 
 ### Create an Azure HorizonDB cluster
 
-and set up admin user
+Set up admin user
 
-The first thing you create is a managed Azure HorizonDB instance.
+First, create a managed Azure HorizonDB instance.
 
 > [!NOTE]  
-> You can read more detailed information about creating Azure HorizonDB in [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
+> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
 
 ```azurecli-interactive
-az horizondb create \
+az Azure HorizonDB create \
   --resource-group $AZ_RESOURCE_GROUP \
   --name $AZ_DATABASE_SERVER_NAME \
   --location $AZ_LOCATION \
@@ -101,12 +101,12 @@ This command creates a small Azure HorizonDB cluster.
 
 ### Configure a firewall rule for your Azure HorizonDB instance
 
-Azure HorizonDB are secured by default. They have a firewall that doesn't allow any incoming connection. To be able to use your database, you need to add a firewall rule that will allow the local IP address to access the database server.
+Azure HorizonDB instances are secure by default. They have a firewall that blocks all incoming connections. To use your database, add a firewall rule that grants your local IP address access to the database server.
 
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
 ```azurecli-interactive
-az horizondb firewall-rule create \
+az Azure HorizonDB firewall-rule create \
   --resource-group $AZ_RESOURCE_GROUP \
   --cluster-name $AZ_DATABASE_SERVER_NAME \
   --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
@@ -115,15 +115,15 @@ az horizondb firewall-rule create \
   --output tsv
 ```
 
-If you're connecting to your Azure HorizonDB cluster from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
+If you're connecting to your Azure HorizonDB cluster from Windows Subsystem for Linux (WSL) on a Windows computer, you need to add the WSL host ID to your firewall.
 
-Obtain the IP address of your host machine by running the following command in WSL:
+Get the IP address of your host machine by running the following command in WSL:
 
 ```bash
 cat /etc/resolv.conf
 ```
 
-Copy the IP address following the term `nameserver`, then use the following command to set an environment variable for the WSL IP Address:
+Copy the IP address that follows the term `nameserver`, and then use the following command to set an environment variable for the WSL IP address:
 
 ```bash
 AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
@@ -132,7 +132,7 @@ AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
 Then, use the following command to open the server's firewall to your WSL-based app:
 
 ```azurecli-interactive
-az horizondb firewall-rule create \
+az Azure HorizonDB firewall-rule create \
   --resource-group $AZ_RESOURCE_GROUP \
   --cluster-name $AZ_DATABASE_SERVER_NAME \
   --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
@@ -143,7 +143,7 @@ az horizondb firewall-rule create \
 
 ### Create an Azure HorizonDB database
 
-Create a SQL script called *create_database.sql* for creating a new database in your cluster. Add the following contents and save it locally:
+Create a SQL script named *create_database.sql* to create a new database in your cluster. Add the following content and save the file locally:
 
 ```bash
 cat << EOF > create_database.sql
@@ -151,10 +151,10 @@ CREATE DATABASE "$AZ_DATABASE_NAME";
 EOF
 ```
 
-Execute this command to retrieve your Azure HorizonDB fully qualified domain name and copy clusterName value:
+Run this command to get your Azure HorizonDB fully qualified domain name and copy the `clusterName` value:
 
 ```azurecli-interactive
-az horizondb show \
+az Azure HorizonDB show \
   --resource-group $AZ_RESOURCE_GROUP \
   --name $AZ_DATABASE_SERVER_NAME \
   --query "{clusterName:properties.fullyQualifiedDomainName, adminUser:properties.administratorLogin}" \
@@ -164,26 +164,26 @@ az horizondb show \
  Copy clusterName value and use it in the following command:
 
 ```bash
-AZ_HORIZONDB_FQDN=<the-copied-clusterName-value>
+AZ_Azure HorizonDB_FQDN=<the-copied-clusterName-value>
 ```
 
-Then, use the following command to run the SQL script and create your database:
+Then, run the following command to execute the SQL script and create your database:
 
 ```bash
-psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_database.sql
+psql "host=$AZ_Azure HorizonDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_database.sql
 ```
 
-Now use the following command to remove the temporary SQL script file:
+Now, run the following command to delete the temporary SQL script file:
 
 ```bash
 rm create_database.sql
 ```
 
-### Create an Azure HorizonDB non-admin user and grant permission
+### Create an Azure HorizonDB nonadmin user and grant permissions
 
-Next, create a non-admin user and grant all permissions to the database.
+Next, create a nonadmin user and grant all permissions to the database.
 
-Create a SQL script called *create_user.sql* for creating a non-admin user. Add the following contents and save it locally:
+Create a SQL script named *create_user.sql* to create a nonadmin user. Add the following content and save the file locally:
 
 ```bash
 cat << EOF > create_user.sql
@@ -192,13 +192,13 @@ GRANT ALL PRIVILEGES ON DATABASE $AZ_DATABASE_NAME TO "$AZ_POSTGRESQL_NON_ADMIN_
 EOF
 ```
 
-Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
+Then, run the following command to execute the SQL script and create the Microsoft Entra nonadmin user:
 
 ```bash
-psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
+psql "host=$AZ_Azure HorizonDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
 ```
 
-Now use the following command to remove the temporary SQL script file:
+Now, run the following command to delete the temporary SQL script file:
 
 ```bash
 rm create_user.sql
@@ -206,7 +206,7 @@ rm create_user.sql
 
 ### Create a new Java project
 
-Using your favorite IDE, create a new Java project using Java 8 or above, and add a *pom.xml* file in its root directory with the following contents:
+Using your favorite IDE, create a new Java project by using Java 8 or later. Add a *pom.xml* file in the root directory with the following contents:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -234,14 +234,14 @@ Using your favorite IDE, create a new Java project using Java 8 or above, and ad
 </project>
 ```
 
-This file is an [Apache Maven](https://maven.apache.org/) that configures our project to use:
+This file is an [Apache Maven](https://maven.apache.org/) file that configures your project to use:
 
 - Java 8
 - A recent PostgreSQL driver for Java
 
 ### Prepare a configuration file to connect to Azure HorizonDB
 
-Create a *src/main/resources/application.properties* file, then add the following contents:
+Create a *src/main/resources/application.properties* file, and add the following contents:
 
 ```bash
 cat << EOF > src/main/resources/application.properties
@@ -252,11 +252,11 @@ EOF
 ```
 
 > [!NOTE]  
-> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure HorizonDB and is a recommended security practice.
+> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Azure HorizonDB requires TLS, and it's a recommended security practice.
 
 ### Create a SQL file to generate the database schema
 
-You'll use a *src/main/resources/`schema.sql`* file in order to create a database schema. Create that file, with the following content:
+Use a *src/main/resources/schema.sql* file to create a database schema. Create that file with the following content:
 
 ```sql
 DROP TABLE IF EXISTS todo;
@@ -267,7 +267,7 @@ CREATE TABLE todo (id SERIAL PRIMARY KEY, description text, details text, done B
 
 ### Connect to the database
 
-Next, add the Java code that will use JDBC to store and retrieve data from your Azure HorizonDB instance.
+Next, add the Java code that uses JDBC to store and retrieve data from your Azure HorizonDB instance.
 
 Create a *src/main/java/DemoApplication.java* file and add the following contents:
 
@@ -320,9 +320,9 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code will use the *application.properties* and the *schema.sql* files that we created earlier, in order to connect to the Azure HorizonDB instance and create a schema that will store our data.
+This Java code uses the *application.properties* and the *schema.sql* files that we created earlier, to connect to the Azure HorizonDB instance and create a schema that will store our data.
 
-In this file, you can see that we commented methods to insert, read, update and delete data: we will code those methods in the rest of this article, and you'll be able to uncomment them one after each other.
+In this file, you can see that we commented methods to insert, read, update, and delete data: we'll code those methods in the rest of this article, and you'll be able to uncomment them one after each other.
 
 > [!NOTE]  
 > The database credentials are stored in the *user* and *password* properties of the *application.properties* file. Those credentials are used when executing `DriverManager.getConnection(properties.getProperty("url"), properties);`, as the properties file is passed as an argument.
@@ -448,7 +448,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-<a id="reading-data-from-azure-horizondb"></a>
+<a id="reading-data-from-azure-Azure HorizonDB"></a>
 
 ### Read data from Azure HorizonDB
 
@@ -494,7 +494,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-<a id="updating-data-in-azure-horizondb"></a>
+<a id="updating-data-in-azure-Azure HorizonDB"></a>
 
 ### Update data in Azure HorizonDB
 
@@ -540,7 +540,7 @@ Executing the main class should now produce the following output:
 [INFO   ] Closing database connection
 ```
 
-<a id="deleting-data-in-azure-horizondb"></a>
+<a id="deleting-data-in-azure-Azure HorizonDB"></a>
 
 ### Delete data in Azure HorizonDB
 

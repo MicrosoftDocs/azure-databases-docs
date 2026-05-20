@@ -1,5 +1,6 @@
 ---
-title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDBdescription: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
+title: Use Python to Connect and Query Data in Azure HorizonDB
+description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -98,15 +99,15 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
    def get_connection_uri():
 
-       # Read URI parameters from the environment
-       dbhost = os.environ['DBHOST']
-       dbname = os.environ['DBNAME']
-       dbuser = urllib.parse.quote(os.environ['DBUSER'])
+      # Read URI parameters from the environment
+      dbhost = os.environ['DBHOST']
+      dbname = os.environ['DBNAME']
+      dbuser = urllib.parse.quote(os.environ['DBUSER'])
    password = os.environ['DBPASSWORD']
    sslmode = os.environ['SSLMODE']
    db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode={sslmode}"
-       # Construct connection URI
-       return db_uri
+      # Construct connection URI
+      return db_uri
    ```
 
 1. Get database connection information.
