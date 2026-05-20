@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale the compute in Azure HorizonDB.
 ---
 
-# Scale compute in Azure HorizonDB
+# Scale compute in Azure HorizonDB (Preview)
 
 This article provides step-by-step instructions to perform scaling operations for the compute in Azure HorizonDB.
 
@@ -43,4 +43,6 @@ Using the [Azure portal](https://portal.azure.com/):
  :::image type="content" source="./media/success-cores.png" alt-text="Screenshot showing the successful update." lightbox="./media/success-cores.png":::
 
 
+## Related content
 
+- [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
