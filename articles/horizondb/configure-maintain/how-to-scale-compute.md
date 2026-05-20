@@ -15,7 +15,7 @@ ms.topic: how-to
 
 This article provides step-by-step instructions to perform scaling operations for the compute in Azure HorizonDB.
 
-When you request a scaling operation of the compute used by your Azure HorizonDB, your server undergoes a restart.
+When you initiate a compute scaling operation in Azure HorizonDB, the server is restarted as part of the process. During this restart, the database becomes temporarily unavailable, and existing connections are dropped. The service applies the new compute configuration during the restart and automatically brings the server back online once scaling is complete. 
 
 ## Steps to scale compute
 
