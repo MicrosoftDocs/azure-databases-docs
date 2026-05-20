@@ -79,7 +79,7 @@ Select **Save** to confirm or **Cancel** to discard changes.
 
 | Setting | Description | Recommended |
 |---------|-------------|-------------|
-| **Authentication method** | How users authenticate | - **PostgreSQL authentication only** (for quickstart)<br>- **Microsoft Entra authentication** (for production)<br>- **Both** (for flexibility) |
+| **Authentication method** | How users authenticate | - PostgreSQL authentication only |
 | **Admin username** | adminuser | - Must be 1-63 characters<br>- Only numbers and letters<br>- Can't start with `pg_`<br>- Can't be system reserved names |
 | **Password** | Complex password | 8-128 characters with uppercase, lowercase, numbers, and special characters |
 
@@ -103,10 +103,6 @@ Connect through a public endpoint by using firewall rules.
 | --- | --- |
 | **Allow Azure services** | Permit connections from all Azure services |
 | **Add current client IP** | Add your IP address to the allow list |
-
-#### Private endpoints
-
-Connect to a virtual network through a private endpoint. For more information, see [Network with private access for Azure HorizonDB](../network/concepts-networking-private-link.md).
 
 ### Configure security
 
