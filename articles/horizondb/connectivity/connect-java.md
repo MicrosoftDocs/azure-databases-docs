@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Use Java and JDBC in Azure HorizonDB"
 description: In this quickstart, you learn how to use Java and JDBC in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: scoriani
+ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -25,11 +25,9 @@ This article demonstrates creating a sample application that uses Java and [JDBC
 
 JDBC is the standard Java API to connect to traditional relational databases.
 
-In this article, we'll include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
+The steps in this article include PostgreSQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure HorizonDB using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
-
-PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials will be stored in the `user` table. Because these passwords are stored in PostgreSQL, you'll need to manage the rotation of the passwords by yourself.
+PostgreSQL authentication uses accounts stored in PostgreSQL and you need to manage the rotation of the passwords by yourself.
 
 ## Prerequisites
 
@@ -41,31 +39,6 @@ PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to u
 ## Prepare the working environment
 
 First, use the following command to set up some environment variables.
-
-### [Passwordless (Recommended)](#tab/passwordless)
-
-```bash
-export AZ_RESOURCE_GROUP=database-workshop
-export AZ_DATABASE_SERVER_NAME=<YOUR_DATABASE_SERVER_NAME>
-export AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
-export AZ_LOCATION=<YOUR_AZURE_REGION>
-export AZ_POSTGRESQL_AD_NON_ADMIN_USERNAME=<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>
-export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
-export CURRENT_USERNAME=$(az ad signed-in-user show --query userPrincipalName -o tsv)
-```
-
-Replace the placeholders with the following values, which are used throughout this article:
-
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure HorizonDB instance, which should be unique within Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`: The username of your Azure HorizonDB instance. Make ensure the username is a valid user in your Microsoft Entra tenant.
-- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
-
-> [!IMPORTANT]  
-> When setting `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`, the username must already exist in your Microsoft Entra tenant or you'll be unable to create a Microsoft Entra user in your database.
-
-### [Password](#tab/password)
 
 ```bash
 export AZ_RESOURCE_GROUP=database-workshop
@@ -81,13 +54,11 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure HorizonDB instance, which should be unique within Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB instance. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.
+- `<YOUR_DATABASE_NAME>`: The database name you are using within your Azure HorizonDB cluster.
+- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
+- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
 - `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
-
----
 
 Next, create a resource group by using the following command:
 
@@ -98,11 +69,11 @@ az group create \
     --output tsv
 ```
 
-## Create a flexible server instance
+## Create an Azure HorizonDB cluster
 
-The following sections describe how to create and configure your database instance.
+The following sections describe how to create and configure your database cluster.
 
-### Create a flexible server instance
+### Create an Azure HorizonDB cluster
 
 and set up admin user
 
@@ -111,46 +82,20 @@ The first thing you create is a managed Azure HorizonDB instance.
 > [!NOTE]  
 > You can read more detailed information about creating Azure HorizonDB in [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
 
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-If you're using Azure CLI, run the following command to make sure it has sufficient permission:
-
 ```azurecli-interactive
-az login --scope https://graph.microsoft.com/.default
+az horizondb create \
+  --resource-group $AZ_RESOURCE_GROUP \
+  --name $AZ_DATABASE_SERVER_NAME \
+  --location $AZ_LOCATION \
+  --version 17 \
+  --administrator-login $AZ_POSTGRESQL_ADMIN_USERNAME \
+  --administrator-login-password $AZ_POSTGRESQL_ADMIN_PASSWORD \
+  --v-cores 2 \
+  --yes \
+  --output tsv
 ```
 
-Run the following command to create the server:
-
-```azurecli-interactive
-az postgres flexible-server create \
-    --resource-group $AZ_RESOURCE_GROUP \
-    --name $AZ_DATABASE_SERVER_NAME \
-    --location $AZ_LOCATION \
-    --yes \
-    --output tsv
-```
-
-To set up a Microsoft Entra administrator after creating the server, follow the steps in [Manage Microsoft Entra roles in Azure HorizonDB](../security/security-manage-entra-users.md).
-
-> [!IMPORTANT]  
-> When setting up an administrator, a new user with full administrator privileges is added to the Azure HorizonDB instance's Azure database. You can create multiple Microsoft Entra administrators per Azure HorizonDB instance.
-
-#### [Password](#tab/password)
-
-```azurecli-interactive
-az postgres flexible-server create \
-    --resource-group $AZ_RESOURCE_GROUP \
-    --name $AZ_DATABASE_SERVER_NAME \
-    --location $AZ_LOCATION \
-    --admin-user $AZ_POSTGRESQL_ADMIN_USERNAME \
-    --admin-password $AZ_POSTGRESQL_ADMIN_PASSWORD \
-    --yes \
-    --output tsv
-```
-
-This command creates a small Azure HorizonDB instance.
-
----
+This command creates a small Azure HorizonDB cluster.
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
@@ -161,16 +106,16 @@ Azure HorizonDB are secured by default. They have a firewall that doesn't allow 
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create \
-    --resource-group $AZ_RESOURCE_GROUP \
-    --name $AZ_DATABASE_SERVER_NAME \
-    --rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
-    --start-ip-address $AZ_LOCAL_IP_ADDRESS \
-    --end-ip-address $AZ_LOCAL_IP_ADDRESS \
-    --output tsv
+az horizondb firewall-rule create \
+  --resource-group $AZ_RESOURCE_GROUP \
+  --cluster-name $AZ_DATABASE_SERVER_NAME \
+  --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
+  --start-ip-address $AZ_LOCAL_IP_ADDRESS \
+  --end-ip-address $AZ_LOCAL_IP_ADDRESS \
+  --output tsv
 ```
 
-If you're connecting to your Azure HorizonDB instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
+If you're connecting to your Azure HorizonDB cluster from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
 
 Obtain the IP address of your host machine by running the following command in WSL:
 
@@ -187,57 +132,56 @@ AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
 Then, use the following command to open the server's firewall to your WSL-based app:
 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create \
-    --resource-group $AZ_RESOURCE_GROUP \
-    --name $AZ_DATABASE_SERVER_NAME \
-    --rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
-    --start-ip-address $AZ_WSL_IP_ADDRESS \
-    --end-ip-address $AZ_WSL_IP_ADDRESS \
-    --output tsv
+az horizondb firewall-rule create \
+  --resource-group $AZ_RESOURCE_GROUP \
+  --cluster-name $AZ_DATABASE_SERVER_NAME \
+  --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
+  --start-ip-address $AZ_WSL_IP_ADDRESS \
+  --end-ip-address $AZ_WSL_IP_ADDRESS \
+  --output tsv
 ```
 
-### Configure an Azure HorizonDB database
+### Create an Azure HorizonDB database
 
-Create a new database using the following command:
-
-```azurecli-interactive
-az postgres flexible-server db create \
-    --resource-group $AZ_RESOURCE_GROUP \
-    --database-name $AZ_DATABASE_NAME \
-    --server-name $AZ_DATABASE_SERVER_NAME \
-    --output tsv
-```
-
-### Create an Azure HorizonDB non-admin user and grant permission
-
-Next, create a non-admin user and grant all permissions to the database.
-
-> [!NOTE]  
-> You can read more detailed information about managing Azure HorizonDB users in [Manage Microsoft Entra roles in Azure HorizonDB](../security/security-manage-entra-users.md).
-
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-Create a SQL script called *create_ad_user.sql* for creating a non-admin user. Add the following contents and save it locally:
+Create a SQL script called *create_database.sql* for creating a new database in your cluster. Add the following contents and save it locally:
 
 ```bash
-cat << EOF > create_ad_user.sql
-select * from pgaadauth_create_principal('$AZ_POSTGRESQL_AD_NON_ADMIN_USERNAME', false, false);
+cat << EOF > create_database.sql
+CREATE DATABASE "$AZ_DATABASE_NAME";
 EOF
 ```
 
-Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
+Execute this command to retrieve your Azure HorizonDB fully qualified domain name and copy clusterName value:
+
+```azurecli-interactive
+az horizondb show \
+  --resource-group $AZ_RESOURCE_GROUP \
+  --name $AZ_DATABASE_SERVER_NAME \
+  --query "{clusterName:properties.fullyQualifiedDomainName, adminUser:properties.administratorLogin}" \
+  --output table
+```
+
+ Copy clusterName value and use it in the following command:
 
 ```bash
-psql "host=$AZ_DATABASE_SERVER_NAME.postgres.database.azure.com user=$CURRENT_USERNAME dbname=postgres port=5432 password=$(az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken) sslmode=require" < create_ad_user.sql
+AZ_HORIZONDB_FQDN=<the-copied-clusterName-value>
+```
+
+Then, use the following command to run the SQL script and create your database:
+
+```bash
+psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_database.sql
 ```
 
 Now use the following command to remove the temporary SQL script file:
 
 ```bash
-rm create_ad_user.sql
+rm create_database.sql
 ```
 
-#### [Password](#tab/password)
+### Create an Azure HorizonDB non-admin user and grant permission
+
+Next, create a non-admin user and grant all permissions to the database.
 
 Create a SQL script called *create_user.sql* for creating a non-admin user. Add the following contents and save it locally:
 
@@ -251,7 +195,7 @@ EOF
 Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
 
 ```bash
-psql "host=$AZ_DATABASE_SERVER_NAME.postgres.database.azure.com user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
+psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
 ```
 
 Now use the following command to remove the temporary SQL script file:
@@ -260,46 +204,9 @@ Now use the following command to remove the temporary SQL script file:
 rm create_user.sql
 ```
 
----
-
 ### Create a new Java project
 
 Using your favorite IDE, create a new Java project using Java 8 or above, and add a *pom.xml* file in its root directory with the following contents:
-
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>demo</name>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
-
-    <dependencies>
-      <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>42.7.5</version>
-      </dependency>
-      <dependency>
-        <groupId>com.azure</groupId>
-        <artifactId>azure-identity-extensions</artifactId>
-        <version>1.2.0</version>
-      </dependency>
-    </dependencies>
-</project>
-```
-
-#### [Password](#tab/password)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -327,8 +234,6 @@ Using your favorite IDE, create a new Java project using Java 8 or above, and ad
 </project>
 ```
 
----
-
 This file is an [Apache Maven](https://maven.apache.org/) that configures our project to use:
 
 - Java 8
@@ -338,17 +243,6 @@ This file is an [Apache Maven](https://maven.apache.org/) that configures our pr
 
 Create a *src/main/resources/application.properties* file, then add the following contents:
 
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-```bash
-cat << EOF > src/main/resources/application.properties
-url=jdbc:postgresql://${AZ_DATABASE_SERVER_NAME}.postgres.database.azure.com:5432/${AZ_DATABASE_NAME}?sslmode=require&authenticationPluginClassName=com.azure.identity.extensions.jdbc.postgresql.AzurePostgresqlAuthenticationPlugin
-user=${AZ_POSTGRESQL_AD_NON_ADMIN_USERNAME}
-EOF
-```
-
-#### [Password](#tab/password)
-
 ```bash
 cat << EOF > src/main/resources/application.properties
 url=jdbc:postgresql://${AZ_DATABASE_SERVER_NAME}.postgres.database.azure.com:5432/${AZ_DATABASE_NAME}?sslmode=require
@@ -356,8 +250,6 @@ user=${AZ_POSTGRESQL_NON_ADMIN_USERNAME}
 password=${AZ_POSTGRESQL_NON_ADMIN_PASSWORD}
 EOF
 ```
-
----
 
 > [!NOTE]  
 > The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure HorizonDB and is a recommended security practice.
@@ -368,7 +260,7 @@ You'll use a *src/main/resources/`schema.sql`* file in order to create a databas
 
 ```sql
 DROP TABLE IF EXISTS todo;
-CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
+CREATE TABLE todo (id SERIAL PRIMARY KEY, description text, details text, done BOOLEAN);
 ```
 
 ## Code the application
@@ -707,8 +599,3 @@ az group delete \
 
 - [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
-- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
-- [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)
