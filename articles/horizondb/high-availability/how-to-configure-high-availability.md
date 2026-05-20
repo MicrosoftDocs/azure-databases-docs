@@ -30,7 +30,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. On the left menu, in the **Settings** section, select **High availability**.
 
-  You have two choices:
+   You have two options:
 
     - **Disabled** - High availability isn't configured.
     - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
