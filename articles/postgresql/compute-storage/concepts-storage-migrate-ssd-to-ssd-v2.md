@@ -16,7 +16,7 @@ ms.topic:  concept-article
 This article provides step-by-step instructions to perform a restore of an Azure Database for PostgreSQL flexible server to a custom restore point.
 
 > [!NOTE]
-> Premium SSD v2 provides a baseline of 3,000 IOPS and 125 MB/s throughput for disks up to 399 GiB, and 12,000 IOPS and 500 MB/s throughput for disks 400 GiB or larger, at no additional cost. After migration, you can adjust IOPS and throughput based on your workload requirements..
+> Premium SSD v2 provides a baseline of 3,000 IOPS and 125 MB/s throughput for disks up to 399 GiB, and 12,000 IOPS and 500 MB/s throughput for disks 400 GiB or larger, at no additional cost. After migration, you can adjust IOPS and throughput based on your workload requirements.
 
 ## Steps to migrate or restore from Premium SSD to Premium SSDv2
 
