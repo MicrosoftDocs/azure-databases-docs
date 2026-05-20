@@ -19,7 +19,7 @@ Azure HorizonDB provides fully managed, built‑in backups to protect data and s
 
 ## Backup overview
 
-Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The archiving process is managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
+Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The snapshot and archiving process are managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
 
 WAL archiving runs continuously in the background and doesn't impact query execution or application availability. WAL files are retained according to the configured backup retention policy. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), allowing the database to be restored to a specific time within the retention window. This supports recovery from scenarios such as data corruption, unintended changes, or operational incidents.
 
@@ -32,8 +32,6 @@ Backup and restore operations for HorizonDB databases are fast regardless of dat
 The default backup retention period is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
 
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
-
-WAL archiving occur at variable intervals based on workload activity. Logs are captured when the WAL is ready to be archived. This process ensures a transactional consistent database state and enables point-in-time restore within the configured retention period, with no data loss at the selected restore point, allowing for a recovery point objective (RPO) of zero.
 
 
 ## Backup metrics
