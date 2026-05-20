@@ -11,17 +11,17 @@ ms.topic: concept-article
 #customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
-# Restore in Azure HorizonDB
+# Restore in Azure HorizonDB (Preview)
 This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
 
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB service restores a database to any point in time within the configured retention period using the following process:
 
 1. Restores the most recent snapshot prior to the selected restore time.
-2. Applies transaction logs from that snapshot forward to the desired restore point to ensure transactional consistency.
+2. Applies write-ahead logs (WAL) from that snapshot forward to the desired restore point to ensure transactional consistency.
 
-If the most recent snapshot is taken at 6:00 PM and the specified restore point is 9:00 PM, the service restores the 6:00 PM snapshot and then replays WAL(Write ahead log) generated between 6:00 PM and 9:00 PM
+If the most recent snapshot is taken at 6:00 PM and the specified restore point is 9:00 PM, the service restores the 6:00 PM snapshot and then replays WAL generated between 6:00 PM and 9:00 PM
 
-Because restore operations are based on snapshots and log replay rather than full data movement, restore time isn't dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
+Because restore operations are based on snapshots and WAL replay rather than full data movement, restore time isn't dependent on database size. As a result, restoring a HorizonDB database within the same region typically completes in minutes, even for large multi-terabyte databases.
 
 ## Restore to custom restore point in Azure HorizonDB
 
@@ -43,7 +43,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
  
 > [!NOTE]
->  Point-in-time restore is limited to timestamps that are at least 300 seconds earlier than the current time. Select a restore point that is at least 5 minutes in the past. If you choose current time restore fails.
+> During Preview, point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past..
 
 4. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server’s settings, you can skip this step.
 
@@ -64,5 +64,5 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Related content
 
-- [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
+- [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
 
