@@ -41,7 +41,7 @@ CREATE USER demouser PASSWORD password123;
 ```
 Don't use the **administrator role** for the application.
 
-In cloud-based PaaS environments, access to an Azure HorizonDB superuser account is restricted to control plane operations only. The `azuresu` role has superuser privilleges, but the Azure HorizonDB cluster admin account isn't part of the `azuresu` role. 
+In cloud-based PaaS environments, access to an Azure HorizonDB superuser account is restricted to control plane operations only. The `azuresu` role has superuser privileges, but the Azure HorizonDB cluster admin account isn't part of the `azuresu` role. 
 
 The `azure_pg_admin` role exists as a pseudo-superuser account. The administrator account you configured when creating the cluster is a member of the `azure_pg_admin` role.
 
@@ -77,7 +77,7 @@ oid            | 24827
 
 Newly created databases in Azure HorizonDB include a default set of privileges in the database's public schema that grant all database users and roles the ability to create objects. To better limit application user access to the databases that you create on your Azure HorizonDB instance, consider revoking these default public privileges. After revoking these privileges, grant specific privileges to database users on a more granular basis. For example:
 
-- Revoke create privileges to the `public` schema from the `public` role to prevent application database users from creating objects in the public schema.
+- Revoke create privileges to the `public` schema from the `public` role in order to prevent application database users from creating objects in the public schema.
 
   ```sql
   REVOKE CREATE ON SCHEMA public FROM PUBLIC;
@@ -121,14 +121,14 @@ In Azure HorizonDB the public schema is owned by the `azure_pg_admin` role acros
 
 ### Improved control for *azure_pg_admin*
 
-In Azure HorizonDB Flexible server, the azure_pg_admin role is a system-managed, restricted role and can't be modified by users. Attempts to alter it, such as granting another role to it , will result in an error like:
+In Azure HorizonDB Flexible server, the azure_pg_admin role is a system-managed, restricted role and can't be modified. Attempts to alter it, such as granting another role to it, results in an error like:
 
 ```sql
    GRANT <db_user> TO azure_pg_admin;
  ERROR: permission denied to alter restricted role "azure_pg_admin"
  ```
 
-This is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
+This restriction is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
 
 Azure HorizonDB enhances the capabilities of the *azure_pg_admin* role across all PostgreSQL versions. Members of the *azure_pg_admin* role can manage roles and access objects owned by any nonrestricted role, even if those roles are also members of *azure_pg_admin*. This ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
 

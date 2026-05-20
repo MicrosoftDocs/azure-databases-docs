@@ -61,7 +61,7 @@ The cluster admin user account can be used to create more users and grant those 
 
 1. Edit and run the following SQL code. Replace the placeholder value `<db_user>` with your intended new user name and placeholder value `<newdb>` with your own database name. Replace the placeholder password with your own strong password.
 
-   This SQL code below creates a new database, then it creates a new user in the Azure HorizonDB instance and grants connect privilege to the new database for that user.
+   This SQL code creates a new database, then it creates a new user in the Azure HorizonDB instance and grants connect privilege to the new database for that user.
 
    ```sql
    CREATE DATABASE <newdb>;
@@ -71,13 +71,13 @@ The cluster admin user account can be used to create more users and grant those 
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-1. Using an admin account, you might need to grant other privileges to secure the objects in the database. Refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/current/ddl-priv.html) for further details on database roles and privileges. For example:
+1. Using an admin account, you might need to grant other privileges to secure the objects in the database. For more information, refer to the [PostgreSQL documentation](https://www.postgresql.org/docs/current/ddl-priv.html) for further details on database roles and privileges. For example:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
 
-   If a user creates a table "role", the table belongs to that user. If another user needs access to the table, you must grant privileges to the other user on the table level.
+   If a user creates a table "role," the table belongs to that user. If another user needs access to the table, you must grant privileges to the other user on the table level.
 
    For example:
 
