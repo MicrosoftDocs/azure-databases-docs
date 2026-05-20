@@ -16,7 +16,7 @@ HorizonDB is Azure's next-generation PostgreSQL platform, designed to let develo
 
 Applications can connect using standard PostgreSQL connection strings to either the primary cluster endpoint for read-write workloads or the read-replica endpoint for read-only traffic.
 
-You can find Azure HorizonDB cluster endpoints details in the Overview page:
+You can find Azure HorizonDB cluster endpoint details in the **Overview** page:
 
 :::image type="content" source="media/how-to-connect-query-guide/endpoint-administrator-login.png" alt-text="Screenshot showing the Overview page and connection details." lightbox="media/how-to-connect-query-guide/endpoint-administrator-login.png":::
 
@@ -28,17 +28,17 @@ How to connect to HorizonDB read replica pool (reader endpoint):
 
 `psql "host=<horizondb-reader-endpoint> port=5432 dbname=<database_name> user=<username> sslmode=require"`
 
-This guide also includes TLS recommendations and extension that you can use to connect to the server in supported languages below.
+This guide also includes TLS recommendations and extensions that you can use to connect to the server in supported languages below.
 
 ## Quickstarts
 
 | Quickstart | Description |
 | --- | --- |
 | [PostgreSQL for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) | PostgreSQL for Visual Studio Code is the essential extension for working with PostgreSQL databases - locally or in the cloud. Connect, query, build, and chat with your databases with ease, including seamless Entra authentication for Azure HorizonDB. |
-| [Pgadmin](https://www.pgadmin.org/) | You can use pgadmin to connect to the server and it simplifies the creation, maintenance and use of database objects. |
+| [pgAdmin](https://www.pgadmin.org/) | You can use pgAdmin to connect to the server. It simplifies the creation, maintenance, and use of database objects. |
 | [psql in Azure Cloud Shell](../configure-maintain/quickstart-create-server.md#connect-using-psql) | This article shows how to run [**psql**](https://www.postgresql.org/docs/current/app-psql.html) in [Azure Cloud Shell](/azure/cloud-shell/overview) to connect to your server and then run statements to query, insert, update, and delete data in the database. You can run **psql** if installed on your development environment. |
-| [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md) | This quickstart demonstrates how to use Python to connect to a database and use work with database objects to query data. |
-| [Django with App Service](/azure/app-service/tutorial-python-postgresql-app) | This tutorial demonstrates how to use Ruby to create a program to connect to a database and use work with database objects to query data. |
+| [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md) | This quickstart demonstrates how to use Python to connect to a database and work with database objects to query data. |
+| [Django with App Service](/azure/app-service/tutorial-python-postgresql-app) | This tutorial demonstrates how to use Django to create a program to connect to a database and work with database objects to query data. |
 
 ## TLS considerations for database connectivity
 
