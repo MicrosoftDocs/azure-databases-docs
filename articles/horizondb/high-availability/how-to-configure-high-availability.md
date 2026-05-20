@@ -24,9 +24,9 @@ High availability can be configured either during the initial creation of your A
 
 You can enable high availability on an existing Azure HorizonDB instance at any time. When you enable high availability, the service creates a standby compute replica that mirrors your primary server.
 
-### [Portal](#tab/portal-enable-existing-server)
+Using the [Azure portal](https://portal.azure.com/):
 
-1. In the [Azure portal](https://portal.azure.com/), select your Azure HorizonDB instance.
+1. Select your Azure HorizonDB cluster.
 
 2. On the left menu, in the **Settings** section, select **High availability**.
 
@@ -48,8 +48,9 @@ You have two choices:
 
 You can configure high availability when you first create your Azure HorizonDB instance. By enabling high availability during provisioning, you deploy a standby replica alongside your primary server, so you get immediate protection against zone or server failures.
 
+Using the [Azure portal](https://portal.azure.com/):
 
-1.  In the [Azure portal] select Azure HorizonDB Service and Click **Create**.
+1.  select Azure HorizonDB Service and Click **Create**.
 
    :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
