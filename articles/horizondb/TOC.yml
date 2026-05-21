@@ -24,10 +24,6 @@
         href: configure-maintain/quickstart-create-cluster.md
       - name: How to connect
         href: connectivity/how-to-connect-query-guide.md
-      - name: Using Python
-        href: connectivity/connect-python.md
-      - name: Using Java
-        href: connectivity/connect-java.md
 - name: High availability & resilience
   items:
     - name: Business Continuity
@@ -364,9 +360,9 @@
 - name: References
   items:
       - name: Using Python
-        href: connectivity/connect-python.md
+        href: configure-maintain/quickstart-create-cluster.md
       - name: Using Java
-        href: connectivity/connect-java.md
+        href: configure-maintain/quickstart-create-cluster.md
 - name: Resources
   items:
     - name: Possible errors when managing extensions
