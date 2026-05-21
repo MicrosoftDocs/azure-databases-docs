@@ -14,22 +14,29 @@ ms.custom:
 
 # Overview of business continuity in Azure HorizonDB
 
-**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, Azure HorizonDB handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
+**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable applications and business processes to continue operating during and after disruptive events, particularly those that affect computing infrastructure.Azure HorizonDB is designed to automatically handle many types of failures within the cloud environment, helping maintain application availability and operational continuity. However, some scenarios require explicit user action or planning, including:
 
-- User accidentally deletes or updates a row in a table.
-- Earthquake causes a power outage and temporarily disables an availability zone or a region.
-- Database patching required to fix a bug or security issue.
+- Accidental data modifications or deletions (for example, a user deleting or updating rows in a table)
+- Regional or zonal outages caused by events such as natural disasters
+- Planned maintenance operations, such as patching to address bugs or security vulnerabilities
 
-Azure HorizonDB provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure HorizonDB has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
+## Built-in resilience and protection
+Azure HorizonDB provides a set of features designed to protect data and minimize downtime during both planned and unplanned events. These capabilities are built on Azure infrastructure, which offers high levels of resiliency and availability.
+Business continuity features in Azure HorizonDB are designed to:
+
+Provide additional fault protection beyond underlying infrastructure
+Support defined recovery objectives
+Reduce potential data loss exposure
+
 
 The table below illustrates the features that Azure HorizonDB offers.
-The table below illustrates the features that Azure Database for PostgreSQL offers.
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
-| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups are retained from 7 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to few hours. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
-| **Zone redundant high availability** | Azure HorizonDB need at least two replicas on the cluster to have zonal resilience. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it. |
-| **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |
+| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups are retained from 7 days. You're able to restore your database server to any point in time within your backup retention period. The recovery time objective (RTO) for restore operations is primarily influenced by the time required to apply write-ahead log (WAL) recovery and is independent of the total size of the database being restored.For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
+| **Zone redundant high availability** | Azure HorizonDB need at least two replicas on the cluster to have zonal resilience. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it. | Protects against availability zone outages. |
+| **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |Protects against availability zone outages. |
+| **Read Replicas** | Azure HorizonDB supports in region replicas which can be used to offload readonly workloads. Replicas also act as failover targets for primary cluster. | Supports up to 15 replicas. |
 
 
 ### Service Outage
