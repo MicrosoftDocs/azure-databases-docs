@@ -1,5 +1,6 @@
 ---
-title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDBdescription: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
+title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDB"
+description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
@@ -29,7 +30,7 @@ This article assumes that you're familiar with developing using Python, but you'
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An Azure HorizonDB cluster. To create Azure HorizonDB cluster, refer to [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
+- An Azure HorizonDB cluster. To create Azure HorizonDB cluster, refer to [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-server.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
@@ -98,15 +99,15 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
    def get_connection_uri():
 
-       # Read URI parameters from the environment
-       dbhost = os.environ['DBHOST']
-       dbname = os.environ['DBNAME']
-       dbuser = urllib.parse.quote(os.environ['DBUSER'])
+      # Read URI parameters from the environment
+      dbhost = os.environ['DBHOST']
+      dbname = os.environ['DBNAME']
+      dbuser = urllib.parse.quote(os.environ['DBUSER'])
    password = os.environ['DBPASSWORD']
    sslmode = os.environ['SSLMODE']
    db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode={sslmode}"
-       # Construct connection URI
-       return db_uri
+      # Construct connection URI
+      return db_uri
    ```
 
 1. Get database connection information.
