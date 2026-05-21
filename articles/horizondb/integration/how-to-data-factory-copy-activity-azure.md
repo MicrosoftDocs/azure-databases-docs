@@ -93,4 +93,3 @@ There are three acceptable ways to use the **Key Columns**:
 
 - [Script activity in Data Factory and Azure Synapse Analytics in Azure HorizonDB](how-to-data-factory-script-activity-azure.md)
 - [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

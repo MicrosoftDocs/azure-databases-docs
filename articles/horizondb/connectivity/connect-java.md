@@ -597,5 +597,4 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)

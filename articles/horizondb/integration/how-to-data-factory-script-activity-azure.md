@@ -431,4 +431,3 @@ For activity output logging, expand the **Advanced** section and select **Enable
 - [Learn more about Script activity for Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script)
 - [Copy activity in Azure Data Factory and Azure Synapse Analytics in Azure HorizonDB](how-to-data-factory-copy-activity-azure.md)
 - [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

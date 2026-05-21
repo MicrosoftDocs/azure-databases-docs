@@ -46,15 +46,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Overview**.
 
-   :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
+   :::image type="content" source="media/connect-csharp/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect-csharp/overview.png":::
 
 1. Copy the values shown as **Endpoint** and **Administrator login**.
 
-   :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
+   :::image type="content" source="media/connect-csharp/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect-csharp/endpoint-administrator-login.png":::
 
 1. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
 
-   :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
+   :::image type="content" source="media/connect-csharp/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect-csharp/reset-password.png":::
 
 ## Step 1: Connect and insert data
 
@@ -344,10 +344,6 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
 - [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

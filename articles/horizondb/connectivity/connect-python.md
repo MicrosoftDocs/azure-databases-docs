@@ -298,7 +298,4 @@ conn.close()
 
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
 - [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
 - [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

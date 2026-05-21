@@ -164,8 +164,6 @@ landingContent:
       url: connectivity/concepts-connection-libraries.md
     - text: Deploy with Terraform
       url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
-    - text: Quickstart guide for Python
-      url: development/create-server-python-sdk.md
     - text: Pricing
       url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
     - text: Region Availability

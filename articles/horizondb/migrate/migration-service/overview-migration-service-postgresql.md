@@ -43,8 +43,6 @@ Azure HorizonDB provides maximum flexibility over your database and built-in cos
 
 - Minimized latency: You can collocate your flexible server in the same availability zone as the application server for minimal latency.
 
-- {[PgBouncer in Azure HorizonDB](../../connectivity/concepts-pgbouncer.md)}: Azure HorizonDB has a built-in connection pooling mechanism via the pgBouncer plugin to support thousands of active connections with low overhead.
-
 - {[Parameters in Azure HorizonDB](../../server-parameters/concepts-server-parameters.md)}: Azure HorizonDB offers a rich set of server parameters for configuration and tuning.
 
 - {[Scheduled maintenance in Azure HorizonDB](../../configure-maintain/concepts-maintenance.md)}: You can schedule the maintenance window of the flexible server for a specific day of the week and time.
