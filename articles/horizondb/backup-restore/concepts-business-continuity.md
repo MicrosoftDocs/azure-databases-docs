@@ -69,15 +69,15 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
     :::image type="content" source="./media/business-continuity/help-support-service-health-notification.png" alt-text=" Screenshot showing Help Support notifications in Azure portal.":::
 
 
-*  **Service Help**: *Service Health* page in the Azure portal provides a personalized view of the health status of Azure services across regions that affect your resources. To open the page, search for **Service Health** in the Azure portal. In the **Active events** section, review **Service issues** to see ongoing problems that affect your resources.You can also check the health of individual resources on the **Resource health** page for each resource under **Help**. The following example shows the **Service Health** page displaying an active service issue in Southeast Asia.
+*  **Service Help**: *Service Health* page in the Azure portal provides a personalized view of the health status of Azure services across regions that affect your resources. To open the page, search for **Service Health** in the Azure portal. In the **Active events** section, review **Service issues** to see ongoing problems that affect your resources. You can also check the health of individual resources on the **Resource health** page for each resource under **Help**. The following example shows the **Service Health** page displaying an active service issue in Southeast Asia.
 
      :::image type="content" source="./media/business-continuity/service-health-service-issues-example-map.png" alt-text=" Screenshot showing service outage in Service Health portal.":::
 
-*  **Email notification**: If you have configured alerts, Azure sends an email notification when a service outage affects your subscription or resources. The email is sent from "azure-noreply@microsoft.com"and includes details about the service issue. The email message begins with a standard notification indicating that an activity log alert was triggered by a service issue for your Azure subscription.For more information see, Azure Service Health documentation  [Receive activity log alerts on Azure service notifications using Azure portal](/azure/service-health/alerts-activity-log-service-notifications-portal).
+*  **Email notification**: If you have configured alerts, Azure sends an email notification when a service outage affects your subscription or resources. The email is sent from "azure-noreply@microsoft.com"and includes details about the service issue. The email message begins with a standard notification indicating that an activity log alert was triggered by a service issue for your Azure subscription. For more information see, Azure Service Health documentation  [Receive activity log alerts on Azure service notifications using Azure portal](/azure/service-health/alerts-activity-log-service-notifications-portal).
 
 
 > [!IMPORTANT]
-> Temporary tablespaces in PostgreSQL store temporary objects and support internal operations such as sorting. Don't create user schema objects in temporary tablespaces, because these objects might not persist after server restarts, high availability (HA) failovers, or similar events..
+> Temporary tablespaces in PostgreSQL store temporary objects and support internal operations such as sorting. Don't create user schema objects in temporary tablespaces, because these objects might not persist after server restarts, high availability (HA) failovers, or similar events.
 
 
 > [!IMPORTANT]
