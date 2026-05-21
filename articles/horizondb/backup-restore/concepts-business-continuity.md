@@ -12,9 +12,9 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Overview of business continuity in Azure HorizonDB
+# Overview of business continuity in Azure HorizonDB (Preview)
 
-**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable applications and business processes to continue operating during and after disruptive events, particularly those events that affect computing infrastructure.Azure HorizonDB is designed to automatically handle many types of failures within the cloud environment, helping maintain application availability and operational continuity. However, some scenarios require explicit user action or planning, including:
+**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable applications and business processes to continue operating during and after disruptive events, particularly those events that affect computing infrastructure. Azure HorizonDB is designed to automatically handle many types of failures within the cloud environment, helping maintain application availability and operational continuity. However, some scenarios require explicit user action or planning, including:
 
 - Accidental data modifications or deletions (for example, a user deleting or updating rows in a table)
 - Regional or zonal outages caused by events such as natural disasters
@@ -51,8 +51,7 @@ Here are some planned maintenance scenarios. These events typically incur up to 
 
 ##  Unplanned downtime mitigation
 
-Unplanned downtime can occur due to unexpected events such as hardware failures, network issues, or software defects. If high availability (HA) is configured and the primary database server becomes unavailable, Azure HorizonDB automatically fails over to a standby replica. This process allows client operations to resume with minimal interruption. If HA is not configured and the restart attempt fails, the service provisions a new database server.
-Although unplanned downtime cannot be fully prevented, Azure HorizonDB reduces its impact by performing automated recovery operations without requiring manual intervention.
+Unplanned downtime can occur due to unexpected events such as hardware failures, network issues, or software defects. If high availability (HA) is configured and the primary database server becomes unavailable, Azure HorizonDB automatically fails over to a standby replica. This process allows client operations to resume with minimal interruption. If HA isn't configured and the restart attempt fails, the service provisions a new database server. Although unplanned downtime can't be fully prevented, Azure HorizonDB reduces its impact by performing automated recovery operations without requiring manual intervention.
 
 Though we continuously strive to provide high availability, there are times when Azure HorizonDB does incur outage causing unavailability of the databases and thus impacting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
 
@@ -80,7 +79,7 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
 
 
 > [!IMPORTANT]
-> Currently,deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
+> Currently, deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
 
 
 
