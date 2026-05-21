@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ---
 
-Before starting the migration with the Azure HorizonDB migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
+Before starting the migration with the Azure HorizonDB migration service, it's important to fulfill the following prerequisites, designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
 - [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
