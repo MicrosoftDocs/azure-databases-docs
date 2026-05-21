@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure HorizonDB instance by enabling a CanNotDelete lock.
 ---
 
-# Deletion protection with Resource Locks in Azure HorizonDB (Preview)
+# Deletion protection with Resource Locks in Azure HorizonDB (preview)
 
 You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an extra layer of resource protection.
 

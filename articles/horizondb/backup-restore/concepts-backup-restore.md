@@ -12,7 +12,7 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB (Preview)
+# Backups in Azure HorizonDB (preview)
 This article explains the automated backup feature in Azure HorizonDB.
 
 Azure HorizonDB provides fully managed, built‑in backups to protect data and support reliable recovery. Backups are performed automatically, with no manual configuration, or ongoing management required, allowing you to focus on your application while HorizonDB continuously safeguards your data.
@@ -29,7 +29,7 @@ Backup and restore operations for HorizonDB databases are fast regardless of dat
 
 ## Backup retention
 
-The default backup retention period is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
+The default backup retention period currently is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
 
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
 
