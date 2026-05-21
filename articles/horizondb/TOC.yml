@@ -48,8 +48,6 @@
       href: configure-maintain/how-to-add-remove-replica.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
-    - name: Scaling compute resources
-      href: scale/concepts-scaling-resources.md
     - name: How to scale compute
       href: configure-maintain/how-to-scale-compute.md     
     - name: Readable HA replicas
