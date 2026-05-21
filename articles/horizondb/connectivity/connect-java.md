@@ -598,3 +598,4 @@ az group delete \
 ## Related content
 
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
+- [Quickstart: Use C# to connect and query data in Azure HorizonDB](connect-csharp.md)
