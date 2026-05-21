@@ -16,7 +16,7 @@ This article lists libraries and drivers that you can use to connect application
 
 ## Client interfaces
 
-Most client libraries that connect to Azure HorizonDB are open-source projects, developed and released independently from Azure HorizonDB. You can use these libraries to establish secure connections, run SQL queries, and integrate your application with standard PostgreSQL-compatible tooling. Developers commonly use the libraries listed in this article on Windows, Linux, and macOS when connecting to an Azure HorizonDB cluster. If you want implementation examples, see the quickstart articles in the Related content section.
+Most client libraries that connect to Azure HorizonDB are open-source projects, developed and released independently from Azure HorizonDB. Use these libraries to establish secure connections, run SQL queries, and integrate your application with standard PostgreSQL-compatible tooling. Developers commonly use the libraries listed in this article on Windows, Linux, and macOS when connecting to an Azure HorizonDB cluster. For implementation examples, see the quickstart articles in the Related content section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 | --- | --- | --- | --- |
