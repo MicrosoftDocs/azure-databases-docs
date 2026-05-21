@@ -32,7 +32,7 @@ When connected to a HorizonDB cluster, Copilot is aware of the HorizonDB-specifi
 Before you begin, verify you have the proper tools and resources downloaded and installed.
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- A PostgreSQL database installed locally, or hosted in Azure as either an [Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-cluster) instance or an Azure HorizonDB cluster.
+- A PostgreSQL database installed locally, or hosted in Azure as either an [Azure Database for PostgreSQL flexible server](/azure/horizondb/quickstart-create-cluster) instance or an Azure HorizonDB cluster.
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot).
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.

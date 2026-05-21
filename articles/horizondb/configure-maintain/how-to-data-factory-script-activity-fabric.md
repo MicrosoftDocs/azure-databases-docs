@@ -19,7 +19,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 ## Prerequisites
 
-- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-cluster).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/horizondb/quickstart-create-cluster).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a script activity
