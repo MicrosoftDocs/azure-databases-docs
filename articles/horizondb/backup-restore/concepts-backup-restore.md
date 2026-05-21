@@ -29,7 +29,7 @@ Backup and restore operations for HorizonDB databases are fast regardless of dat
 
 ## Backup retention
 
-The default backup retention period is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
+The default backup retention period currently is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
 
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
 
