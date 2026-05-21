@@ -1,8 +1,8 @@
 ---
 title: Connection Libraries in Azure HorizonDB
-description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure HorizonDB instance.
-author: avnishrastogimsft
-ms.author: avrastog
+description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure HorizonDB cluster.
+author: scoriani
+ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -12,15 +12,15 @@ ms.topic: concept-article
 
 # Connection libraries in Azure HorizonDB
 
-This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure HorizonDB instance.
+This article lists libraries and drivers that you can use to connect applications to and query an Azure HorizonDB cluster.
 
 ## Client interfaces
 
-Most language client libraries used to connect to Azure HorizonDB are external projects and are distributed independently. The libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to an Azure HorizonDB instance. Several quickstart examples are listed in the Next steps section.
+Most client libraries that connect to Azure HorizonDB are open-source projects, developed and released independently from Azure HorizonDB. You can use these libraries to establish secure connections, run SQL queries, and integrate your application with standard PostgreSQL-compatible tooling. Developers commonly use the libraries listed in this article on Windows, Linux, and macOS when connecting to an Azure HorizonDB cluster. If you want implementation examples, see the quickstart articles in the Related content section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 | --- | --- | --- | --- |
-| Python | [psycopg](https://www.psycopg.org/) | DB API 2.0-compliant | [Download](https://sourceforge.net/projects/adodbapi/) |
+| Python | [psycopg](https://www.psycopg.org/) | DB API 2.0-compliant | [Download](https://pypi.org/project/psycopg/) |
 | PHP | [php-pgsql](https://www.php.net/manual/en/book.pgsql.php) | Database extension | [Install](https://www.php.net/manual/en/pgsql.installation.php) |
 | Node.js | [Pg npm package](https://www.npmjs.com/package/pg) | Pure JavaScript nonblocking client | [Install](https://www.npmjs.com/package/pg) |
 | Java | [JDBC](https://jdbc.postgresql.org/) | Type 4 JDBC driver | [Download](https://jdbc.postgresql.org/download/) |
@@ -35,8 +35,3 @@ Most language client libraries used to connect to Azure HorizonDB are external p
 
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
-- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
-- [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)
