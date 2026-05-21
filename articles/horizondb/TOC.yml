@@ -9,7 +9,7 @@
     - name: How-to Guides
       items:
         - name: Create a HorizonDB cluster
-          href: configure-maintain/quickstart-create-server.md
+          href: configure-maintain/quickstart-create-cluster.md
 - name: Release Notes
   items:
     - name: Release notes
@@ -23,7 +23,7 @@
   - name: How-to Guides
     items:
       - name: Create a HorizonDB cluster
-        href: configure-maintain/quickstart-create-server.md
+        href: configure-maintain/quickstart-create-cluster.md
       - name: How to connect
         href: connectivity/how-to-connect-query-guide.md
       - name: Using Python

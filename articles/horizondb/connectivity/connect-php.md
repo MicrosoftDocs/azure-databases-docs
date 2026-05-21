@@ -19,7 +19,7 @@ This quickstart demonstrates connecting to an Azure HorizonDB using a [PHP](http
 
 ## Prerequisites
 
-This quickstart uses the resources created in the [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) as a starting point.
+This quickstart uses the resources created in the [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md) as a starting point.
 
 ## Install PHP
 

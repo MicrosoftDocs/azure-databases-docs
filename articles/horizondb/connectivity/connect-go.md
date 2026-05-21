@@ -22,7 +22,7 @@ This quickstart demonstrates how to connect to an Azure HorizonDB using code wri
 
 ## Prerequisites
 
-This quickstart uses the resources created in the [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md) as a starting point.
+This quickstart uses the resources created in the [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md) as a starting point.
 
 > [!IMPORTANT]  
 > We recommend you use a server with **Public access (allowed IP addresses)** enabled for this quickstart. Using a server with **Private access (VNet Integration)** enabled to complete this quickstart might involve extra steps that aren't covered.

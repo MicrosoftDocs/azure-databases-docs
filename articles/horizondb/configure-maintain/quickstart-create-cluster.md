@@ -128,7 +128,7 @@ Organize resources with name-value pairs:
 
 Deployment typically takes 5-10 minutes. When complete, select **Go to resource** to access your cluster.
 
-:::image type="content" source="media/quickstart-create-server/overview.png" alt-text="Screenshot of the Azure HorizonDB cluster Overview page in the Azure portal.":::
+:::image type="content" source="media/quickstart-create-cluster/overview.png" alt-text="Screenshot of the Azure HorizonDB cluster Overview page in the Azure portal.":::
 
 ## Create a cluster using the Azure CLI
 

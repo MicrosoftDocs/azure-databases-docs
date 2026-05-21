@@ -80,7 +80,7 @@ Set up admin user
 First, create a managed Azure HorizonDB instance.
 
 > [!NOTE]  
-> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
+> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md).
 
 ```azurecli-interactive
 az Azure HorizonDB create \

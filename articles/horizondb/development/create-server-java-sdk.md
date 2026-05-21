@@ -351,4 +351,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md)

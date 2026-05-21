@@ -28,7 +28,7 @@ To calculate the number, sign in to the source instance and run this command for
 > [!IMPORTANT]  
 > Storage size can't be reduced in manual configuration or Storage Autogrow. Each step in the storage configuration spectrum doubles in size, so estimating the required storage beforehand is prudent.
 
-The quickstart to {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-server.md)} is an excellent place to begin. For more information about each server configuration, see {[Compute options in Azure HorizonDB](../../compute-storage/concepts-compute.md)} and {[Storage in Azure HorizonDB](../../compute-storage/concepts-storage.md)}.
+The quickstart to {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-cluster.md)} is an excellent place to begin. For more information about each server configuration, see {[Compute options in Azure HorizonDB](../../compute-storage/concepts-compute.md)} and {[Storage in Azure HorizonDB](../../compute-storage/concepts-storage.md)}.
 
 ## Migration timeline
 

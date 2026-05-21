@@ -20,7 +20,7 @@ This article has step-by-step instructions on how to create a copy activity.
 
 ## Prerequisites
 
-- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-cluster).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a copy activity

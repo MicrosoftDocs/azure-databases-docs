@@ -17,7 +17,7 @@ In this quickstart, you learn how to use the Azure SDK libraries in .NET to crea
 ## Prerequisites
 
 - [An Azure account with an active subscription](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md).
 - [.NET framework](https://dotnet.microsoft.com/download) installed on your local machine.
 - [Azure CLI](/cli/azure/install-azure-cli) installed on your local machine.
 
@@ -301,4 +301,4 @@ Alternatively, you can remove the resource group using:
 
 ## Related content
 
-- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md)

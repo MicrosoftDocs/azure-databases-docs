@@ -222,4 +222,4 @@ az postgres flexible-server delete \
 
 ## Related content
 
-- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md)

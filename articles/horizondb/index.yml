@@ -28,11 +28,11 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Try Azure HorizonDB for free
-      url: configure-maintain/quickstart-create-server.md
+      url: configure-maintain/quickstart-create-cluster.md
   - linkListType: quickstart
     links:
     - text: Create an Azure HorizonDB
-      url: configure-maintain/quickstart-create-server.md
+      url: configure-maintain/quickstart-create-cluster.md
     - text: Create an elastic cluster
       url: elastic-clusters/quickstart-create-elastic-cluster-portal.md
   - linkListType: how-to-guide
