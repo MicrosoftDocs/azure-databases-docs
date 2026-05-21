@@ -1,5 +1,5 @@
 ---
-title: Use Python to Connect and Query Data in Azure HorizonDB
+title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDB"
 description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
 author: scoriani
 ms.author: scoriani

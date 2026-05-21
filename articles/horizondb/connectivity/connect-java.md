@@ -161,7 +161,7 @@ az Azure HorizonDB show \
   --output table
 ```
 
- Copy clusterName value and use it in the following command:
+Copy the `clusterName` value and use it in the following command:
 
 ```bash
 AZ_Azure HorizonDB_FQDN=<the-copied-clusterName-value>
@@ -320,7 +320,7 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code uses the *application.properties* and the *schema.sql* files that we created earlier, to connect to the Azure HorizonDB instance and create a schema that will store our data.
+This Java code uses the *application.properties* and the *schema.sql* files that we created earlier, to connect to the Azure HorizonDB instance and create a schema that stores our data.
 
 In this file, you can see that we commented methods to insert, read, update, and delete data: we'll code those methods in the rest of this article, and you'll be able to uncomment them one after each other.
 
