@@ -65,7 +65,7 @@ Some considerations when considering during monthly maintenance:
 
 ## Applying Maintenance on Stopped/Disabled Instances
 
-If a PostgreSQL server is stopped during scheduled maintenance, the maintenance is not applied immediately. Instead, the maintenance is applied when the server is restarted, either manually by the customer or automatically through the [7-day auto restart](./concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
+If a PostgreSQL server is stopped during scheduled maintenance, the maintenance isn't applied immediately. Instead, the maintenance is applied when the server is restarted, either manually by the customer or automatically through the [7-day auto restart](./concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
 
@@ -97,7 +97,7 @@ The exported .csv file includes each impacted server along with its maintenance 
    :::image type="content" source="./media/consolidated-maintenance/planned-maintenance-export-to-csv.png" alt-text="Screenshot that shows csv export of impacted resources page of a planned maintenance alert." lightbox="./media/consolidated-maintenance/planned-maintenance-export-to-csv.png":::
 
 >[!NOTE]
->This .csv file represents a snapshot of the status of your impacted servers at one point in time. It is recommended to download .csv file again to check the current status of maintenance at any given time, especially to verify maintenance is complete on a server. For questions or support, create a [support request](https://aka.ms/azuresupportrequest) through the Azure Portal
+>This .csv file represents a snapshot of the status of your impacted servers at one point in time. It's recommended to download .csv file again to check the current status of maintenance at any given time, especially to verify maintenance is complete on a server. For questions or support, create a [support request](https://aka.ms/azuresupportrequest) through the Azure portal.
 
 
 ## Related content
