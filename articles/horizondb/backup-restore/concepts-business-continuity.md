@@ -38,6 +38,22 @@ The table below illustrates the features that Azure HorizonDB offers.
 | **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |Protects against availability zone outages. |
 | **Read Replicas** | Azure HorizonDB supports in region replicas which can be used to offload readonly workloads. Replicas also act as failover targets for primary cluster. | Supports up to 15 replicas. |
 
+## Planned downtime events
+
+Below are some planned maintenance scenarios. These events typically incur up to few minutes of downtime, and without data loss.
+
+| **Scenario** | **Process**|
+| ------------------- | ----------- | 
+| <b>Compute scaling (User-initiated)| During compute scaling operation, active checkpoints are allowed to complete, client connections are drained, any uncommitted transactions are canceled, storage is detached, and then it's shut down. A new Azure HorizonDB cluster with the same database server name is provisioned with the scaled compute configuration. The storage is then attached to the new cluster and the database is started which performs recovery, if necessary, before accepting client connections. |
+| <b>New software deployment (Azure-initiated) | New features rollout or bug fixes automatically happen as part of service’s planned maintenance. | 
+| <b>Minor version upgrades (Azure-initiated) | Azure HorizonDB automatically patches database servers to the minor version determined by Azure. It happens as part of the service's planned maintenance. The database server is automatically restarted with the new minor version. You can also check your [portal](https://aka.ms/servicehealthpm).| 
+
+
+##  Unplanned downtime mitigation
+
+Unplanned downtime can occur due to unexpected events such as hardware failures, network issues, or software defects.If high availability (HA) is configured and the primary database server becomes unavailable, Azure HorizonDB automatically fails over to a standby replica, allowing client operations to resume with minimal interruption. If HA is not configured, and the initial restart attempt is unsuccessful, a new database server is automatically provisioned.Although unplanned downtime cannot be entirely prevented, Azure HorizonDB mitigates its impact by performing automated recovery operations without requiring manual intervention.
+
+Though we continuously strive to provide high availability, there are times when Azure HorizonDB does incur outage causing unavailability of the databases and thus impacting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
 
 ### Service Outage
 
