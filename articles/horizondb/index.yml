@@ -33,12 +33,8 @@ landingContent:
     links:
     - text: Create an Azure HorizonDB
       url: configure-maintain/quickstart-create-cluster.md
-    - text: Create an elastic cluster
-      url: elastic-clusters/quickstart-create-elastic-cluster-portal.md
   - linkListType: how-to-guide
     links:
-    - text: Manage your server
-      url: configure-maintain/how-to-manage-server-portal.md
     - text: Connect and query using Visual Studio Code
       url: developer/vs-code-extension/vs-code-overview.md
 
@@ -54,14 +50,6 @@ landingContent:
       url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
     - text: Back up and restore
       url: backup-restore/concepts-backup-restore.md
-    - text: Networking with Private Endpoint
-      url: network/concepts-networking-private-link.md
-    - text: Storage concepts
-      url: compute-storage/concepts-storage.md
-    - text: Read replicas
-      url: read-replica/concepts-read-replicas.md
-    - text: Horizontal scale out
-      url: elastic-clusters/concepts-elastic-clusters.md
     - text: Security concepts
       url: security/security-overview.md
   - linkListType: how-to-guide
@@ -101,10 +89,6 @@ landingContent:
     links:
     - text: Server parameters
       url: server-parameters/concepts-server-parameters.md
-    - text: Compute
-      url: compute-storage/concepts-compute.md
-    - text: Storage
-      url: compute-storage/concepts-storage.md
     - text: Identity and access management
       url: security/security-managed-identity-overview.md
     - text: Extensions
@@ -113,8 +97,6 @@ landingContent:
       url: monitor/concepts-monitoring.md
     - text: Scheduled maintenance
       url: configure-maintain/concepts-maintenance.md
-    - text: Fabric mirroring
-      url: fabric/concepts-fabric-mirroring.md
     - text: Data Encryption
       url: security/security-data-encryption.md
     - text: Overview of REST API
@@ -178,16 +160,10 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Connect with Azure CLI
-      url: connectivity/connect-azure-cli.md
     - text: Connection libraries for App development
       url: connectivity/concepts-connection-libraries.md
     - text: Deploy with Terraform
       url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
-    - text: Troubleshooting guides overview
-      url: troubleshoot/how-to-troubleshooting-guides.md
-    - text: Quickstart guide for Bicep
-      url: development/create-server-bicep.md
     - text: Quickstart guide for Python
       url: development/create-server-python-sdk.md
     - text: Pricing
