@@ -96,7 +96,7 @@ Key capabilities include:
 - **Show / hide by schema** - Toggle entire schemas on or off to focus only on the parts of the model you care about, and to keep diagrams readable on large databases.
 - **Pan and zoom** - Navigate large diagrams with standard pan, zoom, and fit-to-screen controls.
 
-Schema Visualization works against any connected database, including local PostgreSQL, Azure Database for PostgreSQL flexible server, and Azure HorizonDB clusters.
+Schema Visualization works against any connected database, including local PostgreSQL and Azure HorizonDB clusters.
 
 ### Apache AGE Graph Visualization
 

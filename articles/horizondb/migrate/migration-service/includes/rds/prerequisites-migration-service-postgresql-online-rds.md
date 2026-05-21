@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: include
 ---
 
-Before starting the migration with the Azure HorizonDB migration service, it's important to fulfill the following prerequisites, specifically designed for online migration scenarios.
+Before starting the migration with the Azure HorizonDB migration service, it's important to fulfill the following prerequisites, designed for online migration scenarios.
 
 - [Verify the source version](#verify-the-source-version)
 - [Install test_decoding - Source Setup](#install-test_decoding---source-setup)
@@ -36,7 +36,7 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure HorizonDB - Flexible server must be created.
 - SKU provisioned for Azure HorizonDB - Flexible server should match with the source.
-- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}
+- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-cluster.md)}
 
 ### Enable CDC as a source
 

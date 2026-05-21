@@ -146,6 +146,6 @@ If you have questions or suggestions about Azure HorizonDB, you can get help and
 
 ## Related content
 
-- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-cluster.md)
 - [Backup and restore in Azure HorizonDB](backup-restore/concepts-backup-restore.md)
 - [What is the PostgreSQL extension for Visual Studio Code](development/vs-code-extension/vs-code-overview.md)

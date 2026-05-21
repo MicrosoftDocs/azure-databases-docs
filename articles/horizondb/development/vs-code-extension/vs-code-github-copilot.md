@@ -22,7 +22,6 @@ The PostgreSQL extension for Visual Studio Code includes GitHub Copilot integrat
 
 The `@pgsql` participant works against any database the extension can connect to, including:
 
-- **Azure Database for PostgreSQL flexible server**, and
 - **Azure HorizonDB** clusters.
 
 When connected to a HorizonDB cluster, Copilot is aware of the HorizonDB-specific extensions installed on the database (such as `pgvector`, `pg_diskann`, `azure_ai`, and `age`) and can generate prompts and SQL that take advantage of them.
@@ -32,11 +31,11 @@ When connected to a HorizonDB cluster, Copilot is aware of the HorizonDB-specifi
 Before you begin, verify you have the proper tools and resources downloaded and installed.
 
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- A PostgreSQL database installed locally, or hosted in Azure as either an [Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/quickstart-create-server) instance or an Azure HorizonDB cluster.
+- A PostgreSQL database installed locally, or hosted in [Azure HorizonDB](../../configure-maintain/quickstart-create-cluster.md).
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot).
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
-- [Azure account](/azure/postgresql/flexible-server/how-to-deploy-on-azure-free-account) for connecting to cloud-hosted databases (optional).
+- [Azure account](https://azure.microsoft.com/free/) for connecting to cloud-hosted databases (optional).
 
 ## Install GitHub Copilot and GitHub Copilot Chat extensions
 
@@ -56,7 +55,7 @@ If you don't already have the GitHub Copilot extension installed in Visual Studi
 
 Follow the steps to begin using GitHub Copilot with the PostgreSQL Visual Studio Code extension.
 
-1. Right-click on a PostgreSQL database in the Object Explorer and select **Chat with this database**. This works for any connection - local PostgreSQL, Azure Database for PostgreSQL flexible server, or Azure HorizonDB.
+1. Right-click on a PostgreSQL database in the Object Explorer and select **Chat with this database**. This works for any connection - local PostgreSQL or Azure HorizonDB.
 1. If prompted, select **Allow** to enable GitHub Copilot to access the database connection context.
 1. When the Copilot chat interface opens, start asking questions by using the `@pgsql` prefix to specify that you want to interact with the PostgreSQL database.
 
@@ -112,7 +111,7 @@ Then Copilot asks for confirmation:
 
 ## Use context menu options
 
-You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**. These work the same way against flexible server and HorizonDB connections; on HorizonDB, the explanations and rewrite suggestions also account for HorizonDB-specific indexes (such as `pg_diskann` vector indexes) when they're present.
+You can select SQL code in the editor and right-click to access GitHub Copilot context menu options like **Explain Query**, **Rewrite Query**, or **Analyze Query Performance**. On HorizonDB, the explanations and rewrite suggestions also account for HorizonDB-specific indexes (such as `pg_diskann` vector indexes) when they're present.
 
 ## Other ideas and prompt recipes
 

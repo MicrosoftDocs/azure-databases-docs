@@ -39,7 +39,7 @@ If the source PostgreSQL version is less than 9.5, upgrade it to 9.5 or higher b
 
 - Before migrating, Azure HorizonDB - Flexible server must be created.
 - SKU provisioned for Azure HorizonDB - Flexible server should match with the source.
-- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}
+- To create a new Azure HorizonDB, visit {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-cluster.md)}
 
 ### Enable CDC as a source
 

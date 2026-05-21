@@ -37,13 +37,11 @@ Azure HorizonDB provides maximum flexibility over your database and built-in cos
 
 - {[What is Azure HorizonDB?](../../overview.md)}: Azure HorizonDB runs on a Linux VM, the VM that's best suited to run the PostgreSQL engine.
 
-- {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-server.md)}: You can stop and start Azure HorizonDB on an on-demand server to lower your total cost of operation (TCO). Your compute tier billing is stopped immediately, for significant cost savings during development and testing and for time-bound predictable production workloads.
+- {[Create an Azure HorizonDB database](../../configure-maintain/quickstart-create-cluster.md)}: You can stop and start Azure HorizonDB on an on-demand server to lower your total cost of operation (TCO). Your compute tier billing is stopped immediately, for significant cost savings during development and testing and for time-bound predictable production workloads.
 
 - {[Supported versions of PostgreSQL in Azure HorizonDB](../../configure-maintain/concepts-supported-versions.md)}: Azure HorizonDB supports all major PostgreSQL versions beginning with version 11.
 
 - Minimized latency: You can collocate your flexible server in the same availability zone as the application server for minimal latency.
-
-- {[PgBouncer in Azure HorizonDB](../../connectivity/concepts-pgbouncer.md)}: Azure HorizonDB has a built-in connection pooling mechanism via the pgBouncer plugin to support thousands of active connections with low overhead.
 
 - {[Parameters in Azure HorizonDB](../../server-parameters/concepts-server-parameters.md)}: Azure HorizonDB offers a rich set of server parameters for configuration and tuning.
 

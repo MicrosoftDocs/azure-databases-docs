@@ -30,4 +30,4 @@ For any questions or suggestions you might have on Azure HorizonDB, consider the
 
 ## Related content
 
-- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md)

@@ -20,7 +20,7 @@ The next section has a step-by-step guide on how to manually create a copy activ
 
 ## Prerequisites
 
-- An Azure HorizonDB instance. For more information, see [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. For more information, see [Create an Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md).
 - An [Azure Data Factory Dataset](/azure/data-factory/concepts-datasets-linked-services?tabs=data-factory) with your Azure HorizonDB.
@@ -93,4 +93,3 @@ There are three acceptable ways to use the **Key Columns**:
 
 - [Script activity in Data Factory and Azure Synapse Analytics in Azure HorizonDB](how-to-data-factory-script-activity-azure.md)
 - [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

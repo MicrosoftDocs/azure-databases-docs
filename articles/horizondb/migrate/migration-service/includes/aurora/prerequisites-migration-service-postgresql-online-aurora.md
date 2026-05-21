@@ -35,7 +35,7 @@ For more information about the test_decoding plugin, see the [PostgreSQL documen
 
 Before you begin the migration, you must create an instance of [Azure HorizonDB](/azure/postgresql/flexible-server/) in Azure. The SKU that's provisioned for Azure HorizonDB should match the source.
 
-For more information, see {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-server.md)}.
+For more information, see {[Create an Azure HorizonDB database](../../../../configure-maintain/quickstart-create-cluster.md)}.
 
 ### Enable CDC as a source
 

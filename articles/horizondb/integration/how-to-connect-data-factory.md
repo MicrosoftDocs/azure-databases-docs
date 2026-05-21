@@ -29,7 +29,7 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 ### Prerequisites
 
-- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure HorizonDB instance. To learn more, go to [Create an Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 
 ### Create a linked service via the Azure portal
@@ -414,4 +414,3 @@ Activities are tasks within a pipeline that can execute specific tasks. With scr
 ## Related content
 
 - [Connect from Azure Data Factory with managed private endpoint in Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md)
-- [Ntworking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md)

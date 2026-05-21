@@ -30,7 +30,7 @@ This article assumes that you're familiar with developing using Python, but you'
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An Azure HorizonDB cluster. To create Azure HorizonDB cluster, refer to [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-server.md).
+- An Azure HorizonDB cluster. To create Azure HorizonDB cluster, refer to [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
@@ -298,7 +298,4 @@ conn.close()
 
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
 - [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
 - [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

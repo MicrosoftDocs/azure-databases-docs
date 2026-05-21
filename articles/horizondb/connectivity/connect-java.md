@@ -80,7 +80,7 @@ Set up admin user
 First, create a managed Azure HorizonDB instance.
 
 > [!NOTE]  
-> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
+> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md).
 
 ```azurecli-interactive
 az Azure HorizonDB create \
@@ -597,5 +597,5 @@ az group delete \
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
+- [Quickstart: Use C# to connect and query data in Azure HorizonDB](connect-csharp.md)
