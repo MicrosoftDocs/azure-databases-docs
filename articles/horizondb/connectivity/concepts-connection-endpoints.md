@@ -14,6 +14,8 @@ ms.topic: concept-article
 
 An Azure HorizonDB cluster has two endpoints (primary endpoint and reader endpoint) that are automatically created during cluster provision. You can find those two endpoints in the **Overview** or **Replicas** in **Settings**
 
+:::image type="content" source="media/concepts-connection-endpoints/endpoint-administrator-login.png" alt-text="connection endpoints":::
+
 ## Primary endpoint (read/write)
 
 A **primary endpoint** for an Azure HorizonDB cluster connects to the primary of the cluster. Each Azure HorizonDB has one primary and one primary endpoint that allows both read and write operations.
