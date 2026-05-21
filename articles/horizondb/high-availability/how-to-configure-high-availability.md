@@ -52,8 +52,8 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1.  Select Azure HorizonDB Service and Click **Create**.
 
-   :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
-
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
+   
 2. Provide your resource group and cluster name and go to  **High availability** section.
 
      You have two High availability mode choices:
@@ -63,7 +63,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 3. Select the **Zone redundant - Replica in a different availability zone** option.
 
-   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
 4. When you're done configuring the settings, select  **Review + create** to review the changes then click **create**.
 
