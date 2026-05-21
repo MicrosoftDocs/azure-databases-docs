@@ -1,5 +1,5 @@
 ---
-title: Connection endpoints
+title: Connection endpoints (preview)
 description: This article describes the connection endpoints of a HorizonDB
 author: DDL-PM
 ms.author: ludingding

@@ -1,5 +1,5 @@
 ---
-title: How to add or remove a replica
+title: How to add or remove a replica (preview)
 description: This article describes the steps to add or remove a HorizonDB replica.
 author: DDL-PM
 ms.author: ludingding
