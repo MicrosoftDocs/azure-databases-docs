@@ -18,8 +18,6 @@
   items:
   - name: Connection endpoints
     href: connectivity/concepts-connection-endpoints.md
-  - name: Connection types
-    href: connectivity/concepts-connect-overview.md
   - name: How-to Guides
     items:
       - name: Create a HorizonDB cluster
@@ -50,8 +48,6 @@
       href: configure-maintain/concepts-maintenance.md
     - name: How to scale compute
       href: configure-maintain/how-to-scale-compute.md     
-    - name: Readable HA replicas
-      href: read-replica/concepts-read-replicas.md
     - name: Parameters
       items:
         - name: Overview
@@ -187,10 +183,6 @@
           href: extensions/errors-extensions.md
     - name: How-to Guides
       items:
-        - name: Add a read replica
-          href: read-replica/how-to-create-read-replica.md
-        - name: Remove a read replica
-          href: read-replica/how-to-delete-read-replica.md
         - name: Allow extensions
           href: extensions/how-to-allow-extensions.md
         - name: Load libraries
@@ -213,20 +205,6 @@
                href: monitor/concepts-query-store-best-practices.md
         - name: Metrics
           href: monitor/concepts-monitoring.md
-    - name: How-to Guides
-      items:
-        - name: Troubleshoot high CPU utilization
-          href: troubleshoot/how-to-high-cpu-utilization.md
-        - name: Troubleshoot high memory utilization
-          href: troubleshoot/how-to-high-memory-utilization.md
-        - name: Troubleshoot high IOPS utilization
-          href: troubleshoot/how-to-high-io-utilization.md
-        - name: Troubleshoot and identify slow running queries
-          href: troubleshoot/how-to-identify-slow-queries.md
-        - name: Troubleshoot connections
-          href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
-        - name: Optimize query statistics
-          href: troubleshoot/how-to-optimize-query-stats-collection.md
 - name: Development Experience
   items:
     - name: PostgreSQL extension for Visual Studio Code
@@ -315,22 +293,10 @@
       items:
         - name: Dump and restore PostgreSQL migration
           href: migrate/how-to-migrate-using-dump-and-restore.md      
-- name: Integration
-  items:
-    - name: Microsoft Fabric
-      items:
-      - name: Fabric mirroring
-        href: fabric/concepts-fabric-mirroring.md
-      - name: Copy activity
-        href: fabric/how-to-data-factory-copy-activity-fabric.md
-      - name: Script activity
-        href: fabric/how-to-data-factory-script-activity-fabric.md
 - name: Networking
   items:
     - name: Public Access
       href: network/concepts-networking-public.md
-    - name: Private Endpoints
-      href: network/concepts-networking-private-link.md
     - name: Secure Connectivity with SSL and TLS
       href: security/security-tls.md
     - name: How-to Guides
@@ -405,7 +371,3 @@
   items:
     - name: Possible errors when managing extensions
       href: extensions/errors-extensions.md
-    - name: Connection Errors Troubleshooting
-      items:
-        - name: Password authentication failed for user
-          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md
