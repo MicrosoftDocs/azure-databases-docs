@@ -33,6 +33,6 @@ Data encryption with **service managed keys** for Azure HorizonDB provides the f
 - Data encryption based on service managed keys doesn't negatively affect the performance of your workloads.
 - It simplifies the management of encryption keys (including their regular rotation), and the management of the identities used to access those keys.
 
-
 ## Related content
+
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md)
