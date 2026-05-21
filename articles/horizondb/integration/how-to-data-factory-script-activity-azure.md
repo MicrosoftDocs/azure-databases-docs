@@ -20,7 +20,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ## Prerequisites
 
-- An Azure HorizonDB instance. To learn more, see [Create an Azure HorizonDB](/azure/horizondb/quickstart-create-cluster).
+- An Azure HorizonDB instance. To learn more, see [Create an Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure HorizonDB](how-to-connect-data-factory-private-endpoint.md).
 

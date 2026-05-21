@@ -34,7 +34,7 @@ In this tutorial, you:
 
 ## Prerequisites
 
-1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](/azure/horizondb/quickstart-create-cluster).
+1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](../configure-maintain/quickstart-create-cluster.md).
 1. [AI Model Management in Azure HorizonDB](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
 ## Install extensions and set up AI models
