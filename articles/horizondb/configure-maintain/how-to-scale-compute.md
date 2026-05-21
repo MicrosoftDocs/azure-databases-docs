@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale the compute in Azure HorizonDB.
 ---
 
-# Scale compute in Azure HorizonDB (Preview)
+# Scale compute in Azure HorizonDB (preview)
 
 This article provides step-by-step instructions to perform scaling operations for the compute in Azure HorizonDB.
 

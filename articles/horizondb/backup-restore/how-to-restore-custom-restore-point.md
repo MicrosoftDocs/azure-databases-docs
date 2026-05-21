@@ -11,7 +11,7 @@ ms.topic: concept-article
 #customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
-# Restore in Azure HorizonDB (Preview)
+# Restore in Azure HorizonDB (preview)
 This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
 
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB service restores a database to any point in time within the configured retention period using the following process:

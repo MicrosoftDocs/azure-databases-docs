@@ -12,7 +12,7 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB (Preview)
+# Backups in Azure HorizonDB (preview)
 This article explains the automated backup feature in Azure HorizonDB.
 
 Azure HorizonDB provides fully managed, built‑in backups to protect data and support reliable recovery. Backups are performed automatically, with no manual configuration, or ongoing management required, allowing you to focus on your application while HorizonDB continuously safeguards your data.
