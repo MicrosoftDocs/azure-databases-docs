@@ -27,7 +27,7 @@ The table below illustrates the features that Azure Database for PostgreSQL offe
 
 | **Feature** | **Description** | **Considerations** |
 | ---------- | ----------- | ------------ |
-| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups can be retained from 7 days up to 35 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to few hours. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
+| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously backs up transaction logs. Backups are retained from 7 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to few hours. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
 | **Zone redundant high availability** | Azure HorizonDB need at least two replicas on the cluster to have zonal resilience. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it. |
 | **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |
 
@@ -56,7 +56,7 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
 
 
 > [!IMPORTANT]
-> Deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
+> Currently,deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
 
 
 
