@@ -134,5 +134,5 @@ During the public preview, the following HA-related limitations apply:
 
 - [Overview of business continuity in Azure HorizonDB (preview)](../backup-restore/concepts-business-continuity.md)
 - [Configure high availability in Azure HorizonDB (preview)](how-to-configure-high-availability.md)
-- [High Availability (HA) health status monitoring in Azure HorizonDB](how-to-monitor-high-availability.md)
+- [Perform failover in Azure HorizonDB (preview)](how-to-perform-failover.md)
 - [Backups in Azure HorizonDB (preview)](../backup-restore/concepts-backup-restore.md)
