@@ -383,7 +383,7 @@
         - name: Configure GitHub Copilot
           href: development/vs-code-extension/vs-code-github-copilot.md
     - name: Durable execution with pg_durable
-      href: development/pg-durable.md
+      href: development\durable-functions.md
 - name: Migration
   items:
     - name: Dump and restore
