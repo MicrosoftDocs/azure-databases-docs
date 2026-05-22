@@ -292,6 +292,8 @@
           href: high-availability/how-to-configure-high-availability.md
         - name: Monitor high availability health
           href: high-availability/how-to-monitor-high-availability.md
+        - name: Perform failover
+          href: high-availability/how-to-perform-failover.md
 - name: Backup and restore
   items:
     - name: Backup and restore
