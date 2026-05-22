@@ -232,12 +232,8 @@
           href: security/security-access-control.md
         - name: How-to guides
           items:
-            - name: Configure Microsoft Entra integration
-              href: security/security-entra-configure.md
             - name: Manage database users
               href: security/security-manage-database-users.md
-            - name: Manage Microsoft Entra users
-              href: security/security-manage-entra-users.md
             - name: Connect with SCRAM authentication
               href: security/security-connect-scram.md
             - name: Reset local administrator password

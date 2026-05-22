@@ -30,8 +30,6 @@ If your server was deployed with **Networking with public access (allowed IP add
 
 If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operation:
 
-- [Change private DNS zone in Azure HorizonDB](how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md).
-
 ## Related content
 
 - [Networking in Azure HorizonDB](how-to-networking.md)

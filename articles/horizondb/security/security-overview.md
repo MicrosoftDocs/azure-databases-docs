@@ -46,7 +46,7 @@ The access control section focuses on securing the level of access based on the 
 
 Here are some possible security services, features, and best practices for the access control section:
 
-- **Use Entra roles for access control**: Implement Azure Role-Based Access Control (Role-Based Access Control (RBAC) to manage access to Azure HorizonDB resources. Assign roles based on the principle of least privilege, ensuring users and applications have only the permissions they need. For more information, visit [Azure Role Based Access Control (RBAC)](/azure/role-based-access-control/overview) in general and [Manage Microsoft Entra roles in Azure HorizonDB](security-manage-entra-users.md).
+- **Use Entra roles for access control**: Implement Azure Role-Based Access Control (Role-Based Access Control (RBAC) to manage access to Azure HorizonDB resources. Assign roles based on the principle of least privilege, ensuring users and applications have only the permissions they need. For more information, visit [Azure Role Based Access Control (RBAC)](/azure/role-based-access-control/overview) in general.
 
 - **Follow Entra best practices**: Utilize MFA, [Conditional Access policies](/entra/identity/conditional-access/overview), just in time (JIT) access to protect your users and databases.
 
