@@ -264,14 +264,16 @@
       items:
         - name: Firewall rules
           href: security/security-firewall-rules.md
-- name: Query Monitoring
+- name: Performance and monitor
   items:
-    - name: Query Store
-      href: monitor/concepts-query-store.md
-    - name: Query Store usage scenarios
-      href: monitor/concepts-query-store-scenarios.md
-    - name: Query Store best practices
-      href: monitor/concepts-query-store-best-practices.md
+    - name: Query Monitoring
+      items:
+        - name: Query Store
+          href: monitor/concepts-query-store.md
+        - name: Query Store usage scenarios
+          href: monitor/concepts-query-store-scenarios.md
+        - name: Query Store best practices
+          href: monitor/concepts-query-store-best-practices.md
 - name: Networking
   items:
     - name: Public access
@@ -286,7 +288,7 @@
           href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
 - name: High availability and resilience
   items:
-    - name: High availability and failover
+    - name: High availability
       href: high-availability/concepts-high-availability-failover.md
     - name: How-to guides
       items:
