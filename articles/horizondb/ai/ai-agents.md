@@ -5,6 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -106,8 +107,6 @@ Key aspects of MCP:
 - **Client-server architecture**: The agent (client) connects to an MCP server, which provides access to tools and data sources.
 - **Security**: Built-in support for OAuth 2.1 authentication and managed identity.
 
-Azure HorizonDB provides an [MCP server](foundry-agent-integration.md) that enables Foundry agents to interact with your database through natural language, supporting SQL queries, vector search, schema discovery, and data analysis.
-
 ### Agent-to-Agent Protocol (A2A)
 
 [Agent-to-Agent Protocol (A2A)](https://github.com/a2aproject/A2A) is an open standard developed by Google for inter-agent communication. While MCP handles agent-to-tool connectivity, A2A enables agent-to-agent collaboration:
@@ -125,14 +124,17 @@ To start building AI agents with Azure HorizonDB:
 1. **Set up your data layer**: Create an Azure HorizonDB instance and enable the `azure_ai` and `pgvector` extensions. Store your domain data and [generate vector embeddings](generate-vector-embeddings.md).
 1. **Choose a retrieval strategy**: Based on your use case, implement [vector search](vector-search-pgvector.md), [hybrid search](hybrid-search.md), or [graph-augmented RAG](graph-rag.md) to give your agent access to domain knowledge.
 1. **Configure agent memory**: Use your framework's PostgreSQL connector to persist conversation history and agent state in Azure HorizonDB.
-1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](foundry-agent-integration.md) to build your agent, connecting it to Azure HorizonDB through native connectors or the [MCP server](foundry-agent-integration.md).
-1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
+1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
+1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
+1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
+1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-rank-function.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.
 
-For industry-specific implementation patterns, see [AI and agentic use cases and sample applications](samples.md).
+For industry-specific implementation patterns, see [use cases and sample applications](samples.md).
 
 ## Related content
 
-- [Implement Agent Knowledge Retrieval with Azure HorizonDB, Foundry, and MCP](foundry-agent-integration.md)
-- [AI and agentic use cases and sample applications](samples.md)
-- [Overview of AI capabilities in Azure HorizonDB](overview.md)
+- [AI and agentic use cases and sample applications (Preview)](samples.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)
+- [AI and agentic use cases and sample applications (Preview)](samples.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)

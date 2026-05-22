@@ -5,6 +5,7 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
@@ -37,7 +38,6 @@ PostgreSQL has had built-in full-text search through `tsvector` and `tsquery` fo
 | Fuzzy / typo tolerance | Manual `pg_trgm` plumbing | First-class fuzzy queries |
 | Phrase proximity (words within N positions) | Limited | First-class |
 | CJK languages | Requires custom dictionaries | Built-in analyzers for Chinese, Japanese, Korean, Thai |
-| Hybrid with vector search | Custom SQL each time | Composes naturally with `pgvector` and DiskANN |
 
 If you have a small, low-traffic search workload and you're already happy with `ts_rank`, the built-in path is fine. For anything closer to a real search experience - product catalog, support content, log search, agent retrieval - use `pg_fts`.
 
@@ -76,9 +76,6 @@ To remove the extension from the current database:
 ```sql
 DROP EXTENSION IF EXISTS pg_fts;
 ```
-
-> [!IMPORTANT]  
-> Projecting BM25 scores with `pgfts.fts_score()` requires `pg_fts` to be loaded via `shared_preload_libraries` so the planner hook can rewrite the function call at plan time. Search and ranking through `pgfts.fts_query()` work without it - results still come back in BM25 rank order. To enable score projection, configure `shared_preload_libraries` for your HorizonDB instance and restart.
 
 ## Create a full-text search index
 
@@ -192,7 +189,7 @@ You can inspect tokenization for any analyzer with the debug helper:
 
 ```sql
 SELECT *
-FROM pgfts.debug_analyze_text('japanese', 'default', '東京の天気');
+FROM pgfts.debug_analyze_text('japanese', '{}', '東京の天気');
 ```
 
 To list available analyzers:
@@ -234,7 +231,7 @@ ORDER BY rrf_score DESC
 LIMIT 10;
 ```
 
-For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB](hybrid-search.md).
+For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md).
 
 ## Performance notes
 
@@ -247,11 +244,11 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 
 - `pgfts.fts_score()` requires `pg_fts` in `shared_preload_libraries`. Without it, only `pgfts.fts_query()` (which already returns rows in rank order) works.
 - The `@@?` operator doesn't support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.
-- CJK analyzers can be inspected with `pgfts.debug_analyze_text()` but can't yet be selected at index creation time via a `WITH (tokenizer = '...')` option. <!-- TODO: confirm whether this lands by GA -->
+- CJK analyzers can be inspected with `pgfts.debug_analyze_text()` but can't yet be selected at index creation time via a `WITH (analyzer = '...')` option.
 - The index isn't represented in `pg_stat_user_indexes` the same way GIN is, because results come through a custom scan.
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
-- [Hybrid search in Azure HorizonDB](hybrid-search.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
+- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)

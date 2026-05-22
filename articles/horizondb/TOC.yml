@@ -350,8 +350,6 @@
       items:
         - name: Overview
           href: ai/ai-agents.md
-        - name: Build an AI agent with Microsoft Foundry and MCP
-          href: ai/foundry-agent-integration.md
         - name: Integrate with LLM orchestration frameworks
           href: ai/ai-frameworks.md
         - name: Develop with LangChain

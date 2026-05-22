@@ -5,6 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -18,7 +19,7 @@ ms.custom:
 
 # AI and agentic use cases and sample applications (Preview)
 
-Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [AI agent and framework integrations](ai-frameworks.md), [MCP connectivity](foundry-agent-integration.md), and [durable AI pipelines](ai-pipelines.md).
+Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 This article is a starting point for exploring what you can build. Each use case highlights the problem, how an AI application or agent solves it, and which Azure HorizonDB features power the solution.
 
@@ -64,7 +65,7 @@ Financial services companies process millions of transactions daily. Manual revi
 
 1. Write transactions to partitioned Azure HorizonDB tables with row-level security enabled.
 1. Use Apache AGE to model transaction networks as a graph and detect ring fraud patterns through relationship traversal.
-1. Use the `azure_ai` extension to call Azure Machine Learning models for real-time fraud scoring directly from SQL.
+1. Use the `azure_ai` extension to call Microsoft Foundry models for real-time fraud scoring directly from SQL.
 1. Build an agent with tools for rule evaluation, graph-based anomaly detection, and compliance checks.
 1. Use PostgreSQL triggers to route flagged transactions to a `fraud_alerts` table with confidence scores.
 1. Enable `pg_audit` for a complete compliance trail and connect escalation to your risk team's workflow.
@@ -78,7 +79,7 @@ Traditional search fails when a customer says "a lightweight jacket for hiking i
 
 **Build with Azure HorizonDB:**
 
-1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for submillisecond similarity search across millions of products.
+1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for sub-millisecond similarity search across millions of products.
 1. Use `azure_ai.rank()` to rank results by relevance to the customer's natural-language query.
 1. Use the `azure_ai` extension to generate product embeddings and enrich catalog metadata with Azure OpenAI.
 1. Build an agent with tools for vector search, keyword matching, and customer history lookup.
@@ -212,6 +213,6 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 
 ## Related content
 
-- [What are the AI capabilities in Azure HorizonDB](overview.md)
-- [Build AI agents with Azure HorizonDB](ai-agents.md)
-- [Build a semantic search application](build-semantic-search-app.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)
+- [Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)
+- [Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)

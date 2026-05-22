@@ -52,8 +52,14 @@ landingContent:
       url: security/security-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Scale out with HorizonDB
-      url: configure-maintain/how-to-scale-compute.md
+    - text: Manage high availability
+      url: high-availability/how-to-configure-high-availability.md
+    - text: Guide on scalable compute
+      url: scale/how-to-scale-compute.md
+    - text: Scale out with elastic clusters
+      url: scale/how-to-scale-out.md
+    - text: Restore to paired region (geo-restore)
+      url: backup-restore/how-to-restore-paired-region.md
     - text: Entra-id authentication guide
       url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
 
@@ -76,8 +82,6 @@ landingContent:
       url: ai/semantic-rank-function.md
     - text: Build an AI app with LangChain
       url: ai/develop-with-langchain.md
-    - text: Build an AI agent with Foundry and MCP
-      url: ai/foundry-agent-integration.md
     - text: Build a knowledge graph from unstructured text
       url: ai/build-knowledge-graph.md
 
@@ -94,7 +98,7 @@ landingContent:
     - text: Data Encryption
       url: security/security-data-encryption.md
     - text: Overview of REST API
-      url: https://learn.microsoft.com/rest/api/postgresql/
+      url: /rest/api/postgresql/
 
 # Card 5
 
@@ -113,4 +117,4 @@ landingContent:
     - text: Customer success stories
       url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
     - text: Build your skills with Microsoft Learn
-      url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql
+      url: /training/browse/?terms=Azure%20database%20for%20postgresql
