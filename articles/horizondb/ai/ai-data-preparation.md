@@ -23,7 +23,7 @@ Before you can build AI-powered search, RAG applications, or intelligent agents,
 
 ## Why data preparation matters
 
-The quality of your AI application depends directly on the quality of your prepared data. A well-chunked, cleanly embedded dataset returns precise, relevant results. Poorly prepared data such as oversized chunks, noisy text, or mismatched embeddings leads to irrelevant matches and unreliable AI-generated answers.
+The quality of your AI application depends directly on the quality of your prepared data. A well-chunked, cleanly embedded dataset returns precise, relevant results. Poorly prepared data such as oversized chunks, noisy text, or mismatched embeddings lead to irrelevant matches and unreliable AI-generated answers.
 
 Data preparation bridges the gap between raw source content and a queryable data store. The core process follows five steps:
 
@@ -82,7 +82,7 @@ It's important that you use the same embedding model for both your stored data a
 
 Azure HorizonDB provides two ways to generate embeddings:
 
-- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for ad hoc embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md).
+- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for unplanned embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md).
 - **In a pipeline**: Use the `ai.embed()` step inside a [durable AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
 
 ## Step 4: Enrich with metadata
@@ -93,7 +93,7 @@ Common metadata fields include:
 
 - **Provenance**: source document title, URL, page number, chunk index.
 - **Temporal**: creation date, last modified date.
-- **Categorical**: document type, department, language, topic tags.
+- **Categorical**: document type, department, language, article tags.
 - **AI-derived**: key phrases, named entities, sentiment, summary.
 
 Without metadata, a semantic search returns the most similar chunks but can't restrict results to, for example, "only HR policy documents from 2024." Metadata also enables citation tracking, so you know which source document a chunk came from when presenting results to users or an LLM.

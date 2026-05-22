@@ -24,7 +24,7 @@ AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embed
 AI pipelines are part of the `azure_ai` extension. The `ai.*` functions and views used throughout this article are provided by `azure_ai` and built on top of [pg_durable](../development/durable-functions.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface - sources, steps, sinks, and triggers - that compiles down to a durable graph automatically.
 
 > [!NOTE]  
-> AI pipelines is in **preview**.
+> AI pipelines are in **preview**.
 
 ## Why pipelines belong in the database
 
@@ -146,7 +146,7 @@ SELECT ai.create_pipeline(
 SELECT ai.explain('rag_pipeline');
 ```
 
-Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't re-run `ai.chunk()`.
+Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 > [!TIP]  
 > Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
@@ -204,7 +204,7 @@ The backfill runs as a single durable instance. If the database restarts mid-bac
 
 ## Cost controls
 
-Embedding and LLM calls cost money. AI pipelines give you a few practical levers to keep that cost predictable:
+Embedding and LLM call cost money. AI pipelines give you a few practical levers to keep that cost predictable:
 
 - `incremental_column` ensures you only embed new or changed rows on subsequent runs.
 - `ai.pause()` stops the change trigger from launching new runs while you're tuning.
@@ -218,7 +218,7 @@ The `azure_ai` extension can also call models from SQL. The two surfaces solve d
 | --- | --- | --- |
 | Shape | Single SQL function call (`azure_openai.create_embeddings(...)`) | Declarative pipeline with source, steps, sink |
 | Durability | None. Fails the calling statement | Durable: retries, resume after crash, checkpoints |
-| Best for | Ad hoc embedding of a few rows; using AI inside a query | Bulk ingestion, ongoing change-driven embedding, multi-step workflows |
+| Best for | Unplanned embedding of a few rows; using AI inside a query | Bulk ingestion, ongoing change-driven embedding, multi-step workflows |
 | Backfill | Manual `UPDATE ... SET embedding = ...` | `ai.backfill()` |
 
 Use one-shot calls for interactive queries and small jobs. Use a pipeline whenever the work is large enough, long enough, or important enough that you'd otherwise build a service tier for it.

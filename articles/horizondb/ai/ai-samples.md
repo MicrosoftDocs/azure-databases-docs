@@ -79,7 +79,7 @@ Traditional search fails when a customer says "a lightweight jacket for hiking i
 
 **Build with Azure HorizonDB:**
 
-1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for sub-millisecond similarity search across millions of products.
+1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for submillisecond similarity search across millions of products.
 1. Use `azure_ai.rank()` to rank results by relevance to the customer's natural-language query.
 1. Use the `azure_ai` extension to generate product embeddings and enrich catalog metadata with Azure OpenAI.
 1. Build an agent with tools for vector search, keyword matching, and customer history lookup.
@@ -128,7 +128,11 @@ SaaS companies often learn a customer is leaving only after they cancel. The war
 
 Planning a trip means juggling flights, hotels, restaurants, budgets, and personal preferences all at once. Multiple specialized agents collaborate through shared Azure HorizonDB tables, each owning one domain of the problem, to produce a complete personalized trip plan.
 
-*Example prompt: "Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget."*
+Example prompt: 
+
+```copilot-prompt
+Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget.
+```
 
 | Agent | Role | Shared table |
 | --- | --- | --- |
