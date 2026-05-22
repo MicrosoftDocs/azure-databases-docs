@@ -69,7 +69,7 @@ Initiating this operation prepares the standby server and then performs the fail
  
     :::image type="content" source="./media/how-to-perform-failover/planned-failover.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a planned failover." lightbox="./media/how-to-perform-failover/planned-failover.png":::
 
-5. A notification appears to indicate that the failover is in progress..
+5. A notification appears to indicate that the failover is in progress.
 
     :::image type="content" source="./media/how-to-perform-failover/planned-failover-in-progress.png" alt-text="Screenshot that shows a notification about a failover in progress after the initiation of a planned failover." lightbox="./media/how-to-perform-failover/planned-failover-in-progress.png":::
    
@@ -100,7 +100,7 @@ When you initiate a forced failover, the primary server immediately goes down an
   
       :::image type="content" source="./media/how-to-perform-failover/forced-failover-001.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a forced failover." lightbox="./media/how-to-perform-failover/forced-failover-001.png":::
 
-5. A notification appears to indicate that the failover is in progress..
+5. A notification appears to indicate that the failover is in progress.
 
      :::image type="content" source="./media/how-to-perform-failover/failover-in-progress.png" alt-text="Screenshot that shows a notification about a failover in progress after the initiation of a forced failover." lightbox="./media/how-to-perform-failover/failover-in-progress.png":::
 
