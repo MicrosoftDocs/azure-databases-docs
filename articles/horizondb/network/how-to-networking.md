@@ -15,7 +15,7 @@ ms.topic: how-to
 
 When you deploy your Azure HorizonDB, you can choose between configuring its networking mode as **Public access (allowed IP addresses)** or as **Private access (VNET Integration)**.
 
-For more information about these options, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md) and [Network with private access (virtual network integration) in Azure HorizonDB](concepts-networking-private.md).
+For more information about public access, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md).
 
 Depending on the networking mode you selected when you deployed your server, you can perform different operations. The following two sections cover the two available networking modes, and list the operations available in each of them.
 

@@ -189,4 +189,6 @@ Postgres version: PostgreSQL 11.11, compiled by Visual C++ build 1800, 64-bit
 
 ## Related content
 
-- [Microsoft Entra authentication in Azure HorizonDB](security-entra-concepts.md)
+- [What is Azure HorizonDB?](../overview.md)
+- [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
+- [Networking in Azure HorizonDB](../network/how-to-networking.md)

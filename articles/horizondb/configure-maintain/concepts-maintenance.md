@@ -73,6 +73,5 @@ Customers might notice a slight increase in restart time (5-8 minutes) when pend
 
 ## Related content
 
-- [Schedule maintenance in Azure HorizonDB](how-to-configure-scheduled-maintenance.md)
 - [Get notifications about upcoming maintenance](/azure/service-health/service-health-notifications-properties)
 - [Set up alerts for upcoming scheduled maintenance events](/azure/service-health/resource-health-alert-monitor-guide)

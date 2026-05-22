@@ -17,7 +17,7 @@ ms.custom:
 
 When you're running an Azure HorizonDB instance, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
 
-With public access, the Azure HorizonDB instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request. With [private access](../network/concepts-networking-private.md#private-access-virtual-network-integration) no public endpoint is available and only hosts located on the same network can access your Azure HorizonDB instance.
+With public access, the Azure HorizonDB instance is accessed through a public endpoint. By default, the firewall blocks all access to the server. To specify which IP hosts can access the server, you create server-level *firewall rules*. Firewall rules specify allowed public IP address ranges. The firewall grants access to the server based on the originating IP address of each request.
 
 You can create firewall rules by using the Azure portal or by using Azure CLI commands. You must be the subscription owner or a subscription contributor.
 
@@ -82,4 +82,6 @@ For example, the following error might appear if authentication fails for a JDBC
 
 ## Related content
 
+- [What is Azure HorizonDB?](../overview.md)
+- [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
 - [Networking in Azure HorizonDB](../network/how-to-networking.md)

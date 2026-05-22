@@ -27,10 +27,6 @@ The Network Security section guides you through preventing public access and usi
 
 - **Disable public network access**: Disable public network access for your PostgreSQL to prevent exposure to the internet. This action ensures that only trusted networks can access your database.
 
-- **Private Endpoints**: Use [Networking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md) to securely connect to your PostgreSQL from within your virtual network.
-
-- **Alternatively, use virtual network integration**: [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md) to connect your PostgreSQL to your virtual network. This integration allows secure access from your Azure resources and from the server to resources consumed, such as AI.
-
 - **Legacy firewall rules and service endpoints**: If you need to allow access from specific IP addresses, use [legacy firewall rules and service endpoints](../network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md). However, this approach isn't recommended. Instead, prefer using private endpoints or virtual network integration.
 
 Network security articles are in the networking sections:
@@ -129,4 +125,7 @@ Here are some possible security services, features, and best practices for the b
 
 ## Related content
 
+- [What is Azure HorizonDB?](../overview.md)
+- [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
+- [Networking in Azure HorizonDB](../network/how-to-networking.md)
 - [Azure security baseline for Azure HorizonDB](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)
