@@ -130,11 +130,11 @@ To start building AI agents with Azure HorizonDB:
 1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-rank-function.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.
 
-For industry-specific implementation patterns, see [use cases and sample applications](samples.md).
+For industry-specific implementation patterns, see [use cases and sample applications](ai-samples.md).
 
 ## Related content
 
-- [AI and agentic use cases and sample applications (Preview)](samples.md)
+- [AI and agentic use cases and sample applications (Preview)](ai-samples.md)
 - [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)
-- [AI and agentic use cases and sample applications (Preview)](samples.md)
+- [AI and agentic use cases and sample applications (Preview)](ai-samples.md)
 - [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)

@@ -126,7 +126,7 @@ Connect Azure HorizonDB to agent frameworks, orchestration services, and tools.
 
 ### Samples and tutorials
 
-- **[AI and agentic use cases and sample applications (Preview)](samples.md)**: Industry-specific patterns and end-to-end implementations.
+- **[AI and agentic use cases and sample applications (Preview)](ai-samples.md)**: Industry-specific patterns and end-to-end implementations.
 - **[Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)**: Tutorial for building a complete semantic search app with Azure HorizonDB.
 
 ## Get started

@@ -357,7 +357,7 @@
         - name: Develop with LangChain
           href: ai/develop-with-langchain.md
     - name: Samples
-      href: ai/samples.md
+      href: ai/ai-samples.md
 - name: Graph database
   items:
     - name: Overview
