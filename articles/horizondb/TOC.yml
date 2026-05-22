@@ -4,16 +4,30 @@
   items:
     - name: What is Azure HorizonDB?
       href: overview.md
+    - name: Server concepts
+      href: configure-maintain/concepts-servers.md
     - name: Supported versions
       href: configure-maintain/concepts-supported-versions.md
+    - name: Version policy
+      href: configure-maintain/concepts-version-policy.md
     - name: Limits
       href: configure-maintain/concepts-limits.md
 - name: Release Notes
   items:
     - name: Release notes for Azure HorizonDB
       href: release-notes/release-notes.md
-- name: Create and connect
+- name: Get started
   items:
+    - name: Quickstarts
+      items:
+        - name: Create a HorizonDB cluster
+          href: configure-maintain/quickstart-create-cluster.md
+        - name: Connect with Python
+          href: connectivity/connect-python.md
+        - name: Connect with Java
+          href: connectivity/connect-java.md
+        - name: Connect with C# (.NET)
+          href: connectivity/connect-csharp.md
     - name: Concepts
       items:
         - name: Connection endpoints
@@ -24,34 +38,42 @@
           href: connectivity/concepts-connection-pooling-best-practices.md
     - name: How-to guides
       items:
-        - name: Create a HorizonDB cluster
-          href: configure-maintain/quickstart-create-cluster.md
-        - name: Connect with Python
-          href: connectivity/connect-python.md
-        - name: Connect with Java
-          href: connectivity/connect-java.md
-        - name: Connect with C# (.NET)
-          href: connectivity/connect-csharp.md
         - name: Connect and query
           href: connectivity/how-to-connect-query-guide.md
-        - name: Enable deletion protection
-          href: configure-maintain/how-to-enable-deletion-protection.md
 - name: Configure and manage
   items:
-    - name: Scheduled maintenance
-      href: configure-maintain/concepts-maintenance.md
-    - name: Logical replication and logical decoding
-      href: configure-maintain/concepts-logical.md
+    - name: Concepts
+      items:
+        - name: Scheduled maintenance
+          href: configure-maintain/concepts-maintenance.md
+        - name: Logical replication and logical decoding
+          href: configure-maintain/concepts-logical.md
+        - name: Major version upgrades
+          href: configure-maintain/concepts-major-version-upgrade.md
+        - name: Extended support
+          href: configure-maintain/extended-support.md
+        - name: Reserved capacity pricing
+          href: configure-maintain/concepts-reserved-pricing.md
+        - name: Azure Advisor recommendations
+          href: configure-maintain/concepts-azure-advisor-recommendations.md
     - name: How-to guides
       items:
+        - name: Scale compute
+          href: configure-maintain/how-to-scale-compute.md
+        - name: Configure scheduled maintenance
+          href: configure-maintain/how-to-configure-scheduled-maintenance.md
+        - name: Enable deletion protection
+          href: configure-maintain/how-to-enable-deletion-protection.md
+        - name: Delete a cluster
+          href: configure-maintain/how-to-delete-server.md
         - name: Request a quota increase
           href: configure-maintain/how-to-request-quota-increase.md
+        - name: Use pg_partman
+          href: configure-maintain/how-to-use-pg-partman.md
     - name: Compute replicas
       items:
         - name: How-to guides
           items:
-            - name: Scale compute
-              href: configure-maintain/how-to-scale-compute.md
             - name: Add or remove replicas
               href: configure-maintain/how-to-add-remove-replica.md
     - name: Server parameters
@@ -60,7 +82,7 @@
           href: server-parameters/concepts-server-parameters.md
         - name: Parameter groups
           href: server-parameters/concepts-parameter-groups.md
-        - name: How-to guides
+        - name: Manage parameter groups
           items:
             - name: Create parameter groups
               href: server-parameters/how-to-parameter-groups-create.md
@@ -184,10 +206,12 @@
               href: server-parameters/param-write-ahead-log-settings.md
     - name: Extensions
       items:
-        - name: Extensions and modules
-          href: extensions/concepts-extensions.md
-        - name: Special considerations
-          href: extensions/concepts-extensions-considerations.md
+        - name: Concepts
+          items:
+            - name: Extensions and modules
+              href: extensions/concepts-extensions.md
+            - name: Special considerations
+              href: extensions/concepts-extensions-considerations.md
         - name: How-to guides
           items:
             - name: Allow extensions
@@ -202,8 +226,6 @@
               href: extensions/how-to-drop-extensions.md
             - name: View installed extensions
               href: extensions/how-to-view-installed-extensions.md
-            - name: Use pg_partman
-              href: configure-maintain/how-to-use-pg-partman.md
         - name: Azure Storage extension
           items:
             - name: Overview
@@ -226,12 +248,26 @@
               href: extensions/errors-extensions.md
 - name: Security
   items:
-    - name: Security overview
-      href: security/security-overview.md
+    - name: Overview
+      items:
+        - name: Security overview
+          href: security/security-overview.md
+        - name: Compliance certifications
+          href: security/security-compliance.md
+        - name: Azure Policy support
+          href: security/security-azure-policy.md
+        - name: Confidential computing
+          href: security/security-confidential-computing.md
+        - name: Microsoft Defender for Cloud
+          href: security/security-defender-for-cloud.md
     - name: Authentication and access control
       items:
-        - name: Access control
-          href: security/security-access-control.md
+        - name: Concepts
+          items:
+            - name: Microsoft Entra authentication
+              href: security/security-entra-concepts.md
+            - name: Access control
+              href: security/security-access-control.md
         - name: How-to guides
           items:
             - name: Configure Microsoft Entra integration
@@ -246,6 +282,18 @@
               href: security/security-connect-scram.md
             - name: Reset local administrator password
               href: security/security-reset-admin-password.md
+    - name: Cluster identity
+      items:
+        - name: Concepts
+          items:
+            - name: Managed identity overview
+              href: security/security-managed-identity-overview.md
+        - name: How-to guides
+          items:
+            - name: Configure user-assigned managed identities
+              href: security/security-configure-managed-identities-user-assigned.md
+            - name: Configure system-assigned managed identities
+              href: security/security-configure-managed-identities-system-assigned.md
     - name: Transport Layer Security (TLS)
       items:
         - name: Concepts
@@ -266,18 +314,60 @@
       items:
         - name: Data encryption overview
           href: security/security-data-encryption.md
+    - name: Auditing
+      items:
+        - name: Concepts
+          items:
+            - name: Audit logging
+              href: security/security-audit.md
+        - name: How-to guides
+          items:
+            - name: Audit Microsoft Entra ID principals
+              href: security/security-audit-entra.md
     - name: Firewall
       items:
         - name: Firewall rules
           href: security/security-firewall-rules.md
-- name: Query Monitoring
+- name: Performance and monitor
   items:
-    - name: Query Store
-      href: monitor/concepts-query-store.md
-    - name: Query Store usage scenarios
-      href: monitor/concepts-query-store-scenarios.md
-    - name: Query Store best practices
-      href: monitor/concepts-query-store-best-practices.md
+    - name: Concepts
+      items:
+        - name: Query Performance Insight
+          href: monitor/concepts-query-performance-insight.md
+        - name: Query Store
+          href: monitor/concepts-query-store.md
+        - name: Query Store usage scenarios
+          href: monitor/concepts-query-store-scenarios.md
+        - name: Query Store best practices
+          href: monitor/concepts-query-store-best-practices.md
+    - name: How-to guides
+      items:
+        - name: Configure intelligent tuning - Portal
+          href: monitor/how-to-enable-intelligent-performance-portal.md
+        - name: Configure intelligent tuning - CLI
+          href: monitor/how-to-enable-intelligent-performance-cli.md
+        - name: Configure autonomous tuning
+          href: monitor/how-to-configure-autonomous-tuning.md
+        - name: Apply autonomous tuning recommendations
+          href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
+- name: Monitoring
+  items:
+    - name: Concepts
+      items:
+        - name: Metrics
+          href: monitor/concepts-monitoring.md
+        - name: Logs
+          href: monitor/concepts-logging.md
+        - name: Azure Monitor workbooks
+          href: monitor/concepts-workbooks.md
+    - name: How-to guides
+      items:
+        - name: Configure alerts on metrics
+          href: monitor/how-to-alert-on-metrics.md
+        - name: Configure and access logs
+          href: monitor/how-to-configure-and-access-logs.md
+        - name: Download server logs
+          href: monitor/how-to-configure-server-logs.md
 - name: Networking
   items:
     - name: Concepts
@@ -296,6 +386,14 @@
           href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
         - name: Delete firewall rules
           href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+        - name: Add private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+        - name: Delete private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+        - name: Approve private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+        - name: Reject private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
 - name: High availability and disaster recovery
   items:
     - name: Concepts
@@ -434,3 +532,87 @@
       items:
         - name: Migrate using dump and restore
           href: migrate/how-to-migrate-using-dump-and-restore.md
+    - name: Migration service
+      items:
+        - name: Overview
+          href: migrate/migration-service/overview-migration-service-postgresql.md
+        - name: Concepts
+          items:
+            - name: Premigration validations
+              href: migrate/migration-service/concepts-premigration-migration-service.md
+            - name: Known issues and limitations
+              href: migrate/migration-service/concepts-known-issues-migration-service.md
+            - name: Best practices
+              href: migrate/migration-service/best-practices-migration-service-postgresql.md
+            - name: Migration extensions
+              href: migrate/migration-service/concepts-migration-extensions.md
+            - name: Migration server parameters
+              href: migrate/migration-service/concepts-migration-server-parameters.md
+            - name: Migration runtime server
+              href: migrate/migration-service/concepts-migration-service-runtime-server.md
+            - name: Required user permissions
+              href: migrate/migration-service/concepts-required-user-permissions.md
+        - name: How-to guides
+          items:
+            - name: Network setup
+              href: migrate/migration-service/how-to-network-setup-migration-service.md
+            - name: Set up Azure CLI commands
+              href: migrate/migration-service/how-to-setup-azure-cli-commands-postgresql.md
+        - name: Tutorials
+          items:
+            - name: Migrate from Azure VM / on-premises (offline)
+              href: migrate/migration-service/tutorial-migration-service-iaas-offline.md
+            - name: Migrate from Azure VM / on-premises (online)
+              href: migrate/migration-service/tutorial-migration-service-iaas-online.md
+            - name: Migrate from Amazon RDS (offline)
+              href: migrate/migration-service/tutorial-migration-service-rds-offline.md
+            - name: Migrate from Amazon RDS (online)
+              href: migrate/migration-service/tutorial-migration-service-rds-online.md
+            - name: Migrate from Amazon Aurora (offline)
+              href: migrate/migration-service/tutorial-migration-service-aurora-offline.md
+            - name: Migrate from Amazon Aurora (online)
+              href: migrate/migration-service/tutorial-migration-service-aurora-online.md
+            - name: Migrate from Google Cloud SQL (offline)
+              href: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
+            - name: Migrate from Google Cloud SQL (online)
+              href: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
+            - name: Migrate from Google AlloyDB (offline)
+              href: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
+            - name: Migrate from Google AlloyDB (online)
+              href: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
+            - name: Migrate from EDB Extended Server (offline)
+              href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
+            - name: Migrate from EDB Extended Server (online)
+              href: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
+        - name: Troubleshooting
+          items:
+            - name: Premigration error codes
+              href: migrate/migration-service/troubleshoot-error-codes.md
+    - name: Oracle schema conversion
+      items:
+        - name: Overview
+          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+        - name: Quickstart
+          href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
+        - name: Tutorial
+          href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+        - name: Best practices
+          href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+        - name: Limitations
+          href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
+        - name: Reports
+          href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+- name: Samples
+  items:
+    - name: Azure CLI scripts
+      items:
+        - name: Create a cluster and firewall rule
+          href: samples/sample-create-server-and-firewall-rule.md
+        - name: Create a cluster with a VNet rule
+          href: samples/sample-create-server-with-vnet-rule.md
+        - name: Scale a cluster
+          href: samples/sample-scale-server-up-or-down.md
+        - name: Change server configuration
+          href: samples/sample-change-server-configuration.md
+        - name: Download server logs
+          href: samples/sample-server-logs.md
