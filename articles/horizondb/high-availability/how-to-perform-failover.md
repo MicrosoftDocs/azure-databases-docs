@@ -112,5 +112,5 @@ When you initiate a forced failover, the primary server immediately goes down an
 
 ## Related content
 
-- [Business Continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
+- [High availability in Azure HorizonDB](../backup-restore/concepts-high-availability-failover.md)
 - [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
