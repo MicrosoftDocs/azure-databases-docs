@@ -30,10 +30,6 @@
           href: configure-maintain/how-to-enable-deletion-protection.md
 - name: Configure and maintain
   items:
-    - name: Scheduled maintenance
-      href: configure-maintain/concepts-maintenance.md
-    - name: Logical replication and logical decoding
-      href: configure-maintain/concepts-logical.md
     - name: How-to guides
       items:
         - name: Request a quota increase
@@ -46,12 +42,6 @@
           href: configure-maintain/how-to-data-factory-script-activity-fabric.md
     - name: Compute replicas
       items:
-        - name: How-to guides
-          items:
-            - name: Scale compute
-              href: configure-maintain/how-to-scale-compute.md
-            - name: Add or remove replicas
-              href: configure-maintain/how-to-add-remove-replica.md
     - name: Server parameters
       items:
         - name: Overview
@@ -180,6 +170,8 @@
               href: server-parameters/param-write-ahead-log-recovery-target.md
             - name: Write-Ahead Log / Settings
               href: server-parameters/param-write-ahead-log-settings.md
+    - name: Scheduled maintenance
+      href: configure-maintain/concepts-maintenance.md
     - name: Extensions
       items:
         - name: Extensions and modules
@@ -212,6 +204,12 @@
               href: extensions/how-to-configure-azure-storage-extension.md
             - name: Function reference
               href: extensions/reference-azure-storage-extension.md
+        - name: How-to guides
+          items:
+            - name: Scale compute
+              href: configure-maintain/how-to-scale-compute.md
+            - name: Add or remove replicas
+              href: configure-maintain/how-to-add-remove-replica.md
         - name: Reference
           items:
             - name: List by name
