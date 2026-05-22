@@ -52,14 +52,6 @@ landingContent:
     links:
     - text: Manage high availability
       url: high-availability/how-to-configure-high-availability.md
-    - text: Guide on scalable compute
-      url: scale/how-to-scale-compute.md
-    - text: Scale out with elastic clusters
-      url: scale/how-to-scale-out.md
-    - text: Restore to paired region (geo-restore)
-      url: backup-restore/how-to-restore-paired-region.md
-    - text: Entra-id authentication guide
-      url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
 
 # Card 3
 - title: Build AI apps and agents
