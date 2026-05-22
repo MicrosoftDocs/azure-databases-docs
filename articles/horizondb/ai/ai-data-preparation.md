@@ -144,7 +144,7 @@ The five core steps prepare your data for vector and hybrid search, which form t
 
 ## Automate with AI pipelines
 
-Instead of running each step manually, you can define a complete data preparation workflow using [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
+Instead of running each step manually, you can define a complete data preparation workflow using the [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 ## Related content
 
