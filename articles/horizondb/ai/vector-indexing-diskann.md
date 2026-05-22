@@ -5,6 +5,7 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
@@ -18,9 +19,9 @@ ms.custom:
 
 # Scalable vector indexing with DiskANN (Preview)
 
-DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets - which is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to billions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
+DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. This is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to millions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 
-If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md).
+If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md).
 
 To learn more about the DiskANN algorithm, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search).
 
@@ -30,13 +31,13 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 
 To use the `pg_diskann` extension on your Azure HorizonDB instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
 
-Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and then run the following command:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
 ```
 
-Or you can skip explicitly allowing and creating the `vector` extension, and run instead the previous command appending the `CASCADE` clause. That clause PostgreSQL to implicitly run CREATE EXTENSION on the extension that it depends. To do so, run the following command:
+Or you can skip explicitly allowing and creating the `vector` extension, and run instead the previous command appending the `CASCADE` clause. That clause tells PostgreSQL to implicitly run `CREATE EXTENSION` on the extension it depends on. To do so, run the following command:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann CASCADE;
@@ -83,7 +84,7 @@ LIMIT 5;
 Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use it, execute the following command:
 
 ```sql
--- Explicit Transcation block to force use for DiskANN index.
+-- Explicit transaction block to force use for DiskANN index.
 
 BEGIN;
 SET LOCAL enable_seqscan TO OFF;
@@ -101,7 +102,7 @@ COMMIT;
 
 Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Vector search using the pgvector extension](vector-search-pgvector.md), the [AI functions in the azure_ai extension](ai-functions.md), [Full-text search using the pg_fts extension](full-text-search.md), and [hybrid search](hybrid-search.md).
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md), the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md), and [hybrid search](hybrid-search.md).
 
 ### How it differs from other indexes
 
@@ -165,7 +166,9 @@ To reduce the size of your index and fit more data into memory, enable spherical
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops)
 WITH (
-    spherical_quantized = true
+    spherical_quantized = true,
+    sq_bits = 1,
+    sq_training_samples = 25000
 );
 ```
 
@@ -173,7 +176,12 @@ WITH (
 
 Advanced generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. Traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
 
-DiskANN supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
+DiskANN supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads. The maximum supported dimensions depend on the `sq_bits` setting:
+
+| `sq_bits` | Maximum dimensions |
+| --- | --- |
+| 1 | 16,000 |
+| 4 | 4,000 |
 
 > [!IMPORTANT]  
 > Spherical quantization must be enabled to use high-dimensional support.
@@ -181,12 +189,14 @@ DiskANN supports indexing vectors with up to 16,000 dimensions, significantly ex
 **Recommended settings:**
 
 - `spherical_quantized`: Set to `true`.
+- `sq_bits`: Set to `4` for dimensions up to 4,000, or `1` for dimensions up to 16,000.
+- `sq_training_samples`: Set to `25000` or higher for best quantization quality.
 
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
 ## Speed up index build
 
-There are a few ways we recommend improving your index build times.
+There are a few ways we recommend to improve your index build times.
 
 <a id="using-more-memory"></a>
 
@@ -238,7 +248,7 @@ You can set these parameters at different granularity levels. For example, to se
 ```sql
 -- Set the parameters
 SET max_parallel_workers = 8;
-SET max_worker_processes = 8; -- Note: Requires server restart
+SET max_worker_processes = 8;
 SET max_parallel_maintenance_workers = 4;
 ```
 
@@ -258,13 +268,17 @@ When creating a `diskann` index, you can specify various parameters to control i
 - `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
 - `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
 - `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false).
+- `sq_bits`: Number of bits per dimension for spherical quantization (Defaults to 4). Lower values yield higher compression.
+- `sq_training_samples`: Number of training samples used to calibrate the quantizer (Defaults to 25000). A higher value can improve quantization quality at the cost of longer index build time.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
 WITH (
     max_neighbors = 48,
     l_value_ib = 100,
-    spherical_quantized = true
+    spherical_quantized = true,
+    sq_bits = 4,
+    sq_training_samples = 25000
 );
 ```
 
@@ -354,45 +368,8 @@ The vector type allows you to perform three types of searches on the stored vect
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product
 
-<a id="troubleshooting"></a>
-
-## Troubleshoot
-
-**Error: `assertion left == right failed left: 40 right: 0`**:
-- DiskANN GA version, **v0.6.x introduces breaking changes** in the index metadata format. Indexes created with **v0.5.x aren't forward-compatible** with v0.6.x insert operations. Attempting to insert into a table with an outdated index will result in an error, even if the index appears valid.
-
-- When you encounter this error, **you can resolve by:**
-  - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index.
-  - **Option 2:** Rebuild the Index
-
-    ```sql
-    DROP INDEX your_index_name;
-    CREATE INDEX your_index_name ON your_table USING diskann(your_vector_column vector_cosine_ops);
-    ```
-
-**Error: `diskann index needs to be upgraded to version 2...`**:
-
-- When you encounter this error, you can resolve by:
-  - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index.
-  - **Option 2:** Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
-
-    To upgrade your index, run the following statement:
-
-    ```sql
-    SELECT upgrade_diskann_index('demo_embedding_diskann_custom_idx');
-    ```
-
-    To upgrade all diskann indexes in the database to the current version, run the following statement:
-
-    ```sql
-    SELECT upgrade_diskann_index(pg_class.oid)
-    FROM pg_class
-    JOIN pg_am ON (pg_class.relam = pg_am.oid)
-    WHERE pg_am.amname = 'diskann';
-    ```
-
 ## Related content
 
-- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Hybrid search in Azure HorizonDB](hybrid-search.md)
+- [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)

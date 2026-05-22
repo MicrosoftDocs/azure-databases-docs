@@ -1,5 +1,5 @@
 ---
-title: Connection Endpoints
+title: Connection Endpoints (Preview)
 description: This article describes the connection endpoints of a HorizonDB
 author: DDL-PM
 ms.author: ludingding
@@ -10,9 +10,11 @@ ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
-# Connection endpoints
+# Connection endpoints (Preview)
 
 An Azure HorizonDB cluster has two endpoints (primary endpoint and reader endpoint) that are automatically created during cluster provision. You can find those two endpoints in the **Overview** or **Replicas** in **Settings**.
+
+:::image type="content" source="media/concepts-connection-endpoints/endpoint-administrator-login.png" alt-text="Screenshot of connection endpoints.":::
 
 ## Primary endpoint (read/write)
 
