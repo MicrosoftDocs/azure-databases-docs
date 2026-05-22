@@ -23,7 +23,7 @@ Before you can build AI-powered search, RAG applications, or intelligent agents,
 
 ## Why data preparation matters
 
-The quality of your AI application depends directly on the quality of your prepared data. A well-chunked, cleanly embedded dataset returns precise, relevant results. Poorly prepared data such as oversized chunks, noisy text, or mismatched embeddings lead to irrelevant matches and unreliable AI-generated answers.
+The quality of your AI application depends directly on the quality of your prepared data. A well-chunked, cleanly embedded dataset returns precise, relevant results. Poorly prepared data such as oversized chunks, noisy text, or mismatched embeddings leads to irrelevant matches and unreliable AI-generated answers.
 
 Data preparation bridges the gap between raw source content and a queryable data store. The core process follows five steps:
 
@@ -83,11 +83,11 @@ It's important that you use the same embedding model for both your stored data a
 Azure HorizonDB provides two ways to generate embeddings:
 
 - **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for ad hoc embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md).
-- **In a pipeline**: Use the `ai.embed()` step in [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
+- **In a pipeline**: Use the `ai.embed()` step inside a [durable AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
 
 ## Step 4: Enrich with metadata
 
-Attaching metadata to each chunk transforms a vector store into a queryable, filterable knowledge base. Metadata enables filtered search, narrowing results by date, document type, category, or access level before or during similarity ranking.
+When you attach metadata to each chunk, you transform a vector store into a queryable, filterable knowledge base. Metadata enables filtered search, so you can narrow results by date, document type, category, or access level before or during similarity ranking.
 
 Common metadata fields include:
 
