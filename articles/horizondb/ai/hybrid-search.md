@@ -61,7 +61,7 @@ RRF is the right default because:
 
 - It needs no tuning - `k = 60` is a well-known good choice.
 - It's robust to score-scale differences across rankers.
-- It composes naturally with more than two rankers (graph search, structured filters, etc.).
+- It composes naturally with more than two rankers (for example, graph search and structured filters).
 
 ## Prerequisites
 
