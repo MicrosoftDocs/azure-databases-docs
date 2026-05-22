@@ -61,4 +61,3 @@ If you're in control of the application code, you might consider rewriting the d
 
 - [Query store in Azure HorizonDB](concepts-query-store.md)
 - [Best practices for query store in Azure HorizonDB](concepts-query-store-best-practices.md)
-- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md)

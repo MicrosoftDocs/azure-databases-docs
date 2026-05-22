@@ -119,7 +119,7 @@ Here are some possible security services, features, and best practices for the b
 
 - **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md).
 
-- **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure. For more information, visit [Read replicas in Azure HorizonDB](../read-replica/concepts-read-replicas.md).
+- **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure.
 
 - **Protect backup data with customer-managed key encryption**: Secure your backup data by using encryption at rest.
 

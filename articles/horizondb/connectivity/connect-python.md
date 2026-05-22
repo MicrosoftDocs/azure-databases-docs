@@ -297,5 +297,4 @@ conn.close()
 ## Related content
 
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
-- [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)
+- [Connect and query in Azure HorizonDB](how-to-connect-query-guide.md)

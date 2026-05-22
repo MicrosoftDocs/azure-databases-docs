@@ -67,7 +67,7 @@ Some considerations when considering during monthly maintenance:
 
 ## Apply Maintenance on Stopped/Disabled Instances
 
-If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the [7-day autorestart](concepts-limits.md#stopstart-operations) feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
+If a PostgreSQL server is stopped during scheduled maintenance, the maintenance won't be applied immediately. Instead, the maintenance will be applied when the server is restarted, either manually by the customer or automatically through the 7-day autorestart feature. A notification is sent to the customer indicating that maintenance couldn't be applied because the server is stopped and applies when the server is restarted.
 
 Customers might notice a slight increase in restart time (5-8 minutes) when pending maintenance is applied, particularly during manual restarts.
 

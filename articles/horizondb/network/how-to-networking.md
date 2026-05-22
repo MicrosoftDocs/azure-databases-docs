@@ -23,14 +23,8 @@ Depending on the networking mode you selected when you deployed your server, you
 
 If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
 
-- [Enable public access in Azure HorizonDB](how-to-networking-servers-deployed-public-access-enable-public-access.md).
-- [Disable public access in Azure HorizonDB](how-to-networking-servers-deployed-public-access-disable-public-access.md).
 - [Add firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
-- [Add private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
-- [Delete private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-private-endpoint.md).
-- [Approve private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-approve-private-endpoint.md).
-- [Reject private endpoint connections in Azure HorizonDB](how-to-networking-servers-deployed-public-access-reject-private-endpoint.md).
 
 ## Private access (VNET Integration)
 

@@ -76,7 +76,7 @@ Here are some examples of how you can gain more insights into your workload usin
 | **Observation** | **Action** |
 | --- | --- |
 | High lock waits | Check the query texts for the affected queries and identify the target entities. Look in query store for other queries which are executed frequently and/or have high duration and are modifying the same entity. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
-| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider enabling the [autonomous tuning](concepts-autonomous-tuning.md) feature to see if it can recommend creating some indexes which might decrease the number of physical reads for those queries. |
+| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider creating some indexes which might decrease the number of physical reads for those queries. |
 | High memory waits | Find the top memory consuming queries in query store. These queries are probably delaying further progress of the affected queries. |
 
 ## Configuration options
@@ -284,12 +284,11 @@ This function discards all statistics gathered in-memory by query store (that is
 
 ### Read-only mode
 
-When an Azure HorizonDB instance is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is [automatically enabled due to reaching storage capacity](../configure-maintain/concepts-limits.md#storage), query store doesn't capture any data.
+When an Azure HorizonDB instance is in read-only mode, such as when the `default_transaction_read_only` parameter is set to `on`, or if read-only mode is automatically enabled due to reaching storage capacity, query store doesn't capture any data.
 
-Enabling query store on a server that has [read replicas](../read-replica/concepts-read-replicas.md), doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
+Enabling query store on a server that has read replicas, doesn't automatically enable query store on any of the read replicas. Even if you enable it on any of the read replicas, query store doesn't record the queries executed on any read replicas, because they operate in read-only mode until you promote them to primary.
 
 ## Related content
 
 - [Usage scenarios for query store in Azure HorizonDB](concepts-query-store-scenarios.md)
 - [Best practices for query store in Azure HorizonDB](concepts-query-store-best-practices.md)
-- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md)

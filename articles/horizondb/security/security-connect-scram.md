@@ -101,7 +101,7 @@ To configure SCRAM authentication, you need to access the Server Parameters page
 
 1. You can then connect from the client that supports SCRAM authentication to your server.
 
-   SCRAM authentication is also supported when connected to the built-in managed [PgBouncer in Azure HorizonDB](../connectivity/concepts-pgbouncer.md).
+   SCRAM authentication is also supported when connected to the built-in managed PgBouncer in Azure HorizonDB.
 
 ## Related content
 

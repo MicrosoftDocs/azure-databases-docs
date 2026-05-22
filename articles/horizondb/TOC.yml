@@ -24,8 +24,6 @@
           href: connectivity/connect-python.md
         - name: Connect with Java
           href: connectivity/connect-java.md
-        - name: Connect with C# (.NET)
-          href: connectivity/connect-csharp.md
         - name: Connect and query
           href: connectivity/how-to-connect-query-guide.md
         - name: Enable deletion protection
@@ -240,8 +238,6 @@
               href: security/security-manage-database-users.md
             - name: Manage Microsoft Entra users
               href: security/security-manage-entra-users.md
-            - name: Connect with a managed identity
-              href: security/security-connect-with-managed-identity.md
             - name: Connect with SCRAM authentication
               href: security/security-connect-scram.md
             - name: Reset local administrator password
