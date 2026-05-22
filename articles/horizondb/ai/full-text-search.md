@@ -21,7 +21,7 @@ ms.custom:
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
-`pg_fts` is the recommended full-text search option on HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
+`pg_fts` is the recommended full-text search option on Azure HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
 
 > [!NOTE]  
 > `pg_fts` is in **public preview**.
@@ -47,13 +47,13 @@ BM25 (Best Matching 25) solves three problems that `ts_rank` doesn't:
 
 - **Term frequency saturation.** Repeated occurrences of a keyword have diminishing returns, so a keyword-stuffed document can't dominate results.
 - **Document length normalization.** A short product title that mentions "wireless headphones" outranks a 10,000-word blog post that happens to mention the same phrase once.
-- **Inverse document frequency (IDF).** Common words ("the", "error") get down-weighted; rare, discriminating terms ("PG-4012", "replication") get up-weighted.
+- **Inverse document frequency (IDF).** Common words ("the," "error") get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
 
 That's why every modern search engine uses BM25 (or a close variant) as its baseline. With `pg_fts`, you get the same quality without leaving Postgres.
 
 ## Enable pg_fts
 
-To use the `pg_fts` extension, [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) at the instance level, then [create the extension](../extensions/how-to-create-extensions.md) on each database where you want to use it.
+To use the `pg_fts` extension, [allow the extension](../extensions/how-to-allow-extensions.md) at the instance level, then [create the extension](../extensions/how-to-create-extensions.md) on each database where you want to use it.
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_fts;
@@ -97,7 +97,7 @@ Key differences from a GIN index on `tsvector`:
 
 - The data column stays as plain `text` - no `tsvector` column to maintain.
 - The index updates automatically on `INSERT`, `UPDATE`, and `DELETE`. No `REFRESH` step.
-- The index isn't visible in `pg_stat_user_indexes` the same way GIN is, because results are produced through a custom scan.
+- Because results come from a custom scan, `pg_stat_user_indexes` doesn't show the index the same way GIN does.
 
 ## Run searches
 
@@ -114,7 +114,7 @@ LIMIT 10;
 
 ### Project the BM25 score
 
-Use `pgfts.fts_score()` to surface the relevance score alongside the row. This requires `pg_fts` in `shared_preload_libraries`.
+Use `pgfts.fts_score()` to surface the relevance score alongside the row. This function requires `pg_fts` in `shared_preload_libraries`.
 
 ```sql
 SELECT id, name, description,
@@ -136,7 +136,7 @@ LIMIT 10;
 
 ### Fuzzy search for typo tolerance
 
-Use the JSON DSL to match terms within an edit distance of 0, 1, or 2. This is how you handle real-world misspellings without bolting on `pg_trgm`.
+Use the JSON DSL to match terms within an edit distance of 0, 1, or 2. This approach handles real-world misspellings without needing to add `pg_trgm`.
 
 ```sql
 SELECT id, name
@@ -165,7 +165,7 @@ WHERE pgfts.fts_query('"wireless headphones"~5', 'idx_products_fts');
 
 ### The `@@?` operator
 
-For simple, single-keyword filters on a text column, you can use the `@@?` operator directly. It does **not** support boolean syntax - use `pgfts.fts_query()` for `AND` / `OR` / `NOT`.
+For simple, single-keyword filters on a text column, use the `@@?` operator directly. It doesn't support boolean syntax - use `pgfts.fts_query()` for `AND`, `OR`, and `NOT`.
 
 ```sql
 SELECT id, name
@@ -175,17 +175,17 @@ WHERE description OPERATOR(pgfts.@@?) 'wireless headphones';
 
 ## Multi-language support
 
-`pg_fts` ships with analyzers for major non-Latin-script languages.
+`pg_fts` includes analyzers for major non-Latin-script languages.
 
 | Analyzer | Language | Description |
 | --- | --- | --- |
-| `default` | Multiple | Simple tokenizer with lowercase filter, suitable for English and most Latin-script languages |
+| `default` | Multiple | Simple tokenizer with lowercase filter, suitable for English, and most Latin-script languages |
 | `chinese` | Chinese | Jieba segmentation |
 | `japanese` | Japanese | Lindera with IPADIC dictionary |
 | `korean` | Korean | Lindera with mecab-ko-dic dictionary |
 | `thai` | Thai | ICU4X word segmentation |
 
-You can inspect tokenization for any analyzer with the debug helper:
+You can inspect tokenization for any analyzer by using the debug helper:
 
 ```sql
 SELECT *
@@ -200,7 +200,7 @@ SELECT * FROM pgfts.list_fts_analyzers();
 
 ## Combine pg_fts with vector search (hybrid search)
 
-`pg_fts` is built to compose with vector search. The standard pattern is **Reciprocal Rank Fusion (RRF)**: run BM25 and vector search separately, then combine the ranks.
+`pg_fts` is designed to work with vector search. The standard pattern is **Reciprocal Rank Fusion (RRF)**: run BM25 and vector search separately, then combine the ranks.
 
 ```sql
 WITH bm25_results AS (
@@ -235,16 +235,16 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 
 ## Performance notes
 
-- **LIMIT pushdown.** The `pg_fts` custom scan pushes `LIMIT` into the index and only retrieves as many candidates as you ask for. This is what makes multi-keyword queries fast on large tables.
+- **LIMIT pushdown.** The `pg_fts` custom scan pushes `LIMIT` into the index and only retrieves as many candidates as you ask for. This feature makes multi-keyword queries fast on large tables.
 - **Index size.** The `fts` index is denser than a GIN index over `tsvector` because it stores positions, frequencies, and language-specific analyzer state. Plan disk accordingly.
-- **Updates.** Inserts and updates are applied to the index continuously. There's no separate refresh step.
+- **Updates.** The index continuously applies inserts and updates. There's no separate refresh step.
 - **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't rerank the whole table.
 
 ## Limitations during preview
 
 - `pgfts.fts_score()` requires `pg_fts` in `shared_preload_libraries`. Without it, only `pgfts.fts_query()` (which already returns rows in rank order) works.
 - The `@@?` operator doesn't support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.
-- CJK analyzers can be inspected with `pgfts.debug_analyze_text()` but can't yet be selected at index creation time via a `WITH (analyzer = '...')` option.
+- You can inspect CJK analyzers by using `pgfts.debug_analyze_text()`, but you can't yet select them at index creation time via a `WITH (analyzer = '...')` option.
 - The index isn't represented in `pg_stat_user_indexes` the same way GIN is, because results come through a custom scan.
 
 ## Related content

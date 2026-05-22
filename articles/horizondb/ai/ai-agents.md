@@ -135,6 +135,4 @@ For industry-specific implementation patterns, see [use cases and sample applica
 ## Related content
 
 - [AI and agentic use cases and sample applications (Preview)](ai-samples.md)
-- [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)
-- [AI and agentic use cases and sample applications (Preview)](ai-samples.md)
-- [What are the AI capabilities in Azure HorizonDB (Preview)](overview.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](ai-overview.md)
