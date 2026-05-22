@@ -58,8 +58,6 @@
       items:
         - name: Scale compute
           href: configure-maintain/how-to-scale-compute.md
-        - name: Add or remove replicas
-          href: configure-maintain/how-to-add-remove-replica.md
         - name: Configure scheduled maintenance
           href: configure-maintain/how-to-configure-scheduled-maintenance.md
         - name: Enable deletion protection
@@ -70,6 +68,12 @@
           href: configure-maintain/how-to-request-quota-increase.md
         - name: Use pg_partman
           href: configure-maintain/how-to-use-pg-partman.md
+    - name: Compute replicas
+      items:
+        - name: How-to guides
+          items:
+            - name: Add or remove replicas
+              href: configure-maintain/how-to-add-remove-replica.md
     - name: Server parameters
       items:
         - name: Overview
@@ -322,32 +326,6 @@
       items:
         - name: Firewall rules
           href: security/security-firewall-rules.md
-- name: Networking
-  items:
-    - name: Concepts
-      items:
-        - name: Public access
-          href: network/concepts-networking-public.md
-        - name: Networking overview
-          href: network/how-to-networking.md
-    - name: How-to guides
-      items:
-        - name: Enable public access
-          href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-        - name: Disable public access
-          href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
-        - name: Add firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
-        - name: Delete firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
-        - name: Add private endpoint connections
-          href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
-        - name: Delete private endpoint connections
-          href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
-        - name: Approve private endpoint connections
-          href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
-        - name: Reject private endpoint connections
-          href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
 - name: Performance and monitor
   items:
     - name: Concepts
@@ -388,12 +366,40 @@
           href: monitor/how-to-configure-and-access-logs.md
         - name: Download server logs
           href: monitor/how-to-configure-server-logs.md
+- name: Networking
+  items:
+    - name: Concepts
+      items:
+        - name: Public access
+          href: network/concepts-networking-public.md
+        - name: Networking overview
+          href: network/how-to-networking.md
+    - name: How-to guides
+      items:
+        - name: Enable public access
+          href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
+        - name: Disable public access
+          href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+        - name: Add firewall rules
+          href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+        - name: Delete firewall rules
+          href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+        - name: Add private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-add-private-endpoint.md
+        - name: Delete private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-delete-private-endpoint.md
+        - name: Approve private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
+        - name: Reject private endpoint connections
+          href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
 - name: High availability and disaster recovery
   items:
     - name: Concepts
       items:
         - name: Business continuity
           href: backup-restore/concepts-business-continuity.md
+        - name: High availability and failover
+          href: high-availability/concepts-high-availability-failover.md
     - name: How-to guides
       items:
         - name: Configure high availability
