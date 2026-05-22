@@ -44,18 +44,14 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: High availability
-      url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
     - text: Back up and restore
       url: backup-restore/concepts-backup-restore.md
     - text: Security concepts
       url: security/security-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Scale out with HorizonDB
-      url: configure-maintain/how-to-scale-compute.md
-    - text: Entra-id authentication guide
-      url: /azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication
+    - text: Manage high availability
+      url: high-availability/how-to-configure-high-availability.md
 
 # Card 3
 - title: Build AI apps and agents
@@ -63,7 +59,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Overview of AI capabilities in Azure HorizonDB
-      url: ai/overview.md
+      url: ai/ai-overview.md
     - text: AI pipelines and data preparation
       url: ai/ai-pipelines.md
     - text: AI functions in SQL with the azure_ai extension
@@ -76,8 +72,6 @@ landingContent:
       url: ai/semantic-rank-function.md
     - text: Build an AI app with LangChain
       url: ai/develop-with-langchain.md
-    - text: Build an AI agent with Foundry and MCP
-      url: ai/foundry-agent-integration.md
     - text: Build a knowledge graph from unstructured text
       url: ai/build-knowledge-graph.md
 
@@ -94,7 +88,7 @@ landingContent:
     - text: Data Encryption
       url: security/security-data-encryption.md
     - text: Overview of REST API
-      url: https://learn.microsoft.com/rest/api/postgresql/
+      url: /rest/api/postgresql/
 
 # Card 5
 
@@ -104,13 +98,7 @@ landingContent:
     links:
     - text: Connection libraries for App development
       url: connectivity/concepts-connection-libraries.md
-    - text: Deploy with Terraform
-      url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
-    - text: Pricing
-      url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
     - text: Region Availability
       url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
     - text: Customer success stories
       url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
-    - text: Build your skills with Microsoft Learn
-      url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql

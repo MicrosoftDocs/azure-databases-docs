@@ -5,6 +5,7 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -76,7 +77,7 @@ Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed
 
 ### 100 million+ vectors, high-dimensional embeddings (3,072+)
 
-Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN](vector-indexing-diskann.md) for the exact parameters.
+Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) for the exact parameters.
 
 ### Up to 100,000 vectors used as a correctness baseline
 
@@ -91,7 +92,7 @@ Most production retrieval queries combine vector similarity with structured `WHE
 
 Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and any retrieval workload where filtering is part of the query. It runs natively inside HorizonDB next to your relational data, so you keep transactional consistency, familiar PostgreSQL SQL, and a single store - no separate vector database or external search service. It works with `pgvector`, the Azure AI integrations, BM25 full-text search, and the rest of the HorizonDB AI retrieval stack.
 
-If filtered queries are part of your workload, choose DiskANN. See [Filter your search with DiskANN](vector-indexing-diskann.md) for query examples and the index parameters that control this behavior.
+If filtered queries are part of your workload, choose DiskANN. See [Filter your search with advanced filtering](vector-indexing-diskann.md#filter-your-search-with-advanced-filtering) for query examples and the index parameters that control this behavior.
 
 ## Update and rebuild cost
 
@@ -128,6 +129,6 @@ The operator must match the index access method's operator class. Cosine distanc
 
 ## Related content
 
-- [Implement vector search using the pgvector extension](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Optimize performance when using pgvector](optimize-pgvector-performance.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)

@@ -1,10 +1,11 @@
 ---
 title: Data Preparation for AI App and Agent Development in Azure HorizonDB
-description: Learn the key data preparation steps—cleaning, chunking, embedding, enrichment, and indexing—required before building AI apps and agents with Azure HorizonDB.
+description: Learn the key data preparation steps (cleaning, chunking, embedding, enrichment, and indexing) required before building AI apps and agents with Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -60,9 +61,10 @@ Adding **overlap** between consecutive chunks (repeating a portion of text at ea
 
 A common starting point is 512-2,000 characters. Tune based on your content type and retrieval quality.
 
-### Chunking in Azure HorizonDB
 
-Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [AI pipelines](ai-pipelines.md). You specify a target chunk size and an overlap:
+### Azure HorizonDB chunks 
+
+Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). You specify a target chunk size and an overlap:
 
 ```sql
 ai.chunk(input_column => 'content', chunk_size => 512, overlap => 64)
@@ -80,18 +82,18 @@ It's important that you use the same embedding model for both your stored data a
 
 Azure HorizonDB provides two ways to generate embeddings:
 
-- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for ad hoc embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md).
-- **In a pipeline**: Use the `ai.embed()` step in an [AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
+- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for unplanned embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md).
+- **In a pipeline**: Use the `ai.embed()` step inside a [durable AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
 
 ## Step 4: Enrich with metadata
 
-Attaching metadata to each chunk transforms a vector store into a queryable, filterable knowledge base. Metadata enables filtered search, narrowing results by date, document type, category, or access level before or during similarity ranking.
+When you attach metadata to each chunk, you transform a vector store into a queryable, filterable knowledge base. Metadata enables filtered search, so you can narrow results by date, document type, category, or access level before or during similarity ranking.
 
 Common metadata fields include:
 
 - **Provenance**: source document title, URL, page number, chunk index.
 - **Temporal**: creation date, last modified date.
-- **Categorical**: document type, department, language, topic tags.
+- **Categorical**: document type, department, language, article tags.
 - **AI-derived**: key phrases, named entities, sentiment, summary.
 
 Without metadata, a semantic search returns the most similar chunks but can't restrict results to, for example, "only HR policy documents from 2024." Metadata also enables citation tracking, so you know which source document a chunk came from when presenting results to users or an LLM.
@@ -120,7 +122,7 @@ CREATE TABLE document_chunks (
 CREATE INDEX ON document_chunks USING diskann (embedding);
 ```
 
-HorizonDB supports three vector index types: IVFFlat, HNSW, and DiskANN. Each type is optimized for different scale and performance characteristics. For guidance on choosing the right index, see [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md).
+HorizonDB supports three vector index types: IVFFlat, HNSW, and DiskANN. Each type is optimized for different scale and performance characteristics. For guidance on choosing the right index, see [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md).
 
 ### Full-text index
 
@@ -130,7 +132,7 @@ For hybrid search (combining keyword and vector results), also create a full-tex
 CREATE INDEX ON document_chunks USING fts (chunk_text);
 ```
 
-The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB](full-text-search.md).
+The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md).
 
 ## Beyond search: additional preparation tasks
 
@@ -138,14 +140,14 @@ The five core steps prepare your data for vector and hybrid search, which form t
 
 - **Structured data extraction**: Use the `ai.extract()` pipeline step or the [extract() AI function in the azure_ai extension](ai-functions.md) to pull structured fields (entities, dates, categories) from unstructured text. Extracted data can feed agent tools, power filtering, or populate relational tables alongside your vectors.
 
-- **Knowledge graph construction**: Extract entities and relationships from text and store them as a graph by using Apache AGE, enabling relationship-based queries that complement vector search. For a walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
+- **Knowledge graph construction**: Extract entities and relationships from text and store them as a graph by using Apache AGE, enabling relationship-based queries that complement vector search. For a walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md).
 
 ## Automate with AI pipelines
 
-Rather than running each step manually, you can define a complete data preparation workflow as a durable [AI pipeline](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+Instead of running each step manually, you can define a complete data preparation workflow using the [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 ## Related content
 
-- [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)

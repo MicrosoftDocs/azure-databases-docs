@@ -78,7 +78,7 @@ Here are some possible security services, features, and best practices for the d
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs).
 
-- **SaaS and hosting providers consider configure confidential compute**: If you're a Software as a service (SaaS) or hosting provider and your PostgreSQL workloads involve processing sensitive data, consider using Azure Confidential Computing to protect data in use. This solution provides a more layer of security by ensuring that data is processed in a secure environment, preventing unauthorized access even from privileged users. For more information, visit [Azure Confidential Computing in Azure HorizonDB](security-confidential-computing.md) for more details.
+- **SaaS and hosting providers consider configure confidential compute**: If you're a Software as a service (SaaS) or hosting provider and your PostgreSQL workloads involve processing sensitive data, consider using Azure Confidential Computing to protect data in use. This solution provides a more layer of security by ensuring that data is processed in a secure environment, preventing unauthorized access even from privileged users.
 
 ### Data masking and redaction
 
@@ -109,7 +109,7 @@ Here are some possible security services, features, and best practices for the l
 - Initiative [Enable audit category group resource logging for supported resources to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/InitiativeDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Ff5b29bc4-feca-4cc6-a58a-772dd5e290a5/version/1.1.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D)
 - **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server instance. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
 
-- **Enable audit logging**: Configure audit logging for your PostgreSQL to track and log database activities by using the [pgaudit extension](https://www.pgaudit.org/). For more information, visit [Audit logging in Azure HorizonDB](security-audit.md) for more details.
+- **Enable audit logging**: Configure audit logging for your PostgreSQL to track and log database activities by using the [pgaudit extension](https://www.pgaudit.org/).
 
 ## Backup and recovery
 

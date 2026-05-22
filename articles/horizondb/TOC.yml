@@ -305,7 +305,7 @@
 - name: Generative AI
   items:
     - name: Overview
-      href: ai/overview.md
+      href: ai/ai-overview.md
     - name: AI functions in SQL
       items:
         - name: AI functions (azure_ai)
@@ -352,14 +352,12 @@
       items:
         - name: Overview
           href: ai/ai-agents.md
-        - name: Build an AI agent with Microsoft Foundry and MCP
-          href: ai/foundry-agent-integration.md
         - name: Integrate with LLM orchestration frameworks
           href: ai/ai-frameworks.md
         - name: Develop with LangChain
           href: ai/develop-with-langchain.md
     - name: Samples
-      href: ai/samples.md
+      href: ai/ai-samples.md
 - name: Graph database
   items:
     - name: Overview
@@ -387,7 +385,7 @@
         - name: Configure GitHub Copilot
           href: development/vs-code-extension/vs-code-github-copilot.md
     - name: Durable execution with pg_durable
-      href: development/pg-durable.md
+      href: development/durable-functions.md
 - name: Migration
   items:
     - name: Dump and restore

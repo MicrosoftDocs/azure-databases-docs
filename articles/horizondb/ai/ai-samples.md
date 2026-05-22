@@ -5,6 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
+ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -18,7 +19,7 @@ ms.custom:
 
 # AI and agentic use cases and sample applications (Preview)
 
-Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [AI agent and framework integrations](ai-frameworks.md), [MCP connectivity](foundry-agent-integration.md), and [durable AI pipelines](ai-pipelines.md).
+Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 This article is a starting point for exploring what you can build. Each use case highlights the problem, how an AI application or agent solves it, and which Azure HorizonDB features power the solution.
 
@@ -43,7 +44,7 @@ For a comprehensive hub of app development resources, tutorials, and community c
 
 ### AI copilot for financial research
 
-Financial analysts need fast, accurate answers grounded in earnings reports, SEC filings, and market data, not LLM hallucinations. A RAG copilot retrieves the most relevant passages from your financial document corpus using hybrid search, reranks them for precision, and generates grounded answers with citations.
+Financial analysts need fast, accurate answers grounded in earnings reports, SEC filings, and market data, not LLM-generated incorrect information. A RAG copilot retrieves the most relevant passages from your financial document corpus using hybrid search, reranks them for precision, and generates grounded answers with citations.
 
 > [!TIP]  
 > The [Build your own AI copilot](https://aka.ms/pg-byoac-docs) solution accelerator provides an end-to-end guide for building this pattern with Azure HorizonDB and Azure AI Services.
@@ -64,7 +65,7 @@ Financial services companies process millions of transactions daily. Manual revi
 
 1. Write transactions to partitioned Azure HorizonDB tables with row-level security enabled.
 1. Use Apache AGE to model transaction networks as a graph and detect ring fraud patterns through relationship traversal.
-1. Use the `azure_ai` extension to call Azure Machine Learning models for real-time fraud scoring directly from SQL.
+1. Use the `azure_ai` extension to call Microsoft Foundry models for real-time fraud scoring directly from SQL.
 1. Build an agent with tools for rule evaluation, graph-based anomaly detection, and compliance checks.
 1. Use PostgreSQL triggers to route flagged transactions to a `fraud_alerts` table with confidence scores.
 1. Enable `pg_audit` for a complete compliance trail and connect escalation to your risk team's workflow.
@@ -127,7 +128,11 @@ SaaS companies often learn a customer is leaving only after they cancel. The war
 
 Planning a trip means juggling flights, hotels, restaurants, budgets, and personal preferences all at once. Multiple specialized agents collaborate through shared Azure HorizonDB tables, each owning one domain of the problem, to produce a complete personalized trip plan.
 
-*Example prompt: "Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget."*
+Example prompt: 
+
+```copilot-prompt
+Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget.
+```
 
 | Agent | Role | Shared table |
 | --- | --- | --- |
@@ -212,6 +217,6 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 
 ## Related content
 
-- [What are the AI capabilities in Azure HorizonDB](overview.md)
-- [Build AI agents with Azure HorizonDB](ai-agents.md)
-- [Build a semantic search application](build-semantic-search-app.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](ai-overview.md)
+- [Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)
+- [Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)
