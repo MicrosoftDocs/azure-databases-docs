@@ -290,8 +290,6 @@
           href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
 - name: High availability and resilience
   items:
-    - name: Business continuity
-      href: backup-restore/concepts-business-continuity.md
     - name: High availability and failover
       href: high-availability/concepts-high-availability-failover.md
     - name: How-to guides

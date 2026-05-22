@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure HorizonDB
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -59,9 +59,11 @@ Write-heavy workloads are more likely to change data pages frequently, which res
 For HorizonDB, billable backup storage is calculated as follows:
 
 ``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*```
+
 Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
 
 Deleted HorizonDB databases incur backup costs to support recovery to a point in time before deletion. For a deleted HorizonDB database, billable backup storage is calculated as follows:
+
 ``` *Total billable backup storage size for deleted HorizonDB database = (data storage size + data backup size + WAL archive size) * (remaining backup retention period after deletion / configured backup retention period)*```
 
 Data storage size is included in the formula because allocated database storage isn't billed separately for a deleted database. For a deleted database, data is stored after deletion to enable recovery during the configured backup retention period.

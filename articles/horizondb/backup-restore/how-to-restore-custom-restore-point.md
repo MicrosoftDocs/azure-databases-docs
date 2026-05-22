@@ -4,7 +4,7 @@ description: This article describes how to restore to custom restore point an Az
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -36,26 +36,26 @@ Using the [Azure portal](https://portal.azure.com/):
 
 2. In the resource menu, select **Overview** and select the **Restore** button.
 
-    :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
+    :::image type="content" source="./media/how-to-restore-custom-restore-point/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-custom-restore-point/overview.png":::
 
 3. You're redirected to the **Create Azure HorizonDB  - Restore** wizard, where you can configure settings for the new cluster being created. In the **Point-in-time-restore (PITR)** section, select **Select a custom restore point**  and then choose a restore date and time from the calendar based on your requirements. The most recent available restore point is always at least 5 minutes behind the current time.
 
-    :::image type="content" source="./media/how-to-restore-server/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-server/custom-restore-point.png":::
+    :::image type="content" source="./media/how-to-restore-custom-restore-point/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-custom-restore-point/custom-restore-point.png":::
 
 > [!NOTE]  
 > During Preview, point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
 
 4. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server's settings, you can skip this step.
 
-     :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
+     :::image type="content" source="./media/how-to-restore-custom-restore-point/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-custom-restore-point/configure-server-page.png":::
 
 5. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
-      :::image type="content" source="./media/how-to-restore-server/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-server/restore-point-review-create.png":::
+      :::image type="content" source="./media/how-to-restore-custom-restore-point/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/how-to-restore-custom-restore-point/restore-point-review-create.png":::
 
 6. A new deployment is initiated to create a new Azure HorizonDB and restore it using the most recent data available.
 
-      :::image type="content" source="./media/how-to-restore-server/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB." lightbox="./media/how-to-restore-server/restore-point-deployment-progress.png":::
+      :::image type="content" source="./media/how-to-restore-custom-restore-point/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB." lightbox="./media/how-to-restore-custom-restore-point/restore-point-deployment-progress.png":::
 
 7. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB, and start using it.
 

@@ -4,7 +4,7 @@ description: Learn about the concepts of business continuity with an Azure Horiz
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 05/22/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article
@@ -60,15 +60,15 @@ In the event of Azure HorizonDB cluster outage, you can see more details related
 
 * **Azure portal banner**: If your subscription is affected, Azure posts a service issue alert in the **Notifications** section of the Azure portal.
 
-    :::image type="content" source="./media/business-continuity/notification-service-issue-example.png" alt-text=" Screenshot showing notifications in Azure portal.":::
+    :::image type="content" source="./media/concepts-backup-restore/notification-service-issue-example.png" alt-text="Screenshot showing notifications in Azure portal.":::
 
 * **Help + support** or **Support + troubleshooting**: When you create a support request from *Help + support* or *Support + troubleshooting*, Azure displays any known issues that impact your resources. Select *View outage details* to see more information and a summary of the impact. An alert also appears on the New support request page.
 
-    :::image type="content" source="./media/business-continuity/help-support-service-health-notification.png" alt-text=" Screenshot showing Help Support notifications in Azure portal.":::
+    :::image type="content" source="./media/concepts-backup-restore/help-support-service-health-notification.png" alt-text="Screenshot showing Help Support notifications in Azure portal.":::
 
 *  **Service Help**: *Service Health* page in the Azure portal provides a personalized view of the health status of Azure services across regions that affect your resources. To open the page, search for **Service Health** in the Azure portal. In the **Active events** section, review **Service issues** to see ongoing problems that affect your resources. You can also check the health of individual resources on the **Resource health** page for each resource under **Help**. The following example shows the **Service Health** page displaying an active service issue in Southeast Asia.
 
-     :::image type="content" source="./media/business-continuity/service-health-service-issues-example-map.png" alt-text=" Screenshot showing service outage in Service Health portal.":::
+     :::image type="content" source="./media/concepts-backup-restore/service-health-service-issues-example-map.png" alt-text="Screenshot showing service outage in Service Health portal.":::
 
 *  **Email notification**: If you have configured alerts, Azure sends an email notification when a service outage affects your subscription or resources. The email is sent from "azure-noreply@microsoft.com"and includes details about the service issue. The email message begins with a standard notification indicating that an activity log alert was triggered by a service issue for your Azure subscription. For more information see, Azure Service Health documentation  [Receive activity log alerts on Azure service notifications using Azure portal](/azure/service-health/alerts-activity-log-service-notifications-portal).
 
