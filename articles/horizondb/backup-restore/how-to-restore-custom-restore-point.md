@@ -1,5 +1,5 @@
 ---
-title: Point in time restore in Azure HorizonDB
+title: Point in Time Restore in Azure HorizonDB
 description: This article describes how to restore to custom restore point an Azure HorizonDB.
 author: kabharati
 ms.author: kabharati
@@ -7,11 +7,12 @@ ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
-ms.topic: concept-article
-#customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
+ms.topic: how-to
+# customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
 # Restore in Azure HorizonDB (preview)
+
 This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
 
 Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB service restores a database to any point in time within the configured retention period using the following process:
@@ -33,7 +34,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
 
-2. In the resource menu, select **Overview** and click the **Restore** button.
+2. In the resource menu, select **Overview** and select the **Restore** button.
 
     :::image type="content" source="./media/how-to-restore-server/overview.png" alt-text="Screenshot showing the Overview page." lightbox="./media/how-to-restore-server/overview.png":::
 
@@ -41,14 +42,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-restore-server/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="./media/how-to-restore-server/custom-restore-point.png":::
 
- 
-> [!NOTE]
+> [!NOTE]  
 > During Preview, point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
 
-4. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server’s settings, you can skip this step.
+4. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server's settings, you can skip this step.
 
      :::image type="content" source="./media/how-to-restore-server/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/how-to-restore-server/configure-server-page.png":::
-    
 
 5. Review that all configurations for the new deployment are correctly set, and select **Create**.
 
@@ -60,9 +59,6 @@ Using the [Azure portal](https://portal.azure.com/):
 
 7. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB, and start using it.
 
-  
-
 ## Related content
 
-- [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
-
+- [Backups in Azure HorizonDB (preview)](concepts-backup-restore.md)

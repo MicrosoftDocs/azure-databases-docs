@@ -10,14 +10,12 @@
       href: release-notes/release-notes.md
 - name: Create and connect
   items:
-    - name: Concepts
-      items:
-        - name: Connection endpoints
-          href: connectivity/concepts-connection-endpoints.md
-        - name: Connection libraries
-          href: connectivity/concepts-connection-libraries.md
-        - name: Connection pooling best practices
-          href: connectivity/concepts-connection-pooling-best-practices.md
+    - name: Connection endpoints
+      href: connectivity/concepts-connection-endpoints.md
+    - name: Connection libraries
+      href: connectivity/concepts-connection-libraries.md
+    - name: Connection pooling best practices
+      href: connectivity/concepts-connection-pooling-best-practices.md
     - name: How-to guides
       items:
         - name: Create a HorizonDB cluster
@@ -42,6 +40,12 @@
       items:
         - name: Request a quota increase
           href: configure-maintain/how-to-request-quota-increase.md
+        - name: Deploy with Azure Pipelines
+          href: configure-maintain/azure-pipelines-deploy-database-task.md
+        - name: Copy activity in Microsoft Fabric Data Factory
+          href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
+        - name: Script activity in Microsoft Fabric Data Factory
+          href: configure-maintain/how-to-data-factory-script-activity-fabric.md
     - name: Compute replicas
       items:
         - name: How-to guides
@@ -216,7 +220,7 @@
               href: extensions/concepts-extensions-versions.md
             - name: List by version of PostgreSQL
               href: extensions/concepts-extensions-by-engine.md
-        - name: Troubleshooting
+        - name: Troubleshoot
           items:
             - name: Possible errors when managing extensions
               href: extensions/errors-extensions.md
@@ -244,10 +248,8 @@
               href: security/security-reset-admin-password.md
     - name: Transport Layer Security (TLS)
       items:
-        - name: Concepts
-          items:
-            - name: TLS overview
-              href: security/security-tls.md
+        - name: TLS overview
+          href: security/security-tls.md
         - name: How-to guides
           items:
             - name: Connect clients with TLS
@@ -276,30 +278,22 @@
       href: monitor/concepts-query-store-best-practices.md
 - name: Networking
   items:
-    - name: Concepts
-      items:
-        - name: Public access
-          href: network/concepts-networking-public.md
-        - name: Networking overview
-          href: network/how-to-networking.md
+    - name: Public access
+      href: network/concepts-networking-public.md
+    - name: Networking overview
+      href: network/how-to-networking.md
     - name: How-to guides
       items:
-        - name: Enable public access
-          href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-        - name: Disable public access
-          href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
         - name: Add firewall rules
           href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
         - name: Delete firewall rules
           href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
 - name: High availability and resilience
   items:
-    - name: Concepts
-      items:
-        - name: Business continuity
-          href: backup-restore/concepts-business-continuity.md
-        - name: High availability and failover
-          href: high-availability/concepts-high-availability-failover.md
+    - name: Business continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: High availability and failover
+      href: high-availability/concepts-high-availability-failover.md
     - name: How-to guides
       items:
         - name: Configure high availability
@@ -308,10 +302,8 @@
           href: high-availability/how-to-monitor-high-availability.md
 - name: Backup and restore
   items:
-    - name: Concepts
-      items:
-        - name: Backup and restore
-          href: backup-restore/concepts-backup-restore.md
+    - name: Backup and restore
+      href: backup-restore/concepts-backup-restore.md
     - name: How-to guides
       items:
         - name: Restore to a custom restore point
