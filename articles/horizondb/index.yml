@@ -44,8 +44,6 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Business continuity overview
-      url: backup-restore/concepts-business-continuity.md
     - text: High availability
       url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
     - text: Back up and restore
@@ -89,12 +87,8 @@ landingContent:
     links:
     - text: Server parameters
       url: server-parameters/concepts-server-parameters.md
-    - text: Identity and access management
-      url: security/security-managed-identity-overview.md
     - text: Extensions
       url: extensions/concepts-extensions.md
-    - text: Monitor
-      url: monitor/concepts-monitoring.md
     - text: Scheduled maintenance
       url: configure-maintain/concepts-maintenance.md
     - text: Data Encryption
@@ -103,58 +97,6 @@ landingContent:
       url: https://learn.microsoft.com/rest/api/postgresql/
 
 # Card 5
-
-- title: Migrate to Azure HorizonDB (offline)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Migration Service overview
-      url: migrate/migration-service/overview-migration-service-postgresql.md
-    - text: Pre-Migration Validation
-      url: migrate/migration-service/concepts-premigration-migration-service.md
-  - linkListType: tutorial
-    links:
-    - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
-      url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-    - text: Migrate (Offline) from Amazon RDS
-      url: /azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-offline
-    - text: Migrate (Offline) from Amazon Aurora
-      url: migrate/migration-service/tutorial-migration-service-aurora-offline.md
-    - text: Migrate (Offline) from Google Cloud SQL for PostgreSQL
-      url: migrate/migration-service/tutorial-migration-service-cloud-sql-offline.md
-    - text: Migrate (Offline) from Google AlloyDB for PostgreSQL
-      url: migrate/migration-service/tutorial-migration-service-alloy-db-offline.md
-    - text: Migrate (Offline) from EDB Extended server
-      url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-offline.md
-
-# Card 6
-
-- title: Migrate to Azure HorizonDB (online)
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Migration Service overview
-      url: migrate/migration-service/overview-migration-service-postgresql.md
-    - text: Pre-Migration Validation
-      url: migrate/migration-service/concepts-premigration-migration-service.md
-  - linkListType: tutorial
-    links:
-    - text: Migrate (Offline) from an Azure VM or on-premises PostgreSQL server
-      url: migrate/migration-service/tutorial-migration-service-iaas-offline.md
-    - text: Migrate (Online) from an Azure VM or on-premises PostgreSQL server
-      url: migrate/migration-service/tutorial-migration-service-iaas-online.md
-    - text: Migrate (Online) from Amazon RDS
-      url: /azure/postgresql/migrate/migration-service/tutorial-migration-service-rds-online
-    - text: Migrate (Online) from Amazon Aurora
-      url: migrate/migration-service/tutorial-migration-service-aurora-online.md
-    - text: Migrate (Online) from Google Cloud SQL for PostgreSQL
-      url: migrate/migration-service/tutorial-migration-service-cloud-sql-online.md
-    - text: Migrate (Online) from Google AlloyDB for PostgreSQL
-      url: migrate/migration-service/tutorial-migration-service-alloy-db-online.md
-    - text: Migrate (Online) from EDB Extended server
-      url: migrate/migration-service/tutorial-migration-service-enterprise-db-extended-server-online.md
-
-# Card 7
 
 - title: Additional Resources
   linkLists:

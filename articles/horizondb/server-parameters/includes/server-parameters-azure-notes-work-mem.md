@@ -27,9 +27,6 @@ Unlike shared buffers, which are in the shared memory area, `work_mem` is alloca
 
 It's essential to continuously monitor your system's performance and adjust `work_mem` as necessary, primarily if query execution times related to sorting or hashing operations are slow. Here are ways to monitor performance by using tools available in the Azure portal:
 
-- [Query Performance Insight in Azure HorizonDB](../../monitor/concepts-query-performance-insight.md): Check the **Top queries by temporary files** tab to identify queries that are generating temporary files. This situation suggests a potential need to increase `work_mem`.
-- [Troubleshooting guides overview in Azure HorizonDB](../../troubleshoot/concepts-troubleshooting-guides.md): Use the **High temporary files** tab in the troubleshooting guides to identify problematic queries.
-
 ##### Granular adjustment
 
 While you're managing the `work_mem` parameter, it's often more efficient to adopt a granular adjustment approach rather than setting a global value. This approach ensures that you allocate memory judiciously based on the specific needs of processes and users. It also minimizes the risk of encountering out-of-memory issues. Here's how you can go about it:

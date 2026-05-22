@@ -322,7 +322,6 @@ The 'active' column in the `pg_replication_slots` view indicates whether there's
 ```sql
 SELECT * FROM pg_replication_slots;
 ```
-[Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md) on the **Maximum Used Transaction IDs** and **Storage Used** metrics to notify you when the values increase past normal thresholds.
 
 ## Limitations
 
@@ -337,6 +336,5 @@ SELECT * FROM pg_replication_slots;
 
 - [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
 - [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-networking-public.md)
-- [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md)
 - [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
 - [High availability in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server)

@@ -24,7 +24,7 @@ Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing
 
 ## Authentication
 
-Azure HorizonDB supports password-based and [Microsoft Entra authentication ](../security/security-entra-concepts.md).
+Azure HorizonDB supports password-based and Microsoft Entra authentication.
 
 Microsoft Entra authentication allows you to use Microsoft Entra ID to authenticate to your PostgreSQL server. Microsoft Entra ID eliminates the need to manage separate usernames and passwords for your database users. It allows you to use the same security mechanisms that you use for other Azure services.
 

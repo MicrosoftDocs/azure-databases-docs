@@ -27,10 +27,6 @@ The Network Security section guides you through preventing public access and usi
 
 - **Disable public network access**: Disable public network access for your PostgreSQL to prevent exposure to the internet. This action ensures that only trusted networks can access your database.
 
-- **Private Endpoints**: Use [Networking with Private Link in Azure HorizonDB](../network/concepts-networking-private-link.md) to securely connect to your PostgreSQL from within your virtual network.
-
-- **Alternatively, use virtual network integration**: [Network with private access (virtual network integration) in Azure HorizonDB](../network/concepts-networking-private.md) to connect your PostgreSQL to your virtual network. This integration allows secure access from your Azure resources and from the server to resources consumed, such as AI.
-
 - **Legacy firewall rules and service endpoints**: If you need to allow access from specific IP addresses, use [legacy firewall rules and service endpoints](../network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md). However, this approach isn't recommended. Instead, prefer using private endpoints or virtual network integration.
 
 Network security articles are in the networking sections:
@@ -50,7 +46,7 @@ The access control section focuses on securing the level of access based on the 
 
 Here are some possible security services, features, and best practices for the access control section:
 
-- **Use Entra roles for access control**: Implement Azure Role-Based Access Control (Role-Based Access Control (RBAC) to manage access to Azure HorizonDB resources. Assign roles based on the principle of least privilege, ensuring users and applications have only the permissions they need. For more information, visit [Azure Role Based Access Control (RBAC)](/azure/role-based-access-control/overview) in general and [Manage Microsoft Entra roles in Azure HorizonDB](security-manage-entra-users.md).
+- **Use Entra roles for access control**: Implement Azure Role-Based Access Control (Role-Based Access Control (RBAC) to manage access to Azure HorizonDB resources. Assign roles based on the principle of least privilege, ensuring users and applications have only the permissions they need. For more information, visit [Azure Role Based Access Control (RBAC)](/azure/role-based-access-control/overview) in general.
 
 - **Follow Entra best practices**: Utilize MFA, [Conditional Access policies](/entra/identity/conditional-access/overview), just in time (JIT) access to protect your users and databases.
 
@@ -123,10 +119,13 @@ Here are some possible security services, features, and best practices for the b
 
 - **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md).
 
-- **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure. For more information, visit [Read replicas in Azure HorizonDB](../read-replica/concepts-read-replicas.md).
+- **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure.
 
 - **Protect backup data with customer-managed key encryption**: Secure your backup data by using encryption at rest.
 
 ## Related content
 
+- [What is Azure HorizonDB?](../overview.md)
+- [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
+- [Networking in Azure HorizonDB](../network/how-to-networking.md)
 - [Azure security baseline for Azure HorizonDB](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)

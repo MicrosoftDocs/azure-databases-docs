@@ -36,4 +36,3 @@ The `pg_qs.retention_period_in_days` parameter specifies the data retention peri
 
 - [Query store in Azure HorizonDB](concepts-query-store.md)
 - [Usage scenarios for query store in Azure HorizonDB](concepts-query-store-scenarios.md)
-- [Query Performance Insight in Azure HorizonDB](concepts-query-performance-insight.md)

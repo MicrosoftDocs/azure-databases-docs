@@ -55,5 +55,4 @@ The Azure HorizonDB support team processes all quota requests in 24-48 hours.
 
 ## Related content
 
-- [Manage Azure HorizonDB using the Azure portal](how-to-manage-server-portal.md)
-- [Limits in Azure HorizonDB](concepts-limits.md)
+- [Create a HorizonDB cluster](quickstart-create-cluster.md)

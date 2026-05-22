@@ -62,7 +62,7 @@ To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to
 
 The [`dblink`](https://www.postgresql.org/docs/current/contrib-dblink-function.html) extension allows you to connect from one Azure HorizonDB instance to another or another database in the same server. Azure HorizonDB supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-If you plan to use this extension, we recommend deploying your servers with {[virtual network integration](../network/concepts-networking-private.md)}. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
+If you plan to use this extension, we recommend deploying your servers with virtual network integration. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
 ### pg_buffercache
 
@@ -203,7 +203,7 @@ There's a tradeoff between the query execution information the `pg_stat_statemen
 
 The [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) extension allows you to connect from one Azure HorizonDB instance to another or another database in the same server. Azure HorizonDB supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-If you plan to use this extension, we recommend deploying your servers with {[virtual network integration](../network/concepts-networking-private.md)}. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
+If you plan to use this extension, we recommend deploying your servers with virtual network integration. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
 ### pgstattuple
 
@@ -249,8 +249,6 @@ To do so, follow these steps:
 More details on these utilities can be found [here](https://github.com/timescale/timescaledb-backup).
 
 ## Extensions and major version upgrade
-
-Azure HorizonDB offers an {[in-place major version upgrade feature](../configure-maintain/concepts-major-version-upgrade.md)} that performs an in-place upgrade of the Azure HorizonDB instance, with just a simple interaction from the user. In-place major version upgrade simplifies the Azure HorizonDB upgrade process, minimizing the disruption to users and applications accessing the server. In-place major version upgrades don't support specific extensions, and there are some limitations to upgrading certain extensions.
 
 The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure HorizonDB instance versions when using in-place major version update feature.
 
