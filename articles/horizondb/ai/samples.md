@@ -44,7 +44,7 @@ For a comprehensive hub of app development resources, tutorials, and community c
 
 ### AI copilot for financial research
 
-Financial analysts need fast, accurate answers grounded in earnings reports, SEC filings, and market data, not LLM hallucinations. A RAG copilot retrieves the most relevant passages from your financial document corpus using hybrid search, reranks them for precision, and generates grounded answers with citations.
+Financial analysts need fast, accurate answers grounded in earnings reports, SEC filings, and market data, not LLM-generated incorrect information. A RAG copilot retrieves the most relevant passages from your financial document corpus using hybrid search, reranks them for precision, and generates grounded answers with citations.
 
 > [!TIP]  
 > The [Build your own AI copilot](https://aka.ms/pg-byoac-docs) solution accelerator provides an end-to-end guide for building this pattern with Azure HorizonDB and Azure AI Services.
