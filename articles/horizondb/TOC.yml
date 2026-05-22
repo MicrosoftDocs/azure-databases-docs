@@ -394,12 +394,8 @@
           href: migrate/how-to-migrate-using-dump-and-restore.md
 - name: Reference
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
     - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager template
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+      href: /rest/api/horizondb
 - name: Resources
   items:
     - name: Pricing
