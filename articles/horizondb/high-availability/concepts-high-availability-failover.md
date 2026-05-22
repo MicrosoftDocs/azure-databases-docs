@@ -1,5 +1,5 @@
 ---
-title: High availability and failover concepts in Azure HorizonDB
+title: High Availability and Failover Concepts in Azure HorizonDB
 description: Learn about high availability architecture, zone redundancy, failover processes, and recovery behavior in Azure HorizonDB.
 author: kabharati
 ms.author: kabharati
@@ -13,7 +13,7 @@ ai-usage: ai-assisted
 
 # High availability and failover in Azure HorizonDB (preview)
 
-For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. Azure HorizonDB addresses these requirements through a high availability architecture that takes advantage of its disaggregated compute and storage design. Unlike traditional PostgreSQL deployments that rely on streaming replication between independent servers, Azure HorizonDB uses a shared, zone-resilient storage layer that all compute replicas access directly. This approach fundamentally changes how failover works — eliminating the need for WAL catch-up, reducing failover time, and guaranteeing that committed transactions are never lost.
+For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. Azure HorizonDB addresses these requirements through a high availability architecture that takes advantage of its disaggregated compute and storage design. Unlike traditional PostgreSQL deployments that rely on streaming replication between independent servers, Azure HorizonDB uses a shared, zone-resilient storage layer that all compute replicas access directly. This approach fundamentally changes how failover works - eliminating the need for WAL catch-up, reducing failover time, and guaranteeing that committed transactions are never lost.
 
 This article explains the HA architecture, how failover works, and what to expect during both planned and unplanned failover events.
 
@@ -31,8 +31,8 @@ When HA is enabled, an Azure HorizonDB cluster runs at least two compute replica
 Unlike traditional PostgreSQL replication, Azure HorizonDB doesn't stream WAL from the primary to standby replicas for data durability. Instead, the architecture relies on a shared storage layer:
 
 - The **WAL service** accepts write-ahead log records from the primary compute replica and persists them durably across zones before acknowledging the transaction.
-- The **data storage fleet** applies WAL asynchronously to reconstruct page state, with multiple copies of each data shard stored across zones.
-- **Azure Blob storage** provides the underlying durability layer for both data and WAL archival.
+- The **data storage fleet** asynchronously applies WAL records to reconstruct page state, with each data shard replicated across multiple availability zones for resilience.
+- Azure Blob storage provides the underlying durability layer for both data and WAL archival.
 
 Because all replicas share the same underlying storage, standby replicas don't need to replay a full WAL stream to stay current. Each replica maintains its own local NVMe cache for hot pages, and reads the latest committed data directly from the shared storage layer. This shared-storage model eliminates replication lag for committed data and enables fast failover without log rewinding.
 
@@ -63,7 +63,7 @@ Because all replicas share the same durable storage, the promoted standby doesn'
 
 ### Planned failover
 
-Planned failover is initiated by the service during maintenance operations such as:
+The service initiates planned failover during maintenance operations, such as:
 
 - Minor version upgrades
 - Security patches
@@ -71,22 +71,22 @@ Planned failover is initiated by the service during maintenance operations such 
 
 During a planned failover, the service follows a controlled sequence:
 
-1. **Drain** - Active transactions on the primary are allowed to complete. New connections might be temporarily held.
+1. **Drain** - Active transactions on the primary complete. The service might temporarily hold new connections.
 1. **Checkpoint** - The primary performs a final checkpoint to ensure all recent changes are persisted.
-1. **Promotion** - A standby replica is promoted to primary.
+1. **Promotion** - The service promotes a standby Hyper-V Replica to primary.
 1. **Endpoint update** - The read-write endpoint switches to the new primary.
 
-Planned failovers typically complete faster than unplanned failovers because the primary has time to flush its state before the switch occurs.
+Planned failovers typically complete faster than unplanned failovers because the primary flushes its state before the switch.
 
 ## Recovery behavior
 
-After a failover completes, the promoted standby replica takes over as the new primary and begins serving read-write traffic. Because all replicas share the same durable storage layer, recovery is significantly faster than in traditional PostgreSQL deployments where a standby must replay a full WAL stream before it can accept connections.
+After a failover completes, the promoted standby Replica takes over as the new primary and begins serving read-write traffic. Because all Replicas share the same durable storage layer, recovery is faster than in traditional PostgreSQL deployments where a standby must replay a full WAL stream before it can accept connections.
 
 ### Recovery time
 
 The recovery time for a failover depends on:
 
-- **WAL replay on the promoted replica** - The standby must apply any WAL not yet reflected in its local cache. Because the storage layer is shared, this is typically a small amount of data.
+- **WAL replay on the promoted replica** - The standby must apply any WAL changes that aren't yet reflected in its local cache. Because the storage layer is shared, this is typically a small amount of data.
 - **Endpoint propagation** - DNS and endpoint updates to redirect traffic to the new primary.
 - **Client reconnection** - Applications must detect the dropped connection and reconnect.
 
@@ -94,13 +94,13 @@ In most cases, failover completes within seconds to a few minutes. Applications 
 
 ### Data durability during failover
 
-Azure HorizonDB guarantees that committed transactions aren't lost during failover. The WAL service persists every committed transaction durably across zones before acknowledging it to the client. Since all replicas read from the same durable storage, the promoted standby has access to every committed write.
+Azure HorizonDB guarantees that committed transactions aren't lost during failover. The WAL service persists every committed transaction durably across zones before acknowledging it to the client. Because all replicas read from the same durable storage, the promoted standby has access to every committed write.
 
-Transactions that were in progress but not yet committed at the time of failover are rolled back, consistent with standard PostgreSQL ACID behavior.
+Transactions that are in progress but not yet committed at the time of failover are rolled back, consistent with standard PostgreSQL ACID behavior.
 
 ## High availability compared to compute replicas
 
-It's important to understand the relationship between HA and compute replicas in Azure HorizonDB:
+The following table compares compute replicas without HA to zone-redundant HA:
 
 | Capability | Compute replicas (without HA) | Zone-redundant HA |
 | --- | --- | --- |
@@ -132,7 +132,7 @@ During the public preview, the following HA-related limitations apply:
 
 ## Related content
 
-- [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
-- [Configure high availability in Azure HorizonDB](how-to-configure-high-availability.md)
-- [Monitor high availability health status in Azure HorizonDB](how-to-monitor-high-availability.md)
-- [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
+- [Overview of business continuity in Azure HorizonDB (preview)](../backup-restore/concepts-business-continuity.md)
+- [Configure high availability in Azure HorizonDB (preview)](how-to-configure-high-availability.md)
+- [High Availability (HA) health status monitoring in Azure HorizonDB](how-to-monitor-high-availability.md)
+- [Backups in Azure HorizonDB (preview)](../backup-restore/concepts-backup-restore.md)
