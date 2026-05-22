@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Use Python to Connect and Query Data in Azure HorizonDB"
-description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB instance.
-author: avnishrastogimsft
-ms.author: avrastog
+description: This quickstart provides several Python code samples you can use to connect and query data from an Azure HorizonDB cluster.
+author: scoriani
+ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -21,29 +21,22 @@ ms.devlang: "python"
 
 In this quickstart, you connect to an Azure HorizonDB instance by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
 
-The steps in this article include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
+The steps in this article include PostgreSQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure HorizonDB using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management. To learn more, see [Microsoft Entra authentication in Azure HorizonDB](../security/security-entra-concepts.md).
-
-PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials are stored in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords by yourself.
+PostgreSQL authentication uses accounts stored in PostgreSQL and you need to manage the rotation of the passwords by yourself.
 
 This article assumes that you're familiar with developing using Python, but you're new to working with Azure HorizonDB.
 
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An Azure HorizonDB instance. To create Azure HorizonDB instance, refer to [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-server.md).
+- An Azure HorizonDB cluster. To create Azure HorizonDB cluster, refer to [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure HorizonDB instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure HorizonDB instance. Refer to [Networking in Azure HorizonDB](../network/how-to-networking.md).
-- If you created your Azure HorizonDB instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking in Azure HorizonDB](../network/how-to-networking.md).
-
-## Configure Microsoft Entra integration on the server (passwordless only)
-
-If you're following the steps for passwordless authentication, Microsoft Entra authentication must be configured for your server instance, and you must be assigned as a Microsoft Entra administrator on the server instance. Follow the steps in [How to use Microsoft Entra ID for authentication in Azure HorizonDB](../security/security-entra-configure.md) to ensure that Microsoft Entra authentication is configured and that you're assigned as a Microsoft Entra administrator on your server instance.
+- If you created your Azure HorizonDB cluster with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your cluster. Refer to [Networking in Azure HorizonDB](../network/how-to-networking.md).
 
 ## Prepare your development environment
 
@@ -74,18 +67,6 @@ source .venv/bin/activate
 
 Install the Python libraries needed to run the code examples.
 
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-Install the [azure-identity](https://pypi.org/project/azure-identity/) library, which provides Microsoft Entra token authentication support across the Azure SDK.
-
-```bash
-# Use the interpreter-bound pip to ensure installs go into the active venv/interpreter
-python -m pip install --upgrade pip
-python -m pip install azure-identity azure-keyvault-secrets
-```
-
-#### [Password](#tab/password)
-
 Install the [psycopg](https://pypi.org/project/psycopg/) module, which enables connecting to and querying a PostgreSQL database.
 
 ```bash
@@ -98,96 +79,18 @@ sudo apt-get install -y libpq-dev build-essential python3-dev
 python -m pip install psycopg
 ```
 
----
-
 ## Add authentication code
 
-In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server instance.
+In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your cluster instance.
 
 Before you add the authentication code, make sure the required packages for each example are installed.
 
 Required packages (examples in this article):
 
-- Passwordless example: `azure-identity`, `azure-keyvault-secrets` (if you use Key Vault)
 - Password example: `psycopg` (recommended: `python -m pip install "psycopg[binary]"`)
 
 Optional: create a `requirements.txt` with these entries and install with `python -m pip install -r requirements.txt` for reproducible installs.
 
-#### [Passwordless (Recommended)](#tab/passwordless)
-
-1. Copy the following code into an editor and save it in a file named *get_conn.py*.
-
-   ```python
-   import urllib.parse
-   import os
-
-   from azure.identity import DefaultAzureCredential
-
-   # IMPORTANT! This code is for demonstration purposes only. It's not suitable for use in production.
-   # For example, tokens issued by Microsoft Entra ID have a limited lifetime (24 hours by default).
-   # In production code, you need to implement a token refresh policy.
-
-   def get_connection_uri():
-
-       # Read URI parameters from the environment
-       dbhost = os.environ['DBHOST']
-       dbname = os.environ['DBNAME']
-       dbuser = urllib.parse.quote(os.environ['DBUSER'])
-       sslmode = os.environ['SSLMODE']
-
-       # Use passwordless authentication via DefaultAzureCredential.
-       # IMPORTANT! This code is for demonstration purposes only. DefaultAzureCredential() is invoked on every call.
-       # In practice, it's better to persist the credential across calls and reuse it so you can take advantage of token
-       # caching and minimize round trips to the identity provider. To learn more, see:
-       # https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/identity/azure-identity/TOKEN_CACHING.md
-       credential = DefaultAzureCredential()
-
-       # Call get_token() to get a token from Microsft Entra ID and add it as the password in the URI.
-       # Note the requested scope parameter in the call to get_token, "https://ossrdbms-aad.database.windows.net/.default".
-       password = credential.get_token("https://ossrdbms-aad.database.windows.net/.default").token
-
-       db_uri = f"postgresql://{dbuser}:{password}@{dbhost}/{dbname}?sslmode={sslmode}"
-       return db_uri
-   ```
-
-1. Get database connection information.
-
-   1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure HorizonDB instance name.
-   1. On the server's **Overview** page, copy the fully qualified **Server name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
-   1. On the left menu, under **Security**, select **Authentication**. Make sure your account is listed under **Microsoft Entra Admins**. If it isn't, complete the steps in [Configure Microsoft Entra integration on the server (passwordless only)](#configure-microsoft-entra-integration-on-the-server-passwordless-only).
-
-1. Set environment variables for the connection URI elements:
-
-   ### [Windows](#tab/cmd)
-
-   ```cmd
-   set DBHOST=<server-name>
-   set DBNAME=<database-name>
-   set DBUSER=<username>
-   set SSLMODE=require
-   ```
-
-   ### [macOS/Linux](#tab/bash)
-
-   ```bash
-   export DBHOST=<server-name>
-   export DBNAME=<database-name>
-   export DBUSER=<username>
-   export SSLMODE=require
-   ```
-
-   Replace the following placeholder values in the commands:
-
-   - `<server-name>` with the value you copied from the Azure portal.
-   - `<username>` with your Azure user name; for example: `john@contoso.com`.
-   - `<database-name>` with the name of your Azure HorizonDB database. A default database named *postgres* was automatically created when you created your server. You can use that database or create a new database by using SQL commands.
-
-1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI.
-
-   The authentication code uses [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential) to authenticate with Microsoft Entra ID and get a token that authorizes you to perform operations on your server instance. `DefaultAzureCredential` supports a chain of authentication credential types. Among the credentials supported are credentials that you're signed in to developer tools with like the Azure CLI, Azure PowerShell, or Azure Developer CLI.
-
-#### [Password](#tab/password)
-
 1. Copy the following code into an editor and save it in a file named *get_conn.py*.
 
    ```python
@@ -196,30 +99,30 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
    def get_connection_uri():
 
-       # Read URI parameters from the environment
-       dbhost = os.environ['DBHOST']
-       dbname = os.environ['DBNAME']
-       dbuser = urllib.parse.quote(os.environ['DBUSER'])
+      # Read URI parameters from the environment
+      dbhost = os.environ['DBHOST']
+      dbname = os.environ['DBNAME']
+      dbuser = urllib.parse.quote(os.environ['DBUSER'])
    password = os.environ['DBPASSWORD']
    sslmode = os.environ['SSLMODE']
    db_uri = f"host={dbhost} dbname={dbname} user={dbuser} password={password} sslmode={sslmode}"
-       # Construct connection URI
-       return db_uri
+      # Construct connection URI
+      return db_uri
    ```
 
 1. Get database connection information.
 
    Using the [Azure portal](https://portal.azure.com/):
 
-   1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created.
+   1. From the left-hand menu in Azure portal, select **All resources**, and then search for the cluster you have created.
 
-   1. Select the server name.
+   1. Select the cluster name.
 
    1. In the resource menu, select **Overview**.
 
       :::image type="content" source="media/connect-python/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect-python/overview.png":::
 
-   1. Copy the values shown as **Endpoint** and **Administrator login**.
+   1. Copy the value shown as **Endpoint**.
 
       :::image type="content" source="media/connect-python/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect-python/endpoint-administrator-login.png":::
 
@@ -232,7 +135,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
    ### [Windows](#tab/cmd)
 
    ```cmd
-   set DBHOST=<server-name>
+   set DBHOST=<cluster-name>
    set DBNAME=<database-name>
    set DBUSER=<username>
    set DBPASSWORD=<password>
@@ -242,14 +145,12 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
    ### [macOS/Linux](#tab/bash)
 
    ```bash
-   export DBHOST=<server-name>
+   export DBHOST=<cluster-name>
    export DBNAME=<database-name>
    export DBUSER=<username>
    export DBPASSWORD=<password>
    export SSLMODE=require
    ```
-
-   ---
 
 ---
 
@@ -267,7 +168,7 @@ For each code example in this article:
 
 ## Create a table and insert data
 
-The following code example connects to your Azure HorizonDB database using the `psycopg.connect` function, and loads data with a SQL `INSERT` statement. The `cursor.execute` function executes the SQL query against the database.
+The following code example connects to your Azure HorizonDB cluster using the `psycopg.connect` function, and loads data with a SQL `INSERT` statement. The `cursor.execute` function executes the SQL query against the database.
 
 ```python
 import psycopg
@@ -310,7 +211,7 @@ Inserted 3 rows of data
 
 ## Read data
 
-The following code example connects to your Azure HorizonDB database and uses cursor.execute with the SQL `SELECT` statement to read data. This function accepts a query and returns a result set to iterate over by using cursor.fetchall().
+The following code example connects to your Azure HorizonDB cluster and uses cursor.execute with the SQL `SELECT` statement to read data. This function accepts a query and returns a result set to iterate over by using cursor.fetchall().
 
 ```python
 import psycopg
@@ -347,7 +248,7 @@ Data row = (3, apple, 100)
 
 ## Update data
 
-The following code example connects to your Azure HorizonDB database and uses cursor.execute with the SQL `UPDATE` statement to update data.
+The following code example connects to your Azure HorizonDB cluster and uses cursor.execute with the SQL `UPDATE` statement to update data.
 
 ```python
 import psycopg
@@ -371,7 +272,7 @@ conn.close()
 
 ## Delete data
 
-The following code example connects to your Azure HorizonDB database and uses cursor.execute with the SQL `DELETE` statement to delete an inventory item that you previously inserted.
+The following code example connects to your Azure HorizonDB cluster and uses cursor.execute with the SQL `DELETE` statement to delete an inventory item that you previously inserted.
 
 ```python
 import psycopg
@@ -397,7 +298,4 @@ conn.close()
 
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
 - [Quickstart: Use .NET (C#) to connect and query data in Azure HorizonDB](connect-csharp.md)
-- [Quickstart: Use Go language to connect and query data in Azure HorizonDB](connect-go.md)
-- [Quickstart: Use PHP to connect and query data in Azure HorizonDB](connect-php.md)
-- [Quickstart: Connect and query with Azure CLI in Azure HorizonDB](connect-azure-cli.md)
 - [Quickstart: Import data in Power BI in Azure HorizonDB](../integration/connect-with-power-bi-desktop.md)

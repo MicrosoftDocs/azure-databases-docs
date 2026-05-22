@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: PostgreSQL Extension for Visual Studio Code in Azure HorizonDB"
 description: Quickstart guide for the PostgreSQL extension for Visual Studio Code in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: jjfrost
+ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -16,56 +16,85 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Connect and query a HorizonDB database with the PostgreSQL extension for Visual Studio Code (Preview)
+# Quickstart: PostgreSQL Extension for Visual Studio Code in Azure HorizonDB
 
-The PostgreSQL extension for Visual Studio Code is a powerful tool designed to streamline the development and management of PostgreSQL databases. This guide walks you through connecting to a HorizonDB database and executing queries within the Visual Studio Code environment.
+The PostgreSQL extension for Visual Studio Code streamlines the development and management of PostgreSQL databases. This guide walks you through connecting to a PostgreSQL database and executing queries within Visual Studio Code.
+
+The same workflow applies whether you're connecting to:
+
+- A local PostgreSQL installation,
+- An **Azure Database for PostgreSQL flexible server** instance, or
+- An **Azure HorizonDB** cluster.
+
+Where the experience differs between flexible server and HorizonDB (for example, the endpoint you connect to, or which authentication methods are available), it's called out below.
 
 ## Prerequisites
 
 Before you begin, verify you have the proper tools and resources downloaded and installed.
 
-These tools and resources help you follow along with this article.
-
 - [Visual Studio Code](https://code.visualstudio.com/) installed on your machine.
-- HorizonDB database installed locally or hosted in the [cloud](../../configure-maintain/quickstart-create-server.md).
+- A PostgreSQL database installed locally, or hosted in [Azure HorizonDB](../../configure-maintain/quickstart-create-cluster.md).
 - [PostgreSQL extension](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) installed in Visual Studio Code.
-- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot).
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat) installed.
+- [Azure account](/azure/postgresql/flexible-server/how-to-deploy-on-azure-free-account) for connecting to cloud-hosted databases (optional).
 
 ## Install the PostgreSQL extension
 
 To install the PostgreSQL extension:
 
-1. Open Visual Studio Code and go to the Extensions view by selecting the Extensions icon in the Activity Bar or by using the **View: Extensions** command.
-1. Search for *PostgreSQL* in the Extensions Marketplace.
+1. Open Visual Studio Code and go to the Extensions view by selecting the **Extensions** icon in the Activity Bar or by using the **View: Extensions** command.
+1. Search for **PostgreSQL** in the Extensions Marketplace.
 1. Select the **PostgreSQL** extension authored by Microsoft and select **Install**.
 
-When the extension is installed, the PostgreSQL page, represented by an elephant icon, appear in the Visual Studio Code sidebar.
+After installation, the PostgreSQL extension icon appears in the Visual Studio Code sidebar.
 
-## Add a connection to HorizonDB
+## Add a connection to PostgreSQL
 
-Whether hosted locally or on a remote server, connecting to a HorizonDB database is a fundamental step in managing and interacting with your data. This process involves providing the necessary connection details, such as the server address, port, and authentication credentials, to establish a secure link between your client application and the database. With the PostgreSQL extension for Visual Studio Code, you can seamlessly connect to your HorizonDB database and use powerful tools to query, manage, and explore your data efficiently.
+Whether hosted locally or on a remote server, connecting to a PostgreSQL database is a fundamental step in managing and interacting with your data. This process involves providing the necessary connection details - such as the server address, port, and authentication credentials - to establish a secure link between your client application and the database.
 
 1. Select the elephant icon on the sidebar to open the PostgreSQL extension page.
-
 1. Select the **Add Connection** button.
+1. Enter your connection details manually or paste a connection string.
+1. If using Azure, sign in to your Azure account and browse for the database instance. Filter by **subscription**, **resource group**, **server / cluster**, and **database name**. Both Azure Database for PostgreSQL flexible server instances and Azure HorizonDB clusters in the subscriptions you have access to are listed.
 
-1. Enter your connection details manually or use the connection string format:
+### Connection string format
 
-   ```bash
-     psql -h <server>.horizondb.database.azure.com -p 5432 -U <username>
-   ```
+#### Azure Database for PostgreSQL flexible server
 
-1. If using Azure, sign in to your Azure account and browse for the database instance. Filter by subscription, resource group, server, and database name.
+Use the standard flexible server hostname:
+
+```bash
+psql -h <server>.postgres.database.azure.com -p 5432 -U <user> -d <database>
+```
+
+#### Azure HorizonDB
+
+An Azure HorizonDB cluster exposes **two** endpoints. Choose the one that matches your workload:
+
+- **Read/write endpoint** - Connects to the primary, which accepts both reads and writes. Use this endpoint for application writes, schema changes, and reads that must see the latest committed data.
+- **Reader endpoint** - Automatically load-balances connections across all readable HA replicas in the cluster. Use this endpoint for read scale-out, reporting, and analytics workloads. Up to four readable HA replicas are supported today (increasing to 8), each sized identically to the primary.
+
+Both endpoint hostnames are listed on the cluster **Overview** page and on the **Replicas** page in the Azure portal. The connection string format is the standard libpq form:
+
+```bash
+# Read/write endpoint (primary)
+psql "host=<cluster-name>.<region>.horizondb.azure.com port=5432 dbname=<database> user=<user> sslmode=require"
+
+# Reader endpoint (load-balanced HA replicas)
+psql "host=<cluster-name>-reader.<region>.horizondb.azure.com port=5432 dbname=<database> user=<user> sslmode=require"
+```
+
+A common pattern is to save two profiles in the Connection Manager - one for the read/write endpoint and one for the reader endpoint - and switch between them based on the task.
 
 ### Authentication
 
 The extension supports two authentication methods:
 
-- **Username/Password**: Enter your database credentials directly into the connection fields.
-- **Microsoft Entra ID Authentication**: Add your Microsoft Entra ID account for Azure-hosted databases.
+- **Username/Password** - Enter your database credentials directly into the connection fields. Supported by both Azure Database for PostgreSQL flexible server and Azure HorizonDB.
+- **Microsoft Entra ID authentication** - Add your Microsoft Entra ID account for Azure-hosted databases. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, only PostgreSQL authentication is supported during the current release.
 
-:::image type="content" source="media/vs-code-connect/connect-server-1.png" alt-text="Screenshot of PostgreSQL extension for Visual Studio Code connection dialog.":::
+:::image type="content" source="media/vs-code-connect/connect-server-1.png" alt-text="Screenshot of PostgreSQL extension for Visual Studio Code connection dialog." lightbox="media/vs-code-connect/connect-server-1.png" :::
 
 ## Test and save the connection
 
@@ -74,16 +103,33 @@ The extension supports two authentication methods:
 1. Select **Connect** to establish the connection.
 1. Your connection automatically saves and appears in the Connections window.
 
+If the test fails when connecting to a cloud-hosted database, confirm that your client IP address is allowed by the server's firewall rules (flexible server) or the cluster's firewall rules (HorizonDB). Both services currently support public access with IP allow-listing; private endpoint support on HorizonDB is on the roadmap.
+
 ## Explore database objects
 
 The Object Explorer provides a hierarchical view of your database objects:
 
 - Expand the database item to view schemas, tables, views, functions, and stored procedures.
 - Right-click on the database to see options to:
-  - Launch a New Query
-  - Chat with this database (starts the pgsql chat experience)
-  - Connect with PSQL to launch a psql terminal connection
+  - **Launch a New Query**
+  - **Chat with this database** (starts the `@pgsql` chat experience)
+  - **Connect with PSQL** to launch a `psql` terminal connection
 - Right-click on a table and select **Select Top 1000** to view its data. The query opens in the Query Editor, and the results appear in the Results Viewer tab.
+
+On an Azure HorizonDB connection, you can also list the allow-listed extensions available on the cluster with:
+
+```sql
+SELECT * FROM pg_available_extensions ORDER BY name;
+```
+
+Common HorizonDB extensions you might want to install in your database include `vector`, `pg_diskann`, `azure_ai`, and `age`:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS azure_ai;
+CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS pg_diskann;
+CREATE EXTENSION IF NOT EXISTS age;
+```
 
 ## Execute queries
 
@@ -91,7 +137,13 @@ Use the Query Editor to draft and execute SQL queries:
 
 - Take advantage of context-aware IntelliSense to autocomplete SQL keywords and object names.
 - Use syntax highlighting and autoformatting for better readability and accuracy.
-- Access previously executed queries through the Query History pane.
+- Access previously executed queries via the Query History pane.
+
+<a id="routing-reads-and-writes-on-horizondb"></a>
+
+### Route reads and writes on HorizonDB
+
+When you have profiles for both the read/write and reader endpoints, pick the appropriate connection in the Query Editor's connection picker before running a query. Writes and DDL must run against the read/write endpoint; the reader endpoint accepts read-only queries and load-balances them across HA replicas.
 
 ## Review query results
 
@@ -103,11 +155,9 @@ The Results Viewer offers advanced features to interact with your query results:
 
 ## Use GitHub Copilot for advanced assistance
 
-The GitHub Copilot integration enhances your PostgreSQL development experience by providing AI-powered code suggestions, query optimization tips, and interactive database assistance. This feature helps you streamline your workflow, reduce development time, and gain deeper insights into your database operations. This section guides you through the steps to activate and use Copilot within the PostgreSQL extension for Visual Studio Code.
+The GitHub Copilot integration enhances your PostgreSQL development experience by providing AI-powered code suggestions, query optimization tips, and interactive database assistance. This feature helps you streamline your workflow, reduce development time, and gain deeper insights into your database operations.
 
-Ensure the GitHub Copilot and Copilot Chat extensions are installed.
-
-Sign in to your GitHub account and enable the `@pgsql` Copilot Chat agent in the extension settings.
+Ensure the GitHub Copilot and Copilot Chat extensions are installed. Sign in to your GitHub account and enable the `@pgsql` Copilot Chat agent in the extension settings.
 
 ### Interactive database prompts
 
@@ -115,35 +165,39 @@ Right-click on a database and select **Chat with this database** to interact wit
 
 Write prompts like the following example to receive detailed insights and suggestions.
 
-```copilot-prompt
+```text
 @pgsql tell me about the tables in the HR schema
 ```
 
-For more information, see [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)](vs-code-github-copilot.md).
+When connected to an Azure HorizonDB cluster, Copilot picks up the live connection context - including which extensions are installed - so prompts can take advantage of HorizonDB capabilities such as `pgvector`, `pg_diskann` Advanced Filtering, and the `azure_ai` AI Functions.
 
-## Connect to Azure HorizonDB with Visual Studio Code
+For more information, see [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md).
 
-Connect to an Azure HorizonDB by using Visual Studio Code by following these steps:
+## Connect to Azure Database for PostgreSQL with Visual Studio Code
 
-1. Sign in to the Azure portal and locate your Azure HorizonDB server.
-1. Go to the **Overview** page of your server instance.
+Connect to an Azure Database for PostgreSQL flexible server instance or an Azure HorizonDB cluster by using Visual Studio Code as follows:
+
+1. Sign in to the Azure portal and locate your Azure Database for PostgreSQL flexible server instance or your Azure HorizonDB cluster.
+1. Go to the **Overview** page of the server or cluster.
 
 ### Connect with Visual Studio Code
 
-The "Connect with Visual Studio Code" option in the Azure portal simplifies connecting to your Azure HorizonDB server. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details. By using this integration, you can quickly establish a connection and manage your database directly within the Visual Studio Code environment.
+The **Connect with Visual Studio Code** option in the Azure portal simplifies connecting to your Azure Database for PostgreSQL flexible server instance or Azure HorizonDB cluster. This feature streamlines the setup by guiding you through the necessary prerequisites and automatically configuring connection details.
 
-- Select the prominent **Connect with Visual Studio Code** button on the **Overview** page.
+- Select the prominent **Connect with Visual Studio Code** button on the Overview page.
 - A side pane appears that lists the requirements to connect by using Visual Studio Code.
 
-:::image type="content" source="media/vs-code-connect/portal-connect-1.png" alt-text="Screenshot of Azure portal showing an Azure HorizonDB instance with the Connect with Visual Studio Code button.":::
+:::image type="content" source="media/vs-code-connect/portal-connect-1.png" alt-text="Screenshot of the Azure portal showing an Azure Database for PostgreSQL instance with the Connect with Visual Studio Code button.":::
+
+For a HorizonDB cluster, the side pane lets you choose whether to prefill the connection with the **read/write endpoint** or the **reader endpoint**.
 
 ### Confirm requirements
 
-- In the side pane, confirm that all prerequisites (Visual Studio Code and PostgreSQL extension) are satisfied by selecting the appropriate checkboxes.
+- In the side pane, confirm that all prerequisites (Visual Studio Code and the PostgreSQL extension) are satisfied by selecting the appropriate checkboxes.
 - If needed, download Visual Studio Code and the extension by using the links in the side pane.
 - Optionally, fill out connection parameters such as the default database name, authentication method, and connection pooling.
 
-  :::image type="content" source="media/vs-code-connect/portal-connect-2.png" alt-text="Screenshot of Azure portal showing an Azure HorizonDB instance with the Connect with Visual Studio Code panel. The open in Visual Studio Code button is highlighted.":::
+:::image type="content" source="media/vs-code-connect/portal-connect-2.png" alt-text="Screenshot of the Azure portal showing the Connect with Visual Studio Code side pane with the Open in Visual Studio Code button highlighted.":::
 
 ### Open in Visual Studio Code
 
@@ -155,17 +209,12 @@ The "Connect with Visual Studio Code" option in the Azure portal simplifies conn
 - If Visual Studio Code is installed and running, the PostgreSQL extension's connection dialog box launches automatically.
 - If Visual Studio Code is installed but not open, it launches within approximately 40 seconds, followed by the connection dialog box.
 
-### Autofill connection details
-
-The connection dialog box in the PostgreSQL extension opens, and the **Server Name** field automatically fills in your server endpoint.
-
-:::image type="content" source="media/vs-code-connect/portal-connect-3.png" alt-text="Screenshot of the PostgreSQL extension for Visual Studio Code Connection Dialog with the server name details prepopulated." lightbox="media/vs-code-connect/portal-connect-3.png":::
-
 ### Provide authentication details
 
 Select your preferred authentication method:
-- **Password Authentication**: Enter your username and password manually.
-- **Entra Authentication**: Enter your Azure account credentials.
+
+- **Password Authentication** - Enter your username and password manually. Supported on both flexible server and HorizonDB.
+- **Entra Authentication** - Enter your Azure account credentials. Currently supported on Azure Database for PostgreSQL flexible server. On Azure HorizonDB, password authentication is the only option today.
 
 Specify other connection details such as **Profile Name**, **Database Name** (optional), **Server Group**, and **Port Number**.
 
@@ -178,23 +227,21 @@ Select the **Save & Connect** button to establish the connection. Once connected
 If you encounter issues during the connection process:
 
 - Verify that Visual Studio Code and the PostgreSQL extension are installed and enabled.
-
-- Ensure the IP address is allowed in the firewall settings of your Azure HorizonDB.
-
+- Ensure your client IP address is allowed in the firewall settings of your Azure Database for PostgreSQL flexible server or Azure HorizonDB cluster.
+- For HorizonDB, confirm you're connecting to the correct endpoint for your workload - writes must target the **read/write endpoint**, not the reader endpoint.
 - If you don't meet the prerequisites, the side pane provides feedback and steps to resolve the issue, including retrying the connection.
 
 ## Feedback and support
 
 For bugs, feature requests, and issues, use the built-in feedback tool in Visual Studio Code. You can complete this feedback process through the Visual Studio Code Help menu or the PGSQL command palette.
 
-- Help menu
+- **Help menu**
   - Go to **Help > Report Issue**
-
-- Command palette
+- **Command palette**
   - Open the Command Palette with `Ctrl + Shift + P` and run: `PGSQL: Report Issue`
 
 ## Related content
 
-- [What is the PostgreSQL extension for Visual Studio Code with Azure HorizonDB (Preview)](vs-code-overview.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code with Azure HorizonDB (Preview)](vs-code-github-copilot.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](vs-code-overview.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

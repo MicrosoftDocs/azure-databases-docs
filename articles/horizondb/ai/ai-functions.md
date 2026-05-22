@@ -471,5 +471,5 @@ The following table lists the models supported by each AI function.
 
 - [AI Model Management in Azure HorizonDB](ai-model-management.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Semantic reranking with the rank() function](semantic-rank-function.md)
 - [Extract knowledge graphs in Azure HorizonDB](build-knowledge-graph.md)

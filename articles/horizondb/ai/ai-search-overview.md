@@ -75,7 +75,7 @@ Full-text search is precise and fast. Use it when queries contain exact terms, i
 
 Azure HorizonDB offers full-text search through `pg_fts`, which provides BM25 ranking, fuzzy matching, phrase proximity search, and CJK language analyzer support.
 
-To learn more, see [Full-text search with pg_fts](full-text-search-pgfts.md).
+To learn more, see [Full-text search with pg_fts](full-text-search.md).
 
 ## Hybrid search
 
@@ -129,7 +129,7 @@ Semantic reranking is a second-stage scoring pass that takes the top results fro
 
 The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
 
-To learn more, see [Semantic reranking](semantic-reranking.md) and [AI pipelines](ai-pipelines.md)
+To learn more, see [Semantic reranking](semantic-rank-function.md) and [AI pipelines](ai-pipelines.md)
 
 ### Knowledge graphs and GraphRAG
 
@@ -141,7 +141,7 @@ Azure HorizonDB supports knowledge graphs through the Apache AGE graph extension
 
 To learn more, see:
 
-- [GraphRAG for knowledge graph enhanced search](graphrag.md)
+- [GraphRAG for knowledge graph enhanced search](graph-rag.md)
 - [Extract knowledge graphs from unstructured text](build-knowledge-graph.md)
 
 ## Build a complete retrieval pipeline
@@ -160,5 +160,5 @@ To learn how to build a retrieval-and-rerank pipeline, see [AI pipelines](ai-pip
 ## Related content
 
 - [Vector search with pgvector](vector-search-pgvector.md)
-- [Full-text search with pg_fts](full-text-search-pgfts.md)
+- [Full-text search with pg_fts](full-text-search.md)
 - [Hybrid search](hybrid-search.md)

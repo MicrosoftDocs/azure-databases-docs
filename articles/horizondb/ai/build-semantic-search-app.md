@@ -34,7 +34,7 @@ In this tutorial, you:
 
 ## Prerequisites
 
-1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](/azure/postgresql/flexible-server/quickstart-create-server-portal).
+1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](../configure-maintain/quickstart-create-cluster.md).
 1. [AI Model Management in Azure HorizonDB](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
 ## Install extensions and set up AI models
@@ -278,10 +278,10 @@ ORDER BY rr.rank ASC;
 
 The reranked results prioritize recipes that are most relevant to the specific query intent - in this case, recipes that are both quick to prepare and vegan - rather than semantically similar to the query text.
 
-For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-reranking.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-rank-function.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
 
 ## Related content
 
 - [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
 - [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-reranking.md)
+- [Semantic reranking with the rank() function](semantic-rank-function.md)

@@ -9,43 +9,41 @@
     - name: How-to Guides
       items:
         - name: Create a HorizonDB cluster
-          href: configure-maintain/quickstart-create-server.md
+          href: configure-maintain/quickstart-create-cluster.md
 - name: Release Notes
   items:
     - name: Release notes
       href: release-notes/release-notes.md
-    - name: Maintenance release notes
-      href: release-notes-maintenance/release-notes-maintenance-index.md
-    - name: API release notes
-      href: release-notes/release-notes-api.md
-    - name: CLI release notes
-      href: release-notes/release-notes-cli.md
 - name: Create and connect
   items:
   - name: Connection endpoints
     href: connectivity/concepts-connection-endpoints.md
-  - name: Connection types
-    href: connectivity/concepts-connect-overview.md
   - name: How-to Guides
     items:
       - name: Create a HorizonDB cluster
-        href: configure-maintain/quickstart-create-server.md
+        href: configure-maintain/quickstart-create-cluster.md
       - name: How to connect
         href: connectivity/how-to-connect-query-guide.md
-      - name: Using Python
-        href: connectivity/connect-python.md
-      - name: Using Java
-        href: connectivity/connect-java.md
+- name: High availability & resilience
+  items:
+    - name: Business Continuity
+      href: backup-restore/concepts-business-continuity.md
+    - name: High Availability
+      href: high-availability/how-to-configure-high-availability.md
+    - name: Backup & restore
+      items:
+        - name: Backups
+          href: backup-restore/concepts-backup-restore.md
+        - name: Restore
+          href: backup-restore/how-to-restore-custom-restore-point.md
 - name: Configure and maintain
   items:
     - name: How to add or remove replica
       href: configure-maintain/how-to-add-remove-replica.md
     - name: Scheduled maintenance
       href: configure-maintain/concepts-maintenance.md
-    - name: Scaling compute resources
-      href: scale/concepts-scaling-resources.md
-    - name: Readable HA replicas
-      href: read-replica/concepts-read-replicas.md
+    - name: How to scale compute
+      href: configure-maintain/how-to-scale-compute.md     
     - name: Parameters
       items:
         - name: Overview
@@ -163,6 +161,8 @@
           href: server-parameters/how-to-parameter-groups-connect.md
         - name: List clusters connected to parameter groups
           href: server-parameters/how-to-parameter-groups-list-connected.md
+        - name: Identify parameter group connected to a cluster
+          href: server-parameters/how-to-parameter-groups-identify-connected-cluster.md
     - name: Enable deletion protection
       href: configure-maintain/how-to-enable-deletion-protection.md
     - name: Extensions
@@ -179,12 +179,6 @@
           href: extensions/errors-extensions.md
     - name: How-to Guides
       items:
-        - name: Add a read replica
-          href: read-replica/how-to-create-read-replica.md
-        - name: Remove a read replica
-          href: read-replica/how-to-delete-read-replica.md
-        # - name: Create Parameter Groups  # TODO: No file exists yet
-        # - name: Drop Parameter Groups  # TODO: No file exists yet
         - name: Allow extensions
           href: extensions/how-to-allow-extensions.md
         - name: Load libraries
@@ -195,46 +189,18 @@
           href: extensions/how-to-drop-extensions.md
         - name: Update extensions
           href: extensions/how-to-update-extensions.md
-- name: High availability & resilience
-  items:
-    - name: Business Continuity
-      href: backup-restore/concepts-business-continuity.md
-    - name: Reliability
+    - name: Performance and Monitoring
       items:
-        - name: Configure high availability
-          href: high-availability/how-to-configure-high-availability.md
-    - name: Backup & restore
-      items:
-        - name: Backups
-          href: backup-restore/concepts-backup-restore.md
-        - name: Restore
-          href: backup-restore/how-to-restore-latest-restore-point.md
-- name: Performance and Monitoring
-  items:
-    - name: Query Monitoring
-      items:
-        - name: Query Store on primary
-          href: monitor/concepts-query-store.md
-        - name: Query Store usage scenarios
-          href: monitor/concepts-query-store-scenarios.md
-        - name: Query Store best practices
-          href: monitor/concepts-query-store-best-practices.md
-    - name: Metrics
-      href: monitor/concepts-monitoring.md
-    - name: How-to Guides
-      items:
-        - name: Troubleshoot high CPU utilization
-          href: troubleshoot/how-to-high-cpu-utilization.md
-        - name: Troubleshoot high memory utilization
-          href: troubleshoot/how-to-high-memory-utilization.md
-        - name: Troubleshoot high IOPS utilization
-          href: troubleshoot/how-to-high-io-utilization.md
-        - name: Troubleshoot and identify slow running queries
-          href: troubleshoot/how-to-identify-slow-queries.md
-        - name: Troubleshoot connections
-          href: troubleshoot/how-to-troubleshoot-common-connection-issues.md
-        - name: Optimize query statistics
-          href: troubleshoot/how-to-optimize-query-stats-collection.md
+        - name: Query Monitoring
+          items:
+             - name: Query Store on primary
+               href: monitor/concepts-query-store.md
+             - name: Query Store usage scenarios
+               href: monitor/concepts-query-store-scenarios.md
+             - name: Query Store best practices
+               href: monitor/concepts-query-store-best-practices.md
+        - name: Metrics
+          href: monitor/concepts-monitoring.md
 - name: Development Experience
   items:
     - name: PostgreSQL extension for Visual Studio Code
@@ -272,7 +238,7 @@
         - name: Vector search (pgvector)
           href: ai/vector-search-pgvector.md
         - name: Full-text search (pg_fts)
-          href: ai/full-text-search-pgfts.md
+          href: ai/full-text-search.md
         - name: Hybrid Search
           href: ai/hybrid-search.md
         - name: Tutorial - Build a semantic search application
@@ -288,9 +254,9 @@
         - name: Enhance search relevance
           items:
             - name: Semantic reranking
-              href: ai/semantic-reranking.md
+              href: ai/semantic-rank-function.md
             - name: GraphRAG for knowledge graph enhanced search
-              href: ai/graphrag.md
+              href: ai/graph-rag.md
             - name: Build a knowledge graph from unstructured text
               href: ai/build-knowledge-graph.md
     - name: Build AI Agents and Apps
@@ -316,29 +282,17 @@
     - name: Tutorial- Build a knowledge graph from unstructured text
       href: ai/build-knowledge-graph.md
     - name: GraphRAG for knowledge graph enhanced search
-      href: ai/graphrag.md
+      href: ai/graph-rag.md
 - name: Migration
   items:
     - name: Offline migration
       items:
         - name: Dump and restore PostgreSQL migration
           href: migrate/how-to-migrate-using-dump-and-restore.md      
-- name: Integration
-  items:
-    - name: Microsoft Fabric
-      items:
-      - name: Fabric mirroring
-        href: fabric/concepts-fabric-mirroring.md
-      - name: Copy activity
-        href: fabric/how-to-data-factory-copy-activity-fabric.md
-      - name: Script activity
-        href: fabric/how-to-data-factory-script-activity-fabric.md
 - name: Networking
   items:
     - name: Public Access
       href: network/concepts-networking-public.md
-    - name: Private Endpoints
-      href: network/concepts-networking-private-link.md
     - name: Secure Connectivity with SSL and TLS
       href: security/security-tls.md
     - name: How-to Guides
@@ -365,8 +319,6 @@
               href: network/how-to-networking-servers-deployed-public-access-approve-private-endpoint.md
             - name: Reject private endpoint connections
               href: network/how-to-networking-servers-deployed-public-access-reject-private-endpoint.md
-        - name: Manage Private DNS Zone
-          href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
 - name: Security
   items:
     - name: Secure your Azure HorizonDB
@@ -404,20 +356,14 @@
     - name: Data protection
       items:
         - name: Data encryption overview
-          href: security/security-data-encryption.md
-        - name: Configure data encryption
-          href: security/security-configure-data-encryption.md
+          href: security/security-data-encryption.md        
 - name: References
   items:
       - name: Using Python
-        href: connectivity/connect-python.md
+        href: configure-maintain/quickstart-create-cluster.md
       - name: Using Java
-        href: connectivity/connect-java.md
+        href: configure-maintain/quickstart-create-cluster.md
 - name: Resources
   items:
     - name: Possible errors when managing extensions
       href: extensions/errors-extensions.md
-    - name: Connection Errors Troubleshooting
-      items:
-        - name: Password authentication failed for user
-          href: troubleshoot/troubleshoot-password-authentication-failed-for-user.md

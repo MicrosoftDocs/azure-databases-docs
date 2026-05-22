@@ -14,15 +14,6 @@ ms.topic: concept-article
 
 Azure HorizonDB currently supports the following major versions.
 
-## PostgreSQL version 18
-
-The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-version-18.md)]**. Refer to the [!INCLUDE [minor-versions-docs-18](includes/minor-version-docs-18.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.
-
-### Limitations
-
-- Certain PostgreSQL extensions aren't supported in the PG18 release. Refer to the [list of supported extensions](../extensions/concepts-extensions-by-engine.md?pivots=postgresql-18) for details.
-- Can't configure server to use new Async I/O `io_method = io_uring`.
-
 ## PostgreSQL version 17
 
 The current minor release is **[!INCLUDE [minor-versions-17](includes/minor-version-17.md)]**. Refer to the [!INCLUDE [minor-versions-docs-17](includes/minor-version-docs-17.md)] to learn more about new features and improvements in this latest release. New servers are created with this minor version.

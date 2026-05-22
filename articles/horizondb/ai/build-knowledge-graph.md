@@ -464,4 +464,4 @@ This tutorial runs extraction, deduplication, and graph loading as interactive S
 
 - [AI functions in the azure_ai extension](ai-functions.md)
 - [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
-- [Graph-augmented RAG patterns with Azure HorizonDB](graphrag.md)
+- [Graph-augmented RAG patterns with Azure HorizonDB](graph-rag.md)

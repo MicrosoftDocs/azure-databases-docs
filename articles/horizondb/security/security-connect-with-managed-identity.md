@@ -113,11 +113,11 @@ This section shows how to get an access token using the VM's user-assigned manag
 
 ## Connect using Managed Identity in Python
 
-For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure HorizonDB](../connectivity/connect-python.md)
+For a Python code example, refer to the [Quickstart: Use Python to connect and query data in Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md)
 
 ## Connect using Managed Identity in Java
 
-For a Java code example, refer to the [Quickstart: Use Java and JDBC in Azure HorizonDB](../connectivity/connect-java.md)
+For a Java code example, refer to the [Quickstart: Use Java and JDBC in Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md)
 
 ## Connect using Managed Identity in C#
 

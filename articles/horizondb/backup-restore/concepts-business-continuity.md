@@ -1,8 +1,8 @@
 ---
-title: Overview of Business Continuity in Azure HorizonDB
-description: Learn about the concepts of business continuity with an Azure HorizonDB instance.
-author: avnishrastogimsft
-ms.author: avrastog
+title: Overview of business continuity in Azure HorizonDB
+description: Learn about the concepts of business continuity with an Azure HorizonDB flexible server instance.
+author: kabharati
+ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -12,101 +12,81 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Overview of business continuity in Azure HorizonDB
+# Overview of business continuity in Azure HorizonDB (preview)
 
-**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, Azure HorizonDB handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
+**Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable applications and business processes to continue operating during and after disruptive events, particularly those events that affect computing infrastructure. Azure HorizonDB is designed to automatically handle many types of failures within the cloud environment, helping maintain application availability and operational continuity. However, some scenarios require explicit user action or planning, including:
 
-- User accidentally deletes or updates a row in a table.
-- Earthquake causes a power outage and temporarily disables an availability zone or a region.
-- Database patching required to fix a bug or security issue.
+- Accidental data modifications or deletions (for example, a user deleting or updating rows in a table)
+- Regional or zonal outages caused by events such as natural disasters
+- Planned maintenance operations, such as patching to address bugs or security vulnerabilities
 
-Azure HorizonDB provides features that protect data and mitigates downtime for your mission-critical databases during planned and unplanned downtime events. Built on top of the Azure infrastructure that offers robust resiliency and availability, Azure HorizonDB has business continuity features that provide another fault protection, address recovery time requirements, and reduce data loss exposure. As you architect your applications, you should consider the downtime tolerance - the recovery time objective (RTO), and data loss exposure - the recovery point objective (RPO). For example, your business-critical database requires stricter uptime than a test database.
+## Built-in resilience and protection
+Azure HorizonDB provides a set of features designed to protect data and minimize downtime during both planned and unplanned events. These capabilities are built on Azure infrastructure, which offers high levels of resiliency and availability.
+Business continuity features in Azure HorizonDB are designed to:
 
-The table below illustrates the features that Azure HorizonDB offers.
+- Provide extra fault protection beyond underlying infrastructure
+- Support defined recovery objectives
+- Reduce potential data loss exposure
+
+
+The table illustrates the features that Azure HorizonDB offers.
 
 | **Feature** | **Description** | **Considerations** |
-| --- | --- | --- |
-| **Automatic backups** | An Azure HorizonDB instance automatically performs daily backups of your database files and continuously backs up transaction logs. Backups can be retained from 7 days up to 35 days. You're able to restore your database server to any point in time within your backup retention period. RTO is dependent on the size of the data to restore + the time to perform log recovery. It can be from few minutes up to 12 hours. For more details, see [Backup and restore in Azure HorizonDB](concepts-backup-restore.md). | Backup data remains within the region. |
-| **Zone redundant high availability** | An Azure HorizonDB instance can be deployed with zone redundant high availability (HA) configuration where primary and standby servers are deployed in two different availability zones within a region. This HA configuration protects your databases from zone-level failures and also helps with reducing application downtime during planned and unplanned downtime events. Data from the primary server is replicated to the standby replica in synchronous mode. In the event of any disruption to the primary server, the server is automatically failed over to the standby replica. RTO in most cases is expected to be less than 120s. RPO is expected to be zero (no data loss). For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server. | Supported in general purpose and memory optimized compute tiers. Available only in regions where multiple zones are available. |
-| **Same zone high availability** | An Azure HorizonDB instance can be deployed with same zone high availability (HA) configuration where primary and standby servers are deployed in the same availability zone in a region. This HA configuration protects your databases from node-level failures and also helps with reducing application downtime during planned and unplanned downtime events. Data from the primary server is replicated to the standby replica in synchronous mode. In the event of any disruption to the primary server, the server is automatically failed over to the standby replica. RTO in most cases is expected to be less than 120s. RPO is expected to be zero (no data loss). For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server. | Supported in general purpose and memory optimized compute tiers. |
-| **Premium-managed disks** | Database files are stored in a highly durable and reliable premium-managed storage. This provides data redundancy with three copies of replica stored within an availability zone with automatic data recovery capabilities. For more information, see [Managed disks documentation](/azure/virtual-machines/managed-disks-overview). | Data stored within an availability zone. |
-| **Zone redundant backup** | Azure HorizonDB instance backups are automatically and securely stored in a zone redundant storage within a region, if the region supports availability zones. During a zone-level failure where your server is provisioned, and if your server isn't configured with zone redundancy, you can still restore your database using the latest restore point in a different zone. For more information, see [Backup and restore in Azure HorizonDB](concepts-backup-restore.md). | Only applicable in regions where multiple zones are available. |
-| **Geo redundant backup** | Azure HorizonDB instance backups are copied to a remote region. that helps with disaster recovery situation in the event the primary server region is down. | This feature is currently enabled in selected regions. It takes a longer RTO and a higher RPO depending on the size of the data to restore and amount of recovery to perform. |
-| **Read Replica** | Cross Region read replicas can be deployed to protect your databases from region-level failures. Read replicas are updated asynchronously using PostgreSQL's physical replication technology, and might lag the primary. For more information, see [Read replicas in Azure HorizonDB](../read-replica/concepts-read-replicas.md). | Supported in general purpose and memory optimized compute tiers. |
-The following table compares RTO and RPO in a **typical workload** scenario:
-
-| **Capability** | **Burstable** | **Production SKU (General Purpose/Memory Optimized)** |
-| :---: | :---: | :---: |
-| Point in Time Restore from backup | Any restore point within the retention period<br />RTO - Varies<br />RPO < 5 Minutes | Any restore point within the retention period<br />RTO - Varies<br />RPO < 5 Minutes |
-| Geo-restore from geo-replicated backups | RTO - Varies<br />RPO < 1 h | RTO - Varies<br />RPO < 1 h |
-| Read replicas | Not Applicable | RTO - Minutes*<br />RPO - Typically ranging from 30 secs to 5 Minutes* |
-| High Availability | Not Applicable | RTO < 120 secs<br />RPO = 0 |
+| ---------- | ----------- | ------------ |
+| **Automatic backups** | Azure HorizonDB cluster automatically performs daily backups of your database files and continuously archives write-ahead log (WAL). Backups are currently retained for 7 days. You're able to restore your database server to any point in time within your backup retention period. The recovery time objective (RTO) for restore operations depends on the time required to complete the WAL recovery and not on total data size. For more information, see [Concepts - Backup and Restore](concepts-backup-restore.md). | Backup data remains within the region. |
+| **Zone redundant high availability** | Azure HorizonDB need at least two compute replicas on the cluster to have zonal resilience. You can add more or remove replicas to the Azure HorizonDB cluster as your workload needs it. | Protects against availability zone outages. |
+| **Zone redundant backup** | Azure HorizonDB cluster backups are automatically and securely stored in a zone redundant storage within a region. |Protects against availability zone outages. |
+| **Read Replicas** | Azure HorizonDB supports in region replicas, which can be used to offload readonly workloads. Replicas also act as failover targets for primary cluster. | Supports up to 15 replicas. |
 
 ## Planned downtime events
 
-Below are some planned maintenance scenarios. These events typically incur up to few minutes of downtime, and without data loss.
+Here are some planned maintenance scenarios. These events typically incur up to few minutes of downtime, and without data loss.
 
-| **Scenario** | **Process** |
-| --- | --- |
-| <b>Compute scaling (User-initiated) | During compute scaling operation, active checkpoints are allowed to complete, client connections are drained, any uncommitted transactions are canceled, storage is detached, and then it's shut down. A new Azure HorizonDB instance with the same database server name is provisioned with the scaled compute configuration. The storage is then attached to the new server and the database is started which performs recovery, if necessary, before accepting client connections. |
-| <b>Scaling up storage (User-initiated) | When a scaling up storage operation is initiated, active checkpoints are allowed to complete, client connections are drained, and any uncommitted transactions are canceled. After that the server is shut down. The storage is scaled to the desired size and then attached to the new server. A recovery is performed if needed before accepting client connections. Scaling down of the storage size isn't supported. |
-| <b>New software deployment (Azure-initiated) | New features rollout or bug fixes automatically happen as part of service's planned maintenance, and you can schedule when those activities to happen. For more information, check your [portal](https://aka.ms/servicehealthpm). |
-| <b>Minor version upgrades (Azure-initiated) | Azure HorizonDB automatically patches database servers to the minor version determined by Azure. It happens as part of the service's planned maintenance. The database server is automatically restarted with the new minor version. For more information, see {[documentation](../monitor/concepts-monitoring.md)}. You can also check your [portal](https://aka.ms/servicehealthpm). |
+| **Scenario** | **Process**|
+| ------------------- | ----------- | 
+| <b>Compute scaling (User-initiated)| During a compute scaling operation, active checkpoints are allowed to complete. The service drains client connections, cancels any uncommitted transactions, detaches storage, and then shuts down the cluster. Azure HorizonDB then provisions a new compute with the same server name and the updated compute configuration. The service attaches the existing storage to the new cluster and starts the database. During startup, recovery runs if needed before the service accepts client connections. |
+| <b>New software deployment (Azure-initiated) | New features rollout or bug fixes automatically happen as part of service’s planned maintenance. | 
+| <b>Minor version upgrades (Azure-initiated) | Azure HorizonDB automatically patches database servers to the minor version determined by Azure. It happens as part of the service's planned maintenance. The database server is automatically restarted with the new minor version. You can also check your [portal](https://aka.ms/servicehealthpm).| 
 
-When the Azure HorizonDB instance is configured with **high availability**, the service performs the scaling and the maintenance operations on the standby server first. For more information, see [Concepts - High availability]/azure/reliability/reliability-postgresql-flexible-server.
 
-## Unplanned downtime mitigation
+##  Unplanned downtime mitigation
 
-Unplanned downtimes can occur as a result of unforeseen disruptions such as underlying hardware fault, networking issues, and software bugs. If the database server configured with high availability goes down unexpectedly, then the standby replica is activated and the clients can resume their operations. If not configured with high availability (HA), then if the restart attempt fails, a new database server is automatically provisioned. While an unplanned downtime can't be avoided, Azure HorizonDB helps mitigate the downtime by automatically performing recovery operations without requiring human intervention.
+Unplanned downtime can occur due to unexpected events such as hardware failures, network issues, or software defects. If high availability (HA) is configured and the primary database server becomes unavailable, Azure HorizonDB automatically fails over to a standby replica. This process allows client operations to resume with minimal interruption. If HA isn't configured and the restart attempt fails, the service provisions a new compute. Although unplanned downtime can't be fully prevented, Azure HorizonDB reduces its impact by performing automated recovery operations without requiring manual intervention.
 
-Though we continuously strive to provide high availability, there are times when Azure HorizonDB does incur outage causing unavailability of the databases and thus affecting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
+Though we continuously strive to provide high availability, there are times when Azure HorizonDB does incur outage causing unavailability of the databases and thus impacting your application. When our service monitoring detects issues that cause widespread connectivity errors, failures or performance issues, the service automatically declares an outage to keep you informed.
 
 ### Service Outage
 
-In the event of Azure HorizonDB instance outage, you can see more details related to the outage in the following places:
+In the event of Azure HorizonDB cluster outage, you can see more details related to the outage in the following places:
 
-- **Azure portal banner**: If your subscription is identified to be affected, there will be an outage alert of a Service Issue in your Azure portal **Notifications**.
+* **Azure portal banner**: If your subscription is affected, Azure posts a service issue alert in the **Notifications** section of the Azure portal.
+  
+    :::image type="content" source="./media/business-continuity/notification-service-issue-example.png" alt-text=" Screenshot showing notifications in Azure portal.":::
 
-:::image type="content" source="media/business-continuity/notification-service-issue-example.png" alt-text=" Screenshot showing notifications in Azure portal.":::
 
-- **Help + support** or **Support + troubleshooting**: When you create support ticket from **Help + support** or **Support + troubleshooting**, there will be information about any issues affecting your resources. Select View outage details for more information and a summary of impact. There will also be an alert in the New support request page.
+* **Help + support** or **Support + troubleshooting**: When you create a support request from *Help + support* or *Support + troubleshooting*, Azure displays any known issues that impact your resources. Select *View outage details* to see more information and a summary of the impact. An alert also appears on the New support request page.
+  
+    :::image type="content" source="./media/business-continuity/help-support-service-health-notification.png" alt-text=" Screenshot showing Help Support notifications in Azure portal.":::
 
-:::image type="content" source="media/business-continuity/help-support-service-health-notification.png" alt-text=" Screenshot showing Help Support notifications in Azure portal." lightbox="media/business-continuity/help-support-service-health-notification.png" :::
 
-- **Service Help**: The **Service Health** page in the Azure portal contains information about Azure data center status globally. Search for "service health" in the search bar in the Azure portal, then view Service issues in the Active events category. You can also view the health of individual resources in the **Resource health** page of any resource under the Help menu. A sample screenshot of the Service Health page follows, with information about an active service issue in Southeast Asia.
+*  **Service Help**: *Service Health* page in the Azure portal provides a personalized view of the health status of Azure services across regions that affect your resources. To open the page, search for **Service Health** in the Azure portal. In the **Active events** section, review **Service issues** to see ongoing problems that affect your resources. You can also check the health of individual resources on the **Resource health** page for each resource under **Help**. The following example shows the **Service Health** page displaying an active service issue in Southeast Asia.
 
-:::image type="content" source="media/business-continuity/service-health-service-issues-example-map.png" alt-text=" Screenshot showing service outage in Service Health portal." lightbox="media/business-continuity/service-health-service-issues-example-map.png" :::
+     :::image type="content" source="./media/business-continuity/service-health-service-issues-example-map.png" alt-text=" Screenshot showing service outage in Service Health portal.":::
 
-- **Email notification**: If you've set up alerts, an email notification will arrive when a service outage impacts your subscription and resource. The emails arrive from "azure-noreply@microsoft.com". The body of the email begins with "The activity log alert ... was triggered by a service issue for the Azure subscription...". For more information on service health alerts, see [Receive activity log alerts on Azure service notifications using Azure portal](/azure/service-health/alerts-activity-log-service-notifications-portal).
+*  **Email notification**: If you have configured alerts, Azure sends an email notification when a service outage affects your subscription or resources. The email is sent from "azure-noreply@microsoft.com"and includes details about the service issue. The email message begins with a standard notification indicating that an activity log alert was triggered by a service issue for your Azure subscription. For more information see, Azure Service Health documentation  [Receive activity log alerts on Azure service notifications using Azure portal](/azure/service-health/alerts-activity-log-service-notifications-portal).
 
-> [!IMPORTANT]  
-> As the name implies, temporary tablespaces in PostgreSQL are used for temporary objects, as well as other internal database operations, such as sorting. Therefore we don't recommend creating user schema objects in temporary tablespace, as we don't guarantee durability of such objects after Server restarts, HA failovers, etc.
 
-### Unplanned downtime: failure scenarios and service recovery
+> [!IMPORTANT]
+> Temporary tablespaces in PostgreSQL store temporary objects and support internal operations such as sorting. Don't create user schema objects in temporary tablespaces, because these objects might not persist after server restarts, high availability (HA) failovers, or similar events.
 
-Below are some unplanned failure scenarios and the recovery process.
 
-| **Scenario** | **Recovery process**<br />[Servers configured without zone-redundant HA] | **Recovery process**<br />[Servers configured with Zone-redundant HA] |
-| --- | --- | --- |
-| **Database server failure** | If the database server is down, Azure will attempt to restart the database server. If that fails, the database server will be restarted on another physical node.<br /><br />The recovery time (RTO) is dependent on various factors including the activity at the time of fault, such as large transaction, and the volume of recovery to be performed during the database server startup process.<br /><br />Applications using the PostgreSQL databases need to be built in a way that they detect and retry dropped connections and failed transactions. | If the database server failure is detected, the server is failed over to the standby server, thus reducing downtime. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. RTO is expected to be 60-120s, with zero data loss. |
-| **Storage failure** | Applications don't see any impact for any storage-related issues such as a disk failure or a physical block corruption. As the data is stored in three copies, the copy of the data is served by the surviving storage. The corrupted data block is automatically repaired and a new copy of the data is automatically created. | For any rare and non-recoverable errors such as the entire storage is inaccessible, the Azure HorizonDB instance is failed over to the standby replica to reduce the downtime. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. |
-| **Logical/user errors** | To recover from user errors, such as accidentally dropped tables or incorrectly updated data, you have to perform a {[point-in-time recovery](concepts-backup-restore.md)} (PITR). While performing the restore operation, you specify the custom restore point, which is the time right before the error occurred.<br /><br />If you want to restore only a subset of databases or specific tables rather than all databases in the database server, you can restore the database server in a new instance, export the table(s) via [pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html), and then use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) to restore those tables into your database. | These user errors aren't protected with high availability as all changes are replicated to the standby replica synchronously. You have to perform point-in-time restore to recover from such errors. |
-| **Availability zone failure** | To recover from a zone-level failure, you can perform point-in-time restore using the backup and choosing a custom restore point with the latest time to restore the latest data. A new Azure HorizonDB instance is deployed in another non-impacted zone. The time taken to restore depends on the previous backup and the volume of transaction logs to recover. | An Azure HorizonDB instance is automatically failed over to the standby server within 60-120s with zero data loss. For more information, see [HA concepts page]/azure/reliability/reliability-postgresql-flexible-server. |
-| **Region failure** | If your server is configured with geo-redundant backup, you can perform geo-restore in the paired region. A new server will be provisioned and recovered to the last available data that was copied to this region.<br /><br />You can also use cross region read replicas. In the event of region failure you can perform disaster recovery operation by promoting your read replica to be a standalone read-writeable server. RPO is expected to be up to 5 minutes (data loss possible) except in the case of severe regional failure when the RPO can be close to the replication lag at the time of failure. | Same process. |
+> [!IMPORTANT]
+> Currently, deleted servers can't be restored. Use Azure resource lock to help prevent accidental deletion of your server.
 
-### Configure your database after recovery from regional failure
 
-- If you're using geo-restore or geo-replica to recover from an outage, you must make sure that the connectivity to the new server is properly configured so that the normal application function can be resumed. You can follow the [Post-restore tasks](concepts-backup-restore.md#geo-redundant-backup-and-restore).
-- If you've previously set up a diagnostic setting on the original server, make sure to do the same on the target server if necessary as explained in [Configure and access logs in Azure HorizonDB](../monitor/how-to-configure-and-access-logs.md).
-- Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](../monitor/how-to-alert-on-metrics.md).
-
-> [!IMPORTANT]  
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped cluster in Azure HorizonDB](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 ## Related content
 
-- [High availability in Azure HorizonDB](/azure/reliability/reliability-postgresql-flexible-server)
-- [Restore to latest restore point in Azure HorizonDB](how-to-restore-latest-restore-point.md)
-- [Restore to custom restore point in Azure HorizonDB](how-to-restore-custom-restore-point.md)
-- [Restore full backup (fast restore) in Azure HorizonDB](how-to-restore-full-backup.md)
-- [Restore to paired region (geo-restore) in Azure HorizonDB](how-to-restore-paired-region.md)
+- [Restore to custom restore point](how-to-restore-custom-restore-point.md).
+
+

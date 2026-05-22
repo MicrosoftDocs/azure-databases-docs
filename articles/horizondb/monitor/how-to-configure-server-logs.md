@@ -253,6 +253,5 @@ az postgres flexible-server server-logs download \
 
 ## Related content
 
-- [Configure high availability in Azure HorizonDB](../high-availability/how-to-configure-high-availability.md)
 - [Schedule maintenance in Azure HorizonDB](../configure-maintain/how-to-configure-scheduled-maintenance.md)
 - [Use the Azure portal to set up alerts on metrics in Azure HorizonDB](how-to-alert-on-metrics.md)

@@ -1,93 +1,140 @@
 ---
-title: Quickstart
-description: Provides an overview of Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+title: What Is Azure HorizonDB?
+description: Learn about Azure HorizonDB, a fully managed, AI-readydatabase service built on PostgreSQL engineered for performance and scale.
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Azure HorizonDB?
+# What is Azure HorizonDB (Preview)?
 
-This article provides an overview of Azure HorizonDB, helping you get acquainted with its key features and core concepts.
+Azure HorizonDB is a cloud native fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
 
-Azure HorizonDB is a fully managed database service that gives you granular control and flexibility over database management functions and configuration settings. The service provides flexibility and server configuration customizations based on your requirements. The architecture lets you collocate the database engine with the client tier for lower latency and choose high availability within a single availability zone and across multiple availability zones. Azure HorizonDB instance also provides cost optimization controls with the ability to stop and start your server and a burstable compute tier that's ideal for workloads that don't need full compute capacity continuously. The service supports various major community versions of PostgreSQL.
+Azure HorizonDB empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Azure AI Foundry Tools, while retaining full PostgreSQL compatibility so existing applications can easily migrate to Azure HorizonDB.
 
-:::image type="content" source="media/overview/overview-flexible-server.png" alt-text="Diagram of Azure HorizonDB - Overview." lightbox="media/overview/overview-flexible-server.png":::
+## Azure HorizonDB use cases
 
-## Architecture and high availability
+Azure HorizonDB is a cloud native scalable alternative to self-managed PostgreSQL and is designed for mission-critical workloads not limited to but including:
 
-The Azure HorizonDB deployment model supports high availability within a single availability zone and across multiple availability zones. The architecture separates compute and storage. The database engine runs on a container inside a Linux virtual machine, while data files reside on Azure storage. The storage maintains three locally redundant synchronous copies of the database files, ensuring data durability.
+- **Transactional workloads (OLTP)** - High-throughput, low-latency transaction processing with predictable performance for line-of-business applications, e-commerce platforms, and SaaS backends.
+- **AI and intelligent applications** - Native vector search and embedding support lets you build retrieval-augmented generation (RAG) pipelines, recommendation engines, and semantic search directly within the database layer. AI model management and AI pipelines further simplify building intelligent applications within the database.
+- **Massive read scale-out** - Applications that can benefit from read scale-out with shared zone resilient data.
+- **Hybrid applications** - Integration with Azure ecosystem, mirror transactional data to Fabric One lake integrating with other analytical data.
 
-If you configure zone redundant high availability, the service provisions and maintains a warm standby server across the availability zone within the same Azure region. The data changes on the source server are synchronously replicated to the standby server to ensure zero data loss. With zone redundant high availability, once the planned or unplanned failover event is triggered, the standby server comes online immediately and is available to process incoming transactions. This feature allows the service resiliency from availability zone failure within an Azure region that supports multiple availability zones, as shown in the following picture.
+## Architecture of Azure HorizonDB
 
-:::image type="content" source="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png" alt-text="Diagram of Zone redundant high availability." lightbox="~/reusable-content/ce-skilling/azure/media/postgresql/concepts-zone-redundant-high-availability-architecture.png":::
+Azure HorizonDB is built on two foundational architectural principles: separation of compute and storage, and a database-as-a-log design.
 
-For more information, visit [High availability](/azure/reliability/reliability-postgresql-flexible-server) for more details.
+:::image type="content" source="media/overview/horizon-db-architecture.png" alt-text="Diagram showing the Azure HorizonDB architecture." lightbox="media/overview/horizon-db-architecture.png":::
 
-## Automated patching with a managed maintenance window
+### Disaggregated compute and storage
 
-The service performs automated patching of the underlying hardware, OS, and database engine. The patching includes security and software updates. The planned maintenance release includes minor version upgrades for the PostgreSQL engine. You can configure the patching schedule to be system-managed or define your custom schedule. During the maintenance schedule, the patch is applied, and the server might need to restart as part of the patching process to complete the update. By using the custom schedule, you can make your patching cycle predictable and choose a maintenance window with minimum impact on your business. Generally, the service follows a monthly release schedule as part of the continuous integration and release.
+The architecture fully separates the compute layer from the storage layer:
 
-## Automatic backups
+- **Compute layer** - Compute on Azure HorizonDB is stateless. Compute resources (vCores and memory) can be independently scaled without affecting storage, and vice versa. You can horizontally scale out reads by adding replicas to the HorizonDB cluster.
+- **Storage layer** - Storage layer uses two purpose-built storage fleets: one dedicated for WAL, another to data; both have durability backed by Azure storage. All storage is zone resilient by default. Storage scales automatically as data grows, independent of the provisioned compute tier.
 
-Azure HorizonDB automatically creates server backups and stores them on the region's zone redundant storage (ZRS). You can restore your server to any point within the backup retention period. The default backup retention period is seven days. You can optionally configure the retention for up to 35 days. The service encrypts all backups by using AES 256-bit encryption. For more information, see [Backup and restore in Azure HorizonDB](backup-restore/concepts-backup-restore.md).
+The separation of compute and storage provides several benefits:
 
-## Adjust performance and scale within seconds
+- Scale compute and storage independently based on workload demands.
+- Quick provisioning of read replicas since they share the same underlying storage and no data replication is needed.
+- Faster failover for high availability since the shared durable WAL storage and no log rewinding is needed.
 
-Azure HorizonDB is available in three compute tiers: Burstable, General Purpose, and Memory Optimized. The Burstable tier is best for low-cost development and low concurrency workloads without continuous compute capacity. The General Purpose and Memory Optimized tiers are better for production workloads that require high concurrency, scale, and predictable performance. You can build your first application on a small database for a few dollars a month, then seamlessly adjust the scale to meet the needs of your solution.
+### Database-as-a-log architecture
 
-## Stop and start server to lower TCO
+Azure HorizonDB adopts the database-as-a-log architecture where only WAL (Write ahead log) is the written from compute to the storage layer. Data pages aren't written from the compute replicas to the storage layer. WAL is the authoritative source of truth through the system.
+- All writes (Write ahead Log) are appended to a durable log service before being acknowledged to the client. The WAL Service is optimized for semantics of a transaction log and optimized for low latency.
+- Filtered WAL is sent to only the storage nodes that the changes belong to.
+- Storage nodes reconstruct page state by applying the WAL, eliminating traditional checkpoint I/O bottlenecks.
+- This approach reduces write amplification and delivers consistent, predictable write latency regardless of database size.
 
-Azure HorizonDB allows you to stop and start the server on demand to lower your TCO. The compute tier billing stops immediately when you stop the server. This feature can provide significant cost savings during development, testing, and time-bound predictable production workloads. The server remains stopped for seven days unless you restart it sooner.
+The combination of these two principles enables Azure HorizonDB to deliver high throughput, low latency, and efficient resource utilization while maintaining full ACID guarantees.
 
-## Enterprise-grade security
+## Cluster
 
-Azure HorizonDB uses the FIPS 140-2 validated cryptographic module for storage encryption of data at rest. The service encrypts data, including backups and temporary files created while running queries. It uses the AES 256-bit cipher included in Azure storage encryption, and the keys can be system-managed (default). Azure HorizonDB encrypts data in motion with default transport layer security (SSL/TLS) enforced by default. The service enforces and supports TLS version 1.2 and later.
+A provisioned Azure HorizonDB resource is a cluster. An Azure HorizonDB cluster has:
+- One or more compute replicas, one is a writable primary, the rest being readable standby replicas.
+- A single copy of the data in zone resilient storage shared by all replicas in the cluster.
+- A read-write endpoint that always points to the primary replica.
+- A read-only endpoint that load balances connections to all readable replicas.
 
-By using Azure virtual network, Azure HorizonDB instance allows full private access to the servers. Servers in the Azure virtual network can only be reached and connected through private IP addresses. With virtual network integration, public access is denied, and servers can't be reached by using public endpoints.
+## Compute replicas
 
-## Monitor and alerting
+An Azure HorizonDB compute replica can be either the primary (writeable) or a standby replica that is a readable, while also being a candidate for failover. Compute replica is where the PostgreSQL relational engine lives and where the language, query, and transaction processing occur. All interactions with the Azure HorizonDB cluster happen through the compute replicas. In order to have zonal resilience, you need atleast two replicas on the cluster. You can add or remove replicas to the Azure HorizonDB cluster as your workload needs it.
 
-Azure HorizonDB has built-in performance monitoring and alerting features. All Azure metrics have a one-minute frequency, each providing 30 days of history. You can configure alerts on the metrics. The service exposes host server metrics to monitor resource utilization and allows configuring slow query logs. By using these tools, you can quickly optimize your workloads and configure your server for the best performance.
+Compute replicas come with 8 GB of memory per core provisioned. Compute replicas also have a local SSD cache. This cache is a low latency NVMe cache that caches hot pages and minimizes the need to fetch data from the remote storage layer. The cache is present on all replicas, the primary, and the standby.
 
-## Built-in PgBouncer
+Compute replicas are used efficiently as they offload durability and high availability related tasks to the storage layer. This offloading gives more CPU, disk, and network to run business logic of applications on the database. The following tasks are offloaded from the Compute replicas to storage layer.
 
-An Azure HorizonDB instance has a [built-in PgBouncer](connectivity/concepts-pgbouncer.md) and a connection pooler. You can enable it and connect your applications to your Azure HorizonDB instance through PgBouncer by using the same hostname and port 6432. When enabled, PgBouncer is also available for elastic clusters under port 8432.
+| Task | PostgreSQL process | Resource savings |
+| --- | --- | --- |
+| WAL sending from replicas | walsender | Disk IO, Network IO |
+| WAL archiving to blob storage | Archiver | Disk IO, Network IO |
+| Dirty Page Writing | background writer | Disk IO |
+| Checkpointing | checkpointer | Disk IO |
+| Backups | pg_dump, pg_basebackup, pg_backup_start, pg_backup_stop | Disk IO |
+| Full page writes | Backends doing WAL writing | Disk IO |
+| PostgreSQL WAL recovery | startup recovering | Disk IO |
+| PostgreSQL read replica redo | startup recovering | Disk IO |
+
+## Storage
+
+Azure HorizonDB runs two storage fleets backed by Azure blob storage. All layers of the storage stack are zone resilient by default.
+
+#### WAL storage
+
+WAL Service is a purpose-built service that accepts WAL from the primary compute replica and is optimized for low latency and WAL writing patterns. When a data change (insert/update/delete) is made on the primary replica, WAL is written to the WAL service and the transaction is acknowledged. WAL is then applied asynchronously to respective shards of data on the data storage fleet to apply the latest changes. In addition, WAL is sent to secondary compute replicas to redo any changes to pages that are in memory on the replicas. WAL is then archived to Azure blob storage and kept for the short term retention time configured.
+
+#### Data storage
+
+The data storage fleet is a cache for all the data in the database that serves data to all compute replicas in the Azure HorizonDB cluster. Storage is allocated dynamically as the database grows without the need to configure storage size or IOPS. Data from postgres relations are sharded across the multiple storage nodes in the fleet to provide improved scalability. There are multiple copies of at the same shard of data stored across zones for resiliency. As WAL is replayed on the storage fleet, dirty pages from the storage fleet are then written to Azure Blob storage.
+
+#### Azure Blob storage
+
+Azure Blob storage provides durability for database data also serves as the data store for WAL archival. Data is stored on zone-redundant storage accounts. Database backups are implemented as snapshots of the blobs.
+
+
+## Pricing
+
+Azure HorizonDB currently charges for:
+- Provisioned Compute in core hours,
+- Used database storage (GB/month), and
+- Used backup storage for the short term retention period.
+
+For more pricing details, view the pricing page.
+
+## Limitations
+
+Azure HorizonDB is currently in Public Preview. The following features aren't yet available we're actively working on these features.
+
+| Feature | Status | Notes |
+| --- | --- | --- |
+| Configurable backup retention | Not yet available | Currently backup retention is seven days. We're working on enabling 1-35 days backup retention |
+| Cross region read replicas | Not yet available | Cross-region replication for disaster recovery isn't yet supported. |
+| Customer-managed keys (CMK) for encryption | Not available | Encryption at rest currently uses service-managed keys only. |
+| Configurable maintenance windows | Not yet available | Currently upgrades occur on a system managed maintenance window. Ability to configure custom maintenance windows isn't yet available |
+| Connection Pooling (PgBouncer) | Not yet available | An external connection pooler can be used while we're working connection pooling to the service. |
+| Long-term retention (LTR) | Not available | Currently backup retention is seven days. |
+| Index Tuning | Not yet available | Index tuning is coming soon. |
+| Virtual network injection | Not available | Currently we support private link. Virtual network integration isn't yet supported |
+| > [!NOTE] |
+| > This list reflects the current state of the service and is subject to change as new capabilities are released. Check the [release notes](release-notes/release-notes.md) for the latest updates. |
 
 ## Azure regions
 
-One advantage of running your workload in Azure is global reach. Azure HorizonDB is currently available in the following Azure regions:
+Azure HorizonDB is currently available in the following Azure regions:
 
-$ New zone-redundant high availability deployments are temporarily blocked in these regions. The service fully supports already provisioned HA servers.
-
-$ New server deployments are temporarily blocked in these regions. The service fully supports already provisioned servers.
-
-** You can now deploy zone-redundant high availability when you provision new servers in these regions. For existing servers deployed in AZ with *no preference* (check this on the Azure portal) before the region started to support AZ, even when you enable zone-redundant HA, the standby is provisioned in the same AZ (same-zone HA) as the primary server. To enable zone-redundant high availability in such cases, see these [special considerations](high-availability/how-to-configure-high-availability.md#limitations-and-considerations).
-
-(*) Certain regions are access-restricted to support specific customer scenarios, such as in-country/region disaster recovery. You can access these regions only upon request by creating a new support request.
+| Geography | Regions |
+| --- | --- |
+| Americas |  Central US, West US 2, WestUS 3 |
+| Europe | Sweden Central |
+| Asia Pacific | Australia East |
 
 > [!NOTE]  
-> If your application requires zone-redundant high availability and it's unavailable in your preferred Azure region, consider using other regions within the same geography where zone-redundant HA is available, such as US East for US East 2, Central US for North Central US, and so on.
-
-## V6 SKU family (Preview)
-
-Azure HorizonDB now supports General Purpose and Memory Optimized V6 SKU family in Public Preview. These versions deliver massive scale for high-performance OLTP, analytics, and complex queries, with improved price performance and higher memory ceilings.
-
-### Limitations
-
-- Scaling from V6 SKU family to Burstable tier isn't supported.
-- Scaling from Burstable tier to V6 SKU family isn't supported.
-- Virtual Network integration isn't supported.
-
-## Migration
-
-Azure HorizonDB runs the community version of PostgreSQL. This version provides full application compatibility and requires minimal refactoring to migrate an existing application developed on the PostgreSQL engine to Azure HorizonDB.
-
-- **Azure Database Migration Service** - For seamless and simplified migrations to Azure HorizonDB with minimal downtime, use Azure Database Migration Service. Visit [What is the migration service in Azure HorizonDB?](migrate/migration-service/overview-migration-service-postgresql.md)
-- **Dump and Restore** - For offline migrations where you can afford some downtime, dump, and restore by using community tools like `pg_dump` and `pg_restore` provides the fastest way to migrate. For more information, see [Migrate your PostgreSQL database to HorizonDB by using dump and restore](migrate/how-to-migrate-using-dump-and-restore.md).
+> Region availability is subject to change and we'll be adding more regions soon. Some regions might have restrictions on new deployments. For the latest region availability, see the Azure portal or contact Azure support.
 
 ## Feedback and support
 
@@ -99,4 +146,6 @@ If you have questions or suggestions about Azure HorizonDB, you can get help and
 
 ## Related content
 
-- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-server.md)
+- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-cluster.md)
+- [Backup and restore in Azure HorizonDB](backup-restore/concepts-backup-restore.md)
+- [What is the PostgreSQL extension for Visual Studio Code](development/vs-code-extension/vs-code-overview.md)

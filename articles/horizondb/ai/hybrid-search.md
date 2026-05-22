@@ -20,7 +20,7 @@ ms.custom:
 
 Hybrid search combines two retrieval strategies in a single query:
 
-- **BM25 full-text search** with [`pg_fts`](full-text-search-pgfts.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
+- **BM25 full-text search** with [`pg_fts`](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
 - **Vector similarity search** with [`pgvector`](vector-search-pgvector.md) and [DiskANN](vector-indexing-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
 
 Used alone, each method has blind spots. Used together, they cover for each other. Hybrid search is the default retrieval pattern for production AI applications on Azure HorizonDB - agentic apps, knowledge bases, recommendation engines, support search, and RAG over enterprise content.
@@ -230,7 +230,7 @@ The pattern:
 1. Pass those 50 candidates plus the original query through a reranker model.
 1. Return the reranker's top 10.
 
-For the full reranking pattern using the `azure_ai.rank()` function, see [Semantic reranking](semantic-reranking.md).
+For the full reranking pattern using the `azure_ai.rank()` function, see [Semantic reranking](semantic-rank-function.md).
 
 ## When *not* to use hybrid search
 
@@ -252,5 +252,5 @@ For mixed real-world queries - which is most production retrieval - hybrid is th
 ## Related content
 
 - [Retrieval foundations: vector, full-text, and hybrid search](ai-search-overview.md)
-- [Full-text search with pg_fts](full-text-search-pgfts.md)
-- [Semantic reranking](semantic-reranking.md)
+- [Full-text search with pg_fts](full-text-search.md)
+- [Semantic reranking](semantic-rank-function.md)
