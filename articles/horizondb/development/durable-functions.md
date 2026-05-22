@@ -24,7 +24,7 @@ ms.custom:
 `pg_durable` is also the execution layer underneath [durable AI pipelines](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
-> `pg_durable` is in **public preview**.
+> `pg_durable` is in **preview**.
 
 ## What "durable" means
 
@@ -33,7 +33,7 @@ A durable function in `pg_durable` is persisted to disk every step of the way. T
 - **Survives database crashes and restarts.** Completed steps aren't re-executed when the server comes back up. In-progress steps resume from the last checkpoint. Pending steps run when the worker comes back online.
 - **Survives long waits.** A workflow can sleep for hours, wait for a cron schedule, or block on an external signal, and still pick up where it left off.
 - **Survives failures.** Failed steps can be retried automatically without re-running the whole function.
-- **Captures identity.** A function executes with the privileges of the user who started it, not the privileges of the background worker. Multi-tenant workloads stay isolated.
+- **Captures identity.** A function executes with the privileges of the user who started it, not the privileges of the background worker. Multitenant workloads stay isolated.
 - **Stays observable from SQL.** You can inspect status, history, execution count, and outputs through the same interface you use for everything else in HorizonDB: a `SELECT` statement.
 
 What durability **doesn't** do automatically: it doesn't make non-idempotent external operations safe to retry on its own. If a step calls an external API that charges money, design the step to be idempotent (for example, by passing an idempotency key).
@@ -240,7 +240,7 @@ This means:
 
 - Users only see and modify data they already have permissions to access.
 - Non-superusers can't escalate privileges by submitting a durable function.
-- Multi-tenant workloads stay isolated as long as your role and grant model is correct.
+- Multitenant workloads stay isolated as long as your role and grant model is correct.
 
 ## Interaction with replicas, backup, and PITR
 
