@@ -60,7 +60,7 @@
           href: server-parameters/concepts-server-parameters.md
         - name: Parameter groups
           href: server-parameters/concepts-parameter-groups.md
-        - name: How-to guides
+        - name: Manage parameter groups
           items:
             - name: Create parameter groups
               href: server-parameters/how-to-parameter-groups-create.md
