@@ -44,8 +44,6 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: High availability
-      url: /azure/reliability/reliability-postgresql-flexible-server?toc=/azure/postgresql/toc.json&&bc=/azure/postgresql/breadcrumb/toc.json
     - text: Back up and restore
       url: backup-restore/concepts-backup-restore.md
     - text: Security concepts
@@ -108,13 +106,7 @@ landingContent:
     links:
     - text: Connection libraries for App development
       url: connectivity/concepts-connection-libraries.md
-    - text: Deploy with Terraform
-      url: /azure/developer/terraform/deploy-postgresql-flexible-server-database
-    - text: Pricing
-      url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
     - text: Region Availability
       url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
     - text: Customer success stories
       url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
-    - text: Build your skills with Microsoft Learn
-      url: /training/browse/?terms=Azure%20database%20for%20postgresql
