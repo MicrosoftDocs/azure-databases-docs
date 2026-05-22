@@ -24,7 +24,7 @@ AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embed
 AI pipelines are part of the `azure_ai` extension. The `ai.*` functions and views used throughout this article are provided by `azure_ai` and built on top of [pg_durable](../development/durable-functions.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface - sources, steps, sinks, and triggers - that compiles down to a durable graph automatically.
 
 > [!NOTE]  
-> AI pipelines is in **public preview**.
+> AI pipelines is in **preview**.
 
 ## Why pipelines belong in the database
 
