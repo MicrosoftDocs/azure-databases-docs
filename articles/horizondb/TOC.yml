@@ -12,7 +12,9 @@
       href: configure-maintain/concepts-version-policy.md
     - name: Limits
       href: configure-maintain/concepts-limits.md
-    - name: Release notes
+- name: Release Notes
+  items:
+    - name: Release notes for Azure HorizonDB
       href: release-notes/release-notes.md
 - name: Get started
   items:
