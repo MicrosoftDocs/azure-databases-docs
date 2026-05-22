@@ -305,7 +305,7 @@
 - name: Generative AI
   items:
     - name: Overview
-      href: ai/overview.md
+      href: ai/ai-overview.md
     - name: AI functions in SQL
       items:
         - name: AI functions (azure_ai)

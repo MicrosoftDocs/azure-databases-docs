@@ -59,7 +59,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Overview of AI capabilities in Azure HorizonDB
-      url: ai/overview.md
+      url: ai/ai-overview.md
     - text: AI pipelines and data preparation
       url: ai/ai-pipelines.md
     - text: AI functions in SQL with the azure_ai extension
