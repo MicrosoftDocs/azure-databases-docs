@@ -272,8 +272,6 @@
       items:
     - name: Firewall
       items:
-        - name: Firewall rules
-          href: network/how-to-firewall-rules.md
         - name: Add firewall rules
           href: network/how-to-network-servers-public-access-add-firewall.md
         - name: Delete firewall rules
