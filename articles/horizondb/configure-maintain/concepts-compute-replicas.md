@@ -4,7 +4,7 @@ description: Learn about compute replicas in Azure HorizonDB, scaling up vCores 
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan
-ms.date: 05/22/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
