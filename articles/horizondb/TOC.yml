@@ -14,8 +14,6 @@
       href: connectivity/concepts-connection-endpoints.md
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
-    - name: Connection pooling best practices
-      href: connectivity/concepts-connection-pooling-best-practices.md
     - name: How-to guides
       items:
         - name: Create a HorizonDB cluster
