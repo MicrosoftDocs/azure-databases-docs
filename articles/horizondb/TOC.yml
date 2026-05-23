@@ -269,15 +269,15 @@
 - name: Networking
   items:
     - name: Public access
-      href: network/concepts-networking-public.md
+      href: network/concepts-network-public.md
     - name: Networking overview
-      href: network/how-to-networking.md
+      href: network/how-to-network.md
     - name: How-to guides
       items:
         - name: Add firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+          href: network/how-to-network-servers-public-access-add-firewall.md
         - name: Delete firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+          href: network/how-to-network-servers-public-access-delete-firewall.md
 - name: High availability and resilience
   items:
     - name: High availability

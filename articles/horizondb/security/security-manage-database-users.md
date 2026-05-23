@@ -93,7 +93,7 @@ The cluster administrator login  can be used to create more users and grant thos
 
 ## Related content
 
-- [Networking in Azure HorizonDB](../network/how-to-networking.md)
+- [Networking in Azure HorizonDB](../network/how-to-network.md)
 - [Database Roles and Privileges](https://www.postgresql.org/docs/current/user-manag.html)
 - [GRANT Syntax](https://www.postgresql.org/docs/current/sql-grant.html)
 - [Privileges](https://www.postgresql.org/docs/current/ddl-priv.html)

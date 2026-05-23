@@ -84,4 +84,4 @@ For example, the following error might appear if authentication fails for a JDBC
 
 - [What is Azure HorizonDB?](../overview.md)
 - [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
-- [Networking in Azure HorizonDB](../network/how-to-networking.md)
+- [Networking in Azure HorizonDB](../network/how-to-network.md)

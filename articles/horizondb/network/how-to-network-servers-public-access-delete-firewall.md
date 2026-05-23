@@ -82,5 +82,5 @@ Firewall rule operations cannot be requested for a private access enabled server
 
 ## Related content
 
-- [Networking in Azure HorizonDB](how-to-networking.md)
-- [Add firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-firewall-rules.md)
+- [Networking in Azure HorizonDB](how-to-network.md)
+- [Add firewall rules in Azure HorizonDB](how-to-network-servers-public-access-add-firewall.md)

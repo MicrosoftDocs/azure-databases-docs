@@ -15,15 +15,15 @@ ms.topic: how-to
 
 When you deploy your Azure HorizonDB, you can configure its networking mode as **Public access (allowed IP addresses)**.
 
-For more information about public access, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md).
+For more information about public access, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-network-public.md).
 
 ## Public access (allowed IP addresses)
 
 If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
 
-- [Add firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
-- [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
+- [Add firewall rules in Azure HorizonDB](how-to-network-servers-public-access-add-firewall.md).
+- [Delete firewall rules in Azure HorizonDB](how-to-network-servers-public-access-delete-firewall.md).
 
 ## Related content
 
-- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-networking-public.md)
+- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-network-public.md)

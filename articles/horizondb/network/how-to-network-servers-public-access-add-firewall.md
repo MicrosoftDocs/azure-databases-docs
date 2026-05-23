@@ -110,5 +110,5 @@ To allow public access from any Azure service within Azure to your server, you m
 
 ## Related content
 
-- [Networking in Azure HorizonDB](how-to-networking.md)
-- [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)
+- [Networking in Azure HorizonDB](how-to-network.md)
+- [Delete firewall rules in Azure HorizonDB](how-to-network-servers-public-access-delete-firewall.md)
