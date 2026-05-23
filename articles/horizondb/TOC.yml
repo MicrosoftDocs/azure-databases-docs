@@ -28,16 +28,6 @@
           href: configure-maintain/how-to-enable-deletion-protection.md
 - name: Configure and maintain
   items:
-    - name: How-to guides
-      items:
-        - name: Request a quota increase
-          href: configure-maintain/how-to-request-quota-increase.md
-        - name: Deploy with Azure Pipelines
-          href: configure-maintain/azure-pipelines-deploy-database-task.md
-        - name: Copy activity in Microsoft Fabric Data Factory
-          href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
-        - name: Script activity in Microsoft Fabric Data Factory
-          href: configure-maintain/how-to-data-factory-script-activity-fabric.md
     - name: Compute replicas
       items:
     - name: Server parameters
@@ -216,6 +206,10 @@
               href: extensions/concepts-extensions-versions.md
             - name: List by version of PostgreSQL
               href: extensions/concepts-extensions-by-engine.md
+    - name: How-to guides
+      items:
+        - name: Request a quota increase
+          href: configure-maintain/how-to-request-quota-increase.md
 - name: Security
   items:
     - name: Security overview
