@@ -13,7 +13,7 @@ ms.topic: how-to
 
 # Networking in Azure HorizonDB
 
-When you deploy your Azure HorizonDB, you can configure its networking mode as **Public access (allowed IP addresses)**.
+When you deploy your Azure HorizonDB, the cluster networking mode is **Public access (allowed IP addresses)**.
 
 For more information about public access, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-network-public.md).
 

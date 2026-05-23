@@ -30,6 +30,12 @@
   items:
     - name: Compute replicas
       items:
+        - name: How-to guides
+          items:
+            - name: Scale compute
+              href: configure-maintain/how-to-scale-compute.md
+            - name: Add or remove replicas
+              href: configure-maintain/how-to-add-remove-replica.md
     - name: Server parameters
       items:
         - name: Overview
@@ -191,11 +197,7 @@
             - name: View installed extensions
               href: extensions/how-to-view-installed-extensions.md
             - name: Use pg_partman
-              href: configure-maintain/how-to-use-pg-partman.md            
-            - name: Scale compute
-              href: configure-maintain/how-to-scale-compute.md
-            - name: Add or remove replicas
-              href: configure-maintain/how-to-add-remove-replica.md
+              href: configure-maintain/how-to-use-pg-partman.md
         - name: Troubleshoot
           items:
             - name: Possible errors when managing extensions
@@ -260,8 +262,6 @@
       href: network/concepts-network-public.md
     - name: Networking overview
       href: network/how-to-network.md
-    - name: How-to guides
-      items:
     - name: Firewall
       items:
         - name: Add firewall rules

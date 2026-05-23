@@ -19,25 +19,6 @@ Securing your PostgreSQL database deployments is crucial to protect sensitive da
 
 This article guides you on how to secure your Azure HorizonDB Server deployment.
 
-## Network security
-
-The Network Security section guides you through preventing public access and using the networking features to integrate your PostgreSQL into a secure, segmented cloud network architecture.
-
-- **Disable public network access**: Disable public network access for your PostgreSQL to prevent exposure to the internet. This action ensures that only trusted networks can access your database.
-
-- **Legacy firewall rules and service endpoints**: If you need to allow access from specific IP addresses, use [legacy firewall rules and service endpoints](../network/how-to-network-servers-public-access-add-firewall.md). However, this approach isn't recommended. Instead, prefer using private endpoints or virtual network integration.
-
-Network security articles are in the networking sections:
-
-- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](../network/concepts-network-public.md)
-
-
-- **Use managed identities for secure application access**: Use managed identities in Azure to securely authenticate applications and services without the need to manage credentials.
-
-- **Enforce strong authentication policies**: HorizonDB follows Azure security best practices for authentication and access enforcement.
-
-- **Local authentication should use SCRAM authentication**: If you must use local authentication, ensure that strong password policies are enforced. Use password complexity requirements and regular password rotation to minimize the risk of compromised accounts. For more information, visit [SCRAM authentication in Azure HorizonDB](security-connect-scram.md).
-
 ## Access control
 
 The access control section focuses on securing the level of access based on the least privilege principle. It emphasizes minimizing the risk of unauthorized access to sensitive resources by restricting and managing elevated permissions, enforcing multifactor authentication, and ensuring that privileged actions are logged and audited.
