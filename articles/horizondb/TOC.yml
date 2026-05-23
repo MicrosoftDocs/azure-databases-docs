@@ -176,6 +176,16 @@
           href: extensions/concepts-extensions.md
         - name: Special considerations
           href: extensions/concepts-extensions-considerations.md
+        - name: Azure Storage extension
+          items:
+            - name: Overview
+              href: extensions/concepts-storage-extension.md
+            - name: Quickstart
+              href: extensions/quickstart-azure-storage-extension.md
+            - name: Configure
+              href: extensions/how-to-configure-azure-storage-extension.md
+            - name: Function reference
+              href: extensions/reference-azure-storage-extension.md
         - name: How-to guides
           items:
             - name: Allow extensions
@@ -191,33 +201,21 @@
             - name: View installed extensions
               href: extensions/how-to-view-installed-extensions.md
             - name: Use pg_partman
-              href: configure-maintain/how-to-use-pg-partman.md
-        - name: Azure Storage extension
-          items:
-            - name: Overview
-              href: extensions/concepts-storage-extension.md
-            - name: Quickstart
-              href: extensions/quickstart-azure-storage-extension.md
-            - name: Configure
-              href: extensions/how-to-configure-azure-storage-extension.md
-            - name: Function reference
-              href: extensions/reference-azure-storage-extension.md
-        - name: How-to guides
-          items:
+              href: configure-maintain/how-to-use-pg-partman.md            
             - name: Scale compute
               href: configure-maintain/how-to-scale-compute.md
             - name: Add or remove replicas
               href: configure-maintain/how-to-add-remove-replica.md
+        - name: Troubleshoot
+          items:
+            - name: Possible errors when managing extensions
+              href: extensions/errors-extensions.md
         - name: Reference
           items:
             - name: List by name
               href: extensions/concepts-extensions-versions.md
             - name: List by version of PostgreSQL
               href: extensions/concepts-extensions-by-engine.md
-        - name: Troubleshoot
-          items:
-            - name: Possible errors when managing extensions
-              href: extensions/errors-extensions.md
 - name: Security
   items:
     - name: Security overview
