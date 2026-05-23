@@ -19,7 +19,6 @@ The high-availability feature enhances reliability and fault tolerance by deploy
 
 High availability can be configured either during the initial creation of your Azure HorizonDB instance or enabled later on an existing instance. This flexibility allows you to align availability settings with your workload requirements, ensuring minimal downtime and improved business continuity without requiring application-level changes.
 
-
 ## Enable high availability for existing servers
 
 You can enable high availability on an existing Azure HorizonDB instance at any time. When you enable high availability, the service creates a standby compute replica that mirrors your primary server.
@@ -28,21 +27,20 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB cluster.
 
-2. On the left menu, in the **Settings** section, select **High availability**.
+1. On the left menu, in the **Settings** section, select **High availability**.
 
    You have two options:
 
-    - **Disabled** - High availability isn't configured.
-    - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
+   - **Disabled** - High availability isn't configured.
+   - **Zone redundant - Replica in a different availability zone** - a stand by compute replica is provisioned in a different availability zone.
 
-3. Select the **Zone redundant - Replica in a different availability zone** option.
+1. Select the **Zone redundant - Replica in a different availability zone** option.
 
    :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-4. When you're done configuring the settings, select **Save** to apply the changes.
+1. When you're done configuring the settings, select **Save** to apply the changes.
 
-5. A deployment starts. When it finishes, a notification shows that you successfully enabled high availability.
-
+1. A deployment starts. When it finishes, a notification shows that you successfully enabled high availability.
 
 ## Enable High Availability during server provisioning
 
@@ -50,28 +48,26 @@ You can configure high availability when you first create your Azure HorizonDB i
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1.  Select Azure HorizonDB Service and Click **Create**.
+1. Select Azure HorizonDB Service and Select **Create**.
 
-   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
-   
-2. Provide your resource group and cluster name and go to  **High availability** section.
+:::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
 
-     You have two High availability mode choices:
+1. Provide your resource group and cluster name and go to **High availability** section.
 
-    - **Disabled** - High availability isn't configured.
-    - **Zone redundant - Replica in a different availability zone** - a stand by  compute replica is provisioned in a different availability zone.
+   You have two High availability mode choices:
 
-3. Select the **Zone redundant - Replica in a different availability zone** option.
+   - **Disabled** - High availability isn't configured.
+   - **Zone redundant - Replica in a different availability zone** - a stand by compute replica is provisioned in a different availability zone.
+
+1. Select the **Zone redundant - Replica in a different availability zone** option.
 
    :::image type="content" source="media/how-to-configure-high-availability/high-availability-enabled.png" alt-text="Screenshot that shows the pane for configuring high availability." lightbox="media/how-to-configure-high-availability/high-availability-enabled.png":::
 
-4. When you're done configuring the settings, select  **Review + create** to review the changes then click **create**.
+1. When you're done configuring the settings, select **Review + create** to review the changes then select **create**.
 
-5. A deployment starts. Deployment begins. After completion, a notification confirms that the HorizonDB cluster has been successfully created with high availability enabled.
-
+1. A deployment starts. Deployment begins. After completion, a notification confirms that the HorizonDB cluster has been successfully created with high availability enabled.
 
 ## Related content
 
-- [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md)
-- [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
-
+- [Overview of business continuity in Azure HorizonDB (preview)](../backup-restore/concepts-business-continuity.md)
+- [Backups in Azure HorizonDB (preview)](../backup-restore/concepts-backup-restore.md)
