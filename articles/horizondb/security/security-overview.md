@@ -67,23 +67,6 @@ Here are some possible security services, features, and best practices for the d
 
 - Masking Data Wrappers: Apply masking rules on external data.
 
-<a id="logging-and-threat-detection"></a>
-
-## Log and threat detection
-
-The logging and threat detection section covers controls for detecting threats in Azure environments. It covers enabling, collecting, and storing audit logs for Azure services. It emphasizes the use of native threat detection capabilities, centralized log management, and proper log retention for security investigations and compliance. This section focuses on generating high-quality alerts, centralizing security analysis through Azure tools, maintaining accurate time synchronization, and ensuring effective log retention strategies.
-
-Here are some possible security services, features, and best practices for the logging and threat detection section:
-
-- **Enable collection of diagnostic logs**: Ensure that diagnostic logging is enabled by selecting category Group "audit." Use Azure Policy to implement:
-
-- Policy [Enable logging by category group for PostgreSQL (microsoft.dbforpostgresql/flexibleservers) to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdd1dbc6-0004-4fcd-afd7-b67550de37ff/version/1.0.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D/contextRender~/false)
-
-- Initiative [Enable audit category group resource logging for supported resources to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/InitiativeDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Ff5b29bc4-feca-4cc6-a58a-772dd5e290a5/version/1.1.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D)
-- **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server instance. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
-
-- **Enable audit logging**: Configure audit logging for your PostgreSQL to track and log database activities by using the [pgaudit extension](https://www.pgaudit.org/).
-
 ## Backup and recovery
 
 The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, For more information, visit [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md).
