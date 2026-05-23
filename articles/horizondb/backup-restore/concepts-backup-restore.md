@@ -4,7 +4,7 @@ description: Learn about the concepts of backup and restore with Azure HorizonDB
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 05/22/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: concept-article

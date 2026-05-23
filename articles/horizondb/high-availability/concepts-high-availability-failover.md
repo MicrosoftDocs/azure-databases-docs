@@ -1,9 +1,9 @@
 ---
 title: High Availability and Failover Concepts in Azure HorizonDB
 description: Learn about high availability architecture, zone redundancy, failover processes, and recovery behavior in Azure HorizonDB.
-author: denzilribeiro
-ms.author: denzilr
-ms.reviewer: maghan
+author: kabharati
+ms.author: kabharati
+ms.reviewer: denzilr, maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability

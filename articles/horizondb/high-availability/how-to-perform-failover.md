@@ -3,7 +3,7 @@ title: Perform Failover in Azure HorizonDB
 description: This article describes how to perform failover in Azure HorizonDB.
 author: kabharati
 ms.author: kabharati
-ms.reviewer: maghan
+ms.reviewer: denzilr, maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
