@@ -11,16 +11,16 @@ ms.topic: concept-article
 ---
 
 # Compute replicas in Azure HorizonDB (preview)
- A compute replica is where the PostgreSQL relational engine runs and where language, query, and transaction processing occur. An Azure HorizonDB cluster contains one or more compute replicas:
+A compute replica is where the PostgreSQL relational engine runs and where language, query, and transaction processing occur. An Azure HorizonDB cluster contains one or more compute replicas:
 
 - **Primary replica** - The single read-write replica that handles all write operations and can also serve read queries.
 - **Standby replicas** - One or more read-only replicas that serve read traffic and act as failover candidates.
 
 Azure HorizonDB supports two dimensions of compute scaling: scaling up (vertical) and scaling out (horizontal read scale-out).
 
-## Compute Replicas
+## How compute replicas work
 
-Each compute replica runs a stateless PostgreSQL engine that connects to the shared storage layer. The replica processes queries, manages transactions, and maintains a local NVMe SSD cache for frequently accessed data pages. Compute replicas are provisioned with 8 GB of memory per vCore. As you increase the vCore count, memory scales proportionally. You can scale compute resources without affecting storage, and vice versa. 
+Each compute replica runs a stateless PostgreSQL engine that connects to the shared storage layer. The replica processes queries, manages transactions, and maintains a local NVMe SSD cache for frequently accessed data pages. Compute replicas are provisioned with 8 GB of memory per vCore. As you increase the vCore count, memory scales proportionally. You can scale compute resources without affecting storage, and vice versa.
 
 ### Local SSD cache
 
@@ -42,7 +42,7 @@ Compute replicas offload durability and high availability tasks to the storage l
 
 ## Scale up
 
-Scaling up increases the vCores and memory allocated to each compute replica in the cluster. Scale up, when your workload requires more processing power, memory per query for complex queries, large joins, or high connection counts or needs more resources on your primary replica.
+Scaling up increases the vCores and memory allocated to each compute replica in the cluster. Scale up when your workload requires more processing power, memory per query for complex queries, large joins, or high connection counts, or needs more resources on your primary replica.
 
 ### When to scale up
 Consider scaling up when you observe:
@@ -60,7 +60,6 @@ When you initiate a scale up operation, Azure HorizonDB restarts the compute rep
 - Existing connections are dropped.
 - The service applies the new compute configuration and brings the server back online automatically.
 
-
 ## Scale out reads
 
 Scaling out adds more standby replicas to the Azure HorizonDB cluster. Use scale out to distribute read traffic across multiple replicas, improving read throughput and reducing load on the primary replica. An Azure HorizonDB cluster supports up to 15 readable replicas in addition to the primary.
@@ -69,8 +68,8 @@ Scaling out adds more standby replicas to the Azure HorizonDB cluster. Use scale
 
 Consider scaling out when you observe:
 
-- Your application has read-heavy workloads 
-- Your reads can tolerate milliseconds delay for data visibility on compute replica.
+- Your application has read-heavy workloads.
+- Your reads can tolerate a milliseconds delay for data visibility on a compute replica.
 - You need to isolate reporting or analytics workloads from transactional write traffic.
 - You want to improve availability by adding failover candidates across availability zones.
 
@@ -94,13 +93,11 @@ Because the storage is shared, provisioning a new replica is fast. There's no ne
 
 Azure HorizonDB provides a dedicated read-only endpoint that automatically load balances connections across all standby replicas. Applications that separate read and write traffic can direct read queries to this endpoint to distribute load without any application-level routing logic. The read-write endpoint always routes to the primary replica. Use it for all write operations and for reads that require the latest committed data.
 
-
 ## Relationship to high availability
 
 Standby replicas serve a dual purpose: they handle read traffic and act as failover candidates. To enable zone-redundant high availability, you need at least two replicas (one primary and one standby) placed in separate availability zones. Adding more replicas increases both read capacity and failover options.
 
 For more information about failover behavior, see [High availability and failover in Azure HorizonDB](../high-availability/concepts-high-availability-failover.md).
-
 
 ## Related content
 
