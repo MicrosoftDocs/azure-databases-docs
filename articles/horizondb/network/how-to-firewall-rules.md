@@ -1,8 +1,8 @@
 ---
 title: Firewall Rules in Azure HorizonDB
 description: This article describes how to use firewall rules to connect with the public networking deployment option in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql

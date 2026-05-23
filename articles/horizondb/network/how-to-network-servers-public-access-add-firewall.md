@@ -1,8 +1,8 @@
 ---
 title: Add Firewall Rules in Azure HorizonDB
 description: This article describes how to add firewall rules in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -23,7 +23,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Networking**.
 
-   :::image type="content" source="media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled.png":::
+   :::image type="content" source="media/how-to-network-servers-public-access-add-firewall/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-network-servers-public-access-add-firewall/public-access-networking-enabled.png":::
 
 1. To create a firewall rule that allows connections from the public IP address of the client machine you're using to connect to the portal, select **Add current client IP address (###.###.###.###)**.
 

@@ -252,10 +252,6 @@
       items:
         - name: Data encryption overview
           href: security/security-data-encryption.md
-    - name: Firewall
-      items:
-        - name: Firewall rules
-          href: security/security-firewall-rules.md
 - name: Performance and monitor
   items:
     - name: Query Monitoring
@@ -274,6 +270,10 @@
       href: network/how-to-network.md
     - name: How-to guides
       items:
+    - name: Firewall
+      items:
+        - name: Firewall rules
+          href: network/how-to-firewall-rules.md
         - name: Add firewall rules
           href: network/how-to-network-servers-public-access-add-firewall.md
         - name: Delete firewall rules

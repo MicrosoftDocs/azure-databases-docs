@@ -1,8 +1,8 @@
 ---
 title: Networking in Azure HorizonDB
 description: This article describes how to configure networking related settings in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql

@@ -1,8 +1,8 @@
 ---
 title: Delete Firewall Rules in Azure HorizonDB
 description: This article describes how to delete firewall rules in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -23,7 +23,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Networking**.
 
-   :::image type="content" source="media/how-to-networking-servers-deployed-public-access-delete-firewall-rules/public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking-servers-deployed-public-access-delete-firewall-rules/public-access-networking-enabled-existing-firewall-rules.png":::
+   :::image type="content" source="media/how-to-network-servers-public-access-delete-firewall/public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-network-servers-public-access-delete-firewall/public-access-networking-enabled-existing-firewall-rules.png":::
 
 1. To delete a firewall rule, select the trash bin icon located to the right of the rule definition.
 

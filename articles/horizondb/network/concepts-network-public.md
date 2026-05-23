@@ -1,8 +1,8 @@
 ---
 title: Networking Overview with Public Access (Allowed IP Addresses) in Azure HorizonDB
 description: Learn about connectivity and networking with public access in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
