@@ -25,7 +25,7 @@ Server-level firewall rules apply to all databases on the same Azure HorizonDB i
 
 The following diagram shows how connection attempts from the internet and Azure must pass through the firewall before they can reach Azure HorizonDB databases:
 
-:::image type="content" source="media/security-firewall-rules/firewall-diagram.png" alt-text="Diagram of firewall rules in Azure HorizonDB.":::
+:::image type="content" source="media/how-to-firewall-rules/firewall-diagram.png" alt-text="Diagram of firewall rules in Azure HorizonDB.":::
 
 ## Connect from the internet
 
@@ -49,7 +49,7 @@ If a fixed outgoing IP address isn't available for your Azure service, consider 
 
 1. Select **Save**.
 
-   :::image type="content" source="media/security-firewall-rules/allow-public-access.png" alt-text="Screenshot of networking page with firewall." lightbox="media/security-firewall-rules/allow-public-access.png" :::
+   :::image type="content" source="media/how-to-firewall-rules/allow-public-access.png" alt-text="Screenshot of networking page with firewall." lightbox="media/how-to-firewall-rules/allow-public-access.png" :::
 
    > [!IMPORTANT]  
    > The **Allow public access from any Azure service within Azure to this server** option configures the firewall to allow all connections from Azure, including connections from the subscriptions of other customers. When you're using this option, make sure your sign-in and user permissions limit access to only authorized users.
@@ -82,6 +82,6 @@ For example, the following error might appear if authentication fails for a JDBC
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
+- [What is Azure HorizonDB (preview)?](../overview.md)
 - [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
-- [Networking in Azure HorizonDB](../network/how-to-network.md)
+- [Networking in Azure HorizonDB](how-to-network.md)

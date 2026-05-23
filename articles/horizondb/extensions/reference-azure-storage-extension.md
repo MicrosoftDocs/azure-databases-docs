@@ -686,5 +686,4 @@ Any user or role can invoke this function.
 - [Azure storage extension in Azure HorizonDB](concepts-storage-extension.md)
 - [Configure the Azure Storage extension in Azure HorizonDB](how-to-configure-azure-storage-extension.md)
 - [Quickstart examples for Azure Storage extension in Azure HorizonDB](quickstart-azure-storage-extension.md)
-- [Troubleshoot the Azure Storage extension in Azure HorizonDB](../troubleshoot/troubleshoot-azure-storage-extension.md)
 - [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
