@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability in Azure HorizonDB.
 ---
 
-# Configure high availability in Azure HorizonDB (preview)
+# Configure high availability in Azure HorizonDB (Preview)
 
 This article describes how to enable or disable high availability (HA) on your Azure HorizonDB cluster by using the Azure portal.
 
@@ -69,5 +69,5 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Related content
 
-- [Overview of business continuity in Azure HorizonDB (preview)](../backup-restore/concepts-business-continuity.md)
-- [Backups in Azure HorizonDB (preview)](../backup-restore/concepts-backup-restore.md)
+- [Overview of business continuity in Azure HorizonDB (Preview)](../backup-restore/concepts-business-continuity.md)
+- [Backups in Azure HorizonDB (Preview)](../backup-restore/concepts-backup-restore.md)
