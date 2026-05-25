@@ -14,8 +14,6 @@
       href: connectivity/concepts-connection-endpoints.md
     - name: Connection libraries
       href: connectivity/concepts-connection-libraries.md
-    - name: Connection pooling best practices
-      href: connectivity/concepts-connection-pooling-best-practices.md
     - name: How-to guides
       items:
         - name: Create a HorizonDB cluster
@@ -30,20 +28,6 @@
           href: configure-maintain/how-to-enable-deletion-protection.md
 - name: Configure and maintain
   items:
-    - name: Scheduled maintenance
-      href: configure-maintain/concepts-maintenance.md
-    - name: Logical replication and logical decoding
-      href: configure-maintain/concepts-logical.md
-    - name: How-to guides
-      items:
-        - name: Request a quota increase
-          href: configure-maintain/how-to-request-quota-increase.md
-        - name: Deploy with Azure Pipelines
-          href: configure-maintain/azure-pipelines-deploy-database-task.md
-        - name: Copy activity in Microsoft Fabric Data Factory
-          href: configure-maintain/how-to-data-factory-copy-activity-fabric.md
-        - name: Script activity in Microsoft Fabric Data Factory
-          href: configure-maintain/how-to-data-factory-script-activity-fabric.md
     - name: Compute replicas
       items:
         - name: Overview
@@ -182,12 +166,24 @@
               href: server-parameters/param-write-ahead-log-recovery-target.md
             - name: Write-Ahead Log / Settings
               href: server-parameters/param-write-ahead-log-settings.md
+    - name: Scheduled maintenance
+      href: configure-maintain/concepts-maintenance.md
     - name: Extensions
       items:
         - name: Extensions and modules
           href: extensions/concepts-extensions.md
         - name: Special considerations
           href: extensions/concepts-extensions-considerations.md
+        - name: Azure Storage extension
+          items:
+            - name: Overview
+              href: extensions/concepts-storage-extension.md
+            - name: Quickstart
+              href: extensions/quickstart-azure-storage-extension.md
+            - name: Configure
+              href: extensions/how-to-configure-azure-storage-extension.md
+            - name: Function reference
+              href: extensions/reference-azure-storage-extension.md
         - name: How-to guides
           items:
             - name: Allow extensions
@@ -204,26 +200,20 @@
               href: extensions/how-to-view-installed-extensions.md
             - name: Use pg_partman
               href: configure-maintain/how-to-use-pg-partman.md
-        - name: Azure Storage extension
+        - name: Troubleshoot
           items:
-            - name: Overview
-              href: extensions/concepts-storage-extension.md
-            - name: Quickstart
-              href: extensions/quickstart-azure-storage-extension.md
-            - name: Configure
-              href: extensions/how-to-configure-azure-storage-extension.md
-            - name: Function reference
-              href: extensions/reference-azure-storage-extension.md
+            - name: Possible errors when managing extensions
+              href: extensions/errors-extensions.md
         - name: Reference
           items:
             - name: List by name
               href: extensions/concepts-extensions-versions.md
             - name: List by version of PostgreSQL
               href: extensions/concepts-extensions-by-engine.md
-        - name: Troubleshoot
-          items:
-            - name: Possible errors when managing extensions
-              href: extensions/errors-extensions.md
+    - name: How-to guides
+      items:
+        - name: Request a quota increase
+          href: configure-maintain/how-to-request-quota-increase.md
 - name: Security
   items:
     - name: Security overview
@@ -258,10 +248,6 @@
       items:
         - name: Data encryption overview
           href: security/security-data-encryption.md
-    - name: Firewall
-      items:
-        - name: Firewall rules
-          href: security/security-firewall-rules.md
 - name: Performance and monitor
   items:
     - name: Query Monitoring
@@ -275,15 +261,15 @@
 - name: Networking
   items:
     - name: Public access
-      href: network/concepts-networking-public.md
+      href: network/concepts-network-public.md
     - name: Networking overview
-      href: network/how-to-networking.md
-    - name: How-to guides
+      href: network/how-to-network.md
+    - name: Firewall
       items:
         - name: Add firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
+          href: network/how-to-network-servers-public-access-add-firewall.md
         - name: Delete firewall rules
-          href: network/how-to-networking-servers-deployed-public-access-delete-firewall-rules.md
+          href: network/how-to-network-servers-public-access-delete-firewall.md
 - name: High availability and resilience
   items:
     - name: High availability
@@ -394,12 +380,8 @@
           href: migrate/how-to-migrate-using-dump-and-restore.md
 - name: Reference
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
     - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager template
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+      href: /rest/api/horizondb
 - name: Resources
   items:
     - name: Pricing

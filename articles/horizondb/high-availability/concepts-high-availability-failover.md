@@ -1,9 +1,9 @@
 ---
 title: High Availability and Failover Concepts in Azure HorizonDB
 description: Learn about high availability architecture, zone redundancy, failover processes, and recovery behavior in Azure HorizonDB.
-author: denzilribeiro
-ms.author: denzilr
-ms.reviewer: maghan
+author: kabharati
+ms.author: kabharati
+ms.reviewer: denzilr, maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
@@ -12,24 +12,27 @@ ms.topic: concept-article
 
 # High availability in Azure HorizonDB (preview)
 
-For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. In Azure HorizonDB, high availability is achieved through a combination of **zone-resilient storage**, **distributed compute replicas**, and **automated failover mechanisms**. 
+For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. In Azure HorizonDB, high availability is achieved through a combination of **zone-resilient storage**, **distributed compute replicas**, and **automated failover mechanisms**.
 
 ## Overview of high availability
+
 Unlike traditional PostgreSQL deployments that rely on streaming replication between independent servers, Azure HorizonDB uses a cloud-native architecture that separates compute and storage. This architecture changes how failover works by eliminating the need for rewind of WAL (write-ahead log) or post failover reinitialization of the primary, thereby reducing failover time.
 
 ### Compute replicas
+
 High availability at the compute layer requires at least **2 compute replicas**. Compute replicas serve as both read scale-out targets and failover candidates.
 
 A HorizonDB cluster consists of:
-  - One **primary replica** (read/write)
-  - One or more **readable HA replicas**
+- One **primary replica** (read/write)
+- One or more **readable HA replicas**
 
 When you add a replica, the system automatically places it in a **different availability zone** when the region supports multiple zones. This placement provides **zone-level fault isolation** at the compute layer.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > To achieve high availability, you must provision at least one replica in addition to the primary
 
 ### Zone-redundant storage
+
 Unlike traditional PostgreSQL replication, Azure HorizonDB doesn't stream WAL from the primary to standby replicas for data durability. Instead, the architecture relies on a shared storage layer:
 
 - The zone redundant **WAL service** that is shared across all compute replicas.
@@ -41,6 +44,7 @@ Unlike traditional PostgreSQL replication, Azure HorizonDB doesn't stream WAL fr
 Failover is the process of promoting a standby replica to become the new primary when the current primary becomes unavailable. Azure HorizonDB supports both automatic and planned failover.
 
 ### Automatic failover (unplanned)
+
 Automatic failover occurs when the primary compute replica becomes unavailable due to an unexpected event, such as:
 
 - Hardware failure in the availability zone hosting the primary
@@ -55,7 +59,6 @@ When the service detects that the primary is unavailable, it initiates the follo
 1. **Wait for Promotion** - wait until the database is writable.
 1. **Endpoint update** - The read-write endpoint is updated to point to the newly promoted primary.
 1. **Client reconnection** - Client connections to the previous primary are dropped. Applications reconnect through the read-write endpoint, which now routes to the new primary.
-
 
 ### Planned failover
 
@@ -91,10 +94,9 @@ To get the most out of high availability in Azure HorizonDB, consider the follow
 - **Avoid long-running transactions** - Long transactions delay planned failover completion and increase the risk of rollback during unplanned failover.
 - **Don't store state in temporary tablespaces** - Temporary objects don't persist across failover events. Avoid creating user schema objects in temporary tablespaces.
 
-
 ## Related content
 
 - [Overview of business continuity in Azure HorizonDB (preview)](../backup-restore/concepts-business-continuity.md)
 - [Configure high availability in Azure HorizonDB (preview)](how-to-configure-high-availability.md)
-- [Perform failover in Azure HorizonDB (preview)](how-to-perform-failover.md)
+- [Perform Failover in Azure HorizonDB (preview)](how-to-perform-failover.md)
 - [Backups in Azure HorizonDB (preview)](../backup-restore/concepts-backup-restore.md)

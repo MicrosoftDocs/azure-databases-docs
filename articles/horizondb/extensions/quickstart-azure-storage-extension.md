@@ -419,7 +419,6 @@ SELECT azure_storage.account_remove('<account_name>');
 
 ## Related content
 
-- [Troubleshoot the Azure Storage extension in Azure HorizonDB](../troubleshoot/troubleshoot-azure-storage-extension.md)
 - [Reference of functions provided by the Azure Storage extension in Azure HorizonDB](reference-azure-storage-extension.md)
 - [Azure storage extension in Azure HorizonDB](concepts-storage-extension.md)
 - [Configure the Azure Storage extension in Azure HorizonDB](how-to-configure-azure-storage-extension.md)

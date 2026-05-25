@@ -1,8 +1,8 @@
 ---
 title: Add Firewall Rules in Azure HorizonDB
 description: This article describes how to add firewall rules in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: milenak
+ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-database-postgresql
@@ -15,7 +15,7 @@ ms.topic: how-to
 
 When you enable public access, you can set up firewall rules that allow connections from specific IP addresses or from any Azure service.
 
-## [Portal](#tab/portal-add-firewall-rules)
+## Add firewall rules using the Azure portal
 
 Use the [Azure portal](https://portal.azure.com/):
 
@@ -23,7 +23,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Networking**.
 
-   :::image type="content" source="media/how-to-networking/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-networking/public-access-networking-enabled.png":::
+   :::image type="content" source="media/how-to-network-servers-public-access-add-firewall/public-access-networking-enabled.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-network-servers-public-access-add-firewall/public-access-networking-enabled.png":::
 
 1. To create a firewall rule that allows connections from the public IP address of the client machine you're using to connect to the portal, select **Add current client IP address (###.###.###.###)**.
 
@@ -33,8 +33,8 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. To create a firewall rule that allows connections from any IP address allocated to any Azure service or asset, select **Allow public access from any Azure service within Azure to this server**.
 
-> [!IMPORTANT]  
-> **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+   > [!IMPORTANT]  
+   > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 1. Select **Save**.
 
@@ -48,7 +48,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 <!--
 
-## [CLI](#tab/CLI-add-firewall-rules)
+## Add firewall rules using the Azure CLI
 
 You can add firewall rules to a server by using the [az postgres flexible-server firewall-rule create](/CLI/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-create) command.
 
@@ -110,5 +110,5 @@ To allow public access from any Azure service within Azure to your server, you m
 
 ## Related content
 
-- [Networking in Azure HorizonDB](how-to-networking.md)
-- [Delete firewall rules in Azure HorizonDB](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md)
+- [Networking in Azure HorizonDB](how-to-network.md)
+- [Delete firewall rules in Azure HorizonDB](how-to-network-servers-public-access-delete-firewall.md)

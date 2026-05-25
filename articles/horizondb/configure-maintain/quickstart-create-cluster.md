@@ -476,5 +476,4 @@ az horizondb delete \
 
 ## Related content
 
-- [Firewall rules in Azure HorizonDB](../security/security-firewall-rules.md)
 - [Connect and query overview in Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)
