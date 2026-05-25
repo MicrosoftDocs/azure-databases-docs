@@ -24,7 +24,7 @@ The `pg_fts` extension adds production-quality, BM25-ranked full-text search to 
 `pg_fts` is the recommended full-text search option on Azure HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
 
 > [!NOTE]  
-> `pg_fts` is in **public Preview**.
+> `pg_fts` is in **(Preview)**.
 
 ## When to use pg_fts vs. built-in tsvector
 

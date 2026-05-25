@@ -108,7 +108,7 @@ For more pricing details, view the pricing page.
 
 ## Limitations
 
-Azure HorizonDB is currently in Public Preview. The following features aren't yet available we're actively working on these features.
+Azure HorizonDB is currently in (Preview). The following features aren't yet available we're actively working on these features.
 
 | Feature | Status | Notes |
 | --- | --- | --- |
