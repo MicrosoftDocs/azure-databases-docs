@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
 ---
 
-# Durable functions with pg_durable in Azure HorizonDB (Preview)
+# Durable functions with pg_durable in Azure HorizonDB (preview)
 
 `pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows (embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows) and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
 
@@ -268,8 +268,8 @@ This means:
 
 ## Related content
 
-- [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md)
-- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](../ai/ai-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function (Preview)](../ai/generate-vector-embeddings.md)
+- [Implement durable AI pipelines in Azure HorizonDB (preview)](../ai/ai-pipelines.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (preview)](../ai/ai-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (preview)](../ai/generate-vector-embeddings.md)
 - [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
 - [Duroxide on GitHub](https://github.com/microsoft/duroxide)

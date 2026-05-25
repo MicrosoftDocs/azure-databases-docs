@@ -42,7 +42,7 @@ ms.custom:
 
 ## age
 
-[age](https://age.apache.org/) (Preview) provides graph database capabilities.
+[age](https://age.apache.org/) (preview) provides graph database capabilities.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
@@ -580,7 +580,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 ## pg_duckdb
 
-[pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
+[pg_duckdb](https://github.com/duckdb/pg_duckdb) (preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |

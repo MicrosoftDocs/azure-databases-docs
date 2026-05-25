@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 
-# Build AI agents with Azure HorizonDB (Preview)
+# Build AI agents with Azure HorizonDB (preview)
 
 AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need: persistent memory, knowledge retrieval, and scalable storage, all inside a single PostgreSQL database.
 
@@ -125,14 +125,14 @@ To start building AI agents with Azure HorizonDB:
 1. **Choose a retrieval strategy**: Based on your use case, implement [vector search](vector-search-pgvector.md), [hybrid search](hybrid-search.md), or [graph-augmented RAG](graph-rag.md) to give your agent access to domain knowledge.
 1. **Configure agent memory**: Use your framework's PostgreSQL connector to persist conversation history and agent state in Azure HorizonDB.
 1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
-1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
+1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
-1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
+1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-rank-function.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.
 
 For industry-specific implementation patterns, see [use cases and sample applications](ai-samples.md).
 
 ## Related content
 
-- [AI and agentic use cases and sample applications (Preview)](ai-samples.md)
-- [What are the AI capabilities in Azure HorizonDB (Preview)](ai-overview.md)
+- [AI and agentic use cases and sample applications (preview)](ai-samples.md)
+- [What are the AI capabilities in Azure HorizonDB (preview)](ai-overview.md)

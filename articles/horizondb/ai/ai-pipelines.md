@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 
-# Implement durable AI pipelines in Azure HorizonDB (Preview)
+# Implement durable AI pipelines in Azure HorizonDB (preview)
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embedding, extraction, generation, ranking, human approval) declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
@@ -69,7 +69,7 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management (recommended)
 
-If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default:
+If [AI Model Management in Azure HorizonDB (preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default:
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
@@ -146,10 +146,10 @@ SELECT ai.create_pipeline(
 SELECT ai.explain('rag_pipeline');
 ```
 
-Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
+Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 > [!TIP]  
-> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
+> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ## Run, monitor, and retry
 
@@ -231,6 +231,6 @@ Use one-shot calls for interactive queries and small jobs. Use a pipeline whenev
 
 ## Related content
 
-- [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
-- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
+- [Durable functions with pg_durable in Azure HorizonDB (preview)](../development/durable-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md)

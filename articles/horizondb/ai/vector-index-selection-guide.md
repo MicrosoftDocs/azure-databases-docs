@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 
-# Choose the right vector index for your workload in Azure HorizonDB (Preview)
+# Choose the right vector index for your workload in Azure HorizonDB (preview)
 
 Azure HorizonDB supports four ways to run vector similarity search: an exact (flat) scan and three approximate nearest-neighbor (ANN) indexes - IVFFlat, HNSW, and DiskANN. The right choice depends on how many vectors you have, how often they change, what recall you need, how much memory you can spend, and how often you filter by metadata.
 
@@ -77,7 +77,7 @@ Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed
 
 ### 100 million+ vectors, high-dimensional embeddings (3,072+)
 
-Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) for the exact parameters.
+Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md) for the exact parameters.
 
 ### Up to 100,000 vectors used as a correctness baseline
 
@@ -129,6 +129,6 @@ The operator must match the index access method's operator class. Cosine distanc
 
 ## Related content
 
-- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
-- [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)
+- [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md)
+- [Optimize performance when using pgvector in Azure HorizonDB (preview)](optimize-pgvector-performance.md)

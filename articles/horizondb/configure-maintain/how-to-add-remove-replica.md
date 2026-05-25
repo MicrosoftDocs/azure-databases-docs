@@ -1,5 +1,5 @@
 ---
-title: How to Add or Remove a Replica (Preview)
+title: How to Add or Remove a Replica (preview)
 description: This article describes the steps to add or remove a HorizonDB replica.
 author: DDL-PM
 ms.author: ludingding
@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Add or remove a replica in Azure HorizonDB (Preview)
+# Add or remove a replica in Azure HorizonDB (preview)
 
 An Azure HorizonDB cluster can have up to 15 replicas. Because a replica of Azure HorizonDB is a readable standby replica, adding or removing a replica can affect the high availability behavior of an Azure HorizonDB cluster. This article provides step-by-step instructions to add or remove a replica to or from an Azure HorizonDB cluster.
 

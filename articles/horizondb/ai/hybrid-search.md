@@ -17,12 +17,12 @@ ms.custom:
 # customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 ---
 
-# Hybrid search in Azure HorizonDB (Preview)
+# Hybrid search in Azure HorizonDB (preview)
 
 Hybrid search combines two retrieval strategies in a single query:
 
-- **BM25 full-text search** with [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
-- **Vector similarity search** with [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md) and [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
+- **BM25 full-text search** with [Full-text search with pg_fts in Azure HorizonDB (preview)](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
+- **Vector similarity search** with [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md) and [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
 
 Used alone, each method has blind spots. Used together, they cover for each other. Hybrid search is the default retrieval pattern for production AI applications on Azure HorizonDB - agentic apps, knowledge bases, recommendation engines, support search, and RAG over enterprise content.
 
@@ -77,7 +77,7 @@ CREATE EXTENSION IF NOT EXISTS azure_ai;
 For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md).
 
 > [!TIP]  
-> If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, the `azure_ai` extension is already installed and configured with a `default-embedding` model. You can skip the `CREATE EXTENSION azure_ai` step and omit the model alias in AI function calls.
+> If you have [AI Model Management in Azure HorizonDB (preview)](ai-model-management.md) enabled, the `azure_ai` extension is already installed and configured with a `default-embedding` model. You can skip the `CREATE EXTENSION azure_ai` step and omit the model alias in AI function calls.
 
 ## Set up the table and indexes
 
@@ -108,9 +108,9 @@ CREATE INDEX idx_products_vec
 
 ## Generate embeddings in SQL
 
-You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md). This eliminates the embedding pipeline entirely - no external service calls in your application code.
+You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md). This eliminates the embedding pipeline entirely - no external service calls in your application code.
 
-If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model (BYOM), pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
+If you have [AI Model Management in Azure HorizonDB (preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model (BYOM), pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md) for details on registering models.
 
 ```sql
 -- Backfill embeddings for existing rows
@@ -125,7 +125,7 @@ WHERE embedding IS NULL;
 > [!NOTE]  
 > **AI Model Management users:** You can simplify the call to `azure_openai.create_embeddings(input => name || ' ' || description)` - the `default-embedding` model is used automatically.
 
-For an end-to-end embedding workflow including durable batch processing for large tables, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md) and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
+For an end-to-end embedding workflow including durable batch processing for large tables, see [Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md) and [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md).
 
 ## Run a hybrid search query
 
@@ -229,7 +229,7 @@ The pattern:
 1. Pass those 50 candidates plus the original query through a reranker model.
 1. Return the reranker's top 10.
 
-For the full reranking pattern using the `azure_ai.rank()` function, see [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md).
+For the full reranking pattern using the `azure_ai.rank()` function, see [Semantic reranking with the rank() function (preview)](semantic-rank-function.md).
 
 ## When *not* to use hybrid search
 
@@ -250,6 +250,6 @@ For mixed real-world queries - which is most production retrieval - hybrid is th
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
-- [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md)
-- [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)](ai-search-overview.md)
+- [Full-text search with pg_fts in Azure HorizonDB (preview)](full-text-search.md)
+- [Semantic reranking with the rank() function (preview)](semantic-rank-function.md)

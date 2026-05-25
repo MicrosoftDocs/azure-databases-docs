@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
-# AI Model Management in Azure HorizonDB (Preview)
+# AI Model Management in Azure HorizonDB (preview)
 
 AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AI Model Management handles everything for you with a single toggle in the Azure portal.
 

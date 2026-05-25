@@ -21,11 +21,11 @@ You can connect one parameter group to one or more clusters, as long as the regi
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+1. Browse the [**Azure HorizonDB (preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
 1. By using the filtering buttons and the search box, find the parameter group for which you want to check what clusters are connected to it, and select it.
 
-    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group for which you want to connect to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page filtered by the name of the parameter group for which you want to connect to one or more clusters." lightbox="./media/how-to-connect-clusters-parameter-groups/filter-search-parameter-groups.png":::
 
 1. In the **Connected clusters** section, select the **Connect clusters** command bar button.
 

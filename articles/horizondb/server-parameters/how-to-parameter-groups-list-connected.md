@@ -21,11 +21,11 @@ Given a parameter group, you can list the clusters that are connected to it and 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+1. Browse the [**Azure HorizonDB (preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
 1. By using the filtering buttons and the search box, find the parameter group that you want to check what clusters are connected to it, and select it.
 
-    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page. Filter by the name of the parameter group that you want to check what clusters are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page. Filter by the name of the parameter group that you want to check what clusters are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png":::
 
 1. In the **Connected clusters** section, find the list of clusters that are connected to the parameter group.
 

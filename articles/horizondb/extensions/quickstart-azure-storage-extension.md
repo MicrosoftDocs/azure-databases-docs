@@ -74,7 +74,7 @@ Following is a list of examples to help you learn how to use the Azure Storage e
 
 ## Create a table in which data is loaded
 
-Let's create the table into which we import the contents of the files that we uploaded to the storage account. To do so, connect to your instance of Azure HorizonDB using [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), [PgAdmin](https://www.pgadmin.org/), or the client of your preference, and execute the following statement:
+Let's create the table into which we import the contents of the files that we uploaded to the storage account. To do so, connect to your instance of Azure HorizonDB using [PostgreSQL for Visual Studio Code (preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), [PgAdmin](https://www.pgadmin.org/), or the client of your preference, and execute the following statement:
 
 ```sql
 CREATE TABLE IF NOT EXISTS sample_data (

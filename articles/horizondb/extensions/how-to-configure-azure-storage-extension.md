@@ -194,7 +194,7 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ## Create the extension
 
-Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
+Use the client of your preference, like [PostgreSQL for Visual Studio Code (preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
 
 To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 

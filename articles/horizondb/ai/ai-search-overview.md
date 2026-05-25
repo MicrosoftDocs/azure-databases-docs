@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 
-# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)
+# Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)
 
 Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results - even when the query doesn't share exact words with the content.
 

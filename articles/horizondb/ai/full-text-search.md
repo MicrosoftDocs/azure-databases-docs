@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB (Preview)
+# Full-text search with pg_fts in Azure HorizonDB (preview)
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
@@ -231,7 +231,7 @@ ORDER BY rrf_score DESC
 LIMIT 10;
 ```
 
-For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md).
+For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB (preview)](hybrid-search.md).
 
 ## Performance notes
 
@@ -249,6 +249,6 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
-- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)](ai-search-overview.md)
+- [Hybrid search in Azure HorizonDB (preview)](hybrid-search.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)

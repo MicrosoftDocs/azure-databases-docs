@@ -21,11 +21,11 @@ You can identify which parameter group is connected to a cluster.
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (Preview)**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2Fclusters).
+1. Browse the [**Azure HorizonDB (preview)**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2Fclusters).
 
 1. By using the filtering buttons and the search box, find the cluster for which you want to check what parameter group it's connected to, and select it.
 
-    :::image type="content" source="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group that you want to connect to one or more clusters." lightbox="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page filtered by the name of the parameter group that you want to connect to one or more clusters." lightbox="./media/how-to-identify-connected-cluster/filter-search-parameter-groups.png":::
 
 1. In the resource menu, under **Settings**, select **Parameters**. The name of the parameter group to which the cluster is connected appears to the side of the **Parameter group (create):** label. You can also scroll or search for parameter names to check how each parameter is configured in that parameter group.
 

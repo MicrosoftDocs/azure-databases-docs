@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the data preparation steps required before building AI apps and agents, including search, RAG, and knowledge graph scenarios.
 ---
 
-# Prepare data for AI app and agent development in Azure HorizonDB (Preview)
+# Prepare data for AI app and agent development in Azure HorizonDB (preview)
 
 Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing, and explains how Azure HorizonDB supports each one.
 
@@ -64,7 +64,7 @@ A common starting point is 512-2,000 characters. Tune based on your content type
 
 ### Azure HorizonDB chunks 
 
-Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). You specify a target chunk size and an overlap:
+Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md). You specify a target chunk size and an overlap:
 
 ```sql
 ai.chunk(input_column => 'content', chunk_size => 512, overlap => 64)
@@ -82,7 +82,7 @@ It's important that you use the same embedding model for both your stored data a
 
 Azure HorizonDB provides two ways to generate embeddings:
 
-- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for unplanned embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md).
+- **In a query**: Call the [`azure_openai.create_embeddings()`](ai-functions.md#azure_openaicreate_embeddings) function directly in SQL to embed one or more texts on demand. This approach works well for unplanned embedding of a few rows or for embedding user queries at search time. To learn more, see [Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md).
 - **In a pipeline**: Use the `ai.embed()` step inside a [durable AI pipeline](ai-pipelines.md) to embed text at scale with built-in retries, checkpointing, and crash recovery.
 
 ## Step 4: Enrich with metadata
@@ -122,7 +122,7 @@ CREATE TABLE document_chunks (
 CREATE INDEX ON document_chunks USING diskann (embedding);
 ```
 
-HorizonDB supports three vector index types: IVFFlat, HNSW, and DiskANN. Each type is optimized for different scale and performance characteristics. For guidance on choosing the right index, see [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md).
+HorizonDB supports three vector index types: IVFFlat, HNSW, and DiskANN. Each type is optimized for different scale and performance characteristics. For guidance on choosing the right index, see [Choose the right vector index for your workload in Azure HorizonDB (preview)](vector-index-selection-guide.md).
 
 ### Full-text index
 
@@ -132,7 +132,7 @@ For hybrid search (combining keyword and vector results), also create a full-tex
 CREATE INDEX ON document_chunks USING fts (chunk_text);
 ```
 
-The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md).
+The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB (preview)](full-text-search.md).
 
 ## Beyond search: additional preparation tasks
 
@@ -140,14 +140,14 @@ The five core steps prepare your data for vector and hybrid search, which form t
 
 - **Structured data extraction**: Use the `ai.extract()` pipeline step or the [extract() AI function in the azure_ai extension](ai-functions.md) to pull structured fields (entities, dates, categories) from unstructured text. Extracted data can feed agent tools, power filtering, or populate relational tables alongside your vectors.
 
-- **Knowledge graph construction**: Extract entities and relationships from text and store them as a graph by using Apache AGE, enabling relationship-based queries that complement vector search. For a walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md).
+- **Knowledge graph construction**: Extract entities and relationships from text and store them as a graph by using Apache AGE, enabling relationship-based queries that complement vector search. For a walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (preview)](build-knowledge-graph.md).
 
 ## Automate with AI pipelines
 
-Instead of running each step manually, you can define a complete data preparation workflow using the [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
+Instead of running each step manually, you can define a complete data preparation workflow using the [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md). A single pipeline declaration handles chunking, embedding, and writing to a sink table - with built-in retries, crash recovery, and incremental processing that only re-embeds new or changed rows. For the full guide, see [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md).
 
 ## Related content
 
-- [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md)
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
-- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
+- [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)](ai-search-overview.md)
+- [Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md)
