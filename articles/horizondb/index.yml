@@ -1,0 +1,104 @@
+### YamlMime:Landing
+metadata:
+  title: Microsoft Azure HorizonDB Documentation Landing Page
+  description: Azure HorizonDB is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security.
+  author: denzilribeiro
+  ms.author: denzilr
+  ms.reviewer: maghan
+  ms.date: 06/02/2026
+  ms.service: azure-database-postgresql
+  ms.topic: landing-page
+
+title: Microsoft Azure HorizonDB documentation
+summary: Azure HorizonDB is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Foundry Tools.
+
+landingContent:
+# Card 1
+
+- title: Beginners guide to Azure HorizonDB
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: What is Azure HorizonDB?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Check out our blog
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+  - linkListType: get-started
+    links:
+    - text: Try Azure HorizonDB for free
+      url: configure-maintain/quickstart-create-cluster.md
+  - linkListType: quickstart
+    links:
+    - text: Create an Azure HorizonDB
+      url: configure-maintain/quickstart-create-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Connect and query using Visual Studio Code
+      url: developer/vs-code-extension/vs-code-overview.md
+
+# Card 2
+
+- title: Enterprise ready features
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Back up and restore
+      url: backup-restore/concepts-backup-restore.md
+    - text: Security concepts
+      url: security/security-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Manage high availability
+      url: high-availability/how-to-configure-high-availability.md
+
+# Card 3
+- title: Build AI apps and agents
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Overview of AI capabilities in Azure HorizonDB
+      url: ai/ai-overview.md
+    - text: AI pipelines and data preparation
+      url: ai/ai-pipelines.md
+    - text: AI functions in SQL with the azure_ai extension
+      url: ai/ai-functions.md
+    - text: Semantic Search and Hybrid Search
+      url: ai/ai-search-overview.md
+    - text: Efficient web-scale vector search with DiskANN
+      url: ai/vector-indexing-diskann.md
+    - text: Semantic reranking to improve search relevance
+      url: ai/semantic-rank-function.md
+    - text: Build an AI app with LangChain
+      url: ai/develop-with-langchain.md
+    - text: Build a knowledge graph from unstructured text
+      url: ai/build-knowledge-graph.md
+
+- title: Advanced concepts and overview
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Server parameters
+      url: server-parameters/concepts-server-parameters.md
+    - text: Extensions
+      url: extensions/concepts-extensions.md
+    - text: Scheduled maintenance
+      url: configure-maintain/concepts-maintenance.md
+    - text: Data Encryption
+      url: security/security-data-encryption.md
+    - text: Overview of REST API
+      url: /rest/api/postgresql/
+
+# Card 5
+
+- title: Additional Resources
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Connection libraries for App development
+      url: connectivity/concepts-connection-libraries.md
+    - text: Region Availability
+      url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
+    - text: Customer success stories
+      url: https://www.microsoft.com/customers/search?q=Azure+database+for+postgresql
