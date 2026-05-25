@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure HorizonDB instance by enabling a CanNotDelete lock.
 ---
 
-# Deletion protection with Resource Locks in Azure HorizonDB (preview)
+# Protect against accidental deletion with resource locks in Azure HorizonDB (Preview)
 
 You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Azure HorizonDB to safeguard them from accidental deletion or modifications. These locks operate at the control plane and override user permissions, offering an extra layer of resource protection.
 
@@ -26,7 +26,7 @@ You can apply **management locks**-specifically **Delete** or **ReadOnly**-to Az
 
 - An existing Azure HorizonDB instance within your subscription.
 
-## Lock Behavior & Inheritance
+## Lock behavior and inheritance
 
 - Locks can be applied at the **subscription**, **resource group**, or **server** level.
 - Child resources inherit locks from their parents; the **most restrictive lock** takes precedence.
@@ -40,22 +40,22 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
 
-2. In the settings menu, select **Locks** page.
+1. In the resource menu, under **Settings**, select **Locks**.
 
-3. Select the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
+1. Select the **Add** button, provide the name of your lock, and choose **Delete** as the type of lock.
 
-    :::image type="content" source="./media/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/delete-lock-01.png":::
+    :::image type="content" source="./media/how-to-enable-deletion-protection/delete-lock.png" alt-text="Screenshot showing the Add lock dialog to add a lock to protect your resource against accidental deletions." lightbox="./media/how-to-enable-deletion-protection/delete-lock.png":::
 
-4. Select **Ok**. You should see a confirmation message indicating that the lock was created successfully
+1. Select **OK**. You should see a notification message indicating that the lock was created successfully.
 
-    :::image type="content" source="./media/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/success-lock.png":::
+    :::image type="content" source="./media/how-to-enable-deletion-protection/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/how-to-enable-deletion-protection/success-lock.png":::
 
 
 ## Permissions
 
 Creating or deleting locks requires permissions for `Microsoft.Authorization/locks/*`, which are available in built-in roles like **Owner** and **User Access Administrator**.
 
-## Best Practices & Considerations
+## Best practices and considerations
 
 - Ideal for **production workloads** that require deletion safeguards.
 - For **high availability or backend servers**, consider implementing locks at deployment time.

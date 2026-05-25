@@ -27,47 +27,18 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. To create a firewall rule that allows connections from the public IP address of the client machine you're using to connect to the portal, select **Add current client IP address (###.###.###.###)**.
 
-1. Add a new firewall rule to the grid. The portal automatically generates the **Firewall rule name**, but you can change it to any valid name you prefer. The portal sets the **Start IP address** and **End IP address** to the public IP address from which you're connected to the Azure portal.
+1. Add a new firewall rule to the grid. Portal automatically generates the value of your firewall rule name, which you can change to any valid name of your preference. **Start IP address** and **End IP address** are both set to the public IP address from which you're connecting to the Azure portal.
 
-1. To create a firewall rule that allows connections from any public IP address, select **Add 0.0.0.0 / 255.255.255.255**.
-
-1. To create a firewall rule that allows connections from any IP address allocated to any Azure service or asset, select **Allow public access from any Azure service within Azure to this server**.
+1. To create a firewall rule that allows connections from any IP address allocated to any Azure service or asset, select **Allow public access from any Azure service within Azure to this cluster**.
 
    > [!IMPORTANT]  
-   > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+   > **Allow public access from any Azure service within Azure to this cluster** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 1. Select **Save**.
 
 1. A notification informs you that the changes are being applied.
 
-1. The status of the server changes to **Updating**.
-
 1. When the process completes, a notification informs you that the changes were applied.
-
-1. The status of the server changes to **Ready**.
-
-<!--
-
-## Add firewall rules using the Azure CLI
-
-You can add firewall rules to a server by using the [az postgres flexible-server firewall-rule create](/CLI/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-create) command.
-
-```azurecli-interactive
-az postgres flexible-server firewall-rule create \
-  --resource-group <resource_group> \
-  --name <server> \
-  --rule-name <rule> \
-  --start-ip-address <start_ip_address> \
-  --end-ip-address <end_ip_address>
-```
--->
-
-If you try to add a firewall rule on a server that isn't in the `Ready` state, you receive an error like this:
-
-```output
-Code: InternalServerError
-Message: An unexpected error occured while processing the request. Tracking ID: '<tracking_id>'
-```
 
 > [!NOTE]  
 > Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
