@@ -15,7 +15,7 @@ ms.topic: how-to
 
 When you enable public access, you can set up firewall rules that allow connections from specific IP addresses or from any Azure service.
 
-## [Portal](#tab/portal-delete-firewall-rules)
+## Delete firewall rules using the Azure portal
 
 Use the [Azure portal](https://portal.azure.com/):
 
@@ -29,8 +29,8 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. To delete the firewall rule that allows connections from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this server** checkbox.
 
-> [!IMPORTANT]  
-> **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+   > [!IMPORTANT]  
+   > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 1. Select **Save**.
 
@@ -44,7 +44,7 @@ Use the [Azure portal](https://portal.azure.com/):
 
 <!--
 
-## [CLI](#tab/CLI-delete-firewall-rules)
+## Delete firewall rules using the Azure CLI
 
 To delete firewall rules from a server, use the [az postgres flexible-server firewall-rule delete](/CLI/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
 

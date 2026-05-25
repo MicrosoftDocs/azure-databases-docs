@@ -48,9 +48,9 @@ You can configure high availability when you first create your Azure HorizonDB i
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select Azure HorizonDB Service and Select **Create**.
+1. Select Azure HorizonDB Service and select **Create**.
 
-:::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
+   :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
 
 1. Provide your resource group and cluster name and go to **High availability** section.
 

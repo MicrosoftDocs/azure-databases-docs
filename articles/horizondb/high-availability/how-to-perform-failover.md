@@ -50,8 +50,6 @@ Follow these steps to perform a planned failover from your primary server to the
 
 Initiating this operation prepares the standby server and then performs the failover. This failover operation provides the least downtime, because it performs a graceful failover to the standby server. It's useful for situations like bringing the primary server back to your preferred availability zone after an unexpected failover.
 
-### [Portal](#tab/portal-planned-failover)
-
 1. In the [Azure portal](https://portal.azure.com/), select your Azure HorizonDB cluster that has high availability enabled.
 
 1. On the left menu, in the **Settings** section, select **High availability**.
