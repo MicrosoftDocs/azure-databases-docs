@@ -17,14 +17,14 @@ ms.custom:
 # customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 
-# Implement durable AI pipelines in Azure HorizonDB (preview)
+# Implement durable AI pipelines in Azure HorizonDB (Preview)
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embedding, extraction, generation, ranking, human approval) declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
 AI pipelines are part of the `azure_ai` extension. The `ai.*` functions and views used throughout this article are provided by `azure_ai` and built on top of [pg_durable](../development/durable-functions.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface - sources, steps, sinks, and triggers - that compiles down to a durable graph automatically.
 
 > [!NOTE]  
-> AI pipelines are in **preview**.
+> AI pipelines are in **Preview**.
 
 ## Why pipelines belong in the database
 
@@ -69,7 +69,7 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management (recommended)
 
-If [AI Model Management in Azure HorizonDB (preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default:
+If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default:
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
@@ -146,10 +146,10 @@ SELECT ai.create_pipeline(
 SELECT ai.explain('rag_pipeline');
 ```
 
-Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
+Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 > [!TIP]  
-> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
+> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ## Run, monitor, and retry
 
@@ -162,7 +162,7 @@ SELECT ai.run('rag_pipeline');
 Inspect the output table.
 
 ```sql
-SELECT doc_id, chunk_index, left(chunk_text, 80) AS preview
+SELECT doc_id, chunk_index, left(chunk_text, 80) AS Preview
 FROM rag_pipeline_output
 ORDER BY doc_id, chunk_index;
 ```
@@ -223,14 +223,14 @@ The `azure_ai` extension can also call models from SQL. The two surfaces solve d
 
 Use one-shot calls for interactive queries and small jobs. Use a pipeline whenever the work is large enough, long enough, or important enough that you'd otherwise build a service tier for it.
 
-## Limitations during preview
+## Limitations during Preview
 
 - Sources are HorizonDB tables. To ingest from blob storage or external systems, land the content in a staging table first; the pipeline handles chunking, embedding, checkpointing, and sink writes from there.
 - Pipelines run on the primary. Read replicas can query `ai.*` views but don't execute pipelines.
-- Pipeline state isn't portable across major versions of `pg_durable` during preview. Drain or pause running pipelines before upgrading.
+- Pipeline state isn't portable across major versions of `pg_durable` during Preview. Drain or pause running pipelines before upgrading.
 
 ## Related content
 
-- [Durable functions with pg_durable in Azure HorizonDB (preview)](../development/durable-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md)
-- [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md)
+- [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)

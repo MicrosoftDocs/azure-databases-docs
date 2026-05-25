@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 
-# Choose the right vector index for your workload in Azure HorizonDB (preview)
+# Choose the right vector index for your workload in Azure HorizonDB (Preview)
 
 Azure HorizonDB supports four ways to run vector similarity search: an exact (flat) scan and three approximate nearest-neighbor (ANN) indexes - IVFFlat, HNSW, and DiskANN. The right choice depends on how many vectors you have, how often they change, what recall you need, how much memory you can spend, and how often you filter by metadata.
 
@@ -77,7 +77,7 @@ Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed
 
 ### 100 million+ vectors, high-dimensional embeddings (3,072+)
 
-Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md) for the exact parameters.
+Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) for the exact parameters.
 
 ### Up to 100,000 vectors used as a correctness baseline
 
@@ -88,7 +88,7 @@ Use a flat scan. It's the fastest way to validate that an ANN index is returning
 Most production retrieval queries combine vector similarity with structured `WHERE` clauses - by tenant, category, date range, price, status, or any other metadata column. The index you pick determines whether those filtered queries stay fast and accurate.
 
 - IVFFlat and HNSW apply predicates **after** the ANN search returns candidates. With a selective filter, most candidates are thrown away and recall collapses, often forcing you to over-fetch and rerank in the application.
-- **DiskANN supports advanced filtering on HorizonDB** (public preview), which pushes metadata predicates into the index itself. The index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the filter - so you get low-latency, high-recall results in a single SQL query, even with selective predicates over millions of vectors.
+- **DiskANN supports advanced filtering on HorizonDB** (public Preview), which pushes metadata predicates into the index itself. The index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the filter - so you get low-latency, high-recall results in a single SQL query, even with selective predicates over millions of vectors.
 
 Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and any retrieval workload where filtering is part of the query. It runs natively inside HorizonDB next to your relational data, so you keep transactional consistency, familiar PostgreSQL SQL, and a single store - no separate vector database or external search service. It works with `pgvector`, the Azure AI integrations, BM25 full-text search, and the rest of the HorizonDB AI retrieval stack.
 
@@ -129,6 +129,6 @@ The operator must match the index access method's operator class. Cosine distanc
 
 ## Related content
 
-- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md)
-- [Optimize performance when using pgvector in Azure HorizonDB (preview)](optimize-pgvector-performance.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)

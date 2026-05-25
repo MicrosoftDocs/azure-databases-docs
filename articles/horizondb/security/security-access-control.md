@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Access management in Azure HorizonDB (preview)
+# Access management in Azure HorizonDB (Preview)
 
 Managing access to your Azure HorizonDB is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 

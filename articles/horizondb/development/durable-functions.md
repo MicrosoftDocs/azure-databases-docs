@@ -17,14 +17,14 @@ ms.custom:
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
 ---
 
-# Durable functions with pg_durable in Azure HorizonDB (preview)
+# Durable functions with pg_durable in Azure HorizonDB (Preview)
 
 `pg_durable` is the durable execution engine inside Azure HorizonDB. It lets you define long-running, multi-step SQL workflows (embedding pipelines, ETL jobs, AI calls, scheduled jobs, approval flows) and run them with the same reliability guarantees you'd expect from a dedicated orchestrator like [Durable Functions](/azure/azure-functions/durable-functions/durable-functions-overview), without leaving Postgres.
 
 `pg_durable` is also the execution layer underneath [durable AI pipelines](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
-> `pg_durable` is in **preview**.
+> `pg_durable` is in **Preview**.
 
 ## What "durable" means
 
@@ -260,16 +260,16 @@ This means:
 
 `pg_durable` isn't trying to replace external orchestrators for cross-system pipelines. It's the right choice when most of the work is database work - embeddings, transforms, AI calls, scheduled maintenance - and adding another service is more cost than benefit.
 
-## Limitations during preview
+## Limitations during Preview
 
 - `df.http()` retries on 5xx and network errors. 4xx responses are returned to the workflow for you to handle; they aren't retried automatically.
 - The background worker services a single database per instance. Multi-database fan-out is supported through `df.start(..., database => 'other_db')` from a function running in the worker's database.
-- Function definitions and execution state aren't portable across major versions of `pg_durable` during preview. Drain or cancel running instances before upgrading.
+- Function definitions and execution state aren't portable across major versions of `pg_durable` during Preview. Drain or cancel running instances before upgrading.
 
 ## Related content
 
-- [Implement durable AI pipelines in Azure HorizonDB (preview)](../ai/ai-pipelines.md)
-- [AI functions in the azure_ai extension for Azure HorizonDB (preview)](../ai/ai-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function (preview)](../ai/generate-vector-embeddings.md)
+- [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](../ai/ai-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](../ai/generate-vector-embeddings.md)
 - [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
 - [Duroxide on GitHub](https://github.com/microsoft/duroxide)

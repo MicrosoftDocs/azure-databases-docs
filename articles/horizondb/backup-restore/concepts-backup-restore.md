@@ -12,7 +12,7 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB (preview)
+# Backups in Azure HorizonDB (Preview)
 
 This article explains the automated backup feature in Azure HorizonDB.
 
@@ -81,4 +81,4 @@ Billable backup storage for a deleted database decreases over time after deletio
 
 ## Related content
 
-- [Restore in Azure HorizonDB (preview)](how-to-restore-custom-restore-point.md)
+- [Restore in Azure HorizonDB (Preview)](how-to-restore-custom-restore-point.md)

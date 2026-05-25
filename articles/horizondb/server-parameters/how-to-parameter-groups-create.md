@@ -21,11 +21,11 @@ When you create a parameter group, at least one parameter must be provided. The 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
 1. In the command bar, select **Create**.
 
-    :::image type="content" source="./media/how-to-create-parameter-groups/browse-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page." lightbox="./media/how-to-create-parameter-groups/browse-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-create-parameter-groups/browse-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page." lightbox="./media/how-to-create-parameter-groups/browse-parameter-groups.png":::
 
 1. In the **Create a parameter group** page, select the subscription and resource group in which you want to create the parameter group.
 
@@ -79,7 +79,7 @@ You can create a parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-Preview" \
   --body '{
     "location": "{location}",
     "properties": {

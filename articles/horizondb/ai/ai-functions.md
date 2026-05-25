@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the available AI functions in the azure_ai extension for Azure HorizonDB, explore their use cases, and learn how to use them effectively.
 ---
 
-# AI functions in the azure_ai extension for Azure HorizonDB (preview)
+# AI functions in the azure_ai extension for Azure HorizonDB (Preview)
 
 The `azure_ai` extension introduces **AI functions**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these functions with models like chat-completion, embeddings, reranking, and other [Microsoft Foundry model deployments](https://azure.microsoft.com/products/ai-model-catalog), you can build GenAI-driven applications directly within your database. This integration unlocks new capabilities for generating vector embeddings, reranking vector search results, understanding text, reasoning, and generating structured outputs.
 
@@ -100,7 +100,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
        'https://my-endpoint.openai.azure.com/',
        'gpt-5-deployment',
        'gpt-5',
-       '2025-01-01-preview',
+       '2025-01-01-Preview',
        'subscription-key',
        '<your-endpoint-key>'
    );

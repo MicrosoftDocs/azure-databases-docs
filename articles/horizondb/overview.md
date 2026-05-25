@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Azure HorizonDB (preview)?
+# What is Azure HorizonDB (Preview)?
 
 Azure HorizonDB is a cloud native fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
 

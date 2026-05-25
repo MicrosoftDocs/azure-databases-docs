@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Manage users in Azure HorizonDB (preview)
+# Manage users in Azure HorizonDB (Preview)
 
 This article describes how you can create users within an Azure HorizonDB instance.
 

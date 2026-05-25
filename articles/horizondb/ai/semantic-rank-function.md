@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 ---
 
-# Semantic reranking with the rank() function (preview)
+# Semantic reranking with the rank() function (Preview)
 
 Vector search retrieves results that are semantically close to a query, but "close" in embedding space doesn't always mean "relevant" to the user's intent. Synonyms, intent shifts, long-tail phrasing, and domain-specific nuance can cause the most relevant document to rank third or tenth instead of first. Users judge results by how well they match their intent, not by raw distance scores.
 

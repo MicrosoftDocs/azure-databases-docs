@@ -15,7 +15,7 @@ ms.custom:
   - build-2026
 ---
 
-# Implement vector search in Azure HorizonDB using the pgvector extension (preview)
+# Implement vector search in Azure HorizonDB using the pgvector extension (Preview)
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 

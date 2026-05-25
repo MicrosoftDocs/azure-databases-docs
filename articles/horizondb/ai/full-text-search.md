@@ -17,14 +17,14 @@ ms.custom:
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB (preview)
+# Full-text search with pg_fts in Azure HorizonDB (Preview)
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
 `pg_fts` is the recommended full-text search option on Azure HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
 
 > [!NOTE]  
-> `pg_fts` is in **public preview**.
+> `pg_fts` is in **public Preview**.
 
 ## When to use pg_fts vs. built-in tsvector
 
@@ -231,7 +231,7 @@ ORDER BY rrf_score DESC
 LIMIT 10;
 ```
 
-For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB (preview)](hybrid-search.md).
+For an end-to-end walkthrough - including embedding generation in SQL and adding a semantic reranker - see [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md).
 
 ## Performance notes
 
@@ -240,7 +240,7 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 - **Updates.** The index continuously applies inserts and updates. There's no separate refresh step.
 - **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't rerank the whole table.
 
-## Limitations during preview
+## Limitations during Preview
 
 - `pgfts.fts_score()` requires `pg_fts` in `shared_preload_libraries`. Without it, only `pgfts.fts_query()` (which already returns rows in rank order) works.
 - The `@@?` operator doesn't support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.
@@ -249,6 +249,6 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)](ai-search-overview.md)
-- [Hybrid search in Azure HorizonDB (preview)](hybrid-search.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
+- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)

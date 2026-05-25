@@ -17,7 +17,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
-# What are the AI capabilities in Azure HorizonDB (preview)
+# What are the AI capabilities in Azure HorizonDB (Preview)
 
 Generative AI is transforming how applications interact with data. As organizations move beyond basic chatbots toward retrieval-augmented generation (RAG), autonomous agents, and intelligent search, one thing is clear: **data is the foundation of intelligence**. Raw data becomes knowledge when it's structured, embedded, and made searchable, and knowledge becomes intelligence when AI models can reason over it, retrieve what's relevant, and take action.
 
@@ -59,7 +59,7 @@ A **vector** is a mathematical object: an ordered array of numbers that represen
 
 An **embedding** is a specific type of vector produced by a machine learning model, where semantically similar content maps to nearby points in vector space. For example, the phrases "lightweight laptop for travel" and "ultraportable notebook under 1 kg" produce embeddings that are geometrically close together, even though they share no words. **Embedding models** such as `text-embedding-3-small` or `text-embedding-ada-002` perform this conversion, taking raw text (or other content) as input and outputting a dense vector of floating-point numbers.
 
-The proximity between vectors is measured using **vector similarity** functions like cosine similarity, inner product, or Euclidean distance. **Vector search** uses this property to find content by meaning rather than keywords. At query time, the user's question is converted into a vector using the same embedding model, and the database finds the stored vectors closest to the query vector, returning the most semantically relevant results. Vector search is the core retrieval mechanism behind RAG. When combined with keyword search and other techniques like semantic reranking, it forms a comprehensive retrieval strategy. For a detailed look at all available retrieval techniques, see [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (preview)](ai-search-overview.md).
+The proximity between vectors is measured using **vector similarity** functions like cosine similarity, inner product, or Euclidean distance. **Vector search** uses this property to find content by meaning rather than keywords. At query time, the user's question is converted into a vector using the same embedding model, and the database finds the stored vectors closest to the query vector, returning the most semantically relevant results. Vector search is the core retrieval mechanism behind RAG. When combined with keyword search and other techniques like semantic reranking, it forms a comprehensive retrieval strategy. For a detailed look at all available retrieval techniques, see [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md).
 
 To see an interactive visualization of how vector similarity works, see [Vectors comparison](https://pamelafox.github.io/vectors-comparison/).
 
@@ -82,52 +82,52 @@ PostgreSQL is uniquely suited for AI workloads because it handles relational dat
 
 Call AI models directly from SQL queries with no application code required.
 
-- **[AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
-- **[AI Model Management in Azure HorizonDB (preview)](ai-model-management.md)**: One-select provisioning of embedding, chat, and reranking models. The system automatically registers, configures, and keeps models up to date. You don't need to manage endpoints or keys.
+- **[AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
+- **[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md)**: One-select provisioning of embedding, chat, and reranking models. The system automatically registers, configures, and keeps models up to date. You don't need to manage endpoints or keys.
 
 ### Data preparation and pipelines
 
 Prepare your data for AI retrieval with automated, fault-tolerant workflows.
 
-- **[Prepare data for AI app and agent development in Azure HorizonDB (preview)](ai-data-preparation.md)**: Strategies for chunking, formatting, and structuring your data for effective embedding and retrieval.
-- **[Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md)**: Declare multistep AI workflows (chunk → embed → index → search → rerank) as durable pipelines that run inside the database with automatic retries, checkpointing, and crash recovery.
-- **[Generate vector embeddings using the create_embeddings() AI function (preview)](generate-vector-embeddings.md)**: Create embeddings directly in SQL by using `azure_openai.create_embeddings()`, with support for batch processing and multiple models.
+- **[Prepare data for AI app and agent development in Azure HorizonDB (Preview)](ai-data-preparation.md)**: Strategies for chunking, formatting, and structuring your data for effective embedding and retrieval.
+- **[Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md)**: Declare multistep AI workflows (chunk → embed → index → search → rerank) as durable pipelines that run inside the database with automatic retries, checkpointing, and crash recovery.
+- **[Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)**: Create embeddings directly in SQL by using `azure_openai.create_embeddings()`, with support for batch processing and multiple models.
 
 ### Search and retrieval
 
 Find the right information using multiple retrieval strategies, individually or combined.
 
-- **[Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)**: Semantic similarity search using vector embeddings.
-- **[Full-text search with pg_fts in Azure HorizonDB (preview)](full-text-search.md)**: BM25 keyword matching for exact terms and identifiers.
-- **[Hybrid search in Azure HorizonDB (preview)](hybrid-search.md)**: Combine vector and full-text search with Reciprocal Rank Fusion for best overall coverage.
+- **[Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)**: Semantic similarity search using vector embeddings.
+- **[Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md)**: BM25 keyword matching for exact terms and identifiers.
+- **[Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)**: Combine vector and full-text search with Reciprocal Rank Fusion for best overall coverage.
 
 #### Improve search performance
 
 As your dataset grows, indexing strategies become critical for maintaining fast query response times.
 
-- **[Scalable vector indexing with DiskANN (preview)](vector-indexing-diskann.md)**: Microsoft Research's graph-based algorithm, recommended for large, growing datasets with high dimensions and filtered queries.
-- **[Optimize performance when using pgvector in Azure HorizonDB (preview)](optimize-pgvector-performance.md)**: Tuning HNSW and IVFFlat indexes for your workload.
-- **[Choose the right vector index for your workload in Azure HorizonDB (preview)](vector-index-selection-guide.md)**: Choose the right index type based on dataset size, query patterns, and recall requirements.
+- **[Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)**: Microsoft Research's graph-based algorithm, recommended for large, growing datasets with high dimensions and filtered queries.
+- **[Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)**: Tuning HNSW and IVFFlat indexes for your workload.
+- **[Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)**: Choose the right index type based on dataset size, query patterns, and recall requirements.
 
 #### Enhance search relevance
 
 Retrieval is only the first step. Enhance accuracy and depth with second-stage scoring and structured knowledge.
 
-- **[Semantic reranking with the rank() function (preview)](semantic-rank-function.md)**: Cross-encoder rescoring that reorders initial search results by true relevance to the query.
-- **[Graph-RAG patterns with Azure HorizonDB (preview)](graph-rag.md)**: Entity relationship traversal with Apache AGE for multi-hop reasoning across connected data. See also [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (preview)](build-knowledge-graph.md).
+- **[Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)**: Cross-encoder rescoring that reorders initial search results by true relevance to the query.
+- **[Graph-RAG patterns with Azure HorizonDB (Preview)](graph-rag.md)**: Entity relationship traversal with Apache AGE for multi-hop reasoning across connected data. See also [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md).
 
 ### Build AI agents and apps
 
 Connect Azure HorizonDB to agent frameworks, orchestration services, and tools.
 
-- **[Build AI agents with Azure HorizonDB (preview)](ai-agents.md)**: Conceptual guide covering agent memory, knowledge retrieval, multi-agent architecture, standards (MCP, A2A), and orchestration frameworks.
-- **[Build AI apps and agents with orchestration frameworks (preview)](ai-frameworks.md)**: Native connectors for Microsoft Agent Framework, LangGraph/LangChain, LlamaIndex, CrewAI, AutoGen, and more.
-- **[Develop AI apps with LangChain and Azure HorizonDB (preview)](develop-with-langchain.md)**: Step-by-step guide for using LangChain with Azure HorizonDB.
+- **[Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)**: Conceptual guide covering agent memory, knowledge retrieval, multi-agent architecture, standards (MCP, A2A), and orchestration frameworks.
+- **[Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md)**: Native connectors for Microsoft Agent Framework, LangGraph/LangChain, LlamaIndex, CrewAI, AutoGen, and more.
+- **[Develop AI apps with LangChain and Azure HorizonDB (Preview)](develop-with-langchain.md)**: Step-by-step guide for using LangChain with Azure HorizonDB.
 
 ### Samples and tutorials
 
-- **[AI and agentic use cases and sample applications (preview)](ai-samples.md)**: Industry-specific patterns and end-to-end implementations.
-- **[Tutorial: Build a semantic search application with Azure HorizonDB (preview)](build-semantic-search-app.md)**: Tutorial for building a complete semantic search app with Azure HorizonDB.
+- **[AI and agentic use cases and sample applications (Preview)](ai-samples.md)**: Industry-specific patterns and end-to-end implementations.
+- **[Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)**: Tutorial for building a complete semantic search app with Azure HorizonDB.
 
 ## Get started
 
@@ -137,6 +137,6 @@ To go further, visit the [PostgreSQL Hub for Azure Developers](https://aka.ms/po
 
 ## Related content
 
-- [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)
-- [Build AI agents with Azure HorizonDB (preview)](ai-agents.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)

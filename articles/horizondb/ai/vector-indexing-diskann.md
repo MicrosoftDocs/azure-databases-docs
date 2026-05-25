@@ -17,11 +17,11 @@ ms.custom:
 # customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Scalable vector indexing with DiskANN (preview)
+# Scalable vector indexing with DiskANN (Preview)
 
 DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. This is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to millions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 
-If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload in Azure HorizonDB (preview)](vector-index-selection-guide.md).
+If you're not sure which vector index fits your workload, see [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md).
 
 To learn more about the DiskANN algorithm, see [DiskANN: Vector Search for Web Scale Search and Recommendation](https://www.microsoft.com/research/project/project-akupara-approximate-nearest-neighbor-search-for-large-scale-semantic-search).
 
@@ -98,11 +98,11 @@ COMMIT;
 ## Filter your search with advanced filtering
 
 > [!NOTE]  
-> Advanced filtering for DiskANN in Azure HorizonDB is in **public preview**.
+> Advanced filtering for DiskANN in Azure HorizonDB is in **public Preview**.
 
 Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md), the [AI functions in the azure_ai extension for Azure HorizonDB (preview)](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB (preview)](full-text-search.md), and [hybrid search](hybrid-search.md).
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md), the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md), and [hybrid search](hybrid-search.md).
 
 ### How it differs from other indexes
 
@@ -148,18 +148,18 @@ LIMIT 10;
 
 Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
 
-### Limitations during preview
+### Limitations during Preview
 
 - Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
 - Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fallback to post-filtering with the standard recall caveats.
 - Index rebuild isn't required when adding metadata columns; the existing DiskANN index continues to work.
 
-## Scale efficiently with spherical quantization (preview)
+## Scale efficiently with spherical quantization (Preview)
 
 DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
 
 > [!IMPORTANT]  
-> Spherical quantization in DiskANN is in **public preview**. Available in the `pg_diskann` extension.
+> Spherical quantization in DiskANN is in **public Preview**. Available in the `pg_diskann` extension.
 
 To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 
@@ -370,6 +370,6 @@ The vector type allows you to perform three types of searches on the stored vect
 
 ## Related content
 
-- [Choose the right vector index for your workload in Azure HorizonDB (preview)](vector-index-selection-guide.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension (preview)](vector-search-pgvector.md)
-- [Hybrid search in Azure HorizonDB (preview)](hybrid-search.md)
+- [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)

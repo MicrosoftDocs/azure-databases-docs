@@ -21,11 +21,11 @@ If you consider that an existing parameter group isn't needed any longer, you ca
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
 1. By using the filtering buttons and the search box, find the parameter group that you want to delete, and select it.
 
-    :::image type="content" source="./media/how-to-delete-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page filtered by the name of the parameter group that you want to delete." lightbox="./media/how-to-delete-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-delete-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group that you want to delete." lightbox="./media/how-to-delete-parameter-groups/filter-search-parameter-groups.png":::
 
 1. In the toolbar of the selected parameter group, select **Delete**.
 
@@ -56,7 +56,7 @@ You can delete a parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method DELETE \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-Preview"
 ```
 
 Replace the placeholders:

@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to construct knowledge graphs with unstructured text in Azure HorizonDB so I can discover hidden relationships and query cascading failure chains.
 ---
 
-# Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (preview)
+# Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)
 
 The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
@@ -70,7 +70,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
       'https://my-endpoint.openai.azure.com/',    -- your Azure OpenAI endpoint
       'gpt-5-deployment',                        -- deployment name
       'gpt-5',                                   -- model name
-      '2025-01-01-preview',                      -- API version (NULL for latest)
+      '2025-01-01-Preview',                      -- API version (NULL for latest)
       'subscription-key',                        -- auth type
       '<your-endpoint-key>'                      -- endpoint key
   );

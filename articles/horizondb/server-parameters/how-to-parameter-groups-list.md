@@ -21,11 +21,11 @@ When listing parameter groups, you can scope the operation to a single parameter
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Browse the [**Azure HorizonDB (preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
+1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
 1. By using the filtering buttons and the search box, find the parameter groups which you're looking for.
 
-    :::image type="content" source="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (preview) parameter groups page filtered by the name of the parameter group which you want to delete." lightbox="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png":::
+    :::image type="content" source="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to delete." lightbox="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png":::
 
 
 ### [CLI](#tab/cli-list)
@@ -36,7 +36,7 @@ You can list one specific parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-Preview"
 ```
 
 The output that command returns would look like the following:
@@ -87,14 +87,14 @@ You can list all parameter groups in a given resource group using the `az rest` 
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-Preview"
 ```
 
 You can list all parameter groups in any resource group of a given subscription using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-Preview"
 ```
 
 The output either of the two previous commands return would look like the following:

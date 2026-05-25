@@ -13,13 +13,13 @@ ms.custom:
 # customer intent: As a reader, I want to learn about the latest release notes and feature updates for Azure HorizonDB.
 ---
 
-# Release notes - Azure HorizonDB (preview)
+# Release notes - Azure HorizonDB (Preview)
 
 This article highlights the latest updates and enhancements for Azure HorizonDB, including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 ## Release: June 2026
 
-- Azure HorizonDB is now available in public preview.
+- Azure HorizonDB is now available in public Preview.
 
 ## Contacts
 

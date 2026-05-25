@@ -17,9 +17,9 @@ ms.custom:
 # customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 ---
 
-# AI and agentic use cases and sample applications (preview)
+# AI and agentic use cases and sample applications (Preview)
 
-Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (preview)](ai-pipelines.md).
+Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 This article is a starting point for exploring what you can build. Each use case highlights the problem, how an AI application or agent solves it, and which Azure HorizonDB features power the solution.
 
@@ -217,6 +217,6 @@ Get started quickly with these end-to-end solution accelerators and sample appli
 
 ## Related content
 
-- [What are the AI capabilities in Azure HorizonDB (preview)](ai-overview.md)
-- [Build AI agents with Azure HorizonDB (preview)](ai-agents.md)
-- [Tutorial: Build a semantic search application with Azure HorizonDB (preview)](build-semantic-search-app.md)
+- [What are the AI capabilities in Azure HorizonDB (Preview)](ai-overview.md)
+- [Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)
+- [Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)
