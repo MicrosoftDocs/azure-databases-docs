@@ -162,7 +162,7 @@ SELECT ai.run('rag_pipeline');
 Inspect the output table.
 
 ```sql
-SELECT doc_id, chunk_index, left(chunk_text, 80) AS Preview
+SELECT doc_id, chunk_index, left(chunk_text, 80) AS preview
 FROM rag_pipeline_output
 ORDER BY doc_id, chunk_index;
 ```

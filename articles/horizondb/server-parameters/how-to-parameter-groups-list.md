@@ -36,7 +36,7 @@ You can list one specific parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-Preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
 ```
 
 The output that command returns would look like the following:
@@ -87,14 +87,14 @@ You can list all parameter groups in a given resource group using the `az rest` 
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-Preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
 ```
 
 You can list all parameter groups in any resource group of a given subscription using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-Preview"
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
 ```
 
 The output either of the two previous commands return would look like the following:

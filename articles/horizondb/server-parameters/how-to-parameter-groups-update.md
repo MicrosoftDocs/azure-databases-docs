@@ -36,7 +36,7 @@ You can update a parameter group using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method PATCH \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-Preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview" \
   --body '{
     "location": "{location}",
     "properties": {
@@ -64,7 +64,7 @@ Running the following `az rest` command at that point in time for one of the clu
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/clusters/{clusterName}?api-version=2026-01-20-Preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/clusters/{clusterName}?api-version=2026-01-20-preview" \
   --query properties.parameterGroup.syncStatus \
   --output tsv
 ```

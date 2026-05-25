@@ -52,7 +52,7 @@ You can connect one specific parameter group to a cluster using the `az rest` co
 
 ```azurecli-interactive
 az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-Preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-preview" \
   --body '{
     "properties": {
         "createMode": "Update",

@@ -39,7 +39,7 @@ You can list clusters connected to parameter groups using the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}/connections?api-version=2026-01-20-Preview"
+  --uri "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}/connections?api-version=2026-01-20-preview"
 ```
 
 Replace the placeholders:

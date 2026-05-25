@@ -249,7 +249,7 @@ Save this file as `horizondb-template.json`:
             "type": "String"
         },
         "apiVersion": {
-            "defaultValue": "2026-01-20-Preview",
+            "defaultValue": "2026-01-20-preview",
             "type": "String"
         },
         "firewallRules": {
@@ -281,7 +281,7 @@ Save this file as `horizondb-template.json`:
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-Preview/deploymentTemplate.json#",
+                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
                     "resources": [
                         {
@@ -334,7 +334,7 @@ Save this file as `horizondb-parameters.json`:
             "value": "2"
         },
         "apiVersion": {
-            "value": "2026-01-20-Preview"
+            "value": "2026-01-20-preview"
         },
         "firewallRules": {
             "value": [

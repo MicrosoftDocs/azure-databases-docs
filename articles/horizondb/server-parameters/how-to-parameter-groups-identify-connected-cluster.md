@@ -46,7 +46,7 @@ You can determine the resource identifier of the parameter group to which a clus
 
 ```azurecli-interactive
 az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-Preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-preview" \
   --query properties.parameterGroup.id \
   --format tsv
 ```
@@ -61,9 +61,9 @@ You can extract the list of parameters in the parameter group to which a cluster
 ```azurecli-interactive
 az rest --method GET \
 --url https://management.azure.com$(az rest --method GET \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-Preview" \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{clusterName}?api-version=2026-01-20-preview" \
   --query properties.parameterGroup.id \
-  --output tsv)?api-version=2026-01-20-Preview
+  --output tsv)?api-version=2026-01-20-preview
 ```
 
 Replace the placeholders:
