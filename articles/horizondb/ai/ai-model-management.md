@@ -154,7 +154,7 @@ SELECT model_registry.model_add(
     'https://my-endpoint.openai.azure.com/',        -- endpoint URL
     'gpt-5-deployment',                             -- deployment name
     'gpt-5',                                        -- model name
-    '2025-01-01-Preview',                           -- API version (NULL for latest)
+    '2025-01-01-preview',                           -- API version (NULL for latest)
     'subscription-key',                              -- auth type
     '<your-endpoint-key>'                            -- endpoint key
 );

@@ -100,7 +100,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
        'https://my-endpoint.openai.azure.com/',
        'gpt-5-deployment',
        'gpt-5',
-       '2025-01-01-Preview',
+       '2025-01-01-preview',
        'subscription-key',
        '<your-endpoint-key>'
    );
