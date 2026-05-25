@@ -2,9 +2,9 @@
 title: Access Management
 description: Learn how to manage access permissions for Azure Database for PostgreSQL using roles.
 author: techlake
-ms.author: hganten
+ms.author: talawren
 ms.reviewer: maghan
-ms.date: 09/19/2025
+ms.date: 05/21/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
@@ -140,9 +140,6 @@ This is a built-in safeguard to prevent changes to critical administrative roles
 ### Improved control for *azure_pg_admin*
 
 In PostgreSQL 16, a strict role hierarchy structure is implemented for users with the [CREATEROLE](https://www.postgresql.org/docs/16/sql-createrole.html) privilege, specifically related to grant roles. To improve administrative flexibility and address a limitation introduced in PostgreSQL 16, Azure Database for PostgreSQL enhances the capabilities of the *azure_pg_admin* role across all PostgreSQL versions. With this update, members of the *azure_pg_admin* role can manage roles and access objects owned by any nonrestricted role, even if those roles are also members of *azure_pg_admin*. This enhancement ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
-
-> [!IMPORTANT]  
-> Azure Database for PostgreSQL doesn't allow users to be granted *pg_write_all_data* attribute, which allows user to write all data (tables, views, sequences), as if having `INSERT`, `UPDATE`, and `DELETE` rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended granting similar permissions on a more finite level per database and object.
 
 ## Row-level security
 
