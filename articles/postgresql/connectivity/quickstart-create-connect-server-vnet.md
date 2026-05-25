@@ -140,7 +140,7 @@ sudo apt-get install postgresql-client
 Connections to the database are enforced with SSL, hence you need to download the public SSL certificate.
 
 ```bash
-wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
+wget --no-check-certificate https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem
 ```
 
 ## Connect to the server from Azure Linux virtual machine
