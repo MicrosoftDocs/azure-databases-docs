@@ -1,7 +1,7 @@
 ---
 title: "Configure Citus: GUC Parameters Reference"
 description: In the Citus configuration reference, you find information about Citus specific configuration parameters and standard PostgreSQL parameters that affect the behavior of Citus.
-ms.date: 02/11/2026
+ms.date: 05/25/2026
 ms.service: postgresql-citus
 ms.topic: reference
 ai-usage: ai-assisted
@@ -136,7 +136,7 @@ SELECT pg_reload_conf();
 
 ### citus.local_hostname (text)
 
-Citus nodes sometimes need to connect to themselves for system operations. By default, they use the address `localhost` to refer to themselves, but this address can cause problems. For example, when a host requires `sslmode=verify-full` for incoming connections, adding `localhost` as an alternative hostname on the SSL certificate isn't always desirable or feasible.
+Citus nodes sometimes need to connect to themselves for system operations, including running shard fragments locally when the node is acting as the entry point for a client query in MX mode. By default, they use the address `localhost` to refer to themselves, but this address can cause problems. For example, when a host requires `sslmode=verify-full` for incoming connections, adding `localhost` as an alternative hostname on the SSL certificate isn't always desirable or feasible.
 
 `citus.local_hostname` sets the hostname a node uses to connect to itself. The default value is *localhost*.
 
@@ -264,7 +264,7 @@ The default value for this GUC is *on*.
 > [!NOTE]  
 > Requires superuser access to change.
 
-This GUC determines how Citus synchronizes metadata across nodes. By default Citus updates all metadata in a single transaction for consistency. However, PostgreSQL has a hard memory limit related to cache invalidations, and Citus metadata syncing for a large cluster can fail from memory exhaustion.
+This GUC determines how Citus synchronizes metadata across nodes. Citus must keep every node's metadata current so that any node can plan and route queries in MX mode. By default Citus updates all metadata in a single transaction for consistency. However, PostgreSQL has a hard memory limit related to cache invalidations, and Citus metadata syncing for a large cluster can fail from memory exhaustion.
 
 As a workaround, Citus provides an optional nontransactional sync mode that uses a series of smaller transactions. While this mode works in limited memory, there's a possibility of transactions failing and leaving metadata in an inconsistency state. To help with this potential problem, nontransactional metadata sync is designed as an idempotent action, so you can rerun it repeatedly if needed.
 
@@ -293,7 +293,7 @@ We advise trying transactional mode first, and switching to nontransactional onl
 
 ### citus.enable_local_fast_path_query_optimization (boolean)
 
-Enables delayed fast path planning optimization for local single-shard router queries. When on, Citus delays building the fast-path placeholder plan until shard identification; if the shard is local (MX mode), Citus replans with the shard OID and reuses a cached plan, avoiding deparse/parse/planning overhead.
+Enables delayed fast path planning optimization for local single-shard router queries. When on, Citus delays building the fast-path placeholder plan until shard identification; if the receiving node already holds the target shard (MX mode), Citus replans with the shard OID and reuses a cached plan, avoiding deparse/parse/planning overhead. See [Delayed fast path planning](reference-processing.md#delayed-fast-path-planning-citus-132) for the full behavior.
 
 - Default: true
 

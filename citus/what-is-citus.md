@@ -1,7 +1,7 @@
 ---
 title: Citus Overview
 description: Learn what Citus is and the core architecture concepts including nodes, sharding models, table types, shards, colocation, and query execution.
-ms.date: 02/11/2026
+ms.date: 05/25/2026
 ms.service: postgresql-citus
 ms.topic: overview
 ai-usage: ai-assisted
@@ -19,7 +19,7 @@ Key capabilities include:
 - Colocated joins and distributed query planner
 - Parallel query execution across workers
 - Columnar storage option
-- Query from any node (from Citus 11.0+)
+- Query from any node in MX mode (since Citus 11.0)
 
 Typically, you adopt Citus to improve performance and scalability for multitenant SaaS, real-time analytics dashboards, time series, and microservices state management.
 
@@ -40,9 +40,9 @@ Citus is a PostgreSQL extension that lets commodity servers (*nodes*) coordinate
 
 ### Coordinator and workers
 
-Each cluster has one *coordinator* node (entry point) and one or more *worker* nodes. Applications connect to the coordinator, which routes or parallelizes queries based on table distribution metadata. Internal Citus metadata tables track worker health, node addresses, and shard placement.
+Each cluster has one *coordinator* node and one or more *worker* nodes. Internal Citus metadata tables track worker health, node addresses, and shard placement, and Citus syncs this metadata to every node. Applications connect to the coordinator or, in MX mode (since Citus 11.0), to any worker node. The node that receives a query routes or parallelizes it based on table distribution metadata. For details on the receiving-node model, see [Query processing in Citus](reference-processing.md#query-entry-points-and-mx-mode).
 
-For each query, the coordinator either:
+For each query, the receiving node either:
 
 - Routes it to a single worker (when all required data is local to that worker), or
 - Parallelizes it across workers (when data spans shards)
@@ -132,7 +132,7 @@ Place related tables' shards together (same hash mapping) for local joins. For e
 
 ### Query parallelism and execution flow
 
-The coordinator decomposes multishard queries into per-shard *tasks*. Task execution tries to balance:
+The receiving node (coordinator or, in MX mode, any worker) decomposes multishard queries into per-shard *tasks*. Task execution tries to balance:
 
 - Concurrency (parallel connections per worker)
 - Connection overhead (slow start ramp-up)
