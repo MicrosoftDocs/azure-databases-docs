@@ -24,7 +24,7 @@ The `pg_fts` extension adds production-quality, BM25-ranked full-text search to 
 `pg_fts` is the recommended full-text search option on Azure HorizonDB. It works on its own, and it composes with `pgvector` and DiskANN to power [hybrid search](hybrid-search.md).
 
 > [!NOTE]  
-> `pg_fts` is in **Preview**.
+> `pg_fts` is in **preview**.
 
 ## When to use pg_fts vs. built-in tsvector
 
@@ -240,7 +240,7 @@ For an end-to-end walkthrough - including embedding generation in SQL and adding
 - **Updates.** The index continuously applies inserts and updates. There's no separate refresh step.
 - **`ORDER BY score`.** When you order by `pgfts.fts_score()`, the planner still uses the FTS custom scan - it doesn't rerank the whole table.
 
-## Limitations during Preview
+## Limitations (Preview)
 
 - `pgfts.fts_score()` requires `pg_fts` in `shared_preload_libraries`. Without it, only `pgfts.fts_query()` (which already returns rows in rank order) works.
 - The `@@?` operator doesn't support boolean (`AND` / `OR` / `NOT`) syntax. Use `pgfts.fts_query()` for those queries.

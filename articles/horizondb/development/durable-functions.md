@@ -24,7 +24,7 @@ ms.custom:
 `pg_durable` is also the execution layer underneath [durable AI pipelines](../ai/ai-pipelines.md). If you're using AI pipelines, `pg_durable` is what makes them survive crashes, retry on failure, and resume from the last completed step.
 
 > [!NOTE]  
-> `pg_durable` is in **Preview**.
+> `pg_durable` is in **preview**.
 
 ## What "durable" means
 
@@ -260,11 +260,11 @@ This means:
 
 `pg_durable` isn't trying to replace external orchestrators for cross-system pipelines. It's the right choice when most of the work is database work - embeddings, transforms, AI calls, scheduled maintenance - and adding another service is more cost than benefit.
 
-## Limitations during Preview
+## Limitations during preview
 
 - `df.http()` retries on 5xx and network errors. 4xx responses are returned to the workflow for you to handle; they aren't retried automatically.
 - The background worker services a single database per instance. Multi-database fan-out is supported through `df.start(..., database => 'other_db')` from a function running in the worker's database.
-- Function definitions and execution state aren't portable across major versions of `pg_durable` during Preview. Drain or cancel running instances before upgrading.
+- Function definitions and execution state aren't portable across major versions of `pg_durable` during **preview**. Drain or cancel running instances before upgrading.
 
 ## Related content
 

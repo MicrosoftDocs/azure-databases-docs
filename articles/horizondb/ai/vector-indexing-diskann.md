@@ -98,7 +98,7 @@ COMMIT;
 ## Filter your search with advanced filtering
 
 > [!NOTE]  
-> Advanced filtering for DiskANN in Azure HorizonDB is in **Preview**.
+> Advanced filtering for DiskANN in Azure HorizonDB (Preview) is in **preview**.
 
 Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
@@ -148,7 +148,7 @@ LIMIT 10;
 
 Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
 
-### Limitations during Preview
+### Limitations (Preview)
 
 - Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
 - Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fallback to post-filtering with the standard recall caveats.
@@ -159,7 +159,7 @@ Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LI
 DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
 
 > [!IMPORTANT]  
-> Spherical quantization in DiskANN is in **Preview**. Available in the `pg_diskann` extension.
+> Spherical quantization in DiskANN is in **preview**. Available in the `pg_diskann` extension.
 
 To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 

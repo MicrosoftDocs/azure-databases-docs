@@ -24,7 +24,7 @@ AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embed
 AI pipelines are part of the `azure_ai` extension. The `ai.*` functions and views used throughout this article are provided by `azure_ai` and built on top of [pg_durable](../development/durable-functions.md). Where `pg_durable` gives you a general durable-execution engine, the `ai.*` pipeline API gives you a higher-level, AI-shaped surface - sources, steps, sinks, and triggers - that compiles down to a durable graph automatically.
 
 > [!NOTE]  
-> AI pipelines are in **Preview**.
+> AI pipelines are in **preview**.
 
 ## Why pipelines belong in the database
 
@@ -223,11 +223,11 @@ The `azure_ai` extension can also call models from SQL. The two surfaces solve d
 
 Use one-shot calls for interactive queries and small jobs. Use a pipeline whenever the work is large enough, long enough, or important enough that you'd otherwise build a service tier for it.
 
-## Limitations during Preview
+## Limitations during preview
 
 - Sources are HorizonDB tables. To ingest from blob storage or external systems, land the content in a staging table first; the pipeline handles chunking, embedding, checkpointing, and sink writes from there.
 - Pipelines run on the primary. Read replicas can query `ai.*` views but don't execute pipelines.
-- Pipeline state isn't portable across major versions of `pg_durable` during Preview. Drain or pause running pipelines before upgrading.
+- Pipeline state isn't portable across major versions of `pg_durable` during **preview**. Drain or pause running pipelines before upgrading.
 
 ## Related content
 
