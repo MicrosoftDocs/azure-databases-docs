@@ -264,7 +264,7 @@ This means:
 
 - `df.http()` retries on 5xx and network errors. 4xx responses are returned to the workflow for you to handle; they aren't retried automatically.
 - The background worker services a single database per instance. Multi-database fan-out is supported through `df.start(..., database => 'other_db')` from a function running in the worker's database.
-- Function definitions and execution state aren't portable across major versions of `pg_durable` during preview. Drain or cancel running instances before upgrading.
+- Function definitions and execution state aren't portable across major versions of `pg_durable` during **preview**. Drain or cancel running instances before upgrading.
 
 ## Related content
 

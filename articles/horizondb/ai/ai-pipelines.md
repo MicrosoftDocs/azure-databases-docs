@@ -227,7 +227,7 @@ Use one-shot calls for interactive queries and small jobs. Use a pipeline whenev
 
 - Sources are HorizonDB tables. To ingest from blob storage or external systems, land the content in a staging table first; the pipeline handles chunking, embedding, checkpointing, and sink writes from there.
 - Pipelines run on the primary. Read replicas can query `ai.*` views but don't execute pipelines.
-- Pipeline state isn't portable across major versions of `pg_durable` during preview. Drain or pause running pipelines before upgrading.
+- Pipeline state isn't portable across major versions of `pg_durable` during **preview**. Drain or pause running pipelines before upgrading.
 
 ## Related content
 
