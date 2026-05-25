@@ -19,7 +19,7 @@ This article highlights the latest updates and enhancements for Azure HorizonDB,
 
 ## Release: June 2026
 
-- Azure HorizonDB is now available in public preview.
+- Azure HorizonDB is now available in **preview**.
 
 ## Contacts
 
