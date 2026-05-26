@@ -24,7 +24,7 @@
           href: connectivity/connect-java.md
         - name: Connect and query
           href: connectivity/how-to-connect-query-guide.md
-        - name: Enable deletion protection
+        - name: Protect against accidental deletion
           href: configure-maintain/how-to-enable-deletion-protection.md
 - name: Configure and maintain
   items:
