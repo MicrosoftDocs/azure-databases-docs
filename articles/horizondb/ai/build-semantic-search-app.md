@@ -35,7 +35,7 @@ In this tutorial, you:
 ## Prerequisites
 
 - An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](../configure-maintain/quickstart-create-cluster.md).
-- [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
+- [AI Model Management (Gated Preview)](ai-model-management.md) enabled on your instance. Access requires [sign-up and approval](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u). This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
 ## Install extensions and set up AI models
 
@@ -52,7 +52,7 @@ CREATE EXTENSION pg_diskann;
 
 ### Set up AI models
 
-This tutorial uses [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md), which automatically provisions and configures the AI models you need. When you enable AI Model Management, it:
+This article uses [AI Model Management (Gated Preview)](ai-model-management.md), which automatically provisions and configures the AI models you need. When you enable AI Model Management, it:
 
 - Installs the `azure_ai` extension.
 - Registers a `default-embedding` model (`text-embedding-3-small`) for generating vector embeddings.

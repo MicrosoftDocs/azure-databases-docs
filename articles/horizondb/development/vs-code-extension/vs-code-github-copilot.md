@@ -155,7 +155,7 @@ Generate a FastAPI project with my database using SQLAlchemy.
 
 ### AI workloads on Azure HorizonDB
 
-When you're connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities - `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by AI Model Management or your own Microsoft Foundry deployments.
+When you're connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities - `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by [AI Model Management (Gated Preview)](../../ai/ai-model-management.md) or your own Microsoft Foundry deployments.
 
 ```text
 @pgsql Create a products table with a description column and a vector(1536) embedding column. Then write a query that populates the embedding column for any rows where it's NULL using azure_openai.create_embeddings with the default-embedding managed model.

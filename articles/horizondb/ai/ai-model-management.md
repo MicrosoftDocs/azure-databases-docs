@@ -1,6 +1,6 @@
 ---
-title: AI Model Management in Azure HorizonDB
-description: Automatically provision and manage embedding, generation, and reranking models in Azure HorizonDB, while setting up and securely configuring the azure_ai extension for seamless use of AI functions.
+title: AI Model Management in Azure HorizonDB (Preview)
+description: Automatically provision and manage embedding, generation, and reranking models in Azure HorizonDB with AI Model Management (AIMM), currently available as a gated preview.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -18,7 +18,10 @@ ms.custom:
 
 # AI Model Management for Azure HorizonDB (Preview)
 
-AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials. AI Model Management handles everything for you with a single toggle in the Azure portal.
+> [!IMPORTANT]
+> AI Model Management (AIMM) is currently available as a **gated preview** for Azure HorizonDB. Access is limited and requires approval. To request access, complete the [AI Model Management gated preview participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
+
+AI Model Management (AIMM) is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AIMM handles everything for you with a single toggle in the Azure portal.
 
 When enabled, the feature:
 
@@ -26,7 +29,7 @@ When enabled, the feature:
 - Installs and configures the `azure_ai` extension with secure connections to the model endpoints.
 - Registers the provisioned models in the model registry with default aliases, ready for immediate use.
 - Integrates AI model billing into your Azure HorizonDB bill.
-- Provides monitoring and usage metrics within Azure HorizonDB. (coming soon)
+- Provides monitoring and usage metrics within Azure HorizonDB.
 
 ## Key features
 
@@ -57,6 +60,11 @@ In addition to Managed Models, you can register your own Microsoft Foundry model
 ### Integrated billing
 
 AI model usage is billed directly through your Azure HorizonDB resource with no extra markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing-details).
+
+## Prerequisites
+
+> [!IMPORTANT]
+> AI Model Management is in **gated preview**. Before you can enable this feature, you must [request access through the participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u) and receive approval.
 
 ## Enable AI Model Management
 
