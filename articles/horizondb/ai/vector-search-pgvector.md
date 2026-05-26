@@ -15,16 +15,16 @@ ms.custom:
   - build-2026
 ---
 
-# Implement vector search in Azure HorizonDB using the pgvector extension (Preview)
+# Implement vector search with the pgvector extension for Azure HorizonDB (Preview)
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 
 ## Enable extension
 
-Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allow list as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!IMPORTANT]  
-> Although all PostgreSQL community tends to refer to this extension as pgvector, the name of the binary and the extension itself is simply `vector`. Take that into consideration, because that is the name you must use to allowlist it or to create it on any database via the CREATE EXTENSION command.
+> Although all PostgreSQL community tends to refer to this extension as pgvector, the name of the binary and the extension itself is simply `vector`. Take that into consideration, because that is the name you must use to allow list it or to create it on any database via the CREATE EXTENSION command.
 
 Then you can install the extension, by connecting to your target database and running the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command. You need to repeat the command separately for every database you want the extension to be available in.
 
@@ -33,12 +33,12 @@ CREATE EXTENSION vector;
 ```
 
 > [!NOTE]  
-> To remove the extension from the currently connected database use `DROP EXTENSION vector;`.
+> To remove the extension from the currently connected database, use `DROP EXTENSION vector;`.
 
 [!INCLUDE [`pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-basics.md)]
 
 ## Related content
 
-- [Optimize performance when using pgvector in Azure HorizonDB](optimize-pgvector-performance.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
+- [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)

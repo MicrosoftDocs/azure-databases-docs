@@ -90,7 +90,7 @@ When you initiate a forced failover, the primary server immediately goes down an
 
    Select **Forced failover** to start the forced failover procedure. A dialog box opens with the message stating *Initiating a force failover immediately stops the primary node and starts a failover to a standby replica node*. Select **fail over**. Note the database cluster remains unavailable until the failover is complete.
 
-   :::image type="content" source="media/how-to-perform-failover/forced-failover-001.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a forced failover." lightbox="media/how-to-perform-failover/forced-failover-001.png":::
+   :::image type="content" source="media/how-to-perform-failover/forced-failover-01.png" alt-text="Screenshot that shows the dialog displayed before the initiation of a forced failover." lightbox="media/how-to-perform-failover/forced-failover-01.png":::
 
 1. A notification appears to indicate that the failover is in progress.
 

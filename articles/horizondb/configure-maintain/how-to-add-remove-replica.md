@@ -22,16 +22,18 @@ Before you begin, make sure you have an existing Azure HorizonDB cluster. If you
 
 If you configure your Azure HorizonDB cluster with high availability, your cluster already has at least one replica. You can add a replica:
 
-1. Select your Azure HorizonDB cluster in the Azure portal.
-1. Select **Compute**, located in the **Settings** section.
+Using the [Azure portal](https://portal.azure.com):
 
-   :::image type="content" source="media/how-to-add-remove-replica/screenshot-compute.png" alt-text="Screenshot of the Compute settings page for an Azure HorizonDB cluster in the Azure portal." lightbox="media/how-to-add-remove-replica/screenshot-compute.png" :::
+1. Select your Azure HorizonDB cluster.
+1. In the resource menu, under **Settings**, select **Compute**.
 
-1. Under **High availability replicas**, select **Change** next to the **Readable high availability replicas**. It takes you to the **Replicas** page.
-1. Alternatively, you can skip step 2 and step 3 by directly selecting **Replicas** located in the **Settings** section.
-1. Select **Add new replicas**, and then select the number of replicas you want to add from the dropdown list. An Azure HorizonDB cluster can have a maximum of 15 replicas.
+   :::image type="content" source="media/how-to-add-remove-replica/compute.png" alt-text="Screenshot showing the Compute page of an Azure HorizonDB cluster." lightbox="media/how-to-add-remove-replica/compute.png" :::
 
-   :::image type="content" source="media/how-to-add-remove-replica/screenshot-add-replica.png" alt-text="Screenshot of the Replicas page showing the Add new replicas dropdown in the Azure portal." lightbox="media/how-to-add-remove-replica/screenshot-add-replica.png" :::
+1. Under **High availability replicas**, select **Change** next to the **Readable high availability replicas**. It takes you to the **Replicas**.
+1. Alternatively, you can skip previous two steps, and in the resource menu, under **Settings**, select **Replicas**.
+1. Select **Add new replicas**, and then choose the number of replicas that you want to add. An Azure HorizonDB cluster can have a maximum of 15 replicas.
+
+   :::image type="content" source="media/how-to-add-remove-replica/add-replicas.png" alt-text="Screenshot showing the Replicas page to add new replicas to a cluster." lightbox="media/how-to-add-remove-replica/add-replicas.png" :::
 
 1. Select **Save**.
 
@@ -41,11 +43,13 @@ If you don't configure your Azure HorizonDB cluster with high availability, your
 
 If your Azure HorizonDB cluster has more than one replica, you can remove a replica:
 
-1. Select your Azure HorizonDB cluster in the Azure portal.
-1. Select **Replicas** located in the **Settings** section.
-1. Select the replica you want to remove by selecting the **...** next to the replica name, and then select **Remove replica**.
+Using the [Azure portal](https://portal.azure.com):
 
-   :::image type="content" source="media/how-to-add-remove-replica/screenshot-remove-replica.png" alt-text="Screenshot of the Replicas page showing the Remove replica option on a replica's context menu." lightbox="media/how-to-add-remove-replica/screenshot-remove-replica.png" :::
+1. Select your Azure HorizonDB cluster.
+1. In the resource menu, under **Settings**, select **Replicas**.
+1. For the replica that you want to remove, select the **...** next to the replica name, and then select **Remove replica**.
+
+   :::image type="content" source="media/how-to-add-remove-replica/remove-replica.png" alt-text="Screenshot showing the Replicas page to remove replicas from a cluster." lightbox="media/how-to-add-remove-replica/remove-replica.png" :::
 
 1. Removing a replica reduces the read capacity of this Azure HorizonDB cluster. Select **Remove** to confirm.
 
