@@ -20,7 +20,7 @@ Suppose you want to learn how to create and manage Azure subscription users and 
 
 ## The server admin account
 
-When you first created your Azure HorizonDB cluster, you provided a cluster administrator login name and password. For more information, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md) to see the step-by-step approach. Since the cluster administrator login is a custom name, you can locate the chosen server admin user name from the Azure portal.
+When you first created your Azure HorizonDB cluster, you provided a cluster administrator login name and password. For more information, see [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md) to see the step-by-step approach. Since the cluster administrator login is a custom name, you can locate the chosen server admin user name from the Azure portal.
 
 The Azure HorizonDB instance is created with the three default roles defined. You can see these roles by running the command: `SELECT rolname FROM pg_roles;`
 
@@ -34,7 +34,7 @@ The PostgreSQL engine uses privileges to control access to database objects, as 
 
 - Sign in, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE
 
-The cluster administrator login  can be used to create more users and grant those users into the `azure_pg_admin` role. Also, the cluster administrator login can be used to create less privileged users and roles that have access to individual databases and schemas.
+The cluster administrator login can be used to create more users and grant those users into the `azure_pg_admin` role. Also, the cluster administrator login can be used to create less privileged users and roles that have access to individual databases and schemas.
 
 ## How to create more admin users in Azure HorizonDB
 
@@ -42,7 +42,7 @@ The cluster administrator login  can be used to create more users and grant thos
    You need the full server name and admin sign-in credentials to connect to your Azure HorizonDB instance. You can easily find the server name and sign-in information from the server **Overview** page or the **Properties** page in the Azure portal.
 
 1. Use the admin account and password to connect to your Azure HorizonDB instance. Use your preferred client tool, such as pgAdmin or psql.
-   If you're unsure of how to connect, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md).
+   If you're unsure of how to connect, see [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
 
 1. Edit and run the following SQL code. Replace your new user name with the placeholder value <new_user>, and replace the placeholder password with your own strong password.
 

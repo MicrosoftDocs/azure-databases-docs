@@ -30,7 +30,7 @@ Here are some possible security services, features, and best practices for the a
 - **Follow Azure security best practices**: HorizonDB follows Azure security best practices for identity and access management.
 
 - **Manage local database users, roles, and permissions**: Use PostgreSQL's built-in role
-  management to control access at the database level. Create custom roles with specific permissions to enforce the principle of least privilege. Regularly review and audit these roles to ensure compliance with security policies. For more information, visit [Manage users in Azure HorizonDB](security-manage-database-users.md).
+  management to control access at the database level. Create custom roles with specific permissions to enforce the principle of least privilege. Regularly review and audit these roles to ensure compliance with security policies. For more information, visit [Manage users in Azure HorizonDB (Preview)](security-manage-database-users.md).
 
 ## Data protection
 
@@ -48,8 +48,7 @@ Here are some possible security services, features, and best practices for the d
 
 ### Encryption at rest
 
-- **Data is always transparently encrypted at rest with SMK**: Azure HorizonDB automatically encrypts data at rest by using service-managed keys (SMK). This encryption ensures that your data is protected without requiring extra configuration. It relies on the underlying Azure storage infrastructure. It covers the primary server, replicas, point-in-time-recovery (PITR), and backups. For more information, visit [Data encryption at rest in Azure HorizonDB](security-data-encryption.md).
-
+- **Data is always transparently encrypted at rest with SMK**: Azure HorizonDB automatically encrypts data at rest by using service-managed keys (SMK). This encryption ensures that your data is protected without requiring extra configuration. It relies on the underlying Azure storage infrastructure. It covers the primary server, replicas, point-in-time-recovery (PITR), and backups. For more information, visit [Data encryption at rest in Azure HorizonDB (Preview)](security-data-encryption.md).
 
 - **Encrypt ultra-sensitive data with client-side encryption**: For ultra-sensitive data, consider implementing client-side encryption. This approach involves encrypting data before you send it to the database, ensuring that only encrypted data is stored in the database. This practice provides a more layer of security, as the database itself and therefore the database administrator doesn't have access to the unencrypted data.
 
@@ -69,11 +68,11 @@ Here are some possible security services, features, and best practices for the d
 
 ## Backup and recovery
 
-The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, For more information, visit [Overview of business continuity in Azure HorizonDB](../backup-restore/concepts-business-continuity.md).
+The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, For more information, visit [Overview of business continuity in Azure HorizonDB (Preview)](../backup-restore/concepts-business-continuity.md).
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
 
-- **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure HorizonDB](../backup-restore/concepts-backup-restore.md).
+- **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backups in Azure HorizonDB (Preview)](../backup-restore/concepts-backup-restore.md).
 
 - **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure.
 
@@ -81,7 +80,7 @@ Here are some possible security services, features, and best practices for the b
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
+- [What is Azure HorizonDB (Preview)?](../overview.md)
 - [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
 - [Networking in Azure HorizonDB](../network/how-to-network.md)
 - [Azure security baseline for Azure HorizonDB](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)
