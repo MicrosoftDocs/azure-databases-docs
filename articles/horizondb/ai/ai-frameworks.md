@@ -31,7 +31,7 @@ The following frameworks and services integrate with Azure HorizonDB:
 | [LlamaIndex](https://www.llamaindex.ai/) | A framework for building context-augmented AI applications that integrates private or domain-specific data with LLMs for complex workflows. Excels at structured data retrieval and knowledge-graph-powered reasoning. | [Python](https://aka.ms/azpg-llamaindex) |
 | [GraphRAG](https://microsoft.github.io/graphrag/) | A framework by Microsoft that uses Azure HorizonDB to create AI-powered knowledge graphs. It enables robust data models and reveals relationships in semistructured data. | [Quickstart](https://github.com/Azure-Samples/graphrag-legalcases-postgres/) |
 | [CrewAI](https://crewai.com) | An open-source framework for orchestrating role-based, collaborative multi-agent workflows with task delegation and standard operating procedures. | [PGSearchTool](https://docs.crewai.com/en/tools/database-data/pgsearchtool) |
-| [AutoGen](https://microsoft.github.io/autogen/) | A Microsoft framework for multi-agent conversation patterns. Supports flexible agent communication topologies and tool integration. | [PostgreSQL tools](https://microsoft.github.io/autogen/) |
+| [Auto-Gen](https://microsoft.github.io/autogen/) | A Microsoft framework for multi-agent conversation patterns. Supports flexible agent communication topologies and tool integration. | [PostgreSQL tools](https://microsoft.github.io/autogen/) |
 | [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) | A managed service for building, deploying, and scaling AI agents with built-in tool support, tracing, and monitoring. | [Overview](/azure/ai-services/agents/overview) |
 
 ## Related content
