@@ -73,7 +73,7 @@ Agents work with diverse data types. PostgreSQL handles JSONB, geospatial data (
 
 Additionally, PostgreSQL's open-source ecosystem provides decades of community development, extensive tooling, and [broad framework support](ai-frameworks.md).
 
-HorizonDB adds managed infrastructure, built-in AI functions, [AI Model Management (Gated Preview)](ai-model-management.md), and AI pipelines on top of PostgreSQL. It's purpose-built for AI agent workloads.
+HorizonDB adds managed infrastructure, built-in AI functions, [AI Model Management (limited preview)](ai-model-management.md), and AI pipelines on top of PostgreSQL. It's purpose-built for AI agent workloads.
 
 ## Multi-agent architecture
 
