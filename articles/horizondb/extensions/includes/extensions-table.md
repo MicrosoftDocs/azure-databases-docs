@@ -108,7 +108,7 @@ ms.custom:
 
 ## azure_ai
 
-{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundry and Azure ML Services integration for PostgreSQL.
+{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundry and Azure Machine Learning Services integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
