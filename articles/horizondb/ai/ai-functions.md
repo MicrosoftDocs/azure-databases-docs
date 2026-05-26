@@ -41,7 +41,7 @@ Before you can use AI functions, you need to enable the `azure_ai` extension and
 [AI Model Management (Gated Preview)](ai-model-management.md) provides a turnkey experience that, when enabled on your Azure HorizonDB instance, automatically:
 
 > [!NOTE]
-> AI Model Management access requires [sign-up and approval](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
+> AI Model Management 
 
 1. Installs and configures the `azure_ai` extension.
 1. Provisions and registers three managed models:

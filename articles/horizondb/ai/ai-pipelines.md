@@ -69,7 +69,7 @@ You also need an embedding (and optionally a generation) model that `azure_ai` c
 
 ### Option 1: AI Model Management
 
-If [AI Model Management (Gated Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default. Access requires [sign-up and approval](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
+If [AI Model Management (Gated Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default.
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
