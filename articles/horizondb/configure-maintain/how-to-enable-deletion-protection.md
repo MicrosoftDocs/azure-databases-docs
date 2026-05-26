@@ -1,5 +1,5 @@
 ---
-title: Enable deletion protection in Azure HorizonDB
+title: Enable Deletion Protection in Azure HorizonDB
 description: This article describes how to enable deletion protection in an Azure HorizonDB instance using Azure Resource Manager locks.
 author: kabharati
 ms.author: kabharati
@@ -40,16 +40,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
 
-2. In the settings menu, select **Locks** page.
+1. In the settings menu, select **Locks** page.
 
-3. Select the **Add** button to provide your **Lock name**  and Choose **Delete** lock type.
+1. Select the **Add** button to provide your **Lock name** and Choose **Delete** lock type.
 
-    :::image type="content" source="./media/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="./media/delete-lock-01.png":::
+   :::image type="content" source="media/how-to-enable-deletion-protection/delete-lock-01.png" alt-text="Screenshot delete lock page." lightbox="media/how-to-enable-deletion-protection/delete-lock-01.png":::
 
-4. Select **Ok**. You should see a confirmation message indicating that the lock was created successfully
+1. Select **Ok**. You should see a confirmation message indicating that the lock was created successfully
 
-    :::image type="content" source="./media/success-lock.png" alt-text="Screenshot success lock page." lightbox="./media/success-lock.png":::
-
+   :::image type="content" source="media/how-to-enable-deletion-protection/success-lock.png" alt-text="Screenshot success lock page." lightbox="media/how-to-enable-deletion-protection/success-lock.png":::
 
 ## Permissions
 
@@ -62,10 +61,9 @@ Creating or deleting locks requires permissions for `Microsoft.Authorization/loc
 - Ensure **network resources (virtual networks and subnets)** are unlocked before provisioning, then reapply locks post-deployment to avoid interference.
 - While locks prevent server deletion, they do **not** restrict destructive SQL operations. Enforce SQL-level policies as needed.
 
-
 ---
 
 ## Related content
 
 - [Overview of Resource Manager locks](/azure/azure-resource-manager/management/lock-resources)
-- [Backups in Azure HorizonDB](../backup-restore/concepts-backup-restore.md)
+- [Backups in Azure HorizonDB (Preview)](../backup-restore/concepts-backup-restore.md)

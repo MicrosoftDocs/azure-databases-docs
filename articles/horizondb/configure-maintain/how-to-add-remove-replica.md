@@ -53,4 +53,4 @@ If your Azure HorizonDB cluster has only one replica, removing this replica resu
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
+- [What is Azure HorizonDB (Preview)?](../overview.md)

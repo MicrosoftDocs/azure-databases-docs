@@ -11,6 +11,7 @@ ms.topic: concept-article
 ---
 
 # Compute replicas in Azure HorizonDB (Preview)
+
 A compute replica is where the PostgreSQL relational engine runs and where language, query, and transaction processing occur. An Azure HorizonDB cluster contains one or more compute replicas:
 
 - **Primary replica** - The single read-write replica that handles all write operations and can also serve read queries.
@@ -27,6 +28,7 @@ Each compute replica runs a stateless PostgreSQL engine that connects to the sha
 Every compute replica, whether primary or standby, includes a local NVMe SSD cache. This cache stores hot pages locally to reduce round trips to the remote storage layer, delivering lower read latencies for frequently accessed data. Because the cache is local, each replica maintains its own cache contents independent of other replicas.
 
 ### Offloaded tasks
+
 Compute replicas offload durability and high availability tasks to the storage layer. This offloading frees CPU, disk, and network resources on the compute replica to run application workloads. The following tasks are handled by the storage layer instead of the compute replica:
 
 | Task | PostgreSQL process | Resource savings |
@@ -45,6 +47,7 @@ Compute replicas offload durability and high availability tasks to the storage l
 Scaling up increases the vCores and memory allocated to each compute replica in the cluster. Scale up when your workload requires more processing power, memory per query for complex queries, large joins, or high connection counts, or needs more resources on your primary replica.
 
 ### When to scale up
+
 Consider scaling up when you observe:
 
 - Sustained high CPU utilization across replicas.
@@ -84,6 +87,7 @@ When you add a standby or read replica to an Azure HorizonDB cluster:
 Because the storage is shared, provisioning a new replica is fast. There's no need to stream an initial data snapshot or WAL as in traditional PostgreSQL streaming replication.
 
 ### Scale out considerations
+
 - Adding a replica doesn't require downtime for the existing cluster. The new replica is provisioned and comes online without affecting the primary or other standby replicas.
 - Removing a replica reduces the read capacity. If the cluster has only one standby replica, removing it disables high availability.
 - All replicas in a cluster share the same vCore and memory configuration. You can't provision individual replicas with different compute tiers.
@@ -97,11 +101,11 @@ Azure HorizonDB provides a dedicated read-only endpoint that automatically load 
 
 Standby replicas serve a dual purpose: they handle read traffic and act as failover candidates. To enable zone-redundant high availability, you need at least two replicas (one primary and one standby) placed in separate availability zones. Adding more replicas increases both read capacity and failover options.
 
-For more information about failover behavior, see [High availability and failover in Azure HorizonDB](../high-availability/concepts-high-availability-failover.md).
+For more information about failover behavior, see [High availability in Azure HorizonDB (Preview)](../high-availability/concepts-high-availability-failover.md).
 
 ## Related content
 
-- [Scale compute in Azure HorizonDB](how-to-scale-compute.md)
-- [Add or remove a replica in Azure HorizonDB](how-to-add-remove-replica.md)
-- [High availability and failover in Azure HorizonDB](../high-availability/concepts-high-availability-failover.md)
-- [What is Azure HorizonDB?](../overview.md)
+- [Scale compute in Azure HorizonDB (Preview)](how-to-scale-compute.md)
+- [Add or remove a replica in Azure HorizonDB (Preview)](how-to-add-remove-replica.md)
+- [High availability in Azure HorizonDB (Preview)](../high-availability/concepts-high-availability-failover.md)
+- [What is Azure HorizonDB (Preview)?](../overview.md)
