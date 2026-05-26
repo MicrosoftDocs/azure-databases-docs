@@ -54,11 +54,11 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.  
-- `<YOUR_DATABASE_NAME>`: The database name you're using within your Azure HorizonDB cluster.  
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.  
-- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and nonalphanumeric characters (!, $, #, %, and so on).  
-- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.
+- `<YOUR_DATABASE_NAME>`: The database name you're using within your Azure HorizonDB cluster.
+- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
+- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and nonalphanumeric characters (!, $, #, %, and so on).
+- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](https://whatismyip.akamai.com/).
 
 Next, create a resource group by using the following command:
 
@@ -80,7 +80,7 @@ Set up admin user
 First, create a managed Azure HorizonDB instance.
 
 > [!NOTE]  
-> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB database](../configure-maintain/quickstart-create-cluster.md).
+> For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
 
 ```azurecli-interactive
 az Azure HorizonDB create \
@@ -598,4 +598,4 @@ az group delete \
 ## Related content
 
 - [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
-- [Connect and query in Azure HorizonDB](how-to-connect-query-guide.md)
+- [Connect and query Azure HorizonDB](how-to-connect-query-guide.md)
