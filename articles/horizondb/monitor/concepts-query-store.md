@@ -28,7 +28,7 @@ Query store is available to use with no extra charges. It's an opt-in feature, s
 1. Sign in to the Azure portal and select your Azure HorizonDB instance.
 1. Select **Server parameters** in the **Settings** section of the menu.
 1. Search for the `pg_qs.query_capture_mode` parameter.
-1. Set the value to `top` or `all`, depending on whether you want to track top-level queries or also nested queries (the ones which execute inside a function or procedure), and select **Save**.
+1. Set the value to `top` or `all`, depending on whether you want to track top-level queries or also nested queries (the ones, which execute inside a function or procedure), and select **Save**.
    Allow up to 20 minutes for the first batch of data to persist in the `azure_sys` database.
 
 ### Enable query store wait sampling
@@ -56,7 +56,7 @@ To minimize space usage, the runtime execution statistics in the runtime stats s
 ## Access query store information
 
 Query store data is stored in the `azure_sys` database on your Azure HorizonDB instance.
-The following query returns information about queries which were recorded in query store:
+The following query returns information about queries, which were recorded in query store:
 
 ```sql
 SELECT * FROM  query_store.qs_view;
@@ -75,13 +75,13 @@ Here are some examples of how you can gain more insights into your workload usin
 
 | **Observation** | **Action** |
 | --- | --- |
-| High lock waits | Check the query texts for the affected queries and identify the target entities. Look in query store for other queries which are executed frequently and/or have high duration and are modifying the same entity. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
-| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider creating some indexes which might decrease the number of physical reads for those queries. |
+| High lock waits | Check the query texts for the affected queries and identify the target entities. Look in query store for other queries, which are executed frequently and/or have high duration and are modifying the same entity. After identifying these queries, consider changing the application logic to improve concurrency, or use a less restrictive isolation level. |
+| High buffer IO waits | Find the queries with a high number of physical reads in query store. If they match the queries with high IO waits, consider creating some indexes, which might decrease the number of physical reads for those queries. |
 | High memory waits | Find the top memory consuming queries in query store. These queries are probably delaying further progress of the affected queries. |
 
 ## Configuration options
 
-When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../server-parameters/param-customized-options.md#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones which were executed the least number of times.
+When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../server-parameters/param-customized-options.md#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones, which were executed the least number of times.
 
 The following options are available for configuring Query Store parameters:
 
@@ -99,7 +99,7 @@ The following options are available for configuring Query Store parameters:
 | `pg_qs.track_utility` | Whether query store must track utility commands. | `on` | `on`, `off` |
 
 > [!NOTE]  
-> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you'll see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
+> If you change the value for `pg_qs.max_query_text_length` parameter, the text of all queries that were captured before you make the change continue to use the same query_id and sql_query_text. It might give the impression that the new value doesn't take effect but, for queries that weren't recorded in query store before, you see that the query text uses the newly configured maximum length. This is by design, and is explained at [Views and functions](#views-and-functions). If you execute [query_store.qs_reset](#query_storeqs_reset), it removes all the information recorded by query store until now, including the text that was captured for each query ID, and if any of those queries is executed again, the newly configured maximum length is applied to the text being captured.
 
 The following options apply specifically to wait statistics:
 
@@ -116,7 +116,7 @@ Use the Azure portal to get or set a different value for a parameter.
 
 ## Views and functions
 
-You can query the information recorded by query store and or delete it using some views and functions available in the `query_store` schema of the `azure_sys` database. Anyone in the PostgreSQL public role can use these views to see the data in query store. These views are only available in the **azure_sys** database.
+You can query the information recorded by query store and delete it using some views and functions available in the `query_store` schema of the `azure_sys` database. Anyone in the PostgreSQL public role can use these views to see the data in query store. These views are only available in the **azure_sys** database.
 
 Queries are normalized by looking at their structure and ignoring anything not semantically significant, like literals, constants, aliases, or differences in casing.
 
@@ -280,7 +280,7 @@ This function discards all statistics gathered so far by query store. It discard
 
 #### query_store.staging_data_reset
 
-This function discards all statistics gathered in-memory by query store (that is, the data in memory that isn't flushed yet to the on disk tables supporting persistence of collected data for query store). Only members of the server admin role (`azure_pg_admin`) can execute this function.
+This function discards all statistics gathered in-memory by query store (that is, the data in memory that isn't flushed yet to the on-disk tables supporting persistence of collected data for query store). Only members of the server admin role (`azure_pg_admin`) can execute this function.
 
 ### Read-only mode
 
