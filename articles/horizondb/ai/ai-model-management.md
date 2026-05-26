@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
-# AI Model Management for Azure HorizonDB (Preview)
+# AI Model Management for Azure HorizonDB (Gated Preview)
 
 > [!IMPORTANT]
 > AI Model Management (AIMM) is currently available as a **gated preview** for Azure HorizonDB. Access is limited and requires approval. To request access, complete the [AI Model Management gated preview participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
