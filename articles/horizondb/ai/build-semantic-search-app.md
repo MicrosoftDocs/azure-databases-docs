@@ -35,7 +35,7 @@ In this tutorial, you:
 ## Prerequisites
 
 1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](../configure-maintain/quickstart-create-cluster.md).
-1. [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models](#use-your-own-models-byom).
+1. [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
 ## Install extensions and set up AI models
 
@@ -60,7 +60,7 @@ This tutorial uses [AI Model Management in Azure HorizonDB (Preview)](ai-model-m
 
 With AI Model Management enabled, you can call AI functions without specifying a model. They automatically use the corresponding default model.
 
-### Use your own models
+### Use your own models (BYOM)
 
 If you prefer to use your own Microsoft Foundry model deployments instead of the Managed Models, register them in the model registry:
 
@@ -166,7 +166,7 @@ WHERE
 Repeat the command until there are no more rows to process.
 
 > [!NOTE]  
-> To use your own embedding model instead of the default Managed Model, pass your model alias as the first argument: `azure_openai.create_embeddings('my-embedding', input => ...)`. See [Use your own models](#use-your-own-models-byom).
+> To use your own embedding model instead of the default Managed Model, pass your model alias as the first argument: `azure_openai.create_embeddings('my-embedding', input => ...)`. See [Use your own models (BYOM)](#use-your-own-models-byom).
 
 > [!TIP]  
 > Experiment with the `LIMIT` value. A high value might cause Azure OpenAI to throttle the request and cause the statement to fail partway through. If the statement fails, wait for at least one minute and run the command again.
