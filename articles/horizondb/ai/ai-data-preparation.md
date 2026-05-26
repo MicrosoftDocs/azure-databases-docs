@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 # Prepare data for AI app and agent development in Azure HorizonDB (Preview)
 
-Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing, and explains how Azure HorizonDB supports each one.
+Before you can build AI-powered search, RAG applications, or intelligent agents, you need to prepare your source data. This preparation pipeline transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing. It also explains how Azure HorizonDB supports each step.
 
 ## Why data preparation matters
 
@@ -97,7 +97,7 @@ Common metadata fields include:
 
 Without metadata, a semantic search returns the most similar chunks but can't restrict results to, for example, "only HR policy documents from 2024." Metadata also enables citation tracking, so you know which source document a chunk came from when presenting results to users or an LLM.
 
-In Azure HorizonDB, you can store metadata as columns in your chunk table or in a `JSONB` field alongside the vector, and use standard SQL `WHERE` clauses to filter during search.
+In Azure HorizonDB, you can store metadata as columns in your chunk table or in a `JSONB` field alongside the vector. Use standard SQL `WHERE` clauses to filter during search.
 
 ## Step 5: Store and index
 

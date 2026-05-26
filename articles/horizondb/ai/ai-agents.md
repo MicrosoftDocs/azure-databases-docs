@@ -57,7 +57,7 @@ AI agents need more than an LLM, they need persistent infrastructure. PostgreSQL
 
 Agents need continuity across interactions, which means conversation history, user preferences, and task state must persist reliably.
 
-PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks support PostgreSQL as a memory backend. Frameworks like [LangGraph](https://docs.langchain.com/oss/python/langgraph/persistence) provide built-in PostgreSQL checkpointers for persisting conversation history and agent state, while [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) offers PostgreSQL connectors for vector-based semantic memory.
+PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks support PostgreSQL as a memory backend. Frameworks like [LangGraph](https://docs.langchain.com/oss/python/langgraph/persistence) provide built-in PostgreSQL check pointers for persisting conversation history and agent state, while [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) offers PostgreSQL connectors for vector-based semantic memory.
 
 ### Knowledge retrieval
 
@@ -79,7 +79,7 @@ HorizonDB adds managed infrastructure, built-in AI functions, AI Model Managemen
 
 ### Single agent vs. multi-agent
 
-A single agent handles all reasoning, tool use, and retrieval within one orchestration loop, suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems, useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
+A single agent handles all reasoning, tool use, and retrieval within one orchestration loop. This approach is suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems. This architecture is useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
 
 ### Orchestration patterns
 
