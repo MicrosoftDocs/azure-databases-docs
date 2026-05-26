@@ -368,7 +368,7 @@ The URI for a container is similar to:
 | `binary` | | Binary PostgreSQL COPY format. |
 | `csv` | | Comma-separated values format used by PostgreSQL COPY. |
 | `parquet` | | Parquet format. |
-| `text` \ | `xml` \ | `json` | | A file containing a single text value. |
+| `text`, `xml`, `json` | | A file containing a single text value. |
 | `tsv` | | Tab-separated values, the default PostgreSQL COPY format. |
 
 ##### compression
