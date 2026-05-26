@@ -293,4 +293,4 @@ conn.close()
 ## Related content
 
 - [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
-- [Connect and query in Azure HorizonDB](how-to-connect-query-guide.md)
+- [Connect and query Azure HorizonDB](how-to-connect-query-guide.md)
