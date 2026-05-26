@@ -12,9 +12,14 @@ ms.topic: concept-article
 
 # Connection endpoints (Preview)
 
-An Azure HorizonDB cluster has two endpoints (primary endpoint and reader endpoint) that are automatically created during cluster provision. You can find those two endpoints in the **Overview** or **Replicas** in **Settings**.
+An Azure HorizonDB cluster has two endpoints (primary endpoint and reader endpoint) that are automatically created during cluster provision. You can find those two endpoints in the **Overview** page.
 
-:::image type="content" source="media/concepts-connection-endpoints/endpoint-administrator-login.png" alt-text="Screenshot of connection endpoints." lightbox="media/concepts-connection-endpoints/endpoint-administrator-login.png" :::
+:::image type="content" source="media/concepts-connection-endpoints/overview.png" alt-text="Screenshot showing the Overview page.":::
+
+You can also find them in the **Replicas** page.
+
+:::image type="content" source="media/concepts-connection-endpoints/replicas.png" alt-text="Screenshot showing the Replicas page.":::
+
 
 ## Primary endpoint (read/write)
 
@@ -36,5 +41,5 @@ When your Azure HorizonDB cluster has one or more replicas, the reader endpoint 
 
 ## Related content
 
-- [What is Azure HorizonDB (Preview)?](../overview.md)
-- [Add or remove a replica in Azure HorizonDB (Preview)](../configure-maintain/how-to-add-remove-replica.md)
+- [What is Azure HorizonDB?](../overview.md)
+- [Add or remove a replica in Azure HorizonDB](../configure-maintain/how-to-add-remove-replica.md)

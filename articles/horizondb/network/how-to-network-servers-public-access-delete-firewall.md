@@ -27,41 +27,16 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. To delete a firewall rule, select the trash bin icon located to the right of the rule definition.
 
-1. To delete the firewall rule that allows connections from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this server** checkbox.
+1. To delete the firewall rule that allows connections from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this cluster** checkbox.
 
    > [!IMPORTANT]  
-   > **Allow public access from any Azure service within Azure to this server** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+   > **Allow public access from any Azure service within Azure to this cluster** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
 
 1. Select **Save**.
 
 1. A notification informs you that the changes are being applied.
 
-1. The status of the server changes to **Updating**.
-
 1. When the process completes, a notification informs you that the changes were applied.
-
-1. The status of the server changes to **Ready**.
-
-<!--
-
-## Delete firewall rules using the Azure CLI
-
-To delete firewall rules from a server, use the [az postgres flexible-server firewall-rule delete](/CLI/azure/postgres/flexible-server/firewall-rule#az-postgres-flexible-server-firewall-rule-delete) command.
-
-```azurecli-interactive
-az postgres flexible-server firewall-rule delete \
-  --resource-group <resource_group> \
-  --name <server> \
-  --rule-name <rule>
-```
--->
-
-If you try to delete a firewall rule on a server that isn't in the `Ready` state, you receive an error like this:
-
-```output
-Code: InternalServerError
-Message: An unexpected error occured while processing the request. Tracking ID: '<tracking_id>'
-```
 
 > [!NOTE]  
 > Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.

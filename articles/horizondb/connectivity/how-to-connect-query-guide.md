@@ -18,7 +18,7 @@ Applications can connect using standard PostgreSQL connection strings to either 
 
 You can find Azure HorizonDB cluster endpoint details in the **Overview** page:
 
-:::image type="content" source="media/how-to-connect-query-guide/endpoint-administrator-login.png" alt-text="Screenshot showing the Overview page and connection details." lightbox="media/how-to-connect-query-guide/endpoint-administrator-login.png":::
+:::image type="content" source="media/how-to-connect-query-guide/overview.png" alt-text="Screenshot showing the Overview page and connection details." lightbox="media/how-to-connect-query-guide/overview.png":::
 
 How to connect to Azure HorizonDB read/write instance (primary endpoint):
 
