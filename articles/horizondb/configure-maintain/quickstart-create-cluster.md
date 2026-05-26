@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Create an Azure HorizonDB cluster"
+title: "Quickstart: Create an Azure HorizonDB Cluster"
 description: Quickstart guide to creating an Azure HorizonDB cluster.
 author: scoriani
 ms.author: scoriani
@@ -78,9 +78,9 @@ Select **Save** to confirm or **Cancel** to discard changes.
 #### Authentication
 
 | Setting | Description | Recommended |
-|---------|-------------|-------------|
+| --- | --- | --- |
 | **Authentication method** | How users authenticate | - PostgreSQL authentication only |
-| **Admin username** | adminuser | - Must be 1-63 characters<br>- Only numbers and letters<br>- Can't start with `pg_`<br>- Can't be system reserved names |
+| **Admin username** | adminuser | - Must be 1-63 characters<br />- Only numbers and letters<br />- Can't start with `pg_`<br />- Can't be system reserved names |
 | **Password** | Complex password | 8-128 characters with uppercase, lowercase, numbers, and special characters |
 
 ### Configure networking
@@ -95,7 +95,7 @@ Connect through a public endpoint by using firewall rules.
 
 | Setting | Description |
 | --- | --- |
-| **Public access** |  Only the IP addresses you configure in the Firewall rules section can access this cluster. By default, no public IP addresses are allowed. |
+| **Public access** | Only the IP addresses you configure in the Firewall rules section can access this cluster. By default, no public IP addresses are allowed. |
 
 **Firewall rules:**
 
@@ -128,7 +128,7 @@ Organize resources with name-value pairs:
 
 Deployment typically takes 5-10 minutes. When complete, select **Go to resource** to access your cluster.
 
-:::image type="content" source="media/quickstart-create-cluster/overview.png" alt-text="Screenshot of the Azure HorizonDB cluster Overview page in the Azure portal.":::
+:::image type="content" source="media/quickstart-create-cluster/overview.png" alt-text="Screenshot of the Azure HorizonDB cluster Overview page in the Azure portal." lightbox="media/quickstart-create-cluster/overview.png" :::
 
 ## Create a cluster using the Azure CLI
 
@@ -139,6 +139,7 @@ Deployment typically takes 5-10 minutes. When complete, select **Go to resource*
 If you use Azure Cloud Shell, you're already signed in.
 
 Add the Azure CLI extension for HorizonDB:
+
 ```azurecli-interactive
 az extension add --name horizondb
 ```
@@ -281,7 +282,7 @@ Save this file as `horizondb-template.json`:
             "properties": {
                 "mode": "Incremental",
                 "template": {
-                    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+                    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
                     "contentVersion": "1.0.0.0",
                     "resources": [
                         {
@@ -476,4 +477,4 @@ az horizondb delete \
 
 ## Related content
 
-- [Connect and query overview in Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)
+- [Connect and query Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)

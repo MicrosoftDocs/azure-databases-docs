@@ -29,7 +29,7 @@ To request a quota increase, you must create a new support request with your wor
    - For **Subscription**, select the subscription for which you want to increase the quota.
    - For **Quota type**, select **Azure HorizonDB**
 
-   :::image type="content" source="media/how-to-create-support-request-quota-increase/create-quota-increase-request.png" alt-text="Screenshot of create a new Azure HorizonDB request for quota increase." lightbox="media/how-to-create-support-request-quota-increase/create-quota-increase-request.png" :::
+   :::image type="content" source="media/how-to-request-quota-increase/create-quota-increase-request.png" alt-text="Screenshot of create a new Azure HorizonDB request for quota increase." lightbox="media/how-to-request-quota-increase/create-quota-increase-request.png" :::
 
 1. In the **Additional Details** tab, enter the details corresponding to your quota request. The Information provided on this tab will be used to further assess your issue and help the support engineer troubleshoot the problem.
 
@@ -55,4 +55,4 @@ The Azure HorizonDB support team processes all quota requests in 24-48 hours.
 
 ## Related content
 
-- [Create a HorizonDB cluster](quickstart-create-cluster.md)
+- [Create an Azure HorizonDB cluster](quickstart-create-cluster.md)
