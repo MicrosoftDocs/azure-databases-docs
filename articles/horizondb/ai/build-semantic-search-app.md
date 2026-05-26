@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to learn how to build an end-to-end semantic search application with Azure HorizonDB and its generative AI capabilities.
 ---
 
-# Tutorial: Build a semantic search application with Azure HorizonDB (Preview)
+# Tutorial: Build a semantic search application for Azure HorizonDB (Preview)
 
 This hands-on tutorial shows you how to build a semantic search application by using Azure HorizonDB. You use vector search to find semantically similar results, DiskANN indexing for scalable performance, and semantic reranking to surface the most relevant matches.
 

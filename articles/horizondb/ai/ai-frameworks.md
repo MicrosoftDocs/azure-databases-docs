@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Build AI apps and agents with orchestration frameworks (Preview)
+# Build AI apps and agents with orchestration frameworks for Azure HorizonDB (Preview)
 
 Azure HorizonDB integrates with leading LLM orchestration frameworks for building both AI applications and autonomous agents. These frameworks provide the scaffolding for managing LLMs, embedding models, agent memory, multi-agent workflows, and database connectivity.
 

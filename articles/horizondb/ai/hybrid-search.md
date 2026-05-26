@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 ---
 
-# Hybrid search in Azure HorizonDB (Preview)
+# Hybrid search for Azure HorizonDB (Preview)
 
 Hybrid search combines two retrieval strategies in a single query:
 

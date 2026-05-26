@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 
-# Implement durable AI pipelines in Azure HorizonDB (Preview)
+# Implement durable AI pipelines for Azure HorizonDB (Preview)
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embedding, extraction, generation, ranking, human approval) declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 

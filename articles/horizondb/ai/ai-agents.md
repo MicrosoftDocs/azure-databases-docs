@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 
-# Build AI agents with Azure HorizonDB (Preview)
+# Build AI agents for Azure HorizonDB (Preview)
 
 AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need: persistent memory, knowledge retrieval, and scalable storage, all inside a single PostgreSQL database.
 

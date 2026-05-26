@@ -15,7 +15,7 @@ ms.custom:
   - build-2026
 ---
 
-# Optimize performance when using pgvector in Azure HorizonDB (Preview)
+# Optimize performance when using pgvector for Azure HorizonDB (Preview)
 
 The `pgvector` extension adds an open-source vector similarity search to Azure HorizonDB.
 

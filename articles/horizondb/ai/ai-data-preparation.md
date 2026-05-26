@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the data preparation steps required before building AI apps and agents, including search, RAG, and knowledge graph scenarios.
 ---
 
-# Prepare data for AI app and agent development in Azure HorizonDB (Preview)
+# Prepare data for AI app and agent development for Azure HorizonDB (Preview)
 
 Before you can build AI-powered search, RAG applications, or intelligent agents, you need to prepare your source data. This preparation pipeline transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing. It also explains how Azure HorizonDB supports each step.
 

@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB (Preview)
+# Full-text search with pg_fts for Azure HorizonDB (Preview)
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
