@@ -42,8 +42,8 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-restore-custom-restore-point/custom-restore-point.png" alt-text="Screenshot showing the Select a custom restore point radio button selected." lightbox="media/how-to-restore-custom-restore-point/custom-restore-point.png":::
 
-> [!NOTE]  
-> During Preview, point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
+   > [!NOTE]  
+   > During Preview, point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
 
 1. If you want to modify the compute tier for the new server, or enable high availability or replicas, select **Configure server** and update the settings as needed. If you prefer to use the source server's settings, you can skip this step.
 
