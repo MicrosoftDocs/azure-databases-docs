@@ -54,7 +54,7 @@ This pattern gives you the speed of embedding-based retrieval with the accuracy 
 
 An Azure HorizonDB instance with either:
 
-- **[AI Model Management (limited preview)](ai-model-management.md)** enabled:
+- **[AI Model Management (Gated Preview)](ai-model-management.md)** enabled:
     - It automatically provisions a `default-reranker` model (`Cohere-rerank-v4.0-fast`) ready to use.
 - **The `azure_ai` extension installed with a reranker model registered** via the model registry. See [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 

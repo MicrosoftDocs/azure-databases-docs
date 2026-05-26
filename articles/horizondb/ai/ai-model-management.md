@@ -1,6 +1,6 @@
 ---
 title: AI Model Management in Azure HorizonDB (Preview)
-description: Automatically provision and manage embedding, generation, and reranking models in Azure HorizonDB with AI Model Management (AIMM), currently available as a limited preview.
+description: Automatically provision and manage embedding, generation, and reranking models in Azure HorizonDB with AI Model Management (AIMM), currently available as a gated preview.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
@@ -16,10 +16,10 @@ ms.custom:
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
-# AI Model Management for Azure HorizonDB (limited preview)
+# AI Model Management for Azure HorizonDB (Gated Preview)
 
 > [!IMPORTANT]
-> AI Model Management (AIMM) is currently available as a **limited preview** for Azure HorizonDB. Access is limited and requires approval. To request access, complete the [AI Model Management limited preview participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
+> AI Model Management (AIMM) is currently available as a **gated preview** for Azure HorizonDB. Access is limited and requires approval. To request access, complete the [AI Model Management gated preview participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
 
 AI Model Management (AIMM) is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AIMM handles everything for you with a single toggle in the Azure portal.
 
@@ -64,7 +64,7 @@ AI model usage is billed directly through your Azure HorizonDB resource with no 
 ## Prerequisites
 
 > [!IMPORTANT]
-> AI Model Management is in **limited preview**. Before you can enable this feature, you must [request access through the participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u) and receive approval.
+> AI Model Management is in **gated preview**. Before you can enable this feature, you must [request access through the participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u) and receive approval.
 
 ## Enable AI Model Management
 
