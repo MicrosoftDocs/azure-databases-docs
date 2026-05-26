@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: best-practice
 ms.custom:
-  - ignite-2024
+  - build-2026-public-preview
 ---
 
 # Best practices for query store in Azure HorizonDB

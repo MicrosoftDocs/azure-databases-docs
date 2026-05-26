@@ -9,8 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
 ms.custom:
-  - build-2026
-# customer intent: As a reader, I want to learn about the latest release notes and feature updates for Azure HorizonDB.
+  - build-2026-public-preview
 ---
 
 # Release notes - Azure HorizonDB (Preview)

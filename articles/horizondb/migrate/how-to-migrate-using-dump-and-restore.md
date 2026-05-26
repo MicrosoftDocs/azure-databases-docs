@@ -8,9 +8,8 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
-ms.collection:
-  - migration
-  - onprem-to-azure
+ms.custom:
+  - build-2026-public-preview
 ---
 
 # Migrate your PostgreSQL database to HorizonDB by using dump and restore

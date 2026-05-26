@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: concept-article
 ms.custom:
-  - ignite-2023
+  - build-2026-public-preview
 ---
 
 # Networking overview with public access (allowed IP addresses) in Azure HorizonDB

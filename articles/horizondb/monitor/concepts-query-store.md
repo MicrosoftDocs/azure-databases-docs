@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: how-to
 ms.custom:
-  - ignite-2024
+  - build-2026-public-preview
 ---
 
 # Query store in Azure HorizonDB
