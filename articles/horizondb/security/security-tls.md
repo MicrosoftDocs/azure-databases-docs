@@ -20,8 +20,6 @@ Azure HorizonDB requires all client connections to use Transport Layer Security 
 
 ## Trusted root certs and cert rotations
 
-[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
-
 ### Root CAs used by Azure HorizonDB
 
 Root CAs are the top-level authorities in the certificate chain. Azure HorizonDB currently uses dual-signed certificates issued by an intermediate CA (ICA) anchored by the following root CAs:

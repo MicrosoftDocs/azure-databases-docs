@@ -41,7 +41,7 @@ CREATE USER exampleuser PASSWORD password123;
 ```
 Don't use the **administrator role** for the application.
 
-In cloud-based PaaS environments, access to an Azure HorizonDB superuser account is restricted to control plane operations only. The `azuresu` role has superuser privileges, but the Azure HorizonDB cluster admin account isn't part of the `azuresu` role. 
+In cloud-based PaaS environments, access to an Azure HorizonDB superuser account is restricted to control plane operations only. The `azuresu` role has superuser privileges, but the Azure HorizonDB cluster admin account isn't part of the `azuresu` role.
 
 The `azure_pg_admin` role exists as a pseudo-superuser account. The administrator login you configured when creating the cluster is a member of the `azure_pg_admin` role.
 
@@ -71,7 +71,6 @@ oid            | 24827
 > Azure HorizonDB allows you to create **[CAST commands](https://www.postgresql.org/docs/current/sql-createcast.html)**. To run the `CREATE CAST` statement, the user must be a member of the `azure_pg_admin` role. Currently, you can't drop a CAST after you create it.
 >
 > Azure HorizonDB only supports CAST commands that use the `WITH FUNCTION` and `WITH INOUT` options. The `WITHOUT FUNCTION` option isn't supported.
-
 
 ### Control schema access
 
@@ -117,7 +116,7 @@ In this example, user *user1* can connect and has all privileges in the test dat
 
 ### Public schema ownership changes in Azure HorizonDB
 
-In Azure HorizonDB the public schema is owned by the `azure_pg_admin` role across all supported PostgreSQL versions. 
+In Azure HorizonDB the public schema is owned by the `azure_pg_admin` role across all supported PostgreSQL versions.
 
 ### Improved control for azure_pg_admin
 
@@ -173,7 +172,7 @@ PostgreSQL has **BYPASSRLS** and **NOBYPASSRLS** permissions, which you can assi
 In Azure HorizonDB, bypassing row-level security privilege (BYPASSRLS) is implemented as follows:
 - Nonadministrative users created by the **azure_pg_admin** administrator role allow you to create roles with the BYPASSRLS attribute or privilege as necessary.
 
-- You can use the **azure_pg_admin** user to perform administrative tasks that require the BYPASSRLS privilege. 
+- You can use the **azure_pg_admin** user to perform administrative tasks that require the BYPASSRLS privilege.
 
 ## Related content
 
