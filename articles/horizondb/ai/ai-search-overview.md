@@ -128,7 +128,7 @@ Retrieval is only the first step. Even the best hybrid search can return results
 
 Semantic reranking is a second-stage scoring pass that takes the top results from an initial retrieval (vector, full-text, or hybrid) and rescores them using a more powerful language model. The two-stage pattern exists because cross-encoder models are highly accurate but too expensive to run against millions of candidates. By applying them to a small shortlist (typically the top 50-150 results), you get higher precision at the top of the ranking.
 
-The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
+The `azure_ai` extension's [`rank()`](ai-functions.md#azure_airank) AI function brings semantic reranking directly into your SQL queries. [AI Model Management (Gated Preview)](ai-model-management.md) provides `Cohere-rerank-v4.0-fast` as a ready-to-use reranker, and you can combine it with vector search for a complete retrieval-and-rerank pipeline.
 
 To learn more, see [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md) and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md)
 

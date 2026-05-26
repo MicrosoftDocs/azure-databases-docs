@@ -74,9 +74,6 @@ CREATE EXTENSION IF NOT EXISTS azure_ai;
 
 For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md).
 
-> [!TIP]  
-> If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, the `azure_ai` extension is already installed and configured with a `default-embedding` model. You can skip the `CREATE EXTENSION azure_ai` step and omit the model alias in AI function calls.
-
 ## Set up the table and indexes
 
 Use a single table for both retrieval methods. Storing embeddings, content, and metadata together is a key advantage of doing this in HorizonDB instead of a separate search service - you keep transactional consistency and avoid sync drift.
@@ -108,7 +105,7 @@ CREATE INDEX idx_products_vec
 
 You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md). This eliminates the embedding pipeline entirely - no external service calls in your application code.
 
-If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model, pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
+If you have [AI Model Management (Gated Preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model, pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ```sql
 -- Backfill embeddings for existing rows

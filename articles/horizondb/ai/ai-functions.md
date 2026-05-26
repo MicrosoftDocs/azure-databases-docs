@@ -30,7 +30,7 @@ The AI functions provide five core SQL functions that use generative AI capabili
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
 - `azure_openai.create_embeddings()`: Creates vector embeddings for a given input text.
 
-Each function operates through model endpoints registered in the model registry or through Managed Models provisioned by [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md), ensuring seamless integration and user control.
+Each function operates through model endpoints registered in the model registry or through Managed Models provisioned by the [AI Model Management (Gated Preview)](ai-model-management.md), ensuring seamless integration and user control.
 
 ## Enable the azure_ai extension and register models
 
@@ -38,7 +38,10 @@ Before you can use AI functions, you need to enable the `azure_ai` extension and
 
 ### Option 1: Use AI Model Management
 
-[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) provides a turnkey experience that, when enabled on your Azure HorizonDB instance, automatically:
+[AI Model Management (Gated Preview)](ai-model-management.md) provides a turnkey experience that, when enabled on your Azure HorizonDB instance, automatically:
+
+> [!NOTE]
+> AI Model Management 
 
 1. Installs and configures the `azure_ai` extension.
 1. Provisions and registers three managed models:
@@ -124,7 +127,7 @@ SELECT * FROM model_registry.model_list_all();
 AI functions in the `azure_ai` extension simplify complex AI-driven tasks directly within your PostgreSQL database. You can seamlessly integrate generative AI capabilities into your SQL workflows to perform advanced text generation, truth evaluation, entity extraction, document ranking, and vector embedding creation. Each function is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
 > [!TIP]  
-> The `model` (model alias) parameter is optional in all AI functions. When you omit it, the function automatically uses the corresponding default Managed Model (`default-chat`, `default-embedding`, or `default-reranker`) provisioned by [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md).
+> The `model` (model alias) parameter is optional in all AI functions. When you omit it, the function automatically uses the corresponding default Managed Model (`default-chat`, `default-embedding`, or `default-reranker`) provisioned by [AI Model Management (Gated Preview)](ai-model-management.md).
 
 ### `azure_openai.create_embeddings()`
 
@@ -469,7 +472,7 @@ The following table lists the models supported by each AI function.
 
 ## Related content
 
-- [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md)
+- [AI Model Management (Gated Preview)](ai-model-management.md)
 - [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
 - [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)
 - [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md)

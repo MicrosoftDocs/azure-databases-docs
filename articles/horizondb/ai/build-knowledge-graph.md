@@ -50,9 +50,11 @@ SET search_path = ag_catalog, "$user", public;
 
 You need a chat or generation model, such as `gpt-5.4`, that the `azure_ai` extension can call. You have two options:
 
-#### Option 1: AI Model Management (recommended)
+#### Option 1: AI Model Management
 
-If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, the service automatically provisions and registers models in the model registry. You don't need to manage an endpoint or key. AI functions use the Managed Models by default. Visit the [the source data](#the-source-data).
+If [AI Model Management (Gated Preview)](ai-model-management.md) is enabled on your HorizonDB instance, the service automatically provisions and registers models in the model registry. You don't need to manage an endpoint or key. AI functions use the Managed Models by default. 
+
+You can use the [the source data](#the-source-data).
 
 #### Option 2: Manually register a model in the model registry
 

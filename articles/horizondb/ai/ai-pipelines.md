@@ -67,9 +67,9 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 You also need an embedding (and optionally a generation) model that `azure_ai` can call. You have two options:
 
-### Option 1: AI Model Management (recommended)
+### Option 1: AI Model Management
 
-If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default:
+If [AI Model Management (Gated Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically. There's no endpoint or key to manage. AI functions use the Managed Models by default.
 
 ```sql
 -- No endpoint configuration needed; AI Model Management handles it.
