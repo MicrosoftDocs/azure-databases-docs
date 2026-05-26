@@ -1,6 +1,6 @@
 ---
 title: What Is Azure HorizonDB?
-description: Learn about Azure HorizonDB, a fully managed, AI-readydatabase service built on PostgreSQL engineered for performance and scale.
+description: Learn about Azure HorizonDB, a fully managed, AI-ready database service built on PostgreSQL engineered for performance and scale.
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan
@@ -121,8 +121,9 @@ Azure HorizonDB is currently in **preview**. The following features aren't yet a
 | Long-term retention (LTR) | Not available | Currently backup retention is seven days. |
 | Index Tuning | Not yet available | Index tuning is coming soon. |
 | Virtual network injection | Not available | Currently we support private link. Virtual network integration isn't yet supported |
-| > [!NOTE] |
-| > This list reflects the current state of the service and is subject to change as new capabilities are released. Check the [release notes](release-notes/release-notes.md) for the latest updates. |
+
+> [!NOTE]  
+> This list reflects the current state of the service and is subject to change as new capabilities are released. Check the [release notes](release-notes/release-notes.md) for the latest updates.
 
 ## Azure regions
 
