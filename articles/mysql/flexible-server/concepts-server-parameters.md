@@ -212,6 +212,8 @@ You can set this parameter at the session level by using `init_connect`. For mor
 
 You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
 
+[!NOTE] Known Issue: After promoting a read replica to a standalone server in Azure Database for MySQL, the stored procedure `mysql.az_load_timezone` may not be present on the promoted replica server. This will impact the scenario when manual refresh of timezone tables is required on the promoted replica server. Current workaround is to seek assistance from Microsoft support.
+
 ### innodb_temp_data_file_size_max
 For Azure Database for MySQL Flexible Server (version 5.7 only), innodb_temp_data_file_size_max parameter defines the maximum size of InnoDB temporary tablespace data files in MB. Setting the value to 0 means no limit, allowing growth up to the full storage size. Any non-zero value below 64 MB is rounded up to 64 MB, while values above 64 MB are applied as specified. This is a static variable and requires a server restart for changes to take effect.
 
