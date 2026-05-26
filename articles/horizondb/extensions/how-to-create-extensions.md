@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to create extensions in Azure HorizonDB.
 ---
 
-# Create extensions in Azure HorizonDB
+# Create extensions for Azure HorizonDB (Preview)
 
 Before creating extensions in an Azure HorizonDB instance, you must [allowlist](how-to-allow-extensions.md) them.
 

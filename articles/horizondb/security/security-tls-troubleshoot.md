@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: troubleshooting
 ---
 
-# Troubleshoot TLS connection failures in Azure HorizonDB
+# Troubleshoot TLS connection failures for Azure HorizonDB (Preview)
 
 TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure HorizonDB. This article guides you through validating your client configuration and troubleshooting potential connectivity issues.
 

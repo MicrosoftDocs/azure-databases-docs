@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Data encryption at rest in Azure HorizonDB (Preview)
+# Data encryption at rest for Azure HorizonDB (Preview)
 
 All the data managed by an Azure HorizonDB instance is always encrypted at rest. That data includes all system and user databases, server logs, write-ahead log segments, and backups. Encryption is handled by the underlying storage through [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
 

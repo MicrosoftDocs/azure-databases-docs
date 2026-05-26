@@ -14,7 +14,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Quickstart examples for Azure Storage extension in Azure HorizonDB
+# Quickstart examples for Azure Storage extension for Azure HorizonDB (Preview)
 
 Following is a list of examples to help you learn how to use the Azure Storage extension.
 

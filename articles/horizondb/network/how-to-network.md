@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Networking in Azure HorizonDB
+# Networking for Azure HorizonDB (Preview)
 
 When you deploy your Azure HorizonDB, the cluster networking mode is **Public access (allowed IP addresses)**.
 

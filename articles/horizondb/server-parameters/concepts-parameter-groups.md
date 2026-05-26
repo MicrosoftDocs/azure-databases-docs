@@ -10,7 +10,7 @@ ms.subservice: server-parameters
 ms.topic: concept-article
 ---
 
-# Parameter groups in Azure HorizonDB
+# Parameter groups for Azure HorizonDB (Preview)
 
 Parameter groups in HorizonDB act as containers for cluster configuration values that can be applied to one or more database clusters. Instead of managing configuration settings for each cluster individually, you can define them in a parameter group and connect that group with multiple clusters to ensure consistency across your environment.
 

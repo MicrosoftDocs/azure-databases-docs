@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Compute replicas in Azure HorizonDB (Preview)
+# Compute replicas for Azure HorizonDB (Preview)
 
 A compute replica is where the PostgreSQL relational engine runs and where language, query, and transaction processing occur. An Azure HorizonDB cluster contains one or more compute replicas:
 

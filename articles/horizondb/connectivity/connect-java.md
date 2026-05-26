@@ -19,7 +19,7 @@ ms.custom:
 ms.devlang: "java"
 ---
 
-# Quickstart: Use Java and JDBC in Azure HorizonDB
+# Quickstart: Use Java and JDBC for Azure HorizonDB (Preview)
 
 This article demonstrates how to create a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure HorizonDB](../index.yml).
 

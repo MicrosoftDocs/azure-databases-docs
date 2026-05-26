@@ -10,7 +10,7 @@ ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
-# Connection libraries in Azure HorizonDB
+# Connection libraries for Azure HorizonDB (Preview)
 
 This article lists libraries and drivers that you can use to connect applications to and query an Azure HorizonDB cluster.
 

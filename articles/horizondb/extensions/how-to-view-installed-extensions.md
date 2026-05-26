@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to view installed extensions in an Azure HorizonDB instance.
 ---
 
-# View installed extensions in Azure HorizonDB
+# View installed extensions for Azure HorizonDB (Preview)
 
 You might want to view the extensions that are installed in an Azure HorizonDB instance, and their corresponding versions.
 

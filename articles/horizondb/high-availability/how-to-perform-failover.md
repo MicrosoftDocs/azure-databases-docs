@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to perform failover in Azure HorizonDB.
 ---
 
-# Perform Failover in Azure HorizonDB (Preview)
+# Perform Failover for Azure HorizonDB (Preview)
 
 This article describes how to perform planned and forced failover in Azure HorizonDB. Failover operations switch the primary database server to a standby replica to maintain availability during planned maintenance or unexpected outages. During a failover, client connections are briefly interrupted while the service redirects traffic to the new primary server. Applications should implement retry logic to handle transient connectivity interruption.
 

@@ -14,7 +14,7 @@ ms.custom:
   - horz-security
 ---
 
-# Update application client certificates in Azure HorizonDB
+# Update application client certificates for Azure HorizonDB (Preview)
 
 When connecting applications to Azure HorizonDB, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to an Azure HorizonDB instance.
 

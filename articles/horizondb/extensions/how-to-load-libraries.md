@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to load libraries in Azure HorizonDB.
 ---
 
-# Load libraries in Azure HorizonDB
+# Load libraries for Azure HorizonDB (Preview)
 
 `shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when an Azure HorizonDB instance starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
