@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: best-practice
 ms.custom:
-  - ignite-2024
+  - build-2026-public-preview
 ---
 
 # Best practices for query store in Azure HorizonDB
@@ -22,11 +22,11 @@ Configure query store so that it captures the queries that matter to you.
 
 | **pg_qs.query_capture_mode** | **Scenario** |
 | --- | --- |
-| `all` | Captures all queries (top-level or nested) and their execution frequencies and other statistics. Identify new queries in your workload. Detect if ad hoc queries are used, to identify opportunities for user defined parameterization or automatic parameterization. |
+| `all` | Captures all queries (top-level or nested) and their execution frequencies and other statistics. Identify new queries in your workload. Detect if unplanned queries are used, to identify opportunities for user defined parameterization or automatic parameterization. |
 | `top` | Captures top-level queries only. Top-level queries are those issued directly by clients. These don't include nested statements (statements executed inside a procedure or a function). |
-| `none` | Doesn't capture any new queries, while configured like this. You might want to set it to this value if you've already captured a query set in the time window that you wanted to investigate, and you don't want to continue recording any new queries. `none` is suitable for testing and bench-marking environments. `none` should be used with caution as you might miss the opportunity to track and optimize important new queries. |
-> [!NOTE]  
-> `pg_qs.query_capture_mode` supersedes `pgms_wait_sampling.query_capture_mode`. If `pg_qs.query_capture_mode` is `none`, the `pgms_wait_sampling.query_capture_mode` setting has no effect.
+| `none` | Doesn't capture any new queries, while configured like this. You might want to set it to this value if you've already captured a queryset in the time window that you wanted to investigate, and you don't want to continue recording any new queries. `none` is suitable for testing and bench-marking environments. `none` should be used with caution as you might miss the opportunity to track and optimize important new queries. |
+| > [!NOTE] |
+| > `pg_qs.query_capture_mode` supersedes `pgms_wait_sampling.query_capture_mode`. If `pg_qs.query_capture_mode` is `none`, the `pgms_wait_sampling.query_capture_mode` setting has no effect. |
 
 ## Keep the data you need
 

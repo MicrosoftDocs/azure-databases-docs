@@ -8,7 +8,8 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure network related settings in Azure HorizonDB.
+ms.custom:
+  - build-2026-public-preview
 ---
 
 # Networking in Azure HorizonDB

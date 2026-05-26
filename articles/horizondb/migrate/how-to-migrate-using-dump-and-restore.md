@@ -8,9 +8,8 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
-ms.collection:
-  - migration
-  - onprem-to-azure
+ms.custom:
+  - build-2026-public-preview
 ---
 
 # Migrate your PostgreSQL database to HorizonDB by using dump and restore
@@ -33,8 +32,8 @@ The Azure portal streamlines this process via the **Connect** page by offering p
    :::image type="content" source="media/how-to-migrate-using-dump-and-restore/dropdown-list-of-databases.png" alt-text="Screenshot showing the dropdown where specific database can be chosen." lightbox="media/how-to-migrate-using-dump-and-restore/dropdown-list-of-databases.png":::
 
 1. **Choose the appropriate method**: Depending on your database size, choose between two methods:
-      - `pg_dump` and `psql` - using singular text file**: Ideal for smaller databases, this option uses a single text file for the dump and restore process.
-      - `pg_dump` & `pg_restore` - using multiple cores**: For larger databases, this method is more efficient as it uses multiple cores to handle the dump and restore process.
+   - `pg_dump` and `psql` - using singular text file**: Ideal for smaller databases, this option uses a single text file for the dump and restore process.
+   - `pg_dump` & `pg_restore` - using multiple cores**: For larger databases, this method is more efficient as it uses multiple cores to handle the dump and restore process.
 
    :::image type="content" source="media/how-to-migrate-using-dump-and-restore/different-dump-methods.png" alt-text="Screenshot showing two possible dump methods.":::
 
@@ -46,18 +45,20 @@ The Azure portal streamlines this process via the **Connect** page by offering p
 > Because `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities all rely on libpq, you can use any of the supported [environment variables](https://www.postgresql.org/docs/current/libpq-envars.html) it offers, or you can use the [password file](https://www.postgresql.org/docs/current/libpq-pgpass.html) to avoid being prompted for the password every time you run any of these commands.
 
 To step through this how-to guide, you need:
-- [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html), [psql](https://www.postgresql.org/docs/current/app-psql.html), [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) and [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html) in case you want to migrate with roles and permissions, command-line utilities installed.
+- [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html), [psql](https://www.postgresql.org/docs/current/app-psql.html), [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html) and [pg_dumpall](https://www.postgresql.org/docs/current/app-pg-dumpall.html) in case you want to migrate with roles and permissions, command-line utilities installed.
 - **Decide on the location for the dump**: Choose the place you want to perform the dump from. It can be done from various locations, such as a separate VM, [cloud shell](/azure/cloud-shell/overview) (where the command-line utilities are already installed, but might not be in the appropriate version, so always check the version using, for instance, `psql --version`), or your own laptop. Always keep in mind the distance and latency between the PostgreSQL server and the location from which you're running the dump or restore.
 
 > [!IMPORTANT]  
-> It is essential to use the `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities that are either of the same major version or a higher major version than the database server you are exporting data from or importing data to. Failing to do so might result in unsuccessful data migration. If your target server has a higher major version than the source server, use utilities that are either the same major version or higher than the target server.
+> It's essential to use the `pg_dump`, `psql`, `pg_restore` and `pg_dumpall` utilities that are either of the same major version or a higher major version than the database server you're exporting data from or importing data to. Failing to do so might result in unsuccessful data migration. If your target server has a higher major version than the source server, use utilities that are either the same major version or higher than the target server.
 
 > [!NOTE]  
 > It's important to be aware that `pg_dump` can export only one database at a time. This limitation applies regardless of the method you have chosen, whether it's using a singular file or multiple cores.
 
-## Dumping users and roles with `pg_dumpall -r`
+<a id="dumping-users-and-roles-with-pg_dumpall--r"></a>
 
-`pg_dump` is used to extract a PostgreSQL database into a dump file. However, it's crucial to understand that `pg_dump` does not dump roles or users definitions, as these are considered global objects within the PostgreSQL environment. For a comprehensive migration, including users and roles, you need to use `pg_dumpall -r`.  
+## Dump users and roles with `pg_dumpall -r`
+
+`pg_dump` is used to extract a PostgreSQL database into a dump file. However, it's crucial to understand that `pg_dump` doesn't dump roles or users definitions, as these are considered global objects within the PostgreSQL environment. For a comprehensive migration, including users and roles, you need to use `pg_dumpall -r`.  
 This command allows you to capture all role and user information from your PostgreSQL environment. If you're migrating within databases on the same server, please feel free to skip this step and move to the [Create a new database](#create-a-new-database) section.
 
 ```bash
@@ -70,13 +71,11 @@ For example, if you have a server named `mydemoserver` and a user named `myuser`
 pg_dumpall -r -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser > roles.sql
 ```
 
-
-
-### Dump roles 
+### Dump roles
 
 In a HorizonDB environment, enhanced security measures mean users don't have access to the pg_authid table, which is where role passwords are stored. This restriction affects how you perform a roles dump, as the standard `pg_dumpall -r` command attempts to access this table for passwords and fail due to lack of permission.
 
-When dumping roles from a HorizonDB server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it cannot read due to security restrictions.
+When dumping roles from a HorizonDB server, it's crucial to include the `--no-role-passwords` option in your `pg_dumpall` command. This option prevents `pg_dumpall` from attempting to access the `pg_authid` table, which it can't read due to security restrictions.
 
 To successfully dump roles from a HorizonDB server, use the following command:
 
@@ -90,7 +89,9 @@ For example, if you have a server named `mydemoserver`, a user named `myuser`, r
 pg_dumpall -r --no-role-passwords -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser > roles.sql
 ```
 
-### Cleaning up the roles dump
+<a id="cleaning-up-the-roles-dump"></a>
+
+### Clean up the roles dump
 
 When migrating the output file `roles.sql` might include certain roles and attributes that aren't applicable or permissible in the new environment. Here's what you need to consider:
 
@@ -136,8 +137,6 @@ pg_dump -Fd -j 2 testdb -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azu
 
 ---
 
-
-
 ## Restore the data into the target database
 
 ### Restore roles and users
@@ -158,14 +157,12 @@ For example, if you have a server named `mydemoserver`, a user named `myuser`, r
 psql -f roles.sql -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser
 ```
 
-
-
 > [!NOTE]  
-> If you already have users with the same names on your on-premises server from which you are migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords.
+> If you already have users with the same names on your on-premises server from which you're migrating, and your target server, be aware that this restoration process might change the passwords for these roles. Consequently, any subsequent commands you need to execute might require the updated passwords.
 
 ### Create a new database
 
-Before restoring your database, you might need to create a new, empty database. To do this, user that you are using must have the `CREATEDB` permission. Here are two commonly used methods:
+Before restoring your database, you might need to create a new, empty database. To do this, user that you're using must have the `CREATEDB` permission. Here are two commonly used methods:
 
 1. **Using `createdb` utility**
    The `createdb` program allows for database creation directly from the bash command line, without the need to log into PostgreSQL or leave the operating system environment. For instance:
@@ -179,10 +176,8 @@ Before restoring your database, you might need to create a new, empty database. 
    createdb testdb_copy -h mydemoserver.f90ac0bff9db.australiaeast.horizondb.azure.com -U myuser
    ```
 
-
-
 1. **Using SQL command**
-To create a database using a SQL command, you'll need to connect to your PostgreSQL server via a command line interface or a database management tool. Once connected, you can use the following SQL command to create a new database:
+   To create a database using a SQL command, you'll need to connect to your PostgreSQL server via a command line interface or a database management tool. Once connected, you can use the following SQL command to create a new database:
 
 ```sql
 CREATE DATABASE <new database name>;
@@ -194,7 +189,9 @@ Replace `<new database name>` with the name you wish to give your new database. 
 CREATE DATABASE testdb_copy;
 ```
 
-### Restoring the dump
+<a id="restoring-the-dump"></a>
+
+### Restore the dump
 
 After you've created the target database, you can restore the data into this database from the dump file. During the restoration, log any errors to an `errors.log` file and check its content for any errors after the restore is done.
 

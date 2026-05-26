@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: concept-article
 ms.custom:
-  - ignite-2023
+  - build-2026-public-preview
 ---
 
 # Networking overview with public access (allowed IP addresses) in Azure HorizonDB
@@ -94,7 +94,7 @@ Consider the following points when access to an Azure HorizonDB instance doesn't
 
 Regardless of the networking option that you choose, we recommend that you always use an FQDN as host name when connecting to your Azure HorizonDB instance. The server's IP address isn't guaranteed to remain static. Using the FQDN helps you avoid making changes to your connection string.
 
-An example that uses an FQDN as a host name is `hostname = servername.xxxxxxxxxxxx.region.horizondb.azure.com`. Where possible, avoid using `hostname = 10.0.0.4` (a private address) or `hostname = 40.2.45.67` (a public address).
+An example that uses an FQDN as a host name is `hostname = servername.xxxxxxxxxxxx.region.horizondb.azure.com`. Where possible, avoid using `hostname = 10.0.0.4` (a private address) or `hostname = 203.0.113.67` (a public address).
 
 ## Outbound IP addresses for firewall configuration
 

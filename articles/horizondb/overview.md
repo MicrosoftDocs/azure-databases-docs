@@ -1,6 +1,6 @@
 ---
 title: What Is Azure HorizonDB?
-description: Learn about Azure HorizonDB, a fully managed, AI-readydatabase service built on PostgreSQL engineered for performance and scale.
+description: Learn about Azure HorizonDB, a fully managed, AI-ready database service built on PostgreSQL engineered for performance and scale.
 author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan
@@ -96,8 +96,9 @@ The data storage fleet is a cache for all the data in the database that serves d
 
 Azure Blob storage provides durability for database data also serves as the data store for WAL archival. Data is stored on zone-redundant storage accounts. Database backups are implemented as snapshots of the blobs.
 
+<a id="pricing"></a>
 
-## Pricing
+## Price
 
 Azure HorizonDB currently charges for:
 - Provisioned Compute in core hours,
@@ -120,8 +121,9 @@ Azure HorizonDB is currently in **preview**. The following features aren't yet a
 | Long-term retention (LTR) | Not available | Currently backup retention is seven days. |
 | Index Tuning | Not yet available | Index tuning is coming soon. |
 | Virtual network injection | Not available | Currently we support private link. Virtual network integration isn't yet supported |
-| > [!NOTE] |
-| > This list reflects the current state of the service and is subject to change as new capabilities are released. Check the [release notes](release-notes/release-notes.md) for the latest updates. |
+
+> [!NOTE]  
+> This list reflects the current state of the service and is subject to change as new capabilities are released. Check the [release notes](release-notes/release-notes.md) for the latest updates.
 
 ## Azure regions
 
@@ -129,7 +131,7 @@ Azure HorizonDB is currently available in the following Azure regions:
 
 | Geography | Regions |
 | --- | --- |
-| Americas |  Central US, West US 2, WestUS 3 |
+| Americas | Central US, West US 2, WestUS 3 |
 | Europe | Sweden Central |
 | Asia Pacific | Australia East |
 
@@ -146,6 +148,6 @@ If you have questions or suggestions about Azure HorizonDB, you can get help and
 
 ## Related content
 
-- [Create an Azure HorizonDB database](configure-maintain/quickstart-create-cluster.md)
-- [Backup and restore in Azure HorizonDB](backup-restore/concepts-backup-restore.md)
-- [What is the PostgreSQL extension for Visual Studio Code](development/vs-code-extension/vs-code-overview.md)
+- [Create an Azure HorizonDB cluster](configure-maintain/quickstart-create-cluster.md)
+- [Backups in Azure HorizonDB (Preview)](backup-restore/concepts-backup-restore.md)
+- [What is the PostgreSQL extension for Visual Studio Code?](development/vs-code-extension/vs-code-overview.md)
