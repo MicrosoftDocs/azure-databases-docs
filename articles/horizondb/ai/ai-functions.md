@@ -1,5 +1,5 @@
 ---
-title: AI functions in the azure_ai extension for Azure HorizonDB
+title: AI Functions in the azure_ai Extension for Azure HorizonDB
 description: Overview of AI functions in the azure_ai extension for Azure HorizonDB. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
 author: shreyaaithal
 ms.author: shaithal
@@ -24,13 +24,13 @@ The `azure_ai` extension introduces **AI functions**, a feature that integrates 
 
 The AI functions provide five core SQL functions that use generative AI capabilities:
 
-- `azure_ai.generate()`: Generates text or structured output using Large Language Models (LLMs).
+- `azure_ai.generate()`: Generates text or structured output by using large language models (LLMs).
 - `azure_ai.is_true()`: Evaluates the likelihood that a given statement is true.
 - `azure_ai.extract()`: Extracts structured features or entities from text.
 - `azure_ai.rank()`: Reranks a list of documents based on relevance to a given query.
 - `azure_openai.create_embeddings()`: Creates vector embeddings for a given input text.
 
-Each function operates through model endpoints registered in the model registry or through Managed Models provisioned by [AI Model Management](ai-model-management.md), ensuring seamless integration and user control.
+Each function operates through model endpoints registered in the model registry or through Managed Models provisioned by [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md), ensuring seamless integration and user control.
 
 ## Enable the azure_ai extension and register models
 
@@ -38,10 +38,10 @@ Before you can use AI functions, you need to enable the `azure_ai` extension and
 
 ### Option 1: Use AI Model Management
 
-[AI Model Management in Azure HorizonDB](ai-model-management.md) provides a turn-key experience that, when enabled on your Azure HorizonDB instance, automatically:
+[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) provides a turnkey experience that, when enabled on your Azure HorizonDB instance, automatically:
 
 1. Installs and configures the `azure_ai` extension.
-1. Provisions and registers three Managed Models:
+1. Provisions and registers three managed models:
 
    - `gpt-5.4` for chat completion (alias: `default-chat`).
    - `text-embedding-3-small` for embeddings (alias: `default-embedding`).
@@ -70,11 +70,11 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
 
 1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use (for example, `gpt-5.4` or `text-embedding-3-small`) and complete the deployment.
 
-1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
+1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI in Foundry Models endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
 
-1. Navigate to your model deployment and note the following:
-   - **Deployment name**: The name you assigned during deployment (for example, `gpt-5-deployment`).
-   - **Model name**: The underlying model name (for example, `gpt-5.4`).
+1. Navigate to your model deployment and note the following values:
+   - **Deployment name**: The name you assigned during deployment, such as `gpt-5-deployment`.
+   - **Model name**: The underlying model name, such as `gpt-5.4`.
 
 1. Register the model in the model registry.
 
@@ -124,7 +124,7 @@ SELECT * FROM model_registry.model_list_all();
 AI functions in the `azure_ai` extension simplify complex AI-driven tasks directly within your PostgreSQL database. You can seamlessly integrate generative AI capabilities into your SQL workflows to perform advanced text generation, truth evaluation, entity extraction, document ranking, and vector embedding creation. Each function is optimized for ease of use and flexibility, so you can build intelligent applications with minimal effort.
 
 > [!TIP]  
-> The `model` (model alias) parameter is optional in all AI functions. When you omit it, the function automatically uses the corresponding default Managed Model (`default-chat`, `default-embedding`, or `default-reranker`) provisioned by [AI Model Management in Azure HorizonDB](ai-model-management.md).
+> The `model` (model alias) parameter is optional in all AI functions. When you omit it, the function automatically uses the corresponding default Managed Model (`default-chat`, `default-embedding`, or `default-reranker`) provisioned by [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md).
 
 ### `azure_openai.create_embeddings()`
 
@@ -401,11 +401,11 @@ SELECT model_registry.model_key_update(
 
 ## User access management
 
-When a model is registered, either by a user or through Managed Models (when AI Model Management is enabled), it's usable by all database users by default. You can explicitly manage and restrict access to models in the registry by using the `model_user_add`, `model_user_set`, and `model_user_remove` functions. This capability is useful for Bring Your Own Model (BYOM) entries, which might have associated costs or data privacy considerations.
+When you register a model, either by using Managed Models (when AI Model Management is enabled) or as a user, all database users can use the model by default. Use the `model_user_add`, `model_user_set`, and `model_user_remove` functions to explicitly manage and restrict access to models in the registry. This capability is useful for Bring Your Own Modelentries, which might have associated costs or data privacy considerations.
 
 ### Roles
 
-In addition to the built-in `azure_pg_admin` role, the `model_registry_manager` role has permissions to use, add, remove, and update models in the model registry, and manage user access to those models. A regular user can also register a model, and unless a specific user set is defined, the model remains accessible to all other users. Models can be updated either by the user who created them or by users with the appropriate privileges (`azure_pg_admin` or `model_registry_manager`).
+In addition to the built-in `azure_pg_admin` role, the `model_registry_manager` role has permissions to use, add, remove, and update models in the model registry, and manage user access to those models. A regular user can also register a model, and unless you define a specific user set, the model remains accessible to all other users. You can update models either by the user who created them or by users with the appropriate privileges (`azure_pg_admin` or `model_registry_manager`).
 
 **Assign the `model_registry_manager` role to a user:**
 
@@ -469,7 +469,7 @@ The following table lists the models supported by each AI function.
 
 ## Related content
 
-- [AI Model Management in Azure HorizonDB](ai-model-management.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-rank-function.md)
-- [Extract knowledge graphs in Azure HorizonDB](build-knowledge-graph.md)
+- [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
+- [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)
+- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md)

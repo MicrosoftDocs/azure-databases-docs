@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -14,10 +13,11 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 
-# Build AI agents with Azure HorizonDB (Preview)
+# Build AI agents for Azure HorizonDB (Preview)
 
 AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need: persistent memory, knowledge retrieval, and scalable storage, all inside a single PostgreSQL database.
 
@@ -57,7 +57,7 @@ AI agents need more than an LLM, they need persistent infrastructure. PostgreSQL
 
 Agents need continuity across interactions, which means conversation history, user preferences, and task state must persist reliably.
 
-PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks support PostgreSQL as a memory backend. Frameworks like [LangGraph](https://docs.langchain.com/oss/python/langgraph/persistence) provide built-in PostgreSQL checkpointers for persisting conversation history and agent state, while [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) offers PostgreSQL connectors for vector-based semantic memory.
+PostgreSQL's SQL and ACID guarantees ensure agents don't operate on stale or corrupted state. Agents use both short-term memory (session context, intermediate reasoning steps) and long-term memory (user preferences, interaction history, learned facts that persist across sessions). Major agent frameworks support PostgreSQL as a memory backend. Frameworks like [LangGraph](https://docs.langchain.com/oss/python/langgraph/persistence) provide built-in PostgreSQL check pointers for persisting conversation history and agent state, while [Microsoft Agent Framework](/semantic-kernel/concepts/vector-store-connectors/out-of-the-box-connectors/postgres-connector?pivots=programming-language-python) offers PostgreSQL connectors for vector-based semantic memory.
 
 ### Knowledge retrieval
 
@@ -79,7 +79,7 @@ HorizonDB adds managed infrastructure, built-in AI functions, AI Model Managemen
 
 ### Single agent vs. multi-agent
 
-A single agent handles all reasoning, tool use, and retrieval within one orchestration loop, suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems, useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
+A single agent handles all reasoning, tool use, and retrieval within one orchestration loop. This approach is suitable for focused tasks where latency, cost, and debugging simplicity are priorities. Multi-agent architectures distribute work across specialized agents that collaborate on complex problems. This architecture is useful when the task requires diverse expertise, parallelism, or different security boundaries for different parts of the workflow.
 
 ### Orchestration patterns
 
@@ -124,8 +124,6 @@ To start building AI agents with Azure HorizonDB:
 1. **Set up your data layer**: Create an Azure HorizonDB instance and enable the `azure_ai` and `pgvector` extensions. Store your domain data and [generate vector embeddings](generate-vector-embeddings.md).
 1. **Choose a retrieval strategy**: Based on your use case, implement [vector search](vector-search-pgvector.md), [hybrid search](hybrid-search.md), or [graph-augmented RAG](graph-rag.md) to give your agent access to domain knowledge.
 1. **Configure agent memory**: Use your framework's PostgreSQL connector to persist conversation history and agent state in Azure HorizonDB.
-1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
-1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Connect your agent**: Use an [orchestration framework](ai-frameworks.md) or the [Microsoft Foundry Agent Service](/azure/ai-services/agents/overview) to build your agent, connecting it to Azure HorizonDB through native connectors or an MCP server.
 1. **Enrich with AI functions**: Use [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) to add extraction, generation, reranking, and embeddings directly in your database queries.
 1. **Iterate and scale**: Set up [durable AI pipelines](ai-pipelines.md) to automate data preparation, add [semantic reranking](semantic-rank-function.md) to improve retrieval quality, optimize [vector indexing](vector-indexing-diskann.md) for complex domains, and scale to multi-agent architectures as your workload grows.

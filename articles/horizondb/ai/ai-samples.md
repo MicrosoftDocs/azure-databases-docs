@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -14,10 +13,11 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 ---
 
-# AI and agentic use cases and sample applications (Preview)
+# AI and agentic use cases and sample applications for Azure HorizonDB (Preview)
 
 Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
@@ -128,7 +128,7 @@ SaaS companies often learn a customer is leaving only after they cancel. The war
 
 Planning a trip means juggling flights, hotels, restaurants, budgets, and personal preferences all at once. Multiple specialized agents collaborate through shared Azure HorizonDB tables, each owning one domain of the problem, to produce a complete personalized trip plan.
 
-Example prompt: 
+Example prompt:
 
 ```copilot-prompt
 Plan a 5-day trip to Tokyo for two foodies on a $3,000 budget.

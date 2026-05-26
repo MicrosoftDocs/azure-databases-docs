@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the basics of Graph-augmented RAG, when to use it, and how it works alongside vector and hybrid search to improve relevance.
 ---
 
-# Graph-RAG patterns with Azure HorizonDB (Preview)
+# Graph-RAG patterns for Azure HorizonDB (Preview)
 
 Standard RAG (retrieval-augmented generation) retrieves context using vector similarity alone. Graph-RAG adds relationship-aware retrieval by combining vector search with knowledge graph traversal, improving accuracy for complex queries that depend on entity relationships, citations, causal chains, or multi-hop reasoning.
 
@@ -205,7 +205,7 @@ The full LLM-powered construction pipeline involves three stages:
 1. **Deduplicate** - Use `azure_ai.generate()` to normalize entity names into canonical forms and map aliases (for example, "PostgreSQL", "Postgres", and "PG" resolve to one node).
 1. **Load into graph** - Create nodes and edges in Apache AGE using the deduplicated entities, then add structural edges (temporal chains, hub nodes) to connect related clusters.
 
-For a step-by-step walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md).
+For a step-by-step walkthrough, see [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md).
 
 Best for: Support tickets, research papers, contracts, incident reports, meeting notes.
 
@@ -281,5 +281,5 @@ Get started quickly with prebuilt solution accelerators:
 ## Related content
 
 - [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
-- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE](build-knowledge-graph.md)
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
+- [Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)](build-knowledge-graph.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
