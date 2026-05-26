@@ -11,7 +11,7 @@ ms.topic: quickstart
 ai-usage: ai-assisted
 ---
 
-# Create an Azure HorizonDB cluster
+# Create an Azure HorizonDB cluster (Preview)
 
 Azure HorizonDB is a cloud native fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
 
