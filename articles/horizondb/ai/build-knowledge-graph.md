@@ -52,7 +52,7 @@ You need a chat or generation model, such as `gpt-5.4`, that the `azure_ai` exte
 
 #### Option 1: AI Model Management
 
-If [AI Model Management (Gated Preview)](ai-model-management.md) is enabled on your HorizonDB instance, the service automatically provisions and registers models in the model registry. You don't need to manage an endpoint or key. AI functions use the Managed Models by default. 
+If [AI Model Management (limited preview)](ai-model-management.md) is enabled on your HorizonDB instance, the service automatically provisions and registers models in the model registry. You don't need to manage an endpoint or key. AI functions use the Managed Models by default. 
 
 You can use the [the source data](#the-source-data).
 

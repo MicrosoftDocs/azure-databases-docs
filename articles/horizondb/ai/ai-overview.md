@@ -83,7 +83,7 @@ PostgreSQL is uniquely suited for AI workloads because it handles relational dat
 Call AI models directly from SQL queries with no application code required.
 
 - **[AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results by using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
-- **[AI Model Management (Gated Preview)](ai-model-management.md)**: One-select provisioning of embedding, chat, and reranking models. The system automatically registers, configures, and keeps models up to date. You don't need to manage endpoints or keys.
+- **[AI Model Management (limited preview)](ai-model-management.md)**: One-select provisioning of embedding, chat, and reranking models. The system automatically registers, configures, and keeps models up to date. You don't need to manage endpoints or keys.
 
 ### Data preparation and pipelines
 
