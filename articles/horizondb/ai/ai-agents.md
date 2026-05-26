@@ -5,7 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
+
 ms.service: azure-database-postgresql
 ms.subservice: ai-agents
 ms.topic: concept-article
@@ -14,6 +14,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 

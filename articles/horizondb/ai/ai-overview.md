@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-generative
 ms.topic: overview
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the full set of AI capabilities in Azure HorizonDB so I can choose the right features for building AI applications and agents.
 ---
 
@@ -76,7 +76,7 @@ PostgreSQL is uniquely suited for AI workloads because it handles relational dat
 
 ## AI capabilities in Azure HorizonDB
 
-:::image type="content" source="media/overview/ai-capabilities-overview.png" alt-text="Diagram showing AI capabilities in Azure HorizonDB organized as a top-down flow: Build AI agents and apps, AI functions in SQL, Data preparation and pipelines, Search and retrieval with subsections for improving performance and enhancing relevance, all on the Azure HorizonDB PostgreSQL foundation." lightbox="media/overview/ai-capabilities-overview.png" :::
+:::image type="content" source="media/ai-overview/ai-capabilities-overview.png" alt-text="Diagram showing AI capabilities in Azure HorizonDB organized as a top-down flow: Build AI agents and apps, AI functions in SQL, Data preparation and pipelines, Search and retrieval with subsections for improving performance and enhancing relevance, all on the Azure HorizonDB PostgreSQL foundation." lightbox="media/ai-overview/ai-capabilities-overview.png" :::
 
 ### AI functions in SQL
 

@@ -87,7 +87,7 @@ After you enable the feature, Azure HorizonDB automatically:
 
 ## Use AI functions with Managed Models
 
-After you enable AI Model Management, you can immediately invoke [AI functions in the azure_ai extension](ai-functions.md) by using the default model aliases or by omitting the model parameter entirely (the functions default to the corresponding Managed Model).
+After you enable AI Model Management, you can immediately invoke [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) by using the default model aliases or by omitting the model parameter entirely (the functions default to the corresponding Managed Model).
 
 ### Generate text with the default chat model
 
@@ -138,7 +138,7 @@ SELECT azure_ai.is_true(
 );
 ```
 
-For a complete reference of all AI functions, parameters, and advanced usage patterns, see [AI functions in the azure_ai extension](ai-functions.md).
+For a complete reference of all AI functions, parameters, and advanced usage patterns, see [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md).
 
 ## Bring your own models (BYOM)
 
@@ -184,7 +184,9 @@ FROM reports;
 
 You can restrict which database users can access specific models in the registry. For detailed information about user access management, including the `model_registry_manager` role and the `model_user_add`, `model_user_set`, and `model_user_remove` functions, see [User access management](ai-functions.md#user-access-management).
 
-## Pricing details
+<a id="pricing-details"></a>
+
+## Price details
 
 AI Model Management pricing is based entirely on usage of the provisioned AI models. There's no extra charge for enabling the feature itself. Model usage is billed using the same meters and rates as Microsoft Foundry, with no additional markup.
 
@@ -194,6 +196,6 @@ For current model pricing, see the [Microsoft Foundry pricing page](https://azur
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-rank-function.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
+- [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)

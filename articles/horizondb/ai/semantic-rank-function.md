@@ -47,14 +47,14 @@ This pattern gives you the speed of embedding-based retrieval with the accuracy 
 | --- | --- |
 | Search quality directly affects user experience (product search, support search, knowledge base) | Simple exact-match lookups (product code, ID search) |
 | Queries are natural language with nuance, synonyms, or intent variation | The corpus is small and homogeneous enough that vector search alone achieves high precision |
-| You're building RAG or [AI pipelines](ai-pipelines.md) and need the best possible context for LLM generation | Latency budget can't accommodate the additional model call |
+| You're building RAG or [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md) and need the best possible context for LLM generation | Latency budget can't accommodate the additional model call |
 | Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a small set (fewer than 5) |
 
 ## Prerequisites
 
 An Azure HorizonDB instance with either:
 
-- **[AI Model Management](ai-model-management.md) enabled (recommended)**: It automatically provisions a `default-reranker` model (`Cohere-rerank-v4.0-fast`) ready to use.
+- **[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled (recommended)**: It automatically provisions a `default-reranker` model (`Cohere-rerank-v4.0-fast`) ready to use.
 - **The `azure_ai` extension installed with a reranker model registered** via the model registry. See [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ## The rank() function
@@ -86,7 +86,7 @@ azure_ai.rank(
 Returns a table with columns: `document_id`, `rank`, and `relevance_score`.
 
 > [!NOTE]  
-> **BYOM users:** Pass your registered reranker model alias as the `model` argument. For example: `azure_ai.rank('query', documents, ids, 'my-reranker')`. See [AI functions](ai-functions.md) for details on registering models.
+> **BYOM users:** Pass your registered reranker model alias as the `model` argument. For example: `azure_ai.rank('query', documents, ids, 'my-reranker')`. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ## Basic reranking example
 
@@ -140,7 +140,7 @@ LIMIT 10;
 
 ## Hybrid search + reranking
 
-For the best retrieval quality, combine BM25 full-text search and vector search with Reciprocal Rank Fusion, then rerank the fused results. If you want to run this pattern as a durable, fault-tolerant workflow with automatic retries and checkpointing, see [AI pipelines](ai-pipelines.md) - which supports `ai.rank()` as a built-in pipeline step.
+For the best retrieval quality, combine BM25 full-text search and vector search with Reciprocal Rank Fusion, then rerank the fused results. If you want to run this pattern as a durable, fault-tolerant workflow with automatic retries and checkpointing, see [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md) - which supports `ai.rank()` as a built-in pipeline step.
 
 ```sql
 WITH query AS (
@@ -202,6 +202,6 @@ LIMIT 10;
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [Hybrid search](hybrid-search.md)
-- [Build a semantic search application](build-semantic-search-app.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
+- [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)
+- [Tutorial: Build a semantic search application with Azure HorizonDB (Preview)](build-semantic-search-app.md)

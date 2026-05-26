@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the data preparation steps required before building AI apps and agents, including search, RAG, and knowledge graph scenarios.
 ---
 
@@ -61,8 +61,7 @@ Adding **overlap** between consecutive chunks (repeating a portion of text at ea
 
 A common starting point is 512-2,000 characters. Tune based on your content type and retrieval quality.
 
-
-### Azure HorizonDB chunks 
+### Azure HorizonDB chunks
 
 Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). You specify a target chunk size and an overlap:
 

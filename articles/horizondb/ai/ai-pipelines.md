@@ -5,7 +5,6 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 

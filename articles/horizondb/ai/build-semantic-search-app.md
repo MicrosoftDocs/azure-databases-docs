@@ -35,7 +35,7 @@ In this tutorial, you:
 ## Prerequisites
 
 1. An Azure HorizonDB instance. If you don't have one, [create an Azure HorizonDB instance](../configure-maintain/quickstart-create-cluster.md).
-1. [AI Model Management in Azure HorizonDB](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
+1. [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled on your instance. This automatically provisions the `azure_ai` extension and registers embedding and reranking models. If you prefer to use your own models instead, skip AI Model Management and install the `azure_ai` extension manually by running `CREATE EXTENSION azure_ai;` on your database. Then register your models as described in [Use your own models (BYOM)](#use-your-own-models-byom).
 
 ## Install extensions and set up AI models
 
@@ -52,7 +52,7 @@ CREATE EXTENSION pg_diskann;
 
 ### Set up AI models
 
-This tutorial uses [AI Model Management in Azure HorizonDB](ai-model-management.md), which automatically provisions and configures the AI models you need. When you enable AI Model Management, it:
+This tutorial uses [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md), which automatically provisions and configures the AI models you need. When you enable AI Model Management, it:
 
 - Installs the `azure_ai` extension.
 - Registers a `default-embedding` model (`text-embedding-3-small`) for generating vector embeddings.
@@ -85,7 +85,7 @@ Then pass your model alias (for example, `'my-embedding'`) to AI function calls 
 Download the recipe dataset from [Kaggle](https://www.kaggle.com/datasets/thedevastator/better-recipes-for-a-better-life).
 
 > [!TIP]  
-> For datasets with large documents that exceed embedding model token limits, you should chunk the content into smaller segments before generating embeddings. This tutorial's recipe dataset has naturally small rows, so chunking isn't needed. For guidance on chunking strategies, see [Prepare data for AI app and agent development in Azure HorizonDB](ai-data-preparation.md).
+> For datasets with large documents that exceed embedding model token limits, you should chunk the content into smaller segments before generating embeddings. This tutorial's recipe dataset has naturally small rows, so chunking isn't needed. For guidance on chunking strategies, see [Prepare data for AI app and agent development in Azure HorizonDB (Preview)](ai-data-preparation.md).
 
 ### Create the table
 
@@ -180,7 +180,7 @@ CREATE INDEX recipes_embedding_diskann ON recipes
     USING diskann (embedding vector_cosine_ops);
 ```
 
-DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more information, see [Scalable vector indexing with DiskANN](vector-indexing-diskann.md).
+DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more information, see [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md).
 
 ## Semantic search
 
@@ -213,7 +213,7 @@ LANGUAGE plpgsql;
 ```
 
 > [!NOTE]  
-> To use your own embedding model, replace `azure_openai.create_embeddings(input => search_query)` with `azure_openai.create_embeddings('my-embedding', search_query)`. See [AI functions in the azure_ai extension](ai-functions.md).
+> To use your own embedding model, replace `azure_openai.create_embeddings(input => search_query)` with `azure_openai.create_embeddings('my-embedding', search_query)`. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md).
 
 Invoke the function to search:
 
@@ -278,10 +278,10 @@ ORDER BY rr.rank ASC;
 
 The reranked results prioritize recipes that are most relevant to the specific query intent - in this case, recipes that are both quick to prepare and vegan - rather than semantically similar to the query text.
 
-For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function](semantic-rank-function.md) and [Implement durable AI pipelines in Azure HorizonDB](ai-pipelines.md).
+For more information on the two-stage retrieval-and-rerank pattern, see [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md) and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
 ## Related content
 
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
-- [Semantic reranking with the rank() function](semantic-rank-function.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)
+- [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)

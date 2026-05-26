@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-frameworks
 ms.topic: concept-article
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 ---
 
 # Build AI apps and agents with orchestration frameworks (Preview)

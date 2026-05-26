@@ -48,7 +48,7 @@ You need a chat/generation model (such as `gpt-5.4`) that the `azure_ai` extensi
 
 #### Option 1: AI Model Management (recommended)
 
-If [AI Model Management in Azure HorizonDB](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
+If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
 
 #### Option 2: Manually register a model in the model registry
 
@@ -419,7 +419,7 @@ ORDER BY incoming_edges DESC;
 
 ### Step 5 - Visualize the graph with VS Code
 
-The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../development/vs-code-extension/vs-code-overview.md).
+The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code?](../development/vs-code-extension/vs-code-overview.md)
 
 This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands the neighborhood around each node:
 
@@ -436,7 +436,7 @@ This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands th
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-:::image type="content" source="media/knowledge-graph/checkout-workflow-traversal.png" alt-text="Screenshot of graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents." lightbox="media/knowledge-graph/checkout-workflow-traversal.png":::
+:::image type="content" source="media/build-knowledge-graph/checkout-workflow-traversal.png" alt-text="Screenshot of graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents." lightbox="media/build-knowledge-graph/checkout-workflow-traversal.png":::
 
 <a id="scaling-the-pattern"></a>
 
@@ -462,6 +462,6 @@ This tutorial runs extraction, deduplication, and graph loading as interactive S
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
 - [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
-- [Graph-augmented RAG patterns with Azure HorizonDB](graph-rag.md)
+- [Graph-RAG patterns with Azure HorizonDB (Preview)](graph-rag.md)

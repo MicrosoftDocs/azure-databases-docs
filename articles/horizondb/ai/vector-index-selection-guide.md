@@ -5,7 +5,6 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 

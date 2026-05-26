@@ -27,6 +27,6 @@ For more on the extension itself, see [basics of `pgvector`](vector-search-pgvec
 
 ## Related content
 
-- [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN](vector-indexing-diskann.md)
-- [Choose the right vector index for your workload in Azure HorizonDB](vector-index-selection-guide.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)
