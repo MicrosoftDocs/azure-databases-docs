@@ -1,5 +1,5 @@
 ---
-title: Graph database capabilities with Apache AGE extension
+title: Graph Database Capabilities with Apache AGE Extension
 description: Overview of Apache AGE and its capabilities in Azure HorizonDB.
 author: aditivgupta
 ms.author: adig
@@ -58,7 +58,7 @@ Adjust the following settings:
 Select Save to apply these changes. The server restarts automatically to activate the AGE extension.
 
 > [!NOTE]  
-> Failure to enable the `shared_preload_libraries` results in the following error when you attempt to use the AGE schema in a query: "ERROR: unhandled cipher(cstring) function call error on first cipher query"
+> Failure to enable the `shared_preload_libraries` results in the following error when you attempt to use the AGE schema in a query: "ERROR: unhandled cypher(cstring) function call error on first cypher query"
 
 ### Enable AGE in PostgreSQL
 
@@ -158,6 +158,7 @@ The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstud
 
 To render results in the graph visualizer, your queries must meet the following requirements:
 - **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead of returning properties, return the full objects and name the relationship variable:
+
   ```sql
   SELECT * FROM cypher('my_graph', $$
       MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
@@ -165,6 +166,7 @@ To render results in the graph visualizer, your queries must meet the following 
   $$) AS (a agtype, r agtype, b agtype);
   ```
 - **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+
   ```sql
   SELECT * FROM cypher('my_graph', $$
       MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
@@ -174,6 +176,7 @@ To render results in the graph visualizer, your queries must meet the following 
   $$) AS (a agtype, r agtype, b agtype);
   ```
 - **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+
   ```sql
   SELECT * FROM cypher('my_graph', $$
       MATCH (a:Product)-[r1:BOUGHT_TOGETHER]->(mid:Product)-[r2:BOUGHT_TOGETHER]->(b:Product)
@@ -186,4 +189,3 @@ To render results in the graph visualizer, your queries must meet the following 
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-postgresql)
 - [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
 - [GitHub Copilot Chat extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot-chat)
-

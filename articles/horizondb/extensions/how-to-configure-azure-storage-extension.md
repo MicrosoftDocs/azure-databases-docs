@@ -43,7 +43,7 @@ To meet the prerequisites needed in each case, follow the instructions in the co
 
 ### Use authorization with Microsoft Entra ID
 
-1. [Restart PostgreSQL engine in Azure HorizonDB](../configure-maintain/quickstart-create-cluster.md), after enabling a system assigned managed identity on it.
+1. [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md), after enabling a system assigned managed identity on it.
 1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure HorizonDB.
 
 #### Enable System Assigned Managed Identity

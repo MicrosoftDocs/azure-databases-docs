@@ -29,15 +29,15 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Include the libraries that you want to add in the value of `shared_preload_libraries`.
 
-   :::image type="content" source="media/how-to-allow-extensions/shared-libraries.png" alt-text="Screenshot that shows how to select libraries to be loaded in memory when the server starts." lightbox="media/how-to-allow-extensions/shared-libraries.png":::
+   :::image type="content" source="media/how-to-load-libraries/shared-libraries.png" alt-text="Screenshot that shows how to select libraries to be loaded in memory when the server starts." lightbox="media/how-to-load-libraries/shared-libraries.png":::
 
 1. Select **Save**.
 
-   :::image type="content" source="media/how-to-allow-extensions/save-libraries.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-libraries.png":::
+   :::image type="content" source="media/how-to-load-libraries/save-libraries.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-load-libraries/save-libraries.png":::
 
 1. Because `shared_preload_libraries` is a static server parameter, it requires a server restart so that the changes take effect.
 
-   :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
+   :::image type="content" source="media/how-to-load-libraries/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-load-libraries/save-and-restart.png":::
 
 ### [CLI](#tab/load-libraries-cli)
 

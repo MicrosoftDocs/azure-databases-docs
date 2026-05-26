@@ -108,12 +108,11 @@ ms.custom:
 
 ## azure_ai
 
-{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundry and Azure ML Services integration for PostgreSQL.
+{[azure_ai](../../ai/ai-functions.md)} provides Microsoft Foundry and Azure Machine Learning Services integration for PostgreSQL.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 17 | 2.2.0 |
-
 
 ## azure_storage
 
@@ -734,7 +733,9 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 <a id="pgrouting"></a>
 
-## pgrouting
+<a id="pgrouting"></a>
+
+## pgrout
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
 
