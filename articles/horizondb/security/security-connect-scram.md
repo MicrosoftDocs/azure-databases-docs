@@ -105,7 +105,7 @@ To configure SCRAM authentication, you need to access the Server Parameters page
 
 ## Related content
 
-- [What is Azure HorizonDB?](../overview.md)
+- [What is Azure HorizonDB (Preview)?](../overview.md)
 - [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
 - [Networking in Azure HorizonDB](../network/how-to-network.md)
 - [Firewall rules](../network/concepts-network-public.md#firewall-rules)

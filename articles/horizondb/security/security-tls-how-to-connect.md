@@ -21,8 +21,6 @@ Azure HorizonDB supports encrypted connections by using TLS 1.2 and 1.3. The ser
 
 By default, the server enforces secured connectivity between the client and the server. To disable this enforcement and allow both encrypted and unencrypted client communications, change the server parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` server parameter. **Don't disable** TLS.
 
-[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
-
 ## Client TLS configuration
 
 By default, PostgreSQL doesn't verify the server certificate. Because of this default behavior, the client can't detect if the server identity is spoofed (for example, if someone modifies a DNS record or takes over the server IP address). To prevent this kind of spoofing, enable TLS certificate verification on the client.
