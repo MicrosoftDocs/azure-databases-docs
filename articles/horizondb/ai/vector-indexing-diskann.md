@@ -108,7 +108,7 @@ Advanced filtering is what makes DiskANN the right index for agentic application
 
 | Index | Behavior with `WHERE` clause |
 | --- | --- |
-| `ivfflat` / `hnsw` | Returns top-K candidates from the ANN search, then filters - with a selective predicate, most candidates are discarded and recall drops. You typically have to over-fetch and re-rank in the application. |
+| `ivfflat` / `hnsw` | Returns top-K candidates from the ANN search, then filters - with a selective predicate, most candidates are discarded and recall drops. You typically have to over-fetch and rerank in the application. |
 | `diskann` (advanced filtering) | Predicate is evaluated inside the index walk. The index keeps fetching matching candidates until `LIMIT` is satisfied. Recall and latency stay stable as filters get more selective. |
 
 ### Use advanced filtering
@@ -146,7 +146,7 @@ LIMIT 10;
 
 ### Recall and `LIMIT`
 
-Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
+Advanced filtering tunes itself based on the `LIMIT` clause. With small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
 
 ### Limitations (Preview)
 
@@ -156,7 +156,7 @@ Advanced filtering tunes itself based on the `LIMIT` clause. With very small `LI
 
 ## Scale efficiently with spherical quantization (Preview)
 
-DiskANN uses **spherical quantization** to dramatically reduce the memory footprint of vectors. Spherical quantization compresses vectors more effectively than traditional quantization techniques, letting DiskANN keep more data in memory, reducing the need to access slower storage, and using less compute when comparing compressed vectors. **The result is better performance and significant cost savings when working with larger datasets (> 1 million rows).**
+DiskANN uses **spherical quantization** to reduce memory usage and improve performance. This compression technique lets you keep more data in memory and reduces storage access, which results in faster queries and lower costs for large datasets (> 1 million rows).
 
 > [!IMPORTANT]  
 > Spherical quantization in DiskANN is in **preview**. Available in the `pg_diskann` extension.
@@ -196,7 +196,7 @@ This enhancement enables scalable, efficient search across large vector datasets
 
 ## Speed up index build
 
-There are a few ways we recommend to improve your index build times.
+There are a few ways we recommend improving your index build times.
 
 <a id="using-more-memory"></a>
 

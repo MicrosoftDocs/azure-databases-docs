@@ -47,7 +47,7 @@ A hybrid query has three logical steps, all of which run inside HorizonDB:
 
 Optionally, a fourth step:
 
-1. **Re-rank the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) for a final accuracy bump on the documents that will actually be shown to the user.
+1. **Re-ranking the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) provides a final accuracy bump on the documents that will actually be shown to the user.
 
 Everything happens in a single SQL query. There's no copy-syncing to an external search index, no application-side join, and no separate vector database.
 
@@ -59,7 +59,7 @@ The constant `k` (commonly 60) prevents the top-1 document from dominating. Docu
 
 RRF is the right default because:
 
-- It needs no tuning - `k = 60` is a well-known good choice.
+- It needs no tuning - `k = 60` is a good choice.
 - It's robust to score-scale differences across rankers.
 - It composes naturally with more than two rankers (for example, graph search and structured filters).
 
@@ -110,7 +110,7 @@ CREATE INDEX idx_products_vec
 
 You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md). This eliminates the embedding pipeline entirely - no external service calls in your application code.
 
-If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model (BYOM), pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
+If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model, pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ```sql
 -- Backfill embeddings for existing rows
@@ -221,7 +221,7 @@ For more on filtered vector search, see [Filter your search with advanced filter
 
 ## Add a semantic reranker for the final accuracy bump
 
-RRF gives you a strong ranked list cheaply. For the documents that will actually be shown to a user or fed to an LLM, a **cross-encoder reranker** can push relevance higher still, at the cost of one model call per candidate.
+RRF provides a strong ranked list cheaply. For the documents that are actually shown to a user or fed to an LLM, a **cross-encoder reranker** pushes relevance higher still, at the cost of one model call per candidate.
 
 The pattern:
 

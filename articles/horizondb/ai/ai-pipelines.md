@@ -79,7 +79,7 @@ SELECT azure_openai.create_embeddings(input => 'hello world');
 
 ### Option 2: Manually register a model in the model registry
 
-If you're not using AI Model Management, deploy your own model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model) and register it in the model registry:
+If you don't use AI Model Management, deploy your own model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model) and register it in the model registry:
 
 ```sql
 SELECT model_registry.model_add(
@@ -181,7 +181,7 @@ ORDER BY di.created_at DESC
 LIMIT 5;
 ```
 
-Failed steps are retried automatically by the durable engine. The `azure_ai` extension absorbs transient errors from the embedding endpoint internally; persistent failures surface in `ai.status()` and in the `pg_durable` instance history.
+The durable engine automatically retries failed steps. The `azure_ai` extension internally handles transient errors from the embedding endpoint. Persistent failures appear in `ai.status()` and in the `pg_durable` instance history.
 
 To pause and resume change-triggered runs:
 
@@ -192,7 +192,7 @@ SELECT ai.resume('rag_pipeline');
 
 ## Re-embed when the model changes
 
-Embedding models change. Dimensions change. Chunk sizes change. AI pipelines treat that as a first-class operation: you change the pipeline definition (or the sink schema), then call `ai.backfill()` to reprocess every row from scratch:
+Embedding models change. Dimensions change. Chunk sizes change. AI pipelines treat that change as a first-class operation: you change the pipeline definition (or the sink schema), then call `ai.backfill()` to reprocess every row from scratch:
 
 ```sql
 -- After dropping and recreating the pipeline with a new model or dimensions:

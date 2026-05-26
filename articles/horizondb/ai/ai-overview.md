@@ -69,7 +69,7 @@ Every AI pattern, whether it's RAG, agents, or fine-tuning, starts with data. Bu
 
 - **Data is the source of knowledge.** LLMs are only as good as the context they receive. Your business data (product catalogs, support tickets, policy documents, customer records, and more) needs to be chunked, embedded, indexed, and kept in sync. The database orchestrates this entire data-to-knowledge pipeline.
 - **Persistent memory for stateful applications.** Chatbots and agents need to remember conversation history, user preferences, and task progress across sessions. Without durable, transactional storage, every interaction starts from zero.
-- **Unified multimodal storage.** AI workloads involve relational records, JSON documents, vector embeddings, graph relationships, and geospatial data. Managing these types of data across separate specialized systems introduces synchronization complexity, consistency risks, and operational overhead. A database that handles all of these natively removes that fragmentation.
+- **Unified multimodal storage.** AI workloads involve relational records, JSON documents, vector embeddings, graph relationships, and geospatial data. Managing these types of data across separate specialized systems introduces synchronization complexity, consistency risks, and operational overhead. A database that handles all of these natively remove that fragmentation.
 - **Production-grade reliability.** Prototype AI apps can use in-memory stores or flat files. Production systems need ACID transactions, point-in-time recovery, high availability, and security. Mature database systems provide these capabilities out of the box.
 
 PostgreSQL is uniquely suited for AI workloads because it handles relational data, JSON, vectors, graphs, and full-text search in a single transactional system backed by decades of ecosystem maturity, extensibility, and broad framework support. Azure HorizonDB builds on PostgreSQL with managed infrastructure, built-in AI functions, model management, and durable pipelines purpose-built for AI workloads. For a deeper dive, see [Why PostgreSQL and Azure HorizonDB for AI agents](ai-agents.md#why-postgresql-and-azure-horizondb-for-ai-agents).
@@ -82,12 +82,12 @@ PostgreSQL is uniquely suited for AI workloads because it handles relational dat
 
 Call AI models directly from SQL queries with no application code required.
 
-- **[AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
+- **[AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)**: Generate text, extract entities, evaluate statements, create embeddings, and rerank results by using functions like `azure_ai.generate()`, `azure_ai.extract()`, `azure_ai.rank()`, and `azure_openai.create_embeddings()`.
 - **[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md)**: One-select provisioning of embedding, chat, and reranking models. The system automatically registers, configures, and keeps models up to date. You don't need to manage endpoints or keys.
 
 ### Data preparation and pipelines
 
-Prepare your data for AI retrieval with automated, fault-tolerant workflows.
+Prepare your data for AI retrieval by using automated, fault-tolerant workflows.
 
 - **[Prepare data for AI app and agent development in Azure HorizonDB (Preview)](ai-data-preparation.md)**: Strategies for chunking, formatting, and structuring your data for effective embedding and retrieval.
 - **[Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md)**: Declare multistep AI workflows (chunk → embed → index → search → rerank) as durable pipelines that run inside the database with automatic retries, checkpointing, and crash recovery.
@@ -121,7 +121,7 @@ Retrieval is only the first step. Enhance accuracy and depth with second-stage s
 Connect Azure HorizonDB to agent frameworks, orchestration services, and tools.
 
 - **[Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)**: Conceptual guide covering agent memory, knowledge retrieval, multi-agent architecture, standards (MCP, A2A), and orchestration frameworks.
-- **[Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md)**: Native connectors for Microsoft Agent Framework, LangGraph/LangChain, LlamaIndex, CrewAI, AutoGen, and more.
+- **[Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md)**: Native connectors for Microsoft Agent Framework, LangGraph/LangChain, LlamaIndex, CrewAI, Auto-Gen, and more.
 - **[Develop AI apps with LangChain and Azure HorizonDB (Preview)](develop-with-langchain.md)**: Step-by-step guide for using LangChain with Azure HorizonDB.
 
 ### Samples and tutorials

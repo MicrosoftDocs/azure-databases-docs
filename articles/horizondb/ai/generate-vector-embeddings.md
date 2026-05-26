@@ -69,7 +69,7 @@ azure_openai.create_embeddings(model text, input text[], batch_size integer DEFA
 The following examples show how to generate, store, and query vector embeddings.
 
 - If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter as the function automatically uses the `default-embedding` model.
-- If you're using your own model (BYOM), pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
+- If you're using your own model, pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ### Create a sample table
 

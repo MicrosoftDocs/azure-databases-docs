@@ -47,7 +47,7 @@ BM25 (Best Matching 25) solves three problems that `ts_rank` doesn't:
 
 - **Term frequency saturation.** Repeated occurrences of a keyword have diminishing returns, so a keyword-stuffed document can't dominate results.
 - **Document length normalization.** A short product title that mentions "wireless headphones" outranks a 10,000-word blog post that happens to mention the same phrase once.
-- **Inverse document frequency (IDF).** Common words ("the," "error") get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
+- **Inverse document frequency (IDF).** Common words (`the,` `error`) get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
 
 That's why every modern search engine uses BM25 (or a close variant) as its baseline. With `pg_fts`, you get the same quality without leaving Postgres.
 

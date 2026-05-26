@@ -401,7 +401,7 @@ SELECT model_registry.model_key_update(
 
 ## User access management
 
-When you register a model, either by using Managed Models (when AI Model Management is enabled) or as a user, all database users can use the model by default. Use the `model_user_add`, `model_user_set`, and `model_user_remove` functions to explicitly manage and restrict access to models in the registry. This capability is useful for Bring Your Own Model (BYOM) entries, which might have associated costs or data privacy considerations.
+When you register a model, either by using Managed Models (when AI Model Management is enabled) or as a user, all database users can use the model by default. Use the `model_user_add`, `model_user_set`, and `model_user_remove` functions to explicitly manage and restrict access to models in the registry. This capability is useful for Bring Your Own Modelentries, which might have associated costs or data privacy considerations.
 
 ### Roles
 

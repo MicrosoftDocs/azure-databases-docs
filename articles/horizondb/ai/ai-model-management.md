@@ -18,7 +18,7 @@ ms.custom:
 
 # AI Model Management in Azure HorizonDB (Preview)
 
-AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AI Model Management handles everything for you with a single toggle in the Azure portal.
+AI Model Management is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials. AI Model Management handles everything for you with a single toggle in the Azure portal.
 
 When enabled, the feature:
 
@@ -30,9 +30,9 @@ When enabled, the feature:
 
 ## Key features
 
-Azure HorizonDB provides a curated selection of pre-configured AI models that are automatically deployed and maintained for you. The following sections describe the managed models, model registry, and bring-your-own-model capabilities available through AI Model Management.
+Azure HorizonDB provides a curated selection of preconfigured AI models that it automatically deploys and maintains for you. The following sections describe the managed models, model registry, and bring-your-own-model capabilities available through AI Model Management.
 
-### Managed Models
+### Managed models
 
 AI Model Management provisions three default AI models, one for each core AI task:
 
@@ -42,7 +42,7 @@ AI Model Management provisions three default AI models, one for each core AI tas
 | `default-chat` | `gpt-5.4` | Chat completion | A reasoning model with a large context window, ideal for complex, high-accuracy tasks. |
 | `default-reranker` | `Cohere-rerank-v4.0-fast` | Reranking | A cross-encoder reranker that improves search relevance by reordering retrieved documents based on semantic similarity. |
 
-These models are automatically kept up to date by Azure HorizonDB. Model updates, API version changes, and lifecycle policies from Microsoft Foundry are applied automatically and reflected in the model registry.
+Azure HorizonDB automatically keeps these models up to date. The service automatically applies model updates, API version changes, and lifecycle policies from Microsoft Foundry, and reflects them in the model registry.
 
 ### Model registry
 
@@ -50,19 +50,19 @@ The model registry is a central interface that maintains a list of all AI models
 
 For detailed information about model registry SQL functions, see [AI functions in the azure_ai extension](ai-functions.md#manage-models-in-the-model-registry).
 
-### Bring Your Own Model (BYOM)
+### Bring Your Own Model
 
-In addition to Managed Models, you can register your own Microsoft Foundry models. This Bring Your Own Model (BYOM) capability lets you use existing model deployments alongside the Managed Models. For details on how to register your own models, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
+In addition to Managed Models, you can register your own Microsoft Foundry models. This Bring Your Own Modelcapability lets you use existing model deployments alongside the Managed Models. For details on how to register your own models, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ### Integrated billing
 
-AI model usage is billed directly through your Azure HorizonDB resource with no additional markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing-details).
+AI model usage is billed directly through your Azure HorizonDB resource with no extra markup over Microsoft Foundry pricing. For more information, see [Pricing](#pricing-details).
 
 ## Enable AI Model Management
 
 To enable AI Model Management on your Azure HorizonDB instance:
 
-1. In the [Azure portal](https://portal.azure.com), navigate to your Azure HorizonDB instance.
+1. In the [Azure portal](https://portal.azure.com), go to your Azure HorizonDB instance.
 
 1. In the resource menu, select **AI Model Manager**.
 
@@ -76,7 +76,7 @@ To enable AI Model Management on your Azure HorizonDB instance:
 
    :::image type="content" source="media/ai-model-management/aimm-accept-terms.png" alt-text="Screenshot of the terms and conditions acceptance dialog for AI Model Management." lightbox="media/ai-model-management/aimm-accept-terms.png" :::
 
-After you enable the feature, Azure HorizonDB automatically:
+When you enable the feature, Azure HorizonDB automatically:
 
 - Creates the required Microsoft Foundry resources and deploys the three Managed Models.
 - Installs the `azure_ai` extension on your database.
@@ -140,7 +140,7 @@ SELECT azure_ai.is_true(
 
 For a complete reference of all AI functions, parameters, and advanced usage patterns, see [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md).
 
-## Bring your own models (BYOM)
+## Bring your own models
 
 You can register your own Microsoft Foundry models alongside the Managed Models to use them with AI functions. For detailed information about model registration and management, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
@@ -162,7 +162,7 @@ SELECT model_registry.model_add(
 
 ### View the model registry
 
-To view all registered models (both Managed and BYOM) in the model registry, run:
+To view all registered models (both managed and BYOM) in the model registry, run:
 
 ```sql
 SELECT * FROM model_registry.model_list_all();

@@ -47,7 +47,7 @@ This pattern gives you the speed of embedding-based retrieval with the accuracy 
 | --- | --- |
 | Search quality directly affects user experience (product search, support search, knowledge base) | Simple exact-match lookups (product code, ID search) |
 | Queries are natural language with nuance, synonyms, or intent variation | The corpus is small and homogeneous enough that vector search alone achieves high precision |
-| You're building RAG or [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md) and need the best possible context for LLM generation | Latency budget can't accommodate the additional model call |
+| You're building RAG or [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md) and need the best possible context for large language models (LLM) generation | Latency budget can't accommodate the additional model call |
 | Hybrid search returns a fused list and you want a final accuracy bump | Results are already filtered to a small set (fewer than 5) |
 
 ## Prerequisites
