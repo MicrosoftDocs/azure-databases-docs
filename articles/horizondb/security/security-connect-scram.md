@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# SCRAM authentication in Azure HorizonDB
+# SCRAM authentication for Azure HorizonDB (Preview)
 
 Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based mutual authentication protocol. It's a challenge-response scheme that adds several levels of security and prevents password sniffing on untrusted connections. SCRAM supports storing passwords on the server in a cryptographically hashed form, which provides advanced security.
 

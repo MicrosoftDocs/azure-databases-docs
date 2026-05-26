@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Request quota increases in Azure HorizonDB
+# Request quota increases for Azure HorizonDB (Preview)
 
 The resources in Azure HorizonDB have default quotas/limits. However, there might be a case where your workload needs more quota than the default value. In such case, you must reach out to the Azure HorizonDB team to request a quota increase. This article explains how to request a quota increase for Azure HorizonDB resources.
 

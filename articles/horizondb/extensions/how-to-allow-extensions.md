@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to allow extensions in Azure HorizonDB.
 ---
 
-# Allow extensions in Azure HorizonDB
+# Allow extensions for Azure HorizonDB (Preview)
 
 Extensions enhance the functionality of Azure HorizonDB by adding specialized features and capabilities to your database. Before you can create and use extensions in Azure HorizonDB, you must first allowlist them through your server configuration. This article guides you through the process of allowlisting extensions using the Azure portal, Azure CLI, or Azure Resource Manager templates.
 

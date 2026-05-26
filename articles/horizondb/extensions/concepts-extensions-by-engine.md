@@ -12,7 +12,7 @@ ms.custom:
   - automatically generated
 ---
 
-# List of extensions and modules by version of PostgreSQL in Azure HorizonDB
+# List of extensions and modules by version of PostgreSQL for Azure HorizonDB (Preview)
 
 The following extensions and modules are available for the Azure Database for the PostgreSQL service.
 

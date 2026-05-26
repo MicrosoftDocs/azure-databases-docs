@@ -17,7 +17,7 @@ ms.custom:
 ms.devlang: "python"
 ---
 
-# Quickstart: Use Python to connect and query data in Azure HorizonDB
+# Quickstart: Use Python to connect and query data for Azure HorizonDB (Preview)
 
 In this quickstart, you connect to an Azure HorizonDB instance by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
 

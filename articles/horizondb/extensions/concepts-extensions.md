@@ -11,7 +11,7 @@ ms.topic: concept-article
 # customer intent: As a user, I want to learn what are extensions and modules in an Azure HorizonDB.
 ---
 
-# Extensions and modules in Azure HorizonDB
+# Extensions and modules for Azure HorizonDB (Preview)
 
 Extensions and modules in PostgreSQL are powerful tools that allow users to extend the functionality of the database system. They can range from simple SQL objects to complex binary libraries, providing extra features and capabilities that aren't available in the core PostgreSQL distribution.
 

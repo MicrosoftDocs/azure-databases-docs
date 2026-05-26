@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Reset administrator password in Azure HorizonDB
+# Reset administrator password for Azure HorizonDB (Preview)
 
 This article provides step-by-step instructions to reset the administrator password in Azure HorizonDB.
 

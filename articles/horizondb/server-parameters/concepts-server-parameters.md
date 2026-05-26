@@ -10,7 +10,7 @@ ms.subservice: server-parameters
 ms.topic: concept-article
 ---
 
-# Parameters in Azure HorizonDB
+# Parameters for Azure HorizonDB (Preview)
 
 Azure HorizonDB provides a set of configurable parameters for each cluster.
 

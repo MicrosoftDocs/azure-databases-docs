@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to update extensions in Azure HorizonDB.
 ---
 
-# Update extensions in Azure HorizonDB
+# Update extensions for Azure HorizonDB (Preview)
 
 Before dropping extensions in an Azure HorizonDB instance, you must [allowlist](how-to-allow-extensions.md) them.
 

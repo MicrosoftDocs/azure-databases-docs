@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ---
 
-# Scheduled maintenance in Azure HorizonDB
+# Scheduled maintenance for Azure HorizonDB (Preview)
 
 Your Azure HorizonDB instance periodically performs maintenance operations to help keep your managed database secure, stable, and up to date. During maintenance, the server gets new features, updates, and patches.
 

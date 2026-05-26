@@ -12,7 +12,7 @@ ms.custom:
   - build-2025
 ---
 
-# Considerations with the use of extensions and modules in Azure HorizonDB
+# Considerations with the use of extensions and modules for Azure HorizonDB (Preview)
 
 This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure HorizonDB instance.
 
