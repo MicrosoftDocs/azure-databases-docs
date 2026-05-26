@@ -5,7 +5,6 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -14,12 +13,13 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a user, I want to understand the data preparation steps required before building AI apps and agents, including search, RAG, and knowledge graph scenarios.
 ---
 
-# Prepare data for AI app and agent development in Azure HorizonDB (Preview)
+# Prepare data for AI app and agent development for Azure HorizonDB (Preview)
 
-Before you can build AI-powered search, RAG applications, or intelligent agents, your source data needs to go through a preparation pipeline that transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing, and explains how Azure HorizonDB supports each one.
+Before you can build AI-powered search, RAG applications, or intelligent agents, you need to prepare your source data. This preparation pipeline transforms raw content into a queryable format. This article introduces the key steps: cleaning, chunking, embedding, enrichment, and indexing. It also explains how Azure HorizonDB supports each step.
 
 ## Why data preparation matters
 
@@ -61,8 +61,7 @@ Adding **overlap** between consecutive chunks (repeating a portion of text at ea
 
 A common starting point is 512-2,000 characters. Tune based on your content type and retrieval quality.
 
-
-### Azure HorizonDB chunks 
+### Azure HorizonDB chunks
 
 Azure HorizonDB supports chunking directly in SQL through the `ai.chunk()` step in [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md). You specify a target chunk size and an overlap:
 
@@ -98,7 +97,7 @@ Common metadata fields include:
 
 Without metadata, a semantic search returns the most similar chunks but can't restrict results to, for example, "only HR policy documents from 2024." Metadata also enables citation tracking, so you know which source document a chunk came from when presenting results to users or an LLM.
 
-In Azure HorizonDB, you can store metadata as columns in your chunk table or in a `JSONB` field alongside the vector, and use standard SQL `WHERE` clauses to filter during search.
+In Azure HorizonDB, you can store metadata as columns in your chunk table or in a `JSONB` field alongside the vector. Use standard SQL `WHERE` clauses to filter during search.
 
 ## Step 5: Store and index
 

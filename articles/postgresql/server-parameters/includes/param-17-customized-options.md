@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/18/2026
+ms.date: 05/25/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -1746,7 +1746,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Customized Options |
-| Description | Specifies that audit logging should include the parameters that were passed with the statement. When parameters are present they will be included in CSV format after the statement text. |
+| Description | Specifies that audit logging should include the parameters that were passed with the statement. When parameters are present they will be be included in CSV format after the statement text. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
