@@ -66,7 +66,7 @@ The postGIS extension has breaking changes/compact issues between different vers
 - **Premigration consideration**: Users must ensure that no background job (for example, cron, BGP) is running that recreates partitions during the migration process.
 
 ## TimescaleDB migration
-The `TimescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales PostgreSQL for time-series workloads. [Learn more about TimescaleDB](https://docs.timescale.com/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses), and the migration service supports the same.
+The `TimescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales PostgreSQL for time-series workloads. [Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL flexible server provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses), and the migration service supports the same.
 
 > [!NOTE]  
   > Only **Offline** migration is possible for time series databases.
