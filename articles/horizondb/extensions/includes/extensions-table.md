@@ -114,7 +114,6 @@ ms.custom:
 | --- | --- |
 | 17 | 2.2.0 |
 
-
 ## azure_storage
 
 {[azure_storage](../concepts-storage-extension.md)} provides Azure Storage integration for PostgreSQL.
@@ -734,7 +733,9 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 <a id="pgrouting"></a>
 
-## pgrouting
+<a id="pgrouting"></a>
+
+## pgrout
 
 [pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
 

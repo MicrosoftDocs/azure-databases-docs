@@ -1,11 +1,10 @@
 ---
-title: Durable functions in Azure HorizonDB
+title: Durable Functions in Azure HorizonDB
 description: Use the pg_durable extension to define and run fault-tolerant, long-running workflows directly inside Azure HorizonDB, including retries, scheduling, signals, and HTTP calls, without external orchestrators.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: concept-article
@@ -14,6 +13,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
 ---
 
