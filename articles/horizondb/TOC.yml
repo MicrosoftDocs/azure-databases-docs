@@ -284,6 +284,8 @@
   items:
     - name: Backup and restore
       href: backup-restore/concepts-backup-restore.md
+    - name: Business continuity
+      href: backup-restore/concepts-business-continuity.md
     - name: How-to guides
       items:
         - name: Restore to a custom restore point
