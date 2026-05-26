@@ -16,11 +16,11 @@ ms.custom:
 # customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
-# Develop AI apps with LangChain and Azure HorizonDB (Preview)
+# Develop AI apps with LangChain for Azure HorizonDB (Preview)
 
-[LangChain](https://www.langchain.com/) is an LLM orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
+[LangChain](https://www.langchain.com/) is a large language model (LLM) orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
 
-Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing](https://aka.ms/pg-diskann-docs) for high-performance search at scale. For details, see [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB](ai-search-overview.md).
+Azure HorizonDB supports vector embeddings via `pgvector` with [DiskANN indexing](https://aka.ms/pg-diskann-docs) for high-performance search at scale. For details, see [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md).
 
 ## Authentication
 
@@ -42,7 +42,7 @@ Azure HorizonDB uses the open-source [LangChain Postgres support](https://docs.l
 
 ### Enable pgvector on Azure HorizonDB
 
-See [Implement vector search in Azure HorizonDB using the pgvector extension](vector-search-pgvector.md).
+See [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md).
 
 ### Set up credentials
 
@@ -266,9 +266,9 @@ The vector store supports a set of filters that can be applied against the metad
 
 ### Direct query
 
-You can perform a simple similarity search as follows:
+You can perform a direct similarity search as follows:
 
-``` python
+```python
 from langchain_azure_postgresql import FilterCondition, AndFilter
 
 results = vector_store.similarity_search(
@@ -294,7 +294,7 @@ for doc in results:
 
 If you provide a dictionary with multiple fields but no operators, the top level is interpreted as a logical `AND` filter:
 
-``` python
+```python
 results = vector_store.similarity_search(
     "ducks",
     k=10,
@@ -325,7 +325,7 @@ for doc in results:
 
 If you want to execute a similarity search and receive the corresponding scores, you can run:
 
-``` python
+```python
 results = vector_store.similarity_search_with_score(query="cats", k=1)
 for doc, score in results:
     print(f"* [SIM={score:3f}] {doc.page_content} [{doc.metadata}]")
@@ -377,7 +377,7 @@ retriever.invoke("kitty")
 
 ## Related content
 
-- [Retrieval foundations: vector, full-text and hybrid search](ai-search-overview.md)
-- [Build AI apps and agents with orchestration frameworks](ai-frameworks.md)
-- [Build AI agents with Azure HorizonDB](ai-agents.md)
-- [Generate vector embeddings using the create_embeddings() AI function](generate-vector-embeddings.md)
+- [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
+- [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md)
+- [Build AI agents with Azure HorizonDB (Preview)](ai-agents.md)
+- [Generate vector embeddings using the create_embeddings() AI function (Preview)](generate-vector-embeddings.md)

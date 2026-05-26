@@ -16,23 +16,27 @@ ms.custom:
 # customer intent: As a user, I want to understand how to construct knowledge graphs with unstructured text in Azure HorizonDB so I can discover hidden relationships and query cascading failure chains.
 ---
 
-# Tutorial: Build a knowledge graph from unstructured text using AI Functions and Apache AGE (Preview)
+# Tutorial: Build a knowledge graph from unstructured text using AI Azure Functions and Apache AGE for Azure HorizonDB (Preview)
 
-The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
+The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this issue by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
 `azure_ai.extract()` discovers hidden relationships and entities from unstructured text, right inside a SQL query. Feed it contracts, support tickets, research papers, or any text-heavy data, and it pulls out the structured relationships you need to populate your knowledge graph.
 
-This document walks through a concrete, end-to-end example: extracting entities from IT incident tickets, flowing them into an Apache AGE graph, and querying the graph to find cascading failure chains.
+This article walks through a concrete, end-to-end example:
+
+- Extracting entities from IT incident tickets.
+- Flowing them into an Apache AGE graph.
+- Querying the graph to find cascading failure chains.
 
 ## Prerequisites
 
 Before running this tutorial, you need an Azure HorizonDB instance, an AI model configured via the model registry, and the required PostgreSQL extensions.
 
-- **Azure HorizonDB** with a firewall rule that allows connections from your client IP. Configure this in the Azure portal under **Networking** > **Firewall rules**, or via CLI.
+- **Azure HorizonDB** with a firewall rule that allows connections from your client IP. Configure this rule in the Azure portal under **Networking** > **Firewall rules**, or via CLI.
 
 ### Enable extensions
 
-Allowlist `vector`, `azure_ai`, and `age` extensions and add `age` to `shared_preload_libraries` via the Azure portal or CLI, then run:
+Allow list `vector`, `azure_ai`, and `age` extensions and add `age` to `shared_preload_libraries` via the Azure portal or CLI, then run:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS vector;
@@ -44,23 +48,23 @@ SET search_path = ag_catalog, "$user", public;
 
 ### Configure AI models
 
-You need a chat/generation model (such as `gpt-5.4`) that the `azure_ai` extension can call. You have two options:
+You need a chat or generation model, such as `gpt-5.4`, that the `azure_ai` extension can call. You have two options:
 
 #### Option 1: AI Model Management (recommended)
 
-If [AI Model Management in Azure HorizonDB](ai-model-management.md) is enabled on your HorizonDB instance, models are provisioned and registered in the model registry automatically - there's no endpoint or key to manage. AI functions use the Managed Models by default. Skip to [The Source Data](#the-source-data).
+If [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) is enabled on your HorizonDB instance, the service automatically provisions and registers models in the model registry. You don't need to manage an endpoint or key. AI functions use the Managed Models by default. Visit the [the source data](#the-source-data).
 
 #### Option 2: Manually register a model in the model registry
 
 If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), follow these steps:
 
-1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use (for example, `gpt-5.4`) and complete the deployment.
+1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use, such as `gpt-5.4`, and complete the deployment.
 
 1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
 
-1. Navigate to your model deployment and note the following:
-   - **Deployment name**: The name you assigned during deployment (for example, `gpt-5-deployment`).
-   - **Model name**: The underlying model name (for example, `gpt-5.4`).
+1. Navigate to your model deployment and note the following values:
+   - **Deployment name**: The name you assigned during deployment, such as `gpt-5-deployment`.
+   - **Model name**: The underlying model name, such as `gpt-5.4`.
 
 1. Register the model in the model registry:
 
@@ -110,7 +114,7 @@ VALUES
 
 ## Step 1 - Extract Entities and Relationships
 
-Use `azure_ai.extract()` to pull structured relationship triples from each document. The extraction prompt instructs the model to capture **all** meaningful relationships, including operational links (OPERATES_ON), document-to-entity links (INVOLVES), and causal/resolution links. By capturing everything as triples upfront, Step 3 requires zero domain-specific code.
+Use `azure_ai.extract()` to pull structured relationship triples from each document. The extraction prompt instructs the model to capture **all** meaningful relationships, including operational links (OPERATES_ON), document-to-entity links (INVOLVES), and causal or resolution links. By capturing everything as triples upfront, Step 3 requires zero domain-specific code.
 
 Pass the ticket ID as part of the input text so the model can reference it as a source entity:
 
@@ -302,7 +306,7 @@ Compare this list against `raw_entities`. You should see fewer distinct names (a
 Take the normalized output from Step 2 and load it into an Apache AGE graph. The generic pipeline (3a + 3b) works for **any domain** because it operates entirely on `normalized_rels`, which has a universal schema: `source`, `relationship`, `target`. No customization is needed.
 
 > [!IMPORTANT]  
-> The `DO` blocks below use the `agtype` type, which lives in the `ag_catalog` schema. Make sure your search path includes it before running Step 3. If you set it during [Enable extensions](#enable-extensions), run it again in case your session was reset.
+> The `DO` blocks in the following sections use the `agtype` type, which resides in the `ag_catalog` schema. Make sure your search path includes it before running Step 3. If you set it during [Enable extensions](#enable-extensions), run it again in case your session was reset.
 >
 > ```sql
 > SET search_path = ag_catalog, "$user", public;
@@ -336,7 +340,7 @@ END $$;
 
 ### 3b: Create relationship edges
 
-Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, etc.) become edge labels automatically. The `regexp_replace` sanitizes the relationship type into a valid Cypher label (uppercase, underscores only).
+Insert one directed edge per extracted relationship. This block is also domain-agnostic: whatever relationship types the LLM extracted in Step 1 (CAUSED_FAILURE_IN, PRESCRIBED, REFERENCES, SUPPLIES, and so on) become edge labels automatically. The `regexp_replace` function sanitizes the relationship type into a valid Cypher label (uppercase, underscores only).
 
 ```sql
 DO $$
@@ -376,7 +380,7 @@ With the graph populated, use Cypher traversals to answer operational questions 
 
 ### "What downstream services did this failure break?"
 
-Trace cascading failures up to three hops deep. The variable-length path pattern `*1..3` follows CAUSED_FAILURE_IN edges transitively, revealing blast radius that a single-ticket view would miss:
+Trace cascading failures up to three hops deep. The variable-length path pattern `*1..3` follows CAUSED_FAILURE_IN edges transitively, revealing the impact that a single-ticket view misses:
 
 ```sql
 SELECT * FROM ag_catalog.cypher(
@@ -408,7 +412,7 @@ ORDER BY incoming_edges DESC;
 ```
 
 > [!TIP]  
-> The edge labels in your graph depend on what the LLM extracted. Run this query to see all available edge types, then adjust the patterns above:
+> The edge labels in your graph depend on what the LLM extracted. Run this query to see all available edge types, and then adjust the patterns in the preceding code:
 >
 > ```sql
 > SELECT * FROM ag_catalog.cypher('incident_graph', $$
@@ -417,9 +421,9 @@ ORDER BY incoming_edges DESC;
 > $$) AS (edge_type agtype);
 > ```
 
-### Step 5 - Visualize the graph with VS Code
+## Step 5 - Visualize the graph with Visual Studio Code
 
-The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code with HorizonDB](../development/vs-code-extension/vs-code-overview.md).
+The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code?](../development/vs-code-extension/vs-code-overview.md)
 
 This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands the neighborhood around each node:
 
@@ -436,13 +440,13 @@ This query finds all nodes reachable via CAUSED_FAILURE_IN chains and expands th
   $$) AS (a agtype, r agtype, b agtype);
   ```
 
-:::image type="content" source="media/knowledge-graph/checkout-workflow-traversal.png" alt-text="Screenshot of graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents." lightbox="media/knowledge-graph/checkout-workflow-traversal.png":::
+:::image type="content" source="media/build-knowledge-graph/checkout-workflow-traversal.png" alt-text="Screenshot of graph visualization showing cascading failure chains across incidents. Nodes include API gateway, auth service, payment service, checkout workflow, cache layer, event bus, search service, notification service, and team nodes. Edges show CAUSED_FAILURE_IN, BROKE, DEPENDS_ON, RATE_LIMITED, FLUSHED, PATCHED, FIXED, and SENDS relationships connecting services across multiple incidents." lightbox="media/build-knowledge-graph/checkout-workflow-traversal.png":::
 
 <a id="scaling-the-pattern"></a>
 
 ## Scale the pattern
 
-Scale this across thousands of tickets and you have an incident knowledge graph that an AI agent can query to answer questions like:
+Scale this pattern across thousands of tickets and you have an incident knowledge graph that an AI agent can query to answer questions like:
 
 *"What upstream services most commonly cause failures that reach the API gateway?"*
 
@@ -454,7 +458,7 @@ Scale this across thousands of tickets and you have an incident knowledge graph 
 
 This tutorial runs extraction, deduplication, and graph loading as interactive SQL statements. For production workloads:
 
-- **Batch processing.** Wrap Steps 1-3 in a PL/pgSQL function or use `pg_cron` to run extraction on a schedule as new tickets arrive.
+- **Azure Batch processing.** Wrap Steps 1-3 in a PL/pgSQL function or use `pg_cron` to run extraction on a schedule as new tickets arrive.
 - **Incremental updates.** Track a `last_processed_id` watermark rather than re-extracting the full table. Use `MERGE` (as shown in Step 3) for idempotent graph updates.
 - **Error handling.** LLM calls can fail or return malformed JSON. Wrap `azure_ai.extract()` and `azure_ai.generate()` in `BEGIN ... EXCEPTION` blocks and log failures to a dead-letter table for retry.
 
@@ -462,6 +466,6 @@ This tutorial runs extraction, deduplication, and graph loading as interactive S
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
 - [Graph database capabilities with Apache AGE extension](../graph/age-overview.md)
-- [Graph-augmented RAG patterns with Azure HorizonDB](graph-rag.md)
+- [Graph-RAG patterns with Azure HorizonDB (Preview)](graph-rag.md)

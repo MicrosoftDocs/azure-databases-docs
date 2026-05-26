@@ -118,17 +118,13 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
    1. Select the cluster name.
 
-   1. In the resource menu, select **Overview**.
+   1. In the resource menu, select **Overview**. Hover the mouse over the value shown as **Primary endpoint (read/write)**, and select the **Copy to clipboard** button.
 
-      :::image type="content" source="media/connect-python/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect-python/overview.png":::
-
-   1. Copy the value shown as **Endpoint**.
-
-      :::image type="content" source="media/connect-python/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect-python/endpoint-administrator-login.png":::
+      :::image type="content" source="media/connect-python/overview.png" alt-text="Screenshot showing the value of primary endpoint in the Overview page." lightbox="media/connect-python/overview.png":::
 
    1. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
 
-      :::image type="content" source="media/connect-python/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect-python/reset-password.png":::
+      :::image type="content" source="media/connect-python/overview.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect-python/overview.png":::
 
 1. Set environment variables for the connection URI elements:
 

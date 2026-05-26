@@ -5,7 +5,6 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ai-usage: ai-assisted
 ms.service: azure-database-postgresql
 ms.subservice: ai-vector-search
 ms.topic: how-to
@@ -14,10 +13,11 @@ ms.collection:
 ms.update-cycle: 180-days
 ms.custom:
   - build-2026
+ai-usage: ai-assisted
 # customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_fts so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_fts in Azure HorizonDB (Preview)
+# Full-text search with pg_fts for Azure HorizonDB (Preview)
 
 The `pg_fts` extension adds production-quality, BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search - `pg_fts` brings it inside Postgres as a custom index, so you can do keyword search natively next to your relational data without standing up a separate search service or copy-syncing data into one.
 
@@ -47,7 +47,7 @@ BM25 (Best Matching 25) solves three problems that `ts_rank` doesn't:
 
 - **Term frequency saturation.** Repeated occurrences of a keyword have diminishing returns, so a keyword-stuffed document can't dominate results.
 - **Document length normalization.** A short product title that mentions "wireless headphones" outranks a 10,000-word blog post that happens to mention the same phrase once.
-- **Inverse document frequency (IDF).** Common words ("the," "error") get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
+- **Inverse document frequency (IDF).** Common words (`the,` `error`) get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
 
 That's why every modern search engine uses BM25 (or a close variant) as its baseline. With `pg_fts`, you get the same quality without leaving Postgres.
 

@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to generate vector embeddings by invoking Foundry models from within the database using AI functions in the azure_ai extension.
 ---
 
-# Generate vector embeddings using the create_embeddings() AI function (Preview)
+# Generate vector embeddings using the create_embeddings() AI function for Azure HorizonDB (Preview)
 
 Vector embeddings are numerical representations of text that capture semantic meaning, enabling [vector similarity search](vector-search-pgvector.md), clustering, and other vector-based operations. The `azure_openai.create_embeddings()` AI function in the `azure_ai` extension generates vector embeddings directly inside your database.
 
@@ -24,7 +24,7 @@ Vector embeddings are numerical representations of text that capture semantic me
 
 - An Azure HorizonDB instance with one of the following configurations:
 
-  - **[AI Model Management](ai-model-management.md) enabled (recommended)**: It automatically installs the `azure_ai` extension and provisions a `default-embedding` model (`text-embedding-3-small`) ready to use.
+  - **[AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled (recommended)**: It automatically installs the `azure_ai` extension and provisions a `default-embedding` model (`text-embedding-3-small`) ready to use.
   - **Manual setup**: Install the `azure_ai` extension and register your own embedding model through the model registry. See [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry) for detailed steps.
 
 - The `pgvector` extension enabled on your database for storing and querying vector data:
@@ -51,7 +51,7 @@ azure_openai.create_embeddings(model text, input text[], batch_size integer DEFA
 
 | Argument | Type | Description |
 | --- | --- | --- |
-| `model` (optional) | `text` | Model alias registered in the model registry. When omitted, uses the `default-embedding` Managed Model provisioned by [AI Model Management](ai-model-management.md). |
+| `model` (optional) | `text` | Model alias registered in the model registry. When omitted, uses the `default-embedding` Managed Model provisioned by [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md). |
 | `input` | `text` or `text[]` | Single text or array of texts to generate embeddings for. |
 | `dimensions` | `integer DEFAULT NULL` | Number of dimensions for the output embeddings. Only supported in `text-embedding-3` and later models. |
 | `batch_size` | `integer DEFAULT 100` | Number of records to process at a time. Only available for the `text[]` overload. |
@@ -68,8 +68,8 @@ azure_openai.create_embeddings(model text, input text[], batch_size integer DEFA
 
 The following examples show how to generate, store, and query vector embeddings.
 
-- If you have [AI Model Management](ai-model-management.md) enabled, you can omit the model parameter as the function automatically uses the `default-embedding` model.
-- If you're using your own model (BYOM), pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions](ai-functions.md) for details on registering models.
+- If you have [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md) enabled, you can omit the model parameter as the function automatically uses the `default-embedding` model.
+- If you're using your own model, pass your registered model alias as the first argument to `create_embeddings()`. For example: `azure_openai.create_embeddings('my-embedding', 'input text')`. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ### Create a sample table
 
@@ -104,7 +104,7 @@ WHERE abstract_embedding IS NULL;
 
 ### Create a DiskANN index
 
-For fast similarity search at scale, create a [DiskANN index](vector-indexing-diskann.md) on the embedding column:
+For fast similarity search at scale, create a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the embedding column:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
@@ -130,6 +130,6 @@ LIMIT 5;
 
 ## Related content
 
-- [AI functions in the azure_ai extension](ai-functions.md)
-- [AI Model Management](ai-model-management.md)
-- [Implement vector search with pgvector](vector-search-pgvector.md)
+- [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md)
+- [AI Model Management in Azure HorizonDB (Preview)](ai-model-management.md)
+- [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
