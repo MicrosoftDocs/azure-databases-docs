@@ -48,16 +48,16 @@ You can configure high availability when you first create your Azure HorizonDB i
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select Azure HorizonDB Service and select **Create**.
+1. Select Azure HorizonDB (Preview) service and select **Create**.
 
    :::image type="content" source="media/how-to-configure-high-availability/high-availability-provisioning.png" alt-text="Screenshot that shows the pane for configuring high availability during provisioning." lightbox="media/how-to-configure-high-availability/high-availability-provisioning.png":::
 
 1. Provide your resource group and cluster name and go to **High availability** section.
 
-   You have two High availability mode choices:
+   You have two high availability mode choices:
 
    - **Disabled** - High availability isn't configured.
-   - **Zone redundant - Replica in a different availability zone** - a stand by compute replica is provisioned in a different availability zone.
+   - **Zone redundant - Replica in a different availability zone** - a stand-by compute replica is provisioned in a different availability zone.
 
 1. Select the **Zone redundant - Replica in a different availability zone** option.
 
