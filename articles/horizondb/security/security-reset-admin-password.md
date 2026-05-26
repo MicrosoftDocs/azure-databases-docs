@@ -8,7 +8,8 @@ ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom: horz-security
+ms.custom:
+  - horz-security
 ---
 
 # Reset administrator password in Azure HorizonDB
@@ -25,29 +26,25 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the resource menu, select **Overview**.
 
-    :::image type="content" source="./media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure HorizonDB cluster." lightbox="./media/security-reset-admin-password/overview.png":::
+   :::image type="content" source="media/security-reset-admin-password/overview.png" alt-text="Screenshot showing the Overview page of an Azure HorizonDB cluster." lightbox="media/security-reset-admin-password/overview.png":::
 
 1. The status of the Azure HorizonDB cluster must be **Ready** for the **Reset password** button to be enabled on the toolbar.
 
-
 1. **Authentication method** must include PostgreSQL authentication. In other words **Authentication method** must be set to either **PostgreSQL authentication only** or **PostgreSQL and Microsoft Entra authentication** for the **Reset password** button to be enabled on the toolbar. To check the **Authentication method** go to the resource menu and under the **Security** section select **Authentication**.
-
 
 1. Select the **Reset password** button. In the **Reset admin password** panel, enter the new password in the **Password** text box and confirm it in the **Confirm password** text box.
 
-    :::image type="content" source="./media/security-reset-admin-password/reset-password.png" alt-text="Screenshot showing how to reset password of the server administrator." lightbox="./media/security-reset-admin-password/reset-password.png":::
-
+   :::image type="content" source="media/security-reset-admin-password/reset-password.png" alt-text="Screenshot showing how to reset password of the server administrator." lightbox="media/security-reset-admin-password/reset-password.png":::
 
 1. Select **Save**.
 
-
 1. A notification informs you that the password of the server administrator is being reset.
 
-    :::image type="content" source="./media/security-reset-admin-password/notification-resetting-password.png" alt-text="Screenshot showing a server whose administrator's password is being reset." lightbox="./media/security-reset-admin-password/notification-resetting-password.png":::
+   :::image type="content" source="media/security-reset-admin-password/notification-resetting-password.png" alt-text="Screenshot showing a server whose administrator's password is being reset." lightbox="media/security-reset-admin-password/notification-resetting-password.png":::
 
 1. When the process completes, a notification informs you that the password was successfully reset.
 
-    :::image type="content" source="./media/security-reset-admin-password/notification-reset-password.png" alt-text="Screenshot showing a server whose administrator's password reset completed successfully." lightbox="./media/security-reset-admin-password/notification-reset-password.png":::
+   :::image type="content" source="media/security-reset-admin-password/notification-reset-password.png" alt-text="Screenshot showing a server whose administrator's password reset completed successfully." lightbox="media/security-reset-admin-password/notification-reset-password.png":::
 
 <!-- ### [CLI](#tab/cli-reset-admin-password)
 
@@ -76,13 +73,12 @@ If you attempt to reset the administrator password of a server which isn't in `R
 
 ```output
 () Server <server> is busy with other operations. Please try later
-Code: 
+Code:
 Message: Server <server> is busy with other operations. Please try later
 ```
 
 ---
 -->
-
 
 ## Related content
 

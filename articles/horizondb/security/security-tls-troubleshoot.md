@@ -14,8 +14,6 @@ ms.topic: troubleshooting
 
 TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure HorizonDB. This article guides you through validating your client configuration and troubleshooting potential connectivity issues.
 
-[!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
-
 ## Validate client configuration
 
 To validate your client configuration before any planned rotation, make sure you implement the [Recommended configurations for TLS](security-tls.md#recommended-configurations-for-tls).

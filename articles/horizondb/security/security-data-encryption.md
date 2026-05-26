@@ -16,10 +16,9 @@ ms.custom:
 
 All the data managed by an Azure HorizonDB instance is always encrypted at rest. That data includes all system and user databases, server logs, write-ahead log segments, and backups. Encryption is handled by the underlying storage through [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
 
-## Encryption at Rest with Service (SMK) 
+## Encryption at Rest with Service (SMK)
 
 Azure HorizonDB supports data encryption at rest using: **service managed keys (SMK)** Data encryption with service managed keys is the default mode for Azure HorizonDB. In this mode, the service automatically manages the encryption keys used to encrypt your data. You don't need to take any action to enable or manage encryption in this mode.
-
 
 To achieve the encryption of your data, Azure HorizonDB uses [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption).
 
@@ -35,4 +34,4 @@ Data encryption with **service managed keys** for Azure HorizonDB provides the f
 
 ## Related content
 
-- [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption).
+- [Azure Storage encryption for data at rest](/azure/storage/common/storage-service-encryption)
