@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/18/2026
+ms.date: 05/25/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -97,7 +97,7 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Query Store |
-| Description | Sets the aggregation window in minutes. Need to reload the config to make change take effect. |
+| Description | Sets the aggregration window in minutes. Need to reload the config to make change take effect. |
 | Data type | integer |
 | Default value | `15` |
 | Allowed values | `1-30` |
