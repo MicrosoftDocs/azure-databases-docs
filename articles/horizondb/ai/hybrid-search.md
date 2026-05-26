@@ -45,9 +45,7 @@ A hybrid query has three logical steps, all of which run inside HorizonDB:
 1. **Run vector search** with `pgvector` (using DiskANN as the index) to get the top-N semantic matches.
 1. **Fuse the two ranked lists** into a single ordered result set.
 
-Optionally, a fourth step:
-
-1. **Re-ranking the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) provides a final accuracy bump on the documents that will actually be shown to the user.
+1. (Optional) **Re-ranking the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) provides a final accuracy bump on the documents that will actually be shown to the user.
 
 Everything happens in a single SQL query. There's no copy-syncing to an external search index, no application-side join, and no separate vector database.
 

@@ -421,7 +421,7 @@ ORDER BY incoming_edges DESC;
 > $$) AS (edge_type agtype);
 > ```
 
-### Step 5 - Visualize the graph with Visual Studio Code
+## Step 5 - Visualize the graph with Visual Studio Code
 
 The [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling. For more information on the visualizer functionality in the extension, see [What is the PostgreSQL extension for Visual Studio Code?](../development/vs-code-extension/vs-code-overview.md)
 
