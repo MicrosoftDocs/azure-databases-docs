@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ms.custom:
-  - build-2026
+  - build-2026-public-preview
 # customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
@@ -53,9 +53,9 @@ The model registry is a central interface that maintains a list of all AI models
 
 For detailed information about model registry SQL functions, see [AI functions in the azure_ai extension](ai-functions.md#manage-models-in-the-model-registry).
 
-### Bring Your Own Model
+### Bring your own model
 
-In addition to Managed Models, you can register your own Microsoft Foundry models. This Bring Your Own Modelcapability lets you use existing model deployments alongside the Managed Models. For details on how to register your own models, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
+In addition to Managed Models, you can register your own Microsoft Foundry models. This Bring Your Own Model (BYOM) capability lets you use existing model deployments alongside the Managed Models. For details on how to register your own models, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ### Integrated billing
 
