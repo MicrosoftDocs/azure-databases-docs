@@ -197,5 +197,5 @@ public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() {
 
 ## Related content
 
-- [Troubleshoot TLS connection failures in Azure HorizonDB](security-tls-troubleshoot.md)
+- [Troubleshoot TLS connection failures in Azure HorizonDB (Preview)](security-tls-troubleshoot.md)
 - [PostgreSQL documentation](https://www.postgresql.org/docs/current/ssl-tcp.html#SSL-CLIENT-CERTIFICATES)

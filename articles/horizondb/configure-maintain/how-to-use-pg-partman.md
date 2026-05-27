@@ -258,4 +258,4 @@ Run the maintenance procedure by using `pg_cron`:
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](../extensions/concepts-extensions.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](../extensions/concepts-extensions.md)

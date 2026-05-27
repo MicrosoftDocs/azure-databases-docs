@@ -36,7 +36,7 @@ This article assumes that you're familiar with developing using Python, but you'
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure HorizonDB cluster with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your cluster. Refer to [Networking in Azure HorizonDB](../network/how-to-network.md).
+- If you created your Azure HorizonDB cluster with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your cluster. Refer to [Networking in Azure HorizonDB (Preview)](../network/how-to-network.md).
 
 ## Prepare your development environment
 
@@ -292,5 +292,5 @@ conn.close()
 
 ## Related content
 
-- [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
-- [Connect and query Azure HorizonDB](how-to-connect-query-guide.md)
+- [Quickstart: Use Java and JDBC in Azure HorizonDB (Preview)](connect-java.md)
+- [Connect and query Azure HorizonDB (Preview)](how-to-connect-query-guide.md)

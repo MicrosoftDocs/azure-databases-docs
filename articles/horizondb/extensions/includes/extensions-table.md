@@ -238,7 +238,7 @@ ms.custom:
 | 12 | 1.2 |
 | 11 | 1.2 |
 
-Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in flexible server.
+Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Azure HorizonDB.
 
 ## dict_int
 
@@ -527,7 +527,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.3 |
 | 11 | 1.3 |
 
-Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in flexible server.
+Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Azure HorizonDB.
 
 ## pg_cron
 
@@ -545,7 +545,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 | 11 | 1.6 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
+Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Azure HorizonDB.
 
 ## pgcrypto
 
@@ -610,7 +610,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 11 | 1.0.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
+Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Azure HorizonDB.
 
 ## pg_freespacemap
 
@@ -643,7 +643,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 | 11 | 1.3.7 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
+Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Azure HorizonDB.
 
 ## pglogical
 
@@ -712,7 +712,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 11 | 1.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
+Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Azure HorizonDB.
 
 ## pg_repack
 
@@ -729,7 +729,7 @@ Read the special considerations for extension [pg_prewarm](../concepts-extension
 | 12 | 1.4.7 |
 | 11 | 1.4.7 |
 
-Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in flexible server.
+Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Azure HorizonDB.
 
 <a id="pgrouting"></a>
 
@@ -798,7 +798,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 11 | 1.6 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
-Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
+Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Azure HorizonDB.
 
 ## pgstattuple
 
@@ -815,7 +815,7 @@ Read the special considerations for extension [pg_stat_statements](../concepts-e
 | 12 | 1.5 |
 | 11 | 1.5 |
 
-Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in flexible server.
+Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Azure HorizonDB.
 
 ## pg_trgm
 
@@ -967,7 +967,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 12 | 1.0 |
 | 11 | 1.0 |
 
-Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in flexible server.
+Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Azure HorizonDB.
 
 ## postgres_protobuf
 

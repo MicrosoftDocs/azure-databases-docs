@@ -1,5 +1,5 @@
 ---
-title: Delete Parameter Groups
+title: Delete Parameter Groups in Azure HorizonDB
 description: This article describes how to delete parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to delete parameter groups in Azure HorizonDB.
 ---
 
-# Delete parameter groups
+# Delete parameter groups in Azure HorizonDB (Preview)
 
 If you consider that an existing parameter group isn't needed any longer, you can delete it. The operation is irreversible. When attempting to delete a parameter group that is connected to some cluster, the operation fails.
 
@@ -74,7 +74,7 @@ Replace the placeholders:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [List parameter groups](how-to-parameter-groups-list.md)

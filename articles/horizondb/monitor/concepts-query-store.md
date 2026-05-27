@@ -290,5 +290,5 @@ Enabling query store on a server that has read replicas, doesn't automatically e
 
 ## Related content
 
-- [Usage scenarios for query store in Azure HorizonDB](concepts-query-store-scenarios.md)
-- [Best practices for query store in Azure HorizonDB](concepts-query-store-best-practices.md)
+- [Usage scenarios for query store in Azure HorizonDB (Preview)](concepts-query-store-scenarios.md)
+- [Best practices for query store in Azure HorizonDB (Preview)](concepts-query-store-best-practices.md)

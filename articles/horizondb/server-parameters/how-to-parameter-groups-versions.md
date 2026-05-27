@@ -1,5 +1,5 @@
 ---
-title: List Versions of Parameter Groups
+title: List Versions of Parameter Groups in Azure HorizonDB
 description: This article describes how to list the versions of parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to list the versions of parameter groups in Azure HorizonDB.
 ---
 
-# List versions of parameter groups
+# List versions of parameter groups in Azure HorizonDB (Preview)
 
 > [!IMPORTANT]  
 > Currently, because updating parameter groups isn't supported, each parameter group can only have one version.
@@ -49,7 +49,7 @@ The output that command returns would look like the following:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
 - [List parameter groups](how-to-parameter-groups-list.md)

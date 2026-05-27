@@ -34,13 +34,13 @@ In PostgreSQL, extensions are managed through the `CREATE EXTENSION`, `ALTER EXT
 
 When the server is started, it defines an area of memory that all backend processes can access, to cooperatively run any workloads. In PostgreSQL jargon, that area of memory is referred to as **shared memory**.
 
-Some extensions that implement functionality using shared libraries, nned to access that shared memory area from the code built in those libraries. Those extensions have one more requirement, which is that their shared library files must be loaded by the main engine process, as soon as the server starts. For those libraries, you need to follow the instructions in [load libraries](how-to-load-libraries.md).
+Some extensions that implement functionality using shared libraries, nned to access that shared memory area from the code built in those libraries. Those extensions have one more requirement, which is that their shared library files must be loaded by the main engine process, as soon as the database engine starts. For those libraries, you need to follow the instructions in [load libraries](how-to-load-libraries.md).
 
 ## Modules
 
 Although not considered extensions as such, because they don't have a **control file** and a **script file** to deploy bundled SQL objects in a database, another form of extensibility in PostgreSQL consists on implementing functionality in standalone shared binary library files.
 
-These files can also be loaded in memory when the server starts and can implement code that, typically, detours the natural execution path of PostgreSQL to alter the default functioning of the engine. Such behavioral alterations normally aim to amplify some limited functionality of the engine.
+These files can also be loaded in memory when the database engine starts and can implement code that, typically, detours the natural execution path of PostgreSQL to alter the default functioning of the engine. Such behavioral alterations normally aim to amplify some limited functionality of the engine.
 
 Azure HorizonDB supports the following modules:
 
@@ -51,7 +51,7 @@ Azure HorizonDB supports the following modules:
 
 ## Related content
 
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

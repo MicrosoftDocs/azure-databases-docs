@@ -15,7 +15,7 @@ ms.topic: troubleshooting
 
 ## Extension "%s" isn't allow-listed for "azure_pg_admin" users in Azure HorizonDB
 
-This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](how-to-allow-extensions.md), or an extension that isn't supported yet on the instance of Azure Database for flexible server on which you're running the command.
+This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](how-to-allow-extensions.md), or an extension that isn't supported yet on the zure HorizonDB cluster on which you're running the command.
 
 ## Only members of "azure_pg_admin" are allowed to use CREATE EXTENSION
 
@@ -31,8 +31,8 @@ This error occurs when the user tries to use the `SET SCHEMA` clause of the `ALT
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

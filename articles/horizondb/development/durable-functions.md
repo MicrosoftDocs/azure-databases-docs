@@ -271,5 +271,5 @@ This means:
 - [Implement durable AI pipelines in Azure HorizonDB (Preview)](../ai/ai-pipelines.md)
 - [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](../ai/ai-functions.md)
 - [Generate vector embeddings using the create_embeddings() AI function (Preview)](../ai/generate-vector-embeddings.md)
-- [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md)
+- [Allow extensions in Azure HorizonDB (Preview)](../extensions/how-to-allow-extensions.md)
 - [Duroxide on GitHub](https://github.com/microsoft/duroxide)

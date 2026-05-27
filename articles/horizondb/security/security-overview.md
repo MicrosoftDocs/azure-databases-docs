@@ -40,11 +40,11 @@ Here are some possible security services, features, and best practices for the d
 
 ### Encrypt data in transit
 
-- **Verify TLS connections**: Azure HorizonDB encrypts data in transit between your application and the database. You should configure your application to verify the server certificate. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md).
+- **Verify TLS connections**: Azure HorizonDB encrypts data in transit between your application and the database. You should configure your application to verify the server certificate. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
-- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md).
+- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
-- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md).
+- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
 ### Encryption at rest
 
@@ -81,6 +81,6 @@ Here are some possible security services, features, and best practices for the b
 ## Related content
 
 - [What is Azure HorizonDB (Preview)?](../overview.md)
-- [Reset administrator password in Azure HorizonDB](security-reset-admin-password.md)
-- [Networking in Azure HorizonDB](../network/how-to-network.md)
-- [Azure security baseline for Azure HorizonDB](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)
+- [Reset administrator password in Azure HorizonDB (Preview)](security-reset-admin-password.md)
+- [Networking in Azure HorizonDB (Preview)](../network/how-to-network.md)
+- [Azure security baseline for Azure HorizonDB (Preview)](/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)

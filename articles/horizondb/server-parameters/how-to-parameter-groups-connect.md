@@ -1,5 +1,5 @@
 ---
-title: Connect Clusters to Parameter Groups
+title: Connect Clusters to Parameter Groups in Azure HorizonDB
 description: This article describes how to connect parameter groups to clusters in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to connect parameter groups to clusters in Azure HorizonDB.
 ---
 
-# Connect clusters to parameter groups
+# Connect clusters to parameter groups in Azure HorizonDB (Preview)
 
 You can connect one parameter group to one or more clusters, as long as the region of the parameter group and the region of the cluster matches.
 
@@ -81,7 +81,7 @@ Replace the placeholders:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)

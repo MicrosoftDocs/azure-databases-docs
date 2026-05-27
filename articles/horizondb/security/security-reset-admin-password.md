@@ -82,4 +82,4 @@ Message: Server <server> is busy with other operations. Please try later
 
 ## Related content
 
-- [Secure your Azure HorizonDB](security-overview.md)
+- [Secure your Azure HorizonDB (Preview)](security-overview.md)

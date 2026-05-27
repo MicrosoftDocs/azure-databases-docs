@@ -252,7 +252,7 @@ SET max_worker_processes = 8;
 SET max_parallel_maintenance_workers = 4;
 ```
 
-To learn about other options to configure these parameters in Azure HorizonDB, see [Parameters in Azure HorizonDB](../server-parameters/concepts-server-parameters.md).
+To learn about other options to configure these parameters in Azure HorizonDB, see [Parameters in Azure HorizonDB (Preview)](../server-parameters/concepts-server-parameters.md).
 
 > [!NOTE]  
 > The max_worker_processes parameter requires a server restart to take effect.

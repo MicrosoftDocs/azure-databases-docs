@@ -20,12 +20,12 @@ This article describes some special considerations that you must be aware of, wh
 
 To use an extension in your Azure HorizonDB instance, you have to:
 
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
-- If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the server starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
-- [Create extensions in Azure HorizonDB](how-to-create-extensions.md) in the databases in which you want the extension to deploy the SQL objects distributed with that extension.
-- [Drop extensions in Azure HorizonDB](how-to-drop-extensions.md). When you want to remove from the database in which you execute the command all the SQL objects distributed by that extension.
-- [Update extensions in Azure HorizonDB](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
-- [View installed extensions in Azure HorizonDB](how-to-view-installed-extensions.md) and their corresponding versions.
+- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
+- If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the database engine starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
+- [Create extensions in Azure HorizonDB (Preview)](how-to-create-extensions.md) in the databases in which you want the extension to deploy the SQL objects distributed with that extension.
+- [Drop extensions in Azure HorizonDB (Preview)](how-to-drop-extensions.md). When you want to remove from the database in which you execute the command all the SQL objects distributed by that extension.
+- [Update extensions in Azure HorizonDB (Preview)](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
+- [View installed extensions in Azure HorizonDB (Preview)](how-to-view-installed-extensions.md) and their corresponding versions.
 
 If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure HorizonDB instance, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
 
@@ -62,8 +62,6 @@ To use AGE, make sure that you ['allowlist'](/azure/postgresql/extensions/how-to
 
 The [`dblink`](https://www.postgresql.org/docs/current/contrib-dblink-function.html) extension allows you to connect from one Azure HorizonDB instance to another or another database in the same server. Azure HorizonDB supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-If you plan to use this extension, we recommend deploying your servers with virtual network integration. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
-
 ### pg_buffercache
 
 The `pg_buffercache` extension can be used to study the contents of *shared_buffers*. Using [this extension](https://www.postgresql.org/docs/current/pgbuffercache.html), you can tell whether a particular relation is cached (in `shared_buffers`). This extension can help you troubleshoot performance issues (caching-related performance issues).
@@ -80,7 +78,7 @@ The [`pg_cron`](https://github.com/citusdata/pg_cron/) extension is a simple, cr
 
 The `pg_cron` extension can run multiple jobs in parallel, but it runs at most one instance of a job at a time. If a second run is supposed to start before the first one finishes, then the second run is queued and started as soon as the first run completes. In such a way, it ensures that jobs run precisely as many times as scheduled and don't run concurrently with themselves.
 
-Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension wasn't added to `shared_preload_libraries`, or the server wasn't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf`.
+Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension wasn't added to `shared_preload_libraries`, or the cluster wasn't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf`.
 
 To use `pg_cron`, make sure you [load its shared library upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
 
@@ -270,7 +268,7 @@ To use the `pg_failover_slots` module, make sure that its [library was loaded](h
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

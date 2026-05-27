@@ -1,5 +1,5 @@
 ---
-title: List Clusters Connected to Parameter Groups
+title: List Clusters Connected to Parameter Groups in Azure HorizonDB
 description: This article describes how to list clusters connected to parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to list clusters connected to parameter groups in Azure HorizonDB.
 ---
 
-# List clusters connected to parameter groups
+# List clusters connected to parameter groups in Azure HorizonDB (Preview)
 
 Given a parameter group, you can list the clusters that are connected to it and identify what's the current synchronization status for each of them.
 
@@ -85,7 +85,7 @@ Where `syncStatus` can be any of the following values:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)

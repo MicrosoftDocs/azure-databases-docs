@@ -477,4 +477,4 @@ az horizondb delete \
 
 ## Related content
 
-- [Connect and query Azure HorizonDB](../connectivity/how-to-connect-query-guide.md)
+- [Connect and query Azure HorizonDB (Preview)](../connectivity/how-to-connect-query-guide.md)

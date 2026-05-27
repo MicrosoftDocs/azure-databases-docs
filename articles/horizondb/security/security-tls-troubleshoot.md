@@ -117,5 +117,5 @@ If you experience issues even after following these steps, contact Microsoft sup
 
 ## Related content
 
-- [Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md)
-- [Connect clients with TLS security to your database in Azure HorizonDB](security-tls-how-to-connect.md)
+- [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md)
+- [Connect clients with TLS security to your database in Azure HorizonDB (Preview)](security-tls-how-to-connect.md)
