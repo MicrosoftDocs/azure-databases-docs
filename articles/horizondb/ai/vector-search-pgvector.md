@@ -40,5 +40,5 @@ CREATE EXTENSION vector;
 ## Related content
 
 - [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)
-- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md)
 - [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)

@@ -22,7 +22,7 @@ ai-usage: ai-assisted
 Hybrid search combines two retrieval strategies in a single query:
 
 - **BM25 full-text search** with [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
-- **Vector similarity search** with [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md) and [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
+- **Vector similarity search** with [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md) and [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
 
 Used alone, each method has blind spots. Used together, they cover for each other. Hybrid search is the default retrieval pattern for production AI applications on Azure HorizonDB - agentic apps, knowledge bases, recommendation engines, support search, and RAG over enterprise content.
 
@@ -99,7 +99,7 @@ CREATE INDEX idx_products_vec
 ```
 
 > [!TIP]  
-> DiskANN is the recommended vector index for hybrid search workloads because it supports [advanced filtering](vector-indexing-diskann.md#filter-your-search-with-advanced-filtering) - you can combine `WHERE` clauses on metadata with vector similarity without losing recall.
+> DiskANN is the recommended vector index for hybrid search workloads because it supports [advanced filtering](vector-index-diskann.md#filter-your-search-with-advanced-filtering) - you can combine `WHERE` clauses on metadata with vector similarity without losing recall.
 
 ## Generate embeddings in SQL
 
@@ -212,7 +212,7 @@ ORDER BY rrf_score DESC
 LIMIT 10;
 ```
 
-For more on filtered vector search, see [Filter your search with advanced filtering](vector-indexing-diskann.md#filter-your-search-with-advanced-filtering).
+For more on filtered vector search, see [Filter your search with advanced filtering](vector-index-diskann.md#filter-your-search-with-advanced-filtering).
 
 ## Add a semantic reranker for the final accuracy bump
 

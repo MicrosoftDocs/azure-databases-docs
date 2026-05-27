@@ -105,7 +105,7 @@ Find the right information using multiple retrieval strategies, individually or 
 
 As your dataset grows, indexing strategies become critical for maintaining fast query response times.
 
-- **[Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)**: Microsoft Research's graph-based algorithm, recommended for large, growing datasets with high dimensions and filtered queries.
+- **[Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md)**: Microsoft Research's graph-based algorithm, recommended for large, growing datasets with high dimensions and filtered queries.
 - **[Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)**: Tuning HNSW and IVFFlat indexes for your workload.
 - **[Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)**: Choose the right index type based on dataset size, query patterns, and recall requirements.
 

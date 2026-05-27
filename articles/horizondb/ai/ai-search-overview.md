@@ -94,7 +94,7 @@ Hybrid search is the recommended approach for most production search application
 
 ### Azure HorizonDB implementation
 
-Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) for prefiltered hybrid queries.
+Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) for prefiltered hybrid queries.
 
 To learn more, see [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md).
 
@@ -118,7 +118,7 @@ To learn more, see:
 
 - [Choose the right vector index for your workload in Azure HorizonDB (Preview)](vector-index-selection-guide.md)
 - [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)
-- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md)
 
 ## Enhance search relevance
 

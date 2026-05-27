@@ -73,11 +73,11 @@ Either HNSW or DiskANN works. Pick HNSW if the index fits comfortably in RAM and
 
 ### 10 million vectors, 1,536 dimensions, daily inserts
 
-Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed; updates are applied in place. See [Recommended configuration of parameters](vector-indexing-diskann.md#recommended-configuration-of-parameters).
+Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed; updates are applied in place. See [Recommended configuration of parameters](vector-index-diskann.md#recommended-configuration-of-parameters).
 
 ### 100 million+ vectors, high-dimensional embeddings (3,072+)
 
-Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) for the exact parameters.
+Use **DiskANN**. HNSW and IVFFlat aren't viable at this dimensionality. See [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) for the exact parameters.
 
 ### Up to 100,000 vectors used as a correctness baseline
 
@@ -92,7 +92,7 @@ Most production retrieval queries combine vector similarity with structured `WHE
 
 Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and any retrieval workload where filtering is part of the query. It runs natively inside HorizonDB next to your relational data, so you keep transactional consistency, familiar PostgreSQL SQL, and a single store - no separate vector database or external search service. It works with `pgvector`, the Azure AI integrations, BM25 full-text search, and the rest of the HorizonDB AI retrieval stack.
 
-If filtered queries are part of your workload, choose DiskANN. See [Filter your search with advanced filtering](vector-indexing-diskann.md#filter-your-search-with-advanced-filtering) for query examples and the index parameters that control this behavior.
+If filtered queries are part of your workload, choose DiskANN. See [Filter your search with advanced filtering](vector-index-diskann.md#filter-your-search-with-advanced-filtering) for query examples and the index parameters that control this behavior.
 
 ## Update and rebuild cost
 
@@ -100,7 +100,7 @@ If filtered queries are part of your workload, choose DiskANN. See [Filter your 
 - **HNSW** - Inserts are applied to the graph in place. No rebuild required, but inserts are more expensive than IVFFlat.
 - **DiskANN** - Inserts are applied in place. The index also supports parallel builds and `REINDEX CONCURRENTLY` for one-shot rebuilds.
 
-For large initial loads, build the index after the bulk insert and use `maintenance_work_mem` plus parallel workers to speed up build time. See [Speed up index build](vector-indexing-diskann.md#speed-up-index-build).
+For large initial loads, build the index after the bulk insert and use `maintenance_work_mem` plus parallel workers to speed up build time. See [Speed up index build](vector-index-diskann.md#speed-up-index-build).
 
 ## Migrate between index types
 
@@ -130,5 +130,5 @@ The operator must match the index access method's operator class. Cosine distanc
 ## Related content
 
 - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
-- [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md)
+- [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md)
 - [Optimize performance when using pgvector in Azure HorizonDB (Preview)](optimize-pgvector-performance.md)

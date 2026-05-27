@@ -100,7 +100,7 @@ landingContent:
     - text: Vector search with pgvector
       url: ai/vector-search-pgvector.md
     - text: DiskANN vector indexing
-      url: ai/vector-indexing-diskann.md
+      url: ai/vector-index-diskann.md
     - text: Full-text search with pg_fts
       url: ai/full-text-search.md
     - text: Hybrid search
@@ -154,7 +154,7 @@ landingContent:
     - text: Query store best practices
       url: monitor/concepts-query-store-best-practices.md
     - text: Migrate using dump and restore
-      url: migrate/how-to-migrate-using-dump-and-restore.md
+      url: migrate/how-to-migrate-dump-and-restore.md
   - linkListType: reference
     links:
     - text: REST API

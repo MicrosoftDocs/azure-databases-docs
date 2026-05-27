@@ -149,7 +149,7 @@ SELECT ai.explain('rag_pipeline');
 Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 > [!TIP]  
-> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
+> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ## Run, monitor, and retry
 
