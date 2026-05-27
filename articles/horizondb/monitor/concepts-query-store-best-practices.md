@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Best practices for query store in Azure HorizonDB
+# Best practices for query store for Azure HorizonDB (Preview)
 
 This article outlines best practices for using query store in Azure HorizonDB.
 

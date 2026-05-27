@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Usage scenarios for query store in Azure HorizonDB
+# Usage scenarios for query store for Azure HorizonDB (Preview)
 
 You can use query store in a wide variety of scenarios in which tracking and maintaining predictable workload performance is critical. Consider the following examples:
 - Identify and tune expensive queries.

@@ -13,7 +13,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Azure storage extension in Azure HorizonDB
+# Azure storage extension for Azure HorizonDB (Preview)
 
 The Azure HorizonDB extension for Azure Storage enables direct data movement between your PostgreSQL flexible server instance and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
 
@@ -25,7 +25,7 @@ The extension supports sending requests to Azure Storage service using [authoriz
 
 Given its superior security, Microsoft highly recommends the use of authorization with Microsoft Entra ID.
 
-To be able to use the `azure_storage` extension from any of the databases of an Azure HorizonDB instance, you need to [allow the extension](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), [load its library](how-to-load-libraries.md), and [create the extension](how-to-create-extensions.md) in the database from where you want to use its functionality.
+To be able to use the `azure_storage` extension from any of the databases of an Azure HorizonDB instance, you need to [allow the extension](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview), [load its library](how-to-load-libraries.md), and [create the extension](how-to-create-extensions.md) in the database from where you want to use its functionality.
 
 ## Related content
 

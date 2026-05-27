@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Migrate your PostgreSQL database to HorizonDB by using dump and restore
+# Migrate your PostgreSQL database to HorizonDB by using dump and restore (Preview)
 
 Use [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) to extract a PostgreSQL database into a dump file. The method you use to restore the database depends on the format of the dump you choose. If you use the plain format (which is the default `-Fp`, so you don't need to specify a specific option), restore the database by using [psql](https://www.postgresql.org/docs/current/app-psql.html) because it outputs a plain text file. For the other three dump methods - custom, directory, and tar - use [pg_restore](https://www.postgresql.org/docs/current/app-pgrestore.html).
 

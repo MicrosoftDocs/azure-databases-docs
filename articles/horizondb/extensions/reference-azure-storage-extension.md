@@ -13,7 +13,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Reference of functions provided by the Azure Storage extension in Azure HorizonDB
+# Reference of functions provided by the Azure Storage extension for Azure HorizonDB (Preview)
 
 Following is the list of functions provided by the Azure Storage extension:
 

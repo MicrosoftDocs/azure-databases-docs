@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Add firewall rules in Azure HorizonDB
+# Add firewall rules for Azure HorizonDB (Preview)
 
 When you enable public access, you can set up firewall rules that allow connections from specific IP addresses or from any Azure service.
 

@@ -12,7 +12,7 @@ ms.custom:
   - build-2026-public-preview
 ---
 
-# Networking overview with public access (allowed IP addresses) in Azure HorizonDB
+# Networking overview with public access (allowed IP addresses) for Azure HorizonDB (Preview)
 
 This article describes connectivity and networking concepts for Azure HorizonDB.
 

@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code (Preview)
 
 The PostgreSQL extension for Visual Studio Code includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Once connected to a PostgreSQL database, Copilot accesses contextual information from your live connection. This access enables the `@pgsql` Copilot Chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 

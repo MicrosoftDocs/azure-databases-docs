@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code?
+# What is the PostgreSQL extension for Visual Studio Code? (Preview)
 
 The PostgreSQL extension for Visual Studio Code simplifies PostgreSQL database management and development. You can connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving Visual Studio Code.
 

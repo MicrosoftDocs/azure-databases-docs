@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
-# Restore in Azure HorizonDB (Preview)
+# Restore for Azure HorizonDB (Preview)
 
 This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
 

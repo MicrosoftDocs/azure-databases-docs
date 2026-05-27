@@ -14,7 +14,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Configure the Azure Storage extension in Azure HorizonDB
+# Configure the Azure Storage extension for Azure HorizonDB (Preview)
 
 You must follow these steps to be able to use the Azure Storage extension:
 

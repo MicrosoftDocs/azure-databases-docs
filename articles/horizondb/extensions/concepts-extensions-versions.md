@@ -10,7 +10,7 @@ ms.subservice: extensions
 ms.topic: concept-article
 ---
 
-# List of extensions and modules by name in Azure HorizonDB
+# List of extensions and modules by name for Azure HorizonDB (Preview)
 
 The following extensions and modules are available for the Azure Database for the PostgreSQL service.
 

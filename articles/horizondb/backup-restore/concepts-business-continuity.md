@@ -12,7 +12,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Overview of business continuity in Azure HorizonDB (Preview)
+# Overview of business continuity for Azure HorizonDB (Preview)
 
 **Business continuity** in Azure HorizonDB refers to the mechanisms, policies, and procedures that enable applications and business processes to continue operating during and after disruptive events, particularly those events that affect computing infrastructure. Azure HorizonDB is designed to automatically handle many types of failures within the cloud environment, helping maintain application availability and operational continuity. However, some scenarios require explicit user action or planning, including:
 
