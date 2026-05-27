@@ -1,6 +1,6 @@
 ---
 title: Overview of Business Continuity in Azure HorizonDB
-description: Learn about the concepts of business continuity with an Azure HorizonDB flexible server instance.
+description: Learn about the concepts of business continuity with an Azure HorizonDB.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
