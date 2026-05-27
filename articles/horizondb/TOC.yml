@@ -387,7 +387,7 @@
 - name: Resources
   items:
     - name: Pricing
-      href: https://azure.microsoft.com/pricing/details/horizondb
+      href: https://azure.microsoft.com/en-us/products/horizondb
     - name: Region availability
       href: https://azure.microsoft.com/regions/services/
     - name: Support options
