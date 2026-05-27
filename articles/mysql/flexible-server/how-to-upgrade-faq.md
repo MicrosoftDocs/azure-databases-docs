@@ -19,7 +19,7 @@ ai-usage: ai-assisted
 
 - Q: **Will this cause downtime of the server, and if so, how long?**
 
-  A. To minimize downtime during upgrades, follow the steps in [Recommended major version upgrade procedure across major versions](how-to-upgrade.md#recommended-major-version-upgrade-procedure-across-major-versions). The server is unavailable during the upgrade process, so perform this operation during your planned maintenance window. The estimated downtime depends on the database size, storage size provisioned (IOPs provisioned), and the number of tables on the database. The upgrade time is directly proportional to the number of tables on the server. To estimate the downtime for your server environment, first perform an upgrade on a restored copy of the server.
+  A. To minimize downtime during upgrades, follow the steps in Recommended major version upgrade procedure across major versions. The server is unavailable during the upgrade process, so perform this operation during your planned maintenance window. The estimated downtime depends on the database size, storage size provisioned (IOPs provisioned), and the number of tables on the database. The upgrade time is directly proportional to the number of tables on the server. To estimate the downtime for your server environment, first perform an upgrade on a restored copy of the server.
 
 - Q: **I'm using an HA server. Can I expect a near zero downtime experience for a major version upgrade, similar to routine maintenance?**
 
