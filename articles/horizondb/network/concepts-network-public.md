@@ -22,7 +22,7 @@ The following characteristics apply to this connectivity mode:
 
 - Connections from allowed IP addresses need to authenticate to the Azure HorizonDB instance with valid credentials.
 - Connection encryption is enforced for your network traffic.
-- The server has a fully qualified domain name (FQDN). For the `hostname` property in connection strings, we recommend using the fully quelifies domain name instead of an IP address.
+- The server has a fully qualified domain name (FQDN). For the `hostname` property in connection strings, we recommend using the fully qualified domain name instead of an IP address.
 - Both options control access at the server level, not at the database or table level. You would use PostgreSQL's role properties to control database, table, and other object access.
 
 > [!NOTE]  
