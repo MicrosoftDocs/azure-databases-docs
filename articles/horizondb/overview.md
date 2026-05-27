@@ -105,7 +105,7 @@ Azure HorizonDB currently charges for:
 - Used database storage (GB/month), and
 - Used backup storage for the short term retention period.
 
-For more pricing details, view the [pricing page](https://azure.microsoft.com/pricing/details/https://azure.microsoft.com/en-us/products/horizondb).
+For more pricing details, view the [pricing page](https://azure.microsoft.com/products/horizondb)
 
 ## Limitations
 
