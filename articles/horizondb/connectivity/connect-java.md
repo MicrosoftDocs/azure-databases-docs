@@ -42,7 +42,7 @@ First, use the following command to set up some environment variables.
 
 ```bash
 export AZ_RESOURCE_GROUP=database-workshop
-export AZ_DATABASE_SERVER_NAME=<YOUR_DATABASE_SERVER_NAME>
+export AZ_DATABASE_CLUSTER_NAME=<YOUR_DATABASE_CLUSTER_NAME>
 export AZ_DATABASE_NAME=<YOUR_DATABASE_NAME>
 export AZ_LOCATION=<YOUR_AZURE_REGION>
 export AZ_POSTGRESQL_ADMIN_USERNAME=demo
@@ -54,7 +54,7 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.
+- `<YOUR_DATABASE_CLUSTER_NAME>`: The name of your Azure HorizonDB cluster, which should be unique across your Azure Subscription and Resource Group.
 - `<YOUR_DATABASE_NAME>`: The database name you're using within your Azure HorizonDB cluster.
 - `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `australiaeast` by default, but configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
 - `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure HorizonDB cluster. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and nonalphanumeric characters (!, $, #, %, and so on).
@@ -83,9 +83,9 @@ First, create a managed Azure HorizonDB instance.
 > For more detailed information about creating Azure HorizonDB, see [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md).
 
 ```azurecli-interactive
-az Azure HorizonDB create \
+az horizondb create \
   --resource-group $AZ_RESOURCE_GROUP \
-  --name $AZ_DATABASE_SERVER_NAME \
+  --name $AZ_DATABASE_CLUSTER_NAME \
   --location $AZ_LOCATION \
   --version 17 \
   --administrator-login $AZ_POSTGRESQL_ADMIN_USERNAME \
@@ -106,10 +106,10 @@ Azure HorizonDB instances are secure by default. They have a firewall that block
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
 ```azurecli-interactive
-az Azure HorizonDB firewall-rule create \
+az horizondb firewall-rule create \
   --resource-group $AZ_RESOURCE_GROUP \
-  --cluster-name $AZ_DATABASE_SERVER_NAME \
-  --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
+  --cluster-name $AZ_DATABASE_CLUSTER_NAME \
+  --firewall-rule-name $AZ_DATABASE_CLUSTER_NAME-database-allow-local-ip \
   --start-ip-address $AZ_LOCAL_IP_ADDRESS \
   --end-ip-address $AZ_LOCAL_IP_ADDRESS \
   --output tsv
@@ -132,10 +132,10 @@ AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
 Then, use the following command to open the server's firewall to your WSL-based app:
 
 ```azurecli-interactive
-az Azure HorizonDB firewall-rule create \
+az horizondb firewall-rule create \
   --resource-group $AZ_RESOURCE_GROUP \
-  --cluster-name $AZ_DATABASE_SERVER_NAME \
-  --firewall-rule-name $AZ_DATABASE_SERVER_NAME-database-allow-local-ip \
+  --cluster-name $AZ_DATABASE_CLUSTER_NAME \
+  --firewall-rule-name $AZ_DATABASE_CLUSTER_NAME-database-allow-local-ip \
   --start-ip-address $AZ_WSL_IP_ADDRESS \
   --end-ip-address $AZ_WSL_IP_ADDRESS \
   --output tsv
@@ -154,9 +154,9 @@ EOF
 Run this command to get your Azure HorizonDB fully qualified domain name and copy the `clusterName` value:
 
 ```azurecli-interactive
-az Azure HorizonDB show \
+az horizondb show \
   --resource-group $AZ_RESOURCE_GROUP \
-  --name $AZ_DATABASE_SERVER_NAME \
+  --name $AZ_DATABASE_CLUSTER_NAME \
   --query "{clusterName:properties.fullyQualifiedDomainName, adminUser:properties.administratorLogin}" \
   --output table
 ```
@@ -164,13 +164,13 @@ az Azure HorizonDB show \
 Copy the `clusterName` value and use it in the following command:
 
 ```bash
-AZ_Azure HorizonDB_FQDN=<the-copied-clusterName-value>
+AZ_HORIZONDB_FQDN=<the-copied-clusterName-value>
 ```
 
 Then, run the following command to execute the SQL script and create your database:
 
 ```bash
-psql "host=$AZ_Azure HorizonDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_database.sql
+psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_database.sql
 ```
 
 Now, run the following command to delete the temporary SQL script file:
@@ -195,7 +195,7 @@ EOF
 Then, run the following command to execute the SQL script and create the Microsoft Entra nonadmin user:
 
 ```bash
-psql "host=$AZ_Azure HorizonDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
+psql "host=$AZ_HORIZONDB_FQDN user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
 ```
 
 Now, run the following command to delete the temporary SQL script file:
@@ -245,7 +245,7 @@ Create a *src/main/resources/application.properties* file, and add the following
 
 ```bash
 cat << EOF > src/main/resources/application.properties
-url=jdbc:postgresql://${AZ_DATABASE_SERVER_NAME}.postgres.database.azure.com:5432/${AZ_DATABASE_NAME}?sslmode=require
+url=jdbc:postgresql://${AZ_HORIZONDB_FQDN}:5432/${AZ_DATABASE_NAME}?sslmode=require
 user=${AZ_POSTGRESQL_NON_ADMIN_USERNAME}
 password=${AZ_POSTGRESQL_NON_ADMIN_PASSWORD}
 EOF
