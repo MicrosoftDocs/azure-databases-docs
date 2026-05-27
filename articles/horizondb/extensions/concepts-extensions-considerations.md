@@ -82,7 +82,7 @@ The `pg_cron` extension can run multiple jobs in parallel, but it runs at most o
 
 Make sure that the value to which `shared_preload_libraries` is set, includes `pg_cron`. This extension doesn't support loading the library as the effect of executing [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html). Any attempt to run CREATE EXTENSION if the extension wasn't added to `shared_preload_libraries`, or the server wasn't restarted after it was added, results in an error whose text says `pg_cron can only be loaded via shared_preload_libraries`, and whose hint is `Add pg_cron to the shared_preload_libraries configuration variable in postgresql.conf`.
 
-To use `pg_cron`, make sure you [load its shared library upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
+To use `pg_cron`, make sure you [load its shared library upon server start](how-to-load-libraries.md), it's [allowlisted](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview), and it's [installed](how-to-create-extensions.md) in any database from which you want to interact with its functionality, using the SQL artifacts it creates.
 
 #### Examples
 
@@ -159,7 +159,7 @@ Example:
 
 The previous example causes the planner to use the results of a `seqscan` on table `a` to combine with table `b` as a `hashjoin`.
 
-To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
+To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
 
 ### pg_prewarm
 
@@ -193,7 +193,7 @@ The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgsta
 
 The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) is preloaded in `shared_preload_libraries` on every Azure HorizonDB instance to provide a means of tracking SQL statement execution statistics.
 
-For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
+For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
 
 The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a server parameter.
 
@@ -224,7 +224,7 @@ The `timescaleDB` extension is a time-series database packaged as an extension f
 
 #### Install TimescaleDB
 
-To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
+To use `timescaleDB`, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
 
 You can now create a TimescaleDB hypertable [from scratch](https://github.com/timescale/docs.timescale.com-content/blob/master/getting-started/creating-hypertables.md) or migrate [existing time-series data in PostgreSQL](https://github.com/timescale/docs.timescale.com-content/blob/master/getting-started/migrating-data.md).
 

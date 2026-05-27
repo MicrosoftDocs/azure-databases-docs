@@ -10,7 +10,7 @@ ms.subservice: high-availability
 ms.topic: concept-article
 ---
 
-# High availability in Azure HorizonDB (Preview)
+# High availability for Azure HorizonDB (Preview)
 
 For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. In Azure HorizonDB, high availability is achieved through a combination of **zone-resilient storage**, **distributed compute replicas**, and **automated failover mechanisms**.
 

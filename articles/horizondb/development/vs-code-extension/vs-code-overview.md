@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code?
+# What is the PostgreSQL extension for Visual Studio Code? (Preview)
 
 The PostgreSQL extension for Visual Studio Code simplifies PostgreSQL database management and development. You can connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving Visual Studio Code.
 
@@ -143,7 +143,7 @@ When connected to an Azure HorizonDB cluster, the extension gives you a first-cl
     - High-performance vector index with **Advanced Filtering**, which evaluates `WHERE` predicates during the vector graph traversal so filtered similarity queries return faster and more consistently.
 - `azure_ai`
     - AI Functions such as `azure_ai.generate()`, `azure_ai.is_true()`, `azure_ai.extract()`, and `azure_openai.create_embeddings()`.
-- **[AI Model Management (Gated Preview)](../../ai/ai-model-management.md)**
+- **[AI Model Management (limited preview)](../../ai/ai-model-management.md)**
     - When enabled on the cluster, HorizonDB automatically provisions a default chat model (`gpt-5`) and a default embedding model (`text-embedding-3-small`) through Microsoft Foundry, installs and configures `azure_ai`, and wires the AI Functions to those managed models - no manual key handling required. You can also register your own Microsoft Foundry deployments (Bring Your Own Model) and call them by alias from the same AI Functions.
 
 You can author and run these AI workloads directly from the Query Editor, and the Results Viewer renders vector and JSONB output inline.

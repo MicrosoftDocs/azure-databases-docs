@@ -12,7 +12,7 @@ ms.custom:
   - build-2026
 ---
 
-# Backups in Azure HorizonDB (Preview)
+# Backups for Azure HorizonDB (Preview)
 
 This article explains the automated backup feature in Azure HorizonDB.
 

@@ -16,7 +16,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code (Preview)
 
 The PostgreSQL extension for Visual Studio Code includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Once connected to a PostgreSQL database, Copilot accesses contextual information from your live connection. This access enables the `@pgsql` Copilot Chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
@@ -155,7 +155,7 @@ Generate a FastAPI project with my database using SQLAlchemy.
 
 ### AI workloads on Azure HorizonDB
 
-When you're connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities - `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by [AI Model Management (Gated Preview)](../../ai/ai-model-management.md) or your own Microsoft Foundry deployments.
+When you're connected to a HorizonDB cluster, you can use Copilot to build on HorizonDB's AI capabilities - `pgvector`, `pg_diskann` (with Advanced Filtering), and the `azure_ai` AI Functions backed by [AI Model Management (limited preview)](../../ai/ai-model-management.md) or your own Microsoft Foundry deployments.
 
 ```text
 @pgsql Create a products table with a description column and a vector(1536) embedding column. Then write a query that populates the embedding column for any rows where it's NULL using azure_openai.create_embeddings with the default-embedding managed model.
