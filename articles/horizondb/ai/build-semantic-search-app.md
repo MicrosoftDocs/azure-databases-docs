@@ -184,7 +184,7 @@ CREATE INDEX recipes_embedding_diskann ON recipes
     USING diskann (embedding vector_cosine_ops);
 ```
 
-DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more information, see [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md).
+DiskANN is the recommended default vector index for production workloads on Azure HorizonDB. It supports in-place updates, scales to billions of vectors, and provides advanced filtering capabilities. For more information, see [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md).
 
 ## Semantic search
 

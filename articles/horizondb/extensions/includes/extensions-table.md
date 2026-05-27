@@ -564,7 +564,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 ## pg_diskann
 
-{[pg_diskann](../../ai/vector-indexing-diskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
+{[pg_diskann](../../ai/vector-index-diskann.md)} is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |

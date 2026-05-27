@@ -105,7 +105,7 @@ WHERE abstract_embedding IS NULL;
 
 ### Create a DiskANN index
 
-For fast similarity search at scale, create a [Scalable vector indexing with DiskANN (Preview)](vector-indexing-diskann.md) on the embedding column:
+For fast similarity search at scale, create a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the embedding column:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;

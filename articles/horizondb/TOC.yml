@@ -325,7 +325,7 @@
             - name: Optimize pgvector performance
               href: ai/optimize-pgvector-performance.md
             - name: Scalable vector indexing with DiskANN
-              href: ai/vector-indexing-diskann.md
+              href: ai/vector-index-diskann.md
             - name: Index selection guide
               href: ai/vector-index-selection-guide.md
         - name: Enhance search relevance
@@ -379,7 +379,7 @@
     - name: Dump and restore
       items:
         - name: Migrate using dump and restore
-          href: migrate/how-to-migrate-using-dump-and-restore.md
+          href: migrate/how-to-migrate-dump-and-restore.md
 - name: Reference
   items:
     - name: REST API
