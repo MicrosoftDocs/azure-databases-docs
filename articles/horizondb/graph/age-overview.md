@@ -44,11 +44,9 @@ AGE uses PostgreSQL's ACID-compliant transactional system, ensuring reliability 
 
 Azure HorizonDB includes Apache AGE as an extension.
 
-These steps help you to enable the extension in your flexible server instance:
-
 ### Access server parameters
 
-Within the Azure portal, navigate to the PostgreSQL flexible server instance and select the Server Parameters option.
+Within the Azure portal, navigate to the Azure HorizonDB server and select the Server Parameters option.
 
 Adjust the following settings:
 
