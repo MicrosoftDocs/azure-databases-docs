@@ -34,7 +34,7 @@ Identify the Azure Storage accounts with which you want users of the extension t
 For the time being the only type of authorization `azure_storage` extension can use for the requests made against the blob service of each of those Azure Storage accounts is based on Shared Key.
 
 To meet the prerequisites, follow the instructions in the corresponding section:
-- [Authorization with Shared Key](#to-use-authorization-with-shared-key).
+- [Authorization with Shared Key](#use-authorization-with-shared-key).
 
 <a id="to-use-authorization-with-microsoft-entra-id"></a>
 

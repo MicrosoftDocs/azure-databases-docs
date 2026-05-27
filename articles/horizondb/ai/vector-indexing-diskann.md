@@ -29,9 +29,9 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 
 ## Enable pg_diskann
 
-To use the `pg_diskann` extension on your Azure HorizonDB instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
+To use the `pg_diskann` extension on your Azure HorizonDB instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
 
-Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and then run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and then run the following command:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;

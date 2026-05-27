@@ -19,9 +19,9 @@ The Azure HorizonDB extension for Azure Storage enables direct data movement bet
 
 It reduces the need for external Extract, Transform, and Load (ETL) and Extract, Load, and Transform (ELT) tools by enabling SQL native commands to interact with blob containers.
 
-The extension supports sending requests to Azure Storage service using [authorization with Shared Key](how-to-configure-azure-storage-extension.md#to-use-authorization-with-shared-key).
+The extension supports sending requests to Azure Storage service using [authorization with Shared Key](how-to-configure-azure-storage-extension.md#use-authorization-with-shared-key).
 
-To be able to use the `azure_storage` extension from any of the databases of an Azure HorizonDB cluster, you need to [allow the extension](how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview), [load its library](how-to-load-libraries.md), and [create the extension](how-to-create-extensions.md) in the database from where you want to use its functionality.
+To be able to use the `azure_storage` extension from any of the databases of an Azure HorizonDB cluster, you need to [allow the extension](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview), [load its library](how-to-load-libraries.md), and [create the extension](how-to-create-extensions.md) in the database from where you want to use its functionality.
 
 ## Related content
 
