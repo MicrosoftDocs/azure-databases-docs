@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the graph data capabilities enabled by Apache AGE extension and how to enable it in Azure HorizonDB.
 ---
 
-# Graph database capabilities with Apache AGE extension
+# Graph database capabilities with Apache AGE extension for Azure HorizonDB (Preview)
 
 Apache AGE (a graph extension) is a powerful PostgreSQL extension designed to seamlessly integrate graph database functionalities into the PostgreSQL ecosystem. Developed under the Apache Incubator project, AGE enables users to store and query graph data efficiently and expressively by supporting the intuitive openCypher query language. It bridges the gap between relational and graph data, allowing developers to manage complex relationships and uncover insights that traditional databases might struggle to reveal.
 
