@@ -15,11 +15,9 @@ ms.custom:
 
 # Azure storage extension for Azure HorizonDB (Preview)
 
-The Azure HorizonDB extension for Azure Storage enables direct data movement between your PostgreSQL flexible server instance and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
+The Azure HorizonDB extension for Azure Storage enables direct data movement between your Azure HorizonDB server and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
 
 It reduces the need for external Extract, Transform, and Load (ETL) and Extract, Load, and Transform (ELT) tools by enabling SQL native commands to interact with blob containers.
-
-It works with public and private access configurations, including PostgreSQL flexible server instances whose network interface is injected in a virtual network of your own infrastructure.
 
 The extension supports sending requests to Azure Storage service using [authorization with Shared Key](how-to-configure-azure-storage-extension.md#to-use-authorization-with-shared-key), or using [authorization with Microsoft Entra ID](how-to-configure-azure-storage-extension.md#to-use-authorization-with-microsoft-entra-id) managed identity assigned to your server.
 

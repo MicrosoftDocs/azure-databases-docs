@@ -22,7 +22,6 @@ The PostgreSQL extension for Visual Studio Code simplifies PostgreSQL database m
 
 The extension integrates with Azure-managed PostgreSQL services, including:
 
-- **Azure Database for PostgreSQL flexible server** - the general-purpose managed PostgreSQL service in Azure.
 - **Azure HorizonDB** - a cloud-native PostgreSQL service built for tier-1 enterprise workloads. HorizonDB features a disaggregated storage/compute architecture, low-latency commits, fast failover, load-balanced read scale-out across readable HA replicas, and deep AI integration.
 
 The same extension works against both services. Where behavior differs (for example, connection endpoints or supported authentication methods), it's called out in the sections that follow.
@@ -39,18 +38,17 @@ When you install the extension, an elephant icon appears to represent the Postgr
 
 ## Features
 
-The PostgreSQL extension for Visual Studio Code provides the following features for both Azure Database for PostgreSQL flexible server and Azure HorizonDB.
+The PostgreSQL extension for Visual Studio Code provides the following features for Azure HorizonDB.
 
 ### Connection Manager
 
 The Connection Manager simplifies connecting to local and cloud-hosted PostgreSQL databases. Key functionalities include:
 
-- Support for multiple connection profiles, so you can connect to and manage multiple PostgreSQL instances side by side, including a mix of flexible server and HorizonDB clusters.
-- Connection string parsing for seamless connectivity, whether you're connecting to a local database, an Azure Database for PostgreSQL flexible server instance, or an Azure HorizonDB cluster.
-- Integration with Azure Database for PostgreSQL flexible server **and** Azure HorizonDB for direct browsing and filtering of instances by subscription, resource group, server/cluster, and database.
-- Microsoft Entra ID authentication for Azure Database for PostgreSQL flexible server. (Azure HorizonDB currently supports PostgreSQL authentication.)
+- Support for multiple connection profiles, so you can connect to and manage multiple PostgreSQL instances side by side, including a mix of Azure HorizonDB clusters.
+- Connection string parsing for seamless connectivity, whether you're connecting to a local database, an Azure HorizonDB cluster.
+- Integration with Azure HorizonDB for direct browsing and filtering of instances by subscription, resource group, server/cluster, and database.
 
-#### HorizonDB connection endpoints
+#### Azure HorizonDB connection endpoints
 
 Azure HorizonDB exposes two endpoints, which you can add as separate connection profiles in the extension:
 
@@ -66,7 +64,7 @@ The enhanced Object Explorer provides a hierarchical view of database objects, m
 - Advanced filtering options to quickly locate specific objects.
 - Capabilities to create, modify, and delete database objects like tables, views, and stored procedures.
 - Visualization of database schemas and relationships for streamlined navigation.
-- For HorizonDB, you can inspect the 55+ allow-listed extensions available on the cluster via the `pg_available_extensions` catalog view directly from the Query Editor.
+- For Azure HorizonDB, you can inspect the 55+ allow-listed extensions available on the cluster via the `pg_available_extensions` catalog view directly from the Query Editor.
 
 ### Query Editor
 
@@ -102,7 +100,7 @@ Schema Visualization works against any connected database, including local Postg
 
 The Apache AGE Graph Visualizer lets you run Apache AGE Cypher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
 
-The `age` extension is allow-listed by default on Azure HorizonDB, so graph workloads can run on a HorizonDB cluster without additional configuration. The same requirements apply when you author Cypher queries against flexible server or HorizonDB:
+The `age` extension is allow-listed by default on Azure HorizonDB, so graph workloads can run on a HorizonDB cluster without additional configuration. The same requirements apply when you author Cypher queries against HorizonDB:
 
 - **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead, return the full objects and name the relationship variable:
 
@@ -150,7 +148,7 @@ You can author and run these AI workloads directly from the Query Editor, and th
 
 ### GitHub Copilot integration
 
-This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and request Copilot to execute specific SQL operations against either an Azure Database for PostgreSQL flexible server instance or an Azure HorizonDB cluster. Copilot picks up the live connection context - including extensions installed on the target - so suggestions on a HorizonDB connection are aware of `pgvector`, `pg_diskann`, `azure_ai`, and `age`.
+This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and request Copilot to execute specific SQL operations against an Azure HorizonDB cluster. Copilot picks up the live connection context - including extensions installed on the target - so suggestions on a HorizonDB connection are aware of `pgvector`, `pg_diskann`, `azure_ai`, and `age`.
 
 ## Supported operating systems
 
