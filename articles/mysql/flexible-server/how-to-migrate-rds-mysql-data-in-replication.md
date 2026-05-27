@@ -24,6 +24,8 @@ Data-in Replication is a technique that replicates data changes from the source 
 
 Set up [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md) to synchronize data from a source MySQL server to a target MySQL server. You can do a selective cutover of your applications from the primary (or source database) to the replica (or target database).
 
+See [Migrate databases from Amazon Web Services to Azure](/azure/migration/migrate-databases-from-aws), which includes [example migration scenarios](/azure/migration/migrate-databases-from-aws#migration-scenarios) that might align to your use case.
+
 In this tutorial, you'll learn how to set up Data-in Replication between a source server that runs Amazon Relational Database Service (RDS) for MySQL and a target server that runs Azure Database for MySQL Flexible Server.
 
 ## Performance considerations
