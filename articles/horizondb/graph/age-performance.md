@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a user, I want to understand how to improve performance of my graph queries in Azure HorizonDB.
 ---
 
-# Performance best practices for Apache AGE: indexing, AGE EXPLAIN, and data load benchmarks
+# Performance best practices for Apache AGE: indexing, AGE EXPLAIN, and data load benchmarks for Azure HorizonDB (Preview)
 
 Apache AGE supported by Azure HorizonDB, provides support for advanced graph processing and querying. However, achieving optimal query performance requires a thoughtful strategy for indexing and data loading. This guide outlines some best practices based on recent benchmarking results and technical insights.
 
