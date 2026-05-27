@@ -21,7 +21,7 @@ ms.devlang: "java"
 
 # Quickstart: Use Java and JDBC for Azure HorizonDB (Preview)
 
-This article demonstrates how to create a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure HorizonDB](../index.yml).
+This article demonstrates how to create a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure HorizonDB (Preview)](../index.yml).
 
 JDBC is the standard Java API for connecting to traditional relational databases.
 
@@ -597,5 +597,5 @@ az group delete \
 
 ## Related content
 
-- [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
-- [Connect and query Azure HorizonDB](how-to-connect-query-guide.md)
+- [Quickstart: Use Python to connect and query data in Azure HorizonDB (Preview)](connect-python.md)
+- [Connect and query Azure HorizonDB (Preview)](how-to-connect-query-guide.md)

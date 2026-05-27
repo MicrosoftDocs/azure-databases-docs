@@ -13,11 +13,11 @@ ms.topic: how-to
 
 # Create extensions for Azure HorizonDB (Preview)
 
-Before creating extensions in an Azure HorizonDB instance, you must [allowlist](how-to-allow-extensions.md) them.
+Before creating extensions in an Azure HorizonDB cluster, you must [allowlist](how-to-allow-extensions.md) them.
 
 ## Steps to create extensions
 
-1. [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md) the extension.
+1. [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md) the extension.
 
 1. If the extension requires it, also add it to `shared_load_libraries`.
 
@@ -30,14 +30,14 @@ Before creating extensions in an Azure HorizonDB instance, you must [allowlist](
    ```
 
 1. Some extensions require other extensions to be created first, because they depend on objects distributed by those other extensions. It's the case, for example, of the `pg_diskann` extension, which has dependencies on the `vector` extension. To install such extensions, you can proceed in two ways:
-   - [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md) and run `CREATE EXTENSION` first on the extension on which it depends. Then, allowlist and run `CREATE EXTENSION` on the dependent extension.
+   - [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md) and run `CREATE EXTENSION` first on the extension on which it depends. Then, allowlist and run `CREATE EXTENSION` on the dependent extension.
 
    ```sql
    CREATE EXTENSION <depending_extension>;
    CREATE EXTENSION <dependent_extension>;
    ```
 
-   - [Allow extensions in Azure HorizonDB](how-to-allow-extensions.md) and run `CREATE EXTENSION` on the dependent extension only, but add the `CASCADE` clause, so that it automatically creates all extensions on which it depends.
+   - [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md) and run `CREATE EXTENSION` on the dependent extension only, but add the `CASCADE` clause, so that it automatically creates all extensions on which it depends.
 
    ```sql
    CREATE EXTENSION <dependent_extension> CASCADE;
@@ -54,7 +54,7 @@ You can't bring your own extensions into an Azure HorizonDB instance. Extensions
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

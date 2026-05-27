@@ -59,5 +59,5 @@ If you're in control of the application code, you might consider rewriting the d
 
 ## Related content
 
-- [Query store in Azure HorizonDB](concepts-query-store.md)
-- [Best practices for query store in Azure HorizonDB](concepts-query-store-best-practices.md)
+- [Query store in Azure HorizonDB (Preview)](concepts-query-store.md)
+- [Best practices for query store in Azure HorizonDB (Preview)](concepts-query-store-best-practices.md)

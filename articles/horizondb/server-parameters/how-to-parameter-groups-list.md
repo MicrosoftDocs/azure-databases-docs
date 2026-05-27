@@ -1,5 +1,5 @@
 ---
-title: List Parameter Groups
+title: List Parameter Groups in Azure HorizonDB
 description: This article describes how to list parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to list parameter groups in Azure HorizonDB.
 ---
 
-# List parameter groups
+# List parameter groups in Azure HorizonDB (Preview)
 
 When listing parameter groups, you can scope the operation to a single parameter group, to all parameter groups in a resource group, or to all parameter groups in any resource group of a given subscription.
 
@@ -196,7 +196,7 @@ Replace the placeholders:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)

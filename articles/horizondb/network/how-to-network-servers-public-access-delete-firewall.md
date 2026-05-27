@@ -39,24 +39,9 @@ Use the [Azure portal](https://portal.azure.com/):
 
 1. When the process completes, a notification informs you that the changes were applied.
 
-> [!NOTE]  
-> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
-
-If you try to delete a firewall rule with an invalid name, you receive an error like this:
-
-```output
-The firewall rule name can only contain 0-9, a-z, A-Z, '-' and '_'. Additionally, the name of the firewall rule must be at least 3 characters and no more than 128 characters in length.
-```
-
-If you try to remove a firewall rule from a server that doesn't have public access enabled, you receive an error like this:
-
-```output
-Firewall rule operations cannot be requested for a private access enabled server.
-```
-
 ---
 
 ## Related content
 
-- [Networking in Azure HorizonDB](how-to-network.md)
-- [Add firewall rules in Azure HorizonDB](how-to-network-servers-public-access-add-firewall.md)
+- [Networking in Azure HorizonDB (Preview)](how-to-network.md)
+- [Add firewall rules in Azure HorizonDB (Preview)](how-to-network-servers-public-access-add-firewall.md)

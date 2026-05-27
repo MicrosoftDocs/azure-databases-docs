@@ -105,7 +105,7 @@ Azure HorizonDB currently charges for:
 - Used database storage (GB/month), and
 - Used backup storage for the short term retention period.
 
-For more pricing details, view the pricing page.
+For more pricing details, view the [pricing page](https://azure.microsoft.com/pricing/details/horizondb).
 
 ## Limitations
 
@@ -131,7 +131,7 @@ Azure HorizonDB is currently available in the following Azure regions:
 
 | Geography | Regions |
 | --- | --- |
-| Americas | Central US, West US 2, WestUS 3 |
+| Americas |  Central US, West US 2, West US 3 |
 | Europe | Sweden Central |
 | Asia Pacific | Australia East |
 

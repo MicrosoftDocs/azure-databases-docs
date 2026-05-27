@@ -33,5 +33,5 @@ Most client libraries that connect to Azure HorizonDB are open-source projects, 
 
 ## Related content
 
-- [Quickstart: Use Python to connect and query data in Azure HorizonDB](connect-python.md)
-- [Quickstart: Use Java and JDBC in Azure HorizonDB](connect-java.md)
+- [Quickstart: Use Python to connect and query data in Azure HorizonDB (Preview)](connect-python.md)
+- [Quickstart: Use Java and JDBC in Azure HorizonDB (Preview)](connect-java.md)

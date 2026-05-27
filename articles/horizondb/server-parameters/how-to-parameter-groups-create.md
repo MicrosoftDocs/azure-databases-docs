@@ -1,5 +1,5 @@
 ---
-title: Create Parameter Groups
+title: Create Parameter Groups in Azure HorizonDB
 description: This article describes how to create parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to create parameter groups in Azure HorizonDB.
 ---
 
-# Create parameter groups
+# Create parameter groups (Preview)
 
 When you create a parameter group, at least one parameter must be provided. The underlying operation in the backend merges your input with the system defaults for the specified `pgVersion`.
 
@@ -118,7 +118,7 @@ Replace the placeholders:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Update parameter groups](how-to-parameter-groups-update.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
 - [List parameter groups](how-to-parameter-groups-list.md)

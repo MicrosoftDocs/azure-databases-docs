@@ -14,17 +14,17 @@ ms.custom:
 
 # Networking for Azure HorizonDB (Preview)
 
-When you deploy your Azure HorizonDB, the cluster networking mode is **Public access (allowed IP addresses)**.
+When you deploy your Azure HorizonDB, the cluster connectivity mode is **Public access (allowed IP addresses) and private endpoints**.
 
-For more information about public access, see [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-network-public.md).
+For more information about public access, see [Networking overview with public access (allowed IP addresses) and private endpoints in Azure HorizonDB (Preview)](concepts-network-public.md).
 
 ## Public access (allowed IP addresses)
 
 If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
 
-- [Add firewall rules in Azure HorizonDB](how-to-network-servers-public-access-add-firewall.md).
-- [Delete firewall rules in Azure HorizonDB](how-to-network-servers-public-access-delete-firewall.md).
+- [Add firewall rules in Azure HorizonDB (Preview)](how-to-network-servers-public-access-add-firewall.md).
+- [Delete firewall rules in Azure HorizonDB (Preview)](how-to-network-servers-public-access-delete-firewall.md).
 
 ## Related content
 
-- [Networking overview with public access (allowed IP addresses) in Azure HorizonDB](concepts-network-public.md)
+- [Networking overview with public access (allowed IP addresses) and private endpoints in Azure HorizonDB (Preview)](concepts-network-public.md)

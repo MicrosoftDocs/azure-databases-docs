@@ -11,14 +11,17 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to allow extensions in Azure HorizonDB.
 ---
 
-# Allow extensions for Azure HorizonDB (Preview)
+# Allow extensions in Azure HorizonDB (Preview)
 
-Extensions enhance the functionality of Azure HorizonDB by adding specialized features and capabilities to your database. Before you can create and use extensions in Azure HorizonDB, you must first allowlist them through your server configuration. This article guides you through the process of allowlisting extensions using the Azure portal, Azure CLI, or Azure Resource Manager templates.
+Extensions enhance the functionality of Azure HorizonDB by adding specialized features and capabilities to your database. Before you can create and use extensions in Azure HorizonDB, you must first allowlist them through your cluster configuration. This article guides you through the process of allowlisting extensions using the Azure portal, Azure CLI, or Azure Resource Manager templates.
 
 ## Steps to allow extensions
 
-Azure HorizonDB provides multiple ways to allowlist extensions based on your preferences. You can use the Azure portal for a visual interface, the Azure CLI for command-line management, or Azure Resource Manager templates for infrastructure as code deployments. Choose the method that best fits your workflow.
+To allow an extension in Azure HorizonDB you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) in which you must set the value of `azure.extensions` parameter to include the extensions that you want to allowlist.
 
+Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+
+<!--
 ### [Portal](#tab/allow-extensions-portal)
 
 Using the [Azure portal](https://portal.azure.com):
@@ -81,10 +84,11 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 ```
 
 ---
+-->
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

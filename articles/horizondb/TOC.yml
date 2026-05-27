@@ -38,13 +38,13 @@
               href: configure-maintain/how-to-scale-compute.md
             - name: Add or remove replicas
               href: configure-maintain/how-to-add-remove-replica.md
-    - name: Server parameters
+    - name: Parameters and parameter groups
       items:
-        - name: Overview
+        - name: Parameters
           href: server-parameters/concepts-server-parameters.md
         - name: Parameter groups
           href: server-parameters/concepts-parameter-groups.md
-        - name: Manage parameter groups
+        - name: How-to guides
           items:
             - name: Create parameter groups
               href: server-parameters/how-to-parameter-groups-create.md
@@ -62,7 +62,7 @@
               href: server-parameters/how-to-parameter-groups-list-connected.md
             - name: Identify parameter group connected to a cluster
               href: server-parameters/how-to-parameter-groups-identify-connected-cluster.md
-        - name: Parameter reference
+        - name: Parameters reference
           items:
             - name: Adaptive autovacuum
               href: server-parameters/param-adaptive-autovacuum.md
@@ -260,10 +260,10 @@
           href: monitor/concepts-query-store-best-practices.md
 - name: Networking
   items:
+    - name: Overview
+      href: network/how-to-network.md
     - name: Public access
       href: network/concepts-network-public.md
-    - name: Networking overview
-      href: network/how-to-network.md
     - name: Firewall
       items:
         - name: Add firewall rules
@@ -387,7 +387,7 @@
 - name: Resources
   items:
     - name: Pricing
-      href: https://azure.microsoft.com/pricing/details/postgresql/
+      href: https://azure.microsoft.com/pricing/details/horizondb
     - name: Region availability
       href: https://azure.microsoft.com/regions/services/
     - name: Support options

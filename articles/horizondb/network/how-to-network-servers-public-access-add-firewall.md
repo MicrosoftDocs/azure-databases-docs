@@ -42,35 +42,6 @@ Use the [Azure portal](https://portal.azure.com/):
 1. When the process completes, a notification informs you that the changes were applied.
 
 > [!NOTE]  
-> Firewall rule names can only contain `0`-`9`, `a`-`z`, `A`-`Z`, `-`, and `_`. Additionally, the name of the firewall rule must be at least 3 characters, and no more than 128 characters in length.
-
-If you try to add a firewall rule with an invalid name, you receive an error like this:
-
-```output
-The firewall rule name can only contain 0-9, a-z, A-Z, '-' and '_'. Additionally, the name of the firewall rule must be at least 3 characters and no more than 128 characters in length.
-```
-
-If you try to add a firewall rule with a name that matches the name of another existing firewall rule, you don't receive an error, but the rule is updated with the values you provide for `--start-ip-address` and `--end-ip-address`.
-
-If you pass an invalid IP address for the `--start-ip-address` and `--end-ip-address` parameters, you receive an error like this:
-
-```output
-Incorrect value for ip address. Ip address should be IPv4 format. Example: 12.12.12.12.
-```
-
-If you pass a value for `--start-ip-address` that's bigger than the value you pass for `--end-ip-address`, you receive an error like this:
-
-```output
-The end IP address is smaller than the start IP address.
-```
-
-If you try to add a firewall rule to a server that doesn't have public access enabled, you receive an error like this:
-
-```output
-Firewall rule operations cannot be requested for a private access enabled server.
-```
-
-> [!NOTE]  
 > Although not recommended, you can create multiple firewall rules with different names and either overlapping IP ranges or even matching start and end IP addresses.
 
 To allow public access from any Azure service within Azure to your server, you must create a firewall rule whose start and end IP addresses are both set to `0.0.0.0`.
@@ -82,5 +53,5 @@ To allow public access from any Azure service within Azure to your server, you m
 
 ## Related content
 
-- [Networking in Azure HorizonDB](how-to-network.md)
-- [Delete firewall rules in Azure HorizonDB](how-to-network-servers-public-access-delete-firewall.md)
+- [Networking in Azure HorizonDB (Preview)](how-to-network.md)
+- [Delete firewall rules in Azure HorizonDB (Preview)](how-to-network-servers-public-access-delete-firewall.md)

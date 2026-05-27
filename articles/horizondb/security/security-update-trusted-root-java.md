@@ -57,7 +57,7 @@ You can use following directions to update client root CA certificates for clien
    For more information on configuring client certificates with PostgreSQL JDBC driver, see this [documentation](https://jdbc.postgresql.org/documentation/ssl/).
 
    > [!NOTE]  
-   > To import certificates to client certificate stores, you might have to convert certificate .crt files to .pem format. You can use **[Transport Layer Security (TLS) in Azure HorizonDB](security-tls.md)**.
+   > To import certificates to client certificate stores, you might have to convert certificate .crt files to .pem format. You can use **[Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md)**.
 
 ## Get a list of trusted certificates in Java Key Store programmatically
 
@@ -123,4 +123,4 @@ For other PostgreSQL client users, you can merge two CA certificate files using 
 
 ## Related content
 
-- [Secure your Azure HorizonDB](security-overview.md)
+- [Secure your Azure HorizonDB (Preview)](security-overview.md)

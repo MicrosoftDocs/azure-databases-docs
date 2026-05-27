@@ -176,4 +176,4 @@ In Azure HorizonDB, bypassing row-level security privilege (BYPASSRLS) is implem
 
 ## Related content
 
-- [Secure your Azure HorizonDB](security-overview.md)
+- [Secure your Azure HorizonDB (Preview)](security-overview.md)

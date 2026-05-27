@@ -13,10 +13,16 @@ ms.topic: how-to
 
 # Load libraries for Azure HorizonDB (Preview)
 
-`shared_preload_libraries` is a server configuration parameter that determines which libraries have to be loaded when an Azure HorizonDB instance starts. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
+`shared_preload_libraries` is a parameter that determines which libraries have to be loaded when an Azure HorizonDB cluster is started. Any libraries that use shared memory must be loaded via this parameter. If your extension needs to be added to the shared preload libraries, follow these steps:
 
 ## Steps to load libraries
 
+You have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` so that it's assigned a comma separated list of libraries that you want to load.
+
+Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+
+Because `shared_preload_libraries` is a static parameter, it requires a restart of your cluster which occurs as soon as you connect the parameter group to the cluster.
+<!--
 ### [Portal](#tab/load-libraries-portal)
 
 Using the [Azure portal](https://portal.azure.com):
@@ -60,10 +66,11 @@ az postgres flexible-server restart \
 ```
 
 ---
+-->
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

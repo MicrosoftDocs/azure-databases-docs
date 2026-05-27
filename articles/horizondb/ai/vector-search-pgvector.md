@@ -21,7 +21,7 @@ ms.custom:
 
 ## Enable extension
 
-Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allow list as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-for-azure-horizondb-preview), and check if correctly added by running `SHOW azure.extensions;`.
+Before you can enable `pgvector` on your Azure HorizonDB instance, you need to add it to your allow list as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview), and check if correctly added by running `SHOW azure.extensions;`.
 
 > [!IMPORTANT]  
 > Although all PostgreSQL community tends to refer to this extension as pgvector, the name of the binary and the extension itself is simply `vector`. Take that into consideration, because that is the name you must use to allow list it or to create it on any database via the CREATE EXTENSION command.

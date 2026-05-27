@@ -115,4 +115,4 @@ PostgreSQL allows you to specify time zones in three different forms:
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)

@@ -25,7 +25,7 @@ SELECT * FROM pg_extension;
 
 ## Related content
 
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
-- [Considerations with the use of extensions and modules in Azure HorizonDB](concepts-extensions-considerations.md)
-- [List of extensions and modules by name in Azure HorizonDB](concepts-extensions-versions.md)
-- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB](concepts-extensions-by-engine.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)
+- [Considerations with the use of extensions and modules in Azure HorizonDB (Preview)](concepts-extensions-considerations.md)
+- [List of extensions and modules by name in Azure HorizonDB (Preview)](concepts-extensions-versions.md)
+- [List of extensions and modules by version of PostgreSQL in Azure HorizonDB (Preview)](concepts-extensions-by-engine.md)

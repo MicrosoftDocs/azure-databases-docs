@@ -162,5 +162,5 @@ At this time, Azure HorizonDB doesn't implement the following TLS features:
 
 ## Related content
 
-- [Connect clients with TLS security to your database in Azure HorizonDB](security-tls-how-to-connect.md)
-- [Troubleshoot TLS connection failures in Azure HorizonDB](security-tls-troubleshoot.md)
+- [Connect clients with TLS security to your database in Azure HorizonDB (Preview)](security-tls-how-to-connect.md)
+- [Troubleshoot TLS connection failures in Azure HorizonDB (Preview)](security-tls-troubleshoot.md)

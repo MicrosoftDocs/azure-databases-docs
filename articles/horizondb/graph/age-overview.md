@@ -44,23 +44,25 @@ AGE uses PostgreSQL's ACID-compliant transactional system, ensuring reliability 
 
 Azure HorizonDB includes Apache AGE as an extension.
 
-### Access server parameters
+These steps help you to enable the extension in your Azure HorizonDB cluster:
 
-Within the Azure portal, navigate to the Azure HorizonDB server and select the Server Parameters option.
+### Access parameters
 
-Adjust the following settings:
+Using Azure portal, navigate to the Azure HorizonDB cluster. In the resource menu, under **Settings**, select **Parameters**.
+
+Create a new parameter group in which you set the following parameters as per these instructions:
 
 - **azure.extensions**: Search for and enable AGE among the available extensions in the parameter filter.
 - **shared_preload_libraries**: Search for and enable AGE in the parameter filter.
 
-Select Save to apply these changes. The server restarts automatically to activate the AGE extension.
+Connect the newly created parameter group  to the cluster to apply these changes. The cluster restarts automatically to activate the AGE extension.
 
 > [!NOTE]  
 > Failure to enable the `shared_preload_libraries` results in the following error when you attempt to use the AGE schema in a query: "ERROR: unhandled cypher(cstring) function call error on first cypher query"
 
 ### Enable AGE in PostgreSQL
 
-Once the server restarts, connect to the PostgreSQL instance using the psql interpreter. Execute the following command to enable AGE:
+Once the cluster restarts, connect to the PostgreSQL instance using the psql interpreter. Execute the following command to enable AGE:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS AGE CASCADE;

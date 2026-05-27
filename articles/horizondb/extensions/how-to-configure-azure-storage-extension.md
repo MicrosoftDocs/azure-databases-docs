@@ -31,43 +31,12 @@ Identify the Azure Storage accounts with which you want users of the extension t
 
 ## Choose type of authorization
 
-Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports authorization with Shared Key, and authorization with Microsoft Entra ID.
+For the time being the only type of authorization `azure_storage` extension can use for the requests made against the blob service of each of those Azure Storage accounts is based on Shared Key.
 
-Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends.
-
-To meet the prerequisites needed in each case, follow the instructions in the corresponding sections:
-- [Authorization with Microsoft Entra ID](#to-use-authorization-with-microsoft-entra-id), or
-- [Authorization with Shared Key](#to-use-authorization-with-shared-key).
+To meet the prerequisites, follow the instructions in the corresponding section:
+- [Authorization with Shared Key](#use-authorization-with-shared-key).
 
 <a id="to-use-authorization-with-microsoft-entra-id"></a>
-
-### Use authorization with Microsoft Entra ID
-
-1. [Create an Azure HorizonDB cluster](../configure-maintain/quickstart-create-cluster.md), after enabling a system assigned managed identity on it.
-1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure HorizonDB.
-
-#### Enable System Assigned Managed Identity
-
-# [Azure portal](#tab/portal-03)
-
-:::image type="content" source="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png":::
-
-# [CLI](#tab/cli-03)
-
-```azurecli-interactive
-az rest \
-  --method patch \
-  --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 \
-  --body '{"identity":{"type":"SystemAssigned"}}'
-```
-
-# [REST API](#tab/rest-03)
-
-Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
-
----
-
-<a id="to-use-authorization-with-shared-key"></a>
 
 ### Use authorization with Shared Key
 
@@ -123,8 +92,15 @@ Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-k
 
 ## Load the extension's library
 
-Configure your server so that it loads the `azure_storage` binary module when it's started.
+Configure your cluster so that it loads the `azure_storage` binary module when it's started.
 
+For that, you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` and includes `azure_storage` in its value.
+
+Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+
+Because `shared_preload_libraries` is a static parameter, it requires a restart of your cluster which occurs as soon as you connect the parameter group to the cluster.
+
+<!--
 ### [Azure portal](#tab/portal-01)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in server parameters." lightbox="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png":::
@@ -161,11 +137,19 @@ Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect. For restarting the server, you can use the [Server - Restart](/rest/api/postgresql/servers/restart) REST API.
 
 ---
+-->
 
 ## Allowlist the extension
 
 You must allowlist the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
 
+For that, you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that also modifies the value of `azure.extensions` and includes `azure_storage` in its value.
+
+Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+
+Because `azure.extensions` is a dynamic parameter, it doesn't require a restart of your cluster, but the change is immediately effective as soon as you connect the parameter group to the cluster.
+
+<!--
 ### [Azure portal](#tab/portal-02)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png":::
@@ -191,10 +175,10 @@ az postgres flexible-server parameter set \
 Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ---
-
+-->
 ## Create the extension
 
-Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
+Use the client of your preference, like [PostgreSQL extension for Visual Studio Code](../development/vs-code-extension/vs-code-overview.md), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
 
 To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 
@@ -249,7 +233,7 @@ In case you need to review all functions offered by the extension and all the de
 
 ## Related content
 
-- [Quickstart examples for Azure Storage extension in Azure HorizonDB](quickstart-azure-storage-extension.md)
-- [Reference of functions provided by the Azure Storage extension in Azure HorizonDB](reference-azure-storage-extension.md)
-- [Azure storage extension in Azure HorizonDB](concepts-storage-extension.md)
-- [Extensions and modules in Azure HorizonDB](concepts-extensions.md)
+- [Quickstart examples for Azure Storage extension in Azure HorizonDB (Preview)](quickstart-azure-storage-extension.md)
+- [Reference of functions provided by the Azure Storage extension in Azure HorizonDB (Preview)](reference-azure-storage-extension.md)
+- [Azure storage extension in Azure HorizonDB (Preview)](concepts-storage-extension.md)
+- [Extensions and modules in Azure HorizonDB (Preview)](concepts-extensions.md)

@@ -1,5 +1,5 @@
 ---
-title: Update Parameter Groups
+title: Update Parameter Groups in Azure HorizonDB
 description: This article describes how to update parameter groups in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to update parameter groups in Azure HorizonDB.
 ---
 
-# Update parameter groups
+# Update parameter groups in Azure HorizonDB (Preview)
 
 Should you need to change the value of some parameters on a given cluster, [create a new parameter group](how-to-parameter-groups-create.md) overriding the values of all those parameters, and [connect that given cluster to the new parameter group](how-to-parameter-groups-connect.md).
 
@@ -91,7 +91,7 @@ You can also see that change of synchronization status by [listing all clusters 
 
 ## Related content
 
-- [Parameter groups in Azure HorizonDB](concepts-parameter-groups.md)
+- [Parameter groups in Azure HorizonDB (Preview)](concepts-parameter-groups.md)
 - [Create parameter groups](how-to-parameter-groups-create.md)
 - [Delete parameter groups](how-to-parameter-groups-delete.md)
 - [List parameter groups](how-to-parameter-groups-list.md)

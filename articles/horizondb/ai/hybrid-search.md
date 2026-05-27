@@ -72,7 +72,7 @@ CREATE EXTENSION IF NOT EXISTS pg_fts;
 CREATE EXTENSION IF NOT EXISTS azure_ai;
 ```
 
-For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB](../extensions/how-to-allow-extensions.md).
+For instructions on enabling extensions at the instance level, see [Allow extensions in Azure HorizonDB (Preview)](../extensions/how-to-allow-extensions.md).
 
 ## Set up the table and indexes
 
