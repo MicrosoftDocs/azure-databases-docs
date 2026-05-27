@@ -19,7 +19,7 @@ ms.custom:
 | Default value | `0` |
 | Allowed values | `0-2147483` |
 | Parameter type | static |
-| Documentation | [adaptive_autovacuum.open_transaction_threshold](https://go.microsoft.com/fwlink/?linkid=2328503) |
+| Documentation | |
 [!INCLUDE [server-parameters-azure-notes-void](./server-parameters-azure-notes-void.md)]
 
 ### adaptive_autovacuum.optimize_configurations
