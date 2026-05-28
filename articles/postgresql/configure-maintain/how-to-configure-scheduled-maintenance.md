@@ -113,7 +113,7 @@ az postgres flexible-server update \
 
 4. If the event is eligible, select **Reschedule**.
     
-    :::image type="content" source="./media/configure-maintenance/reschedule_button.png" alt-text="Screenshot showing the reschedule maintenance button." lightbox="./media/configure-maintenance/reschedule_button.png":::
+    :::image type="content" source="./media/configure-maintenance/reschedule-button.png" alt-text="Screenshot showing the reschedule maintenance button." lightbox="./media/configure-maintenance/reschedule_button.png":::
 
 5. Choose an eligible future date and time.
 
@@ -130,7 +130,6 @@ az postgres flexible-server update \
     The portal shows a confirmation after the maintenance event is successfully rescheduled.
 
     :::image type="content" source="./media/configure-maintenance/reschedule-successful.png" alt-text="Screenshot showing reschedule successful." lightbox="./media/configure-maintenance/reschedule-successful.png":::
-
 
 ### Troubleshooting
 
