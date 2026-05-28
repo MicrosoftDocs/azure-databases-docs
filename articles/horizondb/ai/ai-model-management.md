@@ -82,7 +82,7 @@ To enable AI Model Management on your Azure HorizonDB instance:
 
 1. Review and agree to the terms of use.
 
-   :::image type="content" source="media/ai-model-management/aimm-accept-terms.png" alt-text="Screenshot of the terms and conditions acceptance dialog for AI Model Management." lightbox="media/ai-model-management/aimm-accept-terms.png" :::
+   :::image type="content" source="media/ai-model-management/accept-terms.png" alt-text="Screenshot of the terms and conditions acceptance dialog for AI Model Management." lightbox="media/ai-model-management/accept-terms.png" :::
 
 When you enable the feature, Azure HorizonDB automatically:
 

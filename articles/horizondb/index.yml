@@ -154,7 +154,7 @@ landingContent:
     - text: Query store best practices
       url: monitor/concepts-query-store-best-practices.md
     - text: Migrate using dump and restore
-      url: migrate/how-to-migrate-dump-and-restore.md
+      url: migrate/how-to-migrate-dump-restore.md
   - linkListType: reference
     links:
     - text: REST API

@@ -12,4 +12,4 @@ ms.custom:
 ---
 # HorizonDB - Client Connection Defaults / Shared Library Preloading
 
-[!INCLUDE [param-17-client-connection-defaults-shared-library-preloading](./includes/param-17-client-connection-defaults-shared-library-preloading.md)]
+[!INCLUDE [param-17-client-connection-defaults-shared-library-preload](./includes/param-17-client-connection-defaults-shared-library-preload.md)]

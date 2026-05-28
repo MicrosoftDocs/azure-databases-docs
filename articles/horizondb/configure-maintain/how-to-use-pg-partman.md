@@ -28,7 +28,7 @@ To enable the `pg_partman` extension, follow these steps:
 
 1. In the Azure portal, select `pg_partman` in the list of server parameters for `azure.extensions`.
 
-   :::image type="content" source="media/how-to-use-pg-partman/pg-partman-prerequisites.png" alt-text="Screenshot that shows selection of the pg_partman extension in a list of Azure extensions.":::
+   :::image type="content" source="media/how-to-use-pg-partman/prerequisites.png" alt-text="Screenshot that shows selection of the pg_partman extension in a list of Azure extensions.":::
 
    ```sql
    CREATE EXTENSION pg_partman;
@@ -36,7 +36,7 @@ To enable the `pg_partman` extension, follow these steps:
 
 1. Include the related `pg_partman_bgw` extension in `shared_preload_libraries`. It offers the scheduled function `run_maintenance()`. It takes care of the partition sets that have `automatic_maintenance` set to `ON` in `part_config`.
 
-   :::image type="content" source="media/how-to-use-pg-partman/pg-partman-prerequisites-outlined.png" alt-text="Screenshot that shows selection of the pg_partman_bgw extension." lightbox="media/how-to-use-pg-partman/pg-partman-prerequisites-outlined.png" :::
+   :::image type="content" source="media/how-to-use-pg-partman/prerequisites-outlined.png" alt-text="Screenshot that shows selection of the pg_partman_bgw extension." lightbox="media/how-to-use-pg-partman/prerequisites-outlined.png" :::
 
    You can use server parameters in the Azure portal to change the following configuration options that affect the Background Writer (BGW) process:
 
@@ -85,7 +85,7 @@ PARTITION BY RANGE(d_date);
 CREATE INDEX idx_partition_date ON partman.partition_test(d_date);
 ```
 
-:::image type="content" source="media/how-to-use-pg-partman/pg-partman-table-output.png" alt-text="Screenshot of the table output for pg_partman.":::
+:::image type="content" source="media/how-to-use-pg-partman/table-output.png" alt-text="Screenshot of the table output for pg_partman.":::
 
 By using the `create_parent` function, you can set up the number of partitions that you want on the partition table:
 
@@ -150,11 +150,11 @@ Run the following command on PostgreSQL to see the created partitions:
 \d+ partman.partition_test;
 ```
 
-:::image type="content" source="media/how-to-use-pg-partman/pg-partman-table-output-partitions.png" alt-text="Screenshot of table output with partitions." lightbox="media/how-to-use-pg-partman/pg-partman-table-output-partitions.png":::
+:::image type="content" source="media/how-to-use-pg-partman/table-output-partitions.png" alt-text="Screenshot of table output with partitions." lightbox="media/how-to-use-pg-partman/table-output-partitions.png":::
 
 Here's the output of the `SELECT` statement that you ran:
 
-:::image type="content" source="media/how-to-use-pg-partman/pg-partman-explain-plan-output.png" alt-text="Screenshot of an explanation plan output." lightbox="media/how-to-use-pg-partman/pg-partman-explain-plan-output.png":::
+:::image type="content" source="media/how-to-use-pg-partman/explain-plan-output.png" alt-text="Screenshot of an explanation plan output." lightbox="media/how-to-use-pg-partman/explain-plan-output.png":::
 
 ## Manually run a maintenance procedure
 
@@ -173,11 +173,11 @@ Run the maintenance procedure by using `pg_cron`:
 
 1. First, enable `pg_cron` on your server. In the Azure portal, add `pg_cron` to the `azure. extensions`, `shared_preload_libraries`, and `cron.database_name` server parameters.
 
-   :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for Azure extensions." lightbox="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites.png" :::
+   :::image type="content" source="media/how-to-use-pg-partman/pgcron-prerequisites.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for Azure extensions." lightbox="media/how-to-use-pg-partman/pgcron-prerequisites.png" :::
 
-   :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites-2.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for shared preload libraries." lightbox="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites-2.png" :::
+   :::image type="content" source="media/how-to-use-pg-partman/pgcron-prerequisites-2.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for shared preload libraries." lightbox="media/how-to-use-pg-partman/pgcron-prerequisites-2.png" :::
 
-   :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-database-name.png" alt-text="Screenshot that shows the server parameter for cron database name.":::
+   :::image type="content" source="media/how-to-use-pg-partman/pgcron-database-name.png" alt-text="Screenshot that shows the server parameter for cron database name.":::
 
 1. Select the **Save** button and let the deployment finish.
 
