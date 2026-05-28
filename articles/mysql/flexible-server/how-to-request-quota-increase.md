@@ -44,13 +44,13 @@ You can use this experience without filing a support ticket for most scenarios.
 
 Each Azure Database for MySQL Flexible Server compute tier is represented as a separate SKU family. To scale up or down within a specific tier, make sure you have sufficient quota for each applicable SKU family in that tier. Example SKU families include:
 
-- Burstable BS Series vCores
-- General Purpose DS Series vCores
-- Business Critical DS Series vCores
+- Burstable Series (`standardBSFamily`)
+- General Purpose Series (`standardDDSv4Family`, `standardDADSv5Family`)
+- Business Critical Series (`standardEDSv4Family`, `standardEADSv5Family`, `standardEDSv5Family`)
 
 In the Quotas blade, you can:
 
-- Filter by **region**, **subscription**, **provider**, or **usage**. The provider appears as **Azure Database for MySQL Flexible Server**.
+- Filter by **region**, **subscription**, **provider**, or **usage**. The provider appears as **Azure Database for MySQL flexible servers**.
 - Group results by **usage**, **quota** (SKU family), or **location** (region).
 - Review current usage in vCores to quickly identify SKU families nearing their quota limits.
 - Make adjustments inline, without leaving the page.
@@ -58,87 +58,91 @@ In the Quotas blade, you can:
 ### Step 1: Open the Quotas blade
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-1. In the search bar at the top, enter **Quotas**.
-1. Under **Services**, select **Quotas**.
+2. In the search bar at the top, enter **Quotas**.
+3. Under **Services**, select **Quotas**.
 
-   :::image type="content" source="media/how-to-request-quota-increase/quotas-blade-search.png" alt-text="Screenshot that shows searching for Quotas in the Azure portal." lightbox="media/how-to-request-quota-increase/quotas-blade-search.png":::
+   :::image type="content" source="media/how-to-request-quota-increase/quotas-blade-search.png" alt-text="Screenshot that shows the Quotas tile highlighted under Azure services in the Azure portal." lightbox="media/how-to-request-quota-increase/quotas-blade-search.png":::
 
 Alternatively, go to **Subscriptions**, select your subscription, and then select **Usage + quotas** in the left menu.
 
-### Step 2: Select the Azure Database for MySQL provider
+### Step 2: Select the Azure Database for MySQL flexible servers provider
 
-1. On the **Quotas** page, select **Azure Database for MySQL** from the list of resource providers.
+1. On the **Quotas** page, select **Azure Database for MySQL flexible servers** from the list of resource providers.
 
-   :::image type="content" source="media/how-to-request-quota-increase/select-mysql-provider.png" alt-text="Screenshot that shows selecting the Azure Database for MySQL provider on the Quotas page." lightbox="media/how-to-request-quota-increase/select-mysql-provider.png":::
+   :::image type="content" source="media/how-to-request-quota-increase/select-mysql-provider.png" alt-text="Screenshot that shows the Azure Database for MySQL flexible servers tile highlighted on the Quotas page." lightbox="media/how-to-request-quota-increase/select-mysql-provider.png":::
 
-1. Use the **Subscription** filter at the top to select the subscription you want to review, and apply additional filters for **regions** as needed.
+2. Use the **Subscription** filter at the top to select the subscription you want to review, and apply additional filters for **regions** as needed.
+
+   :::image type="content" source="media/how-to-request-quota-increase/subscription-filter.png" alt-text="Screenshot of the My quotas page with the filter chips row highlighted, including the Subscription chip used to scope the list to a single subscription." lightbox="media/how-to-request-quota-increase/subscription-filter.png":::
 
 ### Step 3: Review your quota usage and limits
 
-The quota details page displays a table with the following columns:
+Above the table, filter chips let you scope the view by **Provider**, **Subscription**, **Region**, and **Usage**, and you can change the grouping with the **Group by usage** control. The table displays the following columns:
 
-- **Quota name**—The SKU family name (for example, Burstable BS Series vCores, General Purpose DS Series vCores, or Business Critical DS Series vCores).
+- **Quota name**—The SKU family name.
 - **Region**—The Azure region where the quota applies.
-- **Current usage**—The number of vCores currently in use.
-- **Limit**—The maximum quota limit for that SKU family.
-- **Usage bar**—A visual indicator that shows how much of the quota is consumed.
+- **Subscription**—The subscription the quota belongs to.
+- **Current Usage**—How many vCores are in use, shown as a percentage, a usage bar, and the consumed-of-total count (for example, *31%  20 of 64*).
+- **Request adjustment**—A pen icon you use to open the quota request fly-out for that row.
 
-:::image type="content" source="media/how-to-request-quota-increase/quota-usage-table.png" alt-text="Screenshot that shows the quota usage table with SKU family, region, current usage, limit, and usage bar columns." lightbox="media/how-to-request-quota-increase/quota-usage-table.png":::
+:::image type="content" source="media/how-to-request-quota-increase/quota-usage-table.png" alt-text="Screenshot of the My quotas table with the Azure Database for MySQL flexible servers provider selected, callouts pointing to the Quota name, filter chips, Group by usage control, Current Usage, and Request adjustment columns." lightbox="media/how-to-request-quota-increase/quota-usage-table.png":::
 
-Review the usage bars to identify quotas that are nearing their limits. Use the search box to find specific SKU families quickly.
+Review the **Current Usage** column to identify quotas that are nearing their limits. Use the search box to find specific SKU families quickly.
 
 ### Step 4: Request a quota increase
 
 Next to the quota you want to increase, select the pen icon. A fly-out window opens where you can submit the quota request.
 
-:::image type="content" source="media/how-to-request-quota-increase/quota-request-flyout.png" alt-text="Screenshot that shows the pen icon and the quota request fly-out window." lightbox="media/how-to-request-quota-increase/quota-request-flyout.png":::
+:::image type="content" source="media/how-to-request-quota-increase/quota-request-flyout.png" alt-text="Screenshot of the My quotas table with the Request adjustment column and the pen icon for a quota row highlighted." lightbox="media/how-to-request-quota-increase/quota-request-flyout.png":::
 
 ### Step 5: Enter the new limit
 
-The quota type (Azure Database for MySQL Flexible Server SKU family) and current usage are already populated. Your request isn't incremental: enter the **new total limit** that you want to see reflected in the portal.
+The **New Quota Request** fly-out is prepopulated with the subscription, region, **Quota** (the SKU family, for example `standardBSFamily`), and current **Usage** (shown as *consumed of total*, for example *0 of 35*). Your request isn't incremental: enter the **new total limit** that you want to see reflected in the portal.
 
-For example, to request an additional 10 vCores for the Burstable BS Series family when your current limit is 35, enter **45** as the new limit.
+For example, to request an additional 10 vCores for the Burstable Series family (`standardBSFamily`) when your current limit is 35, enter **45** as the new limit.
 
 1. In **New limit**, enter the desired new limit.
-1. The portal indicates whether the request can be automatically approved or requires manual review.
+2. The portal indicates whether the request can be automatically approved or requires manual review.
 
-:::image type="content" source="media/how-to-request-quota-increase/quota-new-limit.png" alt-text="Screenshot that shows entering a new limit in the quota request fly-out window." lightbox="media/how-to-request-quota-increase/quota-new-limit.png":::
+:::image type="content" source="media/how-to-request-quota-increase/quota-new-limit.png" alt-text="Screenshot of the New Quota Request fly-out for standardBSFamily in Sweden Central showing Usage of 0 of 35 and a New limit value of 45." lightbox="media/how-to-request-quota-increase/quota-new-limit.png":::
 
 ### Step 6: Submit and monitor the request
 
-1. Select **Submit** to send the request for automatic processing. A processing dialog appears immediately after you submit the request.
+- Select **Submit** to send the request for automatic processing. A processing dialog appears immediately after you submit the request.
 
-   :::image type="content" source="media/how-to-request-quota-increase/quota-processing-dialog.png" alt-text="Screenshot that shows the processing dialog after you submit a quota request." lightbox="media/how-to-request-quota-increase/quota-processing-dialog.png":::
+   :::image type="content" source="media/how-to-request-quota-increase/quota-processing-dialog.png" alt-text="Screenshot of the New Quota Request fly-out showing a processing indicator and the message We are reviewing your request to adjust 1 quotas, with the requested standardBSFamily quota and new limit listed below." lightbox="media/how-to-request-quota-increase/quota-processing-dialog.png":::
 
-1. If the request can be automatically fulfilled, no support ticket is needed. You receive a confirmation within a few minutes.
+- If the request can be automatically fulfilled, no support ticket is needed. You receive a confirmation within a few minutes.
 
-   :::image type="content" source="media/how-to-request-quota-increase/quota-auto-approved.png" alt-text="Screenshot that shows a confirmation that the quota request was automatically approved." lightbox="media/how-to-request-quota-increase/quota-auto-approved.png":::
+   :::image type="content" source="media/how-to-request-quota-increase/quota-auto-approved.png" alt-text="Screenshot of the New Quota Request fly-out showing outcome counters Successful 1, Partial increase 0, and Unsuccessful 0, the confirmation message We have adjusted your quota, and the standardBSFamily request listed as successful with a new limit of 45." lightbox="media/how-to-request-quota-increase/quota-auto-approved.png":::
 
-1. If the request can't be automatically fulfilled, you have the option to file a support request with the same information already populated.
+- If the request is only partially fulfilled, the **Partial increase** counter shows the count and the row indicates the portion that was granted; you can submit another request later or open a support request for the remainder.
 
-   :::image type="content" source="media/how-to-request-quota-increase/quota-support-request-option.png" alt-text="Screenshot that shows the option to file a support request when a quota request can't be automatically fulfilled." lightbox="media/how-to-request-quota-increase/quota-support-request-option.png":::
+- If the request can't be automatically fulfilled, you have the option to file a support request with the same information already populated.
+
+   :::image type="content" source="media/how-to-request-quota-increase/quota-support-request-option.png" alt-text="Screenshot of the New Quota Request fly-out showing Unsuccessful 1, the message We were unable to complete 1 request, the standardBSFamily row marked as failed, and a highlighted Create a support request button." lightbox="media/how-to-request-quota-increase/quota-support-request-option.png":::
 
 ### Step 7: Verify the quota increase
 
-1. Go back to the **Quotas** blade and select the **Azure Database for MySQL** provider.
-1. Confirm that the **Limit** column reflects the new, increased value.
-1. If you forget the region or SKU family that was requested, review your notifications pane for the details.
+1. Go back to the **Quotas** blade and select the **Azure Database for MySQL flexible servers** provider.
+2. Confirm that the **Current Usage** column for the requested SKU family and region reflects the new total (for example, `0 of 45` after raising the Burstable Series limit from 35 to 45).
+3. If you forget the region or SKU family that was requested, review your notifications pane for the details.
 
-:::image type="content" source="media/how-to-request-quota-increase/quota-verify-limit.png" alt-text="Screenshot that shows the updated Limit value in the Quotas blade after a successful quota increase." lightbox="media/how-to-request-quota-increase/quota-verify-limit.png":::
+:::image type="content" source="media/how-to-request-quota-increase/quota-verify-limit.png" alt-text="Screenshot of the My quotas table with the standardBSFamily row in Sweden Central highlighted, showing 0 of 45 in the Current Usage column to confirm the new limit." lightbox="media/how-to-request-quota-increase/quota-verify-limit.png":::
 
 ## Open a support request (fallback)
 
 If the self-service experience can't automatically fulfill your request, or if you need quota for many subscriptions, open a support request instead. When you open a support request from the quota request fly-out, the new limit is already populated for you, and you only need to confirm the region and Azure Database for MySQL Flexible Server SKU family.
 
-When you file a support ticket directly, you interact with the capacity management team for that region, which operates 24x7. You can track the status of your request from the **Help + support** dashboard.
+You can track the status of your request from the **Help + support** dashboard.
 
 For deployments that need quota for many subscriptions, use issue type **Service and subscription limits (quotas)** with quota type **Quota increase**.
 
 Use the following steps to create a new support request from the Azure portal:
 
 1. Sign in to the Azure portal.
-1. From the left menu, select **Help + support**, and then select **Create a support request**.
-1. On the **Problem description** tab, fill in the following details:
+2. From the left menu, select **Help + support**, and then select **Create a support request**.
+3. On the **Problem description** tab, fill in the following details:
 
    - For **Summary**, provide a short description of your request, such as your workload, why the default values aren't sufficient, and any error messages you're observing.
    - For **Issue type**, select **Service and subscription limits (quotas)**.
@@ -147,8 +151,8 @@ Use the following steps to create a new support request from the Azure portal:
 
    :::image type="content" source="media/how-to-request-quota-increase/request-quota-increase-mysql-flex.png" alt-text="Screenshot of new support request." lightbox="media/how-to-request-quota-increase/request-quota-increase-mysql-flex.png":::
 
-1. On the **Additional details** tab, enter the details for your quota request. The information you provide on this tab is used to further assess your issue and help the support engineer troubleshoot the problem.
-1. Fill in the following details in this form:
+4. On the **Additional details** tab, enter the details for your quota request. The information you provide on this tab is used to further assess your issue and help the support engineer troubleshoot the problem.
+5. Fill in the following details in this form:
 
    - In **Request details**, select **Enter details** and select the relevant **Quota type**. Provide the requested information for your specific quota request, such as Location, Series, and New quota.
    - **File upload**: Upload diagnostic files or any other files that you think are relevant to the support request. To learn more about file upload guidance, see the [Azure support](/azure/azure-portal/supportability/how-to-manage-azure-support-request#upload-files) article.
@@ -156,8 +160,8 @@ Use the following steps to create a new support request from the Azure portal:
    - **Severity**: Choose one of the available severity levels based on the business impact.
    - **Preferred contact method**: Choose to be contacted by **Email** or **Phone**.
 
-1. Fill out the remaining details, such as your availability, support language, contact information, email, and phone number.
-1. Select **Next: Review + create**. Validate the information you provided, and then select **Create** to create the support request.
+6. Fill out the remaining details, such as your availability, support language, contact information, email, and phone number.
+7. Select **Next: Review + create**. Validate the information you provided, and then select **Create** to create the support request.
 
 The Azure Database for MySQL - Flexible Server support team processes all quota requests in 24-48 hours.
 
