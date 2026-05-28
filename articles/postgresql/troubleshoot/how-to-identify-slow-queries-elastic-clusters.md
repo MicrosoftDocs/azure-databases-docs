@@ -257,4 +257,4 @@ SELECT * FROM run_command_on_all_nodes( $$ SELECT json_agg(t) FROM (
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md)
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md)
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md)

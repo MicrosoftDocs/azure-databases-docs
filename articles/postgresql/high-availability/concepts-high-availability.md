@@ -33,14 +33,14 @@ By default in most regions, your standby replica is deployed into a different av
 
 - Clients always connect to the end hostname of the primary database server.
 
-- Any changes to the server parameters are also applied to the standby replica.
+- Any changes to the parameters are also applied to the standby replica.
 
-- You can restart the server to pick up any static server parameter changes.
+- You can restart the server to pick up any static parameter changes.
 
 - Periodic maintenance activities such as minor version upgrades happen at the standby first. To reduce downtime, the standby is promoted to primary so that workloads can keep on while the maintenance tasks are applied on the remaining node.
 
 > [!NOTE]  
-> To ensure high availability functions properly, configure the `max_replication_slots` and `max_wal_senders` server parameter values. High availability requires four of each to handle failovers and seamless upgrades. For a high availability setup with five read replicas and 12 logical replication slots, set both `max_replication_slots` and `max_wal_senders` parameter values to 21. This configuration is necessary because each read replica and logical replication slot requires one of each, plus the four needed for high availability to function properly. For more information about `max_replication_slots` and `max_wal_senders` parameters, refer to the [documentation](../server-parameters/param-replication-sending-servers.md).
+> To ensure high availability functions properly, configure the `max_replication_slots` and `max_wal_senders` parameter values. High availability requires four of each to handle failovers and seamless upgrades. For a high availability setup with five read replicas and 12 logical replication slots, set both `max_replication_slots` and `max_wal_senders` parameter values to 21. This configuration is necessary because each read replica and logical replication slot requires one of each, plus the four needed for high availability to function properly. For more information about `max_replication_slots` and `max_wal_senders` parameters, refer to the [documentation](../parameters/parameters-replication-sending-servers.md).
 
 ## Availability zone support types
 
@@ -313,7 +313,7 @@ With these settings, logical replication slots are preserved during failover, an
 To help validate failover readiness, you can use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
 
 > [!IMPORTANT]
-> To emit this metric, ensure the server parameter `metrics.collector_database_activity` is set to `on`.
+> To emit this metric, ensure the parameter `metrics.collector_database_activity` is set to `on`.
 
 This metric indicates whether logical replication slots are synchronized between the HA primary and standby:
 - `1` indicates that slots are synchronized across primary and standby.

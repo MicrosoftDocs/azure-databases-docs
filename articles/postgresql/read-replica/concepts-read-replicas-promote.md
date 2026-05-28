@@ -41,7 +41,7 @@ The diagram shows how the servers are set up before they're promoted and their c
 > The **Promote to independent server and remove from replication** action is backward compatible with the previous promote functionality.
 
 > [!IMPORTANT]  
-> **Server Symmetry**: For a successful promotion using the promote to primary server operation, both the primary and replica servers must have identical tiers and storage sizes. For instance, if the primary has 2vCores and the replica has 4vCores, the only viable option is to use the "promote to independent server and remove from replication" action. Additionally, they need to share the same values for [server parameters that allocate shared memory](concepts-read-replicas.md#server-parameters).
+> **Server Symmetry**: For a successful promotion using the promote to primary server operation, both the primary and replica servers must have identical tiers and storage sizes. For instance, if the primary has 2vCores and the replica has 4vCores, the only viable option is to use the "promote to independent server and remove from replication" action. Additionally, they need to share the same values for [parameters that allocate shared memory](concepts-read-replicas.md#parameters).
 
 For both promotion methods, there are more options to consider:
 
@@ -63,7 +63,7 @@ The promote operation doesn't carry over specific configurations and parameters.
 
 - **PgBouncer**: [The built-in PgBouncer](../connectivity/concepts-pgbouncer.md) connection pooler's settings and status aren't replicated during the promotion process. If PgBouncer was enabled on the primary but not on the replica, it will remain disabled on the replica after promotion. Should you want PgBouncer on the newly promoted server, you must enable it either before or following the promotion action.
 - **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas can't have geo-backup enabled, the promoted primary (formerly the replica) doesn't have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
-- **Server Parameters**: If their values differ on the primary and read replica, they won't change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Server parameters](concepts-read-replicas.md#server-parameters) section.
+- **Parameters**: If their values differ on the primary and read replica, they won't change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Parameters](concepts-read-replicas.md#parameters) section.
 - **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](../security/security-entra-concepts.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
 - **High Availability (HA)**: Should you require [HA]/azure/reliability/reliability-postgresql-flexible-server after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
 

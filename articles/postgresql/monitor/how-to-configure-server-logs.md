@@ -53,12 +53,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-enable-capture-of-logs)
 
-You can enable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+You can enable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
 
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set \
+az postgres flexible-parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.download_enable \
@@ -68,18 +68,18 @@ az postgres flexible-server parameter set \
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter set \
+az postgres flexible-parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.retention_days \
   --value <retention_period_in_days>
 ```
 
-Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
+Allowed values for parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
 
 ```output
 Code: ServerParameterToCMSUnAllowedParameterValue
-Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is invalid, the allowed values are: [1-7]
+Message: The value: [<value>] of Parameter: [logfiles.retention_days] is invalid, the allowed values are: [1-7]
 ```
 
 ---
@@ -120,12 +120,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-disable-capture-of-logs)
 
-You can disable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+You can disable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
 
 To disable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server parameter \
+az postgres flexible-parameter \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.download_enable \

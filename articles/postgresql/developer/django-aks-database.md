@@ -387,4 +387,4 @@ az group delete --name django-project --yes --no-wait
 - [Automated deployments for Azure Kubernetes Service](/azure/aks/automated-deployments)
 - [Scale applications in Azure Kubernetes Service](/azure/aks/tutorial-kubernetes-scale)
 - [Manage Azure Database for PostgreSQL using the Azure portal](../configure-maintain/how-to-manage-server-portal.md)
-- [Configure server parameters in Azure Database for PostgreSQL](../server-parameters/how-to-server-parameters-list-all.md)
+- [Configure parameters in Azure Database for PostgreSQL](../parameters/how-to-parameters-list-all.md)

@@ -50,7 +50,7 @@ If a query on a read replica tries to read a row that is simultaneously being up
 >* Regular monitoring of the primary's disk space and table sizes is essential. Learn more about monitoring for Azure Database for PostgreSQL flexible server [here](../monitor/concepts-monitoring.md).
 >* Be prepared to manage potential table bloat manually if it becomes problematic. Consider enabling [autovacuum tuning](../monitor/how-to-enable-intelligent-performance-portal.md) in Azure Database for PostgreSQL flexible server to help mitigate this issue.
 
-5. **Adjust `max_standby_archive_delay`**: The `max_standby_archive_delay` server parameter specifies the maximum delay that the server will allow when reading archived `WAL` data. If the replica of the Azure Database for PostgreSQL flexible server instance ever switches from streaming mode to file-based log shipping (though rare), tweaking this value can help resolve the query cancellation issue.
+5. **Adjust `max_standby_archive_delay`**: The `max_standby_archive_delay` parameter specifies the maximum delay that the server will allow when reading archived `WAL` data. If the replica of the Azure Database for PostgreSQL flexible server instance ever switches from streaming mode to file-based log shipping (though rare), tweaking this value can help resolve the query cancellation issue.
 
 
 

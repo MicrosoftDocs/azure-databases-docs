@@ -93,7 +93,7 @@ Using the [Azure portal](https://portal.azure.com/):
 5. Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, do so by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the **Disable tuning** button, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
+> When autonomous tuning is disabled through the **Disable tuning** button, parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
 
 ### [CLI](#tab/CLI-disable)
 
@@ -118,7 +118,7 @@ WARNING: Autonomous tuning is disabled for the server.
 Assess whether you want to continue using [query store](concepts-query-store.md) to monitor the performance of your workload and leave it enabled or, if you want to disable it, by setting `pg_qs.query_capture_mode` to `none`.
 
 > [!IMPORTANT]  
-> When autonomous tuning is disabled through the CLI command, server parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
+> When autonomous tuning is disabled through the CLI command, parameter `pg_qs.query_capture_mode` isn't set to `none`, but left as it is configured.
 
 ---
 
@@ -197,7 +197,7 @@ az postgres flexible-server autonomous-tuning show-settings \
   --name analyze_interval
 ```
 
-The command returns all information about the server parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
+The command returns all information about the parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
 
 ```output
 {
@@ -230,7 +230,7 @@ az postgres flexible-server autonomous-tuning list-settings \
   --server-name <server>
 ```
 
-The command returns all server parameters that control the different settings of autonomous tuning, and the output is similar to the following:
+The command returns all parameters that control the different settings of autonomous tuning, and the output is similar to the following:
 
 ```output
 [
@@ -494,7 +494,7 @@ az postgres flexible-server autonomous-tuning set-settings \
   --value 1440
 ```
 
-The command returns all information about the server parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
+The command returns all information about the parameter corresponding to that setting of autonomous tuning, and the output is similar to the following:
 
 ```output
 {

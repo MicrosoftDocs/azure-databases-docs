@@ -24,7 +24,7 @@ Autovacuum is a PostgreSQL background process that automatically cleans up dead 
 - VACUUM - Reclaims space within the database's files by removing dead tuples and marking that space as reusable by PostgreSQL. It doesn't necessarily reduce the physical size of the database files on disk. To return space to the operating system, use operations that rewrite the table (for example, VACUUM FULL or pg_repack), which have additional considerations such as exclusive locks or maintenance windows.
 - ANALYZE - Collects table and index statistics that the PostgreSQL query planner uses to choose efficient execution plans.
 
-To ensure autovacuum works properly, set the autovacuum server parameter to `ON`. When enabled, PostgreSQL automatically decides when to run VACUUM or ANALYZE on a table, ensuring the database remains efficient and optimized.
+To ensure autovacuum works properly, set the autovacuum parameter to `ON`. When enabled, PostgreSQL automatically decides when to run VACUUM or ANALYZE on a table, ensuring the database remains efficient and optimized.
 
 ## Autovacuum internals
 
@@ -178,7 +178,7 @@ Review the following list of common problems with the autovacuum process.
 
 ### Not keeping up with busy server
 
-The autovacuum process estimates the cost of every I/O operation, accumulates a total for each operation it performs, and pauses once the upper limit of the cost is reached. The process uses two server parameters: `autovacuum_vacuum_cost_delay` and `autovacuum_vacuum_cost_limit`.
+The autovacuum process estimates the cost of every I/O operation, accumulates a total for each operation it performs, and pauses once the upper limit of the cost is reached. The process uses two parameters: `autovacuum_vacuum_cost_delay` and `autovacuum_vacuum_cost_limit`.
 
 By default, `autovacuum_vacuum_cost_limit` is set to -1, which means the autovacuum cost limit uses the same value as the `vacuum_cost_limit` parameter. The default value for `vacuum_cost_limit` is 200. `vacuum_cost_limit` represents the cost of a manual vacuum.
 
@@ -312,7 +312,7 @@ When the database runs into transaction ID wraparound protection, check for any 
 
 You can set autovacuum parameters for individual tables. These settings are especially important for small and large tables. For example, for a small table that contains only 100 rows, autovacuum triggers the VACUUM operation when 70 rows change (as calculated previously). If you frequently update this table, you might see hundreds of autovacuum operations a day. These operations prevent autovacuum from maintaining other tables where the percentage of changes isn't as significant. Alternatively, a table containing a billion rows needs to change 200 million rows to trigger autovacuum operations. Setting autovacuum parameters appropriately prevents such scenarios.
 
-To set autovacuum settings for each table, change the server parameters as shown in the following examples:
+To set autovacuum settings for each table, change the parameters as shown in the following examples:
 
 ```sql
     ALTER TABLE <table name> SET (autovacuum_analyze_scale_factor = xx);
@@ -343,7 +343,7 @@ For guidance, see [special considerations about using pg_cron in Azure Database 
 
 ##### PostgreSQL 13 and later versions
 
-Autovacuum runs on tables with an insert-only workload. Two server parameters, `autovacuum_vacuum_insert_threshold` and `autovacuum_vacuum_insert_scale_factor`, help control when autovacuum can be triggered on insert-only tables.
+Autovacuum runs on tables with an insert-only workload. Two parameters, `autovacuum_vacuum_insert_threshold` and `autovacuum_vacuum_insert_scale_factor`, help control when autovacuum can be triggered on insert-only tables.
 
 ## Troubleshooting guides
 
@@ -422,4 +422,4 @@ The recommendations are:
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md)
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md)
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md)
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md)

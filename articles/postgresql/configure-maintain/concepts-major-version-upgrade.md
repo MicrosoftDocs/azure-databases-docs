@@ -65,7 +65,7 @@ In-place major version upgrades do not support all PostgreSQL extensions. The up
 
 ### PostGIS-Specific Considerations
 
-If you're using PostGIS or any dependent extensions, you must configure the search_path server parameter to include:
+If you're using PostGIS or any dependent extensions, you must configure the search_path parameter to include:
 - Schemas related to PostGIS
 - Dependent extensions, including: `postgis`, `postgis_raster`, `postgis_sfcgal`, `postgis_tiger_geocoder`, `postgis_topology`, `address_standardizer`, `address_standardizer_data_us`, `fuzzystrmatch`
 - Failure to configure the search_path correctly can lead to upgrade failures or broken objects post-upgrade.

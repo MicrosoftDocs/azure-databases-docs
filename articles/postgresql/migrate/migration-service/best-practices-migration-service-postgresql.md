@@ -53,7 +53,7 @@ The following phases are considered for calculating the total downtime to perfor
     > [!NOTE]  
     > The comparative size of databases is not the right metric for validation. The source instance might have bloats or dead tuples, which can bump up the size of the source instance. It's normal to have size differences between source instances and target servers. An issue in the preceding three steps of validation indicates a problem with the migration.
 
-- **Migration of server settings**: Any custom server parameters, firewall rules (if applicable), tags, and alerts must be manually copied from the source instance to the target.
+- **Migration of server settings**: Any custom parameters, firewall rules (if applicable), tags, and alerts must be manually copied from the source instance to the target.
 - **Changing connection strings**: The application should change its connection strings to a flexible server after successful validation. This activity is coordinated with the application team to change all the references of connection strings pointing to the source instance. In the flexible server, the user parameter can be used in the **user=username** format in the connection string.
 
 For example: `psql -h myflexserver.postgres.database.azure.com -u user1 -d db1`

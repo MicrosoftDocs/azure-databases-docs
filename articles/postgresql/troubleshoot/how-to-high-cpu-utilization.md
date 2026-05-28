@@ -199,5 +199,5 @@ VACUUM ANALYZE <table>;
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

@@ -13,7 +13,7 @@ You can use enhanced metrics for monitoring and alerting on read replication.
 #### Enabling enhanced metrics
 
 - Most of these new metrics are *disabled* by default. There are a few exceptions though, which are enabled by default. Rightmost column in the following tables indicates whether each metric is enabled by default or not.
-- To enable those metrics which are not enabled by default, set the server parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
+- To enable those metrics which are not enabled by default, set the parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
 
 ##### Logical replication
 

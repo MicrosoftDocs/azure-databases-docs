@@ -27,12 +27,12 @@ Query Performance Insight provides intelligent query analysis for databases in a
 1. **[Query Store](concepts-query-store.md)** is enabled on your database. If Query Store isn't running, the Azure portal prompts you to enable it. To enable Query Store, refer [here](concepts-query-store.md#enable-query-store).
 
 > [!NOTE]
-> **Query Store** is currently **disabled**. Query Performance Insight depends on Query Store data. You need to enable it by setting the dynamic server parameter `pg_qs.query_capture_mode` to either **ALL** or **TOP**.
+> **Query Store** is currently **disabled**. Query Performance Insight depends on Query Store data. You need to enable it by setting the dynamic parameter `pg_qs.query_capture_mode` to either **ALL** or **TOP**.
 
 2. **[Query Store Wait Sampling](concepts-query-store.md)** is enabled on your database. If Query Store Wait Sampling isn't running, the Azure portal prompts you to enable it. To enable Query Store Wait Sampling, refer [here](concepts-query-store.md#enable-query-store-wait-sampling).
 
 > [!NOTE]
-> **Query Store Wait Sampling** is currently **disabled**. Query Performance Insight depends on Query Store wait sampling data. You need to enable it by setting the dynamic server parameter `pgms_wait_sampling.query_capture_mode` to **ALL**.
+> **Query Store Wait Sampling** is currently **disabled**. Query Performance Insight depends on Query Store wait sampling data. You need to enable it by setting the dynamic parameter `pgms_wait_sampling.query_capture_mode` to **ALL**.
 
 3. **[Log analytics workspace](how-to-configure-and-access-logs.md)** is configured for storing 3 log categories including - Azure Database for PostgreSQL flexible server instance Sessions logs, Azure Database for PostgreSQL flexible server instance Query Store and Runtime, and Azure Database for PostgreSQL flexible server instance Query Store Wait Statistics. To configure log analytics, refer [Log analytics workspace](how-to-configure-and-access-logs.md#configure-diagnostic-settings).
 

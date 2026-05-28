@@ -64,7 +64,7 @@ When you observe slow pg_dump performance while network bandwidth is high, consi
 
 ### Parameter tuning
 
-Tune the following server parameters to help speed up index creation during restore operations. pg_dump archives often include index-creation commands (for example, CREATE INDEX or ALTER TABLE ... ADD CONSTRAINT); improving index-build performance can shorten total migration time:
+Tune the following parameters to help speed up index creation during restore operations. pg_dump archives often include index-creation commands (for example, CREATE INDEX or ALTER TABLE ... ADD CONSTRAINT); improving index-build performance can shorten total migration time:
 
 - `maintenance_work_mem` = 2097151 (2 GB) — Increase this value to allocate more memory for index creation and other maintenance tasks. For large indexes, consider raising this setting (for example, hundreds of megabytes to multiple gigabytes) and validate memory usage on a nonproduction instance before applying it in production.
 - `max_parallel_maintenance_workers` = 4 — Increase this value to allow parallel index creation on multi-vCore servers. Set this relative to the number of vCores and test to determine the optimal level for your workload.
@@ -83,9 +83,9 @@ You can use the pg_restore utility to restore an Azure Database for PostgreSQL f
 
 By using multiple concurrent jobs, you can reduce the time it takes to restore a large database on a multi-vCore target server. The number of jobs can be equal to or less than the number of vCPUs that are allocated for the target server.
 
-### Server parameters
+### Parameters
 
-If you're restoring data to a new server or nonproduction server, you can optimize the following server parameters before running pg_restore:
+If you're restoring data to a new server or nonproduction server, you can optimize the following parameters before running pg_restore:
 
 `work_mem` = 32 MB  
 `max_wal_size` = 65536 (64 GB)  

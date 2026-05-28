@@ -21,7 +21,7 @@ In this article, you learn how to:
 - About troubleshooting guides to identify and get recommendations to mitigate root causes.
 - Use tools to identify high input/output (I/O) utilization, such as Azure Metrics, Query Store, and pg_stat_statements.
 - Identify root causes, such as long-running queries, checkpoint timings, a disruptive autovacuum daemon process, and high storage utilization.
-- Resolve high I/O utilization by using Explain Analyze, tune checkpoint-related server parameters, and tune the autovacuum daemon.
+- Resolve high I/O utilization by using Explain Analyze, tune checkpoint-related parameters, and tune the autovacuum daemon.
 
 ## Troubleshooting guides
 
@@ -60,7 +60,7 @@ LIMIT 5;
 ```
 
 > [!NOTE]  
-> When using query store or pg_stat_statements for columns blk_read_time and blk_write_time to be populated, you need to enable server parameter `track_io_timing`. For more information about `track_io_timing`, review [Server parameters](https://www.postgresql.org/docs/current/runtime-config-statistics.html).
+> When using query store or pg_stat_statements for columns blk_read_time and blk_write_time to be populated, you need to enable parameter `track_io_timing`. For more information about `track_io_timing`, review [Parameters](https://www.postgresql.org/docs/current/runtime-config-statistics.html).
 
 ## Identify root causes
 
@@ -128,9 +128,9 @@ After you have the session's PID, you can terminate it by using the following qu
 SELECT pg_terminate_backend(pid);
 ```
 
-### Tune server parameters
+### Tune parameters
 
-If you observe that the checkpoint is happening too frequently, increase the `max_wal_size` server parameter until most checkpoints are time driven, instead of requested. Eventually, 90 percent or more should be time based, and the interval between two checkpoints should be close to the `checkpoint_timeout` value that's set on the server.
+If you observe that the checkpoint is happening too frequently, increase the `max_wal_size` parameter until most checkpoints are time driven, instead of requested. Eventually, 90 percent or more should be time based, and the interval between two checkpoints should be close to the `checkpoint_timeout` value that's set on the server.
 
 - `max_wal_size`: Peak business hours are a good time to arrive at a `max_wal_size` value. To arrive at a value, do the following:
 
@@ -169,5 +169,5 @@ Increasing storage helps when you're adding more IOPS to the server. For more in
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

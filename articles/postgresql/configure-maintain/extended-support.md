@@ -87,7 +87,7 @@ A: PostgreSQL major version upgrades can introduce changes that might affect you
 
 A: The Azure portal and CLI clearly indicate if a server is enrolled in Extended Support.
 
-**Q: Do I need to update Server Parameters post major version upgrades?**
+**Q: Do I need to update Parameters post major version upgrades?**
 
 A: No manual change is required. The upgrade workflow automatically updates the parameters for the new PostgreSQL Version.
 

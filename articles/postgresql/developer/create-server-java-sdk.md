@@ -45,7 +45,7 @@ Azure SDK for Java provides `azure-resourcemanager-postgresqlflexibleserver` dep
   You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 - **Managing configuration settings** \
-  You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+  You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating parameters.
 
 ## Setting up your account with az cli
 
