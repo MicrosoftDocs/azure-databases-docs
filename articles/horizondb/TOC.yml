@@ -73,7 +73,7 @@
             - name: Client Connection Defaults / Other Defaults
               href: server-parameters/param-client-connection-defaults-defaults.md
             - name: Client Connection Defaults / Shared Library Preloading
-              href: server-parameters/param-client-connection-defaults-shared-library-preloading.md
+              href: server-parameters/param-client-connection-defaults-shared-library-preload.md
             - name: Client Connection Defaults / Statement Behavior
               href: server-parameters/param-client-connection-defaults-statement-behavior.md
             - name: Connections and Authentication / Authentication
@@ -379,7 +379,7 @@
     - name: Dump and restore
       items:
         - name: Migrate using dump and restore
-          href: migrate/how-to-migrate-dump-and-restore.md
+          href: migrate/how-to-migrate-dump-restore.md
 - name: Reference
   items:
     - name: REST API

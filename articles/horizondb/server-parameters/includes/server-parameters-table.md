@@ -62,10 +62,10 @@ ms.custom:
 
 | Name | Versions | Description |
 | --- | --- | --- |
-| `jit_provider` | [17](../param-client-connection-defaults-shared-library-preloading.md#jit_provider) | JIT provider to use. |
-| `local_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preloading.md#local_preload_libraries) | Lists unprivileged shared libraries to preload into each backend. |
-| `session_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preloading.md#session_preload_libraries) | Lists shared libraries to preload into each backend. |
-| `shared_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preloading.md#shared_preload_libraries) | Lists shared libraries to preload into server. |
+| `jit_provider` | [17](../param-client-connection-defaults-shared-library-preload.md#jit_provider) | JIT provider to use. |
+| `local_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preload.md#local_preload_libraries) | Lists unprivileged shared libraries to preload into each backend. |
+| `session_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preload.md#session_preload_libraries) | Lists shared libraries to preload into each backend. |
+| `shared_preload_libraries` | [17](../param-client-connection-defaults-shared-library-preload.md#shared_preload_libraries) | Lists shared libraries to preload into server. |
 
 ### Client Connection Defaults / Statement Behavior
 
