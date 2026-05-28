@@ -14,7 +14,7 @@ ms.collection:
 
 # Planned maintenance
 
-Your Azure Database for PostgreSQL flexible server instance periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. During maintenance, the server gets new features, updates, and patches.
+Your Azure Database for PostgreSQL flexible server instance periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
 
 > [!IMPORTANT]  
 > Avoid all server operations (modifications, configuration changes, starting/stopping the server) during Azure Database for PostgreSQL flexible server instance maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
@@ -65,8 +65,6 @@ Some considerations when considering during monthly maintenance:
 
 ## View Upcoming Maintenance
 
-Azure Database for PostgreSQL flexible server periodically performs maintenance to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
-
 You can view upcoming maintenance events for your flexible server before maintenance begins. This visibility helps you understand when maintenance is scheduled, whether the event can be rescheduled, and what type of update is planned.
 
 You can view upcoming maintenance by using the Azure portal. Support for Azure CLI, or REST API will be available soon.
@@ -82,8 +80,7 @@ When an upcoming maintenance event is available, you can view details such as:
 - Whether the event is eligible for rescheduling
 - The deadline for rescheduling, when applicable
 
-You can view upcoming maintenance by using the Azure portal. Support for Azure CLI, or REST API will be avaialable soon.
-(Link to How to View Upcoming Maintenance
+You can [view upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API will be avaialable soon.
 
 > [!NOTE]
 > If no maintenance event is currently scheduled for your server, upcoming maintenance details might not be displayed.
@@ -92,8 +89,7 @@ You can view upcoming maintenance by using the Azure portal. Support for Azure C
 
 For production workloads, you might need to avoid maintenance during business-critical periods, such as peak traffic hours, release windows, migrations, financial close, or seasonal events. When an upcoming maintenance event is eligible for rescheduling, you can move the maintenance to a later eligible time that better aligns with your workload needs.
 
-You can reschedule maintenance by using the Azure portal. Support for Azure CLI, or REST API will be available soon
-(Link to How to reschedule Maintenance
+You can [reschedule maintenance](how-to-configure-scheduled-maintenance.md#steps-to-reschedule-maintenance-to-a-future-date) by using the Azure portal. Support for Azure CLI, or REST API will be available soon
 
 ### What rescheduling maintenance provides
 
@@ -146,8 +142,7 @@ Before you reschedule maintenance, review the following rules:
 
 When an upcoming maintenance event is available, you can apply maintenance immediately instead of waiting for the scheduled maintenance window. This option gives you more control over when maintenance starts and helps you apply updates during a time that is safe for your workload.
 
-You can apply maintenance on demand by using the Azure portal. Support for Azure CLI, or REST API will be available soon.
-(Link to How to reschedule Maintenance
+You can [apply maintenance on demand](how-to-configure-scheduled-maintenance.md#steps-to-apply-maintenance-on-demand) by using the Azure portal. Support for Azure CLI, or REST API will be available soon.
 
 ### What apply maintenance on demand provides
 
@@ -175,12 +170,11 @@ After you confirm **Apply now**, the server enters the maintenance preparation w
 > [!IMPORTANT]
 > Applying maintenance immediately might cause a server restart during the maintenance window. Confirm that your application can tolerate a temporary interruption before you apply maintenance on demand.
 
-## view Maintenance History
+## View Maintenance History
 
 You can view maintenance history to review past maintenance events for your server. Maintenance history helps you understand when maintenance occurred, what type of maintenance was applied, and the final status of the event.
 
-You can view maintenance history for your server using the Azure portal. Support for Azure CLI, or REST API will be available soon.
-(Link to How to view Maintenance history
+You can [view maintenance history](how-to-configure-scheduled-maintenance.md#steps-to-view-maintenance-history) for your server using the Azure portal. Support for Azure CLI, or REST API will be available soon.
 
 ### What maintenance history provides
 

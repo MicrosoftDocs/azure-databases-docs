@@ -83,6 +83,120 @@ az postgres flexible-server update \
 ```
 
 ---
+## Steps to view upcoming maintenance
+
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
+ 
+2. On the server **Overview** page, review the **Next Maintenance** field.
+
+   If upcoming maintenance is available, the **Next Maintenance** field displays the scheduled maintenance time. 
+    
+    :::image type="content" source="./media/configure-maintenance/next-maintenance-date.png" alt-text="Screenshot showing the next maintenance date." lightbox="./media/configure-maintenance/next-maintenance-date.png":::
+
+3. Select the **Next Maintenance** value to open the **Maintenance** page.
+
+4.  On the **Maintenance** page, review the **Maintenance status** section.
+
+   The **Maintenance status** section shows upcoming maintenance events that apply to your server, including the scheduled time, status, maintenance type, and available actions.
+
+    :::image type="content" source="./media/configure-maintenance/upcoming-maintenance.png" alt-text="Screenshot showing the upcoming maintenance." lightbox="./media/configure-maintenance/upcoming-maintenance.png":::
+
+
+
+## Steps to reschedule maintenance to a future date
+
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
+
+2.  In the left menu, under **Settings**, select **Maintenance**.
+
+3. In the **Maintenance status** section, review the upcoming maintenance event.
+
+4. If the event is eligible, select **Reschedule**.
+    
+    :::image type="content" source="./media/configure-maintenance/reschedule_button.png" alt-text="Screenshot showing the reschedule maintenance button." lightbox="./media/configure-maintenance/reschedule_button.png":::
+
+5. Choose an eligible future date and time.
+
+    Only dates and times that meet the service rules and your maintenance policy are available for selection.
+
+    :::image type="content" source="./media/configure-maintenance/choose-eligible-reschedule-date-time.png" alt-text="Screenshot showing eligible reschedule date and time to choose from." lightbox="./media/configure-maintenance/choose-eligible-reschedule-date-time.png":::
+
+6. Select **Reschedule** to confirm the new maintenance time.
+
+    :::image type="content" source="./media/configure-maintenance/initiate-reschedule.png" alt-text="Screenshot showing reschedule to initiate rescheduling." lightbox="./media/configure-maintenance/initiate-reschedule.png":::
+
+7. After confirmation, review the **Maintenance status** section to verify that the new start time is displayed.
+
+    The portal shows a confirmation after the maintenance event is successfully rescheduled.
+
+    :::image type="content" source="./media/configure-maintenance/reschedule-successful.png" alt-text="Screenshot showing reschedule successful." lightbox="./media/configure-maintenance/reschedule-successful.png":::
+
+
+### Troubleshooting
+
+#### The Reschedule button isn't available
+
+The **Reschedule** action appears only when there is an upcoming maintenance event and the event is eligible for rescheduling. Some events might not be eligible, especially if they are required for critical security or compliance reasons.
+
+#### I can't select the date or time I want
+
+Only eligible future maintenance slots are selectable. The selected time must be within the allowed reschedule window and must comply with the server maintenance policy.
+
+#### I receive an error that the maintenance window is locked
+
+Rescheduling is unavailable starting 15 minutes before the initially scheduled maintenance time. This lock-in period helps maintain service reliability as the maintenance workflow prepares to start.
+
+#### I receieve an error that maintnance cannot be rescheduled or applied now because the custom maintenance window was configured after the event was scheduled 
+
+Rescheduling is available only for Flexible servers which are already on custom maintenance schedule. Any changes to maintenance schedule will take effect on the next maintenance event
+
+## Steps to apply maintenance on-demand
+
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
+
+ In the left menu, under **Settings**, select **Maintenance**.
+
+2. In the **Maintenance status** section, review the upcoming maintenance event.
+
+3. If the event is eligible, select **Rescedule** followed by **Apply now**.
+
+    :::image type="content" source="./media/configure-maintenance/apply-now-button.png" alt-text="Screenshot showing apply maintenance now button." lightbox="./media/configure-maintenance/apply-now-button.png":::
+
+4. Review the confirmation message.
+
+   The confirmation dialog explains that maintenance starts immediately and that the server might restart during the maintenance process.
+
+5. Select **Yes - Apply Maintenance Now** to start maintenance.
+
+    :::image type="content" source="./media/configure-maintenance/apply-now-confirmation-dialog.png" alt-text="Screenshot showing apply maintenance now confirmation dialog box." lightbox="./media/configure-maintenance/apply-now-confirmation-dialog.png":::
+
+6. Monitor the **Maintenance status** section.
+
+   The maintenance event status updates as the workflow progresses. When maintenance completes, the status changes to **Complete** and it is moved to the maintenance history section
+
+    :::image type="content" source="./media/configure-maintenance/applying-maintenance-now.png" alt-text="Screenshot showing applying maintenance now." lightbox="./media/configure-maintenance/applying-maintenance-now.png":::
+
+## Steps to view maintenance history
+
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
+
+ In the left menu, under **Settings**, select **Maintenance**.
+
+2. On the **Maintenance** page, review the **Maintenance history** section.
+
+    :::image type="content" source="./media/configure-maintenance/maintenance-history-section.png" alt-text="Screenshot showing maintenance history section." lightbox="./media/configure-maintenance/maintenance-history-section.png":::
+
+3. Select a maintenance event Tracking ID to view more details, such as the maintenance type, start time, end time, and final status.
+
+    :::image type="content" source="./media/configure-maintenance/maintenance-history-tracking-id.png" alt-text="Screenshot showing maintenance event tracking ID." lightbox="./media/configure-maintenance/maintenance-history-tracking-id.png":::
+
+4. Select Export to CSV to download maintenance history.
+
+    :::image type="content" source="./media/configure-maintenance/export-to-csv.png" alt-text="Screenshot showing export maintenance history to csv." lightbox="./media/configure-maintenance/export-to-csv.png":::
+
+
+> [!NOTE]
+> If no past maintenance events are available for the server, the maintenance history section might be empty.
 
 ## Notifications about scheduled maintenance events
  
