@@ -101,8 +101,6 @@ az postgres flexible-server update \
 
     :::image type="content" source="./media/configure-maintenance/upcoming-maintenance.png" alt-text="Screenshot showing the upcoming maintenance." lightbox="./media/configure-maintenance/upcoming-maintenance.png":::
 
-
-
 ## Steps to reschedule maintenance to a future date
 
 1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
@@ -113,7 +111,7 @@ az postgres flexible-server update \
 
 4. If the event is eligible, select **Reschedule**.
     
-    :::image type="content" source="./media/configure-maintenance/reschedule-button.png" alt-text="Screenshot showing the reschedule maintenance button." lightbox="./media/configure-maintenance/reschedule_button.png":::
+    :::image type="content" source="./media/configure-maintenance/reschedule-button.png" alt-text="Screenshot showing the reschedule maintenance button." lightbox="./media/configure-maintenance/reschedule-button.png":::
 
 5. Choose an eligible future date and time.
 

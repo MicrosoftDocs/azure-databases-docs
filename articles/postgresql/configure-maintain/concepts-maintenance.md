@@ -57,7 +57,7 @@ If an update is canceled or failed, the system generates a notification about th
 
 ## Consideration and limitations for Planned Maintenance
 
-Some considerations when considering during monthly maintenance:
+Some considerations to keep in mind during monthly planned maintenance:
 
 - Monthly maintenance is impactful and they involve some downtime.
 - Downtime depends on the transactional load on the server at the time of maintenance.
@@ -67,8 +67,7 @@ Some considerations when considering during monthly maintenance:
 
 You can view upcoming maintenance events for your flexible server before maintenance begins. This visibility helps you understand when maintenance is scheduled, whether the event can be rescheduled, and what type of update is planned.
 
-You can view upcoming maintenance by using the Azure portal. Support for Azure CLI, or REST API will be available soon.
-(Link to How to View Upcoming Maintenance
+[View upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API will be avaialable soon.
 
 When an upcoming maintenance event is available, you can view details such as:
 
@@ -79,8 +78,6 @@ When an upcoming maintenance event is available, you can view details such as:
 - Maintenance status
 - Whether the event is eligible for rescheduling
 - The deadline for rescheduling, when applicable
-
-You can [view upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API will be avaialable soon.
 
 > [!NOTE]
 > If no maintenance event is currently scheduled for your server, upcoming maintenance details might not be displayed.
