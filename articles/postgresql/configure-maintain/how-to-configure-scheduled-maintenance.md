@@ -95,11 +95,11 @@ az postgres flexible-server update \
 
 3. Select the **Next Maintenance** value to open the **Maintenance** page.
 
-4.  On the **Maintenance** page, review the **Maintenance status** section.
+4. On the **Maintenance** page, review the **Maintenance status** section.
 
    The **Maintenance status** section shows upcoming maintenance events that apply to your server, including the scheduled time, status, maintenance type, and available actions.
 
-    :::image type="content" source="./media/configure-maintenance/upcoming-maintenance.png" alt-text="Screenshot showing the upcoming maintenance." lightbox="./media/configure-maintenance/upcoming-maintenance.png":::
+    :::image type="content" source="./media/configure-maintenance/upcoming-maintenance.png" alt-text="Screenshot showing upcoming maintenance." lightbox="./media/configure-maintenance/upcoming-maintenance.png":::
 
 ## Steps to reschedule maintenance to a future date
 
