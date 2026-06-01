@@ -17,7 +17,7 @@ When data is needed, the database process first checks the shared buffer. If the
 
 #### Azure-specific notes
 
-The default value for the `shared_buffers` Parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server don't have any effect on the default value for the `shared_buffers` Parameter of that instance.
+The default value for the `shared_buffers` parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server don't have any effect on the default value for the `shared_buffers` parameter of that instance.
 
 Every time you change the product assigned to an instance, you should also adjust the value for the `shared_buffers` parameter according to the values in the following formulas.
 
@@ -25,7 +25,7 @@ For virtual machines with up to 2 GiB of memory, the formula used to compute the
 
 For virtual machines with more than 2 GiB, the formula used to compute the value of `shared_buffers` is `memoryGib * 32768`.
 
-Based on the previous formula, the following table lists the values this Parameter would be set to depending on the amount of memory provisioned:
+Based on the previous formula, the following table lists the values this parameter would be set to depending on the amount of memory provisioned:
 
 | Memory size | shared_buffers |
 | --- | --- |

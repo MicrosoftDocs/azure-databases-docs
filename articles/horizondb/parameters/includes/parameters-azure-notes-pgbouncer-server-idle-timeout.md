@@ -1,5 +1,5 @@
 ---
-title: "Pgbouncer.enabled server_idle_timeout Parameter"
+title: "pgbouncer.enabled server_idle_timeout Parameter"
 description: pgbouncer.server_idle_timeout parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
@@ -11,4 +11,4 @@ ms.topic: include
 
 #### Azure-specific notes
 
-This Parameter is only visible when `pgbouncer.enabled` is set to `true`.
+This parameter is only visible when `pgbouncer.enabled` is set to `true`.

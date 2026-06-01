@@ -11,13 +11,13 @@ ms.topic: include
 
 #### Azure-specific notes
 
-The default value for the `azure_storage.blob_block_size_mb` Parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `azure_storage.blob_block_size_mb` Parameter of that instance.
+The default value for the `azure_storage.blob_block_size_mb` parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `azure_storage.blob_block_size_mb` parameter of that instance.
 
 As of today, if you change the product assigned to an instance, you won't be able to adjust the value of `azure_storage.blob_block_size_mb` parameter because the parameter is declared as read-only.
 
 The formula used to compute the value of `azure_storage.blob_block_size_mb` is `MIN(3072, MAX(128, memoryGiB * 32))`.
 
-Based on the previous formula, the following table lists the values this Parameter would be set to depending on the amount of memory provisioned:
+Based on the previous formula, the following table lists the values this parameter would be set to depending on the amount of memory provisioned:
 
 | Memory size | azure_storage.blob_block_size_mb |
 | --- | --- |

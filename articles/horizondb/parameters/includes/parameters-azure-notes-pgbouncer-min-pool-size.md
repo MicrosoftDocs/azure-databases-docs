@@ -11,4 +11,4 @@ ms.topic: include
 
 #### Azure-specific notes
 
-This Parameter is only visible when `pgbouncer.enabled` is set to `true`.
+This parameter is only visible when `pgbouncer.enabled` is set to `true`.

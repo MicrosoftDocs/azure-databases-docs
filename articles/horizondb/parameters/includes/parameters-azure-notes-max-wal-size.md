@@ -11,7 +11,7 @@ ms.topic: include
 
 #### Azure-specific notes
 
-The default value for the `max_wal_size` Parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `max_wal_size` Parameter of that instance.
+The default value for the `max_wal_size` parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `max_wal_size` parameter of that instance.
 
 Every time you change the size of the disk assigned to the instance, you should also adjust the value for the `max_wal_size` parameter according to the values listed in the following table.
 

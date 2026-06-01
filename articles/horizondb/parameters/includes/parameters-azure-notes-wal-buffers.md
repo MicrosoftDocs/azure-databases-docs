@@ -11,7 +11,7 @@ ms.topic: include
 
 #### Azure-specific notes
 
-The default value for the `wal_buffers` Parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `wal_buffers` Parameter of that instance.
+The default value for the `wal_buffers` parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `wal_buffers` parameter of that instance.
 
 Every time you change the product assigned to an instance, you should also adjust the value for the `wal_buffers` parameter according to the values in the following formula.
 
@@ -19,7 +19,7 @@ In virtual machines with up to 4 vCores, the value computed for `wal_buffers` is
 
 In virtual machines with more than 4 vCores, the value computed for `wal_buffers` is `16384`.
 
-Based on the previous formula, the following table lists the values this Parameter would be set to depending on the amount of memory provisioned:
+Based on the previous formula, the following table lists the values this parameter would be set to depending on the amount of memory provisioned:
 
 | vCores | wal_buffers |
 | --- | --- |

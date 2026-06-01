@@ -80,13 +80,13 @@ Using recommended TLS configurations helps reduce the risk of connection failure
 
 ### Best configuration
 
-- Enforce the latest, most secure TLS version by setting the `ssl_min_protocol_version` Parameter to `TLSv1.3`.
+- Enforce the latest, most secure TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`.
 - Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or virtual network integration, `verify-all` might not be possible. Therefore, you can use `verify-ca` instead.
 - Always maintain the [complete set of Azure root certificates in your trusted root store](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
 
 ### Good configuration
 
-- Set the `ssl_min_protocol_version` Parameter to `TLSv1.3`. If you must support TLS 1.2, don't set the minimal version.
+- Set the `ssl_min_protocol_version` parameter to `TLSv1.3`. If you must support TLS 1.2, don't set the minimal version.
 - Use `sslmode=verify-all` or `sslmode=verify-ca` for PostgreSQL connections to ensure full or partial certificate verification.
 - Ensure that the trusted root store contains the root CA certificate currently used by Azure HorizonDB:
   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
@@ -140,10 +140,10 @@ All incoming connections that use earlier insecure versions of the TLS protocol,
 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is the recommended version since it's faster and more secure than TLS 1.2.
 
-Although we don't recommend it, if needed, you can disable TLS for connections to your Azure HorizonDB. You can update the `require_secure_transport` Parameter to `OFF`.
+Although we don't recommend it, if needed, you can disable TLS for connections to your Azure HorizonDB. You can update the `require_secure_transport` parameter to `OFF`.
 
 > [!IMPORTANT]  
-> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` Parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` Parameter.
+> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` Parameter.
 
 ### Cipher suites
 

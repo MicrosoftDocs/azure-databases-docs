@@ -11,7 +11,7 @@ ms.topic: include
 
 #### Azure-specific notes
 
-The default value for the `max_wal_senders` Parameter set when you provision the instance of Azure HorizonDB must never be decreased below `2 (if HA is enabled) + number of read replicas provisioned + slots_used_in_logical_replication`.
+The default value for the `max_wal_senders` parameter set when you provision the instance of Azure HorizonDB must never be decreased below `2 (if HA is enabled) + number of read replicas provisioned + slots_used_in_logical_replication`.
 
 When considering the need to increase `max_wal_senders` to a much higher value to be able to cope with the logical replication of a substantial number of tables, have the following important points in mind:
 
