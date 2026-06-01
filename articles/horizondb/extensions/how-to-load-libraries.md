@@ -50,7 +50,7 @@ Using the [Azure portal](https://portal.azure.com):
 You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter set \
+az postgres flexible-Parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name shared_preload_libraries \

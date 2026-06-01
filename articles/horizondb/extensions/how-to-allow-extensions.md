@@ -45,7 +45,7 @@ Using the [Azure portal](https://portal.azure.com):
 You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter).
 
 ```azurecli-interactive
-    az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
+    az postgres flexible-Parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
 ```
 
 ### [Resource Manager Template](#tab/allow-extensions-azure-resource-manager)

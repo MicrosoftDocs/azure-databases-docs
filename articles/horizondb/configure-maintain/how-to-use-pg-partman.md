@@ -26,7 +26,7 @@ In this article, you use `pg_partman` to create range-based partitions of tables
 
 To enable the `pg_partman` extension, follow these steps:
 
-1. In the Azure portal, select `pg_partman` in the list of parameters for `azure.extensions`.
+1. In the Azure portal, select `pg_partman` in the list of values for `azure.extensions`.
 
    :::image type="content" source="media/how-to-use-pg-partman/prerequisites.png" alt-text="Screenshot that shows selection of the pg_partman extension in a list of Azure extensions.":::
 
