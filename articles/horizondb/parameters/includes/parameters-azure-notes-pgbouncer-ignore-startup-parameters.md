@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.ignore_startup_parameters Parameter"
-description: pgbouncer.ignore_startup_parameters Parameter for Azure HorizonDB.
+description: pgbouncer.ignore_startup_parameters parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

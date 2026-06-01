@@ -1,6 +1,6 @@
 ---
 title: Max_wal_senders Parameter
-description: max_wal_senders Parameter for Azure HorizonDB.
+description: max_wal_senders parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

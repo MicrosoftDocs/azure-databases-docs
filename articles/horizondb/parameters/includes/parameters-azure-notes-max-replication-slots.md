@@ -1,6 +1,6 @@
 ---
 title: Max_replication_slots Parameter
-description: max_replication_slots Parameter for Azure HorizonDB.
+description: max_replication_slots parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

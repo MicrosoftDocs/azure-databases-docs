@@ -1,6 +1,6 @@
 ---
 title: Maintenance_work_mem Parameter
-description: maintenance_work_mem Parameter for Azure HorizonDB.
+description: maintenance_work_mem parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

@@ -1,6 +1,6 @@
 ---
 title: void Parameter
-description: void Parameter for Azure HorizonDB.
+description: void parameter for Azure HorizonDB.
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.date: 06/02/2026

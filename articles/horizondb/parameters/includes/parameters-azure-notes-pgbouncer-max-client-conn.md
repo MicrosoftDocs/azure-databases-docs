@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.max_client_conn Parameter"
-description: pgbouncer.max_client_conn Parameter for Azure HorizonDB.
+description: pgbouncer.max_client_conn parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

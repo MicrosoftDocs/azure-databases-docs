@@ -1,6 +1,6 @@
 ---
 title: Work_mem Parameter
-description: work_mem Parameter for Azure HorizonDB.
+description: work_mem parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

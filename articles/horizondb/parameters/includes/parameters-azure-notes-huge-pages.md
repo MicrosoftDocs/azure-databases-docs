@@ -1,6 +1,6 @@
 ---
 title: Huge_pages Parameter
-description: huge_pages Parameter for Azure HorizonDB.
+description: huge_pages parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

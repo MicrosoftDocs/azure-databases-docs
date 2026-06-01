@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.stats_users Parameter"
-description: pgbouncer.stats_users Parameter for Azure HorizonDB.
+description: pgbouncer.stats_users parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

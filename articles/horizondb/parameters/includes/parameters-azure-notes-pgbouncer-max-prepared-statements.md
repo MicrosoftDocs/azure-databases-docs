@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.max_prepared_statements Parameter"
-description: pgbouncer.max_prepared_statements Parameter for Azure HorizonDB.
+description: pgbouncer.max_prepared_statements parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

@@ -1,6 +1,6 @@
 ---
 title: "Pgbouncer.enabled Parameter"
-description: pgbouncer.enabled Parameter for Azure HorizonDB.
+description: pgbouncer.enabled parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

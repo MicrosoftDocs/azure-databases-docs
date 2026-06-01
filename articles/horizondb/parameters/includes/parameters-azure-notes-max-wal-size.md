@@ -1,6 +1,6 @@
 ---
 title: Max_wal_size Parameter
-description: max_wal_size Parameter for Azure HorizonDB.
+description: max_wal_size parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

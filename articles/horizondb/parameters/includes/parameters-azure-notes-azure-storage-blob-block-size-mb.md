@@ -1,6 +1,6 @@
 ---
 title: "azure_storage.blob_block_size_mb Parameter"
-description: azure_storage.blob_block_size_mb Parameter for Azure HorizonDB.
+description: azure_storage.blob_block_size_mb parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

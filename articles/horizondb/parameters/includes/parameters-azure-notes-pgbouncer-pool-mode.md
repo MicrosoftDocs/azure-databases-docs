@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.pool_mode Parameter"
-description: pgbouncer.pool_mode Parameter for Azure HorizonDB.
+description: pgbouncer.pool_mode parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

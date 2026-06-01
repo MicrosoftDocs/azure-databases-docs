@@ -1,6 +1,6 @@
 ---
 title: Max_connections Parameter
-description: max_connections Parameter for Azure HorizonDB.
+description: max_connections parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

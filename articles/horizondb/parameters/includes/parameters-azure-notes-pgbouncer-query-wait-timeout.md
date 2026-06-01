@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.query_wait_timeout Parameter"
-description: pgbouncer.query_wait_timeout Parameter for Azure HorizonDB.
+description: pgbouncer.query_wait_timeout parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

@@ -1,6 +1,6 @@
 ---
 title: "pgbouncer.default_pool_size Parameter"
-description: pgbouncer.default_pool_size Parameter for Azure HorizonDB.
+description: pgbouncer.default_pool_size parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

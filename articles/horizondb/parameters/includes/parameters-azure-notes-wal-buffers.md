@@ -1,6 +1,6 @@
 ---
 title: Wal_buffers Parameter
-description: wal_buffers Parameter for Azure HorizonDB.
+description: wal_buffers parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan

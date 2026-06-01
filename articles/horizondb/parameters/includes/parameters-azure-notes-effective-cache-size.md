@@ -1,6 +1,6 @@
 ---
 title: Effective_cache_size Parameter
-description: effective_cache_size Parameter for Azure HorizonDB.
+description: effective_cache_size parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
@@ -11,7 +11,7 @@ ms.topic: include
 
 #### Azure-specific notes
 
-The default value for the `effective_cache_size` Parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `effective_cache_size` Parameter of that instance.
+The default value for the `effective_cache_size` parameter is calculated when you provision the instance of Azure HorizonDB, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the flexible server won't have any effect on the default value for the `effective_cache_size` Parameter of that instance.
 
 Every time you change the product assigned to an instance, you should also adjust the value for the `effective_cache_size` parameter according to the values in the following formula.
 

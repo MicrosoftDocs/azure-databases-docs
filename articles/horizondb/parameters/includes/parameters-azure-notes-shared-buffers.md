@@ -1,6 +1,6 @@
 ---
 title: Shared_buffers Parameter
-description: shared_buffers Parameter for Azure HorizonDB.
+description: shared_buffers parameter for Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
