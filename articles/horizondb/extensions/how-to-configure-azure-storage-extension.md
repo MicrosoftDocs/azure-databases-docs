@@ -94,16 +94,16 @@ Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-k
 
 Configure your cluster so that it loads the `azure_storage` binary module when it's started.
 
-For that, you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` and includes `azure_storage` in its value.
+For that, you have to [create a parameter group](../parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` and includes `azure_storage` in its value.
 
-Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+Then you have to [connect your cluster to that parameter group](../parameters/how-to-parameter-groups-connect.md) for the value to take effect.
 
 Because `shared_preload_libraries` is a static parameter, it requires a restart of your cluster which occurs as soon as you connect the parameter group to the cluster.
 
 <!--
 ### [Azure portal](#tab/portal-01)
 
-:::image type="content" source="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in server parameters." lightbox="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in Parameters." lightbox="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png":::
 Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
 :::image type="content" source="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png":::
 
@@ -143,16 +143,16 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 
 You must allowlist the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
 
-For that, you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that also modifies the value of `azure.extensions` and includes `azure_storage` in its value.
+For that, you have to [create a parameter group](../parameters/how-to-parameter-groups-create.md) that also modifies the value of `azure.extensions` and includes `azure_storage` in its value.
 
-Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+Then you have to [connect your cluster to that parameter group](../parameters/how-to-parameter-groups-connect.md) for the value to take effect.
 
 Because `azure.extensions` is a dynamic parameter, it doesn't require a restart of your cluster, but the change is immediately effective as soon as you connect the parameter group to the cluster.
 
 <!--
 ### [Azure portal](#tab/portal-02)
 
-:::image type="content" source="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in server parameters." lightbox="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png":::
+:::image type="content" source="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in Parameters." lightbox="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png":::
 
 ### [CLI](#tab/cli-02)
 

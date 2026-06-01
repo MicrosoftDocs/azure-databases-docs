@@ -17,9 +17,9 @@ Extensions enhance the functionality of Azure HorizonDB by adding specialized fe
 
 ## Steps to allow extensions
 
-To allow an extension in Azure HorizonDB you have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) in which you must set the value of `azure.extensions` parameter to include the extensions that you want to allowlist.
+To allow an extension in Azure HorizonDB you have to [create a parameter group](../parameters/how-to-parameter-groups-create.md) in which you must set the value of `azure.extensions` parameter to include the extensions that you want to allowlist.
 
-Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+Then you have to [connect your cluster to that parameter group](../parameters/how-to-parameter-groups-connect.md) for the value to take effect.
 
 <!--
 ### [Portal](#tab/allow-extensions-portal)
@@ -28,9 +28,9 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure HorizonDB instance.
 
-1. From the resource menu, under **Settings** section, select **Server parameters**.
+1. From the resource menu, under **Settings** section, select **Parameters**.
 
-   :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+   :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
 
 1. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
 
@@ -38,7 +38,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select **Save**.
 
-   :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
+   :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 
