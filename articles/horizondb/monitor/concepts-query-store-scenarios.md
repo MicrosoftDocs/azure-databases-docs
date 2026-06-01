@@ -41,7 +41,7 @@ Use query store to compare workload performance before and after an application 
 - Migrating between major versions of PostgreSQL.
 - Rolling out a new version of an application.
 - Modifying the amount of resources granted to the server.
-- Changing any of the server parameters that affect the behavior of the server.
+- Changing any of the Parameters that affect the behavior of the server.
 - Creating missing indexes on tables referenced by expensive queries.
 
 In any of these scenarios, apply the following workflow:
