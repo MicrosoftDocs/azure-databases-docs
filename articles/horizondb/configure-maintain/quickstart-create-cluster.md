@@ -152,7 +152,7 @@ Create a cluster with one command:
 az horizondb create \
   --resource-group {resourceGroup} \
   --name {cluster} \
-  --location australiaeast \
+  --location {location} \
   --version 17 \
   --administrator-login {administratorLogin} \
   --administrator-login-password {administratorLoginPassword} \
@@ -165,23 +165,30 @@ az horizondb create \
 | --- | --- | --- |
 | `--resource-group` | Resource group name | {resourceGroup} |
 | `--name` | Cluster name (unique within the subscription and resource group) | {cluster} |
-| `--location` | Azure region | australiaeast |
-| `--version` | PostgreSQL version | 17 |
+| `--location` | Azure region | {location} |
+| `--version` | PostgreSQL version | `17` |
 | `--administrator-login` | Administrator username | {administratorLogin} |
 | `--administrator-login-password` | Administrator password | {administratorLoginPassword} |
-| `--v-cores` | Number of vCores assigned to each replica of the cluster | 2 |
-| `--replica-count` | Number of readable high availability replicas | 1 |
-| `--zone-placement-policy` | Defines how replicas are placed across availability zones | BestEffort or Strict |
+| `--v-cores` | Number of vCores assigned to each replica of the cluster | `2` |
+| `--replica-count` | Number of readable high availability replicas | `1` |
+| `--zone-placement-policy` | Defines how replicas are placed across availability zones | `BestEffort` |
+
+### Create a firewall rule on an Azure HorizonDB cluster with CLI
+
+[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
 Add firewall rules for client connectivity:
 
 ```azurecli-interactive
-az horizondb firewall-rule create \
-  --resource-group {resourceGroup} \
-  --cluster-name {cluster} \
-  --firewall-rule-name {firewallRule} \
-  --start-ip-address {yourIPAddress} \
-  --end-ip-address {yourIPAddress}
+az rest --method PUT \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.HorizonDB/pools/DefaultPool/firewallRules/{firewallRule}?api-version=2026-01-20-preview" \
+  --body '{
+      "properties": {
+        "startIpAddress": "10.0.0.1",
+        "endIpAddress": "10.0.0.10",
+        "description": "Allow access from corporate network"
+      }
+  }'
 ```
 
 ### Advanced CLI example
@@ -201,15 +208,20 @@ az horizondb create \
   --zone-placement-policy Strict
 ```
 
+[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
+
 Add firewall rules for client connectivity:
 
 ```azurecli-interactive
-az horizondb firewall-rule create \
-  --resource-group {resourceGroup} \
-  --cluster-name {cluster} \
-  --firewall-rule-name {firewallRule} \
-  --start-ip-address {myIPAddress} \
-  --end-ip-address {myIPAddress}
+az rest --method PUT \
+  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.HorizonDB/pools/DefaultPool/firewallRules/{firewallRule}?api-version=2026-01-20-preview" \
+  --body '{
+      "properties": {
+        "startIpAddress": "10.0.0.1",
+        "endIpAddress": "10.0.0.10",
+        "description": "Allow access from corporate network"
+      }
+  }'
 ```
 
 ## Create a cluster using an ARM template
