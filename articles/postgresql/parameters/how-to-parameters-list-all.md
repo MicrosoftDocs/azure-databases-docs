@@ -59,10 +59,10 @@ The **Parameter type** column can show any of the following values for each para
 
 ### [CLI](#tab/cli-list)
 
-You can list all parameters in a server via the [az postgres flexible-parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-list) command.
+You can list all parameters in a server via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-parameter list \
+az postgres flexible-server parameter list \
   --resource-group <resource_group> \
   --server-name <server>
 ```

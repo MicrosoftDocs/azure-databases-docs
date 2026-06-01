@@ -50,10 +50,10 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli)
 
-You can set the value of any of the `pgaudit` parameters via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
+You can set the value of any of the `pgaudit` parameters via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value <value>
+az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value <value>
 ```
 
 ---

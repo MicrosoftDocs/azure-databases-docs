@@ -133,12 +133,12 @@ Because the `shared_preload_libraries` is static, the server must be restarted f
 ### [CLI](#tab/cli-01)
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group>
   --server-name <server>
   --name shared_preload_libraries \
   --source user-override \
-  --value azure_storage,$(az postgres flexible-parameter show \
+  --value azure_storage,$(az postgres flexible-server parameter show \
                             --resource-group <resource_group> \
                             --server-name <server> \
                             --name shared_preload_libraries \
@@ -172,12 +172,12 @@ You must allow list the extension so that users can run CREATE EXTENSION, DROP E
 ### [CLI](#tab/cli-02)
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name azure.extensions \
   --source user-override \
-  --value azure_storage,$(az postgres flexible-parameter show \
+  --value azure_storage,$(az postgres flexible-server parameter show \
                             --resource-group <resource_group>
                             --server-name <server> \
                             --name azure.extensions \

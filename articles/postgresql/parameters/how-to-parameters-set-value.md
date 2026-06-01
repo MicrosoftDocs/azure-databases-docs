@@ -44,10 +44,10 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-set-value)
 
-You can set the value of a parameter via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
+You can set the value of a parameter via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --source user-override \
@@ -58,7 +58,7 @@ az postgres flexible-parameter set \
 And you can use the following script to conditionally restart the server, if any of the parameters changed require a restart for the change to take effect:
 
 ```azurecli-interactive
-parameters_requiring_restart=$(az postgres flexible-parameter list \
+parameters_requiring_restart=$(az postgres flexible-server parameter list \
                                  --resource-group <resource_group> \
                                  --server-name <server> \
                                  --query "[?isConfigPendingRestart==\`true\`] | length(@)")

@@ -33,10 +33,10 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-list-dynamic)
 
-You can list all parameters that don't require a restart after their values are changed for the changes to take effect, via the [az postgres flexible-parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-list) command.
+You can list all parameters that don't require a restart after their values are changed for the changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
 
 ```azurecli-interactive
-az postgres flexible-parameter list \
+az postgres flexible-server parameter list \
   --resource-group <resource_group> \
   --server-name <server> \
   --query "[?isDynamicConfig==\`true\` && isReadOnly==\`false\`] | [].name"

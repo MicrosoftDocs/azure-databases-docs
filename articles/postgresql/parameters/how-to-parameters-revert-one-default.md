@@ -47,15 +47,15 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli-revert-one-to-default)
 
-You can revert the value of a parameter to its default via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
+You can revert the value of a parameter to its default via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --source user-override \
   --name <parameter> \
-  --value $(az postgres flexible-parameter show \
+  --value $(az postgres flexible-server parameter show \
               --resource-group <resource_group> \
               --server-name <server> \
               --name <parameter> \
@@ -65,7 +65,7 @@ az postgres flexible-parameter set \
 And you can use the following script to conditionally restart the server, if the parameter changed requires a restart for the change to take effect:
 
 ```azurecli-interactive
-parameters_requiring_restart=$(az postgres flexible-parameter list \
+parameters_requiring_restart=$(az postgres flexible-server parameter list \
                                  --resource-group <resource_group> \
                                  --server-name <server> \
                                  --query "[?isConfigPendingRestart==\`true\`] | length(@)")

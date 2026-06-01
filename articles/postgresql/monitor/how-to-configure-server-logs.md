@@ -53,12 +53,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-enable-capture-of-logs)
 
-You can enable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
+You can enable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 To enable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.download_enable \
@@ -68,7 +68,7 @@ az postgres flexible-parameter set \
 To adjust the retention period for the logs that are captured for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-parameter set \
+az postgres flexible-server parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.retention_days \
@@ -120,12 +120,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-disable-capture-of-logs)
 
-You can disable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command.
+You can disable the capture of PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 To disable the capture of the logs for download, use this command:
 
 ```azurecli-interactive
-az postgres flexible-parameter \
+az postgres flexible-server parameter \
   --resource-group <resource_group> \
   --server-name <server> \
   --name logfiles.download_enable \

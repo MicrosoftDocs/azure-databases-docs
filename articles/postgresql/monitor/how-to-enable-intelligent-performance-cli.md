@@ -43,23 +43,23 @@ To learn more about intelligent tuning, see the [overview](concepts-intelligent-
 
 ## Verify current settings
 
-Use the [az postgres flexible-parameter show](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-show) command to confirm the current settings of the intelligent tuning feature.
+Use the [az postgres flexible-server parameter show](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-show) command to confirm the current settings of the intelligent tuning feature.
 
 You can verify if this feature is activated for the server `mydemoserver.postgres.database.azure.com` under the resource group `myresourcegroup` by using the following command:
 
 ```azurecli-interactive
-az postgres flexible-parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning --query value
+az postgres flexible-server parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning --query value
 ```
 
 You can inspect the current setting of the `intelligent_tuning.metric_targets` parameter by using the following command:
 
 ```azurecli-interactive
-az postgres flexible-parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --query value
+az postgres flexible-server parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --query value
 ```
 
 ## Enable intelligent tuning
 
-To enable or disable intelligent tuning, use the [az postgres flexible-parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-parameter-set) command. You can choose among the following tuning targets: `none`, `Storage-checkpoint_completion_target`, `Storage-min_wal_size`,`Storage-max_wal_size`, `Storage-bgwriter_delay`, `tuning-autovacuum`, and `all`.
+To enable or disable intelligent tuning, use the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command. You can choose among the following tuning targets: `none`, `Storage-checkpoint_completion_target`, `Storage-min_wal_size`,`Storage-max_wal_size`, `Storage-bgwriter_delay`, `tuning-autovacuum`, and `all`.
 
 > [!IMPORTANT]
 > Autovacuum tuning is currently supported for the General Purpose and Memory Optimized server compute tiers that have four or more vCores. The Burstable server compute tier isn't supported.
@@ -67,7 +67,7 @@ To enable or disable intelligent tuning, use the [az postgres flexible-parameter
 1. Activate the intelligent tuning feature by using the following command:
 
    ```azurecli-interactive
-   az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning --value ON
+   az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning --value ON
    ```
 
 1. Select the tuning targets that you want to activate.
@@ -75,25 +75,25 @@ To enable or disable intelligent tuning, use the [az postgres flexible-parameter
    - To activate all tuning targets, use the following command:
 
       ```azurecli-interactive
-      az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value all
+      az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value all
       ```
 
    - To enable autovacuum tuning only, use the following command:
 
       ```azurecli-interactive
-      az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum
+      az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum
       ```
 
    - To activate two tuning targets, use the following command:
 
      ```azurecli-interactive
-     az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum,Storage-bgwriter_delay
+     az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum,Storage-bgwriter_delay
      ```
 
    If you want to reset a parameter's value to the default, simply exclude the optional `--value` parameter. The service then applies the default value. In the preceding example, the command would look like the following and would set `intelligent_tuning.metric_targets` to `none`:
 
    ```azurecli-interactive
-   az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets
+   az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets
    ```
 
 > [!NOTE]
@@ -112,7 +112,7 @@ When you're choosing values from the `intelligent_tuning.metric_targets` paramet
 * If you want to include another tuning target, you need to specify both the existing and new tuning targets. For example, if `bgwriter_delay` is already enabled and you want to add autovacuum tuning, your command should look like this:
 
   ```azurecli-interactive
-  az postgres flexible-parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum,Storage-bgwriter_delay
+  az postgres flexible-server parameter set --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --value tuning-autovacuum,Storage-bgwriter_delay
   ```
 
   Specifying only a new value would overwrite the current settings. When you're adding a new tuning target, always ensure that you include the existing tuning targets in your command.
