@@ -1,0 +1,47 @@
+---
+title: Delete Firewall Rules in Azure HorizonDB
+description: This article describes how to delete firewall rules in Azure HorizonDB.
+author: milenak
+ms.author: mpopovic
+ms.reviewer: maghan
+ms.date: 06/02/2026
+ms.service: azure-database-postgresql
+ms.subservice: networking
+ms.topic: how-to
+ms.custom:
+  - build-2026-public-preview
+---
+
+# Delete firewall rules for Azure HorizonDB (Preview)
+
+When you enable public access, you can set up firewall rules that allow connections from specific IP addresses or from any Azure service.
+
+## Delete firewall rules using the Azure portal
+
+Use the [Azure portal](https://portal.azure.com/):
+
+1. Select your Azure HorizonDB.
+
+1. In the resource menu, select **Networking**.
+
+   :::image type="content" source="media/how-to-network-servers-public-access-delete-firewall/public-access-networking-enabled-existing-firewall-rules.png" alt-text="Screenshot showing the Networking page." lightbox="media/how-to-network-servers-public-access-delete-firewall/public-access-networking-enabled-existing-firewall-rules.png":::
+
+1. To delete a firewall rule, select the trash bin icon located to the right of the rule definition.
+
+1. To delete the firewall rule that allows connections from any IP address allocated to any Azure service or asset, clear the **Allow public access from any Azure service within Azure to this cluster** checkbox.
+
+   > [!IMPORTANT]  
+   > **Allow public access from any Azure service within Azure to this cluster** creates a firewall rule whose start and end IP addresses are set to `0.0.0.0`. The presence of this rule configures the firewall to allow connections from IP addresses allocated to any Azure service or asset, including connections from the subscriptions of other customers.
+
+1. Select **Save**.
+
+1. A notification informs you that the changes are being applied.
+
+1. When the process completes, a notification informs you that the changes were applied.
+
+---
+
+## Related content
+
+- [Networking in Azure HorizonDB (Preview)](how-to-network.md)
+- [Add firewall rules in Azure HorizonDB (Preview)](how-to-network-servers-public-access-add-firewall.md)
