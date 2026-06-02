@@ -15,14 +15,14 @@ ai-usage: ai-assisted
 
 The resources in Azure Database for MySQL - Flexible Server have default quotas and limits. If your workload needs more quota than the default value, you have two options to request an increase:
 
-- **Quotas blade in the Azure portal (recommended)**. Use the self-service quota management experience to view current usage, request increases inline, and—for many requests—receive automatic approval within minutes.
+- **Quotas page in the Azure portal (recommended)**. Use the self-service quota management experience to view current usage, request increases inline, and—for many requests—receive automatic approval within minutes.
 - **Support request**. Open a support ticket when the self-service experience can't fulfill your request automatically or when you need quota for many subscriptions at once.
 
 This article describes both paths.
 
-## Request a quota increase by using the Quotas blade (recommended)
+## Request a quota increase by using the Quotas page (recommended)
 
-The Azure Database for MySQL Flexible Server **Quotas** blade in the Azure portal provides a dedicated experience to:
+The Azure Database for MySQL Flexible Server **Quotas** page in the Azure portal provides a dedicated experience to:
 
 - View current usage and limits across SKU families and regions.
 - Request quota increases tailored to your Azure Database for MySQL Flexible Server deployment.
@@ -48,20 +48,20 @@ Each Azure Database for MySQL Flexible Server compute tier is represented as a s
 - General Purpose Series (`standardDDSv4Family`, `standardDADSv5Family`)
 - Business Critical Series (`standardEDSv4Family`, `standardEADSv5Family`, `standardEDSv5Family`)
 
-In the Quotas blade, you can:
+In the Quotas page, you can:
 
 - Filter by **region**, **subscription**, **provider**, or **usage**. The provider appears as **Azure Database for MySQL flexible servers**.
 - Group results by **usage**, **quota** (SKU family), or **location** (region).
 - Review current usage in vCores to quickly identify SKU families nearing their quota limits.
 - Make adjustments inline, without leaving the page.
 
-### Step 1: Open the Quotas blade
+### Step 1: Open the Quotas page
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. In the search bar at the top, enter **Quotas**.
 3. Under **Services**, select **Quotas**.
 
-   :::image type="content" source="media/how-to-request-quota-increase/quotas-blade-search.png" alt-text="Screenshot that shows the Quotas tile highlighted under Azure services in the Azure portal." lightbox="media/how-to-request-quota-increase/quotas-blade-search.png":::
+   :::image type="content" source="media/how-to-request-quota-increase/quotas-page-search.png" alt-text="Screenshot that shows the Quotas tile highlighted under Azure services in the Azure portal." lightbox="media/how-to-request-quota-increase/quotas-page-search.png":::
 
 Alternatively, go to **Subscriptions**, select your subscription, and then select **Usage + quotas** in the left menu.
 
@@ -124,7 +124,7 @@ For example, to request an additional 10 vCores for the Burstable Series family 
 
 ### Step 7: Verify the quota increase
 
-1. Go back to the **Quotas** blade and select the **Azure Database for MySQL flexible servers** provider.
+1. Go back to the **Quotas** page and select the **Azure Database for MySQL flexible servers** provider.
 2. Confirm that the **Current Usage** column for the requested SKU family and region reflects the new total (for example, `0 of 45` after raising the Burstable Series limit from 35 to 45).
 3. If you forget the region or SKU family that was requested, review your notifications pane for the details.
 
@@ -167,7 +167,7 @@ The Azure Database for MySQL - Flexible Server support team processes all quota 
 
 ## Known limitations
 
-If you close the quota request fly-out window, in-portal notifications for that request stop. The underlying request still completes, and you can view the outcome by returning to the Quotas blade and checking the updated limit. To rely on notifications for alerts, leave the quota request window open for the few minutes that it takes to process.
+If you close the quota request fly-out window, in-portal notifications for that request stop. The underlying request still completes, and you can view the outcome by returning to the Quotas page and checking the updated limit. To rely on notifications for alerts, leave the quota request window open for the few minutes that it takes to process.
 
 ## Related content
 
