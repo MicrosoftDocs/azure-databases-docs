@@ -55,7 +55,7 @@ In rare cases, the system can cancel some maintenance events, or some events can
 
 If an update is canceled or failed, the system generates a notification about the canceled or failed maintenance event. The next attempt to perform maintenance is scheduled according to your current schedule settings, and you receive a notification about it 5 calendar days in advance.
 
-## Consideration and limitations for Planned Maintenance
+## Considerations and limitations for Planned Maintenance
 
 Some considerations to keep in mind during monthly planned maintenance:
 
@@ -67,7 +67,7 @@ Some considerations to keep in mind during monthly planned maintenance:
 
 You can view upcoming maintenance events for your flexible server before maintenance begins. This visibility helps you understand when maintenance is scheduled, whether the event can be rescheduled, and what type of update is planned.
 
-[View upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API will be avaialable soon.
+[View upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
 
 When an upcoming maintenance event is available, you can view details such as:
 
@@ -86,7 +86,7 @@ When an upcoming maintenance event is available, you can view details such as:
 
 For production workloads, you might need to avoid maintenance during business-critical periods, such as peak traffic hours, release windows, migrations, financial close, or seasonal events. When an upcoming maintenance event is eligible for rescheduling, you can move the maintenance to a later eligible time that better aligns with your workload needs.
 
-You can [reschedule maintenance](how-to-configure-scheduled-maintenance.md#steps-to-reschedule-maintenance-to-a-future-date) by using the Azure portal. Support for Azure CLI, or REST API will be available soon
+You can [reschedule maintenance](how-to-configure-scheduled-maintenance.md#steps-to-reschedule-maintenance-to-a-future-date) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
 
 ### What rescheduling maintenance provides
 
@@ -139,7 +139,7 @@ Before you reschedule maintenance, review the following rules:
 
 When an upcoming maintenance event is available, you can apply maintenance immediately instead of waiting for the scheduled maintenance window. This option gives you more control over when maintenance starts and helps you apply updates during a time that is safe for your workload.
 
-You can [apply maintenance on demand](how-to-configure-scheduled-maintenance.md#steps-to-apply-maintenance-on-demand) by using the Azure portal. Support for Azure CLI, or REST API will be available soon.
+You can [apply maintenance on demand](how-to-configure-scheduled-maintenance.md#steps-to-apply-maintenance-on-demand) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
 
 ### What apply maintenance on demand provides
 
@@ -171,7 +171,7 @@ After you confirm **Apply now**, the server enters the maintenance preparation w
 
 You can view maintenance history to review past maintenance events for your server. Maintenance history helps you understand when maintenance occurred, what type of maintenance was applied, and the final status of the event.
 
-You can [view maintenance history](how-to-configure-scheduled-maintenance.md#steps-to-view-maintenance-history) for your server using the Azure portal. Support for Azure CLI, or REST API will be available soon.
+You can [view maintenance history](how-to-configure-scheduled-maintenance.md#steps-to-view-maintenance-history) for your server using the Azure portal. Support for Azure CLI, or REST API is in-work.
 
 ### What maintenance history provides
 

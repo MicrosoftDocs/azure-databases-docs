@@ -143,19 +143,19 @@ Only eligible future maintenance slots are selectable. The selected time must be
 
 Rescheduling is unavailable starting 15 minutes before the initially scheduled maintenance time. This lock-in period helps maintain service reliability as the maintenance workflow prepares to start.
 
-#### I receieve an error that maintnance cannot be rescheduled or applied now because the custom maintenance window was configured after the event was scheduled 
+#### I receive an error that maintenance can't be rescheduled or applied now because the custom maintenance window was configured after the event was scheduled 
 
-Rescheduling is available only for Flexible servers which are already on custom maintenance schedule. Any changes to maintenance schedule will take effect on the next maintenance event
+Rescheduling is available only for flexible servers which are already on custom maintenance schedule. Any changes to maintenance schedule will take effect on the next maintenance event.
 
 ## Steps to apply maintenance on-demand
 
 1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
 
- In the left menu, under **Settings**, select **Maintenance**.
+    In the left menu, under **Settings**, select **Maintenance**.
 
 2. In the **Maintenance status** section, review the upcoming maintenance event.
 
-3. If the event is eligible, select **Rescedule** followed by **Apply now**.
+3. If the event is eligible, select **Reschedule** followed by **Apply now**.
 
     :::image type="content" source="./media/configure-maintenance/apply-now-button.png" alt-text="Screenshot showing apply maintenance now button." lightbox="./media/configure-maintenance/apply-now-button.png":::
 
@@ -177,7 +177,7 @@ Rescheduling is available only for Flexible servers which are already on custom 
 
 1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
 
- In the left menu, under **Settings**, select **Maintenance**.
+    In the left menu, under **Settings**, select **Maintenance**.
 
 2. On the **Maintenance** page, review the **Maintenance history** section.
 
