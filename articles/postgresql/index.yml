@@ -41,7 +41,7 @@ landingContent:
           - text: Manage your server
             url: flexible-server/how-to-manage-server-portal.md
           - text: Connect and query using Visual Studio Code
-            url: extensions/vs-code-extension/overview.md
+            url: developer/vs-code-extension/pgsql-extension-overview.md
 
   #Card 2        
   - title: Enterprise ready features
@@ -212,4 +212,3 @@ landingContent:
             url: https://learn.microsoft.com/training/browse/?terms=Azure%20database%20for%20postgresql
             
           
-

@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "managedBy": "vscode-pgsql-learn-docs-export",
+  "targetRelativePath": "articles/postgresql/developer/vs-code-extension",
+  "sourceCommit": "3dc5c1be28b84e8a048e8ad4996dc42440ba23e8",
+  "files": [
+    {
+      "type": "article",
+      "source": "learn-docs/advanced-connection-options.md",
+      "target": "advanced-connection-options.md",
+      "sha256": "ab43b45e2816182bf7a2ac6e651cea189842212a7582d8372d1289909aa32ca0"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/azure-server-management.md",
+      "target": "azure-server-management.md",
+      "sha256": "d2e3add20e2a9abfde5fe41afcfe27fd00c8c135486e230af5406b3030396dfc"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/common-workflows.md",
+      "target": "common-workflows.md",
+      "sha256": "802c0c7d2586952631d62ed2370ea55f3fcfa6d275c02f915390452407b901e8"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/connections.md",
+      "target": "connections.md",
+      "sha256": "6417e94578e63b8ef59a67a04b6c21e7e6283810d292188600e10bb209116c30"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/copilot-integration.md",
+      "target": "copilot-integration.md",
+      "sha256": "8ed1218c1c239b1442a8ec24de9f334d044639af895ea20b5daf8a64865bbf86"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/copilot/agent-mode.md",
+      "target": "copilot/agent-mode.md",
+      "sha256": "9a118d6281f51baeab74a9267cf6ca86511b3b2e0a4036b7ee2cb73efe3d259e"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/copilot/pgsql-chat.md",
+      "target": "copilot/pgsql-chat.md",
+      "sha256": "fda5693a6c66f518ea5d788315668419ccd5a45f3976438776882dd6a60c7d7a"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/create-server.md",
+      "target": "create-server.md",
+      "sha256": "c27dbf068f6a94d2c1946d125c013ffe1c4f89d75d6dc7bb14c7c98051108376"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/mcp-server.md",
+      "target": "mcp-server.md",
+      "sha256": "ab23607f76d5872a69f110580b68eec7acf0310edf4d501481bcaacd75786311"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/connection-dialog/connection-string-tab.png",
+      "target": "media/screenshots/cursor/connection-dialog/connection-string-tab.png",
+      "sha256": "5d5f1b580ffb91c53cc732df3c9041048d1726a7f7e6adfc9bc153115c556c0e"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/connection-dialog/default.png",
+      "target": "media/screenshots/cursor/connection-dialog/default.png",
+      "sha256": "28019499a3383509e122c7090b7b07833d9508485db8b4ff48b1420660d37ef5"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/connection-dialog/server-group-dialog.png",
+      "target": "media/screenshots/cursor/connection-dialog/server-group-dialog.png",
+      "sha256": "c7792cf70687df7cac1b280f6fd2eda6c15476e4817ba0266b9494dfeb79e993"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/connection-dialog/ssh-tunnel-fields.png",
+      "target": "media/screenshots/cursor/connection-dialog/ssh-tunnel-fields.png",
+      "sha256": "7f7a30dc9989cc460650721384bd4cdc2bb37d6e5af57ef75f106c607bc46cf0"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/connection-dialog/ssl-certificate-fields.png",
+      "target": "media/screenshots/cursor/connection-dialog/ssl-certificate-fields.png",
+      "sha256": "a6f571c8050a8d688f64cdeb77187bbc71a97e8764fc3089eac638bcb90ae439"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/create-server/create-server-hub.png",
+      "target": "media/screenshots/cursor/create-server/create-server-hub.png",
+      "sha256": "415c82232a50902565a0101bc8a0a51f57e63ee6b25852bb676b59a1e6f2feaa"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/create-server/docker-config-form.png",
+      "target": "media/screenshots/cursor/create-server/docker-config-form.png",
+      "sha256": "38792ce16f54bda081d15a592c4fbaf629a691665825c8a4345ded917b11e0b5"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/create-server/horizon-config-form.png",
+      "target": "media/screenshots/cursor/create-server/horizon-config-form.png",
+      "sha256": "ddfe3c2c0b018ce59cf871000bebab04473671c5af7f62f26f75a8c73eb0cbd8"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/object-explorer/create-server-toolbar.png",
+      "target": "media/screenshots/cursor/object-explorer/create-server-toolbar.png",
+      "sha256": "7ded6e3e04e7e7d70693aae2b0348d6aa88952f5c672ced731aa5814ed0867c7"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/object-explorer/default.png",
+      "target": "media/screenshots/cursor/object-explorer/default.png",
+      "sha256": "be82a3910ce6c2c25b4f2efc9854b93f5500b1cdf29f15dcbca8e72c38cf4af5"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/object-explorer/oe-search-panel.png",
+      "target": "media/screenshots/cursor/object-explorer/oe-search-panel.png",
+      "sha256": "0f8362e6c41a00fcc3d7db041ffd5cb71534190c472bc94749e8990245a9f74f"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/psql-terminal/psql-run-file.png",
+      "target": "media/screenshots/cursor/psql-terminal/psql-run-file.png",
+      "sha256": "b8c9b05b10e972b4c21e1552dd418e52e3f730c60a26c3e8e3d7c595d06d4a28"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-history/query-history.png",
+      "target": "media/screenshots/cursor/query-history/query-history.png",
+      "sha256": "50735b9afe0d491d1f8216c037e0be870d58f76e82a7dabc21a8d63e11747296"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-plan/default.png",
+      "target": "media/screenshots/cursor/query-plan/default.png",
+      "sha256": "83428ef1e1788952a30a665d5c2d926f17f3e24ce851274e3b2d684d03a50637"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-plan/icicle-view.png",
+      "target": "media/screenshots/cursor/query-plan/icicle-view.png",
+      "sha256": "b8d926c7af84e99b4c9fa9dc61e4133d1e29b83bbca78a021e5e5e91a0a0cd12"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-plan/node-details.png",
+      "target": "media/screenshots/cursor/query-plan/node-details.png",
+      "sha256": "05a145c8c2b764a9fb9b8726d0808ac640d1abfd93df23f82b12878563a9e262"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-plan/source-view.png",
+      "target": "media/screenshots/cursor/query-plan/source-view.png",
+      "sha256": "85147e5ccfb9ec280ce75f5430d0f8fd85485f71407af153f19a98c0e0043219"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/query-plan/table-view.png",
+      "target": "media/screenshots/cursor/query-plan/table-view.png",
+      "sha256": "3c07858a07c72a8d323a9e5dbfbf3d64683a7ac394ad5554ad0ad4e28cc5aeeb"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/results-grid/default.png",
+      "target": "media/screenshots/cursor/results-grid/default.png",
+      "sha256": "086d8c1e9ce08729adf27718bb32493066228b4ffa487fe6a2ae46a69efb2e5c"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/results-grid/rich-join-data.png",
+      "target": "media/screenshots/cursor/results-grid/rich-join-data.png",
+      "sha256": "29c122bb5cebf3d1eaa3214318677cc079aa54ec93b189cb0d31b2125af1aa44"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/schema-visualizer/default.png",
+      "target": "media/screenshots/cursor/schema-visualizer/default.png",
+      "sha256": "04009fadbe586368de5eab776e3ac5a1569d09b17e07fc65c2d1ca98fbc32fdd"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/schema-visualizer/navigation-controls.png",
+      "target": "media/screenshots/cursor/schema-visualizer/navigation-controls.png",
+      "sha256": "cc3594a8d8da85656eadb6e7581185ef92ae69abe71b6a081f9538631ae23ffc"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/schema-visualizer/schema-legend.png",
+      "target": "media/screenshots/cursor/schema-visualizer/schema-legend.png",
+      "sha256": "9923eb14d8d17840ff1826be8be3d55cf5de94a2a346239ca3ee351a2fd18cee"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/server-dashboard/default.png",
+      "target": "media/screenshots/cursor/server-dashboard/default.png",
+      "sha256": "7b333943611df3c5c728628269f5c84a53ad0230c047620faa4ad562b68ebac7"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/server-dashboard/queries-tab.png",
+      "target": "media/screenshots/cursor/server-dashboard/queries-tab.png",
+      "sha256": "bd1d96a7f63514f2a2b48fbe7775d552074fc2b9d0f98d97fcdb9b1290beaf22"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/server-dashboard/sessions-tab.png",
+      "target": "media/screenshots/cursor/server-dashboard/sessions-tab.png",
+      "sha256": "65576efa12cdd34f60253af73a22a77d71f4880ea98983c3c667033c32c3917e"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/cursor/server-dashboard/waits-tab.png",
+      "target": "media/screenshots/cursor/server-dashboard/waits-tab.png",
+      "sha256": "1100d93e7531c1f7b71546f1f32c2599783d8c5501faf82ae90ab7a12059c1f3"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/connection-dialog/connection-string-tab.png",
+      "target": "media/screenshots/vscode/connection-dialog/connection-string-tab.png",
+      "sha256": "d81e018149272fe0cb002ec8c754e3f2538baadf4c0817a5031537744d6961e3"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/connection-dialog/default.png",
+      "target": "media/screenshots/vscode/connection-dialog/default.png",
+      "sha256": "66ec29e15f88ebdbadb59108c456b29ec7766b2ddaea9ec637ea3496821857c2"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/connection-dialog/server-group-dialog.png",
+      "target": "media/screenshots/vscode/connection-dialog/server-group-dialog.png",
+      "sha256": "7261be3239847a5f0f6afed0c642da5ee7ae21159c330c3ce6b09edc74613d45"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/connection-dialog/ssh-tunnel-fields.png",
+      "target": "media/screenshots/vscode/connection-dialog/ssh-tunnel-fields.png",
+      "sha256": "2d64040a7afb9a250c788e2a5a72ae8d300ddc4a7f0065afe16977920ab8ecb6"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/connection-dialog/ssl-certificate-fields.png",
+      "target": "media/screenshots/vscode/connection-dialog/ssl-certificate-fields.png",
+      "sha256": "a0e21923fa27c858091d4dac3c81f6716341369b21000650ee54f3063e6cc13e"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/create-server/create-server-hub.png",
+      "target": "media/screenshots/vscode/create-server/create-server-hub.png",
+      "sha256": "91f7a83b020ea66b016478770031b1a71ddfb62ac16278d622405ed93bd7c3e9"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/create-server/default.png",
+      "target": "media/screenshots/vscode/create-server/default.png",
+      "sha256": "bc709206eb0ea4ecfc7afbfcb1a6d9936c2d667313d546979a21c0db21051f5b"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/create-server/docker-config-form.png",
+      "target": "media/screenshots/vscode/create-server/docker-config-form.png",
+      "sha256": "44594fb075dcd751e00f9befd46615d0e5c366c503aa9bc4e340e309535f4255"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/create-server/horizon-config-form.png",
+      "target": "media/screenshots/vscode/create-server/horizon-config-form.png",
+      "sha256": "ddfe3c2c0b018ce59cf871000bebab04473671c5af7f62f26f75a8c73eb0cbd8"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/object-explorer/create-server-toolbar.png",
+      "target": "media/screenshots/vscode/object-explorer/create-server-toolbar.png",
+      "sha256": "0a4deb6fc464c666e415d2561132a76462c551f6ecb55d3fac44e0b9276d030e"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/object-explorer/default.png",
+      "target": "media/screenshots/vscode/object-explorer/default.png",
+      "sha256": "7ce84d8e599fc2c9dc33cb1607c7d8ad659374106f11a703ce2f87603f867820"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/object-explorer/oe-search-panel.png",
+      "target": "media/screenshots/vscode/object-explorer/oe-search-panel.png",
+      "sha256": "e7c5596b92086d14fe664226ddeb4f0c48d85a3f8726e3f6a997ec9b026bf82b"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/oracle-migration/migration-project-setup.png",
+      "target": "media/screenshots/vscode/oracle-migration/migration-project-setup.png",
+      "sha256": "12e97aca2805b35b85e7ee08c568bac98dc8829ea52dc9465b2b69e8950ff966"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/psql-terminal/psql-run-file.png",
+      "target": "media/screenshots/vscode/psql-terminal/psql-run-file.png",
+      "sha256": "e06c632dd4702541495551552a72ee1bd17bc9cb38a0abfd1507d56c91c72319"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-editor/default.png",
+      "target": "media/screenshots/vscode/query-editor/default.png",
+      "sha256": "821f4c159cb564bee247221ade31aeb4e7f84a93e93734a9f54e4b3daad2a7f5"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-history/query-history.png",
+      "target": "media/screenshots/vscode/query-history/query-history.png",
+      "sha256": "5ceb6c978fcaf6db246d8e1046b54e0f9c6deaaae1e491e396623b5d9c8db7cb"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-plan/default.png",
+      "target": "media/screenshots/vscode/query-plan/default.png",
+      "sha256": "c8fae5804df38d831b4420d1080f43acf9dada89f9eaa89b1901d2481c9897b3"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-plan/icicle-view.png",
+      "target": "media/screenshots/vscode/query-plan/icicle-view.png",
+      "sha256": "8f993866bea0e952275fba3a449fc77d51249f3b786168c6a1e7fb56d9eaaba6"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-plan/node-details.png",
+      "target": "media/screenshots/vscode/query-plan/node-details.png",
+      "sha256": "741f0e598b0fd9a09333515688f288a44c041200a855e5705820ed23c94b2501"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-plan/source-view.png",
+      "target": "media/screenshots/vscode/query-plan/source-view.png",
+      "sha256": "bca8eab5e6afaf75a1e83f2d2fb2e2f208bf2030e75c616e0d42ad475392073b"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/query-plan/table-view.png",
+      "target": "media/screenshots/vscode/query-plan/table-view.png",
+      "sha256": "dbf030e2ebb78cad8a73f0e7f1019cd62db422ad70b7f8c0eef622ecbf877bd7"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/results-grid/default.png",
+      "target": "media/screenshots/vscode/results-grid/default.png",
+      "sha256": "d9b16b3506e555f0f54576d45ebc87a1a110dcf7591f92f9e5825a09785d33d5"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/results-grid/rich-join-data.png",
+      "target": "media/screenshots/vscode/results-grid/rich-join-data.png",
+      "sha256": "814c99b0c15a25f44db5fecf390daa0eec67ddfaa99668d94b0f786275dfb53a"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/schema-visualizer/default.png",
+      "target": "media/screenshots/vscode/schema-visualizer/default.png",
+      "sha256": "443a543f2e1f1e3f433fc673dd09d49345fcaa68516fe8c79c38c9fb93040594"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/schema-visualizer/navigation-controls.png",
+      "target": "media/screenshots/vscode/schema-visualizer/navigation-controls.png",
+      "sha256": "933b706877ecaca677dae53187928080d61715fd737bcea59887aa13ad97b8c8"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/schema-visualizer/schema-legend.png",
+      "target": "media/screenshots/vscode/schema-visualizer/schema-legend.png",
+      "sha256": "79aeac9c07d8ba484464bcc139af47d5a7a7db6e15ddb466095bdb6fb7be25ad"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/server-dashboard/default.png",
+      "target": "media/screenshots/vscode/server-dashboard/default.png",
+      "sha256": "9ae29afb0a8b7ff2492bf26940d6158374e18bf09e8c038a79a784a300f47528"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/server-dashboard/queries-tab.png",
+      "target": "media/screenshots/vscode/server-dashboard/queries-tab.png",
+      "sha256": "94a21bbad882743cbd74197920f2ee718fb17d3264d1dce9820be8b8ae8d4ee0"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/server-dashboard/sessions-tab.png",
+      "target": "media/screenshots/vscode/server-dashboard/sessions-tab.png",
+      "sha256": "22af0b43ac9c1b45c20da7f128c82397b3919df7631d17b1212c37d1f1f291f0"
+    },
+    {
+      "type": "media",
+      "source": "learn-docs/media/screenshots/vscode/server-dashboard/waits-tab.png",
+      "target": "media/screenshots/vscode/server-dashboard/waits-tab.png",
+      "sha256": "c53834dd419110d2b5647aa1e0720ad0dc8fe6485dc16d4973eb6997e8ae5786"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/object-explorer.md",
+      "target": "object-explorer.md",
+      "sha256": "69d0913e80f2f1aed980f97ec4b7132f7ee65d3537001bc3aa1dec06d72da58b"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/oracle-migration.md",
+      "target": "oracle-migration.md",
+      "sha256": "d3b0089bc60260e533b2316777bb2a288fb5523633fbb5990140b75a5892a429"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/pgsql-extension-overview.md",
+      "target": "pgsql-extension-overview.md",
+      "sha256": "6b95f698bf903e1a91fa3e61bdda0e81562a0c8a537524e1ea9ad8966449d1b2"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/psql-terminal.md",
+      "target": "psql-terminal.md",
+      "sha256": "32cfdc8b4b9b7dccbfb01ff4887f22395f70ec70037d35beea68352ab8bfc47d"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/query-editor-intellisense.md",
+      "target": "query-editor-intellisense.md",
+      "sha256": "214cbeca345bec24c349b7fc577e3f987ea967cdfa33184f324d6cdce2e1eedf"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/query-plan-visualizer.md",
+      "target": "query-plan-visualizer.md",
+      "sha256": "6dc6b7a4bae6dcbd144648d92edcddaed29b46c46629c3f4aed6c98ab98d51f1"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/quickstart-connect-query.md",
+      "target": "quickstart-connect-query.md",
+      "sha256": "168737a026098c09a1fe191ef98850d72fb3f088ec7c2a9091cd734a400cda93"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/chat-participant.md",
+      "target": "reference/chat-participant.md",
+      "sha256": "f5ce7d447c9fcbdd93fd651cccd6cfbcc927d2aae5e6b1f0284633f40fa311a6"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/commands.md",
+      "target": "reference/commands.md",
+      "sha256": "55de686f7ae4d12686215cb2ed7a9b8a47ced0757963e02a616d93dd76c57052"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/copilot-tools.md",
+      "target": "reference/copilot-tools.md",
+      "sha256": "8d62b2db37463b04eea9c2e9f9c0923e791d8191420eccd4f323a2e1815ddeba"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/keyboard-shortcuts.md",
+      "target": "reference/keyboard-shortcuts.md",
+      "sha256": "b76be672e97d6f58c05d456c8c0bb69a7ecd958163647b24e2626d1bb18a5cff"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/mcp-server.md",
+      "target": "reference/mcp-server.md",
+      "sha256": "0f2dc43e92d9bc81deeac5a97f800de6c9488cb2dc650cbd6c08eda78005065f"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/reference/settings.md",
+      "target": "reference/settings.md",
+      "sha256": "88e91b1d8c046bac88a15d581ac846b4d37e3a73836ad0336bb39c23dbf3ea7d"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/schema-visualizer.md",
+      "target": "schema-visualizer.md",
+      "sha256": "9cb38cbd74a992025d8d8c378a290885d89dfd3d238e61a5825e48f203ecb9d2"
+    },
+    {
+      "type": "article",
+      "source": "learn-docs/server-dashboard.md",
+      "target": "server-dashboard.md",
+      "sha256": "b9bb424e37d84117cfe12bc20eff3b8ce06851ec4ca8f22707e260bde6e3a2c3"
+    }
+  ]
+}

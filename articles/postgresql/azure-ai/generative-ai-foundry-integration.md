@@ -163,7 +163,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    psql
    ```
 
-   Alternatively, you can connect via the [Connect and query a database with the PostgreSQL extension for Visual Studio Code](../extensions/vs-code-extension/quickstart-connect.md).
+   Alternatively, you can connect via the [Connect and query a database with the PostgreSQL extension for Visual Studio Code](../developer/vs-code-extension/quickstart-connect-query.md).
 
 1. Create the database principal for the MCP server's managed identity. Only run this command in the **default postgres database**, because the command is only allowed in this database:
 

@@ -113,8 +113,8 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [Azure Confidential Computing for Azure Database for PostgreSQL](../security/security-confidential-computing.md)
   - [AGE extension with Azure Database for PostgreSQL](../azure-ai/generative-ai-age-overview.md)
   - [AI functions in the azure_ai extension (Preview)](../azure-ai/generative-ai-azure-ai-functions.md)
-  - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
-  - [GitHub Copilot integration with new PostgreSQL VS Code extension](../extensions/vs-code-extension/quickstart-github-copilot.md)
+  - [New PostgreSQL VS Code extension](../developer/vs-code-extension/pgsql-extension-overview.md)
+  - [GitHub Copilot integration with new PostgreSQL VS Code extension](../developer/vs-code-extension/copilot-integration.md)
   - [Major Version Upgrade Support for PostgreSQL 17](../configure-maintain/concepts-major-version-upgrade.md)
 
 ## Release: April 2025

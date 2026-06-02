@@ -3872,17 +3872,32 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/overview.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-overview",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/pgsql-extension-overview",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-connect.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-connect",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/quickstart-connect-query",
             "redirect_document_id": true
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/copilot-integration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-overview.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/pgsql-extension-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-connect.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/quickstart-connect-query",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-github-copilot.md",
+            "redirect_url": "/azure/postgresql/developer/vs-code-extension/copilot-integration",
             "redirect_document_id": true
         },
         {

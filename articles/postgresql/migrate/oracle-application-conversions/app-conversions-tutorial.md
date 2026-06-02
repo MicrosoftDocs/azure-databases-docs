@@ -212,7 +212,7 @@ After completing the application conversion:
 
 > **Comprehensive validation strategies**: See [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md) for detailed validation frameworks, testing priorities, and team coordination approaches based on your conversion complexity.
 
-For more information about the Visual Studio Code extension, visit [What is the PostgreSQL extension for Visual Studio Code?](../../developer/vs-code-extension/vs-code-overview.md)
+For more information about the Visual Studio Code extension, visit [What is the PostgreSQL extension for Visual Studio Code?](../../developer/vs-code-extension/pgsql-extension-overview.md)
 
 ## Related content
 
