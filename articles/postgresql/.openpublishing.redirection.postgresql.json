@@ -3914,6 +3914,96 @@
             "source_path_from_root": "/articles/postgresql/server-parameters/param-metrics.md",
             "redirect_url": "/articles/postgresql/server-parameters/param-log-files-metrics",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/best-practices-oracle-to-postgresql.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/best-practices-oracle-to-postgresql",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/best-practices-oracle-to-postgresql-checklist.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/best-practices-oracle-to-postgresql-checklist",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/concepts-oracle-migration.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/concepts-oracle-migration",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/concepts-oracle-migration-stages.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/concepts-oracle-migration-stages",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/how-to-migrate-oracle-ora2pg.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/how-to-migrate-oracle-ora2pg",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/partners-migration-postgresql.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-migration/partners-migration-postgresql",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-application-conversions/app-conversions-overview.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-overview",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-application-conversions/app-conversions-tutorial.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-tutorial",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-application-conversions/app-conversions-best-practices.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-best-practices",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-application-conversions/app-conversions-limitations.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-limitations",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-application-conversions/app-conversions-reports.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-reports",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-overview.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-schema/schema-conversions-overview",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-tutorial.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-schema/schema-conversions-tutorial",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-reports.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-schema/schema-conversions-reports",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-best-practices.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-schema/schema-conversions-best-practices",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-limitations.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-schema/schema-conversions-limitations",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md",
+            "redirect_url": "/azure/postgresql/migrate/oracle-conversions-application/app-conversions-overview",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/configure-maintain/how-to-run-preupgrade-validation-checks.md",
+            "redirect_url": "/azure/postgresql/configure-maintain/how-to-run-upgrade-validation-checks",
+            "redirect_document_id": true
         }
     ]
 }
