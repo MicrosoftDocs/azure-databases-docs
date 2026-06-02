@@ -12,7 +12,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ---
 
-# Planned maintenance
+# Planned maintenance for Azure Database for PostgreSQL
 
 Your Azure Database for PostgreSQL flexible server instance periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
 
