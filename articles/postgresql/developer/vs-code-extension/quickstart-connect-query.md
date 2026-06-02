@@ -2,10 +2,10 @@
 title: "Quickstart: Connect and query PostgreSQL"
 description: "Learn how to connect to a PostgreSQL database and run your first query using the PostgreSQL extension for Visual Studio Code."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/14/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: quickstart
 ---
 

@@ -2,10 +2,10 @@
 title: "Oracle to PostgreSQL migration"
 description: "Migrate from Oracle to PostgreSQL using the built-in migration tools with AI-assisted schema and application code conversion. Visual Studio Code only."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/21/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

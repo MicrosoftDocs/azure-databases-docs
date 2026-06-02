@@ -2,10 +2,10 @@
 title: "@pgsql chat participant"
 description: "Ask schema-aware questions in GitHub Copilot Chat by using the PostgreSQL extension's @pgsql chat participant. Visual Studio Code only."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/11/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

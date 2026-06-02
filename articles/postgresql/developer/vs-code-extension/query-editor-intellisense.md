@@ -2,10 +2,10 @@
 title: "Query editor and IntelliSense"
 description: "Write and execute PostgreSQL queries with IntelliSense, view results in the results grid, export data, and use code snippets in the PostgreSQL extension for Visual Studio Code."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 04/03/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

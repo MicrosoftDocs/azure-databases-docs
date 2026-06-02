@@ -2,11 +2,11 @@
 title: "Common workflows"
 description: "Choose the right PostgreSQL extension article for common tasks such as connecting, exploring schemas, tuning queries, and managing Azure servers."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/14/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
-ms.topic: concept
+ms.service: azure-database-postgresql
+ms.subservice: extensions
+ms.topic: conceptual
 ---
 
 

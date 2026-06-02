@@ -2,11 +2,11 @@
 title: "Copilot integration"
 description: "Use GitHub Copilot (or Cursor's built-in AI) with the PostgreSQL extension: chat with @pgsql, analyze queries, explore schemas, and use Agent mode."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/11/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
-ms.topic: concept
+ms.service: azure-database-postgresql
+ms.subservice: extensions
+ms.topic: conceptual
 ---
 
 

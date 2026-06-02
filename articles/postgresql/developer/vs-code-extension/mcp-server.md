@@ -2,10 +2,10 @@
 title: "MCP server"
 description: "Understand how the PostgreSQL extension registers an MCP server in supported hosts (Visual Studio Code and Cursor) and what tools it exposes."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/11/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

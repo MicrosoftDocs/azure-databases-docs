@@ -2,61 +2,61 @@
   "version": 1,
   "managedBy": "vscode-pgsql-learn-docs-export",
   "targetRelativePath": "articles/postgresql/developer/vs-code-extension",
-  "sourceCommit": "3dc5c1be28b84e8a048e8ad4996dc42440ba23e8",
+  "sourceCommit": "c77de0084bda80beeb309ce3368d8bd61038d3cc",
   "files": [
     {
       "type": "article",
       "source": "learn-docs/advanced-connection-options.md",
       "target": "advanced-connection-options.md",
-      "sha256": "ab43b45e2816182bf7a2ac6e651cea189842212a7582d8372d1289909aa32ca0"
+      "sha256": "1ac8cd6d6e20babce8ee3b8431328405d246a8a7bfbee96638094c5eb2bf1137"
     },
     {
       "type": "article",
       "source": "learn-docs/azure-server-management.md",
       "target": "azure-server-management.md",
-      "sha256": "d2e3add20e2a9abfde5fe41afcfe27fd00c8c135486e230af5406b3030396dfc"
+      "sha256": "ac0c9b56ccf0e8dbe95b4bd4e1bb3fd4807fb7be2223b5bbed711d8e7043ca84"
     },
     {
       "type": "article",
       "source": "learn-docs/common-workflows.md",
       "target": "common-workflows.md",
-      "sha256": "802c0c7d2586952631d62ed2370ea55f3fcfa6d275c02f915390452407b901e8"
+      "sha256": "1e3d768cb1594b99fd58486b58b2d47d254f3609b32ff29719b9dd41ece20f56"
     },
     {
       "type": "article",
       "source": "learn-docs/connections.md",
       "target": "connections.md",
-      "sha256": "6417e94578e63b8ef59a67a04b6c21e7e6283810d292188600e10bb209116c30"
+      "sha256": "c07b145a7e5ca03d98c284da42e6493cb28a219559a464bfe28a02878d4c3915"
     },
     {
       "type": "article",
       "source": "learn-docs/copilot-integration.md",
       "target": "copilot-integration.md",
-      "sha256": "8ed1218c1c239b1442a8ec24de9f334d044639af895ea20b5daf8a64865bbf86"
+      "sha256": "d5e5276887ff9948c051811f9f09d22d3b77d9df027bfb2f9b34cd4eb10317de"
     },
     {
       "type": "article",
       "source": "learn-docs/copilot/agent-mode.md",
       "target": "copilot/agent-mode.md",
-      "sha256": "9a118d6281f51baeab74a9267cf6ca86511b3b2e0a4036b7ee2cb73efe3d259e"
+      "sha256": "2fb18ca273be4619f590c8da16c7fddedbeff7639b86395fef47f58d890c8922"
     },
     {
       "type": "article",
       "source": "learn-docs/copilot/pgsql-chat.md",
       "target": "copilot/pgsql-chat.md",
-      "sha256": "fda5693a6c66f518ea5d788315668419ccd5a45f3976438776882dd6a60c7d7a"
+      "sha256": "c7a9c3b59c599db146f18af2601f6a9e0331347278d69105946c490104cef182"
     },
     {
       "type": "article",
       "source": "learn-docs/create-server.md",
       "target": "create-server.md",
-      "sha256": "c27dbf068f6a94d2c1946d125c013ffe1c4f89d75d6dc7bb14c7c98051108376"
+      "sha256": "ef708a7cd1f3d57e2d6980c6fc7994de4cc4ab8cd355ad5205488eea693ba780"
     },
     {
       "type": "article",
       "source": "learn-docs/mcp-server.md",
       "target": "mcp-server.md",
-      "sha256": "ab23607f76d5872a69f110580b68eec7acf0310edf4d501481bcaacd75786311"
+      "sha256": "9b6d194ae201ba754cb1e54a728a59a752aa431bb6dc47e6c4f5959c8207649c"
     },
     {
       "type": "media",
@@ -404,91 +404,91 @@
       "type": "article",
       "source": "learn-docs/object-explorer.md",
       "target": "object-explorer.md",
-      "sha256": "69d0913e80f2f1aed980f97ec4b7132f7ee65d3537001bc3aa1dec06d72da58b"
+      "sha256": "56423ceae1b2539c7119c591fa7c1182b9905b60b9cd40b584020fd12e374658"
     },
     {
       "type": "article",
       "source": "learn-docs/oracle-migration.md",
       "target": "oracle-migration.md",
-      "sha256": "d3b0089bc60260e533b2316777bb2a288fb5523633fbb5990140b75a5892a429"
+      "sha256": "8baeeb505163e1cb3ba80db4ee7b92c72e15fda50d51ed23668051dbbb506a89"
     },
     {
       "type": "article",
       "source": "learn-docs/pgsql-extension-overview.md",
       "target": "pgsql-extension-overview.md",
-      "sha256": "6b95f698bf903e1a91fa3e61bdda0e81562a0c8a537524e1ea9ad8966449d1b2"
+      "sha256": "db162f62c535efcd27cdf7463afd73f62fceec75bc957cd07fef48d0f9662695"
     },
     {
       "type": "article",
       "source": "learn-docs/psql-terminal.md",
       "target": "psql-terminal.md",
-      "sha256": "32cfdc8b4b9b7dccbfb01ff4887f22395f70ec70037d35beea68352ab8bfc47d"
+      "sha256": "7fcb27c1a44cb46be383d84db03028bb963d27c2038b12ed1dab59740a7e78b2"
     },
     {
       "type": "article",
       "source": "learn-docs/query-editor-intellisense.md",
       "target": "query-editor-intellisense.md",
-      "sha256": "214cbeca345bec24c349b7fc577e3f987ea967cdfa33184f324d6cdce2e1eedf"
+      "sha256": "72b06f88c45ddda3f3a13bf814e9361e17805110738944d801da411b7a628557"
     },
     {
       "type": "article",
       "source": "learn-docs/query-plan-visualizer.md",
       "target": "query-plan-visualizer.md",
-      "sha256": "6dc6b7a4bae6dcbd144648d92edcddaed29b46c46629c3f4aed6c98ab98d51f1"
+      "sha256": "e56019ea177fa1fc8e687ac258b2130ca1a81c89ba2905a23c48650a8d82d9ba"
     },
     {
       "type": "article",
       "source": "learn-docs/quickstart-connect-query.md",
       "target": "quickstart-connect-query.md",
-      "sha256": "168737a026098c09a1fe191ef98850d72fb3f088ec7c2a9091cd734a400cda93"
+      "sha256": "bd20e4a3c8f9d8350d78ced2e1066343f0774421712a8970f374c6b9e0d80659"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/chat-participant.md",
       "target": "reference/chat-participant.md",
-      "sha256": "f5ce7d447c9fcbdd93fd651cccd6cfbcc927d2aae5e6b1f0284633f40fa311a6"
+      "sha256": "860304125ae59af462671913bed741cc3964345bd235e168b0c2d2f0201ebace"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/commands.md",
       "target": "reference/commands.md",
-      "sha256": "55de686f7ae4d12686215cb2ed7a9b8a47ced0757963e02a616d93dd76c57052"
+      "sha256": "f491632fb8ea5fa713adebd2359fdac6661a1a56869351ae94574302f03162e9"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/copilot-tools.md",
       "target": "reference/copilot-tools.md",
-      "sha256": "8d62b2db37463b04eea9c2e9f9c0923e791d8191420eccd4f323a2e1815ddeba"
+      "sha256": "9ec74d81d18ec7824a1a9349051135f9bfa7b72919bd95ddb47f1452848a535c"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/keyboard-shortcuts.md",
       "target": "reference/keyboard-shortcuts.md",
-      "sha256": "b76be672e97d6f58c05d456c8c0bb69a7ecd958163647b24e2626d1bb18a5cff"
+      "sha256": "a803084083c34f814bb8c320cecfb943da171f0742678839586530f8ad3e599d"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/mcp-server.md",
       "target": "reference/mcp-server.md",
-      "sha256": "0f2dc43e92d9bc81deeac5a97f800de6c9488cb2dc650cbd6c08eda78005065f"
+      "sha256": "c401105a46334c51ec5197fc19c70cdfe739a0d05af4c531c59a3924bdc8c527"
     },
     {
       "type": "article",
       "source": "learn-docs/reference/settings.md",
       "target": "reference/settings.md",
-      "sha256": "88e91b1d8c046bac88a15d581ac846b4d37e3a73836ad0336bb39c23dbf3ea7d"
+      "sha256": "0db881ac94363110bfff8f6644354c93cb31556a009c5b99ca5d589c447e0c73"
     },
     {
       "type": "article",
       "source": "learn-docs/schema-visualizer.md",
       "target": "schema-visualizer.md",
-      "sha256": "9cb38cbd74a992025d8d8c378a290885d89dfd3d238e61a5825e48f203ecb9d2"
+      "sha256": "d6680607fd0487a2159835469e750638c7a28f6d121c45c234ef998702304b3d"
     },
     {
       "type": "article",
       "source": "learn-docs/server-dashboard.md",
       "target": "server-dashboard.md",
-      "sha256": "b9bb424e37d84117cfe12bc20eff3b8ce06851ec4ca8f22707e260bde6e3a2c3"
+      "sha256": "63917d84295abc720362c6c42bf8cc1582bcdf000da98acf88d8b83999236e18"
     }
   ]
 }

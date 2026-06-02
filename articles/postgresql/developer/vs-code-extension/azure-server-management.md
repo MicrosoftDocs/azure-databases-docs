@@ -2,10 +2,10 @@
 title: "Azure server management"
 description: "Manage supported Azure Database for PostgreSQL resources from Visual Studio Code: Flexible Server lifecycle, network access, parameters, backups, restore, clone, and server logs, plus Horizon Preview firewall rules."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/24/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

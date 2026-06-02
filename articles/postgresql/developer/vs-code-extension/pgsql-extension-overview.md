@@ -2,10 +2,10 @@
 title: "PostgreSQL extension for Visual Studio Code"
 description: "Overview of the PostgreSQL extension for Visual Studio Code, providing database development tools for PostgreSQL."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/24/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: overview
 ---
 

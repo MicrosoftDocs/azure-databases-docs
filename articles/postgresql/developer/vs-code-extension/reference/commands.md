@@ -2,10 +2,10 @@
 title: "Commands reference"
 description: "Complete list of commands in the PostgreSQL extension for Visual Studio Code."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 06/02/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: reference
 ---
 

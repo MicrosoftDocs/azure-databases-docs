@@ -2,10 +2,10 @@
 title: "Copilot tools reference"
 description: "Language model tools provided by the PostgreSQL extension for GitHub Copilot."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/13/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: reference
 ---
 

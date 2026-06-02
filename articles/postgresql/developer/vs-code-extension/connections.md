@@ -2,10 +2,10 @@
 title: "Connections and identity"
 description: "Learn how to connect to PostgreSQL databases with password, Entra ID, and AWS IAM authentication, manage saved connections, and organize servers with groups."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/24/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 
@@ -63,7 +63,7 @@ When you use the **Parameters** tab, the dialog presents the following main fiel
 | **Database name** | Name of the database to connect to. Leave blank to connect to the default database. |
 | **Connection Name** | Optional friendly name for this connection. The extension displays this name in Object Explorer and the **Saved Connections** list. |
 
-Additional fields appear depending on the authentication type. For [**Entra Auth**](#microsoft-entra-authentication), the dialog shows **Entra Account**, **Entra Username**, and **Tenant**. For [**AWS IAM (RDS/Aurora)**](#aws-iam-rds-aurora), the dialog shows **AWS Profile** and **AWS Region**.
+Additional fields appear depending on the authentication type. For [**Entra Auth**](#microsoft-entra-authentication), the dialog shows **Entra Account**, **Entra Username**, and **Tenant**. For [**AWS IAM (RDS/Aurora)**](#aws-iam-rdsaurora), the dialog shows **AWS Profile** and **AWS Region**.
 
 > [!NOTE]
 > The **Port** field is located in the **Advanced Connection Settings** drawer under the top-level options. The default port is `5432`.
@@ -96,7 +96,7 @@ Saved passwords are associated with the specific connection and are never stored
 Microsoft Entra authentication (formerly Azure Active Directory) provides token-based, passwordless authentication for Azure Database for PostgreSQL Flexible Server. The dialog labels this option **Entra Auth**.
 
 > [!NOTE]
-> Entra authentication requires an Azure Database for PostgreSQL Flexible Server instance with Entra authentication enabled. See the [Azure documentation](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-azure-ad-authentication) for configuration details.
+> Entra authentication requires an Azure Database for PostgreSQL Flexible Server instance with Entra authentication enabled. See the [Azure documentation](../../security/security-entra-concepts.md) for configuration details.
 
 To connect with Entra authentication:
 

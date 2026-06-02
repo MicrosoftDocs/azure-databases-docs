@@ -2,10 +2,10 @@
 title: "Chat participant reference"
 description: "Chat participants provided by the PostgreSQL extension for GitHub Copilot Chat."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 04/02/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: reference
 ---
 

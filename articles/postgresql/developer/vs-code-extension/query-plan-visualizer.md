@@ -2,10 +2,10 @@
 title: "Query plan visualizer"
 description: "Generate, import, and inspect PostgreSQL EXPLAIN plans in Tree, Table, Icicle, and Source views."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/11/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 

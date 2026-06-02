@@ -2,10 +2,10 @@
 title: "Agent mode"
 description: "Use Agent mode in the PostgreSQL extension to let your AI assistant chain PostgreSQL tools across multi-step workflows in Visual Studio Code and Cursor."
 author: mmcfarland
-ms.author: mattmcfarland
+ms.author: mmcfarland
 ms.date: 05/11/2026
-ms.service: postgresql
-ms.subservice: vs-code-pgsql-extensions
+ms.service: azure-database-postgresql
+ms.subservice: extensions
 ms.topic: how-to
 ---
 
