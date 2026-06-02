@@ -17,9 +17,9 @@ ms.topic: how-to
 
 ## Steps to load libraries
 
-You have to [create a parameter group](../server-parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` so that it's assigned a comma separated list of libraries that you want to load.
+You have to [create a parameter group](../parameters/how-to-parameter-groups-create.md) that modifies the value of `shared_preload_libraries` so that it's assigned a comma separated list of libraries that you want to load.
 
-Then you have to [connect your cluster to that parameter group](../server-parameters/how-to-parameter-groups-connect.md) for the value to take effect.
+Then you have to [connect your cluster to that parameter group](../parameters/how-to-parameter-groups-connect.md) for the value to take effect.
 
 Because `shared_preload_libraries` is a static parameter, it requires a restart of your cluster which occurs as soon as you connect the parameter group to the cluster.
 <!--
@@ -29,9 +29,9 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure HorizonDB instance.
 
-1. From the resource menu, under **Settings** section, select **Server parameters**.
+1. From the resource menu, under **Settings** section, select **Parameters**.
 
-   :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+   :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
 
 1. Include the libraries that you want to add in the value of `shared_preload_libraries`.
 
@@ -39,18 +39,18 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select **Save**.
 
-   :::image type="content" source="media/how-to-load-libraries/save-libraries.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-load-libraries/save-libraries.png":::
+   :::image type="content" source="media/how-to-load-libraries/save-libraries.png" alt-text="Screenshot that shows the Save button in the Parameters page." lightbox="media/how-to-load-libraries/save-libraries.png":::
 
-1. Because `shared_preload_libraries` is a static server parameter, it requires a server restart so that the changes take effect.
+1. Because `shared_preload_libraries` is a static Parameter, it requires a server restart so that the changes take effect.
 
-   :::image type="content" source="media/how-to-load-libraries/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-load-libraries/save-and-restart.png":::
+   :::image type="content" source="media/how-to-load-libraries/save-and-restart.png" alt-text="Screenshot of Parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-load-libraries/save-and-restart.png":::
 
 ### [CLI](#tab/load-libraries-cli)
 
 You can set `shared_preload_libraries` using the CLI [parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
-az postgres flexible-server parameter set \
+az postgres flexible-Parameter set \
   --resource-group <resource_group> \
   --server-name <server> \
   --name shared_preload_libraries \

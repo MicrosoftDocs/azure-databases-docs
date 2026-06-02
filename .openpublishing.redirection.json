@@ -974,6 +974,266 @@
       "source_path": "articles/dms/tutorial-transparent-data-encryption-migration-ads.md",
       "redirect_url": "/azure/dms/dms-overview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-adaptive-autovacuum.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-adaptive-autovacuum",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-autovacuum.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-autovacuum",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-client-connection-defaults-defaults.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-client-connection-defaults-defaults",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-client-connection-defaults-locale-formatting.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-client-connection-defaults-locale-formatting",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-client-connection-defaults-shared-library-preload.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-client-connection-defaults-shared-library-preload",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-client-connection-defaults-statement-behavior.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-client-connection-defaults-statement-behavior",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-connections-authentication-authentication.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-connections-authentication-authentication",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-connections-authentication-connection-settings.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-connections-authentication-connection-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-connections-authentication-ssl.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-connections-authentication-ssl",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-connections-authentication-tcp-settings.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-connections-authentication-tcp-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-customized-options.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-customized-options",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-developer-options.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-developer-options",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-error-handling.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-error-handling",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-file-locations.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-file-locations",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-intelligent-tuning.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-intelligent-tuning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-lock-management.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-lock-management",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-metrics.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-metrics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-migration.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-migration",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-pgbouncer.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-pgbouncer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-preset-options.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-preset-options",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-process-title.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-process-title",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-query-tuning-genetic-query-optimizer.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-query-tuning-genetic-query-optimizer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-query-tuning-planner-cost-constants.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-query-tuning-planner-cost-constants",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-query-tuning-planner-method-configuration.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-query-tuning-planner-method-configuration",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-query-tuning-planner-options.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-query-tuning-planner-options",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-replication-master-server.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-replication-master-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-replication-primary-server.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-replication-primary-server",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-replication-sending-servers.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-replication-sending-servers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-replication-standby-servers.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-replication-standby-servers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-replication-subscribers.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-replication-subscribers",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-reporting-logging-what-log.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-reporting-logging-what-log",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-reporting-logging-when-log.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-reporting-logging-when-log",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-reporting-logging-where-log.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-reporting-logging-where-log",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-asynchronous-behavior.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-asynchronous-behavior",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-background-writer.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-background-writer",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-cost-based-vacuum-delay.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-cost-based-vacuum-delay",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-disk.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-disk",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-kernel-resources.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-kernel-resources",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-resource-usage-memory.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-resource-usage-memory",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-statistics-cumulative-query-index-statistics.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-statistics-cumulative-query-index-statistics",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-statistics-monitoring.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-statistics-monitoring",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-statistics-query-index-statistics-collector.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-statistics-query-index-statistics-collector",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-tls.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-tls",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-version-platform-compatibility-platforms-clients.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-version-platform-compatibility-platforms-clients",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-version-platform-compatibility-postgresql-versions.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-version-platform-compatibility-postgresql-versions",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-archive-recovery.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-archive-recovery",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-archiving.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-archiving",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-checkpoints.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-checkpoints",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-recovery-target.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-recovery-target",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-recovery.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-recovery",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/server-parameters/param-write-ahead-log-settings.md",
+      "redirect_url": "/azure/horizondb/parameters/parameters-write-ahead-log-settings",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/parameters/concepts-server-parameters.md",
+      "redirect_url": "/azure/horizondb/parameters/concepts-parameters",
+      "redirect_document_id": false
     }
   ]
 }

@@ -19,7 +19,7 @@ Connections between your client applications and the database server always use 
 
 Azure HorizonDB supports encrypted connections by using TLS 1.2 and 1.3. The server denies all incoming connections that try to encrypt the traffic by using TLS 1.0 and TLS 1.1.
 
-By default, the server enforces secured connectivity between the client and the server. To disable this enforcement and allow both encrypted and unencrypted client communications, change the server parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` server parameter. **Don't disable** TLS.
+By default, the server enforces secured connectivity between the client and the server. To disable this enforcement and allow both encrypted and unencrypted client communications, change the Parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` Parameter. **Don't disable** TLS.
 
 ## Client TLS configuration
 
