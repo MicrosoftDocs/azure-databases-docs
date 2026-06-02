@@ -27,6 +27,14 @@ A: Elastic clusters are a feature of Azure Database for PostgreSQL flexible serv
 ### Q: Can I create more databases in an elastic cluster?
 
 A: The Azure portal provides credentials to connect to exactly one database per cluster. Currently, you can't create another database, and the `CREATE DATABASE` command fails with an error. This database is called `postgres` by default.
+
+### Q: How many nodes can I add to an elastic cluster?
+
+A: Elastic clusters can be scaled out to 20 nodes using the Azure Portal, CLI, or related IaC tools. If your workload requires more than 20 nodes, please contact Customer Support to assist with scaling out further.
+
+### Q: Can I decrease the number of nodes in an elastic cluster?
+
+A: Scaling in or decreasing the number of nodes in an elastic cluster is currently not supported.
  
 ### Q: What PostgreSQL version is supported with elastic clusters?
 
