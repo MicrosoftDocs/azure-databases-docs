@@ -207,6 +207,8 @@
       href: configure-maintain/concepts-major-version-upgrade.md
     - name: Perform major version upgrade
       href: configure-maintain/how-to-perform-major-version-upgrade.md
+    - name: Run pre-upgrade validation checks (Preview)
+      href: configure-maintain/how-to-run-upgrade-validation-checks.md
     - name: Compliance
       href: security/security-compliance.md
     - name: Limits
@@ -563,44 +565,48 @@
               href: migrate/migration-service/troubleshoot-error-codes-premigration.md
     - name: Migrate from Oracle
       items:
-        - name: Oracle to PostgreSQL schema conversion
-          href: migrate/oracle-schema-conversions/schema-conversions-overview.md
-        - name: Migrating Oracle To Azure Database for PostgreSQL
-          href: migrate/concepts-oracle-migration.md
-        - name: Migration stages
-          href: migrate/concepts-oracle-migration-stages.md
+        - name: Oracle migration
+          items:
+            - name: Migrating Oracle To Azure Database for PostgreSQL
+              href: migrate/oracle-migration/concepts-oracle-migration.md
+            - name: Migration stages
+              href: migrate/oracle-migration/concepts-oracle-migration-stages.md
+            - name: Best practices
+              href: migrate/oracle-migration/best-practices-oracle-to-postgresql.md
+            - name: Premigration checklist
+              href: migrate/oracle-migration/best-practices-oracle-to-postgresql-checklist.md
+            - name: Migrate with Ora2Pg
+              href: migrate/oracle-migration/how-to-migrate-oracle-ora2pg.md
+            - name: Partners
+              href: migrate/oracle-migration/partners-migration-postgresql.md
         - name: Schema conversion
           items:
             - name: Schema conversion overview
-              href: migrate/oracle-schema-conversions/schema-conversions-overview.md
+              href: migrate/oracle-conversions-schema/schema-conversions-overview.md
             - name: Schema conversion tutorial
-              href: migrate/oracle-schema-conversions/schema-conversions-tutorial.md
+              href: migrate/oracle-conversions-schema/schema-conversions-tutorial.md
             - name: Schema conversion reports
-              href: migrate/oracle-schema-conversions/schema-conversions-reports.md
+              href: migrate/oracle-conversions-schema/schema-conversions-reports.md
+            - name: Review tasks and output directory
+              href: migrate/oracle-conversions-schema/schema-conversions-review-tasks-artifacts.md
             - name: Schema conversion best practices
-              href: migrate/oracle-schema-conversions/schema-conversions-best-practices.md
+              href: migrate/oracle-conversions-schema/schema-conversions-best-practices.md
             - name: Schema conversion limitations
-              href: migrate/oracle-schema-conversions/schema-conversions-limitations.md
-            - name: Application Conversion Quickstart
-              href: migrate/oracle-schema-conversions/schema-conversions-app-quickstart.md
-            - name: Best practices
-              href: migrate/best-practices-oracle-to-postgresql.md
-            - name: Premigration checklist
-              href: migrate/best-practices-oracle-to-postgresql-checklist.md
-            - name: Migrate with Ora2Pg
-              href: migrate/how-to-migrate-oracle-ora2pg.md
-        - name: Application Conversion
+              href: migrate/oracle-conversions-schema/schema-conversions-limitations.md
+            - name: Schema conversion FAQ
+              href: migrate/oracle-conversions-schema/schema-conversions-faq.md
+        - name: Application conversion
           items:
             - name: Application conversion overview
-              href: migrate/oracle-application-conversions/app-conversions-overview.md
+              href: migrate/oracle-conversions-application/app-conversions-overview.md
             - name: Application conversion tutorial
-              href: migrate/oracle-application-conversions/app-conversions-tutorial.md
+              href: migrate/oracle-conversions-application/app-conversions-tutorial.md
             - name: Application conversion best practices
-              href: migrate/oracle-application-conversions/app-conversions-best-practices.md
+              href: migrate/oracle-conversions-application/app-conversions-best-practices.md
             - name: Application conversion limitations
-              href: migrate/oracle-application-conversions/app-conversions-limitations.md
+              href: migrate/oracle-conversions-application/app-conversions-limitations.md
             - name: Application conversion reports
-              href: migrate/oracle-application-conversions/app-conversions-reports.md
+              href: migrate/oracle-conversions-application/app-conversions-reports.md
 - name: Integration
   items:
     - name: Manage Azure resources with automation tasks
@@ -907,6 +913,6 @@
     - name: Customer stories
       href: https://customers.microsoft.com/search?sq="Azure%20Database%20for%20PostgreSQL"
     - name: Partners
-      href: migrate/partners-migration-postgresql.md
+      href: migrate/oracle-migration/partners-migration-postgresql.md
     - name: Database Migration Guide
       href: /data-migration/
