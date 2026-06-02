@@ -4,7 +4,7 @@ description: Release notes for Azure Database for PostgreSQL, including feature 
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/28/2026
+ms.date: 06/02/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -15,7 +15,11 @@ ms.custom:
 
 # Release notes - Azure Database for PostgreSQL
 
-This article highlights the latest updates and enhancements for Azure Database for PostgreSQL, service including new feature releases, supported engine versions, available extensions, and other important announcements.
+This article highlights the latest updates and enhancements for Azure Database for PostgreSQL service, including new feature releases, supported engine versions, available extensions, and other important announcements.
+
+## Release: June 2026
+- Preview
+  - [Pre-Upgrade Validation Checks](../configure-maintain/concepts-major-version-upgrade.md#pre-upgrade-validation-checks-preview) to help identify upgrade blocking issues before starting the upgrade.
 
 ## Release: April 2026
 
@@ -36,7 +40,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure portal for PostgreSQL.
-  - [Terraform support](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database) for [Elastic Clusters](https://learn.microsoft.com/azure/postgresql/elastic-clusters/concepts-elastic-clusters)
+  - [Terraform support](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database) for [Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md)
 - Preview
   - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
   - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
@@ -67,7 +71,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Support for new [PgBouncer in Azure Database for PostgreSQL](../connectivity/concepts-pgbouncer.md) 1.23.1. <sup>$</sup>
-  - Support for configuring zone-resilient high availability[high availability](../high-availability/how-to-configure-high-availability.md) from the Azure portal.
+  - Support for configuring zone-resilient [high availability](../high-availability/how-to-configure-high-availability.md) from the Azure portal.
   - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now available.
   - [Azure Database for PostgreSQL - Maintenance release notes index](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
@@ -95,14 +99,14 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - [Indonesia Central](../overview.md#azure-regions) region.
-  - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#postgis) version 2.15.3 for PG 13.
-  - [Postgis extension](../extensions/concepts-extensions-versions.md#timescaledb) version 3.5.2 for PG 13 and above.
+  - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#timescaledb) version 2.15.3 for PG 13.
+  - [Postgis extension](../extensions/concepts-extensions-versions.md#postgis) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
 - Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.6.0) with [GA REST API](release-notes-api.md) version.
 
 ## Release: May 2025
 
-- General Availability
+- General availability
   - [On-demand backups](../backup-restore/concepts-backup-restore.md#on-demand-backups).
   - [Long-term backups](../backup-restore/concepts-backup-restore.md#long-term-retention)
   - [Enable and use DiskANN extension](../extensions/how-to-use-pgdiskann.md)
@@ -127,8 +131,8 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: March 2025
 
-- General Availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
-- General Availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
+- General availability of [Azure Data Factory and Azure Synapse 2.0 Connector](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory#version-20).
+- General availability of [hll](../extensions/concepts-extensions-versions.md#hll), [topn](../extensions/concepts-extensions-versions.md#topn) and [tdigest](../extensions/concepts-extensions-versions.md#tdigest) extension.
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.4, 16.8, 15.12, 14.17 and 13.20. <sup>$</sup>
 
 ## Release: February 2025
@@ -144,9 +148,9 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: December 2024
 
-- General Availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
-- General Availability of [index tuning](../monitor/concepts-autonomous-tuning.md) on Azure Database for PostgreSQL.
-- General Availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL.
+- General availability of [oracle_fdw](../extensions/concepts-extensions-versions.md#oracle_fdw) extension.
+- General availability of [index tuning](../monitor/concepts-autonomous-tuning.md) on Azure Database for PostgreSQL.
+- General availability of the [Semantic Ranker Solution Accelerator](https://aka.ms/pg-ranker) for Azure Database for PostgreSQL.
 - Public preview of [age](../extensions/concepts-extensions-versions.md#age) extension.
 - Public preview of [GraphRAG Solution Accelerator](https://aka.ms/pg-graphrag) for Azure Database for PostgreSQL.
 
@@ -157,7 +161,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 ## Release: October 2024
 
-- General Availability of [Quickstart: Manage Azure Database for PostgreSQL using automation tasks](../integration/create-automation-tasks.md).
+- General availability of [Quickstart: Manage Azure Database for PostgreSQL using automation tasks](../integration/create-automation-tasks.md).
 - Preview of [Fabric Mirroring](https://techcommunity.microsoft.com/blog/adforpostgresql/mirroring-azure-database-for-postgresql-flexible-server-in-microsoft-fabric---pr/4251876) for Azure Database for PostgreSQL.
 
 ## Release: September 2024
@@ -273,7 +277,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - General availability of [Query Performance Insight in Azure Database for PostgreSQL](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
 - General availability of [Major version upgrades in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
 - General availability of [Restore a dropped Azure Database for PostgreSQL](../backup-restore/how-to-restore-dropped-server.md) for Azure Database for PostgreSQL.
-- Public preview of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQLr.
+- Public preview of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQL.
 
 ## Release: May 2023
 
