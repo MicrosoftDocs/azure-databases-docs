@@ -6,7 +6,7 @@ ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 02/03/2025
 ms.service: azure-database-postgresql
-ms.subservice: parameters
+ms.subservice: server-parameters
 ms.topic: concept-article
 ---
 

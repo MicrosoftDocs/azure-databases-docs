@@ -4224,6 +4224,11 @@
             "source_path_from_root": "/articles/postgresql/server-parameters/param-write-ahead-log-settings.md",
             "redirect_url": "/azure/postgresql/parameters/parameters-write-ahead-log-settings",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/flexible-server/concepts-parameters.md",
+            "redirect_url": "/azure/postgresql/parameters/concepts-parameters",
+            "redirect_document_id": false
         }
-    ]
+   ]
 }
