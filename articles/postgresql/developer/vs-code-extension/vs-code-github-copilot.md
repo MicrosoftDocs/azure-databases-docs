@@ -1,6 +1,6 @@
 ---
-title: "Quickstart: Guide for GitHub Copilot Feature for Visual Studio Code PostgreSQL Extension in Azure HorizonDB"
-description: Learn how to use the GitHub Copilot integration in the PostgreSQL extension for Visual Studio Code in Azure HorizonDB.
+title: "Quickstart: Guide for GitHub Copilot Feature for Visual Studio Code PostgreSQL Extension in Azure Database for PostgreSQL flexible server"
+description: Learn how to use the GitHub Copilot integration in the PostgreSQL extension for Visual Studio Code in Azure Database for PostgreSQL flexible server.
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
@@ -17,7 +17,7 @@ ms.custom:
 ai-usage: ai-assisted
 ---
 
-# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code in Azure HorizonDB
+# Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code in Azure Database for PostgreSQL flexible server
 
 The PostgreSQL extension for Visual Studio Code now includes GitHub Copilot integration, enhancing your database workflows with AI-assisted development. Copilot accesses contextual information from your live connection, once connected to a PostgreSQL database. This access enables the `@pgsql` Copilot chat participant to generate accurate, schema-aware SQL queries and insights, streamlining development and minimizing context-switching within Visual Studio Code.
 
