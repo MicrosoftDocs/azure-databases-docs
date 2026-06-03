@@ -1,8 +1,8 @@
 ---
 title: Audit Logging for Microsoft Entra ID Principals
 description: Learn how to attribute actions to specific Microsoft Entra ID users in PostgreSQL audit logs.
-author: ak800i
-ms.author: ajanko
+author: milenak
+ms.author: mpopovic
 ms.date: 12/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
