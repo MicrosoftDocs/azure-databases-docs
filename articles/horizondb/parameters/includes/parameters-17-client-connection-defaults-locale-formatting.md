@@ -11,7 +11,7 @@ ms.custom:
 
 <a id="client_encoding"></a>
 
-### client_encod
+### client_encoding
 
 | Attribute | Value |
 | --- | --- |
