@@ -1,6 +1,6 @@
 ---
-title: Scheduled Maintenance
-description: This article describes the scheduled maintenance feature in your Azure Database for PostgreSQL flexible server instances.
+title: Planned Maintenance
+description: This article describes planned maintenance in your Azure Database for PostgreSQL flexible server instances.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
@@ -12,9 +12,9 @@ ms.collection:
   - ce-skilling-ai-copilot
 ---
 
-# Scheduled maintenance
+# Planned maintenance for Azure Database for PostgreSQL
 
-Your Azure Database for PostgreSQL flexible server instance periodically performs maintenance operations to help keep your managed database secure, stable, and up to date. During maintenance, the server gets new features, updates, and patches.
+Your Azure Database for PostgreSQL flexible server instance periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
 
 > [!IMPORTANT]  
 > Avoid all server operations (modifications, configuration changes, starting/stopping the server) during Azure Database for PostgreSQL flexible server instance maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
@@ -40,7 +40,7 @@ When you're specifying preferences for the maintenance schedule, you can choose 
 
 You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure Database for PostgreSQL flexible server instance and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings become effective upon successful completion of the next scheduled maintenance.
 
-## System-managed vs. custom maintenance
+## System-managed Windows (SMW) vs. Custom Maintenance Windows (CMW)
 
 You can define a system-managed schedule or a custom schedule for each Azure Database for PostgreSQL flexible server instance in your Azure subscription:
 
@@ -55,13 +55,136 @@ In rare cases, the system can cancel some maintenance events, or some events can
 
 If an update is canceled or failed, the system generates a notification about the canceled or failed maintenance event. The next attempt to perform maintenance is scheduled according to your current schedule settings, and you receive a notification about it 5 calendar days in advance.
 
-## Consideration and limitations
+## Considerations and limitations for Planned Maintenance
 
-Some considerations when considering during monthly maintenance:
+Some considerations to keep in mind during monthly planned maintenance:
 
 - Monthly maintenance is impactful and they involve some downtime.
 - Downtime depends on the transactional load on the server at the time of maintenance.
 - Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
+
+## View Upcoming Maintenance
+
+You can view upcoming maintenance events for your flexible server before maintenance begins. This visibility helps you understand when maintenance is scheduled, whether the event can be rescheduled, and what type of update is planned.
+
+[View upcoming maintenance](how-to-configure-scheduled-maintenance.md#steps-to-view-upcoming-maintenance) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
+
+When an upcoming maintenance event is available, you can view details such as:
+
+- The next scheduled maintenance event
+- Estimated start time
+- Estimated end time
+- Maintenance type
+- Maintenance status
+- Whether the event is eligible for rescheduling
+- The deadline for rescheduling, when applicable
+
+> [!NOTE]
+> If no maintenance event is currently scheduled for your server, upcoming maintenance details might not be displayed.
+
+## Reschedule Planned Maintenance to a Future Date
+
+For production workloads, you might need to avoid maintenance during business-critical periods, such as peak traffic hours, release windows, migrations, financial close, or seasonal events. When an upcoming maintenance event is eligible for rescheduling, you can move the maintenance to a later eligible time that better aligns with your workload needs.
+
+You can [reschedule maintenance](how-to-configure-scheduled-maintenance.md#steps-to-reschedule-maintenance-to-a-future-date) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
+
+### What rescheduling maintenance provides
+
+Rescheduling maintenance lets you:
+
+- View upcoming maintenance for your server.
+- Choose a future eligible maintenance date and time.
+- Defer maintenance by up to 14 days from the initially planned maintenance date.
+- Avoid maintenance during high-risk business periods.
+- Keep visibility into the updated maintenance schedule.
+
+> [!NOTE]
+> Some maintenance events might not be eligible for rescheduling. For example, critical security or compliance-related maintenance might need to be applied within a required timeframe.
+
+### Prerequisites
+
+To reschedule maintenance, you need:
+
+- An Azure Database for PostgreSQL flexible server.
+- An upcoming maintenance event that is eligible for rescheduling.
+- A server using a custom managed maintenance window.
+- A supported compute tier.
+
+### Supported servers
+
+Rescheduling maintenance is supported for servers in the following compute tiers:
+
+- General Purpose
+- Memory Optimized
+
+Rescheduling maintenance isn't supported for Burstable compute tier servers.
+
+### Rescheduling rules and limitations
+
+Before you reschedule maintenance, review the following rules:
+
+- The **Reschedule** action is available only when a maintenance event is scheduled.
+- The maintenance event must be eligible for rescheduling.
+- Only eligible future slots are selectable.
+- The new maintenance time must be within the permitted reschedule window.
+- Maintenance can be rescheduled by up to 14 days from the initially notified schedule date.
+- Rescheduling is unavailable starting 15 minutes before the initially scheduled maintenance time.
+- You can update the rescheduled time more than once, as long as maintenance hasn't entered the preparation state and the new time is within the allowed reschedule window.
+
+
+> [!IMPORTANT]
+> Rescheduling changes when maintenance is applied, but it doesn't cancel the maintenance event. 
+
+## Apply Maintenance On-Demand
+
+When an upcoming maintenance event is available, you can apply maintenance immediately instead of waiting for the scheduled maintenance window. This option gives you more control over when maintenance starts and helps you apply updates during a time that is safe for your workload.
+
+You can [apply maintenance on demand](how-to-configure-scheduled-maintenance.md#steps-to-apply-maintenance-on-demand) by using the Azure portal. Support for Azure CLI, or REST API is in-work.
+
+### What apply maintenance on demand provides
+
+Apply maintenance on demand lets you:
+
+- View an upcoming maintenance event.
+- Start eligible maintenance immediately.
+- Apply updates when your workload can tolerate a restart or brief disruption.
+- Reduce the chance of maintenance starting during a less convenient scheduled time.
+- Track maintenance status as it moves from scheduled to in progress and then completed.
+
+> [!NOTE]
+> Applying maintenance on demand doesn't cancel the maintenance event. It starts the eligible maintenance workflow immediately.
+
+### Supported maintenance states
+
+The **Apply now** action is available only when:
+
+- An eligible maintenance event exists.
+- The server isn't already in maintenance.
+- The maintenance event is in the `Scheduled` or `Rescheduled` state.
+
+After you confirm **Apply now**, the server enters the maintenance preparation workflow and the maintenance event transitions toward `InProgress`.
+
+> [!IMPORTANT]
+> Applying maintenance immediately might cause a server restart during the maintenance window. Confirm that your application can tolerate a temporary interruption before you apply maintenance on demand.
+
+## View Maintenance History
+
+You can view maintenance history to review past maintenance events for your server. Maintenance history helps you understand when maintenance occurred, what type of maintenance was applied, and the final status of the event.
+
+You can [view maintenance history](how-to-configure-scheduled-maintenance.md#steps-to-view-maintenance-history) for your server using the Azure portal. Support for Azure CLI, or REST API is in-work.
+
+### What maintenance history provides
+
+Maintenance history lets you:
+
+- Review past maintenance events for your server.
+- See when maintenance started and completed.
+- View the maintenance type and status.
+- Confirm whether a maintenance event completed successfully.
+- Support operational reviews, incident investigations, and audit requirements.
+
+> [!NOTE]
+> If no past maintenance events are available for the server, the maintenance history section might be empty.
 
 ## Applying Maintenance on Stopped/Disabled Instances
 
