@@ -69,10 +69,10 @@ Before you can use Fabric mirroring in an Azure Database for PostgreSQL flexible
 
 You configure additional prerequisites through a dedicated enablement workflow described in the following section. These prerequisites are:
 
-- **wal_level** server parameter must be set to "logical".
+- **wal_level** parameter must be set to "logical".
   - Enables logical replication for the source server.
 
-- **max_worker_processes** server parameter must be increased to accommodate more background processes for mirroring.
+- **max_worker_processes** parameter must be increased to accommodate more background processes for mirroring.
 
 - **azure_cdc** extension. The Azure CDC extension (azure_cdc) is preloaded on the source server and registered for selected databases to mirror (it requires restart).
 
@@ -89,7 +89,7 @@ Select **Get Started** to initiate the enablement workflow.
 
 This page shows the current status of the required prerequisites. If System Assigned Managed Identity (SAMI) isn't enabled for this server, select the link to be redirected to the page where you can enable this feature.
 
-When you're done, select the databases to enable Fabric mirroring (up to three by default, but you can increase this limit up to six by changing the **max_mirrored_databases** server parameter) and then select **Prepare**.
+When you're done, select the databases to enable Fabric mirroring (up to three by default, but you can increase this limit up to six by changing the **max_mirrored_databases** parameter) and then select **Prepare**.
 
 The workflow presents a Restart Server pop-up. By selecting **Restart**, you start the process. The workflow automates all remaining configuration steps. You can start creating your mirrored database from the [Fabric user interface](/fabric/database/mirrored-database/azure-database-postgresql-tutorial).
 
@@ -125,9 +125,9 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
 > [!IMPORTANT]  
 > Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
 
-## Server parameters
+## Parameters
 
-These server parameters directly affect Fabric mirroring for Azure Database for PostgreSQL and can be used to tune replication process to Fabric OneLake:
+These parameters directly affect Fabric mirroring for Azure Database for PostgreSQL and can be used to tune replication process to Fabric OneLake:
 
 - **Azure.fabric_mirror_enabled**: The default is off. This parameter specifies the flag indicating whether mirroring is enabled on the server. It's set automatically at the end of the server enablement workflow, so you shouldn't change it manually.
 

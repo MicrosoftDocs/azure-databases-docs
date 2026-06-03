@@ -18,7 +18,7 @@ After migration, you can perform the following tasks:
 
 - Change the SKU of the flexible server to match the application needs. This change needs a database server restart.
 
-- If you change any server parameters from their default values in the source instance, copy those server parameter values in the flexible server.
+- If you change any parameters from their default values in the source instance, copy those parameter values in the flexible server.
 
 - Copy other server settings, such as tags, alerts, and firewall rules (if applicable), from the source instance to the flexible server.
 

@@ -62,7 +62,7 @@ When root CA migration occurs to [Microsoft RSA Root CA 2017](https://www.micros
 
 1. Reproduce the problem.
 1. Collect diagnostic data, such as client-side error messages, psql output, OpenSSL s_client output, and server logs.
-1. Verify server parameters, including `require_secure_transport`, `ssl_min_protocol_version`, and `ssl_max_protocol_version`.
+1. Verify parameters, including `require_secure_transport`, `ssl_min_protocol_version`, and `ssl_max_protocol_version`.
 1. Verify the certificate chain and client `sslmode` and `sslrootcert` settings to pinpoint mismatches in protocol versions, cipher suites, or missing or rotated certificates.
 
 ### TLS connectivity errors

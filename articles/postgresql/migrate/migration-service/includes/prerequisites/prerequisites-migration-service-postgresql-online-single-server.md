@@ -19,7 +19,7 @@ Source PostgreSQL version should be `>= 9.5`. If the source PostgreSQL version i
 
 ### Set up online migration parameters
 
-For Online migration, the replication support should be set to Logical under replication settings of the source PostgreSQL server. In addition, the server parameters `max_wal_senders` and `max_replication_slots` values should be more than the number of Databases that need to be migrated. The parameters can be set in the Azure portal under **Settings->Server Parameters** or configured in the command line using the following commands:
+For Online migration, the replication support should be set to Logical under replication settings of the source PostgreSQL server. In addition, the parameters `max_wal_senders` and `max_replication_slots` values should be more than the number of Databases that need to be migrated. The parameters can be set in the Azure portal under **Settings->Parameters** or configured in the command line using the following commands:
 
 - ALTER SYSTEM SET wal_level = logical;
 - ALTER SYSTEM SET max_wal_senders = `number of databases to migrate` + 1;
@@ -27,7 +27,7 @@ For Online migration, the replication support should be set to Logical under rep
 
 Ensure that there are no **long running transactions**. Long running transactions don't allow creation of replication slots. The creation of a replication slot will succeed if all long running transactions are committed or rolled-back. You'll need to restart the source PostgreSQL server after completing all the Online migration prerequisites.
 
-To prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` on the flexible server for the duration of the migration, and restore it to the original state after the migration.
+To prevent the Online migration from running out of storage to store the logs, ensure that you have sufficient tablespace space using a provisioned managed disk. To achieve this, disable the parameter `azure.enable_temp_tablespaces_on_local_ssd` on the flexible server for the duration of the migration, and restore it to the original state after the migration.
 
 ### Set up target
 
@@ -37,7 +37,7 @@ To prevent the Online migration from running out of storage to store the logs, e
 
 - For detailed instructions on creating a new Azure Database for PostgreSQL, refer to the following link: [Quickstart: Create server](/azure/postgresql/flexible-server/).
 
-- The server parameter `max_replication_slots` should be more than the number of Databases that need to be migrated. It can be set in the Azure portal under **Settings->Server Parameters** or configured in the command line using the following command:
+- The parameter `max_replication_slots` should be more than the number of Databases that need to be migrated. It can be set in the Azure portal under **Settings->Parameters** or configured in the command line using the following command:
 
 - ALTER SYSTEM SET max_replication_slots = `number of databases to migrate` + 1;
 
@@ -53,11 +53,11 @@ For information about network setup, visit [Network guide for migration service]
 
 [!INCLUDE [prerequisites-migration-service-extensions](../prerequisites/prerequisites-migration-service-extensions.md)]
 
-### Server parameters
+### Parameters
 
 These parameters aren't automatically migrated to the target environment and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the "Server parameters" section in the Azure portal and manually updating the values accordingly.
+- Match parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the "Parameters" section in the Azure portal and manually updating the values accordingly.
 
 - Save the parameter changes and restart the Azure Database for PostgreSQL to apply the new configuration if necessary.
 

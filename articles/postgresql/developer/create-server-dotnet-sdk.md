@@ -44,7 +44,7 @@ The `Azure.ResourceManager.PostgreSql` library is part of the Azure SDK for .NET
    You can create, update, delete, and retrieve firewall rules for an instance to control access.
 
 1. **Managing Configuration Settings**:\
-   You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating server parameters.
+   You can manage configuration settings for an Azure PostgreSQL flexible server instance, including retrieving and updating parameters.
 
 ## Log in to Azure
 

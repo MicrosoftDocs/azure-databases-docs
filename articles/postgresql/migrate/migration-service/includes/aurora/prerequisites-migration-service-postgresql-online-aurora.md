@@ -16,7 +16,7 @@ Before you start a migration by using the migration service in Azure Database fo
 - [Enable CDC as a source](#enable-cdc-as-a-source)
 - [Configure the network setup](#configure-the-network-setup)
 - [Enable extensions](#enable-extensions)
-- [Check server parameters](#check-server-parameters)
+- [Check parameters](#check-parameters)
 - [Check users and roles](#check-users-and-roles)
 
 ### Verify the source version
@@ -53,7 +53,7 @@ For more information, see [Create an Azure Database for PostgreSQL flexible serv
   - Set `max_wal_senders` to a value greater than `1`. It should be at least the same value as the value for `max_replication_slots`, plus the number of senders already used in your instance.
   - The `wal_sender_timeout` parameter ends inactive replication connections that are longer than the specified number of milliseconds. The default value for an Amazon Aurora PostgreSQL instance is `30000 milliseconds (30 seconds)`. Setting the value to `0 (zero)` disables the timeout mechanism and is a valid setting for migration.
 
-- In the target flexible server, to prevent the online migration from running out of storage to store the logs, ensure that you have sufficient storage in your tablespace by using a provisioned managed disk. Disable the server parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration. Restore the parameter to the original state after the migration.
+- In the target flexible server, to prevent the online migration from running out of storage to store the logs, ensure that you have sufficient storage in your tablespace by using a provisioned managed disk. Disable the parameter `azure.enable_temp_tablespaces_on_local_ssd` for the duration of the migration. Restore the parameter to the original state after the migration.
 
 ### Configure the network setup
 
@@ -65,11 +65,11 @@ For information about network setup, see [Network scenarios for the migration se
 
 [!INCLUDE [prerequisites-migration-service-extensions](../prerequisites/prerequisites-migration-service-extensions.md)]
 
-### Check server parameters
+### Check parameters
 
-Server parameters aren't automatically migrated to the target environment and must be manually configured.
+Parameters aren't automatically migrated to the target environment and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the instance of Azure Database for PostgreSQL. In the Azure portal, go to **Server parameters** and manually update the values.
+- Match parameter values from the source PostgreSQL database to the instance of Azure Database for PostgreSQL. In the Azure portal, go to **Parameters** and manually update the values.
 
 - Save the parameter changes and restart the instance of Azure Database for PostgreSQL to apply the new configuration if necessary.
 

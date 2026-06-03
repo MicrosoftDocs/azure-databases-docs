@@ -13,7 +13,7 @@ Autovacuum metrics can be used to monitor and tune autovacuum performance for Az
 #### How to enable autovacuum metrics
 
 - Autovacuum metrics are disabled by default.
-- To enable these metrics, set the server parameter `metrics.autovacuum_diagnostics` to `ON`.
+- To enable these metrics, set the parameter `metrics.autovacuum_diagnostics` to `ON`.
 - This parameter is dynamic, so an instance restart isn't required.
 
 #### List of autovacuum metrics

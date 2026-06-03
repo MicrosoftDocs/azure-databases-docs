@@ -58,7 +58,7 @@ An Azure Database for PostgreSQL flexible server instance has default databases:
 - **postgres**: A default database that you can connect to after you create your server.
 - **azure_maintenance**: A database that's used to separate the processes that provide the managed service from user actions. You don't have access to this database.
 
-## Server parameters
+## Parameters
 
 The Azure Database for PostgreSQL flexible server instance parameters determine the configuration of the server. In an Azure Database for PostgreSQL flexible server instance, you can view and edit the list of parameters by using the Azure portal or the Azure CLI.
 
@@ -73,4 +73,4 @@ Your Azure Database for PostgreSQL flexible server instance is enabled with defa
 - [Storage options in Azure Database for PostgreSQL](../extensions/concepts-storage.md)
 - [Supported versions of PostgreSQL in Azure Database for PostgreSQL](concepts-supported-versions.md)
 - [Limits in Azure Database for PostgreSQL](concepts-limits.md)
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md)

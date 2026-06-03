@@ -312,7 +312,7 @@ SELECT pg_terminate_backend(global_pid);
 ```
 
 > [!NOTE]  
-> To terminate long running transactions, set server parameters `statement_timeout` or `idle_in_transaction_session_timeout`.
+> To terminate long running transactions, set parameters `statement_timeout` or `idle_in_transaction_session_timeout`.
 
 ## Clearing bloat
 
@@ -334,5 +334,5 @@ Azure Database for PostgreSQL Elastic Clusters offer PgBouncer as a built-in con
 
 ## Related content
 
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md)
 - [Autovacuum tuning in Azure Database for PostgreSQL elastic clusters](how-to-autovacuum-tuning-elastic-clusters.md)

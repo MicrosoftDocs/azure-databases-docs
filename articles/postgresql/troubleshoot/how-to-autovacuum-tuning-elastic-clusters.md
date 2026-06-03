@@ -36,7 +36,7 @@ Autovacuum is a PostgreSQL background process that automatically cleans up dead 
    ```
 
 - ANALYZE - Collects table and index statistics that the PostgreSQL query planner uses to choose efficient execution plans.
-  To ensure autovacuum works properly, set the autovacuum server parameter to `ON`. When enabled, PostgreSQL automatically decides when to run VACUUM or ANALYZE on a table, ensuring the database remains efficient and optimized.
+  To ensure autovacuum works properly, set the autovacuum parameter to `ON`. When enabled, PostgreSQL automatically decides when to run VACUUM or ANALYZE on a table, ensuring the database remains efficient and optimized.
 
    The following query runs ANALYZE on all the nodes.
 
@@ -201,7 +201,7 @@ Review the following list of common problems with the autovacuum process.
 
 ### Not keeping up with busy server
 
-The autovacuum process estimates the cost of every I/O operation, accumulates a total for each operation it performs, and pauses once the upper limit of the cost is reached. The process uses two server parameters: `autovacuum_vacuum_cost_delay` and `autovacuum_vacuum_cost_limit`.
+The autovacuum process estimates the cost of every I/O operation, accumulates a total for each operation it performs, and pauses once the upper limit of the cost is reached. The process uses two parameters: `autovacuum_vacuum_cost_delay` and `autovacuum_vacuum_cost_limit`.
 
 By default, `autovacuum_vacuum_cost_limit` is set to -1, which means the autovacuum cost limit uses the same value as the `vacuum_cost_limit` parameter. The default value for `vacuum_cost_limit` is 200. `vacuum_cost_limit` represents the cost of a manual vacuum.
 
@@ -362,7 +362,7 @@ When the database encounters transaction ID wraparound protection, check for any
 
 Set autovacuum parameters for individual tables. These settings are especially important for small and large tables. For example, for a small table that contains only 100 rows, autovacuum triggers the VACUUM operation when 70 rows change (as calculated previously). If you frequently update this table, you might see hundreds of autovacuum operations a day. These operations prevent autovacuum from maintaining other tables where the percentage of changes isn't as significant. Alternatively, a table containing a billion rows needs to change 200 million rows to trigger autovacuum operations. Setting autovacuum parameters appropriately prevents such scenarios.
 
-To set autovacuum settings for each table, change the server parameters as shown in the following examples:
+To set autovacuum settings for each table, change the parameters as shown in the following examples:
 
 ```sql
     ALTER TABLE <table name> SET (autovacuum_analyze_scale_factor = xx);
@@ -429,4 +429,4 @@ Steps to avoid repeated conflicts:
 
 ## Related content
 
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md)
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md)

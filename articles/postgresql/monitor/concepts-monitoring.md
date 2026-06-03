@@ -61,7 +61,7 @@ Use enhanced metrics for your Azure Database for PostgreSQL flexible server inst
 #### Enabling enhanced metrics
 
 - Most of these new metrics are *disabled* by default. The rightmost column in the following tables indicates whether each metric is enabled by default or not. A few metrics are enabled by default.
-- To enable metrics that aren't enabled by default, set the server parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
+- To enable metrics that aren't enabled by default, set the parameter `metrics.collector_database_activity` to `ON`. This parameter is dynamic and doesn't require an instance restart.
 
 ##### List of enhanced metrics
 
@@ -111,7 +111,7 @@ Choose from the following categories of enhanced metrics:
 | Display name | Metric ID | Unit | Description | Dimension | Default enabled |
 | --- | --- | --- | --- | --- | --- |
 | **Max Logical Replication Lag** | `logical_replication_delay_in_bytes` | Bytes | Maximum lag across all logical replication slots. | Doesn't apply | Yes |
-| **Logical replication slot sync status (preview)** | `logical_replication_slot_sync_status` | Count | Indicates whether logical replication slots are synchronized across High Availability (HA) primary and standby.<br><br>**1** → Slots are synchronized across primary and standby.<br>**0** → Slots are not synchronized on the standby.<br><br>Provides a failover-readiness signal for logical replication. A value of **0** indicates the system may not be safe for failover.<br><br>**Prerequisite:** Ensure server parameter `metrics.collector_database_activity` is set to `on` to emit this metric.<br><br>For HA scenarios and failover considerations, see [Logical replication support with HA](../high-availability/concepts-high-availability.md#logical-replication-support-with-ha). | Logical Replication Slot | No |
+| **Logical replication slot sync status (preview)** | `logical_replication_slot_sync_status` | Count | Indicates whether logical replication slots are synchronized across High Availability (HA) primary and standby.<br><br>**1** → Slots are synchronized across primary and standby.<br>**0** → Slots are not synchronized on the standby.<br><br>Provides a failover-readiness signal for logical replication. A value of **0** indicates the system may not be safe for failover.<br><br>**Prerequisite:** Ensure parameter `metrics.collector_database_activity` is set to `on` to emit this metric.<br><br>For HA scenarios and failover considerations, see [Logical replication support with HA](../high-availability/concepts-high-availability.md#logical-replication-support-with-ha). | Logical Replication Slot | No |
 
 ##### Read Replication
 
@@ -138,7 +138,7 @@ Choose from the following categories of enhanced metrics:
 | **Max Connections** ** | `max_connections` | Count | Number of maximum connections. | Doesn't apply | Yes |
 | **TCP Connection Backlog** | `tcp_connection_backlog` | Count | Number of pending TCP connections waiting to be processed by the server. | Doesn't apply | No |
 
-** **Max Connections** represents the configured value for the `max_connections` server parameter. The system polls this metric every 30 minutes.
+** **Max Connections** represents the configured value for the `max_connections` parameter. The system polls this metric every 30 minutes.
 
 ##### Considerations for using enhanced metrics
 
@@ -154,7 +154,7 @@ Use autovacuum metrics to monitor and tune autovacuum performance for your Azure
 #### How to enable autovacuum metrics
 
 - Autovacuum metrics are disabled by default.
-- To enable these metrics, set the server parameter `metrics.autovacuum_diagnostics` to `ON`.
+- To enable these metrics, set the parameter `metrics.autovacuum_diagnostics` to `ON`.
 - This parameter is dynamic, so an instance restart isn't required.
 
 #### List of autovacuum metrics
@@ -187,7 +187,7 @@ Use PgBouncer metrics to monitor the performance of the PgBouncer process. These
 
 #### How to enable PgBouncer metrics
 
-- To monitor PgBouncer metrics, ensure that the [pgbouncer](../connectivity/concepts-pgbouncer.md) feature is enabled through the server parameter `pgbouncer.enabled` and enable the metrics parameter `metrics.pgbouncer_diagnostics`.
+- To monitor PgBouncer metrics, ensure that the [pgbouncer](../connectivity/concepts-pgbouncer.md) feature is enabled through the parameter `pgbouncer.enabled` and enable the metrics parameter `metrics.pgbouncer_diagnostics`.
 - These parameters are dynamic and don't require an instance restart.
 - PgBouncer metrics are disabled by default.
 
