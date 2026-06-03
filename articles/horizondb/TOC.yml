@@ -360,7 +360,7 @@
       items:
         - name: Build a knowledge graph from unstructured text
           href: ai/build-knowledge-graph.md
-        - name: GraphRAG for knowledge graph enhanced search
+        - name: Graph-augmented RAG for knowledge graph enhanced search
           href: ai/graph-rag.md
 - name: Development
   items:
