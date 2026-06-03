@@ -26,7 +26,8 @@ Query store is available to use with no extra charges. It's an opt-in feature, s
 ### Enable query store in Azure portal
 
 1. Sign in to the Azure portal and select your Azure HorizonDB instance.
-1. Select **Server parameters** in the **Settings** section of the menu.
+1. Select **Parameters** in the **Settings** section of the menu.
+1. Select **Parameters** in the **Settings** section of the menu.
 1. Search for the `pg_qs.query_capture_mode` parameter.
 1. Set the value to `top` or `all`, depending on whether you want to track top-level queries or also nested queries (the ones, which execute inside a function or procedure), and select **Save**.
    Allow up to 20 minutes for the first batch of data to persist in the `azure_sys` database.
@@ -81,7 +82,7 @@ Here are some examples of how you can gain more insights into your workload usin
 
 ## Configuration options
 
-When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../server-parameters/param-customized-options.md#pg_qsinterval_length_minutes) server parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones, which were executed the least number of times.
+When query store is enabled, it saves data in aggregation windows of length determined by the [pg_qs.interval_length_minutes](../parameters/parameters-customized-options.md#pg_qsinterval_length_minutes) parameter (defaults to 15 minutes). For each window, it stores up to 500 distinct queries per window. Attributes that distinguish the uniqueness of each query are user_id (identifier of the user who executes the query), db_id (identifier of the database in whose context the query executes), and query_id (an integer value uniquely identifying the query executed). If the number of distinct queries reaches 500 during the configured interval, 5% of the ones that are recorded are deallocated to make room for more. The ones deallocated first are the ones, which were executed the least number of times.
 
 The following options are available for configuring Query Store parameters:
 
@@ -206,7 +207,8 @@ This view returns all the data that is persisted in the supporting tables of que
 | `query_id` | bigint | | Internal hash code, computed from the statement's parse tree. |
 | `query_sql_text` | varchar(10000) | | Text of a representative statement. Different queries with the same structure are clustered together; this text is the text for the first of the queries in the cluster. The default value for the maximum query text length is 6000, and can be modified using query store parameter `pg_qs.max_query_text_length`. If the text of the query exceeds this maximum value, it's truncated to the first `pg_qs.max_query_text_length` bytes. |
 | `plan_id` | bigint | | ID of the plan corresponding to this query. |
-| `start_time` | timestamp | | Queries are aggregated by time windows. Server parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
+| `start_time` | timestamp | | Queries are aggregated by time windows. Parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
+| `start_time` | timestamp | | Queries are aggregated by time windows. Parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
 | `end_time` | timestamp | | End time corresponding to the time window for this entry. |
 | `calls` | bigint | | Number of times the query executed in this time window. For parallel queries, the number of calls for each execution corresponds to 1 for the backend process that drives the execution of the query, plus as many other units for each backend worker process which launches to collaborate executing the parallel branches of the execution tree. |
 | `total_time` | double precision | | Total query execution time, in milliseconds. |
@@ -249,7 +251,8 @@ This view returns wait events data in Query Store. This view returns a different
 
 | **Name** | **Type** | **References** | **Description** |
 | --- | --- | --- | --- |
-| `start_time` | timestamp | | Queries are aggregated by time windows. Server parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
+| `start_time` | timestamp | | Queries are aggregated by time windows. Parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
+| `start_time` | timestamp | | Queries are aggregated by time windows. Parameter `pg_qs.interval_length_minutes` defines the time span of those windows (default is 15 minutes). This column corresponds to the start time of the window in which this entry was recorded. |
 | `end_time` | timestamp | | End time corresponding to the time window for this entry. |
 | `user_id` | oid | pg_authid.oid | Object identifier of user who executed the statement. |
 | `db_id` | oid | pg_database.oid | Object identifier of database in which the statement was executed. |

@@ -55,7 +55,7 @@ ms.custom:
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## amcheck
 
@@ -87,7 +87,7 @@ ms.custom:
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## auto_explain
 
@@ -104,7 +104,7 @@ ms.custom:
 | 12 | Without version <sup>*</sup> |
 | 11 | Without version <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## azure_ai
 
@@ -129,7 +129,7 @@ ms.custom:
 | 12 | 1.6 <sup>*</sup> |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## bloom
 
@@ -206,7 +206,7 @@ ms.custom:
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## cube
 
@@ -510,7 +510,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.4.3 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_buffercache
 
@@ -544,7 +544,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 | 12 | 1.6 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Azure HorizonDB.
 
 ## pgcrypto
@@ -592,7 +592,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_failover_slots
 
@@ -609,7 +609,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 | 12 | 1.0.1 <sup>*</sup> |
 | 11 | 1.0.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Azure HorizonDB.
 
 ## pg_freespacemap
@@ -642,7 +642,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 | 12 | 1.3.7 <sup>*</sup> |
 | 11 | 1.3.7 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Azure HorizonDB.
 
 ## pglogical
@@ -660,7 +660,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 2.4.1 <sup>*</sup> |
 | 11 | 2.4.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_partman
 
@@ -677,7 +677,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_partman_bgw
 
@@ -694,7 +694,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_prewarm
 
@@ -711,7 +711,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 1.2 <sup>*</sup> |
 | 11 | 1.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Azure HorizonDB.
 
 ## pg_repack
@@ -780,7 +780,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.5 <sup>*</sup> |
 | 11 | 1.5 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_stat_statements
 
@@ -797,7 +797,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.7 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Azure HorizonDB.
 
 ## pgstattuple
@@ -1089,7 +1089,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.10.0 <sup>*</sup> |
 | 11 | 1.7.4 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## topn
 
@@ -1196,4 +1196,4 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.2 <sup>*</sup> |
 | 11 | 2.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.

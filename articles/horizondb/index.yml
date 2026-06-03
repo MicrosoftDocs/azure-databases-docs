@@ -125,8 +125,8 @@ landingContent:
       url: configure-maintain/concepts-compute-replicas.md
     - text: Scheduled maintenance
       url: configure-maintain/concepts-maintenance.md
-    - text: Server parameters
-      url: server-parameters/concepts-server-parameters.md
+    - text: Parameters
+      url: parameters/concepts-parameters.md
     - text: Extensions
       url: extensions/concepts-extensions.md
     - text: Connection endpoints

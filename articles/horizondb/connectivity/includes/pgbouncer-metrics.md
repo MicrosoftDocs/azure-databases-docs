@@ -11,7 +11,7 @@ You can use PgBouncer metrics to monitor the performance of the PgBouncer proces
 
 #### How to enable PgBouncer metrics
 
-- To monitor PgBouncer metrics, ensure that **pgbouncer** feature is enabled via the server parameter `pgbouncer.enabled` and metrics parameter `metrics.pgbouncer_diagnostics` is enabled.
+- To monitor PgBouncer metrics, ensure that **pgbouncer** feature is enabled via the `pgbouncer.enabled` parameter, and its metrics via the `metrics.pgbouncer_diagnostics` parameter.
 - These parameters are dynamic and don't require an instance restart.
 - PgBouncer metrics are disabled by default.
 
