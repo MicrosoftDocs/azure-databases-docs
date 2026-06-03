@@ -281,7 +281,7 @@ The lesson is simple: **maximum database performance is an end-to-end property, 
 
 Many systems don't have a single performance profile. They have several:
 
-| | |
+| Common performance profile | More specific performance profile |
 | --- | --- |
 | Normal weekday traffic. | Peak business hours. |
 | Month-end or quarter-end processing. | Holiday or seasonal demand. |

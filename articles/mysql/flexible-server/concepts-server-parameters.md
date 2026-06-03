@@ -221,6 +221,20 @@ For Azure Database for MySQL Flexible Server (version 5.7 only), innodb_temp_dat
 > [!NOTE]  
 > - Note: In MySQL 8.0 and above, the [global temporary tablespace](https://dev.mysql.com/doc/refman/8.0/en/innodb-temporary-tablespace.html) (ibtmp1) only stores rollback segments for changes made to user-created temporary tables. Therefore, this parameter is no longer relevant.
 
+### innodb_monitor_enable
+
+This parameter does not support configuring multiple modules at the same time. To enable multiple modules, you must update the parameter separately for each module.
+When multiple modules are enabled, the parameter value reflects only the most recently updated module. Previously enabled modules remain active even though they are not displayed in the parameter value.
+To verify whether a module is enabled, run the following query:
+
+```sql
+SELECT name, subsystem, status
+FROM INFORMATION_SCHEMA.INNODB_METRICS
+ORDER BY NAME;
+```
+
+To disable modules by using the innodb_monitor_disable parameter, you must specify each module individually. Alternatively, you can use the value **all** to disable all modules at once.
+
 ### binlog_expire_logs_seconds
 
 In Azure Database for MySQL - Flexible Server, the `binlog_expire_logs_seconds` parameter specifies the number of seconds that the service waits before deleting the binary log file.
