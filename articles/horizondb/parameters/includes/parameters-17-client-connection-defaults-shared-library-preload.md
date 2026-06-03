@@ -1,0 +1,62 @@
+---
+author: nachoalonsoportillo
+ms.author: ialonso
+ms.reviewer: maghan
+ms.date: 06/02/2026
+ms.service: azure-database-postgresql
+ms.topic: include
+ms.custom:
+  - automatically generated
+---
+
+### jit_provider
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Shared Library Preloading |
+| Description | JIT provider to use. |
+| Data type | string |
+| Default value | `llvmjit` |
+| Allowed values | `llvmjit` |
+| Parameter type | read-only |
+| Documentation | [jit_provider](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-JIT-PROVIDER) |
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+### local_preload_libraries
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Shared Library Preloading |
+| Description | Lists unprivileged shared libraries to preload into each backend. |
+| Data type | string |
+| Default value | |
+| Allowed values | |
+| Parameter type | read-only |
+| Documentation | [local_preload_libraries](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-LOCAL-PRELOAD-LIBRARIES) |
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+### session_preload_libraries
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Shared Library Preloading |
+| Description | Lists shared libraries to preload into each backend. |
+| Data type | set |
+| Default value | |
+| Allowed values | `login_hook` |
+| Parameter type | dynamic |
+| Documentation | [session_preload_libraries](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SESSION-PRELOAD-LIBRARIES) |
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+### shared_preload_libraries
+
+| Attribute | Value |
+| --- | --- |
+| Category | Client Connection Defaults / Shared Library Preloading |
+| Description | Lists shared libraries to preload into server. |
+| Data type | set |
+| Default value | `pg_stat_statements` |
+| Allowed values | `age,anon,auto_explain,azure_storage,credcheck,pg_cron,pg_duckdb,pg_hint_plan,pg_partman_bgw,pg_prewarm,pg_squeeze,pg_stat_statements,pgaudit,pglogical,timescaledb,wal2json` |
+| Parameter type | static |
+| Documentation | [shared_preload_libraries](https://www.postgresql.org/docs/17/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES) |
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]

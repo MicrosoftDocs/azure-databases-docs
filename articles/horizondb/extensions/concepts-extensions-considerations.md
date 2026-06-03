@@ -31,7 +31,7 @@ If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, 
 
 ## Generic considerations with modules
 
-To use a module in your Azure HorizonDB instance, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
+To use a module in your Azure HorizonDB instance, you only have to add it to the `shared_preload_libraries`  parameter as described in [load libraries](how-to-load-libraries.md).
 
 Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
 
@@ -193,7 +193,7 @@ The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgsta
 
 For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
 
-The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a server parameter.
+The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a parameter.
 
 There's a tradeoff between the query execution information the `pg_stat_statements` extension provides on the server performance as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, we recommend that you set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether it's the case for you.
 
