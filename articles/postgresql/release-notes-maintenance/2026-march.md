@@ -25,7 +25,7 @@ This new version introduces a range of new features and enhancements, resolves k
 - Enabled TimescaleDB support for PostgreSQL 18.
 - Elastic clusters - Cluster-level point-in-time restore from SSDv1 to SSDv2 storage is now supported, with storage IOPS and throughput automatically calculated.
 - Elastic clusters: Execute queries for PostgresDifferentialMetricsCollector and PostgresStatsCollector against Citus database.
-- **Server Parameters**: cron.timezone parameter is now configurable, allowing you to set your preferred time zone for scheduled cron jobs.
+- **Parameters**: cron.timezone parameter is now configurable, allowing you to set your preferred time zone for scheduled cron jobs.
 - Support for VNET-to-Private Endpoint migration for HA servers. High Availability (HA) enabled servers can now be migrated from VNET integration to Private Link.
 
 ## Improvements 

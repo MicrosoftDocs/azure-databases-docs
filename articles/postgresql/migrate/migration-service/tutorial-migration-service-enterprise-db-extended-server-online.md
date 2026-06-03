@@ -228,7 +228,7 @@ Remember that in the previous steps, when you created this migration, you config
 Validation details are available at the instance and database level.
 
 - **Validation details for instance**
-  - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure Database for PostgreSQL flexible server.
+  - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and parameter check, whether the extensions are enabled in the parameters of the Azure Database for PostgreSQL flexible server.
 - **Validation and migration details for databases**
   - It contains validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL flexible server.
 

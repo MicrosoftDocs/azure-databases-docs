@@ -15,7 +15,7 @@ Before starting the migration with the Azure Database for PostgreSQL migration s
 - [Configure target setup](#configure-target-setup)
 - [Configure network setup](#configure-network-setup)
 - [Enable extensions](#enable-extensions)
-- [Check server parameters](#check-server-parameters)
+- [Check parameters](#check-parameters)
 - [Check users and roles](#check-users-and-roles)
 - [Disable high availability (reliability) and read replicas in the target](#disable-high-availability-reliability-and-read-replicas-in-the-target)
 
@@ -49,11 +49,11 @@ The pg_hba.conf file is located in the data directory of the PostgreSQL installa
 
 [!INCLUDE [prerequisites-migration-service-extensions](../prerequisites/prerequisites-migration-service-extensions.md)]
 
-### Check server parameters
+### Check parameters
 
 These parameters aren't automatically migrated to the target environment, and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the **Server parameters** page in the Azure portal, and manually updating the values accordingly.
+- Match parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the **Parameters** page in the Azure portal, and manually updating the values accordingly.
 
 - Save the parameter changes and restart the Azure Database for PostgreSQL to apply the new configuration, if necessary.
 

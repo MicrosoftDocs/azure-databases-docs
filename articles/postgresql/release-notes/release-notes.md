@@ -390,16 +390,16 @@ This article highlights the latest updates and enhancements for Azure Database f
 ## Release: October 2021
 
 - Support for [Ddsv4 and Edsv4 SKUs](https://techcommunity.microsoft.com/blog/adforpostgresql/flexible-server-now-supports-v4-compute-series-in-postgresql-on-azure/2815092).
-- Ability to choose local disk for temporary tablespace using `azure.enable_temp_tablespaces_on_local_ssd` server parameter.
-  The server parameters page in the Azure portal shows a unit of measurement and the PostgreSQL doc link for most parameters.
+- Ability to choose local disk for temporary tablespace using `azure.enable_temp_tablespaces_on_local_ssd` parameter.
+  The parameters page in the Azure portal shows a unit of measurement and the PostgreSQL doc link for most parameters.
 - Several bug fixes, stability, and performance improvements.
 
 ## Release: September 2021
 
 - Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_flexible_server).
 - Support for [new regions](../overview.md#azure-regions) Central India and Japan West.
-- Support for a non-SSL mode of connectivity using a new `require_secure_transport` server parameter.
-- Support for the `log_line_prefix` server parameter, which adds the string at the beginning of each log line.
+- Support for a non-SSL mode of connectivity using a new `require_secure_transport` parameter.
+- Support for the `log_line_prefix` parameter, which adds the string at the beginning of each log line.
 - Support for [Azure Resource Health](/azure/service-health/resource-health-overview) for Azure Database for PostgreSQL health diagnosis and to get support.
 - Several bug fixes, stability, and performance improvements.
 

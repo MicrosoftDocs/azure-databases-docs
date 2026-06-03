@@ -45,7 +45,7 @@ Azure Database for PostgreSQL flexible server provides maximum flexibility over 
 
 - [Connection pooling](../../flexible-server/concepts-pgbouncer.md): Azure Database for PostgreSQL flexible server has a built-in connection pooling mechanism via the pgBouncer plugin to support thousands of active connections with low overhead.
 
-- [Server parameters](../../flexible-server/concepts-server-parameters.md): Azure Database for PostgreSQL flexible server offers a rich set of server parameters for configuration and tuning.
+- [Parameters](../../flexible-server/concepts-parameters.md): Azure Database for PostgreSQL flexible server offers a rich set of parameters for configuration and tuning.
 
 - [Custom maintenance window](../../flexible-server/concepts-maintenance.md): You can schedule the maintenance window of the flexible server for a specific day of the week and time.
 

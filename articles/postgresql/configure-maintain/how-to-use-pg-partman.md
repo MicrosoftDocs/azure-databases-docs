@@ -25,7 +25,7 @@ In this article, you use `pg_partman` to create range-based partitions of tables
 
 To enable the `pg_partman` extension, follow these steps:
 
-1. In the Azure portal, select `pg_partman` in the list of server parameters for `azure.extensions`.
+1. In the Azure portal, select `pg_partman` in the list of parameters for `azure.extensions`.
 
     :::image type="content" source="media/how-to-use-pg-partman/pg-partman-prerequisites.png" alt-text="Screenshot that shows selection of the pg_partman extension in a list of Azure extensions.":::
 
@@ -37,7 +37,7 @@ To enable the `pg_partman` extension, follow these steps:
 
     :::image type="content" source="media/how-to-use-pg-partman/pg-partman-prerequisites-outlined.png" alt-text="Screenshot that shows selection of the pg_partman_bgw extension.":::
 
-   You can use server parameters in the Azure portal to change the following configuration options that affect the Background Writer (BGW) process:
+   You can use parameters in the Azure portal to change the following configuration options that affect the Background Writer (BGW) process:
 
    - `pg_partman_bgw.dbname`: Required. This parameter should contain one or more databases where `run_maintenance()` needs to run. If there's more than one database, use a comma-separated list. If nothing is set, `pg_partman_bgw` doesn't run the procedure.
 
@@ -170,13 +170,13 @@ SELECT partman.run_maintenance(p_parent_table:='partman.partition_test');
 
 Run the maintenance procedure by using `pg_cron`:
 
-1. First, enable `pg_cron` on your server. In the Azure portal, add `pg_cron` to the `azure. extensions`, `shared_preload_libraries`, and `cron.database_name` server parameters.
+1. First, enable `pg_cron` on your server. In the Azure portal, add `pg_cron` to the `azure. extensions`, `shared_preload_libraries`, and `cron.database_name` parameters.
 
-    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for Azure extensions.":::
+    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites.png" alt-text="Screenshot that shows adding pg_cron to the parameter for Azure extensions.":::
 
-    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites-2.png" alt-text="Screenshot that shows adding pg_cron to the server parameter for shared preload libraries.":::
+    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-prerequisites-2.png" alt-text="Screenshot that shows adding pg_cron to the parameter for shared preload libraries.":::
 
-    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-database-name.png" alt-text="Screenshot that shows the server parameter for cron database name.":::
+    :::image type="content" source="media/how-to-use-pg-partman/pg-partman-pgcron-database-name.png" alt-text="Screenshot that shows the parameter for cron database name.":::
 
 2. Select the **Save** button and let the deployment finish.
 
@@ -234,7 +234,7 @@ Run the maintenance procedure by using `pg_cron`:
 
 - Why is `pg_partman_bgw` not running the maintenance procedure based on the interval that I provided?
 
-    Check the server parameter `pg_partman_bgw.dbname` and update it with the proper database name. Also, check the server parameter `pg_partman_bgw.role` and provide the appropriate role. You should also make sure that you connect to the server by using the same user to create the extension, instead of Postgres.
+    Check the parameter `pg_partman_bgw.dbname` and update it with the proper database name. Also, check the parameter `pg_partman_bgw.role` and provide the appropriate role. You should also make sure that you connect to the server by using the same user to create the extension, instead of Postgres.
 
 - I'm encountering an error when `pg_partman_bgw` is running the maintenance procedure. What could be the reasons?
 

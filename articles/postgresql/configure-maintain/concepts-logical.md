@@ -48,9 +48,9 @@ Logical decoding:
 
 ## Prerequisites for logical replication and logical decoding
 
-1. Go to the server parameters page on the portal.
+1. Go to the parameters page on the portal.
 
-1. Set the server parameter `wal_level` to `logical`.
+1. Set the parameter `wal_level` to `logical`.
 
 1. If you want to use a pglogical extension, search for the `shared_preload_libraries`, and `azure.extensions` parameters, and select `pglogical` from the dropdown list box.
 

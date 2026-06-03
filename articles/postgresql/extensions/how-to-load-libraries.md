@@ -24,9 +24,9 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. From the resource menu, under **Settings** section, select **Server parameters**.
+2. From the resource menu, under **Settings** section, select **Parameters**.
 
-    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+    :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
 
 3. Include the libraries that you want to add in the value of `shared_preload_libraries`.
 
@@ -34,11 +34,11 @@ Using the [Azure portal](https://portal.azure.com):
 
 4. Select **Save**.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-libraries.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-libraries.png":::
+    :::image type="content" source="media/how-to-allow-extensions/save-libraries.png" alt-text="Screenshot that shows the Save button in the Parameters page." lightbox="media/how-to-allow-extensions/save-libraries.png":::
 
-5. Because `shared_preload_libraries` is a static server parameter, it requires a server restart so that the changes take effect.
+5. Because `shared_preload_libraries` is a static parameter, it requires a server restart so that the changes take effect.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Server parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
+    :::image type="content" source="media/how-to-allow-extensions/save-and-restart.png" alt-text="Screenshot of Parameters page, showing the dialog from which you can save changes and restart." lightbox="media/how-to-allow-extensions/save-and-restart.png":::
 
 ### [CLI](#tab/load-libraries-cli)
 

@@ -35,7 +35,7 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Improvements 
 
-- Updated validation for the `pg_partman_bgworker_role` server parameter to allow role names that include numeric characters.
+- Updated validation for the `pg_partman_bgworker_role` parameter to allow role names that include numeric characters.
 - Improved TOAST compression performance by changing the default compression algorithm to LZ4.
 - Azure Storage extension now supports importing and exporting Apache Parquet format.
 - Updated validation rules to block the use of certain special characters (`'`, `"`, `;`, `--`) in Microsoft Entra ID usernames through the web API.
@@ -45,7 +45,7 @@ This new version introduces a range of new features and enhancements, resolves k
 - New performance metrics (`wal_write_bytes`, `wal_write_count`, and `wal_write_latency`) are now emitted by write ahead log (WAL).
 - **Elastic clusters – Add Node Firewall Parity**: New nodes automatically inherit existing firewall rules, ensuring seamless and secure scaling out.
 - **Elastic clusters**: `citus_stat_counters` metric is enabled by default to provide improved Elastic clusters telemetry.
-- **Server Parameters – Reliability Improvements**: Server parameter updates are more resilient, reducing failures and improving configuration consistency.
+- **Parameters – Reliability Improvements**: Parameter updates are more resilient, reducing failures and improving configuration consistency.
 - **Server Deletion – Name Reuse Reliability**: Enhanced delete reliability ensures server names can be safely reused without delays or stuck resources.
 - Several targeted improvements and bug fixes that enhance stability, reliability, and overall service experience.
 

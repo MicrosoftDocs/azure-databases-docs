@@ -44,9 +44,9 @@ Azure Database for PostgreSQL includes Apache AGE as an extension.
 
 These steps help you to enable the extension in your flexible server instance:
 
-### Access server parameters
+### Access parameters
 
-Within the Azure portal, navigate to the PostgreSQL flexible server instance and select the Server Parameters option.
+Within the Azure portal, navigate to the PostgreSQL flexible server instance and select the Parameters option.
 
 Adjust the following settings:
 

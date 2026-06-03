@@ -23,11 +23,11 @@ All troubleshooting guides require logs to be sent to a Log Analytics workspace,
 
 Please, follow the steps described in [Configure and Access Logs - Azure Database for PostgreSQL flexible server](../monitor/how-to-configure-and-access-logs.md) to configure diagnostic settings and send the logs to a Log Analytics workspace.
 
-Query Store, and Enhanced metrics are configured via Server parameters. Please follow the steps described in the configure server parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](../server-parameters/how-to-server-parameters-list-all.md) or [Azure CLI](../server-parameters/how-to-server-parameters-list-all.md).
+Query Store, and Enhanced metrics are configured via Parameters. Please follow the steps described in the configure parameters in Azure Database for PostgreSQL flexible server articles for [Azure portal](../parameters/how-to-parameters-list-all.md) or [Azure CLI](../parameters/how-to-parameters-list-all.md).
 
-The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Server parameters prerequisites.
+The table below provides information on the required log categories for each troubleshooting guide, as well as the necessary Query Store, Enhanced metrics and Parameters prerequisites.
 
-| Troubleshooting guide | Diagnostic settings log categories and metrics                                                                                                         | Query Store                                                                             | Enhanced metrics                    | Server parameters           |
+| Troubleshooting guide | Diagnostic settings log categories and metrics                                                                                                         | Query Store                                                                             | Enhanced metrics                    | Parameters           |
 |:----------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|-------------------------------------|-----------------------------|
 | CPU                   | PostgreSQL Server Logs<br/>PostgreSQL Server Sessions data<br/>PostgreSQL Server Query Store Runtime<br/>AllMetrics                                    | pg_qs.query_capture_mode to TOP or ALL                                                  | metrics.collector_database_activity | N/A                         |
 | Memory                | PostgreSQL Server Logs<br/>PostgreSQL Server Sessions data<br/>PostgreSQL Server Query Store Runtime                                                   | pg_qs.query_capture_mode to TOP or ALL                                                  | metrics.collector_database_activity | N/A                         |
@@ -38,7 +38,7 @@ The table below provides information on the required log categories for each tro
 
 
 > [!NOTE]
-> Please note that if you have recently enabled diagnostic settings, query store, enhanced metrics or server parameters, it may take some time for the data to be populated. Additionally, if there has been no activity on the database within a certain time frame, the charts might appear empty. In such cases, try changing the time range to capture relevant data. Be patient and allow the system to collect and display the necessary data before proceeding with your troubleshooting efforts.
+> Please note that if you have recently enabled diagnostic settings, query store, enhanced metrics or parameters, it may take some time for the data to be populated. Additionally, if there has been no activity on the database within a certain time frame, the charts might appear empty. In such cases, try changing the time range to capture relevant data. Be patient and allow the system to collect and display the necessary data before proceeding with your troubleshooting efforts.
 
 ## Using the troubleshooting guides
 

@@ -37,11 +37,11 @@ For information about network setup, visit [Network guide for migration service]
 
 [!INCLUDE [prerequisites-migration-service-extensions](../prerequisites/prerequisites-migration-service-extensions.md)]
 
-### Check the server parameters
+### Check the parameters
 
 These parameters aren't automatically migrated to the target environment and must be manually configured.
 
-- Match server parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the **Server parameters** section in the Azure portal and manually updating the values accordingly.
+- Match parameter values from the source PostgreSQL database to the Azure Database for PostgreSQL by accessing the **Parameters** section in the Azure portal and manually updating the values accordingly.
 
 - Save the parameter changes and, if necessary, restart the Azure Database for PostgreSQL flexible server to apply the new configuration.
 

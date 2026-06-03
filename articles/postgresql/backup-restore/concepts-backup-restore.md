@@ -165,7 +165,7 @@ After you restore the server, you can perform the following tasks to get your us
 
 - If the new server is meant to replace the original server, redirect clients and client applications to the new server. Change the server name of your connection string to point to the new server.
 
-- The values of all [server parameters](../server-parameters/concepts-server-parameters.md) on the original server are not automatically applied to the new server. Ensure that all server parameters on the new server are re-configured as per the requirements of that new server.
+- The values of all [parameters](../parameters/concepts-parameters.md) on the original server are not automatically applied to the new server. Ensure that all parameters on the new server are re-configured as per the requirements of that new server.
 
 - Ensure that appropriate server-level firewall rules, private endpoints, and virtual network rules are in place for user connections. These rules are not copied over from the original server.
   

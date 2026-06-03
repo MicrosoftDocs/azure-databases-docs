@@ -116,8 +116,8 @@ landingContent:
     linkLists:      
       - linkListType: concept
         links:
-          - text: Server parameters
-            url: flexible-server/concepts-server-parameters.md
+          - text: Parameters
+            url: flexible-server/concepts-parameters.md
           - text: Compute and storage
             url: flexible-server/concepts-compute-storage.md
           - text: Identity and access management

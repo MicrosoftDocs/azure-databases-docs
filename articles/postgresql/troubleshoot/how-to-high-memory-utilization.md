@@ -48,13 +48,13 @@ For more information, see [query store](../monitor/concepts-query-store.md).
 
 Consider the following reasons and remedial actions for resolving high memory utilization.
 
-### Server parameters
+### Parameters
 
-An inappropriate configuration of the following server parameters could have an impact in the amount of memory consumed by your workload. Therefore, their values should be reviewed and adjusted according to your needs:
+An inappropriate configuration of the following parameters could have an impact in the amount of memory consumed by your workload. Therefore, their values should be reviewed and adjusted according to your needs:
 
-- [work_mem](../server-parameters/param-resource-usage-memory.md#work_mem).
-- [maintenance_work_mem](../server-parameters/param-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](../server-parameters/param-resource-usage-memory.md#shared_buffers).
-- [max_connections](../server-parameters/param-connections-authentication-connection-settings.md#max_connections).
+- [work_mem](../parameters/parameters-resource-usage-memory.md#work_mem).
+- [maintenance_work_mem](../parameters/parameters-resource-usage-memory.md#maintenance_work_mem). - [shared_buffers](../parameters/parameters-resource-usage-memory.md#shared_buffers).
+- [max_connections](../parameters/parameters-connections-authentication-connection-settings.md#max_connections).
 
 ### Use EXPLAIN ANALYZE
 
@@ -67,5 +67,5 @@ For more information about the **EXPLAIN ANALYZE** command, review its [document
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

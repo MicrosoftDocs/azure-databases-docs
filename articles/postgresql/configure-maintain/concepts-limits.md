@@ -49,9 +49,9 @@ The following table shows the *default* maximum number of connections for each p
 | E64s_v3 / E64ds_v4 / E64ds_v5 / E64ads_v5 | 64 | 432 GiB | 5,000 | 4,985 |
 | E96ds_v5 / E96ads_v5 | 96 | 672 GiB | 5,000 | 4,985 |
 
-The reserved connection slots, presently at 15, can change. We advise regularly verifying the total reserved connections on the server. You calculate this number by summing the values of the `reserved_connections` and `superuser_reserved_connections` server parameters. The maximum number of available user connections is `max_connections` - (`reserved_connections` + `superuser_reserved_connections`).
+The reserved connection slots, presently at 15, can change. We advise regularly verifying the total reserved connections on the server. You calculate this number by summing the values of the `reserved_connections` and `superuser_reserved_connections` parameters. The maximum number of available user connections is `max_connections` - (`reserved_connections` + `superuser_reserved_connections`).
 
-The system calculates the default value for the `max_connections` server parameter when you provision the instance of Azure Database for PostgreSQL flexible server, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the instance won't have any effect on the default value for the `max_connections` server parameter of that instance. We recommend that whenever you change the product assigned to an instance, you also adjust the value for the `max_connections` parameter according to the values in the preceding table.
+The system calculates the default value for the `max_connections` parameter when you provision the instance of Azure Database for PostgreSQL flexible server, based on the product name that you select for its compute. Any subsequent changes of product selection to the compute that supports the instance won't have any effect on the default value for the `max_connections` parameter of that instance. We recommend that whenever you change the product assigned to an instance, you also adjust the value for the `max_connections` parameter according to the values in the preceding table.
 
 ### Changing the max_connections value
 

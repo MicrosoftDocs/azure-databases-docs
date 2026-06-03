@@ -92,7 +92,7 @@ To create an unlogged table or change an existing table to an unlogged table, us
     ALTER TABLE <tablename> SET UNLOGGED;
     ```
 
-### Server parameter tuning
+### Parameter tuning
 
 - `auto vacuum': It's best to turn off `auto vacuum' during the initial data load. After the initial load is completed, we recommend that you run a manual `VACUUM ANALYZE` on all tables in the database and then turn on `auto vacuum`.
 
@@ -199,7 +199,7 @@ ORDER BY 1, 2;
 
 The `number_of_scans`, `tuples_read`, and `tuples_fetched` columns would indicate the index usage.number_of_scans column value of zero points as an index that's not being used.
 
-### Server parameter tuning
+### Parameter tuning
 
 > [!NOTE]  
 > Follow the recommendations in the following parameters only if there's enough memory and disk space.
@@ -239,5 +239,5 @@ SELECT round (pg_wal_lsn_diff('LSN value when running the second time','LSN valu
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
 - [Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL](how-to-identify-slow-queries.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

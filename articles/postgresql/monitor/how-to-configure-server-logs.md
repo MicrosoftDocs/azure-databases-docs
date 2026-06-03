@@ -75,11 +75,11 @@ az postgres flexible-server parameter set \
   --value <retention_period_in_days>
 ```
 
-Allowed values for server parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
+Allowed values for parameter `logfiles.retention_days` can be between 1 and 7 days. If you try to set it to a different value, you get this error:
 
 ```output
 Code: ServerParameterToCMSUnAllowedParameterValue
-Message: The value: [<value>] of Server Parameter: [logfiles.retention_days] is invalid, the allowed values are: [1-7]
+Message: The value: [<value>] of Parameter: [logfiles.retention_days] is invalid, the allowed values are: [1-7]
 ```
 
 ---
