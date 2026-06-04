@@ -1,7 +1,7 @@
 ---
 title: Citus Overview
 description: Learn what Citus is and the core architecture concepts including nodes, sharding models, table types, shards, colocation, and query execution.
-ms.date: 05/25/2026
+ms.date: 06/04/2026
 ms.service: postgresql-citus
 ms.topic: overview
 ai-usage: ai-assisted
