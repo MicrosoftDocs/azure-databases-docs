@@ -1,7 +1,7 @@
 ---
 title: "Configure Citus: GUC Parameters Reference"
 description: In the Citus configuration reference, you find information about Citus specific configuration parameters and standard PostgreSQL parameters that affect the behavior of Citus.
-ms.date: 05/25/2026
+ms.date: 06/04/2026
 ms.service: postgresql-citus
 ms.topic: reference
 ai-usage: ai-assisted
