@@ -1,7 +1,7 @@
 ---
 title: "Query Processing in Citus: Distributed Execution Architecture"
 description: This article describes the architecture that Citus uses to process, coordinate, and distribute queries.
-ms.date: 05/25/2026
+ms.date: 06/04/2026
 ms.service: postgresql-citus
 ms.topic: reference
 monikerRange: "citus-13 || citus-14"
