@@ -4,7 +4,7 @@ description: This article describes high availability on an Azure Database for P
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/17/2026
+ms.date: 06/03/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
@@ -22,6 +22,10 @@ By default in most regions, your standby replica is deployed into a different av
 - A standby replica is deployed in the same VM configuration - including vCores, storage, and network settings - as the primary server.
 
 - You can add availability zone support for an existing database server.
+
+- Along with the standby server, we also deploy a WAL replica server to maintain quorum commit. In scenarios where the standby server is temporarily unavailable, transactions are committed on the primary server and the WAL replica server to ensure durability. Once the standby server becomes available again, it automatically catches up with the primary server. This architecture helps ensure that committed records are durably persisted.
+
+- In the event of a failover, only the standby server is promoted to become the new primary server. The WAL replica server is not promoted and is used solely to help maintain quorum commit.
 
 - You can disable high availability, which removes the standby replica.
 
