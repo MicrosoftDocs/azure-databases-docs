@@ -11,7 +11,7 @@ ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
+ms.custom: 
   - build-2026
 ai-usage: ai-assisted
 # customer intent: As a developer building long-running or scheduled workflows in Azure HorizonDB, I want to run them durably inside the database so that they survive crashes and don't require an external orchestrator.
@@ -65,6 +65,20 @@ Two key ideas:
 
 ## Enable pg_durable
 
+To enable `pg_durable` on Azure HorizonDB, first configure a parameter group, then create the extension in each database.
+
+Use these setup articles:
+
+- [Load shared libraries](../extensions/how-to-load-libraries.md)
+- [Allow extensions](../extensions/how-to-allow-extensions.md)
+- [Create extensions](../extensions/how-to-create-extensions.md)
+
+1. Create a parameter group for your server.
+2. Set `shared_preload_libraries` to include `pg_textsearch`.
+3. Set `azure.extensions` to include `pg_textsearch`.
+4. Apply the parameter group to the server.
+5. Connect to each target database and run:
+
 Create the extension in each database where you want to use it:
 
 ```sql
@@ -88,6 +102,9 @@ SELECT df.result('a1b2c3d4');
 ```
 
 Even a one-step function is durable: if the database restarts after `df.start()` and before the worker picks it up, the function still runs.
+
+> [!NOTE]  
+> `df.start()` submits a workflow asynchronously and returns immediately. For multi-step workflows, use `df.list_instances()`, `df.instance_info()`, `df.status()`, or `df.result()` to confirm completion before validating side effects.
 
 ## Program model
 
@@ -120,6 +137,8 @@ A durable function is a graph built from steps, operators, and built-in function
 | `df.cancel(id, reason)` | Cancel a running instance. |
 | `df.status(id)` / `df.result(id)` | Inspect outcome. |
 | `df.explain(input)` | Render the function graph for visualization. |
+
+Read more about all [pg_durable features](https://github.com/microsoft/pg_durable/blob/main/USER_GUIDE.md). 
 
 ### Variables
 
@@ -164,6 +183,11 @@ SELECT df.start(
 );
 ```
 
+If you want to stop this job, You can run the `cancel` function. 
+```sql
+SELECT df.cancel('a1b2c3d4', 'stop test cron job');
+```
+
 ### Approval workflow with timeout
 
 Wait up to 24 hours for an external approval signal, then commit or reject:
@@ -192,11 +216,12 @@ SELECT df.signal('a1b2c3d4', 'approval',
 
 ```sql
 SELECT df.start(
-    df.http('https://api.contoso.com/users/123', 'GET') |=> 'user'
+    df.http('https://api.example.com/users/123', 'GET') |=> 'user'
     ~> 'INSERT INTO users_cache (data) VALUES (($user::jsonb->>''body'')::jsonb)',
     'fetch-user'
 );
 ```
+Read more about allowed [HTTP security in pg_durable](https://github.com/microsoft/pg_durable/blob/main/docs/http-security.md). 
 
 ## Observe and operate
 
