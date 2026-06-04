@@ -25,29 +25,29 @@ Enhanced tuning options with filtered recommendations and network migration supp
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Advanced Threat Protection | Stable | Advanced threat protection configuration |
-| Backup & Restore | Stable | Automatic and on-demand backup creation |
-| Captured Logs | Stable | Query and transaction log capture operations |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Advanced Threat Protection | Unchanged | Advanced threat protection configuration |
+| Backup & Restore | Unchanged | Automatic and on-demand backup creation |
+| Captured Logs | Unchanged | Query and transaction log capture operations |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
 | Maintenance Events | Enhanced | Maintenance event filtering and analytics |
-| Migrations | Stable | Migration with private endpoint and role support |
-| Name Availability | Stable | Location-based name availability checks |
+| Migrations | Unchanged | Migration with private endpoint and role support |
+| Name Availability | Unchanged | Location-based name availability checks |
 | Network Mode Migration | New | Migrate servers between network modes |
-| Operations | Stable | List available management operations |
+| Operations | Unchanged | List available management operations |
 | Performance Tuning | Enhanced | Filtered index and table recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Quota Usage | Stable | Track quota usage for flexible servers |
-| Read Replicas | Stable | Replica creation and management operations |
-| Server Upgrades | Stable | Major version upgrade precheck operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Quota Usage | Unchanged | Track quota usage for flexible servers |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Server Upgrades | Unchanged | Major version upgrade precheck operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2026-01-01-preview (Preview)
 
@@ -55,28 +55,28 @@ Added major version upgrade precheck and captured logs support.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Advanced Threat Protection | Stable | Advanced threat protection configuration |
-| Backup & Restore | Stable | Automatic and on-demand backup creation |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Advanced Threat Protection | Unchanged | Advanced threat protection configuration |
+| Backup & Restore | Unchanged | Automatic and on-demand backup creation |
 | Captured Logs | New | Query and transaction log capture operations |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
 | Maintenance Events | New | Manage and query maintenance events |
-| Migrations | Stable | Migration with private endpoint and role support |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
+| Migrations | Unchanged | Migration with private endpoint and role support |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
 | Performance Tuning | Enhanced | Filtered index and table recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Quota Usage | Stable | Track quota usage for flexible servers |
-| Read Replicas | Stable | Replica creation and management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Quota Usage | Unchanged | Track quota usage for flexible servers |
+| Read Replicas | Unchanged | Replica creation and management operations |
 | Server Upgrades | New | Major version upgrade precheck operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2025-08-01 (Stable)
 
@@ -84,25 +84,25 @@ Promoted all preview features to stable release.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Advanced Threat Protection | Stable | Advanced threat protection configuration |
-| Backup & Restore | Stable | Automatic and on-demand backup creation |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
-| Migrations | Stable | Migration with private endpoint and role support |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
-| Performance Tuning | Stable | Index and table optimization recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Quota Usage | Stable | Track quota usage for flexible servers |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Advanced Threat Protection | Unchanged | Advanced threat protection configuration |
+| Backup & Restore | Unchanged | Automatic and on-demand backup creation |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
+| Migrations | Unchanged | Migration with private endpoint and role support |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
+| Performance Tuning | Unchanged | Index and table optimization recommendations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Quota Usage | Unchanged | Track quota usage for flexible servers |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2025-06-01-preview (Preview)
 
@@ -110,26 +110,26 @@ Enhanced backup and migration capabilities.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Advanced Threat Protection | Stable | Advanced threat protection configuration |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Advanced Threat Protection | Unchanged | Advanced threat protection configuration |
 | Backup & Restore | Enhanced | Automatic and on-demand backup creation |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
 | Migrations | Enhanced | Migration with private endpoint and role support |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
 | Performance Tuning | Enhanced | Filtered index and table recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Quota Usage | Stable | Track quota usage for flexible servers |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Quota Usage | Unchanged | Track quota usage for flexible servers |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2025-01-01-preview (Preview)
 
@@ -137,26 +137,26 @@ Enhanced backup operations and improved server capabilities.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
 | Backup & Restore | Enhanced | Automatic and on-demand backup operations |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
-| Migrations | Stable | Enhanced validation and improved error reporting |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
-| Performance Tuning | Stable | Index and table optimization recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
+| Migrations | Unchanged | Enhanced validation and improved error reporting |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
+| Performance Tuning | Unchanged | Index and table optimization recommendations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
 | Quota Usage | New | Track quota usage for flexible servers |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Threat Protection | Stable | Advanced threat protection settings and alerts |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Threat Protection | Unchanged | Advanced threat protection settings and alerts |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2024-11-01-preview (Preview)
 
@@ -164,25 +164,25 @@ Added tuning recommendations and enhanced migration validation.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | On-demand backup creation and deletion |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | On-demand backup creation and deletion |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
 | Migrations | Enhanced | Enhanced validation and improved error reporting |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
 | Performance Tuning | New | Index and table optimization recommendations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Threat Protection | Stable | Advanced threat protection settings and alerts |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Threat Protection | Unchanged | Advanced threat protection settings and alerts |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2024-08-01 (Stable)
 
@@ -190,24 +190,24 @@ Stabilized virtual endpoints and enhanced backup management.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | On-demand backup creation and deletion |
-| Capabilities | Stable | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
-| Migrations | Stable | Advanced validation and filtering for migrations |
-| Name Availability | Stable | Location-based name availability checks |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Threat Protection | Stable | Advanced threat protection settings and alerts |
-| Virtual Endpoints | Stable | Read-write virtual endpoint management |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | On-demand backup creation and deletion |
+| Capabilities | Unchanged | List capabilities by location and by server |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
+| Migrations | Unchanged | Advanced validation and filtering for migrations |
+| Name Availability | Unchanged | Location-based name availability checks |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Threat Protection | Unchanged | Advanced threat protection settings and alerts |
+| Virtual Endpoints | Unchanged | Read-write virtual endpoint management |
 
 ### 2024-03-01-preview (Preview)
 
@@ -215,23 +215,23 @@ Added virtual endpoints and improved location-based availability checks.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | On-demand backup creation and deletion |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | On-demand backup creation and deletion |
 | Capabilities | Enhanced | List capabilities by location and by server |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
-| Migrations | Stable | Advanced validation and filtering for migrations |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
+| Migrations | Unchanged | Advanced validation and filtering for migrations |
 | Name Availability | Enhanced | Location-based name availability checks |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Threat Protection | Stable | Advanced threat protection settings and alerts |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Threat Protection | Unchanged | Advanced threat protection settings and alerts |
 | Virtual Endpoints | New | Read-write virtual endpoint management |
 
 ### 2023-12-01-preview (Preview)
@@ -240,22 +240,22 @@ Added backup creation operations and improved capabilities list.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
 | Backup & Restore | Enhanced | On-demand backup creation and deletion |
 | Capabilities | Enhanced | List server capabilities and supported features |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
-| Migrations | Stable | Advanced validation and filtering for migrations |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
-| Threat Protection | Stable | Advanced threat protection settings and alerts |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
+| Migrations | Unchanged | Advanced validation and filtering for migrations |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
+| Threat Protection | Unchanged | Advanced threat protection settings and alerts |
 
 ### 2023-06-01-preview (Preview)
 
@@ -263,20 +263,20 @@ Enhanced migration capabilities and threat protection settings.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore with enhanced filtering |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Long-Term Retention | Stable | Configure and manage LTR backups |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore with enhanced filtering |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Long-Term Retention | Unchanged | Configure and manage LTR backups |
 | Migrations | Enhanced | Advanced validation and filtering for migrations |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Read Replicas | Stable | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Read Replicas | Unchanged | Replica creation and management operations |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 | Threat Protection | New | Advanced threat protection settings and alerts |
 
 ### 2023-03-01-preview (Preview)
@@ -285,20 +285,20 @@ Added long-term retention (LTR) backup support and enhanced replica management.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
 | Backup & Restore | Enhanced | Point-in-time restore with enhanced filtering |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
 | Long-Term Retention | New | Configure and manage LTR backups |
-| Migrations | Stable | Full lifecycle management for database migrations |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
+| Migrations | Unchanged | Full lifecycle management for database migrations |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
 | Read Replicas | Enhanced | Replica creation and management operations |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ### 2022-12-01 (Stable)
 
@@ -306,18 +306,18 @@ First major stable release with migration support.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore from automated backups |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Migrations | Stable | Full lifecycle management for database migrations |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore from automated backups |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Migrations | Unchanged | Full lifecycle management for database migrations |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ### 2022-05-01-preview (Preview)
 
@@ -325,18 +325,18 @@ Introduced migration support for online and offline migrations from PostgreSQL s
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore from automated backups |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Data Encryption | Stable | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore from automated backups |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Data Encryption | Unchanged | Customer-managed key support via Azure Key Vault |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
 | Migrations | New | Full lifecycle management for database migrations |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ### 2022-03-08-preview (Preview)
 
@@ -344,17 +344,17 @@ Enhanced data encryption support and improved error handling.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore from automated backups |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore from automated backups |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
 | Data Encryption | Enhanced | Improved key rotation and auto-update capabilities |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ### 2022-01-20-preview (Preview)
 
@@ -362,17 +362,17 @@ Added support for data encryption and enhanced diagnostics.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore from automated backups |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore from automated backups |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
 | Data Encryption | New | Customer-managed key support via Azure Key Vault |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ### 2021-06-01 (Stable)
 
@@ -380,16 +380,16 @@ Initial stable release of the new PostgreSQL Flexible Server API model.
 
 | Feature/Operation | Status | Details |
 | --- | --- | --- |
-| Administrators | Stable | Manage Microsoft Entra ID server administrators |
-| Backup & Restore | Stable | Point-in-time restore from automated backups |
-| Configurations | Stable | Manage server parameters and settings |
-| Databases | Stable | Create, read, update, delete database operations |
-| Firewall Rules | Stable | IP-based firewall rule management |
-| Log Files | Stable | Access server log files |
-| Operations | Stable | List available management operations |
-| Private Endpoints | Stable | Private endpoint connection management |
-| Private Link Resources | Stable | List private link resource groups |
-| Servers | Stable | Core server CRUD operations (create, read, update, delete) |
+| Administrators | Unchanged | Manage Microsoft Entra ID server administrators |
+| Backup & Restore | Unchanged | Point-in-time restore from automated backups |
+| Configurations | Unchanged | Manage server parameters and settings |
+| Databases | Unchanged | Create, read, update, delete database operations |
+| Firewall Rules | Unchanged | IP-based firewall rule management |
+| Log Files | Unchanged | Access server log files |
+| Operations | Unchanged | List available management operations |
+| Private Endpoints | Unchanged | Private endpoint connection management |
+| Private Link Resources | Unchanged | List private link resource groups |
+| Servers | Unchanged | Core server CRUD operations (create, read, update, delete) |
 
 ## Using preview versions of API from Terraform
 
