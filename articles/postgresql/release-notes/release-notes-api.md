@@ -19,6 +19,25 @@ This page provides latest news and updates regarding the recommended API version
 
 This section summarizes the feature changes across all Azure Database for PostgreSQL API versions from 2021-06-01 onwards. Features are organized alphabetically within each version section, and each section stays focused on the changes that matter most.
 
+| API version | Status | Description |
+| --- | --- | --- |
+| [2026-04-01-preview](#2026-04-01-preview-preview) | Preview | Enhanced tuning options with filtered recommendations and network migration support. |
+| [2026-01-01-preview](#2026-01-01-preview-preview) | Preview | Added major version upgrade precheck and captured logs support. |
+| [2025-08-01](#2025-08-01-stable) | Stable | Promoted all preview features to stable release. |
+| [2025-06-01-preview](#2025-06-01-preview-preview) | Preview | Enhanced backup and migration capabilities. |
+| [2025-01-01-preview](#2025-01-01-preview-preview) | Preview | Enhanced backup operations and improved server capabilities. |
+| [2024-11-01-preview](#2024-11-01-preview-preview) | Preview | Added tuning recommendations and enhanced migration validation. |
+| [2024-08-01](#2024-08-01-stable) | Stable | Stabilized virtual endpoints and enhanced backup management. |
+| [2024-03-01-preview](#2024-03-01-preview-preview) | Preview | Added virtual endpoints and improved location-based availability checks. |
+| [2023-12-01-preview](#2023-12-01-preview-preview) | Preview | Added backup creation operations and improved capabilities list. |
+| [2023-06-01-preview](#2023-06-01-preview-preview) | Preview | Enhanced migration capabilities and threat protection settings. |
+| [2023-03-01-preview](#2023-03-01-preview-preview) | Preview | Added long-term retention (LTR) backup support and enhanced replica management. |
+| [2022-12-01](#2022-12-01-stable) | Stable | First major stable release with migration support. |
+| [2022-05-01-preview](#2022-05-01-preview-preview) | Preview | Introduced migration support for online and offline migrations from PostgreSQL sources. |
+| [2022-03-08-preview](#2022-03-08-preview-preview) | Preview | Enhanced data encryption support and improved error handling. |
+| [2022-01-20-preview](#2022-01-20-preview-preview) | Preview | Added support for data encryption and enhanced diagnostics. |
+| [2021-06-01](#2021-06-01-stable) | Stable | Initial stable release of the new PostgreSQL Flexible Server API model. |
+
 ### 2026-04-01-preview (Preview)
 
 Enhanced tuning options with filtered recommendations and network migration support.
