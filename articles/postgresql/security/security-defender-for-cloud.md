@@ -32,7 +32,7 @@ A brute force attack is among the most common and fairly successful hacking meth
 
 Microsoft Defender Security Posture Management assessments continuously evaluate the security posture of PostgreSQL servers. Defender scans server- and database-level configurations against PostgreSQL-specific security best practices to identify potential vulnerabilities and misconfigurations that could increase risk. Assessments provide actionable recommendations to help improve security posture, support compliance requirements, and reduce exposure to threats.   
 
-The following recommendations are now available in preview for Azure Database for PostgreSQL Flexible Servers as part of Defender CSPM: 
+The following recommendations are now available in preview for Azure Database for PostgreSQL servers as part of Defender CSPM with additional assessments planned: 
 
 | Scope    | Recommendation                                                                             |
 |----------|--------------------------------------------------------------------------------------------|
