@@ -1,8 +1,8 @@
 ---
 title: "Quickstart: Connect with C#"
 description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from an Azure Database for PostgreSQL flexible server instance."
-author: agapovm
-ms.author: maximagapov
+author: gkasar
+ms.author: gkasar
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -27,7 +27,7 @@ This quickstart demonstrates how to connect to an Azure Database for PostgreSQL 
 
 For this quickstart you need:
 
-- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free).
+- An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Create an Azure Database for PostgreSQL flexible server](../configure-maintain/quickstart-create-server.md) instance, if you do not have one.
 - Use the empty *postgres* database available on the server or create a [new database](../configure-maintain/quickstart-create-server.md#connect-using-psql).
 - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.

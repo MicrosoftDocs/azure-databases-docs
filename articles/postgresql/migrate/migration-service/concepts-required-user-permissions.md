@@ -63,7 +63,7 @@ If a runtime server is part of your migration setup, ensure the permissions Micr
 
 By setting up these permissions, you ensure that your migration process is both secure and aligned with PostgreSQL Migration Service requirements.
 
-## (Preview) Online Migration publication permissions
+## Online Migration using PgOutput - Required Publication permissions
 
 Publication creation is mandatory in Online migration to define the data set for [logical replication with pgoutput](https://www.postgresql.org/docs/current/logical-replication-architecture.html) during PostgreSQL migration. It controls the granularity and ensures that only desired table changes are streamed for replication, supporting efficient and controlled cloud migration workflows.
 

@@ -11,13 +11,16 @@ ms.topic: tutorial
 ms.custom:
 - devx-track-azurecli
 - sfi-image-nochange
+ms.collection:
+  - migration
+  - aws-to-azure
 ---
 
 # Migrate online, from an Amazon Aurora PostgreSQL server to Azure Database for PostgreSQL, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
-The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server.
+The migration service in Azure Database for PostgreSQL is a fully managed service integrated into the Azure portal and Azure CLI. It's designed to simplify your migration journey to the Azure Database for PostgreSQL flexible server. For more information about migration scenarios, see [Migrate databases from Amazon Web Services to Azure](/azure/migration/migrate-databases-from-aws).
 
 [!INCLUDE [checklist-online](includes/checklist-online.md)]
 
@@ -227,7 +230,7 @@ Remember that in the previous steps, when you created this migration, you config
 Validation details are available at the instance and database level.
 
 - **Validation details for instance**
-    - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and server parameter check, whether the extensions are enabled in the server parameters of the Azure Database for PostgreSQL flexible server.
+    - Contains validation related to the connectivity check, source version, that is, PostgreSQL version >= 9.5, and parameter check, whether the extensions are enabled in the parameters of the Azure Database for PostgreSQL flexible server.
 - **Validation and migration details for databases**
     - It contains validation of the individual databases related to extensions and collations support in Azure Database for PostgreSQL flexible server.
 

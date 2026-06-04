@@ -1,0 +1,165 @@
+### YamlMime:Landing
+metadata:
+  title: Microsoft Azure HorizonDB Documentation Landing Page
+  description: Azure HorizonDB is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security.
+  author: denzilribeiro
+  ms.author: denzilr
+  ms.reviewer: maghan
+  ms.date: 06/02/2026
+  ms.service: azure-database-postgresql
+  ms.topic: landing-page
+
+title: Microsoft Azure HorizonDB documentation
+summary: Azure HorizonDB is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Foundry Tools.
+
+landingContent:
+# Card 1
+
+- title: Beginners guide to Azure HorizonDB
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: What is Azure HorizonDB?
+      url: overview.md
+    - text: Release notes
+      url: release-notes/release-notes.md
+  - linkListType: quickstart
+    links:
+    - text: Create an Azure HorizonDB cluster
+      url: configure-maintain/quickstart-create-cluster.md
+    - text: Connect and query using Visual Studio Code
+      url: development/vs-code-extension/vs-code-overview.md
+    - text: Connect using Python
+      url: connectivity/connect-python.md
+    - text: Connect using Java
+      url: connectivity/connect-java.md
+
+# Card 2
+
+- title: Enterprise ready features
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Business continuity
+      url: backup-restore/concepts-business-continuity.md
+    - text: Backup and restore
+      url: backup-restore/concepts-backup-restore.md
+    - text: High availability and failover
+      url: high-availability/concepts-high-availability-failover.md
+    - text: Networking and public access
+      url: network/concepts-network-public.md
+  - linkListType: how-to-guide
+    links:
+    - text: Configure high availability
+      url: high-availability/how-to-configure-high-availability.md
+    - text: Restore to a custom restore point
+      url: backup-restore/how-to-restore-custom-restore-point.md
+
+# Card 3
+
+- title: Security
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Security overview
+      url: security/security-overview.md
+    - text: Access control
+      url: security/security-access-control.md
+    - text: Data encryption
+      url: security/security-data-encryption.md
+    - text: TLS and SSL
+      url: security/security-tls.md
+  - linkListType: how-to-guide
+    links:
+    - text: Manage database users
+      url: security/security-manage-database-users.md
+    - text: Connect with SCRAM
+      url: security/security-connect-scram.md
+    - text: Reset admin password
+      url: security/security-reset-admin-password.md
+    - text: Connect clients with TLS
+      url: security/security-tls-how-to-connect.md
+
+# Card 4
+- title: Build AI apps and agents
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: AI capabilities in Azure HorizonDB
+      url: ai/ai-overview.md
+    - text: Build AI agents
+      url: ai/ai-agents.md
+    - text: AI frameworks and orchestration
+      url: ai/ai-frameworks.md
+  - linkListType: how-to-guide
+    links:
+    - text: AI functions in SQL
+      url: ai/ai-functions.md
+    - text: Durable AI pipelines
+      url: ai/ai-pipelines.md
+    - text: Vector search with pgvector
+      url: ai/vector-search-pgvector.md
+    - text: DiskANN vector indexing
+      url: ai/vector-index-diskann.md
+    - text: Full-text search with pg_fts
+      url: ai/full-text-search.md
+    - text: Hybrid search
+      url: ai/hybrid-search.md
+    - text: Semantic reranking
+      url: ai/semantic-rank-function.md
+  - linkListType: tutorial
+    links:
+    - text: Build a semantic search application
+      url: ai/build-semantic-search-app.md
+    - text: Build a knowledge graph
+      url: ai/build-knowledge-graph.md
+    - text: Develop with LangChain
+      url: ai/develop-with-langchain.md
+
+# Card 4
+- title: Configure and manage
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Compute and replicas
+      url: configure-maintain/concepts-compute-replicas.md
+    - text: Scheduled maintenance
+      url: configure-maintain/concepts-maintenance.md
+    - text: Parameters
+      url: parameters/concepts-parameters.md
+    - text: Extensions
+      url: extensions/concepts-extensions.md
+    - text: Connection endpoints
+      url: connectivity/concepts-connection-endpoints.md
+  - linkListType: how-to-guide
+    links:
+    - text: Scale compute
+      url: configure-maintain/how-to-scale-compute.md
+    - text: Add or remove replicas
+      url: configure-maintain/how-to-add-remove-replica.md
+    - text: Enable deletion protection
+      url: configure-maintain/how-to-enable-deletion-protection.md
+    - text: Allow extensions
+      url: extensions/how-to-allow-extensions.md
+
+# Card 5
+- title: Additional resources
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Connection libraries
+      url: connectivity/concepts-connection-libraries.md
+    - text: Graph database with Apache AGE
+      url: graph/age-overview.md
+    - text: Query store best practices
+      url: monitor/concepts-query-store-best-practices.md
+    - text: Migrate using dump and restore
+      url: migrate/how-to-migrate-dump-restore.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/horizondb
+    - text: Region availability
+      url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
+    - text: Azure pricing
+      url: https://azure.microsoft.com/pricing/details/postgresql/

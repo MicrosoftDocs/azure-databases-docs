@@ -1,8 +1,8 @@
 ---
 title: Configure intelligent tuning - Azure CLI
 description: This article describes how to configure intelligent tuning in an Azure Database for PostgreSQL flexible server instance by using the Azure CLI.
-author: jjfrost
-ms.author: jfrost
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 04/27/2024
 ms.service: azure-database-postgresql
@@ -51,7 +51,7 @@ You can verify if this feature is activated for the server `mydemoserver.postgre
 az postgres flexible-server parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning --query value
 ```
 
-You can inspect the current setting of the `intelligent_tuning.metric_targets` server parameter by using the following command:
+You can inspect the current setting of the `intelligent_tuning.metric_targets` parameter by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server parameter show --resource-group myresourcegroup --server-name mydemoserver --name intelligent_tuning.metric_targets --query value
@@ -97,11 +97,11 @@ To enable or disable intelligent tuning, use the [az postgres flexible-server pa
    ```
 
 > [!NOTE]
-> Both `intelligent_tuning` and `intelligent_tuning.metric_targets` server parameters are dynamic, meaning no server restart is required when their values are changed.
+> Both `intelligent_tuning` and `intelligent_tuning.metric_targets` parameters are dynamic, meaning no server restart is required when their values are changed.
 
 ### Considerations for selecting values for tuning targets
 
-When you're choosing values from the `intelligent_tuning.metric_targets` server parameter, take the following considerations into account:
+When you're choosing values from the `intelligent_tuning.metric_targets` parameter, take the following considerations into account:
 
 * The `NONE` value takes precedence over all other values. If you choose `NONE` alongside any combination of other values, the parameter is perceived as set to `NONE`. This is equivalent to `intelligent_tuning = OFF`, so no tuning occurs.
 

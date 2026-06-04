@@ -8,8 +8,6 @@ ms.date: 08/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
-ms.custom:
-  - horz-security
 ---
 
 # Audit logging in Azure Database for PostgreSQL
@@ -42,7 +40,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your instance of Azure Database for the PostgreSQL.
 
-1. From the resource menu, under **Settings**, select **Server parameters**.
+1. From the resource menu, under **Settings**, select **Parameters**.
 
 1. Search for the `pgaudit` parameters.
 
@@ -52,7 +50,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 ### [CLI](#tab/cli)
 
-You can set the value of any of the `pgaudit` server parameters via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+You can set the value of any of the `pgaudit` parameters via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
 
 ```azurecli-interactive
 az postgres flexible-server parameter set --resource-group <resource_group> --server-name <server> --source user-override --name <parameter> --value <value>

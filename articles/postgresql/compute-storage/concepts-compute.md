@@ -1,8 +1,8 @@
 ---
 title: Compute Options
 description: This article describes the compute options in an Azure Database for PostgreSQL flexible server instance.
-author: danyal-bukhari
-ms.author: dabukhari
+author: akashraokm
+ms.author: akashrao
 ms.reviewer: maghan
 ms.date: 02/12/2026
 ms.service: azure-database-postgresql
@@ -40,7 +40,7 @@ After you create a server for the compute tier, you can change the number of vCo
 You can select compute resources based on the tier, vCores, and memory size. vCores represent the logical CPU of the underlying hardware.
 
 > [!IMPORTANT]  
-> Burstable compute is for workloads that stay idle or below baseline most of the time. If CPU runs near or above baseline for long periods, credits deplete and the server might become unreachable.  
+> Burstable compute is for workloads that stay idle or below baseline most of the time. If CPU runs near or above baseline for long periods, credits deplete and the server might become unreachable.  This tier is primarily designed for nonproduction scenarios such as development, staging, or testing, does not qualify for 24/7 support, and root cause analysis (RCA) may not be provided.
 >
 > For these workloads, it's recommended to:  
 > - Monitor **CPU Credits Remaining** in Azure Monitor and set alerts for low credits.  

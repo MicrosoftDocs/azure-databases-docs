@@ -1,14 +1,12 @@
 ---
 title: Audit Logging for Microsoft Entra ID Principals
 description: Learn how to attribute actions to specific Microsoft Entra ID users in PostgreSQL audit logs.
-author: ak800i
-ms.author: ajanko
+author: milenak
+ms.author: mpopovic
 ms.date: 12/19/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # Audit logging in Azure Database for PostgreSQL for Microsoft Entra ID principals
@@ -23,8 +21,8 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 
 1. Enable audit logging - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
 1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
-1. Adjust the `log_line_prefix` server parameter:
-   From the Server Parameters blade, set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s` in the same sequence to get the desired results.
+1. Adjust the `log_line_prefix` parameter:
+   From the Parameters blade, set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s` in the same sequence to get the desired results.
    - Before: `log_line_prefix` = `%t-%c-`
    - After: `log_line_prefix` = `%t-%c-user=%u,db=%d,session=%c,sess_time=%s`
 

@@ -27,7 +27,7 @@ In this article, you can learn:
 
 1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
-1. After the `auto_explain` extension is configured, change the following [server parameters](../server-parameters/concepts-server-parameters.md), which control the behavior of the extension:
+1. After the `auto_explain` extension is configured, change the following [parameters](../parameters/concepts-parameters.md), which control the behavior of the extension:
 
    - `auto_explain.log_analyze` to `ON`.
    - `auto_explain.log_buffers` to `ON`.
@@ -35,7 +35,7 @@ In this article, you can learn:
    - `auto_explain.log_timing` to `ON`.
    - `auto_explain.log_verbose` to `ON`.
 
-   :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain server parameters that need to be configured." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
+   :::image type="content" source="./media/how-to-identify-slow-queries/auto-explain-parameters.png" alt-text="Screenshot of showing auto_explain parameters that need to be configured." lightbox="./media/how-to-identify-slow-queries/auto-explain-parameters.png":::
 
 > [!NOTE]  
 > If you set `auto_explain.log_min_duration` to 0, the extension starts logging all queries being executed on the server. This might affect performance of the database. Proper due diligence must be made to come to a value, which is considered slow on the server. For example, if all queries complete in less than 30 seconds, and that's acceptable for your application, then it's advised to update the parameter to 30,000 milliseconds. This would then log any query, which takes longer than 30 seconds to complete.
@@ -215,5 +215,5 @@ Finalize Aggregate (cost=180185.84..180185.85 rows=1 width=4) (actual time=10387
 - [Troubleshoot high CPU utilization in Azure Database for PostgreSQL](how-to-high-cpu-utilization.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
 - [Troubleshoot high memory utilization in Azure Database for PostgreSQL](how-to-high-memory-utilization.md).
-- [Server parameters in Azure Database for PostgreSQL](../server-parameters/concepts-server-parameters.md).
+- [Parameters in Azure Database for PostgreSQL](../parameters/concepts-parameters.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).

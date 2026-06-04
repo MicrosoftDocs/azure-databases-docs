@@ -8,8 +8,6 @@ ms.date: 08/13/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # System assigned managed identity

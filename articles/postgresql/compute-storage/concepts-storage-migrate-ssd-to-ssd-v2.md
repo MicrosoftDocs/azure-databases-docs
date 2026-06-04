@@ -13,9 +13,10 @@ ms.topic:  concept-article
 
 # Migrate or restore from Premium SSD to Premium SSDv2
 
-[!INCLUDE [applies-to-postgresql-flexible-server](~/reusable-content/ce-skilling/azure/includes/postgresql/includes/applies-to-postgresql-flexible-server.md)]
-
 This article provides step-by-step instructions to perform a restore of an Azure Database for PostgreSQL flexible server to a custom restore point.
+
+> [!NOTE]
+> Premium SSD v2 provides a baseline of 3,000 IOPS and 125 MB/s throughput for disks up to 399 GiB, and 12,000 IOPS and 500 MB/s throughput for disks 400 GiB or larger, at no additional cost. After migration, you can adjust IOPS and throughput based on your workload requirements.
 
 ## Steps to migrate or restore from Premium SSD to Premium SSDv2
 
@@ -43,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com/):
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/configure-server-page.png":::
 
 
-6. Once all the new server is configured to your needs, select **Review + create**.
+6. Once the new server is configured to your needs, select **Review + create**.
 
     :::image type="content" source="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="./media/concepts-storage-migrate-ssd-to-ssd-v2/restore-point-review-create.png":::
 

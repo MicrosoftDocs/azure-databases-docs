@@ -1,10 +1,10 @@
 ---
-title: What Is the PostgreSQL Extension for Visual Studio Code?
-description: Overview of the PostgreSQL extension for Visual Studio Code.
+title: What Is the PostgreSQL Extension for Visual Studio Code in Azure HorizonDB?
+description: Overview of the PostgreSQL extension for Visual Studio Code in Azure HorizonDB.
 author: swarathmika
 ms.author: skakivaya
 ms.reviewer: maghan
-ms.date: 01/09/2026
+ms.date: 05/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: overview
@@ -14,7 +14,7 @@ ai-usage: ai-assisted
 # customer intent: As a user, I want to understand what the PostgreSQL extension for VS Code is and how I can use it with an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# What is the PostgreSQL extension for Visual Studio Code?
+# What is the PostgreSQL extension for Visual Studio Code in Azure HorizonDB?
 
 The PostgreSQL extension for Visual Studio Code is a feature-rich tool designed to simplify PostgreSQL database management and development. This extension empowers developers to connect to PostgreSQL databases, write and execute queries, and manage database objects without leaving the Visual Studio Code environment. This extension revolutionizes the PostgreSQL development workflow by introducing comprehensive functionality, intuitive UI design, and seamless integration with cloud platforms such as Azure Database for PostgreSQL.
 
@@ -64,6 +64,38 @@ The Results Viewer enables you to interact with query results through features s
 - Search, filter, and sort options to analyze data efficiently.
 - Persistent data views to maintain context while navigating between tabs.
 
+### Apache AGE Graph Visualization
+
+The Apache AGE Graph Visualizer lets you run Apache AGE Cipher queries and explore the results as an interactive node-edge graph. The extension automatically detects graph query results and renders them in a visual explorer with per-node callouts, zoom and pan controls, export support, and theme-aware styling.
+
+To render results in the graph visualizer, your queries must meet the following requirements:
+- **Return full objects, not scalar properties** - The graph visualizer needs complete vertex and edge objects. Queries that extract scalar properties (`RETURN p.name, p.title`) return plain text values and won't render in the visualizer. Instead of returning properties, return the full objects and name the relationship variable:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Set `disp_label` for meaningful node text** - Without `disp_label`, nodes display internal IDs. Set this property so the visualizer shows useful labels:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r:BOUGHT_TOGETHER]->(b:Product)
+      SET a.disp_label = a.title
+      SET b.disp_label = b.title
+      RETURN a, r, b
+  $$) AS (a agtype, r agtype, b agtype);
+  ```
+- **Match output columns to returned objects** - The wrapper `AS (...)` clause must have one column per returned object. For multi-hop queries, include every intermediate node and edge:
+
+  ```sql
+  SELECT * FROM cypher('my_graph', $$
+      MATCH (a:Product)-[r1:BOUGHT_TOGETHER]->(mid:Product)-[r2:BOUGHT_TOGETHER]->(b:Product)
+      RETURN a, r1, mid, r2, b
+  $$) AS (a agtype, r1 agtype, mid agtype, r2 agtype, b agtype);
+  ```
+
 ### GitHub Copilot integration
 
 This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and even request Copilot to execute specific SQL operations. This feature enhances productivity by providing contextual guidance and actionable insights.
@@ -91,5 +123,5 @@ For bugs, feature requests, and issues, use the built-in feedback tool in Visual
 ## Related content
 
 - [Quickstart: Connect and query a database with the PostgreSQL extension for Visual Studio Code](vs-code-connect.md)
-- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code](vs-code-github-copilot.md)
+- [Quickstart: Configure GitHub Copilot for PostgreSQL extension in Visual Studio Code in Azure HorizonDB](vs-code-github-copilot.md)
 - [PostgreSQL extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)

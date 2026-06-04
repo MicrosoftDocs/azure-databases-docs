@@ -197,7 +197,7 @@ Creating new client connections to MySQL takes time. After you establish these c
 A connection pooler that decreases idle connections and reuses existing connections helps you avoid this problem. For the best experience, we recommend that you use a connection pooler like ProxySQL to efficiently manage connections. To learn about setting up ProxySQL, see [this blog post](https://techcommunity.microsoft.com/blog/adformysql/load-balance-read-replicas-using-proxysql-in-azure-database-for-mysql/880042).
 
 > [!NOTE]  
-> ProxySQL is an open-source community tool. Microsoft supports it on a best-effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/services/support/).
+> ProxySQL is an open-source community tool. Microsoft supports it on a best-effort basis. To get production support with authoritative guidance, contact [ProxySQL product support](https://proxysql.com/contact-us).
 
 ### innodb_strict_mode
 
@@ -212,11 +212,28 @@ You can set this parameter at the session level by using `init_connect`. For mor
 
 You can populate the time zone tables with the latest time zone information by calling the `mysql.az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench and then set the global time zones by using the [Azure portal](./how-to-configure-server-parameters-portal.md#working-with-the-time-zone-parameter) or the [Azure CLI](./how-to-configure-server-parameters-cli.md#working-with-the-time-zone-parameter). Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone.
 
+>[!NOTE]
+> Known Issue: After promoting a read replica to a standalone server in Azure Database for MySQL, the stored procedure `mysql.az_load_timezone` may not be present on the promoted replica server. This will impact the scenario when manual refresh of timezone tables is required on the promoted replica server. Current workaround is to seek assistance from Microsoft support.
+
 ### innodb_temp_data_file_size_max
 For Azure Database for MySQL Flexible Server (version 5.7 only), innodb_temp_data_file_size_max parameter defines the maximum size of InnoDB temporary tablespace data files in MB. Setting the value to 0 means no limit, allowing growth up to the full storage size. Any non-zero value below 64 MB is rounded up to 64 MB, while values above 64 MB are applied as specified. This is a static variable and requires a server restart for changes to take effect.
 
 > [!NOTE]  
 > - Note: In MySQL 8.0 and above, the [global temporary tablespace](https://dev.mysql.com/doc/refman/8.0/en/innodb-temporary-tablespace.html) (ibtmp1) only stores rollback segments for changes made to user-created temporary tables. Therefore, this parameter is no longer relevant.
+
+### innodb_monitor_enable
+
+This parameter does not support configuring multiple modules at the same time. To enable multiple modules, you must update the parameter separately for each module.
+When multiple modules are enabled, the parameter value reflects only the most recently updated module. Previously enabled modules remain active even though they are not displayed in the parameter value.
+To verify whether a module is enabled, run the following query:
+
+```sql
+SELECT name, subsystem, status
+FROM INFORMATION_SCHEMA.INNODB_METRICS
+ORDER BY NAME;
+```
+
+To disable modules by using the innodb_monitor_disable parameter, you must specify each module individually. Alternatively, you can use the value **all** to disable all modules at once.
 
 ### binlog_expire_logs_seconds
 

@@ -29,11 +29,6 @@ Root CAs are the top-level authorities in the certificate chain. Azure Database 
 - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
 - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
 
-China regions currently use the following CAs:
-
-- [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
-- [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
-- After Spring Festival (Chinese New Year) 2026: [Digicert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt). Prepare for this change in advance by adding the new root CA to your trusted root store.
 
 ### Intermediate CAs
 
@@ -58,9 +53,6 @@ Don't use intermediate CAs or server certificates in your trusted root store.
     - `Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16`
       - Server certificate
 
-### Read replicas
-
-Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root CA certificate than the primary server. You should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
 
 ### Certificate chains
 
@@ -80,13 +72,13 @@ Using recommended TLS configurations helps reduce the risk of connection failure
 
 ### Best configuration
 
-- Enforce the latest, most secure TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`.
+- Enforce the latest, most secure TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`.
 - Use `sslmode=verify-all` for PostgreSQL connections to ensure full certificate and hostname verification. Depending on your DNS configuration with Private Endpoints or virtual network integration, `verify-all` might not be possible. Therefore, you can use `verify-ca` instead.
 - Always maintain the [complete set of Azure root certificates in your trusted root store](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-authority-details).
 
 ### Good configuration
 
-- Set the `ssl_min_protocol_version` server parameter to `TLSv1.3`. If you must support TLS 1.2, don't set the minimal version.
+- Set the `ssl_min_protocol_version` parameter to `TLSv1.3`. If you must support TLS 1.2, don't set the minimal version.
 - Use `sslmode=verify-all` or `sslmode=verify-ca` for PostgreSQL connections to ensure full or partial certificate verification.
 - Ensure that the trusted root store contains the root CA certificate currently used by Azure Database for PostgreSQL:
   - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
@@ -140,10 +132,10 @@ All incoming connections that use earlier insecure versions of the TLS protocol,
 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is the recommended version since it's faster and more secure than TLS 1.2.
 
-Although we don't recommend it, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` server parameter to `OFF`.
+Although we don't recommend it, if needed, you can disable TLS for connections to your Azure Database for PostgreSQL. You can update the `require_secure_transport` parameter to `OFF`.
 
 > [!IMPORTANT]
-> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` server parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` server parameter.
+> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` parameter.
 
 ### Cipher suites
 

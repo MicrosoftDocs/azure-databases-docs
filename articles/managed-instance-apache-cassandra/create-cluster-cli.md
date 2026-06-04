@@ -86,7 +86,7 @@ This quickstart demonstrates how to use the Azure CLI commands to create a clust
 1. Create a datacenter for the cluster with three virtual machines (VMs). Use the following configuration:
 
    - **VM size**: Standard E8s v5
-   - **Data disks**: 4 P30 disks attached to each of the VMs deployed
+   - **Data disks**: Four P30 disks are attached to each deployed VM. When sizing storage, plan for a maximum sustained utilization of 50% to provide adequate headroom for tombstones and disk usage by system services. Additionally, backups temporarily consume local disk space before being persisted to Blob storage.
 
    After all the information is in place, use the [az managed-cassandra datacenter create](/cli/azure/managed-cassandra/datacenter#az-managed-cassandra-datacenter-create) command:
 

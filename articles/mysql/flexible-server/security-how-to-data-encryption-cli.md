@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - devx-track-azurecli
   - devx-track-arm-template
 ---
@@ -28,7 +27,7 @@ In this tutorial, you learn how to:
 
 - An Azure account with an active subscription.
 
-- If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
+- If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 
   > [!NOTE]  
   > With an Azure free account, you can now try Azure Database for MySQL Flexible Server for free for 12 months. For more information, see [Use an Azure free account to try Azure Database for MySQL - Flexible Server for free](how-to-deploy-on-azure-free-account.md).

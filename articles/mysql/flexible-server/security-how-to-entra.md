@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - devx-track-azurecli
   - has-azure-ad-ps-ref
   - sfi-image-nochange
@@ -28,7 +27,7 @@ In this tutorial, you learn how to:
 ## Prerequisites
 
 - An Azure account with an active subscription.
-- If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/free) before you begin.
+- If you don't have an Azure subscription, create an [Azure free account](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn) before you begin.
 - Install or upgrade Azure CLI to the latest version. See [Install Azure CLI](/cli/azure/install-azure-cli).
 
 <a id="configure-the-azure-ad-admin"></a>

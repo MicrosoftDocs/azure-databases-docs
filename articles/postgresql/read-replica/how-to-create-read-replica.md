@@ -20,7 +20,7 @@ This article provides step-by-step instructions to create a read replica of an A
 > [!IMPORTANT]  
 > Review the [considerations section in the overview article of read replicas](concepts-read-replicas.md#considerations).
 >  
-> Before changing the values of the following server parameters on the primary server, change them on the read replicas first. In doing so, you avoid issues during promotion of a read replica to primary: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
+> Before changing the values of the following parameters on the primary server, change them on the read replicas first. In doing so, you avoid issues during promotion of a read replica to primary: `max_connections`, `max_prepared_transactions`, `max_locks_per_transaction`, `max_wal_senders`, `max_worker_processes`.
 
 Before setting up a read replica for your Azure Database for PostgreSQL flexible server instance, ensure the primary server is configured to meet the necessary prerequisites. Specific settings on the primary server can affect the ability to create replicas.
 

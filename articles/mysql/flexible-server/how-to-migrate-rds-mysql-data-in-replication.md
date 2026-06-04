@@ -8,6 +8,9 @@ ms.date: 11/27/2024
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: how-to
+ms.collection:
+  - migration
+  - aws-to-azure
 ---
 
 # Migrate Amazon RDS for MySQL to Azure Database for MySQL using data-in replication
@@ -20,6 +23,8 @@ You can use methods such as MySQL dump and restore, MySQL Workbench Export and I
 Data-in Replication is a technique that replicates data changes from the source server to the destination server based on the binary log file position method. In this scenario, the MySQL instance operating as the source (on which the database changes originate) writes updates and changes as *events* to the binary log. The information in the binary log is stored in different logging formats according to the database changes being recorded. Replicas are configured to read the binary log from the source and execute the events in the binary log on the replica's local database.
 
 Set up [Replicate data into Azure Database for MySQL - Flexible Server](concepts-data-in-replication.md) to synchronize data from a source MySQL server to a target MySQL server. You can do a selective cutover of your applications from the primary (or source database) to the replica (or target database).
+
+See [Migrate databases from Amazon Web Services to Azure](/azure/migration/migrate-databases-from-aws), which includes [example migration scenarios](/azure/migration/migrate-databases-from-aws#migration-scenarios) that might align to your use case.
 
 In this tutorial, you'll learn how to set up Data-in Replication between a source server that runs Amazon Relational Database Service (RDS) for MySQL and a target server that runs Azure Database for MySQL Flexible Server.
 

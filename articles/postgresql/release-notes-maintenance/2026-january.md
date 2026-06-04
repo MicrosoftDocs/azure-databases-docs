@@ -4,7 +4,7 @@ description: Learn about the maintenance release notes for Azure Database for Po
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/05/2026
+ms.date: 03/09/2026
 ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
@@ -35,18 +35,17 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Improvements 
 
-- Updated validation for the `pg_partman_bgworker_role` server parameter to allow role names that include numeric characters.
+- Updated validation for the `pg_partman_bgworker_role` parameter to allow role names that include numeric characters.
 - Improved TOAST compression performance by changing the default compression algorithm to LZ4.
 - Azure Storage extension now supports importing and exporting Apache Parquet format.
 - Updated validation rules to block the use of certain special characters (`'`, `"`, `;`, `--`) in Microsoft Entra ID usernames through the web API.
-- Query text captured by Query Store can now be sent to customer Log Analytics via Azure Diagnostics Settings, controlled by the `pg_qs.emit_query_text` server parameter (GUC).
 - Query Store supports capturing runtime statistics and waits statistics in read replicas and streaming them to telemetry via Diagnostics Settings.
 - Multiple performance improvements in Query Store significantly reduce runtime overhead, resulting in faster and more efficient query execution.
 - Query Store now captures and sends parameter names, improving clarity, debuggability, and accuracy of query metadata.
 - New performance metrics (`wal_write_bytes`, `wal_write_count`, and `wal_write_latency`) are now emitted by write ahead log (WAL).
 - **Elastic clusters – Add Node Firewall Parity**: New nodes automatically inherit existing firewall rules, ensuring seamless and secure scaling out.
 - **Elastic clusters**: `citus_stat_counters` metric is enabled by default to provide improved Elastic clusters telemetry.
-- **Server Parameters – Reliability Improvements**: Server parameter updates are more resilient, reducing failures and improving configuration consistency.
+- **Parameters – Reliability Improvements**: Parameter updates are more resilient, reducing failures and improving configuration consistency.
 - **Server Deletion – Name Reuse Reliability**: Enhanced delete reliability ensures server names can be safely reused without delays or stuck resources.
 - Several targeted improvements and bug fixes that enhance stability, reliability, and overall service experience.
 

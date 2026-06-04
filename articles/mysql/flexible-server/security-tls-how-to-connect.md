@@ -9,7 +9,6 @@ ms.service: azure-database-mysql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - sfi-image-nochange
 ms.devlang: csharp
 ---
@@ -108,9 +107,8 @@ To set TLS versions on your Azure Database for MySQL Flexible Server instance, y
 To establish encrypted connections with your client applications, download the [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) and the [Microsoft RSA Root Certificate Authority 2017 certificate](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt). Combine both certificates before initiating a connection to the server. For detailed steps, refer to [How to update the root certificate store on your client](security-tls-root-certificate-rotation.md#how-to-update-the-root-certificate-store-on-your-client)
 
 > [!NOTE]  
-> You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in Azure Government cloud.
->
-> You must download [DigiCert Global Root certificate](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) for your servers in Azure Mooncake.
+> You must download [DigiCert Global Root G2 certificate](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem) for your servers in the Azure Government, Public, and Mooncake clouds.
+
 
 Save the certificate file to your preferred location. For example, this tutorial uses `c:\ssl` or `\var\www\html\bin` on your local environment or the client environment where your application is hosted.
 

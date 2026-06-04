@@ -1,8 +1,0 @@
-- name: $and
-  href: $and.md
-- name: $nor
-  href: $nor.md
-- name: $not
-  href: $not.md
-- name: $or
-  href: $or.md

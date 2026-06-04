@@ -9,7 +9,6 @@ ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - horz-security
   - sfi-image-nochange
   - sfi-ropc-blocked
 ---
@@ -199,7 +198,7 @@ select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
 
 If you disable group sync, members can sign in by using their access tokens and specify the group name as username.
 
-If you enable group sync (via pgaadauth.enable_group_sync server parameter set to "ON"), members should sign in by using their individual Microsoft Entra ID credentials, but they can still sign in by using the group name as the username.
+If you enable group sync (via pgaadauth.enable_group_sync parameter set to "ON"), members should sign in by using their individual Microsoft Entra ID credentials, but they can still sign in by using the group name as the username.
 
 - Group logins remain available for compatibility reasons but you can disable them by using: `ALTER ROLE "ROLE_NAME" NOLOGIN;`
 - Don't delete the group role to maintain syncing.

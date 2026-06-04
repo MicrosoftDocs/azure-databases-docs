@@ -8,8 +8,6 @@ ms.date: 08/08/2025
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
-ms.custom:
-  - horz-security
 ---
 
 # SCRAM authentication in Azure Database for PostgreSQL
@@ -23,13 +21,13 @@ SCRAM authentication imposes extra computational load on your application server
 
 ## Configure SCRAM authentication
 
-### Navigate to Server Parameters
+### Navigate to Parameters
 
-To configure SCRAM authentication, you need to access the Server Parameters page in the Azure portal:
+To configure SCRAM authentication, you need to access the Parameters page in the Azure portal:
 
 1. Sign in to the [Azure portal](https://portal.azure.com)
 2. Navigate to your Azure Database for PostgreSQL flexible server instance
-3. In the left-hand menu under **Settings**, select **Server parameters**
+3. In the left-hand menu under **Settings**, select **Parameters**
 4. Use the search box to find the parameters mentioned in the steps below
 
 ### Configuration Steps

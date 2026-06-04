@@ -1,7 +1,7 @@
 ---
 title: Citus Utility Functions Reference
 description: In the Citus utility functions reference, you find information about the user defined functions that give Citus extra functionality beyond the standard SQL commands.
-ms.date: 02/11/2026
+ms.date: 05/15/2026
 ms.service: postgresql-citus
 ms.topic: reference
 ai-usage: ai-assisted
@@ -1694,6 +1694,143 @@ select citus_create_restore_point('foo');
 │ 0/1EA2808                  │
 └────────────────────────────┘
 ```
+
+:::moniker range=">=citus-13"
+
+### citus_cluster_changes_block
+
+> [!NOTE]
+> Available in Citus 13.3 and later, and in Citus 14.1 and later.
+
+Acquires a cluster-wide block on distributed write commits, schema changes, and topology changes so that a consistent disk-snapshot backup can be taken across every node in the cluster. Designed to be paired with [`citus_cluster_changes_unblock`](#citus_cluster_changes_unblock) and observed through [`citus_cluster_changes_block_status`](#citus_cluster_changes_block_status).
+
+Citus commits distributed write transactions with two-phase commit (2PC). The commit decision is recorded in `pg_dist_transaction` on the coordinator. Independent per-node disk snapshots taken without coordination can therefore capture mid-flight 2PC transactions in inconsistent states (for example, a coordinator that already wrote the commit record but a worker that hasn't yet run `COMMIT PREPARED`). When restored, such snapshots can produce irrecoverable data inconsistencies.
+
+`citus_cluster_changes_block()` resolves this by spawning a dedicated background worker that, in a single long-lived transaction:
+
+- Acquires `ExclusiveLock` on `pg_dist_node`, `pg_dist_partition`, and `pg_dist_transaction` on the coordinator.
+- Issues `LOCK TABLE … IN EXCLUSIVE MODE` against `pg_dist_partition` and `pg_dist_transaction` on every metadata worker. (`pg_dist_node` is intentionally coordinator-only because node management is not delegated to workers.)
+
+Because the 2PC commit path takes `RowExclusiveLock` on `pg_dist_transaction` to record the commit decision, and that mode conflicts with `ExclusiveLock`, acquiring the lock guarantees that all in-flight 2PC transactions have already completed (including `COMMIT PREPARED` on every worker) before the call returns, and no new commit decisions can begin while the block is held. This creates a clean partition: everything before the lock is fully committed on all nodes, and everything after it hasn't started.
+
+> [!IMPORTANT]
+> Read queries and single-shard writes are **not** blocked. Multi-shard or cross-node writes that go through 2PC are **queued** (not aborted) and proceed normally after `citus_cluster_changes_unblock()` is called.
+
+> [!NOTE]
+> Holding `citus_cluster_changes_block()` only guarantees that no 2PC commit decisions cross the snapshot boundary. WAL flushing, snapshot orchestration, and the timing of per-node disk snapshots remain the operator's responsibility.
+
+The function blocks until the cluster-wide lock is held or until `timeout_ms` is reached. If the timeout elapses or any worker connection drops while the block is held, the background worker releases all locks and ends the transaction.
+
+#### Arguments
+
+**timeout_ms**: (Optional) Maximum lifetime of the block in milliseconds. After this many milliseconds elapse, the background worker automatically releases the locks and exits, even if `citus_cluster_changes_unblock()` has not been called. The default is `300000` (5 minutes). Allowed range: `1` to `1800000` (30 minutes). Values outside this range raise an error.
+
+#### Return value
+
+Returns `true` once the block is active and all locks are held cluster-wide. Raises an error if the lock cannot be acquired within `timeout_ms`, if a remote node is unreachable, or if a block is already active.
+
+#### Required privileges
+
+- Must be executed on the coordinator.
+- Requires superuser. The function is revoked from `PUBLIC`.
+
+#### Example
+
+```sql
+-- Block the cluster for up to 60 seconds while a snapshot is taken.
+SELECT citus_cluster_changes_block(60000);
+```
+
+```output
+ citus_cluster_changes_block
+-----------------------------
+ t
+(1 row)
+```
+
+```sql
+-- Trigger per-node disk snapshots from your orchestration tooling here.
+
+-- Release the block.
+SELECT citus_cluster_changes_unblock();
+```
+
+### citus_cluster_changes_unblock
+
+Signals the background worker started by [`citus_cluster_changes_block`](#citus_cluster_changes_block) to release all cluster-wide locks and exit. The function is idempotent: calling it when no block is active is not an error and simply returns `false`.
+
+Because the block is held by a dedicated background worker (and not by the calling session), `citus_cluster_changes_unblock()` can be called from any session, including a different session from the one that issued `citus_cluster_changes_block()`. This makes it safe to recover from operator disconnects.
+
+#### Arguments
+
+None.
+
+#### Return value
+
+Returns `true` if an active block was released. Returns `false` if no block was active (idempotent; never raises an error in this case).
+
+#### Required privileges
+
+- Must be executed on the coordinator.
+- Requires superuser. The function is revoked from `PUBLIC`.
+
+#### Example
+
+```sql
+SELECT citus_cluster_changes_unblock();
+```
+
+```output
+ citus_cluster_changes_unblock
+-------------------------------
+ t
+(1 row)
+```
+
+### citus_cluster_changes_block_status
+
+Returns the current state of the cluster-wide block managed by [`citus_cluster_changes_block`](#citus_cluster_changes_block) and [`citus_cluster_changes_unblock`](#citus_cluster_changes_unblock). Use this function to monitor backup coordination from automation or observability tooling.
+
+The function performs a liveness check on the background worker and auto-cleans stale state left behind by a crashed worker, so the reported `state` is always consistent with what is actually happening in the cluster.
+
+#### Arguments
+
+None.
+
+#### Return value
+
+A single row with the following columns:
+
+| Column | Type | Description |
+| --- | --- | --- |
+| `state` | `text` | Current state of the block. One of `inactive`, `starting`, `active`, `releasing`, or `error`. |
+| `worker_pid` | `int` | Process ID of the background worker holding the locks. `NULL` when `state = inactive`. |
+| `requestor_pid` | `int` | Process ID of the backend that called `citus_cluster_changes_block()`. `NULL` when `state = inactive`. |
+| `block_start_time` | `timestamptz` | Time at which the block was acquired. `NULL` when `state = inactive`. |
+| `timeout_ms` | `int` | The `timeout_ms` argument that was passed to `citus_cluster_changes_block()`. `NULL` when `state = inactive`. |
+| `node_count` | `int` | Number of nodes (coordinator plus metadata workers) covered by the block. `NULL` when `state = inactive`. |
+
+State machine: `inactive` → `starting` → `active` → `releasing` → `inactive`, or `→ error` on failure.
+
+#### Required privileges
+
+- Must be executed on the coordinator.
+- Readable by any role. The function exposes only non-sensitive state and is intentionally available to monitoring tools without superuser privileges.
+
+#### Example
+
+```sql
+SELECT * FROM citus_cluster_changes_block_status();
+```
+
+```output
+ state  | worker_pid | requestor_pid |       block_start_time        | timeout_ms | node_count
+--------+------------+---------------+-------------------------------+------------+------------
+ active |      24578 |         24501 | 2026-05-04 09:12:33.412+00    |      60000 |          3
+(1 row)
+```
+
+:::moniker-end
 
 ## Related content
 

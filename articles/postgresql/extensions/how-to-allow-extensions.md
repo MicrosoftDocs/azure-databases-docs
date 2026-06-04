@@ -24,9 +24,9 @@ Using the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server instance.
 
-2. From the resource menu, under **Settings** section, select **Server parameters**.
+2. From the resource menu, under **Settings** section, select **Parameters**.
 
-    :::image type="content" source="media/how-to-allow-extensions/server-parameters.png" alt-text="Screenshot that shows the Server parameters menu option." lightbox="media/how-to-allow-extensions/server-parameters.png":::
+    :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
 
 3. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
 
@@ -34,7 +34,7 @@ Using the [Azure portal](https://portal.azure.com):
 
 4. Select **Save**.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Server parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
+    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 

@@ -30,7 +30,7 @@ It's a built-in offering in your Azure Database for PostgreSQL flexible server i
 
 ## General description of the autonomous tuning algorithm
 
-When the `index_tuning.mode` server parameter is configured to `report`, tuning sessions are automatically started with the frequency configured in server parameter `index_tuning.analysis_interval`, expressed in minutes.
+When the `index_tuning.mode` parameter is configured to `report`, tuning sessions are automatically started with the frequency configured in parameter `index_tuning.analysis_interval`, expressed in minutes.
 
 In the first phase, the tuning session searches for the list of databases in which it considers that whatever recommendations it might produce might significantly affect the overall performance of the system. To do so, it collects all queries recorded by query store whose executions were captured within the lookup interval this tuning session is focusing on. The lookup interval currently spans to the past `index_tuning.analysis_interval` minutes, from the starting time of the tuning session.
 
@@ -152,7 +152,7 @@ Recommendations for vacuuming a table identify those tables that are bloated. Th
 
 Autonomous tuning can be enabled, disabled, and configured through a set of parameters that control its behavior.
 
-When autonomous tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` server parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
+When autonomous tuning is enabled, it wakes up with a frequency configured in the `index_tuning.analysis_interval` parameter (defaults to 720 minutes or 12 hours) and starts analyzing the workload recorded by query store during that period.
 
 Notice that if you change the value for `index_tuning.analysis_interval`, it only is observed after the next scheduled execution completes. So, for example, if you enable autonomous tuning one day at 10:00AM, because default value for `index_tuning.analysis_interval` is 720 minutes, the first execution is scheduled to start at 10:00PM that same day. Any changes you make to the value of `index_tuning.analysis_interval` between 10:00AM and 10:00PM don't have an effect on that initial schedule. Only when the scheduled run completes, it will read current value set for `index_tuning.analysis_interval` and will schedule next execution according to that value.
 
@@ -223,7 +223,7 @@ Any recommendations seen on a read replica were produced on the primary replica 
 
 ### Scale down of compute
 
-If autonomous tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` server parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute that didn't meet the requirements.
+If autonomous tuning is enabled on a server, and you scale down that server's compute to less than the minimum number of required vCores, the feature remains enabled. Because the feature isn't supported on servers with less than 4 vCores, it doesn't run to analyze the workload and produce recommendations, even if `index_tuning.mode` was set to `ON` when the compute was scaled down. While the server doesn't meet the minimum requirements, all `index_tuning.*` parameters are inaccessible. Whenever you scale your server back up to a compute that meets the minimum requirements, `index_tuning.mode` is configured with whatever value it was set before you scaled it down to a compute that didn't meet the requirements.
 
 ### High availability and read replicas
 

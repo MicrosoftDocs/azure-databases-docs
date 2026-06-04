@@ -31,7 +31,7 @@ If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, 
 
 ## Generic considerations with modules
 
-To use a module in your Azure Database for PostgreSQL flexible server instance, you only have to add it to the `shared_preload_libraries` server parameter as described in [load libraries](how-to-load-libraries.md).
+To use a module in your Azure Database for PostgreSQL flexible server instance, you only have to add it to the `shared_preload_libraries` parameter as described in [load libraries](how-to-load-libraries.md).
 
 Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
 
@@ -47,6 +47,7 @@ The following list enumerates all the supported extensions that require specific
 - `pg_prewarm`
 - `pg_repack`
 - `pg_stat_statements`
+- `pgcrypto`
 - `postgres_fdw`
 - `pgstattuple`
  
@@ -194,9 +195,41 @@ The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgsta
 
 For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
 
-The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a server parameter.
+The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a parameter.
 
 There's a tradeoff between the query execution information the `pg_stat_statements` extension provides on the server performance as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, we recommend that you set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether it's the case for you.
+
+### pgcrypto
+
+Azure Database for PostgreSQL supports application‑level, column‑level encryption through the [pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) PostgreSQL extension. The pgcrypto extension allows applications to explicitly invoke cryptographic functions in PostgreSQL SQL statements to encrypt or hash column values using cryptographic algorithms provided by the underlying OpenSSL library. 
+
+Starting with the Azure Linux 3.0, the OS uses OpenSSL 3.0 which moves several older and weaker cryptographic algorithms and low‑level APIs into a separate legacy provider that is not loaded by default. This change encourages the use of modern, more secure cryptographic algorithms and the high‑level OpenSSL EVP (Envelope) APIs. 
+
+As a result, cryptographic algorithms that are classified as legacy in OpenSSL 3.0 are not available by default for use by pgcrypto on Azure Database for PostgreSQL servers running Azure Linux 3.0. 
+
+#### Deprecated cryptographic algorithms 
+
+The following legacy cryptographic algorithms are placed in the OpenSSL 3.0 legacy provider and not available by default on Azure Database for PostgreSQL servers running Azure Linux 3.0. These algorithms may have been usable through pgcrypto on earlier platform versions but are no longer supported on Azure Linux 3.0. 
+
+Symmetric encryption algorithms (ciphers) 
+- Blowfish (BF‑CBC) 
+- CAST 
+- DES (single DES; not 3DES) 
+- IDEA 
+- RC2 
+- RC4 
+- RC5 
+- SEED 
+
+Message digest and hash algorithms 
+- MD2 
+- MD4 
+- MDC2 
+- RIPEMD‑160 
+- SHA‑1 (deprecated for digital signatures but may still be permitted for specific HMAC scenarios depending on configuration) 
+- Whirlpool 
+
+Azure Database for PostgreSQL upgrades to Azure Linux 3.0 are part of ongoing platform improvements. Applications that rely on pgcrypto should ensure they are using modern, supported cryptographic algorithms when performing application‑level, column‑level encryption. 
 
 ### postgres_fdw
 
@@ -219,7 +252,7 @@ Customers can't directly grant the necessary permissions. If you need to be able
 ### timescaleDB
 
 The `timescaleDB` extension is a time-series database packaged as an extension for PostgreSQL. It provides time-oriented analytical functions and optimizations and scales Postgres for time-series workloads.
-[Learn more about TimescaleDB](https://docs.timescale.com/timescaledb/latest/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
+[Learn more about TimescaleDB](https://docs.timescale.com/), a registered trademark of Timescale, Inc. Azure Database for PostgreSQL provides the TimescaleDB [Apache-2 edition](https://www.timescale.com/legal/licenses).
 
 #### Install TimescaleDB
 
