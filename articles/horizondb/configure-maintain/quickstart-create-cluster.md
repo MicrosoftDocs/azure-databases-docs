@@ -5,8 +5,7 @@ author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: configuration
+ms.service: azure-horizondb
 ms.topic: quickstart
 ai-usage: ai-assisted
 ---

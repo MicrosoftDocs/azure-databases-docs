@@ -3,7 +3,7 @@ author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
+ms.service: azure-horizondb
 ms.topic: include
 ms.custom:
   - automatically generated

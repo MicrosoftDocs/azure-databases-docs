@@ -5,8 +5,7 @@ author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: server-parameters
+ms.service: azure-horizondb
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to create parameter groups in Azure HorizonDB.
 ---
