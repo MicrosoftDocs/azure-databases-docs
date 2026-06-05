@@ -6,6 +6,7 @@ ms.author: kabharati
 ms.reviewer: denzilr, maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: high-availability
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability in Azure HorizonDB.
 ---
