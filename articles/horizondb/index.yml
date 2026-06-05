@@ -9,7 +9,7 @@ metadata:
   ms.service: azure-database-postgresql
   ms.topic: landing-page
 
-title: Microsoft Azure HorizonDB documentation
+title: Microsoft Azure HorizonDB documentation (Preview)
 summary: Azure HorizonDB is a fully managed, AI-ready Database-as-a-Service (DBaaS) offering built on the open-source PostgreSQL engine, designed to support mission-critical workloads with predictable performance, robust security, high availability, and seamless scalability. It empowers developers to build intelligent, AI-powered applications through native support for vector embeddings and integration with Foundry Tools.
 
 landingContent:
