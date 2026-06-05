@@ -5,8 +5,7 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: ai-vector-search
+ms.service: azure-horizondb
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
@@ -105,7 +104,7 @@ COMMIT;
 
 Most real-world retrieval queries combine vector similarity with structured filters - by tenant, category, date range, price, status, language, or any other metadata column. Advanced filtering on HorizonDB pushes those metadata predicates into the DiskANN index itself, so the index keeps walking the graph until your `LIMIT` is satisfied with rows that pass the `WHERE` clause. The result is low-latency, high-recall vector search even with selective filters over millions of vectors - in a single SQL query, with no application-side post-filtering, no over-fetching, and no separate vector database.
 
-Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md), the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md), [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md), and [hybrid search](hybrid-search.md).
+Advanced filtering is what makes DiskANN the right index for agentic applications, recommendation engines, multitenant AI search, and enterprise retrieval. It runs natively inside your HorizonDB instance next to your relational data, so you keep transactional consistency and familiar PostgreSQL SQL. It also composes with the rest of the HorizonDB AI retrieval stack - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md), the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md), [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md), and [hybrid search](hybrid-search.md).
 
 ### How it differs from other indexes
 

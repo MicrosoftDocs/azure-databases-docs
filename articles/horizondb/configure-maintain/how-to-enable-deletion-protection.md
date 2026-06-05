@@ -5,8 +5,8 @@ author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: security
+ms.service: azure-horizondb
+ms.subservice: configuration
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to prevent accidental deletion of an Azure HorizonDB instance by enabling a CanNotDelete lock.
 ---

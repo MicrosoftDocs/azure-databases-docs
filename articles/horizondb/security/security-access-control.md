@@ -5,7 +5,7 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
+ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: concept-article
 ms.custom:

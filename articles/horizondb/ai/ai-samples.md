@@ -5,8 +5,7 @@ author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: ai-agents
+ms.service: azure-horizondb
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
@@ -52,7 +51,7 @@ Financial analysts need fast, accurate answers grounded in earnings reports, SEC
 **Build with Azure HorizonDB:**
 
 1. Store financial documents (earnings reports, SEC filings, analyst notes) in Azure HorizonDB with chunked text and `pgvector` embeddings indexed with DiskANN for submillisecond similarity search across millions of passages.
-1. Create a full-text search index with `pg_fts` over financial terms, tickers, and entity names for precise keyword matching.
+1. Create a full-text search index with `pg_textsearch` over financial terms, tickers, and entity names for precise keyword matching.
 1. Use the `azure_ai` extension to generate embeddings and chat completions directly from SQL - no external orchestration needed.
 1. Combine vector search and BM25 full-text search with Reciprocal Rank Fusion for hybrid retrieval, then apply `azure_ai.rank()` to rerank the top candidates for precision.
 1. Build a conversational interface that retrieves context, generates grounded answers, and cites the source passages with document IDs and page numbers.

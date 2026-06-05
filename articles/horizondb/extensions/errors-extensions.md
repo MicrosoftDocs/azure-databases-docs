@@ -5,8 +5,8 @@ author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.service: azure-horizondb
+ms.subservice: extensions-modules
 ms.topic: troubleshooting
 # customer intent: As a user, I want to learn how to troubleshoot possible errors that might occur while managing extensions in an Azure HorizonDB.
 ---

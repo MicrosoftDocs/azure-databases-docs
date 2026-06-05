@@ -5,7 +5,7 @@ author: DDL-PM
 ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
+ms.service: azure-horizondb
 ms.subservice: configuration
 ms.topic: how-to
 ---

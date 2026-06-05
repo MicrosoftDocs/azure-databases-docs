@@ -5,8 +5,8 @@ author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.service: azure-horizondb
+ms.subservice: extensions-modules
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to view installed extensions in an Azure HorizonDB instance.
 ---

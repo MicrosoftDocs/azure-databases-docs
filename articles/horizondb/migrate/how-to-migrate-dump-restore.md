@@ -5,8 +5,8 @@ author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: migration-guide
+ms.service: azure-horizondb
+ms.subservice: migration
 ms.topic: how-to
 ms.custom:
   - build-2026-public-preview

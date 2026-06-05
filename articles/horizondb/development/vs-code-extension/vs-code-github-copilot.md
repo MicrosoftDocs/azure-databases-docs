@@ -5,8 +5,7 @@ author: jjfrost
 ms.author: jfrost
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: extensions
+ms.service: azure-horizondb
 ms.topic: quickstart
 ms.collection:
   - ce-skilling-ai-copilot

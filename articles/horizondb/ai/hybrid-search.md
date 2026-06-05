@@ -5,8 +5,7 @@ author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: ai-vector-search
+ms.service: azure-horizondb
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
@@ -21,12 +20,27 @@ ai-usage: ai-assisted
 
 Hybrid search combines two retrieval strategies in a single query:
 
-- **BM25 full-text search** with [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
+- **BM25 full-text search** with [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md) - strong on exact terms, product codes, error messages, named entities, and any query where the user typed words that should literally appear in the result.
 - **Vector similarity search** with [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md) and [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) - strong on synonyms, paraphrases, and semantic intent where the right document doesn't share the user's exact words.
 
 Used alone, each method has blind spots. Used together, they cover for each other. Hybrid search is the default retrieval pattern for production AI applications on Azure HorizonDB - agentic apps, knowledge bases, recommendation engines, support search, and RAG over enterprise content.
 
 This article shows you how to build hybrid search end to end inside HorizonDB, without copying data to a separate search service.
+
+## Article outline
+
+- [Why hybrid wins](#why-hybrid-wins)
+- [How hybrid search works on HorizonDB](#how-hybrid-search-works-on-horizondb)
+- [Reciprocal Rank Fusion (RRF)](#reciprocal-rank-fusion-rrf)
+- [Prerequisites](#prerequisites)
+- [Set up the table and indexes](#set-up-the-table-and-indexes)
+- [Generate embeddings in SQL](#generate-embeddings-in-sql)
+- [Run a hybrid search query](#run-a-hybrid-search-query)
+- [Combine hybrid search with metadata filters](#combine-hybrid-search-with-metadata-filters)
+- [Add a semantic reranker for the final accuracy bump](#add-a-semantic-reranker-for-the-final-accuracy-bump)
+- [When not to use hybrid search](#when-not-to-use-hybrid-search)
+- [Performance notes](#performance-notes)
+- [Related content](#related-content)
 
 ## Why hybrid wins
 
@@ -41,7 +55,7 @@ Pure vector search misses the first signal. Pure BM25 misses the second. Hybrid 
 
 A hybrid query has three logical steps, all of which run inside HorizonDB:
 
-1. **Run BM25** with `pg_fts` to get the top-N keyword matches.
+1. **Run BM25** with `pg_textsearch` to get the top-N keyword matches.
 1. **Run vector search** with `pgvector` (using DiskANN as the index) to get the top-N semantic matches.
 1. **Fuse the two ranked lists** into a single ordered result set.
 
@@ -68,7 +82,7 @@ Enable the extensions you need on your database:
 ```sql
 CREATE EXTENSION IF NOT EXISTS vector;
 CREATE EXTENSION IF NOT EXISTS pg_diskann CASCADE;
-CREATE EXTENSION IF NOT EXISTS pg_fts;
+CREATE EXTENSION IF NOT EXISTS pg_textsearch;
 CREATE EXTENSION IF NOT EXISTS azure_ai;
 ```
 
@@ -88,9 +102,10 @@ CREATE TABLE products (
 );
 
 -- BM25 index over the searchable text columns
-CREATE INDEX idx_products_fts
+CREATE INDEX idx_products_bm25
     ON products
-    USING fts (name, description);
+    USING bm25 (name, description)
+    WITH (text_config = 'english');
 
 -- DiskANN vector index for semantic search
 CREATE INDEX idx_products_vec
@@ -139,10 +154,12 @@ query AS (
 ),
 -- Top-N BM25 results, ranked by relevance
 bm25 AS (
-    SELECT id,
-           ROW_NUMBER() OVER () AS bm25_rank
-    FROM products, query
-    WHERE pgfts.fts_query(query.q_text, 'idx_products_fts')
+    SELECT p.id,
+           ROW_NUMBER() OVER (
+               ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
+           ) AS bm25_rank
+    FROM products p, query
+    ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
     LIMIT 50
 ),
 -- Top-N vector results, ranked by cosine distance
@@ -188,10 +205,13 @@ WITH query AS (
         )::vector AS q_vec
 ),
 bm25 AS (
-    SELECT id, ROW_NUMBER() OVER () AS bm25_rank
-    FROM products, query
+    SELECT p.id,
+           ROW_NUMBER() OVER (
+               ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
+           ) AS bm25_rank
+    FROM products p, query
     WHERE category = 'audio'
-      AND pgfts.fts_query(query.q_text, 'idx_products_fts')
+    ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
     LIMIT 50
 ),
 vec AS (
@@ -238,13 +258,13 @@ For mixed real-world queries - which is most production retrieval - hybrid is th
 
 ## Performance notes
 
-- **Latency.** Each ranker runs an independent index scan. With DiskANN and `pg_fts` both retrieving 50 candidates, hybrid search typically lands in the low double-digit milliseconds on millions of rows. The reranker step adds tens to low hundreds of milliseconds depending on the candidate pool.
+- **Latency.** Each ranker runs an independent index scan. With DiskANN and `pg_textsearch` both retrieving 50 candidates, hybrid search typically lands in the low double-digit milliseconds on millions of rows. The reranker step adds tens to low hundreds of milliseconds depending on the candidate pool.
 - **Candidate pool size.** Pulling 50 from each ranker and keeping 10 after RRF is a good default. Increasing the inner `LIMIT` improves recall at a small latency cost; raise it before tuning RRF's `k`.
-- **Index updates.** Both `pg_fts` and DiskANN apply inserts and updates in place. There's no cron job or refresh step.
+- **Index updates.** Both `pg_textsearch` and DiskANN apply inserts and updates in place. There's no cron job or refresh step.
 - **Embeddings.** Generate query embeddings once per request and reuse them across rankers, as shown in the SQL above.
 
 ## Related content
 
 - [Retrieval foundations: vector, full-text, and hybrid search in Azure HorizonDB (Preview)](ai-search-overview.md)
-- [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md)
+- [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md)
 - [Semantic reranking with the rank() function (Preview)](semantic-rank-function.md)

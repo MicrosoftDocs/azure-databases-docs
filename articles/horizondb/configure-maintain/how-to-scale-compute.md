@@ -5,7 +5,7 @@ author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
+ms.service: azure-horizondb
 ms.subservice: scale-out
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to scale the compute in Azure HorizonDB.
