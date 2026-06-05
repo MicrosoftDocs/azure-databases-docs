@@ -5,8 +5,7 @@ author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: backup-restore
+ms.service: azure-horizondb
 ms.topic: how-to
 # customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---

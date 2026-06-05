@@ -5,8 +5,7 @@ author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
-ms.service: azure-database-postgresql
-ms.subservice: networking
+ms.service: azure-horizondb
 ms.topic: how-to
 ms.custom:
   - build-2026-public-preview
