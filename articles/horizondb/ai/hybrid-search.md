@@ -28,7 +28,7 @@ Used alone, each method has blind spots. Used together, they cover for each othe
 
 This article shows you how to build hybrid search end to end inside HorizonDB, without copying data to a separate search service.
 
-## In this article
+## Article outline
 
 - [Why hybrid wins](#why-hybrid-wins)
 - [How hybrid search works on HorizonDB](#how-hybrid-search-works-on-horizondb)
