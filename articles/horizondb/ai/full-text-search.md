@@ -1,3 +1,4 @@
+---
 title: Full-text search with pg_textsearch in Azure HorizonDB
 description: Use the pg_textsearch extension to add BM25-ranked full-text search to Azure HorizonDB for keyword retrieval at scale, with language-aware tokenization and hybrid search patterns.
 author: abeomor
