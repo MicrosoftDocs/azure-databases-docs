@@ -17,7 +17,7 @@ ai-usage: ai-assisted
 # customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 
-# Implement durable AI pipelines for Azure HorizonDB (Preview)
+# Implement AI pipelines for Azure HorizonDB (Preview)
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embedding, extraction, generation, ranking, human approval) declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
@@ -63,6 +63,7 @@ Enable the required extensions:
 CREATE EXTENSION IF NOT EXISTS pg_durable;
 CREATE EXTENSION IF NOT EXISTS azure_ai;
 CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS pg_diskann;
 ```
 
 You also need an embedding (and optionally a generation) model that `azure_ai` can call. You have two options:
@@ -106,7 +107,7 @@ The smallest useful AI pipeline takes a source table of documents, chunks the bo
 
 ```sql
 -- You need to define the output sink table with the right columns
-CREATE TABLE rag_pipeline_output (
+CREATE TABLE documents_ai_pipeline_output (
     doc_id      INT,
     chunk_index INT,
     chunk_text  TEXT,
@@ -114,17 +115,24 @@ CREATE TABLE rag_pipeline_output (
     metadata    JSONB
 );
 
-CREATE TABLE documents (
+CREATE INDEX diskann_sq_embedding_idx ON documents_ai_pipeline_test_output USING diskann (embedding vector_cosine_ops) WITH (spherical_quantized = true);
+
+CREATE TABLE documents_ai_pipeline (
     id          SERIAL PRIMARY KEY,
     title       TEXT NOT NULL,
     content     TEXT NOT NULL,
     updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
+INSERT INTO documents_ai_pipeline (title, content) VALUES
+('PostgreSQL Basics', 'PostgreSQL is an open-source relational database designed for reliability, extensibility, and SQL compliance.'),
+('Vector Search', 'Vector search compares embeddings to find semantically similar content across large collections of text.'),
+('Durable Workflows', 'Durable execution helps pipelines recover from crashes, retry transient failures, and resume from checkpoints.');
+
 SELECT ai.create_pipeline(
     name   => 'rag_pipeline',
     source => ai.table_source(
-        table_name         => 'documents'
+        table_name         => 'documents_ai_pipeline'
     ),
     steps  => ARRAY[
         ai.chunk(input => 'content',
@@ -136,7 +144,7 @@ SELECT ai.create_pipeline(
                  dimensions   => 1536)
     ],
     trigger => 'on_change',
-    sink   => ai.table_sink('rag_pipeline_output')
+    sink   => ai.table_sink('documents_ai_pipeline_output')
 );
 ```
 
@@ -162,7 +170,7 @@ SELECT ai.run('rag_pipeline');
 Inspect the output table.
 
 ```sql
-SELECT doc_id, chunk_index, left(chunk_text, 80) AS preview
+SELECT doc_id, chunk_index, left(chunk_text, 80) AS preview,embedding 
 FROM rag_pipeline_output
 ORDER BY doc_id, chunk_index;
 ```
