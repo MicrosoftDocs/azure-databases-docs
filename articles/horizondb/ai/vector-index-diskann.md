@@ -53,6 +53,9 @@ DROP EXTENSION IF EXISTS pg_diskann;
 
 Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
 
+> [!TIP]  
+> If you're testing on a shared cluster or rerunning these examples multiple times, prefer temporary tables or unique table and index names. Reusing fixed object names can cause blocking or name-collision errors from earlier sessions.
+
 ```sql
 CREATE TABLE demo (
  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -67,7 +70,7 @@ INSERT INTO demo (embedding) VALUES
 ('[7.0, 8.0, 9.0]');
 
 -- create a diskann index by using Cosine distance operator
-CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+CREATE INDEX ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
 Once the index is created, you can run queries to find the nearest neighbors.
@@ -144,6 +147,27 @@ LIMIT 10;
 > [!TIP]  
 > Add a btree index on the columns you filter on most often (for example `tenant_id`, `category`). The planner uses both indexes together for the best plan.
 
+### Tune advanced filtering for a session
+
+If you're testing highly selective predicates and you want to force DiskANN to apply advanced filtering more aggressively, set the following parameters for the current session:
+
+```sql
+-- Enable the filter hook so DiskANN evaluates WHERE clauses during graph traversal
+SET diskann.enable_filter_hook = 'true';
+
+-- Apply filtering even for highly selective predicates
+SET diskann.selectivity_min = '0.0';
+SET diskann.selectivity_threshold = '1.0';
+
+-- Trade off filter accuracy and search speed
+SET diskann.filtering_beta = 0.85;
+
+-- Increase the search list size for better recall
+SET diskann.l_value_is = 300;
+```
+
+These settings are most useful for benchmarking and recall tuning. They increase the amount of work DiskANN does during query execution, so they can improve filtered-search accuracy at the cost of higher latency.
+
 ### Recall and `LIMIT`
 
 Advanced filtering tunes itself based on the `LIMIT` clause. With small `LIMIT` values and a highly selective filter, the index might walk further into the graph to satisfy the limit - increasing latency slightly. If recall is more important than latency, raise `diskann.l_value_is` for the session or transaction. See [Configuration parameters](#configuration-parameters).
@@ -167,7 +191,7 @@ To reduce the size of your index and fit more data into memory, enable spherical
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops)
 WITH (
     spherical_quantized = true,
-    sq_bits = 1,
+    sq_bits = 4,
     sq_training_samples = 25000
 );
 ```
