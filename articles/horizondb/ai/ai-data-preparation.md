@@ -125,13 +125,14 @@ HorizonDB supports three vector index types: IVFFlat, HNSW, and DiskANN. Each ty
 
 ### Full-text index
 
-For hybrid search (combining keyword and vector results), also create a full-text search index on the chunk text by using the `pg_fts` extension:
+For hybrid search (combining keyword and vector results), also create a full-text search index on the chunk text by using the `pg_textsearch` extension:
 
 ```sql
-CREATE INDEX ON document_chunks USING fts (chunk_text);
+CREATE INDEX ON document_chunks USING bm25 (chunk_text)
+  WITH (text_config = 'english');
 ```
 
-The `pg_fts` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md).
+The `pg_textsearch` extension enables BM25-ranked keyword matching alongside vector similarity, which consistently improves retrieval quality over either approach alone. To learn more, see [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md).
 
 ## Beyond search: additional preparation tasks
 

@@ -152,9 +152,12 @@ WITH query AS (
         )::vector AS q_vec
 ),
 bm25 AS (
-    SELECT id, ROW_NUMBER() OVER () AS bm25_rank
-    FROM products, query
-    WHERE pgfts.fts_query(query.q_text, 'idx_products_fts')
+    SELECT p.id,
+           ROW_NUMBER() OVER (
+               ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
+           ) AS bm25_rank
+    FROM products p, query
+    ORDER BY p.description <@> to_bm25query(query.q_text, 'idx_products_bm25')
     LIMIT 50
 ),
 vec AS (

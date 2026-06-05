@@ -98,7 +98,7 @@ Prepare your data for AI retrieval by using automated, fault-tolerant workflows.
 Find the right information using multiple retrieval strategies, individually or combined.
 
 - **[Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)**: Semantic similarity search using vector embeddings.
-- **[Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md)**: BM25 keyword matching for exact terms and identifiers.
+- **[Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md)**: BM25 keyword matching for exact terms and identifiers.
 - **[Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)**: Combine vector and full-text search with Reciprocal Rank Fusion for best overall coverage.
 
 #### Improve search performance

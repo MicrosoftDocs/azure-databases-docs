@@ -74,9 +74,9 @@ Full-text search is precise and fast. Use it when queries contain exact terms, i
 
 ### Azure HorizonDB implementation
 
-Azure HorizonDB offers full-text search through `pg_fts`, which provides BM25 ranking, fuzzy matching, phrase proximity search, and CJK language analyzer support.
+Azure HorizonDB offers full-text search through `pg_textsearch`, which provides BM25 ranking, fuzzy matching, phrase proximity search, and CJK language analyzer support.
 
-To learn more, see [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md).
+To learn more, see [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md).
 
 ## Hybrid search
 
@@ -94,7 +94,7 @@ Hybrid search is the recommended approach for most production search application
 
 ### Azure HorizonDB implementation
 
-Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_fts` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) for prefiltered hybrid queries.
+Azure HorizonDB supports hybrid search by combining `pgvector` for vector similarity, `pg_textsearch` for BM25 keyword matching, and SQL-based RRF to merge results. You can optionally add [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) for prefiltered hybrid queries.
 
 To learn more, see [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md).
 
@@ -161,5 +161,5 @@ To learn how to build a retrieval-and-rerank pipeline, see [Implement durable AI
 ## Related content
 
 - [Implement vector search in Azure HorizonDB using the pgvector extension (Preview)](vector-search-pgvector.md)
-- [Full-text search with pg_fts in Azure HorizonDB (Preview)](full-text-search.md)
+- [Full-text search with pg_textsearch in Azure HorizonDB (Preview)](full-text-search.md)
 - [Hybrid search in Azure HorizonDB (Preview)](hybrid-search.md)
