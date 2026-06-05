@@ -6,6 +6,7 @@ ms.author: avrastog
 ms.reviewer: maghan, randolphwest
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: extensions-modules
 ms.topic: concept-article
 ms.custom:
   - automatically generated
