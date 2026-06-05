@@ -6,6 +6,7 @@ ms.author: avrastog
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: monitoring
 ms.topic: best-practice
 ms.custom:
   - build-2026-public-preview
