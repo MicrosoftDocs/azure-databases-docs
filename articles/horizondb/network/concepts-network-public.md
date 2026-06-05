@@ -6,6 +6,7 @@ ms.author: mpopovic
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: networking
 ms.topic: concept-article
 ms.custom:
   - build-2026-public-preview
