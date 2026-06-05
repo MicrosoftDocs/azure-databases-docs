@@ -6,6 +6,7 @@ ms.author: avrastog
 ms.reviewer: sbalijepalli, maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: configuration
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot

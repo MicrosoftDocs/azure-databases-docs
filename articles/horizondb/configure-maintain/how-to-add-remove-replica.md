@@ -6,6 +6,7 @@ ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: configuration
 ms.topic: how-to
 ---
 
