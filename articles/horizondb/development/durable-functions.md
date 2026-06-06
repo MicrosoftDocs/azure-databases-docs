@@ -74,8 +74,8 @@ Use these setup articles:
 - [Create extensions](../extensions/how-to-create-extensions.md)
 
 1. Create a parameter group for your server.
-2. Set `shared_preload_libraries` to include `pg_textsearch`.
-3. Set `azure.extensions` to include `pg_textsearch`.
+2. Set `shared_preload_libraries` to include `pg_durable`.
+3. Set `azure.extensions` to include `pg_durable`.
 4. Apply the parameter group to the server.
 5. Connect to each target database and run:
 
