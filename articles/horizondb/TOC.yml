@@ -314,7 +314,7 @@
           href: ai/ai-search-overview.md
         - name: Vector search (pgvector)
           href: ai/vector-search-pgvector.md
-        - name: Full-text search (pg_fts)
+        - name: Full-text search (pg_textsearch)
           href: ai/full-text-search.md
         - name: Hybrid search
           href: ai/hybrid-search.md
