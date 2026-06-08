@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 05/11/2026
+ms.date: 06/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -50,13 +50,13 @@ ms.custom:
 | 18 | 1.7.0 <sup>*</sup> |
 | 17 | 1.7.0 <sup>*</sup> |
 | 16 | 1.6.0 <sup>*</sup> |
-| 15 | 1.5.0 <sup>*</sup> |
-| 14 | 1.5.0 <sup>*</sup> |
+| 15 | 1.6.0 <sup>*</sup> |
+| 14 | 1.6.0 <sup>*</sup> |
 | 13 | 1.5.0 <sup>*</sup> |
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## amcheck
 
 [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity.
@@ -88,7 +88,7 @@ ms.custom:
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## auto_explain
 
 [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand.
@@ -104,7 +104,7 @@ ms.custom:
 | 12 | Without version <sup>*</sup> |
 | 11 | Without version <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## azure_ai
 
 [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL.
@@ -136,7 +136,7 @@ ms.custom:
 | 12 | 1.6 <sup>*</sup> |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## bloom
 
 [bloom](https://www.postgresql.org/docs/current/bloom.html) provides an index access method based on Bloom filters.
@@ -216,7 +216,7 @@ ms.custom:
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -536,7 +536,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.4.3 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_buffercache
 
 [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache.
@@ -568,7 +568,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 | 12 | 1.6 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
 ## pgcrypto
 
@@ -617,7 +617,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -633,7 +633,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 | 12 | 1.0.1 <sup>*</sup> |
 | 11 | 1.0.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
 ## pg_freespacemap
 
@@ -666,7 +666,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 | 12 | 1.3.7 <sup>*</sup> |
 | 11 | 1.3.7 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 ## pg_ivm
 
@@ -683,7 +683,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -699,7 +699,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 2.4.1 <sup>*</sup> |
 | 11 | 2.4.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_partman
 
 [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
@@ -715,7 +715,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_partman_bgw
 
 [pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
@@ -731,7 +731,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_prewarm
 
 [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data.
@@ -747,7 +747,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 1.2 <sup>*</sup> |
 | 11 | 1.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
 ## pg_repack
 
@@ -812,7 +812,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.5 <sup>*</sup> |
 | 11 | 1.5 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## pg_stat_statements
 
 [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) tracks execution statistics of all SQL statements executed.
@@ -828,7 +828,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.7 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
 ## pgstattuple
 
@@ -1149,7 +1149,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.10.0 <sup>*</sup> |
 | 11 | 1.7.4 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
 ## topn
 
 [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
@@ -1261,4 +1261,4 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.2 <sup>*</sup> |
 | 11 | 2.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` server parameter.
