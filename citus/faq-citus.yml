@@ -9,6 +9,7 @@ metadata:
   ms.service: azure-database-postgresql
   ms.subservice: citus
   ms.topic: faq
+  monikerRange: "citus-12 || citus-13 || citus-14"
   ms.custom:
     - version 13
   
@@ -184,7 +185,11 @@ sections:
           
           Learn more in `manual_prop`. Also note that even after manually propagating `CREATE DATABASE`, you must still install Citus there. For more information, see [Creating a new database](cluster-management.md#creating-a-new-database).
           
-          As of Citus 13.1, additional database/role DDLs are auto-propagated: See [reference-ddl](reference-ddl.md#database-and-role-management-ddl-citus-131) for details.
+          :::moniker range=">=citus-13"
+
+          As of Citus 13.1, additional database/role DDLs are auto-propagated. See [Database and role management DDL](reference-ddl.md#database-and-role-management-ddl) for details.
+
+          :::moniker-end
 
           In the future, Citus automatically propagates more kinds of objects. The advantage of automatic propagation is that Citus automatically creates a copy on any newly added worker nodes. For more information, see [Distributed object table](api-metadata.md#distributed-object-table).
 

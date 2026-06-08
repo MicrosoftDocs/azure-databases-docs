@@ -4,7 +4,7 @@ description: This article describes how to create and modify distributed objects
 ms.date: 02/11/2026
 ms.service: postgresql-citus
 ms.topic: reference
-monikerRange: "citus-13 || citus-14"
+monikerRange: "citus-12 || citus-13 || citus-14"
 ---
 
 # Create and modify distributed objects (DDL)
@@ -13,11 +13,11 @@ The following sections describe how to create and modify distributed objects by 
 
 ## Creating and distributing schemas
 
-Citus 12.0 introduced `schema_based_sharding` that allows a schema to be distributed. Distributed schemas automatically associate with individual colocation groups. When you create tables in these schemas, the tables automatically become colocated distributed tables without a shard key.
+Citus 12.0 introduced schema-based-sharding that allows a schema to be distributed. Distributed schemas automatically associate with individual colocation groups. When you create tables in these schemas, the tables automatically become colocated distributed tables without a shard key.
 
 You can distribute a schema in Citus in two ways:
 
-1. Call the `citus_schema_distribute` function manually:
+1. Call the `citus_schema_distribute` function manually from the coordinator:
 
    ```sql
    SELECT citus_schema_distribute('user_service');
@@ -40,13 +40,29 @@ You can distribute a schema in Citus in two ways:
 
 The process of distributing the schema automatically assigns and moves it to an existing node in the cluster. The background shard rebalancer takes these schemas and all tables within them when rebalancing the cluster. It then performs the optimal moves and migrates the schemas between the nodes in the cluster.
 
-To convert a schema back into a regular PostgreSQL schema, use the `citus_schema_undistribute` function:
+To convert a schema back into a regular PostgreSQL schema, call the `citus_schema_undistribute` function from the coordinator:
 
 ```sql
 SELECT citus_schema_undistribute('user_service');
 ```
 
 The tables and data in the `user_service` schema move from the current node back to the coordinator node in the cluster.
+
+:::moniker range=">=citus-13"
+
+See also [DDLs allowed from any node for distributed-schema tables](#ddls-allowed-from-any-node-for-distributed-schema-tables) for DDLs that you can run from any node in the cluster for distributed-schema tables.
+
+:::moniker-end
+
+## Propagating schemas
+
+You can propagate schemas cluster-wide even when you don't use them for schema-based-sharding, for example, to create regular distributed tables in a non-default schema for row-based-sharding purposes.
+
+:::moniker range=">=citus-13"
+
+As of Citus 13.3, any node in the cluster can propagate `CREATE SCHEMA`, `DROP SCHEMA`, and `ALTER SCHEMA` commands to all other nodes, regardless of whether the schema is used for schema-based-sharding purposes (created while `citus.enable_schema_based_sharding` is enabled) or not.
+
+:::moniker-end
 
 ## Creating and distributing tables
 
@@ -194,9 +210,17 @@ SELECT create_distributed_table('products', 'store_id', colocate_with => 'stores
 
 Information about colocation groups is stored in the `pg_dist_colocation` table, while `pg_dist_partition` reveals which tables are assigned to which groups.
 
-## Dropping tables
+## Dropping and truncating tables
 
-Use the standard PostgreSQL DROP TABLE command to remove your distributed tables. As with regular tables, DROP TABLE removes any indexes, rules, triggers, and constraints that exist for the target table. In addition, it also drops the shards on the worker nodes and cleans up their metadata.
+Use the standard PostgreSQL `DROP TABLE` command to remove your distributed tables or `TRUNCATE` command to remove all rows from your distributed tables. As with regular tables, `DROP TABLE` removes any indexes, rules, triggers, and constraints that exist for the target table. In addition, it also drops the shards on the worker nodes and cleans up their metadata.
+
+Also, Citus supports `TRUNCATE` commands on Citus tables from any node.
+
+:::moniker range=">=citus-13"
+
+As of Citus 13.3, Citus also supports `DROP TABLE` commands on distributed-schema tables from any node.
+
+:::moniker-end
 
 ```sql
 DROP TABLE github_events;
@@ -207,6 +231,13 @@ DROP TABLE github_events;
 Citus automatically propagates many kinds of DDL statements. Modifying a distributed table on the coordinator node updates shards on the workers too. Other DDL statements require manual propagation, and certain others are prohibited such as those statements that would modify a distribution column. Attempting to run DDL that's ineligible for automatic propagation raises an error and leaves tables on the coordinator node unchanged.
 
 Here's a reference of the categories of DDL statements, which propagate. You can enable or disable automatic propagation by using a configuration parameter.
+
+:::moniker range=">=citus-13"
+
+> [!NOTE]
+> For distributed-schema tables, some of these DDL statements can also be run from any node. See [DDLs allowed from any node for distributed-schema tables](#ddls-allowed-from-any-node-for-distributed-schema-tables).
+
+:::moniker-end
 
 ### Adding or modifying columns
 
@@ -386,6 +417,17 @@ Adding an index takes a write lock, which can be undesirable in a multitenant sy
 CREATE INDEX CONCURRENTLY clicked_at_idx ON clicks USING BRIN (clicked_at);
 ```
 
+:::moniker range=">=citus-13"
+
+## Security labels and permissions
+
+As of Citus 13.1:
+
+- `SECURITY LABEL` management for tables and columns is supported from any node.
+- The coordinator node auto-propagates `GRANT/REVOKE` rights on table columns.
+
+:::moniker-end
+
 ## Types and functions
 
 When you create custom SQL types and user-defined functions, Citus automatically propagates them to worker nodes. However, creating these database objects in a transaction that includes distributed operations involves tradeoffs.
@@ -428,29 +470,39 @@ If you run into this problem, try one of these two workarounds:
 1. Set `citus.create_object_propagation` to `deferred` to return to the old object propagation behavior. This option might cause some inconsistency between which database objects exist on different nodes.
 1. Set `citus.multi_shard_modify_mode` to `sequential` to disable per-node parallelism. Data load in the same transaction might be slower.
 
-### Database and role management DDL (Citus 13.1)
+:::moniker range=">=citus-13"
+
+## DDLs allowed from any node for distributed-schema tables
+
+On top of the DDLs supported for Citus tables, the following DDLs are supported from any node to manage distributed-schema tables as of Citus 13.3:
+- `CREATE / DROP / ALTER TABLE`
+- `CREATE / DROP / ALTER INDEX`
+- `CREATE / DROP / ALTER TRIGGER`
+
+## View and materialized view management DDL
+
+As of Citus 13.3, `CREATE VIEW`, `CREATE MATERIALIZED VIEW`, `DROP VIEW`, and `ALTER VIEW` commands are propagated from any node to all other nodes in the cluster.
+
+## Database and role management DDL
 
 Citus 13.1 expands auto-propagation to ease role and database management. The coordinator now auto-propagates:
 
-- `ALTER DATABASE .. SET ..`
-- `ALTER USER RENAME`
+- `ALTER DATABASE SET / OWNER TO`
+- `GRANT/REVOKE` rights on databases
 - `COMMENT ON DATABASE` / `COMMENT ON ROLE`
-- `CREATE DATABASE` / `DROP DATABASE`
-- `GRANT/REVOKE` rights on table columns
 - `REASSIGN OWNED BY`
-- `SECURITY LABEL` on tables and columns
 
 Additionally, Citus propagates some role and database management commands issued **from any node**:
 
 - `CREATE DATABASE` / `DROP DATABASE`
-- `SECURITY LABEL ON ROLE`
-- General role management commands
+- `CREATE ROLE` / `DROP ROLE` / `ALTER ROLE` / `GRANT/REVOKE` rights on roles
+- `SECURITY LABEL` on roles
 
-See [citus.enable_ddl_propagation](api-guc.md#citusenable_ddl_propagation-boolean).
+:::moniker-end
 
 ## Manual modification
 
-Most DDL commands are autopropagated. For any others, you can propagate the changes manually, see [Manual query propagation](reference-propagation.md).
+Most DDL commands are autopropagated, see [citus.enable_ddl_propagation](api-guc.md#citusenable_ddl_propagation-boolean). For any others, you can propagate the changes manually, see [Manual query propagation](reference-propagation.md).
 
 ## Related content
 

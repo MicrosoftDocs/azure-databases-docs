@@ -81,6 +81,15 @@ sudo service postgresql-17 restart
 
 Major and minor version upgrades follow the same steps, but be careful: they can make backward-incompatible changes in the Citus API. Review the Citus [changelog](https://github.com/citusdata/citus/blob/master/CHANGELOG.md) before an upgrade and look for any changes that might cause problems for your application.
 
+:::moniker range=">=citus-13"
+
+> [!IMPORTANT]
+> Starting from Citus 13.2, important features can be backported to recent supported major versions. For this reason, always upgrade to the most recent minor release of the target major version to avoid missing features. For example, suppose a feature introduced in Citus 20.1 is backported to Citus 18.3 and 19.5, and you want to upgrade to Citus 19 from Citus 18.3. Then, upgrading to 19.4 or earlier would mean losing that feature — upgrade to 19.5 or later instead. Or, if you want to upgrade to Citus 20, then upgrade to 20.1 or later, not 20.0.
+> 
+> In short, always upgrade to the latest minor release of the target major version, not an earlier minor release.
+
+:::moniker-end
+
 Each major and minor version of Citus is published as a package with a separate name. Installing a newer package automatically removes the older version.
 
 #### Step 1. Update Citus package
