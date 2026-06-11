@@ -4,7 +4,7 @@ description: This article describes how to perform on-demand backups of an Azure
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
@@ -33,7 +33,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 4.  In the **Backup** pane, the **Backup name** text box is prefilled with a unique name automatically generated for your backup. Feel free to change that name to any name of your preference.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/backup-name.png" alt-text="Screenshot showing the Take backup pane and highlighting the text box in which you have to provide the backup name." lightbox="./media/how-to-on-demand-backup/backup-name.png":::
+    :::image type="content" source="./media/how-to-on-demand-backup/backup-name.png" alt-text="Screenshot showing the Backup pane with the text box in which you have to provide the backup name." lightbox="./media/how-to-on-demand-backup/backup-name.png":::
 
 5. Select the **Backup** button.
 
