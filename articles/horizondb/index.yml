@@ -101,7 +101,7 @@ landingContent:
       url: ai/vector-search-pgvector.md
     - text: DiskANN vector indexing
       url: ai/vector-index-diskann.md
-    - text: Full-text search with pg_fts
+    - text: Full-text search with pg_textsearch
       url: ai/full-text-search.md
     - text: Hybrid search
       url: ai/hybrid-search.md
