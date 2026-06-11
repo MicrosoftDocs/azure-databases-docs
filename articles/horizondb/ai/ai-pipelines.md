@@ -6,6 +6,7 @@ ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-search
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
@@ -83,17 +84,17 @@ If you don't use AI Model Management, deploy your own model through [Microsoft F
 
 ```sql
 SELECT model_registry.model_add(
-    'my-embedding',                          -- a unique alias for your model
-    'https://YOUR_RESOURCE.openai.azure.com/', -- your Azure OpenAI endpoint
-    'text-embedding-3-small',                -- deployment name
-    'text-embedding-3-small',                -- model name
-    NULL,                                    -- API version (NULL for latest)
-    'subscription-key',                      -- auth type
-    'YOUR_API_KEY'                           -- endpoint key
+    'my-embedding',                                 -- a unique alias for your model
+    'https://YOUR_RESOURCE.services.ai.azure.com/', -- your model endpoint URL
+    'text-embedding-3-small',                       -- deployment name
+    'text-embedding-3-small',                       -- model name
+    NULL,                                           -- API version (NULL for latest)
+    'subscription-key',                             -- auth type
+    'YOUR_API_KEY'                                  -- endpoint key
 );
 ```
 
-For complete details on model registration, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
+For complete details on model registration and supported endpoint URL formats, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 The pipeline examples in this article work the same way under either option.
 

@@ -6,6 +6,7 @@ ms.author: adig
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-graph
 ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
@@ -61,7 +62,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
 
 1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use, such as `gpt-5.4`, and complete the deployment.
 
-1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
+1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **endpoint URL**.
 
 1. Navigate to your model deployment and note the following values:
    - **Deployment name**: The name you assigned during deployment, such as `gpt-5-deployment`.
@@ -71,17 +72,17 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
 
   ```sql
   SELECT model_registry.model_add(
-      'my-gpt',                                  -- a unique alias for your model
-      'https://my-endpoint.openai.azure.com/',    -- your Azure OpenAI endpoint
-      'gpt-5-deployment',                        -- deployment name
-      'gpt-5',                                   -- model name
-      '2025-01-01-preview',                      -- API version (NULL for latest)
-      'subscription-key',                        -- auth type
-      '<your-endpoint-key>'                      -- endpoint key
+      'my-gpt',                                       -- a unique alias for your model
+      'https://my-endpoint.services.ai.azure.com/',   -- your model endpoint URL
+      'gpt-5-deployment',                             -- deployment name
+      'gpt-5',                                        -- model name
+      '2025-01-01-preview',                           -- API version (NULL for latest)
+      'subscription-key',                             -- auth type
+      '<your-endpoint-key>'                           -- endpoint key
   );
   ```
 
-For complete details on model registration, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
+For complete details on model registration and supported endpoint URL formats, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ## The Source Data
 
