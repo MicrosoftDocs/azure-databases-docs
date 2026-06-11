@@ -1,16 +1,16 @@
 ---
 title: Configure Storage Autogrow
-description: This article describes how you can configure storage autogrow in an Azure Database for PostgreSQL flexible server instance.
+description: This article describes how you can configure storage autogrow in an Azure Database for PostgreSQL flexible server.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 07/03/2025
+ms.date: 06/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
 ms.custom:
   - sfi-image-nochange
-# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server instance.
+# customer intent: As a user, I want to learn how to configure storage autogrow in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Configure storage autogrow
@@ -36,7 +36,7 @@ The process of scaling storage is performed online, without causing any downtime
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
 1. In the resource menu, under the **Settings** section, select **Compute + storage**.
 
@@ -44,15 +44,19 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. In the **Storage** section, enable the **Storage autogrow** checkbox.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png" alt-text="Screenshot showing how to enable storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server.png":::
 
 1. Select **Save** to apply the changes.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
+    :::image type="content" source="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after enabling storage autogrow on an existing Azure Database for flexible server." lightbox="media/how-to-auto-grow-storage/enable-autogrow-existing-server-save.png":::
 
-1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
+1. A notification shows that a deployment is in progress.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
+   :::image type="content" source="./media/how-to-auto-grow-storage/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to enable storage autogrow on an existing Azure Database for flexible server." lightbox="./media/how-to-auto-grow-storage/deployment-progress-notification.png":::
+
+1. When the scale process completes, a notification shows that the deployment succeeded.
+
+   :::image type="content" source="./media/how-to-auto-grow-storage/deployment-succeeded-notification.png" alt-text="Screenshot showing that the deployment to enable storage autogrow succeeded." lightbox="./media/how-to-auto-grow-storage/deployment-progress-notification.png":::
 
 ### [CLI](#tab/cli-enable-existing-server)
 
@@ -87,9 +91,13 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png" alt-text="Screenshot showing how to save changes after disabling storage autogrow on an existing Azure Database for flexible server instance." lightbox="media/how-to-auto-grow-storage/disable-autogrow-existing-server-save.png":::
 
-1. A deployment initiates and, when it completes, a notification shows that autogrow is successfully enabled.
+1. A notification shows that a deployment is in progress.
 
-    :::image type="content" source="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png" alt-text="Screenshot showing notification that confirms that autogrow is enabled." lightbox="media/how-to-auto-grow-storage/notification-autogrow-existing-server.png":::
+   :::image type="content" source="./media/how-to-auto-grow-storage/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to disable storage autogrow on an existing Azure Database for flexible server." lightbox="./media/how-to-auto-grow-storage/deployment-progress-notification.png":::
+
+1. When the scale process completes, a notification shows that the deployment succeeded.
+
+   :::image type="content" source="./media/how-to-auto-grow-storage/deployment-succeeded-notification.png" alt-text="Screenshot showing that the deployment to disable storage autogrow succeeded." lightbox="./media/how-to-auto-grow-storage/deployment-progress-notification.png":::
 
 ### [CLI](#tab/cli-disable-existing-server)
 
