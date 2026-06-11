@@ -4,7 +4,7 @@ description: This article describes how to restart the PostgreSQL engine of an A
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 04/22/2025
+ms.date: 06/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
@@ -26,31 +26,29 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
-3. The status of the server must be **Ready**, for the **Restart** button to appear on the toolbar.
+    :::image type="content" source="./media/how-to-restart-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-restart-server/overview.png":::
+
+1. The status of the server must be **Ready**, for the **Restart** button to appear on the toolbar.
 
     :::image type="content" source="./media/how-to-restart-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="./media/how-to-restart-server/server-status.png":::
 
-4. Select the **Restart** button.
+1. Select the **Restart** button.
 
     :::image type="content" source="./media/how-to-restart-server/restart-server.png" alt-text="Screenshot showing how to restart a started server." lightbox="./media/how-to-restart-server/restart-server.png":::
 
-5. In the **Restart server** dialog, confirm or abort your decision to restart the server.
+1. In the **Restart server** dialog, confirm or abort your decision to restart the server.
 
     :::image type="content" source="./media/how-to-restart-server/confirm-restart-server.png" alt-text="Screenshot showing the Restart server dialog to confirm or abort the operation." lightbox="./media/how-to-restart-server/confirm-restart-server.png":::
 
-6. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
+1. A notification informs you that the server is restarting. Also, the status of the server changes to **Restarting**.
 
-    :::image type="content" source="./media/how-to-restart-server/restarting-server-status.png" alt-text="Screenshot showing a server which is restarting." lightbox="./media/how-to-restart-server/restarting-server-status.png":::
+    :::image type="content" source="./media/how-to-restart-server/restarting-server-notification.png" alt-text="Screenshot showing a server which is restarting." lightbox="./media/how-to-restart-server/restarting-server-notification.png":::
 
-7. When the process completes, a notification informs you that the server is restarted.
+1. When the process completes, a notification informs you that the server is restarted. Also, the status of the server changes to **Ready**.
 
     :::image type="content" source="./media/how-to-restart-server/restarted-server-notification.png" alt-text="Screenshot showing the notification seen when a server completes a successful restart operation." lightbox="./media/how-to-restart-server/restarted-server-notification.png":::
-
-8. Also, the status of the server changes to **Ready**.
-
-    :::image type="content" source="./media/how-to-restart-server/restarted-server-status.png" alt-text="Screenshot showing a server which is started, highlighting its status as Ready." lightbox="./media/how-to-restart-server/restarted-server-status.png":::
 
 ### [CLI](#tab/cli-restart-server)
 
@@ -68,6 +66,14 @@ If you attempt to restart the PostgreSQL engine on a server which isn't in `Read
 (ServerIsNotReady) Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
 Code: ServerIsNotReady
 Message: Restart or Stop Server can only be performed on Started servers. Server Name = <server>, Current Server State = Stopped
+```
+
+If you attempt to restart the compute of a server which is processing any other operation, you receive an error like this:
+
+```output
+(SeverBusyWithOtherOperation) Cannot perform 'Restart' server operation because server '<server>' is busy processing other operation.
+Code: SeverBusyWithOtherOperation
+Message: Cannot perform 'Restart' server operation because server '<server>' is busy processing other operation.
 ```
 
 ---

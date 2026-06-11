@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 05/11/2026
+ms.date: 06/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -50,8 +50,8 @@ ms.custom:
 | 18 | 1.7.0 <sup>*</sup> |
 | 17 | 1.7.0 <sup>*</sup> |
 | 16 | 1.6.0 <sup>*</sup> |
-| 15 | 1.5.0 <sup>*</sup> |
-| 14 | 1.5.0 <sup>*</sup> |
+| 15 | 1.6.0 <sup>*</sup> |
+| 14 | 1.6.0 <sup>*</sup> |
 | 13 | 1.5.0 <sup>*</sup> |
 | 12 | Not supported |
 | 11 | Not supported |

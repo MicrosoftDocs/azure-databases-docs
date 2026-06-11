@@ -1,19 +1,19 @@
 ---
 title: Delete on-demand backups
-description: This article describes how to delete on-demand backups of an Azure Database for PostgreSQL flexible server instance.
+description: This article describes how to delete on-demand backups of an Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I delete full on-demand backups of an Azure Database for PostgreSQL flexible server instance.
+# customer intent: As a user, I want to learn how can I delete full on-demand backups of an Azure Database for PostgreSQL flexible server.
 ---
 
 # Delete on-demand backups
 
-This article provides step-by-step instructions to delete on-demand backups of an Azure Database for PostgreSQL flexible server instance.
+This article provides step-by-step instructions to delete on-demand backups of an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
 > On-demand backups are automatically deleted, according to your configured backup retention period. However, you can manually delete them earlier if they’re no longer needed.
@@ -24,7 +24,7 @@ This article provides step-by-step instructions to delete on-demand backups of a
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
 2. In the resource menu, under the **Settings** section, select **Backup and restore**.
 
