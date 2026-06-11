@@ -18,8 +18,8 @@ ms.custom:
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL service, including new feature releases, supported engine versions, available extensions, and other important announcements.
 
 ## Release: June 2026
-- Preview
-  - [Pre-Upgrade Validation Checks](../configure-maintain/concepts-major-version-upgrade.md#pre-upgrade-validation-checks-preview) to help identify upgrade blocking issues before starting the upgrade.
+
+- [Upgrade process](../configure-maintain/concepts-major-version-upgrade.md#upgrade-process)
 
 ## Release: April 2026
 
