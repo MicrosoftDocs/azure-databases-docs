@@ -4,7 +4,7 @@ description: This article describes how to scale the storage performance of an A
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 06/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
@@ -17,12 +17,12 @@ This article provides step-by-step instructions to perform scaling operations on
 
 If your server uses [Premium SSD disk](/azure/virtual-machines/disks-types#premium-ssds), you can use a performance tier higher than the original baseline to meet higher demand. The provisioned disk size sets the baseline performance tier. For more information, see [Performance tiers for managed disks](/azure/virtual-machines/disks-change-performance).
 
-If your server uses [Premium SSD v2 disk](/azure/virtual-machines/disks-types#premium-ssd-v2), you can also adjust the IOPS and throughput of your disk independently. For more information, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
+If your server uses [Premium SSD v2 disk](/azure/virtual-machines/disks-types#premium-ssd-v2), you can adjust the IOPS and throughput of your disk independently. For more information, see [Premium SSD v2 performance](/azure/virtual-machines/disks-types#premium-ssd-v2-performance).
 
 ## Steps to scale storage performance tier (Premium SSD)
 
 > [!IMPORTANT]  
-> If you increase the performance tier of your disk, you can only decrease it to a lower tier 12 hours after the last increase. [This restriction](/azure/virtual-machines/disks-change-performance#restrictions) ensures stability and performance after any changes to your server's configuration.
+> If you increase the performance tier of your disk, you can only decrease it 12 hours after the last increase. [This restriction](/azure/virtual-machines/disks-change-performance#restrictions) ensures stability and performance after any changes to your server's configuration.
 
 Any attempt to decrease the performance tier within 12 hours of increasing it results in the following error:
 
@@ -51,11 +51,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. A notification shows that a deployment is in progress.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png" alt-text="Screenshot showing a deployment is in progress to scale the performance tier of a Premium SSD disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png":::
+   :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification.png" alt-text="Screenshot showing a deployment is in progress to scale the performance tier of a Premium SSD disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-peformance-tier-ssd.png":::
 
 1. When the scale process completes, a notification shows that the deployment succeeded.
 
-   :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png" alt-text="Screenshot showing that the deployment to scale the performance tier of the Premium SSD disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png":::
+   :::image type="content" source="./media/how-to-scale-storage/deployment-succeeded-notification.png" alt-text="Screenshot showing that the deployment to scale the performance tier of the Premium SSD disk succeeded." lightbox="./media/how-to-scale-storage/deployment-succeeded-notification-peformance-tier-ssd.png":::
 
 ### [CLI](#tab/cli-scale-storage-performance-tier-ssd)
 
@@ -110,9 +110,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="./media/how-to-scale-storage/save-iops-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing IOPS for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-iops-ssd-v2.png":::
 
-> [!IMPORTANT]  
-> The operation to change the IOPS assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
-
+    > [!NOTE]  
+    > The operation to change the IOPS assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
+    
 1. A notification shows that a deployment is in progress.
 
    :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the IOPS of a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-iops-ssd-v2.png":::
@@ -171,9 +171,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="./media/how-to-scale-storage/save-throughput-ssd-v2.png" alt-text="Screenshot showing the Save button enabled after changing throughput for a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/save-throughput-ssd-v2.png":::
 
-> [!IMPORTANT]  
-> The operation to change the throughput assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
-
+    > [!NOTE]  
+    > The operation to change the throughput assigned to Premium SSD v2 disks is always an online operation. It doesn't cause any downtime for your server.
+    
 1. A notification shows that a deployment is in progress.
 
    :::image type="content" source="./media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png" alt-text="Screenshot showing a deployment is in progress to scale the throughput of a Premium SSD v2 disk." lightbox="./media/how-to-scale-storage/deployment-progress-notification-throughput-ssd-v2.png":::
