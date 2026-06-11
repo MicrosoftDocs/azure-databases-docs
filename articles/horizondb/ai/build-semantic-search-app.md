@@ -6,6 +6,7 @@ ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-search
 ms.topic: tutorial
 ms.collection:
   - ce-skilling-ai-copilot
@@ -69,17 +70,17 @@ If you prefer to use your own Microsoft Foundry model deployments instead of the
 
 ```sql
 SELECT model_registry.model_add(
-    'my-embedding',                              -- a unique alias for your model
-    'https://my-endpoint.openai.azure.com/',     -- your Azure OpenAI endpoint URL
-    'my-embedding-deployment',                   -- deployment name
-    'text-embedding-3-small',                    -- model name
-    NULL,                                        -- API version (NULL for latest)
-    'subscription-key',                          -- auth type
-    '<your-endpoint-key>'                        -- endpoint key
+    'my-embedding',                                 -- a unique alias for your model
+    'https://my-endpoint.services.ai.azure.com/',   -- your model endpoint URL
+    'my-embedding-deployment',                      -- deployment name
+    'text-embedding-3-small',                       -- model name
+    NULL,                                           -- API version (NULL for latest)
+    'subscription-key',                             -- auth type
+    '<your-endpoint-key>'                           -- endpoint key
 );
 ```
 
-Then pass your model alias (for example, `'my-embedding'`) to AI function calls throughout this tutorial. For complete details on model registration and management, see [AI functions in the azure_ai extension](ai-functions.md#option-2-manual-setup-with-model-registry).
+Then pass your model alias (for example, `'my-embedding'`) to AI function calls throughout this tutorial. For complete details on model registration and supported endpoint URL formats, see [AI functions in the azure_ai extension](ai-functions.md#option-2-manual-setup-with-model-registry).
 
 ## Import sample data
 

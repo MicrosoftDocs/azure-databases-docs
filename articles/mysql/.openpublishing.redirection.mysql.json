@@ -1634,6 +1634,11 @@
       "source_path_from_root": "/articles/mariadb/migrate/whats-happening-to-mariadb.md",
       "redirect_url": "/azure/mysql/index",
       "redirect_document_id": false
+    },
+    {
+      "source_path_from_root": "/articles/mysql/flexible-server/tutorial-add-redis-to-mysql.md",
+      "redirect_url": "/azure/redis/overview",
+      "redirect_document_id": false
     }
   ]
 }

@@ -6,6 +6,7 @@ ms.author: abeomorogbe
 ms.reviewer: maghan
 ms.date: 06/04/2026
 ms.service: azure-horizondb
+ms.subservice: ai-search
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot

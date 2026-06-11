@@ -14,10 +14,6 @@ ms.custom: sfi-image-nochange, sfi-ropc-blocked
 
 Azure Managed Instance for Apache Cassandra provides automated deployment and scaling operations for managed open-source Apache Cassandra datacenters. This article discusses how to enable Lightweight Directory Access Protocol (LDAP) authentication to your clusters and datacenters.
 
-> [!IMPORTANT]
-> LDAP authentication is in public preview.
-> LDAP doesn't support Cassandra v5.0, it is currently in-progress, you can submit your interest by creating Technical Azure Support ticket.
-> This feature is provided without a service-level agreement. We don't recommend it for production workloads. For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Prerequisites
 

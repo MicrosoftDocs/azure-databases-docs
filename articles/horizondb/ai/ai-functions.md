@@ -6,6 +6,7 @@ ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-functions
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
@@ -53,6 +54,8 @@ After you enable AI Model Management, you can immediately start using AI functio
 
 If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), follow these steps:
 
+1. Before you can enable `azure_ai` on your Azure HorizonDB instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview), and check if correctly added by running `SHOW azure.extensions;`.
+
 1. Install the `azure_ai` extension on your database by running the following command:
 
    ```sql
@@ -69,7 +72,10 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
 
 1. Deploy a model through [Microsoft Foundry](/azure/ai-foundry/quickstarts/get-started-code#start-with-a-project-and-model). Select the model you want to use (for example, `gpt-5.4` or `text-embedding-3-small`) and complete the deployment.
 
-1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **Azure OpenAI in Foundry Models endpoint URL**, which looks like `https://<your-resource-name>.openai.azure.com/`.
+1. In the Microsoft Foundry dashboard, navigate to your project and note the **API key** and the **endpoint URL**. The following endpoint formats are supported:
+   - `https://<your-resource-name>.services.ai.azure.com/` (Microsoft Foundry)
+   - `https://<your-resource-name>.openai.azure.com/` (Azure OpenAI)
+   - `https://<your-resource-name>.cognitiveservices.azure.com/` (Azure AI Services)
 
 1. Navigate to your model deployment and note the following values:
    - **Deployment name**: The name you assigned during deployment, such as `gpt-5-deployment`.
@@ -82,7 +88,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
    ```sql
    SELECT model_registry.model_add(
        '<model-alias>',              -- a unique, custom identifier for your model
-       '<endpoint-URL>',             -- the Azure OpenAI endpoint URL (ending in .openai.azure.com/)
+       '<endpoint-URL>',             -- your model endpoint URL (see supported formats above)
        '<deployment-name>',          -- the deployment name of your model
        '<model-name>',               -- the model name (for example, gpt-5.4, text-embedding-3-small)
        '<API-version>',              -- the API version (NULL for latest)
@@ -96,7 +102,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
    ```sql
    SELECT model_registry.model_add(
        'my-gpt',
-       'https://my-endpoint.openai.azure.com/',
+       'https://my-endpoint.services.ai.azure.com/',
        'gpt-5-deployment',
        'gpt-5',
        '2025-01-01-preview',
@@ -351,7 +357,7 @@ The model registry provides a centralized interface for managing all AI model en
 ```sql
 SELECT model_registry.model_add(
     '<model-alias>',                -- a unique, custom identifier for your model
-    '<model-endpoint-URL>',         -- the Azure OpenAI endpoint URL (ending in .openai.azure.com/)
+    '<model-endpoint-URL>',         -- your model endpoint URL (see Enable the azure_ai extension and register models)
     '<model-deployment-name>',      -- the deployment name of your model
     '<model-name>',                 -- the model name (for example, gpt-5.4, text-embedding-3-small)
     '<API-version>',                -- the API version (NULL for latest)
