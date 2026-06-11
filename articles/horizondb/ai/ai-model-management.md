@@ -6,6 +6,7 @@ ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-functions
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
@@ -158,12 +159,12 @@ For the full syntax and additional options, see [Register a model](ai-functions.
 ```sql
 SELECT model_registry.model_add(
     'my-gpt',                                       -- a unique alias
-    'https://my-endpoint.openai.azure.com/',        -- endpoint URL
+    'https://my-endpoint.services.ai.azure.com/',   -- endpoint URL
     'gpt-5-deployment',                             -- deployment name
     'gpt-5',                                        -- model name
     '2025-01-01-preview',                           -- API version (NULL for latest)
-    'subscription-key',                              -- auth type
-    '<your-endpoint-key>'                            -- endpoint key
+    'subscription-key',                             -- auth type
+    '<your-endpoint-key>'                           -- endpoint key
 );
 ```
 

@@ -6,6 +6,7 @@ ms.author: adig
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
+ms.subservice: ai-graph
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
