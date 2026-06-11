@@ -87,7 +87,7 @@ For more information, see [Add private endpoint connections to Azure Database fo
 After the VNet to PE-capable network migration, the server is no longer VNet-integrated. If you have Terraform configurations, update them accordingly:
 
 - Remove `delegated_subnet_id` from the PostgreSQL server resource.
-- Ensure `public_network_access_enabled` remains `true` (this value is the post-migration default).
+- Ensure `public_network_access_enabled` remains `false` (this value is the post-migration default).
 
 ## Related content
 
