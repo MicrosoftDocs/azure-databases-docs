@@ -107,7 +107,7 @@ The smallest useful AI pipeline takes a source table of documents, chunks the bo
 
 ```sql
 -- You need to define the output sink table with the right columns
-CREATE TABLE documents_ai_pipeline_output (
+CREATE TABLE rag_pipeline_output (
     doc_id      INT,
     chunk_index INT,
     chunk_text  TEXT,
@@ -115,7 +115,7 @@ CREATE TABLE documents_ai_pipeline_output (
     metadata    JSONB
 );
 
-CREATE INDEX diskann_sq_embedding_idx ON documents_ai_pipeline_test_output USING diskann (embedding vector_cosine_ops) WITH (spherical_quantized = true);
+CREATE INDEX diskann_sq_embedding_idx ON rag_pipeline_output USING diskann (embedding vector_cosine_ops) WITH (spherical_quantized = true);
 
 CREATE TABLE documents_ai_pipeline (
     id          SERIAL PRIMARY KEY,
@@ -130,23 +130,26 @@ INSERT INTO documents_ai_pipeline (title, content) VALUES
 ('Durable Workflows', 'Durable execution helps pipelines recover from crashes, retry transient failures, and resume from checkpoints.');
 
 SELECT ai.create_pipeline(
-    name   => 'rag_pipeline',
+    name => 'rag_pipeline',
     source => ai.table_source(
-        table_name         => 'documents_ai_pipeline'
+    table_name => 'documents_ai_pipeline'
     ),
     steps  => ARRAY[
         ai.chunk(input => 'content',
-                 chunk_size   => 512, --Optional, default = 512
-                 overlap      => 64   --Optional, default = 64
+                 chunk_size => 512, --Optional, default = 512
+                 overlap => 64   --Optional, default = 64
                  ),
-        ai.embed(model        => 'default-embedding',
+        ai.embed(model => 'default-embedding', --Optional, if AI Model Management is enabled, you can omit the `model` parameter
                  input => 'chunk_text', -- This column is from the output for the chunk step.
                  dimensions   => 1536)
     ],
     trigger => 'on_change',
-    sink   => ai.table_sink('documents_ai_pipeline_output')
+    sink   => ai.table_sink('rag_pipeline_output')
 );
 ```
+
+> [!TIP]  
+> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 `ai.create_pipeline()` registers the definition. It doesn't run anything yet. Inspect the compiled execution plan with `ai.explain()`:
 
@@ -156,8 +159,70 @@ SELECT ai.explain('rag_pipeline');
 
 Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
-> [!TIP]  
-> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
+> [!NOTE]
+> - If [AI Model Management (limited preview)](ai-model-management.md) is enabled, you can omit the `model` parameter in `ai.embed()` and other AI functions. The functions automatically use the `default-embedding` Managed Model or other default models.
+> - If you're using your own model (Bring Your Own Model), pass your registered model alias to the `model` parameter. For example: `ai.embed(model => 'my-embedding', input => 'chunk_text', dimensions => 1536)`. See [AI functions in the azure_ai extension](ai-functions.md) for details on registering models.
+
+## Advanced pipeline steps
+
+Beyond chunking and embedding, AI pipelines support extraction, generation, and ranking operations for complex AI workflows.
+
+### Extract structured data with `ai.extract()`
+
+Use `ai.extract()` to automatically parse and structure data from unstructured text. For example, extract metadata like topics and entities from document content:
+
+```sql
+SELECT ai.create_pipeline(
+    name   => 'extraction_pipeline',
+    source => ai.table_source(table_name => 'documents_ai_pipeline'),
+    steps  => ARRAY[
+        ai.chunk(input => 'content'),
+        ai.extract(
+            input => 'chunk_text',
+            output_schema => 'json',
+            prompt => 'Extract the main topics and key entities. Return as JSON with: topics (array), entities (array).'
+        )
+    ],
+    sink   => ai.table_sink('extraction_pipeline_output')
+);
+```
+
+### Generate new content with `ai.generate()`
+
+Use `ai.generate()` to create summaries, titles, or other derived content:
+
+```sql
+SELECT ai.create_pipeline(
+    name   => 'generation_pipeline',
+    source => ai.table_source(table_name => 'documents_ai_pipeline'),
+    steps  => ARRAY[
+        ai.chunk(input => 'content'),
+        ai.generate(
+            input => 'chunk_text',
+            prompt => 'Create a concise summary (max 50 words).'
+        )
+    ],
+    sink   => ai.table_sink('generation_pipeline_output')
+);
+```
+
+### Rank documents with `ai.rank()`
+
+Use `ai.rank()` to score or rerank documents based on relevance:
+
+```sql
+SELECT ai.create_pipeline(
+    name   => 'ranking_pipeline',
+    source => ai.table_source(table_name => 'search_results'),
+    steps  => ARRAY[
+        ai.rank(
+            input => 'document_text',
+            prompt => 'Score relevance from 0-100 to the user query.'
+        )
+    ],
+    sink   => ai.table_sink('ranking_pipeline_output')
+);
+```
 
 ## Run, monitor, and retry
 
@@ -230,6 +295,40 @@ The `azure_ai` extension can also call models from SQL. The two surfaces solve d
 | Backfill | Manual `UPDATE ... SET embedding = ...` | `ai.backfill()` |
 
 Use one-shot calls for interactive queries and small jobs. Use a pipeline whenever the work is large enough, long enough, or important enough that you'd otherwise build a service tier for it.
+
+## Monitor pipelines in Visual Studio Code
+
+The PostgreSQL extension for Visual Studio Code includes a **Pipelines & Workflows** view where you can inspect AI pipeline runs and monitor execution state without leaving your editor.
+
+### Open the Pipelines pane 
+
+1. In Visual Studio Code, open the PostgreSQL extension.
+1. In **Object Explorer**, right-click your database.
+1. Select **Pipelines & Workflows**.
+1. Select the **AI Pipelines** tab.
+
+:::image type="content" source="media/pipelines/ai-pipeline-usage.png" alt-text="Screenshot of the AI Pipelines tab in the PostgreSQL extension for Visual Studio Code showing pipeline definitions, runs, and the pipeline graph." lightbox="media/pipelines/ai-pipeline-usage.png" :::
+
+### Understand the pipeline graph
+
+When you select a pipeline run, the center pane displays the execution graph with color-coded step types:
+
+- **Blue**: Source and sink steps (data entry and exit points).
+- **Green**: Intermediate processing steps (chunk, embed, extract, generate, rank operations).
+- **Pink**: External calls (model API calls and external services).
+
+Use this color mapping to quickly validate that your pipeline is shaped correctly and executing as expected.
+
+### Inspect run details
+
+For each pipeline run, you can verify:
+
+- **Status**: `completed`, `running`, or `failed`.
+- **Run ID**: Unique identifier for traceability.
+- **Start time and duration**: Performance insights.
+- **Pipeline definition link**: Navigate from a run back to its definition to review recent changes.
+
+If a run fails, open the graph view and inspect the step where execution stopped to identify the issue.
 
 ## Limitations during preview
 

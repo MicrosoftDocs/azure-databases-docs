@@ -145,6 +145,17 @@ When connected to an Azure HorizonDB cluster, the extension gives you a first-cl
 
 You can author and run these AI workloads directly from the Query Editor, and the Results Viewer renders vector and JSONB output inline.
 
+### Pipelines and Workflows
+
+When connected to an Azure HorizonDB cluster with AI pipelines or `pg_durable` workflows, the extension provides a **Pipelines & Workflows** view to inspect execution history and monitor run state.
+
+Access it by right-clicking your database and selecting **Pipelines & Workflows**. You'll see two tabs:
+
+- **[AI Pipelines](../../ai/ai-pipelines.md)**: View pipeline definitions, inspect runs, and track execution graphs with color-coded step types (blue for source/sink, green for processing, pink for external calls). Use this to verify pipeline behavior and check run status, run IDs, start times, and duration.
+- **[Workflows](../durable-functions.md)**: Inspect `pg_durable` workflow instances with tabs for graphs, timing analysis, and results. Navigate from a workflow run to its related pipeline definition for comparison and troubleshooting.
+
+This view eliminates the need to switch between SQL queries and your editor, making it easy to monitor long-running AI workloads and `pg_durable` orchestrations. 
+
 ### GitHub Copilot integration
 
 This extension integrates with GitHub Copilot to offer AI-driven assistance tailored to PostgreSQL development. With commands like `@pgsql`, you can query your database, optimize your schema, and request Copilot to execute specific SQL operations against an Azure HorizonDB cluster. Copilot picks up the live connection context - including extensions installed on the target - so suggestions on a HorizonDB connection are aware of `pgvector`, `pg_diskann`, `azure_ai`, and `age`.

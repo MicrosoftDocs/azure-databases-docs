@@ -257,6 +257,38 @@ FROM df._worker_epoch;
 
 A `time_since_last_heartbeat` under 15 seconds means the worker is healthy. Anything larger, or no rows at all, means the worker is down or hasn't initialized.
 
+## Monitor workflows in Visual Studio Code
+
+The PostgreSQL extension for Visual Studio Code includes a **Workflows** tab in the **Pipelines & Workflows** view, where you can inspect `pg_durable` workflow instances and monitor execution state from your editor.
+
+### Open the Workflows pane
+
+1. In Visual Studio Code, open the PostgreSQL extension.
+1. In **Object Explorer**, right-click your database.
+1. Select **Pipelines & Workflows**.
+1. Select the **Workflows** tab.
+
+The left pane lists **PG Durable Runs**, and the center pane shows details for the selected workflow instance.
+
+:::image type="content" source="vs-code-extension/media/vs-code-connect/durable-graph.png" alt-text="Screenshot of the Workflows tab in the PostgreSQL extension for Visual Studio Code showing PG Durable Runs and workflow details." lightbox="vs-code-extension/media/vs-code-connect/durable-graph.png" :::
+
+### Inspect workflow runs
+
+When you select a workflow run, review the summary to validate:
+
+- **Status**: `completed`, `running`, or `failed`.
+- **Run ID**: Unique identifier for the instance.
+- **Started time and duration**: Track execution progress and performance.
+- **Details panel**: Additional execution metadata.
+
+Use the available tabs to dive deeper:
+
+- **Graph**: Visual step-by-step execution view showing the workflow structure and step flow.
+- **Timing**: Duration-focused view for performance analysis and bottleneck identification.
+- **Results**: Output and result-oriented details from the workflow execution.
+
+For workflows related to AI pipelines, a **View pipeline definition** action (when available) lets you link from a workflow run back to its pipeline definition, useful for comparing behavior across runs or investigating regressions.
+
 ## Identity and isolation
 
 Durable functions execute with the privileges of the user who submitted them, not with the worker's privileges. `pg_durable` captures both `session_user` and `current_user` at submission time, so functions submitted under a `SET ROLE` context run with that effective role.
