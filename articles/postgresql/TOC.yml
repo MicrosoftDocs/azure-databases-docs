@@ -691,7 +691,7 @@
       displayName: monitor, server logs
     - name: Intelligent performance
       items:
-        - name: Query store overview
+        - name: Query store
           href: monitor/concepts-query-store.md
           displayName: performance, optimize, query store
         - name: Query store usage scenarios
@@ -701,14 +701,18 @@
           href: monitor/concepts-query-store-best-practices.md
         - name: Query Performance Insight
           href: monitor/concepts-query-performance-insight.md
-        - name: Autonomous tuning overview
+        - name: Autonomous tuning
           href: monitor/concepts-autonomous-tuning.md
         - name: Configure autonomous tuning
           href: monitor/how-to-configure-autonomous-tuning.md
-        - name: Use recommendations
+        - name: Use autonomous tuning recommendations
           href: monitor/how-to-get-apply-recommendations-from-autonomous-tuning.md
+        - name: Adaptive autovacuum
+          href: monitor/concepts-adaptive-autovacuum.md
         - name: Intelligent tuning
           href: monitor/concepts-intelligent-tuning.md
+        - name: Configure intelligent tuning
+          href: monitor/how-to-configure-intelligent-tuning.md
     - name: Download PostgreSQL and upgrade logs
       href: monitor/how-to-configure-server-logs.md
     - name: Create alerts on metrics using portal
@@ -717,12 +721,6 @@
       href: monitor/how-to-configure-and-access-logs.md
     - name: Use Azure Monitor dashboards with Grafana
       href: monitor/how-to-use-dashboards-with-grafana.md
-    - name: Intelligent tuning
-      items:
-        - name: Azure portal
-          href: monitor/how-to-enable-intelligent-performance-portal.md
-        - name: Azure CLI
-          href: monitor/how-to-enable-intelligent-performance-cli.md
 - name: Samples
   items:
     - name: Azure CLI samples

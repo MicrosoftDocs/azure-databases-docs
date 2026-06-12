@@ -93,7 +93,7 @@ Before using any troubleshooting guide, it's essential to ensure that all prereq
 
 ## Related content
 
-- [Configure intelligent tuning for Azure Database for PostgreSQL](../monitor/how-to-enable-intelligent-performance-portal.md).
+- [Configure intelligent tuning for Azure Database for PostgreSQL](../monitor/how-to-configure-intelligent-tuning.md).
 - [Troubleshooting guides for Azure Database for PostgreSQL](concepts-troubleshooting-guides.md).
 - [Autovacuum tuning in Azure Database for PostgreSQL](how-to-autovacuum-tuning.md).
 - [Troubleshoot high IOPS utilization in Azure Database for PostgreSQL](how-to-high-io-utilization.md).
