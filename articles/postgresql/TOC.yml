@@ -681,7 +681,7 @@
           href: configure-maintain/how-to-data-factory-script-activity-fabric.md
 - name: Monitor
   items:
-    - name: Monitor and tune overview
+    - name: Monitor using metrics and logs
       href: monitor/concepts-monitoring.md
       displayName: monitor, metrics
     - name: Workbooks
