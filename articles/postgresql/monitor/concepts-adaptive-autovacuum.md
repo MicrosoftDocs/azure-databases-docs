@@ -1,0 +1,238 @@
+---
+title: Adaptive autovacuum
+description: This article describes the adaptive autovacuum feature in Azure Database for PostgreSQL flexible server.
+author: nachoalonsoportillo
+ms.author: ialonso
+ms.reviewer: maghan
+ms.date: 06/08/2026
+ms.service: azure-database-postgresql
+ms.subservice: monitoring
+ms.topic: concept-article
+---
+
+# Adaptive autovacuum
+
+This page documents both `adaptive_autovacuum` parameters supported by Azure Database for PostgreSQL flexible server:
+
+- `adaptive_autovacuum.optimize_configurations`: Enables automatic tuning of a series of autovacuum settings
+- `adaptive_autovacuum.open_transaction_threshold`: Sets the age threshold (seconds) used to detect and mitigate old prepared transactions.
+
+## How each parameter works
+
+### adaptive_autovacuum.optimize_configurations
+
+When set to `on`, the tuning service periodically:
+
+1. Collects and aggregates workload and table-statistics signals.
+2. Evaluates rule workflows.
+3. Computes candidate autovacuum parameter updates.
+4. Applies updates and reloads engine configuration.
+5. Writes audit entries.
+
+If no rule conditions are met, a run can complete with no changes.
+
+Current tunable parameters:
+
+- `autovacuum_vacuum_cost_limit`
+- `autovacuum_vacuum_threshold`
+- `autovacuum_vacuum_scale_factor`
+- `autovacuum_vacuum_cost_delay`
+- `autovacuum_analyze_scale_factor`
+
+> [!NOTE]
+> - If `autovacuum_vacuum_cost_limit` is -1, logic derives from `vacuum_cost_limit`.
+> - `autovacuum_freeze_max_age` is used as an input signal but isn't directly tuned.
+
+### Visibility and override behavior for tuned parameters
+
+When this feature changes any of the five target parameters (`autovacuum_vacuum_cost_limit`, `autovacuum_vacuum_threshold`, `autovacuum_vacuum_scale_factor`, `autovacuum_vacuum_cost_delay`, `autovacuum_analyze_scale_factor`):
+
+- Those effective runtime changes aren't surfaced via control plane Configurations endpoint (for example GET Configurations API or `az postgres flexible-server parameter` CLI command group).
+- To observe the effective values, use data-plane queries against the PostgreSQL endpoint (for example `SHOW <guc_name>` or `SELECT name, setting FROM pg_settings WHERE name IN (...)`).
+
+User override semantics:
+
+- You can set any of these five parameters directly via portal, REST API, CLI or any of the supported SDKs.
+- If you set a parameter to the same value currently returned by control plane Configurations endpoint, the operation is treated as no-op and no new effective change is applied.
+- User-set values override the feature-applied values at the time they're applied.
+- If `adaptive_autovacuum.optimize_configurations` remains enabled, later tuning iterations can apply new values again based on rule evaluation.
+
+### adaptive_autovacuum.open_transaction_threshold
+
+This parameter controls orphan prepared-transaction mitigation:
+
+- 0 means disabled.
+- greater than 0 means enabled with threshold in seconds.
+
+When enabled, if the oldest prepared transaction exceeds the threshold, the orphan-transaction handler evaluates eligibility and can rollback old prepared transactions. The handler updates its in-memory threshold on parameter changes, so behavior follows the latest value.
+
+Important timing detail:
+
+- The feature first determines the oldest prepared transaction timestamp.
+- That detection is poll-based, not continuous.
+- The poll runs every 1,800 seconds (that is, every 30 minutes), so mitigation can only start after a poll observes an old-enough prepared transaction.
+
+## Runtime and scheduling behavior
+
+- `optimize_configurations` tuning cadence: every 30 minutes.
+- Enabling `optimize_configurations` from `off` to `on` triggers an immediate tuning run, then scheduled runs continue.
+- `open_transaction_threshold` handling is event-driven from prepared-transaction observations; mitigation runs only when age checks exceed threshold.
+- Prepared-transaction observation for `open_transaction_threshold` is refreshed every 300 seconds.
+
+### When is `intelligentperformance` schema created after enabling?
+
+The schema is delayed. Its creation is the responsibility of the functionality that persists the statistics used by adaptive autovacuum, not by the immediate tuning run itself. Typical time after setting `adaptive_autovacuum.optimize_configurations = on` is within 0-15 minutes.
+
+Creation can be delayed (or skipped) when prerequisites aren't met.
+
+## Limitations and prerequisites
+
+Both controls are subject to the following requirements:
+
+- Instance must be a primary.
+- PostgreSQL isn't in recovery mode.
+- Compute of the server has a minimum of 4 vCores.
+- `adaptive_autovacuum.optimize_configurations` is supported on major versions 11, 12, 13, 14, 15, 16, 17, and 18.
+- `adaptive_autovacuum.open_transaction_threshold` is supported on major versions 13, 14, 15, 16, 17, and 18.
+
+## Auditing and observability
+
+Actions from both controls are written to an audit view called `intelligentperformance.adaptive_tuning_events`.
+
+### Schema of the view
+
+Expected logical shape:
+
+- intelligentperformance.adaptive_tuning_events
+  - event_details (alias of optimized_params)
+  - optimizer_type
+  - applied_at
+
+### Query for recent activity
+
+You can query recent activity using the following queries:
+
+```sql
+SELECT
+    applied_at,
+    optimizer_type,
+    event_details
+FROM intelligentperformance.adaptive_tuning_events
+ORDER BY applied_at DESC
+LIMIT 100;
+```
+
+```sql
+SELECT
+    optimizer_type,
+    COUNT(*) AS events
+FROM intelligentperformance.adaptive_tuning_events
+WHERE applied_at >= now() - interval '7 days'
+GROUP BY optimizer_type
+ORDER BY events DESC;
+```
+
+### Event types and interpretation
+
+The `optimizer_type` column indicates the action source.
+
+#### adaptive_autovacuum_configuration_changed
+
+Source:
+
+- `optimize_configurations` tuning path.
+
+Payload shape:
+
+- JSON array of parameter-change records, typically including:
+  - server_parameter_name
+  - previous_value
+  - updated_tuned_value
+
+Interpretation:
+
+- Indicates autovacuum tuning changed server settings.
+- Positive when subsequent workload metrics improve (dead tuple pressure, vacuum cadence, latency, CPU/IO).
+- Potentially negative when changes are frequent and oscillatory and are followed by regressions.
+
+```sql
+SELECT
+    applied_at,
+    elem->>'server_parameter_name' AS parameter_name,
+    elem->>'previous_value' AS previous_value,
+    elem->>'updated_tuned_value' AS updated_value
+FROM intelligentperformance.adaptive_tuning_events e
+CROSS JOIN LATERAL jsonb_array_elements(e.event_details) AS elem
+WHERE e.optimizer_type = 'adaptive_autovacuum_configuration_changed'
+ORDER BY applied_at DESC;
+```
+
+#### orphan_transaction_rollback
+
+Source:
+
+- `open_transaction_threshold` mitigation path.
+
+Payload shape:
+
+- JSON object keyed by database, with rollback outcome details (for example attempted and successful GID rollback info).
+
+```json
+{
+    "<example-database-name>": {
+        "Timestamp": "2026-03-22T18:20:22.0000000Z", 
+        "RollbackGids": ["<example-global-identifier-one>", "<example-global-identifier-two>"], 
+        "OperationSuccessful": true
+    }
+}
+```
+
+    
+Interpretation:
+
+- Indicates prepared transactions were force-rolled back after crossing threshold.
+- Occasional events can be healthy protective behavior.
+- Frequent events usually indicate application transaction-lifecycle issues that should be investigated.
+
+```sql
+SELECT
+    applied_at,
+    jsonb_pretty(event_details) AS rollback_details
+FROM intelligentperformance.adaptive_tuning_events
+WHERE optimizer_type = 'orphan_transaction_rollback'
+ORDER BY applied_at DESC
+LIMIT 50;
+```
+
+### Determine whether impact is positive or negative
+
+For `optimize_configurations`:
+
+1. Identify change timestamps from `adaptive_autovacuum_configuration_changed`.
+1. Compare 30 to 120-minute post-change windows for dead tuples, vacuum/analyze cadence, latency, CPU/IO.
+
+For `open_transaction_threshold`:
+
+1. Identify `orphan_transaction_rollback` events.
+1. Validate whether rollback frequency is low and stabilizing.
+1. Investigate application behavior if rollback events are persistent.
+
+```sql
+SELECT
+    applied_at,
+    optimizer_type,
+    event_details
+FROM intelligentperformance.adaptive_tuning_events
+WHERE applied_at >= now() - interval '7 days'
+ORDER BY applied_at DESC;
+```
+
+### Retention and housekeeping
+
+Housekeeping removes older records from audit storage using a fixed and nonconfigurable retention window of 90 days.
+
+For longer-term trend analysis, export audit rows to your own observability store.
+
+## Related content
+
+- [Intelligent tuning](./concepts-intelligent-tuning.md).
