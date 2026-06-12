@@ -4319,6 +4319,11 @@
             "source_path_from_root": "/articles/postgresql/flexible-server/concepts-parameters.md",
             "redirect_url": "/azure/postgresql/parameters/concepts-parameters",
             "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/backup-restore/how-to-restore-dropped-server.md",
+            "redirect_url": "/azure/postgresql/backup-restore/how-to-restore-deleted-server",
+            "redirect_document_id": true
         }
-   ]
+  ]
 }

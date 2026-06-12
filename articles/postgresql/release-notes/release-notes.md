@@ -279,7 +279,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 15.2 (preview), 14.7, 13.10, 12.14, 11.19. <sup>$</sup>
 - General availability of [Query Performance Insight in Azure Database for PostgreSQL](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
 - General availability of [Major version upgrades in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
-- General availability of [Restore a dropped Azure Database for PostgreSQL](../backup-restore/how-to-restore-dropped-server.md) for Azure Database for PostgreSQL.
+- General availability of [Restore a deleted server](../backup-restore/how-to-restore-deleted-server.md) for Azure Database for PostgreSQL.
 - Public preview of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQL.
 
 ## Release: May 2023

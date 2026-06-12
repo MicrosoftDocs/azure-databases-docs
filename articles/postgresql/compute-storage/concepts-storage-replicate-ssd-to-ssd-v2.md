@@ -62,4 +62,4 @@ Using the [Azure portal](https://portal.azure.com/):
 ## Related content
 
 - [Restore to paired region (geo-restore)](../backup-restore/how-to-restore-paired-region.md)
-- [Restore a dropped server](../backup-restore/how-to-restore-dropped-server.md)
+- [Restore a deleted server](../backup-restore/how-to-restore-deleted-server.md)

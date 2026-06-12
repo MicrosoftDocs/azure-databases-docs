@@ -340,8 +340,8 @@
               href: backup-restore/how-to-restore-full-backup.md
             - name: Restore to paired region (geo-restore)
               href: backup-restore/how-to-restore-paired-region.md
-            - name: Restore a dropped server
-              href: backup-restore/how-to-restore-dropped-server.md
+            - name: Restore a deleted server
+              href: backup-restore/how-to-restore-deleted-server.md
     - name: Reliability
       items:
         - name: High availability
