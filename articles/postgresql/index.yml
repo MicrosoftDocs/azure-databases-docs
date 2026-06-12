@@ -41,7 +41,7 @@ landingContent:
           - text: Manage your server
             url: flexible-server/how-to-manage-server-portal.md
           - text: Connect and query using Visual Studio Code
-            url: extensions/vs-code-extension/overview.md
+            url: development/vs-code-extension/postgresql-extension-overview.md
 
   #Card 2        
   - title: Enterprise ready features
@@ -117,7 +117,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Parameters
-            url: flexible-server/concepts-parameters.md
+            url: parameters/concepts-parameters.md
           - text: Compute and storage
             url: flexible-server/concepts-compute-storage.md
           - text: Identity and access management

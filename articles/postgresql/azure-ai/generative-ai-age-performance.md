@@ -52,7 +52,7 @@ To take full advantage of indexing, you must understand which types of indexes a
 
 ## EXPLAIN in Apache AGE
 
-Unlike standard SQL, the EXPLAIN keyword in Cipher queries requires a different query format.
+Unlike standard SQL, the EXPLAIN keyword in Cypher queries requires a different query format.
 
 ```sql
 SELECT * FROM cypher('graph_name',

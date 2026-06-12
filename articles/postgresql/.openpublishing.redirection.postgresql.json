@@ -3872,18 +3872,33 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/overview.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-overview",
-            "redirect_document_id": true
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/postgresql-extension-overview",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-connect.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-connect",
-            "redirect_document_id": true
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/quickstart-connect-query",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/extensions/vs-code-extension/quickstart-github-copilot.md",
-            "redirect_url": "/azure/postgresql/developer/vs-code-extension/vs-code-github-copilot",
-            "redirect_document_id": true
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/copilot-integration",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-overview.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/postgresql-extension-overview",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-connect.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/quickstart-connect-query",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/vs-code-github-copilot.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/copilot-integration",
+            "redirect_document_id": false
         },
         {
             "source_path_from_root": "/articles/postgresql/configure-maintain/how-to-deploy-on-azure-free-account.md",
@@ -4003,6 +4018,116 @@
         {
             "source_path_from_root": "/articles/postgresql/configure-maintain/how-to-run-preupgrade-validation-checks.md",
             "redirect_url": "/azure/postgresql/configure-maintain/how-to-run-upgrade-validation-checks",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/create-server-bicep.md",
+            "redirect_url": "/azure/postgresql/development/create-server-bicep",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/create-server-dotnet-sdk.md",
+            "redirect_url": "/azure/postgresql/development/create-server-dotnet-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/create-server-java-sdk.md",
+            "redirect_url": "/azure/postgresql/development/create-server-java-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/create-server-python-sdk.md",
+            "redirect_url": "/azure/postgresql/development/create-server-python-sdk",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/django-aks-database.md",
+            "redirect_url": "/azure/postgresql/development/django-aks-database",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/webapp-server-vnet.md",
+            "redirect_url": "/azure/postgresql/development/webapp-server-vnet",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/advanced-connection-options.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/advanced-connection-options",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/azure-server-management.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/azure-server-management",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/common-workflows.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/common-workflows",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/connections.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/connections",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/copilot-integration.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/copilot-integration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/create-server.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/create-server",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/mcp-server.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/mcp-server",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/object-explorer.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/object-explorer",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/oracle-migration.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/oracle-migration",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/postgresql-extension-overview.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/postgresql-extension-overview",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/postgresql-terminal.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/postgresql-terminal",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/query-editor-intellisense.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/query-editor-intellisense",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/query-plan-visualizer.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/query-plan-visualizer",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/quickstart-connect-query.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/quickstart-connect-query",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/schema-visualizer.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/schema-visualizer",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/developer/vs-code-extension/server-dashboard.md",
+            "redirect_url": "/azure/postgresql/development/vs-code-extension/server-dashboard",
             "redirect_document_id": true
         },
         {
@@ -4325,5 +4450,5 @@
             "redirect_url": "/azure/postgresql/backup-restore/how-to-restore-deleted-server",
             "redirect_document_id": true
         }
-  ]
+    ]
 }
