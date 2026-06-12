@@ -43,32 +43,32 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Built-in [Dashboards with Grafana](https://aka.ms/azure-postgres-dashboards-grafana) now available in Azure portal for PostgreSQL.
-  - [Terraform support](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database) for [Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md)
+  - [Terraform support](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_database) for [Elastic clusters in Azure Database for PostgreSQL](../elastic-clusters/concepts-elastic-clusters.md)
 - Preview
-  - [Geo-replication support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
-  - [Geo-redundant backup support for Premium SSDv2 in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
-  - [Major Version Upgrade support for Premium SSDv2 in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md)
+  - [Geo-replication in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md)
+  - [Geo-disaster recovery in Azure Database for PostgreSQL](../backup-restore/concepts-geo-disaster-recovery.md)
+  - [Major version upgrades in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md)
 
 ## Release: January 2026
 
 - General availability
   - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.1, 17.7, 16.11, 15.15, 14.20, and 13.23. <sup>$</sup>
-  - Support for [.NET](https://www.nuget.org/packages/Azure.ResourceManager.PostgreSql/#versions-body-tab) SDK with [GA REST API](release-notes-api.md) version.
+  - Support for [.NET](https://www.nuget.org/packages/Azure.ResourceManager.PostgreSql/#versions-body-tab) SDK with [API release notes - Azure Database for PostgreSQL](release-notes-api.md) version.
   - Support for configuring zone-resilient [high availability](../high-availability/how-to-configure-high-availability.md) using the Azure CLI.
 
 ## Release: December 2025
 
 - General availability
-  - Support for [Python](https://pypi.org/project/azure-mgmt-postgresqlflexibleservers/2.0.0/), [JavaScript](https://www.npmjs.com/package/@azure/arm-postgresql-flexible/v/9.0.0), [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0), and [Java](https://central.sonatype.com/artifact/com.azure.resourcemanager/azure-resourcemanager-postgresqlflexibleserver/2.0.0) SDKs with [GA REST API](release-notes-api.md) version.
-  - Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.14.0) with [GA REST API](release-notes-api.md) version.
+  - Support for [Python](https://pypi.org/project/azure-mgmt-postgresqlflexibleservers/2.0.0/), [JavaScript](https://www.npmjs.com/package/@azure/arm-postgresql-flexible/v/9.0.0), [Go](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/postgresql/armpostgresqlflexibleservers/v5@v5.0.0), and [Java](https://central.sonatype.com/artifact/com.azure.resourcemanager/azure-resourcemanager-postgresqlflexibleserver/2.0.0) SDKs with [API release notes - Azure Database for PostgreSQL](release-notes-api.md) version.
+  - Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.14.0) with [API release notes - Azure Database for PostgreSQL](release-notes-api.md) version.
   - Support for [PostgreSQL 18](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) with Terraform resource.
 
 ## Release: November 2025
 
 - General availability
-  - [PostgreSQL 18](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
-  - [Mirroring Azure Database for PostgreSQL in Microsoft Fabric](../integration/concepts-fabric-mirroring.md)
-  - [Azure Database for PostgreSQL Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md)
+  - [Supported versions of PostgreSQL in Azure Database for PostgreSQL](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
+  - [Azure Database for PostgreSQL mirroring in Microsoft Fabric](../integration/concepts-fabric-mirroring.md)
+  - [Elastic clusters in Azure Database for PostgreSQL](../elastic-clusters/concepts-elastic-clusters.md)
 
 ## Release: October 2025
 
@@ -78,7 +78,7 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [2025-08-01 GA REST API](https://github.com/Azure/azure-rest-api-specs/tree/main/specification/postgresql/resource-manager/Microsoft.DBforPostgreSQL/stable/2025-08-01) now available.
   - [Azure Database for PostgreSQL - Maintenance release notes index](../release-notes-maintenance/release-notes-maintenance-index.md) of upcoming maintenance upgrades now available.
 - Preview
-  - [Read Replica support for Premium SSDv2 in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
+  - [Read replicas in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
 
 ## Release: September 2025
 
@@ -86,7 +86,7 @@ This article highlights the latest updates and enhancements for Azure Database f
   - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.6, 16.10, 15.14, 14.19 and 13.22. <sup>$</sup>
   - [Near zero downtime scaling](../scale/concepts-scaling-resources.md#near-zero-downtime-scaling) for high availability (HA) enabled servers.
 - Preview
-  - [PostgreSQL 18](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
+  - [Supported versions of PostgreSQL in Azure Database for PostgreSQL](../configure-maintain/concepts-supported-versions.md) for Azure Database for PostgreSQL flexible server.
 
 ## Release: July 2025
 
@@ -96,7 +96,7 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [Chile Central region](../overview.md#azure-regions)
 - Preview
   - [High Availability with Premium SSDv2](../extensions/concepts-storage.md)
-  - [Cascading read replica support in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
+  - [Read replicas in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas.md)
 
 ## Release: June 2025
 
@@ -105,7 +105,7 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [TimescaleDB extension](../extensions/concepts-extensions-versions.md#timescaledb) version 2.15.3 for PG 13.
   - [Postgis extension](../extensions/concepts-extensions-versions.md#postgis) version 3.5.2 for PG 13 and above.
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 17.5, 16.9, 15.13, 14.18 and 13.21. <sup>$</sup>
-- Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.6.0) with [GA REST API](release-notes-api.md) version.
+- Support for [Ansible collection](https://galaxy.ansible.com/ui/repo/published/azure/azcollection/content/?version=3.6.0) with [API release notes - Azure Database for PostgreSQL](release-notes-api.md) version.
 
 ## Release: May 2025
 
@@ -120,9 +120,9 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [Azure Confidential Computing for Azure Database for PostgreSQL](../security/security-confidential-computing.md)
   - [AGE extension with Azure Database for PostgreSQL](../azure-ai/generative-ai-age-overview.md)
   - [AI functions in the azure_ai extension (Preview)](../azure-ai/generative-ai-azure-ai-functions.md)
-  - [New PostgreSQL VS Code extension](../extensions/vs-code-extension/overview.md)
-  - [GitHub Copilot integration with new PostgreSQL VS Code extension](../extensions/vs-code-extension/quickstart-github-copilot.md)
-  - [Major Version Upgrade Support for PostgreSQL 17](../configure-maintain/concepts-major-version-upgrade.md)
+  - [PostgreSQL extension for Visual Studio Code](../development/vs-code-extension/postgresql-extension-overview.md)
+  - [Copilot integration](../development/vs-code-extension/copilot-integration.md)
+  - [Major version upgrades in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md)
 
 ## Release: April 2025
 
@@ -130,7 +130,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Public preview of [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates).
 - Public preview of [Model Context Protocol (MCP) Server](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-model-context-protocol-mcp-server-for-azure-database-for-postgresql-/4404360) for Azure Database for PostgreSQL.
 - General availability of [New Zealand North](../overview.md#azure-regions) region.
-- Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with [GA REST API](release-notes-api.md) version.
+- Support for [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/4.24.0/docs/resources/postgresql_server) resource with [API release notes - Azure Database for PostgreSQL](release-notes-api.md) version.
 
 ## Release: March 2025
 
@@ -279,7 +279,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 15.2 (preview), 14.7, 13.10, 12.14, 11.19. <sup>$</sup>
 - General availability of [Query Performance Insight in Azure Database for PostgreSQL](../monitor/concepts-query-performance-insight.md) for Azure Database for PostgreSQL.
 - General availability of [Major version upgrades in Azure Database for PostgreSQL](../configure-maintain/concepts-major-version-upgrade.md) for Azure Database for PostgreSQL.
-- General availability of [Restore a dropped Azure Database for PostgreSQL](../backup-restore/how-to-restore-dropped-server.md) for Azure Database for PostgreSQL.
+- General availability of [Restore a deleted server](../backup-restore/how-to-restore-deleted-server.md) for Azure Database for PostgreSQL.
 - Public preview of [Storage autogrow](../extensions/concepts-storage.md) for Azure Database for PostgreSQL.
 
 ## Release: May 2023

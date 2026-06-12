@@ -4,7 +4,7 @@ description: Learn how to integrate Azure Database for PostgreSQL with Microsoft
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 01/20/2026
+ms.date: 06/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: ai-foundry
 ms.topic: how-to
@@ -96,7 +96,7 @@ The fastest way to get started is by using the automated deployment script.
    ```
    > [!NOTE]  
    > Find your **Azure Database for PostgreSQL** Resource ID in your Azure portal. **JSON View** → **Resource ID**:
-   > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view.png" alt-text="Screenshot of Azure details page.":::
+   > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view.png" alt-text="Screenshot of Azure details page." lightbox="media/generative-ai-foundry-integration/azure-details-view.png" :::
 
    b. Update the [`aifProjectResourceId`](https://github.com/Azure-Samples/azure-postgres-mcp-demo/blob/1f94c56bdd8ab4b383fdfc8eac23b05db2c4b09f/infra/main.parameters.json#L20) variable to match the Foundry project resource you want to use
 
@@ -108,7 +108,7 @@ The fastest way to get started is by using the automated deployment script.
 
    > [!NOTE]  
    > Find your **Foundry project** Resource ID in your Azure portal. **JSON View** → **Resource ID**:
-   > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view-foundry.png" alt-text="Screenshot of Foundry details.":::
+   > :::image type="content" source="media/generative-ai-foundry-integration/azure-details-view-foundry.png" alt-text="Screenshot of Foundry details." lightbox="media/generative-ai-foundry-integration/azure-details-view-foundry.png" :::
 
 1. Sign in to Azure CLI and Azure Developer CLI with the appropriate Azure account/subscription before deploying the MCP server:
 
@@ -120,7 +120,7 @@ The fastest way to get started is by using the automated deployment script.
    azd auth login
    ```
 
-1. Create a new azd environment and deploy. Make sure you are in the main directory (`azure-postgres-mcp-demo`):
+1. Create a new azd environment and deploy. Make sure you're in the main directory (`azure-postgres-mcp-demo`):
 
    ```bash
    azd env new
@@ -163,7 +163,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    psql
    ```
 
-   Alternatively, you can connect via the [Connect and query a database with the PostgreSQL extension for Visual Studio Code](../extensions/vs-code-extension/quickstart-connect.md).
+   Alternatively, you can connect via the [Quickstart: Connect and query PostgreSQL](../development/vs-code-extension/quickstart-connect-query.md).
 
 1. Create the database principal for the MCP server's managed identity. Only run this command in the **default postgres database**, because the command is only allowed in this database:
 
@@ -192,7 +192,7 @@ After deployment completes, grant the MCP server access to your PostgreSQL datab
    ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO "<CONTAINER_APP_IDENTITY_NAME>";
    ```
 
-   > [!NOTE]
+   > [!NOTE]  
    > If you have tables in a schema other than `public`, run these two same commands again with your other schema names. For example:
 
    ```sql
@@ -225,7 +225,7 @@ After you deploy your MCP server, connect it to Foundry:
 
 1. Choose **Azure Database for PostgreSQL** as the tool and select **Create**.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-add-postgresql-db-mcp.png" alt-text="Screenshot of finding the PostgreSQL tool in the Foundry catalog.":::
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-add-postgresql-db-mcp.png" alt-text="Screenshot of finding the PostgreSQL tool in the Foundry catalog." lightbox="media/generative-ai-foundry-integration/ai-foundry-add-postgresql-db-mcp.png" :::
 
 1. Select **Connect tool with endpoint**.
 
@@ -233,7 +233,7 @@ After you deploy your MCP server, connect it to Foundry:
 
 1. Select **Microsoft Entra** → **Project Managed Identity** as the authentication method.
 
-   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool.":::
+   :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool." lightbox="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" :::
 
 1. Enter the `ENTRA_APP_CLIENT_ID` value as the audience. This value is from the output of the `azd env get-values` command.
 
@@ -258,11 +258,11 @@ After you deploy your MCP server, connect it to Foundry:
 
 1. Select **Save** again to save your agent configuration.
 
-   > [!NOTE]
+   > [!NOTE]  
    > The resource group is the one that contains your Azure PostgreSQL database. If you deployed the MCP Server container apps into a different resource group, still use the name of the resource group that contains your Azure PostgreSQL database.
 
-   > [!NOTE]
-   > There is a single field for `table` in these instructions. If you chose to allow permissions on all tables, this parameter is ignored and you gain access to all tables in the schema you granted permissions on.
+   > [!NOTE]  
+   > There's a single field for `table` in these instructions. If you chose to allow permissions on all tables, this parameter is ignored and you gain access to all tables in the schema you granted permissions on.
 
 ### Test the integration
 
@@ -408,11 +408,11 @@ If MCP is *not running*:
 ```
 ping: cannot resolve https://your-mcp-server.azurecontainerapps.io: Unknown host
 ```
-You will need to re-run `azd up`.
+You'll need to re-run `azd up`.
 
 ### Limitations and considerations
 
-#### Cannot validate Microsoft Entra ID ... name isn't unique in the tenant
+#### Can't validate Microsoft Entra ID ... name isn't unique in the tenant
 
 - **Error**: Someone in your tenant already deployed a Postgres MCP server with the name `azure-mcp-postgres-server`
 
@@ -456,8 +456,8 @@ az containerapp show -n your-mcp-container-name -g your-resource-group
 ## Related content
 
 - [Azure MCP Server documentation](/azure/developer/azure-mcp-server/)
-- [Model Context Protocol specification](https://modelcontextprotocol.io/specification/versioning)
+- [Model Context Protocol specification](https://modelcontextprotocol.io/docs/learn/versioning)
 - [Microsoft Foundry documentation](/azure/ai-foundry/)
 - [Azure Database for PostgreSQL integrations for AI applications](generative-ai-frameworks.md)
-- [Azure AI extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
+- [azure_ai extension in Azure Database for PostgreSQL](generative-ai-azure-overview.md)
 - [Enable and use pgvector in Azure Database for PostgreSQL](../extensions/how-to-use-pgvector.md)

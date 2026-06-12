@@ -1,15 +1,16 @@
 ---
-title: "Tutorial: Convert Oracle schemas to Azure Database for PostgreSQL"
-description: "Step-by-step tutorial for converting Oracle database schemas to Azure Database for PostgreSQL flexible server by using the Visual Studio Code PostgreSQL extension with Microsoft Foundry integration."
+title: "Tutorial: Convert Oracle Schemas to Azure Database for PostgreSQL"
+description: Step-by-step tutorial for converting Oracle database schemas to Azure Database for PostgreSQL flexible server by using the Visual Studio Code PostgreSQL extension with Microsoft Foundry integration.
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 06/02/2026
-ai-usage: ai-assisted
+ms.date: 06/08/2026
 ms.service: azure-database-postgresql
 ms.topic: tutorial
-ms.collection: ce-skilling-ai-copilot
+ms.collection:
+  - ce-skilling-ai-copilot
 ms.update-cycle: 90-days
+ai-usage: ai-assisted
 ---
 
 # Tutorial: Oracle to Azure Database for PostgreSQL schema conversion
@@ -74,7 +75,7 @@ Replace `{your-resource}` with your Microsoft Foundry resource name (for example
 
 For more information about endpoint formats and inference routes, see [Endpoints for Microsoft Foundry Models](/azure/ai-foundry/foundry-models/concepts/endpoints).
 
-> [!TIP]
+> [!TIP]  
 > To route Microsoft Foundry traffic through Azure API Management for centralized governance, throttling, and observability, configure an AI gateway in front of your Foundry resource and use the gateway URL as the endpoint. For more information, see [Configure AI Gateway in your Foundry resources](/azure/ai-foundry/configuration/enable-ai-api-management-gateway-portal).
 
 ### Required database privileges
@@ -138,39 +139,39 @@ This section walks through the complete migration workflow. You install the Post
 1. Open Visual Studio Code.
 1. Go to the **Extensions** view (`Ctrl+Shift+X`).
 1. Search for **PostgreSQL** and install the **PostgreSQL** extension published by **Microsoft**.
-    1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
- 
-    :::image type="content" source="media/schema-conversions-tutorial/postgresql-extension-installation.png" alt-text="Screenshot of installing the PostgreSQL extension in Visual Studio Code.":::
+   1. [Marketplace download](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql)
+
+   :::image type="content" source="media/schema-conversions-tutorial/postgresql-extension-installation.png" alt-text="Screenshot of installing the PostgreSQL extension in Visual Studio Code." lightbox="media/schema-conversions-tutorial/postgresql-extension-installation.png" :::
 
 ### Step 2: Create an Azure Database for PostgreSQL connection
 
 1. In the PostgreSQL extension panel, create a connection to your **Azure Database for PostgreSQL flexible server** instance.
 1. Enter the connection details (host, database, username, password).
 1. Test and save the connection.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/postgresql-new-connection.png" alt-text="Screenshot of adding new Azure Database for PostgreSQL connection.":::
+
+   :::image type="content" source="media/schema-conversions-tutorial/postgresql-new-connection.png" alt-text="Screenshot of adding new Azure Database for PostgreSQL connection." lightbox="media/schema-conversions-tutorial/postgresql-new-connection.png" :::
 
 ### Step 3: Open a new workspace
 
 1. Create a new folder on your local machine for the migration project.
 1. Open the folder as a **new workspace** in Visual Studio Code.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/open-workspace.png" alt-text="Screenshot of adding a new workspace in Visual Studio Code.":::
+
+   :::image type="content" source="media/schema-conversions-tutorial/open-workspace.png" alt-text="Screenshot of adding a new workspace in Visual Studio Code." lightbox="media/schema-conversions-tutorial/open-workspace.png" :::
 
 ### Step 4: Initialize a migration project
 
 1. Open the **PostgreSQL extension**.
 1. Go to the **Migrations (preview)** panel.
 1. Select **Create Migration Project**.
-    
-    :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project.":::
+
+   :::image type="content" source="media/schema-conversions-tutorial/create-migration.png" alt-text="Screenshot of creating a new migration project." lightbox="media/schema-conversions-tutorial/create-migration.png" :::
 
 ### Step 5: Configure project settings
 
 1. In the **Migration Wizard**, enter your **project name**.
 1. Select **Next** to continue.
 
-    :::image type="content" source="media/schema-conversions-tutorial/new-migration-project.png" alt-text="Screenshot of project name.":::
+   :::image type="content" source="media/schema-conversions-tutorial/new-migration-project.png" alt-text="Screenshot of project name." lightbox="media/schema-conversions-tutorial/new-migration-project.png" :::
 
 ### Step 6: Configure the Oracle connection
 
@@ -185,7 +186,7 @@ This section walks through the complete migration workflow. You install the Post
 1. Select one or more schemas to convert to PostgreSQL.
 1. Select **Next** to continue.
 
-   :::image type="content" source="media/schema-conversions-tutorial/connect-oracle.png" alt-text="Screenshot of configuring an Oracle server.":::
+   :::image type="content" source="media/schema-conversions-tutorial/connect-oracle.png" alt-text="Screenshot of configuring an Oracle server." lightbox="media/schema-conversions-tutorial/connect-oracle.png" :::
 
 ### Step 7: Configure an Azure Database for PostgreSQL scratch database
 
@@ -193,7 +194,7 @@ This section walks through the complete migration workflow. You install the Post
 1. Select the **target database** from the dropdown list.
 1. Select **Next** to continue.
 
-    :::image type="content" source="media/schema-conversions-tutorial/scratch-database.png" alt-text="Screenshot of configuring a scratch database.":::
+   :::image type="content" source="media/schema-conversions-tutorial/scratch-database.png" alt-text="Screenshot of configuring a scratch database." lightbox="media/schema-conversions-tutorial/scratch-database.png" :::
 
 ### Step 8: Configure the Microsoft Foundry language model
 
@@ -206,7 +207,7 @@ This section walks through the complete migration workflow. You install the Post
 1. Select **Test Connection** to verify the configuration.
 1. After the connection succeeds, select **Create Migration Project**.
 
-    :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration.":::
+   :::image type="content" source="media/schema-conversions-tutorial/language-model.png" alt-text="Screenshot of language model configuration." lightbox="media/schema-conversions-tutorial/language-model.png" :::
 
 ### Step 9: Run the schema conversion
 
@@ -214,7 +215,7 @@ This section walks through the complete migration workflow. You install the Post
 1. Select **Migrate** to start the schema conversion process.
 1. Monitor the conversion progress in the Visual Studio Code interface.
 
-    :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress.":::
+   :::image type="content" source="media/schema-conversions-tutorial/progress-bar.png" alt-text="Screenshot of Migration step progress." lightbox="media/schema-conversions-tutorial/progress-bar.png" :::
 
 ### Step 10: Review the schema conversion report
 
@@ -235,13 +236,13 @@ This section walks through the complete migration workflow. You install the Post
 1. Confirm that dependencies, constraints, and representative workloads behave as expected.
 1. Review the resolutions for all review tasks and retest after changes.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Customer validation responsibility: The same AI engine used for schema conversion can also assist with validation and review. AI systems can occasionally confirm their own mistakes. To prevent data loss, functional regressions, or security issues, independently validate all converted objects and review-task resolutions before you deploy to production. As part of your controls, consider enabling Microsoft Foundry content filtering to help reduce harmful or undesired outputs. For guidance, see [Content filtering for Microsoft Foundry Models](/azure/ai-foundry/openai/concepts/content-filter).
 
-For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../extensions/vs-code-extension/overview.md).
+For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../development/vs-code-extension/postgresql-extension-overview.md).
 
 ## Related content
 
 - [What is Oracle to Azure Database for PostgreSQL schema conversion?](schema-conversions-overview.md)
 - [Review tasks and output folders for Oracle to Azure Database for PostgreSQL schema conversion](schema-conversions-review-tasks-artifacts.md)
-- [Schema conversion limitations](schema-conversions-limitations.md)
+- [Oracle to Azure Database for PostgreSQL schema conversion limitations](schema-conversions-limitations.md)

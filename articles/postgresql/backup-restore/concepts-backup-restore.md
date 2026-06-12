@@ -116,7 +116,7 @@ The time required to recover using the latest and custom restore point options v
 If you configure your server within a virtual network, you can restore to the same virtual network or to a different virtual network. However, you can't restore to public access. Similarly, if you configured your server with public access, you can't restore to private virtual network access.
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure Database for Azure Database for PostgreSQL flexible server](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a deleted server](how-to-restore-deleted-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 
 ## Geo-redundant backup and restore

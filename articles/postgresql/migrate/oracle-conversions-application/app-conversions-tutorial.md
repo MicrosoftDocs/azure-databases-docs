@@ -4,7 +4,7 @@ description: Step-by-step tutorial for converting application code interacting w
 author: shriram-muthukrishnan
 ms.author: shriramm
 ms.reviewer: maghan
-ms.date: 04/15/2026
+ms.date: 06/08/2026
 ms.service: azure-database-postgresql
 ms.topic: tutorial
 ms.collection:
@@ -125,7 +125,7 @@ This section walks through the complete application conversion workflow: set up 
 
 - Organize files logically to facilitate systematic conversion.
 
-:::image type="content" source="media/app-conversions-tutorial/app-code-inside-project.png" alt-text="Screenshot of application code folder inside your project.":::
+:::image type="content" source="media/app-conversions-tutorial/app-code-inside-project.png" alt-text="Screenshot of application code folder inside your project." lightbox="media/app-conversions-tutorial/app-code-inside-project.png" :::
 
 > Keep your original application code in a separate location as a backup. Only copy the files you want to convert into the migration project structure.
 
@@ -213,7 +213,7 @@ After completing the application conversion:
 
 > **Comprehensive validation strategies**: See [Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)](app-conversions-best-practices.md) for detailed validation frameworks, testing priorities, and team coordination approaches based on your conversion complexity.
 
-For more information about the Visual Studio Code extension, visit [What is the PostgreSQL extension for Visual Studio Code?](../../developer/vs-code-extension/vs-code-overview.md)
+For more information about the Visual Studio Code extension, visit [PostgreSQL extension for Visual Studio Code](../../development/vs-code-extension/postgresql-extension-overview.md)
 
 ## Related content
 

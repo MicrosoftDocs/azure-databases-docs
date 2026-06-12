@@ -115,4 +115,4 @@ az postgres flexible-server restore \
 - [Restore to custom restore point](how-to-restore-custom-restore-point.md).
 - [Restore full backup (fast restore)](how-to-restore-full-backup.md).
 - [Restore to paired region (geo-restore)](how-to-restore-paired-region.md).
-- [Restore a dropped server](how-to-restore-dropped-server.md).
+- [Restore a deleted server](how-to-restore-deleted-server.md).

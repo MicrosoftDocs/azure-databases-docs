@@ -20,7 +20,7 @@ Kusto Query Language (KQL) is a powerful pipeline-driven, read-only query langua
 ## Prerequisites
 
 1. Enable audit logging - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
-1. Enable Azure Postgres logs to be sent to Azure log analytics - [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
+1. Enable Azure Postgres logs to be sent to Azure Log Analytics - [Configure and access logs](../monitor/how-to-configure-and-access-logs.md)
 1. Adjust the `log_line_prefix` parameter:
    From the Parameters blade, set the `log_line_prefix` to include the escapes `user=%u,db=%d,session=%c,sess_time=%s` in the same sequence to get the desired results.
    - Before: `log_line_prefix` = `%t-%c-`
@@ -85,4 +85,4 @@ The `PrincipalName` value identifies the user who signed in. The `RoleName` valu
 ## Related content
 
 - [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md)
-- [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md#configure-diagnostic-settings)
+- [Configure Log Analytics](../monitor/how-to-configure-and-access-logs.md)

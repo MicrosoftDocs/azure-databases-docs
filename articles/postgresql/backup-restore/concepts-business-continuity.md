@@ -106,7 +106,7 @@ Below are some unplanned failure scenarios and the recovery process.
 * Setup telemetry alerts, you need to make sure your existing alert rule settings are updated to map to the new server. For more information about alert rules, see [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](../monitor/how-to-alert-on-metrics.md).
 
 > [!IMPORTANT]
-> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a dropped Azure database](how-to-restore-dropped-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
+> Deleted servers can be restored. If you delete the server, you can follow our guidance [Restore a deleted server](how-to-restore-deleted-server.md) to recover. Use Azure resource lock to help prevent accidental deletion of your server.
 
 ## Related content
 

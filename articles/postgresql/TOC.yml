@@ -48,13 +48,13 @@
     - name: Create a server
       items:
         - name: Azure SDK for Python
-          href: developer/create-server-python-sdk.md
+          href: development/create-server-python-sdk.md
         - name: Azure SDK for .NET
-          href: developer/create-server-dotnet-sdk.md
+          href: development/create-server-dotnet-sdk.md
         - name: Azure SDK for Java
-          href: developer/create-server-java-sdk.md
+          href: development/create-server-java-sdk.md
         - name: Bicep
-          href: developer/create-server-bicep.md
+          href: development/create-server-bicep.md
         - name: Connect and query
           items:
             - name: Python
@@ -70,17 +70,62 @@
     - name: PostgreSQL extension for Visual Studio Code
       items:
         - name: Overview
-          href: extensions/vs-code-extension/overview.md
-        - name: QuickStart
-          href: extensions/vs-code-extension/quickstart-connect.md
-        - name: Configure GitHub Copilot
-          href: extensions/vs-code-extension/quickstart-github-copilot.md
+          href: development/vs-code-extension/postgresql-extension-overview.md
+        - name: "Quickstart: Connect and query"
+          href: development/vs-code-extension/quickstart-connect-query.md
+        - name: Common workflows
+          href: development/vs-code-extension/common-workflows.md
+        - name: Connections and identity
+          href: development/vs-code-extension/connections.md
+        - name: Advanced connection options
+          href: development/vs-code-extension/advanced-connection-options.md
+        - name: Query editor and IntelliSense
+          href: development/vs-code-extension/query-editor-intellisense.md
+        - name: Object explorer
+          href: development/vs-code-extension/object-explorer.md
+        - name: Query plan visualizer
+          href: development/vs-code-extension/query-plan-visualizer.md
+        - name: Schema visualizer
+          href: development/vs-code-extension/schema-visualizer.md
+        - name: Server dashboard
+          href: development/vs-code-extension/server-dashboard.md
+        - name: Azure server management
+          href: development/vs-code-extension/azure-server-management.md
+        - name: Create a PostgreSQL server
+          href: development/vs-code-extension/create-server.md
+        - name: Copilot integration
+          href: development/vs-code-extension/copilot-integration.md
+          items:
+            - name: "@pgsql chat participant"
+              href: development/vs-code-extension/copilot/postgresql-chat-participant.md
+            - name: Agent mode
+              href: development/vs-code-extension/copilot/agent-mode.md
+        - name: MCP server
+          href: development/vs-code-extension/mcp-server.md
+        - name: Oracle to PostgreSQL migration
+          href: development/vs-code-extension/oracle-migration.md
+        - name: Use psql in the terminal
+          href: development/vs-code-extension/postgresql-terminal.md
+        - name: Reference
+          items:
+            - name: Commands
+              href: development/vs-code-extension/reference/commands.md
+            - name: Settings
+              href: development/vs-code-extension/reference/settings.md
+            - name: Keyboard shortcuts
+              href: development/vs-code-extension/reference/keyboard-shortcuts.md
+            - name: Copilot tools
+              href: development/vs-code-extension/reference/copilot-tools.md
+            - name: MCP server
+              href: development/vs-code-extension/reference/mcp-server.md
+            - name: Chat participant
+              href: development/vs-code-extension/reference/chat-participant.md
     - name: Application development
       items:
         - name: Deploy Django app on AKS
-          href: developer/django-aks-database.md
+          href: development/django-aks-database.md
         - name: Create web app in virtual network
-          href: developer/webapp-server-vnet.md
+          href: development/webapp-server-vnet.md
         - name: Deploy Django app on App Service
           href: /azure/app-service/tutorial-python-postgresql-app
 - name: Generative AI
@@ -340,8 +385,8 @@
               href: backup-restore/how-to-restore-full-backup.md
             - name: Restore to paired region (geo-restore)
               href: backup-restore/how-to-restore-paired-region.md
-            - name: Restore a dropped server
-              href: backup-restore/how-to-restore-dropped-server.md
+            - name: Restore a deleted server
+              href: backup-restore/how-to-restore-deleted-server.md
     - name: Reliability
       items:
         - name: High availability
@@ -636,7 +681,7 @@
           href: configure-maintain/how-to-data-factory-script-activity-fabric.md
 - name: Monitor
   items:
-    - name: Monitor and tune overview
+    - name: Monitor using metrics and logs
       href: monitor/concepts-monitoring.md
       displayName: monitor, metrics
     - name: Workbooks
