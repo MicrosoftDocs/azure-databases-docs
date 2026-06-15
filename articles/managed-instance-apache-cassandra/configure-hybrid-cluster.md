@@ -15,6 +15,9 @@ ms.devlang: azurecli
 
 # Quickstart: Configure a hybrid cluster with Azure Managed Instance for Apache Cassandra by using the Client Configurator
 
+> [!IMPORTANT]
+> We recommend dual proxy over this strategy which helps in keeping two independent systems sync without hard dependencies. 
+
 The Azure Client Configurator is a tool designed to assist you in configuring a hybrid cluster and simplifying the migration process to Azure Managed Instance for Apache Cassandra. If you currently have on-premises datacenters or are operating in a self-hosted environment, you can use Azure Managed Instance for Apache Cassandra to seamlessly incorporate other datacenters into your cluster while effectively maintaining them.
 
 > [!IMPORTANT]
