@@ -56,18 +56,15 @@ Select a different availability zone or [file a support request](https://ms.port
 
 ## SKU not available
 
+The availability of SKUs may differ across regions; either the specific SKU isn't supported in the region or is temporarily unavailable.
+
 **Error message(s):**
 - The specified VM family isn't supported in this region.
 - Provisioning for specific server SKUs isn't supported.
 - Specified SKU not supported in this region.
 
 **Resolution:**  
-Choose a different SKU if unavailable. Submit a support request at [https://ms.portal.azure.com/#blade/Microsoft_ABlade](https://ms.portal.azure.com/#blade/Microsoft_ABlade). Requests are reviewed on a case-by-case basis.
-
-The availability of SKUs may differ across regions; either the specific SKU isn't supported in the region or is temporarily unavailable.
-
-If you see the following errors,
-- The specified virtual machine family isn't supported in this region.
+Choose a different SKU if unavailable. [File a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) if additional assistance is required on the available options.
 
 ## Regional constraints
 
@@ -78,7 +75,7 @@ If you see the following errors,
 - Subscriptions aren't available for provisioning in this region. Choose a different region. For exceptions to this rule, open a support request with the Issue type of 'Service and subscription limits'.
 
 **Resolution:**  
-Your subscription might not have access to create a server in the selected region.[Submit a support request](https://ms.portal.azure.com/#blade/Microsoft_ABlade). Requests are reviewed on a case-by-case basis.
+Your subscription might not have access to create a server in the selected region.[Submit a support request](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Requests are reviewed on a case-by-case basis.
 
 ## Register the MySQL resource provider to your subscription
 
