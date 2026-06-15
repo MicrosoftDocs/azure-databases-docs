@@ -101,7 +101,7 @@ If you're using PostGIS or any dependent extensions, you must configure the sear
 
 ### TimescaleDB-specific considerations
 
-If you're using [TimescaleDB](../extensions/concepts-extensions-versions), in-place major version upgrades are supported only for specific PostgreSQL source and target version combinations:
+If you're using [TimescaleDB](../extensions/concepts-extensions-versions.md), in-place major version upgrades are supported only for specific PostgreSQL source and target version combinations:
 
 | Source PostgreSQL version | Supported target versions |
 | ------------------------- | ------------------------- |
