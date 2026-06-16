@@ -38,6 +38,7 @@ Extended Support is ideal for customers who...
 - Treat Extended Support as a temporary bridge, not a long-term solution.
 - Start upgrade planning well before the end-of-life (end of support) date.
 - Consider upgrading to newer versions such as PostgreSQL 15 or 16 for improved performance and support.
+- For more details on supported upgrade paths and limitations, see [Major version upgrade documentation](/azure/postgresql/configure-maintain/concepts-major-version-upgrade).
 
 ### Eligible PostgreSQL versions
 
