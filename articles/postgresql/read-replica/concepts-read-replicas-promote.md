@@ -4,7 +4,7 @@ description: This article describes the promote action for read replica feature 
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 02/16/2026
+ms.date: 06/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: concept-article
@@ -21,7 +21,7 @@ Promotion of replicas can be done in two distinct manners:
 
 **Promote to primary server**
 
-This action elevates a replica to the role of the primary server. In the process, the current primary server is demoted to a replica role, swapping their roles. For a successful promotion, it's necessary to have a [virtual endpoint](concepts-read-replicas-promote.md) configured for both the current primary as the writer endpoint, and the replica intended for promotion as the reader endpoint. The promotion is successful only if the targeted replica is included in the reader endpoint configuration. 
+This action elevates a replica to the role of the primary server. In the process, the current primary server is demoted to a replica role, swapping their roles. For a successful promotion, it's necessary to have a [virtual endpoint](concepts-read-replicas-promote.md) configured for both the current primary as the writer endpoint, and the replica intended for promotion as the reader endpoint. The promotion is successful only if the targeted replica is included in the reader endpoint configuration. The switchover operation can only be performed by a user with Microsoft.DBforPostgreSQL/servers/write permission on the source server.
 
 If the primary server has any broken replicas, those replicas must be removed before initiating the promote to primary server action. During this process, the read replica is promoted to become the new primary server. This operation may result in a brief downtime of approximately 1–3 minutes, depending on the replication lag at the time of promotion (for planned promotions). After the promotion completes, the previous primary server is reconfigured to operate as a read replica.
 
@@ -65,7 +65,7 @@ The promote operation doesn't carry over specific configurations and parameters.
 - **Geo-redundant backup storage**: Geo-backup settings aren't transferred. Since replicas can't have geo-backup enabled, the promoted primary (formerly the replica) doesn't have it after promotion. The feature can only be activated at the standard server's creation time (not a replica).
 - **Parameters**: If their values differ on the primary and read replica, they won't change during promotion. It's essential to note that parameters influencing shared memory size must have the same values on both the primary and replicas. This requirement is detailed in the [Parameters](concepts-read-replicas.md#parameters) section.
 - **Microsoft Entra authentication**: If the primary had [Microsoft Entra authentication](../security/security-entra-concepts.md) configured, but the replica was set up with PostgreSQL authentication, then after promotion, the replica won't automatically switch to Microsoft Entra authentication. It retains the PostgreSQL authentication. Users need to manually configure Microsoft Entra authentication on the promoted replica either before or after the promotion process.
-- **High Availability (HA)**: Should you require [HA]/azure/reliability/reliability-postgresql-flexible-server after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
+- **High Availability (HA)**: Should you require [HA](/azure/reliability/reliability-postgresql-flexible-server) after the promotion, it must be configured on the freshly promoted primary server, following the role reversal.
 
 
 ## Considerations
