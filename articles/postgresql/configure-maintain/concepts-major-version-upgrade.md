@@ -4,7 +4,7 @@ description: Learn how to use Azure Database for PostgreSQL to do in-place major
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/07/2026
+ms.date: 06/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
@@ -88,7 +88,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 ### Extension limitations
 
 In-place major version upgrades don't support all PostgreSQL extensions. The upgrade fails during the precheck if unsupported extensions are found.
-- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `timescaledb`, `postgres_fdw`, `session_variable`, `pg_hint_plan`, `plv8`.
+- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `postgres_fdw`, `session_variable`, `pg_hint_plan`, `plv8`.
 - The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
 - When upgrading to PostgreSQL 17 or later, the following extensions are **not supported** and must be removed before upgrade. You can re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
 
@@ -98,6 +98,24 @@ If you're using PostGIS or any dependent extensions, you must configure the sear
 - Schemas related to PostGIS
 - Dependent extensions, including: `postgis`, `postgis_raster`, `postgis_sfcgal`, `postgis_tiger_geocoder`, `postgis_topology`, `address_standardizer`, `address_standardizer_data_us`, `fuzzystrmatch`
 - Failure to configure the search_path correctly can lead to upgrade failures or broken objects post-upgrade.
+
+### TimescaleDB-specific considerations
+
+If you're using [TimescaleDB](../extensions/concepts-extensions-versions.md), in-place major version upgrades are supported only for specific PostgreSQL source and target version combinations:
+
+| Source PostgreSQL version | Supported target versions |
+| ------------------------- | ------------------------- |
+| PostgreSQL 11             | Not supported             |
+| PostgreSQL 12             | Not supported             |
+| PostgreSQL 13             | Not supported             |
+| PostgreSQL 14             | PostgreSQL 15, 16, 17, 18 |
+| PostgreSQL 15             | PostgreSQL 16, 17, 18     |
+| PostgreSQL 16             | PostgreSQL 17, 18         |
+| PostgreSQL 17             | PostgreSQL 18             |
+
+If your server is running TimescaleDB on PostgreSQL 13 or earlier, in-place major version upgrade is blocked. To proceed, either drop the TimescaleDB extension before upgrade, if feasible, or use an alternate migration approach such as [side-by-side migration with logical replication](https://techcommunity.microsoft.com/blog/adforpostgresql/upgrade-azure-database-for-postgresql-with-minimal-downtime-using-logical-replic/4466784).
+
+For PostgreSQL 14 and later, ensure that your source and target versions are included in the supported matrix above before starting the upgrade.
 
 ### Other upgrade considerations
 
