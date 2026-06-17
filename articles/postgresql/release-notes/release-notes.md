@@ -1,5 +1,5 @@
 ---
-title: Release Notes for Azure Database for PostgreSQL
+title: Release Notes for Azure Database for PostgreSQL flexible server
 description: Release notes for Azure Database for PostgreSQL, including feature additions, engine versions support, extensions, and other announcements.
 author: varun-dhawan
 ms.author: varundhawan
@@ -13,7 +13,7 @@ ms.custom:
 # customer intent: As a reader, I want the title and description to meet the required length and include the relevant information about the release notes for Azure DB for PostgreSQL.
 ---
 
-# Release notes - Azure Database for PostgreSQL
+# Release notes - Azure Database for PostgreSQL flexible server
 
 This article highlights the latest updates and enhancements for Azure Database for PostgreSQL service, including new feature releases, supported engine versions, available extensions, and other important announcements.
 
