@@ -10,7 +10,7 @@ ms.subservice: server-parameters
 ms.topic: concept-article
 ---
 
-# Parameters in Azure Database for PostgreSQL 
+# Parameters in Azure Database for PostgreSQL flexible server 
 
 Azure Database for PostgreSQL provides a set of configurable parameters for each server.
 
