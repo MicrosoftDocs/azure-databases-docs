@@ -10,7 +10,7 @@ ms.subservice: high-availability
 ms.topic: how-to
 ---
 
-# High Availability (HA) health status monitoring for Azure Database for PostgreSQL 
+# High Availability (HA) health status monitoring for Azure Database for PostgreSQL flexible server 
 
 Azure Database for PostgreSQL flexible server includes a High Availability (HA) Health Status Monitoring feature, which uses Azure's Resource Health Check (RHC) framework. This service provides continuous insights into the health of HA-enabled instances, notifying you of events that might affect connectivity and availability. The following details each health state and associated scenarios to help you troubleshoot and maintain HA stability.
 
