@@ -10,7 +10,7 @@ ms.subservice: networking
 ms.topic: concept-article
 ---
 
-# Network with private access (virtual network integration) for Azure Database for PostgreSQL
+# Network with private access (virtual network integration) for Azure Database for PostgreSQL flexible server
 
 This article describes connectivity and networking concepts for Azure Database for PostgreSQL flexible server instances.
 
