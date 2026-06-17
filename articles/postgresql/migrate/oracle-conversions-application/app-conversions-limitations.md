@@ -12,7 +12,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ---
 
-# Oracle to Azure Database for PostgreSQL application conversion limitations (Preview)
+# Oracle to Azure Database for PostgreSQL flexible server application conversion limitations (Preview)
 
 This article outlines the known limitations and constraints when using the Oracle to PostgreSQL application conversion feature in Visual Studio Code.
 

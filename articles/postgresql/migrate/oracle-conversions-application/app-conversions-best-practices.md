@@ -12,7 +12,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ---
 
-# Best practices for converting Oracle application code to Azure Database for PostgreSQL (Preview)
+# Best practices for converting Oracle application code to Azure Database for PostgreSQL flexible server (Preview)
 
 This article provides best practices and recommendations to ensure optimal results when using the Oracle to Azure Database for PostgreSQL application conversion feature in Visual Studio Code.
 

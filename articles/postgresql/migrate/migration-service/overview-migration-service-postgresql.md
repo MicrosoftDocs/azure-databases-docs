@@ -1,5 +1,5 @@
 ---
-title: "Migration Service in Azure Database for PostgreSQL"
+title: "Migration Service in Azure Database for PostgreSQL flexible server"
 description: Get an introduction to using the migration service to migrate to Azure Database for PostgreSQL flexible server, including advantages and migration options.
 author: hariramt
 ms.author: hariramt
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is the migration service in Azure Database for PostgreSQL?
+# What is the migration service in Azure Database for PostgreSQL flexible server?
 
 The migration service in Azure Database for PostgreSQL simplifies the process of moving your PostgreSQL databases to Azure. The migration service offers migration options from various PostgreSQL-supported sources, including migrating from a cloud service, from an on-premises environment, or from a virtual machine in Azure. The migration service is designed to help you move your PostgreSQL databases to Azure Database for PostgreSQL flexible server with ease and confidence.
 

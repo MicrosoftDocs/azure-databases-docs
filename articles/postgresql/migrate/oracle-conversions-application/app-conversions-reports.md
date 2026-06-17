@@ -12,7 +12,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ---
 
-# Oracle to Azure Database for PostgreSQL application conversion generated reports (Preview)
+# Oracle to Azure Database for PostgreSQL flexible server application conversion generated reports (Preview)
 
 The Oracle to Azure Database for PostgreSQL Application Conversion feature generates a comprehensive report during the conversion process to help you validate and understand your application code conversion.
 

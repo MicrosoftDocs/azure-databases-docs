@@ -1,5 +1,5 @@
 ---
-title: What is Oracle to Azure Database for PostgreSQL schema conversion?
+title: What is Oracle to Azure Database for PostgreSQL flexible server schema conversion?
 description: Learn how to convert Oracle database schemas to Azure Database for PostgreSQL by using the Visual Studio Code PostgreSQL extension, AI-powered transformation in Microsoft Foundry, and review tasks for migration to Azure Database for PostgreSQL flexible server.
 author: apduvuri
 ms.author: adityaduvuri
@@ -12,7 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
 
-# What is Oracle to Azure Database for PostgreSQL schema conversion?
+# What is Oracle to Azure Database for PostgreSQL flexible server schema conversion?
 
 The Oracle to Azure Database for PostgreSQL schema conversion feature in the Visual Studio Code PostgreSQL extension helps you convert your existing Oracle database schema objects into PostgreSQL-compatible schema. This functionality is designed for relational schemas and produces converted schema for Azure Database for PostgreSQL flexible server.
 
