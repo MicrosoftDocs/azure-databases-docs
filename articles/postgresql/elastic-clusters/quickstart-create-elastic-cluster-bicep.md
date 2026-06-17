@@ -10,7 +10,7 @@ ms.subservice: elastic-clusters
 ms.topic: quickstart
 ---
 
-# Quickstart: Use a Bicep template to create an elastic cluster with Azure Database for PostgreSQL
+# Quickstart: Use a Bicep template to create an elastic cluster with Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL with elastic clusters is a managed service that you use to run, manage, and scale highly available PostgreSQL databases in the cloud with a horizontal scale-out capability. You can use a Bicep template to provision your Azure Database for PostgreSQL flexible server elastic clusters instance.
 

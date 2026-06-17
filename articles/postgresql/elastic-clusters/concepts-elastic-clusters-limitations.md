@@ -10,7 +10,7 @@ ms.subservice: elastic-clusters
 ms.topic: faq
 ---
 
-# Frequently asked questions about elastic clusters in Azure Database for PostgreSQL
+# Frequently asked questions about elastic clusters in Azure Database for PostgreSQL flexible server
 
 The following section describes capacity and functional limits in elastic clusters of Azure Database for PostgreSQL.
 
