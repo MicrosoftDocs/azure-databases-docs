@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Tutorial: Create a semantic search with Azure Database for PostgreSQL and Azure OpenAI
+# Tutorial: Create a semantic search with Azure Database for PostgreSQL flexible server and Azure OpenAI
 
 This hands-on tutorial shows you how to build a semantic search application by using Azure Database for PostgreSQL and Azure OpenAI.
 

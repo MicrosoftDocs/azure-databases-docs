@@ -1,5 +1,5 @@
 ---
-title: Use LangChain with Azure Database for PostgreSQL
+title: Use LangChain with Azure Database for PostgreSQL flexible server
 description: Integrate Azure Database for PostgreSQL with AI and LangChain, so that you can use advanced AI capabilities in your applications.
 author: abeomor
 ms.author: abeomorogbe
@@ -15,7 +15,7 @@ ms.custom:
   - build-2025
 ---
 
-# Use LangChain with Azure Database for PostgreSQL
+# Use LangChain with Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages such as [LangChain](https://www.langchain.com/). This integration enables developers to use advanced AI capabilities in their applications. LangChain can streamline the management and use of LLMs, embedding models, and databases so that generative AI applications are easier to develop.
 
