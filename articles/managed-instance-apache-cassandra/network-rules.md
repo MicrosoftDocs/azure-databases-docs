@@ -52,7 +52,7 @@ The following table lists the required network rules and IP address dependencies
 |`snovap<region>.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
 |`*.store.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage for Control Plane communication and configuration.|
 |`*.blob.core.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Storage | HTTPS | 443 | Required for secure communication between the nodes and Azure Storage to store backups. *Backup feature is being revised and a pattern for storage name follows by general availability.*|
-|`vmc-p-<region>.vault.azure.net:443`</br> (Only for UAE North: vmc-pame-uaenorth.vault.azure.net:443) <br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Key Vault   | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
+|`vmc-p-<region>.vault.azure.net:443`</br> (Only for UAE North: `vmc-pame-uaenorth.vault.azure.net:443`) <br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Key Vault   | HTTPS | 443 | Required for secure communication between the nodes and Azure Key Vault. Certificates and keys are used to secure communication inside the cluster.|
 |`issuer.pki.azure.com:443` - Certificate Management Service of Azure | HTTPS | 443 | It is needed for certificate issuance and renewal. Ensure that any applicable NSG, firewall, route table, or proxy configuration allows this outbound access.|
 |`management.azure.com:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Virtual Machine Scale Sets/Azure Management API | HTTPS | 443 | Required to gather information about and manage Cassandra nodes (for example, reboot).|
 |`*.servicebus.windows.net:443`</br> Or</br> [ServiceTag](/azure/virtual-network/service-tags-overview#available-service-tags) - Azure Event Hubs | HTTPS | 443 | Required to forward logs to Azure.|
@@ -66,6 +66,8 @@ The following table lists the required network rules and IP address dependencies
 | `shavsalinuxscanpkg.blob.core.windows.net` | HTTPS | 443 | Needed to download/update security scanner. |
 | `crl.microsoft.com` | HTTPS | 443 | Needed to access public Microsoft certificates. |
 | `global-dsms.dsms.core.windows.net` | HTTPS | 443 | Needed to access public Microsoft certificates. |
+|`*.warm.ingest.monitor.core.windows.net` | HTTPS | 443 | Geneva Ingestion Gateway — Azure Security Pack security telemetry upload |
+|`*.pki.core.windows.net`	| HTTPS | 443 | 	Microsoft PKI CDN — CRL/AIA revocation checks for Microsoft-issued platform certificate |
 
 ### DNS access
 
