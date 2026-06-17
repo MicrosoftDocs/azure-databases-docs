@@ -1,5 +1,5 @@
 ---
-title: Vector search on Azure Database for PostgreSQL
+title: Vector search on Azure Database for PostgreSQL flexible server
 description: Enable semantic similarity search for Retrieval Augmented Generation (RAG) on Azure Database for PostgreSQL with pgvector database extension.
 author: AvijitkGupta
 ms.author: avijitgupta
@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Enable and use pgvector in Azure Database for PostgreSQL 
+# Enable and use pgvector in Azure Database for PostgreSQL flexible server 
 
 [!INCLUDE [Introduction to `pgvector`](~/reusable-content/ce-skilling/azure/includes/cosmos-db/postgresql/includes/pgvector-introduction.md)]
 
