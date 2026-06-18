@@ -4,7 +4,7 @@ description: Learn about recent updates to Azure Database for MySQL.
 author: deepthiprasad
 ms.author: deprasa
 ms.reviewer: maghan, randolphwest
-ms.date: 01/05/2026
+ms.date: 06/18/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -14,7 +14,7 @@ ms.custom:
 
 # What's new in Azure Database for MySQL?
 
-[Azure Database for MySQL](overview.md) is an Azure Database service that provides more granular control and flexibility over database management functions and configuration settings. The service currently supports the community versions of MySQL 5.7 and 8.0.
+[Azure Database for MySQL](overview.md) is an Azure Database service that provides more granular control and flexibility over database management functions and configuration settings. The service currently supports the community versions of MySQL 5.7, 8.0, and 8.4.
 
 This article summarizes new releases and features in the Azure Database for MySQL service.
 
@@ -23,13 +23,21 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## June 2026
+
+### Azure Database Migration Service adds support for MySQL 8.4
+
+Azure Database Migration Service (Azure DMS) now supports migrating MySQL workloads to Azure Database for MySQL 8.4. With this update, you can migrate your data to MySQL 8.4 on Azure by using the automation that Azure DMS provides.
+
+For more information, see [Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal](../../dms/tutorial-mysql-azure-external-to-flex-online-portal.md) and [Azure Database for MySQL version support policy](../concepts-version-policy.md).
+
 ## December 2025
 
 ### Azure MySQL Import CLI adds support for MySQL 8.4
 
-Azure Database for MySQL - Import CLI now supports importing MySQL 8.4 workloads from on-premises environments or virtual machines directly into Azure Database for MySQL.
+Azure Database for MySQL - Import CLI now supports importing MySQL 8.4 workloads from on-premises environments or virtual machines directly into Azure Database for MySQL. With this update, you can migrate your MySQL 8.4 data to Azure by using the automation that the Import CLI provides.
 
-This update ensures that customers running the latest MySQL versions can seamlessly migrate their data to Azure with minimal effort, leveraging the simplicity and automation provided by the Import CLI tool. Whether you're modernizing your infrastructure or scaling to the cloud, this feature helps accelerate your migration journey while maintaining compatibility and performance. For more information, see [Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI](../migrate/migrate-external-mysql-import-cli.md).
+For more information, see [Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI](../migrate/migrate-external-mysql-import-cli.md).
 
 ## November 2025
 
@@ -37,7 +45,7 @@ This update ensures that customers running the latest MySQL versions can seamles
 
 The Reader Endpoint feature for Azure Database for MySQL is now ready for private preview.
 
-Reader Endpoint provides a dedicated read-only endpoint for read replicas, enabling automatic connection-based load balancing of read-only traffic across multiple replicas. This feature simplifies application architecture by offering a single endpoint for read operations, improving scalability and fault tolerance. Azure Database for MySQL supports up to 10 read replicas per primary server. By routing read-only traffic through the reader endpoint, application teams can efficiently manage connections and optimize performance without handling individual replica endpoints. Reader endpoints continuously monitor the health of replicas and automatically exclude any replica that exceeds the configured replication lag threshold or becomes unavailable. To enroll in the preview, submit your details using this [form](https://aka.ms/mysqlearlyaccessenroll).
+Reader Endpoint provides a dedicated read-only endpoint for read replicas, enabling automatic connection-based load balancing of read-only traffic across multiple replicas. This feature simplifies application architecture by offering a single endpoint for read operations, improving scalability and fault tolerance. Azure Database for MySQL supports up to 10 read replicas per primary server. By routing read-only traffic through the reader endpoint, you can efficiently manage connections and optimize performance without handling individual replica endpoints. Reader endpoints continuously monitor the health of replicas and automatically exclude any replica that exceeds the configured replication lag threshold or becomes unavailable. To enroll in the preview, submit your details using this [form](https://aka.ms/mysqlearlyaccessenroll).
 
 ### Rename Server (Private Preview)
 
@@ -55,7 +63,7 @@ Custom port support for Azure Database for MySQL - Flexible Server is now genera
 
 ### Enhanced portal experience for high availability
 
-The portal experience for High Availability (HA) options is now more intuitive and aligned with Azure standards. To help customers run mission-critical workloads with zone-aware HA, the portal now prioritizes Zone-Redundant HA wherever available and displays SLA details alongside the selection for better clarity. If Zone-Redundant HA isn't available, customers can enable Local Redundant HA. Additionally, "Same Zone" is rebranded to Local Redundant to ensure consistency with Azure naming conventions. [Manage zone redundant high availability in Azure Database for MySQL with the Azure portal](how-to-configure-high-availability.md)
+The portal experience for High Availability (HA) options is now more intuitive and aligned with Azure standards. To help you run mission-critical workloads with zone-aware HA, the portal now prioritizes Zone-Redundant HA wherever available and displays SLA details alongside the selection for better clarity. If Zone-Redundant HA isn't available, you can enable Local Redundant HA. Additionally, "Same Zone" is rebranded to Local Redundant to ensure consistency with Azure naming conventions. [Manage zone redundant high availability in Azure Database for MySQL with the Azure portal](how-to-configure-high-availability.md)
 
 ### General Availability of Server Parameters support for `lower_case_table_names` in Azure Database for MySQL- Flexible Server
 
@@ -89,7 +97,7 @@ Azure Database for MySQL Flexible Server is now available in the following Azure
 
 ### Self-Heal in Azure Database for MySQL (Public Preview)
 
-The Self-Heal feature in Azure Database for MySQL empowers customers to resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. For more information, see [Self-Heal in Azure Database for MySQL (Public Preview)](how-to-self-heal.md).
+The Self-Heal feature in Azure Database for MySQL lets you resolve common server issues independently, without needing to open a support case. It provides a one-click repair experience that helps restore service health quickly and safely. For more information, see [Self-Heal in Azure Database for MySQL (Public Preview)](how-to-self-heal.md).
 
 ### Accelerated logs feature is now available in General Purpose service tier
 
@@ -107,7 +115,7 @@ Azure Database for MySQL now supports the ability to configure the backup interv
 
 ### Auto Initialization of Time Zones
 
-Time zones are automatically loaded during server creation, removing the need for customers to manually execute the `mysql.az_load_timezone` stored procedure afterwards to load the time zone. For more information, refer to the server parameter details for [time_zone](concepts-server-parameters.md#time_zone).
+Time zones are automatically loaded during server creation, removing the need for you to manually run the `mysql.az_load_timezone` stored procedure afterward to load the time zone. For more information, refer to the server parameter details for [time_zone](concepts-server-parameters.md#time_zone).
 
 ## May 2025
 
@@ -143,7 +151,7 @@ For more information, see [Built-in stored procedures in Azure Database for MySQ
 
 ### Caching SHA-2 password plugin now exposed by default
 
-The `caching_sha2_password` plugin is now exposed to customers by default. Customers can enable and configure it by setting the relevant **Server Parameters** in the Azure portal.
+The `caching_sha2_password` plugin is now exposed by default. You can enable and configure it by setting the relevant **Server Parameters** in the Azure portal.
 
 ### Default zone-resiliency for Business-Critical service tier (Rollback)
 
@@ -166,7 +174,7 @@ In response to customer feedback requesting flexibility in choosing their deploy
 You now benefit from the highest level of availability against infrastructure failures within an availability zone at no extra cost for mission-critical workloads running on the Business-Critical service tier. Regardless of whether your flexible servers are enabled with High Availability (HA), your server data and log files are hosted in zone-redundant storage by default. While zone-redundant HA-enabled servers continue to benefit from a 99.99% uptime SLA from the built-in zone redundancy and hot standby, non-HA servers can recover quickly from zone outages using zone-redundant backups. This enhancement applies to all new servers provisioned in the Business-Critical service tier.
 
 > [!NOTE]  
-> Based on customer feedback requesting the ability to choose their preferred deployment type, we've decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Memory Optimized and General-Purpose servers, customers must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and can't be modified later.
+> Based on customer feedback requesting the ability to choose their preferred deployment type, we've decided to roll back Default zone-resiliency for Business-Critical service tier. Now, for both Memory Optimized and General-Purpose servers, you must select the High Availability (HA) mode either same-zone or zone-redundant at the time of server creation. This selection is final and can't be modified later.
 
 ### Accelerated Logs enabled for all new Memory-Optimized servers
 
