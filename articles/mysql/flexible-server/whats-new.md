@@ -4,7 +4,7 @@ description: Learn about recent updates to Azure Database for MySQL.
 author: deepthiprasad
 ms.author: deprasa
 ms.reviewer: maghan, randolphwest
-ms.date: 01/05/2026
+ms.date: 06/18/2026
 ms.service: azure-database-mysql
 ms.subservice: flexible-server
 ms.topic: overview
@@ -14,7 +14,7 @@ ms.custom:
 
 # What's new in Azure Database for MySQL?
 
-[Azure Database for MySQL](overview.md) is an Azure Database service that provides more granular control and flexibility over database management functions and configuration settings. The service currently supports the community versions of MySQL 5.7, 8.0 and 8.4.
+[Azure Database for MySQL](overview.md) is an Azure Database service that provides more granular control and flexibility over database management functions and configuration settings. The service currently supports the community versions of MySQL 5.7, 8.0, and 8.4.
 
 This article summarizes new releases and features in the Azure Database for MySQL service.
 
@@ -25,19 +25,19 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 
 ## June 2026
 
-### Azure Database Migration Service (DMS) adds support for MySQL 8.4
+### Azure Database Migration Service adds support for MySQL 8.4
 
-Azure DMS now supports migrating MySQL workloads to Azure Database for MySQL 8.4.
+Azure Database Migration Service (Azure DMS) now supports migrating MySQL workloads to Azure Database for MySQL 8.4. With this update, you can migrate your data to MySQL 8.4 on Azure by using the automation that Azure DMS provides.
 
-With this update, you can run the latest MySQL version and migrate your data to Azure with minimal effort, using the simplicity and automation that Azure DMS provides. Whether you're modernizing your infrastructure or scaling to the cloud, this feature helps accelerate your migration journey while maintaining compatibility and performance. For more information, see [Migrate a MySQL workload to Azure Database for MySQL with Azure Database Migration Service](../../dms/tutorial-mysql-azure-external-to-flex-online-portal.md) and [version support policy](../../mysql/concepts-version-policy.md).
+For more information, see [Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS via the Azure portal](../../dms/tutorial-mysql-azure-external-to-flex-online-portal.md) and [Azure Database for MySQL version support policy](../concepts-version-policy.md).
 
 ## December 2025
 
 ### Azure MySQL Import CLI adds support for MySQL 8.4
 
-Azure Database for MySQL - Import CLI now supports importing MySQL 8.4 workloads from on-premises environments or virtual machines directly into Azure Database for MySQL.
+Azure Database for MySQL - Import CLI now supports importing MySQL 8.4 workloads from on-premises environments or virtual machines directly into Azure Database for MySQL. With this update, you can migrate your MySQL 8.4 data to Azure by using the automation that the Import CLI provides.
 
-With this update, if you're running the latest MySQL versions, you can seamlessly migrate your data to Azure with minimal effort, using the simplicity and automation that the Import CLI tool provides. Whether you're modernizing your infrastructure or scaling to the cloud, this feature helps accelerate your migration journey while maintaining compatibility and performance. For more information, see [Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI](../migrate/migrate-external-mysql-import-cli.md).
+For more information, see [Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI](../migrate/migrate-external-mysql-import-cli.md).
 
 ## November 2025
 
