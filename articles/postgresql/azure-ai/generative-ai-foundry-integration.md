@@ -235,10 +235,10 @@ After you deploy your MCP server, connect it to Foundry:
 
    :::image type="content" source="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" alt-text="Screenshot of Managed Identity page for the PostgreSQL tool." lightbox="media/generative-ai-foundry-integration/ai-foundry-postgresql-tool-catalog.png" :::
 
-1. Enter the `ENTRA_APP_CLIENT_ID` value as the audience. This value is from the output of the `azd env get-values` command.
+1. Enter the `ENTRA_APP_IDENTIFIER_URI` value as the audience. This value is from the output of the `azd env get-values` command.
 
    > [!TIP]  
-   > Use `azd env get-values` command to find the `ENTRA_APP_CLIENT_ID` and `CONTAINER_APP_URL` values.
+   > Use `azd env get-values` command to find the `ENTRA_APP_IDENTIFIER_URI` and `CONTAINER_APP_URL` values. The `ENTRA_APP_IDENTIFIER_URI` starts with `apo://`.
 
 1. Select **Save** to save your progress on the agent creation.
 
