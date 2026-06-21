@@ -4,7 +4,7 @@ description: This article describes the adaptive autovacuum feature in Azure Dat
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/08/2026
+ms.date: 06/21/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -81,9 +81,11 @@ Important timing detail:
 
 ### When is `intelligentperformance` schema created after enabling?
 
-The schema is delayed. Its creation is the responsibility of the functionality that persists the statistics used by adaptive autovacuum, not by the immediate tuning run itself. Typical time after setting `adaptive_autovacuum.optimize_configurations = on` is within 0-15 minutes.
+The `intelligentperformance` schema is created under the `azure_sys` database. Its creation is not immediate and is handled by the functionality that persists statistics used by adaptive autovacuum, rather than by the initial tuning run itself. Typically, the schema is created within 0–30 minutes after enabling the feature.
 
-Creation can be delayed (or skipped) when prerequisites aren't met.
+Adaptive autovacuum can be enabled either by setting `adaptive_autovacuum.optimize_configurations` to `on` or by configuring `adaptive_autovacuum.open_transaction_threshold` to a non-zero value (that is > 0). The schema is created once the feature becomes active and begins collecting the required statistics.
+
+Creation may be delayed or skipped if certain prerequisites are not met.
 
 ## Limitations and prerequisites
 
@@ -92,8 +94,9 @@ Both controls are subject to the following requirements:
 - Instance must be a primary.
 - PostgreSQL isn't in recovery mode.
 - Compute of the server has a minimum of 4 vCores.
-- `adaptive_autovacuum.optimize_configurations` is supported on major versions 11, 12, 13, 14, 15, 16, 17, and 18.
-- `adaptive_autovacuum.open_transaction_threshold` is supported on major versions 13, 14, 15, 16, 17, and 18.
+- Server is a regular flexible server, not an elastic cluster. Fature is not supported on elastic clusters.
+- `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 11.
+- `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
 
 ## Auditing and observability
 
@@ -104,7 +107,7 @@ Actions from both controls are written to an audit view called `intelligentperfo
 Expected logical shape:
 
 - intelligentperformance.adaptive_tuning_events
-  - event_details (alias of optimized_params)
+  - event_details
   - optimizer_type
   - applied_at
 
