@@ -238,7 +238,7 @@ After you deploy your MCP server, connect it to Foundry:
 1. Enter the `ENTRA_APP_IDENTIFIER_URI` value as the audience. This value is from the output of the `azd env get-values` command.
 
    > [!TIP]  
-   > Use `azd env get-values` command to find the `ENTRA_APP_IDENTIFIER_URI` and `CONTAINER_APP_URL` values. The `ENTRA_APP_IDENTIFIER_URI` starts with `apo://`.
+   > Use `azd env get-values` command to find the `ENTRA_APP_IDENTIFIER_URI` and `CONTAINER_APP_URL` values. The `ENTRA_APP_IDENTIFIER_URI` starts with `api://`.
 
 1. Select **Save** to save your progress on the agent creation.
 
