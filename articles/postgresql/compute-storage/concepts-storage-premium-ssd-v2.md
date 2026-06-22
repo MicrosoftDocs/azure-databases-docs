@@ -75,7 +75,7 @@ Sovereign regions, including China North 3 and US Gov Virginia, support only sta
    
 - You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
--  Although CMK and geo-redundant backups are each supported, enabling geo-redundant backups with CMK isn't currently supported.
+-  Although CMK and geo-redundant backups, read replicas are each supported, enabling geo-redundant backups with CMK , read replicas with CMK isn't currently supported.
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
