@@ -81,11 +81,11 @@ Important timing detail:
 
 ### When is `intelligentperformance` schema created after enabling?
 
-The `intelligentperformance` schema is created under the `azure_sys` database. Its creation is not immediate and is handled by the functionality that persists statistics used by adaptive autovacuum, rather than by the initial tuning run itself. Typically, the schema is created within 0–30 minutes after enabling the feature.
+The `intelligentperformance` schema is created under the `azure_sys` database. Its creation isn't immediate and is handled by the functionality that persists statistics used by adaptive autovacuum, rather than by the initial tuning run itself. Typically, the schema is created within 0–30 minutes after enabling the feature.
 
-Adaptive autovacuum can be enabled either by setting `adaptive_autovacuum.optimize_configurations` to `on` or by configuring `adaptive_autovacuum.open_transaction_threshold` to a non-zero value (that is > 0). The schema is created once the feature becomes active and begins collecting the required statistics.
+You can enable adaptive autovacuum by setting `adaptive_autovacuum.optimize_configurations` to `on` or by configuring `adaptive_autovacuum.open_transaction_threshold` to a non-zero value (that is > 0). The schema is created once the feature becomes active and begins collecting the required statistics.
 
-Creation may be delayed or skipped if certain prerequisites are not met.
+Creation might be delayed or skipped if certain prerequisites aren't met.
 
 ## Limitations and prerequisites
 
@@ -94,10 +94,10 @@ Both controls are subject to the following requirements:
 - Instance must be a primary.
 - PostgreSQL isn't in recovery mode.
 - Compute of the server has a minimum of 4 vCores.
-- Server is a regular flexible server, not an elastic cluster. Fature is not supported on elastic clusters.
+- The server is a regular flexible server, not an elastic cluster. The feature isn't supported on elastic clusters.
 - `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 11.
 - `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
-- Adaptive autovacuum feature is currently supported on servers deployed in the following regions: Canada Central, East Asia, and West Central US.
+- The adaptive autovacuum feature is currently supported on servers deployed in the following regions: Canada Central, East Asia, and West Central US.
 
 ## Auditing and observability
 
