@@ -97,6 +97,7 @@ Both controls are subject to the following requirements:
 - Server is a regular flexible server, not an elastic cluster. Fature is not supported on elastic clusters.
 - `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 11.
 - `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
+- Adaptive autovacuum feature is currently supported on servers deployed in the following regions: Canada Central, East Asia, and West Central US.
 
 ## Auditing and observability
 
