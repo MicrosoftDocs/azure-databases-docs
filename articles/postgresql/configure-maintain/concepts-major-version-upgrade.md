@@ -87,10 +87,27 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 ### Extension limitations
 
-In-place major version upgrades don't support all PostgreSQL extensions. The upgrade fails during the precheck if unsupported extensions are found.
-- The following extensions are supported for regular use, **but will block an in-place major version upgrade if present**. Remove them before the upgrade and re-enable them after, if supported on the target version: `postgres_fdw`, `session_variable`, `pg_hint_plan`, `plv8`.
-- The following extensions are **non-persistent utility extensions** and will need to be dropped and re-created after the upgrade by design: `pg_repack`, `hypopg`.
-- When upgrading to PostgreSQL 17 or later, the following extensions are **not supported** and must be removed before upgrade. You can re-enable them only if supported on the target version: `age`, `azure_ai`, `hll`, `pg_diskann`, `pgrouting`.
+In-place major version upgrades don't support all PostgreSQL extensions. The upgrade fails during the precheck if a blocked extension is present on an affected upgrade path. Most blocks are scoped to specific **target** (and sometimes **source**) versions rather than every upgrade, as noted in the following lists.
+
+- The following extensions **block an in-place major version upgrade on all upgrade paths**. Remove them before the upgrade and re-enable them after, if supported on the target version: `session_variable`, `anon`, `age`, `pg_duckdb`.
+- The following extensions are **non-persistent utility extensions** and must be dropped before the upgrade and re-created after, by design (all upgrade paths): `pg_repack`, `hypopg`, `pg_partman`.
+- The following extensions are blocked only on **specific version paths**. Remove them before the upgrade if your upgrade matches the listed condition, and re-enable them after if supported on the target version:
+
+  | Extension | Blocked when |
+  | --- | --- |
+  | `pg_hint_plan` | Target version is PostgreSQL 14 |
+  | `semver` | Target version is PostgreSQL 16 or 17 |
+  | `azure_local_ai` | Target version is PostgreSQL 17 or 18 |
+  | `pg_failover_slots` | Target version is PostgreSQL 17 or 18 (shared preload library) |
+  | `azure_ai` | Target version is PostgreSQL 18 |
+  | `azure_storage` | Target version is PostgreSQL 18 |
+  | `pg_diskann` | Target version is PostgreSQL 18 |
+  | `pgrouting` | Target version is PostgreSQL 15; or source is below PostgreSQL 16 and target is PostgreSQL 16 or later; or target version is PostgreSQL 18 |
+  | `orafce` | Source version is PostgreSQL 11, 12, or 13 |
+
+- The following extensions are blocked when other database objects **depend on their objects**, because the upgrade would otherwise fail. Resolve the dependencies before the upgrade:
+  - `pg_stat_statements`: blocked when other objects depend on its view or function, which would cause `ALTER EXTENSION pg_stat_statements UPDATE` to fail. Remove the dependent objects first.
+  - `pgcrypto`: when installed in the `pg_catalog` schema and upgrading from PostgreSQL 11 or 12 to PostgreSQL 13 or later, blocked when customer objects depend on it (a conflict with the built-in `gen_random_uuid()` function). Relocate the extension to another schema or drop the dependent objects first.
 
 ### PostGIS-specific considerations
 
@@ -105,17 +122,17 @@ If you're using [TimescaleDB](../extensions/concepts-extensions-versions.md), in
 
 | Source PostgreSQL version | Supported target versions |
 | ------------------------- | ------------------------- |
-| PostgreSQL 11             | Not supported             |
-| PostgreSQL 12             | Not supported             |
-| PostgreSQL 13             | Not supported             |
-| PostgreSQL 14             | PostgreSQL 15, 16, 17, 18 |
+| PostgreSQL 11             | PostgreSQL 12             |
+| PostgreSQL 12             | PostgreSQL 13, 14, 15     |
+| PostgreSQL 13             | PostgreSQL 14, 15, 16     |
+| PostgreSQL 14             | PostgreSQL 15, 16         |
 | PostgreSQL 15             | PostgreSQL 16, 17, 18     |
 | PostgreSQL 16             | PostgreSQL 17, 18         |
 | PostgreSQL 17             | PostgreSQL 18             |
 
-If your server is running TimescaleDB on PostgreSQL 13 or earlier, in-place major version upgrade is blocked. To proceed, either drop the TimescaleDB extension before upgrade, if feasible, or use an alternate migration approach such as [side-by-side migration with logical replication](https://techcommunity.microsoft.com/blog/adforpostgresql/upgrade-azure-database-for-postgresql-with-minimal-downtime-using-logical-replic/4466784).
+If your TimescaleDB upgrade path isn't listed in the supported matrix above, the in-place major version upgrade is blocked. To proceed, either drop the TimescaleDB extension before upgrade, if feasible, or use an alternate migration approach such as [side-by-side migration with logical replication](https://techcommunity.microsoft.com/blog/adforpostgresql/upgrade-azure-database-for-postgresql-with-minimal-downtime-using-logical-replic/4466784).
 
-For PostgreSQL 14 and later, ensure that your source and target versions are included in the supported matrix above before starting the upgrade.
+Ensure that your source and target versions are included in the supported matrix above before starting the upgrade.
 
 ### Other upgrade considerations
 
