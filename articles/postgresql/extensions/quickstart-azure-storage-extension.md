@@ -15,7 +15,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Quickstart examples for the Azure Storage extension in Azure Database for PostgreSQL
+# Quickstart examples for the Azure Storage extension in Azure Database for PostgreSQL flexible server
 
 Following is a list of examples to help you learn how to use the Azure Storage extension.
 
