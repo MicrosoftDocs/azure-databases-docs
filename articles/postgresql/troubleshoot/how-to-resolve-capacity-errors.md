@@ -12,7 +12,7 @@ ms.custom:
   - references_regions
 ---
 
-# Resolve capacity errors for Azure Database for PostgreSQL 
+# Resolve capacity errors for Azure Database for PostgreSQL flexible server 
 
 The article describes how you can resolve capacity errors when deploying or scaling Azure Database for PostgreSQL flexible server.
 

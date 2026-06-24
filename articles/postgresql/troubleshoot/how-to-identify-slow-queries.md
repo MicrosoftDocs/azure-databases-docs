@@ -12,7 +12,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL
+# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server
 
 This article describes how to identify and diagnose the root cause of slow-running queries.
 

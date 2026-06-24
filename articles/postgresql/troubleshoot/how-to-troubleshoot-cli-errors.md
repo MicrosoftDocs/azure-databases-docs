@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Troubleshoot Azure Database for PostgreSQL  CLI errors
+# Troubleshoot Azure Database for PostgreSQL flexible server  CLI errors
 
 This article helps you troubleshoot common issues with Azure CLI when using Azure Database for PostgreSQL flexible server.
 

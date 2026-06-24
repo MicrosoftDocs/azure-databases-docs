@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: concept-article
 ---
 
-# Handling transient connectivity errors in Azure Database for PostgreSQL 
+# Handling transient connectivity errors in Azure Database for PostgreSQL flexible server 
 
 This article describes how to handle transient errors connecting to Azure Database for PostgreSQL flexible server instances.
 

@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 
-# Autovacuum tuning in elastic cluster in Azure Database for PostgreSQL
+# Autovacuum tuning in elastic cluster in Azure Database for PostgreSQL flexible server
 
 This article provides an overview of the autovacuum feature for [Azure Database for PostgreSQL Elastic Clusters](../elastic-clusters/concepts-elastic-clusters.md) and the troubleshooting guides that are available to monitor the database bloat and autovacuum blockers. It also provides information about how far the database is from an emergency or wraparound situation.
 

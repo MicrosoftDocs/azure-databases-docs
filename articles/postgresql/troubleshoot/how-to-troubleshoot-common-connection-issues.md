@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: how-to
 ---
 
-# Troubleshoot connection issues to Azure Database for PostgreSQL 
+# Troubleshoot connection issues to Azure Database for PostgreSQL flexible server 
 
 Connection problems may be caused by various things, including:
 
