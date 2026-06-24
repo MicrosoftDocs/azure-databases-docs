@@ -15,7 +15,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Connect Azure Database for PostgreSQL  with the private access connectivity method
+# Connect Azure Database for PostgreSQL flexible server  with the private access connectivity method
 
 Azure Database for PostgreSQL is a managed service that you can use to run, manage, and scale highly available PostgreSQL servers in the cloud. This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance in a virtual network by using the Azure portal.
 

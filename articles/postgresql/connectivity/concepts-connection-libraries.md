@@ -10,7 +10,7 @@ ms.subservice: connectivity
 ms.topic: concept-article
 ---
 
-# Connection libraries for Azure Database for PostgreSQL 
+# Connection libraries for Azure Database for PostgreSQL flexible server 
 
 This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure Database for PostgreSQL flexible server instance.
 
