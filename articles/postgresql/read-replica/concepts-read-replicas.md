@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Read replicas in Azure Database for PostgreSQL 
+# Read replicas in Azure Database for PostgreSQL flexible server 
 
 The read replica feature allows you to replicate data from an Azure Database for PostgreSQL flexible server instance to a read-only replica. Replicas are updated **asynchronously** with the PostgreSQL engine's native physical replication technology. Streaming replication by using replication slots is the default operation mode. When necessary, file-based log shipping is used to catch up. You can replicate from the primary server to up to five replicas.
 

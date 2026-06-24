@@ -10,7 +10,7 @@ ms.subservice: replication
 ms.topic: concept-article
 ---
 
-# Promote read replicas in Azure Database for PostgreSQL 
+# Promote read replicas in Azure Database for PostgreSQL flexible server 
 
 Promote refers to the process where a replica is commanded to end its replica mode and transition into full read-write operations.
 
