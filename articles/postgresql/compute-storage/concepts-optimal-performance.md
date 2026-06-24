@@ -1,5 +1,5 @@
 ---
-title: Plan Azure Database for PostgreSQL Deployments for Operational Performance
+title: Plan Azure Database for PostgreSQL flexible server Deployments for Operational Performance
 description: Learn how to plan Azure Database for PostgreSQL deployments by aligning workload requirements with compute, storage, IOPS, throughput, latency, and monitoring needs.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -10,7 +10,7 @@ ms.subservice: compute-storage
 ms.topic: concept-article
 ---
 
-# Plan Azure Database for PostgreSQL deployments for operational performance
+# Plan Azure Database for PostgreSQL flexible server deployments for operational performance
 
 Cloud computing dramatically reshaped the database hosting landscape. It gives teams access to scalability, resilience, global reach, and capabilities that were previously unobtainable. Instead of incurring considerable costs and overhead by planning for the largest possible workload (and carrying that cost from day one), teams can now optimize around the precise scale they need, when they need it, and adjust as their demands change. 
 

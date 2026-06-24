@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Compute options in Azure Database for PostgreSQL
+# Compute options in Azure Database for PostgreSQL flexible server
 
 You can create an Azure Database for PostgreSQL flexible server instance in one of three pricing tiers: Burstable, General Purpose, and Memory Optimized. The pricing tier is calculated based on the compute, memory, and storage you provision. A server can have one or many databases.
 
