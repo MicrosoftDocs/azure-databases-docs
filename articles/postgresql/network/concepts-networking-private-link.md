@@ -10,7 +10,7 @@ ms.subservice: networking
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL networking with Private Link
+# Azure Database for PostgreSQL flexible server networking with Private Link
 
 Azure Private Link allows you to create private endpoints for your Azure Database for PostgreSQL flexible server instance to bring it inside your virtual network. This functionality is a recommended alternative to the [networking capabilities provided by virtual network integration](concepts-networking-private.md).
 
