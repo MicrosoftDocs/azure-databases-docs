@@ -11,7 +11,7 @@ ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
-# What is Oracle to Azure Database for PostgreSQL application conversion (Preview)?
+# What is Oracle to Azure Database for PostgreSQL flexible server application conversion (Preview)?
 
 The Oracle to Azure Database for PostgreSQL application conversion feature helps you migrate existing Oracle-based applications to work with Azure Database for PostgreSQL by automatically converting Oracle-specific database interaction code into PostgreSQL-compatible code.
 

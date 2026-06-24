@@ -10,7 +10,7 @@ ms.subservice: development
 ms.topic: quickstart
 ---
 
-# Create an Azure Database for PostgreSQL instance using .NET SDK
+# Create an Azure Database for PostgreSQL flexible server instance using .NET SDK
 
 In this quickstart, you learn how to use the Azure SDK libraries in .NET to create, update, and delete an Azure PostgreSQL flexible server instance. Azure Database for PostgreSQL is a managed service that allows you to run, manage, and scale highly available PostgreSQL databases in the cloud. Using the .NET SDK, you can provision an Azure Database for PostgreSQL flexible server instance, multiple servers, or multiple databases on a server.
 

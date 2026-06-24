@@ -1,5 +1,5 @@
 ---
-title: "Migrate Offline, from an Azure VM or an On-Premises PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
+title: "Migrate Offline, from an Azure VM or an On-Premises PostgreSQL to Azure Database for PostgreSQL flexible server, Using the Migration Service in Azure"
 description: "Learn to migrate, seamlessly and in offline mode, from an Azure VM or an on-premises PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
@@ -16,7 +16,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL, with the migration service
+# Migrate offline, from an Azure VM or an on-premises PostgreSQL server to Azure Database for PostgreSQL flexible server, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in offline mode.
 

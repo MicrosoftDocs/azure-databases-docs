@@ -1,5 +1,5 @@
 ---
-title: Invoke Azure Machine Learning Models from Azure Database for PostgreSQL
+title: Invoke Azure Machine Learning Models from Azure Database for PostgreSQL flexible server
 description: Real-time scoring with online inference endpoints on Azure Machine Learning from Azure Database for PostgreSQL.
 author: denzilribeiro
 ms.author: denzilr
@@ -16,7 +16,7 @@ ms.custom:
 # customer intent: As a developer, I want to learn how to invoke Azure Machine Learning models from Azure Database for PostgreSQL, so that I can perform real-time scoring with online inference endpoints.
 ---
 
-# Integrate Azure Database for PostgreSQL with Azure Machine Learning Services
+# Integrate Azure Database for PostgreSQL flexible server with Azure Machine Learning Services
 
 Azure AI extension gives the ability to invoke any machine learning models deployed on [Azure Machine Learning online endpoints](/azure/machine-learning/concept-endpoints-online) from within SQL. These models can be from the Azure Machine Learning catalog or custom models that are trained and deployed.
 

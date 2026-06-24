@@ -13,7 +13,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Deploy a Django app on Azure Kubernetes Service with Azure Database for PostgreSQL
+# Deploy a Django app on Azure Kubernetes Service with Azure Database for PostgreSQL flexible server
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure Database for PostgreSQL flexible server by using the Azure CLI.
 

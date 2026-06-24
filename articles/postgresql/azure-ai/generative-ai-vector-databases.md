@@ -1,5 +1,5 @@
 ---
-title: Vector Stores in Azure Database for PostgreSQL
+title: Vector Stores in Azure Database for PostgreSQL flexible server
 description: Enhance AI-based applications by using the integrated vector store functionality in Azure Database for PostgreSQL.
 author: abeomor
 ms.author: abeomorogbe
@@ -15,7 +15,7 @@ ms.custom:
   - build-2025
 ---
 
-# Vector stores in Azure Database for PostgreSQL
+# Vector stores in Azure Database for PostgreSQL flexible server
 
 Vector stores are used in numerous domains and situations across analytical and generative AI, including natural language processing, video and image recognition, recommendation systems, and search.
 

@@ -1,5 +1,5 @@
 ---
-title: Release notes for the REST APIs for Azure Database for PostgreSQL
+title: Release notes for the REST APIs for Azure Database for PostgreSQL flexible server
 description: Release notes for the REST APIs for Azure Database for PostgreSQL.
 author: jasomaning
 ms.author: jasomaning
@@ -11,7 +11,7 @@ ms.topic: overview
 ai-usage: ai-assisted
 ---
 
-# Release notes for the REST APIs for Azure Database for PostgreSQL
+# Release notes for the REST APIs for Azure Database for PostgreSQL flexible server
 
 This page provides latest news and updates regarding the recommended API versions to be used. **The API versions that are not listed here might be supported, but will be retired soon.** The documentation for the latest Stable API version is available [here](/rest/api/postgresql/).
 

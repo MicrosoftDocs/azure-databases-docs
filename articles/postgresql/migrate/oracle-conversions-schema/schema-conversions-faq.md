@@ -1,5 +1,5 @@
 ---
-title: FAQ for Oracle to Azure Database for PostgreSQL schema conversion
+title: FAQ for Oracle to Azure Database for PostgreSQL flexible server schema conversion
 description: Frequently asked questions about the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code with Microsoft Foundry integration, including supported sources, data privacy, deployment, validation, and getting help.
 author: apduvuri
 ms.author: adityaduvuri
@@ -12,7 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
 
-# Frequently asked questions about Oracle to Azure Database for PostgreSQL schema conversion
+# Frequently asked questions about Oracle to Azure Database for PostgreSQL flexible server schema conversion
 
 This article answers the most common questions about the Oracle to Azure Database for PostgreSQL schema conversion feature in the [Visual Studio Code PostgreSQL extension](../../extensions/vs-code-extension/overview.md). The feature uses [Microsoft Foundry](/azure/ai-foundry/what-is-azure-ai-foundry) to convert Oracle database schemas into PostgreSQL DDL that you can deploy to [Azure Database for PostgreSQL flexible server](/azure/postgresql/flexible-server/overview).
 

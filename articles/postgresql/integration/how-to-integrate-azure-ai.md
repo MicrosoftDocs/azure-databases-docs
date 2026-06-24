@@ -15,7 +15,7 @@ ms.custom:
 - sfi-ropc-nochange
 ---
 
-# Integrate Azure AI capabilities into Azure Database for PostgreSQL
+# Integrate Azure AI capabilities into Azure Database for PostgreSQL flexible server
 
 The `azure_ai` extension adds the ability to use [large language models (LLMs)](/training/modules/fundamentals-generative-ai/3-language%20models) and build [generative AI](/training/paths/introduction-generative-ai/) applications within an Azure Database for PostgreSQL database by integrating the power of [Foundry Tools](/azure/ai-services/what-are-ai-services).
 

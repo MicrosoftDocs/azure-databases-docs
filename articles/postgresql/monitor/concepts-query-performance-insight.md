@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
-# Query Performance Insight in Azure Database for PostgreSQL 
+# Query Performance Insight in Azure Database for PostgreSQL flexible server 
 
 Query Performance Insight provides intelligent query analysis for databases in an Azure Database for PostgreSQL flexible server instance. It helps identify the top resource consuming and long-running queries in your workload. This helps you find the queries to optimize to improve overall workload performance and efficiently use the resource that you're paying for. Query Performance Insight helps you spend less time troubleshooting database performance by providing:
 

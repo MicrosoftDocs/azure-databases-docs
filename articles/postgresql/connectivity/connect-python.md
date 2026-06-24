@@ -17,7 +17,7 @@ ms.custom:
 ms.devlang: "python"
 ---
 
-# Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL
+# Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL flexible server
 
 In this quickstart, you connect to an Azure Database for PostgreSQL flexible server instance by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
 

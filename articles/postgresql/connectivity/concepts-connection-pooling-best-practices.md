@@ -10,7 +10,7 @@ ms.subservice: connectivity
 ms.topic: best-practice
 ---
 
-# Connection pooling strategy for Azure Database for PostgreSQL  using PgBouncer
+# Connection pooling strategy for Azure Database for PostgreSQL flexible server  using PgBouncer
 
 Strategic guidance for selecting connection pooling mechanism for your Azure Database for PostgreSQL flexible server instances.
 

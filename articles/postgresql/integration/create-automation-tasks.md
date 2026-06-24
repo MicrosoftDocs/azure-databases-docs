@@ -10,7 +10,7 @@ ms.subservice: data-movement
 ms.topic: quickstart
 ---
 
-# Quickstart: Manage Azure Database for PostgreSQL  using automation tasks
+# Quickstart: Manage Azure Database for PostgreSQL flexible server  using automation tasks
 
 > [!NOTE]
 > If a free trial is available, you can find more information about it [here](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).

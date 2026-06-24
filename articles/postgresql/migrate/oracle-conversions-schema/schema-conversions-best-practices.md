@@ -1,5 +1,5 @@
 ---
-title: Best practices for Oracle to Azure Database for PostgreSQL schema conversion
+title: Best practices for Oracle to Azure Database for PostgreSQL flexible server schema conversion
 description: Best practices and recommendations for Oracle to Azure Database for PostgreSQL schema conversion by using the Visual Studio Code PostgreSQL extension with Microsoft Foundry integration.
 author: apduvuri
 ms.author: adityaduvuri
@@ -12,7 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
 
-# Best practices for Oracle to Azure Database for PostgreSQL schema conversion
+# Best practices for Oracle to Azure Database for PostgreSQL flexible server schema conversion
 
 This article provides best practices and recommendations for the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code with Microsoft Foundry. Follow these guidelines to get reliable, high-quality results.
 

@@ -1,5 +1,5 @@
 ---
-title: Release notes for the CLI module for Azure Database for PostgreSQL
+title: Release notes for the CLI module for Azure Database for PostgreSQL flexible server
 description: Release notes for the CLI module for Azure Database for PostgreSQL.
 author: jasomaning
 ms.author: jasomaning
@@ -11,7 +11,7 @@ ms.topic: overview
 ai-usage: ai-assisted
 ---
 
-# Release notes for the CLI module for Azure Database for PostgreSQL
+# Release notes for the CLI module for Azure Database for PostgreSQL flexible server
 
 This page provides latest news and updates regarding the evolution of the Azure Database for PostgreSQL module shipped with each release of Azure CLI.
 

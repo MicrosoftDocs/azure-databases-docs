@@ -14,7 +14,7 @@ ms.custom:
 ms.devlang: "azurecli"
 ---
 
-# Create an Azure Database for PostgreSQL with a web app in a virtual network
+# Create an Azure Database for PostgreSQL flexible server with a web app in a virtual network
 
 This article shows you how to create an Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 

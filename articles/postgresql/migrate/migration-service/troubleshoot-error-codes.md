@@ -11,7 +11,7 @@ ms.custom:
   - troubleshooting
 ---
 
-# Known errors in the migration service for Azure Database for PostgreSQL
+# Known errors in the migration service for Azure Database for PostgreSQL flexible server
 
 This article contains error message numbers and their description for premigration validation.
 
