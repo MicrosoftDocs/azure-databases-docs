@@ -11,7 +11,7 @@ ms.topic: quickstart
 ms.custom: sfi-image-nochange
 ---
 
-# Quickstart: Import data from Azure Database for PostgreSQL  in Power BI
+# Quickstart: Import data from Azure Database for PostgreSQL flexible server  in Power BI
 
 In this Quickstart, you learn how to connect to an Azure Database for PostgreSQL flexible server instance with Power BI Desktop. With Power BI Desktop, you can visually explore your data through a free-form drag-and-drop canvas, a broad range of modern data visualizations, and an easy-to-use report authoring experience. You can import directly from the tables or import from a SELECT query. This article applies to Power BI Desktop only. Currently, Power Query online or Power BI Service is **not supported**.
 

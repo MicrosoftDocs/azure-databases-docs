@@ -1,5 +1,5 @@
 ---
-title: How to Connect from Azure Data Factory to Azure Database for PostgreSQL
+title: How to Connect from Azure Data Factory to Azure Database for PostgreSQL flexible server
 description: Guide on how to connect an Azure Database for PostgreSQL flexible server instance from Azure Data Factory using the Azure Database for PostgreSQL connector
 author: danyal-bukhari
 ms.author: dabukhari
@@ -10,7 +10,7 @@ ms.subservice: data-movement
 ms.topic: how-to
 ---
 
-# Connect Azure Database for PostgreSQL to Azure Data Factory and Synapse Analytics
+# Connect Azure Database for PostgreSQL flexible server to Azure Data Factory and Synapse Analytics
 
 > [!IMPORTANT]
 > The Azure Database for PostgreSQL version 2.0 provides an improved native Azure Database for PostgreSQL support. If you use the Azure Database for PostgreSQL version 1.0 in your solution, you should upgrade your Azure Database for PostgreSQL linked service at your earliest convenience.
