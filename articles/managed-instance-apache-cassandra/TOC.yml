@@ -6,6 +6,8 @@
       href: introduction.md
     - name: Management operations
       href: management-operations.md
+    - name: Shared responsibility model
+      href: shared-responsibility-model.md
 - name: Quickstarts
   items:
     - name: Create a cluster - portal

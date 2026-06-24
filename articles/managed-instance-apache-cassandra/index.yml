@@ -24,7 +24,9 @@ landingContent:
           - text: What is Azure Managed Instance for Apache Cassandra?
             url: introduction.md
           - text: Management Operations
-            url: management-operations.md            
+            url: management-operations.md
+          - text: Shared responsibility model
+            url: shared-responsibility-model.md            
       - linkListType: tutorial
         links:
           - text: Live migration
