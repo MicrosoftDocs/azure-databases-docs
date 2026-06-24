@@ -13,7 +13,7 @@ ms.custom:
   - ignite-2024
 ---
 
-# Backup and restore in Azure Database for PostgreSQL 
+# Backup and restore in Azure Database for PostgreSQL flexible server 
 
 Backups form an essential part of any business continuity strategy. They help protect data from accidental corruption or deletion. 
 
