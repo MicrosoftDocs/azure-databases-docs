@@ -13,7 +13,7 @@ ms.custom:
   - build-2026
 ---
 
-# Major version upgrades in Azure Database for PostgreSQL
+# Major version upgrades in Azure Database for PostgreSQL flexible server
 
 Your Azure Database for PostgreSQL flexible server instance supports PostgreSQL versions [!INCLUDE [supported-versions](../includes/major-versions-ascending.md)]. The Postgres community releases a new major version that contains new features about once a year. Additionally, each major version receives periodic bug fixes in the form of minor releases. Minor version upgrades include changes that are backward compatible with existing applications. An Azure Database for PostgreSQL flexible server instance periodically updates the minor versions during a customer's maintenance window.
 

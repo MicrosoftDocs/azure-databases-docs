@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL version policy
+# Azure Database for PostgreSQL flexible server version policy
 
 This article describes the Azure Database for PostgreSQL versioning policy.
 

@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Server concepts for Azure Database for PostgreSQL 
+# Server concepts for Azure Database for PostgreSQL flexible server 
 
 This article provides considerations and guidelines for working with an Azure Database for PostgreSQL flexible server instance.
 

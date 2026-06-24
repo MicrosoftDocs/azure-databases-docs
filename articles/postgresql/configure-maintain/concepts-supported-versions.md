@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Supported versions of PostgreSQL in Azure Database for PostgreSQL 
+# Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server 
 
 Azure Database for PostgreSQL currently supports the following major versions.
 
