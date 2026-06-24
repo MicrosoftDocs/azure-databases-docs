@@ -1,5 +1,5 @@
 ---
-title: "Transport Layer Security (TLS) in Azure Database for PostgreSQL Overview"
+title: "Transport Layer Security (TLS) in Azure Database for PostgreSQL flexible server Overview"
 description: Learn about secure connectivity with an Azure Database for PostgreSQL flexible server instance using TLS.
 author: techlake
 ms.author: hganten
@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Transport Layer Security (TLS) in Azure Database for PostgreSQL
+# Transport Layer Security (TLS) in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL requires all client connections to use Transport Layer Security (TLS), an industry-standard protocol that encrypts communications between your database server and client applications. TLS supersedes the older SSL protocol, with only TLS versions 1.2 and 1.3 recognized as secure. The integrity of TLS security relies on three pillars:
 

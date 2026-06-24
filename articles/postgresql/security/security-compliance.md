@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Security and compliance certifications in Azure Database for PostgreSQL 
+# Security and compliance certifications in Azure Database for PostgreSQL flexible server 
 
 Customers experience an increasing demand for highly secure and compliant solutions as they face data breaches along with requests from governments to access online customer information. Important regulatory requirements such as [General Data Protection Regulation (GDPR)](/compliance/regulatory/gdpr) and [Sarbanes-Oxley (SOX)](/compliance/regulatory/offering-sox) make selecting cloud services that help customers achieve trust, transparency, security, and compliance essential.
 

@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Microsoft Defender for Cloud for Azure Database for PostgreSQL
+# Microsoft Defender for Cloud for Azure Database for PostgreSQL flexible server
 
 **[Microsoft Defender for open-source relational databases](/azure/defender-for-cloud/defender-for-databases-introduction)** detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases. Defender for Cloud provides [security alerts](/azure/defender-for-cloud/alerts-open-source-relational-databases) on anomalous activities so that you can detect potential threats and respond to them as they occur.
 When you enable this plan, Defender for Cloud provides alerts when it detects anomalous database access and query patterns and suspicious database activities.
