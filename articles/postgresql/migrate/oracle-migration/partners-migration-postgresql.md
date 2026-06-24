@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL Migration Partners
+title: Azure Database for PostgreSQL flexible server Migration Partners
 description: Lists of third-party migration partners with solutions that support Azure Database for PostgreSQL and provide expertise in database migrations.
 author: gbowerman
 ms.author: guybo
@@ -11,7 +11,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL migration partners
+# Azure Database for PostgreSQL flexible server migration partners
 
 To broadly support your Azure Database for PostgreSQL solution, you can choose from a wide variety of industry-leading partners and tools. This article highlights Microsoft partners with migration solutions that support Azure Database for PostgreSQL.
 

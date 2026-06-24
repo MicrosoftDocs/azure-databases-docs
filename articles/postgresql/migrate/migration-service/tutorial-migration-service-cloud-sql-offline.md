@@ -1,5 +1,5 @@
 ---
-title: "Migrate Offline, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
+title: "Migrate Offline, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL flexible server, Using the Migration Service in Azure"
 description: "Learn to migrate, seamlessly and in offline mode, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
@@ -16,7 +16,7 @@ ms.collection:
 - gcp-to-azure
 ---
 
-# Migrate offline, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL, with the migration service
+# Migrate offline, from a Google Cloud SQL for PostgreSQL to Azure Database for PostgreSQL flexible server, with the migration service
 
 This article guides you in migrating a Google Cloud SQL for PostgreSQL instance to Azure Database for PostgreSQL flexible server in offline mode.
 

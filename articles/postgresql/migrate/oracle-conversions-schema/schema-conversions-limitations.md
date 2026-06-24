@@ -1,5 +1,5 @@
 ---
-title: Oracle to Azure Database for PostgreSQL schema conversion limitations
+title: Oracle to Azure Database for PostgreSQL flexible server schema conversion limitations
 description: Known limitations, unsupported objects, and constraints when using the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code with Microsoft Foundry integration.
 author: apduvuri
 ms.author: adityaduvuri
@@ -12,7 +12,7 @@ ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 ---
 
-# Oracle to Azure Database for PostgreSQL schema conversion limitations
+# Oracle to Azure Database for PostgreSQL flexible server schema conversion limitations
 
 This article summarizes the known limitations, unsupported objects, and migration considerations when you use the Oracle to Azure Database for PostgreSQL schema conversion feature in Visual Studio Code.
 

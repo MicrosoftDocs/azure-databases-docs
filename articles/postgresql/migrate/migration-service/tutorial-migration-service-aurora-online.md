@@ -1,5 +1,5 @@
 ---
-title: "Migrate Online, from an Amazon Aurora PostgreSQL to Azure Database for PostgreSQL, Using the Migration Service in Azure"
+title: "Migrate Online, from an Amazon Aurora PostgreSQL to Azure Database for PostgreSQL flexible server, Using the Migration Service in Azure"
 description: "Learn to migrate, seamlessly and in online mode, from an Amazon Aurora PostgreSQL to Azure Database for PostgreSQL, using the migration service in Azure."
 author: apduvuri
 ms.author: adityaduvuri
@@ -16,7 +16,7 @@ ms.collection:
   - aws-to-azure
 ---
 
-# Migrate online, from an Amazon Aurora PostgreSQL server to Azure Database for PostgreSQL, with the migration service
+# Migrate online, from an Amazon Aurora PostgreSQL server to Azure Database for PostgreSQL flexible server, with the migration service
 
 This article guides you in migrating a PostgreSQL instance from your on-premises or Azure virtual machines (VMs) to Azure Database for PostgreSQL flexible server in online mode.
 
