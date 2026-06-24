@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Generative AI with Azure Database for PostgreSQL
+# Generative AI with Azure Database for PostgreSQL flexible server
 
 Generative AI refers to a class of AI algorithms that can learn from existing multimedia content and produce new content. You can customize the generated content through techniques such as prompts and fine-tuning. Generative AI algorithms use specific machine learning models:
 

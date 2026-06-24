@@ -1,5 +1,5 @@
 ---
-title: Generative AI Frameworks and Azure Database for PostgreSQL
+title: Generative AI Frameworks and Azure Database for PostgreSQL flexible server
 description: Integrate Azure Database for PostgreSQL with AI and large language model (LLM) orchestration packages like Semantic Kernel and LangChain.
 author: abeomor
 ms.author: abeomorogbe
@@ -15,7 +15,7 @@ ms.custom:
   - build-2025
 ---
 
-# Azure Database for PostgreSQL integrations for AI applications
+# Azure Database for PostgreSQL flexible server integrations for AI applications
 
 Azure Database for PostgreSQL seamlessly integrates with leading large language model (LLM) orchestration packages so that developers can use advanced AI capabilities within their applications. These orchestration packages can streamline the management and use of LLMs, embedding models, and databases in developing generative AI applications.
 

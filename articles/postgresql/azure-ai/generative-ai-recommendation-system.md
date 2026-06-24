@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Tutorial: Create a recommendation system with Azure Database for PostgreSQL and Azure OpenAI
+# Tutorial: Create a recommendation system with Azure Database for PostgreSQL flexible server and Azure OpenAI
 
 This hands-on tutorial shows you how to build a recommender application by using Azure Database for PostgreSQL and Azure OpenAI. Recommendations have applications in different domains. Service providers tend to provide recommendations for products and services that they offer based on prior history and contextual information collected from the customer and environment.
 

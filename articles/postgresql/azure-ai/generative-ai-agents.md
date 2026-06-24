@@ -1,5 +1,5 @@
 ---
-title: AI Agents in Azure Database for PostgreSQL
+title: AI Agents in Azure Database for PostgreSQL flexible server
 description: Learn how to integrate Azure Database for PostgreSQL to create intelligent AI agents capable of advanced data retrieval and analysis.
 author: abeomor
 ms.author: abeomorogbe
@@ -14,7 +14,7 @@ ms.update-cycle: 180-days
 ms.custom:
   - build-2025
 ---
-# AI agents in Azure Database for PostgreSQL
+# AI agents in Azure Database for PostgreSQL flexible server
 
 AI agents are transforming how applications interact with data by combining large language models (LLMs) with external tools and databases. Agents enable the automation of complex workflows, enhance the accuracy of information retrieval, and facilitate natural language interfaces to databases.
 
