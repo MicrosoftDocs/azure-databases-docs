@@ -10,7 +10,7 @@ ms.subservice: monitoring
 ms.topic: how-to
 ---
 
-# Monitor Azure Database for PostgreSQL  by using Azure Monitor workbooks
+# Monitor Azure Database for PostgreSQL flexible server  by using Azure Monitor workbooks
 
 Azure Database for PostgreSQL is integrated with Azure Monitor workbooks. Workbooks give you a flexible canvas for analyzing data and creating rich visual reports within the Azure portal. Workbooks allow you to tap into multiple data sources across Azure and combine them into unified interactive experiences. Workbook templates serve as curated reports designed for flexible reuse by various users and teams.
 
