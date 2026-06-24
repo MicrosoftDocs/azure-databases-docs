@@ -102,7 +102,7 @@ In-place major version upgrades don't support all PostgreSQL extensions. The upg
   | `azure_ai` | Target version is PostgreSQL 18 |
   | `azure_storage` | Target version is PostgreSQL 18 |
   | `pg_diskann` | Target version is PostgreSQL 18 |
-  | `pgrouting` | Target version is PostgreSQL 15; or source is below PostgreSQL 16 and target is PostgreSQL 16 or later; or target version is PostgreSQL 18 |
+  | `pgrouting` | Target version is PostgreSQL 15; or source is earlier than PostgreSQL 16 and target is PostgreSQL 16 or later; or target version is PostgreSQL 18 |
   | `orafce` | Source version is PostgreSQL 11, 12, or 13 |
 
 - The following extensions are blocked when other database objects **depend on their objects**, because the upgrade would otherwise fail. Resolve the dependencies before the upgrade:
@@ -130,9 +130,9 @@ If you're using [TimescaleDB](../extensions/concepts-extensions-versions.md), in
 | PostgreSQL 16             | PostgreSQL 17, 18         |
 | PostgreSQL 17             | PostgreSQL 18             |
 
-If your TimescaleDB upgrade path isn't listed in the supported matrix above, the in-place major version upgrade is blocked. To proceed, either drop the TimescaleDB extension before upgrade, if feasible, or use an alternate migration approach such as [side-by-side migration with logical replication](https://techcommunity.microsoft.com/blog/adforpostgresql/upgrade-azure-database-for-postgresql-with-minimal-downtime-using-logical-replic/4466784).
+If your TimescaleDB upgrade path isn't listed in the supported matrix, the in-place major version upgrade is blocked. To proceed, either drop the TimescaleDB extension before upgrade, if feasible, or use an alternate migration approach such as [side-by-side migration with logical replication](https://techcommunity.microsoft.com/blog/adforpostgresql/upgrade-azure-database-for-postgresql-with-minimal-downtime-using-logical-replic/4466784).
 
-Ensure that your source and target versions are included in the supported matrix above before starting the upgrade.
+Ensure that your source and target versions are included in the supported matrix before starting the upgrade.
 
 ### Other upgrade considerations
 
