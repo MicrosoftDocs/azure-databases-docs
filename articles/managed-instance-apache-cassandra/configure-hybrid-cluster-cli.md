@@ -18,7 +18,8 @@ ms.devlang: azurecli
 
 # Quickstart: Configure a hybrid cluster with Azure Managed Instance for Apache Cassandra
 
-Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control.
+> [!IMPORTANT]
+> Azure Managed Instance for Apache Cassandra is a fully managed service for pure open-source Apache Cassandra clusters. The service also allows configurations to be overridden, depending on the specific needs of each workload, for maximum flexibility and control.
 
 This quickstart demonstrates how to use the Azure CLI commands to configure a hybrid cluster. If you have existing datacenters in an on-premises or self-hosted environment, you can use Azure Managed Instance for Apache Cassandra to add other datacenters to those clusters and maintain them.
 
@@ -197,7 +198,7 @@ This quickstart demonstrates how to use the Azure CLI commands to configure a hy
    > [!IMPORTANT]
    > If your existing Apache Cassandra cluster has only a single datacenter, and this datacenter is the first one added, ensure that the `endpoint_snitch` parameter in `cassandra.yaml` is set to `GossipingPropertyFileSnitch`.
 
-   If your existing application code uses `QUORUM` for consistency, ensure that *before you change the replication settings in the next step*, your existing application code uses`LOCAL_QUORUM` to connect to your existing cluster. Otherwise, live updates fail after you change replication settings in the following step. After you change the replication strategy, you can revert to `QUORUM` if you prefer.
+   If your existing application code uses `QUORUM` for consistency, ensure that *before you change the replication settings in the next step*, your existing application code uses `LOCAL_QUORUM` to connect to your existing cluster. Otherwise, live updates fail after you change replication settings in the following step. After you change the replication strategy, you can revert to `QUORUM` if you prefer.
 
 1. Finally, use the following Cassandra Query Language query to update the replication strategy in each keyspace to include all datacenters across the cluster:
 
