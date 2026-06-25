@@ -1,5 +1,5 @@
 ---
-title: High Availability
+title: High Availability in Azure Database for PostgreSQL flexible server
 description: This article describes high availability on an Azure Database for PostgreSQL flexible server.
 author: gaurikasar
 ms.author: gkasar
@@ -11,7 +11,7 @@ ms.topic: how-to
 # customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 ---
 
-# High availability
+# High availability in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL supports high availability by provisioning physically separated primary and standby replicas. This high availability model is designed to ensure that committed data is never lost during failures. In a high availability (HA) setup, data is synchronously committed to both the primary and standby servers. The model is designed so that the database doesn't become a single point of failure in your software architecture.
 
