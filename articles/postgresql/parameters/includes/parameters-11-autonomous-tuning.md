@@ -8,4 +8,4 @@ ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL flexible server 11 does not have any parameter in the 'Autonomous Tuning' category.
+> Azure Database for PostgreSQL flexible server 11 doesn't have any parameter in the 'Autonomous Tuning' category.

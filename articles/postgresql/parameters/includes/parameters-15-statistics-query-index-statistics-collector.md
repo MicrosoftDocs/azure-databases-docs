@@ -8,4 +8,4 @@ ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL flexible server 15 does not have any parameter in the 'Statistics / Query and Index Statistics Collector' category.
+> Azure Database for PostgreSQL flexible server 15 doesn't have any parameter in the 'Statistics / Query and Index Statistics Collector' category.
