@@ -1,5 +1,5 @@
 ---
-title: Maintenance release notes index for Azure Database for PostgreSQL
+title: Maintenance release notes index for Azure Database for PostgreSQL flexible server
 description: Learn about the maintenance release notes for Azure Database for PostgreSQL.
 author: jasomaning
 ms.author: jasomaning
@@ -10,7 +10,7 @@ ms.topic: release-notes
 ---
 
 
-# Azure Database for PostgreSQL – Maintenance release notes index
+# Azure Database for PostgreSQL flexible server – Maintenance release notes index
 
 Welcome to the centralized index of maintenance release notes for **Azure Database for PostgreSQL**. This page provides a year-by-year overview of all published maintenance release notes, helping you stay informed about platform updates, feature enhancements, and bug fixes.
 

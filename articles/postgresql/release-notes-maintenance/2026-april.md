@@ -1,5 +1,5 @@
 ---
-title: Release Notes for Azure Database for PostgreSQL Maintenance - April 2026
+title: Release Notes for Azure Database for PostgreSQL flexible server Maintenance - April 2026
 description: Learn about the maintenance release notes for Azure Database for PostgreSQL April 2026.
 author: jasomaning
 ms.author: jasomaning
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: release-notes
 ---
 
-# Azure Database for PostgreSQL: April 2026 release
+# Azure Database for PostgreSQL flexible server: April 2026 release
 
 We're excited to announce the April 2026 version of Azure Database for PostgreSQL. Beginning April 22, 2026, the service automatically onboards all new servers to this latest version. The service upgrades existing servers during their next scheduled maintenance.
 
