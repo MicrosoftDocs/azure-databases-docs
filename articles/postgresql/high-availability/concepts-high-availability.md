@@ -1,6 +1,6 @@
 ---
 title: High Availability in Azure Database for PostgreSQL flexible server
-description: This article describes high availability on an Azure Database for PostgreSQL flexible server.
+description: Learn how zone-redundant and zonal high availability work in Azure Database for PostgreSQL flexible server, including automatic failover and SLAs.
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
