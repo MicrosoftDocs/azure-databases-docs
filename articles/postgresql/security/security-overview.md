@@ -12,7 +12,7 @@ ms.custom:
   - horz-security
 ---
 
-# Secure your Azure Database for PostgreSQL flexible server Server
+# Secure your Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL is a fully managed database service that provides built-in high availability, automated backups, and scaling capabilities.
 Securing your PostgreSQL database deployments is crucial to protect sensitive data and maintain compliance with industry standards.

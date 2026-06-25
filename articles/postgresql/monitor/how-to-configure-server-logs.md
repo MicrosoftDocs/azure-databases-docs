@@ -160,12 +160,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-list-captured-logs)
 
-You can list the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server server-logs list](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-list) command.
+You can list the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server-logs list](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-list) command.
 
 To list all captured logs available for download, which were updated in the last 72 hours (default value), use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list \
+az postgres flexible-server-logs list \
   --resource-group <resource_group> \
   --server-name <server>
 ```
@@ -182,7 +182,7 @@ az postgres flexible-server server-logs list \
 To list all captured logs available for download, whose size is under 30 KiB, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list \
+az postgres flexible-server-logs list \
   --resource-group <resource_group> \
   --server-name <server> \
   --max-file-size 30
@@ -191,7 +191,7 @@ az postgres flexible-server server-logs list \
 To list all captured logs available for download, whose name contains `01_07`, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs list \
+az postgres flexible-server-logs list \
   --resource-group <resource_group> \
   --server-name <server> \
   --filename-contains 01_07
@@ -225,12 +225,12 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-download-captured-logs)
 
-You can download the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server server-logs download](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-download) command.
+You can download the captured PostgreSQL server logs and major version upgrade logs via the [az postgres flexible-server-logs download](/cli/azure/postgres/flexible-server/server-logs#az-postgres-flexible-server-server-logs-download) command.
 
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download \
+az postgres flexible-server-logs download \
   --resource-group <resource_group> \
   --server-name <server> \
   --name <log_name>
@@ -239,7 +239,7 @@ az postgres flexible-server server-logs download \
 To download one specific log, use this command:
 
 ```azurecli-interactive
-az postgres flexible-server server-logs download \
+az postgres flexible-server-logs download \
   --resource-group <resource_group> \
   --server-name <server> \
   --name <log1_name log2_name ...logn_name>
