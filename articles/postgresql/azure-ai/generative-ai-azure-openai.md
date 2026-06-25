@@ -16,7 +16,7 @@ ms.custom:
   - build-2024
 ---
 
-# Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL
+# Generate vector embeddings with Azure OpenAI in Azure Database for PostgreSQL flexible server
 
 Invoke [Azure OpenAI embeddings](/azure/ai-services/openai/reference#embeddings) easily to get a vector representation of the input, which can be used then in [vector similarity](../extensions/how-to-use-pgvector.md#vector-similarity) searches and consumed by machine learning models.
 

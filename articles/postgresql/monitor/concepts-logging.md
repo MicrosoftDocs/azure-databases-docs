@@ -10,7 +10,7 @@ ms.subservice: monitoring
 ms.topic: how-to
 ---
 
-# Logs in Azure Database for PostgreSQL
+# Logs in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL allows you to configure and access Postgres' standard logs. The logs can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance. Logging information you can configure and access includes errors, query information, autovacuum records, connections, and checkpoints. (Access to transaction logs isn't available).
 

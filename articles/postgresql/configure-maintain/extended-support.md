@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: concept-article
 ---
 
-# Azure Database for PostgreSQL extended support
+# Azure Database for PostgreSQL flexible server extended support
 
 To help you maintain secure and compliant workloads beyond community end-of-life (end of support), Azure is introducing Extended Support for Azure Database for PostgreSQL.
 

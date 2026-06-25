@@ -15,7 +15,7 @@ ms.custom:
   - sfi-ropc-nochange
 ---
 
-# Connect with managed identity to Azure Database for PostgreSQL 
+# Connect with managed identity to Azure Database for PostgreSQL flexible server 
 
 You can use both system-assigned and user-assigned managed identities to authenticate to an Azure Database for PostgreSQL flexible server instance. This article shows you how to use a system-assigned managed identity for an Azure Virtual Machine (VM) to access an Azure Database for PostgreSQL flexible server instance. Managed Identities are automatically managed by Azure and enable you to authenticate to services that support Microsoft Entra authentication without needing to insert credentials into your code.
 

@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Migrations From Oracle to Azure Database for PostgreSQL
+title: Best Practices for Migrations From Oracle to Azure Database for PostgreSQL flexible server
 description: Best practices for migrations from Oracle into Azure Database for PostgreSQL
 author: JaredMSFT
 ms.author: jaredmeade
@@ -13,7 +13,7 @@ ms.collection:
   - onprem-to-azure
 ---
 
-# Best Practices For Migrations From Oracle To Azure Database for PostgreSQL
+# Best Practices For Migrations From Oracle To Azure Database for PostgreSQL flexible server
 
 The following scenarios outline some of the potential challenges which have been encountered during an Oracle to Azure Postgres migration. The recommended solutions can be helpful in overcoming these challenges when planning and executing your own migration(s).
 

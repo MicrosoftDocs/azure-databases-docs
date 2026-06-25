@@ -1,5 +1,5 @@
 ---
-title: azure_ai Extension in Azure Database for PostgreSQL
+title: azure_ai Extension in Azure Database for PostgreSQL flexible server
 description: Introduction to the azure_ai extension in Azure Database for PostgreSQL, which enables you to use LLMs hosted in Microsoft Foundry and invoke Foundry tools from within the database.
 author: shreyaaithal
 ms.author: shaithal
@@ -17,7 +17,7 @@ ms.custom:
   - build-2025
 ---
 
-# azure_ai extension in Azure Database for PostgreSQL
+# azure_ai extension in Azure Database for PostgreSQL flexible server
 
 The `azure_ai` extension in Azure Database for PostgreSQL enables in-database use of large language models (LLMs) to build generative AI applications. It allows the database to call into [Azure OpenAI in Microsoft Foundry models](/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure#azure-openai-in-microsoft-foundry-models), [Azure OpenAI Service](/azure/ai-services/openai/overview), [Azure Cognitive Services (Azure Language in Foundry Tools)](/azure/ai-services/language-service), and [Azure Machine Learning Services](/azure/machine-learning/), simplifying development through seamless integration with these services.
 

@@ -1,5 +1,5 @@
 ---
-title: "Oracle to Azure Database for PostgreSQL: Ora2Pg Migration Guide"
+title: "Oracle to Azure Database for PostgreSQL flexible server: Ora2Pg Migration Guide"
 description: This guide helps you to migrate your Oracle schema to Azure Database for PostgreSQL using Ora2Pg.
 author: JaredMSFT
 ms.author: jaredmeade
@@ -13,7 +13,7 @@ ms.collection:
   - onprem-to-azure
 ---
 
-# Migrate Oracle to Azure Database for PostgreSQL Using Ora2Pg
+# Migrate Oracle to Azure Database for PostgreSQL flexible server Using Ora2Pg
 
 This guide helps you to migrate your Oracle schema to Azure Database for PostgreSQL.
 

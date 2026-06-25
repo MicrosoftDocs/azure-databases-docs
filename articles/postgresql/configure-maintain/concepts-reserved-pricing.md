@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Prepay for Azure Database for PostgreSQL  compute resources with reserved capacity
+# Prepay for Azure Database for PostgreSQL flexible server  compute resources with reserved capacity
 
 Azure Database for PostgreSQL helps you save money by prepaying for compute resources, compared to pay-as-you-go prices. With reserved capacity, you make an upfront commitment on Azure Database for PostgreSQL for a one-year or three-year period. This commitment gives you a significant discount on the compute costs.
 

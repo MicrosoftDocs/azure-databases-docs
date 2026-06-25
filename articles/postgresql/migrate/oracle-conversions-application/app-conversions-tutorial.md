@@ -12,7 +12,7 @@ ms.collection:
 ms.update-cycle: 180-days
 ---
 
-# Tutorial: Oracle to Azure Database for PostgreSQL application conversion (Preview)
+# Tutorial: Oracle to Azure Database for PostgreSQL flexible server application conversion (Preview)
 
 This tutorial guides you through converting Oracle client application code to Azure Database for PostgreSQL using the Visual Studio Code PostgreSQL extension with GitHub Copilot Agent Mode to automate and validate code transformation.
 

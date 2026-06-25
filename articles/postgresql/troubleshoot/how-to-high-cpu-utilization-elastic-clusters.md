@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot high CPU utilization in Azure Database for PostgreSQL Elastic Clusters
+# Troubleshoot high CPU utilization in Azure Database for PostgreSQL flexible server Elastic Clusters
 
 This article describes how to identify the root cause of high CPU utilization. It also provides possible remedial actions to control CPU utilization when using [Elastic clusters in Azure Database for PostgreSQL](../elastic-clusters/concepts-elastic-clusters.md).
 

@@ -12,7 +12,7 @@ ms.custom:
   - devx-track-bicep
 ---
 
-# Create an Azure Database for PostgreSQL instance using Bicep
+# Create an Azure Database for PostgreSQL flexible server using Bicep
 
 In this quickstart, you learn how to use a Bicep file to create an Azure Database for PostgreSQL flexible server instance.
 

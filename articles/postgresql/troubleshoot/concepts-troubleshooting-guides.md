@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
-# Troubleshooting guides for Azure Database for PostgreSQL 
+# Troubleshooting guides for Azure Database for PostgreSQL flexible server 
 
 The troubleshooting guides for Azure Database for PostgreSQL flexible server instances are designed to help you quickly identify and resolve common challenges you may encounter while using Azure Database for PostgreSQL flexible server instances. Integrated directly into the Azure portal, the troubleshooting guides provide actionable insights, recommendations, and data visualizations to assist you in diagnosing and addressing issues related to common performance problems. With these guides at your disposal, you are better equipped to optimize your Azure Database for PostgreSQL experience and ensure a smoother, more efficient database operation.
 

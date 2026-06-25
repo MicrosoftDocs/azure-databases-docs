@@ -10,7 +10,7 @@ ms.subservice: backup-restore
 ms.topic: concept-article
 ---
 
-# Geo-disaster recovery in Azure Database for PostgreSQL 
+# Geo-disaster recovery in Azure Database for PostgreSQL flexible server 
 
 If there's a region-wide disaster, Azure can provide protection from regional or large geography disasters with disaster recovery by making use of another region. For more information on resiliency to Azure region outages, see the [Azure reliability documentation](/azure/reliability).
 

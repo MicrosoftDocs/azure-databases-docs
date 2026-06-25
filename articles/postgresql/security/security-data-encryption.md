@@ -11,7 +11,7 @@ ms.topic: concept-article
 ms.custom: references_regions
 ---
 
-# Data encryption at rest in Azure Database for PostgreSQL
+# Data encryption at rest in Azure Database for PostgreSQL flexible server
 
 All the data managed by an Azure Database for PostgreSQL flexible server instance is always encrypted at rest. That data includes all system and user databases, server logs, write-ahead log segments, and backups. Encryption is handled by the underlying storage through [Server-side encryption of Azure Disk Storage](/azure/virtual-machines/disk-encryption).
 

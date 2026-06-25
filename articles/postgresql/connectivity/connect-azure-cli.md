@@ -14,7 +14,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Quickstart: Connect and query with Azure CLI  with Azure Database for PostgreSQL 
+# Quickstart: Connect and query with Azure CLI  with Azure Database for PostgreSQL flexible server 
 
 This quickstart demonstrates how to connect to an Azure Database for PostgreSQL flexible server instance using Azure CLI with `az postgres flexible-server connect` and execute single query or sql file with `az postgres flexible-server execute` command. This command allows you test connectivity to your database server and run queries. You can also run multiple queries using the interactive mode. 
 

@@ -10,7 +10,7 @@ ms.subservice: scale-out
 ms.topic: concept-article
 ---
 
-# Scaling resources in Azure Database for PostgreSQL
+# Scaling resources in Azure Database for PostgreSQL flexible server
 
 An Azure Database for PostgreSQL flexible server instance supports both vertical and horizontal scaling options.
 

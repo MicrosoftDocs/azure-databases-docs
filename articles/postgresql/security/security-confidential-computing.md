@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Azure Confidential Computing for Azure Database for PostgreSQL
+# Azure Confidential Computing for Azure Database for PostgreSQL flexible server
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This protection enables secure real-time analytics and collaborative machine learning across organizational boundaries.
 

@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Geo-replication in Azure Database for PostgreSQL 
+# Geo-replication in Azure Database for PostgreSQL flexible server 
 
 A read replica can be created in the same region as the primary server or in a different geographical region. Geo-replication can be helpful for scenarios like disaster recovery planning or bringing data closer to your users.
 

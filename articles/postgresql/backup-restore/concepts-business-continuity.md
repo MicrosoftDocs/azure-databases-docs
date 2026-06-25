@@ -11,7 +11,7 @@ ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
 
-# Overview of business continuity with Azure Database for PostgreSQL 
+# Overview of business continuity with Azure Database for PostgreSQL flexible server 
 
 **Business continuity** in Azure Database for PostgreSQL refers to the mechanisms, policies, and procedures that enable your business to continue operating in the face of disruption, particularly to its computing infrastructure. In most of the cases, Azure Database for PostgreSQL handles disruptive events that might happen in the cloud environment and keep your applications and business processes running. However, there are some events that can't be handled automatically such as:
 

@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Audit logging in Azure Database for PostgreSQL
+# Audit logging in Azure Database for PostgreSQL flexible server
 
 Audit logging of database activities in Azure Database for PostgreSQL is available through the [`pgaudit`](https://www.pgaudit.org/) extension. `pgaudit` provides detailed session and/or object audit logging.
 

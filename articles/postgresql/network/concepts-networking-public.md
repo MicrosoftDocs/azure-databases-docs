@@ -12,7 +12,7 @@ ms.custom:
   - ignite-2023
 ---
 
-# Networking overview for Azure Database for PostgreSQL with public access (allowed IP addresses)
+# Networking overview for Azure Database for PostgreSQL flexible server with public access (allowed IP addresses)
 
 This article describes connectivity and networking concepts for Azure Database for PostgreSQL flexible server instances.
 

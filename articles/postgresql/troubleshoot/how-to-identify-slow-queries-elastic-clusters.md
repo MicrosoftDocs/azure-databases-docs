@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: troubleshooting-general
 ---
 
-# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL Elastic Clusters
+# Troubleshoot and identify slow-running queries in Azure Database for PostgreSQL flexible server Elastic Clusters
 
 This article describes how to identify and diagnose the root cause of slow-running queries. These queries can consume CPU resources and lead to high CPU utilization.
 

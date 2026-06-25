@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: concept-article
 ---
 
-# Best practices for seamless migration into Azure Database for PostgreSQL
+# Best practices for seamless migration into Azure Database for PostgreSQL flexible server
 
 This article explains common pitfalls encountered and best practices to ensure a smooth and successful migration to Azure Database for PostgreSQL.
 

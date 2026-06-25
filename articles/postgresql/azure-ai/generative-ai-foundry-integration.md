@@ -1,5 +1,5 @@
 ---
-title: Connect Azure Database for PostgreSQL to Microsoft Foundry Using MCP
+title: Connect Azure Database for PostgreSQL flexible server to Microsoft Foundry Using MCP
 description: Learn how to integrate Azure Database for PostgreSQL with Microsoft Foundry using Model Context Protocol (MCP) to enable AI agents to interact with your database through natural language queries.
 author: abeomor
 ms.author: abeomorogbe
@@ -15,7 +15,7 @@ ms.custom:
   - ignite-2025
 ---
 
-# Connect Azure Database for PostgreSQL to Microsoft Foundry with MCP
+# Connect Azure Database for PostgreSQL flexible server to Microsoft Foundry with MCP
 
 The Azure Database for PostgreSQL MCP (Model Context Protocol) server enables AI agents in Microsoft Foundry to interact with PostgreSQL databases through natural language queries. This integration supports SQL operations, vector search, schema discovery, and data analysis with enterprise-grade security.
 

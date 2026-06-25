@@ -19,7 +19,7 @@ ms.custom:
 ms.devlang: "java"
 ---
 
-# Quickstart: Use Java and JDBC with Azure Database for PostgreSQL
+# Quickstart: Use Java and JDBC with Azure Database for PostgreSQL flexible server
 
 This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for PostgreSQL](../index.yml).
 

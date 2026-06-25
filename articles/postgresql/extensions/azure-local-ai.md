@@ -14,7 +14,7 @@ ms.custom:
 # customer intent: As a user, I want to understand the overview and use cases of the azure_local_ai extension for Azure Database for PostgreSQL.
 ---
 
-# Azure Local AI extension for Azure Database for PostgreSQL (Preview)
+# Azure Local AI extension for Azure Database for PostgreSQL flexible server (Preview)
 
 [!INCLUDE [in-database-embedding-deprecation](../includes/in-database-embedding-deprecation.md)]
 

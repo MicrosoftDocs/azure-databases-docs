@@ -1,5 +1,5 @@
 ---
-title: Configure TLS Connection to Azure Database for PostgreSQL
+title: Configure TLS Connection to Azure Database for PostgreSQL flexible server
 description: Learn how to configure Transport Layer Security (TLS) connections to Azure Database for PostgreSQL.
 author: techlake
 ms.author: hganten

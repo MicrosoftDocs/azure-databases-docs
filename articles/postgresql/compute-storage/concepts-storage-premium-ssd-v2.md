@@ -12,7 +12,7 @@ ms.custom:
   - references_regions
 ---
 
-# Premium SSD v2 storage option in Azure Database for PostgreSQL
+# Premium SSD v2 storage option in Azure Database for PostgreSQL flexible server
 
 Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments mean your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 

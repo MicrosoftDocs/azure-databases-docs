@@ -13,7 +13,7 @@ ms.custom:
   - references_regions
 ---
 
-# Manage Azure Database for PostgreSQL with Azure SDK for Python
+# Manage Azure Database for PostgreSQL flexible server with Azure SDK for Python
 
 In this quickstart, you learn how to use the Azure Python SDK to interact with an Azure Database for PostgreSQL flexible server instance.
 

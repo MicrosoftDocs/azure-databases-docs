@@ -12,7 +12,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Firewall rules in Azure Database for PostgreSQL 
+# Firewall rules in Azure Database for PostgreSQL flexible server 
 
 When you're running an Azure Database for PostgreSQL flexible server instance, you have two main networking options. The options are private access (virtual network integration) and public access (allowed IP addresses).
 

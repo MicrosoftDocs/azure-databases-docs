@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Convert Oracle Schemas to Azure Database for PostgreSQL"
+title: "Tutorial: Convert Oracle Schemas to Azure Database for PostgreSQL flexible server"
 description: Step-by-step tutorial for converting Oracle database schemas to Azure Database for PostgreSQL flexible server by using the Visual Studio Code PostgreSQL extension with Microsoft Foundry integration.
 author: apduvuri
 ms.author: adityaduvuri
@@ -13,7 +13,7 @@ ms.update-cycle: 90-days
 ai-usage: ai-assisted
 ---
 
-# Tutorial: Oracle to Azure Database for PostgreSQL schema conversion
+# Tutorial: Oracle to Azure Database for PostgreSQL flexible server schema conversion
 
 This tutorial guides you through converting Oracle database schemas to Azure Database for PostgreSQL by using the Visual Studio Code PostgreSQL extension with Microsoft Foundry to automate and validate schema translation.
 

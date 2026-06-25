@@ -1,5 +1,5 @@
 ---
-title: What Is Azure Database for PostgreSQL?
+title: What Is Azure Database for PostgreSQL flexible server?
 description: Provides an overview of Azure Database for PostgreSQL.
 author: gbowerman
 ms.author: guybo
@@ -9,7 +9,7 @@ ms.service: azure-database-postgresql
 ms.topic: overview
 ---
 
-# What is Azure Database for PostgreSQL?
+# What is Azure Database for PostgreSQL flexible server?
 
 This article provides an overview of Azure Database for PostgreSQL, helping you get acquainted with its key features and core concepts.
 
