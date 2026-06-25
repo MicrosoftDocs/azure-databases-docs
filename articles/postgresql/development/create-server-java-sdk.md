@@ -10,9 +10,9 @@ ms.subservice: development
 ms.topic: quickstart
 ---
 
-# Create an Azure Database for PostgreSQL flexible server instance using the Azure SDK for Java
+# Create an Azure Database for PostgreSQL flexible server using the Azure SDK for Java
 
-In this quickstart, you learn how to create, update, and delete an Azure Database for PostgreSQL flexible server instance using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure Database for PostgreSQL service.
+In this quickstart, you learn how to create, update, and delete an Azure Database for PostgreSQL flexible server using the Azure SDK for Java. The code examples are written in Java and use the Azure SDK libraries to interact with the Azure Database for PostgreSQL service.
 
 The Azure SDK for Java provides a set of libraries that allow you to interact with Azure services using Java. The SDK provides a consistent programming model and simplifies working with Azure services, including Azure Database for PostgreSQL.
 
@@ -146,7 +146,7 @@ public class CreateServer {
               TokenCredential credential = new DefaultAzureCredentialBuilder()
               .authorityHost(profile.getEnvironment().getActiveDirectoryEndpoint()).build();
               PostgreSqlManager manager = PostgreSqlManager.authenticate(credential, profile);
-              Server server = manager.servers()
+              server = manager.servers()
               .define("<server-name>")
               .withRegion("<location>")
               .withExistingResourceGroup("<resource-group-name>")
