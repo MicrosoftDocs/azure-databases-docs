@@ -10,7 +10,7 @@ ms.subservice: performance
 ms.topic: how-to
 ---
 
-# Full vacuum using pg_repack in Azure Database for PostgreSQL 
+# Full vacuum using pg_repack in Azure Database for PostgreSQL flexible server 
 
 In this article, you learn how to use `pg_repack` to remove bloat and improve your Azure Database for PostgreSQL flexible server performance. Bloat is the unnecessary data accumulating in tables and indexes due to frequent updates and deletes. Bloat can cause the database size to grow larger than expected, and it can severely affect the performance of some queries. Use `pg_repack` to reclaim the wasted space and reorganize the data more efficiently.
 

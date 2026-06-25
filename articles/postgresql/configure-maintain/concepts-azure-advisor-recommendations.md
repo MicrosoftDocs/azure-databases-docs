@@ -11,7 +11,7 @@ ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
 
-# Azure Advisor for Azure Database for PostgreSQL
+# Azure Advisor for Azure Database for PostgreSQL flexible server
 
 Learn about how Azure Advisor is applied to an Azure Database for PostgreSQL flexible server instance and get answers to common questions.
 

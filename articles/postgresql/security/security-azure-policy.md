@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Azure Policy Support for Azure Database for PostgreSQL
+# Azure Policy Support for Azure Database for PostgreSQL flexible server
 
 [Azure Policy](/azure/governance/policy/overview) helps you enforce organizational standards and assess compliance at scale. Through its compliance dashboard, it provides an aggregated view to evaluate the overall state of the environment, with the ability to drill down to the per-resource, per-policy granularity. It also helps bring your resources to compliance through bulk remediation for existing resources and automatic remediation for new resources.
 

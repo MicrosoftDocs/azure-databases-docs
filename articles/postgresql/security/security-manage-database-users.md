@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Manage users in Azure Database for PostgreSQL
+# Manage users in Azure Database for PostgreSQL flexible server
 
 This article describes how you can create users within an Azure Database for PostgreSQL flexible server instance.
 

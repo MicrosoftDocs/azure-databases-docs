@@ -13,7 +13,7 @@ ms.topic: how-to
 #customer intent: As a developer, I want to learn how to enable and use pg_partman on Azure Database for PostgreSQL  so that I can optimize my database performance.
 ---
 
-# Enable and use pg_partman on Azure Database for PostgreSQL 
+# Enable and use pg_partman on Azure Database for PostgreSQL flexible server 
 
 In this article, you learn how to optimize Azure Database for PostgreSQL flexible server by using the PostgreSQL Partition Manager (`pg_partman`) extension.
 

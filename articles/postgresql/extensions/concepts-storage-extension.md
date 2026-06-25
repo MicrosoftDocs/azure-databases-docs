@@ -13,7 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Azure storage extension in Azure Database for PostgreSQL 
+# Azure storage extension in Azure Database for PostgreSQL flexible server 
 
 The Azure Database for PostgreSQL extension for Azure Storage enables direct data movement between your PostgreSQL flexible server instance and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
 

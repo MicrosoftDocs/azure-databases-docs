@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Configure data encryption in Azure Database for PostgreSQL
+# Configure data encryption in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to configure data encryption for an Azure Database for PostgreSQL flexible server instance.
 

@@ -13,7 +13,7 @@ ms.custom:
 - sfi-ropc-nochange
 ---
 
-# Logical replication and logical decoding in Azure Database for PostgreSQL 
+# Logical replication and logical decoding in Azure Database for PostgreSQL flexible server 
 
 An Azure Database for PostgreSQL flexible server instance supports the following logical data extraction and replication methodologies:
 

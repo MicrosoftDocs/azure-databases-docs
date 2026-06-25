@@ -10,7 +10,7 @@ ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Access management for Azure Database for PostgreSQL
+# Access management for Azure Database for PostgreSQL flexible server
 
 Managing access to your Azure Database for PostgreSQL resources is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 

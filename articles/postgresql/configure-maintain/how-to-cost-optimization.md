@@ -10,7 +10,7 @@ ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# How to optimize costs in Azure Database for PostgreSQL 
+# How to optimize costs in Azure Database for PostgreSQL flexible server 
 
 Azure Database for PostgreSQL service is a relational database service in the Microsoft cloud based on the [PostgreSQL Community Edition.](https://www.postgresql.org/).  It's a fully managed database as a service offering that can handle mission-critical workloads with predictable performance and dynamic scalability.
 

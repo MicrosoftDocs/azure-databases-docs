@@ -13,7 +13,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Manage Microsoft Entra roles in Azure Database for PostgreSQL
+# Manage Microsoft Entra roles in Azure Database for PostgreSQL flexible server
 
 This article describes how to create Microsoft Entra ID-enabled database roles within an Azure Database for PostgreSQL flexible server instance.
 

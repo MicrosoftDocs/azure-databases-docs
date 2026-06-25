@@ -11,7 +11,7 @@ ms.topic: best-practice
 ai.usage: ai-assisted
 ---
 
-# Best practices to bulk upload data to Azure Database for PostgreSQL 
+# Best practices to bulk upload data to Azure Database for PostgreSQL flexible server 
 
 This article discusses various methods for loading data in bulk to an Azure Database for PostgreSQL flexible server instance, along with best practices for both initial data loads in empty databases and incremental data loads.
 

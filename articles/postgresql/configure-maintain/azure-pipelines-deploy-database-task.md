@@ -12,7 +12,7 @@ ms.custom:
   - mode-other
 ---
 
-# Azure Pipelines task - Azure Database for PostgreSQL
+# Azure Pipelines task - Azure Database for PostgreSQL flexible server
 
 You can automatically deploy your database updates to your Azure Database for PostgreSQL flexible server instance after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
 

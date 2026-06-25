@@ -15,7 +15,7 @@ ms.custom:
 - sfi-ropc-blocked
 ---
 
-# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL 
+# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server 
 
 Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
 

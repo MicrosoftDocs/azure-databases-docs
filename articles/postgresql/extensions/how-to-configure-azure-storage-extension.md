@@ -15,7 +15,7 @@ ms.custom:
   - sfi-image-nochange
 ---
 
-# Configure the Azure Storage extension in Azure Database for PostgreSQL
+# Configure the Azure Storage extension in Azure Database for PostgreSQL flexible server
 
 You must follow these steps to be able to use the Azure Storage extension:
 

@@ -12,7 +12,7 @@ ms.topic: concept-article
 ---
 
 
-# Premium SSD  storage option in Azure Database for PostgreSQL 
+# Premium SSD  storage option in Azure Database for PostgreSQL flexible server 
 
 ## Premium SSD
 

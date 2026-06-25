@@ -13,7 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL 
+# Reference of functions provided by the Azure Storage extension in Azure Database for PostgreSQL flexible server 
 
 Following is the list of functions provided by the Azure Storage extension:
 

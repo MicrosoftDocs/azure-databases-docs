@@ -12,7 +12,7 @@ ms.custom:
   - template-how-to
 ---
 
-# Troubleshoot high IOPS utilization in Azure Database for PostgreSQL 
+# Troubleshoot high IOPS utilization in Azure Database for PostgreSQL flexible server 
 
 This article shows you how to quickly identify the root cause of high IOPS (input/output operations per second) utilization and provides remedial actions to control IOPS utilization when you're using [Azure Database for PostgreSQL](../overview.md).
 

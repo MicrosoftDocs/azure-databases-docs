@@ -11,7 +11,7 @@ ms.topic: how-to
 ms.custom: sfi-image-nochange
 ---
 
-# Use the troubleshooting guides in Azure Database for PostgreSQL 
+# Use the troubleshooting guides in Azure Database for PostgreSQL flexible server 
 
 In this article, you learn how to use troubleshooting guides for Azure Database for PostgreSQL flexible server from the Azure portal. To learn more about troubleshooting guides, see the [overview](concepts-troubleshooting-guides.md).
 

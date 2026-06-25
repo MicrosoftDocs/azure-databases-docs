@@ -13,7 +13,7 @@ ms.custom:
 - sfi-image-nochange
 ---
 
-# Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL 
+# Troubleshoot the Azure Storage extension in Azure Database for PostgreSQL flexible server 
 
 Following is the list of errors that the Azure Storage extension can return. It also explains the reasons why or the circumstances in which they can be raised. 
 

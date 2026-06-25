@@ -9,7 +9,7 @@ ms.subservice: security
 ms.topic: how-to
 ---
 
-# Audit logging in Azure Database for PostgreSQL for Microsoft Entra ID principals
+# Audit logging in Azure Database for PostgreSQL flexible server for Microsoft Entra ID principals
 
 Database audits are an important component of your organization's compliance requirements. By monitoring targeted activities, you can achieve your security baseline. In Azure Database for PostgreSQL flexible server, you can set up audits by using the pgaudit PG extension, as described in [Audit logging in Azure Database for PostgreSQL](../security/security-audit.md).
 
