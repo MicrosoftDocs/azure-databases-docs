@@ -14,12 +14,12 @@ ms.custom:
 
 # Premium SSD v2 storage option in Azure Database for PostgreSQL flexible server
 
-Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments mean your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
+Premium SSD v2 offers higher performance than Premium SSD, while also being less costly, as a general rule. You can individually tweak the performance (capacity, throughput, and IOPS (input/output operations per second)) of Premium SSD v2 at any time. The ability to make these adjustments means your workloads can be cost-efficient while meeting shifting performance needs. For example, a transaction-intensive database might need to cope with a large amount of IOPS for a couple of exceptionally high-demand days. Or a gaming application might demand higher throughput during peak hours only. For most general-purpose workloads, Premium SSD v2 provides the best price for performance. You can now deploy Azure Database for PostgreSQL flexible server instances with Premium SSD v2 disk in all supported regions.
 
 
 ## Differences between Premium SSD and Premium SSD v2
 
-Unlike Premium SSD, Premium SSD v2 doesn't have dedicated sizes. You can set a Premium SSD v2 disk to any size you prefer, and make granular adjustments as per your workload requirements. Those granular increments can go in steps of 1 GiB. Premium SSD v2 doesn't support host caching, but still provides lower latency than Premium SSD. Premium SSD v2 capacities range from 1 GiB to 64 TiB.
+Unlike Premium SSD, Premium SSD v2 doesn't have dedicated sizes. You can set a Premium SSD v2 disk to any size you prefer, and make granular adjustments as per your workload requirements. Those granular increments go in steps of 1 GiB. Premium SSD v2 doesn't support host caching, but still provides lower latency than Premium SSD. Premium SSD v2 capacities range from 1 GiB to 64 TiB.
 
 Premium SSD v2 offers flexible IOPS configurations. Azure Database for PostgreSQL server provides a baseline IOPS of 3,000 for disks up to 399 GiB, and 12,000 IOPS for disks 400 GiB or larger at no extra cost. Disks can achieve up to 80,000 IOPS when sized at least 160 GiB. IOPS beyond the free tier incur extra charges.
 
@@ -28,21 +28,21 @@ Premium SSD v2 also offers flexible throughput configurations. Azure Database fo
 
 ### IOPS
 
-Azure Database for PostgreSQL server offers a baseline IOPS of 3000 for disks up to 399 GiB, and 12000 IOPS for disks 400 GiB or larger at no extra cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in extra charges.
+Azure Database for PostgreSQL server offers a baseline IOPS of 3,000 for disks up to 399 GiB, and 12,000 IOPS for disks 400 GiB or larger at no extra cost. To achieve 80,000 IOPS on a disk, it must be at least 160 GiB. Increasing IOPS beyond the free tier results in extra charges.
 
 ### Throughput
 
-Azure Database for PostgreSQL offers a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB larger at no extra cost. Increasing throughput beyond the free tier results in extra charges.
+Azure Database for PostgreSQL provides a baseline throughput of 125 MB/s for disks up to 399 GiB, and 500 MB/s for disks 400 GiB and larger at no extra cost. If you increase throughput beyond the free tier, you incur extra charges.
 
-The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage holds database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
-The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which one you should use.
+The following table provides an overview of premium SSD v2 disk capacities and performance maximums to help you decide which one to use.
 
 | SSD v2 disk size | Maximum available IOPS | Maximum available throughput (MB/s) |
 | --- | --- | --- |
 | 1 GiB-64 TiBs | 3,000-80,000 (Increases by 500 IOPS per GiB) | 125-1,200 (increases by 0.25 MB/s per set IOPS) |
 
-Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
+Your virtual machine type also has IOPS limits. Although you can select any storage size independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.
 
 To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
 
@@ -53,7 +53,7 @@ To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-c
 
 ## Supported features
 
-Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys) and, Geo DR(Disaster Recovery)* features for Azure Database for PostgreSQL in below supported regions.
+Premium SSD v2 supports *High Availability, Geo-Redundant backups, Geo Replicas, Major Version Upgrade, CMK (Customer Managed Keys), and Geo DR (Disaster Recovery)* features for Azure Database for PostgreSQL in the following supported regions.
 
 **Americas**: Brazil South*, Brazil Southeast*, Canada Central, Canada East, Central US, East US, East US 2, North Central US, South Central US, West Central US, West US, West US 2, West US 3*.
 
@@ -67,45 +67,45 @@ Sovereign regions, including China North 3 and US Gov Virginia, support only sta
 
  
 > [!NOTE]  
-> Geo‑redundant backups are currently unavailable in regions marked with an asterisk (*) because either the paired region doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
+> Geo-redundant backups are currently unavailable in regions marked with an asterisk (*) because either the paired region doesn't support native SSDv2 storage or the region doesn't have an Azure paired region.
 
-### Limitations and Considerations
+### Limitations and considerations
 
- - Long‑term backups, storage autogrow, and PostgreSQL version 13 are currently not supported with Premium SSD v2.
+ - Premium SSD v2 doesn't currently support long-term backups, storage autogrow, or PostgreSQL version 13.
    
-- You can provision Premium SSD v2 by using General Purpose and Memory Optimized compute tiers only. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
+- You can provision Premium SSD v2 by using only General Purpose and Memory Optimized compute tiers. Creating new Burstable compute tier with Premium SSD v2 isn't supported.
 
--  Although CMK and geo-redundant backups are each supported, enabling geo-redundant backups with CMK isn't currently supported.
+- Although CMK, geo-redundant backups, and read replicas are each supported, enabling geo-redundant backups with CMK or read replicas with CMK isn't currently supported.
 
 - You can adjust disk performance settings (IOPS or throughput) up to four times within a 24-hour period. For newly created disks, the limit is three adjustments during the first 24 hours.
 
-- For larger servers, the initial automated backup takes longer to complete and appears in the Azure portal after it completes. No action is required during this time. We recommend waiting for the initial backup to complete before performing any backup‑dependent operations, such as creating in‑region read replicas or performing major version upgrade. After the initial backup, all subsequent backups are incremental and typically complete quickly.
+- For larger servers, the initial automated backup takes longer to complete and appears in the Azure portal after it completes. No action is required during this time. Wait for the initial backup to complete before performing any backup-dependent operations, such as creating in-region read replicas or performing major version upgrade. After the initial backup, all subsequent backups are incremental and typically complete quickly.
 
 
 - Online migration from Premium SSD to Premium SSD v2 isn't supported. To migrate between these storage types, you can either perform a [point-in-time-restore](../backup-restore/concepts-backup-restore.md#point-in-time-recovery) from a Premium SSD server to a new server using Premium SSD v2. Alternatively, you can create a read replica from a Premium SSD server to a Premium SSD v2 server and promote it after replication completes. Because storage autogrow isn't currently supported on Premium SSD v2, you must disable storage autogrow on the source Premium SSD server before starting the migration.
 
- - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and may result in increased latency.
+ - Replication from Premium SSD to Premium SSD v2 is supported only for migration scenarios. Ongoing replication isn't supported because Premium SSD can't match the performance of Premium SSD v2 and might result in increased latency.
   
-- If you perform any operation that requires disk hydration following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
+- If you perform any operation that requires disk hydration, the following error might occur. This error occurs because Premium SSD v2 disks don't support any operation while the disk is still hydrating. 
 
  _Error message: Unable to complete the operation because the disk is still being hydrated. Retry after some time._
 
   **Operations that can trigger this behavior include:**  
          Performing compute scaling, storage scaling, enabling high availability (HA), or unplanned failovers in quick succession.
-         If you're performing major version upgrades, adding HA, initiating failovers, or creating in‑region replicas within a short interval before disk hydration completes.
+         If you're performing major version upgrades, adding HA, initiating failovers, or creating in-region replicas within a short interval before disk hydration completes.
          Creating a new server using PITR(point-in-time-restore) and immediately enabling High Availability or Read Replicas while the disk is still being hydrated.  
 
   **Best practice:**  
          To avoid errors, space out these operations or complete them sequentially, allowing hydration to finish between actions.
 
 > [!IMPORTANT]  
-> During an unplanned failover, the server may temporarily run without a standby while disk hydration is in progress.
+> During an unplanned failover, the server might temporarily run without a standby while disk hydration is in progress.
 
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
 > [!NOTE]  
-> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
+> Regardless of the type of storage you assign to your instance, you can only scale storage up, not down.
 
 
 ## Related content
