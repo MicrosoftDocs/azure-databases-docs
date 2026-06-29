@@ -1,8 +1,8 @@
 ---
 title: Azure Database for MySQL - Flexible Server Overview
 description: Learn about the Flexible Server deployment model for Azure Database for MySQL.
-author: deepthiprasad
-ms.author: deprasa
+author: SudheeshGH
+ms.author: sunaray
 ms.reviewer: maghan, randolphwest
 ms.date: 01/05/2026
 ms.service: azure-database-mysql

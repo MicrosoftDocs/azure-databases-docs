@@ -1,10 +1,10 @@
 ---
-title: Show virtual endpoints
+title: Show Virtual Endpoints
 description: This article describes how to show virtual endpoints for an Azure Database for PostgreSQL flexible server.
 author: gkasar
 ms.author: gkasar
-ms.reviewer: maghan
-ms.date: 04/13/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 06/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: replication
 ms.topic: how-to
@@ -12,7 +12,7 @@ ms.topic: how-to
 
 # Show virtual endpoints
 
-This article provides step-by-step instructions to show virtual endpoints associated to an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions to show virtual endpoints associated with an Azure Database for PostgreSQL flexible server.
 
 ## Steps to show virtual endpoints
 
@@ -22,15 +22,15 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. Select the Azure Database for PostgreSQL flexible server for which you want to show its associated virtual endpoints.
 
-2. In the resource menu, under the **Settings** section, select **Replication**. In the **Virtual endpoints** section you can see the reader and writer endpoints displayed, along with the endpoints of the servers to which each of them is pointing to.
+1. In the resource menu, under the **Settings** section, select **Replication**. In the **Virtual endpoints** section, you can see the reader and writer endpoints displayed, along with the endpoints of the servers to which each of them points.
 
-    :::image type="content" source="./media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="./media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
+   :::image type="content" source="media/how-to-read-replicas/replication-with-virtual-endpoints.png" alt-text="Screenshot showing the Replication page with virtual endpoints created." lightbox="media/how-to-read-replicas/replication-with-virtual-endpoints.png":::
 
 ### [CLI](#tab/cli-show-virtual-endpoints)
 
-You can show the existing virtual endpoints of your Azure PostgreSQL flexible server via the [`az postgres flexible-server virtual-endpoint show`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-show) command or via the [`az postgres flexible-server virtual-endpoint list`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-list) command.
+Use the [`az postgres flexible-server virtual-endpoint show`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-show) or the [`az postgres flexible-server virtual-endpoint list`](/cli/azure/postgres/flexible-server/replica#az-postgres-flexible-server-virtual-endpoint-list) commands to show the existing virtual endpoints of your server.
 
-Because only one pair of virtual endpoints is allowed per replication set, both commands yield the same results.
+Because only one pair of virtual endpoints is allowed per replication set, both commands return the same results.
 
 ```azurecli-interactive
 az postgres flexible-server virtual-endpoint show \
@@ -44,11 +44,12 @@ az postgres flexible-server virtual-endpoint list \
   --resource-group <resource_group> \
   --server-name <server> \
 ```
+
 ---
 
 ## Related content
 
-- [Read replicas](concepts-read-replicas.md).
-- [Update virtual endpoints](how-to-update-virtual-endpoints.md).
-- [Delete virtual endpoints](how-to-delete-virtual-endpoints.md).
-- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md).
+- [Read replicas in Azure Database for PostgreSQL](concepts-read-replicas.md)
+- [Update virtual endpoints](how-to-update-virtual-endpoints.md)
+- [Delete virtual endpoints](how-to-delete-virtual-endpoints.md)
+- [Switch over read replica to primary](how-to-switch-over-replica-to-primary.md)

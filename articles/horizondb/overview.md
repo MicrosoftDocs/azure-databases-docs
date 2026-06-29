@@ -1,8 +1,8 @@
 ---
 title: What Is Azure HorizonDB?
 description: Learn about Azure HorizonDB, a fully managed, AI-ready database service built on PostgreSQL engineered for performance and scale.
-author: denzilribeiro
-ms.author: denzilr
+author: DDL-PM
+ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb

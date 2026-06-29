@@ -1,10 +1,10 @@
 ---
 title: Azure Confidential Computing
-description: This article describes the confidential computing options in Azure Database for PostgreSQL.
+description: This article describes the confidential computing options in Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 02/26/2026
+ms.date: 06/25/2026
 ms.service: azure-database-postgresql 
 ms.subservice: security
 ms.topic: concept-article
@@ -16,7 +16,7 @@ ms.topic: concept-article
 
 ## Understanding the architecture
 
-**Azure Database for PostgreSQL** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. The operating system, hypervisor, and other applications can't access data processed inside the TEE.
+**Azure Database for PostgreSQL flexible server** supports Azure Confidential Computing through Trusted Execution Environments (TEEs), which are hardware-based, isolated memory regions within the CPU. The operating system, hypervisor, and other applications can't access data processed inside the TEE.
 
 - Code runs in plaintext within the TEE but remains encrypted outside the enclave.
 - Data is encrypted at rest, in transit, and use.
@@ -24,45 +24,54 @@ ms.topic: concept-article
 
 ## Processors
 
-You enable **Azure Confidential Computing** in **Azure Database for PostgreSQL** by selecting a supported confidential virtual machine (VM) SKU when creating a new server. Only **AMD SEV-SNP** processors are supported.
+You enable Azure Confidential Computing in Azure Database for PostgreSQL flexible server by selecting a supported confidential virtual machine (VM) SKU when creating a new server. Only **AMD SEV-SNP** processors are supported.
 
 > [!NOTE]
-> Intel TDX processors aren't currently supported for Azure Database for PostgreSQL.
+> Intel TDX processors aren't currently supported for Azure Database for PostgreSQL flexible server.
 
 ## Virtual machine SKUs
 
-The SKUs that support Azure Confidential Computing (ACC) for Azure Database for PostgreSQL are:
+The SKUs that support Azure Confidential Computing (ACC) for Azure Database for PostgreSQL flexible server are:
 
 | SKU Name | Processor | vCores | Memory (GiB) | Max IOPS | Max I/O Bandwidth (MBps) |
 | --- | --- | --- | --- | --- | --- |
 | **Dcadsv5** | AMD SEV-SNP | 2-96 | 8-384 | 3750-80000 | 48-1200 |
 | **Ecadsv5** | AMD SEV-SNP | 2-96 | 16-672 | 3750-80000 | 48-1200 |
 
-## Deployment
+## Steps to deploy a server with confidential computing
 
-You can deploy Azure Database for PostgreSQL with ACC by using various methods, such as the Azure portal, Azure CLI, ARM templates, Bicep, Terraform, Azure PowerShell, REST API, and more.
+### [Portal](#tab/portal-azure-confidential-computing)
 
-For this example, use the Azure portal.
+Using the [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer):
 
-Follow the steps below to deploy an [Azure Database for PostgreSQL](https://ms.portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer) server:
+1. Select a region that supports Azure Confidential Computing for Azure Database for PostgreSQL flexible server. Then, in the **Compute + storage** section, select **Configure Server**.
 
-1. Select **UAE North** as the region.
+   :::image type="content" source="media/security-confidential-computing/configure-server.png" alt-text="Screenshot showing Basics tab of New Azure Database for PostgreSQL flexible server wizard." lightbox="media/security-confidential-computing/configure-server.png":::
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-1.png" alt-text="Screenshot of Azure Confidential Computing portal deployment basics page." lightbox="media/security-confidential-computing/confidential-compute-portal-1.png":::
+1. Select your **Compute tier** and **Compute processor**.
 
-1. Select **Configure Server** under **Compute + Storage**.
+   :::image type="content" source="media/security-confidential-computing/tier-processor.png" alt-text="Screenshot showing where you can select the compute tier and processor." lightbox="media/security-confidential-computing/tier-processor.png":::
 
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-2.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute and Storage page." lightbox="media/security-confidential-computing/confidential-compute-portal-2.png":::
+1. Expand the **Compute size** and select one of the confidential compute SKUs with an appropriate size to satisfy your needs.
 
-1. On the **Compute and Storage** tab, select your Compute Tier and Compute Processor.
-
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-3.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Tier and Processor page." lightbox="media/security-confidential-computing/confidential-compute-portal-3.png":::
-
-1. Select Compute Size and **select a confidential compute SKU** and the size based on your needs.
-
-   :::image type="content" source="media/security-confidential-computing/confidential-compute-portal-4.png" alt-text="Screenshot of Azure Confidential Computing portal deployment Compute Tier and Size page." lightbox="media/security-confidential-computing/confidential-compute-portal-4.png":::
+   :::image type="content" source="media/security-confidential-computing/tier-processor.png" alt-text="Screenshot showing where you can select the compute size." lightbox="media/security-confidential-computing/tier-processor.png":::
 
 1. Deploy your server.
+
+### [CLI](#tab/cli-azure-confidential-computing)
+
+Use the [az postgres flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command to deploy a server using confidential computing.
+
+```azurecli-interactive
+az postgres flexible-server create \
+  --location <location>
+  --resource-group <resource_group> \
+  --name <server> \
+  --tier <tier> \
+  --sku-name <any_confidential_compute_sku> ...
+```
+
+---
 
 ## Compare
 
@@ -80,8 +89,8 @@ Let's compare Azure Confidential Compute virtual machines and Azure Confidential
 
 Evaluate the limitations carefully before deploying in a production environment.
 
-- Confidential Computing is only available in the UAE North region and West Europe regions.
-- Only AMD SEV-SNP processors are supported. Intel TDX processors aren't currently compatible with Azure Database for PostgreSQL.
+- Confidential Computing is only available in the following regions: UAE North region, and West Europe.
+- Only AMD SEV-SNP processors are supported. Intel TDX processors aren't currently compatible with Azure Database for PostgreSQL flexible server.
 - Point-in-time restore (PITR) from nonconfidential compute versions to confidential ones isn't allowed.
 
 ## Related content
