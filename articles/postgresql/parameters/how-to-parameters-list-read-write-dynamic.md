@@ -4,7 +4,7 @@ description: This article describes how to list read-write dynamic parameters of
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,19 +21,19 @@ This article provides step-by-step instructions to list read-write dynamic param
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under the **Settings** section, select **Parameters**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot showing the Parameters page." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. Select the **Dynamic** tab. The page shows a list of read-write parameters for which, if their value is changed, the new value takes effect **immediately without requiring a server restart**.
+1. Select the **Dynamic** tab. The page shows a list of read-write parameters for which, if you change their value, the new value takes effect **immediately without requiring a server restart**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/dynamic-parameters.png" alt-text="Screenshot that shows the list of dynamic parameters." lightbox="./media/how-to-configure-parameters/dynamic-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/dynamic-parameters.png" alt-text="Screenshot showing the list of dynamic parameters." lightbox="./media/how-to-configure-parameters/dynamic-parameters.png":::
 
 ### [CLI](#tab/cli-list-dynamic)
 
-You can list all parameters that don't require a restart after their values are changed for the changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters that don't require a restart after you change their values.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list \
