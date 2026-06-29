@@ -1,8 +1,8 @@
 ---
 title: Compute Replicas in Azure HorizonDB
 description: Learn about compute replicas in Azure HorizonDB, scaling up vCores and memory, and scaling out reads by adding replicas.
-author: denzilribeiro
-ms.author: denzilr
+author: DDL-PM
+ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
