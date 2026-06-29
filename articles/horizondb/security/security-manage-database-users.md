@@ -1,8 +1,8 @@
 ---
 title: Manage User in Azure HorizonDB
 description: This article describes how you can create new user accounts to interact with an Azure HorizonDB instance.
-author: denzilribeiro
-ms.author: denzilr
+author: DDL-PM
+ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
