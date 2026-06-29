@@ -1,10 +1,10 @@
 ---
 title: User Assigned Managed Identity
-description: This article describes how to configure user assigned managed identities of an Azure Database for PostgreSQL flexible server instance.
+description: This article describes how to configure user assigned managed identities of an Azure Database for PostgreSQL flexible server.
 author: techlake
 ms.author: hganten
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 06/25/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -12,63 +12,55 @@ ms.topic: how-to
 
 # User assigned managed identities
 
-This article provides step-by-step instructions to add or remove user assigned managed identities to an Azure Database for PostgreSQL flexible server instance.
+This article provides step-by-step instructions to add or remove user assigned managed identities to an Azure Database for PostgreSQL flexible server.
 
 ## Steps to assign to existing servers
 
-This article assumes you created the user assigned managed identities that you want to associate to an existing instance of Azure Database for PostgreSQL flexible server.
+This article assumes you created the user assigned managed identities that you want to associate to an existing Azure Database for PostgreSQL flexible server.
 
 For more information, see [how to manage user assigned managed identities in Microsoft Entra ID](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities).
 
-You can associate as many user assigned managed identities as you want to an Azure Database for PostgreSQL flexible server instance.
+You can associate as many user assigned managed identities as you want to an Azure Database for PostgreSQL flexible server.
 
 ### [Portal](#tab/portal-associate-user-assigned-existing)
 
-There's no support to associate user assigned managed identities to an Azure Database for PostgreSQL flexible server instance via the portal.
+The portal doesn't support associating user assigned managed identities to an Azure Database for PostgreSQL flexible server.
 
 ### [CLI](#tab/cli-associate-user-assigned-existing)
 
-You can associate a user assigned identity to an Azure Database for PostgreSQL flexible server instance via the [az postgres flexible-server identity assign](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-assign) command.
+Use the [az postgres flexible-server identity assign](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-assign) command to associate a user assigned identity with a server.
 
 ```azurecli-interactive
-# Associate user assigned managed identity
-resourceGroup=<resource-group>
-server=<server>
-identity=<identity>
 az postgres flexible-server identity assign \
-  --resource-group $resourceGroup \
-  --server-name $server \
-  --identity $identity
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --identity <identity>
 ```
 
 ---
 
 ## Steps to remove from existing servers
 
-The service supports dissociating user assigned managed identities which are associated to an Azure Database for PostgreSQL flexible server instance.
+The service supports dissociating user assigned managed identities that are associated to an Azure Database for PostgreSQL flexible server.
 
-An exception to that rule is any of the user assigned managed identities that are designated as the ones that should be used to access the encryption keys. This case is only possible on servers that were deployed with [data encryption using customer managed keys](../security/security-data-encryption.md).
+An exception to that rule is any of the user assigned managed identities that you designate as the ones to access the encryption keys for data encryption. This case is only possible on servers that you deploy with [data encryption using customer managed keys](../security/security-data-encryption.md).
 
 ### [Portal](#tab/portal-dissociate-user-assigned-existing)
 
-There's no support to dissociate user assigned managed identities from an Azure Database for PostgreSQL flexible server instance via the portal.
+The portal doesn't support dissociating user assigned managed identities from an Azure Database for PostgreSQL flexible server.
 
 ### [CLI](#tab/cli-dissociate-user-assigned-existing)
 
-You can dissociate a user assigned identity from an Azure Database for PostgreSQL flexible server instance via the [az postgres flexible-server identity remove](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-remove) command.
+Use the [az postgres flexible-server identity remove](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-remove) command to dissociate a user assigned identity from a server.
 
 ```azurecli-interactive
-# Dissociate user assigned managed identity
-resourceGroup=<resource-group>
-server=<server>
-identity=<identity>
 az postgres flexible-server identity remove \
-  --resource-group $resourceGroup \
-  --server-name $server \
-  --identity $identity
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --identity <identity>
 ```
 
-If you try to remove a user assigned managed identity which is used to access a data encryption key, you get the following error:
+If you try to remove a user assigned managed identity that you use to access a data encryption key, you get the following error:
 
 ```output
 Cannot remove identity <identity> because it's used for data encryption.
@@ -82,27 +74,28 @@ Cannot remove identity <identity> because it's used for data encryption.
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Locate your server in the portal, if you don't have it open. One way to do it is by typing the name of the server in the search bar. When the resource with the matching name is shown, select that resource.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-    :::image type="content" source="./media/security-configure-managed-identities-user-assigned/search-server.png" alt-text="Screenshot that shows how to search for a resource using the search bar in the Azure portal." lightbox="./media/security-configure-managed-identities-user-assigned/search-server.png":::
+1. In the resource menu, select **Overview**.
 
-2. In the resource menu, under **Overview**, select **JSON View**.
+    :::image type="content" source="./media/security-configure-managed-identities-user-assigned/overview.png" alt-text="Screenshot showing the Overview page of an Azure Database for PostgreSQL flexible server." lightbox="./media/security-configure-managed-identities-user-assigned/overview.png":::
 
-    :::image type="content" source="./media/security-configure-managed-identities-user-assigned/json-view.png" alt-text="Screenshot that shows how to select JSON View on an Azure Database for PostgreSQL flexible server instance." lightbox="./media/security-configure-managed-identities-user-assigned/json-view.png":::
+1. Select **JSON View**.
 
-3. In the **Resource JSON** panel that opens, find the **identity** property and, inside it, you can find the **userAssignedIdentities**. That object consists of one or more key/value pairs, where each key represents the resource identifier of one user assigned managed identity, and their corresponding value is made of **principalId** and **clientId** associated to that managed identity.
+   :::image type="content" source="media/security-configure-managed-identities-system-assigned/json-view.png" alt-text="Screenshot showing how to select JSON View on an Azure Database for PostgreSQL flexible server." lightbox="media/security-configure-managed-identities-system-assigned/json-view.png":::
+
+1. In the **Resource JSON** panel that opens, find the **identity** property. Inside it, you can find the **userAssignedIdentities**. That object consists of one or more key/value pairs, where each key represents the resource identifier of one user assigned managed identity. The corresponding value includes the **principalId** and **clientId** associated with that managed identity.
 
     :::image type="content" source="./media/security-configure-managed-identities-user-assigned/user-assigned-managed-identity-details.png" alt-text="Screenshot that shows where to find the userAssignedManagedIdentities object for a server." lightbox="./media/security-configure-managed-identities-user-assigned/user-assigned-managed-identity-details.png":::
 
 ### [CLI](#tab/cli-show-user-assigned)
 
+Use the [az postgres flexible-server identity list](/cli/azure/postgres/flexible-server/identity#az-postgres-flexible-server-identity-list) command to list all associated user assigned managed identities with a server.
+
 ```azurecli-interactive
-# List all associated user assigned managed identities
-resourceGroup=<resource-group>
-server=<server>
 az postgres flexible-server identity list \
-  --resource-group $resourceGroup \
-  --server-name $server \
+  --resource-group <resource_group> \
+  --server-name <server> \
   --query "userAssignedIdentities"
 ```
 
