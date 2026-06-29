@@ -1,8 +1,8 @@
 ---
 title: "What's New in Azure Database for MySQL"
 description: Learn about recent updates to Azure Database for MySQL.
-author: deepthiprasad
-ms.author: deprasa
+author: SudheeshGH
+ms.author: sunaray
 ms.reviewer: maghan, randolphwest
 ms.date: 06/18/2026
 ms.service: azure-database-mysql
