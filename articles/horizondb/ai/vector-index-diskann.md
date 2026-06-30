@@ -283,6 +283,22 @@ To learn about other options to configure these parameters in Azure HorizonDB, s
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 
+<a id="using-a-temporary-tablespace-for-large-datasets"></a>
+
+### Use a temporary tablespace for large datasets
+
+For very large datasets (> 3M rows), the index build can need more temporary space than the default location provides. Building the index in the `temptablespace` tablespace gives the build access to more scratch space that scales with your instance size, which helps the build complete reliably.
+
+Add the `TABLESPACE temptablespace` clause to your `CREATE INDEX` statement:
+
+```sql
+CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
+TABLESPACE temptablespace;
+```
+
+> [!TIP]  
+> Use the `TABLESPACE temptablespace` clause when you build an index for a dataset larger than 3 million rows.
+
 ## Configuration parameters
 
 When creating a `diskann` index, you can specify various parameters to control its behavior.
@@ -368,9 +384,11 @@ WITH (
 | >50M | Index build | `spherical_quantized` | true |
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
+For datasets larger than 3 million rows, also build the index with the `TABLESPACE temptablespace` clause. For more information, see [Use a temporary tablespace for large datasets](#use-a-temporary-tablespace-for-large-datasets).
+
 > [!NOTE]  
 > These parameters might vary depending on the specific dataset and use case. Users might have to experiment with different parameter values, to find the optimal settings for their particular scenario.
-
+> 
 ## CREATE INDEX and REINDEX progress
 
 With PostgreSQL 12 and newer, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
