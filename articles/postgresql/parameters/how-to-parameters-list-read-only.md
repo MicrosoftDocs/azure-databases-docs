@@ -6,7 +6,7 @@ ms.author: jasomaning
 ms.reviewer: maghan
 ms.date: 06/26/2026
 ms.service: azure-database-postgresql
-ms.subservice: server-parameters
+ms.subservice: parameters
 ms.topic: how-to
 #customer intent: As a user, I want to learn how to list read-only dynamic parameters of an Azure Database for PostgreSQL.
 ---
