@@ -1,20 +1,19 @@
 ---
-title: Allow extensions
-description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server instance.
+title: Allow Extensions
+description: This article describes how to allow extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
-ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.reviewer: maghan, randolphwest
+ms.date: 06/23/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server instance.
+# customer intent: As a user, I want to learn how to allow extensions in an Azure Database for PostgreSQL flexible server.
 ---
 
 # Allow extensions
 
-
-Before creating extensions for an Azure Database for PostgreSQL flexible server instance, you must allowlist them.
+Before creating extensions for an Azure Database for PostgreSQL flexible server, add them to the allow list.
 
 ## Steps to allow extensions
 
@@ -22,61 +21,38 @@ Before creating extensions for an Azure Database for PostgreSQL flexible server 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. From the resource menu, under **Settings** section, select **Parameters**.
+1. From the resource menu, under the **Settings** section, select **Parameters**.
 
-    :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
+   :::image type="content" source="media/how-to-allow-extensions/parameters.png" alt-text="Screenshot showing the Parameters menu option." lightbox="media/how-to-allow-extensions/parameters.png":::
 
-3. Select the extensions that you want to allowlist, from the ones available in the `azure.extensions` parameter.
+1. Select the extensions that you want to allowlist from the ones available in the `azure.extensions` parameter.
 
-    :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot that shows how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
+   :::image type="content" source="media/how-to-allow-extensions/allow-list.png" alt-text="Screenshot showing how to allowlist some extensions." lightbox="media/how-to-allow-extensions/allow-list.png":::
 
-4. Select **Save**.
+1. Select **Save**.
 
-    :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot that shows the Save button in the Parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
+   :::image type="content" source="media/how-to-allow-extensions/save-extensions.png" alt-text="Screenshot showing the Save button in the Parameters page." lightbox="media/how-to-allow-extensions/save-extensions.png":::
+
+1. A new deployment is launched to set the value of the `azure.extensions` parameter on your Azure Database for PostgreSQL flexible server.
+
+   :::image type="content" source="media/how-to-allow-extensions/deployment-progress.png" alt-text="Screenshot shopwing the deployment in progress to set the value of azure.extensions parameter on your Azure Database for PostgreSQL flexible server." lightbox="media/how-to-allow-extensions/deployment-progress.png":::
+
+1. When the deployment completes, select **Go to resource** to go back to your Azure Database for PostgreSQL flexible server.
+
+   :::image type="content" source="media/how-to-allow-extensions/deployment-completed.png" alt-text="Screenshot showing the deployment successfully completed to set the value of azure.extensions parameter on your Azure Database for PostgreSQL flexible server." lightbox="media/how-to-allow-extensions/deployment-completed.png":::
 
 ### [CLI](#tab/allow-extensions-cli)
 
-You can allow extensions via the CLI parameter set [command](/cli/azure/postgres/flexible-server/parameter).
+Use the [`az postgres flexible-server parameter set`](/cli/azure/postgres/flexible-server/parameter?view=azure-cli-latest#az-postgres-flexible-server-parameter-set) command to add extensions to the allow list on your server.
 
 ```azurecli-interactive
-    az postgres flexible-server parameter set --resource-group <resource_group>  --server-name <server> --subscription <subscription_id> --name azure.extensions --value <extension_name>,<extension_name>
-```
-
-### [Resource Manager Template](#tab/allow-extensions-azure-resource-manager)
-
-Using the [ARM Template](/azure/azure-resource-manager/templates/):
-
-The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `pg_buffercache` on a server whose name is `postgres-test-server`:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "flexibleServers_name": {
-            "defaultValue": "postgres-test-server",
-            "type": "String"
-        },
-        "azure_extensions_set_value": {
-            "defaultValue": " dblink,dict_xsyn,pg_buffercache",
-            "type": "String"
-        }
-    },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.DBforPostgreSQL/flexibleServers/configurations",
-            "apiVersion": "2021-06-01",
-            "name": "[concat(parameters('flexibleServers_name'), '/azure.extensions')]",
-            "properties": {
-                "value": "[parameters('azure_extensions_set_value')]",
-                "source": "user-override"
-            }
-        }
-    ]
-}
+az postgres flexible-server parameter set \
+  --resource-group <resource_group> \
+  --server-name <server> \
+  --name azure.extensions \
+  --value "<extension_name>,<extension_name>"
 ```
 
 ---
@@ -84,6 +60,6 @@ The following example adds extensions to the allowlist `dblink`, `dict_xsyn`, `p
 ## Related content
 
 - [Extensions and modules](concepts-extensions.md)
-- [Special considerations with extensions and modules](concepts-extensions-considerations.md)
+- [Considerations with the use of extensions and modules](concepts-extensions-considerations.md)
 - [List of extensions and modules by name](concepts-extensions-versions.md)
 - [List of extensions and modules by version of PostgreSQL](concepts-extensions-by-engine.md)
