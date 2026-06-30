@@ -4,7 +4,7 @@ description: This article describes how to set the value of one or more paramete
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,30 +21,30 @@ This article provides step-by-step instructions to set the value of one or more 
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under the **Settings** section, select **Parameters**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot showing the Parameters page." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. Locate the read-write parameters whose current values you want to change, and set them to the new desired values.
+1. Find the read-write parameters you want to change, and set them to the new values.
 
-    :::image type="content" source="./media/how-to-configure-parameters/set-value.png" alt-text="Screenshot that shows how to set the value of a parameter." lightbox="./media/how-to-configure-parameters/set-value.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/set-value.png" alt-text="Screenshot showing how to set the value of a parameter." lightbox="./media/how-to-configure-parameters/set-value.png":::
 
-4. Observe that an informational message indicates how many parameter changes aren't saved yet, and select **Save**.
+1. An informational message shows how many parameter changes aren't saved yet. Select **Save**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/set-value-unsaved-parameters.png" alt-text="Screenshot that shows the information message indicating the values of how many parameters have been changed and not saved yet." lightbox="./media/how-to-configure-parameters/set-value-unsaved-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/set-value-unsaved-parameters.png" alt-text="Screenshot showing the information message indicating the values of how many parameters have been changed and not saved yet." lightbox="./media/how-to-configure-parameters/set-value-unsaved-parameters.png":::
 
-5. If the column **Parameter type** for any of the parameters changed is equal to **Static**, the server requires a restart for the changes to take effect. In that case, a dialog pops up so that you can select if you want to:
-    - **Save and Restart**: In case you want to persist all changes made to all parameters whose values were modified, and immediately after restart the server for any changes to static parameters to take effect.
-    - **Save only**: In case you want to persist all changes made to all parameters whose set values changed, but want to defer the server restart to a later time. Until you don't complete the server restart action, changes made to any static parameters don't take effect.
-    - **Cancel**: To not implement any changes yet.
+1. If the column **Parameter type** for any of the parameters you changed is **Static**, the server requires a restart for the changes to take effect. In that case, a dialog appears so that you can select if you want to:
+    - **Save and Restart**: Persist all changes you made to all parameters whose values you modified, and immediately after restart the server for any changes to static parameters to take effect.
+    - **Save only**: Persist all changes you made to all parameters whose set values changed, but defer the server restart to a later time. Until you complete the server restart action, changes to static parameters don't take effect.
+    - **Cancel**: Don't implement any changes yet.
 
-    :::image type="content" source="./media/how-to-configure-parameters/save-restart-cancel.png" alt-text="Screenshot of dialog requesting a restart of the server after modifying a static parameter." lightbox="./media/how-to-configure-parameters/save-restart-cancel.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/save-restart-cancel.png" alt-text="Screenshot showing the dialog requesting a restart of the server after modifying the value of a static parameter." lightbox="./media/how-to-configure-parameters/save-restart-cancel.png":::
 
 ### [CLI](#tab/cli-set-value)
 
-You can set the value of a parameter via the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command.
+Use the [az postgres flexible-server parameter set](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-set) command to set the value of a parameter.
 
 ```azurecli-interactive
 az postgres flexible-server parameter set \
@@ -55,7 +55,7 @@ az postgres flexible-server parameter set \
   --value <value>
 ```
 
-And you can use the following script to conditionally restart the server, if any of the parameters changed require a restart for the change to take effect:
+You can use the following script to conditionally restart the server if any of the parameter changes require a restart for the change to take effect:
 
 ```azurecli-interactive
 parameters_requiring_restart=$(az postgres flexible-server parameter list \

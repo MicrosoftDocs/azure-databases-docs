@@ -285,13 +285,15 @@ SELECT ai.create_pipeline(
         ai.chunk(input => 'content'),
         ai.extract(
             input => 'chunk_text',
-            data  => ARRAY['topics: the main topics discussed',
-                           'entities: named people, products, or places']
+            data  => ARRAY['topics: string - the main topics discussed',
+                           'entities: string - named people, products, or places']
+            model => 'my-gpt'
         )
     ],
     sink   => ai.table_sink('extraction_pipeline_output')
 );
 ```
+Each field is a label, either a bare name like `product`, or the detailed form `name: type - description` (for example `sentiment: number - sentiment score from 1 to 5`). HorizonDB does the rest durably, in bulk, with the same retry-and-resume guarantees.
 
 ### Generate new content with `ai.generate()`
 
@@ -314,11 +316,13 @@ SELECT ai.create_pipeline(
         ai.generate(
             input => 'chunk_text',
             system_prompt => 'Create a concise summary in 50 words or fewer.'
+            model => 'my-gpt'
         )
     ],
     sink   => ai.table_sink('generation_pipeline_output')
 );
 ```
+Swap the `system_prompt` and the same shape becomes a classifier ("Label this ticket as billing, bug, or feature request"), a translator, or a headline generator. The instruction goes in `system_prompt`; the result lands in `generated_text`.
 
 ### Rank documents with `ai.rank()`
 
@@ -350,6 +354,8 @@ SELECT ai.create_pipeline(
         ai.rank(
             input => 'chunk_text',
             query => 'How does PostgreSQL handle vector search?'
+            top_n => 10,
+            model => 'my-reranker'
         )
     ],
     sink   => ai.table_sink('ranking_pipeline_output')

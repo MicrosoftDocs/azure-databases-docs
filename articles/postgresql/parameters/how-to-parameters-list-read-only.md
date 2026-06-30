@@ -4,7 +4,7 @@ description: This article describes how to list read-only dynamic parameters of 
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,19 +21,19 @@ This article provides step-by-step instructions to list read-only dynamic parame
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under **Settings**, select **Parameters**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot showing the Parameters page." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. Select the **Read-Only** tab. The page shows a list of read-only parameters.
+1. Select the **Read-Only** tab. The page shows a list of read-only parameters.
 
-    :::image type="content" source="./media/how-to-configure-parameters/read-only-parameters.png" alt-text="Screenshot that shows the list of read-only parameters." lightbox="./media/how-to-configure-parameters/read-only-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/read-only-parameters.png" alt-text="Screenshot showing the list of read-only parameters." lightbox="./media/how-to-configure-parameters/read-only-parameters.png":::
 
 ### [CLI](#tab/cli-list-read-only)
 
-You can list all parameters that are designated as read-only, the ones the user can't change, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters that are designated as read-only (the ones you can't change).
 
 ```azurecli-interactive
 az postgres flexible-server parameter list \

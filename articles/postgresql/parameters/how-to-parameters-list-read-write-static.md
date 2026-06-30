@@ -4,7 +4,7 @@ description: This article describes how to list read-write static parameters of 
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,19 +21,19 @@ This article provides step-by-step instructions to list read-write static parame
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under the **Settings** section, select **Parameters**.
 
     :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. Select the **Static** tab. The page shows a list of read-write parameters for which, if their value is changed, require a restart of the server for the new value to take effect.
+1. Select the **Static** tab. The page shows a list of read-write parameters that require a server restart for the new value to take effect if you change their value.
 
     :::image type="content" source="./media/how-to-configure-parameters/static-parameters.png" alt-text="Screenshot that shows the list of static parameters." lightbox="./media/how-to-configure-parameters/static-parameters.png":::
 
 ### [CLI](#tab/cli-list-static)
 
-You can list all parameters that require a restart, for changes to take effect, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters that require a restart for changes to take effect.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list \

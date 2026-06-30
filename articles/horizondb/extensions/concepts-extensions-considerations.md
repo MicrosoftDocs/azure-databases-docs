@@ -1,8 +1,8 @@
 ---
 title: Considerations with the Use of Extensions and Modules in Azure HorizonDB
 description: Learn about the extension considerations specific to an Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb

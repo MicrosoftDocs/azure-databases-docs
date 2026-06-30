@@ -1,10 +1,10 @@
 ---
 title: Upgrade Validation Checks
-description: This article describes how to run Upgrade Validation Checks for Azure Database for PostgreSQL flexible server before performing a major version upgrade.
+description: This article describes how to run upgrade validation checks for Azure Database for PostgreSQL flexible server before performing a major version upgrade.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/07/2026
+ms.date: 06/25/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
@@ -15,58 +15,66 @@ ms.custom:
 
 # Run upgrade validation checks (Preview)
 
-This article describes how to run Upgrade Validation Checks for Azure Database for PostgreSQL flexible server.
+This article describes how to run upgrade validation checks for Azure Database for PostgreSQL flexible server.
 
-Upgrade Validation Checks help identify compatibility issues and upgrade blockers before starting a major version upgrade by validating upgrade readiness independently from the actual upgrade operation.
+Upgrade validation checks help you identify compatibility problems and upgrade blockers before you start a major version upgrade. They validate upgrade readiness independently from the actual upgrade operation.
 
 > [!NOTE]  
-> Upgrade Validation Checks validate upgrade readiness only. They don't perform the actual major version upgrade.
+> Upgrade validation checks validate upgrade readiness only. They don't perform the actual major version upgrade.
 
 ## Prerequisites
 
-Before running Upgrade Validation Checks:
+Before running upgrade validation checks, review the supported upgrade paths and limitations documented in [Major version upgrades in Azure Database for PostgreSQL](concepts-major-version-upgrade.md).
 
-- Ensure the server is in the **Ready** state.
-- Ensure the target PostgreSQL major version is supported by Azure Database for PostgreSQL flexible server.
-- Review the supported upgrade paths and limitations documented in [Major version upgrades in Azure Database for PostgreSQL](concepts-major-version-upgrade.md).
+## Steps to run upgrade validation checks
 
-## Run upgrade validation checks
+### [Portal](#tab/portal-major-version-upgrade-validation-checks)
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the Azure Database for PostgreSQL flexible server instance that you want to validate.
-
 1. From the resource menu, select **Overview**.
+
+1. The server status must be **Ready** for the **Upgrade** button to be enabled.
+
+   :::image type="content" source="media/how-to-run-upgrade-validation-checks/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="media/how-to-run-upgrade-validation-checks/server-status.png":::
 
 1. Select **Upgrade**.
 
-1. In the **Upgrade** pane, select the target PostgreSQL version.
+   :::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-button.png" alt-text="Screenshot showing the Upgrade button through which you can initiate the major version upgrade of an Azure Database for PostgreSQL flexible server." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-button.png":::
 
-1. Select **Validate Only**.
+1. Expand **PostgreSQL version to upgrade**, and select the major version for which you want to validate the upgrade.
 
-:::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-validate-only.png" alt-text="Screenshot showing the Upgrade pane with the Validate Only option selected for running Upgrade Validation Checks." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-validate-only.png":::
+   :::image type="content" source="media/how-to-run-upgrade-validation-checks/set-postgresql-version.png" alt-text="Screenshot showing the Upgrade pane, from where you can select the major version to which you want to upgrade." lightbox="media/how-to-run-upgrade-validation-checks/set-postgresql-version.png"::: 
+
+1. For **Action**, select **Validate and upgrade** to run the validation rules and, if they all pass, it immediately upgrades the server to the selected target version. It warns you about the consequences of initiating the upgrade.
+
+   :::image type="content" source="media/how-to-run-upgrade-validation-checks/action.png" alt-text="Screenshot showing the Action option configured as Validate only." lightbox="media/how-to-run-upgrade-validation-checks/action.png"::: 
+
+1. Select **Start**.
+
+   :::image type="content" source="media/how-to-run-upgrade-validation-checks/start.png" alt-text="Screenshot showing the Start button, to initiate the upgrade." lightbox="media/how-to-run-upgrade-validation-checks/start.png"::: 
 
 1. The validation process starts and performs upgrade readiness checks against the server.
 
 1. Wait for the validation operation to complete. Keep the validation status pane open to monitor progress and review validation results.
 
-1. After validation completes:
+1. After validation completes, if no blocking issues are detected, you can download the successful report as a CSV file or you can select the **Upgrade** button to proceed with the upgrade of the server to the selected target version.
 
-   - If no blocking issues are detected, validation completes successfully.
+     :::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-success.png" alt-text="Screenshot showing successful completion of upgrade validation checks." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-success.png":::
 
-     :::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-success.png" alt-text="Screenshot showing successful completion of Upgrade Validation Checks." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-success.png":::
+1. After validation completes, if blocking issues are detected, review the reported errors and fix them before retrying validation.
 
-   - If blocking issues are detected, review the reported errors and remediate them before retrying validation.
+    :::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-failure.png" alt-text="Screenshot showing failed upgrade validation checks with remediation guidance for blocking issues." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-failure.png":::
 
-:::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-failure.png" alt-text="Screenshot showing failed Upgrade Validation Checks with remediation guidance for blocking issues." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-failure.png":::
+### [CLI](#tab/cli-major-version-upgrade-validation-checks)
 
-1. Select **Operation details** to review validation progress and results.
+[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
-Validation checks don't restart the server or initiate the major version upgrade process.
+---
 
 ## Review validation results
 
-After Upgrade Validation Checks complete, review the validation findings to identify any upgrade blocking issues.
+After the upgrade validation checks finish, review the validation findings to identify any upgrade blocking problems.
 
 ### Review validation findings in the portal
 
@@ -77,20 +85,20 @@ The validation results pane displays:
 
 You can also download the validation results as a `.csv` file for offline review or sharing with your operations team.
 
-:::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-csv-output.png" alt-text="Screenshot showing the CSV download option for Upgrade Validation Checks results." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-csv-output.png":::
+:::image type="content" source="media/how-to-run-upgrade-validation-checks/upgrade-validation-csv-output.png" alt-text="Screenshot showing the Download .csv button for in the Pre-upgrade validation pane." lightbox="media/how-to-run-upgrade-validation-checks/upgrade-validation-csv-output.png":::
 
 The downloaded report includes:
 - Validation check name
 - Validation result
 - Error details
-- Remediation recommendations for blocking issues
+- Remediation recommendations for blocking problems
 
 ### Review detailed validation logs
 
-Upgrade Validation Checks also generate upgrade validation logs that can be downloaded from the **Server logs** page.
+Upgrade validation checks also generate upgrade validation logs that you can download from the **Server logs** page.
 
 > [!NOTE]  
-> To download validation logs, Server Logs must be enabled on the server. For more information, see [Download PostgreSQL and upgrade logs](../monitor/how-to-configure-server-logs.md).
+> To download validation logs, you must enable server logs on the server. For more information, see [Download PostgreSQL and upgrade logs](../monitor/how-to-configure-server-logs.md).
 
 To access validation logs:
 

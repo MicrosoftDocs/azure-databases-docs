@@ -4,7 +4,7 @@ description: This article describes how to list all parameters of an Azure Datab
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,45 +21,52 @@ This article provides step-by-step instructions to list all parameters of an Azu
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under the **Settings** section, select **Parameters**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot showing the Parameters page." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. The page shows a list of parameters, their configured values, optional units, whether they're read-only, dynamic, or static, and their descriptions.
+1. The page shows a list of parameters, their configured values, optional units, whether they're read-only, dynamic, or static, and their descriptions.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters-all.png" alt-text="Screenshot that shows the All tab of the Parameters page." lightbox="./media/how-to-configure-parameters/parameters-all.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters-all.png" alt-text="Screenshot showing the All tab of the Parameters page." lightbox="./media/how-to-configure-parameters/parameters-all.png":::
 
-4. Select or hover over the **i** (information) icon to see which values are allowed for each parameter. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
+1. Select or hover over the **i** (information) icon to see which values are allowed for each parameter. Depending on the data type of the parameter, which can be string, enumeration, integer, boolean, numeric, set, the allowed values vary. And it can be regular expression, list of values, range of integers, on/off, range of decimals, list of values, respectively.
 
     :::image type="content" source="./media/how-to-configure-parameters/information-icon.png" alt-text="Screenshot showing balloon that pops up when hovering on the information icon." lightbox="./media/how-to-configure-parameters/information-icon.png":::
 
-5. The list of parameters supported by the instance consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a control to inform you of the position you're at.
+1. The list of parameters supported by the server consists of several hundred items, which are rendered in pages of 20 items each. At the bottom of the page, there's a control to inform you of the position you're at.
 
-    :::image type="content" source="./media/how-to-configure-parameters/paging-position.png" alt-text="Screenshot that shows your position while paging in the Parameters page." lightbox="./media/how-to-configure-parameters/paging-position.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/paging-position.png" alt-text="Screenshot showing your position while paging in the Parameters page." lightbox="./media/how-to-configure-parameters/paging-position.png":::
 
-6. There's also a paging control which you can use to navigate through the whole set of pages.
+1. There's also a paging control which you can use to navigate through the whole set of pages.
 
-    :::image type="content" source="./media/how-to-configure-parameters/paging.png" alt-text="Screenshot that shows the paging control in the Parameters page." lightbox="./media/how-to-configure-parameters/paging.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/paging.png" alt-text="Screenshot showing the paging control in the Parameters page." lightbox="./media/how-to-configure-parameters/paging.png":::
 
-7. If needed, use the **Search to filter items...** text box to narrow down the list to those parameters containing the search term in their name or in their description.
+1. If needed, use the **Search to filter items...** text box to narrow down the list to those parameters containing the search term in their name or in their description.
 
-    :::image type="content" source="./media/how-to-configure-parameters/search.png" alt-text="Screenshot that shows how to search in Parameters page." lightbox="./media/how-to-configure-parameters/search.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/search.png" alt-text="Screenshot showing how to search in Parameters page." lightbox="./media/how-to-configure-parameters/search.png":::
 
+
+The **Source** column can show any of the following values for each parameter:
+
+| Parameter type | Description |
+| --- | --- |
+| **System-Default** | Value of the parameter is never overridden, neither by the user nor by the platform. |
+| **User-Override** | Value of the parameter is overridden, either by the user or by the system. |
 
 The **Parameter type** column can show any of the following values for each parameter:
 
 | Parameter type | Description |
 | --- | --- |
 | **Static** | Requires a server restart to make the change effective. |
-| **Dynamic** | Can be altered without the need to restart the server instance. However, changes will apply only to new connections established after the modification. |
-| **Read-only** | Isn't user configurable, because of their critical role in maintaining reliability, security, or other operational aspects of the service. |
+| **Dynamic** | Can be altered without the need to restart the server instance. However, changes apply only to new connections established after the modification. |
+| **Read-only** | Isn't user configurable, because of its critical role in maintaining reliability, security, or other operational aspects of the service. |
 
 
 ### [CLI](#tab/cli-list)
 
-You can list all parameters in a server via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters in a server.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list \
@@ -82,7 +89,7 @@ Each parameter has the following attributes:
 | **isReadOnly** | Indicates if the user can or can't override the default value assigned to the parameter. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |
 | **name** | Name of the parameter. | Any valid name for a parameter. |
 | **resourceGroup** | Name of the resource group in which the server is deployed. | Any valid name for a resource group in Azure. |
-| **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or the user override it. |
+| **source** | Source from which the value currently set for the parameter originates. | `system-default` or `user-override`, depending on whether **value** is set to the system default or was overriden by the user or the platform. |
 | **unit** | Optional text describing the units in which the parameter is expressed. | When set to something, it can be any of `8KB`, `bytes`, `days`, `KB`, `megabytes`, `microseconds`, `milliseconds`, `minutes`, `percentage`, `seconds`. |
 | **value** | Value currently assigned to the parameter. | Varies, depending on the data type and allowed values of the parameter. |
 

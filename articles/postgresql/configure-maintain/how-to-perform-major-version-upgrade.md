@@ -4,7 +4,7 @@ description: This article describes how to perform an in-place major version upg
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/04/2025
+ms.date: 06/25/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
@@ -25,59 +25,55 @@ This article provides step-by-step instructions to perform a major version upgra
 
 Using the [Azure portal](https://portal.azure.com/):
 
-1. Select the instance of Azure Database for PostgreSQL flexible server which you want to upgrade.
+1. Select the Azure Database for PostgreSQL flexible server that you want to upgrade.
 
-2. From the resource menu, select **Overview**.
+1. From the resource menu, select **Overview**.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/overview.png" alt-text="Screenshot showing the Overview page, to demonstrate how to initiate major version upgrade of an Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/overview.png":::
 
-3. The status of the server must be **Ready**, for the **Upgrade** button to be enabled.
+1. The server status must be **Ready** for the **Upgrade** button to be enabled.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server." lightbox="media/how-to-perform-major-version-upgrade/server-status.png":::
 
-4. Select **Upgrade**.
+1. Select **Upgrade**.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-button.png" alt-text="Screenshot showing the Upgrade button through which you can initiate the major version upgrade of an Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-button.png":::
 
-5. The **Upgrade** pane provides some recommendations, and warns you about the consequences of initiating the upgrade.
+1. The **Upgrade** pane provides some recommendations.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-pane.png" alt-text="Screenshot showing the Upgrade pane." lightbox="media/how-to-perform-major-version-upgrade/upgrade-pane.png":::
 
-6. Expand **PostgreSQL version to upgrade**, and select the major version to which you want to upgrade.
+1. Expand **PostgreSQL version to upgrade**, and select the major version to which you want to upgrade.
 
    :::image type="content" source="media/how-to-perform-major-version-upgrade/set-postgresql-version.png" alt-text="Screenshot showing the Upgrade pane, from where you can select the major version to which you want to upgrade." lightbox="media/how-to-perform-major-version-upgrade/set-postgresql-version.png"::: 
 
-7. Select **Upgrade**.
+1. For **Action**, select **Validate and upgrade** to run the validation rules and, if they all pass, it immediately upgrades the server to the selected target version. It warns you about the consequences of initiating the upgrade.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade.png" alt-text="Screenshot showing the Upgrade button, to initiate the upgrade." lightbox="media/how-to-perform-major-version-upgrade/upgrade.png"::: 
+   :::image type="content" source="media/how-to-perform-major-version-upgrade/action.png" alt-text="Screenshot showing the Action option configured as Validate and upgrade." lightbox="media/how-to-perform-major-version-upgrade/action.png"::: 
 
-8. During upgrade, users have to wait for the process to complete. You can resume accessing the server when the server is back online.
+1. Select **Start**.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/deployment-progress.png" alt-text="Screenshot showing of progress of the deployment initiated to perform the major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/deployment-progress.png":::
+   :::image type="content" source="media/how-to-perform-major-version-upgrade/start.png" alt-text="Screenshot showing the Start button, to initiate the upgrade." lightbox="media/how-to-perform-major-version-upgrade/start.png"::: 
 
-9. Once the upgrade completes successfully, you can expand **Deployment details**.
+1. During upgrade, wait for the process to complete. You can resume accessing the server when the server is back online.
 
-   :::image type="content" source="media/how-to-perform-major-version-upgrade/deployment-details.png" alt-text="Screenshot showing how to expand the deployment details after a successful deployment of a major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/deployment-details.png":::
+   :::image type="content" source="media/how-to-perform-major-version-upgrade/deployment-progressing.png" alt-text="Screenshot showing the progress of the deployment initiated to perform the major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/deployment-progressing.png":::
 
-10. Select **Operation details** if you want to see more information about the upgrade process.
+1. When the upgrade finishes, you select the **Go to resource** button to validate your upgrade.
 
-    :::image type="content" source="media/how-to-perform-major-version-upgrade/operation-details.png" alt-text="Screenshot showing how access the operation details of a successful deployment of a major version upgrade." lightbox="media/how-to-perform-major-version-upgrade/operation-details.png":::
+    :::image type="content" source="media/how-to-perform-major-version-upgrade/deployment-completed.png" alt-text="Screenshot showing the Go to resource button, through which you can access the Overview page of the upgraded Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/deployment-completed.png":::
 
-11. Then, you can select the **Go to resource** button to validate your upgrade.
-
-    :::image type="content" source="media/how-to-perform-major-version-upgrade/go-to-resource.png" alt-text="Screenshot showing the Go to resource button, through which you can access the Overview page of the upgraded Azure Database for PostgreSQL flexible server." lightbox="media/how-to-perform-major-version-upgrade/go-to-resource.png":::
-
-12. Observe that the name of the server remains unchanged.
+1. The name of the server remains unchanged.
 
     :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the name of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-name.png":::
 
-13. Notice that the version of PostgreSQL is upgraded to the major version you selected as target. The minor version corresponds to the most recent minor version supported by Azure Database for PostgreSQL flexible server at the time of the upgrade.
+1. The version of PostgreSQL is upgraded to the major version you selected as target. The minor version corresponds to the most recent minor version supported by Azure Database for PostgreSQL flexible server at the time of the upgrade.
 
     :::image type="content" source="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png" alt-text="Screenshot showing the Overview page of the upgraded Azure Database for PostgreSQL flexible server, after major version upgrade, highlighting the version of the server." lightbox="media/how-to-perform-major-version-upgrade/upgrade-verification-server-version.png":::
 
 ### [CLI](#tab/cli-major-version-upgrade)
 
-You can upgrade the major version via the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade).
+You can upgrade the major version by using the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade) command.
 
 ```azurecli-interactive
 az postgres flexible-server upgrade \

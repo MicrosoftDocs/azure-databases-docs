@@ -1,8 +1,8 @@
 ---
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 06/30/2026
 ms.service: azure-horizondb
 ms.topic: include
 ms.custom:
@@ -15,14 +15,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## address_standardizer_data_us
 
@@ -30,14 +23,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## age
 
@@ -45,48 +31,17 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
 | 17 | 1.6.0 <sup>*</sup> |
-| 16 | 1.6.0 <sup>*</sup> |
-| 15 | 1.5.0 <sup>*</sup> |
-| 14 | 1.5.0 <sup>*</sup> |
-| 13 | 1.5.0 <sup>*</sup> |
-| 12 | Not supported |
-| 11 | Not supported |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## amcheck
 
-[amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity.
+[amcheck](https://www.postgresql.org/docs/17/amcheck.html) provides functions for verifying relation integrity.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.5 |
 | 17 | 1.4 |
-| 16 | 1.3 |
-| 15 | 1.3 |
-| 14 | 1.3 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.1 |
-
-## anon
-
-[anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.4.0 <sup>*</sup> |
-| 17 | 2.4.0 <sup>*</sup> |
-| 16 | 2.4.0 <sup>*</sup> |
-| 15 | 2.4.0 <sup>*</sup> |
-| 14 | 2.4.0 <sup>*</sup> |
-| 13 | 2.4.0 <sup>*</sup> |
-| 12 | 1.3.2 <sup>*</sup> |
-| 11 | 1.3.2 <sup>*</sup> |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## auto_explain
 
@@ -94,14 +49,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Without version <sup>*</sup> |
 | 17 | Without version <sup>*</sup> |
-| 16 | Without version <sup>*</sup> |
-| 15 | Without version <sup>*</sup> |
-| 14 | Without version <sup>*</sup> |
-| 13 | Without version <sup>*</sup> |
-| 12 | Without version <sup>*</sup> |
-| 11 | Without version <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -111,7 +59,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 17 | 2.2.0 |
+| 17 | 2.2.1 |
 
 ## azure_storage
 
@@ -119,14 +67,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.7 <sup>*</sup> |
-| 17 | 1.7 <sup>*</sup> |
-| 16 | 1.7 <sup>*</sup> |
-| 15 | 1.7 <sup>*</sup> |
-| 14 | 1.7 <sup>*</sup> |
-| 13 | 1.7 <sup>*</sup> |
-| 12 | 1.6 <sup>*</sup> |
-| 11 | Not supported |
+| 17 | 1.9 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -136,14 +77,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
 | 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 ## btree_gin
 
@@ -151,14 +85,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.3 |
 | 17 | 1.3 |
-| 16 | 1.3 |
-| 15 | 1.3 |
-| 14 | 1.3 |
-| 13 | 1.3 |
-| 12 | 1.3 |
-| 11 | 1.3 |
 
 ## btree_gist
 
@@ -166,14 +93,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.8 |
 | 17 | 1.7 |
-| 16 | 1.7 |
-| 15 | 1.7 |
-| 14 | 1.6 |
-| 13 | 1.5 |
-| 12 | 1.5 |
-| 11 | 1.5 |
 
 ## citext
 
@@ -181,31 +101,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.8 |
 | 17 | 1.6 |
-| 16 | 1.6 |
-| 15 | 1.6 |
-| 14 | 1.6 |
-| 13 | 1.6 |
-| 12 | 1.6 |
-| 11 | 1.5 |
-
-## credcheck
-
-[credcheck](https://github.com/HexaCluster/credcheck) provides few general credential checks, which will be evaluated during the user creation, during the password change and user renaming.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 3.0.0 <sup>*</sup> |
-| 17 | 3.0.0 <sup>*</sup> |
-| 16 | 3.0.0 <sup>*</sup> |
-| 15 | 3.0.0 <sup>*</sup> |
-| 14 | 3.0.0 <sup>*</sup> |
-| 13 | 3.0.0 <sup>*</sup> |
-| 12 | Not supported |
-| 11 | Not supported |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## cube
 
@@ -213,14 +109,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.5 |
 | 17 | 1.5 |
-| 16 | 1.5 |
-| 15 | 1.5 |
-| 14 | 1.5 |
-| 13 | 1.4 |
-| 12 | 1.4 |
-| 11 | 1.4 |
 
 ## dblink
 
@@ -228,14 +117,7 @@ ms.custom:
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
 
 Read the special considerations for extension [dblink](../concepts-extensions-considerations.md#dblink) in Azure HorizonDB.
 
@@ -245,14 +127,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
 | 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 ## dict_xsyn
 
@@ -260,14 +135,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
 | 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 ## earthdistance
 
@@ -275,14 +143,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
 
 ## fuzzystrmatch
 
@@ -290,29 +151,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
-
-## hll
-
-[hll](https://github.com/citusdata/postgresql-hll) introduces a new data type hll which is a HyperLogLog data structure.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.18 |
-| 17 | 2.18 |
-| 16 | 2.18 |
-| 15 | 2.18 |
-| 14 | 2.18 |
-| 13 | 2.18 |
-| 12 | 2.18 |
-| 11 | Not supported |
 
 ## hstore
 
@@ -320,14 +159,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.8 |
 | 17 | 1.8 |
-| 16 | 1.8 |
-| 15 | 1.8 |
-| 14 | 1.8 |
-| 13 | 1.7 |
-| 12 | 1.6 |
-| 11 | 1.5 |
 
 ## hypopg
 
@@ -335,14 +167,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.4.1 |
 | 17 | 1.4.1 |
-| 16 | 1.4.0 |
-| 15 | 1.4.0 |
-| 14 | 1.4.0 |
-| 13 | 1.4.0 |
-| 12 | 1.4.0 |
-| 11 | 1.4.0 |
 
 ## intagg
 
@@ -350,14 +175,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.1 |
 | 17 | 1.1 |
-| 16 | 1.1 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
 
 ## intarray
 
@@ -365,29 +183,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.5 |
 | 17 | 1.5 |
-| 16 | 1.5 |
-| 15 | 1.5 |
-| 14 | 1.5 |
-| 13 | 1.3 |
-| 12 | 1.2 |
-| 11 | 1.2 |
-
-## ip4r
-
-[ip4r](https://github.com/RhodiumToad/ip4r) provides a set of data types for IPv4 and IPv6 network addresses.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.4 |
-| 17 | 2.4 |
-| 16 | 2.4 |
-| 15 | 2.4 |
-| 14 | 2.4 |
-| 13 | 2.4 |
-| 12 | Not supported |
-| 11 | Not supported |
 
 ## isn
 
@@ -395,14 +191,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.3 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
 
 ## lo
 
@@ -410,29 +199,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.1 |
-| 16 | 1.1 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
-
-## login_hook
-
-[login_hook](https://github.com/splendiddata/login_hook) is a hook to execute `login_hook.login()` at login time.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.5 |
-| 17 | 1.5 |
-| 16 | 1.5 |
-| 15 | 1.4 |
-| 14 | 1.4 |
-| 13 | 1.4 |
-| 12 | 1.4 |
-| 11 | 1.4 |
 
 ## ltree
 
@@ -440,29 +207,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.3 |
 | 17 | 1.3 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.1 |
-| 11 | 1.1 |
-
-## oracle_fdw
-
-[oracle_fdw](https://github.com/laurenz/oracle_fdw) is a foreign data wrapper for Oracle databases.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.2 |
-| 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | Not supported |
 
 ## orafce
 
@@ -470,14 +215,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 4.16 |
-| 17 | 4.16 |
-| 16 | 4.16 |
-| 15 | 4.16 |
-| 14 | 4.16 |
-| 13 | 3.18 |
-| 12 | 3.18 |
-| 11 | 3.18 |
+| 17 | 4.9 |
 
 ## pageinspect
 
@@ -485,14 +223,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.13 |
 | 17 | 1.12 |
-| 16 | 1.12 |
-| 15 | 1.11 |
-| 14 | 1.9 |
-| 13 | 1.8 |
-| 12 | 1.7 |
-| 11 | 1.7 |
 
 ## pgaudit
 
@@ -500,14 +231,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 18.0 <sup>*</sup> |
 | 17 | 16.0 <sup>*</sup> |
-| 16 | 16.0 <sup>*</sup> |
-| 15 | 1.7 <sup>*</sup> |
-| 14 | 1.6.2 <sup>*</sup> |
-| 13 | 1.5 <sup>*</sup> |
-| 12 | 1.4.3 <sup>*</sup> |
-| 11 | 1.3.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -517,14 +241,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.6 |
 | 17 | 1.5 |
-| 16 | 1.4 |
-| 15 | 1.3 |
-| 14 | 1.3 |
-| 13 | 1.3 |
-| 12 | 1.3 |
-| 11 | 1.3 |
 
 Read the special considerations for extension [pg_buffercache](../concepts-extensions-considerations.md#pg_buffercache) in Azure HorizonDB.
 
@@ -534,14 +251,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.6 <sup>*</sup> |
 | 17 | 1.6 <sup>*</sup> |
-| 16 | 1.6 <sup>*</sup> |
-| 15 | 1.6 <sup>*</sup> |
-| 14 | 1.6 <sup>*</sup> |
-| 13 | 1.6 <sup>*</sup> |
-| 12 | 1.6 <sup>*</sup> |
-| 11 | 1.6 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in Azure HorizonDB.
@@ -552,14 +262,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.4 |
 | 17 | 1.3 |
-| 16 | 1.3 |
-| 15 | 1.3 |
-| 14 | 1.3 |
-| 13 | 1.3 |
-| 12 | 1.3 |
-| 11 | 1.3 |
 
 ## pg_diskann
 
@@ -567,31 +270,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported |
-| 17 | 0.6.4 |
-| 16 | 0.6.4 |
-| 15 | 0.6.4 |
-| 14 | 0.6.4 |
-| 13 | Not supported |
-| 12 | Not supported |
-| 11 | Not supported |
-
-## pg_duckdb
-
-[pg_duckdb](https://github.com/duckdb/pg_duckdb) (Preview) integrates DuckDB columnar-vectorized analytics engine into PostgreSQL, enabling high-performance analytics and data-intensive applications.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.0.0 <sup>*</sup> |
-| 17 | 1.0.0 <sup>*</sup> |
-| 16 | 1.0.0 <sup>*</sup> |
-| 15 | 1.0.0 <sup>*</sup> |
-| 14 | 1.0.0 <sup>*</sup> |
-| 13 | Not supported |
-| 12 | Not supported |
-| 11 | Not supported |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+| 17 | 0.7.1 |
 
 ## pg_failover_slots
 
@@ -599,14 +278,7 @@ Read the special considerations for extension [pg_cron](../concepts-extensions-c
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | Not supported <sup>*</sup> |
 | 17 | Not supported <sup>*</sup> |
-| 16 | 1.0.1 <sup>*</sup> |
-| 15 | 1.0.1 <sup>*</sup> |
-| 14 | 1.0.1 <sup>*</sup> |
-| 13 | 1.0.1 <sup>*</sup> |
-| 12 | 1.0.1 <sup>*</sup> |
-| 11 | 1.0.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in Azure HorizonDB.
@@ -617,32 +289,7 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.3 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
-
-## pg_hint_plan
-
-[pg_hint_plan](https://github.com/ossc-db/pg_hint_plan) makes it possible to tweak PostgreSQL execution plans using so-called hints in SQL comments.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.8.0 <sup>*</sup> |
-| 17 | 1.7.0 <sup>*</sup> |
-| 16 | 1.6.0 <sup>*</sup> |
-| 15 | 1.5 <sup>*</sup> |
-| 14 | 1.4 <sup>*</sup> |
-| 13 | 1.3.7 <sup>*</sup> |
-| 12 | 1.3.7 <sup>*</sup> |
-| 11 | 1.3.7 <sup>*</sup> |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
-Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in Azure HorizonDB.
 
 ## pglogical
 
@@ -650,14 +297,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 2.4.6 <sup>*</sup> |
 | 17 | 2.4.5 <sup>*</sup> |
-| 16 | 2.4.4 <sup>*</sup> |
-| 15 | 2.4.2 <sup>*</sup> |
-| 14 | 2.4.1 <sup>*</sup> |
-| 13 | 2.4.1 <sup>*</sup> |
-| 12 | 2.4.1 <sup>*</sup> |
-| 11 | 2.4.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -667,14 +307,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 5.3.1 <sup>*</sup> |
-| 17 | 5.3.1 <sup>*</sup> |
-| 16 | 5.3.1 <sup>*</sup> |
-| 15 | 4.7.1 <sup>*</sup> |
-| 14 | 4.6.1 <sup>*</sup> |
-| 13 | 4.5.0 <sup>*</sup> |
-| 12 | 4.5.0 <sup>*</sup> |
-| 11 | 4.5.0 <sup>*</sup> |
+| 17 | 5.0.1 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -684,14 +317,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 5.0.1 <sup>*</sup> |
 | 17 | 5.0.1 <sup>*</sup> |
-| 16 | 5.0.1 <sup>*</sup> |
-| 15 | 4.7.1 <sup>*</sup> |
-| 14 | 4.6.1 <sup>*</sup> |
-| 13 | 4.5.0 <sup>*</sup> |
-| 12 | 4.5.0 <sup>*</sup> |
-| 11 | 4.5.0 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
@@ -701,14 +327,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 <sup>*</sup> |
 | 17 | 1.2 <sup>*</sup> |
-| 16 | 1.2 <sup>*</sup> |
-| 15 | 1.2 <sup>*</sup> |
-| 14 | 1.2 <sup>*</sup> |
-| 13 | 1.2 <sup>*</sup> |
-| 12 | 1.2 <sup>*</sup> |
-| 11 | 1.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in Azure HorizonDB.
@@ -719,35 +338,9 @@ Read the special considerations for extension [pg_prewarm](../concepts-extension
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.4.7 |
 | 17 | 1.5.1 |
-| 16 | 1.5.1 |
-| 15 | 1.5.1 |
-| 14 | 1.5.1 |
-| 13 | 1.5.1 |
-| 12 | 1.4.7 |
-| 11 | 1.4.7 |
 
 Read the special considerations for extension [pg_repack](../concepts-extensions-considerations.md#pg_repack) in Azure HorizonDB.
-
-<a id="pgrouting"></a>
-
-<a id="pgrouting"></a>
-
-## pgrout
-
-[pgrouting](https://pgrouting.org/) provides geospatial routing functionality.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 3.8.0 |
-| 17 | 3.8.0 |
-| 16 | 3.8.0 |
-| 15 | 3.5.0 |
-| 14 | 3.3.0 |
-| 13 | 3.3.0 |
-| 12 | 3.3.0 |
-| 11 | 3.3.0 |
 
 ## pgrowlocks
 
@@ -755,31 +348,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
-
-## pg_squeeze
-
-[pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) removes unused space from a relation.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.9 <sup>*</sup> |
-| 17 | 1.9 <sup>*</sup> |
-| 16 | 1.9 <sup>*</sup> |
-| 15 | 1.9 <sup>*</sup> |
-| 14 | 1.9 <sup>*</sup> |
-| 13 | 1.9 <sup>*</sup> |
-| 12 | 1.5 <sup>*</sup> |
-| 11 | 1.5 <sup>*</sup> |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 
 ## pg_stat_statements
 
@@ -787,14 +356,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.12 <sup>*</sup> |
 | 17 | 1.11 <sup>*</sup> |
-| 16 | 1.10 <sup>*</sup> |
-| 15 | 1.10 <sup>*</sup> |
-| 14 | 1.9 <sup>*</sup> |
-| 13 | 1.8 <sup>*</sup> |
-| 12 | 1.7 <sup>*</sup> |
-| 11 | 1.6 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
 Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in Azure HorizonDB.
@@ -805,14 +367,7 @@ Read the special considerations for extension [pg_stat_statements](../concepts-e
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.5 |
 | 17 | 1.5 |
-| 16 | 1.5 |
-| 15 | 1.5 |
-| 14 | 1.5 |
-| 13 | 1.5 |
-| 12 | 1.5 |
-| 11 | 1.5 |
 
 Read the special considerations for extension [pgstattuple](../concepts-extensions-considerations.md#pgstattuple) in Azure HorizonDB.
 
@@ -822,14 +377,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.6 |
 | 17 | 1.6 |
-| 16 | 1.6 |
-| 15 | 1.6 |
-| 14 | 1.6 |
-| 13 | 1.5 |
-| 12 | 1.4 |
-| 11 | 1.4 |
 
 ## pg_visibility
 
@@ -837,44 +385,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
-
-## plpgsql
-
-[plpgsql](https://www.postgresql.org/docs/current/plpgsql.html) pL/pgSQL is a SQL procedural language.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.0 |
-| 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
-
-## plv8
-
-[plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 3.1.10 |
-| 17 | 3.1.7 |
-| 16 | 3.1.7 |
-| 15 | 3.1.7 |
-| 14 | 3.0.0 |
-| 13 | 3.0.0 |
-| 12 | 3.0.0 |
-| 11 | 3.0.0 |
 
 ## postgis
 
@@ -882,14 +393,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## postgis_raster
 
@@ -897,14 +401,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## postgis_sfcgal
 
@@ -912,14 +409,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## postgis_tiger_geocoder
 
@@ -927,14 +417,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## postgis_topology
 
@@ -942,14 +425,7 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 3.6.1 |
 | 17 | 3.5.2 |
-| 16 | 3.5.2 |
-| 15 | 3.5.2 |
-| 14 | 3.5.2 |
-| 13 | 3.5.2 |
-| 12 | 3.2.3 |
-| 11 | 3.2.3 |
 
 ## postgres_fdw
 
@@ -957,61 +433,9 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.1 |
-| 16 | 1.1 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 Read the special considerations for extension [postgres_fdw](../concepts-extensions-considerations.md#postgres_fdw) in Azure HorizonDB.
-
-## postgres_protobuf
-
-[postgres_protobuf](https://github.com/mpartel/postgres-protobuf) provides protocol buffers for PostgreSQL.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 0.2 |
-| 17 | 0.2 |
-| 16 | 0.2 |
-| 15 | 0.2 |
-| 14 | 0.2 |
-| 13 | 0.2 |
-| 12 | 0.2 |
-| 11 | Not supported |
-
-## semver
-
-[semver](https://pgxn.org/dist/semver/doc/semver.html) provides a semantic version data type.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 0.41.0 |
-| 17 | 0.41.0 |
-| 16 | 0.41.0 |
-| 15 | 0.32.0 |
-| 14 | 0.32.0 |
-| 13 | 0.32.0 |
-| 12 | 0.32.0 |
-| 11 | 0.32.0 |
-
-## session_variable
-
-[session_variable](https://github.com/splendiddata/session_variable) provides registration and manipulation of session variables and constants.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 3.4 |
-| 17 | 3.4 |
-| 16 | 3.4 |
-| 15 | 3.4 |
-| 14 | 3.4 |
-| 13 | 3.4 |
-| 12 | 3.3 |
-| 11 | 3.3 |
 
 ## sslinfo
 
@@ -1019,14 +443,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.2 |
 | 17 | 1.2 |
-| 16 | 1.2 |
-| 15 | 1.2 |
-| 14 | 1.2 |
-| 13 | 1.2 |
-| 12 | 1.2 |
-| 11 | 1.2 |
 
 ## tablefunc
 
@@ -1034,91 +451,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
 | 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
-
-## tdigest
-
-[tdigest](https://github.com/tvondra/tdigest) implements t-digest, a data structure for on-line accumulation of rank-based statistics such as quantiles and trimmed means.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.4.3 |
-| 17 | 1.4.3 |
-| 16 | 1.4.3 |
-| 15 | 1.4.3 |
-| 14 | 1.4.2 |
-| 13 | 1.4.2 |
-| 12 | 1.4.2 |
-| 11 | Not supported |
-
-## tds_fdw
-
-[tds_fdw](https://github.com/tds-fdw/tds_fdw) is a foreign data wrapper for querying a TDS database (SAP ASE or SQL Server).
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.0.4 |
-| 17 | 2.0.3 |
-| 16 | 2.0.3 |
-| 15 | 2.0.3 |
-| 14 | 2.0.3 |
-| 13 | 2.0.3 |
-| 12 | 2.0.3 |
-| 11 | 2.0.3 |
-
-## timescaledb
-
-[timescaledb](https://github.com/timescale/timescaledb) enables scalable inserts and complex queries for time-series data.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.24.0 <sup>*</sup> |
-| 17 | 2.24.0 <sup>*</sup> |
-| 16 | 2.24.0 <sup>*</sup> |
-| 15 | 2.24.0 <sup>*</sup> |
-| 14 | 2.15.3 <sup>*</sup> |
-| 13 | 2.15.3 <sup>*</sup> |
-| 12 | 2.10.0 <sup>*</sup> |
-| 11 | 1.7.4 <sup>*</sup> |
-
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
-
-## topn
-
-[topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 2.7.0 |
-| 17 | 2.7.0 |
-| 16 | 2.7.0 |
-| 15 | 2.7.0 |
-| 14 | 2.7.0 |
-| 13 | 2.7.0 |
-| 12 | Not supported |
-| 11 | Not supported |
-
-## tsm_system_rows
-
-[tsm_system_rows](https://www.postgresql.org/docs/13/tsm-system-rows.html) is a `TABLESAMPLE` method which accepts number of rows as a limit.
-
-| PostgreSQL version | Extension or module version |
-| --- | --- |
-| 18 | 1.0 |
-| 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 ## tsm_system_time
 
@@ -1126,14 +459,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
 | 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
-| 13 | 1.0 |
-| 12 | 1.0 |
-| 11 | 1.0 |
 
 ## unaccent
 
@@ -1141,14 +467,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.1 |
 | 17 | 1.1 |
-| 16 | 1.1 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
 
 ## uuid-ossp
 
@@ -1156,14 +475,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.1 |
 | 17 | 1.1 |
-| 16 | 1.1 |
-| 15 | 1.1 |
-| 14 | 1.1 |
-| 13 | 1.1 |
-| 12 | 1.1 |
-| 11 | 1.1 |
 
 ## vector
 
@@ -1171,14 +483,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 0.8.1 |
 | 17 | 0.8.0 |
-| 16 | 0.8.0 |
-| 15 | 0.8.0 |
-| 14 | 0.8.0 |
-| 13 | 0.8.0 |
-| 12 | 0.7.0 |
-| 11 | 0.5.1 |
 
 ## wal2json
 
@@ -1186,13 +491,6 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 2.6 <sup>*</sup> |
 | 17 | 2.6 <sup>*</sup> |
-| 16 | 2.4 <sup>*</sup> |
-| 15 | 2.4 <sup>*</sup> |
-| 14 | 2.2 <sup>*</sup> |
-| 13 | 2.2 <sup>*</sup> |
-| 12 | 2.2 <sup>*</sup> |
-| 11 | 2.2 <sup>*</sup> |
 
 <sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.

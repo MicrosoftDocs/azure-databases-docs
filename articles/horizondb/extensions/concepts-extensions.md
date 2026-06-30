@@ -1,8 +1,8 @@
 ---
 title: Extensions and Modules in Azure HorizonDB
 description: Learn about extensions and modules in an Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb

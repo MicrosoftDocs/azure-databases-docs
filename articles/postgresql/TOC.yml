@@ -813,6 +813,8 @@
       items:
         - name: Overview
           href: parameters/concepts-parameters.md
+        - name: Adaptive Autovacuum
+          href: parameters/parameters-adaptive-autovacuum.md?pivots=postgresql-18
         - name: Autonomous Tuning
           href: parameters/parameters-autonomous-tuning.md?pivots=postgresql-18
         - name: Autovacuum

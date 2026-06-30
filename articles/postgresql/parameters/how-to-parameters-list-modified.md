@@ -4,7 +4,7 @@ description: This article describes how to list all parameters with modified def
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 02/03/2025
+ms.date: 06/26/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
@@ -21,19 +21,19 @@ This article provides step-by-step instructions to list all parameters with modi
 
 Using the [Azure portal](https://portal.azure.com):
 
-1. Select your Azure Database for PostgreSQL flexible server instance.
+1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under **Settings**, select **Parameters**.
+1. In the resource menu, under the **Settings** section, select **Parameters**.
 
-    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot that shows the Parameters menu option." lightbox="./media/how-to-configure-parameters/parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/parameters.png" alt-text="Screenshot showing the Parameters page." lightbox="./media/how-to-configure-parameters/parameters.png":::
 
-3. Select the **Modified** tab. The page shows a list of parameters whose currently set value deviates from the default.
+1. Select the **Modified** tab. The page shows a list of parameters whose currently set value deviates from the default.
 
-    :::image type="content" source="./media/how-to-configure-parameters/modified-parameters.png" alt-text="Screenshot that shows the list of modified parameters." lightbox="./media/how-to-configure-parameters/modified-parameters.png":::
+    :::image type="content" source="./media/how-to-configure-parameters/modified-parameters.png" alt-text="Screenshot showing the list of modified parameters." lightbox="./media/how-to-configure-parameters/modified-parameters.png":::
 
 ### [CLI](#tab/cli-list-modified)
 
-You can list all parameters whose values are modified from defaults, via the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command.
+Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters whose values are modified from defaults.
 
 ```azurecli-interactive
 az postgres flexible-server parameter list \
@@ -43,7 +43,7 @@ az postgres flexible-server parameter list \
 ```
 
 > [!NOTE]  
-> Previous CLI command doesn't consider modified parameters the ones which are designated as read-only, `temp_tablespaces`, and  `vacuum_cost_page_miss`, following the exact same criteria as the **Parameters** page in the Azure portal.
+> The previous CLI command doesn't consider parameters as modified if they're designated as read-only, `temp_tablespaces`, and  `vacuum_cost_page_miss`. It follows the exact same criteria as the **Parameters** page in the Azure portal.
 
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Access Management in Azure HorizonDB
 description: Learn how to manage access permissions using roles in Azure HorizonDB.
-author: denzilribeiro
-ms.author: denzilr
+author: DDL-PM
+ms.author: ludingding
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
