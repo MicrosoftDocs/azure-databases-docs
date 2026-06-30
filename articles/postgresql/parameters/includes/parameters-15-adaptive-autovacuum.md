@@ -1,0 +1,42 @@
+---
+author: nachoalonsoportillo
+ms.author: ialonso
+ms.reviewer: maghan
+ms.date: 06/29/2026
+ms.service: azure-database-postgresql
+ms.topic: include
+ms.custom: automatically generated
+---
+### adaptive_autovacuum.open_transaction_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Specifies the timeout, in seconds, before an orphan transaction is rolled back and before a long running transaction is terminated. |
+| Data type | integer |
+| Default value | `0` |
+| Allowed values | `0-2147483` |
+| Parameter type | dynamic |
+| Documentation | [adaptive_autovacuum.open_transaction_threshold](https://go.microsoft.com/fwlink/?linkid=2328503) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### adaptive_autovacuum.optimize_configurations
+
+| Attribute | Value |
+| --- | --- |
+| Category | Adaptive Autovacuum |
+| Description | Configures parameter tuning as disabled ('OFF') or enabled to tune and update autovacuum parameters. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | static |
+| Documentation | [adaptive_autovacuum.optimize_configurations](https://go.microsoft.com/fwlink/?linkid=2328503) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
