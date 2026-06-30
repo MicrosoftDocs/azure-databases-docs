@@ -4,7 +4,7 @@ description: This article describes the adaptive autovacuum feature in Azure Dat
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/21/2026
+ms.date: 06/30/2026
 ms.service: azure-database-postgresql
 ms.subservice: monitoring
 ms.topic: concept-article
@@ -95,7 +95,7 @@ Both controls are subject to the following requirements:
 - PostgreSQL isn't in recovery mode.
 - Compute of the server has a minimum of 4 vCores.
 - The server is a regular flexible server, not an elastic cluster. The feature isn't supported on elastic clusters.
-- `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 11.
+- `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 14.
 - `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
 - The adaptive autovacuum feature is currently supported on servers deployed in the following regions: Canada Central, East Asia, and West Central US.
 
