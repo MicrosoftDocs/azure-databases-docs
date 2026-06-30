@@ -287,7 +287,7 @@ If the configuration of those parameters and the available resources on the serv
 
 ### Use a temporary tablespace for large datasets
 
-For very large datasets (> 3M rows), the index build can need more temporary space than the default location provides. Building the index in the `temptablespace` tablespace gives the build access to more scratch space that scales with your instance size, which helps the build complete reliably.
+For very large datasets (more than 3 million rows), the index build might need more temporary space than the default location provides. If you build the index in the `temptablespace` tablespace, the build process gets more scratch space that scales with your instance size. This extra space helps the build complete reliably.
 
 Add the `TABLESPACE temptablespace` clause to your `CREATE INDEX` statement:
 
