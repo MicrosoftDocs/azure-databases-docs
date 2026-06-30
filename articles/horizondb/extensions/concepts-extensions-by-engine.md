@@ -1,8 +1,8 @@
 ---
 title: List of the PostgreSQL Extensions and Modules in Azure HorizonDB
 description: The following extensions and modules, organized by version of PostgreSQL, are available in an Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan, randolphwest
 ms.date: 06/02/2026
 ms.service: azure-horizondb

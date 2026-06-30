@@ -1,8 +1,8 @@
 ---
 title: Quickstart Examples for Azure Storage Extension in Azure HorizonDB
 description: Learn how to use the Azure Storage extension in Azure HorizonDB to import and export data.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
