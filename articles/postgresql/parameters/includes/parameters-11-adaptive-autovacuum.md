@@ -2,10 +2,10 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/11/2026
+ms.date: 06/29/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
 ---
 > [!NOTE]
-> Azure Database for PostgreSQL Flexible Server 18 does not have any parameter in the 'Intelligent Tuning' category.
+> Azure Database for PostgreSQL Flexible Server 11 does not have any parameter in the 'Adaptive Autovacuum' category.

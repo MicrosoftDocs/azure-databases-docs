@@ -576,7 +576,7 @@ ms.custom: automatically generated
 | Description | Specifies which extensions are allowed to be created in the server. |
 | Data type | set |
 | Default value | |
-| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_ivm,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plv8,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,semver,session_variable,sslinfo,tablefunc,temporal_tables,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
+| Allowed values | `address_standardizer,address_standardizer_data_us,age,amcheck,anon,azure_ai,azure_storage,bloom,btree_gin,btree_gist,citext,credcheck,cube,dblink,dict_int,dict_xsyn,earthdistance,fuzzystrmatch,hll,hstore,hypopg,intagg,intarray,ip4r,isn,lo,login_hook,ltree,oracle_fdw,orafce,pageinspect,pg_buffercache,pg_cron,pg_diskann,pg_duckdb,pg_freespacemap,pg_hint_plan,pg_ivm,pg_partman,pg_prewarm,pg_repack,pg_squeeze,pg_stat_statements,pg_trgm,pg_visibility,pgaudit,pgcrypto,pglogical,pgrouting,pgrowlocks,pgstattuple,plpgsql,plpgsql_check,plv8,pointcloud,postgis,postgis_raster,postgis_sfcgal,postgis_tiger_geocoder,postgis_topology,postgres_fdw,postgres_protobuf,rdkit,semver,session_variable,sslinfo,tablefunc,temporal_tables,tdigest,tds_fdw,timescaledb,topn,tsm_system_rows,tsm_system_time,unaccent,uuid-ossp,vector` |
 | Parameter type | dynamic |
 | Documentation | [azure.extensions](https://go.microsoft.com/fwlink/?linkid=2274269) |
 
@@ -1698,8 +1698,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB). |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
+| Allowed values | `1024-688128` |
+| Parameter type | static |
 | Documentation | [duckdb.max_memory](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -1732,8 +1732,8 @@ ms.custom: automatically generated
 | Description | The maximum memory DuckDB can use (e.g., 1GB), alias for duckdb.max_memory |
 | Data type | integer |
 | Default value | `1024` |
-| Allowed values | `1024` |
-| Parameter type | read-only |
+| Allowed values | `1024-688128` |
+| Parameter type | static |
 | Documentation | [duckdb.memory_limit](https://github.com/duckdb/pg_duckdb) |
 
 
@@ -2523,6 +2523,380 @@ ms.custom: automatically generated
 
 
 
+### plpgsql_check.compatibility_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, compatibility warnings are shown. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.compatibility_warnings](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.constants_tracing
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, variables with constant value can be used like constants. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.constants_tracing](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.cursors_leaks
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, detection of unclosed cursors is active. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.cursors_leaks](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.cursors_leaks_errlevel
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the error level for detection of unclosed cursors. |
+| Data type | enumeration |
+| Default value | `warning` |
+| Allowed values | `notice,warning,error` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.cursors_leaks_errlevel](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.enable_tracer
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, tracer functionality is available. Must be set by superuser. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `off` |
+| Parameter type | read-only |
+| Documentation | [plpgsql_check.enable_tracer](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.fatal_errors
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, plpgsql_check stops execution on the first detected error. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.fatal_errors](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.mode
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Choose a mode for enhanced checking. |
+| Data type | enumeration |
+| Default value | `by_function` |
+| Allowed values | `disabled,by_function,fresh_start,every_start` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.mode](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.profiler
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, function execution profile is updated. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.profiler](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.profiler_max_shared_chunks
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum number of statement chunks stored in shared memory for the profiler. |
+| Data type | integer |
+| Default value | `15000` |
+| Allowed values | `50-100000` |
+| Parameter type | static |
+| Documentation | [plpgsql_check.profiler_max_shared_chunks](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.regress_test_mode
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Reduces volatile output for regression testing. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.regress_test_mode](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.show_nonperformance_extra_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, extra warnings (except performance) are shown. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.show_nonperformance_extra_warnings](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.show_nonperformance_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, warnings (except performance warnings) are shown. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.show_nonperformance_warnings](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.show_performance_warnings
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, performance warnings are shown. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.show_performance_warnings](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.strict_cursors_leaks
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, detection of unclosed cursors is executed immediately when function is finished. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.strict_cursors_leaks](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.trace_assert
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, ASSERT statements are traced. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.trace_assert](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.trace_assert_verbosity
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the verbosity of trace ASSERT statement output. |
+| Data type | enumeration |
+| Default value | `default` |
+| Allowed values | `terse,default,verbose` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.trace_assert_verbosity](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, functions are traced. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer_errlevel
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the error level for tracer messages. |
+| Data type | enumeration |
+| Default value | `notice` |
+| Allowed values | `debug5,debug4,debug3,debug2,debug1,info,notice,log` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer_errlevel](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer_show_nsubxids
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, the tracer shows number of current subtransaction IDs. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer_show_nsubxids](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer_test_mode
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | When enabled, output of tracer is in regression test compatible format. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer_test_mode](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer_variable_max_length
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Maximum output length of content of variables in bytes. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `10-2048` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer_variable_max_length](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### plpgsql_check.tracer_verbosity
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Sets the verbosity of the tracer. |
+| Data type | enumeration |
+| Default value | `default` |
+| Allowed values | `terse,default,verbose` |
+| Parameter type | dynamic |
+| Documentation | [plpgsql_check.tracer_verbosity](https://github.com/okbob/plpgsql_check/blob/master/README.md) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
 ### postgis.gdal_enabled_drivers
 
 | Attribute | Value |
@@ -2534,6 +2908,397 @@ ms.custom: automatically generated
 | Allowed values | `DISABLE_ALL,ENABLE_ALL` |
 | Parameter type | dynamic |
 | Documentation | [postgis.gdal_enabled_drivers](https://postgis.net/docs/postgis_gdal_enabled_drivers.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.agent_FP_bit_ratio
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Allow to weight the impact of agents contained in a chemical reaction fingerprint. |
+| Data type | numeric |
+| Default value | `0.2` |
+| Allowed values | `0.0-3.0` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.agent_FP_bit_ratio](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.avalon_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of avalon fingerprints. |
+| Data type | integer |
+| Default value | `512` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.avalon_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.dice_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Lower threshold of Dice similarity. |
+| Data type | numeric |
+| Default value | `0.5` |
+| Allowed values | `0.0-1.0` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.dice_threshold](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.difference_FP_weight_agents
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | In reaction difference fingerprints weight factor for agents compared to reactants and products. |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `-10-10` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.difference_FP_weight_agents](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.difference_FP_weight_nonagents
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | In reaction difference fingerprints weight factor for reactants and products compared to agents. |
+| Data type | integer |
+| Default value | `10` |
+| Allowed values | `1-20` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.difference_FP_weight_nonagents](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.do_chiral_sss
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Should stereochemistry be taken into account in substructure matching. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.do_chiral_sss](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.do_enhanced_stereo_sss
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Should enhanced stereochemistry be taken into account in substructure matching. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.do_enhanced_stereo_sss](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.featmorgan_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of featmorgan fingerprints. |
+| Data type | integer |
+| Default value | `512` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.featmorgan_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.hashed_atompair_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of atom pair bit vector fingerprints. |
+| Data type | integer |
+| Default value | `2048` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.hashed_atompair_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.hashed_torsion_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of topological torsion bit vector fingerprints. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.hashed_torsion_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.ignore_reaction_agents
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Should agents of a chemical reaction be taken into account. |
+| Data type | boolean |
+| Default value | `off` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.ignore_reaction_agents](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.init_reaction
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Checks if the reaction is ready for use. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.init_reaction](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.layered_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of layered fingerprints. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.layered_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.morgan_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of morgan fingerprints. |
+| Data type | integer |
+| Default value | `512` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.morgan_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.move_unmmapped_reactants_to_agents
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Should unmapped reactant agents of a chemical reaction be taken into account. |
+| Data type | boolean |
+| Default value | `on` |
+| Allowed values | `on,off` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.move_unmmapped_reactants_to_agents](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.rdkit_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of RDKit fingerprints. |
+| Data type | integer |
+| Default value | `1024` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.rdkit_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.reaction_difference_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of difference chemical reaction fingerprint. |
+| Data type | integer |
+| Default value | `2048` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.reaction_difference_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.reaction_difference_fp_type
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Type of difference chemical reaction fingerprint (1=Atompairs, 2=Topologcal torsion, 3=Morgan2). |
+| Data type | integer |
+| Default value | `1` |
+| Allowed values | `1-3` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.reaction_difference_fp_type](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.reaction_sss_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of structural chemical reaction fingerprint. |
+| Data type | integer |
+| Default value | `4096` |
+| Allowed values | `64-9192` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.reaction_sss_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.reaction_sss_fp_type
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Type of structural chemical reaction fingerprint (1=Atompairs, 2=Topologcal torsion, 3=Morgan2, 4=RDKit, 5=Pattern). |
+| Data type | integer |
+| Default value | `5` |
+| Allowed values | `1-5` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.reaction_sss_fp_type](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.sss_fp_size
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Size (in bits) of the fingerprint used for substructure screening. |
+| Data type | integer |
+| Default value | `2048` |
+| Allowed values | `64-4096` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.sss_fp_size](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.tanimoto_threshold
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Lower threshold of Tanimoto similarity. |
+| Data type | numeric |
+| Default value | `0.5` |
+| Allowed values | `0.0-1.0` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.tanimoto_threshold](https://rdkit.org/docs/Cartridge.html) |
+
+
+[!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
+
+
+### rdkit.threshold_unmapped_reactant_atoms
+
+| Attribute | Value |
+| --- | --- |
+| Category | Customized Options |
+| Description | Set the ratio of allowed unmapped reactant atoms. |
+| Data type | numeric |
+| Default value | `0.2` |
+| Allowed values | `0.0-1.0` |
+| Parameter type | dynamic |
+| Documentation | [rdkit.threshold_unmapped_reactant_atoms](https://rdkit.org/docs/Cartridge.html) |
 
 
 [!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
