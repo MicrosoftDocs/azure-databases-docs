@@ -1,10 +1,10 @@
 ---
 title: List of Extensions and Modules by Name in Azure HorizonDB
 description: The following extensions and modules are available in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 06/30/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: concept-article

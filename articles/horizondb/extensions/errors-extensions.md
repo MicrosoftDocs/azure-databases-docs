@@ -1,8 +1,8 @@
 ---
 title: Possible Errors When Managing Extensions in Azure HorizonDB
 description: This article describes possible errors that can be seen when managing extensions in an Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
@@ -15,7 +15,7 @@ ms.topic: troubleshooting
 
 ## Extension "%s" isn't allow-listed for "azure_pg_admin" users in Azure HorizonDB
 
-This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](how-to-allow-extensions.md), or an extension that isn't supported yet on the zure HorizonDB cluster on which you're running the command.
+This error occurs when you run a `CREATE EXTENSION` or `DROP EXTENSION` command referring to an extension that isn't [allowlisted](how-to-allow-extensions.md), or an extension that isn't supported yet on the Azure HorizonDB cluster on which you're running the command.
 
 ## Only members of "azure_pg_admin" are allowed to use CREATE EXTENSION
 
