@@ -99,7 +99,7 @@ If filtered queries are part of your workload, choose DiskANN. See [Filter your 
 - **HNSW** - Inserts are applied to the graph in place. No rebuild required, but inserts are more expensive than IVFFlat.
 - **DiskANN** - Inserts are applied in place. The index also supports parallel builds and `REINDEX CONCURRENTLY` for one-shot rebuilds.
 
-For large initial loads, build the index after the bulk insert and use `maintenance_work_mem` plus parallel workers to speed up build time. See [Speed up index build](vector-index-diskann.md#speed-up-index-build).
+For large initial loads, build the index after the bulk insert and use `maintenance_work_mem` plus parallel workers to speed up build time. For datasets larger than 3 million rows, also build with the `TABLESPACE temptablespace` clause. See [Speed up index build](vector-index-diskann.md#speed-up-index-build).
 
 ## Migrate between index types
 
