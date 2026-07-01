@@ -1,8 +1,8 @@
 ---
 title: Update Application Client Certificates
 description: Learn about updating Java clients with Azure Database for PostgreSQL flexible server instances using TLS.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 08/08/2025
 ms.service: azure-database-postgresql

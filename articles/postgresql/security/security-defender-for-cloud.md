@@ -1,8 +1,8 @@
 ---
 title: Microsoft Defender for Cloud
 description: Learn how to use Microsoft Defender for Cloud to secure Azure Database for PostgreSQL.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 08/08/2025
 ms.service: azure-database-postgresql

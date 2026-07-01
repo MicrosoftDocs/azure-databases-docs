@@ -1,8 +1,8 @@
 ---
 title: Validate the Client Configuration and Troubleshoot Connection Failures
 description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure Database for PostgreSQL flexible server instances.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan, randolphwest
 ms.date: 01/05/2026
 ms.service: azure-database-postgresql

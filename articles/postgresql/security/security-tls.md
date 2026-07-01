@@ -1,8 +1,8 @@
 ---
 title: "Transport Layer Security (TLS) in Azure Database for PostgreSQL flexible server Overview"
 description: Learn about secure connectivity with an Azure Database for PostgreSQL flexible server instance using TLS.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 12/19/2025
 ms.service: azure-database-postgresql
