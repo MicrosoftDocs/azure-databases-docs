@@ -2,7 +2,7 @@
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 06/08/2026
+ms.date: 06/29/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: include
@@ -56,7 +56,7 @@ ms.custom:
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## amcheck
 
 [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity.
@@ -88,7 +88,7 @@ ms.custom:
 | 12 | 1.3.2 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## auto_explain
 
 [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand.
@@ -104,7 +104,7 @@ ms.custom:
 | 12 | Without version <sup>*</sup> |
 | 11 | Without version <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## azure_ai
 
 [azure_ai](../../flexible-server/generative-ai-azure-overview.md) provides Azure AI and ML Services integration for PostgreSQL.
@@ -136,7 +136,7 @@ ms.custom:
 | 12 | 1.6 <sup>*</sup> |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## bloom
 
 [bloom](https://www.postgresql.org/docs/current/bloom.html) provides an index access method based on Bloom filters.
@@ -216,7 +216,7 @@ ms.custom:
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## cube
 
 [cube](https://www.postgresql.org/docs/current/cube.html) is a data type for multidimensional cubes.
@@ -319,11 +319,11 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 2.19 |
-| 17 | 2.19 |
-| 16 | 2.19 |
-| 15 | 2.19 |
-| 14 | 2.19 |
+| 18 | 2.21 |
+| 17 | 2.21 |
+| 16 | 2.21 |
+| 15 | 2.21 |
+| 14 | 2.21 |
 | 13 | 2.18 |
 | 12 | 2.18 |
 | 11 | Not supported |
@@ -536,7 +536,7 @@ Read the special considerations for extension [dblink](../concepts-extensions-co
 | 12 | 1.4.3 <sup>*</sup> |
 | 11 | 1.3.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_buffercache
 
 [pg_buffercache](https://www.postgresql.org/docs/current/pgbuffercache.html) examines the shared buffer cache.
@@ -568,7 +568,7 @@ Read the special considerations for extension [pg_buffercache](../concepts-exten
 | 12 | 1.6 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 Read the special considerations for extension [pg_cron](../concepts-extensions-considerations.md#pg_cron) in flexible server.
 ## pgcrypto
 
@@ -617,7 +617,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_failover_slots
 
 [pg_failover_slots](https://github.com/EnterpriseDB/pg_failover_slots) is a logical replication slot manager for failover purposes.
@@ -633,7 +633,7 @@ Read the special considerations for extension [pgcrypto](../concepts-extensions-
 | 12 | 1.0.1 <sup>*</sup> |
 | 11 | 1.0.1 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 Read the special considerations for extension [pg_failover_slots](../concepts-extensions-considerations.md#pg_failover_slots) in flexible server.
 ## pg_freespacemap
 
@@ -658,15 +658,15 @@ Read the special considerations for extension [pg_failover_slots](../concepts-ex
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 1.8.0 <sup>*</sup> |
-| 17 | 1.7.0 <sup>*</sup> |
-| 16 | 1.6.0 <sup>*</sup> |
-| 15 | 1.5 <sup>*</sup> |
-| 14 | 1.4 <sup>*</sup> |
-| 13 | 1.3.7 <sup>*</sup> |
-| 12 | 1.3.7 <sup>*</sup> |
-| 11 | 1.3.7 <sup>*</sup> |
+| 17 | 1.7.1 <sup>*</sup> |
+| 16 | 1.6.2 <sup>*</sup> |
+| 15 | 1.5.3 <sup>*</sup> |
+| 14 | 1.4.4 <sup>*</sup> |
+| 13 | 1.3.11 <sup>*</sup> |
+| 12 | 1.3.10 <sup>*</sup> |
+| 11 | 1.3.9 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 Read the special considerations for extension [pg_hint_plan](../concepts-extensions-considerations.md#pg_hint_plan) in flexible server.
 ## pg_ivm
 
@@ -683,7 +683,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | Not supported |
 | 11 | Not supported |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pglogical
 
 [pglogical](https://github.com/2ndQuadrant/pglogical) manages PostgreSQL Logical Replication.
@@ -691,31 +691,31 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | PostgreSQL version | Extension or module version |
 | --- | --- |
 | 18 | 2.4.6 <sup>*</sup> |
-| 17 | 2.4.5 <sup>*</sup> |
-| 16 | 2.4.4 <sup>*</sup> |
-| 15 | 2.4.2 <sup>*</sup> |
-| 14 | 2.4.1 <sup>*</sup> |
-| 13 | 2.4.1 <sup>*</sup> |
-| 12 | 2.4.1 <sup>*</sup> |
-| 11 | 2.4.1 <sup>*</sup> |
+| 17 | 2.4.6 <sup>*</sup> |
+| 16 | 2.4.6 <sup>*</sup> |
+| 15 | 2.4.6 <sup>*</sup> |
+| 14 | 2.4.6 <sup>*</sup> |
+| 13 | 2.4.6 <sup>*</sup> |
+| 12 | 2.4.6 <sup>*</sup> |
+| 11 | 2.4.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_partman
 
 [pg_partman](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 5.3.1 <sup>*</sup> |
-| 17 | 5.3.1 <sup>*</sup> |
-| 16 | 5.3.1 <sup>*</sup> |
+| 18 | 5.4.3 <sup>*</sup> |
+| 17 | 5.4.3 <sup>*</sup> |
+| 16 | 5.4.3 <sup>*</sup> |
 | 15 | 4.7.1 <sup>*</sup> |
 | 14 | 4.6.1 <sup>*</sup> |
 | 13 | 4.5.0 <sup>*</sup> |
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_partman_bgw
 
 [pg_partman_bgw](https://github.com/pgpartman/pg_partman) manages partitioned tables by time or ID.
@@ -731,7 +731,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 4.5.0 <sup>*</sup> |
 | 11 | 4.5.0 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_prewarm
 
 [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) prewarms the cache with relation data.
@@ -747,7 +747,7 @@ Read the special considerations for extension [pg_hint_plan](../concepts-extensi
 | 12 | 1.2 <sup>*</sup> |
 | 11 | 1.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 Read the special considerations for extension [pg_prewarm](../concepts-extensions-considerations.md#pg_prewarm) in flexible server.
 ## pg_repack
 
@@ -812,7 +812,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.5 <sup>*</sup> |
 | 11 | 1.5 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## pg_stat_statements
 
 [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) tracks execution statistics of all SQL statements executed.
@@ -828,7 +828,7 @@ Read the special considerations for extension [pg_repack](../concepts-extensions
 | 12 | 1.7 <sup>*</sup> |
 | 11 | 1.6 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 Read the special considerations for extension [pg_stat_statements](../concepts-extensions-considerations.md#pg_stat_statements) in flexible server.
 ## pgstattuple
 
@@ -884,16 +884,32 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
-| 18 | 1.0 |
-| 17 | 1.0 |
-| 16 | 1.0 |
-| 15 | 1.0 |
-| 14 | 1.0 |
+| 18 | 1.0 <sup>*</sup> |
+| 17 | 1.0 <sup>*</sup> |
+| 16 | 1.0 <sup>*</sup> |
+| 15 | 1.0 <sup>*</sup> |
+| 14 | 1.0 <sup>*</sup> |
 | 13 | 1.0 |
 | 12 | 1.0 |
 | 11 | 1.0 |
 
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
+## plpgsql_check
 
+[plpgsql_check](https://github.com/okbob/plpgsql_check) full linter for plpgsql for PostgreSQL
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 2.8 <sup>*</sup> |
+| 17 | 2.8 <sup>*</sup> |
+| 16 | 2.8 <sup>*</sup> |
+| 15 | 2.8 <sup>*</sup> |
+| 14 | 2.8 <sup>*</sup> |
+| 13 | Not supported |
+| 12 | Not supported |
+| 11 | Not supported |
+
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## plv8
 
 [plv8](https://github.com/plv8/plv8) pL/JavaScript (v8) is a trusted procedural language.
@@ -908,6 +924,22 @@ Read the special considerations for extension [pgstattuple](../concepts-extensio
 | 13 | 3.2.4 |
 | 12 | 3.2.4 |
 | 11 | 3.2.4 |
+
+
+## pointcloud
+
+[pointcloud](https://github.com/pgpointcloud/pointcloud) store point cloud (LIDAR) data.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 1.2.5 |
+| 17 | 1.2.5 |
+| 16 | 1.2.5 |
+| 15 | 1.2.5 |
+| 14 | 1.2.5 |
+| 13 | Not supported |
+| 12 | Not supported |
+| 11 | Not supported |
 
 
 ## postgis
@@ -1019,6 +1051,22 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 14 | 0.2 |
 | 13 | 0.2 |
 | 12 | 0.2 |
+| 11 | Not supported |
+
+
+## rdkit
+
+[rdkit](https://github.com/rdkit/rdkit/blob/master/Code/PgSQL/rdkit/README.md) implements mol datatype to describe molecules and fp datatype for fingerprints, basic comparison operations, similarity operation, and index support.
+
+| PostgreSQL version | Extension or module version |
+| --- | --- |
+| 18 | 4.8.0 |
+| 17 | 4.8.0 |
+| 16 | 4.8.0 |
+| 15 | 4.8.0 |
+| 14 | 4.8.0 |
+| 13 | Not supported |
+| 12 | Not supported |
 | 11 | Not supported |
 
 
@@ -1149,7 +1197,7 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.10.0 <sup>*</sup> |
 | 11 | 1.7.4 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.
 ## topn
 
 [topn](https://github.com/citusdata/postgresql-topn) returns the top values in a database according to some criteria.
@@ -1261,4 +1309,4 @@ Read the special considerations for extension [postgres_fdw](../concepts-extensi
 | 12 | 2.2 <sup>*</sup> |
 | 11 | 2.2 <sup>*</sup> |
 
-<sup>*</sup> Enable corresponding libraries in the `shared_preload_libraries` parameter.
+<sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries.

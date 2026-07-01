@@ -1,8 +1,8 @@
 ---
 title: Load Libraries in Azure HorizonDB
 description: This article describes how to load libraries in Azure HorizonDB.
-author: avnishrastogimsft
-ms.author: avrastog
+author: nachoalonsoportillo
+ms.author: ialonso
 ms.reviewer: maghan
 ms.date: 06/02/2026
 ms.service: azure-horizondb
