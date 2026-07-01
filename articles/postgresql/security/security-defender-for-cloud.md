@@ -28,7 +28,7 @@ These alerts appear in Defender for Cloud's security alerts page and include:
 
 A brute force attack is among the most common and fairly successful hacking methods, despite being least sophisticated hacking methods. The theory behind such an attack is that if you take an infinite number of attempts to guess a password, you're bound to be right eventually. When Microsoft Defender for Cloud detects a brute force attack, it triggers an [alert](/azure/defender-for-cloud/defender-for-databases-introduction#what-kind-of-alerts-does-microsoft-defender-for-open-source-relational-databases-provide) to bring you awareness that a brute force attack took place. It also can separate simple brute force attack from brute force attack on a valid user or a successful brute force attack.
 
-## Microsoft Defender for Cloud Security Posture Management (CSPM) Assessments - Generally Available
+## Microsoft Defender for Cloud Security Posture Management (CSPM) Assessments
 
 Microsoft Defender Security Posture Management assessments continuously evaluate the security posture of PostgreSQL servers. Defender scans server- and database-level configurations against PostgreSQL-specific security best practices to identify potential vulnerabilities and misconfigurations that could increase risk. Assessments provide actionable recommendations to help improve security posture, support compliance requirements, and reduce exposure to threats.   
 
