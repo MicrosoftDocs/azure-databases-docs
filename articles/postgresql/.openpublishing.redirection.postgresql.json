@@ -3222,7 +3222,7 @@
         },
         {
             "source_path_from_root": "/articles/postgresql/flexible-server/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md",
-            "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone",
+            "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-vnet-integration-change-private-dns-zone",
             "redirect_document_id": true
         },
         {
@@ -4458,6 +4458,21 @@
         {
             "source_path_from_root": "/articles/postgresql/backup-restore/how-to-restore-dropped-server.md",
             "redirect_url": "/azure/postgresql/backup-restore/how-to-restore-deleted-server",
+            "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md",
+            "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-vnet-integration-change-private-dns-zone",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/network/how-to-networking-servers-deployed-public-access-enable-public-access.md",
+            "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-public-access-enable-disable-public-access",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/network/how-to-networking-servers-deployed-public-access-disable-public-access.md",
+            "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-public-access-enable-disable-public-access",
             "redirect_document_id": true
         }
     ]
