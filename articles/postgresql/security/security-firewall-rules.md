@@ -1,8 +1,8 @@
 ---
 title: Firewall Rules
 description: This article describes how to use firewall rules to connect to an Azure Database for PostgreSQL flexible server instance with the public networking deployment option.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 08/13/2025
 ms.service: azure-database-postgresql

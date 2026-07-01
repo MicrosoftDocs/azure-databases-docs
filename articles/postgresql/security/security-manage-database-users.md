@@ -1,8 +1,8 @@
 ---
 title: Manage Users
 description: This article describes how you can create new user accounts to interact with an Azure Database for PostgreSQL flexible server instance.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 08/08/2025
 ms.service: azure-database-postgresql

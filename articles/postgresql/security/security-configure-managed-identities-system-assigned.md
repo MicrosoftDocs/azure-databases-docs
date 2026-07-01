@@ -1,8 +1,8 @@
 ---
 title: System Assigned Managed Identity
 description: This article describes how to configure system assigned managed identity of an Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 06/25/2026
 ms.service: azure-database-postgresql

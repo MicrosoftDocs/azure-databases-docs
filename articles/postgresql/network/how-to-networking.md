@@ -17,14 +17,13 @@ When you deploy your Azure Database for PostgreSQL flexible server, you can choo
 
 For more information about these options, see [Networking with public access (allowed IP addresses)](concepts-networking-public.md) and [Networking with private access (VNET integration)](concepts-networking-private.md).
 
-Depending on the networking mode you selected when you deployed your server, you can perform different operations. The following two sections cover the two available networking modes, and list the operations available in each of them.
+Depending on the networking mode you select when you deploy your server, you can perform different operations. The following two sections cover the two available networking modes, and list the operations available in each of them.
 
 ## Public access (allowed IP addresses)
 
-If your server was deployed with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
+If you deploy your server with **Networking with public access (allowed IP addresses)** mode, you can perform the following operations:
 
-- [Enable public access](how-to-networking-servers-deployed-public-access-enable-public-access.md).
-- [Disable public access](how-to-networking-servers-deployed-public-access-disable-public-access.md).
+- [Enable or disable public access](how-to-networking-servers-deployed-public-access-enable-disable-public-access.md).
 - [Add firewall rules](how-to-networking-servers-deployed-public-access-add-firewall-rules.md).
 - [Delete firewall rules](how-to-networking-servers-deployed-public-access-delete-firewall-rules.md).
 - [Add private endpoint connections](how-to-networking-servers-deployed-public-access-add-private-endpoint.md).
@@ -34,9 +33,9 @@ If your server was deployed with **Networking with public access (allowed IP add
 
 ## Private access (VNET Integration)
 
-If your server was deployed with **Networking with private access (VNET Integration)** mode, you can perform the following operation:
+If you deploy your server with **Networking with private access (VNET Integration)** mode, you can perform the following operation:
 
-- [Change private DNS zone](how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md).
+- [Change private DNS zone](how-to-networking-servers-deployed-vnet-integration-change-private-dns-zone.md).
 
 ## Related content
 

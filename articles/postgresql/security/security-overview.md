@@ -1,8 +1,8 @@
 ---
 title: Secure Your PostgreSQL Database Server
 description: Learn how to secure an Azure Database for PostgreSQL flexible server instance, with best practices for security and compliance.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 05/05/2026
 ms.service: azure-database-postgresql

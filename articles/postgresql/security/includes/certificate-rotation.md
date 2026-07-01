@@ -1,8 +1,8 @@
 ---
 title: Certificate Rotation
 description: Certificate rotation for Azure Database for PostgreSQL
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 12/19/2025
 ms.service: azure-database-postgresql

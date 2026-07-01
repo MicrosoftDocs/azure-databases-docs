@@ -446,6 +446,8 @@
       href: connectivity/concepts-connection-pooling-best-practices.md
 - name: Networking
   items:
+    - name: Networking
+      href: network/how-to-networking.md
     - name: Networking with public access (allowed IP addresses)
       href: network/concepts-networking-public.md
     - name: Networking with private access (virtual network Integration)
@@ -456,10 +458,8 @@
       href: security/security-tls.md
     - name: Public access (allowed IP addresses)
       items:
-        - name: Enable public access
-          href: network/how-to-networking-servers-deployed-public-access-enable-public-access.md
-        - name: Disable public access
-          href: network/how-to-networking-servers-deployed-public-access-disable-public-access.md
+        - name: Enable or disable public access
+          href: network/how-to-networking-servers-deployed-public-access-enable-disable-public-access.md
         - name: Add firewall rules
           href: network/how-to-networking-servers-deployed-public-access-add-firewall-rules.md
         - name: Delete firewall rules
@@ -475,7 +475,7 @@
     - name: Private access (virtual network Integration)
       items:
         - name: Change private DNS zone
-          href: network/how-to-networking-servers-deployed-vent-integration-change-private-dns-zone.md
+          href: network/how-to-networking-servers-deployed-vnet-integration-change-private-dns-zone.md
     - name: How to migrate vnet private endpoint capable server
       href: network/how-to-migrate-vnet-private-endpoint-capable-server.md
 - name: Security

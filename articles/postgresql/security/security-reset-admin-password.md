@@ -1,8 +1,8 @@
 ---
 title: Reset administrator password
 description: This article describes how to reset the password of the administrator of an Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan
 ms.date: 06/09/2026
 ms.service: azure-database-postgresql
