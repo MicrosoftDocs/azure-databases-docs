@@ -33,6 +33,8 @@ This new version introduces a range of new features and enhancements, resolves k
 
 ## Improvements 
 
+- Improved long-term retention (LTR) backup reliability by enhancing backend backup workflows
+- Improved visibility into long-term retention (LTR) backup failures by surfacing backup issues to Azure Backup
 - Updated pg_duckdb extension to version 1.1.1, adding write support for Azure Blob Storage along with improvements.
 - Updated pgvector extension to version 0.8.0.2.
 - Improved error handling when the Private DNS Zone subscription isn’t registered for Microsoft.DBforPostgreSQL, preventing prolonged retries and surfacing a clearer customer facing error.

@@ -97,7 +97,7 @@ Both controls are subject to the following requirements:
 - The server is a regular flexible server, not an elastic cluster. The feature isn't supported on elastic clusters.
 - `adaptive_autovacuum.optimize_configurations` is supported on major versions greater than or equal to 14.
 - `adaptive_autovacuum.open_transaction_threshold` is supported on major versions greater than or equal to 13.
-- The adaptive autovacuum feature is currently supported on servers deployed in the following regions: Canada Central, East Asia, and West Central US.
+- The adaptive autovacuum feature is currently supported on servers deployed in the following regions: Australia East, Australia Southeast, Brazil Southeast, Canada Central, East Asia, East US, East US 2, France Central, Germany North, India Central, India West, Israel Northwest, Jio India Central, Korea South, New Zealand North, Norway East, South Africa North, South Central US, Southeast Asia, Sweden Central, Switzerland North, UAE Central, UK South, and West Central US.
 
 ## Auditing and observability
 
