@@ -21,6 +21,7 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.4, 17.10, 16.14, 15.18, and 14.23. <sup>$</sup>
+  - [Microsoft Defender Cloud Security Posture Management (CSPM) assessments in Azure Database for PostgreSQL](../security/security-defender-for-cloud.md#microsoft-defender-for-cloud-security-posture-management-cspm-assessments) 
 - Preview
   - [Pre-Upgrade Validation Checks](../configure-maintain/concepts-major-version-upgrade.md#upgrade-validation-checks-preview) to help identify upgrade blocking issues before starting the upgrade.
 
