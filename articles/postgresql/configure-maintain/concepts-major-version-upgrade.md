@@ -8,6 +8,7 @@ ms.date: 06/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
+ai-usage: ai-assisted
 ms.custom:
   - references_regions
   - build-2026
@@ -137,10 +138,14 @@ Ensure that your source and target versions are included in the supported matrix
 ### Other upgrade considerations
 
 - Event triggers: Upgrade precheck blocks event triggers because they hook into DDL commands and might reference system catalogs that change between major versions. Drop all `EVENT TRIGGER`s before upgrading and then recreate them after the upgrade to ensure a smooth upgrade.
-- Large objects (LOs): Databases with millions of large objects (stored in `pg_largeobject`) can cause upgrade failures due to high memory usage or log volume. Use [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused LOs, and consider scaling up your server before upgrade if many LOs are still in use.
+- Large objects (LOs): The way an upgrade handles databases that contain millions of large objects (stored in `pg_largeobject`) depends on the target major version:
+  - Target PostgreSQL 15 or later: The upgrade uses an optimized bulk method to transfer large object metadata, so memory and temporary disk usage no longer scale with the number of large objects. Databases with tens or hundreds of millions of large objects upgrade reliably without extra preparation. Running `vacuumlo` or scaling up the server beforehand isn't required to work around large object volume, although you can still run `vacuumlo` to remove unused large objects for other reasons.
+  - Target PostgreSQL 14 or earlier: Databases with millions of large objects can cause upgrade failures due to high memory usage or log volume. Use the [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused large objects, and consider scaling up your server before the upgrade if many large objects are still in use.
+
+  Regardless of the target version, ensure the server has enough free disk space before you start an upgrade.
 
 > [!WARNING]  
-> Use caution with vacuumlo. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects might be mistakenly deleted. Additionally, `vacuumlo` might consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on nonproduction first.
+> Use caution with `vacuumlo`. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects might be mistakenly deleted. Additionally, `vacuumlo` might consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on nonproduction first.
 
 ## Post upgrade
 
