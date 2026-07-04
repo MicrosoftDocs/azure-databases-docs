@@ -1,8 +1,8 @@
 ---
 title: Certificate Rotation
 description: Certificate rotation for Azure Database for MySQL
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan, randolphwest
 ms.date: 02/17/2026
 ms.service: azure-database-mysql
