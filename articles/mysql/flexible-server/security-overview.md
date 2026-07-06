@@ -1,8 +1,8 @@
 ---
 title: Secure Your MySQL Database Server
 description: Learn how to secure an Azure Database for MySQL flexible server instance, with best practices for security and compliance.
-author: techlake
-ms.author: hganten
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan, randolphwest
 ms.date: 01/07/2026
 ms.service: azure-database-mysql
