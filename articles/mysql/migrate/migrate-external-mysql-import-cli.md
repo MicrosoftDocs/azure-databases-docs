@@ -59,7 +59,7 @@ az account set --subscription <subscription id>
   - Innodb_page_size = 16348 (MySQL Default)
   - Only INNODB engine is supported.
 
-- Use the below query to perform a pre-check and fix any conflicting objects
+- Use the following query to perform a pre-check and fix any conflicting objects.
 
   ```sql
   SELECT
