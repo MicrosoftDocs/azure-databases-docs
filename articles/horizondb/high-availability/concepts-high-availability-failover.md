@@ -1,16 +1,17 @@
 ---
 title: High Availability and Failover Concepts in Azure HorizonDB
 description: Learn about high availability architecture, zone redundancy, failover processes, and recovery behavior in Azure HorizonDB.
+#customer intent: As a user, I want to understand how high availability works in Azure HorizonDB, so that I can design a resilient architecture for my mission-critical workloads.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: denzilr, maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: high-availability
 ms.topic: concept-article
 ---
 
-# High availability for Azure HorizonDB (Preview)
+# High availability in Azure HorizonDB (Preview)
 
 For mission-critical workloads, minimizing downtime and preventing data loss are essential requirements. In Azure HorizonDB, high availability is achieved through a combination of **zone-resilient storage**, **distributed compute replicas**, and **automated failover mechanisms**.
 
