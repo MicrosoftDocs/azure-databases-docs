@@ -8,6 +8,7 @@ ms.date: 06/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
+ai-usage: ai-assisted
 ms.custom:
   - references_regions
   - build-2026
@@ -26,7 +27,7 @@ In-place upgrades retain the server name and other settings of the current serve
 > [!NOTE]
 > Azure Database for PostgreSQL supports in-place major version upgrades only to currently supported PostgreSQL versions. The target version must be officially supported by Azure at the time of the upgrade. The Azure portal prevents selecting unsupported versions, but API or CLI calls that target a deprecated version will fail. Always consult the [Azure PostgreSQL versioning policy](/azure/postgresql/flexible-server/concepts-version-policy) and [upgrade how-to guide](/azure/postgresql/flexible-server/how-to-perform-major-version-upgrade) before initiating a major version upgrade.
 
-## Upgrade Validation Checks (Preview)
+## Upgrade validation checks (Preview)
 
 Azure Database for PostgreSQL flexible server provides Upgrade Validation Checks to help assess upgrade readiness before starting a major version upgrade.
 
@@ -68,8 +69,7 @@ Here are some of the important considerations with in-place major version upgrad
 - Upgrade duration depends on the size and complexity of your database, including the number of objects (tables, indexes, schemas), large objects, and extensions. Larger or more complex workloads might experience longer upgrade times.
 - Long-running transactions or high workload before the upgrade might increase the time taken to shut down the database and increase upgrade time.
 - After an in-place major version upgrade is successful, there are no automated ways to revert to the earlier version. You can perform a point-in-time recovery (PITR) to a time before the upgrade to restore the previous version on a new server.
-- Your Azure Database for PostgreSQL flexible server instance takes an implicit backup of your database during an upgrade. The implicit backup is taken before the upgrade starts. If the upgrade fails, the system automatically restores your database to its state from the implicit backup.
-- [Secure your Azure Database for PostgreSQL Server](../security/security-overview.md) measures. After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server, who is granted the ADMIN option, now has administrative privileges over other roles for essential maintenance operations.
+- [Secure your Azure Database for PostgreSQL server](../security/security-overview.md). After a major version upgrade on an Azure Database for PostgreSQL flexible server instance, the first user created on the server, who is granted the ADMIN option, now has administrative privileges over other roles for essential maintenance operations.
 
 ## Upgrade considerations and limitations
 
@@ -77,7 +77,7 @@ If a precheck operation fails during an in-place major version upgrade, the upgr
 
 ### Unsupported server configurations
 
-- [Geo-replication in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md) aren't supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
+- [Geo-replication in Azure Database for PostgreSQL](../read-replica/concepts-read-replicas-geo.md) isn't supported during in-place upgrades. You must delete the read replica (including any cascading read replica) before upgrading the primary server. After the upgrade, you can re-create the replica.
 - Network traffic rules might block upgrade operations.
   - Ensure your flexible server instance can send/receive traffic on ports 5432 and 6432 within its virtual network and to Azure Storage (for log archiving).
   - If Network Security Groups (NSGs) restrict this traffic, HA won't re-enable automatically post-upgrade. You might need to manually update NSG rules and re-enable HA.
@@ -137,10 +137,12 @@ Ensure that your source and target versions are included in the supported matrix
 ### Other upgrade considerations
 
 - Event triggers: Upgrade precheck blocks event triggers because they hook into DDL commands and might reference system catalogs that change between major versions. Drop all `EVENT TRIGGER`s before upgrading and then recreate them after the upgrade to ensure a smooth upgrade.
-- Large objects (LOs): Databases with millions of large objects (stored in `pg_largeobject`) can cause upgrade failures due to high memory usage or log volume. Use [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused LOs, and consider scaling up your server before upgrade if many LOs are still in use.
+- Large objects (LOs): The way an upgrade handles databases that contain millions of large objects (stored in `pg_largeobject`) depends on the target major version:
+  - Target PostgreSQL 15 or later: The upgrade uses an optimized bulk method to transfer large object metadata, so memory and temporary disk usage no longer scale with the number of large objects. Databases with tens or hundreds of millions of large objects upgrade reliably without extra preparation. Running `vacuumlo` or scaling up the server beforehand isn't required to work around large object volume, although you can still run `vacuumlo` to remove unused large objects for other reasons.
+  - Target PostgreSQL 14 or earlier: Databases with millions of large objects can cause upgrade failures due to high memory usage or log volume. Use the [vacuumlo](https://www.postgresql.org/docs/current/vacuumlo.html) utility to clean up unused large objects, and consider scaling up your server before the upgrade if many large objects are still in use.
 
 > [!WARNING]  
-> Use caution with vacuumlo. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects might be mistakenly deleted. Additionally, `vacuumlo` might consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on nonproduction first.
+> Use caution with `vacuumlo`. `vacuumlo` identifies orphaned large objects based on conventional reference columns (oid, lo). If your application uses custom or indirect reference types, valid large objects might be mistakenly deleted. Additionally, `vacuumlo` might consume significant CPU, memory, and IOPS, especially in databases with millions of large objects. Run it during maintenance windows and test on nonproduction first.
 
 ## Post upgrade
 
@@ -153,7 +155,7 @@ ANALYZE
 
 ## View upgrade logs
 
-Use `PG_Upgrade_Logs` to monitor upgrade progress and troubleshoot issues.
+Use `PG_Upgrade_Logs` to monitor upgrade progress and troubleshoot issues. Review the logs during and after the upgrade to track progress, diagnose failures or delays, and identify blocking issues so you can take corrective action quickly.
 
 ### Enable upgrade logs using server log parameters
 
@@ -162,22 +164,9 @@ Use `PG_Upgrade_Logs` to monitor upgrade progress and troubleshoot issues.
 
 See [Download PostgreSQL and upgrade logs](../monitor/how-to-configure-server-logs.md) to get started.
 
-### Access PG_Upgrade_Logs from the server logs UI
-
-- Review `PG_Upgrade_Logs` during and after the upgrade to monitor progress and diagnose failures or delays.
-- Check for errors or warnings if the upgrade fails or takes longer than expected.
-- Use logs to identify blocking issues and take corrective action quickly.
-
-### Benefits of using upgrade logs
-
-- Diagnose issues quickly: Use `PG_Upgrade_Logs` to review each step of the upgrade and identify errors or warnings.
-- Troubleshoot efficiently: Analyze logs to pinpoint failures, reduce downtime, and take corrective action faster.
-
-`PG_Upgrade_Logs` helps you understand what happened during the upgrade and resolve issues with confidence.
-
 > [!NOTE]  
 > In-place major version upgrades are supported on [automigrated servers](../migrate/automigration-single-to-flexible-postgresql.md). After a successful in-place major version upgrade on an automigrated server, the username format **username@servername** will no longer be supported. Instead, you must use the standard format: **username**.
-To avoid authentication issues, carefully review and update all connection strings in your applications and scripts to ensure they use the updated username format after the upgrade.
+> To avoid authentication issues, carefully review and update all connection strings in your applications and scripts to ensure they use the updated username format after the upgrade.
 
 ## Related content
 
