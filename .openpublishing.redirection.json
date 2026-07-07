@@ -1234,6 +1234,16 @@
       "source_path": "articles/horizondb/parameters/concepts-server-parameters.md",
       "redirect_url": "/azure/horizondb/parameters/concepts-parameters",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/network/how-to-network-servers-public-access-add-firewall.md",
+      "redirect_url": "/azure/horizondb/network/how-to-network-cluster-public-access-add-firewall",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "articles/horizondb/network/how-to-network-servers-public-access-delete-firewall.md",
+      "redirect_url": "/azure/horizondb/network/how-to-network-cluster-public-access-delete-firewall",
+      "redirect_document_id": false
     }
   ]
 }

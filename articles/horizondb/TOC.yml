@@ -267,9 +267,9 @@
     - name: Firewall
       items:
         - name: Add firewall rules
-          href: network/how-to-network-servers-public-access-add-firewall.md
+          href: network/how-to-network-cluster-public-access-add-firewall.md
         - name: Delete firewall rules
-          href: network/how-to-network-servers-public-access-delete-firewall.md
+          href: network/how-to-network-cluster-public-access-delete-firewall.md
 - name: High availability and resilience
   items:
     - name: High availability

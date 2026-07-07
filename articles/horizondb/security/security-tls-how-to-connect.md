@@ -1,43 +1,44 @@
 ---
-title: Configure TLS Connection to Azure HorizonDB
-description: Learn how to configure Transport Layer Security (TLS) connections to Azure HorizonDB.
+title: Configure TLS Connection in Azure HorizonDB
+description: Learn how to configure Transport Layer Security (TLS) connections in Azure HorizonDB.
+#customer intent: As a user, I want to configure TLS connections in Azure HorizonDB, so that I can secure communications between my client applications and the database cluster.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: how-to
 ---
 
-# Connect clients with TLS security to your database for Azure HorizonDB (Preview)
+# Connect clients with TLS security to your database in Azure HorizonDB (Preview)
 
-Connections between your client applications and the database server always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
+Connections between your client applications and the database cluster always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
 > [!NOTE]  
 > The open source PostgreSQL uses the legacy name SSL in its commands, variables, and documentation to avoid breaking existing implementations. This article uses the acronym TLS while using SSL in command names and variables.
 
-Azure HorizonDB supports encrypted connections by using TLS 1.2 and 1.3. The server denies all incoming connections that try to encrypt the traffic by using TLS 1.0 and TLS 1.1.
+Azure HorizonDB supports encrypted connections by using TLS 1.2 and 1.3. The cluster denies all incoming connections that try to encrypt the traffic by using TLS 1.0 and TLS 1.1.
 
-By default, the server enforces secured connectivity between the client and the server. To disable this enforcement and allow both encrypted and unencrypted client communications, change the Parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` Parameter. **Don't disable** TLS.
+By default, the cluster enforces secured connectivity between the client and the cluster. To disable this enforcement and allow both encrypted and unencrypted client communications, change the Parameter `require_secure_transport` to `OFF`. You can also set the TLS version by setting the `ssl_max_protocol_version` Parameter. **Don't disable** TLS.
 
 ## Client TLS configuration
 
-By default, PostgreSQL doesn't verify the server certificate. Because of this default behavior, the client can't detect if the server identity is spoofed (for example, if someone modifies a DNS record or takes over the server IP address). To prevent this kind of spoofing, enable TLS certificate verification on the client.
+By default, PostgreSQL doesn't verify the cluster certificate. Because of this default behavior, the client can't detect if the cluster identity is spoofed (for example, if someone modifies a DNS record or takes over the cluster IP address). To prevent this kind of spoofing, enable TLS certificate verification on the client.
 
 You can configure many connection parameters for the client TLS setup. A few important ones include:
 
-- `ssl`: Connect by using TLS. This property doesn't need a value. Its presence specifies a TLS connection. For compatibility with future versions, use the value `true`. In this mode, when you establish a TLS connection, the client driver validates the server's identity to prevent man-in-the-middle attacks.
-- `sslmode`: Set this parameter to `require` if you need encryption and want the connection to fail if it can't be encrypted. This setting ensures that the server is configured to accept TLS connections for this host or IP address and that the server recognizes the client certificate. If the server doesn't accept TLS connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
+- `ssl`: Connect by using TLS. This property doesn't need a value. Its presence specifies a TLS connection. For compatibility with future versions, use the value `true`. In this mode, when you establish a TLS connection, the client driver validates the cluster's identity to prevent man-in-the-middle attacks.
+- `sslmode`: Set this parameter to `require` if you need encryption and want the connection to fail if it can't be encrypted. This setting ensures that the cluster is configured to accept TLS connections for this host or IP address and that the cluster recognizes the client certificate. If the cluster doesn't accept TLS connections or the client certificate isn't recognized, the connection fails. The following table lists values for this setting:
 
   | `sslmode` | Explanation |
   | --- | --- |
   | `disable` | Encryption isn't used. Azure HorizonDB requires TLS connections, so don't use this setting. |
-  | `allow` | Encryption is used if server settings require or enforce it. Azure HorizonDB requires TLS connections, so this setting is equivalent to `prefer`. |
-  | `prefer` | Encryption is used if server settings allow for it. Azure HorizonDB requires TLS connections. |
-  | `require` | Encryption is used. It ensures that the server is configured to accept TLS connections. |
-  | `verify-ca` | Encryption is used. Verify the server certificate against the trusted root certificates stored on the client. |
-  | `verify-full` | Encryption is used. Verify the server certificate against the certificate stored on the client. It also validates that the server certificates use the same host name as the connection. Use this setting unless private DNS resolvers use a different name to reference the Azure HorizonDB server. |
+  | `allow` | Encryption is used if cluster settings require or enforce it. Azure HorizonDB requires TLS connections, so this setting is equivalent to `prefer`. |
+  | `prefer` | Encryption is used if cluster settings allow for it. Azure HorizonDB requires TLS connections. |
+  | `require` | Encryption is used. It ensures that the cluster is configured to accept TLS connections. |
+  | `verify-ca` | Encryption is used. Verify the cluster certificate against the trusted root certificates stored on the client. |
+  | `verify-full` | Encryption is used. Verify the cluster certificate against the certificate stored on the client. It also validates that the cluster certificates use the same host name as the connection. Use this setting unless private DNS resolvers use a different name to reference the Azure HorizonDB cluster. |
 
 The default `sslmode` mode differs between `libpq`-based clients (such as `PSQL` and `JDBC`). The libpq-based clients default to `prefer`. `JDBC` clients default to `verify-full`.
 
@@ -124,9 +125,9 @@ To update client root CA certificates for client certificate pinning scenarios w
 
 ### Update root CA certificates in Azure App Services
 
-For Azure App Services connecting to an Azure HorizonDB instance, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
+For Azure App Services connecting to an Azure HorizonDB cluster, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
 
-- Add new certificates to App Service at platform level before changes occur in your Azure HorizonDB instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
+- Add new certificates to App Service at platform level before changes occur in your Azure HorizonDB cluster. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
 - If you're explicitly including the path to an SSL certificate file in your code, you need to download the new certificate and update the code to use it.
 
 ### Update root CA certificates when using clients in Azure Kubernetes Service (AKS)
@@ -139,19 +140,19 @@ For .NET (`Npgsql`) users on Windows who connect to Azure HorizonDB, make sure *
 
 ## How to use TLS with certificate validation
 
-Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure HorizonDB instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail. Consult your application's documentation to learn how to enable TLS connections.
+Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure HorizonDB cluster enforces TLS connections, but if the application isn't configured for TLS, the application might fail. Consult your application's documentation to learn how to enable TLS connections.
 
 ### Connect using `PSQL`
 
-The following example shows how to connect to your server by using the `PSQL` command-line interface. Use the `sslmode=verify-full` or `sslmode=verify-ca` connection string setting to enforce TLS certificate verification. Pass the local certificate file path to the `sslrootcert` parameter.
+The following example shows how to connect to your cluster by using the `PSQL` command-line interface. Use the `sslmode=verify-full` or `sslmode=verify-ca` connection string setting to enforce TLS certificate verification. Pass the local certificate file path to the `sslrootcert` parameter.
 
 ```bash
- psql "sslmode=verify-full sslrootcert=<path-of-pem-file> host=mydemoserver.x99xx0xxx9xx.australiaeast.horizondb.azure.com dbname=postgres user=myadmin"
+ psql "sslmode=verify-full sslrootcert=<path-of-pem-file> host=examplecluster.############.australiaeast.horizondb.azure.com dbname=postgres user=exampleadministrator"
 ```
 
 ### Test TLS connectivity
 
-Before you try to access your TLS-enabled server from a client application, make sure you can get to it via `PSQL`. If you established a TLS connection, you should see output similar to the following example:
+Before you try to access your TLS-enabled cluster from a client application, make sure you can get to it via `PSQL`. If you established a TLS connection, you should see output similar to the following example:
 
 ```
 psql (14.5)
