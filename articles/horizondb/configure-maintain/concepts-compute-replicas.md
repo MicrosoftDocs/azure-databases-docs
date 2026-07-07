@@ -1,16 +1,17 @@
 ---
 title: Compute Replicas in Azure HorizonDB
 description: Learn about compute replicas in Azure HorizonDB, scaling up vCores and memory, and scaling out reads by adding replicas.
+#customer intent: As a user, I want to understand how compute replicas work in Azure HorizonDB, so that I can plan the right architecture for my workloads.
 author: DDL-PM
 ms.author: ludingding
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: compute-storage
 ms.topic: concept-article
 ---
 
-# Compute replicas for Azure HorizonDB (Preview)
+# Compute replicas in Azure HorizonDB (Preview)
 
 A compute replica is where the PostgreSQL relational engine runs and where language, query, and transaction processing occur. An Azure HorizonDB cluster contains one or more compute replicas:
 
@@ -29,7 +30,7 @@ Every compute replica, whether primary or standby, includes a local NVMe SSD cac
 
 ### Offloaded tasks
 
-Compute replicas offload durability and high availability tasks to the storage layer. This offloading frees CPU, disk, and network resources on the compute replica to run application workloads. The following tasks are handled by the storage layer instead of the compute replica:
+Compute replicas offload durability and high availability tasks to the storage layer. This offloading frees CPU, disk, and network resources on the compute replica to run application workloads. The storage layer handles the following tasks instead of the compute replica:
 
 | Task | PostgreSQL process | Resource savings |
 | --- | --- | --- |
@@ -80,15 +81,15 @@ Consider scaling out when you observe:
 
 When you add a standby or read replica to an Azure HorizonDB cluster:
 
-1. A new compute replica is provisioned distributed across availability zones.
-1. The replica connects to the shared storage layer. No data copying or replication setup is required because all replicas share the same underlying storage.
+1. The service provisions a new compute replica distributed across availability zones.
+1. The replica connects to the shared storage layer. Because all replicas share the same underlying storage, the process doesn't require data copying or replication setup.
 1. The replica begins serving read queries through the read-only endpoint.
 
 Because the storage is shared, provisioning a new replica is fast. There's no need to stream an initial data snapshot or WAL as in traditional PostgreSQL streaming replication.
 
 ### Scale out considerations
 
-- Adding a replica doesn't require downtime for the existing cluster. The new replica is provisioned and comes online without affecting the primary or other standby replicas.
+- Adding a replica doesn't require downtime for the existing cluster. The new replica comes online without affecting the primary or other standby replicas.
 - Removing a replica reduces the read capacity. If the cluster has only one standby replica, removing it disables high availability.
 - All replicas in a cluster share the same vCore and memory configuration. You can't provision individual replicas with different compute tiers.
 - Standby replicas serve read-only queries. Write operations must go through the primary replica via the read-write endpoint.
