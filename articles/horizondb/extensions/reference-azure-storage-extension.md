@@ -1,21 +1,19 @@
 ---
 title: Reference of Functions Provided by the Azure Storage Extension in Azure HorizonDB
 description: Learn everything about the functions provided by the Azure Storage extension in Azure HorizonDB.
+#customer intent: As a user, I want to look up the syntax for Azure Storage extension functions, so that I can call them correctly in my SQL queries.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: reference
-ms.custom:
-  - ignite-2024
-  - sfi-image-nochange
 ---
 
-# Reference of functions provided by the Azure Storage extension for Azure HorizonDB (Preview)
+# Reference of functions provided by the Azure Storage extension in Azure HorizonDB (Preview)
 
-Following is the list of functions provided by the Azure Storage extension:
+The following list shows the functions provided by the Azure Storage extension:
 
 ### azure_storage.account_add
 

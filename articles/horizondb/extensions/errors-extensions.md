@@ -11,7 +11,7 @@ ms.topic: troubleshooting
 # customer intent: As a user, I want to learn how to troubleshoot possible errors that might occur while managing extensions in an Azure HorizonDB.
 ---
 
-# Possible errors when managing extensions for Azure HorizonDB (Preview)
+# Possible errors when managing extensions in Azure HorizonDB (Preview)
 
 ## Extension "%s" isn't allow-listed for "azure_pg_admin" users in Azure HorizonDB
 

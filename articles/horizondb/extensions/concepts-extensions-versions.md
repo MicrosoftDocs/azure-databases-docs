@@ -1,16 +1,17 @@
 ---
 title: List of Extensions and Modules by Name in Azure HorizonDB
 description: The following extensions and modules are available in Azure HorizonDB.
+#customer intent: As a user, I want to find a specific extension by name, so that I can determine if it's available in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/30/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: concept-article
 ---
 
-# List of extensions and modules by name for Azure HorizonDB (Preview)
+# List of extensions and modules by name in Azure HorizonDB (Preview)
 
 The following extensions and modules are available for the Azure HorizonDB service.
 
