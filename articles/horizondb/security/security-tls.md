@@ -1,28 +1,29 @@
 ---
 title: Transport Layer Security (TLS) in Azure HorizonDB
-description: Learn about secure connectivity with an Azure HorizonDB instance using TLS.
+description: Learn about secure connectivity in Azure HorizonDB using TLS.
+#customer intent: As a user, I want to understand the TLS requirements in Azure HorizonDB so that I can ensure my client connections are properly secured.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Transport Layer Security (TLS) for Azure HorizonDB (Preview)
+# Transport layer security (TLS) in Azure HorizonDB (Preview)
 
-Azure HorizonDB requires all client connections to use Transport Layer Security (TLS), an industry-standard protocol that encrypts communications between your database server and client applications. TLS supersedes the older SSL protocol, with only TLS versions 1.2 and 1.3 recognized as secure. The integrity of TLS security relies on three pillars:
+Azure HorizonDB requires all client connections to use Transport Layer Security (TLS), an industry-standard protocol that encrypts communications between your database cluster and client applications. TLS supersedes the older SSL protocol, with only TLS versions 1.2 and 1.3 recognized as secure. The integrity of TLS security relies on three pillars:
 
 - Using only TLS versions 1.2 or 1.3.
-- Client validates the server's TLS certificate issued by a Certificate Authority (CA) in a chain of CAs started by a trusted root CA.
-- Negotiating a secure cipher suite between server and client.
+- Client validates the cluster's TLS certificate issued by a Certificate Authority (CA) in a chain of CAs started by a trusted root CA.
+- Negotiating a secure cipher suite between cluster and client.
 
-## Trusted root certs and cert rotations
+## Trusted root certificates and certificates rotation
 
-### Root CAs used by Azure HorizonDB
+### Root certificate authorities used by Azure HorizonDB
 
-Root CAs are the top-level authorities in the certificate chain. Azure HorizonDB currently uses dual-signed certificates issued by an intermediate CA (ICA) anchored by the following root CAs:
+Root certificate authorities (CAs) are the top-level authorities in the certificate chain. Azure HorizonDB currently uses dual-signed certificates issued by an intermediate certificate authority (ICA) anchored by the following root CAs:
 
 - [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt)
 - [Microsoft RSA Root CA 2017](https://www.microsoft.com/pkiops/certs/Microsoft%20RSA%20Root%20Certificate%20Authority%202017.crt)
@@ -33,48 +34,46 @@ China regions currently use the following CAs:
 - [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt)
 - After Spring Festival (Chinese New Year) 2026: [Digicert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt). Prepare for this change in advance by adding the new root CA to your trusted root store.
 
-### Intermediate CAs
+### Intermediate certificate authorities
 
-Azure HorizonDB uses intermediate CAs (ICAs) to issue server certificates. To maintain security, Microsoft periodically rotates these ICAs and the server certificates they issue. These rotations are routine and aren't announced in advance.
+Azure HorizonDB uses intermediate certificate authorities (ICAs) to issue cluster certificates. To maintain security, Microsoft periodically rotates these ICAs and the cluster certificates they issue. These rotations are routine and aren't announced in advance.
 
-The current rotation of intermediate CAs for `DigiCert Global Root CA` (see [Certificate rotation](#trusted-root-certs-and-cert-rotations)) started in November 2025 and is scheduled to be completed in the first quarter of 2026. If you followed the [recommended practices](#recommended-configurations-for-tls), then this change requires no changes in your environment.
+The current rotation of ICAs for `DigiCert Global Root CA` (see [Certificate rotation](#trusted-root-certificates-and-certificates-rotation)) started in November 2025 and is scheduled to be completed in the first quarter of 2026. If you followed the [recommended practices](#recommended-configurations-for-tls), then this change requires no changes in your environment.
 
-#### Old CA chain
+#### Old certificate authority chain
 
-Don't use intermediate CAs or server certificates in your trusted root store.
+Don't use intermediate certificate authorities or cluster certificates in your trusted root store.
 
 - `DigiCert Global Root G2`
   - `Microsoft Azure RSA TLS Issuing CA 03 / 04 / 07 / 08`
-    - Server certificate
+    - Cluster certificate
 
 #### New CA chain
 
-Don't use intermediate CAs or server certificates in your trusted root store.
+Don't use intermediate certificate authorities or cluster certificates in your trusted root store.
 
 - `DigiCert Global Root G2`
   - `Microsoft TLS RSA Root G2`
     - `Microsoft TLS G2 RSA CA OCSP 02 / 04 / 06 / 08 / 10 / 12 / 14 / 16`
-      - Server certificate
+      - Cluster certificate
 
 ### Read replicas
 
-Root CA migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root CA certificate than the primary server. You should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
+Root certificate authority migration from [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to [DigiCert Global Root G2](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt) isn't completed in all regions. Therefore, it's possible for newly created read replicas to use a newer root certificate authority certificate than the primary server. You should add [DigiCert Global Root CA](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt) to the read replicas trusted store.
 
 ### Certificate chains
 
-A certificate chain is a hierarchical sequence of certificates issued by trusted Certificate Authorities (CAs). The chain starts at the root CA, which issues intermediate CA (ICA) certificates. ICAs can issue certificates for lower ICAs. The lowest ICA in the chain issues individual server certificates. You establish the chain of trust by verifying each certificate in the chain up to the root CA certificate.
-
-<a id="reducing-connection-failures"></a>
+A certificate chain is a hierarchical sequence of certificates issued by trusted certificate authorities (CAs). The chain starts at the root CA, which issues intermediate certificate authorities (ICA) certificates. ICAs can issue certificates for lower ICAs. The lowest ICA in the chain issues individual cluster certificates. You establish the chain of trust by verifying each certificate in the chain up to the root CA certificate.
 
 ### Reduce connection failures
 
-Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate CAs. Specifically, avoid trusting Intermediate CAs or individual server certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
+Using recommended TLS configurations helps reduce the risk of connection failures due to certificate rotations or changes in intermediate certificate authorities. Specifically, avoid trusting intermediate certificate authorities or individual cluster certificates. These practices can lead to unexpected connection problems when Microsoft updates the certificate chain.
 
 > [!IMPORTANT]  
-> Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, server certificate rotations and changes to intermediate CAs are routine and aren't announced.
+> Microsoft announces changes in root CAs ahead of time to help you prepare your client applications. However, cluster certificate rotations and changes to intermediate CAs are routine and aren't announced.
 
 > [!CAUTION]  
-> Using ***[unsupported (client) configurations](#trusted-root-certs-and-cert-rotations)*** causes unexpected connection failures.
+> Using ***[unsupported (client) configurations](#trusted-root-certificates-and-certificates-rotation)*** causes unexpected connection failures.
 
 ## Recommended configurations for TLS
 
@@ -101,13 +100,13 @@ Don't use the following configurations:
 
 ### Unsupported configurations; don't use
 
-Azure PostgreSQL doesn't announce changes about intermediate CA changes or individual server certificate rotations. Therefore, the following configurations are unsupported when using `sslmode` settings `verify-ca` or `verify-all`:
+Azure PostgreSQL doesn't announce changes about intermediate CA changes or individual cluster certificate rotations. Therefore, the following configurations are unsupported when using `sslmode` settings `verify-ca` or `verify-all`:
 
 - Using intermediate CA certificates in your trusted store.
-- Using certificate pinning, such as, using individual server certificates in your trusted store.
+- Using certificate pinning, such as, using individual cluster certificates in your trusted store.
 
 > [!CAUTION]  
-> Your applications fail to connect to the database servers without warning whenever Microsoft changes the certificate chain's intermediate CAs or rotates the server certificate.
+> Your applications fail to connect to the database cluster without warning whenever Microsoft changes the certificate chain's intermediate CAs or rotates the cluster certificate.
 
 ### Certificate pinning problems
 
@@ -119,7 +118,7 @@ Never use certificate pinning in your applications since it breaks certificate r
 - Produce your list of certificates that are in your trusted root store.
   - [Combine and update root CA certificates for Java applications](security-tls-how-to-connect.md#combine-and-update-root-ca-certificates-for-java-applications).
   - Open the trusted root store on your client machine and export the list of certificates.
-- You're using certificate pinning if you have intermediate CA certificates or individual PostgreSQL server certificates in your trusted root store.
+- You're using certificate pinning if you have intermediate CA certificates or individual PostgreSQL cluster certificates in your trusted root store.
 - To remove certificate pinning, remove all the certificates from your trusted root store and add the [recommended root CA certificates](#recommended-configurations-for-tls).
 
 If you experience problems due to the intermediate certificate even after following these steps, contact [Microsoft support](/azure/azure-portal/supportability/how-to-create-azure-support-request). Include **ICA Rotation 2026** in the title.
@@ -140,15 +139,15 @@ All incoming connections that use earlier insecure versions of the TLS protocol,
 
 The IETF released the TLS 1.3 specification in RFC 8446 in August 2018, and TLS 1.3 is the recommended version since it's faster and more secure than TLS 1.2.
 
-Although we don't recommend it, if needed, you can disable TLS for connections to your Azure HorizonDB. You can update the `require_secure_transport` parameter to `OFF`.
+Although you shouldn't, if needed, you can disable TLS for connections to your Azure HorizonDB. You can update the `require_secure_transport` parameter to `OFF`.
 
 > [!IMPORTANT]  
-> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` Parameter.
+> Use the latest version of TLS 1.3 to encrypt your database connections. You can specify the minimal TLS version by setting the `ssl_min_protocol_version` parameter to `TLSv1.3`. Don't set the `ssl_max_protocol_version` parameter.
 
 ### Cipher suites
 
-A [cipher suite](https://en.wikipedia.org/wiki/Cipher_suite) is a set of algorithms that include a cipher, a key-exchange algorithm, and a hashing algorithm. Use them together with the TLS certificate and the TLS version to establish a secure TLS connection. Most TLS clients and servers support multiple cipher suites and sometimes multiple TLS versions.
-During the establishment of the connection, the client and server [negotiate the TLS version and cipher suite to use through a handshake](https://en.wikipedia.org/wiki/Cipher_suite#Full_handshake:_coordinating_cipher_suites). During this handshake, the following steps occur:
+A [cipher suite](https://en.wikipedia.org/wiki/Cipher_suite) is a set of algorithms that include a cipher, a key-exchange algorithm, and a hashing algorithm. Use them together with the TLS certificate and the TLS version to establish a secure TLS connection. Most TLS clients and clusters support multiple cipher suites and sometimes multiple TLS versions.
+During the establishment of the connection, the client and cluster [negotiate the TLS version and cipher suite to use through a handshake](https://en.wikipedia.org/wiki/Cipher_suite#Full_handshake:_coordinating_cipher_suites). During this handshake, the following steps occur:
 
 - Client sends a list of acceptable cipher suites.
 - Server selects the best cipher suite from the list and informs the client of the choice.
@@ -158,7 +157,7 @@ During the establishment of the connection, the client and server [negotiate the
 At this time, Azure HorizonDB doesn't implement the following TLS features:
 
 - TLS certificate-based client authentication through TLS with mutual authentication (mTLS).
-- Custom server certificates (bring your own TLS certificates).
+- Custom cluster certificates (bring your own TLS certificates).
 
 ## Related content
 

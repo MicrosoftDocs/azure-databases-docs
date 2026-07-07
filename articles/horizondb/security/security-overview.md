@@ -1,10 +1,11 @@
 ---
 title: Secure Your Azure HorizonDB
 description: Learn how to secure an Azure HorizonDB, with best practices for security and compliance.
+#customer intent: As a user, I want to secure my Azure HorizonDB deployment so that I can protect sensitive data and maintain compliance with industry standards.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: overview
@@ -40,15 +41,15 @@ Here are some possible security services, features, and best practices for the d
 
 ### Encrypt data in transit
 
-- **Verify TLS connections**: Azure HorizonDB encrypts data in transit between your application and the database. You should configure your application to verify the server certificate. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
+- **Verify TLS connections**: Azure HorizonDB encrypts data in transit between your application and the database. Configure your application to verify the server certificate. For more information, see [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
-- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
+- **Ensure client has the latest TLS certificates installed**: Ensure that your client applications have the latest TLS certificates installed to support secure connections. For more information, see [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
-- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. For more information, visit [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
+- **Require the use of TLS 1.3**: Configure your PostgreSQL server to require TLS 1.3 for all connections. For more information, see [Transport Layer Security (TLS) in Azure HorizonDB (Preview)](security-tls.md).
 
 ### Encryption at rest
 
-- **Data is always transparently encrypted at rest with SMK**: Azure HorizonDB automatically encrypts data at rest by using service-managed keys (SMK). This encryption ensures that your data is protected without requiring extra configuration. It relies on the underlying Azure storage infrastructure. It covers the primary server, replicas, point-in-time-recovery (PITR), and backups. For more information, visit [Data encryption at rest in Azure HorizonDB (Preview)](security-data-encryption.md).
+- **Data is always transparently encrypted at rest with SMK**: Azure HorizonDB automatically encrypts data at rest by using service-managed keys (SMK). This encryption ensures that your data is protected without requiring extra configuration. It relies on the underlying Azure storage infrastructure. It covers the primary server, replicas, point-in-time-recovery (PITR), and backups. For more information, see [Data encryption at rest in Azure HorizonDB (Preview)](security-data-encryption.md).
 
 - **Encrypt ultra-sensitive data with client-side encryption**: For ultra-sensitive data, consider implementing client-side encryption. This approach involves encrypting data before you send it to the database, ensuring that only encrypted data is stored in the database. This practice provides a more layer of security, as the database itself and therefore the database administrator doesn't have access to the unencrypted data.
 
@@ -68,11 +69,11 @@ Here are some possible security services, features, and best practices for the d
 
 ## Backup and recovery
 
-The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, For more information, visit [Overview of business continuity in Azure HorizonDB (Preview)](../backup-restore/concepts-business-continuity.md).
+The backup and recovery section focuses on ensuring that data and configurations across Azure services are regularly backed up, protected, and recoverable in failures or disasters. It emphasizes automating backups, securing backup data, and ensuring that recovery processes are tested and validated to meet recovery time objectives (RTO) and recovery point objectives (RPO). The section also highlights the importance of monitoring and auditing backup processes to ensure compliance and readiness. For an overview, see [Overview of business continuity in Azure HorizonDB (Preview)](../backup-restore/concepts-business-continuity.md).
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
 
-- **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backups in Azure HorizonDB (Preview)](../backup-restore/concepts-backup-restore.md).
+- **Configure automated backups**: Azure HorizonDB automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, see [Backups in Azure HorizonDB (Preview)](../backup-restore/concepts-backup-restore.md).
 
 - **Configure read replicas**: Use the read replicas to offload read operations from the primary server, improving performance and availability. You can also use read replicas for disaster recovery scenarios, allowing you to quickly switch to a replica with a primary server failure.
 
