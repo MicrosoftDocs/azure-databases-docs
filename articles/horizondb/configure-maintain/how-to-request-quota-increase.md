@@ -1,26 +1,29 @@
 ---
 title: How to Request a Quota Increase in Azure HorizonDB
 description: Learn how to request a quota increase for Azure HorizonDB. You also learn how to enable a subscription to access a region.
+#customer intent: As an user, I want to request a quota increase, so that my workload has the resources it needs beyond the default limits.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: configuration
 ms.topic: how-to
 ---
 
-# Request quota increases for Azure HorizonDB (Preview)
+# Request quota increases in Azure HorizonDB (Preview)
 
-The resources in Azure HorizonDB have default quotas/limits. However, there might be a case where your workload needs more quota than the default value. In such case, you must reach out to the Azure HorizonDB team to request a quota increase. This article explains how to request a quota increase for Azure HorizonDB resources.
+The resources in Azure HorizonDB have default quotas and limits. However, your workload might need more quota than the default value. In this case, contact the Azure HorizonDB team to request a quota increase. This article explains how to request a quota increase for Azure HorizonDB resources.
 
 ## Create a new support request
 
 To request a quota increase, you must create a new support request with your workload details. The Azure HorizonDB team then processes your request and approves or denies it. Use the following steps to create a new support request from the Azure portal:
 
-1. Sign into the Azure portal.
+Use the [Azure portal](https://portal.azure.com/):
 
-1. From the left-hand menu, select **Help + support** and then select **Create a support request**.
+1. Select your Azure HorizonDB.
+
+1. In the resource menu, select **Help + support** and then select **Create a support request**.
 
 1. In the **Problem Description** tab, fill the following details:
 

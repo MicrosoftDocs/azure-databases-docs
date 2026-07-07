@@ -1,45 +1,45 @@
 ---
 title: List Parameter Groups in Azure HorizonDB
 description: This article describes how to list parameter groups in Azure HorizonDB.
+#customer intent: As an user, I want to list all parameter groups in my subscription, so that I can review my current configuration inventory.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to list parameter groups in Azure HorizonDB.
 ---
 
 # List parameter groups in Azure HorizonDB (Preview)
 
-When listing parameter groups, you can scope the operation to a single parameter group, to all parameter groups in a resource group, or to all parameter groups in any resource group of a given subscription.
+When you list parameter groups, you can scope the operation to a single parameter group, to all parameter groups in a resource group, or to all parameter groups in any resource group of a given subscription.
 
 ## Steps to list parameter groups
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-list-parameter-groups)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
-1. By using the filtering buttons and the search box, find the parameter groups which you're looking for.
+1. Use the filtering buttons and the search box to find the parameter groups that you want.
 
     :::image type="content" source="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page filtered by the name of the parameter group which you want to delete." lightbox="./media/how-to-list-parameter-groups/filter-search-parameter-groups.png":::
 
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-list-parameter-groups)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
-You can list one specific parameter group using the `az rest` command:
+To list a specific parameter group, use the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
   --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/parameterGroups/{parameterGroupName}?api-version=2026-01-20-preview"
 ```
 
-The output that command returns would look like the following:
+The output from this command looks like the following example:
 
 ```json
 {
@@ -83,21 +83,21 @@ The output that command returns would look like the following:
 }
 ```
 
-You can list all parameter groups in a given resource group using the `az rest` command:
+To list all parameter groups in a resource group, use the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
   --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
 ```
 
-You can list all parameter groups in any resource group of a given subscription using the `az rest` command:
+To list all parameter groups in any resource group within a subscription, use the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
   --uri "https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.OrionDb/parameterGroups?api-version=2026-01-20-preview"
 ```
 
-The output either of the two previous commands return would look like the following:
+The output from either of these two commands looks like the following example:
 
 ```json
 {
@@ -190,7 +190,7 @@ The output either of the two previous commands return would look like the follow
 Replace the placeholders:
 - `{subscriptionId}` with your Azure subscription identifier.
 - `{resourceGroupName}` with your resource group name.
-- `{parameterGroupName}` with the desired parameter group name.
+- `{parameterGroupName}` with the parameter group name you want.
 
 ---
 

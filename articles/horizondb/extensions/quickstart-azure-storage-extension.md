@@ -1,22 +1,19 @@
 ---
 title: Quickstart Examples for Azure Storage Extension in Azure HorizonDB
 description: Learn how to use the Azure Storage extension in Azure HorizonDB to import and export data.
+#customer intent: As a user, I want to import data from Azure Storage into my Azure HorizonDB tables, so that I can load external data sets without leaving my PostgreSQL environment.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: reference
-ms.custom:
-  - ignite-2024
-  - ignite-2025
-  - sfi-image-nochange
 ---
 
-# Quickstart examples for Azure Storage extension for Azure HorizonDB (Preview)
+# Quickstart examples for Azure Storage extension in Azure HorizonDB (Preview)
 
-Following is a list of examples to help you learn how to use the Azure Storage extension.
+The following examples help you learn how to use the Azure Storage extension.
 
 ## Create an Azure Storage account and populate it with data
 
@@ -38,14 +35,14 @@ Following is a list of examples to help you learn how to use the Azure Storage e
    ```
 1. Create a blob container.
 
-   To create the blob container, run the following Azure CLI:
+   To create the blob container, run the following Azure CLI command:
 
    ```azurecli-interactive
    az storage container create --account-name $storage_account --name $blob_container -o tsv
    ```
-1. Fetch one of the two access keys assigned to the storage account. Make sure you copy the value of your access_key as you need to pass it as an argument to [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add) in a subsequent step.
+1. Get one of the two access keys assigned to the storage account. Make sure you copy the value of your access key as you need to pass it as an argument to [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add) in a subsequent step.
 
-   To fetch the first of the two access keys, run the following Azure CLI command:
+   To get the first of the two access keys, run the following Azure CLI command:
 
    ```azurecli-interactive
    access_key=$(az storage account keys list --resource-group $resource_group --account-name $storage_account --query [0].value)
@@ -70,11 +67,11 @@ Following is a list of examples to help you learn how to use the Azure Storage e
    ```
 
 > [!NOTE]  
-> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that have been added using [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
+> You can list containers or the blobs stored in them for a specific storage account, but only if your PostgreSQL user or role is granted permission on the reference to that storage account by using [azure_storage.account_user_add](reference-azure-storage-extension.md#azure_storageaccount_user_add). Members of the `azure_storage_admin` role are granted this privilege over all Azure Storage accounts that are added by using [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add). By default, only members of `azure_pg_admin` are granted the `azure_storage_admin` role.
 
-## Create a table in which data is loaded
+## Create a table in which to load data
 
-Let's create the table into which we import the contents of the files that we uploaded to the storage account. To do so, connect to your instance of Azure HorizonDB using [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), [PgAdmin](https://www.pgadmin.org/), or the client of your preference, and execute the following statement:
+Create the table into which you import the contents of the files that you uploaded to the storage account. To do so, connect to your instance of Azure HorizonDB by using [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), [PgAdmin](https://www.pgadmin.org/), or the client of your preference, and execute the following statement:
 
 ```sql
 CREATE TABLE IF NOT EXISTS sample_data (
@@ -94,25 +91,25 @@ Before proceeding, make sure that you:
 
 ## Add access key of storage account
 
-This example illustrates how to add a reference to a storage account, together with the access key of that storage account which is required to access its content via the functionality provided by the `azure_storage` extension in your instance of Azure HorizonDB.
+This example shows how to add a reference to a storage account, along with the access key for that storage account. You need the access key to access the storage account's content through the functionality provided by the `azure_storage` extension in your instance of Azure HorizonDB.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-Similarly, `<access_key>` must be set to the value you fetched from your storage account.
+Set `<access_key>` to the value you fetched from your storage account.
 
 ```sql
 SELECT azure_storage.account_add('<account_name>', '<access_key>');
 ```
 > [!TIP]  
-> If you want to retrieve the storage account name and one of its access keys from the Azure portal, search for your storage account, in the resource menu select **Access keys**, copy the **Storage account name** and copy the **Key** from **key1** section (you have to select **Show** next to the key first).
+> To retrieve the storage account name and one of its access keys from the Azure portal, search for your storage account. In the resource menu, select **Access keys**. Copy the **Storage account name** and copy the **Key** from the **key1** section. You need to select **Show** next to the key first.
 
 ## Grant access to a user or role on the Azure Blob storage reference
 
-This example illustrates how to grant access to a user or role named `<regular_user>`, so that such PostgreSQL user can use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
+This example shows how to grant access to a user or role named `<regular_user>`, so that the PostgreSQL user can use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<regular_user>` must be set to the name of an existing user or role.
+Set `<regular_user>` to the name of an existing user or role.
 
 ```sql
 SELECT * FROM azure_storage.account_user_add('<account_name>', '<regular_user>');
@@ -120,11 +117,11 @@ SELECT * FROM azure_storage.account_user_add('<account_name>', '<regular_user>')
 
 ## List all blobs in a container
 
-This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`.
+This example shows how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>');
@@ -132,13 +129,13 @@ SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>');
 
 ## List blobs with a specific name prefix
 
-This example illustrates how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`, whose blob name begins with `<blob_name_prefix>`.
+This example shows how to list all existing blobs inside container `<container_name>` of storage account `<account_name>`, whose blob name begins with `<blob_name_prefix>`.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
-`<blob_name_prefix>` should be set to whatever prefix you want the blobs enumerated to include in their names. If you want to return all blobs, you can set this parameter to an empty string or don't even specify a value for this parameter, in which case the value defaults to an empty string.
+Set `<blob_name_prefix>` to the prefix you want the blobs enumerated to include in their names. If you want to return all blobs, set this parameter to an empty string or don't specify a value for this parameter, in which case the value defaults to an empty string.
 
 ```sql
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>','<blob_name_prefix>');
@@ -150,11 +147,11 @@ Alternatively, you can use the following syntax:
 SELECT * FROM azure_storage.blob_list('<account_name>','<container_name>') WHERE path LIKE '<blob_name_prefix>%';
 ```
 
-## Import data using a COPY FROM statement
+## Import data by using a COPY FROM statement
 
-The following example shows the import of data from a blob called `storage_extension_sample.parquet` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
+The following example shows how to import data from a blob named `storage_extension_sample.parquet` that resides in the blob container `<container_name>` in the Azure Storage account `<account_name>`. The import uses the `COPY` command:
 
-1. Create a table that matches the schema of the source file:
+1. Create a table that matches the schema of the source file.
 
    ```sql
    CREATE TABLE IF NOT EXISTS sample_data (
@@ -165,7 +162,7 @@ The following example shows the import of data from a blob called `storage_exten
    );
    ```
 
-1. Use a `COPY` statement to copy data into the target table. Format is inferred as Parquet from the extension of the file.
+1. Use a `COPY` statement to copy data into the target table. The format is inferred as Parquet from the extension of the file.
 
    ```sql
    TRUNCATE TABLE sample_data;
@@ -173,7 +170,7 @@ The following example shows the import of data from a blob called `storage_exten
    FROM 'https://<account_name>.blob.core.windows.net/<container_name>/storage_extension_sample.parquet';
    ```
 
-1. Use a `COPY` statement to copy data into the target table. Because encoding format can't be inferred from file extension, it's explicitly specified via the `FORMAT` option.
+1. Use a `COPY` statement to copy data into the target table. Because the encoding format can't be inferred from the file extension, specify it explicitly by using the `FORMAT` option.
 
    ```sql
    TRUNCATE TABLE sample_data;
@@ -182,7 +179,7 @@ The following example shows the import of data from a blob called `storage_exten
    WITH (FORMAT 'parquet');
    ```
 
-1. Use a `COPY` statement to copy data into the target table. Encoding format can be inferred from file extension. However, presence of column headers in first row needs to be explicitly configured via `HEADERS` option.
+1. Use a `COPY` statement to copy data into the target table. The encoding format can be inferred from the file extension. However, you need to explicitly configure the presence of column headers in the first row by using the `HEADERS` option.
 
    ```sql
    TRUNCATE TABLE sample_data;
@@ -203,7 +200,7 @@ The following example shows the import of data from a blob called `storage_exten
 
 The following examples show the export of data from a table called `sample_data`, to multiple blobs with different names, and characteristics like their encoding format, all of which reside in the blob container `<container_name>` in the Azure Storage account `<account_name>`, via the `COPY` command:
 
-1. Create a table that matches the schema of the source file:
+1. Create a table that matches the schema of the source file.
 
    ```sql
    CREATE TABLE IF NOT EXISTS sample_data (
@@ -214,7 +211,7 @@ The following examples show the export of data from a table called `sample_data`
    );
    ```
 
-1. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
+1. Load data into the table. Either run INSERT statements to populate it with several synthetic rows, or use the [Import data using a COPY FROM statement](#import-data-by-using-a-copy-from-statement) example to populate it with the contents of the sample data set.
 
 1. Use a `COPY` statement to copy data out of the target table. Specify that the encoding format must be parquet.
 
@@ -242,9 +239,9 @@ The following examples show the export of data from a table called `sample_data`
 
 The `blob_get` function retrieves the contents of one specific blob, in the referred container `<container_name>` of the `<account_name>` storage. In order for `blob_get` to know how to parse the data you can pass a value in the form `NULL::table_name`, where `table_name` refers to a table whose schema matches that of the blob being read. In the example, it refers to the `sample_data` table we created at the very beginning.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 `<blob_name>` should be set to the full path of the blob whose contents you want to read.
 
@@ -275,9 +272,9 @@ LIMIT 5;
 
 This example illustrates the possibility to filter and modify the content imported from the blob, before loading that into a SQL table.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 ```sql
 SELECT concat('P-',id::text) FROM azure_storage.blob_get
@@ -293,9 +290,9 @@ LIMIT 5;
 
 This example illustrates how you can use custom separators and escape characters, by passing the result of [options_copy](reference-azure-storage-extension.md#azure_storageoptions_copy) to the `options` argument.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
@@ -311,9 +308,9 @@ SELECT * FROM azure_storage.blob_get
 
 This example illustrates the use of the `decoder` option. When the decoder option isn't present, it's inferred from the extension of the file. But when the file name doesn't have an extension, or when that file name extension doesn't correspond to the one associated to the decoder that must be used to properly parse the contents of the file, you can explicitly pass the decoder argument.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 ```sql
 SELECT * FROM azure_storage.blob_get
@@ -329,9 +326,9 @@ LIMIT 5;
 
 This example illustrates how you can do aggregation operations over information that is stored in a blob container, without the need to import the contents of the blob into PostgreSQL tables.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 ```sql
 SELECT sample_integer, COUNT(*) FROM azure_storage.blob_get
@@ -348,9 +345,9 @@ LIMIT 5;
 
 The `blob_put` function composes the contents of one specific blob (`sample_data_copy.parquet` in this case), and uploads it to the referred container `<container_name>` of the `<account_name>` storage. This example uses `blob_get` to construct a set of five rows, which are then passed to the `blob_put` aggregate function which uploads them as a blob named `sample_data_copy.parquet`.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<container_name>` must be set to the name of your blob container. If you used the previous scripts, this value should match whatever value you set to the blob_container environment variable in those scripts.
+Set `<container_name>` to the name of your blob container. If you used the previous scripts, set this value to match the `blob_container` environment variable in those scripts.
 
 Encoding format is inferred as parquet, based on file extension `.parquet`.
 
@@ -399,9 +396,9 @@ SELECT * FROM azure_storage.account_list();
 
 This example illustrates how to revoke access from a user or role named `<regular_user>`, so that such PostgreSQL user can't use the `azure_storage` extension to access the blobs stored in containers hosted by the referred Azure storage account.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
-`<regular_user>` must be set to the name of an existing user or role.
+Set `<regular_user>` to the name of an existing user or role.
 
 ```sql
 SELECT * FROM azure_storage.account_user_remove('<account_name>', '<regular_user>');
@@ -411,7 +408,7 @@ SELECT * FROM azure_storage.account_user_remove('<account_name>', '<regular_user
 
 This example illustrates how to remove any reference to a storage account, so that no user in the current database can use the `azure_storage` extension functionality to access that storage account.
 
-`<account_name>` must be set to the name of your storage account. If you used the previous scripts, this value should match whatever value you set to the storage_account environment variable in those scripts.
+Set `<account_name>` to the name of your storage account. If you used the previous scripts, this value matches the value you set for the `storage_account` environment variable in those scripts.
 
 ```sql
 SELECT azure_storage.account_remove('<account_name>');

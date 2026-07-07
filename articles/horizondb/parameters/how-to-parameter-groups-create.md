@@ -1,25 +1,25 @@
 ---
 title: Create Parameter Groups in Azure HorizonDB
 description: This article describes how to create parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to create a parameter group in Azure HorizonDB, so that I can customize PostgreSQL configuration settings for my clusters.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to create parameter groups in Azure HorizonDB.
 ---
 
-# Create parameter groups (Preview)
+# Create parameter groups in Azure HorizonDB (Preview)
 
-When you create a parameter group, at least one parameter must be provided. The underlying operation in the backend merges your input with the system defaults for the specified `pgVersion`.
+When you create a parameter group, you must provide at least one parameter. The underlying operation in the backend merges your input with the system defaults for the specified `pgVersion`.
 
 ## Steps to create parameter groups
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-create-parameter-groups)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
@@ -71,7 +71,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-create-parameter-groups/parameter-group-created.png" alt-text="Screenshot that shows the Overview page of the newly created parameter group." lightbox="./media/how-to-create-parameter-groups/parameter-group-created.png":::
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-create-parameter-groups)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 

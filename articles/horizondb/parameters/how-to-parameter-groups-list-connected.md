@@ -1,29 +1,29 @@
 ---
 title: List Clusters Connected to Parameter Groups in Azure HorizonDB
 description: This article describes how to list clusters connected to parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to list the clusters connected to a parameter group, so that I can see which clusters are affected by that group's settings.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to list clusters connected to parameter groups in Azure HorizonDB.
 ---
 
 # List clusters connected to parameter groups in Azure HorizonDB (Preview)
 
-Given a parameter group, you can list the clusters that are connected to it and identify what's the current synchronization status for each of them.
+Given a parameter group, you can list the clusters that are connected to it and see the current synchronization status for each cluster.
 
 ## Steps to list clusters connected to parameter groups
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-clusters-connected-parameter-group)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
-1. By using the filtering buttons and the search box, find the parameter group that you want to check what clusters are connected to it, and select it.
+1. Use the filtering buttons and the search box to find the parameter group that you want to check. Select the parameter group.
 
     :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png" alt-text="Screenshot that shows the browse for Azure HorizonDB (Preview) parameter groups page. Filter by the name of the parameter group that you want to check what clusters are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/filter-search-parameter-groups.png":::
 
@@ -31,11 +31,11 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png" alt-text="Screenshot that shows the Overview page of the selected parameter group with the clusters that are connected to it." lightbox="./media/how-to-list-connected-clusters-parameter-groups/connected-clusters.png":::
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-clusters-connected-parameter-group)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
-You can list clusters connected to parameter groups using the `az rest` command:
+To list clusters connected to parameter groups, use the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
@@ -45,9 +45,9 @@ az rest --method GET \
 Replace the placeholders:
 - `{subscriptionId}` with your Azure subscription identifier.
 - `{resourceGroupName}` with your resource group name.
-- `{parameterGroupName}` with the desired parameter group name.
+- `{parameterGroupName}` with the parameter group name you want.
 
-The output that command returns would look like this:
+The output that command returns looks like this:
 
 ```json
 {

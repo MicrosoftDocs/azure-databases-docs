@@ -1,10 +1,11 @@
 ---
 title: "Quickstart: Create an Azure HorizonDB Cluster"
 description: Quickstart guide to creating an Azure HorizonDB cluster.
+#customer intent: As a user, I want to create an Azure HorizonDB cluster by using the Azure portal, so that I can deploy a managed PostgreSQL database for my workloads.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: configuration
 ms.topic: quickstart
@@ -13,7 +14,7 @@ ai-usage: ai-assisted
 
 # Create an Azure HorizonDB cluster (Preview)
 
-Azure HorizonDB is a cloud native fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
+Azure HorizonDB is a cloud-native, fully managed, AI-ready database service built on PostgreSQL. It combines a disaggregated compute and storage architecture with a database-as-a-log design to deliver predictable performance, enterprise-grade security, high availability, and seamless scalability for mission-critical workloads.
 
 This quickstart shows you how to create an Azure HorizonDB cluster by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
 
@@ -36,7 +37,7 @@ An Azure HorizonDB cluster includes:
 
 ## Create a cluster using the Azure portal
 
-Follow these steps to create an Azure HorizonDB cluster using the Azure portal. The wizard guides you through essential configuration options for compute, storage, and authentication.
+Follow these steps to create an Azure HorizonDB cluster by using the Azure portal. The wizard guides you through essential configuration options for compute, storage, and authentication.
 
 ### Navigate to the creation wizard
 
@@ -85,7 +86,7 @@ Select **Save** to confirm or **Cancel** to discard changes.
 
 ### Configure networking
 
-Choose your connectivity method (can't be changed after creation):
+Choose your connectivity method (you can't change it after creation):
 
 #### Network connectivity
 
@@ -399,7 +400,7 @@ az horizondb show \
   --output table
 ```
 
-## Connect using psql
+## Connect by using psql
 
 ### Install psql
 
@@ -421,7 +422,7 @@ host={cluster}.{randomId}.australiaeast.horizondb.azure.com port=5432 dbname={da
 
 ### Verify connection
 
-After connecting, you should see:
+After connecting, you see:
 
 ```output
 psql (16.12, server 17.9 (Azure HorizonDB (c8e7b717d05)(release)))
@@ -453,7 +454,7 @@ If you see:
 connection to server at "{cluster}.{randomId}.australiaeast.horizondb.azure.com" (###.###.###.###), port 5432 failed: Connection timed out
 ```
 
-**Solution**: Make sure that there's a firewall rule whose range of start and end IP addresses includes the IP address with which your computer is trying to access the cluster.
+**Solution**: Make sure that there's a firewall rule whose range of start and end IP addresses includes the IP address that your computer uses to access the cluster.
 
 ```azurecli-interactive
 az horizondb firewall-rule create \

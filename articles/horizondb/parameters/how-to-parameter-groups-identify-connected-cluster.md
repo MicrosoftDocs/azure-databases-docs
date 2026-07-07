@@ -1,14 +1,14 @@
 ---
 title: Identify which Parameter Group is Connected to a Cluster in Azure HorizonDB
 description: This article describes how to identify which parameter group is connected to a cluster in Azure HorizonDB.
+#customer intent: As a user, I want to identify which parameter group is connected to a cluster, so that I can verify its configuration in Azure HorizonDB.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to identify which parameter group is connected to a cluster in Azure HorizonDB.
 ---
 
 # Identify which parameter group is connected to a cluster in Azure HorizonDB (Preview)
@@ -17,9 +17,9 @@ You can identify which parameter group is connected to a cluster.
 
 ## Steps to identify which parameter group connected to a cluster
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-identify-parameter-group-connected-cluster)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview)**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2Fclusters).
 
@@ -38,7 +38,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-identify-connected-cluster/parameter-group-overview.png" alt-text="Screenshot that shows the Overview page of the parameter group selected." lightbox="./media/how-to-identify-connected-cluster/parameter-group-overview.png":::
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-identify-parameter-group-connected-cluster)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 

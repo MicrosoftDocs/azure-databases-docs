@@ -1,24 +1,24 @@
 ---
 title: Enable and Use pg_partman in Azure HorizonDB
 description: Learn how to enable and use pg_partman on Azure HorizonDB to optimize database performance and improve query speed.
+#customer intent: As a user, I want to enable and use pg_partman on Azure HorizonDB so that I can optimize my database performance.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: sbalijepalli, maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: configuration
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
 # customer intent: As a developer, I want to learn how to enable and use pg_partman on Azure HorizonDB  so that I can optimize my database performance.
 ---
 
-# Enable and use pg_partman for Azure HorizonDB (Preview)
+# Enable and use pg_partman in Azure HorizonDB (Preview)
 
 In this article, you learn how to optimize Azure HorizonDB by using the PostgreSQL Partition Manager (`pg_partman`) extension.
 
-When tables in a database become large, it's hard to manage how often they're vacuumed, how much space they take up, and how to keep their indexes efficient. This difficulty can make queries slower and affect performance. Partitioning of large tables is a solution for these situations.
+When tables in a database become large, it's hard to manage how often they're vacuumed, how much space they take up, and how to keep their indexes efficient. This difficulty can make queries slower and affect performance. Partitioning large tables can help solve these problems.
 
 In this article, you use `pg_partman` to create range-based partitions of tables in your Azure HorizonDB.
 
@@ -38,11 +38,11 @@ To enable the `pg_partman` extension, follow these steps:
 
    :::image type="content" source="media/how-to-use-pg-partman/prerequisites-outlined.png" alt-text="Screenshot that shows selection of the pg_partman_bgw extension." lightbox="media/how-to-use-pg-partman/prerequisites-outlined.png" :::
 
-   You can use **Parameters** in the Azure portal to change the following configuration options that affect the Background Writer (BGW) process:
+   Use **Parameters** in the Azure portal to change the following configuration options that affect the Background Writer (BGW) process:
 
-   - `pg_partman_bgw.dbname`: Required. This parameter should contain one or more databases where `run_maintenance()` needs to run. If there's more than one database, use a comma-separated list. If nothing is set, `pg_partman_bgw` doesn't run the procedure.
+   - `pg_partman_bgw.dbname`: Required. This parameter should contain one or more databases where `run_maintenance()` needs to run. If there's more than one database, use a comma-separated list. If you don't set this parameter, `pg_partman_bgw` doesn't run the procedure.
 
-   - `pg_partman_bgw.interval`: The number of seconds between calls to the `run_maintenance()` procedure. Default is `3600` (1 hour). You can update this value based on the requirements of the project.
+   - `pg_partman_bgw.interval`: The number of seconds between calls to the `run_maintenance()` procedure. Default is `3600` (1 hour). Update this value based on the requirements of the project.
 
    - `pg_partman_bgw.role`: The role that `run_maintenance()` procedure runs as. Default is `postgres`. Only a single role name is allowed.
 
@@ -54,13 +54,13 @@ To enable the `pg_partman` extension, follow these steps:
 >
 > - When an identity feature uses sequences, the data from the parent table gets new sequence values. It doesn't generate new sequence values when the data is directly added to the child table.
 >
-> - The `pg_partman` extension uses a template to control whether the table is `UNLOGGED`. This means the `ALTER TABLE` command can't change this status for a partition set. By changing the status on the template, you can apply it to all future partitions. But for existing child tables, you must use the `ALTER TABLE` command manually. [This bug](https://www.postgresql.org/message-id/flat/15954-b61523bed4b110c4%40postgresql.org) shows why.
+> - The `pg_partman` extension uses a template to control whether the table is `UNLOGGED`. This condition means the `ALTER TABLE` command can't change this status for a partition set. By changing the status on the template, you can apply it to all future partitions. But for existing child tables, you must use the `ALTER TABLE` command manually. [This bug](https://www.postgresql.org/message-id/flat/15954-b61523bed4b110c4%40postgresql.org) shows why.
 
 ## Set up permissions
 
-A superuser role isn't required with `pg_partman`. The only requirement is that the role that runs `pg_partman` functions has ownership over all the partition sets and schemas where new objects will be created.
+`pg_partman` doesn't require a superuser role. The only requirement is that the role running `pg_partman` functions owns all the partition sets and schemas where you create new objects.
 
-We recommend that you create a separate role for `pg_partman` and give it ownership over the schema and all the objects that `pg_partman` will operate on:
+Create a separate role for `pg_partman` and give it ownership over the schema and all the objects that `pg_partman` operates on:
 
 ```sql
 CREATE ROLE partman_role WITH LOGIN;
@@ -75,7 +75,7 @@ GRANT TEMPORARY ON DATABASE <databasename> to partman_role; --  This allows temp
 
 ## Create partitions
 
-The `pg_partman` extension supports range-type partitions only, not trigger-based partitions. The following code shows how `pg_partman` assists with partitioning a table:
+The `pg_partman` extension supports only range-type partitions, not trigger-based partitions. The following code shows how `pg_partman` assists with partitioning a table:
 
 ```sql
 CREATE SCHEMA partman;
@@ -179,9 +179,9 @@ Run the maintenance procedure by using `pg_cron`:
 
    :::image type="content" source="media/how-to-use-pg-partman/pgcron-database-name.png" alt-text="Screenshot that shows the Parameter for cron database name.":::
 
-1. Select the **Save** button and let the deployment finish.
+1. Select the **Save** button and wait for the deployment to finish.
 
-   After the deployment finishes, `pg_cron` is created automatically. If you try to install it, you get the following message:
+   After the deployment finishes, Azure automatically creates `pg_cron`. If you try to install it, you get the following message:
 
    ```sql
    CREATE EXTENSION pg_cron;
@@ -223,7 +223,7 @@ Run the maintenance procedure by using `pg_cron`:
    SELECT * FROM cron.job_run_details;
    ```
 
-   The results show zero records because you haven't run the job yet.
+   The results show zero records because you didn't run the job yet.
 
 1. To unschedule the `cron` job, use the following command:
 
@@ -233,11 +233,11 @@ Run the maintenance procedure by using `pg_cron`:
 
 ## Frequently asked questions
 
-- Why is `pg_partman_bgw` not running the maintenance procedure based on the interval that I provided?
+- Why isn't `pg_partman_bgw` running the maintenance procedure based on the interval that I provided?
 
-  Check the Parameter `pg_partman_bgw.dbname` and update it with the proper database name. Also, check the Parameter `pg_partman_bgw.role` and provide the appropriate role. You should also make sure that you connect to the server by using the same user to create the extension, instead of Postgres.
+  Check the parameter `pg_partman_bgw.dbname` and update it with the proper database name. Also, check the parameter `pg_partman_bgw.role` and provide the appropriate role. Make sure that you connect to the server by using the same user to create the extension, instead of Postgres.
 
-- I'm encountering an error when `pg_partman_bgw` is running the maintenance procedure. What could be the reasons?
+- I'm encountering an error when `pg_partman_bgw` runs the maintenance procedure. What could be the reasons?
 
   See the previous answer.
 

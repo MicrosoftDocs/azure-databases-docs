@@ -1,37 +1,36 @@
 ---
 title: Considerations with the Use of Extensions and Modules in Azure HorizonDB
-description: Learn about the extension considerations specific to an Azure HorizonDB.
+description: Learn about the extension considerations specific to Azure HorizonDB.
+#customer intent: As a user, I want to understand the special considerations for extensions and modules, so that I can use them correctly in my Azure HorizonDB cluster.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: concept-article
-ms.custom:
-  - build-2025
 ---
 
-# Considerations with the use of extensions and modules for Azure HorizonDB (Preview)
+# Considerations for using extensions and modules in Azure HorizonDB (Preview)
 
-This article describes some special considerations that you must be aware of, when using certain extensions or modules in an Azure HorizonDB instance.
+This article describes some special considerations that you must be aware of when using certain extensions or modules in an Azure HorizonDB instance.
 
-## Generic considerations with extensions
+## Generic considerations for extensions
 
-To use an extension in your Azure HorizonDB instance, you have to:
+To use an extension in your Azure HorizonDB instance, you need to:
 
-- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md). If the extension isn't allowed, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
-- If the extension deploys some shared binary library which requires allocating and accessing shared memory, and need to be loaded when the database engine starts, you should also follow the instructions provided in [load libraries](how-to-load-libraries.md).
-- [Create extensions in Azure HorizonDB (Preview)](how-to-create-extensions.md) in the databases in which you want the extension to deploy the SQL objects distributed with that extension.
-- [Drop extensions in Azure HorizonDB (Preview)](how-to-drop-extensions.md). When you want to remove from the database in which you execute the command all the SQL objects distributed by that extension.
+- [Allow extensions in Azure HorizonDB (Preview)](how-to-allow-extensions.md). If you don't allow the extension, any attempt to execute `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` fails with an error indicating that the referred extension isn't allowed.
+- If the extension deploys a shared binary library that requires allocating and accessing shared memory, and needs to be loaded when the database engine starts, follow the instructions provided in [load libraries](how-to-load-libraries.md).
+- [Create extensions in Azure HorizonDB (Preview)](how-to-create-extensions.md) in the databases where you want the extension to deploy the SQL objects distributed with that extension.
+- [Drop extensions in Azure HorizonDB (Preview)](how-to-drop-extensions.md). When you want to remove from the database all the SQL objects distributed by that extension.
 - [Update extensions in Azure HorizonDB (Preview)](how-to-update-extensions.md), to update to its newest version all the SQL artifacts deployed by an extension that is already installed.
 - [View installed extensions in Azure HorizonDB (Preview)](how-to-view-installed-extensions.md) and their corresponding versions.
 
-If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION` or `COMMENT ON EXTENSION` commands on your Azure HorizonDB instance, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
+If you get any error while executing the `CREATE EXTENSION`, `ALTER EXTENSION`, `DROP EXTENSION`, or `COMMENT ON EXTENSION` commands on your Azure HorizonDB instance, see the list of [possible errors](errors-extensions.md), and what could be the cause of each of those errors.
 
-## Generic considerations with modules
+## Generic considerations for modules
 
-To use a module in your Azure HorizonDB instance, you only have to add it to the `shared_preload_libraries`  parameter as described in [load libraries](how-to-load-libraries.md).
+To use a module in your Azure HorizonDB instance, add it to the `shared_preload_libraries` parameter as described in [load libraries](how-to-load-libraries.md).
 
 Modules don't need to be [allowlisted](how-to-allow-extensions.md). That's an exclusive requirement for extensions.
 
@@ -64,9 +63,9 @@ The [`dblink`](https://www.postgresql.org/docs/current/contrib-dblink-function.h
 
 ### pg_buffercache
 
-The `pg_buffercache` extension can be used to study the contents of *shared_buffers*. Using [this extension](https://www.postgresql.org/docs/current/pgbuffercache.html), you can tell whether a particular relation is cached (in `shared_buffers`). This extension can help you troubleshoot performance issues (caching-related performance issues).
+Use the `pg_buffercache` extension to examine the contents of *shared_buffers*. By using [this extension](https://www.postgresql.org/docs/current/pgbuffercache.html), you can determine whether a specific relation is cached in `shared_buffers`. This extension can help you troubleshoot caching-related performance problems.
 
-This extension is integrated with the core installation of PostgreSQL, and it's easy to install.
+This extension is part of the core installation of PostgreSQL, and it's easy to install.
 
 ```sql
 CREATE EXTENSION pg_buffercache;
@@ -134,13 +133,13 @@ The `cron_schedule_in_database` function allows for the user name as an optional
 
 ### pg_hint_plan
 
-The `pg_hint_plan` extension makes it possible to tweak PostgreSQL execution plans using so-called "hints" in SQL comments, like:
+The `pg_hint_plan` extension enables you to tweak PostgreSQL execution plans by using "hints" in SQL comments, such as:
 
 ```sql
 /*+ SeqScan(a) */
 ```
 
-The `pg_hint_plan` extension reads hinting phrases in a comment of the special form given with the target SQL statement. The particular form begins with the character sequence "/\*+" and ends with "\*/". Hint phrases consist of hint names and following parameters enclosed by parentheses and delimited by spaces. New lines for readability can delimit each hinting phrase.
+The `pg_hint_plan` extension reads hinting phrases in a comment of the special form given with the target SQL statement. The particular form begins with the character sequence `/*+` and ends with `*/`. Hint phrases consist of hint names and following parameters enclosed by parentheses and delimited by spaces. New lines for readability can delimit each hinting phrase.
 
 Example:
 
@@ -155,27 +154,27 @@ Example:
     ORDER BY a.aid;
 ```
 
-The previous example causes the planner to use the results of a `seqscan` on table `a` to combine with table `b` as a `hashjoin`.
+The preceding example causes the planner to use the results of a `seqscan` on table `a` to combine with table `b` as a `hashjoin`.
 
-To use `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database on which you plan to use its functionality.
+To use the `pg_hint_plan` extension, make sure that you [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) the extension, [load its library](how-to-load-libraries.md), and [install the extension](how-to-create-extensions.md) in the database where you plan to use its functionality.
 
 ### pg_prewarm
 
-The `pg_prewarm` extension loads relational data into the cache. Prewarming your caches means your queries have better response times on their first run after a restart. The autoprewarm functionality for the PostgreSQL isn't currently available in the Azure Database.
+The `pg_prewarm` extension loads relational data into the cache. When you prewarm your caches, your queries have better response times on their first run after a restart. The autoprewarm functionality for PostgreSQL isn't currently available in Azure Database.
 
 ### pg_repack
 
-First time users of the `pg_repack` extension typically ask the following question: Is `pg_repack` an extension or a client-side executable like `psql` or `pg_dump`?
+First-time users of the `pg_repack` extension typically ask the following question: Is `pg_repack` an extension or a client-side executable like `psql` or `pg_dump`?
 
-pg_repack is actually both. [pg_repack/lib](https://github.com/reorg/pg_repack/tree/master/lib) has the code for the extension, including the schema and SQL artifacts it creates, and the C library implementing the code of several of those functions.
+`pg_repack` is actually both. [pg_repack/lib](https://github.com/reorg/pg_repack/tree/master/lib) has the code for the extension, including the schema and SQL artifacts it creates, and the C library implementing the code of several of those functions.
 
-On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/master/bin) has the code for the client application, which knows how to interact with the programmability elements implemented in the extension. This client application aims to ease the complexity of interacting with the different interfaces surfaced by the server-side extension. It offers the user some command-line options which are easier to understand. The client application is useless without the extension created on the database it's being pointing to. The server side extension on its own would be fully functional, but would require the user to understand a complicated interaction pattern. That pattern would consist on executing queries to retrieve data that is used as input to functions implemented by the extension, etc.
+On the other hand, [pg_repack/bin](https://github.com/reorg/pg_repack/tree/master/bin) has the code for the client application, which knows how to interact with the programmability elements implemented in the extension. This client application aims to ease the complexity of interacting with the different interfaces surfaced by the server-side extension. It offers the user some command-line options that are easier to understand. The client application is useless without the extension created on the database it's pointing to. The server-side extension on its own is fully functional, but it requires the user to understand a complicated interaction pattern. That pattern consists of executing queries to retrieve data that is used as input to functions implemented by the extension, and so on.
 
 #### Permission denied for schema repack
 
-Currently, because we grant permissions to the repack schema created by this extension, we only support running `pg_repack` functionality from the context of `azure_pg_admin`.
+Currently, because the extension grants permissions to the repack schema, you can only support running `pg_repack` functionality from the context of `azure_pg_admin`.
 
-You might notice that if the owner of a table, who isn't `azure_pg_admin`, tries to run `pg_repack`, they end up receiving the following error:
+You might notice that if the owner of a table, who isn't `azure_pg_admin`, tries to run `pg_repack`, they receive the following error:
 
 ```sql
 NOTICE: Setting up workers.conns
@@ -183,7 +182,7 @@ ERROR: pg_repack failed with error: ERROR:  permission denied for schema repack
 LINE 1: select repack.version(), repack.version_sql()
 ```
 
-To avoid that error, run pg_repack from the context of `azure_pg_admin`.
+To avoid that error, run `pg_repack` from the context of `azure_pg_admin`.
 
 ### pg_stat_statements
 
@@ -191,29 +190,29 @@ The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgsta
 
 The [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) is preloaded in `shared_preload_libraries` on every Azure HorizonDB instance to provide a means of tracking SQL statement execution statistics.
 
-For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
+For security reasons, you must [allowlist](how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview) the [pg_stat_statements extension](https://www.postgresql.org/docs/current/pgstatstatements.html) and install it using the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command.
 
-The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. This setting is configurable as a parameter.
+The setting `pg_stat_statements.track`, which controls what statements the extension tracks, defaults to `top`, meaning all statements issued directly by clients are tracked. The two other tracking levels are `none` and `all`. You can configure this setting as a parameter.
 
-There's a tradeoff between the query execution information the `pg_stat_statements` extension provides on the server performance as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, we recommend that you set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether it's the case for you.
+There's a tradeoff between the query execution information the `pg_stat_statements` extension provides and the server performance, as it logs each SQL statement. If you aren't actively using the `pg_stat_statements` extension, set `pg_stat_statements.track` to `none`. Some third-party monitoring services might rely on `pg_stat_statements` to deliver query performance insights, so confirm whether it's the case for you.
 
 ### postgres_fdw
 
-The [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) extension allows you to connect from one Azure HorizonDB instance to another or another database in the same server. Azure HorizonDB supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
+The [`postgres_fdw`](https://www.postgresql.org/docs/current/postgres-fdw.html) extension enables you to connect from one Azure HorizonDB instance to another instance or to another database in the same server. Azure HorizonDB supports both incoming and outgoing connections to any PostgreSQL server. The sending server needs to allow outbound connections to the receiving server. Similarly, the receiving server needs to allow connections from the sending server.
 
-If you plan to use this extension, we recommend deploying your servers with virtual network integration. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
+If you plan to use this extension, deploy your servers with virtual network integration. By default, virtual network integration allows connections between servers in the virtual network. You can also choose to use [virtual network network security groups](/azure/virtual-network/manage-network-security-group) to customize access.
 
 ### pgstattuple
 
-When using the `pgstattuple` extension to try to obtain tuple statistics from objects kept in the `pg_toast` schema in versions of Postgres 11 through 13, you receive a "permission denied for schema pg_toast" error.
+When you use the `pgstattuple` extension to try to obtain tuple statistics from objects kept in the `pg_toast` schema in versions of Postgres 11 through 13, you receive a "permission denied for schema pg_toast" error.
 
 #### Permission denied for schema pg_toast
 
 Customers using PostgreSQL versions 11 through 13 on Azure HorizonDB instance can't use the `pgstattuple` extension on objects within the `pg_toast` schema.
 
-In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, allowing `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role doesn't exist.
+In PostgreSQL 16 and 17, the `pg_read_all_data` role is automatically granted to `azure_pg_admin`, which allows `pgstattuple` to function correctly. In PostgreSQL 14 and 15, customers can manually grant the `pg_read_all_data` role to `azure_pg_admin` to achieve the same result. However, in PostgreSQL 11 through 13, the `pg_read_all_data` role doesn't exist.
 
-Customers can't directly grant the necessary permissions. If you need to be able to run `pgstattuple` to access objects under the `pg_toast` schema, proceed to [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+Customers can't directly grant the necessary permissions. If you need to run `pgstattuple` to access objects under the `pg_toast` schema, proceed to [create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### timescaleDB
 
@@ -248,7 +247,7 @@ More details on these utilities can be found [here](https://github.com/timescale
 
 ## Extensions and major version upgrade
 
-The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` are unsupported for all Azure HorizonDB instance versions when using in-place major version update feature.
+The extensions `anon`, `Apache AGE`, `dblink`, `orafce`, `postgres_fdw`, and `timescaledb` aren't supported for all Azure HorizonDB instance versions when you use the in-place major version update feature.
 
 ## Modules with specific considerations
 
@@ -264,7 +263,7 @@ The extension streamlines the failover process by managing the necessary transfe
 
 You can find more information and instructions on using the `pg_failover_slots` module on its [GitHub page](https://github.com/EnterpriseDB/pg_failover_slots).
 
-To use the `pg_failover_slots` module, make sure that its [library was loaded](how-to-load-libraries.md) when the server started.
+To use the `pg_failover_slots` module, make sure that its [library is loaded](how-to-load-libraries.md) when the server starts.
 
 ## Related content
 

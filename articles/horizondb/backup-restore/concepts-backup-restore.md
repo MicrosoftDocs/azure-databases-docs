@@ -1,42 +1,41 @@
 ---
 title: Backup and Restore in Azure HorizonDB Cluster
 description: Learn about the concepts of backup and restore with Azure HorizonDB.
+#customer intent: As a user, I want to understand how automated backups work, so that I can determine whether they meet my organization's data protection requirements.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: backup-restore
 ms.topic: concept-article
-ms.custom:
-  - build-2026
 ---
 
-# Backups for Azure HorizonDB (Preview)
+# Backups in Azure HorizonDB (Preview)
 
 This article explains the automated backup feature in Azure HorizonDB.
 
-Azure HorizonDB provides fully managed, built-in backups to protect data and support reliable recovery. Backups are performed automatically, with no manual configuration, or ongoing management required, allowing you to focus on your application while HorizonDB continuously safeguards your data.
+Azure HorizonDB provides fully managed, built-in backups to protect data and support reliable recovery. Backups happen automatically, with no manual configuration or ongoing management required. You can focus on your application while HorizonDB continuously safeguards your data.
 
 ## Backup overview
 
-Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions are committed. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The snapshot and archiving process are managed by the storage layer and runs independently of the compute layer, reducing resource overhead and maintaining consistent performance for active workloads.
+Azure HorizonDB backup operations are snapshot-based and complete near instantaneously, with no impact on database performance or service availability. In addition to snapshots, the service continuously archives write-ahead logs (WAL) to Azure Blob storage as transactions commit. WAL archiving captures and persists database changes in near real time and doesn't require manual configuration. The snapshot and archiving process are managed by the storage layer and run independently of the compute layer, which reduces resource overhead and maintains consistent performance for active workloads.
 
-WAL archiving runs continuously in the background and doesn't impact query execution or application availability. WAL files are retained according to the configured backup retention policy. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), allowing the database to be restored to a specific time within the retention window. This supports recovery from scenarios such as data corruption, unintended changes, or operational incidents.
+WAL archiving runs continuously in the background and doesn't impact query execution or application availability. The configured backup retention policy determines how long the system retains WAL files. WAL archiving, combined with periodic snapshots, supports point-in-time restore (PITR), which means you can restore the database to a specific time within the retention window. This support recovery from scenarios such as data corruption, unintended changes, or operational incidents.
 
 Backup and restore operations for HorizonDB databases are fast regardless of data size, because they use storage snapshots. During restore operations, the restored cluster inherits the backup retention period from the source snapshot of the cluster.
 
 ## Backup retention
 
-The default backup retention period currently is 7 days. All backups are encrypted through Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
+The default backup retention period is currently seven days. All backups use Advanced Encryption Standard (AES) 256-bit encryption for data stored at rest.
 
 Backups in Azure HorizonDB are snapshot-based. The first snapshot is taken immediately after the server is created. Subsequent snapshots are taken multiple times a day to enable faster recovery.
 
 ## Backup metrics
 
-In Azure HorizonDB, automated backups capture incremental changes to data pages and transaction logs, which are both retained for the configured backup retention period.
+In Azure HorizonDB, automated backups capture incremental changes to data pages and transaction logs. Both types of data are retained for the configured backup retention period.
 
-You can use the Backup Storage Used metric in the Azure portal to monitor the backup storage that a server consumes. The Backup Storage Used metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server.
+Use the **Backup Storage Used** metric in the Azure portal to monitor the backup storage that a server consumes. The **Backup Storage Used** metric represents the sum of storage consumed by all the retained database backups and log backups, based on the backup retention period set for the server.
 
 In HorizonDB, Azure Monitor metrics report the following consumption information:
 
@@ -47,16 +46,16 @@ In HorizonDB, Azure Monitor metrics report the following consumption information
 To view backup and data storage metrics in the Azure portal, follow these steps:
 
 1. Go to the HorizonDB cluster for which you want to monitor backup and data storage metrics.
-1. In the Monitoring section, select the Metrics page.
-1. From the Metric dropdown list, select the Data backup storage, Data storage size, and Log backup storage metrics with an appropriate aggregation rule.
+1. In the **Monitoring** section, select the **Metrics** page.
+1. From the **Metric** dropdown list, select the **Data backup storage**, **Data storage size**, and **Log backup storage** metrics with an appropriate aggregation rule.
 
 ## Backup storage cost
 
 Azure HorizonDB backup storage cost depends on the workload type.
 
-Write-heavy workloads are more likely to change data pages frequently, which results in larger storage snapshots. Such workloads also generate more transaction logs, contributing to the overall backup costs. Backup storage is charged based on gigabytes consumed per month. The backup storage amount equal to the database size is provided at no extra charge. For pricing details, see the Azure HorizonDB pricing page.
+Write-heavy workloads more frequently change data pages, which results in larger storage snapshots. Such workloads also generate more transaction logs, which adds to the overall backup costs. You pay for backup storage based on gigabytes consumed per month. You get the backup storage amount equal to the database size at no extra charge. For pricing details, see the [Azure HorizonDB pricing page](https://azure.microsoft.com/pricing/details/horizondb/).
 
-For HorizonDB, billable backup storage is calculated as follows:
+For HorizonDB, calculate billable backup storage as follows:
 
 ``` *Total billable backup storage size = (Changes to Data pages + WAL archive size)*```
 Data storage size is excluded from billable backup storage because it is already billed as allocated database storage.
@@ -70,9 +69,9 @@ Billable backup storage for a deleted database decreases over time after deletio
 
 ## Backup limitations
 
-- Geo-redundant backups are currently not supported.
-- Maximum backup retention currently supported is 7 days.
-- Currently point-in-time restore is limited to 5 minutes before current timestamp. Select a restore point that is at least 5 minutes in the past.
+- Geo-redundant backups aren't currently supported.
+- Maximum backup retention currently supported is seven days.
+- Currently, point-in-time restore is limited to five minutes before current timestamp. Select a restore point that is at least five minutes in the past.
 
 > [!NOTE]  
 > Irrespective of the database size, heavy transactional activity on the server generates more WAL files. The increase in files in turn increases the backup storage.

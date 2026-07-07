@@ -8,12 +8,9 @@ ms.date: 06/02/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: reference
-ms.custom:
-  - ignite-2024
-  - sfi-image-nochange
 ---
 
-# Azure storage extension for Azure HorizonDB (Preview)
+# Azure storage extension in Azure HorizonDB (Preview)
 
 The Azure HorizonDB extension for Azure Storage enables direct data movement between your Azure HorizonDB cluster and Azure Storage accounts, supporting both import and export operations in multiple file formats. The use of this extension simplifies data workflows by allowing SQL-based access to blob storage, making it easier to integrate PostgreSQL with other Azure services.
 
