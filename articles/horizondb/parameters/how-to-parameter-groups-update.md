@@ -1,26 +1,26 @@
 ---
 title: Update Parameter Groups in Azure HorizonDB
 description: This article describes how to update parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to update parameter groups in Azure HorizonDB, so that I can change parameter values for my clusters.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to update parameter groups in Azure HorizonDB.
 ---
 
 # Update parameter groups in Azure HorizonDB (Preview)
 
-Should you need to change the value of some parameters on a given cluster, [create a new parameter group](how-to-parameter-groups-create.md) overriding the values of all those parameters, and [connect that given cluster to the new parameter group](how-to-parameter-groups-connect.md).
+If you need to change the value of some parameters on a given cluster, [create a new parameter group](how-to-parameter-groups-create.md) that overrides the values of those parameters. Then, [connect the cluster to the new parameter group](how-to-parameter-groups-connect.md).
 
 ## Limitations
 
-Currently, parameter groups don't support updates.
+Currently, you can't update parameter groups.
 
 <!--
-When updating a parameter group, at least one parameter must be provided. The underlying operation in the backend will merge your input with the system defaults for the specified `pgVersion`.
+When updating a parameter group, you must provide at least one parameter. The underlying operation in the backend merges your input with the system defaults for the specified `pgVersion`.
 
 ## Steps to update parameter groups
 

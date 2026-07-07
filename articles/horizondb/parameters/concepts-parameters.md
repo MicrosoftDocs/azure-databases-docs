@@ -1,15 +1,16 @@
 ---
-title: Parameters
+title: Parameters in Azure HorizonDB
 description: Learn about the parameters for an instance of Azure HorizonDB.
+#customer intent: As a user, I want to understand what parameters are available in Azure HorizonDB, so that I can configure my clusters appropriately.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.topic: concept-article
 ---
 
-# Parameters for Azure HorizonDB (Preview)
+# Parameters in Azure HorizonDB (Preview)
 
 Azure HorizonDB provides a set of configurable parameters for each cluster.
 
@@ -38,15 +39,15 @@ Both, **database engine** and **non-database engine** parameters can be configur
 
 ## Work with time zone parameters
 
-If you plan to work with date and time data in PostgreSQL, make sure that you set the correct time zone for your location. All timezone-aware dates and times are stored internally in PostgreSQL in UTC. They're converted to local time in the zone specified by the **TimeZone** cluster parameter before being displayed to the client. This parameter can be edited in a non-default parameter group which overrides the value of that parameter, and then that parameter group has to be connected to the clusters on which you want that value to be in effect.
+If you plan to work with date and time data in PostgreSQL, make sure that you set the correct time zone for your location. PostgreSQL stores all timezone-aware dates and times internally in UTC. It converts them to local time in the zone specified by the **TimeZone** cluster parameter before displaying them to the client. You can edit this parameter in a non-default parameter group to override the value. Connect that parameter group to the clusters where you want the value to take effect.
 
 PostgreSQL allows you to specify time zones in three different forms:
 
-- A full time zone name, for example America/New_York. The recognized time zone names are listed in the [**pg_timezone_names**](https://www.postgresql.org/docs/9.2/view-pg-timezone-names.html) view.
-  Example to query this view in psql and get list of time zone names:
+- A full time zone name, such as `America/New_York`. You can find the recognized time zone names in the [**pg_timezone_names**](https://www.postgresql.org/docs/9.2/view-pg-timezone-names.html) view.
+  To query this view in psql and get a list of time zone names, use the following example:
   <pre>select name FROM pg_timezone_names LIMIT 20;</pre>
 
-  You should see result set like:
+  You see a result set like:
 
   <pre>
            name
@@ -74,12 +75,12 @@ PostgreSQL allows you to specify time zones in three different forms:
        (20 rows)
    </pre>
 
-- A time zone abbreviation, for example PST. Such a specification merely defines a particular offset from UTC, in contrast to full time zone names which can imply a set of daylight savings transition-date rules as well. The recognized abbreviations are listed in the [**pg_timezone_abbrevs view**](https://www.postgresql.org/docs/current/view-pg-timezone-abbrevs.html)
-  Example to query this view in psql and get list of time zone abbreviations:
+- A time zone abbreviation, such as `PST`. This specification defines a particular offset from UTC, in contrast to full time zone names which can imply a set of daylight savings transition-date rules as well. You can find the recognized abbreviations in the [**pg_timezone_abbrevs view**](https://www.postgresql.org/docs/current/view-pg-timezone-abbrevs.html).
+  To query this view in psql and get a list of time zone abbreviations, use the following example:
 
   <pre> select abbrev from pg_timezone_abbrevs limit 20;</pre>
 
-  You should see result set like:
+  You see a result set like:
 
   <pre>
      abbrev|
@@ -106,7 +107,7 @@ PostgreSQL allows you to specify time zones in three different forms:
      ART |
 </pre>
 
-- In addition to the timezone names and abbreviations PostgreSQL accepts POSIX-style time zone specifications of the form STDoffset or STDoffsetDST. STD is a zone abbreviation. Offset is a numeric offset in hours west from UTC. DST is an optional daylight-savings zone abbreviation, assumed to stand for one hour ahead of the given offset.
+- In addition to the time zone names and abbreviations, PostgreSQL accepts POSIX-style time zone specifications in the form `STDoffset` or `STDoffsetDST`. `STD` is a zone abbreviation. `offset` is a numeric offset in hours west from UTC. `DST` is an optional daylight-savings zone abbreviation, which stands for one hour ahead of the given offset.
 
 ## Supported parameters
 

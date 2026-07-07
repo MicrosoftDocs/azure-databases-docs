@@ -1,20 +1,21 @@
 ---
-title: Parameter Groups
+title: Parameter Groups in Azure HorizonDB
 description: Learn about the parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to understand what parameter groups are, so that I can manage configuration settings across multiple clusters consistently.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: concept-article
 ---
 
-# Parameter groups for Azure HorizonDB (Preview)
+# Parameter groups in Azure HorizonDB (Preview)
 
-Parameter groups in HorizonDB act as containers for cluster configuration values that can be applied to one or more database clusters. Instead of managing configuration settings for each cluster individually, you can define them in a parameter group and connect that group with multiple clusters to ensure consistency across your environment.
+Parameter groups in HorizonDB act as containers for cluster configuration values that you can apply to one or more database clusters. Instead of managing configuration settings for each cluster individually, define them in a parameter group and connect that group with multiple clusters to ensure consistency across your environment.
 
-Parameter groups are first-class resources in Azure and are surfaced within the specific resource group and subscription defined in their resource identifier.
+Parameter groups are first-class resources in Azure. They appear within the specific resource group and subscription defined in their resource identifier.
 
 ## Key Concepts
 
