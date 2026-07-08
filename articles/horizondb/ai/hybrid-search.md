@@ -1,23 +1,19 @@
 ---
 title: Hybrid Search in Azure HorizonDB
 description: Combine BM25 full-text search with pgvector and DiskANN vector search in Azure HorizonDB to get keyword precision plus semantic recall, fused with Reciprocal Rank Fusion.
+#customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a developer building retrieval on Azure HorizonDB, I want to combine keyword and vector search so that I get accurate results across exact-match and semantic queries.
 ---
 
-# Hybrid search for Azure HorizonDB (Preview)
+# Hybrid search in Azure HorizonDB (Preview)
 
 Hybrid search combines two retrieval strategies in a single query:
 
@@ -47,8 +43,8 @@ This article shows you how to build hybrid search end to end inside HorizonDB, w
 
 A query like `"connection timeout error PG-4012"` has two signals:
 
-- The literal token `PG-4012` is a precise identifier - vector search likely can miss it because the embedding model has never seen it.
-- The phrase `"connection timeout error"` is semantic - BM25 might match the words, but a different document phrased as `"the database stopped responding after the network dropped"` is a better answer that BM25 won't surface.
+- The literal token `PG-4012` is a precise identifier - vector search likely misses it because the embedding model never saw it.
+- The phrase `"connection timeout error"` is semantic - BM25 might match the words, but a different document phrased as `"the database stopped responding after the network dropped"` is a better answer that BM25 doesn't surface.
 
 Pure vector search misses the first signal. Pure BM25 misses the second. Hybrid search returns a single ranked list that surfaces both. The boost is largest exactly where customers care most: enterprise-specific terminology, product names, error codes, multitenant filtered queries, and any corpus where a phrase can mean two different things.
 
@@ -60,7 +56,7 @@ A hybrid query has three logical steps, all of which run inside HorizonDB:
 1. **Run vector search** with `pgvector` (using DiskANN as the index) to get the top-N semantic matches.
 1. **Fuse the two ranked lists** into a single ordered result set.
 
-1. (Optional) **Re-ranking the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) provides a final accuracy bump on the documents that will actually be shown to the user.
+1. (Optional) **Re-rank the top-K** of the fused list with a cross-encoder model using [`azure_ai.rank()`](ai-functions.md#azure_airank) to provide a final accuracy bump on the documents that actually shows to the user.
 
 Everything happens in a single SQL query. There's no copy-syncing to an external search index, no application-side join, and no separate vector database.
 
@@ -119,9 +115,9 @@ CREATE INDEX idx_products_vec
 
 ## Generate embeddings in SQL
 
-You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md). This eliminates the embedding pipeline entirely - no external service calls in your application code.
+You can generate embeddings inside Postgres using the [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md). This approach eliminates the embedding pipeline entirely - no external service calls in your application code.
 
-If you have [AI Model Management (limited preview)](ai-model-management.md) enabled, you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model, pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
+If you enable [AI Model Management (limited preview)](ai-model-management.md), you can omit the model parameter - the function automatically uses the `default-embedding` model (`text-embedding-3-small`). If you're using your own model, pass your registered model alias as the first argument. See [AI functions in the azure_ai extension for Azure HorizonDB (Preview)](ai-functions.md) for details on registering models.
 
 ```sql
 -- Backfill embeddings for existing rows
@@ -259,10 +255,10 @@ For mixed real-world queries - which is most production retrieval - hybrid is th
 
 ## Performance notes
 
-- **Latency.** Each ranker runs an independent index scan. With DiskANN and `pg_textsearch` both retrieving 50 candidates, hybrid search typically lands in the low double-digit milliseconds on millions of rows. The reranker step adds tens to low hundreds of milliseconds depending on the candidate pool.
-- **Candidate pool size.** Pulling 50 from each ranker and keeping 10 after RRF is a good default. Increasing the inner `LIMIT` improves recall at a small latency cost; raise it before tuning RRF's `k`.
+- **Latency.** Each ranker runs an independent index scan. When DiskANN and `pg_textsearch` both retrieve 50 candidates, hybrid search typically lands in the low double-digit milliseconds on millions of rows. The reranker step adds tens to low hundreds of milliseconds depending on the candidate pool.
+- **Candidate pool size.** Pulling 50 candidates from each ranker and keeping 10 after RRF is a good default. Increasing the inner `LIMIT` improves recall at a small latency cost. Raise it before tuning RRF's `k`.
 - **Index updates.** Both `pg_textsearch` and DiskANN apply inserts and updates in place. There's no cron job or refresh step.
-- **Embeddings.** Generate query embeddings once per request and reuse them across rankers, as shown in the SQL above.
+- **Embeddings.** Generate query embeddings once per request and reuse them across rankers, as shown in the preceding SQL example.
 
 ## Related content
 

@@ -1,29 +1,26 @@
 ---
-title: AI Model Management in Azure HorizonDB (Preview)
+title: AI Model Management in Azure HorizonDB
 description: Automatically provision and manage embedding, generation, and reranking models in Azure HorizonDB with AI Model Management (AIMM), currently available as a limited preview.
+#customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-functions
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026-public-preview
-# customer intent: As a user, I want to understand how to use AI Model Management to automatically provision and manage models in Azure HorizonDB.
 ---
 
-# AI Model Management for Azure HorizonDB (limited preview)
+# AI Model Management in Azure HorizonDB (Preview)
 
 > [!IMPORTANT]
 > AI Model Management (AIMM) is currently available as a **limited preview** for Azure HorizonDB. Access is limited and requires approval. To request access, complete the [AI Model Management limited preview participation form](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6wWnvFyIUpElDcnO56BZqhUMFpKRERLVldQRDdKTTNWRVZJSklKWVRYMy4u).
 
 AI Model Management (AIMM) is a premium feature in Azure HorizonDB that provides a fully managed experience for provisioning, configuring, and using AI models directly within your database. Instead of navigating to multiple Azure services to deploy models, copy endpoints, and manage credentials, AIMM handles everything for you with a single toggle in the Azure portal.
 
-When enabled, the feature:
+When you enable the feature, it:
 
 - Automatically provisions a curated set of AI models for embedding, chat completion, and reranking.
 - Installs and configures the `azure_ai` extension with secure connections to the model endpoints.

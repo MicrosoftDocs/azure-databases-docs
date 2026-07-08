@@ -1,23 +1,19 @@
 ---
 title: Full-text search with pg_textsearch in Azure HorizonDB
 description: Use the pg_textsearch extension to add BM25-ranked full-text search to Azure HorizonDB for keyword retrieval at scale, with language-aware tokenization and hybrid search patterns.
+#customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_textsearch so that keyword queries return high-quality results at scale.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/04/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a developer building search on Azure HorizonDB, I want to add BM25 full-text search with pg_textsearch so that keyword queries return high-quality results at scale.
 ---
 
-# Full-text search with pg_textsearch for Azure HorizonDB (Preview)
+# Full-text search with pg_textsearch in Azure HorizonDB (Preview)
 
 The `pg_textsearch` extension adds BM25-ranked full-text search to Azure HorizonDB. BM25 is the same relevance algorithm used by Elasticsearch, Solr, and Azure AI Search. `pg_textsearch` brings BM25 into Postgres as a custom index access method, so you can run keyword search next to relational data without a separate search system.
 
@@ -41,13 +37,13 @@ If you already have a small search workload and you're satisfied with `ts_rank`,
 
 ## Why BM25
 
-BM25 (Best Matching 25) solves three problems that `ts_rank` does not:
+BM25 (Best Matching 25) solves three problems that `ts_rank` doesn't:
 
 - **Term frequency saturation.** Repeated occurrences of a keyword have diminishing returns, so a keyword-stuffed document can't dominate results.
 - **Document length normalization.** A short product title that mentions "wireless headphones" outranks a 10,000-word blog post that happens to mention the same phrase once.
 - **Inverse document frequency (IDF).** Common words (`the,` `error`) get down-weighted; rare, discriminating terms ("PG-4012," "replication") get up-weighted.
 
-That is why modern search engines use BM25 (or a close variant) as a baseline ranker. With `pg_textsearch`, you get the same ranking model inside Postgres.
+That's why modern search engines use BM25 (or a close variant) as a baseline ranker. By using `pg_textsearch`, you get the same ranking model inside Postgres.
 
 ## Enable pg_textsearch
 
@@ -60,10 +56,10 @@ Use these setup articles:
 - [Create extensions](../extensions/how-to-create-extensions.md)
 
 1. Create a parameter group for your server.
-2. Set `shared_preload_libraries` to include `pg_textsearch`.
-3. Set `azure.extensions` to include `pg_textsearch`.
-4. Apply the parameter group to the server.
-5. Connect to each target database and run:
+1. Set `shared_preload_libraries` to include `pg_textsearch`.
+1. Set `azure.extensions` to include `pg_textsearch`.
+1. Apply the parameter group to the server.
+1. Connect to each target database and run:
 
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_textsearch;
@@ -84,7 +80,7 @@ DROP EXTENSION IF EXISTS pg_textsearch;
 
 ## Create a full-text search index
 
-`pg_textsearch` exposes a custom index access method called `bm25`.
+The `pg_textsearch` module provides a custom index access method named `bm25`.
 
 Create a table and a BM25 index:
 

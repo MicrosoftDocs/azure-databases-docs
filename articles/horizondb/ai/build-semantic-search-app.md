@@ -1,22 +1,19 @@
 ---
-title: Build a Semantic Search Application with Azure HorizonDB
+title: Build a Semantic Search Application in Azure HorizonDB
 description: Learn how to build an end-to-end semantic search application with vector search, DiskANN indexing, and semantic reranking in Azure HorizonDB.
+#customer intent: As a user, I want to learn how to build an end-to-end semantic search application in Azure HorizonDB and its generative AI capabilities.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: tutorial
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-# customer intent: As a user, I want to learn how to build an end-to-end semantic search application with Azure HorizonDB and its generative AI capabilities.
 ---
 
-# Tutorial: Build a semantic search application for Azure HorizonDB (Preview)
+# Tutorial: Build a semantic search application in Azure HorizonDB (Preview)
 
 This hands-on tutorial shows you how to build a semantic search application by using Azure HorizonDB. You use vector search to find semantically similar results, DiskANN indexing for scalable performance, and semantic reranking to surface the most relevant matches.
 
@@ -89,7 +86,7 @@ Then pass your model alias (for example, `'my-embedding'`) to AI function calls 
 Download the recipe dataset from [Kaggle](https://www.kaggle.com/datasets/thedevastator/better-recipes-for-a-better-life).
 
 > [!TIP]  
-> For datasets with large documents that exceed embedding model token limits, you should chunk the content into smaller segments before generating embeddings. This tutorial's recipe dataset has naturally small rows, so chunking isn't needed. For guidance on chunking strategies, see [Prepare data for AI app and agent development in Azure HorizonDB (Preview)](ai-data-preparation.md).
+> For datasets with large documents that exceed embedding model token limits, chunk the content into smaller segments before generating embeddings. This tutorial's recipe dataset has naturally small rows, so chunking isn't needed. For guidance on chunking strategies, see [Prepare data for AI app and agent development in Azure HorizonDB (Preview)](ai-data-preparation.md).
 
 ### Create the table
 

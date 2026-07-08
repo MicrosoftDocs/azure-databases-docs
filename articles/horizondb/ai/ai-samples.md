@@ -1,23 +1,19 @@
 ---
 title: AI and Agentic Use Cases and Sample Applications
 description: Explore AI and agentic use cases across industries, with solution accelerators and sample applications for Azure HorizonDB.
+#customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-generative
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a user, I want to explore common use cases, design patterns and workflows for AI and agentic app development with Azure HorizonDB.
 ---
 
-# AI and agentic use cases and sample applications for Azure HorizonDB (Preview)
+# AI and agentic use cases and sample applications in Azure HorizonDB (Preview)
 
 Azure HorizonDB combines relational, vector, graph, and document storage in a single engine, making it a natural foundation for AI-powered applications. Whether you're building semantic search, RAG copilots, multi-agent systems, or intelligent analytics, Azure HorizonDB provides the capabilities you need: vector search with `pgvector` and DiskANN, graph reasoning with Apache AGE, in-database AI functions through the `azure_ai` extension, [Build AI apps and agents with orchestration frameworks (Preview)](ai-frameworks.md), and [Implement durable AI pipelines in Azure HorizonDB (Preview)](ai-pipelines.md).
 
@@ -72,16 +68,16 @@ Financial services companies process millions of transactions daily. Manual revi
 
 ### Personalized shopping (AgenticShop)
 
-Traditional search fails when a customer says "a lightweight jacket for hiking in the rain." An agent can understand intent using vector similarity, filter by availability and purchase history, and present ranked recommendations that improve with every interaction.
+Traditional search fails when a customer says "a lightweight jacket for hiking in the rain." An agent can understand intent by using vector similarity, filter by availability and purchase history, and present ranked recommendations that improve with every interaction.
 
 > [!TIP]  
 > Try the [AgenticShop](https://aka.ms/agentic-shop) solution accelerator: a multi-agent e-commerce demo powered by LlamaIndex with observability and memory persistence.
 
 **Build with Azure HorizonDB:**
 
-1. Store product catalogs with `pgvector` embeddings indexed using DiskANN for submillisecond similarity search across millions of products.
+1. Store product catalogs with `pgvector` embeddings indexed by using DiskANN for submillisecond similarity search across millions of products.
 1. Use `azure_ai.rank()` to rank results by relevance to the customer's natural-language query.
-1. Use the `azure_ai` extension to generate product embeddings and enrich catalog metadata with Azure OpenAI.
+1. Use the `azure_ai` extension to generate product embeddings and enrich catalog metadata by using Azure OpenAI.
 1. Build an agent with tools for vector search, keyword matching, and customer history lookup.
 1. Log every interaction in a `customer_sessions` table so the agent personalizes over time.
 1. Connect the agent to your storefront via API for real-time conversational shopping.
@@ -93,7 +89,7 @@ When return rates climb, the data to explain why exists across order details, re
 **Build with Azure HorizonDB:**
 
 1. Store returns, cancellations, reviews, and order details in Azure HorizonDB with JSONB metadata.
-1. Use the `azure_ai` extension to run sentiment analysis on reviews and extract themes using Azure OpenAI.
+1. Use the `azure_ai` extension to run sentiment analysis on reviews and extract themes by using Azure OpenAI.
 1. Use `azure_ai.rank()` to correlate review text with return reasons.
 1. Build an agent with tools for cluster detection (by product, region, time window) and signal correlation.
 1. Schedule the agent weekly via `pg_cron` to produce insight reports.
