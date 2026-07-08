@@ -1,23 +1,20 @@
 ---
-title: Scalable Vector Indexing with DiskANN
+title: Scalable Vector Indexing with DiskANN in Azure HorizonDB
 description: Use the pg_diskann extension to enable scalable, high-performance vector indexing in Azure HorizonDB for efficient semantic similarity search in large datasets, with advanced filtering for combined vector and metadata queries.
+#customer intent: As a user, I want to learn how to enable and use DiskANN extension in Azure HorizonDB for efficient semantic similarity search in large datasets.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: how-to
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure HorizonDB for efficient semantic similarity search in large datasets.
 ---
 
-# Scalable vector index with DiskANN for Azure HorizonDB (Preview)
+# Scalable vector index with DiskANN in Azure HorizonDB (Preview)
 
 DiskANN is Microsoft's scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. This is why **DiskANN is the recommended default vector index for production AI workloads on Azure HorizonDB**. It accepts in-place inserts and updates, scales to millions of vectors, supports up to 16,000 dimensions, and is the only vector index in HorizonDB that supports [advanced filtering](#filter-your-search-with-advanced-filtering) for combined vector + metadata queries.
 
@@ -51,10 +48,10 @@ DROP EXTENSION IF EXISTS pg_diskann;
 
 ## Use the diskann index access method
 
-Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
+After you install the extension, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
 
 > [!TIP]  
-> If you're testing on a shared cluster or rerunning these examples multiple times, prefer temporary tables or unique table and index names. Reusing fixed object names can cause blocking or name-collision errors from earlier sessions.
+> If you're testing on a shared cluster or rerunning these examples multiple times, use temporary tables or unique table and index names. Reusing fixed object names can cause blocking or name-collision errors from earlier sessions.
 
 ```sql
 CREATE TABLE demo (
@@ -73,9 +70,9 @@ INSERT INTO demo (embedding) VALUES
 CREATE INDEX ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
-Once the index is created, you can run queries to find the nearest neighbors.
+After you create the index, you can run queries to find the nearest neighbors.
 
-Following query finds the 5 nearest neighbors to the vector `[2.0, 3.0, 4.0]`:
+The following query finds the five nearest neighbors to the vector `[2.0, 3.0, 4.0]`:
 
 ```sql
 SELECT id, embedding
@@ -84,7 +81,7 @@ ORDER BY embedding <=> '[2.0, 3.0, 4.0]'
 LIMIT 5;
 ```
 
-Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use it, execute the following command:
+Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use the index, execute the following command:
 
 ```sql
 -- Explicit transaction block to force use for DiskANN index.
@@ -96,7 +93,7 @@ COMMIT;
 ```
 
 > [!IMPORTANT]  
-> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disabled using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
+> Setting `enable_seqscan` to off discourages the query planner from using the sequential scan operator if there are other methods available. Because the `SET LOCAL` command disables it, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
 ## Filter your search with advanced filtering
 
@@ -174,16 +171,16 @@ Advanced filtering tunes itself based on the `LIMIT` clause. With small `LIMIT` 
 
 ### Limitations (Preview)
 
-- Predicates must reference columns of the same table as the indexed vector. Joins are evaluated after the vector search completes.
-- Predicates that the planner can't push into the index (for example, opaque function calls on the filtered column) fallback to post-filtering with the standard recall caveats.
-- Index rebuild isn't required when adding metadata columns; the existing DiskANN index continues to work.
+- Predicates must reference columns of the same table as the indexed vector. The system evaluates joins after the vector search completes.
+- The planner can't push predicates that involve opaque function calls on the filtered column into the index. These predicates fall back to post-filtering with the standard recall caveats.
+- You don't need to rebuild the index when you add metadata columns. The existing DiskANN index continues to work.
 
 ## Scale efficiently with spherical quantization (Preview)
 
-DiskANN uses **spherical quantization** to reduce memory usage and improve performance. This compression technique lets you keep more data in memory and reduces storage access, which results in faster queries and lower costs for large datasets (> 1 million rows).
+DiskANN uses **spherical quantization** to reduce memory usage and improve performance. This compression technique lets you keep more data in memory and reduces storage access, which results in faster queries and lower costs for large datasets (more than 1 million rows).
 
 > [!IMPORTANT]  
-> Spherical quantization in DiskANN is in **preview**. Available in the `pg_diskann` extension.
+> Spherical quantization in DiskANN is in **preview**. It's available in the `pg_diskann` extension.
 
 To reduce the size of your index and fit more data into memory, enable spherical quantization when creating the index:
 
@@ -220,33 +217,33 @@ This enhancement enables scalable, efficient search across large vector datasets
 
 ## Speed up index build
 
-There are a few ways we recommend improving your index build times.
+There are a few ways to improve your index build times.
 
 <a id="using-more-memory"></a>
 
 ### Use more memory
 
-To speed up the creation of the index, you can increase the memory allocated on your Postgres instance for the index build. The memory usage can be specified through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter.
+To speed up the creation of the index, increase the memory allocated on your Postgres instance for the index build. Specify the memory usage through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter.
 
 ```sql
 -- Set the parameters
 SET maintenance_work_mem = '8GB'; -- Depending on your resources
 ```
 
-Then, `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
+The `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
 > [!TIP]  
-> You can scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
+> Scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
 
 <a id="using-parallelization"></a>
 
 ### Use parallelization
 
-To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
+To speed up the creation of the index, use parallel workers. Specify the number of workers through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement when creating the table. You can adjust this number later by using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
 
 ```sql
 CREATE TABLE demo (
@@ -256,7 +253,7 @@ CREATE TABLE demo (
 ALTER TABLE demo SET (parallel_workers = 8);
 ```
 
-Then, `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
+The `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
@@ -265,9 +262,9 @@ CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_
 > [!IMPORTANT]  
 > The leader process can't participate in parallel index builds.
 
-If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](../parameters/concepts-parameters.md#resource-usage--asynchronous-behavior).
+If you want to create the index by using parallel workers, set the `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usage and asynchronous behavior](../parameters/concepts-parameters.md#resource-usage--asynchronous-behavior).
 
-You can set these parameters at different granularity levels. For example, to set them at session level, you can run the following statements:
+Set these parameters at different granularity levels. For example, to set them at the session level, run the following statements:
 
 ```sql
 -- Set the parameters
@@ -279,7 +276,7 @@ SET max_parallel_maintenance_workers = 4;
 To learn about other options to configure these parameters in Azure HorizonDB, see [Parameters in Azure HorizonDB (Preview)](../parameters/concepts-parameters.md).
 
 > [!NOTE]  
-> The max_worker_processes parameter requires a server restart to take effect.
+> The `max_worker_processes` parameter requires a server restart to take effect.
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 
@@ -301,15 +298,15 @@ TABLESPACE temptablespace;
 
 ## Configuration parameters
 
-When creating a `diskann` index, you can specify various parameters to control its behavior.
+When you create a `diskann` index, specify various parameters to control its behavior.
 
 ### Index parameters
 
-- `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
-- `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `spherical_quantized`: Enables spherical quantization for more efficient search (Defaults to false).
-- `sq_bits`: Number of bits per dimension for spherical quantization (Defaults to 4). Lower values yield higher compression.
-- `sq_training_samples`: Number of training samples used to calibrate the quantizer (Defaults to 25000). A higher value can improve quantization quality at the cost of longer index build time.
+- `max_neighbors`: Maximum number of edges per node in the graph. The default value is 32. A higher value can improve the recall up to a certain point.
+- `l_value_ib`: Size of the search list during index build. The default value is 100. A higher value makes the build slower, but the index is of higher quality.
+- `spherical_quantized`: Enables spherical quantization for more efficient search. The default value is false.
+- `sq_bits`: Number of bits per dimension for spherical quantization. The default value is 4. Lower values yield higher compression.
+- `sq_training_samples`: Number of training samples used to calibrate the quantizer. The default value is 25,000. A higher value can improve quantization quality at the cost of longer index build time.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
@@ -328,13 +325,13 @@ WITH (
 
   Configurations for `diskann.iterative_search`:
 
-  - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be out of order.
+  - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. This option might cause the results to be out of order.
 
-  - `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order sorted by distance.
+  - `strict_order`: Similar to `relaxed_order`, but it ensures that the results are returned in strict order sorted by distance.
 
-  - `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
+  - `off`: Uses noniterative search functionality. It attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
 
-  To change the search behavior to` strict_order`, for all queries executed in the current session, run the following statement:
+  To change the search behavior to `strict_order` for all queries executed in the current session, run the following statement:
 
   ```sql
   SET diskann.iterative_search TO 'strict_order';
@@ -349,9 +346,9 @@ WITH (
   COMMIT;
   ```
 
-- `diskann.l_value_is`: L value for index scanning (Defaults to 100). Increasing the value improves recall but might slow down queries.
+- `diskann.l_value_is`: L value for index scanning (defaults to 100). Increasing the value improves recall but might slow down queries.
 
-  To change the L value for index scanning to 20, for all queries executed in the current session, run the following statement:
+  To change the L value for index scanning to 20 for all queries executed in the current session, run the following statement:
 
   ```sql
   SET diskann.l_value_is TO 20;
@@ -387,25 +384,25 @@ WITH (
 For datasets larger than 3 million rows, also build the index with the `TABLESPACE temptablespace` clause. For more information, see [Use a temporary tablespace for large datasets](#use-a-temporary-tablespace-for-large-datasets).
 
 > [!NOTE]  
-> These parameters might vary depending on the specific dataset and use case. Users might have to experiment with different parameter values, to find the optimal settings for their particular scenario.
+> These parameters might vary depending on the specific dataset and use case. You might need to experiment with different parameter values to find the optimal settings for your particular scenario.
 > 
 ## CREATE INDEX and REINDEX progress
 
-With PostgreSQL 12 and newer, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
+Starting with PostgreSQL 12, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
 
 ```sql
 SELECT phase, round(100.0 * blocks_done / nullif(blocks_total, 0), 1) AS "%" FROM pg_stat_progress_create_index;
 ```
 
-To learn more about the possible phases through which a CREATE INDEX or REINDEX operation goes through, see [CREATE INDEX phases](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PHASES).
+To learn more about the possible phases through which a CREATE INDEX or REINDEX operation goes, see [CREATE INDEX phases](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PHASES).
 
 <a id="selecting-the-index-access-function"></a>
 
 ### Select the index access function
 
-The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index, so that the database can consider your index when executing your queries.
+The vector type supports three types of searches on the stored vectors. Select the correct access function for your index so the database can consider your index when executing your queries.
 
-`pg_diskann` supports following distance operators
+`pg_diskann` supports the following distance operators:
 - `vector_l2_ops`: `<->` Euclidean distance
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product

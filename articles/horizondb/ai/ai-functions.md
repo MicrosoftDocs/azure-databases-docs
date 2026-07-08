@@ -1,22 +1,19 @@
 ---
-title: AI Functions in the azure_ai Extension for Azure HorizonDB
-description: Overview of AI functions in the azure_ai extension for Azure HorizonDB. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+title: AI Functions in the azure_ai Extension in Azure HorizonDB
+description: Overview of AI functions in the azure_ai extension in Azure HorizonDB. These functions bring advanced Generative AI (GenAI) functionality directly into SQL workflows, bringing intelligent, model-driven processing natively into the database.
+#customer intent: As a user, I want to understand the available AI functions in the azure_ai extension in Azure HorizonDB, explore their use cases, and learn how to use them effectively.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-functions
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-# customer intent: As a user, I want to understand the available AI functions in the azure_ai extension for Azure HorizonDB, explore their use cases, and learn how to use them effectively.
 ---
 
-# AI functions in the azure_ai extension for Azure HorizonDB (Preview)
+# AI functions in the azure_ai extension in Azure HorizonDB (Preview)
 
 The `azure_ai` extension introduces **AI functions**, a feature that integrates advanced Generative AI (GenAI) capabilities directly into PostgreSQL SQL. By using these functions with models like chat-completion, embeddings, reranking, and other [Microsoft Foundry model deployments](https://azure.microsoft.com/products/ai-model-catalog), you can build GenAI-driven applications directly within your database. This integration unlocks new capabilities for generating vector embeddings, reranking vector search results, understanding text, reasoning, and generating structured outputs.
 
@@ -54,7 +51,7 @@ After you enable AI Model Management, you can immediately start using AI functio
 
 If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), follow these steps:
 
-1. Before you can enable `azure_ai` on your Azure HorizonDB instance, you need to add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview), and check if correctly added by running `SHOW azure.extensions;`.
+1. Before you can enable `azure_ai` on your Azure HorizonDB instance, add it to your allowlist as described in [how to use PostgreSQL extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-horizondb-preview). Check if it's correctly added by running `SHOW azure.extensions;`.
 
 1. Install the `azure_ai` extension on your database by running the following command:
 

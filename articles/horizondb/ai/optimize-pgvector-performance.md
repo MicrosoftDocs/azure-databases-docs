@@ -1,18 +1,16 @@
 ---
 title: Optimize Performance When Using Pgvector in Azure HorizonDB
 description: Best practices to optimize performance pgvector enabled vector database queries and indexes on Azure HorizonDB.
+#customer intent: As a database developer using Azure HorizonDB, I want to optimize the performance of my pgvector queries so that I can run faster vector similarity searches.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-graph
 ms.topic: how-to
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
 ---
 
 # Optimize performance when using pgvector for Azure HorizonDB (Preview)

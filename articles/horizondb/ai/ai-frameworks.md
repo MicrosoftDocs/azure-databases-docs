@@ -1,22 +1,19 @@
 ---
 title: AI Frameworks for Building Apps and Agents with Azure HorizonDB
 description: Integrate Azure HorizonDB with AI and LLM orchestration frameworks like Microsoft Agent Framework, Semantic Kernel, LangChain, LlamaIndex, and CrewAI to build AI applications and agents.
+#customer intent: As an AI application developer, I want to compare orchestration frameworks that work with Azure HorizonDB, so that I can choose the right one for my project.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-frameworks
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
 ---
 
-# Build AI apps and agents with orchestration frameworks for Azure HorizonDB (Preview)
+# Build AI apps and agents with orchestration frameworks in Azure HorizonDB (Preview)
 
 Azure HorizonDB integrates with leading LLM orchestration frameworks for building both AI applications and autonomous agents. These frameworks provide the scaffolding for managing LLMs, embedding models, agent memory, multi-agent workflows, and database connectivity.
 

@@ -1,22 +1,19 @@
 ---
-title: Develop AI Apps with LangChain and Azure HorizonDB
+title: Develop AI Apps with LangChain in Azure HorizonDB
 description: Integrate Azure HorizonDB with LangChain to build AI applications.
+#customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-frameworks
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-# customer intent: As a user, I want to understand how to integrate Langchain with Azure HorizonDB for building AI applications.
 ---
 
-# Develop AI apps with LangChain for Azure HorizonDB (Preview)
+# Develop AI apps with LangChain in Azure HorizonDB (Preview)
 
 [LangChain](https://www.langchain.com/) is a large language model (LLM) orchestration framework that simplifies building generative AI applications. Azure HorizonDB integrates with LangChain as a [vector store](vector-search-pgvector.md), enabling you to store documents, create indices, and perform similarity search (cosine, L2, inner product) directly in PostgreSQL.
 
@@ -94,7 +91,7 @@ embeddings = AzureOpenAIEmbeddings(
 
 The following sections demonstrate how to set up LangChain to use Microsoft Entra authentication. The class `AzurePGConnectionPool` in the LangChain Azure Postgres package retrieves tokens for the Azure HorizonDB service by using `DefaultAzureCredential` from the `azure.identity` library.
 
-The connection can be passed into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
+You can pass the connection into the `connection` parameter of the `AzurePGVectorStore` LangChain vector store.
 
 #### Sign in to Azure
 
@@ -160,7 +157,7 @@ vector_store = AzurePGVectorStore(
 
 ### Add items to the vector store
 
-Adding documents by ID overwrites any existing documents that match that ID.
+When you add documents by ID, you overwrite any existing documents that have the same ID.
 
 ``` python
 docs = [
@@ -243,7 +240,7 @@ After you create your vector store and add the relevant documents, you can query
 
 ### Filter support
 
-The vector store supports a set of filters that can be applied against the metadata fields of the documents via the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
+The vector store supports a set of filters that you can apply to the metadata fields of the documents by using the `FilterCondition`, `OrFilter`, and `AndFilter` in the [LangChain Azure PostgreSQL](https://pypi.org/project/langchain-azure-postgresql/) package:
 
 | Operator | Meaning/Category |
 | --- | --- |
