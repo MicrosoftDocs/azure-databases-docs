@@ -21,9 +21,6 @@ ms.devlang: azurecli
 
 # Migrate MySQL on-premises or Virtual Machine (VM) workload to Azure Database for MySQL with Azure Database for MySQL Import CLI
 
-> [!NOTE]  
-> Due to known issues, the **az mysql flexible-server import create** CLI command is temporarily disabled. Customers planning migrations should [contact the support team](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) for assistance with allowlisting backups for import while remediation is in progress.
-
 Azure Database for MySQL Import for external migrations enables you to migrate your MySQL on-premises or Virtual Machine (VM) workload seamlessly to Azure Database for MySQL - Flexible Server. It uses a user-provided physical backup file and restores the source server's physical data files to the target server, offering a simple and fast migration path. Post-import operation, you can take advantage of the benefits of a flexible server, which include better price and performance, granular control over database configuration, and custom maintenance windows.
 
 Based on user-inputs, it takes up the responsibility of provisioning your target flexible server and then restoring the user-provided physical backup of the source server stored in the Azure Blob storage account to the target Flexible Server instance.
@@ -61,9 +58,47 @@ az account set --subscription <subscription id>
   - System tablespace size should be greater than or equal to 12 MB. (MySQL Default)
   - Innodb_page_size = 16348 (MySQL Default)
   - Only INNODB engine is supported.
+
+- Use the following query to perform a pre-check and fix any conflicting objects.
+
+  ```sql
+  SELECT
+      r.ROUTINE_TYPE   AS object_type,
+      r.ROUTINE_SCHEMA AS object_schema,
+      r.ROUTINE_NAME   AS object_name
+  FROM information_schema.ROUTINES r
+  WHERE r.SECURITY_TYPE = 'DEFINER'
+    AND (
+          r.DEFINER LIKE 'mysql.%@%'
+          OR r.DEFINER LIKE 'azure\_%@%' ESCAPE '\'
+        )
+
+  UNION ALL
+
+  SELECT
+      'TRIGGER'        AS object_type,
+      t.TRIGGER_SCHEMA AS object_schema,
+      t.TRIGGER_NAME   AS object_name
+  FROM information_schema.TRIGGERS t
+  WHERE t.DEFINER LIKE 'mysql.%@%'
+     OR t.DEFINER LIKE 'azure\_%@%' ESCAPE '\'
+
+  UNION ALL
+
+  SELECT
+      'EVENT'       AS object_type,
+      e.EVENT_SCHEMA AS object_schema,
+      e.EVENT_NAME   AS object_name
+  FROM information_schema.EVENTS e
+  WHERE e.DEFINER LIKE 'mysql.%@%'
+     OR e.DEFINER LIKE 'azure\_%@%' ESCAPE '\'
+
+  ORDER BY object_type, object_schema, object_name;
+  ```
+
 - Take a physical backup of your MySQL workload using Percona XtraBackup.
 The following are the steps for using Percona XtraBackup to take a full backup:
-  - Install Percona XtraBackup on the on-premises or VM workload. For MySQL engine version v5.7, install Percona XtraBackup version 2.4, see [Installing Percona XtraBackup 2.4]( https://docs.percona.com/percona-xtrabackup/2.4/installation.html). For MySQL engine version v8.0, install Percona XtraBackup version 8.0, see [Installing Percona XtraBackup 8.0]( https://docs.percona.com/percona-xtrabackup/8.0/installation.html).
+  - Install Percona XtraBackup on the on-premises or VM workload. For MySQL engine version 5.7, install Percona XtraBackup version 2.4. See [Installing Percona XtraBackup 2.4](https://docs.percona.com/percona-xtrabackup/2.4/installation.html). For MySQL engine version 8.0, install Percona XtraBackup version 8.0. See [Installing Percona XtraBackup 8.0](https://docs.percona.com/percona-xtrabackup/8.0/installation.html). For MySQL engine version 8.4, install Percona XtraBackup version 8.4. See [Installing Percona XtraBackup 8.4](https://docs.percona.com/percona-xtrabackup/8.4/installation.html).
   - For instructions for taking a Full backup with Percona XtraBackup 2.4, see [Full backup]( https://docs.percona.com/percona-xtrabackup/2.4/backup_scenarios/full_backup.html). For instructions for taking a Full backup with Percona XtraBackup 8.0, see [Full backup] (<https://docs.percona.com/percona-xtrabackup/8.0/create-full-backup.html>). While taking full backup, run the below commands in order:
     - ** xtrabackup --backup --host={host} --user={user} --password={password} --target-dir={backup__dir_path}**
     - ** xtrabackup --prepare --{backup_dir_path}** (Provide the same backup path here as in the previous command)
