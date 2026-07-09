@@ -21,6 +21,11 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.4, 17.10, 16.14, 15.18, and 14.23. <sup>$</sup>
+  - Support for view [upcoming maintenance](../configure-maintain/concepts-maintenance.md#view-upcoming-maintenance) 
+  - Support for view [maintenance history](../configure-maintain/concepts-maintenance.md#view-maintenance-history)
+  - Support for [reschedule maintenance](../configure-maintain/concepts-maintenance.md#reschedule-planned-maintenance-to-a-future-date) to a future date
+  - Support for [apply maintenance on-demand](../configure-maintain/concepts-maintenance.md#apply-maintenance-on-demand)
+  
 - Preview
   - [Pre-Upgrade Validation Checks](../configure-maintain/concepts-major-version-upgrade.md#upgrade-validation-checks-preview) to help identify upgrade blocking issues before starting the upgrade.
 
