@@ -12,7 +12,7 @@ ms.custom:
 | --- | --- | --- |
 | [address_standardizer](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is used to parse an address into constituent elements. Generally used to support geocoding address normalization step. | 3.5.2 | |
 | [address_standardizer_data_us](http://postgis.net/docs/manual-2.5/Address_Standardizer.html) is the Address Standardizer US dataset example. | 3.5.2 | |
-| [age](https://age.apache.org/) (Preview) provides graph database capabilities. | 1.5.0 <sup>*</sup> | <sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries. |
+| [age](https://age.apache.org/) provides graph database capabilities. | 1.5.0 <sup>*</sup> | <sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries. |
 | [amcheck](https://www.postgresql.org/docs/13/amcheck.html) provides functions for verifying relation integrity. | 1.2 | |
 | [anon](https://postgresql-anonymizer.readthedocs.io/en/stable) provides data anonymization tools. | 2.5.1 <sup>*</sup> | <sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries. |
 | [auto_explain](https://www.postgresql.org/docs/current/auto-explain.html) provides a means for logging execution plans of slow statements automatically, without having to run EXPLAIN by hand. | Without version <sup>*</sup> | <sup>*</sup> Set the `shared_preload_libraries` parameter to enable the corresponding libraries. |

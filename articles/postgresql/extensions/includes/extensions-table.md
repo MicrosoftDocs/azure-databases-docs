@@ -43,7 +43,7 @@ ms.custom:
 
 ## age
 
-[age](https://age.apache.org/) (Preview) provides graph database capabilities.
+[age](https://age.apache.org/) provides graph database capabilities.
 
 | PostgreSQL version | Extension or module version |
 | --- | --- |
