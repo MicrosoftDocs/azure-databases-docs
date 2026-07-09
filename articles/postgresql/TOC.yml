@@ -266,7 +266,7 @@
       href: security/security-managed-identity-overview.md
     - name: Data encryption
       href: security/security-data-encryption.md
-    - name: Scheduled maintenance
+    - name: Planned maintenance
       href: configure-maintain/concepts-maintenance.md
     - name: Extended support
       href: configure-maintain/extended-support.md
