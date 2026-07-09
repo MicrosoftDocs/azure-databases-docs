@@ -76,6 +76,9 @@ You can also query the pg_extension catalog table to confirm that AGE was enable
 SELECT * FROM pg_extension WHERE extname = 'age';
 ```
 
+> [!NOTE]  
+> When AGE is selected in `shared_preload_libraries`, the library loads automatically when the cluster starts, so you don't need to run `LOAD 'age';`. Running it causes a privilege error.
+
 ### Configure schema paths
 
 AGE adds a schema called `ag_catalog`, essential for handling graph data. Ensure this schema is included in the search path by executing:
