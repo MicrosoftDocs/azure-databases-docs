@@ -77,7 +77,7 @@ SELECT * FROM pg_extension WHERE extname = 'age';
 ```
 
 > [!NOTE]  
-> When AGE is selected in `shared_preload_libraries`, the library loads automatically when the cluster starts, so you don't need to run `LOAD 'age';`. Running it causes a privilege error.
+> When you select AGE in `shared_preload_libraries`, the library loads automatically when the cluster starts, so you don't need to run `LOAD 'age';`. Running it causes a privilege error.
 
 ### Configure schema paths
 
