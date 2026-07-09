@@ -76,7 +76,7 @@ Here are some of the important considerations with in-place major version upgrad
 If a precheck operation fails during an in-place major version upgrade, the upgrade is blocked with a detailed error message. The following are the known limitations that can cause the upgrade to fail or behave unexpectedly:
 
 > [!IMPORTANT]
-> Upgrade compatibility requirements can vary by source and target PostgreSQL version and change over time. The lists in this section are a general reference and might not reflect the exact checks for your upgrade path. Before scheduling an upgrade, run [Upgrade validation checks (Preview)](#upgrade-validation-checks-preview) against your server to get the current, authoritative set of issues that would block your specific upgrade—including any logical replication slot requirements.
+> Upgrade compatibility requirements can vary by source and target PostgreSQL version and change over time. The lists in this section are a general reference and might not reflect the exact checks for your upgrade path. Before scheduling an upgrade, run [Upgrade validation checks (Preview)](#upgrade-validation-checks-preview) against your server to get the current, authoritative set of issues that would block your specific upgrade - including any logical replication slot requirements.
 
 ### Unsupported server configurations
 
