@@ -1,16 +1,17 @@
 ---
-title: Elastic Cluster Maximum Client Connections Default Behavior
+title: Elastic Cluster Maximum Client Connections Default Behavior in Azure Database for PostgreSQL Flexible Server
 description: This article describes how the maximum number of client connections are adjusted when scaling out nodes of an Azure Database for PostgreSQL flexible server elastic cluster.
+#customer intent: As a user, I want to understand how client connections are distributed across elastic cluster nodes so that I can plan my connection capacity effectively.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: how-to
 ---
 
-# Maximum client connections across an elastic cluster
+# Maximum client connections across an elastic cluster in Azure Database for PostgreSQL flexible server
 
 The default connection configuration of an elastic cluster apportions a subset of available connections to the cluster to ensure maximum connectivity for distributed queries. To accomplish this configuration, the cluster reserves connections on each worker node based on the number of nodes in the cluster and the maximum connections the selected SKU size supports. The default configuration guarantees that every node can participate in distributed operations without connection limits becoming a bottleneck. For example, if you use a SKU that supports 5,000 connections, the default configuration for a two-node cluster allows 2,500 active client connections. The remaining 2,500 connections are reserved to allow extended connectivity to the second node for any potential distributed queries. Similarly, a four-node cluster defaults to allowing 1,250 active client connections to ensure there's overhead for the extra connections to each connected node.
 

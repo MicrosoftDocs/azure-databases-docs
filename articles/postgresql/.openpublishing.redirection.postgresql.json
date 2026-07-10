@@ -4474,6 +4474,21 @@
             "source_path_from_root": "/articles/postgresql/network/how-to-networking-servers-deployed-public-access-disable-public-access.md",
             "redirect_url": "/azure/postgresql/network/how-to-networking-servers-deployed-public-access-enable-disable-public-access",
             "redirect_document_id": true
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/elastic-clusters/quickstart-create-elastic-cluster-portal.md",
+            "redirect_url": "/azure/postgresql/elastic-clusters/create-elastic-cluster",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/elastic-clusters/quickstart-create-elastic-cluster-bicep.md",
+            "redirect_url": "/azure/postgresql/elastic-clusters/create-elastic-cluster",
+            "redirect_document_id": false
+        },
+        {
+            "source_path_from_root": "/articles/postgresql/elastic-clusters/quickstart-create-elastic-cluster-arm-template.md",
+            "redirect_url": "/azure/postgresql/elastic-clusters/create-elastic-cluster",
+            "redirect_document_id": true
         }
     ]
 }

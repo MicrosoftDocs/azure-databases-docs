@@ -343,14 +343,7 @@
     - name: Configuring maximum connections
       href: elastic-clusters/how-to-network-elastic-clusters-default-maximum-connections.md
     - name: Create an elastic cluster
-      items:
-        - name: Azure portal
-          href: elastic-clusters/quickstart-create-elastic-cluster-portal.md
-        - name: Bicep
-          href: elastic-clusters/quickstart-create-elastic-cluster-bicep.md
-        - name: ARM template
-          href: elastic-clusters/quickstart-create-elastic-cluster-arm-template.md
-          displayName: Azure Resource Manager
+      href: elastic-clusters/create-elastic-cluster.md
     - name: Build with Elastic clusters
       items:
         - name: Design a multitenant database
