@@ -4,7 +4,7 @@ description: Learn about high availability architecture, zone redundancy, failov
 #customer intent: As a user, I want to understand how high availability works in Azure HorizonDB, so that I can design a resilient architecture for my mission-critical workloads.
 author: kabharati
 ms.author: kabharati
-ms.reviewer: denzilr, maghan
+ms.reviewer: maghan
 ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: high-availability

@@ -2,11 +2,11 @@
 metadata:
   title: Microsoft Azure HorizonDB Documentation Landing Page
   description: Azure HorizonDB is a fully managed relational database service on Microsoft Azure, combining the open-source PostgreSQL engine with built-in AI, high performance, and enterprise-grade security.
-  author: denzilribeiro
-  ms.author: denzilr
+  author: nachoalonsoportillo
+  ms.author: ialonso
   ms.reviewer: maghan
-  ms.date: 06/02/2026
-  ms.service: azure-database-postgresql
+  ms.date: 07/10/2026
+  ms.service: azure-horizondb
   ms.topic: landing-page
 
 title: Microsoft Azure HorizonDB documentation (Preview)
