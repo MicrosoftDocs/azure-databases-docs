@@ -4,7 +4,7 @@ description: "Learn to migrate, seamlessly and in online mode, from an Amazon Au
 author: apduvuri
 ms.author: adityaduvuri
 ms.reviewer: maghan
-ms.date: 07/18/2025
+ms.date: 07/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: migration-guide
 ms.topic: tutorial
