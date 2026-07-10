@@ -1,13 +1,15 @@
 ---
-title: Extended Support
-description: Describes the extended support offering for Postgres major versions for Azure Database for PostgreSQL flexible server instances.
+title: Extended Support in Azure Database for PostgreSQL Flexible Server
+description: Describes the extended support offering for Postgres major versions for Azure Database for PostgreSQL flexible servers.
+#customer intent: As a user running an older PostgreSQL version, I want to understand what Extended Support provides so that I can keep my workloads secure and compliant beyond community end-of-life.
 author: andtapia
 ms.author: andreatapia
 ms.reviewer: maghan
-ms.date: 03/26/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
 # Azure Database for PostgreSQL flexible server extended support
@@ -68,15 +70,15 @@ A: Your server is automatically enrolled in Extended Support one month after the
 
 **Q: Can I continue using my PostgreSQL instance without Extended Support?**
 
-A: No, extended support is not optional. After the grace period, you're automatically enrolled in paid Extended Support unless you upgrade to a supported version. 
+A: No, extended support isn't optional. After the grace period, you're automatically enrolled in paid Extended Support unless you upgrade to a supported version. 
 
-**Q: Will I be charged for Extended Support if my server is stopped, failed, or not running??**
+**Q: Will I be charged for Extended Support if my server is stopped, failed, or not running?**
 
-A: No. Extended support billing charges apply only to servers that are in a Succeeded (running) state. If a server is stopped, deleted, or in a failed provisioning state, extended support charges will not be applied for that period. Billing automatically resumes once the server returns to a succeeded state and continues running an end‑of‑life engine version under extended support.
+A: No. Extended support billing charges apply only to servers that are in a Succeeded (running) state. If a server is stopped, deleted, or in a failed provisioning state, extended support charges aren't applied for that period. Billing automatically resumes once the server returns to a succeeded state and continues running an end‑of‑life engine version under extended support.
 
-**Q: What happens if I’m ready to upgrade to a supported PostgreSQL version, but capacity constraints in my region prevent me from upgrading before Extended Support billing begins?**
+**Q: What happens if I'm ready to upgrade to a supported PostgreSQL version, but capacity constraints in my region prevent me from upgrading before Extended Support billing begins?**
 
-A: If regional capacity constraints prevent you from upgrading, your server will be temporarily excluded from Extended Support billing until capacity becomes available and an upgrade path is offered, ensuring you’re not charged for factors outside your control.
+A: If regional capacity constraints prevent you from upgrading, your server is temporarily excluded from Extended Support billing until capacity becomes available and an upgrade path is offered, ensuring you're not charged for factors outside your control.
 
 **Q: Can my applications break during a major version upgrade?**
 
@@ -116,4 +118,10 @@ A: Servers in Extended Support can raise support cases for security-related issu
 
 **Q: How will the period between November 13, 2025, and March 1, 2026, be handled for PostgreSQL version 13? Will support be continued during this time? How will it differ from the period before November 13, 2025?**
 
-A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), each major version is supported until retired by the community. Free Extended support from Azure is provided through July 31, 2026. Customers are charged for Extended Support starting August 1. To ensure continued support and access to new features, upgrade to newer versions.
+A: According to the [PostgreSQL community versioning policy](https://www.postgresql.org/support/versioning/), the community supports each major version until it retires. Azure provides free extended support through July 31, 2026. Starting August 1, customers pay for extended support. To ensure continued support and access to new features, upgrade to newer versions.
+
+## Related content
+
+- [Major version upgrade](concepts-major-version-upgrade.md)
+- [Supported PostgreSQL versions](concepts-supported-versions.md)
+- [Version support policy](concepts-version-policy.md)

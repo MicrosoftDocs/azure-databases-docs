@@ -1,16 +1,18 @@
 ---
-title: Supported versions of PostgreSQL
-description: Describes the supported major and minor versions of PostgreSQL in Azure Database for PostgreSQL flexible server instances.
+title: Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server
+description: Describes the supported major and minor versions of PostgreSQL in Azure Database for PostgreSQL flexible servers.
+#customer intent: As a user, I want to know which PostgreSQL versions are supported in Azure Database for PostgreSQL flexible server, so that I can choose the right version for my new deployment.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 3/30/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
-# Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server 
+# Supported versions of PostgreSQL in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL currently supports the following major versions.
 
@@ -20,8 +22,8 @@ The current minor release is **[!INCLUDE [minor-versions-18](includes/minor-vers
 
 ### Limitations
 
-- Certain PostgreSQL extensions are not supported in the PG18 release. Refer to the [list of supported extensions](../extensions/concepts-extensions-by-engine.md?pivots=postgresql-18) for details.
-- Can't configure server to use new Async I/O `io_method = io_uring`.
+- Certain PostgreSQL extensions aren't supported in the PG18 release. Refer to the [list of supported extensions](../extensions/concepts-extensions-by-engine.md?pivots=postgresql-18) for details.
+- You can't configure the server to use the new Async I/O `io_method = io_uring`.
 
 ## PostgreSQL version 17
 

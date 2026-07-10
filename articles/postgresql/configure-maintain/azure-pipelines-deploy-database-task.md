@@ -1,31 +1,33 @@
 ---
 title: Azure Pipelines task
-description: Enable Azure Database for PostgreSQL flexible server instance CLI task for using with Azure Pipelines.
+description: Enable Azure Database for PostgreSQL flexible server CLI task for using with Azure Pipelines.
+#customer intent: As a user, I want to automate my database updates, so that I can deploy changes to my PostgreSQL flexible server after every successful build.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 12/17/2024
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: quickstart
+ai-usage: ai-assisted
 ms.custom:
   - mode-other
 ---
 
 # Azure Pipelines task - Azure Database for PostgreSQL flexible server
 
-You can automatically deploy your database updates to your Azure Database for PostgreSQL flexible server instance after every successful build with **Azure Pipelines**. You can use Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. This task  can be run on cross-platform agents running on Linux, macOS, or Windows operating systems.
+You can automatically deploy your database updates to your Azure Database for PostgreSQL flexible server after every successful build by using **Azure Pipelines**. Use the Azure CLI task to update the database either with a SQL file or an inline SQL script against the database. Run this task on cross-platform agents running on Linux, macOS, or Windows operating systems.
 
 ## Prerequisites
 
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure) to your Azure account.
-- Microsoft hosted agents have Azure CLI preinstalled. However if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
+- Microsoft hosted agents have Azure CLI preinstalled. However, if you're using private agents, [install Azure CLI](/cli/azure/install-azure-cli) on the computers that run the build and release agent. If an agent is already running on the machine on which the Azure CLI is installed, restart the agent to ensure all the relevant stage variables are updated.
 - [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
 
 ## Use SQL file
 
-The following example illustrates how to pass database arguments and run `execute` command  
+The following example illustrates how to pass database arguments and run the `execute` command.  
 
 ```yaml
 - task: AzureCLI@2
@@ -48,7 +50,7 @@ The following example illustrates how to pass database arguments and run `execut
 
 ## Use inline SQL script
 
-The following example illustrates how to run an inline SQL script using `execute`  command.
+The following example illustrates how to run an inline SQL script by using the `execute` command.
 
 ```yaml
 - task: AzureCLI@2
