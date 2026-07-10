@@ -1,14 +1,15 @@
 ---
 title: "Tutorial: Design for Microservices with Elastic Clusters"
 description: This tutorial shows how to design for microservices with elastic clusters on Azure Database for PostgreSQL.
+#customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL when deploying applications using the microservices architecture.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
-# customer intent: As a user, I want to learn how to use elastic clusters on Azure Database for PostgreSQL when deploying applications using the microservices architecture.
+ai-usage: ai-assisted
 ---
 
 # Tutorial: Design for microservices with elastic clusters
@@ -27,7 +28,7 @@ In this tutorial, you use Azure Database for PostgreSQL as the storage backend f
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using the portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
 - [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
 - [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 

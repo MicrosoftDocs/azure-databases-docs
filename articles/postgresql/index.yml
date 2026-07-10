@@ -35,7 +35,7 @@ landingContent:
           - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
           - text: Create an elastic cluster 
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
+            url: elastic-clusters/create-elastic-cluster.md
       - linkListType: how-to-guide
         links:
           - text: Manage your server
