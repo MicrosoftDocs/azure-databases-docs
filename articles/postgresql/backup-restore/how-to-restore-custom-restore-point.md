@@ -1,17 +1,18 @@
 ---
-title: Restore to custom restore point
-description: This article describes how to restore to custom restore point an Azure Database for PostgreSQL flexible server.
+title: Restore to Custom Restore Point in Azure Database for PostgreSQL Flexible Server
+description: Restore Azure Database for PostgreSQL flexible server to a custom restore point using the Azure portal or CLI. Follow these instructions to restore data from a specific time.
+#customer intent: As a user, I want to learn how to restore to custom restore point an Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to restore to custom restore point an Azure Database for PostgreSQL flexible server.
+ai-usage: ai-assisted
 ---
 
-# Restore to custom restore point
+# Restore to custom restore point in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to restore an Azure Database for PostgreSQL flexible server to a custom restore point.
 
@@ -19,7 +20,7 @@ This article provides step-by-step instructions to restore an Azure Database for
 
 ### [Portal](#tab/portal-restore-custom-point)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
