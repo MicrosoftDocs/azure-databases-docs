@@ -1,17 +1,18 @@
 ---
-title: Start compute of a server
+title: Start compute of a server in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to start the compute of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to start the compute of an Azure Database for PostgreSQL.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to start the compute of an Azure Database for PostgreSQL.
+ai-usage: ai-assisted
 ---
 
-# Start compute of a server
+# Start compute of a server in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to start the compute of an Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +20,7 @@ This article provides step-by-step instructions to start the compute of an Azure
 
 ### [Portal](#tab/portal-start-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -27,7 +28,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-start-server/overview.png" alt-text="Screenshot showing how to select the Overview page." lightbox="./media/how-to-start-server/overview.png":::
 
-1. The status of the server must be **Stopped**, for the **Start** button to appear on the toolbar.
+1. The status of the server must be **Stopped** for the **Start** button to appear on the toolbar.
 
     :::image type="content" source="./media/how-to-start-server/server-status.png" alt-text="Screenshot showing where in the Overview page you can find the status of the server ." lightbox="./media/how-to-start-server/server-status.png":::
 
@@ -45,7 +46,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-start-server)
 
-You can start the compute of a stopped server via the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command.
+Use the [az postgres flexible-server start](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-start) command to start the compute of a stopped server.
 
 ```azurecli-interactive
 az postgres flexible-server start \
@@ -53,7 +54,7 @@ az postgres flexible-server start \
   --name <server>
 ```
 
-If you attempt to start the compute of a server which isn't in `Stopped` state and isn't processing any other operation, you receive an error like this:
+If you try to start the compute of a server that isn't in the `Stopped` state and isn't processing any other operation, you receive an error like this:
 
 ```output
 (ServerIsNotStopped) Start Server can only be performed on Stopped servers. Seever Name = <server>, Current Server State = Updating
@@ -61,7 +62,7 @@ Code: ServerIsNotStopped
 Message: Start Server can only be performed on Stopped servers. Server Name = <server>, Current Server State = Updating
 ```
 
-If you attempt to start the compute of a server which is processing any other operation, you receive an error like this:
+If you try to start the compute of a server that is processing any other operation, you receive an error like this:
 
 ```output
 (SeverBusyWithOtherOperation) Cannot perform 'Start' server operation because server '<server>' is busy processing other operation.
@@ -72,7 +73,7 @@ Message: Cannot perform 'Start' server operation because server '<server>' is bu
 ---
 
 > [!NOTE]
-> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation is not guaranteed to succeed. Once the server is started, all management operations are available for the Azure Database for PostgreSQL flexible server.
+> Starting a server depends on the available capacity in the region. During capacity outages, the server start operation isn't guaranteed to succeed. Once the server starts, all management operations are available for the Azure Database for PostgreSQL flexible server.
 
 ## Related content
 
