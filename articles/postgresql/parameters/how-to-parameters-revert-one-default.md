@@ -1,17 +1,17 @@
 ---
-title: Revert one parameter to its default
+title: Revert One Parameter to its Default in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to revert one parameter to its default of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to revert one parameter to its default value in Azure Database for PostgreSQL flexible server, so that I can undo a specific configuration change without affecting other parameters.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/26/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to revert one parameter to its default of an Azure Database for PostgreSQL.
 ---
 
-# Revert one parameter to its default
+# Revert one parameter to its default in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to revert one parameter to its default for an Azure Database for PostgreSQL flexible server.
 

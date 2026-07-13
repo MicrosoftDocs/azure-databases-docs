@@ -1,25 +1,25 @@
 ---
-title: List all parameters
+title: List all parameters in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to list all parameters of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to list all parameters of my Azure Database for PostgreSQL flexible server, so that I can review the current configuration of the server.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/26/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to list all parameters of an Azure Database for PostgreSQL.
 ---
 
-# List all parameters
+# List all parameters in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to list all parameters of an Azure Database for PostgreSQL flexible server.
 
 ## Steps to list all parameters
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-list-all-parameters)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -60,11 +60,11 @@ The **Parameter type** column can show any of the following values for each para
 | Parameter type | Description |
 | --- | --- |
 | **Static** | Requires a server restart to make the change effective. |
-| **Dynamic** | Can be altered without the need to restart the server instance. However, changes apply only to new connections established after the modification. |
+| **Dynamic** | Can be altered without the need to restart the server. However, changes apply only to new connections established after the modification. |
 | **Read-only** | Isn't user configurable, because of its critical role in maintaining reliability, security, or other operational aspects of the service. |
 
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-list-all-parameters)
 
 Use the [az postgres flexible-server parameter list](/cli/azure/postgres/flexible-server/parameter#az-postgres-flexible-server-parameter-list) command to list all parameters in a server.
 
@@ -83,7 +83,7 @@ Each parameter has the following attributes:
 | **defaultValue** | Value assigned to the parameter when a new server is deployed. | Varies, depending on the data type and allowed values of the parameter. |
 | **description** | Brief explanation of what the parameter controls. | Textual description which is different for each parameter. |
 | **documentationLink** | URL address of the page pointing to the documentation of the parameter. | Some form of URL. |
-| **id** | Resource identifier that uniquely refers to the parameter in this particular instance of flexible server. | A string that follows the pattern `/subscriptions/<subscription_identifier>/resourceGroups/<resource_group_name>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server_name>/configurations/<parameter_name>`. |
+| **id** | Resource identifier that uniquely refers to the parameter in this particular flexible server. | A string that follows the pattern `/subscriptions/<subscription_identifier>/resourceGroups/<resource_group_name>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<server_name>/configurations/<parameter_name>`. |
 | **isConfigPendingRestart** | Indicates whether a server restart is required for the value currently set in the **value** attribute to take effect. | `true`: for parameters whose value was changed and, because they aren't dynamic (that is, they're static), require a server restart for the change to take effect. `false`: for parameters whose value currently set in the **value** attribute is in effect, and aren't waiting for a server restart to take effect. |
 | **isDynamicConfig** | Indicates whether a change in the value assigned to the parameter doesn't require or requires a server restart, for the change to take effect. | `true`: for parameters that, when their value changes, the change takes effect immediately. `false`: for parameters that, when their value changes, require a server restart for the change to take effect. |
 | **isReadOnly** | Indicates if the user can or can't override the default value assigned to the parameter. | `true`: for parameters that are designated as read-only and the user can't change. `false`: for parameters that are designated as read-write and the user can set to a different value than their default. |

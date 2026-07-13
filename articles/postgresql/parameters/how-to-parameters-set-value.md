@@ -1,17 +1,17 @@
 ---
-title: Set the value of one or more parameters
+title: Set the Value of One or More Parameters in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to set the value of one or more parameters of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to change server parameter values in Azure Database for PostgreSQL flexible server, so that I can tune my database to meet my workload's needs.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/26/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to set the value of one or more parameters of an Azure Database for PostgreSQL.
 ---
 
-# Set the value of one or more parameters
+# Set the value of one or more parameters in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to set the value of one or more parameters of an Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +19,7 @@ This article provides step-by-step instructions to set the value of one or more 
 
 ### [Portal](#tab/portal-set-value)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

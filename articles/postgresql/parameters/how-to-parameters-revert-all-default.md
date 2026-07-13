@@ -1,17 +1,17 @@
 ---
-title: Revert all parameters to their default values
+title: Revert All Parameters to their Default Values in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to revert all parameters to their default values of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to revert all parameters to their default values in Azure Database for PostgreSQL flexible server, so that I can restore a clean baseline configuration.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/26/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to revert all parameters to their default values of an Azure Database for PostgreSQL.
 ---
 
-# Revert all parameters to their default values
+# Revert all parameters to their default values in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to revert all parameters to their default values for an Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +19,7 @@ This article provides step-by-step instructions to revert all parameters to thei
 
 ### [Portal](#tab/portal-revert-all-to-default)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
