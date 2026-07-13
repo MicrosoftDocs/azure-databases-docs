@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/29/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -11,7 +11,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Adaptive Autovacuum |
 | Description | Specifies the timeout, in seconds, before an orphan transaction is rolled back and before a long running transaction is terminated. |
 | Data type | integer |
 | Default value | `0` |
@@ -21,5 +21,6 @@ ms.custom: automatically generated
 
 
 [!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
 
 
