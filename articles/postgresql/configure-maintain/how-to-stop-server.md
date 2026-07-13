@@ -1,17 +1,18 @@
 ---
-title: Stop compute of a server
+title: Stop compute of a server in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to stop the compute of an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
+ai-usage: ai-assisted
 #customer intent: As a user, I want to learn how to stop the compute of an Azure Database for PostgreSQL.
 ---
 
-# Stop compute of a server
+# Stop compute of a server in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to stop the compute of an Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +20,7 @@ This article provides step-by-step instructions to stop the compute of an Azure 
 
 ### [Portal](#tab/portal-stop-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -50,7 +51,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-stop-server)
 
-You can stop the compute of a started server via the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command.
+Use the [az postgres flexible-server stop](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-stop) command to stop the compute of a started server.
 
 ```azurecli-interactive
 az postgres flexible-server stop \

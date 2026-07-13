@@ -1,23 +1,24 @@
 ---
-title: Enable and use pg_partman
+title: Enable and use pg_partman in Azure Database for PostgreSQL Flexible Server
 description: Learn how to enable and use pg_partman on Azure Database for PostgreSQL flexible server to optimize database performance and improve query speed.
+#customer intent: As a developer, I want to learn how to enable and use pg_partman on Azure Database for PostgreSQL  so that I can optimize my database performance.
 ms.author: gapaderla
 author: GayathriPaderla
 ms.reviewer: sbalijepalli, maghan
-ms.date: 05/17/2024
+ms.date: 07/08/2026
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.collection: ce-skilling-ai-copilot
 ms.topic: how-to
-#customer intent: As a developer, I want to learn how to enable and use pg_partman on Azure Database for PostgreSQL  so that I can optimize my database performance.
+ai-usage: ai-assisted
 ---
 
-# Enable and use pg_partman on Azure Database for PostgreSQL flexible server 
+# Enable and use pg_partman in Azure Database for PostgreSQL flexible server
 
 In this article, you learn how to optimize Azure Database for PostgreSQL flexible server by using the PostgreSQL Partition Manager (`pg_partman`) extension.
 
-When tables in a database become large, it's hard to manage how often they're vacuumed, how much space they take up, and how to keep their indexes efficient. This difficulty can make queries slower and affect performance. Partitioning of large tables is a solution for these situations.
+When tables in a database become large, it's hard to manage how often they're vacuumed, how much space they take up, and how to keep their indexes efficient. This difficulty can make queries slower and affect performance. Partitioning large tables can help solve these problems.
 
 In this article, you use `pg_partman` to create range-based partitions of tables in your Azure Database for PostgreSQL flexible server.
 

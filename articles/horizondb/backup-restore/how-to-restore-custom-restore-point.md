@@ -69,12 +69,13 @@ Use the `az rest` command to restore a new Azure HorizonDB cluster from the back
 
 ```azurecli-interactive
 az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{cluster}?api-version=2026-01-20-preview" \
+  --uri "https://management.azure.com/subscriptions/{targetSubscriptionId}/resourceGroups/{targetResourceGroupName}/providers/Microsoft.HorizonDB/clusters/{targetCluster}?api-version=2026-01-20-preview" \
   --body '{
     "location": "{location}",
     "properties": {
       "createMode": "PointInTimeRestore",
       "pointInTimeUTC": "{YYYY-MM-DDTHH:mm:ss.SSSZ}"
+      "sourceClusterResourceId": "/subscriptions/{sourceSubscriptionId}/resourceGroups/{sourceResourceGroupName}/providers/Microsoft.HorizonDB/clusters/{sourceCluster}"
     }
   }'
 

@@ -1,10 +1,11 @@
 ---
-title: "Quickstart: Create a Flexible Server Instance"
-description: Quickstart guide to creating and managing an Azure Database for PostgreSQL flexible server instance.
+title: "Quickstart: Create an Azure Database for PostgreSQL Flexible Server"
+description: Quickstart guide to creating and managing an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to create an Azure Database for PostgreSQL flexible server by using the Azure portal, so that I can host and manage a PostgreSQL database in the cloud.
 author: gbowerman
 ms.author: guybo
 ms.reviewer: maghan
-ms.date: 01/23/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: quickstart
@@ -15,7 +16,7 @@ ai-usage: ai-assisted
 
 Azure Database for PostgreSQL is a managed service that you can use to run, manage, and scale highly available PostgreSQL databases in the cloud.
 
-This quickstart shows you how to create an Azure Database for PostgreSQL flexible server instance by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
+This quickstart shows you how to create an Azure Database for PostgreSQL flexible server by using the Azure portal, Azure CLI, or Azure Resource Manager (ARM) templates.
 
 ## Prerequisites
 
@@ -26,7 +27,7 @@ Before you begin, make sure you have:
 
 ## Understand what you're creating
 
-An Azure Database for PostgreSQL flexible server instance includes:
+An Azure Database for PostgreSQL flexible server includes:
 
 - A configured set of [compute and storage resources](concepts-compute.md).
 - Deployment within an [Azure resource group](/azure/azure-resource-manager/management/overview).
@@ -113,7 +114,7 @@ Select **Configure server** to customize:
 
 ### Configure networking
 
-Choose your connectivity method (can't be changed after creation):
+Choose your connectivity method (you can't change it after creation):
 
 #### Public access (allowed IP addresses)
 
@@ -323,7 +324,7 @@ az deployment group create \
 
 After creating your server, retrieve connection details:
 
-### Using Azure portal
+### Using the Azure portal
 
 1. Go to your server in the Azure portal.
 1. Open the **Overview** page.
@@ -341,7 +342,7 @@ az postgres flexible-server show \
   --output table
 ```
 
-## Connect using psql
+## Connect by using psql
 
 ### Install psql
 
@@ -357,7 +358,7 @@ When prompted, enter the administrator password you set during server creation.
 
 ### Connection string format
 
-```
+```text
 host=<server-name>.postgres.database.azure.com port=5432 dbname=<database-name> user=<admin-user> password=<password> sslmode=require
 ```
 

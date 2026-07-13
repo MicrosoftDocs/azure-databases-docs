@@ -1,14 +1,15 @@
 ---
 title: 'Tutorial: Real-time dashboard with elastic clusters'
 description: This tutorial shows how to parallelize real-time dashboard queries with elastic clusters on Azure Database for PostgreSQL.
+#customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
-#Customer intent: As a developer, I want to parallelize queries so that I can make a real-time dashboard application.
+ai-usage: ai-assisted
 ---
 
 # Tutorial: Design a real-time analytics dashboard with elastic clusters
@@ -27,7 +28,7 @@ In this tutorial, you use elastic clusters on Azure Database for PostgreSQL elas
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using the portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
 - [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
 - [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 

@@ -1,19 +1,21 @@
 ---
-title: Upgrade Validation Checks
+title: Upgrade Validation Checks in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to run upgrade validation checks for Azure Database for PostgreSQL flexible server before performing a major version upgrade.
+#customer intent: As a database administrator, I want to run upgrade validation checks before a major version upgrade, so that I can identify and resolve blocking issues in advance.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/25/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
+ai-usage: ai-assisted
 ms.custom:
   - references_regions
   - build-2026
 ---
 
-# Run upgrade validation checks (Preview)
+# Run upgrade validation checks (Preview) in Azure Database for PostgreSQL flexible server
 
 This article describes how to run upgrade validation checks for Azure Database for PostgreSQL flexible server.
 
@@ -30,7 +32,7 @@ Before running upgrade validation checks, review the supported upgrade paths and
 
 ### [Portal](#tab/portal-major-version-upgrade-validation-checks)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. From the resource menu, select **Overview**.
 
@@ -102,7 +104,7 @@ Upgrade validation checks also generate upgrade validation logs that you can dow
 
 To access validation logs:
 
-1. In the Azure portal, go to your Azure Database for PostgreSQL flexible server instance.
+1. In the Azure portal, go to your Azure Database for PostgreSQL flexible server.
 
 1. Select **Server logs** under the **Monitoring** section.
 

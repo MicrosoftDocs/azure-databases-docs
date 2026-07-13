@@ -1,58 +1,59 @@
 ---
-title: Delete on-demand backups
-description: This article describes how to delete on-demand backups of an Azure Database for PostgreSQL flexible server.
+title: Delete On-Demand Backups in Azure Database for PostgreSQL Flexible Server
+description: Delete on-demand backups in Azure Database for PostgreSQL flexible server using the Azure portal or CLI. Follow these instructions to remove backups.
+#customer intent: As a user, I want to learn how can I delete on-demand backups of an Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 06/05/2026
+ms.date: 07/05/2026
 ms.service: azure-database-postgresql
 ms.subservice: backup-restore
 ms.topic: how-to
-# customer intent: As a user, I want to learn how can I delete full on-demand backups of an Azure Database for PostgreSQL flexible server.
+ai-usage: ai-assisted
 ---
 
-# Delete on-demand backups
+# Delete on-demand backups in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to delete on-demand backups of an Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]
-> On-demand backups are automatically deleted, according to your configured backup retention period. However, you can manually delete them earlier if they’re no longer needed.
+> The system automatically deletes on-demand backups according to your configured backup retention period. However, you can manually delete them earlier if they're no longer needed.
 
 ## Steps to delete on-demand backups
 
 ### [Portal](#tab/portal-delete-on-demand-backups)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
-2. In the resource menu, under the **Settings** section, select **Backup and restore**.
+1. In the resource menu, under the **Settings** section, select **Backup and restore**.
 
-    :::image type="content" source="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="./media/how-to-on-demand-backup/backup-and-restore-with-backups.png":::
+    :::image type="content" source="./media/how-to-on-demand-backup/backup-restore-with-backups.png" alt-text="Screenshot showing the Backup and restore page with some automatic and on-demand backups available." lightbox="./media/how-to-on-demand-backup/backup-restore-with-backups.png":::
 
-3. In **Backup type**, select **On-demand** if you want to only see the on-demand backups which are still available to be restored.
+1. In **Backup type**, select **On-demand** to see only the on-demand backups that you can restore.
 
     :::image type="content" source="./media/how-to-on-demand-backup/list-on-demand-backups.png" alt-text="Screenshot showing how to filter the list of backups to only display on-demand backups." lightbox="./media/how-to-on-demand-backup/list-on-demand-backups.png":::
 
-4. Identify the on-demand backup that you want to delete. Then, under the **Actions** column, select **Delete**.
+1. Find the on-demand backup that you want to delete. Then, under the **Actions** column, select **Delete**.
 
     :::image type="content" source="./media/how-to-on-demand-backup/delete-on-demand-backup.png" alt-text="Screenshot showing how to delete an on-demand backup." lightbox="./media/how-to-on-demand-backup/delete-on-demand-backup.png":::
 
-5. A dialog asks for confirmation before the irreversible operation is initiated. Select **Delete** if you want to initiate the permanent deletion of that particular on-demand backup.
+1. A dialog asks for confirmation before the irreversible operation starts. Select **Delete** to permanently delete that on-demand backup.
 
     :::image type="content" source="./media/how-to-on-demand-backup/delete-confirmation.png" alt-text="Screenshot showing the confirmation dialog to initiate the deletion of an on-demand backup." lightbox="./media/how-to-on-demand-backup/delete-confirmation.png":::
 
-6.  A notification informs you that the on-demand backup is being deleted.
+1.  A notification informs you that the on-demand backup is being deleted.
 
     :::image type="content" source="./media/how-to-on-demand-backup/notification-backup-deleting.png" alt-text="Screenshot showing the notification informing that on-demand backup is being deleted." lightbox="./media/how-to-on-demand-backup/notification-backup-deleting.png":::
 
-7.  Upon successful completion, a notification informs you that the on-demand backup is deleted.
+1.  When the operation finishes, a notification informs you that the on-demand backup is deleted.
 
     :::image type="content" source="./media/how-to-on-demand-backup/notification-backup-deleted.png" alt-text="Screenshot showing the notification informing that on-demand backup is deleted." lightbox="./media/how-to-on-demand-backup/notification-backup-deleted.png":::
 
 ### [CLI](#tab/cli-delete-on-demand-backups)
 
-You can delete any of the currently available on-demand backups of a server via the [az postgres flexible-server backup delete](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-delete) command.
+Use the [az postgres flexible-server backup delete](/cli/azure/postgres/flexible-server/backup#az-postgres-flexible-server-backup-delete) command to delete any of the currently available on-demand backups of a server.
 
 ```azurecli-interactive
 az postgres flexible-server backup delete \
@@ -67,7 +68,7 @@ If you run the previous command, it requires you to explicitly confirm, respondi
 Are you sure you want to delete the backup '<backup>' in server '<server>'
 ```
 
-If you want to run the command without needing the user interaction, you can add the `--yes` parameter like this:
+If you want to run the command without needing the user interaction, add the `--yes` parameter like this:
 
 ```azurecli-interactive
 az postgres flexible-server backup delete \
@@ -78,7 +79,7 @@ az postgres flexible-server backup delete \
 ```
 
 > [!NOTE]
-> If you provide the name that doesn't match any of the available on-demand backups, the command doesn't report any error.
+> If you provide a name that doesn't match any of the available on-demand backups, the command doesn't report any error.
 
 ---
 

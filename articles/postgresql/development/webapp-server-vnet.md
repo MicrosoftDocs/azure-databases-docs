@@ -1,10 +1,11 @@
 ---
 title: Create an Azure App Service Web App in the Same Virtual Network
-description: Quickstart guide to create an Azure Database for PostgreSQL flexible server instance with a web app in the same virtual network.
+description: Quickstart guide to create an Azure Database for PostgreSQL flexible server with a web app in the same virtual network.
+#customer intent: As a cloud developer, I want to create an Azure Database for PostgreSQL flexible server inside a virtual network, so that I can keep my database traffic private and isolated.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 06/03/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: tutorial
@@ -16,11 +17,11 @@ ms.devlang: "azurecli"
 
 # Create an Azure Database for PostgreSQL flexible server with a web app in a virtual network
 
-This article shows you how to create an Azure App Service Web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
+This article shows you how to create an Azure App Service web app with Azure Database for PostgreSQL flexible server inside a [Virtual network](/azure/virtual-network/virtual-networks-overview).
 
 In this article, you learn how to:
 > [!div class="checklist"]
-> - Create an Azure Database for PostgreSQL flexible server instance in a virtual network
+> - Create an Azure Database for PostgreSQL flexible server in a virtual network
 > - Create a web app
 > - Add the web app to the virtual network
 > - Connect to Azure Database for PostgreSQL flexible server from the web app
@@ -40,9 +41,9 @@ In this article, you learn how to:
   az account set --subscription <subscription ID>
   ```
 
-## Create a flexible server instance
+## Create a flexible server
 
-Create a private Azure Database for a PostgreSQL flexible server instance inside a virtual network by using the following command:
+Create a private Azure Database for PostgreSQL flexible server inside a virtual network by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server create --resource-group demoresourcegroup --name demoserverpostgres --vnet demoappvnet --location westus2
@@ -51,7 +52,7 @@ This command performs the following actions, which might take a few minutes:
 
 - Creates the resource group if it doesn't already exist.
 - Generates a server name if you don't provide one.
-- Creates a virtual network and subnet for the Azure Database for PostgreSQL flexible server instance.
+- Creates a virtual network and subnet for the Azure Database for PostgreSQL flexible server.
 - Creates admin username and password for your server if you don't provide them.
 - Creates an empty database named **postgres**.
 
@@ -110,7 +111,7 @@ Before enabling virtual network integration, you need a subnet that's delegated 
 az network vnet show --resource-group demoresourcegroup -n demoappvnet
 ```
 
-Run the following command to create a new subnet in the same virtual network as the Azure Database for PostgreSQL flexible server instance. **Update the address prefix to avoid conflict with the Azure Database for PostgreSQL flexible server subnet.**
+Run the following command to create a new subnet in the same virtual network as the Azure Database for PostgreSQL flexible server. **Update the address prefix to avoid conflict with the Azure Database for PostgreSQL flexible server subnet.**
 
 ```azurecli-interactive
 az network vnet subnet create --resource-group demoresourcegroup --vnet-name demoappvnet --name webappsubnet  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms
@@ -126,12 +127,12 @@ az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp -
 
 ## Configure environment variables to connect the database
 
-After deploying the code to App Service, connect the app to the Azure Database for PostgreSQL flexible server instance in Azure. The app code expects to find database information in many environment variables. To set environment variables in App Service, use the [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command.
+After deploying the code to App Service, connect the app to the Azure Database for PostgreSQL flexible server in Azure. The app code expects to find database information in many environment variables. To set environment variables in App Service, use the [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) command.
 
 ```azurecli-interactive
 az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="postgres" DBUSER="<username>" DBPASS="<password>"
 ```
-- Replace **postgres-server-name**, **username**, and **password** with the values for the newly created Azure Database for PostgreSQL flexible server instance.
+- Replace **postgres-server-name**, **username**, and **password** with the values for the newly created Azure Database for PostgreSQL flexible server.
 
 - Replace **\<username\>** and **\<password\>** with the credentials that the command also generated for you.
 - The resource group and app name come from the cached values in the .azure/config file.

@@ -21,6 +21,11 @@ This article highlights the latest updates and enhancements for Azure Database f
 
 - General availability
   - Support for latest [minor versions](../configure-maintain/concepts-supported-versions.md) 18.4, 17.10, 16.14, 15.18, and 14.23. <sup>$</sup>
+  - Support for view [upcoming maintenance](../configure-maintain/concepts-maintenance.md#view-upcoming-maintenance) 
+  - Support for view [maintenance history](../configure-maintain/concepts-maintenance.md#view-maintenance-history)
+  - Support for [reschedule maintenance](../configure-maintain/concepts-maintenance.md#reschedule-planned-maintenance-to-a-future-date) to a future date
+  - Support for [apply maintenance on-demand](../configure-maintain/concepts-maintenance.md#apply-maintenance-on-demand)
+  
 - Preview
   - [Pre-Upgrade Validation Checks](../configure-maintain/concepts-major-version-upgrade.md#upgrade-validation-checks-preview) to help identify upgrade blocking issues before starting the upgrade.
 
@@ -114,11 +119,11 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [Long-term backups](../backup-restore/concepts-backup-restore.md#long-term-retention)
   - [Enable and use DiskANN extension](../extensions/how-to-use-pgdiskann.md)
   - [Pgvector 0.8.0 extension](../extensions/concepts-extensions-versions.md#vector)
+  - [AGE extension with Azure Database for PostgreSQL](../azure-ai/generative-ai-age-overview.md)
   - [Automatic key version updates](../security/security-data-encryption.md#cmk-key-version-updates)
   - [Resiliency solution accelerator](https://github.com/Azure-Samples/Azure-PostgreSQL-Resilience-Architecture) for Azure Database for PostgreSQL
 - Preview
   - [Azure Confidential Computing for Azure Database for PostgreSQL](../security/security-confidential-computing.md)
-  - [AGE extension with Azure Database for PostgreSQL](../azure-ai/generative-ai-age-overview.md)
   - [AI functions in the azure_ai extension (Preview)](../azure-ai/generative-ai-azure-ai-functions.md)
   - [PostgreSQL extension for Visual Studio Code](../development/vs-code-extension/postgresql-extension-overview.md)
   - [Copilot integration](../development/vs-code-extension/copilot-integration.md)

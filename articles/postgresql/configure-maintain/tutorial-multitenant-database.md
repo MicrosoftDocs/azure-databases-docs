@@ -1,13 +1,15 @@
 ---
 title: "Tutorial: Design Multitenant Database with Elastic Clusters"
 description: Learn how to design a scalable multitenant application with Azure Database for PostgreSQL elastic clusters.
+#customer intent: As a user, I want to design a multitenant database schema, so that I can build an application that supports multiple customers with isolated data.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/05/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: tutorial
+ai-usage: ai-assisted
 ---
 
 # Tutorial: Design a multitenant database with elastic clusters
@@ -26,7 +28,7 @@ In this tutorial, you use Azure Database for PostgreSQL with elastic clusters to
 ## Prerequisites
 
 Create an elastic cluster in one of the following ways:
-- [Create an elastic cluster using the Portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
+- [Create an elastic cluster using the portal](../elastic-clusters/quickstart-create-elastic-cluster-portal.md)
 - [Create an elastic cluster using Bicep](../elastic-clusters/quickstart-create-elastic-cluster-bicep.md)
 - [Create an elastic cluster with ARM template](../elastic-clusters/quickstart-create-elastic-cluster-arm-template.md)
 

@@ -1,10 +1,11 @@
 ---
-title: Elastic Clusters Limitations FAQ
-description: "Learn about existing limitations of elastic clusters of Azure Database for PostgreSQL flexible server instances."
+title: Limitations FAQ - Elastic Clusters in Azure Database for PostgreSQL Flexible Server
+description: Learn about existing limitations of elastic clusters of Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to understand the capacity and functional limitations of elastic clusters, so that I can determine if they meet my workload requirements.
 author: JaredMSFT
 ms.author: jaredmeade
 ms.reviewer: adamwolk, maghan
-ms.date: 11/18/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: elastic-clusters
 ms.topic: faq
@@ -22,7 +23,7 @@ This section lists the key capacity and functional limitations specific to elast
  
 ### Q: In what regions can I use elastic clusters?
 
-A: Elastic clusters are a feature of Azure Database for PostgreSQL flexible server instances and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
+A: Elastic clusters are a feature of Azure Database for PostgreSQL flexible servers and as such are available in the [same regions](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
  
 ### Q: Can I create more databases in an elastic cluster?
 
@@ -40,9 +41,9 @@ A: Scaling in or decreasing the number of nodes in an elastic cluster is current
 
 A: Elastic clusters support PostgreSQL version 17.
  
-### Q: Can I use Major Version Upgrades with elastic clusters?
+### Q: Can I use major version upgrades with elastic clusters?
 
-A: Currently, Major Version Upgrades aren't supported.
+A: Currently, major version upgrades aren't supported.
  
 ### Q: Can I download server logs?
 
@@ -50,7 +51,7 @@ A: Currently, downloading server logs isn't supported. You can use Azure Metrics
  
 ## Extensions
 
-This section lists PostgreSQL extensions that elastic clusters support or don't support. It also notes any special considerations when enabling them. Use this information to determine compatibility and known conflicts (for example, between Citus and TimescaleDB).
+This section lists PostgreSQL extensions that elastic clusters support or don't support. It also notes any special considerations when enabling them. Use this information to determine compatibility and known conflicts, such as between Citus and TimescaleDB.
  
 ### Q: What extensions aren't supported?
 
@@ -67,11 +68,11 @@ A: The TimescaleDB extension isn't supported on elastic clusters because of low-
  
 ## Migrations
 
-This section describes supported methods and considerations for migrating data to and from elastic clusters. It includes recommended tools and known limitations. Use pg_dump/pg_restore or pgcopydb for logical migrations and verify extension compatibility before starting.
+This section describes supported methods and considerations for migrating data to and from elastic clusters. It includes recommended tools and known limitations. Use `pg_dump`/`pg_restore` or `pgcopydb` for logical migrations and verify extension compatibility before starting.
  
-### Q: How can I migrate to/from elastic clusters?
+### Q: How can I migrate to or from elastic clusters?
 
-A: Currently, you can migrate to and from elastic clusters with pg_dump, pg_restore, and pgcopydb. Any other tool that works with standard PostgreSQL should work.
+A: Currently, you can migrate to and from elastic clusters by using `pg_dump`, `pg_restore`, and `pgcopydb`. Any other tool that works with standard PostgreSQL should work.
  
 ## Networking
 
@@ -83,7 +84,7 @@ A: Yes, you can use PgBouncer with elastic clusters. Use port 6432 for schema an
  
 ### Q: Can I use virtual network (VNet) with elastic clusters?
 
-A: Yes, your elastic cluster Private Link Endpoints can be added to your VNet. Additionally, if you need to limit network traffic to use your VNet exclusively, you can disable Public network access. Virtual network injection is not supported.
+A: Yes, you can add your elastic cluster Private Link Endpoints to your VNet. Additionally, if you need to limit network traffic to use your VNet exclusively, you can disable public network access. Virtual network injection isn't supported.
  
 ## Storage
 

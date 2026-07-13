@@ -1,25 +1,26 @@
 ---
-title: Delete a Server
+title: Delete a Server in Azure Database for PostgreSQL Flexible Server
 description: This article describes the steps to delete an existing Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to delete an Azure Database for PostgreSQL flexible server.
+ai-usage: ai-assisted
 ---
 
-# Delete a server
+# Delete a server in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to delete an Azure Database for PostgreSQL flexible server.
 
-## Delete a server
+## Steps to delete a server
 
 ### [Portal](#tab/portal-delete-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -45,11 +46,11 @@ Using the [Azure portal](https://portal.azure.com/):
 
 1. If the server has private endpoints configured, you also have to check the **I acknowledge that the deletion of the server doesn't delete any private endpoints associated with this server. After the server is deleted, make sure that you delete these private endpoints.** box, so that the **Delete** button is enabled.
 
-    :::image type="content" source="./media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server instance when there are private endpoints." lightbox="./media/how-to-delete-server/accept-conditions-private-endpoints.png":::
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-private-endpoints.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when there are private endpoints." lightbox="./media/how-to-delete-server/accept-conditions-private-endpoints.png":::
 
 1. If the server is VNET integrated, you also have to check the **I acknowledge that the deletion of the server doesn't delete the virtual network in which the server is integrated. After the server is deleted, consider if you should also delete the virtual network.** box, so that the **Delete** button is enabled.
 
-    :::image type="content" source="./media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server instance when it's VNET integrated." lightbox="./media/how-to-delete-server/accept-conditions-vnet-integration.png":::
+    :::image type="content" source="./media/how-to-delete-server/accept-conditions-vnet-integration.png" alt-text="Screenshot showing how to accept terms and consequences of triggering the deletion of an Azure Database for PostgreSQL flexible server when it's VNET integrated." lightbox="./media/how-to-delete-server/accept-conditions-vnet-integration.png":::
 
 1. Select **Delete** to proceed with the immediate deletion of the server.
 
@@ -63,9 +64,9 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-delete-server/notification-deleted-server.png" alt-text="Screenshot showing a server that was successfully deleted." lightbox="./media/how-to-delete-server/notification-deleted-server.png":::
 
-### [CLI](#tab/cli-reset-admin-password)
+### [CLI](#tab/cli-delete-server)
 
-You can delete a server via the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command.
+Use the [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-delete) command to delete a server.
 
 ```azurecli-interactive
 az postgres flexible-server delete \
