@@ -1,17 +1,17 @@
 ---
-title: List read-write static parameters
+title: List Read-Write Static Parameters in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to list read-write static parameters of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to list the read-write static parameters of my Azure Database for PostgreSQL flexible server, so that I can identify which settings require a server restart to take effect.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/26/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to list read-write static parameters of an Azure Database for PostgreSQL.
 ---
 
-# List read-write static parameters
+# List read-write static parameters in Azure Database for PostgreSQL flexible server
 
 This article provides step-by-step instructions to list read-write static parameters of an Azure Database for PostgreSQL flexible server.
 
@@ -19,7 +19,7 @@ This article provides step-by-step instructions to list read-write static parame
 
 ### [Portal](#tab/portal-list-static)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

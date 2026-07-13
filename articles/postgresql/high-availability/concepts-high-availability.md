@@ -1,39 +1,39 @@
 ---
 title: High Availability in Azure Database for PostgreSQL flexible server
 description: Learn how zone-redundant and zonal high availability work in Azure Database for PostgreSQL flexible server, including automatic failover and SLAs.
+#customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 ---
 
 # High availability in Azure Database for PostgreSQL flexible server
 
-Azure Database for PostgreSQL supports high availability by provisioning physically separated primary and standby replicas. This high availability model is designed to ensure that committed data is never lost during failures. In a high availability (HA) setup, data is synchronously committed to both the primary and standby servers. The model is designed so that the database doesn't become a single point of failure in your software architecture.
+Azure Database for PostgreSQL supports high availability by provisioning physically separated primary and standby replicas. This high availability model ensures that committed data is never lost during failures. In a high availability (HA) setup, the system synchronously commits data to both the primary and standby servers. The model is designed so that the database isn't a single point of failure in your software architecture.
 
-By default in most regions, your standby replica is deployed into a different availability zone to your primary replica (zone-redundant). You can also deploy the primary and standby replicas within the same availability zone (zonal).
+By default in most regions, the service deploys your standby replica into a different availability zone from your primary replica (zone-redundant). You can also deploy the primary and standby replicas within the same availability zone (zonal).
 
 ## High availability features
 
-- A standby replica is deployed in the same virtual machine configuration as the primary server, including vCores, storage, and network settings.
+- The primary server and the standby replica use the same virtual machine configuration, including vCores, storage, and network settings.
 
-- You can add availability zone support for an existing database server.
+- You can add availability zone support to an existing database server.
 
-- Along with the standby server, we also deploy a WAL replica server to maintain quorum commit. In scenarios where the standby server is temporarily unavailable, transactions are committed on the primary server and the WAL replica server to ensure durability. Once the standby server becomes available again, it automatically catches up with the primary server. This architecture helps ensure that committed records are durably persisted.
+- Along with the standby server, the architecture includes a WAL replica server to maintain quorum commit. In scenarios where the standby server is temporarily unavailable, transactions are committed on the primary server and the WAL replica server to ensure durability. When the standby server becomes available again, it automatically catches up with the primary server. This architecture helps ensure that committed records are durably persisted.
 
-- If a failover occurs, only the standby server is promoted to become the new primary server. The WAL replica server isn't promoted and is used solely to help maintain commit quorum.
+- If a failover occurs, the process promotes only the standby server to become the new primary server. The WAL replica server isn't promoted and is used solely to help maintain commit quorum.
 
 - You can disable high availability, which removes the standby replica.
 
 - You can choose availability zones for your primary and standby database servers for zone-redundant high availability.
 
-- Operations such as stop, start, and restart are performed on both primary and standby database servers at the same time.
+- You perform operations such as stop, start, and restart on both primary and standby database servers at the same time.
 
-- The primary database server periodically performs automatic backups. At the same time, the standby replica continuously archives the transaction logs in the backup storage. For zone-redundant servers, backup data is stored on zone-redundant storage (ZRS). Backup data is stored on locally redundant storage (LRS) for servers configured without zone redundancy, zonal (single-zone) servers, and in regions that don't support availability zones.
+- The primary database server periodically performs automatic backups. At the same time, the standby replica continuously archives the transaction logs in the backup storage. For zone-redundant servers, backup data is stored on zone-redundant storage (ZRS). For servers configured without zone redundancy, zonal (single-zone) servers, and in regions that don't support availability zones, backup data is stored on locally redundant storage (LRS).
 
 - Clients always connect to the end hostname of the primary database server.
 
@@ -41,10 +41,10 @@ By default in most regions, your standby replica is deployed into a different av
 
 - You can restart the server to pick up any static parameter changes.
 
-- Periodic maintenance activities such as minor version upgrades happen at the standby first. To reduce downtime, the standby is promoted to primary so that workloads can keep on while the maintenance tasks are applied on the remaining node.
+- Periodic maintenance activities such as minor version upgrades happen at the standby first. To reduce downtime, the process promotes the standby to primary so that workloads can keep on while the maintenance tasks are applied on the remaining node.
 
 > [!NOTE]  
-> To ensure high availability functions properly, configure the `max_replication_slots` and `max_wal_senders` parameter values. High availability requires four of each to handle failovers and seamless upgrades. For a high availability setup with 5 read replicas and 12 logical replication slots, set both `max_replication_slots` and `max_wal_senders` parameter values to 21. This configuration is necessary because each read replica and logical replication slot requires one of each, plus the four needed for high availability to function properly. For more information about `max_replication_slots` and `max_wal_senders` parameters, see their [documentation](../parameters/parameters-replication-sending-servers.md).
+> To ensure high availability functions properly, configure the `max_replication_slots` and `max_wal_senders` parameter values. High availability requires four of each to handle failovers and seamless upgrades. For a high availability setup with five read replicas and 12 logical replication slots, set both `max_replication_slots` and `max_wal_senders` parameter values to 21. This configuration is necessary because each read replica and logical replication slot requires one of each, plus the four needed for high availability to function properly. For more information about `max_replication_slots` and `max_wal_senders` parameters, see their [documentation](../parameters/parameters-replication-sending-servers.md).
 
 ## Availability zone support types
 
@@ -100,7 +100,7 @@ The following picture shows the transition between VM and storage failure.
 
 You can configure high availability (HA) in two ways: zone-redundant HA, which places the standby server in a different availability zone for maximum zone resiliency, or same-zone HA, which deploys the standby server in the same zone as the primary server to minimize latency.
 
-The **'Business Critical (High Availability)'** section provides an option to create a standby HA server with a **zone redundant** configuration. To simplify configuration and ensure zone resiliency, the portal provides a *Zonal resiliency* option with two radio buttons: Enabled and Disabled. Selecting Enabled attempts to create the standby server in a different availability zone (zone-redundant HA mode). If the region doesn't support zone-redundant HA, you can select the fallback checkbox to enable same-zone (zonal) HA instead.
+The **Business Critical (High Availability)** section provides an option to create a standby HA server with a **zone redundant** configuration. To simplify configuration and ensure zone resiliency, the portal provides a *Zonal resiliency* option with two radio buttons: Enabled and Disabled. Selecting Enabled attempts to create the standby server in a different availability zone (zone-redundant HA mode). If the region doesn't support zone-redundant HA, you can select the fallback checkbox to enable same-zone (zonal) HA instead.
 
 :::image type="content" source="media/concepts-high-availability/multi-availability-zones.png" alt-text="Screenshot showing the zonal resiliency experience in portal." lightbox="./media/concepts-high-availability/multi-availability-zones.png":::
 
@@ -239,13 +239,13 @@ For a list of possible planned downtime events, see [Planned downtime events](..
 
 ### Unplanned failover
 
-Unplanned downtimes can occur as a result of unforeseen disruptions such as underlying hardware faults, networking issues, and software bugs. If the database server configured with high availability goes down unexpectedly, the process activates the standby replica and clients can resume their operations. If you don't configure high availability (HA), and the restart attempt fails, the process automatically provisions a new database server. While an unplanned downtime can't be avoided, flexible server helps mitigate the downtime by automatically performing recovery operations without requiring human intervention.
+Unplanned downtimes can occur because of unforeseen disruptions such as underlying hardware faults, networking problems, and software bugs. If the database server that you configured with high availability goes down unexpectedly, the process activates the standby replica and clients can resume their operations. If you don't configure high availability (HA) and the restart attempt fails, the process automatically provisions a new database server. While you can't avoid unplanned downtime, flexible server helps mitigate the downtime by automatically performing recovery operations without requiring human intervention.
 
 For information on unplanned failovers and downtime, including possible scenarios, see [Unplanned downtime mitigation](../backup-restore/concepts-business-continuity.md#unplanned-downtime-mitigation).
 
 ### Forced failover
 
-You can use a forced failover for *failover testing*, to simulate an unplanned outage scenario while running your production workload and observe your application downtime. You can also use a forced failover when your primary server becomes unresponsive.
+Use a forced failover for *failover testing* to simulate an unplanned outage scenario while running your production workload. You can observe your application downtime. You can also use a forced failover when your primary server becomes unresponsive.
 
 A forced failover brings the primary server down and initiates the failover workflow in which the standby promote operation is performed. Once the standby completes the recovery process until the last committed data, it's promoted to be the primary server. DNS records are updated, and your application can connect to the promoted primary server. Your application can continue to write to the primary while a new standby server is established in the background, which doesn't impact the uptime.
 
@@ -301,20 +301,20 @@ In PostgreSQL 16 and earlier, logical replication slots aren't automatically pre
 Without these configurations, logical replication might stop working after a failover because replication slots aren't available on the new primary.
 
 ### PostgreSQL 17 and later
-Starting with PostgreSQL 17, logical replication slot synchronization is supported natively. When correctly configured, replication slots are automatically synchronized to the standby server.
+Starting with PostgreSQL 17, logical replication slot synchronization is supported natively. When you configure this feature correctly, the system automatically synchronizes replication slots to the standby server.
 
 To enable this behavior:
-- Set `sync_replication_slots = on`
-- Set `hot_standby_feedback = on`
+- Set `sync_replication_slots` to `on`.
+- Set `hot_standby_feedback` to `on`.
 
-With these settings, logical replication slots are preserved during failover, and replication can continue without requiring extensions. For details,  refer to the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
+With these settings, the system preserves logical replication slots during failover, and replication can continue without requiring extensions. For details, see the [PG_Failover_Slots extension](../extensions/concepts-extensions-versions.md#pg_failover_slots) documentation.
 
 ### Important considerations
-- Logical replication slots are managed on the primary server, but **must also exist** on the standby to ensure logical replication continues after HA failover.
+- You manage logical replication slots on the primary server, but the standby server **must also have** these slots to ensure logical replication continues after HA failover.
 - System views (for example, querying `pg_replication_slots`) only show the state on the primary and don't confirm whether slots are synchronized to the standby. A system can appear healthy on the primary but still not be failover-ready to preserve logical replication slots on the standby.
 
 ### Monitor logical replication failover readiness
-To help validate failover readiness, you can use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
+To help validate failover readiness, use the Azure Monitor metric `logical_replication_slot_sync_status` (Preview).
 
 > [!IMPORTANT]
 > To emit this metric, ensure the parameter `metrics.collector_database_activity` is set to `on`.
@@ -326,4 +326,4 @@ This metric indicates whether logical replication slots are synchronized between
 If the metric value is 0, logical replication might continue to function on the current primary, but it might not continue after a failover. For a full list of logical replication metrics, see [Logical replication monitoring](../monitor/concepts-monitoring.md#logical-replication).
 
 > [!NOTE]
-> This synchronization state reflects the status across HA nodes and can't be verified using system views on the primary alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events. Consider configuring alerts when this metric remains 0 for a sustained period.
+> This synchronization state reflects the status across HA nodes and can't be verified by using system views on the primary alone. Consider using this metric with alerts to detect when logical replication isn't failover-ready, especially before planned maintenance or failover events. Consider configuring alerts when this metric remains 0 for a sustained period.
