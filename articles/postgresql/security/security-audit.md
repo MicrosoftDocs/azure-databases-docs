@@ -24,7 +24,7 @@ To learn how to set up logging to Azure Storage, Event Hubs, or Azure Monitor lo
 
 ## Installing the extension
 
-To be able to use `pgaudit` extension, you need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions), [load](../extensions/how-to-load-libraries.md), and [create](../extensions/how-to-create-extensions.md) the extension in the database on which you plan to use it.
+To use the `pgaudit` extension, [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server), [load](../extensions/how-to-load-libraries.md), and [create](../extensions/how-to-create-extensions.md) the extension in the database where you plan to use it.
 
 ## Configure extension settings
 

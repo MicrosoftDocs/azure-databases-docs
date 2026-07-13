@@ -1,20 +1,20 @@
 ---
-title: View installed extensions
-description: This article describes how to view installed extensions in an Azure Database for PostgreSQL flexible server instance.
+title: View installed extensions in Azure Database for PostgreSQL Flexible Server
+description: This article describes how to view installed extensions in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to view installed extensions in an Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to view installed extensions in an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# View installed extensions
+# View installed extensions in Azure Database for PostgreSQL flexible server
 
 
-You might want to view the extensions that are installed in an Azure Database for PostgreSQL flexible server instance, and their corresponding versions.
+You might want to view the extensions that are installed in an Azure Database for PostgreSQL flexible server, and their corresponding versions.
 
 ## Steps to view installed extensions
 

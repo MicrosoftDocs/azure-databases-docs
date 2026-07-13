@@ -382,7 +382,7 @@ This article highlights the latest updates and enhancements for Azure Database f
   - [TimescaleDB](../extensions/concepts-extensions-versions.md#timescaledb).
   - [orafce](../extensions/concepts-extensions-versions.md#orafce).
   - [pg_repack](../extensions/concepts-extensions-versions.md#pg_repack).
-- Extensions need to be [allowlisted](../extensions/how-to-allow-extensions.md#allow-extensions) before they can be installed.
+- You need to [allowlist](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server) extensions before you can install them.
 - Support for zone redundant high availability for new server creates in [regions](../overview.md#azure-regions) Central India, Korea Central, East Asia, and West US 3.
 - Several bug fixes, stability, security, and performance improvements. <sup>$</sup>
 

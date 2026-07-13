@@ -1,10 +1,11 @@
 ---
 title: List of the PostgreSQL Extensions and Modules for an Azure Database for PostgreSQL Flexible Server
-description: The following extensions and modules, organized by version of PostgreSQL, are available in an Azure Database for the PostgreSQL flexible server instance.
+description: The following extensions and modules, organized by version of PostgreSQL, are available in an Azure Database for the PostgreSQL flexible server.
+#customer intent: As a user, I want to check which extensions are available for my version of PostgreSQL, so that I can plan which ones to enable on my Azure Database for PostgreSQL flexible server.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan, randolphwest
-ms.date: 04/01/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: concept-article
@@ -15,7 +16,7 @@ zone_pivot_groups: postgresql-server-version
 
 # List of extensions and modules by version of PostgreSQL
 
-The following extensions and modules are available for the Azure Database for the PostgreSQL service.
+The following extensions and modules are available for the Azure Database for PostgreSQL service.
 
 ::: zone pivot="postgresql-18"
 

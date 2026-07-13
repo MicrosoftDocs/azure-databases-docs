@@ -1,20 +1,20 @@
 ---
-title: Create extensions
-description: This article describes how to create extensions in an Azure Database for PostgreSQL flexible server instance.
+title: Create Extensions in Azure Database for PostgreSQL Flexible Server
+description: This article describes how to create extensions in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to create extensions in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 02/17/2025
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to create extensions in an Azure Database for PostgreSQL flexible server instance.
 ---
 
-# Create extensions
+# Create extensions in Azure Database for PostgreSQL flexible server
 
 
-Before creating extensions in an Azure Database for PostgreSQL flexible server instance, you must [allowlist](how-to-allow-extensions.md) them.
+Before creating extensions in an Azure Database for PostgreSQL flexible server, [allowlist](how-to-allow-extensions.md) them.
 
 ## Steps to create extensions
 
@@ -22,7 +22,7 @@ Before creating extensions in an Azure Database for PostgreSQL flexible server i
 
 1. If the extension requires it, also add it to `shared_load_libraries`.
 
-1. To create untrusted extensions, a user must be a member of the `azure_pg_admin` role. Any user with `CREATE` privilege can create any trusted extension listed in azure.extensions. This list can be retrieved by running `SHOW azure.extensions;`
+1. To create untrusted extensions, you must be a member of the `azure_pg_admin` role. Any user with `CREATE` privilege can create any trusted extension listed in `azure.extensions`. You can retrieve this list by running `SHOW azure.extensions;`.
 
 1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to create or install a particular extension. This command loads the packaged objects into your database.
 
@@ -45,13 +45,13 @@ Before creating extensions in an Azure Database for PostgreSQL flexible server i
     ```
 
 > [!NOTE]  
-> Third-party extensions offered for Azure Database for PostgreSQL are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
+> Third-party extensions offered for Azure Database for PostgreSQL are open-source licensed code. Microsoft doesn't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
-Your Azure Database for PostgreSQL flexible server instance supports a subset of all existing PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md). 
+Your Azure Database for PostgreSQL flexible server supports a subset of all existing PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md). 
 
-This information is also available by running `SHOW azure.extensions;`. 
+You can also see this information by running `SHOW azure.extensions;`. 
 
-You can't bring your own extensions into an Azure Database for PostgreSQL flexible server instance. Extensions not included in the lists referred before aren't supported on your Azure Database for PostgreSQL flexible server instance.
+You can't bring your own extensions into Azure Database for PostgreSQL flexible server. Extensions not included in the lists referred to earlier aren't supported on your Azure Database for PostgreSQL flexible server.
 
 ## Related content
 
