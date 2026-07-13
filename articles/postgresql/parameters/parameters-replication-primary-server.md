@@ -4,7 +4,7 @@ description: Replication / Primary Server parameters for Azure Database for Post
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/29/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
@@ -68,6 +68,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [parameters-11-replication-primary-server](./includes/parameters-11-replication-primary-server.md)]
 
 ::: zone-end
-
 
 

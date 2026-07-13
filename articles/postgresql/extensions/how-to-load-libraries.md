@@ -1,17 +1,17 @@
 ---
-title: Load Libraries
-description: This article describes how to load libraries in an Azure Database for PostgreSQL flexible server.
+title: Load Libraries in Azure Database for PostgreSQL Flexible Server
+description: This article describes how to load libraries in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to load libraries in Azure Database for PostgreSQL flexible server.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan, randolphwest
-ms.date: 06/23/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to load libraries in an Azure Database for PostgreSQL flexible server.
 ---
 
-# Load libraries
+# Load libraries in Azure Database for PostgreSQL flexible server
 
 The server configuration parameter `shared_preload_libraries` determines which libraries load when an Azure Database for PostgreSQL flexible server starts. You must use this parameter to load any libraries that use shared memory. If you need to add your extension to the shared preload libraries, follow these steps:
 
@@ -19,7 +19,7 @@ The server configuration parameter `shared_preload_libraries` determines which l
 
 ### [Portal](#tab/allow-extensions-portal)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

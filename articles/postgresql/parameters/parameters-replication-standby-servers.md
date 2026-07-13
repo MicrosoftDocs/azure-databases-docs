@@ -4,7 +4,7 @@ description: Replication / Standby Servers parameters for Azure Database for Pos
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
@@ -68,6 +68,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [parameters-11-replication-standby-servers](./includes/parameters-11-replication-standby-servers.md)]
 
 ::: zone-end
-
 
 

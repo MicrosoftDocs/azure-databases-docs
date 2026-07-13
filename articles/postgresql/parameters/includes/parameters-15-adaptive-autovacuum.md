@@ -2,7 +2,7 @@
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/29/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.topic: include
 ms.custom: automatically generated
@@ -11,7 +11,7 @@ ms.custom: automatically generated
 
 | Attribute | Value |
 | --- | --- |
-| Category | Customized Options |
+| Category | Adaptive Autovacuum |
 | Description | Specifies the timeout, in seconds, before an orphan transaction is rolled back and before a long running transaction is terminated. |
 | Data type | integer |
 | Default value | `0` |
@@ -29,14 +29,15 @@ ms.custom: automatically generated
 | Attribute | Value |
 | --- | --- |
 | Category | Adaptive Autovacuum |
-| Description | Configures parameter tuning as disabled ('OFF') or enabled to tune and update autovacuum parameters. |
+| Description | Configures server parameter tuning as disabled ('OFF') or enabled to tune and update autovacuum server parameters. |
 | Data type | boolean |
 | Default value | `off` |
 | Allowed values | `on,off` |
-| Parameter type | static |
-| Documentation | [adaptive_autovacuum.optimize_configurations](https://go.microsoft.com/fwlink/?linkid=2328503) |
+| Parameter type | dynamic |
+| Documentation | [adaptive_autovacuum.optimize_configurations](https://www.postgresql.org/docs/current/runtime-config-autovacuum.html) |
 
 
 [!INCLUDE [parameters-azure-notes-void](./parameters-azure-notes-void.md)]
+
 
 

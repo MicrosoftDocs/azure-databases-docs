@@ -1,18 +1,15 @@
 ---
 title: Integrate Azure AI Capabilities
 description: Integrate Azure AI capabilities into Azure Database for PostgreSQL.
-author: denzilribeiro
-ms.author: denzilr
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan, carols
-ms.date: 04/27/2024
+ms.date: 07/10/2026
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
-ms.custom:
-- ignite-2023
-- sfi-ropc-nochange
 ---
 
 # Integrate Azure AI capabilities into Azure Database for PostgreSQL flexible server
@@ -67,7 +64,7 @@ You can use the `azure_ai` extension to integrate Azure OpenAI and Azure Cogniti
 
 To enable the extension in your database:
 
-1. Add the extension to your allowlist, as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions).
+1. Add the extension to your allowlist, as described in [Allow extensions](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server).
 
 1. In the database in which you plan to use the `azure_ai` extension, install the extension as described in [Create extensions](../extensions/how-to-create-extensions.md).
 
