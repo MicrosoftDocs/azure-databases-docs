@@ -270,6 +270,10 @@
           href: network/how-to-network-cluster-public-access-add-firewall.md
         - name: Delete firewall rules
           href: network/how-to-network-cluster-public-access-delete-firewall.md
+        - name: List firewall rules
+          href: network/how-to-network-cluster-public-access-list-firewall.md
+        - name: Update firewall rules
+          href: network/how-to-network-cluster-public-access-update-firewall.md
 - name: High availability and resilience
   items:
     - name: High availability
