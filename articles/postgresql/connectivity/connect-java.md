@@ -1,40 +1,34 @@
 ---
-title: "Quickstart: Use Java and JDBC"
-description: In this quickstart, you learn how to use Java and JDBC with an Azure Database for PostgreSQL flexible server instance.
+title: "Quickstart: Use Java and JDBC in Azure Database for PostgreSQL Flexible Server"
+description: In this quickstart, you learn how to use Java and JDBC with an Azure Database for PostgreSQL flexible server.
+#customer intent: As a developer, I want to connect to Azure Database for PostgreSQL flexible server by using Java and JDBC, so that I can build and query my database from a Java application.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 06/08/2026
+ms.date: 07/09/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
-ms.custom:
-  - mvc
-  - devcenter
-  - devx-track-azurecli
-  - mode-api
-  - passwordless-java
-  - devx-track-extended-java
-  - sfi-ropc-nochange
+ai-usage: ai-assisted
 ms.devlang: "java"
 ---
 
-# Quickstart: Use Java and JDBC with Azure Database for PostgreSQL flexible server
+# Quickstart: Use Java and JDBC in Azure Database for PostgreSQL flexible server
 
-This article demonstrates creating a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for PostgreSQL](../index.yml).
+This article shows how to create a sample application that uses Java and [JDBC](https://en.wikipedia.org/wiki/Java_Database_Connectivity) to store and retrieve information in [Azure Database for PostgreSQL](../index.yml).
 
-JDBC is the standard Java API to connect to traditional relational databases.
+JDBC is the standard Java API for connecting to traditional relational databases.
 
-In this article, we'll include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
+This article includes two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
 
-Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. With Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
+Microsoft Entra authentication is a mechanism for connecting to Azure Database for PostgreSQL using identities defined in Microsoft Entra ID. By using Microsoft Entra authentication, you can manage database user identities and other Microsoft services in a central location, which simplifies permission management.
 
-PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, these credentials will be stored in the `user` table. Because these passwords are stored in PostgreSQL, you'll need to manage the rotation of the passwords by yourself.
+PostgreSQL authentication uses accounts stored in PostgreSQL. If you choose to use passwords as credentials for the accounts, store these credentials in the `user` table. Because these passwords are stored in PostgreSQL, you need to manage the rotation of the passwords yourself.
 
 ## Prerequisites
 
 - An Azure account. If you don't have one, [get a free trial](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). We recommend Azure Cloud Shell so you'll be logged in automatically and have access to all the tools you'll need.
+- [Azure Cloud Shell](/azure/cloud-shell/quickstart) or [Azure CLI](/cli/azure/install-azure-cli). Use Azure Cloud Shell so you're authenticated automatically and have access to all the tools you need.
 - A supported [Java Development Kit](/azure/developer/java/fundamentals/java-support-on-azure), version 8 (included in Azure Cloud Shell).
 - The [Apache Maven](https://maven.apache.org/) build tool.
 
@@ -56,14 +50,14 @@ export CURRENT_USERNAME=$(az ad signed-in-user show --query userPrincipalName -o
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server instance, which should be unique within Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`: The username of your Azure Database for PostgreSQL flexible server instance. Make ensure the username is a valid user in your Microsoft Entra tenant.
-- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server, which should be unique within Azure.
+- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but choose a region closer to where you live. To see the full list of available regions, enter `az account list-locations`.
+- `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`: The username for your Azure Database for PostgreSQL flexible server. Ensure the username is a valid user in your Microsoft Entra tenant.
+- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you run your Spring Boot application. One convenient way to find it is to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
 
 > [!IMPORTANT]  
-> When setting `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`, the username must already exist in your Microsoft Entra tenant or you'll be unable to create a Microsoft Entra user in your database.
+> When setting `<YOUR_POSTGRESQL_AD_NON_ADMIN_USERNAME>`, the user must already exist in your Microsoft Entra tenant or you can't create a Microsoft Entra user in your database.
 
 ### [Password](#tab/password)
 
@@ -81,11 +75,11 @@ export AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 
 Replace the placeholders with the following values, which are used throughout this article:
 
-- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server instance, which should be unique across Azure.
-- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server instance, which should be unique within Azure.
-- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but we recommend that you configure a region closer to where you live. You can see the full list of available regions by entering `az account list-locations`.
-- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password of your Azure Database for PostgreSQL flexible server instance. That password should have a minimum of eight characters. The characters should be from three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
-- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you'll run your Spring Boot application. One convenient way to find it's to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
+- `<YOUR_DATABASE_SERVER_NAME>`: The name of your Azure Database for PostgreSQL flexible server, which should be unique across Azure.
+- `<YOUR_DATABASE_NAME>`: The database name of the Azure Database for PostgreSQL flexible server, which should be unique within Azure.
+- `<YOUR_AZURE_REGION>`: The Azure region to use. You can use `eastus` by default, but choose a region closer to where you live. To see the full list of available regions, enter `az account list-locations`.
+- `<YOUR_POSTGRESQL_ADMIN_PASSWORD>` and `<YOUR_POSTGRESQL_NON_ADMIN_PASSWORD>`: The password for your Azure Database for PostgreSQL flexible server. The password must have at least eight characters. The characters must come from at least three of the following categories: English uppercase letters, English lowercase letters, numbers (0-9), and non-alphanumeric characters (!, $, #, %, and so on).
+- `<YOUR_LOCAL_IP_ADDRESS>`: The IP address of your local computer, from which you run your Spring Boot application. One convenient way to find it is to open [whatismyip.akamai.com](http://whatismyip.akamai.com/).
 
 ---
 
@@ -98,18 +92,15 @@ az group create \
     --output tsv
 ```
 
-## Create a flexible server instance
+## Create a flexible server
 
 The following sections describe how to create and configure your database instance.
 
-### Create a flexible server instance
+### Create a flexible server and set up admin user
 
-and set up admin user
-
-The first thing you create is a managed Azure Database for PostgreSQL flexible server instance.
 
 > [!NOTE]  
-> You can read more detailed information about creating Azure Database for PostgreSQL flexible server instances in [Quickstart: Create an Azure Database for PostgreSQL flexible server](../configure-maintain/quickstart-create-server.md).
+> For more detailed information about creating Azure Database for PostgreSQL flexible servers, see [Quickstart: Create an Azure Database for PostgreSQL flexible server](../configure-maintain/quickstart-create-server.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -133,7 +124,7 @@ az postgres flexible-server create \
 To set up a Microsoft Entra administrator after creating the server, follow the steps in [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md).
 
 > [!IMPORTANT]  
-> When setting up an administrator, a new user with full administrator privileges is added to the Azure Database for PostgreSQL flexible server instance's Azure database. You can create multiple Microsoft Entra administrators per Azure Database for PostgreSQL flexible server instance.
+> When you set up an administrator, you add a new user with full administrator privileges to the Azure Database for PostgreSQL flexible server's Azure database. You can create multiple Microsoft Entra administrators per Azure Database for PostgreSQL flexible server.
 
 #### [Password](#tab/password)
 
@@ -148,7 +139,7 @@ az postgres flexible-server create \
     --output tsv
 ```
 
-This command creates a small Azure Database for PostgreSQL flexible server instance.
+This command creates a small Azure Database for PostgreSQL flexible server.
 
 ---
 
@@ -156,7 +147,7 @@ This command creates a small Azure Database for PostgreSQL flexible server insta
 
 ### Configure a firewall rule for your Azure Database for PostgreSQL instance
 
-Azure Database for PostgreSQL flexible server instances are secured by default. They have a firewall that doesn't allow any incoming connection. To be able to use your database, you need to add a firewall rule that will allow the local IP address to access the database server.
+Azure Database for PostgreSQL flexible servers are secure by default. They have a firewall that blocks all incoming connections. To use your database, add a firewall rule that grants your local IP address access to the database server.
 
 Because you configured your local IP address at the beginning of this article, you can open the server's firewall by running the following command:
 
@@ -170,15 +161,15 @@ az postgres flexible-server firewall-rule create \
     --output tsv
 ```
 
-If you're connecting to your Azure Database for PostgreSQL flexible server instance from Windows Subsystem for Linux (WSL) on a Windows computer, you'll need to add the WSL host ID to your firewall.
+If you're connecting to your Azure Database for PostgreSQL flexible server from Windows Subsystem for Linux (WSL) on a Windows computer, you need to add the WSL host ID to your firewall.
 
-Obtain the IP address of your host machine by running the following command in WSL:
+Get the IP address of your host machine by running the following command in WSL:
 
 ```bash
 cat /etc/resolv.conf
 ```
 
-Copy the IP address following the term `nameserver`, then use the following command to set an environment variable for the WSL IP Address:
+Copy the IP address that follows the term `nameserver`, and then use the following command to set an environment variable for the WSL IP Address:
 
 ```bash
 AZ_WSL_IP_ADDRESS=<the-copied-IP-address>
@@ -198,7 +189,7 @@ az postgres flexible-server firewall-rule create \
 
 ### Configure an Azure Database for PostgreSQL database
 
-Create a new database using the following command:
+Create a new database by using the following command:
 
 ```azurecli-interactive
 az postgres flexible-server db create \
@@ -213,11 +204,11 @@ az postgres flexible-server db create \
 Next, create a non-admin user and grant all permissions to the database.
 
 > [!NOTE]  
-> You can read more detailed information about managing Azure Database for PostgreSQL users in [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md).
+> For more detailed information about managing Azure Database for PostgreSQL users, see [Manage Microsoft Entra roles in Azure Database for PostgreSQL](../security/security-manage-entra-users.md).
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
-Create a SQL script called *create_ad_user.sql* for creating a non-admin user. Add the following contents and save it locally:
+Create a SQL script named *create_ad_user.sql* for creating a non-admin user. Add the following contents and save it locally:
 
 ```bash
 cat << EOF > create_ad_user.sql
@@ -225,13 +216,13 @@ select * from pgaadauth_create_principal('$AZ_POSTGRESQL_AD_NON_ADMIN_USERNAME',
 EOF
 ```
 
-Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
+Then, use the following command to run the SQL script and create the Microsoft Entra non-admin user:
 
 ```bash
 psql "host=$AZ_DATABASE_SERVER_NAME.postgres.database.azure.com user=$CURRENT_USERNAME dbname=postgres port=5432 password=$(az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken) sslmode=require" < create_ad_user.sql
 ```
 
-Now use the following command to remove the temporary SQL script file:
+Use the following command to remove the temporary SQL script file:
 
 ```bash
 rm create_ad_user.sql
@@ -239,7 +230,7 @@ rm create_ad_user.sql
 
 #### [Password](#tab/password)
 
-Create a SQL script called *create_user.sql* for creating a non-admin user. Add the following contents and save it locally:
+Create a SQL script named *create_user.sql* for creating a non-admin user. Add the following contents and save it locally:
 
 ```bash
 cat << EOF > create_user.sql
@@ -248,13 +239,13 @@ GRANT ALL PRIVILEGES ON DATABASE $AZ_DATABASE_NAME TO "$AZ_POSTGRESQL_NON_ADMIN_
 EOF
 ```
 
-Then, use the following command to run the SQL script to create the Microsoft Entra non-admin user:
+Then, use the following command to run the SQL script and create the Microsoft Entra non-admin user:
 
 ```bash
 psql "host=$AZ_DATABASE_SERVER_NAME.postgres.database.azure.com user=$AZ_POSTGRESQL_ADMIN_USERNAME dbname=$AZ_DATABASE_NAME port=5432 password=$AZ_POSTGRESQL_ADMIN_PASSWORD sslmode=require" < create_user.sql
 ```
 
-Now use the following command to remove the temporary SQL script file:
+Use the following command to remove the temporary SQL script file:
 
 ```bash
 rm create_user.sql
@@ -264,7 +255,7 @@ rm create_user.sql
 
 ### Create a new Java project
 
-Using your favorite IDE, create a new Java project using Java 8 or above, and add a *pom.xml* file in its root directory with the following contents:
+Using your favorite IDE, create a new Java project by using Java 8 or later. Add a *pom.xml* file in the root directory with the following contents:
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -329,14 +320,14 @@ Using your favorite IDE, create a new Java project using Java 8 or above, and ad
 
 ---
 
-This file is an [Apache Maven](https://maven.apache.org/) that configures our project to use:
+This file is an [Apache Maven](https://maven.apache.org/) file that configures your project to use:
 
 - Java 8
 - A recent PostgreSQL driver for Java
 
 ### Prepare a configuration file to connect to Azure Database for PostgreSQL
 
-Create a *src/main/resources/application.properties* file, then add the following contents:
+Create a *src/main/resources/application.properties* file, and add the following contents:
 
 #### [Passwordless (Recommended)](#tab/passwordless)
 
@@ -360,11 +351,11 @@ EOF
 ---
 
 > [!NOTE]  
-> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure Database for PostgreSQL flexible server instances and is a recommended security practice.
+> The configuration property `url` includes `?sslmode=require` to ensure that the JDBC driver uses TLS (Transport Layer Security) when connecting to the database. Using TLS is mandatory with Azure Database for PostgreSQL flexible servers and is a recommended security practice.
 
 ### Create a SQL file to generate the database schema
 
-You use a *src/main/resources/`schema.sql`* file to create a database schema. Create that file, with the following content:
+Use a *src/main/resources/schema.sql* file to create a database schema. Create that file, and add the following content:
 
 ```sql
 DROP TABLE IF EXISTS todo;
@@ -377,7 +368,7 @@ The following sections walk through writing the Java code that connects to the d
 
 ### Connect to the database
 
-Next, add the Java code that will use JDBC to store and retrieve data from your Azure Database for PostgreSQL flexible server instance.
+Next, add the Java code that uses JDBC to store and retrieve data from your Azure Database for PostgreSQL flexible server.
 
 Create a *src/main/java/DemoApplication.java* file and add the following contents:
 
@@ -430,19 +421,19 @@ public class DemoApplication {
 
 [Having any issues? Let us know.](https://github.com/MicrosoftDocs/azure-docs/issues)
 
-This Java code uses the *application.properties* and the *schema.sql* files created earlier to connect to the Azure Database for PostgreSQL flexible server instance and create a schema that stores the data.
+This Java code uses the *application.properties* and the *schema.sql* files you created earlier to connect to the Azure Database for PostgreSQL flexible server and create a schema that stores the data.
 
 In this file, the methods to insert, read, update, and delete data are commented out. The rest of this article walks through coding those methods, and you can uncomment them one after the other.
 
 > [!NOTE]  
-> The database credentials are stored in the *user* and *password* properties of the *application.properties* file. Those credentials are used when executing `DriverManager.getConnection(properties.getProperty("url"), properties);`, as the properties file is passed as an argument.
+> The database credentials are stored in the *user* and *password* properties of the *application.properties* file. The code uses those credentials when executing `DriverManager.getConnection(properties.getProperty("url"), properties);`, as the properties file is passed as an argument.
 
 You can now execute this main class with your favorite tool:
 
-- Using your IDE, you should be able to right-click on the *DemoApplication* class and execute it.
+- Using your IDE, you can right-click on the *DemoApplication* class and execute it.
 - Using Maven, you can run the application by executing: `mvn exec:java -Dexec.mainClass="com.example.demo.DemoApplication"`.
 
-The application should connect to the Azure Database for PostgreSQL flexible server instance, create a database schema, and then close the connection, as you should see in the console logs:
+The application connects to the Azure Database for PostgreSQL flexible server, creates a database schema, and then closes the connection, as you see in the console logs:
 
 ```output
 [INFO   ] Loading application properties
@@ -454,7 +445,7 @@ The application should connect to the Azure Database for PostgreSQL flexible ser
 
 ### Create a domain class
 
-Create a new `Todo` Java class, next to the `DemoApplication` class, and add the following code:
+Create a new `Todo` Java class next to the `DemoApplication` class, and add the following code:
 
 ```java
 package com.example.demo;
@@ -520,7 +511,7 @@ public class Todo {
 }
 ```
 
-This class is a domain model mapped on the `todo` table that you created when executing the *schema.sql* script.
+This class is a domain model mapped to the `todo` table that you created when executing the *schema.sql* script.
 
 ### Insert data into Azure Database for PostgreSQL
 
@@ -547,7 +538,7 @@ Todo todo = new Todo(1L, "configuration", "congratulations, you have set up JDBC
 insertData(todo, connection);
 ```
 
-Executing the main class should now produce the following output:
+When you execute the main class, it should produce the following output:
 
 ```output
 [INFO   ] Loading application properties
@@ -562,7 +553,7 @@ Executing the main class should now produce the following output:
 
 ### Read data from Azure Database for PostgreSQL
 
-Let's read the data previously inserted, to validate that our code works correctly.
+To validate that your code works correctly, read the data you previously inserted.
 
 In the *src/main/java/DemoApplication.java* file, after the `insertData` method, add the following method to read data from the database:
 
@@ -591,7 +582,7 @@ You can now uncomment the following line in the `main` method:
 todo = readData(connection);
 ```
 
-Executing the main class should now produce the following output:
+When you execute the main class, it should produce the following output:
 
 ```output
 [INFO   ] Loading application properties
@@ -608,7 +599,7 @@ Executing the main class should now produce the following output:
 
 ### Update data in Azure Database for PostgreSQL
 
-Let's update the data we previously inserted.
+To update the data, use the following steps.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `readData` method, add the following method to update data inside the database:
 
@@ -634,7 +625,7 @@ todo.setDetails("congratulations, you have updated data!");
 updateData(todo, connection);
 ```
 
-Executing the main class should now produce the following output:
+When you execute the main class, it should produce the following output:
 
 ```output
 [INFO   ] Loading application properties
@@ -654,7 +645,7 @@ Executing the main class should now produce the following output:
 
 ### Delete data in Azure Database for PostgreSQL
 
-Finally, let's delete the data we previously inserted.
+Finally, delete the data you previously inserted.
 
 Still in the *src/main/java/DemoApplication.java* file, after the `updateData` method, add the following method to delete data inside the database:
 
@@ -674,7 +665,7 @@ You can now uncomment the following line in the `main` method:
 deleteData(todo, connection);
 ```
 
-Executing the main class should now produce the following output:
+When you execute the main class, it should produce the following output:
 
 ```output
 [INFO   ] Loading application properties
@@ -695,9 +686,9 @@ Executing the main class should now produce the following output:
 
 ## Clean up resources
 
-Congratulations! You've created a Java application that uses JDBC to store and retrieve data from an Azure Database for PostgreSQL flexible server instance.
+You created a Java application that uses JDBC to store and retrieve data from an Azure Database for PostgreSQL flexible server.
 
-To clean up all resources used during this quickstart, delete the resource group using the following command:
+To clean up all resources used during this quickstart, delete the resource group by using the following command:
 
 ```azurecli-interactive
 az group delete \

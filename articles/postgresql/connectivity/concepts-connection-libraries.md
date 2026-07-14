@@ -1,22 +1,24 @@
 ---
-title: Connection Libraries
-description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure Database for PostgreSQL flexible server instance.
+title: Connection Libraries in Azure Database for PostgreSQL Flexible Server
+description: This article describes several libraries and drivers that you can use when coding applications to connect and query an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to find a compatible connection library, so that I can build an application that queries my Azure Database for PostgreSQL flexible server.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 09/30/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: concept-article
+ai-usage: ai-assisted
 ---
 
-# Connection libraries for Azure Database for PostgreSQL flexible server 
+# Connection libraries in Azure Database for PostgreSQL flexible server
 
-This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure Database for PostgreSQL flexible server instance.
+This article lists libraries and drivers that developers can use to develop applications to connect to and query an Azure Database for PostgreSQL flexible server.
 
 ## Client interfaces
 
-Most language client libraries used to connect to Azure Database for PostgreSQL are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to an Azure Database for PostgreSQL flexible server instance. Several quickstart examples are listed in the Next steps section.
+Most language client libraries used to connect to Azure Database for PostgreSQL are external projects and are distributed independently. The  libraries listed are supported on the Windows, Linux, and Mac platforms, for connecting to an Azure Database for PostgreSQL flexible server. Several quickstart examples are listed in the Next steps section.
 
 | **Language** | **Client interface** | **Additional information** | **Download** |
 | --- | --- | --- | --- |
@@ -29,7 +31,7 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 | C\#/ .NET | [Npgsql](https://www.npgsql.org/) | ADO.NET Data Provider | [Download](https://dotnet.microsoft.com/download) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC Driver | [Download](https://www.postgresql.org/ftp/odbc/releases/) |
 | C | [libpq](https://www.postgresql.org/docs/current/static/libpq.html) | Primary C language interface | Included |
-| C++ | [libpqxx](http://pqxx.org/) | New-style C++ interface | [Download](https://pqxx.org/libpqxx/) |
+| C++ | [libpqxx](https://pqxx.org/) | New-style C++ interface | [Download](https://pqxx.org/libpqxx/) |
 
 ## Related content
 
@@ -39,4 +41,4 @@ Most language client libraries used to connect to Azure Database for PostgreSQL 
 - [Quickstart: Use Go language to connect and query data from an Azure Database for PostgreSQL](connect-go.md)
 - [Quickstart: Use PHP to connect and query data from an Azure Database for PostgreSQL](connect-php.md)
 - [Quickstart: Use Azure CLI to connect and query data from an Azure Database for PostgreSQL](connect-azure-cli.md)
-- [Quickstart: Import data from an Azure Database for PostgreSQL flexible server instance in Power BI](../integration/connect-with-power-bi-desktop.md)
+- [Quickstart: Import data from an Azure Database for PostgreSQL flexible server in Power BI](../integration/connect-with-power-bi-desktop.md)

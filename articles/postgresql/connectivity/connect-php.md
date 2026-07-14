@@ -1,20 +1,22 @@
 ---
-title: "Quickstart: Connect with PHP - Flexible Server"
+title: "Quickstart: Use PHP to Connect and Query Data in Azure Database for PostgreSQL Flexible Server"
 description: This quickstart provides a PHP code sample you can use to connect and query data from Azure Database for PostgreSQL.
+#customer intent: As a PHP developer, I want to connect my application to Azure Database for PostgreSQL, so that I can store and retrieve data in the cloud.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 10/12/2024
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
+ai-usage: ai-assisted
 ms.devlang: php
 ms.custom: sfi-ropc-nochange
 ---
 
-# Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL flexible server 
+# Quickstart: Use PHP to connect and query data in Azure Database for PostgreSQL flexible server
 
-This quickstart demonstrates connecting to an Azure Database for PostgreSQL using a [PHP](https://www.php.net/) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you're familiar with developing using PHP and are new to working with Azure Database for PostgreSQL.
+This quickstart demonstrates how to connect to an Azure Database for PostgreSQL by using a [PHP](https://www.php.net/) application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you're familiar with developing by using PHP and are new to working with Azure Database for PostgreSQL.
 
 ## Prerequisites
 
@@ -26,17 +28,17 @@ Install PHP on your server, or create an Azure [web app](/azure/app-service/over
 
 ### Windows
 
-- Download [PHP 7.1.4 nonthread safe (x64) version](https://windows.php.net/download#php-7.1)
-- Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.windows.php) for further configuration
-- The code uses the **pgsql** class (ext/php_pgsql.dll) that is included in the PHP installation.
-- Enabled the **pgsql** extension by editing the php.ini configuration file, typically located at `C:\Program Files\PHP\v7.1\php.ini`. The configuration file should contain a line with the text `extension=php_pgsql.so`. If it isn't shown, add the text and save the file. If the text is present but commented with a semicolon prefix, uncomment the text by removing the semicolon.
+- Download [PHP 7.1.4 nonthread safe (x64) version](https://windows.php.net/download#php-7.1).
+- Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.windows.php) for further configuration.
+- The code uses the **pgsql** class (ext/php_pgsql.dll) that's included in the PHP installation.
+- Enable the **pgsql** extension by editing the php.ini configuration file, typically located at `C:\Program Files\PHP\v7.1\php.ini`. The configuration file should contain a line with the text `extension=php_pgsql.so`. If it isn't shown, add the text and save the file. If the text is present but commented with a semicolon prefix, uncomment the text by removing the semicolon.
 
 ### Linux (Ubuntu)
 
-- Download [PHP 7.1.4 nonthread safe (x64) version](https://secure.php.net/downloads.php)
-- Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.unix.php) for further configuration
+- Download [PHP 7.1.4 nonthread safe (x64) version](https://secure.php.net/downloads.php).
+- Install PHP and refer to the [PHP manual](https://secure.php.net/manual/install.unix.php) for further configuration.
 - The code uses the **pgsql** class (php_pgsql.so). Install it by running `sudo apt-get install php-pgsql`.
-- Enabled the **pgsql** extension by editing the `/etc/php/7.0/mods-available/pgsql.ini` configuration file. The configuration file should contain a line with the text `extension=php_pgsql.so`. If it isn't shown, add the text and save the file. If the text is present but commented with a semicolon prefix, uncomment the text by removing the semicolon.
+- Enable the **pgsql** extension by editing the `/etc/php/7.0/mods-available/pgsql.ini` configuration file. The configuration file should contain a line with the text `extension=php_pgsql.so`. If it isn't shown, add the text and save the file. If the text is present but commented with a semicolon prefix, uncomment the text by removing the semicolon.
 
 ### macOS
 
@@ -45,7 +47,7 @@ Install PHP on your server, or create an Azure [web app](/azure/app-service/over
 
 ## Get connection information
 
-Get the connection information needed to connect to the Azure Database for PostgreSQL. You need the fully qualified server name and login credentials.
+Get the connection information needed to connect to the Azure Database for PostgreSQL database. You need the fully qualified server name and authentication credentials.
 
 1. Log in to the [Azure portal](https://portal.azure.com/).
 1. From the left-hand menu in the Azure portal, select **All resources**, then search for your created server (such as **mydemoserver**).
@@ -115,9 +117,9 @@ Replace the `$host`, `$database`, `$user`, and `$password` parameters with your 
 
 ## Read data
 
-Use the following code to connect and read the data using a **SELECT** SQL statement.
+Use the following code to connect and read the data by using a **SELECT** SQL statement.
 
-The code call method [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) is used to connect to the Azure Database for PostgreSQL. Then it calls method [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run the SELECT command, keeping the results in a result set, and [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details if an error occurred. To read the result set, method [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) is called in a loop, once per row, and the row data is retrieved in an array `$row`, with one data value per column in each array position. To free the result set, method [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) is called. Then it calls method [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
+The code uses the [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) function to connect to the Azure Database for PostgreSQL. Then it calls [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run the SELECT command and keep the results in a result set. If an error occurs, the code calls [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details. To read the result set, the code calls [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) in a loop, once per row. The row data is retrieved in an array `$row`, with one data value per column in each array position. To free the result set, the code calls [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php). When finished, the code calls [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
 
 Replace the `$host`, `$database`, `$user`, and `$password` parameters with your values.
 
@@ -154,9 +156,9 @@ Replace the `$host`, `$database`, `$user`, and `$password` parameters with your 
 
 ## Update data
 
-Use the following code to connect and update the data using a **UPDATE** SQL statement.
+Use the following code to connect and update the data by using an **UPDATE** SQL statement.
 
-The code call method [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) is used to connect to the Azure Database for PostgreSQL. Then it calls method [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run a command, and [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details if an error occurred. Then it calls method [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
+The code uses the [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) function to connect to the Azure Database for PostgreSQL. Then it calls [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run a command. If an error occurs, the code calls [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details. When finished, the code calls [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
 
 Replace the `$host`, `$database`, `$user`, and `$password` parameters with your values.
 
@@ -189,9 +191,9 @@ Replace the `$host`, `$database`, `$user`, and `$password` parameters with your 
 
 ## Delete data
 
-Use the following code to connect and read the data using a **DELETE** SQL statement.
+Use the following code to connect to the database and delete data by using a **DELETE** SQL statement.
 
-The code call method [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) is used to connect to the Azure Database for PostgreSQL. Then it calls method [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run a command, and [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details if an error occurred. Then it calls method [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
+The code uses the [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) function to connect to the Azure Database for PostgreSQL. Then it calls [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) to run a command. If an error occurs, the code calls [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) to check the details. When finished, the code calls [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) to close the connection.
 
 Replace the `$host`, `$database`, `$user`, and `$password` parameters with your values.
 
@@ -223,7 +225,7 @@ Replace the `$host`, `$database`, `$user`, and `$password` parameters with your 
 
 ## Clean up resources
 
-To clean up all resources used during this quickstart, delete the resource group using the following command:
+To clean up all resources used during this quickstart, delete the resource group by using the following command:
 
 ```azurecli-interactive
 az group delete \

@@ -48,14 +48,13 @@ Use the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-delete-firewall-rules)
 
-[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
-
-Use the `az rest` command to delete a firewall rule from your Azure HorizonDB cluster.
+Use the [az horizondb firewall-rule delete](/cli/azure/horizondb/firewall-rule?view=azure-cli-latest#az-horizondb-firewall-rule-delete) command to delete a firewall rule from your Azure HorizonDB cluster.
 
 ```azurecli-interactive
-az rest --method DELETE \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{cluster}/pools/DefaultPool/firewallRules/{firewallRule}?api-version=2026-01-20-preview"
-
+az horizondb firewall-rule delete \
+  --resource-group <resource_group> \
+  --cluster-name <cluster> \
+  --name <firewall_rule>
 ```
 
 ---

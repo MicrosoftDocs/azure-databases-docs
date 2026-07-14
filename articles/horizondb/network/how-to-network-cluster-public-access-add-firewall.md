@@ -58,21 +58,40 @@ Use the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-add-firewall-rules)
 
-[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
+Use the [az horizondb firewall-rule create](/cli/azure/horizondb/firewall-rule?view=azure-cli-latest#az-horizondb-firewall-rule-create) command to add a firewall rule to your Azure HorizonDB cluster.
 
-Use the `az rest` command to add a firewall rule to your Azure HorizonDB cluster.
+To create a firewall rule that allows a single IP address:  
 
 ```azurecli-interactive
-az rest --method PUT \
-  --uri "https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HorizonDB/clusters/{cluster}/pools/DefaultPool/firewallRules/{firewallRule}?api-version=2026-01-20-preview" \
-  --body '{
-    "properties": {
-      "startIpAddress": "###.###.###.###",
-      "endIpAddress": "###.###.###.###",
-      "description": "Allow access from Data Analysis department's network"
-    }
-  }'
+az horizondb firewall-rule create \
+  --resource-group <resource_group> \
+  --cluster-name <cluster> \
+  --name <firewall_rule> \
+  --start-ip-address <start_ip_address> \
+  --description <description>
+```
 
+To create a firewall rule that allows a range of IP addresses:  
+
+```azurecli-interactive
+az horizondb firewall-rule create \
+  --resource-group <resource_group> \
+  --cluster-name <cluster> \
+  --name <firewall_rule> \
+  --start-ip-address <start_ip_address> \
+  --end-ip-address <end_ip_address> \
+  --description <description>
+```
+
+To create a firewall rule that allows public access from any Azure service within Azure:  
+
+```azurecli-interactive
+az horizondb firewall-rule create \
+  --resource-group <resource_group> \
+  --cluster-name <cluster> \
+  --name <firewall_rule> \
+  --start-ip-address 0.0.0.0 \
+  --description <description>
 ```
 
 ---
