@@ -1,22 +1,19 @@
 ---
-title: Tutorial - Build a Knowledge Graph from Unstructured Text Using AI Functions and Apache AGE
+title: Tutorial - Build a Knowledge Graph from Unstructured Text Using AI Functions and Apache AGE in Azure HorizonDB
 description: Convert raw text into a knowledge graph using AI Functions and Apache AGE. This tutorial shows how to extract key entities and relationships and organize them into a graph for better search, exploration, and insights.
+#customer intent: As a user, I want to understand how to construct knowledge graphs with unstructured text in Azure HorizonDB so I can discover hidden relationships and query cascading failure chains.
 author: aditivgupta
 ms.author: adig
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-graph
 ms.topic: tutorial
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-# customer intent: As a user, I want to understand how to construct knowledge graphs with unstructured text in Azure HorizonDB so I can discover hidden relationships and query cascading failure chains.
 ---
 
-# Tutorial: Build a knowledge graph from unstructured text using AI Azure Functions and Apache AGE for Azure HorizonDB (Preview)
+# Tutorial: Build a knowledge graph from unstructured text using AI Azure Functions and Apache AGE in Azure HorizonDB (Preview)
 
 The hardest part of working with graphs is **building the graph in the first place**. Manually curating entities and relationships from thousands of documents is prohibitively expensive. AI Functions in Azure HorizonDB solve this issue by bringing LLM-powered intelligence directly into SQL, so you can extract, structure, and query knowledge graphs without leaving the database.
 
@@ -84,7 +81,7 @@ If you prefer to use your own Microsoft Foundry models (Bring Your Own Model), f
 
 For complete details on model registration and supported endpoint URL formats, see [Manual setup with model registry](ai-functions.md#option-2-manual-setup-with-model-registry).
 
-## The Source Data
+## The source data
 
 Create the sample table and insert a few incident tickets to work with:
 
@@ -114,7 +111,7 @@ VALUES
  'The email provider API started throttling requests, causing the notification service to back up. The checkout workflow confirmation emails were delayed by 4 hours because the checkout workflow sends confirmations through the notification service. The messaging team added retry backoff to the notification service.');
 ```
 
-## Step 1 - Extract Entities and Relationships
+## Step 1 - Extract entities and relationships
 
 Use `azure_ai.extract()` to pull structured relationship triples from each document. The extraction prompt instructs the model to capture **all** meaningful relationships, including operational links (OPERATES_ON), document-to-entity links (INVOLVES), and causal or resolution links. By capturing everything as triples upfront, Step 3 requires zero domain-specific code.
 
@@ -146,7 +143,7 @@ FROM support_tickets
 WHERE ticket_id = 4012;
 ```
 
-This returns structured JSON:
+This step returns structured JSON:
 
 ```json
 {
@@ -158,11 +155,11 @@ This returns structured JSON:
 }
 ```
 
-## Step 2 - Deduplicate Extracted Entities
+## Step 2 - Deduplicate extracted entities
 
 When you run `azure_ai.extract()` across thousands of tickets, the same entity appears in different surface forms: "API gateway", "api-gateway", "the gateway service". Without deduplication, your graph fills with near-duplicate nodes that fragment your traversals.
 
-Use `azure_ai.generate()` to normalize entity names into canonical forms before inserting into the graph.
+Use `azure_ai.generate()` to normalize entity names into canonical forms before inserting them into the graph.
 
 > [!TIP]  
 > **When to skip this step:** If your source data uses controlled vocabulary (for example, service names from a CMDB, or product SKUs from a catalog), entities are already canonical. Skip deduplication and go directly to Step 3.
@@ -291,7 +288,7 @@ WHERE r.source IS NOT NULL AND trim(r.source) <> ''
   AND r.relationship IS NOT NULL AND trim(r.relationship) <> '';
 ```
 
-Verify that deduplication worked. If canonical names are resolving correctly, aliases like "api-gateway" and "API Gateway" appear under the same canonical name:
+Verify that deduplication worked. If canonical names resolve correctly, aliases like "api-gateway" and "API Gateway" appear under the same canonical name:
 
 ```sql
 -- Check: every source and target should be a canonical name (not an alias)

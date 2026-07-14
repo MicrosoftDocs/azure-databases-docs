@@ -1,10 +1,11 @@
 ---
 title: Access Management in Azure HorizonDB
 description: Learn how to manage access permissions using roles in Azure HorizonDB.
+#customer intent: As a user, I want to manage access permissions using PostgreSQL roles, so that I can enforce a least privilege model in my Azure HorizonDB.
 author: DDL-PM
 ms.author: ludingding
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: concept-article
@@ -12,7 +13,7 @@ ms.custom:
   - horz-security
 ---
 
-# Access management for Azure HorizonDB (Preview)
+# Access management in Azure HorizonDB (Preview)
 
 Managing access to your Azure HorizonDB is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 
@@ -21,7 +22,7 @@ Managing access to your Azure HorizonDB is an important part of maintaining secu
 The best way to manage Azure HorizonDB database access permissions at scale is by using the concept of [roles](https://www.postgresql.org/docs/current/user-manag.html). A role can be either a database user or a group of database users. Roles can own the database objects and assign privileges on those objects to other roles to control who has access to which objects. You can grant membership in a role to another role, which allows the member role to use privileges assigned to another role.
 Azure HorizonDB lets you grant permissions directly to the database users. **As a good security practice, create roles with specific sets of permissions based on minimum application and access requirements. Assign the appropriate roles to each user. Use roles to enforce a *least privilege model* for accessing database objects.**
 
-In addition to the built-in roles that PostgreSQL creates, the Azure HorizonDB instance includes three default roles. You can see these roles by running the following command:
+In addition to the built-in roles that PostgreSQL creates, the Azure HorizonDB cluster includes three default roles. You can see these roles by running the following command:
 
 ```sql
 SELECT rolname FROM pg_roles;
@@ -30,9 +31,9 @@ The roles are:
 
 - `azure_pg_admin`
 - `azuresu`
-- **administrator role**
+- `administrator role`
 
-When you create the Azure HorizonDB cluster, you provide credentials for an **administrator role**. Use this administrator role to create more [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
+When you create the Azure HorizonDB cluster, you provide credentials for an `administrator role`. Use this `administrator role` to create more [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
 
 For example, you can create a user or role named `exampleuser`.
 
@@ -45,7 +46,7 @@ In cloud-based PaaS environments, access to an Azure HorizonDB superuser account
 
 The `azure_pg_admin` role exists as a pseudo-superuser account. The administrator login you configured when creating the cluster is a member of the `azure_pg_admin` role.
 
-You can periodically audit the list of roles in your server.
+You can periodically audit the list of roles in your cluster.
 
 For example, you can connect by using the `psql` client and query the `pg_roles` table, which lists all the roles along with privileges such as create other roles, create databases, replication, and more.
 
@@ -112,7 +113,7 @@ Newly created databases in Azure HorizonDB include a default set of privileges i
   ```sql
   GRANT Test_db_user TO user1;
   ```
-In this example, user *user1* can connect and has all privileges in the test database *Test_db*, but not any other database on the server. Instead of giving this user or role *ALL PRIVILEGES* on that database and its objects, consider providing more selective permissions, such as `SELECT`, `INSERT`, `EXECUTE`, and others. For more information about privileges in PostgreSQL databases, see the [GRANT](https://www.postgresql.org/docs/current/sql-grant.html) and [REVOKE](https://www.postgresql.org/docs/current/sql-revoke.html) commands in the PostgreSQL docs.
+In this example, user *user1* can connect and has all privileges in the test database *Test_db*, but not any other database on the cluster. Instead of giving this user or role *ALL PRIVILEGES* on that database and its objects, consider providing more selective permissions, such as `SELECT`, `INSERT`, `EXECUTE`, and others. For more information about privileges in PostgreSQL databases, see the [GRANT](https://www.postgresql.org/docs/current/sql-grant.html) and [REVOKE](https://www.postgresql.org/docs/current/sql-revoke.html) commands in the PostgreSQL docs.
 
 ### Public schema ownership changes in Azure HorizonDB
 
@@ -120,19 +121,19 @@ In Azure HorizonDB the public schema is owned by the `azure_pg_admin` role acros
 
 ### Improved control for azure_pg_admin
 
-In Azure HorizonDB server, the azure_pg_admin role is a system-managed, restricted role and can't be modified. Attempts to alter it, such as granting another role to it, results in an error like:
+In Azure HorizonDB, the `azure_pg_admin` role is a system-managed, restricted role that you can't modify. If you try to alter it, such as by granting another role to it, you get an error like:
 
 ```sql
-   GRANT <db_user> TO azure_pg_admin;
- ERROR: permission denied to alter restricted role "azure_pg_admin"
- ```
+GRANT <db_user> TO azure_pg_admin;
+ERROR: permission denied to alter restricted role "azure_pg_admin"
+```
 
 This restriction is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
 
-Azure HorizonDB enhances the capabilities of the *azure_pg_admin* role across all PostgreSQL versions. Members of the *azure_pg_admin* role can manage roles and access objects owned by any nonrestricted role, even if those roles are also members of *azure_pg_admin*. This ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
+Azure HorizonDB enhances the capabilities of the `azure_pg_admin` role across all PostgreSQL versions. Members of the `azure_pg_admin` role can manage roles and access objects owned by any nonrestricted role, even if those roles are also members of *azure_pg_admin*. This feature ensures that administrative users maintain consistent and comprehensive control over role and permission management, providing a seamless and reliable experience without requiring superuser access.
 
 > [!IMPORTANT]  
-> Azure HorizonDB doesn't allow users to be granted *pg_write_all_data* attribute, which allows user to write all data (tables, views, sequences), as if having `INSERT`, `UPDATE`, and `DELETE` rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended granting similar permissions on a more granular level per database and object.
+> Azure HorizonDB doesn't allow users to be granted `pg_write_all_data` attribute, which allows user to write all data (tables, views, sequences), as if having `INSERT`, `UPDATE`, and `DELETE` rights on those objects, and USAGE rights on all schemas, even without having it explicitly granted. As a workaround recommended granting similar permissions on a more granular level per database and object.
 
 ## Row-level security
 
@@ -168,11 +169,11 @@ ALTER TABLE accounts DISABLE ROW LEVEL SECURITY;
 
 ## Bypass row-level security
 
-PostgreSQL has **BYPASSRLS** and **NOBYPASSRLS** permissions, which you can assign to a role. NOBYPASSRLS is assigned by default.
-In Azure HorizonDB, bypassing row-level security privilege (BYPASSRLS) is implemented as follows:
-- Nonadministrative users created by the **azure_pg_admin** administrator role allow you to create roles with the BYPASSRLS attribute or privilege as necessary.
+PostgreSQL includes `BYPASSRLS` and `NOBYPASSRLS` permissions that you can assign to a role. By default, the `NOBYPASSRLS` permission is assigned.
+In Azure HorizonDB, the bypass row-level security privilege (`BYPASSRLS`) works as follows:
+- Nonadministrative users created by the `azure_pg_admin` administrator role can create roles with the `BYPASSRLS` attribute or privilege as needed.
 
-- You can use the **azure_pg_admin** user to perform administrative tasks that require the BYPASSRLS privilege.
+- Use the `azure_pg_admin` user to perform administrative tasks that require the `BYPASSRLS` privilege.
 
 ## Related content
 

@@ -1,13 +1,15 @@
 ---
 title: "Quickstart: Connect with GitHub Actions"
-description: Use an Azure Database for PostgreSQL flexible server instance from a GitHub Actions workflow.
+description: Use an Azure Database for PostgreSQL flexible server from a GitHub Actions workflow.
+#customer intent: As a developer, I want to use Azure Database for PostgreSQL flexible server from a GitHub Actions workflow, so that I can automate database access in my CI/CD pipeline.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 02/10/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: quickstart
+ai-usage: ai-assisted
 ms.custom:
 - github-actions-azure
 - mode-other
@@ -15,7 +17,7 @@ ms.custom:
 - sfi-ropc-blocked
 ---
 
-# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server 
+# Quickstart: Use GitHub Actions to connect to Azure Database for PostgreSQL flexible server
 
 Get started with [GitHub Actions](https://docs.github.com/en/actions) by using a workflow to deploy database updates to [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
 
@@ -25,8 +27,8 @@ You need:
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - A GitHub repository with sample data (`data.sql`). If you don't have a GitHub account, [sign up for free](https://github.com/join).
-- An Azure Database for PostgreSQL flexible server instance.
-- [Create an Azure Database for PostgreSQL](quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server.
+- [Create an Azure Database for PostgreSQL flexible server](quickstart-create-server.md).
 
 ## Workflow file overview
 
@@ -45,13 +47,13 @@ The file has two sections:
 
 ## Copy the Azure Database for PostgreSQL  connection string
 
-In the Azure portal, go to your Azure Database for PostgreSQL flexible server instance and from the resource menu, under **Settings**, select **Connect**. In that page, use the **Database name** combo box to select the name of the database you want to connect to. Expand the **Connect from your app** section, and copy **ADO.NET** connection string, and replace the placeholder value `{your_password}` with your actual password. The connection string looks similar to this.
+In the Azure portal, go to your Azure Database for PostgreSQL flexible server. From the resource menu, under **Settings**, select **Connect**. On that page, use the **Database name** combo box to select the name of the database you want to connect to. Expand the **Connect from your app** section, and copy the **ADO.NET** connection string. Replace the placeholder value `{your_password}` with your actual password. The connection string looks similar to this.
 
 ```output
 Server={servername.postgres.database.azure.com};Database={your_database};Port=5432;User Id={adminusername};Password={your_password};Ssl Mode=Require;
 ```
 
-You use the connection string as a GitHub secret.
+Use the connection string as a GitHub secret.
 
 ## Configure the GitHub secrets
 
@@ -63,7 +65,7 @@ You use the connection string as a GitHub secret.
 
 1. Select **Set up your workflow yourself**.
 
-1. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow may look like this.
+1. Delete everything after the `on:` section of your workflow file. For example, your remaining workflow might look like this.
 
     ```yaml
     name: CI
@@ -75,7 +77,7 @@ You use the connection string as a GitHub secret.
         branches: [ main ]
     ```
 
-1. Rename your workflow `PostgreSQL for GitHub Actions` and add the checkout and sign in actions. These actions check out your site code and authenticate with Azure using the GitHub secret(s) you created earlier.
+1. Rename your workflow `PostgreSQL for GitHub Actions` and add the checkout and sign in actions. These actions check out your site code and authenticate with Azure by using the GitHub secrets you created earlier.
 
     # [OpenID Connect](#tab/openid)
 
@@ -122,7 +124,7 @@ You use the connection string as a GitHub secret.
     ```
     ---
 
-1. Use the Azure PostgreSQL Deploy action to connect to your Azure Database for PostgreSQL flexible server instance. Replace `POSTGRESQL_SERVER_NAME` with the name of your server. You should have an Azure Database for PostgreSQL data file named `data.sql` at the root level of your repository.
+1. Use the **Azure PostgreSQL Deploy** action to connect to your Azure Database for PostgreSQL flexible server. Replace `POSTGRESQL_SERVER_NAME` with the name of your server. You should have an Azure Database for PostgreSQL data file named `data.sql` at the root level of your repository.
 
     ```yaml
      - uses: azure/postgresql@v1
@@ -214,7 +216,7 @@ You use the connection string as a GitHub secret.
 
 ## Clean up resources
 
-When your Azure Database for PostgreSQL database and repository are no longer needed, clean up the resources you deployed by deleting the resource group and your GitHub repository.
+When you no longer need your Azure Database for PostgreSQL database and repository, clean up the resources you deployed by deleting the resource group and your GitHub repository.
 
 ## Related content
 

@@ -25,7 +25,7 @@ In this article, you can learn:
 
 1. Enable troubleshooting guides by following the steps described in [use troubleshooting guides](how-to-troubleshooting-guides.md).
 
-1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions) and [loading](../extensions/how-to-load-libraries.md) the extension.
+1. Configure the `auto_explain` extension by [allowlisting](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server) and [loading](../extensions/how-to-load-libraries.md) the extension.
 
 1. After the `auto_explain` extension is configured, change the following [parameters](../parameters/concepts-parameters.md), which control the behavior of the extension:
 

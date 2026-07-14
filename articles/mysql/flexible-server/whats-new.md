@@ -23,6 +23,14 @@ For previously released features, visit [Azure Database for MySQL: Previous rele
 > [!NOTE]  
 > This article references the term slave, which Microsoft no longer uses. When the term is removed from the software, we'll remove it from this article.
 
+## July 2026
+
+### Azure Database for MySQL now supports Premium SSD v2 storage in Private Preview
+
+Azure MySQL now offers Premium SSD v2 storage option which enables you to independently scale storage capacity, IOPS, and throughput, helping optimize both performance and cost. The new managed disk-based architecture also introduces support for the latest General Purpose and Memory Optimized V6 SKU families, enabling you to run larger and more demanding workloads with better price-performance.
+
+The feature is currently available in Private Preview for supported compute SKUs and regions. To enroll in the preview, submit your details using this [form](https://aka.ms/mysql-premium-ssdv2).
+
 ## June 2026
 
 ### Azure Database Migration Service adds support for MySQL 8.4

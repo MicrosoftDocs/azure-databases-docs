@@ -1,13 +1,15 @@
 ---
-title: "Quickstart: Connect with C#"
-description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from an Azure Database for PostgreSQL flexible server instance."
+title: "Quickstart: Use .NET (C#) to Connect and Query Data in Azure Database for PostgreSQL Flexible Server"
+description: "This quickstart provides a C# (.NET) code sample you can use to connect and query data from an Azure Database for PostgreSQL flexible server."
+#customer intent: As a .NET (C#) developer, I want to run SQL queries from my C# code, so that I can retrieve data from my PostgreSQL database.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
+ai-usage: ai-assisted
 ms.custom:
 - mvc
 - devcenter
@@ -19,48 +21,48 @@ ms.custom:
 ms.devlang: csharp
 ---
 
-# Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL flexible server 
+# Quickstart: Use .NET (C#) to connect and query data in Azure Database for PostgreSQL flexible server
 
-This quickstart demonstrates how to connect to an Azure Database for PostgreSQL flexible server instance using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you are familiar with developing using C#, and that you are new to working with Azure Database for PostgreSQL.
+This quickstart demonstrates how to connect to an Azure Database for PostgreSQL flexible server by using a C# application. It shows how to use SQL statements to query, insert, update, and delete data in the database. The steps in this article assume that you're familiar with developing by using C#, and that you're new to working with Azure Database for PostgreSQL.
 
 ## Prerequisites
 
-For this quickstart you need:
+For this quickstart, you need:
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
 - [Create an Azure Database for PostgreSQL flexible server](../configure-maintain/quickstart-create-server.md) instance, if you do not have one.
-- Use the empty *postgres* database available on the server or create a [new database](../configure-maintain/quickstart-create-server.md#connect-using-psql).
+- Use the empty *postgres* database available on the server or create a [new database](../configure-maintain/quickstart-create-server.md#connect-by-using-psql).
 - Install the [.NET SDK for your platform](https://dotnet.microsoft.com/download) (Windows, Ubuntu Linux, or macOS) for your platform.
 - Install [Visual Studio](https://www.visualstudio.com/downloads/) to build your project.
 - Install [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet package in Visual Studio.
 
 ## Get connection information
 
-Get the connection information needed to connect to the Azure Database for PostgreSQL flexible server instance. You need the fully qualified server name and login credentials.
+Get the connection information needed to connect to the Azure Database for PostgreSQL flexible server. You need the fully qualified server name and authentication credentials.
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
-1. From the left-hand menu in Azure portal, click **All resources**, and then search for the server you have created.
+1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you created.
 
-2. Click the server name.
+1. Select the server name.
 
-3. In the resource menu, select **Overview**.
+1. In the resource menu, select **Overview**.
 
     :::image type="content" source="media/connect/overview.png" alt-text="Screenshot showing the Overview page." lightbox="media/connect/overview.png":::
 
-4. Copy the values shown as **Endpoint** and **Administrator login**.
+1. Copy the values shown as **Endpoint** and **Administrator login**.
 
     :::image type="content" source="media/connect/endpoint-administrator-login.png" alt-text="Screenshot showing the values of Endpoint and Administrator login in the Overview page." lightbox="media/connect/endpoint-administrator-login.png":::
 
-5. If you forget the password of the administrator login, you can reset it using the **Reset password** button.
+1. If you forget the password for the administrator authentication, reset it by using the **Reset password** button.
 
     :::image type="content" source="media/connect/reset-password.png" alt-text="Screenshot showing the Reset password button in the Overview page." lightbox="media/connect/reset-password.png":::
 
 ## Step 1: Connect and insert data
 
-Use the following code to connect and load the data using **CREATE TABLE** and  **INSERT INTO** SQL statements. The code uses NpgsqlCommand class with method:
+Use the following code to connect and load the data by using **CREATE TABLE** and **INSERT INTO** SQL statements. The code uses the NpgsqlCommand class with these methods:
 - [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure Database for PostgreSQL flexible server database.
-- [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) sets the CommandText property.
+- [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) to set the CommandText property.
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) method to run the database commands.
 
 > [!IMPORTANT]
@@ -140,7 +142,7 @@ namespace Driver
 
 ## Step 2: Read data
 
-Use the following code to connect and read the data using a **SELECT** SQL statement. The code uses NpgsqlCommand class with method:
+Use the following code to connect and read the data by using a **SELECT** SQL statement. The code uses the NpgsqlCommand class with these methods:
 - [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to PostgreSQL.
 - [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) and [ExecuteReader()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteReader) to run the database commands.
 - [Read()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_Read) to advance to the record in the results.
@@ -215,9 +217,9 @@ namespace Driver
 
 ## Step 3: Update data
 
-Use the following code to connect and update the data using an **UPDATE** SQL statement. The code uses NpgsqlCommand class with method:
-- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure Database for PostgreSQL flexible server instance.
-- [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand), sets the CommandText property.
+Use the following code to connect to the database and update the data by using an **UPDATE** SQL statement. The code uses the `NpgsqlCommand` class with the following methods:
+- [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure Database for PostgreSQL flexible server.
+- [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) to set the `CommandText` property.
 - [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) method to run the database commands.
 
 > [!IMPORTANT]
@@ -280,9 +282,9 @@ namespace Driver
 
 ## Step 4: Delete data
 
-Use the following code to connect and delete data using a **DELETE** SQL statement.
+Use the following code to connect to the database and delete data by using a **DELETE** SQL statement.
 
-The code uses NpgsqlCommand class with method [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) to establish a connection to the Azure Database for PostgreSQL flexible server database. Then, the code uses the [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) method, sets the CommandText property, and calls the method [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) to run the database commands.
+The code uses the `NpgsqlCommand` class with the [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) method to establish a connection to the Azure Database for PostgreSQL flexible server database. Then, the code uses the [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) method, sets the `CommandText` property, and calls the [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) method to run the database commands.
 
 > [!IMPORTANT]
 > Replace the Host, DBName, User, and Password parameters with the values that you specified when you created the server and database.
@@ -340,7 +342,7 @@ namespace Driver
 
 ## Clean up resources
 
-To clean up all resources used during this quickstart, delete the resource group using the following command:
+To clean up all resources used during this quickstart, delete the resource group by using the following command:
 
 ```azurecli-interactive
 az group delete \

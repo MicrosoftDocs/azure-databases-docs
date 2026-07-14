@@ -1,23 +1,19 @@
 ---
 title: Implement AI Pipelines in Azure HorizonDB
 description: Define and run AI data pipelines directly in Azure HorizonDB with built-in support for chunking, embeddings, extraction, retrieval, and reranking, backed by reliable execution with state, retries, and crash recovery.
+#customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/16/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a user, I want to understand how to implement durable AI pipelines for chunking, embedding, extraction, and retrieval.
 ---
 
-# Implement AI pipelines for Azure HorizonDB (Preview)
+# Implement AI pipelines in Azure HorizonDB (Preview)
 
 AI pipelines in Azure HorizonDB let you describe an AI workflow (chunking, embedding, extraction, generation, ranking, human approval) declaratively in SQL, and run it as a fault-tolerant pipeline that lives inside the database. The pipeline definition is just a row in a system catalog. The execution is durable: it survives crashes, retries failed steps, checkpoints incremental work, and resumes long-running jobs from the last completed step.
 
@@ -40,10 +36,10 @@ AI pipelines move that logic into HorizonDB itself. The source, the steps, the s
 
 A pipeline has four parts:
 
-1. **Source** - where rows come from. Today, a `table_source(...)` over a HorizonDB table, optionally with an `incremental_column` (so the pipeline can skip rows it's already processed).
-1. **Steps** - the AI operations that transform each row, in order. Each step appends columns to the in-flight batch.
-1. **Sink** *(optional)* - where the resulting rows are written.
-1. **Trigger** - `'on_change'` (run automatically when source rows change) or `'manual'` (run only when you call `ai.run()`).
+- **Source** - where rows come from. Today, a `table_source(...)` over a HorizonDB table, optionally with an `incremental_column` (so the pipeline can skip rows it's already processed).
+- **Steps** - the AI operations that transform each row, in order. Each step appends columns to the in-flight batch.
+- **Sink** *(optional)* - where the resulting rows are written.
+- **Trigger** - `'on_change'` (run automatically when source rows change) or `'manual'` (run only when you call `ai.run()`).
 
 ### Step types
 
@@ -69,7 +65,7 @@ CREATE EXTENSION IF NOT EXISTS pg_diskann;
 ```
 
 > [!NOTE]  
-> `pg_durable` must be preloaded through `shared_preload_libraries` before you can [create the extension](../development/durable-functions.md). If `CREATE EXTENSION pg_durable` fails with `pg_durable must be loaded via shared_preload_libraries`, add it to that parameter and restart the instance. The `ai.*` pipeline API works without `pg_durable`, so you only need it for the optional [durable-instance inspection](#run-monitor-and-retry).
+> You must preload `pg_durable` through `shared_preload_libraries` before you can [create the extension](../development/durable-functions.md). If `CREATE EXTENSION pg_durable` fails with `pg_durable must be loaded via shared_preload_libraries`, add it to that parameter and restart the instance. The `ai.*` pipeline API works without `pg_durable`, so you only need it for the optional [durable-instance inspection](#run-monitor-and-retry).
 
 You also need an embedding (and optionally a generation) model that `azure_ai` can call. You have two options:
 
@@ -190,7 +186,7 @@ SELECT ai.create_pipeline(
 );
 ```
 
-`ai.create_pipeline()` registers the definition. It doesn't run anything yet. Inspect the compiled execution plan with `ai.explain()`:
+The `ai.create_pipeline()` function registers the definition. It doesn't run anything yet. To inspect the compiled execution plan, use `ai.explain()`:
 
 ```sql
 SELECT ai.explain('rag_pipeline');
@@ -199,7 +195,7 @@ SELECT ai.explain('rag_pipeline');
 Behind the scenes, `ai.run()` translates the definition into a `pg_durable` graph and submits it via [Durable functions with pg_durable in Azure HorizonDB (Preview)](../development/durable-functions.md). Each AI step becomes a durable node, so a failure in `ai.embed()` doesn't rerun `ai.chunk()`.
 
 > [!TIP]  
-> Once the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
+> After the sink table is populated, you can build a [Scalable vector indexing with DiskANN (Preview)](vector-index-diskann.md) on the `embedding` column and use it directly in [hybrid-search](hybrid-search.md) queries.
 
 ### Use named arguments and required parameters
 
@@ -207,55 +203,55 @@ Always call the step builders and `ai.create_pipeline()` with **named arguments*
 
 The verified step and pipeline signatures during preview are:
 
-**Create a pipeline**
+- **Create a pipeline**
 
 ```sql
 ai.create_pipeline(name text, source jsonb, steps jsonb[], sink jsonb,
                    trigger text DEFAULT 'manual', options jsonb DEFAULT NULL)
 ```
 
-**Generate text**
+- **Generate text**
 
 ```sql
 ai.generate(input text, system_prompt text DEFAULT 'You are a helpful assistant.',
            max_tokens integer DEFAULT 1024, model text DEFAULT NULL)
 ```
 
-**Extract structured fields**
+- **Extract structured fields**
 
 ```sql
 ai.extract(input text, data text[] DEFAULT NULL, model text DEFAULT NULL)
 ```
 
-**Embed text**
+- **Embed text**
 
 ```sql
 ai.embed(input text, model text DEFAULT NULL, batch_size integer DEFAULT 100,
         dimensions integer DEFAULT NULL)
 ```
 
-**Rank documents**
+- **Rank documents**
 
 ```sql
 ai.rank(input text, query text, top_n integer DEFAULT NULL,
         model text DEFAULT NULL)
 ```
 
-**Chunk text**
+- **Chunk text**
 
 ```sql
 ai.chunk(input text, method text DEFAULT NULL, chunk_size integer DEFAULT 512,
         overlap integer DEFAULT 64)
 ```
 
-**Define a table source**
+- **Define a table source**
 
 ```sql
 ai.table_source(table_name text, incremental_column text DEFAULT NULL,
                schema_name text DEFAULT 'public')
 ```
 
-**Define a table sink**
+- **Define a table sink**
 
 ```sql
 ai.table_sink(table_name text, schema_name text DEFAULT 'public',
@@ -378,14 +374,14 @@ FROM rag_pipeline_output
 ORDER BY doc_id, chunk_index;
 ```
 
-Status, history, and the underlying durable instance are queryable from SQL:
+You can query status, history, and the underlying durable instance from SQL:
 
 ```sql
 SELECT * FROM ai.status('rag_pipeline');
 SELECT * FROM ai.list_pipelines();
 ```
 
-For full execution history, drop down to the [durable function](../development/durable-functions.md) instance. This query requires `pg_durable` to be installed and preloaded through `shared_preload_libraries`. Without it, the `df.instances` relation doesn't exist and the query fails:
+For full execution history, query the [durable function](../development/durable-functions.md) instance. This query requires `pg_durable` to be installed and preloaded through `shared_preload_libraries`. Without it, the `df.instances` relation doesn't exist and the query fails:
 
 ```sql
 -- Optional: requires pg_durable. Check whether a run is pending, completed, or failed.
@@ -425,7 +421,7 @@ If `embeddings_written` is zero while `rows` is nonzero, the sink is missing or 
 
 A pipeline persists in the database until you drop it. The full lifecycle is `ai.create_pipeline()` → `ai.run()` (or an `on_change` trigger) → `ai.status()` → `ai.drop_pipeline()`. The `on_change` trigger persists across sessions: once set, the pipeline reruns whenever source rows change until you pause or drop it.
 
-List the pipelines you've defined, and remove one when you're done:
+List the pipelines you defined, and remove one when you're done:
 
 ```sql
 SELECT * FROM ai.list_pipelines();

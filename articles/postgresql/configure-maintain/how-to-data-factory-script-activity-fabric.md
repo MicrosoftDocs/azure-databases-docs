@@ -1,13 +1,15 @@
 ---
 title: Create a Script Activity in Microsoft Fabric Data Factory
 description: Learn how to create a script activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
+#customer intent: As a user, I want to create a script activity in Microsoft Fabric Data Factory so that I can run custom PostgreSQL queries in my pipelines.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 04/25/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
+ai-usage: ai-assisted
 ---
 
 # Create a script activity in Microsoft Fabric Data Factory
@@ -19,7 +21,7 @@ In this article, you learn how to create a script activity in Microsoft Fabric D
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a script activity

@@ -35,7 +35,7 @@ landingContent:
           - text: Create an Azure Database for PostgreSQL
             url: flexible-server/quickstart-create-server.md
           - text: Create an elastic cluster 
-            url: flexible-server/quickstart-create-elastic-cluster-portal.md
+            url: elastic-clusters/create-elastic-cluster.md
       - linkListType: how-to-guide
         links:
           - text: Manage your server
@@ -203,7 +203,7 @@ landingContent:
           - text: Quickstart guide for Python
             url: flexible-server/quickstart-create-server-python-sdk.md
           - text: Pricing 
-            url: https://azure.microsoft.com/en-us/pricing/details/postgresql/flexible-server
+            url: https://azure.microsoft.com/pricing/details/postgresql/flexible-server
           - text: Region Availability
             url: https://azure.microsoft.com/explore/global-infrastructure/products-by-region
           - text: Customer success stories

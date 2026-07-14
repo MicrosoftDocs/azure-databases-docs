@@ -1,17 +1,17 @@
 ---
 title: Create Extensions in Azure HorizonDB
 description: This article describes how to create extensions in Azure HorizonDB.
+#customer intent: As a user, I want to create extensions in my Azure HorizonDB cluster, so that I can extend the functionality of my PostgreSQL database.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to create extensions in Azure HorizonDB.
 ---
 
-# Create extensions for Azure HorizonDB (Preview)
+# Create extensions in Azure HorizonDB (Preview)
 
 Before creating extensions in an Azure HorizonDB cluster, you must [allowlist](how-to-allow-extensions.md) them.
 
@@ -21,7 +21,7 @@ Before creating extensions in an Azure HorizonDB cluster, you must [allowlist](h
 
 1. If the extension requires it, also add it to `shared_load_libraries`.
 
-1. To create untrusted extensions, a user must be a member of the `azure_pg_admin` role. Any user with `CREATE` privilege can create any trusted extension listed in azure.extensions. This list can be retrieved by running `SHOW azure.extensions;`
+1. To create untrusted extensions, you must be a member of the `azure_pg_admin` role. Any user with `CREATE` privilege can create any trusted extension listed in `azure.extensions`. You can retrieve this list by running `SHOW azure.extensions;`.
 
 1. Run the [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html) command to create or install a particular extension. This command loads the packaged objects into your database.
 
@@ -44,13 +44,13 @@ Before creating extensions in an Azure HorizonDB cluster, you must [allowlist](h
    ```
 
 > [!NOTE]  
-> Third-party extensions offered for Azure HorizonDB are open-source licensed code. We don't offer any third-party extensions or extension versions with premium or proprietary licensing models.
+> Third-party extensions offered for Azure HorizonDB are open-source licensed code. Microsoft doesn't offer any third-party extensions or extension versions with premium or proprietary licensing models.
 
 Your Azure HorizonDB instance supports a subset of all existing PostgreSQL extensions, as listed in [supported extensions by name](concepts-extensions-versions.md) or in [supported extensions by version of PostgreSQL](concepts-extensions-by-engine.md).
 
-This information is also available by running `SHOW azure.extensions;`.
+You can also see this information by running `SHOW azure.extensions;`.
 
-You can't bring your own extensions into an Azure HorizonDB instance. Extensions not included in the lists referred before aren't supported on your Azure HorizonDB instance.
+You can't bring your own extensions into an Azure HorizonDB instance. Extensions not included in the lists referred to earlier aren't supported on your Azure HorizonDB instance.
 
 ## Related content
 

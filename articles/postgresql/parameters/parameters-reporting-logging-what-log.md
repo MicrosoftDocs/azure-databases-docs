@@ -4,7 +4,7 @@ description: Reporting and Logging / What to Log parameters for Azure Database f
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 04/27/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
@@ -68,6 +68,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [parameters-11-reporting-logging-what-log](./includes/parameters-11-reporting-logging-what-log.md)]
 
 ::: zone-end
-
 
 

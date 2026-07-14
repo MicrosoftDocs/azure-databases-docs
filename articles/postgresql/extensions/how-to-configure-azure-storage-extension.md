@@ -1,23 +1,20 @@
 ---
-title: Configure the Azure Storage Extension
-description: Learn how to configure the Azure Storage extension in an Azure Database for PostgreSQL flexible server instance to import and export data.
+title: Configure the Azure Storage Extension in Azure Database for PostgreSQL Flexible Server
+description: Learn how to configure the Azure Storage extension in an Azure Database for PostgreSQL flexible server to import and export data.
+#customer intent: As a user, I want to configure the Azure Storage extension in my Azure Database for PostgreSQL flexible server, so that I can import and export data between PostgreSQL and Azure Storage.
 author: akashraokm
 ms.author: akashrao
 ms.reviewer: maghan
-ms.date: 05/07/2026
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: reference
 ms.update-cycle: 365-days
-ms.custom:
-  - ignite-2024
-  - ignite-2025
-  - sfi-image-nochange
 ---
 
 # Configure the Azure Storage extension in Azure Database for PostgreSQL flexible server
 
-You must follow these steps to be able to use the Azure Storage extension:
+To use the Azure Storage extension, complete the following steps:
 
 1. [Identify Azure Storage accounts](#identify-the-azure-storage-accounts)
 1. [Choose type of authorization](#choose-type-of-authorization)
@@ -29,11 +26,11 @@ You must follow these steps to be able to use the Azure Storage extension:
 
 ## Identify the Azure Storage accounts
 
-Identify the Azure Storage accounts with which you want users of the extension to interact, to import data from or export data to.
+Identify the Azure Storage accounts that you want users of the extension to interact with, to import data from or export data to.
 
 ## Choose type of authorization
 
-Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. `azure_storage` extension supports authorization with Shared Key, and authorization with Microsoft Entra ID.
+Decide which type of authorization you want to use for the requests made against the blob service of each of those Azure Storage accounts. The `azure_storage` extension supports authorization by using Shared Key, and authorization by using Microsoft Entra ID.
 
 Of these two types of authorization, Microsoft Entra ID provides superior security and ease of use over Shared Key, and is the one Microsoft recommends.
 
@@ -43,26 +40,28 @@ To meet the prerequisites needed in each case, follow the instructions in the co
 
 ### To use authorization with Microsoft Entra ID
 
-1. Enable [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md) on your Azure Database for PostgreSQL flexible server instance.
+1. Enable [Firewall rules in Azure Database for PostgreSQL](../security/security-firewall-rules.md) on your Azure Database for PostgreSQL flexible server.
 1. [Restart PostgreSQL engine](../configure-maintain/how-to-restart-server.md), after enabling a system assigned managed identity on it.
-1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access), on the Azure Storage account, to the System Assigned Managed Identity of your instance of Azure Database for PostgreSQL flexible server.
+1. [Assign role-based access control (RBAC) permissions for access to blob data](/azure/storage/blobs/assign-azure-role-data-access) on the Azure Storage account to the system assigned managed identity of your Azure Database for PostgreSQL flexible server.
 
 #### Enable System Assigned Managed Identity
 
-# [Azure portal](#tab/portal-03)
+# [Portal](#tab/portal-storage-extension-enable-sami)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png" alt-text="Screenshot of enabling System Assigned Managed Identity." lightbox="media/how-to-configure-azure-storage-extension/enable-system-assigned-managed-identity-portal.png":::
 
-# [CLI](#tab/cli-03)
+# [CLI](#tab/cli-storage-extension-enable-sami)
+
+[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
 ```azurecli-interactive
 az rest \
   --method patch \
-  --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2024-08-01 \
+  --url https://management.azure.com/subscriptions/<subscriptionId>/resourceGroups/<flexible_server_resource_group>/providers/Microsoft.DBforPostgreSQL/flexibleServers/<flexible_server_name>?api-version=2025-08-01 \
   --body '{"identity":{"type":"SystemAssigned"}}'
 ```
 
-# [REST API](#tab/rest-03)
+# [REST API](#tab/rest-storage-extension-enable-sami)
 
 Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 
@@ -77,11 +76,11 @@ Using the [Servers - Update](/rest/api/postgresql/servers/update) REST API.
 
 Your Azure Storage account must have **Allow storage account key access** enabled (that is, it can't have its [AllowSharedKeyAccess](/azure/storage/common/shared-key-authorization-prevent) property set to **false**).
 
-##### [Azure portal](#tab/portal-04)
+##### [Portal](#tab/portal-storage-extension-confirm-storage-account)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/allow-shared-key-access-enabled-portal.png" alt-text="Screenshot of confirming that Allow storage account key access is enabled." lightbox="media/how-to-configure-azure-storage-extension/allow-shared-key-access-enabled-portal.png":::
 
-##### [CLI](#tab/cli-04)
+##### [CLI](#tab/cli-storage-extension-confirm-storage-account)
 
 ```azurecli-interactive
 az storage account update \
@@ -90,7 +89,7 @@ az storage account update \
   --allow-shared-key-access true
 ```
 
-##### [REST API](#tab/rest-04)
+##### [REST API](#tab/rest-storage-extension-confirm-storage-account)
 
 Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) REST API.
 
@@ -100,11 +99,11 @@ Using [Storage Accounts - Update](/rest/api/storagerp/storage-accounts/update) R
 
 To pass it to the [azure_storage.account_add](reference-azure-storage-extension.md#azure_storageaccount_add) function, [fetch either of the two access keys](/azure/storage/common/storage-account-keys-manage?tabs=azure-portal#view-account-access-keys) of the Azure Storage account.
 
-##### [Azure portal](#tab/portal-05)
+##### [Portal](#tab/portal-storage-extension-fetch-access-key)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/copy-access-key-portal.png" alt-text="Screenshot of copying storage account access key." lightbox="media/how-to-configure-azure-storage-extension/copy-access-key-portal.png":::
 
-##### [CLI](#tab/cli-05)
+##### [CLI](#tab/cli-storage-extension-fetch-access-key)
 
 ```azurecli-interactive
 az storage account keys list \
@@ -114,7 +113,7 @@ az storage account keys list \
   --output tsv
 ```
 
-##### [REST API](#tab/rest-05)
+##### [REST API](#tab/rest-storage-extension-fetch-access-key)
 
 Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-keys) REST API.
 
@@ -122,15 +121,15 @@ Using [Storage Accounts - List Keys](/rest/api/storagerp/storage-accounts/list-k
 
 ## Load the extension's library
 
-Configure your server so that it loads the `azure_storage` binary module when it's started.
+Configure your server to load the `azure_storage` binary module when it starts.
 
-### [Azure portal](#tab/portal-01)
+### [Portal](#tab/portal-storage-extension-load-library)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png" alt-text="Screenshot of selecting azure_storage in shared_preload_libraries in parameters." lightbox="media/how-to-configure-azure-storage-extension/shared-preload-libraries-portal.png":::
-Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
+Because the `shared_preload_libraries` parameter is static, you must restart the server for a change to take effect:
 :::image type="content" source="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png" alt-text="Screenshot of dialog that pops up when changing shared_preload_libraries, to save and restart." lightbox="media/how-to-configure-azure-storage-extension/save-and-restart-shared-preload-libraries-portal.png":::
 
-### [CLI](#tab/cli-01)
+### [CLI](#tab/cli-storage-extension-load-library)
 
 ```azurecli-interactive
 az postgres flexible-server parameter set \
@@ -145,7 +144,7 @@ az postgres flexible-server parameter set \
                             --query value \
                             --output tsv)
 ```
-Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect:
+Because the `shared_preload_libraries` parameter is static, you must restart the server for a change to take effect:
 
 ```azurecli-interactive
 az postgres flexible-server restart \
@@ -153,23 +152,23 @@ az postgres flexible-server restart \
   --name <server>
 ```
 
-### [REST API](#tab/rest-01)
+### [REST API](#tab/rest-storage-extension-load-library)
 
-Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
+Use the [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
-Because the `shared_preload_libraries` is static, the server must be restarted for a change to take effect. For restarting the server, you can use the [Server - Restart](/rest/api/postgresql/servers/restart) REST API.
+Because the `shared_preload_libraries` parameter is static, you must restart the server for a change to take effect. To restart the server, use the [Server - Restart](/rest/api/postgresql/servers/restart) REST API.
 
 ---
 
 ## Allow list the extension
 
-You must allow list the extension so that users can run CREATE EXTENSION, DROP EXTENSION, ALTER EXTENSION, COMMENT ON EXTENSION.
+Add the extension to the allow list so that users can run `CREATE EXTENSION`, `DROP EXTENSION`, `ALTER EXTENSION`, and `COMMENT ON EXTENSION`.
 
-### [Azure portal](#tab/portal-02)
+### [Azure portal](#tab/portal-storage-extension-allow-list-extension)
 
 :::image type="content" source="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png" alt-text="Screenshot of selecting azure_storage in azure.extensions in parameters." lightbox="media/how-to-configure-azure-storage-extension/azure-extensions-portal.png":::
 
-### [CLI](#tab/cli-02)
+### [CLI](#tab/cli-extension-allow-list-extension)
 
 ```azurecli-interactive
 az postgres flexible-server parameter set \
@@ -185,17 +184,17 @@ az postgres flexible-server parameter set \
                             --output tsv)
 ```
 
-### [REST API](#tab/rest-02)
+### [REST API](#tab/rest-extension-allow-list-extension)
 
-Using [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
+Use the [Configurations - Put](/rest/api/postgresql/configurations/put) REST API.
 
 ---
 
 ## Create the extension
 
-Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
+Use the client of your preference, such as [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database where you want to use the Azure Storage extension.
 
-To create all SQL objects (tables, types, functions, views, etc.) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
+To create all SQL objects (tables, types, functions, views, and so on) with which you can use the `azure_storage` extension to interact with instances of Azure Storage accounts, execute the following statement:
 
 ```sql
 CREATE EXTENSION azure_storage;
@@ -203,24 +202,24 @@ CREATE EXTENSION azure_storage;
 
 ## Initialize encryption key to encrypt sensitive credentials
 
-Use the client of your preference, like [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database in which you want to use the Azure Storage extension.
+Use the client of your preference, such as [PostgreSQL for Visual Studio Code (Preview)](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql), [psql](https://www.postgresql.org/docs/current/app-psql.html), or [PgAdmin](https://www.pgadmin.org/), to connect to the database where you want to use the Azure Storage extension.
 
-To initialize the encryption key with which all sensitive credentials used to authenticate with the different Azure storage accounts, execute the following statement:
+To initialize the encryption key for all sensitive credentials used to authenticate with the different Azure storage accounts, run the following statement:
 
 > [!NOTE]  
-> Make sure you change `<strong passphrase>` with your own strong secret.
+> Make sure you change `<strong passphrase>` to your own strong secret.
 
 ```sql
 ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong_passphrase>';
 ```
 
-If you create the extension in multiple databases, you must initialize the value of `azure_storage.credential_encryption_key` at the database level, so all sensitive credentials kept in that database are encrypted using the same key.
+If you create the extension in multiple databases, you must initialize the value of `azure_storage.credential_encryption_key` at the database level, so all sensitive credentials kept in that database are encrypted by using the same key.
 
-To set the value of `azure_storage.credential_encryption_key`, you must be member of the `azure_storage_admin` role. Then connect to the server, in the context of the database in which you created the extension. And, in that context, execute `ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong passphrase>';` to initialize the encryption key that's used to encrypt all Azure storage account credentials kept by the extension in the catalog of that database. After running this command, you must disconnect and reconnect to the database again, so that the override value takes effect, and you should also invoke the `azure_storage.account_encrypt_existing_credentials()` function so that the credentials of existing accounts which were never encrypted before with any other key, are encrypted with this key. To do so, execute `SELECT azure_storage.account_encrypt_existing_credentials();`.
+To set the value of `azure_storage.credential_encryption_key`, you must be member of the `azure_storage_admin` role. Then connect to the server, in the context of the database where you created the extension. In that context, execute `ALTER DATABASE <database_with_created_extension> SET azure_storage.credential_encryption_key = '<strong passphrase>';` to initialize the encryption key that's used to encrypt all Azure storage account credentials that the extension keeps in the catalog of that database. After running this command, you must disconnect and reconnect to the database again, so that the override value takes effect. You should also invoke the `azure_storage.account_encrypt_existing_credentials()` function so that the credentials of existing accounts that were never encrypted before by using any other key are encrypted by using this key. To do so, execute `SELECT azure_storage.account_encrypt_existing_credentials();`.
 
-Although possible, we recommend against trying to use other statements like `ALTER ROLE` or `ALTER ROLE IN DATABASE` to set the value of `azure_storage.credential_encryption_key`.
+Although possible, don't try to use other statements like `ALTER ROLE` or `ALTER ROLE IN DATABASE` to set the value of `azure_storage.credential_encryption_key`.
 
-If you change the value of `azure_storage.credential_encryption_key`, you'll have to manually add again, using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) which was encrypted with the previous value. Currently the extension doesn't support automatic rollover of encryption key.
+If you change the value of `azure_storage.credential_encryption_key`, you must manually add again, by using `azure_storage.account_add`, all storage accounts for which you provided a sensitive credential (an access key or a SAS token) that was encrypted by using the previous value. Currently, the extension doesn't support automatic rollover of encryption key.
 
 ## Use the extension to import and export data
 
@@ -229,13 +228,13 @@ Now you're ready to add the storage accounts with which you want to interact (us
 Check out the list of quickstart examples:
 
 - [Create an Azure Storage account and populate it with data](quickstart-azure-storage-extension.md#create-an-azure-storage-account-and-populate-it-with-data)
-- [Create a table in which data is loaded](quickstart-azure-storage-extension.md#create-a-table-in-which-data-is-loaded)
+- [Create a table in which data is loaded](quickstart-azure-storage-extension.md#create-a-table-in-which-to-load-data)
 - [Add access key of storage account](quickstart-azure-storage-extension.md#add-access-key-of-storage-account)
 - [Grant access to a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#grant-access-to-a-user-or-role-on-the-azure-blob-storage-reference)
 - [List all blobs in a container](quickstart-azure-storage-extension.md#list-all-blobs-in-a-container)
 - [List blobs with a specific name prefix](quickstart-azure-storage-extension.md#list-blobs-with-a-specific-name-prefix)
-- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
-- [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
+- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-by-using-a-copy-from-statement)
+- [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-by-using-a-copy-to-statement)
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)
 - [Read content from file with custom options (headers, column delimiters, escape characters)](quickstart-azure-storage-extension.md#read-content-from-file-with-custom-options-headers-column-delimiters-escape-characters)
@@ -267,7 +266,7 @@ In case you need to review all functions offered by the extension and all the de
 And, if you need to do some troubleshooting, review the [list of errors](../troubleshoot/troubleshoot-azure-storage-extension.md) that the extension can produce, and the context in which they can be raised.
 
 > [!IMPORTANT]  
-> For authentication types for which you must provide an Azure Storage account access key, notice that your Azure Storage access keys are similar to a root password for your storage account. Always be careful to protect them. Use Azure Key Vault to manage and rotate your keys securely. `azure_storage` extension stores those keys in a table `azure_storage.accounts`, which is readable by members of the `pg_read_all_data` role.
+> For authentication types that require an Azure Storage account access key, remember that your Azure Storage access keys are similar to a root password for your storage account. Always protect them. Use Azure Key Vault to manage and rotate your keys securely. The `azure_storage` extension stores those keys in a table `azure_storage.accounts`, which members of the `pg_read_all_data` role can read.
 
 ## Related content
 

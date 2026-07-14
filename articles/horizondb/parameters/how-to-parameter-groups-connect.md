@@ -1,25 +1,25 @@
 ---
 title: Connect Clusters to Parameter Groups in Azure HorizonDB
 description: This article describes how to connect parameter groups to clusters in Azure HorizonDB.
+#customer intent: As a user, I want to connect a parameter group to one or more clusters, so that I can apply consistent configuration settings across my environment.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to connect parameter groups to clusters in Azure HorizonDB.
 ---
 
 # Connect clusters to parameter groups in Azure HorizonDB (Preview)
 
-You can connect one parameter group to one or more clusters, as long as the region of the parameter group and the region of the cluster matches.
+You can connect one parameter group to one or more clusters, as long as the region of the parameter group and the region of the cluster match.
 
 ## Steps to connect parameter groups to clusters
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-connect-parameter-groups)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
@@ -44,7 +44,7 @@ Using the [Azure portal](https://portal.azure.com):
     :::image type="content" source="./media/how-to-connect-clusters-parameter-groups/notification-connected.png" alt-text="Screenshot that shows the notification that indicates the connection of the parameter group to the selected clusters completed successfully." lightbox="./media/how-to-connect-clusters-parameter-groups/notification-connected.png":::
 
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-connect-parameter-groups)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 

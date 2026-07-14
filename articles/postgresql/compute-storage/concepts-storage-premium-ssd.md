@@ -1,31 +1,32 @@
 ---
 title: Premium SSD
-description: This article describes the Premium ssd storage option in an Azure Database for PostgreSQL flexible server instance.
+description: This article describes the Premium ssd storage option in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to understand how Premium SSD storage works in Azure Database for PostgreSQL flexible server so that I can choose the right storage option for my mission-critical workloads.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
 ms.custom: references_regions
-ms.date: 01/16/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: compute-storage
 ms.topic: concept-article
 ---
 
 
-# Premium SSD  storage option in Azure Database for PostgreSQL flexible server 
+# Premium SSD storage option in Azure Database for PostgreSQL flexible server
 
 ## Premium SSD
 
-Azure Premium SSD deliver high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications.Capacity, IOPS, and throughput are guaranteed when a premium storage disk is provisioned. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
+Azure Premium SSD delivers high-performance and low-latency disk support for virtual machines (VMs) with input/output (IO)-intensive workloads. Premium SSD units are suitable for mission-critical production applications. When you provision a premium storage disk, you get guaranteed capacity, IOPS, and throughput. For example, if you create a P40 disk, Azure provisions 2,048-GB storage capacity, 7,500 IOPS, and 250-MB/s throughput for that disk. Your application can use all or part of the capacity and performance. Premium SSDs are designed to provide the single-digit millisecond latencies, target IOPS, and throughput described in the preceding table 99.9% of the time.
 
-The maximum supported storage size is 32 TiB with Premium SSD, allowing you to scale up to 20,000 IOPS and 900 MB/s throughput. By switching to Premium SSD v2, you can scale up to 64 TiB with support for 80,000 IOPS and 1,200 MB/s throughput.
+The maximum supported storage size is 32 TiB with Premium SSD, so you can scale up to 20,000 IOPS and 900 MB/s throughput. By switching to Premium SSD v2, you can scale up to 64 TiB with support for 80,000 IOPS and 1,200 MB/s throughput.
   
-The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server instance. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
+The storage that you provision is the amount of storage capacity available to your Azure Database for PostgreSQL flexible server. This storage is used for database files, temporary files, transaction logs, and PostgreSQL server logs. The total amount of storage that you provision also defines the I/O capacity available to your server.
 
-Your virtual machine type also has IOPS limits. Although you can select any storage size, independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores.To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
+Your virtual machine type also has IOPS limits. Although you can select any storage size independently from the server type, you might not be able to use all IOPS that the storage provides, especially when you choose a server with a few vCores. To learn more, see [Compute options in Azure Database for PostgreSQL](concepts-compute.md).
 
 > [!NOTE]  
-> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
+> Regardless of the type of storage you assign to your instance, you can only scale storage up, not down.
 
 You can monitor your I/O consumption in the [Azure portal](https://portal.azure.com/), or by using [Azure CLI commands](/cli/azure/monitor/metrics). The relevant metrics to monitor are [storage limit, storage percentage, storage used, and I/O percentage](../monitor/concepts-monitoring.md).
 
@@ -43,7 +44,7 @@ The default behavior increases the disk size to the next premium SSD storage siz
 The process of scaling storage is performed online, without causing any downtime, except when the disk size needs to cross the border of 4,096 GiB. This exception is a limitation of [Azure managed disks](/azure/virtual-machines/managed-disks-overview). In that case, the automatic storage scaling activity isn't triggered, even if storage autogrow setting is enabled for the server. In such cases, you need to scale your storage manually. In this scenario (reaching or crossing the 4,096 GiB boundary), manual scaling is an offline operation. We recommend scheduling this task to align with your business needs. All other operations can be performed online. Once the allocated disk size is 8,192 GiB or higher, storage autogrow triggers again automatically and every subsequent storage grow operation is performed online until the disk allocated reaches its maximum growing capacity, which is 32,768 GiB.
 
 > [!NOTE]  
-> Regardless of the type of storage you assign to your instance, storage can only be scaled up, not down.
+> Regardless of the type of storage you assign to your instance, you can only scale storage up, not down.
 
 ## Limitations and considerations of storage autogrow
 

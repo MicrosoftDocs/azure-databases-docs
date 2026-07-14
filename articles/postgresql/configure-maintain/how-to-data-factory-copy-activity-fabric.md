@@ -1,26 +1,28 @@
 ---
 title: Create a Copy Activity in Microsoft Fabric Data Factory
 description: Learn how to create a copy activity in Microsoft Fabric Data Factory for Azure Database for PostgreSQL.
+#customer intent: As a user, I want to create a copy activity in Microsoft Fabric Data Factory so that I can move data to my Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 04/25/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
+ai-usage: ai-assisted
 ---
 
 # Create a copy activity in Microsoft Fabric Data Factory
 
-The copy activity in Microsoft Fabric Data Factory can help you connect to your Azure Database for PostgreSQL flexible server instance to perform data movement and transformation activities.
+The copy activity in Microsoft Fabric Data Factory helps you connect to your Azure Database for PostgreSQL flexible server to perform data movement and transformation tasks.
 
 The copy activity supports *copy command*, *bulk insert*, and *upsert* as write methods. To learn more, see [Configure Azure Database for PostgreSQL in a copy activity](/fabric/data-factory/connector-azure-database-for-postgresql-copy-activity).
 
-This article has step-by-step instructions on how to create a copy activity.
+This article provides step-by-step instructions on how to create a copy activity.
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - A Microsoft Fabric Data Factory [data pipeline](/fabric/data-factory/pipeline-landing-page).
 
 ## Create a copy activity
@@ -59,31 +61,31 @@ This article has step-by-step instructions on how to create a copy activity.
 
    ### [Copy command](#tab/copy-command)
 
-   :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/copy-command.png"alt-text="Screenshot that shows an example of copy command selected as the write method." lightbox="./media/how-to-data-factory-copy-activity-fabric/copy-command.png":::
+   :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/copy-command.png" alt-text="Screenshot that shows an example of copy command selected as the write method." lightbox="./media/how-to-data-factory-copy-activity-fabric/copy-command.png":::
 
    ### [Bulk insert](#tab/bulk-insert)
 
-   :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/bulk-insert.png"alt-text="Screenshot that shows an example of bulk insert selected as the write method." lightbox="./media/how-to-data-factory-copy-activity-fabric/bulk-insert.png":::
+   :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/bulk-insert.png" alt-text="Screenshot that shows an example of bulk insert selected as the write method." lightbox="./media/how-to-data-factory-copy-activity-fabric/bulk-insert.png":::
 
    ### [Upsert](#tab/upsert)
 
    :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/upsert.png"     alt-text="Screenshot that shows an example of upsert selected as the write method." lightbox="./media/how-to-data-factory-copy-activity-fabric/upsert.png":::
 
-1. If a custom mapping is required, configure your mapping on the **Mapping** tab.
+1. If you need custom mapping, configure your mapping on the **Mapping** tab.
 
 1. Validate your pipeline.
 
-1. Select the **Run** button, which runs the pipeline manually.
+1. Select the **Run** button to run the pipeline manually.
 
 1. Set up a [trigger for your pipeline](/fabric/data-factory/pipeline-runs).
 
 ## Specify the behavior of key columns on upsert
 
-When you upsert data by using the Azure Database for PostgreSQL connector, you need to specify fields called *key columns*. You specify them in the **Key columns** area of the **Destination** tab.
+When you upsert data by using the Azure Database for PostgreSQL connector, specify fields called *key columns*. Specify them in the **Key columns** area of the **Destination** tab.
 
 :::image type="content" source="./media/how-to-data-factory-copy-activity-fabric/select-key-columns.png" alt-text="Screenshot that shows the area for key columns on the Destination tab." lightbox="./media/how-to-data-factory-copy-activity-fabric/select-key-columns.png":::
 
-There are two acceptable ways to use key columns:
+Use key columns in two ways:
 
 - Select **New** and add all the primary key columns of the table for the destination data source.
 

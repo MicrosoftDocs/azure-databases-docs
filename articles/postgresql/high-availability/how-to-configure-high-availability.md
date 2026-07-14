@@ -1,14 +1,14 @@
 ---
 title: Configure High Availability
 description: This article describes how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server.
 author: gaurikasar
 ms.author: gkasar
 ms.reviewer: maghan, randolphwest
-ms.date: 06/23/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: high-availability
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to configure and operate high availability on an Azure Database for PostgreSQL flexible server instance.
 ---
 
 # Configure high availability for Azure Database for PostgreSQL flexible server
@@ -26,7 +26,7 @@ You can enable high availability on an existing Azure Database for PostgreSQL fl
 
 ### [Portal](#tab/portal-enable-existing-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 Using the [Azure portal](https://portal.azure.com/):
@@ -149,7 +149,7 @@ You can disable high availability on your Azure Database for PostgreSQL flexible
 
 ### [Portal](#tab/portal-disable-existing-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -192,7 +192,7 @@ You can configure high availability when you first create your Azure Database fo
 
 ### [Portal](#tab/portal-enable-new-server)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. During [provisioning of a new Azure Database for PostgreSQL flexible server](https://portal.azure.com/#view/Microsoft_Azure_OSSDatabases/CreatePostgreSqlFlexibleServerFullBlade), go to the **Business Critical (High availability)** section. Select **Enabled** option in the **Zonal resiliency** section.
 
@@ -321,7 +321,7 @@ When you initiate a forced failover, the primary server immediately goes down an
 
 ### [Portal](#tab/portal-forced-failover)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server that has high availability enabled.
 
@@ -389,7 +389,7 @@ This failover operation provides the least downtime, because it performs a grace
 
 ### [Portal](#tab/portal-planned-failover)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server that has high availability enabled.
 

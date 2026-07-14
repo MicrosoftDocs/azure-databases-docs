@@ -1,23 +1,19 @@
 ---
 title: Retrieval Foundations - Vector, Full-Text, and Hybrid Search in Azure HorizonDB
 description: Explore vector, full-text, and hybrid search in Azure HorizonDB, and learn how to optimize search performance and enhance relevance with semantic reranking and knowledge graphs.
+#customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-search
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a user, I want to understand the retrieval techniques available in Azure HorizonDB — vector, full-text, and hybrid search — and learn how to combine them for optimal search relevance and performance.
 ---
 
-# Retrieval foundations: vector, full-text, and hybrid search for Azure HorizonDB (Preview)
+# Retrieval foundations: Vector, full-text, and hybrid search in Azure HorizonDB (Preview)
 
 Modern applications demand search that goes beyond simple keyword matching. Users expect search to understand intent, handle synonyms, work across languages, and return the most relevant results - even when the query doesn't share exact words with the content.
 
@@ -64,9 +60,9 @@ Full-text search is keyword-based retrieval that finds documents containing spec
 
 ### How it works
 
-1. **Analyze the text.** Documents are broken into tokens, normalized (lowercased, stemmed to root forms), and common stop words are removed. The result is stored in an inverted index that maps each term to the documents containing it.
-1. **Parse the query.** The user's search query goes through the same normalization, so "running" matches "run" and "ran."
-1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance - accounting for how often a term appears, how rare it's across the corpus, and document length.
+1. **Analyze the text.** The system breaks documents into tokens, normalizes the text (lowercases and stems words to their root forms), and removes common stop words. It stores the result in an inverted index that maps each term to the documents containing it.
+1. **Parse the query.** The user's search query goes through the same normalization process, so "running" matches "run" and "ran."
+1. **Match and rank.** The index identifies documents containing the query terms and ranks them by relevance - accounting for how often a term appears, how rare it is across the corpus, and document length.
 
 ### When to use it
 
@@ -104,7 +100,7 @@ As your dataset grows, search performance becomes critical. Azure HorizonDB prov
 
 ### Vector indexing
 
-Without an index, vector search performs an exact nearest neighbor scan - comparing the query vector against every row. This guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
+Without an index, vector search performs an exact nearest neighbor scan - comparing the query vector against every row. This approach guarantees perfect recall but becomes impractical for large datasets. Approximate Nearest Neighbor (ANN) indexes trade a small amount of recall for dramatically lower latency by searching only a relevant subset of the vector space.
 
 Azure HorizonDB supports three vector index types:
 

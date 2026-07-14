@@ -1,8 +1,8 @@
 ---
 title: Invoke Azure Machine Learning Models from Azure Database for PostgreSQL flexible server
 description: Real-time scoring with online inference endpoints on Azure Machine Learning from Azure Database for PostgreSQL.
-author: denzilribeiro
-ms.author: denzilr
+author: shreyaaithal
+ms.author: shaithal
 ms.reviewer: maghan
 ms.date: 01/20/2026
 ms.service: azure-database-postgresql

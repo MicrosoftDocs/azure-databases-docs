@@ -1,21 +1,21 @@
 ---
 title: Point in Time Restore in Azure HorizonDB
 description: This article describes how to restore to custom restore point an Azure HorizonDB.
+#customer intent: As a user, I want to restore my Azure HorizonDB to a specific point in time, so that I can recover data after an accidental change or deletion.
 author: kabharati
 ms.author: kabharati
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: backup-restore
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to restore to custom restore point an Azure HorizonDB.
 ---
 
 # Restore for Azure HorizonDB (Preview)
 
-This article explains the Point-in-time restore (PITR) feature in Azure HorizonDB.
+This article explains the point-in-time restore (PITR) feature in Azure HorizonDB.
 
-Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. HorizonDB service restores a database to any point in time within the configured retention period using the following process:
+Point-in-time restore (PITR) in Azure HorizonDB creates a new server in the same region as the source server. The HorizonDB service restores a database to any point in time within the configured retention period by using the following process:
 
 1. Restores the most recent snapshot prior to the selected restore time.
 1. Applies write-ahead logs (WAL) from that snapshot forward to the desired restore point to ensure transactional consistency.
@@ -30,7 +30,9 @@ This article provides step-by-step instructions to perform a restore of an Azure
 
 ## Steps to restore to custom restore point
 
-Using the [Azure portal](https://portal.azure.com/):
+### [Portal](#tab/portal-restore-custom-restore-point)
+
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure HorizonDB.
 
@@ -49,7 +51,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
    :::image type="content" source="media/how-to-restore-custom-restore-point/configure-server-page.png" alt-text="Screenshot showing the Compute + storage page." lightbox="media/how-to-restore-custom-restore-point/configure-server-page.png":::
 
-1. Review that all configurations for the new deployment are correctly set, and select **Create**.
+1. Review that all configurations for the new deployment are correct, and select **Create**.
 
    :::image type="content" source="media/how-to-restore-custom-restore-point/restore-point-review-create.png" alt-text="Screenshot showing the location of the Review + create button." lightbox="media/how-to-restore-custom-restore-point/restore-point-review-create.png":::
 
@@ -58,6 +60,35 @@ Using the [Azure portal](https://portal.azure.com/):
    :::image type="content" source="media/how-to-restore-custom-restore-point/restore-point-deployment-progress.png" alt-text="Screenshot that shows the deployment successfully completed of your Azure HorizonDB." lightbox="media/how-to-restore-custom-restore-point/restore-point-deployment-progress.png":::
 
 1. When the deployment completes, you can select **Go to resource**, to get you to the **Overview** page of your new Azure HorizonDB, and start using it.
+
+### [CLI](#tab/cli-restore-custom-restore-point)
+
+[!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
+
+Use the `az rest` command to restore a new Azure HorizonDB cluster from the backups of an existing one.
+
+```azurecli-interactive
+az rest --method PUT \
+  --uri "https://management.azure.com/subscriptions/{targetSubscriptionId}/resourceGroups/{targetResourceGroupName}/providers/Microsoft.HorizonDB/clusters/{targetCluster}?api-version=2026-01-20-preview" \
+  --body '{
+    "location": "{location}",
+    "properties": {
+      "createMode": "PointInTimeRestore",
+      "pointInTimeUTC": "{YYYY-MM-DDTHH:mm:ss.SSSZ}"
+      "sourceClusterResourceId": "/subscriptions/{sourceSubscriptionId}/resourceGroups/{sourceResourceGroupName}/providers/Microsoft.HorizonDB/clusters/{sourceCluster}"
+    }
+  }'
+
+```
+
+If you pass an invalid value for the `pointInTimeUTC` property, you receive the following error:
+
+```output
+"code": "InvalidPointInTimeRestore",
+"message": "The supplied point-in-time restore timestamp is invalid (out of range, malformed, or in the future)."
+```
+
+---
 
 ## Related content
 

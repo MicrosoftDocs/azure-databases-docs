@@ -1,20 +1,21 @@
 ---
-title: Major version upgrade
+title: Major version upgrade in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to perform an in-place major version upgrade of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to perform an in-place major version upgrade of an Azure Database for PostgreSQL.
 author: varun-dhawan
 ms.author: varundhawan
 ms.reviewer: maghan
-ms.date: 06/25/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
+ai-usage: ai-assisted
 ms.custom: sfi-image-nochange
-#customer intent: As a user, I want to learn how to perform an in-place major version upgrade of an Azure Database for PostgreSQL.
 ---
 
-# Major version upgrade
+# Major version upgrade in Azure Database for PostgreSQL flexible server
 
-This article provides step-by-step instructions to perform a major version upgrade of an Azure Database for PostgreSQL flexible server instance.
+This article provides step-by-step instructions to perform a major version upgrade of an Azure Database for PostgreSQL flexible server.
 
 > [!NOTE]  
 > The major version upgrade action is irreversible. Make sure that you perform a point in time restore (PITR) of the production server that you want to upgrade. Test the upgrade in that restored, nonproduction instance before you upgrade the production environment.
@@ -23,7 +24,7 @@ This article provides step-by-step instructions to perform a major version upgra
 
 ### [Portal](#tab/portal-major-version-upgrade)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select the Azure Database for PostgreSQL flexible server that you want to upgrade.
 
@@ -73,7 +74,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-major-version-upgrade)
 
-You can upgrade the major version by using the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade) command.
+Use the [az postgres flexible-server upgrade](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-upgrade) command to upgrade the major version of a server.
 
 ```azurecli-interactive
 az postgres flexible-server upgrade \

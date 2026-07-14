@@ -56,6 +56,18 @@ Benefits of accelerated logs include:
 
 - [Storage autogrow](./concepts-service-tiers-storage.md#storage-autogrow) is enabled by default for a server with accelerated logs and can't be disabled.
 
+- Enabling accelerated logs requires downtime. Plan for a maintenance window before you enable this feature.
+
+- For read replicas or standby high-availability (HA) servers, accelerated logs can increase replication lag by approximately 10 seconds. If your workload requires replication lag consistently below 10 seconds, don't enable accelerated logs on the source server.
+
+  Accelerated logs change the binlog delivery path:
+
+  1. Committed transactions on the primary server write binlog to managed disk.
+  1. Binlog files synchronize at fixed intervals from managed disk to backup blob storage.
+  1. Replicas retrieve binlog data from backup blob storage.
+
+  This periodic synchronization introduces a consistent delay compared to servers without accelerated logs.
+
 ## Availability of accelerated logs by region
 
 The accelerated logs feature is currently available only in the following regions:

@@ -1,67 +1,69 @@
 ---
 title: Planned Maintenance
-description: This article describes planned maintenance in your Azure Database for PostgreSQL flexible server instances.
+description: This article describes planned maintenance in your Azure Database for PostgreSQL flexible servers.
+#customer intent: As a user, I want to understand how planned maintenance works, so that I can prepare my Azure Database for PostgreSQL flexible server for updates.
 author: jasomaning
 ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 04/21/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ai-usage: ai-assisted
+ms.collection: ce-skilling-ai-copilot
+ms.update-cycle: 180-days
 ---
 
 # Planned maintenance for Azure Database for PostgreSQL flexible server
 
-Your Azure Database for PostgreSQL flexible server instance periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
+Your Azure Database for PostgreSQL flexible server periodically undergoes maintenance operations to help keep your managed database secure, stable, and up to date. Maintenance can include platform updates, operating system updates, security patches, and PostgreSQL engine updates.
 
 > [!IMPORTANT]  
-> Avoid all server operations (modifications, configuration changes, starting/stopping the server) during Azure Database for PostgreSQL flexible server instance maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
+> Avoid all server operations (modifications, configuration changes, starting or stopping the server) during Azure Database for PostgreSQL flexible server maintenance. Engaging in these activities can lead to unpredictable outcomes and possibly affect server performance and stability. Wait until maintenance concludes before you conduct server operations.
 
 ## Maintenance window
 
 You can schedule maintenance during a specific day of the week, and a time window within that day. Or you can let the system choose a day and a time window for you automatically.
 
-The system sends maintenance notifications 5 calendar days in advance, so that you have ample time to prepare. The system also informs you about when maintenance starts and when it successfully finishes.
+The system sends maintenance notifications five calendar days in advance, so that you have ample time to prepare. The system also informs you about when maintenance starts and when it successfully finishes.
 
 You can receive notifications about upcoming scheduled maintenance through:
 
 - Email to a specific address.
 - Email to an Azure Resource Manager role.
 - Text message to mobile devices.
-- Push notification to an Azure app.
+- Push notification to an Azure application.
 - Voice message.
 
-When you're specifying preferences for the maintenance schedule, you can choose between a custom schedule and a system managed schedule. If you opt for a custom schedule, you can specify a day of the week and a time window. But if you select a system managed schedule, the system chooses a day for you. And within that day, it chooses a one hour time window, between 11:00 PM and 7:00 AM in your server region's time. You can configure different maintenance schedules for each of your Azure Database for PostgreSQL flexible server instance.
+When you specify preferences for the maintenance schedule, choose between a custom schedule and a system managed schedule. If you opt for a custom schedule, specify a day of the week and a time window. But if you select a system managed schedule, the system chooses a day for you. And within that day, it chooses a one-hour time window, between 11:00 PM and 7:00 AM in your server region's time. You can configure different maintenance schedules for each of your Azure Database for PostgreSQL flexible server.
 
 > [!IMPORTANT]  
-> Normally, the interval between successful scheduled maintenance events for a server is, at least, 30 days. But for a critical emergency update, such as a severe vulnerability, the notification window could be shorter than five days or even be omitted. The critical update might be applied to your server, even if the system performed scheduled maintenance in the last 30 days.
+> Normally, the interval between successful scheduled maintenance events for a server is at least 30 days. But for a critical emergency update, such as a severe vulnerability, the notification window can be shorter than five days or even be omitted. The critical update might be applied to your server, even if the system performed scheduled maintenance in the last 30 days.
 
-You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure Database for PostgreSQL flexible server instance and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings become effective upon successful completion of the next scheduled maintenance.
+You can update your scheduled maintenance settings at any time. If maintenance is scheduled for your Azure Database for PostgreSQL flexible server and you update your scheduled maintenance preferences, the current rollout isn't reprogrammed. It proceeds at the day and time it was scheduled already. Changes to scheduled maintenance settings take effect upon successful completion of the next scheduled maintenance.
 
 ## System-managed Windows (SMW) vs. Custom Maintenance Windows (CMW)
 
-You can define a system-managed schedule or a custom schedule for each Azure Database for PostgreSQL flexible server instance in your Azure subscription:
+For each Azure Database for PostgreSQL flexible server in your Azure subscription, you can define a system-managed schedule or a custom schedule:
 
-- With a system-managed schedule, the system chooses any one hour window between 11:00 PM and 7:00 AM in your server region's time.
-- With a custom schedule, you can specify your maintenance window for the server, by choosing the day of the week and the start time of a one hour time window.
+- With a system-managed schedule, the system chooses any one-hour window between 11:00 PM and 7:00 AM in your server region's time.
+- With a custom schedule, you specify your maintenance window for the server by choosing the day of the week and the start time of a one-hour time window.
 
-Scheduled maintenance occurs first on servers that are configured with system managed schedules. Servers with custom schedules follow after, at least, seven days within a region. To receive early updates for development and test servers, use a system-managed schedule. This schedule choice allows early testing and issue resolution, before updates reach production servers with custom schedules.
+Scheduled maintenance occurs first on servers that are configured with system-managed schedules. Servers with custom schedules follow after, at least, seven days within a region. To receive early updates for development and test servers, use a system-managed schedule. This schedule choice allows early testing and issue resolution, before updates reach production servers with custom schedules.
 
-Updates for custom-schedule servers begin seven days later, during a defined maintenance window. After you're notified, you can't defer updates. We advise that you use custom schedules for production environments only.
+Updates for custom-schedule servers begin seven days later, during a defined maintenance window. After you're notified, you can't defer updates. Use custom schedules for production environments only.
 
-In rare cases, the system can cancel some maintenance events, or some events can fail to finish successfully. If an update fails, the process is rolled back, and your server restored to the previous version of the binaries. The server might still restart during the maintenance window.
+In rare cases, the system cancels some maintenance events, or some events fail to finish successfully. If an update fails, the process rolls back, and your server restores to the previous version of the binaries. The server might still restart during the maintenance window.
 
 If an update is canceled or failed, the system generates a notification about the canceled or failed maintenance event. The next attempt to perform maintenance is scheduled according to your current schedule settings, and you receive a notification about it 5 calendar days in advance.
 
-## Considerations and limitations for Planned Maintenance
+## Considerations and limitations for planned maintenance
 
-Some considerations to keep in mind during monthly planned maintenance:
+Keep these considerations in mind during monthly planned maintenance:
 
-- Monthly maintenance is impactful and they involve some downtime.
+- Monthly maintenance is impactful and involves some downtime.
 - Downtime depends on the transactional load on the server at the time of maintenance.
-- Once maintenance is scheduled, any changes to the maintenance settings will apply only to the next maintenance cycle, not the current one.
+- Once you schedule maintenance, any changes to the maintenance settings apply only to the next maintenance cycle, not the current one.
 
 ## View Upcoming Maintenance
 
@@ -197,7 +199,7 @@ Customers might notice a slight increase in restart time (5-8 minutes) when pend
 Customers running multiple Azure Databases for PostgreSQL servers may receive several separate notifications for the same planned maintenance event, making maintenance tracking more difficult. To reduce this overhead, Azure Database for PostgreSQL now consolidates planned maintenance notifications for multiple servers in the same region into a single notification. This helps reduce notification fatigue and makes it easier to track upcoming maintenance while maintaining visibility into impacted resources.
 
 > [!NOTE] 
-> If you have configured a service health alert, you'll receive an email or Azure mobile app notification alerting you to upcoming planned maintenance in a region. For consolidated maintenance, a **single notification/email** is sent to inform you of upcoming maintenance in a region and another notification sent when maintenance is completed in the region. If maintenance is canceled for the region, you'll receive a 3rd notification/email. You don't receive a notification/email when maintenance is in progress nor complete for each server. 
+> If you configure a service health alert, you receive an email or Azure mobile application notification alerting you to upcoming planned maintenance in a region. For consolidated maintenance, a **single notification/email** is sent to inform you of upcoming maintenance in a region and another notification sent when maintenance is completed in the region. If maintenance is canceled for the region, you receive a third notification/email. You don't receive a notification/email when maintenance is in progress nor complete for each server. 
 
 To view planned maintenance, select View in Azure Service Health within your maintenance notification email.
 

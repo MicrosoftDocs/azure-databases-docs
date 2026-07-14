@@ -1,23 +1,19 @@
 ---
 title: Build AI Agents with Azure HorizonDB
 description: Learn what AI agents are, why databases and PostgreSQL are essential for agent memory and knowledge, and how to build intelligent agents with Azure HorizonDB.
+#customer intent: As a developer building AI applications, I want to understand what AI agents are so that I can decide whether they fit my use case.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-agents
 ms.topic: concept-article
-ms.collection:
-  - ce-skilling-ai-copilot
+ms.collection: ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a user, I want to understand what AI agents are, why databases are essential for agents, and how Azure HorizonDB supports agent memory, knowledge retrieval, and tool integration for building scalable AI agents.
 ---
 
-# Build AI agents for Azure HorizonDB (Preview)
+# Build AI agents in Azure HorizonDB (Preview)
 
 AI agents are transforming how applications interact with data. Unlike traditional applications that follow fixed logic, agents combine large language models (LLMs) with external tools, memory, and planning to autonomously reason through complex tasks. Azure HorizonDB provides the unified data layer that agents need: persistent memory, knowledge retrieval, and scalable storage, all inside a single PostgreSQL database.
 

@@ -98,7 +98,7 @@ Saved passwords are associated with the specific connection and are never stored
 Microsoft Entra authentication (formerly Azure Active Directory) provides token-based, passwordless authentication for Azure Database for PostgreSQL flexible server. The dialog labels this option **Entra Auth**.
 
 > [!NOTE]  
-> Entra authentication requires an Azure Database for PostgreSQL flexible server instance with Entra authentication enabled. See the [Microsoft Entra authentication with Azure Database for PostgreSQL](../../security/security-entra-concepts.md) for configuration details.
+> Entra authentication requires an Azure Database for PostgreSQL flexible server with Entra authentication enabled. See the [Microsoft Entra authentication with Azure Database for PostgreSQL](../../security/security-entra-concepts.md) for configuration details.
 
 To connect with Entra authentication:
 

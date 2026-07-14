@@ -1,17 +1,17 @@
 ---
 title: View Installed Extensions in Azure HorizonDB
 description: This article describes how to view installed extensions in Azure HorizonDB.
+#customer intent: As a user , I want to view the extensions installed on my database, so that I can verify my environment is configured correctly.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to view installed extensions in an Azure HorizonDB instance.
 ---
 
-# View installed extensions for Azure HorizonDB (Preview)
+# View installed extensions in Azure HorizonDB (Preview)
 
 You might want to view the extensions that are installed in an Azure HorizonDB instance, and their corresponding versions.
 

@@ -1,17 +1,18 @@
 ---
-title: Schedule maintenance
-description: This article describes how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
-author: techlake
-ms.author: hganten
+title: Schedule maintenance in Azure Database for PostgreSQL Flexible Server
+description: This article describes how to schedule maintenance in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
+author: jasomaning
+ms.author: jasomaning
 ms.reviewer: maghan
-ms.date: 06/09/2025
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: configuration
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to schedule maintenance of an Azure Database for PostgreSQL flexible server.
+ai-usage: ai-assisted
 ---
 
-# Schedule maintenance
+# Schedule maintenance in Azure Database for PostgreSQL flexible server
 
 You can specify scheduled maintenance options for each Azure Database for PostgreSQL flexible server in your Azure subscription. Options include the type of scheduled maintenance and notification settings for upcoming and finished maintenance events.
 
@@ -19,7 +20,7 @@ You can specify scheduled maintenance options for each Azure Database for Postgr
 
 ### [Portal](#tab/portal-maintenance-settings)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -89,7 +90,7 @@ az postgres flexible-server update \
 ---
 ## Steps to view upcoming maintenance
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
  
@@ -105,7 +106,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Steps to reschedule maintenance to a future date
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -149,7 +150,7 @@ Rescheduling is available only for flexible servers that are already on a custom
 
 ## Steps to apply maintenance on demand
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -173,7 +174,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ## Steps to view maintenance history
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 

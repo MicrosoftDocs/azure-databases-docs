@@ -1,19 +1,17 @@
 ---
-title: Enable and use DiskANN
-description: This article describes how to enable DiskANN for improved semantic similarity search for Retrieval Augmented Generation (RAG) on an Azure Database for PostgreSQL flexible server.
+title: Enable and Use DiskANN in Azure Database for PostgreSQL Flexible Server
+description: This article describes how to enable DiskANN for improved semantic similarity search for Retrieval Augmented Generation (RAG) in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 01/25/2025
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
-ms.custom:
-  - build-2025
-# customer intent: As a user, I want to learn how to enable and use DiskANN extension in an Azure Database for PostgreSQL.
 ---
 
-# Enable and use DiskANN extension
+# Enable and use DiskANN extension in Azure Database for PostgreSQL flexible server
 
 DiskANN is a scalable approximate nearest neighbor search algorithm for efficient vector search at any scale. It offers high recall, high queries per second, and low query latency, even for billion-point datasets. Those characteristics make it a powerful tool for handling large volumes of data.
 
@@ -23,9 +21,9 @@ The `pg_diskann` extension adds support for using DiskANN for efficient vector i
 
 ## Enable pg_diskann
 
-To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server instance, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions) at the instance level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
+To use the `pg_diskann` extension on your Azure Database for PostgreSQL flexible server, you need to [allow the extension](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server) at the server level. Then you need to [create the extension](../extensions/how-to-create-extensions.md) on each database in which you want to use the functionality provided by the extension.
 
-Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
+Because `pg_diskann` has a dependency on the [`vector`](../extensions/concepts-extensions-versions.md#vector) extension, either you [allow](../extensions/how-to-allow-extensions.md#allow-extensions-in-azure-database-for-postgresql-flexible-server) and [create](../extensions/how-to-create-extensions.md) the `vector` extension in the same database, and the run the following command:
  
 ```sql
 CREATE EXTENSION IF NOT EXISTS pg_diskann;
@@ -45,7 +43,7 @@ DROP EXTENSION IF EXISTS pg_diskann;
 
 ## Use the diskann index access method
 
-Once the extension is installed, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
+After you install the extension, you can create a `diskann` index on a table column that contains vector data. For example, to create an index on the `embedding` column of the `demo` table, use the following command:
 
 ```sql
 CREATE TABLE demo (
@@ -64,9 +62,9 @@ INSERT INTO demo (embedding) VALUES
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
-Once the index is created, you can run queries to find the nearest neighbors.
+After you create the index, you can run queries to find the nearest neighbors.
 
-Following query finds the 5 nearest neighbors to the vector `[2.0, 3.0, 4.0]`:
+The following query finds the five nearest neighbors to the vector `[2.0, 3.0, 4.0]`:
 
 ```sql
 SELECT id, embedding
@@ -75,7 +73,7 @@ ORDER BY embedding <=> '[2.0, 3.0, 4.0]'
 LIMIT 5;
 ```
 
-Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use it, execute the following command:
+Postgres automatically decides when to use the DiskANN index. If it chooses not to use the index in a scenario in which you want it to use the index, execute the following command:
 
 ```sql
 -- Explicit Transcation block to force use for DiskANN index.
@@ -87,16 +85,16 @@ COMMIT;
 ```
 
 > [!IMPORTANT]
-> Setting `enable_seqscan` to off, it discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disable using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. Notice that if the query involves other tables, the setting also discourages the use of sequential scans in all of them.
+> Setting `enable_seqscan` to off discourages the planner from using the query planner's use of sequential scan plan if there are other methods available. Because it's disabled by using the `SET LOCAL` command, the setting takes effect for only the current transaction. After a COMMIT or ROLLBACK, the session level setting takes effect again. If the query involves other tables, the setting also discourages the use of sequential scans in all of them.
 
 ## Scale efficiently with Quantization (Preview)
 
-DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  DiskANN using PQ can keep more data in memory, reducing the need to access slower storage, as well as using less compute when comparing compressed vectors. **This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)**. 
+DiskANN uses product quantization (PQ) to dramatically reduce the memory footprint of the vectors. Unlike other quantization techniques, the PQ algorithm can compress vectors more effectively, significantly improving performance.  By using PQ, DiskANN can keep more data in memory, reduce the need to access slower storage, and use less compute when comparing compressed vectors. **This results in better performance and significant cost savings when working with larger amounts of data (> 1 million rows)**. 
 
 > [!IMPORTANT]
 > Product quantization support in DiskANN is available starting from **pg_diskann v0.6 and above**.
 
-To reduce the size of your index and fit more data into memory, you can utilize PQ:
+To reduce the size of your index and fit more data into memory, use PQ:
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann(embedding vector_cosine_ops) 
 WITH(
@@ -105,15 +103,15 @@ WITH(
 ```
 
 ### Improve accuracy when using PQ with vector reranking
-Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with Product Quantization (PQ) to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (e.g., cosine similarity or Euclidean distance). This technique is **not** the same as [reranking using a ranking model](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-the-semantic-ranking-solution-for-azure-database-for-postgresql/4298781).
+Reranking with full vectors is a technique used in approximate nearest neighbor (ANN) search systems like DiskANN with Product Quantization (PQ) to improve result accuracy by reordering the top-N retrieved candidates using the original, uncompressed (full-precision) vectors. This reranking technique is based purely on exact vector similarity metrics (for example, cosine similarity or Euclidean distance). This technique is **not** the same as [reranking using a ranking model](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-the-semantic-ranking-solution-for-azure-database-for-postgresql/4298781).
 
-To balance speed and precision in vector similarity search, a two-step reranking strategy can be implemented when querying with DiskANN and product quantization to improve accuracy.
+To balance speed and precision in vector similarity search, implement a two-step reranking strategy when querying with DiskANN and product quantization to improve accuracy.
 
 1. **Initial Approximate Search**: The inner query uses DiskANN to retrieve the top 50 approximate nearest neighbors based on cosine distance between the stored embeddings and the query vector. This step is fast and efficient, leveraging DiskANN’s indexing capabilities.
 
-2. **Precise Reranking**: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
+1. **Precise Reranking**: The outer query reorders those 50 results by their actual computed distance and returns the top 10 most relevant matches:
 
-Here is an example of reranking using this 2 step approach:
+Here's an example of reranking using this two-step approach:
 ```sql
 SELECT id
 FROM (
@@ -126,17 +124,17 @@ ORDER BY t.distance
 LIMIT 10;
 ```
 > [!NOTE]
-> **%s** should be replace by the query vector. You can use [azure_ai](../azure-ai/generative-ai-azure-openai.md) to create a query vector directly in Postgres.
+> Replace **%s** with the query vector. You can use [azure_ai](../azure-ai/generative-ai-azure-openai.md) to create a query vector directly in Postgres.
 
 This approach balances speed (via approximate search) and accuracy (via full vector reranking), ensuring high-quality results without scanning the entire dataset. 
 
 ### Support for high dimension embeddings
 Advanced Generative AI applications often rely on high-dimensional embedding models such as *text-embedding-3-large* to achieve superior accuracy. However, traditional indexing methods like [HNSW in pgvector](https://github.com/pgvector/pgvector?tab=readme-ov-file#hnsw) are limited to vectors with up to 2,000 dimensions, which restricts the use of these powerful models.
 
-Starting in pg_diskann v0.6 and above, DiskANN now supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
+Starting in pg_diskann v0.6 and later, DiskANN supports indexing vectors with up to 16,000 dimensions, significantly expanding the scope for high-accuracy AI workloads.
 
 > [!IMPORTANT]
-> Product Quantization must be turned on to leverage high-dimensional support.
+> Turn on Product Quantization to leverage high-dimensional support.
 
 **Recommended settings:**
 - `product_quantized`: Set to true
@@ -146,27 +144,27 @@ Starting in pg_diskann v0.6 and above, DiskANN now supports indexing vectors wit
 This enhancement enables scalable, efficient search across large vector datasets while maintaining high recall and precision.
 
 ## Speed up index build
-There are a few ways we recommend to improve your index build times.
+To improve your index build times, try the following recommendations.
 
-### Using more memory
-To speed up the creation of the index, you can increase the memory allocated on your Postgres instance for the index build. The memory usage can be specified through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter. 
+### Use more memory
+To speed up the creation of the index, increase the memory allocated on your PostgreSQL server for the index build. Specify the memory usage through the [`maintenance_work_mem`](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAINTENANCE-WORK-MEM) parameter. 
 
 ```sql
 -- Set the parameters
 SET maintenance_work_mem = '8GB'; -- Depending on your resources
 ```
 
-Then, `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
+The `CREATE INDEX` command uses the specified work memory, depending on the available resources, to build the index.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
 > [!TIP] 
-> You can scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
+> Scale up your memory resources during index build to improve indexing speed, then scale back down when indexing is complete.
 
 ### Using parallelization
-To speed up the creation of the index, you can use parallel workers. The number of workers can be specified through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement, when creating the table. And it can be adjusted later using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
+To speed up the creation of the index, use parallel workers. Specify the number of workers through the `parallel_workers` storage parameter of the [`CREATE TABLE`](https://www.postgresql.org/docs/current/sql-createtable.html#RELOPTION-PARALLEL-WORKERS) statement when creating the table. You can adjust this number later by using the `SET` clause of the [`ALTER TABLE`](https://www.postgresql.org/docs/current/sql-altertable.html#SQL-ALTERTABLE-DESC-SET-STORAGE-PARAMETER) statement.
 
 ```sql
 CREATE TABLE demo (
@@ -176,19 +174,19 @@ CREATE TABLE demo (
 ALTER TABLE demo SET (parallel_workers = 8);
 ```
 
-Then, `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
+The `CREATE INDEX` command uses the specified number of parallel workers, depending on the available resources, to build the index.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_idx ON demo USING diskann (embedding vector_cosine_ops)
 ```
 
 > [!IMPORTANT]
-> The leader process cannot participate in parallel index builds.
+> The leader process can't participate in parallel index builds.
 
-If you want to create the index by using parallel workers, you also need to set `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](../parameters/concepts-parameters.md#resource-usage--asynchronous-behavior).
+If you want to create the index by using parallel workers, set the `max_parallel_workers`, `max_worker_processes`, and `max_parallel_maintenance_workers` parameters accordingly. For more information about these parameters, see [parameters that control resource usages and asynchronous behavior](../parameters/concepts-parameters.md#resource-usage--asynchronous-behavior).
 
 
-You can set these parameters at different granularity levels. For example, to set them at session level, you can run the following statements:
+Set these parameters at different granularity levels. For example, to set them at the session level, run the following statements:
 
 ```sql
 -- Set the parameters
@@ -200,21 +198,21 @@ SET max_parallel_maintenance_workers = 4;
 To learn about other options to configure these parameters in Azure Database for PostgreSQL flexible server, see [Configure parameters](../parameters/how-to-parameters-list-all.md).
 
 > [!NOTE] 
-> The max_worker_processes parameter requires a server restart to take effect.
+> The `max_worker_processes` parameter requires a server restart to take effect.
 
 If the configuration of those parameters and the available resources on the server don't permit launching the parallel workers, PostgreSQL automatically falls back to create the index in the nonparallel mode.
 
 ## Configuration parameters
 
-When creating a `diskann` index, you can specify various parameters to control its behavior. 
+When you create a `diskann` index, specify various parameters to control its behavior. 
 
 ### Index parameters
 
-- `max_neighbors`: Maximum number of edges per node in the graph (Defaults to 32). A higher value can improve the recall up to a certain point.
-- `l_value_ib`: Size of the search list during index build (Defaults to 100). A higher value makes the build slower, but the index would be of higher quality.
-- `product_quantized`: Enables product quantization for more efficient search (Defaults to false).
-- `pq_param_num_chunks`: Number of chunks for product quantization (Defaults to 0). 0 means it is determined automatically, based on embedding dimensions. It is recommended to use 1/3 of the original embedding dimensions.
-- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on (Defaults to 0). 0 means it is determined automatically, based on table size.
+- `max_neighbors`: Maximum number of edges per node in the graph. The default value is 32. A higher value can improve the recall up to a certain point.
+- `l_value_ib`: Size of the search list during index build. The default value is 100. A higher value makes the build slower, but the index is of higher quality.
+- `product_quantized`: Enables product quantization for more efficient search. The default value is false.
+- `pq_param_num_chunks`: Number of chunks for product quantization. The default value is 0, which means the system automatically determines the value based on embedding dimensions. Use one-third of the original embedding dimensions.
+- `pq_param_training_samples`: Number of vectors to train the PQ pivot table on. The default value is 0, which means the system automatically determines the value based on table size.
 
 ```sql
 CREATE INDEX demo_embedding_diskann_custom_idx ON demo USING diskann (embedding vector_cosine_ops)
@@ -233,13 +231,13 @@ WITH (
 
     Configurations for `diskann.iterative_search`:
 
-    - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. Might cause the results to be out of order. 
+    - `relaxed_order` (default): Lets diskann iteratively search the graph in batches of `diskann.l_value_is`, until the desired number of tuples, possibly limited by `LIMIT` clause, are yielded. This option might cause the results to be out of order. 
 
-    - `strict_order`: Similar to `relaxed_order`, lets diskann iteratively search the graph, until the desired number of tuples are yielded. However, it ensures that the results are returned in strict order sorted by distance. 
+    - `strict_order`: Similar to `relaxed_order`, but it ensures that the results are returned in strict order sorted by distance. 
 
-    - `off`: Uses noniterative search functionality, which means that it attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
+    - `off`: Uses noniterative search functionality. It attempts to fetch `diskann.l_value_is` tuples in one step. Noniterative search can only return a maximum of `diskann.l_value_is` vectors for a query, regardless of the `LIMIT` clause or the number of tuples that match the query.
 
-    To change the search behavior to` strict_order`, for all queries executed in the current session, run the following statement:
+    To change the search behavior to `strict_order` for all queries executed in the current session, run the following statement:
 
     ```sql
     SET diskann.iterative_search TO 'strict_order';
@@ -255,9 +253,9 @@ WITH (
     ```
 
 
-* `diskann.l_value_is`: L value for index scanning (Defaults to 100). Increasing the value improves recall but might slow down queries.
+* `diskann.l_value_is`: L value for index scanning (defaults to 100). Increasing the value improves recall but might slow down queries.
 
-    To change the L value for index scanning to 20, for all queries executed in the current session, run the following statement:
+    To change the L value for index scanning to 20 for all queries executed in the current session, run the following statement:
 
     ```sql
     SET diskann.l_value_is TO 20;
@@ -291,23 +289,23 @@ WITH (
 | >50M | Query time | `diskann.l_value_is` | 100 |
 
 > [!NOTE]
-> These parameters might vary depending on the specific dataset and use case. Users might have to experiment with different parameter values, to find the optimal settings for their particular scenario.
+> These parameters might vary depending on the specific dataset and use case. You might need to experiment with different parameter values to find the optimal settings for your particular scenario.
 
 ## CREATE INDEX and REINDEX progress
 
-With PostgreSQL 12 and newer, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
+Starting with PostgreSQL 12, you can use [`pg_stat_progress_create_index`](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PROGRESS-REPORTING) to check the progress of the CREATE INDEX or REINDEX operations.
 
 ```sql
 SELECT phase, round(100.0 * blocks_done / nullif(blocks_total, 0), 1) AS "%" FROM pg_stat_progress_create_index;
 ```
 
-To learn more about the possible phases through which a CREATE INDEX or REINDEX operation goes through, see [CREATE INDEX phases](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PHASES). 
+To learn more about the possible phases through which a CREATE INDEX or REINDEX operation goes, see [CREATE INDEX phases](https://www.postgresql.org/docs/current/progress-reporting.html#CREATE-INDEX-PHASES). 
 
 ### Selecting the index access function
 
-The vector type allows you to perform three types of searches on the stored vectors. You need to select the correct access function for your index, so that the database can consider your index when executing your queries.
+The vector type supports three types of searches on the stored vectors. Select the correct access function for your index so the database can consider your index when executing your queries.
 
-`pg_diskann` supports following distance operators
+`pg_diskann` supports the following distance operators:
 - `vector_l2_ops`: `<->` Euclidean distance
 - `vector_cosine_ops`: `<=>` Cosine distance
 - `vector_ip_ops`: `<#>` Inner Product
@@ -315,11 +313,11 @@ The vector type allows you to perform three types of searches on the stored vect
 ## Troubleshooting
 
 **Error: `assertion left == right failed left: 40 right: 0`**:
-- DiskANN GA version, **v0.6.x introduces breaking changes** in the index metadata format. Indexes created with **v0.5.x are not forward-compatible** with v0.6.x insert operations. Attempting to insert into a table with an outdated index will result in an error, even if the index appears valid.
+- DiskANN GA version, **v0.6.x introduces breaking changes** in the index metadata format. Indexes created with **v0.5.x aren't forward-compatible** with v0.6.x insert operations. If you try to insert into a table with an outdated index, you get an error, even if the index appears valid.
 
-- When you encounter this error, **you can resolve by:**
+- When you encounter this error, **resolve it by:**
     - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
-    - **Option 2:** Rebuild the Index
+    - **Option 2:** Rebuilding the index.
 
         ```sql
         DROP INDEX your_index_name;
@@ -329,7 +327,7 @@ The vector type allows you to perform three types of searches on the stored vect
 
 **Error: `diskann index needs to be upgraded to version 2...`**:
 
-- When you encounter this error, you can resolve by:
+- When you encounter this error, resolve it by:
     - **Option 1:** Executing `REINDEX` or `REDINDEX CONCURRENTLY` statement on the index. 
     - **Option 2:** Because `REINDEX` might take a long time, the extension also provides a user-defined function called `upgrade_diskann_index()`, which upgrades your index faster, when possible.
 

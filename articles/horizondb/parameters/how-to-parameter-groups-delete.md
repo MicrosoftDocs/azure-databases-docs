@@ -1,25 +1,25 @@
 ---
 title: Delete Parameter Groups in Azure HorizonDB
 description: This article describes how to delete parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to delete unused parameter groups in Azure HorizonDB, so that I can keep my resources clean and organized.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to delete parameter groups in Azure HorizonDB.
 ---
 
 # Delete parameter groups in Azure HorizonDB (Preview)
 
-If you consider that an existing parameter group isn't needed any longer, you can delete it. The operation is irreversible. When attempting to delete a parameter group that is connected to some cluster, the operation fails.
+If you no longer need an existing parameter group, you can delete it. This operation is irreversible. When you try to delete a parameter group that's connected to a cluster, the operation fails.
 
 ## Steps to delete parameter groups
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-delete-parameter-groups)
 
-Using the [Azure portal](https://portal.azure.com):
+Use the [Azure portal](https://portal.azure.com):
 
 1. Browse the [**Azure HorizonDB (Preview) parameter groups**](https://ms.portal.azure.com/#browse/Microsoft.HorizonDB%2F2FparameterGroups).
 
@@ -48,7 +48,7 @@ Using the [Azure portal](https://portal.azure.com):
 
     :::image type="content" source="./media/how-to-delete-parameter-groups/notification-deleted.png" alt-text="Screenshot that shows the notification that indicates the deletion of the parameter group completed successfully." lightbox="./media/how-to-delete-parameter-groups/notification-deleted.png":::
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-delete-parameter-groups)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 

@@ -1,26 +1,24 @@
 ---
-title: Semantic Reranking with the Rank () Function
+title: Semantic Reranking with the Rank() Function in Azure HorizonDB
 description: Understand why semantic reranking improves search relevance, and use the azure_ai.rank() function to add a cross-encoder reranking stage to vector, full-text, or hybrid search in Azure HorizonDB.
+#customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 author: shreyaaithal
 ms.author: shaithal
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: ai-functions
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-# customer intent: As a user, I want to understand why and how to perform semantic reranking for vector search in Azure HorizonDB.
 ---
 
-# Semantic reranking with the rank() function for Azure HorizonDB (Preview)
+# Semantic reranking with the rank() function in Azure HorizonDB (Preview)
 
 Vector search retrieves results that are semantically close to a query, but "close" in embedding space doesn't always mean "relevant" to the user's intent. Synonyms, intent shifts, long-tail phrasing, and domain-specific nuance can cause the most relevant document to rank third or tenth instead of first. Users judge results by how well they match their intent, not by raw distance scores.
 
-**Semantic reranking** addresses this. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescores each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing more accurate relevance scores.
+**Semantic reranking** addresses this problem. After an initial retrieval stage (vector search, full-text search, or hybrid search) returns a broad set of candidates, a **cross-encoder reranker model** rescors each candidate against the original query. Unlike embedding models that encode the query and document separately, a cross-encoder processes the query and document together, capturing fine-grained interactions between them and producing more accurate relevance scores.
 
 The `azure_ai.rank()` function in the `azure_ai` extension brings this capability directly into SQL, so you can add a reranking stage without leaving the database.
 
@@ -36,7 +34,7 @@ A cross-encoder, by contrast, processes the query and document as a **single inp
 
 Cross-encoders are accurate but expensive. Scoring 1 million documents with a cross-encoder at query time is impractical as it would take seconds to minutes per query. That's why production retrieval uses a **two-stage pipeline**:
 
-1. **Stage 1: Retrieve** a broad set of candidates cheaply (vector search, BM25, or hybrid search). This narrows millions of documents down to the top 50-100.
+1. **Stage 1: Retrieve** a broad set of candidates cheaply (vector search, BM25, or hybrid search). This step narrows millions of documents down to the top 50-100.
 1. **Stage 2: Rerank** only those 50-100 candidates with a cross-encoder for precision on the results that matter most.
 
 This pattern gives you the speed of embedding-based retrieval with the accuracy of cross-encoder scoring, at a fraction of the cost of running the cross-encoder over the entire corpus.

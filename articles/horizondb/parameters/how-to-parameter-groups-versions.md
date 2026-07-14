@@ -1,34 +1,34 @@
 ---
 title: List Versions of Parameter Groups in Azure HorizonDB
 description: This article describes how to list the versions of parameter groups in Azure HorizonDB.
+#customer intent: As a user, I want to list the versions of a parameter group in Azure HorizonDB, so that I can track which parameter values changed over time.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: parameters-group
 ms.topic: how-to
-# customer intent: As a user, I want to learn how to list the versions of parameter groups in Azure HorizonDB.
 ---
 
 # List versions of parameter groups in Azure HorizonDB (Preview)
 
 > [!IMPORTANT]  
-> Currently, because updating parameter groups isn't supported, each parameter group can only have one version.
+> Currently, updating parameter groups isn't supported, so each parameter group has only one version.
 
-When parameter groups are updated, a new immutable version is created. Each version contains a snapshot of the parameters at that point in time. This is helpful to determine who, when and which parameters changed their values throughout the lifespan of the parameter group.
+When you update parameter groups, you create a new immutable version. Each version contains a snapshot of the parameters at that point in time. This snapshot helps you track who changed which parameters and when during the parameter group's lifespan.
 
 ## Steps to list versions of parameter groups
 
-### [Portal](#tab/portal-list)
+### [Portal](#tab/portal-list-versions-parameter-group)
 
 [!INCLUDE [no-portal-support](../includes/no-portal-support.md)]
 
-### [CLI](#tab/cli-list)
+### [CLI](#tab/cli-list-versions-parameter-group)
 
 [!INCLUDE [no-native-cli-support](../includes/no-native-cli-support.md)]
 
-You can list the versions of a parameter group using the `az rest` command:
+To list the versions of a parameter group, use the `az rest` command:
 
 ```azurecli-interactive
 az rest --method GET \
@@ -38,9 +38,9 @@ az rest --method GET \
 Replace the placeholders:
 - `{subscriptionId}` with your Azure subscription identifier.
 - `{resourceGroupName}` with your resource group name.
-- `{parameterGroupName}` with the desired parameter group name.
+- `{parameterGroupName}` with the parameter group name you want.
 
-The output that command returns would look like the following:
+The output from this command looks like the following example:
 
 ```json
 ```

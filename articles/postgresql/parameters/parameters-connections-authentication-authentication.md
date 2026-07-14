@@ -4,7 +4,7 @@ description: Connections and Authentication / Authentication parameters for Azur
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 05/05/2025
+ms.date: 07/10/2026
 ms.service: azure-database-postgresql
 ms.subservice: server-parameters
 ms.topic: concept-article
@@ -68,6 +68,5 @@ zone_pivot_groups: postgresql-server-version
 [!INCLUDE [parameters-11-connections-authentication-authentication](./includes/parameters-11-connections-authentication-authentication.md)]
 
 ::: zone-end
-
 
 

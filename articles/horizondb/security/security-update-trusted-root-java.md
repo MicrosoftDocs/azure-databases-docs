@@ -1,10 +1,11 @@
 ---
 title: Update Application Client Certificates in Azure HorizonDB
 description: Learn about updating Java clients using TLS in Azure HorizonDB.
+#customer intent: As a developer connecting to Azure HorizonDB, I want to update the trusted root certificates in my keystore, so that my application can maintain a secure connection.
 author: avnishrastogimsft
 ms.author: avrastog
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.subservice: security
 ms.topic: how-to
@@ -14,22 +15,22 @@ ms.custom:
   - horz-security
 ---
 
-# Update application client certificates for Azure HorizonDB (Preview)
+# Update application client certificates in Azure HorizonDB (Preview)
 
-When connecting applications to Azure HorizonDB, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to an Azure HorizonDB instance.
+When you connect applications to Azure HorizonDB, the application client must install trusted root certificates. The following sections guide you through updating the trusted root certificates for applications, which is a common scenario for applications connecting to an Azure HorizonDB instance.
 
-## Import Root CA Certificates in Java Key Store on the client, for certificate pinning scenarios
+## Import root certificate authority certificates in Java Key Store on the client, for certificate pinning scenarios
 
 Custom-written Java applications use a default keystore, called `cacerts`, which contains trusted certificate authority (CA) certificates. It's also often known as Java trust store. A certificates file named `cacerts` resides in the security properties directory, java.home\lib\security, where java.home is the runtime environment directory (the `jre` directory in the SDK or the top-level directory of the Java™ 2 Runtime Environment).
 You can use following directions to update client root CA certificates for client certificate pinning scenarios with PostgreSQL:
 
-1. Check `cacerts` java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using following command:
+1. Check the `cacerts` Java keystore to see if it already contains required certificates. You can list certificates in Java keystore by using the following command:
 
    ```powershell
      keytool -list -v -keystore ..\lib\security\cacerts > outputfile.txt
    ```
 
-   If the necessary certificates aren't present in the java key store on the client, as can be checked in output, you should proceed with following directions:
+   If the necessary certificates aren't present in the Java key store on the client, as you can check in the output, proceed with the following directions:
 
 1. Make a backup copy of your custom keystore.
 
@@ -93,22 +94,23 @@ public void whenLoadingCacertsKeyStore_thenCertificatesArePresent() {
 }
 ```
 
-## Update Root CA certificates when using clients in Azure App Services, for certificate pinning scenarios
+## Update root certificate authority certificates when using clients in Azure App Services, for certificate pinning scenarios
 
 For Azure App services, connecting to an Azure HorizonDB instance, we can have two possible scenarios on updating client certificates and it depends on how on you're using SSL with your application deployed to Azure App Services.
 
 - New certificates are added to App Service at platform level before changes occur in your Azure HorizonDB instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate), in the Azure App Service documentation.
 - If you're explicitly including the path to SSL certificate file in your code, you would need to download the new certificate, and update the code to use it. A good example of this scenario is when you use custom containers in App Service as described in the [Tutorial: Configure a sidecar container for custom container in Azure App Service](/azure/app-service/tutorial-multi-container-app#configure-database-variables-in-wordpress), in the Azure App Service documentation.
 
-## Update Root CA certificates when using clients in Azure Kubernetes Service (AKS), for certificate pinning scenarios
+## Update root certificate authority certificates when using clients in Azure Kubernetes Service (AKS), for certificate pinning scenarios
 
 If you're trying to connect to the Azure HorizonDB using applications hosted in Azure Kubernetes Services (AKS) and pinning certificates, it's similar to access from a dedicated customer's host environment. Refer to the steps [here](/azure/aks/ingress-tls).
 
-## Update Root CA certificates for .NET (Npgsql) users on Windows, for certificate pinning scenarios
+## Update root certificate authority certificates for .NET (Npgsql) users on Windows, for certificate pinning scenarios
 
-For .NET (Npgsql) users on Windows, connecting to Azure HorizonDB, make sure **all three** Microsoft RSA Root Certificate Authority 2017, DigiCert Global Root G2, and Digicert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
+For .NET (Npgsql) users on Windows connecting to Azure HorizonDB, make sure **all three** Microsoft RSA Root Certificate Authority 2017, DigiCert Global Root G2, and DigiCert Global Root CA all exist in Windows Certificate Store, Trusted Root Certification Authorities. If any certificates don't exist, import the missing certificate.
 
-## Update Root CA certificates for other clients, for certificate pinning scenarios
+
+## Update root certificate authority certificates for other clients, for certificate pinning scenarios
 
 For other PostgreSQL client users, you can merge two CA certificate files using the following format:
 

@@ -1,22 +1,19 @@
 ---
 title: Configure the Azure Storage Extension in Azure HorizonDB
 description: Learn how to configure the Azure Storage extension in an Azure HorizonDB to import and export data.
+#customer intent: As a user, I want to configure the Azure Storage extension in Azure HorizonDB so that I can import and export data between my database and storage accounts.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/06/2026
 ms.service: azure-horizondb
 ms.subservice: extensions-modules
 ms.topic: reference
-ms.custom:
-  - ignite-2024
-  - ignite-2025
-  - sfi-image-nochange
 ---
 
-# Configure the Azure Storage extension for Azure HorizonDB (Preview)
+# Configure the Azure Storage extension in Azure HorizonDB (Preview)
 
-You must follow these steps to be able to use the Azure Storage extension:
+To use the Azure Storage extension, complete the following steps:
 
 1. [Identify Azure Storage accounts](#identify-the-azure-storage-accounts)
 1. [Choose type of authorization](#choose-type-of-authorization)
@@ -27,11 +24,11 @@ You must follow these steps to be able to use the Azure Storage extension:
 
 ## Identify the Azure Storage accounts
 
-Identify the Azure Storage accounts with which you want users of the extension to interact, to import data from or export data to.
+Identify the Azure Storage accounts that you want users of the extension to interact with, to import data from or export data to.
 
 ## Choose type of authorization
 
-For the time being the only type of authorization `azure_storage` extension can use for the requests made against the blob service of each of those Azure Storage accounts is based on Shared Key.
+Currently, the only type of authorization the `azure_storage` extension can use for requests made against the blob service of each of those Azure Storage accounts is based on Shared Key.
 
 To meet the prerequisites, follow the instructions in the corresponding section:
 - [Authorization with Shared Key](#use-authorization-with-shared-key).
@@ -193,12 +190,12 @@ Now you're ready to add the storage accounts with which you want to interact (us
 Check out the list of quickstart examples:
 
 - [Create an Azure Storage account and populate it with data](quickstart-azure-storage-extension.md#create-an-azure-storage-account-and-populate-it-with-data)
-- [Create a table in which data is loaded](quickstart-azure-storage-extension.md#create-a-table-in-which-data-is-loaded)
+- [Create a table in which data is loaded](quickstart-azure-storage-extension.md#create-a-table-in-which-to-load-data)
 - [Add access key of storage account](quickstart-azure-storage-extension.md#add-access-key-of-storage-account)
 - [Grant access to a user or role on the Azure Blob storage reference](quickstart-azure-storage-extension.md#grant-access-to-a-user-or-role-on-the-azure-blob-storage-reference)
 - [List all blobs in a container](quickstart-azure-storage-extension.md#list-all-blobs-in-a-container)
 - [List blobs with a specific name prefix](quickstart-azure-storage-extension.md#list-blobs-with-a-specific-name-prefix)
-- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-using-a-copy-from-statement)
+- [Import data using a COPY FROM statement](quickstart-azure-storage-extension.md#import-data-by-using-a-copy-from-statement)
 - [Export data using a COPY TO statement](quickstart-azure-storage-extension.md#export-data-using-a-copy-to-statement)
 - [Read content from a blob](quickstart-azure-storage-extension.md#read-content-from-a-blob)
 - [Read, filter, and modify content read from a blob](quickstart-azure-storage-extension.md#read-filter-and-modify-content-read-from-a-blob)

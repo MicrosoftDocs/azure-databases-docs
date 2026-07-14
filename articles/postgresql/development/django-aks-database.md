@@ -1,10 +1,11 @@
 ---
 title: "Tutorial: Deploy Django on AKS Cluster by Using Azure CLI"
 description: Learn how to quickly build and deploy Django  on AKS with Azure Database for PostgreSQL flexible server.
+#customer intent: As a full-stack developer, I want to connect my Django app to a PostgreSQL flexible server, so that I can persist my application data in a fully managed database.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 06/03/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: tutorial
@@ -13,7 +14,7 @@ ms.custom:
   - devx-track-azurecli
 ---
 
-# Deploy a Django app on Azure Kubernetes Service with Azure Database for PostgreSQL flexible server
+# Deploy a Django application on Azure Kubernetes Service with Azure Database for PostgreSQL flexible server
 
 In this quickstart, you deploy a Django application on Azure Kubernetes Service (AKS) cluster with Azure Database for PostgreSQL flexible server by using the Azure CLI.
 
@@ -95,9 +96,9 @@ NAME                       STATUS   ROLES   AGE     VERSION
 aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
-## Create a flexible server instance
+## Create a flexible server
 
-Create an Azure Database for PostgreSQL flexible server instance with the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server using service defaults and values from your Azure CLI's local context:
+Create an Azure Database for PostgreSQL flexible server by using the [az postgreSQL flexible-server create](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-create) command. The following command creates a server by using service defaults and values from your Azure CLI's local context:
 
 ```azurecli-interactive
 az postgres flexible-server create --public-access all
@@ -218,7 +219,7 @@ Deploy your image to [Docker hub](https://docs.docker.com/get-started/part3/#cre
 A Kubernetes manifest file defines a desired state for the cluster, such as what container images to run. Create a manifest file named `djangoapp.yaml` and copy in the following YAML definition.
 
 > [!IMPORTANT]  
-> Update the `env` section with your `SERVERNAME`, `YOUR-DATABASE-USERNAME`, and `YOUR-DATABASE-PASSWORD` values for your Azure Database for PostgreSQL flexible server instance.
+> Update the `env` section with your `SERVERNAME`, `YOUR-DATABASE-USERNAME`, and `YOUR-DATABASE-PASSWORD` values for your Azure Database for PostgreSQL flexible server.
 
 ```yaml
 apiVersion: apps/v1
@@ -321,7 +322,7 @@ Now open a web browser to the external IP address of your service (`http://<serv
 
 ## Run database migrations
 
-For any Django application, you need to run a database migration or collect static files. You can run these Django shell commands by using `$ kubectl exec <pod-name> -- [COMMAND]`. Before running the command, you need to find the pod name by using `kubectl get pods`.
+For any Django application, run a database migration or collect static files. Run these Django shell commands by using `$ kubectl exec <pod-name> -- [COMMAND]`. Before running the command, find the pod name by using `kubectl get pods`.
 
 ```bash
 $ kubectl get pods
@@ -334,7 +335,7 @@ NAME                             READY   STATUS          RESTARTS   AGE
 django-app-5d9cd6cd8-l6x4b     1/1     Running              0       2m
 ```
 
-Once you find the pod name, run Django database migrations with the command `$ kubectl exec <pod-name> -- [COMMAND]`. `/code/` is the working directory for the project defined in the `Dockerfile` section above.
+Once you find the pod name, run Django database migrations with the command `$ kubectl exec <pod-name> -- [COMMAND]`. `/code/` is the working directory for the project defined in the `Dockerfile` section.
 
 ```bash
 $ kubectl exec django-app-5d9cd6cd8-l6x4b -- python /code/manage.py migrate

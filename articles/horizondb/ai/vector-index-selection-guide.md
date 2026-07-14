@@ -1,22 +1,19 @@
 ---
 title: Choose the Right Vector Index for Your Workload in Azure HorizonDB
 description: Compare flat, IVFFlat, HNSW, and DiskANN vector indexes in Azure HorizonDB and choose the right one based on dataset size, recall target, update rate, and filter selectivity.
+#customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 author: abeomor
 ms.author: abeomorogbe
 ms.reviewer: maghan
-ms.date: 06/02/2026
+ms.date: 07/07/2026
 ms.service: azure-horizondb
 ms.topic: concept-article
 ms.collection:
   - ce-skilling-ai-copilot
 ms.update-cycle: 180-days
-ms.custom:
-  - build-2026
-ai-usage: ai-assisted
-# customer intent: As a developer choosing a vector index, I want to compare flat, IVFFlat, HNSW, and DiskANN so that I can pick the index that meets my recall, latency, and cost targets.
 ---
 
-# Choose the right vector index for your workload for Azure HorizonDB (Preview)
+# Choose the right vector index for your workload in Azure HorizonDB (Preview)
 
 Azure HorizonDB supports four ways to run vector similarity search: an exact (flat) scan and three approximate nearest-neighbor (ANN) indexes - IVFFlat, HNSW, and DiskANN. The right choice depends on how many vectors you have, how often they change, what recall you need, how much memory you can spend, and how often you filter by metadata.
 
@@ -68,11 +65,11 @@ These examples illustrate the tradeoffs. Always benchmark with your own data, qu
 
 ### 1 million vectors, 1,536 dimensions, mostly read-only
 
-Either HNSW or DiskANN works. Pick HNSW if the index fits comfortably in RAM and the dataset is stable; pick DiskANN if you expect the dataset to keep growing or you plan to run filtered queries.
+Either HNSW or DiskANN works. Pick HNSW if the index fits comfortably in RAM and the dataset is stable. Pick DiskANN if you expect the dataset to keep growing or you plan to run filtered queries.
 
 ### 10 million vectors, 1,536 dimensions, daily inserts
 
-Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed; updates are applied in place. See [Recommended configuration of parameters](vector-index-diskann.md#recommended-configuration-of-parameters).
+Use **DiskANN** with `max_neighbors = 64`. Periodic large rebuilds aren't needed because updates are applied in place. See [Recommended configuration of parameters](vector-index-diskann.md#recommended-configuration-of-parameters).
 
 ### 100 million+ vectors, high-dimensional embeddings (3,072+)
 

@@ -1,21 +1,19 @@
 ---
-title: Optimize performance of vector data on Azure Database for PostgreSQL flexible server deployed with pgvector.
-description: Best practices to optimize performance pgvector enabled vector database queries and indexes on Azure Database for PostgreSQL.
+title: Optimize Performance when Using pgvector in Azure Database for PostgreSQL Flexible Server
+description: Best practices to optimize performance pgvector enabled vector database queries and indexes in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to optimize `pgvector` query performance in Azure Database for PostgreSQL flexible server, so that my vector similarity searches return results faster.
 author: mulander
 ms.author: adamwolk
 ms.reviewer: maghan
-ms.date: 04/27/2024
+ms.date: 07/10/2026
 ms.update-cycle: 180-days
 ms.service: azure-database-postgresql
 ms.subservice: extensions
 ms.topic: how-to
 ms.collection: ce-skilling-ai-copilot
-ms.custom:
-  - build-2023
-  - ignite-2023
 ---
 
-# Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server 
+# Optimize performance when using pgvector in Azure Database for PostgreSQL flexible server
 
 The `pgvector` extension adds an open-source vector similarity search to Azure Database for PostgreSQL flexible server.
 

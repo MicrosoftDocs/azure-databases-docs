@@ -1,8 +1,8 @@
 ---
 title: Set up Data Encryption by Using the Azure CLI
 description: Learn how to set up and manage data encryption for Azure Database for MySQL - Flexible Server by using Azure CLI.
-author: SudheeshGH
-ms.author: sunaray
+author: Tameika-MSFT
+ms.author: talawren
 ms.reviewer: maghan, randolphwest
 ms.date: 01/07/2026
 ms.service: azure-database-mysql
