@@ -1,13 +1,15 @@
 ---
-title: "Quickstart: Connect Using Python"
-description: This quickstart provides several Python code samples you can use to connect and query data from an Azure Database for PostgreSQL flexible server instance.
+title: "Quickstart: Use Python to Connect and Query Data in Azure Database for PostgreSQL Flexible Server"
+description: This quickstart provides several Python code samples you can use to connect and query data from an Azure Database for PostgreSQL flexible server.
+#customer intent: As a Python developer new to Azure, I want to connect to an Azure Database for PostgreSQL flexible server, so that I can query data from my application.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 04/07/2026
+ms.date: 07/08/2026
 ms.service: azure-database-postgresql
 ms.subservice: connectivity
 ms.topic: quickstart
+ai-usage: ai-assisted
 ms.custom:
   - mvc
   - mode-api
@@ -19,7 +21,7 @@ ms.devlang: "python"
 
 # Quickstart: Use Python to connect and query data in Azure Database for PostgreSQL flexible server
 
-In this quickstart, you connect to an Azure Database for PostgreSQL flexible server instance by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
+In this quickstart, you connect to an Azure Database for PostgreSQL flexible server by using Python. You then use SQL statements to query, insert, update, and delete data in the database from macOS, Ubuntu Linux, and Windows platforms.
 
 The steps in this article include two authentication methods: Microsoft Entra authentication and PostgreSQL authentication. The **Passwordless** tab shows the Microsoft Entra authentication and the **Password** tab shows the PostgreSQL authentication.
 
@@ -32,22 +34,22 @@ This article assumes that you're familiar with developing using Python, but you'
 ## Prerequisites
 
 - An Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn).
-- An Azure Database for PostgreSQL flexible server instance. To create Azure Database for PostgreSQL flexible server instance, refer to [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server. To create Azure Database for PostgreSQL flexible server, refer to [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 - [Python](https://www.python.org/downloads/) 3.8+.
 - Latest [pip](https://pip.pypa.io/en/stable/installing/) package installer.
 
 ## Add firewall rules for your client workstation
 
-- If you created your Azure Database for PostgreSQL flexible server instance with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server instance. Refer to [Networking](../network/how-to-networking.md).
-- If you created your Azure Database for PostgreSQL flexible server instance with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking](../network/how-to-networking.md).
+- If you created your Azure Database for PostgreSQL flexible server with *Private access (virtual network Integration)*, you need to connect to your server from a resource within the same virtual network as your server. You can create a virtual machine and add it to the virtual network created with your Azure Database for PostgreSQL flexible server. Refer to [Networking](../network/how-to-networking.md).
+- If you created your Azure Database for PostgreSQL flexible server with *Public access (allowed IP addresses)*, you can add your local IP address to the list of firewall rules on your server. Refer to [Networking](../network/how-to-networking.md).
 
 ## Configure Microsoft Entra integration on the server (passwordless only)
 
-If you're following the steps for passwordless authentication, Microsoft Entra authentication must be configured for your server instance, and you must be assigned as a Microsoft Entra administrator on the server instance. Follow the steps in [Configure Microsoft Entra integration](../security/security-entra-configure.md) to ensure that Microsoft Entra authentication is configured and that you're assigned as a Microsoft Entra administrator on your server instance.
+If you're following the steps for passwordless authentication, Microsoft Entra authentication must be configured for your server, and you must be assigned as a Microsoft Entra administrator on the server. Follow the steps in [Configure Microsoft Entra integration](../security/security-entra-configure.md) to ensure that Microsoft Entra authentication is configured and that you're assigned as a Microsoft Entra administrator on your server.
 
 ## Prepare your development environment
 
-Change to a folder where you want to run the code and create and activate a [virtual environment](https://docs.python.org/3/tutorial/venv.html). A virtual environment is a self-contained directory for a particular version of Python plus the other packages needed for that application.
+Change to a folder where you want to run the code. Create and activate a [virtual environment](https://docs.python.org/3/tutorial/venv.html). A virtual environment is a self-contained directory for a particular version of Python plus the other packages needed for that application.
 
 Run the following commands to create and activate a virtual environment:
 
@@ -66,7 +68,7 @@ source .venv/bin/activate
 ```
 
 > [!NOTE]  
-> Ensure the virtual environment is activated before you run any `python -m pip instalL...` commands; using `python -m pip` (not a bare `pip`) ensures packages install into the same interpreter/venv you use to run the examples.
+> Ensure the virtual environment is activated before you run any `python -m pip install...` commands. By using `python -m pip` (not a bare `pip`), you ensure packages install into the same interpreter and virtual environment you use to run the examples.
 
 ---
 
@@ -102,7 +104,7 @@ python -m pip install psycopg
 
 ## Add authentication code
 
-In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server instance.
+In this section, you add authentication code to your working directory and perform any additional steps required for authentication and authorization with your server.
 
 Before you add the authentication code, make sure the required packages for each example are installed.
 
@@ -152,7 +154,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Get database connection information.
 
-   1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server instance name.
+   1. In the [Azure portal](https://portal.azure.com/), search for and select your Azure Database for PostgreSQL flexible server name.
    1. On the server's **Overview** page, copy the fully qualified **Server name**. The fully qualified **Server name** is always of the form *\<my-server-name>.postgres.database.azure.com*.
    1. On the left menu, under **Security**, select **Authentication**. Make sure your account is listed under **Microsoft Entra Admins**. If it isn't, complete the steps in [Configure Microsoft Entra integration on the server (passwordless only)](#configure-microsoft-entra-integration-on-the-server-passwordless-only).
 
@@ -184,7 +186,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Sign in to Azure on your workstation. You can sign in using the Azure CLI, Azure PowerShell, or Azure Developer CLI.
 
-   The authentication code uses [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential) to authenticate with Microsoft Entra ID and get a token that authorizes you to perform operations on your server instance. `DefaultAzureCredential` supports a chain of authentication credential types. Among the credentials supported are credentials that you're signed in to developer tools with like the Azure CLI, Azure PowerShell, or Azure Developer CLI.
+   The authentication code uses [`DefaultAzureCredential`](/python/api/azure-identity/azure.identity.defaultazurecredential) to authenticate with Microsoft Entra ID and get a token that authorizes you to perform operations on your server. `DefaultAzureCredential` supports a chain of authentication credential types. Among the credentials it supports are credentials that you sign in to developer tools by using, such as the Azure CLI, Azure PowerShell, or Azure Developer CLI.
 
 #### [Password](#tab/password)
 
@@ -209,7 +211,7 @@ Optional: create a `requirements.txt` with these entries and install with `pytho
 
 1. Get database connection information.
 
-   Using the [Azure portal](https://portal.azure.com/):
+   Use the [Azure portal](https://portal.azure.com/):
 
    1. From the left-hand menu in Azure portal, select **All resources**, and then search for the server you have created.
 
@@ -263,7 +265,7 @@ For each code example in this article:
 
 1. Save the file in your project folder with a *.py* extension, such as *postgres-insert.py*. For Windows, make sure UTF-8 encoding is selected when you save the file.
 
-1. In your project folder type `python` followed by the filename, for example `python postgres-insert.py`.
+1. In your project folder, type `python` followed by the filename, for example `python postgres-insert.py`.
 
 ## Create a table and insert data
 
