@@ -27,17 +27,17 @@ A few MySQL 8.4 behavior changes require action on your side before or during mi
 
   **Limitation**: MySQL 8.4 removes the `mysql_native_password` authentication plugin. This problem occurs when you use authentication migration and your source has users configured with `mysql_native_password`.
 
-  **Workaround**: Re-create the affected users on the 8.4 target (or on the source before migration) using a supported plugin such as caching_sha2_password.
+  **Workaround**: Re-create the affected users on the 8.4 target (or on the source before migration) by using a supported plugin such as `caching_sha2_password`.
 
-### AUTO_INCREMENT on FLOAT or DOUBLE Columns Is Blocked
+### AUTO_INCREMENT on FLOAT or DOUBLE columns isn't supported
 
-- **Error**: Schema migration fails validation with a clear error identifying the offending column(s).
+- **Error**: Schema migration fails validation with a clear error that identifies the offending columns.
 
-  **Limitation**: MySQL 8.4 removes support for AUTO_INCREMENT on FLOAT and DOUBLE columns (it was deprecated in 8.0). This issue occurs when your source schema has any such columns.
+  **Limitation**: MySQL 8.4 removes support for `AUTO_INCREMENT` on `FLOAT` and `DOUBLE` columns (it was deprecated in 8.0). This problem occurs when your source schema has any such columns.
 
-  **Workaround**: Change the column type to an integer type (INT, BIGINT, and so on) on the source before starting the migration, or drop the AUTO_INCREMENT attribute.
+  **Workaround**: Change the column type to an integer type (`INT`, `BIGINT`, and so on) on the source before starting the migration, or drop the `AUTO_INCREMENT` attribute.
 
-### Wildcard Database Grants Are Deprecated
+### Wildcard database grants are deprecated
 
 - **Error**: DMS migrates wildcard database grants and emits a warning.
 
