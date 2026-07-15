@@ -1,14 +1,14 @@
 ---
-title: Mirroring in Microsoft Fabric
-description: Learn about Mirroring in Microsoft Fabric for Azure Database for PostgreSQL flexible server instances.
+title: Azure Database for PostgreSQL flexible server mirroring in Microsoft Fabric
+description: Learn Azure Database for PostgreSQL flexible server mirroring in Microsoft Fabric.
+#customer intent: As a user, I want to understand how Fabric mirroring works, so that I can decide whether to replicate my PostgreSQL databases into Microsoft Fabric.
 author: scoriani
 ms.author: scoriani
 ms.reviewer: maghan
-ms.date: 04/22/2026
+ms.date: 07/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: database-mirroring
 ms.topic: concept-article
-# customer intent: As a user, I want to learn about how can use Fabric Mirroring for my databases in an Azure Database for PostgreSQL.
 ---
 
 # Azure Database for PostgreSQL flexible server mirroring in Microsoft Fabric
@@ -102,11 +102,11 @@ Next, you need to provide or create a PostgreSQL role for the Fabric service to 
 You can accomplish this task by specifying a [database role](#use-a-database-role) for connecting to your source system.
 
 > [!NOTE]  
-> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL, select the [authentication method](../security/security-overview.md#access-control) that best fits your purposes.
+> Both Entra ID and local database roles are supported to connect Fabric mirroring to Azure Database for PostgreSQL. Select the [authentication method](../security/security-overview.md#access-control) that best fits your purposes.
 
 #### Use a database role
 
-1. Connect to your Azure Database for PostgreSQL using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). Connect with a principal that is a member of the role `azure_pg_admin`.
+1. Connect to your Azure Database for PostgreSQL by using [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-ossdata.vscode-pgsql) or [pgAdmin](https://www.pgadmin.org/). Connect with a principal that is a member of the role `azure_pg_admin`.
 1. Create a PostgreSQL role named `fabric_user`. You can choose any name for this role. Provide your own strong password. Grant the permissions needed for Fabric mirroring in the database. Run the following SQL script to grant the `CREATEDB`, `CREATEROLE`, `LOGIN`, `REPLICATION`, and `azure_cdc_admin` permissions to the new role named `fabric_user`.
 
    ```sql
@@ -120,10 +120,10 @@ You can accomplish this task by specifying a [database role](#use-a-database-rol
    ```
 
 1. The database user you create also needs to be `owner` of the tables to replicate in the mirrored database. This requirement means that the user creates the tables or changes the ownership of those tables by using `ALTER TABLE <table name here> OWNER TO fabric_user;`.
-   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema before. For more information regarding user account management, see Azure Database for PostgreSQL [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
+   - When switching ownership to new user, you might need to grant to that user all privileges on `public` schema first. For more information regarding user account management, see Azure Database for PostgreSQL [user management](../security/security-manage-database-users.md) documentation, PostgreSQL product documentation for [Database Roles and Privileges](https://www.postgresql.org/docs/current/static/user-manag.html), [GRANT Syntax](https://www.postgresql.org/docs/current/static/sql-grant.html), and [Privileges](https://www.postgresql.org/docs/current/static/ddl-priv.html).
 
 > [!IMPORTANT]  
-> Missing one of the previous security configuration steps cause subsequent mirrored operations in Fabric portal to fail with an `Internal error` message.
+> If you miss one of the previous security configuration steps, subsequent mirrored operations in the Fabric portal fail with an `Internal error` message.
 
 ## Parameters
 
@@ -158,9 +158,9 @@ These parameters directly affect Fabric mirroring for Azure Database for Postgre
 
 ## Monitor
 
-Monitoring the Fabric mirroring in Azure Database for PostgreSQL flexible server instances is essential to ensure that the mirroring process runs smoothly and efficiently. By monitoring the status of the mirrored databases, you can identify any potential issues and take corrective actions.
+To ensure the Fabric mirroring in Azure Database for PostgreSQL flexible server instances runs smoothly and efficiently, monitor the process. By monitoring the status of the mirrored databases, you can identify any potential problems and take corrective actions.
 
-You can use several user-defined functions and tables to monitor important CDC metrics in the Azure Database for PostgreSQL flexible server instances and troubleshoot the mirroring process to Fabric.
+Use several user-defined functions and tables to monitor important CDC metrics in Azure Database for PostgreSQL flexible server instances and troubleshoot the mirroring process to Fabric.
 
 ### Monitoring functions
 
@@ -249,8 +249,8 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
         - `point`
         - `polygon`
         - `interval`
-      - The table isn't a view, materialized view, foreign table, toast table, or partitioned table
-      - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring will still work applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this will have significant impact on overall replication performance and on WAL utilization**. We recommend having a primary key or unique index for tables of nontrivial size.
+      - The table isn't a view, materialized view, foreign table, toast table, or partitioned table.
+      - The table has a primary key or a unique, non-nullable, and nonpartial index. If these requisites aren't met, Mirroring still works by applying [replica identity FULL](https://www.postgresql.org/docs/current/logical-replication-publication.html#LOGICAL-REPLICATION-PUBLICATION-REPLICA-IDENTITY), but **this choice significantly affects overall replication performance and WAL utilization**. For tables of nontrivial size, use a primary key or unique index.
     
 ### Tracking tables
 
@@ -274,7 +274,7 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 | snapshot_size | bigint | Total size of the snapshot (in bytes) |
 | total_time | int | Total time(in seconds) taken for the publication |
 
-- **azure_cdc.tracked_batches**: one row for each change batch captured and shipped to Fabric OneLake. Query this table to understand which batch is already captured and uploaded to Fabric OneLake. With the `last_written_lsn` column, you can understand if a given transaction in your source database is already shipped to Fabric.
+- **azure_cdc.tracked_batches**: one row for each change batch captured and shipped to Fabric OneLake. Query this table to understand which batch is already captured and uploaded to Fabric OneLake. By using the `last_written_lsn` column, you can understand if a given transaction in your source database is already shipped to Fabric.
 
 | Name | Postgres Type | Explanation |
 | --- | --- | --- |
@@ -282,7 +282,7 @@ The mirroring function for fabric mirroring in Azure Database for PostgreSQL rep
 | completed_batch_id | bigint | Sequence number(starting from 1) of the batch. Unique per publication |
 | last_written_lsn | pg_lsn | LSN of the last write of this batch |
 
-- **azure_cdc.tracked_tables**: one row for each table tracked across all publications. Has the following fields for all published tables, in all publications. If a table is part of two publications, it would be listed twice.
+- **azure_cdc.tracked_tables**: one row for each table tracked across all publications. It has the following fields for all published tables, in all publications. If a table is part of two publications, it appears twice.
 
 | Name | Postgres Type | Explanation |
 | --- | --- | --- |

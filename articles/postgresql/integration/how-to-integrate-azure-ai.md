@@ -1,11 +1,11 @@
 ---
 title: Integrate Azure AI Capabilities
 description: Integrate Azure AI capabilities into Azure Database for PostgreSQL.
+#customer intent: As a user, I want to install the `azure_ai` extension in my Azure Database for PostgreSQL flexible server, so that I can add AI capabilities directly to my database.
 author: shreyaaithal
 ms.author: shaithal
-ms.reviewer: maghan, carols
-ms.date: 07/10/2026
-ms.update-cycle: 180-days
+ms.reviewer: maghan
+ms.date: 07/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
@@ -18,7 +18,7 @@ The `azure_ai` extension adds the ability to use [large language models (LLMs)](
 
 Generative AI is a form of artificial intelligence in which LLMs are trained to generate original content based on natural language input. By using the `azure_ai` extension, you can use generative AI's capabilities for processing natural language queries directly from the database.
 
-This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server instance by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure Language in Foundry Tools service](/azure/ai-services/language-service/) into your database by using the extension.
+This article showcases adding rich AI capabilities to an Azure Database for PostgreSQL flexible server by using the `azure_ai` extension. It shows how you can integrate both [Azure OpenAI](/azure/ai-services/openai/overview) and the [Azure Language in Foundry Tools service](/azure/ai-services/language-service/) into your database by using the extension.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ This article showcases adding rich AI capabilities to an Azure Database for Post
 
 - A [Language](/azure/ai-services/language-service/overview) resource. If you don't have a Language resource, you can [create one](https://portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) in the Azure portal by following the instructions provided in the [quickstart for summarization](/azure/ai-services/language-service/summarization/custom/quickstart#create-a-new-resource-from-the-azure-portal). You can use the free pricing tier (`Free F0`) to try the service and upgrade later to a paid tier for production.
 
-- An Azure Database for PostgreSQL flexible server instance in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
+- An Azure Database for PostgreSQL flexible server in your Azure subscription. If you don't have this resource, see [Create an Azure Database for PostgreSQL](../configure-maintain/quickstart-create-server.md).
 
 ## Connect to the database by using psql in Azure Cloud Shell
 
@@ -38,7 +38,7 @@ Open [Azure Cloud Shell](https://shell.azure.com/) in a web browser. Select **Ba
 
 To retrieve the database connection details:
 
-1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server instance.
+1. In the [Azure portal](https://portal.azure.com/), go to your Azure Database for PostgreSQL flexible server.
 
 1. On the left menu, under **Settings**, select **Connect**. Copy the **Connection details** block.
 
@@ -70,7 +70,7 @@ To enable the extension in your database:
 
 ## Inspect the objects in the azure_ai extension
 
-Reviewing the objects that the `azure_ai` extension contains can provide a better understanding of the capabilities that it offers. You can use the [`\dx` meta-command](https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMAND-DX-LC) from the `psql` command prompt to list the objects in the extension:
+To better understand the capabilities of the `azure_ai` extension, review the objects it contains. From the `psql` command prompt, use the [`\dx` meta-command](https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-META-COMMAND-DX-LC) to list the objects in the extension:
 
 ```psql
 \dx+ azure_ai
@@ -84,7 +84,7 @@ The meta-command output shows that the `azure_ai` extension creates three schema
 | `azure_openai` | Contains the UDFs that enable calling an Azure OpenAI endpoint. |
 | `azure_cognitive` | Provides UDFs and composite types related to integrating the database with Azure Cognitive Services. |
 
-The functions and types are all associated with one of the schemas. To review the functions defined in the `azure_ai` schema, use the `\df` meta-command. Specify the schema whose functions should be displayed. The `\x auto` commands before the `\df` command turn the expanded display on and off automatically, to make the output from the command easier to view in Azure Cloud Shell.
+The functions and types are all associated with one of the schemas. To review the functions defined in the `azure_ai` schema, use the `\df` meta-command. Specify the schema whose functions you want to display. The `\x auto` commands before the `\df` command turn the expanded display on and off automatically, to make the output from the command easier to view in Azure Cloud Shell.
 
 ```sql
 \x auto
@@ -190,7 +190,7 @@ The `Argument data types` property in the output of the `\df+ azure_openai.*` co
 | `timeout_ms` | `integer` | `3600000` | Timeout in milliseconds, after which the operation is stopped. |
 | `throw_on_error` | `boolean` | `true` | Flag that indicates whether the function should, on error, throw an exception that results in a rollback of the wrapping transactions. |
 
-The first argument is the `deployment_name` value, which was assigned when your embedding model was deployed in your Azure OpenAI account. To retrieve this value:
+The first argument is the `deployment_name` value, which you assign when you deploy your embedding model in your Azure OpenAI account. To retrieve this value:
 
 1. Go to your Azure OpenAI resource in the Azure portal.
 
@@ -272,7 +272,7 @@ To demonstrate some of the capabilities of the `azure_cognitive` functions of th
 - `summarize_abstractive`: Abstractive summarization produces a summary that captures the main concepts from input text but might not use identical words.
 - `summarize_extractive`: Extractive summarization assembles a summary by extracting critical sentences from the input text.
 
-To use the Language service's ability to generate new, original content, you use the `summarize_abstractive` function to create a summary of text input. Use the `\df` meta-command from `psql` again, this time to look specifically at the `azure_cognitive.summarize_abstractive` function:
+To use the Language service's ability to generate new, original content, use the `summarize_abstractive` function to create a summary of text input. Use the `\df` meta-command from `psql` again, this time to look specifically at the `azure_cognitive.summarize_abstractive` function:
 
 ```sql
 \df azure_cognitive.summarize_abstractive
@@ -330,7 +330,7 @@ SELECT bill_id, one_sentence_summary FROM bill_summaries LIMIT 5;
 
 ## Conclusion
 
-Congratulations! You just learned how to use the `azure_ai` extension to integrate large language models and generative AI capabilities into your database.
+You learned how to use the `azure_ai` extension to integrate large language models and generative AI capabilities into your database.
 
 ## Related content
 

@@ -1,10 +1,11 @@
 ---
 title: Copy Activity in Azure Data Factory and Azure Synapse Analytics
 description: Guide to use copy activity in Azure Data Factory and Azure Synapse Analytics for Azure Database for PostgreSQL
+#customer intent: As a user, I want to create a copy activity in Azure Data Factory, so that I can move data into my Azure Database for PostgreSQL flexible server.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 07/22/2025
+ms.date: 07/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
@@ -12,20 +13,20 @@ ms.topic: how-to
 
 # Copy activity in Azure Data Factory and Azure Synapse Analytics
 
-With a Linked Service, you can connect to your instance of Azure Database for PostgreSQL flexible server and use it within Azure Data Factory and Synapse Analytics activities.
+By using a linked service, you can connect to your Azure Database for PostgreSQL flexible server and use it within Azure Data Factory and Synapse Analytics activities.
 
 The Copy Activity supports **Copy Command**, **Bulk Insert**, and **Upsert**. For more information, see [Copy and transform data in Azure Database for PostgreSQL using Azure Data Factory or Synapse Analytics](/azure/data-factory/connector-azure-database-for-postgresql?tabs=data-factory).
 
-The next section has a step-by-step guide on how to manually create a copy activity and how to create a pipeline.
+The next section provides a step-by-step guide on how to manually create a copy activity and how to create a pipeline.
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. For more information, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server. For more information, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](../integration/how-to-connect-data-factory-private-endpoint.md).
 - An [Azure Data Factory Dataset](/azure/data-factory/concepts-datasets-linked-services?tabs=data-factory) with your Azure Database for PostgreSQL.
 
-## Create a data copy activity via the portal
+## Create a data copy activity in the portal
 
 1. In [Azure Data Factory Studio](https://adf.azure.com), select the **Author** hub. Hover over the **Pipelines** section, select **...** at the left, and select **New pipeline** to create a new pipeline.
 
@@ -37,7 +38,7 @@ The next section has a step-by-step guide on how to manually create a copy activ
 
    :::image type="content" source="media/how-to-data-factory-copy-activity-azure/create-copy-activity.png" alt-text="Screenshot that shows where to select Copy data." lightbox="media/how-to-data-factory-copy-activity-azure/create-copy-activity.png":::
 
-1. At the **General** tab, give a name to your pipeline.
+1. At the **General** tab, enter a name for your pipeline.
 
    :::image type="content" source="media/how-to-data-factory-copy-activity-azure/give-a-name.png" alt-text="Screenshot that shows where to give a name to the pipeline at the general tab." lightbox="media/how-to-data-factory-copy-activity-azure/give-a-name.png":::
 
@@ -76,16 +77,16 @@ For JSON payload examples, see [Azure Database for PostgreSQL as sink](/azure/da
 
 ## Key columns behavior on upsert
 
-When you upsert data with the Azure Database for PostgreSQL connector, you can specify optional fields called **Key Columns**.
+When you upsert data by using the Azure Database for PostgreSQL connector, specify optional fields called **Key Columns**.
 
 :::image type="content" source="media/how-to-data-factory-copy-activity-azure/select-optional-key-columns.png" alt-text="Screenshot that shows optional key columns." lightbox="media/how-to-data-factory-copy-activity-azure/select-optional-key-columns.png":::
-There are three acceptable ways to use the **Key Columns**:
-1. Select **New** and add all the primary key columns of the sink datasource table
+Use the **Key Columns** in one of three ways:
+1. Select **New** and add all the primary key columns of the sink data source table.
 
    :::image type="content" source="media/how-to-data-factory-copy-activity-azure/providing-all-key-columns.png" alt-text="Screenshot that shows an example with all key columns." lightbox="media/how-to-data-factory-copy-activity-azure/providing-all-key-columns.png":::
 
-1. Select **New** and add one or more unique columns of the sink datasource table
-1. Leave the **Key columns** empty. In this case, the connector finds the primary key columns and uses them as **Key columns**
+1. Select **New** and add one or more unique columns of the sink data source table.
+1. Leave the **Key columns** empty. In this case, the connector finds the primary key columns and uses them as **Key columns**.
 
    :::image type="content" source="media/how-to-data-factory-copy-activity-azure/empty-key-columns.png" alt-text="Screenshot that shows an example with no key columns selected." lightbox="media/how-to-data-factory-copy-activity-azure/empty-key-columns.png":::
 

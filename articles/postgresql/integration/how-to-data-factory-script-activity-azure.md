@@ -1,10 +1,11 @@
 ---
 title: Script Activity in Data Factory
 description: Guide on using script activity in the Azure Database for PostgreSQL connector in Azure Data Factory
+#customer intent: As a user, I want to create a script activity in Azure Data Factory, so that I can run custom PostgreSQL queries directly in my pipelines.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 07/22/2025
+ms.date: 07/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
@@ -12,7 +13,7 @@ ms.topic: how-to
 
 # Script activity in Data Factory and Azure Synapse Analytics
 
-In this article, you learn how to create a script activity in Azure Data Factory to run custom PostgreSQL queries. With script activity, you can execute various types of PostgreSQL commands, such as Data Manipulation Language (DML) and Data Definition Language (DDL) commands, directly in your pipelines.
+In this article, you learn how to create a script activity in Azure Data Factory to run custom PostgreSQL queries. By using script activity, you can execute various types of PostgreSQL commands, such as Data Manipulation Language (DML) and Data Definition Language (DDL) commands, directly in your pipelines.
 
 **DML statements:** `INSERT`, `UPDATE`, `DELETE`, and `SELECT`
 
@@ -20,7 +21,7 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 ## Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 - An Azure Data Factory Linked Service [connected to Azure Database for PostgreSQL](../integration/how-to-connect-data-factory-private-endpoint.md).
 
@@ -28,113 +29,113 @@ In this article, you learn how to create a script activity in Azure Data Factory
 
 1. In [Azure Data Factory Studio](https://adf.azure.com), select the **Author** hub. Hover over the **Pipelines** section, select **...** at the left, and select **New pipeline** to create a new pipeline.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/go-to-author.png" alt-text="Screenshot that shows where to select author in Azure Data Factory.":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/go-to-author.png" alt-text="Screenshot showing where to select author in Azure Data Factory.":::
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/create-a-new-pipeline.png" alt-text="Screenshot that shows where to select new pipeline.":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/create-new-pipeline.png" alt-text="Screenshot showing where to select new pipeline.":::
 
 1. Under **General**, drag and drop the **script** activity into the pipeline.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/create-script-activity.png" alt-text="Screenshot that shows where to select script activity." lightbox="media/how-to-data-factory-script-activity-azure/create-script-activity.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/create-script-activity.png" alt-text="Screenshot showing where to select script activity." lightbox="media/how-to-data-factory-script-activity-azure/create-script-activity.png":::
 
-   1. At the **General** tab, give your script activity a name.
+1. At the **General** tab, give your script activity a name.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/script-activity-name.png" alt-text="Screenshot that shows box to provide a name to the script activity." lightbox="media/how-to-data-factory-script-activity-azure/script-activity-name.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/script-activity-name.png" alt-text="Screenshot showing texbox to provide a name to the script activity." lightbox="media/how-to-data-factory-script-activity-azure/script-activity-name.png":::
 
 1. Switch to the **Settings** tab and select your Azure Database for PostgreSQL linked service, or create a new one. Once added, select **Test connection** to verify your connection is valid.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/script-activity-linked-service.png" alt-text="Screenshot that shows an example setting linked service." lightbox="media/how-to-data-factory-script-activity-azure/script-activity-linked-service.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/script-activity-linked-service.png" alt-text="Screenshot showing an example setting linked service." lightbox="media/how-to-data-factory-script-activity-azure/script-activity-linked-service.png":::
 
 1. Select either the **Query** or **NonQuery** option depending on your script.
 
    The script activity supports both query and nonquery statements.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/tab-non-query.png" alt-text="Screenshot that shows highlights Query and non Query radio buttons." lightbox="media/how-to-data-factory-script-activity-azure/tab-non-query.png":::
+   :::image type="content" source="media/how-to-data-factory-script-activity-azure/tab-non-query.png" alt-text="Screenshot showing Query and NonQuery radio buttons." lightbox="media/how-to-data-factory-script-activity-azure/tab-non-query.png":::
 
-   ### [Query](#tab/query)
+### [Query](#tab/query)
 
-   Query statements execute PostgreSQL statements that return results. Often `SELECT` statements. A Query statement returns records of data.
+Query statements execute PostgreSQL statements that return results, often `SELECT` statements. A query statement returns records of data.
 
    :::image type="content" source="media/how-to-data-factory-script-activity-azure/query.png" alt-text="Screenshot that shows a sample of query script." lightbox="media/how-to-data-factory-script-activity-azure/query.png":::
 
-   Sample of a payload with a Query.
+Sample of a payload with a query.
 
-   ```json
-   {
-       "name": "Sample of select statement",
-       "type": "Script",
-       "dependsOn": [],
-       "policy": {
-           "timeout": "1.12:00:00",
-           "retry": 0,
-           "retryIntervalInSeconds": 30,
-           "secureOutput": false,
-           "secureInput": false
-       },
-       "userProperties": [],
-       "linkedServiceName": {
-           "referenceName": "AzurePostgreSQL",
-           "type": "LinkedServiceReference"
-       },
-       "typeProperties": {
-           "scripts": [
-               {
-                   "type": "Query",
-                   "text": "SELECT * FROM sample_table WHERE sample_int = 100; "
-               }
-           ],
-           "scriptBlockExecutionTimeout": "02:00:00"
-       }
-   }
-   ```
+```json
+{
+      "name": "Sample of select statement",
+      "type": "Script",
+      "dependsOn": [],
+      "policy": {
+         "timeout": "1.12:00:00",
+         "retry": 0,
+         "retryIntervalInSeconds": 30,
+         "secureOutput": false,
+         "secureInput": false
+      },
+      "userProperties": [],
+      "linkedServiceName": {
+         "referenceName": "AzurePostgreSQL",
+         "type": "LinkedServiceReference"
+      },
+      "typeProperties": {
+         "scripts": [
+            {
+                  "type": "Query",
+                  "text": "SELECT * FROM sample_table WHERE sample_int = 100; "
+            }
+         ],
+         "scriptBlockExecutionTimeout": "02:00:00"
+      }
+}
+```
 
-   ### [Non-Query](#tab/non-query)
+### [Non-Query](#tab/non-query)
 
-   Non-Query statements execute PostgreSQL statements that don't return any results. Often `INSERT`, `UPDATE`, or `DELETE` statements. Returns the number of rows affected.
+Non-query statements execute PostgreSQL statements that don't return any results, often `INSERT`, `UPDATE`, or `DELETE` statements. They return the number of rows affected.
 
-   :::image type="content" source="media/how-to-data-factory-script-activity-azure/non-query.png" alt-text="Screenshot that shows a sample of Non-Query script." lightbox="media/how-to-data-factory-script-activity-azure/non-query.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/non-query.png" alt-text="Screenshot that shows a sample of Non-Query script." lightbox="media/how-to-data-factory-script-activity-azure/non-query.png":::
 
-   Sample of a payload with a Non-Query.
+Sample of a payload with a non-query.
 
-   ```json
-   {
-       "name": "Sample of drop statements",
-       "type": "Script",
-       "dependsOn": [],
-       "policy": {
-           "timeout": "1.12:00:00",
-           "retry": 0,
-           "retryIntervalInSeconds": 30,
-           "secureOutput": false,
-           "secureInput": false
-       },
-       "userProperties": [],
-       "linkedServiceName": {
-           "referenceName": "AzurePostgreSQL1",
-           "type": "LinkedServiceReference"
-       },
-       "typeProperties": {
-           "scripts": [
-               {
-                   "type": "NonQuery",
-                   "text": "DROP TABLE IF EXISTS sample_table; "
-               }
-           ],
-           "scriptBlockExecutionTimeout": "02:00:00"
-       }
-   }
-   ```
+```json
+{
+      "name": "Sample of drop statements",
+      "type": "Script",
+      "dependsOn": [],
+      "policy": {
+         "timeout": "1.12:00:00",
+         "retry": 0,
+         "retryIntervalInSeconds": 30,
+         "secureOutput": false,
+         "secureInput": false
+      },
+      "userProperties": [],
+      "linkedServiceName": {
+         "referenceName": "AzurePostgreSQL1",
+         "type": "LinkedServiceReference"
+      },
+      "typeProperties": {
+         "scripts": [
+            {
+                  "type": "NonQuery",
+                  "text": "DROP TABLE IF EXISTS sample_table; "
+            }
+         ],
+         "scriptBlockExecutionTimeout": "02:00:00"
+      }
+}
+```
 
 ## Create multiple scripts inside one script activity
 
 You can include multiple queries in one script activity by selecting the `+` sign next to **Script** to add a new script input.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/plus-script.png" alt-text="Screenshot that shows an example of creating a new script input box." lightbox="media/how-to-data-factory-script-activity-azure/plus-script.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/plus-script.png" alt-text="Screenshot showing an example of creating a new script input box." lightbox="media/how-to-data-factory-script-activity-azure/plus-script.png":::
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/multi-script.png" alt-text="Screenshot that shows how to add a new script block input box." lightbox="media/how-to-data-factory-script-activity-azure/multi-script.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/multi-script.png" alt-text="Screenshot showing how to add a new script block input box." lightbox="media/how-to-data-factory-script-activity-azure/multi-script.png":::
 
 You can delete query input boxes by using the **delete** icon next to **Script**.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/delete-script-activity.png" alt-text="Screenshot that shows how to delete a script block.":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/delete-script-activity.png" alt-text="Screenshot showing how to delete a script block.":::
 
 Here's a sample of a payload with two separate queries.
 
@@ -183,7 +184,7 @@ Script activity supports two types of script parameters: positional and named pa
 Named parameters use an `@` prefix to the name of the parameter.
 Set named parameters as output parameters by setting the value to null with the **Treat as null** box checked in the UI, and with the payload left blank or null. The value in the text should be null.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/output-parameter-example.png" alt-text="Screenshot that shows an output parameter example with treat as null checked in the UI." lightbox="media/how-to-data-factory-script-activity-azure/output-parameter-example.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/output-parameter-example.png" alt-text="Screenshot showing an output parameter example with treat as null checked." lightbox="media/how-to-data-factory-script-activity-azure/output-parameter-example.png":::
 
 The name set within the procedure for output is the name used within the **resultSets** data output. The name set in the UI output row is used for the name of **outputParameters**.
 
@@ -253,9 +254,9 @@ Payload sample for output parameter.
 ### Positional parameters
 
 > [!IMPORTANT]  
-> Multi-query statements using positional parameters aren't supported. Ensure that any queries with positional parameters are in separate script blocks within the same or different script activity.
+> Multi-query statements that use positional parameters aren't supported. Ensure that any queries with positional parameters are in separate script blocks within the same or different script activity.
 
-To use positional parameters, use a placeholder of `$<positional number>` in your query. Under parameters the `name` field must be left blank in the UI and specified as `null` in the payload.
+To use positional parameters, use a placeholder of `$<positional number>` in your query. Under parameters, leave the `name` field blank in the UI and specify it as `null` in the payload.
 
 ```json
 "scripts": [
@@ -283,7 +284,7 @@ To use positional parameters, use a placeholder of `$<positional number>` in you
 
 **Example of valid positional parameter**
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/multiple-scripts-positional-parameters.png" alt-text="Screenshot that shows a valid positional parameter example." lightbox="media/how-to-data-factory-script-activity-azure/multiple-scripts-positional-parameters.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/multiple-scripts-positional-parameters.png" alt-text="Screenshot showing a valid positional parameter example." lightbox="media/how-to-data-factory-script-activity-azure/multiple-scripts-positional-parameters.png":::
 
 ```json
 "scripts": [
@@ -349,7 +350,7 @@ The advanced settings in Azure Data Factory's script activity for PostgreSQL let
 
 Set a timeout in minutes for each script block run. If any script block in your script activity goes over the timeout, the whole activity fails.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/script-block-timeout.png" alt-text="Screenshot that shows an advanced setting in script activity to set script block execution timeout." lightbox="media/how-to-data-factory-script-activity-azure/script-block-timeout.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/script-block-timeout.png" alt-text="Screenshot showing an advanced setting in script activity to set script block execution timeout." lightbox="media/how-to-data-factory-script-activity-azure/script-block-timeout.png":::
 
 ```JSON
    "typeProperties": {
@@ -373,13 +374,13 @@ Set a timeout in minutes for each script block run. If any script block in your 
 
 ### Logging
 
-Use logging to send PostgreSQL Notices to an external Blob Storage or to internal storage.
+Use logging to send PostgreSQL notices to external blob storage or to internal storage.
 
 #### External storage
 
-For external logging, open the **Advanced** tab, then select **Enable logging** and **External storage**. Add a blob storage account by creating a new linked service for your blob storage account. You can optionally enter a folder path. If you leave it blank, the logs go under the **scriptactivity-logs** folder.
+For external logging, open the **Advanced** tab, and then select **Enable logging** and **External storage**. Add a blob storage account by creating a new linked service for your blob storage account. You can optionally enter a folder path. If you leave it blank, the logs go under the **scriptactivity-logs** folder.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/logging-external-storage.png" alt-text="Screenshot that shows external logging example." lightbox="media/how-to-data-factory-script-activity-azure/logging-external-storage.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/logging-external-storage.png" alt-text="Screenshot showing an external logging example." lightbox="media/how-to-data-factory-script-activity-azure/logging-external-storage.png":::
 
 ```JSON
 "typeProperties": {
@@ -407,7 +408,7 @@ For external logging, open the **Advanced** tab, then select **Enable logging** 
 
 For activity output logging, expand the **Advanced** section and select **Enable logging** and **Activity output**. These options turn on logging in the activity output.
 
-:::image type="content" source="media/how-to-data-factory-script-activity-azure/logging-activity-output.png" alt-text="Screenshots that show an activity output logging example." lightbox="media/how-to-data-factory-script-activity-azure/logging-activity-output.png":::
+:::image type="content" source="media/how-to-data-factory-script-activity-azure/logging-activity-output.png" alt-text="Screenshots showing an activity output logging example." lightbox="media/how-to-data-factory-script-activity-azure/logging-activity-output.png":::
 
 ```JSON
 "typeProperties": {
