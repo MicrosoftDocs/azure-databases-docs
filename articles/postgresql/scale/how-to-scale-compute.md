@@ -1,29 +1,29 @@
 ---
-title: Scale compute
+title: Scale Compute in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to scale the compute of an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to scale the compute resources of my Azure Database for PostgreSQL flexible server, so that I can match capacity to my application's changing demands.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: scale-out
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to scale the compute of an Azure Database for PostgreSQL.
 ---
 
-# Scale compute
+# Scale compute in Azure Database for PostgreSQL flexible server
 
-This article provides step-by-step instructions to perform scaling operations for the compute of an Azure Database for PostgreSQL flexible server.
+This article provides step-by-step instructions for scaling the compute resources of an Azure Database for PostgreSQL flexible server.
 
-You're allowed to change your compute between the burstable, general purpose, and memory optimized tiers. And, among each of those tiers, you can choose the number of virtual cores (vCores) that is more suitable to run your application. To learn more about the different compute tiers available in Azure Virtual Machines, and the use case for which they're best suited, refer to [size for virtual machines in Azure](/azure/virtual-machines/sizes/overview).
+You can change your compute tier between the burstable, general purpose, and memory optimized tiers. Within each tier, you can choose the number of virtual cores (vCores) that best fits your application. For more information about the different compute tiers available in Azure Virtual Machines and the use cases they're best suited for, see [size for virtual machines in Azure](/azure/virtual-machines/sizes/overview).
 
-When you request a scaling operation of the compute used by your Azure Database for PostgreSQL flexible server, your server undergoes a restart and so leaves your server unavailable for some time. For more information about how that process works, and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
+When you request a scaling operation for the compute resources used by your Azure Database for PostgreSQL flexible server, the server restarts. This restart makes your server unavailable for some time. For more information about how the process works and the expected duration of the downtime, see [near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
 
 ## Steps to scale compute
 
 ### [Portal](#tab/portal-scale-compute)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
@@ -31,23 +31,23 @@ Using the [Azure portal](https://portal.azure.com/):
 
     :::image type="content" source="./media/how-to-scale-compute/compute-storage.png" alt-text="Screenshot showing how to select the Compute + storage page." lightbox="./media/how-to-scale-compute/compute-storage.png":::
 
-1. If you want to select a different tier than the one currently selected, in the **Compute tier** group of radio buttons, select the option that best adjusts to your needs.
+1. To choose a different tier, in the **Compute tier** group, select the option that best fits your needs.
 
     :::image type="content" source="./media/how-to-scale-compute/compute-tier.png" alt-text="Screenshot showing where to select a different compute tier." lightbox="./media/how-to-scale-compute/compute-tier.png":::
 
-1. If the region of your server supports Intel and AMD processors, you can use the **Compute processor** radio button to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer selected.
+1. If the region of your server supports Intel and AMD processors, use the **Compute processor** option to filter the options listed in the **Compute size** drop-down to only hardware produced by the manufacturer you select.
 
     :::image type="content" source="./media/how-to-scale-compute/compute-processor.png" alt-text="Screenshot showing where to select a different compute processor manufacturer." lightbox="./media/how-to-scale-compute/compute-processor.png":::
 
-1. If you want to select a different machine size among the ones available in the same tier, expand the **Compute size** drop-down and select the size that best suits your needs.
+1. To select a different machine size, expand the **Compute size** drop-down and select the size that best suits your needs.
 
     :::image type="content" source="./media/how-to-scale-compute/compute-size.png" alt-text="Screenshot showing where to select a different compute size." lightbox="./media/how-to-scale-compute/compute-size.png":::
 
-1. Once you choose your desired configuration, select **Save**.
+1. When you choose your desired configuration, select **Save**.
 
     :::image type="content" source="./media/how-to-scale-compute/save.png" alt-text="Screenshot showing the location of the Save button, enabled once you make some changes to current configuration." lightbox="./media/how-to-scale-compute/save.png":::
 
-1. If the changes you're requesting require a server restart and its associated service disruption, confirm or abort your decision to apply the configuration change.
+1. If the changes you request require a server restart and its associated service disruption, confirm or cancel your decision to apply the configuration change.
 
     :::image type="content" source="./media/how-to-scale-compute/confirm-scale-compute-storage.png" alt-text="Screenshot showing the Compute + server dialog to confirm or abort the operation." lightbox="./media/how-to-scale-compute/confirm-scale-compute-storage.png":::
 
@@ -61,7 +61,7 @@ Using the [Azure portal](https://portal.azure.com/):
 
 ### [CLI](#tab/cli-scale-compute)
 
-You can initiate the scaling of your compute via the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command.
+Use the [az postgres flexible-server update](/cli/azure/postgres/flexible-server#az-postgres-flexible-server-update) command to scale your compute.
 
 ```azurecli-interactive
 az postgres flexible-server update \
@@ -72,9 +72,9 @@ az postgres flexible-server update \
 ```
 
 > [!NOTE]
-> The previous command might need to be completed with other parameters whose presence and values would vary depending on how you want to configure other features of the existing server.
+> You might need to include other parameters with the previous command. The presence and values of these parameters depend on how you want to configure other features of the existing server.
 
-The list of allowed values for the `--sku-name` parameter is dependent of the value passed to the `--tier` parameter, and of the region in which you're trying to deploy your server.
+The list of allowed values for the `--sku-name` parameter depends on the value you pass to the `--tier` parameter and the region where you're trying to deploy your server.
 
 If you pass an incorrect value to `--sku-name`, you get the following error with the list of supported SKU names:
 
@@ -82,7 +82,7 @@ If you pass an incorrect value to `--sku-name`, you get the following error with
 Invalid value for --sku-name. The SKU name is not available in the <tier> tier. Provide a valid SKU name for this tier, or specify --tier with the correct tier. Allowed values: ['<sku_name_1>', '<sku_name_2>', ..., '<sku_name_n>']
 ```
 
-If the changes you're requesting require a server restart and its associated service disruption, and you haven't provided the `--yes` parameter, you receive the following prompt:
+If the changes you're requesting require a server restart and its associated service disruption, and you didn't provide the `--yes` parameter, you receive the following prompt:
 
 ```output
 You are trying to update the compute or storage size assigned to your server in a way that requires a server restart. During the restart, you'll experience some downtime of the server. Do you want to proceed? (y/n): 
@@ -94,4 +94,4 @@ You are trying to update the compute or storage size assigned to your server in 
 
 - [Compute options](../compute-storage/concepts-compute.md).
 - [Limits in Azure Database for PostgreSQL flexible server](../configure-maintain/concepts-limits.md).
-- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling)
+- [Near-zero downtime scaling](concepts-scaling-resources.md#near-zero-downtime-scaling).
