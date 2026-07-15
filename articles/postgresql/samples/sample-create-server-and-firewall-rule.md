@@ -1,19 +1,20 @@
 ---
-title: Azure CLI Script - Create
-description: Azure CLI Script Sample - Creates an Azure Database for PostgreSQL flexible server instance and configures a server-level firewall rule.
+title: Create a Server and Configure a Firewall by Using Azure CLI in Azure Database for PostgreSQL Flexible Server
+description: Azure CLI Script Sample - Creates an Azure Database for PostgreSQL flexible server and configures a server-level firewall rule.
+#customer intent: As a user, I want to create an Azure Database for PostgreSQL flexible server by using Azure CLI, so that I can automate server provisioning instead of using the portal.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
 ms.devlang: azurecli
 ---
 
-# Create an Azure Database for PostgreSQL flexible server instance and configure a firewall rule using the Azure CLI
+# Create a server and configure a firewall by using Azure CLI in Azure Database for PostgreSQL flexible server
 
-This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a server-level firewall rule. Once the script has been successfully run, the Azure Database for PostgreSQL flexible server instance can be accessed from all Azure services and the configured IP address.
+This sample CLI script creates an Azure Database for PostgreSQL flexible server and configures a server-level firewall rule. After you run the script, you can access the Azure Database for PostgreSQL flexible server from all Azure services and the configured IP address.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -41,8 +42,8 @@ This script uses the commands outlined in the following table:
 
 | **Command** | **Notes** |
 | --- | --- |
-| [az group create](/cli/azure/group) | Creates a resource group in which all resources are stored. |
-| [az postgres server create](/cli/azure/postgres/server) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
+| [az group create](/cli/azure/group) | Creates a resource group that stores all resources. |
+| [az postgres server create](/cli/azure/postgres/server) | Creates an Azure Database for PostgreSQL flexible server that hosts the databases. |
 | [az postgres server firewall create](/cli/azure/postgres/server/firewall-rule) | Creates a firewall rule to allow access to the server and databases under it from the entered IP address range. |
 | [az group delete](/cli/azure/group) | Deletes a resource group including all nested resources. |
 

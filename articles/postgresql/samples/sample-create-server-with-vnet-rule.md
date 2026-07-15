@@ -1,22 +1,20 @@
 ---
-title: CLI Script - Create a Virtual Network Rule
-description: This sample CLI script creates an Azure Database for PostgreSQL flexible server instance with a service endpoint on a virtual network and configures a virtual network rule.
+title: Create a Server and Configure a Virtual Network Rule by Using Azure CLI in Azure Database for PostgreSQL Flexible Server
+description: This sample CLI script creates an Azure Database for PostgreSQL flexible server with a service endpoint on a virtual network and configures a virtual network rule.
+#customer intent: As a user, I want to create an Azure Database for PostgreSQL flexible server by using Azure CLI, so that I can automate server provisioning.
 author: gkasar
 ms.author: gkasar
 ms.reviewer: maghan
-ms.date: 01/06/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: development
 ms.topic: how-to
-ms.custom:
-  - mvc
-  - devx-track-azurecli
 ms.devlang: azurecli
 ---
 
-# Create an Azure Database for PostgreSQL flexible server instance and configure a virtual network rule using the Azure CLI
+# Create a server and configure a virtual network rule by using Azure CLI in Azure Database for PostgreSQL flexible server
 
-This sample CLI script creates an Azure Database for PostgreSQL flexible server instance and configures a virtual network rule.
+This sample CLI script creates an Azure Database for PostgreSQL flexible server and configures a virtual network rule.
 
 [!INCLUDE [quickstarts-free-trial-note](~/reusable-content/ce-skilling/azure/includes/quickstarts-free-trial-note.md)]
 
@@ -44,13 +42,13 @@ This script uses the commands outlined in the following table:
 
 | **Command** | **Notes** |
 | --- | --- |
-| [az group create](/cli/azure/group#az-group-create) | Creates a resource group in which all resources are stored. |
-| [az postgresql server create](/cli/azure/postgres/server/vnet-rule#az-postgres-server-vnet-rule-create) | Creates an Azure Database for PostgreSQL flexible server instance that hosts the databases. |
+| [az group create](/cli/azure/group#az-group-create) | Creates a resource group to store all resources. |
+| [az postgresql server create](/cli/azure/postgres/server/vnet-rule#az-postgres-server-vnet-rule-create) | Creates an Azure Database for PostgreSQL flexible server that hosts the databases. |
 | [az network virtual network list-endpoint-services](/cli/azure/network/vnet#az-network-vnet-list-endpoint-services#az-network-vnet-list-endpoint-services) | Lists which services support virtual network service tunneling in a given region. |
 | [az network virtual network create](/cli/azure/network/vnet#az-network-vnet-create) | Creates a virtual network. |
 | [az network virtual network subnet create](/cli/azure/network/vnet#az-network-vnet-subnet-create) | Creates a subnet and associates an existing NSG and route table. |
 | [az network virtual network subnet show](/cli/azure/network/vnet#az-network-vnet-subnet-show) | Shows details of a subnet. |
-| [az postgresql server vnet-rule create](/cli/azure/postgres/server/vnet-rule#az-postgres-server-vnet-rule-create) | Creates a virtual network rule to allow access to an Azure Database for PostgreSQL flexible server instance. |
+| [az postgresql server vnet-rule create](/cli/azure/postgres/server/vnet-rule#az-postgres-server-vnet-rule-create) | Creates a virtual network rule to allow access to an Azure Database for PostgreSQL flexible server. |
 | [az group delete](/cli/azure/group#az-group-delete) | Deletes a resource group including all nested resources. |
 
 ## Related content
