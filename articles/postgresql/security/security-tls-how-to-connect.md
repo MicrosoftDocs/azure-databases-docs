@@ -1,16 +1,17 @@
 ---
-title: Configure TLS Connection to Azure Database for PostgreSQL flexible server
+title: Configure TLS Connection in Azure Database for PostgreSQL Flexible Server
 description: Learn how to configure Transport Layer Security (TLS) connections to Azure Database for PostgreSQL.
+#customer intent: As a user, I want to configure TLS connections to my Azure Database for PostgreSQL flexible server, so that I can secure communications between client applications and the database.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 12/19/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ---
 
-# Connect clients with TLS security to your database
+# Configure TLS connection in Azure Database for PostgreSQL flexible server
 
 Connections between your client applications and the database server always use encryption with the industry standard Transport Layer Security (TLS), previously known as Secure Sockets Layer (SSL).
 
@@ -52,7 +53,7 @@ The default `sslmode` mode differs between `libpq`-based clients (such as `PSQL`
 
 ### Download and convert root CA certificates
 
-For Windows clients that use the system certificate store for trusted root certificates, no action is required since Windows deploys new root CA certificates through Windows Update.
+Windows clients that use the system certificate store for trusted root certificates don't need to take any action. Windows deploys new root CA certificates through Windows Update.
 
 For Java clients, the VS Code extension, and other clients (for example, `PSQL`, Perl) that don't use the system store, and for clients on Linux: you need to download and combine the root CA certificates into a PEM file. At a minimum, include the following root CA certificates:
 
@@ -60,7 +61,7 @@ For Java clients, the VS Code extension, and other clients (for example, `PSQL`,
 - [DigiCert Global Root G2 (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootG2.crt.pem)
 
 > [!NOTE]  
-> For China regions and for customers with rotation extensions: [Digicert Global Root CA (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) is still valid; include it in the combined PEM file.
+> For China regions and for customers with rotation extensions: [Digicert Global Root CA (pem file)](https://cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) is still valid. Include it in the combined PEM file.
 
 Include all Azure root CA certificates to reduce the need for future updates to the combined file if there are changes to the root CAs used by Azure Database for PostgreSQL. You can find the list of Azure root CA certificates at [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list).
 
@@ -126,9 +127,9 @@ To update client root CA certificates for client certificate pinning scenarios w
 
 ### Update root CA certificates in Azure App Services
 
-For Azure App Services connecting to an Azure Database for PostgreSQL flexible server instance, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
+For Azure App Services connecting to an Azure Database for PostgreSQL flexible server, two possible scenarios exist for updating client certificates. The scenarios depend on how you're using SSL with your application deployed to Azure App Services.
 
-- Add new certificates to App Service at platform level before changes occur in your Azure Database for PostgreSQL flexible server instance. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
+- Add new certificates to App Service at platform level before changes occur in your Azure Database for PostgreSQL flexible server. If you're using the SSL certificates included on App Service platform in your application, no action is needed. For more information, see [Add and manage TLS/SSL certificates in Azure App Service](/azure/app-service/configure-ssl-certificate) in the Azure App Service documentation.
 - If you're explicitly including the path to an SSL certificate file in your code, you need to download the new certificate and update the code to use it.
 
 ### Update root CA certificates when using clients in Azure Kubernetes Service (AKS)
@@ -137,11 +138,11 @@ If you're trying to connect to the Azure Database for PostgreSQL by using applic
 
 ### Update root CA certificates for .NET (`Npgsql`) users on Windows
 
-For .NET (`Npgsql`) users on Windows who connect to Azure Database for PostgreSQL flexible server instances, make sure **all** root CA certificates are included in the Windows Certificate Store under Trusted Root Certification Authorities. Windows Update maintains the standard Azure root CA list. If any certificates listed in the [recommended configuration](security-tls.md#best-configuration) aren't included, import the missing certificates.
+For .NET (`Npgsql`) users on Windows who connect to Azure Database for PostgreSQL flexible server, make sure **all** root CA certificates are included in the Windows Certificate Store under Trusted Root Certification Authorities. Windows Update maintains the standard Azure root CA list. If any certificates listed in the [recommended configuration](security-tls.md#best-configuration) aren't included, import the missing certificates.
 
 ## How to use TLS with certificate validation
 
-Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL instance enforces TLS connections, but if the application isn't configured for TLS, the application might fail. Consult your application's documentation to learn how to enable TLS connections.
+Some application frameworks that use PostgreSQL for their database services don't enable TLS by default during installation. Your Azure Database for PostgreSQL flexible server enforces TLS connections, but if the application isn't configured for TLS, the application might fail. Consult your application's documentation to learn how to enable TLS connections.
 
 ### Connect using `PSQL`
 

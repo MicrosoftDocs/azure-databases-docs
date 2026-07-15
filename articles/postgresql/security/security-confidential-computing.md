@@ -1,16 +1,17 @@
 ---
-title: Azure Confidential Computing
+title: Azure Confidential Computing in Azure Database for PostgreSQL Flexible Server
 description: This article describes the confidential computing options in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to understand how Azure Confidential Computing protects data in Azure Database for PostgreSQL flexible server, so that I can decide whether it meets my organization's security requirements.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 06/25/2026
-ms.service: azure-database-postgresql 
+ms.date: 07/14/2026
+ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Azure Confidential Computing for Azure Database for PostgreSQL flexible server
+# Azure confidential computing in Azure Database for PostgreSQL flexible server
 
 [Azure Confidential Computing (ACC)](/azure/confidential-computing/overview) enables organizations to securely process and collaborate on sensitive data, such as personal data or protected health information (PHI). ACC provides built-in protection against unauthorized access by securing data in use through Trusted Execution Environments (TEEs). This protection enables secure real-time analytics and collaborative machine learning across organizational boundaries.
 
@@ -42,7 +43,7 @@ The SKUs that support Azure Confidential Computing (ACC) for Azure Database for 
 
 ### [Portal](#tab/portal-azure-confidential-computing)
 
-Using the [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer):
+Use the [Azure portal](https://portal.azure.com/#create/Microsoft.PostgreSQLFlexibleServer):
 
 1. Select a region that supports Azure Confidential Computing for Azure Database for PostgreSQL flexible server. Then, in the **Compute + storage** section, select **Configure Server**.
 

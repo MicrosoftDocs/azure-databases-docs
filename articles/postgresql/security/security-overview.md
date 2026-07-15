@@ -1,10 +1,11 @@
 ---
-title: Secure Your PostgreSQL Database Server
-description: Learn how to secure an Azure Database for PostgreSQL flexible server instance, with best practices for security and compliance.
+title: Secure Your Azure Database for PostgreSQL Flexible Server
+description: Learn how to secure an Azure Database for PostgreSQL flexible server, with best practices for security and compliance.
+#customer intent: As a user, I want to secure my Azure Database for PostgreSQL flexible server, so that I can protect sensitive data and meet compliance requirements.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 05/05/2026
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: overview
@@ -43,13 +44,13 @@ Network security articles are in the networking sections:
 
 ## Identity management
 
-The Identity Management section focuses on authentication, securing identities, and access controls using centralized identity and access management systems. It covers best practices such as strong authentication mechanisms and managed identities for applications.
+The Identity Management section focuses on authentication, securing identities, and access controls by using centralized identity and access management systems. It covers best practices such as strong authentication mechanisms and managed identities for applications.
 
 Here are some possible security services, features, and best practices for the identity management section:
 
-- **Use Entra instead of database local authentication**: You should disallow local authentication for your PostgreSQL server. Instead, use Microsoft Entra authentication only (not mixed mode) to manage access to your database. Microsoft Entra provides centralized authentication with strong security controls and Defender for Identity real-time protection. For more information, visit [Microsoft Entra](/entra) in general and [Microsoft Entra authentication with Azure Database for PostgreSQL](security-entra-concepts.md).
+- **Use Entra instead of database local authentication**: Disallow local authentication for your PostgreSQL server. Instead, use Microsoft Entra authentication only (not mixed mode) to manage access to your database. Microsoft Entra provides centralized authentication with strong security controls and Defender for Identity real-time protection. For more information, visit [Microsoft Entra](/entra) in general and [Microsoft Entra authentication with Azure Database for PostgreSQL](security-entra-concepts.md).
 
-- **Use managed identities for secure application access**: Use managed identities in Azure to securely authenticate applications and services without the need to manage credentials. This provides a secure and simplified way to access resources like Azure Database for PostgreSQL. For more information, visit [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
+- **Use managed identities for secure application access**: Use managed identities in Azure to securely authenticate applications and services without the need to manage credentials. This approach provides a secure and simplified way to access resources like Azure Database for PostgreSQL. For more information, visit [Managed Identities](/entra/identity/managed-identities-azure-resources/overview).
 
 - **Enforce security through conditional access policies**: Set up conditional access policies in Microsoft Entra to enforce security controls based on user, location, or device context. These policies allow dynamic enforcement of security requirements based on risk, enhancing overall security posture. For more information, visit [Microsoft Entra Conditional Access](/entra/identity/conditional-access/overview).
 
@@ -63,7 +64,7 @@ Here are some possible security services, features, and best practices for the a
 
 - **Use Entra roles for access control**: Implement Azure Role-Based Access Control (Role-Based Access Control (RBAC) to manage access to Azure Database for PostgreSQL resources. Assign roles based on the principle of least privilege, ensuring users and applications have only the permissions they need. For more information, visit [Azure Role Based Access Control (RBAC)](/azure/role-based-access-control/overview) in general and [Manage Microsoft Entra roles in Azure Database for PostgreSQL](security-manage-entra-users.md).
 
-- **Follow Entra best practices**: Utilize MFA, [Conditional Access policies](/entra/identity/conditional-access/overview), just in time (JIT) access to protect your users and databases.
+- **Follow Entra best practices**: Utilize MFA, [Conditional Access policies](/entra/identity/conditional-access/overview), and just in time (JIT) access to protect your users and databases.
 
 - **Manage local database users, roles, and permissions**: Use PostgreSQL's built-in role
   management to control access at the database level. Create custom roles with specific permissions to enforce the principle of least privilege. Regularly review and audit these roles to ensure compliance with security policies. For more information, visit [Manage users in Azure Database for PostgreSQL](security-manage-database-users.md).
@@ -125,7 +126,7 @@ Here are some possible security services, features, and best practices for the l
 - Policy [Enable logging by category group for PostgreSQL (microsoft.dbforpostgresql/flexibleservers) to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcdd1dbc6-0004-4fcd-afd7-b67550de37ff/version/1.0.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D/contextRender~/false)
 
 - Initiative [Enable audit category group resource logging for supported resources to Log Analytics](https://ms.portal.azure.com/#view/Microsoft_Azure_Policy/InitiativeDetail.ReactView/id/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Ff5b29bc4-feca-4cc6-a58a-772dd5e290a5/version/1.1.0/scopes~/%5B%22%2Fsubscriptions%2F5c5037e5-d3f1-4e7b-b3a9-f6bf94902b30%22%5D)
-- **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server instance. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
+- **Utilize Microsoft Defender for Open-Source Relational Databases**: Use Microsoft Defender for Open-Source Relational Databases to enhance the security posture of your PostgreSQL flexible server. This service provides advanced threat protection, vulnerability assessments, and security recommendations tailored for open-source databases. For more information, visit [Overview of Microsoft Defender for Open-Source Relational Databases](/azure/defender-for-cloud/defender-for-databases-introduction) for more details.
 
 - **Enable audit logging**: Configure audit logging for your PostgreSQL to track and log database activities by using the [pgaudit extension](https://www.pgaudit.org/). For more information, visit [Audit logging in Azure Database for PostgreSQL](security-audit.md) for more details.
 
@@ -135,7 +136,7 @@ The backup and recovery section focuses on ensuring that data and configurations
 
 Here are some possible security services, features, and best practices for the backup and recovery detection section:
 
-- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server instance to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability for Azure Database for PostgreSQL](../high-availability/how-to-configure-high-availability.md).
+- **Utilize high availability**: Implement high availability (HA) configurations for your PostgreSQL flexible server to minimize downtime and ensure continuous access to your database. For more information, visit [High availability (Reliability) in Azure Database for PostgreSQL](/azure/reliability/reliability-postgresql-flexible-server) and [Configure high availability for Azure Database for PostgreSQL](../high-availability/how-to-configure-high-availability.md).
 
 - **Configure automated backups**: Azure Database for PostgreSQL automatically performs daily backups of your database files and continuously backs up transaction logs. You can retain backups from seven days up to 35 days. You can restore your database server to any point in time within your backup retention period. The RTO depends on the size of the data to restore and the time to perform log recovery. It can range from a few minutes up to 12 hours. For more information, visit [Backup and restore in Azure Database for PostgreSQL](../backup-restore/concepts-backup-restore.md).
 

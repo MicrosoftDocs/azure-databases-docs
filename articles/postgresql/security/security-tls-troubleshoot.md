@@ -1,18 +1,19 @@
 ---
-title: Validate the Client Configuration and Troubleshoot Connection Failures
-description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure Database for PostgreSQL flexible server instances.
+title: Troubleshoot TLS Connection Failures in Azure Database for PostgreSQL Flexible Server
+description: This article helps you validate your client configuration and troubleshoot potential connectivity issues after a planned TLS certificate rotation in Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to validate my client's TLS configuration before a planned certificate rotation, so that I can avoid connection failures.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan, randolphwest
-ms.date: 01/05/2026
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: troubleshooting
 ---
 
-# Troubleshoot TLS connection failures
+# Troubleshoot TLS connection failures in Azure Database for PostgreSQL flexible server
 
-TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure Database for PostgreSQL. This article guides you through validating your client configuration and troubleshooting potential connectivity issues.
+TLS connection failures can occur for various reasons, especially after a planned TLS certificate rotation in Azure Database for PostgreSQL. This article helps you validate your client configuration and troubleshoot potential connectivity problems.
 
 [!INCLUDE [certificate-rotation](includes/certificate-rotation.md)]
 
@@ -29,7 +30,7 @@ Make sure your client's root certificate store contains either the minimum requi
 
 ### Determine TLS connection status
 
-To determine your current TLS connection status, load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to determine if TLS is being used. The function returns `t` if the connection uses TLS. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server instance's TLS usage by process, client, and application by using the following query:
+To determine your current TLS connection status, load the [sslinfo extension](../extensions/concepts-extensions-versions.md#sslinfo) and then call the `ssl_is_used()` function to check if TLS is being used. The function returns `t` if the connection uses TLS. Otherwise, it returns `f`. You can also collect all the information about your Azure Database for PostgreSQL flexible server instance's TLS usage by process, client, and application by using the following query:
 
 ```sql
 SELECT datname AS "Database name",

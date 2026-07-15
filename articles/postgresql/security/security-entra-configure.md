@@ -1,23 +1,22 @@
 ---
-title: Use Microsoft Entra ID Authentication
-description: Learn how to set up Microsoft Entra ID for authentication for your Azure Database for PostgreSQL flexible server instance.
+title: Use Microsoft Entra ID Authentication in Azure Database for PostgreSQL Flexible Server
+description: Learn how to set up Microsoft Entra ID for authentication for your Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to configure Microsoft Entra ID authentication for my Azure Database for PostgreSQL flexible server, so that I can centralize identity management and improve security.
 author: milenak
 ms.author: mpopovic
 ms.reviewer: maghan
-ms.date: 02/19/2026
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
 ms.custom:
-  - sfi-image-nochange
-  - sfi-ropc-blocked
 ---
 
-# How to use Microsoft Entra ID for authentication with Azure Database for PostgreSQL flexible server
+# Use Microsoft Entra ID authentication in Azure Database for PostgreSQL flexible server
 
-In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL. You also learn how to use a Microsoft Entra token with an Azure Database for PostgreSQL flexible server instance.
+In this article, you configure Microsoft Entra ID access for authentication with Azure Database for PostgreSQL. You also learn how to use a Microsoft Entra token with an Azure Database for PostgreSQL flexible server.
 
-You can configure Microsoft Entra authentication for an Azure Database for PostgreSQL flexible server instance either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. Don't use the Microsoft Entra administrator for regular database operations because that role has elevated user permissions, such as `CREATEDB`.
+You can configure Microsoft Entra authentication for an Azure Database for PostgreSQL flexible server either during server provisioning or later. Only Microsoft Entra administrator users can create or enable users for Microsoft Entra ID-based authentication. Don't use the Microsoft Entra administrator for regular database operations because that role has elevated user permissions, such as `CREATEDB`.
 
 You can have multiple Microsoft Entra admin users with Azure Database for PostgreSQL. Microsoft Entra admin users can be a user, a group, or service principal.
 
@@ -52,17 +51,17 @@ You can optionally add a local PostgreSQL admin account if you prefer using the 
 
 To set the Microsoft Entra administrator after server creation, follow these steps:
 
-1. In the Azure portal, select the instance of Azure Database for PostgreSQL flexible server that you want to enable for Microsoft Entra ID.
+1. In the Azure portal, select the Azure Database for PostgreSQL flexible server that you want to enable for Microsoft Entra ID.
 1. Under **Security**, select **Authentication**. Then choose either **PostgreSQL and Microsoft Entra authentication** or **Microsoft Entra authentication only** as the authentication method, based on your requirements.
 1. Select **Add Microsoft Entra Admins**. Then select a valid Microsoft Entra user, group, service principal, or managed identity in the customer tenant to be a Microsoft Entra administrator.
 1. Select **Save**.
 
 > [!IMPORTANT]  
-> When you set the administrator, you add a new user to your Azure Database for PostgreSQL flexible server instance with full administrator permissions.
+> When you set the administrator, you add a new user to your Azure Database for PostgreSQL flexible server with full administrator permissions.
 
 ## Connect to Azure Database for PostgreSQL by using Microsoft Entra ID
 
-Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you're connecting to PostgreSQL.
+Microsoft Entra integration works with standard PostgreSQL tools like psql, which aren't Microsoft Entra aware and support only specifying the username and password when you connect to PostgreSQL.
 
 Tested clients include:
 
@@ -73,7 +72,7 @@ Tested clients include:
 
 ## Authenticate with Microsoft Entra ID
 
-Use the following procedures to authenticate with Microsoft Entra ID as an Azure Database for PostgreSQL flexible server instance user.
+Use the following procedures to authenticate with Microsoft Entra ID as an Azure Database for PostgreSQL flexible server user.
 
 You can follow along by using:
 
@@ -172,9 +171,9 @@ To connect by using a Microsoft Entra token with PgAdmin, follow these steps:
 Here are some essential considerations when you're connecting:
 
 - `user@tenant.onmicrosoft.com` is the userPrincipalName of the Microsoft Entra user.
-- Be sure to use the exact way the Azure user is spelled. Microsoft Entra user and group names are case-sensitive.
+- Use the exact spelling for the Azure user. Microsoft Entra user and group names are case-sensitive.
 - If the name contains spaces, use a backslash (`\`) before each space to escape it.
-  You can use the Azure CLI to get the signed in user and set the value for `PGUSER` environment variable:
+  - You can use the Azure CLI to get the signed in user and set the value for `PGUSER` environment variable.
 
   ```bash
   export PGUSER=$(az ad signed-in-user show --query "[userPrincipalName]" -o tsv | sed 's/ /\\ /g')
@@ -190,20 +189,20 @@ This section shows how to connect by using a Microsoft Entra group. You must be 
 
 ### Create a group principal
 
-Create the group principal (role) in the database (replace the display name as needed):
+Create the group principal (role) in the database. Replace the display name as needed:
 
 ```sql
 select * from  pgaadauth_create_principal('Prod DB Readonly', false, false).
 ```
 
-If you disable group sync, members can sign in by using their access tokens and specify the group name as username.
+- If you disable group sync, members can sign in by using their access tokens and specify the group name as username.
 
-If you enable group sync (via pgaadauth.enable_group_sync parameter set to "ON"), members should sign in by using their individual Microsoft Entra ID credentials, but they can still sign in by using the group name as the username.
+- If you enable group sync (via `pgaadauth.enable_group_sync` parameter set to `ON`), members should sign in by using their individual Microsoft Entra ID credentials, but they can still sign in by using the group name as the username.
 
 - Group logins remain available for compatibility reasons but you can disable them by using: `ALTER ROLE "ROLE_NAME" NOLOGIN;`
 - Don't delete the group role to maintain syncing.
 - Groups autosync every 30 minutes.
-- You can trigger manual sync by using: `SELECT * FROM pgaadauth_sync_roles_for_group_members();` (`pgaadauth.enable_group_sync` param must be "ON").
+- You can trigger manual sync by using: `SELECT * FROM pgaadauth_sync_roles_for_group_members();` (`pgaadauth.enable_group_sync` param must be `ON`).
 - Changes to group metadata like group name aren't synced.
 - Group membership changes are synced.
 

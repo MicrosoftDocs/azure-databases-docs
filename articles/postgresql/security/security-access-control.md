@@ -1,16 +1,17 @@
 ---
-title: Access Management
+title: Access Management in Azure Database for PostgreSQL Flexible Server
 description: Learn how to manage access permissions for Azure Database for PostgreSQL flexible server using roles.
+#customer intent: As a user, I want to manage access permissions using PostgreSQL roles, so that I can maintain security and compliance for my Azure Database for PostgreSQL flexible server.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 06/25/2026
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: concept-article
 ---
 
-# Access management for Azure Database for PostgreSQL flexible server
+# Access management in Azure Database for PostgreSQL flexible server
 
 Managing access to your Azure Database for PostgreSQL flexible server resources is an important part of maintaining security and compliance. This article explains how to use PostgreSQL roles and Azure features to control permissions and implement best practices for access management.
 
@@ -19,7 +20,7 @@ Managing access to your Azure Database for PostgreSQL flexible server resources 
 The best way to manage Azure Database for PostgreSQL flexible server access permissions at scale is by using the concept of [roles](https://www.postgresql.org/docs/current/user-manag.html). A role can be either a database user or a group of database users. Roles can own the database objects and assign privileges on those objects to other roles to control who has access to which objects. You can grant membership in a role to another role, which allows the member role to use privileges assigned to another role.
 Azure Database for PostgreSQL flexible server lets you grant permissions directly to the database users. **As a good security practice, create roles with specific sets of permissions based on minimum application and access requirements. Assign the appropriate roles to each user. Use roles to enforce a *least privilege model* for accessing database objects.**
 
-In addition to the built-in roles that PostgreSQL creates, the Azure Database for PostgreSQL flexible server instance includes three default roles. You can see these roles by running the following command:
+In addition to the built-in roles that PostgreSQL creates, the Azure Database for PostgreSQL flexible server includes three default roles. You can see these roles by running the following command:
 
 ```sql
 SELECT rolname FROM pg_roles;
@@ -30,7 +31,7 @@ The roles are:
 - `azuresu`
 - **administrator role**
 
-When you create the Azure Database for PostgreSQL instance, you provide credentials for an **administrator role**. Use this administrator role to create more [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
+When you create the Azure Database for PostgreSQL flexible server, you provide credentials for an **administrator role**. Use this administrator role to create more [PostgreSQL roles](https://www.postgresql.org/docs/current/user-manag.html).
 
 For example, you can create a user or role named `demouser`.
 
@@ -73,7 +74,7 @@ oid            | 24827
 
 ### Control schema access
 
-Newly created databases in Azure Database for PostgreSQL include a default set of privileges in the database's public schema that grant all database users and roles the ability to create objects. To better limit application user access to the databases that you create on your Azure Database for PostgreSQL instance, consider revoking these default public privileges. After revoking these privileges, grant specific privileges to database users on a more granular basis. For example:
+Newly created databases in Azure Database for PostgreSQL include a default set of privileges in the database's public schema that grant all database users and roles the ability to create objects. To better limit application user access to the databases that you create on your Azure Database for PostgreSQL flexible server, consider revoking these default public privileges. After revoking these privileges, grant specific privileges to database users on a more granular basis. For example:
 
 - Revoke create privileges to the `public` schema from the `public` role to prevent application database users from creating objects in the public schema.
 
@@ -127,7 +128,7 @@ In PostgreSQL 16, users with the **CREATEROLE** attribute no longer have the abi
 
 PostgreSQL 16 also introduces new and improved built-in role. The *pg_create_subscription* role allows superusers to create subscriptions.
 
-In Azure Database for PostgreSQL Flexible server, the azure_pg_admin role is a system-managed, restricted role and cannot be modified by users. Attempts to alter it, such as granting another role to it , will result in an error like:
+In Azure Database for PostgreSQL Flexible server, the azure_pg_admin role is a system-managed, restricted role and can't be modified by users. Attempts to alter it, such as granting another role to it, result in an error like:
 
  ```sql
 
@@ -135,7 +136,7 @@ In Azure Database for PostgreSQL Flexible server, the azure_pg_admin role is a s
  ERROR: permission denied to alter restricted role "azure_pg_admin"
  ```
 
-This is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
+This error is a built-in safeguard to prevent changes to critical administrative roles. If you need to assign privileges or roles, consider creating a custom role instead and granting the necessary permissions to that role.
 
 ### Improved control for *azure_pg_admin*
 

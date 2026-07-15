@@ -1,10 +1,11 @@
 ---
-title: Connectivity with SCRAM
-description: Instructions and information on how to configure and connect using SCRAM in an Azure Database for PostgreSQL flexible server instance.
+title: SCRAM Auhtentication in Azure Database for PostgreSQL Flexible Server
+description: Instructions and information on how to configure and connect using SCRAM in an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to configure SCRAM authentication in Azure Database for PostgreSQL flexible server, so that I can add extra security and prevent password sniffing on untrusted connections.
 author: Tameika-MSFT
 ms.author: talawren
 ms.reviewer: maghan
-ms.date: 08/08/2025
+ms.date: 07/14/2026
 ms.service: azure-database-postgresql
 ms.subservice: security
 ms.topic: how-to
@@ -15,37 +16,37 @@ ms.topic: how-to
 Salted Challenge Response Authentication Mechanism (SCRAM) is a password-based mutual authentication protocol. It's a challenge-response scheme that adds several levels of security and prevents password sniffing on untrusted connections. SCRAM supports storing passwords on the server in a cryptographically hashed form, which provides advanced security.
 
 > [!NOTE]  
-> To access an Azure Database for PostgreSQL flexible server instance using SCRAM method of authentication, your client libraries need to support SCRAM. Refer to the **[list of drivers](https://wiki.postgresql.org/wiki/List_of_drivers)** that support SCRAM.
+> To access an Azure Database for PostgreSQL flexible server by using the SCRAM method of authentication, your client libraries need to support SCRAM. For more information, see the **[list of drivers](https://wiki.postgresql.org/wiki/List_of_drivers)** that support SCRAM.
 
-SCRAM authentication imposes extra computational load on your application servers, which need to compute the client proof for each authentication. The performance overhead SCRAM introduces might be mitigated by limiting the number of connections in your application's connection pool (reducing chattiness in your application) or limiting the number of concurrent transactions that your client allows (bigger transactions). It's recommended testing your workloads before migrating to SCRAM authentication.
+SCRAM authentication adds extra computational load to your application servers, which need to compute the client proof for each authentication. You might reduce the performance overhead SCRAM introduces by limiting the number of connections in your application's connection pool (reducing chattiness in your application) or limiting the number of concurrent transactions that your client allows (bigger transactions). Test your workloads before migrating to SCRAM authentication.
 
 ## Configure SCRAM authentication
 
-### Navigate to Parameters
+### Go to Parameters
 
-To configure SCRAM authentication, you need to access the Parameters page in the Azure portal:
+To configure SCRAM authentication, access the Parameters page in the Azure portal:
 
-1. Sign in to the [Azure portal](https://portal.azure.com)
-2. Navigate to your Azure Database for PostgreSQL flexible server instance
-3. In the left-hand menu under **Settings**, select **Parameters**
-4. Use the search box to find the parameters mentioned in the steps below
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Go to your Azure Database for PostgreSQL flexible server.
+1. In the left-hand menu under **Settings**, select **Parameters**.
+1. Use the search box to find the parameters mentioned in the following steps.
 
-### Configuration Steps
+### Configuration steps
 
-1. Change password_encryption to SCRAM-SHA-256. Currently Azure Database for PostgreSQL only supports SCRAM using SHA-256.
+1. Change `password_encryption` to `SCRAM-SHA-256`. Currently, Azure Database for PostgreSQL only supports SCRAM using SHA-256.
 
     :::image type="content" source="media/security-connect-scram/1-password-encryption.png" alt-text="Screenshot of encryption page for SCRAM.":::
 
-1. Allow SCRAM-SHA-256 as the authentication method.
+1. Allow `SCRAM-SHA-256` as the authentication method.
 
     :::image type="content" source="media/security-connect-scram/2-authentication-method.png" alt-text="Screenshot of authentication reached by SCRAM.":::
 
     > [!IMPORTANT]
-    > You might choose to enforce SCRAM only authentication by selecting only SCRAM-SHA-256 method. By doing so, users with MD5 authentication can longer connect to the server. Hence, before enforcing SCRAM, that you have both MD5 and SCRAM-SHA-256 as authentication methods until you update all user passwords to SCRAM-SHA-256. You can verify the authentication type for users using the query mentioned in step #7.
+    > You can enforce SCRAM only authentication by selecting only the `SCRAM-SHA-256` method. When you enforce this method, users with MD5 authentication can't connect to the server. Before you enforce SCRAM, make sure both MD5 and `SCRAM-SHA-256` are authentication methods until you update all user passwords to `SCRAM-SHA-256`. You can verify the authentication type for users by using the query mentioned in step 7.
 
-1. Save the changes. These are dynamic properties and don't require server restart.
+1. Save the changes. These properties are dynamic and don't require a server restart.
 
-1. From your Azure Database for PostgreSQL flexible server client, connect to the Azure Database for PostgreSQL flexible server instance. For example,
+1. From your Azure Database for PostgreSQL flexible server client, connect to the Azure Database for PostgreSQL flexible server. For example,
 
     ```bash
     psql "host=myPGServer.postgres.database.azure.com port=5432 dbname=postgres user=myDemoUser password=<password> sslmode=require"
@@ -65,7 +66,7 @@ To configure SCRAM authentication, you need to access the Parameters page in the
     (1 row)
     ```
 
-1. You can then update the password for users.
+1. Update the password for users.
 
     ```sql
     postgres=> \password myDemoUser
@@ -74,7 +75,7 @@ To configure SCRAM authentication, you need to access the Parameters page in the
     postgres=>
     ```
 
-1. You can verify user authentication types using `azure_roles_authtype()` function.
+1. Verify user authentication types by using the `azure_roles_authtype()` function.
 
     ```sql
     postgres=> SELECT * from azure_roles_authtype();
@@ -97,7 +98,7 @@ To configure SCRAM authentication, you need to access the Parameters page in the
     (14 rows)
     ```
 
-1. You can then connect from the client that supports SCRAM authentication to your server.
+1. Connect from the client that supports SCRAM authentication to your server.
 
    SCRAM authentication is also supported when connected to the built-in managed [PgBouncer](../connectivity/concepts-pgbouncer.md).
 
