@@ -16,7 +16,9 @@ ms.custom:
 
 # Tutorial: Migrate from MySQL to Azure Database for MySQL - Flexible Server online using DMS Replicate Changes scenario
 
-You can migrate your on-premises or other cloud services MySQL Server to Azure Database for MySQL – Flexible Server by using Azure Database Migration Service (DMS), a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms. In this tutorial, we perform an online migration of a sample database from an on-premises MySQL server to an Azure Database for MySQL - Flexible Server (both running version 5.7) using a DMS Replicate Changes migration activity.
+You can migrate your on-premises or other cloud services MySQL server to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service (DMS), a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms. Azure DMS supports migration into Azure Database for MySQL - Flexible Server target versions 5.7, 8.0, and 8.4.
+
+In this tutorial, you perform an online migration of a sample database from an on-premises MySQL server to an Azure Database for MySQL - Flexible Server (both running version 5.7) by using a DMS Replicate Changes migration activity.
 
 Running a Replicate changes Migration, with our offline scenario with "Enable Transactional Consistency" enables businesses to migrate their databases to Azure while the databases remain operational. In other words, migrations can be completed with minimum downtime for critical applications, limiting the impact on service level availability and inconvenience to their end customers.
 
@@ -27,6 +29,9 @@ In this tutorial, you'll learn how to:
 > - Run the Replicate Changes migration.
 > - Monitor the migration.
 > - Perform post-migration steps.
+
+> [!NOTE]  
+> Before you begin, review [Known Issues With Migrations To Azure Database for MySQL](known-issues-azure-mysql-fs-online.md) to anticipate and prepare for potential issues during migration.
 
 ## Prerequisites
 

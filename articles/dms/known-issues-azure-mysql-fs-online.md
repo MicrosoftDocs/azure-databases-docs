@@ -17,6 +17,34 @@ ms.custom:
 
 Known issues associated with migrations to Azure Database for MySQL are described in the following sections.
 
+## Known issues when migrating to MySQL 8.4 Flexible Server target
+
+A few MySQL 8.4 behavior changes require action on your side before or during migration. DMS surfaces a clear error or warning when it encounters any of these issues.
+
+### mysql_native_password authentication plugin isn't supported on 8.4 targets
+
+- **Error**: The migration process skips users configured with the `mysql_native_password` authentication plugin during authentication migration, and it reports a warning.
+
+  **Limitation**: MySQL 8.4 removes the `mysql_native_password` authentication plugin. This problem occurs when you use authentication migration and your source has users configured with `mysql_native_password`.
+
+  **Workaround**: Re-create the affected users on the 8.4 target (or on the source before migration) by using a supported plugin such as `caching_sha2_password`.
+
+### AUTO_INCREMENT on FLOAT or DOUBLE columns isn't supported
+
+- **Error**: Schema migration fails validation with a clear error that identifies the offending columns.
+
+  **Limitation**: MySQL 8.4 removes support for `AUTO_INCREMENT` on `FLOAT` and `DOUBLE` columns (it was deprecated in 8.0). This problem occurs when your source schema has any such columns.
+
+  **Workaround**: Change the column type to an integer type (`INT`, `BIGINT`, and so on) on the source before starting the migration, or drop the `AUTO_INCREMENT` attribute.
+
+### Wildcard database grants are deprecated
+
+- **Error**: DMS migrates wildcard database grants and emits a warning.
+
+  **Limitation**: Grants issued against a wildcard database name (for example, `GRANT ... ON \`db_%\`.* TO ...`) still work in MySQL 8.4 today but are deprecated.
+
+  **Workaround**: Plan to replace wildcard database grants with explicit database grants before a future MySQL release drops the feature entirely.
+
 ## Schema Migration Issue for v8.0 MySQL Flexible Server target
 
 - **Error**: A migration to a MySQL Flexible Server with engine version 8.0.30 or higher can fail when the feature to generate invisible primary keys for InnoDB tables is enabled (see [MySQL :: MySQL 8.0 Reference Manual :: 13.1.20.11 Generated Invisible Primary Keys](https://dev.mysql.com/doc/refman/8.0/en/create-table-gipks.html)). The failure might occur when migrating table schema from the source to the target, when applying changes during the replication phase of online migrations, when retrying a migration, or when migrating to a target where the schema has been migrated manually.

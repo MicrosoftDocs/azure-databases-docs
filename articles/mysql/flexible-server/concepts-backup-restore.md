@@ -44,9 +44,12 @@ To change the backup interval, go to **Settings > Compute + Storage** and set th
 
 :::image type="content" source="media/concepts-backup-restore/configure-backup-interval.png" alt-text="Screenshot of modify backup frequency." lightbox="media/concepts-backup-restore/configure-backup-interval.png":::
 
-> [!NOTE]  
-> - If the server experiences a high transaction load, which results in larger and faster-growing binlog files, the backup service performs multiple backups per day to ensure reliable and quicker restoration by using these backups.
-> - For 5.7 servers, long-running or large transactions can prevent global instance level lock acquisition, which is required for a successful daily backup. In such scenarios, daily backups can fail. To resolve this issue, either terminate the long-running transaction or restart the server. To ensure smoother operations, upgrade your MySQL 5.7 servers to version 8.0 by using a [major version upgrade](how-to-upgrade.md).
+### Backup Frequency Limitations
+
+- The Backup Interval feature is supported only on General Purpose and Business Critical service tiers. **Burstable tier servers aren't supported**.
+- Supported backup intervals are 24 hours (default), 12 hours, and 6 hours.
+- If the server experiences a high transaction load that generates large and rapidly growing binary logs, the backup service might create additional backups to help ensure reliable and faster restore operations.
+- For MySQL 5.7 servers, long-running or large transactions can prevent acquisition of the global instance-level lock required for successful daily backups. In these scenarios, daily backups might fail. To resolve the issue, terminate the long-running transaction or restart the server. For improved reliability, upgrade MySQL 5.7 servers to MySQL 8.0 by using a [major version upgrade](how-to-upgrade.md).
 
 ## Backup redundancy options
 
