@@ -21,7 +21,7 @@ Known issues associated with migrations to Azure Database for MySQL are describe
 
 A few MySQL 8.4 behavior changes require action on your side before or during migration. DMS surfaces a clear error or warning when it encounters any of these issues.
 
-### mysql_native_password Is No Longer Supported on 8.4 Targets
+### mysql_native_password authentication plugin isn't supported on 8.4 targets
 
 - **Error**: Users configured with the mysql_native_password authentication plugin are skipped during login migration, and a warning is reported.
 
