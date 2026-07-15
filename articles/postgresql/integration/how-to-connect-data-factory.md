@@ -1,10 +1,11 @@
 ---
 title: How to Connect from Azure Data Factory to Azure Database for PostgreSQL flexible server
-description: Guide on how to connect an Azure Database for PostgreSQL flexible server instance from Azure Data Factory using the Azure Database for PostgreSQL connector
+description: Guide on how to connect an Azure Database for PostgreSQL flexible server from Azure Data Factory using the Azure Database for PostgreSQL connector
+#customer intent: As a user, I want to connect Azure Database for PostgreSQL flexible server to Azure Data Factory, so that I can build data integration pipelines.
 author: danyal-bukhari
 ms.author: dabukhari
 ms.reviewer: maghan
-ms.date: 04/11/2025 
+ms.date: 07/15/2026
 ms.service: azure-database-postgresql
 ms.subservice: data-movement
 ms.topic: how-to
@@ -13,30 +14,30 @@ ms.topic: how-to
 # Connect Azure Database for PostgreSQL flexible server to Azure Data Factory and Synapse Analytics
 
 > [!IMPORTANT]
-> The Azure Database for PostgreSQL version 2.0 provides an improved native Azure Database for PostgreSQL support. If you use the Azure Database for PostgreSQL version 1.0 in your solution, you should upgrade your Azure Database for PostgreSQL linked service at your earliest convenience.
+> Azure Database for PostgreSQL version 2.0 provides improved native Azure Database for PostgreSQL support. If you use Azure Database for PostgreSQL version 1.0 in your solution, upgrade your Azure Database for PostgreSQL linked service at your earliest convenience.
 
 ## What is Azure Data Factory
 
-[Azure Data Factory](/azure/data-factory/introduction) is a fully managed, serverless, data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](/azure/data-factory/concepts-integration-runtime#azure-integration-runtime) supports connecting data stores and computing services with publicly accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores using Azure Private Link service in private network environments.
+[Azure Data Factory](/azure/data-factory/introduction) is a fully managed, serverless, data integration service built to orchestrate and operationalize complex hybrid extract-transform-load (ETL), extract-load-transform (ELT), and data integration projects. An Azure [integration runtime](/azure/data-factory/concepts-integration-runtime#azure-integration-runtime) supports connecting data stores and computing services with publicly accessible endpoints. If you enable the managed virtual network feature of an Azure integration runtime, it supports connecting to data stores by using Azure Private Link service in private network environments.
 
 Azure Data Factory offers an [Azure Database for PostgreSQL](/azure/data-factory/connector-azure-database-for-postgresql) connector with [support for various capabilities](/azure/data-factory/connector-azure-database-for-postgresql#supported-capabilities), depending on the integration runtime selected.
 
 ## Linked service
 
-In Azure Data Factory, a [linked service](/azure/data-factory/concepts-linked-services) is a connection to a data source. When working with Azure Database for PostgreSQL, you can define a linked service using JSON to specify the connection details programmatically. This approach is useful for automation, version control, and deployment scenarios. The JSON definition includes properties such as the server name, database name, authentication type, and other connection parameters. By creating a linked service, you can easily connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
+In Azure Data Factory, a [linked service](/azure/data-factory/concepts-linked-services) is a connection to a data source. When working with Azure Database for PostgreSQL, you can define a linked service by using JSON to specify the connection details programmatically. This approach is useful for automation, version control, and deployment scenarios. The JSON definition includes properties such as the server name, database name, authentication type, and other connection parameters. By creating a linked service, you can easily connect to your Azure Database for PostgreSQL flexible server and perform data integration tasks within Azure Data Factory.
 
-You can create a linked service using the Azure Data Factory UI or programmatically using JSON. The linked service allows you to connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
+You can create a linked service by using the Azure Data Factory UI or programmatically by using JSON. The linked service allows you to connect to your Azure Database for PostgreSQL flexible server and perform data integration tasks within Azure Data Factory.
 
 ### Prerequisites
 
-- An Azure Database for PostgreSQL flexible server instance. To learn more, go to [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
+- An Azure Database for PostgreSQL flexible server. To learn more, see [Create an Azure Database for PostgreSQL](/azure/postgresql/flexible-server/quickstart-create-server).
 - (Optional) An Azure integration runtime [created within a managed virtual network](/azure/data-factory/managed-virtual-network-private-endpoint).
 
 ### Create a linked service via the Azure portal
 
-You can create a linked service using the Azure Data Factory UI or programmatically using JSON. The linked service allows you to connect to your Azure Database for PostgreSQL instance and perform data integration tasks within Azure Data Factory.
+You can create a linked service by using the Azure Data Factory UI or programmatically by using JSON. The linked service allows you to connect to your Azure Database for PostgreSQL flexible server and perform data integration tasks within Azure Data Factory.
 
-1. Browse to the **Manage** tab in your Azure Data Factory or Synapse workspace and select **Linked Services**, then select **New**:
+1. Go to the **Manage** tab in your Azure Data Factory or Synapse workspace, select **Linked Services**, and then select **New**:
 
     #### [Azure Data Factory](#tab/data-factory)
     
@@ -57,15 +58,15 @@ You can create a linked service using the Azure Data Factory UI or programmatica
 
 #### Authentication
 
-There are four supported methods for authentication: basic authentication, service principal, System-assigned managed identity and User-assigned managed identity.
+Four methods are supported for authentication: basic authentication, service principal, system-assigned managed identity, and user-assigned managed identity.
 
 ##### Basic Authentication
 
-1. Select **Basic auth** as the Authentication type and make sure to enter your Azure PostgreSQL flexible server instance connection details, including **Server name**, **Username**, and **Password**.
+1. Select **Basic auth** as the authentication type. Enter your Azure PostgreSQL flexible server connection details, including **Server name**, **Username**, and **Password**.
 
     :::image type="content" source="media/how-to-connect-data-factory/authentication-basic-auth.png" alt-text="Screenshot of a new linked service window for Azure Database for PostgreSQL connector with basic authentication type." lightbox="media/how-to-connect-data-factory/authentication-basic-auth.png":::
 
-1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**
+1. Select either **From Azure subscription** or **Enter manually** in **Account selection method**.
 
     ###### [Azure subscription](#tab/from-azure-subscription)
     
@@ -83,21 +84,21 @@ There are four supported methods for authentication: basic authentication, servi
 
     :::image type="content" source="media/how-to-connect-data-factory/authentication-username-password.png" alt-text="Screenshot of Username and password." lightbox="media/how-to-connect-data-factory/authentication-username-password.png":::
 
-1. Now you can [Test the connection](#test-connection) and create the linked service
+1. Now you can [Test the connection](#test-connection) and create the linked service.
 
 ##### Service principal authentication
 
-Following the service principal authentication setup steps requires setting up a linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
+To set up service principal authentication, you need to set up a linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
 1. [Register a Microsoft Entra app and create a service principal](/entra/identity-platform/howto-create-service-principal-portal).
 
-1. Select **Service Principal** on Authentication type.
+1. Select **Service Principal** as the authentication type.
 
-    There are two types of Service principal credential types, and both service principal methods require a **"Tenant"**, **"Service principal ID"**, and **"Azure Cloud Type"** values.
+    There are two types of service principal credential types. Both service principal methods require **Tenant**, **Service principal ID**, and **Azure Cloud Type** values.
 
     :::image type="content" source="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector with service principal authentication type." lightbox="media/how-to-connect-data-factory/linked-service-authentication-service-principal.png":::
 
-1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
+1. Select either **From Azure subscription** or **Enter manually** in **Account selection method**.
 
     ###### [Azure subscription](#tab/from-azure-subscription)
     
@@ -147,11 +148,11 @@ Following the service principal authentication setup steps requires setting up a
     
 1. Select your **Azure cloud type**.
 
-1. Now you can [Test the connection](#test-connection) and create the linked service 
+1. Now you can [Test the connection](#test-connection) and create the linked service. 
 
 ##### System-assigned Managed Identity authentication
 
-Using System-assigned managed identity as the authentication type in the linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL requires the following steps. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
+To use system-assigned managed identity as the authentication type in the linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL, complete the following steps. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
 1. In your Azure Database for PostgreSQL resource under **Security**
     1. Select **Identity**
@@ -161,12 +162,12 @@ Using System-assigned managed identity as the authentication type in the linked 
 
 1. In your Azure Data Factory resource,
     1. Select **Settings** and then **Managed Identities**
-    1. Under the **System assigned** tab Make sure that status is **On**
+    1. Under the **System assigned** tab, make sure that status is **On**
 
         :::image type="content" source="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png" alt-text="Screenshot of the system assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-system-identity-configuration.png":::
 
 
-1.  In your Azure Database for PostgreSQL resource under **Security**
+1. In your Azure Database for PostgreSQL resource under **Security**
     1. Select **Authentication**
     1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
     1. Select **+ Add Microsoft Entra administrators**
@@ -178,7 +179,7 @@ Using System-assigned managed identity as the authentication type in the linked 
 
     :::image type="content" source="media/how-to-connect-data-factory/authentication-system-managed-identity.png" alt-text="Screenshot of the system assigned managed identity selected." lightbox="media/how-to-connect-data-factory/authentication-system-managed-identity.png":::
 
-1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
+1. Select either **From Azure subscription** or **Enter manually** in **Account selection method**.
 
     ###### [Azure subscription](#tab/from-azure-subscription)
     
@@ -192,32 +193,32 @@ Using System-assigned managed identity as the authentication type in the linked 
     
     :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
     
-1. Now you can [Test the connection](#test-connection) and create the linked service
+1. Now you can [Test the connection](#test-connection) and create the linked service.
 
 ##### User-assigned Managed Identity authentication
 
 Using User-assigned managed identity as the authentication type in the linked service in Azure Data Factory or Synapse Analytics to connect to your Azure Database for PostgreSQL requires the following steps. The process involves selecting the appropriate authentication method, configuring connection details, and verifying the connection. Ensure you have the necessary prerequisites and permissions before proceeding.
 
-1. Create a **User-assigned Managed Identity** resource on Azure portal. To learn more, go to [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp)
+1. Create a **User-assigned Managed Identity** resource in the Azure portal. To learn more, see [Manage user-assigned managed identities](/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp).
 1. Assign the **User-assigned Managed Identity** to your Azure database for PostgreSQL resource
     1. In your Azure database for PostgreSQL server resource, under **Security**
     1. Select **Authentication**
     1. Select either **Microsoft Entra authentication only** or **PostgreSQL and Microsoft Entra authentication** Authentication method.
-    1. Click on **+ Add Microsoft Entra administrators** and select your user-assigned managed identity
+    1. Select **+ Add Microsoft Entra administrators** and select your user-assigned managed identity
 
         :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure database for PostgreSQL server." lightbox="media/how-to-connect-data-factory/user-managed-identity-postgresql-configuration.png":::
 
 1. Assign the **User-assigned Managed Identity** to your Azure Data Factory resource
     1. Select **Settings** and then **Managed Identities**
-    1. Under the **User assigned** tab. Click on the **+ Add** and select your user-managed identity
+    1. Under the **User assigned** tab, select **+ Add** and select your user-managed identity
 
         :::image type="content" source="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png" alt-text="Screenshot of the user-assigned managed identity configuration in the Azure Data Factory resource." lightbox="media/how-to-connect-data-factory/data-factory-user-identity-configuration.png":::
 
-1. In the Linked Service  of the Azure Data Factory, select **User-assigned managed identity**  as the **Authentication type**
+1. In the Linked Service of Azure Data Factory, select **User-assigned managed identity** as the **Authentication type**.
 
     :::image type="content" source="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png" alt-text="Screenshot of the user assigned managed identity selected under the authentication type in the linked service." lightbox="media/how-to-connect-data-factory/authentication-user-assigned-managed-identity.png":::
 
-1. Select between **From Azure subscription** or **Enter manually** in **Account selection method**.
+1. Select either **From Azure subscription** or **Enter manually** in **Account selection method**.
 
     ###### [Azure subscription](#tab/from-azure-subscription)
     
@@ -231,56 +232,56 @@ Using User-assigned managed identity as the authentication type in the linked se
     
     :::image type="content" source="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png" alt-text="Screenshot of Account selection method Enter manually." lightbox="media/how-to-connect-data-factory/authentication-account-selection-method-manual.png":::
 
-1. On **Credentials** or select a user-assigned managed identity credential or create a new one with **+ New**
+1. On **Credentials**, select a user-assigned managed identity credential or create a new one by using **+ New**.
 
     :::image type="content" source="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png" alt-text="Screenshot of the credentials drop menu selected." lightbox="media/how-to-connect-data-factory/linked-service-user-identity-credentials.png":::
 
-    1. If you need to create a new credential, select **+ New**
-    1. Make sure that **Type** is **User-assigned managed identity**
-    1. Select your **Azure subscription**
-    1. In **User-assigned managed identities**. Select under **Assigned to Data Factory** your managed identity and click on **Create**
+    1. If you need to create a new credential, select **+ New**.
+    1. Make sure that **Type** is **User-assigned managed identity**.
+    1. Select your **Azure subscription**.
+    1. In **User-assigned managed identities**, select under **Assigned to Data Factory** your managed identity and select **Create**.
 
         :::image type="content" source="media/how-to-connect-data-factory/user-managed-identity-credential.png" alt-text="Screenshot of the Create credential with your user managed identity selected." lightbox="media/how-to-connect-data-factory/user-managed-identity-credential.png":::
 
-1. Now you can [Test the connection](#test-connection) and create the linked service
+1. Now you can [Test the connection](#test-connection) and create the linked service.
 
 
 #### Test Connection
 
-1. Once all required connection fields are filled in, the bottom right-hand corner should display a **Test connection** button. The test connection button verifies that the linked service can connect to your Azure Database for PostgreSQL server.
+1. After you fill in all required connection fields, the bottom right-hand corner displays a **Test connection** button. The test connection button verifies that the linked service can connect to your Azure Database for PostgreSQL server.
 
     :::image type="content" source="media/how-to-connect-data-factory/linked-service-test-connection.png" alt-text="Screenshot of New linked service window for Azure Database for PostgreSQL connector test connection.":::
 
-1. Click on **Create** button
+1. Select **Create**.
 
 ### Linked service JSON
 
-The following table describes the properties of the linked service for Azure Database for PostgreSQL. The properties are defined in JSON format, which is used to create the linked service programmatically.
+The following table describes the properties of the linked service for Azure Database for PostgreSQL. The properties are defined in JSON format, which you use to create the linked service programmatically.
 
 | Property | Description | Required |
 | --- | --- | --- |
 | name | Name of the linked service. See [Naming rules](/azure/data-factory/naming-rules) |  Yes |
-| type | Type of the linked service. It should be **AzurePostgreSql** | Yes |
-| server | Full qualified host name for Azure database for PostgreSQL flexible server instance | Yes |
-| port | The Azure database for PostgreSQL flexible server instance port number | Yes |
+| type | Type of the linked service. Use **AzurePostgreSql** | Yes |
+| server | Fully qualified host name for Azure Database for PostgreSQL flexible server | Yes |
+| port | The Azure Database for PostgreSQL flexible server port number | Yes |
 | database | Database name | Yes |
-| sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA and **5** for VerifyFull | Yes |
-| authenticationType | Specify the authentication to be used. **BasicAuth**, **ServicePrincipal**, **SystemAssignedManagedIdentity**, or **UserAssignedManagedIdentity** | Yes |
-| credential | Specify the user-assigned managed identity as the credential object. | Required for **UserAssignedManagedIdentity**. Otherwise isn't required |
-| username | username for basic auth or Service principal name for service principal authentication | Yes |
-| password | Username password for the Basic Auth | Required when **BasicAuth**. Otherwise isn't required |
+| sslMode | A numeric value representing the SSL connection configuration. **0** for Disabled, **1** for Allow, **2** for Prefer, **3** for Require, **4** for VerifyCA, and **5** for VerifyFull | Yes |
+| authenticationType | Specify the authentication to use. **BasicAuth**, **ServicePrincipal**, **SystemAssignedManagedIdentity**, or **UserAssignedManagedIdentity** | Yes |
+| credential | Specify the user-assigned managed identity as the credential object. | Required for **UserAssignedManagedIdentity**. Otherwise, isn't required |
+| username | Username for basic auth or service principal name for service principal authentication | Yes |
+| password | Username password for the Basic Auth | Required when **BasicAuth**. Otherwise, isn't required |
 | tenant | Tenant ID | Required for **ServicePrincipal** authentication type |
 | servicePrincipalId | Service Principal ID | Required for **ServicePrincipal** authentication type |
 | servicePrincipalCredentialType | Service Principal Type. **ServicePrincipalCert** or **ServicePrincipalKey**| Yes |
-| servicePrincipalEmbeddedCert | The service principal certificate | Required when **ServicePrincipalCert**. Otherwise isn't required |
+| servicePrincipalEmbeddedCert | The service principal certificate | Required when **ServicePrincipalCert**. Otherwise, isn't required |
 | servicePrincipalEmbeddedCertPassword | The service principal certificate password | No |
-| servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise isn't required |
+| servicePrincipalKey | The service Principal key | Required if **ServicePrincipalKey** is the servicePrincipalCredentialType. Otherwise, isn't required |
 
-Depending on the type of authentication, different fields require a different JSON payload.
+Depending on the type of authentication, different fields require different JSON payloads.
 
-Here are JSON configuration examples for different authentication methods, including Basic Authentication, Service Principal Certificate, and Service Principal Key. These JSON templates can be customized to suit your specific requirements.
+The following examples show JSON configurations for different authentication methods, including Basic Authentication, Service Principal Certificate, and Service Principal Key. You can customize these JSON templates to suit your specific requirements.
 
-A linked service using **BasicAuth** is defined in JSON format as follows:
+A linked service that uses **BasicAuth** is defined in JSON format as follows:
 
 ```json
 {
@@ -301,7 +302,7 @@ A linked service using **BasicAuth** is defined in JSON format as follows:
 }
 ```
 
-A linked service using **Service Principal certificate** is defined in JSON format as follows:
+A linked service that uses **Service Principal certificate** is defined in JSON format as follows:
 
 ```json
 {
@@ -326,7 +327,7 @@ A linked service using **Service Principal certificate** is defined in JSON form
 }
 ```
 
-A linked service using **Service Principal key** is defined in JSON format as follows:
+A linked service that uses **Service Principal key** is defined in JSON format as follows:
 
 ```json
 {
@@ -398,15 +399,15 @@ Example with **user-assigned managed identity**:
 
 ### Create linked services via API
 
-Linked services can be created in the Azure Data Factory Portal via the [management hub](/azure/data-factory/author-management-hub) and any activities, datasets, or data flows that reference them.
+You can create linked services in the Azure Data Factory portal by using the [management hub](/azure/data-factory/author-management-hub) and any activities, datasets, or data flows that reference them.
 
 You can create linked services by using one of these tools: [.NET API](/azure/data-factory/quickstart-create-data-factory-dot-net), [PowerShell](/azure/data-factory/quickstart-create-data-factory-powershell), [REST API](/azure/data-factory/quickstart-create-data-factory-rest-api), [Azure Resource Manager Template](/azure/data-factory/quickstart-create-data-factory-resource-manager-template), and [Azure portal](/azure/data-factory/quickstart-create-data-factory-portal).
 
-When creating a linked service, the user needs appropriate authorization for the designated service. If sufficient access isn't granted, the user can't see the available resources and must use the manual entry option.
+When you create a linked service, you need appropriate authorization for the designated service. If you don't have sufficient access, you can't see the available resources and must use the manual entry option.
 
 ## Activities
 
-Activities are tasks within a pipeline that can execute specific tasks. With script activity, users can run PostgreSQL scripts to query or modify their databases.
+Activities are tasks within a pipeline that can execute specific tasks. By using script activity, you can run PostgreSQL scripts to query or modify your databases.
 
 - Script Activity: [Transform data using the Script activity in Azure Data Factory or Synapse Analytics](/azure/data-factory/transform-data-using-script).
 
