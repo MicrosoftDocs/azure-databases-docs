@@ -17,7 +17,7 @@ ms.custom:
 
 Known issues associated with migrations to Azure Database for MySQL are described in the following sections.
 
-## Known Issues When Migrating to MySQL 8.4 Flexible Server target
+## Known issues when migrating to MySQL 8.4 Flexible Server target
 
 A few MySQL 8.4 behavior changes require action on your side before or during migration. DMS surfaces a clear error or warning when any of these issues are hit.
 
