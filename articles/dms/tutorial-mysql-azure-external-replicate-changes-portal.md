@@ -18,7 +18,7 @@ ms.custom:
 
 You can migrate your on-premises or other cloud services MySQL server to Azure Database for MySQL - Flexible Server by using Azure Database Migration Service (DMS), a fully managed service designed to enable seamless migrations from multiple database sources to Azure data platforms. Azure DMS supports migration into Azure Database for MySQL - Flexible Server target versions 5.7, 8.0, and 8.4.
 
-In this tutorial, we perform an online migration of a sample database from an on-premises MySQL server to an Azure Database for MySQL - Flexible Server (both running version 5.7) using a DMS Replicate Changes migration activity.
+In this tutorial, you perform an online migration of a sample database from an on-premises MySQL server to an Azure Database for MySQL - Flexible Server (both running version 5.7) by using a DMS Replicate Changes migration activity.
 
 Running a Replicate changes Migration, with our offline scenario with "Enable Transactional Consistency" enables businesses to migrate their databases to Azure while the databases remain operational. In other words, migrations can be completed with minimum downtime for critical applications, limiting the impact on service level availability and inconvenience to their end customers.
 
