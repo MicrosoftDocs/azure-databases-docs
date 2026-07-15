@@ -1,17 +1,17 @@
 ---
-title: Approve private endpoint connections
+title: Approve Private Endpoint Connections in Azure Database for PostgreSQL Flexible Server
 description: This article describes how to approve private endpoint connections to an Azure Database for PostgreSQL flexible server.
+#customer intent: As a user, I want to approve pending private endpoint connections to my Azure Database for PostgreSQL flexible server, so that client applications can connect privately and securely.
 author: nachoalonsoportillo
 ms.author: ialonso
 ms.reviewer: maghan
-ms.date: 06/09/2026
+ms.date: 07/13/2026
 ms.service: azure-database-postgresql
 ms.subservice: networking
 ms.topic: how-to
-#customer intent: As a user, I want to learn how to approve private endpoint connections to an Azure Database for PostgreSQL.
 ---
 
-# Approve private endpoint connections
+# Approve private endpoint connections in Azure Database for PostgreSQL flexible server
 
 Azure Database for PostgreSQL flexible server is an Azure Private Link service. This feature enables you to create private endpoints so your client applications can connect privately and securely to your Azure Database for PostgreSQL flexible server.
 
@@ -29,7 +29,7 @@ In these scenarios, after network administrators create a private endpoint, the 
 
 ## [Portal](#tab/portal-approve-private-endpoint-connections)
 
-Using the [Azure portal](https://portal.azure.com/):
+Use the [Azure portal](https://portal.azure.com/):
 
 1. Select your Azure Database for PostgreSQL flexible server.
 
