@@ -5,8 +5,8 @@ metadata:
   description: "Azure Database for MySQL is a relational database service in the Microsoft cloud that is built for developers and powered by the MySQL community edition. You can use Azure Database for MySQL to deploy your MySQL database in Azure."
   ms.service: azure-database-mysql
   ms.topic: landing-page
-  author: deepthiprasad
-  ms.author: deprasa
+  author: SudheeshGH
+  ms.author: sunaray
   ms.reviewer: maghan
   ms.date: 01/05/2026
 
@@ -37,7 +37,7 @@ landingContent:
       - linkListType: whats-new
         links:
           - text: What's new in Azure Database for MySQL?
-            url: flexible-server/whats-new.md
+            url: whats-new/whats-new-2026.md
       - linkListType: concept
         links:
           - text: Server concepts
