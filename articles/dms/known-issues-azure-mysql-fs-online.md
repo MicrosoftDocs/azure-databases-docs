@@ -25,7 +25,7 @@ A few MySQL 8.4 behavior changes require action on your side before or during mi
 
 - **Error**: Users configured with the mysql_native_password authentication plugin are skipped during login migration, and a warning is reported.
 
-  **Limitation**: MySQL 8.4 removes the mysql_native_password authentication plugin. This issue occurs when you use login migration and your source has users configured with mysql_native_password.
+  **Limitation**: MySQL 8.4 removes the `mysql_native_password` authentication plugin. This problem occurs when you use authentication migration and your source has users configured with `mysql_native_password`.
 
   **Workaround**: Re-create the affected users on the 8.4 target (or on the source before migration) using a supported plugin such as caching_sha2_password.
 
